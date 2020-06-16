@@ -1,0 +1,16 @@
+Privacy: Zeplin
+UI: https://iconscout.com/icon/theme-12
+OneDrive: https://materialdesignicons.com/icon/microsoft-onedrive
+System: https://materialdesignicons.com/icon/laptop-windows
+Start Menu: https://iconscout.com/icon/widget-1821338
+UWP Apps: Zeplin
+Gaming: Zeplin (https://materialdesignicons.com/icon/microsoft-xbox)
+Task Scheduler: https://materialdesignicons.com/icon/clock-outline
+Security: Zeplin
+Context Menu: https://iconscout.com/icon/menu-list-text-line-item-bullet-paragraph
+
+Github: Zeplin
+Сменить язык: https://iconscout.com/icon/language-21
+ 
+Импорт: Zeplin
+Применить: https://iconscout.com/icon/check-1823431
