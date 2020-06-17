@@ -27,7 +27,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: alpha-version
+        tag_name: technical_alpha
         release_name: SophiApp
         draft: false
         prerelease: true
@@ -42,5 +42,4 @@ jobs:
         asset_path: 'SophiApp\SophiApp\bin\Release\SophiApp.zip'
         asset_name: 'SophiApp.zip'
         asset_content_type: application/zip
-        asset_label: 'SophiApp.zip'
-        
+        asset_label: 'SophiApp.zip'     
