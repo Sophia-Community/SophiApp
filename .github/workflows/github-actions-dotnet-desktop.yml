@@ -10,4 +10,4 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
-      run: msbuild  SophiApp.sln -p:Configuration=Release
+      run: msbuild SophiApp\SophiApp.sln -p:Configuration=Release
