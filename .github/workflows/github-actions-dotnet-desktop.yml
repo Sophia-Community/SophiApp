@@ -36,7 +36,7 @@
 # For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
 # refer to https://github.com/microsoft/github-actions-for-desktop-apps
 
-name: SophiApp Build Actions
+name: SophiApp Build
 
 on:
   push:
@@ -67,8 +67,6 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16   
 
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}   
+    # Build the application to populate the obj folder with RuntimeIdentifiers
+    - name: Build the application
+      run: msbuild $env:Solution_Name\$env:Solution_Name.sln /p:Configuration=Release     
