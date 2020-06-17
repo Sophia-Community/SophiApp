@@ -27,7 +27,7 @@ jobs:
     env:
       #App_Packages_Directory: AppPackages
       #SigningCertificate: GitHubActionsDemo.pfx
-      Solution_Path: SophiApp\SophiApp.sln
+      Solution_Path: SophiApp.sln
       #Test_Project_Path: MyWpfApp.Tests\MyWpfApp.Tests.csproj
       Wpf_Project_Path: SophiApp\SophiApp.csproj
       #Wap_Project_Directory: MyWpfApp.Package
