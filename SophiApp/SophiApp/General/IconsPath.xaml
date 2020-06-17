@@ -5,5 +5,6 @@
     <Geometry x:Key="MainWindow.TitleIcon.Maximize">M4,4H20V20H4V4M6,8V18H18V8H6Z</Geometry>
     <Geometry x:Key="MainWindow.TitleIcon.Collapse">M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z</Geometry>
     <Geometry x:Key="MainWindow.TitleIcon.Minimize">M20,14H4V10H20</Geometry>
+    <Geometry x:Key="Hamburger.Button.Icon.Privacy">M60.4 30.7h-3.9c-.5 0-1-.4-1-1v-9.2C55.5 9.9 47.3.9 36.7.5 25.6.1 16.4 9 16.4 20.1v9.7c0 .5-.4 1-1 1h-3.9c-1.5 0-2.7 1.2-2.7 2.7v35.4c0 1.5 1.2 2.7 2.7 2.7h48.8c1.5 0 2.7-1.2 2.7-2.7V33.4c.1-1.5-1.1-2.7-2.6-2.7zM22.5 20.1c0-7.7 6.4-13.9 14.2-13.5 7.3.4 12.9 6.6 12.9 13.9v9.3c0 .5-.4 1-1 1H23.4c-.5 0-1-.4-1-1v-9.7z</Geometry>
     
 </ResourceDictionary>

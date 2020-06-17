@@ -9,6 +9,9 @@
     <system:Double x:Key="Control.MainWindow.TitleButton.Height">40</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Width">16</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Height">16</system:Double>
+    <system:Double x:Key="Control.Hamburger.Button.Icon.Height">31</system:Double>
+    <system:Double x:Key="Control.Hamburger.Button.Icon.Width">31</system:Double>
+    <system:Double x:Key="Control.Hamburger.Button.FontSize">18</system:Double>
     
     
 </ResourceDictionary>

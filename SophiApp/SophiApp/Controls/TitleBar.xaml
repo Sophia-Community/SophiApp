@@ -70,48 +70,12 @@
                 <Path Data="{StaticResource MainWindow.TitleIcon.Close}" />
             </Canvas>
         </Viewbox>
-        </Grid>
-        <Grid x:Name="TitleBarButtonMaximize"
+        </Grid>        
+        <Grid x:Name="TitleBarButtonMinimize"
               Margin="0, 0, 40, 0"
               Style="{StaticResource Grid.Title.Button}"              
-              MouseLeftButtonDown="TitleBarButtonMaximize_MouseLeftButtonDown">
-            <Grid.Background>
-                <SolidColorBrush x:Name="ColorTitleBarButtonMaximize" 
-                                 Color="{DynamicResource Color.Window.TitleBar.Background}"/>
-            </Grid.Background>
-            <Grid.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="ColorTitleBarButtonMaximize"
-                                            Storyboard.TargetProperty="Color"
-                                            Duration="0:0:0.1"
-                                            To="{DynamicResource Color.Window.TitleBar.Button.Hover}"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="ColorTitleBarButtonMaximize"
-                                            Storyboard.TargetProperty="Color"
-                                            Duration="0:0:0.1"
-                                            To="{DynamicResource Color.Window.TitleBar.Background}"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Grid.Triggers>
-            <Viewbox>
-                <Canvas Width="24" Height="24">
-                    <Path x:Name="TitleBarButtonMaximizeIcon" Data="{StaticResource MainWindow.TitleIcon.Maximize}" />
-                </Canvas>
-            </Viewbox>
-        </Grid>
-        <Grid x:Name="TitleBarButtonMinimize"
-              Margin="0, 0, 80, 0"
-              Style="{StaticResource Grid.Title.Button}"              
               MouseLeftButtonDown="TitleBarButtonMinimize_MouseLeftButtonDown">
-            <Grid.Background>
+            <Grid.Background>                
                 <SolidColorBrush x:Name="ColorTitleBarButtonMinimize" 
                                  Color="{DynamicResource Color.Window.TitleBar.Background}"/>
             </Grid.Background>

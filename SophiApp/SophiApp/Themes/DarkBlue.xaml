@@ -4,6 +4,6 @@
     <SolidColorBrush x:Key="Color.Window.Foreground" Color="#ffffff"/>
     <Color x:Key="Color.Window.TitleBar.Background">#0b3363</Color>
     <Color x:Key="Color.Window.TitleBar.Button.Close.Hover">#e81123</Color>
-    <Color x:Key="Color.Window.TitleBar.Button.Hover">#606060</Color>
+    <Color x:Key="Color.Window.TitleBar.Button.Hover">#11509d</Color>
 
 </ResourceDictionary>
