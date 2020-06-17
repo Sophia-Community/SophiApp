@@ -5,43 +5,29 @@ on:
     branches:
       - master
 
-env:
-  AZURE_WEBAPP_NAME: SophiApp.sln     # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'published'      # set this to the path to your web app project, defaults to the repository root
-
 jobs:
   build:
-    name: Build and deploy
     runs-on: windows-latest
+
     steps:
     - uses: actions/checkout@v2
     
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.0.0
-      with:
-        vs-version: "[16.4,16.6)"
-    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
-    
-    - name: Restore NuGet packages
-      run: nuget restore ${{ env.AZURE_WEBAPP_NAME }}
+      
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
 
-    - name: Build
-      run: msbuild ${{ env.AZURE_WEBAPP_NAME }} /p:Configuration=Release
+    - name: Create Build Directory
+      run: mkdir _build
+      
+    - name: Restore Packages
+      run: nuget restore SophiApp.sln
 
-    - name: Publish to folder
-      run: msbuild ${{ env.AZURE_WEBAPP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /t:WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=${{ env.AZURE_WEBAPP_PACKAGE_PATH }} /p:PackageAsSingleFile=false
-
-    #- name: Deploy to Azure WebApp
-    #  uses: azure/webapps-deploy@v1
-    #  with:
-    #    app-name: ${{ env.AZURE_WEBAPP_NAME }}
-    #    publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-    #    package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: webapp
-        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - name: Build Solution
+      run: |
+        msbuild.exe SophiApp.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+        
