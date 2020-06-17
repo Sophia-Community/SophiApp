@@ -18,8 +18,8 @@ jobs:
     #- name: Navigate to Workspace
     #  run: cd $GITHUB_WORKSPACE
 
-    #- name: Create Build Directory
-    #  run: mkdir _build
+    - name: Create Published Directory
+      run: mkdir Published
 
     - name: Build Solution
       run: msbuild.exe SophiApp/SophiApp.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiApp"
@@ -28,5 +28,5 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: SophiApp
-        path: 'Publish'    
+        path: 'Published'    
      
