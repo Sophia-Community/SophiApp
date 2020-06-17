@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Release
 
 on:
   push:
@@ -14,21 +14,12 @@ jobs:
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
-    
-    #- name: Navigate to Workspace
-    #  run: cd $GITHUB_WORKSPACE
 
-    #- name: Create Published Directory
-    #  run: mkdir Published
-
-    - name: Build Solution
+    - name: Build App
       run: msbuild.exe SophiApp/SophiApp.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiApp"
     
-    - name: Create archive
+    - name: Create Archive
       run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
-    
-    #- name: Dir Folder
-    #  run: dir .
     
     - name: Create Release
       id: create_release
@@ -36,7 +27,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: 'TAG' #${{ github.ref}}
+        tag_name: 'alpha version'
         release_name: SophiApp
         draft: false
         prerelease: false
@@ -51,12 +42,5 @@ jobs:
         asset_path: 'SophiApp\SophiApp\bin\Release\SophiApp.zip'
         asset_name: 'SophiApp.zip'
         asset_content_type: application/zip
-      
-    #- name: Publish artifacts
-    #  uses: actions/upload-artifact@v1.0.0
-    #  with:
-    #    name: SophiApp
-    #    path: 'Published'    
-    
-    
-   
+        asset_label: 'SophiApp.zip'
+        
