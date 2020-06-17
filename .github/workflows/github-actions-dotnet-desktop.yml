@@ -68,7 +68,7 @@ jobs:
 
     # Restore the application
     - name: Build the Application
-      run: msbuild .\SophiApp\SophiApp.sln /p:Platform=Any /p:Configuration=Release      
+      run: msbuild SophiApp\SophiApp.sln /p:Platform=Any /p:Configuration=Release      
 
     # Decode the Base64 encoded Pfx
     #- name: Decode the Pfx
