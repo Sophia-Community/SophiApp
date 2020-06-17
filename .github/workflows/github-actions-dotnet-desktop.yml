@@ -67,11 +67,8 @@ jobs:
     #  run: dotnet test $env:Test_Project_Path
 
     # Restore the application
-    - name:  Restore the Wpf application to populate the obj folder
-      run: msbuild $env:Solution_Path /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifier=$env:RuntimeIdentifier
-      env:
-        Configuration: Release
-        RuntimeIdentifier: win-${{ matrix.targetplatform }}
+    - name: Build the Application
+      run: msbuild .\SophiApp\SophiApp.sln /p:Platform=Any /p:Configuration=Release      
 
     # Decode the Base64 encoded Pfx
     #- name: Decode the Pfx
