@@ -14,18 +14,12 @@ jobs:
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-      
+    
     - name: Navigate to Workspace
       run: cd $GITHUB_WORKSPACE
 
     - name: Create Build Directory
       run: mkdir _build
-      
-    - name: Restore Packages
-      run: nuget restore SophiApp.sln
 
     - name: Build Solution
       run: |
