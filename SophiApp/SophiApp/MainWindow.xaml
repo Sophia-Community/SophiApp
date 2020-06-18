@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SophiApp"
-        xmlns:AppControls="clr-namespace:SophiApp.AppControls"
+        xmlns:AppControls="clr-namespace:SophiApp.Controls"
         mc:Ignorable="d"
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
         Title="{DynamicResource Localization.AppTitle}" 
         MinHeight="{StaticResource Control.MainWindow.MinHeight}" 
-        MinWidth="{StaticResource Control.MainWindow.MinWidth}"
-        Foreground="{DynamicResource Color.Window.Foreground}">
+        MinWidth="{StaticResource Control.MainWindow.MinWidth}">    
+    
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="AllowsTransparency" Value="True"/>
@@ -21,8 +21,9 @@
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="ResizeMode" Value="CanResize"/>
             <Setter Property="ShowInTaskbar" Value="True"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>            
         </Style>
+        
     </Window.Resources>   
     <Grid>
         <Grid.RowDefinitions>
@@ -35,6 +36,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <AppControls:Hamburger Grid.Column="0"/>
         </Grid>
     </Grid>
 </Window>

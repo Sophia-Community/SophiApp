@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -18,7 +19,8 @@ namespace SophiApp.Controls
     /// <summary>
     /// Логика взаимодействия для HamburgerButton.xaml
     /// </summary>
-    public partial class HamburgerButton : Button
+    [ContentProperty("InnerContent")]
+    public partial class HamburgerButton : UserControl
     {
         public HamburgerButton()
         {
@@ -35,14 +37,38 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(HamburgerButton), new PropertyMetadata(default(string)));
 
-        public Geometry Icon
+        public object InnerContent
         {
-            get { return (Geometry)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
+            get { return (object)GetValue(InnerContentProperty); }
+            set { SetValue(InnerContentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(Geometry), typeof(HamburgerButton), new PropertyMetadata(default(Geometry)));
+        // Using a DependencyProperty as the backing store for InnerContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InnerContentProperty =
+            DependencyProperty.Register("InnerContent", typeof(object), typeof(HamburgerButton));
+
+        public Thickness IconMargin
+        {
+            get { return (Thickness)GetValue(IconMarginProperty); }
+            set { SetValue(IconMarginProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconMargin.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconMarginProperty =
+            DependencyProperty.Register("IconMargin", typeof(Thickness), typeof(HamburgerButton));
+
+        public Thickness TextMargin
+        {
+            get { return (Thickness)GetValue(TextMarginProperty); }
+            set { SetValue(TextMarginProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextMargin.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextMarginProperty =
+            DependencyProperty.Register("TextMargin", typeof(Thickness), typeof(HamburgerButton));
+
+
+
+
     }
 }

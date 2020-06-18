@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="SophiApp.Controls.Hamburger"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d"
+             MinHeight="{StaticResource Control.Hamburger.MinHeight}"
+             MinWidth="{StaticResource Control.Hamburger.MinWidth}">
+    <UserControl.Background>
+        <SolidColorBrush Color="{DynamicResource Color.Hamburger.Background}" Opacity="0.85"/>
+    </UserControl.Background>
+
+    <Canvas>
+        <Border Name="HamburgerSelector"
+                Width="{StaticResource Control.Hamburger.Selector.Width}"
+                Height="{StaticResource Control.Hamburger.Button.Height}"
+                Panel.ZIndex="10"                
+                Canvas.Top="30" Canvas.Left="0">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
+            </Border.Background>
+        </Border>
+
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Privacy}"
+                               Canvas.Top="30" Canvas.Left="0" IconMargin="20, 0, 35, 5">
+            <Canvas Width="32" Height="29">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Privacy1}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Privacy2}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Privacy3}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Privacy4}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Ui}"
+                               Canvas.Top="70" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="31" Height="23">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Ui1}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Ui2}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Ui3}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.ContextMenu}"
+                               Canvas.Top="110" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="31" Height="23">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.ContextMenu}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.StartMenu}"
+                               Canvas.Top="150" Canvas.Left="0" IconMargin="20, 0, 35, 6">
+            <Canvas Width="31" Height="23">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.StartMenu}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.System}"
+                               Canvas.Top="190" Canvas.Left="0" IconMargin="20, 4, 35, 6">
+            <Canvas Width="31" Height="23">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.System}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.TaskSheduler}"
+                               Canvas.Top="230" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="27" Height="30">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.TaskSheduler1}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.TaskSheduler2}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Security}"
+                               Canvas.Top="270" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="26" Height="28">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Security1}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Security2}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Game}"
+                               Canvas.Top="310" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="29" Height="29">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Game1}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Game2}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Uwp}"
+                               Canvas.Top="350" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="28" Height="28">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Uwp}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.OneDrive}"
+                               Canvas.Top="390" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="29" Height="19">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.OneDrive}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.ImportExport}"
+                               Canvas.Top="430" Canvas.Left="0" IconMargin="20, 0, 35, 0">
+            <Canvas Width="31" Height="23">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.ImportExport1}">
+                        <Path.RenderTransform>
+                            <RotateTransform Angle="90" CenterX="15.25" CenterY="15.25"/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.ImportExport2}">
+                        <Path.RenderTransform>
+                            <RotateTransform Angle="90" CenterX="15.25" CenterY="15.25"/>
+                        </Path.RenderTransform>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+
+        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Settings}"
+                               Canvas.Top="470" Canvas.Left="0" IconMargin="25, 0, 30, 0">
+            <Canvas Width="26" Height="27">
+                <Canvas>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Settings1}"/>
+                    <Path Data="{StaticResource Hamburger.Button.Icon.Settings2}"/>
+                </Canvas>
+            </Canvas>
+        </local:HamburgerButton>
+    </Canvas>
+    
+</UserControl>

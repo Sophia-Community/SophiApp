@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is compatible with Silverlight-->
+<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg118" Width="31" Height="23">
+  <Canvas.RenderTransform>
+    <TranslateTransform X="0" Y="0"/>
+  </Canvas.RenderTransform>
+  <Canvas.Resources/>
+  <!--Unknown tag: metadata-->
+  <!--Unknown tag: sodipodi:namedview-->
+  <Canvas Name="g116">
+    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path112" Fill="#FFFFFFFF" Data="M17 18.561L12 13 7 18.561 7.895 19.423 11.388 15.538 11.388 30 12.611 30 12.611 15.535 16.105 19.423z">
+      <Path.RenderTransform>
+        <RotateTransform Angle="90 15.25 15.25"/>
+      </Path.RenderTransform>
+    </Path>
+    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path114" Fill="#FFFFFFFF" Data="M23 23L15.533 23 15.533 21.807 21.807 21.807 21.807 1.193 1.193 1.193 1.193 21.807 7.466 21.807 7.466 23 0 23 0 0 23 0z">
+      <Path.RenderTransform>
+        <RotateTransform Angle="90 15.25 15.25"/>
+      </Path.RenderTransform>
+    </Path>
+  </Canvas>
+</Canvas>

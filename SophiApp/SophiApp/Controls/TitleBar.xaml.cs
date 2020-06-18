@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace SophiApp.AppControls
+namespace SophiApp.Controls
 {
     /// <summary>
     /// Логика взаимодействия для WindowTitleBar.xaml

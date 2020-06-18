@@ -1,17 +1,18 @@
-﻿<UserControl x:Class="SophiApp.AppControls.TitleBar"
+﻿<UserControl x:Class="SophiApp.Controls.TitleBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiApp.AppControls"
-             mc:Ignorable="d"
-             Foreground="{DynamicResource Color.Window.Foreground}"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"             
              MinWidth="{StaticResource Control.MainWindow.MinWidth}"
              FontFamily="{StaticResource Font.SegoeUI-Semibold}"
              FontSize="{StaticResource Control.MainWindow.Title.FontSize}">
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.Window.TitleBar.Background}"/>
     </UserControl.Background>
+    <UserControl.Foreground>
+        <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
+    </UserControl.Foreground>
     <Control.Resources>
         <Style x:Key="Text.Title" TargetType="TextBlock">            
             <Setter Property="TextWrapping" Value="NoWrap"/>
@@ -30,10 +31,13 @@
             <Setter Property="HorizontalAlignment" Value="Right"/>            
         </Style>
         <Style TargetType="Path">
-            <Setter Property="Fill" Value="{DynamicResource Color.Window.Foreground}"/>
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
+                </Setter.Value>
+            </Setter>
         </Style>
-    </Control.Resources>
-    
+    </Control.Resources>    
     <Grid>
         <TextBlock Style="{StaticResource Text.Title}" Text="{DynamicResource Localization.AppTitle}"/>
         <Grid x:Name="TitleBarButtonClose" 
@@ -103,7 +107,7 @@
             </Grid.Triggers>
             <Viewbox>
                 <Canvas Width="24" Height="24">
-                    <Path Data="{StaticResource MainWindow.TitleIcon.Minimize}" />
+                    <Path Data="{StaticResource MainWindow.TitleIcon.Minimize}"/>
                 </Canvas>
             </Viewbox>
         </Grid>
