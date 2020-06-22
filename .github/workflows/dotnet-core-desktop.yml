@@ -27,7 +27,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: technical_alpha_$env:GITHUB_SHA
+        tag_name: technical_alpha_${{ $env:GITHUB_SHA }}
         release_name: SophiApp
         draft: false
         prerelease: true
