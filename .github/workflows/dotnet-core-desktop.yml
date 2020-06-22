@@ -7,43 +7,43 @@ tags:
 jobs:
 build:
   runs-on: windows-latest
-	
+
   env:
      App_Name: SophiApp
      App_Archive: SophiApp.zip
      App_Packages_Directory: AppPackages
      Solution_Path: SophiApp/SophiApp.sln
-	
+
      steps:
        - name: Checkout
-	 uses: actions/checkout@v2
-	
+         uses: actions/checkout@v2
+
        - name:Setup MSBuild
          uses:microsoft/setup-msbuild@v1
-	
-       - name:Build App
-	run: msbuild.exe $env:Solution_Path /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="$env:App_Name
-	
-       - name:Create Archive
-        run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
-  
-       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-       env:
-	GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  with:
-	tag_name: Preview
-	release_name: $env:App_Name
-	draft: false
-	prerelease: true
 
-- name: Update Release
-  id: upload-release-asset
-  uses: actions/upload-release-asset@v1
-  env:
-	GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  with:
+       - name:Build App
+         run:msbuild.exe $env:Solution_Path /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="$env:App_Name
+
+       - name:Create Archive
+        run:Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
+
+       - name:Create Release
+        id:create_release
+        uses:actions/create-release@v1
+        env:
+	    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+        tag_name: Preview
+        release_name: $env:App_Name
+        draft: false
+        prerelease: true
+
+      - name: Update Release
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+	   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
 	upload_url: ${{ steps.create_release.outputs.upload_url }}  # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
 	asset_path: 'SophiApp\SophiApp\bin\Release\SophiApp.zip'
 	asset_name: $env:App_Archive
