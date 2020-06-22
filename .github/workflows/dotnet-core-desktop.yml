@@ -26,11 +26,11 @@ jobs:
      shell:pwsh
      run:echo "::set-output name=date::$(date +'%Y-%m-%d')"
     
-     - name:Create Release
-     id:create_release
-      uses:actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+     - name:Create Release 
+       id:create_release
+       uses:actions/create-release@v1
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: technical_alpha-${{ steps.date.outputs.date }}
         release_name: SophiApp
