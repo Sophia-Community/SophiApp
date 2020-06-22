@@ -6,31 +6,31 @@ tags:
   - '*'
 jobs:
 build:
-	runs-on: windows-latest
+  runs-on: windows-latest
 	
-	env:
-	App_Name: SophiApp
-	App_Archive: SophiApp.zip
-	App_Packages_Directory: AppPackages
-	Solution_Path: SophiApp/SophiApp.sln
+  env:
+     App_Name: SophiApp
+     App_Archive: SophiApp.zip
+     App_Packages_Directory: AppPackages
+     Solution_Path: SophiApp/SophiApp.sln
 	
-	steps:
-	- name: Checkout
-	uses: actions/checkout@v2
+     steps:
+       - name: Checkout
+	 uses: actions/checkout@v2
 	
-	- name: Setup MSBuild
-	uses: microsoft/setup-msbuild@v1
+       - name:Setup MSBuild
+         uses:microsoft/setup-msbuild@v1
 	
-	- name: Build App
+       - name:Build App
 	run: msbuild.exe $env:Solution_Path /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="$env:App_Name
 	
-	- name: Create Archive
-  run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
+       - name:Create Archive
+        run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
   
-  - name: Create Release
-  id: create_release
-  uses: actions/create-release@v1
-  env:
+       - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+       env:
 	GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
 	tag_name: Preview
