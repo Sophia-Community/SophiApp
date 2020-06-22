@@ -11,7 +11,7 @@ env:
 App_Name: SophiApp
 App_Archive: SophiApp.zip
 App_Packages_Directory: AppPackages
-Solution_Path: SophiApp/SophiApp.sln
+Solution_Path: 'SophiApp/SophiApp.sln'
 		
 steps:
 - name: Checkout
