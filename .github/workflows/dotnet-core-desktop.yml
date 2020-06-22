@@ -5,29 +5,28 @@ on:
     tags:
       - '*'
 jobs:
-	build:
-		runs-on: windows-latest
+build:
+runs-on: windows-latest
+env:
+App_Name: SophiApp
+App_Archive: SophiApp.zip
+App_Packages_Directory: AppPackages
+Solution_Path: SophiApp/SophiApp.sln
 		
-		env:
-		App_Name: SophiApp
-		App_Archive: SophiApp.zip
-		App_Packages_Directory: AppPackages
-		Solution_Path: SophiApp/SophiApp.sln
+steps:
+- name: Checkout
+uses: actions/checkout@v2
 		
-		steps:
-		- name: Checkout
-		uses: actions/checkout@v2
+- name: Setup MSBuild
+uses: microsoft/setup-msbuild@v1
 		
-		- name: Setup MSBuild
-		uses: microsoft/setup-msbuild@v1
+- name: Build App
+run: msbuild.exe $env:Solution_Path /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="$env:App_Name
 		
-		- name: Build App
-		run: msbuild.exe $env:Solution_Path /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="$env:App_Name
-		
-		- name: Create Archive
-      run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
+- name: Create Archive
+run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
 	  
-	  - name: Create Release
+- name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -38,7 +37,7 @@ jobs:
         draft: false
         prerelease: true
     
-    - name: Update Release
+- name: Update Release
       id: upload-release-asset
       uses: actions/upload-release-asset@v1
       env:
