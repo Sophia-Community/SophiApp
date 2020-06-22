@@ -21,10 +21,9 @@ jobs:
     - name: Create Archive
       run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
     
-    - name: Get current date
-      id: vars
-      shell: pwsh
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+    - name: Get Current Date
+      id: date      
+      run: pwsh -command get-date -format "MM.dd"
      
     - name: Create Release
       id: create_release
@@ -32,7 +31,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: technical_alpha-${{ steps.date.outputs.date }}
+        tag_name: technical_alpha_${{ steps.date.outputs.date }}
         release_name: SophiApp
         draft: false
         prerelease: true
