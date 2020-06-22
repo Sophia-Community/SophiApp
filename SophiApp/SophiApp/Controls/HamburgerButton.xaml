@@ -3,27 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"           
+             mc:Ignorable="d"
              x:Name="hamburgerButton"
-             Background="Transparent">
-    <UserControl.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="{StaticResource Font.Montserrat-Medium}"/>
-            <Setter Property="FontSize" Value="{StaticResource Control.Hamburger.Button.FontSize}"/>
-            <Setter Property="FontWeight" Value="Normal"/>
+             Height="{StaticResource Control.Hamburger.Button.Height}"
+             FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"
+             FontSize="{StaticResource Control.Hamburger.Button.FontSize}"
+             FontStretch="Normal"
+             FontWeight="Normal"
+             FontStyle="Normal"
+             MouseLeftButtonDown="HamburgerButton_MouseLeftButtonDown">
+    <UserControl.Background>
+        <SolidColorBrush Color="{DynamicResource Color.Hamburger.Button.Background}"/>
+    </UserControl.Background>
+    <UserControl.Resources>        
+        <Style TargetType="TextBlock">            
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextMargin}"/>
-            <Setter Property="Foreground">
-                <Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextMargin}"/>                        
         </Style>
         <Style TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="Height" Value="{StaticResource Control.Hamburger.Button.Height}"/>
-            <Setter Property="Width" Value="{StaticResource Control.Hamburger.MinWidth}"/>
+            <Setter Property="Orientation" Value="Horizontal"/>            
         </Style>
         <Style TargetType="Viewbox">
             <Setter Property="Width" Value="{StaticResource Control.Hamburger.Button.Icon.Width}"/>
@@ -39,8 +38,28 @@
                     <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>        
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetProperty="Background.(Color)"
+                                    Duration="0:0:0"
+                                    To="{DynamicResource Color.Hamburger.Button.Hover}"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetProperty="Background.(Color)"
+                                    Duration="0:0:0"
+                                    To="{DynamicResource Color.Hamburger.Button.Background}"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <StackPanel>
         <Viewbox Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=IconMargin}">
             <ContentPresenter Content="{Binding InnerContent, ElementName=hamburgerButton}"/>

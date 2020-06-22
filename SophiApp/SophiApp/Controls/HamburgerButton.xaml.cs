@@ -51,24 +51,23 @@ namespace SophiApp.Controls
         {
             get { return (Thickness)GetValue(IconMarginProperty); }
             set { SetValue(IconMarginProperty, value); }
-        }
+        }        
 
         // Using a DependencyProperty as the backing store for IconMargin.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconMarginProperty =
             DependencyProperty.Register("IconMargin", typeof(Thickness), typeof(HamburgerButton));
 
-        public Thickness TextMargin
+        private static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(HamburgerButton));
+
+        public event RoutedEventHandler Click
         {
-            get { return (Thickness)GetValue(TextMarginProperty); }
-            set { SetValue(TextMarginProperty, value); }
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TextMargin.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TextMarginProperty =
-            DependencyProperty.Register("TextMargin", typeof(Thickness), typeof(HamburgerButton));
-
-
-
-
+        private void HamburgerButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(ClickEvent, this));
+        }
     }
 }

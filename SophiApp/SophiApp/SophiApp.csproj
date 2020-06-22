@@ -81,10 +81,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\HamburgerButton2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\TitleBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,9 +111,6 @@
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HamburgerButton2.xaml.cs">
-      <DependentUpon>HamburgerButton2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
@@ -125,10 +118,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="General\Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Themes\DarkBlue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

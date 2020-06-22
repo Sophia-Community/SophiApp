@@ -24,5 +24,10 @@ namespace SophiApp.Controls
         {
             InitializeComponent();
         }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

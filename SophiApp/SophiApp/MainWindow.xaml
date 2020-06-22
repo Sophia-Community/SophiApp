@@ -8,35 +8,49 @@
         mc:Ignorable="d"
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
-        Title="{DynamicResource Localization.AppTitle}" 
+        Title="{DynamicResource Localization.AppTitle}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        SnapsToDevicePixels="True"
+        ResizeMode="CanResize"
+        ShowInTaskbar="True"
+        Background="Transparent"        
         MinHeight="{StaticResource Control.MainWindow.MinHeight}" 
-        MinWidth="{StaticResource Control.MainWindow.MinWidth}">    
-    
+        MinWidth="{StaticResource Control.MainWindow.MinWidth}">
+    <Window.Foreground>
+        <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
+    </Window.Foreground>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
+    </WindowChrome.WindowChrome>
     <Window.Resources>
-        <Style TargetType="{x:Type local:MainWindow}">
-            <Setter Property="AllowsTransparency" Value="True"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
-            <Setter Property="WindowStyle" Value="None"/>
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="ResizeMode" Value="CanResize"/>
-            <Setter Property="ShowInTaskbar" Value="True"/>
-            <Setter Property="Background" Value="Transparent"/>            
+        <Style TargetType="Border">
+            <Setter Property="BorderThickness" Value="1, 0, 1, 1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Color.Window.Border}"/>
+                </Setter.Value>
+            </Setter>            
         </Style>
-        
-    </Window.Resources>   
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <AppControls:TitleBar Grid.Row="0"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <AppControls:Hamburger Grid.Column="0"/>
+    </Window.Resources>
+
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource Control.MainWindow.Title.Height}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <AppControls:TitleBar Grid.Row="0"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{StaticResource Control.Hamburger.Width}"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <AppControls:Hamburger Grid.Column="0"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
+    
 </Window>

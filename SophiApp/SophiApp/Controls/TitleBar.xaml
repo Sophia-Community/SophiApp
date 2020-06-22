@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"             
-             MinWidth="{StaticResource Control.MainWindow.MinWidth}"
-             FontFamily="{StaticResource Font.SegoeUI-Semibold}"
-             FontSize="{StaticResource Control.MainWindow.Title.FontSize}">
+             FontFamily="pack://application:,,,/Fonts/#Segoe UI Semibold"
+             FontSize="{StaticResource Control.MainWindow.Title.FontSize}"
+             FontStretch="Normal"
+             FontWeight="Normal"
+             FontStyle="Normal">
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.Window.TitleBar.Background}"/>
     </UserControl.Background>
@@ -14,11 +16,11 @@
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>
     <Control.Resources>
-        <Style x:Key="Text.Title" TargetType="TextBlock">            
+        <Style TargetType="TextBlock">            
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="20, 10, 10, 10"/>
+            <Setter Property="Margin" Value="20, 0, 10, 0"/>
         </Style>        
         <Style TargetType="Viewbox">
             <Setter Property="Width" Value="{StaticResource Control.MainWindow.TitleIcon.Width}"/>
@@ -39,7 +41,7 @@
         </Style>
     </Control.Resources>    
     <Grid>
-        <TextBlock Style="{StaticResource Text.Title}" Text="{DynamicResource Localization.AppTitle}"/>
+        <TextBlock Text="{DynamicResource Localization.AppTitle}"/>
         <Grid x:Name="TitleBarButtonClose" 
               Style="{StaticResource Grid.Title.Button}"              
               MouseLeftButtonDown="TitleBarButtonClose_MouseLeftButtonDown">
@@ -76,7 +78,7 @@
         </Viewbox>
         </Grid>        
         <Grid x:Name="TitleBarButtonMinimize"
-              Margin="0, 0, 40, 0"
+              Margin="0, 0, 30, 0"
               Style="{StaticResource Grid.Title.Button}"              
               MouseLeftButtonDown="TitleBarButtonMinimize_MouseLeftButtonDown">
             <Grid.Background>                

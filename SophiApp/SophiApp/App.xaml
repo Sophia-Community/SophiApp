@@ -7,8 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>                
                 <ResourceDictionary Source="pack://application:,,,/General/ControlsSizes.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/IconsPath.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/Settings.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/General/IconsPath.xaml"/>                
                 <ResourceDictionary Source="pack://application:,,,/Localization/RU.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue.xaml"/>                
             </ResourceDictionary.MergedDictionaries>
