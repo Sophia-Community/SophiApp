@@ -21,15 +21,15 @@ jobs:
     - name: Create Archive
       run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
     
-    -name: Get current date
-     id:vars
-     shell:pwsh
-     run:echo "::set-output name=date::$(date +'%Y-%m-%d')"
-    
-     - name: Create Release 
-       id: create_release
-       uses: actions/create-release@v1
-       env:
+    - name: Get current date
+      id: vars
+      shell: pwsh
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+     
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: technical_alpha-${{ steps.date.outputs.date }}
