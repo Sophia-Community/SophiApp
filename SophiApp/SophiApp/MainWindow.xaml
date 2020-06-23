@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SophiApp"
-        xmlns:AppControls="clr-namespace:SophiApp.Controls"
-        mc:Ignorable="d"
+        xmlns:AppControls="clr-namespace:SophiApp.Controls"        
+        mc:Ignorable="d"        
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
         Title="{DynamicResource Localization.AppTitle}"
@@ -18,12 +18,13 @@
         ShowInTaskbar="True"
         Background="Transparent"        
         MinHeight="{StaticResource Control.MainWindow.MinHeight}" 
-        MinWidth="{StaticResource Control.MainWindow.MinWidth}">
+        MinWidth="{StaticResource Control.MainWindow.MinWidth}" 
+        Loaded="MainWindow_Loaded">
     <Window.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-    </Window.Foreground>
+    </Window.Foreground>    
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
     <Window.Resources>
         <Style TargetType="Border">
@@ -45,12 +46,11 @@
             <AppControls:TitleBar Grid.Row="0"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{StaticResource Control.Hamburger.Width}"/>
+                    <ColumnDefinition Width="{StaticResource Control.Grid.Hamburger.Width}"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <AppControls:Hamburger Grid.Column="0"/>
             </Grid>
         </Grid>
-    </Border>
-    
+    </Border>    
 </Window>

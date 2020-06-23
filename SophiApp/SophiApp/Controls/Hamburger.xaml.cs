@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SophiApp.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,9 @@ namespace SophiApp.Controls
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AnimationsManager.ShowDoubleAnimationTo(storyboardName: "Animation.Hamburger.Marker.Move",
+                                                    animationTo: (ControlsManager.GetWindowRelativePoint(e.OriginalSource as FrameworkElement, RootCanvas)).Y,
+                                                    animatedElement: HamburgerMarker);
         }
     }
 }

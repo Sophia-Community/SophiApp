@@ -5,29 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d"             
-             Width="330"
+             Width="{StaticResource Control.Hamburger.Width}"
              local:HamburgerButton.Click="HamburgerButton_Click">
     
     <UserControl.Resources>
         <Style TargetType="local:HamburgerButton">
-            <Setter Property="Width" Value="{Binding ElementName=Canvas, Path=ActualWidth}"/>
+            <Setter Property="Width" Value="{Binding ElementName=RootCanvas, Path=ActualWidth}"/>
             <Setter Property="Canvas.Left" Value="0"/>            
         </Style>
     </UserControl.Resources>
     
     <UserControl.Background>
-        <SolidColorBrush Color="{DynamicResource Color.Hamburger.Background}" Opacity="0.85"/>
+        <SolidColorBrush Color="{DynamicResource Color.Hamburger.Background}" Opacity="0.7"/>
     </UserControl.Background>
 
-    <Canvas Name="Canvas">        
-        <Border Name="HamburgerMarker"
+    <Canvas Name="RootCanvas">        
+        <Border x:Name="HamburgerMarker"
                 Width="{StaticResource Control.Hamburger.Selector.Width}"
                 Height="{StaticResource Control.Hamburger.Button.Height}"
                 Panel.ZIndex="10"                
                 Canvas.Top="30" Canvas.Left="0">
             <Border.Background>
                 <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-            </Border.Background>
+            </Border.Background>            
         </Border>
 
         <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Privacy}"

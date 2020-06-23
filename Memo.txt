@@ -1,0 +1,3 @@
+Эффект размытия фона окна
+https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs
+

@@ -34,6 +34,12 @@ namespace SophiApp.Controls
         private void TitleBarButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.MainWindow.Close();
-        }        
+        }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                Application.Current.MainWindow.DragMove();
+        }
     }
 }

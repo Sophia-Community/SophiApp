@@ -8,7 +8,8 @@
              FontSize="{StaticResource Control.MainWindow.Title.FontSize}"
              FontStretch="Normal"
              FontWeight="Normal"
-             FontStyle="Normal">
+             FontStyle="Normal"
+             MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.Window.TitleBar.Background}"/>
     </UserControl.Background>
