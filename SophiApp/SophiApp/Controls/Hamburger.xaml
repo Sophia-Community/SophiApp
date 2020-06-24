@@ -30,7 +30,7 @@
             </Border.Background>            
         </Border>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Privacy}"
+        <local:HamburgerButton Text="{DynamicResource Localization.Privacy}"
                                Canvas.Top="30" IconMargin="23, 0, 33, 5">
             <Canvas Width="32" Height="29">
                 <Canvas>
@@ -42,7 +42,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Ui}"
+        <local:HamburgerButton Text="{DynamicResource Localization.Ui}"
                                Canvas.Top="80" IconMargin="23, 0, 33, 0">
             <Canvas Width="31" Height="23">
                 <Canvas>
@@ -53,7 +53,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.ContextMenu}"
+        <local:HamburgerButton Text="{DynamicResource Localization.ContextMenu}"
                                Canvas.Top="130" IconMargin="23, 0, 33, 0">
             <Canvas Width="31" Height="23">
                 <Canvas>
@@ -62,7 +62,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.StartMenu}"
+        <local:HamburgerButton Text="{DynamicResource Localization.StartMenu}"
                                Canvas.Top="180" IconMargin="23, 0, 33, 6">
             <Canvas Width="31" Height="23">
                 <Canvas>
@@ -71,7 +71,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.System}"
+        <local:HamburgerButton Text="{DynamicResource Localization.System}"
                                Canvas.Top="230" IconMargin="21, 4, 36, 6">
             <Canvas Width="31" Height="23">
                 <Canvas>
@@ -80,7 +80,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.TaskSheduler}"
+        <local:HamburgerButton Text="{DynamicResource Localization.TaskSheduler}"
                                Canvas.Top="280" IconMargin="24, 0, 32, 0">
             <Canvas Width="27" Height="30">
                 <Canvas>
@@ -90,7 +90,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Security}"
+        <local:HamburgerButton Text="{DynamicResource Localization.Security}"
                                Canvas.Top="330" IconMargin="25, 0, 31, 0">
             <Canvas Width="26" Height="28">
                 <Canvas>
@@ -100,7 +100,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Game}"
+        <local:HamburgerButton Text="{DynamicResource Localization.Game}"
                                Canvas.Top="380" IconMargin="23, 0, 33, 0">
             <Canvas Width="29" Height="29">
                 <Canvas>
@@ -110,7 +110,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Uwp}"
+        <local:HamburgerButton Text="{DynamicResource Localization.Uwp}"
                                Canvas.Top="430" IconMargin="23, 0, 33, 0">
             <Canvas Width="28" Height="28">
                 <Canvas>
@@ -119,7 +119,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.OneDrive}"
+        <local:HamburgerButton Text="{DynamicResource Localization.OneDrive}"
                                Canvas.Top="480" IconMargin="23, 0, 34, 0">
             <Canvas Width="29" Height="19">
                 <Canvas>
@@ -128,7 +128,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.ImportExport}"
+        <local:HamburgerButton Text="{DynamicResource Localization.ImportExport}"
                                Canvas.Top="530" IconMargin="23, 0, 33, 0">
             <Canvas Width="31" Height="23">
                 <Canvas>
@@ -146,7 +146,7 @@
             </Canvas>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Hamburger.Button.Settings}"
+        <local:HamburgerButton Text="{DynamicResource Localization.Settings}"
                                Canvas.Top="580" IconMargin="23, 0, 33, 0"
 >
             <Canvas Width="26" Height="27">

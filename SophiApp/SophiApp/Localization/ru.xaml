@@ -2,16 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="Localization.AppTitle">SophiApp — тонкая настройка Windows 10 и автоматизация рутинных задач</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.Privacy">Конфиденциальность</system:String>    
-    <system:String x:Key="Localization.Hamburger.Button.Ui">Внешний вид</system:String>    
-    <system:String x:Key="Localization.Hamburger.Button.ContextMenu">Контекстное меню</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.StartMenu">Меню "Пуск"</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.System">Система</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.TaskSheduler">Планировщик задач</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.Security">Безопасность</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.Game">Игры</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.Uwp">UWP приложения</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.OneDrive">OneDrive</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.ImportExport">Импорт/Экспорт</system:String>
-    <system:String x:Key="Localization.Hamburger.Button.Settings">Настройки</system:String>
+    <system:String x:Key="Localization.Privacy">Конфиденциальность</system:String>    
+    <system:String x:Key="Localization.Ui">Внешний вид</system:String>    
+    <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
+    <system:String x:Key="Localization.StartMenu">Меню "Пуск"</system:String>
+    <system:String x:Key="Localization.System">Система</system:String>
+    <system:String x:Key="Localization.TaskSheduler">Планировщик задач</system:String>
+    <system:String x:Key="Localization.Security">Безопасность</system:String>
+    <system:String x:Key="Localization.Game">Игры</system:String>
+    <system:String x:Key="Localization.Uwp">UWP приложения</system:String>
+    <system:String x:Key="Localization.OneDrive">OneDrive</system:String>
+    <system:String x:Key="Localization.ImportExport">Импорт/Экспорт</system:String>
+    <system:String x:Key="Localization.Settings">Настройки</system:String>
+    <system:String x:Key="Localization.ApplyToAll">применить ко всем</system:String>
 </ResourceDictionary>

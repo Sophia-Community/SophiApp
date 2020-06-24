@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Name="hamburgerButton"
              Height="{StaticResource Control.Hamburger.Button.Height}"
-             FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"
+             FontFamily="pack://application:,,,/Fonts/#Montserrat"
              FontSize="{StaticResource Control.Hamburger.Button.FontSize}"
              FontStretch="Normal"
              FontWeight="Normal"

@@ -8,5 +8,6 @@
     <Color x:Key="Color.Hamburger.Background">#0a284b</Color>
     <Color x:Key="Color.Hamburger.Button.Background">Transparent</Color>
     <Color x:Key="Color.Hamburger.Button.Hover">#0b3363</Color>
+    <Color x:Key="Color.Panel.Privacy.Background">#0a284b</Color>
 
 </ResourceDictionary>

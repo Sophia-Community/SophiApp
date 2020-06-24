@@ -15,7 +15,10 @@
     <system:Double x:Key="Control.Hamburger.Button.Icon.Width">28</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.Height">50</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.FontSize">16</system:Double>    
-    <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>
+    <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
+    <system:Double x:Key="Control.Panel.Privacy.Header.FontSize">18</system:Double>
+    <GridLength x:Key="Control.Panel.Privacy.Header.Height">50</GridLength>
+    <system:Double x:Key="Control.Panel.Privacy.TextBlock.FontSize">12</system:Double>
     
     
 </ResourceDictionary>
