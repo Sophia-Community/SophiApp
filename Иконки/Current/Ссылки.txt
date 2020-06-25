@@ -5,7 +5,7 @@ System: https://materialdesignicons.com/icon/laptop-windows
 Start Menu: https://iconscout.com/icon/widget-1821338
 UWP Apps: Zeplin
 Gaming: Zeplin (https://materialdesignicons.com/icon/microsoft-xbox)
-Task Scheduler: https://materialdesignicons.com/icon/clock-outline
+Task Scheduler: https://materialdesignicons.com/icon/clock-time-three-outline
 Security: Zeplin
 Context Menu: https://iconscout.com/icon/menu-list-text-line-item-bullet-paragraph
 
