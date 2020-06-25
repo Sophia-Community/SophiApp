@@ -33,10 +33,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: technical_alpha_${{ steps.vars.outputs.sha_short }}
+        tag_name: version_${{ steps.vars.outputs.sha_short }}
         release_name: SophiApp
         draft: false
-        prerelease: true
+        prerelease: false
     
     - name: Update Release Asset
       id: upload-release-asset
