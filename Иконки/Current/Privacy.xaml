@@ -7,7 +7,7 @@
     </Canvas.RenderTransform>
     <Canvas.Resources/>
     <!--Unknown tag: sodipodi:namedview-->
-    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2" Fill="#FF010101">
+    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path19" Fill="#FF010101">
       <Path.Data>
         <PathGeometry Figures="M60.4 30.7h-3.9c-.5 0-1-.4-1-1v-9.2C55.5 9.9 47.3.9 36.7.5 25.6.1 16.4 9 16.4 20.1v9.7c0 .5-.4 1-1 1h-3.9c-1.5 0-2.7 1.2-2.7 2.7v35.4c0 1.5 1.2 2.7 2.7 2.7h48.8c1.5 0 2.7-1.2 2.7-2.7V33.4c.1-1.5-1.1-2.7-2.6-2.7zM22.5 20.1c0-7.7 6.4-13.9 14.2-13.5 7.3.4 12.9 6.6 12.9 13.9v9.3c0 .5-.4 1-1 1H23.4c-.5 0-1-.4-1-1v-9.7z" FillRule="NonZero"/>
       </Path.Data>

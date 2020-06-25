@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--This file is NOT compatible with Silverlight-->
 <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-  <Canvas Name="svg138" Width="31" Height="24">
+  <Canvas Name="svg62" Width="32" Height="32">
     <Canvas.RenderTransform>
       <TranslateTransform X="0" Y="0"/>
     </Canvas.RenderTransform>
     <Canvas.Resources/>
-    <!--Unknown tag: metadata-->
     <!--Unknown tag: sodipodi:namedview-->
-    <Canvas Name="g136">
-      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path134" Fill="#FFFFFFFF">
-        <Path.Data>
-          <PathGeometry Figures="M 6 7 H 28 V 9 H 6 Z M 0 7 H 2 V 9 H 0 Z m 6 7 h 25 v 2 H 6 Z m -6 0 h 2 v 2 H 0 Z M 6 0 H 31 V 2 H 6 Z M 0 0 H 2 V 2 H 0 Z m 6 21 h 20 v 2 H 6 Z m -6 0 h 2 v 2 H 0 Z" FillRule="NonZero"/>
-        </Path.Data>
-        <Path.RenderTransform>
-          <TranslateTransform X="0" Y="0.805"/>
-        </Path.RenderTransform>
-      </Path>
-    </Canvas>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="7" Canvas.Top="11" Width="20" Height="2" Name="rect44" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="2" Canvas.Top="11" Width="2" Height="2" Name="rect46" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="7" Canvas.Top="17" Width="23" Height="2" Name="rect48" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="2" Canvas.Top="17" Width="2" Height="2" Name="rect50" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="7" Canvas.Top="5" Width="23" Height="2" Name="rect52" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="2" Canvas.Top="5" Width="2" Height="2" Name="rect54" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="7" Canvas.Top="23" Width="18" Height="2" Name="rect56" Fill="#FF515151"/>
+    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="2" Canvas.Top="23" Width="2" Height="2" Name="rect58" Fill="#FF515151"/>
+    <!--Unknown tag: metadata-->
   </Canvas>
 </Viewbox>
