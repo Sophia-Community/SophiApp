@@ -9,7 +9,7 @@ namespace SophiApp.Managers
 {
     internal class ControlsManager
     {
-        internal static Point GetControlsRelativePoint(FrameworkElement childrenElement, FrameworkElement parentElement)
+        internal static Point GetParentRelativePoint(FrameworkElement childrenElement, FrameworkElement parentElement)
         {
             return childrenElement.TranslatePoint(new Point(0, 0), parentElement);
         }

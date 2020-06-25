@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -28,9 +29,11 @@ namespace SophiApp.Controls
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            AnimationsManager.ShowDoubleAnimationTo(storyboardName: "Animation.Hamburger.Marker.Move",
-                                                    animationTo: (ControlsManager.GetControlsRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: RootCanvas)).Y,
-                                                    animatedElement: HamburgerMarker);
+            AnimationsManager.ShowDoubleAnimation(storyboardName: "Animation.Hamburger.Marker.Move", 
+                                                  animatedElement: HamburgerMarker,
+                                                  animationProperty: DoubleAnimation.ToProperty,
+                                                  animationValue: (ControlsManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: RootCanvas)).Y,
+                                                  dispatcher: Dispatcher);
         }
     }
 }

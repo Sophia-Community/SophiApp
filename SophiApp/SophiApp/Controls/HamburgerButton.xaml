@@ -31,13 +31,6 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Stretch" Value="Uniform"/>
-        </Style>
-        <Style TargetType="Path">
-            <Setter Property="Fill">
-                <Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-                </Setter.Value>
-            </Setter>
         </Style>        
     </UserControl.Resources>
     <UserControl.Triggers>

@@ -137,6 +137,7 @@
   <ItemGroup>
     <Compile Include="Managers\AnimationsManager.cs" />
     <Compile Include="Managers\ControlsManager.cs" />
+    <Compile Include="Managers\GuiManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

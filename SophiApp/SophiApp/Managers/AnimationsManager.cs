@@ -11,12 +11,18 @@ namespace SophiApp.Managers
 {
     internal class AnimationsManager
     {
-        internal static void ShowDoubleAnimationTo(string storyboardName, double animationTo, FrameworkElement animatedElement)
+        internal static void ShowDoubleAnimation(string storyboardName, FrameworkElement animatedElement, DependencyProperty animationProperty, double animationValue, Dispatcher dispatcher)
         {
-            Storyboard storyboard = Application.Current.TryFindResource(storyboardName) as Storyboard;
-            DoubleAnimation animation = storyboard.Children.First() as DoubleAnimation;
-            animation.To = animationTo;
-            storyboard.Begin(animatedElement);
+            Task.Run(() => dispatcher.Invoke(() =>
+            {
+                Storyboard storyboard = Application.Current.TryFindResource(storyboardName) as Storyboard;
+                DoubleAnimation animation = storyboard.Children.First() as DoubleAnimation;
+                animation.SetValue(animationProperty, animationValue);
+                storyboard.Begin(animatedElement);
+            }));
+
         }
+
+        
     }
 }
