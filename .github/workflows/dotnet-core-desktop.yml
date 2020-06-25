@@ -2,6 +2,8 @@ name: Build and Release
 
 on:
   push:
+    tags: 
+      - "v*"
     branches:
       - master
 
