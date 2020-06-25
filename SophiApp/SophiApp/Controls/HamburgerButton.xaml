@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Name="hamburgerButton"
              Height="{StaticResource Control.Hamburger.Button.Height}"
+             Width="{Binding ElementName=ContentCanvas, Path=ActualWidth}"
              FontFamily="pack://application:,,,/Fonts/#Montserrat"
              FontSize="{StaticResource Control.Hamburger.Button.FontSize}"
              FontStretch="Normal"
@@ -52,8 +53,11 @@
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+            <BeginStoryboard Storyboard="{StaticResource Animation.HamburgerButton.Click}"/>
+        </EventTrigger>
     </UserControl.Triggers>
-    <StackPanel>
+    <StackPanel Name="ContentPanel">
         <Viewbox Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=IconMargin}">
             <ContentPresenter Content="{Binding InnerContent, ElementName=hamburgerButton}"/>
         </Viewbox>

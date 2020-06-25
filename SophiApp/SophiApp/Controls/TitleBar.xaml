@@ -79,7 +79,7 @@
         </Viewbox>
         </Grid>        
         <Grid x:Name="TitleBarButtonMinimize"
-              Margin="0, 0, 30, 0"
+              Margin="0, 0, 45, 0"
               Style="{StaticResource Grid.Title.Button}"              
               MouseLeftButtonDown="TitleBarButtonMinimize_MouseLeftButtonDown">
             <Grid.Background>                

@@ -4,10 +4,15 @@
     <Storyboard x:Key="Animation.Hamburger.Marker.Move">
         <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)"                         
                          To="{DynamicResource Control.Hamburger.Button.Height}"
-                         Duration="0:0:0.3">
-            <DoubleAnimation.EasingFunction>
-                <BackEase EasingMode="EaseIn" Amplitude="0.3"/>
-            </DoubleAnimation.EasingFunction>
-        </DoubleAnimation>
-    </Storyboard>    
+                         Duration="0:0:0.1"/>
+    </Storyboard>
+    <Storyboard x:Key="Animation.HamburgerButton.Click">
+        <ThicknessAnimation Storyboard.TargetName="ContentPanel" 
+                            Storyboard.TargetProperty="Margin" 
+                            Duration="0:0:0.3" 
+                            From="0 0 0 0" 
+                            To="0 10 0 0" 
+                            SpeedRatio="3" 
+                            AutoReverse="True"/>
+    </Storyboard>
 </ResourceDictionary>

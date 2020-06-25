@@ -9,8 +9,7 @@
              local:HamburgerButton.Click="HamburgerButton_Click">
     
     <UserControl.Resources>
-        <Style TargetType="local:HamburgerButton">
-            <Setter Property="Width" Value="{Binding ElementName=RootCanvas, Path=ActualWidth}"/>
+        <Style TargetType="local:HamburgerButton">            
             <Setter Property="Canvas.Left" Value="0"/>            
         </Style>
         <Style x:Key="Hamburger.Marker.Style" TargetType="Border">
@@ -39,13 +38,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>
-    
+    </UserControl.Resources>    
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.Hamburger.Background}" Opacity="0.7"/>
     </UserControl.Background>
 
-    <Canvas Name="RootCanvas">
+    <Canvas Name="ContentCanvas">
         <Border x:Name="HamburgerMarker" Style="{StaticResource Hamburger.Marker.Style}"/>        
 
         <local:HamburgerButton Text="{DynamicResource Localization.Privacy}"
@@ -248,14 +246,17 @@
         </local:HamburgerButton>
 
         <local:HamburgerButton Text="{DynamicResource Localization.Settings}"
-                               Canvas.Top="580" IconMargin="23, 0, 33, 0"
->
-            <Canvas Width="26" Height="27">
-                <Canvas>
-                    <Path Data="{StaticResource Hamburger.Button.Icon.Settings1}"/>
-                    <Path Data="{StaticResource Hamburger.Button.Icon.Settings2}"/>
+                               Canvas.Top="580" IconMargin="23, 0, 33, 0">
+            <Viewbox Width="{StaticResource Control.Hamburger.Button.IconSize}" 
+                     Height="{StaticResource Control.Hamburger.Button.IconSize}" 
+                     Stretch="Uniform">
+                <Canvas Width="26" Height="27">
+                    <Canvas>
+                        <Path Data="{StaticResource Hamburger.Button.Icon.Settings1}"/>
+                        <Path Data="{StaticResource Hamburger.Button.Icon.Settings2}"/>
+                    </Canvas>
                 </Canvas>
-            </Canvas>
+            </Viewbox>
         </local:HamburgerButton>
     </Canvas>
     

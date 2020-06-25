@@ -32,7 +32,7 @@ namespace SophiApp.Controls
             AnimationsManager.ShowDoubleAnimation(storyboardName: "Animation.Hamburger.Marker.Move", 
                                                   animatedElement: HamburgerMarker,
                                                   animationProperty: DoubleAnimation.ToProperty,
-                                                  animationValue: (ControlsManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: RootCanvas)).Y,
+                                                  animationValue: ControlsManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: ContentCanvas).Y,
                                                   dispatcher: Dispatcher);
         }
     }
