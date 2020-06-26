@@ -1,15 +1,15 @@
-Privacy: https://iconscout.com/icon/lock-1757
+Privacy: https://iconscout.com/icon/lock-1993099
 UI: https://iconscout.com/icon/theme-12
-Context Menu: https://iconscout.com/icon/menu-list-text-line-item-bullet-paragraph
+Context Menu: https://iconscout.com/icon/menu-2102140
 Start Menu: https://iconscout.com/icon/widget-1821338
-System: https://materialdesignicons.com/icon/laptop-windows
+System: https://iconscout.com/icon/laptop-983
 Task Scheduler: https://iconscout.com/icon/clock-758
-Security: Zeplin
-Gaming: Zeplin (https://materialdesignicons.com/icon/microsoft-xbox)
-UWP Apps: Zeplin
+Security: https://iconscout.com/icon/shield-677
+Gaming: https://iconscout.com/icon/xbox-47
+UWP Apps: https://iconscout.com/icon/menu-1786900
 OneDrive: https://materialdesignicons.com/icon/microsoft-onedrive
 
-Импорт: Zeplin
+Импорт: https://iconscout.com/icon/import-and-export-2147566
 
 Настройки: https://iconscout.com/icon/settings-620
 Github: Zeplin
