@@ -224,23 +224,12 @@
             <Viewbox Width="{StaticResource Control.Hamburger.Button.IconSize}" 
                      Height="{StaticResource Control.Hamburger.Button.IconSize}" 
                      Stretch="Uniform">
-                <Canvas Width="31" Height="23">
+                <Canvas Width="32" Height="32">
                     <Canvas.RenderTransform>
                         <TranslateTransform X="0" Y="0"/>
                     </Canvas.RenderTransform>
-                    <Canvas.Resources/>                    
-                    <Canvas>
-                        <Path Data="{StaticResource Icon.Hamburger.Button.ImportExport1}">                            
-                            <Path.RenderTransform>
-                                <RotateTransform Angle="90"/>
-                            </Path.RenderTransform>
-                        </Path>
-                        <Path Data="{StaticResource Icon.Hamburger.Button.ImportExport2}">                            
-                            <Path.RenderTransform>
-                                <RotateTransform Angle="90"/>
-                            </Path.RenderTransform>
-                        </Path>
-                    </Canvas>
+                    <Canvas.Resources/>
+                    <Path Data="{StaticResource Icon.Hamburger.Button.ImportExport}"/>
                 </Canvas>
             </Viewbox>
         </local:HamburgerButton>
@@ -252,8 +241,8 @@
                      Stretch="Uniform">
                 <Canvas Width="26" Height="27">
                     <Canvas>
-                        <Path Data="{StaticResource Hamburger.Button.Icon.Settings1}"/>
-                        <Path Data="{StaticResource Hamburger.Button.Icon.Settings2}"/>
+                        <Path Data="{StaticResource Icon.Hamburger.Button.Settings1}"/>
+                        <Path Data="{StaticResource Icon.Hamburger.Button.Settings2}"/>
                     </Canvas>
                 </Canvas>
             </Viewbox>
