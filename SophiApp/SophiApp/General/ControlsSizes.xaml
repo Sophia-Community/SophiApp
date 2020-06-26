@@ -19,7 +19,12 @@
     <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
     <system:Double x:Key="Control.Panel.Privacy.Header.FontSize">18</system:Double>
     <GridLength x:Key="Control.Panel.Privacy.Header.Height">50</GridLength>
-    <system:Double x:Key="Control.Panel.Privacy.TextBlock.FontSize">12</system:Double>
+    <system:Double x:Key="Control.Panel.Privacy.TextBlock.FontSize">14</system:Double>
+    <system:Double x:Key="Control.Switch.Height">33</system:Double>
+    <system:Double x:Key="Control.Switch.Width">60</system:Double>
+    <system:Double x:Key="Control.Switch.Ellipse.Size">25</system:Double>
+    <Thickness x:Key="Control.Switch.Ellipse.State.Left">4, 0, 0, 0</Thickness>
+    <Thickness x:Key="Control.Switch.Ellipse.State.Right">27, 0, 0, 0</Thickness>
     
     
 </ResourceDictionary>

@@ -21,7 +21,7 @@
         </Style>
     </UserControl.Resources>
     <Grid Name="ContainerGrid">
-        <Grid Name="ContentGrid" Margin="20, 30, 20, 30">
+        <Grid Margin="20, 30, 20, 30">
             <Grid.RowDefinitions>
                 <RowDefinition Height="{StaticResource Control.Panel.Privacy.Header.Height}"/>
                 <RowDefinition Height="*"/>
@@ -29,11 +29,16 @@
             <TextBlock Grid.Row="0"
                        HorizontalAlignment="Left"
                        FontSize="{StaticResource Control.Panel.Privacy.Header.FontSize}"
-                       Text="{DynamicResource Localization.Privacy}"/>
-            <TextBlock Grid.Row="0"
-                       HorizontalAlignment="Right"
+                       Text="{DynamicResource Localization.Privacy}"
+                       Margin="0, 0, 20, 0"/>            
+            <TextBlock Grid.Row="0"                       
                        FontSize="{StaticResource Control.Panel.Privacy.TextBlock.FontSize}"
-                       Text="{DynamicResource Localization.ApplyToAll}"/>
+                       Text="{DynamicResource Localization.ApplyToAll}"
+                       HorizontalAlignment="Right"
+                       Margin="0, 0, 101, 0"/>
+            <local:Switch Grid.Row="0"
+                          HorizontalAlignment="Right"
+                          Margin="0, 0, 21, 0"/>            
         </Grid>            
     </Grid>
 </UserControl>

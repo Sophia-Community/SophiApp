@@ -14,4 +14,9 @@
                             SpeedRatio="3" 
                             AutoReverse="True"/>
     </Storyboard>
+    <Storyboard x:Key="Animation.Switch.Click">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin"                                                         
+                            To="{DynamicResource Control.Switch.Ellipse.State.Left}" 
+                            Duration="0:0:0.1"/>        
+    </Storyboard>    
 </ResourceDictionary>
