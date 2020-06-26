@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#515151;}</style></defs><title>Simple Fast Icons EXT</title><rect x="7" y="11" width="20" height="2" style="fill: #515151;"/><rect x="2" y="11" width="2" height="2" style="fill: #515151;"/><rect x="7" y="17" width="23" height="2" style="fill: #515151;"/><rect x="2" y="17" width="2" height="2" style="fill: #515151;"/><rect x="7" y="5" width="23" height="2" style="fill: #515151;"/><rect x="2" y="5" width="2" height="2" style="fill: #515151;"/><rect x="7" y="23" width="18" height="2" style="fill: #515151;"/><rect x="2" y="23" width="2" height="2" style="fill: #515151;"/>
-	
-	<metadata>
-		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-			<rdf:Description about="https://iconscout.com/legal#licenses" dc:title="Menu, List, Text, Line, Item, Bullet, Paragraph" dc:description="Menu, List, Text, Line, Item, Bullet, Paragraph" dc:publisher="Iconscout" dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
-				<dc:creator>
-					<rdf:Bag>
-						<rdf:li>Kirill Kazachek</rdf:li>
-					</rdf:Bag>
-				</dc:creator>
-			</rdf:Description>
-		</rdf:RDF>
-    </metadata></svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 1024 1024" viewBox="0 0 1024 1024"><rect width="768" height="60" x="128" y="220"/><rect width="568" height="60" x="128" y="481"/><rect width="768" height="60" x="128" y="743"/></svg>
