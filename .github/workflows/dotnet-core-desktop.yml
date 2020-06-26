@@ -1,14 +1,15 @@
 name: Build and Release
 
 on:
-  watch:
-    types: [started]
+  push:
+    tags: 
+      - "v*"
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: windows-latest
-
-    if: github.actor == github.event.repository.owner.login
 
     steps:
     - uses: actions/checkout@v1
