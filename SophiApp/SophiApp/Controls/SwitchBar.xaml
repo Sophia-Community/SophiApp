@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="SophiApp.Controls.SwitchBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
+             mc:Ignorable="d"
+             Width="{StaticResource Control.SwitchBar.Width}"
+             MinHeight="{StaticResource Control.SwitchBar.MinHeight}"             
+             FontSize="{StaticResource Control.SwitchBar.Text.FontSize}"
+             FontStretch="Normal"
+             FontWeight="Normal"
+             FontStyle="Normal">
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=DescriptionTextBlock, Path=Text.Length}" Value=">0">
+                    
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    <UserControl.Background>
+        <SolidColorBrush Color="{DynamicResource Color.SwitchBar.Background}"/>
+    </UserControl.Background>
+    <UserControl.Foreground>
+        <SolidColorBrush Color="{DynamicResource Color.SwitchBar.Foreground}"/>
+    </UserControl.Foreground>
+    <UserControl.Resources>        
+        <Style x:Key="Header.Text.Block" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Montserrat"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0, 0, 0, 0"/>
+            <Setter Property="Width" Value="{StaticResource Control.SwitchBar.Text.Header.Width}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="Description.Text.Block" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Montserrat Medium"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0, 10, 0, 0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="local:Switch">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20, 0, 0, 0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Center" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="HeaderTextBlock"
+                       Style="{StaticResource Header.Text.Block}"
+                       Text="{x:Null}"/>
+        
+        <local:Switch x:Name="Switch"
+                          Grid.Row="0"/>
+
+        <TextBlock Name="DescriptionTextBlock"
+                   Grid.Row="1"
+                   Style="{StaticResource Description.Text.Block}"
+                   Text="{x:Null}"/>
+
+    </Grid>
+</UserControl>

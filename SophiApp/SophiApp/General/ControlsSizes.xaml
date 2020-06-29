@@ -9,8 +9,7 @@
     <system:Double x:Key="Control.MainWindow.TitleButton.Height">30</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Width">18</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Height">18</system:Double>
-    <system:Double x:Key="Control.Hamburger.Width">330</system:Double>
-    <GridLength x:Key="Control.Grid.Hamburger.Width">330</GridLength>
+    <system:Double x:Key="Control.Hamburger.Width">310</system:Double>    
     <system:Double x:Key="Control.Hamburger.Button.Icon.Height">32</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.Icon.Width">32</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.IconSize">128</system:Double>    
@@ -25,6 +24,10 @@
     <system:Double x:Key="Control.Switch.Ellipse.Size">25</system:Double>
     <Thickness x:Key="Control.Switch.Ellipse.State.Left">4, 0, 0, 0</Thickness>
     <Thickness x:Key="Control.Switch.Ellipse.State.Right">27, 0, 0, 0</Thickness>
-    
-    
+    <system:Double x:Key="Control.SwitchBar.Width">500</system:Double>
+    <system:Double x:Key="Control.SwitchBar.MinHeight">73</system:Double>
+    <system:Double x:Key="Control.SwitchBar.Text.FontSize">14</system:Double>
+    <system:Double x:Key="Control.SwitchBar.Text.Header.Width">380</system:Double>
+
+
 </ResourceDictionary>

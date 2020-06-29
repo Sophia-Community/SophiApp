@@ -9,7 +9,7 @@ using System.Windows.Interop;
 
 namespace SophiApp.Managers
 {
-    class GuiManager
+    internal class GuiManager
     {
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);

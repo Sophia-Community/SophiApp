@@ -13,4 +13,6 @@
     <Color x:Key="Color.Switch.Background">#ffffff</Color>
     <Color x:Key="Color.Switch.Ellipse.Checked">#0b3363</Color>
     <Color x:Key="Color.Switch.Ellipse.Unchecked">#c6c6c6</Color>
+    <Color x:Key="Color.SwitchBar.Background">#0b3363</Color>
+    <Color x:Key="Color.SwitchBar.Foreground">#ffffff</Color>
 </ResourceDictionary>

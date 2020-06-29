@@ -8,7 +8,7 @@
              FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"             
              FontStretch="Normal"
              FontStyle="Normal"
-             FontWeight="Normal">
+             FontWeight="SemiBold">
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>
