@@ -41,5 +41,12 @@ namespace SophiApp.Controls
             if (e.LeftButton == MouseButtonState.Pressed)
                 Application.Current.MainWindow.DragMove();
         }
+
+        private void TitleBar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = Application.Current.MainWindow.WindowState == WindowState.Normal 
+                                                                                                     ? WindowState.Maximized 
+                                                                                                     : WindowState.Normal;
+        }
     }
 }

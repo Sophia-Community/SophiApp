@@ -32,7 +32,6 @@ namespace SophiApp.Controls
                                                      animationValue: IsChecked == false ? (Thickness)TryFindResource("Control.Switch.Ellipse.State.Right") : (Thickness)TryFindResource("Control.Switch.Ellipse.State.Left"));
                                                      
             SwitchEllipse.Fill = IsChecked == false ? checkedBrush : uncheckedBrush;
-
             IsChecked = IsChecked == true ? false : true;
         }
 

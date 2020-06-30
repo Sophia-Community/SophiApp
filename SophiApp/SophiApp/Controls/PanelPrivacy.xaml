@@ -16,29 +16,62 @@
         <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>
     </UserControl.Background>
     <UserControl.Resources>
-        <Style TargetType="TextBlock">            
-            <Setter Property="VerticalAlignment" Value="Center"/>            
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
-    <Grid Name="ContainerGrid">
-        <Grid Margin="20, 30, 20, 30">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="{StaticResource Control.Panel.Privacy.Header.Height}"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
                        HorizontalAlignment="Left"
                        FontSize="{StaticResource Control.Panel.Privacy.Header.FontSize}"
                        Text="{DynamicResource Localization.Privacy}"
-                       Margin="0, 0, 20, 0"/>            
-            <TextBlock Grid.Row="0"                       
+                       Margin="20, 30, 20, 30"/>
+        <TextBlock Grid.Row="0"                       
                        FontSize="{StaticResource Control.Panel.Privacy.TextBlock.FontSize}"
                        Text="{DynamicResource Localization.ApplyToAll}"
                        HorizontalAlignment="Right"
-                       Margin="0, 0, 101, 0"/>
-            <local:Switch Grid.Row="0"
+                       Margin="0, 0, 150, 0"/>
+        <local:Switch Grid.Row="0"
                           HorizontalAlignment="Right"
-                          Margin="0, 0, 21, 0"/>            
-        </Grid>            
+                          Margin="0, 0, 68, 0"/>
+        <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Name="OddPanel"
+                            Grid.Column="1">
+                    <local:SwitchBar Header="Остановить сеансы отслеживания событий"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Обратная связь и диагностика"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>
+                    <local:SwitchBar Header="Остановить сеансы отслеживания событий"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Обратная связь и диагностика"/>
+
+                </StackPanel>
+                <StackPanel Name="EvenPanel"
+                            Grid.Column="3">
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>
+                    <local:SwitchBar Header="Остановить сеансы отслеживания событий"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Обратная связь и диагностика"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d"
              Height="{StaticResource Control.Switch.Height}"
-             Width="{StaticResource Control.Switch.Width}"
-             Background="Transparent"
+             Width="{StaticResource Control.Switch.Width}"             
              MouseLeftButtonDown="Switch_MouseLeftButtonDown">
     <UserControl.Resources>
         <Style TargetType="Border">

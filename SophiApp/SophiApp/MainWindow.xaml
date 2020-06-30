@@ -50,7 +50,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <AppControls:Hamburger Grid.Column="0"/>
-                <AppControls:PanelPrivacy Grid.Column="1"/>
+                <AppControls:PanelPrivacy Grid.Column="1"/>               
+                
             </Grid>
         </Grid>
     </Border>    

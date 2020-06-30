@@ -9,7 +9,8 @@
              FontStretch="Normal"
              FontWeight="Normal"
              FontStyle="Normal"
-             MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+             MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"
+             MouseDoubleClick="TitleBar_MouseDoubleClick">
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.Window.TitleBar.Background}"/>
     </UserControl.Background>
