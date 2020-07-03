@@ -1,3 +1,4 @@
-Эффект размытия фона окна
-https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs
+Эффект размытия фона окна - https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs
+Кастомный scrollviewer - http://codesdirectory.blogspot.com/2013/01/wpf-scrollviewer-control-style.html
+
 

@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="SophiAppCE.Controls.HamburgerButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             x:Name="hamburgerButton"
+             Height="{StaticResource Control.Hamburger.Button.Height}"
+             Width="{Binding ElementName=ContentCanvas, Path=ActualWidth}"
+             FontFamily="pack://application:,,,/Fonts/#Montserrat"
+             FontSize="{StaticResource Control.Hamburger.Button.FontSize}"
+             FontStretch="Normal"
+             FontWeight="Normal"
+             FontStyle="Normal"
+             MouseLeftButtonDown="HamburgerButton_MouseLeftButtonDown">
+    <UserControl.Background>
+        <SolidColorBrush Color="{DynamicResource Color.Hamburger.Button.Background}"/>
+    </UserControl.Background>
+    <UserControl.Resources>        
+        <Style TargetType="TextBlock">            
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextMargin}"/>                        
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>            
+        </Style>
+        <Style TargetType="Viewbox">
+            <Setter Property="Width" Value="{StaticResource Control.Hamburger.Button.Icon.Width}"/>
+            <Setter Property="Height" Value="{StaticResource Control.Hamburger.Button.Icon.Height}"/>
+            <Setter Property="Margin" Value="25, 0, 35, 0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Stretch" Value="Uniform"/>
+        </Style>        
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetProperty="Background.(Color)"
+                                    Duration="0:0:0"
+                                    To="{DynamicResource Color.Hamburger.Button.Hover}"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetProperty="Background.(Color)"
+                                    Duration="0:0:0"
+                                    To="{DynamicResource Color.Hamburger.Button.Background}"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+            <BeginStoryboard Storyboard="{StaticResource Animation.HamburgerButton.Click}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <StackPanel Name="ContentPanel">
+        <Viewbox Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=IconMargin}">
+            <ContentPresenter Content="{Binding InnerContent, ElementName=hamburgerButton}"/>
+        </Viewbox>
+        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Text}"/>
+    </StackPanel>
+</UserControl>

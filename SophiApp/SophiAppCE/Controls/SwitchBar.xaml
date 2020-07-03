@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="SophiAppCE.Controls.SwitchBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             mc:Ignorable="d"
+             Name="SwitchBarControl"
+             Width="{StaticResource Control.SwitchBar.Width}"
+             MinHeight="{StaticResource Control.SwitchBar.MinHeight}"             
+             FontSize="{StaticResource Control.SwitchBar.Text.FontSize}"
+             FontStretch="Normal"
+             FontWeight="Normal"
+             FontStyle="Normal"
+             Margin="0, 0, 0, 20">
+    <UserControl.Background>
+        <SolidColorBrush Color="{DynamicResource Color.SwitchBar.Background}"/>
+    </UserControl.Background>
+    <UserControl.Foreground>
+        <SolidColorBrush Color="{DynamicResource Color.SwitchBar.Foreground}"/>
+    </UserControl.Foreground>
+    <UserControl.Resources>
+        <converters:TextToVisibilityConverter x:Key="TextToVisibilityConverter"/>
+        <Style x:Key="Header.TextBlock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Montserrat"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Width" Value="{StaticResource Control.SwitchBar.Text.Header.Width}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Description.TextBlock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Montserrat Medium"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="{StaticResource Control.SwitchBar.Text.Description.Width}"/>
+        </Style>
+        <Style TargetType="local:Switch">            
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20, 0, 0, 0"/>
+        </Style>
+        <Style x:Key="Header.Panel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Grid.Row" Value="0"/>
+        </Style>
+        <Style x:Key="Description.Panel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="20, 0, 20, 20"/>
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Description, Converter={StaticResource TextToVisibilityConverter}}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Style="{StaticResource Header.Panel}">
+            <TextBlock Style="{StaticResource Header.TextBlock}"
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
+
+            <local:Switch x:Name="Switch"/>
+        </StackPanel>
+        <StackPanel Style="{StaticResource Description.Panel}">
+            <TextBlock Name="TextBlockDescription"                       
+                       Style="{StaticResource Description.TextBlock}"
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Description}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
