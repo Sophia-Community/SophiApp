@@ -2,3 +2,4 @@
 Кастомный scrollviewer - http://codesdirectory.blogspot.com/2013/01/wpf-scrollviewer-control-style.html
 
 
+Когда-нибудь добавить кнопку для открытия скрипта, который запускается по нажатию на тумблер
