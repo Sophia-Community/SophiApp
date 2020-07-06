@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              mc:Ignorable="d"             
              Width="{StaticResource Control.Hamburger.Width}"
-             local:HamburgerButton.Click="HamburgerButton_Click">
-    
+             local:HamburgerButton.Click="HamburgerButton_Click">    
     <UserControl.Resources>
         <Style TargetType="local:HamburgerButton">            
             <Setter Property="Canvas.Left" Value="0"/>            
@@ -228,17 +227,18 @@
             </Viewbox>
         </local:HamburgerButton>
 
-        <local:HamburgerButton Text="{DynamicResource Localization.Settings}"
-                               Canvas.Top="580" IconMargin="23, 0, 23, 0">
+        <local:HamburgerButton Text="{DynamicResource Localization.Apply}"
+                               Canvas.Top="580" IconMargin="23, 0, 23, 0"
+                               IsEnabled="False">
             <Viewbox Width="{StaticResource Control.Hamburger.Button.IconSize}" 
                      Height="{StaticResource Control.Hamburger.Button.IconSize}" 
                      Stretch="Uniform">
-                <Canvas Canvas.Left="0" Canvas.Top="0" Width="16" Height="16">
+                <Canvas Width="24" Height="24">
                     <Canvas.RenderTransform>
                         <TranslateTransform X="0" Y="0"/>
                     </Canvas.RenderTransform>
                     <Canvas.Resources/>
-                    <Path Data="{StaticResource Icon.Hamburger.Button.Settings}"/>
+                    <Path Data="{StaticResource Icon.Hamburger.Button.Apply}"/>
                 </Canvas>
             </Viewbox>
         </local:HamburgerButton>

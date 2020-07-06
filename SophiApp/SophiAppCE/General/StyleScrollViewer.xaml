@@ -142,8 +142,8 @@
     </ControlTemplate>
     <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Style.Triggers>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Style.Triggers>            
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto"/>
                 <Setter Property="Height" Value="18" />

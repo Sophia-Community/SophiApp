@@ -49,6 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -81,7 +82,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\PanelPrivacy.xaml">
+    <Page Include="Controls\ContentPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,8 +132,8 @@
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PanelPrivacy.xaml.cs">
-      <DependentUpon>PanelPrivacy.xaml</DependentUpon>
+    <Compile Include="Controls\ContentPanel.xaml.cs">
+      <DependentUpon>ContentPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
@@ -175,6 +176,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <Resource Include="Resources\Settings.json" />
     <Resource Include="Fonts\Montserrat-Black.ttf" />
     <Resource Include="Fonts\Montserrat-BlackItalic.ttf" />
     <Resource Include="Fonts\Montserrat-Bold.ttf" />

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="SophiAppCE.Controls.ContentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             mc:Ignorable="d"
+             FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"             
+             FontStretch="Normal"
+             FontStyle="Normal"
+             FontWeight="SemiBold">
+    <UserControl.Foreground>
+        <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
+    </UserControl.Foreground>
+    <UserControl.Background>
+        <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>
+    </UserControl.Background>
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="{StaticResource Control.ContentPanel.Header.FontSize}"/>
+            <Setter Property="Margin" Value="20, 30, 20, 30"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=HeaderText}"/>
+        
+        <ScrollViewer Grid.Row="1" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Name="OddPanel" Grid.Column="1"/>
+                <StackPanel Name="EvenPanel" Grid.Column="3"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

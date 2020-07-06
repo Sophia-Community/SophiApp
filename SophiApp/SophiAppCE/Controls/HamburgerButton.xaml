@@ -20,7 +20,7 @@
         <Style TargetType="TextBlock">            
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextMargin}"/>                        
+            <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextMargin}"/>            
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>            
