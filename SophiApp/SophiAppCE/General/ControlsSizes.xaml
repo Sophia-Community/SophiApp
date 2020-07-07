@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">    
     <system:Double x:Key="Control.MainWindow.MinHeight">690</system:Double>
-    <system:Double x:Key="Control.MainWindow.MinMaxWidth">1430</system:Double>
+    <system:Double x:Key="Control.MainWindow.MinMaxWidth">1380</system:Double>
     <GridLength x:Key="Control.MainWindow.Title.Height">30</GridLength>
     <system:Double x:Key="Control.MainWindow.Title.FontSize">14</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleButton.Width">45</system:Double>
@@ -17,6 +17,7 @@
     <system:Double x:Key="Control.Hamburger.Button.FontSize">16</system:Double>    
     <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
     <system:Double x:Key="Control.ContentPanel.Header.FontSize">18</system:Double>
+    <system:Double x:Key="Control.ContentPanel.Header.SelectAll.FontSize">16</system:Double>
     <GridLength x:Key="Control.ContentPanelPanel.Header.Height">50</GridLength>    
     <system:Double x:Key="Control.Switch.Height">33</system:Double>
     <system:Double x:Key="Control.Switch.Width">60</system:Double>
@@ -28,6 +29,4 @@
     <system:Double x:Key="Control.SwitchBar.Text.FontSize">14</system:Double>
     <system:Double x:Key="Control.SwitchBar.Text.Header.Width">380</system:Double>
     <system:Double x:Key="Control.SwitchBar.Text.Description.Width">460</system:Double>
-
-
 </ResourceDictionary>

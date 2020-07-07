@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
              mc:Ignorable="d"
              FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"             
              FontStretch="Normal"
@@ -13,37 +14,81 @@
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>
     <UserControl.Background>
-        <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>
+        <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>        
     </UserControl.Background>
     <UserControl.Resources>
+        <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Grid.Row" Value="0"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="FontSize" Value="{StaticResource Control.ContentPanel.Header.FontSize}"/>
-            <Setter Property="Margin" Value="20, 30, 20, 30"/>
+            <Setter Property="Grid.Column" Value="1"/>            
+        </Style>
+        <Style TargetType="local:Switch">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0, 0, 20, 0"/>
         </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=HeaderText}"/>
         
-        <ScrollViewer Grid.Row="1" 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="28"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock HorizontalAlignment="Left"
+                       FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
+            
+            <local:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+            
+            <TextBlock HorizontalAlignment="Right"
+                       FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"
+                       Text="{DynamicResource Localization.SelectAll}"
+                       Margin="0, 0, 100, 0"
+                       Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+        </Grid>
+        
+        <ScrollViewer Name="ScrollViewer"
+                      Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Name="OddPanel" Grid.Column="1"/>
-                <StackPanel Name="EvenPanel" Grid.Column="3"/>
+                
+                <StackPanel Name="EvenPanel" Grid.Column="1">
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>
+                    <local:SwitchBar Header="Остановить сеансы отслеживания событий"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Обратная связь и диагностика"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>
+                </StackPanel>
+
+                <StackPanel Name="OddPanel" Grid.Column="3">
+                    <local:SwitchBar Header="Остановить сеансы отслеживания событий"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Обратная связь и диагностика"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>
+                    <local:SwitchBar Header="Остановить сеансы отслеживания событий"/>
+                    <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                     Description="Обратная связь и диагностика"/>
+                </StackPanel>
             </Grid>
         </ScrollViewer>
     </Grid>

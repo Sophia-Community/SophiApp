@@ -26,14 +26,14 @@ namespace SophiAppCE.Controls
         }
 
 
-        public string HeaderText
+        public string Header
         {
-            get { return (string)GetValue(HeaderTextProperty); }
-            set { SetValue(HeaderTextProperty, value); }
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for HeaderText.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderTextProperty =
-            DependencyProperty.Register("HeaderText", typeof(string), typeof(ContentPanel));
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("HeaderText", typeof(string), typeof(ContentPanel));        
     }
 }
