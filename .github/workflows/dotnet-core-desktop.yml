@@ -15,10 +15,10 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Build App
-      run: msbuild.exe SophiApp/SophiApp.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiApp"
+      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE"
     
     - name: Create Archive
-      run: Compress-Archive -Path "SophiApp\SophiApp\bin\Release\*.exe" -DestinationPath "SophiApp\SophiApp\bin\Release\SophiApp.zip"
+      run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\Release\*.exe" -DestinationPath "SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip"
     
     - name: Set Variables
       id: vars
@@ -31,7 +31,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: version_${{ steps.vars.outputs.sha_short }}
-        release_name: SophiApp
+        release_name: SophiAppCE
         draft: false
         prerelease: false
     
@@ -42,7 +42,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: 'SophiApp\SophiApp\bin\Release\SophiApp.zip'
-        asset_name: 'SophiApp.zip'
+        asset_path: 'SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip'
+        asset_name: 'SophiAppCE.zip'
         asset_content_type: application/zip
-        asset_label: 'SophiApp.zip'
+        asset_label: 'SophiAppCE.zip'
