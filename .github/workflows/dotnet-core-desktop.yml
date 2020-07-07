@@ -22,7 +22,7 @@ jobs:
     
     - name: Set Variables
       id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      run: echo "::set-output name=sha_short::$((New-Guid).Guid)"
      
     - name: Create Release
       id: create_release
