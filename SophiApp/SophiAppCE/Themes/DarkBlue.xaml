@@ -15,5 +15,5 @@
     <Color x:Key="Color.Switch.Ellipse.Unchecked">#c6c6c6</Color>
     <Color x:Key="Color.SwitchBar.Background">#0b3363</Color>
     <Color x:Key="Color.SwitchBar.Foreground">#ffffff</Color>
-    <Color x:Key="Color.ScrollViewer.Thumb.Background">#0b3363</Color>
+    <Color x:Key="Color.ScrollViewer.Thumb.Background">#ffffff</Color>
 </ResourceDictionary>

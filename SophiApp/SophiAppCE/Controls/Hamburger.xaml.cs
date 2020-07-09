@@ -29,9 +29,7 @@ namespace SophiAppCE.Controls
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            AnimationsManager.ShowDoubleAnimation(storyboardName: "Animation.Hamburger.Marker.Move",
-                                                  animatedElement: HamburgerMarker,
-                                                  animationValue: ControlsManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: ContentCanvas).Y);
+            Canvas.SetTop(HamburgerMarker, ControlsManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: ContentCanvas).Y);            
         }
     }
 }

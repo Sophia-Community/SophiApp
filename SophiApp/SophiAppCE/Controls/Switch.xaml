@@ -2,11 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              Height="{StaticResource Control.Switch.Height}"
-             Width="{StaticResource Control.Switch.Width}"             
+             Width="{StaticResource Control.Switch.Width}"
              MouseLeftButtonDown="Switch_MouseLeftButtonDown">
     <UserControl.Resources>
         <Style TargetType="Border">

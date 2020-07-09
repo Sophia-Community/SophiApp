@@ -21,7 +21,7 @@ namespace SophiAppCE.Managers
             ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
             ACCENT_ENABLE_BLURBEHIND = 3,
             ACCENT_INVALID_STATE = 4
-        }
+        }        
 
         [StructLayout(LayoutKind.Sequential)]
         internal struct AccentPolicy

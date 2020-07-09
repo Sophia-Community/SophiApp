@@ -35,14 +35,19 @@ namespace SophiAppCE.Controls
             remove { RemoveHandler(ClickEvent, value); }
         }
 
-        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        internal void ChangeState()
         {
             AnimationsManager.ShowThicknessAnimation(storyboardName: "Animation.Switch.Click",
                                                      animatedElement: SwitchEllipse,
                                                      animationValue: IsChecked == false ? ellipseRight : ellipseLeft);
 
             SwitchEllipse.Fill = IsChecked == false ? checkedBrush : uncheckedBrush;
-            IsChecked = IsChecked == true ? false : true;
+            IsChecked = !IsChecked;            
+        }
+
+        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ChangeState();
             RaiseEvent(new RoutedEventArgs(ClickEvent, this));
         }
 

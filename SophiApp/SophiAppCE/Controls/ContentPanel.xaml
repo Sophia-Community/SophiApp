@@ -14,13 +14,13 @@
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>
     <UserControl.Background>
-        <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>        
+        <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>
     </UserControl.Background>
     <UserControl.Resources>
         <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Grid.Column" Value="1"/>            
+            <Setter Property="Grid.Column" Value="1"/>
         </Style>
         <Style TargetType="local:Switch">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -35,27 +35,28 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="28"/>
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock HorizontalAlignment="Left"
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
             
-            <local:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
-            
+            <local:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"
+                          Tag="{StaticResource Tag.SwitchApplyAll}"/>
+
             <TextBlock HorizontalAlignment="Right"
                        FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"
                        Text="{DynamicResource Localization.SelectAll}"
                        Margin="0, 0, 100, 0"
                        Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
         </Grid>
-        
+
         <ScrollViewer Name="ScrollViewer"
                       Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
@@ -68,7 +69,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <StackPanel Name="EvenPanel" Grid.Column="1">
                     <local:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
                                      Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>

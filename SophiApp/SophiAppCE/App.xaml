@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="pack://application:,,,/General/Animations.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/ControlsSizes.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/IconsPath.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/General/Tags.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/StyleScrollViewer.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Localization/RU.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue.xaml"/>                

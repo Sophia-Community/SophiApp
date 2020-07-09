@@ -13,7 +13,7 @@
              FontStretch="Normal"
              FontWeight="Normal"
              FontStyle="Normal"
-             Margin="0, 0, 0, 20">
+             Margin="0, 0, 20, 20">
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.SwitchBar.Background}"/>
     </UserControl.Background>

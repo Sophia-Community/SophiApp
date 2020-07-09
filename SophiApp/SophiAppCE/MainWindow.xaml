@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SophiAppCE"
-        xmlns:AppControls="clr-namespace:SophiAppCE.Controls"        
+        xmlns:ac="clr-namespace:SophiAppCE.Controls"        
         mc:Ignorable="d"        
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
@@ -20,7 +20,8 @@
         MinHeight="{StaticResource Control.MainWindow.MinHeight}" 
         MinWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
         MaxWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
-        Loaded="MainWindow_Loaded">
+        Loaded="MainWindow_Loaded"
+        ac:Switch.Click="Switch_Click">    
     <Window.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </Window.Foreground>    
@@ -43,17 +44,16 @@
                 <RowDefinition Height="{StaticResource Control.MainWindow.Title.Height}"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <AppControls:TitleBar Grid.Row="0"/>
+            <ac:TitleBar Grid.Row="0"/>
             <Grid Name="WindowContentGrid"                  
                   Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <AppControls:Hamburger Grid.Column="0"/>
-                <Grid Name="WindowPanelsGrid"
-                      Grid.Column="1">
-                    <AppControls:ContentPanel/>
+                <ac:Hamburger Grid.Column="0"/>
+                <Grid Name="WindowPanelsGrid" Grid.Column="1">
+                    <ac:ContentPanel Header="{DynamicResource Localization.Privacy}"/>
                 </Grid>
             </Grid>
         </Grid>
