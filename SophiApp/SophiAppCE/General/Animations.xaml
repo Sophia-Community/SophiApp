@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <Storyboard x:Key="Animation.HamburgerButton.Click">
         <ThicknessAnimation Storyboard.TargetName="ContentPanel" 
                             Storyboard.TargetProperty="Margin" 
@@ -15,4 +15,36 @@
                             To="{DynamicResource Control.Switch.Ellipse.State.Left}" 
                             Duration="0:0:0.2"/>
     </Storyboard>
+    <Storyboard x:Key="Animation.RoundIndicator.Ellipse1"
+                RepeatBehavior="Forever"
+                BeginTime="00:00:00">
+        <ColorAnimation Storyboard.TargetName="Ellipse1" 
+                        Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                        To="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation}"
+                        Duration="00:00:01"/>
+    </Storyboard>
+    <Storyboard x:Key="Animation.RoundIndicator.Ellipse2"
+                RepeatBehavior="Forever"
+                BeginTime="00:00:01">
+        <ColorAnimation Storyboard.TargetName="Ellipse2" 
+                        Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                        To="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation}"
+                        Duration="00:00:01"/>
+    </Storyboard>
+    <Storyboard x:Key="Animation.RoundIndicator.Ellipse3"
+                RepeatBehavior="Forever"
+                BeginTime="00:00:02">
+            <ColorAnimation Storyboard.TargetName="Ellipse3" 
+                        Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                        To="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation}"
+                        Duration="00:00:01"/>
+        </Storyboard>
+
+
+
+
+
+
+
+
 </ResourceDictionary>

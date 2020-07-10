@@ -20,8 +20,7 @@
         MinHeight="{StaticResource Control.MainWindow.MinHeight}" 
         MinWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
         MaxWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
-        Loaded="MainWindow_Loaded"
-        ac:Switch.Click="Switch_Click">    
+        Loaded="MainWindow_Loaded">    
     <Window.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </Window.Foreground>    
@@ -36,6 +35,13 @@
                     <SolidColorBrush Color="{DynamicResource Color.Window.Border}"/>
                 </Setter.Value>
             </Setter>            
+        </Style>
+        <Style x:Key="Window.Panels.Grid.Style" TargetType="Grid">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Color.Window.Background}"/>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Border>
@@ -52,8 +58,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ac:Hamburger Grid.Column="0"/>
-                <Grid Name="WindowPanelsGrid" Grid.Column="1">
-                    <ac:ContentPanel Header="{DynamicResource Localization.Privacy}"/>
+                <Grid Name="WindowPanelsGrid" 
+                      Grid.Column="1"
+                      Style="{StaticResource Window.Panels.Grid.Style}">
+                    <ac:RoundIndicator/>
+
+
                 </Grid>
             </Grid>
         </Grid>

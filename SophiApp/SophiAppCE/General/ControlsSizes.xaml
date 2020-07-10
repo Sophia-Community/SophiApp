@@ -29,4 +29,9 @@
     <system:Double x:Key="Control.SwitchBar.Text.FontSize">14</system:Double>
     <system:Double x:Key="Control.SwitchBar.Text.Header.Width">380</system:Double>
     <system:Double x:Key="Control.SwitchBar.Text.Description.Width">460</system:Double>
+    <system:Double x:Key="Control.RoundIndicator.Size">100</system:Double>
+    <system:Double x:Key="Control.RoundIndicator.BigEllipse.Size">95</system:Double>
+    <system:Double x:Key="Control.RoundIndicator.MediumEllipse.Size">75</system:Double>
+    <system:Double x:Key="Control.RoundIndicator.SmallEllipse.Size">7</system:Double>
+    <system:Double x:Key="Control.RoundIndicator.FontSize">14</system:Double>
 </ResourceDictionary>

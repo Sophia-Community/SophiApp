@@ -15,4 +15,5 @@
     <system:String x:Key="Localization.ImportExport">Импорт/Экспорт</system:String>    
     <system:String x:Key="Localization.Apply">Применить</system:String>
     <system:String x:Key="Localization.SelectAll">Выделить всё</system:String>
+    <system:String x:Key="Localization.Loading">Загрузка</system:String>
 </ResourceDictionary>

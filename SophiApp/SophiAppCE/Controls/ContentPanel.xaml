@@ -9,13 +9,11 @@
              FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"             
              FontStretch="Normal"
              FontStyle="Normal"
-             FontWeight="SemiBold">
+             FontWeight="SemiBold"
+             Background="Transparent">
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-    </UserControl.Foreground>
-    <UserControl.Background>
-        <SolidColorBrush Color="{DynamicResource Color.Panel.Privacy.Background}"/>
-    </UserControl.Background>
+    </UserControl.Foreground>    
     <UserControl.Resources>
         <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>
         <Style TargetType="TextBlock">
