@@ -18,7 +18,9 @@
     <Color x:Key="Color.ScrollViewer.Thumb.Background">#ffffff</Color>
     <Color x:Key="Color.RoundIndicator.BigEllipse.Background">#ffffff</Color>
     <Color x:Key="Color.RoundIndicator.MediumEllipse.Shadow">#0b3363</Color>
-    <Color x:Key="Color.RoundIndicator.SmallEllipse.Background">#d8d8d8</Color>
-    <Color x:Key="Color.RoundIndicator.SmallEllipse.Background.Animation">#0b3363</Color>    
+    <Color x:Key="Color.RoundIndicator.SmallEllipse.Background">#ffffff</Color>
+    <Color x:Key="Color.RoundIndicator.SmallEllipse.Background.Animation.Start">#d8d8d8</Color>
+    <Color x:Key="Color.RoundIndicator.SmallEllipse.Background.Animation.Intermediate">#8599b1</Color>
+    <Color x:Key="Color.RoundIndicator.SmallEllipse.Background.Animation.Finish">#0b3363</Color>
     <Color x:Key="Color.RoundIndicator.Text">#0b3363</Color>
 </ResourceDictionary>

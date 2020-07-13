@@ -15,9 +15,7 @@
              FontStyle="Normal">
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="UserControl.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource Animation.RoundIndicator.Ellipse1}"/>
-            <BeginStoryboard Storyboard="{StaticResource Animation.RoundIndicator.Ellipse2}"/>
-            <BeginStoryboard Storyboard="{StaticResource Animation.RoundIndicator.Ellipse3}"/>
+            <BeginStoryboard Storyboard="{StaticResource Animation.RoundIndicator.Loaded}"/>            
         </EventTrigger>
     </UserControl.Triggers>
     <UserControl.Resources>

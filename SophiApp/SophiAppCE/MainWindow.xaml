@@ -61,9 +61,7 @@
                 <Grid Name="WindowPanelsGrid" 
                       Grid.Column="1"
                       Style="{StaticResource Window.Panels.Grid.Style}">
-                    <ac:RoundIndicator/>
-
-
+                    <ac:RoundIndicator x:Name="LoadingIndicator"/>
                 </Grid>
             </Grid>
         </Grid>

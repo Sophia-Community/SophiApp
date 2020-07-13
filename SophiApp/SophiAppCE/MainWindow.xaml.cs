@@ -16,7 +16,7 @@ namespace SophiAppCE
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            GuiManager.SetWindowBlur();
+            GuiManager.SetWindowBlur();            
         }        
     }
 }
