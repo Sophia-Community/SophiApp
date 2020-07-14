@@ -2,19 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">    
     <system:Double x:Key="Control.MainWindow.MinHeight">690</system:Double>
-    <system:Double x:Key="Control.MainWindow.MinMaxWidth">1400</system:Double>
+    <system:Double x:Key="Control.MainWindow.MinMaxWidth">1345</system:Double>
     <GridLength x:Key="Control.MainWindow.Title.Height">30</GridLength>
     <system:Double x:Key="Control.MainWindow.Title.FontSize">14</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleButton.Width">45</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleButton.Height">30</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Width">18</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Height">18</system:Double>
-    <system:Double x:Key="Control.Hamburger.Width">310</system:Double>    
-    <system:Double x:Key="Control.Hamburger.Button.Icon.Height">32</system:Double>
-    <system:Double x:Key="Control.Hamburger.Button.Icon.Width">32</system:Double>
-    <system:Double x:Key="Control.Hamburger.Button.IconSize">128</system:Double>    
-    <system:Double x:Key="Control.Hamburger.Button.Height">50</system:Double>
-    <system:Double x:Key="Control.Hamburger.Button.FontSize">16</system:Double>    
+    <system:Double x:Key="Control.Hamburger.Width">245</system:Double>
+    <system:Double x:Key="Control.HamburgerClickButton.Height">50</system:Double>
+    <system:Double x:Key="Control.HamburgerClickButton.FontSize">16</system:Double>    
     <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
     <system:Double x:Key="Control.ContentPanel.Header.FontSize">18</system:Double>
     <system:Double x:Key="Control.ContentPanel.Header.SelectAll.FontSize">16</system:Double>

@@ -86,6 +86,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\HamburgerClickButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\RoundIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +146,9 @@
     </Compile>
     <Compile Include="Controls\ContentPanel.xaml.cs">
       <DependentUpon>ContentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HamburgerClickButton.xaml.cs">
+      <DependentUpon>HamburgerClickButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RoundIndicator.xaml.cs">
       <DependentUpon>RoundIndicator.xaml</DependentUpon>

@@ -61,7 +61,8 @@
                 <Grid Name="WindowPanelsGrid" 
                       Grid.Column="1"
                       Style="{StaticResource Window.Panels.Grid.Style}">
-                    <ac:RoundIndicator x:Name="LoadingIndicator"/>
+                    <ac:RoundIndicator x:Name="LoadingIndicator" Visibility="Collapsed"/>
+                    <ac:ContentPanel Header="{DynamicResource Localization.Privacy}"/>
                 </Grid>
             </Grid>
         </Grid>
