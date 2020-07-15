@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SophiAppCE.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для HamburgerClickButton.xaml
+    /// Логика взаимодействия для HamburgerMenuButton.xaml
     /// </summary>
-    public partial class HamburgerClickButton : UserControl
+    public partial class HamburgerMenuButton : UserControl
     {
-        public HamburgerClickButton()
+        public HamburgerMenuButton()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(HamburgerClickButton), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("Text", typeof(string), typeof(HamburgerMenuButton), new PropertyMetadata(default(string)));
 
         public Geometry Icon
         {
@@ -43,9 +43,9 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(Geometry), typeof(HamburgerClickButton), new PropertyMetadata(default(Geometry)));
+            DependencyProperty.Register("Icon", typeof(Geometry), typeof(HamburgerMenuButton), new PropertyMetadata(default(Geometry)));
 
-        private static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(HamburgerClickButton));
+        private static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(HamburgerMenuButton));
 
         public event RoutedEventHandler Click
         {
@@ -53,7 +53,7 @@ namespace SophiAppCE.Controls
             remove { RemoveHandler(ClickEvent, value); }
         }
 
-        private void HamburgerClickButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void HamburgerMenuButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(ClickEvent, this));
         }

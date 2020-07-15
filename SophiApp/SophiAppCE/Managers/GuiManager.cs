@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
+using System.Text.RegularExpressions;
+using SophiAppCE.Helpers;
 
 namespace SophiAppCE.Managers
 {
@@ -13,6 +15,21 @@ namespace SophiAppCE.Managers
     {
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal static Point GetParentRelativePoint(FrameworkElement childrenElement, FrameworkElement parentElement)
+        {
+            return childrenElement.TranslatePoint(new Point(0, 0), parentElement);
+        }
+
+        internal static IEnumerable<JsonObject> GetSettingsJson()
+        {
+            var json = Encoding.UTF8.GetString(SophiAppCE.Properties.Resources.SettingsCE);
+            Regex regex = new Regex(@"\}\,", RegexOptions.Compiled);
+            //MatchCollection a = regex.Matches(json);
+
+
+
+            return new List<JsonObject>();
+        }
 
         internal enum AccentState
         {
@@ -59,16 +76,16 @@ namespace SophiAppCE.Managers
             int accentStructSize = Marshal.SizeOf(accent);
             var accentPtr = Marshal.AllocHGlobal(accentStructSize);
             Marshal.StructureToPtr(accent, accentPtr, false);
-
             WindowCompositionAttributeData data = new WindowCompositionAttributeData
             {
                 Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
                 SizeOfData = accentStructSize,
                 Data = accentPtr
             };
-
             SetWindowCompositionAttribute(windowHelper.Handle, ref data);
             Marshal.FreeHGlobal(accentPtr);
         }
+        
+
     }
 }

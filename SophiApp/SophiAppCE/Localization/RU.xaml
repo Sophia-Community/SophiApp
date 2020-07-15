@@ -14,6 +14,7 @@
     <system:String x:Key="Localization.OneDrive">OneDrive</system:String>
     <system:String x:Key="Localization.ImportExport">Импорт/Экспорт</system:String>    
     <system:String x:Key="Localization.Apply">Применить</system:String>
-    <system:String x:Key="Localization.SelectAll">Выделить всё</system:String>
+    <system:String x:Key="Localization.Settings">Настройки</system:String>
+    <system:String x:Key="Localization.SelectAll">выделить всё</system:String>
     <system:String x:Key="Localization.Loading">Загрузка</system:String>
 </ResourceDictionary>

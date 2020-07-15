@@ -27,9 +27,9 @@ namespace SophiAppCE.Controls
             InitializeComponent();
         }
 
-        private void HamburgerClickButton_Click(object sender, RoutedEventArgs e)
+        private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            Canvas.SetTop(HamburgerMarker, ControlsManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: ContentCanvas).Y);
+            Canvas.SetTop(HamburgerMarker, GuiManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: ContentCanvas).Y);
         }
     }
 }

@@ -12,9 +12,4 @@
     <system:String x:Key="Tag.Game">Game</system:String>
     <system:String x:Key="Tag.Uwp">Uwp</system:String>
     <system:String x:Key="Tag.OneDrive">OneDrive</system:String>
-    <system:String x:Key="Tag.GitHub">GitHub</system:String>
-    <system:String x:Key="Tag.LanguageSettings">LanguageSettings</system:String>
-    <system:String x:Key="Tag.LoadSettings">ImportExport</system:String>    
-    <system:String x:Key="Tag.ApplySettings">Apply</system:String>
-    <system:String x:Key="Tag.SwitchApplyAll">SwitchApplyAll</system:String>
 </ResourceDictionary>

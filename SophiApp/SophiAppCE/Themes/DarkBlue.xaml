@@ -6,12 +6,9 @@
     <Color x:Key="Color.Window.TitleBar.Background">#0b3363</Color>
     <Color x:Key="Color.Window.TitleBar.Button.Close.Hover">#e81123</Color>
     <Color x:Key="Color.Window.TitleBar.Button.Hover">#11509d</Color>
-    <Color x:Key="Color.HamburgerClickButton.Foreground">#ffffff</Color>
-    <Color x:Key="Color.HamburgerClickButton.Hover">#0b3363</Color>
-
-
-
-
+    <Color x:Key="Color.HamburgerButton.Foreground">#ffffff</Color>
+    <Color x:Key="Color.HamburgerButton.Hover">#0b3363</Color>
+    <Color x:Key="Color.HamburgerButton.Disabled">#c6c6c6</Color>
     <Color x:Key="Color.Hamburger.Background">#0a284b</Color>    
     <Color x:Key="Color.Hamburger.Button.Hover">#0b3363</Color>    
     <Color x:Key="Color.Switch.Border">#979797</Color>

@@ -5,11 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
-             mc:Ignorable="d"
-             FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"             
+             mc:Ignorable="d"                          
              FontStretch="Normal"
-             FontStyle="Normal"
-             FontWeight="SemiBold"
+             FontStyle="Normal"       
+             FontWeight="Bold"
              Background="Transparent">
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
@@ -28,28 +27,28 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+        <Grid.RowDefinitions>            
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="28"/>
+                <ColumnDefinition Width="38"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock HorizontalAlignment="Left"
-                       FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf"
+                       FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
             
-            <local:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"
-                          Tag="{StaticResource Tag.SwitchApplyAll}"/>
+            <local:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
 
             <TextBlock HorizontalAlignment="Right"
-                       FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
+                       FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
                        Text="{DynamicResource Localization.SelectAll}"
                        Margin="0, 0, 100, 0"
                        Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>

@@ -1,22 +1,22 @@
-﻿<UserControl x:Class="SophiAppCE.Controls.HamburgerClickButton"
+﻿<UserControl x:Class="SophiAppCE.Controls.HamburgerMenuButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              mc:Ignorable="d" 
-             Height="{StaticResource Control.HamburgerClickButton.Height}"             
-             FontFamily="pack://application:,,,/Fonts/#Montserrat"
-             FontSize="{StaticResource Control.HamburgerClickButton.FontSize}"
+             Height="{StaticResource Control.Hamburger.Button.Height}"             
+             FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+             FontSize="{StaticResource Control.Hamburger.Button.FontSize}"
              FontStretch="Normal"
              FontWeight="Normal"
              FontStyle="Normal"
-             MouseLeftButtonDown="HamburgerClickButton_MouseLeftButtonDown">
+             MouseLeftButtonDown="HamburgerMenuButton_MouseLeftButtonDown">
     <UserControl.Background>
         <SolidColorBrush Color="Transparent"/>
     </UserControl.Background>
     <UserControl.Foreground>
-        <SolidColorBrush Color="{DynamicResource Color.HamburgerClickButton.Foreground}"/>
+        <SolidColorBrush Color="{DynamicResource Color.HamburgerButton.Foreground}"/>
     </UserControl.Foreground>
     <UserControl.Resources>
         <Style TargetType="TextBlock">
@@ -39,7 +39,7 @@
                 <Storyboard>
                     <ColorAnimation Storyboard.TargetProperty="Background.(Color)"
                                     Duration="0:0:0"
-                                    To="{DynamicResource Color.HamburgerClickButton.Hover}"/>
+                                    To="{DynamicResource Color.Hamburger.Button.Hover}"/>
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
@@ -61,7 +61,7 @@
             <Canvas Width="24" Height="24">
                 <Path Data="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Icon}" >
                     <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource Color.HamburgerClickButton.Foreground}"/>
+                        <SolidColorBrush Color="{DynamicResource Color.HamburgerButton.Foreground}"/>
                     </Path.Fill>
                 </Path>
             </Canvas>

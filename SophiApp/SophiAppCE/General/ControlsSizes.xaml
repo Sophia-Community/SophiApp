@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">    
-    <system:Double x:Key="Control.MainWindow.MinHeight">690</system:Double>
+    <system:Double x:Key="Control.MainWindow.MinHeight">750</system:Double>
     <system:Double x:Key="Control.MainWindow.MinMaxWidth">1345</system:Double>
     <GridLength x:Key="Control.MainWindow.Title.Height">30</GridLength>
     <system:Double x:Key="Control.MainWindow.Title.FontSize">14</system:Double>
@@ -10,8 +10,8 @@
     <system:Double x:Key="Control.MainWindow.TitleIcon.Width">18</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Height">18</system:Double>
     <system:Double x:Key="Control.Hamburger.Width">245</system:Double>
-    <system:Double x:Key="Control.HamburgerClickButton.Height">50</system:Double>
-    <system:Double x:Key="Control.HamburgerClickButton.FontSize">16</system:Double>    
+    <system:Double x:Key="Control.Hamburger.Button.Height">50</system:Double>
+    <system:Double x:Key="Control.Hamburger.Button.FontSize">16</system:Double>    
     <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
     <system:Double x:Key="Control.ContentPanel.Header.FontSize">18</system:Double>
     <system:Double x:Key="Control.ContentPanel.Header.SelectAll.FontSize">16</system:Double>
@@ -23,7 +23,7 @@
     <Thickness x:Key="Control.Switch.Ellipse.State.Right">27, 0, 0, 0</Thickness>
     <system:Double x:Key="Control.SwitchBar.Width">500</system:Double>
     <system:Double x:Key="Control.SwitchBar.MinHeight">73</system:Double>
-    <system:Double x:Key="Control.SwitchBar.Text.FontSize">14</system:Double>
+    <system:Double x:Key="Control.SwitchBar.Text.FontSize">16</system:Double>
     <system:Double x:Key="Control.SwitchBar.Text.Header.Width">380</system:Double>
     <system:Double x:Key="Control.SwitchBar.Text.Description.Width">460</system:Double>
     <system:Double x:Key="Control.RoundIndicator.Size">100</system:Double>

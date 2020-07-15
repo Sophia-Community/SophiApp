@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
-             mc:Ignorable="d"
-             Name="SwitchBarControl"
+             mc:Ignorable="d"             
              Width="{StaticResource Control.SwitchBar.Width}"
              MinHeight="{StaticResource Control.SwitchBar.MinHeight}"             
              FontSize="{StaticResource Control.SwitchBar.Text.FontSize}"
@@ -23,14 +22,14 @@
     <UserControl.Resources>
         <converters:TextToVisibilityConverter x:Key="TextToVisibilityConverter"/>
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Montserrat"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Width" Value="{StaticResource Control.SwitchBar.Text.Header.Width}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="Description.TextBlock" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Montserrat Medium"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="VerticalAlignment" Value="Center"/>

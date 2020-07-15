@@ -18,9 +18,6 @@ namespace SophiAppCE.Managers
         internal static readonly string Security = Application.Current.TryFindResource("Tag.Security") as string;
         internal static readonly string Game = Application.Current.TryFindResource("Tag.Game") as string;
         internal static readonly string Uwp = Application.Current.TryFindResource("Tag.Uwp") as string;
-        internal static readonly string OneDrive = Application.Current.TryFindResource("Tag.OneDrive") as string;
-        internal static readonly string GitHub = Application.Current.TryFindResource("Tag.GitHub") as string;
-        internal static readonly string ApplySettings = Application.Current.TryFindResource("Tag.ApplySettings") as string;
-        internal static readonly string SwitchApplyAll = Application.Current.TryFindResource("Tag.SwitchApplyAll") as string;        
+        internal static readonly string OneDrive = Application.Current.TryFindResource("Tag.OneDrive") as string;        
     }
 }

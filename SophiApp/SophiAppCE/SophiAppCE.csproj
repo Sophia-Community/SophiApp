@@ -78,15 +78,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\HamburgerButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\ContentPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\HamburgerClickButton.xaml">
+    <Page Include="Controls\HamburgerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HamburgerMenuButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,14 +141,14 @@
     <Compile Include="Controls\Hamburger.xaml.cs">
       <DependentUpon>Hamburger.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HamburgerButton.xaml.cs">
-      <DependentUpon>HamburgerButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ContentPanel.xaml.cs">
       <DependentUpon>ContentPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HamburgerClickButton.xaml.cs">
-      <DependentUpon>HamburgerClickButton.xaml</DependentUpon>
+    <Compile Include="Controls\HamburgerButton.xaml.cs">
+      <DependentUpon>HamburgerButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HamburgerMenuButton.xaml.cs">
+      <DependentUpon>HamburgerMenuButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RoundIndicator.xaml.cs">
       <DependentUpon>RoundIndicator.xaml</DependentUpon>
@@ -164,6 +164,7 @@
     </Compile>
     <Compile Include="Converters\CountsToVisibilityConverter.cs" />
     <Compile Include="Converters\TextToVisibilityConverter.cs" />
+    <Compile Include="Helpers\JsonObject.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -175,7 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\AnimationsManager.cs" />
-    <Compile Include="Managers\ControlsManager.cs" />
+    <Compile Include="Managers\AppManager.cs" />
     <Compile Include="Managers\GuiManager.cs" />
     <Compile Include="Managers\TagManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -196,7 +197,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <Resource Include="Resources\Settings.json" />
+    <Resource Include="Resources\SettingsCE.json" />
     <Resource Include="Fonts\Montserrat-Black.ttf" />
     <Resource Include="Fonts\Montserrat-BlackItalic.ttf" />
     <Resource Include="Fonts\Montserrat-Bold.ttf" />
@@ -216,6 +217,7 @@
     <Resource Include="Fonts\Montserrat-Thin.ttf" />
     <Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
     <Resource Include="Fonts\SegoeUI-Semibold.ttf" />
+    <Resource Include="Fonts\SegoeUI.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -236,6 +238,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

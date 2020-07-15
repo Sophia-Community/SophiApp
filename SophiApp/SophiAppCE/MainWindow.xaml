@@ -17,9 +17,10 @@
         ResizeMode="CanResize"
         ShowInTaskbar="True"
         Background="Transparent"        
-        MinHeight="{StaticResource Control.MainWindow.MinHeight}" 
+        MinHeight="{StaticResource Control.MainWindow.MinHeight}"
         MinWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
-        MaxWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
+        MaxWidth="{StaticResource Control.MainWindow.MinMaxWidth}"
+        SourceInitialized="MainWindow_SourceInitialized"
         Loaded="MainWindow_Loaded">    
     <Window.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
