@@ -34,9 +34,9 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="38"/>
+                <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock HorizontalAlignment="Left"
@@ -60,11 +60,11 @@
                       HorizontalScrollBarVisibility="Disabled">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Name="EvenPanel" Grid.Column="1">

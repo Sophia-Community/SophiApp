@@ -22,7 +22,7 @@
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0, 0, 10, 0"/>
+            <Setter Property="Margin" Value="0, 0, 0, 0"/>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>            

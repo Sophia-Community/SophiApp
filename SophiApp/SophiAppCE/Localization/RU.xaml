@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="Localization.AppTitle">SophiApp CE — тонкая настройка Windows 10 и автоматизация рутинных задач</system:String>
+    <system:String x:Key="Localization.AppTitle">SophiApp Community Edition</system:String>
     <system:String x:Key="Localization.Privacy">Конфиденциальность</system:String>    
     <system:String x:Key="Localization.Ui">Внешний вид</system:String>    
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
@@ -15,6 +15,6 @@
     <system:String x:Key="Localization.ImportExport">Импорт/Экспорт</system:String>    
     <system:String x:Key="Localization.Apply">Применить</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
-    <system:String x:Key="Localization.SelectAll">выделить всё</system:String>
+    <system:String x:Key="Localization.SelectAll">Выделить всё</system:String>
     <system:String x:Key="Localization.Loading">Загрузка</system:String>
 </ResourceDictionary>
