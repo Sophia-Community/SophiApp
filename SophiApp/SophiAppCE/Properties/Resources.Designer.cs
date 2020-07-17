@@ -59,15 +59,5 @@ namespace SophiAppCE.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] SettingsCE {
-            get {
-                object obj = ResourceManager.GetObject("SettingsCE", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

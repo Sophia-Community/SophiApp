@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Text.RegularExpressions;
-using SophiAppCE.Helpers;
 
 namespace SophiAppCE.Managers
 {
@@ -19,18 +16,7 @@ namespace SophiAppCE.Managers
         {
             return childrenElement.TranslatePoint(new Point(0, 0), parentElement);
         }
-
-        internal static IEnumerable<JsonObject> GetSettingsJson()
-        {
-            var json = Encoding.UTF8.GetString(SophiAppCE.Properties.Resources.SettingsCE);
-            Regex regex = new Regex(@"\}\,", RegexOptions.Compiled);
-            //MatchCollection a = regex.Matches(json);
-
-
-
-            return new List<JsonObject>();
-        }
-
+        
         internal enum AccentState
         {
             ACCENT_DISABLED = 1,

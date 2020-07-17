@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SophiAppCE.Helpers
+namespace SophiAppCE.Classes
 {
-    struct JsonObject
+    internal struct JsonData
     {
         public string Id { get; set; }
         public string Path { get; set; }
