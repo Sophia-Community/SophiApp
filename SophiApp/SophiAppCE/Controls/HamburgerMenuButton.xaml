@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType"
              Height="{StaticResource Control.Hamburger.Button.Height}"             
              FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
-             FontSize="{StaticResource Control.Hamburger.Button.FontSize}"
-             FontStretch="Normal"
-             FontWeight="Normal"
-             FontStyle="Normal"
+             FontWeight="Medium"
+             FontSize="{StaticResource Control.Hamburger.Button.FontSize}"             
              MouseLeftButtonDown="HamburgerMenuButton_MouseLeftButtonDown">
     <UserControl.Background>
         <SolidColorBrush Color="Transparent"/>

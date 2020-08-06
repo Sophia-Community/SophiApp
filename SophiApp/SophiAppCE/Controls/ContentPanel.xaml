@@ -9,6 +9,8 @@
              FontStretch="Normal"
              FontStyle="Normal"       
              FontWeight="Bold"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType"
              Background="Transparent">
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
@@ -23,7 +25,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="0, 0, 20, 0"/>
+            <Setter Property="Margin" Value="0, 0, 10, 0"/>
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -40,17 +42,19 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock HorizontalAlignment="Left"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+                       FontWeight="Medium"
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
             
             <local:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
 
             <TextBlock HorizontalAlignment="Right"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+                       FontWeight="Medium"
                        FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
                        Text="{DynamicResource Localization.SelectAll}"
-                       Margin="0, 0, 100, 0"
+                       Margin="0, 0, 90, 0"
                        Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
         </Grid>
 

@@ -14,10 +14,10 @@ if (Test-Path -Path $settingsJson)
 
 		if ($scriptPath)
 		{
-#			$sha = Get-FileHash -Path $scriptPath
-#			$_ | Add-Member NoteProperty "Type" "SwitchBar" -Force
-#			$_ | Add-Member NoteProperty "Sha256" (Get-FileHash -Path $scriptPath).Hash -Force
-#			$jsonObj | Add-Member NoteProperty "Tag" $tags[$jsonObj.Id[0].ToString()] -Force
+			$sha = Get-FileHash -Path $scriptPath
+			$_ | Add-Member NoteProperty "Type" "SwitchBar" -Force
+			$_ | Add-Member NoteProperty "Sha256" (Get-FileHash -Path $scriptPath).Hash -Force
+			$jsonObj | Add-Member NoteProperty "Tag" $tags[$jsonObj.Id[0].ToString()] -Force
 		}
 		else
 		{

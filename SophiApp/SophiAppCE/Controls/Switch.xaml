@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType"
              Height="{StaticResource Control.Switch.Height}"
              Width="{StaticResource Control.Switch.Width}"
              MouseLeftButtonDown="Switch_MouseLeftButtonDown">

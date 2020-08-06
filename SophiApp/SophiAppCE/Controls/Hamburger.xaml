@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              mc:Ignorable="d"
              Width="{StaticResource Control.Hamburger.Width}"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType"
              local:HamburgerMenuButton.Click="HamburgerMenuButton_Click">    
     <UserControl.Resources>
         <Style TargetType="local:HamburgerMenuButton">

@@ -1,19 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SophiAppCE.Classes
 {
-    internal struct JsonData
+    [DataContract]
+    internal class JsonData
     {
-        public string Id { get; set; }
-        public string Path { get; set; }
-        public string HeaderEn { get; set; }
-        public string HeaderRu { get; set; }
-        public string DescriptionEn { get; set; }
-        public string DecsriptionRu { get; set; }
-        public string Tag { get; set; }
+        [DataMember]
+        internal string Id { get; set; }
+
+        [DataMember]
+        internal string Path { get; set; }
+
+        [DataMember]
+        internal string HeaderEn { get; set; }
+
+        [DataMember]
+        internal string HeaderRu { get; set; }
+
+        [DataMember]
+        internal string DescriptionEn { get; set; }
+
+        [DataMember]
+        internal string DescriptionRu { get; set; }
+
+        [DataMember]
+        internal string Type { get; set; }
+
+        [DataMember]
+        internal string Sha256 { get; set; }
+
+        [DataMember]
+        internal string Tag { get; set; }        
     }
 }

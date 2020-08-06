@@ -4,12 +4,12 @@
     <system:Double x:Key="Control.MainWindow.MinHeight">730</system:Double>
     <system:Double x:Key="Control.MainWindow.MinMaxWidth">1260</system:Double>
     <GridLength x:Key="Control.MainWindow.Title.Height">30</GridLength>
-    <system:Double x:Key="Control.MainWindow.Title.FontSize">14</system:Double>
+    <system:Double x:Key="Control.MainWindow.Title.FontSize">16</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleButton.Width">45</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleButton.Height">30</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Width">18</system:Double>
     <system:Double x:Key="Control.MainWindow.TitleIcon.Height">18</system:Double>
-    <system:Double x:Key="Control.Hamburger.Width">210</system:Double>
+    <system:Double x:Key="Control.Hamburger.Width">220</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.Height">50</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.FontSize">16</system:Double>    
     <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
