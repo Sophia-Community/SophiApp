@@ -45,4 +45,3 @@ jobs:
         asset_path: 'SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip'
         asset_name: 'SophiAppCE.zip'
         asset_content_type: application/zip
-        asset_label: 'SophiAppCE.zip'
