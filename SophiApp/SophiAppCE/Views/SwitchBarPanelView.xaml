@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="SophiAppCE.Views.SwitchBarPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Views"
+             mc:Ignorable="d" 
+             xmlns:controls="clr-namespace:SophiAppCE.Controls"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"                
+             FontStretch="Normal"
+             FontStyle="Normal"       
+             FontWeight="Bold"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType"
+             Background="Transparent">
+    <UserControl.Foreground>
+        <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
+    </UserControl.Foreground>    
+    <UserControl.Resources>
+        <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Grid.Column" Value="1"/>
+        </Style>
+        <Style TargetType="controls:Switch">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0, 0, 10, 0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>            
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="18"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock HorizontalAlignment="Left"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+                       FontWeight="Medium"
+                       FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
+
+            <controls:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+
+            <TextBlock HorizontalAlignment="Right"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+                       FontWeight="Medium"
+                       FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
+                       Text="{DynamicResource Localization.SelectAll}"
+                       Margin="0, 0, 90, 0"
+                       Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+        </Grid>
+
+        <ScrollViewer Name="ScrollViewer"
+                      Grid.Row="2" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Name="EvenPanel" Grid.Column="1">
+                    <ItemsControl ItemsSource="{Binding Path=EvenSwitchBars}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:SwitchBar Header="{Binding Path=HeaderRu}"
+                                                    Description="{Binding Path=DescriptionRu}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+
+                <StackPanel Name="OddPanel" Grid.Column="3">
+                    <ItemsControl ItemsSource="{Binding Path=OddSwitchBars}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:SwitchBar Header="{Binding Path=HeaderRu}"
+                                                    Description="{Binding Path=DescriptionRu}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

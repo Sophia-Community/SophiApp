@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SophiAppCE"
-        xmlns:ac="clr-namespace:SophiAppCE.Controls"        
+        xmlns:ac="clr-namespace:SophiAppCE.Controls"
+        xmlns:views="clr-namespace:SophiAppCE.Views"
         mc:Ignorable="d"        
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
@@ -62,7 +63,7 @@
                       Grid.Column="1"
                       Style="{StaticResource Window.Panels.Grid.Style}">
                     <ac:RoundIndicator x:Name="LoadingIndicator" Visibility="Collapsed"/>
-                    <ac:ContentPanel Header="{DynamicResource Localization.Privacy}"/>
+                    <views:SwitchBarPanelView x:Name="PrivacyPanelViewControl"/>
                 </Grid>
             </Grid>
         </Grid>

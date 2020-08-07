@@ -21,42 +21,51 @@ namespace SophiAppCE.Managers
             InitializeJsonDataList();
         }
 
+        internal List<JsonData> GetJsonDataByTag(string tag) => JsonDataList.Where(j => j.Tag == tag).ToList(); //TODO: Задать вопрос на тостере!
+
         private void InitializeJsonDataList()
         {
             Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
                  .Cast<Match>()
                  .ToList()
                  .ForEach(j =>
-                 {                     
+                 {
                      using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(j.Value)))
                      {
                          DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(JsonData));
                          JsonData jsonData = (JsonData)jsonSerializer.ReadObject(memoryStream);
                          string scriptPath = Path.Combine(BaseDirectory, jsonData.Path);
 
-                         if (File.Exists(scriptPath) && CompareFileHash(scriptPath, jsonData.Sha256))
+                         if (FileExistsAndHashed(filePath: Path.Combine(BaseDirectory, jsonData.Path), hashValue: jsonData.Sha256))
                              JsonDataList.Add(jsonData);
                      }
                  });
-        }
+        }     
 
-        private bool CompareFileHash(string filePath, string fileHash)
+        private bool FileExistsAndHashed(string filePath, string hashValue)
         {
-            using (SHA256 sha = SHA256.Create())
+            bool result = default(bool);
+
+            if (File.Exists(filePath))
             {
-                try
+                using (SHA256 sha = SHA256.Create())
                 {
-                    using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+                    try
                     {
-                        fileStream.Position = 0;                        
-                        return BitConverter.ToString(sha.ComputeHash(fileStream)).Replace("-", "") == fileHash ? true : false;
+                        using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+                        {
+                            fileStream.Position = 0;
+                            result = BitConverter.ToString(sha.ComputeHash(fileStream)).Replace("-", "") == hashValue ? true : false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return false;
                     }
                 }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }            
+            }
+
+            return result;
         }
     }
 }
