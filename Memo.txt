@@ -8,4 +8,8 @@
 
 http://alexweinberger.com/main/pinning-network-program-taskbar-programmatically-windows-10/
 
-Шрифт — говно.
+Шрифт — говно (???)
+
+# Поулчить номер билда
+[System.Environment]::OSVersion.Version.Build
+Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild
