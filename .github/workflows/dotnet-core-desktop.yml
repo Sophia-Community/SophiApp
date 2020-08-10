@@ -16,9 +16,12 @@ jobs:
 
     - name: Build App
       run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE"
+      
+    - name: Add Scripts Folder
+      run: Expand-Archive -Path "SophiApp\PSScripts.zip" -DestinationPath "SophiApp\SophiAppCE\bin\Release"
     
     - name: Create Archive
-      run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\Release\*.exe" -DestinationPath "SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip"
+      run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\Release\*" -DestinationPath "SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip"
     
     - name: Set Variables
       id: vars
