@@ -12,40 +12,29 @@
     },
     {
         "Id": "1x2",
-        "Path": "Scripts\\1. Privacy\\2. Turn off per-user services.ps1",
-        "HeaderEn": "Turn off per-user services",
-        "HeaderRu": "Отключить cлужбы для отдельных пользователей",
-        "DescriptionEn": "Per-user services run in the security context of the user account - this provIdes better resource management than the previous approach of running these kinds of services in Explorer",
-        "DescriptionRu": "Пользовательские службы выполняются в контексте безопасности учетной записи пользователя: это обеспечивает более эффективное управление ресурсами, чем предыдущий способ запуска этих служб в проводнике",
-        "Type": "SwitchBar",
-        "Sha256": "5A93784D3403924DDB512747E793F0DCF88A973AD93116003B9A194C38B143E5",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": "1x3",
-        "Path": "Scripts\\1. Privacy\\3. Set the minimal operating system diagnostic data level.ps1",
-        "HeaderEn": "Set the minimal operating system diagnostic data level",        
-        "HeaderRu": "Установить минимальный уровень отправляемых диагностических сведений",        
+        "Path": "Scripts\\1. Privacy\\2. Set the minimal operating system diagnostic data level.ps1",
+        "HeaderEn": "Set the minimal operating system diagnostic data level",
+        "HeaderRu": "Установить минимальный уровень отправляемых диагностических сведений",
         "DescriptionEn": "A value of \"Security\" will send minimal data to Microsoft to keep Windows secure",
-        "DescriptionRu": "Значение \"Безопасность\" отправляет в корпорацию Майкрософт только минимальный объем данных, необходимый для защиты Windows",        
+        "DescriptionRu": "Значение \"Безопасность\" отправляет в корпорацию Майкрософт только минимальный объем данных, необходимый для защиты Windows",
         "Type": "SwitchBar",
         "Sha256": "366364888D2A07C8241B10919377CA8F272D435EF7AE5F701D17DA058D13CD1A",
         "Tag": "Privacy"
     },
     {
-        "Id": "1x4",
-        "Path": "Scripts\\1. Privacy\\4. Turn off Windows Error Reporting.ps1",
+        "Id": "1x3",
+        "Path": "Scripts\\1. Privacy\\3. Turn off Windows Error Reporting.ps1",
         "HeaderEn": "Turn off Windows Error Reporting",
         "HeaderRu": "Отключить отчеты об ошибках Windows",
         "DescriptionEn": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems",
-        "DescriptionRu": "Функция отчетов об ошибках позволяет пользователям уведомлять Microsoft о сбоях приложений, ошибках в ядре, неотвечающих приложениях и других специфических проблемах приложений",
+        "DescriptionRu": "Функция отчетов об ошибках позволяет пользователям уведомлять Microsoft о сбоях приложений, ошибках в ядре, не отвечающих приложениях и других специфических проблемах приложений",
         "Type": "SwitchBar",
         "Sha256": "5A8AEE432878E5013D2C59554E96FF0C0356263A8A286DB738C0DEA6E45325C7",
         "Tag": "Privacy"
     },
     {
-        "Id": "1x5",
-        "Path": "Scripts\\1. Privacy\\5. Change Windows Feedback frequency to Never.ps1",
+        "Id": "1x4",
+        "Path": "Scripts\\1. Privacy\\4. Change Windows Feedback frequency to Never.ps1",
         "HeaderEn": "Change Windows Feedback frequency to \"Never\"",
         "HeaderRu": "Изменить частоту формирования отзывов на \"Никогда\"",
         "DescriptionEn": "",
@@ -55,8 +44,8 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x6",
-        "Path": "Scripts\\1. Privacy\\6. Turn off diagnostics tracking scheduled tasks.ps1",
+        "Id": "1x5",
+        "Path": "Scripts\\1. Privacy\\5. Turn off diagnostics tracking scheduled tasks.ps1",
         "HeaderEn": "Turn off diagnostics tracking scheduled tasks",
         "HeaderRu": "Отключить задачи диагностического отслеживания",
         "DescriptionEn": "",
@@ -66,8 +55,8 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x7",
-        "Path": "Scripts\\1. Privacy\\7. Do not use sign-in info to automatically finish setting up device and reopen apps after an update or restart.ps1",
+        "Id": "1x6",
+        "Path": "Scripts\\1. Privacy\\6. Do not use sign-in info to automatically finish setting up device and reopen apps after an update or restart.ps1",
         "HeaderEn": "Do not use sign-in info to automatically finish setting up device and reopen apps after an update or restart",
         "HeaderRu": "Не использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
         "DescriptionEn": "",
@@ -77,9 +66,9 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x8",
-        "Path": "Scripts\\1. Privacy\\8. Do not let websites provIde locally relevant content by accessing language list.ps1",
-        "HeaderEn": "Do not let websites provIde locally relevant content by accessing language list",
+        "Id": "1x7",
+        "Path": "Scripts\\1. Privacy\\7. Do not let websites provide locally relevant content by accessing language list.ps1",
+        "HeaderEn": "Do not let websites provide locally relevant content by accessing language list",
         "HeaderRu": "Не позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
         "DescriptionEn": "",
         "DescriptionRu": "",
@@ -88,8 +77,8 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x9",
-        "Path": "Scripts\\1. Privacy\\9. Do not allow apps to use advertising Id.ps1",
+        "Id": "1x8",
+        "Path": "Scripts\\1. Privacy\\8. Do not allow apps to use advertising Id.ps1",
         "HeaderEn": "Do not allow apps to use advertising Id",
         "HeaderRu": "Не разрешать приложениям использовать идентификатор рекламы",
         "DescriptionEn": "",
@@ -99,9 +88,9 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x10",
-        "Path": "Scripts\\1. Privacy\\10. Do not let apps on other devices open and message apps on this device, and vice versa.ps1",
-        "HeaderEn": "Do not let apps on other devices open and message apps on this device, and vice versa",
+        "Id": "1x9",
+        "Path": "Scripts\\1. Privacy\\9. Do not let apps on other devices open and message apps on this device and vice versa.ps1",
+        "HeaderEn": "Do not let apps on other devices open and message apps on this device and vice versa",
         "HeaderRu": "Не разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
         "DescriptionEn": "Allows apps on your device to communicate with other devices and open the same apps on them",
         "DescriptionRu": "Позволяет приложениям на вашем устройстве обмениться данными с другими устройствами и открывать такие же приложения на них",
@@ -110,8 +99,8 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x11",
-        "Path": "Scripts\\1. Privacy\\11. Do not show the Windows welcome experiences after updates.ps1",
+        "Id": "1x10",
+        "Path": "Scripts\\1. Privacy\\10. Do not show the Windows welcome experiences after updates.ps1",
         "HeaderEn": "Do not show the Windows welcome experiences after updates and occasionally when I sign in to highlight what\u0027s new and suggested",
         "HeaderRu": "Не показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
         "DescriptionEn": "",
@@ -121,8 +110,8 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x12",
-        "Path": "Scripts\\1. Privacy\\12. Do not show suggested content in the Settings app.ps1",
+        "Id": "1x11",
+        "Path": "Scripts\\1. Privacy\\11. Do not show suggested content in the Settings app.ps1",
         "HeaderEn": "Do not show suggested content in the Settings app",
         "HeaderRu": "Не показывать рекомендуемое содержимое в приложении \"Параметры\"",
         "DescriptionEn": "",
@@ -132,8 +121,8 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x13",
-        "Path": "Scripts\\1. Privacy\\13. Turn off automatic installing suggested apps.ps1",
+        "Id": "1x12",
+        "Path": "Scripts\\1. Privacy\\12. Turn off automatic installing suggested apps.ps1",
         "HeaderEn": "Turn off automatic installing suggested apps",
         "HeaderRu": "Отключить автоматическую установку рекомендованных приложений",
         "DescriptionEn": "Windows silently automatically downloads and installs suggested apps from the Microsoft Store without any confirmation by default",
@@ -143,10 +132,10 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x14",
-        "Path": "Scripts\\1. Privacy\\14. Do not suggest ways I can finish setting up my device to get the most out of Windows.ps1",
+        "Id": "1x13",
+        "Path": "Scripts\\1. Privacy\\13. Do not suggest ways I can finish setting up my device to get the most out of Windows.ps1",
         "HeaderEn": "Do not suggest ways I can finish setting up my device to get the most out of Windows",
-        "HeaderRu": "Не предлагать способы завершиения настройки устройства для максимально эффективного использования Windows",
+        "HeaderRu": "Не предлагать способы завершения настройки устройства для максимально эффективного использования Windows",
         "DescriptionEn": "",
         "DescriptionRu": "",
         "Type": "SwitchBar",
@@ -154,14 +143,25 @@
         "Tag": "Privacy"
     },
     {
-        "Id": "1x15",
-        "Path": "Scripts\\1. Privacy\\15. Do not offer tailored experiences based on the diagnostic data setting.ps1",
+        "Id": "1x14",
+        "Path": "Scripts\\1. Privacy\\14. Do not offer tailored experiences based on the diagnostic data setting.ps1",
         "HeaderEn": "Do not offer tailored experiences based on the diagnostic data setting",
         "HeaderRu": "Не предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных",
         "DescriptionEn": "Tailored experiences are personalized tips, ads, and recommendations that enhance Microsoft products and services for your needs",
         "DescriptionRu": "Индивидуальные возможности — это персонализированные советы, рекламные объявления и рекомендации, которые улучшают продукты и услуги Microsoft с учетом ваших нужд",
         "Type": "SwitchBar",
         "Sha256": "7D48D35082279DB25F35ED0004B150989D43BD37204CE1E8DF0EC771DF1FB7B5",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": "15x1",
+        "Path": "Scripts\\1. Privacy\\15. Uninstall OneDrive.ps1",
+        "HeaderEn": "Uninstall OneDrive",
+        "HeaderRu": "Удалить OneDrive",
+        "DescriptionEn": "",
+        "DescriptionRu": "",
+        "Type": "SwitchBar",
+        "Sha256": "10C5BCEE3EF3DBA7DA96143FE52E5C7AA8764E8FACF4D52F63CA0B3A9FBE4838",
         "Tag": "Privacy"
     },
     {
@@ -188,8 +188,8 @@
     },
     {
         "Id": "2x3",
-        "Path": "Scripts\\2. UI\\3. Show hIdden files, folders, and drives.ps1",
-        "HeaderEn": "Show hIdden files, folders, and drives",
+        "Path": "Scripts\\2. UI\\3. Show hidden files, folders, and drives.ps1",
+        "HeaderEn": "Show hidden files, folders, and drives",
         "HeaderRu": "Показывать скрытые файлы, папки и диски",
         "DescriptionEn": "",
         "DescriptionRu": "",
@@ -254,8 +254,8 @@
     },
     {
         "Id": "2x9",
-        "Path": "Scripts\\2. UI\\9. Do not show sync provIder notification within File Explorer.ps1",
-        "HeaderEn": "Do not show sync provIder notification within File Explorer",
+        "Path": "Scripts\\2. UI\\9. Do not show sync provider notification within File Explorer.ps1",
+        "HeaderEn": "Do not show sync provider notification within File Explorer",
         "HeaderRu": "Не показывать уведомления поставщика синхронизации в проводнике",
         "DescriptionEn": "",
         "DescriptionRu": "",
@@ -506,17 +506,6 @@
         "Tag": "Ui"
     },
     {
-        "Id": "2x32",
-        "Path": "Scripts\\2. UI\\32. Automatically adjust active hours for me based on daily usage.ps1",
-        "HeaderEn": "Automatically adjust active hours for me based on daily usage",
-        "HeaderRu": "Автоматически изменять период активности для этого устройства на основе действий",
-        "DescriptionEn": "Device won\u0027t automatically restart during this time",
-        "DescriptionRu": "В течение этого времени устройство не будет автоматически перезапускаться",
-        "Type": "SwitchBar",
-        "Sha256": "1DBFAFAF0A90A2BD03888AC3C26A5EE93FD78F850B84CA513FD9EA705536EF0D",
-        "Tag": "Ui"
-    },
-    {
         "Id": "3x1",
         "Path": "Scripts\\3. Context Menu\\1. Add the Extract item to Windows Installer (.msi) context menu.ps1",
         "HeaderEn": "Add the \"Extract\" item to Windows Installer (.msi) context menu",
@@ -595,8 +584,8 @@
     },
     {
         "Id": "3x8",
-        "Path": "Scripts\\3. Context Menu\\8. Hide the Create a new vIdeo item from the context menu.ps1",
-        "HeaderEn": "Hide the \"Create a new vIdeo\" item from the context menu",
+        "Path": "Scripts\\3. Context Menu\\8. Hide the Create a new video item from the context menu.ps1",
+        "HeaderEn": "Hide the \"Create a new video\" item from the context menu",
         "HeaderRu": "Скрыть пункт \"Создать новое видео\" из контекстного меню",
         "DescriptionEn": "",
         "DescriptionRu": "",
@@ -973,7 +962,7 @@
         "HeaderEn": "Do not let Windows manage default printer",
         "HeaderRu": "Не разрешать Windows управлять принтером, используемым по умолчанию",
         "DescriptionEn": "Windows set your default printer to be the one you used most recently at your current location",
-        "DescriptionRu": "Windows настроивает в качестве используемого по умолчанию принтера тот принтер, который последним использовался в текущем местоположении",
+        "DescriptionRu": "Windows настраивает в качестве используемого по умолчанию принтера тот принтер, который последним использовался в текущем местоположении",
         "Type": "SwitchBar",
         "Sha256": "6BFECCCA323DE626C24B9B844835C7969F3B49556F34856E002B0F35600308E8",
         "Tag": "System"
@@ -1015,7 +1004,7 @@
         "Id": "5x22",
         "Path": "Scripts\\5. System\\22. Delete all restore points.ps1",
         "HeaderEn": "Delete all restore points",
-        "HeaderRu": "Удалить все точки восстановения",
+        "HeaderRu": "Удалить все точки восстановления",
         "DescriptionEn": "",
         "DescriptionRu": "",
         "Type": "SwitchBar",
@@ -1213,11 +1202,22 @@
         "Id": "5x41",
         "Path": "Scripts\\5. System\\41. Turn on network discovery and file and printers sharing if device is not domain-joined.ps1",
         "HeaderEn": "Turn on network discovery and file and printers sharing if device is not domain-joined",
-        "HeaderRu": "Включить сетевое обнаружение и общий доступ к файлам и принтерам, если устройство не присоединенно к домену",
+        "HeaderRu": "Включить сетевое обнаружение и общий доступ к файлам и принтерам, если устройство не присоединено к домену",
         "DescriptionEn": "",
         "DescriptionRu": "",
         "Type": "SwitchBar",
         "Sha256": "013CCAFA4480AA70EFBEE123E40B5B8CD895469233BE878AE418656A2545C8A4",
+        "Tag": "System"
+    },
+    {
+        "Id": "5x42",
+        "Path": "Scripts\\5. System\\42. Automatically adjust active hours for me based on daily usage.ps1",
+        "HeaderEn": "Automatically adjust active hours for me based on daily usage",
+        "HeaderRu": "Автоматически изменять период активности для этого устройства на основе действий",
+        "DescriptionEn": "Device won\u0027t automatically restart during this time",
+        "DescriptionRu": "В течение этого времени устройство не будет автоматически перезапускаться",
+        "Type": "SwitchBar",
+        "Sha256": "1DBFAFAF0A90A2BD03888AC3C26A5EE93FD78F850B84CA513FD9EA705536EF0D",
         "Tag": "System"
     },
     {
@@ -1269,7 +1269,7 @@
         "Path": "Scripts\\7. Security\\2. Turn on detection for potentially unwanted applications and block them.ps1",
         "HeaderEn": "Turn on detection for potentially unwanted applications",
         "HeaderRu": "Включить обнаружение потенциально нежелательных приложений",
-        "DescriptionEn": "Potentially unwanted applications (PUA) are not consIdered viruses, malware, or other types of threats, but they might perform actions on endpoints which adversely affect endpoint performance or use",
+        "DescriptionEn": "Potentially unwanted applications (PUA) are not considered viruses, malware, or other types of threats, but they might perform actions on endpoints which adversely affect endpoint performance or use",
         "DescriptionRu": "Потенциально нежелательные приложения не рассматриваются как вирусы, вредоносные программы или другие типы угроз, но они могут выполнять действия с ПК, которые негативно влияют на его производительность или использование",
         "Type": "SwitchBar",
         "Sha256": "B44AE44BC6DE357689DAA755074BCCBEE2D4613F4968791B06A5BFE15E059E0D",
@@ -1314,7 +1314,7 @@
         "HeaderEn": "Create \"Process Creation\" Event Viewer Custom View",
         "HeaderRu": "Создать настаиваемое представление \"Создание процесса\" в Настраиваемых представлениях",
         "DescriptionEn": "Viewing Process Creation and Command-line Auditing Events",
-        "DescriptionRu": "Просмотр события содания нового процесса и аудит командной строки",
+        "DescriptionRu": "Просмотр события создания нового процесса и аудит командной строки",
         "Type": "SwitchBar",
         "Sha256": "4134CA9A0B624B2C56C56681BF6C10BBB542607ADD95EE08DEAF8E3A7F818650",
         "Tag": "Security"
@@ -1347,7 +1347,7 @@
         "HeaderEn": "Turn off SmartScreen for apps and files",
         "HeaderRu": "Отключить SmartScreen для приложений и файлов",
         "DescriptionEn": "Microsoft Defender SmartScreen checks unrecognized apps and files downloaded from the web",
-        "DescriptionRu": "Фильтр SmartScreen в Microsoft Defender проверяет неопознаные приложения и файлы, скачанные из сети",
+        "DescriptionRu": "Фильтр SmartScreen в Microsoft Defender проверяет неопознанные приложения и файлы, скачанные из сети",
         "Type": "SwitchBar",
         "Sha256": "789969A6361731BD236625316D28B8E8428328051904437875F9FE842237145D",
         "Tag": "Security"
@@ -1369,7 +1369,7 @@
         "HeaderEn": "Turn off Xbox Game Bar",
         "HeaderRu": "Отключить Xbox Game Bar",
         "DescriptionEn": "Xbox Game Bar is for thigs like recording game clips, chatting with friends, receiving game invites",
-        "DescriptionRu": "Xbox Game Bar позволяет создавать игровые клипы, общаться с друщьями и получать приглашения в игры",
+        "DescriptionRu": "Xbox Game Bar позволяет создавать игровые клипы, общаться с друзьями и получать приглашения в игры",
         "Type": "SwitchBar",
         "Sha256": "1C28F9E8E6AC088F550B799B3AAB74156F8F347543FE202666181BE1BA2679C3",
         "Tag": "Game"
@@ -1412,7 +1412,7 @@
         "Path": "Scripts\\8. Gaming\\5. Turn on hardware-accelerated GPU scheduling.ps1",
         "HeaderEn": "Turn on hardware-accelerated GPU scheduling",
         "HeaderRu": "Включить планирование графического процессора с аппаратным ускорением",
-        "DescriptionEn": "Reduce latency and improve perfomance. You\u0027ll need to restart your PC to have your changes take effect.",
+        "DescriptionEn": "Reduce latency and improve performance. You need to restart your PC to have your changes take effect.",
         "DescriptionRu": "Уменьшить время задержки и увеличить производительность. Для вступления изменений в силу потребуется перезапустить компьютер.",
         "Type": "SwitchBar",
         "Sha256": "1D6341CCC65DE0C4A9B0698E2A274B21AEBD180854955CF48E61EEE89EA05A58",
@@ -1426,13 +1426,13 @@
         "DescriptionEn": "App packages will not be installed when new user accounts are created",
         "DescriptionRu": "Приложения не будут установлены при создании новых учетных записей",
         "Type": "SwitchBar",
-        "Sha256": "752FDF6A4C394CF9E8BD1E463259F62D2320865998BD1730E6DFAB692314EB61",
+        "Sha256": "2FB41FBC7D6EBFAFB2F1AF5FF5DAB0F1745240C2FC81DC0C06B94828409EE5A6",
         "Tag": "Uwp"
     },
     {
         "Id": "9x2",
-        "Path": "Scripts\\9. UWP Apps\\2. Open Microsoft Store HEVC VIdeo Extensions from Device Manufacturer page.ps1",
-        "HeaderEn": "Open Microsoft Store \"HEVC VIdeo Extensions from Device Manufacturer\" page",
+        "Path": "Scripts\\9. UWP Apps\\2. Open Microsoft Store HEVC Video Extensions from Device Manufacturer page.ps1",
+        "HeaderEn": "Open Microsoft Store \"HEVC Video Extensions from Device Manufacturer\" page",
         "HeaderRu": "Открыть страницу \"Расширения для видео HEVC от производителя устройства\" в Microsoft Store",
         "DescriptionEn": "The extension can be installed without Microsoft account",
         "DescriptionRu": "Расширение может быть установлено без учетной записи Microsoft",
@@ -1450,16 +1450,5 @@
         "Type": "SwitchBar",
         "Sha256": "E4E459976697605F154599F011AD0641AC2D14F2842D54DBFF1B9CCE437752CC",
         "Tag": "Uwp"
-    },
-    {
-        "Id": "10x1",
-        "Path": "Scripts\\10. OneDrive\\1. Uninstall OneDrive.ps1",
-        "HeaderEn": "Uninstall OneDrive",
-        "HeaderRu": "Удалить OneDrive",
-        "DescriptionEn": "",
-        "DescriptionRu": "",
-        "Type": "SwitchBar",
-        "Sha256": "10C5BCEE3EF3DBA7DA96143FE52E5C7AA8764E8FACF4D52F63CA0B3A9FBE4838",
-        "Tag": "Privacy"
     }
 ]
