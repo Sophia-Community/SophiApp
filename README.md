@@ -2,4 +2,4 @@
 
 # Deus vult!
 
-![Image](https://archive.fo/w87Ct/0942af7e9e495972c84da2f8aad7513e58d487a0.jpg)
+![Image](https://pbs.twimg.com/media/EO_RryfW4AAqq3l?format=png&name=small)
