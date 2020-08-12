@@ -13,10 +13,7 @@
              FontWeight="Bold"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
-             Background="Transparent">
-    <UserControl.DataContext>
-        <viewModel:SwitchBarPanelViewModel/>
-    </UserControl.DataContext>
+             Background="Transparent">    
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>    

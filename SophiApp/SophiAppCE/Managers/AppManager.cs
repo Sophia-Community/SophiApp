@@ -30,7 +30,7 @@ namespace SophiAppCE.Managers
                  });
 
             return jsons.Where(j => FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path),
-                                                 hashValue: j.Sha256) == true && j.Tag == tag).ToList();
+                                                        hashValue: j.Sha256) == true && j.Tag == tag).ToList();
         }
 
         private static bool FileExistsAndHashed(string filePath, string hashValue)
