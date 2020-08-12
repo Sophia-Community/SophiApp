@@ -10,20 +10,21 @@ namespace SophiAppCE
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {        
+
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             GuiManager.SetWindowBlur();
-            AppManager appManager = new AppManager();
+            
 
-            SwitchBarPanelViewModel privacySwitchBarPanelViewModel = new SwitchBarPanelViewModel();
-            privacySwitchBarPanelViewModel.Loaded(jsonData: appManager.GetJsonDataByTag(TagManager.Privacy));
-            PrivacyPanelViewControl.DataContext = privacySwitchBarPanelViewModel;
+            //SwitchBarPanelViewModel privacySwitchBarPanelViewModel = new SwitchBarPanelViewModel();
+            //privacySwitchBarPanelViewModel.Loaded(jsonData: appManager.GetJsonDataByTag(TagManager.Privacy));
+            //PrivacyPanelViewControl.DataContext = privacySwitchBarPanelViewModel;
         }
 
 

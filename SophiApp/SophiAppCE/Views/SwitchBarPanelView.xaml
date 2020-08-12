@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
              xmlns:local="clr-namespace:SophiAppCE.Views"
              mc:Ignorable="d" 
              xmlns:controls="clr-namespace:SophiAppCE.Controls"
@@ -13,6 +14,9 @@
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              Background="Transparent">
+    <UserControl.DataContext>
+        <viewModel:SwitchBarPanelViewModel/>
+    </UserControl.DataContext>
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>    
@@ -43,16 +47,16 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock HorizontalAlignment="Left"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
-                       FontWeight="Medium"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
+                       FontWeight="Regular"
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
             <controls:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
 
             <TextBlock HorizontalAlignment="Right"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
-                       FontWeight="Medium"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
+                       FontWeight="Regular"
                        FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
                        Text="{DynamicResource Localization.SelectAll}"
                        Margin="0, 0, 90, 0"

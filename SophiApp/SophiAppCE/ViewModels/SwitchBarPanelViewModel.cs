@@ -1,4 +1,5 @@
 ﻿using SophiAppCE.Classes;
+using SophiAppCE.Managers;
 using SophiAppCE.Models;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SophiAppCE.ViewModels
 {
@@ -13,6 +15,11 @@ namespace SophiAppCE.ViewModels
     {
         public ObservableCollection<SwitchBar> EvenSwitchBars { get; set; } = new ObservableCollection<SwitchBar>();
         public ObservableCollection<SwitchBar> OddSwitchBars { get; set; } = new ObservableCollection<SwitchBar>();
+
+        public SwitchBarPanelViewModel()
+        {
+            Loaded(AppManager.GetJsonDataByTag(TagManager.Privacy));           
+        }
 
         internal void Loaded(List<JsonData> jsonData)
         {
@@ -36,27 +43,6 @@ namespace SophiAppCE.ViewModels
                 else
                     OddSwitchBars.Add(switchBar);
             }
-
-
-            //TODO: Задать вопрос на тостере!
-            //jsonData.ForEach(j =>
-            //{
-
-
-
-            //    SwitchBars.Add(new SwitchBar()
-            //    {
-            //        Id = j.Id,
-            //        Path = j.Path,
-            //        HeaderEn = j.HeaderEn,
-            //        HeaderRu = j.HeaderRu,
-            //        DescriptionEn = j.DescriptionEn,
-            //        DescriptionRu = j.DescriptionRu,
-            //        Type = j.Type,
-            //        Sha256 = j.Sha256,
-            //        Tag = j.Tag
-            //    });
-
         }
     }
 }

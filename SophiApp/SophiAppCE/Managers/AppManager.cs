@@ -1,48 +1,39 @@
 ﻿using SophiAppCE.Classes;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Runtime.Serialization;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
-using System.Diagnostics;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SophiAppCE.Managers
 {
-    internal class AppManager
+    internal static class AppManager
     {
-        internal string BaseDirectory { get; } = AppDomain.CurrentDomain.BaseDirectory;
-        private List<JsonData> JsonDataList { get; set; } = new List<JsonData>();
-        public AppManager()
+        internal static List<JsonData> GetJsonDataByTag(string tag)
         {
-            InitializeJsonDataList();
-        }
-
-        internal List<JsonData> GetJsonDataByTag(string tag) => JsonDataList.Where(j => j.Tag == tag).ToList(); //TODO: Задать вопрос на тостере!
-
-        private void InitializeJsonDataList()
-        {
-            Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
+            IEnumerable<JsonData> jsons = Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
                  .Cast<Match>()
-                 .ToList()
-                 .ForEach(j =>
+                 .Select(m =>
                  {
-                     using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(j.Value)))
+                     JsonData json = new JsonData();
+
+                     using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(m.Value)))
                      {
                          DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(JsonData));
-                         JsonData jsonData = (JsonData)jsonSerializer.ReadObject(memoryStream);
-                         string scriptPath = Path.Combine(BaseDirectory, jsonData.Path);
-
-                         if (FileExistsAndHashed(filePath: Path.Combine(BaseDirectory, jsonData.Path), hashValue: jsonData.Sha256))
-                             JsonDataList.Add(jsonData);
+                         json = (JsonData)jsonSerializer.ReadObject(memoryStream);                         
                      }
-                 });
-        }     
 
-        private bool FileExistsAndHashed(string filePath, string hashValue)
+                     return json;
+                 });
+
+            return jsons.Where(j => FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path),
+                                                 hashValue: j.Sha256) == true && j.Tag == tag).ToList();
+        }
+
+        private static bool FileExistsAndHashed(string filePath, string hashValue)
         {
             bool result = default(bool);
 
