@@ -1,42 +1,48 @@
 ﻿using SophiAppCE.Classes;
 using SophiAppCE.Managers;
 using SophiAppCE.Models;
+using SophiAppCE.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Windows;
+using System.Linq;
+using SophiAppCE.Controls;
 
 namespace SophiAppCE.ViewModels
 {
     class SwitchBarPanelViewModel
     {
-        public ObservableCollection<SwitchBar> EvenSwitchBars { get; set; } = new ObservableCollection<SwitchBar>();
-        public ObservableCollection<SwitchBar> OddSwitchBars { get; set; } = new ObservableCollection<SwitchBar>();
+        public ObservableCollection<SwitchBarModel> OddSwitchBars { get; set; } = new ObservableCollection<SwitchBarModel>();
+        public ObservableCollection<SwitchBarModel> EvenSwitchBars { get; set; } = new ObservableCollection<SwitchBarModel>();
 
         public SwitchBarPanelViewModel(string tag)
         {
-            Loaded(AppManager.GetJsonDataByTag(tag));
+            InitializeCollections(AppManager.GetJsonDataByTag(tag));
         }
 
-        internal void Loaded(List<JsonData> jsonData)
+        private RelayCommand selectAllCommand;
+        public RelayCommand SelectAllCommand => selectAllCommand ?? (selectAllCommand = new RelayCommand(obj =>
+                                                              {
+                                                                  OddSwitchBars.Where(s => s.SwitchState == false)
+                                                                               .ToList()
+                                                                               .ForEach(s =>
+                                                                               {
+                                                                                   s.SwitchState = true;
+                                                                               });                                                                  
+                                                              }));
+
+        internal void InitializeCollections(List<JsonData> jsonData)
         {
-            for (int i = 0; i < jsonData.Count; i++)
+            for (int i = 1; i <= jsonData.Count; i++)
             {
-                SwitchBar switchBar = new SwitchBar()
-                {
-                    Id = jsonData[i].Id,
-                    Path = jsonData[i].Path,
-                    HeaderEn = jsonData[i].HeaderEn,
-                    HeaderRu = jsonData[i].HeaderRu,
-                    DescriptionEn = jsonData[i].DescriptionEn,
-                    DescriptionRu = jsonData[i].DescriptionRu,
-                    Type = jsonData[i].Type,
-                    Sha256 = jsonData[i].Sha256,
-                    Tag = jsonData[i].Tag
-                };
+                dynamic control = AppManager.GetControlByType(jsonData[i - 1]);
 
                 if (i % 2 == 0)
-                    EvenSwitchBars.Add(switchBar);
+                    EvenSwitchBars.Add(control);
                 else
-                    OddSwitchBars.Add(switchBar);
+                    OddSwitchBars.Add(control);
             }
         }
     }

@@ -63,7 +63,16 @@
                       Grid.Column="1"
                       Style="{StaticResource Window.Panels.Grid.Style}">
                     <ac:RoundIndicator x:Name="LoadingIndicator" Visibility="Collapsed"/>
-                    <views:SwitchBarPanelView x:Name="PrivacyPanelViewControl" Header="{DynamicResource Localization.Privacy}"/>
+                    <views:SwitchBarPanelView x:Name="PrivacyPanelViewControl" Header="{DynamicResource Localization.Privacy}" Visibility="Visible" Tag="{StaticResource Tag.Privacy}"/>
+                    <views:SwitchBarPanelView x:Name="UiPanelViewControl" Header="{DynamicResource Localization.Ui}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="ContextMenuViewControl" Header="{DynamicResource Localization.ContextMenu}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="StartMenuPanelViewControl" Header="{DynamicResource Localization.StartMenu}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="SystemPanelViewControl" Header="{DynamicResource Localization.System}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="TaskShedulerPanelViewControl" Header="{DynamicResource Localization.TaskSheduler}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="SecurityPanelViewControl" Header="{DynamicResource Localization.Security}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="GamePanelViewControl" Header="{DynamicResource Localization.Game}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="UwpPanelViewControl" Header="{DynamicResource Localization.Uwp}" Visibility="Collapsed"/>
+                    <views:SwitchBarPanelView x:Name="OneDrivePanelViewControl" Header="{DynamicResource Localization.OneDrive}" Visibility="Collapsed"/>
                 </Grid>
             </Grid>
         </Grid>

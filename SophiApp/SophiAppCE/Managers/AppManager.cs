@@ -1,4 +1,5 @@
 ﻿using SophiAppCE.Classes;
+using SophiAppCE.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,7 @@ namespace SophiAppCE.Managers
                      using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(m.Value)))
                      {
                          DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(JsonData));
-                         json = (JsonData)jsonSerializer.ReadObject(memoryStream);                         
+                         json = (JsonData)jsonSerializer.ReadObject(memoryStream);
                      }
 
                      return json;
@@ -31,6 +32,30 @@ namespace SophiAppCE.Managers
 
             return jsons.Where(j => FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path),
                                                         hashValue: j.Sha256) == true && j.Tag == tag).ToList();
+        }
+
+        internal static dynamic GetControlByType(JsonData jsonData)
+        {
+            dynamic control = new object();
+
+            switch (jsonData.Type)
+            {
+                case "SwitchBar":
+                    control = new SwitchBarModel();
+                    break;
+            }
+
+            control.Id = jsonData.Id;
+            control.Path = jsonData.Path;
+            control.HeaderEn = jsonData.HeaderEn;
+            control.HeaderRu = jsonData.HeaderRu;
+            control.DescriptionEn = jsonData.DescriptionEn;
+            control.DescriptionRu = jsonData.DescriptionRu;
+            control.Type = jsonData.Type;
+            control.Sha256 = jsonData.Sha256;
+            control.Tag = jsonData.Tag;
+
+            return control;
         }
 
         private static bool FileExistsAndHashed(string filePath, string hashValue)

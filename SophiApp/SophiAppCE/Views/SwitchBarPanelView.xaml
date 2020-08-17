@@ -13,7 +13,8 @@
              FontWeight="Bold"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
-             Background="Transparent">    
+             Background="Transparent"
+             x:Name="SwitchBarPanel">    
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>    
@@ -49,7 +50,9 @@
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
-            <controls:Switch Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+            <controls:Switch Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+                             <!--Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=SwitchBarPanel}"-->
+            <Button Command="{Binding SelectAllCommand}" Grid.Column="1" Content="Select All" Padding="5"/>
 
             <TextBlock HorizontalAlignment="Right"
                        FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
@@ -57,7 +60,7 @@
                        FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
                        Text="{DynamicResource Localization.SelectAll}"
                        Margin="0, 0, 90, 0"
-                       Visibility="{Binding ElementName=OddPanel, Path=Children.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+                       Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
         </Grid>
 
         <ScrollViewer Name="ScrollViewer"
@@ -73,19 +76,20 @@
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Name="EvenPanel" Grid.Column="1">
-                    <ItemsControl ItemsSource="{Binding Path=EvenSwitchBars}">
+                <StackPanel Name="OddPanel" Grid.Column="1">
+                    <ItemsControl ItemsSource="{Binding Path=OddSwitchBars}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding Path=HeaderRu}"
-                                                    Description="{Binding Path=DescriptionRu}"/>
+                                                    Description="{Binding Path=DescriptionRu}"
+                                                    State="{Binding SwitchState}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </StackPanel>
 
-                <StackPanel Name="OddPanel" Grid.Column="3">
-                    <ItemsControl ItemsSource="{Binding Path=OddSwitchBars}">
+                <StackPanel Name="EvenPanel" Grid.Column="3">
+                    <ItemsControl ItemsSource="{Binding Path=EvenSwitchBars}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding Path=HeaderRu}"

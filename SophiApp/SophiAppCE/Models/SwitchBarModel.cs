@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 
 namespace SophiAppCE.Models
 {
-    public class SwitchBarModel
+    public class SwitchBarModel : INotifyPropertyChanged
     {
-    }
+        private bool switchState = default(bool);
 
-    public class SwitchBar : INotifyPropertyChanged
-    {
-        private bool isChecked = default(bool);
+        public bool SwitchState
+        {
+            get => switchState;
+            set
+            {
+                switchState = value;
+                OnPropertyChanged("SwitchState");
+            }
+        }
 
         public string Id { get; set; }
         public string Path { get; set; }
@@ -24,24 +30,12 @@ namespace SophiAppCE.Models
         public string Type { get; set; }
         public string Sha256 { get; set; }
         public string Tag { get; set; }
-        public bool IsChecked
-        {
-            get => isChecked;
-            set
-            {
-                if (isChecked != value)
-                {
-                    isChecked = value;
-                    RaiseCheckedChanged("IsChecked");
-                }
-            }
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaiseCheckedChanged(string property)
+        private void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

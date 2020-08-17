@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using SophiAppCE.Classes;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SophiAppCE.Views
 {
@@ -11,7 +13,7 @@ namespace SophiAppCE.Views
         public SwitchBarPanelView()
         {
             InitializeComponent();
-        }      
+        }
 
         public string Header
         {
@@ -22,7 +24,5 @@ namespace SophiAppCE.Views
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(SwitchBarPanelView), new PropertyMetadata(default(string)));
-
-
     }
 }

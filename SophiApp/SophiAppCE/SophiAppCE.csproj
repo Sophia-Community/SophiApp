@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="ViewModels\SwitchBarPanelViewModel.cs" />
     <Compile Include="Views\SwitchBarPanelView.xaml.cs">
       <DependentUpon>SwitchBarPanelView.xaml</DependentUpon>

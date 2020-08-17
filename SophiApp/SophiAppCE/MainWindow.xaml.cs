@@ -24,7 +24,16 @@ namespace SophiAppCE
 
         private void InitializeViewsModels()
         {
-            PrivacyPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.Privacy);
+            PrivacyPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.Privacy);            
+            UiPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.Ui);
+            ContextMenuViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.ContextMenu);
+            StartMenuPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.StartMenu);
+            SystemPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.System);
+            TaskShedulerPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.TaskSheduler);
+            SecurityPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.Security);
+            GamePanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.Game);
+            UwpPanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.Uwp);
+            OneDrivePanelViewControl.DataContext = new SwitchBarPanelViewModel(TagManager.OneDrive);
         }
     }
 }

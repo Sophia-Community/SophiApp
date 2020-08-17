@@ -61,7 +61,7 @@
         <StackPanel Style="{StaticResource Header.Panel}">
             <TextBlock Style="{StaticResource Header.TextBlock}"
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
-            <local:Switch x:Name="Switch"/>
+            <local:Switch x:Name="Switch" State="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=State, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Style="{StaticResource Description.Panel}">
             <TextBlock Name="TextBlockDescription"                       
