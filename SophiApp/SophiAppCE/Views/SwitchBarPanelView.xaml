@@ -14,11 +14,13 @@
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              Background="Transparent"
-             x:Name="SwitchBarPanel">    
+             x:Name="SwitchBarPanel">
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-    </UserControl.Foreground>    
+    </UserControl.Foreground>
     <UserControl.Resources>
+        <CollectionViewSource x:Key="FilterOdd" Filter="Odd_Filter" Source="{Binding SwitchBarModelCollection}"/>
+        <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -32,7 +34,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Grid.RowDefinitions>            
+        <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -51,7 +53,7 @@
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
             <controls:Switch Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
-                             <!--Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=SwitchBarPanel}"-->
+            <!--Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=SwitchBarPanel}"-->
             <Button Command="{Binding SelectAllCommand}" Grid.Column="1" Content="Select All" Padding="5"/>
 
             <TextBlock HorizontalAlignment="Right"
@@ -76,8 +78,29 @@
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
 
+
+                <!--<StackPanel VerticalAlignment="Center">-->
+                <!--<ItemsControl ItemsSource="{Binding Source={StaticResource Filter.By.Tag}}" Grid.Column="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:SwitchBar Header="{Binding Path=HeaderRu}"
+                                                    Description="{Binding Path=DescriptionRu}"
+                                                    State="{Binding Path=SwitchState}"/>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>-->
+                <!--</StackPanel>-->
+
+
+
                 <StackPanel Name="OddPanel" Grid.Column="1">
-                    <ItemsControl ItemsSource="{Binding Path=OddSwitchBars}">
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource FilterOdd}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding Path=HeaderRu}"
@@ -89,7 +112,7 @@
                 </StackPanel>
 
                 <StackPanel Name="EvenPanel" Grid.Column="3">
-                    <ItemsControl ItemsSource="{Binding Path=EvenSwitchBars}">
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource FilterEven} }">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding Path=HeaderRu}"

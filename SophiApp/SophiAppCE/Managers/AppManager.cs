@@ -2,6 +2,7 @@
 using SophiAppCE.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
@@ -13,7 +14,62 @@ namespace SophiAppCE.Managers
 {
     internal static class AppManager
     {
-        internal static List<JsonData> GetJsonDataByTag(string tag)
+        internal static ObservableCollection<SwitchBarModel> ParseJsonData()
+        {
+            ObservableCollection<SwitchBarModel> switchBarModelsCollection = new ObservableCollection<SwitchBarModel>();
+
+            IEnumerable<JsonData> jsons = Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
+                 .Cast<Match>()
+                 .Select(m =>
+                 {
+                     JsonData json = new JsonData();
+
+                     using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(m.Value)))
+                     {
+                         DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(JsonData));
+                         json = (JsonData)jsonSerializer.ReadObject(memoryStream);
+                     }
+
+                     return json;
+
+                     //if (FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, json.Path), hashValue: json.Sha256)
+                     //       && json.Type == "SwitchBar")
+                     //{
+
+                     //}
+                 });
+
+            jsons.Where(j => FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path), hashValue: j.Sha256) == true)
+                 .ToList()
+                 .ForEach(j => switchBarModelsCollection.Add(GetControlByType(j)));
+
+            return switchBarModelsCollection;
+        }
+
+
+        internal static List<JsonData> GetJsonData()
+        {
+            IEnumerable<JsonData> jsons = Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
+                 .Cast<Match>()
+                 .Select(m =>
+                 {
+                     JsonData json = new JsonData();
+
+                     using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(m.Value)))
+                     {
+                         DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(JsonData));
+                         json = (JsonData)jsonSerializer.ReadObject(memoryStream);
+                     }
+
+                     return json;
+                 });
+
+            return jsons.Where(j => FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path),
+                                                        hashValue: j.Sha256) == true).ToList();
+        }
+
+
+        internal static List<JsonData> GetJsonData(string tag)
         {
             IEnumerable<JsonData> jsons = Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
                  .Cast<Match>()
@@ -34,6 +90,7 @@ namespace SophiAppCE.Managers
                                                         hashValue: j.Sha256) == true && j.Tag == tag).ToList();
         }
 
+        //TODO: Переделать на приватный!
         internal static dynamic GetControlByType(JsonData jsonData)
         {
             dynamic control = new object();

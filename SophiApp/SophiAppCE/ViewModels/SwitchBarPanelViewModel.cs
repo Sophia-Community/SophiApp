@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Linq;
 using SophiAppCE.Controls;
+using System.Windows.Data;
 
 namespace SophiAppCE.ViewModels
 {
@@ -17,21 +18,26 @@ namespace SophiAppCE.ViewModels
         public ObservableCollection<SwitchBarModel> OddSwitchBars { get; set; } = new ObservableCollection<SwitchBarModel>();
         public ObservableCollection<SwitchBarModel> EvenSwitchBars { get; set; } = new ObservableCollection<SwitchBarModel>();
 
+        public ObservableCollection<SwitchBarModel> SwitchBarModelCollection { get; set; } = new ObservableCollection<SwitchBarModel>(AppManager.ParseJsonData());
+
         public SwitchBarPanelViewModel(string tag)
         {
-            InitializeCollections(AppManager.GetJsonDataByTag(tag));
+            InitializeCollections(AppManager.GetJsonData(tag));
         }
 
         private RelayCommand selectAllCommand;
         public RelayCommand SelectAllCommand => selectAllCommand ?? (selectAllCommand = new RelayCommand(obj =>
                                                               {
-                                                                  OddSwitchBars.Where(s => s.SwitchState == false)
+                                                                  SwitchBarModelCollection.Where(s => s.SwitchState == false)
                                                                                .ToList()
                                                                                .ForEach(s =>
                                                                                {
                                                                                    s.SwitchState = true;
                                                                                });                                                                  
                                                               }));
+
+        
+
 
         internal void InitializeCollections(List<JsonData> jsonData)
         {
