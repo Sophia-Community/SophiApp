@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SophiAppCE.Models
 {
-    public class SwitchBarModel : INotifyPropertyChanged
+    class StateSwitchBarModel : INotifyPropertyChanged
     {
         private bool state = default(bool);
 
@@ -20,16 +20,6 @@ namespace SophiAppCE.Models
                 OnPropertyChanged("State");
             }
         }
-
-        public string Id { get; set; }
-        public string Path { get; set; }
-        public string HeaderEn { get; set; }
-        public string HeaderRu { get; set; }
-        public string DescriptionEn { get; set; }
-        public string DescriptionRu { get; set; }
-        public string Type { get; set; }
-        public string Sha256 { get; set; }
-        public string Tag { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

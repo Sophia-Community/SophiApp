@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"             
              mc:Ignorable="d"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
@@ -36,11 +36,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Width" Value="{StaticResource Control.SwitchBar.Text.Description.Width}"/>
-        </Style>
-        <Style TargetType="local:Switch">            
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20, 0, 0, 0"/>
-        </Style>
+        </Style>        
         <Style x:Key="Header.Panel" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Margin" Value="20"/>
@@ -52,6 +48,38 @@
             <Setter Property="Grid.Row" Value="1"/>
             <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Description, Converter={StaticResource TextToVisibilityConverter}}"/>
         </Style>
+        <Style x:Key="Border.Switch" TargetType="Border">
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20, 0, 0, 0"/>
+            <Setter Property="Height" Value="{StaticResource Control.Switch.Height}"/>
+            <Setter Property="Width" Value="{StaticResource Control.Switch.Width}"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Color.Switch.Border}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Color.Switch.Background}"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Ellipse">
+            <Setter Property="Height" Value="{StaticResource Control.Switch.Ellipse.Size}"/>
+            <Setter Property="Width" Value="{StaticResource Control.Switch.Ellipse.Size}"/>
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Color.Switch.Ellipse.Unchecked}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="Margin" Value="{StaticResource Control.Switch.Ellipse.State.Left}"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -60,8 +88,11 @@
         </Grid.RowDefinitions>
         <StackPanel Style="{StaticResource Header.Panel}">
             <TextBlock Style="{StaticResource Header.TextBlock}"
-                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
-            <local:Switch x:Name="Switch" State="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=State, Mode=TwoWay}"/>
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>            
+            <Border Name="SwitchBorder" Style="{StaticResource Border.Switch}"
+                    MouseLeftButtonDown="Switch_MouseLeftButtonDown">
+                <Ellipse Name="SwitchEllipse"/>
+            </Border>
         </StackPanel>
         <StackPanel Style="{StaticResource Description.Panel}">
             <TextBlock Name="TextBlockDescription"                       

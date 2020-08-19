@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SophiAppCE.Managers;
+using SophiAppCE.Models;
+using SophiAppCE.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -21,12 +24,15 @@ namespace SophiAppCE.Controls
     /// </summary>
     public partial class SwitchBar : UserControl
     {
+        private SolidColorBrush checkedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Checked"));
+        private SolidColorBrush uncheckedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Unchecked"));
+        private Thickness ellipseRight = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Right");
+        private Thickness ellipseLeft = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Left");
+
         public SwitchBar()
         {
             InitializeComponent();
-        }
-
-        public bool IsChecked => Switch.IsChecked;
+        }        
 
         public string Header
         {
@@ -44,6 +50,15 @@ namespace SophiAppCE.Controls
             set { SetValue(DescriptionProperty, value); }
         }
 
+        private void ChangeState(bool state)
+        {
+            AnimationsManager.ShowThicknessAnimation(storyboardName: "Animation.Switch.Click",
+                                                     animatedElement: SwitchEllipse,
+                                                     animationValue: state == true ? ellipseRight : ellipseLeft);
+
+            SwitchEllipse.Fill = state == true ? checkedBrush : uncheckedBrush;            
+        }
+
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(SwitchBar), new PropertyMetadata(default(string)));
@@ -56,9 +71,14 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(default(bool)));
+            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(OnStateChanged));
 
+        internal static void OnStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as SwitchBar).ChangeState(Convert.ToBoolean(e.NewValue));
 
+        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            (DataContext as SwitchBarModel).State = !State;
+        }
     }
 
 

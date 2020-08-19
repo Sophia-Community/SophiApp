@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
-             xmlns:local="clr-namespace:SophiAppCE.Views"
              mc:Ignorable="d" 
              xmlns:controls="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"                
@@ -13,25 +11,14 @@
              FontWeight="Bold"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
-             Background="Transparent"
-             x:Name="SwitchBarPanel">
+             Background="Transparent">
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
     </UserControl.Foreground>
     <UserControl.Resources>
         <CollectionViewSource x:Key="FilterOdd" Filter="Odd_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
-        <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>
-        <Style TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Grid.Column" Value="1"/>
-        </Style>
-        <Style TargetType="controls:Switch">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Grid.Column" Value="1"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="0, 0, 10, 0"/>
-        </Style>
+        <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>               
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -46,23 +33,34 @@
                 <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock HorizontalAlignment="Left"
+            <TextBlock Grid.Column="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
                        FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
                        FontWeight="Regular"
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
-                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
-
-            <controls:Switch Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>            
+            
+            <!--<controls:Switch Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>-->
             <!--Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=SwitchBarPanel}"-->
-            <Button Command="{Binding SelectAllCommand}" Grid.Column="1" Content="Select All" Padding="5"/>
+            <!--<Button Command="{Binding SelectAllCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"                    
+                    Grid.Column="1" Content="Select All" Padding="5"/>-->
 
-            <TextBlock HorizontalAlignment="Right"
+            <controls:StateSwitchBar Grid.Column="1"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Center"
+                                     TextOn="{DynamicResource Localization.SelectAll}"
+                                     TextOff="{DynamicResource Localization.UnselectAll}"
+                                     Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"/>
+
+            <!--<TextBlock HorizontalAlignment="Right"
                        FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
                        FontWeight="Regular"
                        FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
                        Text="{DynamicResource Localization.SelectAll}"
                        Margin="0, 0, 90, 0"
-                       Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>
+                       Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>-->
         </Grid>
 
         <ScrollViewer Name="ScrollViewer"
@@ -77,35 +75,14 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-
-
-                <!--<StackPanel VerticalAlignment="Center">-->
-                <!--<ItemsControl ItemsSource="{Binding Source={StaticResource Filter.By.Tag}}" Grid.Column="1">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <controls:SwitchBar Header="{Binding Path=HeaderRu}"
-                                                    Description="{Binding Path=DescriptionRu}"
-                                                    State="{Binding Path=SwitchState}"/>
-
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>-->
-                <!--</StackPanel>-->
-
-
-
+                
                 <StackPanel Name="OddPanel" Grid.Column="1">
                     <ItemsControl ItemsSource="{Binding Source={StaticResource FilterOdd}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <controls:SwitchBar Header="{Binding Path=HeaderRu}"
-                                                    Description="{Binding Path=DescriptionRu}"
-                                                    State="{Binding SwitchState}"/>
+                                <controls:SwitchBar Header="{Binding HeaderRu}"
+                                                    Description="{Binding DescriptionRu}"
+                                                    State="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -115,8 +92,9 @@
                     <ItemsControl ItemsSource="{Binding Source={StaticResource FilterEven} }">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <controls:SwitchBar Header="{Binding Path=HeaderRu}"
-                                                    Description="{Binding Path=DescriptionRu}"/>
+                                <controls:SwitchBar Header="{Binding HeaderRu}"
+                                                    Description="{Binding DescriptionRu}"
+                                                    State="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

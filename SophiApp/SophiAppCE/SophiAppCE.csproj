@@ -76,15 +76,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\RelayCommand.cs" />
-    <Compile Include="ViewModels\SwitchBarPanelViewModel.cs" />
+    <Compile Include="Controls\StateSwitchBar.xaml.cs">
+      <DependentUpon>StateSwitchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StateSwitchBarModel.cs" />
+    <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="Views\SwitchBarPanelView.xaml.cs">
       <DependentUpon>SwitchBarPanelView.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\Hamburger.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ContentPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,7 +100,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Switch.xaml">
+    <Page Include="Controls\StateSwitchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,9 +148,6 @@
     <Compile Include="Controls\Hamburger.xaml.cs">
       <DependentUpon>Hamburger.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ContentPanel.xaml.cs">
-      <DependentUpon>ContentPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -159,9 +156,6 @@
     </Compile>
     <Compile Include="Controls\RoundIndicator.xaml.cs">
       <DependentUpon>RoundIndicator.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Switch.xaml.cs">
-      <DependentUpon>Switch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SwitchBar.xaml.cs">
       <DependentUpon>SwitchBar.xaml</DependentUpon>
@@ -186,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\AnimationsManager.cs" />
-    <Compile Include="Managers\AppManager.cs" />
     <Compile Include="Managers\GuiManager.cs" />
     <Compile Include="Managers\TagManager.cs" />
     <Compile Include="Models\SwitchBarModel.cs" />

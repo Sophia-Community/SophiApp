@@ -26,12 +26,7 @@ namespace SophiAppCE.Views
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(SwitchBarPanelView), new PropertyMetadata(default(string)));
-
-        private void FilterSwitchBarModelByTag(object sender, FilterEventArgs filterArgs)
-        {
-            var a = filterArgs.Accepted = (filterArgs.Item as SwitchBarModel).Tag == (Tag as string);
-        }
+            DependencyProperty.Register("Header", typeof(string), typeof(SwitchBarPanelView), new PropertyMetadata(default(string)));        
 
         private void Odd_Filter(object sender, FilterEventArgs e)
         {
@@ -48,3 +43,5 @@ namespace SophiAppCE.Views
         }
     }
 }
+
+// TODO: Clear comments in XAML!
