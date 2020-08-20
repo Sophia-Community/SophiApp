@@ -1,7 +1,5 @@
-﻿using SophiAppCE.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,17 +9,15 @@ using System.Windows.Data;
 
 namespace SophiAppCE.Converters
 {
-    [ValueConversion(typeof(int), typeof(Visibility))]
-    class CountsToVisibilityConverter : IValueConverter
+    class SwitchBarDescriptionConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (int) value > 0 ? Visibility.Visible : Visibility.Hidden;
-        }
-
+            return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
+        }        
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return DependencyProperty.UnsetValue;
-        }
+        }        
     }
 }

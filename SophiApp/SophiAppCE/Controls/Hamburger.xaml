@@ -18,7 +18,7 @@
             <Setter Property="Canvas.Left" Value="0"/>
             <Setter Property="Width" Value="{Binding ElementName=ContentCanvas, Path=ActualWidth}"/>
         </Style>
-        <Style x:Key="Hamburger.Marker.Style" TargetType="Border">
+        <Style x:Key="Hamburger.Marker" TargetType="Border">
             <Setter Property="Width" Value="{StaticResource Control.Hamburger.Selector.Width}"/>
             <Setter Property="Height" Value="{StaticResource Control.Hamburger.Button.Height}"/>
             <Setter Property="Panel.ZIndex" Value="10"/>
@@ -36,7 +36,8 @@
     </UserControl.Background>
 
     <Canvas Name="ContentCanvas">
-        <Border x:Name="HamburgerMarker" Style="{StaticResource Hamburger.Marker.Style}"/>
+        
+        <Border x:Name="HamburgerMarker" Style="{StaticResource Hamburger.Marker}"/>
 
         <local:HamburgerMenuButton Canvas.Top="0"
                                     Icon="{StaticResource Icon.Hamburger.Privacy}"

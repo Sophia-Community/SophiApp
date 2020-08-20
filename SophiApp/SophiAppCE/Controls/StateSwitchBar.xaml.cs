@@ -65,8 +65,6 @@ namespace SophiAppCE.Controls
         // Using a DependencyProperty as the backing store for TextOn.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextOnProperty =
             DependencyProperty.Register("TextOn", typeof(string), typeof(StateSwitchBar), new PropertyMetadata(default(string)));
-
-
     }
 }
 

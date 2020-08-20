@@ -50,13 +50,13 @@ namespace SophiAppCE.Controls
             set { SetValue(DescriptionProperty, value); }
         }
 
-        private void ChangeState(bool state)
+        private void ChangeState(bool State)
         {
             AnimationsManager.ShowThicknessAnimation(storyboardName: "Animation.Switch.Click",
                                                      animatedElement: SwitchEllipse,
-                                                     animationValue: state == true ? ellipseRight : ellipseLeft);
+                                                     animationValue: State == true ? ellipseRight : ellipseLeft);
 
-            SwitchEllipse.Fill = state == true ? checkedBrush : uncheckedBrush;            
+            SwitchEllipse.Fill = State == true ? checkedBrush : uncheckedBrush;            
         }
 
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...

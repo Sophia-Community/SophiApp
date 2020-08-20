@@ -1,20 +1,22 @@
-﻿using System;
+﻿using SophiAppCE.Controls;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace SophiAppCE.Converters
-{
-    [ValueConversion(typeof(string), typeof(Visibility))]
-    public class TextToVisibilityConverter : IValueConverter
+{    
+    class SwitchSelectAllConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
+        {            
+            return System.Convert.ToInt32((value as StackPanel).Children.Count) >= 2 ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -79,7 +79,8 @@
     <Compile Include="Controls\StateSwitchBar.xaml.cs">
       <DependentUpon>StateSwitchBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\StateSwitchBarModel.cs" />
+    <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
+    <Compile Include="Converters\SwitchSelectAllConverter.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="Views\SwitchBarPanelView.xaml.cs">
       <DependentUpon>SwitchBarPanelView.xaml</DependentUpon>
@@ -163,8 +164,6 @@
     <Compile Include="Controls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\CountsToVisibilityConverter.cs" />
-    <Compile Include="Converters\TextToVisibilityConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

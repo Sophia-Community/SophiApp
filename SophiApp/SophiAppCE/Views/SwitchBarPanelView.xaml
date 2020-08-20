@@ -18,7 +18,7 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="FilterOdd" Filter="Odd_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
-        <converters:CountsToVisibilityConverter x:Key="CountsToVisibilityConverter"/>               
+        <converters:SwitchSelectAllConverter x:Key="SelectAllConverter"/>        
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -39,31 +39,17 @@
                        FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
                        FontWeight="Regular"
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
-                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>            
-            
-            <!--<controls:Switch Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>-->
-            <!--Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=SwitchBarPanel}"-->
-            <!--<Button Command="{Binding SelectAllCommand}"
-                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"                    
-                    Grid.Column="1" Content="Select All" Padding="5"/>-->
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
-            <controls:StateSwitchBar Grid.Column="1"
+            <controls:StateSwitchBar x:Name="SelectAllSwitch"
+                                     Grid.Column="1"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Center"
                                      TextOn="{DynamicResource Localization.SelectAll}"
-                                     TextOff="{DynamicResource Localization.UnselectAll}"
-                                     Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"/>
-
-            <!--<TextBlock HorizontalAlignment="Right"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
-                       FontWeight="Regular"
-                       FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}"                       
-                       Text="{DynamicResource Localization.SelectAll}"
-                       Margin="0, 0, 90, 0"
-                       Visibility="{Binding Path=EvenSwitchBars.Count, Converter={StaticResource CountsToVisibilityConverter}}"/>-->
+                                     TextOff="{DynamicResource Localization.UnselectAll}"/>            
         </Grid>
 
-        <ScrollViewer Name="ScrollViewer"
+        <ScrollViewer x:Name="ScrollViewer"
                       Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
@@ -75,9 +61,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-                
-                <StackPanel Name="OddPanel" Grid.Column="1">
-                    <ItemsControl ItemsSource="{Binding Source={StaticResource FilterOdd}}">
+
+                <StackPanel x:Name="OddPanel" Grid.Column="1">
+                    <ItemsControl x:Name="OddItemsControls" ItemsSource="{Binding Source={StaticResource FilterOdd}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding HeaderRu}"
@@ -88,7 +74,7 @@
                     </ItemsControl>
                 </StackPanel>
 
-                <StackPanel Name="EvenPanel" Grid.Column="3">
+                <StackPanel x:Name="EvenPanel" Grid.Column="3">
                     <ItemsControl ItemsSource="{Binding Source={StaticResource FilterEven} }">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

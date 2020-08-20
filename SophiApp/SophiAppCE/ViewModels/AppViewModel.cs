@@ -22,10 +22,12 @@ namespace SophiAppCE.ViewModels
 
         private void SelectAll(object args)
         {
-            string[] argsArray = Array.ConvertAll(object args, Convert.ToString);
-            SwitchBarModelCollection.Where(s => s.Tag == Convert.ToString(args[0]))
+            string tag = (args as string[]).FirstOrDefault();
+            bool state = Convert.ToBoolean((args as string[]).LastOrDefault());
+
+            SwitchBarModelCollection.Where(s => s.Tag == tag && s.State != state)
                                     .ToList()
-                                    .ForEach(s => s.State = !s.State);                                    
+                                    .ForEach(s => s.State = state);
         }
     }
 }
