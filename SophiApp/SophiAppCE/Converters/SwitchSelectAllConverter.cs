@@ -1,27 +1,25 @@
-﻿using SophiAppCE.Controls;
+﻿using SophiAppCE.Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace SophiAppCE.Converters
-{    
-    class SwitchSelectAllConverter : IValueConverter
+{
+    class SwitchSelectAllConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {            
-            return System.Convert.ToInt32((value as StackPanel).Children.Count) >= 2 ? Visibility.Visible : Visibility.Hidden;
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            ObservableCollection<SwitchBarModel> switchBarModels = values[0] as ObservableCollection<SwitchBarModel>;
+            string stateSwitchTag = values[1] as string;
+            return switchBarModels.Where(s => s.Tag == stateSwitchTag).Count() > 3 ? Visibility.Visible : Visibility.Hidden ;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return DependencyProperty.UnsetValue;
+            return DependencyProperty.UnsetValue as object[];
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using SophiAppCE.Classes;
+using SophiAppCE.Controls;
 using SophiAppCE.Models;
+using SophiAppCE.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,6 +42,12 @@ namespace SophiAppCE.Views
             SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
             e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 0
                        ? true : false;
+        }
+
+        private void SelectAllSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            StateSwitchBar stateSwitchBar = sender as StateSwitchBar;
+            (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State)});
         }
     }
 }

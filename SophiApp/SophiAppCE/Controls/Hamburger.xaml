@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             xmlns:local="clr-namespace:SophiAppCE.Controls"             
              mc:Ignorable="d"
              Width="{StaticResource Control.Hamburger.Width}"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
-             local:HamburgerMenuButton.Click="HamburgerMenuButton_Click">    
-    <UserControl.Resources>
+             local:HamburgerMenuButton.Click="HamburgerMenuButton_Click">
+    <UserControl.Resources>        
         <Style TargetType="local:HamburgerMenuButton">
             <Setter Property="Canvas.Left" Value="0"/>
             <Setter Property="Width" Value="{Binding ElementName=ContentCanvas, Path=ActualWidth}"/>
@@ -29,69 +29,79 @@
                     <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
                 </Setter.Value>
             </Setter>
-        </Style>        
-    </UserControl.Resources>    
+        </Style>
+    </UserControl.Resources>
     <UserControl.Background>
         <SolidColorBrush Color="{DynamicResource Color.Hamburger.Background}" Opacity="0.7"/>
     </UserControl.Background>
 
     <Canvas Name="ContentCanvas">
-        
+
         <Border x:Name="HamburgerMarker" Style="{StaticResource Hamburger.Marker}"/>
 
         <local:HamburgerMenuButton Canvas.Top="0"
-                                    Icon="{StaticResource Icon.Hamburger.Privacy}"
-                                    Text="{DynamicResource Localization.Privacy}"/>
+                                   Icon="{StaticResource Icon.Hamburger.Privacy}"
+                                   Text="{DynamicResource Localization.Privacy}"
+                                   Tag="{StaticResource Tag.Privacy}"/>
 
         <local:HamburgerMenuButton Canvas.Top="50"
-                                    Icon="{StaticResource Icon.Hamburger.Ui}"
-                                    Text="{DynamicResource Localization.Ui}"/>
+                                   Icon="{StaticResource Icon.Hamburger.Ui}"
+                                   Text="{DynamicResource Localization.Ui}"
+                                   Tag="{StaticResource Tag.Ui}"/>
 
         <local:HamburgerMenuButton Canvas.Top="100"
-                                    Icon="{StaticResource Icon.Hamburger.ContextMenu}"
-                                    Text="{DynamicResource Localization.ContextMenu}"/>
+                                   Icon="{StaticResource Icon.Hamburger.ContextMenu}"
+                                   Text="{DynamicResource Localization.ContextMenu}"
+                                   Tag="{StaticResource Tag.ContextMenu}"/>
 
         <local:HamburgerMenuButton Canvas.Top="150"
-                                    Icon="{StaticResource Icon.Hamburger.StartMenu}"
-                                    Text="{DynamicResource Localization.StartMenu}"/>
+                                   Icon="{StaticResource Icon.Hamburger.StartMenu}"
+                                   Text="{DynamicResource Localization.StartMenu}"
+                                   Tag="{StaticResource Tag.StartMenu}"/>
 
         <local:HamburgerMenuButton Canvas.Top="200"
-                                    Icon="{StaticResource Icon.Hamburger.System}"
-                                    Text="{DynamicResource Localization.System}"/>
+                                   Icon="{StaticResource Icon.Hamburger.System}"
+                                   Text="{DynamicResource Localization.System}"
+                                   Tag="{StaticResource Tag.System}"/>
 
         <local:HamburgerMenuButton Canvas.Top="250"
-                                    Icon="{StaticResource Icon.Hamburger.TaskSheduler}"
-                                    Text="{DynamicResource Localization.TaskSheduler}"/>
+                                   Icon="{StaticResource Icon.Hamburger.TaskSheduler}"
+                                   Text="{DynamicResource Localization.TaskSheduler}"
+                                   Tag="{StaticResource Tag.TaskSheduler}"/>
 
         <local:HamburgerMenuButton Canvas.Top="300"
-                                    Icon="{StaticResource Icon.Hamburger.Security}"
-                                    Text="{DynamicResource Localization.Security}"/>
+                                   Icon="{StaticResource Icon.Hamburger.Security}"
+                                   Text="{DynamicResource Localization.Security}"
+                                   Tag="{StaticResource Tag.Security}"/>
 
         <local:HamburgerMenuButton Canvas.Top="350"
-                                    Icon="{StaticResource Icon.Hamburger.Game}"
-                                    Text="{DynamicResource Localization.Game}"/>
+                                   Icon="{StaticResource Icon.Hamburger.Game}"
+                                   Text="{DynamicResource Localization.Game}"
+                                   Tag="{StaticResource Tag.Game}"/>
 
         <local:HamburgerMenuButton Canvas.Top="400"
-                                    Icon="{StaticResource Icon.Hamburgern.Uwp}"
-                                    Text="{DynamicResource Localization.Uwp}"/>
+                                   Icon="{StaticResource Icon.Hamburgern.Uwp}"
+                                   Text="{DynamicResource Localization.Uwp}"
+                                   Tag="{StaticResource Tag.Uwp}"/>
 
         <local:HamburgerMenuButton Canvas.Top="450"
-                                    Icon="{StaticResource Icon.Hamburger.OneDrive}"
-                                    Text="{DynamicResource Localization.OneDrive}"/>
+                                   Icon="{StaticResource Icon.Hamburger.OneDrive}"
+                                   Text="{DynamicResource Localization.OneDrive}"
+                                   Tag="{StaticResource Tag.OneDrive}"/>
 
         <local:HamburgerButton Canvas.Top="525"
                                Icon="{StaticResource Icon.Hamburger.ImportExport}"
                                Text="{DynamicResource Localization.ImportExport}"/>
-        
+
         <local:HamburgerButton Canvas.Top="575"
                                IsEnabled="False"
                                Icon="{StaticResource Icon.Hamburger.Apply}"
                                Text="{DynamicResource Localization.Apply}"/>
 
         <local:HamburgerButton Canvas.Top="650"
-                                   Icon="{StaticResource Icon.Hamburger.Settings}"
-                                   Text="{DynamicResource Localization.Settings}"/>
+                               Icon="{StaticResource Icon.Hamburger.Settings}"
+                               Text="{DynamicResource Localization.Settings}"/>
 
     </Canvas>
-    
+
 </UserControl>

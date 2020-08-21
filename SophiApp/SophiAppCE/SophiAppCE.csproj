@@ -80,6 +80,7 @@
       <DependentUpon>StateSwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
+    <Compile Include="Converters\SwitchBarPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="Views\SwitchBarPanelView.xaml.cs">

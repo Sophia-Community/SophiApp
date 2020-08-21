@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SophiAppCE"
         xmlns:ac="clr-namespace:SophiAppCE.Controls"
         xmlns:views="clr-namespace:SophiAppCE.Views"
         xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
@@ -28,18 +27,18 @@
     </Window.DataContext>
     <Window.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.Window.Foreground}"/>
-    </Window.Foreground>    
+    </Window.Foreground>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
-    <Window.Resources>
+    <Window.Resources>        
         <Style TargetType="Border">
             <Setter Property="BorderThickness" Value="1, 0, 1, 1"/>
             <Setter Property="BorderBrush">
                 <Setter.Value>
                     <SolidColorBrush Color="{DynamicResource Color.Window.Border}"/>
                 </Setter.Value>
-            </Setter>            
+            </Setter>
         </Style>
         <Style x:Key="Window.Panels.Grid.Style" TargetType="Grid">
             <Setter Property="Background">
@@ -47,7 +46,7 @@
                     <SolidColorBrush Color="{DynamicResource Color.Window.Background}"/>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>        
     </Window.Resources>
     <Border>
         <Grid>
@@ -64,60 +63,50 @@
                 <ac:Hamburger Grid.Column="0"/>
                 <Grid Grid.Column="1"
                       Style="{StaticResource Window.Panels.Grid.Style}">
-                    
+
                     <ac:RoundIndicator x:Name="LoadingIndicator" Visibility="Collapsed"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="PrivacyPanelViewControl" 
-                                              Header="{DynamicResource Localization.Privacy}" 
-                                              Visibility="Visible" 
+                                              Header="{DynamicResource Localization.Privacy}"                                              
                                               Tag="{StaticResource Tag.Privacy}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="UiPanelViewControl" 
-                                              Header="{DynamicResource Localization.Ui}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.Ui}"                                               
                                               Tag="{StaticResource Tag.Ui}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="ContextMenuViewControl" 
-                                              Header="{DynamicResource Localization.ContextMenu}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.ContextMenu}"                                               
                                               Tag="{StaticResource Tag.ContextMenu}"/>
 
                     <views:SwitchBarPanelView x:Name="StartMenuPanelViewControl" 
-                                              Header="{DynamicResource Localization.StartMenu}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.StartMenu}"                                               
                                               Tag="{StaticResource Tag.StartMenu}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="SystemPanelViewControl" 
-                                              Header="{DynamicResource Localization.System}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.System}"                                               
                                               Tag="{StaticResource Tag.System}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="TaskShedulerPanelViewControl" 
-                                              Header="{DynamicResource Localization.TaskSheduler}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.TaskSheduler}"                                               
                                               Tag="{StaticResource Tag.TaskSheduler}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="SecurityPanelViewControl" 
-                                              Header="{DynamicResource Localization.Security}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.Security}"                                               
                                               Tag="{StaticResource Tag.Security}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="GamePanelViewControl" 
-                                              Header="{DynamicResource Localization.Game}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.Game}"                                               
                                               Tag="{StaticResource Tag.Game}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="UwpPanelViewControl" 
-                                              Header="{DynamicResource Localization.Uwp}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.Uwp}"                                               
                                               Tag="{StaticResource Tag.Uwp}"/>
-                    
+
                     <views:SwitchBarPanelView x:Name="OneDrivePanelViewControl" 
-                                              Header="{DynamicResource Localization.OneDrive}" 
-                                              Visibility="Collapsed"
+                                              Header="{DynamicResource Localization.OneDrive}"                                               
                                               Tag="{StaticResource Tag.OneDrive}"/>
                 </Grid>
             </Grid>
         </Grid>
-    </Border>    
+    </Border>
 </Window>

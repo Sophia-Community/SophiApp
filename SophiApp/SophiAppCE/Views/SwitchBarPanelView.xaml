@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              xmlns:controls="clr-namespace:SophiAppCE.Controls"
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"                
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             xmlns:views="clr-namespace:SophiAppCE.Views"             
              FontStretch="Normal"
              FontStyle="Normal"       
              FontWeight="Bold"
@@ -18,7 +19,34 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="FilterOdd" Filter="Odd_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
-        <converters:SwitchSelectAllConverter x:Key="SelectAllConverter"/>        
+        <converters:SwitchSelectAllConverter x:Key="SelectAllConverter"/>
+        <converters:SwitchBarPanelVisibilityConverter x:Key="SwitchBarPanelVisibilityConverter"/>
+        <Style TargetType="views:SwitchBarPanelView">
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource SwitchBarPanelVisibilityConverter}" 
+                                  UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="SwitchBarPanelVisibility"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="controls:StateSwitchBar">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextOn" Value="{DynamicResource Localization.SelectAll}"/>
+            <Setter Property="TextOff" Value="{DynamicResource Localization.UnselectAll}"/>
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource SelectAllConverter}">
+                        <Binding Path="SwitchBarModelCollection"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +61,8 @@
                 <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="1"
+            <TextBlock x:Name="DescriptionTextBlock"
+                       Grid.Column="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
@@ -42,11 +71,8 @@
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
             <controls:StateSwitchBar x:Name="SelectAllSwitch"
-                                     Grid.Column="1"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Center"
-                                     TextOn="{DynamicResource Localization.SelectAll}"
-                                     TextOff="{DynamicResource Localization.UnselectAll}"/>            
+                                     MouseLeftButtonDown="SelectAllSwitch_MouseLeftButtonDown"/>
+            
         </Grid>
 
         <ScrollViewer x:Name="ScrollViewer"
@@ -63,7 +89,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel x:Name="OddPanel" Grid.Column="1">
-                    <ItemsControl x:Name="OddItemsControls" ItemsSource="{Binding Source={StaticResource FilterOdd}}">
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource FilterOdd}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding HeaderRu}"

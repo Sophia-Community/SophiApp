@@ -1,19 +1,8 @@
 ﻿using SophiAppCE.Managers;
+using SophiAppCE.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SophiAppCE.Controls
 {
@@ -29,7 +18,9 @@ namespace SophiAppCE.Controls
 
         private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            Canvas.SetTop(HamburgerMarker, GuiManager.GetParentRelativePoint(childrenElement: e.OriginalSource as FrameworkElement, parentElement: ContentCanvas).Y);
+            HamburgerMenuButton hamburgerMenuButton = e.OriginalSource as HamburgerMenuButton;
+            Canvas.SetTop(HamburgerMarker, GuiManager.GetParentRelativePoint(childrenElement: hamburgerMenuButton, parentElement: ContentCanvas).Y);
+            (DataContext as AppViewModel).HamburgerClickCommand.Execute(hamburgerMenuButton.Tag);            
         }
     }
 }

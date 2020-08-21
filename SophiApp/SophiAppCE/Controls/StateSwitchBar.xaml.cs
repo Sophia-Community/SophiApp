@@ -1,19 +1,10 @@
 ﻿using SophiAppCE.Managers;
 using SophiAppCE.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SophiAppCE.Controls
 {
@@ -26,7 +17,7 @@ namespace SophiAppCE.Controls
         private SolidColorBrush uncheckedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Unchecked"));
         private Thickness ellipseRight = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Right");
         private Thickness ellipseLeft = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Left");
-        private bool State { get; set; } = default(bool);
+        public bool State { get; private set; } = default(bool);
 
         public StateSwitchBar()
         {
@@ -42,9 +33,7 @@ namespace SophiAppCE.Controls
 
             SwitchEllipse.Fill = State == true ? checkedBrush : uncheckedBrush;
             Title.Text = State == true ? TextOff : TextOn;            
-            (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString((sender as FrameworkElement).Tag), Convert.ToString(State) });
         }
-
 
         public string TextOff
         {
