@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   schedule:
-    - cron: '45 8 * * *'
+    - cron: '15 9 * * *'
   
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     
     - name: Set Variables
       id: vars
-      run: echo "::set-output name=build_ver::$(("{0}.{1}"-f (Get-Date -Format "yy.M.dd"), (Get-Date).Ticks))
+      run: echo "::set-output name=build_ver::$("{0}.{1}"-f (Get-Date -Format "yy.M.dd"), (Get-Date).Ticks)
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
