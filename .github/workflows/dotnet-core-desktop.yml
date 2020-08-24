@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   schedule:
-    - cron: '50 10 * * *'
+    - cron: '15 11 * * *'
   
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Build App
-      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE" /p:VersionNumber=${{ steps.vars.outputs.build_ver }}
+      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE" /p:VersionNumber=${{ steps.vars.outputs.build_ver }} /p:VersionAssembly=${{ steps.vars.outputs.build_ver }}
       
     - name: Add Scripts Folder
       run: Expand-Archive -Path "PSScripts.zip" -DestinationPath "SophiApp\SophiAppCE\bin\Release"
