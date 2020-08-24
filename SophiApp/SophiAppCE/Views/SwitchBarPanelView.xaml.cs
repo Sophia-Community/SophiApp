@@ -46,7 +46,7 @@ namespace SophiAppCE.Views
 
         private void SelectAllSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            StateSwitchBar stateSwitchBar = sender as StateSwitchBar;
+            LeftStateSwitchBar stateSwitchBar = sender as LeftStateSwitchBar;
             (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State)});
         }
     }

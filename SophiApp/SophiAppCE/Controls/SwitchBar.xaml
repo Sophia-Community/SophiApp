@@ -24,8 +24,8 @@
     <UserControl.Resources>
         <converters:SwitchBarDescriptionConverter x:Key="DescriptionConverter"/>
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf"/>
-            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Width" Value="{StaticResource Control.SwitchBar.Text.Header.Width}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>

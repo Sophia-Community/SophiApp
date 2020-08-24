@@ -20,7 +20,8 @@ namespace SophiAppCE.Controls
         {
             HamburgerMenuButton hamburgerMenuButton = e.OriginalSource as HamburgerMenuButton;
             Canvas.SetTop(HamburgerMarker, GuiManager.GetParentRelativePoint(childrenElement: hamburgerMenuButton, parentElement: ContentCanvas).Y);
-            (DataContext as AppViewModel).HamburgerClickCommand.Execute(hamburgerMenuButton.Tag);            
+            (DataContext as AppViewModel).HamburgerClickCommand.Execute(hamburgerMenuButton.Tag);
+            e.Handled = true;
         }
     }
 }

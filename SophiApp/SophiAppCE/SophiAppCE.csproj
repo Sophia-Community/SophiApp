@@ -76,9 +76,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\RelayCommand.cs" />
-    <Compile Include="Controls\StateSwitchBar.xaml.cs">
-      <DependentUpon>StateSwitchBar.xaml</DependentUpon>
+    <Compile Include="Controls\LeftStateSwitchBar.xaml.cs">
+      <DependentUpon>LeftStateSwitchBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ButtonApplyEnabledConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
     <Compile Include="Converters\SwitchBarPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
@@ -98,11 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\RoundIndicator.xaml">
+    <Page Include="Controls\LeftStateSwitchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\StateSwitchBar.xaml">
+    <Page Include="Controls\RoundIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

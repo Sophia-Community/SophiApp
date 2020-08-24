@@ -32,7 +32,7 @@ namespace SophiAppCE.Controls
         public SwitchBar()
         {
             InitializeComponent();
-        }        
+        }       
 
         public string Header
         {

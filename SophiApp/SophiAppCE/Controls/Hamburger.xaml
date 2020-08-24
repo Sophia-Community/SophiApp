@@ -2,14 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
              xmlns:local="clr-namespace:SophiAppCE.Controls"             
              mc:Ignorable="d"
              Width="{StaticResource Control.Hamburger.Width}"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              local:HamburgerMenuButton.Click="HamburgerMenuButton_Click">
-    <UserControl.Resources>        
+    <UserControl.Resources>
+        <converters:ButtonApplyEnabledConverter x:Key="ButtonApplyEnabledConverter"/>
         <Style TargetType="local:HamburgerMenuButton">
             <Setter Property="Canvas.Left" Value="0"/>
             <Setter Property="Width" Value="{Binding ElementName=ContentCanvas, Path=ActualWidth}"/>
@@ -94,7 +96,7 @@
                                Text="{DynamicResource Localization.ImportExport}"/>
 
         <local:HamburgerButton Canvas.Top="575"
-                               IsEnabled="False"
+                               IsEnabled="{Binding Path=ActiveSwitchBars, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ButtonApplyEnabledConverter}}"
                                Icon="{StaticResource Icon.Hamburger.Apply}"
                                Text="{DynamicResource Localization.Apply}"/>
 

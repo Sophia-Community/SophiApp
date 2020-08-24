@@ -19,7 +19,7 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="FilterOdd" Filter="Odd_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
-        <converters:SwitchSelectAllConverter x:Key="SelectAllConverter"/>
+        <converters:SwitchSelectAllConverter x:Key="SwitchSelectAllConverter"/>
         <converters:SwitchBarPanelVisibilityConverter x:Key="SwitchBarPanelVisibilityConverter"/>
         <Style TargetType="views:SwitchBarPanelView">
             <Setter Property="Visibility">
@@ -32,7 +32,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="controls:StateSwitchBar">
+        <Style TargetType="controls:LeftStateSwitchBar">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -40,7 +40,7 @@
             <Setter Property="TextOff" Value="{DynamicResource Localization.UnselectAll}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource SelectAllConverter}">
+                    <MultiBinding Converter="{StaticResource SwitchSelectAllConverter}">
                         <Binding Path="SwitchBarModelCollection"/>
                         <Binding Path="Tag" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"/>
                     </MultiBinding>
@@ -65,12 +65,12 @@
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
-                       FontWeight="Regular"
+                       FontFamily="pack://application:,,,/Fonts/Montserrat-Bold.ttf"
+                       FontWeight="Bold"
                        FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
-            <controls:StateSwitchBar x:Name="SelectAllSwitch"
+            <controls:LeftStateSwitchBar x:Name="SelectAllSwitch"
                                      MouseLeftButtonDown="SelectAllSwitch_MouseLeftButtonDown"/>
             
         </Grid>

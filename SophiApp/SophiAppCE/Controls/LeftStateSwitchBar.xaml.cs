@@ -1,17 +1,25 @@
 ﻿using SophiAppCE.Managers;
-using SophiAppCE.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace SophiAppCE.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для StateSwitchBar.xaml
+    /// Логика взаимодействия для LeftStateSwitchBar.xaml
     /// </summary>
-    public partial class StateSwitchBar : UserControl
+    public partial class LeftStateSwitchBar : UserControl
     {
         private SolidColorBrush checkedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Checked"));
         private SolidColorBrush uncheckedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Unchecked"));
@@ -19,7 +27,7 @@ namespace SophiAppCE.Controls
         private Thickness ellipseLeft = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Left");
         public bool State { get; private set; } = default(bool);
 
-        public StateSwitchBar()
+        public LeftStateSwitchBar()
         {
             InitializeComponent();
         }
@@ -32,7 +40,7 @@ namespace SophiAppCE.Controls
                                                      animationValue: State == true ? ellipseRight : ellipseLeft);
 
             SwitchEllipse.Fill = State == true ? checkedBrush : uncheckedBrush;
-            Title.Text = State == true ? TextOff : TextOn;            
+            Title.Text = State == true ? TextOff : TextOn;
         }
 
         public string TextOff
@@ -43,7 +51,7 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for TextOff.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextOffProperty =
-            DependencyProperty.Register("TextOff", typeof(string), typeof(StateSwitchBar), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("TextOff", typeof(string), typeof(LeftStateSwitchBar), new PropertyMetadata(default(string)));
 
         public string TextOn
         {
@@ -53,7 +61,6 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for TextOn.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextOnProperty =
-            DependencyProperty.Register("TextOn", typeof(string), typeof(StateSwitchBar), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("TextOn", typeof(string), typeof(LeftStateSwitchBar), new PropertyMetadata(default(string)));
     }
 }
-

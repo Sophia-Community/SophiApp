@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="SophiAppCE.Controls.StateSwitchBar"
+﻿<UserControl x:Class="SophiAppCE.Controls.LeftStateSwitchBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             mc:Ignorable="d" 
              FontFamily="pack://application:,,,/Fonts/Montserrat-Regular.ttf"
              FontWeight="Regular"
              FontSize="{StaticResource Control.ContentPanel.Header.SelectAll.FontSize}" 
@@ -11,7 +12,7 @@
              TextOptions.TextRenderingMode="ClearType"
              Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"
              Background="Transparent">
-    <UserControl.Resources>        
+    <UserControl.Resources>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
         </Style>
@@ -56,7 +57,7 @@
         <StackPanel>
             <TextBlock x:Name="Title"
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextOn}"/>
-            
+
             <Border x:Name="SwitchBorder"
                     Style="{StaticResource Border.Switch}"
                     Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"
