@@ -11,6 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
+    - name: Set Variables
+      id: vars
+      run: echo "::set-output name=build_ver::$(Get-Date -Format 'yy.M.dd')"
+    
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
@@ -22,10 +26,6 @@ jobs:
     
     - name: Create Archive
       run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\Release\*" -DestinationPath "SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip"
-    
-    - name: Set Variables
-      id: vars
-      run: echo "::set-output name=sha_short::$((New-Guid).Guid)"
      
     - name: Create Release
       id: create_release
@@ -33,7 +33,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: version_${{ steps.vars.outputs.sha_short }}
+        tag_name: version_${{ steps.vars.outputs.build_ver }}
         release_name: SophiAppCE
         draft: false
         prerelease: false
