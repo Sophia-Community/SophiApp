@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   schedule:
-    - cron: '30 8 * * *'
+    - cron: '45 8 * * *'
   
 jobs:
   build:
@@ -13,13 +13,13 @@ jobs:
     
     - name: Set Variables
       id: vars
-      run: echo "::set-output name=build_ver::$(Get-Date -Format "yy.M.dd")"
+      run: echo "::set-output name=build_ver::$(("{0}.{1}"-f (Get-Date -Format "yy.M.dd"), (Get-Date).Ticks))
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
     - name: Build App
-      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE" /p:VersionAssembly=${{ steps.vars.outputs.build_ver }}
+      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE" /p:VersionNumber=${{ steps.vars.outputs.build_ver }}
       
     - name: Add Scripts Folder
       run: Expand-Archive -Path "PSScripts.zip" -DestinationPath "SophiApp\SophiAppCE\bin\Release"
