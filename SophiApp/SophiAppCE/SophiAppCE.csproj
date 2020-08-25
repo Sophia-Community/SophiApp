@@ -83,6 +83,7 @@
     <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
     <Compile Include="Converters\SwitchBarPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
+    <Compile Include="Managers\AppManager.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="Views\SwitchBarPanelView.xaml.cs">
       <DependentUpon>SwitchBarPanelView.xaml</DependentUpon>

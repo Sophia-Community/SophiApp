@@ -40,7 +40,7 @@ namespace SophiAppCE.ViewModels
                 {
                     ActiveSwitchBars--;
                 }
-            }                      
+            }
         }
 
         private int activeSwitchBars = default(int);
@@ -55,14 +55,24 @@ namespace SophiAppCE.ViewModels
             }
         }
 
-        private string switchBarPanelVisibility = TagManager.Privacy;
-        public string SwitchBarPanelVisibility
+        private string categoryPanelVisibility = TagManager.Privacy;
+        public string CategoryPanelsVisibility
         {
-            get => switchBarPanelVisibility;
+            get => categoryPanelVisibility;
             set
             {
-                switchBarPanelVisibility = value;
-                OnPropertyChanged("SwitchBarPanelVisibility");                
+                categoryPanelVisibility = value;
+                OnPropertyChanged("CategoryPanelsVisibility");
+            }
+        }
+
+        private double hamburgerMarkerVerticalLocation = default(double);
+        public double HamburgerMarkerVerticalLocation
+        { get => hamburgerMarkerVerticalLocation;
+            set
+            {
+                hamburgerMarkerVerticalLocation = value;
+                OnPropertyChanged("HamburgerMarkerVerticalLocation");
             }
         }
 
@@ -82,15 +92,17 @@ namespace SophiAppCE.ViewModels
                                     .ForEach(s => s.State = state);
         }
 
-        private RelayCommand hamburgerClickCommand;
-        public RelayCommand HamburgerClickCommand
+        private RelayCommand hamburgerMenuButtonClickCommand;
+        public RelayCommand HamburgerMenuButtonClickCommand
         {
-            get => hamburgerClickCommand ?? (hamburgerClickCommand = new RelayCommand(HamburgerClick));
+            get => hamburgerMenuButtonClickCommand ?? (hamburgerMenuButtonClickCommand = new RelayCommand(HamburgerMenuButtonClick));
         }
 
-        private void HamburgerClick(object args)
+        private void HamburgerMenuButtonClick(object args)
         {
-            SwitchBarPanelVisibility = Convert.ToString(args);            
+            HamburgerMenuButton button = args as HamburgerMenuButton;
+            CategoryPanelsVisibility = Convert.ToString(button.Tag);
+            HamburgerMarkerVerticalLocation = AppManager.GetParentElementRelativePoint(button).Y;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

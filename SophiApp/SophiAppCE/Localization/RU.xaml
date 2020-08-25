@@ -15,7 +15,7 @@
     <system:String x:Key="Localization.ImportExport">Импорт/Экспорт</system:String>    
     <system:String x:Key="Localization.Apply">Применить</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
-    <system:String x:Key="Localization.SelectAll">Выделить всё</system:String>
-    <system:String x:Key="Localization.UnselectAll">Отменить выделение</system:String>
-    <system:String x:Key="Localization.Loading">Загрузка</system:String>
+    <system:String x:Key="Localization.SelectAll">Выбрать всё</system:String>
+    <system:String x:Key="Localization.UnselectAll">Отменить выбор</system:String>
+    <system:String x:Key="Localization.Loading">Загрузка</system:String>    
 </ResourceDictionary>

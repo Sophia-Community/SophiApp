@@ -18,11 +18,7 @@ namespace SophiAppCE.Managers
     internal class GuiManager
     {
         [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
-        internal static Point GetParentRelativePoint(FrameworkElement childrenElement, FrameworkElement parentElement)
-        {
-            return childrenElement.TranslatePoint(new Point(0, 0), parentElement);
-        }
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);       
         
         internal enum AccentState
         {

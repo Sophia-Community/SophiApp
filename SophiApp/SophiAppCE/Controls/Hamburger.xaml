@@ -24,7 +24,7 @@
             <Setter Property="Width" Value="{StaticResource Control.Hamburger.Selector.Width}"/>
             <Setter Property="Height" Value="{StaticResource Control.Hamburger.Button.Height}"/>
             <Setter Property="Panel.ZIndex" Value="10"/>
-            <Setter Property="Canvas.Top" Value="0"/>
+            <Setter Property="Canvas.Top" Value="{Binding Path=HamburgerMarkerVerticalLocation, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
             <Setter Property="Canvas.Left" Value="0"/>
             <Setter Property="Background">
                 <Setter.Value>

@@ -30,5 +30,5 @@
     <system:Double x:Key="Control.RoundIndicator.BigEllipse.Size">95</system:Double>
     <system:Double x:Key="Control.RoundIndicator.MediumEllipse.Size">75</system:Double>
     <system:Double x:Key="Control.RoundIndicator.SmallEllipse.Size">7</system:Double>
-    <system:Double x:Key="Control.RoundIndicator.FontSize">14</system:Double>
+    <system:Double x:Key="Control.RoundIndicator.FontSize">14</system:Double>    
 </ResourceDictionary>

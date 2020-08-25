@@ -62,7 +62,7 @@
                 </Grid.ColumnDefinitions>
                 <ac:Hamburger Grid.Column="0"/>
                 <Grid Grid.Column="1"
-                      Style="{StaticResource Window.Panels.Grid.Style}">
+                      Style="{StaticResource Window.Panels.Grid.Style}">                    
 
                     <ac:RoundIndicator x:Name="LoadingIndicator" Visibility="Collapsed"/>
 

@@ -11,7 +11,6 @@ namespace SophiAppCE.Models
     public class SwitchBarModel : INotifyPropertyChanged
     {
         private bool state = default(bool);
-
         public bool State
         {
             get => state;
@@ -21,7 +20,6 @@ namespace SophiAppCE.Models
                 OnPropertyChanged("State");
             }
         }
-
         public string Id { get; set; }
         public string Path { get; set; }
         public string HeaderEn { get; set; }

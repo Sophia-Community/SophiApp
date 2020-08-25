@@ -26,7 +26,7 @@
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource SwitchBarPanelVisibilityConverter}" 
                                   UpdateSourceTrigger="PropertyChanged">
-                        <Binding Path="SwitchBarPanelVisibility"/>
+                        <Binding Path="CategoryPanelsVisibility"/>
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                     </MultiBinding>
                 </Setter.Value>
@@ -48,6 +48,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
