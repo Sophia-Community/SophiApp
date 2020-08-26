@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"             
              xmlns:controls="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
              xmlns:views="clr-namespace:SophiAppCE.Views"             
@@ -21,7 +21,17 @@
         <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <converters:SwitchSelectAllConverter x:Key="SwitchSelectAllConverter"/>
         <converters:SwitchBarPanelVisibilityConverter x:Key="SwitchBarPanelVisibilityConverter"/>
+        <converters:CategoryPanelScrollToUpConverters x:Key="CategoryPanelScrollToUpConverters"/>
         <Style TargetType="views:SwitchBarPanelView">
+            <Setter Property="ScrollToUpper">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource CategoryPanelScrollToUpConverters}"
+                                  UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="CategoryPanelScrollToUp"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource SwitchBarPanelVisibilityConverter}" 
@@ -31,6 +41,16 @@
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Visibility}" Value="Visible">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource Animation.ContentPanel.Visible}"/>
+                    </DataTrigger.EnterActions>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Visibility}" Value="Collapsed">
+                    <Setter Property="Margin" Value="0, 25, 0, 0"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="controls:LeftStateSwitchBar">
             <Setter Property="Grid.Column" Value="1"/>
@@ -48,7 +68,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -72,14 +92,15 @@
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
             <controls:LeftStateSwitchBar x:Name="SelectAllSwitch"
-                                     MouseLeftButtonDown="SelectAllSwitch_MouseLeftButtonDown"/>
-            
+                                         MouseLeftButtonDown="SelectAllSwitch_MouseLeftButtonDown"/>
+
         </Grid>
 
-        <ScrollViewer x:Name="ScrollViewer"
+        <ScrollViewer x:Name="ContentPanelScrollViewer"
                       Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>

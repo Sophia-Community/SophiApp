@@ -76,6 +76,17 @@ namespace SophiAppCE.ViewModels
             }
         }
 
+        private string categoryPanelScrollToUp = string.Empty;
+        public string CategoryPanelScrollToUp
+        {
+            get => categoryPanelScrollToUp;
+            set
+            {
+                categoryPanelScrollToUp = value;
+                OnPropertyChanged("CategoryPanelScrollToUp");
+            }
+        }
+
         private RelayCommand selectAllCommand;
         public RelayCommand SelectAllCommand
         {
@@ -103,6 +114,7 @@ namespace SophiAppCE.ViewModels
             HamburgerMenuButton button = args as HamburgerMenuButton;
             CategoryPanelsVisibility = Convert.ToString(button.Tag);
             HamburgerMarkerVerticalLocation = AppManager.GetParentElementRelativePoint(button).Y;
+            CategoryPanelScrollToUp = Convert.ToString(button.Tag);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

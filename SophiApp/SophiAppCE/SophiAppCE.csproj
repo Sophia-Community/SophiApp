@@ -80,6 +80,7 @@
       <DependentUpon>LeftStateSwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ButtonApplyEnabledConverter.cs" />
+    <Compile Include="Converters\CategoryPanelScrollToUpConverters.cs" />
     <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
     <Compile Include="Converters\SwitchBarPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />

@@ -49,5 +49,18 @@ namespace SophiAppCE.Views
             LeftStateSwitchBar stateSwitchBar = sender as LeftStateSwitchBar;
             (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State)});
         }
+
+        public bool ScrollToUpper
+        {
+            get { return (bool)GetValue(ScrollToUpperProperty); }
+            set { SetValue(ScrollToUpperProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ScrollToUpper.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ScrollToUpperProperty =
+            DependencyProperty.Register("ScrollToUpper", typeof(bool), typeof(SwitchBarPanelView), new PropertyMetadata(OnScrollToUpperChanged));
+
+        private static void OnScrollToUpperChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as SwitchBarPanelView).ContentPanelScrollViewer.ScrollToHome();
+
     }
 }

@@ -4,18 +4,17 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 
 namespace SophiAppCE.Converters
 {
-    class SwitchBarPanelVisibilityConverter : IMultiValueConverter
+    class CategoryPanelScrollToUpConverters : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             string clickedButtonTag = System.Convert.ToString(values.FirstOrDefault());
             string viewPanelTag = System.Convert.ToString(values.LastOrDefault());
-            return clickedButtonTag == viewPanelTag ? Visibility.Visible : Visibility.Collapsed;
+            return clickedButtonTag == viewPanelTag ? true : false;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

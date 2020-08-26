@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
     <Storyboard x:Key="Animation.HamburgerButton.Click">
         <ThicknessAnimation Storyboard.TargetName="ContentPanel" 
                             Storyboard.TargetProperty="Margin" 
@@ -39,5 +38,12 @@
             <DiscreteColorKeyFrame KeyTime="33%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Start}"/>
             <DiscreteColorKeyFrame KeyTime="66%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Finish}"/>
         </ColorAnimationUsingKeyFrames>
-    </Storyboard>    
+    </Storyboard>
+    <Storyboard x:Key="Animation.ContentPanel.Visible">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                            From="0, 25, 0, 0" 
+                            To="0, 0, 0, 0"
+                            Duration="0:0:0.2"
+                            SpeedRatio="5"/>
+    </Storyboard>
 </ResourceDictionary>
