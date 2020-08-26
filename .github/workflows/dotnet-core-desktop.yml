@@ -13,7 +13,7 @@ jobs:
     
     - name: Set Variables
       id: vars
-      run: echo "::set-output name=build_ver::$(Get-Date -Format 'yy.M.dd')"
+      run: echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'yy.M.dd'))"
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
