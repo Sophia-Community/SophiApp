@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace SophiAppCE.Converters
 {
-    class CategoryPanelScrollToUpConverters : IMultiValueConverter
+    class CategoryPanelScrollToUpConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

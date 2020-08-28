@@ -1,5 +1,6 @@
 ﻿using SophiAppCE.Classes;
 using SophiAppCE.Controls;
+using SophiAppCE.General;
 using SophiAppCE.Managers;
 using SophiAppCE.Models;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,32 +17,41 @@ namespace SophiAppCE.ViewModels
 {
     class AppViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<SwitchBarModel> SwitchBarModelCollection { get; set; } = new ObservableCollection<SwitchBarModel>(GuiManager.ParseJsonData());
+        public ObservableCollection<SwitchBarModel> SwitchBarModelCollection { get; set; }
 
         public AppViewModel()
         {
-            //TODO: Need refactoring!
-            SwitchBarModelCollection.ToList()
-                                    .ForEach(s =>
-                                    {
-                                        s.PropertyChanged += SwitchBarModel_PropertyChanged;
-                                    });
+            InitializationCollections();
+        }
+
+        private void InitializationCollections()
+        {
+            IEnumerable<JsonData> jsonRaw = AppManager.ParseJsonData();
+            IEnumerable<JsonData> jsonParsed = jsonRaw.Where(j => AppManager.FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path), hashValue: j.Sha256) == true);
+            IEnumerable<SwitchBarModel> switchBars = AppManager.GetControlByType<SwitchBarModel>(controlsCollections: jsonParsed, controlType: ControlType.Switch);
+            SwitchBarModelCollection = new ObservableCollection<SwitchBarModel>(switchBars);
+
+            SwitchBarModelCollection.ToList().ForEach(s => s.PropertyChanged += SwitchBarModel_PropertyChanged);
         }
 
         private void SwitchBarModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "State")
+            switch (e.PropertyName)
             {
-                if ((sender as SwitchBarModel).State == true)
-                {
-                    ActiveSwitchBars++;
-                }
+                case "State":
+                    {
+                        if ((sender as SwitchBarModel).State == true)
+                            ActiveSwitchBars++;
 
-                else
-                {
-                    ActiveSwitchBars--;
-                }
-            }
+                        else
+                            ActiveSwitchBars--;
+
+                        break;
+                    }
+                
+                default:
+                    break;
+            }            
         }
 
         private int activeSwitchBars = default(int);

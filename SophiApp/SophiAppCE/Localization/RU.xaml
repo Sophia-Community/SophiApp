@@ -11,8 +11,7 @@
     <system:String x:Key="Localization.Security">Безопасность</system:String>
     <system:String x:Key="Localization.Game">Игры</system:String>
     <system:String x:Key="Localization.Uwp">UWP приложения</system:String>
-    <system:String x:Key="Localization.OneDrive">OneDrive</system:String>
-    <system:String x:Key="Localization.ImportExport">Импорт/Экспорт</system:String>    
+    <system:String x:Key="Localization.OneDrive">OneDrive</system:String>    
     <system:String x:Key="Localization.Apply">Применить</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.SelectAll">Выбрать всё</system:String>

@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace SophiAppCE.Converters
 {
-    class SwitchBarPanelVisibilityConverter : IMultiValueConverter
+    class CategoryPanelVisibilityConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

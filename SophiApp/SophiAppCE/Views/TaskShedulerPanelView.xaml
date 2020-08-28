@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="SophiAppCE.Views.SwitchBarPanelView"
+﻿<UserControl x:Class="SophiAppCE.Views.TaskShedulerPanelView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Views"
              xmlns:controls="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
              xmlns:views="clr-namespace:SophiAppCE.Views"             
@@ -20,13 +20,12 @@
         <CollectionViewSource x:Key="FilterOdd" Filter="Odd_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <CollectionViewSource x:Key="FilterEven" Filter="Even_Filter" Source="{Binding SwitchBarModelCollection}"/>
         <converters:SwitchSelectAllConverter x:Key="SwitchSelectAllConverter"/>
-        <converters:SwitchBarPanelVisibilityConverter x:Key="SwitchBarPanelVisibilityConverter"/>
-        <converters:CategoryPanelScrollToUpConverters x:Key="CategoryPanelScrollToUpConverters"/>
-        <Style TargetType="views:SwitchBarPanelView">
+        <converters:CategoryPanelVisibilityConverter x:Key="CategoryPanelVisibilityConverter"/>
+        <converters:CategoryPanelScrollToUpConverter x:Key="CategoryPanelScrollToUpConverter"/>
+        <Style TargetType="views:TaskShedulerPanelView">
             <Setter Property="ScrollToUpper">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource CategoryPanelScrollToUpConverters}"
-                                  UpdateSourceTrigger="PropertyChanged">
+                    <MultiBinding Converter="{StaticResource CategoryPanelScrollToUpConverter}" UpdateSourceTrigger="PropertyChanged">
                         <Binding Path="CategoryPanelScrollToUp"/>
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                     </MultiBinding>
@@ -34,8 +33,7 @@
             </Setter>
             <Setter Property="Visibility">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource SwitchBarPanelVisibilityConverter}" 
-                                  UpdateSourceTrigger="PropertyChanged">
+                    <MultiBinding Converter="{StaticResource CategoryPanelVisibilityConverter}" UpdateSourceTrigger="PropertyChanged">
                         <Binding Path="CategoryPanelsVisibility"/>
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                     </MultiBinding>

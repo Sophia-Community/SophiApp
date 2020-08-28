@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ac="clr-namespace:SophiAppCE.Controls"
+        xmlns:controls="clr-namespace:SophiAppCE.Controls"
         xmlns:views="clr-namespace:SophiAppCE.Views"
         xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
         mc:Ignorable="d"        
@@ -21,7 +21,7 @@
         MinHeight="{StaticResource Control.MainWindow.MinHeight}"
         MinWidth="{StaticResource Control.MainWindow.MinMaxWidth}" 
         MaxWidth="{StaticResource Control.MainWindow.MinMaxWidth}"
-        Loaded="MainWindow_Loaded">
+        Loaded="MainWindow_Loaded" StateChanged="MainWindow_StateChanged">
     <Window.DataContext>
         <viewModel:AppViewModel/>
     </Window.DataContext>
@@ -54,55 +54,53 @@
                 <RowDefinition Height="{StaticResource Control.MainWindow.Title.Height}"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ac:TitleBar Grid.Row="0"/>
+            <controls:TitleBar Grid.Row="0"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ac:Hamburger Grid.Column="0"/>
+                <controls:Hamburger Grid.Column="0"/>
                 <Grid Grid.Column="1"
-                      Style="{StaticResource Window.Panels.Grid.Style}">                    
+                      Style="{StaticResource Window.Panels.Grid.Style}">
 
-                    <ac:RoundIndicator x:Name="LoadingIndicator" Visibility="Collapsed"/>
-
-                    <views:SwitchBarPanelView x:Name="PrivacyPanelViewControl" 
+                    <views:PrivacyPanelView x:Name="PrivacyPanelViewControl" 
                                               Header="{DynamicResource Localization.Privacy}"                                              
                                               Tag="{StaticResource Tag.Privacy}"/>
 
-                    <views:SwitchBarPanelView x:Name="UiPanelViewControl" 
+                    <views:UiPanelView x:Name="UiPanelViewControl" 
                                               Header="{DynamicResource Localization.Ui}"                                               
                                               Tag="{StaticResource Tag.Ui}"/>
 
-                    <views:SwitchBarPanelView x:Name="ContextMenuViewControl" 
+                    <views:ContextMenuPanelView x:Name="ContextMenuViewControl" 
                                               Header="{DynamicResource Localization.ContextMenu}"                                               
                                               Tag="{StaticResource Tag.ContextMenu}"/>
 
-                    <views:SwitchBarPanelView x:Name="StartMenuPanelViewControl" 
+                    <views:StartMenuPanelView x:Name="StartMenuPanelViewControl" 
                                               Header="{DynamicResource Localization.StartMenu}"                                               
                                               Tag="{StaticResource Tag.StartMenu}"/>
 
-                    <views:SwitchBarPanelView x:Name="SystemPanelViewControl" 
+                    <views:SystemPanelView x:Name="SystemPanelViewControl" 
                                               Header="{DynamicResource Localization.System}"                                               
                                               Tag="{StaticResource Tag.System}"/>
 
-                    <views:SwitchBarPanelView x:Name="TaskShedulerPanelViewControl" 
+                    <views:TaskShedulerPanelView x:Name="TaskShedulerPanelViewControl" 
                                               Header="{DynamicResource Localization.TaskSheduler}"                                               
                                               Tag="{StaticResource Tag.TaskSheduler}"/>
 
-                    <views:SwitchBarPanelView x:Name="SecurityPanelViewControl" 
+                    <views:SecurityPanelView x:Name="SecurityPanelViewControl" 
                                               Header="{DynamicResource Localization.Security}"                                               
                                               Tag="{StaticResource Tag.Security}"/>
 
-                    <views:SwitchBarPanelView x:Name="GamePanelViewControl" 
+                    <views:GamePanelView x:Name="GamePanelViewControl" 
                                               Header="{DynamicResource Localization.Game}"                                               
                                               Tag="{StaticResource Tag.Game}"/>
 
-                    <views:SwitchBarPanelView x:Name="UwpPanelViewControl" 
+                    <views:UwpPanelView x:Name="UwpPanelViewControl" 
                                               Header="{DynamicResource Localization.Uwp}"                                               
                                               Tag="{StaticResource Tag.Uwp}"/>
 
-                    <views:SwitchBarPanelView x:Name="OneDrivePanelViewControl" 
+                    <views:OneDrivePanelView x:Name="OneDrivePanelViewControl" 
                                               Header="{DynamicResource Localization.OneDrive}"                                               
                                               Tag="{StaticResource Tag.OneDrive}"/>
                 </Grid>

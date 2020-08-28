@@ -56,7 +56,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,14 +82,42 @@
       <DependentUpon>LeftStateSwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ButtonApplyEnabledConverter.cs" />
-    <Compile Include="Converters\CategoryPanelScrollToUpConverters.cs" />
+    <Compile Include="Converters\CategoryPanelScrollToUpConverter.cs" />
+    <Compile Include="Converters\CategoryPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
-    <Compile Include="Converters\SwitchBarPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
+    <Compile Include="General\ControlType.cs" />
     <Compile Include="Managers\AppManager.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
-    <Compile Include="Views\SwitchBarPanelView.xaml.cs">
-      <DependentUpon>SwitchBarPanelView.xaml</DependentUpon>
+    <Compile Include="Views\ContextMenuPanelView.xaml.cs">
+      <DependentUpon>ContextMenuPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GamePanelView.xaml.cs">
+      <DependentUpon>GamePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OneDrivePanelView.xaml.cs">
+      <DependentUpon>OneDrivePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrivacyPanelView.xaml.cs">
+      <DependentUpon>PrivacyPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SecurityPanelView.xaml.cs">
+      <DependentUpon>SecurityPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartMenuPanelView.xaml.cs">
+      <DependentUpon>StartMenuPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemPanelView.xaml.cs">
+      <DependentUpon>SystemPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskShedulerPanelView.xaml.cs">
+      <DependentUpon>TaskShedulerPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UiPanelView.xaml.cs">
+      <DependentUpon>UiPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UwpPanelView.xaml.cs">
+      <DependentUpon>UwpPanelView.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\Hamburger.xaml">
       <SubType>Designer</SubType>
@@ -176,7 +206,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SwitchBarPanelView.xaml">
+    <Page Include="Views\ContextMenuPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GamePanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OneDrivePanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrivacyPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SecurityPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartMenuPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskShedulerPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UiPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UwpPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
