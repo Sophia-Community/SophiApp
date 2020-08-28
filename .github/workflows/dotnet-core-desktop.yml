@@ -19,7 +19,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Build App
-      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true;DeployDefaultTarget=WebPublish;WebPublishMethod=FileSystem;DeleteExistingFiles=True;Platform="Any CPU";Configuration="Release";PublishUrl="SophiAppCE"
+      run: msbuild.exe SophiApp/SophiApp.sln /t:SophiAppCE /nologo /nr:false /p:DeployOnBuild=true;WebPublishMethod=FileSystem;DeleteExistingFiles=True;Platform="Any CPU";Configuration="Release";PublishUrl="SophiAppCE"
       
     - name: Add Scripts Folder
       run: Expand-Archive -Path "PSScripts.zip" -DestinationPath "SophiApp\SophiAppCE\bin\Release"
