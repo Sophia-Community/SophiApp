@@ -92,12 +92,12 @@
                                    Text="{DynamicResource Localization.OneDrive}"
                                    Tag="{StaticResource Tag.OneDrive}"/>
 
-            <local:HamburgerButton Canvas.Top="500"
+            <local:HamburgerButton Canvas.Top="550"
                                IsEnabled="{Binding Path=ActiveSwitchBars, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ButtonApplyEnabledConverter}}"
                                Icon="{StaticResource Icon.Hamburger.Apply}"
                                Text="{DynamicResource Localization.Apply}"/>
 
-            <local:HamburgerButton Canvas.Top="550"
+            <local:HamburgerButton Canvas.Bottom="0"
                                Icon="{StaticResource Icon.Hamburger.Settings}"
                                Text="{DynamicResource Localization.Settings}"/>
 

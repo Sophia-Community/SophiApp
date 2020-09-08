@@ -9,24 +9,19 @@
              TextOptions.TextRenderingMode="ClearType"
              Width="{StaticResource Control.RoundIndicator.Size}"
              Height="{StaticResource Control.RoundIndicator.Size}"             
-             Background="Transparent"
-             FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"
-             FontSize="{StaticResource Control.RoundIndicator.FontSize}"
-             FontStretch="Normal"
-             FontWeight="Normal"
-             FontStyle="Normal">
+             Background="Transparent">
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="UserControl.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource Animation.RoundIndicator.Loaded}"/>            
+            <BeginStoryboard Storyboard="{StaticResource Animation.RoundIndicator.Visible}"/>
         </EventTrigger>
     </UserControl.Triggers>
     <UserControl.Resources>
         <Style x:Key="BigEllipse" TargetType="Ellipse">
             <Setter Property="Width" Value="{StaticResource Control.RoundIndicator.BigEllipse.Size}"/>
-            <Setter Property="Height" Value="{StaticResource Control.RoundIndicator.BigEllipse.Size}"/>            
+            <Setter Property="Height" Value="{StaticResource Control.RoundIndicator.BigEllipse.Size}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>            
-            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>            
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
             <Setter Property="Fill">
                 <Setter.Value>
                     <SolidColorBrush Color="{DynamicResource Color.RoundIndicator.BigEllipse.Background}"/>
@@ -35,7 +30,7 @@
         </Style>
         <Style x:Key="MediumEllipse" TargetType="Ellipse" BasedOn="{StaticResource BigEllipse}">
             <Setter Property="Width" Value="{StaticResource Control.RoundIndicator.MediumEllipse.Size}"/>
-            <Setter Property="Height" Value="{StaticResource Control.RoundIndicator.MediumEllipse.Size}"/>            
+            <Setter Property="Height" Value="{StaticResource Control.RoundIndicator.MediumEllipse.Size}"/>
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect Color="{DynamicResource Color.RoundIndicator.MediumEllipse.Shadow}"
@@ -69,18 +64,18 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="Margin" Value="0, 35, 0, 0"/>            
+            <Setter Property="Margin" Value="0, 45, 0, 0"/>
         </Style>
     </UserControl.Resources>
     <Grid>
         <Ellipse Style="{StaticResource BigEllipse}"/>
         <Ellipse Style="{StaticResource MediumEllipse}"/>
         <Grid>
-            <TextBlock Text="{DynamicResource Localization.Loading}"/>
+            <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Text}"/>
             <StackPanel>
-                <Ellipse Name="Ellipse1" Style="{StaticResource SmallEllipse}"/>
-                <Ellipse Name="Ellipse2" Style="{StaticResource SmallEllipse}"/>
-                <Ellipse Name="Ellipse3" Style="{StaticResource SmallEllipse}"/>
+                <Ellipse Name="Ellipse_1" Style="{StaticResource SmallEllipse}"/>
+                <Ellipse Name="Ellipse_2" Style="{StaticResource SmallEllipse}"/>
+                <Ellipse Name="Ellipse_3" Style="{StaticResource SmallEllipse}"/>
             </StackPanel>
         </Grid>
     </Grid>

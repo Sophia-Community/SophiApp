@@ -1303,17 +1303,17 @@
         "Sha256":  "43A017CCE51BE52B6A09D9A4669159ABCB345BDCAD16661DBAA3A12BB7D050A3",
         "Tag":  "Security"
     },
-  {
-    "Id": "7x6",
-    "Path": "Scripts\\7. Security\\6. Create Process Creation Event Viewer Custom View.ps1",
-    "HeaderEn": "Create \"Process Creation\" Event Viewer Custom View",
-    "HeaderRu": "Создать настаиваемое представление \"Создание процесса\" в Настраиваемых представлениях",
-    "DescriptionEn": "Viewing Process Creation and Command-line Auditing Events",
-    "DescriptionRu": "Просмотр события содания нового процесса и аудит командной строки",
-    "Type": "SwitchBar",
-    "Sha256": "4134CA9A0B624B2C56C56681BF6C10BBB542607ADD95EE08DEAF8E3A7F818650",
-    "Tag": "Security"
-  },
+    {
+        "Id":  "7x6",
+        "Path":  "Scripts\\7. Security\\6. Create Process Creation Event Viewer Custom View.ps1",
+        "HeaderEn":  "Create \"Process Creation\" Event Viewer Custom View",
+        "HeaderRu":  "Создать настаиваемое представление \"Создание процесса\" в Настраиваемых представлениях",
+        "DescriptionEn":  "Viewing Process Creation and Command-line Auditing Events",
+        "DescriptionRu":  "Просмотр события содания нового процесса и аудит командной строки",
+        "Type":  "SwitchBar",
+        "Sha256":  "4134CA9A0B624B2C56C56681BF6C10BBB542607ADD95EE08DEAF8E3A7F818650",
+        "Tag":  "Security"
+    },
     {
         "Id":  "7x7",
         "Path":  "Scripts\\7. Security\\7. Turn on logging for all Windows PowerShell modules.ps1",
@@ -1455,6 +1455,6 @@
         "DescriptionRu":  "",
         "Type":  "SwitchBar",
         "Sha256":  "10C5BCEE3EF3DBA7DA96143FE52E5C7AA8764E8FACF4D52F63CA0B3A9FBE4838",
-        "Tag":  "OneDrive"
+        "Tag":  "Privacy"
     }
 ]

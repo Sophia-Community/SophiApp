@@ -31,7 +31,7 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
-    <Window.Resources>        
+    <Window.Resources>
         <Style TargetType="Border">
             <Setter Property="BorderThickness" Value="1, 0, 1, 1"/>
             <Setter Property="BorderBrush">
@@ -46,7 +46,7 @@
                     <SolidColorBrush Color="{DynamicResource Color.Window.Background}"/>
                 </Setter.Value>
             </Setter>
-        </Style>        
+        </Style>
     </Window.Resources>
     <Border>
         <Grid>
@@ -64,45 +64,48 @@
                 <Grid Grid.Column="1"
                       Style="{StaticResource Window.Panels.Grid.Style}">
 
+                    <views:LoadingPanelView x:Name="LoadingPanelViewControl"
+                                            Tag="{StaticResource Tag.Loading}"/>
+
                     <views:PrivacyPanelView x:Name="PrivacyPanelViewControl" 
                                               Header="{DynamicResource Localization.Privacy}"                                              
                                               Tag="{StaticResource Tag.Privacy}"/>
 
                     <views:UiPanelView x:Name="UiPanelViewControl" 
-                                              Header="{DynamicResource Localization.Ui}"                                               
-                                              Tag="{StaticResource Tag.Ui}"/>
+                                       Header="{DynamicResource Localization.Ui}"                                               
+                                       Tag="{StaticResource Tag.Ui}"/>
 
                     <views:ContextMenuPanelView x:Name="ContextMenuViewControl" 
-                                              Header="{DynamicResource Localization.ContextMenu}"                                               
-                                              Tag="{StaticResource Tag.ContextMenu}"/>
+                                                Header="{DynamicResource Localization.ContextMenu}"                                               
+                                                Tag="{StaticResource Tag.ContextMenu}"/>
 
                     <views:StartMenuPanelView x:Name="StartMenuPanelViewControl" 
                                               Header="{DynamicResource Localization.StartMenu}"                                               
                                               Tag="{StaticResource Tag.StartMenu}"/>
 
                     <views:SystemPanelView x:Name="SystemPanelViewControl" 
-                                              Header="{DynamicResource Localization.System}"                                               
-                                              Tag="{StaticResource Tag.System}"/>
+                                           Header="{DynamicResource Localization.System}"                                               
+                                           Tag="{StaticResource Tag.System}"/>
 
                     <views:TaskShedulerPanelView x:Name="TaskShedulerPanelViewControl" 
-                                              Header="{DynamicResource Localization.TaskSheduler}"                                               
-                                              Tag="{StaticResource Tag.TaskSheduler}"/>
+                                                 Header="{DynamicResource Localization.TaskSheduler}"                                               
+                                                 Tag="{StaticResource Tag.TaskSheduler}"/>
 
                     <views:SecurityPanelView x:Name="SecurityPanelViewControl" 
-                                              Header="{DynamicResource Localization.Security}"                                               
-                                              Tag="{StaticResource Tag.Security}"/>
+                                             Header="{DynamicResource Localization.Security}"                                               
+                                             Tag="{StaticResource Tag.Security}"/>
 
                     <views:GamePanelView x:Name="GamePanelViewControl" 
-                                              Header="{DynamicResource Localization.Game}"                                               
-                                              Tag="{StaticResource Tag.Game}"/>
+                                         Header="{DynamicResource Localization.Game}"                                               
+                                         Tag="{StaticResource Tag.Game}"/>
 
                     <views:UwpPanelView x:Name="UwpPanelViewControl" 
-                                              Header="{DynamicResource Localization.Uwp}"                                               
-                                              Tag="{StaticResource Tag.Uwp}"/>
+                                        Header="{DynamicResource Localization.Uwp}"                                               
+                                        Tag="{StaticResource Tag.Uwp}"/>
 
                     <views:OneDrivePanelView x:Name="OneDrivePanelViewControl" 
-                                              Header="{DynamicResource Localization.OneDrive}"                                               
-                                              Tag="{StaticResource Tag.OneDrive}"/>
+                                             Header="{DynamicResource Localization.OneDrive}"                                               
+                                             Tag="{StaticResource Tag.OneDrive}"/>
                 </Grid>
             </Grid>
         </Grid>

@@ -14,25 +14,25 @@
                             To="{DynamicResource Control.Switch.Ellipse.State.Left}" 
                             Duration="0:0:0.2"/>
     </Storyboard>
-    <Storyboard x:Key="Animation.RoundIndicator.Loaded"
+    <Storyboard x:Key="Animation.RoundIndicator.Visible"
                 RepeatBehavior="Forever"
                 BeginTime="00:00:00"
                 Duration="00:00:1">
-        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse1"
+        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse_1"
                                       Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)">
             <DiscreteColorKeyFrame KeyTime="0%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Finish}"/>
             <DiscreteColorKeyFrame KeyTime="33%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Intermediate}"/>
             <DiscreteColorKeyFrame KeyTime="66%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Start}"/>
 
         </ColorAnimationUsingKeyFrames>
-        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse2"
+        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse_2"
                                       Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)">
             <DiscreteColorKeyFrame KeyTime="0%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Start}"/>
             <DiscreteColorKeyFrame KeyTime="33%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Finish}"/>
             <DiscreteColorKeyFrame KeyTime="66%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Intermediate}"/>
 
         </ColorAnimationUsingKeyFrames>
-        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse3"
+        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Ellipse_3"
                                       Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)">
             <DiscreteColorKeyFrame KeyTime="0%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Intermediate}"/>
             <DiscreteColorKeyFrame KeyTime="33%" Value="{DynamicResource Color.RoundIndicator.SmallEllipse.Background.Animation.Start}"/>
@@ -45,5 +45,5 @@
                             To="0, 0, 0, 0"
                             Duration="0:0:0.2"
                             SpeedRatio="5"/>
-    </Storyboard>
+    </Storyboard>    
 </ResourceDictionary>

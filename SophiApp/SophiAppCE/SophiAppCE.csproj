@@ -86,7 +86,7 @@
     <Compile Include="Converters\CategoryPanelVisibilityConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
-    <Compile Include="General\ControlType.cs" />
+    <Compile Include="Managers\ControlType.cs" />
     <Compile Include="Managers\AppManager.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="Views\ContextMenuPanelView.xaml.cs">
@@ -94,6 +94,9 @@
     </Compile>
     <Compile Include="Views\GamePanelView.xaml.cs">
       <DependentUpon>GamePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadingPanelView.xaml.cs">
+      <DependentUpon>LoadingPanelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OneDrivePanelView.xaml.cs">
       <DependentUpon>OneDrivePanelView.xaml</DependentUpon>
@@ -211,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GamePanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoadingPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

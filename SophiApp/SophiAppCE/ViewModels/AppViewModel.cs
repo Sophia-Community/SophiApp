@@ -66,7 +66,7 @@ namespace SophiAppCE.ViewModels
             }
         }
 
-        private string categoryPanelVisibility = TagManager.Privacy;
+        private string categoryPanelVisibility = TagManager.Loading;
         public string CategoryPanelsVisibility
         {
             get => categoryPanelVisibility;

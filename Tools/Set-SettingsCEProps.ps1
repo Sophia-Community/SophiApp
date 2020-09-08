@@ -1,6 +1,5 @@
 ﻿Clear-Host
 $currentDir = $PSCommandPath | Split-Path -Parent | Split-Path -Parent
-#$currentDir = (Split-Path -Path $PSCommandPath -Qualifier) + "\"
 $scriptsDir = "{0}\SophiApp\SophiAppCE\bin\Debug" -f $currentDir
 $settingsJson = "{0}\Settings\SettingsCE.json" -f $currentDir
 $tags = "", "Privacy", "Ui", "ContextMenu", "StartMenu", "System", "TaskSheduler", "Security", "Game", "Uwp", "OneDrive"
