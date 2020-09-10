@@ -22,6 +22,7 @@
         <converters:SwitchSelectAllConverter x:Key="SwitchSelectAllConverter"/>
         <converters:CategoryPanelVisibilityConverter x:Key="CategoryPanelVisibilityConverter"/>
         <converters:CategoryPanelScrollToUpConverter x:Key="CategoryPanelScrollToUpConverter"/>
+        <converters:HeaderTextVisibilityConverter x:Key="HeaderTextVisibilityConverter"/>
         <Style TargetType="views:PrivacyPanelView">
             <Setter Property="ScrollToUpper">
                 <Setter.Value>
@@ -65,6 +66,15 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:PrivacyPanelView}}, Path=PanelControlsCounter, Converter={StaticResource HeaderTextVisibilityConverter}}"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="{StaticResource Control.ContentPanel.Header.FontSize}"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -79,14 +89,9 @@
                 <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="DescriptionTextBlock"
-                       Grid.Column="1"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Bold.ttf"
-                       FontWeight="Bold"
-                       FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
-                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
+            <TextBlock x:Name="HeaderTextBlock"
+                       Style="{StaticResource HeaderTextBlockStyle}"                                             
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
 
             <controls:LeftStateSwitchBar x:Name="SelectAllSwitch"
                                          MouseLeftButtonDown="SelectAllSwitch_MouseLeftButtonDown"/>
@@ -120,7 +125,7 @@
                 </StackPanel>
 
                 <StackPanel x:Name="EvenPanel" Grid.Column="3">
-                    <ItemsControl ItemsSource="{Binding Source={StaticResource FilterEven} }">
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource FilterEven}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:SwitchBar Header="{Binding HeaderRu}"

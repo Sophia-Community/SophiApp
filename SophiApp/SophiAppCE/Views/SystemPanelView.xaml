@@ -80,7 +80,7 @@
                 <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="DescriptionTextBlock"
+            <TextBlock x:Name="HeaderTextBlock"
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"

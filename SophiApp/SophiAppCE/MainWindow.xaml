@@ -62,10 +62,7 @@
                 </Grid.ColumnDefinitions>
                 <controls:Hamburger Grid.Column="0"/>
                 <Grid Grid.Column="1"
-                      Style="{StaticResource Window.Panels.Grid.Style}">
-
-                    <views:LoadingPanelView x:Name="LoadingPanelViewControl"
-                                            Tag="{StaticResource Tag.Loading}"/>
+                      Style="{StaticResource Window.Panels.Grid.Style}">                    
 
                     <views:PrivacyPanelView x:Name="PrivacyPanelViewControl" 
                                               Header="{DynamicResource Localization.Privacy}"                                              

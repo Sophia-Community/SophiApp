@@ -28,6 +28,16 @@ namespace SophiAppCE.Views
             InitializeComponent();
         }
 
+        public bool PanelControlsCounter
+        {
+            get { return (bool)GetValue(PanelControlsCounterProperty); }
+            private set { SetValue(PanelControlsCounterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PanelControlsCounter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PanelControlsCounterProperty =
+            DependencyProperty.Register("PanelControlsCounter", typeof(bool), typeof(PrivacyPanelView), new PropertyMetadata(default(bool)));
+
         public string Header
         {
             get { return (string)GetValue(HeaderProperty); }
@@ -43,6 +53,14 @@ namespace SophiAppCE.Views
             SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
             e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 1
                        ? true : false;
+
+            SetPanelControlsCounter(e.Accepted);
+        }
+
+        private void SetPanelControlsCounter(bool value)
+        {
+            if (PanelControlsCounter != value && value == true)
+                PanelControlsCounter = value;           
         }
 
         private void Even_Filter(object sender, FilterEventArgs e)
@@ -56,7 +74,7 @@ namespace SophiAppCE.Views
         {
             LeftStateSwitchBar stateSwitchBar = sender as LeftStateSwitchBar;
             (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State) });
-        }
+        }      
 
         public bool ScrollToUpper
         {

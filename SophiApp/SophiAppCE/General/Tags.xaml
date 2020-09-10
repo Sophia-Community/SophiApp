@@ -11,6 +11,5 @@
     <system:String x:Key="Tag.Security">Security</system:String>
     <system:String x:Key="Tag.Game">Game</system:String>
     <system:String x:Key="Tag.Uwp">Uwp</system:String>
-    <system:String x:Key="Tag.OneDrive">OneDrive</system:String>
-    <system:String x:Key="Tag.Loading">Loading</system:String>
+    <system:String x:Key="Tag.OneDrive">OneDrive</system:String>    
 </ResourceDictionary>
