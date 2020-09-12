@@ -13,7 +13,7 @@
     <system:Double x:Key="Control.Hamburger.Button.Height">50</system:Double>
     <system:Double x:Key="Control.Hamburger.Button.FontSize">16</system:Double>    
     <system:Double x:Key="Control.Hamburger.Selector.Width">3</system:Double>    
-    <system:Double x:Key="Control.ContentPanel.Header.FontSize">18</system:Double>
+    <system:Double x:Key="Control.ContentPanel.Header.FontSize">20</system:Double>
     <system:Double x:Key="Control.ContentPanel.Header.SelectAll.FontSize">16</system:Double>
     <GridLength x:Key="Control.ContentPanelPanel.Header.Height">50</GridLength>    
     <system:Double x:Key="Control.Switch.Height">33</system:Double>

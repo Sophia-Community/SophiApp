@@ -59,7 +59,7 @@
                 <Storyboard>
                     <ColorAnimation Storyboard.TargetProperty="Background.(Color)"
                                     Duration="0:0:0"
-                                    To="{DynamicResource Color.HamburgerButton.Hover}"/>
+                                    To="{DynamicResource Color.Hamburger.Button.Hover}"/>
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>

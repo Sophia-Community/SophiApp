@@ -12,9 +12,8 @@ namespace SophiAppCE.Converters
     class HeaderTextVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return Visibility.Collapsed;
-            //return System.Convert.ToBoolean(value) == true ? Visibility.Visible : Visibility.Collapsed;
+        {            
+            return System.Convert.ToUInt16(value) > 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

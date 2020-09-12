@@ -22,6 +22,7 @@
         <converters:SwitchSelectAllConverter x:Key="SwitchSelectAllConverter"/>
         <converters:CategoryPanelVisibilityConverter x:Key="CategoryPanelVisibilityConverter"/>
         <converters:CategoryPanelScrollToUpConverter x:Key="CategoryPanelScrollToUpConverter"/>
+        <converters:HeaderTextVisibilityConverter x:Key="HeaderTextVisibilityConverter"/>
         <Style TargetType="views:SecurityPanelView">
             <Setter Property="ScrollToUpper">
                 <Setter.Value>
@@ -56,14 +57,20 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextOn" Value="{DynamicResource Localization.SelectAll}"/>
             <Setter Property="TextOff" Value="{DynamicResource Localization.UnselectAll}"/>
-            <Setter Property="Visibility">
-                <Setter.Value>
-                    <MultiBinding Converter="{StaticResource SwitchSelectAllConverter}">
-                        <Binding Path="SwitchBarModelCollection"/>
-                        <Binding Path="Tag" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"/>
-                    </MultiBinding>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+                                                  Path=ItemsCount, Converter={StaticResource SwitchSelectAllConverter}, 
+                                                  UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+        </Style>
+        <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">            
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="{StaticResource Control.ContentPanel.Header.FontSize}"/>
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+                                                  Path=ItemsCount, Converter={StaticResource HeaderTextVisibilityConverter},
+                                                  UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
         </Style>
     </UserControl.Resources>
 
@@ -81,12 +88,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock x:Name="HeaderTextBlock"
-                       Grid.Column="1"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       FontFamily="pack://application:,,,/Fonts/Montserrat-Bold.ttf"
-                       FontWeight="Bold"
-                       FontSize="{StaticResource Control.ContentPanel.Header.FontSize}"                       
+                       Style="{StaticResource HeaderTextBlockStyle}"                   
                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
             <controls:LeftStateSwitchBar x:Name="SelectAllSwitch"

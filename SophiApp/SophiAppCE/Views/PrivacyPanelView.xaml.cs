@@ -3,6 +3,7 @@ using SophiAppCE.Models;
 using SophiAppCE.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,15 +29,15 @@ namespace SophiAppCE.Views
             InitializeComponent();
         }
 
-        public bool PanelControlsCounter
+        public uint ItemsCount
         {
-            get { return (bool)GetValue(PanelControlsCounterProperty); }
-            private set { SetValue(PanelControlsCounterProperty, value); }
+            get { return (uint)GetValue(ItemsCountProperty); }
+            set { SetValue(ItemsCountProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelControlsCounter.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PanelControlsCounterProperty =
-            DependencyProperty.Register("PanelControlsCounter", typeof(bool), typeof(PrivacyPanelView), new PropertyMetadata(default(bool)));
+        // Using a DependencyProperty as the backing store for ItemsCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemsCountProperty =
+            DependencyProperty.Register("ItemsCount", typeof(uint), typeof(PrivacyPanelView), new PropertyMetadata(default(uint)));
 
         public string Header
         {
@@ -54,20 +55,22 @@ namespace SophiAppCE.Views
             e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 1
                        ? true : false;
 
-            SetPanelControlsCounter(e.Accepted);
-        }
-
-        private void SetPanelControlsCounter(bool value)
-        {
-            if (PanelControlsCounter != value && value == true)
-                PanelControlsCounter = value;           
-        }
-
+            IncreaseItemsCount(e.Accepted);
+        }        
+        
         private void Even_Filter(object sender, FilterEventArgs e)
         {
             SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
             e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 0
                        ? true : false;
+
+            IncreaseItemsCount(e.Accepted);
+        }
+
+        private void IncreaseItemsCount(bool value)
+        {
+            if (value)
+                ItemsCount++;
         }
 
         private void SelectAllSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

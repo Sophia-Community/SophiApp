@@ -27,6 +27,17 @@ namespace SophiAppCE.Views
         {
             InitializeComponent();
         }
+               
+        public ushort ItemsCount
+        {
+            get { return (ushort)GetValue(ItemsCountProperty); }
+            set { SetValue(ItemsCountProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ItemsCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemsCountProperty =
+            DependencyProperty.Register("ItemsCount", typeof(ushort), typeof(UwpPanelView), new PropertyMetadata(default(ushort)));
+
         public string Header
         {
             get { return (string)GetValue(HeaderProperty); }
@@ -42,6 +53,8 @@ namespace SophiAppCE.Views
             SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
             e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 1
                        ? true : false;
+
+            IncreaseItemsCount(e.Accepted);
         }
 
         private void Even_Filter(object sender, FilterEventArgs e)
@@ -49,6 +62,14 @@ namespace SophiAppCE.Views
             SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
             e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 0
                        ? true : false;
+
+            IncreaseItemsCount(e.Accepted);
+        }
+
+        private void IncreaseItemsCount(bool value)
+        {
+            if (value)
+                ItemsCount++;
         }
 
         private void SelectAllSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

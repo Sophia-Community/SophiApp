@@ -56,18 +56,15 @@
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextOn" Value="{DynamicResource Localization.SelectAll}"/>
-            <Setter Property="TextOff" Value="{DynamicResource Localization.UnselectAll}"/>
-            <Setter Property="Visibility">
-                <Setter.Value>
-                    <MultiBinding Converter="{StaticResource SwitchSelectAllConverter}">
-                        <Binding Path="SwitchBarModelCollection"/>
-                        <Binding Path="Tag" RelativeSource="{RelativeSource AncestorType={x:Type UserControl}}"/>
-                    </MultiBinding>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="TextOff" Value="{DynamicResource Localization.UnselectAll}"/>            
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+                                                  Path=ItemsCount, Converter={StaticResource SwitchSelectAllConverter}, 
+                                                  UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
         </Style>
         <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type views:PrivacyPanelView}}, Path=PanelControlsCounter, Converter={StaticResource HeaderTextVisibilityConverter}}"/>
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+                                                  Path=ItemsCount, Converter={StaticResource HeaderTextVisibilityConverter},
+                                                  UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>            
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -91,7 +88,7 @@
 
             <TextBlock x:Name="HeaderTextBlock"
                        Style="{StaticResource HeaderTextBlockStyle}"                                             
-                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Header}"/>
 
             <controls:LeftStateSwitchBar x:Name="SelectAllSwitch"
                                          MouseLeftButtonDown="SelectAllSwitch_MouseLeftButtonDown"/>
