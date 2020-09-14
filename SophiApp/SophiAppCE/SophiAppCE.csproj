@@ -89,6 +89,7 @@
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
     <Compile Include="Managers\ControlType.cs" />
     <Compile Include="Managers\AppManager.cs" />
+    <Compile Include="Managers\UiLanguage.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="Views\ContextMenuPanelView.xaml.cs">
       <DependentUpon>ContextMenuPanelView.xaml</DependentUpon>
@@ -165,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="General\Tags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Localization\EN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,6 +317,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SophiApp\SophiApp.csproj">
+      <Project>{6839C914-AE67-4F35-BB7D-2002C5D48D08}</Project>
+      <Name>SophiApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

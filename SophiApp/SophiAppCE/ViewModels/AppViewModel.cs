@@ -18,9 +18,11 @@ namespace SophiAppCE.ViewModels
     class AppViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<SwitchBarModel> SwitchBarModelCollection { get; set; }
+        private AppManager AppManager = new AppManager();
 
         public AppViewModel()
         {
+            
             InitializationCollections();
         }
 
@@ -28,9 +30,8 @@ namespace SophiAppCE.ViewModels
         {
             IEnumerable<JsonData> jsonRaw = AppManager.ParseJsonData();
             IEnumerable<JsonData> jsonParsed = jsonRaw.Where(j => AppManager.FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path), hashValue: j.Sha256) == true);
-            IEnumerable<SwitchBarModel> switchBars = AppManager.GetControlByType<SwitchBarModel>(controlsCollections: jsonParsed, controlType: ControlType.Switch);
+            IEnumerable<SwitchBarModel> switchBars = AppManager.CreateControlsByType<SwitchBarModel>(controlsCollections: jsonParsed, controlType: ControlType.Switch);
             SwitchBarModelCollection = new ObservableCollection<SwitchBarModel>(switchBars);
-
             SwitchBarModelCollection.ToList().ForEach(s => s.PropertyChanged += SwitchBarModel_PropertyChanged);
         }
 

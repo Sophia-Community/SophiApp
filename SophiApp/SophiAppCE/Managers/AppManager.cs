@@ -1,24 +1,49 @@
-﻿using SophiAppCE.Classes;
+﻿using SophiApp;
+using SophiAppCE.Classes;
 using SophiAppCE.General;
 using SophiAppCE.Models;
+using SophiAppCE.Properties;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SophiAppCE.Managers
 {
-    internal static class AppManager
+    internal class AppManager
     {
+        private Dictionary<string, ResourceDictionary> localizedDictionarys = new Dictionary<string, ResourceDictionary>()
+        {
+            { nameof(UiLanguage.EN), new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} },
+            { nameof(UiLanguage.RU), new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute)} }
+        };
+
+        private string uiCulture;
+
+        private ResourceDictionary UiCulture => localizedDictionarys[Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper()];    
+
+        public AppManager()
+        {
+            SetUiLanguage();
+        }
+
+        private void SetUiLanguage()
+        {
+            uiCulture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper() == nameof(UiLanguage.EN) ? nameof(UiLanguage.EN) : nameof(UiLanguage.RU);
+            Application.Current.MainWindow.Resources.MergedDictionaries.Add(UiCulture);
+        }
+
         internal static Point GetParentElementRelativePoint(FrameworkElement childrenElement) => childrenElement.TranslatePoint(new Point(0, 0), childrenElement.Parent as UIElement);
 
-        internal static IEnumerable<JsonData> ParseJsonData()
+        internal IEnumerable<JsonData> ParseJsonData()
         {
             return Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
                  .Cast<Match>()
@@ -36,7 +61,7 @@ namespace SophiAppCE.Managers
                  });
         }
 
-        internal static bool FileExistsAndHashed(string filePath, string hashValue)
+        internal bool FileExistsAndHashed(string filePath, string hashValue)
         {
             bool result = default(bool);
 
@@ -62,7 +87,7 @@ namespace SophiAppCE.Managers
             return result;
         }
 
-        internal static IEnumerable<T> GetControlByType<T>(IEnumerable<JsonData> controlsCollections, ControlType controlType)
+        internal IEnumerable<T> CreateControlsByType<T>(IEnumerable<JsonData> controlsCollections, ControlType controlType)
         {
             foreach (JsonData json in controlsCollections)
             {
@@ -71,19 +96,22 @@ namespace SophiAppCE.Managers
                 switch (controlType.ToString())
                 {
                     case nameof(ControlType.Switch):
+                        string resourceHeaderID = $"Header_{json.Id}";
+                        string resourceDescriptionID = $"Description_{json.Id}";
+
                         control = new SwitchBarModel();
+                        control.Id = json.Id;
+                        control.Path = json.Path;
+                        control.HeaderEn = json.HeaderEn;
+                        control.HeaderRu = json.HeaderRu;
+                        control.DescriptionEn = json.DescriptionEn;
+                        control.DescriptionRu = json.DescriptionRu;
+                        control.Type = json.Type;
+                        control.Sha256 = json.Sha256;
+                        control.Tag = json.Tag;
                         break;
                 }
-
-                control.Id = json.Id;
-                control.Path = json.Path;
-                control.HeaderEn = json.HeaderEn;
-                control.HeaderRu = json.HeaderRu;
-                control.DescriptionEn = json.DescriptionEn;
-                control.DescriptionRu = json.DescriptionRu;
-                control.Type = json.Type;
-                control.Sha256 = json.Sha256;
-                control.Tag = json.Tag;
+                
                 yield return control;
             }
 
