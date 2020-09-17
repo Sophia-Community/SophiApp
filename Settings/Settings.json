@@ -4,53 +4,53 @@
                      "Id":  "1x1",
                      "Path":  "Scripts\\1. Privacy\\1. The Connected User Experiences and Telemetry service.ps1",
                      "HeaderEn":  "Disable the \"Connected User Experiences and Telemetry\" service (DiagTrack)",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ СЃР»СѓР¶Р±Сѓ \"Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рё С‚РµР»РµРјРµС‚СЂРёСЏ\" (DiagTrack)",
+                     "HeaderRu":  "Отключить службу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack)",
                      "DescriptionEn":  "The \"Connected User Experiences and Telemetry\" service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics",
-                     "DescriptionRu":  "РЎР»СѓР¶Р±Р° \"Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рё С‚РµР»РµРјРµС‚СЂРёСЏ\" РІРєР»СЋС‡Р°РµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, РєРѕС‚РѕСЂС‹Рµ РїРѕРґРґРµСЂР¶РёРІР°СЋС‚ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ РїСЂРёР»РѕР¶РµРЅРёРµРј Рё С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№. РљСЂРѕРјРµ С‚РѕРіРѕ, СЌС‚Р° СЃР»СѓР¶Р±Р° СѓРїСЂР°РІР»СЏРµС‚ СЃР±РѕСЂРѕРј РЅР° РѕСЃРЅРѕРІРµ СЃРѕР±С‹С‚РёР№, РїРµСЂРµРґР°С‡РµР№ РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рё РёРЅС„РѕСЂРјР°С†РёРё РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё (РёСЃРїРѕР»СЊР·СѓРµРјРѕР№ РґР»СЏ СѓР»СѓС‡С€РµРЅРёСЏ РІРѕСЃРїСЂРёСЏС‚РёСЏ Рё РїРѕРІС‹С€РµРЅРёСЏ РєР°С‡РµСЃС‚РІР° РїР»Р°С‚С„РѕСЂРјС‹ Windows), РєРѕРіРґР° РїР°СЂР°РјРµС‚СЂС‹ РґРёР°РіРЅРѕСЃС‚РёРєРё Рё РЅР°СЃС‚СЂРѕР№РєРё РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РІРєР»СЋС‡РµРЅС‹ РІ СЂР°Р·РґРµР»Рµ \"Р”РёР°РіРЅРѕСЃС‚РёРєР° Рё РѕС‚Р·С‹РІС‹\"",
+                     "DescriptionRu":  "Служба \"Функциональные возможности для подключенных пользователей и телеметрия\" включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе \"Диагностика и отзывы\"",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x2",
                      "Path":  "Scripts\\1. Privacy\\2. The OS level of diagnostic data gathering.ps1",
                      "HeaderEn":  "Set the OS level of diagnostic data gathering to minimum",
-                     "HeaderRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СѓСЂРѕРІРµРЅСЊ СЃР±РѕСЂР° РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёС… СЃРІРµРґРµРЅРёР№ РћРЎ РЅР° РјРёРЅРёРјР°Р»СЊРЅС‹Р№",
+                     "HeaderRu":  "Установить уровень сбора диагностических сведений ОС на минимальный",
                      "List" :  [
                                    {
                                       "SecurityEn":  "Diagnostic Data Off",
-                                      "SecurityRu":  "РќРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёРµ РґР°РЅРЅС‹Рµ",
+                                      "SecurityRu":  "Необязательные диагностические данные",
                                       "BasicEn":  "Required Diagnostic Data",
-                                      "BasicRu":  "РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёРµ РґР°РЅРЅС‹Рµ"
+                                      "BasicRu":  "Обязательные диагностические данные"
                                     }
                                 ],
-                     "DescriptionSecurityEn":  "No Windows diagnostic data sent",
-                     "DescriptionSecurityRu":  "РќРёРєР°РєРёРµ РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёРµ РґР°РЅРЅС‹Рµ Windows РЅРµ Р±СѓРґСѓС‚ РѕС‚РїСЂР°РІР»СЏС‚СЊСЃСЏ",
-                     "DescriptionBasicEn":  "Minimum data required to keep the device secure, up to date, and performing as expected",
-                     "DescriptionBasicRu":  "РњРёРЅРёРјР°Р»СЊРЅС‹Р№ РЅР°Р±РѕСЂ РґР°РЅРЅС‹С…, РЅРµРѕР±С…РѕРґРёРјС‹С… РґР»СЏ РѕР±РµСЃРїРµС‡РµРЅРёСЏ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё, РѕР±РЅРѕРІР»РµРЅРёР№ Рё РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚Рё СѓСЃС‚СЂРѕР№СЃС‚РІР°",
+                     "DescriptionEn-Security":  "No Windows diagnostic data sent",
+                     "DescriptionRu-Security":  "Никакие диагностические данные Windows не будут отправляться",
+                     "DescriptionEn-Basic":  "Minimum data required to keep the device secure, up to date, and performing as expected",
+                     "DescriptionRu-Basic":  "Минимальный набор данных, необходимых для обеспечения безопасности, обновлений и производительности устройства",
                      "Type":  "List"
                  },
                  {
                      "Id":  "1x3",
                      "Path":  "Scripts\\1. Privacy\\3. Windows Error Reporting.ps1",
                      "HeaderEn":  "Turn off Windows Error Reporting for the current user",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ РѕС‚С‡РµС‚С‹ РѕР± РѕС€РёР±РєР°С… Windows РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
+                     "HeaderRu":  "Отключить отчеты об ошибках Windows для текущего пользователя",
                      "DescriptionEn":  "Windows Error Reporting sends data to Microsoft for specific event types such as generic, non-fatal errors: crash, no response, and kernel fault errors",
-                     "DescriptionRu":  "Р¤СѓРЅРєС†РёСЏ РѕС‚С‡РµС‚РѕРІ РѕР± РѕС€РёР±РєР°С… РѕС‚РїСЂР°РІР»СЏРµС‚ РЅР°Р±РѕСЂ РґР°РЅРЅС‹С… РІ Microsoft РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРЅС‹С… С‚РёРїРѕРІ СЃРѕР±С‹С‚РёР№, С‚Р°РєРёС… РєР°Рє РѕР±С‰РёРµ, РЅРµС„Р°С‚Р°Р»СЊРЅС‹Рµ РѕС€РёР±РєРё: СЃР±РѕРё РІ РїСЂРёР»РѕР¶РµРЅРёСЏС…, РЅРµРѕС‚РІРµС‡Р°СЋС‰РёС… РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РѕС€РёР±РєРё РІ СЏРґСЂРµ",
+                     "DescriptionRu":  "Функция отчетов об ошибках отправляет набор данных в Microsoft для определенных типов событий, таких как общие, нефатальные ошибки: сбои в приложениях, неотвечающих приложения и ошибки в ядре",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x4",
                      "Path":  "Scripts\\1. Privacy\\4. Windows feedback frequency.ps1",
                      "HeaderEn":  "Change Windows Feedback frequency to \"Never\" for the current user",
-                     "HeaderRu":  "РР·РјРµРЅРёС‚СЊ С‡Р°СЃС‚РѕС‚Сѓ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РѕС‚Р·С‹РІРѕРІ РЅР° \"РќРёРєРѕРіРґР°\" РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ",
-                     "DescriptionEn":  "РЎhoose how often you're asked to rate or provide written feedback about Windows 10",
-                     "DescriptionRu":  "Р’С‹Р±СЂР°С‚СЊ, РєР°Рє С‡Р°СЃС‚Рѕ РІР°СЃ Р±СѓРґСѓС‚ РїСЂРѕСЃРёС‚СЊ РѕС†РµРЅРёС‚СЊ РёР»Рё РѕС‚РїСЂР°РІРёС‚СЊ РїРёСЃСЊРјРµРЅРЅС‹Р№ РѕС‚Р·С‹РІ Рѕ СЂР°Р±РѕС‚Рµ Windows 10",
+                     "HeaderRu":  "Изменить частоту формирования отзывов на \"Никогда\" для текущего пользователя",
+                     "DescriptionEn":  "Сhoose how often you're asked to rate or provide written feedback about Windows 10",
+                     "DescriptionRu":  "Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x5",
                      "Path":  "Scripts\\1. Privacy\\5. Diagnostics tracking scheduled tasks.ps1",
                      "HeaderEn":  "Turn off diagnostics tracking scheduled tasks",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ Р·Р°РґР°С‡Рё РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРѕРіРѕ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ",
+                     "HeaderRu":  "Отключить задачи диагностического отслеживания",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -59,7 +59,7 @@
                      "Id":  "1x6",
                      "Path":  "Scripts\\1. Privacy\\6. Sign-in options.ps1",
                      "HeaderEn":  "Do not use sign-in info to automatically finish setting up device and reopen apps after an update or restart",
-                     "HeaderRu":  "РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РІС…РѕРґР° РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРіРѕ Р·Р°РІРµСЂС€РµРЅРёСЏ РЅР°СЃС‚СЂРѕР№РєРё СѓСЃС‚СЂРѕР№СЃС‚РІР° Рё РѕС‚РєСЂС‹С‚РёСЏ РїСЂРёР»РѕР¶РµРЅРёР№ РїРѕСЃР»Рµ РїРµСЂРµР·Р°РїСѓСЃРєР° РёР»Рё РѕР±РЅРѕРІР»РµРЅРёСЏ",
+                     "HeaderRu":  "Не использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -68,7 +68,7 @@
                      "Id":  "1x7",
                      "Path":  "Scripts\\1. Privacy\\7. Websites locally relevant content.ps1",
                      "HeaderEn":  "Do not let websites provide locally relevant content by accessing language list (current user only)",
-                     "HeaderRu":  "РќРµ РїРѕР·РІРѕР»СЏС‚СЊ РІРµР±-СЃР°Р№С‚Р°Рј РїСЂРµРґРѕСЃС‚Р°РІР»СЏС‚СЊ РјРµСЃС‚РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Р·Р° СЃС‡РµС‚ РґРѕСЃС‚СѓРїР° Рє СЃРїРёСЃРєСѓ СЏР·С‹РєРѕРІ (С‚РѕР»СЊРєРѕ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)",
+                     "HeaderRu":  "Не позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков (только для текущего пользователя)",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -77,7 +77,7 @@
                      "Id":  "1x8",
                      "Path":  "Scripts\\1. Privacy\\8. Advertising ID.ps1",
                      "HeaderEn":  "Do not allow apps to use advertising ID (current user only)",
-                     "HeaderRu":  "РќРµ СЂР°Р·СЂРµС€Р°С‚СЊ РїСЂРёР»РѕР¶РµРЅРёСЏРј РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµРєР»Р°РјС‹ (С‚РѕР»СЊРєРѕ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)",
+                     "HeaderRu":  "Не разрешать приложениям использовать идентификатор рекламы (только для текущего пользователя)",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -86,16 +86,16 @@
                      "Id":  "1x9",
                      "Path":  "Scripts\\1. Privacy\\9. Share across devices.ps1",
                      "HeaderEn":  "Do not let apps on other devices open and message apps on this device, and vice versa (current user only)",
-                     "HeaderRu":  "РќРµ СЂР°Р·СЂРµС€Р°С‚СЊ РїСЂРёР»РѕР¶РµРЅРёСЏРј РЅР° РґСЂСѓРіРёС… СѓСЃС‚СЂРѕР№СЃС‚РІР°С… Р·Р°РїСѓСЃРєР°С‚СЊ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РѕС‚РїСЂР°РІР»СЏС‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ РЅР° СЌС‚РѕРј СѓСЃС‚СЂРѕР№СЃС‚РІРµ Рё РЅР°РѕР±РѕСЂРѕС‚ (С‚РѕР»СЊРєРѕ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)",
+                     "HeaderRu":  "Не разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот (только для текущего пользователя)",
                      "DescriptionEn":  "Allows apps on your device to communicate with other devices and open the same apps on them",
-                     "DescriptionRu":  "РџРѕР·РІРѕР»СЏРµС‚ РїСЂРёР»РѕР¶РµРЅРёСЏРј РЅР° РІР°С€РµРј СѓСЃС‚СЂРѕР№СЃС‚РІРµ РѕР±РјРµРЅРёС‚СЊСЃСЏ РґР°РЅРЅС‹РјРё СЃ РґСЂСѓРіРёРјРё СѓСЃС‚СЂРѕР№СЃС‚РІР°РјРё Рё РѕС‚РєСЂС‹РІР°С‚СЊ С‚Р°РєРёРµ Р¶Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ РЅР° РЅРёС…",
+                     "DescriptionRu":  "Позволяет приложениям на вашем устройстве обмениться данными с другими устройствами и открывать такие же приложения на них",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x10",
                      "Path":  "Scripts\\1. Privacy\\10. Windows welcome experiences after updates.ps1",
                      "HeaderEn":  "Do not show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested (current user only)",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЌРєСЂР°РЅ РїСЂРёРІРµС‚СЃС‚РІРёСЏ Windows РїРѕСЃР»Рµ РѕР±РЅРѕРІР»РµРЅРёР№ Рё РёРЅРѕРіРґР° РїСЂРё РІС…РѕРґРµ, С‡С‚РѕР±С‹ СЃРѕРѕР±С‰РёС‚СЊ Рѕ РЅРѕРІС‹С… С„СѓРЅРєС†РёСЏС… Рё РїСЂРµРґР»РѕР¶РµРЅРёСЏС… (С‚РѕР»СЊРєРѕ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)",
+                     "HeaderRu":  "Не показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях (только для текущего пользователя)",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -104,7 +104,7 @@
                      "Id":  "1x11",
                      "Path":  "Scripts\\1. Privacy\\11. Tip, trick, and suggestions as you use Windows.ps1",
                      "HeaderEn":  "Do not show suggested content in the Settings app",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЂРµРєРѕРјРµРЅРґСѓРµРјРѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ РІ РїСЂРёР»РѕР¶РµРЅРёРё \"РџР°СЂР°РјРµС‚СЂС‹\"",
+                     "HeaderRu":  "Не показывать рекомендуемое содержимое в приложении \"Параметры\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -113,7 +113,7 @@
                      "Id":  "1x12",
                      "Path":  "Scripts\\1. Privacy\\12. Suggested content in the Settings app.ps1",
                      "HeaderEn":  "Do not show suggested content in the Settings app",
-                     "HeaderRu":  "РџРѕР»СѓС‡Р°С‚СЊ СЃРѕРІРµС‚С‹, РїРѕРґСЃРєР°Р·РєРё Рё СЂРµРєРѕРјРµРЅРґР°С†РёРё РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё Windows",
+                     "HeaderRu":  "Получать советы, подсказки и рекомендации при использовании Windows",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -122,34 +122,34 @@
                      "Id":  "1x13",
                      "Path":  "Scripts\\1. Privacy\\13. Automatic installing suggested apps.ps1",
                      "HeaderEn":  "Turn off automatic installing suggested apps",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєСѓСЋ СѓСЃС‚Р°РЅРѕРІРєСѓ СЂРµРєРѕРјРµРЅРґРѕРІР°РЅРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёР№",
+                     "HeaderRu":  "Отключить автоматическую установку рекомендованных приложений",
                      "DescriptionEn":  "Windows silently automatically downloads and installs suggested apps from the Microsoft Store without any confirmation by default",
-                     "DescriptionRu":  "РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Windows РІ С‚РёС…РѕРј СЂРµР¶РёРјРµ Рё Р±РµР· РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРєР°С‡РёРІР°РµС‚ Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂРµРєРѕРјРµРЅРґРѕРІР°РЅРЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· Microsoft Store",
+                     "DescriptionRu":  "По умолчанию Windows в тихом режиме и без подтверждения автоматически скачивает и устанавливает рекомендованные приложения из Microsoft Store",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x14",
                      "Path":  "Scripts\\1. Privacy\\14. Get even more out of Windows.ps1",
                      "HeaderEn":  "Do not suggest ways I can finish setting up my device to get the most out of Windows",
-                     "HeaderRu":  "РќРµ РїСЂРµРґР»Р°РіР°С‚СЊ СЃРїРѕСЃРѕР±С‹ Р·Р°РІРµСЂС€РµРЅРёСЏ РЅР°СЃС‚СЂРѕР№РєРё СѓСЃС‚СЂРѕР№СЃС‚РІР° РґР»СЏ РјР°РєСЃРёРјР°Р»СЊРЅРѕ СЌС„С„РµРєС‚РёРІРЅРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Windows",
+                     "HeaderRu":  "Не предлагать способы завершения настройки устройства для максимально эффективного использования Windows",
                      "DescriptionEn":  "Occasionally when you restart the computer or sign out and sign in to Windows 10, you may see a \"Get even more out of Windows\" notification screen to suggest ways you can finish setting up your device",
-                     "DescriptionRu":  "РРЅРѕРіРґР°, РєРѕРіРґР° РІС‹ РїРµСЂРµР·Р°РіСЂСѓР¶Р°РµС‚Рµ РџРљ РёР»Рё РІС‹С…РѕРґРёС‚Рµ РёР· СЃРёСЃС‚РµРјС‹ Рё РІС…РѕРґРёС‚Рµ РІ Windows 10, РІС‹ РјРѕР¶РµС‚Рµ РІРёРґРµС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ \"РњР°РєСЃРёРјР°Р»СЊРЅРѕ СЌС„С„РµРєС‚РёРІРЅРѕРµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Windows\", РїСЂРµРґР»Р°РіР°СЋС‰РµРµ СЃРїРѕСЃРѕР±С‹ Р·Р°РІРµСЂС€РёС‚СЊ РЅР°СЃС‚СЂРѕР№РєСѓ СѓСЃС‚СЂРѕР№СЃС‚РІР°",
+                     "DescriptionRu":  "Иногда, когда вы перезагружаете ПК или выходите из системы и входите в Windows 10, вы можете видеть уведомление \"Максимально эффективное использование Windows\", предлагающее способы завершить настройку устройства",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x15",
                      "Path":  "Scripts\\1. Privacy\\15. Tailored experiences.ps1",
                      "HeaderEn":  "Do not offer tailored experiences based on the diagnostic data setting",
-                     "HeaderRu":  "РќРµ РїСЂРµРґР»Р°РіР°С‚СЊ РїРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, РѕСЃРЅРѕРІР°РЅРЅС‹Рµ РЅР° РІС‹Р±СЂР°РЅРЅРѕРј РїР°СЂР°РјРµС‚СЂРµ РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёС… РґР°РЅРЅС‹С…",
+                     "HeaderRu":  "Не предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных",
                      "DescriptionEn":  "Tailored experiences are personalized tips, ads, and recommendations that enhance Microsoft products and services for your needs",
-                     "DescriptionRu":  "РРЅРґРёРІРёРґСѓР°Р»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё вЂ” СЌС‚Рѕ РїРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹Рµ СЃРѕРІРµС‚С‹, СЂРµРєР»Р°РјРЅС‹Рµ РѕР±СЉСЏРІР»РµРЅРёСЏ Рё СЂРµРєРѕРјРµРЅРґР°С†РёРё, РєРѕС‚РѕСЂС‹Рµ СѓР»СѓС‡С€Р°СЋС‚ РїСЂРѕРґСѓРєС‚С‹ Рё СѓСЃР»СѓРіРё Microsoft СЃ СѓС‡РµС‚РѕРј РІР°С€РёС… РЅСѓР¶Рґ",
+                     "DescriptionRu":  "Индивидуальные возможности — это персонализированные советы, рекламные объявления и рекомендации, которые улучшают продукты и услуги Microsoft с учетом ваших нужд",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "1x16",
                      "Path":  "Scripts\\1. Privacy\\16. Bing search in the Start Menu.ps1",
                      "HeaderEn":  "Disable Bing search in the Start Menu",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ РїРѕРёСЃРє Bing РІ РјРµРЅСЋ \"РџСѓСЃРє\"",
+                     "HeaderRu":  "Отключить поиск Bing в меню \"Пуск\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -158,7 +158,7 @@
                      "Id":  "2x1",
                      "Path":  "Scripts\\2. UI\\1. This PC on Desktop.ps1",
                      "HeaderEn":  "Show \"This PC\" on Desktop",
-                     "HeaderRu":  "РћС‚РѕР±СЂР°Р·РёС‚СЊ \"Р­С‚РѕС‚ РєРѕРјРїСЊСЋС‚РµСЂ\" РЅР° СЂР°Р±РѕС‡РµРј СЃС‚РѕР»Рµ",
+                     "HeaderRu":  "Отобразить \"Этот компьютер\" на рабочем столе",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -167,7 +167,7 @@
                      "Id":  "2x2",
                      "Path":  "Scripts\\2. UI\\2. Check boxes.ps1",
                      "HeaderEn":  "Do not use check boxes to select items",
-                     "HeaderRu":  "РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С„Р»Р°Р¶РєРё РґР»СЏ РІС‹Р±РѕСЂР° СЌР»РµРјРµРЅС‚РѕРІ",
+                     "HeaderRu":  "Не использовать флажки для выбора элементов",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -176,7 +176,7 @@
                      "Id":  "2x3",
                      "Path":  "Scripts\\2. UI\\3. Hidden files, folders, and drives.ps1",
                      "HeaderEn":  "Show hidden files, folders, and drives",
-                     "HeaderRu":  "РџРѕРєР°Р·С‹РІР°С‚СЊ СЃРєСЂС‹С‚С‹Рµ С„Р°Р№Р»С‹, РїР°РїРєРё Рё РґРёСЃРєРё",
+                     "HeaderRu":  "Показывать скрытые файлы, папки и диски",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -185,7 +185,7 @@
                      "Id":  "2x4",
                      "Path":  "Scripts\\2. UI\\4. File name extensions.ps1",
                      "HeaderEn":  "Show file name extensions",
-                     "HeaderRu":  "РџРѕРєР°Р·С‹РІР°С‚СЊ СЂР°СЃС€РёСЂРµРЅРёСЏ РёРјС‘РЅ С„Р°Р№Р»РѕРІ",
+                     "HeaderRu":  "Показывать расширения имён файлов",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -194,7 +194,7 @@
                      "Id":  "2x5",
                      "Path":  "Scripts\\2. UI\\5. Folder merge conflicts.ps1",
                      "HeaderEn":  "Do not hide folder merge conflicts",
-                     "HeaderRu":  "РќРµ СЃРєСЂС‹РІР°С‚СЊ РєРѕРЅС„Р»РёРєС‚ СЃР»РёСЏРЅРёСЏ РїР°РїРѕРє",
+                     "HeaderRu":  "Не скрывать конфликт слияния папок",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -203,7 +203,7 @@
                      "Id":  "2x6",
                      "Path":  "Scripts\\2. UI\\6. Open File Explorer to.ps1",
                      "HeaderEn":  "Open File Explorer to: \"This PC\"",
-                     "HeaderRu":  "РћС‚РєСЂС‹РІР°С‚СЊ РїСЂРѕРІРѕРґРЅРёРє РґР»СЏ: \"Р­С‚РѕС‚ РєРѕРјРїСЊСЋС‚РµСЂ\"",
+                     "HeaderRu":  "Открывать проводник для: \"Этот компьютер\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -212,7 +212,7 @@
                      "Id":  "2x7",
                      "Path":  "Scripts\\2. UI\\7. Folders in the navigation pane.ps1",
                      "HeaderEn":  "Do not show all folders in the navigation pane",
-                     "HeaderRu":  "РќРµ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ РІСЃРµ РїР°РїРєРё РІ РѕР±Р»Р°СЃС‚Рё РЅР°РІРёРіР°С†РёРё",
+                     "HeaderRu":  "Не отображать все папки в области навигации",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -221,7 +221,7 @@
                      "Id":  "2x8",
                      "Path":  "Scripts\\2. UI\\8. Cortana button on the taskbar.ps1",
                      "HeaderEn":  "Do not show Cortana button on the taskbar",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РєРЅРѕРїРєСѓ РљРѕСЂС‚Р°РЅС‹ РЅР° РїР°РЅРµР»Рё Р·Р°РґР°С‡",
+                     "HeaderRu":  "Не показывать кнопку Кортаны на панели задач",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -230,16 +230,16 @@
                      "Id":  "2x9",
                      "Path":  "Scripts\\2. UI\\9. Sync provider notification within File Explorer.ps1",
                      "HeaderEn":  "Do not show sync provider notification within File Explorer",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїРѕСЃС‚Р°РІС‰РёРєР° СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё РІ РїСЂРѕРІРѕРґРЅРёРєРµ",
+                     "HeaderRu":  "Не показывать уведомления поставщика синхронизации в проводнике",
                      "DescriptionEn":  "OneDrive ad",
-                     "DescriptionRu":  "Р РµРєР»Р°РјР° OneDrive",
+                     "DescriptionRu":  "Реклама OneDrive",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "2x10",
                      "Path":  "Scripts\\2. UI\\10. Task View button on the taskbar.ps1",
                      "HeaderEn":  "Do not show Task View button on taskbar",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РєРЅРѕРїРєСѓ РџСЂРѕСЃРјРѕС‚СЂР° Р·Р°РґР°С‡",
+                     "HeaderRu":  "Не показывать кнопку Просмотра задач",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -248,7 +248,7 @@
                      "Id":  "2x11",
                      "Path":  "Scripts\\2. UI\\11. People button on the taskbar.ps1",
                      "HeaderEn":  "Do not show People on the taskbar",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РїР°РЅРµР»СЊ \"Р›СЋРґРё\" РЅР° РїР°РЅРµР»Рё Р·Р°РґР°С‡",
+                     "HeaderRu":  "Не показывать панель \"Люди\" на панели задач",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -257,7 +257,7 @@
                      "Id":  "2x12",
                      "Path":  "Scripts\\2. UI\\12. Seconds on the taskbar clock.ps1",
                      "HeaderEn":  "Show seconds on the taskbar clock",
-                     "HeaderRu":  "РћС‚РѕР±СЂР°Р¶Р°С‚СЊ СЃРµРєСѓРЅРґС‹ РІ СЃРёСЃС‚РµРјРЅС‹С… С‡Р°СЃР°С… РЅР° РїР°РЅРµР»Рё Р·Р°РґР°С‡",
+                     "HeaderRu":  "Отображать секунды в системных часах на панели задач",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -266,16 +266,16 @@
                      "Id":  "2x13",
                      "Path":  "Scripts\\2. UI\\13. Snap assist.ps1",
                      "HeaderEn":  "Do not show when snapping a window, what can be attached next to it",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РїСЂРё РїСЂРёРєСЂРµРїР»РµРЅРёРё РѕРєРЅР°, С‡С‚Рѕ РјРѕР¶РЅРѕ РїСЂРёРєСЂРµРїРёС‚СЊ СЂСЏРґРѕРј СЃ РЅРёРј",
+                     "HeaderRu":  "Не показывать при прикреплении окна, что можно прикрепить рядом с ним",
                      "DescriptionEn":  "Drag windows to the sides or corners of ypur screen and they'll automatically size to fit perfectly, side by side",
-                     "DescriptionRu":  "РџРµСЂРµС‚Р°С‰РёС‚Рµ РѕРєРЅР° Рє Р±РѕРєРѕРІС‹Рј СЃС‚РѕСЂРѕРЅР°Рј РёР»Рё СѓРіР»Р°Рј СЌРєСЂР°РЅР°, Рё РѕРЅРё Р±СѓРґСѓС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЂР°Р·РјРµС‰РµРЅС‹ СЂСЏРґРѕРј",
+                     "DescriptionRu":  "Перетащите окна к боковым сторонам или углам экрана, и они будут автоматически размещены рядом",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "2x14",
                      "Path":  "Scripts\\2. UI\\14. File transfer dialog view mode.ps1",
                      "HeaderEn":  "Show more details in file transfer dialog",
-                     "HeaderRu":  "Р Р°Р·РІРµСЂРЅСѓС‚СЊ РґРёР°Р»РѕРі РїРµСЂРµРЅРѕСЃР° С„Р°Р№Р»РѕРІ",
+                     "HeaderRu":  "Развернуть диалог переноса файлов",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -284,7 +284,7 @@
                      "Id":  "2x15",
                      "Path":  "Scripts\\2. UI\\15. File Explorer Ribbon.ps1",
                      "HeaderEn":  "Show the Ribbon expanded in File Explorer",
-                     "HeaderRu":  "РћС‚РѕР±СЂР°Р¶Р°С‚СЊ Р»РµРЅС‚Сѓ РїСЂРѕРІРѕРґРЅРёРєР° РІ СЂР°Р·РІРµСЂРЅСѓС‚РѕРј РІРёРґРµ",
+                     "HeaderRu":  "Отображать ленту проводника в развернутом виде",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -293,7 +293,7 @@
                      "Id":  "2x16",
                      "Path":  "Scripts\\2. UI\\16. Recycle bin files delete confirmation.ps1",
                      "HeaderEn":  "Display recycle bin files delete confirmation",
-                     "HeaderRu":  "Р—Р°РїСЂР°С€РёРІР°С‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РЅР° СѓРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ РІ РєРѕСЂР·РёРЅСѓ",
+                     "HeaderRu":  "Запрашивать подтверждение на удаление файлов в корзину",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -302,7 +302,7 @@
                      "Id":  "2x17",
                      "Path":  "Scripts\\2. UI\\17. 3D Objects folder.ps1",
                      "HeaderEn":  "Hide 3D Objects folder from \"This PC\" and from Quick access",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїР°РїРєСѓ \"РћР±СЉРµРјРЅС‹Рµ РѕР±СЉРµРєС‚С‹\" РёР· \"Р­С‚РѕС‚ РєРѕРјРїСЊСЋС‚РµСЂ\" Рё РёР· РїР°РЅРµР»Рё Р±С‹СЃС‚СЂРѕРіРѕ РґРѕСЃС‚СѓРїР°",
+                     "HeaderRu":  "Скрыть папку \"Объемные объекты\" из \"Этот компьютер\" и из панели быстрого доступа",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -311,7 +311,7 @@
                      "Id":  "2x18",
                      "Path":  "Scripts\\2. UI\\18. Frequent folders in Quick access.ps1",
                      "HeaderEn":  "Do not show \"Frequent folders\" in Quick access",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РЅРµРґР°РІРЅРѕ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РїР°РїРєРё РЅР° РїР°РЅРµР»Рё Р±С‹СЃС‚СЂРѕРіРѕ РґРѕСЃС‚СѓРїР°",
+                     "HeaderRu":  "Не показывать недавно используемые папки на панели быстрого доступа",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -320,7 +320,7 @@
                      "Id":  "2x19",
                      "Path":  "Scripts\\2. UI\\19. Recent files in Quick access.ps1",
                      "HeaderEn":  "Do not show \"Recent files\" in Quick access",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РЅРµРґР°РІРЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°РІС€РёРµСЃСЏ С„Р°Р№Р»С‹ РЅР° РїР°РЅРµР»Рё Р±С‹СЃС‚СЂРѕРіРѕ РґРѕСЃС‚СѓРїР°",
+                     "HeaderRu":  "Не показывать недавно использовавшиеся файлы на панели быстрого доступа",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -329,7 +329,7 @@
                      "Id":  "2x20",
                      "Path":  "Scripts\\2. UI\\20. Search box \u0026 search icon on taskbar.ps1",
                      "HeaderEn":  "Hide search box or search icon on taskbar",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїРѕР»Рµ РёР»Рё Р·РЅР°С‡РѕРє РїРѕРёСЃРєР° РЅР° РїР°РЅРµР»Рё Р·Р°РґР°С‡",
+                     "HeaderRu":  "Скрыть поле или значок поиска на панели задач",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -338,7 +338,7 @@
                      "Id":  "2x21",
                      "Path":  "Scripts\\2. UI\\21. Windows Ink Workspace button on the taskbar.ps1",
                      "HeaderEn":  "Do not show \"Windows Ink Workspace\" button in taskbar",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РєРЅРѕРїРєСѓ Windows Ink Workspace РЅР° РїР°РЅРµР»Рё Р·Р°РґР°С‡",
+                     "HeaderRu":  "Не показывать кнопку Windows Ink Workspace на панели задач",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -347,7 +347,7 @@
                      "Id":  "2x22",
                      "Path":  "Scripts\\2. UI\\22. Icons in the notification area.ps1",
                      "HeaderEn":  "Always show all icons in the notification area",
-                     "HeaderRu":  "Р’СЃРµРіРґР° РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ РІСЃРµ Р·РЅР°С‡РєРё РІ РѕР±Р»Р°СЃС‚Рё СѓРІРµРґРѕРјР»РµРЅРёР№",
+                     "HeaderRu":  "Всегда отображать все значки в области уведомлений",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -356,7 +356,7 @@
                      "Id":  "2x23",
                      "Path":  "Scripts\\2. UI\\23. Control Panel icons view.ps1",
                      "HeaderEn":  "Set the large icons in the Control Panel",
-                     "HeaderRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РєСЂСѓРїРЅС‹Рµ Р·РЅР°С‡РєРё РІ РџР°РЅРµР»Рё СѓРїСЂР°РІР»РµРЅРёСЏ",
+                     "HeaderRu":  "Установить крупные значки в Панели управления",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -365,7 +365,7 @@
                      "Id":  "2x24",
                      "Path":  "Scripts\\2. UI\\24. The Windows mode color scheme.ps1",
                      "HeaderEn":  "Choose your default Windows mode color",
-                     "HeaderRu":  "Р’С‹Р±СЂР°С‚СЊ С†РІРµС‚ СЂРµР¶РёРјР° Windows РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ",
+                     "HeaderRu":  "Выбрать цвет режима Windows по умолчанию",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -374,7 +374,7 @@
                      "Id":  "2x25",
                      "Path":  "Scripts\\2. UI\\25. The app mode color scheme.ps1",
                      "HeaderEn":  "Choose default app mode color",
-                     "HeaderRu":  "Р’С‹Р±СЂР°С‚СЊ С†РІРµС‚ СЂРµР¶РёРјР° РїСЂРёР»РѕР¶РµРЅРёР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ",
+                     "HeaderRu":  "Выбрать цвет режима приложений по умолчанию",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -383,7 +383,7 @@
                      "Id":  "2x26",
                      "Path":  "Scripts\\2. UI\\26. New App Installed indicator.ps1",
                      "HeaderEn":  "Do not show \"New App Installed\" notification",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ \"РЈСЃС‚Р°РЅРѕРІР»РµРЅРѕ РЅРѕРІРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ\"",
+                     "HeaderRu":  "Не показывать уведомление \"Установлено новое приложение\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -392,7 +392,7 @@
                      "Id":  "2x27",
                      "Path":  "Scripts\\2. UI\\27. User first sign-in animation after the upgrade.ps1",
                      "HeaderEn":  "Do not show user first sign-in animation after the upgrade",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ Р°РЅРёРјР°С†РёСЋ РїСЂРёРІРµС‚СЃС‚РІРёСЏ РїСЂРё РїРµСЂРІРѕРј РІС…РѕРґРµ РІ СЃРёСЃС‚РµРјСѓ РїРѕСЃР»Рµ РѕР±РЅРѕРІР»РµРЅРёСЏ",
+                     "HeaderRu":  "Не показывать анимацию приветствия при первом входе в систему после обновления",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -401,16 +401,16 @@
                      "Id":  "2x28",
                      "Path":  "Scripts\\2. UI\\28. JPEG desktop wallpaper import quality reduction.ps1",
                      "HeaderEn":  "Turn off JPEG desktop wallpaper import quality reduction",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ СЃРЅРёР¶РµРЅРёРµ РєР°С‡РµСЃС‚РІР° РїСЂРё РёРјРїРѕСЂС‚Рµ С„РѕРЅРѕРІРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЂР°Р±РѕС‡РµРіРѕ СЃС‚РѕР»Р° РІ С„РѕСЂРјР°С‚Рµ JPEG",
+                     "HeaderRu":  "Отключить снижение качества при импорте фонового изображение рабочего стола в формате JPEG",
                      "DescriptionEn":  "If a JPEG image as your desktop background wallpaper selected, then Windows will reduce the quality to only 85\\% of the original image quality",
-                     "DescriptionRu":  "Р•СЃР»Рё РІ РєР°С‡РµСЃС‚РІРµ С„РѕРЅРѕРІРѕРіРѕ СЂРёСЃСѓРЅРєР° СЂР°Р±РѕС‡РµРіРѕ СЃС‚РѕР»Р° РІС‹Р±СЂР°РЅРѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµ С„РѕСЂРјР°С‚Р° JPEG, Windows СЃРЅРёР·РёС‚ РєР°С‡РµСЃС‚РІРѕ РёСЃС…РѕРґРЅРѕРіРѕ РєР°С‡РµСЃС‚РІР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РґРѕ 85 \\%",
+                     "DescriptionRu":  "Если в качестве фонового рисунка рабочего стола выбрано изображение формата JPEG, Windows снизит качество исходного качества изображения до 85 \\%",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "2x29",
                      "Path":  "Scripts\\2. UI\\29. Notification when your PC requires a restart to finish updating.ps1",
                      "HeaderEn":  "Show a notification when your PC requires a restart to finish updating",
-                     "HeaderRu":  "РџРѕРєР°Р·С‹РІР°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ, РєРѕРіРґР° РєРѕРјРїСЊСЋС‚РµСЂСѓ С‚СЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµР·Р°РіСЂСѓР·РєР° РґР»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ РѕР±РЅРѕРІР»РµРЅРёСЏ",
+                     "HeaderRu":  "Показывать уведомление, когда компьютеру требуется перезагрузка для завершения обновления",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -419,7 +419,7 @@
                      "Id":  "2x30",
                      "Path":  "Scripts\\2. UI\\30. The '- Shortcut' suffix for created shortcuts.ps1",
                      "HeaderEn":  "Do not add the \"- Shortcut\" for created shortcuts",
-                     "HeaderRu":  "Рќe РґoР±aРІР»СЏС‚СЊ \"- СЏpР»С‹Рє\" РґР»СЏ coР·РґaРІaeРјС‹x СЏpР»С‹РєoРІ",
+                     "HeaderRu":  "Нe дoбaвлять \"- яpлык\" для coздaвaeмыx яpлыкoв",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -428,7 +428,7 @@
                      "Id":  "2x31",
                      "Path":  "Scripts\\2. UI\\31. PrtScn button to open screen snipping.ps1",
                      "HeaderEn":  "Use the PrtScn button to open screen snipping",
-                     "HeaderRu":  "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєРЅРѕРїРєСѓ PRINT SCREEN, С‡С‚РѕР±С‹ Р·Р°РїСѓСЃС‚РёС‚СЊ С„СѓРЅРєС†РёСЋ СЃРѕР·РґР°РЅРёСЏ С„СЂР°РіРјРµРЅС‚Р° СЌРєСЂР°РЅР°",
+                     "HeaderRu":  "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -437,7 +437,7 @@
                      "Id":  "3x1",
                      "Path":  "Scripts\\3. OneDrive\\1. OneDrive.ps1",
                      "HeaderEn":  "Uninstall OneDrive",
-                     "HeaderRu":  "РЈРґР°Р»РёС‚СЊ OneDrive",
+                     "HeaderRu":  "Удалить OneDrive",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -446,16 +446,16 @@
                      "Id":  "4x1",
                      "Path":  "Scripts\\4. System\\1. Storage Sense.ps1",
                      "HeaderEn":  "Turn on Storage Sense",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ РєРѕРЅС‚СЂРѕР»СЊ РїР°РјСЏС‚Рё",
+                     "HeaderRu":  "Включить контроль памяти",
                      "DescriptionEn":  "Storage Sense can automatically free up space by getting rId of files you don't need only when your device is low on storage space",
-                     "DescriptionRu":  "Р¤СѓРЅРєС†РёСЏ РєРѕРЅС‚СЂРѕР»СЏ РјРѕР¶РµС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕСЃРІРѕР±РѕРґРёС‚СЊ РјРµСЃС‚Рѕ, СѓРґР°Р»РёРІ РЅРµРЅСѓР¶РЅС‹Рµ С„Р°Р№Р»С‹ С‚РѕР»СЊРєРѕ РїСЂРё РЅРµС…РІР°С‚РєРµ СЃРІРѕР±РѕРґРЅРѕРіРѕ РјРµСЃС‚Р° РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРµ",
+                     "DescriptionRu":  "Функция контроля может автоматически освободить место, удалив ненужные файлы только при нехватке свободного места на устройстве",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "4x2",
                      "Path":  "Scripts\\4. System\\2. Storage Sense running frequency.ps1",
                      "HeaderEn":  "Run Storage Sense every month",
-                     "HeaderRu":  "Р—Р°РїСѓСЃРєР°С‚СЊ РљРѕРЅС‚СЂРѕР»СЊ РїР°РјСЏС‚Рё РєР°Р¶РґС‹Р№ РјРµСЃСЏС†",
+                     "HeaderRu":  "Запускать Контроль памяти каждый месяц",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -464,7 +464,7 @@
                      "Id":  "4x3",
                      "Path":  "Scripts\\4. System\\3. Storage Sense temporary files.ps1",
                      "HeaderEn":  "Delete temporary files that apps aren't using",
-                     "HeaderRu":  "РЈРґР°Р»СЏС‚СЊ РІСЂРµРјРµРЅРЅС‹Рµ С„Р°Р№Р»С‹, РЅРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РІ РїСЂРёР»РѕР¶РµРЅРёСЏС…",
+                     "HeaderRu":  "Удалять временные файлы, не используемые в приложениях",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -473,7 +473,7 @@
                      "Id":  "4x4",
                      "Path":  "Scripts\\4. System\\4. Storage Sense recycle bin.ps1",
                      "HeaderEn":  "Delete files in recycle bin if they have been there for over 30 days",
-                     "HeaderRu":  "РЈРґР°Р»СЏС‚СЊ С„Р°Р№Р»С‹ РёР· РєРѕСЂР·РёРЅС‹, РµСЃР»Рё РѕРЅРё РЅР°С…РѕРґСЏС‚СЃСЏ РІ РєРѕСЂР·РёРЅРµ Р±РѕР»РµРµ 30 РґРЅРµР№",
+                     "HeaderRu":  "Удалять файлы из корзины, если они находятся в корзине более 30 дней",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -482,7 +482,7 @@
                      "Id":  "4x5",
                      "Path":  "Scripts\\4. System\\5. Hibernation.ps1",
                      "HeaderEn":  "Disable hibernation if the device is not a laptop",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ СЂРµР¶РёРј РіРёР±РµСЂРЅР°С†РёРё, РµСЃР»Рё СѓСЃС‚СЂРѕР№СЃС‚РІРѕ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅРѕСѓС‚Р±СѓРєРѕРј",
+                     "HeaderRu":  "Отключить режим гибернации, если устройство не является ноутбуком",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -491,7 +491,7 @@
                      "Id":  "4x6",
                      "Path":  "Scripts\\4. System\\6. The TEMP environment variable path.ps1",
                      "HeaderEn":  "Change the \\%TEMP\\% environment variable path to the \\%SystemDrive\\%\\Temp",
-                     "HeaderRu":  "РР·РјРµРЅРёС‚СЊ РїСѓС‚СЊ РїРµСЂРµРјРµРЅРЅРѕР№ СЃСЂРµРґС‹ РґР»СЏ $env:TEMP РЅР° \\%SystemDrive\\%\\Temp",
+                     "HeaderRu":  "Изменить путь переменной среды для $env:TEMP на \\%SystemDrive\\%\\Temp",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -500,7 +500,7 @@
                      "Id":  "4x7",
                      "Path":  "Scripts\\4. System\\7. Windows 260 character path limit.ps1",
                      "HeaderEn":  "Disable Windows 260 character path limit",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ РѕРіСЂР°РЅРёС‡РµРЅРёРµ Windows РЅР° 260 СЃРёРјРІРѕР»РѕРІ РІ РїСѓС‚Рё",
+                     "HeaderRu":  "Отключить ограничение Windows на 260 символов в пути",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -509,7 +509,7 @@
                      "Id":  "4x8",
                      "Path":  "Scripts\\4. System\\8. Stop error information on the BSoD.ps1",
                      "HeaderEn":  "Display the Stop error information on the BSoD",
-                     "HeaderRu":  "РћС‚РѕР±СЂР°Р¶Р°С‚СЊ Stop-РѕС€РёР±РєСѓ РїСЂРё РїРѕСЏРІР»РµРЅРёРё BSoD",
+                     "HeaderRu":  "Отображать Stop-ошибку при появлении BSoD",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -518,13 +518,13 @@
                      "Id":  "4x9",
                      "Path":  "Scripts\\4. System\\9. Behavior of the elevation prompt for administrators in Admin Approval Mode.ps1",
                      "HeaderEn":  "Change \"Behavior of the elevation prompt for administrators in Admin Approval Mode\" to",
-                     "HeaderRu":  "РР·РјРµРЅРёС‚СЊ \"РџРѕРІРµРґРµРЅРёРµ Р·Р°РїСЂРѕСЃР° РЅР° РїРѕРІС‹С€РµРЅРёРµ РїСЂР°РІ РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРІ РІ СЂРµР¶РёРјРµ РѕРґРѕР±СЂРµРЅРёСЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј\" РЅР° ",
+                     "HeaderRu":  "Изменить \"Поведение запроса на повышение прав для администраторов в режиме одобрения администратором\" на ",
                      "List" :  [
                                    {
                                       "ElevateEn":  "Elevate without prompting",
-                                      "ElevateRu":  "РџРѕРІС‹С€РµРЅРёРµ РїСЂР°РІ Р±РµР· Р·Р°РїСЂРѕСЃР°",
+                                      "ElevateRu":  "Повышение прав без запроса",
                                       "NonElevateEn":  "Prompt for consent for non-Windows binaries",
-                                      "NonElevateRu":  "Р—Р°РїСЂРѕСЃ СЃРѕРіР»Р°СЃРёСЏ РґР»СЏ РёСЃРїРѕР»РЅСЏРµРјС‹С… С„Р°Р№Р»РѕРІ, РѕС‚Р»РёС‡РЅС‹С… РѕС‚ Windows"
+                                      "NonElevateRu":  "Запрос согласия для исполняемых файлов, отличных от Windows"
                                     }
                                 ],
                      "DescriptionEn":  "",
@@ -535,7 +535,7 @@
                      "Id":  "4x10",
                      "Path":  "Scripts\\4. System\\10. Access to mapped drives from app.ps1",
                      "HeaderEn":  "Turn on access to mapped drives from app running with elevated permissions with Admin Approval Mode enabled",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ РґРѕСЃС‚СѓРї Рє СЃРµС‚РµРІС‹Рј РґРёСЃРєР°Рј РїСЂРё РІРєР»СЋС‡РµРЅРЅРѕРј СЂРµР¶РёРјРµ РѕРґРѕР±СЂРµРЅРёСЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј РїСЂРё РґРѕСЃС‚СѓРїРµ РёР· РїСЂРѕРіСЂР°РјРј, Р·Р°РїСѓС‰РµРЅРЅС‹С… СЃ РїРѕРІС‹С€РµРЅРЅС‹РјРё РїСЂР°РІР°РјРё",
+                     "HeaderRu":  "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -544,7 +544,7 @@
                      "Id":  "4x11",
                      "Path":  "Scripts\\4. System\\11. Delivery Optimization.ps1",
                      "HeaderEn":  "Opt out of the Delivery Optimization-assisted updates downloading",
-                     "HeaderRu":  "РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ Р·Р°РіСЂСѓР·РєРё РѕР±РЅРѕРІР»РµРЅРёР№ СЃ РїРѕРјРѕС‰СЊСЋ РѕРїС‚РёРјРёР·Р°С†РёРё РґРѕСЃС‚Р°РІРєРё",
+                     "HeaderRu":  "Отказаться от загрузки обновлений с помощью оптимизации доставки",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -553,25 +553,25 @@
                      "Id":  "4x12",
                      "Path":  "Scripts\\4. System\\12. Wait for the network at startup.ps1",
                      "HeaderEn":  "Always wait for the network at computer startup and logon",
-                     "HeaderRu":  "Р’СЃРµРіРґР° Р¶РґР°С‚СЊ СЃРµС‚СЊ РїСЂРё Р·Р°РїСѓСЃРєРµ Рё РІС…РѕРґРµ РІ СЃРёСЃС‚РµРјСѓ",
+                     "HeaderRu":  "Всегда ждать сеть при запуске и входе в систему",
                      "DescriptionEn":  "Windows waits for complete network initialization before users are logged on",
-                     "DescriptionRu":  "Windows РѕР¶РёРґР°РµС‚ РїРѕР»РЅРѕР№ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРµС‚Рё, РїСЂРµР¶РґРµ С‡РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РІРѕР№РґСѓС‚ РІ СЃРёСЃС‚РµРјСѓ",
+                     "DescriptionRu":  "Windows ожидает полной инициализации сети, прежде чем пользователи войдут в систему",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "4x13",
                      "Path":  "Scripts\\4. System\\13. Default printer.ps1",
                      "HeaderEn":  "Do not let Windows decide which printer should be the default one",
-                     "HeaderRu":  "РќРµ СЂР°Р·СЂРµС€Р°С‚СЊ Windows СѓРїСЂР°РІР»СЏС‚СЊ РїСЂРёРЅС‚РµСЂРѕРј, РёСЃРїРѕР»СЊР·СѓРµРјС‹Рј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ",
+                     "HeaderRu":  "Не разрешать Windows управлять принтером, используемым по умолчанию",
                      "DescriptionEn":  "Windows set your default printer to be the one you used most recently at your current location",
-                     "DescriptionRu":  "РќРµ СЂР°Р·СЂРµС€Р°С‚СЊ Windows СЂРµС€Р°С‚СЊ, РєР°РєРѕР№ РїСЂРёРЅС‚РµСЂ РґРѕР»Р¶РµРЅ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ",
+                     "DescriptionRu":  "Не разрешать Windows решать, какой принтер должен использоваться по умолчанию",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "4x14",
                      "Path":  "Scripts\\4. System\\14. Windows features.ps1",
                      "HeaderEn":  "Disable the following Windows features",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ СЃР»РµРґСѓСЋС‰РёРµ РєРѕРјРїРѕРЅРµРЅС‚С‹ Windows",
+                     "HeaderRu":  "Отключить следующие компоненты Windows",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -580,7 +580,7 @@
                      "Id":  "4x15",
                      "Path":  "Scripts\\4. System\\15. WSL.ps1",
                      "HeaderEn":  "Install the Windows Subsystem for Linux (WSL)",
-                     "HeaderRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїРѕРґСЃРёСЃС‚РµРјСѓ Windows РґР»СЏ Linux (WSL)",
+                     "HeaderRu":  "Установить подсистему Windows для Linux (WSL)",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -589,16 +589,16 @@
                      "Id":  "4x16",
                      "Path":  "Scripts\\4. System\\16. WSL setup.ps1",
                      "HeaderEn":  "Setup WSL",
-                     "HeaderRu":  "РќР°СЃС‚СЂРѕРёС‚СЊ WSL",
+                     "HeaderRu":  "Настроить WSL",
                      "DescriptionEn":  "Set WSL 2 as default version. Disable swap file creation",
-                     "DescriptionRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ WSL 2 РєР°Рє РІРµСЂСЃРёСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ. РћС‚РєР»СЋС‡РёС‚СЊ СЃРѕР·РґР°РЅРёРµ СЃРІРѕРї-С„Р°Р№Р»Р°",
+                     "DescriptionRu":  "Установить WSL 2 как версию по умолчанию. Отключить создание своп-файла",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "4x17",
                      "Path":  "Scripts\\4. System\\17. Windows capabilities.ps1",
                      "HeaderEn":  "Disable certain Feature On Demand v2 (FODv2) capabilities",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹ \"Р¤СѓРЅРєС†РёРё РїРѕ С‚СЂРµР±РѕРІР°РЅРёСЋ\" (FODv2)",
+                     "HeaderRu":  "Отключить определенные компоненты \"Функции по требованию\" (FODv2)",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -607,7 +607,7 @@
                      "Id":  "4x18",
                      "Path":  "Scripts\\4. System\\18. Updates for other Microsoft products.ps1",
                      "HeaderEn":  "Opt-in to Microsoft Update service, so to receive updates for other Microsoft products",
-                     "HeaderRu":  "РџРѕРґРєР»СЋС‡Р°С‚СЊСЃСЏ Рє СЃР»СѓР¶Р±Рµ Microsoft Update С‚Р°Рє, С‡С‚РѕР±С‹ РїСЂРё РѕР±РЅРІРѕР»РµРЅРёРё Windows РїРѕР»СѓС‡Р°С‚СЊ РѕР±РЅРѕРІР»РµРЅРёСЏ РґР»СЏ РґСЂСѓРіРёС… РїСЂРѕРґСѓРєС‚РѕРІ РњР°Р№РєСЂРѕСЃРѕС„С‚",
+                     "HeaderRu":  "Подключаться к службе Microsoft Update так, чтобы при обнволении Windows получать обновления для других продуктов Майкрософт",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -616,16 +616,16 @@
                      "Id":  "4x19",
                      "Path":  "Scripts\\4. System\\19. UWP background apps.ps1",
                      "HeaderEn":  "Do not let UWP apps run in the background, except the followings",
-                     "HeaderRu":  "РќРµ СЂР°Р·СЂРµС€Р°С‚СЊ UWP-РїСЂРёР»РѕР¶РµРЅРёСЏРј СЂР°Р±РѕС‚Р°С‚СЊ РІ С„РѕРЅРѕРІРѕРј СЂРµР¶РёРјРµ, РєСЂРѕРјРµ СЃР»РµРґСѓСЋС‰РёС…",
+                     "HeaderRu":  "Не разрешать UWP-приложениям работать в фоновом режиме, кроме следующих",
                      "DescriptionEn":  "The apps can receive infom send notifications, and stay up-todate, even when you're not using them",
-                     "DescriptionRu":  "РџСЂРёР»РѕР¶РµРЅРёСЏ РЅРµ СЃРјРѕРіСѓС‚ РїРѕР»СѓС‡Р°С‚СЊ СЃРІРµРґРµРЅРёСЏ, РѕС‚РїСЂР°РІР»СЏС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рё РѕР±РЅРѕРІР»СЏС‚СЊСЃСЏ, РґР°Р¶Рµ РµСЃР»Рё РІС‹ РёС… РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ",
+                     "DescriptionRu":  "Приложения не смогут получать сведения, отправлять уведомления и обновляться, даже если вы их не используете",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "4x20",
                      "Path":  "Scripts\\4. System\\20. Power management scheme.ps1",
                      "HeaderEn":  "Set the power management scheme on \"High performance\" if device is a desktop, or \"Balanced\"",
-                     "HeaderRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃС…РµРјСѓ СѓРїСЂР°РІР»РµРЅРёСЏ РїРёС‚Р°РЅРёРµРј РЅР° \"Р’С‹СЃРѕРєР°СЏ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ\", РµСЃР»Рё СѓСЃС‚СЂРѕР№СЃС‚РІРѕ СЏРІР»СЏРµС‚СЃСЏ СЃС‚Р°С†РёРѕРЅР°СЂРЅС‹Рј РџРљ, РёР»Рё \"РЎР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅР°СЏ\"",
+                     "HeaderRu":  "Установить схему управления питанием на \"Высокая производительность\", если устройство является стационарным ПК, или \"Сбалансированная\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -634,7 +634,7 @@
                      "Id":  "4x21",
                      "Path":  "Scripts\\4. System\\21. Latest installed .NET runtime for all apps.ps1",
                      "HeaderEn":  "Use latest installed .NET runtime for all apps",
-                     "HeaderRu":  "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїРѕСЃР»РµРґРЅСЋСЋ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅСѓСЋ СЃСЂРµРґСѓ РІС‹РїРѕР»РЅРµРЅРёСЏ .NET РґР»СЏ РІСЃРµС… РїСЂРёР»РѕР¶РµРЅРёР№",
+                     "HeaderRu":  "Использовать последнюю установленную среду выполнения .NET для всех приложений",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -643,7 +643,7 @@
                      "Id":  "4x22",
                      "Path":  "Scripts\\4. System\\22. Network adapters save power.ps1",
                      "HeaderEn":  "Do not allow the computer (if device is not a laptop) to turn off the network adapters to save power",
-                     "HeaderRu":  "Р—Р°РїСЂРµС‚РёС‚СЊ РѕС‚РєР»СЋС‡РµРЅРёРµ РІСЃРµС… СЃРµС‚РµРІС‹С… Р°РґР°РїС‚РµСЂРѕРІ РґР»СЏ СЌРєРѕРЅРѕРјРёРё СЌРЅРµСЂРіРёРё (РµСЃР»Рё СѓСЃС‚СЂРѕР№СЃС‚РІРѕ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅРѕСѓС‚Р±СѓРєРѕРј)",
+                     "HeaderRu":  "Запретить отключение всех сетевых адаптеров для экономии энергии (если устройство не является ноутбуком)",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -652,7 +652,7 @@
                      "Id":  "4x23",
                      "Path":  "Scripts\\4. System\\23. Default input method.ps1",
                      "HeaderEn":  "Set the default input method to the English language",
-                     "HeaderRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РјРµС‚РѕРґ РІРІРѕРґР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РЅР° Р°РЅРіР»РёР№СЃРєРёР№ СЏР·С‹Рє",
+                     "HeaderRu":  "Установить метод ввода по умолчанию на английский язык",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -661,7 +661,7 @@
                      "Id":  "4x24",
                      "Path":  "Scripts\\4. System\\24. Windows Sandbox.ps1",
                      "HeaderEn":  "Enable Windows Sandbox",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ Windows Sandbox",
+                     "HeaderRu":  "Включить Windows Sandbox",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -670,7 +670,7 @@
                      "Id":  "4x25",
                      "Path":  "Scripts\\4. System\\25. Location of the user folders.ps1",
                      "HeaderEn":  "Change the location of the user folders to %SystemDrive%",
-                     "HeaderRu":  "РР·РјРµРЅРёС‚СЊ СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… РїР°РїРѕРє РЅР° %SystemDrive%",
+                     "HeaderRu":  "Изменить расположение пользовательских папок на %SystemDrive%",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -679,7 +679,7 @@
                      "Id":  "4x26",
                      "Path":  "Scripts\\4. System\\26. Save screenshots folder.ps1",
                      "HeaderEn":  "Save screenshots by pressing Win+PrtScr to the Desktop folder",
-                     "HeaderRu":  "РЎРѕС…СЂР°РЅСЏС‚СЊ СЃРєСЂРёРЅС€РѕС‚С‹ РїРѕ РЅР°Р¶Р°С‚РёСЋ Win+PrtScr РІ РїР°РїРєСѓ \"СЂР°Р±РѕС‡РёР№ СЃС‚РѕР»\"",
+                     "HeaderRu":  "Сохранять скриншоты по нажатию Win+PrtScr в папку \"рабочий стол\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -688,15 +688,9 @@
                      "Id":  "4x27",
                      "Path":  "Scripts\\4. System\\27. Troubleshooters behavior.ps1",
                      "HeaderEn":  "Recommneded troubleshooting",
-                     "HeaderRu":  "Р РµРєРѕРјРµРЅРґСѓРµРјС‹Рµ СЃРїРѕСЃРѕР±С‹ СѓСЃС‚СЂР°РЅРµРЅРёСЏ РЅРµРїРѕР»Р°РґРѕРє",
-                     "List" :  [
-                                   {
-                                      "AutoEn":  "Run troubleshooters automatically, then notify",
-                                      "AutoRu":  "РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё Р·Р°РїСѓСЃРєР°С‚СЊ СЃСЂРµРґСЃС‚РІР° СѓСЃС‚СЂР°РЅРµРЅРёСЏ РЅРµРїРѕР»Р°РґРѕРє, Р° Р·Р°С‚РµРј СѓРІРµРґРѕРјР»СЏС‚СЊ",
-                                      "AskEn":  "Ask me before running troubleshooters",
-                                      "AskRu":  "РЎРїСЂР°С€РёРІР°С‚СЊ РїРµСЂРµРґ Р·Р°РїСѓСЃРєРѕРј СЃСЂРµРґСЃС‚РІ СѓСЃС‚СЂР°РЅРµРЅРёСЏ РЅРµРїРѕР»Р°РґРѕРє"
-                                    }
-                                ],
+                     "HeaderRu":  "Рекомендуемые способы устранения неполадок",
+                     "ListEn-Elevatewithout":  "Run troubleshooters automatically, then notify",
+                     "ListRu-Promptfor":  "Автоматически запускать средства устранения неполадок, а затем уведомлять",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "List"
@@ -705,7 +699,7 @@
                      "Id":  "4x28",
                      "Path":  "Scripts\\4. System\\28. Launch folder windows in a separate process.ps1",
                      "HeaderEn":  "Launch folder windows in a separate process",
-                     "HeaderRu":  "Р—Р°РїСѓСЃРєР°С‚СЊ РѕРєРЅР° СЃ РїР°РїРєР°РјРё РІ РѕС‚РґРµР»СЊРЅРѕРј РїСЂРѕС†РµСЃСЃРµ",
+                     "HeaderRu":  "Запускать окна с папками в отдельном процессе",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -714,7 +708,7 @@
                      "Id":  "4x29",
                      "Path":  "Scripts\\4. System\\29. Reserved storage.ps1",
                      "HeaderEn":  "Disable and delete reserved storage after the next update installation",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ Рё СѓРґР°Р»РёС‚СЊ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅРѕРµ С…СЂР°РЅРёР»РёС‰Рµ РїРѕСЃР»Рµ СЃР»РµРґСѓСЋС‰РµР№ СѓСЃС‚Р°РЅРѕРІРєРё РѕР±РЅРѕРІР»РµРЅРёР№",
+                     "HeaderRu":  "Отключить и удалить зарезервированное хранилище после следующей установки обновлений",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -723,7 +717,7 @@
                      "Id":  "4x30",
                      "Path":  "Scripts\\4. System\\30. F1 help page.ps1",
                      "HeaderEn":  "Disable help lookup via F1",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ РѕС‚РєСЂС‹С‚РёРµ СЃРїСЂР°РІРєРё РїРѕ РЅР°Р¶Р°С‚РёСЋ F1",
+                     "HeaderRu":  "Отключить открытие справки по нажатию F1",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -732,7 +726,7 @@
                      "Id":  "5x31",
                      "Path":  "Scripts\\4. System\\31. Num Lock at startup.ps1",
                      "HeaderEn":  "Turn on Num Lock at startup",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ Num Lock РїСЂРё Р·Р°РіСЂСѓР·РєРµ",
+                     "HeaderRu":  "Включить Num Lock при загрузке",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -741,7 +735,7 @@
                      "Id":  "4x32",
                      "Path":  "Scripts\\4. System\\32. Sticky Shift.ps1",
                      "HeaderEn":  "Do not activate StickyKey after tapping the Shift key 5 times",
-                     "HeaderRu":  "РќРµ РІРєР»СЋС‡Р°С‚СЊ Р·Р°Р»РёРїР°РЅРёРµ РєР»Р°РІРёС€Рё Shift РїРѕСЃР»Рµ 5 РЅР°Р¶Р°С‚РёР№",
+                     "HeaderRu":  "Не включать залипание клавиши Shift после 5 нажатий",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -750,7 +744,7 @@
                      "Id":  "4x33",
                      "Path":  "Scripts\\4. System\\33. AutoPlay for all media and devices.ps1",
                      "HeaderEn":  "Do not use AutoPlay for all media and devices",
-                     "HeaderRu":  "РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р°РІС‚РѕР·Р°РїСѓСЃРє РґР»СЏ РІСЃРµС… РЅРѕСЃРёС‚РµР»РµР№ Рё СѓСЃС‚СЂРѕР№СЃС‚РІ",
+                     "HeaderRu":  "Не использовать автозапуск для всех носителей и устройств",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -759,7 +753,7 @@
                      "Id":  "4x34",
                      "Path":  "Scripts\\4. System\\34. Thumbnail cache removal.ps1",
                      "HeaderEn":  "Disable thumbnail cache removal",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ СѓРґР°Р»РµРЅРёРµ РєСЌС€Р° РјРёРЅРёР°С‚СЋСЂ",
+                     "HeaderRu":  "Отключить удаление кэша миниатюр",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -768,7 +762,7 @@
                      "Id":  "4x35",
                      "Path":  "Scripts\\4. System\\35. Save restartable apps.ps1",
                      "HeaderEn":  "Automatically save my restartable apps when signing out and restart them after signing in",
-                     "HeaderRu":  "РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕС…СЂР°РЅСЏС‚СЊ РјРѕРё РїРµСЂРµР·Р°РїСѓСЃРєР°РµРјС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ РїСЂРё РІС‹С…РѕРґРµ РёР· СЃРёСЃС‚РµРјС‹ Рё РїРµСЂРµР·Р°РїСѓСЃРєР°С‚СЊ РёС… РїРѕСЃР»Рµ РІС‹С…РѕРґР°",
+                     "HeaderRu":  "Автоматически сохранять мои перезапускаемые приложения при выходе из системы и перезапускать их после выхода",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -777,7 +771,7 @@
                      "Id":  "4x36",
                      "Path":  "Scripts\\4. System\\36. Network discovery and file and printers sharing.ps1",
                      "HeaderEn":  "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ СЃРµС‚РµРІРѕРµ РѕР±РЅР°СЂСѓР¶РµРЅРёРµ Рё РѕР±С‰РёР№ РґРѕСЃС‚СѓРї Рє С„Р°Р№Р»Р°Рј Рё РїСЂРёРЅС‚РµСЂР°Рј РґР»СЏ СЂР°Р±РѕС‡РёС… РіСЂСѓРїРї",
+                     "HeaderRu":  "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -786,15 +780,15 @@
                      "Id":  "4x37",
                      "Path":  "Scripts\\4. System\\37. Active hours.ps1",
                      "HeaderEn":  "Automatically adjust active hours for me based on daily usage",
-                     "HeaderRu":  "РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё РёР·РјРµРЅСЏС‚СЊ РїРµСЂРёРѕРґ Р°РєС‚РёРІРЅРѕСЃС‚Рё РґР»СЏ СЌС‚РѕРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР° РЅР° РѕСЃРЅРѕРІРµ РґРµР№СЃС‚РІРёР№",
+                     "HeaderRu":  "Автоматически изменять период активности для этого устройства на основе действий",
                      "DescriptionEn":  "The more you use this device, the better we'll be able to suggest active hours",
-                     "DescriptionRu":  "Р§РµРј Р±РѕР»СЊС€Рµ РІС‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ СЌС‚Рѕ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ, С‚РµРј Р±РѕР»РµРµ СѓРґРѕР±РЅС‹Р№ РїРµСЂРёРѕРґ Р°РєС‚РёРІРЅРѕСЃС‚Рё Р±СѓРґРµС‚ РІР°Рј РїСЂРµРґР»Р°РіР°С‚СЊСЃСЏ",
+                     "DescriptionRu":  "Чем больше вы используете это устройство, тем более удобный период активности будет вам предлагаться",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "4x38",
                      "Path":  "Scripts\\4. System\\38. Restart device as soon as possible.ps1",
-                     "HeaderEn":  "РџРµСЂРµР·Р°РїСѓСЃРєР°С‚СЊ СЌС‚Рѕ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ РєР°Рє РјРѕР¶РЅРѕ Р±С‹СЃС‚СЂРµРµ, РµСЃР»Рё РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё РѕР±РЅРѕРІР»РµРЅРёСЏ С‚СЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµР·Р°РіСЂСѓР·РєР°",
+                     "HeaderEn":  "Перезапускать это устройство как можно быстрее, если для установки обновления требуется перезагрузка",
                      "HeaderRu":  "Restart this device as soon as possible when a restart is required to install an update",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
@@ -802,9 +796,9 @@
                  },
                  {
                      "Id":  "5x1",
-                     "Path":  "Scripts\\5. Start Menu\\1. Recently added apps in the Start menu.ps1",
+                     "Path":  "Scripts\\5. Start Menu\\1. Recently added apps in Start menu",
                      "HeaderEn":  "Do not show recently added apps in the Start menu",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РЅРµРґР°РІРЅРѕ РґРѕР±Р°РІР»РµРЅРЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ РІ РјРµРЅСЋ \"РџСѓСЃРє\"",
+                     "HeaderRu":  "Не показывать недавно добавленные приложения в меню \"Пуск\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -813,7 +807,7 @@
                      "Id":  "5x2",
                      "Path":  "Scripts\\5. Start Menu\\2. App suggestions in the Start menu.ps1",
                      "HeaderEn":  "Do not show app suggestions in the Start menu",
-                     "HeaderRu":  "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЂРµРєРѕРјРµРЅРґР°С†РёРё РІ РјРµРЅСЋ \"РџСѓСЃРє\"",
+                     "HeaderRu":  "Не показывать рекомендации в меню \"Пуск\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -822,7 +816,7 @@
                      "Id":  "5x3",
                      "Path":  "Scripts\\5. Start Menu\\3. Run the Command Prompt shortcut from the Start menu.ps1",
                      "HeaderEn":  "Run the Command Prompt shortcut from the Start menu as Administrator",
-                     "HeaderRu":  "Р—Р°РїСѓСЃРєР°С‚СЊ СЏСЂР»С‹Рє РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё РІ РјРµРЅСЋ \"РџСѓСЃРє\" РѕС‚ РёРјРµРЅРё РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°",
+                     "HeaderRu":  "Запускать ярлык командной строки в меню \"Пуск\" от имени Администратора",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -831,7 +825,7 @@
                      "Id":  "5x4",
                      "Path":  "Scripts\\5. Start Menu\\4. Unpin all the Start tiles.ps1",
                      "HeaderEn":  "Unpin all the Start tiles",
-                     "HeaderRu":  "РћС‚РєСЂРµРїРёС‚СЊ РІСЃРµ СЏСЂР»С‹РєРё РѕС‚ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СЌРєСЂР°РЅР°",
+                     "HeaderRu":  "Открепить все ярлыки от начального экрана",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Icon"
@@ -840,7 +834,7 @@
                      "Id":  "5x5",
                      "Path":  "Scripts\\5. Start Menu\\5. Pin Control Panel to Start.ps1",
                      "HeaderEn":  "Pin \"Control Panel\" to Start",
-                     "HeaderRu":  "Р—Р°РєСЂРµРїРёС‚СЊ СЏСЂР»С‹Рє \"РџР°РЅРµР»Рё СѓРїСЂР°РІР»РµРЅРёСЏ\" Рё РЅР° РЅР°С‡Р°Р»СЊРЅРѕРј СЌРєСЂР°РЅРµ",
+                     "HeaderRu":  "Закрепить ярлык \"Панели управления\" и на начальном экране",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Icon"
@@ -849,7 +843,7 @@
                      "Id":  "5x6",
                      "Path":  "Scripts\\5. Start Menu\\6. Pin Devices and Printers to Start.ps1",
                      "HeaderEn":  "Pin the old-style \"Devices and Printers\" shortcut to Start",
-                     "HeaderRu":  "Р—Р°РєСЂРµРїРёС‚СЊ СЏСЂР»С‹Рє СЃС‚Р°СЂРѕРіРѕ С„РѕСЂРјР°С‚Р° \"РЈСЃС‚СЂРѕР№СЃС‚РІР° Рё РїСЂРёРЅС‚РµСЂС‹\" РЅР° РЅР°С‡Р°Р»СЊРЅРѕРј СЌРєСЂР°РЅРµ",
+                     "HeaderRu":  "Закрепить ярлык старого формата \"Устройства и принтеры\" на начальном экране",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Icon"
@@ -858,7 +852,7 @@
                      "Id":  "5x7",
                      "Path":  "Scripts\\5. Start Menu\\7. Pin Command Prompt to Start.ps1",
                      "HeaderEn":  "Pin \"Command Prompt\" shortcut to Start",
-                     "HeaderRu":  "Р—Р°РєСЂРµРїРёС‚СЊ СЏСЂР»С‹Рє \"РљРѕРјР°РЅРґРЅСѓСЋ СЃС‚СЂРѕРєСѓ\" РЅР° РЅР°С‡Р°Р»СЊРЅРѕРј СЌРєСЂР°РЅРµ",
+                     "HeaderRu":  "Закрепить ярлык \"Командную строку\" на начальном экране",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Icon"
@@ -867,25 +861,25 @@
                      "Id":  "6x1",
                      "Path":  "Scripts\\6. UWP Apps\\1. Uninstall UWP apps.ps1",
                      "HeaderEn":  "Uninstall all UWP apps from all accounts",
-                     "HeaderRu":  "РЈРґР°Р»РёС‚СЊ РІСЃРµ UWP-РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· РІСЃРµС… СѓС‡РµС‚РЅС‹С… Р·Р°РїРёСЃРµР№",
+                     "HeaderRu":  "Удалить все UWP-приложения из всех учетных записей",
                      "DescriptionEn":  "App packages will not be installed for new users if \"Uninstall for All Users\" is checked",
-                     "DescriptionRu":  "РџСЂРёР»РѕР¶РµРЅРёСЏ РЅРµ Р±СѓРґСѓС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РґР»СЏ РЅРѕРІС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ, РµСЃР»Рё РѕС‚РјРµС‡РµРЅРѕ \"РЈРґР°Р»СЏС‚СЊ РґР»СЏ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№\"",
+                     "DescriptionRu":  "Приложения не будут установлены для новых пользователе, если отмечено \"Удалять для всех пользователей\"",
                      "Type":  "Icon"
                  },
                  {
                      "Id":  "6x2",
                      "Path":  "Scripts\\6. UWP Apps\\2. Open HEVC Microsoft Store page.ps1",
                      "HeaderEn":  "Open Microsoft Store \"HEVC Video Extensions from Device Manufacturer\" page",
-                     "HeaderRu":  "РћС‚РєСЂС‹С‚СЊ СЃС‚СЂР°РЅРёС†Сѓ \"Р Р°СЃС€РёСЂРµРЅРёСЏ РґР»СЏ РІРёРґРµРѕ HEVC РѕС‚ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ СѓСЃС‚СЂРѕР№СЃС‚РІР°\" РІ Microsoft Store",
+                     "HeaderRu":  "Открыть страницу \"Расширения для видео HEVC от производителя устройства\" в Microsoft Store",
                      "DescriptionEn":  "The extension can be installed without Microsoft account for free instead of $0.99",
-                     "DescriptionRu":  "Р Р°СЃС€РёСЂРµРЅРёРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ Р±РµР· СѓС‡РµС‚РЅРѕР№ Р·Р°РїРёСЃРё Microsoft Р±РµСЃРїР»Р°С‚РЅРѕ РІРјРµСЃС‚Рѕ 0,99 $",
+                     "DescriptionRu":  "Расширение может быть установлено без учетной записи Microsoft бесплатно вместо 0,99 $",
                      "Type":  "Icon"
                  },
                  {
                      "Id":  "6x3",
                      "Path":  "Scripts\\6. UWP Apps\\3. Cortana autostarting.ps1",
                      "HeaderEn":  "Turn off Cortana autostarting",
-                     "HeaderRu":  "РЈРґР°Р»РёС‚СЊ РљРѕСЂС‚Р°РЅР° РёР· Р°РІС‚РѕР·Р°РіСЂСѓР·РєРё",
+                     "HeaderRu":  "Удалить Кортана из автозагрузки",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -894,25 +888,25 @@
                      "Id":  "7x1",
                      "Path":  "Scripts\\7. Gaming\\1. Xbox Game Bar.ps1",
                      "HeaderEn":  "Turn off Xbox Game Bar",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ Xbox Game Bar",
+                     "HeaderRu":  "Отключить Xbox Game Bar",
                      "DescriptionEn":  "Xbox Game Bar is for thigs like recording game clips, chatting with friends, receiving game invites",
-                     "DescriptionRu":  "Xbox Game Bar РїРѕР·РІРѕР»СЏРµС‚ СЃРѕР·РґР°РІР°С‚СЊ РёРіСЂРѕРІС‹Рµ РєР»РёРїС‹, РѕР±С‰Р°С‚СЊСЃСЏ СЃ РґСЂСѓР·СЊСЏРјРё Рё РїРѕР»СѓС‡Р°С‚СЊ РїСЂРёРіР»Р°С€РµРЅРёСЏ РІ РёРіСЂС‹",
+                     "DescriptionRu":  "Xbox Game Bar позволяет создавать игровые клипы, общаться с друзьями и получать приглашения в игры",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "7x2",
                      "Path":  "Scripts\\7. Gaming\\2. Xbox Game Bar tips.ps1",
                      "HeaderEn":  "Turn off Xbox Game Bar tips",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ СЃРѕРІРµС‚С‹ Xbox Game Bar",
+                     "HeaderRu":  "Отключить советы Xbox Game Bar",
                      "DescriptionEn":  "These tips are to learn more about using Xbox Game bar each time you open a game or app",
-                     "DescriptionRu":  "Р­С‚Рё РїРѕРґСЃРєР°Р·РєРё РїРѕР·РІРѕР»СЏСЋС‚ СѓР·РЅР°С‚СЊ Р±РѕР»СЊС€Рµ РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё Xbox Game Bar РїСЂРё РєР°Р¶РґРѕРј Р·Р°РїСѓСЃРєРµ РёРіСЂС‹ РёР»Рё РїСЂРёР»РѕР¶РµРЅРёСЏ",
+                     "DescriptionRu":  "Эти подсказки позволяют узнать больше об использовании Xbox Game Bar при каждом запуске игры или приложения",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "7x3",
                      "Path":  "Scripts\\7. Gaming\\3. Graphics performance.ps1",
                      "HeaderEn":  "Set \"High performance\" in graphics performance preference for apps",
-                     "HeaderRu":  "РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚Рё РіСЂР°С„РёРєРё РґР»СЏ РѕС‚РґРµР»СЊРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёР№ РЅР° \"Р’С‹СЃРѕРєР°СЏ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ\"",
+                     "HeaderRu":  "Установить параметры производительности графики для отдельных приложений на \"Высокая производительность\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -921,169 +915,169 @@
                      "Id":  "7x4",
                      "Path":  "Scripts\\7. Gaming\\4. GPU scheduling.ps1",
                      "HeaderEn":  "Turn on hardware-accelerated GPU scheduling",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ РїР»Р°РЅРёСЂРѕРІР°РЅРёРµ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РїСЂРѕС†РµСЃСЃРѕСЂР° СЃ Р°РїРїР°СЂР°С‚РЅС‹Рј СѓСЃРєРѕСЂРµРЅРёРµРј",
+                     "HeaderRu":  "Включить планирование графического процессора с аппаратным ускорением",
                      "DescriptionEn":  "Reduce latency and improve performance. You must restart your PC for the changes to take effect.",
-                     "DescriptionRu":  "РЈРјРµРЅСЊС€РёС‚СЊ РІСЂРµРјСЏ Р·Р°РґРµСЂР¶РєРё Рё СѓРІРµР»РёС‡РёС‚СЊ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ. Р”Р»СЏ РІСЃС‚СѓРїР»РµРЅРёСЏ РёР·РјРµРЅРµРЅРёР№ РІ СЃРёР»Сѓ РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРјРїСЊСЋС‚РµСЂ.",
+                     "DescriptionRu":  "Уменьшить время задержки и увеличить производительность. Для вступления изменений в силу потребуется перезапустить компьютер.",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "8x1",
                      "Path":  "Scripts\\8. Task Scheduler\\1. Windows cleaning up.ps1",
                      "HeaderEn":  "Create a task to clean up unused files and Windows updates in the Task Scheduler",
-                     "HeaderRu":  "РЎРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ РІ РџР»Р°РЅРёСЂРѕРІС‰РёРєРµ Р·Р°РґР°С‡ РїРѕ РѕС‡РёСЃС‚РєРµ РЅРµРёСЃРїРѕР»СЊР·СѓРµРјС‹С… С„Р°Р№Р»РѕРІ Рё РѕР±РЅРѕРІР»РµРЅРёР№ Windows",
+                     "HeaderRu":  "Создать задачу в Планировщике задач по очистке неиспользуемых файлов и обновлений Windows",
                      "DescriptionEn":  "The task runs every 90 days",
-                     "DescriptionRu":  "Р—Р°РґР°С‡Р° РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РєР°Р¶РґС‹Рµ 90 РґРЅРµР№",
+                     "DescriptionRu":  "Задача выполняется каждые 90 дней",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "8x2",
                      "Path":  "Scripts\\8. Task Scheduler\\2. SoftwareDistribution.ps1",
                      "HeaderEn":  "Create a task in the Task Scheduler to clear the \\%SystemRoot\\%\\SoftwareDistribution\\Download folder",
-                     "HeaderRu":  "РЎРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ РІ РџР»Р°РЅРёСЂРѕРІС‰РёРєРµ Р·Р°РґР°С‡ РїРѕ РѕС‡РёСЃС‚РєРµ РїР°РїРєРё \\%SystemRoot\\%\\SoftwareDistribution\\Download",
+                     "HeaderRu":  "Создать задачу в Планировщике задач по очистке папки \\%SystemRoot\\%\\SoftwareDistribution\\Download",
                      "DescriptionEn":  "The task runs on Thursdays every 4 weeks",
-                     "DescriptionRu":  "Р—Р°РґР°С‡Р° РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РїРѕ С‡РµС‚РІРµСЂРіР°Рј РєР°Р¶РґСѓСЋ 4 РЅРµРґРµР»СЋ",
+                     "DescriptionRu":  "Задача выполняется по четвергам каждую 4 неделю",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "8x3",
                      "Path":  "Scripts\\8. Task Scheduler\\3. TEMP.ps1",
                      "HeaderEn":  "Create a task to clear the \\%TEMP\\% folder in the Task Scheduler",
-                     "HeaderRu":  "РЎРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ РІ РџР»Р°РЅРёСЂРѕРІС‰РёРєРµ Р·Р°РґР°С‡ РїРѕ РѕС‡РёСЃС‚РєРµ РїР°РїРєРё \\%TEMP\\%",
+                     "HeaderRu":  "Создать задачу в Планировщике задач по очистке папки \\%TEMP\\%",
                      "DescriptionEn":  "The task runs every 62 days",
-                     "DescriptionRu":  "Р—Р°РґР°С‡Р° РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ РєР°Р¶РґС‹Рµ 62 РґРЅСЏ",
+                     "DescriptionRu":  "Задача выполняется каждые 62 дня",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x1",
-                     "Path":  "Scripts\\9. Security\\1. Exploit Guard Network Protection.ps1",
+                     "Path":  "Scripts\\7. Security\\1. Exploit Guard Network Protection.ps1",
                      "HeaderEn":  "Turn on Microsoft Defender Exploit Guard network protection",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ Р·Р°С‰РёС‚Сѓ СЃРµС‚Рё РІ Microsoft Defender Exploit Guard",
+                     "HeaderRu":  "Включить защиту сети в Microsoft Defender Exploit Guard",
                      "DescriptionEn":  "Prevents from using any application to access dangerous domains that may host phishing scams, exploit-hosting sites, and other malicious content on the Internet",
-                     "DescriptionRu":  "РџСЂРµРґРѕС‚РІСЂР°С‰Р°РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р»СЋР±РѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє РѕРїР°СЃРЅС‹Рј РґРѕРјРµРЅР°Рј, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ С„РёС€РёРЅРіРѕРІС‹Рµ РїСЂРѕРіСЂР°РјРјС‹, СЃР°Р№С‚С‹ СЃ СЌРєСЃРїР»РѕР№С‚Р°РјРё Рё РїСЂРѕС‡РµРµ РІСЂРµРґРѕРЅРѕСЃРЅРѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ РІ РРЅС‚РµСЂРЅРµС‚Рµ",
+                     "DescriptionRu":  "Предотвращает использование любого приложения для доступа к опасным доменам, которые могут содержать фишинговые программы, сайты с эксплойтами и прочее вредоносное содержимое в Интернете",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x2",
-                     "Path":  "Scripts\\9. Security\\2. PUA.ps1",
+                     "Path":  "Scripts\\7. Security\\2. PUA.ps1",
                      "HeaderEn":  "Turn on detection for potentially unwanted applications and block them",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ РѕР±РЅР°СЂСѓР¶РµРЅРёРµ РїРѕС‚РµРЅС†РёР°Р»СЊРЅРѕ РЅРµР¶РµР»Р°С‚РµР»СЊРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёР№ Рё Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РёС…",
+                     "HeaderRu":  "Включить обнаружение потенциально нежелательных приложений и блокировать их",
                      "DescriptionEn":  "Potentially unwanted applications (PUA) are not considered viruses, malware, or other types of threats, but they might perform actions on endpoints which adversely affect endpoint performance or use",
-                     "DescriptionRu":  "РџРѕС‚РµРЅС†РёР°Р»СЊРЅРѕ РЅРµР¶РµР»Р°С‚РµР»СЊРЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ РЅРµ СЂР°СЃСЃРјР°С‚СЂРёРІР°СЋС‚СЃСЏ РєР°Рє РІРёСЂСѓСЃС‹, РІСЂРµРґРѕРЅРѕСЃРЅС‹Рµ РїСЂРѕРіСЂР°РјРјС‹ РёР»Рё РґСЂСѓРіРёРµ С‚РёРїС‹ СѓРіСЂРѕР·, РЅРѕ РѕРЅРё РјРѕРіСѓС‚ РІС‹РїРѕР»РЅСЏС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ РџРљ, РєРѕС‚РѕСЂС‹Рµ РЅРµРіР°С‚РёРІРЅРѕ РІР»РёСЏСЋС‚ РЅР° РµРіРѕ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ РёР»Рё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ",
+                     "DescriptionRu":  "Потенциально нежелательные приложения не рассматриваются как вирусы, вредоносные программы или другие типы угроз, но они могут выполнять действия с ПК, которые негативно влияют на его производительность или использование",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x3",
-                     "Path":  "Scripts\\9. Security\\3. Defender sandbox.ps1",
+                     "Path":  "Scripts\\7. Security\\3. Defender sandbox.ps1",
                      "HeaderEn":  "Run Microsoft Defender within a sandbox",
-                     "HeaderRu":  "Р—Р°РїСѓСЃРєР°С‚СЊ Microsoft Defender РІ РїРµСЃРѕС‡РЅРёС†Рµ",
+                     "HeaderRu":  "Запускать Microsoft Defender в песочнице",
                      "DescriptionEn":  "Running Microsoft Defender Antivirus in a sandbox ensures that in the event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm",
-                     "DescriptionRu":  "Р—Р°РїСѓСЃРє Microsoft Defender РІ РїРµСЃРѕС‡РЅРёС†Рµ РіР°СЂР°РЅС‚РёСЂСѓРµС‚, С‡С‚Рѕ РІ СЃР»СѓС‡Р°Рµ РєРѕРјРїСЂРѕРјРµС‚Р°С†РёРё РІСЂРµРґРѕРЅРѕСЃРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ Р±СѓРґСѓС‚ РѕРіСЂР°РЅРёС‡РµРЅС‹ РёР·РѕР»РёСЂРѕРІР°РЅРЅРѕР№ СЃСЂРµРґРѕР№, Р·Р°С‰РёС‰Р°СЏ РѕСЃС‚Р°Р»СЊРЅСѓСЋ С‡Р°СЃС‚СЊ СЃРёСЃС‚РµРјС‹ РѕС‚ РїРѕРІСЂРµР¶РґРµРЅРёР№",
+                     "DescriptionRu":  "Запуск Microsoft Defender в песочнице гарантирует, что в случае компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от повреждений",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x4",
-                     "Path":  "Scripts\\9. Security\\4. Process creation events auditing.ps1",
+                     "Path":  "Scripts\\7. Security\\4. Process creation events auditing.ps1",
                      "HeaderEn":  "Turn on events auditing generated when a process is created or starts",
-                     "HeaderRu":  "Р’РєР»СЋС‡РёС‚СЊ Р°СѓРґРёС‚ СЃРѕР±С‹С‚РёР№, РІРѕР·РЅРёРєР°СЋС‰РёС… РїСЂРё СЃРѕР·РґР°РЅРёРё РёР»Рё Р·Р°РїСѓСЃРєРµ РїСЂРѕС†РµСЃСЃР°",
+                     "HeaderRu":  "Включить аудит событий, возникающих при создании или запуске процесса",
                      "DescriptionEn":  "The OS generates audit events when a process is created (starts) and it's command line arguments",
-                     "DescriptionRu":  "РћРЎ Р·Р°РїРёСЃС‹РІР°РµС‚ СЃРѕР±С‹С‚РёСЏ Р°СѓРґРёС‚Р° РїСЂРё СЃРѕР·РґР°РЅРёРё (Р·Р°РїСѓСЃРєРµ) РїСЂРѕС†РµСЃСЃР° Рё РµРіРѕ Р°СЂРіСѓРјРµРЅС‚Р° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё",
+                     "DescriptionRu":  "ОС записывает события аудита при создании (запуске) процесса и его аргумента командной строки",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x5",
-                     "Path":  "Scripts\\9. Security\\5. Process creation events command line.ps1",
+                     "Path":  "Scripts\\7. Security\\5. Process creation events command line.ps1",
                      "HeaderEn":  "Include command line in process creation events",
-                     "HeaderRu":  "Р’РєР»СЋС‡Р°С‚СЊ РєРѕРјР°РЅРґРЅСѓСЋ СЃС‚СЂРѕРєСѓ РІ СЃРѕР±С‹С‚РёСЏС… СЃРѕР·РґР°РЅРёСЏ РїСЂРѕС†РµСЃСЃР°",
+                     "HeaderRu":  "Включать командную строку в событиях создания процесса",
                      "DescriptionEn":  "Adds the detailed command-line arguments used by a process to Id 4688 events in the Windows security event log. In order this feature to work events auditing must be enabled",
-                     "DescriptionRu":  "Р”РѕР±Р°РІР»СЏРµС‚ РІ Р¶СѓСЂРЅР°Р»Рµ СЃРѕР±С‹С‚РёР№ \"Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ\" РІ СЃРѕР±С‹С‚РёСЏС… СЃ РєРѕРґРѕРј 4688 РїРѕР»РЅС‹Р№ Р°СЂРіСѓРјРµРЅС‚ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё РїСЂРѕС†РµСЃСЃР°. РќРµРѕР±С…РѕРґРёРјРѕ РІРєР»СЋС‡РёС‚СЊ Р°СѓРґРёС‚ СЃРѕР±С‹С‚РёР№, С‡С‚РѕР±С‹ СЂР°Р±РѕС‚Р°Р»Р° РґР°РЅРЅР°СЏ РѕРїС†РёСЏ",
+                     "DescriptionRu":  "Добавляет в журнале событий \"Безопасность\" в событиях с кодом 4688 полный аргумент командной строки процесса. Необходимо включить аудит событий, чтобы работала данная опция",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x6",
-                     "Path":  "Scripts\\9. Security\\6. Event Viewer Custom View.ps1",
+                     "Path":  "Scripts\\7. Security\\6. Event Viewer Custom View.ps1",
                      "HeaderEn":  "Create \"Process Creation\" Event Viewer Custom View",
-                     "HeaderRu":  "РЎРѕР·РґР°С‚СЊ РЅР°СЃС‚Р°РёРІР°РµРјРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ \"РЎРѕР·РґР°РЅРёРµ РїСЂРѕС†РµСЃСЃР°\" РІ РќР°СЃС‚СЂР°РёРІР°РµРјС‹С… РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏС…",
+                     "HeaderRu":  "Создать настаиваемое представление \"Создание процесса\" в Настраиваемых представлениях",
                      "DescriptionEn":  "Viewing Id 4688 process creation and command-line auditing events. In order this feature to work events auditing and command line in process creation events must be enabled",
-                     "DescriptionRu":  "РџСЂРѕСЃРјРѕС‚СЂ СЃРѕР±С‹С‚РёСЏ СЃ РєРѕРґРѕРј 4688 СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ РїСЂРѕС†РµСЃСЃР° Рё Р°СѓРґРёС‚ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё. РќРµРѕР±С…РѕРґРёРјРѕ РІРєР»СЋС‡РёС‚СЊ Р°СѓРґРёС‚ СЃРѕР±С‹С‚РёР№ Рё РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё РІ СЃРѕР±С‹С‚РёСЏС… СЃРѕР·РґР°РЅРёСЏ РїСЂРѕС†РµСЃСЃР°, С‡С‚РѕР±С‹ СЂР°Р±РѕС‚Р°Р»Р° РґР°РЅРЅР°СЏ РѕРїС†РёСЏ",
+                     "DescriptionRu":  "Просмотр события с кодом 4688 создания нового процесса и аудит командной строки. Необходимо включить аудит событий и командной строки в событиях создания процесса, чтобы работала данная опция",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x7",
-                     "Path":  "Scripts\\9. Security\\7. PowerShell modules logging.ps1",
+                     "Path":  "Scripts\\7. Security\\7. PowerShell modules logging.ps1",
                      "HeaderEn":  "Log for all Windows PowerShell modules",
-                     "HeaderRu":  "Р’РµСЃС‚Рё Р¶СѓСЂРЅР°Р» РґР»СЏ РІСЃРµС… РјРѕРґСѓР»РµР№ Windows PowerShell",
+                     "HeaderRu":  "Вести журнал для всех модулей Windows PowerShell",
                      "DescriptionEn":  "Setting pipeline execution events are recorded in the Windows PowerShell log",
-                     "DescriptionRu":  "РЎРѕР±С‹С‚РёСЏ РєРѕРЅРІРµР№РµСЂРЅРѕРіРѕ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїРёСЃС‹РІР°СЋС‚СЃСЏ РІ Р¶СѓСЂРЅР°Р» Windows PowerShell",
+                     "DescriptionRu":  "События конвейерного выполнения записываются в журнал Windows PowerShell",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x8",
-                     "Path":  "Scripts\\9. Security\\8. PowerShell scripts input logging.ps1",
+                     "Path":  "Scripts\\7. Security\\8. PowerShell scripts input logging.ps1",
                      "HeaderEn":  "Log all PowerShell scripts input to the Windows PowerShell event log",
-                     "HeaderRu":  "Р’РµСЃС‚Рё СЂРµРіРёСЃС‚СЂР°С†РёСЋ РІСЃРµС… РІРІРѕРґРёРјС‹С… СЃС†РµРЅР°СЂРёРµРІ PowerShell РІ Р¶СѓСЂРЅР°Р»Рµ СЃРѕР±С‹С‚РёР№ Windows PowerShell",
+                     "HeaderRu":  "Вести регистрацию всех вводимых сценариев PowerShell в журнале событий Windows PowerShell",
                      "DescriptionEn":  "PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation",
-                     "DescriptionRu":  "PowerShell СЂРµРіРёСЃС‚СЂРёСЂСѓРµС‚ РѕР±СЂР°Р±РѕС‚РєСѓ РєРѕРјР°РЅРґ, Р±Р»РѕРєРѕРІ СЃС†РµРЅР°СЂРёРµРІ, С„СѓРЅРєС†РёР№ Рё СЃС†РµРЅР°СЂРёРµРІ, РІС‹Р·С‹РІР°РµРјС‹С… РІ РёРЅС‚РµСЂР°РєС‚РёРІРЅРѕРј СЂРµР¶РёРјРµ РёР»Рё СЃ РїРѕРјРѕС‰СЊСЋ СЃР»СѓР¶Р± Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё",
+                     "DescriptionRu":  "PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x9",
-                     "Path":  "Scripts\\9. Security\\9. SmartScreen.ps1",
+                     "Path":  "Scripts\\7. Security\\9. SmartScreen.ps1",
                      "HeaderEn":  "Do not check apps and files within Microsofot Defender SmartScreen",
-                     "HeaderRu":  "РќРµ РїСЂРѕРІРµСЂСЏС‚СЊ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё С„Р°Р№Р»С‹ С„РёР»СЊС‚СЂРѕРј SmartScreen РІ Microsoft Defender",
+                     "HeaderRu":  "Не проверять приложения и файлы фильтром SmartScreen в Microsoft Defender",
                      "DescriptionEn":  "Microsoft Defender SmartScreen checks unrecognized apps and files downloaded from the web",
-                     "DescriptionRu":  "Р¤РёР»СЊС‚СЂ SmartScreen РІ Microsoft Defender РїСЂРѕРІРµСЂСЏРµС‚ РЅРµРѕРїРѕР·РЅР°РЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё С„Р°Р№Р»С‹, СЃРєР°С‡Р°РЅРЅС‹Рµ РёР· СЃРµС‚Рё",
+                     "DescriptionRu":  "Фильтр SmartScreen в Microsoft Defender проверяет неопознаные приложения и файлы, скачанные из сети",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x10",
-                     "Path":  "Scripts\\9. Security\\10. Unsafe files.ps1",
+                     "Path":  "Scripts\\7. Security\\10. Unsafe files.ps1",
                      "HeaderEn":  "Prevent SmartScreen from marking files that have been downloaded from the Internet as unsafe",
-                     "HeaderRu":  "РќРµ РїРѕР·РІРѕР»СЏС‚СЊ SmartScreen РѕС‚РјРµС‡Р°С‚СЊ С„Р°Р№Р»С‹, СЃРєР°С‡Р°РЅРЅС‹Рµ РёР· РёРЅС‚РµСЂРЅРµС‚Р°, РєР°Рє РЅРµР±РµР·РѕРїР°СЃРЅС‹Рµ",
+                     "HeaderRu":  "Не позволять SmartScreen отмечать файлы, скачанные из интернета, как небезопасные",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "9x11",
-                     "Path":  "Scripts\\9. Security\\11. Windows Script Host.ps1",
+                     "Path":  "Scripts\\7. Security\\11. Windows Script Host.ps1",
                      "HeaderEn":  "Turn off Windows Script Host",
-                     "HeaderRu":  "РћС‚РєР»СЋС‡РёС‚СЊ Windows Script Host",
+                     "HeaderRu":  "Отключить Windows Script Host",
                      "DescriptionEn":  "Designed to interpret and run JScript and VBScript",
-                     "DescriptionRu":  "РџСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ Р·Р°РїСѓСЃРєР° СЃС†РµРЅР°СЂРёРµРІ РЅР° СЃРєСЂРёРїС‚РѕРІС‹С… СЏР·С‹РєР°С… JScript Рё VBScript",
+                     "DescriptionRu":  "Предназначен для запуска сценариев на скриптовых языках JScript и VBScript",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "10x1",
                      "Path":  "Scripts\\10. Context Menu\\1. Extract all for .msi.ps1",
                      "HeaderEn":  "Add the \"Extract all\" item to Windows Installer (.msi) context menu",
-                     "HeaderRu":  "Р”РѕР±Р°РІРёС‚СЊ РїСѓРЅРєС‚ \"РР·РІР»РµС‡СЊ РІСЃРµ\" РІ РєРѕРЅС‚РµРєСЃС‚РЅРѕРµ РјРµРЅСЋ Windows Installer (.msi)",
+                     "HeaderRu":  "Добавить пункт \"Извлечь все\" в контекстное меню Windows Installer (.msi)",
                      "DescriptionEn":  "A button with an arrow icon for swift unpacking Windows Installer (.msi) in a current folder",
-                     "DescriptionRu":  "РљРЅРѕРїРєР° СЃ РёРєРѕРЅРєРѕР№ РІ РІРёРґРµ СЃС‚СЂРµР»РєРё РґР»СЏ Р±С‹СЃС‚СЂРѕРіРѕ СЂР°СЃРїР°РєРѕРІС‹РІР°РЅРёСЏ Windows Installer (.msi) РІ С‚РµРєСѓС‰СѓСЋ РїР°РїРєСѓ",
+                     "DescriptionRu":  "Кнопка с иконкой в виде стрелки для быстрого распаковывания Windows Installer (.msi) в текущую папку",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "10x2",
                      "Path":  "Scripts\\10. Context Menu\\2. Install .cab.ps1",
                      "HeaderEn":  "Add the \"Install\" item to the .cab archives context menu",
-                     "HeaderRu":  "Р”РѕР±Р°РІРёС‚СЊ РїСѓРЅРєС‚ \"РЈСЃС‚Р°РЅРѕРІРёС‚СЊ\" РІ РєРѕРЅС‚РµРєСЃС‚РЅРѕРµ РјРµРЅСЋ .cab Р°СЂС…РёРІРѕРІ",
+                     "HeaderRu":  "Добавить пункт \"Установить\" в контекстное меню .cab архивов",
                      "DescriptionEn":  "A button for swift installing .cab archives",
-                     "DescriptionRu":  "РљРЅРѕРїРєР° РґР»СЏ Р±С‹СЃС‚СЂРѕР№ СѓСЃС‚Р°РЅРѕРІРєРё .cab Р°СЂС…РёРІРѕРІ",
+                     "DescriptionRu":  "Кнопка для быстрой установки .cab архивов",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "10x3",
                      "Path":  "Scripts\\10. Context Menu\\3. Run as different user .exe.ps1",
                      "HeaderEn":  "Add the \"Run as different user\" item to the .exe files types context menu",
-                     "HeaderRu":  "Р”РѕР±Р°РІРёС‚СЊ \"Р—Р°РїСѓСЃРє РѕС‚ РёРјРµРЅРё РґСЂСѓРіРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ\" РІ РєРѕРЅС‚РµРєСЃС‚РЅРѕРµ РјРµРЅСЋ .exe С„Р°Р№Р»РѕРІ",
+                     "HeaderRu":  "Добавить \"Запуск от имени другого пользователя\" в контекстное меню .exe файлов",
                      "DescriptionEn":  "Allows not to hold Shift + RMB to call up this context menu item",
-                     "DescriptionRu":  "РџРѕР·РІРѕР»СЏРµС‚ РЅРµ Р·Р°Р¶РёРјР°С‚СЊ Shift + РџРљРњ, С‡С‚РѕР±С‹ РІС‹Р·РІР°С‚СЊ СЌС‚РѕС‚ РїСѓРЅРєС‚ РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "DescriptionRu":  "Позволяет не зажимать Shift + ПКМ, чтобы вызвать этот пункт контекстного меню",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "10x4",
                      "Path":  "Scripts\\10. Context Menu\\4. Cast to Device.ps1",
                      "HeaderEn":  "Hide the \"Cast to Device\" item from the context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РџРµСЂРµРґР°С‚СЊ РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРѕ\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "HeaderRu":  "Скрыть пункт \"Передать на устройство\" из контекстного меню",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1092,7 +1086,7 @@
                      "Id":  "10x5",
                      "Path":  "Scripts\\10. Context Menu\\5. Share.ps1",
                      "HeaderEn":  "Hide the \"Share\" item from the context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РћС‚РїСЂР°РІРёС‚СЊ\" (РїРѕРґРµР»РёС‚СЊСЃСЏ) РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "HeaderRu":  "Скрыть пункт \"Отправить\" (поделиться) из контекстного меню",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1101,7 +1095,7 @@
                      "Id":  "10x6",
                      "Path":  "Scripts\\10. Context Menu\\6. Edit with Photos.ps1",
                      "HeaderEn":  "Hide the \"Edit with Photos\" item from the context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РР·РјРµРЅРёС‚СЊ СЃ РїРѕРјРѕС‰СЊСЋ РїСЂРёР»РѕР¶РµРЅРёСЏ \"Р¤РѕС‚РѕРіСЂР°С„РёРё\"\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "HeaderRu":  "Скрыть пункт \"Изменить с помощью приложения \"Фотографии\"\" из контекстного меню",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1110,7 +1104,7 @@
                      "Id":  "10x7",
                      "Path":  "Scripts\\10. Context Menu\\7. Create a new video.ps1",
                      "HeaderEn":  "Hide the \"Create a new video\" item from the context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РЎРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ РІРёРґРµРѕ\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "HeaderRu":  "Скрыть пункт \"Создать новое видео\" из контекстного меню",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1119,7 +1113,7 @@
                      "Id":  "10x9",
                      "Path":  "Scripts\\10. Context Menu\\8. Edit.ps1",
                      "HeaderEn":  "Hide the \"Edit\" item from the images context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РР·РјРµРЅРёС‚СЊ\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ РёР·РѕР±СЂР°Р¶РµРЅРёР№",
+                     "HeaderRu":  "Скрыть пункт \"Изменить\" из контекстного меню изображений",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1128,7 +1122,7 @@
                      "Id":  "10x9",
                      "Path":  "Scripts\\10. Context Menu\\9. Print.ps1",
                      "HeaderEn":  "Hide the \"Print\" item from the .bat and .cmd context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РџРµС‡Р°С‚СЊ\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ .bat Рё .cmd С„Р°Р№Р»РѕРІ",
+                     "HeaderRu":  "Скрыть пункт \"Печать\" из контекстного меню .bat и .cmd файлов",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1137,7 +1131,7 @@
                      "Id":  "10x10",
                      "Path":  "Scripts\\10. Context Menu\\10. Include in Library.ps1",
                      "HeaderEn":  "Hide the \"Include in Library\" item from the context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"Р”РѕР±Р°РІРёС‚СЊ РІ Р±РёР±Р»РёРѕС‚РµРєСѓ\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "HeaderRu":  "Скрыть пункт \"Добавить в библиотеку\" из контекстного меню",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1146,7 +1140,7 @@
                      "Id":  "10x11",
                      "Path":  "Scripts\\10. Context Menu\\11. Send to.ps1",
                      "HeaderEn":  "Hide the \"Send to\" item from the folders context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РћС‚РїСЂР°РІРёС‚СЊ\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ РїР°РїРѕРє",
+                     "HeaderRu":  "Скрыть пункт \"Отправить\" из контекстного меню папок",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1155,7 +1149,7 @@
                      "Id":  "10x12",
                      "Path":  "Scripts\\10. Context Menu\\12. Turn on BitLocker.ps1",
                      "HeaderEn":  "Hide the \"Turn on BitLocker\" item from the context menu",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"Р’РєР»СЋС‡РёС‚СЊ BitLocker\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ",
+                     "HeaderRu":  "Скрыть пункт \"Включить BitLocker\" из контекстного меню",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1164,7 +1158,7 @@
                      "Id":  "10x13",
                      "Path":  "Scripts\\10. Context Menu\\13. Bitmap image.ps1",
                      "HeaderEn":  "Remove the \"Bitmap image\" item from the \"New\" context menu",
-                     "HeaderRu":  "РЈРґР°Р»РёС‚СЊ РїСѓРЅРєС‚ \"РўРѕС‡РµС‡РЅС‹Р№ СЂРёСЃСѓРЅРѕРє\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ \"РЎРѕР·РґР°С‚СЊ\"",
+                     "HeaderRu":  "Удалить пункт \"Точечный рисунок\" из контекстного меню \"Создать\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1173,7 +1167,7 @@
                      "Id":  "10x14",
                      "Path":  "Scripts\\10. Context Menu\\14. Rich Text Document.ps1",
                      "HeaderEn":  "Remove the \"Rich Text Document\" from the \"New\" context menu",
-                     "HeaderRu":  "РЈРґР°Р»РёС‚СЊ РїСѓРЅРєС‚ \"Р”РѕРєСѓРјРµРЅС‚ РІ С„РѕСЂРјР°С‚Рµ RTF\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ \"РЎРѕР·РґР°С‚СЊ\"",
+                     "HeaderRu":  "Удалить пункт \"Документ в формате RTF\" из контекстного меню \"Создать\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1182,7 +1176,7 @@
                      "Id":  "10x15",
                      "Path":  "Scripts\\10. Context Menu\\15. Compressed (zipped) Folder.ps1",
                      "HeaderEn":  "Remove the \"Compressed (zipped) Folder\" item from the \"New\" context menu",
-                     "HeaderRu":  "РЈРґР°Р»РёС‚СЊ РїСѓРЅРєС‚ \"РЎР¶Р°С‚Р°СЏ ZIP-РїР°РїРєР°\" РёР· РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ \"РЎРѕР·РґР°С‚СЊ\"",
+                     "HeaderRu":  "Удалить пункт \"Сжатая ZIP-папка\" из контекстного меню \"Создать\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"
@@ -1191,25 +1185,25 @@
                      "Id":  "10x16",
                      "Path":  "Scripts\\10. Context Menu\\16. 15 items.ps1",
                      "HeaderEn":  "Make the \"Open\", \"Print\", \"Edit\" context menu items available, when more than 15 items selected",
-                     "HeaderRu":  "РЎРґРµР»Р°С‚СЊ РґРѕСЃС‚СѓРїРЅС‹РјРё СЌР»РµРјРµРЅС‚С‹ РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ \"РћС‚РєСЂС‹С‚СЊ\", \"РР·РјРµРЅРёС‚СЊ\" Рё \"РџРµС‡Р°С‚СЊ\" РїСЂРё РІС‹РґРµР»РµРЅРёРё Р±РѕР»РµРµ 15 СЌР»РµРјРµРЅС‚РѕРІ",
+                     "HeaderRu":  "Сделать доступными элементы контекстного меню \"Открыть\", \"Изменить\" и \"Печать\" при выделении более 15 элементов",
                      "DescriptionEn":  "By default, these context menu items are displayed if less than 15 items selected",
-                     "DescriptionRu":  "РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЌС‚Рё РїСѓРЅРєС‚С‹ РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ, РµСЃР»Рё РІС‹Р±СЂР°РЅРѕ РјРµРЅРµРµ 15 РїСѓРЅРєС‚РѕРІ",
+                     "DescriptionRu":  "По умолчанию эти пункты контекстного меню отображаются, если выбрано менее 15 пунктов",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "10x17",
                      "Path":  "Scripts\\10. Context Menu\\17. Look for an app in the Microsoft Store.ps1",
                      "HeaderEn":  "Hide the \"Look for an app in the Microsoft Store\" item in \"Open with\" dialog",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РїСѓРЅРєС‚ \"РџРѕРёСЃРє РїСЂРёР»РѕР¶РµРЅРёСЏ РІ Microsoft Store\" РІ РґРёР°Р»РѕРіРµ \"РћС‚РєСЂС‹С‚СЊ СЃ РїРѕРјРѕС‰СЊСЋ\"",
+                     "HeaderRu":  "Скрыть пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\"",
                      "DescriptionEn":  "No app search will be offered for unregistered extensions in the Microsoft Store",
-                     "DescriptionRu":  "Р”Р»СЏ РЅРµР·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… СЂР°СЃС€РёСЂРµРЅРёР№ РЅРµ Р±СѓРґРµС‚ РїСЂРµРґР»Р°РіР°С‚СЊСЃСЏ РїРѕРёСЃРє РїСЂРёР»РѕР¶РµРЅРёСЏ РІ Microsoft Store",
+                     "DescriptionRu":  "Для незарегистрированных расширений не будет предлагаться поиск приложения в Microsoft Store",
                      "Type":  "Switch"
                  },
                  {
                      "Id":  "10x18",
                      "Path":  "Scripts\\10. Context Menu\\18. Previous Versions.ps1",
                      "HeaderEn":  "Hide the \"Previous Versions\" tab from files and folders context menu and \"Restore previous versions\" context menu item",
-                     "HeaderRu":  "РЎРєСЂС‹С‚СЊ РІРєР»Р°РґРєСѓ \"РџСЂРµРґС‹РґСѓС‰РёРµ РІРµСЂСЃРёРё\" РІ СЃРІРѕР№СЃС‚РІР°С… С„Р°Р№Р»РѕРІ Рё РїР°РїРѕРє Рё РїСѓРЅРєС‚ РєРѕРЅС‚РµРєСЃС‚РЅРѕРіРѕ РјРµРЅСЋ \"Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРµР¶РЅСЋСЋ РІРµСЂСЃРёСЋ\"",
+                     "HeaderRu":  "Скрыть вкладку \"Предыдущие версии\" в свойствах файлов и папок и пункт контекстного меню \"Восстановить прежнюю версию\"",
                      "DescriptionEn":  "",
                      "DescriptionRu":  "",
                      "Type":  "Switch"

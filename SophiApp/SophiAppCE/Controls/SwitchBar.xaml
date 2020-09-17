@@ -22,7 +22,7 @@
         <SolidColorBrush Color="{DynamicResource Color.SwitchBar.Foreground}"/>
     </UserControl.Foreground>
     <UserControl.Resources>
-        <converters:SwitchBarDescriptionConverter x:Key="DescriptionConverter"/>
+        <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibilityConverter"/>
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -46,7 +46,7 @@
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Margin" Value="20, 0, 20, 20"/>
             <Setter Property="Grid.Row" Value="1"/>
-            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Description, Converter={StaticResource DescriptionConverter}}"/>
+            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Description, Converter={StaticResource DescriptionVisibilityConverter}}"/>
         </Style>
         <Style x:Key="Border.Switch" TargetType="Border">
             <Setter Property="BorderThickness" Value="2"/>

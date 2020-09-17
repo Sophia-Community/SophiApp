@@ -11,19 +11,36 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SophiAppCE.ViewModels
 {
     class AppViewModel : INotifyPropertyChanged
     {
+        private int activeSwitchBars = default(int);
+        private string categoryPanelVisibility = TagManager.Privacy;
+        private double hamburgerMarkerVerticalLocation = default(double);
+        private string categoryPanelScrollToUp = string.Empty;
+        private UiLanguage uiLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper() == nameof(UiLanguage.RU) ? UiLanguage.RU : UiLanguage.EN;
+
         public ObservableCollection<SwitchBarModel> SwitchBarModelCollection { get; set; }
-        private AppManager AppManager = new AppManager();
+        private readonly Dictionary<UiLanguage, ResourceDictionary> localizedDictionaries = new Dictionary<UiLanguage, ResourceDictionary>()
+        {
+            { UiLanguage.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} },
+            { UiLanguage.RU, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute)} }
+        };
 
         public AppViewModel()
         {
-            
+            SetUiLanguage();
             InitializationCollections();
+        }
+
+        private void SetUiLanguage()
+        {
+            Application.Current.Resources.MergedDictionaries.Add(localizedDictionaries[UiLanguage]);
         }
 
         private void InitializationCollections()
@@ -53,9 +70,7 @@ namespace SophiAppCE.ViewModels
                 default:
                     break;
             }            
-        }
-
-        private int activeSwitchBars = default(int);
+        }        
 
         public int ActiveSwitchBars
         {
@@ -66,8 +81,7 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("ActiveSwitchBars");
             }
         }
-
-        private string categoryPanelVisibility = TagManager.Privacy;
+        
         public string CategoryPanelsVisibility
         {
             get => categoryPanelVisibility;
@@ -77,18 +91,17 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("CategoryPanelsVisibility");
             }
         }
-
-        private double hamburgerMarkerVerticalLocation = default(double);
+        
         public double HamburgerMarkerVerticalLocation
-        { get => hamburgerMarkerVerticalLocation;
+        {
+            get => hamburgerMarkerVerticalLocation;
             set
             {
                 hamburgerMarkerVerticalLocation = value;
                 OnPropertyChanged("HamburgerMarkerVerticalLocation");
             }
         }
-
-        private string categoryPanelScrollToUp = string.Empty;
+        
         public string CategoryPanelScrollToUp
         {
             get => categoryPanelScrollToUp;
@@ -96,6 +109,16 @@ namespace SophiAppCE.ViewModels
             {
                 categoryPanelScrollToUp = value;
                 OnPropertyChanged("CategoryPanelScrollToUp");
+            }
+        }        
+
+        public UiLanguage UiLanguage
+        {
+            get => uiLanguage;
+            set
+            {
+                uiLanguage = value;
+                OnPropertyChanged("UiLanguage");
             }
         }
 
@@ -107,8 +130,8 @@ namespace SophiAppCE.ViewModels
 
         private void SelectAll(object args)
         {
-            string tag = (args as string[]).FirstOrDefault();
-            bool state = Convert.ToBoolean((args as string[]).LastOrDefault());
+            string tag = (args as string[]).First();
+            bool state = Convert.ToBoolean((args as string[]).Last());
 
             SwitchBarModelCollection.Where(s => s.Tag == tag && s.State != state)
                                     .ToList()
@@ -125,8 +148,21 @@ namespace SophiAppCE.ViewModels
         {
             HamburgerMenuButton button = args as HamburgerMenuButton;
             CategoryPanelsVisibility = Convert.ToString(button.Tag);
-            HamburgerMarkerVerticalLocation = AppManager.GetParentElementRelativePoint(button).Y;
+            HamburgerMarkerVerticalLocation = AppManager.GetParentElementRelativePoints(button).Y;
             CategoryPanelScrollToUp = Convert.ToString(button.Tag);
+        }
+
+        private RelayCommand changeUiLanguageCommand;
+
+        public RelayCommand ChangeUiLanguageCommand
+        {
+            get => changeUiLanguageCommand ?? (changeUiLanguageCommand = new RelayCommand(ChangeUiLanguage));
+        }
+
+        private void ChangeUiLanguage(object args)
+        {
+            UiLanguage = UiLanguage == UiLanguage.RU ? UiLanguage.EN : UiLanguage.RU;
+            Application.Current.Resources.MergedDictionaries.Add(localizedDictionaries[UiLanguage]);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

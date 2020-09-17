@@ -23,7 +23,10 @@
         <converters:CategoryPanelVisibilityConverter x:Key="CategoryPanelVisibilityConverter"/>
         <converters:CategoryPanelScrollToUpConverter x:Key="CategoryPanelScrollToUpConverter"/>
         <converters:HeaderTextVisibilityConverter x:Key="HeaderTextVisibilityConverter"/>
+        <converters:SwitchBarLocalizationHeaderConverter x:Key="LocalizationHeaderConverter"/>
+        <converters:SwitchBarLocalizationDescriptionConverter x:Key="LocalizationDescriptionConverter"/>
         <Style TargetType="views:ContextMenuPanelView">
+            <Setter Property="UiLanguage" Value="{Binding UiLanguage, UpdateSourceTrigger=PropertyChanged}"/>
             <Setter Property="ScrollToUpper">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource CategoryPanelScrollToUpConverter}" UpdateSourceTrigger="PropertyChanged">
@@ -60,6 +63,25 @@
             <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
                                                   Path=ItemsCount, Converter={StaticResource SwitchSelectAllConverter}, 
                                                   UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+        </Style>
+        <Style TargetType="controls:SwitchBar">
+            <Setter Property="Header">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource LocalizationHeaderConverter}">
+                        <Binding Path="UiLanguage" RelativeSource="{RelativeSource AncestorType={x:Type views:ContextMenuPanelView}}" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="LocalizedHeader"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Description">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource LocalizationDescriptionConverter}">
+                        <Binding Path="UiLanguage" RelativeSource="{RelativeSource AncestorType={x:Type views:ContextMenuPanelView}}" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="LocalizedDescription"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
         </Style>
         <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">            
             <Setter Property="Grid.Column" Value="1"/>
@@ -114,9 +136,7 @@
                     <ItemsControl ItemsSource="{Binding Source={StaticResource FilterOdd}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <controls:SwitchBar Header="{Binding HeaderRu}"
-                                                    Description="{Binding DescriptionRu}"
-                                                    State="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
+                                <controls:SwitchBar/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -126,9 +146,7 @@
                     <ItemsControl ItemsSource="{Binding Source={StaticResource FilterEven} }">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <controls:SwitchBar Header="{Binding HeaderRu}"
-                                                    Description="{Binding DescriptionRu}"
-                                                    State="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
+                                <controls:SwitchBar/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

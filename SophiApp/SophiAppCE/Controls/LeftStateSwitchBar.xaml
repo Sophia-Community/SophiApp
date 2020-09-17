@@ -12,11 +12,19 @@
              TextOptions.TextRenderingMode="ClearType"
              Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"
              Background="Transparent">
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
         </Style>
         <Style TargetType="TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=State}" Value="True">
+                    <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextOff}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=State}" Value="False">
+                    <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextOn}"/>
+                </DataTrigger>
+            </Style.Triggers>
             <Setter Property="Margin" Value="5, 5, 0, 5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
@@ -39,13 +47,24 @@
             </Setter>
         </Style>
         <Style TargetType="Ellipse">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=State}" Value="true">
+                    <Setter Property="Fill">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Color.Switch.Ellipse.Checked}"/>
+                        </Setter.Value>
+                    </Setter>                    
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=State}" Value="false">
+                    <Setter Property="Fill">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Color.Switch.Ellipse.Unchecked}"/>
+                        </Setter.Value>
+                    </Setter>                    
+                </DataTrigger>
+            </Style.Triggers>            
             <Setter Property="Height" Value="{StaticResource Control.Switch.Ellipse.Size}"/>
             <Setter Property="Width" Value="{StaticResource Control.Switch.Ellipse.Size}"/>
-            <Setter Property="Fill">
-                <Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource Color.Switch.Ellipse.Unchecked}"/>
-                </Setter.Value>
-            </Setter>
             <Setter Property="StrokeThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -55,9 +74,7 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel>
-            <TextBlock x:Name="Title"
-                       Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=TextOn}"/>
-
+            <TextBlock x:Name="Title"/>
             <Border x:Name="SwitchBorder"
                     Style="{StaticResource Border.Switch}"
                     Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Tag}"

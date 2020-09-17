@@ -1,4 +1,5 @@
 ﻿using SophiAppCE.Controls;
+using SophiAppCE.Managers;
 using SophiAppCE.Models;
 using SophiAppCE.ViewModels;
 using System;
@@ -75,8 +76,8 @@ namespace SophiAppCE.Views
 
         private void SelectAllSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LeftStateSwitchBar stateSwitchBar = sender as LeftStateSwitchBar;
-            (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State) });
+            LeftStateSwitchBar stateSwitchBar = sender as LeftStateSwitchBar;            
+            (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State) });            
         }      
 
         public bool ScrollToUpper
@@ -90,5 +91,15 @@ namespace SophiAppCE.Views
             DependencyProperty.Register("ScrollToUpper", typeof(bool), typeof(PrivacyPanelView), new PropertyMetadata(OnScrollToUpperChanged));
 
         private static void OnScrollToUpperChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as PrivacyPanelView).ContentPanelScrollViewer.ScrollToHome();
+        
+        public UiLanguage UiLanguage
+        {
+            get { return (UiLanguage)GetValue(UiLanguageProperty); }
+            set { SetValue(UiLanguageProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for UiLanguage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UiLanguageProperty =
+            DependencyProperty.Register("UiLanguage", typeof(UiLanguage), typeof(PrivacyPanelView), new PropertyMetadata(UiLanguage.EN));
     }
 }

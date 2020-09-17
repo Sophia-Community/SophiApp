@@ -18,7 +18,7 @@
     <UserControl.Foreground>
         <SolidColorBrush Color="{DynamicResource Color.HamburgerButton.Foreground}"/>
     </UserControl.Foreground>
-    <UserControl.Resources>        
+    <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -43,13 +43,20 @@
         </Style>
         <Style TargetType="Path">
             <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Fill">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Color.HamburgerButton.Foreground}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Fill">
                         <Setter.Value>
                             <SolidColorBrush Color="{DynamicResource Color.HamburgerButton.Disabled}"/>
                         </Setter.Value>
                     </Setter>
-                </Trigger>
+                </Trigger>                
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
@@ -79,11 +86,7 @@
     <StackPanel Name="ContentPanel">
         <Viewbox>
             <Canvas Width="24" Height="24">
-                <Path Data="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Icon}" >
-                    <Path.Fill>
-                        <SolidColorBrush Color="{DynamicResource Color.HamburgerButton.Foreground}"/>
-                    </Path.Fill>
-                </Path>
+                <Path Data="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Icon}"/>
             </Canvas>
         </Viewbox>
         <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Text}"/>

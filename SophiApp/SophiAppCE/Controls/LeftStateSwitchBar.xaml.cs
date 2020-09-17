@@ -21,11 +21,8 @@ namespace SophiAppCE.Controls
     /// </summary>
     public partial class LeftStateSwitchBar : UserControl
     {
-        private SolidColorBrush checkedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Checked"));
-        private SolidColorBrush uncheckedBrush = new SolidColorBrush((Color)Application.Current.TryFindResource("Color.Switch.Ellipse.Unchecked"));
         private Thickness ellipseRight = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Right");
         private Thickness ellipseLeft = (Thickness)Application.Current.TryFindResource("Control.Switch.Ellipse.State.Left");
-        public bool State { get; private set; } = default(bool);
 
         public LeftStateSwitchBar()
         {
@@ -37,10 +34,7 @@ namespace SophiAppCE.Controls
             State = !State;
             AnimationsManager.ShowThicknessAnimation(storyboardName: "Animation.Switch.Click",
                                                      animatedElement: SwitchEllipse,
-                                                     animationValue: State == true ? ellipseRight : ellipseLeft);
-
-            SwitchEllipse.Fill = State == true ? checkedBrush : uncheckedBrush;
-            Title.Text = State == true ? TextOff : TextOn;
+                                                     animationValue: State == true ? ellipseRight : ellipseLeft);            
         }
 
         public string TextOff
@@ -62,5 +56,15 @@ namespace SophiAppCE.Controls
         // Using a DependencyProperty as the backing store for TextOn.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextOnProperty =
             DependencyProperty.Register("TextOn", typeof(string), typeof(LeftStateSwitchBar), new PropertyMetadata(default(string)));
+
+        public bool State
+        {
+            get { return (bool)GetValue(StateProperty); }
+            set { SetValue(StateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("State", typeof(bool), typeof(LeftStateSwitchBar), new PropertyMetadata(default(bool)));
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SophiAppCE.Managers
 {
-    internal enum UiLanguage
+    public enum UiLanguage
     {
         EN,
         RU

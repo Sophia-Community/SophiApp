@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace SophiApp.Converters
+namespace SophiAppCE.Converters
 {
-    [ValueConversion(typeof(string), typeof(Visibility))]
-    public class TextToVisibilityConverter : IValueConverter
+    class SwitchBarDescriptionVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return string.IsNullOrEmpty((string)value) ? Visibility.Collapsed : Visibility.Visible;
+            return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

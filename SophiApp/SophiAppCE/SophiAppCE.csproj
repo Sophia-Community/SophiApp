@@ -85,7 +85,9 @@
     <Compile Include="Converters\CategoryPanelScrollToUpConverter.cs" />
     <Compile Include="Converters\CategoryPanelVisibilityConverter.cs" />
     <Compile Include="Converters\HeaderTextVisibilityConverter.cs" />
-    <Compile Include="Converters\SwitchBarDescriptionConverter.cs" />
+    <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
+    <Compile Include="Converters\SwitchBarLocalizationDescriptionConverter.cs" />
+    <Compile Include="Converters\SwitchBarLocalizationHeaderConverter.cs" />
     <Compile Include="Converters\SwitchSelectAllConverter.cs" />
     <Compile Include="Managers\ControlType.cs" />
     <Compile Include="Managers\AppManager.cs" />
@@ -316,12 +318,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SophiApp\SophiApp.csproj">
-      <Project>{6839C914-AE67-4F35-BB7D-2002C5D48D08}</Project>
-      <Name>SophiApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

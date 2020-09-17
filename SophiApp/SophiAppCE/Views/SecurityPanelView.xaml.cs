@@ -1,4 +1,5 @@
 ﻿using SophiAppCE.Controls;
+using SophiAppCE.Managers;
 using SophiAppCE.Models;
 using SophiAppCE.ViewModels;
 using System;
@@ -28,8 +29,6 @@ namespace SophiAppCE.Views
             InitializeComponent();
         }
 
-
-
         public ushort ItemsCount
         {
             get { return (ushort)GetValue(ItemsCountProperty); }
@@ -39,8 +38,6 @@ namespace SophiAppCE.Views
         // Using a DependencyProperty as the backing store for ItemsCount.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsCountProperty =
             DependencyProperty.Register("ItemsCount", typeof(ushort), typeof(SecurityPanelView), new PropertyMetadata(default(ushort)));
-
-
 
         public string Header
         {
@@ -93,5 +90,15 @@ namespace SophiAppCE.Views
             DependencyProperty.Register("ScrollToUpper", typeof(bool), typeof(SecurityPanelView), new PropertyMetadata(OnScrollToUpperChanged));
 
         private static void OnScrollToUpperChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as SecurityPanelView).ContentPanelScrollViewer.ScrollToHome();
+
+        public UiLanguage UiLanguage
+        {
+            get { return (UiLanguage)GetValue(UiLanguageProperty); }
+            set { SetValue(UiLanguageProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for UiLanguage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UiLanguageProperty =
+            DependencyProperty.Register("UiLanguage", typeof(UiLanguage), typeof(SecurityPanelView), new PropertyMetadata(UiLanguage.EN));
     }
 }

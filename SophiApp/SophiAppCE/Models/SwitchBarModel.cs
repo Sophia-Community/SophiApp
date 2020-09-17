@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SophiAppCE.Managers;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -11,6 +12,9 @@ namespace SophiAppCE.Models
     public class SwitchBarModel : INotifyPropertyChanged
     {
         private bool state = default(bool);
+        private string header;
+        private string description;
+
         public bool State
         {
             get => state;
@@ -22,13 +26,29 @@ namespace SophiAppCE.Models
         }
         public string Id { get; set; }
         public string Path { get; set; }
-        public string HeaderEn { get; set; }
-        public string HeaderRu { get; set; }
-        public string DescriptionEn { get; set; }
-        public string DescriptionRu { get; set; }
+        public string Header
+        {
+            get => header;
+            set
+            {
+                header = value;
+                OnPropertyChanged("Header");
+            }
+        }
+        public string Description
+        {
+            get => description;
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }        
         public string Type { get; set; }
         public string Sha256 { get; set; }
         public string Tag { get; set; }
+        public Dictionary<UiLanguage, string> LocalizedHeader { get; set; }
+        public Dictionary<UiLanguage, string> LocalizedDescription { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

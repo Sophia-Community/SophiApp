@@ -22,5 +22,12 @@ namespace SophiAppCE.Controls
             (DataContext as AppViewModel).HamburgerMenuButtonClickCommand.Execute(hamburgerMenuButton);
             e.Handled = true;
         }
+
+        private void HamburgerApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Change this !!!
+            (DataContext as AppViewModel).ChangeUiLanguageCommand.Execute(null);
+            e.Handled = true;
+        }
     }
 }

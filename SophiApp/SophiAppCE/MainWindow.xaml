@@ -9,7 +9,7 @@
         mc:Ignorable="d"        
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
-        Title="{DynamicResource Localization.AppTitle}"
+        Title="{StaticResource Localization.AppTitle}"
         WindowStyle="None"
         AllowsTransparency="True"
         TextOptions.TextFormattingMode="Display"

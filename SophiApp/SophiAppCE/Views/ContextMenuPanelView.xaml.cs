@@ -1,4 +1,5 @@
 ﻿using SophiAppCE.Controls;
+using SophiAppCE.Managers;
 using SophiAppCE.Models;
 using SophiAppCE.ViewModels;
 using System;
@@ -92,5 +93,21 @@ namespace SophiAppCE.Views
             DependencyProperty.Register("ScrollToUpper", typeof(bool), typeof(ContextMenuPanelView), new PropertyMetadata(OnScrollToUpperChanged));
 
         private static void OnScrollToUpperChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as ContextMenuPanelView).ContentPanelScrollViewer.ScrollToHome();
+               
+        public UiLanguage UiLanguage
+        {
+            get { return (UiLanguage)GetValue(UiLanguageProperty); }
+            set { SetValue(UiLanguageProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for UiLanguage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UiLanguageProperty =
+            DependencyProperty.Register("UiLanguage", typeof(UiLanguage), typeof(ContextMenuPanelView), new PropertyMetadata(UiLanguage.EN));
+
+
+
+
+
+
     }
 }
