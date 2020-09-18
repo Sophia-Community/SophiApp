@@ -20,7 +20,7 @@ namespace SophiAppCE.Managers
 
         internal static IEnumerable<JsonData> ParseJsonData()
         {
-            return Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\}", RegexOptions.Compiled | RegexOptions.Singleline)
+            return Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.SettingsCE), @"\{(.*?)\},", RegexOptions.Compiled | RegexOptions.Singleline)
                  .Cast<Match>()
                  .Select(m =>
                  {
@@ -81,7 +81,7 @@ namespace SophiAppCE.Managers
                         control.Tag = json.Tag;
                         break;
                 }
-                
+
                 yield return control;
             }
         }

@@ -4,6 +4,13 @@
 
 LoadingRing - https://github.com/zeluisping/LoadingIndicators.WPF/blob/master/src/LoadingIndicators.WPF/Styles/LoadingRing.xaml
 
+Работа с json:
+http://www.jsonutils.com/
+https://jsonformatter.org/
+
+Регулярные выражения:
+https://regex101.com/
+
 Когда-нибудь добавить кнопку для открытия скрипта, который запускается по нажатию на тумблер
 
 http://alexweinberger.com/main/pinning-network-program-taskbar-programmatically-windows-10/
