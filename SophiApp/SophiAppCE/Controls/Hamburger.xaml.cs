@@ -25,8 +25,7 @@ namespace SophiAppCE.Controls
 
         private void HamburgerApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Change this !!!
-            (DataContext as AppViewModel).ChangeUiLanguageCommand.Execute(null);
+            (DataContext as AppViewModel).ApplyingSettingsCommand.Execute(null);
             e.Handled = true;
         }
     }

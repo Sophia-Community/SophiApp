@@ -77,6 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\PsExecutor.cs" />
     <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="Controls\LeftStateSwitchBar.xaml.cs">
       <DependentUpon>LeftStateSwitchBar.xaml</DependentUpon>
@@ -93,6 +94,9 @@
     <Compile Include="Managers\AppManager.cs" />
     <Compile Include="Managers\UiLanguage.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
+    <Compile Include="Views\ApplySettingsPanelView.xaml.cs">
+      <DependentUpon>ApplySettingsPanelView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ContextMenuPanelView.xaml.cs">
       <DependentUpon>ContextMenuPanelView.xaml</DependentUpon>
     </Compile>
@@ -211,6 +215,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\DarkBlue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ApplySettingsPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

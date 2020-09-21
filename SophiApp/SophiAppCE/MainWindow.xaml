@@ -103,6 +103,9 @@
                     <views:OneDrivePanelView x:Name="OneDrivePanelViewControl" 
                                              Header="{DynamicResource Localization.OneDrive}"                                               
                                              Tag="{StaticResource Tag.OneDrive}"/>
+
+                    <views:ApplySettingsPanelView x:Name="ApplyingSettingsViewControl"
+                                                  Tag="{StaticResource Tag.ApplyingSettings}"/>
                 </Grid>
             </Grid>
         </Grid>

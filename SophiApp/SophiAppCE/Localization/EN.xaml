@@ -15,5 +15,6 @@
     <system:String x:Key="Localization.Apply">Apply</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.SelectAll">Select all</system:String>
-    <system:String x:Key="Localization.UnselectAll">Select none</system:String>    
+    <system:String x:Key="Localization.UnselectAll">Select none</system:String>
+    <system:String x:Key="Localization.ApplyingSettings">Applying settings...</system:String>
 </ResourceDictionary>

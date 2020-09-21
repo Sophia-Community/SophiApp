@@ -64,6 +64,8 @@ namespace SophiAppCE.Managers
 
         internal static IEnumerable<T> CreateControlsByType<T>(IEnumerable<JsonData> controlsCollections, ControlType controlType)
         {
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
             foreach (JsonData json in controlsCollections)
             {
                 dynamic control = new object();
@@ -73,7 +75,7 @@ namespace SophiAppCE.Managers
                     case ControlType.Switch:
                         control = new SwitchBarModel();
                         control.Id = json.Id;
-                        control.Path = json.Path;
+                        control.Path = Path.Combine(appDirectory, json.Path);
                         control.LocalizedHeader = new Dictionary<UiLanguage, string> { { UiLanguage.EN, json.HeaderEn }, { UiLanguage.RU, json.HeaderRu } };
                         control.LocalizedDescription = new Dictionary<UiLanguage, string> { { UiLanguage.EN, json.DescriptionEn }, { UiLanguage.RU, json.DescriptionRu } };
                         control.Type = json.Type;

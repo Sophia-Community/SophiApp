@@ -20,7 +20,7 @@ namespace SophiAppCE.ViewModels
     class AppViewModel : INotifyPropertyChanged
     {
         private int activeSwitchBars = default(int);
-        private string categoryPanelVisibility = TagManager.Privacy;
+        private string categoryPanelVisible = TagManager.Privacy;
         private double hamburgerMarkerVerticalLocation = default(double);
         private string categoryPanelScrollToUp = string.Empty;
         private UiLanguage uiLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper() == nameof(UiLanguage.RU) ? UiLanguage.RU : UiLanguage.EN;
@@ -46,7 +46,7 @@ namespace SophiAppCE.ViewModels
         private void InitializationCollections()
         {
             IEnumerable<JsonData> jsonRaw = AppManager.ParseJsonData();
-            IEnumerable<JsonData> jsonParsed = jsonRaw.Where(j => AppManager.FileExistsAndHashed(filePath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, j.Path), hashValue: j.Sha256) == true);
+            IEnumerable<JsonData> jsonParsed = jsonRaw.Where(j => AppManager.FileExistsAndHashed(filePath: j.Path, hashValue: j.Sha256) == true);
             IEnumerable<SwitchBarModel> switchBars = AppManager.CreateControlsByType<SwitchBarModel>(controlsCollections: jsonParsed, controlType: ControlType.Switch);
             SwitchBarModelCollection = new ObservableCollection<SwitchBarModel>(switchBars);
             SwitchBarModelCollection.ToList().ForEach(s => s.PropertyChanged += SwitchBarModel_PropertyChanged);
@@ -84,10 +84,10 @@ namespace SophiAppCE.ViewModels
         
         public string CategoryPanelsVisibility
         {
-            get => categoryPanelVisibility;
+            get => categoryPanelVisible;
             set
             {
-                categoryPanelVisibility = value;
+                categoryPanelVisible = value;
                 OnPropertyChanged("CategoryPanelsVisibility");
             }
         }
@@ -123,10 +123,7 @@ namespace SophiAppCE.ViewModels
         }
 
         private RelayCommand selectAllCommand;
-        public RelayCommand SelectAllCommand
-        {
-            get => selectAllCommand ?? (selectAllCommand = new RelayCommand(SelectAll));
-        }
+        public RelayCommand SelectAllCommand => selectAllCommand ?? (selectAllCommand = new RelayCommand(SelectAll));
 
         private void SelectAll(object args)
         {
@@ -139,10 +136,7 @@ namespace SophiAppCE.ViewModels
         }
 
         private RelayCommand hamburgerMenuButtonClickCommand;
-        public RelayCommand HamburgerMenuButtonClickCommand
-        {
-            get => hamburgerMenuButtonClickCommand ?? (hamburgerMenuButtonClickCommand = new RelayCommand(HamburgerMenuButtonClick));
-        }
+        public RelayCommand HamburgerMenuButtonClickCommand => hamburgerMenuButtonClickCommand ?? (hamburgerMenuButtonClickCommand = new RelayCommand(HamburgerMenuButtonClick));
 
         private void HamburgerMenuButtonClick(object args)
         {
@@ -154,15 +148,27 @@ namespace SophiAppCE.ViewModels
 
         private RelayCommand changeUiLanguageCommand;
 
-        public RelayCommand ChangeUiLanguageCommand
-        {
-            get => changeUiLanguageCommand ?? (changeUiLanguageCommand = new RelayCommand(ChangeUiLanguage));
-        }
+        public RelayCommand ChangeUiLanguageCommand => changeUiLanguageCommand ?? (changeUiLanguageCommand = new RelayCommand(ChangeUiLanguage));
 
         private void ChangeUiLanguage(object args)
         {
             UiLanguage = UiLanguage == UiLanguage.RU ? UiLanguage.EN : UiLanguage.RU;
             Application.Current.Resources.MergedDictionaries.Add(localizedDictionaries[UiLanguage]);
+        }
+
+        private RelayCommand applyingSettingsCommand;
+
+        public RelayCommand ApplyingSettingsCommand => applyingSettingsCommand ?? (applyingSettingsCommand = new RelayCommand(ApplyingSettingsAsync));
+
+        private async void ApplyingSettingsAsync(object args)
+        {
+            string pastTag = CategoryPanelsVisibility;
+            CategoryPanelsVisibility = TagManager.ApplyingSettings;
+            List<string> selectedItems = SwitchBarModelCollection.Where(s => s.State == true && AppManager.FileExistsAndHashed(s.Path, s.Sha256) == true)
+                                                                 .Select(s => s.Path)
+                                                                 .ToList();
+            await PsExecutor.Execute(selectedItems);
+            CategoryPanelsVisibility = pastTag;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

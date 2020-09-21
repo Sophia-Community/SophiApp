@@ -21,7 +21,8 @@ namespace SophiAppCE.Classes
         {
             _execute = execute;
             _canExecute = canExecute;
-        }
+        }       
+
         public bool CanExecute(object parameter)
         {
             if (_canExecute == null)
