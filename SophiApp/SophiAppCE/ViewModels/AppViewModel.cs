@@ -21,7 +21,6 @@ namespace SophiAppCE.ViewModels
     {
         private int activeSwitchBars = default(int);
         private string categoryPanelVisible = TagManager.Privacy;
-        private double hamburgerMarkerVerticalLocation = default(double);
         private string categoryPanelScrollToUp = string.Empty;
         private UiLanguage uiLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper() == nameof(UiLanguage.RU) ? UiLanguage.RU : UiLanguage.EN;
 
@@ -91,17 +90,7 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("CategoryPanelsVisibility");
             }
         }
-        
-        public double HamburgerMarkerVerticalLocation
-        {
-            get => hamburgerMarkerVerticalLocation;
-            set
-            {
-                hamburgerMarkerVerticalLocation = value;
-                OnPropertyChanged("HamburgerMarkerVerticalLocation");
-            }
-        }
-        
+
         public string CategoryPanelScrollToUp
         {
             get => categoryPanelScrollToUp;
@@ -110,7 +99,7 @@ namespace SophiAppCE.ViewModels
                 categoryPanelScrollToUp = value;
                 OnPropertyChanged("CategoryPanelScrollToUp");
             }
-        }        
+        }
 
         public UiLanguage UiLanguage
         {
@@ -129,10 +118,12 @@ namespace SophiAppCE.ViewModels
         {
             string tag = (args as string[]).First();
             bool state = Convert.ToBoolean((args as string[]).Last());
-
-            SwitchBarModelCollection.Where(s => s.Tag == tag && s.State != state)
-                                    .ToList()
-                                    .ForEach(s => s.State = state);
+            Task.Run(() =>
+            {
+                SwitchBarModelCollection.Where(s => s.Tag == tag && s.State != state)
+                                        .ToList()
+                                        .ForEach(s => s.State = state);
+            });
         }
 
         private RelayCommand hamburgerMenuButtonClickCommand;
@@ -141,8 +132,7 @@ namespace SophiAppCE.ViewModels
         private void HamburgerMenuButtonClick(object args)
         {
             HamburgerMenuButton button = args as HamburgerMenuButton;
-            CategoryPanelsVisibility = Convert.ToString(button.Tag);
-            HamburgerMarkerVerticalLocation = AppManager.GetParentElementRelativePoints(button).Y;
+            CategoryPanelsVisibility = Convert.ToString(button.Tag);            
             CategoryPanelScrollToUp = Convert.ToString(button.Tag);
         }
 

@@ -44,7 +44,7 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Visibility}" Value="Visible">
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Visibility}" Value="Visible">                    
                     <DataTrigger.EnterActions>
                         <BeginStoryboard Storyboard="{StaticResource Animation.ContentPanel.Visible}"/>
                     </DataTrigger.EnterActions>

@@ -78,7 +78,7 @@ namespace SophiAppCE.Views
         {
             LeftStateSwitchBar stateSwitchBar = sender as LeftStateSwitchBar;            
             (DataContext as AppViewModel).SelectAllCommand.Execute(new string[] { Convert.ToString(stateSwitchBar.Tag), Convert.ToString(stateSwitchBar.State) });            
-        }      
+        }
 
         public bool ScrollToUpper
         {

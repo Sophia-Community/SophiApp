@@ -28,7 +28,7 @@ namespace SophiAppCE.Classes
             return new ProcessStartInfo
             {
                 FileName = "powershell.exe",
-                Arguments = $"-Sta -NoLogo -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File \"{filePath}\" -On",
+                Arguments = $"-NoLogo -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File \"{filePath}\" -On",
                 LoadUserProfile = false,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 ErrorDialog = false
