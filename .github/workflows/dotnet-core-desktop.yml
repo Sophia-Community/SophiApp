@@ -27,6 +27,12 @@ jobs:
     - name: Rename Script Folder
       run: Rename-Item -Path "SophiApp\SophiAppCE\bin\Release" -NewName "SophiAppCE"
     
+    - name: Delete Config File
+      run: Remove-Item -Path "SophiApp\SophiAppCE\bin\SophiAppCE\SophiAppCE.exe.config" -Force -Confirm:$false
+    
+    - name: Delete Pdb File
+      run: Remove-Item -Path "SophiApp\SophiAppCE\bin\SophiAppCE\SophiAppCE.pdb" -Force -Confirm:$false
+    
     - name: Create Archive
       run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\SophiAppCE" -DestinationPath "SophiApp\SophiAppCE\bin\SophiAppCE.zip"
      
