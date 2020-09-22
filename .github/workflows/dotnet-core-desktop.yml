@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '0 11 * * *'
   
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
     - name: Set Variables
       id: vars
       run: echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'MMdd'))"
-    
+          
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
@@ -23,9 +23,12 @@ jobs:
       
     - name: Add Scripts Folder
       run: Expand-Archive -Path "PSScripts.zip" -DestinationPath "SophiApp\SophiAppCE\bin\Release"
+      
+    - name: Rename Script Folder
+      run: Rename-Item -Path "SophiApp\SophiAppCE\bin\Release" -NewName "SophiAppCE"
     
     - name: Create Archive
-      run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\Release\*" -DestinationPath "SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip"
+      run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\SophiAppCE" -DestinationPath "SophiApp\SophiAppCE\bin\SophiAppCE.zip"
      
     - name: Create Release
       id: create_release
@@ -45,7 +48,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: 'SophiApp\SophiAppCE\bin\Release\SophiAppCE.zip'
+        asset_path: 'SophiApp\SophiAppCE\bin\SophiAppCE.zip'
         asset_name: 'SophiAppCE.zip'
         asset_content_type: application/zip
 
