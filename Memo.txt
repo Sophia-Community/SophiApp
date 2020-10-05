@@ -11,8 +11,6 @@ https://jsonformatter.org/
 Регулярные выражения:
 https://regex101.com/
 
-Когда-нибудь добавить кнопку для открытия скрипта, который запускается по нажатию на тумблер
-
 http://alexweinberger.com/main/pinning-network-program-taskbar-programmatically-windows-10/
 
 # Получить номер билда
@@ -27,6 +25,3 @@ https://help.steampowered.com/wizard/HelpWithPublishing?issueid=925
 
 # Получить человеческие имена UWP-пакетов
 https://pastebin.com/raw/nDN7M1Hk
-
-Кнопку "Настройки переместить в самый низ. 
-Кнопку "Применить" опустить на 1 шаг вниз, оставив сверху "зазор".
