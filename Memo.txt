@@ -25,3 +25,6 @@ https://help.steampowered.com/wizard/HelpWithPublishing?issueid=925
 
 # Получить человеческие имена UWP-пакетов
 https://pastebin.com/raw/nDN7M1Hk
+https://stackoverflow.com/questions/23331385/how-to-obtain-the-display-name-of-installed-metro-apps/23376722#23376722
+https://stackoverflow.com/questions/23331385/how-to-obtain-the-display-name-of-installed-metro-apps/37231613#37231613
+https://stackoverflow.com/questions/51480747/get-the-plain-end-user-readable-name-of-uwp-apps-installed-on-a-system/51484211#51484211
