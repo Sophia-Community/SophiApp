@@ -11,30 +11,29 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
-    - name: Set Variables
+    - name: Set Build Version
       id: vars
-      run: echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'MMdd'))"
-          
+      run: | 
+        echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'MMdd'))"
+        echo "::set-output name=app_ver::$("SophiAppCE_{0}"-f (Get-Date -Format 'MMdd'))"
+      
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
     - name: Build App
-      run: msbuild.exe SophiApp/SophiApp.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE"
-      
-    - name: Add Scripts Folder
-      run: Expand-Archive -Path "PSScripts.zip" -DestinationPath "SophiApp\SophiAppCE\bin\Release"
-      
-    - name: Rename Script Folder
-      run: Rename-Item -Path "SophiApp\SophiAppCE\bin\Release" -NewName "SophiAppCE"
-    
+      run: msbuild.exe SophiAppCE/SophiAppCE.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE"
+     
     - name: Delete Config File
-      run: Remove-Item -Path "SophiApp\SophiAppCE\bin\SophiAppCE\SophiAppCE.exe.config" -Force -Confirm:$false
+      run: Remove-Item -Path "SophiAppCE\SophiAppCE\bin\SophiAppCE\SophiAppCE.exe.config" -Force -Confirm:$false
     
     - name: Delete Pdb File
-      run: Remove-Item -Path "SophiApp\SophiAppCE\bin\SophiAppCE\SophiAppCE.pdb" -Force -Confirm:$false
+      run: Remove-Item -Path "SophiAppCE\SophiAppCE\bin\SophiAppCE\SophiAppCE.pdb" -Force -Confirm:$false
+      
+    - name: Rename Script Folder
+      run: Rename-Item -Path "SophiAppCE\SophiAppCE\bin\Release" -NewName "${{ steps.vars.outputs.app_ver }}"
     
     - name: Create Archive
-      run: Compress-Archive -Path "SophiApp\SophiAppCE\bin\SophiAppCE" -DestinationPath "SophiApp\SophiAppCE\bin\SophiAppCE.zip"
+      run: Compress-Archive -Path "SophiAppCE\SophiAppCE\bin\${{ steps.vars.outputs.app_ver }}" -DestinationPath "SophiAppCE\SophiAppCE\bin\${{ steps.vars.outputs.app_ver }}.zip"
      
     - name: Create Release
       id: create_release
@@ -54,7 +53,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: 'SophiApp\SophiAppCE\bin\SophiAppCE.zip'
+        asset_path: 'SophiAppCE\SophiAppCE\bin\${{ steps.vars.outputs.app_ver }}.zip'
         asset_name: 'SophiAppCE.zip'
         asset_content_type: application/zip
 
