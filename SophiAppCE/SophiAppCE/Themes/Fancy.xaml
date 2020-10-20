@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Brush.Window.Foreground">#323232</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.Window.Background">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.TitleBar.Foreground">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.TitleBar.Background">#747fbf</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.TitleBar.Button.Hover">#7490bf</SolidColorBrush>
+    <LinearGradientBrush x:Key="Brush.HamburgerBar.Background" Opacity="0.98" StartPoint="0,1" EndPoint="1,0">
+        <GradientStop Color="#ec939e" Offset="0.2"/>
+        <GradientStop Color="#8b95e5" Offset="0.9"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Brush.HamburgerBar.Button.Foreground">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.HamburgerBar.Button.Hover">#7490bf</SolidColorBrush>
+
+</ResourceDictionary>

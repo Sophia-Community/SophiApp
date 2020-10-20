@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1022
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiAppCE", "SophiAppCE\SophiAppCE.csproj", "{EA98D10A-32CC-4B44-A6E8-8B5877DCCCDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiAppCE-Deprecated", "SophiAppCE\SophiAppCE-Deprecated.csproj", "{EA98D10A-32CC-4B44-A6E8-8B5877DCCCDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

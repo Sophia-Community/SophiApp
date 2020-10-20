@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="SophiAppCE.Controls.TitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             local:TitleBarButtonMinimize.Click="TitleBarButtonMinimize_Click"
+             local:TittleBarButtonClose.Click="TittleBarButtonClose_Click"
+             MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+</UserControl>
