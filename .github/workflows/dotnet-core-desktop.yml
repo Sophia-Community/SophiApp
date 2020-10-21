@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '0 10 * * 6'
   
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     
     - name: Set Build Version
       id: vars
-      run: echo "::set-output name=app_ver::$("SophiAppCE_1.{0}"-f (Get-Date -Format 'dd.MM.yy'))"
+      run: echo "::set-output name=app_ver::$("SophiAppCE_{0}"-f (Get-Date -Format 'dd.MM.yy'))"
       
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
