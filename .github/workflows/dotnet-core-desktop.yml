@@ -2,7 +2,7 @@ name: Build and Release
 
 on:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '30 * * * *'
   
 jobs:
   build:
@@ -14,8 +14,8 @@ jobs:
     - name: Set Build Version
       id: vars
       run: | 
-        echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'MMdd'))"
-        echo "::set-output name=app_ver::$("SophiAppCE_{0}"-f (Get-Date -Format 'MMdd'))"
+        echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'dd.MM.yy'))"
+        echo "::set-output name=app_ver::$("SophiAppCE_{0}"-f (Get-Date -Format 'dd.MM.yy'))"
       
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
@@ -23,13 +23,10 @@ jobs:
     - name: Build App
       run: msbuild.exe SophiAppCE/SophiAppCE.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="SophiAppCE"
      
-    - name: Delete Config File
-      run: Remove-Item -Path "SophiAppCE\SophiAppCE\bin\SophiAppCE\SophiAppCE.exe.config" -Force -Confirm:$false
-    
-    - name: Delete Pdb File
-      run: Remove-Item -Path "SophiAppCE\SophiAppCE\bin\SophiAppCE\SophiAppCE.pdb" -Force -Confirm:$false
+    - name: Delete Useless Files
+      run: Get-ChildItem -Path "SophiAppCE\SophiAppCE\bin\Release" -Exclude "*.exe" | Remove-Item -Force -Confirm:$false
       
-    - name: Rename Script Folder
+    - name: Rename Release Folder
       run: Rename-Item -Path "SophiAppCE\SophiAppCE\bin\Release" -NewName "${{ steps.vars.outputs.app_ver }}"
     
     - name: Create Archive
@@ -41,7 +38,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: version_${{ steps.vars.outputs.build_ver }}
+        tag_name: ${{ steps.vars.outputs.app_ver }}
         release_name: SophiAppCE
         draft: false
         prerelease: false
@@ -54,6 +51,6 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
         asset_path: 'SophiAppCE\SophiAppCE\bin\${{ steps.vars.outputs.app_ver }}.zip'
-        asset_name: 'SophiAppCE.zip'
+        asset_name: ${{ steps.vars.outputs.app_ver }}
         asset_content_type: application/zip
 
