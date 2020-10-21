@@ -24,5 +24,23 @@ namespace SophiAppCE.Controls
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is HamburgerBarButton)
+                MarkerMargin = (e.OriginalSource as HamburgerBarButton).Margin;        
+        }
+
+        public Thickness MarkerMargin
+        {
+            get { return (Thickness)GetValue(MarkerMarginProperty); }
+            set { SetValue(MarkerMarginProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MarkerMargin.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MarkerMarginProperty =
+            DependencyProperty.Register("MarkerMargin", typeof(Thickness), typeof(HamburgerBar), new PropertyMetadata(new Thickness(0, 0, 0, 0)));
+
+
     }
 }
