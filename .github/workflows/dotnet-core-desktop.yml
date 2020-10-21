@@ -13,9 +13,7 @@ jobs:
     
     - name: Set Build Version
       id: vars
-      run: | 
-        echo "::set-output name=build_ver::$("1.{0}"-f (Get-Date -Format 'dd.MM.yy'))"
-        echo "::set-output name=app_ver::$("SophiAppCE_{0}"-f (Get-Date -Format 'dd.MM.yy'))"
+      run: echo "::set-output name=app_ver::$("SophiAppCE_1.{0}"-f (Get-Date -Format 'dd.MM.yy'))"
       
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
@@ -39,7 +37,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ steps.vars.outputs.app_ver }}
-        release_name: SophiAppCE
+        release_name: ${{ steps.vars.outputs.app_ver }}
         draft: false
         prerelease: false
     
@@ -51,6 +49,6 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
         asset_path: 'SophiAppCE\SophiAppCE\bin\${{ steps.vars.outputs.app_ver }}.zip'
-        asset_name: ${{ steps.vars.outputs.app_ver }}
+        asset_name: '${{ steps.vars.outputs.app_ver }}.zip'
         asset_content_type: application/zip
 
