@@ -27,8 +27,9 @@ namespace SophiAppCE.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is HamburgerBarButton)
-                MarkerMargin = (e.OriginalSource as HamburgerBarButton).Margin;        
+            HamburgerBarButton button = e.OriginalSource as HamburgerBarButton;
+            if (button.Tag != null)
+                MarkerMargin = button.Margin;            
         }
 
         public Thickness MarkerMargin

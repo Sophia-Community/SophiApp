@@ -79,7 +79,18 @@
                                                      Text="{DynamicResource Localization.OneDrive}"
                                                      Tag="{StaticResource Tag.OneDrive}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 380, 0, 0"/>                       
+                                                     Margin="0, 380, 0, 0"/>
+
+                        <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Apply}"
+                                                     Text="{DynamicResource Localization.Apply}"
+                                                     VerticalAlignment="Top"
+                                                     Margin="0, 424, 0, 0"/>
+
+                        <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Settings}"
+                                                     Text="{DynamicResource Localization.Settings}"
+                                                     VerticalAlignment="Bottom"/>
+
+
                     </Grid>                    
                 </ControlTemplate>
             </Setter.Value>
