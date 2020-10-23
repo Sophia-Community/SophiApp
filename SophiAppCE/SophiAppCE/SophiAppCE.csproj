@@ -58,11 +58,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\SwitchBar.xaml.cs">
+      <DependentUpon>SwitchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PagePrivacyView.xaml.cs">
+      <DependentUpon>PagePrivacyView.xaml</DependentUpon>
+    </Compile>
     <Page Include="ControlsTemplates\HamburgerBarButtonTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlsTemplates\HamburgerBarTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlsTemplates\ScrollViewerTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerBarButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SwitchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PagePrivacyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -171,6 +189,7 @@
     <None Include="app.manifest" />
     <Resource Include="Fonts\SegoeUI-Semibold.ttf" />
     <Resource Include="Fonts\Montserrat-Medium.ttf" />
+    <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -179,6 +198,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Converters\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

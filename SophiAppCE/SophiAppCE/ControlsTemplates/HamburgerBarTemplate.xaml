@@ -9,88 +9,86 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:HamburgerBar">
-                    
+                <ControlTemplate TargetType="controls:HamburgerBar">                    
                     <Grid Background="{DynamicResource Brush.HamburgerBar.Background}">
-
-                        <Border Width="3" Height="42" Panel.ZIndex="10" 
-                                Margin="{Binding Path=MarkerMargin, RelativeSource={RelativeSource TemplatedParent}}" 
+                        <Border Width="3" Height="42" 
+                                Panel.ZIndex="10"                                
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Left"
                                 Background="{DynamicResource Brush.HamburgerBar.Marker.Background}"
-                                VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                Margin="{Binding Path=MarkerMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Privacy}"
                                                      Text="{DynamicResource Localization.Privacy}"
                                                      Tag="{StaticResource Tag.Privacy}"
                                                      VerticalAlignment="Top"                                                                                                         
-                                                     Margin="0, 0, 0, 0"/>
+                                                     Margin="0, 30, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Ui}"
                                                      Text="{DynamicResource Localization.Ui}"
                                                      Tag="{StaticResource Tag.Ui}"
                                                      IconMargin="10, 2, 10 , 0"     
                                                      VerticalAlignment="Top"                                                         
-                                                     Margin="0, 42, 0, 0"/>
+                                                     Margin="0, 72, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.ContextMenu}"
                                                      Text="{DynamicResource Localization.ContextMenu}"
                                                      Tag="{StaticResource Tag.ContextMenu}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 84, 0, 0"/>
+                                                     Margin="0, 114, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.StartMenu}"
                                                      Text="{DynamicResource Localization.StartMenu}"
                                                      Tag="{StaticResource Tag.StartMenu}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 126, 0, 0"/>
+                                                     Margin="0, 156, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.System}"
                                                      Text="{DynamicResource Localization.System}"
                                                      Tag="{StaticResource Tag.System}"
                                                      VerticalAlignment="Top"
                                                      HorizontalAlignment="Stretch"
-                                                     Margin="0, 168, 0, 0"/>
+                                                     Margin="0, 198, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.TaskSheduler}"
                                                      Text="{DynamicResource Localization.TaskSheduler}"
                                                      Tag="{StaticResource Tag.TaskSheduler}"
                                                      VerticalAlignment="Top"
                                                      HorizontalAlignment="Stretch"
-                                                     Margin="0, 210, 0, 0"/>
+                                                     Margin="0, 240, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Security}"
                                                      Text="{DynamicResource Localization.Security}"
                                                      Tag="{StaticResource Tag.Security}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 252, 0, 0"/>
+                                                     Margin="0, 282, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Game}"
                                                      Text="{DynamicResource Localization.Game}"
                                                      Tag="{StaticResource Tag.Game}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 294, 0, 0"/>
+                                                     Margin="0, 324, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburgern.Uwp}"
                                                      Text="{DynamicResource Localization.Uwp}"
                                                      Tag="{StaticResource Tag.Uwp}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 336, 0, 0"/>
+                                                     Margin="0, 366, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.OneDrive}"
                                                      Text="{DynamicResource Localization.OneDrive}"
                                                      Tag="{StaticResource Tag.OneDrive}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 380, 0, 0"/>
+                                                     Margin="0, 408, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Apply}"
                                                      Text="{DynamicResource Localization.Apply}"
                                                      VerticalAlignment="Top"
-                                                     Margin="0, 424, 0, 0"/>
+                                                     Margin="0, 450, 0, 0"/>
 
                         <controls:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Settings}"
                                                      Text="{DynamicResource Localization.Settings}"
                                                      VerticalAlignment="Bottom"/>
-
-
                     </Grid>                    
                 </ControlTemplate>
             </Setter.Value>

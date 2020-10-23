@@ -40,7 +40,7 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for MarkerMargin.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MarkerMarginProperty =
-            DependencyProperty.Register("MarkerMargin", typeof(Thickness), typeof(HamburgerBar), new PropertyMetadata(new Thickness(0, 0, 0, 0)));
+            DependencyProperty.Register("MarkerMargin", typeof(Thickness), typeof(HamburgerBar), new PropertyMetadata(new Thickness(0, 30, 0, 0)));
 
 
     }

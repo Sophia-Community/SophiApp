@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SophiAppCE"
-        xmlns:controls="clr-namespace:SophiAppCE.Controls"
+        xmlns:controls="clr-namespace:SophiAppCE.Controls"        
+        xmlns:view="clr-namespace:SophiAppCE.Views"
         mc:Ignorable="d"
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"         
@@ -38,9 +39,12 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <controls:HamburgerBar Grid.Column="0"/>
             
+            <controls:HamburgerBar Grid.Column="0"/>
+
+            <view:PagePrivacyView Grid.Column="1"
+                                  Tag="{StaticResource Tag.Privacy}"/>
+
         </Grid>
     </Grid>
 </Window>

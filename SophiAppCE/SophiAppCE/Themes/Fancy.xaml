@@ -12,5 +12,6 @@
     <SolidColorBrush x:Key="Brush.HamburgerBar.Button.Foreground">#ffffff</SolidColorBrush>
     <SolidColorBrush x:Key="Brush.HamburgerBar.Button.Hover">#7490bf</SolidColorBrush>
     <SolidColorBrush x:Key="Brush.HamburgerBar.Marker.Background">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.ScrollViewer.Thumb.Background">#747fbf</SolidColorBrush>
 
 </ResourceDictionary>

@@ -7,5 +7,8 @@
         <ResourceDictionary Source="pack://application:,,,/ControlsTemplates/TitleBarButtonMinimizeTemplate.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/ControlsTemplates/HamburgerBarTemplate.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/ControlsTemplates/HamburgerBarButtonTemplate.xaml"/>
+        
+        <ResourceDictionary Source="pack://application:,,,/ControlsTemplates/ScrollViewerTemplate.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/ControlsTemplates/SwitchBarTemplate.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
