@@ -5,5 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              mc:Ignorable="d"
-             MouseLeftButtonDown="TitleBarButtonClose_MouseLeftButtonDown">    
+             SnapsToDevicePixels="True"
+             MouseLeftButtonDown="TitleBarButtonClose_MouseLeftButtonDown">
+
+    <UserControl.Resources>
+        <Style x:Key="ViewboxStyle" TargetType="Viewbox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="16"/>
+            <Setter Property="Margin" Value="0, 0, 5, 5"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+        </Style>
+
+        <Style TargetType="local:TittleBarButtonClose">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:TittleBarButtonClose">
+                        <Grid x:Name="GridContent" Background="{TemplateBinding Background}">
+                            <Viewbox Style="{StaticResource ViewboxStyle}">
+                                <Path Data="{TemplateBinding Icon}"
+                                  Fill="{TemplateBinding IconBrush}"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="GridContent" Property="Background" Value="{Binding Path=Hover, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 </UserControl>

@@ -4,6 +4,109 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
+             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextRenderingMode="ClearType"
+             SnapsToDevicePixels="True"             
+             Background="{DynamicResource Brush.SwitchBar.Background}"                          
+             IsTabStop="False"
+             Focusable="False"
+             Margin="0, 0, 0, 20"
              mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="Header.TextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontStretch" Value="Normal"/>
+            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Grid.Column" Value="0"/>
+        </Style>
+
+        <Style x:Key="Description.TextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Description.Foreground}"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontStretch" Value="Normal"/>
+            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="20, 0, 20, 20"/>
+            <Setter Property="Grid.Row" Value="1"/>
+        </Style>
+
+        <Style x:Key="Header.Panel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Grid.Row" Value="0"/>
+        </Style>
+
+        <Style x:Key="Description.Panel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Grid.Row" Value="1"/>
+        </Style>
+
+        <Style x:Key="Border.Switch" TargetType="Border">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.Border.Ellipce.Background}"/>
+            <Setter Property="Grid.Column" Value="1"/>
+        </Style>
+
+        <Style TargetType="Ellipse">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipce.Unchecked}"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="Margin" Value="4, 0, 0, 0"/>
+        </Style>
+
+        <Style TargetType="local:SwitchBar">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:SwitchBar">
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource Brush.SwitchBar.Border.Background}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource Header.TextBlock}"
+                                           Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+
+                                    <Border Name="SwitchBorder" Style="{StaticResource Border.Switch}">
+                                        <Ellipse Name="SwitchEllipse"/>
+                                    </Border>
+                                </Grid>
+                                <TextBlock Name="TextBlockDescription"                       
+                                           Style="{StaticResource Description.TextBlock}"
+                                           Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
 </UserControl>

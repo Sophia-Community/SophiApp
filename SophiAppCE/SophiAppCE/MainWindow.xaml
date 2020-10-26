@@ -20,11 +20,11 @@
         Foreground="{DynamicResource Brush.Window.Foreground}"
         Background="{DynamicResource Brush.Window.Background}"        
         MinHeight="730"
-        MinWidth="1260" 
-        MaxWidth="1260">
+        MinWidth="1260">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
     </WindowChrome.WindowChrome>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -46,7 +46,7 @@
                             <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextBlockStyle}"
                                    Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                            <ScrollViewer Grid.Row="3" 
+                            <controls:ScrollBarViewer Grid.Row="3" 
                                       VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled">
 
@@ -57,10 +57,18 @@
                                         <ColumnDefinition Width="20"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="20"/>
-                                    </Grid.ColumnDefinitions>
+                                    </Grid.ColumnDefinitions>                                    
 
                                     <!--Odd Panel-->
                                     <StackPanel Grid.Column="1">
+                                        <!--<controls:SwitchBar Header="Остановить сансы отслеживания событий"/>
+
+                                        <controls:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                                            Description="Обратная связь и диагностика"/>
+
+                                        <controls:SwitchBar Header="Отключить службу функциональные возможности для подключенных пользователей и телеметрия"
+                                                            Description="Пользовательские службы выполняются в контексте безопастности учетной записи пользователя: это обеспечивает более эффективное управление ресурасами, чем предыдущий способ запуска этих служб в проводнике"/>-->
+                                        
                                         <ItemsControl ItemsSource="{Binding Source={StaticResource Filter_OddControls}}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
@@ -81,7 +89,7 @@
                                         </ItemsControl>
                                     </StackPanel>
                                 </Grid>
-                            </ScrollViewer>
+                            </controls:ScrollBarViewer>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

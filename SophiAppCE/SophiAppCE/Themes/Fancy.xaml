@@ -13,5 +13,11 @@
     <SolidColorBrush x:Key="Brush.HamburgerBar.Button.Hover">#7490bf</SolidColorBrush>
     <SolidColorBrush x:Key="Brush.HamburgerBar.Marker.Background">#ffffff</SolidColorBrush>
     <SolidColorBrush x:Key="Brush.ScrollViewer.Thumb.Background">#747fbf</SolidColorBrush>
-
+    <SolidColorBrush x:Key="Brush.SwitchBar.Background">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SwitchBar.Header.Foreground">#323232</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SwitchBar.Description.Foreground">#555555</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SwitchBar.Border.Background">#e1e1e1</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SwitchBar.Ellipce.Unchecked">#c6c6c6</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SwitchBar.Ellipce.Checked">#747fbf</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SwitchBar.Border.Ellipce.Background">#979797</SolidColorBrush>
 </ResourceDictionary>

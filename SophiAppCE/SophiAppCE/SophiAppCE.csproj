@@ -58,36 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ScrollBarViewer.xaml.cs">
+      <DependentUpon>ScrollBarViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SwitchBar.xaml.cs">
       <DependentUpon>SwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PagePrivacyView.xaml.cs">
       <DependentUpon>PagePrivacyView.xaml</DependentUpon>
     </Compile>
-    <Page Include="ControlsTemplates\HamburgerBarButtonTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlsTemplates\HamburgerBarTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlsTemplates\ScrollViewerTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlsTemplates\TitleBarButtonCloseTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlsTemplates\TitleBarButtonMinimizeTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlsTemplates\TitleBarTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\HamburgerBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,15 +75,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ScrollBarViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SwitchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\TitleBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlsTemplates\ControlsTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +169,7 @@
     <Resource Include="Fonts\SegoeUI-Semibold.ttf" />
     <Resource Include="Fonts\Montserrat-Medium.ttf" />
     <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
+    <Resource Include="Fonts\Montserrat-Bold.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,8 +1,70 @@
 ﻿<Button x:Class="SophiAppCE.Controls.HamburgerBarButton"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiAppCE.Controls"
-             mc:Ignorable="d">    
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"         
+        xmlns:local="clr-namespace:SophiAppCE.Controls"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        SnapsToDevicePixels="True"
+        OverridesDefaultStyle="True"
+        FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+        FontSize="18"        
+        FontStretch="Normal"
+        FontStyle="Normal"
+        Foreground="{DynamicResource Brush.HamburgerBar.Button.Foreground}"        
+        Background="Transparent"
+        Height="42"
+        IsTabStop="False"
+        Focusable="False"
+        mc:Ignorable="d">
+
+    <Button.Resources>
+        <Style TargetType="local:HamburgerBarButton">
+            <Setter Property="Hover" Value="{DynamicResource Brush.HamburgerBar.Button.Hover}"/>
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:HamburgerBarButton">
+                        <StackPanel x:Name="WrapperPanel" Orientation="Horizontal" Background="{Binding TemplateBinding}">
+                            <StackPanel x:Name="ContentPanel" Orientation="Horizontal">
+                                <Viewbox Width="24" Height="24" Margin="{Binding IconMargin, RelativeSource={RelativeSource TemplatedParent}}"
+                                     VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                       Margin="{Binding TextMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" SourceName="WrapperPanel" Value="True">
+                                <Setter TargetName="WrapperPanel" Property="Background" Value="{Binding Hover, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" SourceName="WrapperPanel" Value="False">
+                                <Setter TargetName="WrapperPanel" Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="WrapperPanel" Property="Background" Value="{Binding Hover, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation Storyboard.TargetName="ContentPanel" Storyboard.TargetProperty="Margin" 
+                                                            Duration="0:0:0.3" From="0 0 0 0" To="0 10 0 0" SpeedRatio="3" AutoReverse="True"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Button.Resources>
 </Button>

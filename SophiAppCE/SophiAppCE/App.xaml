@@ -9,8 +9,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Localization/RU.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Themes/Fancy.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/Icons.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/Tags.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/ControlsTemplates/ControlsTemplates.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/General/Tags.xaml"/>                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
