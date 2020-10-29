@@ -4,16 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"             
              Background="{DynamicResource Brush.SwitchBar.Background}"                          
              IsTabStop="False"
              Focusable="False"
-             Margin="0, 0, 0, 20"
+             Margin="0, 0, 0, 20"             
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibility_Converter"/>        
+        <Thickness x:Key="Margin.Switch.Ellipse.Left">3, 0, 0, 0</Thickness>
+        <Thickness x:Key="Margin.Switch.Ellipse.Right">29, 0, 0, 0</Thickness>
+        <Storyboard x:Key="Animation.Margin.Ellipse">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.2"/>            
+        </Storyboard>        
+
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
@@ -40,6 +48,7 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Margin" Value="20, 0, 20, 20"/>
             <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="Visibility" Value="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource DescriptionVisibility_Converter}}"/>
         </Style>
 
         <Style x:Key="Header.Panel" TargetType="StackPanel">
@@ -52,7 +61,7 @@
             <Setter Property="Grid.Row" Value="1"/>
         </Style>
 
-        <Style x:Key="Border.Switch" TargetType="Border">
+        <Style x:Key="Switch.Border" TargetType="Border">
             <Setter Property="Width" Value="60"/>
             <Setter Property="Height" Value="33"/>
             <Setter Property="BorderThickness" Value="2"/>
@@ -60,26 +69,34 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="20"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.Border.Ellipce.Background}"/>
-            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
+        </Style>
+
+        <Style x:Key="Frame.Border" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
         </Style>
 
         <Style TargetType="Ellipse">
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="25"/>
-            <Setter Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipce.Unchecked}"/>
             <Setter Property="StrokeThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
-            <Setter Property="Margin" Value="4, 0, 0, 0"/>
+        </Style>
+
+        <Style x:Key="ContainerPanel" TargetType="StackPanel">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
 
         <Style TargetType="local:SwitchBar">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SwitchBar">
-                        <Border BorderThickness="1" BorderBrush="{DynamicResource Brush.SwitchBar.Border.Background}">
+                        <Border Style="{StaticResource Frame.Border}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -90,19 +107,34 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource Header.TextBlock}"
-                                           Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <TextBlock Name="TextBlockHeader"
+                                               Style="{StaticResource Header.TextBlock}"
+                                               Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                                    <Border Name="SwitchBorder" Style="{StaticResource Border.Switch}">
-                                        <Ellipse Name="SwitchEllipse"/>
-                                    </Border>
+                                    <StackPanel Name="SwitchContainerPanel"
+                                                Style="{StaticResource ContainerPanel}"
+                                                MouseLeftButtonDown="SwitchContainerPanel_MouseLeftButtonDown">
+
+                                        <Border Name="SwitchBorder" Style="{StaticResource Switch.Border}">
+                                            <Ellipse x:Name="SwitchEllipse"/>
+                                        </Border>
+                                    </StackPanel>
                                 </Grid>
                                 <TextBlock Name="TextBlockDescription"                       
                                            Style="{StaticResource Description.TextBlock}"
-                                           Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
-
+                                           Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />                                
                             </Grid>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="SystemState" Value="True">
+                                <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
+                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
+                            </Trigger>
+                            <Trigger Property="SystemState" Value="False">
+                                <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

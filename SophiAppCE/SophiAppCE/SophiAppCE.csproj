@@ -64,6 +64,7 @@
     <Compile Include="Controls\SwitchBar.xaml.cs">
       <DependentUpon>SwitchBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
     <Compile Include="Views\PagePrivacyView.xaml.cs">
       <DependentUpon>PagePrivacyView.xaml</DependentUpon>
     </Compile>
@@ -178,8 +179,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
