@@ -61,8 +61,14 @@
     <Compile Include="Controls\ScrollBarViewer.xaml.cs">
       <DependentUpon>ScrollBarViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Switch.xaml.cs">
+      <DependentUpon>Switch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SwitchBar.xaml.cs">
       <DependentUpon>SwitchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextSwitchBar.xaml.cs">
+      <DependentUpon>TextSwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
     <Compile Include="Views\PagePrivacyView.xaml.cs">
@@ -80,7 +86,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Switch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SwitchBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextSwitchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +185,7 @@
     <Resource Include="Fonts\Montserrat-Medium.ttf" />
     <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
     <Resource Include="Fonts\Montserrat-Bold.ttf" />
+    <Resource Include="Fonts\Montserrat-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -73,8 +73,7 @@
         </Style>
 
         <Style x:Key="Frame.Border" TargetType="Border">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
+            <Setter Property="BorderThickness" Value="1"/>            
         </Style>
 
         <Style TargetType="Ellipse">
@@ -86,7 +85,7 @@
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
         </Style>
 
-        <Style x:Key="ContainerPanel" TargetType="StackPanel">
+        <Style x:Key="Container.Panel" TargetType="StackPanel">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -96,7 +95,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SwitchBar">
-                        <Border Style="{StaticResource Frame.Border}">
+                        <Border Name="FrameBorder" Style="{StaticResource Frame.Border}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -112,7 +111,7 @@
                                                Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
                                     <StackPanel Name="SwitchContainerPanel"
-                                                Style="{StaticResource ContainerPanel}"
+                                                Style="{StaticResource Container.Panel}"
                                                 MouseLeftButtonDown="SwitchContainerPanel_MouseLeftButtonDown">
 
                                         <Border Name="SwitchBorder" Style="{StaticResource Switch.Border}">
@@ -134,11 +133,16 @@
                                 <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
                                 <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
                             </Trigger>
+                            <Trigger Property="ActualState" Value="False">
+                                <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Unchecked}"/>
+                            </Trigger>
+                            <Trigger Property="ActualState" Value="True">
+                                <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Checked}"/>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
     </UserControl.Resources>
-
 </UserControl>
