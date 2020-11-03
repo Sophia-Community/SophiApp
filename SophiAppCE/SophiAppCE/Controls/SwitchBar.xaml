@@ -91,7 +91,7 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
 
-        <Style TargetType="local:SwitchBar">
+        <Style TargetType="local:SwitchBar">            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SwitchBar">

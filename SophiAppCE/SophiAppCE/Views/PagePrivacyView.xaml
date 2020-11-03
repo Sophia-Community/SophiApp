@@ -46,15 +46,15 @@
 
                             <TextBlock Name="HeaderText" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
                             
-                            <controls:Switch Name="SelecAllSwitch"
+                            <controls:Switch x:Name="SelectAllSwitch"
                                              Grid.Row="1"
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Right"
                                              Margin="0, 0, 20, 0"/>
 
                             <controls:ScrollBarViewer Grid.Row="3" 
-                                      VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled"
+                                                      VerticalScrollBarVisibility="Auto"
+                                                      HorizontalScrollBarVisibility="Disabled"
                                                       Margin="0, 0, 20, 0">
 
                                 <Grid>

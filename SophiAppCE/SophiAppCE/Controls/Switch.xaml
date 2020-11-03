@@ -5,17 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              mc:Ignorable="d"             
-             SnapsToDevicePixels="True"             
-             Background="Transparent"                          
+             SnapsToDevicePixels="True"
              IsTabStop="False"
-             Focusable="False">
+             Focusable="False"
+             ButtonBase.Click="Switch_Click">
 
     <UserControl.Resources>
         <Thickness x:Key="Margin.Switch.Ellipse.Left">3, 0, 0, 0</Thickness>
         <Thickness x:Key="Margin.Switch.Ellipse.Right">29, 0, 0, 0</Thickness>
+        <Storyboard x:Key="Animation.Margin.Ellipse.ToLeft">
+            <ThicknessAnimation Storyboard.TargetName="SwitchEllipse"
+                                Storyboard.TargetProperty="Margin" 
+                                Duration="0:0:0.2"
+                                From="{StaticResource Margin.Switch.Ellipse.Right}"
+                                To="{StaticResource Margin.Switch.Ellipse.Left}"/>
+        </Storyboard>
+        <Storyboard x:Key="Animation.Margin.Ellipse.ToRight">
+            <ThicknessAnimation Storyboard.TargetName="SwitchEllipse"
+                                Storyboard.TargetProperty="Margin" 
+                                Duration="0:0:0.2"
+                                From="{StaticResource Margin.Switch.Ellipse.Left}"
+                                To="{StaticResource Margin.Switch.Ellipse.Right}"/>
+        </Storyboard>
 
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
 
         <Style TargetType="Border">
@@ -34,48 +49,18 @@
             <Setter Property="StrokeThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
-            <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>            
         </Style>
 
-        <Style TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="5, 0, 10, 0"/>
-            <Setter Property="TextWrapping" Value="NoWrap"/>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <ContentPresenter Content="{TemplateBinding Content}"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="local:Switch">            
+        <Style TargetType="local:Switch">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:Switch">
                         <StackPanel Name="SwitchPanel">
-                            <TextBlock Name="TitleText"/>
-                            <Button>
-                                <Border Name="SwitchBorder">
-                                    <Ellipse Name="SwitchEllipse"/>
-                                </Border>
-                            </Button>
+                            <Border Name="SwitchBorder">
+                                <Ellipse Name="SwitchEllipse"/>
+                            </Border>
                         </StackPanel>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="State" Value="False">
-                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>                                
-                            </Trigger>
-                            <Trigger Property="State" Value="True">
-                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>                                
-                            </Trigger>                            
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

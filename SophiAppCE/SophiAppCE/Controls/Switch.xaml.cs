@@ -24,15 +24,25 @@ namespace SophiAppCE.Controls
         {
             InitializeComponent();
         }
-        
-        public bool State
+
+        public bool? State
         {
-            get { return (bool)GetValue(StateProperty); }
+            get { return (bool?)GetValue(StateProperty); }
             set { SetValue(StateProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(bool), typeof(Switch), new PropertyMetadata(null));
+            DependencyProperty.Register("State", typeof(bool?), typeof(Switch), new PropertyMetadata(null));
+
+        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            State = State == null ? true : !State;
+        }
+
+        private void Switch_Click(object sender, RoutedEventArgs e)
+        {
+            State = State == null ? true : !State;
+        }
     }
 }
