@@ -8,25 +8,16 @@
              SnapsToDevicePixels="True"
              IsTabStop="False"
              Focusable="False"
-             ButtonBase.Click="Switch_Click">
+             Background="{DynamicResource Brush.SwitchBar.Background}">
 
     <UserControl.Resources>
         <Thickness x:Key="Margin.Switch.Ellipse.Left">3, 0, 0, 0</Thickness>
         <Thickness x:Key="Margin.Switch.Ellipse.Right">29, 0, 0, 0</Thickness>
-        <Storyboard x:Key="Animation.Margin.Ellipse.ToLeft">
+        <Storyboard x:Key="Animation.Margin.Ellipse">
             <ThicknessAnimation Storyboard.TargetName="SwitchEllipse"
                                 Storyboard.TargetProperty="Margin" 
-                                Duration="0:0:0.2"
-                                From="{StaticResource Margin.Switch.Ellipse.Right}"
-                                To="{StaticResource Margin.Switch.Ellipse.Left}"/>
-        </Storyboard>
-        <Storyboard x:Key="Animation.Margin.Ellipse.ToRight">
-            <ThicknessAnimation Storyboard.TargetName="SwitchEllipse"
-                                Storyboard.TargetProperty="Margin" 
-                                Duration="0:0:0.2"
-                                From="{StaticResource Margin.Switch.Ellipse.Left}"
-                                To="{StaticResource Margin.Switch.Ellipse.Right}"/>
-        </Storyboard>
+                                Duration="0:0:0.2"/>
+        </Storyboard>        
 
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
@@ -49,14 +40,16 @@
             <Setter Property="StrokeThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>            
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+            <Setter Property="Fill" Value="{StaticResource Brush.SwitchBar.Ellipse.Unchecked}"/>
         </Style>
 
         <Style TargetType="local:Switch">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:Switch">
-                        <StackPanel Name="SwitchPanel">
+                        <StackPanel Name="SwitchPanel" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
                             <Border Name="SwitchBorder">
                                 <Ellipse Name="SwitchEllipse"/>
                             </Border>

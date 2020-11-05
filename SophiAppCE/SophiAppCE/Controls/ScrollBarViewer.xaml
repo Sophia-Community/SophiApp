@@ -1,4 +1,4 @@
-﻿<ScrollViewer x:Class="SophiAppCE.Controls.ScrollBarViewer"
+﻿<UserControl x:Class="SophiAppCE.Controls.ScrollBarViewer"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
               SnapsToDevicePixels="True"
               mc:Ignorable="d">
     
-    <ScrollViewer.Resources>
+    <UserControl.Resources>
         <SolidColorBrush x:Key="StandardBorderBrush" Color="Transparent" />
         <SolidColorBrush x:Key="StandardBackgroundBrush" Color="Black" />
         <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
@@ -190,5 +190,5 @@
             </Setter>
         </Style>
         
-    </ScrollViewer.Resources>
-</ScrollViewer>
+    </UserControl.Resources>
+</UserControl>

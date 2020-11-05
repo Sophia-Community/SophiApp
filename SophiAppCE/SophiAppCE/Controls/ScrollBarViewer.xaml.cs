@@ -18,7 +18,7 @@ namespace SophiAppCE.Controls
     /// <summary>
     /// Логика взаимодействия для ScrollBarViewer.xaml
     /// </summary>
-    public partial class ScrollBarViewer : ScrollViewer
+    public partial class ScrollBarViewer : UserControl
     {
         public ScrollBarViewer()
         {
