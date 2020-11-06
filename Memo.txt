@@ -6,7 +6,7 @@ LoadingRing - https://github.com/zeluisping/LoadingIndicators.WPF/blob/master/sr
 
 Работа с json:
 http://www.jsonutils.com/
-https://jsonformatter.org/
+https://jsonformatter.org/json-pretty-print
 
 Регулярные выражения:
 https://regex101.com/

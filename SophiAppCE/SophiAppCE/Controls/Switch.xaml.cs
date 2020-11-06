@@ -28,6 +28,7 @@ namespace SophiAppCE.Controls
 
         private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            State = !State;
             Ellipse ellipse = GetTemplateChild("SwitchEllipse") as Ellipse;
 
             SolidColorBrush brushUnchecked = Application.Current.TryFindResource("Brush.SwitchBar.Ellipse.Unchecked") as SolidColorBrush;
@@ -42,6 +43,16 @@ namespace SophiAppCE.Controls
             storyboard.Begin(ellipse);
 
             ellipse.Fill = ellipse.Margin == marginRight ? brushUnchecked : brushChecked;
-        }        
+        }
+
+        public bool State
+        {
+            get { return (bool)GetValue(StateProperty); }
+            set { SetValue(StateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("State", typeof(bool), typeof(Switch), new PropertyMetadata(false));
     }
 }

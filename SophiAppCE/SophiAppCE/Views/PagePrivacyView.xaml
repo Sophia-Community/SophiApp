@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Views"
-             xmlns:controls="clr-namespace:SophiAppCE.Controls"
+             xmlns:controls="clr-namespace:SophiAppCE.Controls"             
              mc:Ignorable="d" 
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
@@ -12,8 +12,8 @@
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent"
              Visibility="Visible">
-    <UserControl.Resources>
-
+    
+    <UserControl.Resources>        
         <Style TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -28,8 +28,7 @@
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>            
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="Margin" Value="0, 0, 2, 0"/>
         </Style>
@@ -44,7 +43,7 @@
                             <CollectionViewSource x:Key="Filter_EvenControls" Filter="FilterEvenControls" Source="{Binding SwitchBarModelCollection}"/>
                         </ControlTemplate.Resources>
                         
-                        <Grid ShowGridLines="True">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="42"/>
@@ -53,54 +52,50 @@
                                 <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="1" ShowGridLines="True">
+                            <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="{Binding Path=ActualWidth, ElementName=FirstColumnContentGrid, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <ColumnDefinition Width="{Binding Path=ActualWidth, ElementName=SecondColumnContentGrid, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <ColumnDefinition Width="{Binding Path=ActualWidth, ElementName=ThirdColumnContentGrid, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <ColumnDefinition Width="{Binding Path=ActualWidth, ElementName=FourthColumnContentGrid, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <ColumnDefinition Width="{Binding Path=ActualWidth, ElementName=FifthColumnContentGrid, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>                                    
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Name="HeaderText" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
                                 <controls:Switch x:Name="SelectAllSwitch"
-                                                 Grid.Column="3"
+                                                 Grid.Column="1"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Right"
-                                                 Margin="0, 0, 20, 0"/>
-
+                                                 Margin="0, 0, 30, 0"/>
                             </Grid>
 
-                            <ScrollViewer>
+                            <ScrollViewer Name="ContentScroll">
 
-                                <Grid ShowGridLines="True">
+                                <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Name="FirstColumnContentGrid" Width="20"/>
-                                        <ColumnDefinition Name="SecondColumnContentGrid" Width="*"/>
-                                        <ColumnDefinition Name="ThirdColumnContentGrid" Width="20"/>
-                                        <ColumnDefinition Name="FourthColumnContentGrid" Width="*"/>
-                                        <ColumnDefinition Name="FifthColumnContentGrid" Width="20"/>
-                                    </Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>                                    
 
-                                    <!--Odd Panel-->
-                                    <StackPanel Grid.Column="1">
+                                    <StackPanel Name="OddPanel" Grid.Column="1">
 
-                                        <controls:SwitchBar Header="Отключить службу &quote;Функциональные возможности для подключенных пользователей и телеметрия&quote; (DiagTrack)"
-                                                            Description="Служба &quote;Функциональные возможности для подключенных пользователей и телеметрия&quote; включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе &quote;Диагностика и отзывы&quote;"
-                                                            SystemState="True"/>
+                                        <controls:SwitchBar Header="Отключить службу «Функциональные возможности для подключенных пользователей и телеметрия» (DiagTrack)"
+                                                            Description="Служба «Функциональные возможности для подключенных пользователей и телеметрия» включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе «Диагностика и отзывы»"
+                                                            State="True"/>
 
                                         <controls:SwitchBar Header="Установить уровень сбора диагностических сведений ОС на минимальный"/>
 
 
-                                        <controls:SwitchBar Header="Изменить частоту формирования отзывов на &quote;Никогда&quote; для текущего пользователя"
+                                        <controls:SwitchBar Header="Изменить частоту формирования отзывов на «Никогда» для текущего пользователя"
                                                             Description="Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10"/>
 
                                         <controls:SwitchBar Header="Отключить задачи диагностического отслеживания"/>
 
 
                                         <controls:SwitchBar Header="Не использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
-                                                            SystemState="True"/>
+                                                            State="True"/>
 
                                         <ItemsControl ItemsSource="{Binding Source={StaticResource Filter_OddControls}}">
                                             <ItemsControl.ItemTemplate>
@@ -109,25 +104,23 @@
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
-                                    </StackPanel>
+                                    </StackPanel>                                    
 
-                                    <!--Even Panel-->
-                                    <StackPanel Grid.Column="3">
+                                    <StackPanel Name="EvenPanel" Grid.Column="3">
 
                                         <controls:SwitchBar Header="Не позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков (только для текущего пользователя)"/>
 
                                         <controls:SwitchBar Header="Не разрешать приложениям использовать идентификатор рекламы (только для текущего пользователя)"
-                                                            SystemState="True"/>
+                                                            State="True"/>
 
 
                                         <controls:SwitchBar Header="Не разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот (только для текущего пользователя)"
                                                             Description="Позволяет приложениям на вашем устройстве обмениться данными с другими устройствами и открывать такие же приложения на них"/>
 
                                         <controls:SwitchBar Header="Не показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях (только для текущего пользователя)"
-                                                            SystemState="True"/>
+                                                            State="True"/>
 
-                                        <controls:SwitchBar Header="Не показывать рекомендуемое содержимое в приложении &quote;Параметры&quote;"/>
-
+                                        <controls:SwitchBar Header="Не показывать рекомендуемое содержимое в приложении «Параметры»"/>
 
                                         <ItemsControl ItemsSource="{Binding Source={StaticResource Filter_EvenControls}}">
                                             <ItemsControl.ItemTemplate>
@@ -136,7 +129,7 @@
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
-                                    </StackPanel>
+                                    </StackPanel>                                    
                                 </Grid>
                             </ScrollViewer>
                         </Grid>

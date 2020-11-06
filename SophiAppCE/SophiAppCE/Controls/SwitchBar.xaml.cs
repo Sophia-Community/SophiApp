@@ -46,39 +46,25 @@ namespace SophiAppCE.Controls
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(SwitchBar), new PropertyMetadata(default(string)));
 
-        public bool SystemState
+        public bool State
         {
-            get { return (bool)GetValue(SystemStateProperty); }
-            set { SetValue(SystemStateProperty, value); }
+            get { return (bool)GetValue(StateProperty); }
+            set { SetValue(StateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SystemState.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SystemStateProperty =
-            DependencyProperty.Register("SystemState", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
+        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
 
-        public bool ActualState
+        public bool IsChanged
         {
-            get { return (bool)GetValue(ActualStateProperty); }
-            set { SetValue(ActualStateProperty, value); }
+            get { return (bool)GetValue(IsChangedProperty); }
+            set { SetValue(IsChangedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ActualState.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ActualStateProperty =
-            DependencyProperty.Register("ActualState", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
-
-
-
-        public bool SwitchState
-        {
-            get { return (bool)GetValue(SwitchStateProperty); }
-            set { SetValue(SwitchStateProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for SwitchState.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SwitchStateProperty =
-            DependencyProperty.Register("SwitchState", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
-
-
+        // Using a DependencyProperty as the backing store for IsChanged.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsChangedProperty =
+            DependencyProperty.Register("IsChanged", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
 
         private void SwitchContainerPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {   
@@ -87,7 +73,7 @@ namespace SophiAppCE.Controls
 
         internal void ChangeState()
         {
-            ActualState = !ActualState;
+            IsChanged = !IsChanged;
             Ellipse ellipse = GetTemplateChild("SwitchEllipse") as Ellipse;
 
             SolidColorBrush brushUnchecked = Application.Current.TryFindResource("Brush.SwitchBar.Ellipse.Unchecked") as SolidColorBrush;

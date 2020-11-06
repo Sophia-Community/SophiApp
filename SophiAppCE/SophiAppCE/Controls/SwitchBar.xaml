@@ -125,18 +125,18 @@
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="SystemState" Value="True">
+                            <Trigger Property="State" Value="True">
                                 <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
                                 <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
                             </Trigger>
-                            <Trigger Property="SystemState" Value="False">
+                            <Trigger Property="State" Value="False">
                                 <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
                                 <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
                             </Trigger>
-                            <Trigger Property="ActualState" Value="False">
+                            <Trigger Property="IsChanged" Value="False">
                                 <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Unchecked}"/>
                             </Trigger>
-                            <Trigger Property="ActualState" Value="True">
+                            <Trigger Property="IsChanged" Value="True">
                                 <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Checked}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>

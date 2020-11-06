@@ -58,9 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\ScrollBarViewer.xaml.cs">
-      <DependentUpon>ScrollBarViewer.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
     </Compile>
@@ -68,6 +66,7 @@
       <DependentUpon>SwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
+    <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="Views\PagePrivacyView.xaml.cs">
       <DependentUpon>PagePrivacyView.xaml</DependentUpon>
     </Compile>
@@ -76,10 +75,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerBarButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ScrollBarViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +173,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <Resource Include="Resources\ControlsData.json" />
     <Resource Include="Fonts\SegoeUI-Semibold.ttf" />
     <Resource Include="Fonts\Montserrat-Medium.ttf" />
     <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
@@ -191,6 +187,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
