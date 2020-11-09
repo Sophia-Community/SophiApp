@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
@@ -66,6 +68,10 @@
       <DependentUpon>SwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
+    <Compile Include="Helpers\ControlsType.cs" />
+    <Compile Include="Helpers\Parser.cs" />
+    <Compile Include="Helpers\Tags.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="Views\PagePrivacyView.xaml.cs">
       <DependentUpon>PagePrivacyView.xaml</DependentUpon>
@@ -187,8 +193,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

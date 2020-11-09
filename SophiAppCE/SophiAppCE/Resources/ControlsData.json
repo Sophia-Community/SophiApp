@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Id": "1x1",
     "Header": {
@@ -7,9 +7,9 @@
     },
     "Description": {
       "RU": "Служба «Функциональные возможности для подключенных пользователей и телеметрия» включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе «Диагностика и отзывы»",
-      "En": "The «Connected User Experiences and Telemetry» service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics"
+      "EN": "The «Connected User Experiences and Telemetry» service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -20,9 +20,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -33,9 +33,9 @@
     },
     "Description": {
       "RU": "Функция отчетов об ошибках отправляет набор данных в Microsoft для определенных типов событий, таких как общие, нефатальные ошибки: сбои в приложениях, неотвечающих приложения и ошибки в ядре",
-      "En": "Windows Error Reporting sends data to Microsoft for specific event types such as generic, non-fatal errors: crash, no response, and kernel fault errors"
+      "EN": "Windows Error Reporting sends data to Microsoft for specific event types such as generic, non-fatal errors: crash, no response, and kernel fault errors"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -46,9 +46,9 @@
     },
     "Description": {
       "RU": "Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10",
-      "En": "Сhoose how often you're asked to rate or provide written feedback about Windows 10"
+      "EN": "Сhoose how often you're asked to rate or provide written feedback about Windows 10"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -59,9 +59,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -72,9 +72,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -85,9 +85,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -98,9 +98,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -111,9 +111,9 @@
     },
     "Description": {
       "RU": "Позволяет приложениям на вашем устройстве обмениться данными с другими устройствами и открывать такие же приложения на них",
-      "En": "Allows apps on your device to communicate with other devices and open the same apps on them"
+      "EN": "Allows apps on your device to communicate with other devices and open the same apps on them"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -124,9 +124,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -137,9 +137,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -150,9 +150,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -163,9 +163,9 @@
     },
     "Description": {
       "RU": "По умолчанию Windows в тихом режиме и без подтверждения автоматически скачивает и устанавливает рекомендованные приложения из Microsoft Store",
-      "En": "Windows silently automatically downloads and installs suggested apps from the Microsoft Store without any confirmation by default"
+      "EN": "Windows silently automatically downloads and installs suggested apps from the Microsoft Store without any confirmation by default"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -176,9 +176,9 @@
     },
     "Description": {
       "RU": "Иногда, когда вы перезагружаете ПК или выходите из системы и входите в Windows 10, вы можете видеть уведомление «Максимально эффективное использование Windows», предлагающее способы завершить настройку устройства",
-      "En": "Occasionally when you restart the computer or sign out and sign in to Windows 10, you may see a «Get even more out of Windows» notification screen to suggest ways you can finish setting up your device"
+      "EN": "Occasionally when you restart the computer or sign out and sign in to Windows 10, you may see a «Get even more out of Windows» notification screen to suggest ways you can finish setting up your device"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -189,9 +189,9 @@
     },
     "Description": {
       "RU": "Индивидуальные возможности — это персонализированные советы, рекламные объявления и рекомендации, которые улучшают продукты и услуги Microsoft с учетом ваших нужд",
-      "En": "Tailored experiences are personalized tips, ads, and recommendations that enhance Microsoft products and services for your needs"
+      "EN": "Tailored experiences are personalized tips, ads, and recommendations that enhance Microsoft products and services for your needs"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -202,9 +202,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Privacy"
   },
   {
@@ -215,9 +215,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -228,9 +228,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -241,9 +241,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -254,9 +254,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -267,9 +267,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -280,9 +280,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -293,9 +293,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -306,9 +306,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -319,9 +319,9 @@
     },
     "Description": {
       "RU": "Реклама OneDrive",
-      "En": "OneDrive ad"
+      "EN": "OneDrive ad"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -332,9 +332,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -345,9 +345,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -358,9 +358,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -371,9 +371,9 @@
     },
     "Description": {
       "RU": "Перетащите окна к боковым сторонам или углам экрана, и они будут автоматически размещены рядом",
-      "En": "Drag windows to the sides or corners of ypur screen and they'll automatically size to fit perfectly, side by side"
+      "EN": "Drag windows to the sides or corners of ypur screen and they'll automatically size to fit perfectly, side by side"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -384,9 +384,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -397,9 +397,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -410,9 +410,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -423,9 +423,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -436,9 +436,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -449,9 +449,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -462,9 +462,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -475,9 +475,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -488,9 +488,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -501,9 +501,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -514,9 +514,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -527,9 +527,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -540,9 +540,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -553,9 +553,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -566,9 +566,9 @@
     },
     "Description": {
       "RU": "Если в качестве фонового рисунка рабочего стола выбрано изображение формата JPEG, Windows снизит качество исходного качества изображения до 85 \\%",
-      "En": "If a JPEG image as your desktop background wallpaper selected, then Windows will reduce the quality to only 85\\% of the original image quality"
+      "EN": "If a JPEG image as your desktop background wallpaper selected, then Windows will reduce the quality to only 85\\% of the original image quality"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -579,9 +579,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -592,9 +592,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -605,9 +605,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Ui"
   },
   {
@@ -618,9 +618,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "OneDrive"
   },
   {
@@ -631,9 +631,9 @@
     },
     "Description": {
       "RU": "Функция контроля может автоматически освободить место, удалив ненужные файлы только при нехватке свободного места на устройстве",
-      "En": "Storage Sense can automatically free up space by getting rId of files you don't need only when your device is low on storage space"
+      "EN": "Storage Sense can automatically free up space by getting rId of files you don't need only when your device is low on storage space"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -644,9 +644,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -657,9 +657,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -670,9 +670,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -683,9 +683,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -696,9 +696,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -709,9 +709,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -722,9 +722,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -735,7 +735,7 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
     "Type": "List",
     "Tag": "System"
@@ -748,9 +748,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -761,9 +761,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -774,9 +774,9 @@
     },
     "Description": {
       "RU": "Windows ожидает полной инициализации сети, прежде чем пользователи войдут в систему",
-      "En": "Windows waits for complete network initialization before users are logged on"
+      "EN": "Windows waits for complete network initialization before users are logged on"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -787,9 +787,9 @@
     },
     "Description": {
       "RU": "Не разрешать Windows решать, какой принтер должен использоваться по умолчанию",
-      "En": "Windows set your default printer to be the one you used most recently at your current location"
+      "EN": "Windows set your default printer to be the one you used most recently at your current location"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -800,9 +800,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -813,9 +813,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -826,9 +826,9 @@
     },
     "Description": {
       "RU": "Установить WSL 2 как версию по умолчанию. Отключить создание своп-файла",
-      "En": "Set WSL 2 as default version. Disable swap file creation"
+      "EN": "Set WSL 2 as default version. Disable swap file creation"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -839,9 +839,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -852,9 +852,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -865,9 +865,9 @@
     },
     "Description": {
       "RU": "Приложения не смогут получать сведения, отправлять уведомления и обновляться, даже если вы их не используете",
-      "En": "The apps can receive infom send notifications, and stay up-todate, even when you're not using them"
+      "EN": "The apps can receive infom send notifications, and stay up-todate, even when you're not using them"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -878,9 +878,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -891,9 +891,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -904,9 +904,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -917,9 +917,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -930,9 +930,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -943,9 +943,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -956,9 +956,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -969,7 +969,7 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
     "Type": "List",
     "Tag": "System"
@@ -982,9 +982,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -995,9 +995,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1008,9 +1008,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1021,9 +1021,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1034,9 +1034,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1047,9 +1047,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1060,9 +1060,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1073,9 +1073,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1086,9 +1086,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1099,9 +1099,9 @@
     },
     "Description": {
       "RU": "Чем больше вы используете это устройство, тем более удобный период активности будет вам предлагаться",
-      "En": "The more you use this device, the better we'll be able to suggest active hours"
+      "EN": "The more you use this device, the better we'll be able to suggest active hours"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1112,9 +1112,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1125,9 +1125,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1138,9 +1138,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1151,9 +1151,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1164,7 +1164,7 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
     "Type": "Icon",
     "Tag": "StartMenu"
@@ -1177,7 +1177,7 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
     "Type": "Icon",
     "Tag": "StartMenu"
@@ -1190,7 +1190,7 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
     "Type": "Icon",
     "Tag": "StartMenu"
@@ -1203,7 +1203,7 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
     "Type": "Icon",
     "Tag": "StartMenu"
@@ -1216,7 +1216,7 @@
     },
     "Description": {
       "RU": "Приложения не будут установлены для новых пользователе, если отмечено «Удалять для всех пользователей»",
-      "En": "App packages will not be installed for new users if «Uninstall for All Users» is checked"
+      "EN": "App packages will not be installed for new users if «Uninstall for All Users» is checked"
     },
     "Type": "Icon",
     "Tag": "Uwp"
@@ -1229,7 +1229,7 @@
     },
     "Description": {
       "RU": "Расширение может быть установлено без учетной записи Microsoft бесплатно вместо 0,99 $",
-      "En": "The extension can be installed without Microsoft account for free instead of $0.99"
+      "EN": "The extension can be installed without Microsoft account for free instead of $0.99"
     },
     "Type": "Icon",
     "Tag": "Uwp"
@@ -1242,9 +1242,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Uwp"
   },
   {
@@ -1255,9 +1255,9 @@
     },
     "Description": {
       "RU": "Xbox Game Bar позволяет создавать игровые клипы, общаться с друзьями и получать приглашения в игры",
-      "En": "Xbox Game Bar is for thigs like recording game clips, chatting with friends, receiving game invites"
+      "EN": "Xbox Game Bar is for thigs like recording game clips, chatting with friends, receiving game invites"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Game"
   },
   {
@@ -1268,9 +1268,9 @@
     },
     "Description": {
       "RU": "Эти подсказки позволяют узнать больше об использовании Xbox Game Bar при каждом запуске игры или приложения",
-      "En": "These tips are to learn more about using Xbox Game bar each time you open a game or app"
+      "EN": "These tips are to learn more about using Xbox Game bar each time you open a game or app"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Game"
   },
   {
@@ -1281,9 +1281,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Game"
   },
   {
@@ -1294,9 +1294,9 @@
     },
     "Description": {
       "RU": "Уменьшить время задержки и увеличить производительность. Для вступления изменений в силу потребуется перезапустить компьютер.",
-      "En": "Reduce latency and improve performance. You must restart your PC for the changes to take effect."
+      "EN": "Reduce latency and improve performance. You must restart your PC for the changes to take effect."
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Game"
   },
   {
@@ -1307,9 +1307,9 @@
     },
     "Description": {
       "RU": "Задача выполняется каждые 90 дней",
-      "En": "The task runs every 90 days"
+      "EN": "The task runs every 90 days"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "TaskSheduler"
   },
   {
@@ -1320,9 +1320,9 @@
     },
     "Description": {
       "RU": "Задача выполняется по четвергам каждую 4 неделю",
-      "En": "The task runs on Thursdays every 4 weeks"
+      "EN": "The task runs on Thursdays every 4 weeks"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "TaskSheduler"
   },
   {
@@ -1333,9 +1333,9 @@
     },
     "Description": {
       "RU": "Задача выполняется каждые 62 дня",
-      "En": "The task runs every 62 days"
+      "EN": "The task runs every 62 days"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "TaskSheduler"
   },
   {
@@ -1346,9 +1346,9 @@
     },
     "Description": {
       "RU": "Предотвращает использование любого приложения для доступа к опасным доменам, которые могут содержать фишинговые программы, сайты с эксплойтами и прочее вредоносное содержимое в Интернете",
-      "En": "Prevents from using any application to access dangerous domains that may host phishing scams, exploit-hosting sites, and other malicious content on the Internet"
+      "EN": "Prevents from using any application to access dangerous domains that may host phishing scams, exploit-hosting sites, and other malicious content on the Internet"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1359,9 +1359,9 @@
     },
     "Description": {
       "RU": "Потенциально нежелательные приложения не рассматриваются как вирусы, вредоносные программы или другие типы угроз, но они могут выполнять действия с ПК, которые негативно влияют на его производительность или использование",
-      "En": "Potentially unwanted applications (PUA) are not considered viruses, malware, or other types of threats, but they might perform actions on endpoints which adversely affect endpoint performance or use"
+      "EN": "Potentially unwanted applications (PUA) are not considered viruses, malware, or other types of threats, but they might perform actions on endpoints which adversely affect endpoint performance or use"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1372,9 +1372,9 @@
     },
     "Description": {
       "RU": "Запуск Microsoft Defender в песочнице гарантирует, что в случае компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от повреждений",
-      "En": "Running Microsoft Defender Antivirus in a sandbox ensures that in the event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm"
+      "EN": "Running Microsoft Defender Antivirus in a sandbox ensures that in the event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1385,9 +1385,9 @@
     },
     "Description": {
       "RU": "ОС записывает события аудита при создании (запуске) процесса и его аргумента командной строки",
-      "En": "The OS generates audit events when a process is created (starts) and it's command line arguments"
+      "EN": "The OS generates audit events when a process is created (starts) and it's command line arguments"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1398,9 +1398,9 @@
     },
     "Description": {
       "RU": "Добавляет в журнале событий «Безопасность» в событиях с кодом 4688 полный аргумент командной строки процесса. Необходимо включить аудит событий, чтобы работала данная опция",
-      "En": "Adds the detailed command-line arguments used by a process to Id 4688 events in the Windows security event log. In order this feature to work events auditing must be enabled"
+      "EN": "Adds the detailed command-line arguments used by a process to Id 4688 events in the Windows security event log. In order this feature to work events auditing must be enabled"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1411,9 +1411,9 @@
     },
     "Description": {
       "RU": "Просмотр события с кодом 4688 создания нового процесса и аудит командной строки. Необходимо включить аудит событий и командной строки в событиях создания процесса, чтобы работала данная опция",
-      "En": "Viewing Id 4688 process creation and command-line auditing events. In order this feature to work events auditing and command line in process creation events must be enabled"
+      "EN": "Viewing Id 4688 process creation and command-line auditing events. In order this feature to work events auditing and command line in process creation events must be enabled"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1424,9 +1424,9 @@
     },
     "Description": {
       "RU": "События конвейерного выполнения записываются в журнал Windows PowerShell",
-      "En": "Setting pipeline execution events are recorded in the Windows PowerShell log"
+      "EN": "Setting pipeline execution events are recorded in the Windows PowerShell log"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1437,9 +1437,9 @@
     },
     "Description": {
       "RU": "PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации",
-      "En": "PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation"
+      "EN": "PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1450,9 +1450,9 @@
     },
     "Description": {
       "RU": "Фильтр SmartScreen в Microsoft Defender проверяет неопознаные приложения и файлы, скачанные из сети",
-      "En": "Microsoft Defender SmartScreen checks unrecognized apps and files downloaded from the web"
+      "EN": "Microsoft Defender SmartScreen checks unrecognized apps and files downloaded from the web"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1463,9 +1463,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1476,9 +1476,9 @@
     },
     "Description": {
       "RU": "Предназначен для запуска сценариев на скриптовых языках JScript и VBScript",
-      "En": "Designed to interpret and run JScript and VBScript"
+      "EN": "Designed to interpret and run JScript and VBScript"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "Security"
   },
   {
@@ -1489,9 +1489,9 @@
     },
     "Description": {
       "RU": "Кнопка с иконкой в виде стрелки для быстрого распаковывания Windows Installer (.msi) в текущую папку",
-      "En": "A button with an arrow icon for swift unpacking Windows Installer (.msi) in a current folder"
+      "EN": "A button with an arrow icon for swift unpacking Windows Installer (.msi) in a current folder"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1502,9 +1502,9 @@
     },
     "Description": {
       "RU": "Кнопка для быстрой установки .cab архивов",
-      "En": "A button for swift installing .cab archives"
+      "EN": "A button for swift installing .cab archives"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1515,9 +1515,9 @@
     },
     "Description": {
       "RU": "Позволяет не зажимать Shift + ПКМ, чтобы вызвать этот пункт контекстного меню",
-      "En": "Allows not to hold Shift + RMB to call up this context menu item"
+      "EN": "Allows not to hold Shift + RMB to call up this context menu item"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1528,9 +1528,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1541,9 +1541,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1554,9 +1554,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1567,9 +1567,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1580,9 +1580,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1593,9 +1593,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1606,9 +1606,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1619,9 +1619,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1632,9 +1632,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1645,9 +1645,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1658,9 +1658,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1671,9 +1671,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1684,9 +1684,9 @@
     },
     "Description": {
       "RU": "По умолчанию эти пункты контекстного меню отображаются, если выбрано менее 15 пунктов",
-      "En": "By default, these context menu items are displayed if less than 15 items selected"
+      "EN": "By default, these context menu items are displayed if less than 15 items selected"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1697,9 +1697,9 @@
     },
     "Description": {
       "RU": "Для незарегистрированных расширений не будет предлагаться поиск приложения в Microsoft Store",
-      "En": "No app search will be offered for unregistered extensions in the Microsoft Store"
+      "EN": "No app search will be offered for unregistered extensions in the Microsoft Store"
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   },
   {
@@ -1710,9 +1710,9 @@
     },
     "Description": {
       "RU": "",
-      "En": ""
+      "EN": ""
     },
-    "Type": "Switch",
+    "Type": "SwitchBar",
     "Tag": "ContextMenu"
   }
 ]
