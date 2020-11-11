@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\JsonData.cs" />
+    <Compile Include="Common\Language.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
@@ -68,10 +69,11 @@
       <DependentUpon>SwitchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
+    <Compile Include="Helpers\ControlsFabric.cs" />
     <Compile Include="Helpers\ControlsType.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\Tags.cs" />
-    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\SwitchBarModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="Views\PagePrivacyView.xaml.cs">
       <DependentUpon>PagePrivacyView.xaml</DependentUpon>

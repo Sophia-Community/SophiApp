@@ -5,8 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Localization/RU.xaml"/>
+            <ResourceDictionary.MergedDictionaries>                
                 <ResourceDictionary Source="pack://application:,,,/Themes/Fancy.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/Icons.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/Tags.xaml"/>

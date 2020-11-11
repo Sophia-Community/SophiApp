@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using SophiAppCE.Helpers;
 
 namespace SophiAppCE.Common
 {
     [DataContract]
-    public class Header
+    public class LocalizedHeader
     {
         [DataMember(Name = "RU")]
         public string RU { get; set; }
@@ -18,7 +19,7 @@ namespace SophiAppCE.Common
     }
 
     [DataContract]
-    public class Description
+    public class LocalizedDescription
     {
         [DataMember(Name = "RU")]
         public string RU { get; set; }
@@ -33,11 +34,11 @@ namespace SophiAppCE.Common
         [DataMember(Name = "Id")]
         public string Id { get; set; }
 
-        [DataMember(Name = "Header")]
-        public Header Header { get; set; }
+        [DataMember(Name = "LocalizedHeader")]
+        public LocalizedHeader LocalizedHeader { get; set; }
 
-        [DataMember(Name = "Description")]
-        public Description Description { get; set; }
+        [DataMember(Name = "LocalizedDescription")]        
+        public LocalizedDescription LocalizedDescription { get; set; }
 
         [DataMember(Name = "Type")]
         public string Type { get; set; }

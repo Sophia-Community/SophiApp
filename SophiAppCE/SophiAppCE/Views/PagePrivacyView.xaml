@@ -13,7 +13,9 @@
              Background="Transparent"
              Visibility="Visible">
     
-    <UserControl.Resources>        
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
+        <!--<CollectionViewSource x:Key="EvenControls_Filter" Filter="Filter_EvenControls" Source="{Binding ControlsModelsCollection}"/>-->
         <Style TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -38,11 +40,6 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:PagePrivacyView">
-                        <ControlTemplate.Resources>
-                            <CollectionViewSource x:Key="Filter_OddControls" Filter="FilterOddControls" Source="{Binding SwitchBarModelCollection}"/>
-                            <CollectionViewSource x:Key="Filter_EvenControls" Filter="FilterEvenControls" Source="{Binding SwitchBarModelCollection}"/>
-                        </ControlTemplate.Resources>
-                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -81,54 +78,26 @@
 
                                     <StackPanel Name="OddPanel" Grid.Column="1">
 
-                                        <controls:SwitchBar Header="Отключить службу «Функциональные возможности для подключенных пользователей и телеметрия» (DiagTrack)"
-                                                            Description="Служба «Функциональные возможности для подключенных пользователей и телеметрия» включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе «Диагностика и отзывы»"
-                                                            State="True"/>
-
-                                        <controls:SwitchBar Header="Установить уровень сбора диагностических сведений ОС на минимальный"/>
-
-
-                                        <controls:SwitchBar Header="Изменить частоту формирования отзывов на «Никогда» для текущего пользователя"
-                                                            Description="Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10"/>
-
-                                        <controls:SwitchBar Header="Отключить задачи диагностического отслеживания"/>
-
-
-                                        <controls:SwitchBar Header="Не использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
-                                                            State="True"/>
-
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource Filter_OddControls}}">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <controls:SwitchBar/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
+                                        
                                     </StackPanel>                                    
 
                                     <StackPanel Name="EvenPanel" Grid.Column="3">
 
-                                        <controls:SwitchBar Header="Не позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков (только для текущего пользователя)"/>
-
-                                        <controls:SwitchBar Header="Не разрешать приложениям использовать идентификатор рекламы (только для текущего пользователя)"
-                                                            State="True"/>
-
-
-                                        <controls:SwitchBar Header="Не разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот (только для текущего пользователя)"
-                                                            Description="Позволяет приложениям на вашем устройстве обмениться данными с другими устройствами и открывать такие же приложения на них"/>
-
-                                        <controls:SwitchBar Header="Не показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях (только для текущего пользователя)"
-                                                            State="True"/>
-
-                                        <controls:SwitchBar Header="Не показывать рекомендуемое содержимое в приложении «Параметры»"/>
-
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource Filter_EvenControls}}">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <controls:SwitchBar/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
+                                        
                                     </StackPanel>                                    
                                 </Grid>
                             </ScrollViewer>

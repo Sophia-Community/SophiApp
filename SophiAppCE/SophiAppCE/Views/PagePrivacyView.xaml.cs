@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SophiAppCE.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,16 +26,21 @@ namespace SophiAppCE.Views
             InitializeComponent();
         }
 
-        private void FilterOddControls(object sender, FilterEventArgs e)
-        {
-            //SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
-            //e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 1
-            //           ? true : false;
-
-            //IncreaseItemsCount(e.Accepted);
+        private void Filter_OddControls(object sender, FilterEventArgs e)
+        {          
+            dynamic control = e.Item;
         }
 
-        private void FilterEvenControls(object sender, FilterEventArgs e)
+        //private void OddControls_Filter(object sender, FilterEventArgs e)
+        //{
+        //    SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
+        //    //e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 1
+        //    //           ? true : false;
+
+        //    //IncreaseItemsCount(e.Accepted);
+        //}
+
+        private void EvenControls_Filter(object sender, FilterEventArgs e)
         {
             //SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
             //e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 0
@@ -52,5 +58,7 @@ namespace SophiAppCE.Views
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(PagePrivacyView), new PropertyMetadata(default(string)));
+
+        
     }
 }
