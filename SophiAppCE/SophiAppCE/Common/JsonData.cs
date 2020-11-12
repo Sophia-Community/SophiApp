@@ -32,7 +32,7 @@ namespace SophiAppCE.Common
     public class JsonData
     {
         [DataMember(Name = "Id")]
-        public string Id { get; set; }
+        public ushort Id { get; set; }
 
         [DataMember(Name = "LocalizedHeader")]
         public LocalizedHeader LocalizedHeader { get; set; }

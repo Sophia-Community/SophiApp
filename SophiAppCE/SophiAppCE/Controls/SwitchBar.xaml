@@ -91,7 +91,11 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
 
-        <Style TargetType="local:SwitchBar">            
+        <Style TargetType="local:SwitchBar">
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <Setter Property="IsChanged" Value="{Binding IsChanged, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SwitchBar">

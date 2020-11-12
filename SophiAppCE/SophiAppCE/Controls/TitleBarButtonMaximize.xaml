@@ -1,14 +1,14 @@
-﻿<UserControl x:Class="SophiAppCE.Controls.TittleBarButtonClose"
+﻿<UserControl x:Class="SophiAppCE.Controls.TitleBarButtonMaximize"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiAppCE.Controls"
-             mc:Ignorable="d"
+             xmlns:local="clr-namespace:SophiAppCE.Controls"             
+             mc:Ignorable="d" 
              SnapsToDevicePixels="True"
-             MouseLeftButtonDown="TitleBarButtonClose_MouseLeftButtonDown">
+             MouseLeftButtonDown="TitleBarButtonMaximize_MouseLeftButtonDown">
 
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -20,20 +20,30 @@
             <Setter Property="SnapsToDevicePixels" Value="True"/>
         </Style>
 
-        <Style TargetType="local:TittleBarButtonClose">
+        <Style TargetType="Path">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource TemplatedParent}}" Value="Normal">
+                    <Setter Property="Data" Value="{StaticResource Icon.Title.Maximize}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource TemplatedParent}}" Value="Maximized">
+                    <Setter Property="Data" Value="{StaticResource Icon.Title.Restore}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="local:TitleBarButtonMaximize">            
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:TittleBarButtonClose">
+                    <ControlTemplate TargetType="local:TitleBarButtonMaximize">
                         <Grid x:Name="GridContent" Background="{TemplateBinding Background}">
                             <Viewbox>
-                                <Path Data="{TemplateBinding Icon}"
-                                  Fill="{TemplateBinding IconBrush}"/>
+                                <Path Fill="{TemplateBinding IconBrush}"/>
                             </Viewbox>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="GridContent" Property="Background" Value="{Binding Path=Hover, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            </Trigger>
+                            </Trigger>                            
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

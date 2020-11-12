@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              local:TitleBarButtonMinimize.Click="TitleBarButtonMinimize_Click"
              local:TittleBarButtonClose.Click="TittleBarButtonClose_Click"
+             local:TitleBarButtonMaximize.Click="TitleBarButtonMaximize_Click"
              MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"
+             MouseDoubleClick="TitleBar_MouseDoubleClick"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"             
@@ -21,8 +23,8 @@
              Focusable="False">
 
     <UserControl.Resources>
-        <Style TargetType="local:TitleBar">            
-            <Setter Property="FontWeight" Value="600"/>            
+        <Style TargetType="local:TitleBar">
+            <Setter Property="FontWeight" Value="600"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:TitleBar">
@@ -41,7 +43,18 @@
                                                           VerticalAlignment="Center"
                                                           HorizontalAlignment="Right"
                                                           Icon="{StaticResource Icon.Title.Minimize}"
-                                                          IconBrush="{StaticResource Brush.TitleBar.Foreground}"
+                                                          IconBrush="{DynamicResource Brush.TitleBar.Foreground}"
+                                                          Margin="0, 0, 80, 0"/>
+
+                            <local:TitleBarButtonMaximize Width="{TemplateBinding Height}"
+                                                          Height="{TemplateBinding Height}"
+                                                          Background="{DynamicResource Brush.TitleBar.Background}"
+                                                          Hover="{DynamicResource Brush.TitleBar.Button.Hover}"
+                                                          VerticalAlignment="Center"
+                                                          HorizontalAlignment="Right"
+                                                          IconMaximize="{StaticResource Icon.Title.Maximize}"
+                                                          IconRestore="{StaticResource Icon.Title.Restore}"
+                                                          IconBrush="{DynamicResource Brush.TitleBar.Foreground}"
                                                           Margin="0, 0, 40, 0"/>
 
                             <local:TittleBarButtonClose Width="{TemplateBinding Height}"
@@ -51,7 +64,7 @@
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Right"
                                                         Icon="{StaticResource Icon.Title.Close}"
-                                                        IconBrush="{StaticResource Brush.TitleBar.Foreground}"/>
+                                                        IconBrush="{DynamicResource Brush.TitleBar.Foreground}"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

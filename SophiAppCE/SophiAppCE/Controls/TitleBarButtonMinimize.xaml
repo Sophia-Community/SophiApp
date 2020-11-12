@@ -9,7 +9,7 @@
              MouseLeftButtonDown="TitleBarButtonMinimize_MouseLeftButtonDown">
 
     <UserControl.Resources>
-        <Style x:Key="ViewboxStyle" TargetType="Viewbox">
+        <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Width" Value="16"/>
@@ -25,7 +25,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="local:TitleBarButtonMinimize">
                         <Grid x:Name="GridContent" Background="{TemplateBinding Background}">
-                            <Viewbox Style="{StaticResource ViewboxStyle}">
+                            <Viewbox>
                                 <Path Data="{TemplateBinding Icon}"
                                   Fill="{TemplateBinding IconBrush}"/>
                             </Viewbox>

@@ -1,4 +1,5 @@
-﻿using SophiAppCE.Models;
+﻿using SophiAppCE.Helpers;
+using SophiAppCE.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,27 +28,16 @@ namespace SophiAppCE.Views
         }
 
         private void Filter_OddControls(object sender, FilterEventArgs e)
-        {          
-            dynamic control = e.Item;
-        }
-
-        //private void OddControls_Filter(object sender, FilterEventArgs e)
-        //{
-        //    SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
-        //    //e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 1
-        //    //           ? true : false;
-
-        //    //IncreaseItemsCount(e.Accepted);
-        //}
-
-        private void EvenControls_Filter(object sender, FilterEventArgs e)
         {
-            //SwitchBarModel switchBarModel = e.Item as SwitchBarModel;
-            //e.Accepted = switchBarModel.Tag == Convert.ToString(Tag) && Convert.ToInt32(switchBarModel.Id.Split('x')[1]) % 2 == 0
-            //           ? true : false;
-
-            //IncreaseItemsCount(e.Accepted);
+            ControlModel model = e.Item as ControlModel;
+            e.Accepted = (model.Tag == Tag as string) && (model.Id % 2 == 1) ? true : false;
         }
+
+        private void Filter_EvenControls(object sender, FilterEventArgs e)
+        {
+            ControlModel model = e.Item as ControlModel;
+            e.Accepted = (model.Tag == Tag as string) && (model.Id % 2 == 0) ? true : false;
+        }       
 
         public string Header
         {
@@ -57,8 +47,6 @@ namespace SophiAppCE.Views
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(PagePrivacyView), new PropertyMetadata(default(string)));
-
-        
+            DependencyProperty.Register("Header", typeof(string), typeof(PagePrivacyView), new PropertyMetadata(default(string)));        
     }
 }

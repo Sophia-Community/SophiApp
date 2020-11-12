@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,7 +10,7 @@ using System.Windows;
 namespace SophiAppCE.Helpers
 {
     public struct Tags
-    {
+    {        
         public static readonly string Privacy = Application.Current.TryFindResource("Tag.Privacy") as string;
         public static readonly string Ui = Application.Current.TryFindResource("Tag.Ui") as string;
         public static readonly string ContextMenu = Application.Current.TryFindResource("Tag.ContextMenu") as string;
@@ -20,6 +21,6 @@ namespace SophiAppCE.Helpers
         public static readonly string Game = Application.Current.TryFindResource("Tag.Game") as string;
         public static readonly string Uwp = Application.Current.TryFindResource("Tag.Uwp") as string;
         public static readonly string OneDrive = Application.Current.TryFindResource("Tag.OneDrive") as string;
-        public static readonly string ApplyingSettings = Application.Current.TryFindResource("Tag.ApplyingSettings") as string;        
+        public static readonly string ApplyingSettings = Application.Current.TryFindResource("Tag.ApplyingSettings") as string;
     }
 }

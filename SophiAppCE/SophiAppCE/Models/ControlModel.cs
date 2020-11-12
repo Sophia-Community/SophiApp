@@ -1,7 +1,6 @@
 ﻿using SophiAppCE.Common;
 using SophiAppCE.Helpers;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SophiAppCE.Models
 {
-    class SwitchBarModel : INotifyPropertyChanged
+    class ControlModel : INotifyPropertyChanged
     {
         private bool state = false;
         private bool isChanged = false;
@@ -35,8 +34,8 @@ namespace SophiAppCE.Models
                 isChanged = value;
                 OnPropertyChanged("IsChanged");
             }
-        }       
-        
+        }
+
         public string Header
         {
             get => header;
@@ -56,15 +55,15 @@ namespace SophiAppCE.Models
             }
         }
 
-        public string Id { get; set; }
+        public ushort Id { get; set; }
         public ControlsType Type { get; set; }
-        public Tags Tag { get; set; }
+        public string Tag { get; set; }
 
         public Dictionary<Language, string> LocalizedHeader { get; set; }
 
         public Dictionary<Language, string> LocalizedDescription { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;        
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {

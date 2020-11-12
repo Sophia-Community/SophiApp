@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"                 
-        WindowStyle="None"
+        WindowStyle="None"                
         AllowsTransparency="True"
         Title="SophiApp Community Edition"
         TextOptions.TextFormattingMode="Display"
@@ -30,7 +30,7 @@
     </WindowChrome.WindowChrome>    
 
     <Border BorderBrush="{DynamicResource Brush.Window.Border.Background}"
-            BorderThickness="2">
+            BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
 
             <controls:TitleBar Text="SophiApp Community Edition"
-                               Grid.Row="0"/>
+                               Grid.Row="0"/>            
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>

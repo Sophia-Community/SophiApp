@@ -12,7 +12,7 @@ namespace SophiAppCE.Helpers
 {
     internal static class ControlsFabric
     {
-        internal static IEnumerable<dynamic> Create(IEnumerable<JsonData> jsonData, Language language)
+        internal static IEnumerable<ControlModel> Create(IEnumerable<JsonData> jsonData, Language language)
         {
             foreach (JsonData json in jsonData)
             {
@@ -22,9 +22,10 @@ namespace SophiAppCE.Helpers
                         Dictionary<Language, string> localizedHeader = new Dictionary<Language, string> { { Language.RU, json.LocalizedHeader.RU }, { Language.EN, json.LocalizedHeader.EN } };
                         Dictionary<Language, string> localizedDescription = new Dictionary<Language, string> { { Language.RU, json.LocalizedDescription.RU }, { Language.EN, json.LocalizedDescription.EN } };
 
-                        SwitchBarModel control = new SwitchBarModel
+                        ControlModel model = new ControlModel
                         {
                             Id = json.Id,
+                            Tag = json.Tag,
                             Type = ControlsType.SwitchBar,
                             LocalizedHeader = localizedHeader,
                             LocalizedDescription = localizedDescription,
@@ -32,7 +33,7 @@ namespace SophiAppCE.Helpers
                             Description = localizedDescription[language]
                         };
                         
-                        yield return control;
+                        yield return model;
                         break;                    
                 }
             }
