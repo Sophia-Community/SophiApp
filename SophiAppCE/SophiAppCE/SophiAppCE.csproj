@@ -62,8 +62,8 @@
     <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Controls\Switch.xaml.cs">
-      <DependentUpon>Switch.xaml</DependentUpon>
+    <Compile Include="Controls\CommandSwitch.xaml.cs">
+      <DependentUpon>CommandSwitch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SwitchBar.xaml.cs">
       <DependentUpon>SwitchBar.xaml</DependentUpon>
@@ -71,6 +71,7 @@
     <Compile Include="Controls\TitleBarButtonMaximize.xaml.cs">
       <DependentUpon>TitleBarButtonMaximize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
     <Compile Include="Helpers\ControlsFabric.cs" />
     <Compile Include="Helpers\ControlsType.cs" />
@@ -81,6 +82,10 @@
     <Compile Include="Views\PagePrivacyView.xaml.cs">
       <DependentUpon>PagePrivacyView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\CommandSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\HamburgerBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,10 +95,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ScrollViewer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Switch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

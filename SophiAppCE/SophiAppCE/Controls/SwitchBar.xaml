@@ -19,7 +19,9 @@
         <Thickness x:Key="Margin.Switch.Ellipse.Left">3, 0, 0, 0</Thickness>
         <Thickness x:Key="Margin.Switch.Ellipse.Right">29, 0, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Margin.Ellipse">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.2"/>            
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" 
+                                To="{StaticResource Margin.Switch.Ellipse.Left}"
+                                Duration="0:0:0.2"/>            
         </Storyboard>        
 
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
@@ -83,6 +85,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
         </Style>
 
         <Style x:Key="Container.Panel" TargetType="StackPanel">
@@ -93,12 +96,12 @@
 
         <Style TargetType="local:SwitchBar">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
-            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <Setter Property="IsChanged" Value="{Binding IsChanged, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:SwitchBar">
+                    <ControlTemplate TargetType="local:SwitchBar">                        
                         <Border Name="FrameBorder" Style="{StaticResource Frame.Border}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -139,9 +142,11 @@
                             </Trigger>
                             <Trigger Property="IsChanged" Value="False">
                                 <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Unchecked}"/>
+                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
                             </Trigger>
                             <Trigger Property="IsChanged" Value="True">
                                 <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Checked}"/>
+                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

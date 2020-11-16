@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="SophiAppCE.Controls.Switch"
+﻿<UserControl x:Class="SophiAppCE.Controls.CommandSwitch"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
-             mc:Ignorable="d"             
+             mc:Ignorable="d" 
              SnapsToDevicePixels="True"
              IsTabStop="False"
              Focusable="False"
@@ -17,7 +17,7 @@
             <ThicknessAnimation Storyboard.TargetName="SwitchEllipse"
                                 Storyboard.TargetProperty="Margin" 
                                 Duration="0:0:0.2"/>
-        </Storyboard>        
+        </Storyboard>
 
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
@@ -45,10 +45,10 @@
             <Setter Property="Fill" Value="{StaticResource Brush.SwitchBar.Ellipse.Unchecked}"/>
         </Style>
 
-        <Style TargetType="local:Switch">
+        <Style TargetType="local:CommandSwitch">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:Switch">
+                    <ControlTemplate TargetType="local:CommandSwitch">
                         <StackPanel Name="SwitchPanel" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
                             <Border Name="SwitchBorder">
                                 <Ellipse Name="SwitchEllipse"/>

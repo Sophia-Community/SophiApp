@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SophiAppCE.ViewModel
@@ -17,7 +19,7 @@ namespace SophiAppCE.ViewModel
             { Language.RU, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute)} },
             { Language.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} }
         };
-
+        private RelayCommand selectAllCommand;
         private Language UILanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == nameof(Language.RU) ? Language.RU : Language.EN;
 
         public ObservableCollection<ControlModel> ControlsModelsCollection { get; set; }
@@ -45,6 +47,22 @@ namespace SophiAppCE.ViewModel
         private void OnPropertyChanged(string propertyChanged)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
+        }
+
+        public RelayCommand SelectAllCommand => selectAllCommand ?? (selectAllCommand = new RelayCommand(SelectAll));
+
+        private void SelectAll(object args)
+        {
+            object[] arg = args as object[];
+            string tag = arg.First() as string;
+            bool state = Convert.ToBoolean(arg.Last());
+            Task.Run(() =>
+            {
+                ControlsModelsCollection.Where(model => model.Tag == tag && model.State != state 
+                                                                         && model.IsChanged != state)
+                                        .ToList()
+                                        .ForEach(model => model.State = state);
+            });
         }
     }
 }

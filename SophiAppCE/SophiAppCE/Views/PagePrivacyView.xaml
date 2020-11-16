@@ -4,18 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Views"
-             xmlns:controls="clr-namespace:SophiAppCE.Controls"             
+             xmlns:controls="clr-namespace:SophiAppCE.Controls"    
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
              mc:Ignorable="d" 
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent"
-             Visibility="Visible">
-    
+             Visibility="Visible"
+             Name="PrivacyViewPage">
+
     <UserControl.Resources>
         <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
         <CollectionViewSource x:Key="EvenControls_Filter" Filter="Filter_EvenControls" Source="{Binding ControlsModelsCollection}"/>
+        <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -24,18 +27,18 @@
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="FontStretch" Value="Normal"/>
-            <Setter Property="FontStyle" Value="Normal"/>            
+            <Setter Property="FontStyle" Value="Normal"/>
         </Style>
 
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>            
+            <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="Margin" Value="0, 0, 2, 0"/>
         </Style>
 
-        <Style TargetType="local:PagePrivacyView">            
+        <Style TargetType="local:PagePrivacyView">
             <Setter Property="Header" Value="{DynamicResource Localization.Privacy}"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -53,16 +56,24 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="30"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>                                    
+                                    <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Name="HeaderText" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                                <controls:Switch x:Name="SelectAllSwitch"
-                                                 Grid.Column="1"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Right"
-                                                 Margin="0, 0, 30, 0"/>
+                                <controls:CommandSwitch x:Name="SelectAllSwitch"
+                                                        Grid.Column="1"
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Right"
+                                                        Margin="0, 0, 30, 0"
+                                                        Command="{Binding SelectAllCommand}">
+                                    <controls:CommandSwitch.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource SelectAllMultiBindingConverter}">
+                                            <Binding Path="Tag" ElementName="PrivacyViewPage"/>
+                                            <Binding Path="State" ElementName="SelectAllSwitch"/>
+                                        </MultiBinding>
+                                    </controls:CommandSwitch.CommandParameter>
+                                </controls:CommandSwitch>
                             </Grid>
 
                             <ScrollViewer Name="ContentScroll">
@@ -74,7 +85,7 @@
                                         <ColumnDefinition Width="20"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="20"/>
-                                    </Grid.ColumnDefinitions>                                    
+                                    </Grid.ColumnDefinitions>
 
                                     <StackPanel Name="OddPanel" Grid.Column="1">
                                         <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
@@ -83,8 +94,8 @@
                                                     <controls:SwitchBar/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
-                                        </ItemsControl>                                        
-                                    </StackPanel>                                    
+                                        </ItemsControl>
+                                    </StackPanel>
 
                                     <StackPanel Name="EvenPanel" Grid.Column="3">
                                         <ItemsControl ItemsSource="{Binding Source={StaticResource EvenControls_Filter}}">
@@ -93,9 +104,9 @@
                                                     <controls:SwitchBar/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
-                                        </ItemsControl>                                        
-                                    </StackPanel>      
-                                    
+                                        </ItemsControl>
+                                    </StackPanel>
+
                                 </Grid>
                             </ScrollViewer>
                         </Grid>

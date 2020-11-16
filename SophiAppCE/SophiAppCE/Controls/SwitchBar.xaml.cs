@@ -46,6 +46,8 @@ namespace SophiAppCE.Controls
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(SwitchBar), new PropertyMetadata(default(string)));
 
+
+
         public bool State
         {
             get { return (bool)GetValue(StateProperty); }
@@ -54,7 +56,10 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
+            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false, new PropertyChangedCallback(OnStatePropertyChanged)));
+
+
+        private static void OnStatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as SwitchBar).ChangeState();
 
         public bool IsChanged
         {
@@ -66,10 +71,7 @@ namespace SophiAppCE.Controls
         public static readonly DependencyProperty IsChangedProperty =
             DependencyProperty.Register("IsChanged", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
 
-        private void SwitchContainerPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {   
-            ChangeState();
-        }
+        private void SwitchContainerPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => ChangeState();
 
         internal void ChangeState()
         {
@@ -87,7 +89,7 @@ namespace SophiAppCE.Controls
             marginAnimation.To = ellipse.Margin == marginRight ? marginLeft : marginRight;
             storyboard.Begin(ellipse);
 
-            ellipse.Fill = ellipse.Margin == marginRight ? brushUnchecked : brushChecked;
+            //ellipse.Fill = ellipse.Margin == marginRight ? brushChecked : brushUnchecked;
         }
     }
 }
