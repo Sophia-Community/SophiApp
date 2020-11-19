@@ -10,7 +10,8 @@ namespace SophiAppCE.Common
     class RelayCommand : ICommand
     {
         private readonly Predicate<object> canExecute;
-        private readonly Action<object> execute;
+        private readonly Action<object> execute;        
+
         public event EventHandler CanExecuteChanged;
         public RelayCommand(Action<object> execute)
         : this(execute, null)
@@ -21,7 +22,7 @@ namespace SophiAppCE.Common
         {
             this.execute = execute;
             this.canExecute = canExecute;
-        }
+        }      
 
         public bool CanExecute(object parameter)
         {

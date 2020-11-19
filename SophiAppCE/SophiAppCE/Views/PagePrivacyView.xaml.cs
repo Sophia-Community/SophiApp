@@ -1,4 +1,5 @@
-﻿using SophiAppCE.Helpers;
+﻿using SophiAppCE.Controls;
+using SophiAppCE.Helpers;
 using SophiAppCE.Models;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,21 @@ namespace SophiAppCE.Views
     /// <summary>
     /// Логика взаимодействия для PagePrivacyView.xaml
     /// </summary>
-    public partial class PagePrivacyView : UserControl
+    public partial class PagePrivacyView : UserControl, ICommandSource
     {
         public PagePrivacyView()
         {
             InitializeComponent();
+        }
+
+        private void ExecuteCommand(object parameter)
+        {
+            ICommand command = Command;
+            object commandParameter = parameter;
+            IInputElement commandTarget = CommandTarget;
+
+            if (command != null && command.CanExecute(commandParameter))
+                command.Execute(commandParameter);
         }
 
         private void Filter_OddControls(object sender, FilterEventArgs e)
@@ -47,6 +58,38 @@ namespace SophiAppCE.Views
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(PagePrivacyView), new PropertyMetadata(default(string)));        
+            DependencyProperty.Register("Header", typeof(string), typeof(PagePrivacyView), new PropertyMetadata(default(string)));
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(PagePrivacyView), new PropertyMetadata(null));
+
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register("CommandParameter", typeof(object), typeof(PagePrivacyView), new PropertyMetadata(null));
+
+        public IInputElement CommandTarget
+        {
+            get { return (IInputElement)GetValue(CommandTargetProperty); }
+            set { SetValue(CommandTargetProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CommandTarget.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandTargetProperty =
+            DependencyProperty.Register("CommandTarget", typeof(IInputElement), typeof(PagePrivacyView), new PropertyMetadata(null));
+
+        private void SwitchBar_Clicked(object sender, RoutedEventArgs e) => ExecuteCommand((e.OriginalSource as SwitchBar).Id);
     }
 }

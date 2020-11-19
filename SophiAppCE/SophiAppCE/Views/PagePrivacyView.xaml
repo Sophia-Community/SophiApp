@@ -1,11 +1,12 @@
 ﻿<UserControl x:Class="SophiAppCE.Views.PagePrivacyView"
+             x:Name="PrivacyViewPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Views"
              xmlns:controls="clr-namespace:SophiAppCE.Controls"    
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"             
              mc:Ignorable="d" 
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
@@ -13,12 +14,12 @@
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent"
              Visibility="Visible"
-             Name="PrivacyViewPage">
+             controls:SwitchBar.Clicked="SwitchBar_Clicked">    
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
         <CollectionViewSource x:Key="EvenControls_Filter" Filter="Filter_EvenControls" Source="{Binding ControlsModelsCollection}"/>
-        <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>
+        <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>        
         <Style TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -39,6 +40,7 @@
         </Style>
 
         <Style TargetType="local:PagePrivacyView">
+            <Setter Property="Command" Value="{Binding SwitchBarClickedCommand}"/>
             <Setter Property="Header" Value="{DynamicResource Localization.Privacy}"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -61,23 +63,23 @@
 
                                 <TextBlock Name="HeaderText" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                                <controls:CommandSwitch x:Name="SelectAllSwitch"
+                                <controls:Switch x:Name="SelectAllSwitch"
                                                         Grid.Column="1"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Right"
                                                         Margin="0, 0, 30, 0"
                                                         Command="{Binding SelectAllCommand}">
-                                    <controls:CommandSwitch.CommandParameter>
+                                    <controls:Switch.CommandParameter>
                                         <MultiBinding Converter="{StaticResource SelectAllMultiBindingConverter}">
                                             <Binding Path="Tag" ElementName="PrivacyViewPage"/>
-                                            <Binding Path="State" ElementName="SelectAllSwitch"/>
+                                            <Binding Path="ActualState" ElementName="SelectAllSwitch"/>
                                         </MultiBinding>
-                                    </controls:CommandSwitch.CommandParameter>
-                                </controls:CommandSwitch>
+                                    </controls:Switch.CommandParameter>
+                                </controls:Switch>
+
                             </Grid>
 
                             <ScrollViewer Name="ContentScroll">
-
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
@@ -106,7 +108,6 @@
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
                                     </StackPanel>
-
                                 </Grid>
                             </ScrollViewer>
                         </Grid>

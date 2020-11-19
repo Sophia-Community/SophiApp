@@ -65,6 +65,9 @@
     <Compile Include="Controls\CommandSwitch.xaml.cs">
       <DependentUpon>CommandSwitch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Switch.xaml.cs">
+      <DependentUpon>Switch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SwitchBar.xaml.cs">
       <DependentUpon>SwitchBar.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,7 @@
     </Compile>
     <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
+    <Compile Include="Helpers\Animator.cs" />
     <Compile Include="Helpers\ControlsFabric.cs" />
     <Compile Include="Helpers\ControlsType.cs" />
     <Compile Include="Helpers\Parser.cs" />
@@ -98,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Switch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SwitchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,7 +126,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="General\Animations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="General\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\Misc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -45,7 +45,8 @@ namespace SophiAppCE.Controls
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(HamburgerButton), new PropertyMetadata(default(string)));
 
-        private static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(HamburgerButton));
+        private static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, 
+                                                                                           typeof(RoutedEventHandler), typeof(HamburgerButton));
 
         public event RoutedEventHandler Click
         {

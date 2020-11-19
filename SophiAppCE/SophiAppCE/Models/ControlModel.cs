@@ -12,7 +12,7 @@ namespace SophiAppCE.Models
     class ControlModel : INotifyPropertyChanged
     {
         private bool state = false;
-        private bool isChanged = false;
+        private bool actualState = false;
         private string header;
         private string description;
 
@@ -26,13 +26,13 @@ namespace SophiAppCE.Models
             }
         }
 
-        public bool IsChanged
+        public bool ActualState
         {
-            get => isChanged;
+            get => actualState;
             set
             {
-                isChanged = value;
-                OnPropertyChanged("IsChanged");
+                actualState = value;
+                OnPropertyChanged("ActualState");
             }
         }
 
@@ -55,7 +55,7 @@ namespace SophiAppCE.Models
             }
         }
 
-        public ushort Id { get; set; }
+        public UInt16 Id { get; set; }
         public ControlsType Type { get; set; }
         public string Tag { get; set; }
 

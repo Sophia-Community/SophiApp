@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"             
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"             
@@ -15,14 +15,7 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibility_Converter"/>        
-        <Thickness x:Key="Margin.Switch.Ellipse.Left">3, 0, 0, 0</Thickness>
-        <Thickness x:Key="Margin.Switch.Ellipse.Right">29, 0, 0, 0</Thickness>
-        <Storyboard x:Key="Animation.Margin.Ellipse">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" 
-                                To="{StaticResource Margin.Switch.Ellipse.Left}"
-                                Duration="0:0:0.2"/>            
-        </Storyboard>        
+        <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibility_Converter"/>       
 
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
@@ -72,37 +65,41 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="20"/>
             <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
 
         <Style x:Key="Frame.Border" TargetType="Border">
-            <Setter Property="BorderThickness" Value="1"/>            
+            <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
 
-        <Style TargetType="Ellipse">
+        <Style TargetType="Ellipse">            
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="25"/>
             <Setter Property="StrokeThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
-            <Setter Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>            
         </Style>
 
         <Style x:Key="Container.Panel" TargetType="StackPanel">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-        </Style>
+        </Style>        
 
         <Style TargetType="local:SwitchBar">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
-            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <Setter Property="IsChanged" Value="{Binding IsChanged, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <Setter Property="ActualState" Value="{Binding ActualState, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            <Setter Property="Id" Value="{Binding Id}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SwitchBar">                        
-                        <Border Name="FrameBorder" Style="{StaticResource Frame.Border}">
+                        <Border Name="FrameBorder" Style="{StaticResource Frame.Border}"
+                                MouseLeftButtonDown="SwitchBar_MouseLeftButtonDown">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -118,8 +115,7 @@
                                                Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
 
                                     <StackPanel Name="SwitchContainerPanel"
-                                                Style="{StaticResource Container.Panel}"
-                                                MouseLeftButtonDown="SwitchContainerPanel_MouseLeftButtonDown">
+                                                Style="{StaticResource Container.Panel}">
 
                                         <Border Name="SwitchBorder" Style="{StaticResource Switch.Border}">
                                             <Ellipse x:Name="SwitchEllipse"/>
@@ -132,22 +128,50 @@
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="State" Value="True">
-                                <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
-                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
-                            </Trigger>
-                            <Trigger Property="State" Value="False">
-                                <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
-                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
-                            </Trigger>
-                            <Trigger Property="IsChanged" Value="False">
-                                <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Unchecked}"/>
-                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
-                            </Trigger>
-                            <Trigger Property="IsChanged" Value="True">
-                                <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.FrameBorder.Checked}"/>
-                                <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
-                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="State" Value="False"/>
+                                    <Condition Property="ActualState" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+                                    <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="State" Value="False"/>
+                                    <Condition Property="ActualState" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
+                                    <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
+                                </MultiTrigger.Setters>                                
+                            </MultiTrigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="State" Value="True"/>
+                                    <Condition Property="ActualState" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
+                                    <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="State" Value="True"/>
+                                    <Condition Property="ActualState" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="SwitchEllipse" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+                                    <Setter TargetName="SwitchEllipse" Property="Fill" Value="{DynamicResource Brush.SwitchBar.Ellipse.Unchecked}"/>
+                                    <Setter TargetName="FrameBorder" Property="BorderBrush" Value="{DynamicResource Brush.SwitchBar.Ellipse.Checked}"/>
+                                </MultiTrigger.Setters>                                
+                            </MultiTrigger>                            
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

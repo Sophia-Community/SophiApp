@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SophiAppCE.General">
+    <Thickness x:Key="Margin.Switch.Ellipse.Left">3, 0, 0, 0</Thickness>
+    <Thickness x:Key="Margin.Switch.Ellipse.Right">29, 0, 0, 0</Thickness>
+</ResourceDictionary>

@@ -20,6 +20,7 @@ namespace SophiAppCE.ViewModel
             { Language.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} }
         };
         private RelayCommand selectAllCommand;
+        private RelayCommand switchBarClickedCommand;
         private Language UILanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == nameof(Language.RU) ? Language.RU : Language.EN;
 
         public ObservableCollection<ControlModel> ControlsModelsCollection { get; set; }
@@ -49,20 +50,24 @@ namespace SophiAppCE.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
         }
 
-        public RelayCommand SelectAllCommand => selectAllCommand ?? (selectAllCommand = new RelayCommand(SelectAll));
+        public RelayCommand SelectAllCommand => selectAllCommand ?? new RelayCommand(SelectAll);
+        public RelayCommand SwitchBarClickedCommand => switchBarClickedCommand ?? new RelayCommand(SwitchBarClicked);
+        private void SwitchBarClicked(object args)
+        {
+            UInt16 id = Convert.ToUInt16(args);            
+            ControlsModelsCollection.Where(m => m.Id == id)
+                                    .Select(m => m.ActualState = !m.ActualState)
+                                    .ToList();
+        }
 
         private void SelectAll(object args)
         {
             object[] arg = args as object[];
             string tag = arg.First() as string;
             bool state = Convert.ToBoolean(arg.Last());
-            Task.Run(() =>
-            {
-                ControlsModelsCollection.Where(model => model.Tag == tag && model.State != state 
-                                                                         && model.IsChanged != state)
-                                        .ToList()
-                                        .ForEach(model => model.State = state);
-            });
+            ControlsModelsCollection.Where(m => m.Tag == tag && m.State != true && m.ActualState != state)
+                                    .Select(m => m.ActualState = state)
+                                    .ToList();            
         }
     }
 }

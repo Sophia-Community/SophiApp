@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SophiAppCE.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,11 +22,35 @@ namespace SophiAppCE.Controls
     /// Логика взаимодействия для SwitchBar.xaml
     /// </summary>
     public partial class SwitchBar : UserControl
-    {
+    {        
+        private Thickness marginLeft = (Thickness)Application.Current.TryFindResource("Margin.Switch.Ellipse.Left");
+        private Thickness marginRight = (Thickness)Application.Current.TryFindResource("Margin.Switch.Ellipse.Right");
+        private SolidColorBrush brushChecked = (SolidColorBrush)Application.Current.TryFindResource("Brush.SwitchBar.Ellipse.Checked");
+        private SolidColorBrush brushUnchecked = (SolidColorBrush)Application.Current.TryFindResource("Brush.SwitchBar.Ellipse.Unchecked");
+        private bool animationFinished = true;
+
         public SwitchBar()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
+
+        private static readonly RoutedEvent ClickedEvent = EventManager.RegisterRoutedEvent("Clicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SwitchBar));
+
+        public event RoutedEventHandler Clicked
+        {
+            add { AddHandler(ClickedEvent, value); }
+            remove { RemoveHandler(ClickedEvent, value); }
+        }
+
+        public UInt16 Id
+        {
+            get { return (UInt16)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IdProperty =
+            DependencyProperty.Register("Id", typeof(UInt16), typeof(SwitchBar), new PropertyMetadata(default(UInt16)));
 
         public string Header
         {
@@ -46,8 +72,6 @@ namespace SophiAppCE.Controls
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(SwitchBar), new PropertyMetadata(default(string)));
 
-
-
         public bool State
         {
             get { return (bool)GetValue(StateProperty); }
@@ -56,40 +80,37 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false, new PropertyChangedCallback(OnStatePropertyChanged)));
+            DependencyProperty.Register("State", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));       
 
-
-        private static void OnStatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as SwitchBar).ChangeState();
-
-        public bool IsChanged
+        public bool ActualState
         {
-            get { return (bool)GetValue(IsChangedProperty); }
-            set { SetValue(IsChangedProperty, value); }
+            get { return (bool)GetValue(ActualStateProperty); }
+            set { SetValue(ActualStateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IsChanged.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsChangedProperty =
-            DependencyProperty.Register("IsChanged", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false));
+        // Using a DependencyProperty as the backing store for ActualState.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ActualStateProperty =
+            DependencyProperty.Register("ActualState", typeof(bool), typeof(SwitchBar), new PropertyMetadata(false, new PropertyChangedCallback(OnActualStateChanged)));
 
-        private void SwitchContainerPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => ChangeState();
+        private static void OnActualStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as SwitchBar).ChangeState();
 
-        internal void ChangeState()
+        private void ChangeState()
         {
-            IsChanged = !IsChanged;
             Ellipse ellipse = GetTemplateChild("SwitchEllipse") as Ellipse;
-
-            SolidColorBrush brushUnchecked = Application.Current.TryFindResource("Brush.SwitchBar.Ellipse.Unchecked") as SolidColorBrush;
-            SolidColorBrush brushChecked = Application.Current.TryFindResource("Brush.SwitchBar.Ellipse.Checked") as SolidColorBrush;
-
-            Thickness marginLeft = (Thickness) Resources["Margin.Switch.Ellipse.Left"];
-            Thickness marginRight = (Thickness)Resources["Margin.Switch.Ellipse.Right"];
-            
-            Storyboard storyboard = Resources["Animation.Margin.Ellipse"] as Storyboard;
-            ThicknessAnimation marginAnimation = storyboard.Children.First() as ThicknessAnimation;
-            marginAnimation.To = ellipse.Margin == marginRight ? marginLeft : marginRight;
-            storyboard.Begin(ellipse);
-
-            //ellipse.Fill = ellipse.Margin == marginRight ? brushChecked : brushUnchecked;
+            Animator.ShowThicknessAnimation(storyboardName: "Animation.Switch.Click", element: ellipse, from: ellipse.Margin,
+                                            to: ellipse.Margin == marginLeft ? marginRight : marginLeft, isComplited: OnAnimationFinished);
         }
+
+        private void OnAnimationFinished(object sender, EventArgs e) => animationFinished = true;
+        
+        private void SwitchBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (animationFinished)
+            {
+                animationFinished = false;
+                RaiseEvent(new RoutedEventArgs(ClickedEvent));
+            }
+                
+        }        
     }
 }

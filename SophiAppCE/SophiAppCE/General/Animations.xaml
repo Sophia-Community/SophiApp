@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SophiAppCE.General">
+    <Storyboard x:Key="Animation.Switch.Click">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                            From="{DynamicResource Margin.Switch.Ellipse.Right}"
+                            To="{DynamicResource Margin.Switch.Ellipse.Left}"
+                            Duration="0:0:0.2"/>
+    </Storyboard>
+</ResourceDictionary>
