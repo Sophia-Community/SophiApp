@@ -20,8 +20,11 @@ namespace SophiAppCE.ViewModel
             { Language.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} }
         };
         private RelayCommand selectAllCommand;
-        private RelayCommand switchBarClickedCommand;
+        private RelayCommand controlClickedCommand;
+        private RelayCommand changePageCommand;
         private Language UILanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == nameof(Language.RU) ? Language.RU : Language.EN;
+        private UInt16 activeControlsCounter = default(UInt16);
+        private string activePage = Tags.Privacy;
 
         public ObservableCollection<ControlModel> ControlsModelsCollection { get; set; }
 
@@ -36,11 +39,42 @@ namespace SophiAppCE.ViewModel
             Application.Current.Resources.MergedDictionaries.Add(LocalizedDictionaries[language]);
         }
 
+        public UInt16 ActiveControlsCounter
+        {           
+            get => activeControlsCounter;
+            private set 
+            {
+                activeControlsCounter = value;
+                OnPropertyChanged("ActiveControlsCounter");
+            }
+        }
+
+        public string ActivePage
+        {
+            get => activePage;
+            private set
+            {
+                activePage = value;
+                OnPropertyChanged("ActivePage");
+            }
+        }
+        
+        private void ChangeActiveControlsCounter(bool value)
+        {
+            if (value)
+                ActiveControlsCounter++;
+            else
+                ActiveControlsCounter--;
+        }
+
         private void ControlsModelsCollectionFilling()
         {
             IEnumerable<JsonData> jsons = Parser.ParseJson();
             IEnumerable<ControlModel> models = ControlsFabric.Create(jsonData: jsons, language: UILanguage);
             ControlsModelsCollection = new ObservableCollection<ControlModel>(models);
+
+            //HACK: For tests only !!!
+            ControlsModelsCollection[0].State = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,13 +85,18 @@ namespace SophiAppCE.ViewModel
         }
 
         public RelayCommand SelectAllCommand => selectAllCommand ?? new RelayCommand(SelectAll);
-        public RelayCommand SwitchBarClickedCommand => switchBarClickedCommand ?? new RelayCommand(SwitchBarClicked);
-        private void SwitchBarClicked(object args)
+        public RelayCommand ControlClickedCommand => controlClickedCommand ?? new RelayCommand(ControlClicked);
+
+        public RelayCommand ChangePageCommand => changePageCommand ?? new RelayCommand(ChangePage);
+
+        private void ChangePage(object args) => ActivePage = args as string;
+
+        private void ControlClicked(object args)
         {
-            UInt16 id = Convert.ToUInt16(args);            
-            ControlsModelsCollection.Where(m => m.Id == id)
-                                    .Select(m => m.ActualState = !m.ActualState)
-                                    .ToList();
+            UInt16 id = Convert.ToUInt16(args);
+            ControlModel controlModel = ControlsModelsCollection.Where(m => m.Id == id).First();
+            controlModel.ChangeActualState();            
+            ChangeActiveControlsCounter(controlModel.ActualState);            
         }
 
         private void SelectAll(object args)
@@ -66,8 +105,12 @@ namespace SophiAppCE.ViewModel
             string tag = arg.First() as string;
             bool state = Convert.ToBoolean(arg.Last());
             ControlsModelsCollection.Where(m => m.Tag == tag && m.State != true && m.ActualState != state)
-                                    .Select(m => m.ActualState = state)
-                                    .ToList();            
+                                    .ToList()
+                                    .ForEach(m =>
+                                    {
+                                        m.ChangeActualState();
+                                        ChangeActiveControlsCounter(m.ActualState);
+                                    });                                             
         }
     }
 }

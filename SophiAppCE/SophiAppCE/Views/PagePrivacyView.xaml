@@ -13,13 +13,13 @@
              SnapsToDevicePixels="True"
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent"
-             Visibility="Visible"
              controls:SwitchBar.Clicked="SwitchBar_Clicked">    
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
         <CollectionViewSource x:Key="EvenControls_Filter" Filter="Filter_EvenControls" Source="{Binding ControlsModelsCollection}"/>
-        <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>        
+        <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>
+        <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -40,8 +40,16 @@
         </Style>
 
         <Style TargetType="local:PagePrivacyView">
-            <Setter Property="Command" Value="{Binding SwitchBarClickedCommand}"/>
+            <Setter Property="Command" Value="{Binding ControlClickedCommand}"/>
             <Setter Property="Header" Value="{DynamicResource Localization.Privacy}"/>
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource VisibilityConverter}">
+                        <Binding Path="ActivePage" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:PagePrivacyView">

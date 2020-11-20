@@ -23,21 +23,23 @@
         <Style TargetType="local:HamburgerBarButton">
             <Setter Property="Hover" Value="{DynamicResource Brush.HamburgerBar.Button.Hover}"/>
             <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="Command" Value="{Binding ChangePageCommand}"/>
+            <Setter Property="CommandParameter" Value="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:HamburgerBarButton">
                         <StackPanel x:Name="WrapperPanel" Orientation="Horizontal" Background="{Binding TemplateBinding}">
                             <StackPanel x:Name="ContentPanel" Orientation="Horizontal">
                                 <Viewbox Width="24" Height="24" Margin="{Binding IconMargin, RelativeSource={RelativeSource TemplatedParent}}"
-                                     VerticalAlignment="Center" HorizontalAlignment="Center">
+                                         VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Canvas Width="24" Height="24">
                                         <Path Data="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"
-                                          Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                              Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </Canvas>
                                 </Viewbox>
                                 <TextBlock Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                       Margin="{Binding TextMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                           VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                           Margin="{Binding TextMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </StackPanel>
                         </StackPanel>
                         <ControlTemplate.Triggers>
@@ -52,16 +54,10 @@
                             </Trigger>
                             <EventTrigger RoutedEvent="Button.Click">
                                 <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ThicknessAnimation Storyboard.TargetName="ContentPanel" Storyboard.TargetProperty="Margin"
-                                                                Duration="0:0:0.3" From="0 0 0 0" To="0 10 0 0" SpeedRatio="3" AutoReverse="True"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
+                                    <BeginStoryboard Storyboard="{StaticResource Animation.HamburgerBar.Button.Click}"/>
                                 </EventTrigger.Actions>
                             </EventTrigger>
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

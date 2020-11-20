@@ -7,4 +7,14 @@
                             To="{DynamicResource Margin.Switch.Ellipse.Left}"
                             Duration="0:0:0.2"/>
     </Storyboard>
+    
+    <Storyboard x:Key="Animation.HamburgerBar.Button.Click">
+        <ThicknessAnimation Storyboard.TargetName="ContentPanel" 
+                            Storyboard.TargetProperty="Margin"
+                            Duration="0:0:0.3" 
+                            From="0 0 0 0" 
+                            To="0 10 0 0" 
+                            SpeedRatio="3" 
+                            AutoReverse="True"/>
+    </Storyboard>
 </ResourceDictionary>

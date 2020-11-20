@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">    
     <system:String x:Key="Tag.Privacy">Privacy</system:String>
     <system:String x:Key="Tag.Ui">Ui</system:String>
     <system:String x:Key="Tag.ContextMenu">ContextMenu</system:String>
@@ -11,5 +11,6 @@
     <system:String x:Key="Tag.Game">Game</system:String>
     <system:String x:Key="Tag.Uwp">Uwp</system:String>
     <system:String x:Key="Tag.OneDrive">OneDrive</system:String>
-    <system:String x:Key="Tag.ApplyingSettings">ApplyingSettings</system:String>    
+    <system:String x:Key="Tag.ApplyAll">ApplyAll</system:String>
+    <system:String x:Key="Tag.Settings">Settings</system:String>
 </ResourceDictionary>

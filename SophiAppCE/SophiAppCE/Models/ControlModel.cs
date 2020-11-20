@@ -63,6 +63,11 @@ namespace SophiAppCE.Models
 
         public Dictionary<Language, string> LocalizedDescription { get; set; }
 
+        public void ChangeActualState()
+        {
+            ActualState = !ActualState;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)

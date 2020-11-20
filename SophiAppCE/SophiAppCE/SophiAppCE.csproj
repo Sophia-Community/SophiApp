@@ -74,6 +74,8 @@
     <Compile Include="Controls\TitleBarButtonMaximize.xaml.cs">
       <DependentUpon>TitleBarButtonMaximize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ApplyAllVisibilityConverter.cs" />
+    <Compile Include="Converters\PageVisibilityConverter.cs" />
     <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
     <Compile Include="Helpers\Animator.cs" />

@@ -4,13 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
              mc:Ignorable="d"
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              ButtonBase.Click="Button_Click">
     
-    <UserControl.Resources>
+    <UserControl.Resources>        
+        <converters:ApplyAllVisibilityConverter x:Key="ApplyAllButtonVisibilityConverter"/>        
         <Style TargetType="local:HamburgerBar">            
             <Setter Property="Template">
                 <Setter.Value>
@@ -89,11 +91,14 @@
 
                             <local:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Apply}"
                                                       Text="{DynamicResource Localization.Apply}"
+                                                      Tag="{StaticResource Tag.ApplyAll}"
                                                       VerticalAlignment="Top"
-                                                      Margin="0, 450, 0, 0"/>
+                                                      Margin="0, 450, 0, 0"
+                                                      Visibility="{Binding ActiveControlsCounter, Converter={StaticResource ApplyAllButtonVisibilityConverter}}"/>
 
                             <local:HamburgerBarButton Icon="{StaticResource Icon.Hamburger.Settings}"
                                                       Text="{DynamicResource Localization.Settings}"
+                                                      Tag="{StaticResource Tag.Settings}"
                                                       VerticalAlignment="Bottom"/>
                         </Grid>
                     </ControlTemplate>

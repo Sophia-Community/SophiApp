@@ -21,6 +21,7 @@ namespace SophiAppCE.Helpers
         public static readonly string Game = Application.Current.TryFindResource("Tag.Game") as string;
         public static readonly string Uwp = Application.Current.TryFindResource("Tag.Uwp") as string;
         public static readonly string OneDrive = Application.Current.TryFindResource("Tag.OneDrive") as string;
-        public static readonly string ApplyingSettings = Application.Current.TryFindResource("Tag.ApplyingSettings") as string;
+        public static readonly string ApplyAll = Application.Current.TryFindResource("Tag.ApplyAll") as string;
+        public static readonly string Settings = Application.Current.TryFindResource("Tag.Settings") as string;
     }
 }
