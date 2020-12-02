@@ -72,9 +72,6 @@ namespace SophiAppCE.ViewModel
             IEnumerable<JsonData> jsons = Parser.ParseJson();
             IEnumerable<ControlModel> models = ControlsFabric.Create(jsonData: jsons, language: UILanguage);
             ControlsModelsCollection = new ObservableCollection<ControlModel>(models);
-
-            //HACK: For tests only !!!
-            ControlsModelsCollection[0].State = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

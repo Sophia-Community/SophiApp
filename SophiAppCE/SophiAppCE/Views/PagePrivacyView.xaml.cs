@@ -90,6 +90,15 @@ namespace SophiAppCE.Views
         public static readonly DependencyProperty CommandTargetProperty =
             DependencyProperty.Register("CommandTarget", typeof(IInputElement), typeof(PagePrivacyView), new PropertyMetadata(null));
 
-        private void SwitchBar_Clicked(object sender, RoutedEventArgs e) => ExecuteCommand((e.OriginalSource as SwitchBar).Id);
+        private void SwitchBar_Clicked(object sender, RoutedEventArgs e) => ExecuteCommand((e.OriginalSource as SwitchBar).Id);        
+
+        private void ContentScroll_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            ScrollViewer scroll = sender as ScrollViewer;
+            bool visibility = Convert.ToBoolean(e.NewValue);
+
+            if (visibility == true)
+                scroll.ScrollToTop();            
+        }
     }
 }

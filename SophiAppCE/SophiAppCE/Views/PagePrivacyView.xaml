@@ -87,7 +87,7 @@
 
                             </Grid>
 
-                            <ScrollViewer Name="ContentScroll">
+                            <ScrollViewer x:Name="ContentScroll" IsVisibleChanged="ContentScroll_IsVisibleChanged">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
