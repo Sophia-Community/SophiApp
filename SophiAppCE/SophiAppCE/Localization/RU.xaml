@@ -14,7 +14,4 @@
     <system:String x:Key="Localization.OneDrive">OneDrive</system:String>
     <system:String x:Key="Localization.Apply">Применить</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
-    <system:String x:Key="Localization.SelectAll">Выбрать всё</system:String>
-    <system:String x:Key="Localization.UnselectAll">Отменить выбор</system:String>
-    <system:String x:Key="Localization.ApplyingSettings">Применение настроек...</system:String>
 </ResourceDictionary>

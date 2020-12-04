@@ -2,12 +2,12 @@
   {
     "Id": 100,
     "LocalizedHeader": {
-      "RU": "Отключить службу «Функциональные возможности для подключенных пользователей и телеметрия» (DiagTrack)",
-      "EN": "Disable the «Connected User Experiences and Telemetry» service (DiagTrack)"
+      "RU": "Отключить службу \"Функциональные возможности для подключенных пользователей и телеметрия\"",
+      "EN": "Disable the \"Connected User Experiences and Telemetry\" service (DiagTrack)"
     },
     "LocalizedDescription": {
-      "RU": "Служба «Функциональные возможности для подключенных пользователей и телеметрия» включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе «Диагностика и отзывы»",
-      "EN": "The «Connected User Experiences and Telemetry» service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics"
+      "RU": "Служба \"Функциональные возможности для подключенных пользователей и телеметрия\" включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе \"Диагностика и отзывы\"",
+      "EN": "The \"Connected User Experiences and Telemetry\" service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics"
     },
     "Type": "SwitchBar",
     "Tag": "Privacy"
@@ -41,8 +41,8 @@
   {
     "Id": 103,
     "LocalizedHeader": {
-      "RU": "Изменить частоту формирования отзывов на «Никогда» для текущего пользователя",
-      "EN": "Change Windows Feedback frequency to «Never» for the current user"
+      "RU": "Изменить частоту формирования отзывов на \"Никогда\" для текущего пользователя",
+      "EN": "Change Windows Feedback frequency to \"Never\" for the current user"
     },
     "LocalizedDescription": {
       "RU": "Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10",
@@ -80,8 +80,8 @@
   {
     "Id": 106,
     "LocalizedHeader": {
-      "RU": "Не позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков (только для текущего пользователя)",
-      "EN": "Do not let websites provide locally relevant content by accessing language list (current user only)"
+      "RU": "Не позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
+      "EN": "Do not let websites provide locally relevant content by accessing language list"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -93,8 +93,8 @@
   {
     "Id": 107,
     "LocalizedHeader": {
-      "RU": "Не разрешать приложениям использовать идентификатор рекламы (только для текущего пользователя)",
-      "EN": "Do not allow apps to use advertising ID (current user only)"
+      "RU": "Не разрешать приложениям использовать идентификатор рекламы",
+      "EN": "Do not allow apps to use advertising ID"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -119,8 +119,8 @@
   {
     "Id": 109,
     "LocalizedHeader": {
-      "RU": "Не показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях (только для текущего пользователя)",
-      "EN": "Do not show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested (current user only)"
+      "RU": "Не показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+      "EN": "Do not show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -132,7 +132,7 @@
   {
     "Id": 110,
     "LocalizedHeader": {
-      "RU": "Не показывать рекомендуемое содержимое в приложении «Параметры»",
+      "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
       "EN": "Do not show suggested content in the Settings app"
     },
     "LocalizedDescription": {
@@ -145,7 +145,7 @@
   {
     "Id": 111,
     "LocalizedHeader": {
-      "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
+      "RU": "Не показывать рекомендуемое содержимое в приложении \"Параметры\"",
       "EN": "Do not show suggested content in the Settings app"
     },
     "LocalizedDescription": {
@@ -175,8 +175,8 @@
       "EN": "Do not suggest ways I can finish setting up my device to get the most out of Windows"
     },
     "LocalizedDescription": {
-      "RU": "Иногда, когда вы перезагружаете ПК или выходите из системы и входите в Windows 10, вы можете видеть уведомление «Максимально эффективное использование Windows», предлагающее способы завершить настройку устройства",
-      "EN": "Occasionally when you restart the computer or sign out and sign in to Windows 10, you may see a «Get even more out of Windows» notification screen to suggest ways you can finish setting up your device"
+      "RU": "Иногда, когда вы перезагружаете ПК или выходите из системы и входите в Windows 10, вы можете видеть уведомление \"Максимально эффективное использование Windows\", предлагающее способы завершить настройку устройства",
+      "EN": "Occasionally when you restart the computer or sign out and sign in to Windows 10, you may see a \"Get even more out of Windows\" notification screen to suggest ways you can finish setting up your device"
     },
     "Type": "SwitchBar",
     "Tag": "Privacy"
@@ -197,12 +197,12 @@
   {
     "Id": 115,
     "LocalizedHeader": {
-      "RU": "Отключить поиск Bing в меню «Пуск»",
+      "RU": "Отключить поиск Bing в меню \"Пуск\"",
       "EN": "Disable Bing search in the Start Menu"
     },
     "LocalizedDescription": {
-      "RU": "",
-      "EN": ""
+      "RU": "Только для США",
+      "EN": "For the USA only"
     },
     "Type": "SwitchBar",
     "Tag": "Privacy"
@@ -210,8 +210,8 @@
   {
     "Id": 200,
     "LocalizedHeader": {
-      "RU": "Отобразить «Этот компьютер» на рабочем столе",
-      "EN": "Show «This PC» on Desktop"
+      "RU": "Отобразить \"Этот компьютер\" на рабочем столе",
+      "EN": "Show \"This PC\" on Desktop"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -275,8 +275,8 @@
   {
     "Id": 205,
     "LocalizedHeader": {
-      "RU": "Открывать проводник для: «Этот компьютер»",
-      "EN": "Open File Explorer to: «This PC»"
+      "RU": "Открывать проводник для: \"Этот компьютер\"",
+      "EN": "Open File Explorer to: \"This PC\""
     },
     "LocalizedDescription": {
       "RU": "",
@@ -340,7 +340,7 @@
   {
     "Id": 210,
     "LocalizedHeader": {
-      "RU": "Не показывать панель «Люди» на панели задач",
+      "RU": "Не показывать панель \"Люди\" на панели задач",
       "EN": "Do not show People on the taskbar"
     },
     "LocalizedDescription": {
@@ -366,8 +366,8 @@
   {
     "Id": 212,
     "LocalizedHeader": {
-      "RU": "Не показывать при прикреплении окна, что можно прикрепить рядом с ним",
-      "EN": "Do not show when snapping a window, what can be attached next to it"
+      "RU": "При прикреплении окна не показывать, что можно прикрепить рядом с ним",
+      "EN": "When I snap a window, do not show what I can snap next to it"
     },
     "LocalizedDescription": {
       "RU": "Перетащите окна к боковым сторонам или углам экрана, и они будут автоматически размещены рядом",
@@ -379,8 +379,8 @@
   {
     "Id": 213,
     "LocalizedHeader": {
-      "RU": "Развернуть диалог переноса файлов",
-      "EN": "Show more details in file transfer dialog"
+      "RU": "Всегда открывать диалоговое окно передачи файлов в развернутом виде",
+      "EN": "Always open the file transfer dialog box in the detailed mode"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -392,8 +392,8 @@
   {
     "Id": 214,
     "LocalizedHeader": {
-      "RU": "Отображать ленту проводника в развернутом виде",
-      "EN": "Show the Ribbon expanded in File Explorer"
+      "RU": "Always expand the ribbon in the File Explorer",
+      "EN": "Всегда разворачивать ленту в проводнике"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -418,8 +418,8 @@
   {
     "Id": 216,
     "LocalizedHeader": {
-      "RU": "Скрыть папку «Объемные объекты» из «Этот компьютер» и из панели быстрого доступа",
-      "EN": "Hide 3D Objects folder from «This PC» and from Quick access"
+      "RU": "Скрыть папку \"Объемные объекты\" из \"Этот компьютер\" и из панели быстрого доступа",
+      "EN": "Hide 3D Objects folder from \"This PC\" and from Quick access"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -432,7 +432,7 @@
     "Id": 217,
     "LocalizedHeader": {
       "RU": "Не показывать недавно используемые папки на панели быстрого доступа",
-      "EN": "Do not show «Frequent folders» in Quick access"
+      "EN": "Do not show \"Frequent folders\" in Quick access"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -445,7 +445,7 @@
     "Id": 218,
     "LocalizedHeader": {
       "RU": "Не показывать недавно использовавшиеся файлы на панели быстрого доступа",
-      "EN": "Do not show «Recent files» in Quick access"
+      "EN": "Do not show \"Recent files\" in Quick access"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -471,7 +471,7 @@
     "Id": 220,
     "LocalizedHeader": {
       "RU": "Не показывать кнопку Windows Ink Workspace на панели задач",
-      "EN": "Do not show «Windows Ink Workspace» button in taskbar"
+      "EN": "Do not show \"Windows Ink Workspace\" button in taskbar"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -496,8 +496,8 @@
   {
     "Id": 222,
     "LocalizedHeader": {
-      "RU": "Установить крупные значки в Панели управления",
-      "EN": "Set the large icons in the Control Panel"
+      "RU": "View the Control Panel icons by: large icons",
+      "EN": "Просмотр иконок Панели управления как: крупные значки"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -509,8 +509,8 @@
   {
     "Id": 223,
     "LocalizedHeader": {
-      "RU": "Выбрать цвет режима Windows по умолчанию",
-      "EN": "Choose your default Windows mode color"
+      "RU": "Выберите цвет режима Windows по умолчанию",
+      "EN": "Choose your default Windows mode color scheme"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -522,8 +522,8 @@
   {
     "Id": 224,
     "LocalizedHeader": {
-      "RU": "Выбрать цвет режима приложений по умолчанию",
-      "EN": "Choose default app mode color"
+      "RU": "Выберите цвет режима приложений по умолчанию",
+      "EN": "Choose default app mode color scheme"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -535,8 +535,8 @@
   {
     "Id": 225,
     "LocalizedHeader": {
-      "RU": "Не показывать уведомление «Установлено новое приложение»",
-      "EN": "Do not show «New App Installed» notification"
+      "RU": "Не показывать уведомление \"Установлено новое приложение\"",
+      "EN": "Do not show \"New App Installed\" indicator"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -561,8 +561,8 @@
   {
     "Id": 227,
     "LocalizedHeader": {
-      "RU": "Отключить снижение качества при импорте фонового изображение рабочего стола в формате JPEG",
-      "EN": "Turn off JPEG desktop wallpaper import quality reduction"
+      "RU": "Установить коэффициент качества обоев рабочего стола в формате JPEG на максимальный",
+      "EN": "Set the quality factor of the JPEG desktop wallpapers to maximum"
     },
     "LocalizedDescription": {
       "RU": "Если в качестве фонового рисунка рабочего стола выбрано изображение формата JPEG, Windows снизит качество исходного качества изображения до 85 \\%",
@@ -587,8 +587,8 @@
   {
     "Id": 229,
     "LocalizedHeader": {
-      "RU": "Нe дoбaвлять «- яpлык» для coздaвaeмыx яpлыкoв",
-      "EN": "Do not add the «- Shortcut» for created shortcuts"
+      "RU": "Нe дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков",
+      "EN": "Do not add the \"- Shortcut\" suffix to the file name of created shortcuts"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -631,7 +631,7 @@
     },
     "LocalizedDescription": {
       "RU": "Функция контроля может автоматически освободить место, удалив ненужные файлы только при нехватке свободного места на устройстве",
-      "EN": "Storage Sense can automatically free up space by getting rId of files you don't need only when your device is low on storage space"
+      "EN": "Storage Sense can automatically free up space by getting rid of files you don't need only when your device is low on storage space"
     },
     "Type": "SwitchBar",
     "Tag": "System"
@@ -691,8 +691,8 @@
   {
     "Id": 405,
     "LocalizedHeader": {
-      "RU": "Изменить путь переменной среды для $env:TEMP на \\%SystemDrive\\%\\Temp",
-      "EN": "Change the \\%TEMP\\% environment variable path to the \\%SystemDrive\\%\\Temp"
+      "RU": "Изменить путь переменной среды для %TEMP% на \"\\%SystemDrive\\%\\Temp\"",
+      "EN": "Change the \\%TEMP\\% environment variable path to the \"\\%SystemDrive\\%\\Temp\""
     },
     "LocalizedDescription": {
       "RU": "",
@@ -730,8 +730,8 @@
   {
     "Id": 408,
     "LocalizedHeader": {
-      "RU": "Изменить «Поведение запроса на повышение прав для администраторов в режиме одобрения администратором» на ",
-      "EN": "Change «Behavior of the elevation prompt for administrators in Admin Approval Mode» to"
+      "RU": "Изменить \"Поведение запроса на повышение прав для администраторов в режиме одобрения администратором\" на ",
+      "EN": "Change \"Behavior of the elevation prompt for administrators in Admin Approval Mode\" to"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -795,38 +795,12 @@
   {
     "Id": 413,
     "LocalizedHeader": {
-      "RU": "Отключить следующие компоненты Windows",
-      "EN": "Disable the following Windows features"
+      "RU": "Отключить компоненты Windows",
+      "EN": "Disable the Windows features"
     },
     "LocalizedDescription": {
       "RU": "",
       "EN": ""
-    },
-    "Type": "SwitchBar",
-    "Tag": "System"
-  },
-  {
-    "Id": 414,
-    "LocalizedHeader": {
-      "RU": "Установить подсистему Windows для Linux (WSL)",
-      "EN": "Install the Windows Subsystem for Linux (WSL)"
-    },
-    "LocalizedDescription": {
-      "RU": "",
-      "EN": ""
-    },
-    "Type": "SwitchBar",
-    "Tag": "System"
-  },
-  {
-    "Id": 415,
-    "LocalizedHeader": {
-      "RU": "Настроить WSL",
-      "EN": "Setup WSL"
-    },
-    "LocalizedDescription": {
-      "RU": "Установить WSL 2 как версию по умолчанию. Отключить создание своп-файла",
-      "EN": "Set WSL 2 as default version. Disable swap file creation"
     },
     "Type": "SwitchBar",
     "Tag": "System"
@@ -834,8 +808,8 @@
   {
     "Id": 416,
     "LocalizedHeader": {
-      "RU": "Отключить определенные компоненты «Функции по требованию» (FODv2)",
-      "EN": "Disable certain Feature On Demand v2 (FODv2) capabilities"
+      "RU": "Отключить компоненты \"Функции по требованию\" (FODv2)",
+      "EN": "Disable Feature On Demand v2 (FODv2) capabilities"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -847,7 +821,7 @@
   {
     "Id": 417,
     "LocalizedHeader": {
-      "RU": "Подключаться к службе Microsoft Update так, чтобы при обнволении Windows получать обновления для других продуктов Майкрософт",
+      "RU": "Подключаться к службе Microsoft Update так, чтобы при обновлении Windows получать обновления для других продуктов Майкрософт",
       "EN": "Opt-in to Microsoft Update service, so to receive updates for other Microsoft products"
     },
     "LocalizedDescription": {
@@ -860,8 +834,8 @@
   {
     "Id": 418,
     "LocalizedHeader": {
-      "RU": "Не разрешать UWP-приложениям работать в фоновом режиме, кроме следующих",
-      "EN": "Do not let UWP apps run in the background, except the followings"
+      "RU": "Не разрешать UWP-приложениям работать в фоновом режиме",
+      "EN": "Do not let UWP apps run in the background"
     },
     "LocalizedDescription": {
       "RU": "Приложения не смогут получать сведения, отправлять уведомления и обновляться, даже если вы их не используете",
@@ -873,8 +847,8 @@
   {
     "Id": 419,
     "LocalizedHeader": {
-      "RU": "Установить схему управления питанием на «Высокая производительность», если устройство является стационарным ПК, или «Сбалансированная»",
-      "EN": "Set the power management scheme on «High performance» if device is a desktop, or «Balanced»"
+      "RU": "Установить схему управления питанием на \"Высокая производительность\", если устройство является стационарным ПК, или \"Сбалансированная\"",
+      "EN": "Set the power management scheme on \"High performance\" if device is a desktop, or \"Balanced\""
     },
     "LocalizedDescription": {
       "RU": "",
@@ -923,19 +897,6 @@
     "Tag": "System"
   },
   {
-    "Id": 423,
-    "LocalizedHeader": {
-      "RU": "Включить Windows Sandbox",
-      "EN": "Enable Windows Sandbox"
-    },
-    "LocalizedDescription": {
-      "RU": "",
-      "EN": ""
-    },
-    "Type": "SwitchBar",
-    "Tag": "System"
-  },
-  {
     "Id": 424,
     "LocalizedHeader": {
       "RU": "Изменить расположение пользовательских папок на %SystemDrive%",
@@ -951,7 +912,7 @@
   {
     "Id": 425,
     "LocalizedHeader": {
-      "RU": "Сохранять скриншоты по нажатию Win+PrtScr в папку «рабочий стол»",
+      "RU": "Сохранять скриншоты по нажатию Win+PrtScr в папку \"рабочий стол\"",
       "EN": "Save screenshots by pressing Win+PrtScr to the Desktop folder"
     },
     "LocalizedDescription": {
@@ -964,8 +925,8 @@
   {
     "Id": 426,
     "LocalizedHeader": {
-      "RU": "Рекомендуемые способы устранения неполадок",
-      "EN": "Recommneded troubleshooting"
+      "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять",
+      "EN": "Run troubleshooters automatically, then notify"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1068,8 +1029,8 @@
   {
     "Id": 434,
     "LocalizedHeader": {
-      "RU": "Автоматически сохранять мои перезапускаемые приложения при выходе из системы и перезапускать их после выхода",
-      "EN": "Automatically save my restartable apps when signing out and restart them after signing in"
+      "RU": "Включить автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода",
+      "EN": "Enable automatically saving my restartable apps when signing out and restart them after signing in"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1082,7 +1043,7 @@
     "Id": 435,
     "LocalizedHeader": {
       "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
-      "EN": "Enable «Network Discovery» and «File and Printers Sharing» for workgroup networks"
+      "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1120,7 +1081,33 @@
   {
     "Id": 500,
     "LocalizedHeader": {
-      "RU": "Не показывать недавно добавленные приложения в меню «Пуск»",
+      "RU": "Установить подсистему Windows для Linux (WSL)",
+      "EN": "Install the Windows Subsystem for Linux (WSL)"
+    },
+    "LocalizedDescription": {
+      "RU": "",
+      "EN": ""
+    },
+    "Type": "SwitchBar",
+    "Tag": "System"
+  },
+  {
+    "Id": 500,
+    "LocalizedHeader": {
+      "RU": "Установить WSL 2 как версию по умолчанию при установке нового дистрибутива Linux",
+      "EN": "Set WSL 2 as the default version when installing a new Linux distribution"
+    },
+    "LocalizedDescription": {
+      "RU": "",
+      "EN": ""
+    },
+    "Type": "SwitchBar",
+    "Tag": "System"
+  },
+  {
+    "Id": 600,
+    "LocalizedHeader": {
+      "RU": "Не показывать недавно добавленные приложения в меню \"Пуск\"",
       "EN": "Do not show recently added apps in the Start menu"
     },
     "LocalizedDescription": {
@@ -1131,9 +1118,9 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 501,
+    "Id": 601,
     "LocalizedHeader": {
-      "RU": "Не показывать рекомендации в меню «Пуск»",
+      "RU": "Не показывать рекомендации в меню \"Пуск\"",
       "EN": "Do not show app suggestions in the Start menu"
     },
     "LocalizedDescription": {
@@ -1144,9 +1131,9 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 502,
+    "Id": 602,
     "LocalizedHeader": {
-      "RU": "Запускать ярлык командной строки в меню «Пуск» от имени Администратора",
+      "RU": "Запускать ярлык командной строки в меню \"Пуск\" от имени Администратора",
       "EN": "Run the Command Prompt shortcut from the Start menu as Administrator"
     },
     "LocalizedDescription": {
@@ -1157,7 +1144,7 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 503,
+    "Id": 603,
     "LocalizedHeader": {
       "RU": "Открепить все ярлыки от начального экрана",
       "EN": "Unpin all the Start tiles"
@@ -1170,10 +1157,10 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 504,
+    "Id": 604,
     "LocalizedHeader": {
-      "RU": "Закрепить ярлык «Панели управления» и на начальном экране",
-      "EN": "Pin «Control Panel» to Start"
+      "RU": "Закрепить ярлык \"Панели управления\" и на начальном экране",
+      "EN": "Pin \"Control Panel\" to Start"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1183,10 +1170,10 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 505,
+    "Id": 605,
     "LocalizedHeader": {
-      "RU": "Закрепить ярлык старого формата «Устройства и принтеры» на начальном экране",
-      "EN": "Pin the old-style «Devices and Printers» shortcut to Start"
+      "RU": "Закрепить ярлык старого формата \"Устройства и принтеры\" на начальном экране",
+      "EN": "Pin the old-style \"Devices and Printers\" shortcut to Start"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1196,10 +1183,10 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 506,
+    "Id": 606,
     "LocalizedHeader": {
-      "RU": "Закрепить ярлык «Командную строку» на начальном экране",
-      "EN": "Pin «Command Prompt» shortcut to Start"
+      "RU": "Закрепить ярлык \"Командную строку\" на начальном экране",
+      "EN": "Pin \"Command Prompt\" shortcut to Start"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1209,36 +1196,23 @@
     "Tag": "StartMenu"
   },
   {
-    "Id": 600,
+    "Id": 700,
     "LocalizedHeader": {
       "RU": "Удалить все UWP-приложения из всех учетных записей",
       "EN": "Uninstall all UWP apps from all accounts"
     },
     "LocalizedDescription": {
-      "RU": "Приложения не будут установлены для новых пользователе, если отмечено «Удалять для всех пользователей»",
-      "EN": "App packages will not be installed for new users if «Uninstall for All Users» is checked"
+      "RU": "Приложения не будут установлены для новых пользователе, если отмечено \"Удалять для всех пользователей\"",
+      "EN": "App packages will not be installed for new users if \"Uninstall for All Users\" is checked"
     },
     "Type": "SwitchBar",
     "Tag": "Uwp"
   },
   {
-    "Id": 601,
+    "Id": 701,
     "LocalizedHeader": {
-      "RU": "Открыть страницу «Расширения для видео HEVC от производителя устройства» в Microsoft Store",
-      "EN": "Open Microsoft Store «HEVC Video Extensions from Device Manufacturer» page"
-    },
-    "LocalizedDescription": {
-      "RU": "Расширение может быть установлено без учетной записи Microsoft бесплатно вместо 0,99 $",
-      "EN": "The extension can be installed without Microsoft account for free instead of $0.99"
-    },
-    "Type": "SwitchBar",
-    "Tag": "Uwp"
-  },
-  {
-    "Id": 602,
-    "LocalizedHeader": {
-      "RU": "Удалить Кортана из автозагрузки",
-      "EN": "Turn off Cortana autostarting"
+      "RU": "Выключить автозагрузку Кортана",
+      "EN": "Disable Cortana autostarting"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1248,10 +1222,10 @@
     "Tag": "Uwp"
   },
   {
-    "Id": 700,
+    "Id": 702,
     "LocalizedHeader": {
       "RU": "Отключить Xbox Game Bar",
-      "EN": "Turn off Xbox Game Bar"
+      "EN": "Disable Xbox Game Bar"
     },
     "LocalizedDescription": {
       "RU": "Xbox Game Bar позволяет создавать игровые клипы, общаться с друзьями и получать приглашения в игры",
@@ -1261,10 +1235,10 @@
     "Tag": "Game"
   },
   {
-    "Id": 701,
+    "Id": 703,
     "LocalizedHeader": {
       "RU": "Отключить советы Xbox Game Bar",
-      "EN": "Turn off Xbox Game Bar tips"
+      "EN": "Disable Xbox Game Bar tips"
     },
     "LocalizedDescription": {
       "RU": "Эти подсказки позволяют узнать больше об использовании Xbox Game Bar при каждом запуске игры или приложения",
@@ -1274,20 +1248,7 @@
     "Tag": "Game"
   },
   {
-    "Id": 702,
-    "LocalizedHeader": {
-      "RU": "Установить параметры производительности графики для отдельных приложений на «Высокая производительность»",
-      "EN": "Set «High performance» in graphics performance preference for apps"
-    },
-    "LocalizedDescription": {
-      "RU": "",
-      "EN": ""
-    },
-    "Type": "SwitchBar",
-    "Tag": "Game"
-  },
-  {
-    "Id": 703,
+    "Id": 704,
     "LocalizedHeader": {
       "RU": "Включить планирование графического процессора с аппаратным ускорением",
       "EN": "Turn on hardware-accelerated GPU scheduling"
@@ -1302,8 +1263,8 @@
   {
     "Id": 800,
     "LocalizedHeader": {
-      "RU": "Создать задачу в Планировщике задач по очистке неиспользуемых файлов и обновлений Windows",
-      "EN": "Create a task to clean up unused files and Windows updates in the Task Scheduler"
+      "RU": "Создать задачу \"Windows Cleanup\" в Планировщике задач по очистке неиспользуемых файлов и обновлений Windows",
+      "EN": "Create the \"Windows Cleanup\" task to clean up unused files and Windows updates in the Task Scheduler"
     },
     "LocalizedDescription": {
       "RU": "Задача выполняется каждые 90 дней",
@@ -1315,8 +1276,8 @@
   {
     "Id": 801,
     "LocalizedHeader": {
-      "RU": "Создать задачу в Планировщике задач по очистке папки \\%SystemRoot\\%\\SoftwareDistribution\\Download",
-      "EN": "Create a task in the Task Scheduler to clear the \\%SystemRoot\\%\\SoftwareDistribution\\Download folder"
+      "RU": "Создать задачу \"SoftwareDistribution\" в Планировщике задач по очистке папки \\%SystemRoot\\%\\SoftwareDistribution\\Download",
+      "EN": "Create the \"SoftwareDistribution\" task in the Task Scheduler to clear the \\%SystemRoot\\%\\SoftwareDistribution\\Download folder"
     },
     "LocalizedDescription": {
       "RU": "Задача выполняется по четвергам каждую 4 неделю",
@@ -1328,8 +1289,8 @@
   {
     "Id": 802,
     "LocalizedHeader": {
-      "RU": "Создать задачу в Планировщике задач по очистке папки \\%TEMP\\%",
-      "EN": "Create a task to clear the \\%TEMP\\% folder in the Task Scheduler"
+      "RU": "Создать задачу \"Temp\" в Планировщике задач по очистке папки \\%TEMP\\%",
+      "EN": "Create the \"Temp\" task to clear the \\%TEMP\\% folder in the Task Scheduler"
     },
     "LocalizedDescription": {
       "RU": "Задача выполняется каждые 62 дня",
@@ -1342,7 +1303,7 @@
     "Id": 900,
     "LocalizedHeader": {
       "RU": "Включить защиту сети в Microsoft Defender Exploit Guard",
-      "EN": "Turn on Microsoft Defender Exploit Guard network protection"
+      "EN": "Enable Microsoft Defender Exploit Guard network protection"
     },
     "LocalizedDescription": {
       "RU": "Предотвращает использование любого приложения для доступа к опасным доменам, которые могут содержать фишинговые программы, сайты с эксплойтами и прочее вредоносное содержимое в Интернете",
@@ -1355,7 +1316,7 @@
     "Id": 901,
     "LocalizedHeader": {
       "RU": "Включить обнаружение потенциально нежелательных приложений и блокировать их",
-      "EN": "Turn on detection for potentially unwanted applications and block them"
+      "EN": "Enable detection for potentially unwanted applications and block them"
     },
     "LocalizedDescription": {
       "RU": "Потенциально нежелательные приложения не рассматриваются как вирусы, вредоносные программы или другие типы угроз, но они могут выполнять действия с ПК, которые негативно влияют на его производительность или использование",
@@ -1367,8 +1328,8 @@
   {
     "Id": 902,
     "LocalizedHeader": {
-      "RU": "Запускать Microsoft Defender в песочнице",
-      "EN": "Run Microsoft Defender within a sandbox"
+      "RU": "Включить песочницу для Microsoft Defender",
+      "EN": "Enable sandboxing for Microsoft Defendex"
     },
     "LocalizedDescription": {
       "RU": "Запуск Microsoft Defender в песочнице гарантирует, что в случае компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от повреждений",
@@ -1381,7 +1342,7 @@
     "Id": 903,
     "LocalizedHeader": {
       "RU": "Включить аудит событий, возникающих при создании или запуске процесса",
-      "EN": "Turn on events auditing generated when a process is created or starts"
+      "EN": "Enable events auditing generated when a process is created or starts"
     },
     "LocalizedDescription": {
       "RU": "ОС записывает события аудита при создании (запуске) процесса и его аргумента командной строки",
@@ -1397,8 +1358,8 @@
       "EN": "Include command line in process creation events"
     },
     "LocalizedDescription": {
-      "RU": "Добавляет в журнале событий «Безопасность» в событиях с кодом 4688 полный аргумент командной строки процесса. Необходимо включить аудит событий, чтобы работала данная опция",
-      "EN": "Adds the detailed command-line arguments used by a process to Id 4688 events in the Windows security event log. In order this feature to work events auditing must be enabled"
+      "RU": "Добавляет в журнале событий \"Безопасность\" в событиях с кодом 4688 полный аргумент командной строки процесса. Для того, чтобы работал данный функционал, будет включен аудит событий",
+      "EN": "Adds the detailed command-line arguments used by a process to the Id 4688 events in the Windows security event log. In order this feature to work events auditing will be enabled"
     },
     "Type": "SwitchBar",
     "Tag": "Security"
@@ -1406,11 +1367,11 @@
   {
     "Id": 905,
     "LocalizedHeader": {
-      "RU": "Создать настаиваемое представление «Создание процесса» в Настраиваемых представлениях",
-      "EN": "Create «Process Creation» Event Viewer Custom View"
+      "RU": "Создать настаиваемое представление \"Создание процесса\" в Просмотре событий",
+      "EN": "Create \"Process Creation\" Event Viewer Custom View"
     },
     "LocalizedDescription": {
-      "RU": "Просмотр события с кодом 4688 создания нового процесса и аудит командной строки. Необходимо включить аудит событий и командной строки в событиях создания процесса, чтобы работала данная опция",
+      "RU": "Просмотр события с кодом 4688 создания нового процесса и аудит командной строки. Для того, чтобы работал данный функционал, будет включен аудит событий и командной строки в событиях создания процесса",
       "EN": "Viewing Id 4688 process creation and command-line auditing events. In order this feature to work events auditing and command line in process creation events must be enabled"
     },
     "Type": "SwitchBar",
@@ -1419,8 +1380,8 @@
   {
     "Id": 906,
     "LocalizedHeader": {
-      "RU": "Вести журнал для всех модулей Windows PowerShell",
-      "EN": "Log for all Windows PowerShell modules"
+      "RU": "Включить ведение журнала для всех модулей Windows PowerShell",
+      "EN": "Enable logging for all Windows PowerShell modules"
     },
     "LocalizedDescription": {
       "RU": "События конвейерного выполнения записываются в журнал Windows PowerShell",
@@ -1432,8 +1393,8 @@
   {
     "Id": 907,
     "LocalizedHeader": {
-      "RU": "Вести регистрацию всех вводимых сценариев PowerShell в журнале событий Windows PowerShell",
-      "EN": "Log all PowerShell scripts input to the Windows PowerShell event log"
+      "RU": "Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell",
+      "EN": "Enable logging for all PowerShell scripts input to the Windows PowerShell event log"
     },
     "LocalizedDescription": {
       "RU": "PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации",
@@ -1445,8 +1406,8 @@
   {
     "Id": 908,
     "LocalizedHeader": {
-      "RU": "Не проверять приложения и файлы фильтром SmartScreen в Microsoft Defender",
-      "EN": "Do not check apps and files within Microsofot Defender SmartScreen"
+      "RU": "Выключить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender",
+      "EN": "Disable apps and files checking within Microsofot Defender SmartScreen"
     },
     "LocalizedDescription": {
       "RU": "Фильтр SmartScreen в Microsoft Defender проверяет неопознаные приложения и файлы, скачанные из сети",
@@ -1458,8 +1419,8 @@
   {
     "Id": 909,
     "LocalizedHeader": {
-      "RU": "Не позволять SmartScreen отмечать файлы, скачанные из интернета, как небезопасные",
-      "EN": "Prevent SmartScreen from marking files that have been downloaded from the Internet as unsafe"
+      "RU": "Выключить проверку Диспетчером вложений файлов, скачанных из интернета, как небезопасные",
+      "EN": "Disable the Attachment Manager marking files that have been downloaded from the Internet as unsafe"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1472,7 +1433,7 @@
     "Id": 910,
     "LocalizedHeader": {
       "RU": "Отключить Windows Script Host",
-      "EN": "Turn off Windows Script Host"
+      "EN": "Disable Windows Script Host"
     },
     "LocalizedDescription": {
       "RU": "Предназначен для запуска сценариев на скриптовых языках JScript и VBScript",
@@ -1482,10 +1443,23 @@
     "Tag": "Security"
   },
   {
+    "Id": 911,
+    "LocalizedHeader": {
+      "RU": "Включить Windows Sandbox",
+      "EN": "Enable Windows Sandbox"
+    },
+    "LocalizedDescription": {
+      "RU": "",
+      "EN": ""
+    },
+    "Type": "SwitchBar",
+    "Tag": "System"
+  },
+  {
     "Id": 1000,
     "LocalizedHeader": {
-      "RU": "Добавить пункт «Извлечь все» в контекстное меню Windows Installer (.msi)",
-      "EN": "Add the «Extract all» item to Windows Installer (.msi) context menu"
+      "RU": "Добавить пункт \"Извлечь все\" в контекстное меню Windows Installer (.msi)",
+      "EN": "Add the \"Extract all\" item to Windows Installer (.msi) context menu"
     },
     "LocalizedDescription": {
       "RU": "Кнопка с иконкой в виде стрелки для быстрого распаковывания Windows Installer (.msi) в текущую папку",
@@ -1497,8 +1471,8 @@
   {
     "Id": 1001,
     "LocalizedHeader": {
-      "RU": "Добавить пункт «Установить» в контекстное меню .cab архивов",
-      "EN": "Add the «Install» item to the .cab archives context menu"
+      "RU": "Добавить пункт \"Установить\" в контекстное меню .cab архивов",
+      "EN": "Add the \"Install\" item to the .cab archives context menu"
     },
     "LocalizedDescription": {
       "RU": "Кнопка для быстрой установки .cab архивов",
@@ -1510,8 +1484,8 @@
   {
     "Id": 1002,
     "LocalizedHeader": {
-      "RU": "Добавить «Запуск от имени другого пользователя» в контекстное меню .exe файлов",
-      "EN": "Add the «Run as different user» item to the .exe files types context menu"
+      "RU": "Добавить \"Запуск от имени другого пользователя\" в контекстное меню .exe файлов",
+      "EN": "Add the \"Run as different user\" item to the .exe files types context menu"
     },
     "LocalizedDescription": {
       "RU": "Позволяет не зажимать Shift + ПКМ, чтобы вызвать этот пункт контекстного меню",
@@ -1523,8 +1497,8 @@
   {
     "Id": 1003,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Передать на устройство» из контекстного меню",
-      "EN": "Hide the «Cast to Device» item from the context menu"
+      "RU": "Скрыть пункт \"Передать на устройство\" из контекстного меню",
+      "EN": "Hide the \"Cast to Device\" item from the context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1536,8 +1510,8 @@
   {
     "Id": 1004,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Отправить» (поделиться) из контекстного меню",
-      "EN": "Hide the «Share» item from the context menu"
+      "RU": "Скрыть пункт \"Отправить\" (поделиться) из контекстного меню",
+      "EN": "Hide the \"Share\" item from the context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1549,8 +1523,8 @@
   {
     "Id": 1005,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Изменить с помощью приложения «Фотографии»» из контекстного меню",
-      "EN": "Hide the «Edit with Photos» item from the context menu"
+      "RU": "Скрыть пункт \"Изменить с помощью приложения \"Фотографии\"\" из контекстного меню",
+      "EN": "Hide the \"Edit with Photos\" item from the context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1562,8 +1536,8 @@
   {
     "Id": 1006,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Создать новое видео» из контекстного меню",
-      "EN": "Hide the «Create a new video» item from the context menu"
+      "RU": "Скрыть пункт \"Создать новое видео\" из контекстного меню",
+      "EN": "Hide the \"Create a new video\" item from the context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1575,8 +1549,8 @@
   {
     "Id": 1007,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Изменить» из контекстного меню изображений",
-      "EN": "Hide the «Edit» item from the images context menu"
+      "RU": "Скрыть пункт \"Изменить\" из контекстного меню изображений",
+      "EN": "Hide the \"Edit\" item from the images context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1588,8 +1562,8 @@
   {
     "Id": 1008,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Печать» из контекстного меню .bat и .cmd файлов",
-      "EN": "Hide the «Print» item from the .bat and .cmd context menu"
+      "RU": "Скрыть пункт \"Печать\" из контекстного меню .bat и .cmd файлов",
+      "EN": "Hide the \"Print\" item from the .bat and .cmd context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1601,8 +1575,8 @@
   {
     "Id": 1009,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Добавить в библиотеку» из контекстного меню",
-      "EN": "Hide the «Include in Library» item from the context menu"
+      "RU": "Скрыть пункт \"Добавить в библиотеку\" из контекстного меню",
+      "EN": "Hide the \"Include in Library\" item from the context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1614,8 +1588,8 @@
   {
     "Id": 1010,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Отправить» из контекстного меню папок",
-      "EN": "Hide the «Send to» item from the folders context menu"
+      "RU": "Скрыть пункт \"Отправить\" из контекстного меню папок",
+      "EN": "Hide the \"Send to\" item from the folders context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1627,8 +1601,8 @@
   {
     "Id": 1011,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Включить BitLocker» из контекстного меню",
-      "EN": "Hide the «Turn on BitLocker» item from the context menu"
+      "RU": "Скрыть пункт \"Включить BitLocker\" из контекстного меню",
+      "EN": "Hide the \"Turn on BitLocker\" item from the context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1640,8 +1614,8 @@
   {
     "Id": 1012,
     "LocalizedHeader": {
-      "RU": "Удалить пункт «Точечный рисунок» из контекстного меню «Создать»",
-      "EN": "Remove the «Bitmap image» item from the «New» context menu"
+      "RU": "Удалить пункт \"Точечный рисунок\" из контекстного меню \"Создать\"",
+      "EN": "Remove the \"Bitmap image\" item from the \"New\" context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1653,8 +1627,8 @@
   {
     "Id": 1013,
     "LocalizedHeader": {
-      "RU": "Удалить пункт «Документ в формате RTF» из контекстного меню «Создать»",
-      "EN": "Remove the «Rich Text Document» from the «New» context menu"
+      "RU": "Удалить пункт \"Документ в формате RTF\" из контекстного меню \"Создать\"",
+      "EN": "Remove the \"Rich Text Document\" from the \"New\" context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1666,8 +1640,8 @@
   {
     "Id": 1014,
     "LocalizedHeader": {
-      "RU": "Удалить пункт «Сжатая ZIP-папка» из контекстного меню «Создать»",
-      "EN": "Remove the «Compressed (zipped) Folder» item from the «New» context menu"
+      "RU": "Удалить пункт \"Сжатая ZIP-папка\" из контекстного меню \"Создать\"",
+      "EN": "Remove the \"Compressed (zipped) Folder\" item from the \"New\" context menu"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1679,8 +1653,8 @@
   {
     "Id": 1015,
     "LocalizedHeader": {
-      "RU": "Сделать доступными элементы контекстного меню «Открыть», «Изменить» и «Печать» при выделении более 15 элементов",
-      "EN": "Make the «Open», «Print», «Edit» context menu items available, when more than 15 items selected"
+      "RU": "Включить элементы контекстного меню \"Открыть\", \"Изменить\" и \"Печать\" при выделении более 15 элементов",
+      "EN": "Enable the \"Open\", \"Print\", and \"Edit\" context menu items for more than 15 items selected"
     },
     "LocalizedDescription": {
       "RU": "По умолчанию эти пункты контекстного меню отображаются, если выбрано менее 15 пунктов",
@@ -1692,8 +1666,8 @@
   {
     "Id": 1016,
     "LocalizedHeader": {
-      "RU": "Скрыть пункт «Поиск приложения в Microsoft Store» в диалоге «Открыть с помощью»",
-      "EN": "Hide the «Look for an app in the Microsoft Store» item in «Open with» dialog"
+      "RU": "Скрыть пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\"",
+      "EN": "Hide the \"Look for an app in the Microsoft Store\" item in \"Open with\" dialog"
     },
     "LocalizedDescription": {
       "RU": "Для незарегистрированных расширений не будет предлагаться поиск приложения в Microsoft Store",
@@ -1705,8 +1679,8 @@
   {
     "Id": 1017,
     "LocalizedHeader": {
-      "RU": "Скрыть вкладку «Предыдущие версии» в свойствах файлов и папок и пункт контекстного меню «Восстановить прежнюю версию»",
-      "EN": "Hide the «Previous Versions» tab from files and folders context menu and «Restore previous versions» context menu item"
+      "RU": "Скрыть вкладку \"Предыдущие версии\" в свойствах файлов и папок и пункт контекстного меню \"Восстановить прежнюю версию\"",
+      "EN": "Hide the \"Previous Versions\" tab from files and folders context menu and \"Restore previous versions\" context menu item"
     },
     "LocalizedDescription": {
       "RU": "",

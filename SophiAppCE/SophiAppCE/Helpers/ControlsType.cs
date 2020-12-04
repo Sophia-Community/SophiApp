@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SophiAppCE.Helpers
-{
-    [Flags]
+{  
    public enum ControlsType
     {
         SwitchBar
