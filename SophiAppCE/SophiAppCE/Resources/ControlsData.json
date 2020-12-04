@@ -611,7 +611,7 @@
     "Tag": "Ui"
   },
   {
-    "Id": 300,
+    "Id": 301,
     "LocalizedHeader": {
       "RU": "Удалить OneDrive",
       "EN": "Uninstall OneDrive"
@@ -737,7 +737,7 @@
       "RU": "",
       "EN": ""
     },
-    "Type": "List",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -971,7 +971,7 @@
       "RU": "",
       "EN": ""
     },
-    "Type": "List",
+    "Type": "SwitchBar",
     "Tag": "System"
   },
   {
@@ -1014,7 +1014,7 @@
     "Tag": "System"
   },
   {
-    "Id": 530,
+    "Id": 430,
     "LocalizedHeader": {
       "RU": "Включить Num Lock при загрузке",
       "EN": "Turn on Num Lock at startup"
@@ -1024,7 +1024,7 @@
       "EN": ""
     },
     "Type": "SwitchBar",
-    "Tag": "StartMenu"
+    "Tag": "System"
   },
   {
     "Id": 431,
@@ -1107,8 +1107,8 @@
   {
     "Id": 437,
     "LocalizedHeader": {
-      "RU": "Restart this device as soon as possible when a restart is required to install an update",
-      "EN": "Перезапускать это устройство как можно быстрее, если для установки обновления требуется перезагрузка"
+      "RU": "Перезапускать это устройство как можно быстрее, если для установки обновления требуется перезагрузка",
+      "EN": "Restart this device as soon as possible when a restart is required to install an update"
     },
     "LocalizedDescription": {
       "RU": "",
@@ -1166,7 +1166,7 @@
       "RU": "",
       "EN": ""
     },
-    "Type": "Icon",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1179,7 +1179,7 @@
       "RU": "",
       "EN": ""
     },
-    "Type": "Icon",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1192,7 +1192,7 @@
       "RU": "",
       "EN": ""
     },
-    "Type": "Icon",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1205,7 +1205,7 @@
       "RU": "",
       "EN": ""
     },
-    "Type": "Icon",
+    "Type": "SwitchBar",
     "Tag": "StartMenu"
   },
   {
@@ -1218,7 +1218,7 @@
       "RU": "Приложения не будут установлены для новых пользователе, если отмечено «Удалять для всех пользователей»",
       "EN": "App packages will not be installed for new users if «Uninstall for All Users» is checked"
     },
-    "Type": "Icon",
+    "Type": "SwitchBar",
     "Tag": "Uwp"
   },
   {
@@ -1231,7 +1231,7 @@
       "RU": "Расширение может быть установлено без учетной записи Microsoft бесплатно вместо 0,99 $",
       "EN": "The extension can be installed without Microsoft account for free instead of $0.99"
     },
-    "Type": "Icon",
+    "Type": "SwitchBar",
     "Tag": "Uwp"
   },
   {
@@ -1573,7 +1573,7 @@
     "Tag": "ContextMenu"
   },
   {
-    "Id": 1008,
+    "Id": 1007,
     "LocalizedHeader": {
       "RU": "Скрыть пункт «Изменить» из контекстного меню изображений",
       "EN": "Hide the «Edit» item from the images context menu"

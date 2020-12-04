@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SophiAppCE.Views.PagePrivacyView"             
+﻿<UserControl x:Class="SophiAppCE.Views.PageUwpView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:SophiAppCE.Views"
              xmlns:controls="clr-namespace:SophiAppCE.Controls"    
              xmlns:converters="clr-namespace:SophiAppCE.Converters"             
-             mc:Ignorable="d" 
+             mc:Ignorable="d"             
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent"
-             controls:SwitchBar.Clicked="SwitchBar_Clicked">    
+             controls:SwitchBar.Clicked="SwitchBar_Clicked">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
@@ -36,7 +36,7 @@
             <Setter Property="Margin" Value="0, 0, 2, 0"/>
         </Style>
 
-        <Style TargetType="local:PagePrivacyView">
+        <Style TargetType="local:PageUwpView">
             <Style.Triggers>
                 <Trigger Property="Visibility" Value="Visible">
                     <Trigger.EnterActions>
@@ -48,7 +48,7 @@
                 </Trigger>
             </Style.Triggers>
             <Setter Property="Command" Value="{Binding ControlClickedCommand}"/>
-            <Setter Property="Header" Value="{DynamicResource Localization.Privacy}"/>
+            <Setter Property="Header" Value="{DynamicResource Localization.Uwp}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource VisibilityConverter}">
@@ -59,7 +59,7 @@
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:PagePrivacyView">
+                    <ControlTemplate TargetType="local:PageUwpView">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
