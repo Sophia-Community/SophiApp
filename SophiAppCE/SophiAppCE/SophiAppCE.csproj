@@ -75,6 +75,7 @@
       <DependentUpon>TitleBarButtonMaximize.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ApplyAllVisibilityConverter.cs" />
+    <Compile Include="Converters\HamburgerBarMarkerVisibilityConverter.cs" />
     <Compile Include="Converters\PageVisibilityConverter.cs" />
     <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />

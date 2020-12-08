@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"         
         xmlns:local="clr-namespace:SophiAppCE.Controls"
+        xmlns:converters="clr-namespace:SophiAppCE.Converters"
         TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType"
         SnapsToDevicePixels="True"
@@ -20,6 +21,17 @@
         mc:Ignorable="d">
 
     <Button.Resources>
+        <converters:HamburgerBarMarkerVisibilityConverter x:Key="MarkerVisibilityConverter"/>
+        <Style TargetType="Border">
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource MarkerVisibilityConverter}">
+                        <Binding Path="MarkerVisibilityTag" RelativeSource="{RelativeSource TemplatedParent}" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="local:HamburgerBarButton">
             <Setter Property="Hover" Value="{DynamicResource Brush.HamburgerBar.Button.Hover}"/>
             <Setter Property="FontWeight" Value="500"/>
@@ -29,6 +41,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="local:HamburgerBarButton">
                         <StackPanel x:Name="WrapperPanel" Orientation="Horizontal" Background="{Binding TemplateBinding}">
+                            <Border Width="3" Height="42" Background="{DynamicResource Brush.HamburgerBar.Marker.Background}"/>
                             <StackPanel x:Name="ContentPanel" Orientation="Horizontal">
                                 <Viewbox Width="24" Height="24" Margin="{Binding IconMargin, RelativeSource={RelativeSource TemplatedParent}}"
                                          VerticalAlignment="Center" HorizontalAlignment="Center">

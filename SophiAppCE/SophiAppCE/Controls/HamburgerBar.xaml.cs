@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SophiAppCE.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,21 +28,17 @@ namespace SophiAppCE.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HamburgerBarButton button = e.OriginalSource as HamburgerBarButton;
-            if (button.Tag != null)
-                MarkerMargin = button.Margin;            
+            ActiveMarker = (e.OriginalSource as HamburgerBarButton).Tag as string;
         }
 
-        public Thickness MarkerMargin
+        public string ActiveMarker
         {
-            get { return (Thickness)GetValue(MarkerMarginProperty); }
-            set { SetValue(MarkerMarginProperty, value); }
+            get { return (string)GetValue(ActiveMarkerProperty); }
+            set { SetValue(ActiveMarkerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MarkerMargin.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MarkerMarginProperty =
-            DependencyProperty.Register("MarkerMargin", typeof(Thickness), typeof(HamburgerBar), new PropertyMetadata(new Thickness(0, 30, 0, 0)));
-
-
+        // Using a DependencyProperty as the backing store for ActiveMarker.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ActiveMarkerProperty =
+            DependencyProperty.Register("ActiveMarker", typeof(string), typeof(HamburgerBar), new PropertyMetadata(Tags.Privacy));
     }
 }

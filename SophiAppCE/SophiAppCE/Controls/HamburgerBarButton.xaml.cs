@@ -74,9 +74,15 @@ namespace SophiAppCE.Controls
         // Using a DependencyProperty as the backing store for TextMargin.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextMarginProperty =
             DependencyProperty.Register("TextMargin", typeof(Thickness), typeof(HamburgerBarButton), new PropertyMetadata(new Thickness(0, 2, 20, 0)));
+               
+        public string MarkerVisibilityTag
+        {
+            get { return (string)GetValue(MarkerVisibilityTagProperty); }
+            set { SetValue(MarkerVisibilityTagProperty, value); }
+        }
 
-
-
-
+        // Using a DependencyProperty as the backing store for MarkerVisibilityTag.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MarkerVisibilityTagProperty =
+            DependencyProperty.Register("MarkerVisibilityTag", typeof(string), typeof(HamburgerBarButton), new PropertyMetadata(default(string)));
     }
 }
