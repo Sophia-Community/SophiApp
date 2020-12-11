@@ -12,7 +12,7 @@
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"             
-             FontFamily="pack://application:,,,/Fonts/SegoeUI-Semibold.ttf"
+             FontFamily="pack://application:,,,/Fonts/SegoeUI-Semibold.ttf#Segoe UI Semibold"
              FontSize="16"        
              FontStretch="Normal"
              FontStyle="Normal"
@@ -33,7 +33,7 @@
                                        TextWrapping="NoWrap"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
-                                       Margin="20, 0, 20 ,0"
+                                       Margin="20, 0, 20 ,5"
                                        Foreground="{DynamicResource Brush.TitleBar.Foreground}"/>
 
                             <local:TitleBarButtonMinimize Width="{TemplateBinding Height}"

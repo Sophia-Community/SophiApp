@@ -23,7 +23,7 @@
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf#Montserrat ExtraBold"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="FontStretch" Value="Normal"/>

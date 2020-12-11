@@ -9,7 +9,7 @@
         TextOptions.TextRenderingMode="ClearType"
         SnapsToDevicePixels="True"
         OverridesDefaultStyle="True"
-        FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf"
+        FontFamily="pack://application:,,,/Fonts/Montserrat-Medium.ttf#Montserrat Medium"
         FontSize="18"        
         FontStretch="Normal"
         FontStyle="Normal"

@@ -19,7 +19,7 @@
 
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf#Montserrat"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontStretch" Value="Normal"/>
@@ -33,7 +33,7 @@
 
         <Style x:Key="Description.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Description.Foreground}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf#Montserrat Medium"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="500"/>
             <Setter Property="FontStretch" Value="Normal"/>
