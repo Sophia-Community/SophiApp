@@ -62,9 +62,6 @@
     <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Controls\CommandSwitch.xaml.cs">
-      <DependentUpon>CommandSwitch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
     </Compile>
@@ -116,10 +113,6 @@
     <Compile Include="Views\PageUwpView.xaml.cs">
       <DependentUpon>PageUwpView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\CommandSwitch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\HamburgerBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,8 +126,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Switch.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\SwitchBar.xaml">
       <SubType>Designer</SubType>
