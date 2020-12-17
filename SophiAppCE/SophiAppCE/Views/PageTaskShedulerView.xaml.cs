@@ -37,17 +37,11 @@ namespace SophiAppCE.Views
                 command.Execute(commandParameter);
         }
 
-        private void Filter_OddControls(object sender, FilterEventArgs e)
+        private void ControlsModelsCollection_Filter(object sender, FilterEventArgs e)
         {
             ControlModel model = e.Item as ControlModel;
-            e.Accepted = (model.Tag == Tag as string) && (model.Id % 2 == 1) ? true : false;
-        }
-
-        private void Filter_EvenControls(object sender, FilterEventArgs e)
-        {
-            ControlModel model = e.Item as ControlModel;
-            e.Accepted = (model.Tag == Tag as string) && (model.Id % 2 == 0) ? true : false;
-        }
+            e.Accepted = model.Tag == Tag as string ? true : false;
+        }       
 
         public string Header
         {

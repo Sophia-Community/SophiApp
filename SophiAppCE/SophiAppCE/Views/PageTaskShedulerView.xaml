@@ -15,8 +15,7 @@
              controls:SwitchBar.Clicked="SwitchBar_Clicked">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
-        <CollectionViewSource x:Key="EvenControls_Filter" Filter="Filter_EvenControls" Source="{Binding ControlsModelsCollection}"/>
+        <CollectionViewSource x:Key="Filter_ControlsModelsCollection" Filter="ControlsModelsCollection_Filter" Source="{Binding ControlsModelsCollection}"/>        
         <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>
         <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
         <Style TargetType="TextBlock">
@@ -97,31 +96,19 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>                                        
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <StackPanel Name="OddPanel" Grid.Column="1">
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
+                                    <StackPanel Grid.Column="1">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource Filter_ControlsModelsCollection}}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <controls:SwitchBar/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
-                                    </StackPanel>
-
-                                    <StackPanel Name="EvenPanel" Grid.Column="3">
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource EvenControls_Filter}}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <controls:SwitchBar/>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
+                                    </StackPanel>                                    
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
