@@ -23,7 +23,7 @@ namespace SophiAppCE.Helpers
                         Dictionary<Language, string> localizedDescription = new Dictionary<Language, string> { { Language.RU, json.LocalizedDescription.RU }, { Language.EN, json.LocalizedDescription.EN } };
 
                         ControlModel model = new ControlModel
-                        {
+                        {                            
                             Id = json.Id,
                             Tag = json.Tag,
                             Type = ControlsType.SwitchBar,
@@ -32,7 +32,14 @@ namespace SophiAppCE.Helpers
                             Header = localizedHeader[language],
                             Description = localizedDescription[language]
                         };
-                        
+
+                        //HACK Model from Id 100
+                        if (model.Id == 100)
+                        {
+                            model.Action = ActionsFabric.GetActionByName($"SophiAppCE.Actions.{model.Tag}._{model.Id}");
+                            model.State = model.Action.State();
+                        }
+
                         yield return model;
                         break;                    
                 }
