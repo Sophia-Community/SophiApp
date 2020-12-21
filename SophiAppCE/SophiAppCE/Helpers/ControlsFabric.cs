@@ -36,8 +36,8 @@ namespace SophiAppCE.Helpers
                         //HACK Model from Id 100
                         if (model.Id == 100)
                         {
-                            model.Action = ActionsFabric.GetActionByName($"SophiAppCE.Actions.{model.Tag}._{model.Id}");
-                            model.State = model.Action.State();
+                            //model.Action = ActionsFabric.GetActionByName($"SophiAppCE.Actions.{model.Tag}._{model.Id}");
+                            model.State = ActionsFabric.ExecuteState(json.StateMethod, json.StateClass, json.StateArg);
                         }
 
                         yield return model;

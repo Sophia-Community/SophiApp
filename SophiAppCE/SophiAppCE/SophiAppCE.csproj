@@ -61,6 +61,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Actions\Privacy\100.cs" />
+    <Compile Include="Actions\WindowsServices.cs" />
     <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\RelayCommand.cs" />
