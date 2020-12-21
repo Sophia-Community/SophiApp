@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,11 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
     <Compile Include="Actions\Privacy\100.cs" />
-    <Compile Include="Actions\WindowsServices.cs" />
-=======
->>>>>>> parent of b94ed0f... Rewritten functions 1\135 from PowerShell to C#
     <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -81,11 +78,14 @@
     <Compile Include="Converters\PageVisibilityConverter.cs" />
     <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
     <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
+    <Compile Include="Helpers\ActionsFabric.cs" />
     <Compile Include="Helpers\Animator.cs" />
     <Compile Include="Helpers\ControlsFabric.cs" />
     <Compile Include="Helpers\ControlsType.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\Tags.cs" />
+    <Compile Include="Helpers\WinService.cs" />
+    <Compile Include="Interfaces\IApplicable.cs" />
     <Compile Include="Models\ControlModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="Views\PageContextMenuView.xaml.cs">

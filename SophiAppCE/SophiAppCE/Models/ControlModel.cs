@@ -1,5 +1,6 @@
 ﻿using SophiAppCE.Common;
 using SophiAppCE.Helpers;
+using SophiAppCE.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,7 @@ namespace SophiAppCE.Models
                 OnPropertyChanged("Header");
             }
         }
+
         public string Description
         {
             get => description;
@@ -58,6 +60,7 @@ namespace SophiAppCE.Models
         public UInt16 Id { get; set; }
         public ControlsType Type { get; set; }
         public string Tag { get; set; }
+        public IApplicable Action { get; set; }
 
         public Dictionary<Language, string> LocalizedHeader { get; set; }
 
