@@ -1,25 +1,20 @@
-﻿using SophiAppCE.Interfaces;
+﻿using SophiAppCE.Helpers;
+using SophiAppCE.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ServiceProcess;
 
 namespace SophiAppCE.Actions.Privacy
 {
-    class _100 : IApplicable
+    public class _100 : IAction
     {
-        ServiceController diagTrack = new ServiceController("DiagTrack");
-        public void Execute()
-        {
-            throw new NotImplementedException();
-        }
+        public Action Run => Action;
 
-        public bool State()
+        public static void Action()
         {
-            diagTrack.Refresh();
-            return diagTrack.Status == ServiceControllerStatus.Running ? true : false;
+            WinService.ReverseState("DiagTrack");
         }
     }
 }

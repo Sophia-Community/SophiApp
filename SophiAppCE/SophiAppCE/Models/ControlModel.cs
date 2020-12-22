@@ -4,18 +4,16 @@ using SophiAppCE.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SophiAppCE.Models
 {
     class ControlModel : INotifyPropertyChanged
     {
-        private bool state = false;
+        private bool state;
         private bool actualState = false;
         private string header;
         private string description;
+        private bool isChanged = false;
 
         public bool State
         {
@@ -37,6 +35,8 @@ namespace SophiAppCE.Models
             }
         }
 
+        public IAction Action { get; set; }
+
         public string Header
         {
             get => header;
@@ -57,18 +57,28 @@ namespace SophiAppCE.Models
             }
         }
 
-        public UInt16 Id { get; set; }
-        public ControlsType Type { get; set; }
-        public string Tag { get; set; }
-        public IApplicable Action { get; set; }
+        public bool IsChanged
+        {
+            get => isChanged;
+            set
+            {
+                isChanged = value;
+                OnPropertyChanged("IsChanged");
+            }
+        }
 
+        public UInt16 Id { get; set; }
+        
+        public string Tag { get; set; }
+        
         public Dictionary<Language, string> LocalizedHeader { get; set; }
 
         public Dictionary<Language, string> LocalizedDescription { get; set; }
 
-        public void ChangeActualState()
+        public void ChangeState()
         {
             ActualState = !ActualState;
+            IsChanged = !IsChanged;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

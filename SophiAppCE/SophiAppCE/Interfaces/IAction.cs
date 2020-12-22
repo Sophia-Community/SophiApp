@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace SophiAppCE.Interfaces
 {
-    internal interface IApplicable
+    internal interface IAction
     {
-        void Execute();
-        bool State();
+        Action Run { get; }        
     }
 }

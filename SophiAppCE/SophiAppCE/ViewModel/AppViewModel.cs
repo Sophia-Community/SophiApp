@@ -92,7 +92,7 @@ namespace SophiAppCE.ViewModel
         {
             UInt16 id = Convert.ToUInt16(args);
             ControlModel controlModel = ControlsModelsCollection.Where(m => m.Id == id).First();
-            controlModel.ChangeActualState();            
+            controlModel.ChangeState();            
             ChangeActiveControlsCounter(controlModel.ActualState);            
         }
 
@@ -105,7 +105,7 @@ namespace SophiAppCE.ViewModel
                                     .ToList()
                                     .ForEach(m =>
                                     {
-                                        m.ChangeActualState();
+                                        m.ChangeState();
                                         ChangeActiveControlsCounter(m.ActualState);
                                     });                                             
         }

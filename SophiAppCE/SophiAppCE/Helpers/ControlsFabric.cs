@@ -16,33 +16,20 @@ namespace SophiAppCE.Helpers
         {
             foreach (JsonData json in jsonData)
             {
-                switch (json.Type)
+                Dictionary<Language, string> localizedHeader = new Dictionary<Language, string> { { Language.RU, json.LocalizedHeader.RU }, { Language.EN, json.LocalizedHeader.EN } };
+                Dictionary<Language, string> localizedDescription = new Dictionary<Language, string> { { Language.RU, json.LocalizedDescription.RU }, { Language.EN, json.LocalizedDescription.EN } };
+
+                yield return new ControlModel
                 {
-                    case nameof(ControlsType.SwitchBar):
-                        Dictionary<Language, string> localizedHeader = new Dictionary<Language, string> { { Language.RU, json.LocalizedHeader.RU }, { Language.EN, json.LocalizedHeader.EN } };
-                        Dictionary<Language, string> localizedDescription = new Dictionary<Language, string> { { Language.RU, json.LocalizedDescription.RU }, { Language.EN, json.LocalizedDescription.EN } };
-
-                        ControlModel model = new ControlModel
-                        {                            
-                            Id = json.Id,
-                            Tag = json.Tag,
-                            Type = ControlsType.SwitchBar,
-                            LocalizedHeader = localizedHeader,
-                            LocalizedDescription = localizedDescription,
-                            Header = localizedHeader[language],
-                            Description = localizedDescription[language]
-                        };
-
-                        //HACK Model from Id 100
-                        if (model.Id == 100)
-                        {
-                            model.Action = ActionsFabric.GetActionByName($"SophiAppCE.Actions.{model.Tag}._{model.Id}");
-                            model.State = model.Action.State();
-                        }
-
-                        yield return model;
-                        break;                    
-                }
+                    Action = ControlModelActions.SetAction(json.Tag, json.Id),
+                    Id = json.Id,
+                    Tag = json.Tag,
+                    LocalizedHeader = localizedHeader,
+                    LocalizedDescription = localizedDescription,
+                    Header = localizedHeader[language],
+                    Description = localizedDescription[language],
+                    State = ControlModelStates.GetState(json.Id)
+                };
             }
         }
     }
