@@ -13,5 +13,6 @@
     <system:String x:Key="Localization.Uwp">UWP приложения</system:String>
     <system:String x:Key="Localization.OneDrive">OneDrive</system:String>
     <system:String x:Key="Localization.Apply">Применить</system:String>
+    <system:String x:Key="Localization.ApplyAll">Применить настройки</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
 </ResourceDictionary>

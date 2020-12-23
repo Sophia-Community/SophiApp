@@ -24,6 +24,7 @@ namespace SophiAppCE.Helpers
                     Action = ControlModelActions.SetAction(json.Tag, json.Id),
                     Id = json.Id,
                     Tag = json.Tag,
+                    Type = SetType(json.Type),
                     LocalizedHeader = localizedHeader,
                     LocalizedDescription = localizedDescription,
                     Header = localizedHeader[language],
@@ -31,6 +32,11 @@ namespace SophiAppCE.Helpers
                     State = ControlModelStates.GetState(json.Id)
                 };
             }
+        }
+
+        private static ControlsType SetType(string type)
+        {
+            return (ControlsType)Enum.Parse(typeof(ControlsType), type);
         }
     }
 }

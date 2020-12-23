@@ -8,6 +8,6 @@ namespace SophiAppCE.Interfaces
 {
     internal interface IAction
     {
-        Action Run { get; }        
+        Action<bool> Run { get; }        
     }
 }

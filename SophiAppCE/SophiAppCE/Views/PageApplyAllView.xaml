@@ -1,42 +1,48 @@
-﻿<UserControl x:Class="SophiAppCE.Views.PageSecurityView"
+﻿<UserControl x:Class="SophiAppCE.Views.PageApplyAllView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Views"
              xmlns:controls="clr-namespace:SophiAppCE.Controls"    
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"             
-             mc:Ignorable="d"             
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             mc:Ignorable="d" 
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              Foreground="{DynamicResource Brush.Window.Foreground}"
-             Background="Transparent"
-             controls:SwitchBar.Clicked="SwitchBar_Clicked">
+             Background="Transparent">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="OddControls_Filter" Filter="Filter_OddControls" Source="{Binding ControlsModelsCollection}"/>
-        <CollectionViewSource x:Key="EvenControls_Filter" Filter="Filter_EvenControls" Source="{Binding ControlsModelsCollection}"/>
-        <converters:SelectAllSwitchMultiBindingConverter x:Key="SelectAllMultiBindingConverter"/>
         <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
-        <Style TargetType="TextBlock">
+        <Style x:Key="HeaderText" TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf#Montserrat ExtraBold"/>
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        </Style>
+        <Style x:Key="DescriptionText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf#Montserrat"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>            
+            <Setter Property="Margin" Value="20, 20, 0, 20"/>
         </Style>
-
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="Margin" Value="0, 0, 2, 0"/>
         </Style>
-
-        <Style TargetType="local:PageSecurityView">
+        
+        <Style TargetType="local:PageApplyAllView">
             <Style.Triggers>
                 <Trigger Property="Visibility" Value="Visible">
                     <Trigger.EnterActions>
@@ -46,9 +52,8 @@
                 <Trigger Property="Visibility" Value="Collapsed">
                     <Setter Property="Margin" Value="0, 25, 0, 0"/>
                 </Trigger>
-            </Style.Triggers>
-            <Setter Property="Command" Value="{Binding ControlClickedCommand}"/>
-            <Setter Property="Header" Value="{DynamicResource Localization.Security}"/>
+            </Style.Triggers>            
+            <Setter Property="Header" Value="{DynamicResource Localization.ApplyAll}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource VisibilityConverter}">
@@ -59,7 +64,7 @@
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:PageSecurityView">
+                    <ControlTemplate TargetType="local:PageApplyAllView">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -75,52 +80,25 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
-
-                                <TextBlock Name="HeaderText" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
-
-                                <controls:Switch x:Name="SelectAllSwitch"
-                                                        Grid.Column="1"
-                                                        VerticalAlignment="Center"
-                                                        HorizontalAlignment="Right"
-                                                        Margin="0, 0, 30, 0"
-                                                        Command="{Binding SelectAllCommand}">
-                                    <controls:Switch.CommandParameter>
-                                        <MultiBinding Converter="{StaticResource SelectAllMultiBindingConverter}">
-                                            <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                            <Binding Path="ActualState" ElementName="SelectAllSwitch"/>
-                                        </MultiBinding>
-                                    </controls:Switch.CommandParameter>
-                                </controls:Switch>
+                                <TextBlock Name="HeaderText" Style="{StaticResource HeaderText}" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10"
+                                        Content="Применить" Command="{Binding ApplyAllCommand}" />
                             </Grid>
 
-                            <ScrollViewer x:Name="ContentScroll" IsVisibleChanged="ContentScroll_IsVisibleChanged">
+                            <ScrollViewer x:Name="ContentScroll">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>                                        
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Name="EvenPanel" Grid.Column="1">
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource EvenControls_Filter}}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <controls:SwitchBar/>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-
-                                    <StackPanel Name="OddPanel" Grid.Column="3">
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <controls:SwitchBar/>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>                                    
+                                    <Border Grid.Column="1" BorderBrush="LightCoral" BorderThickness="3" 
+                                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource DescriptionText}" Text="Сейчас применяется: "/>
+                                            <TextBlock Style="{StaticResource DescriptionText}" Text="{Binding NowAppliedText}"/>
+                                        </StackPanel>
+                                    </Border>
                                 </Grid>
                             </ScrollViewer>
                         </Grid>

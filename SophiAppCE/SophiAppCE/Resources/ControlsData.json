@@ -392,8 +392,8 @@
   {
     "Id": 214,
     "LocalizedHeader": {
-      "RU": "Always expand the ribbon in the File Explorer",
-      "EN": "Всегда разворачивать ленту в проводнике"
+      "RU": "Всегда разворачивать ленту в проводнике",
+      "EN": "Always expand the ribbon in the File Explorer"
     },
     "LocalizedDescription": {
       "RU": "",

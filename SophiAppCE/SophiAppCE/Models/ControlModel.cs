@@ -70,7 +70,9 @@ namespace SophiAppCE.Models
         public UInt16 Id { get; set; }
         
         public string Tag { get; set; }
-        
+
+        public ControlsType Type { get; set; }
+
         public Dictionary<Language, string> LocalizedHeader { get; set; }
 
         public Dictionary<Language, string> LocalizedDescription { get; set; }

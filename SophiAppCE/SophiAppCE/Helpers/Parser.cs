@@ -14,7 +14,7 @@ namespace SophiAppCE.Helpers
     {
         internal static IEnumerable<JsonData> ParseJson()
         {
-            return Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.ControlsData), @"\{(.*?)\n  \},\n", RegexOptions.Compiled | RegexOptions.Singleline)
+            return Regex.Matches(Encoding.UTF8.GetString(Properties.Resources.ControlsData), @"\n  {(.*?)\n  }", RegexOptions.Compiled | RegexOptions.Singleline)
                         .Cast<Match>()
                         .Select(m =>
                         {

@@ -103,17 +103,7 @@
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <StackPanel Name="OddPanel" Grid.Column="1">
-                                        <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <controls:SwitchBar/>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-
-                                    <StackPanel Name="EvenPanel" Grid.Column="3">
+                                    <StackPanel Name="EvenPanel" Grid.Column="1">
                                         <ItemsControl ItemsSource="{Binding Source={StaticResource EvenControls_Filter}}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
@@ -122,6 +112,16 @@
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
                                     </StackPanel>
+
+                                    <StackPanel Name="OddPanel" Grid.Column="3">
+                                        <ItemsControl ItemsSource="{Binding Source={StaticResource OddControls_Filter}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <controls:SwitchBar/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>                                    
                                 </Grid>
                             </ScrollViewer>
                         </Grid>

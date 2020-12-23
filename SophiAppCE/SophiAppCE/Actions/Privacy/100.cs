@@ -10,11 +10,11 @@ namespace SophiAppCE.Actions.Privacy
 {
     public class _100 : IAction
     {
-        public Action Run => Action;
+        public Action<bool> Run => Action;
 
-        public static void Action()
+        public static void Action(bool state)
         {
-            WinService.ReverseState("DiagTrack");
+            //WinService.ReverseState("DiagTrack");
         }
     }
 }

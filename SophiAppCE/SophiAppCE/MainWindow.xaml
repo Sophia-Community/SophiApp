@@ -36,8 +36,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <controls:TitleBar Text="SophiApp Community Edition" Grid.Row="0"/>            
-            
+            <controls:TitleBar Text="SophiApp Community Edition" Grid.Row="0"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -54,6 +53,7 @@
                 <view:PageGameView Grid.Column="1" Tag="{StaticResource Tag.Game}"/>
                 <view:PageUwpView Grid.Column="1" Tag="{StaticResource Tag.Uwp}"/>
                 <view:PageOneDriveView Grid.Column="1" Tag="{StaticResource Tag.OneDrive}"/>
+                <view:PageApplyAllView Grid.Column="1" Tag="{StaticResource Tag.ApplyAll}"/>
             </Grid>
         </Grid>
     </Border>
