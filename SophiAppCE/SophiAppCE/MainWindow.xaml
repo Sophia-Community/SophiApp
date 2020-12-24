@@ -54,6 +54,7 @@
                 <view:PageUwpView Grid.Column="1" Tag="{StaticResource Tag.Uwp}"/>
                 <view:PageOneDriveView Grid.Column="1" Tag="{StaticResource Tag.OneDrive}"/>
                 <view:PageApplyAllView Grid.Column="1" Tag="{StaticResource Tag.ApplyAll}"/>
+                <view:PageSettingsView Grid.Column="1" Tag="{StaticResource Tag.Settings}"/>
             </Grid>
         </Grid>
     </Border>

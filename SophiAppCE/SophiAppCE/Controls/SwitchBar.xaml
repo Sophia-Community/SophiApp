@@ -66,12 +66,14 @@
             <Setter Property="Margin" Value="20"/>
             <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="ForceCursor" Value="True"/>
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <Style x:Key="Frame.Border" TargetType="Border">
             <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>            
         </Style>
 
         <Style TargetType="Ellipse">            

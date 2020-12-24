@@ -17,8 +17,7 @@
         Background="Transparent"
         Height="42"
         IsTabStop="False"
-        Focusable="False"
-        mc:Ignorable="d">
+        Focusable="False">
 
     <Button.Resources>
         <converters:HamburgerBarMarkerVisibilityConverter x:Key="MarkerVisibilityConverter"/>

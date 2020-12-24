@@ -64,6 +64,12 @@
     <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\Language.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Controls\LinkBar.xaml.cs">
+      <DependentUpon>LinkBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTextBar.xaml.cs">
+      <DependentUpon>SettingsTextBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="Views\PageSecurityView.xaml.cs">
       <DependentUpon>PageSecurityView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PageSettingsView.xaml.cs">
+      <DependentUpon>PageSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageStartMenuView.xaml.cs">
       <DependentUpon>PageStartMenuView.xaml</DependentUpon>
     </Compile>
@@ -130,7 +139,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\LinkBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingsTextBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PageSecurityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PageSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

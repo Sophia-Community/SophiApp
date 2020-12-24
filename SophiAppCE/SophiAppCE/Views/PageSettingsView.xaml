@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="SophiAppCE.Views.PageApplyAllView"
+﻿<UserControl x:Class="SophiAppCE.Views.PageSettingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiAppCE.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:SophiAppCE.Controls"    
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"
+             xmlns:converters="clr-namespace:SophiAppCE.Converters"    
+             xmlns:local="clr-namespace:SophiAppCE.Views"
              mc:Ignorable="d" 
              TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
@@ -13,7 +13,7 @@
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent">
 
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
@@ -24,23 +24,12 @@
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
         </Style>
-        <Style x:Key="Description.TextBlock" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf#Montserrat"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontStretch" Value="Normal"/>
-            <Setter Property="FontStyle" Value="Normal"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>            
-            <Setter Property="Margin" Value="0, 20, 0, 20"/>
-        </Style>
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="Margin" Value="0, 0, 2, 0"/>
         </Style>
-        
-        <Style TargetType="local:PageApplyAllView">
+        <Style TargetType="local:PageSettingsView">
             <Style.Triggers>
                 <Trigger Property="Visibility" Value="Visible">
                     <Trigger.EnterActions>
@@ -50,8 +39,8 @@
                 <Trigger Property="Visibility" Value="Collapsed">
                     <Setter Property="Margin" Value="0, 25, 0, 0"/>
                 </Trigger>
-            </Style.Triggers>            
-            <Setter Property="Header" Value="{DynamicResource Localization.ApplyAll}"/>
+            </Style.Triggers>
+            <Setter Property="Header" Value="{DynamicResource Localization.Settings}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource VisibilityConverter}">
@@ -62,7 +51,7 @@
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:PageApplyAllView">
+                    <ControlTemplate TargetType="local:PageSettingsView">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -78,25 +67,30 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource Header.TextBlock}" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10"
-                                        Content="Применить" Command="{Binding ApplyAllCommand}" />
+                                
+                                <TextBlock Style="{StaticResource Header.TextBlock}"
+                                           Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>                                
                             </Grid>
 
-                            <ScrollViewer x:Name="ContentScroll" IsVisibleChanged="ContentScroll_IsVisibleChanged">
+                            <ScrollViewer x:Name="ContentScroll" 
+                                          IsVisibleChanged="ContentScroll_IsVisibleChanged">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
-                                        <ColumnDefinition Width="*"/>                                        
+                                        <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="20"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="1" BorderBrush="LightCoral" BorderThickness="3" 
-                                            VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Style="{StaticResource Description.TextBlock}" Text="Сейчас применяется: "/>
-                                            <TextBlock Style="{StaticResource Description.TextBlock}" Text="{Binding NowAppliedText}"/>
-                                        </StackPanel>
-                                    </Border>
+                                    </Grid.ColumnDefinitions>                                    
+                                    <StackPanel Grid.Column="1">
+                                    
+                                    <controls:SettingsTextBar>
+                                            <controls:LinkBar Icon="{StaticResource Icon.LinkBar.GitHub}"
+                                                              IconHeight="26"
+                                                              IconWidth="26"
+                                                              Text="GitHub"
+                                                              Link="https://github.com/farag2/SophiAppCE"/>
+                                        </controls:SettingsTextBar>
+                                        
+                                    </StackPanel>
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
