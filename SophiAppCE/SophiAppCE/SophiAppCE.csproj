@@ -283,11 +283,6 @@
     <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
     <Resource Include="Fonts\Montserrat-Bold.ttf" />
     <Resource Include="Fonts\Montserrat-Regular.ttf" />
-    <Resource Include="Fonts\Roboto-Medium.ttf" />
-    <Resource Include="Fonts\Roboto-Regular.ttf" />
-    <Resource Include="Fonts\Cambria.ttc" />
-    <Resource Include="Fonts\Candara.ttf" />
-    <Resource Include="Fonts\Cambriab.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

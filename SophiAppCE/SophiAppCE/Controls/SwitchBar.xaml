@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"             
-             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextFormattingMode="Display"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"             
              Background="{DynamicResource Brush.SwitchBar.Background}"                          
@@ -15,13 +15,13 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibility_Converter"/>      
+        <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibility_Converter"/>       
 
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Cambriab.ttf#Cambria"/>            
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf#Montserrat"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -33,8 +33,8 @@
 
         <Style x:Key="Description.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Description.Foreground}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Cambria.ttc#Cambria"/>            
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf#Montserrat Medium"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
@@ -66,10 +66,16 @@
             <Setter Property="Margin" Value="20"/>
             <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>            
 =======
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
 >>>>>>> parent of 23576c7... Added Setting page :page_facing_up:
+=======
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="ForceCursor" Value="True"/>
+            <Setter Property="Cursor" Value="Hand"/>
+>>>>>>> parent of ef42fd9... Changed fonts
         </Style>
 
         <Style x:Key="Frame.Border" TargetType="Border">

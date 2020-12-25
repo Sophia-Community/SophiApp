@@ -40,7 +40,13 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="local:Switch">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <StackPanel Name="SwitchPanel"
+=======
+                        <StackPanel Name="SwitchPanel" 
+                                    ForceCursor="True"
+                                    Cursor="Hand"
+>>>>>>> parent of ef42fd9... Changed fonts
                                     MouseLeftButtonDown="Switch_MouseLeftButtonDown">
 =======
                         <StackPanel Name="SwitchPanel" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
