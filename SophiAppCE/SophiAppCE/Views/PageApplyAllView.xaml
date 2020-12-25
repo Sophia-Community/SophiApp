@@ -15,16 +15,18 @@
 
     <UserControl.Resources>
         <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
-        <Style x:Key="Header.TextBlock" TargetType="TextBlock">
+        <Style x:Key="HeaderText" TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf#Montserrat ExtraBold"/>
-            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         </Style>
-        <Style x:Key="Description.TextBlock" TargetType="TextBlock">
+        <Style x:Key="DescriptionText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf#Montserrat"/>
             <Setter Property="FontSize" Value="16"/>
@@ -32,7 +34,7 @@
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
             <Setter Property="TextWrapping" Value="Wrap"/>            
-            <Setter Property="Margin" Value="0, 20, 0, 20"/>
+            <Setter Property="Margin" Value="20, 20, 0, 20"/>
         </Style>
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
@@ -78,12 +80,12 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource Header.TextBlock}" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <TextBlock Name="HeaderText" Style="{StaticResource HeaderText}" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="10"
                                         Content="Применить" Command="{Binding ApplyAllCommand}" />
                             </Grid>
 
-                            <ScrollViewer x:Name="ContentScroll" IsVisibleChanged="ContentScroll_IsVisibleChanged">
+                            <ScrollViewer x:Name="ContentScroll">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
@@ -93,8 +95,8 @@
                                     <Border Grid.Column="1" BorderBrush="LightCoral" BorderThickness="3" 
                                             VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Style="{StaticResource Description.TextBlock}" Text="Сейчас применяется: "/>
-                                            <TextBlock Style="{StaticResource Description.TextBlock}" Text="{Binding NowAppliedText}"/>
+                                            <TextBlock Style="{StaticResource DescriptionText}" Text="Сейчас применяется: "/>
+                                            <TextBlock Style="{StaticResource DescriptionText}" Text="{Binding NowAppliedText}"/>
                                         </StackPanel>
                                     </Border>
                                 </Grid>

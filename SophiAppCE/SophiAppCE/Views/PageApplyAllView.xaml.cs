@@ -34,14 +34,5 @@ namespace SophiAppCE.Views
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(PageApplyAllView), new PropertyMetadata(default(string)));
-
-        private void ContentScroll_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            ScrollViewer scroll = sender as ScrollViewer;
-            bool visibility = Convert.ToBoolean(e.NewValue);
-
-            if (visibility == true)
-                scroll.ScrollToTop();
-        }
     }
 }

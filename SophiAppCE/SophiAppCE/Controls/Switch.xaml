@@ -39,8 +39,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:Switch">
+<<<<<<< HEAD
                         <StackPanel Name="SwitchPanel"
                                     MouseLeftButtonDown="Switch_MouseLeftButtonDown">
+=======
+                        <StackPanel Name="SwitchPanel" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
+>>>>>>> parent of 23576c7... Added Setting page :page_facing_up:
                             <Border Name="SwitchBorder">
                                 <Ellipse Name="SwitchEllipse"/>
                             </Border>
