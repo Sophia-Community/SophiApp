@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SophiAppCE.Views
 {
     /// <summary>
-    /// Логика взаимодействия для PageApplyAllView.xaml
+    /// Логика взаимодействия для PageSettingsView.xaml
     /// </summary>
-    public partial class PageApplyAllView : UserControl
+    public partial class PageSettingsView : UserControl
     {
-        public PageApplyAllView()
+        public PageSettingsView()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace SophiAppCE.Views
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(PageApplyAllView), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("Header", typeof(string), typeof(PageSettingsView), new PropertyMetadata(default(string)));
 
         private void ContentScroll_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

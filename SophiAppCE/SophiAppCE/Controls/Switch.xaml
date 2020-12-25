@@ -38,8 +38,11 @@
         <Style TargetType="local:Switch">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:Switch">                        
-                        <StackPanel Name="SwitchPanel" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
+                    <ControlTemplate TargetType="local:Switch">
+                        <StackPanel Name="SwitchPanel" 
+                                    ForceCursor="True"
+                                    Cursor="Hand"
+                                    MouseLeftButtonDown="Switch_MouseLeftButtonDown">
                             <Border Name="SwitchBorder">
                                 <Ellipse Name="SwitchEllipse"/>
                             </Border>

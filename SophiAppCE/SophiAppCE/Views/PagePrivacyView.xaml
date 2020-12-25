@@ -24,11 +24,9 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf#Montserrat ExtraBold"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="28"/>
             <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="FontStyle" Value="Normal"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="FontStyle" Value="Normal"/>            
         </Style>
 
         <Style TargetType="ScrollViewer">

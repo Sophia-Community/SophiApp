@@ -20,5 +20,8 @@
     <SolidColorBrush x:Key="Brush.SwitchBar.Header.Foreground">#323232</SolidColorBrush>
     <SolidColorBrush x:Key="Brush.SwitchBar.Description.Foreground">#555555</SolidColorBrush>    
     <SolidColorBrush x:Key="Brush.SwitchBar.Ellipse.Unchecked">#c6c6c6</SolidColorBrush>
-    <SolidColorBrush x:Key="Brush.SwitchBar.Ellipse.Checked">#747fbf</SolidColorBrush>    
+    <SolidColorBrush x:Key="Brush.SwitchBar.Ellipse.Checked">#747fbf</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.SettingsTextBar.Border">#e1e1e1</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.LinkBar.Foreground">#323232</SolidColorBrush>
+    <SolidColorBrush x:Key="Brush.LinkBar.Link.Background">#f0f0f0</SolidColorBrush>
 </ResourceDictionary>
