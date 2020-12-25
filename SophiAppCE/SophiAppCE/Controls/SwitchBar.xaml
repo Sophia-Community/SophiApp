@@ -16,7 +16,6 @@
 
     <UserControl.Resources>
         <converters:SwitchBarDescriptionVisibilityConverter x:Key="DescriptionVisibility_Converter"/>       
-
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Header.Foreground}"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Bold.ttf#Montserrat"/>
@@ -30,7 +29,6 @@
             <Setter Property="Margin" Value="20"/>
             <Setter Property="Grid.Column" Value="0"/>
         </Style>
-
         <Style x:Key="Description.TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource Brush.SwitchBar.Description.Foreground}"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-Medium.ttf#Montserrat Medium"/>
@@ -45,17 +43,14 @@
             <Setter Property="Grid.Row" Value="1"/>
             <Setter Property="Visibility" Value="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource DescriptionVisibility_Converter}}"/>
         </Style>
-
         <Style x:Key="Header.Panel" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Grid.Row" Value="0"/>
         </Style>
-
         <Style x:Key="Description.Panel" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Grid.Row" Value="1"/>
         </Style>
-
         <Style x:Key="Switch.Border" TargetType="Border">
             <Setter Property="Width" Value="60"/>
             <Setter Property="Height" Value="33"/>
@@ -65,25 +60,13 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="20"/>
             <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>            
-=======
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
->>>>>>> parent of 23576c7... Added Setting page :page_facing_up:
-=======
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-            <Setter Property="ForceCursor" Value="True"/>
-            <Setter Property="Cursor" Value="Hand"/>
->>>>>>> parent of ef42fd9... Changed fonts
         </Style>
-
         <Style x:Key="Frame.Border" TargetType="Border">
             <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
-
         <Style TargetType="Ellipse">            
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="25"/>
@@ -92,7 +75,6 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>            
         </Style>
-
         <Style x:Key="Container.Panel" TargetType="StackPanel">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="Orientation" Value="Horizontal"/>

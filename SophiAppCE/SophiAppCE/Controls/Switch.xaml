@@ -38,19 +38,8 @@
         <Style TargetType="local:Switch">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:Switch">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <StackPanel Name="SwitchPanel"
-=======
-                        <StackPanel Name="SwitchPanel" 
-                                    ForceCursor="True"
-                                    Cursor="Hand"
->>>>>>> parent of ef42fd9... Changed fonts
-                                    MouseLeftButtonDown="Switch_MouseLeftButtonDown">
-=======
+                    <ControlTemplate TargetType="local:Switch">                        
                         <StackPanel Name="SwitchPanel" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
->>>>>>> parent of 23576c7... Added Setting page :page_facing_up:
                             <Border Name="SwitchBorder">
                                 <Ellipse Name="SwitchEllipse"/>
                             </Border>
