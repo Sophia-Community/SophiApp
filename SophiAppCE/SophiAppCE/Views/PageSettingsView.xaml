@@ -7,22 +7,28 @@
              xmlns:converters="clr-namespace:SophiAppCE.Converters"    
              xmlns:local="clr-namespace:SophiAppCE.Views"
              mc:Ignorable="d" 
-             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="ClearType"
+             FontFamily="pack://application:,,,/Fonts/#Roboto"
+             FontSize="18"
+             FontStretch="Normal"
+             FontStyle="Normal"
+             FontWeight="SemiBold"
              SnapsToDevicePixels="True"
              Foreground="{DynamicResource Brush.Window.Foreground}"
              Background="Transparent">
 
     <UserControl.Resources>        
         <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
         <Style x:Key="Header.TextBlock" TargetType="TextBlock">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf#Montserrat ExtraBold"/>
-            <Setter Property="FontSize" Value="28"/>
-            <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
@@ -80,15 +86,29 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>                                    
-                                    <StackPanel Grid.Column="1">
                                     
-                                    <controls:SettingsTextBar>
-                                            <controls:LinkBar Icon="{StaticResource Icon.LinkBar.GitHub}"
-                                                              IconHeight="26"
-                                                              IconWidth="26"
-                                                              Text="GitHub"
-                                                              Link="https://github.com/farag2/SophiAppCE"/>
+                                    <StackPanel Grid.Column="1">    
+                                        <controls:SettingsTextBar Icon="{StaticResource Icon.GitHub}"
+                                                                  IconHeight="26"
+                                                                  IconWidth="26"
+                                                                  IconVisibility="Visible">
+                                            
+                                            <controls:LinkBar Text="GitHub" Link="https://github.com/farag2/SophiAppCE"/>
                                         </controls:SettingsTextBar>
+                                        
+                                        <controls:SettingsTextBar Icon="{StaticResource Icon.Translate}"
+                                                                  IconHeight="26"
+                                                                  IconWidth="26"
+                                                                  IconVisibility="Visible">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{DynamicResource Localization.En}"/>
+                                                <controls:Switch Margin="20, 0, 20, 0"/>
+                                                <TextBlock Text="{DynamicResource Localization.Ru}"/>
+                                            </StackPanel>
+                                        </controls:SettingsTextBar>
+                                        
+                                        
+                                        
                                         
                                     </StackPanel>
                                 </Grid>
@@ -98,5 +118,5 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>    
 </UserControl>

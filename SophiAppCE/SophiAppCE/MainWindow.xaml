@@ -13,7 +13,7 @@
         WindowStyle="None"                
         AllowsTransparency="True"
         Title="SophiApp Community Edition"
-        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="ClearType"
         SnapsToDevicePixels="True"
         ResizeMode="CanResize"

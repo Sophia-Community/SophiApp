@@ -299,11 +299,7 @@
     </EmbeddedResource>
     <None Include="app.manifest" />
     <Resource Include="Resources\ControlsData.json" />
-    <Resource Include="Fonts\SegoeUI-Semibold.ttf" />
-    <Resource Include="Fonts\Montserrat-Medium.ttf" />
-    <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
-    <Resource Include="Fonts\Montserrat-Bold.ttf" />
-    <Resource Include="Fonts\Montserrat-Regular.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

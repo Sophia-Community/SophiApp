@@ -12,7 +12,7 @@ namespace SophiAppCE.Helpers
 {
     internal static class ControlsFabric
     {
-        internal static IEnumerable<ControlModel> Create(IEnumerable<JsonData> jsonData, Language language)
+        internal static IEnumerable<ControlModel> Create(IEnumerable<JsonData> jsonData)
         {
             foreach (JsonData json in jsonData)
             {
@@ -21,15 +21,13 @@ namespace SophiAppCE.Helpers
 
                 yield return new ControlModel
                 {
-                    Action = ControlModelActions.SetAction(json.Tag, json.Id),
+                    //Action = ControlModelActions.SetAction(json.Tag, json.Id),
                     Id = json.Id,
                     Tag = json.Tag,
                     Type = SetType(json.Type),
                     LocalizedHeader = localizedHeader,
-                    LocalizedDescription = localizedDescription,
-                    Header = localizedHeader[language],
-                    Description = localizedDescription[language],
-                    State = ControlModelStates.GetState(json.Id)
+                    LocalizedDescription = localizedDescription,                    
+                    //State = ControlModelStates.GetState(json.Id)
                 };
             }
         }

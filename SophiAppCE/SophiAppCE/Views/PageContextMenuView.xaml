@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:controls="clr-namespace:SophiAppCE.Controls"    
              xmlns:converters="clr-namespace:SophiAppCE.Converters"                                       
-             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              Foreground="{DynamicResource Brush.Window.Foreground}"
@@ -23,19 +23,17 @@
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Montserrat-ExtraBold.ttf#Montserrat ExtraBold"/>
-            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Roboto"/>
+            <Setter Property="FontSize" Value="26"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
         </Style>
-
         <Style TargetType="ScrollViewer">
             <Setter Property="Grid.Row" Value="3"/>
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="Margin" Value="0, 0, 2, 0"/>
         </Style>
-
         <Style TargetType="local:PageContextMenuView">
             <Style.Triggers>
                 <Trigger Property="Visibility" Value="Visible">

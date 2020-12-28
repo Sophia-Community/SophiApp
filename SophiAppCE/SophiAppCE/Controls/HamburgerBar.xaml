@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
              mc:Ignorable="d"
-             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              ButtonBase.Click="Button_Click">

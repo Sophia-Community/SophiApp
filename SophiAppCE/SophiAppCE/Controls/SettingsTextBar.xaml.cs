@@ -24,5 +24,45 @@ namespace SophiAppCE.Controls
         {
             InitializeComponent();
         }
+
+        public Geometry Icon
+        {
+            get { return (Geometry)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(Geometry), typeof(SettingsTextBar), new PropertyMetadata(default(Geometry)));
+
+        public double IconHeight
+        {
+            get { return (double)GetValue(IconHeightProperty); }
+            set { SetValue(IconHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconHeightProperty =
+            DependencyProperty.Register("IconHeight", typeof(double), typeof(SettingsTextBar), new PropertyMetadata(default(double)));
+
+        public double IconWidth
+        {
+            get { return (double)GetValue(IconWidthProperty); }
+            set { SetValue(IconWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconWidthProperty =
+            DependencyProperty.Register("IconWidth", typeof(double), typeof(SettingsTextBar), new PropertyMetadata(default(double)));
+
+        public Visibility IconVisibility
+        {
+            get { return (Visibility)GetValue(IconVisibilityProperty); }
+            set { SetValue(IconVisibilityProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconVisibility.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconVisibilityProperty =
+            DependencyProperty.Register("IconVisibility", typeof(Visibility), typeof(SettingsTextBar), new PropertyMetadata(Visibility.Collapsed));
     }
 }

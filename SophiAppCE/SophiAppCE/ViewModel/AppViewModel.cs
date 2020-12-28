@@ -16,16 +16,16 @@ namespace SophiAppCE.ViewModel
     {
         private readonly Dictionary<Language, ResourceDictionary> LocalizedDictionaries = new Dictionary<Language, ResourceDictionary>()
         {
-            { Language.RU, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute)} },
-            { Language.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} }
+            { Language.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} },
+            { Language.RU, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute)} }
         };
 
         private RelayCommand selectAllCommand;
         private RelayCommand controlClickedCommand;
         private RelayCommand changePageCommand;
-        private RelayCommand applyAllCommand;        
+        private RelayCommand applyAllCommand;
 
-        private readonly Language UILanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == nameof(Language.RU) ? Language.RU : Language.EN;
+        private Language currentLanguage;
         private UInt16 activeControlsCounter = default(UInt16);
         private string activePage = Tags.Privacy;
         private string nowAppliedText = string.Empty;
@@ -33,14 +33,18 @@ namespace SophiAppCE.ViewModel
         public ObservableCollection<ControlModel> ControlsModelsCollection { get; set; }
 
         public AppViewModel()
-        {
-            SetUiLanguageTo(UILanguage);
+        {            
             ControlsModelsCollectionFilling();
+            SetLanguageTo(Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == nameof(Language.RU) 
+                                                                                                   ? Language.RU 
+                                                                                                   : Language.EN);
         }
 
-        private void SetUiLanguageTo(Language language)
+        private void SetLanguageTo(Language language)
         {
             Application.Current.Resources.MergedDictionaries.Add(LocalizedDictionaries[language]);
+            ControlsModelsCollection.ToList().ForEach(c => c.ChangeLanguageTo(language));
+            currentLanguage = language;
         }
 
         public UInt16 ActiveControlsCounter
@@ -84,7 +88,7 @@ namespace SophiAppCE.ViewModel
         private void ControlsModelsCollectionFilling()
         {
             IEnumerable<JsonData> jsons = Parser.ParseJson();
-            IEnumerable<ControlModel> models = ControlsFabric.Create(jsonData: jsons, language: UILanguage);
+            IEnumerable<ControlModel> models = ControlsFabric.Create(jsonData: jsons);
             ControlsModelsCollection = new ObservableCollection<ControlModel>(models);
         }
 

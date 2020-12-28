@@ -83,6 +83,12 @@ namespace SophiAppCE.Models
             IsChanged = !IsChanged;
         }
 
+        public void ChangeLanguageTo(Language language)
+        {
+            Header = LocalizedHeader[language];
+            Description = LocalizedDescription[language];
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)

@@ -9,6 +9,6 @@ namespace SophiAppCE.Common
     internal enum Language
     {
         RU,
-        EN
+        EN        
     }
 }

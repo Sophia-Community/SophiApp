@@ -5,15 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Controls"
              mc:Ignorable="d"
-             TextOptions.TextFormattingMode="Display"
+             TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="ClearType"
              SnapsToDevicePixels="True"
              Background="Transparent">
     <UserControl.Resources>
+        <Style TargetType="Viewbox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>            
+            <Setter Property="Visibility" Value="{Binding Path=IconVisibility, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Style>
         <Style TargetType="ContentPresenter">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="0, 30, 0, 30"/>
+            <Setter Property="Margin" Value="46, 30, 0, 30"/>
             <Setter Property="Content" Value="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="Border">
@@ -28,7 +33,15 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:SettingsTextBar">
-                        <Grid>                            
+                        <Grid>
+                            <Viewbox Width="{Binding Path=IconWidth, RelativeSource={RelativeSource TemplatedParent}}" 
+                                     Height="{Binding Path=IconHeight, RelativeSource={RelativeSource TemplatedParent}}">
+                                
+                                <Canvas Width="24" Height="24">
+                                    <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" 
+                                          Data="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Canvas>
+                            </Viewbox>
                             <ContentPresenter/>
                             <Border/>
                         </Grid>
