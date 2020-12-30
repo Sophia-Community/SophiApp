@@ -63,6 +63,8 @@
     <Compile Include="Actions\Privacy\100.cs" />
     <Compile Include="Common\JsonData.cs" />
     <Compile Include="Common\Language.cs" />
+    <Compile Include="Common\LanguageFamily.cs" />
+    <Compile Include="Common\Localization.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Controls\LinkBar.xaml.cs">
       <DependentUpon>LinkBar.xaml</DependentUpon>
@@ -79,7 +81,11 @@
     <Compile Include="Controls\TitleBarButtonMaximize.xaml.cs">
       <DependentUpon>TitleBarButtonMaximize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TwoStateSwitch.xaml.cs">
+      <DependentUpon>TwoStateSwitch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ApplyAllVisibilityConverter.cs" />
+    <Compile Include="Converters\ChangeLanguageConverter.cs" />
     <Compile Include="Converters\HamburgerBarMarkerVisibilityConverter.cs" />
     <Compile Include="Converters\PageVisibilityConverter.cs" />
     <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
@@ -175,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\TwoStateSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="General\Animations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="General\Misc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="General\SharedStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

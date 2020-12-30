@@ -16,16 +16,11 @@
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
         </Style>
-        <Style x:Key="Wrapper.Panel" TargetType="StackPanel">
-            <Setter Property="Background" Value="{DynamicResource Brush.LinkBar.Link.Background}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+        <Style x:Key="Wrapper.Grid" TargetType="Grid">
+            <Setter Property="Background" Value="{DynamicResource Brush.LinkBar.Link.Background}"/>            
             <Setter Property="ForceCursor" Value="True"/>
-            <Setter Property="Cursor" Value="Hand"/>
-        </Style>
-        <Style x:Key="Content.Panel" TargetType="StackPanel">            
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20"/>            
-        </Style>        
+            <Setter Property="Cursor" Value="Hand"/>            
+        </Style>              
         <Style x:Key="Name.TextBlock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="0, 0, 20, 0"/>
@@ -35,8 +30,10 @@
             <Setter Property="FontSize" Value="18"/>            
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="Margin" Value="20, 0, 20, 0"/>
         </Style>        
-        <Style TargetType="local:LinkBar">            
+        <Style TargetType="local:LinkBar">
+            <Setter Property="Height" Value="62"/>
             <Setter Property="Template">                
                 <Setter.Value>
                     <ControlTemplate TargetType="local:LinkBar">
@@ -44,17 +41,13 @@
                             <TextBlock Style="{StaticResource Name.TextBlock}"
                                        Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                            <StackPanel Style="{StaticResource Wrapper.Panel}"
-                                        MouseLeftButtonDown="LinkBar_MouseLeftButtonDown">
-                                <StackPanel x:Name="ContentPanel"
-                                            Style="{StaticResource Content.Panel}">
+                            <Grid Style="{StaticResource Wrapper.Grid}"
+                                        MouseLeftButtonDown="LinkBar_MouseLeftButtonDown">                               
                                 
                                 <TextBlock x:Name="LinkTextBlock" 
                                            Style="{StaticResource Link.TextBlock}"
-                                           Text="{Binding Path=Link, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                
-                                </StackPanel>
-                            </StackPanel>                            
+                                           Text="{Binding Path=Link, RelativeSource={RelativeSource TemplatedParent}}"/>                                                              
+                            </Grid>                            
                         </StackPanel>
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">

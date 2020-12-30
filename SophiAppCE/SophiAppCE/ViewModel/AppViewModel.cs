@@ -9,43 +9,34 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Localizzation = SophiAppCE.Common.Localization;
 
 namespace SophiAppCE.ViewModel
 {
     class AppViewModel : INotifyPropertyChanged
-    {
-        private readonly Dictionary<Language, ResourceDictionary> LocalizedDictionaries = new Dictionary<Language, ResourceDictionary>()
-        {
-            { Language.EN, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute)} },
-            { Language.RU, new ResourceDictionary() { Source = new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute)} }
-        };
-
+    {        
         private RelayCommand selectAllCommand;
         private RelayCommand controlClickedCommand;
         private RelayCommand changePageCommand;
         private RelayCommand applyAllCommand;
+        private RelayCommand changeLanguageCommand;
 
-        private Language currentLanguage;
+        private Localizzation Localizzation = new Localizzation();
         private UInt16 activeControlsCounter = default(UInt16);
         private string activePage = Tags.Privacy;
         private string nowAppliedText = string.Empty;
 
-        public ObservableCollection<ControlModel> ControlsModelsCollection { get; set; }
+        public List<ControlModel> ControlsModelsCollection { get; set; }
 
         public AppViewModel()
         {            
-            ControlsModelsCollectionFilling();
-            SetLanguageTo(Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == nameof(Language.RU) 
-                                                                                                   ? Language.RU 
-                                                                                                   : Language.EN);
-        }
+            ControlsModelsCollectionFilling();            
+        }          
 
-        private void SetLanguageTo(Language language)
+        public LanguageFamily CurrentLanguage
         {
-            Application.Current.Resources.MergedDictionaries.Add(LocalizedDictionaries[language]);
-            ControlsModelsCollection.ToList().ForEach(c => c.ChangeLanguageTo(language));
-            currentLanguage = language;
-        }
+            get => Localizzation.Current;            
+        }        
 
         public UInt16 ActiveControlsCounter
         {           
@@ -88,8 +79,8 @@ namespace SophiAppCE.ViewModel
         private void ControlsModelsCollectionFilling()
         {
             IEnumerable<JsonData> jsons = Parser.ParseJson();
-            IEnumerable<ControlModel> models = ControlsFabric.Create(jsonData: jsons);
-            ControlsModelsCollection = new ObservableCollection<ControlModel>(models);
+            IEnumerable<ControlModel> models = ControlsFabric.CreateAll(jsonData: jsons, language: Localizzation.Current);
+            ControlsModelsCollection = new List<ControlModel>(models);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -97,6 +88,19 @@ namespace SophiAppCE.ViewModel
         private void OnPropertyChanged(string propertyChanged)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
+        }
+
+        public RelayCommand ChangeLanguageCommand => changeLanguageCommand ?? new RelayCommand(ChangeLanguage);
+
+        private void ChangeLanguage(object args)
+        {
+            Localizzation.Change(callBack: ChangeLanguageCallback);
+        }
+
+        private void ChangeLanguageCallback()
+        {
+            ControlsModelsCollection.ForEach(c => c.ChangeLanguageTo(CurrentLanguage));
+            OnPropertyChanged("CurrentLanguage");
         }
 
         public RelayCommand ApplyAllCommand => applyAllCommand ?? new RelayCommand(ApplyAll);        
@@ -107,11 +111,10 @@ namespace SophiAppCE.ViewModel
 
         public RelayCommand ChangePageCommand => changePageCommand ?? new RelayCommand(ChangePage);
 
-        private async void ApplyAll(object obj)
+        private async void ApplyAll(object args)
         {
             List<ControlModel> selectedModel = ControlsModelsCollection.Where(m => m.IsChanged == true).ToList();
-            await ApplySettingsAsync(selectedModel);
-                                    
+            await ApplySettingsAsync(selectedModel);                                    
         }
 
         private async Task ApplySettingsAsync(List<ControlModel> controlsModels)

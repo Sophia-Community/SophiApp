@@ -23,10 +23,13 @@ namespace SophiAppCE.Controls
     public partial class Switch : UserControl, ICommandSource
     {
         private bool animationFinished = true;
+        private Thickness marginLeft = (Thickness)Application.Current.TryFindResource("Margin.Switch.Ellipse.Left");
+        private Thickness marginRight = (Thickness)Application.Current.TryFindResource("Margin.Switch.Ellipse.Right");
+        
         public Switch()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();         
+        }       
 
         private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {   
@@ -35,8 +38,6 @@ namespace SophiAppCE.Controls
                 animationFinished = false;
                 ActualState = !ActualState;
                 Ellipse ellipse = GetTemplateChild("SwitchEllipse") as Ellipse;
-                Thickness marginLeft = (Thickness)Application.Current.TryFindResource("Margin.Switch.Ellipse.Left");
-                Thickness marginRight = (Thickness)Application.Current.TryFindResource("Margin.Switch.Ellipse.Right");
                 Animator.ShowThicknessAnimation(storyboardName: "Animation.Switch.Click", element: ellipse, from: ellipse.Margin,
                                                 to: ellipse.Margin == marginLeft ? marginRight : marginLeft, isComplited: OnAnimationFinished);
                 ExecuteCommand();

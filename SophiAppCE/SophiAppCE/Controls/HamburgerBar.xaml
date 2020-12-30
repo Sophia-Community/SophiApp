@@ -12,8 +12,8 @@
              ButtonBase.Click="Button_Click">
     
     <UserControl.Resources>        
-        <converters:ApplyAllVisibilityConverter x:Key="ApplyAllButtonVisibilityConverter"/>        
-        <Style TargetType="local:HamburgerBar">           
+        <converters:ApplyAllVisibilityConverter x:Key="ApplyAllButtonVisibilityConverter"/>
+        <Style TargetType="local:HamburgerBar">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:HamburgerBar">                       

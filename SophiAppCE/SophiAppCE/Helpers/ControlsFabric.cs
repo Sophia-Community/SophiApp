@@ -12,21 +12,26 @@ namespace SophiAppCE.Helpers
 {
     internal static class ControlsFabric
     {
-        internal static IEnumerable<ControlModel> Create(IEnumerable<JsonData> jsonData)
+        internal static IEnumerable<ControlModel> CreateAll(IEnumerable<JsonData> jsonData, LanguageFamily language)
         {
             foreach (JsonData json in jsonData)
             {
-                Dictionary<Language, string> localizedHeader = new Dictionary<Language, string> { { Language.RU, json.LocalizedHeader.RU }, { Language.EN, json.LocalizedHeader.EN } };
-                Dictionary<Language, string> localizedDescription = new Dictionary<Language, string> { { Language.RU, json.LocalizedDescription.RU }, { Language.EN, json.LocalizedDescription.EN } };
+                Dictionary<LanguageFamily, string> localizedHeader = new Dictionary<LanguageFamily, string> { { LanguageFamily.RU, json.LocalizedHeader.RU }, { LanguageFamily.EN, json.LocalizedHeader.EN } };
+                Dictionary<LanguageFamily, string> localizedDescription = new Dictionary<LanguageFamily, string> { { LanguageFamily.RU, json.LocalizedDescription.RU }, { LanguageFamily.EN, json.LocalizedDescription.EN } };
 
                 yield return new ControlModel
                 {
+                    //TODO: Одинаковые заголовки страниц !!!
+                    //HACK: Delete Before Release !!!
+
                     //Action = ControlModelActions.SetAction(json.Tag, json.Id),
                     Id = json.Id,
                     Tag = json.Tag,
                     Type = SetType(json.Type),
                     LocalizedHeader = localizedHeader,
-                    LocalizedDescription = localizedDescription,                    
+                    LocalizedDescription = localizedDescription,
+                    Header = localizedHeader[language],
+                    Description = localizedDescription[language]
                     //State = ControlModelStates.GetState(json.Id)
                 };
             }

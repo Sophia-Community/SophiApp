@@ -20,14 +20,7 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Margin" Value="46, 30, 0, 30"/>
             <Setter Property="Content" Value="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-        </Style>
-        <Style TargetType="Border">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SettingsTextBar.Border}"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Width" Value="{Binding Path=ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"/>
-        </Style>
+        </Style>        
         <Style TargetType="local:SettingsTextBar">
             <Setter Property="MinHeight" Value="122"/>
             <Setter Property="Template">
@@ -43,7 +36,8 @@
                                 </Canvas>
                             </Viewbox>
                             <ContentPresenter/>
-                            <Border/>
+                            <Border Style="{StaticResource SettingsBorderSharedStyle}"
+                                    Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

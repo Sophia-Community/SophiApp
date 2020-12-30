@@ -20,6 +20,7 @@
 
     <UserControl.Resources>        
         <converters:PageVisibilityConverter x:Key="VisibilityConverter"/>
+        <converters:ChangeLanguageConverter x:Key="LanguageConverter"/>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
@@ -85,9 +86,13 @@
                                         <ColumnDefinition Width="20"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="20"/>
-                                    </Grid.ColumnDefinitions>                                    
-                                    
-                                    <StackPanel Grid.Column="1">    
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="1">
+                                        
+                                        <Border Style="{StaticResource SettingsBorderSharedStyle}"
+                                                Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        
                                         <controls:SettingsTextBar Icon="{StaticResource Icon.GitHub}"
                                                                   IconHeight="26"
                                                                   IconWidth="26"
@@ -96,20 +101,14 @@
                                             <controls:LinkBar Text="GitHub" Link="https://github.com/farag2/SophiAppCE"/>
                                         </controls:SettingsTextBar>
                                         
-                                        <controls:SettingsTextBar Icon="{StaticResource Icon.Translate}"
-                                                                  IconHeight="26"
-                                                                  IconWidth="26"
-                                                                  IconVisibility="Visible">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{DynamicResource Localization.En}"/>
-                                                <controls:Switch Margin="20, 0, 20, 0"/>
-                                                <TextBlock Text="{DynamicResource Localization.Ru}"/>
-                                            </StackPanel>
+                                        <controls:SettingsTextBar Icon="{StaticResource Icon.Translate}" IconHeight="26"
+                                                                  IconWidth="26" IconVisibility="Visible">
+
+                                            <controls:TwoStateSwitch TextLeft="{DynamicResource Localization.En}"
+                                                                     TextRight="{DynamicResource Localization.Ru}"
+                                                                     State="{Binding CurrentLanguage, Converter={StaticResource LanguageConverter}}"
+                                                                     Command="{Binding ChangeLanguageCommand}"/>
                                         </controls:SettingsTextBar>
-                                        
-                                        
-                                        
-                                        
                                     </StackPanel>
                                 </Grid>
                             </ScrollViewer>

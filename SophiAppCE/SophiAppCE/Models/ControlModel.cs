@@ -73,9 +73,9 @@ namespace SophiAppCE.Models
 
         public ControlsType Type { get; set; }
 
-        public Dictionary<Language, string> LocalizedHeader { get; set; }
+        public Dictionary<LanguageFamily, string> LocalizedHeader { get; set; }
 
-        public Dictionary<Language, string> LocalizedDescription { get; set; }
+        public Dictionary<LanguageFamily, string> LocalizedDescription { get; set; }
 
         public void ChangeState()
         {
@@ -83,7 +83,7 @@ namespace SophiAppCE.Models
             IsChanged = !IsChanged;
         }
 
-        public void ChangeLanguageTo(Language language)
+        public void ChangeLanguageTo(LanguageFamily language)
         {
             Header = LocalizedHeader[language];
             Description = LocalizedDescription[language];

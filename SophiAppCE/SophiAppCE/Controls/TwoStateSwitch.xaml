@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="SophiAppCE.Controls.TwoStateSwitch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             mc:Ignorable="d"
+             SnapsToDevicePixels="True"
+             IsTabStop="False"
+             Focusable="False"
+             Background="Transparent"
+             Loaded="TwoStateSwitch_Loaded">
+
+    <UserControl.Resources>        
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Style>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 0, 10, 0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style TargetType="Border">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="{Binding Path=Fill, ElementName=SwitchEllipse}"/>
+            <Setter Property="Margin" Value="0, 0, 10, 0"/>
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Style>
+
+    <Style TargetType="Ellipse">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="StrokeThickness" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>        
+    </Style>
+
+    <Style TargetType="local:TwoStateSwitch">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TwoStateSwitch">
+                    <StackPanel Name="SwitchPanel">                        
+                        <TextBlock Text="{Binding Path=TextLeft, RelativeSource={RelativeSource TemplatedParent}}"/>                        
+                        <Border Name="SwitchBorder"
+                                MouseLeftButtonDown="TwoStateSwitch_MouseLeftButtonDown">
+                            <Ellipse Name="SwitchEllipse"/>
+                        </Border>
+                        <TextBlock Text="{Binding Path=TextRight, RelativeSource={RelativeSource TemplatedParent}}"/>                        
+                        </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="State" Value="False">                            
+                            <Setter TargetName="SwitchEllipse" Property="Fill" Value="{StaticResource Brush.SwitchBar.Ellipse.Unchecked}"/>                                
+                        </Trigger>
+                        <Trigger Property="State" Value="True">                            
+                            <Setter TargetName="SwitchEllipse" Property="Fill" Value="{StaticResource Brush.SwitchBar.Ellipse.Checked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    </UserControl.Resources>
+</UserControl>

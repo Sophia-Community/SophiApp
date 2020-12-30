@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="pack://application:,,,/General/Tags.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/Animations.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/General/Misc.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/General/SharedStyles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Controls/ScrollViewer.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

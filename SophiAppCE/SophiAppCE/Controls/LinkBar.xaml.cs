@@ -44,7 +44,7 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for Link.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LinkProperty =
-            DependencyProperty.Register("Link", typeof(string), typeof(LinkBar), new PropertyMetadata("https://www.yandex.ru"));
+            DependencyProperty.Register("Link", typeof(string), typeof(LinkBar), new PropertyMetadata("https://yandex.ru"));
 
         private void LinkBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

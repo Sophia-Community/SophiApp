@@ -39,7 +39,7 @@
             <controls:TitleBar Text="SophiApp Community Edition" Grid.Row="0"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="252"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerBar Grid.Column="0"/>

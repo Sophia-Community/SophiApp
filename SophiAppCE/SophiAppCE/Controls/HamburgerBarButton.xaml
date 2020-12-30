@@ -40,20 +40,29 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="local:HamburgerBarButton">
                         <StackPanel x:Name="WrapperPanel" Orientation="Horizontal" Background="{Binding TemplateBinding}">
+                            
                             <Border Width="3" Height="42" Background="{DynamicResource Brush.HamburgerBar.Marker.Background}"/>
+                            
                             <StackPanel x:Name="ContentPanel" Orientation="Horizontal">
+                                
                                 <Viewbox Width="24" Height="24" Margin="{Binding IconMargin, RelativeSource={RelativeSource TemplatedParent}}"
                                          VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    
                                     <Canvas Width="24" Height="24">
                                         <Path Data="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"
                                               Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </Canvas>
+                                    
                                 </Viewbox>
+                                
                                 <TextBlock Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
                                            VerticalAlignment="Center" HorizontalAlignment="Center" 
                                            Margin="{Binding TextMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                
                             </StackPanel>
+                            
                         </StackPanel>
+                        
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" SourceName="WrapperPanel" Value="True">
                                 <Setter TargetName="WrapperPanel" Property="Background" Value="{Binding Hover, RelativeSource={RelativeSource TemplatedParent}}"/>
