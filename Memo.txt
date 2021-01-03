@@ -1,3 +1,50 @@
+1) В Настройках добавить переключатель для включения расширенных (читай: специальных) функций. Например, "Расширенные функции".
+В разделе "Конфиденциальность" нет расширенных функций
+
+2) Функции, относящиеся к расширенным, будут (при включении последних) иметь приписку в рамке, что они относятся к особой группе "Расширенные"
+
+3) В разделе "Конфиденциальность" для следующих функциий сделать 2 радио-кнопки с приведенными ниже элементами (выпадающий список удобен лишь, когда много элементов):
+"Установить уровень сбора диагностических сведений ОС". Элементы: "Минимальный" и "По умолчанию"
+"Изменить частоту формирования отзывов". Элементы: "Никогда" и "Автоматически"
+
+Пример радио-кнопок: https://raw.githubusercontent.com/felixse/FluentTerminal/master/Screenshots/settings.png
+https://github.com/felixse/FluentTerminal
+
+4) Функцию: "Отключить поиск через Bing в меню "Пуск"" отображать только, если регион США
+PowerShell: (Get-WinHomeLocation).GeoId -eq 244
+			(Get-ItemPropertyValue -Path "HKCU:\Control Panel\International\Geo" -Name Nation) -eq 244
+
+C# (NetFramework 4.8): https://docs.microsoft.com/en-us/dotnet/api/system.globalization.regioninfo.geoid?view=netframework-4.8
+					   https://docs.microsoft.com/ru-ru/windows/win32/intl/table-of-geographical-locations (244)
+
+5) Выводить список задач из Планировщика задач списком как у меня в скрипте:
+https://github.com/farag2/Windows-10-Sophia-Script/blob/4a18d0c07e810bfb9f73b8b5f694b5a9c423d6ee/Sophia/Sophia.psm1#L360
+
+6) Около кнопки "Выделить все" написать "Выделить все"
+
+7) Сделать так, чтобы плитки функций равномерно заполняли полотно. Чтобы не было как в Tetris
+
+8) Кнопку "Настройки" поднять чуть вверх, чтобы был отступ снизу
+
+9) В заголовке окна указывать версию программы
+
+10) Справа от положения тумблера указывать словами его состояние: "Вкл." или "Откл."
+Пример: https://raw.githubusercontent.com/felixse/FluentTerminal/master/Screenshots/settings.png
+
+11) Сделать переход между разделами как у https://github.com/felixse/FluentTerminal
+Видео-пример (с привязкой ко времени): https://youtu.be/7uepqoXRohQ?t=295
+
+12) Добавить возможность копировать описание функции, нажав в контекстном меню рамки "Копировать"
+
+13) Функция для экспорта ico из файла. Понадобится в будущем
+https://gist.github.com/darkfall/1656050#gistcomment-1332369
+
+
+
+==============================================================================================================
+
+
+
 Эффект размытия фона окна - https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs
 
 Кастомный scrollviewer - http://codesdirectory.blogspot.com/2013/01/wpf-scrollviewer-control-style.html
