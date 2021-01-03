@@ -11,11 +11,16 @@
 https://github.com/felixse/FluentTerminal
 
 4) Функцию: "Отключить поиск через Bing в меню "Пуск"" отображать только, если регион США
-PowerShell: (Get-WinHomeLocation).GeoId -eq 244
-			(Get-ItemPropertyValue -Path "HKCU:\Control Panel\International\Geo" -Name Nation) -eq 244
+Powershell:
 
-C# (NetFramework 4.8): https://docs.microsoft.com/en-us/dotnet/api/system.globalization.regioninfo.geoid?view=netframework-4.8
-					   https://docs.microsoft.com/ru-ru/windows/win32/intl/table-of-geographical-locations (244)
+```powershell
+(Get-WinHomeLocation).GeoId -eq 244
+(Get-ItemPropertyValue -Path "HKCU:\Control Panel\International\Geo" -Name Nation) -eq 244
+```
+
+C# (NetFramework 4.8):
+* https://docs.microsoft.com/en-us/dotnet/api/system.globalization.regioninfo.geoid?view=netframework-4.8
+* https://docs.microsoft.com/ru-ru/windows/win32/intl/table-of-geographical-locations (244)
 
 5) Выводить список задач из Планировщика задач списком как у меня в скрипте:
 https://github.com/farag2/Windows-10-Sophia-Script/blob/4a18d0c07e810bfb9f73b8b5f694b5a9c423d6ee/Sophia/Sophia.psm1#L360
