@@ -39,7 +39,19 @@ https://github.com/farag2/Windows-10-Sophia-Script/blob/4a18d0c07e810bfb9f73b8b5
 13) Функция для экспорта ico из файла. Понадобится в будущем
 https://gist.github.com/darkfall/1656050#gistcomment-1332369
 
+```powershell
+Add-Type -AssemblyName System.Drawing
+[System.Drawing.Icon]::ExtractAssociatedIcon("C:\WINDOWS\system32\control.exe").ToBitmap().Save("C:\Desktop\1\1.ico")
 
+
+
+$Path = "C:\WINDOWS\system32\control.exe"
+$FileName = "C:\Desktop\1\1.ico"
+$Format = [System.Drawing.Imaging.ImageFormat]::Icon
+Add-Type -AssemblyName System.Drawing
+$Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($Path) | Add-Member -MemberType NoteProperty -Name FullName -Value $Path -PassThru
+$Icon.ToBitMap().Save($FileName,$Format)
+```
 
 ==============================================================================================================
 
