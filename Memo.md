@@ -16,10 +16,7 @@
 
 4. Функцию: "Отключить поиск через Bing в меню "Пуск"" отображать только, если регион США
 
-Powershell:
-
 ```powershell
-(Get-WinHomeLocation).GeoId -eq 244
 (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International\Geo" -Name Nation) -eq 244
 ```
 
