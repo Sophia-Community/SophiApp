@@ -15,6 +15,7 @@
 * <https://github.com/felixse/FluentTerminal>
 
 4. Функцию: "Отключить поиск через Bing в меню "Пуск"" отображать только, если регион США
+
 Powershell:
 
 ```powershell
