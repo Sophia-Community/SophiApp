@@ -63,6 +63,8 @@ $Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($Path) | Add-Member -Member
 $Icon.ToBitMap().Save($FileName,$Format)
 ```
 
+14. Не использовать ли тумблер переключения как в 10?..
+
 ==============================================================================================================
 
 Эффект размытия фона окна - <https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs>
