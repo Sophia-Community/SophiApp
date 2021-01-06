@@ -25,7 +25,11 @@ C# (NetFramework 4.8):
 * <https://docs.microsoft.com/en-us/dotnet/api/system.globalization.regioninfo.geoid?view=netframework-4.8>
 * <https://docs.microsoft.com/ru-ru/windows/win32/intl/table-of-geographical-locations> (244)
 
-5. Выводить список задач из Планировщика задач списком как у меня в скрипте: <https://github.com/farag2/Windows-10-Sophia-Script/blob/4a18d0c07e810bfb9f73b8b5f694b5a9c423d6ee/Sophia/Sophia.psm1#L360>
+5. Выводить список задач из Планировщика задач списком как у меня в скрипте
+
+<https://github.com/farag2/Windows-10-Sophia-Script/blob/4a18d0c07e810bfb9f73b8b5f694b5a9c423d6ee/Sophia/Sophia.psm1#L360>
+
+Использовать галочки для выделение элементов списка
 
 6. Около кнопки "Выделить все" написать "Выделить все"
 
@@ -64,22 +68,31 @@ $Icon.ToBitMap().Save($FileName,$Format)
 
 ==============================================================================================================
 
-Эффект размытия фона окна - <https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs>
+## Эффект размытия фона окна
 
-Кастомный scrollviewer - <http://codesdirectory.blogspot.com/2013/01/wpf-scrollviewer-control-style.html>
+<https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs>
 
-LoadingRing - <https://github.com/zeluisping/LoadingIndicators.WPF/blob/master/src/LoadingIndicators.WPF/Styles/LoadingRing.xaml>
+## Кастомный scrollviewer
 
-Работа с json:
+<http://codesdirectory.blogspot.com/2013/01/wpf-scrollviewer-control-style.html>
+
+## LoadingRing
+
+<https://github.com/zeluisping/LoadingIndicators.WPF/blob/master/src/LoadingIndicators.WPF/Styles/LoadingRing.xaml>
+
+## Работа с JSON
+
 <http://www.jsonutils.com/>
+
 <https://jsonformatter.org/json-pretty-print>
 
-Регулярные выражения:
+## Регулярные выражения
+
 <https://regex101.com/>
 
 <http://alexweinberger.com/main/pinning-network-program-taskbar-programmatically-windows-10/>
 
-# Получить номер билда
+## Получить номер билда
 
 [System.Environment]::OSVersion.Version.Build
 Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild
@@ -90,9 +103,12 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
 
 <https://help.steampowered.com/wizard/HelpWithPublishing?issueid=925>
 
-# Получить человеческие имена UWP-пакетов
+## Получить человеческие имена UWP-пакетов
 
 <https://pastebin.com/raw/nDN7M1Hk>
+
 <https://stackoverflow.com/questions/23331385/how-to-obtain-the-display-name-of-installed-metro-apps/23376722#23376722>
+
 <https://stackoverflow.com/questions/23331385/how-to-obtain-the-display-name-of-installed-metro-apps/37231613#37231613>
+
 <https://stackoverflow.com/questions/51480747/get-the-plain-end-user-readable-name-of-uwp-apps-installed-on-a-system/51484211#51484211>
