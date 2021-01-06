@@ -97,11 +97,7 @@ $Icon.ToBitMap().Save($FileName,$Format)
 [System.Environment]::OSVersion.Version.Build
 Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild
 
-Как будет выглядеть ошибка при отсутствии папки "Scripts" рядом с исполняемым файлом:
-<https://app.zeplin.io/project/5ee37e184f5880b7453b9ea8/screen/5ee3a8c1560275b83f11a13a>
-Вместо "Loading" можно написать "Отсутствуют необходимые файлы для запуска", а круг изменить на прямоугольник
-
-<https://help.steampowered.com/wizard/HelpWithPublishing?issueid=925>
+Как будет [выглядеть](https://app.zeplin.io/project/5ee37e184f5880b7453b9ea8/screen/5ee3a8c1560275b83f11a13a) ошибка при отсутствии папки "Scripts" рядом с исполняемым файлом. Вместо "Loading" можно написать "Отсутствуют необходимые файлы для запуска", а круг изменить на прямоугольник
 
 ## Получить человеческие имена UWP-пакетов
 
