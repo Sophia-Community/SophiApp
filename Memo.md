@@ -66,6 +66,16 @@ $Icon.ToBitMap().Save($FileName,$Format)
 
 14. Не использовать ли тумблер переключения как в 10?..
 
+15.
+
+```powershell
+# Light
+(Get-ItemPropertyValue -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme) -eq 1
+
+# Dark
+(Get-ItemPropertyValue -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme) -eq 0
+```
+
 ============================================================================================
 
 ## Эффект размытия фона окна
