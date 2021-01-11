@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04D98E32-9A8B-4410-A994-9665A951BFA1}</ProjectGuid>
+    <ProjectGuid>{9A8D7BD7-57A2-4598-947D-CEB5889150AD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SophiAppCE</RootNamespace>
     <AssemblyName>SophiAppCE</AssemblyName>
@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,8 +55,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,159 +73,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Actions\Privacy\100.cs" />
-    <Compile Include="Common\JsonData.cs" />
-    <Compile Include="Common\Language.cs" />
-    <Compile Include="Common\LanguageFamily.cs" />
-    <Compile Include="Common\Localization.cs" />
-    <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Controls\LinkBar.xaml.cs">
-      <DependentUpon>LinkBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SettingsTextBar.xaml.cs">
-      <DependentUpon>SettingsTextBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Switch.xaml.cs">
-      <DependentUpon>Switch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SwitchBar.xaml.cs">
-      <DependentUpon>SwitchBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleBarButtonMaximize.xaml.cs">
-      <DependentUpon>TitleBarButtonMaximize.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TwoStateSwitch.xaml.cs">
-      <DependentUpon>TwoStateSwitch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\ApplyAllVisibilityConverter.cs" />
-    <Compile Include="Converters\ChangeLanguageConverter.cs" />
-    <Compile Include="Converters\HamburgerBarMarkerVisibilityConverter.cs" />
-    <Compile Include="Converters\PageVisibilityConverter.cs" />
-    <Compile Include="Converters\SelectAllSwitchMultiBindingConverter.cs" />
-    <Compile Include="Converters\SwitchBarDescriptionVisibilityConverter.cs" />
-    <Compile Include="Helpers\Animator.cs" />
-    <Compile Include="Helpers\ControlModelActions.cs" />
-    <Compile Include="Helpers\ControlModelStates.cs" />
-    <Compile Include="Helpers\ControlsFabric.cs" />
-    <Compile Include="Helpers\ControlsType.cs" />
-    <Compile Include="Helpers\Parser.cs" />
-    <Compile Include="Helpers\Tags.cs" />
-    <Compile Include="Helpers\WinService.cs" />
-    <Compile Include="Interfaces\IAction.cs" />
-    <Compile Include="Models\ControlModel.cs" />
-    <Compile Include="ViewModel\AppViewModel.cs" />
-    <Compile Include="Views\PageApplyAllView.xaml.cs">
-      <DependentUpon>PageApplyAllView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageContextMenuView.xaml.cs">
-      <DependentUpon>PageContextMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageGameView.xaml.cs">
-      <DependentUpon>PageGameView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageOneDriveView.xaml.cs">
-      <DependentUpon>PageOneDriveView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PagePrivacyView.xaml.cs">
-      <DependentUpon>PagePrivacyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageSecurityView.xaml.cs">
-      <DependentUpon>PageSecurityView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageSettingsView.xaml.cs">
-      <DependentUpon>PageSettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageStartMenuView.xaml.cs">
-      <DependentUpon>PageStartMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageSystemView.xaml.cs">
-      <DependentUpon>PageSystemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageTaskShedulerView.xaml.cs">
-      <DependentUpon>PageTaskShedulerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageUiView.xaml.cs">
-      <DependentUpon>PageUiView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageUwpView.xaml.cs">
-      <DependentUpon>PageUwpView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Controls\HamburgerBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\HamburgerBarButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\LinkBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ScrollViewer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\SettingsTextBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Switch.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\SwitchBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleBarButtonMaximize.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleBarButtonMinimize.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TittleBarButtonClose.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TwoStateSwitch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="General\Animations.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="General\Icons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="General\Misc.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="General\SharedStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="General\Tags.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Localization\EN.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Localization\RU.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -221,74 +81,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\HamburgerBar.xaml.cs">
-      <DependentUpon>HamburgerBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\HamburgerBarButton.xaml.cs">
-      <DependentUpon>HamburgerBarButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleBar.xaml.cs">
-      <DependentUpon>TitleBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleBarButtonMinimize.xaml.cs">
-      <DependentUpon>TitleBarButtonMinimize.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TittleBarButtonClose.xaml.cs">
-      <DependentUpon>TittleBarButtonClose.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Themes\Fancy.xaml">
+    <Page Include="Styles\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageApplyAllView.xaml">
+    <Page Include="Themes\Dark.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageContextMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageGameView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageOneDriveView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PagePrivacyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageSecurityView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageSettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageStartMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageSystemView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageTaskShedulerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageUiView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageUwpView.xaml">
+    <Page Include="Themes\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,7 +117,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <Resource Include="Resources\ControlsData.json" />
     <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -321,6 +125,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,14 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>                
-                <ResourceDictionary Source="pack://application:,,,/Themes/Fancy.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/Icons.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/Tags.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/Animations.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/Misc.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/General/SharedStyles.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Controls/ScrollViewer.xaml"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

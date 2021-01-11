@@ -4,16 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SophiAppCE"
-        xmlns:controls="clr-namespace:SophiAppCE.Controls"        
-        xmlns:view="clr-namespace:SophiAppCE.Views"
-        xmlns:viewModel="clr-namespace:SophiAppCE.ViewModel"
         mc:Ignorable="d"
         Name="AppWindow"
         WindowStartupLocation="CenterScreen"                 
         WindowStyle="None"                
         AllowsTransparency="True"
-        Title="SophiApp Community Edition"
-        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType"
         SnapsToDevicePixels="True"
         ResizeMode="CanResize"
@@ -22,40 +18,13 @@
         Background="{DynamicResource Brush.Window.Background}"        
         MinHeight="730"
         MinWidth="1260">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewModel:AppViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
-    </WindowChrome.WindowChrome>    
-
-    <Border BorderBrush="{DynamicResource Brush.Window.Border.Background}"
-            BorderThickness="1">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <controls:TitleBar Text="SophiApp Community Edition" Grid.Row="0"/>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="252"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <controls:HamburgerBar Grid.Column="0"/>
-                <view:PagePrivacyView Grid.Column="1" Tag="{StaticResource Tag.Privacy}"/>
-                <view:PageUiView Grid.Column="1" Tag="{StaticResource Tag.Ui}"/>
-                <view:PageContextMenuView Grid.Column="1" Tag="{StaticResource Tag.ContextMenu}"/>
-                <view:PageStartMenuView Grid.Column="1" Tag="{StaticResource Tag.StartMenu}"/>
-                <view:PageSystemView Grid.Column="1" Tag="{StaticResource Tag.System}"/>
-                <view:PageTaskShedulerView Grid.Column="1" Tag="{StaticResource Tag.TaskSheduler}"/>
-                <view:PageSecurityView Grid.Column="1" Tag="{StaticResource Tag.Security}"/>
-                <view:PageGameView Grid.Column="1" Tag="{StaticResource Tag.Game}"/>
-                <view:PageUwpView Grid.Column="1" Tag="{StaticResource Tag.Uwp}"/>
-                <view:PageOneDriveView Grid.Column="1" Tag="{StaticResource Tag.OneDrive}"/>
-                <view:PageApplyAllView Grid.Column="1" Tag="{StaticResource Tag.ApplyAll}"/>
-                <view:PageSettingsView Grid.Column="1" Tag="{StaticResource Tag.Settings}"/>
-            </Grid>
-        </Grid>
-    </Border>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        
+    </Grid>
 </Window>
