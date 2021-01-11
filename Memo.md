@@ -79,7 +79,7 @@ $Icon.ToBitMap().Save($FileName,$Format)
 16.
 
 <https://pastebin.com/mKEFmnC1>
-
+<https://github.com/farag2/Utilities/blob/master/Windows%20Terminal/Settings.ps1>
 
 ============================================================================================
 
