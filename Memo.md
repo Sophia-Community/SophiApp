@@ -97,9 +97,8 @@ $Icon.ToBitMap().Save($FileName,$Format)
 
 ## Работа с JSON
 
-<http://www.jsonutils.com/>
-
-<https://jsonformatter.org/json-pretty-print>
+* <http://www.jsonutils.com/>
+* <https://jsonformatter.org/json-pretty-print>
 
 ## Регулярные выражения
 
