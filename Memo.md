@@ -76,6 +76,11 @@ $Icon.ToBitMap().Save($FileName,$Format)
 (Get-ItemPropertyValue -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme) -eq 0
 ```
 
+16.
+
+<https://pastebin.com/mKEFmnC1>
+
+
 ============================================================================================
 
 ## Эффект размытия фона окна
