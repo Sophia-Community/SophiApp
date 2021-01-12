@@ -3,24 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
+        xmlns:controls="clr-namespace:SophiAppCE.Controls"
         xmlns:local="clr-namespace:SophiAppCE"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Name="AppWindow"
-        WindowStartupLocation="CenterScreen"                 
-        WindowStyle="None"                
-        AllowsTransparency="True"
-        TextOptions.TextFormattingMode="Display"
-        TextOptions.TextRenderingMode="ClearType"
-        SnapsToDevicePixels="True"
-        ResizeMode="CanResize"
-        ShowInTaskbar="True"
-        Foreground="{DynamicResource Brush.Window.Foreground}"
-        Background="{DynamicResource Brush.Window.Background}"        
-        MinHeight="730"
-        MinWidth="1260">
-    <!--<Window.DataContext>
-        <viewModel:AppViewModel/>
-    </Window.DataContext>-->
+        Style="{DynamicResource SophiAppCE.MainWindow}">    
+    <Window.DataContext>
+        <viewModel:MainVM/>
+    </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
     </WindowChrome.WindowChrome>

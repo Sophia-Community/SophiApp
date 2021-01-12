@@ -1,6 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:SophiAppCE.Themes">
-    <SolidColorBrush x:Key="Brush.Window.Foreground">#404040</SolidColorBrush>
-    <SolidColorBrush x:Key="Brush.Window.Background">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="Window.Title.Close.Color">#e81123</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Foreground.Dark">#404040</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Foreground.Light">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Background">#ffffff</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color">#2d78d6</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color.Light1">#3091e2</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color.Light2">#5fafef</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color.Light3">#91c5f0</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color.Dark1">#1f5aa2</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color.Dark2">#123d70</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Color.Dark3">#0b2f56</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Glass.Color" Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}}"/>
 </ResourceDictionary>

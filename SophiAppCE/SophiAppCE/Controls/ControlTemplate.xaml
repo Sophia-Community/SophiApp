@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="SophiAppCE.Controls.ControlTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiAppCE.Controls"
+             mc:Ignorable="d" 
+             Background="Transparent"             
+             SnapsToDevicePixels="True"
+             IsTabStop="False"
+             Focusable="False">
+    <Grid>
+            
+    </Grid>
+</UserControl>
