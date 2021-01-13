@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              SnapsToDevicePixels="True"
              IsTabStop="False"
-             Focusable="False">
+             Focusable="False"
+             MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
     
     <UserControl.Resources>
         <Style TargetType="Viewbox">
@@ -17,14 +18,13 @@
             <Setter Property="Height" Value="16"/>
             <Setter Property="Margin" Value="0, 0, 5, 5"/>            
         </Style>
-
         <Style TargetType="local:TitleButtonClose">
             <Setter Property="Width" Value="45"/>
             <Setter Property="Height" Value="30"/>            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:TitleButtonClose">
-                        <Grid x:Name="GridContent" Background="{TemplateBinding Background}">
+                        <Grid x:Name="GridContent">
                             <Viewbox>
                                 <Path x:Name="PathIcon" Data="{StaticResource Icon.Title.Close}"/>
                             </Viewbox>
@@ -32,11 +32,11 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Window.Title.Close.Color}"/>
-                                <Setter TargetName="PathIcon" Property="Fill" Value="{DynamicResource System.Foreground.Light}"/>
+                                <Setter TargetName="PathIcon" Property="Fill" Value="{DynamicResource System.Foreground.Light.Color}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="False">
-                                <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource System.Background}"/>
-                                <Setter TargetName="PathIcon" Property="Fill" Value="{DynamicResource System.Foreground.Dark}"/>
+                                <Setter TargetName="GridContent" Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                <Setter TargetName="PathIcon" Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Window}}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SophiAppCE.Controls
+namespace SophiAppCE.Views
 {
     /// <summary>
-    /// Логика взаимодействия для TitleButtonClose.xaml
+    /// Логика взаимодействия для StatusPageStartView.xaml
     /// </summary>
-    public partial class TitleButtonClose : UserControl
+    public partial class StatusPageStartView : UserControl
     {
-        public TitleButtonClose()
+        public StatusPageStartView()
         {
             InitializeComponent();
-        }
-
-        private void TitleButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Application.Current.MainWindow.Close();
         }
     }
 }

@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles/Styles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Commons/Icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

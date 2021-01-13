@@ -73,15 +73,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\Tags.cs" />
     <Compile Include="Controls\ControlTemplate.xaml.cs">
       <DependentUpon>ControlTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TitleButtonClose.xaml.cs">
       <DependentUpon>TitleButtonClose.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StatusPageVisibilityConverter.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
+    <Compile Include="Views\StatusPageContentView.xaml.cs">
+      <DependentUpon>StatusPageContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusPageStartView.xaml.cs">
+      <DependentUpon>StatusPageStartView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Commons\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commons\Tags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +126,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusPageContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusPageStartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

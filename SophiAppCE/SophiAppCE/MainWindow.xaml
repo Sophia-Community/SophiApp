@@ -4,19 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
+        xmlns:views="clr-namespace:SophiAppCE.Views"
         xmlns:controls="clr-namespace:SophiAppCE.Controls"
         xmlns:local="clr-namespace:SophiAppCE"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Name="AppWindow"
-        Style="{DynamicResource SophiAppCE.MainWindow}">    
+        Style="{StaticResource MainWindow.Style}">    
     <Window.DataContext>
         <viewModel:MainVM/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
-    </WindowChrome.WindowChrome>
-    <Grid>
-        
-    </Grid>
+    </WindowChrome.WindowChrome>    
+    <Border Style="{StaticResource MainWindow.Border.Style}">
+        <Grid ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>            
+            <views:StatusPageStartView x:Name="StatusPageStart" Grid.Row="1"/>
+            <views:StatusPageContentView x:Name="StatusPageContent" Grid.Row="1"/>
+        </Grid>
+    </Border>
 </Window>
