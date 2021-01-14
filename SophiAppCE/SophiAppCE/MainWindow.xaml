@@ -10,21 +10,23 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Name="AppWindow"
-        Style="{StaticResource MainWindow.Style}">    
+        Style="{StaticResource MainWindow.Style}">
     <Window.DataContext>
         <viewModel:MainVM/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3"/>
+        <WindowChrome CaptionHeight="30" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>    
     <Border Style="{StaticResource MainWindow.Border.Style}">
         <Grid ShowGridLines="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>            
+            </Grid.RowDefinitions>
+            
             <views:StatusPageStartView x:Name="StatusPageStart" Grid.Row="1"/>
             <views:StatusPageContentView x:Name="StatusPageContent" Grid.Row="1"/>
+            <views:StatusPageFinish x:Name="StatusPageFinish" Grid.Row="1"/>
         </Grid>
     </Border>
 </Window>

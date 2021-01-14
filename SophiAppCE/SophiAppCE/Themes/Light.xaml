@@ -6,6 +6,8 @@
     <SolidColorBrush x:Key="System.Foreground.Light.Color">#ffffff</SolidColorBrush>
     <SolidColorBrush x:Key="System.Background.Color">#ffffff</SolidColorBrush>
     <SolidColorBrush x:Key="System.Accent.Color">#2d78d6</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Disabled.Color">#c2c2c2</SolidColorBrush>
+    <SolidColorBrush x:Key="System.Accent.Disabled.Text.Color">#7d7d7d</SolidColorBrush>
     <SolidColorBrush x:Key="System.Accent.Light1.Color">#3091e2</SolidColorBrush>
     <SolidColorBrush x:Key="System.Accent.Light2.Color">#5fafef</SolidColorBrush>
     <SolidColorBrush x:Key="System.Accent.Light3.Color">#91c5f0</SolidColorBrush>

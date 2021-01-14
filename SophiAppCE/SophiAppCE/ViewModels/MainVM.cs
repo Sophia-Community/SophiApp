@@ -14,6 +14,25 @@ namespace SophiAppCE.ViewModels
     class MainVM : INotifyPropertyChanged
     {
         private byte statusPagesVisibility = Tags.StatusPageStart;
+        private bool mainWindowAllowClosing = true;
+
+        /// <summary>
+        /// Determines whether the window can be closed with the close button
+        /// </summary>
+        public bool MainWindowAllowClosing
+        {
+            get => mainWindowAllowClosing;
+            private set
+            {
+                mainWindowAllowClosing = value;
+                OnPropertyChanged("MainWindowAllowClosing");
+            }
+        }
+
+        /// <summary>
+        /// Program name and version, first 5 characters only
+        /// </summary>
+        public string AppTitle { get => AppHelper.GetFullName(); }
 
         /// <summary>
         /// Defines the currently visible status page
@@ -30,11 +49,20 @@ namespace SophiAppCE.ViewModels
 
         public MainVM()
         {
-            
+            Application.Current.MainWindow.ContentRendered += MainWindow_ContentRendered;
         }
 
-        public string AppTitle { get => AppHelper.GetFullName(); }
+        /// <summary>
+        /// App logical entry point
+        /// </summary>        
+        private void MainWindow_ContentRendered(object sender, EventArgs e)
+        {
+            //HACK: Simulate data initialization
+            Thread.Sleep(5000);
+            StatusPagesVisibility = Tags.StatusPageContent;
 
+        }                
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyChanged)

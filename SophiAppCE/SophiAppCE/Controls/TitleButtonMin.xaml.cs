@@ -1,5 +1,4 @@
-﻿using SophiAppCE.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SophiAppCE
+namespace SophiAppCE.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для TitleButtonMin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TitleButtonMin : UserControl
     {
-        public MainWindow()
+        public TitleButtonMin()
         {
             InitializeComponent();
-        }        
+        }
+
+        private void TitleButtonMin_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
     }
 }

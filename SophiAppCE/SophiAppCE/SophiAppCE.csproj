@@ -80,11 +80,20 @@
     <Compile Include="Controls\TitleButtonClose.xaml.cs">
       <DependentUpon>TitleButtonClose.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TitleButtonMax.xaml.cs">
+      <DependentUpon>TitleButtonMax.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TitleButtonMin.xaml.cs">
+      <DependentUpon>TitleButtonMin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\StatusPageVisibilityConverter.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="Views\StatusPageContentView.xaml.cs">
       <DependentUpon>StatusPageContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusPageFinish.xaml.cs">
+      <DependentUpon>StatusPageFinish.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StatusPageStartView.xaml.cs">
       <DependentUpon>StatusPageStartView.xaml</DependentUpon>
@@ -102,6 +111,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\TitleButtonClose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TitleButtonMax.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TitleButtonMin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StatusPageContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusPageFinish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

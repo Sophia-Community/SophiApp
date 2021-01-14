@@ -33,6 +33,15 @@
                 <Setter Property="FontStretch" Value="Normal"/>
                 <Setter Property="FontStyle" Value="Normal"/>
             </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Visibility, ElementName=StatusPageFinish}" Value="Visible">
+                <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Light.Color}"/>
+                <Setter Property="Background" Value="{DynamicResource System.Accent.Color}"/>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="FontStretch" Value="Normal"/>
+                <Setter Property="FontStyle" Value="Normal"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>        
     <Style x:Key="MainWindow.Border.Style" TargetType="{x:Type Border}">

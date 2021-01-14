@@ -1,16 +1,16 @@
-﻿<UserControl x:Class="SophiAppCE.Views.StatusPageStartView"
+﻿<UserControl x:Class="SophiAppCE.Views.StatusPageFinish"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SophiAppCE.Views"
+             xmlns:local="clr-namespace:SophiAppCE.Views"             
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
              mc:Ignorable="d">
-    
+
     <UserControl.Resources>
         <converters:StatusPageVisibilityConverter x:Key="VisibilityConverter"/>
-        <Style TargetType="local:StatusPageStartView">
-            <Setter Property="Tag" Value="{StaticResource Tag.StatusPageStart}"/>
+        <Style TargetType="local:StatusPageFinish">
+            <Setter Property="Tag" Value="{StaticResource Tag.StatusPageFinish}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource VisibilityConverter}">
@@ -21,16 +21,16 @@
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:StatusPageStartView">
+                    <ControlTemplate TargetType="local:StatusPageFinish">
                         <Grid>
-                            <TextBlock Text="Start page gag"
+                            <TextBlock Text="Finish page gag"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Margin="10"/>
-                        </Grid>                        
+                        </Grid>
                     </ControlTemplate>
-                </Setter.Value>                
+                </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>    
+    </UserControl.Resources>
 </UserControl>
