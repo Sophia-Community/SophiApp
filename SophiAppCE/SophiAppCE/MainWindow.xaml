@@ -12,21 +12,21 @@
         Name="AppWindow"
         Style="{StaticResource MainWindow.Style}">
     <Window.DataContext>
-        <viewModel:MainVM/>
+        <viewModel:MainVM />
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="30" ResizeBorderThickness="5"/>
-    </WindowChrome.WindowChrome>    
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
     <Border Style="{StaticResource MainWindow.Border.Style}">
-        <Grid ShowGridLines="True">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
-            <views:StatusPageStartView x:Name="StatusPageStart" Grid.Row="1"/>
-            <views:StatusPageContentView x:Name="StatusPageContent" Grid.Row="1"/>
-            <views:StatusPageFinish x:Name="StatusPageFinish" Grid.Row="1"/>
+            <controls:TitleBar Grid.Row="0" Text="{Binding AppTitle}" />
+            <views:StatusPageStartView x:Name="StatusPageStart" Grid.Row="1" />
+            <views:StatusPageContentView x:Name="StatusPageContent" Grid.Row="1" />
+            <views:StatusPageFinish x:Name="StatusPageFinish" Grid.Row="1" />
         </Grid>
     </Border>
 </Window>

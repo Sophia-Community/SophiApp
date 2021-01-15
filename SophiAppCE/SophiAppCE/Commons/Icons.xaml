@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:SophiAppCE.Commons">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Geometry x:Key="Icon.Title.Close">M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z</Geometry>
     <Geometry x:Key="Icon.Title.Minimize">M20,14H4V10H20</Geometry>
     <Geometry x:Key="Icon.Title.Maximize">M4,4H20V20H4V4M6,8V18H18V8H6Z</Geometry>

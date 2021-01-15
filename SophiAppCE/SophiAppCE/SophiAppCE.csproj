@@ -77,6 +77,9 @@
     <Compile Include="Controls\ControlTemplate.xaml.cs">
       <DependentUpon>ControlTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TitleBar.xaml.cs">
+      <DependentUpon>TitleBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TitleButtonClose.xaml.cs">
       <DependentUpon>TitleButtonClose.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,7 @@
     <Compile Include="Controls\TitleButtonMin.xaml.cs">
       <DependentUpon>TitleButtonMin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\MainWindowCloseButtonIsEnabledConverter.cs" />
     <Compile Include="Converters\StatusPageVisibilityConverter.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
@@ -107,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ControlTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TitleBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

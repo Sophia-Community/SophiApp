@@ -1,33 +1,23 @@
 ﻿using SophiAppCE.Commons;
 using SophiAppCE.Helpers;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace SophiAppCE.ViewModels
 {
-    class MainVM : INotifyPropertyChanged
+    internal class MainVM : INotifyPropertyChanged
     {
         private byte statusPagesVisibility = Tags.StatusPageStart;
-        private bool mainWindowAllowClosing = true;
 
-        /// <summary>
-        /// Determines whether the window can be closed with the close button
-        /// </summary>
-        public bool MainWindowAllowClosing
+        public MainVM()
         {
-            get => mainWindowAllowClosing;
-            private set
-            {
-                mainWindowAllowClosing = value;
-                OnPropertyChanged("MainWindowAllowClosing");
-            }
+            Application.Current.MainWindow.ContentRendered += MainWindow_ContentRendered;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Program name and version, first 5 characters only
@@ -47,23 +37,24 @@ namespace SophiAppCE.ViewModels
             }
         }
 
-        public MainVM()
+        //HACK: Simulate data initialization
+        private async Task DataInitializationAsync()
         {
-            Application.Current.MainWindow.ContentRendered += MainWindow_ContentRendered;
+            await Task.Run(async () =>
+            {
+                Thread.Sleep(5000);
+                StatusPagesVisibility = Tags.StatusPageContent;
+            });
         }
 
         /// <summary>
         /// App logical entry point
-        /// </summary>        
+        /// </summary>
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
             //HACK: Simulate data initialization
-            Thread.Sleep(5000);
-            StatusPagesVisibility = Tags.StatusPageContent;
-
-        }                
-        
-        public event PropertyChangedEventHandler PropertyChanged;
+            DataInitializationAsync();
+        }
 
         private void OnPropertyChanged(string propertyChanged)
         {
