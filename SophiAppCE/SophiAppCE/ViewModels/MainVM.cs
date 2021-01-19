@@ -41,7 +41,7 @@ namespace SophiAppCE.ViewModels
         private async Task DataInitializationAsync()
         {
             await Task.Run(async () =>
-            {
+            {                
                 Thread.Sleep(5000);
                 StatusPagesVisibility = Tags.StatusPageContent;
             });
@@ -53,7 +53,7 @@ namespace SophiAppCE.ViewModels
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
             //HACK: Simulate data initialization
-            DataInitializationAsync();
+            //DataInitializationAsync();
         }
 
         private void OnPropertyChanged(string propertyChanged)

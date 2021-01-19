@@ -14,11 +14,11 @@
         <Setter Property="Width" Value="1260" />
         <Setter Property="Title" Value="{Binding AppTitle}" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=Visibility, ElementName=StatusPageStart}" Value="Visible">
+            <DataTrigger Binding="{Binding Path=Visibility, ElementName=StatusPageStart}" Value="Visible">                
                 <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Light.Color}" />
                 <Setter Property="Background" Value="{DynamicResource System.Accent.Color}" />
                 <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto" />
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontSize" Value="26" />
                 <Setter Property="FontWeight" Value="Normal" />
                 <Setter Property="FontStretch" Value="Normal" />
                 <Setter Property="FontStyle" Value="Normal" />
