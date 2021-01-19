@@ -244,8 +244,8 @@
                  {
                      "Id":  201,
                      "LocalizedHeader":  {
-                                             "RU":  "Не использовать флажки для выбора элементов",
-                                             "EN":  "Do not use check boxes to select items"
+                                             "RU":  "Флажки для выбора элементов",
+                                             "EN":  "Check boxes to select items"
                                          },
                      "LocalizedDescription":  {
                                                   "RU":  "",
