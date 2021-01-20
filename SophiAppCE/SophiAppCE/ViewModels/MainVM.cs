@@ -11,6 +11,9 @@ namespace SophiAppCE.ViewModels
     internal class MainVM : INotifyPropertyChanged
     {
         private byte statusPagesVisibility = Tags.StatusPageStart;
+        private AppLocalization appLocalization = new AppLocalization();
+        private bool statusPageIsBusy = false;
+        private string statusPageText = string.Empty;
 
         public MainVM()
         {
@@ -23,6 +26,46 @@ namespace SophiAppCE.ViewModels
         /// Program name and version, first 5 characters only
         /// </summary>
         public string AppTitle { get => AppHelper.GetFullName(); }
+        
+        /// <summary>
+        /// Current App language
+        /// </summary>
+        public LanguageName AppLocalization
+        {
+            get => appLocalization.Language;
+            private set
+            {
+                appLocalization.Language = value;
+                OnPropertyChanged("AppLocalization");
+            }
+
+        }
+
+        /// <summary>
+        /// Defines the visibility of the ProgressBar on the page
+        /// </summary>
+        public bool StatusPageIsBusy
+        {
+            get => statusPageIsBusy;
+            private set
+            {
+                statusPageIsBusy = value;
+                OnPropertyChanged("StatusPageIsBusy");
+            }
+        }
+        
+        /// <summary>
+        /// Defines the text on the status page
+        /// </summary>
+        public string StatusPageText
+        {
+            get => statusPageText;
+            private set
+            {
+                statusPageText = value;
+                OnPropertyChanged("StatusPageText");
+            }
+        }
 
         /// <summary>
         /// Defines the currently visible status page

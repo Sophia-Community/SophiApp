@@ -83,13 +83,13 @@ $Icon.ToBitMap().Save($FileName,$Format)
 
 ============================================================================================
 
-## Эффект размытия фона окна
-
-<https://github.com/asm512/blurry-background-WPF/blob/master/src/BlurryWPFBackground/MainWindow.xaml.cs>
-
 ## Кастомный scrollviewer
 
 <http://codesdirectory.blogspot.com/2013/01/wpf-scrollviewer-control-style.html>
+
+## Кастомный dots line progress bar
+
+<https://www.jeff.wilcox.name/2010/08/performanceprogressbar/>
 
 ## LoadingRing
 

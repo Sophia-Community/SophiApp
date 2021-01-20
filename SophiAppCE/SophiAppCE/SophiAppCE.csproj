@@ -92,9 +92,12 @@
     <Compile Include="Controls\TitleButtonMin.xaml.cs">
       <DependentUpon>TitleButtonMin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\MainWindowCloseButtonIsEnabledConverter.cs" />
     <Compile Include="Converters\StatusPageVisibilityConverter.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
+    <Compile Include="Helpers\AppLocalization.cs" />
+    <Compile Include="Helpers\LanguageName.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="Views\StatusPageContentView.xaml.cs">
       <DependentUpon>StatusPageContentView.xaml</DependentUpon>
@@ -134,6 +137,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\TitleButtonMin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Localization\EN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Localization\RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

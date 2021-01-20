@@ -9,16 +9,23 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:StatusPageVisibilityConverter x:Key="VisibilityConverter" />
+        <converters:StatusPageVisibilityConverter x:Key="PageVisibilityConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="ProgressBarVisibilityConverter"/>
         <Style TargetType="StackPanel">
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>            
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0, 10, 0, 10"/>
         </Style>
         <Style TargetType="local:StatusPageStartView">
             <Setter Property="Tag" Value="{StaticResource Tag.StatusPageStart}" />
             <Setter Property="Visibility">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource VisibilityConverter}">
+                    <MultiBinding Converter="{StaticResource PageVisibilityConverter}">
                         <Binding Path="StatusPagesVisibility" UpdateSourceTrigger="PropertyChanged" />
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
@@ -29,9 +36,8 @@
                     <ControlTemplate TargetType="local:StatusPageStartView">
                         <Grid>
                             <StackPanel>
-                                <control:ProgressBarDotsLine Margin="20" />
-                                <TextBlock Text="Start page gag" VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
+                                <control:ProgressBarDotsLine Margin="0, 10, 0, 10" Visibility="{Binding StatusPageIsBusy, Converter={StaticResource ProgressBarVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="{Binding StatusPageText, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
                         </Grid>
                     </ControlTemplate>
