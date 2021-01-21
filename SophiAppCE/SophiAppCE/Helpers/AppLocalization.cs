@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SophiAppCE.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,11 @@ namespace SophiAppCE.Helpers
     {
         private readonly Dictionary<LanguageName, Uri> languagesUri = new Dictionary<LanguageName, Uri>()
         {
-            { LanguageName.RU, new Uri("pack://application:,,,/Localization/RU.xaml", UriKind.Absolute) },
-            { LanguageName.EN, new Uri("pack://application:,,,/Localization/EN.xaml", UriKind.Absolute) }
+            { LanguageName.RU, new Uri(Tags.LocalizationUriRU, UriKind.Absolute) },
+            { LanguageName.EN, new Uri(Tags.LocalizationUriEN, UriKind.Absolute) }
         };
 
         private LanguageName appLocalization;
-
 
         public AppLocalization()
         {
@@ -35,7 +35,11 @@ namespace SophiAppCE.Helpers
                 appLocalization = LanguageName.EN;
             }
 
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = languagesUri[appLocalization] });
+            if (appLocalization != LanguageName.RU)
+            {
+                ResourceDictionary localization = Application.Current.Resources.MergedDictionaries.Where(d => d.Source.AbsoluteUri == Tags.LocalizationUriRU).First();
+                localization.Source = languagesUri[appLocalization];
+            }            
         }
 
         private void SetLanguage(LanguageName language)

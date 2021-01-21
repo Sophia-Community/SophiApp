@@ -17,4 +17,7 @@
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.En">English</system:String>
     <system:String x:Key="Localization.Ru">Русский</system:String>
+    
+    <system:String x:Key="Localization.Test.WinVer.Text">Проверка версии Windows</system:String>
+    <system:String x:Key="Localization.Test.WinVer.Error">К сожалению, эта версия Windows не поддерживается</system:String>
 </ResourceDictionary>

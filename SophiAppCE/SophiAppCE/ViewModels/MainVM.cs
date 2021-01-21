@@ -1,10 +1,12 @@
 ﻿using SophiAppCE.Commons;
+using SophiAppCE.EventsArgs;
 using SophiAppCE.Helpers;
 using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace SophiAppCE.ViewModels
 {
@@ -12,8 +14,14 @@ namespace SophiAppCE.ViewModels
     {
         private byte statusPagesVisibility = Tags.StatusPageStart;
         private AppLocalization appLocalization = new AppLocalization();
-        private bool statusPageIsBusy = false;
-        private string statusPageText = string.Empty;
+        private bool statusPageStartIsBusy = false;
+        private string statusPageStartText = string.Empty;
+        private RequirementsHelper requirementHelper = new RequirementsHelper();
+
+        private void OnResultTextChanged(object sender, TestsResultEventArgs e)
+        {
+            StatusPageStartText = e.Text;
+        }
 
         public MainVM()
         {
@@ -42,28 +50,28 @@ namespace SophiAppCE.ViewModels
         }
 
         /// <summary>
-        /// Defines the visibility of the ProgressBar on the page
+        /// Defines the visibility of the ProgressBar on the Start page
         /// </summary>
-        public bool StatusPageIsBusy
+        public bool StatusPageStartIsBusy
         {
-            get => statusPageIsBusy;
+            get => statusPageStartIsBusy;
             private set
             {
-                statusPageIsBusy = value;
-                OnPropertyChanged("StatusPageIsBusy");
+                statusPageStartIsBusy = value;
+                OnPropertyChanged("StatusPageStartIsBusy");
             }
         }
         
         /// <summary>
-        /// Defines the text on the status page
+        /// Defines the text on the Start page
         /// </summary>
-        public string StatusPageText
+        public string StatusPageStartText
         {
-            get => statusPageText;
+            get => statusPageStartText;
             private set
             {
-                statusPageText = value;
-                OnPropertyChanged("StatusPageText");
+                statusPageStartText = value;
+                OnPropertyChanged("StatusPageStartText");
             }
         }
 
@@ -79,15 +87,22 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("StatusPagesVisibility");
             }
         }
-
-        //HACK: Simulate data initialization
+                
         private async Task DataInitializationAsync()
         {
-            await Task.Run(async () =>
+            Mouse.OverrideCursor = Cursors.Wait;
+
+            await Task.Run(() =>
             {                
-                Thread.Sleep(5000);
-                StatusPagesVisibility = Tags.StatusPageContent;
+                StatusPageStartIsBusy = true;
+                requirementHelper.ResultTextChanged += OnResultTextChanged;
+                requirementHelper.TestsRun();                
+                StatusPageStartIsBusy = false;
+
+                if (requirementHelper.TestsResult) StatusPagesVisibility = Tags.StatusPageContent;
             });
+
+            Mouse.OverrideCursor = null;
         }
 
         /// <summary>
@@ -95,8 +110,7 @@ namespace SophiAppCE.ViewModels
         /// </summary>
         private void MainWindow_ContentRendered(object sender, EventArgs e)
         {
-            //HACK: Simulate data initialization
-            //DataInitializationAsync();
+            DataInitializationAsync();
         }
 
         private void OnPropertyChanged(string propertyChanged)

@@ -5,10 +5,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Styles/Styles.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Commons/Icons.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Commons/Icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Localization/RU.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

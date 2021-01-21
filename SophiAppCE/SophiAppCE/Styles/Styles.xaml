@@ -18,7 +18,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Light.Color}" />
                 <Setter Property="Background" Value="{DynamicResource System.Accent.Color}" />
                 <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto" />
-                <Setter Property="FontSize" Value="26" />
+                <Setter Property="FontSize" Value="22" />
                 <Setter Property="FontWeight" Value="Normal" />
                 <Setter Property="FontStretch" Value="Normal" />
                 <Setter Property="FontStyle" Value="Normal" />

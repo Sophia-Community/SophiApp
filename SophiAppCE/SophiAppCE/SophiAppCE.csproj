@@ -73,6 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\Constants.cs" />
+    <Compile Include="Commons\Localization.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Controls\ControlTemplate.xaml.cs">
       <DependentUpon>ControlTemplate.xaml</DependentUpon>
@@ -95,9 +97,13 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\MainWindowCloseButtonIsEnabledConverter.cs" />
     <Compile Include="Converters\StatusPageVisibilityConverter.cs" />
+    <Compile Include="EventsArgs\TestsResultEventArgs.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Helpers\AppLocalization.cs" />
     <Compile Include="Helpers\LanguageName.cs" />
+    <Compile Include="Helpers\RequirementsHelper.cs" />
+    <Compile Include="Interfaces\IRequirementTest.cs" />
+    <Compile Include="Requirements\WindowsVersionTest.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="Views\StatusPageContentView.xaml.cs">
       <DependentUpon>StatusPageContentView.xaml</DependentUpon>
