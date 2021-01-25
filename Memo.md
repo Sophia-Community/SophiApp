@@ -121,11 +121,11 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
 <https://pastebin.com/raw/nDN7M1Hk>
 
 ```powershell
-$PkgMgr = [Windows.Management.Deployment.PackageManager,Windows.Web,ContentType=WindowsRuntime]::new()
-$PkgMgr.FindPackages() | Select-Object DisplayName -ExpandProperty Id | Format-Table -Property Name, DisplayName
+$Packages = [Windows.Management.Deployment.PackageManager,Windows.Web,ContentType=WindowsRuntime]::new().FindPackages()
+$Packages | Select-Object -ExpandProperty Id -Property DisplayName | Format-Table -Property Name, DisplayName
 
-$PkgMgr = [Windows.Management.Deployment.PackageManager,Windows.Web,ContentType=WindowsRuntime]::new()
-($PkgMgr.FindPackages() | Select-Object DisplayName -ExpandProperty Id | Where-Object {$_.Name -eq "Microsoft.Windows.Photos"}).DisplayName
+$Packages = [Windows.Management.Deployment.PackageManager,Windows.Web,ContentType=WindowsRuntime]::new().FindPackages()
+($Packages | Select-Object -ExpandProperty Id -Property DisplayName | Where-Object {$_.Name -eq "Microsoft.Windows.Photos"}).DisplayName
 ```
 
 <https://stackoverflow.com/questions/23331385/how-to-obtain-the-display-name-of-installed-metro-apps/23376722#23376722>
