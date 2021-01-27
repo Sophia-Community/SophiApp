@@ -10,7 +10,9 @@ namespace SophiAppCE.Interfaces
     {
         bool Result { get; set; }
 
-        string ResultText { get; set; }
+        string Name { get; set; }
+
+        string Error { get; set; }
 
         void Run();
     }

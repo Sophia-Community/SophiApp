@@ -15,20 +15,12 @@ namespace SophiAppCE.Requirements
         private readonly OperatingSystem currentVersion = Environment.OSVersion;
 
         public bool Result { get; set; } = false;
-        public string ResultText { get; set; } = Localization.TestWinVerText;
+        public string Name { get; set; } = Localization.RequirementTest_WinVer_Name;
+        public string Error { get; set; } = Localization.RequirementTest_WinVer_Error;
 
         public void Run()
         {
-            if (currentVersion.Version.Major == actualVersion.Version.Major && currentVersion.Version.Build >= actualVersion.Version.Build)
-            {
-                Result = true;
-            }
-
-            else
-            {
-                ResultText = Localization.TestWinVerError;
-            }
-
+            Result = (currentVersion.Version.Major == actualVersion.Version.Major) && (currentVersion.Version.Build >= actualVersion.Version.Build);
             Thread.Sleep(5000);
         }
     }

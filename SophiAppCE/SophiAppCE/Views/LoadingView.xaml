@@ -1,16 +1,14 @@
-﻿<UserControl x:Class="SophiAppCE.Views.StatusPageStartView"
+﻿<UserControl x:Class="SophiAppCE.Views.LoadingView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Views"
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
-             xmlns:control="clr-namespace:SophiAppCE.Controls"
-             mc:Ignorable="d">
+             xmlns:control="clr-namespace:SophiAppCE.Controls">
 
     <UserControl.Resources>
-        <converters:StatusPageVisibilityConverter x:Key="PageVisibilityConverter"/>
-        <converters:BoolToVisibilityConverter x:Key="ProgressBarVisibilityConverter"/>
+        <converters:ViewVisibility x:Key="ViewVisibilityConverter"/>
         <Style TargetType="StackPanel">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -19,26 +17,26 @@
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="Margin" Value="0, 10, 0, 10"/>
         </Style>
-        <Style TargetType="local:StatusPageStartView">
-            <Setter Property="Tag" Value="{StaticResource Tag.StatusPageStart}" />
+        <Style TargetType="local:LoadingView">
+            <Setter Property="Tag" Value="{StaticResource Tag.LoadingView}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource PageVisibilityConverter}">
-                        <Binding Path="StatusPagesVisibility" UpdateSourceTrigger="PropertyChanged" />
+                    <MultiBinding Converter="{StaticResource ViewVisibilityConverter}">
+                        <Binding Path="ViewVisibility" UpdateSourceTrigger="PropertyChanged"/>
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:StatusPageStartView">
+                    <ControlTemplate TargetType="local:LoadingView">
                         <Grid>
                             <StackPanel>
-                                <control:ProgressBarDotsLine Margin="0, 10, 0, 10" Visibility="{Binding StatusPageStartIsBusy, Converter={StaticResource ProgressBarVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
-                                <TextBlock Text="{Binding StatusPageStartText, UpdateSourceTrigger=PropertyChanged}"/>
+                                <control:ProgressBarDotsLine Margin="0, 10, 0, 10"/>
+                                <TextBlock Text="{Binding LoadingViewText, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
                         </Grid>
                     </ControlTemplate>

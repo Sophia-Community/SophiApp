@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SophiAppCE</RootNamespace>
     <AssemblyName>SophiAppCE</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -29,6 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -94,9 +95,7 @@
     <Compile Include="Controls\TitleButtonMin.xaml.cs">
       <DependentUpon>TitleButtonMin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Converters\MainWindowCloseButtonIsEnabledConverter.cs" />
-    <Compile Include="Converters\StatusPageVisibilityConverter.cs" />
+    <Compile Include="Converters\ViewVisibility.cs" />
     <Compile Include="EventsArgs\TestsResultEventArgs.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Helpers\AppLocalization.cs" />
@@ -105,14 +104,11 @@
     <Compile Include="Interfaces\IRequirementTest.cs" />
     <Compile Include="Requirements\WindowsVersionTest.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
-    <Compile Include="Views\StatusPageContentView.xaml.cs">
-      <DependentUpon>StatusPageContentView.xaml</DependentUpon>
+    <Compile Include="Views\ContentView.xaml.cs">
+      <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StatusPageFinish.xaml.cs">
-      <DependentUpon>StatusPageFinish.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StatusPageStartView.xaml.cs">
-      <DependentUpon>StatusPageStartView.xaml</DependentUpon>
+    <Compile Include="Views\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
     </Compile>
     <Page Include="Commons\Icons.xaml">
       <SubType>Designer</SubType>
@@ -178,15 +174,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StatusPageContentView.xaml">
+    <Page Include="Views\ContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StatusPageFinish.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\StatusPageStartView.xaml">
+    <Page Include="Views\LoadingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

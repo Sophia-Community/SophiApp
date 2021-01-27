@@ -22,26 +22,24 @@ namespace SophiAppCE.Helpers
 
         protected void OnResultTextChanged(TestsResultEventArgs e) => (ResultTextChanged)?.Invoke(this, e);
         
-        internal bool TestsResult { get; private set; } = false;
+        internal bool Result { get; private set; } = false;
 
-        internal string TestsResultText { get; private set; } = string.Empty;
+        internal string Text { get; private set; } = string.Empty;
 
-        internal void TestsRun()
+        internal void Run()
         {
             TestsResultEventArgs args = new TestsResultEventArgs();
 
             foreach (var test in tests)
             {
-                args.Text = test.ResultText;
+                args.Text = test.Name;
                 OnResultTextChanged(args);
                 test.Run();
-                TestsResult = test.Result;                
+                Result = test.Result;                
 
-                if (TestsResult == false)
+                if (Result == false)
                 {
-                    TestsResultText = test.ResultText;
-                    args.Text = TestsResultText;
-                    OnResultTextChanged(args);
+                    Text = test.Error;                    
                     break;
                 }                   
             }

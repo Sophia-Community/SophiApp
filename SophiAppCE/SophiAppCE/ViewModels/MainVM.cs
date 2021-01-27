@@ -12,15 +12,14 @@ namespace SophiAppCE.ViewModels
 {
     internal class MainVM : INotifyPropertyChanged
     {
-        private byte statusPagesVisibility = Tags.StatusPageStart;
-        private AppLocalization appLocalization = new AppLocalization();
-        private bool statusPageStartIsBusy = false;
-        private string statusPageStartText = string.Empty;
+        private byte viewVisibility = Tags.LoadingView;
+        private AppLocalization appLocalization = new AppLocalization();        
+        private string loadingViewText = string.Empty;
         private RequirementsHelper requirementHelper = new RequirementsHelper();
 
-        private void OnResultTextChanged(object sender, TestsResultEventArgs e)
+        private void OnRequirementHelperTextChanged(object sender, TestsResultEventArgs e)
         {
-            StatusPageStartText = e.Text;
+            LoadingViewText = e.Text;
         }
 
         public MainVM()
@@ -47,44 +46,31 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("AppLocalization");
             }
 
-        }
-
-        /// <summary>
-        /// Defines the visibility of the ProgressBar on the Start page
-        /// </summary>
-        public bool StatusPageStartIsBusy
-        {
-            get => statusPageStartIsBusy;
-            private set
-            {
-                statusPageStartIsBusy = value;
-                OnPropertyChanged("StatusPageStartIsBusy");
-            }
-        }
+        }                
         
         /// <summary>
-        /// Defines the text on the Start page
+        /// Defines the text on the Loading View
         /// </summary>
-        public string StatusPageStartText
+        public string LoadingViewText
         {
-            get => statusPageStartText;
+            get => loadingViewText;
             private set
             {
-                statusPageStartText = value;
-                OnPropertyChanged("StatusPageStartText");
+                loadingViewText = value;
+                OnPropertyChanged("LoadingViewText");
             }
         }
 
         /// <summary>
-        /// Defines the currently visible status page
+        /// Defines the currently visible View
         /// </summary>
-        public byte StatusPagesVisibility
+        public byte ViewVisibility
         {
-            get => statusPagesVisibility;
+            get => viewVisibility;
             private set
             {
-                statusPagesVisibility = value;
-                OnPropertyChanged("StatusPagesVisibility");
+                viewVisibility = value;
+                OnPropertyChanged("ViewVisibility");
             }
         }
                 
@@ -93,13 +79,12 @@ namespace SophiAppCE.ViewModels
             Mouse.OverrideCursor = Cursors.Wait;
 
             await Task.Run(() =>
-            {                
-                StatusPageStartIsBusy = true;
-                requirementHelper.ResultTextChanged += OnResultTextChanged;
-                requirementHelper.TestsRun();                
-                StatusPageStartIsBusy = false;
+            {   
+                requirementHelper.ResultTextChanged += OnRequirementHelperTextChanged;
+                requirementHelper.Run();                
 
-                if (requirementHelper.TestsResult) StatusPagesVisibility = Tags.StatusPageContent;
+                if (requirementHelper.Result)
+                    ViewVisibility = Tags.ContentView;
             });
 
             Mouse.OverrideCursor = null;

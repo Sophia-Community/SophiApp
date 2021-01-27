@@ -16,6 +16,5 @@
     <system:String x:Key="Localization.ApplyAll">Apply settings</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.En">English</system:String>
-    <system:String x:Key="Localization.Ru">Русский</system:String>
-
+    <system:String x:Key="Localization.Ru">Русский</system:String>    
 </ResourceDictionary>

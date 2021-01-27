@@ -33,7 +33,7 @@ namespace SophiAppCE.Controls
 
         // Using a DependencyProperty as the backing store for DotSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DotSizeProperty =
-            DependencyProperty.Register("DotSize", typeof(double), typeof(ProgressBarDotsLine), new PropertyMetadata(default(double)));
+            DependencyProperty.Register("DotSize", typeof(double), typeof(ProgressBarDotsLine), new PropertyMetadata(5.0));
 
     }
 }

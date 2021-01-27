@@ -11,8 +11,7 @@
              Focusable="False"
              MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
 
-    <UserControl.Resources>
-        <converters:MainWindowCloseButtonIsEnabledConverter x:Key="IsEnabledConverter" />
+    <UserControl.Resources>        
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -25,8 +24,7 @@
         </Style>
         <Style TargetType="local:TitleButtonClose">
             <Setter Property="Width" Value="45" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="IsEnabled" Value="{Binding Path=StatusPagesVisibility, Converter={StaticResource IsEnabledConverter}, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Height" Value="30" />            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:TitleButtonClose">

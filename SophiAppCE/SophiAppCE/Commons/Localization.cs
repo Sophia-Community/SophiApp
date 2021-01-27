@@ -9,7 +9,7 @@ namespace SophiAppCE.Commons
 {
     internal static class Localization
     {
-        internal static string TestWinVerText = Application.Current.FindResource("Localization.Test.WinVer.Text") as string;
-        internal static string TestWinVerError = Application.Current.FindResource("Localization.Test.WinVer.Error") as string;
+        internal static string RequirementTest_WinVer_Name = Application.Current.FindResource("Localization.RequirementTest.WinVer.Name") as string;
+        internal static string RequirementTest_WinVer_Error = Application.Current.FindResource("Localization.RequirementTest.WinVer.Error") as string;
     }
 }

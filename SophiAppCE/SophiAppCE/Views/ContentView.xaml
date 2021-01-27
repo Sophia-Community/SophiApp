@@ -1,27 +1,26 @@
-﻿<UserControl x:Class="SophiAppCE.Views.StatusPageContentView"
+﻿<UserControl x:Class="SophiAppCE.Views.ContentView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiAppCE.Views"
-             xmlns:converters="clr-namespace:SophiAppCE.Converters"
-             mc:Ignorable="d">
+             xmlns:converters="clr-namespace:SophiAppCE.Converters">
 
     <UserControl.Resources>
-        <converters:StatusPageVisibilityConverter x:Key="VisibilityConverter" />
-        <Style TargetType="local:StatusPageContentView">
-            <Setter Property="Tag" Value="{StaticResource Tag.StatusPageContent}" />
+        <converters:ViewVisibility x:Key="ViewVisibilityConverters"/>
+        <Style TargetType="local:ContentView">
+            <Setter Property="Tag" Value="{StaticResource Tag.ContentView}" />
             <Setter Property="Visibility">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource VisibilityConverter}">
-                        <Binding Path="StatusPagesVisibility" UpdateSourceTrigger="PropertyChanged" />
+                    <MultiBinding Converter="{StaticResource ViewVisibilityConverters}">
+                        <Binding Path="ViewVisibility" UpdateSourceTrigger="PropertyChanged" />
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:StatusPageContentView">
+                    <ControlTemplate TargetType="local:ContentView">
                         <Grid ShowGridLines="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="250" />
