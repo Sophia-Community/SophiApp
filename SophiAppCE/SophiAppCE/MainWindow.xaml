@@ -15,17 +15,18 @@
         <viewModel:MainVM/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" />
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
     <Border Style="{StaticResource MainWindow.Border.Style}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <controls:TitleBar Grid.Row="0" Text="{Binding AppTitle}" />
+            <controls:TitleBar Text="{Binding AppTitle}" Grid.Row="0"/>
             <views:LoadingView x:Name="LoadingView" Grid.Row="1"/>
             <views:ContentView x:Name="ContentView" Grid.Row="1"/>
+            <views:ErrorView x:Name="ErrorView" Grid.Row="1"/>
         </Grid>
     </Border>
 </Window>

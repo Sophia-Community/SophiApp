@@ -133,3 +133,7 @@ $Packages = [Windows.Management.Deployment.PackageManager,Windows.Web,ContentTyp
 <https://stackoverflow.com/questions/23331385/how-to-obtain-the-display-name-of-installed-metro-apps/37231613#37231613>
 
 <https://stackoverflow.com/questions/51480747/get-the-plain-end-user-readable-name-of-uwp-apps-installed-on-a-system/51484211#51484211>
+
+## Ссылки с описанием ошибок SophiApp
+
+Проверка версии Windows github.com/farag2/SophiApp/blob/master/README.md#AboutWinVer

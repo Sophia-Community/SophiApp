@@ -1,13 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="MainWindow.Style" TargetType="{x:Type Window}">
+    <Style x:Key="MainWindow.Style" TargetType="{x:Type Window}">        
         <Setter Property="WindowStyle" Value="None" />
         <Setter Property="AllowsTransparency" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="ResizeMode" Value="CanResize" />
+        <Setter Property="SizeToContent" Value="Manual"/>
         <Setter Property="ShowInTaskbar" Value="True" />
         <Setter Property="MinHeight" Value="730" />
         <Setter Property="MinWidth" Value="1260" />
@@ -15,22 +16,31 @@
         <Setter Property="Title" Value="{Binding AppTitle}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=Visibility, ElementName=LoadingView}" Value="Visible">                
-                <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Light.Color}" />
-                <Setter Property="Background" Value="{DynamicResource System.Accent.Color}" />
-                <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto" />
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="FontWeight" Value="Normal" />
-                <Setter Property="FontStretch" Value="Normal" />
-                <Setter Property="FontStyle" Value="Normal" />
+                <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Light.Color}"/>
+                <Setter Property="Background" Value="{DynamicResource System.Accent.Color}"/>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Regular"/>
+                <Setter Property="FontStretch" Value="Normal"/>
+                <Setter Property="FontStyle" Value="Normal"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=Visibility, ElementName=ContentView}" Value="Visible">
-                <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Dark.Color}" />
-                <Setter Property="Background" Value="{DynamicResource System.Background.Color}" />
-                <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto" />
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="Normal" />
-                <Setter Property="FontStretch" Value="Normal" />
-                <Setter Property="FontStyle" Value="Normal" />
+                <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Dark.Color}"/>
+                <Setter Property="Background" Value="{DynamicResource System.Background.Color}"/>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="FontStretch" Value="Normal"/>
+                <Setter Property="FontStyle" Value="Normal"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Visibility, ElementName=ErrorView}" Value="Visible">
+                <Setter Property="Foreground" Value="{DynamicResource System.Foreground.Light.Color}"/>
+                <Setter Property="Background" Value="{DynamicResource System.Accent.Color}"/>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Regular"/>
+                <Setter Property="FontStretch" Value="Normal"/>
+                <Setter Property="FontStyle" Value="Normal"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

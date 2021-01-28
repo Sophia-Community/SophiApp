@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:Byte x:Key="Tag.LoadingView">0</system:Byte>
-    <system:Byte x:Key="Tag.ContentView">1</system:Byte>    
+    <system:Byte x:Key="Tag.ContentView">1</system:Byte>
+    <system:Byte x:Key="Tag.ErrorView">2</system:Byte>
     <system:String x:Key="Tag.Category.Privacy">Privacy</system:String>
     <system:String x:Key="Tag.Category.Ui">Ui</system:String>
     <system:String x:Key="Tag.Category.ContextMenu">ContextMenu</system:String>

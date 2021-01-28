@@ -9,6 +9,7 @@ namespace SophiAppCE.Commons
         internal static string LocalizationUriEN = "pack://application:,,,/Localization/EN.xaml";
         internal static byte LoadingView = Convert.ToByte(Application.Current.FindResource("Tag.LoadingView"));
         internal static byte ContentView = Convert.ToByte(Application.Current.FindResource("Tag.ContentView"));
+        internal static byte ErrorView = Convert.ToByte(Application.Current.FindResource("Tag.ErrorView"));
 
     }
 }

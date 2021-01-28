@@ -11,5 +11,6 @@ namespace SophiAppCE.Commons
         internal static int WindowsBuild = 19041;
         internal static int WindowsMajor = 10;
         internal static int WindowsMinor = 0;
+        internal static char PipeDelimiter = '|';
     }
 }

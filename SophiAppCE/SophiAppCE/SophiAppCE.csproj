@@ -77,6 +77,9 @@
     <Compile Include="Commons\Constants.cs" />
     <Compile Include="Commons\Localization.cs" />
     <Compile Include="Commons\Tags.cs" />
+    <Compile Include="Controls\AppLogo.xaml.cs">
+      <DependentUpon>AppLogo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ControlTemplate.xaml.cs">
       <DependentUpon>ControlTemplate.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,8 @@
     <Compile Include="Controls\TitleButtonMin.xaml.cs">
       <DependentUpon>TitleButtonMin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TextLengthToBool.cs" />
+    <Compile Include="Converters\TextPipeToSplit.cs" />
     <Compile Include="Converters\ViewVisibility.cs" />
     <Compile Include="EventsArgs\TestsResultEventArgs.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
@@ -107,6 +112,9 @@
     <Compile Include="Views\ContentView.xaml.cs">
       <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ErrorView.xaml.cs">
+      <DependentUpon>ErrorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoadingView.xaml.cs">
       <DependentUpon>LoadingView.xaml</DependentUpon>
     </Compile>
@@ -115,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Commons\Tags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AppLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ErrorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

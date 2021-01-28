@@ -12,7 +12,9 @@ namespace SophiAppCE.Interfaces
 
         string Name { get; set; }
 
-        string Error { get; set; }
+        string ErrorDescription { get; set; }
+        
+        string ErrorUrl { get; set; }
 
         void Run();
     }

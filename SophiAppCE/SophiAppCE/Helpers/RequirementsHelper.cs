@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -13,36 +14,53 @@ namespace SophiAppCE.Helpers
 {
     internal class RequirementsHelper
     {
+        private string text = string.Empty;
         private readonly List<IRequirementTest> tests = new List<IRequirementTest>()
         {
             new WindowsVersionTest()
         };
 
-        public event EventHandler<TestsResultEventArgs> ResultTextChanged;
+        internal EventHandler<TestsResultEventArgs> OnTextChanged
+        {
+            get { return null; }
+            set { TextChanged += value; }
+        }
 
-        protected void OnResultTextChanged(TestsResultEventArgs e) => (ResultTextChanged)?.Invoke(this, e);
-        
-        internal bool Result { get; private set; } = false;
+        private event EventHandler<TestsResultEventArgs> TextChanged;
 
-        internal string Text { get; private set; } = string.Empty;
+        internal bool Result { get; private set; }
+
+        internal string Text
+        {
+            get => text;
+            private set
+            {
+                text = value;
+                TextChanged?.Invoke(this, new TestsResultEventArgs(text));
+            }
+        }
+
+        internal string ErrorDescription { get; set; }
+
+        public string ErrorUrl { get; set; }
 
         internal void Run()
         {
-            TestsResultEventArgs args = new TestsResultEventArgs();
-
             foreach (var test in tests)
             {
-                args.Text = test.Name;
-                OnResultTextChanged(args);
+                Text = test.Name;
+                Thread.Sleep(3000);
                 test.Run();
                 Result = test.Result;                
 
-                if (Result == false)
+                //HACK: !!!
+                if (Result == true)
                 {
-                    Text = test.Error;                    
+                    ErrorDescription = test.ErrorDescription;
+                    ErrorUrl = test.ErrorUrl;
                     break;
                 }                   
             }
-        }        
+        }
     }
 }

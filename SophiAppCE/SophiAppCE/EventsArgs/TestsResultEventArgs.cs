@@ -9,5 +9,7 @@ namespace SophiAppCE.EventsArgs
     internal class TestsResultEventArgs : EventArgs
     {
         internal string Text { get; set; }
+
+        public TestsResultEventArgs(string text) => Text = text;        
     }
 }

@@ -1,14 +1,17 @@
-﻿<UserControl x:Class="SophiAppCE.Views.LoadingView"
+﻿<UserControl x:Class="SophiAppCE.Views.ErrorView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiAppCE.Views"
+             mc:Ignorable="d" 
              xmlns:converters="clr-namespace:SophiAppCE.Converters"
              xmlns:control="clr-namespace:SophiAppCE.Controls">
 
     <UserControl.Resources>
         <converters:ViewVisibility x:Key="ViewVisibilityConverter"/>
+        <converters:TextLengthToBool x:Key="TextLengthToBoolConverter"/>
+        <converters:TextPipeToSplit x:Key="TextPipeToSplitConverter"/>
         <Style TargetType="StackPanel">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -18,10 +21,23 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="NoWrap"/>
-            <Setter Property="Margin" Value="0, 10, 0, 10"/>
+            <Setter Property="Margin" Value="0, 5, 0, 5"/>
+            <Setter Property="Text">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource TextPipeToSplitConverter}">
+                        <Binding Path="ErrorViewText" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Text, RelativeSource={RelativeSource Self}, Converter={StaticResource TextLengthToBoolConverter}}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>                
+            </Style.Triggers>
         </Style>
-        <Style TargetType="local:LoadingView">
-            <Setter Property="Tag" Value="{StaticResource Tag.LoadingView}"/>
+        <Style TargetType="local:ErrorView">
+            <Setter Property="Tag" Value="{StaticResource Tag.ErrorView}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource ViewVisibilityConverter}">
@@ -32,17 +48,18 @@
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="local:LoadingView">
+                    <ControlTemplate TargetType="local:ErrorView">
                         <Grid>
                             <StackPanel>
                                 <control:AppLogo Width="256" Height="256" Margin="0, 10, 0, 10"/>
-                                <control:ProgressBarDotsLine Margin="0, 10, 0, 10"/>
-                                <TextBlock Text="{Binding LoadingViewText, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Tag="0"/>
+                                <TextBlock Tag="1"/>
+                                <!--<TextBlock Tag="2"/>-->                                
                             </StackPanel>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>    
+    </UserControl.Resources>
 </UserControl>

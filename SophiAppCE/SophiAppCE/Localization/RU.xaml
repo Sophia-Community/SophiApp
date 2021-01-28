@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:SophiAppCE.Localization"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
     <system:String x:Key="Localization.Privacy">Конфиденциальность</system:String>
     <system:String x:Key="Localization.Ui">Внешний вид</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
@@ -19,5 +19,6 @@
     <system:String x:Key="Localization.Ru">Русский</system:String>
     
     <system:String x:Key="Localization.RequirementTest.WinVer.Name">Проверка версии Windows</system:String>
-    <system:String x:Key="Localization.RequirementTest.WinVer.Error">К сожалению, эта версия Windows не поддерживается</system:String>
+    <system:String x:Key="Localization.RequirementTest.WinVer.ErrorDescription">К сожалению, эта версия Windows не поддерживается|Необходима версия Windows 10 2004 и выше</system:String>
+    <system:String x:Key="Localization.RequirementTest.WinVer.ErrorUrl">github.com/farag2/SophiApp/blob/master/README.md#AboutWinVer</system:String>
 </ResourceDictionary>

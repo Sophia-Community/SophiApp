@@ -14,14 +14,23 @@ namespace SophiAppCE.Requirements
         private readonly OperatingSystem actualVersion = new OperatingSystem(PlatformID.Win32NT, new Version(Constants.WindowsMajor, Constants.WindowsMinor, Constants.WindowsBuild));            
         private readonly OperatingSystem currentVersion = Environment.OSVersion;
 
-        public bool Result { get; set; } = false;
+        public bool Result { get; set; }
         public string Name { get; set; } = Localization.RequirementTest_WinVer_Name;
-        public string Error { get; set; } = Localization.RequirementTest_WinVer_Error;
+        public string ErrorDescription { get; set; } = Localization.RequirementTest_WinVer_ErrorDescription;
+        public string ErrorUrl { get; set; } = Localization.RequirementTest_WinVer_ErrorUrl;
 
         public void Run()
         {
-            Result = (currentVersion.Version.Major == actualVersion.Version.Major) && (currentVersion.Version.Build >= actualVersion.Version.Build);
-            Thread.Sleep(5000);
+            try
+            {
+                Result = (currentVersion.Version.Major == actualVersion.Version.Major) && (currentVersion.Version.Build >= actualVersion.Version.Build);                
+            }
+            
+            catch (Exception)
+            {
+
+                Result = false;
+            }            
         }
     }
 }

@@ -3,7 +3,6 @@ using SophiAppCE.EventsArgs;
 using SophiAppCE.Helpers;
 using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -13,8 +12,10 @@ namespace SophiAppCE.ViewModels
     internal class MainVM : INotifyPropertyChanged
     {
         private byte viewVisibility = Tags.LoadingView;
-        private AppLocalization appLocalization = new AppLocalization();        
+        private AppLocalization appLocalization = new AppLocalization();
         private string loadingViewText = string.Empty;
+        private string errorViewText = string.Empty;
+        private string errorViewUrl = string.Empty;
         private RequirementsHelper requirementHelper = new RequirementsHelper();
 
         private void OnRequirementHelperTextChanged(object sender, TestsResultEventArgs e)
@@ -33,7 +34,7 @@ namespace SophiAppCE.ViewModels
         /// Program name and version, first 5 characters only
         /// </summary>
         public string AppTitle { get => AppHelper.GetFullName(); }
-        
+
         /// <summary>
         /// Current App language
         /// </summary>
@@ -46,8 +47,8 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("AppLocalization");
             }
 
-        }                
-        
+        }
+
         /// <summary>
         /// Defines the text on the Loading View
         /// </summary>
@@ -58,6 +59,26 @@ namespace SophiAppCE.ViewModels
             {
                 loadingViewText = value;
                 OnPropertyChanged("LoadingViewText");
+            }
+        }
+
+        public string ErrorViewText
+        {
+            get => errorViewText;
+            private set
+            {
+                errorViewText = value;
+                OnPropertyChanged("ErrorViewText");
+            }
+        }
+
+        public string ErrorViewUrl
+        {
+            get => errorViewUrl;
+            private set
+            {
+                errorViewUrl = value;
+                OnPropertyChanged("ErrorViewUrl");
             }
         }
 
@@ -73,18 +94,30 @@ namespace SophiAppCE.ViewModels
                 OnPropertyChanged("ViewVisibility");
             }
         }
-                
+
         private async Task DataInitializationAsync()
         {
             Mouse.OverrideCursor = Cursors.Wait;
 
             await Task.Run(() =>
-            {   
-                requirementHelper.ResultTextChanged += OnRequirementHelperTextChanged;
-                requirementHelper.Run();                
+            {
+                requirementHelper.OnTextChanged += OnRequirementHelperTextChanged;
+                requirementHelper.Run();
 
-                if (requirementHelper.Result)
+                //HACK: !!!
+                if (requirementHelper.Result == false)
+                {
                     ViewVisibility = Tags.ContentView;
+                }
+
+                else
+                {
+                    ErrorViewText = requirementHelper.ErrorDescription;
+                    ErrorViewUrl = requirementHelper.ErrorUrl;
+                    ViewVisibility = Tags.ErrorView;
+                }
+
+                requirementHelper.OnTextChanged -= OnRequirementHelperTextChanged;
             });
 
             Mouse.OverrideCursor = null;
