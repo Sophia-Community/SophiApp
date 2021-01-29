@@ -11,6 +11,6 @@ namespace SophiAppCE.Commons
     {
         internal static string RequirementTest_WinVer_Name = Application.Current.FindResource("Localization.RequirementTest.WinVer.Name") as string;
         internal static string RequirementTest_WinVer_ErrorDescription = Application.Current.FindResource("Localization.RequirementTest.WinVer.ErrorDescription") as string;
-        internal static string RequirementTest_WinVer_ErrorUrl = Application.Current.FindResource("Localization.RequirementTest.WinVer.ErrorUrl") as string;
+        internal static string RequirementTest_WinVer_Url = Application.Current.FindResource("Localization.RequirementTest.WinVer.Url") as string;
     }
 }

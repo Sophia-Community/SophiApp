@@ -16,7 +16,7 @@ namespace SophiAppCE.ViewModels
         private string loadingViewText = string.Empty;
         private string errorViewText = string.Empty;
         private string errorViewUrl = string.Empty;
-        private RequirementsHelper requirementHelper = new RequirementsHelper();
+        private RelayCommand errorViewClickCommand;
 
         private void OnRequirementHelperTextChanged(object sender, TestsResultEventArgs e)
         {
@@ -62,6 +62,9 @@ namespace SophiAppCE.ViewModels
             }
         }
 
+        /// <summary>
+        /// Defines the text on the Error View
+        /// </summary>
         public string ErrorViewText
         {
             get => errorViewText;
@@ -72,6 +75,9 @@ namespace SophiAppCE.ViewModels
             }
         }
 
+        /// <summary>
+        /// Defines the url on the Error View
+        /// </summary>
         public string ErrorViewUrl
         {
             get => errorViewUrl;
@@ -95,29 +101,37 @@ namespace SophiAppCE.ViewModels
             }
         }
 
+        public RelayCommand ErrorViewClickCommand => errorViewClickCommand ?? new RelayCommand(ErrorViewClick);
+
+        private void ErrorViewClick(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
         private async Task DataInitializationAsync()
         {
             Mouse.OverrideCursor = Cursors.Wait;
 
             await Task.Run(() =>
             {
-                requirementHelper.OnTextChanged += OnRequirementHelperTextChanged;
-                requirementHelper.Run();
+                RequirementsHelper helper = new RequirementsHelper();
+                helper.OnTextChanged += OnRequirementHelperTextChanged;
+                helper.Run();
 
                 //HACK: !!!
-                if (requirementHelper.Result == false)
+                if (helper.Result == false)
                 {
                     ViewVisibility = Tags.ContentView;
                 }
 
                 else
                 {
-                    ErrorViewText = requirementHelper.ErrorDescription;
-                    ErrorViewUrl = requirementHelper.ErrorUrl;
+                    ErrorViewText = helper.ErrorDescription;
+                    ErrorViewUrl = helper.ErrorUrl;
                     ViewVisibility = Tags.ErrorView;
                 }
 
-                requirementHelper.OnTextChanged -= OnRequirementHelperTextChanged;
+                helper.OnTextChanged -= OnRequirementHelperTextChanged;
             });
 
             Mouse.OverrideCursor = null;

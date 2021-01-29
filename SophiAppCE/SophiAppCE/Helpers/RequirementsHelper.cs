@@ -1,4 +1,5 @@
-﻿using SophiAppCE.EventsArgs;
+﻿using SophiAppCE.Commons;
+using SophiAppCE.EventsArgs;
 using SophiAppCE.Interfaces;
 using SophiAppCE.Requirements;
 using System;
@@ -49,7 +50,7 @@ namespace SophiAppCE.Helpers
             foreach (var test in tests)
             {
                 Text = test.Name;
-                Thread.Sleep(3000);
+                Thread.Sleep(Constants.RequirementsHelperPause);
                 test.Run();
                 Result = test.Result;                
 
@@ -57,7 +58,7 @@ namespace SophiAppCE.Helpers
                 if (Result == true)
                 {
                     ErrorDescription = test.ErrorDescription;
-                    ErrorUrl = test.ErrorUrl;
+                    ErrorUrl = test.Url;
                     break;
                 }                   
             }

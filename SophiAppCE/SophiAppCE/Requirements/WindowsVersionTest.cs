@@ -17,7 +17,7 @@ namespace SophiAppCE.Requirements
         public bool Result { get; set; }
         public string Name { get; set; } = Localization.RequirementTest_WinVer_Name;
         public string ErrorDescription { get; set; } = Localization.RequirementTest_WinVer_ErrorDescription;
-        public string ErrorUrl { get; set; } = Localization.RequirementTest_WinVer_ErrorUrl;
+        public string Url { get; set; } = Localization.RequirementTest_WinVer_Url;
 
         public void Run()
         {

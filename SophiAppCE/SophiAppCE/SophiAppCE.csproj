@@ -105,6 +105,7 @@
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Helpers\AppLocalization.cs" />
     <Compile Include="Helpers\LanguageName.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\RequirementsHelper.cs" />
     <Compile Include="Interfaces\IRequirementTest.cs" />
     <Compile Include="Requirements\WindowsVersionTest.cs" />

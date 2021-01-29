@@ -12,5 +12,6 @@ namespace SophiAppCE.Commons
         internal static int WindowsMajor = 10;
         internal static int WindowsMinor = 0;
         internal static char PipeDelimiter = '|';
+        internal static int RequirementsHelperPause = 3000;
     }
 }
