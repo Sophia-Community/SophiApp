@@ -17,9 +17,8 @@
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.En">English</system:String>
     <system:String x:Key="Localization.Ru">Русский</system:String>
-
-    <system:String x:Key="Localization.RequirementTest.Text.MoreDetails">Подробнее на</system:String>
+    
     <system:String x:Key="Localization.RequirementTest.WinVer.Name">Проверка версии Windows</system:String>
     <system:String x:Key="Localization.RequirementTest.WinVer.ErrorDescription">К сожалению, эта версия Windows не поддерживается|Необходима Windows 10 версии 2004 и выше|Подробнее на GitHub</system:String>
-    <system:String x:Key="Localization.RequirementTest.WinVer.Url">https://github.com/farag2/SophiApp/#AboutWinVer</system:String>    
+    <system:String x:Key="Localization.RequirementTest.WinVer.Url">https://github.com/farag2/SophiApp/#windows-versions-support</system:String>    
 </ResourceDictionary>

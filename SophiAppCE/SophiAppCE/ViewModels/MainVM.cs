@@ -103,10 +103,7 @@ namespace SophiAppCE.ViewModels
 
         public RelayCommand ErrorViewClickCommand => errorViewClickCommand ?? new RelayCommand(ErrorViewClick);
 
-        private void ErrorViewClick(object obj)
-        {
-            throw new NotImplementedException();
-        }
+        private void ErrorViewClick(object args) => ProcessHelper.Start(uri: ErrorViewUrl);
 
         private async Task DataInitializationAsync()
         {
