@@ -53,9 +53,8 @@ namespace SophiAppCE.Helpers
                 Thread.Sleep(Constants.RequirementsHelperPause);
                 test.Run();
                 Result = test.Result;                
-
-                //HACK: !!!
-                if (Result == true)
+                                
+                if (Result == false)
                 {
                     ErrorDescription = test.ErrorDescription;
                     ErrorUrl = test.Url;

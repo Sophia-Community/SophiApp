@@ -103,7 +103,11 @@ namespace SophiAppCE.ViewModels
 
         public RelayCommand ErrorViewClickCommand => errorViewClickCommand ?? new RelayCommand(ErrorViewClick);
 
-        private void ErrorViewClick(object args) => ProcessHelper.Start(uri: ErrorViewUrl);
+        private void ErrorViewClick(object args)
+        {
+            ProcessHelper.Start(uri: ErrorViewUrl);
+            Application.Current.MainWindow.Close();
+        }
 
         private async Task DataInitializationAsync()
         {
@@ -115,9 +119,9 @@ namespace SophiAppCE.ViewModels
                 helper.OnTextChanged += OnRequirementHelperTextChanged;
                 helper.Run();
 
-                //HACK: !!!
-                if (helper.Result == false)
+                if (helper.Result)
                 {
+                    LoadingViewText = Commons.Localization.DataLoading;
                     ViewVisibility = Tags.ContentView;
                 }
 
