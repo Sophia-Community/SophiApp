@@ -4,8 +4,8 @@
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
-        <!--Параметры манифеста UAC
-             Если вы хотите изменить уровень контроля учетных записей, замените узел 
+        <!-- Параметры манифеста UAC
+             Если вы хотите изменить уровень контроля учетных записей Windows, замените узел 
              requestedExecutionLevel на один из следующих.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />

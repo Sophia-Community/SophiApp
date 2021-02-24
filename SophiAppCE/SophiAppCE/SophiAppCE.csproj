@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9A8D7BD7-57A2-4598-947D-CEB5889150AD}</ProjectGuid>
+    <ProjectGuid>{5BB275B7-2897-4CFD-B62D-CA9C3B50EF6F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SophiAppCE</RootNamespace>
     <AssemblyName>SophiAppCE</AssemblyName>
@@ -29,7 +29,6 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,8 +49,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -74,93 +75,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commons\Constants.cs" />
-    <Compile Include="Commons\Localization.cs" />
-    <Compile Include="Commons\Tags.cs" />
-    <Compile Include="Controls\AppLogo.xaml.cs">
-      <DependentUpon>AppLogo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ControlTemplate.xaml.cs">
-      <DependentUpon>ControlTemplate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ProgressBarDotsLine.xaml.cs">
-      <DependentUpon>ProgressBarDotsLine.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleBar.xaml.cs">
-      <DependentUpon>TitleBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleButtonClose.xaml.cs">
-      <DependentUpon>TitleButtonClose.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleButtonMax.xaml.cs">
-      <DependentUpon>TitleButtonMax.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TitleButtonMin.xaml.cs">
-      <DependentUpon>TitleButtonMin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\TextLengthToBool.cs" />
-    <Compile Include="Converters\TextPipeToSplit.cs" />
-    <Compile Include="Converters\ViewVisibility.cs" />
-    <Compile Include="EventsArgs\TestsResultEventArgs.cs" />
-    <Compile Include="Helpers\AppHelper.cs" />
-    <Compile Include="Helpers\AppLocalization.cs" />
-    <Compile Include="Helpers\LanguageName.cs" />
-    <Compile Include="Helpers\ProcessHelper.cs" />
-    <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Helpers\RequirementsHelper.cs" />
-    <Compile Include="Interfaces\IRequirementTest.cs" />
-    <Compile Include="Requirements\WindowsVersionTest.cs" />
-    <Compile Include="ViewModels\MainVM.cs" />
-    <Compile Include="Views\ContentView.xaml.cs">
-      <DependentUpon>ContentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ErrorView.xaml.cs">
-      <DependentUpon>ErrorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LoadingView.xaml.cs">
-      <DependentUpon>LoadingView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Commons\Icons.xaml">
+    <Page Include="Localizations\EN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Commons\Tags.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\AppLogo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ControlTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ProgressBarDotsLine.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleButtonClose.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleButtonMax.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TitleButtonMin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Localization\EN.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Localization\RU.xaml">
+    <Page Include="Localizations\RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,30 +95,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles\Styles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Dark.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Light.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ContentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ErrorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LoadingView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -219,8 +114,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.manifest" />
-    <Resource Include="Fonts\Roboto-Regular.ttf" />
+    <None Include="App.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -230,9 +124,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6 %28x86 и x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 и x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -242,7 +136,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
+    <Folder Include="Themes\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

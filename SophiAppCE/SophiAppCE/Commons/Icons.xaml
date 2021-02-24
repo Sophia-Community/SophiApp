@@ -1,8 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Geometry x:Key="Icon.Title.Close">M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z</Geometry>
-    <Geometry x:Key="Icon.Title.Minimize">M20,14H4V10H20</Geometry>
-    <Geometry x:Key="Icon.Title.Maximize">M4,4H20V20H4V4M6,8V18H18V8H6Z</Geometry>
-    <Geometry x:Key="Icon.Title.Restore">M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z</Geometry>
-    <Geometry x:Key="Icon.AppLogo">M2.05,13H21.95C21.45,18.05 17.19,22 12,22C6.82,22 2.55,18.05 2.05,13M21.95,11H2.05C2.55,5.95 6.82,2 12,2C17.18,2 21.45,5.95 21.95,11M12,6.75A2.5,2.5 0 0,0 9.5,4.25A2.5,2.5 0 0,0 7,6.75A2.5,2.5 0 0,0 9.5,9.25A2.5,2.5 0 0,0 12,6.75Z</Geometry>
-</ResourceDictionary>

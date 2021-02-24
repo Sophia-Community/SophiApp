@@ -3,30 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:SophiAppCE.ViewModels"
-        xmlns:views="clr-namespace:SophiAppCE.Views"
-        xmlns:controls="clr-namespace:SophiAppCE.Controls"
         xmlns:local="clr-namespace:SophiAppCE"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Name="AppWindow"
-        Style="{StaticResource MainWindow.Style}">
-    <Window.DataContext>
-        <viewModel:MainVM/>
-    </Window.DataContext>
-    <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" GlassFrameThickness="0"/>
-    </WindowChrome.WindowChrome>
-    <Border Style="{StaticResource MainWindow.Border.Style}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <controls:TitleBar Text="{Binding AppTitle}" Grid.Row="0"/>
-            <views:LoadingView x:Name="LoadingView" Grid.Row="1"/>
-            <views:ContentView x:Name="ContentView" Grid.Row="1"/>
-            <views:ErrorView x:Name="ErrorView" Grid.Row="1"/>
-        </Grid>
-    </Border>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        
+    </Grid>
 </Window>
