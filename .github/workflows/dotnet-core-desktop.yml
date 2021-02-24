@@ -49,7 +49,7 @@ jobs:
       uses: svenstaro/upload-release-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: $env:App_Zip
+        file: SophiApp.zip
         tag: ${{ github.ref }}
         overwrite: true
         file_glob: true
