@@ -1,4 +1,4 @@
-![Build and Release](https://github.com/farag2/SophiApp/workflows/Build%20and%20Release/badge.svg)
+[![Build](https://github.com/farag2/SophiApp/actions/workflows/dotnet-core-desktop.yml/badge.svg)](https://github.com/farag2/SophiApp/actions/workflows/dotnet-core-desktop.yml)
 
 # Deus vult!
 
