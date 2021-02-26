@@ -3,9 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:SophiApp.ViewModels"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:AppVM/>
+    </Window.DataContext>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" GlassFrameThickness="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="WindowStyle" Value="None" />
+            <Setter Property="AllowsTransparency" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="ResizeMode" Value="CanResize" />
+            <Setter Property="SizeToContent" Value="Manual"/>
+            <Setter Property="ShowInTaskbar" Value="True" />
+            <Setter Property="MinHeight" Value="640"/>
+            <Setter Property="MinWidth" Value="1024"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Title" Value="{Binding AppName}"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="FontStretch" Value="Normal"/>
+            <Setter Property="FontStyle" Value="Normal"/>
+        </Style>
+    </Window.Style>
     <Grid>
         
     </Grid>

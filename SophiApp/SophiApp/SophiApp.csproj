@@ -73,6 +73,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\AppVM.cs" />
+    <Page Include="Constants.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Localizations\EN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +118,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.manifest" />
+    <Resource Include="Fonts\SegoeUI.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,12 +142,10 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Converters\" />
-    <Folder Include="Fonts\" />
     <Folder Include="Helpers\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Themes\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
