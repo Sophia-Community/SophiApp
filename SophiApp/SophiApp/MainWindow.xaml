@@ -34,7 +34,8 @@
             <Setter Property="FontStyle" Value="Normal"/>
         </Style>
     </Window.Style>
-    <Grid>
+    <Grid Background="{StaticResource Brush.Acrylic.Noise.Image}">
         
+
     </Grid>
 </Window>

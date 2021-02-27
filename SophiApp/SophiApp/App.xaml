@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:SophiApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Constants.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Constants.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>        
     </Application.Resources>
 </Application>
