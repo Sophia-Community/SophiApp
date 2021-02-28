@@ -2,16 +2,18 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:controls="clr-namespace:SophiApp.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.DataContext>
         <vm:AppVM/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" GlassFrameThickness="0"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" 
+                      GlassFrameThickness="0" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
     <Window.Style>
         <Style TargetType="{x:Type Window}">
@@ -20,12 +22,14 @@
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="ResizeMode" Value="CanResize" />
-            <Setter Property="SizeToContent" Value="Manual"/>
+            <Setter Property="ResizeMode" Value="CanResize" />            
             <Setter Property="ShowInTaskbar" Value="True" />
             <Setter Property="MinHeight" Value="640"/>
             <Setter Property="MinWidth" Value="1024"/>
+            <Setter Property="Height" Value="640"/>
+            <Setter Property="Width" Value="1024"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
             <Setter Property="Title" Value="{Binding AppName}"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI"/>
             <Setter Property="FontSize" Value="16"/>
@@ -33,8 +37,28 @@
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
         </Style>
-    </Window.Style>
-    <Grid Background="{StaticResource Brush.Acrylic.Noise.Image}">
+    </Window.Style>    
+    <!--Title and Content Grid-->
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <controls:WindowTitle/>
+        <!--Hamburger and Content Pages Grid-->
+        <Grid Grid.Row="1" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="251"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <controls:HamburgerButton Grid.Column="0" Height="45"
+                                      IconMargin="10, 0, 0, 7" Icon="{StaticResource Icon.Privacy}"
+                                      Text="{DynamicResource Localization.Privacy}"/>
+
+
+        </Grid>
+        
         
 
     </Grid>
