@@ -4,10 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d" 
-             SnapsToDevicePixels="True"
-             IsTabStop="False"
-             Focusable="False"
+             mc:Ignorable="d"
              MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
     
     <UserControl.Resources>
@@ -22,6 +19,9 @@
             <Setter Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
         <Style TargetType="local:TitleButtonClose">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
             <Setter Property="Width" Value="35" />
             <Setter Property="Height" Value="35" />
             <Setter Property="Template">

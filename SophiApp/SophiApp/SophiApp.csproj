@@ -73,8 +73,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HamburgerMenu.xaml.cs">
+      <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TitleButtonClose.xaml.cs">
       <DependentUpon>TitleButtonClose.xaml</DependentUpon>
@@ -85,12 +89,22 @@
     <Compile Include="Controls\WindowTitle.xaml.cs">
       <DependentUpon>WindowTitle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TagToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Tags.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
-    <Page Include="Constants.xaml">
+    <Page Include="Commons\Constants.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commons\Tags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HamburgerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +165,7 @@
     </EmbeddedResource>
     <None Include="App.manifest" />
     <Resource Include="Fonts\SegoeUI.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -172,8 +187,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Views\" />

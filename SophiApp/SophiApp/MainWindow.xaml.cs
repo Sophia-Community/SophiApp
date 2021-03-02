@@ -53,7 +53,8 @@ namespace SophiApp
     public partial class MainWindow : Window
     {
         [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -62,6 +63,7 @@ namespace SophiApp
         {
             EnableBlur();
         }
+
         internal void EnableBlur()
         {
             WindowInteropHelper windowHelper = new WindowInteropHelper(this);
@@ -80,6 +82,7 @@ namespace SophiApp
             };
             SetWindowCompositionAttribute(windowHelper.Handle, ref data);
             Marshal.FreeHGlobal(accentPtr);
-        }        
+        }
+
     }
 }

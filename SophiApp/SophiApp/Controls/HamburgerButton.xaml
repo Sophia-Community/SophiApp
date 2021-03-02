@@ -4,14 +4,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:SophiApp.Controls"
+        xmlns:converters="clr-namespace:SophiApp.Converters"
         mc:Ignorable="d">
+
     <UserControl.Resources>
+        <converters:TagToVisibilityConverter x:Key="Tag.To.Visibility.Converter"/>
+        <Storyboard x:Key="Animation.Hamburger.Button.Click">
+            <ThicknessAnimation Storyboard.TargetName="Grid_Content" 
+                                Storyboard.TargetProperty="Margin"
+                                Duration="0:0:0.3" 
+                                From="0, 0, 0, 0" 
+                                To="0, 10, 0, 0" 
+                                SpeedRatio="3" 
+                                AutoReverse="True"/>
+        </Storyboard>
         <Style TargetType="{x:Type Border}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}"/>
             <Setter Property="Width" Value="2"/>
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Tag.To.Visibility.Converter}">
+                        <Binding Path="ActiveViewTag" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="{x:Type ContentPresenter}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -21,36 +41,47 @@
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="65, 0, 0, 0"/>
+            <Setter Property="Margin" Value="{Binding Path=TextMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
             <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="Height" Value="45"/>
+            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="{x:Type local:HamburgerButton}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>           
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>            
-            <Setter Property="Template">                
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="TextMargin" Value="65, 3, 0, 0"/>
+            <Setter Property="IconMargin" Value="10, 0, 0, 7"/>
+            <Setter Property="IsEnabled" Value="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerMenu}, AncestorLevel=1}}"/>
+            <Setter Property="Command" Value="{Binding HamburgerClickedCommand}"/>
+            <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:HamburgerButton}">
-                        <Grid x:Name="Grid_Content">
-                            <!--Hamburger Button Marker Border-->
-                            <Border/>
+                        <Grid x:Name="Grid_Content" MouseLeftButtonDown="HamburgerButton_MouseLeftButtonDown">
+                            <Border x:Name="Border_Marker"/> <!--Hamburger Button Marker Border-->
                             <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <TextBlock/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" SourceName="Grid_Content" Value="True">
-                                <Setter TargetName="Grid_Content" Property="Background" Value="{DynamicResource Brush.Hamburger.Hover}"/>
+                                <Setter TargetName="Grid_Content" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Hover}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" SourceName="Grid_Content" Value="False">
-                                <Setter TargetName="Grid_Content" Property="Background" Value="{DynamicResource Brush.Hamburger.Background}"/>
+                                <Setter TargetName="Grid_Content" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Background}"/>
                             </Trigger>
+                            <EventTrigger RoutedEvent="Click">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource Animation.Hamburger.Button.Click}"/>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
                         </ControlTemplate.Triggers>
-                    </ControlTemplate>                    
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>    
+    </UserControl.Resources>
 </UserControl>

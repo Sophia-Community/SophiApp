@@ -7,22 +7,22 @@
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        WindowStartupLocation="CenterScreen" 
+        Loaded="Window_Loaded"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="ClearType">
     <Window.DataContext>
         <vm:AppVM/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" 
-                      GlassFrameThickness="0" CornerRadius="0"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
     <Window.Style>
         <Style TargetType="{x:Type Window}">
             <Setter Property="WindowStyle" Value="None" />
             <Setter Property="AllowsTransparency" Value="True" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="ResizeMode" Value="CanResize" />            
+            <Setter Property="ResizeMode" Value="CanResize" />
             <Setter Property="ShowInTaskbar" Value="True" />
             <Setter Property="MinHeight" Value="640"/>
             <Setter Property="MinWidth" Value="1024"/>
@@ -31,35 +31,41 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
             <Setter Property="Title" Value="{Binding AppName}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Regular"/>
             <Setter Property="FontStretch" Value="Normal"/>
             <Setter Property="FontStyle" Value="Normal"/>
         </Style>
-    </Window.Style>    
+    </Window.Style>
+    <Window.Resources>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+    </Window.Resources>    
     <!--Title and Content Grid-->
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <controls:WindowTitle/>
-        <!--Hamburger and Content Pages Grid-->
-        <Grid Grid.Row="1" ShowGridLines="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="251"/>
-                <ColumnDefinition Width="6*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <controls:HamburgerButton Grid.Column="0" Height="45"
-                                      IconMargin="10, 0, 0, 7" Icon="{StaticResource Icon.Privacy}"
-                                      Text="{DynamicResource Localization.Privacy}"/>
+    <Border>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <controls:WindowTitle/>
+            <!--Hamburger and Content Pages Grid-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="251"/>
+                    <ColumnDefinition Width="*"/>                    
+                </Grid.ColumnDefinitions>
+                <controls:HamburgerMenu Grid.Column="0"/>
+
+
+            </Grid>
+
 
 
         </Grid>
-        
-        
-
-    </Grid>
+    </Border>
 </Window>
