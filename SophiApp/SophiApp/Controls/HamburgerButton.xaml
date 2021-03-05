@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <converters:TagToVisibilityConverter x:Key="Tag.To.Visibility.Converter"/>
         <Storyboard x:Key="Animation.Hamburger.Button.Click">
-            <ThicknessAnimation Storyboard.TargetName="Grid_Content" 
+            <ThicknessAnimation Storyboard.TargetName="GridContent" 
                                 Storyboard.TargetProperty="Margin"
                                 Duration="0:0:0.3" 
                                 From="0, 0, 0, 0" 
@@ -61,17 +61,18 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:HamburgerButton}">
-                        <Grid x:Name="Grid_Content" MouseLeftButtonDown="HamburgerButton_MouseLeftButtonDown">
-                            <Border x:Name="Border_Marker"/> <!--Hamburger Button Marker Border-->
+                        <Grid x:Name="GridContent" MouseLeftButtonDown="HamburgerButton_MouseLeftButtonDown">
+                            <Border x:Name="BorderMarker"/>
+                            <!--Hamburger Button Marker Border-->
                             <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <TextBlock/>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" SourceName="Grid_Content" Value="True">
-                                <Setter TargetName="Grid_Content" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Hover}"/>
+                            <Trigger Property="IsMouseOver" SourceName="GridContent" Value="True">
+                                <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Hover}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" SourceName="Grid_Content" Value="False">
-                                <Setter TargetName="Grid_Content" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Background}"/>
+                            <Trigger Property="IsMouseOver" SourceName="GridContent" Value="False">
+                                <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Background}"/>
                             </Trigger>
                             <EventTrigger RoutedEvent="Click">
                                 <EventTrigger.Actions>

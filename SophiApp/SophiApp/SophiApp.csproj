@@ -80,6 +80,9 @@
     <Compile Include="Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SearchBar.xaml.cs">
+      <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TitleButtonClose.xaml.cs">
       <DependentUpon>TitleButtonClose.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,9 @@
     <Compile Include="Converters\TagToVisibilityConverter.cs" />
     <Compile Include="Helpers\Tags.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
+    <Compile Include="Views\TemplateViews.xaml.cs">
+      <DependentUpon>TemplateViews.xaml</DependentUpon>
+    </Compile>
     <Page Include="Commons\Constants.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SearchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,6 +151,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TemplateViews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,7 +203,9 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NoiseTexture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

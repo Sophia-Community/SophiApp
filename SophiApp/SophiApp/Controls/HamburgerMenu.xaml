@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <Style TargetType="{x:Type Border}">
             <Setter Property="Grid.Row" Value="1"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Hamburger.Separator.Background}"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="Margin" Value="0, 406, 0, 0"/>
+            <Setter Property="Margin" Value="0, 427, 0, 0"/>
         </Style>
         <Style TargetType="local:HamburgerMenu">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -22,80 +22,82 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:HamburgerMenu">
-                        <Grid Background="{DynamicResource Brush.Hamburger.AcrylicBackgroundLayer1}">
+                        <Grid Background="{DynamicResource Brush.MythicAcrylic.Layer.2}">
                             <Grid.RowDefinitions>                                
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="1" Background="{DynamicResource Brush.Hamburger.AcrylicBackgroundLayer2}">
+                            <Grid Grid.Row="1" Background="{DynamicResource Brush.MythicAcrylic.Layer.3}">
 
-                                <!--<local:HamburgerButton VerticalAlignment="Top"                                                   
+                                <local:HamburgerButton VerticalAlignment="Top"
+                                                       Margin="0, 21, 0, 0"
                                                        Icon="{DynamicResource Icon.Privacy}"
                                                        Text="{DynamicResource Localization.Privacy}"                                                   
                                                        Tag="{StaticResource Tags.Privacy}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 45, 0, 0"                                                   
+                                                       Margin="0, 66, 0, 0"                                                   
                                                        Icon="{DynamicResource Icon.Personalization}" 
                                                        Text="{DynamicResource Localization.Personalization}"
                                                        Tag="{StaticResource Tags.Personalization}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 90, 0, 0"                                                   
+                                                       Margin="0, 111, 0, 0"                                                   
                                                        Icon="{DynamicResource Icon.System}" 
                                                        Text="{DynamicResource Localization.System}"
                                                        Tag="{StaticResource Tags.System}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 135, 0, 0"                                                 
+                                                       Margin="0, 156, 0, 0"                                                 
                                                        Icon="{DynamicResource Icon.StartMenu}" 
                                                        Text="{DynamicResource Localization.StartMenu}"
                                                        Tag="{StaticResource Tags.StartMenu}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 180, 0, 0"
+                                                       Margin="0, 201, 0, 0"
                                                        IconMargin="21, 0, 0, 0"
                                                        Icon="{DynamicResource Icon.UwpApps}" 
                                                        Text="{DynamicResource Localization.UwpApps}"
                                                        Tag="{StaticResource Tags.UwpApps}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 225, 0, 0"
+                                                       Margin="0, 246, 0, 0"
                                                        IconMargin="8, 7, 0, 0"
                                                        Icon="{DynamicResource Icon.Games}" 
                                                        Text="{DynamicResource Localization.Games}"
                                                        Tag="{StaticResource Tags.Games}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 270, 0, 0"
+                                                       Margin="0, 291, 0, 0"
                                                        IconMargin="7, 8, 0, 0"
                                                        Icon="{DynamicResource Icon.TaskSheduler}" 
                                                        Text="{DynamicResource Localization.TaskSheduler}"
                                                        Tag="{StaticResource Tags.TaskSheduler}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 315, 0, 0"
+                                                       Margin="0, 336, 0, 0"
                                                        IconMargin="7, 7, 0, 0"
                                                        Icon="{DynamicResource Icon.Security}" 
                                                        Text="{DynamicResource Localization.Security}"
                                                        Tag="{StaticResource Tags.Security}"/>
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 360, 0, 0"
+                                                       Margin="0, 381, 0, 0"
                                                        IconMargin="6, 10, 0, 0"
                                                        Icon="{DynamicResource Icon.ContextMenu}" 
                                                        Text="{DynamicResource Localization.ContextMenu}"
                                                        Tag="{StaticResource Tags.ContextMenu}"/>
 
-                                <Border/> --><!--Hamburger Buttons Separator--><!--
-
+                                <Border/> <!--Hamburger Buttons Separator-->
 
                                 <local:HamburgerButton VerticalAlignment="Top" 
-                                                       Margin="0, 408, 0, 0"
+                                                       Margin="0, 429, 0, 0"
                                                        IconMargin="6, 7, 0, 0"
                                                        Icon="{DynamicResource Icon.Settings}" 
                                                        Text="{DynamicResource Localization.Settings}"
-                                                       Tag="{StaticResource Tags.Settings}"/>-->
+                                                       Tag="{StaticResource Tags.Settings}"/>
+
+                                <local:SearchBar VerticalAlignment="Top" Margin="10, 494, 10, 0"/>
 
                             </Grid>
 

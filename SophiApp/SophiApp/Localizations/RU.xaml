@@ -12,4 +12,5 @@
     <system:String x:Key="Localization.Security">Безопасность</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
+    <system:String x:Key="Localization.Search">Поиск</system:String>
 </ResourceDictionary>

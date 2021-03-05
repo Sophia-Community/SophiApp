@@ -17,6 +17,7 @@ namespace SophiApp.ViewModels
         private bool hamburgerIsEnabled = true;
 
         private RelayCommand hamburgerClickedCommand;
+        private RelayCommand searchClickedCommand;
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
 
@@ -46,6 +47,14 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
+        public RelayCommand SearchClickedCommand => searchClickedCommand ?? new RelayCommand(SearchClicked);
+
+        private void SearchClicked(object args)
+        {
+            var searchString = args as string;
+            //TODO : Search not implemented !!!
+            throw new NotImplementedException();
+        }
 
         private void HamburgerButtonClicked(object args)
         {
