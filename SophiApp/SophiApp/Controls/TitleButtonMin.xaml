@@ -22,27 +22,25 @@
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="Focusable" Value="False"/>
-            <Setter Property="Width" Value="35" />
-            <Setter Property="Height" Value="35" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="local:TitleButtonMin">
-                        <Grid x:Name="GridContent">
-                            <Viewbox>
-                                <Path x:Name="PathIcon" Data="M20,14H4V10H20" />
-                            </Viewbox>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="GridContent" Property="Background" Value="Transparent" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="False">
-                                <Setter TargetName="GridContent" Property="Background" Value="Transparent" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Height" Value="35"/>
         </Style>
     </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid x:Name="GridContent">
+                <Viewbox>
+                    <Path x:Name="PathIcon" Data="M20,14H4V10H20"/>
+                </Viewbox>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="GridContent" Property="Background" Value="Transparent"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter TargetName="GridContent" Property="Background" Value="Transparent"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
 </UserControl>

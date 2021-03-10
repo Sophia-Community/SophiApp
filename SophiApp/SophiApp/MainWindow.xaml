@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Loaded="Window_Loaded"
-        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType">
     <Window.DataContext>
         <vm:AppVM/>
@@ -29,7 +29,7 @@
             <Setter Property="MinWidth" Value="1024"/>
             <Setter Property="Height" Value="640"/>
             <Setter Property="Width" Value="1024"/>
-            <Setter Property="Background" Value="{DynamicResource Brush.MythicAcrylic.Layer.1}"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
             <Setter Property="Title" Value="{Binding AppName}"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>

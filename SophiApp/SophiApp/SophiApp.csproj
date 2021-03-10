@@ -204,8 +204,5 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\NoiseTexture.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

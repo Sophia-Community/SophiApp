@@ -6,43 +6,41 @@
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d"
              MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
-    
+
     <UserControl.Resources>
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Width" Value="16" />
-            <Setter Property="Height" Value="16" />
-            <Setter Property="Margin" Value="0, 0, 5, 5" />
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="16"/>
+            <Setter Property="Margin" Value="0, 0, 5, 5"/>
         </Style>
         <Style TargetType="Path">
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Foreground}"/>
         </Style>
         <Style TargetType="local:TitleButtonClose">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="Focusable" Value="False"/>
-            <Setter Property="Width" Value="35" />
-            <Setter Property="Height" Value="35" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="local:TitleButtonClose">
-                        <Grid x:Name="GridContent">
-                            <Viewbox>
-                                <Path x:Name="PathIcon" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-                            </Viewbox>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="GridContent" Property="Background" Value="Transparent" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="False">
-                                <Setter TargetName="GridContent" Property="Background" Value="Transparent" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Height" Value="35"/>
         </Style>
-    </UserControl.Resources>    
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid x:Name="GridContent">
+                <Viewbox>
+                    <Path x:Name="PathIcon" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                </Viewbox>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="GridContent" Property="Background" Value="Transparent"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter TargetName="GridContent" Property="Background" Value="Transparent"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
 </UserControl>

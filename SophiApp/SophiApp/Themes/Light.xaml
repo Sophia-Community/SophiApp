@@ -6,16 +6,15 @@
         <GradientStop Color="#ec939e" Offset="0.2"/>
         <GradientStop Color="#8b95e5" Offset="0.8"/>
     </LinearGradientBrush>    
-    <SolidColorBrush x:Key="Brush.Window.Title.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="Brush.Window.Title.Background" Color="#EFEFEF"/>
+    <SolidColorBrush x:Key="Brush.Window.Background" Color="#EFEFEF"/>
     <SolidColorBrush x:Key="Brush.Window.Foreground" Color="#000000"/>
     <SolidColorBrush x:Key="Brush.Window.Acсent" Color="#0078D4"/>
-    <SolidColorBrush x:Key="Brush.MythicAcrylic.Layer.1" Color="#EFEFEF" Opacity="0.90"/>
-    <SolidColorBrush x:Key="Brush.MythicAcrylic.Layer.2" Color="#EFEFEF" Opacity="0.30"/>
-    <ImageBrush x:Key="Brush.MythicAcrylic.Layer.3" ImageSource="pack://application:,,,/Images/NoiseTexture.png" TileMode="Tile" Opacity="0.02"/>
-    <SolidColorBrush x:Key="Brush.Hamburger.Button.Background" Color="#EFEFEF" Opacity="0.01"/>
+    <SolidColorBrush x:Key="Brush.Hamburger.Background" Color="#EFEFEF"/>
+    <SolidColorBrush x:Key="Brush.Hamburger.Button.Background" Color="#EFEFEF"/>
     <SolidColorBrush x:Key="Brush.Hamburger.Button.Hover" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Brush.Hamburger.Separator.Background" Color="#000000" Opacity="0.1"/>
-    <SolidColorBrush x:Key="Brush.View.Content.Background" Color="#FFFFFF" Opacity="0.70"/>
+    <SolidColorBrush x:Key="Brush.View.Content.Background" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Brush.View.Description.Background" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Brush.SearchBar.Foreground" Color="#D4D4D4"/>
     <SolidColorBrush x:Key="Brush.SearchBar.Background" Color="#FFFFFF"/>    
