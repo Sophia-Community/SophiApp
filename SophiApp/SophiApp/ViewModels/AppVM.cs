@@ -1,25 +1,20 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace SophiApp.ViewModels
 {
-    class AppVM : INotifyPropertyChanged
+    internal class AppVM : INotifyPropertyChanged
     {
         private string activeViewTag = Tags.Privacy;
-        private bool hamburgerIsEnabled = true;
-
+        private RelayCommand controlsClickedCommand;
         private RelayCommand hamburgerClickedCommand;
+        private bool hamburgerIsEnabled = true;
         private RelayCommand searchClickedCommand;
 
-        public string AppName => Application.Current.FindResource("CONST.AppName") as string;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Using tags defines the displayed View
@@ -34,11 +29,17 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public string AppName => Application.Current.FindResource("CONST.AppName") as string;
+        public RelayCommand ControlsClickedCommand => controlsClickedCommand ?? new RelayCommand(ControlsClicked);
+
+        public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
+
         /// <summary>
         /// Determines the Hamburger state
         /// </summary>
-        public bool HamburgerIsEnabled { 
-            get => hamburgerIsEnabled; 
+        public bool HamburgerIsEnabled
+        {
+            get => hamburgerIsEnabled;
             private set
             {
                 hamburgerIsEnabled = value;
@@ -46,13 +47,10 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
         public RelayCommand SearchClickedCommand => searchClickedCommand ?? new RelayCommand(SearchClicked);
 
-        private void SearchClicked(object args)
+        private void ControlsClicked(object args)
         {
-            var searchString = args as string;
-            //TODO : Search not implemented !!!
             throw new NotImplementedException();
         }
 
@@ -61,10 +59,15 @@ namespace SophiApp.ViewModels
             var tag = args as string;
 
             if (ActiveViewTag != tag) ActiveViewTag = tag;
-        }        
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
+
+        private void SearchClicked(object args)
+        {
+            var searchString = args as string;
+            //TODO : Search not implemented !!!
+            throw new NotImplementedException();
+        }
     }
 }

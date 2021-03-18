@@ -1,16 +1,15 @@
 ﻿<Application x:Class="SophiApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SophiApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>                
-                <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Localizations/RU.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Commons/Constants.xaml"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Localizations/RU.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Commons/Constants.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

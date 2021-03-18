@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -30,7 +28,6 @@ using System.Windows;
 
 //[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
 
-
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //где расположены словари ресурсов по конкретным тематикам
                                      //(используется, если ресурс не найден на странице,
@@ -40,7 +37,6 @@ using System.Windows;
                                               // в приложении или в каких-либо словарях ресурсов для конкретной темы)
 )]
 
-
 // Сведения о версии для сборки включают четыре следующих значения:
 //
 //      Основной номер версии
@@ -48,7 +44,7 @@ using System.Windows;
 //      Номер сборки
 //      Номер редакции
 //
-// Можно задать все значения или принять номера сборки и редакции по умолчанию 
+// Можно задать все значения или принять номера сборки и редакции по умолчанию
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]

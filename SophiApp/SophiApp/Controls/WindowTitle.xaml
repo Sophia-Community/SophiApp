@@ -1,44 +1,44 @@
 ﻿<UserControl x:Class="SophiApp.Controls.WindowTitle"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d"             
+             mc:Ignorable="d"
              MouseLeftButtonDown="WindowTitle_MouseLeftButtonDown">
-    
+
     <UserControl.Resources>
         <Style TargetType="{x:Type Ellipse}">
-            <Setter Property="Width" Value="12"/>
-            <Setter Property="Height" Value="12"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="10, 0, 0, 0"/>
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}"/>
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="10, 0, 0, 0" />
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
         </Style>
         <Style x:Key="Style.AppTitle.TextBlock" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Text" Value="{DynamicResource CONST.AppName}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="32, 0, 0, 0"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Text" Value="{DynamicResource CONST.AppName}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="32, 0, 0, 0" />
         </Style>
         <Style TargetType="{x:Type local:WindowTitle}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{DynamicResource Brush.Window.Background}">
-                <Ellipse/>
-                <TextBlock Style="{StaticResource Style.AppTitle.TextBlock}"/>                
-                <local:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <local:TitleButtonMin HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 35, 0"/>
+                <Ellipse />
+                <TextBlock Style="{StaticResource Style.AppTitle.TextBlock}" />
+                <local:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <local:TitleButtonMin HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 35, 0" />
             </Grid>
         </ControlTemplate>
-    </UserControl.Template>    
+    </UserControl.Template>
 </UserControl>
