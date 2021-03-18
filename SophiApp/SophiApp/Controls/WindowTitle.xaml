@@ -33,7 +33,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{DynamicResource Brush.Window.Title.Background}">
+            <Grid Background="{DynamicResource Brush.Window.Background}">
                 <Ellipse/>
                 <TextBlock Style="{StaticResource Style.AppTitle.TextBlock}"/>                
                 <local:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center"/>

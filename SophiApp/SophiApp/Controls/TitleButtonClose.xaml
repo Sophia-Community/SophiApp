@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d"
              MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
-
     <UserControl.Resources>
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center" />

@@ -10,8 +10,8 @@
     <UserControl.Resources>
         <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="2"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SearchBar.Foreground}"/>
-            <Setter Property="Background" Value="{DynamicResource Brush.SearchBar.Background}"/>
+            <Setter Property="BorderBrush" Value="{Binding ElementName=TextBoxSearch, Path=Foreground}"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="32"/>
             <Setter Property="Width" Value="231"/>
@@ -63,7 +63,7 @@
                                         Key="Return"/>
                         </TextBox.InputBindings>
                     </TextBox>
-                    <Grid Grid.Column="1" Background="{DynamicResource Brush.SearchBar.Background}">
+                    <Grid Grid.Column="1" Background="{DynamicResource Brush.Window.Background}">
                         <Grid.InputBindings>
                             <MouseBinding Command="{Binding SearchClickedCommand}" 
                                           CommandParameter="{Binding Path=Text, ElementName=TextBoxSearch}"
@@ -81,7 +81,7 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="IsFocused" Value="True">
                     <Setter TargetName="TextBoxSearch" Property="Text" Value="{x:Null}"/>
-                    <Setter TargetName="TextBoxSearch" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
+                    <Setter TargetName="TextBoxSearch" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>                    
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="False">
                     <Setter TargetName="TextBoxSearch" Property="Text" Value="{DynamicResource Localization.Search}"/>

@@ -8,8 +8,7 @@
         xmlns:view="clr-namespace:SophiApp.Views"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen" 
-        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
         TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType">
     <Window.DataContext>
@@ -60,8 +59,8 @@
                     <ColumnDefinition Width="251"/>
                     <ColumnDefinition Width="*"/>                    
                 </Grid.ColumnDefinitions>
-                <controls:HamburgerMenu Grid.Column="0"/>
-                <view:TemplateViews Grid.Column="1"/>
+                <controls:HamburgerMenu Grid.Column="0"/>                
+                <!--<view:TemplateViews Grid.Column="1"/>-->
             </Grid>
         </Grid>
     </Border>

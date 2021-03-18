@@ -69,10 +69,10 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" SourceName="GridContent" Value="True">
-                    <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Hover}"/>
+                    <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Hamburger.Hover}"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" SourceName="GridContent" Value="False">
-                    <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Hamburger.Button.Background}"/>
+                    <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
                 </Trigger>
                 <EventTrigger RoutedEvent="local:HamburgerButton.Click">
                     <EventTrigger.Actions>

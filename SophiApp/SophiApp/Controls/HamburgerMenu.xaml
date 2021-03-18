@@ -25,7 +25,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{DynamicResource Brush.Hamburger.Background}">
+            <Grid Background="{DynamicResource Brush.Window.Background}">
                 <local:HamburgerButton VerticalAlignment="Top"
                                                        Margin="0, 21, 0, 0"
                                                        Icon="{DynamicResource Icon.Privacy}"
