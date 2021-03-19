@@ -74,6 +74,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commons\RelayCommand.cs" />
+    <Compile Include="Controls\CheckBox.xaml.cs">
+      <DependentUpon>CheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Commons\Tags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

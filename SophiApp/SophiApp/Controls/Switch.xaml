@@ -14,92 +14,92 @@
                                 Storyboard.TargetProperty="Margin"
                                 From="{StaticResource Margin.Switch.Ellipse.Left}"
                                 To="{StaticResource Margin.Switch.Ellipse.Right}"
-                                Duration="0:0:0.3" />
+                                Duration="0:0:0.3"/>
         </Storyboard>
         <Storyboard x:Key="Animation.Switch.Margin.ToLeft">
             <ThicknessAnimation Storyboard.TargetName="EllipseSwitch"
                                 Storyboard.TargetProperty="Margin"
                                 From="{StaticResource Margin.Switch.Ellipse.Right}"
                                 To="{StaticResource Margin.Switch.Ellipse.Left}"
-                                Duration="0:0:0.3" />
+                                Duration="0:0:0.3"/>
         </Storyboard>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="Width" Value="40" />
-            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="20"/>
         </Style>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="{x:Type Ellipse}">
-            <Setter Property="Height" Value="10" />
-            <Setter Property="Width" Value="10" />
-            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}" />
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}"/>
         </Style>
         <Style TargetType="{x:Type local:Switch}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
                 <Border x:Name="BorderSwitch" MouseLeftButtonDown="Switch_MouseLeftButtonDown" MouseLeftButtonUp="Switch_MouseLeftButtonDown">
-                    <Ellipse x:Name="EllipseSwitch" />
+                    <Ellipse x:Name="EllipseSwitch"/>
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
-                    <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="2" />
-                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Switch.Border.Off}" />
-                    <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-                    <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="2"/>
+                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Switch.Border.Off}"/>
+                    <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
+                    <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}"/>
                 </Trigger>
 
                 <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="True">
-                    <Setter TargetName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}" />
+                    <Setter TargetName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="False">
-                    <Setter TargetName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}" />
+                    <Setter TargetName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
                 </DataTrigger>
 
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=IsClicked, RelativeSource={RelativeSource Self}}" Value="True" />
-                        <Condition Binding="{Binding Path=Margin, ElementName=EllipseSwitch}" Value="{StaticResource Margin.Switch.Ellipse.Left}" />
+                        <Condition Binding="{Binding Path=IsClicked, RelativeSource={RelativeSource Self}}" Value="True"/>
+                        <Condition Binding="{Binding Path=Margin, ElementName=EllipseSwitch}" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
                     </MultiDataTrigger.Conditions>
 
                     <MultiDataTrigger.EnterActions>
-                        <RemoveStoryboard BeginStoryboardName="StoryboardSwitchToLeft" />
+                        <RemoveStoryboard BeginStoryboardName="StoryboardSwitchToLeft"/>
                     </MultiDataTrigger.EnterActions>
 
                     <MultiDataTrigger.ExitActions>
-                        <BeginStoryboard x:Name="StoryboardSwitchToRight" Storyboard="{StaticResource Animation.Switch.Margin.ToRight}" />
+                        <BeginStoryboard x:Name="StoryboardSwitchToRight" Storyboard="{StaticResource Animation.Switch.Margin.ToRight}"/>
                     </MultiDataTrigger.ExitActions>
                 </MultiDataTrigger>
 
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=IsClicked, RelativeSource={RelativeSource Self}}" Value="True" />
-                        <Condition Binding="{Binding Path=Margin, ElementName=EllipseSwitch}" Value="{StaticResource Margin.Switch.Ellipse.Right}" />
+                        <Condition Binding="{Binding Path=IsClicked, RelativeSource={RelativeSource Self}}" Value="True"/>
+                        <Condition Binding="{Binding Path=Margin, ElementName=EllipseSwitch}" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
                     </MultiDataTrigger.Conditions>
 
                     <MultiDataTrigger.EnterActions>
-                        <RemoveStoryboard BeginStoryboardName="StoryboardSwitchToRight" />
+                        <RemoveStoryboard BeginStoryboardName="StoryboardSwitchToRight"/>
                     </MultiDataTrigger.EnterActions>
 
                     <MultiDataTrigger.ExitActions>
-                        <BeginStoryboard x:Name="StoryboardSwitchToLeft" Storyboard="{StaticResource Animation.Switch.Margin.ToLeft}" />
+                        <BeginStoryboard x:Name="StoryboardSwitchToLeft" Storyboard="{StaticResource Animation.Switch.Margin.ToLeft}"/>
                     </MultiDataTrigger.ExitActions>
                 </MultiDataTrigger>
             </ControlTemplate.Triggers>

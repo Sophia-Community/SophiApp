@@ -8,29 +8,29 @@
 
     <UserControl.Resources>
         <Style x:Key="Style.Panel.View.Content" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}" />
-            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}"/>
+            <Setter Property="Grid.Column" Value="0"/>
         </Style>
         <Style x:Key="Style.Panel.View.Description" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Description.Background}" />
-            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Description.Background}"/>
+            <Setter Property="Grid.Column" Value="1"/>
         </Style>
         <Style TargetType="{x:Type local:TemplateViews}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:TemplateViews}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6*" />
-                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Style="{StaticResource Style.Panel.View.Content}" />
-                            <StackPanel Style="{StaticResource Style.Panel.View.Description}" />
+                            <StackPanel Style="{StaticResource Style.Panel.View.Content}"/>
+                            <StackPanel Style="{StaticResource Style.Panel.View.Description}"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
