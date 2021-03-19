@@ -16,6 +16,7 @@
     <SolidColorBrush x:Key="Brush.SearchBar.Foreground" Color="#D4D4D4"/>
     <SolidColorBrush x:Key="Brush.Switch.Border.Off" Color="#000000" Opacity="0.6"/>
     <SolidColorBrush x:Key="Brush.CheckBox.Border.Off" Color="#454545"/>
+    <SolidColorBrush x:Key="Brush.RoundCheckBox.Border.Off" Color="#454545"/>
     <Viewbox x:Key="Icon.Privacy" x:Shared="False" Width="25" Height="25">
         <Canvas Width="25" Height="25" Effect="{StaticResource Effect.DropShadow.Hamburger.Icon}">
             <Path Data="M23.2297 7.66421L21.886 5.9146C21.7155 5.69277 21.4515 5.5625 21.1717 5.5625H13.0332C12.5358 5.5625 12.1326 5.96571 12.1326 6.46315V20.083H34.8674V8.91676C34.8674 8.41933 34.4642 8.01611 33.9668 8.01611H23.9438C23.664 8.01611 23.4 7.88603 23.2297 7.66421Z" Fill="#0078D4"/>

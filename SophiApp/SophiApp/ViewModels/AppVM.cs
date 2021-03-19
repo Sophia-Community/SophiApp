@@ -51,7 +51,7 @@ namespace SophiApp.ViewModels
 
         private void ControlsClicked(object args)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void HamburgerButtonClicked(object args)

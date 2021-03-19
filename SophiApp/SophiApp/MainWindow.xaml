@@ -84,8 +84,7 @@
                     <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Tag="19"/>
                     <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Tag="20"/>                    
                 </StackPanel>-->
-                <!--Debug only !!!-->                
-
+                <!--Debug only !!!-->
                 <!--<view:TemplateViews Grid.Column="1"/>-->
             </Grid>
         </Grid>
