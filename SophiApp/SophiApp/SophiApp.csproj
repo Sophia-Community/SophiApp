@@ -89,6 +89,9 @@
     <Compile Include="Controls\RoundCheckBox.xaml.cs">
       <DependentUpon>RoundCheckBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RoundCheckBoxBar.xaml.cs">
+      <DependentUpon>RoundCheckBoxBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RoundCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RoundCheckBoxBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
