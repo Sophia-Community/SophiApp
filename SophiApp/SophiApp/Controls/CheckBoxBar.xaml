@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="SophiApp.Controls.SwitchBar"
+﻿<UserControl x:Class="SophiApp.Controls.CheckBoxBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
-
+    
     <UserControl.Resources>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="MinWidth" Value="450"/>
@@ -18,7 +18,7 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
-        <Style TargetType="{x:Type local:SwitchBar}">
+        <Style TargetType="{x:Type local:CheckBoxBar}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="Focusable" Value="False"/>
@@ -35,11 +35,11 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Margin="0" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
-                <local:Switch Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <local:Switch.InputBindings>
+                <local:CheckBox Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <local:CheckBox.InputBindings>
                         <MouseBinding Command="{Binding ControlsClickedCommand}" CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" MouseAction="LeftClick"/>
-                    </local:Switch.InputBindings>
-                </local:Switch>
+                    </local:CheckBox.InputBindings>
+                </local:CheckBox>
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

@@ -73,6 +73,16 @@
                     <controls:SwitchBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Tag="9"/>
                     <controls:SwitchBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="10"/>
                     <controls:SwitchBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Tag="11"/>
+                    
+                    <controls:CheckBoxBar Header="Показывать кнопку Просмотра задач" Tag="12"/>
+                    <controls:CheckBoxBar Header="Показывать панель Люди на панели задач" Tag="13"/>
+                    <controls:CheckBoxBar Header="Отображать секунды в системных часах на панели задач" Tag="14"/>
+                    <controls:CheckBoxBar Header="При прикреплении окна не показывать, что можно прикрепить рядом с ним" Tag="15"/>
+                    <controls:CheckBoxBar Header="Всегда открывать диалоговое окно передачи файлов" Tag="16"/>
+                    <controls:CheckBoxBar Header="Запускать проводник со свернутой лентой" Tag="17"/>
+                    <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Tag="18"/>
+                    <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Tag="19"/>
+                    <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Tag="20"/>                    
                 </StackPanel>-->
                 <!--Debug only !!!-->                
 
