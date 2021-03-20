@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="SophiApp.Views.PrivacyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiApp.Views"
+             xmlns:controls="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Description">
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Description.Background}"/>
+            <Setter Property="Grid.Column" Value="2"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0, 5, 0, 0"/>
+        </Style>
+        <Style TargetType="{x:Type local:PrivacyView}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid Background="{DynamicResource Brush.View.Content.Background}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <!--Content Grid-->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource Style.TextBlock.Header}" Text="{StaticResource Localization.Privacy}"/>
+                    <ScrollViewer Grid.Row="1">
+                        <!--DEBUG-->
+                        <StackPanel>
+                            <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Tag="1"/>
+                            <controls:SwitchBar Header="Включить обнаружение потенциально нежелательных приложений и блокировать их" Tag="2"/>
+                            <controls:SwitchBar Header="Включить песочницу для Microsoft Defender " Tag="3"/>
+                            <controls:SwitchBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="4"/>
+                            <controls:SwitchBar Header="Включать командную строку в событиях создания процесса" Tag="5"/>
+                            <controls:SwitchBar Header="Создать настаиваемое представление Создание процесса в Просмотре событий" Tag="6"/>
+                            <controls:SwitchBar Header="Включить ведение журнала для всех модулей Windows PowerShell" Tag="7"/>
+                            <controls:RoundCheckBoxBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Tag="9"/>
+                            <controls:RoundCheckBoxBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="10"/>
+                            <controls:RoundCheckBoxBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Tag="11"/>
+
+                            <controls:RoundCheckBoxBar Header="Показывать кнопку Просмотра задач" Tag="12"/>
+                            <controls:RoundCheckBoxBar Header="Показывать панель Люди на панели задач" Tag="13"/>
+                            <controls:RoundCheckBoxBar Header="Отображать секунды в системных часах на панели задач" Tag="14"/>
+                            <controls:CheckBoxBar Header="При прикреплении окна не показывать, что можно прикрепить рядом с ним" Tag="15"/>
+                            <controls:CheckBoxBar Header="Всегда открывать диалоговое окно передачи файлов" Tag="16"/>
+                            <controls:CheckBoxBar Header="Запускать проводник со свернутой лентой" Tag="17"/>
+                            <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Tag="18"/>
+                            <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Tag="19"/>
+                            <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Tag="20"/>
+                        </StackPanel>
+                        <!--DEBUG-->
+                    </ScrollViewer>
+                </Grid>
+                <StackPanel Style="{DynamicResource Style.Panel.Description}">
+                    <!--DEBUG-->
+                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}" Text="Таким образом рамки и место обучения кадров позволяет выполнять важные задания по разработке систем массового участия. Товарищи! укрепление и развитие структуры требуют от нас анализа систем массового участия."/>
+                    <!--DEBUG-->
+                </StackPanel>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

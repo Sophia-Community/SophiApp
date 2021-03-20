@@ -27,72 +27,73 @@
         <ControlTemplate>
             <Grid Background="{DynamicResource Brush.Window.Background}">
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 21, 0, 0"
-                                                       Icon="{DynamicResource Icon.Privacy}"
-                                                       Text="{DynamicResource Localization.Privacy}"
-                                                       Tag="{StaticResource Tags.Privacy}"/>
+                                       Margin="0, 20, 0, 0"
+                                       Icon="{DynamicResource Icon.Privacy}"
+                                       Text="{DynamicResource Localization.Privacy}"
+                                       Tag="{StaticResource Tags.Privacy}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 66, 0, 0"
-                                                       Icon="{DynamicResource Icon.Personalization}"
-                                                       Text="{DynamicResource Localization.Personalization}"
-                                                       Tag="{StaticResource Tags.Personalization}"/>
+                                       Margin="0, 65, 0, 0"
+                                       Icon="{DynamicResource Icon.Personalization}"
+                                       Text="{DynamicResource Localization.Personalization}"
+                                       Tag="{StaticResource Tags.Personalization}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 111, 0, 0"
-                                                       Icon="{DynamicResource Icon.System}"
-                                                       Text="{DynamicResource Localization.System}"
-                                                       Tag="{StaticResource Tags.System}"/>
+                                       Margin="0, 110, 0, 0"
+                                       Icon="{DynamicResource Icon.System}"
+                                       Text="{DynamicResource Localization.System}"
+                                       Tag="{StaticResource Tags.System}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 156, 0, 0"
-                                                       Icon="{DynamicResource Icon.StartMenu}"
-                                                       Text="{DynamicResource Localization.StartMenu}"
-                                                       Tag="{StaticResource Tags.StartMenu}"/>
+                                       Margin="0, 155, 0, 0"
+                                       Icon="{DynamicResource Icon.StartMenu}"
+                                       Text="{DynamicResource Localization.StartMenu}"
+                                       Tag="{StaticResource Tags.StartMenu}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 201, 0, 0"
-                                                       IconMargin="21, 0, 0, 0"
-                                                       Icon="{DynamicResource Icon.UwpApps}"
-                                                       Text="{DynamicResource Localization.UwpApps}"
-                                                       Tag="{StaticResource Tags.UwpApps}"/>
+                                       Margin="0, 200, 0, 0"
+                                       IconMargin="21, 0, 0, 0"
+                                       Icon="{DynamicResource Icon.UwpApps}"
+                                       Text="{DynamicResource Localization.UwpApps}"
+                                       Tag="{StaticResource Tags.UwpApps}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 246, 0, 0"
-                                                       IconMargin="8, 7, 0, 0"
-                                                       Icon="{DynamicResource Icon.Games}"
-                                                       Text="{DynamicResource Localization.Games}"
-                                                       Tag="{StaticResource Tags.Games}"/>
+                                       Margin="0, 245, 0, 0"
+                                       IconMargin="8, 7, 0, 0"
+                                       Icon="{DynamicResource Icon.Games}"
+                                       Text="{DynamicResource Localization.Games}"
+                                       Tag="{StaticResource Tags.Games}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 291, 0, 0"
-                                                       IconMargin="7, 8, 0, 0"
-                                                       Icon="{DynamicResource Icon.TaskSheduler}"
-                                                       Text="{DynamicResource Localization.TaskSheduler}"
-                                                       Tag="{StaticResource Tags.TaskSheduler}"/>
+                                       Margin="0, 290, 0, 0"
+                                       IconMargin="7, 8, 0, 0"
+                                       Icon="{DynamicResource Icon.TaskSheduler}"
+                                       Text="{DynamicResource Localization.TaskSheduler}"
+                                       Tag="{StaticResource Tags.TaskSheduler}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 336, 0, 0"
-                                                       IconMargin="7, 7, 0, 0"
-                                                       Icon="{DynamicResource Icon.Security}"
-                                                       Text="{DynamicResource Localization.Security}"
-                                                       Tag="{StaticResource Tags.Security}"/>
+                                       Margin="0, 335, 0, 0"
+                                       IconMargin="7, 7, 0, 0"
+                                       Icon="{DynamicResource Icon.Security}"
+                                       Text="{DynamicResource Localization.Security}"
+                                       Tag="{StaticResource Tags.Security}"/>
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 381, 0, 0"
-                                                       IconMargin="6, 10, 0, 0"
-                                                       Icon="{DynamicResource Icon.ContextMenu}"
-                                                       Text="{DynamicResource Localization.ContextMenu}"
-                                                       Tag="{StaticResource Tags.ContextMenu}"/>
+                                       Margin="0, 380, 0, 0"
+                                       IconMargin="6, 10, 0, 0"
+                                       Icon="{DynamicResource Icon.ContextMenu}"
+                                       Text="{DynamicResource Localization.ContextMenu}"
+                                       Tag="{StaticResource Tags.ContextMenu}"/>
 
-                <Border/> <!--Hamburger Buttons Separator-->
+                <Border/>
+                <!--Hamburger Buttons Separator-->
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                                       Margin="0, 429, 0, 0"
-                                                       IconMargin="6, 7, 0, 0"
-                                                       Icon="{DynamicResource Icon.Settings}"
-                                                       Text="{DynamicResource Localization.Settings}"
-                                                       Tag="{StaticResource Tags.Settings}"/>
+                                       Margin="0, 429, 0, 0"
+                                       IconMargin="6, 7, 0, 0"
+                                       Icon="{DynamicResource Icon.Settings}"
+                                       Text="{DynamicResource Localization.Settings}"
+                                       Tag="{StaticResource Tags.Settings}"/>
 
                 <local:SearchBar VerticalAlignment="Top" Margin="10, 494, 10, 0"/>
             </Grid>

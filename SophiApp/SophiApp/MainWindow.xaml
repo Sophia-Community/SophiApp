@@ -18,16 +18,16 @@
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
     <Window.Style>
-        <Style TargetType="{x:Type Window}">
+        <Style TargetType="{x:Type Window}">            
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="AllowsTransparency" Value="False"/>
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="ResizeMode" Value="CanResize"/>
             <Setter Property="ShowInTaskbar" Value="True"/>
-            <Setter Property="MinHeight" Value="640"/>
-            <Setter Property="MinWidth" Value="1024"/>
-            <Setter Property="Height" Value="640"/>
-            <Setter Property="Width" Value="1024"/>
+            <Setter Property="MinHeight" Value="740"/>
+            <Setter Property="MinWidth" Value="1124"/>
+            <Setter Property="Height" Value="740"/>
+            <Setter Property="Width" Value="1124"/>
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
             <Setter Property="Title" Value="{Binding AppName}"/>
@@ -45,47 +45,66 @@
             <Setter Property="CornerRadius" Value="0"/>
         </Style>
     </Window.Resources>
-    <!--Title and Content Grid-->
     <Border>
+        <!--Window Title and Content Grid-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <controls:WindowTitle/>
-            <!--Hamburger and Content Views Grid-->
+            <!--Window Title Grid-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Left Window Title-->
+                <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
+                    <controls:TitleWindow.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse>
+                                <Ellipse.Style>
+                                    <Style TargetType="{x:Type Ellipse}">
+                                        <Setter Property="Width" Value="12"/>
+                                        <Setter Property="Height" Value="12"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                        <Setter Property="Margin" Value="10, 0, 10, 0"/>
+                                        <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}"/>
+                                    </Style>
+                                </Ellipse.Style>
+                            </Ellipse>
+                            <TextBlock>
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="Text" Value="{DynamicResource CONST.AppName}"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                    </controls:TitleWindow.Content>
+                </controls:TitleWindow>
+                <!--Right Window Title-->
+                <controls:TitleWindow Grid.Column="1" Background="{DynamicResource Brush.View.Content.Background}">
+                    <controls:TitleWindow.Content>
+                        <Grid>
+                            <controls:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <controls:TitleButtonMin HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 35, 0"/>
+                        </Grid>
+                    </controls:TitleWindow.Content>
+                </controls:TitleWindow>
+            </Grid>
+            <!--Hamburger and View Grid-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="251"/>
+                    <ColumnDefinition Width="250"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0"/>
-
-                <!--Debug only !!!-->
-                <!--<StackPanel Grid.Column="1">
-                    <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Tag="1"/>
-                    <controls:SwitchBar Header="Включить обнаружение потенциально нежелательных приложений и блокировать их" Tag="2"/>
-                    <controls:SwitchBar Header="Включить песочницу для Microsoft Defender " Tag="3"/>
-                    <controls:SwitchBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="4"/>
-                    <controls:SwitchBar Header="Включать командную строку в событиях создания процесса" Tag="5"/>
-                    <controls:SwitchBar Header="Создать настаиваемое представление Создание процесса в Просмотре событий" Tag="6"/>
-                    <controls:SwitchBar Header="Включить ведение журнала для всех модулей Windows PowerShell" Tag="7"/>
-                    <controls:SwitchBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Tag="9"/>
-                    <controls:SwitchBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="10"/>
-                    <controls:SwitchBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Tag="11"/>
-                    
-                    <controls:CheckBoxBar Header="Показывать кнопку Просмотра задач" Tag="12"/>
-                    <controls:CheckBoxBar Header="Показывать панель Люди на панели задач" Tag="13"/>
-                    <controls:CheckBoxBar Header="Отображать секунды в системных часах на панели задач" Tag="14"/>
-                    <controls:CheckBoxBar Header="При прикреплении окна не показывать, что можно прикрепить рядом с ним" Tag="15"/>
-                    <controls:CheckBoxBar Header="Всегда открывать диалоговое окно передачи файлов" Tag="16"/>
-                    <controls:CheckBoxBar Header="Запускать проводник со свернутой лентой" Tag="17"/>
-                    <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Tag="18"/>
-                    <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Tag="19"/>
-                    <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Tag="20"/>                    
-                </StackPanel>-->
-                <!--Debug only !!!-->
-                <!--<view:TemplateViews Grid.Column="1"/>-->
+                <view:PrivacyView Grid.Column="1" Tag="{StaticResource Localization.Privacy}"/>
             </Grid>
         </Grid>
     </Border>

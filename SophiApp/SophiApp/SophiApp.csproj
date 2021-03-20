@@ -107,14 +107,14 @@
     <Compile Include="Controls\TitleButtonMin.xaml.cs">
       <DependentUpon>TitleButtonMin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WindowTitle.xaml.cs">
-      <DependentUpon>WindowTitle.xaml</DependentUpon>
+    <Compile Include="Controls\TitleWindow.xaml.cs">
+      <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\TagToVisibilityConverter.cs" />
     <Compile Include="Helpers\Tags.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
-    <Compile Include="Views\TemplateViews.xaml.cs">
-      <DependentUpon>TemplateViews.xaml</DependentUpon>
+    <Compile Include="Views\PrivacyView.xaml.cs">
+      <DependentUpon>PrivacyView.xaml</DependentUpon>
     </Compile>
     <Page Include="Commons\Constants.xaml">
       <SubType>Designer</SubType>
@@ -168,7 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WindowTitle.xaml">
+    <Page Include="Controls\TitleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,7 +196,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TemplateViews.xaml">
+    <Page Include="Views\PrivacyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

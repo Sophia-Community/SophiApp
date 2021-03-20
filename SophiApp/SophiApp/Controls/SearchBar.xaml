@@ -14,7 +14,7 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="32"/>
-            <Setter Property="Width" Value="231"/>
+            <Setter Property="Width" Value="230"/>
         </Style>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="Width" Value="193"/>
