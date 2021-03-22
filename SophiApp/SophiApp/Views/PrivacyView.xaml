@@ -48,7 +48,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" Text="{StaticResource Localization.Privacy}"/>
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer BorderBrush="{DynamicResource Brush.ScrollViewer.Thumb}" Grid.Row="1">
                         <!--DEBUG-->
                         <StackPanel>
                             <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Tag="1"/>
@@ -83,4 +83,5 @@
             </Grid>
         </ControlTemplate>
     </UserControl.Template>
+    <ScrollViewer Height="100" Width="100"/>
 </UserControl>

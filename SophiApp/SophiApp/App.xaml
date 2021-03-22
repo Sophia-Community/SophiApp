@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Localizations/RU.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Commons/Constants.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Commons/ScrollViewer.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
