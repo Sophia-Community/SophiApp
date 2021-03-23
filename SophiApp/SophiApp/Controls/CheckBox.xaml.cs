@@ -35,7 +35,6 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register("IsChecked", typeof(bool), typeof(CheckBox), new PropertyMetadata(default(bool)));
 
-        private void CheckBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsChecked = !IsChecked;
-        
+        private void CheckBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsChecked = !IsChecked;   
     }
 }

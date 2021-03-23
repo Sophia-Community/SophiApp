@@ -11,6 +11,7 @@
             <Setter Property="MinWidth" Value="450"/>
             <Setter Property="MinHeight" Value="20"/>
             <Setter Property="Margin" Value="0, 0, 0, 20"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
@@ -28,7 +29,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
+            <Grid MouseEnter="RoundCheckBoxBar_MouseEnter" MouseLeave="RoundCheckBoxBar_MouseLeave">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="20"/>

@@ -11,12 +11,13 @@
             <Setter Property="MinWidth" Value="450"/>
             <Setter Property="MinHeight" Value="20"/>
             <Setter Property="Margin" Value="0, 0, 0, 20"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>            
         </Style>
         <Style TargetType="{x:Type local:CheckBoxBar}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -28,7 +29,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
+            <Grid MouseEnter="CheckBoxBar_MouseEnter" MouseLeave="CheckBoxBar_MouseLeave">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="20"/>

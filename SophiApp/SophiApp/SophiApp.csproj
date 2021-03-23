@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Converters\TagToVisibilityConverter.cs" />
     <Compile Include="Helpers\Tags.cs" />
+    <Compile Include="Interfaces\IUIElement.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Compile Include="Views\PrivacyView.xaml.cs">
       <DependentUpon>PrivacyView.xaml</DependentUpon>
@@ -246,7 +247,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

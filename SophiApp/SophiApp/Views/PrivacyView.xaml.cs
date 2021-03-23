@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SophiApp.Interfaces;
 
 namespace SophiApp.Views
 {
@@ -25,9 +26,26 @@ namespace SophiApp.Views
             InitializeComponent();
         }
 
-        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        public string Description
         {
+            get { return (string)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DescriptionProperty =
+            DependencyProperty.Register("Description", typeof(string), typeof(PrivacyView), new PropertyMetadata(default(string)));
+
+        private void UIElement_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Description = (e.OriginalSource as IUIElement).Description;
+        }
+
+        private void UIElement_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Description = string.Empty;
         }
     }
 }

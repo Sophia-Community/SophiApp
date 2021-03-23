@@ -5,7 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Views"
              xmlns:controls="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d">
+             xmlns:interfaces="clr-namespace:SophiApp.Interfaces"
+             mc:Ignorable="d"
+             controls:CheckBoxBar.MouseEnter="UIElement_MouseEnter"
+             controls:CheckBoxBar.MouseLeave="UIElement_MouseLeave"
+             controls:RoundCheckBoxBar.MouseEnter="UIElement_MouseEnter"
+             controls:RoundCheckBoxBar.MouseLeave="UIElement_MouseLeave">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Description">
@@ -14,7 +19,8 @@
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource AncestorType={x:Type local:PrivacyView}}}"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
             <Setter Property="FontSize" Value="28"/>
@@ -51,33 +57,24 @@
                     <ScrollViewer BorderBrush="{DynamicResource Brush.ScrollViewer.Thumb}" Grid.Row="1">
                         <!--DEBUG-->
                         <StackPanel>
-                            <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Tag="1"/>
-                            <controls:SwitchBar Header="Включить обнаружение потенциально нежелательных приложений и блокировать их" Tag="2"/>
-                            <controls:SwitchBar Header="Включить песочницу для Microsoft Defender " Tag="3"/>
-                            <controls:SwitchBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="4"/>
-                            <controls:SwitchBar Header="Включать командную строку в событиях создания процесса" Tag="5"/>
-                            <controls:SwitchBar Header="Создать настаиваемое представление Создание процесса в Просмотре событий" Tag="6"/>
-                            <controls:SwitchBar Header="Включить ведение журнала для всех модулей Windows PowerShell" Tag="7"/>
-                            <controls:RoundCheckBoxBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Tag="9"/>
-                            <controls:RoundCheckBoxBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Tag="10"/>
-                            <controls:RoundCheckBoxBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Tag="11"/>
+                            <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Description="Потонула деревня в ухабинах, Заслонили избенки леса. Только видно на кочках и впадинах, Как синеют кругом небеса." Tag="1"/>
+                            <controls:SwitchBar Header="Включить обнаружение потенциально нежелательных приложений и блокировать их" Description="Воют в сумерки долгие, зимние, Волки грозные с тощих полей. По дворам в погорающем инее. Над застрехами храп лошадей." Tag="2"/>
+                            <controls:SwitchBar Header="Включить песочницу для Microsoft Defender" Description="Как совиные глазки за ветками, Смотрят в шали пурги огоньки. И стоят за дубровными сетками, Словно нечисть лесная, пеньки." Tag="3"/>
 
-                            <controls:RoundCheckBoxBar Header="Показывать кнопку Просмотра задач" Tag="12"/>
-                            <controls:RoundCheckBoxBar Header="Показывать панель Люди на панели задач" Tag="13"/>
-                            <controls:RoundCheckBoxBar Header="Отображать секунды в системных часах на панели задач" Tag="14"/>
-                            <controls:CheckBoxBar Header="При прикреплении окна не показывать, что можно прикрепить рядом с ним" Tag="15"/>
-                            <controls:CheckBoxBar Header="Всегда открывать диалоговое окно передачи файлов" Tag="16"/>
-                            <controls:CheckBoxBar Header="Запускать проводник со свернутой лентой" Tag="17"/>
-                            <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Tag="18"/>
-                            <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Tag="19"/>
-                            <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Tag="20"/>
+                            <controls:RoundCheckBoxBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Description="Запугала нас сила нечистая, Что ни прорубь — везде колдуны. В злую заморозь в сумерки мглистые На березках висят галуны." Tag="9"/>
+                            <controls:RoundCheckBoxBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Description="Но люблю тебя, родина кроткая! А за что — разгадать не могу. Весела твоя радость короткая С громкой песней весной на лугу." Tag="10"/>
+                            <controls:RoundCheckBoxBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Description="Я люблю над покосной стоянкою. Слушать вечером гуд комаров. А как гаркнут ребята тальянкою, Выйдут девки плясать у костров." Tag="11"/>
+
+                            <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Description="Загорятся, как черна смородина, Угли-очи в подковах бровей. Ой ты, Русь моя, милая родина, Сладкий отдых в шелку купырей." Tag="18"/>
+                            <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Description="Понакаркали черные вороны Грозным бедам широкий простор. Крутит вихорь леса во все стороны, Машет саваном пена с озер." Tag="19"/>
+                            <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Description="Грянул гром, чашка неба расколота, Тучи рваные кутают лес. На подвесках из легкого золота. Закачались лампадки небес." Tag="20"/>
                         </StackPanel>
                         <!--DEBUG-->
                     </ScrollViewer>
                 </Grid>
                 <StackPanel Style="{DynamicResource Style.Panel.Description}">
                     <!--DEBUG-->
-                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}" Text="Таким образом рамки и место обучения кадров позволяет выполнять важные задания по разработке систем массового участия. Товарищи! укрепление и развитие структуры требуют от нас анализа систем массового участия."/>
+                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
                     <!--DEBUG-->
                 </StackPanel>
             </Grid>
