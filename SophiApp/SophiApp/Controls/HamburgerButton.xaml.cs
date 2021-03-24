@@ -75,7 +75,7 @@ namespace SophiApp.Controls
         private void HamburgerButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(ClickEvent));
-            Command.Execute(Tag);
+            Command?.Execute(Tag);
         }
     }
 }
