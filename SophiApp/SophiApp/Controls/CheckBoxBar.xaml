@@ -1,45 +1,45 @@
 ﻿<UserControl x:Class="SophiApp.Controls.CheckBoxBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
-    
+
     <UserControl.Resources>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="MinWidth" Value="450"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="Margin" Value="0, 0, 0, 20"/>
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}"/>
+            <Setter Property="MinWidth" Value="450" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>            
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <Style TargetType="{x:Type local:CheckBoxBar}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid MouseEnter="CheckBoxBar_MouseEnter" MouseLeave="CheckBoxBar_MouseLeave">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="TextBlockHeader" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <TextBlock x:Name="TextBlockHeader" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
                 <local:CheckBox x:Name="CheckBox" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <local:CheckBox.InputBindings>
-                        <MouseBinding Command="{Binding ControlsClickedCommand}" CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" MouseAction="LeftClick"/>
+                        <MouseBinding Command="{Binding ControlsClickedCommand}" CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" MouseAction="LeftClick" />
                     </local:CheckBox.InputBindings>
                 </local:CheckBox>
             </Grid>
