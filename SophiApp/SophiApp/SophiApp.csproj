@@ -74,6 +74,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commons\RelayCommand.cs" />
+    <Compile Include="Controls\Button.xaml.cs">
+      <DependentUpon>Button.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ButtonSwitch.xaml.cs">
       <DependentUpon>ButtonSwitch.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Commons\Tags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

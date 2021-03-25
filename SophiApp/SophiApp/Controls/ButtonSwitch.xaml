@@ -8,74 +8,74 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
         <Style x:Key="BorderOff" TargetType="{x:Type Border}">
-            <Setter Property="BorderThickness" Value="1, 1, 0, 1" />
-            <Setter Property="CornerRadius" Value="2, 0, 0, 2" />
-            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="BorderThickness" Value="1, 1, 0, 1"/>
+            <Setter Property="CornerRadius" Value="2, 0, 0, 2"/>
+            <Setter Property="Grid.Column" Value="0"/>
         </Style>
         <Style x:Key="BorderOn" TargetType="{x:Type Border}">
-            <Setter Property="BorderThickness" Value="0, 1, 1, 1" />
-            <Setter Property="CornerRadius" Value="0, 2, 2, 0" />
-            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="BorderThickness" Value="0, 1, 1, 1"/>
+            <Setter Property="CornerRadius" Value="0, 2, 2, 0"/>
+            <Setter Property="Grid.Column" Value="1"/>
         </Style>
         <Style TargetType="{x:Type local:ButtonSwitch}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="Width" Value="230" />
-            <Setter Property="Height" Value="32" />
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="Width" Value="230"/>
+            <Setter Property="Height" Value="32"/>
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border x:Name="BorderOff" MouseLeftButtonDown="BorderOff_MouseLeftButtonDown" Style="{DynamicResource BorderOff}">
-                    <TextBlock x:Name="TextBlockOff" Text="{Binding Path=TextOff, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock x:Name="TextBlockOff" Text="{Binding Path=TextOff, RelativeSource={RelativeSource TemplatedParent}}"/>
                 </Border>
                 <Border x:Name="BorderOn" MouseLeftButtonDown="BorderOn_MouseLeftButtonDown" Style="{DynamicResource BorderOn}">
-                    <TextBlock x:Name="TextBlockOn" Text="{Binding Path=TextOn, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock x:Name="TextBlockOn" Text="{Binding Path=TextOn, RelativeSource={RelativeSource TemplatedParent}}"/>
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="False">
-                    <Setter TargetName="BorderOff" Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
-                    <Setter TargetName="BorderOff" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
-                    <Setter TargetName="TextBlockOff" Property="Foreground" Value="{DynamicResource Brush.Window.Background}" />
-                    <Setter TargetName="BorderOn" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-                    <Setter TargetName="BorderOn" Property="BorderBrush" Value="{DynamicResource Brush.ButtonSwitch.Border}" />
-                    <Setter TargetName="TextBlockOn" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderOff" Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
+                    <Setter TargetName="BorderOff" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
+                    <Setter TargetName="TextBlockOff" Property="Foreground" Value="{DynamicResource Brush.Window.Background}"/>
+                    <Setter TargetName="BorderOn" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
+                    <Setter TargetName="BorderOn" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border.Light1}"/>
+                    <Setter TargetName="TextBlockOn" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="True">
-                    <Setter TargetName="BorderOn" Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
-                    <Setter TargetName="BorderOn" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
-                    <Setter TargetName="TextBlockOn" Property="Foreground" Value="{DynamicResource Brush.Window.Background}" />
-                    <Setter TargetName="BorderOff" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-                    <Setter TargetName="BorderOff" Property="BorderBrush" Value="{DynamicResource Brush.ButtonSwitch.Border}" />
-                    <Setter TargetName="TextBlockOff" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderOn" Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
+                    <Setter TargetName="BorderOn" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
+                    <Setter TargetName="TextBlockOn" Property="Foreground" Value="{DynamicResource Brush.Window.Background}"/>
+                    <Setter TargetName="BorderOff" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
+                    <Setter TargetName="BorderOff" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border.Light1}"/>
+                    <Setter TargetName="TextBlockOff" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
                 </DataTrigger>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="False" />
-                        <Condition Binding="{Binding Path=IsMouseOver, ElementName=BorderOn}" Value="True" />
+                        <Condition Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="False"/>
+                        <Condition Binding="{Binding Path=IsMouseOver, ElementName=BorderOn}" Value="True"/>
                     </MultiDataTrigger.Conditions>
-                    <Setter TargetName="BorderOn" Property="Background" Value="{DynamicResource Brush.ButtonSwitch.Hover}" />
+                    <Setter TargetName="BorderOn" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}"/>
                 </MultiDataTrigger>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="True" />
-                        <Condition Binding="{Binding Path=IsMouseOver, ElementName=BorderOff}" Value="True" />
+                        <Condition Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="True"/>
+                        <Condition Binding="{Binding Path=IsMouseOver, ElementName=BorderOff}" Value="True"/>
                     </MultiDataTrigger.Conditions>
-                    <Setter TargetName="BorderOff" Property="Background" Value="{DynamicResource Brush.ButtonSwitch.Hover}" />
+                    <Setter TargetName="BorderOff" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}"/>
                 </MultiDataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

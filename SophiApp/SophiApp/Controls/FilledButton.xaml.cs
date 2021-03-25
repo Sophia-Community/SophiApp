@@ -43,5 +43,10 @@ namespace SophiApp.Controls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
+
+        private void FilledButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Command?.Execute(CommandParameter);
+        }
     }
 }

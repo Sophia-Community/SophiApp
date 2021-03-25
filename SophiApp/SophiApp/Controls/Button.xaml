@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="SophiApp.Controls.FilledButton"
+﻿<UserControl x:Class="SophiApp.Controls.Button"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
@@ -17,34 +17,35 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Background}"/>
+            <Setter Property="FontSize" Value="14"/>            
             <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
-        <Style TargetType="{x:Type local:FilledButton}">
+        <Style TargetType="{x:Type local:Button}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="Focusable" Value="False"/>
             <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
             <Setter Property="Width" Value="146"/>
-            <Setter Property="Height" Value="52"/>
+            <Setter Property="Height" Value="52"/>            
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
-                <Border x:Name="BorderButton" MouseLeftButtonDown="FilledButton_MouseLeftButtonDown">
+                <Border x:Name="BorderButton" MouseLeftButtonDown="Button_MouseLeftButtonDown">
                     <TextBlock/>
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="True">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
+                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
+                    <Setter TargetName="BorderButton" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border.Light1}"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light1}"/>
@@ -60,6 +61,9 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
+                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=BorderButton}" Value="True">
+                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}"/>
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

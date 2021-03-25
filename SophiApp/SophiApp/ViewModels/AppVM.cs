@@ -9,7 +9,7 @@ namespace SophiApp.ViewModels
     internal class AppVM : INotifyPropertyChanged
     {
         private string activeViewTag = Tags.Privacy;
-        private RelayCommand controlsClickedCommand;
+        private RelayCommand uielementClickedCommand;
         private RelayCommand hamburgerClickedCommand;
         private bool hamburgerIsEnabled = true;
         private RelayCommand searchClickedCommand;
@@ -17,7 +17,7 @@ namespace SophiApp.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Using tags defines the displayed View
+        /// Tags define the displayed View
         /// </summary>
         public string ActiveViewTag
         {
@@ -30,10 +30,12 @@ namespace SophiApp.ViewModels
         }
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
-        public RelayCommand ControlsClickedCommand => controlsClickedCommand ?? new RelayCommand(ControlsClicked);
+
+        public RelayCommand UIElementClickedCommand => uielementClickedCommand ?? new RelayCommand(UIElementClicked);
 
         public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
 
+        //TODO: Deprecated?
         /// <summary>
         /// Determines the Hamburger state
         /// </summary>
@@ -49,9 +51,9 @@ namespace SophiApp.ViewModels
 
         public RelayCommand SearchClickedCommand => searchClickedCommand ?? new RelayCommand(SearchClicked);
 
-        private void ControlsClicked(object args)
+        private void UIElementClicked(object args)
         {
-            //throw new NotImplementedException();
+            //TODO : Click not implemented !!!
         }
 
         private void HamburgerButtonClicked(object args)
@@ -66,8 +68,7 @@ namespace SophiApp.ViewModels
         private void SearchClicked(object args)
         {
             var searchString = args as string;
-            //TODO : Search not implemented !!!
-            throw new NotImplementedException();
+            //TODO : Search not implemented !!!            
         }
     }
 }
