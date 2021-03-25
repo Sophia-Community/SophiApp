@@ -8,38 +8,38 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="MinWidth" Value="450"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="Margin" Value="0, 0, 0, 20"/>
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}"/>
+            <Setter Property="MinWidth" Value="450" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Content.Background}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <Style TargetType="{x:Type local:SwitchBar}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid MouseEnter="SwitchBar_MouseEnter" MouseLeave="SwitchBar_MouseLeave">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Margin="0" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <TextBlock Margin="0" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
                 <local:Switch Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <local:Switch.InputBindings>
-                        <MouseBinding Command="{Binding ControlsClickedCommand}" CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" MouseAction="LeftClick"/>
+                        <MouseBinding Command="{Binding ControlsClickedCommand}" CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" MouseAction="LeftClick" />
                     </local:Switch.InputBindings>
                 </local:Switch>
             </Grid>

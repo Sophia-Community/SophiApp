@@ -83,6 +83,9 @@
     <Compile Include="Controls\CheckBoxBar.xaml.cs">
       <DependentUpon>CheckBoxBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FilledButton.xaml.cs">
+      <DependentUpon>FilledButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CheckBoxBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FilledButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

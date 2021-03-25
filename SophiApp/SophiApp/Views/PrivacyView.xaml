@@ -15,75 +15,76 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Description">
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Description.Background}"/>
-            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Description.Background}" />
+            <Setter Property="Grid.Column" Value="2" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource AncestorType={x:Type local:PrivacyView}}}"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource AncestorType={x:Type local:PrivacyView}}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
-            <Setter Property="FontSize" Value="28"/>
-            <Setter Property="Grid.Row" Value="0"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="0, 5, 0, 0"/>
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="0, 5, 0, 0" />
         </Style>
         <Style TargetType="{x:Type local:PrivacyView}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{DynamicResource Brush.View.Content.Background}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
                 <!--Content Grid-->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource Style.TextBlock.Header}" Text="{StaticResource Localization.Privacy}"/>
+                    <TextBlock Style="{StaticResource Style.TextBlock.Header}" Text="{StaticResource Localization.Privacy}" />
                     <ScrollViewer BorderBrush="{DynamicResource Brush.ScrollViewer.Thumb}" Grid.Row="1">
                         <!--DEBUG-->
                         <StackPanel>
+                            <controls:FilledButton Text="Обновить версию" IsEnabled="True" HorizontalAlignment="Left" Margin="0, 0, 0, 20" />
                             <controls:ButtonSwitch TextOff="{DynamicResource Localization.Settings.Themes.Light}"
-                                                   TextOn="{DynamicResource Localization.Settings.Themes.Dark}" 
-                                                   HorizontalAlignment="Left" Margin="0, 0, 0, 20" State="True"/>
+                                                   TextOn="{DynamicResource Localization.Settings.Themes.Dark}"
+                                                   HorizontalAlignment="Left" Margin="0, 0, 0, 20" />
 
-                            <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Description="Потонула деревня в ухабинах, Заслонили избенки леса. Только видно на кочках и впадинах, Как синеют кругом небеса." Tag="1"/>
-                            <controls:SwitchBar Header="Включить обнаружение потенциально нежелательных приложений и блокировать их" Description="Воют в сумерки долгие, зимние, Волки грозные с тощих полей. По дворам в погорающем инее. Над застрехами храп лошадей." Tag="2"/>
-                            <controls:SwitchBar Header="Включить песочницу для Microsoft Defender" Description="Как совиные глазки за ветками, Смотрят в шали пурги огоньки. И стоят за дубровными сетками, Словно нечисть лесная, пеньки." Tag="3"/>
+                            <controls:SwitchBar Header="Включить защиту сети в Microsoft Defender Exploit Guard" Description="Потонула деревня в ухабинах, Заслонили избенки леса. Только видно на кочках и впадинах, Как синеют кругом небеса." Tag="1" />
+                            <controls:SwitchBar Header="Включить обнаружение потенциально нежелательных приложений и блокировать их" Description="Воют в сумерки долгие, зимние, Волки грозные с тощих полей. По дворам в погорающем инее. Над застрехами храп лошадей." Tag="2" />
+                            <controls:SwitchBar Header="Включить песочницу для Microsoft Defender" Description="Как совиные глазки за ветками, Смотрят в шали пурги огоньки. И стоят за дубровными сетками, Словно нечисть лесная, пеньки." Tag="3" />
 
-                            <controls:RoundCheckBoxBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Description="Запугала нас сила нечистая, Что ни прорубь — везде колдуны. В злую заморозь в сумерки мглистые На березках висят галуны." Tag="9"/>
-                            <controls:RoundCheckBoxBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Description="Но люблю тебя, родина кроткая! А за что — разгадать не могу. Весела твоя радость короткая С громкой песней весной на лугу." Tag="10"/>
-                            <controls:RoundCheckBoxBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Description="Я люблю над покосной стоянкою. Слушать вечером гуд комаров. А как гаркнут ребята тальянкою, Выйдут девки плясать у костров." Tag="11"/>
+                            <controls:RoundCheckBoxBar Header="Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell" Description="Запугала нас сила нечистая, Что ни прорубь — везде колдуны. В злую заморозь в сумерки мглистые На березках висят галуны." Tag="9" />
+                            <controls:RoundCheckBoxBar Header="Включить аудит событий, возникающих при создании или запуске процесса" Description="Но люблю тебя, родина кроткая! А за что — разгадать не могу. Весела твоя радость короткая С громкой песней весной на лугу." Tag="10" />
+                            <controls:RoundCheckBoxBar Header="Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender" Description="Я люблю над покосной стоянкою. Слушать вечером гуд комаров. А как гаркнут ребята тальянкою, Выйдут девки плясать у костров." Tag="11" />
 
-                            <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Description="Загорятся, как черна смородина, Угли-очи в подковах бровей. Ой ты, Русь моя, милая родина, Сладкий отдых в шелку купырей." Tag="18"/>
-                            <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Description="Понакаркали черные вороны Грозным бедам широкий простор. Крутит вихорь леса во все стороны, Машет саваном пена с озер." Tag="19"/>
-                            <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Description="Грянул гром, чашка неба расколота, Тучи рваные кутают лес. На подвесках из легкого золота. Закачались лампадки небес." Tag="20"/>
+                            <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Description="Загорятся, как черна смородина, Угли-очи в подковах бровей. Ой ты, Русь моя, милая родина, Сладкий отдых в шелку купырей." Tag="18" />
+                            <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Description="Понакаркали черные вороны Грозным бедам широкий простор. Крутит вихорь леса во все стороны, Машет саваном пена с озер." Tag="19" />
+                            <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Description="Грянул гром, чашка неба расколота, Тучи рваные кутают лес. На подвесках из легкого золота. Закачались лампадки небес." Tag="20" />
                         </StackPanel>
                         <!--DEBUG-->
                     </ScrollViewer>
                 </Grid>
                 <StackPanel Style="{DynamicResource Style.Panel.Description}">
                     <!--DEBUG-->
-                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}"/>
+                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
                     <!--DEBUG-->
                 </StackPanel>
             </Grid>
         </ControlTemplate>
     </UserControl.Template>
-    <ScrollViewer Height="100" Width="100"/>
+    <ScrollViewer Height="100" Width="100" />
 </UserControl>
