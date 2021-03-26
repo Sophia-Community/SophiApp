@@ -8,9 +8,9 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
-        private string activeViewTag = Tags.Privacy;
+        private string activeViewTag = Tags.ViewPrivacy;
         private RelayCommand uielementClickedCommand;
-        private RelayCommand hamburgerClickedCommand;
+        private RelayCommand hamburgerButtonClickedCommand;
         private bool hamburgerIsEnabled = true;
         private RelayCommand searchClickedCommand;
 
@@ -33,7 +33,7 @@ namespace SophiApp.ViewModels
 
         public RelayCommand UIElementClickedCommand => uielementClickedCommand ?? new RelayCommand(UIElementClicked);
 
-        public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
+        public RelayCommand HamburgerButtonClickedCommand => hamburgerButtonClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
 
         //TODO: Deprecated?
         /// <summary>

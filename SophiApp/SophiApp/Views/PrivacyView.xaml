@@ -14,7 +14,7 @@
              controls:SwitchBar.MouseLeave="UIElement_MouseLeave">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Description">
+        <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
             <Setter Property="Grid.Column" Value="2"/>
         </Style>
@@ -58,6 +58,16 @@
                     <ScrollViewer BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
                         <!--DEBUG-->
                         <StackPanel>
+                            <controls:IconButton Text="{DynamicResource Localization.Settings.Export}" 
+                                                 Content="{DynamicResource Icon.Settings.Export}"                                                 
+                                                 HorizontalAlignment="Left"
+                                                 Margin="0, 0, 0, 10"/>
+
+                            <controls:IconButton Text="{DynamicResource Localization.Settings.Import}" 
+                                                 Content="{DynamicResource Icon.Settings.Import}" 
+                                                 HorizontalAlignment="Left"
+                                                 Margin="0, 0, 0, 10"/>
+                            
                             <controls:Button Text="Отменить" IsEnabled="True" HorizontalAlignment="Left" Margin="0, 0, 0, 20"/>
                             <controls:FilledButton Text="Обновить версию" IsEnabled="True" HorizontalAlignment="Left" Margin="0, 0, 0, 20"/>
                             <controls:ButtonSwitch TextOff="{DynamicResource Localization.Settings.Themes.Light}"

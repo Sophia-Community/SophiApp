@@ -3,14 +3,14 @@
                     xmlns:local="clr-namespace:SophiApp.Commons"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Tags.Privacy">Privacy</system:String>
-    <system:String x:Key="Tags.Personalization">Personalization</system:String>
-    <system:String x:Key="Tags.System">System</system:String>
-    <system:String x:Key="Tags.StartMenu">StartMenu</system:String>
-    <system:String x:Key="Tags.UwpApps">UwpApps</system:String>
-    <system:String x:Key="Tags.Games">Games</system:String>
-    <system:String x:Key="Tags.TaskSheduler">TaskSheduler</system:String>
-    <system:String x:Key="Tags.Security">Security</system:String>
-    <system:String x:Key="Tags.ContextMenu">ContextMenu</system:String>
-    <system:String x:Key="Tags.Settings">Settings</system:String>
+    <system:String x:Key="Tags.View.Privacy">Privacy</system:String>
+    <system:String x:Key="Tags.View.Personalization">Personalization</system:String>
+    <system:String x:Key="Tags.View.System">System</system:String>
+    <system:String x:Key="Tags.View.StartMenu">StartMenu</system:String>
+    <system:String x:Key="Tags.View.UwpApps">UwpApps</system:String>
+    <system:String x:Key="Tags.View.Games">Games</system:String>
+    <system:String x:Key="Tags.View.TaskSheduler">TaskSheduler</system:String>
+    <system:String x:Key="Tags.View.Security">Security</system:String>
+    <system:String x:Key="Tags.View.ContextMenu">ContextMenu</system:String>
+    <system:String x:Key="Tags.View.Settings">Settings</system:String>
 </ResourceDictionary>

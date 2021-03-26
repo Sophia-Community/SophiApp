@@ -4,14 +4,14 @@ namespace SophiApp.Helpers
 {
     internal struct Tags
     {
-        internal static readonly string ContextMenu = Application.Current.FindResource("Tags.ContextMenu") as string;
-        internal static readonly string Games = Application.Current.FindResource("Tags.Games") as string;
-        internal static readonly string Personalization = Application.Current.FindResource("Tags.Personalization") as string;
-        internal static readonly string Privacy = Application.Current.FindResource("Tags.Privacy") as string;
-        internal static readonly string Security = Application.Current.FindResource("Tags.Security") as string;
-        internal static readonly string StartMenu = Application.Current.FindResource("Tags.StartMenu") as string;
-        internal static readonly string System = Application.Current.FindResource("Tags.System") as string;
-        internal static readonly string TaskSheduler = Application.Current.FindResource("Tags.TaskSheduler") as string;
-        internal static readonly string UwpApps = Application.Current.FindResource("Tags.UwpApps") as string;
+        internal static readonly string ViewContextMenu = Application.Current.FindResource("Tags.View.ContextMenu") as string;
+        internal static readonly string ViewGames = Application.Current.FindResource("Tags.View.Games") as string;
+        internal static readonly string ViewPersonalization = Application.Current.FindResource("Tags.View.Personalization") as string;
+        internal static readonly string ViewPrivacy = Application.Current.FindResource("Tags.View.Privacy") as string;
+        internal static readonly string ViewSecurity = Application.Current.FindResource("Tags.View.Security") as string;
+        internal static readonly string ViewStartMenu = Application.Current.FindResource("Tags.View.StartMenu") as string;
+        internal static readonly string ViewSystem = Application.Current.FindResource("Tags.View.System") as string;
+        internal static readonly string ViewTaskSheduler = Application.Current.FindResource("Tags.View.TaskSheduler") as string;
+        internal static readonly string ViewUwpApps = Application.Current.FindResource("Tags.View.UwpApps") as string;
     }
 }

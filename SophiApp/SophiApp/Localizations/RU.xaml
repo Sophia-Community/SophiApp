@@ -14,5 +14,7 @@
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Светлая</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Тёмная</system:String>
+    <system:String x:Key="Localization.Settings.Import">Импорт</system:String>
+    <system:String x:Key="Localization.Settings.Export">Экспорт</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
 </ResourceDictionary>
