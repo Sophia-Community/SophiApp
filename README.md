@@ -1,8 +1,6 @@
-[![Build](https://github.com/farag2/SophiApp/actions/workflows/dotnet-core-desktop.yml/badge.svg)](https://github.com/farag2/SophiApp/actions/workflows/dotnet-core-desktop.yml)
-
 # Deus vult!
 
-The SophiApp functionality will be fully based on [Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script) :rocket: except some functions and is written in C#.
+The SophiApp functionality will be fully based on the [Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script) logic :rocket: except some functions and will be written in C#.
 
 # :rocket:
 
@@ -10,4 +8,10 @@ We're in search of аn experienced **C# developer** & a **designer** who are rea
 
 # Windows 10 versions support
 
-SophiApp supports only the latest Windows 10 version, 2004 and higher. If you are using a different version, please update it if possible, so as not to upset our testing department. :smile:
+SophiApp will support only the latest Windows 10 version, 2004 and higher. If you are using a different version, please update it if possible, so as not to upset our testing department. :smile:
+
+# News
+If you want to be kept up-to-date of the latest SophiApp news visit our Telegram channel & group
+
+<a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
+<a href="https://t.me/Sophia_Chat"><img src="https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram"></a>
