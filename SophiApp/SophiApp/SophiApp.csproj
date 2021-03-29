@@ -55,6 +55,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,7 +74,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\Fabric.cs" />
+    <Compile Include="Commons\JsonDTO.cs" />
+    <Compile Include="Commons\Parser.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
+    <Compile Include="Commons\UILanguage.cs" />
+    <Compile Include="Commons\UILocalization.cs" />
     <Compile Include="Controls\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
@@ -123,8 +129,9 @@
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\TagToVisibilityConverter.cs" />
-    <Compile Include="Helpers\Tags.cs" />
-    <Compile Include="Interfaces\IUIElement.cs" />
+    <Compile Include="Commons\Tags.cs" />
+    <Compile Include="Interfaces\IUIElementModel.cs" />
+    <Compile Include="Models\SwitchModel.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Compile Include="Views\PrivacyView.xaml.cs">
       <DependentUpon>PrivacyView.xaml</DependentUpon>
@@ -133,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Commons\ScrollViewer.xaml">
+    <Page Include="Controls\ScrollViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,6 +260,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.manifest" />
+    <Resource Include="Resources\UIElementsData.json" />
     <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -274,8 +282,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
+    <PackageReference Include="System.Collections">
+      <Version>4.3.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

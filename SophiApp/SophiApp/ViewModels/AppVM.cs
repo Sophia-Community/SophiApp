@@ -1,7 +1,11 @@
 ﻿using SophiApp.Commons;
-using SophiApp.Helpers;
+using SophiApp.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SophiApp.ViewModels
@@ -13,7 +17,20 @@ namespace SophiApp.ViewModels
         private RelayCommand hamburgerButtonClickedCommand;
         private bool hamburgerIsEnabled = true;
         private RelayCommand searchClickedCommand;
+        private UILocalization uiLocalization = new UILocalization();      
 
+        public List<IUIElementModel> UIModels { get; private set; }
+        public AppVM()
+        {            
+            InitializingModels();            
+        }
+
+        private void InitializingModels()
+        {
+            var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
+            UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto, UILocalization)).ToList();
+        }
+                
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -27,6 +44,12 @@ namespace SophiApp.ViewModels
                 activeViewTag = value;
                 OnPropertyChanged("ActiveViewTag");
             }
+        }
+
+        public UILanguage UILocalization 
+        {
+            get => uiLocalization.Current;
+            private set => OnPropertyChanged("UILocalization");
         }
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
@@ -59,8 +82,8 @@ namespace SophiApp.ViewModels
         private void HamburgerButtonClicked(object args)
         {
             var tag = args as string;
-
-            if (ActiveViewTag != tag) ActiveViewTag = tag;
+            if (ActiveViewTag != tag) 
+                ActiveViewTag = tag;
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));

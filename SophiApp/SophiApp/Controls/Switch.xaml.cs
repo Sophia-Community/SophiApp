@@ -1,6 +1,19 @@
-﻿using System.Windows;
+﻿using SophiApp.Commons;
+using SophiApp.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace SophiApp.Controls
 {
@@ -9,41 +22,31 @@ namespace SophiApp.Controls
     /// </summary>
     public partial class Switch : UserControl
     {
-        // Using a DependencyProperty as the backing store for ActualState.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ActualStateProperty =
-            DependencyProperty.Register("ActualState", typeof(bool), typeof(Switch), new PropertyMetadata(default(bool)));
-
-        // Using a DependencyProperty as the backing store for IsClicked.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsClickedProperty =
-            DependencyProperty.Register("IsClicked", typeof(bool), typeof(Switch), new PropertyMetadata(default(bool)));
-
-        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(bool), typeof(Switch), new PropertyMetadata(default(bool)));
-
         public Switch()
         {
             InitializeComponent();
         }
 
-        public bool ActualState
+        public string Description
         {
-            get { return (bool)GetValue(ActualStateProperty); }
-            set { SetValue(ActualStateProperty, value); }
+            get { return (string)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
         }
 
-        public bool IsClicked
+        // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DescriptionProperty =
+            DependencyProperty.Register("Description", typeof(string), typeof(Switch), new PropertyMetadata(default(string)));
+
+        public string Header
         {
-            get { return (bool)GetValue(IsClickedProperty); }
-            set { SetValue(IsClickedProperty, value); }
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
         }
 
-        public bool State
-        {
-            get { return (bool)GetValue(StateProperty); }
-            set { SetValue(StateProperty, value); }
-        }
+        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(string), typeof(Switch), new PropertyMetadata(default(string)));
 
-        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsClicked = e.ButtonState == MouseButtonState.Pressed;
+        
     }
 }

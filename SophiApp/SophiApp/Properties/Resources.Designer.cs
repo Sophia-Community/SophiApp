@@ -59,5 +59,15 @@ namespace SophiApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] UIElementsData {
+            get {
+                object obj = ResourceManager.GetObject("UIElementsData", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

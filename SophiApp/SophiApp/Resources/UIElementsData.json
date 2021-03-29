@@ -1,0 +1,41 @@
+[
+    {
+        "Id": 1000,
+        "LocalizedHeaders": {
+            "RU": "Отключить службу \"Функциональные возможности для подключенных пользователей и телеметрия\"",
+            "EN": "Disable the \"Connected User Experiences and Telemetry\" service (DiagTrack)"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Служба \"Функциональные возможности для подключенных пользователей и телеметрия\" включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе \"Диагностика и отзывы\"",
+            "EN": "The \"Connected User Experiences and Telemetry\" service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics"
+        },
+        "Type": "SwitchModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1001,
+        "LocalizedHeaders": {
+            "RU": "Установить уровень сбора диагностических сведений ОС на минимальный",
+            "EN": "Set the OS level of diagnostic data gathering to minimum"
+        },
+        "LocalizedDescriptions": {
+            "RU": "",
+            "EN": ""
+        },
+        "Type": "SwitchModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1002,
+        "LocalizedHeaders": {
+            "RU": "Отключить отчеты об ошибках Windows для текущего пользователя",
+            "EN": "Turn off Windows Error Reporting for the current user"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Функция отчетов об ошибках отправляет набор данных в Microsoft для определенных типов событий, таких как общие, нефатальные ошибки: сбои в приложениях, неотвечающих приложения и ошибки в ядре",
+            "EN": "Windows Error Reporting sends data to Microsoft for specific event types such as generic, non-fatal errors: crash, no response, and kernel fault errors"
+        },
+        "Type": "SwitchModel",
+        "Tag": "Privacy"
+    }
+]

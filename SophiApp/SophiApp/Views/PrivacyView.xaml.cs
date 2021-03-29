@@ -27,7 +27,7 @@ namespace SophiApp.Views
         private void UIElement_MouseEnter(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            Description = (e.OriginalSource as IUIElement).Description;
+            //Description = (e.OriginalSource as IUIElement).Description;
         }
 
         private void UIElement_MouseLeave(object sender, RoutedEventArgs e)

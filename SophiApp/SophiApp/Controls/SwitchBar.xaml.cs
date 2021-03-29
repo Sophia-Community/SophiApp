@@ -7,7 +7,7 @@ namespace SophiApp.Controls
     /// <summary>
     /// Логика взаимодействия для SwitchBar.xaml
     /// </summary>
-    public partial class SwitchBar : UserControl, IUIElement
+    public partial class SwitchBar : UserControl
     {
         private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SwitchBar));
 

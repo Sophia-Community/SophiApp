@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SophiApp.Helpers
+namespace SophiApp.Commons
 {
     internal struct Tags
     {

@@ -8,7 +8,7 @@ namespace SophiApp.Controls
     /// <summary>
     /// Логика взаимодействия для CheckBoxBar.xaml
     /// </summary>
-    public partial class CheckBoxBar : UserControl, IUIElement
+    public partial class CheckBoxBar : UserControl
     {
         private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CheckBoxBar));
 

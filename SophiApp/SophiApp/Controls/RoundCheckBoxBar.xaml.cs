@@ -8,7 +8,7 @@ namespace SophiApp.Controls
     /// <summary>
     /// Логика взаимодействия для RoundCheckBoxBar.xaml
     /// </summary>
-    public partial class RoundCheckBoxBar : UserControl, IUIElement
+    public partial class RoundCheckBoxBar : UserControl
     {
         private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RoundCheckBoxBar));
 

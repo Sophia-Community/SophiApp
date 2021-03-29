@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:SophiApp.Controls"
-             xmlns:local="clr-namespace:SophiApp.Views"
+             xmlns:local="clr-namespace:SophiApp.Views" xmlns:viewmodels="clr-namespace:SophiApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AppVM}"
              mc:Ignorable="d"
              controls:CheckBoxBar.MouseEnter="UIElement_MouseEnter"
              controls:CheckBoxBar.MouseLeave="UIElement_MouseLeave"
@@ -56,8 +56,11 @@
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" Text="{StaticResource Localization.Privacy}"/>
                     <ScrollViewer BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
+                        <ItemsControl ItemsSource="{Binding UIModels}"/>
+
+
                         <!--DEBUG-->
-                        <StackPanel>
+                        <!--<StackPanel>
                             <controls:IconButton Text="{DynamicResource Localization.Settings.Export}" 
                                                  Content="{DynamicResource Icon.Settings.Export}"                                                 
                                                  HorizontalAlignment="Left"
@@ -85,7 +88,7 @@
                             <controls:CheckBoxBar Header="Запрашивать подтверждение на удаление файлов в корзину" Description="Загорятся, как черна смородина, Угли-очи в подковах бровей. Ой ты, Русь моя, милая родина, Сладкий отдых в шелку купырей." Tag="18"/>
                             <controls:CheckBoxBar Header="Отобразить папку Объемные объекты в Этот компьютер и панели быстрого доступа" Description="Понакаркали черные вороны Грозным бедам широкий простор. Крутит вихорь леса во все стороны, Машет саваном пена с озер." Tag="19"/>
                             <controls:CheckBoxBar Header="Показать недавно использовавшиеся файлы на панели быстрого доступа" Description="Грянул гром, чашка неба расколота, Тучи рваные кутают лес. На подвесках из легкого золота. Закачались лампадки небес." Tag="20"/>
-                        </StackPanel>
+                        </StackPanel>-->
                         <!--DEBUG-->
                     </ScrollViewer>
                 </Grid>
