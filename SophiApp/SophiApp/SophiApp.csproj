@@ -76,10 +76,10 @@
     </ApplicationDefinition>
     <Compile Include="Commons\Fabric.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
+    <Compile Include="Commons\Localizator.cs" />
     <Compile Include="Commons\Parser.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\UILanguage.cs" />
-    <Compile Include="Commons\UILocalization.cs" />
     <Compile Include="Controls\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>

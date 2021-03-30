@@ -17,18 +17,19 @@ namespace SophiApp.ViewModels
         private RelayCommand hamburgerButtonClickedCommand;
         private bool hamburgerIsEnabled = true;
         private RelayCommand searchClickedCommand;
-        private UILocalization uiLocalization = new UILocalization();      
+        private UILanguage currentLocalization;
 
         public List<IUIElementModel> UIModels { get; private set; }
         public AppVM()
-        {            
+        {
+            CurrentLocalization = Localizator.Initializing();
             InitializingModels();            
         }
 
         private void InitializingModels()
         {
             var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
-            UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto, UILocalization)).ToList();
+            UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto, CurrentLocalization)).ToList();
         }
                 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -46,10 +47,14 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public UILanguage UILocalization 
+        public UILanguage CurrentLocalization 
         {
-            get => uiLocalization.Current;
-            private set => OnPropertyChanged("UILocalization");
+            get => currentLocalization;
+            private set
+            {
+                currentLocalization = value;
+                OnPropertyChanged("CurrentLocalization");
+            }
         }
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
@@ -82,6 +87,7 @@ namespace SophiApp.ViewModels
         private void HamburgerButtonClicked(object args)
         {
             var tag = args as string;
+
             if (ActiveViewTag != tag) 
                 ActiveViewTag = tag;
         }
