@@ -46,17 +46,16 @@
         </Style>
     </Window.Resources>
     <Border>
-        <!--Window Title and Content Grid-->
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/> <!--Window Title Row-->
+                <RowDefinition Height="*"/>  <!--Window Content Row-->
             </Grid.RowDefinitions>
-            <!--Window Title Grid-->
+            
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250"/> <!--Hamburger Row-->
+                    <ColumnDefinition Width="*"/>   <!--Views Row-->
                 </Grid.ColumnDefinitions>
                 <!--Left Window Title-->
                 <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
@@ -97,14 +96,14 @@
                     </controls:TitleWindow.Content>
                 </controls:TitleWindow>
             </Grid>
-            <!--Hamburger and View Grid-->
-            <Grid Grid.Row="1">
+            
+            <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0"/>
-                <view:PrivacyView Grid.Column="1" Tag="{StaticResource Localization.Privacy}"/>
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}"/>
             </Grid>
         </Grid>
     </Border>

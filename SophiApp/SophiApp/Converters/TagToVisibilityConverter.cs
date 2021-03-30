@@ -10,9 +10,9 @@ namespace SophiApp.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var activeMarker = values.First() as string;
-            var buttonTag = values.Last() as string;
-            return activeMarker == buttonTag ? Visibility.Visible : Visibility.Hidden;
+            var activeTag = values.First() as string;
+            var elementTag = values.Last() as string;
+            return activeTag == elementTag ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

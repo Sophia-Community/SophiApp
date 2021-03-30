@@ -133,8 +133,8 @@
     <Compile Include="Interfaces\IUIElementModel.cs" />
     <Compile Include="Models\SwitchModel.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
-    <Compile Include="Views\PrivacyView.xaml.cs">
-      <DependentUpon>PrivacyView.xaml</DependentUpon>
+    <Compile Include="Views\ViewContent.xaml.cs">
+      <DependentUpon>ViewContent.xaml</DependentUpon>
     </Compile>
     <Page Include="Commons\Constants.xaml">
       <SubType>Designer</SubType>
@@ -236,7 +236,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PrivacyView.xaml">
+    <Page Include="Views\ViewContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

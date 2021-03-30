@@ -12,9 +12,9 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
-        private string activeViewTag = Tags.ViewPrivacy;
-        private RelayCommand uielementClickedCommand;
-        private RelayCommand hamburgerButtonClickedCommand;
+        private string viewVisibilityByTag = Tags.ViewPrivacy;
+        private RelayCommand uiElementClickedCommand;
+        private RelayCommand hamburgerClickedCommand;
         private bool hamburgerIsEnabled = true;
         private RelayCommand searchClickedCommand;
         private UILanguage currentLocalization;
@@ -37,13 +37,13 @@ namespace SophiApp.ViewModels
         /// <summary>
         /// Tags define the displayed View
         /// </summary>
-        public string ActiveViewTag
+        public string ViewVisibilityByTag
         {
-            get => activeViewTag;
+            get => viewVisibilityByTag;
             private set
             {
-                activeViewTag = value;
-                OnPropertyChanged("ActiveViewTag");
+                viewVisibilityByTag = value;
+                OnPropertyChanged("ViewVisibilityByTag");
             }
         }
 
@@ -59,9 +59,9 @@ namespace SophiApp.ViewModels
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
 
-        public RelayCommand UIElementClickedCommand => uielementClickedCommand ?? new RelayCommand(UIElementClicked);
+        public RelayCommand UIElementClickedCommand => uiElementClickedCommand ?? new RelayCommand(UIElementClicked);
 
-        public RelayCommand HamburgerButtonClickedCommand => hamburgerButtonClickedCommand ?? new RelayCommand(HamburgerButtonClicked);
+        public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerClicked);
 
         //TODO: Deprecated?
         /// <summary>
@@ -81,15 +81,19 @@ namespace SophiApp.ViewModels
 
         private void UIElementClicked(object args)
         {
-            //TODO : Click not implemented !!!
+            var id = Convert.ToInt32(args);
+            var model = UIModels.Where(m => m.Id == id).First();
+            model.ChangeActualState();            
         }
 
-        private void HamburgerButtonClicked(object args)
+        private void HamburgerClicked(object args)
         {
             var tag = args as string;
 
-            if (ActiveViewTag != tag) 
-                ActiveViewTag = tag;
+            if (ViewVisibilityByTag == tag) 
+                return;
+
+            ViewVisibilityByTag = tag;
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));

@@ -34,6 +34,11 @@ namespace SophiApp.Commons
             execute(parameter);
         }
 
+        public void Execute(int parameter)
+        {
+            execute(parameter);
+        }
+
         public void RaiseCanExecuteChanged()
         {
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);

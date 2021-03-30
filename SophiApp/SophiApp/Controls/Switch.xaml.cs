@@ -27,6 +27,52 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
+        private static readonly new RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
+
+        public  new event RoutedEventHandler MouseEnter
+        {
+            add { AddHandler(MouseEnterEvent, value); }
+            remove { RemoveHandler(MouseEnterEvent, value); }
+        }
+
+        private static readonly new RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
+
+        public new event RoutedEventHandler MouseLeave
+        {
+            add { AddHandler(MouseEnterEvent, value); }
+            remove { RemoveHandler(MouseEnterEvent, value); }
+        }
+
+        public int Id
+        {
+            get { return (int)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IdProperty =
+            DependencyProperty.Register("Id", typeof(int), typeof(Switch), new PropertyMetadata(default(int)));
+
+        public bool State
+        {
+            get { return (bool)GetValue(StateProperty); }
+            set { SetValue(StateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("State", typeof(bool), typeof(Switch), new PropertyMetadata(default(bool)));
+
+        public bool ActualState
+        {
+            get { return (bool)GetValue(ActualStateProperty); }
+            set { SetValue(ActualStateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ActualState.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ActualStateProperty =
+            DependencyProperty.Register("ActualState", typeof(bool), typeof(Switch), new PropertyMetadata(default(bool)));
+
         public string Description
         {
             get { return (string)GetValue(DescriptionProperty); }
@@ -47,6 +93,9 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(Switch), new PropertyMetadata(default(string)));
 
-        
+        private void Switch_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });
+       
+        private void Switch_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
+    
     }
 }
