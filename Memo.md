@@ -30,10 +30,7 @@ $Icon.ToBitMap().Save($FileName,$Format)
 ```
 3. <https://github.com/WindowsNotifications?q=&type=&language=c%23>
 
-4.
-
-* <https://pastebin.com/mKEFmnC1>
-* <https://github.com/farag2/Utilities/blob/master/Windows%20Terminal/Settings.ps1>
+4. <https://pastebin.com/mKEFmnC1>
 
 ============================================================================================
 
@@ -66,3 +63,5 @@ $Icon.ToBitMap().Save($FileName,$Format)
 [System.Environment]::OSVersion.Version.Build
 Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild
 ```
+
+<https://fastspring.com>
