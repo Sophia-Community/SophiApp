@@ -1,13 +1,9 @@
 ﻿using SophiApp.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SophiApp.Commons
 {
-    class Fabric
+    internal class Fabric
     {
         internal static IUIElementModel CreateElementModel(JsonDTO json, UILanguage language)
         {

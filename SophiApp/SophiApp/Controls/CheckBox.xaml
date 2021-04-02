@@ -8,45 +8,45 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type Path}">
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}"/>
-            <Setter Property="Data" Value="M16.3516 6.35156L8 14.7109L3.64844 10.3516L4.35156 9.64844L8 13.2891L15.6484 5.64844L16.3516 6.35156Z"/>
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Data" Value="M16.3516 6.35156L8 14.7109L3.64844 10.3516L4.35156 9.64844L8 13.2891L15.6484 5.64844L16.3516 6.35156Z" />
         </Style>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="1"/>
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="1" />
         </Style>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Height" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
         </Style>
         <Style TargetType="{x:Type local:CheckBox}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="Background" Value="Transparent" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid MouseLeftButtonDown="CheckBox_MouseLeftButtonDown">
-                <Border x:Name="BorderCheckBox"/>
-                <Path x:Name="PathCheckBox"/>
+                <Border x:Name="BorderCheckBox" />
+                <Path x:Name="PathCheckBox" />
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
-                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}"/>
-                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
-                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden"/>
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden" />
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
-                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
-                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
-                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
+                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

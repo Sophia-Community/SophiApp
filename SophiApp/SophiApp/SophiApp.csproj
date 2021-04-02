@@ -128,7 +128,7 @@
     <Compile Include="Controls\TitleWindow.xaml.cs">
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\TagToVisibilityConverter.cs" />
+    <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Interfaces\IUIElementModel.cs" />
     <Compile Include="Models\SwitchModel.cs" />

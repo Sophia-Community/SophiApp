@@ -8,49 +8,49 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="CornerRadius" Value="10" />
         </Style>
         <Style TargetType="{x:Type Ellipse}">
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}"/>
-            <Setter Property="Width" Value="6"/>
-            <Setter Property="Height" Value="6"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Width" Value="6" />
+            <Setter Property="Height" Value="6" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Height" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
         </Style>
         <Style TargetType="{x:Type local:RoundCheckBox}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="Background" Value="Transparent" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid MouseLeftButtonDown="RoundCheckBox_MouseLeftButtonDown">
-                <Border x:Name="BorderRound"/>
-                <Ellipse x:Name="EllipseDot"/>
+                <Border x:Name="BorderRound" />
+                <Ellipse x:Name="EllipseDot" />
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
-                    <Setter TargetName="BorderRound" Property="BorderThickness" Value="1"/>
-                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}"/>
-                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
-                    <Setter TargetName="EllipseDot" Property="Visibility" Value="Hidden"/>
+                    <Setter TargetName="BorderRound" Property="BorderThickness" Value="1" />
+                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}" />
+                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+                    <Setter TargetName="EllipseDot" Property="Visibility" Value="Hidden" />
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
-                    <Setter TargetName="BorderRound" Property="BorderThickness" Value="0"/>
-                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
-                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.Window.Acсent}"/>
-                    <Setter TargetName="EllipseDot" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="BorderRound" Property="BorderThickness" Value="0" />
+                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
+                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
+                    <Setter TargetName="EllipseDot" Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

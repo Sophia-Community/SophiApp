@@ -3,6 +3,7 @@ using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,16 +13,17 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
-        private string viewVisibilityByTag = Tags.ViewPrivacy;
-        private RelayCommand uiElementClickedCommand;
-        private RelayCommand hamburgerClickedCommand;
-        private bool hamburgerIsEnabled = true;
-        private RelayCommand searchClickedCommand;
+        private string viewVisibilityByTag = Tags.ViewPrivacy;                
+        private bool hamburgerIsEnabled = true;        
         private UILanguage currentLocalization;
 
-        public List<IUIElementModel> UIModels { get; private set; }
+        public List<IUIElementModel> UIModels { get; set; }
         public AppVM()
         {
+            UIElementClickedCommand = new RelayCommand(new Action<object>(UIElementClicked));
+            HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
+            SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
+
             CurrentLocalization = Localizator.Initializing();
             InitializingModels();            
         }
@@ -59,9 +61,9 @@ namespace SophiApp.ViewModels
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
 
-        public RelayCommand UIElementClickedCommand => uiElementClickedCommand ?? new RelayCommand(UIElementClicked);
+        public RelayCommand UIElementClickedCommand { get; }        
 
-        public RelayCommand HamburgerClickedCommand => hamburgerClickedCommand ?? new RelayCommand(HamburgerClicked);
+        public RelayCommand HamburgerClickedCommand { get; }
 
         //TODO: Deprecated?
         /// <summary>
@@ -77,13 +79,13 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public RelayCommand SearchClickedCommand => searchClickedCommand ?? new RelayCommand(SearchClicked);
+        public RelayCommand SearchClickedCommand { get; }
 
         private void UIElementClicked(object args)
         {
             var id = Convert.ToInt32(args);
-            var model = UIModels.Where(m => m.Id == id).First();
-            model.ChangeActualState();            
+            UIModels.Where(m => m.Id == id).First().ChangeActualState();           
+
         }
 
         private void HamburgerClicked(object args)

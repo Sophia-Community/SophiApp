@@ -4,10 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
-             xmlns:vm="clr-namespace:SophiApp.ViewModels"
+             xmlns:view="clr-namespace:SophiApp.Views"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
              mc:Ignorable="d">
 
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <Thickness x:Key="Margin.Switch.Ellipse.Left">4, 0, 0, 0</Thickness>
         <Thickness x:Key="Margin.Switch.Ellipse.Right">24, 0, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Switch.Margin.ToRight">
@@ -38,9 +39,9 @@
             <Setter Property="Width" Value="10"/>
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>            
+            <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}"/>
-            <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+            <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Right}"/>
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="MinWidth" Value="450"/>
@@ -56,6 +57,11 @@
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="{x:Type local:Switch}">
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}"/>
+            <Setter Property="State" Value="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
+            <Setter Property="ActualState" Value="{Binding ActualState, UpdateSourceTrigger=PropertyChanged}"/>
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+            <Setter Property="Id" Value="{Binding Id}"/>
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="IsTabStop" Value="False"/>
             <Setter Property="Focusable" Value="False"/>
@@ -76,34 +82,24 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock/>
                 <Border x:Name="BorderSwitch">
-                    <Border.DataContext>
-                        <vm:AppVM/>
-                    </Border.DataContext>
                     <Border.InputBindings>
-                        <MouseBinding Command="{Binding UIElementClickedCommand}" CommandParameter="{Binding Path=Id, RelativeSource={RelativeSource TemplatedParent}}" MouseAction="LeftClick"/>
+                        <MouseBinding Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type view:ViewContent}}}" 
+                                      CommandParameter="{Binding Path=Id, RelativeSource={RelativeSource TemplatedParent}}"
+                                      MouseAction="LeftClick"/>
                     </Border.InputBindings>
                     <Ellipse x:Name="EllipseSwitch"/>
-                </Border>                
+                </Border>
             </Grid>
             <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=State, RelativeSource={RelativeSource Self}}" Value="False">
+                    <Setter TargetName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
+                </DataTrigger>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
                     <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="2"/>
                     <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}"/>
                     <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}"/>
-                </Trigger>
-                <MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding ActualState, UpdateSourceTrigger=PropertyChanged}" Value="True"/>
-                        <Condition Binding="{Binding Path=Margin, ElementName=EllipseSwitch}" Value="{StaticResource Margin.Switch.Ellipse.Left}"/>
-                    </MultiDataTrigger.Conditions>
-                    <MultiDataTrigger.EnterActions>
-                        <BeginStoryboard x:Name="StoryboardSwitchToRight" Storyboard="{StaticResource Animation.Switch.Margin.ToRight}"/>
-                    </MultiDataTrigger.EnterActions>
-                    <MultiDataTrigger.ExitActions>
-                        <RemoveStoryboard BeginStoryboardName="StoryboardSwitchToRight"/>
-                    </MultiDataTrigger.ExitActions>
-                </MultiDataTrigger>
+                </Trigger>                                               
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

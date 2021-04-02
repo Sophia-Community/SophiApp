@@ -3,6 +3,7 @@ using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace SophiApp.Models
             set
             {
                 actualState = value;
-                OnPropertyChanged("ActualState");
+                OnPropertyChanged("ActualState");                
             }
         }
 
@@ -32,7 +33,7 @@ namespace SophiApp.Models
             set
             {
                 state = value;
-                OnPropertyChanged("State");
+                OnPropertyChanged("State");               
             }
         }
 
@@ -60,7 +61,7 @@ namespace SophiApp.Models
         public string Tag { get; set; }
         public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
         public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
-
+        
         public SwitchModel(JsonDTO json)
         {
             LocalizedDescriptions = Localizator.GetLocalizedDescriptions(json);
@@ -77,7 +78,10 @@ namespace SophiApp.Models
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public void ChangeActualState() => ActualState = !ActualState;
         

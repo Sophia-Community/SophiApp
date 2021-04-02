@@ -6,7 +6,7 @@ using System.Windows.Data;
 
 namespace SophiApp.Converters
 {
-    internal class TagToVisibilityConverter : IMultiValueConverter
+    internal class TagToVisibility : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

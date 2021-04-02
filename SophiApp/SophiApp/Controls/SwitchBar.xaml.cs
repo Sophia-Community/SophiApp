@@ -1,5 +1,4 @@
-﻿using SophiApp.Interfaces;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace SophiApp.Controls

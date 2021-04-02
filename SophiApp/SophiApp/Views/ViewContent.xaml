@@ -13,7 +13,7 @@
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="FilterByTag"/>
-        <converters:TagToVisibilityConverter x:Key="TagToVisibilityConverter"/>
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter"/>
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Page.Visible">
             <ThicknessAnimation Storyboard.TargetProperty="Margin"
@@ -53,15 +53,15 @@
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>        
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -75,13 +75,11 @@
                         <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type models:SwitchModel}">
-                                    <controls:Switch Header="{Binding Header}" Description="{Binding Description}" 
-                                                     State="{Binding State}" ActualState="{Binding ActualState, UpdateSourceTrigger=PropertyChanged}"
-                                                     Id="{Binding Id}"/>
+                                    <controls:Switch/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
+                        </ItemsControl>                        
+                    </ScrollViewer>                    
                 </Grid>
                 <StackPanel Style="{DynamicResource Style.Panel.Description}">
                     <TextBlock Style="{DynamicResource Style.TextBlock.Description}"/>

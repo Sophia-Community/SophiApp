@@ -8,7 +8,7 @@
         mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:TagToVisibilityConverter x:Key="Tag.To.Visibility.Converter"/>
+        <converters:TagToVisibility x:Key="Tag.To.Visibility.Converter"/>
         <Storyboard x:Key="Animation.Hamburger.Button.Click">
             <ThicknessAnimation Storyboard.TargetName="GridContent"
                                 Storyboard.TargetProperty="Margin"
