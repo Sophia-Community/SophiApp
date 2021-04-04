@@ -9,7 +9,9 @@
              xmlns:models="clr-namespace:SophiApp.Models"
              mc:Ignorable="d"
              controls:Switch.MouseEnter="UIElement_MouseEnter"
-             controls:Switch.MouseLeave="UIElement_MouseLeave">
+             controls:Switch.MouseLeave="UIElement_MouseLeave"
+             controls:CheckBox.MouseEnter="UIElement_MouseEnter"
+             controls:CheckBox.MouseLeave="UIElement_MouseLeave">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="FilterByTag" />
@@ -73,11 +75,14 @@
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
                     <ScrollViewer BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
                         <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
-                            <ItemsControl.ItemTemplate>
+                            <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:SwitchModel}">
                                     <controls:Switch />
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type models:CheckBoxModel}">
+                                    <controls:CheckBox />
+                                </DataTemplate>
+                            </ItemsControl.Resources>
                         </ItemsControl>
                     </ScrollViewer>
                 </Grid>

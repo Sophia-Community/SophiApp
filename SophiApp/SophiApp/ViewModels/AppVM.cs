@@ -103,7 +103,7 @@ namespace SophiApp.ViewModels
             {
                 if (m.Id % 2 == 0) m.SetSystemState();
             });
-        }        
+        }
 
         private async void UIElementClickedAsync(object args)
         {

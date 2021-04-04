@@ -50,5 +50,57 @@
         },
         "Type": "SwitchModel",
         "Tag": "Privacy"
+    },
+    {
+        "Id": 1004,
+        "LocalizedHeaders": {
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1005,
+        "LocalizedHeaders": {
+            "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
+            "EN": "Get tips, hints and tips when using Windows"
+        },
+        "LocalizedDescriptions": {
+            "RU": "",
+            "EN": ""
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1006,
+        "LocalizedHeaders": {
+            "RU": "Показывать рекомендуемое содержимое в приложении Параметры",
+            "EN": "Show recommended content in the Settings app"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Показывать рекомендуемое содержимое в приложении Параметры",
+            "EN": "Show recommended content in the Settings app"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1007,
+        "LocalizedHeaders": {
+            "RU": "Автоматическая установка рекомендованных приложений",
+            "EN": "Automatic installation of recommended apps"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Автоматическая установка рекомендованных приложений",
+            "EN": "Automatic installation of recommended apps"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
     }
 ]

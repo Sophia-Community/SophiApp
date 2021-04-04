@@ -15,19 +15,19 @@ namespace SophiApp.Controls
 
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
-            DependencyProperty.Register("Description", typeof(string), typeof(Switch), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("Description", typeof(string), typeof(Switch), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(Switch), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("Header", typeof(string), typeof(Switch), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
-            DependencyProperty.Register("Id", typeof(int), typeof(Switch), new PropertyMetadata(default(int)));
+            DependencyProperty.Register("Id", typeof(int), typeof(Switch), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsOnProperty =
-            DependencyProperty.Register("IsOn", typeof(bool), typeof(Switch), new PropertyMetadata(null));
+            DependencyProperty.Register("IsOn", typeof(bool), typeof(Switch), new PropertyMetadata(default));
 
         public Switch()
         {

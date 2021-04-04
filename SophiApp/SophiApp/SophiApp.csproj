@@ -89,9 +89,6 @@
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CheckBoxBar.xaml.cs">
-      <DependentUpon>CheckBoxBar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\FilledButton.xaml.cs">
       <DependentUpon>FilledButton.xaml</DependentUpon>
     </Compile>
@@ -128,6 +125,7 @@
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Interfaces\IUIElementModel.cs" />
+    <Compile Include="Models\CheckBoxModel.cs" />
     <Compile Include="Models\SwitchModel.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Compile Include="Views\ViewContent.xaml.cs">
@@ -154,10 +152,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CheckBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\CheckBoxBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
