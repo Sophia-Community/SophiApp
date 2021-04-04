@@ -37,5 +37,18 @@
         },
         "Type": "SwitchModel",
         "Tag": "Privacy"
+    },
+    {
+        "Id": 1003,
+        "LocalizedHeaders": {
+            "RU": "Изменить частоту формирования отзывов на «Никогда» для текущего пользователя",
+            "EN": "Change Windows Feedback frequency to «Never» for the current user"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10",
+            "EN": "Сhoose how often you're asked to rate or provide written feedback about Windows 10"
+        },
+        "Type": "SwitchModel",
+        "Tag": "Privacy"
     }
 ]

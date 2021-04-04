@@ -4,36 +4,44 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SophiApp.Models
 {
-    class SwitchModel : IUIElementModel, INotifyPropertyChanged
+    internal class SwitchModel : IUIElementModel, INotifyPropertyChanged
     {
         private string description;
         private string header;
-        private bool state = default;
-        private bool actualState = default;
+        private bool userState = default;
+        private bool systemState = default;
+        private bool isOn = default;
 
-        public bool ActualState
+        public bool IsOn
         {
-            get => actualState;
+            get => isOn;
             set
             {
-                actualState = value;
-                OnPropertyChanged("ActualState");                
+                isOn = value;
+                OnPropertyChanged("IsOn");
             }
         }
 
-        public bool State
+        public bool SystemState
         {
-            get => state;
+            get => systemState;
             set
             {
-                state = value;
-                OnPropertyChanged("State");               
+                systemState = value;
+                OnPropertyChanged("SystemState");
+            }
+        }
+
+        public bool UserState
+        {
+            get => userState;
+            set
+            {
+                userState = value;
+                OnPropertyChanged("UserState");
             }
         }
 
@@ -61,7 +69,7 @@ namespace SophiApp.Models
         public string Tag { get; set; }
         public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
         public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
-        
+
         public SwitchModel(JsonDTO json)
         {
             LocalizedDescriptions = Localizator.GetLocalizedDescriptions(json);
@@ -80,10 +88,28 @@ namespace SophiApp.Models
 
         private void OnPropertyChanged(string propertyName)
         {
+            //TODO: Remove before Release !!!
+#if DEBUG
+            Debug.WriteLine(DateTime.Now);
+            Debug.WriteLine($"Id: {Id}");
+            Debug.WriteLine($"SystemState: {SystemState}");
+            Debug.WriteLine($"UserState: {UserState}");
+            Debug.WriteLine($"IsOn: {IsOn}");
+            Debug.WriteLine(string.Empty);
+#endif
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void ChangeActualState() => ActualState = !ActualState;
-        
+        public void SetSystemState()
+        {
+            SystemState = true;
+            IsOn = true;
+        }
+
+        public void SetUserState()
+        {
+            UserState = !UserState;
+            IsOn = !IsOn;
+        }
     }
 }
