@@ -16,44 +16,44 @@
              controls:RoundCheckBox.MouseLeave="UIElement_MouseLeave">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="FilterByTag" />
-        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
+        <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="FilterByTag"/>
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter"/>
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Page.Visible">
             <ThicknessAnimation Storyboard.TargetProperty="Margin"
                             From="{StaticResource Animation.Page.Margin}"
                             To="0, 0, 0, 0"
-                            Duration="0:0:0.2" />
+                            Duration="0:0:0.2"/>
         </Storyboard>
         <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-            <Setter Property="Grid.Column" Value="2" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
+            <Setter Property="Grid.Column" Value="2"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
-            <Setter Property="FontSize" Value="28" />
-            <Setter Property="Grid.Row" Value="0" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="0, 5, 0, 0" />
-            <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0, 5, 0, 0"/>
+            <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="{x:Type local:ViewContent}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}"/>
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">
-                        <Binding Path="ViewVisibilityByTag" UpdateSourceTrigger="PropertyChanged" />
-                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
+                        <Binding Path="ViewVisibilityByTag" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
@@ -63,48 +63,48 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
+                    <TextBlock Style="{StaticResource Style.TextBlock.Header}"/>
                     <ScrollViewer BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
                         <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:SwitchModel}">
-                                    <controls:Switch />
+                                    <controls:Switch/>
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBoxModel}">
                                     <controls:CheckBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
-                                                       CommandParameter="{Binding Id}" />
+                                                       CommandParameter="{Binding Id}"/>
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RoundCheckBoxModel}">
                                     <controls:RoundCheckBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
-                                                            CommandParameter="{Binding Id}" />
+                                                            CommandParameter="{Binding Id}"/>
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
                     </ScrollViewer>
                 </Grid>
                 <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
+                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}"/>
                 </StackPanel>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="Visibility" Value="Visible">
                     <Trigger.EnterActions>
-                        <BeginStoryboard Storyboard="{StaticResource Animation.Page.Visible}" />
+                        <BeginStoryboard Storyboard="{StaticResource Animation.Page.Visible}"/>
                     </Trigger.EnterActions>
                 </Trigger>
                 <Trigger Property="Visibility" Value="Collapsed">
-                    <Setter Property="Margin" Value="{StaticResource Animation.Page.Margin}" />
+                    <Setter Property="Margin" Value="{StaticResource Animation.Page.Margin}"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

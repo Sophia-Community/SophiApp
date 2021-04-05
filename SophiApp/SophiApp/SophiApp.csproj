@@ -83,9 +83,6 @@
     <Compile Include="Controls\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ButtonSwitch.xaml.cs">
-      <DependentUpon>ButtonSwitch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -104,9 +101,6 @@
     <Compile Include="Controls\RoundCheckBox.xaml.cs">
       <DependentUpon>RoundCheckBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RoundCheckBoxBar.xaml.cs">
-      <DependentUpon>RoundCheckBoxBar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
@@ -121,6 +115,9 @@
     </Compile>
     <Compile Include="Controls\TitleWindow.xaml.cs">
       <DependentUpon>TitleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToggleButton.xaml.cs">
+      <DependentUpon>ToggleButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
@@ -150,10 +147,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ButtonSwitch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\CheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,10 +171,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\RoundCheckBoxBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\SearchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\TitleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
