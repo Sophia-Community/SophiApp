@@ -28,32 +28,6 @@
     {
         "Id": 1002,
         "LocalizedHeaders": {
-            "RU": "Отключить отчеты об ошибках Windows для текущего пользователя",
-            "EN": "Turn off Windows Error Reporting for the current user"
-        },
-        "LocalizedDescriptions": {
-            "RU": "Функция отчетов об ошибках отправляет набор данных в Microsoft для определенных типов событий, таких как общие, нефатальные ошибки: сбои в приложениях, неотвечающих приложения и ошибки в ядре",
-            "EN": "Windows Error Reporting sends data to Microsoft for specific event types such as generic, non-fatal errors: crash, no response, and kernel fault errors"
-        },
-        "Type": "SwitchModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1003,
-        "LocalizedHeaders": {
-            "RU": "Изменить частоту формирования отзывов на «Никогда» для текущего пользователя",
-            "EN": "Change Windows Feedback frequency to «Never» for the current user"
-        },
-        "LocalizedDescriptions": {
-            "RU": "Выбрать, как часто вас будут просить оценить или отправить письменный отзыв о работе Windows 10",
-            "EN": "Сhoose how often you're asked to rate or provide written feedback about Windows 10"
-        },
-        "Type": "SwitchModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1004,
-        "LocalizedHeaders": {
             "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
             "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
         },
@@ -65,7 +39,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 1005,
+        "Id": 1003,
         "LocalizedHeaders": {
             "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
             "EN": "Get tips, hints and tips when using Windows"
@@ -78,7 +52,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 1006,
+        "Id": 1004,
         "LocalizedHeaders": {
             "RU": "Показывать рекомендуемое содержимое в приложении Параметры",
             "EN": "Show recommended content in the Settings app"
@@ -87,20 +61,20 @@
             "RU": "Показывать рекомендуемое содержимое в приложении Параметры",
             "EN": "Show recommended content in the Settings app"
         },
-        "Type": "CheckBoxModel",
+        "Type": "RoundCheckBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1007,
+        "Id": 1005,
         "LocalizedHeaders": {
             "RU": "Автоматическая установка рекомендованных приложений",
             "EN": "Automatic installation of recommended apps"
         },
         "LocalizedDescriptions": {
-            "RU": "Автоматическая установка рекомендованных приложений",
-            "EN": "Automatic installation of recommended apps"
+            "RU": "",
+            "EN": ""
         },
-        "Type": "CheckBoxModel",
+        "Type": "RoundCheckBoxModel",
         "Tag": "Privacy"
     }
 ]

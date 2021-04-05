@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
+             xmlns:view="clr-namespace:SophiApp.Views"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -54,7 +55,7 @@
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="TextBlockHeader" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
-                <Border x:Name="BorderCheckBox">
+                <Border x:Name="BorderCheckBox" MouseLeftButtonDown="CheckBox_MouseLeftButtonDown">
                     <Path x:Name="PathCheckBox" />
                 </Border>
             </Grid>

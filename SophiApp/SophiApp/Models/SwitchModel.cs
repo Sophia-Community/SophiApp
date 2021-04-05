@@ -1,13 +1,11 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 
 namespace SophiApp.Models
 {
-    internal class SwitchModel : IUIElementModel, INotifyPropertyChanged
+    internal class SwitchModel : IUIElementModel, ISwitchable, INotifyPropertyChanged
     {
         private string description;
         private string header;
@@ -90,12 +88,12 @@ namespace SophiApp.Models
         {
             //TODO: Remove before Release !!!
 #if DEBUG
-            Debug.WriteLine(DateTime.Now);
-            Debug.WriteLine($"Id: {Id}");
-            Debug.WriteLine($"SystemState: {SystemState}");
-            Debug.WriteLine($"UserState: {UserState}");
-            Debug.WriteLine($"IsOn: {IsOn}");
-            Debug.WriteLine(string.Empty);
+            //Debug.WriteLine(DateTime.Now);
+            //Debug.WriteLine($"Id: {Id}");
+            //Debug.WriteLine($"SystemState: {SystemState}");
+            //Debug.WriteLine($"UserState: {UserState}");
+            //Debug.WriteLine($"IsOn: {IsOn}");
+            //Debug.WriteLine(string.Empty);
 #endif
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

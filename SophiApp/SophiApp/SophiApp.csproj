@@ -124,8 +124,11 @@
     </Compile>
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
+    <Compile Include="Interfaces\ICheckable.cs" />
+    <Compile Include="Interfaces\ISwitchable.cs" />
     <Compile Include="Interfaces\IUIElementModel.cs" />
     <Compile Include="Models\CheckBoxModel.cs" />
+    <Compile Include="Models\RoundCheckBoxModel.cs" />
     <Compile Include="Models\SwitchModel.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Compile Include="Views\ViewContent.xaml.cs">
@@ -245,6 +248,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="App.manifest" />
     <Resource Include="Resources\UIElementsData.json" />

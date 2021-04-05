@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace SophiApp.Models
 {
-    internal class CheckBoxModel : IUIElementModel, ICheckable, INotifyPropertyChanged
+    internal class RoundCheckBoxModel : IUIElementModel, ICheckable, INotifyPropertyChanged
     {
         private string description;
         private string header;
@@ -13,7 +13,7 @@ namespace SophiApp.Models
         private bool systemState = default;
         private bool userState = default;
 
-        public CheckBoxModel(JsonDTO json)
+        public RoundCheckBoxModel(JsonDTO json)
         {
             LocalizedDescriptions = Localizator.GetLocalizedDescriptions(json);
             LocalizedHeaders = Localizator.GetLocalizedHeaders(json);

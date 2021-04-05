@@ -11,7 +11,9 @@
              controls:Switch.MouseEnter="UIElement_MouseEnter"
              controls:Switch.MouseLeave="UIElement_MouseLeave"
              controls:CheckBox.MouseEnter="UIElement_MouseEnter"
-             controls:CheckBox.MouseLeave="UIElement_MouseLeave">
+             controls:CheckBox.MouseLeave="UIElement_MouseLeave"
+             controls:RoundCheckBox.MouseEnter="UIElement_MouseEnter"
+             controls:RoundCheckBox.MouseLeave="UIElement_MouseLeave">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="FilterByTag" />
@@ -80,7 +82,12 @@
                                     <controls:Switch />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBoxModel}">
-                                    <controls:CheckBox />
+                                    <controls:CheckBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
+                                                       CommandParameter="{Binding Id}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:RoundCheckBoxModel}">
+                                    <controls:RoundCheckBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
+                                                            CommandParameter="{Binding Id}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

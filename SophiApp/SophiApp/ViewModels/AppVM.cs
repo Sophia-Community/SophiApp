@@ -60,9 +60,6 @@ namespace SophiApp.ViewModels
         public RelayCommand UIElementClickedCommand { get; }
         public List<IUIElementModel> UIModels { get; set; }
 
-        /// <summary>
-        /// Tags define the displayed View
-        /// </summary>
         public string ViewVisibilityByTag
         {
             get => viewVisibilityByTag;

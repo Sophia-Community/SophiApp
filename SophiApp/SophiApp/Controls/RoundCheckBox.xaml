@@ -7,36 +7,58 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="10" />
-        </Style>
-        <Style TargetType="{x:Type Ellipse}">
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}" />
-            <Setter Property="Width" Value="6" />
-            <Setter Property="Height" Value="6" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-        </Style>
-        <Style TargetType="{x:Type Grid}">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Width" Value="20" />
             <Setter Property="Height" Value="20" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Grid.Column" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="{x:Type Ellipse}">
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Height" Value="8" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="MinWidth" Value="450" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
         </Style>
         <Style TargetType="{x:Type local:RoundCheckBox}">
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Id" Value="{Binding Id}" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="Background" Value="Transparent" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid MouseLeftButtonDown="RoundCheckBox_MouseLeftButtonDown">
-                <Border x:Name="BorderRound" />
-                <Ellipse x:Name="EllipseDot" />
+            <Grid MouseEnter="RoundCheckBox_MouseEnter" MouseLeave="RoundCheckBox_MouseLeave">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="0" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Border x:Name="BorderRound" MouseLeftButtonDown="RoundCheckBox_MouseLeftButtonDown">
+                    <Ellipse x:Name="EllipseDot" />
+                </Border>
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
