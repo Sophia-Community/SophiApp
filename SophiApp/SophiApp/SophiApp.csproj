@@ -125,6 +125,7 @@
     <Compile Include="Interfaces\ISwitchable.cs" />
     <Compile Include="Interfaces\IUIElementModel.cs" />
     <Compile Include="Models\CheckBoxModel.cs" />
+    <Compile Include="Models\ItemsListModel.cs" />
     <Compile Include="Models\RoundCheckBoxModel.cs" />
     <Compile Include="Models\SwitchModel.cs" />
     <Compile Include="ViewModels\AppVM.cs" />

@@ -1,10 +1,20 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace SophiApp.Commons
 {
     [DataContract]
     public class JsonDTO
     {
+        [DataMember(Name = "CheckBoxIsVisible")]
+        public bool CheckBoxIsVisible { get; set; }
+
+        [DataMember(Name = "Childrens")]
+        public List<JsonDTO> Childrens { get; set; }
+
+        [DataMember(Name = "ExpanderIsVisible")]
+        public bool ExpanderIsVisible { get; set; }
+
         [DataMember(Name = "Id")]
         public int Id { get; set; }
 

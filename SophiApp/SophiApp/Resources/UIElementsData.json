@@ -76,5 +76,44 @@
         },
         "Type": "RoundCheckBoxModel",
         "Tag": "Privacy"
+    },    
+    {
+        "Id": 1006,
+        "LocalizedHeaders": {
+            "RU": "Задачи диагностического отслеживания",
+            "EN": "Diagnostic Tracking Tasks"
+        },
+        "ExpanderIsVisible": "true",
+        "CheckBoxIsVisible": "false",
+        "Childrens": [
+            {
+                "Id": 1002,
+                "LocalizedHeaders": {
+                    "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+                    "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+                },
+                "LocalizedDescriptions": {
+                    "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+                    "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+                },
+                "Type": "CheckBoxModel",
+                "Tag": "Privacy"
+            },
+            {
+                "Id": 1003,
+                "LocalizedHeaders": {
+                    "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
+                    "EN": "Get tips, hints and tips when using Windows"
+                },
+                "LocalizedDescriptions": {
+                    "RU": "",
+                    "EN": ""
+                },
+                "Type": "CheckBoxModel",
+                "Tag": "Privacy"
+            }
+        ],
+        "Type": "ItemsListModel",
+        "Tag": "Privacy"
     }
 ]
