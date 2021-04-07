@@ -12,50 +12,50 @@
         TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType">
     <Window.DataContext>
-        <vm:AppVM/>
+        <vm:AppVM />
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Style>
         <Style TargetType="{x:Type Window}">
-            <Setter Property="WindowStyle" Value="None"/>
-            <Setter Property="AllowsTransparency" Value="False"/>
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="ResizeMode" Value="CanResize"/>
-            <Setter Property="ShowInTaskbar" Value="True"/>
-            <Setter Property="MinHeight" Value="640"/>
-            <Setter Property="MinWidth" Value="1024"/>
-            <Setter Property="Height" Value="640"/>
-            <Setter Property="Width" Value="1024"/>
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}"/>
-            <Setter Property="Title" Value="{Binding AppName}"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Regular"/>
-            <Setter Property="FontStretch" Value="Normal"/>
-            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="WindowStyle" Value="None" />
+            <Setter Property="AllowsTransparency" Value="False" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="ResizeMode" Value="CanResize" />
+            <Setter Property="ShowInTaskbar" Value="True" />
+            <Setter Property="MinHeight" Value="640" />
+            <Setter Property="MinWidth" Value="1024" />
+            <Setter Property="Height" Value="640" />
+            <Setter Property="Width" Value="1024" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Title" Value="{Binding AppName}" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontStretch" Value="Normal" />
+            <Setter Property="FontStyle" Value="Normal" />
         </Style>
     </Window.Style>
     <Window.Resources>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}"/>
-            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="CornerRadius" Value="0" />
         </Style>
     </Window.Resources>
     <Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="35"/> <!--Window Title Row-->
-                <RowDefinition Height="*"/>  <!--Window Content Row-->
+                <RowDefinition Height="35" /> <!--Window Title Row-->
+                <RowDefinition Height="*" />  <!--Window Content Row-->
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/> <!--Hamburger Row-->
-                    <ColumnDefinition Width="*"/>   <!--Views Row-->
+                    <ColumnDefinition Width="250" /> <!--Hamburger Row-->
+                    <ColumnDefinition Width="*" />   <!--Views Row-->
                 </Grid.ColumnDefinitions>
                 <!--Left Window Title-->
                 <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
@@ -64,22 +64,22 @@
                             <Ellipse>
                                 <Ellipse.Style>
                                     <Style TargetType="{x:Type Ellipse}">
-                                        <Setter Property="Width" Value="12"/>
-                                        <Setter Property="Height" Value="12"/>
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                        <Setter Property="HorizontalAlignment" Value="Left"/>
-                                        <Setter Property="Margin" Value="10, 0, 10, 0"/>
-                                        <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}"/>
+                                        <Setter Property="Width" Value="12" />
+                                        <Setter Property="Height" Value="12" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                        <Setter Property="Margin" Value="10, 0, 10, 0" />
+                                        <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
                                     </Style>
                                 </Ellipse.Style>
                             </Ellipse>
                             <TextBlock>
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="FontSize" Value="14"/>
-                                        <Setter Property="Text" Value="{DynamicResource CONST.AppName}"/>
-                                        <Setter Property="VerticalAlignment" Value="Center"/>
-                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                        <Setter Property="FontSize" Value="14" />
+                                        <Setter Property="Text" Value="{DynamicResource CONST.AppName}" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Left" />
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
@@ -90,8 +90,8 @@
                 <controls:TitleWindow Grid.Column="1" Background="{DynamicResource Brush.View.Background}">
                     <controls:TitleWindow.Content>
                         <Grid>
-                            <controls:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                            <controls:TitleButtonMin HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 35, 0"/>
+                            <controls:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <controls:TitleButtonMin HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 35, 0" />
                         </Grid>
                     </controls:TitleWindow.Content>
                 </controls:TitleWindow>
@@ -99,11 +99,11 @@
 
             <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <controls:HamburgerMenu Grid.Column="0"/>
-                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}"/>                
+                <controls:HamburgerMenu Grid.Column="0" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}" />
             </Grid>
         </Grid>
     </Border>

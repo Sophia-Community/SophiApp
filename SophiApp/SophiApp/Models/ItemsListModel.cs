@@ -1,40 +1,31 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SophiApp.Models
 {
-    class ItemsListModel : IUIElementModel, INotifyPropertyChanged
+    internal class ItemsListModel : IUIElementModel, IItemsListModel, INotifyPropertyChanged
     {
         private string description;
-        private string header;        
+        private string header;
+        private bool isChecked = default;
         private bool systemState = default;
         private bool userState = default;
 
         public ItemsListModel(JsonDTO json)
         {
-            Childrens = json.Childrens.Select(dto => Fabric.CreateElementModel(dto)).ToList();
-            LocalizedHeaders = Localizator.GetLocalizedHeaders(json);
+            LocalizedHeaders = json.LocalizedHeaders;
             Id = json.Id;
             Tag = json.Tag;
+            ChildIds = json.ChildIds;
+            SelectOnce = json.SelectOnce;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;        
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Description
-        {
-            get => description;
-            set
-            {
-                description = value;
-                OnPropertyChanged("Description");
-            }
-        }
+        public List<int> ChildIds { get; set; }
+        public string Description { get; set; }
 
         public string Header
         {
@@ -46,34 +37,22 @@ namespace SophiApp.Models
             }
         }
 
-        public int Id { get; set; }        
+        public int Id { get; set; }
+
+        public bool InContainer { get; set; }
+
+        public bool IsChecked { get; set; }
+
+        public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
 
         public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
-        public List<IUIElementModel> Childrens { get; set; }
 
-        public bool SystemState
-        {
-            get => systemState;
-            set
-            {
-                systemState = value;
-                OnPropertyChanged("SystemState");
-            }
-        }
+        public bool SelectOnce { get; set; }
+        public bool SystemState { get; set; }
 
         public string Tag { get; set; }
 
-        public bool UserState
-        {
-            get => userState;
-            set
-            {
-                userState = value;
-                OnPropertyChanged("UserState");
-            }
-        }
-
-        public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
+        public bool UserState { get; set; }
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -81,18 +60,16 @@ namespace SophiApp.Models
         }
 
         public void SetLocalizationTo(UILanguage language)
-        {            
-            Header = LocalizedHeaders[language];            
+        {
+            Header = LocalizedHeaders[language];
         }
 
         public void SetSystemState()
         {
-            SystemState = true;
         }
 
         public void SetUserState()
         {
-            UserState = !UserState;
         }
     }
 }

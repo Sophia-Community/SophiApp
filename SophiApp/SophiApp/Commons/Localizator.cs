@@ -21,24 +21,6 @@ namespace SophiApp.Commons
             return languagesUris[localization];
         }
 
-        internal static Dictionary<UILanguage, string> GetLocalizedDescriptions(JsonDTO json)
-        {
-            return new Dictionary<UILanguage, string>
-            {
-                { UILanguage.RU, json.LocalizedDescriptions.RU },
-                { UILanguage.EN, json.LocalizedDescriptions.EN }
-            };
-        }
-
-        internal static Dictionary<UILanguage, string> GetLocalizedHeaders(JsonDTO json)
-        {
-            return new Dictionary<UILanguage, string>
-            {
-                { UILanguage.RU, json.LocalizedHeaders.RU },
-                { UILanguage.EN, json.LocalizedHeaders.EN }
-            };
-        }
-
         internal static UILanguage Initializing()
         {
             var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();

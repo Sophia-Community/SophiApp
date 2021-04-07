@@ -44,7 +44,6 @@
         <Style TargetType="{x:Type Grid}">
             <Setter Property="MinWidth" Value="450" />
             <Setter Property="MinHeight" Value="20" />
-            <Setter Property="Margin" Value="0, 0, 0, 20" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
@@ -56,7 +55,7 @@
         </Style>
         <Style TargetType="{x:Type local:Switch}">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="IsOn" Value="{Binding IsOn, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Id" Value="{Binding Id}" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -66,6 +65,7 @@
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -78,12 +78,7 @@
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
                 <TextBlock />
-                <Border x:Name="BorderSwitch">
-                    <Border.InputBindings>
-                        <MouseBinding Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type view:ViewContent}}}"
-                                      CommandParameter="{Binding Path=Id, RelativeSource={RelativeSource TemplatedParent}}"
-                                      MouseAction="LeftClick" />
-                    </Border.InputBindings>
+                <Border x:Name="BorderSwitch" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseSwitch" />
                 </Border>
             </Grid>
@@ -94,7 +89,7 @@
                     <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
                 </Trigger>
-                <DataTrigger Binding="{Binding Path=IsOn, RelativeSource={RelativeSource Self}}" Value="True">
+                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard x:Name="AnimationSwitchMarginToRight" Storyboard="{StaticResource Animation.Switch.Margin.ToRight}" />
                     </DataTrigger.EnterActions>
@@ -102,7 +97,7 @@
                         <RemoveStoryboard BeginStoryboardName="AnimationSwitchMarginToRight" />
                     </DataTrigger.ExitActions>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=IsOn, RelativeSource={RelativeSource Self}}" Value="False">
+                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard x:Name="AnimationSwitchMarginToLeft" Storyboard="{StaticResource Animation.Switch.Margin.ToLeft}" />
                     </DataTrigger.EnterActions>

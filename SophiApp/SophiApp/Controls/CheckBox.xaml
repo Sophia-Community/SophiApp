@@ -28,7 +28,6 @@
         <Style TargetType="{x:Type Grid}">
             <Setter Property="MinWidth" Value="450" />
             <Setter Property="MinHeight" Value="20" />
-            <Setter Property="Margin" Value="0, 0, 0, 20" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
@@ -47,6 +46,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>

@@ -20,7 +20,7 @@ namespace SophiApp.Commons
 
                             using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(match.Value)))
                             {
-                                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(JsonDTO));
+                                var jsonSerializer = new DataContractJsonSerializer(typeof(JsonDTO), new DataContractJsonSerializerSettings() { UseSimpleDictionaryFormat = true });
                                 dto = (JsonDTO)jsonSerializer.ReadObject(memoryStream);
                             }
 

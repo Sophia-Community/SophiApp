@@ -8,6 +8,10 @@ namespace SophiApp.Interfaces
         string Description { get; set; }
         string Header { get; set; }
         int Id { get; set; }
+
+        bool InContainer { get; set; }
+
+        bool IsChecked { get; set; }
         Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
         Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
         bool SystemState { get; set; }

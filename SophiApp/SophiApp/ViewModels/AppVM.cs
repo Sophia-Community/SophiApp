@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SophiApp.ViewModels
@@ -17,7 +16,7 @@ namespace SophiApp.ViewModels
 
         public AppVM()
         {
-            UIElementClickedCommand = new RelayCommand(new Action<object>(UIElementClickedAsync));
+            UIElementClickedCommand = new RelayCommand(new Action<object>(UIElementClicked));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
 
@@ -73,17 +72,18 @@ namespace SophiApp.ViewModels
         private void HamburgerClicked(object args)
         {
             var tag = args as string;
-
             if (ViewVisibilityByTag == tag)
+            {
                 return;
-
+            }
             ViewVisibilityByTag = tag;
         }
 
         private void InitializingUIModels()
         {
             var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
-            UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto, CurrentLocalization)).ToList();
+            UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto)).ToList();
+            UIModels.ForEach(model => model.SetLocalizationTo(CurrentLocalization));
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -102,13 +102,10 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void UIElementClickedAsync(object args)
+        private void UIElementClicked(object args)
         {
-            await Task.Run(() =>
-            {
-                var id = Convert.ToInt32(args);
-                UIModels.Where(m => m.Id == id).First().SetUserState();
-            });
+            var id = Convert.ToInt32(args);
+            UIModels.Where(m => m.Id == id).First().SetUserState();
         }
     }
 }

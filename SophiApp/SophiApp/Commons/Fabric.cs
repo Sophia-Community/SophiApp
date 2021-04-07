@@ -5,12 +5,10 @@ namespace SophiApp.Commons
 {
     internal class Fabric
     {
-        internal static IUIElementModel CreateElementModel(JsonDTO json, UILanguage language)
+        internal static IUIElementModel CreateElementModel(JsonDTO json)
         {
             var type = Type.GetType($"SophiApp.Models.{json.Type}");
-            var element = Activator.CreateInstance(type, json) as IUIElementModel;
-            element.SetLocalizationTo(language);
-            return element;
+            return Activator.CreateInstance(type, json) as IUIElementModel;
         }
     }
 }

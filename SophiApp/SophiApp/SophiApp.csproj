@@ -98,6 +98,9 @@
     <Compile Include="Controls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ItemsList.xaml.cs">
+      <DependentUpon>ItemsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RoundCheckBox.xaml.cs">
       <DependentUpon>RoundCheckBox.xaml</DependentUpon>
     </Compile>
@@ -119,10 +122,10 @@
     <Compile Include="Controls\ToggleButton.xaml.cs">
       <DependentUpon>ToggleButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToVisibility.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
-    <Compile Include="Interfaces\ICheckable.cs" />
-    <Compile Include="Interfaces\ISwitchable.cs" />
+    <Compile Include="Interfaces\IItemsListModel.cs" />
     <Compile Include="Interfaces\IUIElementModel.cs" />
     <Compile Include="Models\CheckBoxModel.cs" />
     <Compile Include="Models\ItemsListModel.cs" />
@@ -133,6 +136,10 @@
       <DependentUpon>ViewContent.xaml</DependentUpon>
     </Compile>
     <Page Include="Commons\Constants.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ItemsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

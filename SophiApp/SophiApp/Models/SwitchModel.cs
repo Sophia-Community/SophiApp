@@ -5,43 +5,24 @@ using System.ComponentModel;
 
 namespace SophiApp.Models
 {
-    internal class SwitchModel : IUIElementModel, ISwitchable, INotifyPropertyChanged
+    internal class SwitchModel : IUIElementModel, INotifyPropertyChanged
     {
         private string description;
         private string header;
-        private bool userState = default;
+        private bool isChecked = default;
         private bool systemState = default;
-        private bool isOn = default;
+        private bool userState = default;
 
-        public bool IsOn
+        public SwitchModel(JsonDTO json)
         {
-            get => isOn;
-            set
-            {
-                isOn = value;
-                OnPropertyChanged("IsOn");
-            }
+            LocalizedDescriptions = json.LocalizedDescriptions;
+            LocalizedHeaders = json.LocalizedHeaders;
+            Id = json.Id;
+            InContainer = json.InContainer;
+            Tag = json.Tag;
         }
 
-        public bool SystemState
-        {
-            get => systemState;
-            set
-            {
-                systemState = value;
-                OnPropertyChanged("SystemState");
-            }
-        }
-
-        public bool UserState
-        {
-            get => userState;
-            set
-            {
-                userState = value;
-                OnPropertyChanged("UserState");
-            }
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Description
         {
@@ -64,16 +45,47 @@ namespace SophiApp.Models
         }
 
         public int Id { get; set; }
-        public string Tag { get; set; }
+
+        public bool InContainer { get; set; }
+
+        public bool IsChecked
+        {
+            get => isChecked;
+            set
+            {
+                isChecked = value;
+                OnPropertyChanged("IsChecked");
+            }
+        }
+
         public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
         public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
 
-        public SwitchModel(JsonDTO json)
+        public bool SystemState
         {
-            LocalizedDescriptions = Localizator.GetLocalizedDescriptions(json);
-            LocalizedHeaders = Localizator.GetLocalizedHeaders(json);
-            Id = json.Id;
-            Tag = json.Tag;
+            get => systemState;
+            set
+            {
+                systemState = value;
+                OnPropertyChanged("SystemState");
+            }
+        }
+
+        public string Tag { get; set; }
+
+        public bool UserState
+        {
+            get => userState;
+            set
+            {
+                userState = value;
+                OnPropertyChanged("UserState");
+            }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void SetLocalizationTo(UILanguage language)
@@ -82,32 +94,16 @@ namespace SophiApp.Models
             Description = LocalizedDescriptions[language];
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            //TODO: Remove before Release !!!
-#if DEBUG
-            //Debug.WriteLine(DateTime.Now);
-            //Debug.WriteLine($"Id: {Id}");
-            //Debug.WriteLine($"SystemState: {SystemState}");
-            //Debug.WriteLine($"UserState: {UserState}");
-            //Debug.WriteLine($"IsOn: {IsOn}");
-            //Debug.WriteLine(string.Empty);
-#endif
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public void SetSystemState()
         {
             SystemState = true;
-            IsOn = true;
+            IsChecked = true;
         }
 
         public void SetUserState()
         {
             UserState = !UserState;
-            IsOn = !IsOn;
+            IsChecked = !IsChecked;
         }
     }
 }

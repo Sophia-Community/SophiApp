@@ -1,119 +1,223 @@
 [
     {
         "Id": 1000,
+        "InContainer": true,
         "LocalizedHeaders": {
-            "RU": "Отключить службу \"Функциональные возможности для подключенных пользователей и телеметрия\"",
-            "EN": "Disable the \"Connected User Experiences and Telemetry\" service (DiagTrack)"
+            "RU": "ProgramDataUpdater",
+            "EN": "ProgramDataUpdater"
         },
         "LocalizedDescriptions": {
-            "RU": "Служба \"Функциональные возможности для подключенных пользователей и телеметрия\" включает возможности, которые поддерживают взаимодействия с приложением и функциональные возможности для подключенных пользователей. Кроме того, эта служба управляет сбором на основе событий, передачей диагностической информации и информации об использовании (используемой для улучшения восприятия и повышения качества платформы Windows), когда параметры диагностики и настройки параметров конфиденциальности использования включены в разделе \"Диагностика и отзывы\"",
-            "EN": "The \"Connected User Experiences and Telemetry\" service enables features that support in-application and connected user experiences. Additionally, this service manages the event-driven collection and transmission of diagnostic and usage information (used to improve the experience and quality of the Windows Platform) when the diagnostics and usage privacy option settings are enabled under Feedback and Diagnostics"
+            "RU": "Отключить задачу ProgramDataUpdater",
+            "EN": "Disable task ProgramDataUpdater"
         },
         "Type": "SwitchModel",
         "Tag": "Privacy"
     },
     {
         "Id": 1001,
+        "InContainer": true,
         "LocalizedHeaders": {
-            "RU": "Установить уровень сбора диагностических сведений ОС на минимальный",
-            "EN": "Set the OS level of diagnostic data gathering to minimum"
+            "RU": "Proxy",
+            "EN": "Proxy"
         },
         "LocalizedDescriptions": {
-            "RU": "",
-            "EN": ""
+            "RU": "Отключить задачу Proxy",
+            "EN": "Disable task Proxy"
         },
         "Type": "SwitchModel",
         "Tag": "Privacy"
     },
     {
         "Id": 1002,
+        "InContainer": true,
         "LocalizedHeaders": {
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+            "RU": "Consolidator",
+            "EN": "Consolidator"
         },
         "LocalizedDescriptions": {
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+            "RU": "Отключить задачу Consolidator",
+            "EN": "Disable task Consolidator"
         },
-        "Type": "CheckBoxModel",
+        "Type": "SwitchModel",
         "Tag": "Privacy"
     },
     {
         "Id": 1003,
+        "InContainer": true,
         "LocalizedHeaders": {
-            "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
-            "EN": "Get tips, hints and tips when using Windows"
+            "RU": "UsbCeip",
+            "EN": "UsbCeip"
         },
         "LocalizedDescriptions": {
-            "RU": "",
-            "EN": ""
+            "RU": "Отключить задачу UsbCeip",
+            "EN": "Disable task UsbCeip"
         },
         "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
         "Id": 1004,
+        "InContainer": true,
         "LocalizedHeaders": {
-            "RU": "Показывать рекомендуемое содержимое в приложении Параметры",
-            "EN": "Show recommended content in the Settings app"
+            "RU": "Microsoft-Windows-DiskDiagnosticDataCollector",
+            "EN": "Microsoft-Windows-DiskDiagnosticDataCollector"
         },
         "LocalizedDescriptions": {
-            "RU": "Показывать рекомендуемое содержимое в приложении Параметры",
-            "EN": "Show recommended content in the Settings app"
+            "RU": "Отключить задачу Microsoft Windows DiskDiagnosticDataCollector",
+            "EN": "Disable task Microsoft Windows DiskDiagnosticDataCollector"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1005,
+        "InContainer": true,
+        "LocalizedHeaders": {
+            "RU": "MapsToastTask",
+            "EN": "MapsToastTask"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Отключить задачу MapsToastTask",
+            "EN": "Disable task MapsToastTask"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1006,
+        "InContainer": true,
+        "LocalizedHeaders": {
+            "RU": "MapsUpdateTask",
+            "EN": "MapsUpdateTask"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Отключить задачу MapsUpdateTask",
+            "EN": "Disable task MapsUpdateTask"
         },
         "Type": "RoundCheckBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1005,
+        "Id": 1007,
+        "InContainer": true,
         "LocalizedHeaders": {
-            "RU": "Автоматическая установка рекомендованных приложений",
-            "EN": "Automatic installation of recommended apps"
+            "RU": "FamilySafetyMonitor",
+            "EN": "FamilySafetyMonitor"
         },
         "LocalizedDescriptions": {
-            "RU": "",
-            "EN": ""
+            "RU": "Отключить задачу FamilySafetyMonitor",
+            "EN": "Disable task FamilySafetyMonitor"
         },
         "Type": "RoundCheckBoxModel",
         "Tag": "Privacy"
-    },    
+    },
     {
-        "Id": 1006,
+        "Id": 1008,
+        "InContainer": true,
+        "LocalizedHeaders": {
+            "RU": "FamilySafetyRefreshTask",
+            "EN": "FamilySafetyRefreshTask"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Отключить задачу FamilySafetyRefreshTask",
+            "EN": "Disable task FamilySafetyRefreshTask"
+        },
+        "Type": "RoundCheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1009,
+        "ChildIds": [ 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008 ],
         "LocalizedHeaders": {
             "RU": "Задачи диагностического отслеживания",
             "EN": "Diagnostic Tracking Tasks"
         },
-        "ExpanderIsVisible": "true",
-        "CheckBoxIsVisible": "false",
-        "Childrens": [
-            {
-                "Id": 1002,
-                "LocalizedHeaders": {
-                    "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-                    "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
-                },
-                "LocalizedDescriptions": {
-                    "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-                    "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
-                },
-                "Type": "CheckBoxModel",
-                "Tag": "Privacy"
-            },
-            {
-                "Id": 1003,
-                "LocalizedHeaders": {
-                    "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
-                    "EN": "Get tips, hints and tips when using Windows"
-                },
-                "LocalizedDescriptions": {
-                    "RU": "",
-                    "EN": ""
-                },
-                "Type": "CheckBoxModel",
-                "Tag": "Privacy"
-            }
-        ],
+        "SelectOnce": "false",
         "Type": "ItemsListModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1010,
+        "InContainer": false,
+        "LocalizedHeaders": {
+            "RU": "Использовать мои данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
+            "EN": "Use my login information to automatically complete device setup and open apps after restart or update"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Использовать мои данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
+            "EN": "Use my login information to automatically complete device setup and open apps after restart or update"
+        },
+        "Type": "SwitchModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1011,
+        "InContainer": false,
+        "LocalizedHeaders": {
+            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
+            "EN": "Allow websites to provide local information by accessing a list of languages"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
+            "EN": "Allow websites to provide local information by accessing a list of languages"
+        },
+        "Type": "SwitchModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1012,
+        "InContainer": false,
+        "LocalizedHeaders": {
+            "RU": "Разрешать приложениям использовать идентификатор рекламы",
+            "EN": "Allow apps to use ad ID"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Разрешать приложениям использовать идентификатор рекламы",
+            "EN": "Allow apps to use ad ID"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1013,
+        "InContainer": false,
+        "LocalizedHeaders": {
+            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
+            "EN": "Allow apps on other devices to run apps and send messages on this device, and vice versa"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
+            "EN": "Allow apps on other devices to run apps and send messages on this device, and vice versa"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1014,
+        "InContainer": false,
+        "LocalizedHeaders": {
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
+        },
+        "Type": "RoundCheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1015,
+        "InContainer": false,
+        "LocalizedHeaders": {
+            "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
+            "EN": "Get tips, hints and tips when using Windows"
+        },
+        "LocalizedDescriptions": {
+            "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
+            "EN": "Get tips, hints and tips when using Windows"
+        },
+        "Type": "RoundCheckBoxModel",
         "Tag": "Privacy"
     }
 ]

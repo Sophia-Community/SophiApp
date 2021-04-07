@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace SophiApp.Models
 {
-    internal class CheckBoxModel : IUIElementModel, ICheckable, INotifyPropertyChanged
+    internal class CheckBoxModel : IUIElementModel, INotifyPropertyChanged
     {
         private string description;
         private string header;
@@ -15,9 +15,10 @@ namespace SophiApp.Models
 
         public CheckBoxModel(JsonDTO json)
         {
-            LocalizedDescriptions = Localizator.GetLocalizedDescriptions(json);
-            LocalizedHeaders = Localizator.GetLocalizedHeaders(json);
+            LocalizedDescriptions = json.LocalizedDescriptions;
+            LocalizedHeaders = json.LocalizedHeaders;
             Id = json.Id;
+            InContainer = json.InContainer;
             Tag = json.Tag;
         }
 
@@ -45,6 +46,8 @@ namespace SophiApp.Models
 
         public int Id { get; set; }
 
+        public bool InContainer { get; set; }
+
         public bool IsChecked
         {
             get => isChecked;
@@ -56,7 +59,6 @@ namespace SophiApp.Models
         }
 
         public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
-
         public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
 
         public bool SystemState

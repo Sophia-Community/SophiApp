@@ -45,7 +45,7 @@ namespace SophiApp.Views
             set { SetValue(TagProperty, value); }
         }
 
-        private void FilterByTag(object sender, FilterEventArgs e) => e.Accepted = (e.Item as IUIElementModel).Tag == Tag;
+        private void ElementsFilter(object sender, FilterEventArgs e) => e.Accepted = (e.Item as IUIElementModel).Tag == Tag && (e.Item as IUIElementModel).InContainer == false;
 
         private void UIElement_MouseEnter(object sender, RoutedEventArgs e)
         {
