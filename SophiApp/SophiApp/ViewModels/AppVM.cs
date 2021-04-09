@@ -155,18 +155,21 @@ namespace SophiApp.ViewModels
                         m.SystemState = false;
                         m.UserState = true;
                         m.IsChecked = true;
+                        UIElementHasChanged(m.UserState);
                     }
                     else if (m.Id != elementId)
                     {
                         m.SystemState = false;
                         m.UserState = false;
-                        m.IsChecked = false;
-                    }
+                        m.IsChecked = false;                       
+                    }                    
                 });
             }
             else
             {
-                UIModels.Where(m => m.Id == elementId).First().SetUserState();
+                var element = UIModels.Where(m => m.Id == elementId).First();
+                element.SetUserState();
+                UIElementHasChanged(element.UserState);
             }
         }
     }

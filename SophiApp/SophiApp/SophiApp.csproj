@@ -83,6 +83,9 @@
     <Compile Include="Controls\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChangedOptionsPanel.xaml.cs">
+      <DependentUpon>ChangedOptionsPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,7 @@
     </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
+    <Compile Include="Converters\IntToVisibility.cs" />
     <Compile Include="Converters\ObjectToIntList.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
@@ -138,6 +142,10 @@
       <DependentUpon>ViewContent.xaml</DependentUpon>
     </Compile>
     <Page Include="Commons\Constants.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChangedOptionsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
