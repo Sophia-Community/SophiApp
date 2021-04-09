@@ -122,7 +122,9 @@
     <Compile Include="Controls\ToggleButton.xaml.cs">
       <DependentUpon>ToggleButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
+    <Compile Include="Converters\ObjectToIntList.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Interfaces\IItemsListModel.cs" />

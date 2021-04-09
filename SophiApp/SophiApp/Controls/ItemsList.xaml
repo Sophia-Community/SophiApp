@@ -3,52 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:local="clr-namespace:SophiApp.Controls"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:models="clr-namespace:SophiApp.Models"
              xmlns:views="clr-namespace:SophiApp.Views"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="UIModelsCollection"
                               Source="{Binding DataContext.UIModels, RelativeSource={RelativeSource AncestorType={x:Type views:ViewContent}}}"
-                              Filter="InContainerFilter" />
-        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
-        <Storyboard x:Key="StoryboardExpanderClose">
-            <!--<DoubleAnimation Storyboard.TargetName="PanelExpander"
-                             Storyboard.TargetProperty="Opacity"
-                             From="1.0"
-                             To="0.0"
-                             Duration="0:0:5" />-->
-
-            <!--<DoubleAnimation Storyboard.TargetName="PanelExpander"
-                             Storyboard.TargetProperty="RenderTransform.ScaleX"
-                             From="1.0"
-                             To="0.0"
-                             Duration="0:0:1" />-->
-
-            <DoubleAnimation Storyboard.TargetName="PanelExpander"
-                             Storyboard.TargetProperty="LayoutTransform.ScaleY"
-                             From="1.0"
-                             To="0.0"
-                             Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Key="StoryboardExpanderOpen">
-            <DoubleAnimation Storyboard.TargetName="PanelExpander"
-                             Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)"
-                             From="0"
-                             To="1"
-                             Duration="0:0:01" />
-        </Storyboard>
+                              Filter="HasParentFilter" />
+        <converters:ActualHeightMultiply x:Key="ActualHeightMultiplyConverter" />
+        <converters:ObjectToIntList x:Key="ObjectToIntListConverter" />
         <Style TargetType="{x:Type Viewbox}">
             <Setter Property="Width" Value="16" />
             <Setter Property="Height" Value="16" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="Path.RenderTransform">
+                <Setter.Value>
+                    <RotateTransform />
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="{x:Type Canvas}">
             <Setter Property="Width" Value="16" />
             <Setter Property="Height" Value="16" />
         </Style>
-        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Expander.Wrapper">
+        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Path.Wrapper">
             <Setter Property="Grid.Column" Value="2" />
             <Setter Property="Width" Value="20" />
             <Setter Property="Height" Value="20" />
@@ -56,13 +38,9 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Expander">
-            <Setter Property="Grid.Row" Value="1" />
-            <Setter Property="LayoutTransform">
-                <Setter.Value>
-                    <ScaleTransform ScaleY="1.0" ScaleX="1.0" />
-                </Setter.Value>
-            </Setter>
+        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Header">
+            <Setter Property="DockPanel.Dock" Value="Top" />
+            <Setter Property="Height" Value="40" />
         </Style>
         <Style TargetType="{x:Type Path}">
             <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -74,12 +52,30 @@
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Text" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Grid.Column" Value="0" />
-            <Setter Property="Margin" Value="0, 0, 20, 0" />
+        </Style>
+        <Style TargetType="{x:Type ScrollViewer}">
+            <Setter Property="DockPanel.Dock" Value="Bottom" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Bottom" />
+            <Setter Property="ScrollViewer.Tag">
+                <Setter.Value>
+                    <sys:Double>1.0</sys:Double>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ScrollViewer.Height">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource ActualHeightMultiplyConverter}">
+                        <Binding Path="ActualHeight" ElementName="ItemsControlContent" />
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="{x:Type local:ItemsList}">
             <Setter Property="MinWidth" Value="450" />
             <Setter Property="MinHeight" Value="20" />
-            <Setter Property="Margin" Value="0, 0, 0, 20" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -91,12 +87,8 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+            <DockPanel>
+                <Grid Style="{StaticResource Style.Grid.Header}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="20" />
@@ -104,46 +96,83 @@
                         <ColumnDefinition Width="20" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Style="{DynamicResource Style.TextBlock.Header}" />
-                    <Grid Style="{StaticResource Style.Grid.Expander.Wrapper}"
-                          MouseLeftButtonDown="ExpanderWrapper_MouseLeftButtonDown">
-                        <Viewbox>
+                    <Grid Style="{StaticResource Style.Grid.Path.Wrapper}" MouseLeftButtonDown="ExpanderWrapper_MouseLeftButtonDown">
+                        <Viewbox x:Name="ViewboxArrow">
                             <Canvas>
                                 <Path />
                             </Canvas>
                         </Viewbox>
                     </Grid>
                 </Grid>
-                <Grid x:Name="PanelExpander" Style="{StaticResource Style.Grid.Expander}" Background="RosyBrown">
-                    <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
+                <ScrollViewer x:Name="ScrollViewContent">
+                    <ItemsControl x:Name="ItemsControlContent" ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:SwitchModel}">
-                                <local:Switch />
+                                <local:Switch FontSize="14"
+                                              Command="{Binding Path=DataContext.UIElementInListClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type views:ViewContent}}}">
+                                    <local:Switch.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource ObjectToIntListConverter}">
+                                            <Binding Path="DataContext.Id" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemsList}}" />
+                                            <Binding Path="Id" />
+                                        </MultiBinding>
+                                    </local:Switch.CommandParameter>
+                                </local:Switch>
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:CheckBoxModel}">
-                                <local:CheckBox />
+                                <local:CheckBox FontSize="14"
+                                                Command="{Binding Path=DataContext.UIElementInListClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type views:ViewContent}}}">
+                                    <local:CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource ObjectToIntListConverter}">
+                                            <Binding Path="DataContext.Id" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemsList}}" />
+                                            <Binding Path="Id" />
+                                        </MultiBinding>
+                                    </local:CheckBox.CommandParameter>
+                                </local:CheckBox>
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:RoundCheckBoxModel}">
-                                <local:RoundCheckBox />
+                                <local:RoundCheckBox FontSize="14"
+                                                     Command="{Binding Path=DataContext.UIElementInListClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type views:ViewContent}}}">
+                                    <local:RoundCheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource ObjectToIntListConverter}">
+                                            <Binding Path="DataContext.Id" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemsList}}" />
+                                            <Binding Path="Id" />
+                                        </MultiBinding>
+                                    </local:RoundCheckBox.CommandParameter>
+                                </local:RoundCheckBox>
                             </DataTemplate>
                         </ItemsControl.Resources>
                     </ItemsControl>
-                </Grid>
-            </Grid>
+                </ScrollViewer>
+            </DockPanel>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=IsExpanded, RelativeSource={RelativeSource Self}}" Value="False">
-                    <DataTrigger.EnterActions>
-                        <BeginStoryboard x:Name="AnimationExpanderClose" Storyboard="{StaticResource StoryboardExpanderClose}" />
-                    </DataTrigger.EnterActions>
-                    <DataTrigger.ExitActions>
-                        <RemoveStoryboard BeginStoryboardName="AnimationExpanderClose" />
-                    </DataTrigger.ExitActions>
-                </DataTrigger>
                 <DataTrigger Binding="{Binding Path=IsExpanded, RelativeSource={RelativeSource Self}}" Value="True">
                     <DataTrigger.EnterActions>
-                        <BeginStoryboard x:Name="AnimationExpanderOpen" Storyboard="{StaticResource StoryboardExpanderOpen}" />
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ScrollViewContent"
+                                                 Storyboard.TargetProperty="Tag"
+                                                 To="1"
+                                                 Duration="0:0:0.4" />
+                                <DoubleAnimation Storyboard.TargetName="ViewboxArrow"
+                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                 To="0"
+                                                 Duration="0:0:0.4" />
+                            </Storyboard>
+                        </BeginStoryboard>
                     </DataTrigger.EnterActions>
                     <DataTrigger.ExitActions>
-                        <RemoveStoryboard BeginStoryboardName="AnimationExpanderOpen" />
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ScrollViewContent"
+                                                 Storyboard.TargetProperty="Tag"
+                                                 To="0"
+                                                 Duration="0:0:0.4" />
+                                <DoubleAnimation Storyboard.TargetName="ViewboxArrow"
+                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                 To="180"
+                                                 Duration="0:0:0.4" />
+                            </Storyboard>
+                        </BeginStoryboard>
                     </DataTrigger.ExitActions>
                 </DataTrigger>
             </ControlTemplate.Triggers>

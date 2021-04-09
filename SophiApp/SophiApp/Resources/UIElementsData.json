@@ -1,12 +1,12 @@
 [
     {
         "Id": 1000,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "ProgramDataUpdater",
             "EN": "ProgramDataUpdater"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу ProgramDataUpdater",
             "EN": "Disable task ProgramDataUpdater"
         },
@@ -15,12 +15,12 @@
     },
     {
         "Id": 1001,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "Proxy",
             "EN": "Proxy"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу Proxy",
             "EN": "Disable task Proxy"
         },
@@ -29,12 +29,12 @@
     },
     {
         "Id": 1002,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "Consolidator",
             "EN": "Consolidator"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу Consolidator",
             "EN": "Disable task Consolidator"
         },
@@ -43,12 +43,12 @@
     },
     {
         "Id": 1003,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "UsbCeip",
             "EN": "UsbCeip"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу UsbCeip",
             "EN": "Disable task UsbCeip"
         },
@@ -57,12 +57,12 @@
     },
     {
         "Id": 1004,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "Microsoft-Windows-DiskDiagnosticDataCollector",
             "EN": "Microsoft-Windows-DiskDiagnosticDataCollector"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу Microsoft Windows DiskDiagnosticDataCollector",
             "EN": "Disable task Microsoft Windows DiskDiagnosticDataCollector"
         },
@@ -71,12 +71,12 @@
     },
     {
         "Id": 1005,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "MapsToastTask",
             "EN": "MapsToastTask"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу MapsToastTask",
             "EN": "Disable task MapsToastTask"
         },
@@ -85,12 +85,12 @@
     },
     {
         "Id": 1006,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "MapsUpdateTask",
             "EN": "MapsUpdateTask"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу MapsUpdateTask",
             "EN": "Disable task MapsUpdateTask"
         },
@@ -99,12 +99,12 @@
     },
     {
         "Id": 1007,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "FamilySafetyMonitor",
             "EN": "FamilySafetyMonitor"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу FamilySafetyMonitor",
             "EN": "Disable task FamilySafetyMonitor"
         },
@@ -113,12 +113,12 @@
     },
     {
         "Id": 1008,
-        "InContainer": true,
-        "LocalizedHeaders": {
+        "HasParent": "true",
+        "Headers": {
             "RU": "FamilySafetyRefreshTask",
             "EN": "FamilySafetyRefreshTask"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Отключить задачу FamilySafetyRefreshTask",
             "EN": "Disable task FamilySafetyRefreshTask"
         },
@@ -127,8 +127,8 @@
     },
     {
         "Id": 1009,
-        "ChildIds": [ 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008 ],
-        "LocalizedHeaders": {
+        "ChildId": [ 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008 ],
+        "Headers": {
             "RU": "Задачи диагностического отслеживания",
             "EN": "Diagnostic Tracking Tasks"
         },
@@ -138,12 +138,12 @@
     },
     {
         "Id": 1010,
-        "InContainer": false,
-        "LocalizedHeaders": {
+        "HasParent": "false",
+        "Headers": {
             "RU": "Использовать мои данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
             "EN": "Use my login information to automatically complete device setup and open apps after restart or update"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Использовать мои данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
             "EN": "Use my login information to automatically complete device setup and open apps after restart or update"
         },
@@ -152,12 +152,12 @@
     },
     {
         "Id": 1011,
-        "InContainer": false,
-        "LocalizedHeaders": {
+        "HasParent": "false",
+        "Headers": {
             "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
             "EN": "Allow websites to provide local information by accessing a list of languages"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
             "EN": "Allow websites to provide local information by accessing a list of languages"
         },
@@ -166,12 +166,12 @@
     },
     {
         "Id": 1012,
-        "InContainer": false,
-        "LocalizedHeaders": {
+        "HasParent": "false",
+        "Headers": {
             "RU": "Разрешать приложениям использовать идентификатор рекламы",
             "EN": "Allow apps to use ad ID"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Разрешать приложениям использовать идентификатор рекламы",
             "EN": "Allow apps to use ad ID"
         },
@@ -180,12 +180,12 @@
     },
     {
         "Id": 1013,
-        "InContainer": false,
-        "LocalizedHeaders": {
+        "HasParent": "false",
+        "Headers": {
             "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
             "EN": "Allow apps on other devices to run apps and send messages on this device, and vice versa"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
             "EN": "Allow apps on other devices to run apps and send messages on this device, and vice versa"
         },
@@ -194,12 +194,12 @@
     },
     {
         "Id": 1014,
-        "InContainer": false,
-        "LocalizedHeaders": {
+        "HasParent": "false",
+        "Headers": {
             "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
             "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
             "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
         },
@@ -208,16 +208,55 @@
     },
     {
         "Id": 1015,
-        "InContainer": false,
-        "LocalizedHeaders": {
+        "HasParent": "false",
+        "Headers": {
             "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
             "EN": "Get tips, hints and tips when using Windows"
         },
-        "LocalizedDescriptions": {
+        "Descriptions": {
             "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
             "EN": "Get tips, hints and tips when using Windows"
         },
         "Type": "RoundCheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1016,
+        "HasParent": "true",
+        "Headers": {
+            "RU": "Отобразить",
+            "EN": "Show"
+        },
+        "Descriptions": {
+            "RU": "",
+            "EN": ""
+        },
+        "Type": "RoundCheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1017,
+        "HasParent": "true",
+        "Headers": {
+            "RU": "Скрывать",
+            "EN": "Hide"
+        },
+        "Descriptions": {
+            "RU": "",
+            "EN": ""
+        },
+        "Type": "RoundCheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 1018,
+        "ChildId": [ 1016, 1017 ],
+        "Headers": {
+            "RU": "Значок \"Этот компьютер\" на рабочем столе",
+            "EN": "This PC icon on the desktop"
+        },
+        "SelectOnce": "true",
+        "Type": "ItemsListModel",
         "Tag": "Privacy"
     }
 ]

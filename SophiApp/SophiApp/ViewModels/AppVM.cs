@@ -17,6 +17,7 @@ namespace SophiApp.ViewModels
         public AppVM()
         {
             UIElementClickedCommand = new RelayCommand(new Action<object>(UIElementClicked));
+            UIElementInListClickedCommand = new RelayCommand(new Action<object>(UIElementInListClicked));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
 
@@ -57,6 +58,8 @@ namespace SophiApp.ViewModels
 
         public RelayCommand SearchClickedCommand { get; }
         public RelayCommand UIElementClickedCommand { get; }
+
+        public RelayCommand UIElementInListClickedCommand { get; }
         public List<IUIElementModel> UIModels { get; set; }
 
         public string ViewVisibilityByTag
@@ -106,6 +109,37 @@ namespace SophiApp.ViewModels
         {
             var id = Convert.ToInt32(args);
             UIModels.Where(m => m.Id == id).First().SetUserState();
+        }
+
+        private void UIElementInListClicked(object args)
+        {
+            var ids = args as List<int>;
+            var listId = ids.First();
+            var elementId = ids.Last();
+            var list = UIModels.Where(m => m.Id == listId).First() as IItemsListModel;
+
+            if (list.SelectOnce)
+            {
+                UIModels.Where(m => list.ChildId.Contains(m.Id)).ToList().ForEach(m =>
+                {
+                    if (m.Id == elementId && m.IsChecked == false)
+                    {
+                        m.SystemState = false;
+                        m.UserState = true;
+                        m.IsChecked = true;
+                    }
+                    else if (m.Id != elementId)
+                    {
+                        m.SystemState = false;
+                        m.UserState = false;
+                        m.IsChecked = false;
+                    }
+                });
+            }
+            else
+            {
+                UIModels.Where(m => m.Id == elementId).First().SetUserState();
+            }
         }
     }
 }

@@ -75,7 +75,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
-                    <ScrollViewer BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
+                    <ScrollViewer x:Name="ScrollViewerContent" BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
                         <StackPanel>
                             <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
                                 <ItemsControl.Resources>

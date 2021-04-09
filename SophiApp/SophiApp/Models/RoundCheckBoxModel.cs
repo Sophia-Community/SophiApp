@@ -1,7 +1,9 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace SophiApp.Models
 {
@@ -15,10 +17,10 @@ namespace SophiApp.Models
 
         public RoundCheckBoxModel(JsonDTO json)
         {
-            LocalizedDescriptions = json.LocalizedDescriptions;
-            LocalizedHeaders = json.LocalizedHeaders;
+            Descriptions = json.Descriptions;
+            Headers = json.Headers;
             Id = json.Id;
-            InContainer = json.InContainer;
+            HasParent = json.HasParent;
             Tag = json.Tag;
         }
 
@@ -46,7 +48,7 @@ namespace SophiApp.Models
 
         public int Id { get; set; }
 
-        public bool InContainer { get; set; }
+        public bool HasParent { get; set; }
 
         public bool IsChecked
         {
@@ -58,8 +60,8 @@ namespace SophiApp.Models
             }
         }
 
-        public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
-        public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
+        public Dictionary<UILanguage, string> Descriptions { get; set; }
+        public Dictionary<UILanguage, string> Headers { get; set; }
 
         public bool SystemState
         {
@@ -85,13 +87,22 @@ namespace SophiApp.Models
 
         private void OnPropertyChanged(string propertyName)
         {
+#if DEBUG
+            Debug.WriteLine($"{DateTime.Now}");
+            Debug.WriteLine($"Id: {Id}");
+            Debug.WriteLine($"SystemState: {SystemState}");
+            Debug.WriteLine($"UserState: {UserState}");
+            Debug.WriteLine($"IsChecked: {IsChecked}");
+            Debug.WriteLine("");
+#endif
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void SetLocalizationTo(UILanguage language)
         {
-            Header = LocalizedHeaders[language];
-            Description = LocalizedDescriptions[language];
+            Header = Headers[language];
+            Description = Descriptions[language];
         }
 
         public void SetSystemState()

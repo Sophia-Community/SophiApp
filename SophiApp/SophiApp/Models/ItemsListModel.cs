@@ -7,25 +7,25 @@ namespace SophiApp.Models
 {
     internal class ItemsListModel : IUIElementModel, IItemsListModel, INotifyPropertyChanged
     {
-        private string description;
         private string header;
-        private bool isChecked = default;
-        private bool systemState = default;
-        private bool userState = default;
 
         public ItemsListModel(JsonDTO json)
         {
-            LocalizedHeaders = json.LocalizedHeaders;
+            Headers = json.Headers;
             Id = json.Id;
             Tag = json.Tag;
-            ChildIds = json.ChildIds;
+            ChildId = json.ChildId;
             SelectOnce = json.SelectOnce;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<int> ChildIds { get; set; }
+        public List<int> ChildId { get; set; }
         public string Description { get; set; }
+
+        public Dictionary<UILanguage, string> Descriptions { get; set; }
+
+        public bool HasParent { get; set; }
 
         public string Header
         {
@@ -37,16 +37,9 @@ namespace SophiApp.Models
             }
         }
 
+        public Dictionary<UILanguage, string> Headers { get; set; }
         public int Id { get; set; }
-
-        public bool InContainer { get; set; }
-
         public bool IsChecked { get; set; }
-
-        public Dictionary<UILanguage, string> LocalizedDescriptions { get; set; }
-
-        public Dictionary<UILanguage, string> LocalizedHeaders { get; set; }
-
         public bool SelectOnce { get; set; }
         public bool SystemState { get; set; }
 
@@ -61,7 +54,7 @@ namespace SophiApp.Models
 
         public void SetLocalizationTo(UILanguage language)
         {
-            Header = LocalizedHeaders[language];
+            Header = Headers[language];
         }
 
         public void SetSystemState()

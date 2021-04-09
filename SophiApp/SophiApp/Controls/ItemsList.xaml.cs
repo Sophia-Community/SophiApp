@@ -28,11 +28,11 @@ namespace SophiApp.Controls
 
         private void ExpanderWrapper_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsExpanded = !IsExpanded;
 
-        private void InContainerFilter(object sender, FilterEventArgs e)
+        private void HasParentFilter(object sender, FilterEventArgs e)
         {
-            var childIds = (DataContext as IItemsListModel).ChildIds;
+            var ChildId = (DataContext as IItemsListModel).ChildId;
             var elementId = (e.Item as IUIElementModel).Id;
-            e.Accepted = childIds.Contains(elementId);
+            e.Accepted = ChildId.Contains(elementId);
         }
     }
 }

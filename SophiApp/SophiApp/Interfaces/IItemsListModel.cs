@@ -4,7 +4,7 @@ namespace SophiApp.Interfaces
 {
     internal interface IItemsListModel
     {
-        List<int> ChildIds { get; set; }
+        List<int> ChildId { get; set; }
 
         bool SelectOnce { get; set; }
     }

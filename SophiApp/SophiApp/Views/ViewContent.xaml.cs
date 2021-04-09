@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace SophiApp.Views
 {
@@ -25,6 +26,7 @@ namespace SophiApp.Views
         public ViewContent()
         {
             InitializeComponent();
+            AddHandler(Controls.ItemsList.PreviewMouseWheelEvent, new MouseWheelEventHandler(OnChildMouseWheelEvent), true);
         }
 
         public string Description
@@ -45,7 +47,15 @@ namespace SophiApp.Views
             set { SetValue(TagProperty, value); }
         }
 
-        private void ElementsFilter(object sender, FilterEventArgs e) => e.Accepted = (e.Item as IUIElementModel).Tag == Tag && (e.Item as IUIElementModel).InContainer == false;
+        private void ElementsFilter(object sender, FilterEventArgs e) => e.Accepted = (e.Item as IUIElementModel).Tag == Tag && (e.Item as IUIElementModel).HasParent == false;
+
+        private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = true;
+            var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta) { RoutedEvent = UIElement.MouseWheelEvent };
+            var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+            scrollViewer.RaiseEvent(mouseWheelEventArgs);
+        }
 
         private void UIElement_MouseEnter(object sender, RoutedEventArgs e)
         {
