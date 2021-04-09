@@ -256,6 +256,7 @@
     <None Include="App.manifest" />
     <Resource Include="Resources\UIElementsData.json" />
     <Resource Include="Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Fonts\Segoe UI.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

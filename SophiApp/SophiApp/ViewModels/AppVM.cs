@@ -3,6 +3,7 @@ using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 
@@ -10,9 +11,10 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
-        private UILanguage currentLocalization;
+        private UILanguage appLocalization;
         private bool hamburgerIsEnabled = true;
         private string viewVisibilityByTag = Tags.ViewPrivacy;
+        private uint uielementsChangedCounter = default;
 
         public AppVM()
         {
@@ -21,7 +23,7 @@ namespace SophiApp.ViewModels
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
 
-            CurrentLocalization = Localizator.Initializing();
+            AppLocalization = Localizator.Initializing();
             InitializingUIModels();
             SetUIModelsSystemState();
         }
@@ -30,13 +32,13 @@ namespace SophiApp.ViewModels
 
         public string AppName => Application.Current.FindResource("CONST.AppName") as string;
 
-        public UILanguage CurrentLocalization
+        public UILanguage AppLocalization
         {
-            get => currentLocalization;
+            get => appLocalization;
             private set
             {
-                currentLocalization = value;
-                OnPropertyChanged("CurrentLocalization");
+                appLocalization = value;
+                OnPropertyChanged("AppLocalization");
             }
         }
 
@@ -53,6 +55,19 @@ namespace SophiApp.ViewModels
             {
                 hamburgerIsEnabled = value;
                 OnPropertyChanged("HamburgerIsEnabled");
+            }
+        }
+
+        public uint UIElementsChangedCounter
+        {
+            get => uielementsChangedCounter;
+            private set
+            {
+                uielementsChangedCounter = value;
+#if DEBUG
+                Debug.WriteLine($"UIElements Changed Counter:{uielementsChangedCounter}");
+#endif
+                OnPropertyChanged("UIElementsChangedCounter");
             }
         }
 
@@ -86,7 +101,7 @@ namespace SophiApp.ViewModels
         {
             var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
             UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto)).ToList();
-            UIModels.ForEach(model => model.SetLocalizationTo(CurrentLocalization));
+            UIModels.ForEach(model => model.SetLocalizationTo(AppLocalization));
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -108,7 +123,20 @@ namespace SophiApp.ViewModels
         private void UIElementClicked(object args)
         {
             var id = Convert.ToInt32(args);
-            UIModels.Where(m => m.Id == id).First().SetUserState();
+            var element = UIModels.Where(m => m.Id == id).First();
+            element.SetUserState();
+            UIElementHasChanged(element.UserState);
+        }
+
+        private void UIElementHasChanged(bool userState)
+        {
+            if (userState)
+            {
+                UIElementsChangedCounter++;
+                return;
+            }
+
+            UIElementsChangedCounter--;
         }
 
         private void UIElementInListClicked(object args)

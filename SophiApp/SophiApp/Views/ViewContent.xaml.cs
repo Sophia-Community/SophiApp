@@ -1,4 +1,5 @@
 ﻿using SophiApp.Interfaces;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,7 +27,7 @@ namespace SophiApp.Views
         public ViewContent()
         {
             InitializeComponent();
-            AddHandler(Controls.ItemsList.PreviewMouseWheelEvent, new MouseWheelEventHandler(OnChildMouseWheelEvent), true);
+            AddHandler(PreviewMouseWheelEvent, new MouseWheelEventHandler(OnChildMouseWheelEvent), true);
         }
 
         public string Description
@@ -67,6 +68,18 @@ namespace SophiApp.Views
         {
             e.Handled = true;
             Description = string.Empty;
+        }
+
+        private void ViewContent_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (IsLoaded)
+            {
+                var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+                var isVisible = Convert.ToBoolean(e.NewValue);
+
+                if (isVisible)
+                    scrollViewer.ScrollToTop();
+            }
         }
     }
 }

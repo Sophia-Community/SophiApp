@@ -8,6 +8,7 @@
              xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:models="clr-namespace:SophiApp.Models"
              mc:Ignorable="d"
+             IsVisibleChanged="ViewContent_IsVisibleChanged"
              controls:Switch.MouseEnter="UIElement_MouseEnter"
              controls:Switch.MouseLeave="UIElement_MouseLeave"
              controls:CheckBox.MouseEnter="UIElement_MouseEnter"
@@ -30,12 +31,14 @@
             <Setter Property="Grid.Column" Value="2" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
             <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Grid.Row" Value="0" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />

@@ -31,7 +31,7 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Title" Value="{Binding AppName}" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Roboto-Regular.ttf#Roboto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontStretch" Value="Normal" />
@@ -104,6 +104,14 @@
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0" />
                 <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Personalization}" Tag="{StaticResource Tags.View.Personalization}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.System}" Tag="{StaticResource Tags.View.System}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.StartMenu}" Tag="{StaticResource Tags.View.StartMenu}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.UwpApps}" Tag="{StaticResource Tags.View.UwpApps}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Games}" Tag="{StaticResource Tags.View.Games}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.TaskSheduler}" Tag="{StaticResource Tags.View.TaskSheduler}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.Security}" Tag="{StaticResource Tags.View.Security}" />
+                <view:ViewContent Grid.Column="1" Header="{DynamicResource Localization.ContextMenu}" Tag="{StaticResource Tags.View.ContextMenu}" />
             </Grid>
         </Grid>
     </Border>
