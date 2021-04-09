@@ -130,16 +130,16 @@
                                     </local:CheckBox.CommandParameter>
                                 </local:CheckBox>
                             </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:RoundCheckBoxModel}">
-                                <local:RoundCheckBox FontSize="14"
+                            <DataTemplate DataType="{x:Type models:RadioBoxModel}">
+                                <local:RadioBox FontSize="14"
                                                      Command="{Binding Path=DataContext.UIElementInListClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type views:ViewContent}}}">
-                                    <local:RoundCheckBox.CommandParameter>
+                                    <local:RadioBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource ObjectToIntListConverter}">
                                             <Binding Path="DataContext.Id" RelativeSource="{RelativeSource AncestorType={x:Type local:ItemsList}}" />
                                             <Binding Path="Id" />
                                         </MultiBinding>
-                                    </local:RoundCheckBox.CommandParameter>
-                                </local:RoundCheckBox>
+                                    </local:RadioBox.CommandParameter>
+                                </local:RadioBox>
                             </DataTemplate>
                         </ItemsControl.Resources>
                     </ItemsControl>

@@ -94,7 +94,7 @@
             "RU": "Отключить задачу MapsUpdateTask",
             "EN": "Disable task MapsUpdateTask"
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -108,7 +108,7 @@
             "RU": "Отключить задачу FamilySafetyMonitor",
             "EN": "Disable task FamilySafetyMonitor"
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -122,7 +122,7 @@
             "RU": "Отключить задачу FamilySafetyRefreshTask",
             "EN": "Disable task FamilySafetyRefreshTask"
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -203,7 +203,7 @@
             "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
             "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -217,7 +217,7 @@
             "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
             "EN": "Get tips, hints and tips when using Windows"
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -231,7 +231,7 @@
             "RU": "",
             "EN": ""
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -245,7 +245,7 @@
             "RU": "",
             "EN": ""
         },
-        "Type": "RoundCheckBoxModel",
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {

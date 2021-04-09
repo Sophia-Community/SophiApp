@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace SophiApp.Models
 {
-    internal class RoundCheckBoxModel : IUIElementModel, INotifyPropertyChanged
+    internal class RadioBoxModel : IUIElementModel, INotifyPropertyChanged
     {
         private string description;
         private string header;
@@ -15,7 +15,7 @@ namespace SophiApp.Models
         private bool systemState = default;
         private bool userState = default;
 
-        public RoundCheckBoxModel(JsonDTO json)
+        public RadioBoxModel(JsonDTO json)
         {
             Descriptions = json.Descriptions;
             Headers = json.Headers;

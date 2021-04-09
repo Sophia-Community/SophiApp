@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SophiApp.Controls.RoundCheckBox"
+﻿<UserControl x:Class="SophiApp.Controls.RadioBox"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -33,7 +33,7 @@
             <Setter Property="MinHeight" Value="20" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
         </Style>
-        <Style TargetType="{x:Type local:RoundCheckBox}">
+        <Style TargetType="{x:Type local:RadioBox}">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
@@ -48,7 +48,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid MouseEnter="RoundCheckBox_MouseEnter" MouseLeave="RoundCheckBox_MouseLeave">
+            <Grid MouseEnter="RadioBox_MouseEnter" MouseLeave="RadioBox_MouseLeave">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="20" />
@@ -56,7 +56,7 @@
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Margin="0" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
-                <Border x:Name="BorderRound" MouseLeftButtonDown="RoundCheckBox_MouseLeftButtonDown">
+                <Border x:Name="BorderRound" MouseLeftButtonDown="RadioBox_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseDot" />
                 </Border>
             </Grid>

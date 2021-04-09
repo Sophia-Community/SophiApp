@@ -101,8 +101,8 @@
     <Compile Include="Controls\ItemsList.xaml.cs">
       <DependentUpon>ItemsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RoundCheckBox.xaml.cs">
-      <DependentUpon>RoundCheckBox.xaml</DependentUpon>
+    <Compile Include="Controls\RadioBox.xaml.cs">
+      <DependentUpon>RadioBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
@@ -131,7 +131,7 @@
     <Compile Include="Interfaces\IUIElementModel.cs" />
     <Compile Include="Models\CheckBoxModel.cs" />
     <Compile Include="Models\ItemsListModel.cs" />
-    <Compile Include="Models\RoundCheckBoxModel.cs" />
+    <Compile Include="Models\RadioBoxModel.cs" />
     <Compile Include="Models\SwitchModel.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Compile Include="Views\ViewContent.xaml.cs">
@@ -142,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ItemsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RadioBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,10 +178,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\IconButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\RoundCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
