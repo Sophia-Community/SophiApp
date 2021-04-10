@@ -66,8 +66,8 @@
         <ControlTemplate>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                     <Grid.ColumnDefinitions>
@@ -110,7 +110,7 @@
                         <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
                     </StackPanel>
                 </Grid>
-                <controls:ChangedOptionsPanel Grid.Row="1"/>
+                <controls:ChangedOptionsPanel Grid.Row="1" />
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="Visibility" Value="Visible">

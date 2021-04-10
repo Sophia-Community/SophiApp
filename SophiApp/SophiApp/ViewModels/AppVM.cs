@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SophiApp.ViewModels
@@ -18,14 +19,14 @@ namespace SophiApp.ViewModels
 
         public AppVM()
         {
-            UIElementClickedCommand = new RelayCommand(new Action<object>(UIElementClicked));
-            UIElementInListClickedCommand = new RelayCommand(new Action<object>(UIElementInListClicked));
+            UIElementClickedCommand = new RelayCommand(new Action<object>(UIElementClickedAsync));
+            UIElementInListClickedCommand = new RelayCommand(new Action<object>(UIElementInListClickedAsync));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
 
             AppLocalization = Localizator.Initializing();
-            InitializingUIModels();
-            SetUIModelsSystemState();
+            InitializingUIModelsAsync();
+            SetUIModelsSystemStateAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -73,7 +74,6 @@ namespace SophiApp.ViewModels
 
         public RelayCommand SearchClickedCommand { get; }
         public RelayCommand UIElementClickedCommand { get; }
-
         public RelayCommand UIElementInListClickedCommand { get; }
         public List<IUIElementModel> UIModels { get; set; }
 
@@ -97,11 +97,15 @@ namespace SophiApp.ViewModels
             ViewVisibilityByTag = tag;
         }
 
-        private void InitializingUIModels()
+        private void InitializingUIModelsAsync()
         {
-            var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
-            UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto)).ToList();
-            UIModels.ForEach(model => model.SetLocalizationTo(AppLocalization));
+            var task = Task.Run(() =>
+            {
+                var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
+                UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto)).ToList();
+                UIModels.ForEach(model => model.SetLocalizationTo(AppLocalization));
+            });
+            task.Wait();
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -112,65 +116,81 @@ namespace SophiApp.ViewModels
             //TODO : Search not implemented !!!
         }
 
-        private void SetUIModelsSystemState()
+        private void SetUIModelsSystemStateAsync()
         {
-            UIModels.ForEach(m =>
+            var task = Task.Run(() =>
             {
-                if (m.Id % 2 == 0) m.SetSystemState();
-            });
-        }
-
-        private void UIElementClicked(object args)
-        {
-            var id = Convert.ToInt32(args);
-            var element = UIModels.Where(m => m.Id == id).First();
-            element.SetUserState();
-            UIElementHasChanged(element.UserState);
-        }
-
-        private void UIElementHasChanged(bool userState)
-        {
-            if (userState)
-            {
-                UIElementsChangedCounter++;
-                return;
-            }
-
-            UIElementsChangedCounter--;
-        }
-
-        private void UIElementInListClicked(object args)
-        {
-            var ids = args as List<int>;
-            var listId = ids.First();
-            var elementId = ids.Last();
-            var list = UIModels.Where(m => m.Id == listId).First() as IItemsListModel;
-
-            if (list.SelectOnce)
-            {
-                UIModels.Where(m => list.ChildId.Contains(m.Id)).ToList().ForEach(m =>
+                UIModels.ForEach(m =>
                 {
-                    if (m.Id == elementId && m.IsChecked == false)
-                    {
-                        m.SystemState = false;
-                        m.UserState = true;
-                        m.IsChecked = true;
-                        UIElementHasChanged(m.UserState);
-                    }
-                    else if (m.Id != elementId)
-                    {
-                        m.SystemState = false;
-                        m.UserState = false;
-                        m.IsChecked = false;                       
-                    }                    
+                    if (m.Id % 2 == 0) m.SetSystemState();
                 });
-            }
-            else
+            });
+            task.Wait();
+        }
+
+        private void UIElementClickedAsync(object args)
+        {
+            var task = Task.Run(() =>
             {
-                var element = UIModels.Where(m => m.Id == elementId).First();
+                var id = Convert.ToInt32(args);
+                var element = UIModels.Where(m => m.Id == id).First();
                 element.SetUserState();
-                UIElementHasChanged(element.UserState);
-            }
+                UIElementHasChangedAsync(element.UserState);
+            });
+            task.Wait();
+        }
+
+        private void UIElementHasChangedAsync(bool userState)
+        {
+            var task = Task.Run(() =>
+            {
+                if (userState)
+                {
+                    UIElementsChangedCounter++;
+                    return;
+                }
+
+                UIElementsChangedCounter--;
+            });
+            task.Wait();
+        }
+
+        private void UIElementInListClickedAsync(object args)
+        {
+            var task = Task.Run(() =>
+            {
+                var ids = args as List<int>;
+                var listId = ids.First();
+                var elementId = ids.Last();
+                var list = UIModels.Where(m => m.Id == listId).First() as IItemsListModel;
+
+                if (list.SelectOnce)
+                {
+                    UIModels.Where(m => list.ChildId.Contains(m.Id)).ToList().ForEach(m =>
+                    {
+                        if (m.Id == elementId && m.IsChecked == false)
+                        {
+                            m.SystemState = false;
+                            m.UserState = true;
+                            m.IsChecked = true;
+                            UIElementHasChangedAsync(m.UserState);
+                        }
+                        else if (m.Id != elementId)
+                        {
+                            m.SystemState = false;
+                            m.UserState = false;
+                            m.IsChecked = false;
+                        }
+                    });
+                }
+                else
+                {
+                    var element = UIModels.Where(m => m.Id == elementId).First();
+                    element.SetUserState();
+                    UIElementHasChangedAsync(element.UserState);
+                }
+            });
+            task.Wait();
         }
     }
 }
