@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,6 +17,7 @@ namespace SophiApp.ViewModels
         private bool hamburgerIsEnabled = true;
         private string viewVisibilityByTag = Tags.ViewPrivacy;
         private uint uielementsChangedCounter = default;
+        private bool waitingPanelIsVisible = default;
 
         public AppVM()
         {
@@ -40,6 +42,16 @@ namespace SophiApp.ViewModels
             {
                 appLocalization = value;
                 OnPropertyChanged("AppLocalization");
+            }
+        }
+
+        public bool WaitingPanelIsVisible
+        {
+            get => waitingPanelIsVisible;
+            private set
+            {
+                waitingPanelIsVisible = value;
+                OnPropertyChanged("WaitingPanelIsVisible");
             }
         }
 
@@ -98,14 +110,14 @@ namespace SophiApp.ViewModels
         }
 
         private void InitializingUIModelsAsync()
-        {
+        {            
             var task = Task.Run(() =>
             {
                 var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
                 UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto)).ToList();
                 UIModels.ForEach(model => model.SetLocalizationTo(AppLocalization));
             });
-            task.Wait();
+            task.Wait();            
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -117,15 +129,15 @@ namespace SophiApp.ViewModels
         }
 
         private void SetUIModelsSystemStateAsync()
-        {
+        {            
             var task = Task.Run(() =>
             {
                 UIModels.ForEach(m =>
                 {
                     if (m.Id % 2 == 0) m.SetSystemState();
-                });
+                });                
             });
-            task.Wait();
+            task.Wait();            
         }
 
         private void UIElementClickedAsync(object args)

@@ -83,8 +83,8 @@
     <Compile Include="Controls\Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ChangedOptionsPanel.xaml.cs">
-      <DependentUpon>ChangedOptionsPanel.xaml</DependentUpon>
+    <Compile Include="Controls\ChangesPanel.xaml.cs">
+      <DependentUpon>ChangesPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
@@ -125,7 +125,11 @@
     <Compile Include="Controls\ToggleButton.xaml.cs">
       <DependentUpon>ToggleButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WaitingPanel.xaml.cs">
+      <DependentUpon>WaitingPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
+    <Compile Include="Converters\BoolToInverseBool.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
     <Compile Include="Converters\IntToVisibility.cs" />
     <Compile Include="Converters\ObjectToIntList.cs" />
@@ -145,7 +149,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ChangedOptionsPanel.xaml">
+    <Page Include="Controls\ChangesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -210,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WaitingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

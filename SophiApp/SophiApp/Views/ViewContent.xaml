@@ -18,6 +18,7 @@
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="ElementsFilter" />
+        <converters:BoolToInverseBool x:Key="BoolToInverseBoolConverter"/>
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Page.Visible">
@@ -52,6 +53,7 @@
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="IsEnabled" Value="{Binding Path=WaitingPanelIsVisible, Converter={StaticResource BoolToInverseBoolConverter}, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">
@@ -109,8 +111,7 @@
                     <StackPanel Style="{DynamicResource Style.Panel.Description}">
                         <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
                     </StackPanel>
-                </Grid>
-                <controls:ChangedOptionsPanel Grid.Row="1" />
+                </Grid>                
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="Visibility" Value="Visible">

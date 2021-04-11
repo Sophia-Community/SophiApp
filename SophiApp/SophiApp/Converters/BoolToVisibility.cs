@@ -10,7 +10,7 @@ namespace SophiApp.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var isVisible = System.Convert.ToBoolean(value);
-            return isVisible ? Visibility.Visible : Visibility.Hidden;
+            return isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
