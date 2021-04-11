@@ -77,6 +77,8 @@
     <Compile Include="Commons\Fabric.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\Localizator.cs" />
+    <Compile Include="Commons\Logger.cs" />
+    <Compile Include="Commons\LogType.cs" />
     <Compile Include="Commons\Parser.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\UILanguage.cs" />

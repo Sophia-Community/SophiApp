@@ -3,9 +3,7 @@ using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -14,9 +12,9 @@ namespace SophiApp.ViewModels
     internal class AppVM : INotifyPropertyChanged
     {
         private UILanguage appLocalization;
-        private bool hamburgerIsEnabled = true;
-        private string viewVisibilityByTag = Tags.ViewPrivacy;
+        private Logger logger = new Logger();
         private uint uielementsChangedCounter = default;
+        private string viewVisibilityByTag = Tags.ViewPrivacy;
         private bool waitingPanelIsVisible = default;
 
         public AppVM()
@@ -33,43 +31,25 @@ namespace SophiApp.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string AppName => Application.Current.FindResource("CONST.AppName") as string;
-
         public UILanguage AppLocalization
         {
             get => appLocalization;
             private set
             {
                 appLocalization = value;
+                logger.Collect(LogType.LOC, value.ToString());
                 OnPropertyChanged("AppLocalization");
             }
         }
 
-        public bool WaitingPanelIsVisible
-        {
-            get => waitingPanelIsVisible;
-            private set
-            {
-                waitingPanelIsVisible = value;
-                OnPropertyChanged("WaitingPanelIsVisible");
-            }
-        }
-
+        public string AppName => Application.Current.FindResource("CONST.AppName") as string;
         public RelayCommand HamburgerClickedCommand { get; }
 
-        //TODO: Deprecated?
-        /// <summary>
-        /// Determines the Hamburger state
-        /// </summary>
-        public bool HamburgerIsEnabled
-        {
-            get => hamburgerIsEnabled;
-            private set
-            {
-                hamburgerIsEnabled = value;
-                OnPropertyChanged("HamburgerIsEnabled");
-            }
-        }
+        public RelayCommand SearchClickedCommand { get; }
+
+        public RelayCommand UIElementClickedCommand { get; }
+
+        public RelayCommand UIElementInListClickedCommand { get; }
 
         public uint UIElementsChangedCounter
         {
@@ -77,16 +57,10 @@ namespace SophiApp.ViewModels
             private set
             {
                 uielementsChangedCounter = value;
-#if DEBUG
-                Debug.WriteLine($"UIElements Changed Counter:{uielementsChangedCounter}");
-#endif
                 OnPropertyChanged("UIElementsChangedCounter");
             }
         }
 
-        public RelayCommand SearchClickedCommand { get; }
-        public RelayCommand UIElementClickedCommand { get; }
-        public RelayCommand UIElementInListClickedCommand { get; }
         public List<IUIElementModel> UIModels { get; set; }
 
         public string ViewVisibilityByTag
@@ -99,6 +73,17 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public bool WaitingPanelIsVisible
+        {
+            get => waitingPanelIsVisible;
+            private set
+            {
+                waitingPanelIsVisible = value;
+                logger.Collect(LogType.WPNL, value.ToString());
+                OnPropertyChanged("WaitingPanelIsVisible");
+            }
+        }
+
         private void HamburgerClicked(object args)
         {
             var tag = args as string;
@@ -106,18 +91,21 @@ namespace SophiApp.ViewModels
             {
                 return;
             }
+            logger.Collect(LogType.HMBRGCL, tag);
             ViewVisibilityByTag = tag;
         }
 
         private void InitializingUIModelsAsync()
-        {            
+        {
+            logger.Collect(LogType.INTMDL);
             var task = Task.Run(() =>
             {
                 var parsedJsons = Parser.ParseJson(Properties.Resources.UIElementsData);
                 UIModels = parsedJsons.Select(dto => Fabric.CreateElementModel(dto)).ToList();
                 UIModels.ForEach(model => model.SetLocalizationTo(AppLocalization));
             });
-            task.Wait();            
+            task.Wait();
+            logger.Collect(LogType.INTDON);
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -125,19 +113,21 @@ namespace SophiApp.ViewModels
         private void SearchClicked(object args)
         {
             var searchString = args as string;
-            //TODO : Search not implemented !!!
+            //TODO : Search and logger not implemented !!!
         }
 
         private void SetUIModelsSystemStateAsync()
-        {            
+        {
+            logger.Collect(LogType.INTSTA);
             var task = Task.Run(() =>
             {
                 UIModels.ForEach(m =>
                 {
                     if (m.Id % 2 == 0) m.SetSystemState();
-                });                
+                });
             });
-            task.Wait();            
+            task.Wait();
+            logger.Collect(LogType.INTDON);
         }
 
         private void UIElementClickedAsync(object args)
@@ -147,12 +137,13 @@ namespace SophiApp.ViewModels
                 var id = Convert.ToInt32(args);
                 var element = UIModels.Where(m => m.Id == id).First();
                 element.SetUserState();
-                UIElementHasChangedAsync(element.UserState);
+                //TODO: Get element state to logger !!!
+                UIElementHasChangedAsync(element.UserState, id);
             });
             task.Wait();
         }
 
-        private void UIElementHasChangedAsync(bool userState)
+        private void UIElementHasChangedAsync(bool userState, int id)
         {
             var task = Task.Run(() =>
             {
@@ -185,13 +176,15 @@ namespace SophiApp.ViewModels
                             m.SystemState = false;
                             m.UserState = true;
                             m.IsChecked = true;
-                            UIElementHasChangedAsync(m.UserState);
+                            //TODO: Get element state to logger !!!
+                            UIElementHasChangedAsync(m.UserState, m.Id);
                         }
                         else if (m.Id != elementId)
                         {
                             m.SystemState = false;
                             m.UserState = false;
                             m.IsChecked = false;
+                            //TODO: Get element state to logger !!!
                         }
                     });
                 }
@@ -199,7 +192,8 @@ namespace SophiApp.ViewModels
                 {
                     var element = UIModels.Where(m => m.Id == elementId).First();
                     element.SetUserState();
-                    UIElementHasChangedAsync(element.UserState);
+                    //TODO: Get element state to logger !!!
+                    UIElementHasChangedAsync(element.UserState, element.Id);
                 }
             });
             task.Wait();

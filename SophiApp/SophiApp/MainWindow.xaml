@@ -105,8 +105,8 @@
                 <controls:HamburgerMenu Grid.Column="0" />
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}" />
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Personalization}" Tag="{StaticResource Tags.View.Personalization}" />
@@ -118,7 +118,7 @@
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Security}" Tag="{StaticResource Tags.View.Security}" />
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.ContextMenu}" Tag="{StaticResource Tags.View.ContextMenu}" />
                     <controls:ChangesPanel Grid.Row="1" Panel.ZIndex="10" />
-                    <controls:WaitingPanel Grid.Row="1" Panel.ZIndex="20"/>
+                    <controls:WaitingPanel Grid.Row="1" Panel.ZIndex="20" />
                 </Grid>
             </Grid>
         </Grid>

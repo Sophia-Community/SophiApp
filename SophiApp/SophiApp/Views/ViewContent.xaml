@@ -18,7 +18,7 @@
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="UIModelsCollection" Source="{Binding UIModels}" Filter="ElementsFilter" />
-        <converters:BoolToInverseBool x:Key="BoolToInverseBoolConverter"/>
+        <converters:BoolToInverseBool x:Key="BoolToInverseBoolConverter" />
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Page.Visible">
@@ -111,7 +111,7 @@
                     <StackPanel Style="{DynamicResource Style.Panel.Description}">
                         <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
                     </StackPanel>
-                </Grid>                
+                </Grid>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="Visibility" Value="Visible">
