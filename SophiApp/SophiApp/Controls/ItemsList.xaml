@@ -88,7 +88,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <DockPanel>
+            <DockPanel x:Name="PanelContent">
                 <Grid Style="{StaticResource Style.Grid.Header}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -106,7 +106,11 @@
                     </Grid>
                 </Grid>
                 <ScrollViewer x:Name="ScrollViewContent">
-                    <ItemsControl x:Name="ItemsControlContent" ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
+                    <ItemsControl x:Name="ItemsControlContent"
+                                  Focusable="False"
+                                  IsTabStop="False"
+                                  Width="{Binding Path=ActualWidth, ElementName=PanelContent}" 
+                                  ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:SwitchModel}">
                                 <local:Switch FontSize="14"

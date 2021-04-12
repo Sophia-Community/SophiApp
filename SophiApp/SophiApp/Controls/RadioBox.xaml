@@ -55,7 +55,7 @@
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Margin="0" Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                <TextBlock Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
                 <Border x:Name="BorderRound" MouseLeftButtonDown="RadioBox_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseDot" />
                 </Border>

@@ -1,262 +1,402 @@
 [
     {
-        "Id": 1000,
-        "HasParent": "true",
+        "Id": 100,
+        "HasParent": "false",
         "Headers": {
-            "RU": "ProgramDataUpdater",
-            "EN": "ProgramDataUpdater"
+            "EN": "Enable the DiagTrack service",
+            "RU": "Включить службу DiagTrack"
         },
         "Descriptions": {
-            "RU": "Отключить задачу ProgramDataUpdater",
-            "EN": "Disable task ProgramDataUpdater"
+            "EN": "Also the firewall rule for Unified Telemetry Client Outbound Traffic and block connection",
+            "RU": "А также правила брандмауэра для исходящего трафик клиента единой телеметрии и заблокировать соединение"
         },
         "Type": "SwitchModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1001,
-        "HasParent": "true",
+        "Id": 101,
+        "ChildId": [
+            102,
+            103
+        ],
         "Headers": {
-            "RU": "Proxy",
-            "EN": "Proxy"
+            "EN": "The OS level of diagnostic data gathering",
+            "RU": "Уровень сбора диагностических сведений ОС"
         },
-        "Descriptions": {
-            "RU": "Отключить задачу Proxy",
-            "EN": "Disable task Proxy"
-        },
-        "Type": "SwitchModel",
+        "SelectOnce": "true",
+        "Type": "ItemsListModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1002,
+        "Id": 102,
         "HasParent": "true",
         "Headers": {
-            "RU": "Consolidator",
-            "EN": "Consolidator"
+            "EN": "Minimal",
+            "RU": "Минимальный"
         },
         "Descriptions": {
-            "RU": "Отключить задачу Consolidator",
-            "EN": "Disable task Consolidator"
-        },
-        "Type": "SwitchModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1003,
-        "HasParent": "true",
-        "Headers": {
-            "RU": "UsbCeip",
-            "EN": "UsbCeip"
-        },
-        "Descriptions": {
-            "RU": "Отключить задачу UsbCeip",
-            "EN": "Disable task UsbCeip"
-        },
-        "Type": "CheckBoxModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1004,
-        "HasParent": "true",
-        "Headers": {
-            "RU": "Microsoft-Windows-DiskDiagnosticDataCollector",
-            "EN": "Microsoft-Windows-DiskDiagnosticDataCollector"
-        },
-        "Descriptions": {
-            "RU": "Отключить задачу Microsoft Windows DiskDiagnosticDataCollector",
-            "EN": "Disable task Microsoft Windows DiskDiagnosticDataCollector"
-        },
-        "Type": "CheckBoxModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1005,
-        "HasParent": "true",
-        "Headers": {
-            "RU": "MapsToastTask",
-            "EN": "MapsToastTask"
-        },
-        "Descriptions": {
-            "RU": "Отключить задачу MapsToastTask",
-            "EN": "Disable task MapsToastTask"
-        },
-        "Type": "CheckBoxModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1006,
-        "HasParent": "true",
-        "Headers": {
-            "RU": "MapsUpdateTask",
-            "EN": "MapsUpdateTask"
-        },
-        "Descriptions": {
-            "RU": "Отключить задачу MapsUpdateTask",
-            "EN": "Disable task MapsUpdateTask"
+            "EN": "",
+            "RU": ""
         },
         "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1007,
+        "Id": 103,
         "HasParent": "true",
         "Headers": {
-            "RU": "FamilySafetyMonitor",
-            "EN": "FamilySafetyMonitor"
+            "EN": "Default",
+            "RU": "По умолчанию"
         },
         "Descriptions": {
-            "RU": "Отключить задачу FamilySafetyMonitor",
-            "EN": "Disable task FamilySafetyMonitor"
+            "EN": "",
+            "RU": ""
         },
         "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1008,
-        "HasParent": "true",
+        "Id": 104,
+        "HasParent": "false",
         "Headers": {
-            "RU": "FamilySafetyRefreshTask",
-            "EN": "FamilySafetyRefreshTask"
+            "EN": "Уровень сбора диагностических сведений ОС",
+            "RU": "Включить запись отчетов об ошибках Windows"
         },
         "Descriptions": {
-            "RU": "Отключить задачу FamilySafetyRefreshTask",
-            "EN": "Disable task FamilySafetyRefreshTask"
+            "EN": "",
+            "RU": ""
+        },
+        "SelectOnce": "true",
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 105,
+        "ChildId": [
+            106,
+            107
+        ],
+        "Headers": {
+            "EN": "Windows should ask for my feedback",
+            "RU": "Windows должна запрашивать мои отзывы"
+        },
+        "SelectOnce": "true",
+        "Type": "ItemsListModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 106,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "Never",
+            "RU": "Никогда"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
         },
         "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1009,
-        "ChildId": [ 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008 ],
+        "Id": 107,
+        "HasParent": "true",
         "Headers": {
-            "RU": "Задачи диагностического отслеживания",
-            "EN": "Diagnostic Tracking Tasks"
+            "EN": "Automatically (Recommended)",
+            "RU": "Автоматически (рекомендуется)"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 108,
+        "ChildId": [
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117
+        ],
+        "Headers": {
+            "EN": "Diagnostic Tracking Tasks",
+            "RU": "Задачи диагностического отслеживания"
         },
         "SelectOnce": "false",
         "Type": "ItemsListModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1010,
-        "HasParent": "false",
+        "Id": 109,
+        "HasParent": "true",
         "Headers": {
-            "RU": "Использовать мои данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
-            "EN": "Use my login information to automatically complete device setup and open apps after restart or update"
+            "EN": "ProgramDataUpdater",
+            "RU": "ProgramDataUpdater"
         },
         "Descriptions": {
-            "RU": "Использовать мои данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
-            "EN": "Use my login information to automatically complete device setup and open apps after restart or update"
-        },
-        "Type": "SwitchModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1011,
-        "HasParent": "false",
-        "Headers": {
-            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
-            "EN": "Allow websites to provide local information by accessing a list of languages"
-        },
-        "Descriptions": {
-            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
-            "EN": "Allow websites to provide local information by accessing a list of languages"
-        },
-        "Type": "SwitchModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1012,
-        "HasParent": "false",
-        "Headers": {
-            "RU": "Разрешать приложениям использовать идентификатор рекламы",
-            "EN": "Allow apps to use ad ID"
-        },
-        "Descriptions": {
-            "RU": "Разрешать приложениям использовать идентификатор рекламы",
-            "EN": "Allow apps to use ad ID"
+            "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program",
+            "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
         },
         "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1013,
-        "HasParent": "false",
+        "Id": 110,
+        "HasParent": "true",
         "Headers": {
-            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
-            "EN": "Allow apps on other devices to run apps and send messages on this device, and vice versa"
+            "EN": "Proxy",
+            "RU": "Proxy"
         },
         "Descriptions": {
-            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
-            "EN": "Allow apps on other devices to run apps and send messages on this device, and vice versa"
+            "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program",
+            "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
         },
         "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1014,
-        "HasParent": "false",
-        "Headers": {
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
-        },
-        "Descriptions": {
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-            "EN": "Show Windows Welcome screen after updates and sometimes at sign-in to communicate new features and suggestions"
-        },
-        "Type": "RadioBoxModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1015,
-        "HasParent": "false",
-        "Headers": {
-            "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
-            "EN": "Get tips, hints and tips when using Windows"
-        },
-        "Descriptions": {
-            "RU": "Получать советы, подсказки и рекомендации при использовании Windows",
-            "EN": "Get tips, hints and tips when using Windows"
-        },
-        "Type": "RadioBoxModel",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 1016,
+        "Id": 111,
         "HasParent": "true",
         "Headers": {
-            "RU": "Отобразить",
-            "EN": "Show"
+            "EN": "Consolidator",
+            "RU": "Consolidator"
+        },
+        "Descriptions": {
+            "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft",
+            "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 112,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "UsbCeip",
+            "RU": "UsbCeip"
+        },
+        "Descriptions": {
+            "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything",
+            "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 113,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "Microsoft-Windows-DiskDiagnosticDataCollector",
+            "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
+        },
+        "Descriptions": {
+            "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program",
+            "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 114,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "MapsToastTask",
+            "RU": "MapsToastTask"
+        },
+        "Descriptions": {
+            "EN": "This task shows various Map related toasts",
+            "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 115,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "MapsUpdateTask",
+            "RU": "MapsUpdateTask"
+        },
+        "Descriptions": {
+            "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps",
+            "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 116,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "FamilySafetyMonitor",
+            "RU": "FamilySafetyMonitor"
+        },
+        "Descriptions": {
+            "EN": "Initializes Family Safety monitoring and enforcement",
+            "RU": "Инициализация контроля и применения правил семейной безопасности"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 117,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "FamilySafetyRefreshTask",
+            "RU": "FamilySafetyRefreshTask"
+        },
+        "Descriptions": {
+            "EN": "Synchronizes the latest settings with the Microsoft family features service",
+            "RU": "Синхронизирует последние параметры со службой функций семьи учетных записей Майкрософт"
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 118,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Use sign-in info to automatically finish setting up device and reopen apps after an update or restart",
+            "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
         },
         "Descriptions": {
             "RU": "",
             "EN": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1017,
-        "HasParent": "true",
+        "Id": 119,
+        "HasParent": "false",
         "Headers": {
-            "RU": "Скрывать",
-            "EN": "Hide"
+            "EN": "Let websites provide locally relevant content by accessing language list",
+            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
         },
         "Descriptions": {
-            "RU": "",
-            "EN": ""
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 120,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Allow apps to use advertising ID",
+            "RU": "Разрешать приложениям использовать идентификатор рекламы"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 121,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Let apps on other devices open and message apps on this device, and vice versa",
+            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 115,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested",
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
         },
         "Type": "RadioBoxModel",
         "Tag": "Privacy"
     },
     {
-        "Id": 1018,
-        "ChildId": [ 1016, 1017 ],
+        "Id": 116,
+        "HasParent": "false",
         "Headers": {
-            "RU": "Значок \"Этот компьютер\" на рабочем столе",
-            "EN": "This PC icon on the desktop"
+            "EN": "Get tip, trick, and suggestions as you use Windows",
+            "RU": "Получать советы, подсказки и рекомендации при использованию Windows"
         },
-        "SelectOnce": "true",
-        "Type": "ItemsListModel",
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 117,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Show the suggested content in the Settings app",
+            "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 118,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Turn on automatic installing suggested apps",
+            "RU": "Включить автоматическую установку рекомендованных приложений"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 119,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
+            "RU": "Предлагать способы завершения настройки устройства для максимально эффективного использования Windows"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 120,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Enable Bing search in the Start Menu",
+            "RU": "Включить поиск через Bing в меню \"Пуск\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
         "Tag": "Privacy"
     }
 ]

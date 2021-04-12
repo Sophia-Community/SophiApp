@@ -49,7 +49,7 @@
         <Style TargetType="{x:Type local:ViewContent}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Focusable" Value="False" />            
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
@@ -84,9 +84,11 @@
                             <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
-                        <ScrollViewer x:Name="ScrollViewerContent" BorderBrush="{DynamicResource Brush.Window.Element.Border}" Grid.Row="1">
-                            <StackPanel>
-                                <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
+                        <ScrollViewer x:Name="ScrollViewerContent"
+                                      Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">                            
+                                <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}"
+                                              Focusable="False"
+                                              IsTabStop="False">
                                     <ItemsControl.Resources>
                                         <DataTemplate DataType="{x:Type models:SwitchModel}">
                                             <controls:Switch Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
@@ -104,8 +106,7 @@
                                             <controls:ItemsList />
                                         </DataTemplate>
                                     </ItemsControl.Resources>
-                                </ItemsControl>
-                            </StackPanel>
+                                </ItemsControl>                            
                         </ScrollViewer>
                     </Grid>
                     <StackPanel Style="{DynamicResource Style.Panel.Description}">

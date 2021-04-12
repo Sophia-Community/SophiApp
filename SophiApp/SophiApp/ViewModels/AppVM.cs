@@ -138,12 +138,12 @@ namespace SophiApp.ViewModels
                 var element = UIModels.Where(m => m.Id == id).First();
                 element.SetUserState();
                 //TODO: Get element state to logger !!!
-                UIElementHasChangedAsync(element.UserState, id);
+                UIElementHasChangedAsync(element.UserState);
             });
             task.Wait();
         }
 
-        private void UIElementHasChangedAsync(bool userState, int id)
+        private void UIElementHasChangedAsync(bool userState)
         {
             var task = Task.Run(() =>
             {
@@ -177,7 +177,7 @@ namespace SophiApp.ViewModels
                             m.UserState = true;
                             m.IsChecked = true;
                             //TODO: Get element state to logger !!!
-                            UIElementHasChangedAsync(m.UserState, m.Id);
+                            UIElementHasChangedAsync(m.UserState);
                         }
                         else if (m.Id != elementId)
                         {
@@ -193,7 +193,7 @@ namespace SophiApp.ViewModels
                     var element = UIModels.Where(m => m.Id == elementId).First();
                     element.SetUserState();
                     //TODO: Get element state to logger !!!
-                    UIElementHasChangedAsync(element.UserState, element.Id);
+                    UIElementHasChangedAsync(element.UserState);
                 }
             });
             task.Wait();
