@@ -15,10 +15,7 @@
     },
     {
         "Id": 101,
-        "ChildId": [
-            102,
-            103
-        ],
+        "ChildId": [ 102, 103 ],
         "Headers": {
             "EN": "The OS level of diagnostic data gathering",
             "RU": "Уровень сбора диагностических сведений ОС"
@@ -72,10 +69,7 @@
     },
     {
         "Id": 105,
-        "ChildId": [
-            106,
-            107
-        ],
+        "ChildId": [ 106, 107 ],
         "Headers": {
             "EN": "Windows should ask for my feedback",
             "RU": "Windows должна запрашивать мои отзывы"
@@ -114,17 +108,7 @@
     },
     {
         "Id": 108,
-        "ChildId": [
-            109,
-            110,
-            111,
-            112,
-            113,
-            114,
-            115,
-            116,
-            117
-        ],
+        "ChildId": [ 109, 110, 111, 112, 113, 114, 115, 116, 117 ],
         "Headers": {
             "EN": "Diagnostic Tracking Tasks",
             "RU": "Задачи диагностического отслеживания"
@@ -326,7 +310,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -340,7 +324,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -354,7 +338,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -368,7 +352,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -382,7 +366,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -396,7 +380,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     }
 ]
