@@ -36,7 +36,7 @@
             "RU": ""
         },
         "Type": "RadioBoxModel",
-        "Tag": "Default"
+        "Tag": "Privacy"
     },
     {
         "Id": 103,
@@ -86,7 +86,7 @@
             "RU": ""
         },
         "Type": "RadioBoxModel",
-        "Tag": "Default"
+        "Tag": "Privacy"
     },
     {
         "Id": 107,
