@@ -20,10 +20,6 @@
             "EN": "The OS level of diagnostic data gathering",
             "RU": "Уровень сбора диагностических сведений ОС"
         },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
         "SelectOnce": "true",
         "Type": "ItemsListModel",
         "Tag": "Privacy"
@@ -78,10 +74,6 @@
             "EN": "Windows should ask for my feedback",
             "RU": "Windows должна запрашивать мои отзывы"
         },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
         "SelectOnce": "true",
         "Type": "ItemsListModel",
         "Tag": "Privacy"
@@ -120,10 +112,6 @@
         "Headers": {
             "EN": "Diagnostic Tracking Tasks",
             "RU": "Задачи диагностического отслеживания"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
         },
         "SelectOnce": "false",
         "Type": "ItemsListModel",
@@ -322,7 +310,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -336,7 +324,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -350,7 +338,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -364,7 +352,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -378,7 +366,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
     {
@@ -392,7 +380,7 @@
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioBoxModel",
+        "Type": "CheckBoxModel",
         "Tag": "Privacy"
     }
 ]
