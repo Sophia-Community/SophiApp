@@ -1,6 +1,6 @@
 # Deus vult!
 
-The SophiApp functionality will be fully based on the [Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script) logic except some functions and will be written in C#. :rocket:
+The SophiApp functionality will be fully based on the [Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script) logic except some functions and will be written in C#.
 
 # :rocket:
 
@@ -15,3 +15,5 @@ If you want to be kept up-to-date of the latest SophiApp news visit our Telegram
 
 <a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
 <a href="https://t.me/Sophia_Chat"><img src="https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram"></a>
+
+<img src="https://img.shields.io/github/workflow/status/SophiaUI/SophiApp/Build?label=GitHub%20Actions&logo=GitHub">
