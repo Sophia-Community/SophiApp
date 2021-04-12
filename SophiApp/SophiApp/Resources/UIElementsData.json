@@ -300,7 +300,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 115,
+        "Id": 122,
         "HasParent": "false",
         "Headers": {
             "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested",
@@ -314,7 +314,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 116,
+        "Id": 123,
         "HasParent": "false",
         "Headers": {
             "EN": "Get tip, trick, and suggestions as you use Windows",
@@ -328,7 +328,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 117,
+        "Id": 124,
         "HasParent": "false",
         "Headers": {
             "EN": "Show the suggested content in the Settings app",
@@ -342,7 +342,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 118,
+        "Id": 125,
         "HasParent": "false",
         "Headers": {
             "EN": "Turn on automatic installing suggested apps",
@@ -356,7 +356,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 119,
+        "Id": 126,
         "HasParent": "false",
         "Headers": {
             "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
@@ -370,7 +370,21 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 120,
+        "Id": 127,
+        "HasParent": "false",
+        "Headers": {
+            "EN": "Offer tailored experiences based on the diagnostic data setting",
+            "RU": "Предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 128,
         "HasParent": "false",
         "Headers": {
             "EN": "Enable Bing search in the Start Menu",
