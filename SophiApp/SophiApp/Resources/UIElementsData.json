@@ -21,7 +21,7 @@
             "RU": "Уровень сбора диагностических сведений ОС"
         },
         "SelectOnce": "true",
-        "Type": "CheckBoxModel",
+        "Type": "ItemsListModel",
         "Tag": "Privacy"
     },
     {
@@ -71,7 +71,7 @@
             "RU": "Windows должна запрашивать мои отзывы"
         },
         "SelectOnce": "true",
-        "Type": "CheckBoxModel",
+        "Type": "ItemsListModel",
         "Tag": "Privacy"
     },
     {
