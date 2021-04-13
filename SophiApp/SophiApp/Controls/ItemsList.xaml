@@ -109,7 +109,7 @@
                     <ItemsControl x:Name="ItemsControlContent"
                                   Focusable="False"
                                   IsTabStop="False"
-                                  Width="{Binding Path=ActualWidth, ElementName=PanelContent}" 
+                                  Width="{Binding Path=ActualWidth, ElementName=PanelContent}"
                                   ItemsSource="{Binding Source={StaticResource UIModelsCollection}}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:SwitchModel}">

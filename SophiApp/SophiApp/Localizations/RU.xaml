@@ -18,7 +18,7 @@
     <system:String x:Key="Localization.Settings.Export">Экспорт</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
     <system:String x:Key="Localization.ChangesPanel.Changed">Изменено</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Option">опций</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Setting">настроек</system:String>
     <system:String x:Key="Localization.ChangesPanel.Reset">Сброс</system:String>
     <system:String x:Key="Localization.ChangesPanel.Apply">Применить</system:String>
 </ResourceDictionary>

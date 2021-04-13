@@ -9,6 +9,8 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <converters:IntToChangedWord x:Key="Int.To.Changed.Word.Converter" />
+        <converters:IntToSettingWord x:Key="Int.To.Setting.Word.Converter" />
         <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Buttons">
             <Setter Property="Orientation" Value="Horizontal" />
             <Setter Property="Grid.Column" Value="0" />
@@ -21,12 +23,37 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Setting">
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="Text">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Int.To.Setting.Word.Converter}">
+                        <Binding Path="AppLocalization" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="UIElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="SettingText" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource TemplatedParent}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Changed">
             <Setter Property="TextWrapping" Value="NoWrap" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="20, 0, 20, 0" />
-            <Setter Property="Text" Value="{DynamicResource Localization.ChangesPanel.Changed}" />
+            <Setter Property="Margin" Value="20, 0, 0, 0" />
+            <Setter Property="Text">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Int.To.Changed.Word.Converter}">
+                        <Binding Path="AppLocalization" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="UIElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="ChangedText" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource TemplatedParent}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Counter">
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="5, 0, 5, 0" />
+            <Setter Property="Text" Value="{Binding Path=DataContext.UIElementsChangedCounter, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -42,6 +69,8 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Height" Value="52" />
             <Setter Property="Visibility" Value="{Binding UIElementsChangedCounter, Converter={StaticResource IntToVisibilityConverter}}" />
+            <Setter Property="ChangedText" Value="{DynamicResource Localization.ChangesPanel.Changed}" />
+            <Setter Property="SettingText" Value="{DynamicResource Localization.ChangesPanel.Setting}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -53,6 +82,8 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Style="{StaticResource Style.Panel.Text}">
                     <TextBlock Style="{StaticResource Style.TextBlock.Changed}" />
+                    <TextBlock Style="{DynamicResource Style.TextBlock.Counter}" />
+                    <TextBlock Style="{StaticResource Style.TextBlock.Setting}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource Style.Panel.Buttons}">
                     <local:Button Text="{DynamicResource Localization.ChangesPanel.Reset}"

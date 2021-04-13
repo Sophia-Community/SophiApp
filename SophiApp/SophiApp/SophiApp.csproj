@@ -133,6 +133,8 @@
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\BoolToInverseBool.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
+    <Compile Include="Converters\IntToChangedWord.cs" />
+    <Compile Include="Converters\IntToSettingWord.cs" />
     <Compile Include="Converters\IntToVisibility.cs" />
     <Compile Include="Converters\ObjectToIntList.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />

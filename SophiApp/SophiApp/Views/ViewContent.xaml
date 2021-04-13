@@ -43,13 +43,13 @@
             <Setter Property="Grid.Row" Value="0" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="0, 0, 0, 7" />
+            <Setter Property="Margin" Value="0, 0, 0, 18" />
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type local:ViewContent}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />            
+            <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
@@ -66,53 +66,46 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="6*" />
-                        <ColumnDefinition Width="3*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="65" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="20" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
-                        <ScrollViewer x:Name="ScrollViewerContent"
-                                      Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">                            
-                                <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}"
-                                              Focusable="False"
-                                              IsTabStop="False">
-                                    <ItemsControl.Resources>
-                                        <DataTemplate DataType="{x:Type models:SwitchModel}">
-                                            <controls:Switch Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
-                                                         CommandParameter="{Binding Id}" />
-                                        </DataTemplate>
-                                        <DataTemplate DataType="{x:Type models:CheckBoxModel}">
-                                            <controls:CheckBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
-                                                           CommandParameter="{Binding Id}" />
-                                        </DataTemplate>
-                                        <DataTemplate DataType="{x:Type models:RadioBoxModel}">
-                                            <controls:RadioBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
-                                                                CommandParameter="{Binding Id}" />
-                                        </DataTemplate>
-                                        <DataTemplate DataType="{x:Type models:ItemsListModel}">
-                                            <controls:ItemsList />
-                                        </DataTemplate>
-                                    </ItemsControl.Resources>
-                                </ItemsControl>                            
-                        </ScrollViewer>
-                    </Grid>
-                    <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                        <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
-                    </StackPanel>
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
+                    <ScrollViewer x:Name="ScrollViewerContent" Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource UIModelsCollection}}"
+                                      Focusable="False"
+                                      IsTabStop="False">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type models:SwitchModel}">
+                                    <controls:Switch Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
+                                                     CommandParameter="{Binding Id}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:CheckBoxModel}">
+                                    <controls:CheckBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
+                                                       CommandParameter="{Binding Id}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:RadioBoxModel}">
+                                    <controls:RadioBox Command="{Binding Path=DataContext.UIElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContent}}}"
+                                                       CommandParameter="{Binding Id}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:ItemsListModel}">
+                                    <controls:ItemsList />
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </Grid>
+                <StackPanel Style="{DynamicResource Style.Panel.Description}">
+                    <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
+                </StackPanel>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="Visibility" Value="Visible">
