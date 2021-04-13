@@ -795,21 +795,7 @@
     },
     {
         "Id": 158,
-        "HasParent": "false",
-        "Headers": {
-            "EN": "Show the Meet Now icon in the notification area",
-            "RU": "Отобразить иконку \"Провести собрание\" в трее"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Type": "CheckBoxModel",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 159,
-        "ChildId": [ 160, 161, 162 ],
+        "ChildId": [ 159, 160, 161 ],
         "Headers": {
             "EN": "View the Control Panel icons by:",
             "RU": "Просмотр иконок Панели управления как:"
@@ -819,7 +805,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 160,
+        "Id": 159,
         "HasParent": "true",
         "Headers": {
             "EN": "Large icons",
@@ -833,7 +819,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 161,
+        "Id": 160,
         "HasParent": "true",
         "Headers": {
             "EN": "Small icons",
@@ -847,7 +833,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 162,
+        "Id": 161,
         "HasParent": "true",
         "Headers": {
             "EN": "Сategory",
@@ -861,8 +847,8 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 163,
-        "ChildId": [ 164, 165 ],
+        "Id": 162,
+        "ChildId": [ 163, 164 ],
         "Headers": {
             "EN": "Windows mode color scheme",
             "RU": "Цвет режима Windows"
@@ -872,11 +858,25 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 164,
+        "Id": 163,
         "HasParent": "true",
         "Headers": {
             "EN": "Light",
             "RU": "Cветлый"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 164,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "Dark",
+            "RU": "Темный"
         },
         "Descriptions": {
             "EN": "",
@@ -887,21 +887,7 @@
     },
     {
         "Id": 165,
-        "HasParent": "true",
-        "Headers": {
-            "EN": "Dark",
-            "RU": "Темный"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Type": "RadioBoxModel",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 166,
-        "ChildId": [ 167, 168 ],
+        "ChildId": [ 166, 167 ],
         "Headers": {
             "EN": "App mode color scheme",
             "RU": "Цвет режима приложений"
@@ -911,7 +897,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 167,
+        "Id": 166,
         "HasParent": "true",
         "Headers": {
             "EN": "Light",
@@ -925,7 +911,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 168,
+        "Id": 167,
         "HasParent": "true",
         "Headers": {
             "EN": "Dark",
@@ -939,7 +925,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 169,
+        "Id": 168,
         "HasParent": "false",
         "Headers": {
             "EN": "Show the \"New App Installed\" indicator",
@@ -953,7 +939,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 170,
+        "Id": 169,
         "HasParent": "false",
         "Headers": {
             "EN": "Show first sign-in animation after the upgrade",
@@ -967,8 +953,8 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 171,
-        "ChildId": [ 172, 173 ],
+        "Id": 170,
+        "ChildId": [ 171, 172 ],
         "Headers": {
             "EN": "The quality factor of the JPEG desktop wallpapers",
             "RU": "Коэффициент качества обоев рабочего стола в формате JPEG"
@@ -978,7 +964,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 172,
+        "Id": 171,
         "HasParent": "true",
         "Headers": {
             "EN": "Maximum (100 %)",
@@ -992,7 +978,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 173,
+        "Id": 172,
         "HasParent": "true",
         "Headers": {
             "EN": "Default 80 %)",
@@ -1006,7 +992,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 174,
+        "Id": 173,
         "HasParent": "false",
         "Headers": {
             "EN": "Show a notification when your PC requires a restart to finish updating",
@@ -1020,7 +1006,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 175,
+        "Id": 174,
         "HasParent": "false",
         "Headers": {
             "EN": "Add the \"- Shortcut\" suffix to the file name of created shortcuts",
@@ -1034,7 +1020,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 176,
+        "Id": 175,
         "HasParent": "false",
         "Headers": {
             "EN": "Use the PrtScn button to open screen snipping",
@@ -1048,7 +1034,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 177,
+        "Id": 176,
         "HasParent": "false",
         "Headers": {
             "EN": "Let me use a different input method for each app window",
