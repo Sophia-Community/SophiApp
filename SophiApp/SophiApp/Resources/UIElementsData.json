@@ -56,14 +56,13 @@
         "Id": 104,
         "HasParent": "false",
         "Headers": {
-            "EN": "Уровень сбора диагностических сведений ОС",
-            "RU": "Включить запись отчетов об ошибках Windows"
+            "EN": "Turn off the Windows Error Reporting",
+            "RU": "Отключить запись отчетов об ошибках Windows"
         },
         "Descriptions": {
             "EN": "",
             "RU": ""
         },
-        "SelectOnce": "true",
         "Type": "CheckBoxModel",
         "Tag": "Privacy"
     },
