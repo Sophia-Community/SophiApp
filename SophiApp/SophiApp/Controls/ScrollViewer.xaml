@@ -87,7 +87,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border x:Name="BorderThumb" CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"  Width="2" Margin="8,0,-2,0" />
+                    <Border x:Name="BorderThumb" CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"  Width="4" Margin="8,0,-2,0" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
