@@ -7,8 +7,8 @@
             "RU": "Включить службу DiagTrack"
         },
         "Descriptions": {
-            "EN": "Also the firewall rule for Unified Telemetry Client Outbound Traffic and block connection",
-            "RU": "А также правила брандмауэра для исходящего трафик клиента единой телеметрии и заблокировать соединение"
+            "EN": "Enable the DiagTrack service, and allow connection for the Unified Telemetry Client Outbound Traffic",
+            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафик клиента единой телеметрии"
         },
         "Type": "SwitchModel",
         "Tag": "Privacy"
