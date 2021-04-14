@@ -117,6 +117,7 @@
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.TaskSheduler}" Tag="{StaticResource Tags.View.TaskSheduler}" />
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Security}" Tag="{StaticResource Tags.View.Security}" />
                     <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.ContextMenu}" Tag="{StaticResource Tags.View.ContextMenu}" />
+                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" Tag="{StaticResource Tags.View.Settings}" />
                     <controls:ChangesPanel Grid.Row="1" Panel.ZIndex="10" />
                     <controls:WaitingPanel Grid.Row="1" Panel.ZIndex="20" />
                 </Grid>

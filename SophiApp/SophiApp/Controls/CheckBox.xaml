@@ -34,7 +34,7 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="HorizontalAlignment" Value="Left" />            
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <Style TargetType="{x:Type local:CheckBox}">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />

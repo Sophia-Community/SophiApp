@@ -7,10 +7,12 @@ namespace SophiApp.Models
 {
     internal class ItemsListModel : IUIElementModel, IItemsListModel, INotifyPropertyChanged
     {
+        private bool arrowIsVisible;
         private string header;
 
         public ItemsListModel(JsonDTO json)
         {
+            ArrowIsVisible = json.ArrowIsVisible;
             Headers = json.Headers;
             Id = json.Id;
             Tag = json.Tag;
@@ -19,6 +21,16 @@ namespace SophiApp.Models
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool ArrowIsVisible
+        {
+            get => arrowIsVisible;
+            set
+            {
+                arrowIsVisible = value;
+                OnPropertyChanged("ArrowIsVisible");
+            }
+        }
 
         public List<int> ChildId { get; set; }
         public string Description { get; set; }

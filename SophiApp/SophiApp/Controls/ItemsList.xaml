@@ -16,6 +16,7 @@
                               Filter="HasParentFilter" />
         <converters:ActualHeightMultiply x:Key="ActualHeightMultiplyConverter" />
         <converters:ObjectToIntList x:Key="ObjectToIntListConverter" />
+        <converters:BoolToVisibility  x:Key="BoolToVisibilityConverter" />
         <Style TargetType="{x:Type Viewbox}">
             <Setter Property="Width" Value="16" />
             <Setter Property="Height" Value="16" />
@@ -37,6 +38,7 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Visibility" Value="{Binding ArrowIsVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}" />
         </Style>
         <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Header">
             <Setter Property="DockPanel.Dock" Value="Top" />
@@ -46,7 +48,7 @@
             <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Data" Value="M15.1484 12.3516L15.8516 11.6484L8 3.79688L0.148438 11.6484L0.851562 12.3516L8 5.20312L15.1484 12.3516Z" />
         </Style>
-        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">            
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />

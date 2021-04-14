@@ -6,6 +6,9 @@ namespace SophiApp.Commons
     [DataContract]
     public class JsonDTO
     {
+        [DataMember(Name = "ArrowIsVisible")]
+        public bool ArrowIsVisible { get; set; }
+
         [DataMember(Name = "ChildId")]
         public List<int> ChildId { get; set; }
 

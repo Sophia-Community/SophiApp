@@ -15,6 +15,7 @@
     },
     {
         "Id": 101,
+        "ArrowIsVisible": "true",
         "ChildId": [ 102, 103 ],
         "Headers": {
             "EN": "The OS level of diagnostic data gathering",
@@ -68,6 +69,7 @@
     },
     {
         "Id": 105,
+        "ArrowIsVisible": "true",
         "ChildId": [ 106, 107 ],
         "Headers": {
             "EN": "Windows should ask for my feedback",
@@ -107,6 +109,7 @@
     },
     {
         "Id": 108,
+        "ArrowIsVisible": "true",
         "ChildId": [ 109, 110, 111, 112, 113, 114, 115, 116, 117 ],
         "Headers": {
             "EN": "Diagnostic Tracking Tasks",
@@ -468,6 +471,7 @@
     },
     {
         "Id": 134,
+        "ArrowIsVisible": "true",
         "ChildId": [ 135, 136 ],
         "Headers": {
             "EN": "Open File Explorer to:",
@@ -591,6 +595,7 @@
     },
     {
         "Id": 143,
+        "ArrowIsVisible": "true",
         "ChildId": [ 144, 145 ],
         "Headers": {
             "EN": "File transfer dialog box",
@@ -714,6 +719,7 @@
     },
     {
         "Id": 152,
+        "ArrowIsVisible": "true",
         "ChildId": [ 153, 154, 155 ],
         "Headers": {
             "EN": "Search on the taskbar",
@@ -795,6 +801,7 @@
     },
     {
         "Id": 158,
+        "ArrowIsVisible": "true",
         "ChildId": [ 159, 160, 161 ],
         "Headers": {
             "EN": "View the Control Panel icons by:",
@@ -848,6 +855,7 @@
     },
     {
         "Id": 162,
+        "ArrowIsVisible": "true",
         "ChildId": [ 163, 164 ],
         "Headers": {
             "EN": "Windows mode color scheme",
@@ -887,6 +895,7 @@
     },
     {
         "Id": 165,
+        "ArrowIsVisible": "true",
         "ChildId": [ 166, 167 ],
         "Headers": {
             "EN": "App mode color scheme",
@@ -954,6 +963,7 @@
     },
     {
         "Id": 170,
+        "ArrowIsVisible": "true",
         "ChildId": [ 171, 172 ],
         "Headers": {
             "EN": "The quality factor of the JPEG desktop wallpapers",
