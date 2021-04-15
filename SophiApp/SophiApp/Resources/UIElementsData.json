@@ -1058,7 +1058,7 @@
             "EN": "Storage",
             "RU": "Память"
         },
-        "SelectOnce": "true",
+        "SelectOnce": "false",
         "Type": "ItemsListModel",
         "Tag": "System"
     },
