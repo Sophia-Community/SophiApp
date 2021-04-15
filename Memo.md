@@ -65,3 +65,5 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
 ```
 
 <https://fastspring.com>
+
+Не забыть про черту, отделяющую заголовки от дочерних элементов. Смотреть 1 рисунок на макете
