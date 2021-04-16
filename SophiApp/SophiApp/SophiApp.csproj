@@ -91,8 +91,8 @@
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DropDownListBox.xaml.cs">
-      <DependentUpon>DropDownListBox.xaml</DependentUpon>
+    <Compile Include="Controls\ComboListBox.xaml.cs">
+      <DependentUpon>ComboListBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FilledButton.xaml.cs">
       <DependentUpon>FilledButton.xaml</DependentUpon>
@@ -163,7 +163,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\DropDownListBox.xaml">
+    <Page Include="Controls\ComboListBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

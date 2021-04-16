@@ -54,7 +54,7 @@
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Height" Value="45" />
-            <Setter Property="TextMargin" Value="65, 3, 0, 0" />
+            <Setter Property="TextMargin" Value="65, 0, 0, 0" />
             <Setter Property="IconMargin" Value="10, 0, 0, 7" />
             <Setter Property="IsEnabled" Value="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerMenu}, AncestorLevel=1}}" />
             <Setter Property="Command" Value="{Binding HamburgerClickedCommand}" />

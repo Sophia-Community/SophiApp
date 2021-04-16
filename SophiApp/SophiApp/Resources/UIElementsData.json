@@ -15,7 +15,6 @@
     },
     {
         "Id": 101,
-        "ArrowIsVisible": "true",
         "ChildId": [ 102, 103 ],
         "Headers": {
             "EN": "The OS level of diagnostic data gathering",
@@ -69,7 +68,6 @@
     },
     {
         "Id": 105,
-        "ArrowIsVisible": "true",
         "ChildId": [ 106, 107 ],
         "Headers": {
             "EN": "Windows should ask for my feedback",
@@ -471,7 +469,6 @@
     },
     {
         "Id": 134,
-        "ArrowIsVisible": "true",
         "ChildId": [ 135, 136 ],
         "Headers": {
             "EN": "Open File Explorer to:",
@@ -595,7 +592,6 @@
     },
     {
         "Id": 143,
-        "ArrowIsVisible": "true",
         "ChildId": [ 144, 145 ],
         "Headers": {
             "EN": "File transfer dialog box",
@@ -855,7 +851,6 @@
     },
     {
         "Id": 162,
-        "ArrowIsVisible": "true",
         "ChildId": [ 163, 164 ],
         "Headers": {
             "EN": "Windows mode color scheme",
@@ -895,7 +890,6 @@
     },
     {
         "Id": 165,
-        "ArrowIsVisible": "true",
         "ChildId": [ 166, 167 ],
         "Headers": {
             "EN": "App mode color scheme",
@@ -963,7 +957,6 @@
     },
     {
         "Id": 170,
-        "ArrowIsVisible": "true",
         "ChildId": [ 171, 172 ],
         "Headers": {
             "EN": "The quality factor of the JPEG desktop wallpapers",
@@ -1056,5 +1049,84 @@
         },
         "Type": "CheckBoxModel",
         "Tag": "Personalization"
+    },
+    {
+        "Id": 177,
+        "ArrowIsVisible": "true",
+        "ChildId": [ 178, 181, 182 ],
+        "Headers": {
+            "EN": "Storage",
+            "RU": "Память"
+        },
+        "SelectOnce": "true",
+        "Type": "ItemsListModel",
+        "Tag": "System"
+    },
+    {
+        "Id": 178,
+        "ChildId": [ 179, 180 ],
+        "Headers": {
+            "EN": "Turn on Storage Sense",
+            "RU": "Включить Контроль памяти"
+        },
+        "SelectOnce": "true",
+        "Type": "ItemsListModel",
+        "Tag": "System"
+    },
+    {
+        "Id": 179,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "Storage Sense",
+            "RU": "Контроль памяти"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "SwitchModel",
+        "Tag": "System"
+    },
+    {
+        "Id": 180,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "Every month",
+            "RU": "Каждый месяц"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "System"
+    },
+    {
+        "Id": 181,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "During low free disk space",
+            "RU": "Когда остается мало место на диске"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "RadioBoxModel",
+        "Tag": "System"
+    },
+    {
+        "Id": 182,
+        "HasParent": "true",
+        "Headers": {
+            "EN": "Delete temporary files that apps aren't using",
+            "RU": "Удалять временные файлы, не используемые в приложениях"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBoxModel",
+        "Tag": "System"
     }
 ]

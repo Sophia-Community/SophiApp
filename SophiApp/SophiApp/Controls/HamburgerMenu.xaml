@@ -29,7 +29,7 @@
         <ControlTemplate>
             <Grid Background="{DynamicResource Brush.Window.Background}">
                 <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 20, 0, 0"
+                                       Margin="0, 20, 0, 0"                                       
                                        Icon="{DynamicResource Icon.Privacy}"
                                        Text="{DynamicResource Localization.Privacy}"
                                        Tag="{StaticResource Tags.View.Privacy}" />
