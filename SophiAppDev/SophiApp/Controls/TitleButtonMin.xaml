@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="SophiApp.Controls.TitleButtonClose"
+﻿<UserControl x:Class="SophiApp.Controls.TitleButtonMin"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d" 
-             MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
-    
+             mc:Ignorable="d"
+             MouseLeftButtonDown="TitleButtonMin_MouseLeftButtonDown">
+
     <UserControl.Resources>
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -18,7 +18,7 @@
         <Style TargetType="Path">
             <Setter Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
-        <Style TargetType="local:TitleButtonClose">
+        <Style TargetType="local:TitleButtonMin">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -30,7 +30,7 @@
         <ControlTemplate>
             <Grid x:Name="GridContent">
                 <Viewbox>
-                    <Path x:Name="PathIcon" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                    <Path x:Name="PathIcon" Data="M20,14H4V10H20" />
                 </Viewbox>
             </Grid>
             <ControlTemplate.Triggers>

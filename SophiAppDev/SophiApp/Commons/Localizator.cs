@@ -22,7 +22,7 @@ namespace SophiApp.Commons
         }
 
         internal static UILanguage Initializing()
-        {
+        {            
             var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
             var localization = GetName(language);
             var uri = GetUris(localization);

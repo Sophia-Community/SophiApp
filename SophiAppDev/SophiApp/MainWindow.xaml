@@ -5,14 +5,14 @@
         xmlns:controls="clr-namespace:SophiApp.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
+        xmlns:view="clr-namespace:SophiApp.Views"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType">
-
     <Window.DataContext>
-        <vm:AppVM/>
+        <vm:AppVM />
     </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0" />
@@ -48,18 +48,14 @@
     <Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="35" />
-                <!--Window Title Row-->
-                <RowDefinition Height="*" />
-                <!--Window Content Row-->
+                <RowDefinition Height="35" /> <!--Window Title Row-->
+                <RowDefinition Height="*" />  <!--Window Content Row-->
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250" />
-                    <!--Hamburger Row-->
-                    <ColumnDefinition Width="*" />
-                    <!--Views Row-->
+                    <ColumnDefinition Width="250" /> <!--Hamburger Row-->
+                    <ColumnDefinition Width="*" />   <!--Views Row-->
                 </Grid.ColumnDefinitions>
                 <!--Left Window Title-->
                 <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
@@ -106,12 +102,24 @@
                     <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <!--<controls:HamburgerMenu Grid.Column="0" />-->
+                <controls:HamburgerMenu Grid.Column="0" />
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>                    
+                    </Grid.RowDefinitions>
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Personalization}" Tag="{StaticResource Tags.View.Personalization}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.System}" Tag="{StaticResource Tags.View.System}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.StartMenu}" Tag="{StaticResource Tags.View.StartMenu}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.UwpApps}" Tag="{StaticResource Tags.View.UwpApps}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Games}" Tag="{StaticResource Tags.View.Games}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.TaskSheduler}" Tag="{StaticResource Tags.View.TaskSheduler}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Security}" Tag="{StaticResource Tags.View.Security}" />
+                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.ContextMenu}" Tag="{StaticResource Tags.View.ContextMenu}" />
+                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" Tag="{StaticResource Tags.View.Settings}" />
+                    <controls:ChangesPanel Grid.Row="1" Panel.ZIndex="10" />
+                    <controls:WaitingPanel Grid.Row="1" Panel.ZIndex="20" />
                 </Grid>
             </Grid>
         </Grid>
