@@ -67,3 +67,7 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
 <https://fastspring.com>
 
 Не забыть про черту, отделяющую заголовки от дочерних элементов. Смотреть 1 рисунок на макете
+
+# Expands a Microsoft @-prefixed indirect string
+
+https://github.com/SamuelArnold/StarKill3r/blob/master/Star%20Killer/Star%20Killer/bin/Debug/Scripts/SANS-SEC505-master/scripts/Day1-PowerShell/Expand-IndirectString.ps1
