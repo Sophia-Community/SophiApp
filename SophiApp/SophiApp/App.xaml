@@ -6,10 +6,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Themes/Light.xaml" />                
-                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Commons/Constants.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Controls/ScrollViewer.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Localizations/RU.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Commons/Tags.xaml" />                
+                <ResourceDictionary Source="pack://application:,,,/Controls/ScrollViewer.xaml" />                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

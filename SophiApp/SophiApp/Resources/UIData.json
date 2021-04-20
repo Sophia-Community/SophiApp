@@ -1,0 +1,16 @@
+[
+    {
+        "Id": 100,
+        "Headers": {
+            "EN": "Enable the DiagTrack service",
+            "RU": "Включить службу DiagTrack"
+        },
+        "Descriptions": {
+            "EN": "Enable the DiagTrack service, and allow connection for the Unified Telemetry Client Outbound Traffic",
+            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафик клиента единой телеметрии"
+        },
+        "Model": "Switch",
+        "Type": "0",
+        "Tag": "Privacy"
+    }
+]

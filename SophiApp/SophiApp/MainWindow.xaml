@@ -5,6 +5,7 @@
         xmlns:controls="clr-namespace:SophiApp.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
+        xmlns:helpers="clr-namespace:SophiApp.Helpers"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -30,7 +31,7 @@
             <Setter Property="Width" Value="1024" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Title" Value="{Binding AppName}" />
+            <Setter Property="Title" Value="{Binding Path=(helpers:AppData.Name)}" />
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Regular" />
@@ -81,7 +82,7 @@
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="Text" Value="{DynamicResource CONST.AppName}" />
+                                        <Setter Property="Text" Value="{Binding Path=(helpers:AppData.Name)}" />
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="HorizontalAlignment" Value="Left" />
                                     </Style>
@@ -106,7 +107,7 @@
                     <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <!--<controls:HamburgerMenu Grid.Column="0" />-->
+                <controls:HamburgerMenu Grid.Column="0" />
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
