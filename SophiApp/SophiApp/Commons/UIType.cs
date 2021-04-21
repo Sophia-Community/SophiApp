@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SophiApp.Helpers
+namespace SophiApp.Commons
 {
     
     enum UIType

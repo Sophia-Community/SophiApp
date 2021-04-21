@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commons\JsonDTO.cs" />
+    <Compile Include="Commons\LogType.cs" />
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -81,12 +82,16 @@
     <Compile Include="Converters\BoolToInverse.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppData.cs" />
-    <Compile Include="Helpers\Localization.cs" />
+    <Compile Include="Helpers\AppFabric.cs" />
+    <Compile Include="Commons\Localization.cs" />
     <Compile Include="Helpers\Localizer.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\Parser.cs" />
-    <Compile Include="Helpers\UIElement.cs" />
-    <Compile Include="Helpers\UILanguage.cs" />
-    <Compile Include="Helpers\UIType.cs" />
+    <Compile Include="Commons\UIElementState.cs" />
+    <Compile Include="Commons\UILanguage.cs" />
+    <Compile Include="Commons\UIType.cs" />
+    <Compile Include="Models\BaseElement.cs" />
+    <Compile Include="Models\Switch.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Page Include="Commons\Tags.xaml">
       <SubType>Designer</SubType>
@@ -176,7 +181,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

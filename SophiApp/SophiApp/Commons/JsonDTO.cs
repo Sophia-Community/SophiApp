@@ -12,7 +12,7 @@ namespace SophiApp.Commons
     internal class JsonDTO
     {
         [DataMember(Name = "ContainerId")]
-        public uint? ContainerId { get; set; }
+        public uint ContainerId { get; set; }
 
         [DataMember(Name = "Id")]
         public uint Id { get; set; }
@@ -31,6 +31,5 @@ namespace SophiApp.Commons
 
         [DataMember(Name = "Type")]        
         public UIType Type { get; set; }
-
     }
 }
