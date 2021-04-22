@@ -1,68 +1,80 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
 {
-    class AppVM : INotifyPropertyChanged
+    internal class AppVM : INotifyPropertyChanged
     {
         private Localizer localizator;
         private Logger logger;
 
+        public AppVM()
+        {
+            InitFieldsAndProperties();
+            InitTextedElementsAsync();
+            //InitUIContainersAsync();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string AppName => AppData.Name;
 
         public Localization Localization { get => localizator.Current; }
-        
+
         public List<string> LocalizationList { get => localizator.GetText(); }
 
-        public List<BaseElement> UIElements { get; set; }
+        public List<BaseTextedElement> TextedElements { get; set; }
 
-        public List<BaseElement> UIContainers { get; set; }
-
-
-        public AppVM()
-        {
-            InitFieldsAndProperties();            
-            InitUIElementsAsync();            
-            //InitUIContainersAsync();
-
-
-
-        }
-
-        private void InitUIElementsAsync()
-        {            
-            var task = Task.Run(() =>
-            {
-                logger.DateString(LogType.INIT_MODELS);
-                var parsedJson = Parser.ParseJson(Properties.Resources.UIData);
-                UIElements = parsedJson.Where(dto => dto.Type == UIType.Element).Select(dto => AppFabric.CreateElementModel(dto)).ToList();
-                //TODO: Logger element state
-                UIElements.ForEach(model => model.SetLocalization(Localization.Language));
-                logger.DateString(LogType.DONE_INIT_MODELS);
-            });
-            task.Wait();            
-        }
+        public List<BaseTextedElement> UIContainers { get; set; }
 
         private void InitFieldsAndProperties()
         {
             localizator = new Localizer();
             logger = new Logger();
 
-            logger.ValueString(LogType.INIT_LOCALIZATION, $"{localizator.Current.Language}");
+            logger.AddKeyValueString(LogType.INIT_APP_LOCALIZATION, $"{localizator.Current.Language}");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private void InitTextedElementsAsync()
+        {
+            var task = Task.Run(() =>
+            {
+                logger.AddDateTimeValueString(LogType.INIT_TEXTED_ELEMENT_MODELS);
+                var parsedJson = Parser.ParseJson(Properties.Resources.UIData);
+                TextedElements = parsedJson.Where(dto => dto.Type == UIType.TextedElement).Select(dto => AppFabric.CreateTextElementModel(dto)).ToList();
+                TextedElements.ForEach(model =>
+                {
+                    model.StateChanged += OnTextedElementStateChanged;
+                    model.ErrorOccurred += OnTextedElementErrorOccurred;
+
+                    model.SetLocalization(Localization.Language);
+                    model.CurrentStateActionInvoke();
+                });
+                logger.AddDateTimeValueString(LogType.DONE_INIT_TEXTED_ELEMENT_MODELS);
+            });
+            task.Wait();
+        }
+
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
+        private void OnTextedElementErrorOccurred(uint id, string target, string message)
+        {
+            //TODO: Implement error handling in the element
+            logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ID, $"{id}");
+            logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_TARGET, target);
+            logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_MESSAGE, message);
+        }
+
+        private void OnTextedElementStateChanged(uint id, UIElementState state)
+        {
+            logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ID, $"{id}");
+            logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_STATE_CHANGED, $"{state}");
+        }
     }
 }

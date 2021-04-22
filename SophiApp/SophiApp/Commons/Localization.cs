@@ -1,18 +1,9 @@
-﻿using SophiApp.Commons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace SophiApp.Commons
 {
     internal class Localization
     {
-        internal string Text { get; set; }
-        internal Uri Uri { get; set; }
-        internal UILanguage Language { get; set; }
-
         public Localization(string text, Uri uri, UILanguage language)
         {
             Text = text;
@@ -20,6 +11,12 @@ namespace SophiApp.Commons
             Language = language;
         }
 
-        public Localization() { }
+        public Localization()
+        {
+        }
+
+        internal UILanguage Language { get; set; }
+        internal string Text { get; set; }
+        internal Uri Uri { get; set; }
     }
 }

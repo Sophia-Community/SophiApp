@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="ClearType">
 
     <Window.DataContext>
-        <vm:AppVM/>
+        <vm:AppVM />
     </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0" />
@@ -112,7 +112,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>                    
+                    </Grid.RowDefinitions>
                 </Grid>
             </Grid>
         </Grid>

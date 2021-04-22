@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\CurrentStateAction.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\LogType.cs" />
     <Compile Include="Controls\HamburgerButton.xaml.cs">
@@ -90,7 +91,7 @@
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
-    <Compile Include="Models\BaseElement.cs" />
+    <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\Switch.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
     <Page Include="Commons\Tags.xaml">

@@ -2,17 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.Helpers
 {
-    class Localizer
+    internal class Localizer
     {
-        List<Localization> LocalizationsData = new List<Localization>()
+        private List<Localization> LocalizationsData = new List<Localization>()
         {
             { new Localization() { Text = "English", Language = UILanguage.EN, Uri = new Uri("pack://application:,,,/Localizations/EN.xaml", UriKind.Absolute)} },
             { new Localization() { Text = "Русский", Language = UILanguage.RU, Uri = new Uri("pack://application:,,,/Localizations/RU.xaml", UriKind.Absolute)} }
@@ -24,11 +22,8 @@ namespace SophiApp.Helpers
         {
             var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
             Current = GetByNameOrDefault(language);
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Current.Uri });            
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Current.Uri });
         }
-
-        internal List<string> GetText() => LocalizationsData.Select(l => l.Text).ToList();
-
 
         private Localization GetByNameOrDefault(string name)
         {
@@ -37,11 +32,13 @@ namespace SophiApp.Helpers
         }
 
         internal void Change(UILanguage language)
-        {            
+        {
             var resDict = Application.Current.Resources.MergedDictionaries.Where(d => d.Source == Current.Uri).First();
             var localization = LocalizationsData.Find(l => l.Language == language);
             resDict.Source = localization.Uri;
             Current = localization;
         }
+
+        internal List<string> GetText() => LocalizationsData.Select(l => l.Text).ToList();
     }
 }

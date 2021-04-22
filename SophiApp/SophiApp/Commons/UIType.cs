@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace SophiApp.Commons
 {
-    
-    enum UIType
-    {        
+    internal enum UIType
+    {
         [EnumMember]
-        Element,
+        TextedElement, //Element containing text: Switch, CheckBox, RadioButton, etc.
+
         [EnumMember]
-        Container
+        Container //Element containing other elements:ExpandingList, RadioButtonsGroup, etc. Nesting containers into each other, for example a list into a list, is not possible.
     }
 }
