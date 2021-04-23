@@ -62,6 +62,9 @@
     <Compile Include="Actions\CurrentStateAction.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\LogType.cs" />
+    <Compile Include="Controls\DropDownList.xaml.cs">
+      <DependentUpon>DropDownList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -80,7 +83,6 @@
     <Compile Include="Controls\TitleWindow.xaml.cs">
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\BoolToInverse.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
@@ -91,10 +93,20 @@
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
+    <Compile Include="Models\BaseContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
+    <Compile Include="Models\ExpandingList.cs" />
+    <Compile Include="Models\RadioButtonsList.cs" />
     <Compile Include="Models\Switch.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
+    <Compile Include="Views\ViewSettings.xaml.cs">
+      <DependentUpon>ViewSettings.xaml</DependentUpon>
+    </Compile>
     <Page Include="Commons\Tags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DropDownList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ViewSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -181,8 +197,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

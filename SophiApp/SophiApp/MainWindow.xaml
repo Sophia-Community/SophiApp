@@ -5,6 +5,7 @@
         xmlns:controls="clr-namespace:SophiApp.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
+        xmlns:view="clr-namespace:SophiApp.Views"
         xmlns:helpers="clr-namespace:SophiApp.Helpers"
         xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
@@ -113,6 +114,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" Tag="{StaticResource Tags.View.Settings}" />
                 </Grid>
             </Grid>
         </Grid>

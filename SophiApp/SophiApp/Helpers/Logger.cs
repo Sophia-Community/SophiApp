@@ -26,6 +26,7 @@ namespace SophiApp.Helpers
             AddKeyValueString(COMPUTERNAME, Environment.MachineName);
             AddKeyValueString(USERNAME, Environment.UserName);
             AddKeyValueString(USERDOMAIN, Environment.GetEnvironmentVariable(USERDNSDOMAIN));
+            AddKeyValueString(LogType.APP_STARTUP_DIR, $"{AppData.StartupFolder}");
         }
 
         internal void AddDateTimeValueString(LogType logString) => logList.Add($"[{DateTime.Now}] {logString}");

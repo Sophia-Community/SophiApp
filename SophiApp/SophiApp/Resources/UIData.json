@@ -7,10 +7,19 @@
         },
         "Descriptions": {
             "EN": "Enable the DiagTrack service, and allow connection for the Unified Telemetry Client Outbound Traffic",
-            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафик клиента единой телеметрии"
+            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафика клиента единой телеметрии"
         },
         "Model": "Switch",
         "Type": "0",
         "Tag": "Privacy"
+    },
+    {
+        "Id": 101,
+        "Headers": {
+            "EN": "The OS level of diagnostic data gathering",
+            "RU": "Уровень сбора диагностических сведений ОС"
+        },
+        "Model": "RadioButtonsList",
+        "Type": "1"
     }
 ]

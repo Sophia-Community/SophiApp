@@ -9,6 +9,7 @@ namespace SophiApp.Commons
         internal static readonly string ViewPersonalization = Application.Current.FindResource("Tags.View.Personalization") as string;
         internal static readonly string ViewPrivacy = Application.Current.FindResource("Tags.View.Privacy") as string;
         internal static readonly string ViewSecurity = Application.Current.FindResource("Tags.View.Security") as string;
+        internal static readonly string ViewSettings = Application.Current.FindResource("Tags.View.Settings") as string;
         internal static readonly string ViewStartMenu = Application.Current.FindResource("Tags.View.StartMenu") as string;
         internal static readonly string ViewSystem = Application.Current.FindResource("Tags.View.System") as string;
         internal static readonly string ViewTaskSheduler = Application.Current.FindResource("Tags.View.TaskSheduler") as string;

@@ -8,7 +8,6 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:BoolToInverse x:Key="BoolToInverseConverter" />
         <Style TargetType="{x:Type Border}">
             <Setter Property="Grid.Row" Value="1" />
             <Setter Property="BorderThickness" Value="1" />
@@ -22,7 +21,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="IsEnabled" Value="{Binding Path=WaitingPanelIsVisible, Converter={StaticResource BoolToInverseConverter}, UpdateSourceTrigger=PropertyChanged}" />
+            <!--<Setter Property="IsEnabled" Value="{Binding Path=WaitingPanelIsVisible, Converter={StaticResource BoolToInverseConverter}, UpdateSourceTrigger=PropertyChanged}" />-->
         </Style>
     </UserControl.Resources>
     <UserControl.Template>

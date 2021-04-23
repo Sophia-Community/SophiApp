@@ -27,7 +27,7 @@
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Tag.To.Visibility.Converter}">
-                        <Binding Path="ViewVisibilityByTag" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="VisibleViewByTag" UpdateSourceTrigger="PropertyChanged" />
                         <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </Setter.Value>

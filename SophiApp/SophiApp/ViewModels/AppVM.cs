@@ -13,32 +13,47 @@ namespace SophiApp.ViewModels
     {
         private Localizer localizator;
         private Logger logger;
+        private IEnumerable<JsonDTO> parsedJson;
+        private string visibleViewByTag;
+        public const string VisibleViewByTagPropertyName = "VisibleViewByTag";
 
         public AppVM()
         {
-            InitFieldsAndProperties();
+            InitFields();
             InitTextedElementsAsync();
-            //InitUIContainersAsync();
+            InitUIContainersAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string AppName => AppData.Name;
+        public string AppName { get => AppData.Name; }
 
         public Localization Localization { get => localizator.Current; }
 
         public List<string> LocalizationList { get => localizator.GetText(); }
 
-        public List<BaseTextedElement> TextedElements { get; set; }
+        public List<BaseTextedElement> TextedElements { get; private set; }
 
-        public List<BaseTextedElement> UIContainers { get; set; }
+        public List<BaseContainer> UIContainers { get; private set; }
 
-        private void InitFieldsAndProperties()
+        public string VisibleViewByTag
         {
-            localizator = new Localizer();
-            logger = new Logger();
+            get => visibleViewByTag;
+            set
+            {
+                visibleViewByTag = value;
+                logger.AddDateTimeValueString(LogType.VISIBLE_VIEW_CHANGED, $"{value}");
+                OnPropertyChanged(VisibleViewByTagPropertyName);
+            }
+        }
 
+        private void InitFields()
+        {
+            logger = new Logger();
+            localizator = new Localizer();
+            parsedJson = Parser.ParseJson(Properties.Resources.UIData);
             logger.AddKeyValueString(LogType.INIT_APP_LOCALIZATION, $"{localizator.Current.Language}");
+            logger.AddKeyValueString(LogType.INIT_VIEW, $"{visibleViewByTag = Tags.ViewSettings}"); //TODO: Change to Privacy
         }
 
         private void InitTextedElementsAsync()
@@ -46,17 +61,28 @@ namespace SophiApp.ViewModels
             var task = Task.Run(() =>
             {
                 logger.AddDateTimeValueString(LogType.INIT_TEXTED_ELEMENT_MODELS);
-                var parsedJson = Parser.ParseJson(Properties.Resources.UIData);
                 TextedElements = parsedJson.Where(dto => dto.Type == UIType.TextedElement).Select(dto => AppFabric.CreateTextElementModel(dto)).ToList();
-                TextedElements.ForEach(model =>
+                TextedElements.ForEach(element =>
                 {
-                    model.StateChanged += OnTextedElementStateChanged;
-                    model.ErrorOccurred += OnTextedElementErrorOccurred;
+                    element.StateChanged += OnTextedElementStateChanged;
+                    element.ErrorOccurred += OnTextedElementErrorOccurred;
 
-                    model.SetLocalization(Localization.Language);
-                    model.CurrentStateActionInvoke();
+                    element.SetLocalization(Localization.Language);
+                    element.CurrentStateActionInvoke();
                 });
                 logger.AddDateTimeValueString(LogType.DONE_INIT_TEXTED_ELEMENT_MODELS);
+            });
+            task.Wait();
+        }
+
+        private void InitUIContainersAsync()
+        {
+            var task = Task.Run(() =>
+            {
+                logger.AddDateTimeValueString(LogType.INIT_CONTAINERS_MODELS);
+                UIContainers = parsedJson.Where(dto => dto.Type == UIType.Container).Select(dto => AppFabric.CreateContainerModel(dto)).ToList();
+                UIContainers.ForEach(container => container.SetLocalization(Localization.Language));
+                logger.AddDateTimeValueString(LogType.DONE_INIT_CONTAINERS_MODELS);
             });
             task.Wait();
         }
