@@ -16,7 +16,7 @@ namespace SophiApp.Commons
         }
 
         internal UILanguage Language { get; set; }
-        internal string Text { get; set; }
         internal Uri Uri { get; set; }
+        public string Text { get; set; }
     }
 }

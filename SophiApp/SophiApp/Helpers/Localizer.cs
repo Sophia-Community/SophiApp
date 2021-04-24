@@ -21,11 +21,11 @@ namespace SophiApp.Helpers
         public Localizer()
         {
             var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
-            Current = GetByNameOrDefault(language);
+            Current = FindByNameOrDefault(language);
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Current.Uri });
         }
 
-        private Localization GetByNameOrDefault(string name)
+        private Localization FindByNameOrDefault(string name)
         {
             var parsedName = Enum.GetNames(typeof(UILanguage)).Contains(name) ? (UILanguage)Enum.Parse(typeof(UILanguage), name) : UILanguage.EN;
             return LocalizationsData.Find(l => l.Language == parsedName);
@@ -38,6 +38,8 @@ namespace SophiApp.Helpers
             resDict.Source = localization.Uri;
             Current = localization;
         }
+
+        internal Localization FindByText(string text) => LocalizationsData.Find(l => l.Text == text);
 
         internal List<string> GetText() => LocalizationsData.Select(l => l.Text).ToList();
     }

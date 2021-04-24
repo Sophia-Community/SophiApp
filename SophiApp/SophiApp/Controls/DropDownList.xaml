@@ -32,28 +32,44 @@
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <Style TargetType="{x:Type TextBlock}">
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SelectedText">
             <Setter Property="Grid.Column" Value="0" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Text" Value="{Binding Path=SelectedItem.Content, ElementName=ListBoxContent, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Text" Value="{Binding Path=SelectedText, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <!--<Style TargetType="{x:Type ListBoxItem}">
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.ListBox.Item">
+            <Setter Property="Text" Value="{Binding}" />
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="ItemsSource" Value="{Binding Path=Source, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="ItemContainerStyle" Value="{DynamicResource Style.Item.Container}" />
+        </Style>
+        <Style x:Key="Style.Item.Container" TargetType="ListBoxItem">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
-                        <Grid ShowGridLines="True">
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Grid x:Name="BorderContainer" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="32" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Path=ItemsProperty, RelativeSource={RelativeSource AncestorType={x:Type local:ComboListBox}}}" Foreground="Red" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.ListBox.Item}" />
                         </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BorderContainer" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>-->
+        </Style>
         <Style TargetType="{x:Type local:DropDownList}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
@@ -76,7 +92,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="32" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock />
+                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}" />
                     <Button x:Name="ButtonOpenPopup" Click="ButtonOpenPopup_Click">
                         <Button.Template>
                             <ControlTemplate>
@@ -109,19 +125,7 @@
                     </Button>
                     <Popup x:Name="Popup">
                         <Border x:Name="BorderPopup">
-                            <ListBox x:Name="ListBoxContent" ItemsSource="{Binding Path=Source, RelativeSource={RelativeSource TemplatedParent}}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid ShowGridLines="True">
-                                            <!--<Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="32" />
-                                            </Grid.ColumnDefinitions>-->
-                                            <TextBlock Grid.Column="1" Text="{Binding}" Foreground="Red" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                            <ListBox x:Name="ListBoxContent" SelectionChanged="ListBoxContent_SelectionChanged" />
                         </Border>
                     </Popup>
                 </Grid>
@@ -132,6 +136,7 @@
                     <Setter TargetName="BorderContent" Property="BorderThickness" Value="1, 1, 1, 0" />
                     <Setter TargetName="BorderPopup" Property="BorderThickness" Value="1, 0, 1, 1" />
                     <Setter TargetName="Popup" Property="HorizontalOffset" Value="-1" />
+                    <Setter TargetName="Popup" Property="VerticalOffset" Value="-1" />
                 </Trigger>
                 <Trigger SourceName="Popup" Property="IsOpen" Value="False">
                     <Setter TargetName="ButtonClosePopup" Property="Visibility" Value="Collapsed" />

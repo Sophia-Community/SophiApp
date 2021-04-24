@@ -4,6 +4,7 @@
     {
         APP_STARTUP_DIR, // Directory from which the app is launched
         INIT_APP_LOCALIZATION, // Init app localization
+        APP_LOCALIZATION_CHANGED, // App localization changed
         INIT_TEXTED_ELEMENT_MODELS, // Init texted element model collection
         DONE_INIT_TEXTED_ELEMENT_MODELS, // Texted element model collection init done
         TEXTED_ELEMENT_ID, // Texted element id

@@ -23,8 +23,11 @@
             <Setter Property="Grid.Row" Value="0" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="0, 0, 0, 18" />
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SubHeader">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Margin" Value="0, 10, 0, 10" />
         </Style>
         <Style TargetType="{x:Type local:ViewSettings}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -53,14 +56,18 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="20" />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
                     <ScrollViewer x:Name="ScrollViewerContent" Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">
                         <StackPanel>
-                            <controls:DropDownList Source="{Binding LocalizationList}" />
+                            <TextBlock Text="{DynamicResource Localization.Settings.Interface.Language}"
+                                       Style="{StaticResource Style.TextBlock.SubHeader}" />
+                            <controls:DropDownList Source="{Binding LocalizationList}"
+                                                   SelectedText="{Binding Localization.Text}"
+                                                   Command="{Binding LocalizationChangeCommand}" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

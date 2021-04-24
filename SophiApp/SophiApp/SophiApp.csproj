@@ -62,6 +62,7 @@
     <Compile Include="Actions\CurrentStateAction.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\LogType.cs" />
+    <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Controls\DropDownList.xaml.cs">
       <DependentUpon>DropDownList.xaml</DependentUpon>
     </Compile>

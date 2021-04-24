@@ -1,6 +1,7 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,15 +12,19 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
+        private const string LocalizationPropertyName = "Localization";
+        private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
+
+        private Localization localization;
         private Localizer localizator;
         private Logger logger;
         private IEnumerable<JsonDTO> parsedJson;
         private string visibleViewByTag;
-        public const string VisibleViewByTagPropertyName = "VisibleViewByTag";
 
         public AppVM()
         {
             InitFields();
+            InitCommands();
             InitTextedElementsAsync();
             InitUIContainersAsync();
         }
@@ -28,8 +33,17 @@ namespace SophiApp.ViewModels
 
         public string AppName { get => AppData.Name; }
 
-        public Localization Localization { get => localizator.Current; }
+        public Localization Localization
+        {
+            get => localizator.Current;
+            private set
+            {
+                logger.AddDateTimeValueString(LogType.APP_LOCALIZATION_CHANGED, $"{value.Language}");
+                OnPropertyChanged(LocalizationPropertyName);
+            }
+        }
 
+        public RelayCommand LocalizationChangeCommand { get; private set; }
         public List<string> LocalizationList { get => localizator.GetText(); }
 
         public List<BaseTextedElement> TextedElements { get; private set; }
@@ -47,13 +61,21 @@ namespace SophiApp.ViewModels
             }
         }
 
+        private void InitCommands()
+        {
+            LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
+        }
+
         private void InitFields()
         {
             logger = new Logger();
             localizator = new Localizer();
+            localization = localizator.Current;
+            visibleViewByTag = Tags.ViewSettings; //TODO: Change to Privacy
             parsedJson = Parser.ParseJson(Properties.Resources.UIData);
-            logger.AddKeyValueString(LogType.INIT_APP_LOCALIZATION, $"{localizator.Current.Language}");
-            logger.AddKeyValueString(LogType.INIT_VIEW, $"{visibleViewByTag = Tags.ViewSettings}"); //TODO: Change to Privacy
+
+            logger.AddKeyValueString(LogType.INIT_APP_LOCALIZATION, $"{Localization.Language}");
+            logger.AddKeyValueString(LogType.INIT_VIEW, $"{VisibleViewByTag}");
         }
 
         private void InitTextedElementsAsync()
@@ -87,6 +109,20 @@ namespace SophiApp.ViewModels
             task.Wait();
         }
 
+        private void LocalizationChangeAsync(object args)
+        {
+            var task = Task.Run(() =>
+            {
+                //TODO: Show loading panel
+                var localization = localizator.FindByText(text: args as string);
+                TextedElements.ForEach(element => element.SetLocalization(localization.Language));
+                UIContainers.ForEach(container => container.SetLocalization(localization.Language));
+                localizator.Change(localization.Language);
+                SetLocalizationProperty(localization);
+            });
+            task.Wait();
+        }
+
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
         private void OnTextedElementErrorOccurred(uint id, string target, string message)
@@ -102,5 +138,7 @@ namespace SophiApp.ViewModels
             logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ID, $"{id}");
             logger.AddDateTimeValueString(LogType.TEXTED_ELEMENT_STATE_CHANGED, $"{state}");
         }
+
+        private void SetLocalizationProperty(Localization localization) => Localization = localization;
     }
 }

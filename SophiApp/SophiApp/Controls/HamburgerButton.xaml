@@ -70,7 +70,7 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" SourceName="GridContent" Value="True">
-                    <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Hamburger.Hover}" />
+                    <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}" />
                 </Trigger>
                 <Trigger Property="IsMouseOver" SourceName="GridContent" Value="False">
                     <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Window.Background}" />

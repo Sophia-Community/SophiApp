@@ -3,4 +3,5 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Localization.Privacy">Privacy</system:String>
+    <system:String x:Key="Localization.Settings">Settings</system:String>
 </ResourceDictionary>
