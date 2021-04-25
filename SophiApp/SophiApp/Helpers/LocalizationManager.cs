@@ -8,7 +8,7 @@ using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.Helpers
 {
-    internal class Localizer
+    internal class LocalizationManager
     {
         private const string EN_NAME = "English";
         private const string EN_URI = "pack://application:,,,/Localizations/EN.xaml";
@@ -23,7 +23,7 @@ namespace SophiApp.Helpers
 
         internal Localization Selected;
 
-        public Localizer()
+        public LocalizationManager()
         {
             var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
             Selected = FindNameOrDefault(language);

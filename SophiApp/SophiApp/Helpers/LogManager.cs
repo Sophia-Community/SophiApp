@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace SophiApp.Helpers
 {
-    internal class Logger
+    internal class LogManager
     {
         private const string APPVERSION = "app_version";
         private const string COMPUTERNAME = "computer_name";
-        private const string OSVERSION = "os_version";        
+        private const string OSVERSION = "os_version";
         private const string USERDOMAIN = "user_domain";
         private const string USERNAME = "user_name";
         private List<string> logList = new List<string>();
 
-        public Logger()
+        public LogManager()
         {
             Initialize();
         }

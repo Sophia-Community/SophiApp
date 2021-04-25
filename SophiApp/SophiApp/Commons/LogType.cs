@@ -16,6 +16,8 @@
         INIT_VIEW, // Init view tag
         VISIBLE_VIEW_CHANGED, // The tag is currently active view
         INIT_THEME, // Init app theme
-        THEME_CHANGED // Currently selected theme
+        THEME_CHANGED, // Currently selected theme
+        VISIBLE_INFOPANEL, // Visible info panel: loading panel, applying panel, etc
+        HIDE_INFOPANEL, // All info panel is hide
     }
 }

@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+    <x:Static x:Key="Tags.Empty" Member="system:String.Empty" />
     <system:String x:Key="Tags.View.Privacy">Privacy</system:String>
     <system:String x:Key="Tags.View.Personalization">Personalization</system:String>
     <system:String x:Key="Tags.View.System">System</system:String>
@@ -12,4 +13,5 @@
     <system:String x:Key="Tags.View.Security">Security</system:String>
     <system:String x:Key="Tags.View.ContextMenu">ContextMenu</system:String>
     <system:String x:Key="Tags.View.Settings">Settings</system:String>
+    <system:String x:Key="Tags.InfoPanel.Loading">Loading</system:String>
 </ResourceDictionary>

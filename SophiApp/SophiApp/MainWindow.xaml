@@ -114,7 +114,8 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" Tag="{StaticResource Tags.View.Settings}" />
+                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" />
+                    <controls:LoadingPanel Grid.Row="1" />
                 </Grid>
             </Grid>
         </Grid>

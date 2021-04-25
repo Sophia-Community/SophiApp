@@ -73,6 +73,9 @@
     <Compile Include="Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LoadingPanel.xaml.cs">
+      <DependentUpon>LoadingPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
@@ -85,12 +88,13 @@
     <Compile Include="Controls\TitleWindow.xaml.cs">
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TagToHitTestVisible.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
     <Compile Include="Commons\Localization.cs" />
-    <Compile Include="Helpers\Localizer.cs" />
-    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\LocalizationManager.cs" />
+    <Compile Include="Helpers\LogManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
@@ -118,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoadingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
