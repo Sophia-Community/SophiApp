@@ -8,8 +8,7 @@ namespace SophiApp.Helpers
     {
         private const string APPVERSION = "app_version";
         private const string COMPUTERNAME = "computer_name";
-        private const string OSVERSION = "os_version";
-        private const string USERDNSDOMAIN = "userdnsdomain";
+        private const string OSVERSION = "os_version";        
         private const string USERDOMAIN = "user_domain";
         private const string USERNAME = "user_name";
         private List<string> logList = new List<string>();
@@ -25,13 +24,13 @@ namespace SophiApp.Helpers
             AddKeyValueString(OSVERSION, $"{Environment.OSVersion}");
             AddKeyValueString(COMPUTERNAME, Environment.MachineName);
             AddKeyValueString(USERNAME, Environment.UserName);
-            AddKeyValueString(USERDOMAIN, Environment.GetEnvironmentVariable(USERDNSDOMAIN));
+            AddKeyValueString(USERDOMAIN, Environment.UserDomainName);
             AddKeyValueString(LogType.APP_STARTUP_DIR, $"{AppData.StartupFolder}");
         }
 
         internal void AddDateTimeValueString(LogType logString) => logList.Add($"[{DateTime.Now}] {logString}");
 
-        internal void AddDateTimeValueString(LogType logString, string value) => logList.Add($"[{DateTime.Now}] {logString}:{value}");
+        internal void AddDateTimeValueString(LogType logString, string value) => logList.Add($"[{DateTime.Now}] {logString}:{value.ToUpper()}");
 
         internal void AddKeyValueString(LogType key, string value) => logList.Add($"{key}:{value.ToUpper()}");
 

@@ -10,37 +10,41 @@ namespace SophiApp.Helpers
 {
     internal class Localizer
     {
+        private const string EN_NAME = "English";
+        private const string EN_URI = "pack://application:,,,/Localizations/EN.xaml";
+        private const string RU_NAME = "Русский";
+        private const string RU_URI = "pack://application:,,,/Localizations/RU.xaml";
+
         private List<Localization> LocalizationsData = new List<Localization>()
         {
-            { new Localization() { Text = "English", Language = UILanguage.EN, Uri = new Uri("pack://application:,,,/Localizations/EN.xaml", UriKind.Absolute)} },
-            { new Localization() { Text = "Русский", Language = UILanguage.RU, Uri = new Uri("pack://application:,,,/Localizations/RU.xaml", UriKind.Absolute)} }
+            { new Localization() { Name = EN_NAME, Language = UILanguage.EN, Uri = new Uri(EN_URI, UriKind.Absolute)} },
+            { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} }
         };
 
-        internal Localization Current;
+        internal Localization Selected;
 
         public Localizer()
         {
             var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
-            Current = FindByNameOrDefault(language);
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Current.Uri });
+            Selected = FindNameOrDefault(language);
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Selected.Uri });
         }
 
-        private Localization FindByNameOrDefault(string name)
+        private Localization FindNameOrDefault(string name)
         {
             var parsedName = Enum.GetNames(typeof(UILanguage)).Contains(name) ? (UILanguage)Enum.Parse(typeof(UILanguage), name) : UILanguage.EN;
             return LocalizationsData.Find(l => l.Language == parsedName);
         }
 
-        internal void Change(UILanguage language)
+        internal void Change(Localization localization)
         {
-            var resDict = Application.Current.Resources.MergedDictionaries.Where(d => d.Source == Current.Uri).First();
-            var localization = LocalizationsData.Find(l => l.Language == language);
+            var resDict = Application.Current.Resources.MergedDictionaries.Where(d => d.Source == Selected.Uri).First();
             resDict.Source = localization.Uri;
-            Current = localization;
+            Selected = localization;
         }
 
-        internal Localization FindByText(string text) => LocalizationsData.Find(l => l.Text == text);
+        internal Localization FindName(string text) => LocalizationsData.Find(l => l.Name == text);
 
-        internal List<string> GetText() => LocalizationsData.Select(l => l.Text).ToList();
+        internal List<string> GetNames() => LocalizationsData.Select(l => l.Name).ToList();
     }
 }

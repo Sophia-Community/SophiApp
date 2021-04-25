@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace SophiApp.Helpers
 {
-    internal class AppData
+    public class AppData
     {
         public static string Name { get => "SophiApp"; }
 

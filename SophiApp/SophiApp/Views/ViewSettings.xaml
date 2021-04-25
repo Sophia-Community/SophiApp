@@ -63,11 +63,22 @@
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
                     <ScrollViewer x:Name="ScrollViewerContent" Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">
                         <StackPanel>
+                            <TextBlock Text="{DynamicResource Localization.Settings.Interface.Theme}"
+                                       Style="{StaticResource Style.TextBlock.SubHeader}" />
+
+                            <controls:DropDownList Source="{Binding AppThemeList}"
+                                                   SelectedText="{Binding AppTheme.Name}"
+                                                   Command="{Binding AppThemeChangeCommand}"
+                                                   Margin="0, 5, 0, 5" />
+
                             <TextBlock Text="{DynamicResource Localization.Settings.Interface.Language}"
                                        Style="{StaticResource Style.TextBlock.SubHeader}" />
+
                             <controls:DropDownList Source="{Binding LocalizationList}"
-                                                   SelectedText="{Binding Localization.Text}"
-                                                   Command="{Binding LocalizationChangeCommand}" />
+                                                   SelectedText="{Binding Localization.Name}"
+                                                   Command="{Binding LocalizationChangeCommand}"
+                                                   Margin="0, 5, 0, 5" />
+                            
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

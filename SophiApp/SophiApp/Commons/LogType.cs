@@ -15,5 +15,7 @@
         DONE_INIT_CONTAINERS_MODELS, // Texted containers collection init done
         INIT_VIEW, // Init view tag
         VISIBLE_VIEW_CHANGED, // The tag is currently active view
+        INIT_THEME, // Init app theme
+        THEME_CHANGED // Currently selected theme
     }
 }

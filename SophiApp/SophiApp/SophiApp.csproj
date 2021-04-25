@@ -63,6 +63,7 @@
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\LogType.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
+    <Compile Include="Commons\Theme.cs" />
     <Compile Include="Controls\DropDownList.xaml.cs">
       <DependentUpon>DropDownList.xaml</DependentUpon>
     </Compile>
@@ -94,6 +95,7 @@
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
+    <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Models\BaseContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\ExpandingList.cs" />
@@ -160,6 +162,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
