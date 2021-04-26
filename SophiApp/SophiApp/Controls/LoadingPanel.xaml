@@ -13,8 +13,7 @@
             <Setter Property="Width" Value="34" />
             <Setter Property="Height" Value="34" />
         </Style>
-        <Style TargetType="{x:Type Viewbox}">
-            <Setter Property="Grid.Column" Value="0" />
+        <Style TargetType="{x:Type Viewbox}">            
             <Setter Property="Width" Value="34" />
             <Setter Property="Height" Value="34" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -32,7 +31,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="Height" Value="52" />
             <Setter Property="Tag" Value="{StaticResource Tags.InfoPanel.Loading}" />
             <Setter Property="Visibility">
@@ -47,11 +46,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">                
                 <Viewbox x:Name="ViewboxCircle">
                     <Canvas>
                         <Path Data="M17 29.75C24.0416 29.75 29.75 24.0416 29.75 17C29.75 9.95837 24.0416 4.25 17 4.25C9.95837 4.25 4.25 9.95837 4.25 17C4.25 24.0416 9.95837 29.75 17 29.75ZM17 34C26.3888 34 34 26.3888 34 17C34 7.61116 26.3888 0 17 0C7.61116 0 0 7.61116 0 17C0 26.3888 7.61116 34 17 34Z" Fill="{DynamicResource Brush.Window.Foreground}" Opacity="0.20" />

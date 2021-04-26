@@ -7,12 +7,18 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Button.Wrapper">
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Width" Value="32" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>            
+        </Style>
+        <Style TargetType="{x:Type Viewbox}" x:Key="Style.Viewbox.Button.Wrapper">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="12"/>
+            <Setter Property="Height" Value="12"/>
+        </Style>
+        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Button.Wrapper">            
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />            
         </Style>
         <Style TargetType="{x:Type Popup}">
             <Setter Property="Placement" Value="Bottom" />
@@ -26,23 +32,18 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="CornerRadius" Value="1" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border.Light1}" />
-        </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Grid.Column" Value="1" />
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
-        </Style>
-        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SelectedText">
-            <Setter Property="Grid.Column" Value="0" />
+        </Style>        
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SelectedText">            
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Text" Value="{Binding Path=SelectedText, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Text" Value="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}" />            
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.ListBox.Item">
-            <Setter Property="Text" Value="{Binding}" />
-            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Text" Value="{Binding}" />            
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
         <Style TargetType="{x:Type ListBox}">
             <Setter Property="ItemsSource" Value="{Binding Path=Source, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -54,16 +55,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Grid x:Name="BorderContainer" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="32" />
-                            </Grid.ColumnDefinitions>
+                        <Grid x:Name="GridContainer" Background="{DynamicResource Brush.Window.Background}">                            
                             <TextBlock Style="{StaticResource Style.TextBlock.ListBox.Item}" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="BorderContainer" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}" />
+                                <Setter TargetName="GridContainer" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -87,23 +84,20 @@
     <UserControl.Template>
         <ControlTemplate>
             <Border x:Name="BorderContent">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="32" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}" />
+                <Grid>                    
                     <Button x:Name="ButtonOpenPopup" Click="ButtonOpenPopup_Click">
                         <Button.Template>
                             <ControlTemplate>
-                                <Grid Style="{StaticResource Style.Grid.Button.Wrapper}">
-                                    <Viewbox VerticalAlignment="Center" HorizontalAlignment="Center"
-                                             Width="12" Height="12">
-                                        <Canvas Width="12" Height="12">
-                                            <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
+                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}"/>
+                                    <Grid Width="32" Height="32" HorizontalAlignment="Right">
+                                        <Viewbox Style="{StaticResource Style.Viewbox.Button.Wrapper}">
+                                            <Canvas Width="12" Height="12">
+                                                <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Data="M6 8.09766L11.3613 2.73633L11.8887 3.26367L6 9.15234L0.111328 3.26367L0.638672 2.73633L6 8.09766Z" />
-                                        </Canvas>
-                                    </Viewbox>
+                                            </Canvas>
+                                        </Viewbox>
+                                    </Grid>
                                 </Grid>
                             </ControlTemplate>
                         </Button.Template>
@@ -111,14 +105,16 @@
                     <Button x:Name="ButtonClosePopup" Click="ButtonClosePopup_Click">
                         <Button.Template>
                             <ControlTemplate>
-                                <Grid Style="{StaticResource Style.Grid.Button.Wrapper}">
-                                    <Viewbox VerticalAlignment="Center" HorizontalAlignment="Center"
-                                             Width="12" Height="12">
-                                        <Canvas Width="12" Height="12">
-                                            <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
+                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}"/>
+                                    <Grid Width="32" Height="32" HorizontalAlignment="Right">
+                                        <Viewbox Style="{StaticResource Style.Viewbox.Button.Wrapper}">
+                                            <Canvas Width="12" Height="12">
+                                                <Path Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Data="M6 3.90234L11.3613 9.26367L11.8887 8.73633L6 2.84766L0.111328 8.73633L0.638672 9.26367L6 3.90234Z" />
-                                        </Canvas>
-                                    </Viewbox>
+                                            </Canvas>
+                                        </Viewbox>
+                                    </Grid>
                                 </Grid>
                             </ControlTemplate>
                         </Button.Template>

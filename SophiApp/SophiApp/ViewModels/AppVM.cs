@@ -4,7 +4,9 @@ using SophiApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Localization = SophiApp.Commons.Localization;
 
@@ -73,9 +75,10 @@ namespace SophiApp.ViewModels
             get => visibleInfoPanelByTag;
             set
             {
-                visibleInfoPanelByTag = value;
-                var logType = value != Tags.Empty ? LogType.VISIBLE_INFOPANEL : LogType.HIDE_INFOPANEL;
-                logManager.AddDateTimeValueString(logType, $"{value}");
+                var logType = value == Tags.Empty ? LogType.HIDE_INFOPANEL : LogType.VISIBLE_INFOPANEL;
+                var logValue = value == Tags.Empty ? visibleInfoPanelByTag : value;
+                visibleInfoPanelByTag = value;                
+                logManager.AddDateTimeValueString(logType, logValue);
                 OnPropertyChanged(VisibleInfoPanelByTagPropertyName);
             }
         }
@@ -91,17 +94,21 @@ namespace SophiApp.ViewModels
             }
         }
 
-        private void AppThemeChangeAsync(object args)
+        private async void AppThemeChangeAsync(object args)
         {
             SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
-            var task = Task.Run(() =>
-            {
-                var theme = themeManager.FindName(name: args as string);
-                themeManager.Change(theme);
-                SetAppThemeProperty(theme);
-            });
-            task.Wait();
+            await ChangeThemeAsync(args as string);
             SetVisibleInfoPanelByTagProperty(Tags.Empty);
+        }
+
+        private async Task ChangeThemeAsync(string themeName)
+        {
+            await Task.Run(() =>
+            {
+                var theme = themeManager.FindName(themeName);
+                themeManager.Change(theme);
+                SetAppThemeProperty(theme);                
+            });
         }
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
@@ -159,19 +166,23 @@ namespace SophiApp.ViewModels
             task.Wait();
         }
 
-        private void LocalizationChangeAsync(object args)
+        private async void LocalizationChangeAsync(object args)
         {
-            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
-            var task = Task.Run(() =>
-            {
-                var localization = localizationManager.FindName(text: args as string);
+            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);            
+            await ChangeLocalizationAsync(args as string);            
+            SetVisibleInfoPanelByTagProperty(Tags.Empty);
+        }
+
+        private async Task ChangeLocalizationAsync(string localizationName)
+        {
+            await Task.Run(() =>
+            {                
+                var localization = localizationManager.FindName(localizationName);
                 TextedElements.ForEach(element => element.SetLocalization(localization.Language));
                 UIContainers.ForEach(container => container.SetLocalization(localization.Language));
                 localizationManager.Change(localization);
-                SetLocalizationProperty(localization);
+                SetLocalizationProperty(localization);                             
             });
-            task.Wait();
-            SetVisibleInfoPanelByTagProperty(Tags.Empty);
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -192,7 +203,7 @@ namespace SophiApp.ViewModels
 
         private void SearchClicked(object obj)
         {
-            //TODO: Search command not Implemented
+            //TODO: Search not implemented
         }
 
         private void SetAppThemeProperty(Theme theme) => AppTheme = theme;
