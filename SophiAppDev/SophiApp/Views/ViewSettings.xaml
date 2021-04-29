@@ -61,6 +61,7 @@
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
                     <ScrollViewer x:Name="ScrollViewerContent" Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">
                         <StackPanel>
+                            <controls:FilledButton Text="TestText"/>
                             <!--<controls:ComboListBox ItemsSource="{Binding UIModels}" ItemsPropertyName="Id"/>
 
                             <TextBlock Text="Test" />-->

@@ -9,7 +9,7 @@
              MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
 
     <UserControl.Resources>
-        <converters:TagToHitTestVisible x:Key="TagToHitTestVisibleConverter"/>
+        <converters:TagToHitTestVisible x:Key="TagToHitTestVisibleConverter" />
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />

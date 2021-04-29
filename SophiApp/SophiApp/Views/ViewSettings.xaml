@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Views"
+             xmlns:helpers="clr-namespace:SophiApp.Helpers"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -28,14 +29,20 @@
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SubHeader">
             <Setter Property="FontSize" Value="22" />
-            <Setter Property="Margin" Value="0, 10, 0, 10" />
+            <Setter Property="FontWeight" Value="Regular" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.BasicText">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Regular" />
         </Style>
         <Style TargetType="{x:Type local:ViewSettings}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Settings}" />
             <Setter Property="IsHitTestVisible" Value="{Binding Path=VisibleInfoPanelByTag, Converter={StaticResource TagToHitTestVisibleConverter}, UpdateSourceTrigger=PropertyChanged}" />
@@ -54,34 +61,137 @@
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
-                    <ScrollViewer x:Name="ScrollViewerContent" Grid.Row="1" BorderBrush="{DynamicResource Brush.Window.Element.Border}">
+                    <ScrollViewer x:Name="ScrollViewerContent"
+                                  Grid.Row="1"
+                                  BorderBrush="{DynamicResource Brush.Window.Unaccent}"
+                                  IsTabStop="False"
+                                  Focusable="False">
+
                         <StackPanel>
-                            <TextBlock Text="{DynamicResource Localization.Settings.Interface.Theme}"
-                                       Style="{StaticResource Style.TextBlock.SubHeader}" />
+
+                            <TextBlock Text="{DynamicResource Localization.Settings.Themes}"
+                                       Style="{StaticResource Style.TextBlock.SubHeader}"
+                                       Margin="0, 10, 0, 0" />
 
                             <controls:DropDownList Source="{Binding AppThemeList}"
                                                    SelectedText="{Binding AppTheme.Name}"
                                                    Command="{Binding AppThemeChangeCommand}"
-                                                   Margin="0, 5, 0, 5" />
+                                                   Margin="0, 10, 0, 0"
+                                                   HorizontalAlignment="Left" />
 
-                            <TextBlock Text="{DynamicResource Localization.Settings.Interface.Language}"
-                                       Style="{StaticResource Style.TextBlock.SubHeader}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
+                                       Text="{DynamicResource Localization.Settings.Languages}"
+                                       Margin="0, 10, 0, 0" />
 
                             <controls:DropDownList Source="{Binding LocalizationList}"
                                                    SelectedText="{Binding Localization.Name}"
                                                    Command="{Binding LocalizationChangeCommand}"
-                                                   Margin="0, 5, 0, 5" />
+                                                   Margin="0, 10, 0, 0"
+                                                   HorizontalAlignment="Left" />
+
+                            <controls:HyperLink Text="{DynamicResource Localization.Settings.GitHub}"
+                                                Icon="{DynamicResource Icon.GitHub}"
+                                                Margin="0, 20, 0, 0"
+                                                Width="110"
+                                                HorizontalAlignment="Left"
+                                                Link="{x:Static helpers:AppDataManager.GitHubRepo}"
+                                                Command="{Binding HyperLinkClickedCommand}"
+                                                CommandParameter="{Binding Path=Link, RelativeSource={RelativeSource Self}}" />
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
+                                       Text="{DynamicResource Localization.Settings.Updates}"
+                                       Margin="0, 10, 0, 0" />
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock Style="{StaticResource Style.TextBlock.BasicText}"
+                                           Foreground="{DynamicResource Brush.Window.Unaccent}"
+                                           Text="{DynamicResource Localization.Settings.Version}" />
+
+                                <TextBlock Style="{StaticResource Style.TextBlock.BasicText}"
+                                           Foreground="{DynamicResource Brush.Window.Unaccent}"
+                                           Text=":" />
+
+                                <TextBlock Style="{StaticResource Style.TextBlock.BasicText}"
+                                           Foreground="{DynamicResource Brush.Window.Unaccent}"
+                                           Text="{Binding Source={x:Static helpers:AppDataManager.Version}}"
+                                           Margin="3, 0, 0, 0" />
+                            </StackPanel>
+
+                            <controls:FilledButton Text="{DynamicResource Localization.Settings.UpdateVersion}"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="0, 12, 0, 0"
+                                                   IsEnabled="{Binding UpdateAvailable}"
+                                                   Command="{Binding HyperLinkClickedCommand}"
+                                                   CommandParameter="{x:Static helpers:AppDataManager.GitHubReleasesPage}" />
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
+                                       Text="{DynamicResource Localization.Settings}"
+                                       Margin="0, 21, 0, 0" />
+
+                            <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
+                                <controls:IconButton Text="{DynamicResource Localization.Settings.Import}"
+                                                     Command="{Binding ImportSettingsCommand}"
+                                                     Margin="0, 0, 10, 0">
+                                    <controls:IconButton.Content>
+                                        <Viewbox Width="32" Height="32">
+                                            <Canvas Width="32" Height="32">
+                                                <Path Data="M0 0H30C31.1046 0 32 0.895431 32 2V30C32 31.1046 31.1046 32 30 32H0V0Z"
+                                                      Fill="{DynamicResource Brush.Window.Acсent.Normal}" />
+                                                <Path Data="M21.5922 13.1165H18.7961C18.6038 13.1165 18.4466 13.2737 18.4466 13.466C18.4466 13.6582 18.6038 13.8155 18.7961 13.8155H21.5922C22.1689 13.8155 22.6407 14.2873 22.6407 14.864V23.2524C22.6407 23.8291 22.1689 24.3009 21.5922 24.3009H10.4077C9.83103 24.3009 9.35919 23.8291 9.35919 23.2524V14.864C9.35919 14.2873 9.83103 13.8155 10.4077 13.8155H13.5534C13.7456 13.8155 13.9029 13.6582 13.9029 13.466C13.9029 13.2737 13.7456 13.1165 13.5534 13.1165H10.4077C9.44656 13.1165 8.66016 13.9029 8.66016 14.864V23.2524C8.66016 24.2135 9.44656 25 10.4077 25H21.5922C22.5534 25 23.3398 24.2135 23.3398 23.2524V14.864C23.3398 13.9029 22.5534 13.1165 21.5922 13.1165Z"
+                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
+                                                <Path Data="M16.0001 8.2233C16.1924 8.2233 16.3497 8.06602 16.3497 7.87379V7.34951C16.3497 7.15728 16.1924 7 16.0001 7C15.8079 7 15.6506 7.15728 15.6506 7.34951V7.87379C15.6506 8.06602 15.8079 8.2233 16.0001 8.2233Z"
+                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
+                                                <Path Data="M12.662 16.2446C12.5222 16.3844 12.5222 16.5941 12.662 16.7339L15.7552 19.8271C15.8251 19.897 15.9125 19.932 15.9998 19.932C16.0872 19.932 16.1746 19.897 16.2445 19.8271L19.3377 16.7339C19.4775 16.5941 19.4775 16.3844 19.3377 16.2446C19.1979 16.1048 18.9882 16.1048 18.8484 16.2446L16.3494 18.7437V9.44656C16.3494 9.25433 16.1921 9.09705 15.9998 9.09705C15.8076 9.09705 15.6503 9.25433 15.6503 9.44656V18.7437L13.1513 16.2446C13.0115 16.1048 12.8018 16.1048 12.662 16.2446Z"
+                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
+                                            </Canvas>
+                                        </Viewbox>
+                                    </controls:IconButton.Content>
+                                </controls:IconButton>
+
+                                <controls:IconButton Text="{DynamicResource Localization.Settings.Export}"
+                                                     Command="{Binding ExportSettingsCommand}">
+                                    <controls:IconButton.Content>
+                                        <Viewbox Width="32" Height="32">
+                                            <Canvas Width="32" Height="32">
+                                                <Path Data="M0 0H30C31.1046 0 32 0.895431 32 2V30C32 31.1046 31.1046 32 30 32H0V0Z"
+                                                      Fill="{DynamicResource Brush.Window.Acсent.Normal}" />
+                                                <Path Data="M21.5922 18.8835H18.7961C18.6038 18.8835 18.4466 18.7263 18.4466 18.534C18.4466 18.3418 18.6038 18.1845 18.7961 18.1845H21.5922C22.1689 18.1845 22.6407 17.7127 22.6407 17.136V8.74762C22.6407 8.17092 22.1689 7.69908 21.5922 7.69908H10.4077C9.83103 7.69908 9.35919 8.17092 9.35919 8.74762V17.136C9.35919 17.7127 9.83103 18.1845 10.4077 18.1845H13.5534C13.7456 18.1845 13.9029 18.3418 13.9029 18.534C13.9029 18.7263 13.7456 18.8835 13.5534 18.8835H10.4077C9.44656 18.8835 8.66016 18.0971 8.66016 17.136V8.74762C8.66016 7.78646 9.44656 7.00005 10.4077 7.00005H21.5922C22.5534 7.00005 23.3398 7.78646 23.3398 8.74762V17.136C23.3398 18.0971 22.5534 18.8835 21.5922 18.8835Z"
+                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
+                                                <Path Data="M16.0001 23.7767C16.1924 23.7767 16.3497 23.934 16.3497 24.1262V24.6505C16.3497 24.8427 16.1924 25 16.0001 25C15.8079 25 15.6506 24.8427 15.6506 24.6505V24.1262C15.6506 23.934 15.8079 23.7767 16.0001 23.7767Z"
+                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
+                                                <Path Data="M12.662 15.7554C12.5222 15.6156 12.5222 15.4059 12.662 15.2661L15.7552 12.1729C15.8251 12.103 15.9125 12.068 15.9998 12.068C16.0872 12.068 16.1746 12.103 16.2445 12.1729L19.3377 15.2661C19.4775 15.4059 19.4775 15.6156 19.3377 15.7554C19.1979 15.8952 18.9882 15.8952 18.8484 15.7554L16.3494 13.2563V22.5534C16.3494 22.7457 16.1921 22.903 15.9998 22.903C15.8076 22.903 15.6503 22.7457 15.6503 22.5534V13.2563L13.1513 15.7554C13.0115 15.8952 12.8018 15.8952 12.662 15.7554Z"
+                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
+                                            </Canvas>
+                                        </Viewbox>
+                                    </controls:IconButton.Content>
+                                </controls:IconButton>
+                            </StackPanel>
+
+                            <controls:Switch Header="{DynamicResource Localization.Settings.Advanced}"
+                                             FontSize="22"
+                                             Margin="0, 20, 0, 0"
+                                             Width="450"
+                                             HorizontalAlignment="Left"
+                                             IsChecked="{Binding AdvancedSettingsVisibility}"
+                                             Command="{Binding AdvancedSettingsClickedCommand}" />
+
+                            <controls:BigRedButton Text="{DynamicResource Localization.Settings.Reset}"
+                                                   Margin="0, 30, 0, 0"
+                                                   HorizontalAlignment="Left" />
                         </StackPanel>
                     </ScrollViewer>
+                    <controls:LoadingPanel x:Name="LoadingPanel" Grid.Row="3" />
                 </Grid>
             </Grid>
             <ControlTemplate.Triggers>
@@ -93,6 +203,14 @@
                 <Trigger Property="Visibility" Value="Collapsed">
                     <Setter Property="Margin" Value="{StaticResource Animation.Page.Margin}" />
                 </Trigger>
+                <MultiDataTrigger>
+                    <!--LoadingPanel visibility trigger-->
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Settings}" />
+                        <Condition Binding="{Binding VisibleInfoPanelByTag}" Value="{StaticResource Tags.InfoPanel.Loading}" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter TargetName="LoadingPanel" Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

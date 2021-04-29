@@ -8,17 +8,19 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>            
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
         </Style>
         <Style TargetType="{x:Type Viewbox}" x:Key="Style.Viewbox.Button.Wrapper">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="12"/>
-            <Setter Property="Height" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
         </Style>
-        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Button.Wrapper">            
+        <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Button.Wrapper">
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="HorizontalAlignment" Value="Stretch" />            
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
         <Style TargetType="{x:Type Popup}">
             <Setter Property="Placement" Value="Bottom" />
@@ -30,17 +32,16 @@
         </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="CornerRadius" Value="1" />
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border.Light1}" />
-        </Style>        
-        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SelectedText">            
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent.Light}" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SelectedText">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Text" Value="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}" />            
+            <Setter Property="Text" Value="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.ListBox.Item">
-            <Setter Property="Text" Value="{Binding}" />            
+            <Setter Property="Text" Value="{Binding}" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
@@ -55,7 +56,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Grid x:Name="GridContainer" Background="{DynamicResource Brush.Window.Background}">                            
+                        <Grid x:Name="GridContainer" Background="{DynamicResource Brush.Window.Background}">
                             <TextBlock Style="{StaticResource Style.TextBlock.ListBox.Item}" />
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -71,11 +72,12 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Width" Value="156" />
             <Setter Property="FontSize" Value="14" />
@@ -84,12 +86,12 @@
     <UserControl.Template>
         <ControlTemplate>
             <Border x:Name="BorderContent">
-                <Grid>                    
+                <Grid>
                     <Button x:Name="ButtonOpenPopup" Click="ButtonOpenPopup_Click">
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
-                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}"/>
+                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}" />
                                     <Grid Width="32" Height="32" HorizontalAlignment="Right">
                                         <Viewbox Style="{StaticResource Style.Viewbox.Button.Wrapper}">
                                             <Canvas Width="12" Height="12">
@@ -106,7 +108,7 @@
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
-                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}"/>
+                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}" />
                                     <Grid Width="32" Height="32" HorizontalAlignment="Right">
                                         <Viewbox Style="{StaticResource Style.Viewbox.Button.Wrapper}">
                                             <Canvas Width="12" Height="12">

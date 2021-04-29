@@ -1,12 +1,14 @@
-﻿using SophiApp.Commons;
+﻿using Microsoft.Win32;
+using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Threading;
+using System.Net;
 using System.Threading.Tasks;
 using Localization = SophiApp.Commons.Localization;
 
@@ -14,14 +16,18 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
+        private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
         private const string AppThemePropertyName = "AppTheme";
         private const string LocalizationPropertyName = "Localization";
+        private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string VisibleInfoPanelByTagPropertyName = "VisibleInfoPanelByTag";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
+        private bool advancedSettingsVisibility;
         private LocalizationManager localizationManager;
         private LogManager logManager;
         private IEnumerable<JsonDTO> parsedJson;
         private ThemeManager themeManager;
+        private bool updateAvailable;
         private string visibleInfoPanelByTag;
         private string visibleViewByTag;
 
@@ -29,13 +35,28 @@ namespace SophiApp.ViewModels
         {
             InitFields();
             InitCommands();
+            //TODO: Uncomment before release
+            //UpdateIsAvailability();
             InitTextedElementsAsync();
             InitUIContainersAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string AppName { get => AppData.Name; }
+        public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
+
+        public bool AdvancedSettingsVisibility
+        {
+            get => advancedSettingsVisibility;
+            set
+            {
+                advancedSettingsVisibility = value;
+                logManager.AddDateTimeValueString(LogType.ADVANCED_SETTINGS_IS_VISIBLE, $"{value}");
+                OnPropertyChanged(AdvancedSettingsVisibilityPropertyName);
+            }
+        }
+
+        public string AppName { get => AppDataManager.Name; }
 
         public Theme AppTheme
         {
@@ -48,9 +69,16 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand AppThemeChangeCommand { get; private set; }
+
         public List<string> AppThemeList => themeManager.GetNames();
 
+        public RelayCommand ExportSettingsCommand { get; private set; }
+
         public RelayCommand HamburgerClickedCommand { get; private set; }
+
+        public RelayCommand HyperLinkClickedCommand { get; private set; }
+
+        public RelayCommand ImportSettingsCommand { get; private set; }
 
         public Localization Localization
         {
@@ -65,10 +93,23 @@ namespace SophiApp.ViewModels
         public RelayCommand LocalizationChangeCommand { get; private set; }
 
         public List<string> LocalizationList => localizationManager.GetNames();
+
         public RelayCommand SearchClickedCommand { get; private set; }
+
         public List<BaseTextedElement> TextedElements { get; private set; }
 
         public List<BaseContainer> UIContainers { get; private set; }
+
+        public bool UpdateAvailable
+        {
+            get => updateAvailable;
+            set
+            {
+                updateAvailable = value;
+                logManager.AddDateTimeValueString(LogType.UPDATE_AVAILABLE_CHANGED, $"{value}");
+                OnPropertyChanged(UpdateAvailablePropertyName);
+            }
+        }
 
         public string VisibleInfoPanelByTag
         {
@@ -77,7 +118,7 @@ namespace SophiApp.ViewModels
             {
                 var logType = value == Tags.Empty ? LogType.HIDE_INFOPANEL : LogType.VISIBLE_INFOPANEL;
                 var logValue = value == Tags.Empty ? visibleInfoPanelByTag : value;
-                visibleInfoPanelByTag = value;                
+                visibleInfoPanelByTag = value;
                 logManager.AddDateTimeValueString(logType, logValue);
                 OnPropertyChanged(VisibleInfoPanelByTagPropertyName);
             }
@@ -94,11 +135,25 @@ namespace SophiApp.ViewModels
             }
         }
 
+        private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility = !AdvancedSettingsVisibility;
+
         private async void AppThemeChangeAsync(object args)
         {
             SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
             await ChangeThemeAsync(args as string);
             SetVisibleInfoPanelByTagProperty(Tags.Empty);
+        }
+
+        private async Task ChangeLocalizationAsync(string localizationName)
+        {
+            await Task.Run(() =>
+            {
+                var localization = localizationManager.FindName(localizationName);
+                TextedElements.ForEach(element => element.SetLocalization(localization.Language));
+                UIContainers.ForEach(container => container.SetLocalization(localization.Language));
+                localizationManager.Change(localization);
+                SetLocalizationProperty(localization);
+            });
         }
 
         private async Task ChangeThemeAsync(string themeName)
@@ -107,18 +162,47 @@ namespace SophiApp.ViewModels
             {
                 var theme = themeManager.FindName(themeName);
                 themeManager.Change(theme);
-                SetAppThemeProperty(theme);                
+                SetAppThemeProperty(theme);
             });
+        }
+
+        private void ExportSettings(object args)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = AppDataManager.StartupFolder;
+            openFileDialog.ShowDialog();
+            //SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
+            //TODO: Export Settings not implemented
+            //TODO: Allow export is ChangedElementsCounter > 0
         }
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
+        private void HyperLinkClicked(object args)
+        {
+            var link = args as string;
+            logManager.AddDateTimeValueString(LogType.HYPERLINK_OPEN, link);
+            Process.Start(link); //TODO: Process start 1
+        }
+
+        private void ImportSettings(object args)
+        {
+            //TODO: Import Settings not implemented
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = AppDataManager.StartupFolder;
+            openFileDialog.ShowDialog();
+        }
+
         private void InitCommands()
         {
+            AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
+            HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClicked));
+            ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettings));
+            ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettings));
         }
 
         private void InitFields()
@@ -128,6 +212,8 @@ namespace SophiApp.ViewModels
             themeManager = new ThemeManager();
             visibleViewByTag = Tags.ViewSettings; //TODO: Change to Privacy
             visibleInfoPanelByTag = string.Empty;
+            updateAvailable = false;
+            advancedSettingsVisibility = false;
             parsedJson = Parser.ParseJson(Properties.Resources.UIData);
 
             logManager.AddKeyValueString(LogType.INIT_APP_LOCALIZATION, $"{Localization.Language}");
@@ -166,23 +252,16 @@ namespace SophiApp.ViewModels
             task.Wait();
         }
 
-        private async void LocalizationChangeAsync(object args)
+        private bool IsNewVersion(Version currentVersion, string outsideVersion, bool outsidePrerelease, bool outsideDraft)
         {
-            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);            
-            await ChangeLocalizationAsync(args as string);            
-            SetVisibleInfoPanelByTagProperty(Tags.Empty);
+            return new Version(outsideVersion) > currentVersion && outsidePrerelease == false && outsideDraft == false;
         }
 
-        private async Task ChangeLocalizationAsync(string localizationName)
+        private async void LocalizationChangeAsync(object args)
         {
-            await Task.Run(() =>
-            {                
-                var localization = localizationManager.FindName(localizationName);
-                TextedElements.ForEach(element => element.SetLocalization(localization.Language));
-                UIContainers.ForEach(container => container.SetLocalization(localization.Language));
-                localizationManager.Change(localization);
-                SetLocalizationProperty(localization);                             
-            });
+            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
+            await ChangeLocalizationAsync(args as string);
+            SetVisibleInfoPanelByTagProperty(Tags.Empty);
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -210,8 +289,47 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
+        private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
+
         private void SetVisibleInfoPanelByTagProperty(string infoPanelTag) => VisibleInfoPanelByTag = infoPanelTag;
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
+
+        private void UpdateIsAvailability()
+        {
+            HttpWebRequest request = WebRequest.CreateHttp(AppDataManager.GitHubReleases);
+            request.UserAgent = AppDataManager.UserAgent;
+
+            try
+            {
+                var response = request.GetResponse();
+                logManager.AddDateTimeValueString(response is null ? LogType.UPDATE_RESPONSE_NULL : LogType.UPDATE_RESPONSE_OK);
+                using (Stream dataStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(dataStream);
+                    string responseFromServer = reader.ReadToEnd();
+                    logManager.AddDateTimeValueString(LogType.UPDATE_RESPONSE_LENGTH, $"{responseFromServer.Length}");
+                    var release = Parser.ParseJson(responseFromServer).First();
+                    logManager.AddDateTimeValueString(LogType.UPDATE_VERSION_FOUND, $"{release.Tag_Name}");
+                    logManager.AddDateTimeValueString(LogType.UPDATE_VERSION_IS_PRERELEASE, $"{release.Prerelease}");
+                    logManager.AddDateTimeValueString(LogType.UPDATE_VERSION_IS_DRAFT, $"{release.Draft}");
+                    var updateRequired = IsNewVersion(currentVersion: AppDataManager.Version, outsideVersion: release.Tag_Name,
+                                                             outsidePrerelease: release.Prerelease, outsideDraft: release.Draft);
+
+                    if (updateRequired)
+                    {
+                        logManager.AddDateTimeValueString(LogType.UPDATE_VERSION_REQUIRED);
+                        SetUpdateAvailableProperty(true);
+                        return;
+                    }
+
+                    logManager.AddDateTimeValueString(LogType.UPDATE_VERSION_NOT_REQUIRED);
+                }
+            }
+            catch (Exception e)
+            {
+                logManager.AddDateTimeValueString(LogType.UPDATE_HAS_ERROR, e.Message);
+            }
+        }
     }
 }

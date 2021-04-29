@@ -23,7 +23,7 @@
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Width" Value="2" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Tag.To.Visibility.Converter}">
@@ -51,8 +51,10 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Height" Value="45" />
             <Setter Property="TextMargin" Value="65, 0, 0, 0" />
             <Setter Property="IconMargin" Value="10, 0, 0, 7" />
@@ -63,8 +65,7 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid x:Name="GridContent" MouseLeftButtonDown="HamburgerButton_MouseLeftButtonDown">
-                <Border x:Name="BorderMarker" />
-                <!--Hamburger Button Marker Border-->
+                <Border x:Name="BorderMarker" /> <!--Hamburger Button Marker Border-->
                 <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
                 <TextBlock />
             </Grid>

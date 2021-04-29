@@ -60,12 +60,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Actions\CurrentStateAction.cs" />
+    <Compile Include="Commons\GitHubReleaseDTO.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\LogType.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Theme.cs" />
+    <Compile Include="Controls\BigRedButton.xaml.cs">
+      <DependentUpon>BigRedButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DropDownList.xaml.cs">
       <DependentUpon>DropDownList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FilledButton.xaml.cs">
+      <DependentUpon>FilledButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
@@ -73,11 +80,20 @@
     <Compile Include="Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\HyperLink.xaml.cs">
+      <DependentUpon>HyperLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IconButton.xaml.cs">
+      <DependentUpon>IconButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LoadingPanel.xaml.cs">
       <DependentUpon>LoadingPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Switch.xaml.cs">
+      <DependentUpon>Switch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TitleButtonClose.xaml.cs">
       <DependentUpon>TitleButtonClose.xaml</DependentUpon>
@@ -90,7 +106,7 @@
     </Compile>
     <Compile Include="Converters\TagToHitTestVisible.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
-    <Compile Include="Helpers\AppData.cs" />
+    <Compile Include="Helpers\AppDataManager.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
     <Compile Include="Commons\Localization.cs" />
     <Compile Include="Helpers\LocalizationManager.cs" />
@@ -113,7 +129,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\BigRedButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\DropDownList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FilledButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,6 +146,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HyperLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IconButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SearchBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Switch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

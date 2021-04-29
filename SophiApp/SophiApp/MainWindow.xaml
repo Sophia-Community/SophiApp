@@ -32,8 +32,11 @@
             <Setter Property="Width" Value="1024" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Title" Value="{Binding Path=(helpers:AppData.Name)}" />
+            <Setter Property="Title" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontStretch" Value="Normal" />
@@ -43,7 +46,7 @@
     <Window.Resources>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
             <Setter Property="CornerRadius" Value="0" />
         </Style>
     </Window.Resources>
@@ -83,7 +86,7 @@
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="Text" Value="{Binding Path=(helpers:AppData.Name)}" />
+                                        <Setter Property="Text" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                         <Setter Property="HorizontalAlignment" Value="Left" />
                                     </Style>
@@ -109,14 +112,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0" />
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" />
-                    <controls:LoadingPanel Grid.Row="1" />
-                </Grid>
+                <view:ViewSettings Grid.Column="1" Header="{DynamicResource Localization.Settings}" />
             </Grid>
         </Grid>
     </Border>
