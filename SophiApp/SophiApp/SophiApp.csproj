@@ -68,6 +68,9 @@
     <Compile Include="Controls\BigRedButton.xaml.cs">
       <DependentUpon>BigRedButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DesignerHyperLink.xaml.cs">
+      <DependentUpon>DesignerHyperLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DropDownList.xaml.cs">
       <DependentUpon>DropDownList.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,7 @@
     <Compile Include="Helpers\AppDataManager.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
     <Compile Include="Commons\Localization.cs" />
+    <Compile Include="Helpers\FileManager.cs" />
     <Compile Include="Helpers\LocalizationManager.cs" />
     <Compile Include="Helpers\LogManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
@@ -130,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\BigRedButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DesignerHyperLink.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -137,7 +137,7 @@
 
                             <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
                                        Text="{DynamicResource Localization.Settings}"
-                                       Margin="0, 21, 0, 0" />
+                                       Margin="0, 20, 0, 0" />
 
                             <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
                                 <controls:IconButton Text="{DynamicResource Localization.Settings.Import}"
@@ -189,6 +189,20 @@
                             <controls:BigRedButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="0, 30, 0, 0"
                                                    HorizontalAlignment="Left" />
+
+                            <controls:DesignerHyperLink Margin="0, 20, 0, 0"
+                                                        HorizontalAlignment="Left"
+                                                        Command="{Binding HyperLinkClickedCommand}"
+                                                        CommandParameter="{x:Static helpers:AppDataManager.DesignerHomePage}" />
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
+                                       Text="{DynamicResource Localization.Settings.Debug}"
+                                       Margin="0, 20, 0, 0" />
+
+                            <controls:FilledButton Text="{DynamicResource Localization.Settings.Debug.Save}"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="0, 12, 0, 0"
+                                                   Command="{Binding SaveDebugLogCommand}" />
                         </StackPanel>
                     </ScrollViewer>
                     <controls:LoadingPanel x:Name="LoadingPanel" Grid.Row="3" />

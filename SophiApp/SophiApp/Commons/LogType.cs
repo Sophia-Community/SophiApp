@@ -17,8 +17,6 @@
         VISIBLE_VIEW_CHANGED, // The tag is currently active view
         INIT_THEME, // Init app theme
         THEME_CHANGED, // Currently selected theme
-        VISIBLE_INFOPANEL, // Visible info panel: loading panel, applying panel, etc
-        HIDE_INFOPANEL, // All info panel is hide
         HYPERLINK_OPEN, // Hyperlink is clicked
         UPDATE_HAS_ERROR, // Checking for an update caused an error
         UPDATE_RESPONSE_NULL, // GitHub release server not responding
@@ -31,5 +29,7 @@
         UPDATE_VERSION_NOT_REQUIRED, // Not need update
         UPDATE_AVAILABLE_CHANGED, // Is update property changed
         ADVANCED_SETTINGS_IS_VISIBLE, // Changing the visibility of advanced settings
+        DEBUG_SAVE_OK, // Debug log saved successfully
+        DEBUG_SAVE_HAS_ERROR, // An error occurred while saving the debug log
     }
 }

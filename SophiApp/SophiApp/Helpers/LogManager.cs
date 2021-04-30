@@ -36,5 +36,9 @@ namespace SophiApp.Helpers
         internal void AddKeyValueString(LogType key, string value) => logList.Add($"{key}:{value.ToUpper()}");
 
         internal void AddKeyValueString(string key, string value) => logList.Add($"{key.ToUpper()}:{value.ToUpper()}");
+
+        internal void AddSeparator() => logList.Add(string.Empty);
+
+        internal List<string> GetLog() => logList;
     }
 }

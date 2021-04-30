@@ -37,8 +37,8 @@ namespace SophiApp.ViewModels
             InitCommands();
             //TODO: Uncomment before release
             //UpdateIsAvailability();
-            InitTextedElementsAsync();
-            InitUIContainersAsync();
+            InitTextedElements();
+            InitUIContainers();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -69,15 +69,10 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand AppThemeChangeCommand { get; private set; }
-
         public List<string> AppThemeList => themeManager.GetNames();
-
         public RelayCommand ExportSettingsCommand { get; private set; }
-
         public RelayCommand HamburgerClickedCommand { get; private set; }
-
         public RelayCommand HyperLinkClickedCommand { get; private set; }
-
         public RelayCommand ImportSettingsCommand { get; private set; }
 
         public Localization Localization
@@ -91,9 +86,8 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand LocalizationChangeCommand { get; private set; }
-
         public List<string> LocalizationList => localizationManager.GetNames();
-
+        public RelayCommand SaveDebugLogCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
 
         public List<BaseTextedElement> TextedElements { get; private set; }
@@ -116,10 +110,7 @@ namespace SophiApp.ViewModels
             get => visibleInfoPanelByTag;
             set
             {
-                var logType = value == Tags.Empty ? LogType.HIDE_INFOPANEL : LogType.VISIBLE_INFOPANEL;
-                var logValue = value == Tags.Empty ? visibleInfoPanelByTag : value;
                 visibleInfoPanelByTag = value;
-                logManager.AddDateTimeValueString(logType, logValue);
                 OnPropertyChanged(VisibleInfoPanelByTagPropertyName);
             }
         }
@@ -182,7 +173,7 @@ namespace SophiApp.ViewModels
         {
             var link = args as string;
             logManager.AddDateTimeValueString(LogType.HYPERLINK_OPEN, link);
-            Process.Start(link); //TODO: Process start 1
+            Process.Start(link);
         }
 
         private void ImportSettings(object args)
@@ -199,10 +190,11 @@ namespace SophiApp.ViewModels
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
-            SearchClickedCommand = new RelayCommand(new Action<object>(SearchClicked));
+            SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
             HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClicked));
             ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettings));
             ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettings));
+            SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
         }
 
         private void InitFields()
@@ -219,37 +211,32 @@ namespace SophiApp.ViewModels
             logManager.AddKeyValueString(LogType.INIT_APP_LOCALIZATION, $"{Localization.Language}");
             logManager.AddKeyValueString(LogType.INIT_THEME, $"{AppTheme.Alias}");
             logManager.AddKeyValueString(LogType.INIT_VIEW, $"{VisibleViewByTag}");
+            logManager.AddSeparator();
         }
 
-        private void InitTextedElementsAsync()
+        private void InitTextedElements()
         {
-            var task = Task.Run(() =>
+            logManager.AddDateTimeValueString(LogType.INIT_TEXTED_ELEMENT_MODELS);
+            TextedElements = parsedJson.Where(dto => dto.Type == UIType.TextedElement).Select(dto => AppFabric.CreateTextElementModel(dto)).ToList();
+            TextedElements.ForEach(element =>
             {
-                logManager.AddDateTimeValueString(LogType.INIT_TEXTED_ELEMENT_MODELS);
-                TextedElements = parsedJson.Where(dto => dto.Type == UIType.TextedElement).Select(dto => AppFabric.CreateTextElementModel(dto)).ToList();
-                TextedElements.ForEach(element =>
-                {
-                    element.StateChanged += OnTextedElementStateChanged;
-                    element.ErrorOccurred += OnTextedElementErrorOccurred;
+                element.StateChanged += OnTextedElementStateChanged;
+                element.ErrorOccurred += OnTextedElementErrorOccurred;
 
-                    element.SetLocalization(Localization.Language);
-                    element.CurrentStateActionInvoke();
-                });
-                logManager.AddDateTimeValueString(LogType.DONE_INIT_TEXTED_ELEMENT_MODELS);
+                element.SetLocalization(Localization.Language);
+                element.CurrentStateActionInvoke();
             });
-            task.Wait();
+            logManager.AddDateTimeValueString(LogType.DONE_INIT_TEXTED_ELEMENT_MODELS);
+            logManager.AddSeparator();
         }
 
-        private void InitUIContainersAsync()
+        private void InitUIContainers()
         {
-            var task = Task.Run(() =>
-            {
-                logManager.AddDateTimeValueString(LogType.INIT_CONTAINERS_MODELS);
-                UIContainers = parsedJson.Where(dto => dto.Type == UIType.Container).Select(dto => AppFabric.CreateContainerModel(dto)).ToList();
-                UIContainers.ForEach(container => container.SetLocalization(Localization.Language));
-                logManager.AddDateTimeValueString(LogType.DONE_INIT_CONTAINERS_MODELS);
-            });
-            task.Wait();
+            logManager.AddDateTimeValueString(LogType.INIT_CONTAINERS_MODELS);
+            UIContainers = parsedJson.Where(dto => dto.Type == UIType.Container).Select(dto => AppFabric.CreateContainerModel(dto)).ToList();
+            UIContainers.ForEach(container => container.SetLocalization(Localization.Language));
+            logManager.AddDateTimeValueString(LogType.DONE_INIT_CONTAINERS_MODELS);
+            logManager.AddSeparator();
         }
 
         private bool IsNewVersion(Version currentVersion, string outsideVersion, bool outsidePrerelease, bool outsideDraft)
@@ -280,7 +267,17 @@ namespace SophiApp.ViewModels
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_STATE_CHANGED, $"{state}");
         }
 
-        private void SearchClicked(object obj)
+        private async void SaveDebugLogAsync(object args)
+        {
+            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
+            var isSaved = await SaveDebugLogAsync();
+            logManager.AddDateTimeValueString(isSaved ? LogType.DEBUG_SAVE_OK : LogType.DEBUG_SAVE_HAS_ERROR);
+            SetVisibleInfoPanelByTagProperty(Tags.Empty);
+        }
+
+        private async Task<bool> SaveDebugLogAsync() => await Task<bool>.Run(() => FileManager.Save(logManager.GetLog(), AppDataManager.DebugLogPath));
+
+        private void SearchClickedAsync(object obj)
         {
             //TODO: Search not implemented
         }
