@@ -19,7 +19,37 @@
             "EN": "The OS level of diagnostic data gathering",
             "RU": "Уровень сбора диагностических сведений ОС"
         },
-        "Model": "RadioButtonsList",
+        "Model": "RadioButtonGroup",
         "Type": "1"
+    },
+    {
+        "Id": 102,
+        "ContainerId": 101,
+        "Headers": {
+            "EN": "Minimal",
+            "RU": "Минимальный"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "RadioButton",
+        "Type": "0",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 103,
+        "ContainerId": 101,
+        "Headers": {
+            "EN": "Default",
+            "RU": "По умолчанию"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "RadioButton",
+        "Type": "0",
+        "Tag": "Privacy"
     }
 ]

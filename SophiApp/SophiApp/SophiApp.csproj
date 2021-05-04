@@ -65,11 +65,11 @@
     <Compile Include="Commons\LogType.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Theme.cs" />
+    <Compile Include="Controls\ActorHyperLink.xaml.cs">
+      <DependentUpon>ActorHyperLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BigRedButton.xaml.cs">
       <DependentUpon>BigRedButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DesignerHyperLink.xaml.cs">
-      <DependentUpon>DesignerHyperLink.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\DropDownList.xaml.cs">
       <DependentUpon>DropDownList.xaml</DependentUpon>
@@ -92,6 +92,9 @@
     <Compile Include="Controls\LoadingPanel.xaml.cs">
       <DependentUpon>LoadingPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RadioButtonGroup.xaml.cs">
+      <DependentUpon>RadioButtonGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,7 @@
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\TagToHitTestVisible.cs" />
+    <Compile Include="Converters\TagToSourceId.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppDataManager.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
@@ -123,9 +127,13 @@
     <Compile Include="Models\BaseContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\ExpandingList.cs" />
-    <Compile Include="Models\RadioButtonsList.cs" />
+    <Compile Include="Models\RadioButton.cs" />
+    <Compile Include="Models\RadioButtonGroup.cs" />
     <Compile Include="Models\Switch.cs" />
     <Compile Include="ViewModels\AppVM.cs" />
+    <Compile Include="Views\ViewPrivacy.xaml.cs">
+      <DependentUpon>ViewPrivacy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewSettings.xaml.cs">
       <DependentUpon>ViewSettings.xaml</DependentUpon>
     </Compile>
@@ -133,11 +141,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\BigRedButton.xaml">
+    <Page Include="Controls\ActorHyperLink.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\DesignerHyperLink.xaml">
+    <Page Include="Controls\BigRedButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\LoadingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RadioButtonGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -219,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewPrivacy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

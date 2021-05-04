@@ -56,8 +56,6 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public string AppName { get => AppDataManager.Name; }
-
         public Theme AppTheme
         {
             get => themeManager.Selected;
@@ -89,6 +87,8 @@ namespace SophiApp.ViewModels
         public List<string> LocalizationList => localizationManager.GetNames();
         public RelayCommand SaveDebugLogCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
+
+        public RelayCommand TextedElementClickedCommand { get; private set; }
 
         public List<BaseTextedElement> TextedElements { get; private set; }
 
@@ -195,6 +195,7 @@ namespace SophiApp.ViewModels
             ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettings));
             ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettings));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
+            TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
         }
 
         private void InitFields()
@@ -202,7 +203,7 @@ namespace SophiApp.ViewModels
             logManager = new LogManager();
             localizationManager = new LocalizationManager();
             themeManager = new ThemeManager();
-            visibleViewByTag = Tags.ViewSettings; //TODO: Change to Privacy
+            visibleViewByTag = Tags.ViewPrivacy;
             visibleInfoPanelByTag = string.Empty;
             updateAvailable = false;
             advancedSettingsVisibility = false;
@@ -234,7 +235,11 @@ namespace SophiApp.ViewModels
         {
             logManager.AddDateTimeValueString(LogType.INIT_CONTAINERS_MODELS);
             UIContainers = parsedJson.Where(dto => dto.Type == UIType.Container).Select(dto => AppFabric.CreateContainerModel(dto)).ToList();
-            UIContainers.ForEach(container => container.SetLocalization(Localization.Language));
+            UIContainers.ForEach(container =>
+            {
+                container.SetLocalization(Localization.Language);
+                logManager.AddDateTimeValueString(LogType.CONTAINERS_ELEMENT_ID, $"{container.Id}");
+            });
             logManager.AddDateTimeValueString(LogType.DONE_INIT_CONTAINERS_MODELS);
             logManager.AddSeparator();
         }
@@ -291,6 +296,17 @@ namespace SophiApp.ViewModels
         private void SetVisibleInfoPanelByTagProperty(string infoPanelTag) => VisibleInfoPanelByTag = infoPanelTag;
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
+
+        private async void TextedElementClickedAsync(object args) => await TextedElementClickedAsync(id: Convert.ToUInt32(args));
+
+        private async Task TextedElementClickedAsync(uint id)
+        {
+            await Task.Run(() =>
+            {
+                var element = TextedElements.Where(e => e.Id == id).First();
+                element.ChangeState();
+            });
+        }
 
         private void UpdateIsAvailability()
         {

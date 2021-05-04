@@ -12,6 +12,7 @@
         TEXTED_ELEMENT_ERROR_TARGET, // The ID of the method that caused the error in the texted element
         TEXTED_ELEMENT_ERROR_MESSAGE, // The message of the method that caused the error in the texted element
         INIT_CONTAINERS_MODELS, // Init containers model collection
+        CONTAINERS_ELEMENT_ID, // Containers element id
         DONE_INIT_CONTAINERS_MODELS, // Texted containers collection init done
         INIT_VIEW, // Init view tag
         VISIBLE_VIEW_CHANGED, // The tag is currently active view

@@ -112,7 +112,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0" />
-                <view:ViewSettings Grid.Column="1" Header="{DynamicResource Localization.Settings}" />
+                <view:ViewPrivacy Grid.Column="1" />
+                <view:ViewSettings Grid.Column="1" />
             </Grid>
         </Grid>
     </Border>

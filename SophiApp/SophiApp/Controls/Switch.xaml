@@ -61,6 +61,11 @@
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Id" Value="{Binding Id}" />
+            <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
