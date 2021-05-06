@@ -47,38 +47,21 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
             <Setter Property="FontWeight" Value="Regular" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Border>
-                <Grid>
-                    <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="38" />
-                    </Grid.ColumnDefinitions>-->
+                <Grid>                    
                     <TextBox x:Name="TextBoxSearch">
                         <TextBox.InputBindings>
                             <KeyBinding Command="{Binding SearchClickedCommand}"
                                         CommandParameter="{Binding Path=Text, ElementName=TextBoxSearch}"
                                         Key="Return" />
                         </TextBox.InputBindings>
-                    </TextBox>
-                    <!--<Grid Grid.Column="1" Background="{DynamicResource Brush.Window.Background}">
-                        <Grid.InputBindings>
-                            <MouseBinding Command="{Binding SearchClickedCommand}"
-                                          CommandParameter="{Binding Path=Text, ElementName=TextBoxSearch}"
-                                          MouseAction="LeftClick" />
-                        </Grid.InputBindings>
-                        <Viewbox x:Name="ViewboxSearch">
-                            <Canvas>
-                                <Path x:Name="PathSearch" Data="M0.139709 15.184L4.02796 11.2958C2.98494 10.0967 2.35346 8.53215 2.35346 6.82217C2.35346 3.05809 5.4151 0 9.17563 0C12.9397 0 15.9978 3.06164 15.9978 6.82217C15.9978 10.5827 12.9362 13.6443 9.17563 13.6443C7.46565 13.6443 5.90113 13.0129 4.70201 11.9698L0.813767 15.8581C0.721528 15.9503 0.59736 16 0.476739 16C0.356117 16 0.231949 15.9539 0.139709 15.8581C-0.0447693 15.6736 -0.0447693 15.3685 0.139709 15.184ZM15.0435 6.82217C15.0435 3.5867 12.4111 0.957871 9.17918 0.957871C5.9437 0.957871 3.31488 3.59024 3.31488 6.82217C3.31488 10.0541 5.9437 12.69 9.17918 12.69C12.4111 12.69 15.0435 10.0576 15.0435 6.82217Z"
-                                      Fill="{Binding Path=Foreground, ElementName=TextBoxSearch}" />
-                            </Canvas>
-                        </Viewbox>
-                    </Grid>-->
+                    </TextBox>                    
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>

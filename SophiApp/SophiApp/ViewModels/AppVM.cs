@@ -16,6 +16,8 @@ namespace SophiApp.ViewModels
 {
     internal class AppVM : INotifyPropertyChanged
     {
+        //TODO: Check all controls IsEnabled property!
+
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
         private const string AppThemePropertyName = "AppTheme";
         private const string LocalizationPropertyName = "Localization";
@@ -68,6 +70,7 @@ namespace SophiApp.ViewModels
 
         public RelayCommand AppThemeChangeCommand { get; private set; }
         public List<string> AppThemeList => themeManager.GetNames();
+        public RelayCommand ContainerElementClickedCommand { get; private set; }
         public RelayCommand ExportSettingsCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
         public RelayCommand HyperLinkClickedCommand { get; private set; }
@@ -157,6 +160,19 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private async void ContainerElementClickedAsync(object args) => await ContainerElementClickedAsync(id: Convert.ToUInt32(args));
+
+        private async Task ContainerElementClickedAsync(uint id)
+        {
+            await Task.Run(() =>
+            {
+                var containerId = TextedElements.Where(element => element.Id == id).First().ContainerId;
+                TextedElements.Where(element => element.ContainerId == containerId)
+                              .ToList()
+                              .ForEach(element => element.State = element.Id == id ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
+            });
+        }
+
         private void ExportSettings(object args)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -188,6 +204,7 @@ namespace SophiApp.ViewModels
         {
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
+            ContainerElementClickedCommand = new RelayCommand(new Action<object>(ContainerElementClickedAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
@@ -237,6 +254,7 @@ namespace SophiApp.ViewModels
             UIContainers = parsedJson.Where(dto => dto.Type == UIType.Container).Select(dto => AppFabric.CreateContainerModel(dto)).ToList();
             UIContainers.ForEach(container =>
             {
+                container.Collection = TextedElements.Where(element => element.ContainerId == container.Id).ToList();
                 container.SetLocalization(Localization.Language);
                 logManager.AddDateTimeValueString(LogType.CONTAINERS_ELEMENT_ID, $"{container.Id}");
             });
@@ -260,10 +278,21 @@ namespace SophiApp.ViewModels
 
         private void OnTextedElementErrorOccurred(uint id, string target, string message)
         {
-            //TODO: Implement error handling in the element
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ID, $"{id}");
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_TARGET, target);
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_MESSAGE, message);
+            logManager.AddSeparator();
+
+            var containerId = TextedElements.Where(element => element.Id == id).First().ContainerId;
+
+            if (containerId > 0)
+            {
+                TextedElements.Where(element => element.ContainerId == containerId).ToList().ForEach(element => element.State = UIElementState.DISABLED);
+            }
+            else
+            {
+                TextedElements.Where(element => element.Id == id).First().State = UIElementState.DISABLED;
+            }
         }
 
         private void OnTextedElementStateChanged(uint id, UIElementState state)
@@ -299,14 +328,7 @@ namespace SophiApp.ViewModels
 
         private async void TextedElementClickedAsync(object args) => await TextedElementClickedAsync(id: Convert.ToUInt32(args));
 
-        private async Task TextedElementClickedAsync(uint id)
-        {
-            await Task.Run(() =>
-            {
-                var element = TextedElements.Where(e => e.Id == id).First();
-                element.ChangeState();
-            });
-        }
+        private async Task TextedElementClickedAsync(uint id) => await Task.Run(() => TextedElements.Where(e => e.Id == id).First().ChangeState());
 
         private void UpdateIsAvailability()
         {

@@ -46,7 +46,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Background" Value="{StaticResource Brush.Window.Acсent.Hight}" />

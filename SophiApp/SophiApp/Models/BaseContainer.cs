@@ -14,11 +14,13 @@ namespace SophiApp.Models
             Id = json.Id;
             Headers = json.Headers;
             Model = json.Model;
+            Tag = json.Tag;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Dictionary<UILanguage, string> Headers { get; set; }
+        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
 
         public string Header
         {
@@ -33,6 +35,8 @@ namespace SophiApp.Models
         public uint Id { get; set; }
 
         public string Model { get; set; }
+
+        public string Tag { get; set; }
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 

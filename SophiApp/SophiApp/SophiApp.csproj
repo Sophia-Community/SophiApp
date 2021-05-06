@@ -92,6 +92,9 @@
     <Compile Include="Controls\LoadingPanel.xaml.cs">
       <DependentUpon>LoadingPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RadioButton.xaml.cs">
+      <DependentUpon>RadioButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RadioButtonGroup.xaml.cs">
       <DependentUpon>RadioButtonGroup.xaml</DependentUpon>
     </Compile>
@@ -111,7 +114,6 @@
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\TagToHitTestVisible.cs" />
-    <Compile Include="Converters\TagToSourceId.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppDataManager.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
@@ -174,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\LoadingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,7 +269,7 @@
     </EmbeddedResource>
     <None Include="app.manifest" />
     <Resource Include="Resources\UIData.json" />
-    <Resource Include="Fonts\Segoe UI.ttf" />
+    <Resource Include="Fonts\SegoeUI.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

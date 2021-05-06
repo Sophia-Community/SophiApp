@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.Models;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SophiApp.Views
@@ -16,6 +17,10 @@ namespace SophiApp.Views
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
 
+        // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
+        public static new readonly DependencyProperty TagProperty =
+            DependencyProperty.Register("Tag", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+
         public ViewPrivacy()
         {
             InitializeComponent();
@@ -31,6 +36,24 @@ namespace SophiApp.Views
         {
             get { return (string)GetValue(HeaderProperty); }
             set { SetValue(HeaderProperty, value); }
+        }
+
+        public new string Tag
+        {
+            get { return (string)GetValue(TagProperty); }
+            set { SetValue(TagProperty, value); }
+        }
+
+        private void TextedElementsCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var element = e.Item as BaseTextedElement;
+            e.Accepted = element.ContainerId == 0 && element.Tag == Tag;
+        }
+
+        private void UIContainersCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var container = e.Item as BaseContainer;
+            e.Accepted = container.Tag == Tag;
         }
     }
 }

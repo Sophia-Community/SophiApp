@@ -1,13 +1,12 @@
 ﻿<Window x:Class="SophiApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:controls="clr-namespace:SophiApp.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SophiApp.Controls"
+        xmlns:helpers="clr-namespace:SophiApp.Helpers"
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
         xmlns:view="clr-namespace:SophiApp.Views"
-        xmlns:helpers="clr-namespace:SophiApp.Helpers"
-        xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         TextOptions.TextFormattingMode="Display"
@@ -33,14 +32,6 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Title" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontStretch" Value="Normal" />
-            <Setter Property="FontStyle" Value="Normal" />
         </Style>
     </Window.Style>
     <Window.Resources>
@@ -85,6 +76,11 @@
                             <TextBlock>
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+                                        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+                                        <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+                                        <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+                                        <Setter Property="FontWeight" Value="Regular" />
                                         <Setter Property="FontSize" Value="14" />
                                         <Setter Property="Text" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
                                         <Setter Property="VerticalAlignment" Value="Center" />

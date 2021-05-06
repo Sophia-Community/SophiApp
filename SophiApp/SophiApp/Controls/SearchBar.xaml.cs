@@ -13,7 +13,7 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
-        //TODO: Remove comments in XAML
+        //TODO: Set all TextBlock new property !
         private void SearchBar_MouseLeave(object sender, MouseEventArgs e) => Keyboard.ClearFocus();
     }
 }

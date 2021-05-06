@@ -20,6 +20,7 @@
             "RU": "Уровень сбора диагностических сведений ОС"
         },
         "Model": "RadioButtonGroup",
+        "Tag": "Privacy",
         "Type": "1"
     },
     {
