@@ -35,6 +35,25 @@
         </Style>
     </Window.Style>
     <Window.Resources>
+        <Style x:Key="Style.TextBlock.Title" TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style TargetType="{x:Type Ellipse}">
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
+        </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
@@ -61,33 +80,9 @@
                 <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
                     <controls:TitleWindow.Content>
                         <StackPanel Orientation="Horizontal">
-                            <Ellipse>
-                                <Ellipse.Style>
-                                    <Style TargetType="{x:Type Ellipse}">
-                                        <Setter Property="Width" Value="12" />
-                                        <Setter Property="Height" Value="12" />
-                                        <Setter Property="VerticalAlignment" Value="Center" />
-                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                        <Setter Property="Margin" Value="10, 0, 10, 0" />
-                                        <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <TextBlock>
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-                                        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-                                        <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-                                        <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
-                                        <Setter Property="FontWeight" Value="Regular" />
-                                        <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="Text" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
-                                        <Setter Property="VerticalAlignment" Value="Center" />
-                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
+                            <Ellipse />
+                            <TextBlock Text="{Binding Path=(helpers:AppDataManager.Name)}"
+                                       Style="{StaticResource Style.TextBlock.Title}" />
                         </StackPanel>
                     </controls:TitleWindow.Content>
                 </controls:TitleWindow>

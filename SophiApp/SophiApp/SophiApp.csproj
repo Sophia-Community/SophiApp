@@ -71,8 +71,14 @@
     <Compile Include="Controls\BigRedButton.xaml.cs">
       <DependentUpon>BigRedButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CheckBox.xaml.cs">
+      <DependentUpon>CheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DropDownList.xaml.cs">
       <DependentUpon>DropDownList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpandingGroup.xaml.cs">
+      <DependentUpon>ExpandingGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FilledButton.xaml.cs">
       <DependentUpon>FilledButton.xaml</DependentUpon>
@@ -101,6 +107,9 @@
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SimpleSwitch.xaml.cs">
+      <DependentUpon>SimpleSwitch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
     </Compile>
@@ -113,6 +122,7 @@
     <Compile Include="Controls\TitleWindow.xaml.cs">
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\TagToHitTestVisible.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppDataManager.cs" />
@@ -128,7 +138,8 @@
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Models\BaseContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
-    <Compile Include="Models\ExpandingList.cs" />
+    <Compile Include="Models\CheckBox.cs" />
+    <Compile Include="Models\ExpandingGroup.cs" />
     <Compile Include="Models\RadioButton.cs" />
     <Compile Include="Models\RadioButtonGroup.cs" />
     <Compile Include="Models\Switch.cs" />
@@ -151,7 +162,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\DropDownList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ExpandingGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SearchBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SimpleSwitch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

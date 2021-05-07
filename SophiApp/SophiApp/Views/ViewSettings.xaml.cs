@@ -22,5 +22,14 @@ namespace SophiApp.Views
             get { return (string)GetValue(HeaderProperty); }
             set { SetValue(HeaderProperty, value); }
         }
+
+        private void ViewSettings_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (IsLoaded && IsVisible)
+            {
+                var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+                scrollViewer.ScrollToTop();
+            }
+        }
     }
 }

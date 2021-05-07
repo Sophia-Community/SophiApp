@@ -7,7 +7,14 @@
              xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:models="clr-namespace:SophiApp.Models"
              xmlns:local="clr-namespace:SophiApp.Views"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             IsVisibleChanged="ViewPrivacy_IsVisibleChanged"
+             controls:Switch.MouseEnter="TextedElement_MouseEnter"
+             controls:Switch.MouseLeave="TextedElement_MouseLeave"
+             controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
+             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
+             controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
+             controls:RadioButton.MouseLeave="TextedElement_MouseLeave">
 
     <UserControl.Resources>
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
@@ -34,12 +41,23 @@
             <Setter Property="Grid.Column" Value="2" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="Text" Value="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
             <Setter Property="FontSize" Value="28" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Grid.Row" Value="0" />
@@ -51,10 +69,6 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
-            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Header" Value="{DynamicResource Localization.Privacy}" />
@@ -87,6 +101,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
                     <ScrollViewer x:Name="ScrollViewerContent"
+                                  CanContentScroll="True"
                                   Grid.Row="1"
                                   Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
                                   BorderBrush="{DynamicResource Brush.Window.Unaccent}"
@@ -102,6 +117,13 @@
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RadioButtonGroup}">
                                     <controls:RadioButtonGroup Command="{Binding Path=DataContext.ContainerElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:CheckBox}">
+                                    <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                                       CommandParameter="{Binding Id}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:ExpandingGroup}">
+                                    <controls:ExpandingGroup Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

@@ -10,7 +10,6 @@
              controls:RadioButton.Click="RadioButton_Click">
 
     <UserControl.Resources>
-
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -21,6 +20,13 @@
             <Setter Property="Margin" Value="0, 15, 0, 0" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="Text" Value="{Binding Header}" />
         </Style>
         <Style TargetType="{x:Type StackPanel}">
@@ -31,12 +37,9 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
-            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Margin" Value="0, 0, 0, 20" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>

@@ -7,7 +7,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Views"
              xmlns:helpers="clr-namespace:SophiApp.Helpers"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
@@ -20,6 +21,11 @@
                             Duration="0:0:0.2" />
         </Storyboard>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
             <Setter Property="FontSize" Value="28" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Grid.Row" Value="0" />
@@ -28,21 +34,27 @@
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SubHeader">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
             <Setter Property="FontSize" Value="22" />
             <Setter Property="FontWeight" Value="Regular" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.BasicText">
-            <Setter Property="FontSize" Value="14" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
             <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="14" />
         </Style>
         <Style TargetType="{x:Type local:ViewSettings}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
-            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Settings}" />
             <Setter Property="Header" Value="{DynamicResource Localization.Settings}" />
@@ -73,6 +85,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
                     <ScrollViewer x:Name="ScrollViewerContent"
+                                  CanContentScroll="True"
                                   Grid.Row="1"
                                   BorderBrush="{DynamicResource Brush.Window.Unaccent}"
                                   IsTabStop="False"
@@ -80,8 +93,7 @@
 
                         <StackPanel>
                             <TextBlock Text="{DynamicResource Localization.Settings.Themes}"
-                                       Style="{StaticResource Style.TextBlock.SubHeader}"
-                                       Margin="0, 10, 0, 0" />
+                                       Style="{StaticResource Style.TextBlock.SubHeader}" />
 
                             <controls:DropDownList Source="{Binding AppThemeList}"
                                                    SelectedText="{Binding AppTheme.Name}"
@@ -178,13 +190,13 @@
                                 </controls:IconButton>
                             </StackPanel>
 
-                            <controls:Switch Header="{DynamicResource Localization.Settings.Advanced}"
-                                             FontSize="22"
-                                             Margin="0, 20, 0, 0"
-                                             Width="450"
-                                             HorizontalAlignment="Left"
-                                             IsChecked="{Binding AdvancedSettingsVisibility}"
-                                             Command="{Binding AdvancedSettingsClickedCommand}" />
+                            <controls:SimpleSwitch Header="{DynamicResource Localization.Settings.Advanced}"
+                                                   FontSize="22"
+                                                   Margin="0, 20, 0, 0"
+                                                   Width="450"
+                                                   HorizontalAlignment="Left"
+                                                   IsChecked="{Binding AdvancedSettingsVisibility}"
+                                                   Command="{Binding AdvancedSettingsClickedCommand}" />
 
                             <controls:BigRedButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="0, 30, 0, 0"
@@ -199,11 +211,15 @@
                                                    Margin="0, 12, 0, 0"
                                                    Command="{Binding SaveDebugLogCommand}" />
 
-                            <controls:ActorHyperLink Role="{StaticResource Localization.Settings.TeamLeader}"
-                                                     Actor="{StaticResource Localization.Settings.TeamLeader.Name}"
+                            <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
+                                       Text="{DynamicResource Localization.Settings.Team}"
+                                       Margin="0, 20, 0, 0" />
+
+                            <controls:ActorHyperLink Role="{StaticResource Localization.Settings.Leader}"
+                                                     Actor="{StaticResource Localization.Settings.Leader.Name}"
                                                      Icon="M10 0.416626C4.475 0.416626 0 4.81663 0 10.2433C0 14.5858 2.865 18.2683 6.8375 19.5666C7.3375 19.6591 7.52083 19.355 7.52083 19.0941C7.52083 18.8608 7.5125 18.2425 7.50833 17.4233C4.72667 18.0158 4.14 16.105 4.14 16.105C3.685 14.9708 3.0275 14.6675 3.0275 14.6675C2.12167 14.0583 3.0975 14.0708 3.0975 14.0708C4.10167 14.1391 4.62917 15.0833 4.62917 15.0833C5.52083 16.5858 6.97 16.1516 7.54167 15.9008C7.63167 15.265 7.88917 14.8325 8.175 14.5866C5.95417 14.3408 3.62 13.4958 3.62 9.73079C3.62 8.65829 4.0075 7.78163 4.64917 7.09413C4.53667 6.84579 4.19917 5.84663 4.73667 4.49329C4.73667 4.49329 5.57417 4.22996 7.48667 5.50079C8.28667 5.28246 9.13667 5.17413 9.98667 5.16913C10.8367 5.17413 11.6867 5.28246 12.4867 5.50079C14.3867 4.22996 15.2242 4.49329 15.2242 4.49329C15.7617 5.84663 15.4242 6.84579 15.3242 7.09413C15.9617 7.78163 16.3492 8.65829 16.3492 9.73079C16.3492 13.5058 14.0117 14.3366 11.7867 14.5783C12.1367 14.8733 12.4617 15.4758 12.4617 16.3966C12.4617 17.7116 12.4492 18.7683 12.4492 19.0875C12.4492 19.345 12.6242 19.6525 13.1367 19.5541C17.1375 18.2641 20 14.5791 20 10.2433C20 4.81663 15.5225 0.416626 10 0.416626Z"
                                                      IconMargin="5, 0, 10, 10"
-                                                     Margin="0, 20, 0, 0"
+                                                     Margin="0, 10, 0, 0"
                                                      HorizontalAlignment="Left"
                                                      Command="{Binding HyperLinkClickedCommand}"
                                                      CommandParameter="{x:Static helpers:AppDataManager.TeamLeaderLink}" />
@@ -221,7 +237,7 @@
                                                      Actor="{StaticResource Localization.Settings.Coder.Name}"
                                                      Icon="M10 0.416626C4.475 0.416626 0 4.81663 0 10.2433C0 14.5858 2.865 18.2683 6.8375 19.5666C7.3375 19.6591 7.52083 19.355 7.52083 19.0941C7.52083 18.8608 7.5125 18.2425 7.50833 17.4233C4.72667 18.0158 4.14 16.105 4.14 16.105C3.685 14.9708 3.0275 14.6675 3.0275 14.6675C2.12167 14.0583 3.0975 14.0708 3.0975 14.0708C4.10167 14.1391 4.62917 15.0833 4.62917 15.0833C5.52083 16.5858 6.97 16.1516 7.54167 15.9008C7.63167 15.265 7.88917 14.8325 8.175 14.5866C5.95417 14.3408 3.62 13.4958 3.62 9.73079C3.62 8.65829 4.0075 7.78163 4.64917 7.09413C4.53667 6.84579 4.19917 5.84663 4.73667 4.49329C4.73667 4.49329 5.57417 4.22996 7.48667 5.50079C8.28667 5.28246 9.13667 5.17413 9.98667 5.16913C10.8367 5.17413 11.6867 5.28246 12.4867 5.50079C14.3867 4.22996 15.2242 4.49329 15.2242 4.49329C15.7617 5.84663 15.4242 6.84579 15.3242 7.09413C15.9617 7.78163 16.3492 8.65829 16.3492 9.73079C16.3492 13.5058 14.0117 14.3366 11.7867 14.5783C12.1367 14.8733 12.4617 15.4758 12.4617 16.3966C12.4617 17.7116 12.4492 18.7683 12.4492 19.0875C12.4492 19.345 12.6242 19.6525 13.1367 19.5541C17.1375 18.2641 20 14.5791 20 10.2433C20 4.81663 15.5225 0.416626 10 0.416626Z"
                                                      IconMargin="5, 0, 10, 10"
-                                                     Margin="0, 0, 0, 0"
+                                                     Margin="0, 0, 0, 20"
                                                      HorizontalAlignment="Left"
                                                      Command="{Binding HyperLinkClickedCommand}"
                                                      CommandParameter="{x:Static helpers:AppDataManager.CoderLink}" />

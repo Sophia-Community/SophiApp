@@ -20,8 +20,6 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="IsHitTestVisible" Value="{Binding Path=VisibleInfoPanelByTag, Converter={StaticResource TagToHitTestVisibleConverter}, UpdateSourceTrigger=PropertyChanged}" />
         </Style>
     </UserControl.Resources>

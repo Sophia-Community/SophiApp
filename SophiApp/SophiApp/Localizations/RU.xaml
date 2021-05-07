@@ -26,10 +26,11 @@
     <system:String x:Key="Localization.Settings.Reset">Вернуть все настройки по умолчанию</system:String>
     <system:String x:Key="Localization.Settings.Debug">Отладка</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Создать файл отладки</system:String>
+    <system:String x:Key="Localization.Settings.Team">Team</system:String>
     <system:String x:Key="Localization.Settings.Designer">Designed by</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
-    <system:String x:Key="Localization.Settings.TeamLeader">Team leader</system:String>
-    <system:String x:Key="Localization.Settings.TeamLeader.Name">Dmitry Nefedov aka farag2</system:String>
+    <system:String x:Key="Localization.Settings.Leader">Leader</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry Nefedov aka farag2</system:String>
     <system:String x:Key="Localization.Settings.Coder">Coded by</system:String>
     <system:String x:Key="Localization.Settings.Coder.Name">Inestic</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
