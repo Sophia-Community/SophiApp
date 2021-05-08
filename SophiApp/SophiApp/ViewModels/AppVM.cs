@@ -19,18 +19,20 @@ namespace SophiApp.ViewModels
         //TODO: Check all controls IsEnabled property!
 
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
+        private const string TextedElementsChangedCounterPropertyName = "TextedElementsChangedCounter";
         private const string AppThemePropertyName = "AppTheme";
         private const string LocalizationPropertyName = "Localization";
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
-        private const string VisibleInfoPanelByTagPropertyName = "VisibleInfoPanelByTag";
+        private const string LoadingPanelVisibilityPropertyName = "LoadingPanelVisibility";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
         private bool advancedSettingsVisibility;
         private LocalizationManager localizationManager;
         private LogManager logManager;
         private IEnumerable<JsonDTO> parsedJson;
+        private uint textedElementsChangedCounter;
         private ThemeManager themeManager;
         private bool updateAvailable;
-        private string visibleInfoPanelByTag;
+        private bool loadingPanelVisibility;
         private string visibleViewByTag;
 
         public AppVM()
@@ -97,6 +99,16 @@ namespace SophiApp.ViewModels
 
         public List<BaseContainer> UIContainers { get; private set; }
 
+        public uint TextedElementsChangedCounter 
+        { 
+            get => textedElementsChangedCounter; 
+            set
+            {
+                textedElementsChangedCounter = value;
+                OnPropertyChanged(TextedElementsChangedCounterPropertyName);
+            }
+        }
+
         public bool UpdateAvailable
         {
             get => updateAvailable;
@@ -108,13 +120,13 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public string VisibleInfoPanelByTag
+        public bool LoadingPanelVisibility
         {
-            get => visibleInfoPanelByTag;
+            get => loadingPanelVisibility;
             set
             {
-                visibleInfoPanelByTag = value;
-                OnPropertyChanged(VisibleInfoPanelByTagPropertyName);
+                loadingPanelVisibility = value;
+                OnPropertyChanged(LoadingPanelVisibilityPropertyName);
             }
         }
 
@@ -133,9 +145,9 @@ namespace SophiApp.ViewModels
 
         private async void AppThemeChangeAsync(object args)
         {
-            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
+            SetLoadingPanelVisibilityProperty(isVisible: true);
             await ChangeThemeAsync(args as string);
-            SetVisibleInfoPanelByTagProperty(Tags.Empty);
+            SetLoadingPanelVisibilityProperty(isVisible: false);
         }
 
         private async Task ChangeLocalizationAsync(string localizationName)
@@ -219,9 +231,10 @@ namespace SophiApp.ViewModels
         {
             logManager = new LogManager();
             localizationManager = new LocalizationManager();
+            textedElementsChangedCounter = default;
             themeManager = new ThemeManager();
             visibleViewByTag = Tags.ViewPrivacy;
-            visibleInfoPanelByTag = string.Empty;
+            loadingPanelVisibility = default;
             updateAvailable = false;
             advancedSettingsVisibility = false;
             parsedJson = Parser.ParseJson(Properties.Resources.UIData);
@@ -269,9 +282,9 @@ namespace SophiApp.ViewModels
 
         private async void LocalizationChangeAsync(object args)
         {
-            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
+            SetLoadingPanelVisibilityProperty(isVisible: true);
             await ChangeLocalizationAsync(args as string);
-            SetVisibleInfoPanelByTagProperty(Tags.Empty);
+            SetLoadingPanelVisibilityProperty(isVisible: false);
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -303,10 +316,10 @@ namespace SophiApp.ViewModels
 
         private async void SaveDebugLogAsync(object args)
         {
-            SetVisibleInfoPanelByTagProperty(Tags.InfoPanelLoading);
+            SetLoadingPanelVisibilityProperty(isVisible: true);
             var isSaved = await SaveDebugLogAsync();
             logManager.AddDateTimeValueString(isSaved ? LogType.DEBUG_SAVE_OK : LogType.DEBUG_SAVE_HAS_ERROR);
-            SetVisibleInfoPanelByTagProperty(Tags.Empty);
+            SetLoadingPanelVisibilityProperty(isVisible: false);
         }
 
         private async Task<bool> SaveDebugLogAsync() => await Task<bool>.Run(() => FileManager.Save(logManager.GetLog(), AppDataManager.DebugLogPath));
@@ -322,13 +335,40 @@ namespace SophiApp.ViewModels
 
         private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
 
-        private void SetVisibleInfoPanelByTagProperty(string infoPanelTag) => VisibleInfoPanelByTag = infoPanelTag;
+        private void SetLoadingPanelVisibilityProperty(bool isVisible) => LoadingPanelVisibility = isVisible;
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
 
         private async void TextedElementClickedAsync(object args) => await TextedElementClickedAsync(id: Convert.ToUInt32(args));
 
-        private async Task TextedElementClickedAsync(uint id) => await Task.Run(() => TextedElements.Where(e => e.Id == id).First().ChangeState());
+        private async Task TextedElementClickedAsync(uint id)
+        {
+            await Task.Run(() =>
+            {
+                var element = TextedElements.Where(e => e.Id == id).First();
+                element.ChangeState();
+                SetTextedElementsChangedCounter(element.State);                
+            });
+        }
+
+        private void SetTextedElementsChangedCounter(UIElementState elementState)
+        {
+            switch (elementState)
+            {
+                case UIElementState.SETTOACTIVE:
+                case UIElementState.SETTODEFAULT:
+                    TextedElementsChangedCounter++;                    
+                    break;
+
+                case UIElementState.CHECKED:
+                case UIElementState.UNCHECKED:                
+                    TextedElementsChangedCounter--;
+                    break;
+                
+                default:
+                    break;
+            }
+        }                
 
         private void UpdateIsAvailability()
         {

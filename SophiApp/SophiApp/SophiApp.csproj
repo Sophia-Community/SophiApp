@@ -71,6 +71,9 @@
     <Compile Include="Controls\BigRedButton.xaml.cs">
       <DependentUpon>BigRedButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChangesPanel.xaml.cs">
+      <DependentUpon>ChangesPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,9 @@
       <DependentUpon>TitleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
+    <Compile Include="Converters\IntToChangedWord.cs" />
+    <Compile Include="Converters\IntToSettingWord.cs" />
+    <Compile Include="Converters\IntToVisibilityCollapsed.cs" />
     <Compile Include="Converters\TagToHitTestVisible.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppDataManager.cs" />
@@ -159,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\BigRedButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChangesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

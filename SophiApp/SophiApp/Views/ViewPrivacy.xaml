@@ -19,6 +19,7 @@
     <UserControl.Resources>
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <converters:TagToHitTestVisible x:Key="TagToHitTestVisibleConverter" />
+        <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter"/>
         <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsCollectionFilter" />
         <CollectionViewSource x:Key="UIContainersCollection" Source="{Binding UIContainers}" Filter="UIContainersCollectionFilter" />
         <CompositeCollection x:Key="CommonCollection">
@@ -87,12 +88,11 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
+                <Grid.ColumnDefinitions>                    
                     <ColumnDefinition Width="6*" />
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
@@ -129,6 +129,7 @@
                         </ItemsControl>
                     </ScrollViewer>
                     <controls:LoadingPanel x:Name="LoadingPanel" Grid.Row="3" />
+                    <controls:ChangesPanel x:Name="ChangesPanel" Grid.Row="3" />
                 </Grid>
                 <StackPanel Style="{DynamicResource Style.Panel.Description}">
                     <TextBlock Style="{DynamicResource Style.TextBlock.Description}" />
@@ -146,10 +147,18 @@
                 <MultiDataTrigger>
                     <!--LoadingPanel visibility trigger-->
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Settings}" />
-                        <Condition Binding="{Binding VisibleInfoPanelByTag}" Value="{StaticResource Tags.InfoPanel.Loading}" />
+                        <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Privacy}" />
+                        <Condition Binding="{Binding LoadingPanelVisibility}" Value="True" />
                     </MultiDataTrigger.Conditions>
                     <Setter TargetName="LoadingPanel" Property="Visibility" Value="Visible" />
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <!--ChangesPanel visibility trigger-->
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Privacy}" />                        
+                        <Condition Binding="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToVisibilityCollapsedConverter}}" Value="Visible"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter TargetName="ChangesPanel" Property="Visibility" Value="Visible" />
                 </MultiDataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
