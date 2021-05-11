@@ -34,9 +34,9 @@
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -49,7 +49,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="MinWidth" Value="130" />
+            <Setter Property="Width" Value="130" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Foreground" Value="{StaticResource Brush.Button.Foreground}" />
         </Style>

@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-
-    <x:Static x:Key="Tags.Empty" Member="system:String.Empty" />
+    
     <system:String x:Key="Tags.View.Privacy">Privacy</system:String>
     <system:String x:Key="Tags.View.Personalization">Personalization</system:String>
     <system:String x:Key="Tags.View.System">System</system:String>

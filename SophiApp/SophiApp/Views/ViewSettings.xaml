@@ -5,14 +5,14 @@
              xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:SophiApp.Views"
+             xmlns:local="clr-namespace:SophiApp.Views"             
              xmlns:helpers="clr-namespace:SophiApp.Helpers"
              mc:Ignorable="d"
              IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
-        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
-        <converters:TagToHitTestVisible x:Key="TagToHitTestVisibleConverter" />
+        <converters:InverseBool x:Key="InverseBoolConverter"/>
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />        
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Page.Visible">
             <ThicknessAnimation Storyboard.TargetProperty="Margin"
@@ -25,9 +25,9 @@
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUISemibold}" />
             <Setter Property="FontSize" Value="28" />
-            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Grid.Row" Value="0" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />
@@ -38,16 +38,16 @@
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontSize" Value="22" />
             <Setter Property="FontWeight" Value="Regular" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.BasicText">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
         </Style>
@@ -58,7 +58,7 @@
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Settings}" />
             <Setter Property="Header" Value="{DynamicResource Localization.Settings}" />
-            <Setter Property="IsHitTestVisible" Value="{Binding Path=VisibleInfoPanelByTag, Converter={StaticResource TagToHitTestVisibleConverter}, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsHitTestVisible" Value="{Binding LoadingPanelVisibility, Converter={StaticResource InverseBoolConverter}, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">
@@ -259,7 +259,7 @@
                     <!--LoadingPanel visibility trigger-->
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Settings}" />
-                        <Condition Binding="{Binding VisibleInfoPanelByTag}" Value="{StaticResource Tags.InfoPanel.Loading}" />
+                        <Condition Binding="{Binding LoadingPanelVisibility}" Value="True" />
                     </MultiDataTrigger.Conditions>
                     <Setter TargetName="LoadingPanel" Property="Visibility" Value="Visible" />
                 </MultiDataTrigger>

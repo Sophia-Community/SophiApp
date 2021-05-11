@@ -88,6 +88,8 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public RelayCommand ApplyingSettingsCommand { get; set; }
+
         public RelayCommand LocalizationChangeCommand { get; private set; }
         public List<string> LocalizationList => localizationManager.GetNames();
         public RelayCommand SaveDebugLogCommand { get; private set; }
@@ -215,6 +217,7 @@ namespace SophiApp.ViewModels
         private void InitCommands()
         {
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
+            ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettings));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             ContainerElementClickedCommand = new RelayCommand(new Action<object>(ContainerElementClickedAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
@@ -225,6 +228,27 @@ namespace SophiApp.ViewModels
             ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettings));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
+        }
+
+        private async void ApplyingSettings(object args)
+        {
+            logManager.AddDateTimeValueString(LogType.INIT_APPLYING_SETTINGS);
+            SetLoadingPanelVisibilityProperty(true);
+            await ApplyingSettings();
+            logManager.AddDateTimeValueString(LogType.DONE_APPLYING_SETTINGS);
+        }
+
+        private async Task ApplyingSettings()
+        {
+            await Task.Run(() =>
+            {
+                TextedElements.Where(element => element.State == (UIElementState.SETTOACTIVE | UIElementState.SETTODEFAULT))
+                              .ToList();
+                              //.ForEach(element =>
+                              //{
+                              //    element.Id;
+                              //});
+            });
         }
 
         private void InitFields()
@@ -255,7 +279,7 @@ namespace SophiApp.ViewModels
                 element.ErrorOccurred += OnTextedElementErrorOccurred;
 
                 element.SetLocalization(Localization.Language);
-                element.CurrentStateActionInvoke();
+                element.GetCurrentStateAction();
             });
             logManager.AddDateTimeValueString(LogType.DONE_INIT_TEXTED_ELEMENT_MODELS);
             logManager.AddSeparator();
@@ -296,7 +320,7 @@ namespace SophiApp.ViewModels
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_MESSAGE, message);
             logManager.AddSeparator();
 
-            var containerId = TextedElements.Where(element => element.Id == id).First().ContainerId;
+            uint containerId = TextedElements.Where(element => element.Id == id).First().ContainerId;            
 
             if (containerId > 0)
             {

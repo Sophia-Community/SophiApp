@@ -1,13 +1,13 @@
-﻿<UserControl x:Class="SophiApp.Controls.IconButton"
+﻿<UserControl x:Class="SophiApp.Controls.Button"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Storyboard x:Key="Animation.IconButton.Click"
+        <Storyboard x:Key="Animation.Button.Click"
                     Storyboard.TargetName="GridContent"
                     Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
             <DoubleAnimation Duration="0:0:0.3"
@@ -17,79 +17,68 @@
                              AutoReverse="True" />
         </Storyboard>
         <Style TargetType="{x:Type Grid}">
+            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
             <Setter Property="Grid.RenderTransform">
                 <Setter.Value>
                     <TranslateTransform X="0" Y="0" />
                 </Setter.Value>
             </Setter>
-        </Style>
-        <Style TargetType="{x:Type ContentPresenter}">
-            <Setter Property="Grid.Column" Value="2" />
+        </Style>        
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Height" Value="32" />            
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Width" Value="32" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Content" Value="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
-        </Style>
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="130" />
-            <Setter Property="Height" Value="32" />
+            <Setter Property="BorderThickness" Value="1" />
             <Setter Property="CornerRadius" Value="2" />
-        </Style>
-        <Style x:Key="Style.Border.Splitter.DividingStrip" TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="1" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Grid.Column" Value="1" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
-            <Setter Property="Grid.Column" Value="0" />
-            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />            
+            <Setter Property="Margin" Value="10, 5, 10, 5" />
         </Style>
-        <Style TargetType="{x:Type local:IconButton}">
+        <Style TargetType="{x:Type local:Button}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Width" Value="130" />
             <Setter Property="Height" Value="32" />
+            <Setter Property="Foreground" Value="{StaticResource Brush.Window.Unaccent.Light}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid x:Name="GridContent">
-                <Border x:Name="BorderButton" MouseLeftButtonDown="IconButton_MouseLeftButtonDown">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="97" />
-                            <ColumnDefinition Width="1" />
-                            <ColumnDefinition Width="32" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock />
-                        <Border Style="{DynamicResource Style.Border.Splitter.DividingStrip}" /> <!--Dividing Strip-->
-                        <ContentPresenter /> <!--Icon Content-->
-                    </Grid>
+                <Border x:Name="BorderButton" MouseLeftButtonDown="Button_MouseLeftButtonDown">
+                    <TextBlock />
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="True">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+                    <Setter TargetName="BorderButton" Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Unaccent}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
+                    <Setter Property="Opacity" Value="0.80" />
+                    
                 </Trigger>
                 <EventTrigger SourceName="BorderButton" RoutedEvent="MouseLeftButtonDown">
                     <EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource Animation.IconButton.Click}" />
+                        <BeginStoryboard Storyboard="{StaticResource Animation.Button.Click}" />
                     </EventTrigger.Actions>
                 </EventTrigger>
             </ControlTemplate.Triggers>

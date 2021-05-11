@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Actions\CurrentStateAction.cs" />
+    <Compile Include="Actions\SystemStateAction.cs" />
     <Compile Include="Commons\GitHubReleaseDTO.cs" />
     <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\LogType.cs" />
@@ -70,6 +71,9 @@
     </Compile>
     <Compile Include="Controls\BigRedButton.xaml.cs">
       <DependentUpon>BigRedButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Button.xaml.cs">
+      <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ChangesPanel.xaml.cs">
       <DependentUpon>ChangesPanel.xaml</DependentUpon>
@@ -129,7 +133,7 @@
     <Compile Include="Converters\IntToChangedWord.cs" />
     <Compile Include="Converters\IntToSettingWord.cs" />
     <Compile Include="Converters\IntToVisibilityCollapsed.cs" />
-    <Compile Include="Converters\TagToHitTestVisible.cs" />
+    <Compile Include="Converters\InverseBool.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\AppDataManager.cs" />
     <Compile Include="Helpers\AppFabric.cs" />
@@ -165,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\BigRedButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fonts\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Localizations\EN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -303,6 +315,7 @@
     <None Include="app.manifest" />
     <Resource Include="Resources\UIData.json" />
     <Resource Include="Fonts\SegoeUI.ttf" />
+    <Resource Include="Fonts\Segoe UI Semibold.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

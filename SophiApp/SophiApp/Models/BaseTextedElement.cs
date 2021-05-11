@@ -174,7 +174,7 @@ namespace SophiApp.Models
             }
         }
 
-        internal virtual void CurrentStateActionInvoke()
+        internal void GetCurrentStateAction()
         {
             try
             {

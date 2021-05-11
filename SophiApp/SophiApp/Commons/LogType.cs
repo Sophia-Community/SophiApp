@@ -32,5 +32,8 @@
         ADVANCED_SETTINGS_IS_VISIBLE, // Changing the visibility of advanced settings
         DEBUG_SAVE_OK, // Debug log saved successfully
         DEBUG_SAVE_HAS_ERROR, // An error occurred while saving the debug log
+        INIT_APPLYING_SETTINGS, // Apply settings clicked
+        DONE_APPLYING_SETTINGS, // Settings applied
+
     }
 }

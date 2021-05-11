@@ -17,8 +17,8 @@
              controls:RadioButton.MouseLeave="TextedElement_MouseLeave">
 
     <UserControl.Resources>
-        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
-        <converters:TagToHitTestVisible x:Key="TagToHitTestVisibleConverter" />
+        <converters:InverseBool x:Key="InverseBoolConverter"/>
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />        
         <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter"/>
         <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsCollectionFilter" />
         <CollectionViewSource x:Key="UIContainersCollection" Source="{Binding UIContainers}" Filter="UIContainersCollectionFilter" />
@@ -44,9 +44,9 @@
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Description">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="TextWrapping" Value="Wrap" />
@@ -58,13 +58,14 @@
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUISemibold}" />
             <Setter Property="FontSize" Value="28" />
-            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Grid.Row" Value="0" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Margin" Value="20, 0, 0, 0"/>
         </Style>
         <Style TargetType="{x:Type local:ViewPrivacy}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -74,7 +75,7 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Header" Value="{DynamicResource Localization.Privacy}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Privacy}" />
-            <Setter Property="IsHitTestVisible" Value="{Binding Path=VisibleInfoPanelByTag, Converter={StaticResource TagToHitTestVisibleConverter}, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsHitTestVisible" Value="{Binding LoadingPanelVisibility, Converter={StaticResource InverseBoolConverter}, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">

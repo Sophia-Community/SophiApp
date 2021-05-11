@@ -10,9 +10,9 @@
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -47,7 +47,7 @@
             <Setter Property="IsEnabled" Value="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Id" Value="{Binding Id}" />
-            <Setter Property="Margin" Value="0, 10, 0, 10" />
+            <Setter Property="Margin" Value="20, 10, 0, 10" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />

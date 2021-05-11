@@ -23,9 +23,9 @@
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Setting">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -43,9 +43,9 @@
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Changed">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="TextWrapping" Value="NoWrap" />
@@ -63,9 +63,9 @@
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Counter">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="TextWrapping" Value="NoWrap" />
@@ -99,10 +99,11 @@
                     <TextBlock Style="{StaticResource Style.TextBlock.Setting}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource Style.Panel.Buttons}">
-                    <!--<local:Button Text="{DynamicResource Localization.ChangesPanel.Reset}"
-                                  Margin="0, 0, 20, 0" />-->
+                    <local:Button Text="{DynamicResource Localization.ChangesPanel.Reset}"
+                                  Margin="0, 0, 20, 0" />
 
-                    <local:FilledButton Text="{DynamicResource Localization.ChangesPanel.Apply}" />
+                    <local:FilledButton Text="{DynamicResource Localization.ChangesPanel.Apply}"
+                                        Command="{Binding ApplyingSettingsCommand}"/>
                 </StackPanel>
             </Grid>
         </ControlTemplate>

@@ -2,7 +2,7 @@
 
 namespace SophiApp.Actions
 {
-    public class CurrentStateAction
+    internal class CurrentStateAction
     {
         //TODO: Implement method selection by ID
 

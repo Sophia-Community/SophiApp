@@ -13,13 +13,13 @@
             <ThicknessAnimation Storyboard.TargetName="EllipseSwitch"
                                 Storyboard.TargetProperty="Margin"
                                 To="{StaticResource Margin.Switch.Ellipse.Right}"
-                                Duration="0:0:0.3" />
+                                Duration="0:0:0.10" />
         </Storyboard>
         <Storyboard x:Key="Animation.Switch.Margin.ToLeft">
             <ThicknessAnimation Storyboard.TargetName="EllipseSwitch"
                                 Storyboard.TargetProperty="Margin"
                                 To="{StaticResource Margin.Switch.Ellipse.Left}"
-                                Duration="0:0:0.3" />
+                                Duration="0:0:0.10" />
         </Storyboard>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
@@ -47,9 +47,9 @@
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/SegoeUI.ttf#Segoe UI" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -69,7 +69,7 @@
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Id" Value="{Binding Id}" />
             <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Margin" Value="0, 0, 0, 20" />
+            <Setter Property="Margin" Value="20, 0, 0, 20" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
