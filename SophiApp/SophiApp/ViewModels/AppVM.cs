@@ -42,8 +42,9 @@ namespace SophiApp.ViewModels
             //TODO: Uncomment before release
             //UpdateIsAvailability();
             InitTextedElements();
-            InitUIContainers();
-        }
+            InitRadioButtonGroup();
+            InitExpandingGroup();
+        }        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -71,11 +72,15 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand AppThemeChangeCommand { get; private set; }
+
         public List<string> AppThemeList => themeManager.GetNames();
-        public RelayCommand ContainerElementClickedCommand { get; private set; }
+        
         public RelayCommand ExportSettingsCommand { get; private set; }
+
         public RelayCommand HamburgerClickedCommand { get; private set; }
+
         public RelayCommand HyperLinkClickedCommand { get; private set; }
+
         public RelayCommand ImportSettingsCommand { get; private set; }
 
         public Localization Localization
@@ -91,15 +96,20 @@ namespace SophiApp.ViewModels
         public RelayCommand ApplyingSettingsCommand { get; set; }
 
         public RelayCommand LocalizationChangeCommand { get; private set; }
+
         public List<string> LocalizationList => localizationManager.GetNames();
+
         public RelayCommand SaveDebugLogCommand { get; private set; }
+
         public RelayCommand SearchClickedCommand { get; private set; }
 
         public RelayCommand TextedElementClickedCommand { get; private set; }
 
         public List<BaseTextedElement> TextedElements { get; private set; }
 
-        public List<BaseContainer> UIContainers { get; private set; }
+        public List<RadioButtonGroup> RadioButtonGroupElements { get; private set; }
+
+        public List<ExpandingGroup> ExpandingGroupElements { get; private set; }
 
         public uint TextedElementsChangedCounter 
         { 
@@ -152,13 +162,14 @@ namespace SophiApp.ViewModels
             SetLoadingPanelVisibilityProperty(isVisible: false);
         }
 
-        private async Task ChangeLocalizationAsync(string localizationName)
+        private async Task LocalizationChangeAsync(string localizationName)
         {
             await Task.Run(() =>
             {
                 var localization = localizationManager.FindName(localizationName);
-                TextedElements.ForEach(element => element.SetLocalization(localization.Language));
-                UIContainers.ForEach(container => container.SetLocalization(localization.Language));
+                TextedElements.ForEach(element => element.SetLocalization(localization.Language));                
+                RadioButtonGroupElements.ForEach(element => element.SetLocalization(localization.Language));
+                ExpandingGroupElements.ForEach(element => element.SetLocalization(localization.Language));
                 localizationManager.Change(localization);
                 SetLocalizationProperty(localization);
             });
@@ -172,20 +183,7 @@ namespace SophiApp.ViewModels
                 themeManager.Change(theme);
                 SetAppThemeProperty(theme);
             });
-        }
-
-        private async void ContainerElementClickedAsync(object args) => await ContainerElementClickedAsync(id: Convert.ToUInt32(args));
-
-        private async Task ContainerElementClickedAsync(uint id)
-        {
-            await Task.Run(() =>
-            {
-                var containerId = TextedElements.Where(element => element.Id == id).First().ContainerId;
-                TextedElements.Where(element => element.ContainerId == containerId)
-                              .ToList()
-                              .ForEach(element => element.State = element.Id == id ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
-            });
-        }
+        }        
 
         private void ExportSettings(object args)
         {
@@ -217,9 +215,8 @@ namespace SophiApp.ViewModels
         private void InitCommands()
         {
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
-            ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettings));
-            AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
-            ContainerElementClickedCommand = new RelayCommand(new Action<object>(ContainerElementClickedAsync));
+            ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
+            AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));            
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
@@ -230,24 +227,24 @@ namespace SophiApp.ViewModels
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
         }
 
-        private async void ApplyingSettings(object args)
+        private async void ApplyingSettingsAsync(object args)
         {
             logManager.AddDateTimeValueString(LogType.INIT_APPLYING_SETTINGS);
-            SetLoadingPanelVisibilityProperty(true);
-            await ApplyingSettings();
+            SetLoadingPanelVisibilityProperty(isVisible: true);
+            await ApplyingSettingsAsync();
+            SetLoadingPanelVisibilityProperty(isVisible: false);
             logManager.AddDateTimeValueString(LogType.DONE_APPLYING_SETTINGS);
+            logManager.AddSeparator();
         }
 
-        private async Task ApplyingSettings()
+        private async Task ApplyingSettingsAsync()
         {
             await Task.Run(() =>
             {
-                TextedElements.Where(element => element.State == (UIElementState.SETTOACTIVE | UIElementState.SETTODEFAULT))
-                              .ToList();
-                              //.ForEach(element =>
-                              //{
-                              //    element.Id;
-                              //});
+                TextedElements.Where(element => element.State == UIElementState.SETTOACTIVE ||
+                                                element.State == UIElementState.SETTODEFAULT)
+                              .ToList()
+                              .ForEach(element => element.SetSystemState());
             });
         }
 
@@ -269,35 +266,80 @@ namespace SophiApp.ViewModels
             logManager.AddSeparator();
         }
 
+        private void InitRadioButtonGroup()
+        {
+            logManager.AddDateTimeValueString(LogType.INIT_RADIO_BUTTONS_GROUP_MODELS);
+            RadioButtonGroupElements = parsedJson.Where(dto => dto.Type == UIType.RadioButtonGroup).Select(dto => AppFabric.CreateRadioButtonGroupModel(dto)).ToList();
+            RadioButtonGroupElements.ForEach(group =>
+            {
+                logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_GROUP_ID, $"{group.Id}");
+                group.ErrorOccurred += OnRadioButtonGroupErrorOccurredAsync;
+                group.Collection = TextedElements.Where(element => element.ContainerId == group.Id).ToList();
+                group.Collection.ForEach(element => element.ErrorOccurred += OnRadioButtonErrorOccurred);
+                group.SetLocalization(Localization.Language);
+                group.SetDefaultSelectedId();                
+            });
+            logManager.AddDateTimeValueString(LogType.DONE_INIT_RADIO_BUTTONS_GROUP_MODELS);
+            logManager.AddSeparator();
+        }
+
+        private void OnRadioButtonErrorOccurred(uint id, string target, string message)
+        {
+            var element = TextedElements.Where(e => e.Id == id).First();
+            OnRadioButtonGroupErrorOccurredAsync(element.ContainerId, target, message);
+            
+        }
+
+        private void InitExpandingGroup()
+        {
+            logManager.AddDateTimeValueString(LogType.INIT_EXPANDING_GROUP_MODELS);
+            ExpandingGroupElements = parsedJson.Where(dto => dto.Type == UIType.ExpandingGroup).Select(dto => AppFabric.CreateExpandingGroupModel(dto)).ToList();
+            ExpandingGroupElements.ForEach(group =>
+            {
+                logManager.AddDateTimeValueString(LogType.EXPANDING_GROUP_ID, $"{group.Id}");                
+                group.Collection = TextedElements.Where(element => element.ContainerId == group.Id).ToList();
+                group.SetLocalization(Localization.Language);                
+            });
+            logManager.AddDateTimeValueString(LogType.DONE_INIT_EXPANDING_GROUP_MODELS);
+            logManager.AddSeparator();
+        }
+
+        private async void OnRadioButtonGroupErrorOccurredAsync(uint id, string target, string message)
+        {
+            logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_GROUP_ID, $"{id}");
+            logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_ERROR_TARGET, target);
+            logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_ERROR_MESSAGE, message);
+            logManager.AddSeparator();
+            await OnRadioButtonGroupErrorOccurredAsync(id);
+        }
+
+        private async Task OnRadioButtonGroupErrorOccurredAsync(uint id)
+        {
+            await Task.Run(() => 
+            {
+                var group = RadioButtonGroupElements.Where(g => g.Id == id).First();
+                group.Collection.ForEach(element => element.State = UIElementState.DISABLED);
+            });
+        }
+
         private void InitTextedElements()
         {
             logManager.AddDateTimeValueString(LogType.INIT_TEXTED_ELEMENT_MODELS);
-            TextedElements = parsedJson.Where(dto => dto.Type == UIType.TextedElement).Select(dto => AppFabric.CreateTextElementModel(dto)).ToList();
+            TextedElements = parsedJson.Where(dto => dto.Type == UIType.TextedElement)
+                                       .Select(dto => AppFabric.CreateTextElementModel(dto))
+                                       .ToList();
+
             TextedElements.ForEach(element =>
             {
                 element.StateChanged += OnTextedElementStateChanged;
-                element.ErrorOccurred += OnTextedElementErrorOccurred;
+                element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
 
                 element.SetLocalization(Localization.Language);
-                element.GetCurrentStateAction();
+                element.GetCurrentState();
             });
             logManager.AddDateTimeValueString(LogType.DONE_INIT_TEXTED_ELEMENT_MODELS);
             logManager.AddSeparator();
-        }
-
-        private void InitUIContainers()
-        {
-            logManager.AddDateTimeValueString(LogType.INIT_CONTAINERS_MODELS);
-            UIContainers = parsedJson.Where(dto => dto.Type == UIType.Container).Select(dto => AppFabric.CreateContainerModel(dto)).ToList();
-            UIContainers.ForEach(container =>
-            {
-                container.Collection = TextedElements.Where(element => element.ContainerId == container.Id).ToList();
-                container.SetLocalization(Localization.Language);
-                logManager.AddDateTimeValueString(LogType.CONTAINERS_ELEMENT_ID, $"{container.Id}");
-            });
-            logManager.AddDateTimeValueString(LogType.DONE_INIT_CONTAINERS_MODELS);
-            logManager.AddSeparator();
-        }
+        }        
 
         private bool IsNewVersion(Version currentVersion, string outsideVersion, bool outsidePrerelease, bool outsideDraft)
         {
@@ -307,30 +349,22 @@ namespace SophiApp.ViewModels
         private async void LocalizationChangeAsync(object args)
         {
             SetLoadingPanelVisibilityProperty(isVisible: true);
-            await ChangeLocalizationAsync(args as string);
+            await LocalizationChangeAsync(args as string);
             SetLoadingPanelVisibilityProperty(isVisible: false);
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
-        private void OnTextedElementErrorOccurred(uint id, string target, string message)
+        private async void OnTextedElementErrorOccurredAsync(uint id, string target, string message)
         {
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ID, $"{id}");
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_TARGET, target);
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_MESSAGE, message);
             logManager.AddSeparator();
-
-            uint containerId = TextedElements.Where(element => element.Id == id).First().ContainerId;            
-
-            if (containerId > 0)
-            {
-                TextedElements.Where(element => element.ContainerId == containerId).ToList().ForEach(element => element.State = UIElementState.DISABLED);
-            }
-            else
-            {
-                TextedElements.Where(element => element.Id == id).First().State = UIElementState.DISABLED;
-            }
+            await OnTextedElementErrorOccurredAsync(id);            
         }
+
+        private async Task OnTextedElementErrorOccurredAsync(uint id) => await Task.Run(() => TextedElements.Where(element => element.Id == id).First().State = UIElementState.DISABLED);        
 
         private void OnTextedElementStateChanged(uint id, UIElementState state)
         {

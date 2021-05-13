@@ -11,9 +11,14 @@
         TEXTED_ELEMENT_STATE_CHANGED, // Texted element state changed
         TEXTED_ELEMENT_ERROR_TARGET, // The ID of the method that caused the error in the texted element
         TEXTED_ELEMENT_ERROR_MESSAGE, // The message of the method that caused the error in the texted element
-        INIT_CONTAINERS_MODELS, // Init containers model collection
-        CONTAINERS_ELEMENT_ID, // Containers element id
-        DONE_INIT_CONTAINERS_MODELS, // Texted containers collection init done
+        INIT_RADIO_BUTTONS_GROUP_MODELS, // Init RadioButtonGroup models collection
+        RADIO_BUTTONS_GROUP_ID, // RadioButtonGroup id
+        RADIO_BUTTONS_ERROR_TARGET, // The ID of the method that caused the error in the RadioButtonGroup
+        RADIO_BUTTONS_ERROR_MESSAGE, // The message of the method that caused the error in the RadioButtonGroup
+        DONE_INIT_RADIO_BUTTONS_GROUP_MODELS, // Done init RadioButtonGroup models collection
+        INIT_EXPANDING_GROUP_MODELS, // Init ExpandingGroup models collection
+        EXPANDING_GROUP_ID, // ExpandingGroup id
+        DONE_INIT_EXPANDING_GROUP_MODELS, // Done init ExpandingGroup models collection
         INIT_VIEW, // Init view tag
         VISIBLE_VIEW_CHANGED, // The tag is currently active view
         INIT_THEME, // Init app theme
@@ -34,6 +39,8 @@
         DEBUG_SAVE_HAS_ERROR, // An error occurred while saving the debug log
         INIT_APPLYING_SETTINGS, // Apply settings clicked
         DONE_APPLYING_SETTINGS, // Settings applied
+        INIT_RESET_SETTINGS, // Reset settings clicked
+        DONE_RESET_SETTINGS, // Settings reseted
 
     }
 }

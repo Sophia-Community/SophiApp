@@ -72,10 +72,10 @@ namespace SophiApp.Views
             e.Accepted = element.ContainerId == 0 && element.Tag == Tag;
         }
 
-        private void UIContainersCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        private void RadioButtonGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
         {
-            var container = e.Item as BaseContainer;
-            e.Accepted = container.Tag == Tag;
+            var group = e.Item as RadioButtonGroup;
+            e.Accepted = group.Tag == Tag;
         }
 
         private void ViewPrivacy_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -85,6 +85,12 @@ namespace SophiApp.Views
                 var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
                 scrollViewer.ScrollToTop();
             }
+        }
+
+        private void ExpandingGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var group = e.Item as ExpandingGroup;
+            e.Accepted = group.Tag == Tag;
         }
     }
 }

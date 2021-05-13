@@ -24,7 +24,7 @@ namespace SophiApp.Commons
         [DataMember(Name = "Tag")]
         public string Tag { get; set; }
 
-        [DataMember(Name = "Type")]
+        [DataMember(Name = "Type")] //TODO: Duplicated by Model parameter
         public UIType Type { get; set; }
     }
 }

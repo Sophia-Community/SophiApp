@@ -5,9 +5,12 @@ namespace SophiApp.Commons
     internal enum UIType
     {
         [EnumMember]
-        TextedElement = 0, //Element containing text: Switch, CheckBox, RadioButton, etc.
+        TextedElement = 0, // Element containing text: Switch, CheckBox, RadioButton, etc.
 
         [EnumMember]
-        Container = 1 //Element containing other elements:ExpandingList, RadioButtonsList, etc. Nesting containers into each other, for example a list into a list, is not possible.
+        RadioButtonGroup = 1, // RadioButtonGroup container
+
+        [EnumMember]
+        ExpandingGroup = 2 // ExpandingGroup container
     }
 }

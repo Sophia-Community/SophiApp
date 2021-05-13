@@ -21,6 +21,7 @@ namespace SophiApp.Models
         public const string IsEnabledPropertyName = "IsEnabled";
 
         public Func<bool> CurrentStateAction;
+        public Action SystemStateAction;
 
         public BaseTextedElement(JsonDTO json)
         {
@@ -174,11 +175,23 @@ namespace SophiApp.Models
             }
         }
 
-        internal void GetCurrentStateAction()
+        internal void GetCurrentState()
         {
             try
             {
                 State = CurrentStateAction?.Invoke() == true ? UIElementState.CHECKED : UIElementState.UNCHECKED;
+            }
+            catch (Exception e)
+            {
+                ErrorOccurred?.Invoke(Id, e.TargetSite.Name, e.Message);
+            }
+        }
+
+        internal void SetSystemState()
+        {
+            try
+            {
+                SystemStateAction?.Invoke();
             }
             catch (Exception e)
             {

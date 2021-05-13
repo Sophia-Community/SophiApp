@@ -21,10 +21,12 @@
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />        
         <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter"/>
         <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsCollectionFilter" />
-        <CollectionViewSource x:Key="UIContainersCollection" Source="{Binding UIContainers}" Filter="UIContainersCollectionFilter" />
+        <CollectionViewSource x:Key="RadioButtonGroupCollection" Source="{Binding RadioButtonGroupElements}" Filter="RadioButtonGroupCollectionFilter" />
+        <CollectionViewSource x:Key="ExpandingGroupCollection" Source="{Binding ExpandingGroupElements}" Filter="ExpandingGroupCollectionFilter" />
         <CompositeCollection x:Key="CommonCollection">
             <CollectionContainer Collection="{Binding Source={StaticResource TextedElementsCollection}}" />
-            <CollectionContainer Collection="{Binding Source={StaticResource UIContainersCollection}}" />
+            <CollectionContainer Collection="{Binding Source={StaticResource RadioButtonGroupCollection}}" />
+            <CollectionContainer Collection="{Binding Source={StaticResource ExpandingGroupCollection}}" />
         </CompositeCollection>
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
         <Storyboard x:Key="Animation.Page.Visible">

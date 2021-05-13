@@ -6,6 +6,6 @@ namespace SophiApp.Actions
     {
         //TODO: Implement method selection by ID
 
-        public static bool FOR_DEBUG_ONLY() => new Random().Next(0, 2) == 0;
+        public static bool FOR_DEBUG_ONLY() => true;
     }
 }
