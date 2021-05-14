@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             xmlns:view="clr-namespace:SophiApp.Views"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -28,10 +27,17 @@
         <Style TargetType="{x:Type Grid}">
             <Setter Property="MinWidth" Value="450" />
             <Setter Property="MinHeight" Value="20" />
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="HorizontalAlignment" Value="Left" />
@@ -44,9 +50,10 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-            <Setter Property="Margin" Value="0, 0, 0, 20" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="20, 0, 0, 20" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -65,14 +72,13 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
-                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}" />
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
                     <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
                     <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden" />
                 </DataTrigger>
-
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
-                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
-                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                     <Setter TargetName="PathCheckBox" Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>

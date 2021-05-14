@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             xmlns:views="clr-namespace:SophiApp.Views"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -13,62 +12,80 @@
         <converters:IntToSettingWord x:Key="Int.To.Setting.Word.Converter" />
         <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Buttons">
             <Setter Property="Orientation" Value="Horizontal" />
-            <Setter Property="Grid.Column" Value="0" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Right" />
         </Style>
         <Style TargetType="{x:Type StackPanel}" x:Key="Style.Panel.Text">
             <Setter Property="Orientation" Value="Horizontal" />
-            <Setter Property="Grid.Column" Value="0" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Setting">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="TextWrapping" Value="NoWrap" />
             <Setter Property="Text">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Int.To.Setting.Word.Converter}">
-                        <Binding Path="AppLocalization" UpdateSourceTrigger="PropertyChanged" />
-                        <Binding Path="UIElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="TextedElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
                         <Binding Path="SettingText" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Changed">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="TextWrapping" Value="NoWrap" />
             <Setter Property="Margin" Value="20, 0, 0, 0" />
             <Setter Property="Text">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Int.To.Changed.Word.Converter}">
-                        <Binding Path="AppLocalization" UpdateSourceTrigger="PropertyChanged" />
-                        <Binding Path="UIElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="TextedElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
                         <Binding Path="ChangedText" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Counter">
-            <Setter Property="TextWrapping" Value="NoWrap" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
             <Setter Property="Margin" Value="5, 0, 5, 0" />
-            <Setter Property="Text" Value="{Binding Path=DataContext.UIElementsChangedCounter, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Text" Value="{Binding TextedElementsChangedCounter, UpdateSourceTrigger=PropertyChanged}" />
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <converters:IntToVisibility x:Key="IntToVisibilityConverter" />
+
         <Style TargetType="{x:Type local:ChangesPanel}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Height" Value="52" />
-            <Setter Property="Visibility" Value="{Binding UIElementsChangedCounter, Converter={StaticResource IntToVisibilityConverter}}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Visibility" Value="Collapsed" />
             <Setter Property="ChangedText" Value="{DynamicResource Localization.ChangesPanel.Changed}" />
             <Setter Property="SettingText" Value="{DynamicResource Localization.ChangesPanel.Setting}" />
         </Style>
@@ -76,20 +93,18 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
                 <StackPanel Style="{StaticResource Style.Panel.Text}">
                     <TextBlock Style="{StaticResource Style.TextBlock.Changed}" />
-                    <TextBlock Style="{DynamicResource Style.TextBlock.Counter}" />
+                    <TextBlock Style="{StaticResource Style.TextBlock.Counter}" />
                     <TextBlock Style="{StaticResource Style.TextBlock.Setting}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource Style.Panel.Buttons}">
                     <local:Button Text="{DynamicResource Localization.ChangesPanel.Reset}"
-                                  Margin="0, 0, 20, 0" />
+                                  Margin="0, 0, 20, 0"
+                                  Command="{Binding ResetElementStateCommand}" />
 
-                    <local:FilledButton Text="{DynamicResource Localization.ChangesPanel.Apply}" />
+                    <local:FilledButton Text="{DynamicResource Localization.ChangesPanel.Apply}"
+                                        Command="{Binding ApplyingSettingsCommand}" />
                 </StackPanel>
             </Grid>
         </ControlTemplate>

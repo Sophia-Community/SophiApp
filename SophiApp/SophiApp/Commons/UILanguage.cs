@@ -1,6 +1,6 @@
 ﻿namespace SophiApp.Commons
 {
-    public enum UILanguage
+    internal enum UILanguage
     {
         EN,
         RU

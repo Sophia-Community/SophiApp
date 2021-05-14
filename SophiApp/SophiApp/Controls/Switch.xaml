@@ -4,8 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             xmlns:view="clr-namespace:SophiApp.Views"
-             xmlns:converters="clr-namespace:SophiApp.Converters"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -15,17 +13,17 @@
             <ThicknessAnimation Storyboard.TargetName="EllipseSwitch"
                                 Storyboard.TargetProperty="Margin"
                                 To="{StaticResource Margin.Switch.Ellipse.Right}"
-                                Duration="0:0:0.3" />
+                                Duration="0:0:0.10" />
         </Storyboard>
         <Storyboard x:Key="Animation.Switch.Margin.ToLeft">
             <ThicknessAnimation Storyboard.TargetName="EllipseSwitch"
                                 Storyboard.TargetProperty="Margin"
                                 To="{StaticResource Margin.Switch.Ellipse.Left}"
-                                Duration="0:0:0.3" />
+                                Duration="0:0:0.10" />
         </Storyboard>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
             <Setter Property="CornerRadius" Value="10" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Grid.Column" Value="2" />
@@ -47,6 +45,13 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="VerticalAlignment" Value="Top" />
@@ -54,18 +59,17 @@
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type local:Switch}">
-            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Id" Value="{Binding Id}" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Margin" Value="0, 0, 0, 20" />
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Id" Value="{Binding Id}" />
+            <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Margin" Value="20, 0, 0, 20" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -83,9 +87,12 @@
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.50" />
+                </Trigger>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
-                    <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="2" />
-                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Element.Border}" />
+                    <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="1" />
+                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
                     <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
                 </Trigger>

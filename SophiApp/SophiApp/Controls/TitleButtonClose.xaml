@@ -4,9 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
              mc:Ignorable="d"
              MouseLeftButtonDown="TitleButtonClose_MouseLeftButtonDown">
+
     <UserControl.Resources>
+        <converters:InverseBool x:Key="InverseBoolConverter" />
         <Style TargetType="Viewbox">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -18,6 +21,7 @@
             <Setter Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
         <Style TargetType="local:TitleButtonClose">
+            <Setter Property="IsHitTestVisible" Value="{Binding LoadingPanelVisibility, Converter={StaticResource InverseBoolConverter}, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />

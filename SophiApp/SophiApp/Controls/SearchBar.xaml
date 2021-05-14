@@ -10,14 +10,19 @@
     <UserControl.Resources>
         <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="2" />
-            <Setter Property="BorderBrush" Value="{Binding ElementName=TextBoxSearch, Path=Foreground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SearchBar.Foreground}" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Width" Value="230" />
         </Style>
         <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Width" Value="193" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="IsTabStop" Value="False" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -29,6 +34,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type Viewbox}">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -44,18 +50,14 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Width" Value="230" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Border>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="38" />
-                    </Grid.ColumnDefinitions>
                     <TextBox x:Name="TextBoxSearch">
                         <TextBox.InputBindings>
                             <KeyBinding Command="{Binding SearchClickedCommand}"
@@ -63,23 +65,10 @@
                                         Key="Return" />
                         </TextBox.InputBindings>
                     </TextBox>
-                    <Grid Grid.Column="1" Background="{DynamicResource Brush.Window.Background}">
-                        <Grid.InputBindings>
-                            <MouseBinding Command="{Binding SearchClickedCommand}"
-                                          CommandParameter="{Binding Path=Text, ElementName=TextBoxSearch}"
-                                          MouseAction="LeftClick" />
-                        </Grid.InputBindings>
-                        <Viewbox x:Name="ViewboxSearch">
-                            <Canvas>
-                                <Path x:Name="PathSearch" Data="M0.139709 15.184L4.02796 11.2958C2.98494 10.0967 2.35346 8.53215 2.35346 6.82217C2.35346 3.05809 5.4151 0 9.17563 0C12.9397 0 15.9978 3.06164 15.9978 6.82217C15.9978 10.5827 12.9362 13.6443 9.17563 13.6443C7.46565 13.6443 5.90113 13.0129 4.70201 11.9698L0.813767 15.8581C0.721528 15.9503 0.59736 16 0.476739 16C0.356117 16 0.231949 15.9539 0.139709 15.8581C-0.0447693 15.6736 -0.0447693 15.3685 0.139709 15.184ZM15.0435 6.82217C15.0435 3.5867 12.4111 0.957871 9.17918 0.957871C5.9437 0.957871 3.31488 3.59024 3.31488 6.82217C3.31488 10.0541 5.9437 12.69 9.17918 12.69C12.4111 12.69 15.0435 10.0576 15.0435 6.82217Z"
-                                      Fill="{Binding Path=Foreground, ElementName=TextBoxSearch}" />
-                            </Canvas>
-                        </Viewbox>
-                    </Grid>
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsFocused" Value="True">
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="TextBoxSearch" Property="Text" Value="{x:Null}" />
                     <Setter TargetName="TextBoxSearch" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
                 </Trigger>

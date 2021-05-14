@@ -1,16 +1,17 @@
 ﻿<Window x:Class="SophiApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:controls="clr-namespace:SophiApp.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SophiApp.Controls"
+        xmlns:helpers="clr-namespace:SophiApp.Helpers"
         xmlns:vm="clr-namespace:SophiApp.ViewModels"
         xmlns:view="clr-namespace:SophiApp.Views"
-        xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="ClearType">
+
     <Window.DataContext>
         <vm:AppVM />
     </Window.DataContext>
@@ -30,59 +31,58 @@
             <Setter Property="Width" Value="1024" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Title" Value="{Binding AppName}" />
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/Segoe UI.ttf#Segoe UI" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontStretch" Value="Normal" />
-            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="Title" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
         </Style>
     </Window.Style>
     <Window.Resources>
+        <Style x:Key="Style.TextBlock.Title" TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style TargetType="{x:Type Ellipse}">
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
+        </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
             <Setter Property="CornerRadius" Value="0" />
         </Style>
     </Window.Resources>
     <Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="35" /> <!--Window Title Row-->
-                <RowDefinition Height="*" />  <!--Window Content Row-->
+                <RowDefinition Height="35" />
+                <!--Window Title Row-->
+                <RowDefinition Height="*" />
+                <!--Window Content Row-->
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250" /> <!--Hamburger Row-->
-                    <ColumnDefinition Width="*" />   <!--Views Row-->
+                    <ColumnDefinition Width="250" />
+                    <!--Hamburger Row-->
+                    <ColumnDefinition Width="*" />
+                    <!--Views Row-->
                 </Grid.ColumnDefinitions>
                 <!--Left Window Title-->
                 <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
                     <controls:TitleWindow.Content>
                         <StackPanel Orientation="Horizontal">
-                            <Ellipse>
-                                <Ellipse.Style>
-                                    <Style TargetType="{x:Type Ellipse}">
-                                        <Setter Property="Width" Value="12" />
-                                        <Setter Property="Height" Value="12" />
-                                        <Setter Property="VerticalAlignment" Value="Center" />
-                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                        <Setter Property="Margin" Value="10, 0, 10, 0" />
-                                        <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
-                                    </Style>
-                                </Ellipse.Style>
-                            </Ellipse>
-                            <TextBlock>
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="Text" Value="{DynamicResource CONST.AppName}" />
-                                        <Setter Property="VerticalAlignment" Value="Center" />
-                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
+                            <Ellipse />
+                            <TextBlock Text="{Binding Path=(helpers:AppDataManager.Name)}"
+                                       Style="{StaticResource Style.TextBlock.Title}" />
                         </StackPanel>
                     </controls:TitleWindow.Content>
                 </controls:TitleWindow>
@@ -103,24 +103,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0" />
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Privacy}" Tag="{StaticResource Tags.View.Privacy}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Personalization}" Tag="{StaticResource Tags.View.Personalization}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.System}" Tag="{StaticResource Tags.View.System}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.StartMenu}" Tag="{StaticResource Tags.View.StartMenu}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.UwpApps}" Tag="{StaticResource Tags.View.UwpApps}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Games}" Tag="{StaticResource Tags.View.Games}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.TaskSheduler}" Tag="{StaticResource Tags.View.TaskSheduler}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.Security}" Tag="{StaticResource Tags.View.Security}" />
-                    <view:ViewContent Grid.Row="0" Header="{DynamicResource Localization.ContextMenu}" Tag="{StaticResource Tags.View.ContextMenu}" />
-                    <view:ViewSettings Grid.Row="0" Header="{DynamicResource Localization.Settings}" Tag="{StaticResource Tags.View.Settings}" />
-                    <controls:ChangesPanel Grid.Row="1" Panel.ZIndex="10" />
-                    <controls:WaitingPanel Grid.Row="1" Panel.ZIndex="20" />
-                </Grid>
+                <view:ViewPrivacy Grid.Column="1" />
+                <view:ViewSettings Grid.Column="1" />
             </Grid>
         </Grid>
     </Border>

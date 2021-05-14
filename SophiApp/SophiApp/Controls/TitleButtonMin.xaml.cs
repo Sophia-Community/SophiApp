@@ -14,9 +14,6 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
-        private void TitleButtonMin_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Application.Current.MainWindow.WindowState = WindowState.Minimized;
-        }
+        private void TitleButtonMin_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Application.Current.MainWindow.WindowState = WindowState.Minimized;
     }
 }

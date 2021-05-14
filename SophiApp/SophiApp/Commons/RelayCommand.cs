@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace SophiApp.Commons
 {
-    public class RelayCommand : ICommand
+    internal class RelayCommand : ICommand
     {
         private readonly Predicate<object> canExecute;
         private readonly Action<object> execute;

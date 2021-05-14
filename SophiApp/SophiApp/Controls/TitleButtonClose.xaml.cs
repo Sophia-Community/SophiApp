@@ -14,9 +14,6 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
-        private void TitleButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Application.Current.MainWindow.Close();
-        }
+        private void TitleButtonClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Application.Current.MainWindow.Close();
     }
 }

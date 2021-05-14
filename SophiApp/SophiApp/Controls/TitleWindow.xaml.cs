@@ -17,9 +17,7 @@ namespace SophiApp.Controls
         private void TitleWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.MouseDevice.LeftButton == MouseButtonState.Pressed)
-            {
                 Application.Current.MainWindow.DragMove();
-            }
         }
     }
 }

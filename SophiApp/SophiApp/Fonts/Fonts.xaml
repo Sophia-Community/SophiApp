@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="SegoeUI">pack://application:,,,/SophiApp;component/Fonts/#Segoe UI</FontFamily>
+    <FontFamily x:Key="SegoeUISemibold">pack://application:,,,/SophiApp;component/Fonts/#Segoe UI Semibold</FontFamily>
+</ResourceDictionary>

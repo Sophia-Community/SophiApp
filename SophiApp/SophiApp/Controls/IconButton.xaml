@@ -7,12 +7,28 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Storyboard x:Key="Animation.IconButton.Click"
+                    Storyboard.TargetName="GridContent"
+                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
+            <DoubleAnimation Duration="0:0:0.3"
+                             From="0"
+                             To="10"
+                             SpeedRatio="3"
+                             AutoReverse="True" />
+        </Storyboard>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Grid.RenderTransform">
+                <Setter.Value>
+                    <TranslateTransform X="0" Y="0" />
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="{x:Type ContentPresenter}">
             <Setter Property="Grid.Column" Value="2" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Width" Value="18" />
-            <Setter Property="Height" Value="18" />
+            <Setter Property="Width" Value="32" />
+            <Setter Property="Height" Value="32" />
             <Setter Property="Content" Value="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type Border}">
@@ -24,13 +40,19 @@
             <Setter Property="Width" Value="1" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Grid.Column" Value="1" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
+         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
             <Setter Property="Grid.Column" Value="0" />
             <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
@@ -38,15 +60,13 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
             <Setter Property="Width" Value="130" />
-            <Setter Property="Height" Value="52" />
+            <Setter Property="Height" Value="32" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
+            <Grid x:Name="GridContent">
                 <Border x:Name="BorderButton" MouseLeftButtonDown="IconButton_MouseLeftButtonDown">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -62,21 +82,15 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="True">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent}" />
+                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light1}" />
+                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
                 </Trigger>
                 <EventTrigger SourceName="BorderButton" RoutedEvent="MouseLeftButtonDown">
-                    <BeginStoryboard>
-                        <Storyboard Storyboard.TargetName="BorderButton" Storyboard.TargetProperty="Margin">
-                            <ThicknessAnimation Duration="0:0:0.3"
-                                                From="0, 0, 0, 0"
-                                                To="0, 10, 0, 0"
-                                                SpeedRatio="3"
-                                                AutoReverse="True" />
-                        </Storyboard>
-                    </BeginStoryboard>
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource Animation.IconButton.Click}" />
+                    </EventTrigger.Actions>
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

@@ -10,11 +10,11 @@ namespace SophiApp.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var localization = (UILanguage)values[0];
+            var localization = (Localization)values[0];
             var counter = System.Convert.ToString(values[1]).ToCharArray();
             var word = values[2] as string;
 
-            if (localization == UILanguage.RU)
+            if (localization.Language == UILanguage.RU)
             {
                 var eleven = new char[] { '1', '1' };
 

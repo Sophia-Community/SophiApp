@@ -94,6 +94,6 @@ namespace SophiApp.Controls
 
         private void Switch_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
 
-        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command.Execute(CommandParameter);
+        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(CommandParameter);
     }
 }
