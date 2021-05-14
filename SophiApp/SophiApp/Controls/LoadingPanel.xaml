@@ -28,7 +28,7 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Height" Value="52" />            
+            <Setter Property="Height" Value="52" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
     </UserControl.Resources>

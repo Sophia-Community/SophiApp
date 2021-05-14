@@ -6,16 +6,16 @@ namespace SophiApp.Models
 {
     internal class RadioButtonGroup : BaseContainer
     {
-        internal bool IsSelected { get; set; } = false;
-        internal uint DefaultSelectedId { get; private set; } = default;
+        public RadioButtonGroup(JsonDTO json) : base(json)
+        {
+        }
 
         public delegate void RadioButtonGroupErrorOccurred(uint id, string target, string message);
 
         public event RadioButtonGroupErrorOccurred ErrorOccurred;
 
-        public RadioButtonGroup(JsonDTO json) : base(json)
-        {
-        }
+        internal uint DefaultSelectedId { get; private set; } = default;
+        internal bool IsSelected { get; set; } = false;
 
         internal void SetDefaultSelectedId()
         {

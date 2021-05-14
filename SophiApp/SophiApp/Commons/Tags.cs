@@ -3,7 +3,7 @@
 namespace SophiApp.Commons
 {
     internal struct Tags
-    {        
+    {
         internal static readonly string ViewContextMenu = Application.Current.FindResource("Tags.View.ContextMenu") as string;
         internal static readonly string ViewGames = Application.Current.FindResource("Tags.View.Games") as string;
         internal static readonly string ViewPersonalization = Application.Current.FindResource("Tags.View.Personalization") as string;

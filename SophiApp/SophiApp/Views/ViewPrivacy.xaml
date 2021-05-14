@@ -17,15 +17,15 @@
              controls:RadioButton.MouseLeave="TextedElement_MouseLeave">
 
     <UserControl.Resources>
-        <converters:InverseBool x:Key="InverseBoolConverter"/>
-        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />        
-        <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter"/>
-        <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsCollectionFilter" />
+        <converters:InverseBool x:Key="InverseBoolConverter" />
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
+        <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter" />
         <CollectionViewSource x:Key="RadioButtonGroupCollection" Source="{Binding RadioButtonGroupElements}" Filter="RadioButtonGroupCollectionFilter" />
+        <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsCollectionFilter" />
         <CollectionViewSource x:Key="ExpandingGroupCollection" Source="{Binding ExpandingGroupElements}" Filter="ExpandingGroupCollectionFilter" />
         <CompositeCollection x:Key="CommonCollection">
-            <CollectionContainer Collection="{Binding Source={StaticResource TextedElementsCollection}}" />
             <CollectionContainer Collection="{Binding Source={StaticResource RadioButtonGroupCollection}}" />
+            <CollectionContainer Collection="{Binding Source={StaticResource TextedElementsCollection}}" />
             <CollectionContainer Collection="{Binding Source={StaticResource ExpandingGroupCollection}}" />
         </CompositeCollection>
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
@@ -67,7 +67,7 @@
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Margin" Value="20, 0, 0, 0"/>
+            <Setter Property="Margin" Value="20, 0, 0, 0" />
         </Style>
         <Style TargetType="{x:Type local:ViewPrivacy}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -91,7 +91,7 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>                    
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="6*" />
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
@@ -119,7 +119,7 @@
                                                      CommandParameter="{Binding Id}" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RadioButtonGroup}">
-                                    <controls:RadioButtonGroup Command="{Binding Path=DataContext.ContainerElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}" />
+                                    <controls:RadioButtonGroup Command="{Binding Path=DataContext.RadioButtonGroupElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
                                     <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
@@ -158,8 +158,9 @@
                 <MultiDataTrigger>
                     <!--ChangesPanel visibility trigger-->
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Privacy}" />                        
-                        <Condition Binding="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToVisibilityCollapsedConverter}}" Value="Visible"/>
+                        <Condition Binding="{Binding VisibleViewByTag}" Value="{StaticResource Tags.View.Privacy}" />
+                        <Condition Binding="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToVisibilityCollapsedConverter}}" Value="Visible" />
+                        <Condition Binding="{Binding LoadingPanelVisibility}" Value="False" />
                     </MultiDataTrigger.Conditions>
                     <Setter TargetName="ChangesPanel" Property="Visibility" Value="Visible" />
                 </MultiDataTrigger>

@@ -6,7 +6,7 @@ namespace SophiApp.Helpers
     public class AppDataManager
     {
         private const string CODER_LINK = "https://github.com/Inestic";
-        private const string DEBUG_LOG_EXT = "sad";
+        private const string DEBUG_LOG_EXT = "txt";
 
         //TODO: Set right designer homepage
         private const string DESIGNER_LINK = "https://instagram.com/user/VladimirNameless";

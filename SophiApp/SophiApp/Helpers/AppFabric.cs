@@ -27,15 +27,6 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static BaseTextedElement CreateTextElementModel(JsonDTO json)
-        {
-            var model = Type.GetType($"SophiApp.Models.{json.Model}");
-            var element = Activator.CreateInstance(model, json) as BaseTextedElement;
-            element.CurrentStateAction = FindCurrentStateAction(element.Id);
-            element.SystemStateAction = FindSystemStateAction(element.Id);
-            return element;
-        }
-
         private static Action FindSystemStateAction(uint id)
         {
             try
@@ -53,16 +44,25 @@ namespace SophiApp.Helpers
             }
         }
 
+        internal static ExpandingGroup CreateExpandingGroupModel(JsonDTO json)
+        {
+            var model = Type.GetType($"SophiApp.Models.{json.Model}");
+            return Activator.CreateInstance(model, json) as ExpandingGroup;
+        }
+
         internal static RadioButtonGroup CreateRadioButtonGroupModel(JsonDTO json)
         {
             var model = Type.GetType($"SophiApp.Models.{json.Model}");
             return Activator.CreateInstance(model, json) as RadioButtonGroup;
         }
 
-        internal static ExpandingGroup CreateExpandingGroupModel(JsonDTO json)
+        internal static BaseTextedElement CreateTextElementModel(JsonDTO json)
         {
             var model = Type.GetType($"SophiApp.Models.{json.Model}");
-            return Activator.CreateInstance(model, json) as ExpandingGroup;
+            var element = Activator.CreateInstance(model, json) as BaseTextedElement;
+            element.CurrentStateAction = FindCurrentStateAction(element.Id);
+            element.SystemStateAction = FindSystemStateAction(element.Id);
+            return element;
         }
     }
 }

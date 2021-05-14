@@ -7,7 +7,7 @@ namespace SophiApp.Models
     internal class BaseContainer : INotifyPropertyChanged
     {
         private string header;
-        public const string HeaderPropertyName = "Header";        
+        public const string HeaderPropertyName = "Header";
 
         public BaseContainer(JsonDTO json)
         {

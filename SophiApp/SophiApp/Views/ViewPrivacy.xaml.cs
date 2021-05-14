@@ -46,12 +46,24 @@ namespace SophiApp.Views
             set { SetValue(TagProperty, value); }
         }
 
+        private void ExpandingGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var group = e.Item as ExpandingGroup;
+            e.Accepted = group.Tag == Tag;
+        }
+
         private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)
         {
             e.Handled = true;
             var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta) { RoutedEvent = UIElement.MouseWheelEvent };
             var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
+        }
+
+        private void RadioButtonGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var group = e.Item as RadioButtonGroup;
+            e.Accepted = group.Tag == Tag;
         }
 
         private void TextedElement_MouseEnter(object sender, RoutedEventArgs e)
@@ -72,12 +84,6 @@ namespace SophiApp.Views
             e.Accepted = element.ContainerId == 0 && element.Tag == Tag;
         }
 
-        private void RadioButtonGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
-        {
-            var group = e.Item as RadioButtonGroup;
-            e.Accepted = group.Tag == Tag;
-        }
-
         private void ViewPrivacy_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (IsLoaded && IsVisible)
@@ -85,12 +91,6 @@ namespace SophiApp.Views
                 var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
                 scrollViewer.ScrollToTop();
             }
-        }
-
-        private void ExpandingGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
-        {
-            var group = e.Item as ExpandingGroup;
-            e.Accepted = group.Tag == Tag;
         }
     }
 }

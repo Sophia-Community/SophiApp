@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="SophiApp.Controls.Button"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
@@ -17,19 +17,15 @@
                              AutoReverse="True" />
         </Storyboard>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
             <Setter Property="Grid.RenderTransform">
                 <Setter.Value>
                     <TranslateTransform X="0" Y="0" />
                 </Setter.Value>
             </Setter>
-        </Style>        
+        </Style>
         <Style TargetType="{x:Type Border}">
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
             <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Height" Value="32" />            
+            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="1" />
@@ -46,17 +42,17 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />            
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Margin" Value="10, 5, 10, 5" />
         </Style>
         <Style TargetType="{x:Type local:Button}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Width" Value="130" />
+            <Setter Property="Width" Value="146" />
             <Setter Property="Height" Value="32" />
-            <Setter Property="Foreground" Value="{StaticResource Brush.Window.Unaccent.Light}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Unaccent.Light}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -74,7 +70,6 @@
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.80" />
-                    
                 </Trigger>
                 <EventTrigger SourceName="BorderButton" RoutedEvent="MouseLeftButtonDown">
                     <EventTrigger.Actions>

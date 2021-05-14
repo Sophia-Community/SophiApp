@@ -187,6 +187,12 @@ namespace SophiApp.Models
             }
         }
 
+        internal void SetLocalization(UILanguage language)
+        {
+            Header = Headers[language];
+            Description = Descriptions[language];
+        }
+
         internal void SetSystemState()
         {
             try
@@ -197,12 +203,6 @@ namespace SophiApp.Models
             {
                 ErrorOccurred?.Invoke(Id, e.TargetSite.Name, e.Message);
             }
-        }
-
-        internal void SetLocalization(UILanguage language)
-        {
-            Header = Headers[language];
-            Description = Descriptions[language];
         }
     }
 }

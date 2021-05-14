@@ -33,6 +33,8 @@ namespace SophiApp.Helpers
 
         internal void AddDateTimeValueString(LogType logString, string value) => logList.Add($"[{DateTime.Now}] {logString}:{value.ToUpper()}");
 
+        internal void AddDateTimeValueString(LogType logString, string id, string state) => logList.Add($"[{DateTime.Now}] {logString}:{id.ToUpper()}:{state.ToUpper()}");
+
         internal void AddKeyValueString(LogType key, string value) => logList.Add($"{key}:{value.ToUpper()}");
 
         internal void AddKeyValueString(string key, string value) => logList.Add($"{key.ToUpper()}:{value.ToUpper()}");
