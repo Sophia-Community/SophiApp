@@ -11,6 +11,7 @@
              IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
+        <converters:IntToIsEnabled x:Key="IntToIsEnabledConverter" />
         <converters:InverseBool x:Key="InverseBoolConverter" />
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
@@ -200,7 +201,9 @@
 
                             <controls:BigRedButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="0, 30, 0, 0"
-                                                   HorizontalAlignment="Left" />
+                                                   HorizontalAlignment="Left"
+                                                   IsEnabled="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToIsEnabledConverter}}"
+                                                   Command="{Binding ResetChangedElementStateCommand}" />
 
                             <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
                                        Text="{DynamicResource Localization.Settings.Debug}"

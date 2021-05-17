@@ -17,6 +17,7 @@
              controls:RadioButton.MouseLeave="TextedElement_MouseLeave">
 
     <UserControl.Resources>
+        <converters:IntToIsEnabled x:Key="IntToIsEnabledConverter" />
         <converters:InverseBool x:Key="InverseBoolConverter" />
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter" />
@@ -67,7 +68,7 @@
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Margin" Value="20, 0, 0, 0" />
+            <Setter Property="Margin" Value="20, 0, 0, 20" />
         </Style>
         <Style TargetType="{x:Type local:ViewPrivacy}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -97,12 +98,20 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
+                        <RowDefinition Height="80" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="20" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Header}" />
+
+                    <controls:ResetViewButton Grid.Row="0"
+                                              VerticalAlignment="Bottom"
+                                              HorizontalAlignment="Right"
+                                              Margin="0, 0, 47, 20"
+                                              IsEnabled="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToIsEnabledConverter}}"
+                                              Command="{Binding ResetAllElementStateCommand}" />
+
                     <ScrollViewer x:Name="ScrollViewerContent"
                                   CanContentScroll="True"
                                   Grid.Row="1"

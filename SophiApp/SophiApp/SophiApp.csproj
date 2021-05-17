@@ -111,6 +111,9 @@
     <Compile Include="Controls\RadioButtonGroup.xaml.cs">
       <DependentUpon>RadioButtonGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ResetViewButton.xaml.cs">
+      <DependentUpon>ResetViewButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,7 @@
     </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\IntToChangedWord.cs" />
+    <Compile Include="Converters\IntToIsEnabled.cs" />
     <Compile Include="Converters\IntToSettingWord.cs" />
     <Compile Include="Converters\IntToVisibilityCollapsed.cs" />
     <Compile Include="Converters\InverseBool.cs" />
@@ -221,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RadioButtonGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ResetViewButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

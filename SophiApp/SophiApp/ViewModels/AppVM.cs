@@ -40,7 +40,6 @@ namespace SophiApp.ViewModels
         {
             InitFields();
             InitCommands();
-            //TODO: Uncomment before release
             UpdateIsAvailability();
             InitTextedElements();
             InitRadioButtonGroup();
@@ -106,7 +105,8 @@ namespace SophiApp.ViewModels
         public List<string> LocalizationList => localizationManager.GetNames();
         public RelayCommand RadioButtonGroupElementClickedCommand { get; private set; }
         public List<RadioButtonGroup> RadioButtonGroupElements { get; private set; }
-        public RelayCommand ResetElementStateCommand { get; private set; }
+        public RelayCommand ResetAllElementStateCommand { get; private set; }
+        public RelayCommand ResetChangedElementStateCommand { get; private set; }
         public RelayCommand SaveDebugLogCommand { get; private set; }
 
         public RelayCommand SearchClickedCommand { get; private set; }
@@ -157,7 +157,7 @@ namespace SophiApp.ViewModels
             ResetTextedElementsChangedCounter();
             SetLoadingPanelVisibilityProperty(isVisible: true);
             await ApplyingSettingsAsync();
-            await ResetElementStateAsync();
+            await ResetChangedElementStateAsync();
             SetLoadingPanelVisibilityProperty(isVisible: false);
             logManager.AddDateTimeValueString(LogType.DONE_APPLYING_SETTINGS);
             logManager.AddSeparator();
@@ -236,7 +236,8 @@ namespace SophiApp.ViewModels
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             RadioButtonGroupElementClickedCommand = new RelayCommand(new Action<object>(RadioButtonGroupElementClickedAsync));
-            ResetElementStateCommand = new RelayCommand(new Action<object>(ResetElementStateAsync));
+            ResetChangedElementStateCommand = new RelayCommand(new Action<object>(ResetChangedElementStateAsync));
+            ResetAllElementStateCommand = new RelayCommand(new Action<object>(ResetAllElementStateAsync));
         }
 
         private void InitExpandingGroup()
@@ -402,19 +403,49 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void ResetElementStateAsync(object obj)
+        private async void ResetAllElementStateAsync(object args)
         {
             logManager.AddSeparator();
             logManager.AddDateTimeValueString(LogType.INIT_RESET_SETTINGS);
             ResetTextedElementsChangedCounter();
             SetLoadingPanelVisibilityProperty(isVisible: true);
-            await ResetElementStateAsync();
+            await ResetAllElementStateAsync();
             SetLoadingPanelVisibilityProperty(isVisible: false);
             logManager.AddDateTimeValueString(LogType.DONE_RESET_SETTINGS);
             logManager.AddSeparator();
         }
 
-        private async Task ResetElementStateAsync()
+        private async Task ResetAllElementStateAsync()
+        {
+            await Task.Run(() =>
+            {
+                TextedElements.ForEach(element =>
+                {
+                    element.GetCurrentState();
+                    Thread.Sleep(200);
+                });
+
+                RadioButtonGroupElements.ForEach(group =>
+                {
+                    group.SetDefaultSelectedId();
+                    Thread.Sleep(200);
+                });
+            });
+        }
+
+        private async void ResetChangedElementStateAsync(object args)
+        {
+            logManager.AddSeparator();
+            logManager.AddDateTimeValueString(LogType.INIT_RESET_SETTINGS);
+            ResetTextedElementsChangedCounter();
+            SetLoadingPanelVisibilityProperty(isVisible: true);
+            await ResetChangedElementStateAsync();
+            SetLoadingPanelVisibilityProperty(isVisible: false);
+            logManager.AddDateTimeValueString(LogType.DONE_RESET_SETTINGS);
+            logManager.AddSeparator();
+        }
+
+        private async Task ResetChangedElementStateAsync()
         {
             await Task.Run(() =>
             {

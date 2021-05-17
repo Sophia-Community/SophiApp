@@ -65,6 +65,9 @@
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.80" />
+                </Trigger>
                 <EventTrigger SourceName="BorderButton" RoutedEvent="MouseLeftButtonDown">
                     <EventTrigger.Actions>
                         <BeginStoryboard Storyboard="{StaticResource Animation.BigRedButton.Click}" />

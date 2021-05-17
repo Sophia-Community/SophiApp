@@ -101,7 +101,7 @@
                 <StackPanel Style="{StaticResource Style.Panel.Buttons}">
                     <local:Button Text="{DynamicResource Localization.ChangesPanel.Reset}"
                                   Margin="0, 0, 20, 0"
-                                  Command="{Binding ResetElementStateCommand}" />
+                                  Command="{Binding NONE}" />
 
                     <local:FilledButton Text="{DynamicResource Localization.ChangesPanel.Apply}"
                                         Command="{Binding ApplyingSettingsCommand}" />
