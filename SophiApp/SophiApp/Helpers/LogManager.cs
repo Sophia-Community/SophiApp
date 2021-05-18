@@ -21,11 +21,14 @@ namespace SophiApp.Helpers
 
         private void Initialize()
         {
+            var osVer = OsManager.GetProductName() ?? $"{Environment.OSVersion}";
+            var userDomain = Environment.GetEnvironmentVariable(USERDNSDOMAIN) ?? Environment.UserDomainName;
+
             AddKeyValueString(APPVERSION, $"{AppDataManager.Version}");
-            AddKeyValueString(OSVERSION, $"{Environment.OSVersion}");
+            AddKeyValueString(OSVERSION, osVer);
             AddKeyValueString(COMPUTERNAME, Environment.MachineName);
             AddKeyValueString(USERNAME, Environment.UserName);
-            AddKeyValueString(USERDOMAIN, Environment.GetEnvironmentVariable(USERDNSDOMAIN) ?? Environment.UserDomainName);
+            AddKeyValueString(USERDOMAIN, userDomain);
             AddKeyValueString(LogType.APP_STARTUP_DIR, $"{AppDataManager.StartupFolder}");
         }
 

@@ -15,7 +15,7 @@ namespace SophiApp.Helpers
             try
             {
                 var type = Type.GetType(CURRENT_STATE_ACTION_CLASS);
-                var action = type.GetMethod($"{id}", BindingFlags.Static | BindingFlags.Public);
+                var action = type.GetMethod($"_{id}", BindingFlags.Static | BindingFlags.Public);
                 return Delegate.CreateDelegate(typeof(Func<bool>), action) as Func<bool>;
             }
             catch (Exception e)
@@ -32,7 +32,7 @@ namespace SophiApp.Helpers
             try
             {
                 var type = Type.GetType(SYSTEM_STATE_ACTION_CLASS);
-                var action = type.GetMethod($"{id}", BindingFlags.Static | BindingFlags.Public);
+                var action = type.GetMethod($"_{id}", BindingFlags.Static | BindingFlags.Public);
                 return Delegate.CreateDelegate(typeof(Action), action) as Action;
             }
             catch (Exception e)

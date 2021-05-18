@@ -145,10 +145,12 @@
     <Compile Include="Helpers\FileManager.cs" />
     <Compile Include="Helpers\LocalizationManager.cs" />
     <Compile Include="Helpers\LogManager.cs" />
+    <Compile Include="Helpers\OsManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
+    <Compile Include="Helpers\RegistryPathManager.cs" />
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Models\BaseContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
