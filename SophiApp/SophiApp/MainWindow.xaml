@@ -52,7 +52,7 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Margin" Value="10, 0, 10, 0" />
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
+            <Setter Property="Fill" Value="{StaticResource Brush.Window.Title.Logo.Background}" />
         </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />

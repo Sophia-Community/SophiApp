@@ -17,7 +17,6 @@
              controls:RadioButton.MouseLeave="TextedElement_MouseLeave">
 
     <UserControl.Resources>
-        <converters:IntToIsEnabled x:Key="IntToIsEnabledConverter" />
         <converters:InverseBool x:Key="InverseBoolConverter" />
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <converters:IntToVisibilityCollapsed x:Key="IntToVisibilityCollapsedConverter" />
@@ -58,10 +57,9 @@
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUISemibold}" />
+            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontSize" Value="28" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="Grid.Row" Value="0" />
@@ -109,14 +107,13 @@
                                               VerticalAlignment="Bottom"
                                               HorizontalAlignment="Right"
                                               Margin="0, 0, 47, 20"
-                                              IsEnabled="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToIsEnabledConverter}}"
                                               Command="{Binding ResetAllElementStateCommand}" />
 
                     <ScrollViewer x:Name="ScrollViewerContent"
                                   CanContentScroll="True"
                                   Grid.Row="1"
                                   Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                  BorderBrush="{DynamicResource Brush.Window.Unaccent}"
+                                  BorderBrush="{DynamicResource Brush.Window.Foreground}"
                                   IsTabStop="False"
                                   Focusable="False">
 

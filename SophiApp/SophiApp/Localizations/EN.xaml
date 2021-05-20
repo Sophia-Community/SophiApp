@@ -2,6 +2,40 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+    <system:String x:Key="Localization.Settings.Themes.Light">Light</system:String>
+    <system:String x:Key="Localization.Settings.Themes.Dark">Dark</system:String>
     <system:String x:Key="Localization.Privacy">Privacy</system:String>
+    <system:String x:Key="Localization.Personalization">Personalization</system:String>
+    <system:String x:Key="Localization.System">System</system:String>
+    <system:String x:Key="Localization.StartMenu">Start Menu</system:String>
+    <system:String x:Key="Localization.UwpApps">Uwp Apps</system:String>
+    <system:String x:Key="Localization.Games">Games</system:String>
+    <system:String x:Key="Localization.TaskSheduler">Task Sheduler</system:String>
+    <system:String x:Key="Localization.Security">Security</system:String>
+    <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
+    <system:String x:Key="Localization.Settings.Languages">Язык интерфейса</system:String>
+    <system:String x:Key="Localization.Settings.Themes">Использовать тему</system:String>
+    <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
+    <system:String x:Key="Localization.Settings.Updates">Обновления</system:String>
+    <system:String x:Key="Localization.Settings.Version">Версия</system:String>
+    <system:String x:Key="Localization.Settings.UpdateVersion">Обновить версию</system:String>
+    <system:String x:Key="Localization.Settings.Import">Import</system:String>
+    <system:String x:Key="Localization.Settings.Export">Export</system:String>
+    <system:String x:Key="Localization.Settings.Advanced">Расширенные настройки</system:String>
+    <system:String x:Key="Localization.Settings.Reset">Вернуть все настройки по умолчанию</system:String>
+    <system:String x:Key="Localization.Settings.Debug">Отладка</system:String>
+    <system:String x:Key="Localization.Settings.Debug.Save">Создать файл отладки</system:String>
+    <system:String x:Key="Localization.Settings.Team">Участники проекта</system:String>
+    <system:String x:Key="Localization.Settings.Designer">Дизайнер:</system:String>
+    <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
+    <system:String x:Key="Localization.Settings.Leader">Лидер и мотиватор:</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry Nefedov aka Farag2</system:String>
+    <system:String x:Key="Localization.Settings.Coder">Кодер</system:String>
+    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry Demin aka Inestic</system:String>
+    <system:String x:Key="Localization.Search">Search</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Changed">Изменено</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Setting">настроек</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Reset">Reset</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Apply">Apply</system:String>
 </ResourceDictionary>

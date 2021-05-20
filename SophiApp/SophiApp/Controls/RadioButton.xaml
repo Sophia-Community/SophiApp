@@ -34,7 +34,7 @@
             <Setter Property="Height" Value="8" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Fill" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="MinWidth" Value="450" />
@@ -51,7 +51,6 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
     </UserControl.Resources>
@@ -75,8 +74,8 @@
                 </Trigger>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
                     <Setter TargetName="BorderRound" Property="BorderThickness" Value="1" />
-                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
-                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                     <Setter TargetName="EllipseDot" Property="Visibility" Value="Hidden" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">

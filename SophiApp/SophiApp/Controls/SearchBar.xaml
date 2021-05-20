@@ -11,13 +11,13 @@
         <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="2" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.SearchBar.Foreground}" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
             <Setter Property="FontWeight" Value="Regular" />
@@ -35,16 +35,9 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="Grid.Column" Value="0" />
             <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
-        </Style>
-        <Style TargetType="{x:Type Viewbox}">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Width" Value="16" />
-            <Setter Property="Height" Value="16" />
-        </Style>
-        <Style TargetType="{x:Type Canvas}">
-            <Setter Property="Width" Value="{Binding Path=Width, ElementName=ViewboxSearch}" />
-            <Setter Property="Height" Value="{Binding Path=Height, ElementName=ViewboxSearch}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="CaretBrush" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type local:SearchBar}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -52,6 +45,8 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Width" Value="230" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>

@@ -157,7 +157,9 @@ namespace SophiApp.ViewModels
             ResetTextedElementsChangedCounter();
             SetLoadingPanelVisibilityProperty(isVisible: true);
             await ApplyingSettingsAsync();
-            await ResetChangedElementStateAsync();
+            await GetPauseAsync(5000);
+            await ResetAllElementStateAsync();
+            await GetPauseAsync(5000);
             SetLoadingPanelVisibilityProperty(isVisible: false);
             logManager.AddDateTimeValueString(LogType.DONE_APPLYING_SETTINGS);
             logManager.AddSeparator();
@@ -173,7 +175,7 @@ namespace SophiApp.ViewModels
                               .ForEach(element =>
                               {
                                   element.SetSystemState();
-                                  Thread.Sleep(200);
+                                  Thread.Sleep(500);
                               });
             });
         }
@@ -204,6 +206,8 @@ namespace SophiApp.ViewModels
             //TODO: Export Settings not implemented
             //TODO: Allow export is ChangedElementsCounter > 0
         }
+
+        private async Task GetPauseAsync(int milliseconds) => await Task.Run(() => Thread.Sleep(milliseconds));
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
@@ -236,7 +240,6 @@ namespace SophiApp.ViewModels
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             RadioButtonGroupElementClickedCommand = new RelayCommand(new Action<object>(RadioButtonGroupElementClickedAsync));
-            ResetChangedElementStateCommand = new RelayCommand(new Action<object>(ResetChangedElementStateAsync));
             ResetAllElementStateCommand = new RelayCommand(new Action<object>(ResetAllElementStateAsync));
         }
 
@@ -351,7 +354,6 @@ namespace SophiApp.ViewModels
             logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_GROUP_ID_HAS_ERROR, $"{id}");
             logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_GROUP_ERROR_TARGET, target);
             logManager.AddDateTimeValueString(LogType.RADIO_BUTTONS_GROUP_ERROR_MESSAGE, message);
-            logManager.AddSeparator();
             await OnRadioButtonGroupErrorOccurredAsync(id);
         }
 
@@ -369,7 +371,6 @@ namespace SophiApp.ViewModels
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ID_HAS_ERROR, $"{id}");
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_TARGET, target);
             logManager.AddDateTimeValueString(LogType.TEXTED_ELEMENT_ERROR_MESSAGE, message);
-            logManager.AddSeparator();
             await OnTextedElementErrorOccurredAsync(id);
         }
 
@@ -424,38 +425,6 @@ namespace SophiApp.ViewModels
                     element.GetCurrentState();
                     Thread.Sleep(200);
                 });
-
-                RadioButtonGroupElements.ForEach(group =>
-                {
-                    group.SetDefaultSelectedId();
-                    Thread.Sleep(200);
-                });
-            });
-        }
-
-        private async void ResetChangedElementStateAsync(object args)
-        {
-            logManager.AddSeparator();
-            logManager.AddDateTimeValueString(LogType.INIT_RESET_SETTINGS);
-            ResetTextedElementsChangedCounter();
-            SetLoadingPanelVisibilityProperty(isVisible: true);
-            await ResetChangedElementStateAsync();
-            SetLoadingPanelVisibilityProperty(isVisible: false);
-            logManager.AddDateTimeValueString(LogType.DONE_RESET_SETTINGS);
-            logManager.AddSeparator();
-        }
-
-        private async Task ResetChangedElementStateAsync()
-        {
-            await Task.Run(() =>
-            {
-                TextedElements.Where(element => element.State == UIElementState.SETTOACTIVE || element.State == UIElementState.SETTODEFAULT)
-                              .ToList()
-                              .ForEach(element =>
-                              {
-                                  element.GetCurrentState();
-                                  Thread.Sleep(200);
-                              });
 
                 RadioButtonGroupElements.ForEach(group =>
                 {

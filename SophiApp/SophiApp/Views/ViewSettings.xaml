@@ -11,7 +11,6 @@
              IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
-        <converters:IntToIsEnabled x:Key="IntToIsEnabledConverter" />
         <converters:InverseBool x:Key="InverseBoolConverter" />
         <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <Thickness x:Key="Animation.Page.Margin">0, 10, 0, 0</Thickness>
@@ -88,7 +87,7 @@
                     <ScrollViewer x:Name="ScrollViewerContent"
                                   CanContentScroll="True"
                                   Grid.Row="1"
-                                  BorderBrush="{DynamicResource Brush.Window.Unaccent}"
+                                  BorderBrush="{DynamicResource Brush.Window.Foreground}"
                                   IsTabStop="False"
                                   Focusable="False">
 
@@ -128,15 +127,15 @@
                             <StackPanel Orientation="Horizontal">
 
                                 <TextBlock Style="{StaticResource Style.TextBlock.BasicText}"
-                                           Foreground="{DynamicResource Brush.Window.Unaccent}"
+                                           Foreground="{DynamicResource Brush.Window.Foreground}"
                                            Text="{DynamicResource Localization.Settings.Version}" />
 
                                 <TextBlock Style="{StaticResource Style.TextBlock.BasicText}"
-                                           Foreground="{DynamicResource Brush.Window.Unaccent}"
+                                           Foreground="{DynamicResource Brush.Window.Foreground}"
                                            Text=":" />
 
                                 <TextBlock Style="{StaticResource Style.TextBlock.BasicText}"
-                                           Foreground="{DynamicResource Brush.Window.Unaccent}"
+                                           Foreground="{DynamicResource Brush.Window.Foreground}"
                                            Text="{Binding Source={x:Static helpers:AppDataManager.Version}}"
                                            Margin="3, 0, 0, 0" />
                             </StackPanel>
@@ -202,8 +201,7 @@
                             <controls:BigRedButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="0, 30, 0, 0"
                                                    HorizontalAlignment="Left"
-                                                   IsEnabled="{Binding TextedElementsChangedCounter, Converter={StaticResource IntToIsEnabledConverter}}"
-                                                   Command="{Binding ResetChangedElementStateCommand}" />
+                                                   Command="{Binding ResetAllElementStateCommand}" />
 
                             <TextBlock Style="{StaticResource Style.TextBlock.SubHeader}"
                                        Text="{DynamicResource Localization.Settings.Debug}"

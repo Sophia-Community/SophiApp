@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -134,7 +135,6 @@
     </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\IntToChangedWord.cs" />
-    <Compile Include="Converters\IntToIsEnabled.cs" />
     <Compile Include="Converters\IntToSettingWord.cs" />
     <Compile Include="Converters\IntToVisibilityCollapsed.cs" />
     <Compile Include="Converters\InverseBool.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
     <Compile Include="Helpers\RegistryPathManager.cs" />
+    <Compile Include="Helpers\ServiceManager.cs" />
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Models\BaseContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />

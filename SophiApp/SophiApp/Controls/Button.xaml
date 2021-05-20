@@ -52,7 +52,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Width" Value="146" />
             <Setter Property="Height" Value="32" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Unaccent.Light}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Unaccent}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -65,8 +65,8 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="True">
                     <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-                    <Setter TargetName="BorderButton" Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
-                    <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Unaccent}" />
+                    <Setter TargetName="BorderButton" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.80" />

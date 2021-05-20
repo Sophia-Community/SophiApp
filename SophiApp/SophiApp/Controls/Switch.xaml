@@ -92,8 +92,8 @@
                 </Trigger>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
                     <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="1" />
-                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
-                    <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
                 </Trigger>
                 <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">

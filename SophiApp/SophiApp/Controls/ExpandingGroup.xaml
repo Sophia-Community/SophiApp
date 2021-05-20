@@ -19,7 +19,7 @@
         </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="0.5" />
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent.Light1}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
             <Setter Property="Margin" Value="0, 5, 0, 10" />
         </Style>
         <Style TargetType="{x:Type DockPanel}">
