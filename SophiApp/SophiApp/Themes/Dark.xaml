@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <DropShadowEffect x:Key="Effect.DropShadow.Hamburger.Icon" Color="Transparent" Opacity="0" Direction="0" BlurRadius="0" />
     <LinearGradientBrush x:Key="Brush.Window.Title.Logo.Background" StartPoint="0,0" EndPoint="0,1">
         <GradientStop Color="#ec939e" Offset="0.2" />
         <GradientStop Color="#8b95e5" Offset="0.8" />

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SophiApp.Commons
+namespace SophiApp.ViewModels
 {
-    internal enum UILanguage
+    internal partial class AppVM
     {
-        EN,
-        RU
+        public AppVM()
+        {
+            InitFields();
+        }
     }
 }
