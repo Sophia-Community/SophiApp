@@ -7,17 +7,17 @@
         xmlns:controls="clr-namespace:SophiApp.Controls"
         xmlns:local="clr-namespace:SophiApp"
         WindowStartupLocation="CenterScreen"
-        mc:Ignorable="d" 
+        mc:Ignorable="d"
         Loaded="Window_Loaded">
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" 
-                      ResizeBorderThickness="3" 
-                      GlassFrameThickness="0" 
+        <WindowChrome CaptionHeight="0"
+                      ResizeBorderThickness="3"
+                      GlassFrameThickness="0"
                       CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Style>
-        <Style TargetType="{x:Type Window}">            
+        <Style TargetType="{x:Type Window}">
             <Setter Property="WindowStyle" Value="None" />
             <Setter Property="AllowsTransparency" Value="False" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -30,7 +30,7 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Title" Value="{Binding Path=(helpers:AppData.AppName)}" />
-        </Style>        
+        </Style>
     </Window.Style>
     <Window.Resources>
         <Style x:Key="SmallText" TargetType="{x:Type TextBlock}">
@@ -39,7 +39,7 @@
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
             <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="14" />            
+            <Setter Property="FontSize" Value="14" />
         </Style>
         <Style x:Key="NormalText" TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -47,7 +47,7 @@
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
             <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="20" />            
+            <Setter Property="FontSize" Value="18" />
         </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />
@@ -66,25 +66,36 @@
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250" />
-                    <!--Hamburger Row-->
+                    <!--Hamburger Title Row-->
+                    <ColumnDefinition Width="260" />
+                    <!--Views Title Row-->
                     <ColumnDefinition Width="*" />
-                    <!--Views Row-->
-                </Grid.ColumnDefinitions>                
-                <controls:TitleLeft Grid.Column="0"/>
-                <controls:TitleRight Grid.Column="1"/>
+                </Grid.ColumnDefinitions>
+                <controls:TitleLeft Grid.Column="0" />
+                <controls:TitleRight Grid.Column="1" />
             </Grid>
 
             <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250" />
+                    <!--Hamburger Column-->
+                    <ColumnDefinition Width="260" />
+                    <!--Views and Info Panel Column-->
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
+                <controls:HamburgerMenu Grid.Column="0" />
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <!--Views Row-->
+                        <RowDefinition Height="*" />
+                        <!--Info Panel Row-->
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+
                 <!--<controls:HamburgerMenu Grid.Column="0" />
                 <view:ViewPrivacy Grid.Column="1" />
                 <view:ViewSettings Grid.Column="1" />-->
-                
             </Grid>
         </Grid>
     </Border>

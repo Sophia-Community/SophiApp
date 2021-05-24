@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace SophiApp.Helpers
 {
@@ -10,6 +7,8 @@ namespace SophiApp.Helpers
     {
         private const string APP_NAME = "SophiApp";
 
+        internal static string StartupFolder { get => AppDomain.CurrentDomain.BaseDirectory; }
+        internal static Version Version { get => Assembly.GetExecutingAssembly().GetName().Version; }
         public static string AppName { get => APP_NAME; }
     }
 }

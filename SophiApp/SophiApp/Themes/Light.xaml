@@ -7,7 +7,7 @@
         <GradientStop Color="#8b95e5" Offset="0.8" />
     </LinearGradientBrush>
     <SolidColorBrush x:Key="Brush.Window.Background" Color="#FFFFFF" />
-    <SolidColorBrush x:Key="Brush.Window.Foreground" Color="#201F1E" />
+    <SolidColorBrush x:Key="Brush.Window.Foreground" Color="#000000" />
     <SolidColorBrush x:Key="Brush.Button.Foreground" Color="#FFFFFF" />
     <SolidColorBrush x:Key="Brush.Window.Unaccent" Color="#BEBEBE" />
     <SolidColorBrush x:Key="Brush.Window.Element.Hover" Color="#F1F1F1" />

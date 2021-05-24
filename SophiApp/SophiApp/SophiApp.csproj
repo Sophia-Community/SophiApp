@@ -76,22 +76,54 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\DebuggerRecord.cs" />
     <Compile Include="Commons\Localization.cs" />
+    <Compile Include="Commons\RelayCommand.cs" />
+    <Compile Include="Commons\Tags.cs" />
     <Compile Include="Commons\Theme.cs" />
     <Compile Include="Commons\UILanguage.cs" />
+    <Compile Include="Controls\HamburgerButton.xaml.cs">
+      <DependentUpon>HamburgerButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HamburgerMenu.xaml.cs">
+      <DependentUpon>HamburgerMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchBar.xaml.cs">
+      <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TitleLeft.xaml.cs">
       <DependentUpon>TitleLeft.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TitleRight.xaml.cs">
       <DependentUpon>TitleRight.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TagToVisibility.cs" />
+    <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
+    <Compile Include="Helpers\OsManager.cs" />
+    <Compile Include="Helpers\RegPath.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="ViewModels\AppVM-Ctor.cs" />
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />
     <Compile Include="ViewModels\AppVM-Props.cs" />
     <Page Include="Commons\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commons\Tags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HamburgerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HamburgerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SearchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
