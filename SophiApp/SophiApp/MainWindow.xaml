@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:helpers="clr-namespace:SophiApp.Helpers"
         xmlns:controls="clr-namespace:SophiApp.Controls"
+        xmlns:views="clr-namespace:SophiApp.Views"
         xmlns:local="clr-namespace:SophiApp"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
@@ -91,11 +92,8 @@
                         <!--Info Panel Row-->
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <views:ViewLoading Grid.Row="0" Tag="{StaticResource Tags.View.Loading}" />
                 </Grid>
-
-                <!--<controls:HamburgerMenu Grid.Column="0" />
-                <view:ViewPrivacy Grid.Column="1" />
-                <view:ViewSettings Grid.Column="1" />-->
             </Grid>
         </Grid>
     </Border>

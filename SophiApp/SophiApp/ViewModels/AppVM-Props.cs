@@ -9,12 +9,13 @@ namespace SophiApp.ViewModels
         private const string AppThemePropertyName = "AppTheme";
         private const string IsHitTestVisiblePropertyName = "IsHitTestVisible";
         private const string LocalizationPropertyName = "Localization";
+        private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
-
         private Debugger debugger;
         private bool isHitTestVisible;
         private LocalizationsHelper localizationsHelper;
         private ThemesHelper themesHelper;
+        private bool updateAvailable;
         private string visibleViewByTag;
 
         public Theme AppTheme
@@ -50,6 +51,16 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand SearchClickedCommand { get; private set; }
+
+        public bool UpdateAvailable
+        {
+            get => updateAvailable;
+            set
+            {
+                updateAvailable = value;
+                OnPropertyChanged(UpdateAvailablePropertyName);
+            }
+        }
 
         public string VisibleViewByTag
         {

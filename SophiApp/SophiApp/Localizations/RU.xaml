@@ -30,9 +30,9 @@
     <system:String x:Key="Localization.Settings.Designer">Дизайнер:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
     <system:String x:Key="Localization.Settings.Leader">Лидер и мотиватор:</system:String>
-    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry Nefedov aka Farag2</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry Nefedov (Farag2)</system:String>
     <system:String x:Key="Localization.Settings.Coder">Кодер</system:String>
-    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry Demin aka Inestic</system:String>
+    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry Demin (Inestic)</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
     <system:String x:Key="Localization.ChangesPanel.Changed">Изменено</system:String>
     <system:String x:Key="Localization.ChangesPanel.Setting">настроек</system:String>

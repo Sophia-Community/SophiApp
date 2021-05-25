@@ -13,6 +13,11 @@ namespace SophiApp
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) => Application.Current.MainWindow.DataContext = new AppVM();
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var appVM = new AppVM();
+            Application.Current.MainWindow.DataContext = appVM;
+            appVM.InitData();
+        }
     }
 }
