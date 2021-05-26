@@ -72,3 +72,7 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
 # Expands a Microsoft @-prefixed indirect string
 
 https://github.com/SamuelArnold/StarKill3r/blob/master/Star%20Killer/Star%20Killer/bin/Debug/Scripts/SANS-SEC505-master/scripts/Day1-PowerShell/Expand-IndirectString.ps1
+
+# Updated UI translation
+https://raw.githubusercontent.com/Sophia-Community/SophiApp/Ref/SophiApp/SophiApp/Localizations/EN.xaml
+https://raw.githubusercontent.com/Sophia-Community/SophiApp/Ref/SophiApp/SophiApp/Localizations/RU.xaml
