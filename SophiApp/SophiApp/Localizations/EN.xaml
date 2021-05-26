@@ -10,7 +10,7 @@
     <system:String x:Key="Localization.StartMenu">Start Menu</system:String>
     <system:String x:Key="Localization.UwpApps">UWP Apps</system:String>
     <system:String x:Key="Localization.Games">Games</system:String>
-    <system:String x:Key="Localization.TaskSheduler">Scheduled Tasks</system:String>
+    <system:String x:Key="Localization.TaskSheduler">Task Scheduler</system:String>
     <system:String x:Key="Localization.Security">Security</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
