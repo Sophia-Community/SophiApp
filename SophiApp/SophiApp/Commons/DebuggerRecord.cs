@@ -20,5 +20,10 @@
         UPDATE_VERSION_IS_DRAFT, // Is draft release version
         UPDATE_VERSION_REQUIRED, // Need update
         UPDATE_VERSION_NOT_REQUIRED, // Not need update
+        INIT_TEXTED_ELEMENT,
+        ELEMENT_STATE,
+        ELEMENT_HAS_ERROR,
+        ELEMENT_ERROR_TARGET,
+        ELEMENT_ERROR_MESSAGE,
     }
 }

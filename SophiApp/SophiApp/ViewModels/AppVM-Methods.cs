@@ -1,5 +1,6 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
+using SophiApp.Models;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -25,10 +26,53 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                UpdateIsAvailable();
+                //TODO: Remove before release !!!
+                //UpdateIsAvailable();
+                InitTextedElements();
                 Thread.Sleep(3000);
             });
         }
+
+        private void InitTextedElements()
+        {
+            debugger.AddRecord(DebuggerRecord.INIT_TEXTED_ELEMENT);
+            TextedElements = Parser.ParseJson(Properties.Resources.UIData).Where(dto => dto.Type == UIType.TextedElement)
+                                                                          .Select(dto => ElementsFabric.Create(dto))
+                                                                          .ToList();
+
+            TextedElements.Where(element => element.IsContainer is false)
+                          .ToList()
+                          .ForEach(element => 
+                          {
+                              element.StateChanged += OnElementStateChanged;
+                              element.ErrorOccurred += OnElementErrorOccurredAsync;
+                              //TODO: element.SetLocalization()
+                              element.GetCurrentState();
+                          });
+
+
+            debugger.AddRecord();
+        }
+
+        private async void OnElementErrorOccurredAsync(uint id, string target, string message)
+        {
+            debugger.AddRecord();
+            debugger.AddRecord(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
+            debugger.AddRecord(DebuggerRecord.ELEMENT_ERROR_TARGET, $"{target}"); //TODO: Test this !!!
+            debugger.AddRecord(DebuggerRecord.ELEMENT_ERROR_MESSAGE, $"{message}");
+            debugger.AddRecord();
+            await ElementErrorOccurredAsync(id);
+        }
+
+        private async Task ElementErrorOccurredAsync(uint id)
+        {
+            await Task.Run(() =>
+           {
+               
+           });
+        }
+
+        private void OnElementStateChanged(uint id, UIElementState state) => debugger.AddRecord(DebuggerRecord.ELEMENT_STATE, $"{id}", $"{state}");        
 
         private void InitProps()
         {
@@ -68,7 +112,7 @@ namespace SophiApp.ViewModels
 
         private void UpdateIsAvailable()
         {
-            HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubReleases);
+            HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubApiReleases);
             request.UserAgent = AppData.UserAgent;
 
             try
@@ -92,7 +136,7 @@ namespace SophiApp.ViewModels
                         debugger.AddRecord(DebuggerRecord.UPDATE_VERSION_REQUIRED);
                         debugger.AddRecord();
                         SetUpdateAvailableProperty(true);
-                        Toaster.ShowUpdateToast();
+                        Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.Tag_Name);
                         return;
                     }
 
@@ -103,6 +147,7 @@ namespace SophiApp.ViewModels
             catch (Exception e)
             {
                 debugger.AddRecord(DebuggerRecord.UPDATE_HAS_ERROR, e.Message);
+                debugger.AddRecord();
             }
         }
 

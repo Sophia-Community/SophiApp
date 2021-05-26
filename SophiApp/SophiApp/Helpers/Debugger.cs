@@ -30,6 +30,8 @@ namespace SophiApp.Helpers
 
         internal void AddRecord(DebuggerRecord record, string value) => log.Add($"[{DateTime.Now}] {record}:{value.ToUpper()}");
 
+        internal void AddRecord(DebuggerRecord record, string id, string state) => log.Add($"[{DateTime.Now}] {record}:{id.ToUpper()}:{state.ToUpper()}");
+
         internal List<string> GetLog() => log;
 
         internal void InitRecord(DebuggerRecord key, string value) => log.Add($"{key}:{value.ToUpper()}");

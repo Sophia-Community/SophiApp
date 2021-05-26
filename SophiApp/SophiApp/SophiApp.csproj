@@ -80,13 +80,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\CurrentStateAction.cs" />
+    <Compile Include="Actions\SystemStateAction.cs" />
     <Compile Include="Commons\DebuggerRecord.cs" />
     <Compile Include="Commons\GitHubReleaseDTO.cs" />
+    <Compile Include="Commons\JsonDTO.cs" />
     <Compile Include="Commons\Localization.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Commons\Theme.cs" />
+    <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
+    <Compile Include="Commons\UIType.cs" />
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -107,12 +112,19 @@
     </Compile>
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\Debugger.cs" />
+    <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RegPath.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
+    <Compile Include="Models\BaseTextedElement.cs" />
+    <Compile Include="Models\CheckBox.cs" />
+    <Compile Include="Models\ExpandingGroup.cs" />
+    <Compile Include="Models\RadioButton.cs" />
+    <Compile Include="Models\RadioButtonsGroup.cs" />
+    <Compile Include="Models\Switch.cs" />
     <Compile Include="ViewModels\AppVM-Ctor.cs" />
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />
@@ -205,6 +217,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <Resource Include="Resources\UIData.json" />
     <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -231,9 +244,6 @@
       <Version>4.3.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

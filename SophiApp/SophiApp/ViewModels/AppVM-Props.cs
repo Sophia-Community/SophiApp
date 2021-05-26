@@ -1,5 +1,7 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
+using SophiApp.Models;
+using System.Collections.Generic;
 using Debugger = SophiApp.Helpers.Debugger;
 
 namespace SophiApp.ViewModels
@@ -17,6 +19,8 @@ namespace SophiApp.ViewModels
         private ThemesHelper themesHelper;
         private bool updateAvailable;
         private string visibleViewByTag;
+
+        public List<BaseTextedElement> TextedElements { get; private set; }
 
         public Theme AppTheme
         {
