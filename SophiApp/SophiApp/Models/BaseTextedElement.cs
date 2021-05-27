@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SophiApp.Models
 {
@@ -28,23 +25,25 @@ namespace SophiApp.Models
             ContainerId = json.ContainerId;
             Id = json.Id;
             Descriptions = json.Descriptions;
-            Headers = json.Headers;            
+            Headers = json.Headers;
             Tag = json.Tag;
             IsContainer = json.IsContainer;
         }
 
         public delegate void TextedElementErrorOccurred(uint id, string target, string message);
+
         public delegate void TextedElementStateHandler(uint id, UIElementState state);
 
         public event TextedElementErrorOccurred ErrorOccurred;
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         public event TextedElementStateHandler StateChanged;
 
-        private Dictionary<UILanguage, string> Descriptions { get; set; }
-        private Dictionary<UILanguage, string> Headers { get; set; }
+        internal Dictionary<UILanguage, string> Descriptions { get; set; }
+        internal Dictionary<UILanguage, string> Headers { get; set; }
+        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
         public uint ContainerId { get; set; }
-
-        public bool IsContainer { get; set; }
 
         public string Description
         {
@@ -79,6 +78,7 @@ namespace SophiApp.Models
         }
 
         public bool IsClicked { get; set; }
+        public bool IsContainer { get; set; }
 
         public bool IsEnabled
         {
@@ -88,7 +88,7 @@ namespace SophiApp.Models
                 isEnabled = value;
                 OnPropertyChanged(IsEnabledPropertyName);
             }
-        }        
+        }
 
         public UIElementState State
         {
@@ -190,11 +190,10 @@ namespace SophiApp.Models
             Description = Descriptions[language];
         }
 
-        internal void SetSystemState()
+        internal void SetSystemState(bool state)
         {
             try
             {
-                var state = true;
                 SystemStateAction(state);
             }
             catch (Exception e)

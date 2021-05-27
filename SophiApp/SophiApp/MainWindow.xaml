@@ -92,7 +92,8 @@
                         <!--Info Panel Row-->
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <views:ViewLoading Grid.Row="0" Tag="{StaticResource Tags.View.Loading}" />
+                    <views:ViewLoading Grid.Row="0" />
+                    <views:ViewPrivacy Grid.Row="0" />
                 </Grid>
             </Grid>
         </Grid>

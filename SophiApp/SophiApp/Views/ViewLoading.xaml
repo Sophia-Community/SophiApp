@@ -2,31 +2,31 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Views"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:TagToVisibility x:Key="Tag.To.Visibility.Converter" />
         <Style TargetType="{x:Type local:ViewLoading}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Loading}" />
-            <Setter Property="Visibility">
-                <Setter.Value>
-                    <MultiBinding Converter="{StaticResource Tag.To.Visibility.Converter}">
-                        <Binding Path="VisibleViewByTag" UpdateSourceTrigger="PropertyChanged" />
-                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
-                    </MultiBinding>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Visibility" Value="Collapsed" />
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <controls:LoadingRing Visibility="{Binding Path=Visibility, RelativeSource={RelativeSource TemplatedParent}}" />
-    </Grid>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid>
+                <controls:LoadingRing Visibility="{Binding Path=Visibility, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Loading}">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
 </UserControl>

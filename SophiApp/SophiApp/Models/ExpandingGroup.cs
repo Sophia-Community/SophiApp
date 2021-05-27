@@ -1,16 +1,18 @@
 ﻿using SophiApp.Commons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SophiApp.Interfaces;
 
 namespace SophiApp.Models
 {
-    internal class ExpandingGroup : BaseTextedElement
+    internal class ExpandingGroup : BaseTextedElement, IContainer
     {
         public ExpandingGroup(JsonDTO json) : base(json)
         {
+        }
+
+        void IContainer.SetLocalization(UILanguage language)
+        {
+            Header = Headers[language];
+            Collection.ForEach(element => element.SetLocalization(language));
         }
     }
 }

@@ -20,8 +20,6 @@ namespace SophiApp.ViewModels
         private bool updateAvailable;
         private string visibleViewByTag;
 
-        public List<BaseTextedElement> TextedElements { get; private set; }
-
         public Theme AppTheme
         {
             get => themesHelper.Selected;
@@ -55,6 +53,7 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand SearchClickedCommand { get; private set; }
+        public List<BaseTextedElement> TextedElements { get; private set; }
 
         public bool UpdateAvailable
         {
