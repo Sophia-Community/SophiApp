@@ -41,3 +41,4 @@
     <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление SophiApp</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
 </ResourceDictionary>
+
