@@ -20,6 +20,7 @@ namespace SophiApp.ViewModels
         {
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
+            TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
         }
 
         private void InitProps()
@@ -109,6 +110,25 @@ namespace SophiApp.ViewModels
 
         private async Task SetPause(int milliseconds) => await Task.Run(() => Thread.Sleep(milliseconds));
 
+        private void SetTextedElementsChangedCounter(UIElementState elementState)
+        {
+            switch (elementState)
+            {
+                case UIElementState.SETTOACTIVE:
+                case UIElementState.SETTODEFAULT:
+                    TextedElementsChangedCounter++;
+                    break;
+
+                case UIElementState.CHECKED:
+                case UIElementState.UNCHECKED:
+                    TextedElementsChangedCounter--;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         private async Task SetTextedElementsLocalizationAsync(UILanguage language)
         {
             await Task.Run(() =>
@@ -129,6 +149,18 @@ namespace SophiApp.ViewModels
         private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
+
+        private async void TextedElementClickedAsync(object args) => await TextedElementClickedAsync(id: Convert.ToUInt32(args));
+
+        private async Task TextedElementClickedAsync(uint id)
+        {
+            await Task.Run(() =>
+            {
+                var element = TextedElements.First(e => e.Id == id);
+                element.ChangeState();
+                SetTextedElementsChangedCounter(element.State);
+            });
+        }
 
         private async Task UpdateIsAvailableAsync()
         {

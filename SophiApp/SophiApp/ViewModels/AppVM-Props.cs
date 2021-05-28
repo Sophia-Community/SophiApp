@@ -8,14 +8,18 @@ namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
+        //TODO: Check all controls IsEnabled property!
+
         private const string AppThemePropertyName = "AppTheme";
         private const string IsHitTestVisiblePropertyName = "IsHitTestVisible";
         private const string LocalizationPropertyName = "Localization";
+        private const string TextedElementsChangedCounterPropertyName = "TextedElementsChangedCounter";
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
         private Debugger debugger;
         private bool isHitTestVisible;
         private LocalizationsHelper localizationsHelper;
+        private uint textedElementsChangedCounter;
         private ThemesHelper themesHelper;
         private bool updateAvailable;
         private string visibleViewByTag;
@@ -53,7 +57,18 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand SearchClickedCommand { get; private set; }
+        public RelayCommand TextedElementClickedCommand { get; private set; }
         public List<BaseTextedElement> TextedElements { get; private set; }
+
+        public uint TextedElementsChangedCounter
+        {
+            get => textedElementsChangedCounter;
+            set
+            {
+                textedElementsChangedCounter = value;
+                OnPropertyChanged(TextedElementsChangedCounterPropertyName);
+            }
+        }
 
         public bool UpdateAvailable
         {

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.Models;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SophiApp.Views
@@ -41,6 +42,24 @@ namespace SophiApp.Views
         {
             get { return (string)GetValue(TagProperty); }
             set { SetValue(TagProperty, value); }
+        }
+
+        private void TextedElement_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Description = e.OriginalSource as string;
+        }
+
+        private void TextedElement_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Description = string.Empty;
+        }
+
+        private void TextedElementsFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var element = e.Item as BaseTextedElement;
+            e.Accepted = element.Tag == Tag;
         }
     }
 }

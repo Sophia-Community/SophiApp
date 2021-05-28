@@ -50,6 +50,14 @@
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="18" />
         </Style>
+        <Style x:Key="HeaderText" TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="28" />
+        </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />

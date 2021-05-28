@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="SophiApp.Controls.ResetButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="GridContent"
+                              Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Canvas VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="36"
+                                    Height="22">
+                                <Path Data="M26.5107 17.4535C26.129 17.1396 25.5716 17.1666 25.2217 17.5156C23.6439 19.0891 21.5192 20.0111 19.2717 20.0738C14.4367 20.2089 10.3934 16.3853 10.2583 11.5503C10.1624 8.11602 12.0831 4.98497 15.0672 3.47522L15.3761 4.74164C15.4474 5.034 15.8117 5.13485 16.0232 4.92078L18.9642 1.94373C19.1654 1.74006 19.0814 1.39579 18.8091 1.30766L14.8276 0.0192008C14.5413 -0.0734398 14.2643 0.183814 14.3356 0.476173L14.6016 1.56676C10.7348 3.3235 8.21529 7.26532 8.33646 11.604C8.5015 17.5125 13.4164 22.1607 19.3253 21.9957C22.0651 21.9191 24.6551 20.7955 26.5783 18.8779C26.9811 18.4763 26.9501 17.8148 26.5107 17.4535Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                                <Path Data="M27.7657 16.5806C27.2368 16.5806 26.8044 16.1504 26.8044 15.6193C26.8044 15.0514 27.2972 14.607 27.8604 14.6628C28.3688 14.7187 28.727 15.1351 28.727 15.6193C28.727 16.1372 28.307 16.5806 27.7657 16.5806Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="0.85" />
+
+                                <Path Data="M27.749 12.189H27.7495C27.7994 11.6607 28.2686 11.2729 28.7972 11.3228C29.3255 11.3728 29.7134 11.842 29.6634 12.3706C29.6158 12.8681 29.1972 13.2411 28.7074 13.2411C28.1366 13.2411 27.6958 12.7511 27.749 12.189Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="0.70" />
+
+                                <Path Data="M27.4908 9.07294C27.3533 8.56011 27.6576 8.03331 28.1704 7.89581C28.6833 7.75835 29.2106 8.06262 29.348 8.57549C29.4855 9.08832 29.1808 9.61559 28.6684 9.75309C28.5847 9.77522 28.5011 9.78575 28.4189 9.78575C27.994 9.78575 27.6057 9.50267 27.4908 9.07294Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="0.55" />
+
+                                <Path Data="M26.1555 6.25008C25.8465 5.81798 25.946 5.21763 26.3776 4.9086C26.8092 4.60004 27.4095 4.69904 27.7186 5.13113C28.0276 5.56271 27.9281 6.16307 27.4965 6.4721C27.3269 6.59323 27.1317 6.65188 26.938 6.65188C26.6381 6.65188 26.343 6.51201 26.1555 6.25008Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="0.40" />
+
+                                <Path Data="M23.6543 2.73564C23.9508 2.29533 24.5483 2.17949 24.9886 2.47606C25.4288 2.7731 25.5451 3.37058 25.2481 3.81033C25.0626 4.08576 24.7593 4.23426 24.4503 4.23426C23.6869 4.23426 23.2221 3.37608 23.6543 2.73564Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="0.25" />
+
+                                <Path Data="M21.276 2.84078C20.7362 2.84078 20.3147 2.40047 20.3147 1.87948C20.3147 1.31268 20.8082 0.866834 21.3707 0.922994C21.8703 0.976275 22.2373 1.3889 22.2373 1.87948C22.2373 2.40069 21.816 2.84078 21.276 2.84078Z"
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="0.10" />
+                            </Canvas>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type local:ResetButton}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Width" Value="25" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Button />
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

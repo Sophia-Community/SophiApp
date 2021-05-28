@@ -3,10 +3,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:SophiApp.Controls"
+              xmlns:models="clr-namespace:SophiApp.Models"
              xmlns:local="clr-namespace:SophiApp.Views"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             controls:Switch.MouseEnter="TextedElement_MouseEnter"
+             controls:Switch.MouseLeave="TextedElement_MouseLeave">
+    <!--controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
+             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
+             controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
+             controls:RadioButton.MouseLeave="TextedElement_MouseLeave">-->
 
     <UserControl.Resources>
+        <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsFilter" />
+        <Style TargetType="{x:Type ItemsControl}">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="IsTabStop" Value="False" />
+        </Style>
+        <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Grid.Column" Value="2" />
+        </Style>
         <Style TargetType="{x:Type local:ViewPrivacy}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
@@ -22,6 +39,62 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid.ColumnDefinitions>
+                    <!--UI content column-->
+                    <ColumnDefinition Width="9*" />
+                    <!--Description column-->
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <!--View header row-->
+                        <RowDefinition Height="50" />
+                        <!--View UI content row-->
+                        <RowDefinition Height="*" />
+                        <!--View UI content indent row-->
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{DynamicResource HeaderText}"
+                               Grid.Row="0"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left"
+                               Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
+                               Margin="20, 0, 0, 10" />
+
+                    <controls:ResetButton Grid.Row="0"
+                                          VerticalAlignment="Bottom"
+                                          HorizontalAlignment="Right"
+                                          Margin="0, 0, 47, 10"
+                                          Command="{Binding ResetViewCommand}"
+                                          CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                    <ScrollViewer x:Name="ScrollViewerContent"
+                                  CanContentScroll="True"
+                                  Grid.Row="1"
+                                  Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                  BorderBrush="{DynamicResource Brush.Window.Foreground}"
+                                  IsTabStop="False"
+                                  Focusable="False">
+
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type models:Switch}">
+                                    <controls:Switch Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                                     CommandParameter="{Binding Id}"
+                                                     Id="{Binding Id}"
+                                                     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                     IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+                <StackPanel Style="{DynamicResource Style.Panel.Description}">
+                    <TextBlock Style="{DynamicResource NormalText}"
+                               TextWrapping="Wrap"
+                               Margin="10"
+                               Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
+                </StackPanel>
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Privacy}">
