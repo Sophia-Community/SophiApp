@@ -34,6 +34,7 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public RelayCommand ExpandingGroupClickedCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
 
         public bool IsHitTestVisible
@@ -56,6 +57,7 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public RelayCommand RadioButtonGroupClickedCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
         public RelayCommand TextedElementClickedCommand { get; private set; }
         public List<BaseTextedElement> TextedElements { get; private set; }

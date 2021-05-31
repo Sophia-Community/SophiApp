@@ -1,6 +1,7 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,23 @@ namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
+        private async void ExpandingGroupClickedAsync(object args)
+        {
+            var list = args as List<uint>;
+            await ExpandingGroupClickedAsync(elementId: list.First(), containerId: list.Last());
+        }
+
+        private async Task ExpandingGroupClickedAsync(uint elementId, uint containerId)
+        {
+            await Task.Run(() =>
+            {
+                TextedElements.First(container => container.Id == containerId)
+                              .Collection
+                              .First(element => element.Id == elementId)
+                              .ChangeState();
+            });
+        }
+
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
         private void InitCommands()
@@ -21,6 +39,8 @@ namespace SophiApp.ViewModels
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
+            RadioButtonGroupClickedCommand = new RelayCommand(new Action<object>(RadioButtonGroupClickedAsync));
+            ExpandingGroupClickedCommand = new RelayCommand(new Action<object>(ExpandingGroupClickedAsync));
         }
 
         private void InitProps()
@@ -96,6 +116,24 @@ namespace SophiApp.ViewModels
 
         private void OnTextedElementStateChanged(uint id, UIElementState state) => debugger.AddRecord(DebuggerRecord.ELEMENT_STATE, $"{id}", $"{state}");
 
+        private async void RadioButtonGroupClickedAsync(object args)
+        {
+            var list = args as List<uint>;
+            await RadioButtonGroupClickedAsync(elementId: list.First(), containerId: list.Last());
+        }
+
+        private async Task RadioButtonGroupClickedAsync(uint elementId, uint containerId)
+        {
+            await Task.Run(() =>
+            {
+                TextedElements.First(container => container.Id == containerId)
+                              .Collection
+                              .ForEach(element => element.State = element.Id == elementId
+                                                                ? UIElementState.SETTOACTIVE
+                                                                : UIElementState.UNCHECKED);
+            });
+        }
+
         private async void SearchClickedAsync(object args) => await SearchClickedAsync(args as string);
 
         private async Task SearchClickedAsync(string search)
@@ -110,6 +148,7 @@ namespace SophiApp.ViewModels
 
         private async Task SetPause(int milliseconds) => await Task.Run(() => Thread.Sleep(milliseconds));
 
+        //TODO: Clicked command increment or decrement counter ??
         private void SetTextedElementsChangedCounter(UIElementState elementState)
         {
             switch (elementState)

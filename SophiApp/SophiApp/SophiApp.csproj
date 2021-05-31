@@ -92,6 +92,12 @@
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
+    <Compile Include="Controls\CheckBox.xaml.cs">
+      <DependentUpon>CheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpandingGroup.xaml.cs">
+      <DependentUpon>ExpandingGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -100,6 +106,12 @@
     </Compile>
     <Compile Include="Controls\LoadingRing.xaml.cs">
       <DependentUpon>LoadingRing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadioButton.xaml.cs">
+      <DependentUpon>RadioButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadioButtonGroup.xaml.cs">
+      <DependentUpon>RadioButtonGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ResetButton.xaml.cs">
       <DependentUpon>ResetButton.xaml</DependentUpon>
@@ -116,6 +128,8 @@
     <Compile Include="Controls\TitleRight.xaml.cs">
       <DependentUpon>TitleRight.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ActualHeightMultiply.cs" />
+    <Compile Include="Converters\ParametersToArray.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
@@ -150,6 +164,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ExpandingGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\HamburgerButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +181,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\LoadingRing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RadioButtonGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

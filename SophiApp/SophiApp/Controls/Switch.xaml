@@ -52,7 +52,6 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Margin" Value="20, 10, 0, 10" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
