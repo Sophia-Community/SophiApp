@@ -7,23 +7,23 @@ using System.Windows.Input;
 namespace SophiApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ViewPrivacy.xaml
+    /// Логика взаимодействия для ViewStartMenu.xaml
     /// </summary>
-    public partial class ViewPrivacy : UserControl
+    public partial class ViewStartMenu : UserControl
     {
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
-            DependencyProperty.Register("Description", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+            DependencyProperty.Register("Description", typeof(string), typeof(ViewStartMenu), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+            DependencyProperty.Register("Header", typeof(string), typeof(ViewStartMenu), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
         public static new readonly DependencyProperty TagProperty =
-            DependencyProperty.Register("Tag", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+            DependencyProperty.Register("Tag", typeof(string), typeof(ViewStartMenu), new PropertyMetadata(default));
 
-        public ViewPrivacy()
+        public ViewStartMenu()
         {
             InitializeComponent();
             AddHandler(PreviewMouseWheelEvent, new MouseWheelEventHandler(OnChildMouseWheelEvent), true);
@@ -31,20 +31,20 @@ namespace SophiApp.Views
 
         public string Description
         {
-            get => (string)GetValue(DescriptionProperty);
-            set => SetValue(DescriptionProperty, value);
+            get { return (string)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
         }
 
         public string Header
         {
-            get => (string)GetValue(HeaderProperty);
-            set => SetValue(HeaderProperty, value);
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
         }
 
         public new string Tag
         {
-            get => (string)GetValue(TagProperty);
-            set => SetValue(TagProperty, value);
+            get { return (string)GetValue(TagProperty); }
+            set { SetValue(TagProperty, value); }
         }
 
         private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)

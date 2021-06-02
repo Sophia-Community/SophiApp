@@ -7,23 +7,23 @@ using System.Windows.Input;
 namespace SophiApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ViewPrivacy.xaml
+    /// Логика взаимодействия для ViewPersonalization.xaml
     /// </summary>
-    public partial class ViewPrivacy : UserControl
+    public partial class ViewPersonalization : UserControl
     {
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
-            DependencyProperty.Register("Description", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+            DependencyProperty.Register("Description", typeof(string), typeof(ViewPersonalization), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+            DependencyProperty.Register("Header", typeof(string), typeof(ViewPersonalization), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
         public static new readonly DependencyProperty TagProperty =
-            DependencyProperty.Register("Tag", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
+            DependencyProperty.Register("Tag", typeof(string), typeof(ViewPersonalization), new PropertyMetadata(default));
 
-        public ViewPrivacy()
+        public ViewPersonalization()
         {
             InitializeComponent();
             AddHandler(PreviewMouseWheelEvent, new MouseWheelEventHandler(OnChildMouseWheelEvent), true);

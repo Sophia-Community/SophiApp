@@ -150,11 +150,35 @@
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />
     <Compile Include="ViewModels\AppVM-Props.cs" />
+    <Compile Include="Views\ViewContextMenu.xaml.cs">
+      <DependentUpon>ViewContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewGames.xaml.cs">
+      <DependentUpon>ViewGames.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewLoading.xaml.cs">
       <DependentUpon>ViewLoading.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewPersonalization.xaml.cs">
+      <DependentUpon>ViewPersonalization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewPrivacy.xaml.cs">
       <DependentUpon>ViewPrivacy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewSecurity.xaml.cs">
+      <DependentUpon>ViewSecurity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewStartMenu.xaml.cs">
+      <DependentUpon>ViewStartMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewSystem.xaml.cs">
+      <DependentUpon>ViewSystem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewTaskSheduler.xaml.cs">
+      <DependentUpon>ViewTaskSheduler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewUwpApps.xaml.cs">
+      <DependentUpon>ViewUwpApps.xaml</DependentUpon>
     </Compile>
     <Page Include="Commons\Fonts.xaml">
       <SubType>Designer</SubType>
@@ -245,11 +269,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ViewContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewGames.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewLoading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ViewPersonalization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewPrivacy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewSecurity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewStartMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewSystem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewTaskSheduler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewUwpApps.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

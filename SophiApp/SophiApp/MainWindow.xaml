@@ -48,7 +48,7 @@
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
             <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="16" />
         </Style>
         <Style x:Key="HeaderText" TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -76,7 +76,7 @@
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <!--Hamburger Title Row-->
-                    <ColumnDefinition Width="260" />
+                    <ColumnDefinition Width="250" />
                     <!--Views Title Row-->
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -87,7 +87,7 @@
             <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
                 <Grid.ColumnDefinitions>
                     <!--Hamburger Column-->
-                    <ColumnDefinition Width="260" />
+                    <ColumnDefinition Width="250" />
                     <!--Views and Info Panel Column-->
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -102,6 +102,14 @@
                     </Grid.RowDefinitions>
                     <views:ViewLoading Grid.Row="0" />
                     <views:ViewPrivacy Grid.Row="0" />
+                    <views:ViewPersonalization Grid.Row="0" />
+                    <views:ViewSystem Grid.Row="0" />
+                    <views:ViewStartMenu Grid.Row="0" />
+                    <views:ViewUwpApps Grid.Row="0" />
+                    <views:ViewGames Grid.Row="0" />
+                    <views:ViewTaskSheduler Grid.Row="0" />
+                    <views:ViewSecurity Grid.Row="0" />
+                    <views:ViewContextMenu Grid.Row="0" />
                 </Grid>
             </Grid>
         </Grid>
