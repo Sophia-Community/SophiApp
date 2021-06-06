@@ -3,11 +3,13 @@
         "Id": 100,
         "Headers": {
             "EN": "Enable the DiagTrack service",
-            "RU": "Включить службу DiagTrack"
+            "RU": "Включить службу DiagTrack",
+			"DE": "DiagTrack-Dienst aktivieren"
         },
         "Descriptions": {
             "EN": "Enable the DiagTrack service, and allow connection for the Unified Telemetry Client Outbound Traffic",
-            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафика клиента единой телеметрии"
+            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафика клиента единой телеметрии",
+			"DE": "DiagTrack-Dienst aktivieren und Verbindungen für ausgehenden Datenverkehr des vereinheitlichten Telemetrieclients erlauben"
         },
         "Model": "Switch",
         "Type": "0",
@@ -17,7 +19,8 @@
         "Id": 101,
         "Headers": {
             "EN": "The OS level of diagnostic data gathering",
-            "RU": "Уровень сбора диагностических сведений ОС"
+            "RU": "Уровень сбора диагностических сведений ОС",
+			"DE": "Die Stufe des Betriebssystems zur Sammlung von Diagnosedaten"
         },
         "Model": "RadioButtonsGroup",
         "IsContainer": true,
@@ -29,11 +32,13 @@
         "ContainerId": 101,
         "Headers": {
             "EN": "Minimal",
-            "RU": "Минимальный"
+            "RU": "Минимальный",
+			"DE": "Minimal"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "RadioButton",
         "Type": "0",
@@ -44,11 +49,13 @@
         "ContainerId": 101,
         "Headers": {
             "EN": "Default",
-            "RU": "По умолчанию"
+            "RU": "По умолчанию",
+			"EN": "Standard"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "RadioButton",
         "Type": "0",
@@ -58,11 +65,13 @@
         "Id": 104,
         "Headers": {
             "EN": "Turn off the Windows Error Reporting",
-            "RU": "Отключить запись отчетов об ошибках Window"
+            "RU": "Отключить запись отчетов об ошибках Window",
+			"EN": "Fehlerberichterstattung deaktivieren"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -72,7 +81,8 @@
         "Id": 105,
         "Headers": {
             "EN": "Windows should ask for my feedback",
-            "RU": "Windows должна запрашивать мои отзывы"
+            "RU": "Windows должна запрашивать мои отзывы",
+			"DE": "Windows soll mich nach meiner Meinung fragen"
         },
         "Model": "RadioButtonsGroup",
         "IsContainer": true,
@@ -84,11 +94,13 @@
         "ContainerId": 105,
         "Headers": {
             "EN": "Never",
-            "RU": "Никогда"
+            "RU": "Никогда",
+			"DE": "Niemals"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "RadioButton",
         "Type": "0",
@@ -99,11 +111,13 @@
         "ContainerId": 105,
         "Headers": {
             "EN": "Automatically (Recommended)",
-            "RU": "Автоматически (рекомендуется)"
+            "RU": "Автоматически (рекомендуется)",
+			"DE": "Automatisch (Empfohlen)"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "RadioButton",
         "Type": "0",
@@ -113,7 +127,8 @@
         "Id": 108,
         "Headers": {
             "EN": "Diagnostic Tracking Tasks",
-            "RU": "Задачи диагностического отслеживания"
+            "RU": "Задачи диагностического отслеживания",
+			"DE": "Aufgaben für Diagnose und Telemetrie"
         },
         "Model": "ExpandingGroup",
         "IsContainer": true,
@@ -125,11 +140,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "ProgramDataUpdater",
-            "RU": "ProgramDataUpdater"
+            "RU": "ProgramDataUpdater",
+			"DE": "ProgramDataUpdater"
         },
         "Descriptions": {
             "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program",
-            "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
+            "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО",
+			"EN": "Wenn am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit teilgenommen wird, dann werden Telemetriedaten von Programmen gesammelt."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -140,11 +157,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "Proxy",
-            "RU": "Proxy"
+            "RU": "Proxy",
+			"DE": "Proxy"
         },
         "Descriptions": {
             "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program",
-            "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
+            "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения",
+			"DE": "Von dieser Aufgabe werden Daten für autochk SQM gesammelt und hochgeladen, wenn Sie sich für die Teilnahme am Programm zur Verbesserung der Benutzerfreundlichkeit von Microsoft angemeldet haben."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -155,11 +174,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "Consolidator",
-            "RU": "Consolidator"
+            "RU": "Consolidator",
+			"DE": "Consolidator"
         },
         "Descriptions": {
             "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft",
-            "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
+            "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт",
+			"DE": "Wenn der Benutzer der Teilnahme am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit zugestimmt hat, erfasst dieser Auftrag Verwendungsdaten, die an Microsoft gesendet werden."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -170,11 +191,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "UsbCeip",
-            "RU": "UsbCeip"
+            "RU": "UsbCeip",
+			"DE": "UsbCeip"
         },
         "Descriptions": {
             "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything",
-            "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий"
+            "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий",
+			"DE": "Mit der Aufgabe Programm zur Verbesserung der Benutzerfreundlichkeit (CEIP) werden Statistiken zum Universal Serial Bus und Informationen zu Ihrem Computer gesammelt. Diese werden an die Windows Device Connectivity-Gruppe von Microsoft gesendet. Mithilfe dieser Informationen werden Zuverlässigkeit, Stabilität und Gesamtfunktionalität von USB in Windows optimiert. Wenn der Benutzer der Teilnahme am Windows CEIP nicht zugestimmt hat, hat diese Aufgabe keine Funktion."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -185,11 +208,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "Microsoft-Windows-DiskDiagnosticDataCollector",
-            "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
+            "RU": "Microsoft-Windows-DiskDiagnosticDataCollector",
+			"DE": "Microsoft-Windows-DiskDiagnosticDataCollector"
         },
         "Descriptions": {
             "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program",
-            "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
+            "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт",
+			"DE": "Die Windows-Datenträgerdiagnose meldet Microsoft allgemeine Datenträger- und Systeminformationen für Benutzer, die am Programm zur Benutzerfreundlichkeit teilnehmen."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -200,11 +225,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "MapsToastTask",
-            "RU": "MapsToastTask"
+            "RU": "MapsToastTask",
+			"DE": "MapsToastTask"
         },
         "Descriptions": {
             "EN": "This task shows various Map related toasts",
-            "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам"
+            "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам",
+			"DE": "Diese Aufgabe zeigt für Karten relevante Informationen"
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -215,11 +242,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "MapsUpdateTask",
-            "RU": "MapsUpdateTask"
+            "RU": "MapsUpdateTask",
+			"DE": "MapsUpdateTask"
         },
         "Descriptions": {
             "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps",
-            "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт"
+            "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт",
+			"DE": "Durch diese Aufgabe werden Updates von Karten gesucht, die Sie zur Offlineverwendung heruntergeladen haben. Wenn Sie diese Aufgabe deaktivieren, werden Sie von Windows nicht mehr über aktualisierte Karten benachrichtigt."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -230,11 +259,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "FamilySafetyMonitor",
-            "RU": "FamilySafetyMonitor"
+            "RU": "FamilySafetyMonitor",
+			"DE": "FamilySafetyMonitor"
         },
         "Descriptions": {
             "EN": "Initializes Family Safety monitoring and enforcement",
-            "RU": "Инициализация контроля и применения правил семейной безопасности"
+            "RU": "Инициализация контроля и применения правил семейной безопасности",
+			"DE": "Initialisiert die Family Safety-Überwachung und Durchsetzung."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -245,11 +276,13 @@
         "ContainerId": 108,
         "Headers": {
             "EN": "FamilySafetyRefreshTask",
-            "RU": "FamilySafetyRefreshTask"
+            "RU": "FamilySafetyRefreshTask",
+			"DE": "FamilySafetyRefreshTask"
         },
         "Descriptions": {
             "EN": "Synchronizes the latest settings with the Microsoft family features service",
-            "RU": "Синхронизирует последние параметры со службой функций семьи учетных записей Майкрософт"
+            "RU": "Синхронизирует последние параметры со службой функций семьи учетных записей Майкрософт",
+			"DE": "Synchronisiert die aktuellen Einstellungen mit dem Dienst für Microsoft Family-Features."
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -259,11 +292,13 @@
         "Id": 118,
         "Headers": {
             "EN": "Use sign-in info to automatically finish setting up device and reopen apps after an update or restart",
-            "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
+            "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
+			"DE": "Meine Anmeldeinfos verwenden, um die Geräteeinrichtung nach einem Update oder Neustart automatisch abzuschließen"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -273,11 +308,13 @@
         "Id": 119,
         "Headers": {
             "EN": "Let websites provide locally relevant content by accessing language list",
-            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
+            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
+			"DE": "Websites den Zugriff auf die eigene Sprachliste gestatten, um die Anzeige lokal relevanter Inhalte zu ermöglichen"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -287,11 +324,13 @@
         "Id": 120,
         "Headers": {
             "EN": "Allow apps to use advertising ID",
-            "RU": "Разрешать приложениям использовать идентификатор рекламы"
+            "RU": "Разрешать приложениям использовать идентификатор рекламы",
+			"DE": "Apps die Verwendung der Werbe-ID ermöglichen"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -301,11 +340,13 @@
         "Id": 121,
         "Headers": {
             "EN": "Let apps on other devices open and message apps on this device, and vice versa",
-            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот"
+            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот",
+			"DE": "Apps auf anderen Geräten dürfen Apps auf diesem Gerät öffnen und Nachrichten an diese übermittelt und umgekehrt."
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -315,11 +356,13 @@
         "Id": 122,
         "Headers": {
             "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested",
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+			"DE": "Windows-Willkommensseite nach Updates und gelegentlich bei der Anmeldung anzeigen, um Neuigkeiten und Vorschläge zu lesen"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -329,11 +372,13 @@
         "Id": 123,
         "Headers": {
             "EN": "Get tip, trick, and suggestions as you use Windows",
-            "RU": "Получать советы, подсказки и рекомендации при использованию Windows"
+            "RU": "Получать советы, подсказки и рекомендации при использованию Windows",
+			"DE": "Bei der Nutzung von Windows Tipps, Tricks und Vorschläge erhalten",
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -343,11 +388,13 @@
         "Id": 124,
         "Headers": {
             "EN": "Show the suggested content in the Settings app",
-            "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
+            "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\"",
+			"DE": "Vorgeschlagene Inhalte in der Einstellungs-App anzeigen"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -357,11 +404,13 @@
         "Id": 125,
         "Headers": {
             "EN": "Turn on automatic installing suggested apps",
-            "RU": "Включить автоматическую установку рекомендованных приложений"
+            "RU": "Включить автоматическую установку рекомендованных приложений",
+			"DE": "Automatische Installation von vorgeschlagenen Apps aktivieren"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -371,11 +420,13 @@
         "Id": 126,
         "Headers": {
             "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
-            "RU": "Предлагать способы завершения настройки устройства для максимально эффективного использования Windows"
+            "RU": "Предлагать способы завершения настройки устройства для максимально эффективного использования Windows",
+			"DE": "Möglichkeiten zum Abschließen der Einrichtung meines Geräts für die optimale Nutzung von Windows vorschlagen"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -385,11 +436,13 @@
         "Id": 127,
         "Headers": {
             "EN": "Offer tailored experiences based on the diagnostic data setting",
-            "RU": "Предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных"
+            "RU": "Предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных",
+			"DE": "Bereitstellung von personalisierten Tipps, Werbung und Empfehlungen zur Verbesserung ihrer Erfahrung"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -399,11 +452,13 @@
         "Id": 128,
         "Headers": {
             "EN": "Enable Bing search in the Start Menu",
-            "RU": "Включить поиск через Bing в меню \"Пуск\""
+            "RU": "Включить поиск через Bing в меню \"Пуск\"",
+			"DE": "Bing-Suche im Startmenü aktivieren"
         },
         "Descriptions": {
             "EN": "",
-            "RU": ""
+            "RU": "",
+			"DE": ""
         },
         "Model": "CheckBox",
         "Type": "0",
