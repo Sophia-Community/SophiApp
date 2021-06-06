@@ -3,6 +3,7 @@
     internal enum UILanguage
     {
         EN,
-        RU
+        RU,
+        DE
     }
 }
