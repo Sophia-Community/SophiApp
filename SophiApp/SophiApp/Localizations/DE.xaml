@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="Localization.Settings.Themes.Light">Hell</system:String>
+    <system:String x:Key="Localization.Settings.Themes.Dark">Dunkel</system:String>
+    <system:String x:Key="Localization.Privacy">Datenschutz</system:String>
+    <system:String x:Key="Localization.Personalization">Personalisierung</system:String>
+    <system:String x:Key="Localization.System">System</system:String>
+    <system:String x:Key="Localization.StartMenu">Startmenü</system:String>
+    <system:String x:Key="Localization.UwpApps">UWP Apps</system:String>
+    <system:String x:Key="Localization.Games">Spiele</system:String>
+    <system:String x:Key="Localization.TaskSheduler">Aufgabenplanung</system:String>
+    <system:String x:Key="Localization.Security">Sicherheit</system:String>
+    <system:String x:Key="Localization.ContextMenu">Kontextmenü</system:String>
+    <system:String x:Key="Localization.Settings">Einstellungen</system:String>
+    <system:String x:Key="Localization.Settings.Languages">Sprache</system:String>
+    <system:String x:Key="Localization.Settings.Themes">Windows Thema verwenden</system:String>
+    <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
+    <system:String x:Key="Localization.Settings.Updates">Updates</system:String>
+    <system:String x:Key="Localization.Settings.Version">Version</system:String>
+    <system:String x:Key="Localization.Settings.UpdateVersion">Auf Updates prüfen</system:String>
+    <system:String x:Key="Localization.Settings.Import">Importieren</system:String>
+    <system:String x:Key="Localization.Settings.Export">Exportieren</system:String>
+    <system:String x:Key="Localization.Settings.Advanced">Erweiterte Einstellungen</system:String>
+    <system:String x:Key="Localization.Settings.Reset">Alle Einstellungen auf Standard zurücksetzen</system:String>
+    <system:String x:Key="Localization.Settings.Debug">Debug</system:String>
+    <system:String x:Key="Localization.Settings.Debug.Save">Dump erstellen</system:String>
+    <system:String x:Key="Localization.Settings.Team">Projektmitglieder</system:String>
+    <system:String x:Key="Localization.Settings.Designer">Design von</system:String>
+    <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
+    <system:String x:Key="Localization.Settings.Leader">Projektmanager:</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry "farag2" Nefedov</system:String>
+    <system:String x:Key="Localization.Settings.Coder">Programmiert von</system:String>
+    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry "Inestic" Demin</system:String>
+    <system:String x:Key="Localization.Search">Suchen</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Changed">Geändert</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Setting">Einstellungen</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Reset">Zurücksetzen</system:String>
+    <system:String x:Key="Localization.ChangesPanel.Apply">Übernehmen</system:String>
+    <system:String x:Key="Localization.Toast.Update.Header">Ein Update für SophiApp ist verfügbar</system:String>
+    <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
+</ResourceDictionary>
