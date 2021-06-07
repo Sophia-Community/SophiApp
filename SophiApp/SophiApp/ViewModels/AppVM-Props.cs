@@ -16,6 +16,7 @@ namespace SophiApp.ViewModels
         private const string TextedElementsChangedCounterPropertyName = "TextedElementsChangedCounter";
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
+
         private Debugger debugger;
         private bool isHitTestVisible;
         private LocalizationsHelper localizationsHelper;
@@ -34,8 +35,12 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public RelayCommand AppThemeChangeCommand { get; private set; }
+        public List<string> AppThemeList => themesHelper.GetNames();
+
         public RelayCommand ExpandingGroupClickedCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
+        public RelayCommand HyperLinkClickedCommand { get; private set; }
 
         public bool IsHitTestVisible
         {
@@ -57,6 +62,8 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public RelayCommand LocalizationChangeCommand { get; private set; }
+        public List<string> LocalizationList => localizationsHelper.GetNames();
         public RelayCommand RadioButtonGroupClickedCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
         public RelayCommand TextedElementClickedCommand { get; private set; }

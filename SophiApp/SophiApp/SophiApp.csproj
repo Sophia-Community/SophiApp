@@ -95,8 +95,14 @@
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DropDownList.xaml.cs">
+      <DependentUpon>DropDownList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ExpandingGroup.xaml.cs">
       <DependentUpon>ExpandingGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GitHubHyperLink.xaml.cs">
+      <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
@@ -168,6 +174,9 @@
     <Compile Include="Views\ViewSecurity.xaml.cs">
       <DependentUpon>ViewSecurity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewSettings.xaml.cs">
+      <DependentUpon>ViewSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewStartMenu.xaml.cs">
       <DependentUpon>ViewStartMenu.xaml</DependentUpon>
     </Compile>
@@ -192,7 +201,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\DropDownList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ExpandingGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GitHubHyperLink.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,6 +307,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewSecurity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

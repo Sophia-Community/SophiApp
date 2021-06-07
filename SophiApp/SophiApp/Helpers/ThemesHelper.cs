@@ -30,12 +30,12 @@ namespace SophiApp.Helpers
 
         public ThemesHelper()
         {
-            var isDarkTheme = GetDarkThemeValue();
+            var isDarkTheme = IsDarkTheme();
             Selected = FindName(isDarkTheme ? DARK_THEME_NAME : LIGHT_THEME_NAME);
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Selected.Uri });
         }
 
-        private bool GetDarkThemeValue()
+        private bool IsDarkTheme()
         {
             try
             {

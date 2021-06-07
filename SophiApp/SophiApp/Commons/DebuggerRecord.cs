@@ -25,5 +25,6 @@
         ELEMENT_HAS_ERROR,
         ELEMENT_ERROR_TARGET,
         ELEMENT_ERROR_MESSAGE,
+        HYPERLINK_OPEN,
     }
 }

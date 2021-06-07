@@ -3,18 +3,32 @@ using SophiApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Debugger = SophiApp.Helpers.Debugger;
 using IContainer = SophiApp.Interfaces.IContainer;
 
 namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
+        private async void AppThemeChangeAsync(object args) => await AppThemeChangeAsync(args as string);
+
+        private async Task AppThemeChangeAsync(string themeName)
+        {
+            await Task.Run(() =>
+            {
+                var theme = themesHelper.FindName(themeName);
+                themesHelper.Change(theme);
+                SetAppThemeProperty(theme);
+            });
+        }
+
         private async void ExpandingGroupClickedAsync(object args)
         {
             var list = args as List<uint>;
@@ -34,6 +48,22 @@ namespace SophiApp.ViewModels
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
+        private async void HyperLinkClickedAsync(object args)
+        {
+            Mouse.OverrideCursor = Cursors.Wait;
+            await HyperLinkClickedAsync(args as string);
+            Mouse.OverrideCursor = null;
+        }
+
+        private async Task HyperLinkClickedAsync(string link)
+        {
+            await Task.Run(() =>
+            {
+                debugger.AddRecord(DebuggerRecord.HYPERLINK_OPEN, link);
+                Process.Start(link);
+            });
+        }
+
         private void InitCommands()
         {
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
@@ -41,6 +71,9 @@ namespace SophiApp.ViewModels
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             RadioButtonGroupClickedCommand = new RelayCommand(new Action<object>(RadioButtonGroupClickedAsync));
             ExpandingGroupClickedCommand = new RelayCommand(new Action<object>(ExpandingGroupClickedAsync));
+            AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
+            LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
+            HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClickedAsync));
         }
 
         private void InitProps()
@@ -91,6 +124,28 @@ namespace SophiApp.ViewModels
         private bool IsNewVersion(Version currentVersion, string outsideVersion, bool outsidePrerelease, bool outsideDraft)
         {
             return new Version(outsideVersion) > currentVersion && outsidePrerelease == false && outsideDraft == false;
+        }
+
+        private async void LocalizationChangeAsync(object args) => await LocalizationChangeAsync(args as string); //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
+
+        private async Task LocalizationChangeAsync(string localizationName)
+        {
+            await Task.Run(() =>
+            {
+                var localization = localizationsHelper.FindName(localizationName);
+                TextedElements.ForEach(element =>
+                {
+                    if (element is IContainer)
+                    {
+                        (element as IContainer).SetLocalization(localization.Language);
+                        return;
+                    }
+
+                    element.SetLocalization(localization.Language);
+                });
+                localizationsHelper.Change(localization);
+                SetLocalizationProperty(localization);
+            });
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -144,7 +199,12 @@ namespace SophiApp.ViewModels
             });
         }
 
+        //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
+        private void SetAppThemeProperty(Theme theme) => AppTheme = theme;
+
         private void SetIsHitTestVisible(bool state) => IsHitTestVisible = state;
+
+        private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
         private async Task SetPause(int milliseconds) => await Task.Run(() => Thread.Sleep(milliseconds));
 
@@ -252,9 +312,9 @@ namespace SophiApp.ViewModels
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
             await SetTextedElementsLocalizationAsync(Localization.Language);
-            await SetPause(2000);
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);
             SetIsHitTestVisible(true);
+            await SetPause(2000);
             Mouse.OverrideCursor = null;
         }
     }

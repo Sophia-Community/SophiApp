@@ -84,11 +84,11 @@
                                                      Id="{Binding Id}"
                                                      IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                      IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                     Margin="20, 10, 0, 10" />
+                                                     Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RadioButtonsGroup}">
                                     <controls:RadioButtonGroup Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
-                                                               Margin="20. 10, 0, 10" />
+                                                               Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
                                     <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
@@ -96,11 +96,11 @@
                                                        Id="{Binding Id}"
                                                        IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                        IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                       Margin="20, 10, 0, 10" />
+                                                       Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:ExpandingGroup}">
                                     <controls:ExpandingGroup Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
-                                                             Margin="20, 10, 0, 10" />
+                                                             Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
