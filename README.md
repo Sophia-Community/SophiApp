@@ -1,3 +1,6 @@
+# Ready or not?
+No, the app isn't ready. Please don't download it until the official announcement. :)
+
 # Deus vult!
 
 The SophiApp functionality will be fully based on the [Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script) logic except some functions and will be written in C#.
