@@ -72,5 +72,14 @@ namespace SophiApp.Views
             var element = e.Item as BaseTextedElement;
             e.Accepted = element.Tag == Tag;
         }
+
+        private void ViewContextMenu_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (IsVisible)
+            {
+                var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+                scrollViewer?.ScrollToTop();
+            }
+        }
     }
 }

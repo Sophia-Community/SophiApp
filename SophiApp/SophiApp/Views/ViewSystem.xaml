@@ -12,7 +12,8 @@
              controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
              controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
              controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:CheckBox.MouseLeave="TextedElement_MouseLeave">
+             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
+             IsVisibleChanged="ViewSystem_IsVisibleChanged">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsFilter" />

@@ -50,9 +50,9 @@ namespace SophiApp.ViewModels
 
         private async void HyperLinkClickedAsync(object args)
         {
-            Mouse.OverrideCursor = Cursors.Wait;
+            MouseHelper.ShowWaitCursor(show: true);
             await HyperLinkClickedAsync(args as string);
-            Mouse.OverrideCursor = null;
+            MouseHelper.ShowWaitCursor(show: false);
         }
 
         private async Task HyperLinkClickedAsync(string link)
@@ -204,9 +204,7 @@ namespace SophiApp.ViewModels
 
         private void SetIsHitTestVisible(bool state) => IsHitTestVisible = state;
 
-        private void SetLocalizationProperty(Localization localization) => Localization = localization;
-
-        private async Task SetPause(int milliseconds) => await Task.Run(() => Thread.Sleep(milliseconds));
+        private void SetLocalizationProperty(Localization localization) => Localization = localization;        
 
         //TODO: Clicked command increment or decrement counter ??
         private void SetTextedElementsChangedCounter(UIElementState elementState)
@@ -307,15 +305,14 @@ namespace SophiApp.ViewModels
 
         internal async void InitData()
         {
-            Mouse.OverrideCursor = Cursors.Wait;
-            //TODO: Remove before release !!!
+            MouseHelper.ShowWaitCursor(show: true);
+            //TODO: Uncomment update function before release.
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
             await SetTextedElementsLocalizationAsync(Localization.Language);
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);
             SetIsHitTestVisible(true);
-            await SetPause(2000);
-            Mouse.OverrideCursor = null;
+            MouseHelper.ShowWaitCursor(show: false);
         }
     }
 }

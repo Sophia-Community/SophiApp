@@ -12,7 +12,8 @@
              controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
              controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
              controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:CheckBox.MouseLeave="TextedElement_MouseLeave">
+             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
+             IsVisibleChanged="ViewPrivacy_IsVisibleChanged">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsFilter" />
@@ -64,7 +65,7 @@
                     <controls:ResetButton Grid.Row="0"
                                           VerticalAlignment="Bottom"
                                           HorizontalAlignment="Right"
-                                          Margin="0, 0, 47, 10"
+                                          Margin="0, 0, 47, 10"                                          
                                           Command="{Binding ResetViewCommand}"
                                           CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
 

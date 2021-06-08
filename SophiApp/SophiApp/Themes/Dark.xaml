@@ -13,7 +13,7 @@
     <SolidColorBrush x:Key="Brush.Window.Element.Hover" Color="#114366" />
     <SolidColorBrush x:Key="Brush.Window.Acсent.Normal" Color="#0078D4" />
     <SolidColorBrush x:Key="Brush.Window.Acсent.Hight" Color="#E92F2F" />
-    <SolidColorBrush x:Key="Brush.Window.Acсent.Light" Color="#0078D4" />
+    <SolidColorBrush x:Key="Brush.Window.Acсent.Light" Color="#7DB9E7" />
     <SolidColorBrush x:Key="Brush.Hamburger.Separator.Background" Color="#FFFFFF" Opacity="0.1" />
     <SolidColorBrush x:Key="Brush.View.Background" Color="#003258" />
     <SolidColorBrush x:Key="Brush.SearchBar.Foreground" Color="#FFFFFF" />

@@ -101,6 +101,9 @@
     <Compile Include="Controls\ExpandingGroup.xaml.cs">
       <DependentUpon>ExpandingGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FilledButton.xaml.cs">
+      <DependentUpon>FilledButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GitHubHyperLink.xaml.cs">
       <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,7 @@
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
+    <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RegPath.cs" />
@@ -206,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ExpandingGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FilledButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

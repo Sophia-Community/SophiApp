@@ -6,7 +6,8 @@
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:helpers="clr-namespace:SophiApp.Helpers"
              xmlns:local="clr-namespace:SophiApp.Views"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type local:ViewSettings}">
@@ -47,7 +48,7 @@
                                   IsTabStop="False"
                                   Focusable="False">
 
-                        <StackPanel HorizontalAlignment="Left">
+                        <StackPanel>
                             <TextBlock Style="{DynamicResource SubHeaderText}"
                                        Text="{DynamicResource Localization.Settings.Themes}"
                                        Margin="20, 0, 0, 10" />
@@ -72,6 +73,31 @@
                                                       Command="{Binding HyperLinkClickedCommand}"
                                                       CommandParameter="{x:Static helpers:AppData.GitHubRepo}"
                                                       Margin="20, 0, 0, 10" />
+
+                            <TextBlock Style="{DynamicResource SubHeaderText}"
+                                       Text="{DynamicResource Localization.Settings.Updates}"
+                                       Margin="20, 0, 0, 10" />
+                            
+                            <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 10">
+
+                                <TextBlock Style="{DynamicResource NormalText}"                                           
+                                           Text="{DynamicResource Localization.Settings.Version}" />
+
+                                <TextBlock Style="{DynamicResource NormalText}"                                           
+                                           Text=":" />
+
+                                <TextBlock Style="{DynamicResource NormalText}"                                           
+                                           Text="{Binding Source={x:Static helpers:AppData.Version}}"
+                                           Margin="3, 0, 0, 0" />
+                            </StackPanel>
+
+                            <controls:FilledButton IsEnabled="{Binding UpdateAvailable}"
+                                                   Text="{DynamicResource Localization.Settings.UpdateVersion}" 
+                                                   Margin="20, 0, 0, 10"
+                                                   HorizontalAlignment="Left"
+                                                   Command="{Binding HyperLinkClickedCommand}"
+                                                   CommandParameter="{x:Static helpers:AppData.GitHubReleasesPage}"/>
+
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
