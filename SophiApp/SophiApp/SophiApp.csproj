@@ -92,6 +92,9 @@
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Commons\UIType.cs" />
+    <Compile Include="Controls\ActorLink.xaml.cs">
+      <DependentUpon>ActorLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,9 @@
     </Compile>
     <Compile Include="Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IconButton.xaml.cs">
+      <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\LoadingRing.xaml.cs">
       <DependentUpon>LoadingRing.xaml</DependentUpon>
@@ -142,6 +148,7 @@
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />
@@ -201,6 +208,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ActorLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\CheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HamburgerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IconButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

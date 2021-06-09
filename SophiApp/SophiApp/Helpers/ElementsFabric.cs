@@ -17,7 +17,7 @@ namespace SophiApp.Helpers
             return element;
         }
 
-        internal static Func<bool> GetCurrentStateAction(uint id)
+        internal static Func<bool> SetCurrentStateAction(uint id)
         {
             try
             {
@@ -27,14 +27,14 @@ namespace SophiApp.Helpers
             }
             catch (Exception e)
             {
-                //TODO: FOR DEBUG ONLY !!!
+                //TODO: SetCurrentStateAction FOR DEBUG ONLY !!!
                 var type = Type.GetType(CURRENT_STATE_ACTION_CLASS);
                 var action = type.GetMethod("FOR_DEBUG_ONLY", BindingFlags.Static | BindingFlags.Public);
                 return Delegate.CreateDelegate(typeof(Func<bool>), action) as Func<bool>;
             }
         }
 
-        internal static Action<bool> GetSystemStateAction(uint id)
+        internal static Action<bool> SetSystemStateAction(uint id)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace SophiApp.Helpers
             }
             catch (Exception e)
             {
-                //TODO: FOR DEBUG ONLY !!!
+                //TODO: SetSystemStateAction FOR DEBUG ONLY !!!
                 var type = Type.GetType(SYSTEM_STATE_ACTION_CLASS);
                 var action = type.GetMethod("FOR_DEBUG_ONLY", BindingFlags.Static | BindingFlags.Public);
                 return Delegate.CreateDelegate(typeof(Action<bool>), action) as Action<bool>;

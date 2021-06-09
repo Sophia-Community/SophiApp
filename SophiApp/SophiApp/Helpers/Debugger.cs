@@ -15,25 +15,27 @@ namespace SophiApp.Helpers
 
         private void Init()
         {
-            InitRecord(DebuggerRecord.VERSION, $"{AppData.Version}");
-            InitRecord(DebuggerRecord.STARTUP_DIR, $"{AppData.StartupFolder}");
-            InitRecord(DebuggerRecord.OS_VERSION, OsManager.GetProductName() ?? $"{Environment.OSVersion}");
-            InitRecord(DebuggerRecord.COMPUTER_NAME, Environment.MachineName);
-            InitRecord(DebuggerRecord.USER_NAME, Environment.UserName);
-            InitRecord(DebuggerRecord.USER_DOMAIN, Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName);
-            AddRecord();
+            InitialWrite(DebuggerRecord.APP_VERSION, $"{AppData.Version}");
+            InitialWrite(DebuggerRecord.STARTUP_DIR, $"{AppData.StartupFolder}");
+            InitialWrite(DebuggerRecord.OS_NAME, OsManager.GetProductName());
+            InitialWrite(DebuggerRecord.OS_EDITION, OsManager.GetEdition());
+            InitialWrite(DebuggerRecord.OS_VER, Environment.OSVersion.VersionString);
+            InitialWrite(DebuggerRecord.COMPUTER_NAME, Environment.MachineName);
+            InitialWrite(DebuggerRecord.USER_NAME, Environment.UserName);
+            InitialWrite(DebuggerRecord.USER_DOMAIN, Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName);
+            Write();
         }
 
-        internal void AddRecord() => log.Add(string.Empty);
-
-        internal void AddRecord(DebuggerRecord record) => log.Add($"[{DateTime.Now}] {record}");
-
-        internal void AddRecord(DebuggerRecord record, string value) => log.Add($"[{DateTime.Now}] {record}:{value.ToUpper()}");
-
-        internal void AddRecord(DebuggerRecord record, string id, string state) => log.Add($"[{DateTime.Now}] {record}:{id.ToUpper()}:{state.ToUpper()}");
+        private void InitialWrite(DebuggerRecord key, string value) => log.Add($"{key}:{value.ToUpper()}");
 
         internal List<string> GetLog() => log;
 
-        internal void InitRecord(DebuggerRecord key, string value) => log.Add($"{key}:{value.ToUpper()}");
+        internal void Write() => log.Add(string.Empty);
+
+        internal void Write(DebuggerRecord record) => log.Add($"[{DateTime.Now}] {record}");
+
+        internal void Write(DebuggerRecord record, string value) => log.Add($"[{DateTime.Now}] {record}:{value.ToUpper()}");
+
+        internal void Write(DebuggerRecord record, string id, string state) => log.Add($"[{DateTime.Now}] {record}:{id.ToUpper()}:{state.ToUpper()}");
     }
 }

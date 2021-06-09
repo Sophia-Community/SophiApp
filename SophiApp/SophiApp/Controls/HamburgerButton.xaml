@@ -37,9 +37,9 @@
                             <Grid x:Name="GridContent">
                                 <Border x:Name="BorderMarker" Style="{StaticResource BorderMarker}" />
                                 <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
-                                              Margin="{Binding Path=IconMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}" />
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="{Binding Path=IconMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}" />
 
                                 <TextBlock Style="{DynamicResource NormalText}"
                                            Foreground="{DynamicResource Brush.Window.Foreground}"

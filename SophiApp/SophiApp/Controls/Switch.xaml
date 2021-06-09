@@ -40,7 +40,7 @@
             <Setter Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}" />
         </Style>
         <Style TargetType="{x:Type Grid}">
-            <Setter Property="MinWidth" Value="450" />
+            <Setter Property="MinWidth" Value="150" />
             <Setter Property="MinHeight" Value="20" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>

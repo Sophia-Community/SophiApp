@@ -1,11 +1,32 @@
 ﻿using Microsoft.Win32;
+using System;
 
 namespace SophiApp.Helpers
 {
     internal class OsManager
     {
-        internal static string GetEdition() => Registry.LocalMachine.OpenSubKey(RegPath.CURRENT_VERSION).GetValue(RegPath.EDITION_ID) as string;
+        internal static string GetEdition()
+        {
+            try
+            {
+                return Registry.LocalMachine.OpenSubKey(RegPath.CURRENT_VERSION).GetValue(RegPath.EDITION_ID) as string;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
 
-        internal static string GetProductName() => Registry.LocalMachine.OpenSubKey(RegPath.CURRENT_VERSION).GetValue(RegPath.PRODUCT_NAME) as string;
+        internal static string GetProductName()
+        {
+            try
+            {
+                return Registry.LocalMachine.OpenSubKey($"{RegPath.CURRENT_VERSION}").GetValue(RegPath.PRODUCT_NAME) as string;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
     }
 }

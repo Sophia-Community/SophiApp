@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SophiApp.Controls.FilledButton"
+﻿<UserControl x:Class="SophiApp.Controls.IconButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -21,25 +21,41 @@
                         <Border Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
                                 BorderThickness="0"
                                 CornerRadius="2">
-                            <StackPanel Orientation="Horizontal"
-                                        Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Margin="14, 0, 14, 0">
-                            <TextBlock Style="{DynamicResource NormalText}"
-                                       Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:FilledButton}}}" />
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="32" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Style="{DynamicResource NormalText}"
+                                           Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}"
+                                           Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                <!--Dividing Strip-->
+                                <Border Grid.Column="1"
+                                        Background="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                        BorderThickness="0" />
+                                <!--Icon Content-->
+                                <ContentPresenter Grid.Column="2"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"
+                                                  Width="32"
+                                                  Height="32"
+                                                  Content="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}" />
+                            </Grid>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="{x:Type local:FilledButton}">
+        <Style TargetType="{x:Type local:IconButton}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="MinWidth" Value="146" />
-            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Width" Value="130" />
+            <Setter Property="Height" Value="32" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
     </UserControl.Resources>

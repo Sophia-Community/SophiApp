@@ -3,9 +3,11 @@
     internal enum DebuggerRecord
     {
         STARTUP_DIR,
-        VERSION,
+        APP_VERSION,
         COMPUTER_NAME,
-        OS_VERSION,
+        OS_NAME,
+        OS_EDITION,
+        OS_VER,
         USER_DOMAIN,
         USER_NAME,
         LOCALIZATION,
@@ -20,11 +22,18 @@
         UPDATE_VERSION_IS_DRAFT, // Is draft release version
         UPDATE_VERSION_REQUIRED, // Need update
         UPDATE_VERSION_NOT_REQUIRED, // Not need update
-        INIT_TEXTED_ELEMENT,
+        INIT_TEXTED_ELEMENTS,
         ELEMENT_STATE,
         ELEMENT_HAS_ERROR,
-        ELEMENT_ERROR_TARGET,
-        ELEMENT_ERROR_MESSAGE,
+        ERROR_CLASS,
+        ERROR_METHOD,
+        ERROR_MESSAGE,
         HYPERLINK_OPEN,
+        INIT_IMPORT_SETTINGS,
+        INIT_EXPORT_SETTINGS,
+        ADVANCED_SETTINGS_VISIBILITY,
+        INIT_RESET_TO_DEFAULT, // Reset os changes to default state
+        DEBUG_SAVED,
+        DEBUG_SAVE_HAS_ERROR,
     }
 }

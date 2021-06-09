@@ -10,6 +10,7 @@ namespace SophiApp.ViewModels
     {
         //TODO: Check all controls IsEnabled property!
 
+        private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
         private const string AppThemePropertyName = "AppTheme";
         private const string IsHitTestVisiblePropertyName = "IsHitTestVisible";
         private const string LocalizationPropertyName = "Localization";
@@ -17,6 +18,7 @@ namespace SophiApp.ViewModels
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
 
+        private bool advancedSettingsVisibility;
         private Debugger debugger;
         private bool isHitTestVisible;
         private LocalizationsHelper localizationsHelper;
@@ -25,22 +27,36 @@ namespace SophiApp.ViewModels
         private bool updateAvailable;
         private string visibleViewByTag;
 
+        public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
+
+        public bool AdvancedSettingsVisibility
+        {
+            get => advancedSettingsVisibility;
+            set
+            {
+                advancedSettingsVisibility = value;
+                debugger.Write(DebuggerRecord.ADVANCED_SETTINGS_VISIBILITY, $"{value}");
+                OnPropertyChanged(AdvancedSettingsVisibilityPropertyName);
+            }
+        }
+
         public Theme AppTheme
         {
             get => themesHelper.Selected;
             private set
             {
-                debugger.AddRecord(DebuggerRecord.THEME, $"{value.Alias}");
+                debugger.Write(DebuggerRecord.THEME, $"{value.Alias}");
                 OnPropertyChanged(AppThemePropertyName);
             }
         }
 
         public RelayCommand AppThemeChangeCommand { get; private set; }
         public List<string> AppThemeList => themesHelper.GetNames();
-
         public RelayCommand ExpandingGroupClickedCommand { get; private set; }
+        public RelayCommand ExportSettingsCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
         public RelayCommand HyperLinkClickedCommand { get; private set; }
+        public RelayCommand ImportSettingsCommand { get; private set; }
 
         public bool IsHitTestVisible
         {
@@ -57,7 +73,7 @@ namespace SophiApp.ViewModels
             get => localizationsHelper.Selected;
             private set
             {
-                debugger.AddRecord(DebuggerRecord.LOCALIZATION, $"{value.Language}");
+                debugger.Write(DebuggerRecord.LOCALIZATION, $"{value.Language}");
                 OnPropertyChanged(LocalizationPropertyName);
             }
         }
@@ -65,6 +81,8 @@ namespace SophiApp.ViewModels
         public RelayCommand LocalizationChangeCommand { get; private set; }
         public List<string> LocalizationList => localizationsHelper.GetNames();
         public RelayCommand RadioButtonGroupClickedCommand { get; private set; }
+        public RelayCommand ResetOsToDefaultStateCommand { get; private set; }
+        public RelayCommand SaveDebugLogCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
         public RelayCommand TextedElementClickedCommand { get; private set; }
         public List<BaseTextedElement> TextedElements { get; private set; }
@@ -95,7 +113,7 @@ namespace SophiApp.ViewModels
             private set
             {
                 visibleViewByTag = value;
-                debugger.AddRecord(DebuggerRecord.VIEW, $"{value}");
+                debugger.Write(DebuggerRecord.VIEW, $"{value}");
                 OnPropertyChanged(VisibleViewByTagPropertyName);
             }
         }

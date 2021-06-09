@@ -7,9 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Debugger = SophiApp.Helpers.Debugger;
 using IContainer = SophiApp.Interfaces.IContainer;
 
@@ -17,6 +15,8 @@ namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
+        private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility = !AdvancedSettingsVisibility;
+
         private async void AppThemeChangeAsync(object args) => await AppThemeChangeAsync(args as string);
 
         private async Task AppThemeChangeAsync(string themeName)
@@ -46,6 +46,19 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private async void ExportSettingsAsync(object args) => await ExportSettingsAsync();
+
+        private async Task ExportSettingsAsync()
+        {
+            //TODO: ExportSettingsAsync Not Implemented
+            await Task.Run(() =>
+            {
+                debugger.Write(DebuggerRecord.INIT_EXPORT_SETTINGS);
+                // ...
+                debugger.Write();
+            });
+        }
+
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
         private async void HyperLinkClickedAsync(object args)
@@ -59,8 +72,21 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.AddRecord(DebuggerRecord.HYPERLINK_OPEN, link);
+                debugger.Write(DebuggerRecord.HYPERLINK_OPEN, link);
                 Process.Start(link);
+            });
+        }
+
+        private async void ImportSettingsAsync(object args) => await ImportSettingsAsync();
+
+        private async Task ImportSettingsAsync()
+        {
+            //TODO: ImportSettingsAsync Not Implemented
+            await Task.Run(() =>
+            {
+                debugger.Write(DebuggerRecord.INIT_IMPORT_SETTINGS);
+                // ...
+                debugger.Write();
             });
         }
 
@@ -74,6 +100,11 @@ namespace SophiApp.ViewModels
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClickedAsync));
+            ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettingsAsync));
+            ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettingsAsync));
+            AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
+            ResetOsToDefaultStateCommand = new RelayCommand(new Action<object>(ResetOsToDefaultStateAsync));
+            SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
         }
 
         private void InitProps()
@@ -83,17 +114,18 @@ namespace SophiApp.ViewModels
             themesHelper = new ThemesHelper();
             IsHitTestVisible = false;
             VisibleViewByTag = Tags.ViewLoading;
+            advancedSettingsVisibility = false;
 
-            debugger.AddRecord(DebuggerRecord.LOCALIZATION, $"{Localization.Language}");
-            debugger.AddRecord(DebuggerRecord.THEME, $"{AppTheme.Alias}");
-            debugger.AddRecord();
+            debugger.Write(DebuggerRecord.LOCALIZATION, $"{Localization.Language}");
+            debugger.Write(DebuggerRecord.THEME, $"{AppTheme.Alias}");
+            debugger.Write();
         }
 
         private async Task InitTextedElementsAsync()
         {
             await Task.Run(() =>
             {
-                debugger.AddRecord(DebuggerRecord.INIT_TEXTED_ELEMENT);
+                debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS);
                 TextedElements = Parser.ParseJson(Properties.Resources.UIData).Where(dto => dto.Type == UIType.TextedElement)
                                                                               .Select(dto => ElementsFabric.Create(dto))
                                                                               .ToList();
@@ -104,8 +136,8 @@ namespace SophiApp.ViewModels
                     {
                         element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
                         element.StateChanged += OnTextedElementStateChanged;
-                        element.CurrentStateAction = ElementsFabric.GetCurrentStateAction(element.Id);
-                        element.SystemStateAction = ElementsFabric.GetSystemStateAction(element.Id);
+                        element.CurrentStateAction = ElementsFabric.SetCurrentStateAction(element.Id);
+                        element.SystemStateAction = ElementsFabric.SetSystemStateAction(element.Id);
                         element.GetCurrentState();
                     }
 
@@ -117,7 +149,7 @@ namespace SophiApp.ViewModels
                 });
 
                 TextedElements.RemoveAll(element => element.ContainerId > 0);
-                debugger.AddRecord();
+                debugger.Write();
             });
         }
 
@@ -126,7 +158,7 @@ namespace SophiApp.ViewModels
             return new Version(outsideVersion) > currentVersion && outsidePrerelease == false && outsideDraft == false;
         }
 
-        private async void LocalizationChangeAsync(object args) => await LocalizationChangeAsync(args as string); //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
+        private async void LocalizationChangeAsync(object args) => await LocalizationChangeAsync(args as string);
 
         private async Task LocalizationChangeAsync(string localizationName)
         {
@@ -148,15 +180,16 @@ namespace SophiApp.ViewModels
             });
         }
 
+        //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
-        private async void OnTextedElementErrorOccurredAsync(uint id, string target, string message)
+        private async void OnTextedElementErrorOccurredAsync(uint id, Exception e)
         {
-            debugger.AddRecord();
-            debugger.AddRecord(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
-            debugger.AddRecord(DebuggerRecord.ELEMENT_ERROR_TARGET, $"{target}");
-            debugger.AddRecord(DebuggerRecord.ELEMENT_ERROR_MESSAGE, $"{message}");
-            debugger.AddRecord();
+            debugger.Write();
+            debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
+            debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+            debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+            debugger.Write();
             await OnTextedElementErrorOccurredAsync(id);
         }
 
@@ -169,7 +202,7 @@ namespace SophiApp.ViewModels
            });
         }
 
-        private void OnTextedElementStateChanged(uint id, UIElementState state) => debugger.AddRecord(DebuggerRecord.ELEMENT_STATE, $"{id}", $"{state}");
+        private void OnTextedElementStateChanged(uint id, UIElementState state) => debugger.Write(DebuggerRecord.ELEMENT_STATE, $"{id}", $"{state}");
 
         private async void RadioButtonGroupClickedAsync(object args)
         {
@@ -189,13 +222,55 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private async void ResetOsToDefaultStateAsync(object args) => await ResetOsToDefaultStateAsync();
+
+        private async Task ResetOsToDefaultStateAsync()
+        {
+            await Task.Run(() =>
+            {
+                //TODO: ResetOsToDefaultStateAsync Not Implemented
+                debugger.Write(DebuggerRecord.INIT_RESET_TO_DEFAULT);
+                // ...
+                debugger.Write();
+            });
+        }
+
+        private async void SaveDebugLogAsync(object args)
+        {
+            //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
+            await SaveDebugLogAsync();
+            //debugger.Write(isSaved ? DebuggerRecord.DEBUG_SAVED : DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
+            //TODO: SetLoadingPanelVisibilityProperty(isVisible: false);
+        }
+
+        private async Task SaveDebugLogAsync()
+        {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    FileHelper.Save(list: debugger.GetLog(), path: AppData.DebugFilePath);
+                    debugger.Write(DebuggerRecord.DEBUG_SAVED);
+                }
+                catch (Exception e)
+                {
+                    debugger.Write();
+                    debugger.Write(DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
+                    debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+                    debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+                    debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
+                    debugger.Write();
+                }
+            });
+        }
+
         private async void SearchClickedAsync(object args) => await SearchClickedAsync(args as string);
 
         private async Task SearchClickedAsync(string search)
         {
             await Task.Run(() =>
             {
-                //TODO: Search not implemented
+                //TODO: SearchClickedAsync not implemented
             });
         }
 
@@ -204,7 +279,7 @@ namespace SophiApp.ViewModels
 
         private void SetIsHitTestVisible(bool state) => IsHitTestVisible = state;
 
-        private void SetLocalizationProperty(Localization localization) => Localization = localization;        
+        private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
         //TODO: Clicked command increment or decrement counter ??
         private void SetTextedElementsChangedCounter(UIElementState elementState)
@@ -269,36 +344,39 @@ namespace SophiApp.ViewModels
                 try
                 {
                     var response = request.GetResponse();
-                    debugger.AddRecord(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
+                    debugger.Write(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
                     using (Stream dataStream = response.GetResponseStream())
                     {
                         StreamReader reader = new StreamReader(dataStream);
                         string responseFromServer = reader.ReadToEnd();
-                        debugger.AddRecord(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{responseFromServer.Length}");
+                        debugger.Write(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{responseFromServer.Length}");
                         var release = Parser.ParseJson(responseFromServer).First();
-                        debugger.AddRecord(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.Tag_Name}");
-                        debugger.AddRecord(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.Prerelease}");
-                        debugger.AddRecord(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.Draft}");
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.Tag_Name}");
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.Prerelease}");
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.Draft}");
                         var updateRequired = IsNewVersion(currentVersion: AppData.Version, outsideVersion: release.Tag_Name,
                                                           outsidePrerelease: release.Prerelease, outsideDraft: release.Draft);
 
                         if (updateRequired)
                         {
-                            debugger.AddRecord(DebuggerRecord.UPDATE_VERSION_REQUIRED);
-                            debugger.AddRecord();
+                            debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
+                            debugger.Write();
                             SetUpdateAvailableProperty(true);
                             Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.Tag_Name);
                             return;
                         }
 
-                        debugger.AddRecord(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
-                        debugger.AddRecord();
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
+                        debugger.Write();
                     }
                 }
                 catch (Exception e)
                 {
-                    debugger.AddRecord(DebuggerRecord.UPDATE_HAS_ERROR, e.Message);
-                    debugger.AddRecord();
+                    debugger.Write(DebuggerRecord.UPDATE_HAS_ERROR);
+                    debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+                    debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+                    debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
+                    debugger.Write();
                 }
             });
         }

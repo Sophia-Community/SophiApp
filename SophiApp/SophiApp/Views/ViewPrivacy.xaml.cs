@@ -76,7 +76,7 @@ namespace SophiApp.Views
         private void ViewPrivacy_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (IsVisible)
-            {             
+            {
                 var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
                 scrollViewer?.ScrollToTop();
             }

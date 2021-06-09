@@ -30,7 +30,7 @@ namespace SophiApp.Models
             IsContainer = json.IsContainer;
         }
 
-        public delegate void TextedElementErrorOccurred(uint id, string target, string message);
+        public delegate void TextedElementErrorOccurred(uint id, Exception e);
 
         public delegate void TextedElementStateHandler(uint id, UIElementState state);
 
@@ -180,7 +180,7 @@ namespace SophiApp.Models
             }
             catch (Exception e)
             {
-                ErrorOccurred?.Invoke(Id, e.TargetSite.Name, e.Message);
+                ErrorOccurred?.Invoke(Id, e);
             }
         }
 
@@ -198,7 +198,7 @@ namespace SophiApp.Models
             }
             catch (Exception e)
             {
-                ErrorOccurred?.Invoke(Id, e.TargetSite.Name, e.Message);
+                ErrorOccurred?.Invoke(Id, e);
             }
         }
     }
