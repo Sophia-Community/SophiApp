@@ -13,15 +13,12 @@ namespace SophiApp.Models
         private bool isEnabled;
 
         public const string DescriptionPropertyName = "Description";
-
         public const string HeaderPropertyName = "Header";
-
         public const string IsCheckedPropertyName = "IsChecked";
-
         public const string IsEnabledPropertyName = "IsEnabled";
 
         public Func<bool> CurrentStateAction;
-        public Action SystemStateAction;
+        public Action<bool> SystemStateAction;
 
         public BaseTextedElement(JsonDTO json)
         {
@@ -29,11 +26,11 @@ namespace SophiApp.Models
             Id = json.Id;
             Descriptions = json.Descriptions;
             Headers = json.Headers;
-            Model = json.Model;
             Tag = json.Tag;
+            IsContainer = json.IsContainer;
         }
 
-        public delegate void TextedElementErrorOccurred(uint id, string target, string message);
+        public delegate void TextedElementErrorOccurred(uint id, Exception e);
 
         public delegate void TextedElementStateHandler(uint id, UIElementState state);
 
@@ -43,8 +40,9 @@ namespace SophiApp.Models
 
         public event TextedElementStateHandler StateChanged;
 
-        private Dictionary<UILanguage, string> Descriptions { get; set; }
-        private Dictionary<UILanguage, string> Headers { get; set; }
+        internal Dictionary<UILanguage, string> Descriptions { get; set; }
+        internal Dictionary<UILanguage, string> Headers { get; set; }
+        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
         public uint ContainerId { get; set; }
 
         public string Description
@@ -80,6 +78,7 @@ namespace SophiApp.Models
         }
 
         public bool IsClicked { get; set; }
+        public bool IsContainer { get; set; }
 
         public bool IsEnabled
         {
@@ -90,8 +89,6 @@ namespace SophiApp.Models
                 OnPropertyChanged(IsEnabledPropertyName);
             }
         }
-
-        public string Model { get; set; }
 
         public UIElementState State
         {
@@ -183,7 +180,7 @@ namespace SophiApp.Models
             }
             catch (Exception e)
             {
-                ErrorOccurred?.Invoke(Id, e.TargetSite.Name, e.Message);
+                ErrorOccurred?.Invoke(Id, e);
             }
         }
 
@@ -193,15 +190,15 @@ namespace SophiApp.Models
             Description = Descriptions[language];
         }
 
-        internal void SetSystemState()
+        internal void SetSystemState(bool state)
         {
             try
             {
-                SystemStateAction?.Invoke();
+                SystemStateAction(state);
             }
             catch (Exception e)
             {
-                ErrorOccurred?.Invoke(Id, e.TargetSite.Name, e.Message);
+                ErrorOccurred?.Invoke(Id, e);
             }
         }
     }

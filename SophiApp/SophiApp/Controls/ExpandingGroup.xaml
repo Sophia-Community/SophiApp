@@ -2,16 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:models="clr-namespace:SophiApp.Models"
              xmlns:controls="clr-namespace:SophiApp.Controls"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <converters:ActualHeightMultiply x:Key="ActualHeightMultiplyConverter" />
+        <converters:ParametersToArray x:Key="ParametersToArrayConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -55,20 +56,6 @@
             <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Data" Value="M15.1484 12.3516L15.8516 11.6484L8 3.79688L0.148438 11.6484L0.851562 12.3516L8 5.20312L15.1484 12.3516Z" />
         </Style>
-        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.Header">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Text" Value="{Binding Header}" />
-            <Setter Property="Grid.Column" Value="0" />
-        </Style>
         <Style TargetType="{x:Type ScrollViewer}">
             <Setter Property="DockPanel.Dock" Value="Bottom" />
             <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
@@ -98,6 +85,7 @@
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Margin" Value="20, 0, 0, 20" />
+            <Setter Property="Id" Value="{Binding Id}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -110,7 +98,13 @@
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="20" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Style="{DynamicResource Style.TextBlock.Header}" />
+                    <TextBlock Style="{DynamicResource NormalText}"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Text="{Binding Header}"
+                               Grid.Column="0" />
+
                     <Grid Style="{StaticResource Style.Grid.Path.Wrapper}" MouseLeftButtonDown="ExpandingGroup_MouseLeftButtonDown">
                         <Viewbox x:Name="ViewboxArrow">
                             <Canvas>
@@ -123,12 +117,21 @@
                     <StackPanel>
                         <Border />
                         <ItemsControl x:Name="ItemsControlContent"
-                                  ItemsSource="{Binding Collection}">
+                                      ItemsSource="{Binding Collection}"
+                                      Margin="-5">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
-                                    <controls:CheckBox FontSize="14"
-                                                       Command="{Binding Path=Command, RelativeSource={RelativeSource AncestorType={x:Type controls:ExpandingGroup}}}"
-                                                       CommandParameter="{Binding Id}" />
+                                    <controls:CheckBox Command="{Binding Path=Command, RelativeSource={RelativeSource AncestorType={x:Type controls:ExpandingGroup}}}"
+                                                       Margin="0, 10, 0, 12"
+                                                       IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                       IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
+                                        <controls:CheckBox.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource ParametersToArrayConverter}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="Id" RelativeSource="{RelativeSource AncestorType={x:Type controls:ExpandingGroup}}" />
+                                            </MultiBinding>
+                                        </controls:CheckBox.CommandParameter>
+                                    </controls:CheckBox>
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

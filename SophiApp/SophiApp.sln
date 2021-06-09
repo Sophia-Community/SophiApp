@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiApp", "SophiApp\SophiApp.csproj", "{5C2D9065-0C40-4C03-9DA3-0D1024E5DBC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SophiApp", "SophiApp\SophiApp.csproj", "{ACBFB9D2-485A-4241-839C-503C55173D18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C2D9065-0C40-4C03-9DA3-0D1024E5DBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C2D9065-0C40-4C03-9DA3-0D1024E5DBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C2D9065-0C40-4C03-9DA3-0D1024E5DBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C2D9065-0C40-4C03-9DA3-0D1024E5DBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBFB9D2-485A-4241-839C-503C55173D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBFB9D2-485A-4241-839C-503C55173D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBFB9D2-485A-4241-839C-503C55173D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBFB9D2-485A-4241-839C-503C55173D18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0540DF7B-6A07-4266-BD25-8013F2ACE825}
+		SolutionGuid = {FE03E97B-6080-45C7-9303-8B1F8A740824}
 	EndGlobalSection
 EndGlobal

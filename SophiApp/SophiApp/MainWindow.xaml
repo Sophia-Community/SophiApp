@@ -1,22 +1,21 @@
 ﻿<Window x:Class="SophiApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:SophiApp.Controls"
         xmlns:helpers="clr-namespace:SophiApp.Helpers"
-        xmlns:vm="clr-namespace:SophiApp.ViewModels"
-        xmlns:view="clr-namespace:SophiApp.Views"
-        mc:Ignorable="d"
+        xmlns:controls="clr-namespace:SophiApp.Controls"
+        xmlns:views="clr-namespace:SophiApp.Views"
+        xmlns:local="clr-namespace:SophiApp"
         WindowStartupLocation="CenterScreen"
-        TextOptions.TextFormattingMode="Display"
-        TextOptions.TextRenderingMode="ClearType">
+        mc:Ignorable="d"
+        Loaded="Window_Loaded">
 
-    <Window.DataContext>
-        <vm:AppVM />
-    </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="3" GlassFrameThickness="0" CornerRadius="0" />
+        <WindowChrome CaptionHeight="0"
+                      ResizeBorderThickness="3"
+                      GlassFrameThickness="0"
+                      CornerRadius="0" />
     </WindowChrome.WindowChrome>
     <Window.Style>
         <Style TargetType="{x:Type Window}">
@@ -25,34 +24,47 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="ResizeMode" Value="CanResize" />
             <Setter Property="ShowInTaskbar" Value="True" />
-            <Setter Property="MinHeight" Value="640" />
+            <Setter Property="MinHeight" Value="620" />
             <Setter Property="MinWidth" Value="1024" />
-            <Setter Property="Height" Value="640" />
+            <Setter Property="Height" Value="620" />
             <Setter Property="Width" Value="1024" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Title" Value="{Binding Path=(helpers:AppDataManager.Name)}" />
+            <Setter Property="Title" Value="{Binding Path=(helpers:AppData.AppName)}" />
         </Style>
     </Window.Style>
     <Window.Resources>
-        <Style x:Key="Style.TextBlock.Title" TargetType="{x:Type TextBlock}">
+        <Style x:Key="SmallText" TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
-        <Style TargetType="{x:Type Ellipse}">
-            <Setter Property="Width" Value="12" />
-            <Setter Property="Height" Value="12" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="10, 0, 10, 0" />
-            <Setter Property="Fill" Value="{StaticResource Brush.Window.Title.Logo.Background}" />
+        <Style x:Key="NormalText" TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style x:Key="HeaderText" TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="28" />
+        </Style>
+        <Style x:Key="SubHeaderText" TargetType="{x:Type TextBlock}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="22" />
         </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="1" />
@@ -71,40 +83,43 @@
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
+                    <!--Hamburger Title Row-->
                     <ColumnDefinition Width="250" />
-                    <!--Hamburger Row-->
+                    <!--Views Title Row-->
                     <ColumnDefinition Width="*" />
-                    <!--Views Row-->
                 </Grid.ColumnDefinitions>
-                <!--Left Window Title-->
-                <controls:TitleWindow Grid.Column="0" Background="{DynamicResource Brush.Window.Background}">
-                    <controls:TitleWindow.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <Ellipse />
-                            <TextBlock Text="{Binding Path=(helpers:AppDataManager.Name)}"
-                                       Style="{StaticResource Style.TextBlock.Title}" />
-                        </StackPanel>
-                    </controls:TitleWindow.Content>
-                </controls:TitleWindow>
-                <!--Right Window Title-->
-                <controls:TitleWindow Grid.Column="1" Background="{DynamicResource Brush.View.Background}">
-                    <controls:TitleWindow.Content>
-                        <Grid>
-                            <controls:TitleButtonClose HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            <controls:TitleButtonMin HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 35, 0" />
-                        </Grid>
-                    </controls:TitleWindow.Content>
-                </controls:TitleWindow>
+                <controls:TitleLeft Grid.Column="0" />
+                <controls:TitleRight Grid.Column="1" />
             </Grid>
 
             <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
                 <Grid.ColumnDefinitions>
+                    <!--Hamburger Column-->
                     <ColumnDefinition Width="250" />
+                    <!--Views and Info Panel Column-->
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0" />
-                <view:ViewPrivacy Grid.Column="1" />
-                <view:ViewSettings Grid.Column="1" />
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <!--Views Row-->
+                        <RowDefinition Height="*" />
+                        <!--Info Panel Row-->
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <views:ViewLoading Grid.Row="0" />
+                    <views:ViewPrivacy Grid.Row="0" />
+                    <views:ViewPersonalization Grid.Row="0" />
+                    <views:ViewSystem Grid.Row="0" />
+                    <views:ViewStartMenu Grid.Row="0" />
+                    <views:ViewUwpApps Grid.Row="0" />
+                    <views:ViewGames Grid.Row="0" />
+                    <views:ViewTaskSheduler Grid.Row="0" />
+                    <views:ViewSecurity Grid.Row="0" />
+                    <views:ViewContextMenu Grid.Row="0" />
+                    <views:ViewSettings Grid.Row="0" />
+                </Grid>
             </Grid>
         </Grid>
     </Border>

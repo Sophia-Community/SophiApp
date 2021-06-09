@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.ViewModels;
+using System.Windows;
 
 namespace SophiApp
 {
@@ -10,6 +11,13 @@ namespace SophiApp
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var appVM = new AppVM();
+            Application.Current.MainWindow.DataContext = appVM;
+            appVM.InitData();
         }
     }
 }

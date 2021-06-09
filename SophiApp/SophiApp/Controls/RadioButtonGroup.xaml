@@ -2,9 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:SophiApp.Models"
-             xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:SophiApp.Controls"
+             xmlns:models="clr-namespace:SophiApp.Models"
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d"
              controls:RadioButton.Click="RadioButton_Click">
@@ -19,16 +19,6 @@
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
             <Setter Property="Margin" Value="0, 15, 0, 0" />
         </Style>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Text" Value="{Binding Header}" />
-        </Style>
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="Orientation" Value="Vertical" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -40,17 +30,21 @@
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Margin" Value="20, 0, 0, 20" />
+            <Setter Property="Id" Value="{Binding Id}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel>
-                <TextBlock />
+                <TextBlock Style="{DynamicResource NormalText}"
+                           Text="{Binding Header}" />
                 <Border />
                 <ItemsControl ItemsSource="{Binding Collection}">
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type models:RadioButton}">
-                            <controls:RadioButton />
+                            <controls:RadioButton IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                  IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                  Id="{Binding Id}" />
                         </DataTemplate>
                     </ItemsControl.Resources>
                 </ItemsControl>

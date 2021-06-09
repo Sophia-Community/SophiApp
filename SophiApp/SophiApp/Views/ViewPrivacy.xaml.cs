@@ -1,6 +1,7 @@
 ﻿using SophiApp.Models;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace SophiApp.Views
@@ -30,40 +31,28 @@ namespace SophiApp.Views
 
         public string Description
         {
-            get { return (string)GetValue(DescriptionProperty); }
-            set { SetValue(DescriptionProperty, value); }
+            get => (string)GetValue(DescriptionProperty);
+            set => SetValue(DescriptionProperty, value);
         }
 
         public string Header
         {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
+            get => (string)GetValue(HeaderProperty);
+            set => SetValue(HeaderProperty, value);
         }
 
         public new string Tag
         {
-            get { return (string)GetValue(TagProperty); }
-            set { SetValue(TagProperty, value); }
-        }
-
-        private void ExpandingGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
-        {
-            var group = e.Item as ExpandingGroup;
-            e.Accepted = group.Tag == Tag;
+            get => (string)GetValue(TagProperty);
+            set => SetValue(TagProperty, value);
         }
 
         private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)
         {
             e.Handled = true;
-            var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta) { RoutedEvent = UIElement.MouseWheelEvent };
+            var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta) { RoutedEvent = MouseWheelEvent };
             var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
-        }
-
-        private void RadioButtonGroupCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
-        {
-            var group = e.Item as RadioButtonGroup;
-            e.Accepted = group.Tag == Tag;
         }
 
         private void TextedElement_MouseEnter(object sender, RoutedEventArgs e)
@@ -78,18 +67,18 @@ namespace SophiApp.Views
             Description = string.Empty;
         }
 
-        private void TextedElementsCollectionFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        private void TextedElementsFilter(object sender, FilterEventArgs e)
         {
             var element = e.Item as BaseTextedElement;
-            e.Accepted = element.ContainerId == 0 && element.Tag == Tag;
+            e.Accepted = element.Tag == Tag;
         }
 
         private void ViewPrivacy_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (IsLoaded && IsVisible)
+            if (IsVisible)
             {
                 var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
-                scrollViewer.ScrollToTop();
+                scrollViewer?.ScrollToTop();
             }
         }
     }

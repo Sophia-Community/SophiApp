@@ -18,13 +18,16 @@ namespace SophiApp.Commons
         [DataMember(Name = "Id")]
         public uint Id { get; set; }
 
+        [DataMember(Name = "IsContainer")]
+        public bool IsContainer { get; set; }
+
         [DataMember(Name = "Model")]
         public string Model { get; set; }
 
         [DataMember(Name = "Tag")]
         public string Tag { get; set; }
 
-        [DataMember(Name = "Type")] //TODO: Duplicated by Model parameter
+        [DataMember(Name = "Type")]
         public UIType Type { get; set; }
     }
 }

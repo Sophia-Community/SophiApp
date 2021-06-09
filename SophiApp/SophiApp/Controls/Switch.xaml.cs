@@ -9,9 +9,9 @@ namespace SophiApp.Controls
     /// </summary>
     public partial class Switch : UserControl
     {
-        private static readonly new RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
+        private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
 
-        private static readonly new RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
+        private static new readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
 
         // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandParameterProperty =
@@ -56,38 +56,32 @@ namespace SophiApp.Controls
 
         public ICommand Command
         {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
+            get => (ICommand)GetValue(CommandProperty); set => SetValue(CommandProperty, value);
         }
 
         public object CommandParameter
         {
-            get { return (object)GetValue(CommandParameterProperty); }
-            set { SetValue(CommandParameterProperty, value); }
+            get => (object)GetValue(CommandParameterProperty); set => SetValue(CommandParameterProperty, value);
         }
 
         public string Description
         {
-            get { return (string)GetValue(DescriptionProperty); }
-            set { SetValue(DescriptionProperty, value); }
+            get => (string)GetValue(DescriptionProperty); set => SetValue(DescriptionProperty, value);
         }
 
         public string Header
         {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
+            get => (string)GetValue(HeaderProperty); set => SetValue(HeaderProperty, value);
         }
 
         public int Id
         {
-            get { return (int)GetValue(IdProperty); }
-            set { SetValue(IdProperty, value); }
+            get => (int)GetValue(IdProperty); set => SetValue(IdProperty, value);
         }
 
         public bool IsChecked
         {
-            get { return (bool)GetValue(IsCheckedProperty); }
-            set { SetValue(IsCheckedProperty, value); }
+            get => (bool)GetValue(IsCheckedProperty); set => SetValue(IsCheckedProperty, value);
         }
 
         private void Switch_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });

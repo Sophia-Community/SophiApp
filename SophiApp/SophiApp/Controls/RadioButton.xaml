@@ -7,20 +7,6 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Text" Value="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
-        </Style>
         <Style TargetType="{x:Type Border}">
             <Setter Property="Width" Value="20" />
             <Setter Property="Height" Value="20" />
@@ -43,11 +29,8 @@
         </Style>
         <Style TargetType="{x:Type local:RadioButton}">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="IsChecked" Value="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="IsEnabled" Value="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Id" Value="{Binding Id}" />
-            <Setter Property="Margin" Value="20, 10, 0, 10" />
+            <Setter Property="Margin" Value="0, 10, 0, 10" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -63,7 +46,13 @@
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
-                <TextBlock />
+                <TextBlock Style="{DynamicResource NormalText}"
+                           Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+
                 <Border x:Name="BorderRound" MouseLeftButtonDown="RadioButton_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseDot" />
                 </Border>

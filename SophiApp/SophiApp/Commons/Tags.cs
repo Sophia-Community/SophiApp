@@ -6,6 +6,7 @@ namespace SophiApp.Commons
     {
         internal static readonly string ViewContextMenu = Application.Current.FindResource("Tags.View.ContextMenu") as string;
         internal static readonly string ViewGames = Application.Current.FindResource("Tags.View.Games") as string;
+        internal static readonly string ViewLoading = Application.Current.FindResource("Tags.View.Loading") as string;
         internal static readonly string ViewPersonalization = Application.Current.FindResource("Tags.View.Personalization") as string;
         internal static readonly string ViewPrivacy = Application.Current.FindResource("Tags.View.Privacy") as string;
         internal static readonly string ViewSecurity = Application.Current.FindResource("Tags.View.Security") as string;

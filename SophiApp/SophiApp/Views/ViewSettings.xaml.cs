@@ -25,10 +25,10 @@ namespace SophiApp.Views
 
         private void ViewSettings_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (IsLoaded && IsVisible)
+            if (IsVisible)
             {
                 var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
-                scrollViewer.ScrollToTop();
+                scrollViewer?.ScrollToTop();
             }
         }
     }

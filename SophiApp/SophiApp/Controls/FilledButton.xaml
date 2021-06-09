@@ -7,73 +7,66 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Storyboard x:Key="Animation.FilledButton.Click"
-                    Storyboard.TargetName="GridContent"
-                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
-            <DoubleAnimation Duration="0:0:0.3"
-                             From="0"
-                             To="10"
-                             SpeedRatio="3"
-                             AutoReverse="True" />
-        </Storyboard>
-        <Style TargetType="{x:Type Grid}">
-            <Setter Property="Grid.RenderTransform">
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Template">
                 <Setter.Value>
-                    <TranslateTransform X="0" Y="0" />
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="0"
+                                CornerRadius="2">
+                            <StackPanel Orientation="Horizontal"
+                                        Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="14, 0, 14, 0">
+                            <TextBlock Style="{DynamicResource NormalText}"
+                                       Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:FilledButton}}}" />
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="CornerRadius" Value="2" />
-        </Style>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="Margin" Value="10, 5, 10, 5" />
         </Style>
         <Style TargetType="{x:Type local:FilledButton}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Width" Value="146" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Foreground" Value="{StaticResource Brush.Button.Foreground}" />
+            <Setter Property="MinWidth" Value="146" />
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid x:Name="GridContent">
-                <Border x:Name="BorderButton" MouseLeftButtonDown="FilledButton_MouseLeftButtonDown">
-                    <StackPanel>
-                        <TextBlock />
-                    </StackPanel>
-                </Border>
-            </Grid>
+            <Button x:Name="ButtonTemplate">
+                <Button.RenderTransform>
+                    <ScaleTransform CenterX="50" CenterY="50" ScaleX="1.0" ScaleY="1.0" />
+                </Button.RenderTransform>
+            </Button>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="True">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
+                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
                 </Trigger>
-                <EventTrigger SourceName="BorderButton" RoutedEvent="MouseLeftButtonDown">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource Animation.FilledButton.Click}" />
-                    </EventTrigger.Actions>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetName="ButtonTemplate"
+                                    Storyboard.TargetProperty="RenderTransform.ScaleX">
+                            <DoubleAnimation From="1.0"
+                                             To="0.8"
+                                             Duration="0:0:0.05"
+                                             AutoReverse="True" />
+                        </Storyboard>
+                    </BeginStoryboard>
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

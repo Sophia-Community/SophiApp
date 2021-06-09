@@ -7,54 +7,48 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Storyboard x:Key="Animation.IconButton.Click"
-                    Storyboard.TargetName="GridContent"
-                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
-            <DoubleAnimation Duration="0:0:0.3"
-                             From="0"
-                             To="10"
-                             SpeedRatio="3"
-                             AutoReverse="True" />
-        </Storyboard>
-        <Style TargetType="{x:Type Grid}">
-            <Setter Property="Grid.RenderTransform">
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Template">
                 <Setter.Value>
-                    <TranslateTransform X="0" Y="0" />
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="0"
+                                CornerRadius="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="32" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Style="{DynamicResource NormalText}"
+                                           Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}"
+                                           Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                <!--Dividing Strip-->
+                                <Border Grid.Column="1"
+                                        Background="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                        BorderThickness="0" />
+                                <!--Icon Content-->
+                                <ContentPresenter Grid.Column="2"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"
+                                                  Width="32"
+                                                  Height="32"
+                                                  Content="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-        <Style TargetType="{x:Type ContentPresenter}">
-            <Setter Property="Grid.Column" Value="2" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Width" Value="32" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Content" Value="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
-        </Style>
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="130" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="CornerRadius" Value="2" />
-        </Style>
-        <Style x:Key="Style.Border.Splitter.DividingStrip" TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="1" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Grid.Column" Value="1" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Button.Foreground}" />
-        </Style>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
-         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
-            <Setter Property="Grid.Column" Value="0" />
-            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type local:IconButton}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -62,35 +56,33 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Width" Value="130" />
             <Setter Property="Height" Value="32" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid x:Name="GridContent">
-                <Border x:Name="BorderButton" MouseLeftButtonDown="IconButton_MouseLeftButtonDown">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="97" />
-                            <ColumnDefinition Width="1" />
-                            <ColumnDefinition Width="32" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock />
-                        <Border Style="{DynamicResource Style.Border.Splitter.DividingStrip}" /> <!--Dividing Strip-->
-                        <ContentPresenter /> <!--Icon Content-->
-                    </Grid>
-                </Border>
-            </Grid>
+            <Button x:Name="ButtonTemplate">
+                <Button.RenderTransform>
+                    <ScaleTransform CenterX="50" CenterY="50" ScaleX="1.0" ScaleY="1.0" />
+                </Button.RenderTransform>
+            </Button>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="True">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="BorderButton" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
+                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
                 </Trigger>
-                <EventTrigger SourceName="BorderButton" RoutedEvent="MouseLeftButtonDown">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard Storyboard="{StaticResource Animation.IconButton.Click}" />
-                    </EventTrigger.Actions>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetName="ButtonTemplate"
+                                    Storyboard.TargetProperty="RenderTransform.ScaleX">
+                            <DoubleAnimation From="1.0"
+                                             To="0.8"
+                                             Duration="0:0:0.05"
+                                             AutoReverse="True" />
+                        </Storyboard>
+                    </BeginStoryboard>
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

@@ -19,9 +19,10 @@
             "EN": "The OS level of diagnostic data gathering",
             "RU": "Уровень сбора диагностических сведений ОС"
         },
-        "Model": "RadioButtonGroup",
+        "Model": "RadioButtonsGroup",
+        "IsContainer": true,
         "Tag": "Privacy",
-        "Type": "1"
+        "Type": "0"
     },
     {
         "Id": 102,
@@ -73,9 +74,10 @@
             "EN": "Windows should ask for my feedback",
             "RU": "Windows должна запрашивать мои отзывы"
         },
-        "Model": "RadioButtonGroup",
+        "Model": "RadioButtonsGroup",
+        "IsContainer": true,
         "Tag": "Privacy",
-        "Type": "1"
+        "Type": "0"
     },
     {
         "Id": 106,
@@ -114,8 +116,9 @@
             "RU": "Задачи диагностического отслеживания"
         },
         "Model": "ExpandingGroup",
+        "IsContainer": true,
         "Tag": "Privacy",
-        "Type": "2"
+        "Type": "0"
     },
     {
         "Id": 109,

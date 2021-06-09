@@ -34,29 +34,6 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
         </Style>
-        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.SelectedText">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Text" Value="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}" />
-        </Style>
-        <Style TargetType="{x:Type TextBlock}" x:Key="Style.TextBlock.ListBox.Item">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Text" Value="{Binding}" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Margin" Value="0, 3, 0, 3" />
-        </Style>
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="Padding" Value="0" />
             <Setter Property="Margin" Value="0" />
@@ -64,7 +41,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Grid x:Name="GridContainer" Background="{DynamicResource Brush.Window.Background}">
-                            <TextBlock Style="{StaticResource Style.TextBlock.ListBox.Item}" />
+                            <TextBlock Style="{DynamicResource NormalText}"
+                                       Text="{Binding}"
+                                       HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource Brush.Window.Foreground}"
+                                       Margin="0, 3, 0, 3" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -93,7 +74,11 @@
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
-                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}" />
+                                    <TextBlock Style="{DynamicResource NormalText}"
+                                               Text="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource Brush.Window.Foreground}" />
                                     <Grid Width="32" Height="32" HorizontalAlignment="Right">
                                         <Viewbox Style="{StaticResource Style.Viewbox.Button.Wrapper}">
                                             <Canvas Width="12" Height="12">
@@ -110,7 +95,11 @@
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
-                                    <TextBlock Style="{StaticResource Style.TextBlock.SelectedText}" />
+                                    <TextBlock Style="{DynamicResource NormalText}"
+                                               Text="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource Brush.Window.Foreground}" />
                                     <Grid Width="32" Height="32" HorizontalAlignment="Right">
                                         <Viewbox Style="{StaticResource Style.Viewbox.Button.Wrapper}">
                                             <Canvas Width="12" Height="12">
@@ -127,6 +116,7 @@
                         <Border x:Name="BorderPopup">
                             <ListBox x:Name="ListBoxContent"
                                      ItemsSource="{Binding Path=Source, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Margin="0"
                                      BorderThickness="0"
                                      Background="Transparent"
                                      Padding="0"

@@ -63,7 +63,7 @@ namespace SophiApp.Controls
             var listBox = Template.FindName("ListBoxContent", this) as ListBox;
             var popup = Template.FindName("Popup", this) as Popup;
 
-            if (listBox.SelectedItem as string == SelectedText)
+            if ((listBox.SelectedItem as string) == SelectedText)
                 return;
 
             popup.IsOpen = false;
