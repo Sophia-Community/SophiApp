@@ -49,12 +49,7 @@
                                Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
                                Margin="{StaticResource BlockIndent}" />
 
-                    <ScrollViewer CanContentScroll="True"
-                                  Grid.Row="1"
-                                  BorderBrush="{DynamicResource Brush.Window.Foreground}"
-                                  IsTabStop="False"
-                                  Focusable="False">
-
+                    <ScrollViewer Style="{DynamicResource ViewScrollStyle}">
                         <StackPanel>
                             <TextBlock Style="{DynamicResource SubHeaderText}"
                                        Text="{DynamicResource Localization.Settings.Themes}"

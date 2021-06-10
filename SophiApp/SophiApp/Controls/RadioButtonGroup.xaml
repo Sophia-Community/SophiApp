@@ -37,7 +37,8 @@
         <ControlTemplate>
             <StackPanel>
                 <TextBlock Style="{DynamicResource NormalText}"
-                           Text="{Binding Header}" />
+                           Text="{Binding Header}"
+                           TextWrapping="Wrap" />
                 <Border />
                 <ItemsControl ItemsSource="{Binding Collection}">
                     <ItemsControl.Resources>

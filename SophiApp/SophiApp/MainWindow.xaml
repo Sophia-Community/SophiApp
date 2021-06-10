@@ -34,6 +34,15 @@
         </Style>
     </Window.Style>
     <Window.Resources>
+        <Style x:Key="ViewScrollStyle" TargetType="{x:Type ScrollViewer}">
+            <Setter Property="CanContentScroll" Value="False" />
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+        </Style>
         <Style x:Key="SmallText" TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display" />

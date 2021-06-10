@@ -19,7 +19,7 @@ namespace SophiApp.Controls
 
         // Using a DependencyProperty as the backing store for IsExpanded.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsExpandedProperty =
-            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(ExpandingGroup), new PropertyMetadata(default));
+            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(ExpandingGroup), new PropertyMetadata(true));
 
         public ExpandingGroup()
         {

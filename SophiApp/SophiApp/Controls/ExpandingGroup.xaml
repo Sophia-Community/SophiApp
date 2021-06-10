@@ -50,7 +50,7 @@
         </Style>
         <Style TargetType="{x:Type Grid}" x:Key="Style.Grid.Header">
             <Setter Property="DockPanel.Dock" Value="Top" />
-            <Setter Property="Height" Value="40" />
+            <Setter Property="MinHeight" Value="40" />
         </Style>
         <Style TargetType="{x:Type Path}">
             <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />

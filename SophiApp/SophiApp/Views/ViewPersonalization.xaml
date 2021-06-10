@@ -70,17 +70,14 @@
                                           CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
 
                     <ScrollViewer x:Name="ScrollViewerContent"
-                                  CanContentScroll="True"
-                                  Grid.Row="1"
-                                  Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                  BorderBrush="{DynamicResource Brush.Window.Foreground}"
-                                  IsTabStop="False"
-                                  Focusable="False">
+                                  Style="{DynamicResource ViewScrollStyle}">
 
                         <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:Switch}">
-                                    <controls:Switch Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                    <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
+                                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
                                                      CommandParameter="{Binding Id}"
                                                      Id="{Binding Id}"
                                                      IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"

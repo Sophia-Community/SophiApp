@@ -50,8 +50,6 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>

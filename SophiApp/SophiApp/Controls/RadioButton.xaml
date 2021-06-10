@@ -35,6 +35,7 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
