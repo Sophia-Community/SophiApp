@@ -7,11 +7,8 @@ namespace SophiApp.Helpers
     {
         private const string APP_NAME = "SophiApp";
         private const string CODER_LINK = "https://github.com/Inestic";
-        private const string DEBUG_EXT = "txt";
-
-        //TODO: Set right designer homepage
-        private const string DESIGNER_LINK = "https://instagram.com/user/VladimirNameless";
-
+        private const string DEBUG_EXT = "txt";        
+        private const string DESIGNER_LINK = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
         private const string GITHUB_API_RELEASES = "https://api.github.com/repos/Sophia-Community/SophiApp/releases";
         private const string GITHUB_RELEASES_PAGE = "https://github.com/Sophia-Community/SophiApp/releases";
         private const string GITHUB_REPO = "https://github.com/Sophia-Community/SophiApp";

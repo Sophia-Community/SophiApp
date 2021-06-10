@@ -180,7 +180,7 @@
 
                             <controls:ActorLink Role="{DynamicResource Localization.Settings.Designer}"
                                                 Actor="{DynamicResource Localization.Settings.Designer.Name}"
-                                                Icon="{DynamicResource Icon.Instagram}"
+                                                Icon="{DynamicResource Icon.LinkedIn}"
                                                 IconMargin="10, 0, 0, 5"
                                                 Margin="{StaticResource ActorLinkIndent}"
                                                 Command="{Binding HyperLinkClickedCommand}"
