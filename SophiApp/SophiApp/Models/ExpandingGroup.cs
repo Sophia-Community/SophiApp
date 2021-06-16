@@ -1,5 +1,6 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Interfaces;
+using System.Collections.Generic;
 
 namespace SophiApp.Models
 {
@@ -9,7 +10,9 @@ namespace SophiApp.Models
         {
         }
 
-        void IContainer.SetLocalization(UILanguage language)
+        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
+
+        internal override void SetLocalization(UILanguage language)
         {
             Header = Headers[language];
             Collection.ForEach(element => element.SetLocalization(language));

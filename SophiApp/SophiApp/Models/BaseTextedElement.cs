@@ -12,6 +12,8 @@ namespace SophiApp.Models
         private bool isChecked;
         private bool isEnabled;
 
+        internal Action<uint, Exception> ErrorOccurred;
+        internal Action<uint, UIElementState> StateChanged;
         public const string DescriptionPropertyName = "Description";
         public const string HeaderPropertyName = "Header";
         public const string IsCheckedPropertyName = "IsChecked";
@@ -30,19 +32,11 @@ namespace SophiApp.Models
             IsContainer = json.IsContainer;
         }
 
-        public delegate void TextedElementErrorOccurred(uint id, Exception e);
-
-        public delegate void TextedElementStateHandler(uint id, UIElementState state);
-
-        public event TextedElementErrorOccurred ErrorOccurred;
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public event TextedElementStateHandler StateChanged;
 
         internal Dictionary<UILanguage, string> Descriptions { get; set; }
         internal Dictionary<UILanguage, string> Headers { get; set; }
-        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
+
         public uint ContainerId { get; set; }
 
         public string Description
@@ -184,7 +178,7 @@ namespace SophiApp.Models
             }
         }
 
-        internal void SetLocalization(UILanguage language)
+        internal virtual void SetLocalization(UILanguage language)
         {
             Header = Headers[language];
             Description = Descriptions[language];

@@ -1,9 +1,10 @@
-﻿using SophiApp.Commons;
+﻿using SophiApp.Models;
+using System.Collections.Generic;
 
 namespace SophiApp.Interfaces
 {
     internal interface IContainer
     {
-        void SetLocalization(UILanguage language);
+        List<BaseTextedElement> Collection { get; set; }
     }
 }

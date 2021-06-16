@@ -1,5 +1,6 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
+using SophiApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,10 +40,8 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var element = TextedElements.First(container => container.Id == containerId)
-                              .Collection
-                              .First(e => e.Id == elementId);
-                
+                var group = TextedElements.First(container => container.Id == containerId) as IContainer;
+                var element = group.Collection.First(e => e.Id == elementId);
                 element.ChangeState();
                 SetTextedElementsChangedCounter(element.State);
             });
@@ -134,23 +133,34 @@ namespace SophiApp.ViewModels
 
                 TextedElements.ForEach(element =>
                 {
-                    if (element.IsContainer == false)
+                    element.SetLocalization(Localization.Language);
+
+                    if (!(element is IContainer))
                     {
                         element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
                         element.StateChanged += OnTextedElementStateChanged;
                         element.CurrentStateAction = ElementsFabric.SetCurrentStateAction(element.Id);
                         element.SystemStateAction = ElementsFabric.SetSystemStateAction(element.Id);
                         element.GetCurrentState();
-                    }
 
-                    if (element.ContainerId > 0)
-                    {
-                        var container = TextedElements.First(c => c.Id == element.ContainerId);
-                        container.Collection.Add(element);
+                        if (element.ContainerId > 0)
+                        {
+                            var container = TextedElements.First(c => c.Id == element.ContainerId) as IContainer;
+                            container.Collection.Add(element);
+                        }
                     }
                 });
 
                 TextedElements.RemoveAll(element => element.ContainerId > 0);
+                TextedElements.Where(element => element is RadioButtonsGroup)
+                              .Cast<RadioButtonsGroup>()
+                              .ToList()
+                              .ForEach(group =>
+                              {
+                                  group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
+                                  group.SetDefaultSelectedId();
+                              });
+
                 debugger.Write();
             });
         }
@@ -167,16 +177,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var localization = localizationsHelper.FindName(localizationName);
-                TextedElements.ForEach(element =>
-                {
-                    if (element is IContainer)
-                    {
-                        (element as IContainer).SetLocalization(localization.Language);
-                        return;
-                    }
-
-                    element.SetLocalization(localization.Language);
-                });
+                TextedElements.ForEach(element => element.SetLocalization(localization.Language));
                 localizationsHelper.Change(localization);
                 SetLocalizationProperty(localization);
             });
@@ -184,6 +185,25 @@ namespace SophiApp.ViewModels
 
         //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
+
+        private async void OnRadioButtonsGroupErrorOccurredAsync(uint id, Exception e)
+        {
+            debugger.Write();
+            debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
+            debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+            debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+            debugger.Write();
+            await OnRadioButtonsGroupErrorOccurredAsync(id);
+        }
+
+        private async Task OnRadioButtonsGroupErrorOccurredAsync(uint id)
+        {
+            await Task.Run(() =>
+            {
+                var group = TextedElements.First(element => element.Id == id) as IContainer;
+                group.Collection.ForEach(element => element.State = UIElementState.DISABLED);
+            });
+        }
 
         private async void OnTextedElementErrorOccurredAsync(uint id, Exception e)
         {
@@ -209,18 +229,28 @@ namespace SophiApp.ViewModels
         private async void RadioButtonGroupClickedAsync(object args)
         {
             var list = args as List<uint>;
-            await RadioButtonGroupClickedAsync(elementId: list.First(), containerId: list.Last());
+            await RadioButtonGroupClickedAsync(elementId: list.First(), groupId: list.Last());
         }
 
-        private async Task RadioButtonGroupClickedAsync(uint elementId, uint containerId)
+        private async Task RadioButtonGroupClickedAsync(uint elementId, uint groupId)
         {
             await Task.Run(() =>
             {
-                TextedElements.First(container => container.Id == containerId)
-                              .Collection
-                              .ForEach(element => element.State = element.Id == elementId
-                                                                ? UIElementState.SETTOACTIVE
-                                                                : UIElementState.UNCHECKED);
+                var group = TextedElements.First(g => g.Id == groupId) as RadioButtonsGroup;
+                var element = group.Collection.First(e => e.Id == elementId);
+                group.Collection.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
+
+                if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
+                {
+                    SetTextedElementsChangedCounter(UIElementState.SETTOACTIVE);
+                    group.IsSelected = true;
+                }
+
+                if (element.Id == group.DefaultSelectedId)
+                {
+                    SetTextedElementsChangedCounter(UIElementState.UNCHECKED);
+                    group.IsSelected = false;
+                }
             });
         }
 
@@ -303,23 +333,6 @@ namespace SophiApp.ViewModels
             }
         }
 
-        private async Task SetTextedElementsLocalizationAsync(UILanguage language)
-        {
-            await Task.Run(() =>
-            {
-                TextedElements.ForEach(element =>
-                {
-                    if (element is IContainer)
-                    {
-                        (element as IContainer).SetLocalization(language);
-                        return;
-                    }
-
-                    element.SetLocalization(language);
-                });
-            });
-        }
-
         private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
@@ -389,7 +402,6 @@ namespace SophiApp.ViewModels
             //TODO: Uncomment update function before release.
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
-            await SetTextedElementsLocalizationAsync(Localization.Language);
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);
             SetIsHitTestVisible(true);
             MouseHelper.ShowWaitCursor(show: false);
