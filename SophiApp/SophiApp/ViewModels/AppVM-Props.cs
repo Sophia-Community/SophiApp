@@ -2,6 +2,7 @@
 using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Debugger = SophiApp.Helpers.Debugger;
 
 namespace SophiApp.ViewModels
@@ -93,6 +94,7 @@ namespace SophiApp.ViewModels
             set
             {
                 textedElementsChangedCounter = value;
+                Debug.WriteLine($"TextedElementsChangedCounter: {TextedElementsChangedCounter}"); //TODO: TextedElementsChangedCounter - For debug only.
                 OnPropertyChanged(TextedElementsChangedCounterPropertyName);
             }
         }

@@ -39,10 +39,12 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                TextedElements.First(container => container.Id == containerId)
+                var element = TextedElements.First(container => container.Id == containerId)
                               .Collection
-                              .First(element => element.Id == elementId)
-                              .ChangeState();
+                              .First(e => e.Id == elementId);
+                
+                element.ChangeState();
+                SetTextedElementsChangedCounter(element.State);
             });
         }
 
