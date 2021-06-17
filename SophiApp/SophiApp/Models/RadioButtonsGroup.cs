@@ -10,6 +10,7 @@ namespace SophiApp.Models
     {
         public RadioButtonsGroup(JsonDTO json) : base(json)
         {
+            State = UIElementState.UNCHECKED;
         }
 
         internal uint DefaultSelectedId { get; private set; } = default;

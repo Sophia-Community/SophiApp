@@ -149,6 +149,7 @@
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />

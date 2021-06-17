@@ -4,6 +4,6 @@
 
     public class CurrentStateAction
     {
-        public static bool FOR_DEBUG_ONLY() => false; //TODO: For debug only throw new Exception();
+        public static bool FOR_DEBUG_ONLY() => false; //TODO: CurrentStateAction - This method for debug only.
     }
 }

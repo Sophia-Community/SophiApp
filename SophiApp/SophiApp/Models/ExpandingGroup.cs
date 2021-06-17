@@ -8,6 +8,7 @@ namespace SophiApp.Models
     {
         public ExpandingGroup(JsonDTO json) : base(json)
         {
+            State = UIElementState.UNCHECKED;
         }
 
         public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();

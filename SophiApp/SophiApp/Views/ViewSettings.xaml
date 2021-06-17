@@ -25,7 +25,7 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Header" Value="{DynamicResource Localization.Settings}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Settings}" />
-            <Setter Property="IsHitTestVisible" Value="{Binding IsHitTestVisible, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsHitTestVisible" Value="{Binding ViewsHitTest, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
     </UserControl.Resources>
@@ -106,11 +106,10 @@
 
                             <StackPanel Style="{StaticResource PanelContainer}">
                                 <controls:IconButton Text="{DynamicResource Localization.Settings.Import}"
-                                                     Command="{Binding ImportSettingsCommand}">
+                                                     Command="{Binding ImportSettingsCommand}"
+                                                     IsEnabled="False">
                                     <controls:IconButton.Content>
                                             <Canvas Width="32" Height="32">
-                                                <Path Data="M0 0H30C31.1046 0 32 0.895431 32 2V30C32 31.1046 31.1046 32 30 32H0V0Z"
-                                                      Fill="{DynamicResource Brush.Window.Acсent.Normal}" />
                                                 <Path Data="M21.5922 13.1165H18.7961C18.6038 13.1165 18.4466 13.2737 18.4466 13.466C18.4466 13.6582 18.6038 13.8155 18.7961 13.8155H21.5922C22.1689 13.8155 22.6407 14.2873 22.6407 14.864V23.2524C22.6407 23.8291 22.1689 24.3009 21.5922 24.3009H10.4077C9.83103 24.3009 9.35919 23.8291 9.35919 23.2524V14.864C9.35919 14.2873 9.83103 13.8155 10.4077 13.8155H13.5534C13.7456 13.8155 13.9029 13.6582 13.9029 13.466C13.9029 13.2737 13.7456 13.1165 13.5534 13.1165H10.4077C9.44656 13.1165 8.66016 13.9029 8.66016 14.864V23.2524C8.66016 24.2135 9.44656 25 10.4077 25H21.5922C22.5534 25 23.3398 24.2135 23.3398 23.2524V14.864C23.3398 13.9029 22.5534 13.1165 21.5922 13.1165Z"
                                                       Fill="{DynamicResource Brush.Button.Foreground}" />
                                                 <Path Data="M16.0001 8.2233C16.1924 8.2233 16.3497 8.06602 16.3497 7.87379V7.34951C16.3497 7.15728 16.1924 7 16.0001 7C15.8079 7 15.6506 7.15728 15.6506 7.34951V7.87379C15.6506 8.06602 15.8079 8.2233 16.0001 8.2233Z"
@@ -123,11 +122,10 @@
 
                                 <controls:IconButton Text="{DynamicResource Localization.Settings.Export}"
                                                      Command="{Binding ExportSettingsCommand}"
-                                                     Margin="10, 0, 0, 0">
+                                                     Margin="10, 0, 0, 0"
+                                                     IsEnabled="False">
                                     <controls:IconButton.Content>
                                             <Canvas Width="32" Height="32">
-                                                <Path Data="M0 0H30C31.1046 0 32 0.895431 32 2V30C32 31.1046 31.1046 32 30 32H0V0Z"
-                                                      Fill="{DynamicResource Brush.Window.Acсent.Normal}" />
                                                 <Path Data="M21.5922 18.8835H18.7961C18.6038 18.8835 18.4466 18.7263 18.4466 18.534C18.4466 18.3418 18.6038 18.1845 18.7961 18.1845H21.5922C22.1689 18.1845 22.6407 17.7127 22.6407 17.136V8.74762C22.6407 8.17092 22.1689 7.69908 21.5922 7.69908H10.4077C9.83103 7.69908 9.35919 8.17092 9.35919 8.74762V17.136C9.35919 17.7127 9.83103 18.1845 10.4077 18.1845H13.5534C13.7456 18.1845 13.9029 18.3418 13.9029 18.534C13.9029 18.7263 13.7456 18.8835 13.5534 18.8835H10.4077C9.44656 18.8835 8.66016 18.0971 8.66016 17.136V8.74762C8.66016 7.78646 9.44656 7.00005 10.4077 7.00005H21.5922C22.5534 7.00005 23.3398 7.78646 23.3398 8.74762V17.136C23.3398 18.0971 22.5534 18.8835 21.5922 18.8835Z"
                                                       Fill="{DynamicResource Brush.Button.Foreground}" />
                                                 <Path Data="M16.0001 23.7767C16.1924 23.7767 16.3497 23.934 16.3497 24.1262V24.6505C16.3497 24.8427 16.1924 25 16.0001 25C15.8079 25 15.6506 24.8427 15.6506 24.6505V24.1262C15.6506 23.934 15.8079 23.7767 16.0001 23.7767Z"
@@ -149,8 +147,8 @@
                             <controls:FilledButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="{StaticResource BlockIndent}"
                                                    HorizontalAlignment="Left"
-                                                   Background="{DynamicResource Brush.Window.Acсent.Hight}"
-                                                   Command="{Binding ResetOsToDefaultStateCommand}" />
+                                                   Command="{Binding ResetOsToDefaultStateCommand}"
+                                                   IsEnabled="False" />
 
                             <TextBlock Style="{DynamicResource SubHeaderText}"
                                        Text="{DynamicResource Localization.Settings.Debug}"

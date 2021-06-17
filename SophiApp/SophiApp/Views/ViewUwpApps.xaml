@@ -33,7 +33,7 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Header" Value="{DynamicResource Localization.UwpApps}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.UwpApps}" />
-            <Setter Property="IsHitTestVisible" Value="{Binding IsHitTestVisible, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsHitTestVisible" Value="{Binding ViewsHitTest, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
     </UserControl.Resources>
@@ -85,7 +85,8 @@
                                                      Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RadioButtonsGroup}">
-                                    <controls:RadioButtonGroup Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                    <controls:RadioButtonGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                               Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
                                                                Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
@@ -97,7 +98,8 @@
                                                        Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:ExpandingGroup}">
-                                    <controls:ExpandingGroup Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                    <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                             Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
                                                              Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                             </ItemsControl.Resources>

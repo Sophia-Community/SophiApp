@@ -184,11 +184,11 @@ namespace SophiApp.Models
             Description = Descriptions[language];
         }
 
-        internal void SetSystemState(bool state)
+        internal void SetSystemState()
         {
             try
             {
-                SystemStateAction(state);
+                SystemStateAction(State == UIElementState.CHECKED);
             }
             catch (Exception e)
             {

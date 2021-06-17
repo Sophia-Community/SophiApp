@@ -113,7 +113,9 @@ namespace SophiApp.ViewModels
             debugger = new Debugger();
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
-            IsHitTestVisible = false;
+            HamburgerHitTest = false;
+            ViewsHitTest = true;
+            WindowCloseHitTest = true;
             VisibleViewByTag = Tags.ViewLoading;
             advancedSettingsVisibility = false;
 
@@ -200,8 +202,8 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var group = TextedElements.First(element => element.Id == id) as IContainer;
-                group.Collection.ForEach(element => element.State = UIElementState.DISABLED);
+                var group = TextedElements.First(element => element.Id == id);
+                group.State = UIElementState.DISABLED;
             });
         }
 
@@ -309,7 +311,12 @@ namespace SophiApp.ViewModels
         //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
         private void SetAppThemeProperty(Theme theme) => AppTheme = theme;
 
-        private void SetIsHitTestVisible(bool state) => IsHitTestVisible = state;
+        private void SetHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
+        {
+            HamburgerHitTest = hamburgerHitTest;
+            ViewsHitTest = viewsHitTest;
+            WindowCloseHitTest = windowCloseHitTest;
+        }
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
@@ -403,7 +410,7 @@ namespace SophiApp.ViewModels
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);
-            SetIsHitTestVisible(true);
+            SetHitTest(hamburgerHitTest: true);
             MouseHelper.ShowWaitCursor(show: false);
         }
     }

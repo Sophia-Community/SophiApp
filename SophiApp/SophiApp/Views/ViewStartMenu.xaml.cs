@@ -1,4 +1,5 @@
-﻿using SophiApp.Models;
+﻿using SophiApp.Helpers;
+using SophiApp.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -69,8 +70,7 @@ namespace SophiApp.Views
 
         private void TextedElementsFilter(object sender, FilterEventArgs e)
         {
-            var element = e.Item as BaseTextedElement;
-            e.Accepted = element.Tag == Tag;
+            e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as BaseTextedElement).Tag, viewTag: Tag);
         }
 
         private void ViewStartMenu_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

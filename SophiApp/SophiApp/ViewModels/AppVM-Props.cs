@@ -13,21 +13,23 @@ namespace SophiApp.ViewModels
 
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
         private const string AppThemePropertyName = "AppTheme";
-        private const string IsHitTestVisiblePropertyName = "IsHitTestVisible";
+        private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string LocalizationPropertyName = "Localization";
         private const string TextedElementsChangedCounterPropertyName = "TextedElementsChangedCounter";
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
+        private const string ViewsHitTestPropertyName = "ViewsHitTest";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
-
+        private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
         private bool advancedSettingsVisibility;
         private Debugger debugger;
-        private bool isHitTestVisible;
+        private bool hamburgerHitTest;
         private LocalizationsHelper localizationsHelper;
         private uint textedElementsChangedCounter;
         private ThemesHelper themesHelper;
         private bool updateAvailable;
+        private bool viewsHitTest;
         private string visibleViewByTag;
-
+        private bool windowCloseHitTest;
         public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
 
         public bool AdvancedSettingsVisibility
@@ -56,18 +58,19 @@ namespace SophiApp.ViewModels
         public RelayCommand ExpandingGroupClickedCommand { get; private set; }
         public RelayCommand ExportSettingsCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
-        public RelayCommand HyperLinkClickedCommand { get; private set; }
-        public RelayCommand ImportSettingsCommand { get; private set; }
 
-        public bool IsHitTestVisible
+        public bool HamburgerHitTest
         {
-            get => isHitTestVisible;
+            get => hamburgerHitTest;
             private set
             {
-                isHitTestVisible = value;
-                OnPropertyChanged(IsHitTestVisiblePropertyName);
+                hamburgerHitTest = value;
+                OnPropertyChanged(HamburgerHitTestPropertyName);
             }
         }
+
+        public RelayCommand HyperLinkClickedCommand { get; private set; }
+        public RelayCommand ImportSettingsCommand { get; private set; }
 
         public Localization Localization
         {
@@ -80,12 +83,19 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand LocalizationChangeCommand { get; private set; }
+
         public List<string> LocalizationList => localizationsHelper.GetNames();
+
         public RelayCommand RadioButtonGroupClickedCommand { get; private set; }
+
         public RelayCommand ResetOsToDefaultStateCommand { get; private set; }
+
         public RelayCommand SaveDebugLogCommand { get; private set; }
+
         public RelayCommand SearchClickedCommand { get; private set; }
+
         public RelayCommand TextedElementClickedCommand { get; private set; }
+
         public List<BaseTextedElement> TextedElements { get; private set; }
 
         public uint TextedElementsChangedCounter
@@ -109,6 +119,16 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public bool ViewsHitTest
+        {
+            get => viewsHitTest;
+            private set
+            {
+                viewsHitTest = value;
+                OnPropertyChanged(ViewsHitTestPropertyName);
+            }
+        }
+
         public string VisibleViewByTag
         {
             get => visibleViewByTag;
@@ -117,6 +137,16 @@ namespace SophiApp.ViewModels
                 visibleViewByTag = value;
                 debugger.Write(DebuggerRecord.VIEW, $"{value}");
                 OnPropertyChanged(VisibleViewByTagPropertyName);
+            }
+        }
+
+        public bool WindowCloseHitTest
+        {
+            get => windowCloseHitTest;
+            private set
+            {
+                windowCloseHitTest = value;
+                OnPropertyChanged(WindowCloseHitTestPropertyName);
             }
         }
     }

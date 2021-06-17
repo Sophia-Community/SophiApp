@@ -18,7 +18,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="IsHitTestVisible" Value="{Binding IsHitTestVisible, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="IsHitTestVisible" Value="{Binding HamburgerHitTest, UpdateSourceTrigger=PropertyChanged}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
