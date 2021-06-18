@@ -1242,7 +1242,7 @@
         "Tag": "System"
     },
     {
-        "Id": 188,
+        "Id": 189,
         "Headers": {
             "EN": "Display the Stop error information on the BSoD",
             "RU": "Отображать Stop-ошибку при появлении BSoD"
@@ -1256,7 +1256,7 @@
         "Tag": "System"
     },
     {
-        "Id": 189,
+        "Id": 190,
         "Headers": {
             "EN": "Choose when to be notified about changes to your computer",
             "RU": "Настройка уведомления об изменении параметров компьютера"
@@ -1267,7 +1267,7 @@
         "Type": "0"
     },
     {
-        "Id": 190,
+        "Id": 191,
         "ContainerId": 189,
         "Headers": {
             "EN": "Never notify",
@@ -1282,7 +1282,7 @@
         "Tag": "System"
     },
     {
-        "Id": 191,
+        "Id": 192,
         "ContainerId": 189,
         "Headers": {
             "EN": "Notify me only when apps try to make changes to my computer",
@@ -1297,7 +1297,7 @@
         "Tag": "System"
     },
     {
-        "Id": 192,
+        "Id": 193,
         "Headers": {
             "EN": "Access to mapped drives from app running with elevated permissions with Admin Approval Mode",
             "RU": "Доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
@@ -1311,7 +1311,7 @@
         "Tag": "System"
     },
     {
-        "Id": 193,
+        "Id": 194,
         "Headers": {
             "EN": "Turn on Delivery Optimization",
             "RU": "Включить оптимизацию доставки"
@@ -1325,7 +1325,7 @@
         "Tag": "System"
     },
     {
-        "Id": 194,
+        "Id": 195,
         "Headers": {
             "EN": "Always wait for the network at computer startup and logon for workgroup networks",
             "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп"
@@ -1339,7 +1339,7 @@
         "Tag": "System"
     },
     {
-        "Id": 195,
+        "Id": 196,
         "Headers": {
             "EN": "Let Windows decide which printer should be the default one",
             "RU": "Разрешать Windows решать, какой принтер должен использоваться по умолчанию"
@@ -1353,7 +1353,7 @@
         "Tag": "System"
     },
     {
-        "Id": 196,
+        "Id": 197,
         "Headers": {
             "EN": "Windows Features",
             "RU": "Компоненты Windows"
@@ -1364,8 +1364,8 @@
         "Type": "0"
     },
     {
-        "Id": 197,
-        "ContainerId": 196,
+        "Id": 198,
+        "ContainerId": 197,
         "Headers": {
             "EN": "LegacyComponents",
             "RU": "LegacyComponents"
@@ -1379,8 +1379,8 @@
         "Tag": "System"
     },
     {
-        "Id": 198,
-        "ContainerId": 196,
+        "Id": 199,
+        "ContainerId": 197,
         "Headers": {
             "EN": "MicrosoftWindowsPowerShellV2",
             "RU": "MicrosoftWindowsPowerShellV2"
@@ -1394,8 +1394,8 @@
         "Tag": "System"
     },
     {
-        "Id": 199,
-        "ContainerId": 196,
+        "Id": 200,
+        "ContainerId": 197,
         "Headers": {
             "EN": "MicrosoftWindowsPowershellV2Root",
             "RU": "MicrosoftWindowsPowershellV2Root"
@@ -1409,8 +1409,8 @@
         "Tag": "System"
     },
     {
-        "Id": 200,
-        "ContainerId": 196,
+        "Id": 201,
+        "ContainerId": 197,
         "Headers": {
             "EN": "Printing-XPSServices-Features",
             "RU": "Printing-XPSServices-Features"
@@ -1424,8 +1424,8 @@
         "Tag": "System"
     },
     {
-        "Id": 201,
-        "ContainerId": 196,
+        "Id": 202,
+        "ContainerId": 197,
         "Headers": {
             "EN": "WorkFolders-Client",
             "RU": "WorkFolders-Client"
@@ -1439,8 +1439,8 @@
         "Tag": "System"
     },
     {
-        "Id": 202,
-        "ContainerId": 196,
+        "Id": 203,
+        "ContainerId": 197,
         "Headers": {
             "EN": "MediaPlayback",
             "RU": "MediaPlayback"
@@ -1454,7 +1454,7 @@
         "Tag": "System"
     },
     {
-        "Id": 203,
+        "Id": 204,
         "Headers": {
             "EN": "Optional features",
             "RU": "Дополнительные компоненты"
@@ -1465,8 +1465,8 @@
         "Type": "0"
     },
     {
-        "Id": 204,
-        "ContainerId": 203,
+        "Id": 205,
+        "ContainerId": 204,
         "Headers": {
             "EN": "App.StepsRecorder",
             "RU": "App.StepsRecorder"
@@ -1480,8 +1480,8 @@
         "Tag": "System"
     },
     {
-        "Id": 205,
-        "ContainerId": 203,
+        "Id": 206,
+        "ContainerId": 204,
         "Headers": {
             "EN": "App.Support.QuickAssist",
             "RU": "App.Support.QuickAssist"
@@ -1495,8 +1495,8 @@
         "Tag": "System"
     },
     {
-        "Id": 206,
-        "ContainerId": 203,
+        "Id": 207,
+        "ContainerId": 204,
         "Headers": {
             "EN": "Microsoft.Windows.MSPaint",
             "RU": "Microsoft.Windows.MSPaint"
@@ -1510,8 +1510,8 @@
         "Tag": "System"
     },
     {
-        "Id": 207,
-        "ContainerId": 203,
+        "Id": 208,
+        "ContainerId": 204,
         "Headers": {
             "EN": "Microsoft.Windows.WordPad",
             "RU": "Microsoft.Windows.WordPad"
@@ -1525,8 +1525,8 @@
         "Tag": "System"
     },
     {
-        "Id": 208,
-        "ContainerId": 203,
+        "Id": 209,
+        "ContainerId": 204,
         "Headers": {
             "EN": "Browser.InternetExplorer",
             "RU": "Browser.InternetExplorer"
@@ -1540,8 +1540,8 @@
         "Tag": "System"
     },
     {
-        "Id": 209,
-        "ContainerId": 203,
+        "Id": 210,
+        "ContainerId": 204,
         "Headers": {
             "EN": "MathRecognizer",
             "RU": "MathRecognizer"
@@ -1555,8 +1555,8 @@
         "Tag": "System"
     },
     {
-        "Id": 210,
-        "ContainerId": 203,
+        "Id": 211,
+        "ContainerId": 204,
         "Headers": {
             "EN": "Media.WindowsMediaPlayer",
             "RU": "Media.WindowsMediaPlayer"
@@ -1570,8 +1570,8 @@
         "Tag": "System"
     },
     {
-        "Id": 211,
-        "ContainerId": 203,
+        "Id": 212,
+        "ContainerId": 204,
         "Headers": {
             "EN": "OpenSSH.Client",
             "RU": "OpenSSH.Client"
@@ -1585,7 +1585,7 @@
         "Tag": "System"
     },
     {
-        "Id": 212,
+        "Id": 213,
         "Headers": {
             "EN": "Receive updates for other Microsoft products when you update Windows",
             "RU": "При обновлении Windows получать обновления для других продуктов Майкрософт"
@@ -1599,7 +1599,7 @@
         "Tag": "System"
     },
     {
-        "Id": 213,
+        "Id": 214,
         "Headers": {
             "EN": "Set the power plan on \"High performance\"",
             "RU": "Установить схему управления питанием на \"Высокая производительность\""
@@ -1611,7 +1611,7 @@
     },
     {
         "Id": 215,
-        "ContainerId": 213,
+        "ContainerId": 214,
         "Headers": {
             "EN": "High performance",
             "RU": "Высокая производительность"
@@ -1626,7 +1626,7 @@
     },
     {
         "Id": 216,
-        "ContainerId": 213,
+        "ContainerId": 214,
         "Headers": {
             "EN": "Balanced",
             "RU": "Сбалансированная"
@@ -1889,7 +1889,7 @@
         "Tag": "System"
     },
     {
-        "Id": 234,
+        "Id": 235,
         "Headers": {
             "EN": "Enable thumbnail cache removal",
             "RU": "Включить удаление кэша миниатюр"
@@ -1903,7 +1903,7 @@
         "Tag": "System"
     },
     {
-        "Id": 235,
+        "Id": 236,
         "Headers": {
             "EN": "Enable automatically saving my restartable apps when signing out and restart them after signing in",
             "RU": "Включить автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода"
@@ -1917,7 +1917,7 @@
         "Tag": "System"
     },
     {
-        "Id": 236,
+        "Id": 237,
         "Headers": {
             "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
             "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп"
@@ -1931,7 +1931,7 @@
         "Tag": "System"
     },
     {
-        "Id": 237,
+        "Id": 239,
         "Headers": {
             "EN": "Automatically adjust active hours for me based on daily usage",
             "RU": "Автоматически изменять период активности для этого устройства на основе действий"
@@ -1945,7 +1945,7 @@
         "Tag": "System"
     },
     {
-        "Id": 238,
+        "Id": 240,
         "Headers": {
             "EN": "Restart this device as soon as possible when a restart is required to install an update",
             "RU": "Перезапускать это устройство как можно быстрее, если для установки обновления требуется перезагрузка"
@@ -1959,7 +1959,7 @@
         "Tag": "System"
     },
     {
-        "Id": 239,
+        "Id": 241,
         "Headers": {
             "EN": "Show recently added apps in the Start menu",
             "RU": "Показывать недавно добавленные приложения в меню \"Пуск\""
@@ -1973,7 +1973,7 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 240,
+        "Id": 242,
         "Headers": {
             "EN": "Show app suggestions in the Start menu",
             "RU": "Показывать рекомендации в меню \"Пуск\""
@@ -1987,7 +1987,7 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 241,
+        "Id": 243,
         "Headers": {
             "EN": "Run the Windows PowerShell shortcut from the Start menu as Administrator",
             "RU": "Запускать ярлык Windows PowerShell в меню \"Пуск\" от имени Администратора"
@@ -2001,7 +2001,7 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 242,
+        "Id": 244,
         "Headers": {
             "EN": "Pin the shortcuts to Start",
             "RU": "Закрепить ярлыки на начальном экране"
@@ -2012,8 +2012,8 @@
         "Type": "0"
     },
     {
-        "Id": 243,
-        "ContainerId": 242,
+        "Id": 245,
+        "ContainerId": 244,
         "Headers": {
             "EN": "Control Panel",
             "RU": "Панель управления"
@@ -2027,8 +2027,8 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 244,
-        "ContainerId": 242,
+        "Id": 246,
+        "ContainerId": 244,
         "Headers": {
             "EN": "Devices and Printers",
             "RU": "Устройства и принтеры"
@@ -2042,8 +2042,8 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 245,
-        "ContainerId": 242,
+        "Id": 247,
+        "ContainerId": 244,
         "Headers": {
             "EN": "PowerShell",
             "RU": "PowerShell"
@@ -2057,7 +2057,7 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 246,
+        "Id": 248,
         "Headers": {
             "EN": "Xbox Game Bar",
             "RU": "Xbox Game Bar"
@@ -2071,7 +2071,7 @@
         "Tag": "Games"
     },
     {
-        "Id": 247,
+        "Id": 249,
         "Headers": {
             "EN": "Xbox Game Bar tips",
             "RU": "Советы Xbox Game Bar"
@@ -2085,7 +2085,7 @@
         "Tag": "Games"
     },
     {
-        "Id": 247,
+        "Id": 250,
         "Headers": {
             "EN": "Hardware-accelerated GPU scheduling",
             "RU": "Планирование графического процессора с аппаратным ускорением"
@@ -2099,7 +2099,7 @@
         "Tag": "Games"
     },
     {
-        "Id": 248,
+        "Id": 251,
         "Headers": {
             "EN": "Enable Controlled folder access and add protected folders",
             "RU": "Включить контролируемый доступ к папкам и добавить защищенные папки"
@@ -2113,7 +2113,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 249,
+        "Id": 252,
         "Headers": {
             "EN": "Allow an app through Controlled folder access",
             "RU": "Разрешить работу приложения через контролируемый доступ к папкам"
@@ -2127,7 +2127,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 250,
+        "Id": 253,
         "Headers": {
             "EN": "Enable Microsoft Defender Exploit Guard network protection",
             "RU": "Включить защиту сети в Microsoft Defender Exploit Guard"
@@ -2141,7 +2141,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 251,
+        "Id": 254,
         "Headers": {
             "EN": "Enable detection for potentially unwanted applications and block them",
             "RU": "Включить обнаружение потенциально нежелательных приложений и блокировать их"
@@ -2155,7 +2155,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 252,
+        "Id": 255,
         "Headers": {
             "EN": "Enable sandboxing for Microsoft Defender",
             "RU": "Включить песочницу для Microsoft Defender"
@@ -2169,7 +2169,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 253,
+        "Id": 256,
         "Headers": {
             "EN": "Enable events auditing generated when a process is created or starts",
             "RU": "Включить аудит событий, возникающих при создании или запуске процесса"
@@ -2183,7 +2183,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 254,
+        "Id": 257,
         "Headers": {
             "EN": "Include command line in process creation events",
             "RU": "Включать командную строку в событиях создания процесса"
@@ -2197,7 +2197,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 255,
+        "Id": 258,
         "Headers": {
             "EN": "Create \"Process Creation\" Event Viewer Custom View",
             "RU": "Создать настаиваемое представление \"Создание процесса\" в Просмотре событий"
@@ -2211,7 +2211,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 256,
+        "Id": 259,
         "Headers": {
             "EN": "Enable logging for all Windows PowerShell modules",
             "RU": "Включить ведение журнала для всех модулей Windows PowerShell"
@@ -2225,7 +2225,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 257,
+        "Id": 260,
         "Headers": {
             "EN": "Enable logging for all PowerShell scripts input to the Windows PowerShell event log",
             "RU": "Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell"
@@ -2239,7 +2239,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 258,
+        "Id": 261,
         "Headers": {
             "EN": "Enable apps and files checking within Microsofot Defender SmartScreen",
             "RU": "Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender"
@@ -2253,7 +2253,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 259,
+        "Id": 262,
         "Headers": {
             "EN": "Enable the Attachment Manager marking files that have been downloaded from the Internet as unsafe",
             "RU": "Включить проверку Диспетчера вложений файлов, скачанных из интернета как небезопасные"
@@ -2267,7 +2267,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 260,
+        "Id": 263,
         "Headers": {
             "EN": "Enable Windows Script Host",
             "RU": "Включить Windows Script Host"
@@ -2281,7 +2281,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 261,
+        "Id": 264,
         "Headers": {
             "EN": "Enable Windows Script Host",
             "RU": "Включить Windows Script Host"
@@ -2295,7 +2295,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 262,
+        "Id": 265,
         "Headers": {
             "EN": "Add the \"Extract all\" item to Windows Installer (.msi) context menu",
             "RU": "Добавить пункт \"Извлечь все\" в контекстное меню Windows Installer (.msi)"
@@ -2309,7 +2309,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 263,
+        "Id": 266,
         "Headers": {
             "EN": "Add the \"Install\" item to the .cab archives context menu",
             "RU": "Добавить пункт \"Установить\" в контекстное меню .cab архивов"
@@ -2323,7 +2323,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 264,
+        "Id": 267,
         "Headers": {
             "EN": "Add the \"Run as different user\" item to the .exe files types context menu",
             "RU": "Добавить пункт \"Запуск от имени другого пользователя\" в контекстного меню .exe файлов"
@@ -2337,7 +2337,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 265,
+        "Id": 268,
         "Headers": {
             "EN": "Show the \"Cast to Device\" item in the context menu",
             "RU": "Показывать пункт \"Передать на устройство\" в контекстном меню"
@@ -2351,7 +2351,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 266,
+        "Id": 269,
         "Headers": {
             "EN": "Show the \"Share\" item in the context menu",
             "RU": "Показывать пункт \"Отправить\" (поделиться) в контекстном меню"
@@ -2365,7 +2365,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 267,
+        "Id": 270,
         "Headers": {
             "EN": "Show the \"Edit with Paint 3D\" item in the context menu",
             "RU": "Показывать пункт \"Изменить с помощью Paint 3D\" в контекстном меню"
@@ -2379,7 +2379,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 268,
+        "Id": 271,
         "Headers": {
             "EN": "Show the \"Edit with Photos\" item in the context menu",
             "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню"
@@ -2393,7 +2393,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 269,
+        "Id": 272,
         "Headers": {
             "EN": "Show the \"Create a new video\" item in the context menu",
             "RU": "Показывать пункт \"Создать новое видео\" в контекстном меню"
@@ -2407,7 +2407,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 270,
+        "Id": 273,
         "Headers": {
             "EN": "Show the \"Edit\" item from in images context menu",
             "RU": "Показывать пункт \"Изменить\" в контекстном меню изображений"
@@ -2421,7 +2421,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 271,
+        "Id": 274,
         "Headers": {
             "EN": "Show the \"Print\" item in the .bat and .cmd context menu",
             "RU": "Показывать пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
@@ -2435,7 +2435,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 272,
+        "Id": 275,
         "Headers": {
             "EN": "Show the \"Include in Library\" item in the context menu",
             "RU": "Показывать пункт \"Добавить в библиотеку\" в контекстном меню"
@@ -2449,7 +2449,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 273,
+        "Id": 276,
         "Headers": {
             "EN": "Show the \"Send to\" item in the folders context menu",
             "RU": "Показывать пункт \"Отправить\" в контекстном меню папок"
@@ -2463,7 +2463,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 274,
+        "Id": 277,
         "Headers": {
             "EN": "Show the \"Turn on BitLocker\" item in the context menu",
             "RU": "Показывать пункт \"Включить BitLocker\" в контекстном меню"
@@ -2477,7 +2477,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 275,
+        "Id": 278,
         "Headers": {
             "EN": "Add the \"Bitmap image\" item to the \"New\" context menu",
             "RU": "Восстановить пункт \"Точечный рисунок\" в контекстного меню \"Создать\""
@@ -2491,7 +2491,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 276,
+        "Id": 279,
         "Headers": {
             "EN": "Add the \"Rich Text Document\" item to the \"New\" context menu",
             "RU": "Восстановить пункт \"Документ в формате RTF\" в контекстного меню \"Создать\""
@@ -2505,7 +2505,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 277,
+        "Id": 280,
         "Headers": {
             "EN": "Add the \"Compressed (zipped) Folder\" item to the \"New\" context menu",
             "RU": "Восстановить пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
@@ -2519,7 +2519,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 278,
+        "Id": 281,
         "Headers": {
             "EN": "Enable the \"Open\", \"Print\", and \"Edit\" context menu items for more than 15 items selected",
             "RU": "Включить элементы контекстного меню \"Открыть\", \"Изменить\" и \"Печать\" при выделении более 15 элементов"
@@ -2533,7 +2533,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 279,
+        "Id": 282,
         "Headers": {
             "EN": "Show the \"Look for an app in the Microsoft Store\" item in the \"Open with\" dialog",
             "RU": "Отображать пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
@@ -2547,7 +2547,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 280,
+        "Id": 283,
         "Headers": {
             "EN": "Show the \"Previous Versions\" tab from files and folders context menu and also the \"Restore previous versions\" context menu item",
             "RU": "Отображать вкладку \"Предыдущие версии\" в свойствах файлов и папок, а также пункт контекстного меню \"Восстановить прежнюю версию\""
