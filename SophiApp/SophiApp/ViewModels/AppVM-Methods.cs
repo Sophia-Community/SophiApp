@@ -8,9 +8,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Debugger = SophiApp.Helpers.Debugger;
 using IContainer = SophiApp.Interfaces.IContainer;
+using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
 {
@@ -20,13 +23,13 @@ namespace SophiApp.ViewModels
 
         private async void AppThemeChangeAsync(object args) => await AppThemeChangeAsync(args as string);
 
-        private async Task AppThemeChangeAsync(string themeName)
+        private async Task AppThemeChangeAsync(string name)
         {
             await Task.Run(() =>
             {
-                var theme = themesHelper.FindName(themeName);
-                themesHelper.Change(theme);
-                SetAppThemeProperty(theme);
+                var theme = themesHelper.Find(name);
+                themesHelper.ChangeTheme(theme);
+                SetAppSelectedThemeProperty(theme);
             });
         }
 
@@ -104,7 +107,6 @@ namespace SophiApp.ViewModels
             ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettingsAsync));
             ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettingsAsync));
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
-            ResetOsToDefaultStateCommand = new RelayCommand(new Action<object>(ResetOsToDefaultStateAsync));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
         }
 
@@ -120,7 +122,7 @@ namespace SophiApp.ViewModels
             advancedSettingsVisibility = false;
 
             debugger.Write(DebuggerRecord.LOCALIZATION, $"{Localization.Language}");
-            debugger.Write(DebuggerRecord.THEME, $"{AppTheme.Alias}");
+            debugger.Write(DebuggerRecord.THEME, $"{AppSelectedTheme.Alias}");
             debugger.Write();
         }
 
@@ -129,9 +131,26 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS);
-                TextedElements = Parser.ParseJson(Properties.Resources.UIData).Where(dto => dto.Type == UIType.TextedElement)
-                                                                              .Select(dto => ElementsFabric.Create(dto))
-                                                                              .ToList();
+
+                //TODO: TextedElements - for UIData.json modify.
+
+                try
+                {
+                    var file = File.ReadAllText("UIData.json");
+                    var bytes = Encoding.UTF8.GetBytes(file);
+                    TextedElements = Parser.ParseJson(bytes)
+                                           .Where(dto => dto.Type == UIType.TextedElement)
+                                           .Select(dto => ElementsFabric.Create(dto))
+                                           .ToList();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "SophiApp has error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                //TextedElements = Parser.ParseJson(Properties.Resources.UIData).Where(dto => dto.Type == UIType.TextedElement)
+                //                                                              .Select(dto => ElementsFabric.Create(dto))
+                //                                                              .ToList();
 
                 TextedElements.ForEach(element =>
                 {
@@ -176,16 +195,18 @@ namespace SophiApp.ViewModels
 
         private async Task LocalizationChangeAsync(string localizationName)
         {
+            //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
             await Task.Run(() =>
             {
                 var localization = localizationsHelper.FindName(localizationName);
                 TextedElements.ForEach(element => element.SetLocalization(localization.Language));
                 localizationsHelper.Change(localization);
                 SetLocalizationProperty(localization);
+                OnPropertyChanged(AppSelectedThemePropertyName);
+                OnPropertyChanged(AppThemesPropertyName);
             });
         }
 
-        //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
         private async void OnRadioButtonsGroupErrorOccurredAsync(uint id, Exception e)
@@ -194,7 +215,6 @@ namespace SophiApp.ViewModels
             debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
             debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
             debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-            debugger.Write();
             await OnRadioButtonsGroupErrorOccurredAsync(id);
         }
 
@@ -213,7 +233,6 @@ namespace SophiApp.ViewModels
             debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
             debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
             debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-            debugger.Write();
             await OnTextedElementErrorOccurredAsync(id);
         }
 
@@ -256,19 +275,6 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void ResetOsToDefaultStateAsync(object args) => await ResetOsToDefaultStateAsync();
-
-        private async Task ResetOsToDefaultStateAsync()
-        {
-            await Task.Run(() =>
-            {
-                //TODO: ResetOsToDefaultStateAsync Not Implemented
-                debugger.Write(DebuggerRecord.INIT_RESET_TO_DEFAULT);
-                // ...
-                debugger.Write();
-            });
-        }
-
         private async void SaveDebugLogAsync(object args)
         {
             //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
@@ -308,8 +314,7 @@ namespace SophiApp.ViewModels
             });
         }
 
-        //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
-        private void SetAppThemeProperty(Theme theme) => AppTheme = theme;
+        private void SetAppSelectedThemeProperty(Theme theme) => AppSelectedTheme = theme;
 
         private void SetHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
         {
@@ -320,7 +325,6 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
-        //TODO: Clicked command increment or decrement counter ??
         private void SetTextedElementsChangedCounter(UIElementState elementState)
         {
             switch (elementState)

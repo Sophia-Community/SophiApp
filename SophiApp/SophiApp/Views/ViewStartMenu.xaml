@@ -62,13 +62,6 @@
                                Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
                                Margin="20, 0, 0, 10" />
 
-                    <controls:ResetButton Grid.Row="0"
-                                          VerticalAlignment="Bottom"
-                                          HorizontalAlignment="Right"
-                                          Margin="0, 0, 47, 10"
-                                          Command="{Binding ResetViewCommand}"
-                                          CommandParameter="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
-
                     <ScrollViewer x:Name="ScrollViewerContent"
                                   Style="{DynamicResource ViewScrollStyle}">
 
@@ -77,7 +70,7 @@
                                 <DataTemplate DataType="{x:Type models:Switch}">
                                     <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                                      Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewStartMenu}}}"
                                                      CommandParameter="{Binding Id}"
                                                      Id="{Binding Id}"
                                                      IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
@@ -86,11 +79,11 @@
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RadioButtonsGroup}">
                                     <controls:RadioButtonGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                               Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                                               Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewStartMenu}}}"
                                                                Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
-                                    <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                    <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewStartMenu}}}"
                                                        CommandParameter="{Binding Id}"
                                                        Id="{Binding Id}"
                                                        IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
@@ -99,7 +92,7 @@
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:ExpandingGroup}">
                                     <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                             Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPrivacy}}}"
+                                                             Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewStartMenu}}}"
                                                              Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                             </ItemsControl.Resources>

@@ -96,7 +96,7 @@
                             <ControlTemplate>
                                 <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
                                     <TextBlock Style="{DynamicResource NormalText}"
-                                               Text="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}"
+                                               Text="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}, UpdateSourceTrigger=PropertyChanged}"
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                Foreground="{DynamicResource Brush.Window.Foreground}" />
@@ -115,7 +115,7 @@
                     <Popup x:Name="Popup">
                         <Border x:Name="BorderPopup">
                             <ListBox x:Name="ListBoxContent"
-                                     ItemsSource="{Binding Path=Source, RelativeSource={RelativeSource TemplatedParent}}"
+                                     ItemsSource="{Binding Path=Source, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
                                      Margin="0"
                                      BorderThickness="0"
                                      Background="Transparent"

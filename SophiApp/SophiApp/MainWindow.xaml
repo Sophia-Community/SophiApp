@@ -34,6 +34,46 @@
         </Style>
     </Window.Style>
     <Window.Resources>
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="Green" />
+            <Setter Property="Margin" Value="10, 5, 10, 5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ContextMenu}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="HasDropShadow" Value="False" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContextMenu}">
+                        <Border BorderThickness="1"
+                                BorderBrush="{DynamicResource Brush.Window.Acсent.Normal}"
+                                Background="{DynamicResource Brush.Window.Background}"
+                                Padding="0">
+                            <StackPanel ClipToBounds="True" IsItemsHost="True" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="ViewScrollStyle" TargetType="{x:Type ScrollViewer}">
             <Setter Property="CanContentScroll" Value="False" />
             <Setter Property="Grid.Row" Value="1" />

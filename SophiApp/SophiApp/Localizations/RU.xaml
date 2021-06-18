@@ -40,4 +40,5 @@
     <system:String x:Key="Localization.ChangesPanel.Apply">Применить</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление SophiApp</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
+    <system:String x:Key="Localization.Element.ContextMenu.Copy">Копировать</system:String>
 </ResourceDictionary>

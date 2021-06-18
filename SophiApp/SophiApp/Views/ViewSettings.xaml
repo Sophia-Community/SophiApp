@@ -55,8 +55,8 @@
                                        Text="{DynamicResource Localization.Settings.Themes}"
                                        Margin="{StaticResource BlockIndent}" />
 
-                            <controls:DropDownList Source="{Binding AppThemeList, UpdateSourceTrigger=PropertyChanged}"
-                                                   SelectedText="{Binding AppTheme.Name, UpdateSourceTrigger=PropertyChanged}"
+                            <controls:DropDownList Source="{Binding AppThemes, UpdateSourceTrigger=PropertyChanged}"
+                                                   SelectedText="{Binding AppSelectedTheme.Name, UpdateSourceTrigger=PropertyChanged}"
                                                    Command="{Binding AppThemeChangeCommand}"
                                                    Margin="{StaticResource DropDownListIndent}"
                                                    HorizontalAlignment="Left" />
@@ -147,7 +147,6 @@
                             <controls:FilledButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="{StaticResource BlockIndent}"
                                                    HorizontalAlignment="Left"
-                                                   Command="{Binding ResetOsToDefaultStateCommand}"
                                                    IsEnabled="False" />
 
                             <TextBlock Style="{DynamicResource SubHeaderText}"

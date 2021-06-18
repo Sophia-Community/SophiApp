@@ -70,6 +70,11 @@
                 <Border x:Name="BorderSwitch" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseSwitch" />
                 </Border>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Copy}" Click="ContextMenu_Click" />
+                    </ContextMenu>
+                </Grid.ContextMenu>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="False">

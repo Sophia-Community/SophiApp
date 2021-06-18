@@ -84,6 +84,11 @@ namespace SophiApp.Controls
             get => (bool)GetValue(IsCheckedProperty); set => SetValue(IsCheckedProperty, value);
         }
 
+        private void ContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Header);
+        }
+
         private void Switch_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });
 
         private void Switch_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));

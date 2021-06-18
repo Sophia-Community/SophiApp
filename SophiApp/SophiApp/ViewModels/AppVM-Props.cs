@@ -3,6 +3,7 @@ using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Debugger = SophiApp.Helpers.Debugger;
 
 namespace SophiApp.ViewModels
@@ -12,7 +13,8 @@ namespace SophiApp.ViewModels
         //TODO: Check all controls IsEnabled property!
 
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
-        private const string AppThemePropertyName = "AppTheme";
+        private const string AppSelectedThemePropertyName = "AppSelectedTheme";
+        private const string AppThemesPropertyName = "AppThemes";
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string LocalizationPropertyName = "Localization";
         private const string TextedElementsChangedCounterPropertyName = "TextedElementsChangedCounter";
@@ -30,6 +32,7 @@ namespace SophiApp.ViewModels
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
+
         public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
 
         public bool AdvancedSettingsVisibility
@@ -43,18 +46,18 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public Theme AppTheme
+        public Theme AppSelectedTheme
         {
-            get => themesHelper.Selected;
+            get => themesHelper.SelectedTheme;
             private set
             {
                 debugger.Write(DebuggerRecord.THEME, $"{value.Alias}");
-                OnPropertyChanged(AppThemePropertyName);
+                OnPropertyChanged(AppSelectedThemePropertyName);
             }
         }
 
         public RelayCommand AppThemeChangeCommand { get; private set; }
-        public List<string> AppThemeList => themesHelper.GetNames();
+        public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
         public RelayCommand ExpandingGroupClickedCommand { get; private set; }
         public RelayCommand ExportSettingsCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
@@ -87,8 +90,6 @@ namespace SophiApp.ViewModels
         public List<string> LocalizationList => localizationsHelper.GetNames();
 
         public RelayCommand RadioButtonGroupClickedCommand { get; private set; }
-
-        public RelayCommand ResetOsToDefaultStateCommand { get; private set; }
 
         public RelayCommand SaveDebugLogCommand { get; private set; }
 
