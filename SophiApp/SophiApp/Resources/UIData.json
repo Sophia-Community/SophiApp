@@ -1268,7 +1268,7 @@
     },
     {
         "Id": 191,
-        "ContainerId": 189,
+        "ContainerId": 190,
         "Headers": {
             "EN": "Never notify",
             "RU": "Никогда не уведомлять"
@@ -1283,7 +1283,7 @@
     },
     {
         "Id": 192,
-        "ContainerId": 189,
+        "ContainerId": 190,
         "Headers": {
             "EN": "Notify me only when apps try to make changes to my computer",
             "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер"
