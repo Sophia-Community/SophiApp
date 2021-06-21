@@ -37,17 +37,23 @@
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="Foreground" Value="Green" />
-            <Setter Property="Margin" Value="10, 5, 10, 5" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Grid x:Name="GridContent"
+                              Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                            <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Style="{DynamicResource SmallText}"
+                                       FontSize="12"
+                                       Margin="10, 3, 10, 3" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="GridContent" Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -55,17 +61,16 @@
         <Style TargetType="{x:Type ContextMenu}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="Width" Value="150" />
-            <Setter Property="Height" Value="30" />
             <Setter Property="HasDropShadow" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContextMenu}">
                         <Border BorderThickness="1"
                                 BorderBrush="{DynamicResource Brush.Window.Acсent.Normal}"
-                                Background="{DynamicResource Brush.Window.Background}"
+                                Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
                                 Padding="0">
                             <StackPanel ClipToBounds="True" IsItemsHost="True" />
                         </Border>
@@ -73,7 +78,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="ViewScrollStyle" TargetType="{x:Type ScrollViewer}">
             <Setter Property="CanContentScroll" Value="False" />
             <Setter Property="Grid.Row" Value="1" />
@@ -85,7 +89,7 @@
         </Style>
         <Style x:Key="SmallText" TargetType="{x:Type TextBlock}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
             <Setter Property="FontWeight" Value="Regular" />
@@ -149,7 +153,6 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <controls:HamburgerMenu Grid.Column="0" />
-
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <!--Views Row-->
@@ -157,6 +160,7 @@
                         <!--Info Panel Row-->
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <views:ViewChanges Grid.Row="1" />
                     <views:ViewLoading Grid.Row="0" />
                     <views:ViewPrivacy Grid.Row="0" />
                     <views:ViewPersonalization Grid.Row="0" />

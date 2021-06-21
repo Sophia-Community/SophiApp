@@ -34,11 +34,12 @@
     <system:String x:Key="Localization.Settings.Coder">Код:</system:String>
     <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий "Inestic" Демин</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Changed">Изменено</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Setting">настроек</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Reset">Сброс</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Apply">Применить</system:String>
+    <system:String x:Key="Localization.ViewChanges.Changed">Изменено</system:String>
+    <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
+    <system:String x:Key="Localization.ViewChanges.Reset">Сброс</system:String>
+    <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление SophiApp</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
-    <system:String x:Key="Localization.Element.ContextMenu.Copy">Копировать</system:String>
+    <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
+    <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
 </ResourceDictionary>

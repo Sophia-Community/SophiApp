@@ -34,11 +34,12 @@
     <system:String x:Key="Localization.Settings.Coder">Coded by</system:String>
     <system:String x:Key="Localization.Settings.Coder.Name">Dmitry "Inestic" Demin</system:String>
     <system:String x:Key="Localization.Search">Search</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Changed">Changed</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Setting">settings</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Reset">Reset</system:String>
-    <system:String x:Key="Localization.ChangesPanel.Apply">Apply</system:String>
+    <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>
+    <system:String x:Key="Localization.ViewChanges.Setting">settings</system:String>
+    <system:String x:Key="Localization.ViewChanges.Reset">Reset</system:String>
+    <system:String x:Key="Localization.ViewChanges.Apply">Apply</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">An update to SophiApp is avalaible</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
-    <system:String x:Key="Localization.Element.ContextMenu.Copy">Copy</system:String>
+    <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
+    <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
 </ResourceDictionary>

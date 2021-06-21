@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.Helpers;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -84,10 +85,9 @@ namespace SophiApp.Controls
             get => (bool)GetValue(IsCheckedProperty); set => SetValue(IsCheckedProperty, value);
         }
 
-        private void ContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-            Clipboard.SetText(Header);
-        }
+        private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);
+
+        private void ContextMenu_HeaderCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Header);
 
         private void Switch_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });
 

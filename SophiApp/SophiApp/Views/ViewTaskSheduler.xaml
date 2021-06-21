@@ -7,12 +7,8 @@
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
-             controls:Switch.MouseEnter="TextedElement_MouseEnter"
-             controls:Switch.MouseLeave="TextedElement_MouseLeave"
-             controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
-             controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
-             controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
+             controls:WinIconCheckBox.MouseEnter="TextedElement_MouseEnter"
+             controls:WinIconCheckBox.MouseLeave="TextedElement_MouseLeave"
              IsVisibleChanged="ViewTaskSheduler_IsVisibleChanged">
 
     <UserControl.Resources>
@@ -67,33 +63,13 @@
 
                         <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                             <ItemsControl.Resources>
-                                <DataTemplate DataType="{x:Type models:Switch}">
-                                    <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
-                                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
-                                                     CommandParameter="{Binding Id}"
-                                                     Id="{Binding Id}"
-                                                     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                     IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                     Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:RadioButtonsGroup}">
-                                    <controls:RadioButtonGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                               Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
-                                                               Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:CheckBox}">
-                                    <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
-                                                       CommandParameter="{Binding Id}"
-                                                       Id="{Binding Id}"
-                                                       IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                       IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                       Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:ExpandingGroup}">
-                                    <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                             Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
-                                                             Margin="20, 10, 0, 5" />
+                                <DataTemplate DataType="{x:Type models:WinIconCheckBox}">
+                                    <controls:WinIconCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
+                                                              CommandParameter="{Binding Id}"
+                                                              Id="{Binding Id}"
+                                                              IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                              IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                              Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

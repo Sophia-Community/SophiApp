@@ -42,7 +42,7 @@ namespace SophiApp.Helpers
                 var action = type.GetMethod($"_{id}", BindingFlags.Static | BindingFlags.Public);
                 return Delegate.CreateDelegate(typeof(Action), action) as Action<bool>;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //TODO: SetSystemStateAction FOR DEBUG ONLY !!!
                 var type = Type.GetType(SYSTEM_STATE_ACTION_CLASS);

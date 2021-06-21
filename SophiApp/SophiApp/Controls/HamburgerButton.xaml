@@ -80,7 +80,6 @@
             <Setter Property="Height" Value="45" />
             <Setter Property="TextMargin" Value="60, 0, 0, 0" />
             <Setter Property="IconMargin" Value="10, 0, 0, 7" />
-            <!--<Setter Property="Button.Command" Value="{Binding HamburgerClickedCommand}" />-->
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
         </Style>
     </UserControl.Resources>

@@ -72,7 +72,8 @@
                 </Border>
                 <Grid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Copy}" Click="ContextMenu_Click" />
+                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
+                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
                     </ContextMenu>
                 </Grid.ContextMenu>
             </Grid>

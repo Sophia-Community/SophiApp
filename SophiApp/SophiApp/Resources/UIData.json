@@ -2559,5 +2559,19 @@
         "Model": "CheckBox",
         "Type": "0",
         "Tag": "ContextMenu"
+    },
+    {
+        "Id": 284,
+        "Headers": {
+            "EN": "Очистка Windows",
+            "RU": "Очистка Windows"
+        },
+        "Descriptions": {
+            "EN": "Тестовое описание",
+            "RU": "Тестовое описание"
+        },
+        "Model": "WinIconCheckBox",
+        "Type": "0",
+        "Tag": "TaskSheduler"
     }
 ]

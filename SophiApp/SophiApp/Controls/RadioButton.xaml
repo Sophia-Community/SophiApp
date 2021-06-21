@@ -47,6 +47,12 @@
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
+                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
+                    </ContextMenu>
+                </Grid.ContextMenu>
                 <TextBlock Style="{DynamicResource NormalText}"
                            Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                            TextWrapping="Wrap"

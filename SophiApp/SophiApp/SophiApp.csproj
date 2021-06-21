@@ -95,6 +95,9 @@
     <Compile Include="Controls\ActorLink.xaml.cs">
       <DependentUpon>ActorLink.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Button.xaml.cs">
+      <DependentUpon>Button.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -143,9 +146,16 @@
     <Compile Include="Controls\TitleRight.xaml.cs">
       <DependentUpon>TitleRight.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WinIconCheckBox.xaml.cs">
+      <DependentUpon>WinIconCheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
+    <Compile Include="Converters\IntToChanges.cs" />
+    <Compile Include="Converters\IntToSettings.cs" />
     <Compile Include="Converters\ParametersToArray.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
+    <Compile Include="Converters\ViewChangesVisibility.cs" />
+    <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
@@ -164,10 +174,14 @@
     <Compile Include="Models\RadioButton.cs" />
     <Compile Include="Models\RadioButtonsGroup.cs" />
     <Compile Include="Models\Switch.cs" />
+    <Compile Include="Models\WinIconCheckBox.cs" />
     <Compile Include="ViewModels\AppVM-Ctor.cs" />
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />
     <Compile Include="ViewModels\AppVM-Props.cs" />
+    <Compile Include="Views\ViewChanges.xaml.cs">
+      <DependentUpon>ViewChanges.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewContextMenu.xaml.cs">
       <DependentUpon>ViewContextMenu.xaml</DependentUpon>
     </Compile>
@@ -210,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ActorLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,6 +299,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\WinIconCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Localizations\EN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -307,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewChanges.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
