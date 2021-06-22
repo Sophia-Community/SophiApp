@@ -9,6 +9,8 @@
              xmlns:models="clr-namespace:SophiApp.Models"
              controls:WinIconCheckBox.MouseEnter="TextedElement_MouseEnter"
              controls:WinIconCheckBox.MouseLeave="TextedElement_MouseLeave"
+             controls:FolderIconCheckBox.MouseEnter="TextedElement_MouseEnter"
+             controls:FolderIconCheckBox.MouseLeave="TextedElement_MouseLeave"
              IsVisibleChanged="ViewTaskSheduler_IsVisibleChanged">
 
     <UserControl.Resources>
@@ -49,7 +51,7 @@
                         <!--View UI content row-->
                         <RowDefinition Height="*" />
                         <!--View UI content indent row-->
-                        <RowDefinition Height="20" />
+                        <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{DynamicResource HeaderText}"
                                Grid.Row="0"
@@ -69,7 +71,15 @@
                                                               Id="{Binding Id}"
                                                               IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                               IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                              Margin="20, 10, 0, 5" />
+                                                              Margin="20, 0, 0, 10" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:FolderIconCheckBox}">
+                                    <controls:FolderIconCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
+                                                                 CommandParameter="{Binding Id}"
+                                                                 Id="{Binding Id}"
+                                                                 IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                                 IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                                 Margin="20, 0, 0, 10" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

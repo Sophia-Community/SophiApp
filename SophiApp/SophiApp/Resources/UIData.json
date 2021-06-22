@@ -2573,5 +2573,33 @@
         "Model": "WinIconCheckBox",
         "Type": "0",
         "Tag": "TaskSheduler"
+    },
+    {
+        "Id": 285,
+        "Headers": {
+            "EN": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\",
+            "RU": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\",
+        },
+        "Descriptions": {
+            "EN": "Тестовое описание",
+            "RU": "Тестовое описание"
+        },
+        "Model": "FolderIconCheckBox",
+        "Type": "0",
+        "Tag": "TaskSheduler"
+    },
+    {
+        "Id": 286,
+        "Headers": {
+            "EN": "Очистка папки: %TEMP%",
+            "RU": "Очистка папки: %TEMP%"
+        },
+        "Descriptions": {
+            "EN": "Тестовое описание",
+            "RU": "Тестовое описание"
+        },
+        "Model": "FolderIconCheckBox",
+        "Type": "0",
+        "Tag": "TaskSheduler"
     }
 ]

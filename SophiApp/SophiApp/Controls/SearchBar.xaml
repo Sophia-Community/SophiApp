@@ -62,6 +62,9 @@
                 </Grid>
             </Border>
             <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.50" />
+                </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="TextBoxSearch" Property="Text" Value="{x:Null}" />
                     <Setter TargetName="TextBoxSearch" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />

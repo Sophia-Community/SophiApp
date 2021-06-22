@@ -188,7 +188,7 @@ namespace SophiApp.Models
         {
             try
             {
-                SystemStateAction(State == UIElementState.CHECKED);
+                SystemStateAction(State == UIElementState.SETTOACTIVE);
             }
             catch (Exception e)
             {

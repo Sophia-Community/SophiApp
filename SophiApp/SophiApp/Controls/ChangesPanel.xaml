@@ -1,34 +1,34 @@
-﻿<UserControl x:Class="SophiApp.Views.ViewChanges"
+﻿<UserControl x:Class="SophiApp.Controls.ChangesPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:SophiApp.Views"
+             xmlns:local="clr-namespace:SophiApp.Controls"
              xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:ViewChangesVisibility x:Key="ViewChangesVisibilityConverter" />
+        <converters:ChangesPanelVisibility x:Key="ChangesPanelVisibilityConverter" />
         <converters:IntToChanges x:Key="IntToChangesConverter" />
         <converters:IntToSettings x:Key="IntToSettingsConverter" />
-        <Style TargetType="{x:Type local:ViewChanges}">
+        <Style TargetType="{x:Type local:ChangesPanel}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Height" Value="52" />
+            <Setter Property="ChangedText" Value="{DynamicResource Localization.ViewChanges.Changed}" />
+            <Setter Property="SettingText" Value="{DynamicResource Localization.ViewChanges.Setting}" />
             <Setter Property="Visibility">
                 <Setter.Value>
-                    <MultiBinding Converter="{StaticResource ViewChangesVisibilityConverter}">
+                    <MultiBinding Converter="{StaticResource ChangesPanelVisibilityConverter}">
                         <Binding Path="VisibleViewByTag" UpdateSourceTrigger="PropertyChanged" />
                         <Binding Path="TextedElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
-            <Setter Property="ChangedText" Value="{DynamicResource Localization.ViewChanges.Changed}" />
-            <Setter Property="SettingText" Value="{DynamicResource Localization.ViewChanges.Setting}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -78,7 +78,7 @@
                             Grid.Column="0">
 
                     <controls:Button Text="{DynamicResource Localization.ViewChanges.Reset}"
-                                           Command="{Binding ApplyingSettingsCommand}"
+                                           Command="{Binding ResetTextedElementsStateCommand}"
                                            Margin="0, 0, 10, 0" />
 
                     <controls:FilledButton Text="{DynamicResource Localization.ViewChanges.Apply}"

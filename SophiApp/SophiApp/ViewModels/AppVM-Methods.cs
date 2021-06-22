@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Debugger = SophiApp.Helpers.Debugger;
@@ -20,6 +21,47 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility = !AdvancedSettingsVisibility;
+
+        private async void ApplyingSettingsAsync(object args)
+        {
+            debugger.Write(DebuggerRecord.APPLYING_SETTINGS);
+            debugger.Write(DebuggerRecord.CHANGED_ELEMENTS, $"{TextedElementsChangedCounter}");
+            SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
+            SetTextedElementsChangedCounter();
+            SetLoadingPanelVisibility();
+            await ApplyingSettingsAsync();
+            debugger.Write(DebuggerRecord.TEXTED_ELEMENTS_RESET);
+            await ResetTextedElementsStateAsync();
+            SetLoadingPanelVisibility();
+            SetHitTest();
+        }
+
+        private async Task ApplyingSettingsAsync()
+        {
+            await Task.Run(() =>
+            {
+                TextedElements.ForEach(element =>
+                {
+                    if (element is IContainer container)
+                    {
+                        container.Collection.ForEach(e =>
+                        {
+                            if (e.State == UIElementState.SETTOACTIVE || e.State == UIElementState.SETTODEFAULT)
+                            {
+                                e.SetSystemState();
+                            }
+                        });
+
+                        return;
+                    }
+
+                    if (element.State == UIElementState.SETTOACTIVE || element.State == UIElementState.SETTODEFAULT)
+                    {
+                        element.SetSystemState();
+                    }
+                });
+            });
+        }
 
         private async void AppThemeChangeAsync(object args) => await AppThemeChangeAsync(args as string);
 
@@ -59,7 +101,6 @@ namespace SophiApp.ViewModels
             {
                 debugger.Write(DebuggerRecord.INIT_EXPORT_SETTINGS);
                 // ...
-                debugger.Write();
             });
         }
 
@@ -90,7 +131,6 @@ namespace SophiApp.ViewModels
             {
                 debugger.Write(DebuggerRecord.INIT_IMPORT_SETTINGS);
                 // ...
-                debugger.Write();
             });
         }
 
@@ -108,12 +148,15 @@ namespace SophiApp.ViewModels
             ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettingsAsync));
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
+            ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
+            ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
         }
 
         private void InitProps()
         {
             debugger = new Debugger();
             localizationsHelper = new LocalizationsHelper();
+            loadingPanelVisibility = false;
             themesHelper = new ThemesHelper();
             HamburgerHitTest = false;
             ViewsHitTest = true;
@@ -123,7 +166,6 @@ namespace SophiApp.ViewModels
 
             debugger.Write(DebuggerRecord.LOCALIZATION, $"{Localization.Language}");
             debugger.Write(DebuggerRecord.THEME, $"{AppSelectedTheme.Alias}");
-            debugger.Write();
         }
 
         private async Task InitTextedElementsAsync()
@@ -181,8 +223,6 @@ namespace SophiApp.ViewModels
                                   group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
                                   group.SetDefaultSelectedId();
                               });
-
-                debugger.Write();
             });
         }
 
@@ -195,7 +235,6 @@ namespace SophiApp.ViewModels
 
         private async Task LocalizationChangeAsync(string localizationName)
         {
-            //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
             await Task.Run(() =>
             {
                 var localization = localizationsHelper.FindName(localizationName);
@@ -211,7 +250,6 @@ namespace SophiApp.ViewModels
 
         private async void OnRadioButtonsGroupErrorOccurredAsync(uint id, Exception e)
         {
-            debugger.Write();
             debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
             debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
             debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
@@ -229,7 +267,6 @@ namespace SophiApp.ViewModels
 
         private async void OnTextedElementErrorOccurredAsync(uint id, Exception e)
         {
-            debugger.Write();
             debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
             debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
             debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
@@ -275,13 +312,41 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void SaveDebugLogAsync(object args)
+        private async void ResetTextedElementsStateAsync(object args)
         {
-            //TODO: SetLoadingPanelVisibilityProperty(isVisible: true);
-            await SaveDebugLogAsync();
-            //debugger.Write(isSaved ? DebuggerRecord.DEBUG_SAVED : DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
-            //TODO: SetLoadingPanelVisibilityProperty(isVisible: false);
+            debugger.Write(DebuggerRecord.TEXTED_ELEMENTS_RESET);
+            SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
+            SetTextedElementsChangedCounter();
+            SetLoadingPanelVisibility();
+            await ResetTextedElementsStateAsync();
+            SetLoadingPanelVisibility();
+            SetHitTest();
         }
+
+        private async Task ResetTextedElementsStateAsync()
+        {
+            await Task.Run(() =>
+            {
+                TextedElements.ForEach(element =>
+                {
+                    if (element is IContainer container)
+                    {
+                        container.Collection.ForEach(e => e.GetCurrentState());
+
+                        if (element is RadioButtonsGroup group)
+                        {
+                            group.SetDefaultSelectedId();
+                        }
+
+                        return;
+                    }
+
+                    element.GetCurrentState();
+                });
+            });
+        }
+
+        private async void SaveDebugLogAsync(object args) => await SaveDebugLogAsync();
 
         private async Task SaveDebugLogAsync()
         {
@@ -290,17 +355,16 @@ namespace SophiApp.ViewModels
                 try
                 {
                     FileHelper.Save(list: debugger.GetLog(), path: AppData.DebugFilePath);
-                    debugger.Write(DebuggerRecord.DEBUG_SAVED);
                 }
                 catch (Exception e)
                 {
-                    debugger.Write();
                     debugger.Write(DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
                     debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
                     debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
                     debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
-                    debugger.Write();
                 }
+
+                Thread.Sleep(5000);
             });
         }
 
@@ -323,6 +387,8 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = windowCloseHitTest;
         }
 
+        private void SetLoadingPanelVisibility() => LoadingPanelVisibility = !LoadingPanelVisibility;
+
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
         private void SetTextedElementsChangedCounter(UIElementState elementState)
@@ -343,6 +409,8 @@ namespace SophiApp.ViewModels
                     break;
             }
         }
+
+        private void SetTextedElementsChangedCounter() => TextedElementsChangedCounter = 0;
 
         private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
 
@@ -386,14 +454,12 @@ namespace SophiApp.ViewModels
                         if (updateRequired)
                         {
                             debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
-                            debugger.Write();
                             SetUpdateAvailableProperty(true);
                             Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.Tag_Name);
                             return;
                         }
 
                         debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
-                        debugger.Write();
                     }
                 }
                 catch (Exception e)
@@ -402,7 +468,6 @@ namespace SophiApp.ViewModels
                     debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
                     debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
                     debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
-                    debugger.Write();
                 }
             });
         }

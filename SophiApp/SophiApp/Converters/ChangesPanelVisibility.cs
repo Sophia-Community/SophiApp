@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace SophiApp.Converters
 {
-    internal class ViewChangesVisibility : IMultiValueConverter
+    internal class ChangesPanelVisibility : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

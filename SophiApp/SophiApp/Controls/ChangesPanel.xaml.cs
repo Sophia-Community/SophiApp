@@ -1,22 +1,22 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace SophiApp.Views
+namespace SophiApp.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для ViewChanges.xaml
+    /// Логика взаимодействия для ChangesPanel.xaml
     /// </summary>
-    public partial class ViewChanges : UserControl
+    public partial class ChangesPanel : UserControl
     {
         // Using a DependencyProperty as the backing store for ChangedText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ChangedTextProperty =
-            DependencyProperty.Register("ChangedText", typeof(string), typeof(ViewChanges), new PropertyMetadata(default));
+            DependencyProperty.Register("ChangedText", typeof(string), typeof(ChangesPanel), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for SettingText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SettingTextProperty =
-            DependencyProperty.Register("SettingText", typeof(string), typeof(ViewChanges), new PropertyMetadata(default));
+            DependencyProperty.Register("SettingText", typeof(string), typeof(ChangesPanel), new PropertyMetadata(default));
 
-        public ViewChanges()
+        public ChangesPanel()
         {
             InitializeComponent();
         }

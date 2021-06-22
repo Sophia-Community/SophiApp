@@ -5,18 +5,6 @@ namespace SophiApp.Helpers
 {
     internal class OsManager
     {
-        internal static string GetEdition()
-        {
-            try
-            {
-                return Registry.LocalMachine.OpenSubKey(RegPath.CURRENT_VERSION).GetValue(RegPath.EDITION_ID) as string;
-            }
-            catch (Exception)
-            {
-                return string.Empty;
-            }
-        }
-
         internal static string GetProductName()
         {
             try

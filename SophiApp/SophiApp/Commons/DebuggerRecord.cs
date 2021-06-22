@@ -23,6 +23,7 @@
         UPDATE_VERSION_REQUIRED, // Need update
         UPDATE_VERSION_NOT_REQUIRED, // Not need update
         INIT_TEXTED_ELEMENTS,
+        TEXTED_ELEMENTS_RESET, // Reset texted elements state
         ELEMENT_STATE,
         ELEMENT_HAS_ERROR,
         ERROR_CLASS,
@@ -32,8 +33,8 @@
         INIT_IMPORT_SETTINGS,
         INIT_EXPORT_SETTINGS,
         ADVANCED_SETTINGS_VISIBILITY,
-        INIT_RESET_TO_DEFAULT, // Reset os changes to default state
-        DEBUG_SAVED,
         DEBUG_SAVE_HAS_ERROR,
+        APPLYING_SETTINGS,
+        CHANGED_ELEMENTS
     }
 }

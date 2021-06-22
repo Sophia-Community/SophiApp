@@ -92,7 +92,9 @@
                                        Text="{DynamicResource Localization.Settings}"
                                        Tag="{StaticResource Tags.View.Settings}" />
 
-                <local:SearchBar VerticalAlignment="Bottom" Margin="10, 0, 10, 20" />
+                <local:SearchBar VerticalAlignment="Bottom"
+                                 Margin="10, 0, 10, 20"
+                                 IsEnabled="False" />
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

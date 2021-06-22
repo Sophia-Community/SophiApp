@@ -53,7 +53,7 @@
                         <!--View UI content row-->
                         <RowDefinition Height="*" />
                         <!--View UI content indent row-->
-                        <RowDefinition Height="20" />
+                        <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
                     <TextBlock Style="{DynamicResource HeaderText}"
                                Grid.Row="0"
