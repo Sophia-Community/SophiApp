@@ -163,7 +163,6 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = true;
             VisibleViewByTag = Tags.ViewLoading;
             advancedSettingsVisibility = false;
-
             debugger.Write(DebuggerRecord.LOCALIZATION, $"{Localization.Language}");
             debugger.Write(DebuggerRecord.THEME, $"{AppSelectedTheme.Alias}");
         }

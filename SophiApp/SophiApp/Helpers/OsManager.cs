@@ -9,7 +9,7 @@ namespace SophiApp.Helpers
         {
             try
             {
-                return Registry.LocalMachine.OpenSubKey($"{RegPath.CURRENT_VERSION}").GetValue(RegPath.PRODUCT_NAME) as string;
+                return Registry.LocalMachine.OpenSubKey($"{RegPaths.CURRENT_VERSION}").GetValue(RegPaths.PRODUCT_NAME) as string;
             }
             catch (Exception)
             {

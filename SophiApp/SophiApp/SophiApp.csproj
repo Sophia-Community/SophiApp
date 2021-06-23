@@ -174,7 +174,7 @@
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
-    <Compile Include="Helpers\RegPath.cs" />
+    <Compile Include="Helpers\RegPaths.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
