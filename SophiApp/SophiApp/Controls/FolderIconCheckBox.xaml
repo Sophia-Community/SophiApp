@@ -45,7 +45,7 @@
             <Grid MouseEnter="FolderIconCheckBox_MouseEnter" MouseLeave="FolderIconCheckBox_MouseLeave">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="40" />
