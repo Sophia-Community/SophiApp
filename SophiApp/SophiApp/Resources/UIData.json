@@ -2283,8 +2283,8 @@
     {
         "Id": 264,
         "Headers": {
-            "EN": "Enable Windows Script Host",
-            "RU": "Включить Windows Script Host"
+            "EN": "Windows Script Host",
+            "RU": "Windows Script Host"
         },
         "Descriptions": {
             "EN": "",
@@ -2297,12 +2297,12 @@
     {
         "Id": 265,
         "Headers": {
-            "EN": "Add the \"Extract all\" item to Windows Installer (.msi) context menu",
-            "RU": "Добавить пункт \"Извлечь все\" в контекстное меню Windows Installer (.msi)"
+            "EN": "The \"Extract all\" menu option in the Windows Installer filename extension context menu",
+            "RU": "Пункт \"Извлечь все\" в контекстном меню расширений имен файлов Windows Installer"
         },
         "Descriptions": {
-            "EN": "",
-            "RU": ""
+            "EN": ".msi",
+            "RU": ".msi"
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -2311,12 +2311,12 @@
     {
         "Id": 266,
         "Headers": {
-            "EN": "Add the \"Install\" item to the .cab archives context menu",
-            "RU": "Добавить пункт \"Установить\" в контекстное меню .cab архивов"
+            "EN": "The \"Install\" menu option in the Cabinet filename extension context menu",
+            "RU": "Пункт \"Установить\" в контекстном меню расширений имен файлов Cabinet-архивов"
         },
         "Descriptions": {
-            "EN": "If the .cab file extension type associated to open with a third party app by default, the \"Install\" context menu item won't be displayed, so the default association for the .cab file type will be restored forcedly",
-            "RU": "Если .cab файлы ассоциированы со сторонним приложением, пункт \"Установить\" в контекстное меню не будет отображаться, поэтому принудительно будет восстановлена ассоциация по умолчанию"
+            "EN": "If the Cabinet filename extension (.cab) is associated with a third-party application by default, then the \"Install\" context menu option will not be displayed. To enable the \"Install\" context menu option. The Windows default file association will be restored forcedly",
+            "RU": "Если расширение Cabinet-файлов (.cab) ассоциировано со сторонним приложением, пункт \"Установить\" в контекстном меню не будет отображаться. Будет принудительна восстановлена ассоциация файла Windows по умолчанию"
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -2325,8 +2325,8 @@
     {
         "Id": 267,
         "Headers": {
-            "EN": "Add the \"Run as different user\" item to the .exe files types context menu",
-            "RU": "Добавить пункт \"Запуск от имени другого пользователя\" в контекстного меню .exe файлов"
+            "EN": "The \"Run as different user\" menu option in the .exe filename extensions context menu",
+            "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню расширений имен файлов .exe"
         },
         "Descriptions": {
             "EN": "",
@@ -2339,8 +2339,8 @@
     {
         "Id": 268,
         "Headers": {
-            "EN": "Show the \"Cast to Device\" item in the context menu",
-            "RU": "Показывать пункт \"Передать на устройство\" в контекстном меню"
+            "EN": "The \"Cast to Device\" menu option in the media files and folders context menu",
+            "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок"
         },
         "Descriptions": {
             "EN": "",
@@ -2353,8 +2353,8 @@
     {
         "Id": 269,
         "Headers": {
-            "EN": "Show the \"Share\" item in the context menu",
-            "RU": "Показывать пункт \"Отправить\" (поделиться) в контекстном меню"
+            "EN": "The \"Share\" menu option in the context menu",
+            "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню"
         },
         "Descriptions": {
             "EN": "",
@@ -2367,22 +2367,20 @@
     {
         "Id": 270,
         "Headers": {
-            "EN": "Show the \"Edit with Paint 3D\" item in the context menu",
-            "RU": "Показывать пункт \"Изменить с помощью Paint 3D\" в контекстном меню"
+            "EN": "The \"Edit with Paint 3D\" menu option in the media files context menu",
+            "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов"
         },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
+        "Model": "ExpandingGroup",
+        "IsContainer": true,
+        "Tag": "ContextMenu",
+        "Type": "0"
     },
     {
         "Id": 271,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Edit with Photos\" item in the context menu",
-            "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню"
+            "EN": ".bmp",
+            "RU": ".bmp"
         },
         "Descriptions": {
             "EN": "",
@@ -2394,9 +2392,10 @@
     },
     {
         "Id": 272,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Create a new video\" item in the context menu",
-            "RU": "Показывать пункт \"Создать новое видео\" в контекстном меню"
+            "EN": ".gif",
+            "RU": ".gif"
         },
         "Descriptions": {
             "EN": "",
@@ -2408,9 +2407,10 @@
     },
     {
         "Id": 273,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Edit\" item from in images context menu",
-            "RU": "Показывать пункт \"Изменить\" в контекстном меню изображений"
+            "EN": ".jpe",
+            "RU": ".jpe"
         },
         "Descriptions": {
             "EN": "",
@@ -2422,9 +2422,10 @@
     },
     {
         "Id": 274,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Print\" item in the .bat and .cmd context menu",
-            "RU": "Показывать пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
+            "EN": ".jpeg",
+            "RU": ".jpeg"
         },
         "Descriptions": {
             "EN": "",
@@ -2436,9 +2437,10 @@
     },
     {
         "Id": 275,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Include in Library\" item in the context menu",
-            "RU": "Показывать пункт \"Добавить в библиотеку\" в контекстном меню"
+            "EN": ".jpg",
+            "RU": ".jpg"
         },
         "Descriptions": {
             "EN": "",
@@ -2450,9 +2452,10 @@
     },
     {
         "Id": 276,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Send to\" item in the folders context menu",
-            "RU": "Показывать пункт \"Отправить\" в контекстном меню папок"
+            "EN": ".png",
+            "RU": ".png"
         },
         "Descriptions": {
             "EN": "",
@@ -2464,9 +2467,10 @@
     },
     {
         "Id": 277,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Show the \"Turn on BitLocker\" item in the context menu",
-            "RU": "Показывать пункт \"Включить BitLocker\" в контекстном меню"
+            "EN": ".tif",
+            "RU": ".tif"
         },
         "Descriptions": {
             "EN": "",
@@ -2478,9 +2482,10 @@
     },
     {
         "Id": 278,
+        "ContainerId": 270,
         "Headers": {
-            "EN": "Add the \"Bitmap image\" item to the \"New\" context menu",
-            "RU": "Восстановить пункт \"Точечный рисунок\" в контекстного меню \"Создать\""
+            "EN": ".tiff",
+            "RU": ".tiff"
         },
         "Descriptions": {
             "EN": "",
@@ -2493,8 +2498,8 @@
     {
         "Id": 279,
         "Headers": {
-            "EN": "Add the \"Rich Text Document\" item to the \"New\" context menu",
-            "RU": "Восстановить пункт \"Документ в формате RTF\" в контекстного меню \"Создать\""
+            "EN": "Show the \"Edit with Photos\" menu option in the media files context menu",
+            "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов"
         },
         "Descriptions": {
             "EN": "",
@@ -2507,8 +2512,8 @@
     {
         "Id": 280,
         "Headers": {
-            "EN": "Add the \"Compressed (zipped) Folder\" item to the \"New\" context menu",
-            "RU": "Восстановить пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
+            "EN": "The \"Create a new video\" menu option in the media files context menu",
+            "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов"
         },
         "Descriptions": {
             "EN": "",
@@ -2521,8 +2526,8 @@
     {
         "Id": 281,
         "Headers": {
-            "EN": "Enable the \"Open\", \"Print\", and \"Edit\" context menu items for more than 15 items selected",
-            "RU": "Включить элементы контекстного меню \"Открыть\", \"Изменить\" и \"Печать\" при выделении более 15 элементов"
+            "EN": "The \"Edit\" menu option in the image files context menu",
+            "RU": "Пункт \"Изменить\" в контекстном меню изображений"
         },
         "Descriptions": {
             "EN": "",
@@ -2535,8 +2540,8 @@
     {
         "Id": 282,
         "Headers": {
-            "EN": "Show the \"Look for an app in the Microsoft Store\" item in the \"Open with\" dialog",
-            "RU": "Отображать пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
+            "EN": "The \"Print\" menu option in the .bat and .cmd files context menu",
+            "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
         },
         "Descriptions": {
             "EN": "",
@@ -2549,8 +2554,8 @@
     {
         "Id": 283,
         "Headers": {
-            "EN": "Show the \"Previous Versions\" tab from files and folders context menu and also the \"Restore previous versions\" context menu item",
-            "RU": "Отображать вкладку \"Предыдущие версии\" в свойствах файлов и папок, а также пункт контекстного меню \"Восстановить прежнюю версию\""
+            "EN": "The \"Include in Library\" menu option in the folders and drives context menu",
+            "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков"
         },
         "Descriptions": {
             "EN": "",
@@ -2562,6 +2567,118 @@
     },
     {
         "Id": 284,
+        "Headers": {
+            "EN": "The \"Send to\" menu option in the folders context menu",
+            "RU": "Пункт \"Отправить\" в контекстном меню папок"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 285,
+        "Headers": {
+            "EN": "\"Turn on BitLocker\" menu option in the drives context menu",
+            "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 286,
+        "Headers": {
+            "EN": "The \"Bitmap image\" menu option in the \"New\" context menu",
+            "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 287,
+        "Headers": {
+            "EN": "The \"Rich Text Document\" menu option in the \"New\" context menu",
+            "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 288,
+        "Headers": {
+            "EN": "The \"Compressed (zipped) Folder\"menu option in the \"New\" context menu",
+            "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 289,
+        "Headers": {
+            "EN": "The \"Open\", \"Print\", and \"Edit\" menu options if more than 15 files selected",
+            "RU": "Элементы \"Открыть\", \"Изменить\" и \"Печать\" контекстного меню при выделении более 15 элементов"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 290,
+        "Headers": {
+            "EN": "The \"Look for an app in the Microsoft Store\" menu option in the \"Open with\" dialog",
+            "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 291,
+        "Headers": {
+            "EN": "The \"Previous Versions\" tab in the files and folders context menu and the \"Restore previous versions\" context menu option",
+            "RU": "Вкладка \"Предыдущие версии\" в свойствах файлов и папок и пункт контекстного меню \"Восстановить прежнюю версию\""
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 292,
         "Headers": {
             "EN": "Очистка Windows",
             "RU": "Очистка Windows"
@@ -2575,10 +2692,10 @@
         "Tag": "TaskSheduler"
     },
     {
-        "Id": 285,
+        "Id": 293,
         "Headers": {
             "EN": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\",
-            "RU": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\",
+            "RU": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\"
         },
         "Descriptions": {
             "EN": "Тестовое описание",
@@ -2589,7 +2706,7 @@
         "Tag": "TaskSheduler"
     },
     {
-        "Id": 286,
+        "Id": 294,
         "Headers": {
             "EN": "Очистка папки: %TEMP%",
             "RU": "Очистка папки: %TEMP%"
