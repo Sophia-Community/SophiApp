@@ -43,6 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -174,6 +175,7 @@
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
+    <Compile Include="Helpers\RegHelper.cs" />
     <Compile Include="Helpers\RegPaths.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />

@@ -1,7 +1,6 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Models;
 using System;
-using System.Diagnostics;
 using System.Reflection;
 
 namespace SophiApp.Helpers
