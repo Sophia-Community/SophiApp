@@ -91,5 +91,5 @@ $ExcludedAppxPackages = @(
 	"Microsoft.WebMediaExtensions"
 )
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
-[Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Where-Object -FilterScript {$_.Name -in $AppxPackages.Name} | Select-Object -Property Name, DisplayName, Logo
+[Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Where-Object -FilterScript {$_.Name -in $AppxPackages.Name} | Select-Object -Property Name, DisplayName, Logo | Format-Table -Wrap
 ```
