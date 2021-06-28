@@ -73,6 +73,23 @@ Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
 
 https://github.com/SamuelArnold/StarKill3r/blob/master/Star%20Killer/Star%20Killer/bin/Debug/Scripts/SANS-SEC505-master/scripts/Day1-PowerShell/Expand-IndirectString.ps1
 
-# Updated UI translation
-https://raw.githubusercontent.com/Sophia-Community/SophiApp/Ref/SophiApp/SophiApp/Localizations/EN.xaml
-https://raw.githubusercontent.com/Sophia-Community/SophiApp/Ref/SophiApp/SophiApp/Localizations/RU.xaml
+```powershell
+cls
+$ExcludedAppxPackages = @(
+	# Microsoft Desktop App Installer
+	"Microsoft.DesktopAppInstaller",
+
+	# Store Experience Host
+	# Узел для покупок Microsoft Store
+	"Microsoft.StorePurchaseApp",
+
+	# Microsoft Store
+	"Microsoft.WindowsStore",
+
+	# Web Media Extensions
+	# Расширения для интернет-мультимедиа
+	"Microsoft.WebMediaExtensions"
+)
+$AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
+[Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Where-Object -FilterScript {$_.Name -in $AppxPackages.Name} | Select-Object -Property Name, DisplayName, Logo | Format-Table -Wrap
+```
