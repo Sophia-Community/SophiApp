@@ -32,6 +32,8 @@ namespace SophiApp.ViewModels
             await ApplyingSettingsAsync();
             debugger.Write(DebuggerRecord.TEXTED_ELEMENTS_RESET);
             await ResetTextedElementsStateAsync();
+            OsManager.PostMessage();
+            OsManager.Refresh();
             SetLoadingPanelVisibility();
             SetHitTest();
         }

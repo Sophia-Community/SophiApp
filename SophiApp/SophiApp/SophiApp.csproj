@@ -59,8 +59,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -71,6 +73,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Windows.Data" />
+    <Reference Include="Windows.Services" />
     <Reference Include="Windows.UI" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -171,12 +174,14 @@
     <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
+    <Compile Include="Helpers\FirewallHelper.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsManager.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
-    <Compile Include="Helpers\RegPaths.cs" />
+    <Compile Include="Helpers\ActionsData.cs" />
+    <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
@@ -445,6 +450,19 @@
       <Version>4.3.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="NetFwTypeLib">
+      <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,10 @@
 ﻿namespace SophiApp.Helpers
 {
-    internal static class RegPaths
+    internal static class ActionsData
     {
+        internal const string _100_DIAGTRACK_NAME = "DiagTrack";
         internal const string _265_EXTRACT_PATH = @"Msi.Package\shell\Extract";
-        internal const string _267_EXTENDED_NAME = @"Extended";
+        internal const string _267_EXTENDED_NAME = "Extended";
         internal const string _267_RUNASUSER_PATH = @"exefile\shell\runasuser";
         internal const string _268_CAST_TO_DEVICE_NAME = "{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
         internal const string _268_CAST_TO_DEVICE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
