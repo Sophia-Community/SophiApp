@@ -2,12 +2,12 @@
     {
         "Id": 100,
         "Headers": {
-            "EN": "Enable the DiagTrack service",
-            "RU": "Включить службу DiagTrack"
+            "EN": "The DiagTrack service",
+            "RU": "Служба DiagTrack"
         },
         "Descriptions": {
-            "EN": "Enable the DiagTrack service, and allow connection for the Unified Telemetry Client Outbound Traffic",
-            "RU": "Включить службу DiagTrack и разрешить соединение для исходящего трафика клиента единой телеметрии"
+            "EN": "The DiagTrack service and the connection for the Unified Telemetry Client Outbound Traffic",
+            "RU": "Служба DiagTrack и соединение для исходящего трафика клиента единой телеметрии"
         },
         "Model": "Switch",
         "Type": "0",
@@ -57,8 +57,8 @@
     {
         "Id": 104,
         "Headers": {
-            "EN": "Turn off the Windows Error Reporting",
-            "RU": "Отключить запись отчетов об ошибках Window"
+            "EN": "The Windows Error Reporting",
+            "RU": "Запись отчетов об ошибках Window"
         },
         "Descriptions": {
             "EN": "",
@@ -2309,6 +2309,20 @@
         "Tag": "ContextMenu"
     },
     {
+        "Id": 266,
+        "Headers": {
+            "EN": "The \"Install\" menu option in the Cabinet filename extension context menu",
+            "RU": "Пункт \"Установить\" в контекстном меню расширений имен файлов Cabinet-архивов"
+        },
+        "Descriptions": {
+            "EN": "If the Cabinet filename extension (.cab) is associated with a third-party application by default, then the \"Install\" context menu option will not be displayed. To enable the \"Install\" context menu option. The Windows default file association will be restored forcedly",
+            "RU": "Если расширение Cabinet-файлов (.cab) ассоциировано со сторонним приложением, пункт \"Установить\" в контекстном меню не будет отображаться. Будет принудительна восстановлена ассоциация файла Windows по умолчанию"
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
         "Id": 267,
         "Headers": {
             "EN": "The \"Run as different user\" menu option in the .exe filename extensions context menu",
@@ -2488,7 +2502,7 @@
             "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов"
         },
         "Descriptions": {
-            "EN": "",
+            "EN": "Только при ассоциации",
             "RU": ""
         },
         "Model": "CheckBox",
@@ -2556,6 +2570,20 @@
         "Headers": {
             "EN": "The \"Send to\" menu option in the folders context menu",
             "RU": "Пункт \"Отправить\" в контекстном меню папок"
+        },
+        "Descriptions": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "ContextMenu"
+    },
+    {
+        "Id": 285,
+        "Headers": {
+            "EN": "\"Turn on BitLocker\" menu option in the drives context menu",
+            "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
         },
         "Descriptions": {
             "EN": "",
@@ -2634,61 +2662,5 @@
         "Model": "CheckBox",
         "Type": "0",
         "Tag": "ContextMenu"
-    },
-    {
-        "Id": 291,
-        "Headers": {
-            "EN": "The \"Previous Versions\" tab in the files and folders context menu and the \"Restore previous versions\" context menu option",
-            "RU": "Вкладка \"Предыдущие версии\" в свойствах файлов и папок и пункт контекстного меню \"Восстановить прежнюю версию\""
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 292,
-        "Headers": {
-            "EN": "Очистка Windows",
-            "RU": "Очистка Windows"
-        },
-        "Descriptions": {
-            "EN": "Тестовое описание",
-            "RU": "Тестовое описание"
-        },
-        "Model": "WinIconCheckBox",
-        "Type": "0",
-        "Tag": "TaskSheduler"
-    },
-    {
-        "Id": 293,
-        "Headers": {
-            "EN": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\",
-            "RU": "Очистка папки: \"%SystemRoot%\\SoftwareDistribution\\Download\\"
-        },
-        "Descriptions": {
-            "EN": "Тестовое описание",
-            "RU": "Тестовое описание"
-        },
-        "Model": "FolderIconCheckBox",
-        "Type": "0",
-        "Tag": "TaskSheduler"
-    },
-    {
-        "Id": 294,
-        "Headers": {
-            "EN": "Очистка папки: %TEMP%",
-            "RU": "Очистка папки: %TEMP%"
-        },
-        "Descriptions": {
-            "EN": "Тестовое описание",
-            "RU": "Тестовое описание"
-        },
-        "Model": "FolderIconCheckBox",
-        "Type": "0",
-        "Tag": "TaskSheduler"
     }
 ]

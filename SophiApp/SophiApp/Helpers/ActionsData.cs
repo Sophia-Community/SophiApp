@@ -30,6 +30,7 @@
         internal const string _279_UWP_PHOTOS_NAME = "Microsoft.Windows.Photos";
         internal const string _280_SHELL_CREATE_PATH = @"AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\Shell\ShellCreateVideo";
         internal const string _281_SHELL_EDIT_PATH = @"SystemFileAssociations\image\shell\edit";
+        internal const string _281_CAPABILITY_PAINT_NAME = @"Microsoft.Windows.MSPaint";
         internal const string _282_BAT_PRINT_PATH = @"batfile\shell\print";
         internal const string _282_CMD_PRINT_PATH = @"cmdfile\shell\print";
         internal const string _283_LIBRARY_LOCATION_PATH = @"Folder\ShellEx\ContextMenuHandlers\Library Location";
@@ -46,5 +47,6 @@
         internal const string PROGRAMMATIC_ACCESS_ONLY_NAME = "ProgrammaticAccessOnly";
         internal const string UWP_3D_PAINT_NAME = "Microsoft.MSPaint";
         internal const string EXCEPTION_UWP_NOT_FOUND = "not found in uwp package list";
+        internal const string EXCEPTION_CAPABILITY_NOT_FOUND = "not found in fod list";
     }
 }

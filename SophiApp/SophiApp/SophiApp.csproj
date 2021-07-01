@@ -171,6 +171,7 @@
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\Debugger.cs" />
+    <Compile Include="Helpers\DismHelper.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
@@ -447,6 +448,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Dism">
+      <Version>2.2.2</Version>
+    </PackageReference>
     <PackageReference Include="System.Text.RegularExpressions">
       <Version>4.3.1</Version>
     </PackageReference>

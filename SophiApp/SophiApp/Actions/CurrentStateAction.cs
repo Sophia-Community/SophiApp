@@ -151,9 +151,17 @@ namespace SophiApp.Actions
             throw new Exception($"{ActionsData._279_UWP_PHOTOS_NAME}{ActionsData.EXCEPTION_UWP_NOT_FOUND}");
         }
 
-        // TODO: 281 not implemented.
-        //public static bool _281() => !(RegHelper.GetRegistryKey(RegistryHive.ClassesRoot, ActionsData._281_SHELL_EDIT_PATH)
-        //                                        .GetValue(ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME) is string);
+        public static bool _281()
+        {
+            if (DismHelper.CapabilityExist(ActionsData._281_CAPABILITY_PAINT_NAME))
+            {
+                return !RegHelper.KeyExist(hive: RegistryHive.ClassesRoot,
+                                           path: ActionsData._281_SHELL_EDIT_PATH,
+                                           name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+            }
+
+            throw new Exception($"{ActionsData._281_CAPABILITY_PAINT_NAME}{ActionsData.EXCEPTION_CAPABILITY_NOT_FOUND}");
+        }
 
         public static bool _282()
         {
@@ -175,6 +183,13 @@ namespace SophiApp.Actions
         public static bool _284() => RegHelper.GetValue(hive: RegistryHive.ClassesRoot,
                                                          path: ActionsData._284_SEND_TO_PATH,
                                                          name: string.Empty) == ActionsData._284_SEND_TO_VALUE;
+
+        // TODO: 285 not implemented.
+
+        public static bool _286()
+        {
+            return true;
+        }
 
         //TODO: Implement method selection by ID
         public static bool FOR_DEBUG_ONLY() => false; //TODO: CurrentStateAction - This method for debug only.
