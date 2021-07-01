@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace SophiApp.Helpers
 {
-    internal class OsManager
+    internal class OsHelper
     {
         private const int Msg = 273;
         private const int SMTO_ABORTIFHUNG = 0x0002;
@@ -27,17 +27,13 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
-        internal static string GetProductName()
-        {
-            try
-            {
-                return Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.PRODUCT_NAME) as string;
-            }
-            catch (Exception)
-            {
-                return string.Empty;
-            }
-        }
+        internal static string GetProductName() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.PRODUCT_NAME) as string ?? string.Empty;
+
+        internal static string GetDisplayVersion() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.DISPLAY_VERSION_NAME) as string ?? string.Empty;
+
+        internal static string GetRegisteredOrganization() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.REGISTRED_ORGANIZATION_NAME) as string ?? string.Empty;
+
+        internal static string GetRegisteredOwner() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.REGISTRED_OWNER_NAME) as string ?? string.Empty;
 
         public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
 

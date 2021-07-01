@@ -6,8 +6,9 @@
         APP_VERSION,
         COMPUTER_NAME,
         OS_NAME,
-        OS_EDITION,
-        OS_VER,
+        OS_BUILD,
+        OS_OWNER,
+        OS_ORG,
         USER_DOMAIN,
         USER_NAME,
         LOCALIZATION,
@@ -23,7 +24,9 @@
         UPDATE_VERSION_REQUIRED, // Need update
         UPDATE_VERSION_NOT_REQUIRED, // Not need update
         INIT_TEXTED_ELEMENTS,
-        TEXTED_ELEMENTS_RESET, // Reset texted elements state
+        DONE_TEXTED_ELEMENTS,
+        INIT_TEXTED_ELEMENTS_RESET, // Reset texted elements state
+        DONE_TEXTED_ELEMENTS_RESET,
         ELEMENT_STATE,
         ELEMENT_HAS_ERROR,
         ERROR_CLASS,
@@ -34,7 +37,8 @@
         INIT_EXPORT_SETTINGS,
         ADVANCED_SETTINGS_VISIBILITY,
         DEBUG_SAVE_HAS_ERROR,
-        APPLYING_SETTINGS,
+        INIT_APPLYING_SETTINGS,
+        DONE_APPLYING_SETTINGS,
         CHANGED_ELEMENTS
     }
 }

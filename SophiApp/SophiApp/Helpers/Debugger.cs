@@ -17,8 +17,10 @@ namespace SophiApp.Helpers
         {
             InitialWrite(DebuggerRecord.APP_VERSION, $"{AppData.Version}");
             InitialWrite(DebuggerRecord.STARTUP_DIR, $"{AppData.StartupFolder}");
-            InitialWrite(DebuggerRecord.OS_NAME, OsManager.GetProductName());
-            InitialWrite(DebuggerRecord.OS_VER, Environment.OSVersion.VersionString);
+            InitialWrite(DebuggerRecord.OS_NAME, $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()}");
+            InitialWrite(DebuggerRecord.OS_BUILD, Environment.OSVersion.VersionString);
+            InitialWrite(DebuggerRecord.OS_ORG, $"{OsHelper.GetRegisteredOrganization()}");
+            InitialWrite(DebuggerRecord.OS_OWNER, $"{OsHelper.GetRegisteredOwner()}");
             InitialWrite(DebuggerRecord.COMPUTER_NAME, Environment.MachineName);
             InitialWrite(DebuggerRecord.USER_NAME, Environment.UserName);
             InitialWrite(DebuggerRecord.USER_DOMAIN, Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName);

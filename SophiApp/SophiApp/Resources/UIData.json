@@ -2566,20 +2566,6 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 285,
-        "Headers": {
-            "EN": "\"Turn on BitLocker\" menu option in the drives context menu",
-            "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
         "Id": 286,
         "Headers": {
             "EN": "The \"Bitmap image\" menu option in the \"New\" context menu",

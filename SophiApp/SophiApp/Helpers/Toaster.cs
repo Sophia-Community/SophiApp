@@ -2,8 +2,6 @@
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
-//using System.Xml;
-
 namespace SophiApp.Helpers
 {
     internal class Toaster

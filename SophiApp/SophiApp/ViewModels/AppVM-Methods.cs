@@ -24,18 +24,19 @@ namespace SophiApp.ViewModels
 
         private async void ApplyingSettingsAsync(object args)
         {
-            debugger.Write(DebuggerRecord.APPLYING_SETTINGS);
+            debugger.Write(DebuggerRecord.INIT_APPLYING_SETTINGS);
             debugger.Write(DebuggerRecord.CHANGED_ELEMENTS, $"{TextedElementsChangedCounter}");
             SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetTextedElementsChangedCounter();
             SetLoadingPanelVisibility();
             await ApplyingSettingsAsync();
-            debugger.Write(DebuggerRecord.TEXTED_ELEMENTS_RESET);
+            debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
             await ResetTextedElementsStateAsync();
-            OsManager.PostMessage();
-            OsManager.Refresh();
+            OsHelper.PostMessage();
+            OsHelper.Refresh();
             SetLoadingPanelVisibility();
             SetHitTest();
+            debugger.Write(DebuggerRecord.DONE_APPLYING_SETTINGS);
         }
 
         private async Task ApplyingSettingsAsync()
@@ -224,6 +225,9 @@ namespace SophiApp.ViewModels
                                   group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
                                   group.SetDefaultSelectedId();
                               });
+
+                debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
+
             });
         }
 
@@ -315,13 +319,14 @@ namespace SophiApp.ViewModels
 
         private async void ResetTextedElementsStateAsync(object args)
         {
-            debugger.Write(DebuggerRecord.TEXTED_ELEMENTS_RESET);
+            debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
             SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetTextedElementsChangedCounter();
             SetLoadingPanelVisibility();
             await ResetTextedElementsStateAsync();
             SetLoadingPanelVisibility();
             SetHitTest();
+            debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS_RESET);
         }
 
         private async Task ResetTextedElementsStateAsync()
@@ -332,7 +337,10 @@ namespace SophiApp.ViewModels
                 {
                     if (element is IContainer container)
                     {
-                        container.Collection.ForEach(e => e.GetCurrentState());
+                        container.Collection
+                                 .Where(e => e.State != UIElementState.DISABLED)
+                                 .ToList()
+                                 .ForEach(e => e.GetCurrentState());
 
                         if (element is RadioButtonsGroup group)
                         {
@@ -342,7 +350,10 @@ namespace SophiApp.ViewModels
                         return;
                     }
 
-                    element.GetCurrentState();
+                    if (element.State != UIElementState.DISABLED)
+                    {
+                        element.GetCurrentState();
+                    }
                 });
             });
         }
@@ -476,7 +487,7 @@ namespace SophiApp.ViewModels
         internal async void InitData()
         {
             MouseHelper.ShowWaitCursor(show: true);
-            //TODO: Uncomment update function before release.
+            //TODO: UpdateIsAvailableAsync - uncomment update function before release.
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);
