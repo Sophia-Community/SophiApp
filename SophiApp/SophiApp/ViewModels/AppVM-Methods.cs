@@ -227,7 +227,6 @@ namespace SophiApp.ViewModels
                               });
 
                 debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
-
             });
         }
 

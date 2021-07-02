@@ -254,7 +254,52 @@ namespace SophiApp.Actions
                                    name: string.Empty, value: ActionsData._284_SEND_TO_MINUS_VALUE);
         }
 
-        public static void FOR_DEBUG_ONLY(bool state)
+        public static void _285(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.DeleteKey(hive: RegistryHive.ClassesRoot, path: ActionsData._285_ENCRYPT_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+                RegHelper.DeleteKey(hive: RegistryHive.ClassesRoot, path: ActionsData._285_ENCRYPT_BDE_ELEV_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+                RegHelper.DeleteKey(hive: RegistryHive.ClassesRoot, path: ActionsData._285_MANAGE_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+                RegHelper.DeleteKey(hive: RegistryHive.ClassesRoot, path: ActionsData._285_RESUME_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+                RegHelper.DeleteKey(hive: RegistryHive.ClassesRoot, path: ActionsData._285_RESUME_BDE_ELEV_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+                RegHelper.DeleteKey(hive: RegistryHive.ClassesRoot, path: ActionsData._285_UNLOCK_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME);
+                return;
+            }
+
+            RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._285_ENCRYPT_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME, value: string.Empty);
+            RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._285_ENCRYPT_BDE_ELEV_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME, value: string.Empty);
+            RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._285_MANAGE_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME, value: string.Empty);
+            RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._285_RESUME_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME, value: string.Empty);
+            RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._285_RESUME_BDE_ELEV_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME, value: string.Empty);
+            RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._285_UNLOCK_BDE_PATH, name: ActionsData.PROGRAMMATIC_ACCESS_ONLY_NAME, value: string.Empty);
+        }
+
+        public static void _286(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._286_SHELL_NEW_PATH, name: ActionsData._286_ITEM_NAME, value: ActionsData._286_ITEM_VALUE, type: RegistryValueKind.ExpandString);
+                RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._286_SHELL_NEW_PATH, name: ActionsData._286_NULL_FILE_NAME, value: string.Empty);
+                return;
+            }
+
+            RegHelper.DeleteSubKeyTree(hive: RegistryHive.ClassesRoot, subKey: ActionsData._286_SHELL_NEW_PATH);
+        }
+
+        public static void _287(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._287_SHELL_NEW_PATH, name: ActionsData._287_ITEM_NAME, value: ActionsData._287_ITEM_VALUE, type: RegistryValueKind.ExpandString);
+                RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._287_SHELL_NEW_PATH, name: ActionsData._287_DATA_NAME, value: ActionsData._287_DATA_VALUE);
+                return;
+            }
+
+            RegHelper.DeleteSubKeyTree(hive: RegistryHive.ClassesRoot, subKey: ActionsData._287_SHELL_NEW_PATH);
+        }
+
+        public static void FOR_DEBUG_ONLY(bool state)  //TODO: SystemStateAction - This method for debug only.
         {
         }
     }

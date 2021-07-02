@@ -27,13 +27,17 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
-        internal static string GetProductName() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.PRODUCT_NAME) as string ?? string.Empty;
+        internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.DISPLAY_VERSION_NAME);
 
-        internal static string GetDisplayVersion() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.DISPLAY_VERSION_NAME) as string ?? string.Empty;
+        internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.EDITION_ID_NAME);
 
-        internal static string GetRegisteredOrganization() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.REGISTRED_ORGANIZATION_NAME) as string ?? string.Empty;
+        internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.PRODUCT_NAME);
 
-        internal static string GetRegisteredOwner() => Registry.LocalMachine.OpenSubKey($"{ActionsData.CURRENT_VERSION}").GetValue(ActionsData.REGISTRED_OWNER_NAME) as string ?? string.Empty;
+        internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_ORGANIZATION_NAME);
+
+        internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_OWNER_NAME);
+
+        internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
         public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
 

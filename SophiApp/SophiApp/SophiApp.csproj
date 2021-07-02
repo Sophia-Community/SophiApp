@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
@@ -186,6 +187,7 @@
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />
+    <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />

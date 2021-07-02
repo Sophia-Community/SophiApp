@@ -8,6 +8,5 @@ namespace SophiApp.Helpers
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
                                                                                     .Select(package => package.Id.Name)
                                                                                     .Contains(packageName);
-
     }
 }
