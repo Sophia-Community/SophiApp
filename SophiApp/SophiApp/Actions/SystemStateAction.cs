@@ -299,7 +299,41 @@ namespace SophiApp.Actions
             RegHelper.DeleteSubKeyTree(hive: RegistryHive.ClassesRoot, subKey: ActionsData._287_SHELL_NEW_PATH);
         }
 
-        public static void FOR_DEBUG_ONLY(bool state)  //TODO: SystemStateAction - This method for debug only.
+        public static void _288(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._288_SHELL_NEW_PATH, name: ActionsData._288_DATA_NAME, value: ActionsData._288_DATA_VALUE, type: RegistryValueKind.Binary);
+                RegHelper.SetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._288_SHELL_NEW_PATH, name: ActionsData._288_ITEM_NAME, value: ActionsData._288_ITEM_VALUE, type: RegistryValueKind.ExpandString);
+                return;
+            }
+
+            RegHelper.DeleteSubKeyTree(hive: RegistryHive.ClassesRoot, subKey: ActionsData._288_SHELL_NEW_PATH);
+        }
+
+        public static void _289(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(hive: RegistryHive.CurrentUser, path: ActionsData._289_EXPLORER_PATH, name: ActionsData._289_PROMPT_MIN_NAME, value: ActionsData._289_PROMPT_MIN_VALUE, type: RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(hive: RegistryHive.CurrentUser, path: ActionsData._289_EXPLORER_PATH, name: ActionsData._289_PROMPT_MIN_NAME);
+        }
+
+        public static void _290(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(hive: RegistryHive.LocalMachine, path: ActionsData._290_EXPLORER_PATH, name: ActionsData._290_OPEN_WITH_NAME, value: ActionsData._290_OPEN_WITH_VALUE, type: RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(hive: RegistryHive.LocalMachine, path: ActionsData._290_EXPLORER_PATH, name: ActionsData._290_OPEN_WITH_NAME);
+        }
+
+        public static void FOR_DEBUG_ONLY(bool state)  //TODO: SystemStateAction - Method placeholder.
         {
         }
     }

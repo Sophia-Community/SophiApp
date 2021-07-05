@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
 using NetFwTypeLib;
 using SophiApp.Helpers;
 using System;
@@ -16,11 +17,40 @@ namespace SophiApp.Actions
             return diagTrack && firewallRule.Enabled && firewallRule.Action.Equals(NET_FW_ACTION_.NET_FW_ACTION_ALLOW);
         }
 
+        public static bool _102()
+        {
+            var allowTelemetry = RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData._101_TELEMETRY_PATH, name: ActionsData._101_TELEMETRY_NAME) as byte?;
+            var maxTelemetry = RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData._101_MAX_TELEMETRY_PATH, name: ActionsData._101_MAX_TELEMETRY_NAME) as byte?;
+            var toastLevel = RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData._101_TOAST_LEVEL_PATH, name: ActionsData._101_TOAST_LEVEL_NAME) as byte?;
+
+            if ((allowTelemetry == ActionsData._101_TELEMETRY_VALUE && maxTelemetry == ActionsData._101_TELEMETRY_VALUE && toastLevel == ActionsData._101_TELEMETRY_VALUE)
+                || (allowTelemetry is null && maxTelemetry is null && toastLevel is null))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool _104()
+        {
+            var queueTaskState = TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._104_QUEUE_REPORTING_NAME, true).FirstOrDefault().State == TaskState.Ready;
+            var wer = RegHelper.GetValue(hive: RegistryHive.CurrentUser, path: ActionsData._104_WER_PATH, name: ActionsData._104_WER_NAME);
+            var werSvc = ServiceHelper.GetService(ActionsData._104_WER_SVC_NAME).StartType == ServiceStartMode.Manual;
+
+            if ((queueTaskState && Convert.ToByte(wer) != 1) || (wer is null && werSvc))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static bool _265() => RegHelper.GetSubKey(hive: RegistryHive.ClassesRoot, path: ActionsData._265_EXTRACT_PATH) != null;
 
         public static bool _267() => !RegHelper.KeyExist(hive: RegistryHive.ClassesRoot, path: ActionsData._267_RUNASUSER_PATH, name: ActionsData._267_EXTENDED_NAME);
 
-        public static bool _268() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData._268_CAST_TO_DEVICE_PATH, name: ActionsData._268_CAST_TO_DEVICE_NAME) != ActionsData._268_CAST_TO_DEVICE_VALUE;
+        public static bool _268() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData._268_CAST_TO_DEVICE_PATH, name: ActionsData._268_CAST_TO_DEVICE_NAME) as string != ActionsData._268_CAST_TO_DEVICE_VALUE;
 
         public static bool _269() => !RegHelper.KeyExist(hive: RegistryHive.LocalMachine, path: ActionsData._269_SHARE_CONTENT_PATH, name: ActionsData._269_SHARE_CONTENT_NAME);
 
@@ -108,9 +138,9 @@ namespace SophiApp.Actions
             return !batFile && !cmdFile;
         }
 
-        public static bool _283() => RegHelper.GetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._283_LIBRARY_LOCATION_PATH, name: string.Empty) == ActionsData._283_LIBRARY_LOCATION_VALUE;
+        public static bool _283() => RegHelper.GetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._283_LIBRARY_LOCATION_PATH, name: string.Empty) as string == ActionsData._283_LIBRARY_LOCATION_VALUE;
 
-        public static bool _284() => RegHelper.GetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._284_SEND_TO_PATH, name: string.Empty) == ActionsData._284_SEND_TO_VALUE;
+        public static bool _284() => RegHelper.GetValue(hive: RegistryHive.ClassesRoot, path: ActionsData._284_SEND_TO_PATH, name: string.Empty) as string == ActionsData._284_SEND_TO_VALUE;
 
         public static bool _285()
         {
@@ -141,6 +171,12 @@ namespace SophiApp.Actions
                    : throw new Exception($"{ActionsData._287_CAPABILITY_WORDPAD_NAME} {ActionsData.EXCEPTION_CAPABILITY_NOT_FOUND}");
         }
 
-        public static bool FOR_DEBUG_ONLY() => false; //TODO: CurrentStateAction - This method for debug only.
+        public static bool _288() => RegHelper.SubKeyExist(hive: RegistryHive.ClassesRoot, path: ActionsData._288_SHELL_NEW_PATH);
+
+        public static bool _289() => RegHelper.KeyExist(hive: RegistryHive.CurrentUser, path: ActionsData._289_EXPLORER_PATH, name: ActionsData._289_PROMPT_MIN_NAME);
+
+        public static bool _290() => Convert.ToByte(RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData._290_EXPLORER_PATH, name: ActionsData._290_OPEN_WITH_NAME)) == ActionsData._290_OPEN_WITH_VALUE;
+
+        public static bool FOR_DEBUG_ONLY() => false; //TODO: CurrentStateAction - Method placeholder.
     }
 }

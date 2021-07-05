@@ -1,8 +1,23 @@
-﻿namespace SophiApp.Helpers
+﻿using Microsoft.Win32.TaskScheduler;
+using System.ServiceProcess;
+
+namespace SophiApp.Helpers
 {
     internal static class ActionsData
     {
         internal const string _100_DIAGTRACK_NAME = "DiagTrack";
+        internal const string _101_TELEMETRY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
+        internal const string _101_TELEMETRY_NAME = "AllowTelemetry";
+        internal const string _101_MAX_TELEMETRY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
+        internal const string _101_MAX_TELEMETRY_NAME = "MaxTelemetryAllowed";
+        internal const string _101_TOAST_LEVEL_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
+        internal const string _101_TOAST_LEVEL_NAME = "ShowedToastAtLevel";
+        internal const byte _101_TELEMETRY_VALUE = 3;
+        internal const string _104_QUEUE_REPORTING_NAME = "QueueReporting";        
+        internal const string _104_WER_DISABLED_NAME = "Disabled";
+        internal const string _104_WER_SVC_NAME = "WerSvc";
+        internal const string _104_WER_PATH = @"SOFTWARE\Microsoft\Windows\Windows Error Reporting";
+        internal const string _104_WER_NAME = "Disabled";        
         internal const string _265_COMMAND_NAME = "Command";
         internal const string _265_COMMAND_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _265_EXTRACT_PATH = @"Msi.Package\shell\Extract";
@@ -54,6 +69,17 @@
         internal const string _287_ITEM_NAME = "ItemName";
         internal const string _287_ITEM_VALUE = @"%ProgramFiles%\Windows NT\Accessories\WORDPAD.EXE,-213";
         internal const string _287_SHELL_NEW_PATH = @".rtf\ShellNew";
+        internal const string _288_DATA_NAME = "Data";
+        internal static byte[] _288_DATA_VALUE = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        internal const string _288_ITEM_NAME = "ItemName";
+        internal const string _288_ITEM_VALUE = @"@%SystemRoot%\system32\zipfldr.dll,-10194";
+        internal const string _288_SHELL_NEW_PATH = @".zip\CompressedFolder\ShellNew";
+        internal const string _289_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
+        internal const string _289_PROMPT_MIN_NAME = "MultipleInvokePromptMinimum";
+        internal const uint   _289_PROMPT_MIN_VALUE = 300;
+        internal const string _290_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
+        internal const string _290_OPEN_WITH_NAME = "NoUseStoreOpenWith";
+        internal const byte   _290_OPEN_WITH_VALUE = 1;
         internal const string CAPABILITY_PAINT_NAME = "Microsoft.Windows.MSPaint";
         internal const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
         internal const string DISPLAY_VERSION_NAME = "DisplayVersion";

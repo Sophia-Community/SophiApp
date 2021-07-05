@@ -27,15 +27,15 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
-        internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.DISPLAY_VERSION_NAME);
+        internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.DISPLAY_VERSION_NAME) as string;
 
-        internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.EDITION_ID_NAME);
+        internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.EDITION_ID_NAME) as string;
 
-        internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.PRODUCT_NAME);
+        internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.PRODUCT_NAME) as string;
 
-        internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_ORGANIZATION_NAME);
+        internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_ORGANIZATION_NAME) as string;
 
-        internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_OWNER_NAME);
+        internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_OWNER_NAME) as string;
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
