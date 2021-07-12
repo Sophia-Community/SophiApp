@@ -46,6 +46,26 @@ namespace SophiApp.Actions
             return false;
         }
 
+        public static bool _109() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._109_DATA_UPDATER_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _110() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._110_PROXY_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _111() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._111_CONSOLIDATOR_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _112() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._112_USB_CEIP_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _113() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._113_DATA_COLLECTOR_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _114() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._114_TOAST_TASK_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _115() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._115_UPDATE_TASK_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _116() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._116_SAFETY_MONITOR_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _117() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._117_SAFETY_REFRESH_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
+        public static bool _118() => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._118_GAME_SAVE_NAME, true).FirstOrDefault().State == TaskState.Ready;
+
         public static bool _265() => RegHelper.GetSubKey(hive: RegistryHive.ClassesRoot, path: ActionsData._265_EXTRACT_PATH) != null;
 
         public static bool _267() => !RegHelper.KeyExist(hive: RegistryHive.ClassesRoot, path: ActionsData._267_RUNASUSER_PATH, name: ActionsData._267_EXTENDED_NAME);

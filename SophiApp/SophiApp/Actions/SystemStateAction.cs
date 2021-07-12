@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System.Linq;
 using System.ServiceProcess;
@@ -29,6 +30,140 @@ namespace SophiApp.Actions
             // Block connection for the Unified Telemetry Client Outbound Traffic
             firewallRule.Enabled = false;
             firewallRule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
+        }
+
+        public static void _104(bool IsActive)
+        {
+            var werService = ServiceHelper.GetService(ActionsData._104_WER_SVC_NAME);
+
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._104_QUEUE_REPORTING_NAME, true).FirstOrDefault().Enabled = true;
+                RegHelper.DeleteKey(hive: RegistryHive.CurrentUser, path: ActionsData._104_WER_PATH, name: ActionsData._104_WER_NAME);
+                ServiceHelper.ChangeStartMode(werService, ServiceStartMode.Manual);
+                werService.Start();
+                return;
+            }
+
+            if (!OsHelper.GetEdition().Contains(ActionsData._104_CORE_EDITION_NAME))
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._104_QUEUE_REPORTING_NAME, true).FirstOrDefault().Enabled = false;
+                RegHelper.SetValue(hive: RegistryHive.CurrentUser, path: ActionsData._104_WER_PATH, name: ActionsData._104_WER_DISABLED_NAME, value: ActionsData._104_WER_DISABLED_VALUE, type: RegistryValueKind.DWord);
+                return;
+            }
+
+            werService.Stop();
+            ServiceHelper.ChangeStartMode(werService, ServiceStartMode.Disabled);
+        }
+
+        public static void _109(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._109_DATA_UPDATER_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._109_DATA_UPDATER_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _110(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._110_PROXY_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._110_PROXY_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _111(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._111_CONSOLIDATOR_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._111_CONSOLIDATOR_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _112(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._112_USB_CEIP_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._112_USB_CEIP_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _113(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._113_DATA_COLLECTOR_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._113_DATA_COLLECTOR_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _114(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._114_TOAST_TASK_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._114_TOAST_TASK_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _115(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._115_UPDATE_TASK_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._115_UPDATE_TASK_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _116(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._116_SAFETY_MONITOR_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._116_SAFETY_MONITOR_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _117(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._117_SAFETY_REFRESH_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._117_SAFETY_REFRESH_NAME, true).FirstOrDefault().Enabled = false;
+        }
+
+        public static void _118(bool IsActive)
+        {
+            if (IsActive)
+            {
+                TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._118_GAME_SAVE_NAME, true).FirstOrDefault().Enabled = true;
+                return;
+            }
+
+            TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name == ActionsData._118_GAME_SAVE_NAME, true).FirstOrDefault().Enabled = false;
         }
 
         public static void _265(bool IsActive)

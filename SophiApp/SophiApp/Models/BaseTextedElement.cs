@@ -22,14 +22,16 @@ namespace SophiApp.Models
         public Func<bool> CurrentStateAction;
         public Action<bool> SystemStateAction;
 
+        public BaseTextedElement()
+        {
+        }
+
         public BaseTextedElement(JsonDTO json)
         {
-            ContainerId = json.ContainerId;
             Id = json.Id;
-            Descriptions = json.Descriptions;
-            Headers = json.Headers;
+            Descriptions = json.Description;
+            Headers = json.Header;
             Tag = json.Tag;
-            IsContainer = json.IsContainer;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

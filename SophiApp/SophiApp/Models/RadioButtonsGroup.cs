@@ -11,19 +11,20 @@ namespace SophiApp.Models
         public RadioButtonsGroup(JsonDTO json) : base(json)
         {
             State = UIElementState.UNCHECKED;
+            ChildElements = json.ChildElements?.Select(rb => new RadioButton(rb) as BaseTextedElement).ToList();
         }
 
         internal uint DefaultSelectedId { get; private set; } = default;
 
         internal bool IsSelected { get; set; } = false;
 
-        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
+        public List<BaseTextedElement> ChildElements { get; set; } = new List<BaseTextedElement>();
 
         internal void SetDefaultSelectedId()
         {
             try
             {
-                DefaultSelectedId = Collection.First(element => element.State == UIElementState.CHECKED).Id;
+                DefaultSelectedId = ChildElements.First(element => element.State == UIElementState.CHECKED).Id;
             }
             catch (Exception e)
             {
@@ -34,7 +35,7 @@ namespace SophiApp.Models
         internal override void SetLocalization(UILanguage language)
         {
             Header = Headers[language];
-            Collection.ForEach(element => element.SetLocalization(language));
+            ChildElements.ForEach(element => element.SetLocalization(language));
         }
     }
 }

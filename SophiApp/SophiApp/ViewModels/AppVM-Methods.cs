@@ -1,4 +1,5 @@
-﻿using SophiApp.Commons;
+﻿using Newtonsoft.Json;
+using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Models;
 using System;
@@ -8,7 +9,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -47,7 +47,7 @@ namespace SophiApp.ViewModels
                 {
                     if (element is IContainer container)
                     {
-                        container.Collection.ForEach(e =>
+                        container.ChildElements.ForEach(e =>
                         {
                             if (e.State == UIElementState.SETTOACTIVE || e.State == UIElementState.SETTODEFAULT)
                             {
@@ -89,7 +89,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var group = TextedElements.First(container => container.Id == containerId) as IContainer;
-                var element = group.Collection.First(e => e.Id == elementId);
+                var element = group.ChildElements.First(e => e.Id == elementId);
                 element.ChangeState();
                 SetTextedElementsChangedCounter(element.State);
             });
@@ -181,11 +181,15 @@ namespace SophiApp.ViewModels
                 try
                 {
                     var file = File.ReadAllText("UIData.json");
-                    var bytes = Encoding.UTF8.GetBytes(file);
-                    TextedElements = Parser.ParseJson(bytes)
-                                           .Where(dto => dto.Type == UIType.TextedElement)
-                                           .Select(dto => ElementsFabric.Create(dto))
-                                           .ToList();
+                    //var bytes = Encoding.UTF8.GetBytes(file);
+                    TextedElements = JsonConvert.DeserializeObject<IEnumerable<JsonDTO>>(file)
+                                        .Where(dto => dto.Type == UIType.TextedElement)
+                                        .Select(dto => ElementsFabric.Create(dto))
+                                        .ToList();
+                    //TextedElements = Parser.ParseJson(bytes)
+                    //                       .Where(dto => dto.Type == UIType.TextedElement)
+                    //                       .Select(dto => ElementsFabric.Create(dto))
+                    //                       .ToList();
                 }
                 catch (Exception e)
                 {
@@ -211,7 +215,7 @@ namespace SophiApp.ViewModels
                         if (element.ContainerId > 0)
                         {
                             var container = TextedElements.First(c => c.Id == element.ContainerId) as IContainer;
-                            container.Collection.Add(element);
+                            container.ChildElements.Add(element);
                         }
                     }
                 });
@@ -223,7 +227,7 @@ namespace SophiApp.ViewModels
                               .ForEach(group =>
                               {
                                   group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
-                                  group.SetDefaultSelectedId();
+                                  //group.SetDefaultSelectedId();
                               });
 
                 debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
@@ -299,8 +303,8 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var group = TextedElements.First(g => g.Id == groupId) as RadioButtonsGroup;
-                var element = group.Collection.First(e => e.Id == elementId);
-                group.Collection.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
+                var element = group.ChildElements.First(e => e.Id == elementId);
+                group.ChildElements.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
 
                 if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
                 {
@@ -336,14 +340,14 @@ namespace SophiApp.ViewModels
                 {
                     if (element is IContainer container)
                     {
-                        container.Collection
+                        container.ChildElements
                                  .Where(e => e.State != UIElementState.DISABLED)
                                  .ToList()
                                  .ForEach(e => e.GetCurrentState());
 
                         if (element is RadioButtonsGroup group)
                         {
-                            group.SetDefaultSelectedId();
+                            //group.SetDefaultSelectedId();
                         }
 
                         return;

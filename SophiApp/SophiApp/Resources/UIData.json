@@ -1,13 +1,13 @@
 [
     {
         "Id": 100,
-        "Headers": {
-            "EN": "The DiagTrack service",
-            "RU": "Служба DiagTrack"
+        "Header": {
+            "EN": "The telemetry service",
+            "RU": "Служба телеметрии"
         },
-        "Descriptions": {
-            "EN": "The DiagTrack service and the connection for the Unified Telemetry Client Outbound Traffic",
-            "RU": "Служба DiagTrack и соединение для исходящего трафика клиента единой телеметрии"
+        "Description": {
+            "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic",
+            "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии"
         },
         "Model": "Switch",
         "Type": "0",
@@ -15,52 +15,52 @@
     },
     {
         "Id": 101,
-        "Headers": {
+        "Header": {
             "EN": "The OS level of diagnostic data gathering",
             "RU": "Уровень сбора диагностических сведений ОС"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "RadioButtonsGroup",
-        "IsContainer": true,
         "Tag": "Privacy",
-        "Type": "0"
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Minimal",
+                    "RU": "Минимальный"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Default",
+                    "RU": "По умолчанию"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
         "Id": 102,
-        "ContainerId": 101,
-        "Headers": {
-            "EN": "Minimal",
-            "RU": "Минимальный"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 103,
-        "ContainerId": 101,
-        "Headers": {
-            "EN": "Default",
-            "RU": "По умолчанию"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 104,
-        "Headers": {
+        "Header": {
             "EN": "The Windows Error Reporting",
             "RU": "Запись отчетов об ошибках Window"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -69,67 +69,236 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 105,
-        "Headers": {
+        "Id": 103,
+        "Header": {
             "EN": "Windows should ask for my feedback",
             "RU": "Windows должна запрашивать мои отзывы"
         },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Privacy",
-        "Type": "0"
-    },
-    {
-        "Id": 106,
-        "ContainerId": 105,
-        "Headers": {
-            "EN": "Never",
-            "RU": "Никогда"
-        },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
-        "Model": "RadioButton",
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Privacy",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Never",
+                    "RU": "Никогда"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Automatically (Recommended)",
+                    "RU": "Автоматически (рекомендуется)"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 104,
+        "Header": {
+            "EN": "Diagnostic Tracking Tasks",
+            "RU": "Задачи диагностического отслеживания"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "ExpandingGroup",
+        "Tag": "Privacy",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "ProgramDataUpdater",
+                    "RU": "ProgramDataUpdater"
+                },
+                "ChildDescription": {
+                    "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program",
+                    "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Proxy",
+                    "RU": "Proxy"
+                },
+                "ChildDescription": {
+                    "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program",
+                    "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": "Consolidator",
+                    "RU": "Consolidator"
+                },
+                "ChildDescription": {
+                    "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft",
+                    "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 4,
+                "ChildHeader": {
+                    "EN": "UsbCeip",
+                    "RU": "UsbCeip"
+                },
+                "ChildDescription": {
+                    "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything",
+                    "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 5,
+                "ChildHeader": {
+                    "EN": "Microsoft-Windows-DiskDiagnosticDataCollector",
+                    "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
+                },
+                "ChildDescription": {
+                    "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program",
+                    "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 6,
+                "ChildHeader": {
+                    "EN": "MapsToastTask",
+                    "RU": "MapsToastTask"
+                },
+                "ChildDescription": {
+                    "EN": "This task shows various Map related toasts",
+                    "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 7,
+                "ChildHeader": {
+                    "EN": "MapsUpdateTask",
+                    "RU": "MapsUpdateTask"
+                },
+                "ChildDescription": {
+                    "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps",
+                    "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 8,
+                "ChildHeader": {
+                    "EN": "FamilySafetyMonitor",
+                    "RU": "FamilySafetyMonitor"
+                },
+                "ChildDescription": {
+                    "EN": "Initializes Family Safety monitoring and enforcement",
+                    "RU": "Инициализация контроля и применения правил семейной безопасности"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 9,
+                "ChildHeader": {
+                    "EN": "XblGameSaveTask",
+                    "RU": "XblGameSaveTask"
+                },
+                "ChildDescription": {
+                    "EN": "XblGameSave Standby Task",
+                    "RU": "XblGameSave Standby Task"
+                },
+                "Model": "CheckBox"
+            }
+        ]
+    },
+    {
+        "Id": 105,
+        "Header": {
+            "EN": "Use sign-in info to automatically finish setting up device and reopen apps after an update or restart",
+            "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Privacy"
+    },
+    {
+        "Id": 106,
+        "Header": {
+            "EN": "Let websites provide locally relevant content by accessing language list",
+            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
         "Type": "0",
         "Tag": "Privacy"
     },
     {
         "Id": 107,
-        "ContainerId": 105,
-        "Headers": {
-            "EN": "Automatically (Recommended)",
-            "RU": "Автоматически (рекомендуется)"
+        "Header": {
+            "EN": "Allow apps to use advertising ID",
+            "RU": "Разрешать приложениям использовать идентификатор рекламы"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
-        "Model": "RadioButton",
+        "Model": "CheckBox",
         "Type": "0",
         "Tag": "Privacy"
     },
     {
         "Id": 108,
-        "Headers": {
-            "EN": "Diagnostic Tracking Tasks",
-            "RU": "Задачи диагностического отслеживания"
+        "Header": {
+            "EN": "Let apps on other devices open and message apps on this device, and vice versa",
+            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот"
         },
-        "Model": "ExpandingGroup",
-        "IsContainer": true,
-        "Tag": "Privacy",
-        "Type": "0"
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Privacy"
     },
     {
         "Id": 109,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "ProgramDataUpdater",
-            "RU": "ProgramDataUpdater"
+        "Header": {
+            "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what\u0027s new and suggested",
+            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
         },
-        "Descriptions": {
-            "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program",
-            "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -137,29 +306,13 @@
     },
     {
         "Id": 110,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "Proxy",
-            "RU": "Proxy"
+        "Header": {
+            "EN": "Get tip, trick, and suggestions as you use Windows",
+            "RU": "Получать советы, подсказки и рекомендации при использованию Windows"
         },
-        "Descriptions": {
-            "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program",
-            "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 111,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "Consolidator",
-            "RU": "Consolidator"
-        },
-        "Descriptions": {
-            "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft",
-            "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -167,14 +320,13 @@
     },
     {
         "Id": 112,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "UsbCeip",
-            "RU": "UsbCeip"
+        "Header": {
+            "EN": "Show the suggested content in the Settings app",
+            "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
         },
-        "Descriptions": {
-            "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything",
-            "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -182,14 +334,13 @@
     },
     {
         "Id": 113,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "Microsoft-Windows-DiskDiagnosticDataCollector",
-            "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
+        "Header": {
+            "EN": "Turn on automatic installing suggested apps",
+            "RU": "Включить автоматическую установку рекомендованных приложений"
         },
-        "Descriptions": {
-            "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program",
-            "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -197,14 +348,13 @@
     },
     {
         "Id": 114,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "MapsToastTask",
-            "RU": "MapsToastTask"
+        "Header": {
+            "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
+            "RU": "Предлагать способы завершения настройки устройства для максимально эффективного использования Windows"
         },
-        "Descriptions": {
-            "EN": "This task shows various Map related toasts",
-            "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -212,14 +362,13 @@
     },
     {
         "Id": 115,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "MapsUpdateTask",
-            "RU": "MapsUpdateTask"
+        "Header": {
+            "EN": "Offer tailored experiences based on the diagnostic data setting",
+            "RU": "Предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных"
         },
-        "Descriptions": {
-            "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps",
-            "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
@@ -227,181 +376,11 @@
     },
     {
         "Id": 116,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "FamilySafetyMonitor",
-            "RU": "FamilySafetyMonitor"
-        },
-        "Descriptions": {
-            "EN": "Initializes Family Safety monitoring and enforcement",
-            "RU": "Инициализация контроля и применения правил семейной безопасности"
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 117,
-        "ContainerId": 108,
-        "Headers": {
-            "EN": "FamilySafetyRefreshTask",
-            "RU": "FamilySafetyRefreshTask"
-        },
-        "Descriptions": {
-            "EN": "Synchronizes the latest settings with the Microsoft family features service",
-            "RU": "Синхронизирует последние параметры со службой функций семьи учетных записей Майкрософт"
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 118,
-        "Headers": {
-            "EN": "Use sign-in info to automatically finish setting up device and reopen apps after an update or restart",
-            "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 119,
-        "Headers": {
-            "EN": "Let websites provide locally relevant content by accessing language list",
-            "RU": "Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 120,
-        "Headers": {
-            "EN": "Allow apps to use advertising ID",
-            "RU": "Разрешать приложениям использовать идентификатор рекламы"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 121,
-        "Headers": {
-            "EN": "Let apps on other devices open and message apps on this device, and vice versa",
-            "RU": "Разрешать приложениям на других устройствах запускать приложения и отправлять сообщения на этом устройстве и наоборот"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 122,
-        "Headers": {
-            "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested",
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 123,
-        "Headers": {
-            "EN": "Get tip, trick, and suggestions as you use Windows",
-            "RU": "Получать советы, подсказки и рекомендации при использованию Windows"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 124,
-        "Headers": {
-            "EN": "Show the suggested content in the Settings app",
-            "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 125,
-        "Headers": {
-            "EN": "Turn on automatic installing suggested apps",
-            "RU": "Включить автоматическую установку рекомендованных приложений"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 126,
-        "Headers": {
-            "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
-            "RU": "Предлагать способы завершения настройки устройства для максимально эффективного использования Windows"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 127,
-        "Headers": {
-            "EN": "Offer tailored experiences based on the diagnostic data setting",
-            "RU": "Предлагать персонализированные возможности, основанные на выбранном параметре диагностических данных"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Privacy"
-    },
-    {
-        "Id": 128,
-        "Headers": {
+        "Header": {
             "EN": "Enable Bing search in the Start Menu",
             "RU": "Включить поиск через Bing в меню \"Пуск\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -410,1187 +389,1151 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 129,
-        "Headers": {
+        "Id": 200,
+        "Header": {
             "EN": "Show the \"This PC\" icon on Desktop",
             "RU": "Отображать значок \"Этот компьютер\" на рабочем столе"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "RadioButtonsGroup",
-        "IsContainer": true,
         "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 130,
-        "ContainerId": 129,
-        "Headers": {
-            "EN": "Show",
-            "RU": "Отобразить"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
         "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 131,
-        "ContainerId": 129,
-        "Headers": {
-            "EN": "Hide",
-            "RU": "Скрыть"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 132,
-        "Headers": {
-            "EN": "Use check boxes to select items",
-            "RU": "Использовать флажки для выбора элементов"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 133,
-        "Headers": {
-            "EN": "Show hidden files, folders, and drives",
-            "RU": "Отображать скрытые файлы, папки и диски"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 134,
-        "Headers": {
-            "EN": "Show file name extensions",
-            "RU": "Отображать расширения имён файлов"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 135,
-        "Headers": {
-            "EN": "Hide folder merge conflicts",
-            "RU": "Скрывать конфликт слияния папок"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 136,
-        "Headers": {
-            "EN": "Open File Explorer to:",
-            "RU": "Открывать проводник для:"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 137,
-        "ContainerId": 136,
-        "Headers": {
-            "EN": "This PC",
-            "RU": "Этот компьютер"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 138,
-        "ContainerId": 136,
-        "Headers": {
-            "EN": "Quick access",
-            "RU": "Быстрый доступ"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 139,
-        "Headers": {
-            "EN": "Show Cortana button on the taskbar",
-            "RU": "Показать кнопку Кортаны на панели задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 140,
-        "Headers": {
-            "EN": "Show sync provider notification within File Explorer",
-            "RU": "Показывать уведомления поставщика синхронизации в проводнике"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 141,
-        "Headers": {
-            "EN": "When I snap a window, show what I can snap next to it",
-            "RU": "При прикреплении окна показывать, что можно прикрепить рядом с ним"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 142,
-        "Headers": {
-            "EN": "Show the file transfer dialog box in",
-            "RU": "Отображать диалоговое окно передачи файлов в"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 143,
-        "ContainerId": 142,
-        "Headers": {
-            "EN": "The detailed mode",
-            "RU": "Развернутом виде"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 144,
-        "ContainerId": 142,
-        "Headers": {
-            "EN": "The compact mode",
-            "RU": "Свернутом виде"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 145,
-        "Headers": {
-            "EN": "Display the recycle bin files delete confirmation dialog",
-            "RU": "Запрашивать подтверждение на удаление файлов в корзину"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 146,
-        "Headers": {
-            "EN": "Show frequently used folders in Quick access",
-            "RU": "Показать часто используемые папки на панели быстрого доступа"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 147,
-        "Headers": {
-            "EN": "Show recently used files in Quick access",
-            "RU": "Показать недавно использовавшиеся файлы на панели быстрого доступа"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 148,
-        "Headers": {
-            "EN": "Show Task View button on the taskbar",
-            "RU": "Показывать кнопку Просмотра задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 149,
-        "Headers": {
-            "EN": "Show People button on the taskbar",
-            "RU": "Показывать панель \"Люди\" на панели задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 150,
-        "Headers": {
-            "EN": "Show seconds on the taskbar clock",
-            "RU": "Отображать секунды в системных часах на панели задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 151,
-        "Headers": {
-            "EN": "Search on the taskbar",
-            "RU": "Поиск на панели задач"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 152,
-        "ContainerId": 151,
-        "Headers": {
-            "EN": "Hidden",
-            "RU": "Скрыто"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 153,
-        "ContainerId": 151,
-        "Headers": {
-            "EN": "Hide search icon",
-            "RU": "Показать значок поиска"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 154,
-        "ContainerId": 151,
-        "Headers": {
-            "EN": "Show search box",
-            "RU": "Показать поле поиска на панели задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 155,
-        "Headers": {
-            "EN": "Show Windows Ink Workspace button on the taskbar",
-            "RU": "Показать кнопку Windows Ink Workspace на панели задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 156,
-        "Headers": {
-            "EN": "Always show all icons in the notification area",
-            "RU": "Всегда отображать все значки в области уведомлений"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 157,
-        "Headers": {
-            "EN": "Show the Meet Now icon in the notification area",
-            "RU": "Отображать иконку \"Провести собрание\" в области уведомлений"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 158,
-        "Headers": {
-            "EN": "Show \"News and Interests\" on the taskbar",
-            "RU": "Отображать \"Новости и интересы\" на панели задач"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 159,
-        "Headers": {
-            "EN": "View the Control Panel icons",
-            "RU": "Просмотр иконок Панели управления"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 160,
-        "ContainerId": 159,
-        "Headers": {
-            "EN": "Large icons",
-            "RU": "Крупные значки"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 161,
-        "ContainerId": 159,
-        "Headers": {
-            "EN": "Small icons",
-            "RU": "Маленькие значки"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 162,
-        "ContainerId": 159,
-        "Headers": {
-            "EN": "Category",
-            "RU": "Категория"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 163,
-        "Headers": {
-            "EN": "Windows mode color scheme",
-            "RU": "Режима Windows по умолчанию"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 164,
-        "ContainerId": 163,
-        "Headers": {
-            "EN": "Light",
-            "RU": "Светлый"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 165,
-        "ContainerId": 163,
-        "Headers": {
-            "EN": "Dark",
-            "RU": "Тёмный"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 166,
-        "Headers": {
-            "EN": "App mode color scheme",
-            "RU": "Режима приложений по умолчанию"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 167,
-        "ContainerId": 166,
-        "Headers": {
-            "EN": "Light",
-            "RU": "Светлый"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 168,
-        "ContainerId": 166,
-        "Headers": {
-            "EN": "Dark",
-            "RU": "Тёмный"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 169,
-        "Headers": {
-            "EN": "Show the \"New App Installed\" indicator",
-            "RU": "Показывать уведомление \"Установлено новое приложение\""
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 170,
-        "Headers": {
-            "EN": "Show first sign-in animation after the upgrade",
-            "RU": "Показывать анимацию при первом входе в систему после обновления"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 171,
-        "Headers": {
-            "EN": "The quality factor of the JPEG desktop wallpapers",
-            "RU": "Коэффициент качества обоев рабочего стола в формате JPEG"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "Personalization",
-        "Type": "0"
-    },
-    {
-        "Id": 172,
-        "ContainerId": 171,
-        "Headers": {
-            "EN": "Maximum",
-            "RU": "Максимальный"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 173,
-        "ContainerId": 171,
-        "Headers": {
-            "EN": "Default",
-            "RU": "По умолчанию"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 174,
-        "Headers": {
-            "EN": "Show a notification when your PC requires a restart to finish updating",
-            "RU": "Показывать уведомление, когда компьютеру требуется перезагрузка для завершения обновленияя"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 175,
-        "Headers": {
-            "EN": "Add the \"- Shortcut\" suffix to the file name of created shortcuts",
-            "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 176,
-        "Headers": {
-            "EN": "Use the PrtScn button to open screen snipping",
-            "RU": "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 177,
-        "Headers": {
-            "EN": "Let me use a different input method for each app window",
-            "RU": "Позволить выбирать метод ввода для каждого окна"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "Personalization"
-    },
-    {
-        "Id": 178,
-        "Headers": {
-            "EN": "Storage Sense",
-            "RU": "Контроль памяти"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "Switch",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 179,
-        "Headers": {
-            "EN": "Storage Sense running type",
-            "RU": "Запуск Контроля памяти"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 180,
-        "ContainerId": 179,
-        "Headers": {
-            "EN": "Every month",
-            "RU": "Каждый месяц"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 181,
-        "ContainerId": 179,
-        "Headers": {
-            "EN": "During low free disk space",
-            "RU": "Когда остается мало место на диске"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 182,
-        "Headers": {
-            "EN": "Delete temporary files that apps aren't using",
-            "RU": "Удалять временные файлы, не используемые в приложениях"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 183,
-        "Headers": {
-            "EN": "Delete files in recycle bin if they have been there for over 30 days",
-            "RU": "Удалять файлы из корзины, если они находятся в корзине более 30 дней"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 184,
-        "Headers": {
-            "EN": "Hibernate",
-            "RU": "Режим гибернации"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "Switch",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 185,
-        "Headers": {
-            "EN": "Change the temp environment variable path to",
-            "RU": "Изменить путь переменной среды для временных файлов на"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 186,
-        "ContainerId": 185,
-        "Headers": {
-            "EN": "%SystemDrive%\\Temp",
-            "RU": "%SystemDrive%\\Temp"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 187,
-        "ContainerId": 185,
-        "Headers": {
-            "EN": "%LOCALAPPDATA%\\Temp (default)",
-            "RU": "%LOCALAPPDATA%\\Temp (по умолчанию)"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 188,
-        "Headers": {
-            "EN": "Enable the Windows 260 character path limit",
-            "RU": "Включить ограничение Windows на 260 символов в пути"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "Switch",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 189,
-        "Headers": {
-            "EN": "Display the Stop error information on the BSoD",
-            "RU": "Отображать Stop-ошибку при появлении BSoD"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 190,
-        "Headers": {
-            "EN": "Choose when to be notified about changes to your computer",
-            "RU": "Настройка уведомления об изменении параметров компьютера"
-        },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 191,
-        "ContainerId": 190,
-        "Headers": {
-            "EN": "Never notify",
-            "RU": "Никогда не уведомлять"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 192,
-        "ContainerId": 190,
-        "Headers": {
-            "EN": "Notify me only when apps try to make changes to my computer",
-            "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 193,
-        "Headers": {
-            "EN": "Access to mapped drives from app running with elevated permissions with Admin Approval Mode",
-            "RU": "Доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "Switch",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 194,
-        "Headers": {
-            "EN": "Turn on Delivery Optimization",
-            "RU": "Включить оптимизацию доставки"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 195,
-        "Headers": {
-            "EN": "Always wait for the network at computer startup and logon for workgroup networks",
-            "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 196,
-        "Headers": {
-            "EN": "Let Windows decide which printer should be the default one",
-            "RU": "Разрешать Windows решать, какой принтер должен использоваться по умолчанию"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 197,
-        "Headers": {
-            "EN": "Windows Features",
-            "RU": "Компоненты Windows"
-        },
-        "Model": "ExpandingGroup",
-        "IsContainer": true,
-        "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 198,
-        "ContainerId": 197,
-        "Headers": {
-            "EN": "LegacyComponents",
-            "RU": "LegacyComponents"
-        },
-        "Descriptions": {
-            "EN": "Legacy Components",
-            "RU": "Компоненты прежних версий"
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 199,
-        "ContainerId": 197,
-        "Headers": {
-            "EN": "MicrosoftWindowsPowerShellV2",
-            "RU": "MicrosoftWindowsPowerShellV2"
-        },
-        "Descriptions": {
-            "EN": "PowerShell 2.0",
-            "RU": "PowerShell 2.0"
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 200,
-        "ContainerId": 197,
-        "Headers": {
-            "EN": "MicrosoftWindowsPowershellV2Root",
-            "RU": "MicrosoftWindowsPowershellV2Root"
-        },
-        "Descriptions": {
-            "EN": "PowerShell 2.0",
-            "RU": "PowerShell 2.0"
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "System"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Show",
+                    "RU": "Отобразить"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Hide",
+                    "RU": "Скрыть"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
         "Id": 201,
-        "ContainerId": 197,
-        "Headers": {
-            "EN": "Printing-XPSServices-Features",
-            "RU": "Printing-XPSServices-Features"
+        "Header": {
+            "EN": "Use check boxes to select items",
+            "RU": "Использовать флажки для выбора элементов"
         },
-        "Descriptions": {
-            "EN": "Microsoft XPS Document Writer",
-            "RU": "Средство записи XPS-документов (Microsoft)"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 202,
-        "ContainerId": 197,
-        "Headers": {
-            "EN": "WorkFolders-Client",
-            "RU": "WorkFolders-Client"
+        "Header": {
+            "EN": "Show hidden files, folders, and drives",
+            "RU": "Отображать скрытые файлы, папки и диски"
         },
-        "Descriptions": {
-            "EN": "Work Folders Client",
-            "RU": "Клиент рабочих папок"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 203,
-        "ContainerId": 197,
-        "Headers": {
-            "EN": "MediaPlayback",
-            "RU": "MediaPlayback"
+        "Header": {
+            "EN": "Show file name extensions",
+            "RU": "Отображать расширения имён файлов"
         },
-        "Descriptions": {
-            "EN": "Media Features. If you want to leave \"Multimedia settings\" in the advanced settings of Power Options do not disable this feature",
-            "RU": "Компоненты работы с мультимедиа. Если вы хотите оставить параметр \"Параметры мультимедиа\" в дополнительных параметрах электропитания, не отключайте этот компонент"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 204,
-        "Headers": {
-            "EN": "Optional features",
-            "RU": "Дополнительные компоненты"
+        "Header": {
+            "EN": "Hide folder merge conflicts",
+            "RU": "Скрывать конфликт слияния папок"
         },
-        "Model": "ExpandingGroup",
-        "IsContainer": true,
-        "Tag": "System",
-        "Type": "0"
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 204,
+        "Header": {
+            "EN": "Open File Explorer to:",
+            "RU": "Открывать проводник для:"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "This PC",
+                    "RU": "Этот компьютер"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Quick access",
+                    "RU": "Быстрый доступ"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
         "Id": 205,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "App.StepsRecorder",
-            "RU": "App.StepsRecorder"
+        "Header": {
+            "EN": "Show Cortana button on the taskbar",
+            "RU": "Показать кнопку Кортаны на панели задач"
         },
-        "Descriptions": {
-            "EN": "Steps Recorder",
-            "RU": "Средство записи действий"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 206,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "App.Support.QuickAssist",
-            "RU": "App.Support.QuickAssist"
+        "Header": {
+            "EN": "Show sync provider notification within File Explorer",
+            "RU": "Показывать уведомления поставщика синхронизации в проводнике"
         },
-        "Descriptions": {
-            "EN": "Microsoft Quick Assist",
-            "RU": "Быстрая поддержка (Майкрософт)"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 207,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "Microsoft.Windows.MSPaint",
-            "RU": "Microsoft.Windows.MSPaint"
+        "Header": {
+            "EN": "When I snap a window, show what I can snap next to it",
+            "RU": "При прикреплении окна показывать, что можно прикрепить рядом с ним"
         },
-        "Descriptions": {
-            "EN": "Microsoft Paint",
-            "RU": "Microsoft Paint"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 208,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "Microsoft.Windows.WordPad",
-            "RU": "Microsoft.Windows.WordPad"
+        "Header": {
+            "EN": "Show the file transfer dialog box in",
+            "RU": "Отображать диалоговое окно передачи файлов в"
         },
-        "Descriptions": {
-            "EN": "WordPad",
-            "RU": "WordPad"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
-        "Model": "CheckBox",
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
         "Type": "0",
-        "Tag": "System"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "The detailed mode",
+                    "RU": "Развернутом виде"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "The compact mode",
+                    "RU": "Свернутом виде"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
         "Id": 209,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "Browser.InternetExplorer",
-            "RU": "Browser.InternetExplorer"
+        "Header": {
+            "EN": "Display the recycle bin files delete confirmation dialog",
+            "RU": "Запрашивать подтверждение на удаление файлов в корзину"
         },
-        "Descriptions": {
-            "EN": "Internet Explorer 11",
-            "RU": "Internet Explorer 11"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 210,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "MathRecognizer",
-            "RU": "MathRecognizer"
+        "Header": {
+            "EN": "Show frequently used folders in Quick access",
+            "RU": "Показать часто используемые папки на панели быстрого доступа"
         },
-        "Descriptions": {
-            "EN": "Math Recognizer",
-            "RU": "Распознаватель математических знаков"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 211,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "Media.WindowsMediaPlayer",
-            "RU": "Media.WindowsMediaPlayer"
+        "Header": {
+            "EN": "Show recently used files in Quick access",
+            "RU": "Показать недавно использовавшиеся файлы на панели быстрого доступа"
         },
-        "Descriptions": {
-            "EN": "Windows Media Player. If you want to leave \"Multimedia settings\" element in the advanced settings of Power Options do not uninstall this feature",
-            "RU": "Проигрыватель Windows Media. Если вы хотите оставить параметр \"Параметры мультимедиа\" в дополнительных параметрах электропитания, не удаляйте этот компонент"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
-        "Tag": "System"
+        "Tag": "Personalization"
     },
     {
         "Id": 212,
-        "ContainerId": 204,
-        "Headers": {
-            "EN": "OpenSSH.Client",
-            "RU": "OpenSSH.Client"
+        "Header": {
+            "EN": "Show Task View button on the taskbar",
+            "RU": "Показывать кнопку Просмотра задач"
         },
-        "Descriptions": {
-            "EN": "OpenSSH Client",
-            "RU": "Клиент OpenSSH"
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 213,
+        "Header": {
+            "EN": "Show People button on the taskbar",
+            "RU": "Показывать панель \"Люди\" на панели задач"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 214,
+        "Header": {
+            "EN": "Show seconds on the taskbar clock",
+            "RU": "Отображать секунды в системных часах на панели задач"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 215,
+        "Header": {
+            "EN": "Search on the taskbar",
+            "RU": "Поиск на панели задач"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Hidden",
+                    "RU": "Скрыто"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Hide search icon",
+                    "RU": "Показать значок поиска"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": "Show search box",
+                    "RU": "Показать поле поиска на панели задач"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 216,
+        "Header": {
+            "EN": "Show Windows Ink Workspace button on the taskbar",
+            "RU": "Показать кнопку Windows Ink Workspace на панели задач"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 217,
+        "Header": {
+            "EN": "Always show all icons in the notification area",
+            "RU": "Всегда отображать все значки в области уведомлений"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 218,
+        "Header": {
+            "EN": "Show the Meet Now icon in the notification area",
+            "RU": "Отображать иконку \"Провести собрание\" в области уведомлений"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 219,
+        "Header": {
+            "EN": "Show \"News and Interests\" on the taskbar",
+            "RU": "Отображать \"Новости и интересы\" на панели задач"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 220,
+        "Header": {
+            "EN": "View the Control Panel icons",
+            "RU": "Просмотр иконок Панели управления"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Large icons",
+                    "RU": "Крупные значки"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Small icons",
+                    "RU": "Маленькие значки"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": "Category",
+                    "RU": "Категория"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 221,
+        "Header": {
+            "EN": "Windows mode color scheme",
+            "RU": "Режима Windows по умолчанию"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Light",
+                    "RU": "Светлый"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Dark",
+                    "RU": "Тёмный"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 222,
+        "Header": {
+            "EN": "App mode color scheme",
+            "RU": "Режима приложения по умолчанию"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Light",
+                    "RU": "Светлый"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Dark",
+                    "RU": "Тёмный"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 223,
+        "Header": {
+            "EN": "Show the \"New App Installed\" indicator",
+            "RU": "Показывать уведомление \"Установлено новое приложение\""
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 224,
+        "Header": {
+            "EN": "Show first sign-in animation after the upgrade",
+            "RU": "Показывать анимацию при первом входе в систему после обновления"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 225,
+        "Header": {
+            "EN": "The quality factor of the JPEG desktop wallpapers",
+            "RU": "Коэффициент качества обоев рабочего стола в формате JPEG"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "Personalization",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Maximum",
+                    "RU": "Максимальный"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Default",
+                    "RU": "По умолчанию"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 226,
+        "Header": {
+            "EN": "Show a notification when your PC requires a restart to finish updating",
+            "RU": "Показывать уведомление, когда компьютеру требуется перезагрузка для завершения обновленияя"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 227,
+        "Header": {
+            "EN": "Add the \"- Shortcut\" suffix to the file name of created shortcuts",
+            "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 228,
+        "Header": {
+            "EN": "Use the PrtScn button to open screen snipping",
+            "RU": "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 229,
+        "Header": {
+            "EN": "Let me use a different input method for each app window",
+            "RU": "Позволить выбирать метод ввода для каждого окна"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 230,
+        "Header": {
+            "EN": "Storage Sense",
+            "RU": "Контроль памяти"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "Switch",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 300,
+        "Header": {
+            "EN": "Storage Sense running type",
+            "RU": "Запуск Контроля памяти"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "System",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Every month",
+                    "RU": "Каждый месяц"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "During low free disk space",
+                    "RU": "Когда остается мало место на диске"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 301,
+        "Header": {
+            "EN": "Delete temporary files that apps aren\u0027t using",
+            "RU": "Удалять временные файлы, не используемые в приложениях"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
         "Tag": "System"
     },
     {
-        "Id": 213,
-        "Headers": {
+        "Id": 302,
+        "Header": {
+            "EN": "Delete files in recycle bin if they have been there for over 30 days",
+            "RU": "Удалять файлы из корзины, если они находятся в корзине более 30 дней"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 303,
+        "Header": {
+            "EN": "Hibernate",
+            "RU": "Режим гибернации"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "Switch",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 304,
+        "Header": {
+            "EN": "Change the temp environment variable path to",
+            "RU": "Изменить путь переменной среды для временных файлов на"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "System",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "%SystemDrive%\\Temp",
+                    "RU": "%SystemDrive%\\Temp"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "%LOCALAPPDATA%\\Temp (default)",
+                    "RU": "%LOCALAPPDATA%\\Temp (по умолчанию)"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 305,
+        "Header": {
+            "EN": "Enable the Windows 260 character path limit",
+            "RU": "Включить ограничение Windows на 260 символов в пути"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "Switch",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 306,
+        "Header": {
+            "EN": "Display the Stop error information on the BSoD",
+            "RU": "Отображать Stop-ошибку при появлении BSoD"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 307,
+        "Header": {
+            "EN": "Choose when to be notified about changes to your computer",
+            "RU": "Настройка уведомления об изменении параметров компьютера"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "System",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Never notify",
+                    "RU": "Никогда не уведомлять"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Notify me only when apps try to make changes to my computer",
+                    "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 308,
+        "Header": {
+            "EN": "Access to mapped drives from app running with elevated permissions with Admin Approval Mode",
+            "RU": "Доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "Switch",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 309,
+        "Header": {
+            "EN": "Turn on Delivery Optimization",
+            "RU": "Включить оптимизацию доставки"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 310,
+        "Header": {
+            "EN": "Always wait for the network at computer startup and logon for workgroup networks",
+            "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 311,
+        "Header": {
+            "EN": "Let Windows decide which printer should be the default one",
+            "RU": "Разрешать Windows решать, какой принтер должен использоваться по умолчанию"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Model": "CheckBox",
+        "Type": "0",
+        "Tag": "System"
+    },
+    {
+        "Id": 312,
+        "Header": {
+            "EN": "Windows Features",
+            "RU": "Компоненты Windows"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "ExpandingGroup",
+        "Tag": "System",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Legacy Components",
+                    "RU": "Компоненты прежних версий"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Windows PowerShell 2.0",
+                    "RU": "Windows PowerShell 2.0"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": "Windows PowerShell 2.0 Engine",
+                    "RU": "Обработчик Windows PowerShell 2.0"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 4,
+                "ChildHeader": {
+                    "EN": "Microsoft XPS Document Writer",
+                    "RU": "Средство записи XPS-документов (Microsoft)"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 5,
+                "ChildHeader": {
+                    "EN": "Work Folders Client",
+                    "RU": "Клиент рабочих папок"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 6,
+                "ChildHeader": {
+                    "EN": "Media Features",
+                    "RU": "Компоненты работы с мультимедиа"
+                },
+                "ChildDescription": {
+                    "EN": "If you want to leave \"Multimedia settings\" in the advanced settings of Power Options do not disable this feature",
+                    "RU": "Если вы хотите оставить параметр \"Параметры мультимедиа\" в дополнительных параметрах электропитания, не отключайте этот компонент"
+                },
+                "Model": "CheckBox"
+            }
+        ]
+    },
+    {
+        "Id": 313,
+        "Header": {
+            "EN": "Optional features",
+            "RU": "Дополнительные компоненты"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
+        "Model": "ExpandingGroup",
+        "Tag": "System",
+        "Type": "0",
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Steps Recorder",
+                    "RU": "Средство записи действий"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Microsoft Quick Assist",
+                    "RU": "Быстрая поддержка (Майкрософт)"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": "Microsoft Paint",
+                    "RU": "Microsoft Paint"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 4,
+                "ChildHeader": {
+                    "EN": "WordPad",
+                    "RU": "WordPad"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 5,
+                "ChildHeader": {
+                    "EN": "Internet Explorer 11",
+                    "RU": "Internet Explorer 11"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 6,
+                "ChildHeader": {
+                    "EN": "Math Recognizer",
+                    "RU": "Распознаватель математических знаков"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 7,
+                "ChildHeader": {
+                    "EN": "Windows Media Player",
+                    "RU": "Проигрыватель Windows Media"
+                },
+                "ChildDescription": {
+                    "EN": "If you want to leave \"Multimedia settings\" element in the advanced settings of Power Options do not uninstall this feature",
+                    "RU": "Если вы хотите оставить параметр \"Параметры мультимедиа\" в дополнительных параметрах электропитания, не удаляйте этот компонент"
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 8,
+                "ChildHeader": {
+                    "EN": "OpenSSH Client",
+                    "RU": "Клиент OpenSSH"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            }
+        ]
+    },
+    {
+        "Id": 314,
+        "Header": {
             "EN": "Receive updates for other Microsoft products when you update Windows",
             "RU": "При обновлении Windows получать обновления для других продуктов Майкрософт"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1599,53 +1542,53 @@
         "Tag": "System"
     },
     {
-        "Id": 214,
-        "Headers": {
-            "EN": "Set the power plan on \"High performance\"",
-            "RU": "Установить схему управления питанием на \"Высокая производительность\""
+        "Id": 315,
+        "Header": {
+            "EN": "Choose the power plan",
+            "RU": "Выбор схемы управления питанием"
         },
-        "Model": "RadioButtonsGroup",
-        "IsContainer": true,
-        "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 215,
-        "ContainerId": 214,
-        "Headers": {
-            "EN": "High performance",
-            "RU": "Высокая производительность"
-        },
-        "Descriptions": {
-            "EN": "It is not recommended to turn on \"High performance\" power scheme on laptops",
-            "RU": "Не рекомендуется включать схему управления питанием \"Высокая производительность\" для ноутбуков"
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 216,
-        "ContainerId": 214,
-        "Headers": {
-            "EN": "Balanced",
-            "RU": "Сбалансированная"
-        },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
-        "Model": "RadioButton",
+        "HasChild": "True",
+        "Model": "RadioButtonsGroup",
+        "Tag": "System",
         "Type": "0",
-        "Tag": "System"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "High performance",
+                    "RU": "Высокая производительность"
+                },
+                "ChildDescription": {
+                    "EN": "It is not recommended to turn on \"High performance\" power scheme on laptops",
+                    "RU": "Не рекомендуется включать схему управления питанием \"Высокая производительность\" для ноутбуков"
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Balanced",
+                    "RU": "Сбалансированная"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
-        "Id": 217,
-        "Headers": {
+        "Id": 316,
+        "Header": {
             "EN": "Use latest installed .NET runtime for all apps",
             "RU": "Использовать последнюю установленную среду выполнения .NET для всех приложений"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1654,12 +1597,12 @@
         "Tag": "System"
     },
     {
-        "Id": 218,
-        "Headers": {
+        "Id": 317,
+        "Header": {
             "EN": "Allow the computer to turn off the network adapters to save power",
             "RU": "Разрешить отключение всех сетевых адаптеров для экономии энергии"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "It is not recommended to to tunr off the network adapters to save power on laptops",
             "RU": "Не рекомендуется отключать все сетевые адаптеры для экономии энергии на ноутбуках"
         },
@@ -1668,135 +1611,135 @@
         "Tag": "System"
     },
     {
-        "Id": 219,
-        "Headers": {
+        "Id": 318,
+        "Header": {
             "EN": "Override for default input method",
             "RU": "Переопределить метод ввода по умолчанию"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "RadioButtonsGroup",
-        "IsContainer": true,
         "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 220,
-        "ContainerId": 219,
-        "Headers": {
-            "EN": "Use language list",
-            "RU": "Использовать список языков"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
         "Type": "0",
-        "Tag": "System"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Use language list",
+                    "RU": "Использовать список языков"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "English",
+                    "RU": "Английский"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
-        "Id": 221,
-        "ContainerId": 219,
-        "Headers": {
-            "EN": "English",
-            "RU": "Английский"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 222,
-        "Headers": {
+        "Id": 319,
+        "Header": {
             "EN": "Choose the location where to save screenshots by pressing Win+PrtScn",
             "RU": "Выбрать, куда сохранять скриншоты по нажатию Win+PrtScn"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "RadioButtonsGroup",
-        "IsContainer": true,
         "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 223,
-        "ContainerId": 222,
-        "Headers": {
-            "EN": "Desktop",
-            "RU": "Рабочий стол"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
         "Type": "0",
-        "Tag": "System"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Desktop",
+                    "RU": "Рабочий стол"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Pictures folder",
+                    "RU": "Папка \"Изображения\""
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
-        "Id": 224,
-        "ContainerId": 222,
-        "Headers": {
-            "EN": "Pictures folder",
-            "RU": "Папку \"Изображения\""
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 225,
-        "Headers": {
+        "Id": 320,
+        "Header": {
             "EN": "Recommended troubleshooting",
             "RU": "Рекомендованные способы устранения ошибок"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "RadioButtonsGroup",
-        "IsContainer": true,
         "Tag": "System",
-        "Type": "0"
-    },
-    {
-        "Id": 226,
-        "ContainerId": 225,
-        "Headers": {
-            "EN": "Run troubleshooters automatically, then notify",
-            "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять"
-        },
-        "Descriptions": {
-            "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on",
-            "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows"
-        },
-        "Model": "RadioButton",
         "Type": "0",
-        "Tag": "System"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Run troubleshooters automatically, then notify",
+                    "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять"
+                },
+                "ChildDescription": {
+                    "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on",
+                    "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows"
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Ask me before running troubleshooter",
+                    "RU": "Спрашивать перед запуском средств устранения неполадок"
+                },
+                "ChildDescription": {
+                    "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on",
+                    "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows"
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
-        "Id": 227,
-        "ContainerId": 225,
-        "Headers": {
-            "EN": "Ask me before running troubleshooters",
-            "RU": "Спрашивать перед запуском средств устранения неполадок"
-        },
-        "Descriptions": {
-            "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on",
-            "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows"
-        },
-        "Model": "RadioButton",
-        "Type": "0",
-        "Tag": "System"
-    },
-    {
-        "Id": 228,
-        "Headers": {
+        "Id": 321,
+        "Header": {
             "EN": "Launch folder windows in a separate process",
             "RU": "Запускать окна с папками в отдельном процессе"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1805,12 +1748,12 @@
         "Tag": "System"
     },
     {
-        "Id": 229,
-        "Headers": {
+        "Id": 322,
+        "Header": {
             "EN": "Enable reserved storage",
             "RU": "Включить зарезервированное хранилище"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "After disabling the reserved storage will be deleted after the next update installation",
             "RU": "После отключения зарезервированное хранилище будет удаолено после следующей установки обновлений"
         },
@@ -1819,12 +1762,12 @@
         "Tag": "System"
     },
     {
-        "Id": 230,
-        "Headers": {
+        "Id": 323,
+        "Header": {
             "EN": "Enable help look up via F1",
             "RU": "Включить открытие справки по нажатию F1"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1833,12 +1776,12 @@
         "Tag": "System"
     },
     {
-        "Id": 231,
-        "Headers": {
+        "Id": 324,
+        "Header": {
             "EN": "Enable Num Lock at startup",
             "RU": "Включить Num Lock при загрузке"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1847,12 +1790,12 @@
         "Tag": "System"
     },
     {
-        "Id": 232,
-        "Headers": {
+        "Id": 325,
+        "Header": {
             "EN": "Enable Caps Lock",
             "RU": "Включить Caps Lock"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1861,12 +1804,12 @@
         "Tag": "System"
     },
     {
-        "Id": 233,
-        "Headers": {
+        "Id": 326,
+        "Header": {
             "EN": "Enable StickyKey after tapping the Shift key 5 times",
             "RU": "Включить залипание клавиши Shift после 5 нажатий"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1875,12 +1818,12 @@
         "Tag": "System"
     },
     {
-        "Id": 234,
-        "Headers": {
+        "Id": 327,
+        "Header": {
             "EN": "Enable AutoPlay for all media and devices",
             "RU": "Включить автозапуск для всех носителей и устройств"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1889,12 +1832,12 @@
         "Tag": "System"
     },
     {
-        "Id": 235,
-        "Headers": {
+        "Id": 328,
+        "Header": {
             "EN": "Enable thumbnail cache removal",
             "RU": "Включить удаление кэша миниатюр"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1903,12 +1846,12 @@
         "Tag": "System"
     },
     {
-        "Id": 236,
-        "Headers": {
+        "Id": 329,
+        "Header": {
             "EN": "Enable automatically saving my restartable apps when signing out and restart them after signing in",
             "RU": "Включить автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1917,12 +1860,12 @@
         "Tag": "System"
     },
     {
-        "Id": 237,
-        "Headers": {
+        "Id": 330,
+        "Header": {
             "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
             "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1931,12 +1874,12 @@
         "Tag": "System"
     },
     {
-        "Id": 239,
-        "Headers": {
+        "Id": 331,
+        "Header": {
             "EN": "Automatically adjust active hours for me based on daily usage",
             "RU": "Автоматически изменять период активности для этого устройства на основе действий"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1945,12 +1888,12 @@
         "Tag": "System"
     },
     {
-        "Id": 240,
-        "Headers": {
+        "Id": 332,
+        "Header": {
             "EN": "Restart this device as soon as possible when a restart is required to install an update",
             "RU": "Перезапускать это устройство как можно быстрее, если для установки обновления требуется перезагрузка"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1959,12 +1902,12 @@
         "Tag": "System"
     },
     {
-        "Id": 241,
-        "Headers": {
+        "Id": 400,
+        "Header": {
             "EN": "Show recently added apps in the Start menu",
             "RU": "Показывать недавно добавленные приложения в меню \"Пуск\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1973,12 +1916,12 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 242,
-        "Headers": {
+        "Id": 401,
+        "Header": {
             "EN": "Show app suggestions in the Start menu",
             "RU": "Показывать рекомендации в меню \"Пуск\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -1987,12 +1930,12 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 243,
-        "Headers": {
+        "Id": 402,
+        "Header": {
             "EN": "Run the Windows PowerShell shortcut from the Start menu as Administrator",
             "RU": "Запускать ярлык Windows PowerShell в меню \"Пуск\" от имени Администратора"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2001,68 +1944,65 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 244,
-        "Headers": {
+        "Id": 403,
+        "Header": {
             "EN": "Pin the shortcuts to Start",
             "RU": "Закрепить ярлыки на начальном экране"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "RadioButtonsGroup",
-        "IsContainer": true,
         "Tag": "StartMenu",
-        "Type": "0"
-    },
-    {
-        "Id": 245,
-        "ContainerId": 244,
-        "Headers": {
-            "EN": "Control Panel",
-            "RU": "Панель управления"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
         "Type": "0",
-        "Tag": "StartMenu"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": "Control Panel",
+                    "RU": "Панель управления"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": "Devices and Printers",
+                    "RU": "Устройства и принтеры"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": "PowerShell",
+                    "RU": "PowerShell"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "RadioButton"
+            }
+        ]
     },
     {
-        "Id": 246,
-        "ContainerId": 244,
-        "Headers": {
-            "EN": "Devices and Printers",
-            "RU": "Устройства и принтеры"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "StartMenu"
-    },
-    {
-        "Id": 247,
-        "ContainerId": 244,
-        "Headers": {
-            "EN": "PowerShell",
-            "RU": "PowerShell"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "StartMenu"
-    },
-    {
-        "Id": 248,
-        "Headers": {
+        "Id": 500,
+        "Header": {
             "EN": "Xbox Game Bar",
             "RU": "Xbox Game Bar"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2071,12 +2011,12 @@
         "Tag": "Games"
     },
     {
-        "Id": 249,
-        "Headers": {
+        "Id": 501,
+        "Header": {
             "EN": "Xbox Game Bar tips",
             "RU": "Советы Xbox Game Bar"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2085,12 +2025,12 @@
         "Tag": "Games"
     },
     {
-        "Id": 250,
-        "Headers": {
+        "Id": 502,
+        "Header": {
             "EN": "Hardware-accelerated GPU scheduling",
             "RU": "Планирование графического процессора с аппаратным ускорением"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2099,40 +2039,12 @@
         "Tag": "Games"
     },
     {
-        "Id": 251,
-        "Headers": {
-            "EN": "Enable Controlled folder access and add protected folders",
-            "RU": "Включить контролируемый доступ к папкам и добавить защищенные папки"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "Switch",
-        "Type": "0",
-        "Tag": "Security"
-    },
-    {
-        "Id": 252,
-        "Headers": {
-            "EN": "Allow an app through Controlled folder access",
-            "RU": "Разрешить работу приложения через контролируемый доступ к папкам"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "Switch",
-        "Type": "0",
-        "Tag": "Security"
-    },
-    {
-        "Id": 253,
-        "Headers": {
+        "Id": 600,
+        "Header": {
             "EN": "Enable Microsoft Defender Exploit Guard network protection",
             "RU": "Включить защиту сети в Microsoft Defender Exploit Guard"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2141,12 +2053,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 254,
-        "Headers": {
+        "Id": 601,
+        "Header": {
             "EN": "Enable detection for potentially unwanted applications and block them",
             "RU": "Включить обнаружение потенциально нежелательных приложений и блокировать их"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2155,12 +2067,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 255,
-        "Headers": {
+        "Id": 602,
+        "Header": {
             "EN": "Enable sandboxing for Microsoft Defender",
             "RU": "Включить песочницу для Microsoft Defender"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2169,12 +2081,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 256,
-        "Headers": {
+        "Id": 603,
+        "Header": {
             "EN": "Enable events auditing generated when a process is created or starts",
             "RU": "Включить аудит событий, возникающих при создании или запуске процесса"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2183,12 +2095,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 257,
-        "Headers": {
+        "Id": 604,
+        "Header": {
             "EN": "Include command line in process creation events",
             "RU": "Включать командную строку в событиях создания процесса"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "In order this feature to work events auditing will be enabled",
             "RU": "Для того, чтобы работал данный функционал, будет включен аудит событий"
         },
@@ -2197,12 +2109,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 258,
-        "Headers": {
+        "Id": 605,
+        "Header": {
             "EN": "Create \"Process Creation\" Event Viewer Custom View",
             "RU": "Создать настаиваемое представление \"Создание процесса\" в Просмотре событий"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "In order this feature to work events auditing and command line in process creation events will be enabled",
             "RU": "Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса"
         },
@@ -2211,12 +2123,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 259,
-        "Headers": {
+        "Id": 606,
+        "Header": {
             "EN": "Enable logging for all Windows PowerShell modules",
             "RU": "Включить ведение журнала для всех модулей Windows PowerShell"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2225,12 +2137,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 260,
-        "Headers": {
+        "Id": 607,
+        "Header": {
             "EN": "Enable logging for all PowerShell scripts input to the Windows PowerShell event log",
             "RU": "Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2239,12 +2151,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 261,
-        "Headers": {
+        "Id": 608,
+        "Header": {
             "EN": "Enable apps and files checking within Microsofot Defender SmartScreen",
             "RU": "Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2253,12 +2165,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 262,
-        "Headers": {
+        "Id": 609,
+        "Header": {
             "EN": "Enable the Attachment Manager marking files that have been downloaded from the Internet as unsafe",
             "RU": "Включить проверку Диспетчера вложений файлов, скачанных из интернета как небезопасные"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2267,12 +2179,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 263,
-        "Headers": {
+        "Id": 610,
+        "Header": {
             "EN": "Enable Windows Script Host",
             "RU": "Включить Windows Script Host"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "Blocks WSH from executing .js and .vbs files",
             "RU": "Блокирует запуск файлов .js и .vbs"
         },
@@ -2281,12 +2193,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 264,
-        "Headers": {
+        "Id": 611,
+        "Header": {
             "EN": "Windows Script Host",
             "RU": "Windows Script Host"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2295,12 +2207,12 @@
         "Tag": "Security"
     },
     {
-        "Id": 265,
-        "Headers": {
+        "Id": 700,
+        "Header": {
             "EN": "The \"Extract all\" menu option in the Windows Installer filename extension context menu",
             "RU": "Пункт \"Извлечь все\" в контекстном меню расширений имен файлов Windows Installer"
         },
-        "Descriptions": {
+        "Description": {
             "EN": ".msi",
             "RU": ".msi"
         },
@@ -2309,26 +2221,26 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 266,
-        "Headers": {
+        "Id": 701,
+        "Header": {
             "EN": "The \"Install\" menu option in the Cabinet filename extension context menu",
             "RU": "Пункт \"Установить\" в контекстном меню расширений имен файлов Cabinet-архивов"
         },
-        "Descriptions": {
-            "EN": "If the Cabinet filename extension (.cab) is associated with a third-party application by default, then the \"Install\" context menu option will not be displayed. To enable the \"Install\" context menu option. The Windows default file association will be restored forcedly",
-            "RU": "Если расширение Cabinet-файлов (.cab) ассоциировано со сторонним приложением, пункт \"Установить\" в контекстном меню не будет отображаться. Будет принудительна восстановлена ассоциация файла Windows по умолчанию"
+        "Description": {
+            "EN": "",
+            "RU": ""
         },
         "Model": "CheckBox",
         "Type": "0",
         "Tag": "ContextMenu"
     },
     {
-        "Id": 267,
-        "Headers": {
+        "Id": 702,
+        "Header": {
             "EN": "The \"Run as different user\" menu option in the .exe filename extensions context menu",
             "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню расширений имен файлов .exe"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2337,12 +2249,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 268,
-        "Headers": {
+        "Id": 703,
+        "Header": {
             "EN": "The \"Cast to Device\" menu option in the media files and folders context menu",
             "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2351,12 +2263,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 269,
-        "Headers": {
+        "Id": 704,
+        "Header": {
             "EN": "The \"Share\" menu option in the context menu",
             "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2365,143 +2277,125 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 270,
-        "Headers": {
+        "Id": 705,
+        "Header": {
             "EN": "The \"Edit with Paint 3D\" menu option in the media files context menu",
             "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов"
         },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "HasChild": "True",
         "Model": "ExpandingGroup",
-        "IsContainer": true,
-        "Tag": "ContextMenu",
-        "Type": "0"
-    },
-    {
-        "Id": 271,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".bmp",
-            "RU": ".bmp"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
+        "Tag": "System",
         "Type": "0",
-        "Tag": "ContextMenu"
+        "ChildElements": [
+            {
+                "ChildId": 1,
+                "ChildHeader": {
+                    "EN": ".bmp",
+                    "RU": ".bmp"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 2,
+                "ChildHeader": {
+                    "EN": ".gif",
+                    "RU": ".gif"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 3,
+                "ChildHeader": {
+                    "EN": ".jpe",
+                    "RU": ".jpe"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 4,
+                "ChildHeader": {
+                    "EN": ".jpeg",
+                    "RU": ".jpeg"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 5,
+                "ChildHeader": {
+                    "EN": ".jpg",
+                    "RU": ".jpg"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 6,
+                "ChildHeader": {
+                    "EN": ".png",
+                    "RU": ".png"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 7,
+                "ChildHeader": {
+                    "EN": ".tif",
+                    "RU": ".tif"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            },
+            {
+                "ChildId": 7,
+                "ChildHeader": {
+                    "EN": ".tiff",
+                    "RU": ".tiff"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Model": "CheckBox"
+            }
+        ]
     },
     {
-        "Id": 272,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".gif",
-            "RU": ".gif"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 273,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".jpe",
-            "RU": ".jpe"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 274,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".jpeg",
-            "RU": ".jpeg"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 275,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".jpg",
-            "RU": ".jpg"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 276,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".png",
-            "RU": ".png"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 277,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".tif",
-            "RU": ".tif"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 278,
-        "ContainerId": 270,
-        "Headers": {
-            "EN": ".tiff",
-            "RU": ".tiff"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": ""
-        },
-        "Model": "CheckBox",
-        "Type": "0",
-        "Tag": "ContextMenu"
-    },
-    {
-        "Id": 279,
-        "Headers": {
+        "Id": 706,
+        "Header": {
             "EN": "Show the \"Edit with Photos\" menu option in the media files context menu",
             "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "Только при ассоциации",
             "RU": ""
         },
@@ -2510,12 +2404,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 280,
-        "Headers": {
+        "Id": 707,
+        "Header": {
             "EN": "The \"Create a new video\" menu option in the media files context menu",
             "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2524,12 +2418,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 281,
-        "Headers": {
+        "Id": 708,
+        "Header": {
             "EN": "The \"Edit\" menu option in the image files context menu",
             "RU": "Пункт \"Изменить\" в контекстном меню изображений"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2538,12 +2432,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 282,
-        "Headers": {
+        "Id": 709,
+        "Header": {
             "EN": "The \"Print\" menu option in the .bat and .cmd files context menu",
             "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2552,12 +2446,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 283,
-        "Headers": {
+        "Id": 710,
+        "Header": {
             "EN": "The \"Include in Library\" menu option in the folders and drives context menu",
             "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2566,12 +2460,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 284,
-        "Headers": {
+        "Id": 711,
+        "Header": {
             "EN": "The \"Send to\" menu option in the folders context menu",
             "RU": "Пункт \"Отправить\" в контекстном меню папок"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2580,12 +2474,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 285,
-        "Headers": {
+        "Id": 712,
+        "Header": {
             "EN": "\"Turn on BitLocker\" menu option in the drives context menu",
             "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2594,12 +2488,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 286,
-        "Headers": {
+        "Id": 713,
+        "Header": {
             "EN": "The \"Bitmap image\" menu option in the \"New\" context menu",
             "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2608,12 +2502,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 287,
-        "Headers": {
+        "Id": 714,
+        "Header": {
             "EN": "The \"Rich Text Document\" menu option in the \"New\" context menu",
             "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2622,12 +2516,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 288,
-        "Headers": {
+        "Id": 715,
+        "Header": {
             "EN": "The \"Compressed (zipped) Folder\"menu option in the \"New\" context menu",
             "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2636,12 +2530,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 289,
-        "Headers": {
+        "Id": 716,
+        "Header": {
             "EN": "The \"Open\", \"Print\", and \"Edit\" menu options if more than 15 files selected",
             "RU": "Элементы \"Открыть\", \"Изменить\" и \"Печать\" контекстного меню при выделении более 15 элементов"
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },
@@ -2650,12 +2544,12 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 290,
-        "Headers": {
+        "Id": 717,
+        "Header": {
             "EN": "The \"Look for an app in the Microsoft Store\" menu option in the \"Open with\" dialog",
             "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
         },
-        "Descriptions": {
+        "Description": {
             "EN": "",
             "RU": ""
         },

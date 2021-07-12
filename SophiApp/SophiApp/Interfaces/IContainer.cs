@@ -5,6 +5,6 @@ namespace SophiApp.Interfaces
 {
     internal interface IContainer
     {
-        List<BaseTextedElement> Collection { get; set; }
+        List<BaseTextedElement> ChildElements { get; set; }
     }
 }

@@ -46,7 +46,7 @@
                               Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                             <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"
                                        Style="{DynamicResource SmallText}"
-                                       FontSize="12"
+                                       FontSize="14"
                                        Margin="10, 3, 10, 3" />
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -69,7 +69,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContextMenu}">
                         <Border BorderThickness="1"
-                                BorderBrush="{DynamicResource Brush.Window.Acсent.Normal}"
+                                BorderBrush="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
                                 Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
                                 Padding="0">
                             <StackPanel ClipToBounds="True" IsItemsHost="True" />

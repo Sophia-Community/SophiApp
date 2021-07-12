@@ -27,7 +27,5 @@ namespace SophiApp.Helpers
         internal static void SetValue(RegistryHive hive, string path, string name, object value, RegistryValueKind type) => SetKey(hive, path).SetValue(name, value, type);
 
         internal static bool SubKeyExist(RegistryHive hive, string path) => !(RegistryKey.OpenBaseKey(hive, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32).OpenSubKey(path) is null);
-
-
     }
 }

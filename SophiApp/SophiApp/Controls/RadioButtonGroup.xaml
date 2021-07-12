@@ -40,7 +40,7 @@
                            Text="{Binding Header}"
                            TextWrapping="Wrap" />
                 <Border />
-                <ItemsControl ItemsSource="{Binding Collection}">
+                <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type models:RadioButton}">
                             <controls:RadioButton IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"

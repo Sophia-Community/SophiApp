@@ -11,12 +11,12 @@ namespace SophiApp.Models
             State = UIElementState.UNCHECKED;
         }
 
-        public List<BaseTextedElement> Collection { get; set; } = new List<BaseTextedElement>();
+        public List<BaseTextedElement> ChildElements { get; set; } = new List<BaseTextedElement>();
 
         internal override void SetLocalization(UILanguage language)
         {
             Header = Headers[language];
-            Collection.ForEach(element => element.SetLocalization(language));
+            ChildElements.ForEach(element => element.SetLocalization(language));
         }
     }
 }

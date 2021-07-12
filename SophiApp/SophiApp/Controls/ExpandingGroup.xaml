@@ -117,7 +117,7 @@
                     <StackPanel>
                         <Border />
                         <ItemsControl x:Name="ItemsControlContent"
-                                      ItemsSource="{Binding Collection}"
+                                      ItemsSource="{Binding ChildElements}"
                                       Margin="-5">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
