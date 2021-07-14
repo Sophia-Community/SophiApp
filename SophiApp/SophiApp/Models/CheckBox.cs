@@ -2,9 +2,9 @@
 
 namespace SophiApp.Models
 {
-    internal class CheckBox : BaseTextedElement
+    internal class CheckBox : TextedElement
     {
-        public CheckBox(JsonDTO json) : base(json)
+        public CheckBox(JsonGuiDto dto) : base(dto)
         {
         }
     }

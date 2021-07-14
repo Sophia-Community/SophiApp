@@ -5,6 +5,7 @@ using System.ComponentModel;
 
 namespace SophiApp.Models
 {
+    //TODO: BaseTextedElement - deprecated !!!
     internal class BaseTextedElement : INotifyPropertyChanged
     {
         private string description;
@@ -26,7 +27,7 @@ namespace SophiApp.Models
         {
         }
 
-        public BaseTextedElement(JsonDTO json)
+        public BaseTextedElement(JsonDto json)
         {
             Id = json.Id;
             Descriptions = json.Description;

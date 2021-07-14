@@ -47,12 +47,15 @@
 
   <!-- Указывает, что приложение поддерживает определение DPI и не будет автоматически масштабироваться Windows при более высоких
        значениях DPI. Приложения Windows Presentation Foundation (WPF) по умолчанию поддерживают определение DPI, им не нужно 
-       специально включать параметр для этого. Для приложений Windows Forms на платформе .NET Framework 4.6, для которых задан этот параметр, необходимо 
-       также задать для "EnableWindowsFormsHighDpiAutoResizing" значение "true" в файле app.config.-->
+       специально включать параметр для этого. Для приложений Windows Forms на платформе .NET Framework 4.6, для которых задан этот параметр, необходимо 
+       также задать для "EnableWindowsFormsHighDpiAutoResizing" значение "true" в файле app.config. 
+       
+       При этом приложение начинает учитывать длинные пути. Дополнительные сведения см. на странице https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation.-->
   <!--
   <application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
       <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
+      <longPathAware xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">true</longPathAware>
     </windowsSettings>
   </application>
   -->

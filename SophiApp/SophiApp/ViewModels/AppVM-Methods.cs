@@ -1,14 +1,12 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
 using SophiApp.Helpers;
-using SophiApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -58,10 +56,10 @@ namespace SophiApp.ViewModels
                         return;
                     }
 
-                    if (element.State == UIElementState.SETTOACTIVE || element.State == UIElementState.SETTODEFAULT)
-                    {
-                        element.SetSystemState();
-                    }
+                    //if (element.State == UIElementState.SETTOACTIVE || element.State == UIElementState.SETTODEFAULT)
+                    //{
+                    //    element.SetSystemState();
+                    //}
                 });
             });
         }
@@ -182,14 +180,14 @@ namespace SophiApp.ViewModels
                 {
                     var file = File.ReadAllText("UIData.json");
                     //var bytes = Encoding.UTF8.GetBytes(file);
-                    TextedElements = JsonConvert.DeserializeObject<IEnumerable<JsonDTO>>(file)
-                                        .Where(dto => dto.Type == UIType.TextedElement)
-                                        .Select(dto => ElementsFabric.Create(dto))
-                                        .ToList();
-                    //TextedElements = Parser.ParseJson(bytes)
-                    //                       .Where(dto => dto.Type == UIType.TextedElement)
-                    //                       .Select(dto => ElementsFabric.Create(dto))
-                    //                       .ToList();
+                    TextedElements = JsonConvert.DeserializeObject<IEnumerable<JsonGuiDto>>(file)
+                                                .Select(dto => ElementsFabric.CreateTextedElement(dto))
+                                                .ToList();
+
+                    TextedElements.ForEach(element =>
+                    {
+                        element.ChangeLanguage(Localization.Language);
+                    });
                 }
                 catch (Exception e)
                 {
@@ -200,35 +198,35 @@ namespace SophiApp.ViewModels
                 //                                                              .Select(dto => ElementsFabric.Create(dto))
                 //                                                              .ToList();
 
-                TextedElements.ForEach(element =>
-                {
-                    element.SetLocalization(Localization.Language);
+                //TextedElements.ForEach(element =>
+                //{
+                //    element.SetLocalization(Localization.Language);
 
-                    if (!(element is IContainer))
-                    {
-                        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
-                        element.StateChanged += OnTextedElementStateChanged;
-                        element.CurrentStateAction = ElementsFabric.SetCurrentStateAction(element.Id);
-                        element.SystemStateAction = ElementsFabric.SetSystemStateAction(element.Id);
-                        element.GetCurrentState();
+                //    if (!(element is IContainer))
+                //    {
+                //        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
+                //        element.StateChanged += OnTextedElementStateChanged;
+                //        element.CurrentStateAction = ElementsFabric.SetCurrentStateAction(element.Id);
+                //        element.SystemStateAction = ElementsFabric.SetSystemStateAction(element.Id);
+                //        element.GetCurrentState();
 
-                        if (element.ContainerId > 0)
-                        {
-                            var container = TextedElements.First(c => c.Id == element.ContainerId) as IContainer;
-                            container.ChildElements.Add(element);
-                        }
-                    }
-                });
+                //        if (element.ContainerId > 0)
+                //        {
+                //            var container = TextedElements.First(c => c.Id == element.ContainerId) as IContainer;
+                //            container.ChildElements.Add(element);
+                //        }
+                //    }
+                //});
 
-                TextedElements.RemoveAll(element => element.ContainerId > 0);
-                TextedElements.Where(element => element is RadioButtonsGroup)
-                              .Cast<RadioButtonsGroup>()
-                              .ToList()
-                              .ForEach(group =>
-                              {
-                                  group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
-                                  //group.SetDefaultSelectedId();
-                              });
+                //TextedElements.RemoveAll(element => element.ContainerId > 0);
+                //TextedElements.Where(element => element is RadioButtonsGroup)
+                //              .Cast<RadioButtonsGroup>()
+                //              .ToList()
+                //              .ForEach(group =>
+                //              {
+                //                  group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
+                //                  //group.SetDefaultSelectedId();
+                //              });
 
                 debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
             });
@@ -246,7 +244,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var localization = localizationsHelper.FindName(localizationName);
-                TextedElements.ForEach(element => element.SetLocalization(localization.Language));
+                TextedElements.ForEach(element => element.ChangeLanguage(localization.Language));
                 localizationsHelper.Change(localization);
                 SetLocalizationProperty(localization);
                 OnPropertyChanged(AppSelectedThemePropertyName);
@@ -269,7 +267,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var group = TextedElements.First(element => element.Id == id);
-                group.State = UIElementState.DISABLED;
+                //group.State = UIElementState.DISABLED;
             });
         }
 
@@ -286,7 +284,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
            {
                var element = TextedElements.First(e => e.Id == id);
-               element.State = UIElementState.DISABLED;
+               //element.State = UIElementState.DISABLED;
            });
         }
 
@@ -302,21 +300,21 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var group = TextedElements.First(g => g.Id == groupId) as RadioButtonsGroup;
-                var element = group.ChildElements.First(e => e.Id == elementId);
-                group.ChildElements.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
+                //var group = TextedElements.First(g => g.Id == groupId) as RadioButtonsGroup;
+                //var element = group.ChildElements.First(e => e.Id == elementId);
+                //group.ChildElements.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
 
-                if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
-                {
-                    SetTextedElementsChangedCounter(UIElementState.SETTOACTIVE);
-                    group.IsSelected = true;
-                }
+                //if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
+                //{
+                //    SetTextedElementsChangedCounter(UIElementState.SETTOACTIVE);
+                //    group.IsSelected = true;
+                //}
 
-                if (element.Id == group.DefaultSelectedId)
-                {
-                    SetTextedElementsChangedCounter(UIElementState.UNCHECKED);
-                    group.IsSelected = false;
-                }
+                //if (element.Id == group.DefaultSelectedId)
+                //{
+                //    SetTextedElementsChangedCounter(UIElementState.UNCHECKED);
+                //    group.IsSelected = false;
+                //}
             });
         }
 
@@ -336,28 +334,28 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                TextedElements.ForEach(element =>
-                {
-                    if (element is IContainer container)
-                    {
-                        container.ChildElements
-                                 .Where(e => e.State != UIElementState.DISABLED)
-                                 .ToList()
-                                 .ForEach(e => e.GetCurrentState());
+                //TextedElements.ForEach(element =>
+                //{
+                //    if (element is IContainer container)
+                //    {
+                //        container.ChildElements
+                //                 .Where(e => e.State != UIElementState.DISABLED)
+                //                 .ToList()
+                //                 .ForEach(e => e.GetCurrentState());
 
-                        if (element is RadioButtonsGroup group)
-                        {
-                            //group.SetDefaultSelectedId();
-                        }
+                //        if (element is RadioButtonsGroup group)
+                //        {
+                //            //group.SetDefaultSelectedId();
+                //        }
 
-                        return;
-                    }
+                //        return;
+                //    }
 
-                    if (element.State != UIElementState.DISABLED)
-                    {
-                        element.GetCurrentState();
-                    }
-                });
+                //    if (element.State != UIElementState.DISABLED)
+                //    {
+                //        element.GetCurrentState();
+                //    }
+                //});
             });
         }
 
@@ -438,54 +436,55 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var element = TextedElements.First(e => e.Id == id);
-                element.ChangeState();
-                SetTextedElementsChangedCounter(element.State);
+                //element.ChangeState();
+                //SetTextedElementsChangedCounter(element.State);
             });
         }
 
-        private async Task UpdateIsAvailableAsync()
-        {
-            await Task.Run(() =>
-            {
-                HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubApiReleases);
-                request.UserAgent = AppData.UserAgent;
+        //TODO: UpdateIsAvailableAsync - Need refactoring to Newton json
+        //private async Task UpdateIsAvailableAsync()
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubApiReleases);
+        //        request.UserAgent = AppData.UserAgent;
 
-                try
-                {
-                    var response = request.GetResponse();
-                    debugger.Write(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
-                    using (Stream dataStream = response.GetResponseStream())
-                    {
-                        StreamReader reader = new StreamReader(dataStream);
-                        string responseFromServer = reader.ReadToEnd();
-                        debugger.Write(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{responseFromServer.Length}");
-                        var release = Parser.ParseJson(responseFromServer).First();
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.Tag_Name}");
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.Prerelease}");
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.Draft}");
-                        var updateRequired = IsNewVersion(currentVersion: AppData.Version, outsideVersion: release.Tag_Name,
-                                                          outsidePrerelease: release.Prerelease, outsideDraft: release.Draft);
+        //        try
+        //        {
+        //            var response = request.GetResponse();
+        //            debugger.Write(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
+        //            using (Stream dataStream = response.GetResponseStream())
+        //            {
+        //                StreamReader reader = new StreamReader(dataStream);
+        //                string responseFromServer = reader.ReadToEnd();
+        //                debugger.Write(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{responseFromServer.Length}");
+        //                var release = Parser.ParseJson(responseFromServer).First();
+        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.Tag_Name}");
+        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.Prerelease}");
+        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.Draft}");
+        //                var updateRequired = IsNewVersion(currentVersion: AppData.Version, outsideVersion: release.Tag_Name,
+        //                                                  outsidePrerelease: release.Prerelease, outsideDraft: release.Draft);
 
-                        if (updateRequired)
-                        {
-                            debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
-                            SetUpdateAvailableProperty(true);
-                            Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.Tag_Name);
-                            return;
-                        }
+        //                if (updateRequired)
+        //                {
+        //                    debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
+        //                    SetUpdateAvailableProperty(true);
+        //                    Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.Tag_Name);
+        //                    return;
+        //                }
 
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
-                    }
-                }
-                catch (Exception e)
-                {
-                    debugger.Write(DebuggerRecord.UPDATE_HAS_ERROR);
-                    debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-                    debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-                    debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
-                }
-            });
-        }
+        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
+        //            }
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            debugger.Write(DebuggerRecord.UPDATE_HAS_ERROR);
+        //            debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+        //            debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+        //            debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
+        //        }
+        //    });
+        //}
 
         internal async void InitData()
         {

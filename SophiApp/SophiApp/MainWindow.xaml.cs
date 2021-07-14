@@ -16,7 +16,7 @@ namespace SophiApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var appVM = new AppVM();
-            Application.Current.MainWindow.DataContext = appVM;
+            DataContext = appVM;
             appVM.InitData();
         }
     }

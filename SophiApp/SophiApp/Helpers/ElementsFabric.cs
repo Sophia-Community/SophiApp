@@ -5,18 +5,29 @@ using System.Reflection;
 
 namespace SophiApp.Helpers
 {
+    //TODO: ElementsFabric - deprecated !!!
     internal class ElementsFabric
     {
+        //TODO: ElementsFabric - deprecated !!!
         private const string CURRENT_STATE_ACTION_CLASS = "SophiApp.Actions.CurrentStateAction";
+
         private const string SYSTEM_STATE_ACTION_CLASS = "SophiApp.Actions.SystemStateAction";
 
-        internal static BaseTextedElement Create(JsonDTO json)
+        //TODO: ElementsFabric - BaseTextedElement Deprecated !!!
+        internal static BaseTextedElement Create(JsonDto json)
         {
             var model = Type.GetType($"SophiApp.Models.{json.Model}");
             var element = Activator.CreateInstance(model, json) as BaseTextedElement;
             return element;
         }
 
+        internal static TextedElement CreateTextedElement(JsonGuiDto dto)
+        {
+            var type = Type.GetType($"SophiApp.Models.{dto.Type}");
+            return Activator.CreateInstance(type, dto) as TextedElement;
+        }
+
+        //TODO: SetCurreElementsFabricntStateAction - SetCurrentStateAction Deprecated !!!
         internal static Func<bool> SetCurrentStateAction(uint id)
         {
             try
@@ -34,6 +45,7 @@ namespace SophiApp.Helpers
             }
         }
 
+        //TODO: ElementsFabric - SetSystemStateAction Deprecated !!!
         internal static Action<bool> SetSystemStateAction(uint id)
         {
             try

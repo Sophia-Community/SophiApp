@@ -112,7 +112,7 @@ namespace SophiApp.ViewModels
 
         public RelayCommand TextedElementClickedCommand { get; private set; }
 
-        public List<BaseTextedElement> TextedElements { get; private set; }
+        public List<TextedElement> TextedElements { get; private set; }
 
         public uint TextedElementsChangedCounter
         {

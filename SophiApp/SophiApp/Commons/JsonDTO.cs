@@ -2,8 +2,9 @@
 
 namespace SophiApp.Commons
 {
+    //TODO: JsonDTO - deprecated !!!
     //[DataContract]
-    internal class JsonDTO
+    internal class JsonDto
     {
         public List<RadioButtonJsonDTO> ChildElements { get; set; }
 
@@ -31,7 +32,7 @@ namespace SophiApp.Commons
         public string Tag { get; set; }
 
         //[DataMember(Name = "Type")]
-        public UIType Type { get; set; }
+        //public UIType Type { get; set; }
     }
 
     internal class RadioButtonJsonDTO

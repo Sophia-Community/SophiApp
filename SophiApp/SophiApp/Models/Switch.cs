@@ -2,9 +2,9 @@
 
 namespace SophiApp.Models
 {
-    internal class Switch : BaseTextedElement
+    internal class Switch : TextedElement
     {
-        public Switch(JsonDTO json) : base(json)
+        public Switch(JsonGuiDto dto) : base(dto)
         {
         }
     }

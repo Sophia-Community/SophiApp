@@ -1,0 +1,12 @@
+﻿using System.Collections.Generic;
+
+namespace SophiApp.Commons
+{
+    internal class JsonGuiChildDto
+    {
+        public Dictionary<UILanguage, string> ChildDescription { get; set; }
+        public Dictionary<UILanguage, string> ChildHeader { get; set; }
+        public uint ChildId { get; set; }
+        public string Type { get; set; }
+    }
+}

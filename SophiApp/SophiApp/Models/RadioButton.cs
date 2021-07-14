@@ -1,19 +1,6 @@
-﻿using SophiApp.Commons;
-
-namespace SophiApp.Models
+﻿namespace SophiApp.Models
 {
-    internal class RadioButton : BaseTextedElement
+    internal class RadioButton
     {
-        public RadioButton(JsonDTO json) : base(json)
-        {
-        }
-
-        public RadioButton(RadioButtonJsonDTO radioButtonJsonDTO)
-        {
-            Id = radioButtonJsonDTO.ChildId;
-            Descriptions = radioButtonJsonDTO.ChildDescription;
-            Headers = radioButtonJsonDTO.ChildHeader;
-            State = UIElementState.UNCHECKED;
-        }
     }
 }

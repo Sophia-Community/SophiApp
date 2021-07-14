@@ -4,35 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ACBFB9D2-485A-4241-839C-503C55173D18}</ProjectGuid>
+    <ProjectGuid>{200CAFBE-6569-4C44-AED4-A9CCF6B37BE0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SophiApp</RootNamespace>
     <AssemblyName>SophiApp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetPlatformVersion>10.0</TargetPlatformVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <SupportUrl>https://github.com/Sophia-Community/SophiApp</SupportUrl>
-    <ErrorReportUrl>https://github.com/Sophia-Community/SophiApp/issues</ErrorReportUrl>
-    <ProductName>SophiApp</ProductName>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,26 +25,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,18 +65,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Actions\CurrentStateAction.cs" />
-    <Compile Include="Actions\SystemStateAction.cs" />
     <Compile Include="Commons\DebuggerRecord.cs" />
     <Compile Include="Commons\GitHubReleaseDTO.cs" />
-    <Compile Include="Commons\JsonDTO.cs" />
+    <Compile Include="Commons\JsonDto.cs" />
+    <Compile Include="Commons\JsonGuiChildDto.cs" />
+    <Compile Include="Commons\JsonGuiDto.cs" />
     <Compile Include="Commons\Localization.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Commons\Theme.cs" />
     <Compile Include="Commons\UIElementState.cs" />
     <Compile Include="Commons\UILanguage.cs" />
-    <Compile Include="Commons\UIType.cs" />
     <Compile Include="Controls\ActorLink.xaml.cs">
       <DependentUpon>ActorLink.xaml</DependentUpon>
     </Compile>
@@ -171,6 +149,8 @@
     <Compile Include="Converters\IntToSettings.cs" />
     <Compile Include="Converters\ParametersToArray.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
+    <Compile Include="Helpers\ActionsData.cs" />
+    <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
@@ -181,15 +161,15 @@
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsHelper.cs" />
-    <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
-    <Compile Include="Helpers\ActionsData.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
+    <Compile Include="Interfaces\IElement.cs" />
+    <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
     <Compile Include="Models\ExpandingGroup.cs" />
@@ -202,39 +182,17 @@
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />
     <Compile Include="ViewModels\AppVM-Props.cs" />
-    <Compile Include="Views\ViewContextMenu.xaml.cs">
-      <DependentUpon>ViewContextMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewGames.xaml.cs">
-      <DependentUpon>ViewGames.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewLoading.xaml.cs">
-      <DependentUpon>ViewLoading.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewPersonalization.xaml.cs">
-      <DependentUpon>ViewPersonalization.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewPrivacy.xaml.cs">
-      <DependentUpon>ViewPrivacy.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewSecurity.xaml.cs">
-      <DependentUpon>ViewSecurity.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewSettings.xaml.cs">
-      <DependentUpon>ViewSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewStartMenu.xaml.cs">
-      <DependentUpon>ViewStartMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewSystem.xaml.cs">
-      <DependentUpon>ViewSystem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewTaskSheduler.xaml.cs">
-      <DependentUpon>ViewTaskSheduler.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewUwpApps.xaml.cs">
-      <DependentUpon>ViewUwpApps.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Views\ViewContextMenu.xaml.cs" />
+    <Compile Include="Views\ViewGames.xaml.cs" />
+    <Compile Include="Views\ViewLoading.xaml.cs" />
+    <Compile Include="Views\ViewPersonalization.xaml.cs" />
+    <Compile Include="Views\ViewPrivacy.xaml.cs" />
+    <Compile Include="Views\ViewSecurity.xaml.cs" />
+    <Compile Include="Views\ViewSettings.xaml.cs" />
+    <Compile Include="Views\ViewStartMenu.xaml.cs" />
+    <Compile Include="Views\ViewSystem.xaml.cs" />
+    <Compile Include="Views\ViewTaskSheduler.xaml.cs" />
+    <Compile Include="Views\ViewUwpApps.xaml.cs" />
     <Page Include="Commons\Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,104 +202,104 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ActorLink.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Button.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ChangesPanel.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\CheckBox.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\DropDownList.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ExpandingGroup.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\FilledButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\FolderIconCheckBox.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\GitHubHyperLink.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\HamburgerButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\HamburgerMenu.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\IconButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\LoadingPanel.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\LoadingRing.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RadioButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RadioButtonGroup.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ResetButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ScrollViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SearchBar.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Switch.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\TitleLeft.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\TitleRight.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\WinIconCheckBox.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Localizations\EN.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Localizations\RU.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -351,62 +309,61 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\AppData.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\Dark.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Light.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewContextMenu.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewGames.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewLoading.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewPersonalization.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewPrivacy.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewSecurity.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewSettings.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewStartMenu.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewSystem.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewTaskSheduler.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ViewUwpApps.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -428,7 +385,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <Resource Include="Resources\UIData.json" />
     <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -439,33 +395,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 и x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Dism">
       <Version>2.2.2</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
-    <PackageReference Include="System.Text.RegularExpressions">
-      <Version>4.3.1</Version>
-    </PackageReference>
     <PackageReference Include="TaskScheduler">
       <Version>2.9.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="NetFwTypeLib">
