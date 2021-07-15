@@ -121,8 +121,8 @@
                                       Margin="-5">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
-                                    <controls:CheckBox Command="{Binding Path=Command, RelativeSource={RelativeSource AncestorType={x:Type controls:ExpandingGroup}}}"
-                                                       Margin="0, 10, 0, 12"
+                                    <controls:CheckBox Margin="0, 10, 0, 12"
+                                                       Command="{Binding Path=Command, RelativeSource={RelativeSource AncestorType={x:Type controls:ExpandingGroup}}}"                                                       
                                                        IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                        IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
                                         <controls:CheckBox.CommandParameter>

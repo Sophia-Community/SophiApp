@@ -1,6 +1,8 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Interfaces;
 using SophiApp.Models;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace SophiApp.Helpers
@@ -8,7 +10,6 @@ namespace SophiApp.Helpers
     //TODO: ElementsFabric - deprecated !!!
     internal class ElementsFabric
     {
-        //TODO: ElementsFabric - deprecated !!!
         private const string CURRENT_STATE_ACTION_CLASS = "SophiApp.Actions.CurrentStateAction";
 
         private const string SYSTEM_STATE_ACTION_CLASS = "SophiApp.Actions.SystemStateAction";
@@ -17,11 +18,22 @@ namespace SophiApp.Helpers
         internal static BaseTextedElement Create(JsonDto json)
         {
             var model = Type.GetType($"SophiApp.Models.{json.Model}");
-            var element = Activator.CreateInstance(model, json) as BaseTextedElement;
+            var element = Activator.CreateInstance(model, json) as BaseTextedElement;            
             return element;
         }
 
         internal static TextedElement CreateTextedElement(JsonGuiDto dto)
+        {
+            var type = Type.GetType($"SophiApp.Models.{dto.Type}");
+            var element = Activator.CreateInstance(type, dto) as TextedElement;
+
+            if (element is IHasChilds childsContainer)
+                childsContainer.ChildElements = dto.ChildElements.Select(child => CreateTextedElement(child)).ToList();
+
+            return element;
+        }
+
+        internal static TextedElement CreateTextedElement(JsonGuiChildDto dto)
         {
             var type = Type.GetType($"SophiApp.Models.{dto.Type}");
             return Activator.CreateInstance(type, dto) as TextedElement;

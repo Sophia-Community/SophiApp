@@ -14,7 +14,7 @@ namespace SophiApp.Models
         private bool isEnabled;
 
         internal Action<uint, Exception> ErrorOccurred;
-        internal Action<uint, UIElementState> StateChanged;
+        internal Action<uint, ElementStatus> StateChanged;
         public const string DescriptionPropertyName = "Description";
         public const string HeaderPropertyName = "Header";
         public const string IsCheckedPropertyName = "IsChecked";
@@ -87,84 +87,86 @@ namespace SophiApp.Models
             }
         }
 
-        public UIElementState State
+        public ElementStatus Status
         {
-            get => GetState();
+            get => GetElementStatus();
             set
             {
-                SetState(value);
+                SetElementStatus(value);
                 StateChanged?.Invoke(Id, value);
             }
         }
 
         public string Tag { get; set; }
 
-        private UIElementState GetState()
+        private ElementStatus GetElementStatus()
         {
             if (IsEnabled & IsChecked & IsClicked == false)
-                return UIElementState.CHECKED;
+                return ElementStatus.CHECKED;
 
             if (IsEnabled & IsChecked == false & IsClicked == false)
-                return UIElementState.UNCHECKED;
+                return ElementStatus.UNCHECKED;
 
             if (IsEnabled & IsChecked == false & IsClicked)
-                return UIElementState.SETTODEFAULT;
+                return ElementStatus.SETTODEFAULT;
 
             if (IsEnabled & IsChecked & IsChecked)
-                return UIElementState.SETTOACTIVE;
+                return ElementStatus.SETTOACTIVE;
 
-            return UIElementState.DISABLED;
+            return ElementStatus.DISABLED;
         }
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private void SetState(UIElementState value)
+        private void SetElementStatus(ElementStatus value)
         {
             switch (value)
             {
-                case UIElementState.DISABLED:
+                case ElementStatus.DISABLED:
                     IsEnabled = IsChecked = IsClicked = false;
                     break;
 
-                case UIElementState.CHECKED:
+                case ElementStatus.CHECKED:
                     IsEnabled = IsChecked = true;
                     IsClicked = false;
                     break;
 
-                case UIElementState.UNCHECKED:
+                case ElementStatus.UNCHECKED:
                     IsEnabled = true;
                     IsChecked = IsClicked = false;
                     break;
 
-                case UIElementState.SETTODEFAULT:
+                case ElementStatus.SETTODEFAULT:
                     IsEnabled = IsClicked = true;
                     IsChecked = false;
                     break;
 
-                case UIElementState.SETTOACTIVE:
+                case ElementStatus.SETTOACTIVE:
                     IsEnabled = IsChecked = IsClicked = true;
+                    break;
+                default:
                     break;
             }
         }
 
         internal void ChangeState()
         {
-            switch (State)
+            switch (Status)
             {
-                case UIElementState.CHECKED:
-                    State = UIElementState.SETTODEFAULT;
+                case ElementStatus.CHECKED:
+                    Status = ElementStatus.SETTODEFAULT;
                     break;
 
-                case UIElementState.UNCHECKED:
-                    State = UIElementState.SETTOACTIVE;
+                case ElementStatus.UNCHECKED:
+                    Status = ElementStatus.SETTOACTIVE;
                     break;
 
-                case UIElementState.SETTODEFAULT:
-                    State = UIElementState.CHECKED;
+                case ElementStatus.SETTODEFAULT:
+                    Status = ElementStatus.CHECKED;
                     break;
 
-                case UIElementState.SETTOACTIVE:
-                    State = UIElementState.UNCHECKED;
+                case ElementStatus.SETTOACTIVE:
+                    Status = ElementStatus.UNCHECKED;
                     break;
             }
         }
@@ -173,7 +175,7 @@ namespace SophiApp.Models
         {
             try
             {
-                State = CurrentStateAction?.Invoke() == true ? UIElementState.CHECKED : UIElementState.UNCHECKED;
+                Status = CurrentStateAction?.Invoke() == true ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
             }
             catch (Exception e)
             {
@@ -191,7 +193,7 @@ namespace SophiApp.Models
         {
             try
             {
-                SystemStateAction(State == UIElementState.SETTOACTIVE);
+                SystemStateAction(Status == ElementStatus.SETTOACTIVE);
             }
             catch (Exception e)
             {

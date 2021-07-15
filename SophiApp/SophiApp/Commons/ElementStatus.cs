@@ -1,6 +1,6 @@
 ﻿namespace SophiApp.Commons
 {
-    internal enum UIElementState
+    internal enum ElementStatus
     {
         DISABLED,
         CHECKED,

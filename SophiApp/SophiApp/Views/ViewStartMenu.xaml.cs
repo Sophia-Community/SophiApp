@@ -70,7 +70,7 @@ namespace SophiApp.Views
 
         private void TextedElementsFilter(object sender, FilterEventArgs e)
         {
-            e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as BaseTextedElement).Tag, viewTag: Tag);
+            e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tag);
         }
 
         private void ViewStartMenu_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

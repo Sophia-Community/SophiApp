@@ -103,9 +103,13 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand LocalizationChangeCommand { get; private set; }
+
         public List<string> LocalizationList => localizationsHelper.GetNames();
+
         public RelayCommand RadioButtonGroupClickedCommand { get; private set; }
+
         public RelayCommand ResetTextedElementsStateCommand { get; private set; }
+
         public RelayCommand SaveDebugLogCommand { get; private set; }
 
         public RelayCommand SearchClickedCommand { get; private set; }

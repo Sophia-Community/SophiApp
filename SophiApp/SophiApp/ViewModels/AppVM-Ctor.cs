@@ -4,7 +4,7 @@
     {
         public AppVM()
         {
-            InitProps();
+            InitProperties();
             InitCommands();
         }
     }

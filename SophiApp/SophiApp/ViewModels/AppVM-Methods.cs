@@ -1,12 +1,14 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
 using SophiApp.Helpers;
+using SophiApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +24,7 @@ namespace SophiApp.ViewModels
 
         private async void ApplyingSettingsAsync(object args)
         {
+            //TODO: AppVM ApplyingSettingsAsync - need testing and refactoring.
             debugger.Write(DebuggerRecord.INIT_APPLYING_SETTINGS);
             debugger.Write(DebuggerRecord.CHANGED_ELEMENTS, $"{TextedElementsChangedCounter}");
             SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
@@ -47,7 +50,7 @@ namespace SophiApp.ViewModels
                     {
                         container.ChildElements.ForEach(e =>
                         {
-                            if (e.State == UIElementState.SETTOACTIVE || e.State == UIElementState.SETTODEFAULT)
+                            if (e.Status == ElementStatus.SETTOACTIVE || e.Status == ElementStatus.SETTODEFAULT)
                             {
                                 e.SetSystemState();
                             }
@@ -78,6 +81,7 @@ namespace SophiApp.ViewModels
 
         private async void ExpandingGroupClickedAsync(object args)
         {
+            //TODO: AppVM ExpandingGroupClickedAsync - need testing and refactoring.
             var list = args as List<uint>;
             await ExpandingGroupClickedAsync(elementId: list.First(), containerId: list.Last());
         }
@@ -89,7 +93,7 @@ namespace SophiApp.ViewModels
                 var group = TextedElements.First(container => container.Id == containerId) as IContainer;
                 var element = group.ChildElements.First(e => e.Id == elementId);
                 element.ChangeState();
-                SetTextedElementsChangedCounter(element.State);
+                SetTextedElementsChangedCounter(element.Status);
             });
         }
 
@@ -153,7 +157,7 @@ namespace SophiApp.ViewModels
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
         }
 
-        private void InitProps()
+        private void InitProperties()
         {
             debugger = new Debugger();
             localizationsHelper = new LocalizationsHelper();
@@ -186,6 +190,8 @@ namespace SophiApp.ViewModels
 
                     TextedElements.ForEach(element =>
                     {
+                        element.StatusChanged += OnTextedElementStateChanged;
+                        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
                         element.ChangeLanguage(Localization.Language);
                     });
                 }
@@ -194,48 +200,11 @@ namespace SophiApp.ViewModels
                     MessageBox.Show(e.Message, "SophiApp has error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-                //TextedElements = Parser.ParseJson(Properties.Resources.UIData).Where(dto => dto.Type == UIType.TextedElement)
-                //                                                              .Select(dto => ElementsFabric.Create(dto))
-                //                                                              .ToList();
-
-                //TextedElements.ForEach(element =>
-                //{
-                //    element.SetLocalization(Localization.Language);
-
-                //    if (!(element is IContainer))
-                //    {
-                //        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
-                //        element.StateChanged += OnTextedElementStateChanged;
-                //        element.CurrentStateAction = ElementsFabric.SetCurrentStateAction(element.Id);
-                //        element.SystemStateAction = ElementsFabric.SetSystemStateAction(element.Id);
-                //        element.GetCurrentState();
-
-                //        if (element.ContainerId > 0)
-                //        {
-                //            var container = TextedElements.First(c => c.Id == element.ContainerId) as IContainer;
-                //            container.ChildElements.Add(element);
-                //        }
-                //    }
-                //});
-
-                //TextedElements.RemoveAll(element => element.ContainerId > 0);
-                //TextedElements.Where(element => element is RadioButtonsGroup)
-                //              .Cast<RadioButtonsGroup>()
-                //              .ToList()
-                //              .ForEach(group =>
-                //              {
-                //                  group.ErrorOccurred += OnRadioButtonsGroupErrorOccurredAsync;
-                //                  //group.SetDefaultSelectedId();
-                //              });
-
                 debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
             });
         }
 
-        private bool IsNewVersion(Version currentVersion, string outsideVersion, bool outsidePrerelease, bool outsideDraft)
-        {
-            return new Version(outsideVersion) > currentVersion && outsidePrerelease == false && outsideDraft == false;
-        }
+        private bool IsNewVersion(ReleaseDto dto) => new Version(dto.tag_name) > AppData.Version && dto.prerelease == false && dto.draft == false;
 
         private async void LocalizationChangeAsync(object args) => await LocalizationChangeAsync(args as string);
 
@@ -256,6 +225,7 @@ namespace SophiApp.ViewModels
 
         private async void OnRadioButtonsGroupErrorOccurredAsync(uint id, Exception e)
         {
+            //TODO: AppVM OnRadioButtonsGroupErrorOccurredAsync - need testing and refactoring.
             debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
             debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
             debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
@@ -271,12 +241,14 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void OnTextedElementErrorOccurredAsync(uint id, Exception e)
+        private async void OnTextedElementErrorOccurredAsync(Exception e)
         {
-            debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
-            debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-            debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-            await OnTextedElementErrorOccurredAsync(id);
+            //TODO: AppVM OnTextedElementErrorOccurredAsync need testing anr refactoring.
+
+            //debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
+            //debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+            //debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+            //await OnTextedElementErrorOccurredAsync(id);
         }
 
         private async Task OnTextedElementErrorOccurredAsync(uint id)
@@ -288,7 +260,7 @@ namespace SophiApp.ViewModels
            });
         }
 
-        private void OnTextedElementStateChanged(uint id, UIElementState state) => debugger.Write(DebuggerRecord.ELEMENT_STATE, $"{id}", $"{state}");
+        private void OnTextedElementStateChanged(object sender, TextedElement e) => debugger.Write(DebuggerRecord.ELEMENT_STATE, $"{e.Id}", $"{e.Status}");
 
         private async void RadioButtonGroupClickedAsync(object args)
         {
@@ -300,6 +272,7 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
+                //TODO: AppVM RadioButtonGroupClickedAsync - need testing and refactoring.
                 //var group = TextedElements.First(g => g.Id == groupId) as RadioButtonsGroup;
                 //var element = group.ChildElements.First(e => e.Id == elementId);
                 //group.ChildElements.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
@@ -332,6 +305,7 @@ namespace SophiApp.ViewModels
 
         private async Task ResetTextedElementsStateAsync()
         {
+            //TODO: AppVM ResetTextedElementsStateAsync - need testing and refactoring.
             await Task.Run(() =>
             {
                 //TextedElements.ForEach(element =>
@@ -404,17 +378,17 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
-        private void SetTextedElementsChangedCounter(UIElementState elementState)
+        private void SetTextedElementsChangedCounter(ElementStatus elementState)
         {
             switch (elementState)
             {
-                case UIElementState.SETTOACTIVE:
-                case UIElementState.SETTODEFAULT:
+                case ElementStatus.SETTOACTIVE:
+                case ElementStatus.SETTODEFAULT:
                     TextedElementsChangedCounter++;
                     break;
 
-                case UIElementState.CHECKED:
-                case UIElementState.UNCHECKED:
+                case ElementStatus.CHECKED:
+                case ElementStatus.UNCHECKED:
                     TextedElementsChangedCounter--;
                     break;
 
@@ -435,61 +409,59 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
+                //TODO: AppVM TextedElementClickedAsync need testing and refactoring.
                 var element = TextedElements.First(e => e.Id == id);
                 //element.ChangeState();
                 //SetTextedElementsChangedCounter(element.State);
             });
         }
 
-        //TODO: UpdateIsAvailableAsync - Need refactoring to Newton json
-        //private async Task UpdateIsAvailableAsync()
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubApiReleases);
-        //        request.UserAgent = AppData.UserAgent;
+        private async Task UpdateIsAvailableAsync()
+        {
+            await Task.Run(() =>
+            {
+                HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubApiReleases);
+                request.UserAgent = AppData.UserAgent;
 
-        //        try
-        //        {
-        //            var response = request.GetResponse();
-        //            debugger.Write(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
-        //            using (Stream dataStream = response.GetResponseStream())
-        //            {
-        //                StreamReader reader = new StreamReader(dataStream);
-        //                string responseFromServer = reader.ReadToEnd();
-        //                debugger.Write(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{responseFromServer.Length}");
-        //                var release = Parser.ParseJson(responseFromServer).First();
-        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.Tag_Name}");
-        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.Prerelease}");
-        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.Draft}");
-        //                var updateRequired = IsNewVersion(currentVersion: AppData.Version, outsideVersion: release.Tag_Name,
-        //                                                  outsidePrerelease: release.Prerelease, outsideDraft: release.Draft);
+                try
+                {
+                    var response = request.GetResponse();
+                    debugger.Write(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
+                    using (Stream dataStream = response.GetResponseStream())
+                    {
+                        StreamReader reader = new StreamReader(dataStream);
+                        var serverResponse = reader.ReadToEnd();
+                        debugger.Write(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{serverResponse.Length}");
+                        var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.tag_name}");
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.prerelease}");
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.draft}");
 
-        //                if (updateRequired)
-        //                {
-        //                    debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
-        //                    SetUpdateAvailableProperty(true);
-        //                    Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.Tag_Name);
-        //                    return;
-        //                }
+                        if (IsNewVersion(release))
+                        {
+                            debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
+                            SetUpdateAvailableProperty(true);
+                            Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.tag_name);
+                            return;
+                        }
 
-        //                debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
-        //            }
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            debugger.Write(DebuggerRecord.UPDATE_HAS_ERROR);
-        //            debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-        //            debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-        //            debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
-        //        }
-        //    });
-        //}
+                        debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
+                    }
+                }
+                catch (Exception e)
+                {
+                    debugger.Write(DebuggerRecord.UPDATE_HAS_ERROR);
+                    debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+                    debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+                    debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
+                }
+            });
+        }
 
         internal async void InitData()
         {
             MouseHelper.ShowWaitCursor(show: true);
-            //TODO: UpdateIsAvailableAsync - uncomment update function before release.
+            //TODO: UpdateIsAvailableAsync - uncomment before release.
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);

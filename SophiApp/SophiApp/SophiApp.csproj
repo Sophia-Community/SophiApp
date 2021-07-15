@@ -66,7 +66,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commons\DebuggerRecord.cs" />
-    <Compile Include="Commons\GitHubReleaseDTO.cs" />
+    <Compile Include="Commons\ReleaseDto.cs" />
     <Compile Include="Commons\JsonDto.cs" />
     <Compile Include="Commons\JsonGuiChildDto.cs" />
     <Compile Include="Commons\JsonGuiDto.cs" />
@@ -74,7 +74,7 @@
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Tags.cs" />
     <Compile Include="Commons\Theme.cs" />
-    <Compile Include="Commons\UIElementState.cs" />
+    <Compile Include="Commons\ElementStatus.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Controls\ActorLink.xaml.cs">
       <DependentUpon>ActorLink.xaml</DependentUpon>
@@ -169,6 +169,7 @@
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\IElement.cs" />
+    <Compile Include="Interfaces\IHasChilds.cs" />
     <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
