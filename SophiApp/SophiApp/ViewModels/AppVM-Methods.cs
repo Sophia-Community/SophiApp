@@ -193,6 +193,8 @@ namespace SophiApp.ViewModels
                         element.StatusChanged += OnTextedElementStateChanged;
                         element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
                         element.ChangeLanguage(Localization.Language);
+                        Thread.Sleep(50); //TODO: AppVM - Thread.Sleep for randomize element state.
+                        element.GetCustomisation();
                     });
                 }
                 catch (Exception e)
@@ -241,23 +243,15 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void OnTextedElementErrorOccurredAsync(Exception e)
-        {
-            //TODO: AppVM OnTextedElementErrorOccurredAsync need testing anr refactoring.
-
-            //debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
-            //debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-            //debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-            //await OnTextedElementErrorOccurredAsync(id);
-        }
-
-        private async Task OnTextedElementErrorOccurredAsync(uint id)
+        private async void OnTextedElementErrorOccurredAsync(TextedElement element, Exception e)
         {
             await Task.Run(() =>
-           {
-               var element = TextedElements.First(e => e.Id == id);
-               //element.State = UIElementState.DISABLED;
-           });
+            {
+                element.Status = ElementStatus.DISABLED;
+                debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{element.Id}");
+                debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+                debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+            });
         }
 
         private void OnTextedElementStateChanged(object sender, TextedElement e) => debugger.Write(DebuggerRecord.ELEMENT_STATE, $"{e.Id}", $"{e.Status}");

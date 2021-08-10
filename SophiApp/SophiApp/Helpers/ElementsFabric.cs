@@ -10,17 +10,8 @@ namespace SophiApp.Helpers
     //TODO: ElementsFabric - deprecated !!!
     internal class ElementsFabric
     {
-        private const string CURRENT_STATE_ACTION_CLASS = "SophiApp.Actions.CurrentStateAction";
-
-        private const string SYSTEM_STATE_ACTION_CLASS = "SophiApp.Actions.SystemStateAction";
-
-        //TODO: ElementsFabric - BaseTextedElement Deprecated !!!
-        internal static BaseTextedElement Create(JsonDto json)
-        {
-            var model = Type.GetType($"SophiApp.Models.{json.Model}");
-            var element = Activator.CreateInstance(model, json) as BaseTextedElement;            
-            return element;
-        }
+        private const string CUSTOMISATION_STATE_CLASS = "SophiApp.Customisations.CustomisationState";
+        private const string CUSTOMISATION_OS_CLASS = "SophiApp.Customisations.CustomisationOs";
 
         internal static TextedElement CreateTextedElement(JsonGuiDto dto)
         {
@@ -28,51 +19,25 @@ namespace SophiApp.Helpers
             var element = Activator.CreateInstance(type, dto) as TextedElement;
 
             if (element is IHasChilds childsContainer)
-                childsContainer.ChildElements = dto.ChildElements.Select(child => CreateTextedElement(child)).ToList();
+                childsContainer.ChildElements = dto.ChildElements.Select(child => CreateChildElement(child)).ToList();
+
+            element.CustomisationState = GetCustomisationState(element.Id);
 
             return element;
         }
 
-        internal static TextedElement CreateTextedElement(JsonGuiChildDto dto)
+        private static Func<bool> GetCustomisationState(uint id)
+        {
+            var type = Type.GetType(CUSTOMISATION_STATE_CLASS);
+            var method = type.GetMethod($"_{id}", BindingFlags.Static | BindingFlags.Public) ?? type.GetMethod("FOR_DEBUG_ONLY", BindingFlags.Static | BindingFlags.Public); //TODO: ElementsFabric - "FOR_DEBUG_ONLY"
+            return Delegate.CreateDelegate(typeof(Func<bool>), method) as Func<bool>;
+        }
+
+        internal static TextedElement CreateChildElement(JsonGuiChildDto dto)
         {
             var type = Type.GetType($"SophiApp.Models.{dto.Type}");
             return Activator.CreateInstance(type, dto) as TextedElement;
         }
 
-        //TODO: SetCurreElementsFabricntStateAction - SetCurrentStateAction Deprecated !!!
-        internal static Func<bool> SetCurrentStateAction(uint id)
-        {
-            try
-            {
-                var type = Type.GetType(CURRENT_STATE_ACTION_CLASS);
-                var action = type.GetMethod($"_{id}", BindingFlags.Static | BindingFlags.Public);
-                return Delegate.CreateDelegate(typeof(Func<bool>), action) as Func<bool>;
-            }
-            catch (Exception e)
-            {
-                //TODO: SetCurrentStateAction FOR DEBUG ONLY !!!
-                var type = Type.GetType(CURRENT_STATE_ACTION_CLASS);
-                var action = type.GetMethod("FOR_DEBUG_ONLY", BindingFlags.Static | BindingFlags.Public);
-                return Delegate.CreateDelegate(typeof(Func<bool>), action) as Func<bool>;
-            }
-        }
-
-        //TODO: ElementsFabric - SetSystemStateAction Deprecated !!!
-        internal static Action<bool> SetSystemStateAction(uint id)
-        {
-            try
-            {
-                var type = Type.GetType(SYSTEM_STATE_ACTION_CLASS);
-                var action = type.GetMethod($"_{id}", BindingFlags.Static | BindingFlags.Public);
-                return Delegate.CreateDelegate(typeof(Action<bool>), action) as Action<bool>;
-            }
-            catch (Exception)
-            {
-                //TODO: SetSystemStateAction FOR DEBUG ONLY !!!
-                var type = Type.GetType(SYSTEM_STATE_ACTION_CLASS);
-                var action = type.GetMethod("FOR_DEBUG_ONLY", BindingFlags.Static | BindingFlags.Public);
-                return Delegate.CreateDelegate(typeof(Action<bool>), action) as Action<bool>;
-            }
-        }
     }
 }

@@ -149,6 +149,8 @@
     <Compile Include="Converters\IntToSettings.cs" />
     <Compile Include="Converters\ParametersToArray.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
+    <Compile Include="Customisations\CustomisationOs.cs" />
+    <Compile Include="Customisations\CustomisationState.cs" />
     <Compile Include="Helpers\ActionsData.cs" />
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />

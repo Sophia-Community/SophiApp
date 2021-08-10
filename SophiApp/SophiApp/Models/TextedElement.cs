@@ -133,7 +133,23 @@ namespace SophiApp.Models
             }
         }
 
-        public Action<Exception> ErrorOccurred { get; set; }
+        internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
+
+        public Func<bool> CustomisationState { get; set; }
+
+        internal Action<bool> CustomizeOs { get; set; }
+
+        internal void GetCustomisation()
+        {
+            try
+            {
+                Status = CustomisationState.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+            }
+            catch (Exception e)
+            {
+                ErrorOccurred?.Invoke(this, e);
+            }
+        }
 
         public string Header
         {
