@@ -65,7 +65,7 @@
 
                         <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                             <ItemsControl.Resources>
-                                <DataTemplate DataType="{x:Type models:WinIconCheckBox}">
+                                <!--<DataTemplate DataType="{x:Type models:WinIconCheckBox}">
                                     <controls:WinIconCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
                                                               CommandParameter="{Binding Id}"
                                                               Id="{Binding Id}"
@@ -80,7 +80,7 @@
                                                                  IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                                  IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
                                                                  Margin="20, 0, 0, 10" />
-                                </DataTemplate>
+                                </DataTemplate>-->
                             </ItemsControl.Resources>
                         </ItemsControl>
                     </ScrollViewer>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -39,7 +37,7 @@ namespace SophiApp.Controls
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            Command?.Execute(new List<uint> { Convert.ToUInt32(e.OriginalSource), Id });
+            Command?.Execute(e.OriginalSource);
         }
     }
 }

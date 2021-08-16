@@ -1,6 +1,4 @@
 ﻿using SophiApp.Commons;
-using SophiApp.Interfaces;
-using System.Collections.Generic;
 
 namespace SophiApp.Models
 {

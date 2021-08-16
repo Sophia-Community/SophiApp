@@ -67,7 +67,6 @@
     </ApplicationDefinition>
     <Compile Include="Commons\DebuggerRecord.cs" />
     <Compile Include="Commons\ReleaseDto.cs" />
-    <Compile Include="Commons\JsonDto.cs" />
     <Compile Include="Commons\JsonGuiChildDto.cs" />
     <Compile Include="Commons\JsonGuiDto.cs" />
     <Compile Include="Commons\Localization.cs" />
@@ -150,7 +149,7 @@
     <Compile Include="Converters\ParametersToArray.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
-    <Compile Include="Customisations\CustomisationState.cs" />
+    <Compile Include="Customisations\CustomisationStatus.cs" />
     <Compile Include="Helpers\ActionsData.cs" />
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
@@ -169,18 +168,14 @@
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
-    <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\IElement.cs" />
     <Compile Include="Interfaces\IHasChilds.cs" />
     <Compile Include="Models\TextedElement.cs" />
-    <Compile Include="Models\BaseTextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
     <Compile Include="Models\ExpandingGroup.cs" />
-    <Compile Include="Models\FolderIconCheckBox.cs" />
     <Compile Include="Models\RadioButton.cs" />
     <Compile Include="Models\RadioButtonsGroup.cs" />
     <Compile Include="Models\Switch.cs" />
-    <Compile Include="Models\WinIconCheckBox.cs" />
     <Compile Include="ViewModels\AppVM-Ctor.cs" />
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />

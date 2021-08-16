@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
 using SophiApp.Helpers;
+using SophiApp.Interfaces;
 using SophiApp.Models;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,8 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using Debugger = SophiApp.Helpers.Debugger;
-using IContainer = SophiApp.Interfaces.IContainer;
+
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
@@ -46,18 +46,18 @@ namespace SophiApp.ViewModels
             {
                 TextedElements.ForEach(element =>
                 {
-                    if (element is IContainer container)
-                    {
-                        container.ChildElements.ForEach(e =>
-                        {
-                            if (e.Status == ElementStatus.SETTOACTIVE || e.Status == ElementStatus.SETTODEFAULT)
-                            {
-                                e.SetSystemState();
-                            }
-                        });
+                    //if (element is IContainer container)
+                    //{
+                    //    container.ChildElements.ForEach(e =>
+                    //    {
+                    //        if (e.Status == ElementStatus.SETTOACTIVE || e.Status == ElementStatus.SETTODEFAULT)
+                    //        {
+                    //            e.SetSystemState();
+                    //        }
+                    //    });
 
-                        return;
-                    }
+                    //    return;
+                    //}
 
                     //if (element.State == UIElementState.SETTOACTIVE || element.State == UIElementState.SETTODEFAULT)
                     //{
@@ -90,10 +90,10 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var group = TextedElements.First(container => container.Id == containerId) as IContainer;
-                var element = group.ChildElements.First(e => e.Id == elementId);
-                element.ChangeState();
-                SetTextedElementsChangedCounter(element.Status);
+                //var group = TextedElements.First(container => container.Id == containerId) as IContainer;
+                //var element = group.ChildElements.First(e => e.Id == elementId);
+                //element.ChangeState();
+                //SetTextedElementsChangedCounter(element.Status);
             });
         }
 
@@ -107,6 +107,13 @@ namespace SophiApp.ViewModels
                 debugger.Write(DebuggerRecord.INIT_EXPORT_SETTINGS);
                 // ...
             });
+        }
+
+        private RadioButtonsGroup FindRadioButtonGroup(uint childId)
+        {
+            return TextedElements.Where(rbr => rbr is RadioButtonsGroup)
+                                 .Cast<RadioButtonsGroup>()
+                                 .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
         }
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
@@ -180,27 +187,33 @@ namespace SophiApp.ViewModels
 
                 //TODO: TextedElements - for UIData.json modify.
 
-                try
-                {
-                    var file = File.ReadAllText("UIData.json");
-                    //var bytes = Encoding.UTF8.GetBytes(file);
-                    TextedElements = JsonConvert.DeserializeObject<IEnumerable<JsonGuiDto>>(file)
-                                                .Select(dto => ElementsFabric.CreateTextedElement(dto))
-                                                .ToList();
+                var file = File.ReadAllText("UIData.json");
+                //var bytes = Encoding.UTF8.GetBytes(file);
+                TextedElements = JsonConvert.DeserializeObject<IEnumerable<JsonGuiDto>>(file)
+                                            .Select(dto => ElementsFabric.CreateTextedElement(dto))
+                                            .ToList();
 
-                    TextedElements.ForEach(element =>
-                    {
-                        element.StatusChanged += OnTextedElementStateChanged;
-                        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
-                        element.ChangeLanguage(Localization.Language);
-                        Thread.Sleep(50); //TODO: AppVM - Thread.Sleep for randomize element state.
-                        element.GetCustomisation();
-                    });
-                }
-                catch (Exception e)
+                TextedElements.ForEach(element =>
                 {
-                    MessageBox.Show(e.Message, "SophiApp has error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                    if (element is IHasChilds parent)
+                    {
+                        parent.ChildElements.ForEach(child =>
+                        {
+                            child.StatusChanged += OnTextedElementStatusChanged;
+                            child.ErrorOccurred += OnTextedElementErrorOccurredAsync;
+                            child.GetCustomisationStatus();
+                        });
+                    }
+                    else
+                    {
+                        element.StatusChanged += OnTextedElementStatusChanged;
+                        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
+                        element.GetCustomisationStatus();
+                    }
+
+                    element.ChangeLanguage(Localization.Language);
+                    Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
+                });
 
                 debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
             });
@@ -225,63 +238,36 @@ namespace SophiApp.ViewModels
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
-        private async void OnRadioButtonsGroupErrorOccurredAsync(uint id, Exception e)
-        {
-            //TODO: AppVM OnRadioButtonsGroupErrorOccurredAsync - need testing and refactoring.
-            debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{id}");
-            debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-            debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-            await OnRadioButtonsGroupErrorOccurredAsync(id);
-        }
-
-        private async Task OnRadioButtonsGroupErrorOccurredAsync(uint id)
-        {
-            await Task.Run(() =>
-            {
-                var group = TextedElements.First(element => element.Id == id);
-                //group.State = UIElementState.DISABLED;
-            });
-        }
-
         private async void OnTextedElementErrorOccurredAsync(TextedElement element, Exception e)
         {
             await Task.Run(() =>
             {
-                element.Status = ElementStatus.DISABLED;
+                if (element is RadioButton)
+                {
+                    var group = FindRadioButtonGroup(element.Id);
+                    group?.ChildElements.ForEach(child => child.Status = ElementStatus.DISABLED);
+                }
+                else
+                {
+                    element.Status = ElementStatus.DISABLED;
+                }
+
                 debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{element.Id}");
                 debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
                 debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
             });
         }
 
-        private void OnTextedElementStateChanged(object sender, TextedElement e) => debugger.Write(DebuggerRecord.ELEMENT_STATE, $"{e.Id}", $"{e.Status}");
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write(DebuggerRecord.ELEMENT_STATUS, $"{element.Id}", $"{element.Status}");
 
-        private async void RadioButtonGroupClickedAsync(object args)
-        {
-            var list = args as List<uint>;
-            await RadioButtonGroupClickedAsync(elementId: list.First(), groupId: list.Last());
-        }
+        private async void RadioButtonGroupClickedAsync(object args) => await RadioButtonGroupClickedAsync(Convert.ToUInt32(args));
 
-        private async Task RadioButtonGroupClickedAsync(uint elementId, uint groupId)
+        private async Task RadioButtonGroupClickedAsync(uint id)
         {
             await Task.Run(() =>
             {
-                //TODO: AppVM RadioButtonGroupClickedAsync - need testing and refactoring.
-                //var group = TextedElements.First(g => g.Id == groupId) as RadioButtonsGroup;
-                //var element = group.ChildElements.First(e => e.Id == elementId);
-                //group.ChildElements.ForEach(e => e.State = e.Id == elementId ? UIElementState.SETTOACTIVE : UIElementState.UNCHECKED);
-
-                //if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
-                //{
-                //    SetTextedElementsChangedCounter(UIElementState.SETTOACTIVE);
-                //    group.IsSelected = true;
-                //}
-
-                //if (element.Id == group.DefaultSelectedId)
-                //{
-                //    SetTextedElementsChangedCounter(UIElementState.UNCHECKED);
-                //    group.IsSelected = false;
-                //}
+                var group = FindRadioButtonGroup(id);
+                group?.ChildElements.ForEach(element => element.Status = element.Id == id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
             });
         }
 
@@ -397,16 +383,12 @@ namespace SophiApp.ViewModels
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
 
-        private async void TextedElementClickedAsync(object args) => await TextedElementClickedAsync(id: Convert.ToUInt32(args));
-
-        private async Task TextedElementClickedAsync(uint id)
+        private async void TextedElementClickedAsync(object args)
         {
             await Task.Run(() =>
             {
-                //TODO: AppVM TextedElementClickedAsync need testing and refactoring.
-                var element = TextedElements.First(e => e.Id == id);
-                //element.ChangeState();
-                //SetTextedElementsChangedCounter(element.State);
+                var element = TextedElements.FirstOrDefault(el => el.Id == (uint)args);
+                element?.ChangeStatus();
             });
         }
 

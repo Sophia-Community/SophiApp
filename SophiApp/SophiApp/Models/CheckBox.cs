@@ -10,7 +10,6 @@ namespace SophiApp.Models
 
         public CheckBox(JsonGuiChildDto dto) : base(dto)
         {
-
         }
     }
 }

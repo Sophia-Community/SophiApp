@@ -8,11 +8,11 @@ namespace SophiApp.Models
 {
     internal class TextedElement : IElement
     {
-        private bool isEnabled;
-        private bool isChecked;
-        private bool isClicked;
         private string description;
         private string header;
+        private bool isChecked;
+        private bool isClicked;
+        private bool isEnabled;
 
         internal TextedElement(JsonGuiDto dto)
         {
@@ -26,24 +26,52 @@ namespace SophiApp.Models
         {
             Headers = dto.ChildHeader;
             Descriptions = dto.ChildDescription;
-            Id = dto.ChildId;
+            Id = dto.Id;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         public event EventHandler<TextedElement> StatusChanged;
 
         protected Dictionary<UILanguage, string> Descriptions { get; set; }
-        public Dictionary<UILanguage, string> Headers { get; set; }
+        internal Action<bool?> CustomizeOs { get; set; }
+        internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
 
-        public virtual bool IsEnabled
+        internal virtual ElementStatus Status
         {
-            get => isEnabled;
-            private set
+            get => GetElementStatus();
+            set
             {
-                isEnabled = value;
-                OnPropertyChanged("IsEnabled");
+                SetElementStatus(value);
+                StatusChanged?.Invoke(null, this);
             }
         }
+
+        public Func<bool?> CustomisationStatus { get; set; }
+
+        public string Description
+        {
+            get => description;
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
+        public string Header
+        {
+            get => header;
+            set
+            {
+                header = value;
+                OnPropertyChanged("Header");
+            }
+        }
+
+        public Dictionary<UILanguage, string> Headers { get; set; }
+
+        public uint Id { get; }
 
         public virtual bool IsChecked
         {
@@ -55,15 +83,46 @@ namespace SophiApp.Models
             }
         }
 
-        internal virtual ElementStatus Status
+        public virtual bool IsClicked
         {
-            get => GetElementStatus();
-            set
+            get => isClicked;
+            private set
             {
-                SetElementStatus(value);
-                StatusChanged?.Invoke(null, this);
+                isClicked = value;
+                OnPropertyChanged("IsClicked");
             }
         }
+
+        public virtual bool IsEnabled
+        {
+            get => isEnabled;
+            private set
+            {
+                isEnabled = value;
+                OnPropertyChanged("IsEnabled");
+            }
+        }
+
+        public string Tag { get; }
+
+        private ElementStatus GetElementStatus()
+        {
+            if (IsEnabled & IsChecked & IsClicked == false)
+                return ElementStatus.CHECKED;
+
+            if (IsEnabled & IsChecked == false & IsClicked == false)
+                return ElementStatus.UNCHECKED;
+
+            if (IsEnabled & IsChecked == false & IsClicked)
+                return ElementStatus.SETTODEFAULT;
+
+            if (IsEnabled & IsChecked & IsChecked)
+                return ElementStatus.SETTOACTIVE;
+
+            return ElementStatus.DISABLED;
+        }
+
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private void SetElementStatus(ElementStatus value)
         {
@@ -91,81 +150,45 @@ namespace SophiApp.Models
                 case ElementStatus.SETTOACTIVE:
                     IsEnabled = IsChecked = IsClicked = true;
                     break;
+
                 default:
                     break;
             }
         }
 
-        private ElementStatus GetElementStatus()
+        internal void ChangeStatus()
         {
-            if (IsEnabled & IsChecked & IsClicked == false)
-                return ElementStatus.CHECKED;
-
-            if (IsEnabled & IsChecked == false & IsClicked == false)
-                return ElementStatus.UNCHECKED;
-
-            if (IsEnabled & IsChecked == false & IsClicked)
-                return ElementStatus.SETTODEFAULT;
-
-            if (IsEnabled & IsChecked & IsChecked)
-                return ElementStatus.SETTOACTIVE;
-
-            return ElementStatus.DISABLED;
-        }
-
-        public virtual bool IsClicked
-        {
-            get => isClicked;
-            private set
+            switch (Status)
             {
-                isClicked = value;
-                OnPropertyChanged("IsClicked");
+                case ElementStatus.CHECKED:
+                    Status = ElementStatus.SETTODEFAULT;
+                    break;
+
+                case ElementStatus.UNCHECKED:
+                    Status = ElementStatus.SETTOACTIVE;
+                    break;
+
+                case ElementStatus.SETTODEFAULT:
+                    Status = ElementStatus.CHECKED;
+                    break;
+
+                case ElementStatus.SETTOACTIVE:
+                    Status = ElementStatus.UNCHECKED;
+                    break;
             }
         }
 
-        public string Description
-        {
-            get => description;
-            set
-            {
-                description = value;
-                OnPropertyChanged("Description");
-            }
-        }
-
-        internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
-
-        public Func<bool> CustomisationState { get; set; }
-
-        internal Action<bool> CustomizeOs { get; set; }
-
-        internal void GetCustomisation()
+        internal virtual void GetCustomisationStatus()
         {
             try
             {
-                Status = CustomisationState.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                Status = CustomisationStatus?.Invoke() == true ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
             }
             catch (Exception e)
             {
                 ErrorOccurred?.Invoke(this, e);
             }
         }
-
-        public string Header
-        {
-            get => header;
-            set
-            {
-                header = value;
-                OnPropertyChanged("Header");
-            }
-        }
-
-        public uint Id { get; }
-
-        public string Tag { get; }
-
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         public virtual void ChangeLanguage(UILanguage language)
         {

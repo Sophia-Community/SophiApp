@@ -12,6 +12,11 @@ namespace SophiApp.Models
 
         public List<TextedElement> ChildElements { get; set; }
 
+        internal void OnChildStatusChanged(object sender, TextedElement e)
+        {
+            ChildElements.ForEach(child => child.Status = child.Id == e.Id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
+        }
+
         public override void ChangeLanguage(UILanguage language)
         {
             Header = Headers[language];

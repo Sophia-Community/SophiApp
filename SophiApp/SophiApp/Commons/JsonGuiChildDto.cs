@@ -6,7 +6,7 @@ namespace SophiApp.Commons
     {
         public Dictionary<UILanguage, string> ChildDescription { get; set; }
         public Dictionary<UILanguage, string> ChildHeader { get; set; }
-        public uint ChildId { get; set; }
+        public uint Id { get; set; }
         public string Type { get; set; }
     }
 }
