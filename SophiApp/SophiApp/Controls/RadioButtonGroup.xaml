@@ -27,6 +27,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Margin" Value="20, 0, 0, 20" />
@@ -36,9 +37,14 @@
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel>
-                <TextBlock Style="{DynamicResource NormalText}"
-                           Text="{Binding Header}"
-                           TextWrapping="Wrap" />
+                <StackPanel x:Name="HeaderWrapper"
+                            Orientation="Horizontal"
+                            MouseEnter="Header_MouseEnter"
+                            MouseLeave="Header_MouseLeave">
+                    <TextBlock Style="{DynamicResource NormalText}"
+                               Text="{Binding Header}"
+                               TextWrapping="Wrap" />
+                </StackPanel>
                 <Border />
                 <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.Resources>

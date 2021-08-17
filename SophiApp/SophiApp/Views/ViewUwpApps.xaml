@@ -7,6 +7,10 @@
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
+             controls:ExpandingGroup.MouseEnter="TextedElement_MouseEnter"
+             controls:ExpandingGroup.MouseLeave="TextedElement_MouseLeave"
+             controls:RadioButtonGroup.MouseEnter="TextedElement_MouseEnter"
+             controls:RadioButtonGroup.MouseLeave="TextedElement_MouseLeave"
              controls:Switch.MouseEnter="TextedElement_MouseEnter"
              controls:Switch.MouseLeave="TextedElement_MouseLeave"
              controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
@@ -42,9 +46,9 @@
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid.ColumnDefinitions>
                     <!--UI content column-->
-                    <ColumnDefinition Width="9*" />
+                    <ColumnDefinition Width="4*" />
                     <!--Description column-->
-                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
@@ -67,9 +71,9 @@
                     </ScrollViewer>
                 </Grid>
                 <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                    <TextBlock Style="{DynamicResource SmallText}"
+                    <TextBlock Style="{DynamicResource NormalText}"
                                TextWrapping="Wrap"
-                               Margin="10"
+                               Margin="5"
                                Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
                 </StackPanel>
             </Grid>

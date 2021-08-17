@@ -51,8 +51,8 @@ namespace SophiApp.Controls
 
         public new event RoutedEventHandler MouseLeave
         {
-            add { AddHandler(MouseEnterEvent, value); }
-            remove { RemoveHandler(MouseEnterEvent, value); }
+            add { AddHandler(MouseLeaveEvent, value); }
+            remove { RemoveHandler(MouseLeaveEvent, value); }
         }
 
         public string Description

@@ -82,6 +82,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Margin" Value="20, 0, 0, 20" />
@@ -98,13 +99,18 @@
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="20" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Style="{DynamicResource NormalText}"
+                    <StackPanel x:Name="HeaderWrapper"
+                                Orientation="Horizontal"
+                                Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                Grid.Column="0"
+                                MouseEnter="Header_MouseEnter"
+                                MouseLeave="HeaderWrapper_MouseLeave">
+                        <TextBlock Style="{DynamicResource NormalText}"
                                TextWrapping="Wrap"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               Text="{Binding Header}"
-                               Grid.Column="0" />
-
+                               Text="{Binding Header}" />
+                    </StackPanel>
                     <Grid Style="{StaticResource Style.Grid.Path.Wrapper}" MouseLeftButtonDown="ExpandingGroup_MouseLeftButtonDown">
                         <Viewbox x:Name="ViewboxArrow">
                             <Canvas>
