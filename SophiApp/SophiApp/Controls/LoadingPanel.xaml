@@ -38,8 +38,8 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="9*" />
-                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <local:LoadingRing Grid.Column="0"
                                    VerticalAlignment="Center"

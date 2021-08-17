@@ -81,19 +81,12 @@ namespace SophiApp.ViewModels
 
         private async void ExpandingGroupClickedAsync(object args)
         {
-            //TODO: AppVM ExpandingGroupClickedAsync - need testing and refactoring.
-            var list = args as List<uint>;
-            await ExpandingGroupClickedAsync(elementId: list.First(), containerId: list.Last());
-        }
-
-        private async Task ExpandingGroupClickedAsync(uint elementId, uint containerId)
-        {
             await Task.Run(() =>
             {
-                //var group = TextedElements.First(container => container.Id == containerId) as IContainer;
-                //var element = group.ChildElements.First(e => e.Id == elementId);
-                //element.ChangeState();
-                //SetTextedElementsChangedCounter(element.Status);
+                var id = (uint)args;
+                var element = FindExpandingGroup(id)?.ChildElements.FirstOrDefault(child => child.Id == id);
+                element?.ChangeStatus();
+                SetTextedElementsChangedCounter(element.Status);
             });
         }
 
@@ -109,12 +102,13 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private RadioButtonsGroup FindRadioButtonGroup(uint childId)
-        {
-            return TextedElements.Where(rbr => rbr is RadioButtonsGroup)
-                                 .Cast<RadioButtonsGroup>()
-                                 .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
-        }
+        private ExpandingGroup FindExpandingGroup(uint childId) => TextedElements.Where(eg => eg is ExpandingGroup)
+                                                                                 .Cast<ExpandingGroup>()
+                                                                                 .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
+
+        private RadioButtonsGroup FindRadioButtonGroup(uint childId) => TextedElements.Where(rbr => rbr is RadioButtonsGroup)
+                                                                                      .Cast<RadioButtonsGroup>()
+                                                                                      .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
@@ -203,6 +197,11 @@ namespace SophiApp.ViewModels
                             child.ErrorOccurred += OnTextedElementErrorOccurredAsync;
                             child.GetCustomisationStatus();
                         });
+
+                        if (element is RadioButtonsGroup group)
+                        {
+                            group.SetDefaultSelectedId();
+                        }
                     }
                     else
                     {
@@ -258,16 +257,28 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write(DebuggerRecord.ELEMENT_STATUS, $"{element.Id}", $"{element.Status}");
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write(DebuggerRecord.ELEMENT_CHANGE_STATUS, $"{element.Id}", $"{element.Status}");
 
-        private async void RadioButtonGroupClickedAsync(object args) => await RadioButtonGroupClickedAsync(Convert.ToUInt32(args));
-
-        private async Task RadioButtonGroupClickedAsync(uint id)
+        private async void RadioButtonGroupClickedAsync(object args)
         {
             await Task.Run(() =>
             {
-                var group = FindRadioButtonGroup(id);
-                group?.ChildElements.ForEach(element => element.Status = element.Id == id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
+                var id = (uint)args;
+                var group = FindRadioButtonGroup(childId: id);
+                var element = group?.ChildElements.FirstOrDefault(rb => rb.Id == id);
+                group?.ChildElements.ForEach(child => child.Status = child.Id == id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
+
+                if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
+                {
+                    SetTextedElementsChangedCounter(ElementStatus.SETTOACTIVE);
+                    group.IsSelected = true;
+                }
+
+                if (element.Id == group.DefaultSelectedId)
+                {
+                    SetTextedElementsChangedCounter(ElementStatus.UNCHECKED);
+                    group.IsSelected = false;
+                }
             });
         }
 
@@ -285,31 +296,26 @@ namespace SophiApp.ViewModels
 
         private async Task ResetTextedElementsStateAsync()
         {
-            //TODO: AppVM ResetTextedElementsStateAsync - need testing and refactoring.
             await Task.Run(() =>
             {
-                //TextedElements.ForEach(element =>
-                //{
-                //    if (element is IContainer container)
-                //    {
-                //        container.ChildElements
-                //                 .Where(e => e.State != UIElementState.DISABLED)
-                //                 .ToList()
-                //                 .ForEach(e => e.GetCurrentState());
+                TextedElements.ForEach(element =>
+                {
+                    if (element is IHasChilds parent)
+                    {
+                        parent.ChildElements.ForEach(child => child.GetCustomisationStatus());
 
-                //        if (element is RadioButtonsGroup group)
-                //        {
-                //            //group.SetDefaultSelectedId();
-                //        }
+                        if (element is RadioButtonsGroup group)
+                        {
+                            group.SetDefaultSelectedId();
+                        }
+                    }
+                    else
+                    {
+                        element.GetCustomisationStatus();
+                    }
 
-                //        return;
-                //    }
-
-                //    if (element.State != UIElementState.DISABLED)
-                //    {
-                //        element.GetCurrentState();
-                //    }
-                //});
+                    Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
+                });
             });
         }
 
@@ -358,9 +364,9 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
-        private void SetTextedElementsChangedCounter(ElementStatus elementState)
+        private void SetTextedElementsChangedCounter(ElementStatus status)
         {
-            switch (elementState)
+            switch (status)
             {
                 case ElementStatus.SETTOACTIVE:
                 case ElementStatus.SETTODEFAULT:
@@ -387,8 +393,10 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var element = TextedElements.FirstOrDefault(el => el.Id == (uint)args);
+                var id = (uint)args;
+                var element = TextedElements.FirstOrDefault(el => el.Id == id);
                 element?.ChangeStatus();
+                SetTextedElementsChangedCounter(element.Status);
             });
         }
 

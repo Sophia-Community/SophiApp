@@ -27,7 +27,7 @@
         DONE_TEXTED_ELEMENTS,
         INIT_TEXTED_ELEMENTS_RESET, // Reset texted elements state
         DONE_TEXTED_ELEMENTS_RESET,
-        ELEMENT_STATUS,
+        ELEMENT_CHANGE_STATUS,
         ELEMENT_HAS_ERROR,
         ERROR_CLASS,
         ERROR_METHOD,

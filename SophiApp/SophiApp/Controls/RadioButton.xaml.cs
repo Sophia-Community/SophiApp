@@ -26,7 +26,7 @@ namespace SophiApp.Controls
 
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
-            DependencyProperty.Register("Id", typeof(int), typeof(RadioButton), new PropertyMetadata(default));
+            DependencyProperty.Register("Id", typeof(uint), typeof(RadioButton), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsCheckedProperty =
@@ -67,9 +67,9 @@ namespace SophiApp.Controls
             set { SetValue(HeaderProperty, value); }
         }
 
-        public int Id
+        public uint Id
         {
-            get { return (int)GetValue(IdProperty); }
+            get { return (uint)GetValue(IdProperty); }
             set { SetValue(IdProperty, value); }
         }
 

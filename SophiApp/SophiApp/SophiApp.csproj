@@ -146,7 +146,6 @@
     <Compile Include="Converters\ChangesPanelVisibility.cs" />
     <Compile Include="Converters\IntToChanges.cs" />
     <Compile Include="Converters\IntToSettings.cs" />
-    <Compile Include="Converters\ParametersToArray.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />

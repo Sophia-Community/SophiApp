@@ -12,7 +12,6 @@
 
     <UserControl.Resources>
         <converters:ActualHeightMultiply x:Key="ActualHeightMultiplyConverter" />
-        <converters:ParametersToArray x:Key="ParametersToArrayConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -129,14 +128,9 @@
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
                                     <controls:CheckBox Margin="0, 10, 0, 12"
                                                        Command="{Binding Path=Command, RelativeSource={RelativeSource AncestorType={x:Type controls:ExpandingGroup}}}"
+                                                       CommandParameter="{Binding Id}"
                                                        IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                        IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
-                                        <controls:CheckBox.CommandParameter>
-                                            <MultiBinding Converter="{StaticResource ParametersToArrayConverter}">
-                                                <Binding Path="Id" />
-                                                <Binding Path="Id" RelativeSource="{RelativeSource AncestorType={x:Type controls:ExpandingGroup}}" />
-                                            </MultiBinding>
-                                        </controls:CheckBox.CommandParameter>
                                     </controls:CheckBox>
                                 </DataTemplate>
                             </ItemsControl.Resources>

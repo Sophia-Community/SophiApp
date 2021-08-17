@@ -32,7 +32,7 @@ namespace SophiApp.Controls
 
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
-            DependencyProperty.Register("Id", typeof(int), typeof(Switch), new PropertyMetadata(default));
+            DependencyProperty.Register("Id", typeof(uint), typeof(Switch), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsCheckedProperty =
@@ -75,9 +75,10 @@ namespace SophiApp.Controls
             get => (string)GetValue(HeaderProperty); set => SetValue(HeaderProperty, value);
         }
 
-        public int Id
+        public uint Id
         {
-            get => (int)GetValue(IdProperty); set => SetValue(IdProperty, value);
+            get { return (uint)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
         }
 
         public bool IsChecked
