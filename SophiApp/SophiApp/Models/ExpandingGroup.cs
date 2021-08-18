@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace SophiApp.Models
 {
-    internal class ExpandingGroup : TextedElement, IHasChilds
+    internal class ExpandingGroup : TextedElement, IParentElements
     {
-        public ExpandingGroup(JsonGuiDto dto) : base(dto)
+        public ExpandingGroup(TextedElementDTO dataObject) : base(dataObject)
         {
         }
 

@@ -4,11 +4,11 @@ namespace SophiApp.Models
 {
     internal class CheckBox : TextedElement
     {
-        public CheckBox(JsonGuiDto dto) : base(dto)
+        public CheckBox(TextedElementDTO dataObject) : base(dataObject)
         {
         }
 
-        public CheckBox(JsonGuiChildDto dto) : base(dto)
+        public CheckBox(TextedChildDTO dataObject) : base(dataObject)
         {
         }
     }

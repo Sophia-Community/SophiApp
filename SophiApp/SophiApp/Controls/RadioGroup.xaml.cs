@@ -5,27 +5,27 @@ using System.Windows.Input;
 namespace SophiApp.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для RadioButtonGroup.xaml
+    /// Логика взаимодействия для RadioGroup.xaml
     /// </summary>
-    public partial class RadioButtonGroup : UserControl
+    public partial class RadioGroup : UserControl
     {
-        private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioButtonGroup));
+        private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioGroup));
 
-        private static new readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioButtonGroup));
+        private static new readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioGroup));
 
         // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(ICommand), typeof(RadioButtonGroup), new PropertyMetadata(default));
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(RadioGroup), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
-            DependencyProperty.Register("Description", typeof(string), typeof(RadioButtonGroup), new PropertyMetadata(default));
+            DependencyProperty.Register("Description", typeof(string), typeof(RadioGroup), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
-            DependencyProperty.Register("Id", typeof(uint), typeof(RadioButtonGroup), new PropertyMetadata(default));
+            DependencyProperty.Register("Id", typeof(uint), typeof(RadioGroup), new PropertyMetadata(default));
 
-        public RadioButtonGroup()
+        public RadioGroup()
         {
             InitializeComponent();
         }

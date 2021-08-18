@@ -67,8 +67,8 @@
     </ApplicationDefinition>
     <Compile Include="Commons\DebuggerRecord.cs" />
     <Compile Include="Commons\ReleaseDto.cs" />
-    <Compile Include="Commons\JsonGuiChildDto.cs" />
-    <Compile Include="Commons\JsonGuiDto.cs" />
+    <Compile Include="Commons\TextedChildDTO.cs" />
+    <Compile Include="Commons\TextedElementDTO.cs" />
     <Compile Include="Commons\Localization.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Tags.cs" />
@@ -120,8 +120,8 @@
     <Compile Include="Controls\RadioButton.xaml.cs">
       <DependentUpon>RadioButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RadioButtonGroup.xaml.cs">
-      <DependentUpon>RadioButtonGroup.xaml</DependentUpon>
+    <Compile Include="Controls\RadioGroup.xaml.cs">
+      <DependentUpon>RadioGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ResetButton.xaml.cs">
       <DependentUpon>ResetButton.xaml</DependentUpon>
@@ -168,12 +168,12 @@
     <Compile Include="Helpers\UwpHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\IElement.cs" />
-    <Compile Include="Interfaces\IHasChilds.cs" />
+    <Compile Include="Interfaces\IParentElements.cs" />
     <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
     <Compile Include="Models\ExpandingGroup.cs" />
     <Compile Include="Models\RadioButton.cs" />
-    <Compile Include="Models\RadioButtonsGroup.cs" />
+    <Compile Include="Models\RadioGroup.cs" />
     <Compile Include="Models\Switch.cs" />
     <Compile Include="ViewModels\AppVM-Ctor.cs" />
     <Compile Include="ViewModels\AppVM-Events.cs" />
@@ -258,7 +258,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\RadioButtonGroup.xaml">
+    <Page Include="Controls\RadioGroup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

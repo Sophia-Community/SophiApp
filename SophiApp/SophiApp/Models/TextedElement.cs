@@ -14,19 +14,19 @@ namespace SophiApp.Models
         private bool isClicked;
         private bool isEnabled;
 
-        internal TextedElement(JsonGuiDto dto)
+        internal TextedElement(TextedElementDTO dataObject)
         {
-            Headers = dto.Header;
-            Descriptions = dto.Description;
-            Id = dto.Id;
-            Tag = dto.Tag;
+            Headers = dataObject.Header;
+            Descriptions = dataObject.Description;
+            Id = dataObject.Id;
+            Tag = dataObject.Tag;
         }
 
-        internal TextedElement(JsonGuiChildDto dto)
+        internal TextedElement(TextedChildDTO dataObject)
         {
-            Headers = dto.ChildHeader;
-            Descriptions = dto.ChildDescription;
-            Id = dto.Id;
+            Headers = dataObject.ChildHeader;
+            Descriptions = dataObject.ChildDescription;
+            Id = dataObject.Id;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -34,20 +34,19 @@ namespace SophiApp.Models
         public event EventHandler<TextedElement> StatusChanged;
 
         protected Dictionary<UILanguage, string> Descriptions { get; set; }
+        internal Func<bool> CustomisationStatus { get; set; }
         internal Action<bool?> CustomizeOs { get; set; }
         internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
 
-        internal virtual ElementStatus Status
+        internal ElementStatus Status
         {
-            get => GetElementStatus();
+            get => GetStatus();
             set
             {
-                SetElementStatus(value);
+                SetStatus(value);
                 StatusChanged?.Invoke(null, this);
             }
         }
-
-        public Func<bool?> CustomisationStatus { get; set; }
 
         public string Description
         {
@@ -105,7 +104,7 @@ namespace SophiApp.Models
 
         public string Tag { get; }
 
-        private ElementStatus GetElementStatus()
+        private ElementStatus GetStatus()
         {
             if (IsEnabled & IsChecked & IsClicked == false)
                 return ElementStatus.CHECKED;
@@ -124,9 +123,9 @@ namespace SophiApp.Models
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private void SetElementStatus(ElementStatus value)
+        private void SetStatus(ElementStatus status)
         {
-            switch (value)
+            switch (status)
             {
                 case ElementStatus.DISABLED:
                     IsEnabled = IsChecked = IsClicked = false;
@@ -182,12 +181,24 @@ namespace SophiApp.Models
         {
             try
             {
-                Status = CustomisationStatus?.Invoke() == true ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                Status = CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
             }
             catch (Exception e)
             {
                 ErrorOccurred?.Invoke(this, e);
             }
+        }
+
+        internal virtual void Init(Action<TextedElement, Exception> errorHandler,
+                                   EventHandler<TextedElement> statusHandler,
+                                   UILanguage language,
+                                   Func<bool> customisationStatus)
+        {
+            ErrorOccurred = errorHandler;
+            StatusChanged += statusHandler;
+            CustomisationStatus = customisationStatus;
+            ChangeLanguage(language);
+            GetCustomisationStatus();
         }
 
         public virtual void ChangeLanguage(UILanguage language)

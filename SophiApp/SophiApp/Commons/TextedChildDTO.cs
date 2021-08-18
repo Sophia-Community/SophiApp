@@ -2,7 +2,7 @@
 
 namespace SophiApp.Commons
 {
-    internal class JsonGuiChildDto
+    internal class TextedChildDTO
     {
         public Dictionary<UILanguage, string> ChildDescription { get; set; }
         public Dictionary<UILanguage, string> ChildHeader { get; set; }

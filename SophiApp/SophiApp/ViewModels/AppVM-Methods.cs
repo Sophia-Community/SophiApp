@@ -106,8 +106,8 @@ namespace SophiApp.ViewModels
                                                                                  .Cast<ExpandingGroup>()
                                                                                  .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
 
-        private RadioButtonsGroup FindRadioButtonGroup(uint childId) => TextedElements.Where(rbr => rbr is RadioButtonsGroup)
-                                                                                      .Cast<RadioButtonsGroup>()
+        private RadioGroup FindRadioGroup(uint childId) => TextedElements.Where(rbr => rbr is RadioGroup)
+                                                                                      .Cast<RadioGroup>()
                                                                                       .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
 
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
@@ -145,7 +145,7 @@ namespace SophiApp.ViewModels
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
-            RadioButtonGroupClickedCommand = new RelayCommand(new Action<object>(RadioButtonGroupClickedAsync));
+            RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
             ExpandingGroupClickedCommand = new RelayCommand(new Action<object>(ExpandingGroupClickedAsync));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
@@ -183,36 +183,39 @@ namespace SophiApp.ViewModels
 
                 var file = File.ReadAllText("UIData.json");
                 //var bytes = Encoding.UTF8.GetBytes(file);
-                TextedElements = JsonConvert.DeserializeObject<IEnumerable<JsonGuiDto>>(file)
-                                            .Select(dto => ElementsFabric.CreateTextedElement(dto))
+                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(file)
+                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto,
+                                                                                              errorHandler: OnTextedElementErrorAsync,
+                                                                                              statusHandler: OnTextedElementStatusChanged,
+                                                                                              language: Localization.Language))
                                             .ToList();
 
-                TextedElements.ForEach(element =>
-                {
-                    if (element is IHasChilds parent)
-                    {
-                        parent.ChildElements.ForEach(child =>
-                        {
-                            child.StatusChanged += OnTextedElementStatusChanged;
-                            child.ErrorOccurred += OnTextedElementErrorOccurredAsync;
-                            child.GetCustomisationStatus();
-                        });
+                //TextedElements.ForEach(element =>
+                //{
+                //    if (element is IParentElements parent)
+                //    {
+                //        parent.ChildElements.ForEach(child =>
+                //        {
+                //            child.StatusChanged += OnTextedElementStatusChanged;
+                //            child.ErrorOccurred += OnTextedElementErrorAsync;
+                //            child.GetCustomisationStatus();
+                //        });
 
-                        if (element is RadioButtonsGroup group)
-                        {
-                            group.SetDefaultSelectedId();
-                        }
-                    }
-                    else
-                    {
-                        element.StatusChanged += OnTextedElementStatusChanged;
-                        element.ErrorOccurred += OnTextedElementErrorOccurredAsync;
-                        element.GetCustomisationStatus();
-                    }
+                //        if (element is RadioGroup group)
+                //        {
+                //            group.SetDefaultSelectedId();
+                //        }
+                //    }
+                //    else
+                //    {
+                //        element.StatusChanged += OnTextedElementStatusChanged;
+                //        element.ErrorOccurred += OnTextedElementErrorAsync;
+                //        element.GetCustomisationStatus();
+                //    }
 
-                    element.ChangeLanguage(Localization.Language);
-                    Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
-                });
+                //    element.ChangeLanguage(Localization.Language);
+                //    Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
+                //});
 
                 debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
             });
@@ -237,13 +240,14 @@ namespace SophiApp.ViewModels
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
-        private async void OnTextedElementErrorOccurredAsync(TextedElement element, Exception e)
+        private async void OnTextedElementErrorAsync(TextedElement element, Exception e)
         {
+            //TODO: OnTextedElementErrorAsync - need refactoring.
             await Task.Run(() =>
             {
                 if (element is RadioButton)
                 {
-                    var group = FindRadioButtonGroup(element.Id);
+                    var group = FindRadioGroup(element.Id);
                     group?.ChildElements.ForEach(child => child.Status = ElementStatus.DISABLED);
                 }
                 else
@@ -259,22 +263,22 @@ namespace SophiApp.ViewModels
 
         private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write(DebuggerRecord.ELEMENT_CHANGE_STATUS, $"{element.Id}", $"{element.Status}");
 
-        private async void RadioButtonGroupClickedAsync(object args)
+        private async void RadioGroupClickedAsync(object args)
         {
             await Task.Run(() =>
             {
                 var id = (uint)args;
-                var group = FindRadioButtonGroup(childId: id);
+                var group = FindRadioGroup(childId: id);
                 var element = group?.ChildElements.FirstOrDefault(rb => rb.Id == id);
                 group?.ChildElements.ForEach(child => child.Status = child.Id == id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
 
-                if (element.Id != group.DefaultSelectedId && group.IsSelected == false)
+                if (element.Id != group.DefaultSelected && group.IsSelected == false)
                 {
                     SetTextedElementsChangedCounter(ElementStatus.SETTOACTIVE);
                     group.IsSelected = true;
                 }
 
-                if (element.Id == group.DefaultSelectedId)
+                if (element.Id == group.DefaultSelected)
                 {
                     SetTextedElementsChangedCounter(ElementStatus.UNCHECKED);
                     group.IsSelected = false;
@@ -300,13 +304,13 @@ namespace SophiApp.ViewModels
             {
                 TextedElements.ForEach(element =>
                 {
-                    if (element is IHasChilds parent)
+                    if (element is IParentElements parent)
                     {
                         parent.ChildElements.ForEach(child => child.GetCustomisationStatus());
 
-                        if (element is RadioButtonsGroup group)
+                        if (element is RadioGroup group)
                         {
-                            group.SetDefaultSelectedId();
+                            group.SetDefaultSelected();
                         }
                     }
                     else

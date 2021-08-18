@@ -4,12 +4,14 @@ namespace SophiApp.Models
 {
     internal class RadioButton : TextedElement
     {
-        public RadioButton(JsonGuiDto dto) : base(dto)
+        public RadioButton(TextedElementDTO dataObject) : base(dataObject)
         {
         }
 
-        public RadioButton(JsonGuiChildDto dto) : base(dto)
+        public RadioButton(TextedChildDTO dataObject) : base(dataObject)
         {
         }
+
+        internal uint Parent { get; set; }
     }
 }

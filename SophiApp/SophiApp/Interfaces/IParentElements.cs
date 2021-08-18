@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SophiApp.Interfaces
 {
-    internal interface IHasChilds
+    internal interface IParentElements
     {
         List<TextedElement> ChildElements { get; set; }
     }

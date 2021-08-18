@@ -9,8 +9,8 @@
              xmlns:models="clr-namespace:SophiApp.Models"
              controls:ExpandingGroup.MouseEnter="TextedElement_MouseEnter"
              controls:ExpandingGroup.MouseLeave="TextedElement_MouseLeave"
-             controls:RadioButtonGroup.MouseEnter="TextedElement_MouseEnter"
-             controls:RadioButtonGroup.MouseLeave="TextedElement_MouseLeave"
+             controls:RadioGroup.MouseEnter="TextedElement_MouseEnter"
+             controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
              controls:Switch.MouseEnter="TextedElement_MouseEnter"
              controls:Switch.MouseLeave="TextedElement_MouseLeave"
              controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
@@ -81,9 +81,9 @@
                                                      IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
                                                      Margin="20, 10, 0, 5" />
                                 </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:RadioButtonsGroup}">
-                                    <controls:RadioButtonGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                               Command="{Binding Path=DataContext.RadioButtonGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewGames}}}"
+                                <DataTemplate DataType="{x:Type models:RadioGroup}">
+                                    <controls:RadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                               Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewGames}}}"
                                                                Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
