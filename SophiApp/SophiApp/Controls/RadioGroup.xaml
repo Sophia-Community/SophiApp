@@ -6,8 +6,7 @@
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
              xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d"
-             controls:RadioButton.Click="RadioButton_Click">
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type ItemsControl}">
@@ -51,7 +50,8 @@
                         <DataTemplate DataType="{x:Type models:RadioButton}">
                             <controls:RadioButton IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
                                                   IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                  Id="{Binding Id}" />
+                                                  Id="{Binding Id}"
+                                                  Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type controls:RadioGroup}}}" />
                         </DataTemplate>
                     </ItemsControl.Resources>
                 </ItemsControl>

@@ -153,9 +153,9 @@
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\Debugger.cs" />
+    <Compile Include="Helpers\Debugger2.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
-    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\FirewallHelper.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />

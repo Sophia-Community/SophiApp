@@ -14,10 +14,6 @@ namespace SophiApp.Controls
 
         private static new readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Switch));
 
-        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(object), typeof(Switch), new PropertyMetadata(default));
-
         // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(Switch), new PropertyMetadata(default));
@@ -60,11 +56,6 @@ namespace SophiApp.Controls
             get => (ICommand)GetValue(CommandProperty); set => SetValue(CommandProperty, value);
         }
 
-        public object CommandParameter
-        {
-            get => (object)GetValue(CommandParameterProperty); set => SetValue(CommandParameterProperty, value);
-        }
-
         public string Description
         {
             get => (string)GetValue(DescriptionProperty); set => SetValue(DescriptionProperty, value);
@@ -94,6 +85,6 @@ namespace SophiApp.Controls
 
         private void Switch_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
 
-        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(CommandParameter);
+        private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(DataContext);
     }
 }

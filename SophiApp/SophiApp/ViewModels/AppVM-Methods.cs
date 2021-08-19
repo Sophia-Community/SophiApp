@@ -25,19 +25,18 @@ namespace SophiApp.ViewModels
         private async void ApplyingSettingsAsync(object args)
         {
             //TODO: AppVM ApplyingSettingsAsync - need testing and refactoring.
-            debugger.Write(DebuggerRecord.INIT_APPLYING_SETTINGS);
-            debugger.Write(DebuggerRecord.CHANGED_ELEMENTS, $"{TextedElementsChangedCounter}");
+            //debugger.Write(DebuggerRecord.INIT_APPLYING_SETTINGS);
+            //debugger.Write(DebuggerRecord.CHANGED_ELEMENTS, $"{TextedElementsChangedCounter}");
             SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
-            SetTextedElementsChangedCounter();
             SetLoadingPanelVisibility();
             await ApplyingSettingsAsync();
-            debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
+            //debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
             await ResetTextedElementsStateAsync();
             OsHelper.PostMessage();
             OsHelper.Refresh();
             SetLoadingPanelVisibility();
             SetHitTest();
-            debugger.Write(DebuggerRecord.DONE_APPLYING_SETTINGS);
+            //debugger.Write(DebuggerRecord.DONE_APPLYING_SETTINGS);
         }
 
         private async Task ApplyingSettingsAsync()
@@ -67,91 +66,39 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void AppThemeChangeAsync(object args) => await AppThemeChangeAsync(args as string);
-
-        private async Task AppThemeChangeAsync(string name)
+        private async void AppThemeChangeAsync(object args)
         {
             await Task.Run(() =>
             {
+                var name = args as string;
                 var theme = themesHelper.Find(name);
                 themesHelper.ChangeTheme(theme);
                 SetAppSelectedThemeProperty(theme);
             });
         }
 
-        private async void ExpandingGroupClickedAsync(object args)
-        {
-            await Task.Run(() =>
-            {
-                var id = (uint)args;
-                var element = FindExpandingGroup(id)?.ChildElements.FirstOrDefault(child => child.Id == id);
-                element?.ChangeStatus();
-                SetTextedElementsChangedCounter(element.Status);
-            });
-        }
-
-        private async void ExportSettingsAsync(object args) => await ExportSettingsAsync();
-
-        private async Task ExportSettingsAsync()
-        {
-            //TODO: ExportSettingsAsync Not Implemented
-            await Task.Run(() =>
-            {
-                debugger.Write(DebuggerRecord.INIT_EXPORT_SETTINGS);
-                // ...
-            });
-        }
-
-        private ExpandingGroup FindExpandingGroup(uint childId) => TextedElements.Where(eg => eg is ExpandingGroup)
-                                                                                 .Cast<ExpandingGroup>()
-                                                                                 .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
-
-        private RadioGroup FindRadioGroup(uint childId) => TextedElements.Where(rbr => rbr is RadioGroup)
-                                                                                      .Cast<RadioGroup>()
-                                                                                      .FirstOrDefault(group => group.ChildElements.Exists(element => element.Id == childId));
-
         private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
 
         private async void HyperLinkClickedAsync(object args)
         {
             MouseHelper.ShowWaitCursor(show: true);
-            await HyperLinkClickedAsync(args as string);
-            MouseHelper.ShowWaitCursor(show: false);
-        }
-
-        private async Task HyperLinkClickedAsync(string link)
-        {
             await Task.Run(() =>
             {
-                debugger.Write(DebuggerRecord.HYPERLINK_OPEN, link);
+                var link = args as string;
+                debugger.Write("HYPERLINK_OPEN", link);
                 Process.Start(link);
             });
-        }
-
-        private async void ImportSettingsAsync(object args) => await ImportSettingsAsync();
-
-        private async Task ImportSettingsAsync()
-        {
-            //TODO: ImportSettingsAsync Not Implemented
-            await Task.Run(() =>
-            {
-                debugger.Write(DebuggerRecord.INIT_IMPORT_SETTINGS);
-                // ...
-            });
+            MouseHelper.ShowWaitCursor(show: false);
         }
 
         private void InitCommands()
         {
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
-            SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
-            ExpandingGroupClickedCommand = new RelayCommand(new Action<object>(ExpandingGroupClickedAsync));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClickedAsync));
-            ExportSettingsCommand = new RelayCommand(new Action<object>(ExportSettingsAsync));
-            ImportSettingsCommand = new RelayCommand(new Action<object>(ImportSettingsAsync));
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
@@ -169,67 +116,38 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = true;
             VisibleViewByTag = Tags.ViewLoading;
             advancedSettingsVisibility = false;
-            debugger.Write(DebuggerRecord.LOCALIZATION, $"{Localization.Language}");
-            debugger.Write(DebuggerRecord.THEME, $"{AppSelectedTheme.Alias}");
+            debugger.InitWrite("LOCALIZATION", $"{ Localization.Language}");
+            debugger.InitWrite("THEME", $"{ AppSelectedTheme.Alias}");
+            debugger.InitWrite();
         }
 
         private async Task InitTextedElementsAsync()
         {
             await Task.Run(() =>
             {
-                debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS);
+                debugger.Write("INIT_ELEMENTS");
 
                 //TODO: TextedElements - for UIData.json modify.
 
                 var file = File.ReadAllText("UIData.json");
                 //var bytes = Encoding.UTF8.GetBytes(file);
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(file)
-                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto,
-                                                                                              errorHandler: OnTextedElementErrorAsync,
-                                                                                              statusHandler: OnTextedElementStatusChanged,
-                                                                                              language: Localization.Language))
+                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
+                                                                                              statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
                                             .ToList();
 
-                //TextedElements.ForEach(element =>
-                //{
-                //    if (element is IParentElements parent)
-                //    {
-                //        parent.ChildElements.ForEach(child =>
-                //        {
-                //            child.StatusChanged += OnTextedElementStatusChanged;
-                //            child.ErrorOccurred += OnTextedElementErrorAsync;
-                //            child.GetCustomisationStatus();
-                //        });
-
-                //        if (element is RadioGroup group)
-                //        {
-                //            group.SetDefaultSelectedId();
-                //        }
-                //    }
-                //    else
-                //    {
-                //        element.StatusChanged += OnTextedElementStatusChanged;
-                //        element.ErrorOccurred += OnTextedElementErrorAsync;
-                //        element.GetCustomisationStatus();
-                //    }
-
-                //    element.ChangeLanguage(Localization.Language);
-                //    Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
-                //});
-
-                debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS);
+                debugger.Write("INIT_ELEMENTS_DONE");
+                debugger.InitWrite();
             });
         }
 
-        private bool IsNewVersion(ReleaseDto dto) => new Version(dto.tag_name) > AppData.Version && dto.prerelease == false && dto.draft == false;
+        private bool IsNewVersion(ReleaseDto dto) => new Version(dto.tag_name) > AppData.Version && !dto.prerelease && !dto.draft;
 
-        private async void LocalizationChangeAsync(object args) => await LocalizationChangeAsync(args as string);
-
-        private async Task LocalizationChangeAsync(string localizationName)
+        private async void LocalizationChangeAsync(object args)
         {
             await Task.Run(() =>
             {
-                var localization = localizationsHelper.FindName(localizationName);
+                var localization = localizationsHelper.FindName(args as string);
                 TextedElements.ForEach(element => element.ChangeLanguage(localization.Language));
                 localizationsHelper.Change(localization);
                 SetLocalizationProperty(localization);
@@ -242,60 +160,35 @@ namespace SophiApp.ViewModels
 
         private async void OnTextedElementErrorAsync(TextedElement element, Exception e)
         {
-            //TODO: OnTextedElementErrorAsync - need refactoring.
             await Task.Run(() =>
             {
-                if (element is RadioButton)
-                {
-                    var group = FindRadioGroup(element.Id);
-                    group?.ChildElements.ForEach(child => child.Status = ElementStatus.DISABLED);
-                }
-                else
-                {
-                    element.Status = ElementStatus.DISABLED;
-                }
-
-                debugger.Write(DebuggerRecord.ELEMENT_HAS_ERROR, $"{element.Id}");
-                debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-                debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+                debugger.Write("ELEMENT_HAS_ERROR", $"{element.Id}", "ERROR_MESSAGE", $"{e.Message}", "ERROR_CLASS", $"{e.TargetSite.DeclaringType.FullName}");
+                element.Status = ElementStatus.DISABLED;
             });
         }
 
-        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write(DebuggerRecord.ELEMENT_CHANGE_STATUS, $"{element.Id}", $"{element.Status}");
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write("ELEMENT_CHANGE_STATUS", $"{element.Id}", $"{element.Status}");
 
         private async void RadioGroupClickedAsync(object args)
         {
             await Task.Run(() =>
             {
-                var id = (uint)args;
-                var group = FindRadioGroup(childId: id);
-                var element = group?.ChildElements.FirstOrDefault(rb => rb.Id == id);
-                group?.ChildElements.ForEach(child => child.Status = child.Id == id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
-
-                if (element.Id != group.DefaultSelected && group.IsSelected == false)
-                {
-                    SetTextedElementsChangedCounter(ElementStatus.SETTOACTIVE);
-                    group.IsSelected = true;
-                }
-
-                if (element.Id == group.DefaultSelected)
-                {
-                    SetTextedElementsChangedCounter(ElementStatus.UNCHECKED);
-                    group.IsSelected = false;
-                }
+                var rbutton = args as RadioButton;
+                var group = TextedElements.FirstOrDefault(element => element.Id == rbutton.Parent) as RadioGroup;
+                group?.ChildElements.ForEach(child => child.Status = child.Id == rbutton.Id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
             });
         }
 
         private async void ResetTextedElementsStateAsync(object args)
         {
-            debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
+            //TODO: ResetTextedElementsStateAsync need refactoring.
+            //debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
             SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
-            SetTextedElementsChangedCounter();
             SetLoadingPanelVisibility();
             await ResetTextedElementsStateAsync();
             SetLoadingPanelVisibility();
             SetHitTest();
-            debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS_RESET);
+            //debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS_RESET);
         }
 
         private async Task ResetTextedElementsStateAsync()
@@ -310,7 +203,7 @@ namespace SophiApp.ViewModels
 
                         if (element is RadioGroup group)
                         {
-                            group.SetDefaultSelected();
+                            group.SetDefaultId();
                         }
                     }
                     else
@@ -323,35 +216,25 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async void SaveDebugLogAsync(object args) => await SaveDebugLogAsync();
-
-        private async Task SaveDebugLogAsync()
+        private async void SaveDebugLogAsync(object args)
         {
             await Task.Run(() =>
             {
                 try
                 {
-                    FileHelper.Save(list: debugger.GetLog(), path: AppData.DebugFilePath);
+                    debugger.Save(AppData.DebugFilePath);
                 }
                 catch (Exception e)
                 {
-                    debugger.Write(DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
-                    debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-                    debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-                    debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
+                    //TODO: SaveDebugLogAsync - need refactoring.
+
+                    //debugger.Write(DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
+                    //debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
+                    //debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
+                    //debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
                 }
 
                 Thread.Sleep(5000);
-            });
-        }
-
-        private async void SearchClickedAsync(object args) => await SearchClickedAsync(args as string);
-
-        private async Task SearchClickedAsync(string search)
-        {
-            await Task.Run(() =>
-            {
-                //TODO: SearchClickedAsync not implemented
             });
         }
 
@@ -368,41 +251,11 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
-        private void SetTextedElementsChangedCounter(ElementStatus status)
-        {
-            switch (status)
-            {
-                case ElementStatus.SETTOACTIVE:
-                case ElementStatus.SETTODEFAULT:
-                    TextedElementsChangedCounter++;
-                    break;
-
-                case ElementStatus.CHECKED:
-                case ElementStatus.UNCHECKED:
-                    TextedElementsChangedCounter--;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        private void SetTextedElementsChangedCounter() => TextedElementsChangedCounter = 0;
-
         private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
 
-        private async void TextedElementClickedAsync(object args)
-        {
-            await Task.Run(() =>
-            {
-                var id = (uint)args;
-                var element = TextedElements.FirstOrDefault(el => el.Id == id);
-                element?.ChangeStatus();
-                SetTextedElementsChangedCounter(element.Status);
-            });
-        }
+        private async void TextedElementClickedAsync(object args) => await Task.Run(() => (args as TextedElement).ChangeStatus());
 
         private async Task UpdateIsAvailableAsync()
         {

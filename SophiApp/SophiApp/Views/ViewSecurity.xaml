@@ -75,7 +75,6 @@
                                     <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                                      Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                                      Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
-                                                     CommandParameter="{Binding Id}"
                                                      Id="{Binding Id}"
                                                      IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                      IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
@@ -83,12 +82,11 @@
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:RadioGroup}">
                                     <controls:RadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                               Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
-                                                               Margin="20, 10, 0, 5" />
+                                                         Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
+                                                         Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
                                     <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
-                                                       CommandParameter="{Binding Id}"
                                                        Id="{Binding Id}"
                                                        IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                                        IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
@@ -96,7 +94,7 @@
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:ExpandingGroup}">
                                     <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                             Command="{Binding Path=DataContext.ExpandingGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
+                                                             Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
                                                              Margin="20, 10, 0, 5" />
                                 </DataTemplate>
                             </ItemsControl.Resources>

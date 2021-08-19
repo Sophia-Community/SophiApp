@@ -3,7 +3,6 @@ using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Debugger = SophiApp.Helpers.Debugger;
 
 namespace SophiApp.ViewModels
 {

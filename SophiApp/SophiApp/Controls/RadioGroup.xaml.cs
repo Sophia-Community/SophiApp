@@ -63,11 +63,5 @@ namespace SophiApp.Controls
         private void Header_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });
 
         private void Header_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
-
-        private void RadioButton_Click(object sender, RoutedEventArgs e)
-        {
-            e.Handled = true;
-            Command?.Execute(e.OriginalSource);
-        }
     }
 }

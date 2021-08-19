@@ -16,25 +16,29 @@ namespace SophiApp.Models
             ChildsDTO = dataObject.ChildElements;
         }
 
-        internal uint DefaultSelected { get; private set; }
-        internal bool IsSelected { get; set; } = false;
+        internal uint DefaultId { get; private set; }
+
         public List<TextedElement> ChildElements { get; set; }
 
-        internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler, UILanguage language, Func<bool> customisationStatus)
+        private void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
+
+        internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
+                                            UILanguage language, Func<bool> customisationStatus)
         {
-            ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, errorHandler, statusHandler, language)).ToList();
-            ChildElements.ForEach(child => (child as RadioButton).Parent = Id);
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
-            base.Init(errorHandler, statusHandler, language, customisationStatus);
-            SetDefaultSelected();
+            base.ChangeLanguage(language);
+            ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
+            ChildElements.ForEach(child => (child as RadioButton).Parent = Id);
+            Status = ElementStatus.UNCHECKED;
+            SetDefaultId();
         }
 
-        internal void SetDefaultSelected()
+        internal void SetDefaultId()
         {
             try
             {
-                DefaultSelected = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
+                DefaultId = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
             }
             catch (Exception e)
             {

@@ -106,7 +106,6 @@
 
                             <StackPanel Style="{StaticResource PanelContainer}">
                                 <controls:IconButton Text="{DynamicResource Localization.Settings.Import}"
-                                                     Command="{Binding ImportSettingsCommand}"
                                                      IsEnabled="False">
                                     <controls:IconButton.Content>
                                             <Canvas Width="32" Height="32">
@@ -121,7 +120,6 @@
                                 </controls:IconButton>
 
                                 <controls:IconButton Text="{DynamicResource Localization.Settings.Export}"
-                                                     Command="{Binding ExportSettingsCommand}"
                                                      Margin="10, 0, 0, 0"
                                                      IsEnabled="False">
                                     <controls:IconButton.Content>

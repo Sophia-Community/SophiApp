@@ -17,10 +17,8 @@ namespace SophiApp.Helpers
             return Delegate.CreateDelegate(typeof(Func<bool>), method) as Func<bool>;
         }
 
-        internal static TextedElement CreateChildElement(TextedChildDTO dataObject,
-                                                         Action<TextedElement, Exception> errorHandler,
-                                                         EventHandler<TextedElement> statusHandler,
-                                                         UILanguage language)
+        internal static TextedElement CreateChildElement(TextedChildDTO dataObject, Action<TextedElement, Exception> errorHandler,
+                                                         EventHandler<TextedElement> statusHandler, UILanguage language)
         {
             var type = Type.GetType($"SophiApp.Models.{dataObject.Type}");
             var element = Activator.CreateInstance(type, dataObject) as TextedElement;
@@ -29,10 +27,8 @@ namespace SophiApp.Helpers
             return element;
         }
 
-        internal static TextedElement CreateTextedElement(TextedElementDTO dataObject,
-                                                          Action<TextedElement, Exception> errorHandler,
-                                                          EventHandler<TextedElement> statusHandler,
-                                                          UILanguage language)
+        internal static TextedElement CreateTextedElement(TextedElementDTO dataObject, Action<TextedElement, Exception> errorHandler,
+                                                          EventHandler<TextedElement> statusHandler, UILanguage language)
         {
             var type = Type.GetType($"SophiApp.Models.{dataObject.Type}");
             var element = Activator.CreateInstance(type, dataObject) as TextedElement;

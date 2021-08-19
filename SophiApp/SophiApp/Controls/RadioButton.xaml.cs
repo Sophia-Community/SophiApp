@@ -10,11 +10,13 @@ namespace SophiApp.Controls
     /// </summary>
     public partial class RadioButton : UserControl
     {
-        private static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioButton));
-
         private static new readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioButton));
 
         private static new readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RadioButton));
+
+        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(RadioButton), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
@@ -37,12 +39,6 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
-        public event RoutedEventHandler Click
-        {
-            add { AddHandler(ClickEvent, value); }
-            remove { RemoveHandler(ClickEvent, value); }
-        }
-
         public new event RoutedEventHandler MouseEnter
         {
             add { AddHandler(MouseEnterEvent, value); }
@@ -53,6 +49,12 @@ namespace SophiApp.Controls
         {
             add { AddHandler(MouseLeaveEvent, value); }
             remove { RemoveHandler(MouseLeaveEvent, value); }
+        }
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
         }
 
         public string Description
@@ -92,7 +94,7 @@ namespace SophiApp.Controls
             if (IsChecked)
                 return;
 
-            RaiseEvent(new RoutedEventArgs(ClickEvent) { Source = Id });
+            Command.Execute(DataContext);
         }
     }
 }
