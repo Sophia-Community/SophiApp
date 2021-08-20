@@ -85,7 +85,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var link = args as string;
-                debugger.Write("HYPERLINK_OPEN", link);
+                debugger.AddRecord($"User clicked on the link \"{link}\"");
                 Process.Start(link);
             });
             MouseHelper.ShowWaitCursor(show: false);
@@ -107,25 +107,23 @@ namespace SophiApp.ViewModels
 
         private void InitProperties()
         {
-            debugger = new Debugger();
             localizationsHelper = new LocalizationsHelper();
-            loadingPanelVisibility = false;
             themesHelper = new ThemesHelper();
+            debugger = new Debugger(language: $"{ Localization.Language}", theme: $"{ AppSelectedTheme.Alias}");
+            loadingPanelVisibility = false;
             HamburgerHitTest = false;
             ViewsHitTest = true;
             WindowCloseHitTest = true;
-            VisibleViewByTag = Tags.ViewLoading;
             advancedSettingsVisibility = false;
-            debugger.InitWrite("LOCALIZATION", $"{ Localization.Language}");
-            debugger.InitWrite("THEME", $"{ AppSelectedTheme.Alias}");
-            debugger.InitWrite();
+            VisibleViewByTag = Tags.ViewLoading;
         }
 
         private async Task InitTextedElementsAsync()
         {
             await Task.Run(() =>
             {
-                debugger.Write("INIT_ELEMENTS");
+                debugger.AddRecord("Started initialization texted elements");
+                //TODO: InitTextedElementsAsync - Stopwatch helper needed.
 
                 //TODO: TextedElements - for UIData.json modify.
 
@@ -136,8 +134,7 @@ namespace SophiApp.ViewModels
                                                                                               statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
                                             .ToList();
 
-                debugger.Write("INIT_ELEMENTS_DONE");
-                debugger.InitWrite();
+                debugger.AddRecord("Completing the initialization of texted elements");
             });
         }
 
@@ -162,12 +159,15 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.Write("ELEMENT_HAS_ERROR", $"{element.Id}", "ERROR_MESSAGE", $"{e.Message}", "ERROR_CLASS", $"{e.TargetSite.DeclaringType.FullName}");
+                debugger.AddRecord($"An error occured in element {element.Id}");
+                debugger.AddRecord($"Error information \"{e.Message}\"");
+                debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
+                debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
                 element.Status = ElementStatus.DISABLED;
             });
         }
 
-        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.Write("ELEMENT_CHANGE_STATUS", $"{element.Id}", $"{element.Status}");
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.AddRecord($"The element {element.Id} has changed status to {element.Status}");
 
         private async void RadioGroupClickedAsync(object args)
         {
@@ -233,8 +233,6 @@ namespace SophiApp.ViewModels
                     //debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
                     //debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
                 }
-
-                Thread.Sleep(5000);
             });
         }
 
@@ -267,34 +265,33 @@ namespace SophiApp.ViewModels
                 try
                 {
                     var response = request.GetResponse();
-                    debugger.Write(response is null ? DebuggerRecord.UPDATE_RESPONSE_NULL : DebuggerRecord.UPDATE_RESPONSE_OK);
+                    debugger.AddRecord(response is null ? "When checking for an update, no response was received from the update server" : "When checking for an update, a response was received from the update server");
                     using (Stream dataStream = response.GetResponseStream())
                     {
                         StreamReader reader = new StreamReader(dataStream);
                         var serverResponse = reader.ReadToEnd();
-                        debugger.Write(DebuggerRecord.UPDATE_RESPONSE_LENGTH, $"{serverResponse.Length}");
                         var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_FOUND, $"{release.tag_name}");
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_PRERELEASE, $"{release.prerelease}");
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_IS_DRAFT, $"{release.draft}");
+                        debugger.AddRecord($"New version {release.tag_name} is available");
+                        debugger.AddRecord($"Version {release.tag_name} is prerelease: {release.prerelease}");
+                        debugger.AddRecord($"Version {release.tag_name} is draft: {release.draft}");
 
                         if (IsNewVersion(release))
                         {
-                            debugger.Write(DebuggerRecord.UPDATE_VERSION_REQUIRED);
+                            debugger.AddRecord("The update can be done");
                             SetUpdateAvailableProperty(true);
                             Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.tag_name);
                             return;
                         }
 
-                        debugger.Write(DebuggerRecord.UPDATE_VERSION_NOT_REQUIRED);
+                        debugger.AddRecord("No update required");
                     }
                 }
                 catch (Exception e)
                 {
-                    debugger.Write(DebuggerRecord.UPDATE_HAS_ERROR);
-                    debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-                    debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-                    debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
+                    debugger.AddRecord("An error occurred while checking for an update");
+                    debugger.AddRecord($"Error information \"{e.Message}\"");
+                    debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
+                    debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
                 }
             });
         }

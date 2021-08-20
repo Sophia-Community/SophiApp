@@ -65,7 +65,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commons\DebuggerRecord.cs" />
     <Compile Include="Commons\ReleaseDto.cs" />
     <Compile Include="Commons\TextedChildDTO.cs" />
     <Compile Include="Commons\TextedElementDTO.cs" />
@@ -153,7 +152,6 @@
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\Debugger.cs" />
-    <Compile Include="Helpers\Debugger2.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
