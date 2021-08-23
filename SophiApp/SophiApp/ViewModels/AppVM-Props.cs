@@ -11,27 +11,26 @@ namespace SophiApp.ViewModels
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
         private const string AppSelectedThemePropertyName = "AppSelectedTheme";
         private const string AppThemesPropertyName = "AppThemes";
+        private const string CustomActionsCounterPropertyName = "CustomActionsCounter";
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string LoadingPanelVisibilityPropertyName = "LoadingPanelVisibility";
         private const string LocalizationPropertyName = "Localization";
-        private const string TextedElementsChangedCounterPropertyName = "TextedElementsChangedCounter";
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string ViewsHitTestPropertyName = "ViewsHitTest";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
         private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
 
         private bool advancedSettingsVisibility;
+        private List<CustomActionDTO> customActions;
         private Debugger debugger;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;
         private LocalizationsHelper localizationsHelper;
-        private uint textedElementsChangedCounter;
         private ThemesHelper themesHelper;
         private bool updateAvailable;
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
-
         public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
 
         public bool AdvancedSettingsVisibility
@@ -61,10 +60,7 @@ namespace SophiApp.ViewModels
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
 
-        public RelayCommand ExpandingGroupClickedCommand { get; private set; }
-
-        public RelayCommand ExportSettingsCommand { get; private set; }
-
+        public int CustomActionsCounter => customActions.Count;
         public RelayCommand HamburgerClickedCommand { get; private set; }
 
         public bool HamburgerHitTest
@@ -78,8 +74,6 @@ namespace SophiApp.ViewModels
         }
 
         public RelayCommand HyperLinkClickedCommand { get; private set; }
-
-        public RelayCommand ImportSettingsCommand { get; private set; }
 
         public bool LoadingPanelVisibility
         {
@@ -116,16 +110,6 @@ namespace SophiApp.ViewModels
         public RelayCommand TextedElementClickedCommand { get; private set; }
 
         public List<TextedElement> TextedElements { get; private set; }
-
-        public uint TextedElementsChangedCounter
-        {
-            get => textedElementsChangedCounter;
-            set
-            {
-                textedElementsChangedCounter = value;
-                OnPropertyChanged(TextedElementsChangedCounterPropertyName);
-            }
-        }
 
         public bool UpdateAvailable
         {

@@ -25,7 +25,7 @@
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource ChangesPanelVisibilityConverter}">
                         <Binding Path="VisibleViewByTag" UpdateSourceTrigger="PropertyChanged" />
-                        <Binding Path="TextedElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="CustomActionsCounter" UpdateSourceTrigger="PropertyChanged" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
@@ -48,7 +48,7 @@
                         <TextBlock.Text>
                             <MultiBinding Converter="{StaticResource IntToChangesConverter}">
                                 <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
-                                <Binding Path="TextedElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="CustomActionsCounter" UpdateSourceTrigger="PropertyChanged" />
                                 <Binding Path="ChangedText" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource TemplatedParent}" />
                             </MultiBinding>
                         </TextBlock.Text>
@@ -59,14 +59,14 @@
                                FontWeight="Bold"
                                TextWrapping="NoWrap"
                                Foreground="{DynamicResource Brush.Window.Acсent.Normal}"
-                               Text="{Binding TextedElementsChangedCounter, UpdateSourceTrigger=PropertyChanged}" />
+                               Text="{Binding CustomActionsCounter, UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBlock Style="{DynamicResource NormalText}"
                                TextWrapping="NoWrap">
                         <TextBlock.Text>
                             <MultiBinding Converter="{StaticResource IntToSettingsConverter}">
                                 <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
-                                <Binding Path="TextedElementsChangedCounter" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="CustomActionsCounter" UpdateSourceTrigger="PropertyChanged" />
                                 <Binding Path="SettingText" UpdateSourceTrigger="PropertyChanged" RelativeSource="{RelativeSource TemplatedParent}" />
                             </MultiBinding>
                         </TextBlock.Text>

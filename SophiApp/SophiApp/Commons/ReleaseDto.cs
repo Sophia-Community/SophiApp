@@ -2,7 +2,7 @@
 
 namespace SophiApp.Commons
 {
-    internal class ReleaseDto
+    internal class ReleaseDTO
     {
         public Dictionary<string, string> assests { get; set; }
 

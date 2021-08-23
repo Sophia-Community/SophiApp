@@ -65,7 +65,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commons\ReleaseDto.cs" />
+    <Compile Include="Commons\CustomActionDTO.cs" />
+    <Compile Include="Commons\ReleaseDTO.cs" />
     <Compile Include="Commons\TextedChildDTO.cs" />
     <Compile Include="Commons\TextedElementDTO.cs" />
     <Compile Include="Commons\Localization.cs" />
@@ -148,9 +149,11 @@
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
+    <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Helpers\ActionsData.cs" />
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
+    <Compile Include="Helpers\CustomisationsHelper.cs" />
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
@@ -161,6 +164,7 @@
     <Compile Include="Helpers\OsHelper.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
+    <Compile Include="Helpers\StopwatchHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />

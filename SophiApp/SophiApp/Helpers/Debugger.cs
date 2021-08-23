@@ -11,21 +11,21 @@ namespace SophiApp.Helpers
         public Debugger()
         {
             Log = new List<string>();
-            Log.Add($"Application version is {AppData.Version}");
-            Log.Add($"Application launched from the folder \"{AppData.StartupFolder}\"");
-            Log.Add($"OS name {OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()}");
-            Log.Add($"OS build {Environment.OSVersion.VersionString}");
-            Log.Add($"Registered organization {OsHelper.GetRegisteredOrganization()}");
-            Log.Add($"Registered owner {OsHelper.GetRegisteredOwner()}");
-            Log.Add($"Computer name {Environment.MachineName}");
-            Log.Add($"Current user {Environment.UserName}");
-            Log.Add($"User domain {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}");
+            Log.Add($"Application version: {AppData.Version}");
+            Log.Add($"Application launch folder: \"{AppData.StartupFolder}\"");
+            Log.Add($"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()}");
+            Log.Add($"{OsHelper.GetProductName()} build: {OsHelper.GetVersion()}");
+            Log.Add($"Registered organization: {OsHelper.GetRegisteredOrganization()}");
+            Log.Add($"Registered owner: {OsHelper.GetRegisteredOwner()}");
+            Log.Add($"Computer name: {Environment.MachineName}");
+            Log.Add($"Current user: {Environment.UserName}");
+            Log.Add($"User domain: {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}");
         }
 
         public Debugger(string language, string theme) : this()
         {
-            Log.Add($"Application localization is {language}");
-            Log.Add($"Application theme is {theme}");
+            Log.Add($"Application localization: {language}");
+            Log.Add($"Application theme: {theme}");
             Log.Add(string.Empty);
         }
 

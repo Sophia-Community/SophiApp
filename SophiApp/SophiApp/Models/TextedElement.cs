@@ -3,7 +3,6 @@ using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading;
 
 namespace SophiApp.Models
 {
@@ -36,7 +35,6 @@ namespace SophiApp.Models
 
         protected Dictionary<UILanguage, string> Descriptions { get; set; }
         internal Func<bool> CustomisationStatus { get; set; }
-        internal Action<bool?> CustomizeOs { get; set; }
         internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
 
         internal ElementStatus Status
@@ -200,7 +198,6 @@ namespace SophiApp.Models
             CustomisationStatus = customisationStatus;
             ChangeLanguage(language);
             GetCustomisationStatus();
-            Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
         }
 
         public virtual void ChangeLanguage(UILanguage language)

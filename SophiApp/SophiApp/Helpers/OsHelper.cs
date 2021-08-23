@@ -11,6 +11,7 @@ namespace SophiApp.Helpers
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
+        private static readonly string REGISTRY_CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
 
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
@@ -36,6 +37,15 @@ namespace SophiApp.Helpers
         internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_ORGANIZATION_NAME) as string;
 
         internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_OWNER_NAME) as string;
+
+        internal static string GetVersion()
+        {
+            var majorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "CurrentMajorVersionNumber");
+            var minorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "CurrentMinorVersionNumber");
+            var buildVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "CurrentBuild");
+            var ubrVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "UBR");
+            return $"{majorVersion}.{minorVersion}.{buildVersion}.{ubrVersion}";
+        }
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 

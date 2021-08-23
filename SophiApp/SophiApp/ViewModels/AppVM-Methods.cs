@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
+using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
 using SophiApp.Models;
@@ -10,10 +11,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using Debugger = SophiApp.Helpers.Debugger;
-
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
@@ -116,6 +115,7 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = true;
             advancedSettingsVisibility = false;
             VisibleViewByTag = Tags.ViewLoading;
+            customActions = new List<CustomActionDTO>();
         }
 
         private async Task InitTextedElementsAsync()
@@ -123,22 +123,24 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 debugger.AddRecord("Started initialization texted elements");
-                //TODO: InitTextedElementsAsync - Stopwatch helper needed.
+                var stopwatch = StopwatchHelper.New();
+                stopwatch.Start();
 
                 //TODO: TextedElements - for UIData.json modify.
 
                 var file = File.ReadAllText("UIData.json");
                 //var bytes = Encoding.UTF8.GetBytes(file);
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(file)
-                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                              statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
-                                            .ToList();
-
-                debugger.AddRecord("Completing the initialization of texted elements");
+                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto,
+                                                                                              errorHandler: OnTextedElementErrorAsync,
+                                                                                              statusHandler: OnTextedElementStatusChanged,
+                                                                                              language: Localization.Language)).ToList();
+                stopwatch.Stop();
+                debugger.AddRecord($"Collection initialization seconds: {stopwatch.Elapsed.TotalSeconds}");
             });
         }
 
-        private bool IsNewVersion(ReleaseDto dto) => new Version(dto.tag_name) > AppData.Version && !dto.prerelease && !dto.draft;
+        private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > AppData.Version && !dto.prerelease && !dto.draft;
 
         private async void LocalizationChangeAsync(object args)
         {
@@ -210,8 +212,6 @@ namespace SophiApp.ViewModels
                     {
                         element.GetCustomisationStatus();
                     }
-
-                    Thread.Sleep(100); //TODO: AppVM - Thread.Sleep for randomize element state.
                 });
             });
         }
@@ -224,19 +224,24 @@ namespace SophiApp.ViewModels
                 {
                     debugger.Save(AppData.DebugFilePath);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    //TODO: SaveDebugLogAsync - need refactoring.
-
-                    //debugger.Write(DebuggerRecord.DEBUG_SAVE_HAS_ERROR);
-                    //debugger.Write(DebuggerRecord.ERROR_MESSAGE, $"{e.Message}");
-                    //debugger.Write(DebuggerRecord.ERROR_CLASS, $"{e.TargetSite.DeclaringType.FullName}");
-                    //debugger.Write(DebuggerRecord.ERROR_METHOD, $"{e.TargetSite.Name}");
                 }
             });
         }
 
         private void SetAppSelectedThemeProperty(Theme theme) => AppSelectedTheme = theme;
+
+        private void SetCustomAction(TextedElement element)
+        {
+            if (customActions.ContainsId(element.Id))
+            {
+                customActions.RemoveDataObject(element.Id);
+                return;
+            }
+
+            customActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.SETTOACTIVE);
+        }
 
         private void SetHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
         {
@@ -253,7 +258,16 @@ namespace SophiApp.ViewModels
 
         private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
 
-        private async void TextedElementClickedAsync(object args) => await Task.Run(() => (args as TextedElement).ChangeStatus());
+        private async void TextedElementClickedAsync(object args)
+        {
+            await Task.Run(() =>
+            {
+                var element = args as TextedElement;
+                element.ChangeStatus();
+                SetCustomAction(element);
+                OnPropertyChanged(CustomActionsCounterPropertyName);
+            });
+        }
 
         private async Task UpdateIsAvailableAsync()
         {
@@ -270,7 +284,7 @@ namespace SophiApp.ViewModels
                     {
                         StreamReader reader = new StreamReader(dataStream);
                         var serverResponse = reader.ReadToEnd();
-                        var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
+                        var release = JsonConvert.DeserializeObject<List<ReleaseDTO>>(serverResponse).FirstOrDefault();
                         debugger.AddRecord($"New version {release.tag_name} is available");
                         debugger.AddRecord($"Version {release.tag_name} is prerelease: {release.prerelease}");
                         debugger.AddRecord($"Version {release.tag_name} is draft: {release.draft}");
