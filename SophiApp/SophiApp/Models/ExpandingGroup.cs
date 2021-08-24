@@ -18,8 +18,10 @@ namespace SophiApp.Models
 
         public List<TextedElement> ChildElements { get; set; }
 
+        internal override void GetCustomisationStatus() => ChildElements.ForEach(child => child.GetCustomisationStatus());
+
         internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                    UILanguage language, Func<bool> customisationStatus)
+                                            UILanguage language, Func<bool> customisationStatus)
         {
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;

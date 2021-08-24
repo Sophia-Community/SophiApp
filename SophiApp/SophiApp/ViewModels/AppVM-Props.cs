@@ -31,7 +31,6 @@ namespace SophiApp.ViewModels
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
-        public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
 
         public bool AdvancedSettingsVisibility
         {
@@ -44,8 +43,6 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public RelayCommand ApplyingSettingsCommand { get; private set; }
-
         public Theme AppSelectedTheme
         {
             get => themesHelper.SelectedTheme;
@@ -56,12 +53,9 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public RelayCommand AppThemeChangeCommand { get; private set; }
-
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
 
         public int CustomActionsCounter => customActions.Count;
-        public RelayCommand HamburgerClickedCommand { get; private set; }
 
         public bool HamburgerHitTest
         {
@@ -72,8 +66,6 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(HamburgerHitTestPropertyName);
             }
         }
-
-        public RelayCommand HyperLinkClickedCommand { get; private set; }
 
         public bool LoadingPanelVisibility
         {
@@ -95,19 +87,7 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public RelayCommand LocalizationChangeCommand { get; private set; }
-
         public List<string> LocalizationList => localizationsHelper.GetNames();
-
-        public RelayCommand RadioGroupClickedCommand { get; private set; }
-
-        public RelayCommand ResetTextedElementsStateCommand { get; private set; }
-
-        public RelayCommand SaveDebugLogCommand { get; private set; }
-
-        public RelayCommand SearchClickedCommand { get; private set; }
-
-        public RelayCommand TextedElementClickedCommand { get; private set; }
 
         public List<TextedElement> TextedElements { get; private set; }
 

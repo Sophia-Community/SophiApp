@@ -22,14 +22,21 @@ namespace SophiApp.Models
 
         private void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
 
+        internal override void GetCustomisationStatus()
+        {
+            Status = ElementStatus.UNCHECKED;
+            ChildElements.ForEach(child => child.GetCustomisationStatus());
+            SetDefaultId();
+        }
+
         internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                            UILanguage language, Func<bool> customisationStatus)
+                                                    UILanguage language, Func<bool> customisationStatus)
         {
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
             base.ChangeLanguage(language);
             ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
-            ChildElements.ForEach(child => (child as RadioButton).Parent = Id);
+            ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
             Status = ElementStatus.UNCHECKED;
             SetDefaultId();
         }

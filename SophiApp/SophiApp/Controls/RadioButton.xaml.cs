@@ -94,7 +94,7 @@ namespace SophiApp.Controls
             if (IsChecked)
                 return;
 
-            Command.Execute(DataContext);
+            Command?.Execute(DataContext);
         }
     }
 }

@@ -2,7 +2,6 @@
 using SophiApp.Commons;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
-using SophiApp.Interfaces;
 using SophiApp.Models;
 using System;
 using System.Collections.Generic;
@@ -23,46 +22,37 @@ namespace SophiApp.ViewModels
 
         private async void ApplyingSettingsAsync(object args)
         {
-            //TODO: AppVM ApplyingSettingsAsync - need testing and refactoring.
-            //debugger.Write(DebuggerRecord.INIT_APPLYING_SETTINGS);
-            //debugger.Write(DebuggerRecord.CHANGED_ELEMENTS, $"{TextedElementsChangedCounter}");
-            SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
+            debugger.AddRecord("Started applying settings");
+            var stopwatch = StopwatchHelper.New();
+            stopwatch.Start();
+            SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetLoadingPanelVisibility();
-            await ApplyingSettingsAsync();
-            //debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
-            await ResetTextedElementsStateAsync();
-            OsHelper.PostMessage();
-            OsHelper.Refresh();
-            SetLoadingPanelVisibility();
-            SetHitTest();
-            //debugger.Write(DebuggerRecord.DONE_APPLYING_SETTINGS);
-        }
 
-        private async Task ApplyingSettingsAsync()
-        {
-            await Task.Run(() =>
+            try
             {
-                TextedElements.ForEach(element =>
+                await Task.Run(() =>
                 {
-                    //if (element is IContainer container)
-                    //{
-                    //    container.ChildElements.ForEach(e =>
-                    //    {
-                    //        if (e.Status == ElementStatus.SETTOACTIVE || e.Status == ElementStatus.SETTODEFAULT)
-                    //        {
-                    //            e.SetSystemState();
-                    //        }
-                    //    });
-
-                    //    return;
-                    //}
-
-                    //if (element.State == UIElementState.SETTOACTIVE || element.State == UIElementState.SETTODEFAULT)
-                    //{
-                    //    element.SetSystemState();
-                    //}
+                    customActions.ForEach(action => action.Action.Invoke(action.Parameter));
+                    customActions.Clear();
+                    OnPropertyChanged(CustomActionsCounterPropertyName);
                 });
-            });
+            }
+            catch (Exception e)
+            {
+                debugger.AddRecord($"Applying customization caused an error");
+                debugger.AddRecord($"Error information \"{e.Message}\"");
+                debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
+                debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
+            }
+            finally
+            {
+                OsHelper.PostMessage();
+                OsHelper.Refresh();
+                SetLoadingPanelVisibility();
+                SetControlsHitTest();
+                stopwatch.Stop();
+                debugger.AddRecord($"It took {stopwatch.Elapsed.TotalSeconds} seconds to apply the settings");
+            }
         }
 
         private async void AppThemeChangeAsync(object args)
@@ -136,7 +126,7 @@ namespace SophiApp.ViewModels
                                                                                               statusHandler: OnTextedElementStatusChanged,
                                                                                               language: Localization.Language)).ToList();
                 stopwatch.Stop();
-                debugger.AddRecord($"Collection initialization seconds: {stopwatch.Elapsed.TotalSeconds}");
+                debugger.AddRecord($"The collection initialization took {stopwatch.Elapsed.TotalSeconds} seconds");
             });
         }
 
@@ -176,44 +166,29 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var rbutton = args as RadioButton;
-                var group = TextedElements.FirstOrDefault(element => element.Id == rbutton.Parent) as RadioGroup;
+                var group = TextedElements.FirstOrDefault(element => element.Id == rbutton.ParentId) as RadioGroup;
                 group?.ChildElements.ForEach(child => child.Status = child.Id == rbutton.Id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
+                SetCustomAction(group);
             });
         }
 
         private async void ResetTextedElementsStateAsync(object args)
         {
-            //TODO: ResetTextedElementsStateAsync need refactoring.
-            //debugger.Write(DebuggerRecord.INIT_TEXTED_ELEMENTS_RESET);
-            SetHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
+            debugger.AddRecord("Started reset texted elements status");
+            var stopwatch = StopwatchHelper.New();
+            stopwatch.Start();
+            SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetLoadingPanelVisibility();
-            await ResetTextedElementsStateAsync();
-            SetLoadingPanelVisibility();
-            SetHitTest();
-            //debugger.Write(DebuggerRecord.DONE_TEXTED_ELEMENTS_RESET);
-        }
-
-        private async Task ResetTextedElementsStateAsync()
-        {
             await Task.Run(() =>
             {
-                TextedElements.ForEach(element =>
-                {
-                    if (element is IParentElements parent)
-                    {
-                        parent.ChildElements.ForEach(child => child.GetCustomisationStatus());
-
-                        if (element is RadioGroup group)
-                        {
-                            group.SetDefaultId();
-                        }
-                    }
-                    else
-                    {
-                        element.GetCustomisationStatus();
-                    }
-                });
+                customActions.Clear();
+                OnPropertyChanged(CustomActionsCounterPropertyName);
+                TextedElements.ForEach(element => element.GetCustomisationStatus());
             });
+            SetLoadingPanelVisibility();
+            SetControlsHitTest();
+            stopwatch.Stop();
+            debugger.AddRecord($"The collection resetting took {stopwatch.Elapsed.TotalSeconds} seconds");
         }
 
         private async void SaveDebugLogAsync(object args)
@@ -232,6 +207,32 @@ namespace SophiApp.ViewModels
 
         private void SetAppSelectedThemeProperty(Theme theme) => AppSelectedTheme = theme;
 
+        private void SetControlsHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
+        {
+            HamburgerHitTest = hamburgerHitTest;
+            ViewsHitTest = viewsHitTest;
+            WindowCloseHitTest = windowCloseHitTest;
+        }
+
+        private void SetCustomAction(RadioGroup group)
+        {
+            group.ChildElements.ForEach(child =>
+            {
+                if (customActions.ContainsId(child.Id))
+                {
+                    customActions.RemoveDataObject(child.Id);
+                    OnPropertyChanged(CustomActionsCounterPropertyName);
+                    return;
+                }
+
+                if (child.Status == ElementStatus.CHECKED && child.Id != group.DefaultId)
+                {
+                    customActions.AddDataObject(child.Id, CustomisationsHelper.GetCustomisationOs(child.Id), true);
+                    OnPropertyChanged(CustomActionsCounterPropertyName);
+                }
+            });
+        }
+
         private void SetCustomAction(TextedElement element)
         {
             if (customActions.ContainsId(element.Id))
@@ -241,13 +242,6 @@ namespace SophiApp.ViewModels
             }
 
             customActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.SETTOACTIVE);
-        }
-
-        private void SetHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
-        {
-            HamburgerHitTest = hamburgerHitTest;
-            ViewsHitTest = viewsHitTest;
-            WindowCloseHitTest = windowCloseHitTest;
         }
 
         private void SetLoadingPanelVisibility() => LoadingPanelVisibility = !LoadingPanelVisibility;
@@ -317,7 +311,7 @@ namespace SophiApp.ViewModels
             //await UpdateIsAvailableAsync();
             await InitTextedElementsAsync();
             SetVisibleViewByTagProperty(Tags.ViewPrivacy);
-            SetHitTest(hamburgerHitTest: true);
+            SetControlsHitTest(hamburgerHitTest: true);
             MouseHelper.ShowWaitCursor(show: false);
         }
     }

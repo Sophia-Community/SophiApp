@@ -94,7 +94,8 @@
 
                 <local:SearchBar VerticalAlignment="Bottom"
                                  Margin="10, 0, 10, 20"
-                                 IsEnabled="False" />
+                                 IsEnabled="False"
+                                 Visibility="Collapsed" />
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

@@ -5,8 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Views"
              mc:Ignorable="d"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
+             controls:AdvancedRadioGroup.MouseEnter="TextedElement_MouseEnter"
+             controls:AdvancedRadioGroup.MouseLeave="TextedElement_MouseLeave"
+             controls:AdvancedSwitch.MouseEnter="TextedElement_MouseEnter"
+             controls:AdvancedSwitch.MouseLeave="TextedElement_MouseLeave"
              controls:ExpandingGroup.MouseEnter="TextedElement_MouseEnter"
              controls:ExpandingGroup.MouseLeave="TextedElement_MouseLeave"
              controls:RadioGroup.MouseEnter="TextedElement_MouseEnter"
@@ -21,6 +26,7 @@
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsFilter" />
+        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -71,6 +77,26 @@
 
                         <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                             <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
+                                    <controls:AdvancedRadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                                 Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
+                                                                 Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility,
+                                                                              RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}},
+                                                                              Converter={StaticResource BoolToVisibilityConverter}}"
+                                                                 Margin="20, 10, 0, 5" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
+                                    <controls:AdvancedSwitch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
+                                                             Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                                             Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
+                                                             Id="{Binding Id}"
+                                                             IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                             IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                             Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility,
+                                                                          RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}},
+                                                                          Converter={StaticResource BoolToVisibilityConverter}}"
+                                                             Margin="20, 10, 0, 5" />
+                                </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:Switch}">
                                     <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                                      Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"

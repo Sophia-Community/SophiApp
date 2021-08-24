@@ -120,6 +120,9 @@
     <Compile Include="Controls\RadioButton.xaml.cs">
       <DependentUpon>RadioButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AdvancedRadioGroup.xaml.cs">
+      <DependentUpon>AdvancedRadioGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RadioGroup.xaml.cs">
       <DependentUpon>RadioGroup.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="Controls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AdvancedSwitch.xaml.cs">
+      <DependentUpon>AdvancedSwitch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Switch.xaml.cs">
       <DependentUpon>Switch.xaml</DependentUpon>
@@ -171,12 +177,15 @@
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\IElement.cs" />
     <Compile Include="Interfaces\IParentElements.cs" />
+    <Compile Include="Models\AdvancedSwitch.cs" />
+    <Compile Include="Models\AdvancedRadioGroup.cs" />
     <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
     <Compile Include="Models\ExpandingGroup.cs" />
     <Compile Include="Models\RadioButton.cs" />
     <Compile Include="Models\RadioGroup.cs" />
     <Compile Include="Models\Switch.cs" />
+    <Compile Include="ViewModels\AppVM-Commands.cs" />
     <Compile Include="ViewModels\AppVM-Ctor.cs" />
     <Compile Include="ViewModels\AppVM-Events.cs" />
     <Compile Include="ViewModels\AppVM-Methods.cs" />
@@ -260,6 +269,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\AdvancedRadioGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\RadioGroup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -273,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SearchBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AdvancedSwitch.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -12,6 +12,6 @@ namespace SophiApp.Models
         {
         }
 
-        internal uint Parent { get; set; }
+        internal uint ParentId { get; set; }
     }
 }
