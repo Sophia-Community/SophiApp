@@ -29,8 +29,10 @@ namespace SophiApp.Models
             SetDefaultId();
         }
 
-        internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                                    UILanguage language, Func<bool> customisationStatus)
+        internal override void Init(Action<TextedElement, Exception> errorHandler,
+                                    EventHandler<TextedElement> statusHandler,
+                                    UILanguage language,
+                                    Func<bool> customisationStatus)
         {
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
