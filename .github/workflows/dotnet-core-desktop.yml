@@ -24,16 +24,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0
-    
-    - name: Setup Windows 10 SDK
-      uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
-      with:
-        sdk-version: 19041
-        
-    - name: Debug
-      run: |
-        Get-ChildItem -Path "D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" | ft -AutoSize
+        fetch-depth: 0    
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
