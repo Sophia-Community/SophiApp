@@ -80,7 +80,6 @@
         </Style>
         <Style x:Key="ViewScrollStyle" TargetType="{x:Type ScrollViewer}">
             <Setter Property="CanContentScroll" Value="False" />
-            <Setter Property="Grid.Row" Value="1" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />

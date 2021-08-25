@@ -58,23 +58,12 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <!--View header row-->
-                        <RowDefinition Height="50" />
                         <!--View UI content row-->
                         <RowDefinition Height="*" />
                         <!--View UI content indent row-->
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{DynamicResource HeaderText}"
-                               Grid.Row="0"
-                               VerticalAlignment="Bottom"
-                               HorizontalAlignment="Left"
-                               Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
-                               Margin="20, 0, 0, 10" />
-
-                    <ScrollViewer x:Name="ScrollViewerContent"
-                                  Style="{DynamicResource ViewScrollStyle}">
-
+                    <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
                         <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">

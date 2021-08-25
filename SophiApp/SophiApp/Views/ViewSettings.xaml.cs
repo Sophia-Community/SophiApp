@@ -27,7 +27,7 @@ namespace SophiApp.Views
         {
             if (IsVisible)
             {
-                var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+                var scrollViewer = Template.FindName("ScrollViewerSettings", this) as ScrollViewer;
                 scrollViewer?.ScrollToTop();
             }
         }
