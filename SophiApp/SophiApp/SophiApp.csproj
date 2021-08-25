@@ -84,9 +84,6 @@
     <Compile Include="Controls\ChangesPanel.xaml.cs">
       <DependentUpon>ChangesPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\IconCheckBox.xaml.cs">
-      <DependentUpon>IconCheckBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -98,6 +95,9 @@
     </Compile>
     <Compile Include="Controls\FilledButton.xaml.cs">
       <DependentUpon>FilledButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FolderIconCheckBox.xaml.cs">
+      <DependentUpon>FolderIconCheckBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\GitHubHyperLink.xaml.cs">
       <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
@@ -144,12 +144,14 @@
     <Compile Include="Controls\TitleRight.xaml.cs">
       <DependentUpon>TitleRight.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WinIconCheckBox.xaml.cs">
+      <DependentUpon>WinIconCheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
     <Compile Include="Converters\ChangesPanelVisibility.cs" />
     <Compile Include="Converters\IntToChanges.cs" />
     <Compile Include="Converters\IntToSettings.cs" />
-    <Compile Include="Converters\StringToIcon.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
@@ -177,7 +179,6 @@
     <Compile Include="Interfaces\IParentElements.cs" />
     <Compile Include="Models\AdvancedSwitch.cs" />
     <Compile Include="Models\AdvancedRadioGroup.cs" />
-    <Compile Include="Models\IconCheckBox.cs" />
     <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
     <Compile Include="Models\ExpandingGroup.cs" />
@@ -220,10 +221,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\IconCheckBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -237,6 +234,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\FilledButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FolderIconCheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -301,6 +302,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\TitleRight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WinIconCheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -10,7 +10,5 @@ namespace SophiApp.Commons
         public uint Id { get; set; }
         public string Tag { get; set; }
         public string Type { get; set; }
-
-        public string Icon { get; set; }
     }
 }
