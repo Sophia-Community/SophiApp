@@ -98,18 +98,17 @@
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="20" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel x:Name="HeaderWrapper"
-                                Orientation="Horizontal"
-                                Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                Grid.Column="0"
-                                MouseEnter="Header_MouseEnter"
-                                MouseLeave="HeaderWrapper_MouseLeave">
+                    <Grid x:Name="HeaderWrapper"
+                          Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                          Grid.Column="0"
+                          MouseEnter="Header_MouseEnter"
+                          MouseLeave="HeaderWrapper_MouseLeave">
                         <TextBlock Style="{DynamicResource NormalText}"
-                               TextWrapping="Wrap"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left"
-                               Text="{Binding Header}" />
-                    </StackPanel>
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Text="{Binding Header}" />
+                    </Grid>
                     <Grid Style="{StaticResource Style.Grid.Path.Wrapper}" MouseLeftButtonDown="ExpandingGroup_MouseLeftButtonDown">
                         <Viewbox x:Name="ViewboxArrow">
                             <Canvas>

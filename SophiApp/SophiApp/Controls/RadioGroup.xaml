@@ -36,14 +36,13 @@
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel>
-                <StackPanel x:Name="HeaderWrapper"
-                            Orientation="Horizontal"
-                            MouseEnter="Header_MouseEnter"
-                            MouseLeave="Header_MouseLeave">
+                <Grid x:Name="HeaderWrapper"
+                      MouseEnter="Header_MouseEnter"
+                      MouseLeave="Header_MouseLeave">
                     <TextBlock Style="{DynamicResource NormalText}"
                                Text="{Binding Header}"
                                TextWrapping="Wrap" />
-                </StackPanel>
+                </Grid>
                 <Border />
                 <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.Resources>
