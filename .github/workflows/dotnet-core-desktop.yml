@@ -26,6 +26,11 @@ jobs:
       with:
         fetch-depth: 0
     
+    - name: Setup Windows 10 SDK
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
+      with:
+        sdk-version: 19041
+    
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
     
