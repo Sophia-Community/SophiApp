@@ -28,7 +28,7 @@ jobs:
       with:
         sdk-version: 19041
         
-    - name: Find 
+    - name: Find winmd
       run: Get-ChildItem -Path C:\ -Recurse -Force -Include "Windows.winmd" -ErrorAction SilentlyContinue
     
     - name: Setup MSBuild
