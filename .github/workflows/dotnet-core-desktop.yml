@@ -37,7 +37,9 @@ jobs:
         nuget-version: latest
       
     - name: NuGet Restore
-      run: nuget restore ${{ matrix.App_Project_Path }}
+      run: |
+        Get-ChildItem -Path ${{ matrix.App_Project_Path }} -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
+        nuget restore ${{ matrix.App_Project_Path }}
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
