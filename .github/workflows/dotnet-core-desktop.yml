@@ -37,9 +37,7 @@ jobs:
         nuget-version: latest
       
     - name: NuGet Restore
-      run: |
-        Get-ChildItem -Path $env:App_Project_Path -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
-        nuget restore ${{ matrix.App_Project_Path }}
+      run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
