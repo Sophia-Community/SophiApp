@@ -36,7 +36,7 @@ jobs:
       with:
         nuget-version: latest
       
-    - name: NuGet Restore
+    - name: Restore NuGet Package
       run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
     
     - name: Setup MSBuild
@@ -50,8 +50,7 @@ jobs:
 
     - name: Cleanup
       run: |
-        Get-ChildItem -Path $env:App_Release_Path -Exclude "*.exe" | Remove-Item -Force -Confirm:$false
-        Copy-Item -Path README.md -Destination $env:App_Release_Path -Confirm:$false -Force
+        Get-ChildItem -Path $env:App_Release_Path -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize        
     
     - name: Compress
       run: |
