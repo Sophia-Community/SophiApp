@@ -1,4 +1,4 @@
-name: Build
+name: Build Release
 
 on: push
 
@@ -16,6 +16,7 @@ jobs:
       App_Zip: SophiApp.zip      
       App_Project_Path: SophiApp\SophiApp.sln
       App_Release_Path: SophiApp\SophiApp\bin\Release
+      Binary_Folder_Name: Bin
 
     steps:
     - name: Checkout
@@ -48,16 +49,21 @@ jobs:
         Platform: ${{ matrix.platform }}        
         Configuration: ${{ matrix.configuration }}
 
-    - name: Cleanup
+    - name: Cleanup Files
       run: |
-        Get-ChildItem -Path $env:App_Release_Path -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize        
+        $ExcludedTypes = @("*.exe", "*.config")
+        $SourceFolder = "{0}\*"-f $env:App_Release_Path
+        $DestinationFolder = "{0}\{1}"-f $env:App_Release_Path, $env:Binary_Folder_Name        
+        Get-ChildItem -Path $env:App_Release_Path -Directory | Remove-Item -Force -Recurse -Confirm:$false
+        New-Item -Path $env:App_Release_Path -ItemType Directory -Name $env:Binary_Folder_Name -Confirm:$false
+        Get-ChildItem -Path $SourceFolder -File -Exclude $ExcludedTypes | Move-Item -Destination $DestinationFolder
     
-    - name: Compress
+    - name: Compress Files
       run: |
         $Build_Directory = Rename-Item -Path $env:App_Release_Path -NewName $env:App_Name -PassThru | Select-Object -ExpandProperty FullName          
-        Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -Verbose
+        Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
 
-    - name: Release
+    - name: Release Build
       uses: svenstaro/upload-release-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
