@@ -28,10 +28,9 @@ jobs:
       with:
         sdk-version: 19041
         
-    - name: Find winmd
+    - name: Copy SDK files
       run: |
-        Test-Path -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd"
-        Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\" -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
+        Copy-Item -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Destination "D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Recurse -Force
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
