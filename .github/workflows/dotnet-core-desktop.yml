@@ -30,8 +30,8 @@ jobs:
         
     - name: Find winmd
       run: |
-        Get-ChildItem -Path "C:\Program Files\" -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
-        Get-ChildItem -Path "C:\Program Files (x86)\" -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
+        Test-Path -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd"
+        Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\" -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
