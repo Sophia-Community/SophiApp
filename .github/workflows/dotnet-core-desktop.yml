@@ -29,7 +29,9 @@ jobs:
         sdk-version: 19041
         
     - name: Find winmd
-      run: Get-ChildItem -Path C:\ -Recurse -Force -Include "Windows.winmd" -ErrorAction SilentlyContinue
+      run: |
+        Get-ChildItem -Path "C:\Program Files\" -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
+        Get-ChildItem -Path "C:\Program Files (x86)\" -Recurse -Force -ErrorAction SilentlyContinue | ft -AutoSize
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
