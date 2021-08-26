@@ -1,9 +1,6 @@
 name: Build
 
-on:
-  push:
-    tags:
-      - "*"
+on: push
 
 jobs:
   build:
@@ -24,7 +21,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0    
+        fetch-depth: 0
+        
+    - name: Setup Windows 10 Sdk
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
+      with:
+        sdk-version: 19041
+        
+    - name: Find 
+      run: Get-ChildItem -Path C:\ -Recurse -Force -Include "Windows.winmd" -ErrorAction SilentlyContinue
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1          
