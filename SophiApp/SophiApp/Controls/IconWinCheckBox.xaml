@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="SophiApp.Controls.WinIconCheckBox"
+﻿<UserControl x:Class="SophiApp.Controls.IconWinCheckBox"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
@@ -29,7 +29,7 @@
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <Style TargetType="{x:Type local:WinIconCheckBox}">
+        <Style TargetType="{x:Type local:IconWinCheckBox}">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -42,7 +42,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid MouseEnter="WinIconCheckBox_MouseEnter" MouseLeave="WinIconCheckBox_MouseLeave">
+            <Grid MouseEnter="IconWinCheckBox_MouseEnter" MouseLeave="IconWinCheckBox_MouseLeave">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="10" />
@@ -78,7 +78,7 @@
                            HorizontalAlignment="Left"
                            Grid.Column="2" />
 
-                <Border x:Name="BorderCheckBox" MouseLeftButtonDown="WinIconCheckBox_MouseLeftButtonDown">
+                <Border x:Name="BorderCheckBox" MouseLeftButtonDown="IconWinCheckBox_MouseLeftButtonDown">
                     <Path x:Name="PathCheckBox"
                           Fill="{DynamicResource Brush.Button.Foreground}"
                           Data="M16.3516 6.35156L8 14.7109L3.64844 10.3516L4.35156 9.64844L8 13.2891L15.6484 5.64844L16.3516 6.35156Z"

@@ -111,6 +111,9 @@
     <Compile Include="Controls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\IconWinCheckBox.xaml.cs">
+      <DependentUpon>IconWinCheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LoadingPanel.xaml.cs">
       <DependentUpon>LoadingPanel.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,7 @@
     <Compile Include="Interfaces\IParentElements.cs" />
     <Compile Include="Models\AdvancedSwitch.cs" />
     <Compile Include="Models\AdvancedRadioGroup.cs" />
+    <Compile Include="Models\IconWinCheckBox.cs" />
     <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
     <Compile Include="Models\ExpandingGroup.cs" />
@@ -256,6 +260,10 @@
     <Page Include="Controls\IconButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\IconWinCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\LoadingPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
