@@ -96,9 +96,6 @@
     <Compile Include="Controls\FilledButton.xaml.cs">
       <DependentUpon>FilledButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FolderIconCheckBox.xaml.cs">
-      <DependentUpon>FolderIconCheckBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\GitHubHyperLink.xaml.cs">
       <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
     </Compile>
@@ -110,6 +107,9 @@
     </Compile>
     <Compile Include="Controls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IconFolderCheckBox.xaml.cs">
+      <DependentUpon>IconFolderCheckBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\IconWinCheckBox.xaml.cs">
       <DependentUpon>IconWinCheckBox.xaml</DependentUpon>
@@ -147,9 +147,6 @@
     <Compile Include="Controls\TitleRight.xaml.cs">
       <DependentUpon>TitleRight.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WinIconCheckBox.xaml.cs">
-      <DependentUpon>WinIconCheckBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
     <Compile Include="Converters\ChangesPanelVisibility.cs" />
@@ -182,6 +179,7 @@
     <Compile Include="Interfaces\IParentElements.cs" />
     <Compile Include="Models\AdvancedSwitch.cs" />
     <Compile Include="Models\AdvancedRadioGroup.cs" />
+    <Compile Include="Models\IconFolderCheckBox.cs" />
     <Compile Include="Models\IconWinCheckBox.cs" />
     <Compile Include="Models\TextedElement.cs" />
     <Compile Include="Models\CheckBox.cs" />
@@ -197,6 +195,9 @@
     <Compile Include="Views\ViewContextMenu.xaml.cs" />
     <Compile Include="Views\ViewGames.xaml.cs" />
     <Compile Include="Views\ViewLoading.xaml.cs" />
+    <Compile Include="Views\ViewOsNotSupported.xaml.cs">
+      <DependentUpon>ViewOsNotSupported.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewPersonalization.xaml.cs" />
     <Compile Include="Views\ViewPrivacy.xaml.cs" />
     <Compile Include="Views\ViewSecurity.xaml.cs" />
@@ -241,10 +242,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\FolderIconCheckBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\GitHubHyperLink.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -260,6 +257,10 @@
     <Page Include="Controls\IconButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\IconFolderCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\IconWinCheckBox.xaml">
       <SubType>Designer</SubType>
@@ -313,10 +314,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\WinIconCheckBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Localizations\EN.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -356,6 +353,10 @@
     <Page Include="Views\ViewLoading.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ViewOsNotSupported.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewPersonalization.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -410,6 +411,7 @@
     </EmbeddedResource>
     <None Include="app.manifest" />
     <Resource Include="Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Resources\UIData.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -440,5 +442,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

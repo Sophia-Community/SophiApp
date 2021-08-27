@@ -28,6 +28,8 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
+        internal static int GetBuild() => Environment.OSVersion.Version.Build;
+
         internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.DISPLAY_VERSION_NAME) as string;
 
         internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.EDITION_ID_NAME) as string;
@@ -60,7 +62,5 @@ namespace SophiApp.Helpers
             // Update taskbar
             SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, "TraySettings");
         }
-
-        // Simulate pressing F5 to refresh the desktop
     }
 }

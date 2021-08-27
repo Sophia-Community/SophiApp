@@ -12,4 +12,5 @@
     <system:String x:Key="Tags.View.Security">Security</system:String>
     <system:String x:Key="Tags.View.ContextMenu">ContextMenu</system:String>
     <system:String x:Key="Tags.View.Settings">Settings</system:String>
+    <system:String x:Key="Tags.View.OsNotSupported">OsNotSupported</system:String>
 </ResourceDictionary>

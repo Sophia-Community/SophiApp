@@ -4,6 +4,7 @@ namespace SophiApp.Commons
 {
     internal struct Tags
     {
+        internal static readonly string OsNotSupported = Application.Current.FindResource("Tags.View.OsNotSupported") as string;
         internal static readonly string ViewContextMenu = Application.Current.FindResource("Tags.View.ContextMenu") as string;
         internal static readonly string ViewGames = Application.Current.FindResource("Tags.View.Games") as string;
         internal static readonly string ViewLoading = Application.Current.FindResource("Tags.View.Loading") as string;

@@ -13,6 +13,7 @@
     <system:String x:Key="Localization.TaskSheduler">Планировщик заданий</system:String>
     <system:String x:Key="Localization.Security">Безопасность</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
+    <system:String x:Key="Localization.OsNotSupported">К сожалению, эта версия Windows не поддерживается</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.Settings.Languages">Язык интерфейса</system:String>
     <system:String x:Key="Localization.Settings.Themes">Использовать тему Windows</system:String>

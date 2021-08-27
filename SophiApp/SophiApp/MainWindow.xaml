@@ -172,6 +172,7 @@
                     <views:ViewSecurity Grid.Row="0" />
                     <views:ViewContextMenu Grid.Row="0" />
                     <views:ViewSettings Grid.Row="0" />
+                    <views:ViewOsNotSupported Grid.Row="0" />
                 </Grid>
             </Grid>
         </Grid>

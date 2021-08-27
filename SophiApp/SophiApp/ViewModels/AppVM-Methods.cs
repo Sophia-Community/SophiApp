@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Debugger = SophiApp.Helpers.Debugger;
 using Localization = SophiApp.Commons.Localization;
@@ -39,7 +40,7 @@ namespace SophiApp.ViewModels
             }
             catch (Exception e)
             {
-                debugger.AddRecord($"Applying customization caused an error");
+                debugger.AddRecord($"Applying customization action caused an error");
                 debugger.AddRecord($"Error information \"{e.Message}\"");
                 debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
                 debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
@@ -62,11 +63,11 @@ namespace SophiApp.ViewModels
                 var name = args as string;
                 var theme = themesHelper.Find(name);
                 themesHelper.ChangeTheme(theme);
-                SetAppSelectedThemeProperty(theme);
+                SetAppSelectedTheme(theme);
             });
         }
 
-        private void HamburgerClicked(object args) => SetVisibleViewByTagProperty(args as string);
+        private void HamburgerClicked(object args) => SetVisibleViewTag(args as string);
 
         private async void HyperLinkClickedAsync(object args)
         {
@@ -74,7 +75,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var link = args as string;
-                debugger.AddRecord($"User clicked on the link \"{link}\"");
+                debugger.AddRecord($"Clicked link: \"{link}\"");
                 Process.Start(link);
             });
             MouseHelper.ShowWaitCursor(show: false);
@@ -115,22 +116,18 @@ namespace SophiApp.ViewModels
                 debugger.AddRecord("Started initialization texted elements");
                 var stopwatch = StopwatchHelper.New();
                 stopwatch.Start();
-
-                //TODO: TextedElements - for UIData.json modify.
-
-                var file = File.ReadAllText("UIData.json");
-                //var bytes = Encoding.UTF8.GetBytes(file);
-                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(file)
-                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto,
-                                                                                              errorHandler: OnTextedElementErrorAsync,
-                                                                                              statusHandler: OnTextedElementStatusChanged,
-                                                                                              language: Localization.Language)).ToList();
+                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
+                                                                                              statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
+                                            .ToList();
                 stopwatch.Stop();
                 debugger.AddRecord($"The collection initialization took {stopwatch.Elapsed.TotalSeconds} seconds");
             });
         }
 
         private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > AppData.Version && !dto.prerelease && !dto.draft;
+
+        private bool IsSupportedOs() => OsHelper.GetBuild() >= MinimalOsBuild;
 
         private async void LocalizationChangeAsync(object args)
         {
@@ -205,7 +202,7 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private void SetAppSelectedThemeProperty(Theme theme) => AppSelectedTheme = theme;
+        private void SetAppSelectedTheme(Theme theme) => AppSelectedTheme = theme;
 
         private void SetControlsHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
         {
@@ -250,7 +247,7 @@ namespace SophiApp.ViewModels
 
         private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
 
-        private void SetVisibleViewByTagProperty(string tag) => VisibleViewByTag = tag;
+        private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
         private async void TextedElementClickedAsync(object args)
         {
@@ -306,13 +303,19 @@ namespace SophiApp.ViewModels
 
         internal async void InitData()
         {
-            MouseHelper.ShowWaitCursor(show: true);
-            //TODO: UpdateIsAvailableAsync - uncomment before release.
-            //await UpdateIsAvailableAsync();
-            await InitTextedElementsAsync();
-            SetVisibleViewByTagProperty(Tags.ViewPrivacy);
-            SetControlsHitTest(hamburgerHitTest: true);
-            MouseHelper.ShowWaitCursor(show: false);
+            if (IsSupportedOs())
+            {
+                MouseHelper.ShowWaitCursor(show: true);
+                //TODO: UpdateIsAvailableAsync - comment before debug, uncomment before release.
+                await UpdateIsAvailableAsync();
+                await InitTextedElementsAsync();
+                SetVisibleViewTag(Tags.ViewPrivacy);
+                SetControlsHitTest(hamburgerHitTest: true);
+                MouseHelper.ShowWaitCursor(show: false);
+                return;
+            }
+
+            SetVisibleViewTag(Tags.OsNotSupported);
         }
     }
 }

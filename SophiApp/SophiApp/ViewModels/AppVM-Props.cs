@@ -15,11 +15,11 @@ namespace SophiApp.ViewModels
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string LoadingPanelVisibilityPropertyName = "LoadingPanelVisibility";
         private const string LocalizationPropertyName = "Localization";
+        private const int minimalOsBuild = 19042;
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string ViewsHitTestPropertyName = "ViewsHitTest";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
         private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
-
         private bool advancedSettingsVisibility;
         private List<CustomActionDTO> customActions;
         private Debugger debugger;
@@ -54,7 +54,6 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
-
         public int CustomActionsCounter => customActions.Count;
 
         public bool HamburgerHitTest
@@ -88,7 +87,7 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> LocalizationList => localizationsHelper.GetNames();
-
+        public int MinimalOsBuild { get => minimalOsBuild; } // https://docs.microsoft.com/ru-ru/windows/release-health/release-information
         public List<TextedElement> TextedElements { get; private set; }
 
         public bool UpdateAvailable
