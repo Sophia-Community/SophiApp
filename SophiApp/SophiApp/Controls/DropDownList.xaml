@@ -24,6 +24,7 @@
         </Style>
         <Style TargetType="{x:Type Popup}">
             <Setter Property="Placement" Value="Bottom" />
+            <Setter Property="PlacementTarget" Value="{Binding ElementName=BorderContent}" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="AllowsTransparency" Value="True" />
             <Setter Property="PopupAnimation" Value="Slide" />
@@ -74,7 +75,8 @@
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid Style="{StaticResource Style.Grid.Button.Wrapper}" Background="{DynamicResource Brush.Window.Background}">
-                                    <TextBlock Style="{DynamicResource NormalText}"
+                                    <TextBlock x:Name="Text1"
+                                               Style="{DynamicResource NormalText}"
                                                Text="{Binding Path=SelectedText, RelativeSource={RelativeSource AncestorType={x:Type local:DropDownList}}}"
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
@@ -131,8 +133,6 @@
                     <Setter TargetName="ButtonOpenPopup" Property="Visibility" Value="Collapsed" />
                     <Setter TargetName="BorderContent" Property="BorderThickness" Value="1, 1, 1, 0" />
                     <Setter TargetName="BorderPopup" Property="BorderThickness" Value="1, 0, 1, 1" />
-                    <Setter TargetName="Popup" Property="HorizontalOffset" Value="-1" />
-                    <Setter TargetName="Popup" Property="VerticalOffset" Value="-1" />
                 </Trigger>
                 <Trigger SourceName="Popup" Property="IsOpen" Value="False">
                     <Setter TargetName="ButtonClosePopup" Property="Visibility" Value="Collapsed" />
