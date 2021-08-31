@@ -26,6 +26,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
@@ -43,9 +44,16 @@
                             MouseLeave="Header_MouseLeave">
                     <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
                     <TextBlock Style="{DynamicResource NormalText}"
-                               Text="{Binding Header}"
+                               Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"
                                Margin="10, 0, 0, 0"
                                TextWrapping="Wrap" />
+
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
+                            <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
                 </StackPanel>
                 <Border />
                 <ItemsControl ItemsSource="{Binding ChildElements}">

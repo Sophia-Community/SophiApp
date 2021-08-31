@@ -12,7 +12,7 @@
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Hamburger.Separator.Background}" />
             <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Margin" Value="0, 415, 0, 0" />
+            <Setter Property="Margin" Value="0, 360, 0, 0" />
         </Style>
         <Style TargetType="local:HamburgerMenu">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -48,36 +48,36 @@
                                        Text="{DynamicResource Localization.StartMenu}"
                                        Tag="{StaticResource Tags.View.StartMenu}" />
 
-                <local:HamburgerButton VerticalAlignment="Top"
+                <!--<local:HamburgerButton VerticalAlignment="Top"
                                        Margin="0, 180, 0, 0"
                                        IconMargin="21, 0, 0, 0"
                                        Icon="{DynamicResource Icon.UwpApps}"
                                        Text="{DynamicResource Localization.UwpApps}"
-                                       Tag="{StaticResource Tags.View.UwpApps}" />
+                                       Tag="{StaticResource Tags.View.UwpApps}" />-->
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 225, 0, 0"
+                                       Margin="0, 180, 0, 0"
                                        IconMargin="8, 7, 0, 0"
                                        Icon="{DynamicResource Icon.Games}"
                                        Text="{DynamicResource Localization.Games}"
                                        Tag="{StaticResource Tags.View.Games}" />
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 270, 0, 0"
+                                       Margin="0, 225, 0, 0"
                                        IconMargin="7, 8, 0, 0"
                                        Icon="{DynamicResource Icon.TaskSheduler}"
                                        Text="{DynamicResource Localization.TaskSheduler}"
                                        Tag="{StaticResource Tags.View.TaskSheduler}" />
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 315, 0, 0"
+                                       Margin="0, 270, 0, 0"
                                        IconMargin="7, 7, 0, 0"
                                        Icon="{DynamicResource Icon.Security}"
                                        Text="{DynamicResource Localization.Security}"
                                        Tag="{StaticResource Tags.View.Security}" />
 
                 <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 360, 0, 0"
+                                       Margin="0, 315, 0, 0"
                                        IconMargin="6, 10, 0, 0"
                                        Icon="{DynamicResource Icon.ContextMenu}"
                                        Text="{DynamicResource Localization.ContextMenu}"
@@ -86,16 +86,15 @@
                 <!--Hamburger Buttons Separator-->
                 <Border />
                 <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 425, 0, 0"
+                                       Margin="0, 362, 0, 0"
                                        IconMargin="6, 7, 0, 0"
                                        Icon="{DynamicResource Icon.Settings}"
                                        Text="{DynamicResource Localization.Settings}"
                                        Tag="{StaticResource Tags.View.Settings}" />
 
-                <local:SearchBar VerticalAlignment="Bottom"
+                <!--<local:SearchBar VerticalAlignment="Bottom"
                                  Margin="10, 0, 10, 20"
-                                 IsEnabled="False"
-                                 Visibility="Collapsed" />
+                                 IsEnabled="False" />-->
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

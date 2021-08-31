@@ -6,8 +6,19 @@ namespace SophiApp.Helpers
 {
     internal class OsHelper
     {
+        private const string CURRENT_BUILD = "CurrentBuild";
+        private const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private const string DISPLAY_VERSION_NAME = "DisplayVersion";
+        private const string EDITION_ID_NAME = "EditionID";
+        private const string MAJOR_VERSION_NUMBER = "CurrentMajorVersionNumber";
+        private const string MINOR_VERSION_NUMBER = "CurrentMinorVersionNumber";
         private const int Msg = 273;
+        private const string PRODUCT_NAME = "ProductName";
+        private const string REGISTRED_ORGANIZATION_NAME = "RegisteredOrganization";
+        private const string REGISTRED_OWNER_NAME = "RegisteredOwner";
         private const int SMTO_ABORTIFHUNG = 0x0002;
+        private const string TRAY_SETTINGS = "TraySettings";
+        private const string UBR = "UBR";
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
@@ -30,22 +41,22 @@ namespace SophiApp.Helpers
 
         internal static int GetBuild() => Environment.OSVersion.Version.Build;
 
-        internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.DISPLAY_VERSION_NAME) as string;
+        internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: DISPLAY_VERSION_NAME) as string;
 
-        internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.EDITION_ID_NAME) as string;
+        internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: EDITION_ID_NAME) as string;
 
-        internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.PRODUCT_NAME) as string;
+        internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: PRODUCT_NAME) as string;
 
-        internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_ORGANIZATION_NAME) as string;
+        internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: REGISTRED_ORGANIZATION_NAME) as string;
 
-        internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: ActionsData.CURRENT_VERSION, name: ActionsData.REGISTRED_OWNER_NAME) as string;
+        internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: REGISTRED_OWNER_NAME) as string;
 
         internal static string GetVersion()
         {
-            var majorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "CurrentMajorVersionNumber");
-            var minorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "CurrentMinorVersionNumber");
-            var buildVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "CurrentBuild");
-            var ubrVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, "UBR");
+            var majorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MAJOR_VERSION_NUMBER);
+            var minorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MINOR_VERSION_NUMBER);
+            var buildVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD);
+            var ubrVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, UBR);
             return $"{majorVersion}.{minorVersion}.{buildVersion}.{ubrVersion}";
         }
 
@@ -60,7 +71,7 @@ namespace SophiApp.Helpers
             // Update environment variables
             SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, null, SMTO_ABORTIFHUNG, 100, IntPtr.Zero);
             // Update taskbar
-            SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, "TraySettings");
+            SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, TRAY_SETTINGS);
         }
     }
 }

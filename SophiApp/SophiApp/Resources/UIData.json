@@ -2187,7 +2187,7 @@
             "RU": ""
         },
         "Type": "ExpandingGroup",
-        "Tag": "System",
+        "Tag": "ContextMenu",
         "ChildElements": [
             {
                 "Id": 806,

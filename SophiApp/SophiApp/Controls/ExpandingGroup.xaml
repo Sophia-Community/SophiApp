@@ -81,6 +81,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
@@ -107,7 +108,13 @@
                                    TextWrapping="Wrap"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
-                                   Text="{Binding Header}" />
+                                   Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
+                                <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
+                            </ContextMenu>
+                        </Grid.ContextMenu>
                     </Grid>
                     <Grid Style="{StaticResource Style.Grid.Path.Wrapper}" MouseLeftButtonDown="ExpandingGroup_MouseLeftButtonDown">
                         <Viewbox x:Name="ViewboxArrow">

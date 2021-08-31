@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.Helpers;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,6 +21,10 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(AdvancedRadioGroup), new PropertyMetadata(default));
+
+        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(string), typeof(AdvancedRadioGroup), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconProperty =
@@ -58,6 +63,12 @@ namespace SophiApp.Controls
             set { SetValue(DescriptionProperty, value); }
         }
 
+        public string Header
+        {
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
+        }
+
         public object Icon
         {
             get { return (object)GetValue(IconProperty); }
@@ -69,6 +80,10 @@ namespace SophiApp.Controls
             get { return (uint)GetValue(IdProperty); }
             set { SetValue(IdProperty, value); }
         }
+
+        private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);
+
+        private void ContextMenu_HeaderCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Header);
 
         private void Header_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });
 

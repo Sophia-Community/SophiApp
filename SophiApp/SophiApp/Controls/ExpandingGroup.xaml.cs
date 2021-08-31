@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.Helpers;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,6 +21,10 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(ExpandingGroup), new PropertyMetadata(default));
+
+        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(string), typeof(ExpandingGroup), new PropertyMetadata(default));
 
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
@@ -58,6 +63,12 @@ namespace SophiApp.Controls
             set => SetValue(DescriptionProperty, value);
         }
 
+        public string Header
+        {
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
+        }
+
         public uint Id
         {
             get { return (uint)GetValue(IdProperty); }
@@ -69,6 +80,10 @@ namespace SophiApp.Controls
             get { return (bool)GetValue(IsExpandedProperty); }
             set { SetValue(IsExpandedProperty, value); }
         }
+
+        private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);
+
+        private void ContextMenu_HeaderCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Header);
 
         private void ExpandingGroup_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsExpanded = !IsExpanded;
 
