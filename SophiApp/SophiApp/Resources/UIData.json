@@ -1193,8 +1193,8 @@
             "RU": "Доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
         },
         "Description": {
-            "EN": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок",
-            "RU": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in privileged mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders"
+            "EN": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in privileged mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders",
+            "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок"
         },
         "Type": "Switch",
         "Tag": "System"
@@ -2119,7 +2119,7 @@
         },
         "Description": {
             "EN": "The \"Extract all\" context menu option will extract all contents of the .msi file into the \"Extracted\"  folder at the same location as the .msi file",
-            "RU": "Пукнт контекстного меню \"Извлечь все\" извлечет все содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл"
+            "RU": "Пункт контекстного меню \"Извлечь все\" извлечет содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл"
         },
         "Type": "CheckBox",
         "Tag": "ContextMenu"

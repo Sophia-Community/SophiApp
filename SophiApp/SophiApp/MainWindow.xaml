@@ -24,9 +24,9 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="ResizeMode" Value="CanResize" />
             <Setter Property="ShowInTaskbar" Value="True" />
-            <Setter Property="MinHeight" Value="620" />
+            <Setter Property="MinHeight" Value="615" />
             <Setter Property="MinWidth" Value="1024" />
-            <Setter Property="Height" Value="620" />
+            <Setter Property="Height" Value="615" />
             <Setter Property="Width" Value="1024" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
