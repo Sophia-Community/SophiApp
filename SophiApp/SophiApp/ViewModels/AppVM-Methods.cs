@@ -127,7 +127,7 @@ namespace SophiApp.ViewModels
 
         private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > AppData.Version && !dto.prerelease && !dto.draft;
 
-        private bool IsSupportedOs() => OsHelper.GetBuild() >= MinimalOsBuild;
+        private bool IsSupportedOs() => OsHelper.GetProductName().Contains("Windows 10") && OsHelper.GetBuild() >= MinimalOsBuild;
 
         private async void LocalizationChangeAsync(object args)
         {
@@ -307,7 +307,7 @@ namespace SophiApp.ViewModels
             {
                 MouseHelper.ShowWaitCursor(show: true);
                 //TODO: UpdateIsAvailableAsync - comment before debug, uncomment before release.
-                await UpdateIsAvailableAsync();
+                //await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);

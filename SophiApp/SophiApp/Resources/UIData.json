@@ -2431,7 +2431,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 725,
+        "Id": 825,
         "Header": {
             "EN": "The \"Look for an app in the Microsoft Store\" menu option in the \"Open with\" dialog",
             "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""

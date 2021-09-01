@@ -162,6 +162,7 @@
     <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
     <Compile Include="Helpers\ElementsFabric.cs" />
+    <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\FirewallHelper.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />

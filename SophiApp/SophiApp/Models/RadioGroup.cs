@@ -24,9 +24,16 @@ namespace SophiApp.Models
 
         internal override void GetCustomisationStatus()
         {
-            Status = ElementStatus.UNCHECKED;
-            ChildElements.ForEach(child => child.GetCustomisationStatus());
-            SetDefaultId();
+            try
+            {
+                Status = base.CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                ChildElements.ForEach(child => child.GetCustomisationStatus());
+                SetDefaultId();
+            }
+            catch (Exception e)
+            {
+                ErrorOccurred?.Invoke(this, e);
+            }
         }
 
         internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
@@ -34,10 +41,11 @@ namespace SophiApp.Models
         {
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
+            CustomisationStatus = customisationStatus;
             base.ChangeLanguage(language);
             ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
             ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
-            Status = ElementStatus.UNCHECKED;
+            GetCustomisationStatus();
             SetDefaultId();
         }
 

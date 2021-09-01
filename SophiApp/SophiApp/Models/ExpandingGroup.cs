@@ -18,22 +18,33 @@ namespace SophiApp.Models
 
         public List<TextedElement> ChildElements { get; set; }
 
-        internal override void GetCustomisationStatus() => ChildElements.ForEach(child => child.GetCustomisationStatus());
+        internal override void GetCustomisationStatus()
+        {
+            try
+            {
+                Status = base.CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                ChildElements.ForEach(child => child.GetCustomisationStatus());
+            }
+            catch (Exception e)
+            {
+                ErrorOccurred?.Invoke(this, e);
+            }
+        }
 
         internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                            UILanguage language, Func<bool> customisationStatus)
+                                    UILanguage language, Func<bool> customisationStatus)
         {
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
+            CustomisationStatus = customisationStatus;
             base.ChangeLanguage(language);
             ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, errorHandler, statusHandler, language)).ToList();
-            Status = ElementStatus.UNCHECKED;
+            GetCustomisationStatus();
         }
 
         public override void ChangeLanguage(UILanguage language)
         {
-            Header = Headers[language];
-            Description = Descriptions[language];
+            base.ChangeLanguage(language);
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
     }

@@ -5,7 +5,7 @@ namespace SophiApp.Helpers
 {
     internal class DismHelper
     {
-        internal static bool CapabilityExist(string name)
+        internal static bool CapabilityIsInstalled(string name)
         {
             DismApi.Initialize(DismLogLevel.LogErrors);
             var session = DismApi.OpenOnlineSession();
