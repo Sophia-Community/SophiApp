@@ -153,6 +153,7 @@
     <Compile Include="Converters\IntToChanges.cs" />
     <Compile Include="Converters\IntToSettings.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
+    <Compile Include="Customisations\CustomisationVars.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
     <Compile Include="Extensions\ListExtension.cs" />

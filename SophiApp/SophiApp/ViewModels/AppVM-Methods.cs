@@ -47,12 +47,15 @@ namespace SophiApp.ViewModels
             }
             finally
             {
-                OsHelper.PostMessage();
-                OsHelper.Refresh();
-                SetLoadingPanelVisibility();
-                SetControlsHitTest();
+                await Task.Run(() =>
+                {
+                    OsHelper.PostMessage();
+                    OsHelper.Refresh();
+                    SetLoadingPanelVisibility();
+                    SetControlsHitTest();
+                });
                 stopwatch.Stop();
-                debugger.AddRecord($"It took {stopwatch.Elapsed.TotalSeconds} seconds to apply the settings");
+                debugger.AddRecord($"It took {stopwatch.Elapsed.TotalSeconds} seconds to apply the settings");                
             }
         }
 
@@ -118,10 +121,10 @@ namespace SophiApp.ViewModels
                 stopwatch.Start();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                              statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
+                                                                          statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
                                             .ToList();
                 stopwatch.Stop();
-                debugger.AddRecord($"The collection initialization took {stopwatch.Elapsed.TotalSeconds} seconds");
+                debugger.AddRecord($"The collection initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
             });
         }
 
