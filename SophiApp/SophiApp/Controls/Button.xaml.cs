@@ -43,5 +43,10 @@ namespace SophiApp.Controls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
+
+        private void OnStoryboardCompleted(object sender, System.EventArgs e)
+        {
+            Command?.Execute(CommandParameter);
+        }
     }
 }

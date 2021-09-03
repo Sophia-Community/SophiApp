@@ -7,6 +7,15 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Storyboard x:Key="ButtonClickAnimation"
+                    Storyboard.TargetName="ButtonTemplate"
+                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                    Completed="OnStoryboardCompleted">
+            <DoubleAnimation From="1.0"
+                             To="0.8"
+                             Duration="0:0:0.05"
+                             AutoReverse="True" />
+        </Storyboard>
         <Style TargetType="{x:Type Button}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -74,15 +83,7 @@
                     <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
                 </Trigger>
                 <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard Storyboard.TargetName="ButtonTemplate"
-                                    Storyboard.TargetProperty="RenderTransform.ScaleX">
-                            <DoubleAnimation From="1.0"
-                                             To="0.8"
-                                             Duration="0:0:0.05"
-                                             AutoReverse="True" />
-                        </Storyboard>
-                    </BeginStoryboard>
+                    <BeginStoryboard Storyboard="{StaticResource ButtonClickAnimation}" />
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

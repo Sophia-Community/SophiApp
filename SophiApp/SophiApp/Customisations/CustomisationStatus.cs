@@ -54,7 +54,7 @@ namespace SophiApp.Customisations
 
         public static bool _819() => RegHelper.GetValue(RegistryHive.ClassesRoot, Var._819_SEND_TO, string.Empty) as string == Var._819_SHOW_VALUE;
 
-        public static bool _820() => OsHelper.IsEdition(Var._820_WIN_VER_PRO) || OsHelper.IsEdition(Var._820_WIN_VER_ENT)   
+        public static bool _820() => OsHelper.IsEdition(Var._820_WIN_VER_PRO) || OsHelper.IsEdition(Var._820_WIN_VER_ENT)
                                      ? WmiHelper.GetBitLockerVolumeProtectionStatus() == 0
                                                 ? !RegHelper.KeyExist(RegistryHive.ClassesRoot, Var._820_BITLOCKER_BDE_ELEV, Var.PROGRAM_ACCESS_ONLY)
                                                 : throw new BitlockerEnabledException()
@@ -66,15 +66,15 @@ namespace SophiApp.Customisations
                                      : throw new WindowsCapabilityNotInstalledException(Var.CAPABILITY_MS_PAINT);
 
         public static bool _822() => DismHelper.CapabilityIsInstalled(Var._822_MS_WORD_PAD)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, Var._822_RTF_SHELL_NEW, Var._822_RTF_ITEM_NAME)
-                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, Var._822_RTF_SHELL_NEW, Var._822_RTF_DATA)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, Var._822_RTF_SHELL_NEW, Var.ITEM_NAME)
+                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, Var._822_RTF_SHELL_NEW, Var.DATA_NAME)
                                      : throw new WindowsCapabilityNotInstalledException(Var._822_MS_WORD_PAD);
 
         public static bool _823() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Var._823_ZIP_SHELL_NEW);
 
-        public static bool _824() => Convert.ToInt32(RegHelper.GetValue(RegistryHive.CurrentUser, Var._824_CURRENT_EXPLORER, Var._824_PROMPT_MIN)) == Var._824_PROMPT_MIN_VALUE;
+        public static bool _824() => Convert.ToInt32(RegHelper.GetValue(RegistryHive.CurrentUser, Var._824_CURRENT_EXPLORER, Var._824_PROMPT_NAME)) == Var._824_PROMPT_VALUE;
 
-        public static bool _825() => !RegHelper.KeyExist(RegistryHive.LocalMachine, Var._825_SOFTWARE_EXPLORER, Var._825_NO_USE_STORE);
+        public static bool _825() => !RegHelper.KeyExist(RegistryHive.LocalMachine, Var._825_SOFTWARE_EXPLORER, Var._825_NO_USE_NAME);
 
         //TODO: CustomisationState - Method placeholder.
         public static bool FOR_DEBUG_ONLY() => new Random().Next(101) <= 50;

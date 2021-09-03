@@ -27,7 +27,7 @@ namespace SophiApp.Models
             try
             {
                 Status = base.CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
-                ChildElements.ForEach(child => child.GetCustomisationStatus());                
+                ChildElements.ForEach(child => child.GetCustomisationStatus());
             }
             catch (Exception e)
             {

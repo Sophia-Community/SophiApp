@@ -8,11 +8,11 @@ namespace SophiApp.Helpers
     {
         private const string PROTECTION_STATUS = "ProtectionStatus";
 
-        internal static byte GetBitLockerVolumeProtectionStatus()
+        internal static int GetBitLockerVolumeProtectionStatus()
         {
             var searcher = new ManagementObjectSearcher(@"Root\cimv2\security\MicrosoftVolumeEncryption", "SELECT * FROM Win32_Encryptablevolume");
             var status = searcher.Get().Cast<ManagementBaseObject>().FirstOrDefault().Properties[PROTECTION_STATUS].Value;
-            return Convert.ToByte(status);
+            return Convert.ToInt32(status);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace SophiApp.ViewModels
                     SetControlsHitTest();
                 });
                 stopwatch.Stop();
-                debugger.AddRecord($"It took {stopwatch.Elapsed.TotalSeconds} seconds to apply the settings");                
+                debugger.AddRecord($"It took {stopwatch.Elapsed.TotalSeconds} seconds to apply the settings");
             }
         }
 
