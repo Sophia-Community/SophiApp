@@ -13,7 +13,7 @@
     <system:String x:Key="Localization.TaskSheduler">Scheduled Tasks</system:String>
     <system:String x:Key="Localization.Security">Security</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
-    <system:String x:Key="Localization.OsNotSupported">Sorry, this version of Windows is not supported</system:String>
+    <system:String x:Key="Localization.OsNotSupported">Unfortunately, this version of Windows is not supported</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.Settings.Languages">UI language</system:String>
     <system:String x:Key="Localization.Settings.Themes">Use Windows theme</system:String>
