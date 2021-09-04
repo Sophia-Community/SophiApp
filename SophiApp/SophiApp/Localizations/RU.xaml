@@ -31,7 +31,7 @@
     <system:String x:Key="Localization.Settings.Designer">Дизайн:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Владимир Nameless</system:String>
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
-    <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий "farag" Нефедов</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий "farag" Нефёдов</system:String>
     <system:String x:Key="Localization.Settings.Coder">Разработка:</system:String>
     <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий "Inestic" Демин</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
@@ -39,7 +39,7 @@
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
     <system:String x:Key="Localization.ViewChanges.Reset">Сброс</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
-    <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление SophiApp</system:String>
+    <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление для SophiApp</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
