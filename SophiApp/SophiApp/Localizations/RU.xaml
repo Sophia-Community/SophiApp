@@ -28,11 +28,11 @@
     <system:String x:Key="Localization.Settings.Debug">Отладка</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Создать файл отладки</system:String>
     <system:String x:Key="Localization.Settings.Team">Участники проекта</system:String>
-    <system:String x:Key="Localization.Settings.Designer">Дизайнер:</system:String>
+    <system:String x:Key="Localization.Settings.Designer">Дизайн:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Владимир Nameless</system:String>
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
-    <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий "farag2" Нефедов</system:String>
-    <system:String x:Key="Localization.Settings.Coder">Код:</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий "farag" Нефедов</system:String>
+    <system:String x:Key="Localization.Settings.Coder">Разработка:</system:String>
     <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий "Inestic" Демин</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Изменено</system:String>
