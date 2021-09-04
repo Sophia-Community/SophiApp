@@ -32,7 +32,7 @@
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry "farag" Nefedov</system:String>
-    <system:String x:Key="Localization.Settings.Coder">Coded by:</system:String>
+    <system:String x:Key="Localization.Settings.Coder">Developed by:</system:String>
     <system:String x:Key="Localization.Settings.Coder.Name">Dmitry "Inestic" Demin</system:String>
     <system:String x:Key="Localization.Search">Search</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>
