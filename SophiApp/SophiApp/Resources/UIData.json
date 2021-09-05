@@ -992,6 +992,19 @@
         "Tag": "Personalization"
     },
     {
+        "Id": 249,
+        "Header": {
+            "EN": "When I grab a windows's title bar and shake it, minimize all other windows",
+            "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization"
+    },
+    {
         "Id": 300,
         "Header": {
             "EN": "Storage Sense",
