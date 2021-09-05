@@ -16,7 +16,7 @@
     <system:String x:Key="Localization.OsNotSupported">К сожалению, эта версия Windows не поддерживается</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.Settings.Languages">Язык интерфейса</system:String>
-    <system:String x:Key="Localization.Settings.Themes">Использовать тему Windows</system:String>
+    <system:String x:Key="Localization.Settings.Themes">Язык интерфейса SophiApp</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
     <system:String x:Key="Localization.Settings.Updates">Обновления</system:String>
     <system:String x:Key="Localization.Settings.Version">Версия</system:String>
