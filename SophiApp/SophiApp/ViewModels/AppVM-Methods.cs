@@ -23,40 +23,35 @@ namespace SophiApp.ViewModels
 
         private async void ApplyingSettingsAsync(object args)
         {
-            debugger.AddRecord("Started applying settings");
-            var stopwatch = StopwatchHelper.New();
-            stopwatch.Start();
-            SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
-            SetLoadingPanelVisibility();
+            await Task.Run(() =>
+            {
+                debugger.AddRecord($"Started applying {customActions.Count} setting(s)");
+                var stopwatch = Stopwatch.StartNew();
+                SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
+                SetLoadingPanelVisibility();
 
-            try
-            {
-                await Task.Run(() =>
+                try
                 {
-                    customActions.ForEach(action => action.Action.Invoke(action.Parameter));
-                    customActions.Clear();
-                    OnPropertyChanged(CustomActionsCounterPropertyName);
-                });
-            }
-            catch (Exception e)
-            {
-                debugger.AddRecord($"Applying customization action caused an error");
-                debugger.AddRecord($"Error information \"{e.Message}\"");
-                debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
-                debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
-            }
-            finally
-            {
-                await Task.Run(() =>
+                    customActions.ForEach(action =>
+                    {
+                        action.Action.Invoke(action.Parameter);
+                    });
+                }
+                catch (Exception e)
                 {
-                    OsHelper.PostMessage();
-                    OsHelper.Refresh();
-                    SetLoadingPanelVisibility();
-                    SetControlsHitTest();
-                });
+                    debugger.AddRecord($"Applying customization action caused an error");
+                    debugger.AddRecord($"Error information \"{e.Message}\"");
+                }
+
+                customActions.Clear();
+                OnPropertyChanged(CustomActionsCounterPropertyName);
+                OsHelper.PostMessage();
+                OsHelper.Refresh();
+                SetLoadingPanelVisibility();
+                SetControlsHitTest();
                 stopwatch.Stop();
-                debugger.AddRecord($"It took {stopwatch.Elapsed.TotalSeconds} seconds to apply the settings");
-            }
+                debugger.AddRecord($"It took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds to apply the settings");
+            });
         }
 
         private async void AppThemeChangeAsync(object args)
@@ -117,11 +112,10 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 debugger.AddRecord("Started initialization texted elements");
-                var stopwatch = StopwatchHelper.New();
-                stopwatch.Start();
+                var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                          statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
+                                                        statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
                                             .ToList();
                 stopwatch.Stop();
                 debugger.AddRecord($"The collection initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
@@ -175,20 +169,22 @@ namespace SophiApp.ViewModels
         private async void ResetTextedElementsStateAsync(object args)
         {
             debugger.AddRecord("Started reset texted elements status");
-            var stopwatch = StopwatchHelper.New();
-            stopwatch.Start();
+            var stopwatch = Stopwatch.StartNew();
             SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetLoadingPanelVisibility();
             await Task.Run(() =>
             {
                 customActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
-                TextedElements.ForEach(element => element.GetCustomisationStatus());
+                TextedElements.ForEach(element =>
+                {
+                    element.GetCustomisationStatus();
+                });
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();
             stopwatch.Stop();
-            debugger.AddRecord($"The collection resetting took {stopwatch.Elapsed.TotalSeconds} seconds");
+            debugger.AddRecord($"The collection resetting took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
         }
 
         private async void SaveDebugLogAsync(object args)

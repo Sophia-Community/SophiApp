@@ -33,7 +33,7 @@
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий "farag" Нефёдов</system:String>
     <system:String x:Key="Localization.Settings.Coder">Разработка:</system:String>
-    <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий "Inestic" Демин</system:String>
+    <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий "Inestic" Дёмин</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Изменено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>

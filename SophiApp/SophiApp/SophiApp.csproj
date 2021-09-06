@@ -171,7 +171,6 @@
     <Compile Include="Helpers\OsHelper.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
-    <Compile Include="Helpers\StopwatchHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />

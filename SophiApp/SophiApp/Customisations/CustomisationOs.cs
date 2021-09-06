@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
 using SophiApp.Helpers;
+using System;
+using System.Diagnostics;
 using System.Threading;
 using Var = SophiApp.Customisations.CustomisationVars;
 
@@ -48,7 +50,7 @@ namespace SophiApp.Customisations
         {
             if (IsActive)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, Var.SHELL_EXT_BLOCKED, Var._803_CAST_TO_DEV_GUID);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, Var.SHELL_EXT_BLOCKED, Var._803_CAST_TO_DEV_GUID);                
                 return;
             }
 
