@@ -48,7 +48,7 @@ namespace SophiApp.ViewModels
             get => themesHelper.SelectedTheme;
             private set
             {
-                debugger.AddRecord($"Theme selected {value.Alias}");
+                debugger.AddRecord($"Theme selected: {value.Alias}");
                 OnPropertyChanged(AppSelectedThemePropertyName);
             }
         }
@@ -81,7 +81,7 @@ namespace SophiApp.ViewModels
             get => localizationsHelper.Selected;
             private set
             {
-                debugger.AddRecord($"Localization selected {value.Language}");
+                debugger.AddRecord($"Localization selected: {value.Language}");
                 OnPropertyChanged(LocalizationPropertyName);
             }
         }
@@ -116,7 +116,7 @@ namespace SophiApp.ViewModels
             private set
             {
                 visibleViewByTag = value;
-                debugger.AddRecord($"Active view is {value}");
+                debugger.AddRecord($"Active view is: {value}");
                 OnPropertyChanged(VisibleViewByTagPropertyName);
             }
         }

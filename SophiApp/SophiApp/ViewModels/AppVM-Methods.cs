@@ -30,23 +30,25 @@ namespace SophiApp.ViewModels
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetLoadingPanelVisibility();
 
-                try
-                {
-                    customActions.ForEach(action =>
+                customActions.ForEach(action =>
                     {
-                        action.Action.Invoke(action.Parameter);
+                        try
+                        {
+                            action.Invoke();
+                            debugger.AddRecord($"Customization action {action.Id} with parameter {action.Parameter} completed successfully");
+                        }
+                        catch (Exception e)
+                        {
+                            debugger.AddRecord($"Customization action {action.Id} with parameter {action.Parameter} caused an error");
+                            debugger.AddRecord($"Error information: \"{e.Message}\"");
+                        }
                     });
-                }
-                catch (Exception e)
-                {
-                    debugger.AddRecord($"Applying customization action caused an error");
-                    debugger.AddRecord($"Error information \"{e.Message}\"");
-                }
 
                 customActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 OsHelper.PostMessage();
                 OsHelper.Refresh();
+                TextedElements.ForEach(element => element.GetCustomisationStatus());
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 stopwatch.Stop();
@@ -145,15 +147,15 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.AddRecord($"An error occured in element {element.Id}");
-                debugger.AddRecord($"Error information \"{e.Message}\"");
-                debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
-                debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
+                debugger.AddRecord($"An error occured in element: {element.Id}");
+                debugger.AddRecord($"Error information: \"{e.Message}\"");
+                debugger.AddRecord($"The class that caused the error: \"{e.TargetSite.DeclaringType.FullName}\"");
+                debugger.AddRecord($"The method that caused the error: \"{e.TargetSite.Name}\"");
                 element.Status = ElementStatus.DISABLED;
             });
         }
 
-        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.AddRecord($"The element {element.Id} has changed status to {element.Status}");
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.AddRecord($"The element {element.Id} has changed status to: {element.Status}");
 
         private async void RadioGroupClickedAsync(object args)
         {
@@ -176,10 +178,7 @@ namespace SophiApp.ViewModels
             {
                 customActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
-                TextedElements.ForEach(element =>
-                {
-                    element.GetCustomisationStatus();
-                });
+                TextedElements.ForEach(element => element.GetCustomisationStatus());
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();
@@ -293,9 +292,9 @@ namespace SophiApp.ViewModels
                 catch (Exception e)
                 {
                     debugger.AddRecord("An error occurred while checking for an update");
-                    debugger.AddRecord($"Error information \"{e.Message}\"");
-                    debugger.AddRecord($"The class that caused the error \"{e.TargetSite.DeclaringType.FullName}\"");
-                    debugger.AddRecord($"The method that caused the error \"{e.TargetSite.Name}\"");
+                    debugger.AddRecord($"Error information: \"{e.Message}\"");
+                    debugger.AddRecord($"The class that caused the error: \"{e.TargetSite.DeclaringType.FullName}\"");
+                    debugger.AddRecord($"The method that caused the error: \"{e.TargetSite.Name}\"");
                 }
             });
         }

@@ -48,7 +48,6 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="MinWidth" Value="126" />
             <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
