@@ -5,11 +5,9 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         public RelayCommand AdvancedSettingsClickedCommand { get; private set; }
-
         public RelayCommand ApplyingSettingsCommand { get; private set; }
-
         public RelayCommand AppThemeChangeCommand { get; private set; }
-
+        public RelayCommand DebugModeClickedCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
 
         public RelayCommand HyperLinkClickedCommand { get; private set; }

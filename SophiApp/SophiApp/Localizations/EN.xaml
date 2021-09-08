@@ -24,6 +24,7 @@
     <system:String x:Key="Localization.Settings.Import">Import</system:String>
     <system:String x:Key="Localization.Settings.Export">Export</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Advanced settings</system:String>
+    <system:String x:Key="Localization.Settings.DebugMode">Debug mode</system:String>
     <system:String x:Key="Localization.Settings.Reset">Reset all settings to their original defaults</system:String>
     <system:String x:Key="Localization.Settings.Debug">Debug</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Create a dump</system:String>

@@ -24,6 +24,7 @@
     <system:String x:Key="Localization.Settings.Import">Импорт</system:String>
     <system:String x:Key="Localization.Settings.Export">Экспорт</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Расширенные настройки</system:String>
+    <system:String x:Key="Localization.Settings.DebugMode">Режим отладки</system:String>
     <system:String x:Key="Localization.Settings.Reset">Вернуть все настройки по умолчанию</system:String>
     <system:String x:Key="Localization.Settings.Debug">Отладка</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Создать файл отладки</system:String>

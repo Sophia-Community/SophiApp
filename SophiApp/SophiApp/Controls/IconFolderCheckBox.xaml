@@ -97,6 +97,16 @@
                     <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                     <Setter TargetName="PathCheckBox" Property="Visibility" Value="Visible" />
                 </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
+                    <Setter TargetName="TextBlockHeader" Property="Text">
+                        <Setter.Value>
+                            <MultiBinding StringFormat="{}[ {0} ] {1}">
+                                <Binding Path="Id" />
+                                <Binding Path="Header" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

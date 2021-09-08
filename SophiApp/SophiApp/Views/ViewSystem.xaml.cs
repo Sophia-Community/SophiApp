@@ -16,10 +16,6 @@ namespace SophiApp.Views
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(ViewSystem), new PropertyMetadata(default));
 
-        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(string), typeof(ViewSystem), new PropertyMetadata(default));
-
         // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
         public static new readonly DependencyProperty TagProperty =
             DependencyProperty.Register("Tag", typeof(string), typeof(ViewSystem), new PropertyMetadata(default));
@@ -34,12 +30,6 @@ namespace SophiApp.Views
         {
             get => (string)GetValue(DescriptionProperty);
             set => SetValue(DescriptionProperty, value);
-        }
-
-        public string Header
-        {
-            get => (string)GetValue(HeaderProperty);
-            set => SetValue(HeaderProperty, value);
         }
 
         public new string Tag

@@ -43,11 +43,11 @@
                             MouseEnter="Header_MouseEnter"
                             MouseLeave="Header_MouseLeave">
                     <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
-                    <TextBlock Style="{DynamicResource NormalText}"
+                    <TextBlock x:Name="TextBlockHeader"
+                               Style="{DynamicResource NormalText}"
                                Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"
                                Margin="10, 0, 0, 0"
                                TextWrapping="Wrap" />
-
                     <StackPanel.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
@@ -71,6 +71,16 @@
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.50" />
                 </Trigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
+                    <Setter TargetName="TextBlockHeader" Property="Text">
+                        <Setter.Value>
+                            <MultiBinding StringFormat="{}[ {0} ] {1}">
+                                <Binding Path="Id" />
+                                <Binding Path="Header" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

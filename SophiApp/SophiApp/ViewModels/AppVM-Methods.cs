@@ -67,6 +67,8 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private void DebugModeClicked(object args) => DebugMode = !DebugMode;
+
         private void HamburgerClicked(object args) => SetVisibleViewTag(args as string);
 
         private async void HyperLinkClickedAsync(object args)
@@ -83,6 +85,7 @@ namespace SophiApp.ViewModels
 
         private void InitCommands()
         {
+            DebugModeClickedCommand = new RelayCommand(new Action<object>(DebugModeClicked));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
@@ -100,11 +103,12 @@ namespace SophiApp.ViewModels
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
             debugger = new Debugger(language: $"{ Localization.Language}", theme: $"{ AppSelectedTheme.Alias}");
-            loadingPanelVisibility = false;
+            DebugMode = false;
+            LoadingPanelVisibility = false;
             HamburgerHitTest = false;
             ViewsHitTest = true;
             WindowCloseHitTest = true;
-            advancedSettingsVisibility = false;
+            AdvancedSettingsVisibility = false;
             VisibleViewByTag = Tags.ViewLoading;
             customActions = new List<CustomActionDTO>();
         }

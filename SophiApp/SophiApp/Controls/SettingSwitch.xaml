@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SophiApp.Controls.Switch"
+﻿<UserControl x:Class="SophiApp.Controls.SettingSwitch"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -54,7 +54,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid MouseEnter="Switch_MouseEnter" MouseLeave="Switch_MouseLeave">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="20" />
@@ -71,12 +71,6 @@
                 <Border x:Name="BorderSwitch" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseSwitch" />
                 </Border>
-                <Grid.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
-                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
-                    </ContextMenu>
-                </Grid.ContextMenu>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
@@ -103,16 +97,6 @@
                     <DataTrigger.ExitActions>
                         <RemoveStoryboard BeginStoryboardName="AnimationSwitchMarginToLeft" />
                     </DataTrigger.ExitActions>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
-                    <Setter TargetName="TextBlockHeader" Property="Text">
-                        <Setter.Value>
-                            <MultiBinding StringFormat="{}[ {0} ] {1}">
-                                <Binding Path="Id" />
-                                <Binding Path="Header" />
-                            </MultiBinding>
-                        </Setter.Value>
-                    </Setter>
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

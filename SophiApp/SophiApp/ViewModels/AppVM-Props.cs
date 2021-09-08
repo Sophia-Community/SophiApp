@@ -12,6 +12,7 @@ namespace SophiApp.ViewModels
         private const string AppSelectedThemePropertyName = "AppSelectedTheme";
         private const string AppThemesPropertyName = "AppThemes";
         private const string CustomActionsCounterPropertyName = "CustomActionsCounter";
+        private const string DebugModePropertyName = "DebugMode";
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string LoadingPanelVisibilityPropertyName = "LoadingPanelVisibility";
         private const string LocalizationPropertyName = "Localization";
@@ -23,6 +24,7 @@ namespace SophiApp.ViewModels
         private bool advancedSettingsVisibility;
         private List<CustomActionDTO> customActions;
         private Debugger debugger;
+        private bool debugMode;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;
         private LocalizationsHelper localizationsHelper;
@@ -54,7 +56,19 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
+
         public int CustomActionsCounter => customActions.Count;
+
+        public bool DebugMode
+        {
+            get => debugMode;
+            set
+            {
+                debugMode = value;
+                debugger.AddRecord($"Debug mode is: {value}");
+                OnPropertyChanged(DebugModePropertyName);
+            }
+        }
 
         public bool HamburgerHitTest
         {

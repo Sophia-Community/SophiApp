@@ -40,7 +40,8 @@
                 <Grid x:Name="HeaderWrapper"
                       MouseEnter="Header_MouseEnter"
                       MouseLeave="Header_MouseLeave">
-                    <TextBlock Style="{DynamicResource NormalText}"
+                    <TextBlock x:Name="TextBlockHeader"
+                               Style="{DynamicResource NormalText}"
                                Text="{Binding Header}"
                                TextWrapping="Wrap" />
                     <Grid.ContextMenu>
@@ -66,6 +67,16 @@
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.50" />
                 </Trigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
+                    <Setter TargetName="TextBlockHeader" Property="Text">
+                        <Setter.Value>
+                            <MultiBinding StringFormat="{}[ {0} ] {1}">
+                                <Binding Path="Id" />
+                                <Binding Path="Header" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

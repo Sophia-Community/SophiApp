@@ -23,7 +23,6 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Header" Value="{DynamicResource Localization.Settings}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.Settings}" />
             <Setter Property="IsHitTestVisible" Value="{Binding ViewsHitTest, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility" Value="Collapsed" />
@@ -127,12 +126,12 @@
                                 </controls:IconButton>
                             </StackPanel>
 
-                            <controls:Switch Header="{DynamicResource Localization.Settings.Advanced}"
-                                             Margin="{StaticResource BlockIndent}"
-                                             Width="290"
-                                             HorizontalAlignment="Left"
-                                             IsChecked="{Binding AdvancedSettingsVisibility}"
-                                             Command="{Binding AdvancedSettingsClickedCommand}" />
+                            <controls:SettingSwitch Header="{DynamicResource Localization.Settings.Advanced}"
+                                                    Margin="{StaticResource BlockIndent}"
+                                                    Width="290"
+                                                    HorizontalAlignment="Left"
+                                                    IsChecked="{Binding AdvancedSettingsVisibility}"
+                                                    Command="{Binding AdvancedSettingsClickedCommand}" />
 
                             <controls:FilledButton Text="{DynamicResource Localization.Settings.Reset}"
                                                    Margin="{StaticResource BlockIndent}"
@@ -142,6 +141,13 @@
                             <TextBlock Style="{DynamicResource SubHeaderText}"
                                        Text="{DynamicResource Localization.Settings.Debug}"
                                        Margin="{StaticResource BlockIndent}" />
+
+                            <controls:SettingSwitch Header="{DynamicResource Localization.Settings.DebugMode}"
+                                                    Margin="{StaticResource BlockIndent}"
+                                                    Width="290"
+                                                    HorizontalAlignment="Left"
+                                                    IsChecked="{Binding DebugMode}"
+                                                    Command="{Binding DebugModeClickedCommand}" />
 
                             <controls:FilledButton Text="{DynamicResource Localization.Settings.Debug.Save}"
                                                    Margin="{StaticResource BlockIndent}"

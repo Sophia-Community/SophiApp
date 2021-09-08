@@ -41,7 +41,6 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Header" Value="{DynamicResource Localization.StartMenu}" />
             <Setter Property="Tag" Value="{StaticResource Tags.View.StartMenu}" />
             <Setter Property="IsHitTestVisible" Value="{Binding ViewsHitTest, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility" Value="Collapsed" />

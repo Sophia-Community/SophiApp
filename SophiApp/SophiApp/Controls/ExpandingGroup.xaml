@@ -104,7 +104,8 @@
                           Grid.Column="0"
                           MouseEnter="Header_MouseEnter"
                           MouseLeave="HeaderWrapper_MouseLeave">
-                        <TextBlock Style="{DynamicResource NormalText}"
+                        <TextBlock x:Name="TextBlockHeader"
+                                   Style="{DynamicResource NormalText}"
                                    TextWrapping="Wrap"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
@@ -176,6 +177,16 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </DataTrigger.ExitActions>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
+                    <Setter TargetName="TextBlockHeader" Property="Text">
+                        <Setter.Value>
+                            <MultiBinding StringFormat="{}[ {0} ] {1}">
+                                <Binding Path="Id" />
+                                <Binding Path="Header" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
