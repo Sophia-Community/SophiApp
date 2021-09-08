@@ -1,13 +1,6 @@
-# Ready or not?
-No, the app isn't ready. Please don't download it until the official announcement. :)
-
 # Deus vult!
 
-The SophiApp functionality will be fully based on the [Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script) logic except some functions and will be written in C#.
-
-# :rocket:
-
-We're in search of аn experienced **C# developer** & a **designer** who are really passionate about Windows 10 and want to create an open source Windows 10 tweaker with the best UX/UI design.
+The SophiApp functionality will be fully based on the [Sophia Script for Windows 10](https://github.com/farag2/Sophia-Script-for-Windows) logic except some functions and will be written in C#.
 
 # Windows 10 versions support
 
