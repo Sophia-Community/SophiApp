@@ -2127,11 +2127,11 @@
     {
         "Id": 800,
         "Header": {
-            "EN": "The \"Extract all\" context menu option in the Windows Installer filename extension context menu",
-            "RU": "Пункт \"Извлечь все\" в контекстном меню расширений имен файлов Windows Installer"
+            "EN": "The \"Extract all\" item in the Windows Installer (.msi) context menu",
+            "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)"
         },
         "Description": {
-            "EN": "The \"Extract all\" context menu option will extract all contents of the .msi file into the \"Extracted\"  folder at the same location as the .msi file",
+            "EN": "The \"Extract all\" context menu item will extract all contents of the .msi file into the \"Extracted\" folder at the same location as .msi file is",
             "RU": "Пункт контекстного меню \"Извлечь все\" извлечет содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл"
         },
         "Type": "CheckBox",
@@ -2140,12 +2140,12 @@
     {
         "Id": 801,
         "Header": {
-            "EN": "The \"Install\" context menu option in the Cabinet filename extension context menu",
-            "RU": "Пункт \"Установить\" в контекстном меню расширений имен файлов Cabinet-архивов"
+            "EN": "The \"Install\" item in the Cabinet archives (.cab) context menu",
+            "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab)"
         },
         "Description": {
-            "EN": "This context menu option, Using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7Zip, WinRAR, etc...) by default, the \"Install\" context menu item will not show until you restore the default association for the .cab file type",
-            "RU": "Этот пункт контекстного меню, используя DISM, позволяет упрощать установку обновлений .cab одним щелчком в его контекстном меню. Если по умолчанию расширение .cab ассоциировано со сторонним приложением (7Zip, WinRAR и т.д.), добавленный пункт контекстного меню \"Установить\" не будет отображаться, пока вы не восстановите ассоциацию по умолчанию для типа файла .cab"
+            "EN": "This context menu item, using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7-Zip, WinRAR, etc...) by default, the \"Install\" context menu item will not show until you restore the default association for the .cab file type",
+            "RU": "Этот пункт контекстного меню, используя DISM, позволяет упростить установку обновлений .cab одним щелчком в его контекстном меню. Если по умолчанию расширение .cab ассоциировано со сторонним приложением (7-Zip, WinRAR и т.д.), добавленный пункт контекстного меню \"Установить\" не будет отображаться, пока вы не восстановите ассоциацию по умолчанию для типа файла .cab"
         },
         "Type": "CheckBox",
         "Tag": "ContextMenu"
@@ -2153,8 +2153,8 @@
     {
         "Id": 802,
         "Header": {
-            "EN": "The \"Run as different user\" menu option in the .exe filename extensions context menu",
-            "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню расширений имен файлов .exe"
+            "EN": "The \"Run as different user\" item in the executable files context menu (.exe)",
+            "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню исполняемых файлов (.exe)"
         },
         "Description": {
             "EN": "",
@@ -2166,7 +2166,7 @@
     {
         "Id": 803,
         "Header": {
-            "EN": "The \"Cast to Device\" menu option in the media files and folders context menu",
+            "EN": "The \"Cast to Device\" item in the media files and folders context menu",
             "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок"
         },
         "Description": {
@@ -2179,7 +2179,7 @@
     {
         "Id": 804,
         "Header": {
-            "EN": "The \"Share\" menu option in the context menu",
+            "EN": "The \"Share\" item in the context menu",
             "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню"
         },
         "Description": {
@@ -2192,7 +2192,7 @@
     {
         "Id": 805,
         "Header": {
-            "EN": "The \"Edit with Paint 3D\" menu option in the media files context menu",
+            "EN": "The \"Edit with Paint 3D\" item in the media files context menu",
             "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов"
         },
         "Description": {
@@ -2303,7 +2303,7 @@
     {
         "Id": 814,
         "Header": {
-            "EN": "Show the \"Edit with Photos\" menu option in the media files context menu",
+            "EN": "Show the \"Edit with Photos\" item in the media files context menu",
             "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов"
         },
         "Description": {
@@ -2316,7 +2316,7 @@
     {
         "Id": 815,
         "Header": {
-            "EN": "The \"Create a new video\" menu option in the media files context menu",
+            "EN": "The \"Create a new video\" item in the media files context menu",
             "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов"
         },
         "Description": {
@@ -2329,7 +2329,7 @@
     {
         "Id": 816,
         "Header": {
-            "EN": "The \"Edit\" menu option in the image files context menu",
+            "EN": "The \"Edit\" item in the image files context menu",
             "RU": "Пункт \"Изменить\" в контекстном меню изображений"
         },
         "Description": {
@@ -2342,7 +2342,7 @@
     {
         "Id": 817,
         "Header": {
-            "EN": "The \"Print\" menu option in the .bat and .cmd files context menu",
+            "EN": "The \"Print\" item in the .bat and .cmd files context menu",
             "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
         },
         "Description": {
@@ -2368,7 +2368,7 @@
     {
         "Id": 819,
         "Header": {
-            "EN": "The \"Send to\" menu option in the folders context menu",
+            "EN": "The \"Send to\" item in the folders context menu",
             "RU": "Пункт \"Отправить\" в контекстном меню папок"
         },
         "Description": {
@@ -2381,7 +2381,7 @@
     {
         "Id": 820,
         "Header": {
-            "EN": "\"Turn on BitLocker\" menu option in the drives context menu",
+            "EN": "\"Turn on BitLocker\" item in the drives context menu",
             "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
         },
         "Description": {
@@ -2394,7 +2394,7 @@
     {
         "Id": 821,
         "Header": {
-            "EN": "The \"Bitmap image\" menu option in the \"New\" context menu",
+            "EN": "The \"Bitmap image\" item in the \"New\" context menu",
             "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\""
         },
         "Description": {
@@ -2407,7 +2407,7 @@
     {
         "Id": 822,
         "Header": {
-            "EN": "The \"Rich Text Document\" menu option in the \"New\" context menu",
+            "EN": "The \"Rich Text Document\" item in the \"New\" context menu",
             "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\""
         },
         "Description": {
@@ -2420,12 +2420,12 @@
     {
         "Id": 823,
         "Header": {
-            "EN": "The \"Compressed (zipped) Folder\"menu option in the \"New\" context menu",
+            "EN": "The \"Compressed (zipped) Folder\" item in the \"New\" context menu",
             "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
         },
         "Description": {
-            "EN": "",
-            "RU": ""
+            "EN": "This context menu item can also be blocked by a third-party app",
+            "RU": "Данный пункт контекстного меню может быть заблокирован также сторонней программой"
         },
         "Type": "CheckBox",
         "Tag": "ContextMenu"
@@ -2433,8 +2433,8 @@
     {
         "Id": 824,
         "Header": {
-            "EN": "The \"Open\", \"Print\", and \"Edit\" menu options if more than 15 files selected",
-            "RU": "Элементы \"Открыть\", \"Изменить\" и \"Печать\" контекстного меню при выделении более 15 элементов"
+            "EN": "Make the \"Open\", \"Print\", and \"Edit\" items are available when you select more than 15 files",
+            "RU": "Сделать элементы \"Открыть\", \"Изменить\" и \"Печать\" доступными контекстного меню при выделении более 15 элементов"
         },
         "Description": {
             "EN": "Dy default, the \"Open\", \"Print\", \"Edit\" context menu items will not appear if selecting more than 15 items to avoid accidentally performing these actions on a large number of files",
@@ -2446,7 +2446,7 @@
     {
         "Id": 825,
         "Header": {
-            "EN": "The \"Look for an app in the Microsoft Store\" menu option in the \"Open with\" dialog",
+            "EN": "The \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog",
             "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
         },
         "Description": {
