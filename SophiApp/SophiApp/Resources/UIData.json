@@ -240,7 +240,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 117,
+        "Id": 119,
         "Header": {
             "EN": "Let websites provide locally relevant content by accessing language list",
             "RU": "Позволить веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
@@ -253,7 +253,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 118,
+        "Id": 120,
         "Header": {
             "EN": "Let apps show me personalized ads by using my advertising ID",
             "RU": "Разрешить приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы"
@@ -266,7 +266,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 119,
+        "Id": 121,
         "Header": {
             "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested",
             "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
@@ -279,7 +279,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 120,
+        "Id": 122,
         "Header": {
             "EN": "Get tip and suggestions as you use Windows",
             "RU": "Получать советы и предложения при использованию Windows"
@@ -292,7 +292,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 121,
+        "Id": 123,
         "Header": {
             "EN": "Show me suggested content in the Settings app",
             "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
@@ -305,7 +305,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 122,
+        "Id": 124,
         "Header": {
             "EN": "Turn on automatic installing suggested apps",
             "RU": "Включить автоматическую установку рекомендованных приложений"
@@ -318,7 +318,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 123,
+        "Id": 125,
         "Header": {
             "EN": "Offer suggestions on how I can set up my device",
             "RU": "Показывать предложения по настройке устройства"
@@ -331,7 +331,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 124,
+        "Id": 126,
         "Header": {
             "EN": "Tailored experiences",
             "RU": "Персонализированные возможности"
@@ -344,7 +344,7 @@
         "Tag": "Privacy"
     },
     {
-        "Id": 125,
+        "Id": 127,
         "Header": {
             "EN": "Enable Bing search in the Start Menu",
             "RU": "Включить поиск через Bing в меню \"Пуск\""
