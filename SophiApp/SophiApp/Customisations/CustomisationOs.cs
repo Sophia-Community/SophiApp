@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using SophiApp.Helpers;
 using System.Threading;
-using Var = SophiApp.Customisations.CustomisationVars;
+using Var = SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
 {

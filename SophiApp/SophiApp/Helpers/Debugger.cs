@@ -14,8 +14,7 @@ namespace SophiApp.Helpers
             {
                 $"Application version: {AppData.Version}",
                 $"Application launch folder: \"{AppData.StartupFolder}\"",
-                $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()}",
-                $"{OsHelper.GetProductName()} build: {OsHelper.GetVersion()}",
+                $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()} build: {OsHelper.GetVersion()}",
                 $"Registered organization: {OsHelper.GetRegisteredOrganization()}",
                 $"Registered owner: {OsHelper.GetRegisteredOwner()}",
                 $"Computer name: {Environment.MachineName}",

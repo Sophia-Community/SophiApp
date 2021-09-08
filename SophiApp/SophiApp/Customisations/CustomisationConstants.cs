@@ -1,6 +1,6 @@
 ﻿namespace SophiApp.Customisations
 {
-    internal struct CustomisationVars
+    internal struct CustomisationConstants
     {
         internal const string _800_MSI_EXTRACT = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_COMMAND = @"Msi.Package\shell\Extract\Command";
