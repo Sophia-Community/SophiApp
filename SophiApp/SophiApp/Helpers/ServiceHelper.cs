@@ -40,7 +40,7 @@ namespace SophiApp.Helpers
 
         internal static ServiceController GetService(string serviceName) => new ServiceController(serviceName);
 
-        public static void ChangeStartMode(ServiceController svc, ServiceStartMode mode)
+        public static void SetStartMode(ServiceController svc, ServiceStartMode mode)
         {
             var scManagerHandle = OpenSCManager(null, null, SC_MANAGER_ALL_ACCESS);
             if (scManagerHandle == IntPtr.Zero)

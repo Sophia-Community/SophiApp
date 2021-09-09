@@ -28,6 +28,7 @@ namespace SophiApp.Models
             {
                 Status = base.CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
                 ChildElements.ForEach(child => child.GetCustomisationStatus());
+                DefaultId = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
             }
             catch (Exception e)
             {
@@ -45,19 +46,6 @@ namespace SophiApp.Models
             ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
             ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
             GetCustomisationStatus();
-            SetDefaultId();
-        }
-
-        internal void SetDefaultId()
-        {
-            try
-            {
-                DefaultId = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
-            }
-            catch (Exception e)
-            {
-                ErrorOccurred?.Invoke(this, e);
-            }
         }
 
         public override void ChangeLanguage(UILanguage language)

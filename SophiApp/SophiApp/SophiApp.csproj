@@ -188,6 +188,7 @@
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsHelper.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
+    <Compile Include="Helpers\ScheduledTaskHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\Toaster.cs" />
@@ -205,11 +206,12 @@
     <Compile Include="Models\RadioButton.cs" />
     <Compile Include="Models\RadioGroup.cs" />
     <Compile Include="Models\Switch.cs" />
-    <Compile Include="ViewModels\AppVM-Commands.cs" />
-    <Compile Include="ViewModels\AppVM-Ctor.cs" />
-    <Compile Include="ViewModels\AppVM-Events.cs" />
-    <Compile Include="ViewModels\AppVM-Methods.cs" />
-    <Compile Include="ViewModels\AppVM-Props.cs" />
+    <Compile Include="ViewModels\Commands.cs" />
+    <Compile Include="ViewModels\Ctors.cs" />
+    <Compile Include="ViewModels\Events.cs" />
+    <Compile Include="ViewModels\Methods.cs" />
+    <Compile Include="ViewModels\Properties.cs" />
+    <Compile Include="ViewModels\Constants.cs" />
     <Compile Include="Views\ViewContextMenu.xaml.cs" />
     <Compile Include="Views\ViewGames.xaml.cs" />
     <Compile Include="Views\ViewLoading.xaml.cs" />

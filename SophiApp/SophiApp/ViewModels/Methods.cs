@@ -103,7 +103,7 @@ namespace SophiApp.ViewModels
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
             debugger = new Debugger(language: $"{ Localization.Language}", theme: $"{ AppSelectedTheme.Alias}");
-            DebugMode = false;
+            DebugMode = true; //TODO: For debug only!
             LoadingPanelVisibility = false;
             HamburgerHitTest = false;
             ViewsHitTest = true;
@@ -196,7 +196,7 @@ namespace SophiApp.ViewModels
             {
                 try
                 {
-                    debugger.Save(AppData.DebugFilePath);
+                    debugger.Save(AppData.DebugFile);
                 }
                 catch (Exception)
                 {
@@ -308,7 +308,7 @@ namespace SophiApp.ViewModels
             if (IsSupportedOs())
             {
                 MouseHelper.ShowWaitCursor(show: true);
-                //TODO: UpdateIsAvailableAsync - comment before debug, uncomment before release.
+                //TODO: UpdateIsAvailableAsync - uncomment before release.
                 //await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);

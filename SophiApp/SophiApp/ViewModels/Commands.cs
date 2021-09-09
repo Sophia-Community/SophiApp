@@ -9,19 +9,12 @@ namespace SophiApp.ViewModels
         public RelayCommand AppThemeChangeCommand { get; private set; }
         public RelayCommand DebugModeClickedCommand { get; private set; }
         public RelayCommand HamburgerClickedCommand { get; private set; }
-
         public RelayCommand HyperLinkClickedCommand { get; private set; }
-
         public RelayCommand LocalizationChangeCommand { get; private set; }
-
         public RelayCommand RadioGroupClickedCommand { get; private set; }
-
         public RelayCommand ResetTextedElementsStateCommand { get; private set; }
-
         public RelayCommand SaveDebugLogCommand { get; private set; }
-
         public RelayCommand SearchClickedCommand { get; private set; }
-
         public RelayCommand TextedElementClickedCommand { get; private set; }
     }
 }
