@@ -14,4 +14,4 @@ If you want to be kept up-to-date of the latest SophiApp news visit our Telegram
 
 <img src="https://img.shields.io/github/workflow/status/SophiaUI/SophiApp/Build?label=GitHub%20Actions&logo=GitHub">
 
-https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total
+![GitHub all releases](https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total)
