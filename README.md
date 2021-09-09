@@ -13,3 +13,5 @@ If you want to be kept up-to-date of the latest SophiApp news visit our Telegram
 <a href="https://t.me/Sophia_Chat"><img src="https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram"></a>
 
 <img src="https://img.shields.io/github/workflow/status/SophiaUI/SophiApp/Build?label=GitHub%20Actions&logo=GitHub">
+
+https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total
