@@ -7,7 +7,7 @@ using System.Linq;
 namespace SophiApp.ViewModels
 {
     internal partial class AppVM
-    {       
+    {
         private bool advancedSettingsVisibility;
         private List<CustomActionDTO> customActions;
         private Debugger debugger;

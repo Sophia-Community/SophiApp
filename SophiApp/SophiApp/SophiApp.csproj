@@ -57,6 +57,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
@@ -175,6 +176,7 @@
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="Extensions\NullableInt.cs" />
     <Compile Include="Helpers\AppData.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CustomisationsHelper.cs" />

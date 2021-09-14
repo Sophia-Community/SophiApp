@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+using SophiApp.Extensions;
 using SophiApp.Helpers;
 using System;
 using System.Linq;
+using System.Security.Principal;
 using System.ServiceProcess;
 using Const = SophiApp.Customisations.CustomisationConstants;
 
@@ -16,18 +18,7 @@ namespace SophiApp.Customisations
             return diagTrack is ServiceStartMode.Automatic && firewallRule.Enabled && firewallRule.Action is NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
         }
 
-        public static bool _102()
-        {
-            var allowTelemetry = RegHelper.GetValue(RegistryHive.LocalMachine, Const.DATA_COLLECTION_PATH, Const.ALLOW_TELEMETRY) as int?;
-            var maxTelemetry = RegHelper.GetValue(RegistryHive.LocalMachine, Const.DATA_COLLECTION_PATH, Const.MAX_TELEMETRY_ALLOWED) as int?;
-            var showedToast = RegHelper.GetValue(RegistryHive.CurrentUser, Const.DIAG_TRACK_PATH, Const.SHOWED_TOAST_LEVEL) as int?;
-            return (allowTelemetry is Const.DEFAULT_TELEMETRY_VALUE &&
-                        maxTelemetry is Const.DEFAULT_TELEMETRY_VALUE &&
-                            showedToast is Const.DEFAULT_TELEMETRY_VALUE) ||
-                                (allowTelemetry is null ||
-                                    maxTelemetry is null ||
-                                        showedToast is null);
-        }
+        public static bool _102() => !_103();
 
         public static bool _103()
         {
@@ -47,10 +38,72 @@ namespace SophiApp.Customisations
             var queueTask = ScheduledTaskHelper.GetTask(Const._104_QUEUE_TASK);
             var wer = Convert.ToByte(RegHelper.GetValue(RegistryHive.CurrentUser, Const._104_WER_PATH, Const._104_DISABLED));
             var werService = ServiceHelper.GetService(Const._104_WER_SERVICE);
-            return queueTask.State.Equals(Const._104_TASK_STATE_READY) &&
+            return queueTask.State.Equals(Const.TASK_STATE_READY) &&
                     wer != Const._104_DISABLED_DEFAULT_VALUE &&
                         werService.StartType.Equals(Const._104_WER_SERVICE_MANUAL);
         }
+
+        public static bool _106() => !_107();
+
+        public static bool _107() => RegHelper.GetValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD) as int? == Const.DISABLED_VALUE;
+
+        public static bool _109() => ScheduledTaskHelper.GetTask(Const._109_PRO_DATA_UPD).State == Const.TASK_STATE_READY;
+
+        public static bool _110() => ScheduledTaskHelper.GetTask(Const._110_PROXY).State == Const.TASK_STATE_READY;
+
+        public static bool _111() => ScheduledTaskHelper.GetTask(Const._111_CONS).State == Const.TASK_STATE_READY;
+
+        public static bool _112() => ScheduledTaskHelper.GetTask(Const._112_USB_CEIP).State == Const.TASK_STATE_READY;
+
+        public static bool _113() => ScheduledTaskHelper.GetTask(Const._113_DISK_DATA_COLLECTOR).State == Const.TASK_STATE_READY;
+
+        public static bool _114() => ScheduledTaskHelper.GetTask(Const._114_MAPS_TOAST).State == Const.TASK_STATE_READY;
+
+        public static bool _115() => ScheduledTaskHelper.GetTask(Const._115_MAPS_UPDATE).State == Const.TASK_STATE_READY;
+
+        public static bool _116() => ScheduledTaskHelper.GetTask(Const._116_FAMILY_MONITOR).State == Const.TASK_STATE_READY;
+
+        public static bool _117() => ScheduledTaskHelper.GetTask(Const._117_XBOX_SAVE).State == Const.TASK_STATE_READY;
+
+        public static bool _118() => RegHelper.GetValue(RegistryHive.LocalMachine,
+                                                        $"{Const._118_USER_ARSO_PATH}\\{WindowsIdentity.GetCurrent().User.Value}",
+                                                        Const._118_OPT_OUT) as int? != Const._118_OPT_OUT_DEFAULT_VALUE;
+
+        public static bool _119() => RegHelper.GetValue(RegistryHive.CurrentUser, Const._119_USER_PROFILE_PATH, Const._119_HTTP_ACCEPT) as int? != Const._119_HTTP_ACCEPT_DEFAULT_VALUE;
+
+        public static bool _120() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._120_ADVERT_INFO_PATH, Const._120_ADVERT_ENABLED) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _121() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._121_CDP_PATH, Const._121_AUTHZ_POLICY) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _122() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._122_SUB_CONTENT) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _123() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _124()
+        {
+            var content93 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_93) as int?;
+            var content94 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_94) as int?;
+            var content96 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_96) as int?;
+            return (content93 == Const.ENABLED_VALUE &&
+                        content94 == Const.ENABLED_VALUE &&
+                            content96 == Const.ENABLED_VALUE) ||
+                                (content93 is null ||
+                                    content94 is null ||
+                                        content96 is null);
+        }
+
+        public static bool _125() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._125_SILENT_APP_INSTALL) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _126() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._126_PROFILE_ENGAGE_PATH, Const._126_SETTING_ENABLED) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _127() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._127_PRIVACY_PATH, Const._127_TAILORED_DATA) as int?)
+                                               .HasValueOrNull(Const.ENABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 
@@ -100,7 +153,7 @@ namespace SophiApp.Customisations
         public static bool _819() => RegHelper.GetValue(RegistryHive.ClassesRoot, Const._819_SEND_TO_PATH, string.Empty) as string == Const._819_SHOW_VALUE;
 
         public static bool _820() => OsHelper.IsEdition(Const.WIN_VER_PRO) || OsHelper.IsEdition(Const.WIN_VER_ENT)
-                                     ? WmiHelper.GetBitLockerVolumeProtectionStatus() == Const._820_BITLOCKER_PROTECTION_OFF
+                                     ? WmiHelper.GetBitLockerVolumeProtectionStatus() == Const.DISABLED_VALUE
                                                 ? !RegHelper.KeyExist(RegistryHive.ClassesRoot, Const._820_BITLOCKER_BDELEV_PATH, Const.PROGRAM_ACCESS_ONLY)
                                                 : throw new BitlockerEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
@@ -122,11 +175,9 @@ namespace SophiApp.Customisations
         public static bool _825() => !RegHelper.KeyExist(RegistryHive.LocalMachine, Const._825_SOFTWARE_EXPLORER_PATH, Const._825_NO_USE_NAME);
 
         /// <summary>
-        /// This is a magic method
+        /// A bit of magic
         /// </summary>
-        /// <returns>
-        /// A little magic
-        /// </returns>
-        public static bool ItsMagic() => true;
+
+        public static bool ItsMagic() => false;
     }
 }
