@@ -23,18 +23,19 @@
 	Copyright (c) 2021 Inestic
 #>
 Clear-Host
-$ReleaseTag = $args[0]
+$ReleaseTag = $args[0].Split("/") | Select-Object -Last 1
 $AssemblyInfo = "{0}\{1}"-f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Properties\AssemblyInfo.cs"
 $AssemblyPattern = "AssemblyVersion"
 $AssemblyFilePattern = "AssemblyFileVersion"
 $AssemblyString = '[assembly: AssemblyVersion("{0}")]'-f $ReleaseTag
 $AssemblyFileString = '[assembly: AssemblyFileVersion("{0}")]'-f $ReleaseTag
 
-Write-Host "Release tag is: ""$ReleaseTag"""
+Write-Host "Release tag: ""$ReleaseTag"""
+Write-Host "Path to AssemblyInfo.cs: ""$AssemblyInfo"""
 
 if (Test-Path -Path $AssemblyInfo)
 {
-	Write-Host "File ""$AssemblyInfo"" found"
+	Write-Host "AssemblyInfo.cs found"
 	$AssemblyContent = Get-Content -Path $AssemblyInfo
 	$AssemblyLineNumber = ($AssemblyContent | Select-String -Pattern $AssemblyPattern | Select-Object -Last 1).LineNumber
 	$AssemblyFileLineNumber = ($AssemblyContent | Select-String -Pattern $AssemblyFilePattern).LineNumber
@@ -45,5 +46,5 @@ if (Test-Path -Path $AssemblyInfo)
 }
 else
 {
-	Write-Host "File ""$AssemblyInfo"" not found"
+	Write-Host "AssemblyInfo.cs not found"
 }
