@@ -30,6 +30,9 @@ jobs:
         
     - name: App Version To Release Tag
       run: ."$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
+      
+    - name: Cleaninig Up Debug Comments
+      run: ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
         
     - name: Setup Windows 10 Sdk
       uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
