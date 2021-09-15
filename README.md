@@ -7,6 +7,7 @@ The SophiApp functionality will be fully based on the [Sophia Script for Windows
 SophiApp will support only the latest Windows 10 version, 2004 and higher. If you are using a different version, please update it if possible, so as not to upset our testing department. :smile:
 
 # News
+
 If you want to be kept up-to-date of the latest SophiApp news visit our Telegram channel & group
 
 <a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
