@@ -16,4 +16,4 @@ If you want to be kept up-to-date of the latest SophiApp news visit our Telegram
 
 ![GitHub all releases](https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total)
 
-![Page Views](http://estruyf-github.azurewebsites.net/api/VisitorHit?user=Sophia-Community&repo=SophiApp&countColorcountColor)
+![Page Views](https://visitor-badge.glitch.me/badge?page_id=Sophia-Community.SophiApp)
