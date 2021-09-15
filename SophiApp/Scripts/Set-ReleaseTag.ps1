@@ -22,7 +22,7 @@
 
 	Copyright (c) 2021 Inestic
 #>
-Clear-Host
+
 $ReleaseTag = $args[0].Split("/") | Select-Object -Last 1
 $AssemblyInfo = "{0}\{1}"-f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Properties\AssemblyInfo.cs"
 $AssemblyPattern = "AssemblyVersion"

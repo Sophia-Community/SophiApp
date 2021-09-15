@@ -307,8 +307,7 @@ namespace SophiApp.ViewModels
         {
             if (IsSupportedOs())
             {
-                MouseHelper.ShowWaitCursor(show: true);
-                //TODO: UpdateIsAvailableAsync - uncomment before release.
+                MouseHelper.ShowWaitCursor(show: true);                
                 //await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
