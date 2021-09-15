@@ -125,8 +125,8 @@ namespace SophiApp.Customisations
                                                                                     RegistryValueKind.DWord);
 
         public static void _121(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        Const._121_CDP_PATH,
-                                                                            Const._121_AUTHZ_POLICY,
+                                                                        Const.CONTENT_DELIVERY_MANAGER_PATH,
+                                                                            Const._121_SUB_CONTENT,
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
@@ -136,41 +136,46 @@ namespace SophiApp.Customisations
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _123(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        Const.CONTENT_DELIVERY_MANAGER_PATH,
-                                                                            Const._123_SUB_CONTENT,
-                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
-                                                                                    RegistryValueKind.DWord);
-
-        public static void _124(bool IsActive)
+        public static void _123(bool IsActive)
         {
-            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_93,
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_93,
                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE, RegistryValueKind.DWord);
 
-            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_94,
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_94,
                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE, RegistryValueKind.DWord);
 
-            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_96,
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_96,
                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE, RegistryValueKind.DWord);
         }
 
-        public static void _125(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+        public static void _124(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         Const.CONTENT_DELIVERY_MANAGER_PATH,
-                                                                            Const._125_SILENT_APP_INSTALL,
+                                                                            Const._124_SILENT_APP_INSTALL,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _125(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const._125_PROFILE_ENGAGE_PATH,
+                                                                            Const._125_SETTING_ENABLED,
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _126(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        Const._126_PROFILE_ENGAGE_PATH,
-                                                                            Const._126_SETTING_ENABLED,
+                                                                        Const._126_PRIVACY_PATH,
+                                                                            Const._126_TAILORED_DATA,
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _127(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        Const._127_PRIVACY_PATH,
-                                                                            Const._127_TAILORED_DATA,
-                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
-                                                                                    RegistryValueKind.DWord);
+        public static void _127(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, Const.POLICIES_EXPLORER_PATH, Const._127_DISABLE_SEARCH_SUGGESTIONS);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.POLICIES_EXPLORER_PATH, Const._127_DISABLE_SEARCH_SUGGESTIONS, Const.ENABLED_VALUE, RegistryValueKind.DWord);
+        }
 
         public static void _800(bool IsActive)
         {
@@ -433,14 +438,14 @@ namespace SophiApp.Customisations
         {
             if (IsActive)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, Const._825_SOFTWARE_EXPLORER_PATH, Const._825_NO_USE_NAME);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._825_NO_USE_NAME);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, Const._825_SOFTWARE_EXPLORER_PATH, Const._825_NO_USE_NAME, Const._825_NO_USE_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._825_NO_USE_NAME, Const._825_NO_USE_VALUE, RegistryValueKind.DWord);
         }
 
-        //TODO: CustomisationOs - Method placeholder.
+        //TODO: CustomisationOs - Remove before release.
         public static void FOR_DEBUG_ONLY(bool IsActive) => Thread.Sleep(1000);
     }
 }

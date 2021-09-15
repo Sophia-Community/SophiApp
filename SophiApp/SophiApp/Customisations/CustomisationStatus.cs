@@ -74,20 +74,17 @@ namespace SophiApp.Customisations
         public static bool _120() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._120_ADVERT_INFO_PATH, Const._120_ADVERT_ENABLED) as int?)
                                                .HasValueOrNull(Const.ENABLED_VALUE);
 
-        public static bool _121() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._121_CDP_PATH, Const._121_AUTHZ_POLICY) as int?)
+        public static bool _121() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._121_SUB_CONTENT) as int?)
                                                .HasValueOrNull(Const.ENABLED_VALUE);
 
         public static bool _122() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._122_SUB_CONTENT) as int?)
                                                .HasValueOrNull(Const.ENABLED_VALUE);
 
-        public static bool _123() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
-
-        public static bool _124()
+        public static bool _123()
         {
-            var content93 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_93) as int?;
-            var content94 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_94) as int?;
-            var content96 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SUB_CONTENT_96) as int?;
+            var content93 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_93) as int?;
+            var content94 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_94) as int?;
+            var content96 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_96) as int?;
             return (content93 == Const.ENABLED_VALUE &&
                         content94 == Const.ENABLED_VALUE &&
                             content96 == Const.ENABLED_VALUE) ||
@@ -96,14 +93,17 @@ namespace SophiApp.Customisations
                                         content96 is null);
         }
 
-        public static bool _125() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._125_SILENT_APP_INSTALL) as int?)
+        public static bool _124() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SILENT_APP_INSTALL) as int?)
                                                .HasValueOrNull(Const.ENABLED_VALUE);
 
-        public static bool _126() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._126_PROFILE_ENGAGE_PATH, Const._126_SETTING_ENABLED) as int?)
+        public static bool _125() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._125_PROFILE_ENGAGE_PATH, Const._125_SETTING_ENABLED) as int?)
                                                .HasValueOrNull(Const.ENABLED_VALUE);
 
-        public static bool _127() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._127_PRIVACY_PATH, Const._127_TAILORED_DATA) as int?)
+        public static bool _126() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._126_PRIVACY_PATH, Const._126_TAILORED_DATA) as int?)
                                                .HasValueOrNull(Const.ENABLED_VALUE);
+
+        public static bool _127() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.POLICIES_EXPLORER_PATH, Const._127_DISABLE_SEARCH_SUGGESTIONS) as int?)
+                                               .HasValueOrNull(Const.DISABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 
@@ -172,7 +172,7 @@ namespace SophiApp.Customisations
 
         public static bool _824() => Convert.ToInt32(RegHelper.GetValue(RegistryHive.CurrentUser, Const._824_CURRENT_EXPLORER_PATH, Const._824_PROMPT_NAME)) == Const._824_PROMPT_VALUE;
 
-        public static bool _825() => !RegHelper.KeyExist(RegistryHive.LocalMachine, Const._825_SOFTWARE_EXPLORER_PATH, Const._825_NO_USE_NAME);
+        public static bool _825() => !RegHelper.KeyExist(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._825_NO_USE_NAME);
 
         /// <summary>
         /// A bit of magic

@@ -22,7 +22,7 @@ namespace SophiApp.Models
         {
             try
             {
-                Status = base.CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                Status = CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
                 ChildElements.ForEach(child => child.GetCustomisationStatus());
             }
             catch (Exception e)

@@ -307,7 +307,7 @@ namespace SophiApp.ViewModels
         {
             if (IsSupportedOs())
             {
-                MouseHelper.ShowWaitCursor(show: true);                
+                MouseHelper.ShowWaitCursor(show: true);
                 //await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
