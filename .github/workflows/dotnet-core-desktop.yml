@@ -19,6 +19,7 @@ jobs:
       App_Zip: SophiApp.zip      
       App_Project_Path: SophiApp\SophiApp.sln
       App_Release_Path: SophiApp\SophiApp\bin\Release
+      App_Script_Path: SophiApp\Scripts
       Binary_Folder_Name: Bin
 
     steps:
@@ -26,6 +27,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+        
+    - name: App Version To Release Tag
+      run: ."${{ App_Script_Path }}\Set-ReleaseTag.ps1" "${{ GITHUB_REF }}"
         
     - name: Setup Windows 10 Sdk
       uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
