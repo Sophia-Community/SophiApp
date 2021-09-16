@@ -103,7 +103,7 @@ namespace SophiApp.ViewModels
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
             debugger = new Debugger(language: $"{ Localization.Language}", theme: $"{ AppSelectedTheme.Alias}");
-            DebugMode = true; //TODO: For debug only!
+            DebugMode = true;
             LoadingPanelVisibility = false;
             HamburgerHitTest = false;
             ViewsHitTest = true;
