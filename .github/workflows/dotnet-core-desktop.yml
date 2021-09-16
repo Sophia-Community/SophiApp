@@ -31,7 +31,8 @@ jobs:
     - name: Preparing The Program Files
       run: |
         ."$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
-        ."$env:App_Script_Path\Uncomment-AppMethods.ps1"       
+        ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
+        ."$env:App_Script_Path\Set-DebugMode.ps1"
       
     - name: Cleaninig Up Debug Comments
       run: ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
