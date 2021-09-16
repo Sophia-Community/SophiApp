@@ -85,12 +85,7 @@ namespace SophiApp.Customisations
             var content93 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_93) as int?;
             var content94 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_94) as int?;
             var content96 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_96) as int?;
-            return (content93 == Const.ENABLED_VALUE &&
-                        content94 == Const.ENABLED_VALUE &&
-                            content96 == Const.ENABLED_VALUE) ||
-                                (content93 is null ||
-                                    content94 is null ||
-                                        content96 is null);
+            return content93.HasValueOrNull(Const.ENABLED_VALUE) && content94.HasValueOrNull(Const.ENABLED_VALUE) && content96.HasValueOrNull(Const.ENABLED_VALUE);                                
         }
 
         public static bool _124() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SILENT_APP_INSTALL) as int?)
@@ -155,7 +150,7 @@ namespace SophiApp.Customisations
         public static bool _820() => OsHelper.IsEdition(Const.WIN_VER_PRO) || OsHelper.IsEdition(Const.WIN_VER_ENT)
                                      ? WmiHelper.GetBitLockerVolumeProtectionStatus() == Const.DISABLED_VALUE
                                                 ? !RegHelper.KeyExist(RegistryHive.ClassesRoot, Const._820_BITLOCKER_BDELEV_PATH, Const.PROGRAM_ACCESS_ONLY)
-                                                : throw new BitlockerEnabledException()
+                                                : throw new BitlockerIsEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
 
         public static bool _821() => DismHelper.CapabilityIsInstalled(Const.CAPABILITY_MS_PAINT)

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:helpers="clr-namespace:SophiApp.Helpers"
              xmlns:local="clr-namespace:SophiApp.Views"
@@ -10,6 +11,7 @@
              IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
+        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter"/>
         <Thickness x:Key="BlockIndent" Left="20" Top="0" Right="0" Bottom="15" />
         <Thickness x:Key="ActorLinkIndent" Left="20" Top="0" Right="0" Bottom="0" />
         <Thickness x:Key="DropDownListIndent" Left="20" Top="0" Right="0" Bottom="20" />
@@ -147,7 +149,8 @@
                                                     Width="290"
                                                     HorizontalAlignment="Left"
                                                     IsChecked="{Binding DebugMode}"
-                                                    Command="{Binding DebugModeClickedCommand}" />
+                                                    Command="{Binding DebugModeClickedCommand}"
+                                                    Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
                             <controls:FilledButton Text="{DynamicResource Localization.Settings.Debug.Save}"
                                                    Margin="{StaticResource BlockIndent}"

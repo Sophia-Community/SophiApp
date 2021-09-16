@@ -1,58 +1,49 @@
 ﻿using System;
-
+using System.Runtime.Serialization;
 namespace SophiApp.Helpers
 {
-    internal class BitlockerEnabledException : Exception
+    internal class BitlockerIsEnabledException : Exception
     {
-        protected BitlockerEnabledException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+        protected BitlockerIsEnabledException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
-        public BitlockerEnabledException() : base("BitLocker protection is enabled")
+        public BitlockerIsEnabledException() : base("BitLocker protection is enabled")
         {
         }
 
-        public BitlockerEnabledException(Exception inner) : base("BitLocker protection is enabled", inner)
+        public BitlockerIsEnabledException(Exception inner) : base("BitLocker protection is enabled", inner)
         {
         }
     }
-
-    [global::System.Serializable]
+        
     internal class UwpAppNotFoundException : Exception
     {
-        protected UwpAppNotFoundException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+        protected UwpAppNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
-        public UwpAppNotFoundException(string name) : base($"UWP app {name} not found in this PC")
+        public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found on OS")
         {
         }
 
-        public UwpAppNotFoundException(string name, Exception inner) : base($"UWP app {name} not found in this PC", inner)
+        public UwpAppNotFoundException(string name, Exception inner) : base($"The UWP package {name} wasn't found on OS", inner)
         {
         }
     }
 
     internal class WindowsCapabilityNotInstalledException : Exception
     {
-        protected WindowsCapabilityNotInstalledException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+        protected WindowsCapabilityNotInstalledException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
-        public WindowsCapabilityNotInstalledException(string name) : base($"Windows capability {name} not installed in this PC")
+        public WindowsCapabilityNotInstalledException(string name) : base($"The Windows capability {name} wasn't installed on this OS")
         {
         }
 
-        public WindowsCapabilityNotInstalledException(string name, Exception inner) : base($"Windows capability {name} not installed in this PC", inner)
+        public WindowsCapabilityNotInstalledException(string name, Exception inner) : base($"The Windows capability {name} wasn't installed on this OS", inner)
         {
         }
     }
 
     internal class WindowsEditionNotSupportedException : Exception
     {
-        protected WindowsEditionNotSupportedException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+        protected WindowsEditionNotSupportedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         public WindowsEditionNotSupportedException() : base("Unsupported Windows edition")
         {
