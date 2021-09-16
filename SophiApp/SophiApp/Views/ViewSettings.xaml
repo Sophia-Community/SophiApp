@@ -11,7 +11,7 @@
              IsVisibleChanged="ViewSettings_IsVisibleChanged">
 
     <UserControl.Resources>
-        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter"/>
+        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Thickness x:Key="BlockIndent" Left="20" Top="0" Right="0" Bottom="15" />
         <Thickness x:Key="ActorLinkIndent" Left="20" Top="0" Right="0" Bottom="0" />
         <Thickness x:Key="DropDownListIndent" Left="20" Top="0" Right="0" Bottom="20" />
@@ -150,7 +150,7 @@
                                                     HorizontalAlignment="Left"
                                                     IsChecked="{Binding DebugMode}"
                                                     Command="{Binding DebugModeClickedCommand}"
-                                                    Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                    Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}" />
 
                             <controls:FilledButton Text="{DynamicResource Localization.Settings.Debug.Save}"
                                                    Margin="{StaticResource BlockIndent}"

@@ -2,6 +2,6 @@
 {
     public static class NullableInt
     {
-        public static bool HasValueOrNull(this int? integer, int value) => integer is null || integer == value;
+        public static bool HasNullOrValue(this int? integer, int value) => integer is null || integer == value;
     }
 }

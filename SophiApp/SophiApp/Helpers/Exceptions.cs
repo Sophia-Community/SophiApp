@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Runtime.Serialization;
+
 namespace SophiApp.Helpers
 {
     internal class BitlockerIsEnabledException : Exception
     {
-        protected BitlockerIsEnabledException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected BitlockerIsEnabledException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
         public BitlockerIsEnabledException() : base("BitLocker protection is enabled")
         {
@@ -14,10 +17,12 @@ namespace SophiApp.Helpers
         {
         }
     }
-        
+
     internal class UwpAppNotFoundException : Exception
     {
-        protected UwpAppNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected UwpAppNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
         public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found on OS")
         {
@@ -30,7 +35,9 @@ namespace SophiApp.Helpers
 
     internal class WindowsCapabilityNotInstalledException : Exception
     {
-        protected WindowsCapabilityNotInstalledException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected WindowsCapabilityNotInstalledException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
         public WindowsCapabilityNotInstalledException(string name) : base($"The Windows capability {name} wasn't installed on this OS")
         {
@@ -43,7 +50,9 @@ namespace SophiApp.Helpers
 
     internal class WindowsEditionNotSupportedException : Exception
     {
-        protected WindowsEditionNotSupportedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected WindowsEditionNotSupportedException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
         public WindowsEditionNotSupportedException() : base("Unsupported Windows edition")
         {

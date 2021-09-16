@@ -72,33 +72,50 @@ namespace SophiApp.Customisations
         public static bool _119() => RegHelper.GetValue(RegistryHive.CurrentUser, Const._119_USER_PROFILE_PATH, Const._119_HTTP_ACCEPT) as int? != Const._119_HTTP_ACCEPT_DEFAULT_VALUE;
 
         public static bool _120() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._120_ADVERT_INFO_PATH, Const._120_ADVERT_ENABLED) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _121() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._121_SUB_CONTENT) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _122() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._122_SUB_CONTENT) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _123()
         {
             var content93 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_93) as int?;
             var content94 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_94) as int?;
             var content96 = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._123_SUB_CONTENT_96) as int?;
-            return content93.HasValueOrNull(Const.ENABLED_VALUE) && content94.HasValueOrNull(Const.ENABLED_VALUE) && content96.HasValueOrNull(Const.ENABLED_VALUE);                                
+            return content93.HasNullOrValue(Const.ENABLED_VALUE) && content94.HasNullOrValue(Const.ENABLED_VALUE) && content96.HasNullOrValue(Const.ENABLED_VALUE);
         }
 
         public static bool _124() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CONTENT_DELIVERY_MANAGER_PATH, Const._124_SILENT_APP_INSTALL) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _125() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._125_PROFILE_ENGAGE_PATH, Const._125_SETTING_ENABLED) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _126() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const._126_PRIVACY_PATH, Const._126_TAILORED_DATA) as int?)
-                                               .HasValueOrNull(Const.ENABLED_VALUE);
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _127() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.POLICIES_EXPLORER_PATH, Const._127_DISABLE_SEARCH_SUGGESTIONS) as int?)
-                                               .HasValueOrNull(Const.DISABLED_VALUE);
+                                               .HasNullOrValue(Const.DISABLED_VALUE);
+
+        public static bool _201() => !_202();
+
+        public static bool _202() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_START_PANEL_PATH, Const.DESKTOP_ICON_THIS_COMPUTER) as int?)
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _203() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._203_AUTO_CHECK_SELECT) as int?)
+                                                .HasNullOrValue(Const.DISABLED_VALUE);
+
+        public static bool _204() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._204_HIDDEN) as int?)
+                                                .HasNullOrValue(Const._204_HIDDEN_DISABLED_VALUE);
+
+        public static bool _205() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._205_HIDE_FILE_EXT) as int?)
+                                                .HasNullOrValue(Const._205_HIDE_VALUE);
+
+        public static bool _206() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._206_HIDE_MERGE_CONF) as int?)
+                                                .HasNullOrValue(Const.DISABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 

@@ -41,6 +41,14 @@ namespace SophiApp.Customisations
         internal const string _126_PRIVACY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy";
         internal const string _126_TAILORED_DATA = "TailoredExperiencesWithDiagnosticDataEnabled";
         internal const string _127_DISABLE_SEARCH_SUGGESTIONS = "DisableSearchBoxSuggestions";
+        internal const string _203_AUTO_CHECK_SELECT = "AutoCheckSelect";
+        internal const string _204_HIDDEN = "Hidden";
+        internal const byte _204_HIDDEN_DISABLED_VALUE = 2;
+        internal const byte _204_HIDDEN_ENABLED_VALUE = 1;
+        internal const string _205_HIDE_FILE_EXT = "HideFileExt";
+        internal const byte _205_HIDE_VALUE = 1;
+        internal const byte _205_SHOW_VALUE = 0;
+        internal const string _206_HIDE_MERGE_CONF = "HideMergeConflicts";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -99,9 +107,12 @@ namespace SophiApp.Customisations
         internal const string DATA = "Data";
         internal const string DATA_COLLECTION_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
         internal const byte DEFAULT_TELEMETRY_VALUE = 3;
+        internal const string DESKTOP_ICON_THIS_COMPUTER = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
         internal const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
         internal const byte DISABLED_VALUE = 0;
         internal const byte ENABLED_VALUE = 1;
+        internal const string EXPLORER_ADVANCED_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced";
+        internal const string EXPLORER_START_PANEL_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
         internal const string ITEM_NAME = "ItemName";
         internal const string MAX_TELEMETRY_ALLOWED = "MaxTelemetryAllowed";
         internal const byte MIN_ENT_TELEMETRY_VALUE = 0;

@@ -3,7 +3,6 @@ using SophiApp.Helpers;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceProcess;
-using System.Threading;
 using Const = SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
@@ -30,14 +29,14 @@ namespace SophiApp.Customisations
             firewallRule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
         }
 
-        public static void _102(bool IsActive)
+        public static void _102(bool _)
         {
             RegHelper.SetValue(RegistryHive.LocalMachine, Const.DATA_COLLECTION_PATH, Const.ALLOW_TELEMETRY, Const.DEFAULT_TELEMETRY_VALUE, RegistryValueKind.DWord);
             RegHelper.SetValue(RegistryHive.LocalMachine, Const.DATA_COLLECTION_PATH, Const.MAX_TELEMETRY_ALLOWED, Const.DEFAULT_TELEMETRY_VALUE, RegistryValueKind.DWord);
             RegHelper.SetValue(RegistryHive.CurrentUser, Const.DIAG_TRACK_PATH, Const.SHOWED_TOAST_LEVEL, Const.DEFAULT_TELEMETRY_VALUE, RegistryValueKind.DWord);
         }
 
-        public static void _103(bool IsActive)
+        public static void _103(bool _)
         {
             RegHelper.SetValue(RegistryHive.LocalMachine,
                                 Const.DATA_COLLECTION_PATH, Const.ALLOW_TELEMETRY,
@@ -72,9 +71,9 @@ namespace SophiApp.Customisations
             ServiceHelper.SetStartMode(werService, ServiceStartMode.Disabled);
         }
 
-        public static void _106(bool IsActive) => RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, Const.SIUF_PATH);
+        public static void _106(bool _) => RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, Const.SIUF_PATH);
 
-        public static void _107(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD, Const.DISABLED_VALUE, RegistryValueKind.DWord);
+        public static void _107(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD, Const.DISABLED_VALUE, RegistryValueKind.DWord);
 
         public static void _109(bool IsActive) => ScheduledTaskHelper.GetTask(Const._109_PRO_DATA_UPD).Enabled = IsActive;
 
@@ -176,6 +175,34 @@ namespace SophiApp.Customisations
 
             RegHelper.SetValue(RegistryHive.CurrentUser, Const.POLICIES_EXPLORER_PATH, Const._127_DISABLE_SEARCH_SUGGESTIONS, Const.ENABLED_VALUE, RegistryValueKind.DWord);
         }
+
+        public static void _201(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.EXPLORER_START_PANEL_PATH, Const.DESKTOP_ICON_THIS_COMPUTER, Const.DISABLED_VALUE, RegistryValueKind.DWord);
+
+        public static void _202(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, Const.EXPLORER_START_PANEL_PATH, Const.DESKTOP_ICON_THIS_COMPUTER);
+
+        public static void _203(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.EXPLORER_ADVANCED_PATH,
+                                                                            Const._203_AUTO_CHECK_SELECT,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _204(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.EXPLORER_ADVANCED_PATH,
+                                                                            Const._204_HIDDEN,
+                                                                                IsActive ? Const._204_HIDDEN_ENABLED_VALUE : Const._204_HIDDEN_DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _205(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.EXPLORER_ADVANCED_PATH,
+                                                                            Const._205_HIDE_FILE_EXT,
+                                                                                IsActive ? Const._205_SHOW_VALUE : Const._205_HIDE_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _206(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.EXPLORER_ADVANCED_PATH,
+                                                                            Const._206_HIDE_MERGE_CONF,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _800(bool IsActive)
         {
@@ -444,8 +471,5 @@ namespace SophiApp.Customisations
 
             RegHelper.SetValue(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._825_NO_USE_NAME, Const._825_NO_USE_VALUE, RegistryValueKind.DWord);
         }
-
-        //TODO: CustomisationOs - Remove before release.
-        public static void FOR_DEBUG_ONLY(bool IsActive) => Thread.Sleep(1000);
     }
 }
