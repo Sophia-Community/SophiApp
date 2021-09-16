@@ -33,7 +33,7 @@ jobs:
         ."$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
         ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
         echo "******************************************"
-        echo "Release: ${{ github.event.release }}
+        echo "Release: ${{ github.event.release }}"
         echo ""
         echo "Ref: ${{ github.ref }}"
         echo "******************************************"
