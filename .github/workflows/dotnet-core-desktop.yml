@@ -28,8 +28,11 @@ jobs:
       with:
         fetch-depth: 0
         
-    - name: App Version To Release Tag
-      run: ."$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
+    - name: Preparing The Program Files
+      run: |
+        ."$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
+        ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
+        ."$env:App_Script_Path\Set-DebugMode.ps1" "${{ github.event.release.prerelease }}"        
       
     - name: Cleaninig Up Debug Comments
       run: ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
