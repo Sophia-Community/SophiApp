@@ -13,7 +13,7 @@ namespace SophiApp.Helpers
 
         internal static void DeleteKey(RegistryHive hive, string path, string name) => SetKey(hive, path).DeleteValue(name);
 
-        internal static void DeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, GetRegistryView()).DeleteSubKeyTree(subKey, true); //SetKey(hive, subKey).DeleteSubKeyTree(subKey);
+        internal static void DeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, GetRegistryView()).DeleteSubKeyTree(subKey, true);
 
         internal static object GetValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name);
 

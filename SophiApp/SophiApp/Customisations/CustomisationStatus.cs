@@ -102,20 +102,38 @@ namespace SophiApp.Customisations
 
         public static bool _201() => !_202();
 
-        public static bool _202() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_START_PANEL_PATH, Const.DESKTOP_ICON_THIS_COMPUTER) as int?)
+        public static bool _202() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.START_PANEL_EXPLORER_PATH, Const.DESKTOP_ICON_THIS_COMPUTER) as int?)
                                                .HasNullOrValue(Const.ENABLED_VALUE);
 
-        public static bool _203() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._203_AUTO_CHECK_SELECT) as int?)
+        public static bool _203() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._203_AUTO_CHECK_SELECT) as int?)
                                                 .HasNullOrValue(Const.DISABLED_VALUE);
 
-        public static bool _204() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._204_HIDDEN) as int?)
+        public static bool _204() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._204_HIDDEN) as int?)
                                                 .HasNullOrValue(Const._204_HIDDEN_DISABLED_VALUE);
 
-        public static bool _205() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._205_HIDE_FILE_EXT) as int?)
+        public static bool _205() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._205_HIDE_FILE_EXT) as int?)
                                                 .HasNullOrValue(Const._205_HIDE_VALUE);
 
-        public static bool _206() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.EXPLORER_ADVANCED_PATH, Const._206_HIDE_MERGE_CONF) as int?)
+        public static bool _206() => !(RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._206_HIDE_MERGE_CONF) as int?)
                                                 .HasNullOrValue(Const.DISABLED_VALUE);
+
+        public static bool _208() => !_209();
+
+        public static bool _209() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const.LAUNCH_TO) as int?)
+                                                .HasNullOrValue(Const.LAUNCH_QA_VALUE);
+
+        public static bool _210() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._210_CORTANA_BUTTON) as int?)
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _211() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._211_PROVIDER_NOTIFICATIONS) as int?)
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _212() => (RegHelper.GetValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._212_SNAP_ASSIST) as int?)
+                                               .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _216() => RegHelper.KeyExist(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._216_SHELL_STATE)
+                                     ? (RegHelper.GetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._216_SHELL_STATE) as byte[])[4] == Const._216_SHELL_ENABLED_VALUE
+                                     : throw new RegistryKeyNotExist($"{RegistryHive.CurrentUser}\\{Const.CURRENT_EXPLORER_PATH}\\{Const._216_SHELL_STATE}");
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 
@@ -182,14 +200,14 @@ namespace SophiApp.Customisations
 
         public static bool _823() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._823_ZIP_SHELLNEW_PATH);
 
-        public static bool _824() => Convert.ToInt32(RegHelper.GetValue(RegistryHive.CurrentUser, Const._824_CURRENT_EXPLORER_PATH, Const._824_PROMPT_NAME)) == Const._824_PROMPT_VALUE;
+        public static bool _824() => Convert.ToInt32(RegHelper.GetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._824_PROMPT_NAME)) == Const._824_PROMPT_VALUE;
 
         public static bool _825() => !RegHelper.KeyExist(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._825_NO_USE_NAME);
 
         /// <summary>
-        /// A bit of magic
+        /// There must be a little magic in every app
         /// </summary>
 
-        public static bool ItsMagic() => false;
+        public static bool ItsMagic() => true;
     }
 }

@@ -18,6 +18,21 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class RegistryKeyNotExist : Exception
+    {
+        protected RegistryKeyNotExist(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+
+        public RegistryKeyNotExist(string key) : base($"The registry key \"{key}\" is not available")
+        {
+        }
+
+        public RegistryKeyNotExist(string key, Exception inner) : base($"The registry key \"{key}\" is not available", inner)
+        {
+        }
+    }
+
     internal class UwpAppNotFoundException : Exception
     {
         protected UwpAppNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
