@@ -567,6 +567,19 @@
     {
         "Id": 216,
         "Header": {
+            "EN": "Minimize the File Explorer ribbon",
+            "RU": "Свернуть ленту проводника"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization"
+    },
+    {
+        "Id": 217,
+        "Header": {
             "EN": "Display the recycle bin files delete confirmation dialog",
             "RU": "Запрашивать подтверждение на удаление файлов в корзину"
         },
@@ -578,7 +591,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 217,
+        "Id": 218,
         "Header": {
             "EN": "Show frequently used folders in Quick access",
             "RU": "Показать часто используемые папки на панели быстрого доступа"
@@ -591,7 +604,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 218,
+        "Id": 219,
         "Header": {
             "EN": "Show recently used files in Quick access",
             "RU": "Показать недавно использовавшиеся файлы на панели быстрого доступа"
@@ -604,7 +617,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 219,
+        "Id": 220,
         "Header": {
             "EN": "Show Task View button on the taskbar",
             "RU": "Показывать кнопку Просмотра задач"
@@ -617,7 +630,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 220,
+        "Id": 221,
         "Header": {
             "EN": "Show People button on the taskbar",
             "RU": "Показывать панель \"Люди\" на панели задач"
@@ -630,7 +643,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 221,
+        "Id": 222,
         "Header": {
             "EN": "Show seconds on the taskbar clock",
             "RU": "Отображать секунды в системных часах на панели задач"
@@ -643,7 +656,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 222,
+        "Id": 223,
         "Header": {
             "EN": "Search on the taskbar",
             "RU": "Поиск на панели задач"
@@ -656,7 +669,7 @@
         "Tag": "Personalization",
         "ChildElements": [
             {
-                "Id": 223,
+                "Id": 224,
                 "ChildHeader": {
                     "EN": "Hidden",
                     "RU": "Скрыто"
@@ -668,7 +681,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 224,
+                "Id": 225,
                 "ChildHeader": {
                     "EN": "Hide search icon",
                     "RU": "Показать значок поиска"
@@ -680,7 +693,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 225,
+                "Id": 226,
                 "ChildHeader": {
                     "EN": "Show search box",
                     "RU": "Показать поле поиска"
@@ -694,7 +707,7 @@
         ]
     },
     {
-        "Id": 226,
+        "Id": 227,
         "Header": {
             "EN": "Show Windows Ink Workspace button on the taskbar",
             "RU": "Показать кнопку Windows Ink Workspace на панели задач"
@@ -707,7 +720,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 227,
+        "Id": 228,
         "Header": {
             "EN": "Always show all icons in the notification area",
             "RU": "Всегда отображать все значки в области уведомлений"
@@ -720,7 +733,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 228,
+        "Id": 229,
         "Header": {
             "EN": "Show the Meet Now icon in the notification area",
             "RU": "Отображать иконку \"Провести собрание\" в области уведомлений"
@@ -733,7 +746,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 229,
+        "Id": 230,
         "Header": {
             "EN": "Show \"News and Interests\" on the taskbar",
             "RU": "Отображать \"Новости и интересы\" на панели задач"
@@ -746,7 +759,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 230,
+        "Id": 231,
         "Header": {
             "EN": "View the Control Panel icons",
             "RU": "Просмотр иконок Панели управления"
@@ -759,7 +772,7 @@
         "Tag": "Personalization",
         "ChildElements": [
             {
-                "Id": 231,
+                "Id": 232,
                 "ChildHeader": {
                     "EN": "Large icons",
                     "RU": "Крупные значки"
@@ -771,7 +784,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 232,
+                "Id": 233,
                 "ChildHeader": {
                     "EN": "Small icons",
                     "RU": "Маленькие значки"
@@ -783,7 +796,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 233,
+                "Id": 234,
                 "ChildHeader": {
                     "EN": "Category",
                     "RU": "Категория"
@@ -797,7 +810,7 @@
         ]
     },
     {
-        "Id": 234,
+        "Id": 235,
         "Header": {
             "EN": "Default Windows color mode",
             "RU": "Режим Windows по умолчанию"
@@ -810,7 +823,7 @@
         "Tag": "Personalization",
         "ChildElements": [
             {
-                "Id": 235,
+                "Id": 236,
                 "ChildHeader": {
                     "EN": "Light",
                     "RU": "Светлый"
@@ -822,7 +835,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 236,
+                "Id": 237,
                 "ChildHeader": {
                     "EN": "Dark",
                     "RU": "Тёмный"
@@ -836,7 +849,7 @@
         ]
     },
     {
-        "Id": 237,
+        "Id": 238,
         "Header": {
             "EN": "Default app color mode",
             "RU": "Режим приложения по умолчанию"
@@ -849,7 +862,7 @@
         "Tag": "Personalization",
         "ChildElements": [
             {
-                "Id": 238,
+                "Id": 2398,
                 "ChildHeader": {
                     "EN": "Light",
                     "RU": "Светлый"
@@ -861,7 +874,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 239,
+                "Id": 240,
                 "ChildHeader": {
                     "EN": "Dark",
                     "RU": "Тёмный"
@@ -875,7 +888,7 @@
         ]
     },
     {
-        "Id": 240,
+        "Id": 241,
         "Header": {
             "EN": "Show the \"New App Installed\" indicator",
             "RU": "Показывать уведомление \"Установлено новое приложение\""
@@ -888,7 +901,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 241,
+        "Id": 242,
         "Header": {
             "EN": "Show first sign-in animation after the upgrade",
             "RU": "Показывать анимацию при первом входе в систему после обновления"
@@ -901,7 +914,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 242,
+        "Id": 243,
         "Header": {
             "EN": "The quality factor of the JPEG desktop wallpapers",
             "RU": "Коэффициент качества обоев рабочего стола в формате JPEG"
@@ -914,7 +927,7 @@
         "Tag": "Personalization",
         "ChildElements": [
             {
-                "Id": 243,
+                "Id": 244,
                 "ChildHeader": {
                     "EN": "Maximum",
                     "RU": "Максимальный"
@@ -926,7 +939,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 244,
+                "Id": 245,
                 "ChildHeader": {
                     "EN": "Default",
                     "RU": "По умолчанию"
@@ -940,7 +953,7 @@
         ]
     },
     {
-        "Id": 245,
+        "Id": 246,
         "Header": {
             "EN": "Notify me when a restart is required to finish updating",
             "RU": "Уведомлять меня о необходимости перезагрузки для завершения обновления"
@@ -953,7 +966,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 246,
+        "Id": 247,
         "Header": {
             "EN": "Add the \"- Shortcut\" suffix to the file name of created shortcuts",
             "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков"
@@ -966,7 +979,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 247,
+        "Id": 248,
         "Header": {
             "EN": "Use the PrtScn button to open screen snipping",
             "RU": "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана"
@@ -979,7 +992,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 248,
+        "Id": 249,
         "Header": {
             "EN": "Let me use a different input method for each app window",
             "RU": "Позволить выбирать метод ввода для каждого окна"
@@ -992,7 +1005,7 @@
         "Tag": "Personalization"
     },
     {
-        "Id": 249,
+        "Id": 250,
         "Header": {
             "EN": "When I grab a windows's title bar and shake it, minimize all other windows",
             "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна"
