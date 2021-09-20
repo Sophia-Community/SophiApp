@@ -26,7 +26,7 @@ namespace SophiApp.Models
         {
             try
             {
-                Status = base.CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                Status = CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
                 ChildElements.ForEach(child => child.GetCustomisationStatus());
                 DefaultId = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
             }
@@ -42,16 +42,15 @@ namespace SophiApp.Models
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
             CustomisationStatus = customisationStatus;
-            base.ChangeLanguage(language);
             ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
             ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
-            GetCustomisationStatus();
+            ChangeLanguage(language);
+            base.GetCustomisationStatus();
         }
 
         public override void ChangeLanguage(UILanguage language)
         {
-            Header = Headers[language];
-            Description = Descriptions[language];
+            base.ChangeLanguage(language);
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
     }

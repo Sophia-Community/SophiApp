@@ -37,9 +37,9 @@ namespace SophiApp.Models
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
             CustomisationStatus = customisationStatus;
-            base.ChangeLanguage(language);
             ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, errorHandler, statusHandler, language)).ToList();
-            GetCustomisationStatus();
+            ChangeLanguage(language);
+            base.GetCustomisationStatus();
         }
 
         public override void ChangeLanguage(UILanguage language)

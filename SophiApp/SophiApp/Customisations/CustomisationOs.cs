@@ -189,7 +189,7 @@ namespace SophiApp.Customisations
         public static void _204(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         Const.ADVANCED_EXPLORER_PATH,
                                                                             Const._204_HIDDEN,
-                                                                                IsActive ? Const._204_HIDDEN_ENABLED_VALUE : Const._204_HIDDEN_DISABLED_VALUE,
+                                                                                IsActive ? Const._204_ENABLED_VALUE : Const._204_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _205(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
@@ -224,7 +224,7 @@ namespace SophiApp.Customisations
 
         public static void _211(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         Const.ADVANCED_EXPLORER_PATH,
-                                                                            Const._211_PROVIDER_NOTIFICATIONS,
+                                                                            Const._211_SHOW_SYNC_PROVIDER,
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
@@ -234,11 +234,29 @@ namespace SophiApp.Customisations
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _216(bool IsActive)
+        public static void _214(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                Const.STATUS_MANAGER_PATH,
+                                                                    Const.ENTHUSIAST_MODE,
+                                                                        Const.DIALOG_DETAILED_VALUE,
+                                                                            RegistryValueKind.DWord);
+
+        public static void _215(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                Const.STATUS_MANAGER_PATH,
+                                                                    Const.ENTHUSIAST_MODE,
+                                                                        Const.DIALOG_COMPACT_VALUE,
+                                                                            RegistryValueKind.DWord);
+
+        public static void _216(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const._216_RIBBON_EXPLORER,
+                                                                            Const._216_TABLET_MODE_OFF,
+                                                                                IsActive ? Const._216_MINIMIZED_VALUE : Const._216_EXPANDED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _217(bool IsActive)
         {
-            var shellState = RegHelper.GetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._216_SHELL_STATE) as byte[];
-            shellState[4] = IsActive ? Const._216_SHELL_ENABLED_VALUE : Const._216_SHELL_DISABLED_VALUE;
-            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._216_SHELL_STATE, shellState, RegistryValueKind.Binary);
+            var shellState = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE);
+            shellState[4] = IsActive ? Const._217_SHELL_ENABLED_VALUE : Const._217_SHELL_DISABLED_VALUE;
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE, shellState, RegistryValueKind.Binary);
         }
 
         public static void _800(bool IsActive)

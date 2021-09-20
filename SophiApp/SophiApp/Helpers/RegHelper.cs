@@ -15,6 +15,10 @@ namespace SophiApp.Helpers
 
         internal static void DeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, GetRegistryView()).DeleteSubKeyTree(subKey, true);
 
+        internal static byte[] GetByteArrayValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as byte[];
+
+        internal static int? GetNullableIntValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as int?;
+
         internal static object GetValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name);
 
         internal static bool KeyExist(RegistryHive hive, string path, string name) => !(GetKey(hive, path)?.GetValue(name) is null);
