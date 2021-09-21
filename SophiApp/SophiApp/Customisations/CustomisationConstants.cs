@@ -1,7 +1,4 @@
-﻿using Microsoft.Win32.TaskScheduler;
-using System.ServiceProcess;
-
-namespace SophiApp.Customisations
+﻿namespace SophiApp.Customisations
 {
     internal struct CustomisationConstants
     {
@@ -10,18 +7,24 @@ namespace SophiApp.Customisations
         internal const string _104_DISABLED = "Disabled";
         internal const byte _104_DISABLED_DEFAULT_VALUE = 1;
         internal const string _104_QUEUE_TASK = "QueueReporting";
+        internal const string _104_QUEUE_TASK_PATH = @"Microsoft\Windows\Windows Error Reporting";
         internal const string _104_WER_PATH = @"SOFTWARE\Microsoft\Windows\Windows Error Reporting";
         internal const string _104_WER_SERVICE = "WerSvc";
-        internal const ServiceStartMode _104_WER_SERVICE_MANUAL = ServiceStartMode.Manual;
-        internal const string _109_PRO_DATA_UPD = "ProgramDataUpdater";
-        internal const string _110_PROXY = "Proxy";
-        internal const string _111_CONS = "Consolidator";
-        internal const string _112_USB_CEIP = "UsbCeip";
-        internal const string _113_DISK_DATA_COLLECTOR = "Microsoft-Windows-DiskDiagnosticDataCollector";
-        internal const string _114_MAPS_TOAST = "MapsToastTask";
+        internal const string _109_DATA_UPDATER_TASK = "ProgramDataUpdater";
+        internal const string _109_DATA_UPDATER_TASK_PATH = @"Microsoft\Windows\Application Experience";
+
+        internal const string _110_PROXY_TASK = "Proxy";
+        internal const string _110_PROXY_TASK_PATH = @"Microsoft\Windows\Autochk";
+        internal const string _111_CONS_TASK = "Consolidator";
+        internal const string _112_USB_CEIP_TASK = "UsbCeip";
+        internal const string _113_DISK_DATA_TASK = "Microsoft-Windows-DiskDiagnosticDataCollector";
+        internal const string _113_DISK_DATA_TASK_PATH = @"Microsoft\Windows\DiskDiagnostic";
+        internal const string _114_MAPS_TOAST_TASK = "MapsToastTask";
         internal const string _115_MAPS_UPDATE = "MapsUpdateTask";
-        internal const string _116_FAMILY_MONITOR = "FamilySafetyMonitor";
-        internal const string _117_XBOX_SAVE = "XblGameSaveTask";
+        internal const string _116_FAMILY_MONITOR_TASK = "FamilySafetyMonitor";
+        internal const string _116_FAMILY_MONITOR_TASK_PATH = @"Microsoft\Windows\Shell";
+        internal const string _117_XBOX_SAVE_TASK = "XblGameSaveTask";
+        internal const string _117_XBOX_SAVE_TASK_PATH = @"Microsoft\XblGameSave";
         internal const string _118_OPT_OUT = "OptOut";
         internal const byte _118_OPT_OUT_DEFAULT_VALUE = 1;
         internal const string _118_USER_ARSO_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\UserARSO";
@@ -113,6 +116,7 @@ namespace SophiApp.Customisations
         internal const string ADVANCED_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced";
         internal const string ALLOW_TELEMETRY = "AllowTelemetry";
         internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint";
+        internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
         internal const string CURRENT_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
         internal const string DATA = "Data";
@@ -129,6 +133,7 @@ namespace SophiApp.Customisations
         internal const byte LAUNCH_PC_VALUE = 1;
         internal const byte LAUNCH_QA_VALUE = 2;
         internal const string LAUNCH_TO = "LaunchTo";
+        internal const string MAPS_TASK_PATH = @"Microsoft\Windows\Maps";
         internal const string MAX_TELEMETRY_ALLOWED = "MaxTelemetryAllowed";
         internal const byte MIN_ENT_TELEMETRY_VALUE = 0;
         internal const byte MIN_TELEMETRY_VALUE = 1;
@@ -141,7 +146,6 @@ namespace SophiApp.Customisations
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
         internal const string START_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
         internal const string STATUS_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager";
-        internal const TaskState TASK_STATE_READY = TaskState.Ready;
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";

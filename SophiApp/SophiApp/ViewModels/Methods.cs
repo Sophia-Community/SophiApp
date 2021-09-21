@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
-using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.Models;
 using System;
@@ -12,7 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Debugger = SophiApp.Helpers.Debugger;
+using Debugger = SophiApp.Helpers.DebugHelper;
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels

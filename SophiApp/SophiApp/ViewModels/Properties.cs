@@ -10,7 +10,7 @@ namespace SophiApp.ViewModels
     {
         private bool advancedSettingsVisibility;
         private List<CustomActionDTO> customActions;
-        private Debugger debugger;
+        private DebugHelper debugger;
         private bool debugMode;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;

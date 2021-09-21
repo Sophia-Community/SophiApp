@@ -19,6 +19,8 @@ namespace SophiApp.Helpers
 
         internal static int? GetNullableIntValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as int?;
 
+        internal static string GetStringValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as string;
+
         internal static object GetValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name);
 
         internal static bool KeyExist(RegistryHive hive, string path, string name) => !(GetKey(hive, path)?.GetValue(name) is null);

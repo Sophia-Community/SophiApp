@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
 namespace SophiApp.Helpers
@@ -18,10 +19,15 @@ namespace SophiApp.Helpers
         private const string REGISTRED_OWNER_NAME = "RegisteredOwner";
         private const int SMTO_ABORTIFHUNG = 0x0002;
         private const string TRAY_SETTINGS = "TraySettings";
+
         private const string UBR = "UBR";
+
         private const int WM_SETTINGCHANGE = 0x1a;
+
         private static readonly IntPtr hWnd = new IntPtr(65535);
+
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
+
         private static readonly string REGISTRY_CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
 
         // Virtual key ID of the F5 in File Explorer
@@ -41,11 +47,15 @@ namespace SophiApp.Helpers
 
         internal static int GetBuild() => Environment.OSVersion.Version.Build;
 
+        internal static string GetCurrentCultureName() => CultureInfo.CurrentCulture.EnglishName;
+
         internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: DISPLAY_VERSION_NAME) as string;
 
         internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: EDITION_ID_NAME) as string;
 
         internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: PRODUCT_NAME) as string;
+
+        internal static string GetRegionName() => RegionInfo.CurrentRegion.EnglishName;
 
         internal static string GetRegisteredOrganization() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: REGISTRED_ORGANIZATION_NAME) as string;
 

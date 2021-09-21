@@ -1,14 +1,17 @@
 ﻿using Microsoft.Win32.TaskScheduler;
-using System.Linq;
 
 namespace SophiApp.Helpers
 {
     internal class ScheduledTaskHelper
     {
-        internal static void DisableTask(string name) => GetTask(name).Enabled = false;
+        private static Task GetTask(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}");
 
-        internal static void EnableTask(string name) => GetTask(name).Enabled = true;
+        internal static void ChangeTaskState(string taskPath, string taskName, bool enable) => GetTask(taskPath, taskName).Enabled = enable;
 
-        internal static Task GetTask(string name) => TaskService.Instance.RootFolder.EnumerateTasks(task => task.Name.Equals(name), true).FirstOrDefault();
+        internal static void DisableTask(string taskPath, string taskName) => GetTask(taskPath, taskName).Enabled = false;
+
+        internal static void EnableTask(string taskPath, string taskName) => GetTask(taskPath, taskName).Enabled = true;
+
+        internal static TaskState GetTaskState(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}")?.State ?? throw new SheduledTaskNotFoundException(taskName);
     }
 }

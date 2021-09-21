@@ -33,6 +33,21 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class SheduledTaskNotFoundException : Exception
+    {
+        protected SheduledTaskNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+
+        public SheduledTaskNotFoundException(string name) : base($"Scheduled task {name} wasn't found on OS")
+        {
+        }
+
+        public SheduledTaskNotFoundException(string name, Exception innerException) : base($"Sheduled task {name} wasn't found on OS", innerException)
+        {
+        }
+    }
+
     internal class UwpAppNotFoundException : Exception
     {
         protected UwpAppNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)

@@ -54,16 +54,16 @@ namespace SophiApp.Customisations
 
             if (IsActive)
             {
-                ScheduledTaskHelper.EnableTask(Const._104_QUEUE_TASK);
+                ScheduledTaskHelper.EnableTask(Const._104_QUEUE_TASK_PATH, Const._104_QUEUE_TASK);
                 RegHelper.DeleteKey(RegistryHive.CurrentUser, Const._104_WER_PATH, Const._104_DISABLED);
                 ServiceHelper.SetStartMode(werService, ServiceStartMode.Manual);
                 werService.Start();
                 return;
             }
 
-            if (!OsHelper.IsEdition(Const._104_CORE))
+            if (OsHelper.IsEdition(Const._104_CORE).Invert())
             {
-                ScheduledTaskHelper.DisableTask(Const._104_QUEUE_TASK);
+                ScheduledTaskHelper.DisableTask(Const._104_QUEUE_TASK_PATH, Const._104_QUEUE_TASK);
                 RegHelper.SetValue(RegistryHive.CurrentUser, Const._104_WER_PATH, Const._104_DISABLED, Const._104_DISABLED_DEFAULT_VALUE, RegistryValueKind.DWord);
             }
 
@@ -75,23 +75,23 @@ namespace SophiApp.Customisations
 
         public static void _107(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD, Const.DISABLED_VALUE, RegistryValueKind.DWord);
 
-        public static void _109(bool IsActive) => ScheduledTaskHelper.GetTask(Const._109_PRO_DATA_UPD).Enabled = IsActive;
+        public static void _109(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const._109_DATA_UPDATER_TASK_PATH, Const._109_DATA_UPDATER_TASK, IsActive);
 
-        public static void _110(bool IsActive) => ScheduledTaskHelper.GetTask(Const._110_PROXY).Enabled = IsActive;
+        public static void _110(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const._110_PROXY_TASK_PATH, Const._110_PROXY_TASK, IsActive);
 
-        public static void _111(bool IsActive) => ScheduledTaskHelper.GetTask(Const._111_CONS).Enabled = IsActive;
+        public static void _111(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const.CEIP_TASK_PATH, Const._111_CONS_TASK, IsActive);
 
-        public static void _112(bool IsActive) => ScheduledTaskHelper.GetTask(Const._112_USB_CEIP).Enabled = IsActive;
+        public static void _112(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const.CEIP_TASK_PATH, Const._112_USB_CEIP_TASK, IsActive);
 
-        public static void _113(bool IsActive) => ScheduledTaskHelper.GetTask(Const._113_DISK_DATA_COLLECTOR).Enabled = IsActive;
+        public static void _113(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const._113_DISK_DATA_TASK_PATH, Const._113_DISK_DATA_TASK, IsActive);
 
-        public static void _114(bool IsActive) => ScheduledTaskHelper.GetTask(Const._114_MAPS_TOAST).Enabled = IsActive;
+        public static void _114(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const.MAPS_TASK_PATH, Const._114_MAPS_TOAST_TASK, IsActive);
 
-        public static void _115(bool IsActive) => ScheduledTaskHelper.GetTask(Const._115_MAPS_UPDATE).Enabled = IsActive;
+        public static void _115(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const.MAPS_TASK_PATH, Const._115_MAPS_UPDATE, IsActive);
 
-        public static void _116(bool IsActive) => ScheduledTaskHelper.GetTask(Const._116_FAMILY_MONITOR).Enabled = IsActive;
+        public static void _116(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const._116_FAMILY_MONITOR_TASK_PATH, Const._116_FAMILY_MONITOR_TASK, IsActive);
 
-        public static void _117(bool IsActive) => ScheduledTaskHelper.GetTask(Const._117_XBOX_SAVE).Enabled = IsActive;
+        public static void _117(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(Const._117_XBOX_SAVE_TASK_PATH, Const._117_XBOX_SAVE_TASK, IsActive);
 
         public static void _118(bool IsActive)
         {
