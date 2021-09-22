@@ -46,7 +46,7 @@ namespace SophiApp.Customisations
 
         public static bool _107() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD).HasNullOrValue(Const.DISABLED_VALUE);
 
-        public static bool _109() => ScheduledTaskHelper.GetTaskState(Const._109_DATA_UPDATER_TASK_PATH, Const._109_DATA_UPDATER_TASK) is TaskState.Ready; //TODO: CustomisationStatus - GetTask need refactoring.
+        public static bool _109() => ScheduledTaskHelper.GetTaskState(Const._109_DATA_UPDATER_TASK_PATH, Const._109_DATA_UPDATER_TASK) is TaskState.Ready;
 
         public static bool _110() => ScheduledTaskHelper.GetTaskState(Const._110_PROXY_TASK_PATH, Const._110_PROXY_TASK) is TaskState.Ready;
 
@@ -139,12 +139,30 @@ namespace SophiApp.Customisations
         public static bool _215() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.STATUS_MANAGER_PATH, Const.ENTHUSIAST_MODE)
                                               .HasNullOrValue(Const.DIALOG_COMPACT_VALUE);
 
-        public static bool _216() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._216_RIBBON_EXPLORER, Const._216_TABLET_MODE_OFF)
-                                              .HasNullOrValue(Const._216_MINIMIZED_VALUE);
+        public static bool _216() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._216_RIBBON_EXPLORER_PATH, Const._216_TABLET_MODE_OFF)
+                                              .HasNullOrValue(Const._216_MINIMIZED_VALUE).Invert();
 
         public static bool _217() => RegHelper.KeyExist(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)
                                      ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)[4] == Const._217_SHELL_ENABLED_VALUE
                                      : throw new RegistryKeyNotExist($"{RegistryHive.CurrentUser}\\{Const.CURRENT_EXPLORER_PATH}\\{Const._217_SHELL_STATE}");
+
+        public static bool _218() => RegHelper.GetStringValue(RegistryHive.LocalMachine, Const._218_3D_OBJECT_PROPERTY_PATH, Const._218_PC_POLICY) == null
+                                     || RegHelper.GetStringValue(RegistryHive.LocalMachine, Const._218_3D_OBJECT_PROPERTY_PATH, Const._218_PC_POLICY) != Const._218_3D_OBJECT_HIDE_VALUE;
+
+        public static bool _219() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._219_SHOW_RECENT)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _220() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._220_SHOW_FREQUENT)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _221() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._221_SHOW_TASK_VIEW)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _222() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._222_PEOPLE_EXPLORER_PATH, Const._222_PEOPLE_BAND)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _223() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._223_SHOW_SECONDS)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 

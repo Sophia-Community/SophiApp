@@ -12,7 +12,6 @@
         internal const string _104_WER_SERVICE = "WerSvc";
         internal const string _109_DATA_UPDATER_TASK = "ProgramDataUpdater";
         internal const string _109_DATA_UPDATER_TASK_PATH = @"Microsoft\Windows\Application Experience";
-
         internal const string _110_PROXY_TASK = "Proxy";
         internal const string _110_PROXY_TASK_PATH = @"Microsoft\Windows\Autochk";
         internal const string _111_CONS_TASK = "Consolidator";
@@ -57,11 +56,20 @@
         internal const string _212_SNAP_ASSIST = "SnapAssist";
         internal const byte _216_EXPANDED_VALUE = 0;
         internal const byte _216_MINIMIZED_VALUE = 1;
-        internal const string _216_RIBBON_EXPLORER = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ribbon";
+        internal const string _216_RIBBON_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ribbon";
         internal const string _216_TABLET_MODE_OFF = "MinimizedStateTabletModeOff";
         internal const byte _217_SHELL_DISABLED_VALUE = 55;
         internal const byte _217_SHELL_ENABLED_VALUE = 51;
         internal const string _217_SHELL_STATE = "ShellState";
+        internal const string _218_3D_OBJECT_HIDE_VALUE = "Hide";
+        internal const string _218_3D_OBJECT_PROPERTY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}\PropertyBag";
+        internal const string _218_PC_POLICY = "ThisPCPolicy";
+        internal const string _219_SHOW_RECENT = "ShowRecent";
+        internal const string _220_SHOW_FREQUENT = "ShowFrequent";
+        internal const string _221_SHOW_TASK_VIEW = "ShowTaskViewButton";
+        internal const string _222_PEOPLE_BAND = "PeopleBand";
+        internal const string _222_PEOPLE_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People";
+        internal const string _223_SHOW_SECONDS = "ShowSecondsInSystemClock";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -146,6 +154,10 @@
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
         internal const string START_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
         internal const string STATUS_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager";
+        internal const byte TASKBAR_SEARCH_BOX_VALUE = 2;
+        internal const byte TASKBAR_SEARCH_HIDE_VALUE = 0;
+        internal const byte TASKBAR_SEARCH_ICON_VALUE = 1;
+        internal const string TASKBAR_SEARCH_MODE = "SearchboxTaskbarMode";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";

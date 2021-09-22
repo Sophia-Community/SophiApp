@@ -247,7 +247,7 @@ namespace SophiApp.Customisations
                                                                             RegistryValueKind.DWord);
 
         public static void _216(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        Const._216_RIBBON_EXPLORER,
+                                                                        Const._216_RIBBON_EXPLORER_PATH,
                                                                             Const._216_TABLET_MODE_OFF,
                                                                                 IsActive ? Const._216_MINIMIZED_VALUE : Const._216_EXPANDED_VALUE,
                                                                                     RegistryValueKind.DWord);
@@ -258,6 +258,47 @@ namespace SophiApp.Customisations
             shellState[4] = IsActive ? Const._217_SHELL_ENABLED_VALUE : Const._217_SHELL_DISABLED_VALUE;
             RegHelper.SetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE, shellState, RegistryValueKind.Binary);
         }
+
+        public static void _218(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, Const._218_3D_OBJECT_PROPERTY_PATH, Const._218_PC_POLICY);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, Const._218_3D_OBJECT_PROPERTY_PATH, Const._218_PC_POLICY, Const._218_3D_OBJECT_HIDE_VALUE);
+        }
+
+        public static void _219(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.CURRENT_EXPLORER_PATH,
+                                                                            Const._219_SHOW_RECENT,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _220(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.CURRENT_EXPLORER_PATH,
+                                                                            Const._220_SHOW_FREQUENT,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _221(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.ADVANCED_EXPLORER_PATH,
+                                                                            Const._221_SHOW_TASK_VIEW,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _222(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const._222_PEOPLE_EXPLORER_PATH,
+                                                                            Const._222_PEOPLE_BAND,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _223(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.ADVANCED_EXPLORER_PATH,
+                                                                            Const._223_SHOW_SECONDS,
+                                                                                IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _800(bool IsActive)
         {

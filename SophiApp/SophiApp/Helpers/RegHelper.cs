@@ -23,12 +23,12 @@ namespace SophiApp.Helpers
 
         internal static object GetValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name);
 
-        internal static bool KeyExist(RegistryHive hive, string path, string name) => !(GetKey(hive, path)?.GetValue(name) is null);
+        internal static bool KeyExist(RegistryHive hive, string path, string name) => (GetKey(hive, path)?.GetValue(name) is null).Invert();
 
         internal static void SetValue(RegistryHive hive, string path, string name, object value) => SetKey(hive, path).SetValue(name, value);
 
         internal static void SetValue(RegistryHive hive, string path, string name, object value, RegistryValueKind type) => SetKey(hive, path).SetValue(name, value, type);
 
-        internal static bool SubKeyExist(RegistryHive hive, string path) => !(GetKey(hive, path) is null);
+        internal static bool SubKeyExist(RegistryHive hive, string path) => (GetKey(hive, path) is null).Invert();
     }
 }
