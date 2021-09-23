@@ -24,7 +24,7 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.AddRecord($"Started applying {customActions.Count} setting(s)");
+                debugger.StatusEntry($"Started applying {customActions.Count} setting(s)");
                 var stopwatch = Stopwatch.StartNew();
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetLoadingPanelVisibility();
@@ -34,12 +34,11 @@ namespace SophiApp.ViewModels
                         try
                         {
                             action.Invoke();
-                            debugger.AddRecord($"Customization action {action.Id} with parameter {action.Parameter} completed successfully");
+                            debugger.ActionEntry(action.Id, action.Parameter);
                         }
                         catch (Exception e)
                         {
-                            debugger.AddRecord($"Customization action {action.Id} with parameter {action.Parameter} caused an error");
-                            debugger.AddRecord($"Error information: \"{e.Message}\"");
+                            debugger.Exception($"Customization action {action.Id} with parameter {action.Parameter} caused an error", e);
                         }
                     });
 
@@ -51,7 +50,7 @@ namespace SophiApp.ViewModels
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 stopwatch.Stop();
-                debugger.AddRecord($"It took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds to apply the settings");
+                debugger.StopApplying(stopwatch);
             });
         }
 
@@ -76,7 +75,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var link = args as string;
-                debugger.AddRecord($"Clicked link: \"{link}\"");
+                debugger.InfoEntry($"Clicked link: \"{link}\"");
                 Process.Start(link);
             });
             MouseHelper.ShowWaitCursor(show: false);
@@ -116,20 +115,20 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.AddRecord("Started initialization texted elements");
+                debugger.StatusEntry("Started initialization texted elements");
                 var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
-                                            .Select(dto => ElementsFabric.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
+                                            .Select(dto => FabricHelper.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
                                                         statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
                                             .ToList();
                 stopwatch.Stop();
-                debugger.AddRecord($"The collection initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
+                debugger.StopInit(stopwatch);
             });
         }
 
-        private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > AppData.Version && !dto.prerelease && !dto.draft;
+        private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > DataHelper.Version && !dto.prerelease && !dto.draft;
 
-        private bool IsSupportedOs() => OsHelper.GetProductName().Contains("Windows 10") && OsHelper.GetBuild() >= MinimalOsBuild;
+        private bool IsSupportedOs() => OsHelper.GetProductName().Contains(Window10) && OsHelper.GetBuild() >= MinimalOsBuild;
 
         private async void LocalizationChangeAsync(object args)
         {
@@ -150,15 +149,12 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.AddRecord($"An error occured in element: {element.Id}");
-                debugger.AddRecord($"Error information: \"{e.Message}\"");
-                debugger.AddRecord($"The class that caused the error: \"{e.TargetSite.DeclaringType.FullName}\"");
-                debugger.AddRecord($"The method that caused the error: \"{e.TargetSite.Name}\"");
+                debugger.Exception($"An error occured in element: {element.Id}", e);
                 element.Status = ElementStatus.DISABLED;
             });
         }
 
-        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.AddRecord($"The element {element.Id} has changed status to: {element.Status}");
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.ElementChanged(element.Id, element.Status);
 
         private async void RadioGroupClickedAsync(object args)
         {
@@ -173,7 +169,7 @@ namespace SophiApp.ViewModels
 
         private async void ResetTextedElementsStateAsync(object args)
         {
-            debugger.AddRecord("Started reset texted elements status");
+            debugger.StatusEntry("Started reset texted elements status");
             var stopwatch = Stopwatch.StartNew();
             SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetLoadingPanelVisibility();
@@ -186,7 +182,7 @@ namespace SophiApp.ViewModels
             SetLoadingPanelVisibility();
             SetControlsHitTest();
             stopwatch.Stop();
-            debugger.AddRecord($"The collection resetting took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
+            debugger.StopInit(stopwatch);
         }
 
         private async void SaveDebugLogAsync(object args)
@@ -195,7 +191,7 @@ namespace SophiApp.ViewModels
             {
                 try
                 {
-                    debugger.Save(AppData.DebugFile);
+                    debugger.Save(DataHelper.DebugFile);
                 }
                 catch (Exception)
                 {
@@ -265,39 +261,34 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                HttpWebRequest request = WebRequest.CreateHttp(AppData.GitHubApiReleases);
-                request.UserAgent = AppData.UserAgent;
+                HttpWebRequest request = WebRequest.CreateHttp(DataHelper.GitHubApiReleases);
+                request.UserAgent = DataHelper.UserAgent;
 
                 try
                 {
                     var response = request.GetResponse();
-                    debugger.AddRecord(response is null ? "When checking for an update, no response was received from the update server" : "When checking for an update, a response was received from the update server");
+                    debugger.UpdateResponseIsNull(response is null);
                     using (Stream dataStream = response.GetResponseStream())
                     {
                         StreamReader reader = new StreamReader(dataStream);
                         var serverResponse = reader.ReadToEnd();
                         var release = JsonConvert.DeserializeObject<List<ReleaseDTO>>(serverResponse).FirstOrDefault();
-                        debugger.AddRecord($"New version {release.tag_name} is available");
-                        debugger.AddRecord($"Version {release.tag_name} is prerelease: {release.prerelease}");
-                        debugger.AddRecord($"Version {release.tag_name} is draft: {release.draft}");
+                        debugger.HasRelease(release.tag_name, release.prerelease, release.draft);
 
                         if (IsNewVersion(release))
                         {
-                            debugger.AddRecord("The update can be done");
+                            debugger.InfoEntry("The update can be done");
                             SetUpdateAvailableProperty(true);
-                            Toaster.ShowUpdateToast(currentVersion: AppData.Version.ToString(), newVersion: release.tag_name);
+                            ToastHelper.ShowUpdateToast(currentVersion: DataHelper.Version.ToString(), newVersion: release.tag_name);
                             return;
                         }
 
-                        debugger.AddRecord("No update required");
+                        debugger.InfoEntry("No update required");
                     }
                 }
                 catch (Exception e)
                 {
-                    debugger.AddRecord("An error occurred while checking for an update");
-                    debugger.AddRecord($"Error information: \"{e.Message}\"");
-                    debugger.AddRecord($"The class that caused the error: \"{e.TargetSite.DeclaringType.FullName}\"");
-                    debugger.AddRecord($"The method that caused the error: \"{e.TargetSite.Name}\"");
+                    debugger.Exception("An error occurred while checking for an update", e);
                 }
             });
         }
@@ -307,7 +298,7 @@ namespace SophiApp.ViewModels
             if (IsSupportedOs())
             {
                 MouseHelper.ShowWaitCursor(show: true);
-                //await UpdateIsAvailableAsync();
+                await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);

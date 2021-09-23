@@ -1,19 +1,23 @@
-﻿using System;
+﻿using SophiApp.Commons;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace SophiApp.Helpers
 {
     internal class DebugHelper
     {
-        private List<string> Log;
+        private List<string> ErrorLog = new List<string>();
+        private List<string> InfoLog;
+        private List<string> StatusLog = new List<string>();
 
         public DebugHelper(string language, string theme)
         {
-            Log = new List<string>
+            InfoLog = new List<string>
             {
-                $"Application version: {AppData.Version}",
-                $"Application launch folder: \"{AppData.StartupFolder}\"",
+                $"Application version: {DataHelper.Version}",
+                $"Application launch folder: \"{DataHelper.StartupFolder}\"",
                 $"Application localization: {language}",
                 $"Application theme: {theme}",
                 $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()} build: {OsHelper.GetVersion()}",
@@ -28,14 +32,53 @@ namespace SophiApp.Helpers
             };
         }
 
-        private string GetDateTime()
+        private string GetDateTimeString()
         {
             var dateTime = DateTime.Now;
             return $"{dateTime.ToShortDateString()}\t{dateTime.ToLongTimeString()}\t";
         }
 
-        internal void AddRecord(string record) => Log.Add($"{GetDateTime()}{record}");
+        internal void ActionEntry(uint id, bool parameter) => StatusEntry($"Customization action {id} with parameter {parameter} completed successfully");
 
-        internal void Save(string path) => File.WriteAllLines(path, Log);
+        internal void ElementChanged(uint id, ElementStatus status) => StatusEntry($"The element {id} has changed status to: {status}");
+
+        internal void Exception(string message, Exception e)
+        {
+            var dateTime = GetDateTimeString();
+            ErrorLog.AddRange(new List<string>()
+            {
+                $"{dateTime}{message}",
+                $"{dateTime}Error information: \"{e.Message}\"",
+                $"{dateTime}The class that caused the error: \"{e.TargetSite.DeclaringType.FullName}\"",
+                $"{dateTime}The method that caused the error: \"{e.TargetSite.Name}\""
+            });
+        }
+
+        internal void HasRelease(string version, bool prerelease, bool draft) => InfoLog.AddRange(new List<string>()
+        {
+            $"New version {version} is available",
+            $"Version {version} is prerelease: {prerelease}",
+            $"Version {version} is draft: {draft}"
+        });
+
+        internal void InfoEntry(string record) => InfoLog.Add(record);
+
+        internal void Save(string path)
+        {
+            ErrorLog.Split();
+            StatusLog.Split();
+            InfoLog.AddRange(ErrorLog);
+            InfoLog.AddRange(StatusLog);
+            File.WriteAllLines(path, InfoLog);
+        }
+
+        internal void StatusEntry(string record) => StatusLog.Add($"{GetDateTimeString()}{record}");
+
+        internal void StopApplying(Stopwatch stopwatch) => StatusEntry($"It took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds to apply the setting(s)");
+
+        internal void StopInit(Stopwatch stopwatch) => StatusEntry($"The collection initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
+
+        internal void UpdateResponseIsNull(bool isNull) => InfoEntry(isNull ? "When checking for an update, no response was received from the update server"
+                                                                            : "When checking for an update, a response was received from the update server");
     }
 }

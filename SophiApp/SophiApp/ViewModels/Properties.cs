@@ -27,7 +27,7 @@ namespace SophiApp.ViewModels
             set
             {
                 advancedSettingsVisibility = value;
-                debugger.AddRecord($"Advanced settings is visible: {value}");
+                debugger.StatusEntry($"Advanced settings is visible: {value}");
                 OnPropertyChanged(AdvancedSettingsVisibilityPropertyName);
             }
         }
@@ -37,7 +37,7 @@ namespace SophiApp.ViewModels
             get => themesHelper.SelectedTheme;
             private set
             {
-                debugger.AddRecord($"Theme selected: {value.Alias}");
+                debugger.StatusEntry($"Theme selected: {value.Alias}");
                 OnPropertyChanged(AppSelectedThemePropertyName);
             }
         }
@@ -52,7 +52,7 @@ namespace SophiApp.ViewModels
             set
             {
                 debugMode = value;
-                debugger.AddRecord($"Debug mode is: {value}");
+                debugger.StatusEntry($"Debug mode is: {value}");
                 OnPropertyChanged(DebugModePropertyName);
             }
         }
@@ -82,7 +82,7 @@ namespace SophiApp.ViewModels
             get => localizationsHelper.Selected;
             private set
             {
-                debugger.AddRecord($"Localization selected: {value.Language}");
+                debugger.StatusEntry($"Localization selected: {value.Language}");
                 OnPropertyChanged(LocalizationPropertyName);
             }
         }
@@ -117,7 +117,7 @@ namespace SophiApp.ViewModels
             private set
             {
                 visibleViewByTag = value;
-                debugger.AddRecord($"Active view is: {value}");
+                debugger.StatusEntry($"Active view is: {value}");
                 OnPropertyChanged(VisibleViewByTagPropertyName);
             }
         }

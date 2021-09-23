@@ -30,5 +30,7 @@ namespace SophiApp.Helpers
         internal static void SetValue(RegistryHive hive, string path, string name, object value, RegistryValueKind type) => SetKey(hive, path).SetValue(name, value, type);
 
         internal static bool SubKeyExist(RegistryHive hive, string path) => (GetKey(hive, path) is null).Invert();
+
+        internal static bool TryKeyExist(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) is null ? throw new RegistryKeyNotFound($@"{hive}\{path}\{name}") : true; //TODO: RegHelper - Remove TryKeyExist before release
     }
 }

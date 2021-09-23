@@ -18,17 +18,17 @@ namespace SophiApp.Helpers
         }
     }
 
-    internal class RegistryKeyNotExist : Exception
+    internal class RegistryKeyNotFound : Exception
     {
-        protected RegistryKeyNotExist(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected RegistryKeyNotFound(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
 
-        public RegistryKeyNotExist(string key) : base($"The registry key \"{key}\" is not available")
+        public RegistryKeyNotFound(string key) : base($"The registry key \"{key}\" wasn't found")
         {
         }
 
-        public RegistryKeyNotExist(string key, Exception inner) : base($"The registry key \"{key}\" is not available", inner)
+        public RegistryKeyNotFound(string key, Exception inner) : base($"The registry key \"{key}\" wasn't found", inner)
         {
         }
     }

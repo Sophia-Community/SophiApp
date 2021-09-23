@@ -23,5 +23,15 @@ namespace SophiApp.Helpers
         public static bool Invert(this bool value) => !value;
 
         public static void RemoveDataObject(this List<CustomActionDTO> list, uint id) => list.Remove(list.Find(action => action.Id == id));
+
+        public static void Split(this List<string> list)
+        {
+            if (list.Last() == string.Empty)
+            {
+                return;
+            }
+
+            list.Add(string.Empty);
+        }
     }
 }

@@ -4,7 +4,7 @@ using System;
 
 namespace SophiApp.Helpers
 {
-    internal class ElementsFabric
+    internal class FabricHelper
     {
         internal static TextedElement CreateChildElement(TextedChildDTO dataObject, Action<TextedElement, Exception> errorHandler,
                                                          EventHandler<TextedElement> statusHandler, UILanguage language)

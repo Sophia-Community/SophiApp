@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace SophiApp.Helpers
 {
-    internal class AppData
+    internal class DataHelper
     {
         private const string APP_NAME = "SophiApp";
         private const string CODER_LINK = "https://github.com/Inestic";

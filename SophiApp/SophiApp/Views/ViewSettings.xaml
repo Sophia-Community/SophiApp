@@ -66,7 +66,7 @@
 
                             <controls:GitHubHyperLink HorizontalAlignment="Left"
                                                       Command="{Binding HyperLinkClickedCommand}"
-                                                      CommandParameter="{x:Static helpers:AppData.GitHubRepo}"
+                                                      CommandParameter="{x:Static helpers:DataHelper.GitHubRepo}"
                                                       Margin="{StaticResource BlockIndent}" />
 
                             <TextBlock Style="{DynamicResource SubHeaderText}"
@@ -82,7 +82,7 @@
                                            Text=":" />
 
                                 <TextBlock Style="{DynamicResource NormalText}"
-                                           Text="{Binding Source={x:Static helpers:AppData.Version}}"
+                                           Text="{Binding Source={x:Static helpers:DataHelper.Version}}"
                                            Margin="3, 0, 0, 0" />
                             </StackPanel>
 
@@ -91,7 +91,7 @@
                                                    Margin="{StaticResource BlockIndent}"
                                                    HorizontalAlignment="Left"
                                                    Command="{Binding HyperLinkClickedCommand}"
-                                                   CommandParameter="{x:Static helpers:AppData.GitHubReleasesPage}" />
+                                                   CommandParameter="{x:Static helpers:DataHelper.GitHubReleasesPage}" />
 
                             <TextBlock Style="{DynamicResource SubHeaderText}"
                                        Text="{DynamicResource Localization.Settings}"
@@ -167,7 +167,7 @@
                                                 IconMargin="10, 0, 0, 12"
                                                 Margin="{StaticResource ActorLinkIndent}"
                                                 Command="{Binding HyperLinkClickedCommand}"
-                                                CommandParameter="{x:Static helpers:AppData.LeaderLink}" />
+                                                CommandParameter="{x:Static helpers:DataHelper.LeaderLink}" />
 
                             <controls:ActorLink Role="{DynamicResource Localization.Settings.Designer}"
                                                 Actor="{DynamicResource Localization.Settings.Designer.Name}"
@@ -175,7 +175,7 @@
                                                 IconMargin="10, 0, 0, 5"
                                                 Margin="{StaticResource ActorLinkIndent}"
                                                 Command="{Binding HyperLinkClickedCommand}"
-                                                CommandParameter="{x:Static helpers:AppData.DesignerLink}" />
+                                                CommandParameter="{x:Static helpers:DataHelper.DesignerLink}" />
 
                             <controls:ActorLink Role="{DynamicResource Localization.Settings.Coder}"
                                                 Actor="{DynamicResource Localization.Settings.Coder.Name}"
@@ -183,7 +183,7 @@
                                                 IconMargin="10, 0, 0, 20"
                                                 Margin="{StaticResource ActorLinkIndent}"
                                                 Command="{Binding HyperLinkClickedCommand}"
-                                                CommandParameter="{x:Static helpers:AppData.CoderLink}" />
+                                                CommandParameter="{x:Static helpers:DataHelper.CoderLink}" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

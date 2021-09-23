@@ -175,12 +175,12 @@
     <Compile Include="Customisations\CustomisationConstants.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
-    <Compile Include="Helpers\AppData.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CustomisationsHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
-    <Compile Include="Helpers\ElementsFabric.cs" />
+    <Compile Include="Helpers\FabricHelper.cs" />
     <Compile Include="Helpers\ExceptionsHelper.cs" />
     <Compile Include="Helpers\ExtensionsHelper.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
@@ -192,7 +192,7 @@
     <Compile Include="Helpers\ScheduledTaskHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
-    <Compile Include="Helpers\Toaster.cs" />
+    <Compile Include="Helpers\ToastHelper.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\IElement.cs" />

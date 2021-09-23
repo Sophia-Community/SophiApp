@@ -42,7 +42,7 @@ namespace SophiApp.Models
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
             CustomisationStatus = customisationStatus;
-            ChildElements = ChildsDTO.Select(child => ElementsFabric.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
+            ChildElements = ChildsDTO.Select(child => FabricHelper.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
             ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
             ChangeLanguage(language);
             base.GetCustomisationStatus();

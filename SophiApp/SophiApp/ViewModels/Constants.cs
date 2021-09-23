@@ -14,6 +14,7 @@
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string ViewsHitTestPropertyName = "ViewsHitTest";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
+        private const string Window10 = "Windows 10";
         private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
     }
 }

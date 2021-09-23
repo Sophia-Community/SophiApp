@@ -254,9 +254,10 @@ namespace SophiApp.Customisations
 
         public static void _217(bool IsActive)
         {
-            var shellState = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE);
-            shellState[4] = IsActive ? Const._217_SHELL_ENABLED_VALUE : Const._217_SHELL_DISABLED_VALUE;
-            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE, shellState, RegistryValueKind.Binary);
+            throw new RegistryKeyNotFound($"{RegistryHive.CurrentUser}\\{Const.CURRENT_EXPLORER_PATH}\\{Const._217_SHELL_STATE}");
+            //var shellState = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE);
+            //shellState[4] = IsActive ? Const._217_SHELL_ENABLED_VALUE : Const._217_SHELL_DISABLED_VALUE;
+            //RegHelper.SetValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE, shellState, RegistryValueKind.Binary);
         }
 
         public static void _218(bool IsActive)
@@ -299,6 +300,24 @@ namespace SophiApp.Customisations
                                                                             Const._223_SHOW_SECONDS,
                                                                                 IsActive ? Const.ENABLED_VALUE : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
+
+        public static void _225(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                Const.TASKBAR_SEARCH_PATH,
+                                                                    Const.TASKBAR_SEARCH_MODE,
+                                                                        Const.TASKBAR_SEARCH_HIDE_VALUE,
+                                                                            RegistryValueKind.DWord);
+
+        public static void _226(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                Const.TASKBAR_SEARCH_PATH,
+                                                                    Const.TASKBAR_SEARCH_MODE,
+                                                                        Const.TASKBAR_SEARCH_ICON_VALUE,
+                                                                            RegistryValueKind.DWord);
+
+        public static void _227(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                Const.TASKBAR_SEARCH_PATH,
+                                                                    Const.TASKBAR_SEARCH_MODE,
+                                                                        Const.TASKBAR_SEARCH_BOX_VALUE,
+                                                                            RegistryValueKind.DWord);
 
         public static void _800(bool IsActive)
         {

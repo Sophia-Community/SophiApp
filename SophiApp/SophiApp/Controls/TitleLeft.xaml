@@ -33,7 +33,7 @@
                   MouseLeftButtonDown="TitleLeft_MouseLeftButtonDown">
                 <StackPanel>
                     <Ellipse />
-                    <TextBlock Text="{Binding Path=(helpers:AppData.AppName)}"
+                    <TextBlock Text="{Binding Path=(helpers:DataHelper.AppName)}"
                        Style="{DynamicResource SmallText}"
                        Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                        VerticalAlignment="Center"
