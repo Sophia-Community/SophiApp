@@ -44,7 +44,7 @@ namespace SophiApp.Customisations
 
         public static bool _106() => _107().Invert();
 
-        public static bool _107() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD).HasNullOrValue(Const.DISABLED_VALUE);
+        public static bool _107() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.SIUF_PATH, Const.SIUF_PERIOD) == Const.DISABLED_VALUE;
 
         public static bool _109() => ScheduledTaskHelper.GetTaskState(Const._109_DATA_UPDATER_TASK_PATH, Const._109_DATA_UPDATER_TASK) is TaskState.Ready;
 
@@ -142,13 +142,9 @@ namespace SophiApp.Customisations
         public static bool _216() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._216_RIBBON_EXPLORER_PATH, Const._216_TABLET_MODE_OFF)
                                               .HasNullOrValue(Const._216_MINIMIZED_VALUE).Invert();
 
-        //public static bool _217() => RegHelper.KeyExist(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)
-        //                             ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)[4] == Const._217_SHELL_ENABLED_VALUE
-        //                             : throw new RegistryKeyNotFound($"{RegistryHive.CurrentUser}\\{Const.CURRENT_EXPLORER_PATH}\\{Const._217_SHELL_STATE}");
-
-        public static bool _217() => 2 > 4
+        public static bool _217() => RegHelper.KeyExist(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)
                                      ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)[4] == Const._217_SHELL_ENABLED_VALUE
-                                     : throw new RegistryKeyNotFound($"{RegistryHive.CurrentUser}\\{Const.CURRENT_EXPLORER_PATH}\\{Const._217_SHELL_STATE}");
+                                     : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{Const.CURRENT_EXPLORER_PATH}\{Const._217_SHELL_STATE}");
 
         public static bool _218() => RegHelper.GetStringValue(RegistryHive.LocalMachine, Const._218_3D_OBJECT_PROPERTY_PATH, Const._218_PC_POLICY) == null
                                      || RegHelper.GetStringValue(RegistryHive.LocalMachine, Const._218_3D_OBJECT_PROPERTY_PATH, Const._218_PC_POLICY) != Const._218_3D_OBJECT_HIDE_VALUE;
@@ -174,6 +170,26 @@ namespace SophiApp.Customisations
 
         public static bool _227() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.TASKBAR_SEARCH_PATH, Const.TASKBAR_SEARCH_MODE)
                                               .HasNullOrValue(Const.TASKBAR_SEARCH_BOX_VALUE);
+
+        public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._228_PEN_WORKSPACE_PATH, Const._228_PEN_WORKSPACE_VISIBILITY)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _229() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._229_AUTO_TRAY)
+                                              .HasNullOrValue(Const._229_AUTO_TRAY_HIDE_VALUE)
+                                              .Invert();
+
+        public static bool _230() => RegHelper.KeyExist(RegistryHive.CurrentUser, Const._230_STUCK_RECTS3_PATH, Const._230_STUCK_RECTS3_SETTINGS)
+                                     ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const._230_STUCK_RECTS3_PATH, Const._230_STUCK_RECTS3_SETTINGS)[9] == Const._230_STUCK_RECTS3_SHOW_VALUE
+                                     : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{Const._230_STUCK_RECTS3_PATH}\{Const._230_STUCK_RECTS3_SETTINGS}");
+
+        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._231_FEEDS_PATH, Const._231_SHELL_FEEDS)
+                                              .HasNullOrValue(Const._231_SHELL_FEEDS_ENABLED_VALUE);
+
+        public static bool _232() => RegHelper.TryKeyExist(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW)
+                                     && RegHelper.TryKeyExist(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE);
+
+        public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW) == Const.ALL_ITEMS_ICON_CATEGORY_VALUE
+                                     && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE) == Const.STARTUP_PAGE_ICON_VALUE;
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 

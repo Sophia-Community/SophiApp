@@ -11,6 +11,7 @@ namespace SophiApp.Helpers
         private List<string> ErrorLog = new List<string>();
         private List<string> InfoLog;
         private List<string> StatusLog = new List<string>();
+        private List<string> UpdateLog = new List<string>();
 
         public DebugHelper(string language, string theme)
         {
@@ -27,8 +28,7 @@ namespace SophiApp.Helpers
                 $"Current user: {Environment.UserName}",
                 $"User domain: {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}",
                 $"User culture: {OsHelper.GetCurrentCultureName()}",
-                $"User region: {OsHelper.GetRegionName()}",
-                string.Empty
+                $"User region: {OsHelper.GetRegionName()}"
             };
         }
 
@@ -48,29 +48,22 @@ namespace SophiApp.Helpers
             ErrorLog.AddRange(new List<string>()
             {
                 $"{dateTime}{message}",
-                $"{dateTime}Error information: \"{e.Message}\"",
-                $"{dateTime}The class that caused the error: \"{e.TargetSite.DeclaringType.FullName}\"",
-                $"{dateTime}The method that caused the error: \"{e.TargetSite.Name}\""
+                $"{dateTime}Error information: {e.Message}",
+                $"{dateTime}The class that caused the error: {e.TargetSite.DeclaringType.FullName}",
+                $"{dateTime}The method that caused the error: {e.TargetSite.Name}"
             });
         }
 
-        internal void HasRelease(string version, bool prerelease, bool draft) => InfoLog.AddRange(new List<string>()
+        internal void HasRelease(string version, bool prerelease, bool draft) => UpdateLog.AddRange(new List<string>()
         {
             $"New version {version} is available",
             $"Version {version} is prerelease: {prerelease}",
             $"Version {version} is draft: {draft}"
         });
 
-        internal void InfoEntry(string record) => InfoLog.Add(record);
-
-        internal void Save(string path)
-        {
-            ErrorLog.Split();
-            StatusLog.Split();
-            InfoLog.AddRange(ErrorLog);
-            InfoLog.AddRange(StatusLog);
-            File.WriteAllLines(path, InfoLog);
-        }
+        internal void Save(string path) => File.WriteAllLines(path, new List<string>().Merge(InfoLog).Merge(UpdateLog).Split(string.Empty)
+                                                                                      .Merge(ErrorLog).Split(string.Empty).Merge(StatusLog)
+                                                                                      .Split(string.Empty));
 
         internal void StatusEntry(string record) => StatusLog.Add($"{GetDateTimeString()}{record}");
 
@@ -78,7 +71,9 @@ namespace SophiApp.Helpers
 
         internal void StopInit(Stopwatch stopwatch) => StatusEntry($"The collection initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
 
-        internal void UpdateResponseIsNull(bool isNull) => InfoEntry(isNull ? "When checking for an update, no response was received from the update server"
+        internal void UpdateEntry(string record) => UpdateLog.Add(record);
+
+        internal void UpdateResponseIsNull(bool isNull) => UpdateEntry(isNull ? "When checking for an update, no response was received from the update server"
                                                                             : "When checking for an update, a response was received from the update server");
     }
 }

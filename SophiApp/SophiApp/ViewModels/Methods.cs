@@ -75,7 +75,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var link = args as string;
-                debugger.InfoEntry($"Clicked link: \"{link}\"");
+                debugger.StatusEntry($"Clicked link: \"{link}\"");
                 Process.Start(link);
             });
             MouseHelper.ShowWaitCursor(show: false);
@@ -277,13 +277,13 @@ namespace SophiApp.ViewModels
 
                         if (IsNewVersion(release))
                         {
-                            debugger.InfoEntry("The update can be done");
+                            debugger.UpdateEntry("The update can be done");
                             SetUpdateAvailableProperty(true);
                             ToastHelper.ShowUpdateToast(currentVersion: DataHelper.Version.ToString(), newVersion: release.tag_name);
                             return;
                         }
 
-                        debugger.InfoEntry("No update required");
+                        debugger.UpdateEntry("No update required");
                     }
                 }
                 catch (Exception e)
@@ -298,7 +298,7 @@ namespace SophiApp.ViewModels
             if (IsSupportedOs())
             {
                 MouseHelper.ShowWaitCursor(show: true);
-                await UpdateIsAvailableAsync();
+                //await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
