@@ -337,7 +337,7 @@
             "RU": "Персонализированные возможности"
         },
         "Description": {
-            "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you hava chosen",
+            "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen",
             "RU": "Разрешите корпорации Майкософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций"
         },
         "Type": "CheckBox",
