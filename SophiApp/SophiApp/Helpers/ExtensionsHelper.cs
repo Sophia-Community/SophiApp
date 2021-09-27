@@ -18,6 +18,8 @@ namespace SophiApp.Helpers
 
         public static bool HasNullOrValue(this int? integer, int value) => integer is null || integer == value;
 
+        public static bool HasValue(this int? integer, int value) => integer == value;
+
         public static bool Invert(this bool value) => !value;
 
         public static List<T> Merge<T>(this List<T> source, List<T> mergeable)

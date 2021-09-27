@@ -359,7 +359,7 @@ namespace SophiApp.Customisations
         }
 
         public static void _231(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        Const._231_FEEDS_PATH,
+                                                                        Const._213_FEEDS_PATH,
                                                                             Const._231_SHELL_FEEDS,
                                                                                 IsActive ? Const._231_SHELL_FEEDS_ENABLED_VALUE
                                                                                          : Const._231_SHELL_FEEDS_DISABLED_VALUE,
@@ -370,6 +370,44 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW, Const.ALL_ITEMS_ICON_CATEGORY_VALUE, RegistryValueKind.DWord);
             RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE, Const.STARTUP_PAGE_ICON_VALUE, RegistryValueKind.DWord);
         }
+
+        public static void _234(bool _)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW, Const.ALL_ITEMS_ICON_SMALL_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE, Const.STARTUP_PAGE_ICON_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _235(bool _)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW, Const.ALL_ITEMS_ICON_CATEGORY_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE, Const.STARTUP_PAGE_CATEGORY_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _237(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.SYSTEM_USES_THEME, Const.LIGHT_THEME_VALUE, RegistryValueKind.DWord);
+
+        public static void _238(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.SYSTEM_USES_THEME, Const.DARK_THEME_VALUE, RegistryValueKind.DWord);
+
+        public static void _240(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.APPS_USES_THEME, Const.LIGHT_THEME_VALUE, RegistryValueKind.DWord);
+
+        public static void _241(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.APPS_USES_THEME, Const.DARK_THEME_VALUE, RegistryValueKind.DWord);
+
+        public static void _242(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._242_NO_NEW_APP_ALERT);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._242_NO_NEW_APP_ALERT, Const._242_HIDE_ALERT_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _243(bool IsActive) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        Const._243_WINLOGON_PATH,
+                                                                            Const._243_FIRST_LOGON_ANIMATION,
+                                                                                IsActive ? Const.ENABLED_VALUE
+                                                                                         : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _800(bool IsActive)
         {

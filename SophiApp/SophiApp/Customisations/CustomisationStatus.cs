@@ -182,14 +182,35 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const._230_STUCK_RECTS3_PATH, Const._230_STUCK_RECTS3_SETTINGS)[9] == Const._230_STUCK_RECTS3_SHOW_VALUE
                                      : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{Const._230_STUCK_RECTS3_PATH}\{Const._230_STUCK_RECTS3_SETTINGS}");
 
-        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._231_FEEDS_PATH, Const._231_SHELL_FEEDS)
+        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._213_FEEDS_PATH, Const._231_SHELL_FEEDS)
                                               .HasNullOrValue(Const._231_SHELL_FEEDS_ENABLED_VALUE);
 
-        public static bool _232() => RegHelper.TryKeyExist(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW)
-                                     && RegHelper.TryKeyExist(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE);
+        public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW).HasValue(Const.ALL_ITEMS_ICON_CATEGORY_VALUE)
+                                     && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE).HasValue(Const.STARTUP_PAGE_ICON_VALUE);
 
-        public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW) == Const.ALL_ITEMS_ICON_CATEGORY_VALUE
-                                     && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE) == Const.STARTUP_PAGE_ICON_VALUE;
+        public static bool _234() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW).HasValue(Const.ALL_ITEMS_ICON_SMALL_VALUE)
+                                     && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE).HasValue(Const.STARTUP_PAGE_ICON_VALUE);
+
+        public static bool _235() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.ALL_ITEMS_ICON_VIEW).HasNullOrValue(Const.ALL_ITEMS_ICON_CATEGORY_VALUE)
+                                     && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_EXPLORER_PATH, Const.STARTUP_PAGE).HasNullOrValue(Const.STARTUP_PAGE_CATEGORY_VALUE);
+
+        public static bool _237() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.SYSTEM_USES_THEME)
+                                              .HasValue(Const.LIGHT_THEME_VALUE);
+
+        public static bool _238() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.SYSTEM_USES_THEME)
+                                              .HasNullOrValue(Const.DARK_THEME_VALUE);
+
+        public static bool _240() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.APPS_USES_THEME)
+                                              .HasValue(Const.LIGHT_THEME_VALUE);
+
+        public static bool _241() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.PERSONALIZE_PATH, Const.APPS_USES_THEME)
+                                              .HasNullOrValue(Const.DARK_THEME_VALUE);
+
+        public static bool _242() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, Const.POLICIES_EXPLORER_PATH, Const._242_NO_NEW_APP_ALERT)
+                                              .HasNullOrValue(Const._242_SHOW_ALERT_VALUE);
+
+        public static bool _243() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, Const._243_WINLOGON_PATH, Const._243_FIRST_LOGON_ANIMATION)
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 
