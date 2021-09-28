@@ -8,7 +8,7 @@ using Const = SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
 {
-    public class CustomisationStatus
+    public sealed class CustomisationStatus
     {
         public static bool _100()
         {
@@ -211,6 +211,30 @@ namespace SophiApp.Customisations
 
         public static bool _243() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, Const._243_WINLOGON_PATH, Const._243_FIRST_LOGON_ANIMATION)
                                               .HasNullOrValue(Const.ENABLED_VALUE);
+
+        public static bool _245() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.CONTROL_PANEL_DESKTOP_PATH, Const.JPEG_QUALITY)
+                                              .HasValue(Const._245_JPEG_MAX_QUALITY);
+
+        public static bool _246() => _245().Invert();
+
+        public static bool _247() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, Const._247_WINDOWS_UPDATE_SETTINGS_PATH, Const._247_RESTART_NOTIFICATIONS)
+                                              .HasNullOrValue(Const._247_HIDE_VALUE).Invert();
+
+        public static bool _248()
+        {
+            var shortcut = RegHelper.GetStringValue(RegistryHive.CurrentUser, Const._248_EXPLORER_NAMING_PATH, Const._248_SHORTCUT);
+            var link = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._248_LINK);
+            RegHelper.TryDeleteKey(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._248_LINK);
+            return shortcut == null || link == null;
+        }
+
+        public static bool _249() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._249_CONTROL_PANEL_KEYBOARD_PATH, Const._249_PRINT_SCREEN_SNIPPING)
+                                              .HasNullOrValue(Const.DISABLED_VALUE).Invert();
+
+        public static bool _250() => SystemParametersHelper.GetInputSettings();
+
+        public static bool _251() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._251_DISALLOW_WINDOWS_SHAKE)
+                                              .HasNullOrValue(Const._251_ENABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, Const._800_MSI_EXTRACT_PATH);
 

@@ -88,6 +88,20 @@
         internal const byte _242_SHOW_ALERT_VALUE = 0;
         internal const string _243_FIRST_LOGON_ANIMATION = "EnableFirstLogonAnimation";
         internal const string _243_WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
+        internal const byte _245_JPEG_MAX_QUALITY = 100;
+        internal const byte _247_HIDE_VALUE = 0;
+        internal const string _247_RESTART_NOTIFICATIONS = "RestartNotificationsAllowed2";
+        internal const byte _247_SHOW_VALUE = 1;
+        internal const string _247_WINDOWS_UPDATE_SETTINGS_PATH = @"SOFTWARE\Microsoft\WindowsUpdate\UX\Settings";
+        internal const string _248_DISABLE_VALUE = "%s.lnk";
+        internal const string _248_EXPLORER_NAMING_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates";
+        internal const string _248_LINK = "link";
+        internal const string _248_SHORTCUT = "ShortcutNameTemplate";
+        internal const string _249_CONTROL_PANEL_KEYBOARD_PATH = @"Control Panel\Keyboard";
+        internal const string _249_PRINT_SCREEN_SNIPPING = "PrintScreenKeyForSnippingEnabled";
+        internal const byte _251_DISABLED_VALUE = 1;
+        internal const string _251_DISALLOW_WINDOWS_SHAKE = "DisallowShaking";
+        internal const byte _251_ENABLED_VALUE = 0;
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -148,6 +162,7 @@
         internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint";
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
+        internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
         internal const string CURRENT_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
         internal const byte DARK_THEME_VALUE = 0;
@@ -162,6 +177,7 @@
         internal const byte ENABLED_VALUE = 1;
         internal const string ENTHUSIAST_MODE = "EnthusiastMode";
         internal const string ITEM_NAME = "ItemName";
+        internal const string JPEG_QUALITY = "JPEGImportQuality";
         internal const byte LAUNCH_PC_VALUE = 1;
         internal const byte LAUNCH_QA_VALUE = 2;
         internal const string LAUNCH_TO = "LaunchTo";

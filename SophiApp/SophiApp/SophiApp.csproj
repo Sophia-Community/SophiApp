@@ -191,6 +191,7 @@
     <Compile Include="Helpers\RegHelper.cs" />
     <Compile Include="Helpers\ScheduledTaskHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
+    <Compile Include="Helpers\SystemParametersHelper.cs" />
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\ToastHelper.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />

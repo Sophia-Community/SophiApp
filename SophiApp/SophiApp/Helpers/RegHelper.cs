@@ -30,5 +30,13 @@ namespace SophiApp.Helpers
         internal static void SetValue(RegistryHive hive, string path, string name, object value, RegistryValueKind type) => SetKey(hive, path).SetValue(name, value, type);
 
         internal static bool SubKeyExist(RegistryHive hive, string path) => (GetKey(hive, path) is null).Invert();
+
+        internal static void TryDeleteKey(RegistryHive hive, string path, string name)
+        {
+            if (KeyExist(hive, path, name))
+            {
+                SetKey(hive, path).DeleteValue(name);
+            }
+        }
     }
 }

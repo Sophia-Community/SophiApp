@@ -7,7 +7,7 @@ using Const = SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
 {
-    public class CustomisationOs
+    public sealed class CustomisationOs
     {
         public static void _100(bool IsActive)
         {
@@ -408,6 +408,50 @@ namespace SophiApp.Customisations
                                                                                 IsActive ? Const.ENABLED_VALUE
                                                                                          : Const.DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
+
+        public static void _245(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                Const.CONTROL_PANEL_DESKTOP_PATH,
+                                                                    Const.JPEG_QUALITY,
+                                                                        Const._245_JPEG_MAX_QUALITY,
+                                                                            RegistryValueKind.DWord);
+
+        public static void _246(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser,
+                                                                Const.CONTROL_PANEL_DESKTOP_PATH,
+                                                                    Const.JPEG_QUALITY);
+
+        public static void _247(bool IsActive) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        Const._247_WINDOWS_UPDATE_SETTINGS_PATH,
+                                                                            Const._247_RESTART_NOTIFICATIONS,
+                                                                                IsActive ? Const._247_SHOW_VALUE
+                                                                                         : Const._247_HIDE_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _248(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, Const._248_EXPLORER_NAMING_PATH, Const._248_SHORTCUT);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.CurrentUser, Const._248_EXPLORER_NAMING_PATH, Const._248_SHORTCUT, Const._248_DISABLE_VALUE);
+        }
+
+        public static void _249(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const._249_CONTROL_PANEL_KEYBOARD_PATH,
+                                                                            Const._249_PRINT_SCREEN_SNIPPING,
+                                                                                IsActive ? Const.ENABLED_VALUE
+                                                                                         : Const.DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _250(bool IsActive) => SystemParametersHelper.SetInputSettings(IsActive);
+
+        public static void _251(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        Const.ADVANCED_EXPLORER_PATH,
+                                                                            Const._251_DISALLOW_WINDOWS_SHAKE,
+                                                                                IsActive ? Const._251_ENABLED_VALUE
+                                                                                         : Const._251_DISABLED_VALUE,
+                                                                                            RegistryValueKind.DWord);
 
         public static void _800(bool IsActive)
         {
