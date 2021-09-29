@@ -9,7 +9,8 @@
         xmlns:local="clr-namespace:SophiApp"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Closed="Window_Closed">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0"

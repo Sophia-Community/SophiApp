@@ -34,9 +34,7 @@ namespace SophiApp.Helpers
         internal static void TryDeleteKey(RegistryHive hive, string path, string name)
         {
             if (KeyExist(hive, path, name))
-            {
                 SetKey(hive, path).DeleteValue(name);
-            }
         }
     }
 }

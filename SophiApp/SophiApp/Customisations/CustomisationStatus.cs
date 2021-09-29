@@ -117,8 +117,7 @@ namespace SophiApp.Customisations
                                               .Invert();
 
         public static bool _206() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._206_HIDE_MERGE_CONF)
-                                              .HasNullOrValue(Const.DISABLED_VALUE)
-                                              .Invert();
+                                              .HasNullOrValue(Const.ENABLED_VALUE);
 
         public static bool _208() => _209().Invert();
 
@@ -140,7 +139,7 @@ namespace SophiApp.Customisations
                                               .HasNullOrValue(Const.DIALOG_COMPACT_VALUE);
 
         public static bool _216() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._216_RIBBON_EXPLORER_PATH, Const._216_TABLET_MODE_OFF)
-                                              .HasNullOrValue(Const._216_MINIMIZED_VALUE).Invert();
+                                              .HasNullOrValue(Const._216_MINIMIZED_VALUE);
 
         public static bool _217() => RegHelper.KeyExist(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)
                                      ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._217_SHELL_STATE)[4] == Const._217_SHELL_ENABLED_VALUE
@@ -222,10 +221,8 @@ namespace SophiApp.Customisations
 
         public static bool _248()
         {
-            var shortcut = RegHelper.GetStringValue(RegistryHive.CurrentUser, Const._248_EXPLORER_NAMING_PATH, Const._248_SHORTCUT);
-            var link = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._248_LINK);
             RegHelper.TryDeleteKey(RegistryHive.CurrentUser, Const.CURRENT_EXPLORER_PATH, Const._248_LINK);
-            return shortcut == null || link == null;
+            return RegHelper.GetStringValue(RegistryHive.CurrentUser, Const._248_EXPLORER_NAMING_PATH, Const._248_SHORTCUT) is null;
         }
 
         public static bool _249() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const._249_CONTROL_PANEL_KEYBOARD_PATH, Const._249_PRINT_SCREEN_SNIPPING)
