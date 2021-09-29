@@ -124,8 +124,10 @@ namespace SophiApp.Customisations
         public static bool _209() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const.LAUNCH_TO)
                                               .HasNullOrValue(Const.LAUNCH_QA_VALUE);
 
-        public static bool _210() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._210_CORTANA_BUTTON)
-                                              .HasNullOrValue(Const.ENABLED_VALUE);
+        public static bool _210() => UwpHelper.PackageExist(Const._210_CORTANA)
+                                              ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._210_CORTANA_BUTTON)
+                                                         .HasNullOrValue(Const.ENABLED_VALUE)
+                                              : throw new UwpAppNotFoundException(Const._210_CORTANA);
 
         public static bool _211() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, Const.ADVANCED_EXPLORER_PATH, Const._211_SHOW_SYNC_PROVIDER)
                                               .HasNullOrValue(Const.ENABLED_VALUE);

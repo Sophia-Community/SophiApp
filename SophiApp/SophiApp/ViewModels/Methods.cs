@@ -118,9 +118,10 @@ namespace SophiApp.ViewModels
                 debugger.StatusEntry("Started initialization texted elements");
                 var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
-                                            .Select(dto => FabricHelper.CreateTextedElement(dataObject: dto, errorHandler: OnTextedElementErrorAsync,
-                                                        statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
-                                            .ToList();
+                                            .Select(dto => FabricHelper.CreateTextedElement(dataObject: dto,
+                                                                                            errorHandler: OnTextedElementErrorAsync,
+                                                                                            statusHandler: OnTextedElementStatusChanged,
+                                                                                            language: Localization.Language)).ToList();
                 stopwatch.Stop();
                 debugger.StopInit(stopwatch);
             });

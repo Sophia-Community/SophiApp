@@ -51,6 +51,7 @@
         internal const byte _205_HIDE_VALUE = 1;
         internal const byte _205_SHOW_VALUE = 0;
         internal const string _206_HIDE_MERGE_CONF = "HideMergeConflicts";
+        internal const string _210_CORTANA = "Microsoft.549981C3F5F10";
         internal const string _210_CORTANA_BUTTON = "ShowCortanaButton";
         internal const string _211_SHOW_SYNC_PROVIDER = "ShowSyncProviderNotifications";
         internal const string _212_SNAP_ASSIST = "SnapAssist";
