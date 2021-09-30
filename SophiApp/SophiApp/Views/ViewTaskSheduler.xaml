@@ -7,10 +7,6 @@
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
-             controls:IconWinCheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:IconWinCheckBox.MouseLeave="TextedElement_MouseLeave"
-             controls:IconFolderCheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:IconFolderCheckBox.MouseLeave="TextedElement_MouseLeave"
              IsVisibleChanged="ViewTaskSheduler_IsVisibleChanged">
 
     <UserControl.Resources>
@@ -18,10 +14,6 @@
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
-        </Style>
-        <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-            <Setter Property="Grid.Column" Value="2" />
         </Style>
         <Style TargetType="{x:Type local:ViewTaskSheduler}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -37,46 +29,26 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>
-                    <!--UI content column-->
-                    <ColumnDefinition Width="4*" />
-                    <!--Description column-->
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <!--View UI content row-->
-                        <RowDefinition Height="*" />
-                        <!--View UI content indent row-->
-                        <RowDefinition Height="10" />
-                    </Grid.RowDefinitions>
-                    <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
-                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
-                            <ItemsControl.Resources>
-                                <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
-                                    <controls:IconWinCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
-                                                              Id="{Binding Id}"
-                                                              IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                              IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                              Margin="20, 0, 0, 10" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
-                                    <controls:IconFolderCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
-                                                                 Id="{Binding Id}"
-                                                                 IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                                 IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                                 Margin="20, 0, 0, 10" />
-                                </DataTemplate>
-                            </ItemsControl.Resources>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </Grid>
-                <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                    <TextBlock Style="{DynamicResource NormalText}"
-                               TextWrapping="Wrap"
-                               Margin="5"
-                               Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
-                </StackPanel>
+                <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
+                        <ItemsControl.Resources>
+                            <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
+                                <controls:IconWinCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
+                                                          Id="{Binding Id}"
+                                                          IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                          IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                          Margin="20, 0, 0, 10" />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
+                                <controls:IconFolderCheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
+                                                             Id="{Binding Id}"
+                                                             IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                             IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                             Margin="20, 0, 0, 10" />
+                            </DataTemplate>
+                        </ItemsControl.Resources>
+                    </ItemsControl>
+                </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.TaskSheduler}">
@@ -94,9 +66,6 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
-                </Trigger>
-                <Trigger Property="Visibility" Value="Collapsed">
-                    <Setter Property="Margin" Value="0, 10, 0, 0" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

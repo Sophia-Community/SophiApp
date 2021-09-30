@@ -88,7 +88,7 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> LocalizationList => localizationsHelper.GetNames();
-        public int MinimalOsBuild { get => minimalOsBuild; } // https://docs.microsoft.com/ru-ru/windows/release-health/release-information
+        public uint MinimalOsBuild { get => MIN_OS_BUILD; } // https://docs.microsoft.com/ru-ru/windows/release-health/release-information
         public List<TextedElement> TextedElements { get; private set; }
 
         public bool UpdateAvailable

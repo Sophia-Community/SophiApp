@@ -189,6 +189,9 @@
                 </Grid>
             </Grid>
             <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Settings}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>

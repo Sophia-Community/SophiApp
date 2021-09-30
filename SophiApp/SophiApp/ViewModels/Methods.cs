@@ -107,7 +107,6 @@ namespace SophiApp.ViewModels
             ViewsHitTest = true;
             WindowCloseHitTest = true;
             AdvancedSettingsVisibility = false;
-            VisibleViewByTag = Tags.ViewLoading;
             customActions = new List<CustomActionDTO>();
         }
 
@@ -129,7 +128,7 @@ namespace SophiApp.ViewModels
 
         private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > DataHelper.Version && !dto.prerelease && !dto.draft;
 
-        private bool IsSupportedOs() => OsHelper.GetProductName().Contains(Window10) && OsHelper.GetBuild() >= MinimalOsBuild;
+        private bool IsSupportedOs() => OsHelper.GetProductName().Contains(WINDOWS_10) && OsHelper.GetBuild() >= MinimalOsBuild;
 
         private async void LocalizationChangeAsync(object args)
         {
@@ -161,10 +160,10 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var rbutton = args as RadioButton;
-                var group = TextedElements.FirstOrDefault(element => element.Id == rbutton.ParentId) as RadioGroup;
-                group?.ChildElements.ForEach(child => child.Status = child.Id == rbutton.Id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
-                SetCustomAction(group);
+                var rButton = args as RadioButton;
+                var rGroup = TextedElements.FirstOrDefault(element => element.Id == rButton.ParentId) as RadioGroup;
+                rGroup?.ChildElements.ForEach(child => child.Status = child.Id == rButton.Id ? ElementStatus.CHECKED : ElementStatus.UNCHECKED);
+                SetCustomAction(rGroup);
             });
         }
 

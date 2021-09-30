@@ -10,11 +10,11 @@
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string LoadingPanelVisibilityPropertyName = "LoadingPanelVisibility";
         private const string LocalizationPropertyName = "Localization";
-        private const int minimalOsBuild = 19042;
+        private const uint MIN_OS_BUILD = 19042;
         private const string UpdateAvailablePropertyName = "UpdateAvailable";
         private const string ViewsHitTestPropertyName = "ViewsHitTest";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
-        private const string Window10 = "Windows 10";
         private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
+        private const string WINDOWS_10 = "Windows 10";
     }
 }
