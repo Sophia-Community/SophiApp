@@ -1245,8 +1245,8 @@
             "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп"
         },
         "Description": {
-            "EN": "If you enable this policy setting, computers wait for the network to be fully initialized before users are logged on. Group Policy is applied in the foreground, synchronously",
-            "RU": "Если этот параметр политики включен, компьютеры ожидают полной инициализации сети перед входом пользователей в систему. Групповые политики применяются на переднем плане, синхронно"
+            "EN": "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This results in shorter logon times. Group Policy is applied in the background after the network becomes available",
+            "RU": "Для сокращения времени входа в систему Windows не ждет полной инициализации сети при запуске или входе в систему. Параметры политики применяются асинхронно при запуске компьютера и при входе пользователя в систему. В результате операционная система не ждет полной инициализации сети при запуске и входе в систему. Существующие пользователи входят в систему, используя кэшированные учетные данные. Это сокращает время входа в систему. Групповая политика применяется в фоновом режиме после того, как сеть становится доступной"
         },
         "Type": "Switch",
         "Tag": "System"
