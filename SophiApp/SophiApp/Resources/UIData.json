@@ -1098,19 +1098,6 @@
     {
         "Id": 305,
         "Header": {
-            "EN": "Delete files in recycle bin if they have been there for over 30 days",
-            "RU": "Удалять файлы из корзины, если они находятся в корзине более 30 дней"
-        },
-        "Description": {
-            "EN": "",
-            "RU": ""
-        },
-        "Type": "CheckBox",
-        "Tag": "System"
-    },
-    {
-        "Id": 306,
-        "Header": {
             "EN": "Hibernate",
             "RU": "Режим гибернации"
         },
@@ -1122,7 +1109,7 @@
         "Tag": "System"
     },
     {
-        "Id": 307,
+        "Id": 306,
         "Header": {
             "EN": "The temp environment variable path",
             "RU": "Путь переменной среды для временных файлов"
@@ -1135,7 +1122,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 308,
+                "Id": 307,
                 "ChildHeader": {
                     "EN": "%SystemDrive%\\Temp",
                     "RU": "%SystemDrive%\\Temp"
@@ -1147,7 +1134,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 309,
+                "Id": 308,
                 "ChildHeader": {
                     "EN": "%LOCALAPPDATA%\\Temp (default)",
                     "RU": "%LOCALAPPDATA%\\Temp (по умолчанию)"
@@ -1161,7 +1148,7 @@
         ]
     },
     {
-        "Id": 310,
+        "Id": 309,
         "Header": {
             "EN": "Enable the Windows 260 character path limit",
             "RU": "Включить ограничение Windows на 260 символов в пути"
@@ -1174,7 +1161,7 @@
         "Tag": "System"
     },
     {
-        "Id": 311,
+        "Id": 310,
         "Header": {
             "EN": "Display the Stop error information on the BSoD",
             "RU": "Отображать Stop-ошибку при появлении BSoD"
@@ -1187,7 +1174,7 @@
         "Tag": "System"
     },
     {
-        "Id": 312,
+        "Id": 311,
         "Header": {
             "EN": "Choose when to be notified about changes to your computer",
             "RU": "Настройка уведомления об изменении параметров компьютера"
@@ -1200,7 +1187,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 313,
+                "Id": 312,
                 "ChildHeader": {
                     "EN": "Notify me only when apps try to make changes to my computer",
                     "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер"
@@ -1212,7 +1199,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 314,
+                "Id": 313,
                 "ChildHeader": {
                     "EN": "Never notify",
                     "RU": "Никогда не уведомлять"
@@ -1226,7 +1213,7 @@
         ]
     },
     {
-        "Id": 315,
+        "Id": 314,
         "Header": {
             "EN": "Access to mapped drives from app running with elevated permissions with Admin Approval Mode",
             "RU": "Доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
@@ -1239,7 +1226,7 @@
         "Tag": "System"
     },
     {
-        "Id": 316,
+        "Id": 315,
         "Header": {
             "EN": "Enable downloading updates with delivery optimization",
             "RU": "Включить загрузку обновлений с помощью оптимизации доставки"
@@ -1252,7 +1239,7 @@
         "Tag": "System"
     },
     {
-        "Id": 317,
+        "Id": 316,
         "Header": {
             "EN": "Let Windows manage my default printer",
             "RU": "Разрешать Windows управлять принтером, используемым по умолчанию"
@@ -1265,7 +1252,7 @@
         "Tag": "System"
     },
     {
-        "Id": 318,
+        "Id": 317,
         "Header": {
             "EN": "Windows Features",
             "RU": "Компоненты Windows"
@@ -1278,7 +1265,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 319,
+                "Id": 318,
                 "ChildHeader": {
                     "EN": "Legacy Components",
                     "RU": "Компоненты прежних версий"
@@ -1290,7 +1277,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 320,
+                "Id": 319,
                 "ChildHeader": {
                     "EN": "Windows PowerShell 2.0",
                     "RU": "Windows PowerShell 2.0"
@@ -1302,7 +1289,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 321,
+                "Id": 320,
                 "ChildHeader": {
                     "EN": "Windows PowerShell 2.0 Engine",
                     "RU": "Обработчик Windows PowerShell 2.0"
@@ -1314,7 +1301,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 322,
+                "Id": 321,
                 "ChildHeader": {
                     "EN": "Microsoft XPS Document Writer",
                     "RU": "Средство записи XPS-документов (Microsoft)"
@@ -1326,7 +1313,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 323,
+                "Id": 322,
                 "ChildHeader": {
                     "EN": "Work Folders Client",
                     "RU": "Клиент рабочих папок"
@@ -1338,7 +1325,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 324,
+                "Id": 323,
                 "ChildHeader": {
                     "EN": "Media Features",
                     "RU": "Компоненты работы с мультимедиа"
@@ -1352,7 +1339,7 @@
         ]
     },
     {
-        "Id": 325,
+        "Id": 324,
         "Header": {
             "EN": "Optional features",
             "RU": "Дополнительные компоненты"
@@ -1365,7 +1352,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 326,
+                "Id": 325,
                 "ChildHeader": {
                     "EN": "Steps Recorder",
                     "RU": "Средство записи действий"
@@ -1377,7 +1364,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 327,
+                "Id": 326,
                 "ChildHeader": {
                     "EN": "Microsoft Quick Assist",
                     "RU": "Быстрая поддержка (Майкрософт)"
@@ -1389,7 +1376,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 328,
+                "Id": 327,
                 "ChildHeader": {
                     "EN": "Microsoft Paint",
                     "RU": "Microsoft Paint"
@@ -1401,7 +1388,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 329,
+                "Id": 328,
                 "ChildHeader": {
                     "EN": "WordPad",
                     "RU": "WordPad"
@@ -1413,7 +1400,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 330,
+                "Id": 329,
                 "ChildHeader": {
                     "EN": "Internet Explorer 11",
                     "RU": "Internet Explorer 11"
@@ -1425,7 +1412,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 331,
+                "Id": 330,
                 "ChildHeader": {
                     "EN": "Math Recognizer",
                     "RU": "Распознаватель математических знаков"
@@ -1437,7 +1424,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 332,
+                "Id": 331,
                 "ChildHeader": {
                     "EN": "Windows Media Player",
                     "RU": "Проигрыватель Windows Media"
@@ -1449,7 +1436,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 333,
+                "Id": 332,
                 "ChildHeader": {
                     "EN": "OpenSSH Client",
                     "RU": "Клиент OpenSSH"
@@ -1463,7 +1450,7 @@
         ]
     },
     {
-        "Id": 334,
+        "Id": 333,
         "Header": {
             "EN": "Receive updates for other Microsoft products",
             "RU": "Получать обновления для других продуктов Майкрософт"
@@ -1476,7 +1463,7 @@
         "Tag": "System"
     },
     {
-        "Id": 335,
+        "Id": 334,
         "Header": {
             "EN": "Choose the power plan",
             "RU": "Выбор схемы управления питанием"
@@ -1489,7 +1476,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 336,
+                "Id": 335,
                 "ChildHeader": {
                     "EN": "High performance",
                     "RU": "Высокая производительность"
@@ -1501,7 +1488,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 337,
+                "Id": 336,
                 "ChildHeader": {
                     "EN": "Balanced",
                     "RU": "Сбалансированная"
@@ -1515,7 +1502,7 @@
         ]
     },
     {
-        "Id": 338,
+        "Id": 337,
         "Header": {
             "EN": "Use latest installed .NET runtime for all apps",
             "RU": "Использовать последнюю установленную среду выполнения .NET для всех приложений"
@@ -1528,7 +1515,7 @@
         "Tag": "System"
     },
     {
-        "Id": 339,
+        "Id": 338,
         "Header": {
             "EN": "Allow the computer to turn off the network adapters to save power",
             "RU": "Разрешить отключение всех сетевых адаптеров для экономии энергии"
@@ -1541,7 +1528,7 @@
         "Tag": "System"
     },
     {
-        "Id": 340,
+        "Id": 339,
         "Header": {
             "EN": "Disable the Internet Protocol Version 6 (TCP/IPv6) component for all network connections",
             "RU": "Выключить IP версии 6 (TCP/IPv6)"
@@ -1554,7 +1541,7 @@
         "Tag": "System"
     },
     {
-        "Id": 341,
+        "Id": 340,
         "Header": {
             "EN": "Override for default input method",
             "RU": "Переопределить метод ввода по умолчанию"
@@ -1567,7 +1554,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 342,
+                "Id": 341,
                 "ChildHeader": {
                     "EN": "Use language list",
                     "RU": "Использовать список языков"
@@ -1579,7 +1566,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 343,
+                "Id": 342,
                 "ChildHeader": {
                     "EN": "English",
                     "RU": "Английский"
@@ -1593,7 +1580,7 @@
         ]
     },
     {
-        "Id": 344,
+        "Id": 343,
         "Header": {
             "EN": "Choose the location where to save screenshots by pressing Win+PrtScn",
             "RU": "Выбрать, куда сохранять скриншоты по нажатию Win+PrtScn"
@@ -1606,7 +1593,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 345,
+                "Id": 344,
                 "ChildHeader": {
                     "EN": "Desktop",
                     "RU": "Рабочий стол"
@@ -1618,7 +1605,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 346,
+                "Id": 345,
                 "ChildHeader": {
                     "EN": "Pictures folder",
                     "RU": "Папка \"Изображения\""
@@ -1632,7 +1619,7 @@
         ]
     },
     {
-        "Id": 347,
+        "Id": 346,
         "Header": {
             "EN": "Recommended troubleshooting",
             "RU": "Рекомендованные способы устранения ошибок"
@@ -1645,7 +1632,7 @@
         "Tag": "System",
         "ChildElements": [
             {
-                "Id": 348,
+                "Id": 347,
                 "ChildHeader": {
                     "EN": "Run troubleshooters automatically, then notify",
                     "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять"
@@ -1657,7 +1644,7 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 349,
+                "Id": 348,
                 "ChildHeader": {
                     "EN": "Ask me before running troubleshooter",
                     "RU": "Спрашивать перед запуском средств устранения неполадок"
@@ -1671,7 +1658,7 @@
         ]
     },
     {
-        "Id": 350,
+        "Id": 349,
         "Header": {
             "EN": "Launch folder windows in a separate process",
             "RU": "Запускать окна с папками в отдельном процессе"
@@ -1684,7 +1671,7 @@
         "Tag": "System"
     },
     {
-        "Id": 351,
+        "Id": 350,
         "Header": {
             "EN": "Enable reserved storage",
             "RU": "Включить зарезервированное хранилище"
@@ -1697,7 +1684,7 @@
         "Tag": "System"
     },
     {
-        "Id": 352,
+        "Id": 351,
         "Header": {
             "EN": "Enable help look up via F1",
             "RU": "Включить открытие справки по нажатию F1"
@@ -1710,7 +1697,7 @@
         "Tag": "System"
     },
     {
-        "Id": 353,
+        "Id": 352,
         "Header": {
             "EN": "Enable Num Lock at startup",
             "RU": "Включить Num Lock при загрузке"
@@ -1723,7 +1710,7 @@
         "Tag": "System"
     },
     {
-        "Id": 354,
+        "Id": 353,
         "Header": {
             "EN": "Enable Caps Lock",
             "RU": "Включить Caps Lock"
@@ -1736,7 +1723,7 @@
         "Tag": "System"
     },
     {
-        "Id": 355,
+        "Id": 354,
         "Header": {
             "EN": "Press the Shift key 5 times to turn Sticky keys",
             "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить залипание клавиш"
@@ -1749,7 +1736,7 @@
         "Tag": "System"
     },
     {
-        "Id": 356,
+        "Id": 355,
         "Header": {
             "EN": "Use AutoPlay for all media and devices",
             "RU": "Использовать автозапуск для всех носителей и устройств"
@@ -1762,7 +1749,7 @@
         "Tag": "System"
     },
     {
-        "Id": 357,
+        "Id": 356,
         "Header": {
             "EN": "Enable thumbnail cache removal",
             "RU": "Включить удаление кэша миниатюр"
@@ -1775,7 +1762,7 @@
         "Tag": "System"
     },
     {
-        "Id": 358,
+        "Id": 357,
         "Header": {
             "EN": "Restart apps after singning in",
             "RU": "Перезапустить приложения после входа"
@@ -1788,7 +1775,7 @@
         "Tag": "System"
     },
     {
-        "Id": 359,
+        "Id": 358,
         "Header": {
             "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
             "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп"
@@ -1801,7 +1788,7 @@
         "Tag": "System"
     },
     {
-        "Id": 360,
+        "Id": 359,
         "Header": {
             "EN": "Automatically adjust active hours for me based on daily usage",
             "RU": "Автоматически изменять период активности для этого устройства на основе действий"
@@ -1814,7 +1801,7 @@
         "Tag": "System"
     },
     {
-        "Id": 361,
+        "Id": 360,
         "Header": {
             "EN": "Restart as soon as possible to finish updating",
             "RU": "Перезапустить устройство как можно быстрее, чтобы завершить обновление"
