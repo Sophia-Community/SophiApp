@@ -6,7 +6,7 @@ namespace SophiApp.Helpers
 {
     internal class FabricHelper
     {
-        internal static TextedElement CreateChildElement(TextedChildDTO dataObject, Action<TextedElement, Exception> errorHandler,
+        internal static TextedElement CreateChildElement(TextedChildDto dataObject, Action<TextedElement, Exception> errorHandler,
                                                          EventHandler<TextedElement> statusHandler, UILanguage language)
         {
             var type = Type.GetType($"SophiApp.Models.{dataObject.Type}");
@@ -16,7 +16,7 @@ namespace SophiApp.Helpers
             return element;
         }
 
-        internal static TextedElement CreateTextedElement(TextedElementDTO dataObject, Action<TextedElement, Exception> errorHandler,
+        internal static TextedElement CreateTextedElement(TextedElementDto dataObject, Action<TextedElement, Exception> errorHandler,
                                                           EventHandler<TextedElement> statusHandler, UILanguage language)
         {
             var type = Type.GetType($"SophiApp.Models.{dataObject.Type}");

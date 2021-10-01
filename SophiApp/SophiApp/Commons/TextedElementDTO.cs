@@ -2,9 +2,9 @@
 
 namespace SophiApp.Commons
 {
-    internal class TextedElementDTO
+    internal class TextedElementDto
     {
-        public List<TextedChildDTO> ChildElements { get; set; }
+        public List<TextedChildDto> ChildElements { get; set; }
         public Dictionary<UILanguage, string> Description { get; set; }
         public Dictionary<UILanguage, string> Header { get; set; }
         public uint Id { get; set; }

@@ -8,20 +8,6 @@
              xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
-             controls:AdvancedRadioGroup.MouseEnter="TextedElement_MouseEnter"
-             controls:AdvancedRadioGroup.MouseLeave="TextedElement_MouseLeave"
-             controls:AdvancedSwitch.MouseEnter="TextedElement_MouseEnter"
-             controls:AdvancedSwitch.MouseLeave="TextedElement_MouseLeave"
-             controls:ExpandingGroup.MouseEnter="TextedElement_MouseEnter"
-             controls:ExpandingGroup.MouseLeave="TextedElement_MouseLeave"
-             controls:RadioGroup.MouseEnter="TextedElement_MouseEnter"
-             controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
-             controls:Switch.MouseEnter="TextedElement_MouseEnter"
-             controls:Switch.MouseLeave="TextedElement_MouseLeave"
-             controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
-             controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
-             controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
              IsVisibleChanged="ViewSystem_IsVisibleChanged">
 
     <UserControl.Resources>
@@ -30,10 +16,6 @@
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
-        </Style>
-        <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-            <Setter Property="Grid.Column" Value="2" />
         </Style>
         <Style TargetType="{x:Type local:ViewSystem}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -49,78 +31,54 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>
-                    <!--UI content column-->
-                    <ColumnDefinition Width="4*" />
-                    <!--Description column-->
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <!--View UI content row-->
-                        <RowDefinition Height="*" />
-                        <!--View UI content indent row-->
-                        <RowDefinition Height="10" />
-                    </Grid.RowDefinitions>
-                    <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
-                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
-                            <ItemsControl.Resources>
-                                <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
-                                    <controls:AdvancedRadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                                 Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                                                 Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility,
-                                                                              RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}},
-                                                                              Converter={StaticResource BoolToVisibilityConverter}}"
-                                                                 Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
-                                    <controls:AdvancedSwitch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
-                                                             Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                                                             Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                                             Id="{Binding Id}"
-                                                             IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                             IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                             Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility,
-                                                                          RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}},
-                                                                          Converter={StaticResource BoolToVisibilityConverter}}"
+                <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
+                        <ItemsControl.Resources>
+                            <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
+                                <controls:AdvancedRadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                             Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                                             Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}, Converter={StaticResource BoolToVisibilityConverter}}"
                                                              Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:Switch}">
-                                    <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
-                                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                                     Id="{Binding Id}"
-                                                     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                     IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                     Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:RadioGroup}">
-                                    <controls:RadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                         Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
+                                <controls:AdvancedSwitch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
+                                                         Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                                         Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                                         Id="{Binding Id}"
+                                                         IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                         IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                         Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}, Converter={StaticResource BoolToVisibilityConverter}}"
                                                          Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:CheckBox}">
-                                    <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                                       Id="{Binding Id}"
-                                                       IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                       IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                       Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type models:ExpandingGroup}">
-                                    <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                             Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                                             Margin="20, 10, 0, 5" />
-                                </DataTemplate>
-                            </ItemsControl.Resources>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </Grid>
-                <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                    <TextBlock Style="{DynamicResource NormalText}"
-                               TextWrapping="Wrap"
-                               Margin="5"
-                               Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
-                </StackPanel>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:Switch}">
+                                <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
+                                                 Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                                 Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                                 Id="{Binding Id}"
+                                                 IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                 IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                 Margin="20, 10, 0, 5" />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:RadioGroup}">
+                                <controls:RadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                                     Margin="20, 10, 0, 5" />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:CheckBox}">
+                                <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                                   Id="{Binding Id}"
+                                                   IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                   IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                                   Margin="20, 10, 0, 5" />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:ExpandingGroup}">
+                                <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                                         Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                                         Margin="20, 10, 0, 5" />
+                            </DataTemplate>
+                        </ItemsControl.Resources>
+                    </ItemsControl>
+                </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.System}">
@@ -138,9 +96,6 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
-                </Trigger>
-                <Trigger Property="Visibility" Value="Collapsed">
-                    <Setter Property="Margin" Value="0, 10, 0, 0" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

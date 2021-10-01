@@ -1,6 +1,6 @@
 ﻿namespace SophiApp.Customisations
 {
-    internal struct CustomisationConstants
+    internal sealed class CustomisationConstants
     {
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";

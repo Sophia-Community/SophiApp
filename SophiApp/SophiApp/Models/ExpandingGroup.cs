@@ -9,9 +9,9 @@ namespace SophiApp.Models
 {
     internal class ExpandingGroup : TextedElement, IParentElements
     {
-        private readonly List<TextedChildDTO> ChildsDTO;
+        private readonly List<TextedChildDto> ChildsDTO;
 
-        public ExpandingGroup(TextedElementDTO dataObject) : base(dataObject)
+        public ExpandingGroup(TextedElementDto dataObject) : base(dataObject)
         {
             ChildsDTO = dataObject.ChildElements;
         }

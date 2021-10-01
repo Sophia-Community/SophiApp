@@ -16,6 +16,9 @@
             <Setter Property="Tag" Value="{StaticResource Tags.View.Loading}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>

@@ -4,7 +4,7 @@ namespace SophiApp.Models
 {
     internal class AdvancedSwitch : Switch
     {
-        public AdvancedSwitch(TextedElementDTO dataObject) : base(dataObject)
+        public AdvancedSwitch(TextedElementDto dataObject) : base(dataObject)
         {
         }
     }

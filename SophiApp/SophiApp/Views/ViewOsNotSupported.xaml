@@ -12,8 +12,11 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
-            <Setter Property="Tag" Value="{StaticResource Tags.View.OsNotSupported}" />
+            <!--<Setter Property="Tag" Value="{StaticResource Tags.View.OsNotSupported}" />-->
             <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -26,11 +29,11 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
             </Grid>
-            <ControlTemplate.Triggers>
+            <!--<ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.OsNotSupported}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
-            </ControlTemplate.Triggers>
+            </ControlTemplate.Triggers>-->
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

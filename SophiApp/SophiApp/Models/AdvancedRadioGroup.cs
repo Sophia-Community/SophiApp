@@ -6,9 +6,9 @@ namespace SophiApp.Models
 {
     internal class AdvancedRadioGroup : RadioGroup, IParentElements
     {
-        private readonly List<TextedChildDTO> ChildsDTO;
+        private readonly List<TextedChildDto> ChildsDTO;
 
-        public AdvancedRadioGroup(TextedElementDTO dataObject) : base(dataObject)
+        public AdvancedRadioGroup(TextedElementDto dataObject) : base(dataObject)
         {
         }
     }

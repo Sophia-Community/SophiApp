@@ -34,10 +34,6 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
@@ -85,7 +81,6 @@
                                            Command="{Binding ApplyingSettingsCommand}"
                                            Margin="0, 0, 10, 0" />
                 </StackPanel>
-                <Grid Grid.Column="1" Background="{DynamicResource Brush.Window.Background}" />
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

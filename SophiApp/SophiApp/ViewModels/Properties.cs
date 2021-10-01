@@ -9,7 +9,7 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
-        private List<CustomActionDTO> customActions;
+        private List<CustomActionDto> customActions;
         private DebugHelper debugger;
         private bool debugMode;
         private bool hamburgerHitTest;
@@ -88,7 +88,7 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> LocalizationList => localizationsHelper.GetNames();
-        public int MinimalOsBuild { get => minimalOsBuild; } // https://docs.microsoft.com/ru-ru/windows/release-health/release-information
+
         public List<TextedElement> TextedElements { get; private set; }
 
         public bool UpdateAvailable

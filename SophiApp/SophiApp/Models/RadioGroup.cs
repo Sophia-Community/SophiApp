@@ -9,9 +9,9 @@ namespace SophiApp.Models
 {
     internal class RadioGroup : TextedElement, IParentElements
     {
-        private readonly List<TextedChildDTO> ChildsDTO;
+        private readonly List<TextedChildDto> ChildsDTO;
 
-        public RadioGroup(TextedElementDTO dataObject) : base(dataObject)
+        public RadioGroup(TextedElementDto dataObject) : base(dataObject)
         {
             ChildsDTO = dataObject.ChildElements;
         }
@@ -45,7 +45,7 @@ namespace SophiApp.Models
             ChildElements = ChildsDTO.Select(child => FabricHelper.CreateChildElement(child, OnChildErrorOccured, statusHandler, language)).ToList();
             ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
             ChangeLanguage(language);
-            base.GetCustomisationStatus();
+            GetCustomisationStatus();
         }
 
         public override void ChangeLanguage(UILanguage language)

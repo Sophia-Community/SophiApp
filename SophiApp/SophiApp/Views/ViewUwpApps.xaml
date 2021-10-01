@@ -7,16 +7,6 @@
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:SophiApp.Controls"
              xmlns:models="clr-namespace:SophiApp.Models"
-             controls:ExpandingGroup.MouseEnter="TextedElement_MouseEnter"
-             controls:ExpandingGroup.MouseLeave="TextedElement_MouseLeave"
-             controls:RadioGroup.MouseEnter="TextedElement_MouseEnter"
-             controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
-             controls:Switch.MouseEnter="TextedElement_MouseEnter"
-             controls:Switch.MouseLeave="TextedElement_MouseLeave"
-             controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
-             controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
-             controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
-             controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
              IsVisibleChanged="ViewUwpApps_IsVisibleChanged">
 
     <UserControl.Resources>
@@ -24,10 +14,6 @@
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
-        </Style>
-        <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
-            <Setter Property="Grid.Column" Value="2" />
         </Style>
         <Style TargetType="{x:Type local:ViewUwpApps}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -43,38 +29,8 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.ColumnDefinitions>
-                    <!--UI content column-->
-                    <ColumnDefinition Width="4*" />
-                    <!--Description column-->
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <!--View header row-->
-                        <RowDefinition Height="50" />
-                        <!--View UI content row-->
-                        <RowDefinition Height="*" />
-                        <!--View UI content indent row-->
-                        <RowDefinition Height="10" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Style="{DynamicResource HeaderText}"
-                               Grid.Row="0"
-                               VerticalAlignment="Bottom"
-                               HorizontalAlignment="Left"
-                               Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
-                               Margin="20, 0, 0, 10" />
-
-                    <ScrollViewer x:Name="ScrollViewerContent"
-                                  Style="{DynamicResource ViewScrollStyle}">
-                    </ScrollViewer>
-                </Grid>
-                <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                    <TextBlock Style="{DynamicResource NormalText}"
-                               TextWrapping="Wrap"
-                               Margin="5"
-                               Text="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}" />
-                </StackPanel>
+                <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
+                </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.UwpApps}">
@@ -92,9 +48,6 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
-                </Trigger>
-                <Trigger Property="Visibility" Value="Collapsed">
-                    <Setter Property="Margin" Value="0, 10, 0, 0" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
