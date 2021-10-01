@@ -26,7 +26,7 @@
                 <controls:LoadingRing Visibility="{Binding Path=Visibility, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{x:Null}">
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Loading}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>

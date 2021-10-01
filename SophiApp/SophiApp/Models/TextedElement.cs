@@ -14,7 +14,7 @@ namespace SophiApp.Models
         private bool isClicked;
         private bool isEnabled;
 
-        internal TextedElement(TextedElementDTO dataObject)
+        internal TextedElement(TextedElementDto dataObject)
         {
             Headers = dataObject.Header;
             Descriptions = dataObject.Description;
@@ -22,7 +22,7 @@ namespace SophiApp.Models
             Tag = dataObject.Tag;
         }
 
-        internal TextedElement(TextedChildDTO dataObject)
+        internal TextedElement(TextedChildDto dataObject)
         {
             Headers = dataObject.ChildHeader;
             Descriptions = dataObject.ChildDescription;

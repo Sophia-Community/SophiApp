@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
 using SophiApp.Helpers;
+using SophiApp.Interfaces;
 using SophiApp.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
-        private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility = !AdvancedSettingsVisibility;
+        private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility.Invert();
 
         private async void ApplyingSettingsAsync(object args)
         {
@@ -29,18 +30,18 @@ namespace SophiApp.ViewModels
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetLoadingPanelVisibility();
 
-                customActions.ForEach(action =>
+                customActions.ForEach(action => 
+                {
+                    try
                     {
-                        try
-                        {
-                            action.Invoke();
-                            debugger.ActionEntry(action.Id, action.Parameter);
-                        }
-                        catch (Exception e)
-                        {
-                            debugger.Exception($"Customization action {action.Id} with parameter {action.Parameter} caused an error", e);
-                        }
-                    });
+                        action.Invoke();
+                        debugger.ActionEntry(action.Id, action.Parameter);
+                    }
+                    catch (Exception e)
+                    {
+                        debugger.Exception($"Customization action {action.Id} with parameter {action.Parameter} caused an error", e);
+                    }
+                });
 
                 customActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
@@ -65,7 +66,7 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private void DebugModeClicked(object args) => DebugMode = !DebugMode;
+        private void DebugModeClicked(object args) => DebugMode.Invert();
 
         private void HamburgerClicked(object args) => SetVisibleViewTag(args as string);
 
@@ -107,7 +108,8 @@ namespace SophiApp.ViewModels
             ViewsHitTest = true;
             WindowCloseHitTest = true;
             AdvancedSettingsVisibility = false;
-            customActions = new List<CustomActionDTO>();
+            VisibleViewByTag = Tags.ViewLoading;
+            customActions = new List<CustomActionDto>();
         }
 
         private async Task InitTextedElementsAsync()
@@ -116,7 +118,7 @@ namespace SophiApp.ViewModels
             {
                 debugger.StatusEntry("Started initialization texted elements");
                 var stopwatch = Stopwatch.StartNew();
-                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDTO>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => FabricHelper.CreateTextedElement(dataObject: dto,
                                                                                             errorHandler: OnTextedElementErrorAsync,
                                                                                             statusHandler: OnTextedElementStatusChanged,
@@ -126,9 +128,10 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private bool IsNewVersion(ReleaseDTO dto) => new Version(dto.tag_name) > DataHelper.Version && !dto.prerelease && !dto.draft;
+        private bool IsNewVersion(ReleaseDto dto) => new Version(dto.tag_name) > DataHelper.Version && dto.prerelease.Invert() && dto.draft.Invert();
 
-        private bool IsSupportedOs() => OsHelper.GetProductName().Contains(WINDOWS_10) && OsHelper.GetBuild() >= MinimalOsBuild;
+        //TODO: Remove!
+        //private bool IsSupportedOs() => OsHelper.GetProductName().Contains(WINDOWS_10) && OsHelper.GetBuild() >= MinimalOsBuild;
 
         private async void LocalizationChangeAsync(object args)
         {
@@ -272,7 +275,7 @@ namespace SophiApp.ViewModels
                     {
                         StreamReader reader = new StreamReader(dataStream);
                         var serverResponse = reader.ReadToEnd();
-                        var release = JsonConvert.DeserializeObject<List<ReleaseDTO>>(serverResponse).FirstOrDefault();
+                        var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
                         debugger.HasRelease(release.tag_name, release.prerelease, release.draft);
 
                         if (IsNewVersion(release))
@@ -295,7 +298,9 @@ namespace SophiApp.ViewModels
 
         internal async void InitData()
         {
-            if (IsSupportedOs())
+            var conditionsController = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
+            await conditionsController.InvokeAsync();
+            if (conditionsController.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);
                 //await UpdateIsAvailableAsync();
@@ -306,7 +311,37 @@ namespace SophiApp.ViewModels
                 return;
             }
 
-            SetVisibleViewTag(Tags.OsNotSupported);
+            //TODO: Need Something wrong View and del OsNotSupported View
         }
+
+        private void OnConditionsHelperError(object sender, Exception e)
+        {
+            debugger.Exception("An error occurred during the startup condition check", e);
+            SetVisibleViewTag(Tags.ConditionSomethingWrong);
+        }
+
+        private void OnConditionsChanged(object sender, ICondition e)
+        {
+            debugger.StatusEntry($"The result of startup condition {e.Tag} is: {e.Result}");
+            if (e.Result.Invert())
+                SetVisibleViewTag(e.Tag);
+        }
+
+        //TODO: Remove!
+        //internal async void InitData()
+        //{
+        //    if (IsSupportedOs())
+        //    {
+        //        MouseHelper.ShowWaitCursor(show: true);
+        //        //await UpdateIsAvailableAsync();
+        //        await InitTextedElementsAsync();
+        //        SetVisibleViewTag(Tags.ViewPrivacy);
+        //        SetControlsHitTest(hamburgerHitTest: true);
+        //        MouseHelper.ShowWaitCursor(show: false);
+        //        return;
+        //    }
+
+        //    SetVisibleViewTag(Tags.OsNotSupported);
+        //}
     }
 }

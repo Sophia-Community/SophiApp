@@ -9,9 +9,9 @@ namespace SophiApp.Models
 {
     internal class RadioGroup : TextedElement, IParentElements
     {
-        private readonly List<TextedChildDTO> ChildsDTO;
+        private readonly List<TextedChildDto> ChildsDTO;
 
-        public RadioGroup(TextedElementDTO dataObject) : base(dataObject)
+        public RadioGroup(TextedElementDto dataObject) : base(dataObject)
         {
             ChildsDTO = dataObject.ChildElements;
         }

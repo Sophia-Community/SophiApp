@@ -2,7 +2,7 @@
 
 namespace SophiApp.Commons
 {
-    public class CustomActionDTO
+    public class CustomActionDto
     {
         public Action<bool> Action { get; set; }
         public uint Id { get; set; }

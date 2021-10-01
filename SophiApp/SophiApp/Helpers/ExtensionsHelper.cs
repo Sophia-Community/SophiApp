@@ -7,14 +7,14 @@ namespace SophiApp.Helpers
 {
     public static class ExtensionsHelper
     {
-        public static void AddDataObject(this List<CustomActionDTO> list, uint id, Action<bool> action, bool parameter) => list.Add(new CustomActionDTO()
+        public static void AddDataObject(this List<CustomActionDto> list, uint id, Action<bool> action, bool parameter) => list.Add(new CustomActionDto()
         {
             Id = id,
             Action = action,
             Parameter = parameter
         });
 
-        public static bool ContainsId(this List<CustomActionDTO> list, uint id) => !(list.FirstOrDefault(action => action.Id == id) is null);
+        public static bool ContainsId(this List<CustomActionDto> list, uint id) => !(list.FirstOrDefault(action => action.Id == id) is null);
 
         public static bool HasNullOrValue(this int? integer, int value) => integer is null || integer == value;
 
@@ -28,7 +28,7 @@ namespace SophiApp.Helpers
             return source;
         }
 
-        public static void RemoveDataObject(this List<CustomActionDTO> list, uint id) => list.Remove(list.Find(action => action.Id == id));
+        public static void RemoveDataObject(this List<CustomActionDto> list, uint id) => list.Remove(list.Find(action => action.Id == id));
 
         public static List<string> Split(this List<string> source, string splitter)
         {

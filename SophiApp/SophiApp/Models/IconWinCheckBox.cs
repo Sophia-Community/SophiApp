@@ -4,7 +4,7 @@ namespace SophiApp.Models
 {
     internal class IconWinCheckBox : TextedElement
     {
-        public IconWinCheckBox(TextedElementDTO dataObject) : base(dataObject)
+        public IconWinCheckBox(TextedElementDto dataObject) : base(dataObject)
         {
         }
     }

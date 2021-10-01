@@ -62,8 +62,7 @@ namespace SophiApp.Helpers
         });
 
         internal void Save(string path) => File.WriteAllLines(path, new List<string>().Merge(InfoLog).Merge(UpdateLog).Split(string.Empty)
-                                                                                      .Merge(ErrorLog).Split(string.Empty).Merge(StatusLog)
-                                                                                      .Split(string.Empty));
+                                                                                      .Merge(ErrorLog).Split(string.Empty).Merge(StatusLog));
 
         internal void StatusEntry(string record) => StatusLog.Add($"{GetDateTimeString()}{record}");
 
