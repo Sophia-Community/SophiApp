@@ -27,22 +27,20 @@ namespace SophiApp.Helpers
 
         private void InitConditionsList() => conditions = new List<ICondition>()
         {
-            new OsBitness(), new OsBuildVersion(),
+            new OsBitness(), new OsBuildVersion(), new OsUpdateBuildRevision(),
+            new LoggedUserIsAdmin()
         };
 
         internal async Task InvokeAsync()
         {
             await Task.Run(() =>
             {
-                var result = false;
-
                 foreach (var condition in conditions)
                 {
                     try
                     {
-                        result = condition.Invoke();
+                        Result = condition.Invoke();
                         ConditionResult?.Invoke(null, condition);
-                        Result = result;
 
                         if (Result.Invert())
                             break;
@@ -51,6 +49,8 @@ namespace SophiApp.Helpers
                     catch (Exception e)
                     {
                         ErrorOccurred.Invoke(this, e);
+                        Result = false;
+                        break;
                     }
                 }
             });

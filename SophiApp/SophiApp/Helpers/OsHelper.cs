@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 
 namespace SophiApp.Helpers
 {
@@ -40,8 +41,11 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
-        internal static int GetBuild() => Environment.OSVersion.Version.Build;
+        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
 
+        internal static SecurityIdentifier GetCurrentUserSid() => GetCurrentUser().User;
+
+        internal static ushort GetBuild() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD).ToUshort();
         internal static string GetCurrentCultureName() => CultureInfo.CurrentCulture.EnglishName;
 
         internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: DISPLAY_VERSION_NAME) as string;
@@ -56,12 +60,14 @@ namespace SophiApp.Helpers
 
         internal static string GetRegisteredOwner() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: REGISTRED_OWNER_NAME) as string;
 
+        internal static ushort GetUpdateBuildRevision() => Convert.ToUInt16(RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, UBR));
+
         internal static string GetVersion()
         {
             var majorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MAJOR_VERSION_NUMBER);
             var minorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MINOR_VERSION_NUMBER);
-            var buildVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD);
-            var ubrVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, UBR);
+            var buildVersion = GetBuild();
+            var ubrVersion = GetUpdateBuildRevision();
             return $"{majorVersion}.{minorVersion}.{buildVersion}.{ubrVersion}";
         }
 

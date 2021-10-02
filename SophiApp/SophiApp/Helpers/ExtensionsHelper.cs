@@ -7,6 +7,8 @@ namespace SophiApp.Helpers
 {
     public static class ExtensionsHelper
     {
+        public static ushort ToUshort(this object value) => Convert.ToUInt16(value);
+
         public static void AddDataObject(this List<CustomActionDto> list, uint id, Action<bool> action, bool parameter) => list.Add(new CustomActionDto()
         {
             Id = id,

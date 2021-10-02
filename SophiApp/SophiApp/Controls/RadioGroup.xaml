@@ -1,12 +1,13 @@
-﻿<UserControl x:Class="SophiApp.Controls.RadioGroup"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:controls="clr-namespace:SophiApp.Controls"
-             xmlns:models="clr-namespace:SophiApp.Models"
-             xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="SophiApp.Controls.RadioGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SophiApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:SophiApp.Models"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type ItemsControl}">
@@ -16,7 +17,7 @@
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="0.5" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
-            <Setter Property="Margin" Value="0, 15, 0, 0" />
+            <Setter Property="Margin" Value="0,15,0,0" />
         </Style>
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="Orientation" Value="Vertical" />
@@ -30,24 +31,26 @@
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Margin" Value="20, 0, 0, 20" />
+            <Setter Property="Margin" Value="20,0,0,20" />
             <Setter Property="Id" Value="{Binding Id}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel>
-                <Grid x:Name="HeaderWrapper"
-                      MouseEnter="Header_MouseEnter"
-                      MouseLeave="Header_MouseLeave">
-                    <TextBlock x:Name="TextBlockHeader"
-                               Style="{DynamicResource NormalText}"
-                               Text="{Binding Header}"
-                               TextWrapping="Wrap" />
+                <Grid
+                    x:Name="HeaderWrapper"
+                    MouseEnter="Header_MouseEnter"
+                    MouseLeave="Header_MouseLeave">
+                    <TextBlock
+                        x:Name="TextBlockHeader"
+                        Style="{DynamicResource NormalText}"
+                        Text="{Binding Header}"
+                        TextWrapping="Wrap" />
                     <Grid.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
-                            <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
+                            <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                            <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
                         </ContextMenu>
                     </Grid.ContextMenu>
                 </Grid>
@@ -55,10 +58,11 @@
                 <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type models:RadioButton}">
-                            <controls:RadioButton IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                  IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                  Id="{Binding Id}"
-                                                  Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type controls:RadioGroup}}}" />
+                            <controls:RadioButton
+                                Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type controls:RadioGroup}}}"
+                                Id="{Binding Id}"
+                                IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </ItemsControl.Resources>
                 </ItemsControl>

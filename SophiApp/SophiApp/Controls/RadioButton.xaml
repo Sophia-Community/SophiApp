@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="SophiApp.Controls.RadioButton"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="SophiApp.Controls.RadioButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type Border}">
@@ -30,7 +31,7 @@
         <Style TargetType="{x:Type local:RadioButton}">
             <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-            <Setter Property="Margin" Value="0, 10, 0, 10" />
+            <Setter Property="Margin" Value="0,10,0,10" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -49,17 +50,18 @@
                 </Grid.ColumnDefinitions>
                 <Grid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" Click="ContextMenu_HeaderCopyClick" />
-                        <MenuItem Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" Click="ContextMenu_DescriptionCopyClick" />
+                        <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                        <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
                     </ContextMenu>
                 </Grid.ContextMenu>
-                <TextBlock x:Name="TextBlockHeader"
-                           Style="{DynamicResource NormalText}"
-                           Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
-                           Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}" />
+                <TextBlock
+                    x:Name="TextBlockHeader"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                    Style="{DynamicResource NormalText}"
+                    Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
+                    TextWrapping="Wrap" />
 
                 <Border x:Name="BorderRound" MouseLeftButtonDown="RadioButton_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseDot" />

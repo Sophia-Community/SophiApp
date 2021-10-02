@@ -1,20 +1,19 @@
 ﻿<UserControl
-    x:Class="SophiApp.Views.ViewLoading"
+    x:Class="SophiApp.Views.ViewOSBitness"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:SophiApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SophiApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type local:ViewLoading}">
+        <Style TargetType="{x:Type local:ViewOSBitness}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
-            <Setter Property="Tag" Value="{StaticResource Tags.View.Loading}" />
+            <Setter Property="Tag" Value="{StaticResource Tags.Conditions.OSBitness}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
         <Style TargetType="{x:Type Grid}">
@@ -23,11 +22,18 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
-                <controls:LoadingRing Visibility="{Binding Path=Visibility, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                <TextBlock
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                    Style="{DynamicResource NormalText}"
+                    Text="{DynamicResource Conditions.OSBitness}"
+                    TextWrapping="Wrap" />
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Loading}">
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.Conditions.OSBitness}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>

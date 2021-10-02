@@ -44,4 +44,8 @@
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
+    <system:String x:Key="Conditions.SomethingWrong">Unbelievable! Something went wrong and you hit a secret level</system:String>
+    <system:String x:Key="Conditions.OSBitness">Supports Windows 10 x64 only</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion">Supports Windows 10 2004/20H2/21H1/21H2 versions</system:String>
+    <system:String x:Key="Conditions.UpdateBuildRevision">Supported cumulative update: 1151 and higher</system:String>
 </ResourceDictionary>

@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="SophiApp.Controls.TitleRight"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="SophiApp.Controls.TitleRight"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style x:Key="Grid.Icon.Wrapper" TargetType="{x:Type Grid}">
@@ -18,7 +19,7 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Width" Value="16" />
             <Setter Property="Height" Value="16" />
-            <Setter Property="Margin" Value="0, 0, 5, 5" />
+            <Setter Property="Margin" Value="0,0,5,5" />
         </Style>
         <Style TargetType="{x:Type Path}">
             <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -33,22 +34,21 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                  MouseLeftButtonDown="TitleRight_MouseLeftButtonDown">
-                <Grid Style="{StaticResource Grid.Icon.Wrapper}"
-                      IsHitTestVisible="{Binding WindowCloseHitTest, UpdateSourceTrigger=PropertyChanged}"
-                      MouseLeftButtonDown="IconClose_MouseLeftButtonDown">
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" MouseLeftButtonDown="TitleRight_MouseLeftButtonDown">
+                <Grid
+                    IsHitTestVisible="{Binding WindowCloseHitTest, UpdateSourceTrigger=PropertyChanged}"
+                    MouseLeftButtonDown="IconClose_MouseLeftButtonDown"
+                    Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
-                        <Path x:Name="IconClose"
-                          Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                        <Path x:Name="IconClose" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
                     </Viewbox>
                 </Grid>
-                <Grid Style="{StaticResource Grid.Icon.Wrapper}"
-                      Margin="0, 0, 35, 0"
-                      MouseLeftButtonDown="IconMinimize_MouseLeftButtonDown">
+                <Grid
+                    Margin="0,0,35,0"
+                    MouseLeftButtonDown="IconMinimize_MouseLeftButtonDown"
+                    Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
-                        <Path x:Name="CloseMinimize"
-                          Data="M20,14H4V10H20" />
+                        <Path x:Name="CloseMinimize" Data="M20,14H4V10H20" />
                     </Viewbox>
                 </Grid>
             </Grid>

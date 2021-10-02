@@ -1,20 +1,23 @@
-﻿<UserControl x:Class="SophiApp.Controls.IconButton"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="SophiApp.Controls.IconButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Storyboard x:Key="ButtonClickAnimation"
-                    Storyboard.TargetName="ButtonTemplate"
-                    Storyboard.TargetProperty="RenderTransform.ScaleX"
-                    Completed="OnStoryboardCompleted">
-            <DoubleAnimation From="1.0"
-                             To="0.8"
-                             Duration="0:0:0.05"
-                             AutoReverse="True" />
+        <Storyboard
+            x:Key="ButtonClickAnimation"
+            Completed="OnStoryboardCompleted"
+            Storyboard.TargetName="ButtonTemplate"
+            Storyboard.TargetProperty="RenderTransform.ScaleX">
+            <DoubleAnimation
+                AutoReverse="True"
+                From="1.0"
+                To="0.8"
+                Duration="0:0:0.05" />
         </Storyboard>
         <Style TargetType="{x:Type Button}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -27,9 +30,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderThickness="0"
-                                CornerRadius="2">
+                        <Border
+                            Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                            BorderThickness="0"
+                            CornerRadius="2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -37,22 +41,25 @@
                                     <ColumnDefinition Width="32" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Style="{DynamicResource NormalText}"
-                                           Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}"
-                                           Grid.Column="0"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
-                                <!--Dividing Strip-->
-                                <Border Grid.Column="1"
-                                        Background="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                                        BorderThickness="0" />
-                                <!--Icon Content-->
-                                <ContentPresenter Grid.Column="2"
-                                                  VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"
-                                                  Width="32"
-                                                  Height="32"
-                                                  Content="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}" />
+                                <TextBlock
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{DynamicResource NormalText}"
+                                    Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}" />
+                                <!--  Dividing Strip  -->
+                                <Border
+                                    Grid.Column="1"
+                                    Background="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                    BorderThickness="0" />
+                                <!--  Icon Content  -->
+                                <ContentPresenter
+                                    Grid.Column="2"
+                                    Width="32"
+                                    Height="32"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type local:IconButton}}}" />
                             </Grid>
                         </Border>
                     </ControlTemplate>

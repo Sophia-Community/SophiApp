@@ -1,20 +1,36 @@
-﻿<UserControl x:Class="SophiApp.Views.ViewSettings"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:converters="clr-namespace:SophiApp.Converters"
-             xmlns:controls="clr-namespace:SophiApp.Controls"
-             xmlns:helpers="clr-namespace:SophiApp.Helpers"
-             xmlns:local="clr-namespace:SophiApp.Views"
-             mc:Ignorable="d"
-             IsVisibleChanged="ViewSettings_IsVisibleChanged">
+﻿<UserControl
+    x:Class="SophiApp.Views.ViewSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SophiApp.Controls"
+    xmlns:converters="clr-namespace:SophiApp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:SophiApp.Helpers"
+    xmlns:local="clr-namespace:SophiApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    IsVisibleChanged="ViewSettings_IsVisibleChanged"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
-        <Thickness x:Key="BlockIndent" Left="20" Top="0" Right="0" Bottom="15" />
-        <Thickness x:Key="ActorLinkIndent" Left="20" Top="0" Right="0" Bottom="0" />
-        <Thickness x:Key="DropDownListIndent" Left="20" Top="0" Right="0" Bottom="20" />
+        <Thickness
+            x:Key="BlockIndent"
+            Bottom="15"
+            Left="20"
+            Right="0"
+            Top="0" />
+        <Thickness
+            x:Key="ActorLinkIndent"
+            Bottom="0"
+            Left="20"
+            Right="0"
+            Top="0" />
+        <Thickness
+            x:Key="DropDownListIndent"
+            Bottom="20"
+            Left="20"
+            Right="0"
+            Top="0" />
         <Style x:Key="PanelContainer" TargetType="{x:Type StackPanel}">
             <Setter Property="Orientation" Value="Horizontal" />
             <Setter Property="Margin" Value="{StaticResource BlockIndent}" />
@@ -35,155 +51,168 @@
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <!--View header row-->
+                        <!--  View header row  -->
                         <RowDefinition Height="10" />
-                        <!--View UI content row-->
+                        <!--  View UI content row  -->
                         <RowDefinition Height="*" />
-                        <!--View UI content indent row-->
+                        <!--  View UI content indent row  -->
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer x:Name="ScrollViewerSettings" Style="{DynamicResource ViewScrollStyle}" Grid.Row="1">
+                    <ScrollViewer
+                        x:Name="ScrollViewerSettings"
+                        Grid.Row="1"
+                        Style="{DynamicResource ViewScrollStyle}">
                         <StackPanel>
-                            <TextBlock Style="{DynamicResource SubHeaderText}"
-                                       Text="{DynamicResource Localization.Settings.Themes}"
-                                       Margin="{StaticResource BlockIndent}" />
+                            <TextBlock
+                                Margin="{StaticResource BlockIndent}"
+                                Style="{DynamicResource SubHeaderText}"
+                                Text="{DynamicResource Localization.Settings.Themes}" />
 
-                            <controls:DropDownList Source="{Binding AppThemes, UpdateSourceTrigger=PropertyChanged}"
-                                                   SelectedText="{Binding AppSelectedTheme.Name, UpdateSourceTrigger=PropertyChanged}"
-                                                   Command="{Binding AppThemeChangeCommand}"
-                                                   Margin="{StaticResource DropDownListIndent}"
-                                                   HorizontalAlignment="Left" />
+                            <controls:DropDownList
+                                Margin="{StaticResource DropDownListIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding AppThemeChangeCommand}"
+                                SelectedText="{Binding AppSelectedTheme.Name, UpdateSourceTrigger=PropertyChanged}"
+                                Source="{Binding AppThemes, UpdateSourceTrigger=PropertyChanged}" />
 
-                            <TextBlock Style="{DynamicResource SubHeaderText}"
-                                       Text="{DynamicResource Localization.Settings.Languages}"
-                                       Margin="{StaticResource BlockIndent}" />
+                            <TextBlock
+                                Margin="{StaticResource BlockIndent}"
+                                Style="{DynamicResource SubHeaderText}"
+                                Text="{DynamicResource Localization.Settings.Languages}" />
 
-                            <controls:DropDownList Source="{Binding LocalizationList, UpdateSourceTrigger=PropertyChanged}"
-                                                   SelectedText="{Binding Localization.Name, UpdateSourceTrigger=PropertyChanged}"
-                                                   Command="{Binding LocalizationChangeCommand}"
-                                                   Margin="{StaticResource DropDownListIndent}"
-                                                   HorizontalAlignment="Left" />
+                            <controls:DropDownList
+                                Margin="{StaticResource DropDownListIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding LocalizationChangeCommand}"
+                                SelectedText="{Binding Localization.Name, UpdateSourceTrigger=PropertyChanged}"
+                                Source="{Binding LocalizationList, UpdateSourceTrigger=PropertyChanged}" />
 
-                            <controls:GitHubHyperLink HorizontalAlignment="Left"
-                                                      Command="{Binding HyperLinkClickedCommand}"
-                                                      CommandParameter="{x:Static helpers:DataHelper.GitHubRepo}"
-                                                      Margin="{StaticResource BlockIndent}" />
+                            <controls:GitHubHyperLink
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:DataHelper.GitHubRepo}" />
 
-                            <TextBlock Style="{DynamicResource SubHeaderText}"
-                                       Text="{DynamicResource Localization.Settings.Updates}"
-                                       Margin="{StaticResource BlockIndent}" />
+                            <TextBlock
+                                Margin="{StaticResource BlockIndent}"
+                                Style="{DynamicResource SubHeaderText}"
+                                Text="{DynamicResource Localization.Settings.Updates}" />
 
                             <StackPanel Style="{StaticResource PanelContainer}">
 
-                                <TextBlock Style="{DynamicResource NormalText}"
-                                           Text="{DynamicResource Localization.Settings.Version}" />
+                                <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.Settings.Version}" />
 
-                                <TextBlock Style="{DynamicResource NormalText}"
-                                           Text=":" />
+                                <TextBlock Style="{DynamicResource NormalText}" Text=":" />
 
-                                <TextBlock Style="{DynamicResource NormalText}"
-                                           Text="{Binding Source={x:Static helpers:DataHelper.Version}}"
-                                           Margin="3, 0, 0, 0" />
+                                <TextBlock
+                                    Margin="3,0,0,0"
+                                    Style="{DynamicResource NormalText}"
+                                    Text="{Binding Source={x:Static helpers:DataHelper.Version}}" />
                             </StackPanel>
 
-                            <controls:FilledButton IsEnabled="{Binding UpdateAvailable}"
-                                                   Text="{DynamicResource Localization.Settings.UpdateVersion}"
-                                                   Margin="{StaticResource BlockIndent}"
-                                                   HorizontalAlignment="Left"
-                                                   Command="{Binding HyperLinkClickedCommand}"
-                                                   CommandParameter="{x:Static helpers:DataHelper.GitHubReleasesPage}" />
+                            <controls:FilledButton
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:DataHelper.GitHubReleasesPage}"
+                                IsEnabled="{Binding UpdateAvailable}"
+                                Text="{DynamicResource Localization.Settings.UpdateVersion}" />
 
-                            <TextBlock Style="{DynamicResource SubHeaderText}"
-                                       Text="{DynamicResource Localization.Settings}"
-                                       Margin="{StaticResource BlockIndent}" />
+                            <TextBlock
+                                Margin="{StaticResource BlockIndent}"
+                                Style="{DynamicResource SubHeaderText}"
+                                Text="{DynamicResource Localization.Settings}" />
 
                             <StackPanel Style="{StaticResource PanelContainer}">
-                                <controls:IconButton Text="{DynamicResource Localization.Settings.Import}"
-                                                     IsEnabled="False">
+                                <controls:IconButton IsEnabled="False" Text="{DynamicResource Localization.Settings.Import}">
                                     <controls:IconButton.Content>
-                                            <Canvas Width="32" Height="32">
-                                                <Path Data="M21.5922 13.1165H18.7961C18.6038 13.1165 18.4466 13.2737 18.4466 13.466C18.4466 13.6582 18.6038 13.8155 18.7961 13.8155H21.5922C22.1689 13.8155 22.6407 14.2873 22.6407 14.864V23.2524C22.6407 23.8291 22.1689 24.3009 21.5922 24.3009H10.4077C9.83103 24.3009 9.35919 23.8291 9.35919 23.2524V14.864C9.35919 14.2873 9.83103 13.8155 10.4077 13.8155H13.5534C13.7456 13.8155 13.9029 13.6582 13.9029 13.466C13.9029 13.2737 13.7456 13.1165 13.5534 13.1165H10.4077C9.44656 13.1165 8.66016 13.9029 8.66016 14.864V23.2524C8.66016 24.2135 9.44656 25 10.4077 25H21.5922C22.5534 25 23.3398 24.2135 23.3398 23.2524V14.864C23.3398 13.9029 22.5534 13.1165 21.5922 13.1165Z"
-                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
-                                                <Path Data="M16.0001 8.2233C16.1924 8.2233 16.3497 8.06602 16.3497 7.87379V7.34951C16.3497 7.15728 16.1924 7 16.0001 7C15.8079 7 15.6506 7.15728 15.6506 7.34951V7.87379C15.6506 8.06602 15.8079 8.2233 16.0001 8.2233Z"
-                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
-                                                <Path Data="M12.662 16.2446C12.5222 16.3844 12.5222 16.5941 12.662 16.7339L15.7552 19.8271C15.8251 19.897 15.9125 19.932 15.9998 19.932C16.0872 19.932 16.1746 19.897 16.2445 19.8271L19.3377 16.7339C19.4775 16.5941 19.4775 16.3844 19.3377 16.2446C19.1979 16.1048 18.9882 16.1048 18.8484 16.2446L16.3494 18.7437V9.44656C16.3494 9.25433 16.1921 9.09705 15.9998 9.09705C15.8076 9.09705 15.6503 9.25433 15.6503 9.44656V18.7437L13.1513 16.2446C13.0115 16.1048 12.8018 16.1048 12.662 16.2446Z"
-                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
-                                            </Canvas>
+                                        <Canvas Width="32" Height="32">
+                                            <Path Data="M21.5922 13.1165H18.7961C18.6038 13.1165 18.4466 13.2737 18.4466 13.466C18.4466 13.6582 18.6038 13.8155 18.7961 13.8155H21.5922C22.1689 13.8155 22.6407 14.2873 22.6407 14.864V23.2524C22.6407 23.8291 22.1689 24.3009 21.5922 24.3009H10.4077C9.83103 24.3009 9.35919 23.8291 9.35919 23.2524V14.864C9.35919 14.2873 9.83103 13.8155 10.4077 13.8155H13.5534C13.7456 13.8155 13.9029 13.6582 13.9029 13.466C13.9029 13.2737 13.7456 13.1165 13.5534 13.1165H10.4077C9.44656 13.1165 8.66016 13.9029 8.66016 14.864V23.2524C8.66016 24.2135 9.44656 25 10.4077 25H21.5922C22.5534 25 23.3398 24.2135 23.3398 23.2524V14.864C23.3398 13.9029 22.5534 13.1165 21.5922 13.1165Z" Fill="{DynamicResource Brush.Button.Foreground}" />
+                                            <Path Data="M16.0001 8.2233C16.1924 8.2233 16.3497 8.06602 16.3497 7.87379V7.34951C16.3497 7.15728 16.1924 7 16.0001 7C15.8079 7 15.6506 7.15728 15.6506 7.34951V7.87379C15.6506 8.06602 15.8079 8.2233 16.0001 8.2233Z" Fill="{DynamicResource Brush.Button.Foreground}" />
+                                            <Path Data="M12.662 16.2446C12.5222 16.3844 12.5222 16.5941 12.662 16.7339L15.7552 19.8271C15.8251 19.897 15.9125 19.932 15.9998 19.932C16.0872 19.932 16.1746 19.897 16.2445 19.8271L19.3377 16.7339C19.4775 16.5941 19.4775 16.3844 19.3377 16.2446C19.1979 16.1048 18.9882 16.1048 18.8484 16.2446L16.3494 18.7437V9.44656C16.3494 9.25433 16.1921 9.09705 15.9998 9.09705C15.8076 9.09705 15.6503 9.25433 15.6503 9.44656V18.7437L13.1513 16.2446C13.0115 16.1048 12.8018 16.1048 12.662 16.2446Z" Fill="{DynamicResource Brush.Button.Foreground}" />
+                                        </Canvas>
                                     </controls:IconButton.Content>
                                 </controls:IconButton>
 
-                                <controls:IconButton Text="{DynamicResource Localization.Settings.Export}"
-                                                     Margin="10, 0, 0, 0"
-                                                     IsEnabled="False">
+                                <controls:IconButton
+                                    Margin="10,0,0,0"
+                                    IsEnabled="False"
+                                    Text="{DynamicResource Localization.Settings.Export}">
                                     <controls:IconButton.Content>
-                                            <Canvas Width="32" Height="32">
-                                                <Path Data="M21.5922 18.8835H18.7961C18.6038 18.8835 18.4466 18.7263 18.4466 18.534C18.4466 18.3418 18.6038 18.1845 18.7961 18.1845H21.5922C22.1689 18.1845 22.6407 17.7127 22.6407 17.136V8.74762C22.6407 8.17092 22.1689 7.69908 21.5922 7.69908H10.4077C9.83103 7.69908 9.35919 8.17092 9.35919 8.74762V17.136C9.35919 17.7127 9.83103 18.1845 10.4077 18.1845H13.5534C13.7456 18.1845 13.9029 18.3418 13.9029 18.534C13.9029 18.7263 13.7456 18.8835 13.5534 18.8835H10.4077C9.44656 18.8835 8.66016 18.0971 8.66016 17.136V8.74762C8.66016 7.78646 9.44656 7.00005 10.4077 7.00005H21.5922C22.5534 7.00005 23.3398 7.78646 23.3398 8.74762V17.136C23.3398 18.0971 22.5534 18.8835 21.5922 18.8835Z"
-                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
-                                                <Path Data="M16.0001 23.7767C16.1924 23.7767 16.3497 23.934 16.3497 24.1262V24.6505C16.3497 24.8427 16.1924 25 16.0001 25C15.8079 25 15.6506 24.8427 15.6506 24.6505V24.1262C15.6506 23.934 15.8079 23.7767 16.0001 23.7767Z"
-                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
-                                                <Path Data="M12.662 15.7554C12.5222 15.6156 12.5222 15.4059 12.662 15.2661L15.7552 12.1729C15.8251 12.103 15.9125 12.068 15.9998 12.068C16.0872 12.068 16.1746 12.103 16.2445 12.1729L19.3377 15.2661C19.4775 15.4059 19.4775 15.6156 19.3377 15.7554C19.1979 15.8952 18.9882 15.8952 18.8484 15.7554L16.3494 13.2563V22.5534C16.3494 22.7457 16.1921 22.903 15.9998 22.903C15.8076 22.903 15.6503 22.7457 15.6503 22.5534V13.2563L13.1513 15.7554C13.0115 15.8952 12.8018 15.8952 12.662 15.7554Z"
-                                                      Fill="{DynamicResource Brush.Button.Foreground}" />
-                                            </Canvas>
+                                        <Canvas Width="32" Height="32">
+                                            <Path Data="M21.5922 18.8835H18.7961C18.6038 18.8835 18.4466 18.7263 18.4466 18.534C18.4466 18.3418 18.6038 18.1845 18.7961 18.1845H21.5922C22.1689 18.1845 22.6407 17.7127 22.6407 17.136V8.74762C22.6407 8.17092 22.1689 7.69908 21.5922 7.69908H10.4077C9.83103 7.69908 9.35919 8.17092 9.35919 8.74762V17.136C9.35919 17.7127 9.83103 18.1845 10.4077 18.1845H13.5534C13.7456 18.1845 13.9029 18.3418 13.9029 18.534C13.9029 18.7263 13.7456 18.8835 13.5534 18.8835H10.4077C9.44656 18.8835 8.66016 18.0971 8.66016 17.136V8.74762C8.66016 7.78646 9.44656 7.00005 10.4077 7.00005H21.5922C22.5534 7.00005 23.3398 7.78646 23.3398 8.74762V17.136C23.3398 18.0971 22.5534 18.8835 21.5922 18.8835Z" Fill="{DynamicResource Brush.Button.Foreground}" />
+                                            <Path Data="M16.0001 23.7767C16.1924 23.7767 16.3497 23.934 16.3497 24.1262V24.6505C16.3497 24.8427 16.1924 25 16.0001 25C15.8079 25 15.6506 24.8427 15.6506 24.6505V24.1262C15.6506 23.934 15.8079 23.7767 16.0001 23.7767Z" Fill="{DynamicResource Brush.Button.Foreground}" />
+                                            <Path Data="M12.662 15.7554C12.5222 15.6156 12.5222 15.4059 12.662 15.2661L15.7552 12.1729C15.8251 12.103 15.9125 12.068 15.9998 12.068C16.0872 12.068 16.1746 12.103 16.2445 12.1729L19.3377 15.2661C19.4775 15.4059 19.4775 15.6156 19.3377 15.7554C19.1979 15.8952 18.9882 15.8952 18.8484 15.7554L16.3494 13.2563V22.5534C16.3494 22.7457 16.1921 22.903 15.9998 22.903C15.8076 22.903 15.6503 22.7457 15.6503 22.5534V13.2563L13.1513 15.7554C13.0115 15.8952 12.8018 15.8952 12.662 15.7554Z" Fill="{DynamicResource Brush.Button.Foreground}" />
+                                        </Canvas>
                                     </controls:IconButton.Content>
                                 </controls:IconButton>
                             </StackPanel>
 
-                            <controls:SettingSwitch Header="{DynamicResource Localization.Settings.Advanced}"
-                                                    Margin="{StaticResource BlockIndent}"
-                                                    Width="290"
-                                                    HorizontalAlignment="Left"
-                                                    IsChecked="{Binding AdvancedSettingsVisibility}"
-                                                    Command="{Binding AdvancedSettingsClickedCommand}" />
+                            <controls:SettingSwitch
+                                Width="290"
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding AdvancedSettingsClickedCommand}"
+                                Header="{DynamicResource Localization.Settings.Advanced}"
+                                IsChecked="{Binding AdvancedSettingsVisibility}" />
 
-                            <controls:FilledButton Text="{DynamicResource Localization.Settings.Reset}"
-                                                   Margin="{StaticResource BlockIndent}"
-                                                   HorizontalAlignment="Left"
-                                                   IsEnabled="False" />
+                            <controls:FilledButton
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                IsEnabled="False"
+                                Text="{DynamicResource Localization.Settings.Reset}" />
 
-                            <TextBlock Style="{DynamicResource SubHeaderText}"
-                                       Text="{DynamicResource Localization.Settings.Debug}"
-                                       Margin="{StaticResource BlockIndent}" />
+                            <TextBlock
+                                Margin="{StaticResource BlockIndent}"
+                                Style="{DynamicResource SubHeaderText}"
+                                Text="{DynamicResource Localization.Settings.Debug}" />
 
-                            <controls:SettingSwitch Header="{DynamicResource Localization.Settings.DebugMode}"
-                                                    Margin="{StaticResource BlockIndent}"
-                                                    Width="290"
-                                                    HorizontalAlignment="Left"
-                                                    IsChecked="{Binding DebugMode}"
-                                                    Command="{Binding DebugModeClickedCommand}"
-                                                    Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            <controls:SettingSwitch
+                                Width="290"
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding DebugModeClickedCommand}"
+                                Header="{DynamicResource Localization.Settings.DebugMode}"
+                                IsChecked="{Binding DebugMode}"
+                                Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}" />
 
-                            <controls:FilledButton Text="{DynamicResource Localization.Settings.Debug.Save}"
-                                                   Margin="{StaticResource BlockIndent}"
-                                                   HorizontalAlignment="Left"
-                                                   Command="{Binding SaveDebugLogCommand}" />
+                            <controls:FilledButton
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding SaveDebugLogCommand}"
+                                Text="{DynamicResource Localization.Settings.Debug.Save}" />
 
-                            <TextBlock Style="{DynamicResource SubHeaderText}"
-                                       Text="{DynamicResource Localization.Settings.Team}"
-                                       Margin="{StaticResource BlockIndent}" />
+                            <TextBlock
+                                Margin="{StaticResource BlockIndent}"
+                                Style="{DynamicResource SubHeaderText}"
+                                Text="{DynamicResource Localization.Settings.Team}" />
 
-                            <controls:ActorLink Role="{DynamicResource Localization.Settings.Leader}"
-                                                Actor="{DynamicResource Localization.Settings.Leader.Name}"
-                                                Icon="{DynamicResource Icon.GitHub}"
-                                                IconMargin="10, 0, 0, 12"
-                                                Margin="{StaticResource ActorLinkIndent}"
-                                                Command="{Binding HyperLinkClickedCommand}"
-                                                CommandParameter="{x:Static helpers:DataHelper.LeaderLink}" />
+                            <controls:ActorLink
+                                Margin="{StaticResource ActorLinkIndent}"
+                                Actor="{DynamicResource Localization.Settings.Leader.Name}"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:DataHelper.LeaderLink}"
+                                Icon="{DynamicResource Icon.GitHub}"
+                                IconMargin="10, 0, 0, 12"
+                                Role="{DynamicResource Localization.Settings.Leader}" />
 
-                            <controls:ActorLink Role="{DynamicResource Localization.Settings.Designer}"
-                                                Actor="{DynamicResource Localization.Settings.Designer.Name}"
-                                                Icon="{DynamicResource Icon.LinkedIn}"
-                                                IconMargin="10, 0, 0, 5"
-                                                Margin="{StaticResource ActorLinkIndent}"
-                                                Command="{Binding HyperLinkClickedCommand}"
-                                                CommandParameter="{x:Static helpers:DataHelper.DesignerLink}" />
+                            <controls:ActorLink
+                                Margin="{StaticResource ActorLinkIndent}"
+                                Actor="{DynamicResource Localization.Settings.Designer.Name}"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:DataHelper.DesignerLink}"
+                                Icon="{DynamicResource Icon.LinkedIn}"
+                                IconMargin="10, 0, 0, 5"
+                                Role="{DynamicResource Localization.Settings.Designer}" />
 
-                            <controls:ActorLink Role="{DynamicResource Localization.Settings.Coder}"
-                                                Actor="{DynamicResource Localization.Settings.Coder.Name}"
-                                                Icon="{DynamicResource Icon.GitHub}"
-                                                IconMargin="10, 0, 0, 20"
-                                                Margin="{StaticResource ActorLinkIndent}"
-                                                Command="{Binding HyperLinkClickedCommand}"
-                                                CommandParameter="{x:Static helpers:DataHelper.CoderLink}" />
+                            <controls:ActorLink
+                                Margin="{StaticResource ActorLinkIndent}"
+                                Actor="{DynamicResource Localization.Settings.Coder.Name}"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:DataHelper.CoderLink}"
+                                Icon="{DynamicResource Icon.GitHub}"
+                                IconMargin="10, 0, 0, 20"
+                                Role="{DynamicResource Localization.Settings.Coder}" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -199,17 +228,18 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                    From="0, 10, 0, 0"
-                                                    To="0, 0, 0, 0"
-                                                    Duration="0:0:01"
-                                                    SpeedRatio="10" />
+                                <ThicknessAnimation
+                                    SpeedRatio="10"
+                                    Storyboard.TargetProperty="Margin"
+                                    From="0, 10, 0, 0"
+                                    To="0, 0, 0, 0"
+                                    Duration="0:0:01" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                 </Trigger>
                 <Trigger Property="Visibility" Value="Collapsed">
-                    <Setter Property="Margin" Value="0, 10, 0, 0" />
+                    <Setter Property="Margin" Value="0,10,0,0" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

@@ -30,7 +30,7 @@ namespace SophiApp.ViewModels
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetLoadingPanelVisibility();
 
-                customActions.ForEach(action => 
+                customActions.ForEach(action =>
                 {
                     try
                     {

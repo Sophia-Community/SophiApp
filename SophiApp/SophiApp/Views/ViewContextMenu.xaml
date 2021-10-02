@@ -1,17 +1,21 @@
-﻿<UserControl x:Class="SophiApp.Views.ViewContextMenu"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:SophiApp.Views"
-             mc:Ignorable="d"
-             xmlns:converters="clr-namespace:SophiApp.Converters"
-             xmlns:controls="clr-namespace:SophiApp.Controls"
-             xmlns:models="clr-namespace:SophiApp.Models"
-             IsVisibleChanged="ViewContextMenu_IsVisibleChanged">
+﻿<UserControl
+    x:Class="SophiApp.Views.ViewContextMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SophiApp.Controls"
+    xmlns:converters="clr-namespace:SophiApp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:SophiApp.Models"
+    IsVisibleChanged="ViewContextMenu_IsVisibleChanged"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsFilter" />
+        <CollectionViewSource
+            x:Key="TextedElementsCollection"
+            Filter="TextedElementsFilter"
+            Source="{Binding TextedElements}" />
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
@@ -35,46 +39,52 @@
                     <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
-                                <controls:AdvancedRadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                             Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
-                                                             Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                             Margin="20, 10, 0, 5" />
+                                <controls:AdvancedRadioGroup
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                    Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
-                                <controls:AdvancedSwitch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
-                                                         Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                                                         Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
-                                                         Id="{Binding Id}"
-                                                         IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                         IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                         Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}, Converter={StaticResource BoolToVisibilityConverter}}"
-                                                         Margin="20, 10, 0, 5" />
+                                <controls:AdvancedSwitch
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
+                                    Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                    Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
+                                    Id="{Binding Id}"
+                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                    Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:Switch}">
-                                <controls:Switch Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
-                                                 Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                                                 Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
-                                                 Id="{Binding Id}"
-                                                 IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                 IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                 Margin="20, 10, 0, 5" />
+                                <controls:Switch
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
+                                    Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                    Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
+                                    Id="{Binding Id}"
+                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:RadioGroup}">
-                                <controls:RadioGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
-                                                     Margin="20, 10, 0, 5" />
+                                <controls:RadioGroup
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:CheckBox}">
-                                <controls:CheckBox Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
-                                                   Id="{Binding Id}"
-                                                   IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                   IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                                   Margin="20, 10, 0, 5" />
+                                <controls:CheckBox
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
+                                    Id="{Binding Id}"
+                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:ExpandingGroup}">
-                                <controls:ExpandingGroup IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
-                                                         Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
-                                                         Margin="20, 10, 0, 5" />
+                                <controls:ExpandingGroup
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewContextMenu}}}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </ItemsControl.Resources>
                     </ItemsControl>
@@ -88,11 +98,12 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                    From="0, 10, 0, 0"
-                                                    To="0, 0, 0, 0"
-                                                    Duration="0:0:01"
-                                                    SpeedRatio="10" />
+                                <ThicknessAnimation
+                                    SpeedRatio="10"
+                                    Storyboard.TargetProperty="Margin"
+                                    From="0, 10, 0, 0"
+                                    To="0, 0, 0, 0"
+                                    Duration="0:0:01" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
