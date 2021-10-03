@@ -20,5 +20,7 @@ namespace SophiApp.Commons
         internal static readonly string ConditionOsBuildVersion = Application.Current.FindResource("Tags.Conditions.OsBuildVersion") as string;
         internal static readonly string ConditionUpdateBuildRevision = Application.Current.FindResource("Tags.Conditions.UpdateBuildRevision") as string;
         internal static readonly string ConditionLoggedUserIsAdmin = Application.Current.FindResource("Tags.Conditions.LoggedUserIsAdmin") as string;
+        internal static readonly string ConditionOsNotInfected = Application.Current.FindResource("Tags.Conditions.OsNotInfected") as string;
+        internal static readonly string ConditionNoNewVersion = Application.Current.FindResource("Tags.Conditions.NoNewVersion") as string;
     }
 }

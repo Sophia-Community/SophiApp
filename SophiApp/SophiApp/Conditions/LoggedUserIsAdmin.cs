@@ -1,24 +1,17 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SophiApp.Conditions
 {
     internal class LoggedUserIsAdmin : ICondition
     {
+        private readonly string EXPLORER_PROCESS_NAME = "explorer";
+        private readonly string APP_PROCESS_NAME = DataHelper.AppName;
+
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionLoggedUserIsAdmin;
 
-        public bool Invoke()
-        {
-         // https://stackoverflow.com/questions/777548/how-do-i-determine-the-owner-of-a-process-in-c
-        }
+        public bool Invoke() => Result = ProcessHelper.GetProcessUser(EXPLORER_PROCESS_NAME).Name == ProcessHelper.GetProcessUser(APP_PROCESS_NAME).Name;
     }
 }

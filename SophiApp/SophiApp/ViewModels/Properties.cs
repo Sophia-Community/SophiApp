@@ -16,7 +16,6 @@ namespace SophiApp.ViewModels
         private bool loadingPanelVisibility;
         private LocalizationsHelper localizationsHelper;
         private ThemesHelper themesHelper;
-        private bool updateAvailable;
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
@@ -90,16 +89,6 @@ namespace SophiApp.ViewModels
         public List<string> LocalizationList => localizationsHelper.GetNames();
 
         public List<TextedElement> TextedElements { get; private set; }
-
-        public bool UpdateAvailable
-        {
-            get => updateAvailable;
-            set
-            {
-                updateAvailable = value;
-                OnPropertyChanged(UpdateAvailablePropertyName);
-            }
-        }
 
         public bool ViewsHitTest
         {

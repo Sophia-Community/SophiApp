@@ -2,8 +2,6 @@
 using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SophiApp.Helpers
@@ -28,7 +26,7 @@ namespace SophiApp.Helpers
         private void InitConditionsList() => conditions = new List<ICondition>()
         {
             new OsBitness(), new OsBuildVersion(), new OsUpdateBuildRevision(),
-            new LoggedUserIsAdmin()
+            new LoggedUserIsAdmin(), new OsNotInfected(), new NoNewVersion()
         };
 
         internal async Task InvokeAsync()
@@ -44,17 +42,15 @@ namespace SophiApp.Helpers
 
                         if (Result.Invert())
                             break;
-
                     }
                     catch (Exception e)
                     {
-                        ErrorOccurred.Invoke(this, e);
                         Result = false;
+                        ErrorOccurred.Invoke(this, e);
                         break;
                     }
                 }
             });
         }
-
     }
 }

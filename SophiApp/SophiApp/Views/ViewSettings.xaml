@@ -93,7 +93,7 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:DataHelper.GitHubRepo}" />
 
-                            <TextBlock
+                            <!--<TextBlock
                                 Margin="{StaticResource BlockIndent}"
                                 Style="{DynamicResource SubHeaderText}"
                                 Text="{DynamicResource Localization.Settings.Updates}" />
@@ -108,15 +108,15 @@
                                     Margin="3,0,0,0"
                                     Style="{DynamicResource NormalText}"
                                     Text="{Binding Source={x:Static helpers:DataHelper.Version}}" />
-                            </StackPanel>
+                            </StackPanel>-->
 
-                            <controls:FilledButton
+                            <!--<controls:FilledButton
                                 Margin="{StaticResource BlockIndent}"
                                 HorizontalAlignment="Left"
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:DataHelper.GitHubReleasesPage}"
                                 IsEnabled="{Binding UpdateAvailable}"
-                                Text="{DynamicResource Localization.Settings.UpdateVersion}" />
+                                Text="{DynamicResource Localization.Settings.UpdateVersion}" />-->
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"

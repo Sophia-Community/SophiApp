@@ -7,9 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Debugger = SophiApp.Helpers.DebugHelper;
@@ -128,11 +126,6 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private bool IsNewVersion(ReleaseDto dto) => new Version(dto.tag_name) > DataHelper.Version && dto.prerelease.Invert() && dto.draft.Invert();
-
-        //TODO: Remove!
-        //private bool IsSupportedOs() => OsHelper.GetProductName().Contains(WINDOWS_10) && OsHelper.GetBuild() >= MinimalOsBuild;
-
         private async void LocalizationChangeAsync(object args)
         {
             await Task.Run(() =>
@@ -245,8 +238,6 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
-        private void SetUpdateAvailableProperty(bool state) => UpdateAvailable = state;
-
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
         private async void TextedElementClickedAsync(object args)
@@ -260,58 +251,22 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async Task UpdateIsAvailableAsync()
-        {
-            await Task.Run(() =>
-            {
-                HttpWebRequest request = WebRequest.CreateHttp(DataHelper.GitHubApiReleases);
-                request.UserAgent = DataHelper.UserAgent;
-
-                try
-                {
-                    var response = request.GetResponse();
-                    debugger.UpdateResponseIsNull(response is null);
-                    using (Stream dataStream = response.GetResponseStream())
-                    {
-                        StreamReader reader = new StreamReader(dataStream);
-                        var serverResponse = reader.ReadToEnd();
-                        var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
-                        debugger.HasRelease(release.tag_name, release.prerelease, release.draft);
-
-                        if (IsNewVersion(release))
-                        {
-                            debugger.UpdateEntry("The update can be done");
-                            SetUpdateAvailableProperty(true);
-                            ToastHelper.ShowUpdateToast(currentVersion: DataHelper.Version.ToString(), newVersion: release.tag_name);
-                            return;
-                        }
-
-                        debugger.UpdateEntry("No update required");
-                    }
-                }
-                catch (Exception e)
-                {
-                    debugger.Exception("An error occurred while checking for an update", e);
-                }
-            });
-        }
-
         internal async void InitData()
         {
+            debugger.StatusEntry("Starting the initial OS conditions");
+            var stopwatch = Stopwatch.StartNew();
             var conditionsController = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
             await conditionsController.InvokeAsync();
+            debugger.StopInit(stopwatch);
+
             if (conditionsController.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);
-                //await UpdateIsAvailableAsync();
                 await InitTextedElementsAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);
-                return;
             }
-
-            //TODO: Need Something wrong View and del OsNotSupported View
         }
 
         private void OnConditionsHelperError(object sender, Exception e)
@@ -322,26 +277,9 @@ namespace SophiApp.ViewModels
 
         private void OnConditionsChanged(object sender, ICondition e)
         {
-            debugger.StatusEntry($"The result of startup condition {e.Tag} is: {e.Result}");
+            debugger.StatusEntry($"{e.Tag} is: {e.Result}");
             if (e.Result.Invert())
                 SetVisibleViewTag(e.Tag);
         }
-
-        //TODO: Remove!
-        //internal async void InitData()
-        //{
-        //    if (IsSupportedOs())
-        //    {
-        //        MouseHelper.ShowWaitCursor(show: true);
-        //        //await UpdateIsAvailableAsync();
-        //        await InitTextedElementsAsync();
-        //        SetVisibleViewTag(Tags.ViewPrivacy);
-        //        SetControlsHitTest(hamburgerHitTest: true);
-        //        MouseHelper.ShowWaitCursor(show: false);
-        //        return;
-        //    }
-
-        //    SetVisibleViewTag(Tags.OsNotSupported);
-        //}
     }
 }

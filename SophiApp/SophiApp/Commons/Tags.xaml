@@ -1,6 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="Tags.View.Loading">Loading</system:String>
     <system:String x:Key="Tags.View.Privacy">Privacy</system:String>
     <system:String x:Key="Tags.View.Personalization">Personalization</system:String>
@@ -17,4 +18,6 @@
     <system:String x:Key="Tags.Conditions.SomethingWrong">SomethingWrong</system:String>
     <system:String x:Key="Tags.Conditions.UpdateBuildRevision">UpdateBuildRevision</system:String>
     <system:String x:Key="Tags.Conditions.LoggedUserIsAdmin">LoggedUserIsAdmin</system:String>
+    <system:String x:Key="Tags.Conditions.OsNotInfected">OsNotInfected</system:String>
+    <system:String x:Key="Tags.Conditions.NoNewVersion">NoNewVersion</system:String>
 </ResourceDictionary>

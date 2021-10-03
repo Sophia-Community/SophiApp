@@ -11,7 +11,7 @@ namespace SophiApp.Helpers
         private List<string> ErrorLog = new List<string>();
         private List<string> InfoLog;
         private List<string> StatusLog = new List<string>();
-        private List<string> UpdateLog = new List<string>();
+        private static List<string> UpdateLog = new List<string>();
 
         public DebugHelper(string language, string theme)
         {
@@ -68,11 +68,13 @@ namespace SophiApp.Helpers
 
         internal void StopApplying(Stopwatch stopwatch) => StatusEntry($"It took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds to apply the setting(s)");
 
-        internal void StopInit(Stopwatch stopwatch) => StatusEntry($"The collection initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
+        internal void StopInit(Stopwatch stopwatch) => StatusEntry($"The initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
 
         internal void UpdateEntry(string record) => UpdateLog.Add(record);
 
-        internal void UpdateResponseIsNull(bool isNull) => UpdateEntry(isNull ? "When checking for an update, no response was received from the update server"
-                                                                            : "When checking for an update, a response was received from the update server");
+        internal static void UpdateWrite(string record) => UpdateLog.Add(record);
+
+        internal static void UpdateResponseIsNull(bool isNull) => UpdateLog.Add(isNull ? "When checking for an update, no response was received from the update server"
+                                                                                       : "When checking for an update, a response was received from the update server");
     }
 }

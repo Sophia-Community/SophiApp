@@ -46,6 +46,7 @@ namespace SophiApp.Helpers
         internal static SecurityIdentifier GetCurrentUserSid() => GetCurrentUser().User;
 
         internal static ushort GetBuild() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD).ToUshort();
+
         internal static string GetCurrentCultureName() => CultureInfo.CurrentCulture.EnglishName;
 
         internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: DISPLAY_VERSION_NAME) as string;

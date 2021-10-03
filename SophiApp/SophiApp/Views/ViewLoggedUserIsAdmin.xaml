@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="SophiApp.Views.ViewOsBuildVersion"
+    x:Class="SophiApp.Views.ViewLoggedUserIsAdmin"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,12 +8,12 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type local:ViewOsBuildVersion}">
+        <Style TargetType="{x:Type local:ViewLoggedUserIsAdmin}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
-            <Setter Property="Tag" Value="{StaticResource Tags.Conditions.OsBuildVersion}" />
+            <Setter Property="Tag" Value="{StaticResource Tags.Conditions.LoggedUserIsAdmin}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
         <Style TargetType="{x:Type Grid}">
@@ -29,11 +29,11 @@
                     VerticalAlignment="Center"
                     Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                     Style="{DynamicResource NormalText}"
-                    Text="{DynamicResource Conditions.OsBuildVersion}"
+                    Text="{DynamicResource Conditions.LoggedUserIsAdmin}"
                     TextWrapping="Wrap" />
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.Conditions.OsBuildVersion}">
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.Conditions.LoggedUserIsAdmin}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>

@@ -184,8 +184,10 @@
                 <views:ViewSomethingWrong Grid.Column="1" Panel.ZIndex="20" />
                 <views:ViewOSBitness Grid.Column="1" Panel.ZIndex="20" />
                 <views:ViewOsBuildVersion Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewOsUpdateBuildRevision Grid.Column="1" Panel.ZIndex="20"/>
-
+                <views:ViewOsUpdateBuildRevision Grid.Column="1" Panel.ZIndex="20" />
+                <views:ViewLoggedUserIsAdmin Grid.Column="1" Panel.ZIndex="20" />
+                <views:ViewOsIsInfected Grid.Column="1" Panel.ZIndex="20" />
+                <views:ViewNoNewVersion Grid.Column="1" Panel.ZIndex="20" />
                 <Grid Grid.Column="1" Panel.ZIndex="10">
                     <!--  Wrapper Grid For Views With Description and Info Panel  -->
                     <Grid.ColumnDefinitions>

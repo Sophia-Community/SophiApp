@@ -1,6 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Localization.Settings.Themes.Light">Светлая</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Тёмная</system:String>
@@ -32,9 +33,9 @@
     <system:String x:Key="Localization.Settings.Designer">Дизайн:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Владимир Nameless</system:String>
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
-    <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий "farag" Нефёдов</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий &quot;farag&quot; Нефёдов</system:String>
     <system:String x:Key="Localization.Settings.Coder">Разработка:</system:String>
-    <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий "Inestic" Дёмин</system:String>
+    <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий &quot;Inestic&quot; Дёмин</system:String>
     <system:String x:Key="Localization.Search">Поиск</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Изменено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
@@ -48,4 +49,7 @@
     <system:String x:Key="Conditions.OSBitness">Поддерживается только Windows 10 x64</system:String>
     <system:String x:Key="Conditions.OsBuildVersion">Поддерживается только Windows 10 версии 2004/20H2/21H1/21H2</system:String>
     <system:String x:Key="Conditions.UpdateBuildRevision">Поддерживается накопительный пакет обновления: 1151 и выше</system:String>
+    <system:String x:Key="Conditions.LoggedUserIsAdmin">Текущий вошедший пользователь не обладает правами администратора</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном</system:String>
+    <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия</system:String>
 </ResourceDictionary>

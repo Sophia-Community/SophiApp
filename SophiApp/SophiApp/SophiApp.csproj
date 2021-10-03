@@ -91,9 +91,11 @@
     <Compile Include="Commons\Theme.cs" />
     <Compile Include="Commons\ElementStatus.cs" />
     <Compile Include="Commons\UILanguage.cs" />
+    <Compile Include="Conditions\NoNewVersion.cs" />
     <Compile Include="Conditions\LoggedUserIsAdmin.cs" />
     <Compile Include="Conditions\OsBitness.cs" />
     <Compile Include="Conditions\OsBuildVersion.cs" />
+    <Compile Include="Conditions\OsNotInfected.cs" />
     <Compile Include="Conditions\OsUpdateBuildRevision.cs" />
     <Compile Include="Controls\ActorLink.xaml.cs">
       <DependentUpon>ActorLink.xaml</DependentUpon>
@@ -193,6 +195,7 @@
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\OsHelper.cs" />
+    <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
     <Compile Include="Helpers\ScheduledTaskHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
@@ -223,11 +226,20 @@
     <Compile Include="Views\ViewContextMenu.xaml.cs" />
     <Compile Include="Views\ViewGames.xaml.cs" />
     <Compile Include="Views\ViewLoading.xaml.cs" />
+    <Compile Include="Views\ViewLoggedUserIsAdmin.xaml.cs">
+      <DependentUpon>ViewLoggedUserIsAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewNoNewVersion.xaml.cs">
+      <DependentUpon>ViewNoNewVersion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewOSBitness.xaml.cs">
       <DependentUpon>ViewOSBitness.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewOsBuildVersion.xaml.cs">
       <DependentUpon>ViewOsBuildVersion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewOsIsInfected.xaml.cs">
+      <DependentUpon>ViewOsIsInfected.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewOsUpdateBuildRevision.xaml.cs">
       <DependentUpon>ViewOsUpdateBuildRevision.xaml</DependentUpon>
@@ -395,11 +407,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ViewLoggedUserIsAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewNoNewVersion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewOSBitness.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewOsBuildVersion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewOsIsInfected.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

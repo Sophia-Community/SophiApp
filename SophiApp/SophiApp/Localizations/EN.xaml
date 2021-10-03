@@ -1,6 +1,7 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Localization.Settings.Themes.Light">Light</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Dark</system:String>
@@ -32,9 +33,9 @@
     <system:String x:Key="Localization.Settings.Designer">Design by</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
-    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry "farag" Nefedov</system:String>
+    <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
     <system:String x:Key="Localization.Settings.Coder">Developed by:</system:String>
-    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry "Inestic" Demin</system:String>
+    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry &quot;Inestic&quot; Demin</system:String>
     <system:String x:Key="Localization.Search">Search</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">settings</system:String>
@@ -48,4 +49,7 @@
     <system:String x:Key="Conditions.OSBitness">Supports Windows 10 x64 only</system:String>
     <system:String x:Key="Conditions.OsBuildVersion">Supports Windows 10 2004/20H2/21H1/21H2 versions</system:String>
     <system:String x:Key="Conditions.UpdateBuildRevision">Supported cumulative update: 1151 and higher</system:String>
+    <system:String x:Key="Conditions.LoggedUserIsAdmin">The logged-on user doesn't have admin rights</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Probably your OS was infected via the Win 10 Tweaker backdoor</system:String>
+    <system:String x:Key="Conditions.NoNewVersion">A new version found</system:String>
 </ResourceDictionary>
