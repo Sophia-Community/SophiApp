@@ -1,80 +1,115 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 
 namespace SophiApp.Helpers
 {
     internal class DebugHelper
     {
-        private List<string> ErrorLog = new List<string>();
-        private List<string> InfoLog;
-        private List<string> StatusLog = new List<string>();
-        private static List<string> UpdateLog = new List<string>();
+        private const string APP_FOLDER = "Application folder";
+        private const string APP_LOC = "Application localization";
+        private const string APP_THEME = "Application theme";
+        private const string APP_VER = "Application version";
+        private const string PC_NAME = "Computer name";
+        private const string REG_ORG = "Registered organization";
+        private const string REG_OWNER = "Registered owner";
+        private const string USER_CULTURE = "User culture";
+        private const string USER_DOMAIN = "User domain";
+        private const string USER_NAME = "Current user";
+        private const string USER_REGION = "User region";
+        private static List<string> ErrorsLog = new List<string>();
 
-        public DebugHelper(string language, string theme)
+        private static List<string> InfoLog = new List<string>
         {
-            InfoLog = new List<string>
-            {
-                $"Application version: {DataHelper.Version}",
-                $"Application launch folder: \"{DataHelper.StartupFolder}\"",
-                $"Application localization: {language}",
-                $"Application theme: {theme}",
-                $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()} build: {OsHelper.GetVersion()}",
-                $"Registered organization: {OsHelper.GetRegisteredOrganization()}",
-                $"Registered owner: {OsHelper.GetRegisteredOwner()}",
-                $"Computer name: {Environment.MachineName}",
-                $"Current user: {Environment.UserName}",
-                $"User domain: {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}",
-                $"User culture: {OsHelper.GetCurrentCultureName()}",
-                $"User region: {OsHelper.GetRegionName()}"
-            };
-        }
+            $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()} build: {OsHelper.GetVersion()}",
+            $"{PC_NAME}: {Environment.MachineName}",
+            $"{REG_ORG}: {OsHelper.GetRegisteredOrganization()}",
+            $"{REG_OWNER}: {OsHelper.GetRegisteredOwner()}",
+            $"{USER_NAME}: {Environment.UserName}",
+            $"{USER_DOMAIN}: {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}",
+            $"{USER_CULTURE}: {OsHelper.GetCurrentCultureName()}",
+            $"{USER_REGION}: {OsHelper.GetRegionName()}",
+            $"{APP_VER}: {DataHelper.Version}",
+            $"{APP_FOLDER}: \"{DataHelper.StartupFolder}\""
+        };
 
-        private string GetDateTimeString()
+        private static List<string> StatusLog = new List<string>();
+
+        private static void WriteInfoLog(string record) => InfoLog.Add(record);
+
+        private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
+
+        private static void WriteStatusLog(string record)
         {
             var dateTime = DateTime.Now;
-            return $"{dateTime.ToShortDateString()}\t{dateTime.ToLongTimeString()}\t";
+            StatusLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
         }
 
-        internal void ActionEntry(uint id, bool parameter) => StatusEntry($"Customization action {id} with parameter {parameter} completed successfully");
+        internal static void ActionTaked(uint actionID, bool actionParameter) => WriteStatusLog($"Customization action {actionID} with parameter {actionParameter} completed successfully");
 
-        internal void ElementChanged(uint id, ElementStatus status) => StatusEntry($"The element {id} has changed status to: {status}");
+        internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
 
-        internal void Exception(string message, Exception e)
+        internal static void AppLanguage(string language) => WriteInfoLog($"{APP_LOC}: {language}");
+
+        internal static void AppTheme(string theme) => WriteInfoLog($"{APP_THEME}: {theme}");
+
+        internal static void DebugMode(bool value) => WriteStatusLog($"Debug mode is: {value}");
+
+        internal static void HasException(string message, Exception e)
         {
-            var dateTime = GetDateTimeString();
-            ErrorLog.AddRange(new List<string>()
+            var dateTime = DateTime.Now;
+            ErrorsLog.AddRange(new List<string>()
             {
-                $"{dateTime}{message}",
-                $"{dateTime}Error information: {e.Message}",
-                $"{dateTime}The class that caused the error: {e.TargetSite.DeclaringType.FullName}",
-                $"{dateTime}The method that caused the error: {e.TargetSite.Name}"
+                $"{dateTime} {message}",
+                $"{dateTime} Error information: {e.Message}",
+                $"{dateTime} The class that caused the error: {e.TargetSite.DeclaringType.FullName}",
+                $"{dateTime} The method that caused the error: {e.TargetSite.Name}"
             });
         }
 
-        internal void HasRelease(string version, bool prerelease, bool draft) => UpdateLog.AddRange(new List<string>()
+        internal static void HasUpdateRelease(ReleaseDto release) => WriteInfoLog(new List<string>()
         {
-            $"New version {version} is available",
-            $"Version {version} is prerelease: {prerelease}",
-            $"Version {version} is draft: {draft}"
+            $"New version is available: {release.tag_name}",
+            $"Is prerelease: {release.prerelease}",
+            $"Is draft: {release.draft}"
         });
 
-        internal void Save(string path) => File.WriteAllLines(path, new List<string>().Merge(InfoLog).Merge(UpdateLog).Split(string.Empty)
-                                                                                      .Merge(ErrorLog).Split(string.Empty).Merge(StatusLog));
+        internal static void HasUpdateResponse() => WriteInfoLog("When checking for an update, a response was received from the update server");
 
-        internal void StatusEntry(string record) => StatusLog.Add($"{GetDateTimeString()}{record}");
+        internal static void IsNewRelease() => WriteInfoLog("The update can be done");
 
-        internal void StopApplying(Stopwatch stopwatch) => StatusEntry($"It took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds to apply the setting(s)");
+        internal static void LinkClicked(string link) => WriteStatusLog($"Clicked link: \"{link}\"");
 
-        internal void StopInit(Stopwatch stopwatch) => StatusEntry($"The initialization took {string.Format("{0:N0}", stopwatch.Elapsed.TotalSeconds)} seconds");
+        internal static void OsConditionChanged(ICondition condition) => WriteStatusLog($"{condition.Tag} is: {condition.Result}");
 
-        internal void UpdateEntry(string record) => UpdateLog.Add(record);
+        internal static void Save(string path) => File.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(StatusLog));
 
-        internal static void UpdateWrite(string record) => UpdateLog.Add(record);
+        internal static void SelectedLocalization(string localization) => WriteStatusLog($"Localization selected: {localization}");
 
-        internal static void UpdateResponseIsNull(bool isNull) => UpdateLog.Add(isNull ? "When checking for an update, no response was received from the update server"
-                                                                                       : "When checking for an update, a response was received from the update server");
+        internal static void SelectedTheme(string value) => WriteStatusLog($"Theme selected: {value}");
+
+        internal static void StartApplyingSettings(int actionsCount) => WriteStatusLog($"Started applying {actionsCount} setting(s)");
+
+        internal static void StartInitOsConditions() => WriteStatusLog("Starting the initial OS conditions");
+
+        internal static void StartInitTextedElements() => WriteStatusLog("Started initialization of texted elements");
+
+        internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
+
+        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying the setting(s) took {totalSeconds:N0} seconds");
+
+        internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} seconds to initialize Os conditions");
+
+        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} seconds to initialize texted elements");
+
+        internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} seconds to reset texted elements");
+
+        internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The element {elementID} has changed status to: {elementStatus}");
+
+        internal static void UpdateNotnecessary() => WriteInfoLog("No update required");
+
+        internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
     }
 }

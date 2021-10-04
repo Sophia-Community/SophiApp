@@ -182,7 +182,6 @@
                 <views:ViewLoading Grid.Column="1" Panel.ZIndex="30" />
                 <views:ViewSettings Grid.Column="1" Panel.ZIndex="20" />
                 <views:ViewSomethingWrong Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewOSBitness Grid.Column="1" Panel.ZIndex="20" />
                 <views:ViewOsBuildVersion Grid.Column="1" Panel.ZIndex="20" />
                 <views:ViewOsUpdateBuildRevision Grid.Column="1" Panel.ZIndex="20" />
                 <views:ViewLoggedUserIsAdmin Grid.Column="1" Panel.ZIndex="20" />

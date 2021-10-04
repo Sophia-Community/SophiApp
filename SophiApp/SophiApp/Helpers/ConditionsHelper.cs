@@ -8,32 +8,33 @@ namespace SophiApp.Helpers
 {
     internal class ConditionsHelper
     {
-        public bool Result { get; set; } = false;
+        private List<ICondition> ConditionsList;
+
+        public ConditionsHelper(EventHandler<Exception> errorHandler, EventHandler<ICondition> resultHandler)
+        {
+            InitializingConditions();
+            ErrorOccurred += errorHandler;
+            ConditionResult += resultHandler;
+        }
 
         public event EventHandler<ICondition> ConditionResult;
 
         public event EventHandler<Exception> ErrorOccurred;
 
-        private List<ICondition> conditions;
+        public bool Result { get; set; } = false;
 
-        public ConditionsHelper(EventHandler<Exception> errorHandler, EventHandler<ICondition> resultHandler)
+        private void InitializingConditions() => ConditionsList = new List<ICondition>()
         {
-            InitConditionsList();
-            ErrorOccurred += errorHandler;
-            ConditionResult += resultHandler;
-        }
-
-        private void InitConditionsList() => conditions = new List<ICondition>()
-        {
-            new OsBitness(), new OsBuildVersion(), new OsUpdateBuildRevision(),
-            new LoggedUserIsAdmin(), new OsNotInfected(), new NoNewVersion()
+            new OsBuildVersion(), new OsUpdateBuildRevision(),
+            new LoggedUserIsAdmin(), new OsNotInfected(),
+            new NoNewVersion()
         };
 
         internal async Task InvokeAsync()
         {
             await Task.Run(() =>
             {
-                foreach (var condition in conditions)
+                foreach (var condition in ConditionsList)
                 {
                     try
                     {

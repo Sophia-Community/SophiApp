@@ -24,25 +24,24 @@
 #>
 Clear-Host
 
-$MethodsCS = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\ViewModels\Methods.cs"
+$ConditionsHelper = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Helpers\ConditionsHelper.cs"
 $CommentPattern = "//"
-$UpdatePattern = "//await UpdateIsAvailableAsync()"
+$UpdatePattern = "//new NoNewVersion()"
 
-Write-Host "`nPath to Methods.cs: ""$MethodsCS"""
+Write-Host "`nPath to ConditionsHelper.cs: ""$ConditionsHelper"""
 
-if (Test-Path -Path $MethodsCS)
+if (Test-Path -Path $ConditionsHelper)
 {
-	Write-Host "`nMethods.cs found"
+	Write-Host "`nConditionsHelper.cs found"
 
-	$MethodsContent = Get-Content -Path $MethodsCS
+	$MethodsContent = Get-Content -Path $ConditionsHelper
 	$LineNumber = ($MethodsContent | Select-String -Pattern $UpdatePattern | Select-Object -Last 1).LineNumber
 	$FormatedString = $MethodsContent[$LineNumber - 1]
 	$MethodsContent[$LineNumber - 1] = $FormatedString.Replace($CommentPattern, $null)	
-	Set-Content -Path $MethodsCS -Value $MethodsContent -Confirm:$false -Encoding UTF8 -Force
-
-	Write-Host "`nFile ""$MethodsCS"" saved"
+	Set-Content -Path $ConditionsHelper -Value $MethodsContent -Confirm:$false -Encoding UTF8 -Force
+	Write-Host "`nFile ""$ConditionsHelper"" saved"
 }
 else
 {
-	Write-Host "`nMethods.cs not found"
+	Write-Host "`nConditionsHelper.cs not found"
 }

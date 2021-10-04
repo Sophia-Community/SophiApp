@@ -93,7 +93,6 @@
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Conditions\NoNewVersion.cs" />
     <Compile Include="Conditions\LoggedUserIsAdmin.cs" />
-    <Compile Include="Conditions\OsBitness.cs" />
     <Compile Include="Conditions\OsBuildVersion.cs" />
     <Compile Include="Conditions\OsNotInfected.cs" />
     <Compile Include="Conditions\OsUpdateBuildRevision.cs" />
@@ -231,9 +230,6 @@
     </Compile>
     <Compile Include="Views\ViewNoNewVersion.xaml.cs">
       <DependentUpon>ViewNoNewVersion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewOSBitness.xaml.cs">
-      <DependentUpon>ViewOSBitness.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewOsBuildVersion.xaml.cs">
       <DependentUpon>ViewOsBuildVersion.xaml</DependentUpon>
@@ -412,10 +408,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewNoNewVersion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewOSBitness.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

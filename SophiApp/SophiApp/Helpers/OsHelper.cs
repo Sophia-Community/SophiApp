@@ -29,6 +29,8 @@ namespace SophiApp.Helpers
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
 
+        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
+
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int PostMessageW(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
 
@@ -41,13 +43,11 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
-        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
-
-        internal static SecurityIdentifier GetCurrentUserSid() => GetCurrentUser().User;
-
         internal static ushort GetBuild() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD).ToUshort();
 
         internal static string GetCurrentCultureName() => CultureInfo.CurrentCulture.EnglishName;
+
+        internal static SecurityIdentifier GetCurrentUserSid() => GetCurrentUser().User;
 
         internal static string GetDisplayVersion() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: DISPLAY_VERSION_NAME) as string;
 

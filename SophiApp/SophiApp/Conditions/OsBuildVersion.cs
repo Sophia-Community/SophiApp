@@ -6,9 +6,8 @@ namespace SophiApp.Conditions
 {
     internal class OsBuildVersion : ICondition
     {
-        private const uint MIN_SUPPORT_BUILD = 19041;
         private const uint MAX_SUPPORT_BUILD = 19044;
-
+        private const uint MIN_SUPPORT_BUILD = 19041;
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionOsBuildVersion;
 

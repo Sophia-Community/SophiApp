@@ -22,26 +22,31 @@ namespace SophiApp.Conditions
                 HttpWebRequest request = WebRequest.CreateHttp(DataHelper.GitHubApiReleases);
                 request.UserAgent = DataHelper.UserAgent;
                 var response = request.GetResponse();
-                //TODO: Set debugger as static class
-                DebugHelper.UpdateResponseIsNull(response is null);
+                DebugHelper.HasUpdateResponse();
                 using (Stream dataStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(dataStream);
                     var serverResponse = reader.ReadToEnd();
                     var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
+                    DebugHelper.HasUpdateRelease(release);
                     var isNewVersion = new Version(release.tag_name) > DataHelper.Version
                                                                      && release.prerelease.Invert()
                                                                      && release.draft.Invert();
 
                     if (isNewVersion)
                     {
-                        DebugHelper.UpdateWrite("The update can be done");
-                        ToastHelper.ShowUpdateToast(currentVersion: DataHelper.Version.ToString(), newVersion: release.tag_name);
+                        DebugHelper.IsNewRelease();
+                        ToastHelper.ShowUpdateToast(currentVersion: $"{DataHelper.Version}", newVersion: release.tag_name);
                     }
 
-                    DebugHelper.UpdateWrite("No update required");
+                    DebugHelper.UpdateNotnecessary();
                     return Result = isNewVersion.Invert();
                 }
+            }
+            catch (WebException e)
+            {
+                DebugHelper.HasException("An error occurred while checking for an update", e);
+                return Result = true;
             }
             catch (Exception e)
             {

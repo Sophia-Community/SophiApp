@@ -10,7 +10,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Debugger = SophiApp.Helpers.DebugHelper;
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
@@ -23,25 +22,25 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                debugger.StatusEntry($"Started applying {customActions.Count} setting(s)");
+                DebugHelper.StartApplyingSettings(CustomActions.Count);
                 var stopwatch = Stopwatch.StartNew();
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetLoadingPanelVisibility();
 
-                customActions.ForEach(action =>
+                CustomActions.ForEach(action =>
                 {
                     try
                     {
                         action.Invoke();
-                        debugger.ActionEntry(action.Id, action.Parameter);
+                        DebugHelper.ActionTaked(action.Id, action.Parameter);
                     }
                     catch (Exception e)
                     {
-                        debugger.Exception($"Customization action {action.Id} with parameter {action.Parameter} caused an error", e);
+                        DebugHelper.HasException($"Customization action {action.Id} with parameter {action.Parameter} caused an error", e);
                     }
                 });
 
-                customActions.Clear();
+                CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 OsHelper.PostMessage();
                 OsHelper.Refresh();
@@ -49,7 +48,7 @@ namespace SophiApp.ViewModels
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 stopwatch.Stop();
-                debugger.StopApplying(stopwatch);
+                DebugHelper.StopApplyingSettings(stopwatch.Elapsed.TotalSeconds);
             });
         }
 
@@ -74,7 +73,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var link = args as string;
-                debugger.StatusEntry($"Clicked link: \"{link}\"");
+                DebugHelper.LinkClicked(link);
                 Process.Start(link);
             });
             MouseHelper.ShowWaitCursor(show: false);
@@ -99,7 +98,6 @@ namespace SophiApp.ViewModels
         {
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
-            debugger = new Debugger(language: $"{ Localization.Language}", theme: $"{ AppSelectedTheme.Alias}");
             DebugMode = true;
             LoadingPanelVisibility = false;
             HamburgerHitTest = false;
@@ -107,14 +105,16 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = true;
             AdvancedSettingsVisibility = false;
             VisibleViewByTag = Tags.ViewLoading;
-            customActions = new List<CustomActionDto>();
+            CustomActions = new List<CustomActionDto>();
+            DebugHelper.AppLanguage($"{ Localization.Language }");
+            DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
 
         private async Task InitTextedElementsAsync()
         {
             await Task.Run(() =>
             {
-                debugger.StatusEntry("Started initialization texted elements");
+                DebugHelper.StartInitTextedElements();
                 var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => FabricHelper.CreateTextedElement(dataObject: dto,
@@ -122,7 +122,7 @@ namespace SophiApp.ViewModels
                                                                                             statusHandler: OnTextedElementStatusChanged,
                                                                                             language: Localization.Language)).ToList();
                 stopwatch.Stop();
-                debugger.StopInit(stopwatch);
+                DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
             });
         }
 
@@ -139,18 +139,31 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private void OnConditionsChanged(object sender, ICondition e)
+        {
+            DebugHelper.OsConditionChanged(e);
+            if (e.Result.Invert())
+                SetVisibleViewTag(e.Tag);
+        }
+
+        private void OnConditionsHelperError(object sender, Exception e)
+        {
+            DebugHelper.HasException("An error occurred during the startup condition check", e);
+            SetVisibleViewTag(Tags.ConditionSomethingWrong);
+        }
+
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
 
         private async void OnTextedElementErrorAsync(TextedElement element, Exception e)
         {
             await Task.Run(() =>
             {
-                debugger.Exception($"An error occured in element: {element.Id}", e);
+                DebugHelper.HasException($"An error occured in element: {element.Id}", e);
                 element.Status = ElementStatus.DISABLED;
             });
         }
 
-        private void OnTextedElementStatusChanged(object sender, TextedElement element) => debugger.ElementChanged(element.Id, element.Status);
+        private void OnTextedElementStatusChanged(object sender, TextedElement element) => DebugHelper.TextedElementChanged(element.Id, element.Status);
 
         private async void RadioGroupClickedAsync(object args)
         {
@@ -165,20 +178,20 @@ namespace SophiApp.ViewModels
 
         private async void ResetTextedElementsStateAsync(object args)
         {
-            debugger.StatusEntry("Started reset texted elements status");
+            DebugHelper.StartResetTextedElements();
             var stopwatch = Stopwatch.StartNew();
             SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
             SetLoadingPanelVisibility();
             await Task.Run(() =>
             {
-                customActions.Clear();
+                CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();
             stopwatch.Stop();
-            debugger.StopInit(stopwatch);
+            DebugHelper.StopResetTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
 
         private async void SaveDebugLogAsync(object args)
@@ -187,7 +200,7 @@ namespace SophiApp.ViewModels
             {
                 try
                 {
-                    debugger.Save(DataHelper.DebugFile);
+                    DebugHelper.Save(DataHelper.DebugFile);
                 }
                 catch (Exception)
                 {
@@ -208,16 +221,16 @@ namespace SophiApp.ViewModels
         {
             group.ChildElements.ForEach(child =>
             {
-                if (customActions.ContainsId(child.Id))
+                if (CustomActions.ContainsId(child.Id))
                 {
-                    customActions.RemoveDataObject(child.Id);
+                    CustomActions.RemoveDataObject(child.Id);
                     OnPropertyChanged(CustomActionsCounterPropertyName);
                     return;
                 }
 
                 if (child.Status == ElementStatus.CHECKED && child.Id != group.DefaultId)
                 {
-                    customActions.AddDataObject(child.Id, CustomisationsHelper.GetCustomisationOs(child.Id), true);
+                    CustomActions.AddDataObject(child.Id, CustomisationsHelper.GetCustomisationOs(child.Id), true);
                     OnPropertyChanged(CustomActionsCounterPropertyName);
                 }
             });
@@ -225,13 +238,13 @@ namespace SophiApp.ViewModels
 
         private void SetCustomAction(TextedElement element)
         {
-            if (customActions.ContainsId(element.Id))
+            if (CustomActions.ContainsId(element.Id))
             {
-                customActions.RemoveDataObject(element.Id);
+                CustomActions.RemoveDataObject(element.Id);
                 return;
             }
 
-            customActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.SETTOACTIVE);
+            CustomActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.SETTOACTIVE);
         }
 
         private void SetLoadingPanelVisibility() => LoadingPanelVisibility = !LoadingPanelVisibility;
@@ -253,11 +266,12 @@ namespace SophiApp.ViewModels
 
         internal async void InitData()
         {
-            debugger.StatusEntry("Starting the initial OS conditions");
+            DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
             var conditionsController = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
             await conditionsController.InvokeAsync();
-            debugger.StopInit(stopwatch);
+            stopwatch.Stop();
+            DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
 
             if (conditionsController.Result)
             {
@@ -267,19 +281,6 @@ namespace SophiApp.ViewModels
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);
             }
-        }
-
-        private void OnConditionsHelperError(object sender, Exception e)
-        {
-            debugger.Exception("An error occurred during the startup condition check", e);
-            SetVisibleViewTag(Tags.ConditionSomethingWrong);
-        }
-
-        private void OnConditionsChanged(object sender, ICondition e)
-        {
-            debugger.StatusEntry($"{e.Tag} is: {e.Result}");
-            if (e.Result.Invert())
-                SetVisibleViewTag(e.Tag);
         }
     }
 }

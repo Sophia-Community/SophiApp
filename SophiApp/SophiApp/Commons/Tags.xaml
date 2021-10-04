@@ -13,7 +13,6 @@
     <system:String x:Key="Tags.View.Security">Security</system:String>
     <system:String x:Key="Tags.View.ContextMenu">ContextMenu</system:String>
     <system:String x:Key="Tags.View.Settings">Settings</system:String>
-    <system:String x:Key="Tags.Conditions.OSBitness">OSBitness</system:String>
     <system:String x:Key="Tags.Conditions.OsBuildVersion">OsBuildVersion</system:String>
     <system:String x:Key="Tags.Conditions.SomethingWrong">SomethingWrong</system:String>
     <system:String x:Key="Tags.Conditions.UpdateBuildRevision">UpdateBuildRevision</system:String>

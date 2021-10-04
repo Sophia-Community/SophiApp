@@ -9,8 +9,7 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
-        private List<CustomActionDto> customActions;
-        private DebugHelper debugger;
+        private List<CustomActionDto> CustomActions;
         private bool debugMode;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;
@@ -26,7 +25,7 @@ namespace SophiApp.ViewModels
             set
             {
                 advancedSettingsVisibility = value;
-                debugger.StatusEntry($"Advanced settings is visible: {value}");
+                DebugHelper.AdvancedSettinsVisibility(value);
                 OnPropertyChanged(AdvancedSettingsVisibilityPropertyName);
             }
         }
@@ -36,14 +35,14 @@ namespace SophiApp.ViewModels
             get => themesHelper.SelectedTheme;
             private set
             {
-                debugger.StatusEntry($"Theme selected: {value.Alias}");
+                DebugHelper.SelectedTheme(value.Alias);
                 OnPropertyChanged(AppSelectedThemePropertyName);
             }
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
 
-        public int CustomActionsCounter => customActions.Count;
+        public int CustomActionsCounter => CustomActions.Count;
 
         public bool DebugMode
         {
@@ -51,7 +50,7 @@ namespace SophiApp.ViewModels
             set
             {
                 debugMode = value;
-                debugger.StatusEntry($"Debug mode is: {value}");
+                DebugHelper.DebugMode(value);
                 OnPropertyChanged(DebugModePropertyName);
             }
         }
@@ -81,7 +80,7 @@ namespace SophiApp.ViewModels
             get => localizationsHelper.Selected;
             private set
             {
-                debugger.StatusEntry($"Localization selected: {value.Language}");
+                DebugHelper.SelectedLocalization($"{value.Language}");
                 OnPropertyChanged(LocalizationPropertyName);
             }
         }
@@ -106,7 +105,7 @@ namespace SophiApp.ViewModels
             private set
             {
                 visibleViewByTag = value;
-                debugger.StatusEntry($"Active view is: {value}");
+                DebugHelper.VisibleViewChanged(value);
                 OnPropertyChanged(VisibleViewByTagPropertyName);
             }
         }
