@@ -38,7 +38,7 @@
                         VerticalAlignment="Center"
                         Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                         Style="{DynamicResource SmallText}"
-                        Text="{Binding Path=(helpers:DataHelper.AppName)}" />
+                        Text="{Binding Path=(helpers:AppHelper.AppName)}" />
                 </StackPanel>
             </Grid>
         </ControlTemplate>

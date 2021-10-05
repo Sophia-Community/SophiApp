@@ -27,7 +27,7 @@ namespace SophiApp.Helpers
         {
             new OsBuildVersion(), new OsUpdateBuildRevision(),
             new LoggedUserIsAdmin(), new OsNotInfected(),
-            new NoNewVersion()
+            //new NoNewVersion()
         };
 
         internal async Task InvokeAsync()

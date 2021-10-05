@@ -19,8 +19,8 @@ namespace SophiApp.Conditions
         {
             try
             {
-                HttpWebRequest request = WebRequest.CreateHttp(DataHelper.GitHubApiReleases);
-                request.UserAgent = DataHelper.UserAgent;
+                HttpWebRequest request = WebRequest.CreateHttp(AppHelper.GitHubApiReleases);
+                request.UserAgent = AppHelper.UserAgent;
                 var response = request.GetResponse();
                 DebugHelper.HasUpdateResponse();
                 using (Stream dataStream = response.GetResponseStream())
@@ -29,14 +29,14 @@ namespace SophiApp.Conditions
                     var serverResponse = reader.ReadToEnd();
                     var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
                     DebugHelper.HasUpdateRelease(release);
-                    var isNewVersion = new Version(release.tag_name) > DataHelper.Version
+                    var isNewVersion = new Version(release.tag_name) > AppHelper.Version
                                                                      && release.prerelease.Invert()
                                                                      && release.draft.Invert();
 
                     if (isNewVersion)
                     {
                         DebugHelper.IsNewRelease();
-                        ToastHelper.ShowUpdateToast(currentVersion: $"{DataHelper.Version}", newVersion: release.tag_name);
+                        ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: release.tag_name);
                     }
 
                     DebugHelper.UpdateNotnecessary();

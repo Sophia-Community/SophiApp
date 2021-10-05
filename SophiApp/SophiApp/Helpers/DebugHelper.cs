@@ -31,8 +31,8 @@ namespace SophiApp.Helpers
             $"{USER_DOMAIN}: {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}",
             $"{USER_CULTURE}: {OsHelper.GetCurrentCultureName()}",
             $"{USER_REGION}: {OsHelper.GetRegionName()}",
-            $"{APP_VER}: {DataHelper.Version}",
-            $"{APP_FOLDER}: \"{DataHelper.StartupFolder}\""
+            $"{APP_VER}: {AppHelper.Version}",
+            $"{APP_FOLDER}: \"{AppHelper.StartupFolder}\""
         };
 
         private static List<string> StatusLog = new List<string>();

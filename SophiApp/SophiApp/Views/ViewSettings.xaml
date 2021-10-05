@@ -91,7 +91,7 @@
                                 Margin="{StaticResource BlockIndent}"
                                 HorizontalAlignment="Left"
                                 Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:DataHelper.GitHubRepo}" />
+                                CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
@@ -107,7 +107,7 @@
                                 <TextBlock
                                     Margin="3,0,0,0"
                                     Style="{DynamicResource NormalText}"
-                                    Text="{Binding Source={x:Static helpers:DataHelper.Version}}" />
+                                    Text="{Binding Source={x:Static helpers:AppHelper.Version}}" />
                             </StackPanel>
 
                             <TextBlock
@@ -183,7 +183,7 @@
                                 Margin="{StaticResource ActorLinkIndent}"
                                 Actor="{DynamicResource Localization.Settings.Leader.Name}"
                                 Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:DataHelper.LeaderLink}"
+                                CommandParameter="{x:Static helpers:AppHelper.LeaderLink}"
                                 Icon="{DynamicResource Icon.GitHub}"
                                 IconMargin="10, 0, 0, 12"
                                 Role="{DynamicResource Localization.Settings.Leader}" />
@@ -192,7 +192,7 @@
                                 Margin="{StaticResource ActorLinkIndent}"
                                 Actor="{DynamicResource Localization.Settings.Designer.Name}"
                                 Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:DataHelper.DesignerLink}"
+                                CommandParameter="{x:Static helpers:AppHelper.DesignerLink}"
                                 Icon="{DynamicResource Icon.LinkedIn}"
                                 IconMargin="10, 0, 0, 5"
                                 Role="{DynamicResource Localization.Settings.Designer}" />
@@ -201,7 +201,7 @@
                                 Margin="{StaticResource ActorLinkIndent}"
                                 Actor="{DynamicResource Localization.Settings.Coder.Name}"
                                 Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:DataHelper.CoderLink}"
+                                CommandParameter="{x:Static helpers:AppHelper.CoderLink}"
                                 Icon="{DynamicResource Icon.GitHub}"
                                 IconMargin="10, 0, 0, 20"
                                 Role="{DynamicResource Localization.Settings.Coder}" />

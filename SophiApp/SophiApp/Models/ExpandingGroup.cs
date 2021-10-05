@@ -37,7 +37,7 @@ namespace SophiApp.Models
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
             CustomisationStatus = customisationStatus;
-            ChildElements = ChildsDTO.Select(child => FabricHelper.CreateChildElement(child, errorHandler, statusHandler, language)).ToList();
+            ChildElements = ChildsDTO.Select(child => FabricHelper.GetTextedElementChild(child, errorHandler, statusHandler, language)).ToList();
             ChangeLanguage(language);
             base.GetCustomisationStatus();
         }

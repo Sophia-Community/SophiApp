@@ -51,7 +51,7 @@
             <Setter Property="Width" Value="1074" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Title" Value="{Binding Path=(helpers:DataHelper.AppName)}" />
+            <Setter Property="Title" Value="{Binding Path=(helpers:AppHelper.AppName)}" />
         </Style>
     </Window.Style>
     <Window.Resources>

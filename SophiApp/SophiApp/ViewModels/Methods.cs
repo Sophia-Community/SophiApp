@@ -16,7 +16,7 @@ namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
-        private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility.Invert();
+        private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility = AdvancedSettingsVisibility.Invert();
 
         private async void ApplyingSettingsAsync(object args)
         {
@@ -63,7 +63,7 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private void DebugModeClicked(object args) => DebugMode.Invert();
+        private void DebugModeClicked(object args) => DebugMode = DebugMode.Invert();
 
         private void HamburgerClicked(object args) => SetVisibleViewTag(args as string);
 
@@ -117,10 +117,11 @@ namespace SophiApp.ViewModels
                 DebugHelper.StartInitTextedElements();
                 var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
-                                            .Select(dto => FabricHelper.CreateTextedElement(dataObject: dto,
-                                                                                            errorHandler: OnTextedElementErrorAsync,
-                                                                                            statusHandler: OnTextedElementStatusChanged,
-                                                                                            language: Localization.Language)).ToList();
+                                            .Select(dto => FabricHelper.GetTextedElement(dataObject: dto,
+                                                                                         errorHandler: OnTextedElementErrorAsync,
+                                                                                         statusHandler: OnTextedElementStatusChanged,
+                                                                                         language: Localization.Language))
+                                            .ToList();
                 stopwatch.Stop();
                 DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
             });
@@ -200,7 +201,7 @@ namespace SophiApp.ViewModels
             {
                 try
                 {
-                    DebugHelper.Save(DataHelper.DebugFile);
+                    DebugHelper.Save(AppHelper.DebugFile);
                 }
                 catch (Exception)
                 {
