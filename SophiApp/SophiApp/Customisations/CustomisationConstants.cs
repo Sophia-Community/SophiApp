@@ -103,6 +103,14 @@
         internal const byte _251_DISABLED_VALUE = 1;
         internal const string _251_DISALLOW_WINDOWS_SHAKE = "DisallowShaking";
         internal const byte _251_ENABLED_VALUE = 0;
+        internal const byte _302_STORAGE_POLICY_MONTH_VALUE = 30;
+        internal const string _304_STORAGE_POLICY_04 = "04";
+        internal const byte _305_ENABLED_VALUE = 1;
+        internal const string _305_HIBERNATE = "HibernateEnabled";
+        internal const string _305_HIBERNATE_OFF = "/HIBERNATE OFF";
+        internal const string _305_HIBERNATE_ON = "/HIBERNATE ON";
+        internal const string _305_POWER_CONTROL_PATH = @"SYSTEM\CurrentControlSet\Control\Power";
+        internal const string _305_POWERCFG = "powercfg.exe";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -146,7 +154,7 @@
         internal const string _821_BMP_SHELL_NEW = @".bmp\ShellNew";
         internal const string _822_DATA_VALUE = "{\rtf1}";
         internal const string _822_ITEM_VALUE = @"@%ProgramFiles%\Windows NT\Accessories\WORDPAD.EXE,-213";
-        internal const string _822_MS_WORD_PAD = "Microsoft.Windows.WordPad";
+        internal const string _822_MS_WORD_PAD = "Microsoft.Windows.WordPad~~~~0.0.1.0";
         internal const string _822_RTF_SHELL_NEW = @".rtf\ShellNew";
         internal const string _823_ITEM_DATA = @"@%SystemRoot%\system32\zipfldr.dll,-10194";
         internal const string _823_ZIP_SHELLNEW_PATH = @".zip\CompressedFolder\ShellNew";
@@ -160,7 +168,7 @@
         internal const string ALL_ITEMS_ICON_VIEW = "AllItemsIconView";
         internal const string ALLOW_TELEMETRY = "AllowTelemetry";
         internal const string APPS_USES_THEME = "AppsUseLightTheme";
-        internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint";
+        internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint~~~~0.0.1.0";
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
@@ -200,6 +208,9 @@
         internal const byte STARTUP_PAGE_CATEGORY_VALUE = 0;
         internal const byte STARTUP_PAGE_ICON_VALUE = 1;
         internal const string STATUS_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager";
+        internal const string STORAGE_POLICY_01 = "01";
+        internal const string STORAGE_POLICY_2048 = "2048";
+        internal const string STORAGE_POLICY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy";
         internal const string SYSTEM_USES_THEME = "SystemUsesLightTheme";
         internal const byte TASKBAR_SEARCH_BOX_VALUE = 2;
         internal const byte TASKBAR_SEARCH_HIDE_VALUE = 0;

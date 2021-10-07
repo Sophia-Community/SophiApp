@@ -32,6 +32,7 @@ namespace SophiApp.Models
             }
             catch (Exception e)
             {
+                ChildElements.ForEach(child => child.Status = ElementStatus.UNCHECKED);
                 ErrorOccurred?.Invoke(this, e);
             }
         }

@@ -35,5 +35,14 @@ namespace SophiApp.Helpers
                     CloseHandle(processHandle);
             }
         }
+
+        internal static void StartProcess(string name, string args, ProcessWindowStyle windowStyle)
+        {
+            var startInfo = new ProcessStartInfo();
+            startInfo.FileName = name;
+            startInfo.Arguments = args;
+            startInfo.WindowStyle = windowStyle;
+            Process.Start(startInfo);
+        }
     }
 }

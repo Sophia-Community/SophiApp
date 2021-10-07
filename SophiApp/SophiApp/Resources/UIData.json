@@ -1050,8 +1050,8 @@
             "RU": "Запуск Контроля памяти"
         },
         "Description": {
-            "EN": "Storage Sense runs when disk space is low. We clean up enough space. Or, even better, in SophiApp create in the \"Task Scheduler\" section the \"Windows Cleanup\" task to clean up Windows more effectively",
-            "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальное работы системы. Но лучше в SophiApp в разделе \"Планировщик заданий\" создайте задание \"Windows Cleanup\", чтобы эффективнее очищать Windows"
+            "EN": "Storage Sense runs when disk space is low. We clean up enough space. Or, even better, create in the \"Task Scheduler\" section the \"Windows Cleanup\" task to clean up Windows more effectively",
+            "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальное работы системы. Но лучше в разделе \"Планировщик заданий\" создайте задание \"Windows Cleanup\", чтобы эффективнее очищать Windows"
         },
         "Type": "RadioGroup",
         "Tag": "System",

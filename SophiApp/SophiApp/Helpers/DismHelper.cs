@@ -1,5 +1,4 @@
 ﻿using Microsoft.Dism;
-using System.Linq;
 
 namespace SophiApp.Helpers
 {
@@ -9,10 +8,10 @@ namespace SophiApp.Helpers
         {
             DismApi.Initialize(DismLogLevel.LogErrors);
             var session = DismApi.OpenOnlineSession();
-            var capabilities = DismApi.GetCapabilities(session).ToList();
+            var capability = DismApi.GetCapabilityInfo(session, name);
             session.Close();
             DismApi.Shutdown();
-            return capabilities.Any(c => c.Name.Contains(name) && c.State == DismPackageFeatureState.Installed);
+            return capability.State == DismPackageFeatureState.Installed;
         }
     }
 }

@@ -27,12 +27,13 @@ namespace SophiApp.Models
             }
             catch (Exception e)
             {
+                ChildElements.ForEach(child => child.Status = ElementStatus.UNCHECKED);
                 ErrorOccurred?.Invoke(this, e);
             }
         }
 
         internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                    UILanguage language, Func<bool> customisationStatus)
+                                        UILanguage language, Func<bool> customisationStatus)
         {
             ErrorOccurred = errorHandler;
             StatusChanged += statusHandler;
