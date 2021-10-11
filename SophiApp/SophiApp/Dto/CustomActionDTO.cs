@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SophiApp.Commons
+namespace SophiApp.Dto
 {
     public class CustomActionDto
     {

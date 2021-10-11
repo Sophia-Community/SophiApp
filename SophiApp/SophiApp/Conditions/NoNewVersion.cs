@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
+using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
 using System;

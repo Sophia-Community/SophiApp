@@ -1,4 +1,5 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Dto;
 using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,19 +15,17 @@ namespace SophiApp.Models
         private bool isClicked;
         private bool isEnabled;
 
-        internal TextedElement(TextedElementDto dataObject)
+        public TextedElement((TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler,
+                                EventHandler<TextedElement> StatusHandler, Func<bool> Customisation, UILanguage Language) parameters)
         {
-            Headers = dataObject.Header;
-            Descriptions = dataObject.Description;
-            Id = dataObject.Id;
-            Tag = dataObject.Tag;
-        }
-
-        internal TextedElement(TextedChildDto dataObject)
-        {
-            Headers = dataObject.ChildHeader;
-            Descriptions = dataObject.ChildDescription;
-            Id = dataObject.Id;
+            Headers = parameters.Dto.Header ?? parameters.Dto.ChildHeader;
+            Descriptions = parameters.Dto.Description ?? parameters.Dto.ChildDescription;
+            Id = parameters.Dto.Id;
+            Tag = parameters.Dto.Tag;
+            ErrorOccurred = parameters.ErrorHandler;
+            StatusChanged = parameters.StatusHandler;
+            Language = parameters.Language;
+            CustomisationStatus = parameters.Customisation;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -36,6 +35,7 @@ namespace SophiApp.Models
         protected Dictionary<UILanguage, string> Descriptions { get; set; }
         internal Func<bool> CustomisationStatus { get; set; }
         internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
+        internal UILanguage Language { get; set; }
 
         internal ElementStatus Status
         {
@@ -188,15 +188,9 @@ namespace SophiApp.Models
             }
         }
 
-        internal virtual void Init(Action<TextedElement, Exception> errorHandler,
-                                   EventHandler<TextedElement> statusHandler,
-                                   UILanguage language,
-                                   Func<bool> customisationStatus)
+        internal virtual void Init()
         {
-            ErrorOccurred = errorHandler;
-            StatusChanged += statusHandler;
-            CustomisationStatus = customisationStatus;
-            ChangeLanguage(language);
+            ChangeLanguage(Language);
             GetCustomisationStatus();
         }
 

@@ -1,4 +1,5 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Collections.Generic;

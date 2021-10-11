@@ -185,6 +185,9 @@
         internal const byte DISABLED_VALUE = 0;
         internal const byte ENABLED_VALUE = 1;
         internal const string ENTHUSIAST_MODE = "EnthusiastMode";
+        internal const string ENV_LOCAL_APPDATA = "LOCALAPPDATA";
+        internal const string ENV_SYSTEM_DRIVE = "SystemDrive";
+        internal const string ENV_TEMP_FOLDER = "TEMP";
         internal const string ITEM_NAME = "ItemName";
         internal const string JPEG_QUALITY = "JPEGImportQuality";
         internal const byte LAUNCH_PC_VALUE = 1;
@@ -217,6 +220,7 @@
         internal const byte TASKBAR_SEARCH_ICON_VALUE = 1;
         internal const string TASKBAR_SEARCH_MODE = "SearchboxTaskbarMode";
         internal const string TASKBAR_SEARCH_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Search";
+        internal const string TEMP_FOLDER = "Temp";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";

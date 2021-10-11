@@ -1,5 +1,5 @@
 ﻿using SophiApp.Commons;
-using SophiApp.Helpers;
+using SophiApp.Dto;
 using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,24 +9,21 @@ namespace SophiApp.Models
 {
     internal class RadioGroup : TextedElement, IParentElements
     {
-        private readonly List<TextedChildDto> ChildsDTO;
-
-        public RadioGroup(TextedElementDto dataObject) : base(dataObject)
+        public RadioGroup((TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler, EventHandler<TextedElement> StatusHandler, Func<bool> Customisation, UILanguage Language) parameters) : base(parameters)
         {
-            ChildsDTO = dataObject.ChildElements;
+            ChildsDTO = parameters.Dto.ChildElements;
         }
 
         internal uint DefaultId { get; private set; }
 
-        public List<TextedElement> ChildElements { get; set; }
-
-        private void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
+        public List<TextedElement> ChildElements { get; set; } = new List<TextedElement>();
+        public List<TextedElementDto> ChildsDTO { get; set; }
 
         internal override void GetCustomisationStatus()
         {
             try
             {
-                Status = CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+                base.GetCustomisationStatus();
                 ChildElements.ForEach(child => child.GetCustomisationStatus());
                 DefaultId = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
             }
@@ -37,22 +34,12 @@ namespace SophiApp.Models
             }
         }
 
-        internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                                    UILanguage language, Func<bool> customisationStatus)
-        {
-            ErrorOccurred = errorHandler;
-            StatusChanged += statusHandler;
-            CustomisationStatus = customisationStatus;
-            ChildElements = ChildsDTO.Select(child => FabricHelper.GetTextedElementChild(child, OnChildErrorOccured, statusHandler, language)).ToList();
-            ChildElements.ForEach(child => (child as RadioButton).ParentId = Id);
-            ChangeLanguage(language);
-            GetCustomisationStatus();
-        }
-
         public override void ChangeLanguage(UILanguage language)
         {
             base.ChangeLanguage(language);
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
+
+        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
     }
 }

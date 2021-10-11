@@ -1,14 +1,12 @@
 ﻿using SophiApp.Commons;
-using SophiApp.Interfaces;
-using System.Collections.Generic;
+using SophiApp.Dto;
+using System;
 
 namespace SophiApp.Models
 {
-    internal class AdvancedRadioGroup : RadioGroup, IParentElements
+    internal class AdvancedRadioGroup : RadioGroup
     {
-        private readonly List<TextedChildDto> ChildsDTO;
-
-        public AdvancedRadioGroup(TextedElementDto dataObject) : base(dataObject)
+        public AdvancedRadioGroup((TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler, EventHandler<TextedElement> StatusHandler, Func<bool> Customisation, UILanguage Language) parameters) : base(parameters)
         {
         }
     }

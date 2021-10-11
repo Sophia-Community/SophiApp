@@ -51,14 +51,8 @@
                     VerticalAlignment="Top"
                     Icon="{DynamicResource Icon.StartMenu}"
                     Tag="{StaticResource Tags.View.StartMenu}"
-                    Text="{DynamicResource Localization.StartMenu}" />
-
-                <!--<local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 180, 0, 0"
-                                       IconMargin="21, 0, 0, 0"
-                                       Icon="{DynamicResource Icon.UwpApps}"
-                                       Text="{DynamicResource Localization.UwpApps}"
-                                       Tag="{StaticResource Tags.View.UwpApps}" />-->
+                    Text="{DynamicResource Localization.StartMenu}"
+                    IsHitTestVisible="False" />
 
                 <local:HamburgerButton
                     Margin="0,180,0,0"
@@ -66,7 +60,8 @@
                     Icon="{DynamicResource Icon.Games}"
                     IconMargin="8, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Games}"
-                    Text="{DynamicResource Localization.Games}" />
+                    Text="{DynamicResource Localization.Games}"
+                    IsHitTestVisible="False" />
 
                 <local:HamburgerButton
                     Margin="0,225,0,0"
@@ -74,7 +69,8 @@
                     Icon="{DynamicResource Icon.TaskSheduler}"
                     IconMargin="7, 8, 0, 0"
                     Tag="{StaticResource Tags.View.TaskSheduler}"
-                    Text="{DynamicResource Localization.TaskSheduler}" />
+                    Text="{DynamicResource Localization.TaskSheduler}"
+                    IsHitTestVisible="False" />
 
                 <local:HamburgerButton
                     Margin="0,270,0,0"
@@ -82,7 +78,8 @@
                     Icon="{DynamicResource Icon.Security}"
                     IconMargin="7, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Security}"
-                    Text="{DynamicResource Localization.Security}" />
+                    Text="{DynamicResource Localization.Security}"
+                    IsHitTestVisible="False" />
 
                 <local:HamburgerButton
                     Margin="0,315,0,0"

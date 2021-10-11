@@ -81,10 +81,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commons\CustomActionDto.cs" />
-    <Compile Include="Commons\ReleaseDto.cs" />
-    <Compile Include="Commons\TextedChildDto.cs" />
-    <Compile Include="Commons\TextedElementDto.cs" />
+    <Compile Include="Dto\CustomActionDto.cs" />
+    <Compile Include="Dto\ReleaseDto.cs" />
+    <Compile Include="Dto\TextedElementDto.cs" />
     <Compile Include="Commons\Localization.cs" />
     <Compile Include="Commons\RelayCommand.cs" />
     <Compile Include="Commons\Tags.cs" />

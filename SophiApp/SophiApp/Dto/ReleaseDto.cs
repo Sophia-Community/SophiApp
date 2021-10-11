@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SophiApp.Commons
+namespace SophiApp.Dto
 {
     internal class ReleaseDto
     {

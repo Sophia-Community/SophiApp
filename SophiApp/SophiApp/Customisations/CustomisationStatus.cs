@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
+using System;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceProcess;
@@ -252,6 +253,20 @@ namespace SophiApp.Customisations
                                               : throw new RegistryKeyUnexpectedValue($@"{RegistryHive.CurrentUser}\{STORAGE_POLICY_PATH}\{STORAGE_POLICY_01}");
 
         public static bool _305() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _305_POWER_CONTROL_PATH, _305_HIBERNATE) == _305_ENABLED_VALUE;
+
+        public static bool _307()
+        {
+            var currentUserTemp = Environment.GetEnvironmentVariable(ENV_TEMP_FOLDER);
+            var systemDriveTemp = $"{Environment.GetEnvironmentVariable(ENV_SYSTEM_DRIVE)}\\{TEMP_FOLDER}";
+            return currentUserTemp == systemDriveTemp;
+        }
+
+        public static bool _308()
+        {
+            var currentUserTemp = Environment.GetEnvironmentVariable(ENV_TEMP_FOLDER);
+            var appDataTemp = $"{Environment.GetEnvironmentVariable(ENV_LOCAL_APPDATA)}\\{TEMP_FOLDER}";
+            return currentUserTemp == appDataTemp;
+        }
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

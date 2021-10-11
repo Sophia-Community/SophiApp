@@ -1,4 +1,6 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Dto;
+using SophiApp.Interfaces;
 using SophiApp.Models;
 using System;
 
@@ -6,23 +8,39 @@ namespace SophiApp.Helpers
 {
     internal class FabricHelper
     {
-        internal static TextedElement GetTextedElement(TextedElementDto dataObject, Action<TextedElement, Exception> errorHandler,
-                                                            EventHandler<TextedElement> statusHandler, UILanguage language)
+        private const string MODELS = "SophiApp.Models";
+
+        private static TextedElement GetTextedElement(TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler,
+                                                        EventHandler<TextedElement> StatusHandler, UILanguage Language)
         {
-            var type = Type.GetType($"SophiApp.Models.{dataObject.Type}");
-            var element = Activator.CreateInstance(type, dataObject) as TextedElement;
-            var customisation = CustomisationsHelper.GetCustomisationStatus(element.Id);
-            element.Init(errorHandler, statusHandler, language, customisation);
+            var parameters = (Dto, ErrorHandler, StatusHandler, Customisation: CustomisationsHelper.GetCustomisationStatus(Dto.Id), Language);
+            var type = Type.GetType($"{MODELS}.{parameters.Dto.Type}");
+            var element = Activator.CreateInstance(type, parameters) as TextedElement;
             return element;
         }
 
-        internal static TextedElement GetTextedElementChild(TextedChildDto dataObject, Action<TextedElement, Exception> errorHandler,
-                                                                        EventHandler<TextedElement> statusHandler, UILanguage language)
+        internal static TextedElement CreateTextedElement(TextedElementDto dto, Action<TextedElement, Exception> errorHandler,
+                                                                    EventHandler<TextedElement> statusHandler, UILanguage language)
         {
-            var type = Type.GetType($"SophiApp.Models.{dataObject.Type}");
-            var element = Activator.CreateInstance(type, dataObject) as TextedElement;
-            var customisation = CustomisationsHelper.GetCustomisationStatus(element.Id);
-            element.Init(errorHandler, statusHandler, language, customisation);
+            var element = GetTextedElement(Dto: dto, ErrorHandler: errorHandler, StatusHandler: statusHandler, Language: language);
+
+            if (element is IParentElements)
+            {
+                var parent = element as IParentElements;
+                parent.ChildsDTO.ForEach(childDto =>
+                {
+                    var child = GetTextedElement(Dto: childDto, ErrorHandler: parent.OnChildErrorOccured, StatusHandler: statusHandler, Language: language);
+
+                    if (child is RadioButton)
+                    {
+                        (child as RadioButton).ParentId = element.Id;
+                    }
+
+                    parent.ChildElements.Add(child);
+                });
+            }
+
+            element.Init();
             return element;
         }
     }

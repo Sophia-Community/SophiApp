@@ -1,22 +1,20 @@
 ﻿using SophiApp.Commons;
-using SophiApp.Helpers;
+using SophiApp.Dto;
 using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SophiApp.Models
 {
     internal class ExpandingGroup : TextedElement, IParentElements
     {
-        private readonly List<TextedChildDto> ChildsDTO;
-
-        public ExpandingGroup(TextedElementDto dataObject) : base(dataObject)
+        public ExpandingGroup((TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler, EventHandler<TextedElement> StatusHandler, Func<bool> Customisation, UILanguage Language) parameters) : base(parameters)
         {
-            ChildsDTO = dataObject.ChildElements;
+            ChildsDTO = parameters.Dto.ChildElements;
         }
 
-        public List<TextedElement> ChildElements { get; set; }
+        public List<TextedElement> ChildElements { get; set; } = new List<TextedElement>();
+        public List<TextedElementDto> ChildsDTO { get; set; }
 
         internal override void GetCustomisationStatus()
         {
@@ -32,21 +30,12 @@ namespace SophiApp.Models
             }
         }
 
-        internal override void Init(Action<TextedElement, Exception> errorHandler, EventHandler<TextedElement> statusHandler,
-                                        UILanguage language, Func<bool> customisationStatus)
-        {
-            ErrorOccurred = errorHandler;
-            StatusChanged += statusHandler;
-            CustomisationStatus = customisationStatus;
-            ChildElements = ChildsDTO.Select(child => FabricHelper.GetTextedElementChild(child, errorHandler, statusHandler, language)).ToList();
-            ChangeLanguage(language);
-            base.GetCustomisationStatus();
-        }
-
         public override void ChangeLanguage(UILanguage language)
         {
             base.ChangeLanguage(language);
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
+
+        public void OnChildErrorOccured(TextedElement child, Exception e) => base.ErrorOccurred(child, e);
     }
 }
