@@ -13,7 +13,7 @@ namespace SophiApp.Customisations
     {
         public static bool _100()
         {
-            var diagTrack = ServiceHelper.GetService(_100_DIAG_TRACK).StartType;
+            var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK).StartType;
             var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).FirstOrDefault();
             return diagTrack is ServiceStartMode.Automatic && firewallRule.Enabled && firewallRule.Action is NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
         }
@@ -37,7 +37,7 @@ namespace SophiApp.Customisations
         {
             var taskState = ScheduledTaskHelper.GetTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK);
             var reportingValue = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _104_WER_PATH, _104_DISABLED);
-            var reportingService = ServiceHelper.GetService(_104_WER_SERVICE);
+            var reportingService = ServiceHelper.Get(_104_WER_SERVICE);
             return taskState == TaskState.Ready &&
                     reportingValue != _104_DISABLED_DEFAULT_VALUE &&
                         reportingService.StartType == ServiceStartMode.Manual;
@@ -256,17 +256,12 @@ namespace SophiApp.Customisations
 
         public static bool _307()
         {
-            var currentUserTemp = Environment.GetEnvironmentVariable(ENV_TEMP_FOLDER);
-            var systemDriveTemp = $"{Environment.GetEnvironmentVariable(ENV_SYSTEM_DRIVE)}\\{TEMP_FOLDER}";
-            return currentUserTemp == systemDriveTemp;
+            var currentTemp = Environment.ExpandEnvironmentVariables(ENVIRONMENT_TEMP);
+            var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
+            return currentTemp == systemDriveTemp;
         }
 
-        public static bool _308()
-        {
-            var currentUserTemp = Environment.GetEnvironmentVariable(ENV_TEMP_FOLDER);
-            var appDataTemp = $"{Environment.GetEnvironmentVariable(ENV_LOCAL_APPDATA)}\\{TEMP_FOLDER}";
-            return currentUserTemp == appDataTemp;
-        }
+        public static bool _308() => _307().Invert();
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

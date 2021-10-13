@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using SophiApp.Helpers;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
@@ -12,7 +13,7 @@ namespace SophiApp.Customisations
     {
         public static void _100(bool IsActive)
         {
-            var diagTrack = ServiceHelper.GetService(_100_DIAG_TRACK);
+            var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK);
             var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).FirstOrDefault();
 
             if (IsActive)
@@ -51,7 +52,7 @@ namespace SophiApp.Customisations
 
         public static void _104(bool IsActive)
         {
-            var werService = ServiceHelper.GetService(_104_WER_SERVICE);
+            var werService = ServiceHelper.Get(_104_WER_SERVICE);
 
             if (IsActive)
             {
@@ -472,7 +473,64 @@ namespace SophiApp.Customisations
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _305(bool IsActive) => ProcessHelper.StartProcess(_305_POWERCFG, IsActive ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
+        public static void _305(bool IsActive) => ProcessHelper.Start(_305_POWERCFG, IsActive ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
+
+        public static void _307(bool _)
+        {
+            var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
+            var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
+            var userName = Environment.UserName;
+
+            ServiceHelper.Restart(SERVICE_SPOOLER);
+            ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
+            FileHelper.CreateDirectory(systemDriveTemp);
+            FileHelper.LazyRemoveDirectory(currentTemp);
+
+            if (FileHelper.DirIsEmpty(currentTemp).Invert())
+            {
+                ScheduledTaskHelper.RegisterLogonTask(name: TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, args: _307_TASK_ARGS, username: userName);
+            }
+
+            Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TMP, _307_SYSTEM_DRIVE_TEMP, RegistryValueKind.ExpandString);
+            Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TEMP, _307_SYSTEM_DRIVE_TEMP, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TMP, systemDriveTemp, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemDriveTemp, RegistryValueKind.ExpandString);
+        }
+
+        public static void _308(bool _)
+        {
+            var appDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
+            var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
+            var systemTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
+            var userName = Environment.UserName;
+
+            ServiceHelper.Restart(SERVICE_SPOOLER);
+            ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
+            FileHelper.CreateDirectory(systemTemp, appDataTemp);
+            FileHelper.LazyRemoveDirectory(currentTemp);
+
+            if (FileHelper.DirIsEmpty(currentTemp).Invert())
+            {
+                ScheduledTaskHelper.RegisterLogonTask(name: TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, args: _308_TASK_ARGS, username: userName);
+            }
+
+            Environment.SetEnvironmentVariable(TMP, appDataTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TMP, systemTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TMP, appDataTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TMP, _308_APPDATA_TEMP, RegistryValueKind.ExpandString);
+            Environment.SetEnvironmentVariable(TEMP, appDataTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TEMP, systemTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TEMP, appDataTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TEMP, _308_APPDATA_TEMP, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TMP, systemTemp, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemTemp, RegistryValueKind.ExpandString);
+        }
 
         public static void _800(bool IsActive)
         {

@@ -38,7 +38,17 @@ namespace SophiApp.Helpers
         [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern IntPtr OpenService(IntPtr hSCManager, string lpServiceName, uint dwDesiredAccess);
 
-        internal static ServiceController GetService(string serviceName) => new ServiceController(serviceName);
+        internal static ServiceController Get(string serviceName) => new ServiceController(serviceName);
+
+        internal static void Restart(string serviceName)
+        {
+            var timeout = 10.0;
+            var service = new ServiceController(serviceName);
+            service.Stop();
+            service.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(timeout));
+            service.Start();
+            service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(timeout));
+        }
 
         public static void SetStartMode(ServiceController svc, ServiceStartMode mode)
         {

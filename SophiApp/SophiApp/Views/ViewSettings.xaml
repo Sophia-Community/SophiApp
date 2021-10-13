@@ -93,11 +93,6 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
 
-                            <TextBlock
-                                Margin="{StaticResource BlockIndent}"
-                                Style="{DynamicResource SubHeaderText}"
-                                Text="{DynamicResource Localization.Settings.Updates}" />
-
                             <StackPanel Style="{StaticResource PanelContainer}">
 
                                 <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.Settings.Version}" />

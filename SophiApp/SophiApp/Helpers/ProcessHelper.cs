@@ -36,13 +36,32 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static void StartProcess(string name, string args, ProcessWindowStyle windowStyle)
+        internal static void Start(string processName, string args, ProcessWindowStyle windowStyle)
         {
             var startInfo = new ProcessStartInfo();
-            startInfo.FileName = name;
+            startInfo.FileName = processName;
             startInfo.Arguments = args;
             startInfo.WindowStyle = windowStyle;
             Process.Start(startInfo);
+        }
+
+        internal static void Stop(string processName)
+        {
+            var timeout = 10000;
+            var procs = Process.GetProcessesByName(processName);
+
+            foreach (var proc in procs)
+            {
+                proc.Kill();
+                proc.WaitForExit(timeout);
+                proc.Dispose();
+            }
+        }
+
+        internal static void Stop(params string[] processNames)
+        {
+            foreach (var proc in processNames)
+                Stop(proc);
         }
     }
 }

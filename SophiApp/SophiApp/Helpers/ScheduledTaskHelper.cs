@@ -13,5 +13,18 @@ namespace SophiApp.Helpers
         internal static void EnableTask(string taskPath, string taskName) => GetTask(taskPath, taskName).Enabled = true;
 
         internal static TaskState GetTaskState(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}")?.State ?? throw new SheduledTaskNotFoundException(taskName);
+
+        internal static void RegisterLogonTask(string name, string description, string execute, string args, string username)
+        {
+            var td = TaskService.Instance.NewTask();
+            td.Triggers.Add(new LogonTrigger() { UserId = username });
+            td.Actions.Add(execute, args);
+            td.Principal.UserId = username;
+            td.Principal.RunLevel = TaskRunLevel.Highest;
+            td.Settings.Compatibility = TaskCompatibility.V2_2;
+            td.RegistrationInfo.Author = AppHelper.AppName;
+            td.RegistrationInfo.Description = description;
+            _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(name, td);
+        }
     }
 }

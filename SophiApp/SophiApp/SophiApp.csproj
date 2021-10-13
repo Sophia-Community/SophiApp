@@ -188,6 +188,7 @@
     <Compile Include="Helpers\FabricHelper.cs" />
     <Compile Include="Helpers\ExceptionsHelper.cs" />
     <Compile Include="Helpers\ExtensionsHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\FirewallHelper.cs" />
     <Compile Include="Helpers\LocalizationsHelper.cs" />
