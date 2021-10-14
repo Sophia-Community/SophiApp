@@ -1,4 +1,6 @@
-﻿namespace SophiApp.Customisations
+﻿using System;
+
+namespace SophiApp.Customisations
 {
     internal sealed class CustomisationConstants
     {
@@ -115,6 +117,16 @@
         internal const string _307_TASK_ARGS = "-WindowStyle Hidden -Command \"& {Get-ChildItem -Path `$env:LOCALAPPDATA\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-Item -Path $env:LOCALAPPDATA\\Temp -Force | Where-Object -FilterScript {$_.LinkType -ne \"\"\"SymbolicLink\"\"\"} | Remove-Item -Recurse -Force; New-Item -Path $env:LOCALAPPDATA\\Temp -ItemType SymbolicLink -Value $env:SystemDrive\\Temp -Force}\"";
         internal const string _308_APPDATA_TEMP = @"%USERPROFILE%\AppData\Local\Temp";
         internal const string _308_TASK_ARGS = "-WindowStyle Hidden -Command \"& {Remove-Item -Path \"C:\\Temp\" -Recurse -Force; Unregister-ScheduledTask -TaskName TemporaryTask -Confirm:$false}\"";
+        internal const string _309_CONTROL_FILE_SYSTEM_PATH = @"SYSTEM\CurrentControlSet\Control\FileSystem";
+        internal const byte _309_DISABLED_VALUE = 1;
+        internal const byte _309_ENABLED_VALUE = 0;
+        internal const string _309_LONG_PATH = "LongPathsEnabled";
+        internal const string _310_DISPLAY_PARAMS = "DisplayParameters";
+        internal const string _310_SYSTEM_CRASH_CONTROL_PATH = @"SYSTEM\CurrentControlSet\Control\CrashControl";
+        internal const string _314_ENABLE_LINKED = "EnableLinkedConnections";
+        internal const byte _314_ENABLE_LINKED_VALUE = 1;
+        internal const string _315_DELIVERY_SETTINGS_PATH = @"S-1-5-20\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings";
+        internal const string _315_DOWNLOAD_MODE = "DownloadMode";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -166,6 +178,9 @@
         internal const int _824_PROMPT_VALUE = 300;
         internal const string _825_NO_USE_NAME = "NoUseStoreOpenWith";
         internal const byte _825_NO_USE_VALUE = 1;
+        internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";
+        internal const byte ADMIN_PROMPT_DEFAULT_VALUE = 5;
+        internal const byte ADMIN_PROMPT_NEVER_VALUE = 0;
         internal const string ADVANCED_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced";
         internal const byte ALL_ITEMS_ICON_CATEGORY_VALUE = 0;
         internal const byte ALL_ITEMS_ICON_SMALL_VALUE = 1;
@@ -209,6 +224,7 @@
         internal const string ONE_DRIVE_AUTH = "FileCoAuth";
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
+        internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
         internal const string POWERSHELL_EXE = "powershell.exe";
         internal const string PROGRAM_ACCESS_ONLY = "ProgrammaticAccessOnly";
         internal const string SERVICE_SPOOLER = "Spooler";
@@ -239,6 +255,7 @@
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
+        internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 }

@@ -41,6 +41,17 @@ namespace SophiApp.Helpers
             return count == 0;
         }
 
+        internal static void DirTryDelete(string dirPath)
+        {
+            try
+            {
+                Directory.Delete(dirPath, recursive: true);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         internal static void LazyRemoveDirectory(string dirPath)
         {
             try

@@ -39,7 +39,7 @@
     <system:String x:Key="Localization.Search">Search</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">settings</system:String>
-    <system:String x:Key="Localization.ViewChanges.Reset">Reset</system:String>
+    <system:String x:Key="Localization.ViewChanges.Cancel">Cancel</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Apply</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">An update for SophiApp is avalaible</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>

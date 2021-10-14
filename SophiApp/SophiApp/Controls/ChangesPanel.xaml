@@ -86,7 +86,7 @@
                     <controls:Button
                         Margin="0,0,10,0"
                         Command="{Binding ResetTextedElementsStateCommand}"
-                        Text="{DynamicResource Localization.ViewChanges.Reset}" />
+                        Text="{DynamicResource Localization.ViewChanges.Cancel}" />
 
                     <controls:FilledButton
                         Margin="0,0,10,0"

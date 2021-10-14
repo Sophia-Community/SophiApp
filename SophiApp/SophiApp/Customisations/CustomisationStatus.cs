@@ -254,14 +254,26 @@ namespace SophiApp.Customisations
 
         public static bool _305() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _305_POWER_CONTROL_PATH, _305_HIBERNATE) == _305_ENABLED_VALUE;
 
-        public static bool _307()
-        {
-            var currentTemp = Environment.ExpandEnvironmentVariables(ENVIRONMENT_TEMP);
-            var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
-            return currentTemp == systemDriveTemp;
-        }
+        public static bool _307() => Environment.ExpandEnvironmentVariables(ENVIRONMENT_TEMP)
+                                        == Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
 
         public static bool _308() => _307().Invert();
+
+        public static bool _309() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _309_CONTROL_FILE_SYSTEM_PATH, _309_LONG_PATH)
+                                              .HasNullOrValue(_309_ENABLED_VALUE);
+
+        public static bool _310() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _310_SYSTEM_CRASH_CONTROL_PATH, _310_DISPLAY_PARAMS)
+                                              .HasNullOrValue(DISABLED_VALUE).Invert();
+
+        public static bool _312() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT)
+                                              .HasNullOrValue(ADMIN_PROMPT_DEFAULT_VALUE);
+
+        public static bool _313() => _312().Invert();
+
+        public static bool _314() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _314_ENABLE_LINKED) == _314_ENABLE_LINKED_VALUE;
+
+        public static bool _315() => RegHelper.GetNullableIntValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE)
+                                              .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 
