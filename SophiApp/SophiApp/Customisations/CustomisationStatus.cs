@@ -2,6 +2,7 @@
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceProcess;
@@ -9,7 +10,7 @@ using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
 {
-    public sealed class CustomisationStatus
+    public static class CustomisationStatus
     {
         public static bool _100()
         {
@@ -274,6 +275,16 @@ namespace SophiApp.Customisations
 
         public static bool _315() => RegHelper.GetNullableIntValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE)
                                               .HasNullOrValue(ENABLED_VALUE);
+
+        public static bool _316()
+        {
+            _ = Domain.GetComputerDomain();
+            return RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
+                            .HasNullOrValue(DISABLED_VALUE).Invert();
+        }
+
+        public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
+                                              .HasNullOrValue(_317_ENABLED_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

@@ -9,7 +9,7 @@ using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
 {
-    public sealed class CustomisationOs
+    public static class CustomisationOs
     {
         public static void _100(bool IsActive)
         {
@@ -576,6 +576,24 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE, DISABLED_VALUE, RegistryValueKind.DWord);
             FileHelper.DirTryDelete(_315_DELIVERY_OPT_PATH);
         }
+
+        public static void _316(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY);
+        }
+
+        public static void _317(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        _317_CURRENT_VERSION_WINDOWS_PATH,
+                                                                            _317_PRINTER_LEGACY_MODE,
+                                                                                IsActive ? _317_ENABLED_VALUE
+                                                                                         : _317_DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _800(bool IsActive)
         {

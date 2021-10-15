@@ -2,7 +2,7 @@
 
 namespace SophiApp.Customisations
 {
-    internal sealed class CustomisationConstants
+    internal static class CustomisationConstants
     {
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
@@ -127,6 +127,12 @@ namespace SophiApp.Customisations
         internal const byte _314_ENABLE_LINKED_VALUE = 1;
         internal const string _315_DELIVERY_SETTINGS_PATH = @"S-1-5-20\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings";
         internal const string _315_DOWNLOAD_MODE = "DownloadMode";
+        internal const string _316_FOREGROUND_POLICY = "SyncForegroundPolicy";
+        internal const string _316_WINLOGON_PATH = @"SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Winlogon";
+        internal const string _317_CURRENT_VERSION_WINDOWS_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows";
+        internal const byte _317_DISABLED_VALUE = 1;
+        internal const byte _317_ENABLED_VALUE = 0;
+        internal const string _317_PRINTER_LEGACY_MODE = "LegacyDefaultPrinterMode";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -255,7 +261,7 @@ namespace SophiApp.Customisations
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
-        internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
+        internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 }
