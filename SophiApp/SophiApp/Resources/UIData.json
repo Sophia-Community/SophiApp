@@ -1215,8 +1215,8 @@
     {
         "Id": 314,
         "Header": {
-            "EN": "Access to mapped drives from app running with elevated permissions with Admin Approval Mode",
-            "RU": "Доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
+            "EN": "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode",
+            "RU": "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
         },
         "Description": {
             "EN": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in privileged mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders",
