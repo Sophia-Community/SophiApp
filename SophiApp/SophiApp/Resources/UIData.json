@@ -1470,7 +1470,7 @@
         },
         "Description": {
             "EN": "Get Microsoft Office and other updates together with Windows updates",
-            "RU": ""
+            "RU": "Получайте Microsoft Office и другие обновления вместе с обновленями Windows"
         },
         "Type": "Switch",
         "Tag": "System"
