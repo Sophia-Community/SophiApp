@@ -475,34 +475,44 @@ namespace SophiApp.Customisations
 
         public static void _305(bool IsActive) => ProcessHelper.Start(_305_POWERCFG, IsActive ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
 
-        public static void _307(bool _) //TODO: CustomisationOs - Not Implemented
+        public static void _307(bool _)
         {
-            throw new NotImplementedException();
+            var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
+            var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
+            var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
+            var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
+            var userName = Environment.UserName;
 
-            //var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
-            //var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
-            //var userName = Environment.UserName;
+            ServiceHelper.Restart(SERVICE_SPOOLER);
+            ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
+            FileHelper.CreateDirectory(systemDriveTemp);
+            FileHelper.TryDeleteDirectory(systemRootTemp);
 
-            //ServiceHelper.Restart(SERVICE_SPOOLER);
-            //ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
-            //FileHelper.CreateDirectory(systemDriveTemp);
-            //FileHelper.LazyRemoveDirectory(currentTemp);
+            if (FileHelper.IsSymbolicLink(currentTemp).Invert())
+            {
+                FileHelper.DirectoryLazyDelete(currentTemp);
 
-            //if (FileHelper.DirIsEmpty(currentTemp).Invert())
-            //{
-            //    ScheduledTaskHelper.RegisterLogonTask(name: TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, args: _307_TASK_ARGS, username: userName);
-            //}
+                if (FileHelper.DirectoryIsEmpty(currentTemp))
+                {
+                    FileHelper.DirectoryDelete(localAppDataTemp);
+                    FileHelper.CreateDirectoryLink(localAppDataTemp, systemDriveTemp);
+                }
+                else
+                {
+                    ScheduledTaskHelper.RegisterLogonTask(name: _307_SYMBOLIC_LINK_TASK, description: null, execute: POWERSHELL_EXE, args: _307_TASK_ARGS, username: userName);
+                }
+            }
 
-            //Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.User);
-            //Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.Machine);
-            //Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.Process);
-            //RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TMP, _307_SYSTEM_DRIVE_TEMP, RegistryValueKind.ExpandString);
-            //Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.User);
-            //Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.Machine);
-            //Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.Process);
-            //RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TEMP, _307_SYSTEM_DRIVE_TEMP, RegistryValueKind.ExpandString);
-            //RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TMP, systemDriveTemp, RegistryValueKind.ExpandString);
-            //RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemDriveTemp, RegistryValueKind.ExpandString);
+            Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TMP, systemDriveTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TMP, _307_SYSTEM_DRIVE_TEMP, RegistryValueKind.ExpandString);
+            Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TEMP, systemDriveTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TEMP, _307_SYSTEM_DRIVE_TEMP, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TMP, systemDriveTemp, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemDriveTemp, RegistryValueKind.ExpandString);
         }
 
         public static void _308(bool _) //TODO: CustomisationOs - Not Implemented
@@ -574,7 +584,7 @@ namespace SophiApp.Customisations
             }
 
             RegHelper.SetValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE, DISABLED_VALUE, RegistryValueKind.DWord);
-            FileHelper.DirTryDelete(_315_DELIVERY_OPT_PATH);
+            FileHelper.TryDeleteDirectory(_315_DELIVERY_OPT_PATH);
         }
 
         public static void _316(bool IsActive)

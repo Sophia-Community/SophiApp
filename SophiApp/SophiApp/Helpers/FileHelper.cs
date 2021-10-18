@@ -1,14 +1,49 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace SophiApp.Helpers
 {
     internal class FileHelper
     {
+        private const int maxRelativePathLengthUnicodeChars = 260;
+        private const int targetIsADirectory = 1;
+
         private enum MoveFileFlags
         {
             MOVEFILE_DELAY_UNTIL_REBOOT = 0x00000004
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, int dwFlags);
+
+        private static string GetTargetPathRelativeToLink(string linkPath, string targetPath, bool linkAndTargetAreDirectories = false)
+        {
+            string returnPath;
+
+            FileAttributes relativePathAttribute = 0;
+            if (linkAndTargetAreDirectories)
+            {
+                relativePathAttribute = FileAttributes.Directory;
+
+                // set the link path to the parent directory, so that PathRelativePathToW returns a path that works
+                // for directory symlink traversal
+                linkPath = Path.GetDirectoryName(linkPath.TrimEnd(Path.DirectorySeparatorChar));
+            }
+
+            StringBuilder relativePath = new StringBuilder(maxRelativePathLengthUnicodeChars);
+            if (!PathRelativePathToW(relativePath, linkPath, relativePathAttribute, targetPath, relativePathAttribute))
+            {
+                Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                returnPath = targetPath;
+            }
+            else
+            {
+                returnPath = relativePath.ToString();
+            }
+
+            return returnPath;
         }
 
         private static void MarkFileDelete(params string[] files)
@@ -20,6 +55,14 @@ namespace SophiApp.Helpers
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         private static extern bool MoveFileEx(string lpExistingFileName, string lpNewFileName, MoveFileFlags dwFlags);
 
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool PathRelativePathToW(
+            StringBuilder pszPath,
+            string pszFrom,
+            FileAttributes dwAttrFrom,
+            string pszTo,
+            FileAttributes dwAttrTo);
+
         internal static DirectoryInfo CreateDirectory(string dirPath) => Directory.CreateDirectory(dirPath);
 
         internal static void CreateDirectory(params string[] dirsPath)
@@ -28,7 +71,34 @@ namespace SophiApp.Helpers
                 _ = CreateDirectory(path);
         }
 
-        internal static bool DirIsEmpty(string dirPath)
+        internal static void CreateDirectoryLink(string linkPath, string targetPath)
+        {
+            CreateDirectoryLink(linkPath, targetPath, false);
+        }
+
+        internal static void CreateDirectoryLink(string linkPath, string targetPath, bool makeTargetPathRelative)
+        {
+            if (makeTargetPathRelative)
+            {
+                targetPath = GetTargetPathRelativeToLink(linkPath, targetPath, true);
+            }
+
+            if (!CreateSymbolicLink(linkPath, targetPath, targetIsADirectory) || Marshal.GetLastWin32Error() != 0)
+            {
+                try
+                {
+                    Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                }
+                catch (COMException exception)
+                {
+                    throw new IOException(exception.Message, exception);
+                }
+            }
+        }
+
+        internal static void DirectoryDelete(string dirPath) => Directory.Delete(dirPath, true);
+
+        internal static bool DirectoryIsEmpty(string dirPath)
         {
             byte count = 0;
 
@@ -41,18 +111,7 @@ namespace SophiApp.Helpers
             return count == 0;
         }
 
-        internal static void DirTryDelete(string dirPath)
-        {
-            try
-            {
-                Directory.Delete(dirPath, recursive: true);
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        internal static void LazyRemoveDirectory(string dirPath)
+        internal static void DirectoryLazyDelete(string dirPath)
         {
             try
             {
@@ -61,6 +120,19 @@ namespace SophiApp.Helpers
             catch (Exception)
             {
                 MarkFileDelete(Directory.GetFiles(dirPath));
+            }
+        }
+
+        internal static bool IsSymbolicLink(string dirPath) => new DirectoryInfo(dirPath).Attributes.HasFlag(FileAttributes.ReparsePoint);
+
+        internal static void TryDeleteDirectory(string dirPath)
+        {
+            try
+            {
+                Directory.Delete(dirPath, recursive: true);
+            }
+            catch (Exception)
+            {
             }
         }
     }

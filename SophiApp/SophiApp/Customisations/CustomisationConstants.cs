@@ -113,8 +113,9 @@ namespace SophiApp.Customisations
         internal const string _305_HIBERNATE_ON = "/HIBERNATE ON";
         internal const string _305_POWER_CONTROL_PATH = @"SYSTEM\CurrentControlSet\Control\Power";
         internal const string _305_POWERCFG = "powercfg.exe";
+        internal const string _307_SYMBOLIC_LINK_TASK = "SymbolicLinkTask";
         internal const string _307_SYSTEM_DRIVE_TEMP = @"%SystemDrive%\Temp";
-        internal const string _307_TASK_ARGS = "-WindowStyle Hidden -Command \"& {Get-ChildItem -Path `$env:LOCALAPPDATA\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-Item -Path $env:LOCALAPPDATA\\Temp -Force | Where-Object -FilterScript {$_.LinkType -ne \"\"\"SymbolicLink\"\"\"} | Remove-Item -Recurse -Force; New-Item -Path $env:LOCALAPPDATA\\Temp -ItemType SymbolicLink -Value $env:SystemDrive\\Temp -Force}\"";
+        internal const string _307_TASK_ARGS = "-WindowStyle Hidden -Command \"& {Get-ChildItem -Path `$env:LOCALAPPDATA\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-Item -Path `$env:LOCALAPPDATA\\Temp -Force | Where-Object -FilterScript {`$_.LinkType -ne 'SymbolicLink'} | Remove-Item -Recurse -Force; New-Item -Path `$env:LOCALAPPDATA\\Temp -ItemType SymbolicLink -Value `$env:SystemDrive\\Temp -Force; Unregister-ScheduledTask -TaskName SymbolicLink -Confirm:`$false}\"";
         internal const string _308_APPDATA_TEMP = @"%USERPROFILE%\AppData\Local\Temp";
         internal const string _308_TASK_ARGS = "-WindowStyle Hidden -Command \"& {Remove-Item -Path \"C:\\Temp\" -Recurse -Force; Unregister-ScheduledTask -TaskName TemporaryTask -Confirm:$false}\"";
         internal const string _309_CONTROL_FILE_SYSTEM_PATH = @"SYSTEM\CurrentControlSet\Control\FileSystem";
@@ -255,7 +256,6 @@ namespace SophiApp.Customisations
         internal const string TASKBAR_SEARCH_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Search";
         internal const string TEMP = "TEMP";
         internal const string TEMP_FOLDER = "Temp";
-        internal const string TEMPORARY_TASK = "TemporaryTask";
         internal const string TMP = "TMP";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
