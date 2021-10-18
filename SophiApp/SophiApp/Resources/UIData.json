@@ -1599,8 +1599,8 @@
             "RU": "Выбрать, куда сохранять скриншоты по нажатию Win+PrtScn"
         },
         "Description": {
-            "EN": "",
-            "RU": ""
+            "EN": "The function will be applied only if you choose to remove OneDrive. Otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks",
+            "RU": "Функция будет применена только в случае, если вы выбрали удаление OneDrive, иначе ломается функционал резервного копирования для папок \"Рабочий стол\" и \"Изображения\""
         },
         "Type": "RadioGroup",
         "Tag": "System",
