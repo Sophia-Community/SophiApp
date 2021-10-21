@@ -45,7 +45,9 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 OsHelper.PostMessage();
                 OsHelper.Refresh();
-                TextedElements.ForEach(element => element.GetCustomisationStatus());
+                TextedElements.Where(element => element.Status != ElementStatus.DISABLED)
+                              .ToList()
+                              .ForEach(element => element.GetCustomisationStatus());
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 stopwatch.Stop();
@@ -186,7 +188,9 @@ namespace SophiApp.ViewModels
             {
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
-                TextedElements.ForEach(element => element.GetCustomisationStatus());
+                TextedElements.Where(element => element.Status != ElementStatus.DISABLED)
+                              .ToList()
+                              .ForEach(element => element.GetCustomisationStatus());
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();

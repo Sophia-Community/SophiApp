@@ -134,6 +134,12 @@ namespace SophiApp.Customisations
         internal const byte _317_DISABLED_VALUE = 1;
         internal const byte _317_ENABLED_VALUE = 0;
         internal const string _317_PRINTER_LEGACY_MODE = "LegacyDefaultPrinterMode";
+        internal const string _319_LEGACY_COMPONENTS_FEATURE = "LegacyComponents";
+        internal const string _320_POWERSHELL_V2_FEATURE = "MicrosoftWindowsPowerShellV2";
+        internal const string _321_POWERSHELL_V2_ROOT_FEATURE = "MicrosoftWindowsPowershellV2Root";
+        internal const string _322_XPS_SERVICES_FEATURE = "Printing-XPSServices-Features";
+        internal const string _323_WORK_FOLDERS_FEATURE = "WorkFolders-Client";
+        internal const string _324_MEDIA_PLAYBACK_FEATURE = "MediaPlayback";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
