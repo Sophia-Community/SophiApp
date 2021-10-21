@@ -25,6 +25,7 @@ namespace SophiApp.Helpers
             td.RegistrationInfo.Author = AppHelper.AppName;
             td.RegistrationInfo.Description = description;
             _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(name, td);
+            DebugHelper.WriteStatusLog($"Register task: {name}");
         }
     }
 }

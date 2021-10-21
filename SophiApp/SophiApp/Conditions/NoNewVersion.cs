@@ -40,7 +40,7 @@ namespace SophiApp.Conditions
                         ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: release.tag_name);
                     }
 
-                    DebugHelper.UpdateNotnecessary();
+                    DebugHelper.UpdateNotNecessary();
                     return Result = isNewVersion.Invert();
                 }
             }
