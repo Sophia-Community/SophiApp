@@ -150,34 +150,6 @@ namespace SophiApp.Helpers
                 Array.ForEach(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories), f => DebugHelper.WriteStatusLog($"{f}"));
                 MarkFileDelete(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories));
             }
-
-            //var regpathSessionManager = @"SYSTEM\CurrentControlSet\Control\Session Manager";
-            //var regkeyPendingFile = "PendingFileRenameOperations";
-            ////var regvaluePendingFile = RegHelper.GetValue(RegistryHive.LocalMachine, regpathSessionManager, regkeyPendingFile) as string[];
-
-            //try
-            //{
-            //    DebugHelper.WriteStatusLog($"Try lazy delete dir: {dirPath}");
-            //    Directory.Delete(dirPath, true);
-            //    DebugHelper.WriteStatusLog($"Success delete dir: {dirPath}");
-            //}
-            //catch (Exception e)
-            //{
-            //    DebugHelper.WriteStatusLog($"Delete dir {dirPath} has error {e.Message}");
-            //    var arr = Directory.GetFiles(dirPath);
-            //    var arr1 = new List<string>();
-
-            //    for (int i = 0; i < arr.Length; i++)
-            //    {
-            //        arr1.Add(i % 2 == 0 ? arr[i] : string.Empty);
-            //    }
-
-            //    var regvaluePendingFile = arr1.ToArray();
-
-            //    RegHelper.SetValue(RegistryHive.LocalMachine, regpathSessionManager, regkeyPendingFile, regvaluePendingFile, RegistryValueKind.MultiString);
-            //    DebugHelper.WriteStatusLog($@"Write to registry {RegistryHive.LocalMachine}\{regpathSessionManager}\{regkeyPendingFile} value:");
-            //    arr1.ForEach(str => DebugHelper.WriteStatusLog($"{str}"));
-            //}
         }
 
         internal static bool IsSymbolicLink(string dirPath)

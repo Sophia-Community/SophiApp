@@ -516,35 +516,44 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemDriveTemp, RegistryValueKind.ExpandString);
         }
 
-        public static void _308(bool _) //TODO: CustomisationOs - Not Implemented
+        public static void _308(bool _)
         {
-            throw new NotImplementedException();
+            var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
+            var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
+            var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
+            var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
+            var userName = Environment.UserName;
+            DebugHelper.WriteStatusLog($"LocalAppData: {localAppDataTemp}\nSystemDriveTemp:{systemDriveTemp}\nSystemRootTemp:{systemRootTemp}\nCurrentTemp: {currentTemp}\nUserName: {userName}");
 
-            //var appDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
-            //var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
-            //var systemTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
-            //var userName = Environment.UserName;
+            ServiceHelper.Restart(SERVICE_SPOOLER);
+            ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
+            FileHelper.DirectoryDelete(localAppDataTemp);
+            FileHelper.CreateDirectory(systemRootTemp, localAppDataTemp);
 
-            //ServiceHelper.Restart(SERVICE_SPOOLER);
-            //ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
-            //FileHelper.CreateDirectory(systemTemp, appDataTemp);
-            //FileHelper.LazyRemoveDirectory(currentTemp);
+            if (FileHelper.IsSymbolicLink(currentTemp).Invert())
+            {
+                FileHelper.DirectoryLazyDelete(currentTemp);
 
-            //if (FileHelper.DirIsEmpty(currentTemp).Invert())
-            //{
-            //    ScheduledTaskHelper.RegisterLogonTask(name: TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, args: _308_TASK_ARGS, username: userName);
-            //}
+                if (FileHelper.DirectoryIsEmpty(currentTemp))
+                {
+                    FileHelper.DirectoryDelete(currentTemp);
+                }
+                else
+                {
+                    ScheduledTaskHelper.RegisterLogonTask(name: _308_TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, args: _308_TASK_ARGS, username: userName);
+                }
+            }
 
-            //Environment.SetEnvironmentVariable(TMP, appDataTemp, EnvironmentVariableTarget.User);
-            //Environment.SetEnvironmentVariable(TMP, systemTemp, EnvironmentVariableTarget.Machine);
-            //Environment.SetEnvironmentVariable(TMP, appDataTemp, EnvironmentVariableTarget.Process);
-            //RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TMP, _308_APPDATA_TEMP, RegistryValueKind.ExpandString);
-            //Environment.SetEnvironmentVariable(TEMP, appDataTemp, EnvironmentVariableTarget.User);
-            //Environment.SetEnvironmentVariable(TEMP, systemTemp, EnvironmentVariableTarget.Machine);
-            //Environment.SetEnvironmentVariable(TEMP, appDataTemp, EnvironmentVariableTarget.Process);
-            //RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TEMP, _308_APPDATA_TEMP, RegistryValueKind.ExpandString);
-            //RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TMP, systemTemp, RegistryValueKind.ExpandString);
-            //RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemTemp, RegistryValueKind.ExpandString);
+            Environment.SetEnvironmentVariable(TMP, localAppDataTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TMP, systemRootTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TMP, localAppDataTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TMP, _308_APPDATA_TEMP, RegistryValueKind.ExpandString);
+            Environment.SetEnvironmentVariable(TEMP, localAppDataTemp, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable(TEMP, systemRootTemp, EnvironmentVariableTarget.Machine);
+            Environment.SetEnvironmentVariable(TEMP, localAppDataTemp, EnvironmentVariableTarget.Process);
+            RegHelper.SetValue(RegistryHive.CurrentUser, ENVIRONMENT, TEMP, _308_APPDATA_TEMP, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TMP, systemRootTemp, RegistryValueKind.ExpandString);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SESSION_MANAGER_ENVIRONMENT, TEMP, systemRootTemp, RegistryValueKind.ExpandString);
         }
 
         public static void _309(bool IsActive) => RegHelper.SetValue(RegistryHive.LocalMachine,
