@@ -77,7 +77,7 @@ jobs:
         Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
 
     - name: Release Build
-      uses: svenstaro/upload-release-action@main
+      uses: svenstaro/upload-release-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: SophiApp.zip
