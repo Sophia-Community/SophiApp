@@ -25,7 +25,7 @@ namespace SophiApp.Helpers
                 OpenProcessToken(proc.Handle, 8, out processHandle);
                 return new WindowsIdentity(processHandle);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception($"Cannot find the process called: {process}");
             }
@@ -52,7 +52,6 @@ namespace SophiApp.Helpers
 
             foreach (var proc in procs)
             {
-                DebugHelper.WriteStatusLog($"Stop process: {proc}");
                 proc.Kill();
                 proc.WaitForExit(timeout);
                 proc.Dispose();

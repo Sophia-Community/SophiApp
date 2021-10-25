@@ -482,7 +482,6 @@ namespace SophiApp.Customisations
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
             var userName = Environment.UserName;
-            DebugHelper.WriteStatusLog($"LocalAppData: {localAppDataTemp}\nSystemDriveTemp:{systemDriveTemp}\nSystemRootTemp:{systemRootTemp}\nCurrentTemp: {currentTemp}\nUserName: {userName}");
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
             ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
@@ -523,7 +522,6 @@ namespace SophiApp.Customisations
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
             var userName = Environment.UserName;
-            DebugHelper.WriteStatusLog($"LocalAppData: {localAppDataTemp}\nSystemDriveTemp:{systemDriveTemp}\nSystemRootTemp:{systemRootTemp}\nCurrentTemp: {currentTemp}\nUserName: {userName}");
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
             ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
@@ -615,17 +613,19 @@ namespace SophiApp.Customisations
                                                                                          : _317_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _319(bool IsActive) => DismHelper.EnableFeature(_319_LEGACY_COMPONENTS_FEATURE, IsActive);
+        public static void _319(bool IsActive) => DismHelper.SetFeatureState(_319_LEGACY_COMPONENTS_FEATURE, IsActive);
 
-        public static void _320(bool IsActive) => DismHelper.EnableFeature(_320_POWERSHELL_V2_FEATURE, IsActive);
+        public static void _320(bool IsActive) => DismHelper.SetFeatureState(_320_POWERSHELL_V2_FEATURE, IsActive);
 
-        public static void _321(bool IsActive) => DismHelper.EnableFeature(_321_POWERSHELL_V2_ROOT_FEATURE, IsActive);
+        public static void _321(bool IsActive) => DismHelper.SetFeatureState(_321_POWERSHELL_V2_ROOT_FEATURE, IsActive);
 
-        public static void _322(bool IsActive) => DismHelper.EnableFeature(_322_XPS_SERVICES_FEATURE, IsActive);
+        public static void _322(bool IsActive) => DismHelper.SetFeatureState(_322_XPS_SERVICES_FEATURE, IsActive);
 
-        public static void _323(bool IsActive) => DismHelper.EnableFeature(_323_WORK_FOLDERS_FEATURE, IsActive);
+        public static void _323(bool IsActive) => DismHelper.SetFeatureState(_323_WORK_FOLDERS_FEATURE, IsActive);
 
-        public static void _324(bool IsActive) => DismHelper.EnableFeature(_324_MEDIA_PLAYBACK_FEATURE, IsActive);
+        public static void _324(bool IsActive) => DismHelper.SetFeatureState(_324_MEDIA_PLAYBACK_FEATURE, IsActive);
+
+        public static void _326(bool IsActive) => DismHelper.SetCapabilityState(_326_STEPS_RECORDER_CAPABILITY, IsActive);
 
         public static void _800(bool IsActive)
         {

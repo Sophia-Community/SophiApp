@@ -113,12 +113,12 @@ namespace SophiApp.Customisations
         internal const string _305_HIBERNATE_ON = "/HIBERNATE ON";
         internal const string _305_POWER_CONTROL_PATH = @"SYSTEM\CurrentControlSet\Control\Power";
         internal const string _305_POWERCFG = "powercfg.exe";
-        internal const string _307_SYMBOLIC_LINK_TASK = "SymbolicLink";
+        internal const string _307_SYMBOLIC_LINK_TASK = "SophiApp Temp Folder Link Task";
         internal const string _307_SYSTEM_DRIVE_TEMP = @"%SystemDrive%\Temp";
-        internal const string _307_TASK_ARGS = "-WindowStyle Hidden -Command \"Start-Transcript -Path 'C:\\Temp\\PowershellLog.txt'; Get-ChildItem -Path $env:SystemRoot\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-ChildItem -Path $env:LOCALAPPDATA\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-Item -Path $env:LOCALAPPDATA\\Temp -Force | Where-Object -FilterScript {$_.LinkType -ne 'SymbolicLink'} | Remove-Item -Recurse -Force; New-Item -Path $env:LOCALAPPDATA\\Temp -ItemType SymbolicLink -Value $env:SystemDrive\\Temp -Force; Unregister-ScheduledTask -TaskName SymbolicLink -Confirm:$false; Stop-Transcript\"";
+        internal const string _307_TASK_ARGS = "-WindowStyle Hidden -Command \"Get-ChildItem -Path $env:SystemRoot\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-ChildItem -Path $env:LOCALAPPDATA\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-Item -Path $env:LOCALAPPDATA\\Temp -Force | Where-Object -FilterScript {$_.LinkType -ne 'SymbolicLink'} | Remove-Item -Recurse -Force; New-Item -Path $env:LOCALAPPDATA\\Temp -ItemType SymbolicLink -Value $env:SystemDrive\\Temp -Force; Unregister-ScheduledTask -TaskName 'SophiApp Temp Folder Link Task' -Confirm:$false;\"";
         internal const string _308_APPDATA_TEMP = @"%USERPROFILE%\AppData\Local\Temp";
-        internal const string _308_TASK_ARGS = "-WindowStyle Hidden -Command \"Start-Transcript -Path 'C:\\Temp\\PowershellLog.txt'; Remove-Item -Path $env:SystemDrive\\Temp -Recurse -Force; Unregister-ScheduledTask -TaskName TemporaryTask -Confirm:$false; Stop-Transcript\"";
-        internal const string _308_TEMPORARY_TASK = "TemporaryTask";
+        internal const string _308_TASK_ARGS = "-WindowStyle Hidden -Command \"Remove-Item -Path $env:SystemDrive\\Temp -Recurse -Force; Unregister-ScheduledTask -TaskName 'SophiApp Temp Folder Clear Task' -Confirm:$false;\"";
+        internal const string _308_TEMPORARY_TASK = "SophiApp Temp Folder Clear Task";
         internal const string _309_CONTROL_FILE_SYSTEM_PATH = @"SYSTEM\CurrentControlSet\Control\FileSystem";
         internal const byte _309_DISABLED_VALUE = 1;
         internal const byte _309_ENABLED_VALUE = 0;
@@ -141,6 +141,7 @@ namespace SophiApp.Customisations
         internal const string _322_XPS_SERVICES_FEATURE = "Printing-XPSServices-Features";
         internal const string _323_WORK_FOLDERS_FEATURE = "WorkFolders-Client";
         internal const string _324_MEDIA_PLAYBACK_FEATURE = "MediaPlayback";
+        internal const string _326_STEPS_RECORDER_CAPABILITY = "App.StepsRecorder~~~~0.0.1.0";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";

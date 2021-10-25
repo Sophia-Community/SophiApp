@@ -42,6 +42,12 @@ namespace SophiApp.Helpers
 
         private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
 
+        private static void WriteStatusLog(string record)
+        {
+            var dateTime = DateTime.Now;
+            StatusLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
+        }
+
         internal static void ActionTaked(uint actionID, bool actionParameter) => WriteStatusLog($"Customization action {actionID} with parameter {actionParameter} completed successfully");
 
         internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
@@ -106,11 +112,5 @@ namespace SophiApp.Helpers
         internal static void UpdateNotNecessary() => WriteInfoLog("No update required");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
-
-        public static void WriteStatusLog(string record)
-        {
-            var dateTime = DateTime.Now;
-            StatusLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
-        }
     }
 }

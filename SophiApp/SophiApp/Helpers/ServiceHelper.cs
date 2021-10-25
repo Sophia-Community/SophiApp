@@ -42,15 +42,12 @@ namespace SophiApp.Helpers
 
         internal static void Restart(string serviceName)
         {
-            DebugHelper.WriteStatusLog($"Restart service: {serviceName}");
             var timeout = 10.0;
             var service = new ServiceController(serviceName);
             service.Stop();
             service.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(timeout));
-            DebugHelper.WriteStatusLog($"Service status: {service.Status}");
             service.Start();
             service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(timeout));
-            DebugHelper.WriteStatusLog($"Service status: {service.Status}");
         }
 
         public static void SetStartMode(ServiceController svc, ServiceStartMode mode)

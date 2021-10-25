@@ -67,12 +67,10 @@ namespace SophiApp.Helpers
         {
             try
             {
-                DebugHelper.WriteStatusLog($"Try create directory: {dirPath}");
                 _ = Directory.CreateDirectory(dirPath);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                DebugHelper.WriteStatusLog($"Create directory has error: {e.Message}");
             }
         }
 
@@ -84,7 +82,6 @@ namespace SophiApp.Helpers
 
         internal static void CreateDirectoryLink(string linkPath, string targetPath)
         {
-            DebugHelper.WriteStatusLog($"Try create symbolic link dir: {linkPath}");
             CreateDirectoryLink(linkPath, targetPath, false);
         }
 
@@ -110,15 +107,7 @@ namespace SophiApp.Helpers
 
         internal static void DirectoryDelete(string dirPath)
         {
-            try
-            {
-                DebugHelper.WriteStatusLog($"Try delete directory: {dirPath}");
-                Directory.Delete(dirPath, recursive: true);
-            }
-            catch (Exception e)
-            {
-                DebugHelper.WriteStatusLog($"Delete directory has error: {e.Message}");
-            }
+            Directory.Delete(dirPath, recursive: true);
         }
 
         internal static bool DirectoryIsEmpty(string dirPath)
@@ -131,7 +120,6 @@ namespace SophiApp.Helpers
                 break;
             }
 
-            DebugHelper.WriteStatusLog($"Dir: \"{dirPath}\" is empty: {count == 0}");
             return count == 0;
         }
 
@@ -139,15 +127,10 @@ namespace SophiApp.Helpers
         {
             try
             {
-                DebugHelper.WriteStatusLog($"Try lazy delete dir: {dirPath}");
                 Directory.Delete(dirPath, true);
-                DebugHelper.WriteStatusLog($"Success delete dir: {dirPath}");
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                DebugHelper.WriteStatusLog($"Delete dir {dirPath} has error {e.Message}");
-                DebugHelper.WriteStatusLog($"Send files to MarkFileDelete func:");
-                Array.ForEach(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories), f => DebugHelper.WriteStatusLog($"{f}"));
                 MarkFileDelete(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories));
             }
         }
@@ -155,21 +138,12 @@ namespace SophiApp.Helpers
         internal static bool IsSymbolicLink(string dirPath)
         {
             var di = new DirectoryInfo(dirPath);
-            DebugHelper.WriteStatusLog($"Directory {dirPath} is symbolic link: {di.Attributes.HasFlag(FileAttributes.ReparsePoint)}");
             return di.Attributes.HasFlag(FileAttributes.ReparsePoint);
         }
 
         internal static void TryDeleteDirectory(string dirPath)
         {
-            try
-            {
-                DebugHelper.WriteStatusLog($"Try delete directory: {dirPath}");
-                Directory.Delete(dirPath, recursive: true);
-            }
-            catch (Exception e)
-            {
-                DebugHelper.WriteStatusLog($"Delete directory has error: {e.Message}");
-            }
+            Directory.Delete(dirPath, recursive: true);
         }
     }
 }

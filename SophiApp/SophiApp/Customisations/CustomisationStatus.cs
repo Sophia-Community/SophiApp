@@ -1,5 +1,4 @@
-﻿using Microsoft.Dism;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System;
@@ -287,17 +286,19 @@ namespace SophiApp.Customisations
         public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
                                               .HasNullOrValue(_317_ENABLED_VALUE);
 
-        public static bool _319() => DismHelper.GetFeatureInfo(_319_LEGACY_COMPONENTS_FEATURE).FeatureState == DismPackageFeatureState.Installed;
+        public static bool _319() => DismHelper.FeatureIsInstalled(_319_LEGACY_COMPONENTS_FEATURE);
 
-        public static bool _320() => DismHelper.GetFeatureInfo(_320_POWERSHELL_V2_FEATURE).FeatureState == DismPackageFeatureState.Installed;
+        public static bool _320() => DismHelper.FeatureIsInstalled(_320_POWERSHELL_V2_FEATURE);
 
-        public static bool _321() => DismHelper.GetFeatureInfo(_321_POWERSHELL_V2_ROOT_FEATURE).FeatureState == DismPackageFeatureState.Installed;
+        public static bool _321() => DismHelper.FeatureIsInstalled(_321_POWERSHELL_V2_ROOT_FEATURE);
 
-        public static bool _322() => DismHelper.GetFeatureInfo(_322_XPS_SERVICES_FEATURE).FeatureState == DismPackageFeatureState.Installed;
+        public static bool _322() => DismHelper.FeatureIsInstalled(_322_XPS_SERVICES_FEATURE);
 
-        public static bool _323() => DismHelper.GetFeatureInfo(_323_WORK_FOLDERS_FEATURE).FeatureState == DismPackageFeatureState.Installed;
+        public static bool _323() => DismHelper.FeatureIsInstalled(_323_WORK_FOLDERS_FEATURE);
 
-        public static bool _324() => DismHelper.GetFeatureInfo(_324_MEDIA_PLAYBACK_FEATURE).FeatureState == DismPackageFeatureState.Installed;
+        public static bool _324() => DismHelper.FeatureIsInstalled(_324_MEDIA_PLAYBACK_FEATURE);
+
+        public static bool _326() => DismHelper.CapabilityIsInstalled(_326_STEPS_RECORDER_CAPABILITY);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 
