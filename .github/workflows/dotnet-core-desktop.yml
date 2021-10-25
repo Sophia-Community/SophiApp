@@ -54,7 +54,7 @@ jobs:
       run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
     
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@main
+      uses: microsoft/setup-msbuild@master
     
     - name: Run MSBuild
       run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration /p:platform=$env:Platform
