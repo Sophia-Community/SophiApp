@@ -24,21 +24,21 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@master
       with:
         fetch-depth: 0
         
     - name: Preparing The Program Files
       run: |
-        ."$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
-        ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
-        ."$env:App_Script_Path\Set-DebugMode.ps1"
+        . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
+        . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
+        . "$env:App_Script_Path\Set-DebugMode.ps1"
       
     - name: Cleaninig Up Debug Comments
       run: ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
         
     - name: Setup Windows 10 Sdk
-      uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@master
       with:
         sdk-version: 19041
         
@@ -46,7 +46,7 @@ jobs:
       run: Copy-Item -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Destination "D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Recurse -Force
       
     - name: Setup NuGet
-      uses: nuget/setup-nuget@v1
+      uses: nuget/setup-nuget@master
       with:
         nuget-version: latest
       
@@ -54,7 +54,7 @@ jobs:
       run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
     
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1          
+      uses: microsoft/setup-msbuild@master
     
     - name: Run MSBuild
       run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration /p:platform=$env:Platform
@@ -65,8 +65,8 @@ jobs:
     - name: Cleanup Files
       run: |
         $ExcludedTypes = @("*.exe", "*.config")
-        $SourceFolder = "{0}\*"-f $env:App_Release_Path
-        $DestinationFolder = "{0}\{1}"-f $env:App_Release_Path, $env:Binary_Folder_Name        
+        $SourceFolder = "{0}\*" -f $env:App_Release_Path
+        $DestinationFolder = "{0}\{1}" -f $env:App_Release_Path, $env:Binary_Folder_Name        
         Get-ChildItem -Path $env:App_Release_Path -Directory | Remove-Item -Force -Recurse -Confirm:$false
         New-Item -Path $env:App_Release_Path -ItemType Directory -Name $env:Binary_Folder_Name -Confirm:$false
         Get-ChildItem -Path $SourceFolder -File -Exclude $ExcludedTypes | Move-Item -Destination $DestinationFolder
