@@ -482,6 +482,7 @@ namespace SophiApp.Customisations
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
             var userName = Environment.UserName;
+            DebugHelper.WriteStatusLog($"LocalAppData: {localAppDataTemp}\nSystemDriveTemp:{systemDriveTemp}\nSystemRootTemp:{systemRootTemp}\nCurrentTemp: {currentTemp}\nUserName: {userName}");
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
             ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
@@ -522,6 +523,7 @@ namespace SophiApp.Customisations
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
             var userName = Environment.UserName;
+            DebugHelper.WriteStatusLog($"LocalAppData: {localAppDataTemp}\nSystemDriveTemp:{systemDriveTemp}\nSystemRootTemp:{systemRootTemp}\nCurrentTemp: {currentTemp}\nUserName: {userName}");
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
             ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);

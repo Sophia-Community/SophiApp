@@ -52,6 +52,7 @@ namespace SophiApp.Helpers
 
             foreach (var proc in procs)
             {
+                DebugHelper.WriteStatusLog($"Stop process: {proc}");
                 proc.Kill();
                 proc.WaitForExit(timeout);
                 proc.Dispose();
