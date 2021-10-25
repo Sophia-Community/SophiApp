@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
       with:
         fetch-depth: 0
         
@@ -38,7 +38,7 @@ jobs:
       run: ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
         
     - name: Setup Windows 10 Sdk
-      uses: GuillaumeFalourd/setup-windows10-sdk-action@master
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@main
       with:
         sdk-version: 19041
         
@@ -46,7 +46,7 @@ jobs:
       run: Copy-Item -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Destination "D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Recurse -Force
       
     - name: Setup NuGet
-      uses: nuget/setup-nuget@master
+      uses: nuget/setup-nuget@main
       with:
         nuget-version: latest
       
@@ -54,7 +54,7 @@ jobs:
       run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
     
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@master
+      uses: microsoft/setup-msbuild@main
     
     - name: Run MSBuild
       run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration /p:platform=$env:Platform
@@ -77,7 +77,7 @@ jobs:
         Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
 
     - name: Release Build
-      uses: svenstaro/upload-release-action@master
+      uses: svenstaro/upload-release-action@main
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: SophiApp.zip
