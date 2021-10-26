@@ -142,6 +142,16 @@ namespace SophiApp.Customisations
         internal const string _323_WORK_FOLDERS_FEATURE = "WorkFolders-Client";
         internal const string _324_MEDIA_PLAYBACK_FEATURE = "MediaPlayback";
         internal const string _326_STEPS_RECORDER_CAPABILITY = "App.StepsRecorder~~~~0.0.1.0";
+        internal const string _327_QUICK_SUPPORT_CAPABILITY = "App.Support.QuickAssist~~~~0.0.1.0";
+        internal const string _328_MS_PAINT_CAPABILITY = "Microsoft.Windows.MSPaint~~~~0.0.1.0";
+        internal const string _329_MS_WORDPAD_CAPABILITY = "Microsoft.Windows.WordPad~~~~0.0.1.0";
+        internal const string _330_INTERNET_EXPLORER_CAPABILITY = "Browser.InternetExplorer~~~~0.0.11.0";
+        internal const string _331_MATH_RECOGNIZER_CAPABILITY = "MathRecognizer~~~~0.0.1.0";
+        internal const string _332_MEDIA_PLAYER_CAPABILITY = "Media.WindowsMediaPlayer~~~~0.0.12.0";
+        internal const string _333_OPENSSH_CLIENT_CAPABILITY = "OpenSSH.Client~~~~0.0.1.0";
+        internal const string _334_SERVICE_MANAGER_GUID = "7971f918-a847-4430-9279-4a52d1efe18d";
+        internal const string _334_UPDATE_SERVICE_MANAGER = "Microsoft.Update.ServiceManager";
+        internal const string _336_POWER_PLAN_GUID = "{8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";

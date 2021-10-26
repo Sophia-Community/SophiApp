@@ -627,6 +627,33 @@ namespace SophiApp.Customisations
 
         public static void _326(bool IsActive) => DismHelper.SetCapabilityState(_326_STEPS_RECORDER_CAPABILITY, IsActive);
 
+        public static void _327(bool IsActive) => DismHelper.SetCapabilityState(_327_QUICK_SUPPORT_CAPABILITY, IsActive);
+
+        public static void _328(bool IsActive) => DismHelper.SetCapabilityState(_328_MS_PAINT_CAPABILITY, IsActive);
+
+        public static void _329(bool IsActive) => DismHelper.SetCapabilityState(_329_MS_WORDPAD_CAPABILITY, IsActive);
+
+        public static void _330(bool IsActive) => DismHelper.SetCapabilityState(_330_INTERNET_EXPLORER_CAPABILITY, IsActive);
+
+        public static void _331(bool IsActive) => DismHelper.SetCapabilityState(_331_MATH_RECOGNIZER_CAPABILITY, IsActive);
+
+        public static void _332(bool IsActive) => DismHelper.SetCapabilityState(_332_MEDIA_PLAYER_CAPABILITY, IsActive);
+
+        public static void _333(bool IsActive) => DismHelper.SetCapabilityState(_333_OPENSSH_CLIENT_CAPABILITY, IsActive);
+
+        public static void _334(bool IsActive)
+        {
+            var updateManager = ComObjectHelper.CreateFromProgID(_334_UPDATE_SERVICE_MANAGER);
+
+            if (IsActive)
+            {
+                updateManager.AddService2(_334_SERVICE_MANAGER_GUID, 7, "");
+                return;
+            }
+
+            updateManager.RemoveService(_334_SERVICE_MANAGER_GUID);
+        }
+
         public static void _800(bool IsActive)
         {
             if (IsActive)

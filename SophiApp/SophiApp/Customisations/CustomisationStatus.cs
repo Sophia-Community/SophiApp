@@ -300,6 +300,41 @@ namespace SophiApp.Customisations
 
         public static bool _326() => DismHelper.CapabilityIsInstalled(_326_STEPS_RECORDER_CAPABILITY);
 
+        public static bool _327() => DismHelper.CapabilityIsInstalled(_327_QUICK_SUPPORT_CAPABILITY);
+
+        public static bool _328() => DismHelper.CapabilityIsInstalled(_328_MS_PAINT_CAPABILITY);
+
+        public static bool _329() => DismHelper.CapabilityIsInstalled(_329_MS_WORDPAD_CAPABILITY);
+
+        public static bool _330() => DismHelper.CapabilityIsInstalled(_330_INTERNET_EXPLORER_CAPABILITY);
+
+        public static bool _331() => DismHelper.CapabilityIsInstalled(_331_MATH_RECOGNIZER_CAPABILITY);
+
+        public static bool _332() => DismHelper.CapabilityIsInstalled(_332_MEDIA_PLAYER_CAPABILITY);
+
+        public static bool _333() => DismHelper.CapabilityIsInstalled(_333_OPENSSH_CLIENT_CAPABILITY);
+
+        public static bool _334()
+        {
+            var result = false;
+            var updateManager = ComObjectHelper.CreateFromProgID(_334_UPDATE_SERVICE_MANAGER);
+
+            foreach (var service in updateManager.Services)
+            {
+                if (service.ServiceID == _334_SERVICE_MANAGER_GUID)
+                {
+                    result = service.IsDefaultAUService;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool _336() => WmiHelper.GetActivePowerPlanId() == _336_POWER_PLAN_GUID;
+
+        public static bool _337() => _336().Invert();
+
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 
         public static bool _801() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _801_CAB_COM_PATH);
