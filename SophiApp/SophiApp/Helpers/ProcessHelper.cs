@@ -38,11 +38,12 @@ namespace SophiApp.Helpers
 
         internal static void Start(string processName, string args, ProcessWindowStyle windowStyle)
         {
-            var startInfo = new ProcessStartInfo();
-            startInfo.FileName = processName;
-            startInfo.Arguments = args;
-            startInfo.WindowStyle = windowStyle;
-            Process.Start(startInfo);
+            _ = Process.Start(new ProcessStartInfo()
+            {
+                FileName = processName,
+                Arguments = args,
+                WindowStyle = windowStyle
+            });
         }
 
         internal static void Stop(string processName)

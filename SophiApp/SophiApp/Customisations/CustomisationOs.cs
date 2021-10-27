@@ -473,7 +473,7 @@ namespace SophiApp.Customisations
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _305(bool IsActive) => ProcessHelper.Start(_305_POWERCFG, IsActive ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
+        public static void _305(bool IsActive) => ProcessHelper.Start(POWERCFG_EXE, IsActive ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
 
         public static void _307(bool _)
         {
@@ -652,6 +652,23 @@ namespace SophiApp.Customisations
             }
 
             updateManager.RemoveService(_334_SERVICE_MANAGER_GUID);
+        }
+
+        public static void _336(bool _) => ProcessHelper.Start(POWERCFG_EXE, _336_HIGH_POWER_ARG, ProcessWindowStyle.Hidden);
+
+        public static void _337(bool _) => ProcessHelper.Start(POWERCFG_EXE, _337_BALANCED_POWER_ARG, ProcessWindowStyle.Hidden);
+
+        public static void _338(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(RegistryHive.LocalMachine, _338_NET_FRAMEWORK64_PATH, _338_USE_LATEST_CLR, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, _338_NET_FRAMEWORK32_PATH, _338_USE_LATEST_CLR, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _338_NET_FRAMEWORK64_PATH, _338_USE_LATEST_CLR);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _338_NET_FRAMEWORK32_PATH, _338_USE_LATEST_CLR);
         }
 
         public static void _800(bool IsActive)

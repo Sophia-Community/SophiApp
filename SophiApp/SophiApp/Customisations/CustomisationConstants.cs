@@ -112,7 +112,6 @@ namespace SophiApp.Customisations
         internal const string _305_HIBERNATE_OFF = "/HIBERNATE OFF";
         internal const string _305_HIBERNATE_ON = "/HIBERNATE ON";
         internal const string _305_POWER_CONTROL_PATH = @"SYSTEM\CurrentControlSet\Control\Power";
-        internal const string _305_POWERCFG = "powercfg.exe";
         internal const string _307_SYMBOLIC_LINK_TASK = "SophiApp Temp Folder Link Task";
         internal const string _307_SYSTEM_DRIVE_TEMP = @"%SystemDrive%\Temp";
         internal const string _307_TASK_ARGS = "-WindowStyle Hidden -Command \"Get-ChildItem -Path $env:SystemRoot\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-ChildItem -Path $env:LOCALAPPDATA\\Temp -Recurse -Force | Remove-Item -Recurse -Force; Get-Item -Path $env:LOCALAPPDATA\\Temp -Force | Where-Object -FilterScript {$_.LinkType -ne 'SymbolicLink'} | Remove-Item -Recurse -Force; New-Item -Path $env:LOCALAPPDATA\\Temp -ItemType SymbolicLink -Value $env:SystemDrive\\Temp -Force; Unregister-ScheduledTask -TaskName 'SophiApp Temp Folder Link Task' -Confirm:$false;\"";
@@ -151,7 +150,12 @@ namespace SophiApp.Customisations
         internal const string _333_OPENSSH_CLIENT_CAPABILITY = "OpenSSH.Client~~~~0.0.1.0";
         internal const string _334_SERVICE_MANAGER_GUID = "7971f918-a847-4430-9279-4a52d1efe18d";
         internal const string _334_UPDATE_SERVICE_MANAGER = "Microsoft.Update.ServiceManager";
-        internal const string _336_POWER_PLAN_GUID = "{8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}";
+        internal const string _336_HIGH_POWER_ARG = "/SETACTIVE SCHEME_MIN";
+        internal const string _336_HIGH_POWER_GUID = "{8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}";
+        internal const string _337_BALANCED_POWER_ARG = "/SETACTIVE SCHEME_BALANCED";
+        internal const string _338_NET_FRAMEWORK32_PATH = @"SOFTWARE\Wow6432Node\Microsoft\.NETFramework";
+        internal const string _338_NET_FRAMEWORK64_PATH = @"SOFTWARE\Microsoft\.NETFramework";
+        internal const string _338_USE_LATEST_CLR = "OnlyUseLatestCLR";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -250,6 +254,7 @@ namespace SophiApp.Customisations
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
         internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
+        internal const string POWERCFG_EXE = "powercfg.exe";
         internal const string POWERSHELL_EXE = "powershell.exe";
         internal const string PROGRAM_ACCESS_ONLY = "ProgrammaticAccessOnly";
         internal const string SERVICE_SPOOLER = "Spooler";

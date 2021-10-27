@@ -331,9 +331,25 @@ namespace SophiApp.Customisations
             return result;
         }
 
-        public static bool _336() => WmiHelper.GetActivePowerPlanId() == _336_POWER_PLAN_GUID;
+        public static bool _336() => WmiHelper.GetActivePowerPlanId() == _336_HIGH_POWER_GUID;
 
         public static bool _337() => _336().Invert();
+
+        public static bool _338() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _338_NET_FRAMEWORK64_PATH, _338_USE_LATEST_CLR) == ENABLED_VALUE
+                                     || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _338_NET_FRAMEWORK32_PATH, _338_USE_LATEST_CLR) == ENABLED_VALUE;
+
+        public static bool _339() => WmiHelper.HasNetworkAdaptersPowerSave();
+
+        //{
+        //    var ad = NetworkInterface.GetAllNetworkInterfaces();
+
+        //    foreach (var item in ad)
+        //    {
+        //        _ = item;
+        //    }
+
+        //    return true;
+        //}
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

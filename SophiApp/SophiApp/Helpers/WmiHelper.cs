@@ -21,5 +21,27 @@ namespace SophiApp.Helpers
             var status = searcher.Get().Cast<ManagementBaseObject>().FirstOrDefault().Properties[PROTECTION_STATUS].Value;
             return Convert.ToInt32(status);
         }
+
+        internal static bool HasNetworkAdaptersPowerSave()
+        {
+            // https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/hh872363(v=vs.85)
+            // Unsupported (0)
+            // Disabled(1)
+            // Enabled(2)
+
+            var result = false;
+            var searcher = new ManagementObjectSearcher(@"Root\StandardCimv2", "SELECT AllowComputerToTurnOffDevice FROM MSFT_NetAdapterPowerManagementSettingData");
+
+            foreach (ManagementObject adapter in searcher.Get())
+            {
+                if (adapter.Properties["AllowComputerToTurnOffDevice"].Value.ToUshort() == 2)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
     }
 }
