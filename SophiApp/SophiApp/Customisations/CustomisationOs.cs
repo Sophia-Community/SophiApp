@@ -671,6 +671,26 @@ namespace SophiApp.Customisations
             RegHelper.DeleteKey(RegistryHive.LocalMachine, _338_NET_FRAMEWORK32_PATH, _338_USE_LATEST_CLR);
         }
 
+        public static void _339(bool IsActive) => ProcessHelper.Start(POWERSHELL_EXE,
+                                                                        IsActive ? _339_ENABLE_ARGS
+                                                                                 : _339_DISABLE_ARGS,
+                                                                            ProcessWindowStyle.Hidden);
+
+        public static void _340(bool IsActive)
+        {
+            if (IsActive)
+            {
+                RegHelper.SetValue(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS, unchecked((int)_340_DISABLED_UTF_VALUE), RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS);
+        }
+
+        public static void _342(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE);
+
+        public static void _343(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE, INPUT_ENG_VALUE, RegistryValueKind.String);
+
         public static void _800(bool IsActive)
         {
             if (IsActive)

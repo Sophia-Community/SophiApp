@@ -1547,8 +1547,8 @@
             "RU": "Выключить IP версии 6 (TCP/IPv6)"
         },
         "Description": {
-            "EN": "Before invoking the function, a check will be run whether your ISP supports the IPv6 protocol using https://ipv6-test.com",
-            "RU": "Перед выполнением функции будет провердена проверка: поддерживает ли ваш провайдер IPv6, используя ресурс https://ipv6-test.com"
+            "EN": "",
+            "RU": ""
         },
         "Type": "Switch",
         "Tag": "System"

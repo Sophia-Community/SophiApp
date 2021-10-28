@@ -340,16 +340,11 @@ namespace SophiApp.Customisations
 
         public static bool _339() => WmiHelper.HasNetworkAdaptersPowerSave();
 
-        //{
-        //    var ad = NetworkInterface.GetAllNetworkInterfaces();
+        public static bool _340() => string.Format("{0:X2}", RegHelper.GetValue(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS)) == _340_DISABLED_VALUE;
 
-        //    foreach (var item in ad)
-        //    {
-        //        _ = item;
-        //    }
+        public static bool _342() => _343().Invert();
 
-        //    return true;
-        //}
+        public static bool _343() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

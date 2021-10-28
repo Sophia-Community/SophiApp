@@ -156,6 +156,12 @@ namespace SophiApp.Customisations
         internal const string _338_NET_FRAMEWORK32_PATH = @"SOFTWARE\Wow6432Node\Microsoft\.NETFramework";
         internal const string _338_NET_FRAMEWORK64_PATH = @"SOFTWARE\Microsoft\.NETFramework";
         internal const string _338_USE_LATEST_CLR = "OnlyUseLatestCLR";
+        internal const string _339_DISABLE_ARGS = "-WindowStyle Hidden -Command \"Get-NetAdapter -Physical | Get-NetAdapterPowerManagement | Where-Object -FilterScript {$_.AllowComputerToTurnOffDevice -ne 'Unsupported'} | ForEach-Object -Process {$_.AllowComputerToTurnOffDevice = 'Disabled'; $_ | Set-NetAdapterPowerManagement}\"";
+        internal const string _339_ENABLE_ARGS = "-WindowStyle Hidden -Command \"Get-NetAdapter -Physical | Get-NetAdapterPowerManagement | Where-Object -FilterScript {$_.AllowComputerToTurnOffDevice -ne 'Unsupported'} | ForEach-Object -Process {$_.AllowComputerToTurnOffDevice = 'Enabled'; $_ | Set-NetAdapterPowerManagement}\"";
+        internal const uint _340_DISABLED_UTF_VALUE = 0xffffffffu;
+        internal const string _340_DISABLED_VALUE = "FFFFFFFF";
+        internal const string _340_IPV6_DISABLED_COMPONENTS = "DisabledComponents";
+        internal const string _340_IPV6_PARAMETERS_PATH = @"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -221,6 +227,7 @@ namespace SophiApp.Customisations
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
+        internal const string CONTROL_PANEL_USER_PROFILE_PATH = @"Control Panel\International\User Profile";
         internal const string CURRENT_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
         internal const byte DARK_THEME_VALUE = 0;
         internal const string DATA = "Data";
@@ -238,6 +245,8 @@ namespace SophiApp.Customisations
         internal const string ENVIRONMENT_SYSTEM_DRIVE = "%SystemDrive%";
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
+        internal const string INPUT_ENG_VALUE = "0409:00000409";
+        internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
         internal const string ITEM_NAME = "ItemName";
         internal const string JPEG_QUALITY = "JPEGImportQuality";
         internal const byte LAUNCH_PC_VALUE = 1;
