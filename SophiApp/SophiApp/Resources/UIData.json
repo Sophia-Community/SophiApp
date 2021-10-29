@@ -1543,8 +1543,8 @@
     {
         "Id": 340,
         "Header": {
-            "EN": "Disable the Internet Protocol Version 6 (TCP/IPv6) component for all network connections",
-            "RU": "Выключить IP версии 6 (TCP/IPv6)"
+            "EN": "Enable the Internet Protocol Version 6 (TCP/IPv6) component for all network adapters",
+            "RU": "Включить IP версии 6 (TCP/IPv6) для всех сетевых адаптеров"
         },
         "Description": {
             "EN": "",
