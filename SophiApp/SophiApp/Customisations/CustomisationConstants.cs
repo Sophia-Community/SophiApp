@@ -162,6 +162,7 @@ namespace SophiApp.Customisations
         internal const string _340_DISABLED_VALUE = "FFFFFFFF";
         internal const string _340_IPV6_DISABLED_COMPONENTS = "DisabledComponents";
         internal const string _340_IPV6_PARAMETERS_PATH = @"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters";
+        internal const string _345_DESKTOP_FOLDER = "Desktop";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -245,6 +246,7 @@ namespace SophiApp.Customisations
         internal const string ENVIRONMENT_SYSTEM_DRIVE = "%SystemDrive%";
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
+        internal const string IMAGES_FOLDER = "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}";
         internal const string INPUT_ENG_VALUE = "0409:00000409";
         internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
         internal const string ITEM_NAME = "ItemName";
@@ -289,6 +291,7 @@ namespace SophiApp.Customisations
         internal const string TEMP = "TEMP";
         internal const string TEMP_FOLDER = "Temp";
         internal const string TMP = "TMP";
+        internal const string USER_SHELL_FOLDERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";

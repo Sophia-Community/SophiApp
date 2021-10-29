@@ -671,10 +671,12 @@ namespace SophiApp.Customisations
             RegHelper.DeleteKey(RegistryHive.LocalMachine, _338_NET_FRAMEWORK32_PATH, _338_USE_LATEST_CLR);
         }
 
-        public static void _339(bool IsActive) => ProcessHelper.Start(POWERSHELL_EXE,
-                                                                        IsActive ? _339_ENABLE_ARGS
-                                                                                 : _339_DISABLE_ARGS,
-                                                                            ProcessWindowStyle.Hidden);
+        //public static void _339(bool IsActive) => ProcessHelper.Start(POWERSHELL_EXE,
+        //                                                                IsActive ? _339_ENABLE_ARGS
+        //                                                                         : _339_DISABLE_ARGS,
+        //                                                                    ProcessWindowStyle.Hidden);
+
+        public static void _339(bool IsActive) => WmiHelper.SetNetworkAdaptersPowerSave(IsActive);
 
         public static void _340(bool IsActive)
         {
@@ -690,6 +692,14 @@ namespace SophiApp.Customisations
         public static void _342(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE);
 
         public static void _343(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE, INPUT_ENG_VALUE, RegistryValueKind.String);
+
+        public static void _345(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                USER_SHELL_FOLDERS_PATH,
+                                                                    IMAGES_FOLDER,
+                                                                        RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _345_DESKTOP_FOLDER),
+                                                                            RegistryValueKind.ExpandString);
+
+        public static void _346(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER);
 
         public static void _800(bool IsActive)
         {

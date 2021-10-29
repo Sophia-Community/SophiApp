@@ -346,6 +346,11 @@ namespace SophiApp.Customisations
 
         public static bool _343() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
 
+        public static bool _345() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
+                                        == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _345_DESKTOP_FOLDER);
+
+        public static bool _346() => _345().Invert();
+
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 
         public static bool _801() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _801_CAB_COM_PATH);

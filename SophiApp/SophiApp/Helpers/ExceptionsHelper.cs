@@ -9,6 +9,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class NetworkAdapterNotEnergySavingException : Exception
+    {
+        public NetworkAdapterNotEnergySavingException() : base("Your network card(s) does not support power saving mode")
+        {
+        }
+    }
+
     internal class RegistryKeyNotFoundException : Exception
     {
         public RegistryKeyNotFoundException(string key) : base($"The registry key \"{key}\" wasn't found")
