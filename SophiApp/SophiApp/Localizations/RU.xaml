@@ -45,9 +45,9 @@
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
-    <system:String x:Key="Conditions.SomethingWrong">Невероятно! Что-то пошло не так и вы попали на секретный уровень</system:String>
+    <system:String x:Key="Conditions.SomethingWrong">Невероятно! Что-то пошло не так, и вы попали на секретный уровень</system:String>
     <system:String x:Key="Conditions.OsBuildVersion">Поддерживается только Windows 10 версии 2004/20H2/21H1/21H2</system:String>
-    <system:String x:Key="Conditions.UpdateBuildRevision">Поддерживается накопительный пакет обновления: 1151 и выше</system:String>
+    <system:String x:Key="Conditions.UpdateBuildRevision">Поддерживаемый накопительный пакет обновления: 1151 и выше</system:String>
     <system:String x:Key="Conditions.LoggedUserIsAdmin">Текущий вошедший пользователь не обладает правами администратора</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном</system:String>
     <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия</system:String>
