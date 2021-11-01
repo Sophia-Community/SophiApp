@@ -16,8 +16,8 @@
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.OsNotSupported">Unfortunately, this version of Windows is not supported</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
-    <system:String x:Key="Localization.Settings.Languages">SophiApp display language</system:String>
-    <system:String x:Key="Localization.Settings.Themes">SophiApp Theme</system:String>
+    <system:String x:Key="Localization.Settings.Languages">Display language</system:String>
+    <system:String x:Key="Localization.Settings.Themes">Theme</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
     <system:String x:Key="Localization.Settings.Updates">Updates</system:String>
     <system:String x:Key="Localization.Settings.Version">Version</system:String>
