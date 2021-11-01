@@ -156,13 +156,13 @@ namespace SophiApp.Customisations
         internal const string _338_NET_FRAMEWORK32_PATH = @"SOFTWARE\Wow6432Node\Microsoft\.NETFramework";
         internal const string _338_NET_FRAMEWORK64_PATH = @"SOFTWARE\Microsoft\.NETFramework";
         internal const string _338_USE_LATEST_CLR = "OnlyUseLatestCLR";
-        internal const string _339_DISABLE_ARGS = "-WindowStyle Hidden -Command \"Get-NetAdapter -Physical | Get-NetAdapterPowerManagement | Where-Object -FilterScript {$_.AllowComputerToTurnOffDevice -ne 'Unsupported'} | ForEach-Object -Process {$_.AllowComputerToTurnOffDevice = 'Disabled'; $_ | Set-NetAdapterPowerManagement}\"";
-        internal const string _339_ENABLE_ARGS = "-WindowStyle Hidden -Command \"Get-NetAdapter -Physical | Get-NetAdapterPowerManagement | Where-Object -FilterScript {$_.AllowComputerToTurnOffDevice -ne 'Unsupported'} | ForEach-Object -Process {$_.AllowComputerToTurnOffDevice = 'Enabled'; $_ | Set-NetAdapterPowerManagement}\"";
         internal const uint _340_DISABLED_UTF_VALUE = 0xffffffffu;
         internal const string _340_DISABLED_VALUE = "FFFFFFFF";
         internal const string _340_IPV6_DISABLED_COMPONENTS = "DisabledComponents";
         internal const string _340_IPV6_PARAMETERS_PATH = @"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters";
         internal const string _345_DESKTOP_FOLDER = "Desktop";
+        internal const byte _348_AUTOMATICALLY_VALUE = 3;
+        internal const byte _349_DEFAULT_VALUE = 2;
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -259,6 +259,7 @@ namespace SophiApp.Customisations
         internal const string MAX_TELEMETRY_ALLOWED = "MaxTelemetryAllowed";
         internal const byte MIN_ENT_TELEMETRY_VALUE = 0;
         internal const byte MIN_TELEMETRY_VALUE = 1;
+        internal const string MITIGATION_USER_PREFERENCE = "UserPreference";
         internal const string MUIVERB = "MUIVerb";
         internal const string ONE_DRIVE = "OneDrive";
         internal const string ONE_DRIVE_AUTH = "FileCoAuth";
@@ -296,6 +297,7 @@ namespace SophiApp.Customisations
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
+        internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
         internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }

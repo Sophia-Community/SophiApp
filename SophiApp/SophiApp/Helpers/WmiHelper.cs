@@ -34,14 +34,12 @@ namespace SophiApp.Helpers
             var result = false;
             var scope = @"Root\StandardCimv2";
             var queryEnergySavingAdapters = "SELECT AllowComputerToTurnOffDevice FROM MSFT_NetAdapterPowerManagementSettingData WHERE AllowComputerToTurnOffDevice != \"0\"";
-            var energySavingAdapters = GetManagementObjectSearcher(scope, queryEnergySavingAdapters).Get();
+            var adapters = GetManagementObjectSearcher(scope, queryEnergySavingAdapters).Get();
 
-            if (energySavingAdapters.Count == 0)
-            {
+            if (adapters.Count == 0)
                 throw new NetworkAdapterNotEnergySavingException();
-            }
 
-            foreach (var adapter in energySavingAdapters)
+            foreach (var adapter in adapters)
             {
                 if (adapter.Properties["AllowComputerToTurnOffDevice"].Value.ToUshort() == 2)
                 {
@@ -60,14 +58,13 @@ namespace SophiApp.Helpers
             // Disabled(1)
             // Enabled(2)
 
-            var value = enablePowerSave == true ? 2 : 1;
             var scope = @"Root\StandardCimv2";
-            var queryEnergySavingAdapters = "SELECT * FROM MSFT_NetAdapterPowerManagementSettingData WHERE AllowComputerToTurnOffDevice != \"0\"";
-            var energySavingAdapters = GetManagementObjectSearcher(scope, queryEnergySavingAdapters).Get();
+            var query = "SELECT * FROM MSFT_NetAdapterPowerManagementSettingData WHERE AllowComputerToTurnOffDevice != \"0\"";
+            var adapters = GetManagementObjectSearcher(scope, query).Get();
 
-            foreach (ManagementObject adapter in energySavingAdapters)
+            foreach (ManagementObject adapter in adapters)
             {
-                adapter.SetPropertyValue("AllowComputerToTurnOffDevice", value);
+                adapter.SetPropertyValue("AllowComputerToTurnOffDevice", enablePowerSave == true ? 2 : 1);
                 _ = adapter.Put();
             }
         }

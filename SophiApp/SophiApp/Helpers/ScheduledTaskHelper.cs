@@ -6,12 +6,6 @@ namespace SophiApp.Helpers
     {
         private static Task GetTask(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}");
 
-        internal static void ChangeTaskState(string taskPath, string taskName, bool enable) => GetTask(taskPath, taskName).Enabled = enable;
-
-        internal static void DisableTask(string taskPath, string taskName) => GetTask(taskPath, taskName).Enabled = false;
-
-        internal static void EnableTask(string taskPath, string taskName) => GetTask(taskPath, taskName).Enabled = true;
-
         internal static TaskState GetTaskState(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}")?.State ?? throw new SheduledTaskNotFoundException(taskName);
 
         internal static void RegisterLogonTask(string name, string description, string execute, string args, string username)
@@ -25,6 +19,13 @@ namespace SophiApp.Helpers
             td.RegistrationInfo.Author = AppHelper.AppName;
             td.RegistrationInfo.Description = description;
             _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(name, td);
+        }
+
+        internal static void TryChangeTaskState(string taskPath, string taskName, bool enable)
+        {
+            var task = GetTask(taskPath, taskName);
+            if (task != null)
+                task.Enabled = enable;
         }
     }
 }

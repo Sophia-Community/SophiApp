@@ -5,17 +5,17 @@ namespace SophiApp.Helpers
 {
     internal class RegHelper
     {
-        private static RegistryKey GetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, GetRegistryView()).OpenSubKey(keyPath);
+        private static RegistryKey GetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath);
 
-        private static RegistryView GetRegistryView() => Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
-
-        private static RegistryKey SetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, GetRegistryView()).OpenSubKey(keyPath, true) ?? RegistryKey.OpenBaseKey(hive, GetRegistryView()).CreateSubKey(keyPath, true);
+        private static RegistryKey SetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath, true) ?? RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).CreateSubKey(keyPath, true);
 
         internal static void DeleteKey(RegistryHive hive, string path, string name) => SetKey(hive, path).DeleteValue(name);
 
-        internal static void DeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, GetRegistryView()).DeleteSubKeyTree(subKey, true);
+        internal static void DeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).DeleteSubKeyTree(subKey, true);
 
         internal static byte[] GetByteArrayValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as byte[];
+
+        internal static byte GetByteValue(RegistryHive hive, string path, string name) => Convert.ToByte(GetKey(hive, path).GetValue(name));
 
         internal static int? GetNullableIntValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as int?;
 

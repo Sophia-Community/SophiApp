@@ -56,7 +56,7 @@ namespace SophiApp.Customisations
 
             if (IsActive)
             {
-                ScheduledTaskHelper.EnableTask(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK);
+                ScheduledTaskHelper.TryChangeTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK, true);
                 RegHelper.DeleteKey(RegistryHive.CurrentUser, _104_WER_PATH, _104_DISABLED);
                 ServiceHelper.SetStartMode(werService, ServiceStartMode.Manual);
                 werService.Start();
@@ -65,7 +65,7 @@ namespace SophiApp.Customisations
 
             if (OsHelper.IsEdition(_104_CORE).Invert())
             {
-                ScheduledTaskHelper.DisableTask(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK);
+                ScheduledTaskHelper.TryChangeTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK, false);
                 RegHelper.SetValue(RegistryHive.CurrentUser, _104_WER_PATH, _104_DISABLED, _104_DISABLED_DEFAULT_VALUE, RegistryValueKind.DWord);
             }
 
@@ -77,23 +77,23 @@ namespace SophiApp.Customisations
 
         public static void _107(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, SIUF_PATH, SIUF_PERIOD, DISABLED_VALUE, RegistryValueKind.DWord);
 
-        public static void _109(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(_109_DATA_UPDATER_TASK_PATH, _109_DATA_UPDATER_TASK, IsActive);
+        public static void _109(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(_109_DATA_UPDATER_TASK_PATH, _109_DATA_UPDATER_TASK, IsActive);
 
-        public static void _110(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(_110_PROXY_TASK_PATH, _110_PROXY_TASK, IsActive);
+        public static void _110(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(_110_PROXY_TASK_PATH, _110_PROXY_TASK, IsActive);
 
-        public static void _111(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(CEIP_TASK_PATH, _111_CONS_TASK, IsActive);
+        public static void _111(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(CEIP_TASK_PATH, _111_CONS_TASK, IsActive);
 
-        public static void _112(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(CEIP_TASK_PATH, _112_USB_CEIP_TASK, IsActive);
+        public static void _112(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(CEIP_TASK_PATH, _112_USB_CEIP_TASK, IsActive);
 
-        public static void _113(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(_113_DISK_DATA_TASK_PATH, _113_DISK_DATA_TASK, IsActive);
+        public static void _113(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(_113_DISK_DATA_TASK_PATH, _113_DISK_DATA_TASK, IsActive);
 
-        public static void _114(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(MAPS_TASK_PATH, _114_MAPS_TOAST_TASK, IsActive);
+        public static void _114(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(MAPS_TASK_PATH, _114_MAPS_TOAST_TASK, IsActive);
 
-        public static void _115(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(MAPS_TASK_PATH, _115_MAPS_UPDATE, IsActive);
+        public static void _115(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(MAPS_TASK_PATH, _115_MAPS_UPDATE, IsActive);
 
-        public static void _116(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(_116_FAMILY_MONITOR_TASK_PATH, _116_FAMILY_MONITOR_TASK, IsActive);
+        public static void _116(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(_116_FAMILY_MONITOR_TASK_PATH, _116_FAMILY_MONITOR_TASK, IsActive);
 
-        public static void _117(bool IsActive) => ScheduledTaskHelper.ChangeTaskState(_117_XBOX_SAVE_TASK_PATH, _117_XBOX_SAVE_TASK, IsActive);
+        public static void _117(bool IsActive) => ScheduledTaskHelper.TryChangeTaskState(_117_XBOX_SAVE_TASK_PATH, _117_XBOX_SAVE_TASK, IsActive);
 
         public static void _118(bool IsActive)
         {
@@ -671,11 +671,6 @@ namespace SophiApp.Customisations
             RegHelper.DeleteKey(RegistryHive.LocalMachine, _338_NET_FRAMEWORK32_PATH, _338_USE_LATEST_CLR);
         }
 
-        //public static void _339(bool IsActive) => ProcessHelper.Start(POWERSHELL_EXE,
-        //                                                                IsActive ? _339_ENABLE_ARGS
-        //                                                                         : _339_DISABLE_ARGS,
-        //                                                                    ProcessWindowStyle.Hidden);
-
         public static void _339(bool IsActive) => WmiHelper.SetNetworkAdaptersPowerSave(IsActive);
 
         public static void _340(bool IsActive)
@@ -700,6 +695,10 @@ namespace SophiApp.Customisations
                                                                             RegistryValueKind.ExpandString);
 
         public static void _346(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER);
+
+        public static void _348(bool _) => OsHelper.SetRecommendedTroubleshooting(_348_AUTOMATICALLY_VALUE);
+
+        public static void _349(bool _) => OsHelper.SetRecommendedTroubleshooting(_349_DEFAULT_VALUE);
 
         public static void _800(bool IsActive)
         {

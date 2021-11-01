@@ -4,6 +4,7 @@ using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
 using SophiApp.Models;
+using SophiApp.Watchers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,15 @@ namespace SophiApp.ViewModels
             {
                 var name = args as string;
                 var theme = themesHelper.Find(name);
+                themesHelper.ChangeTheme(theme);
+                SetAppSelectedTheme(theme);
+            });
+        }
+
+        private async void AppThemeChangeAsync(Theme theme)
+        {
+            await Task.Run(() =>
+            {
                 themesHelper.ChangeTheme(theme);
                 SetAppSelectedTheme(theme);
             });
@@ -128,6 +138,16 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private async Task InitWatchersAsync()
+        {
+            await Task.Run(() =>
+            {
+                var regWatcher = RegWatcher.GetInstance();
+                regWatcher.SystemThemeChangedEvent += OnSystemThemeChanged;
+                _ = regWatcher.Start();
+            });
+        }
+
         private async void LocalizationChangeAsync(object args)
         {
             await Task.Run(() =>
@@ -155,6 +175,8 @@ namespace SophiApp.ViewModels
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
+
+        private void OnSystemThemeChanged(object sender, byte value) => AppThemeChangeAsync(themesHelper.Themes[value]);
 
         private async void OnTextedElementErrorAsync(TextedElement element, Exception e)
         {
@@ -272,15 +294,16 @@ namespace SophiApp.ViewModels
         {
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
-            var conditionsController = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
-            await conditionsController.InvokeAsync();
+            var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
+            await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
 
-            if (conditionsController.Result)
+            if (conditionsHelper.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);
                 await InitTextedElementsAsync();
+                await InitWatchersAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);

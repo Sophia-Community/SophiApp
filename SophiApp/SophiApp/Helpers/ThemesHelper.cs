@@ -10,14 +10,11 @@ namespace SophiApp.Helpers
     internal class ThemesHelper
     {
         private const string DARK_THEME_URI = "pack://application:,,,/Themes/Dark.xaml";
-        private const int DARK_THEME_VALUE = 0;
         private const string LIGHT_THEME_URI = "pack://application:,,,/Themes/Light.xaml";
         private const string THEME_REGISTRY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string THEME_REGISTRY_VALUE = "AppsUseLightTheme";
         private static readonly string DARK_THEME_ALIAS = "DARK";
-        private static readonly string DARK_THEME_NAME = Application.Current.FindResource("Localization.Settings.Themes.Dark") as string;
         private static readonly string LIGHT_THEME_ALIAS = "LIGHT";
-        private static readonly string LIGHT_THEME_NAME = Application.Current.FindResource("Localization.Settings.Themes.Light") as string;
         private Theme selectedTheme;
 
         public ThemesHelper()
@@ -33,16 +30,14 @@ namespace SophiApp.Helpers
 
         internal List<Theme> Themes => new List<Theme>()
         {
-            { new Theme() { Alias = LIGHT_THEME_ALIAS, Name = Application.Current.FindResource("Localization.Settings.Themes.Light") as string, Uri = new Uri(LIGHT_THEME_URI, UriKind.Absolute) } },
-            { new Theme() { Alias = DARK_THEME_ALIAS, Name = Application.Current.FindResource("Localization.Settings.Themes.Dark") as string, Uri = new Uri(DARK_THEME_URI, UriKind.Absolute) } }
+            { new Theme() { Alias = DARK_THEME_ALIAS, Name = Application.Current.FindResource("Localization.Settings.Themes.Dark") as string, Uri = new Uri(DARK_THEME_URI, UriKind.Absolute) } },
+            { new Theme() { Alias = LIGHT_THEME_ALIAS, Name = Application.Current.FindResource("Localization.Settings.Themes.Light") as string, Uri = new Uri(LIGHT_THEME_URI, UriKind.Absolute) } }
         };
 
         private void Init()
         {
-            SelectedTheme = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, THEME_REGISTRY_PATH, THEME_REGISTRY_VALUE).HasNullOrValue(DARK_THEME_VALUE)
-                          ? new Theme() { Alias = DARK_THEME_ALIAS, Name = DARK_THEME_NAME, Uri = new Uri(DARK_THEME_URI, UriKind.Absolute) }
-                          : new Theme() { Alias = LIGHT_THEME_ALIAS, Name = LIGHT_THEME_NAME, Uri = new Uri(LIGHT_THEME_URI, UriKind.Absolute) };
-
+            var regThemeValue = RegHelper.GetByteValue(RegistryHive.CurrentUser, THEME_REGISTRY_PATH, THEME_REGISTRY_VALUE);
+            SelectedTheme = Themes[regThemeValue];
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = SelectedTheme.Uri });
         }
 

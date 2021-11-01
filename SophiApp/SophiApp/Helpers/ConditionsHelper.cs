@@ -8,7 +8,7 @@ namespace SophiApp.Helpers
 {
     internal class ConditionsHelper
     {
-        private List<ICondition> ConditionsList;
+        private List<ICondition> Conditions;
 
         public ConditionsHelper(EventHandler<Exception> errorHandler, EventHandler<ICondition> resultHandler)
         {
@@ -23,7 +23,7 @@ namespace SophiApp.Helpers
 
         public bool Result { get; set; } = false;
 
-        private void InitializingConditions() => ConditionsList = new List<ICondition>()
+        private void InitializingConditions() => Conditions = new List<ICondition>()
         {
             new OsBuildVersion(), new OsUpdateBuildRevision(),
             new LoggedUserIsAdmin(), new OsNotInfected(),
@@ -34,7 +34,7 @@ namespace SophiApp.Helpers
         {
             await Task.Run(() =>
             {
-                foreach (var condition in ConditionsList)
+                foreach (var condition in Conditions)
                 {
                     try
                     {

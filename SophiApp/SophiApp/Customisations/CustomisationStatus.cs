@@ -340,7 +340,7 @@ namespace SophiApp.Customisations
 
         public static bool _339() => WmiHelper.HasNetworkAdaptersPowerSave();
 
-        public static bool _340() => string.Format("{0:X2}", RegHelper.GetValue(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS)) == _340_DISABLED_VALUE;
+        public static bool _340() => (string.Format("{0:X2}", RegHelper.GetValue(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS)) == _340_DISABLED_VALUE).Invert();
 
         public static bool _342() => _343().Invert();
 
@@ -350,6 +350,11 @@ namespace SophiApp.Customisations
                                         == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _345_DESKTOP_FOLDER);
 
         public static bool _346() => _345().Invert();
+
+        public static bool _348() => _349().Invert();
+
+        public static bool _349() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, WINDOWS_MITIGATION_PATH, MITIGATION_USER_PREFERENCE)
+                                              .HasNullOrValue(_349_DEFAULT_VALUE);
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

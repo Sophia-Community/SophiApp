@@ -74,6 +74,39 @@ namespace SophiApp.Helpers
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
+        internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
+        {
+            // RecommendedTroubleshooting
+            // https://github.com/farag2/Sophia-Script-for-Windows/blob/7de71e369387de8e6fb0f00f296191017df2c51b/Sophia%20Script/Sophia%20Script%20for%20Windows%2010/Module/Sophia.psm1#L6716
+            // 3 - Automatically
+            // 2 - Default
+
+            const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
+            const string DATA_COLLECTION_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
+            const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
+            const string ERROR_REPORTING_PATH = @"SOFTWARE\Microsoft\Windows\Windows Error Reporting";
+            const string DISABLE_ERROR_REPORTING = "Disabled";
+            const string MITIGATION_USER_PREFERENCE = "UserPreference";
+            const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
+            const string ALLOW_TELEMETRY = "AllowTelemetry";
+            const string MAX_TELEMETRY = "MaxTelemetryAllowed ";
+            const string QUEUE_REPORTING_TASK = "QueueReporting";
+            const string QUEUE_TASK_PATH = @"Microsoft\Windows\Windows Error Reporting";
+            const string ERROR_REPORTING_SERVICE = "WerSvc";
+            const byte AUTOMATICALLY_VALUE = 3;
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, WINDOWS_MITIGATION_PATH, MITIGATION_USER_PREFERENCE, autoOrDefault, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, ALLOW_TELEMETRY, AUTOMATICALLY_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, MAX_TELEMETRY, AUTOMATICALLY_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, DIAG_TRACK_PATH, SHOWED_TOAST_LEVEL, AUTOMATICALLY_VALUE, RegistryValueKind.DWord);
+            ScheduledTaskHelper.TryChangeTaskState(taskPath: QUEUE_TASK_PATH, taskName: QUEUE_REPORTING_TASK, enable: true);
+            RegHelper.DeleteKey(RegistryHive.CurrentUser, ERROR_REPORTING_PATH, DISABLE_ERROR_REPORTING);
+
+            var werSvc = ServiceHelper.Get(ERROR_REPORTING_SERVICE);
+            ServiceHelper.SetStartMode(werSvc, System.ServiceProcess.ServiceStartMode.Manual);
+            werSvc.Start();
+        }
+
         public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
 
         public static void Refresh()
