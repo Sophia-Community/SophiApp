@@ -1,6 +1,6 @@
 <#
 	.SYNOPSIS
-	Comments for testing in .cs files are removed
+	Comments in .cs files are removed
 
 	.INPUTS
 	None
