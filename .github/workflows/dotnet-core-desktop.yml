@@ -61,7 +61,8 @@ jobs:
         . "$env:App_Script_Path\Get-BinaryFiles.ps1"
     
     - name: Compress Files
-      run: |        
+      run: |
+        $Build_Directory = Rename-Item -Path $env:App_Release_Path -NewName $env:App_Name -PassThru | Select-Object -ExpandProperty FullName
         Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
 
     - name: Release Build
