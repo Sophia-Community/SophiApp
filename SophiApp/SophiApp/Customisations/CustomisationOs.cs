@@ -700,6 +700,20 @@ namespace SophiApp.Customisations
 
         public static void _349(bool _) => OsHelper.SetRecommendedTroubleshooting(_349_DEFAULT_VALUE);
 
+        public static void _350(bool IsActive) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        ADVANCED_EXPLORER_PATH,
+                                                                            _350_SEPARATE_PROCESS,
+                                                                                IsActive ? ENABLED_VALUE
+                                                                                         : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _351(bool IsActive) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        _351_RESERVE_MANAGER_PATH,
+                                                                            _351_SHIPPED_RESERVES,
+                                                                                IsActive ? ENABLED_VALUE
+                                                                                         : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
         public static void _800(bool IsActive)
         {
             if (IsActive)

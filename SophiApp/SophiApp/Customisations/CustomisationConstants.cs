@@ -163,6 +163,9 @@ namespace SophiApp.Customisations
         internal const string _345_DESKTOP_FOLDER = "Desktop";
         internal const byte _348_AUTOMATICALLY_VALUE = 3;
         internal const byte _349_DEFAULT_VALUE = 2;
+        internal const string _350_SEPARATE_PROCESS = "SeparateProcess";
+        internal const string _351_RESERVE_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager";
+        internal const string _351_SHIPPED_RESERVES = "ShippedWithReserves";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";

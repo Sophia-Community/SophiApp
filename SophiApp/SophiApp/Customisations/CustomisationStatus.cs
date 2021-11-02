@@ -356,6 +356,12 @@ namespace SophiApp.Customisations
         public static bool _349() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, WINDOWS_MITIGATION_PATH, MITIGATION_USER_PREFERENCE)
                                               .HasNullOrValue(_349_DEFAULT_VALUE);
 
+        public static bool _350() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _350_SEPARATE_PROCESS)
+                                              .HasNullOrValue(DISABLED_VALUE).Invert();
+
+        public static bool _351() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _351_RESERVE_MANAGER_PATH, _351_SHIPPED_RESERVES)
+                                              .HasNullOrValue(ENABLED_VALUE);
+
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 
         public static bool _801() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _801_CAB_COM_PATH);

@@ -36,9 +36,9 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static void Start(string processName, string args, ProcessWindowStyle windowStyle)
+        internal static Process Start(string processName, string args, ProcessWindowStyle windowStyle)
         {
-            _ = Process.Start(new ProcessStartInfo()
+            return Process.Start(new ProcessStartInfo()
             {
                 FileName = processName,
                 Arguments = args,
