@@ -28,22 +28,12 @@ jobs:
       with:
         fetch-depth: 0
         
-    - name: Preparing The Program Files
+    - name: Preparing The App Files
       run: |
         . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
         . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
-        . "$env:App_Script_Path\Set-DebugMode.ps1"
-      
-    - name: Cleaninig Up Debug Comments
-      run: ."$env:App_Script_Path\Uncomment-AppMethods.ps1"
-        
-    - name: Setup Windows 10 Sdk
-      uses: GuillaumeFalourd/setup-windows10-sdk-action@main
-      with:
-        sdk-version: 19041
-        
-    - name: Copy SDK files
-      run: Copy-Item -Path "C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Destination "D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.19041.0" -Recurse -Force
+        . "$env:App_Script_Path\Set-DebugMode.ps1"        
+        . "$env:App_Script_Path\Set-WinmdPath.ps1"
       
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
@@ -67,13 +57,11 @@ jobs:
         $ExcludedTypes = @("*.exe", "*.config")
         $SourceFolder = "{0}\*" -f $env:App_Release_Path
         $DestinationFolder = "{0}\{1}" -f $env:App_Release_Path, $env:Binary_Folder_Name        
-        Get-ChildItem -Path $env:App_Release_Path -Directory | Remove-Item -Force -Recurse -Confirm:$false
-        New-Item -Path $env:App_Release_Path -ItemType Directory -Name $env:Binary_Folder_Name -Confirm:$false
-        Get-ChildItem -Path $SourceFolder -File -Exclude $ExcludedTypes | Move-Item -Destination $DestinationFolder
+        Get-ChildItem -Path $env:App_Release_Path -Exclude $ExcludedTypes | Remove-Item -Force -Recurse -Confirm:$false
+        . "$env:App_Script_Path\Get-BinaryFiles.ps1"
     
     - name: Compress Files
-      run: |
-        $Build_Directory = Rename-Item -Path $env:App_Release_Path -NewName $env:App_Name -PassThru | Select-Object -ExpandProperty FullName          
+      run: |        
         Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
 
     - name: Release Build
