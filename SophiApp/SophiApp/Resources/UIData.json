@@ -1782,7 +1782,7 @@
         },
         "Description": {
             "EN": "Automatically saving my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions",
-            "RU": "Автоматическое сохранение моих перезапускаемых приложений при из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами"
+            "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами"
         },
         "Type": "Switch",
         "Tag": "System"
