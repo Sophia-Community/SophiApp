@@ -65,7 +65,6 @@ namespace SophiApp.Helpers
             {
                 $"{dateTime} {message}",
                 $"{dateTime} Error information: {e.Message}",
-                $"{dateTime} The class that caused the error: {e.TargetSite.DeclaringType.FullName}",
                 $"{dateTime} The method that caused the error: {e.TargetSite.Name}"
             });
         }

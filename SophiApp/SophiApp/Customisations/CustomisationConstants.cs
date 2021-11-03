@@ -90,7 +90,6 @@ namespace SophiApp.Customisations
         internal const string _242_NO_NEW_APP_ALERT = "NoNewAppAlert";
         internal const byte _242_SHOW_ALERT_VALUE = 0;
         internal const string _243_FIRST_LOGON_ANIMATION = "EnableFirstLogonAnimation";
-        internal const string _243_WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         internal const byte _245_JPEG_MAX_QUALITY = 100;
         internal const byte _247_HIDE_VALUE = 0;
         internal const string _247_RESTART_NOTIFICATIONS = "RestartNotificationsAllowed2";
@@ -156,8 +155,8 @@ namespace SophiApp.Customisations
         internal const string _338_NET_FRAMEWORK32_PATH = @"SOFTWARE\Wow6432Node\Microsoft\.NETFramework";
         internal const string _338_NET_FRAMEWORK64_PATH = @"SOFTWARE\Microsoft\.NETFramework";
         internal const string _338_USE_LATEST_CLR = "OnlyUseLatestCLR";
-        internal const uint _340_DISABLED_UTF_VALUE = 0xffffffffu;
         internal const string _340_DISABLED_VALUE = "FFFFFFFF";
+        internal const uint _340_DISABLED_VALUE_UTF = 0xffffffffu;
         internal const string _340_IPV6_DISABLED_COMPONENTS = "DisabledComponents";
         internal const string _340_IPV6_PARAMETERS_PATH = @"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters";
         internal const string _345_DESKTOP_FOLDER = "Desktop";
@@ -166,6 +165,29 @@ namespace SophiApp.Customisations
         internal const string _350_SEPARATE_PROCESS = "SeparateProcess";
         internal const string _351_RESERVE_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager";
         internal const string _351_SHIPPED_RESERVES = "ShippedWithReserves";
+        internal const string _352_TYPELIB_PATH = @"SOFTWARE\Classes\Typelib\{8cec5860-07a1-11d9-b15e-000d56bfe6ee}";
+        internal const string _352_TYPELIB_WIN64_PATH = @"SOFTWARE\Classes\Typelib\{8cec5860-07a1-11d9-b15e-000d56bfe6ee}\1.0\0\win64";
+        internal const string _353_DEFAULT_KEYBOARD_PATH = @".DEFAULT\Control Panel\Keyboard";
+        internal const string _353_DISABLED_VALUE = "2147483648";
+        internal const string _353_ENABLED_VALUE = "2147483650";
+        internal const string _353_INITIAL_INDICATORS = "InitialKeyboardIndicators";
+        internal const string _354_KEYBOARD_LAYOUT_PATH = @"SYSTEM\CurrentControlSet\Control\Keyboard Layout";
+        internal const string _354_SCAN_CODE = "Scancode Map";
+        internal const string _355_DISABLED_VALUE = "506";
+        internal const string _355_ENABLED_VALUE = "510";
+        internal const string _355_FLAGS = "Flags";
+        internal const string _355_STICKY_KEYS_PATH = @"Control Panel\Accessibility\StickyKeys";
+        internal const string _356_AUTOPLAY = "DisableAutoplay";
+        internal const string _356_AUTOPLAY_HANDLERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers";
+        internal const byte _356_DISABLED_VALUE = 1;
+        internal const byte _356_ENABLED_VALUE = 0;
+        internal const string _357_AUTOPLAY = "Autorun";
+        internal const byte _357_DISABLED_VALUE = 0;
+        internal const byte _357_ENABLED_VALUE = 3;
+        internal const string _357_THUMBNAIL_CACHE_PATH = @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Thumbnail Cache";
+        internal const string _358_RESTART_APPS = "RestartApps";
+        internal const string _359_FILE_PRINTER_SHARING_GROUP = "@FirewallAPI.dll,-32752";
+        internal const string _359_NETWORK_DISCOVERY_GROUP = "@FirewallAPI.dll,-28502";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -301,7 +323,9 @@ namespace SophiApp.Customisations
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
         internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
+        internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
+        internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 }

@@ -16,6 +16,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class PcNotJoinedInDomainException : Exception
+    {
+        public PcNotJoinedInDomainException() : base("PC is not joined to domain")
+        {
+        }
+    }
+
     internal class RegistryKeyNotFoundException : Exception
     {
         public RegistryKeyNotFoundException(string key) : base($"The registry key \"{key}\" wasn't found")

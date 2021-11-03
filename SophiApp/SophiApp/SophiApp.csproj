@@ -187,6 +187,7 @@
     <Compile Include="Helpers\CustomisationsHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\DismHelper.cs" />
+    <Compile Include="Helpers\DomainHelper.cs" />
     <Compile Include="Helpers\FabricHelper.cs" />
     <Compile Include="Helpers\ExceptionsHelper.cs" />
     <Compile Include="Helpers\ExtensionsHelper.cs" />

@@ -2,7 +2,6 @@
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceProcess;
@@ -212,7 +211,7 @@ namespace SophiApp.Customisations
         public static bool _242() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _242_NO_NEW_APP_ALERT)
                                               .HasNullOrValue(_242_SHOW_ALERT_VALUE);
 
-        public static bool _243() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _243_WINLOGON_PATH, _243_FIRST_LOGON_ANIMATION)
+        public static bool _243() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, WINLOGON_PATH, _243_FIRST_LOGON_ANIMATION)
                                               .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _245() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTROL_PANEL_DESKTOP_PATH, JPEG_QUALITY)
@@ -276,12 +275,9 @@ namespace SophiApp.Customisations
         public static bool _315() => RegHelper.GetNullableIntValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _316()
-        {
-            _ = Domain.GetComputerDomain();
-            return RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
-                            .HasNullOrValue(DISABLED_VALUE).Invert();
-        }
+        public static bool _316() => DomainHelper.PcInDomain() ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
+                                                                          .HasNullOrValue(DISABLED_VALUE).Invert()
+                                                               : throw new PcNotJoinedInDomainException();
 
         public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
                                               .HasNullOrValue(_317_ENABLED_VALUE);
@@ -361,6 +357,35 @@ namespace SophiApp.Customisations
 
         public static bool _351() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _351_RESERVE_MANAGER_PATH, _351_SHIPPED_RESERVES)
                                               .HasNullOrValue(ENABLED_VALUE);
+
+        public static bool _352() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _352_TYPELIB_PATH).Invert();
+
+        public static bool _353() => RegHelper.GetStringValue(RegistryHive.Users, _353_DEFAULT_KEYBOARD_PATH, _353_INITIAL_INDICATORS) == _353_ENABLED_VALUE;
+
+        public static bool _354() => RegHelper.KeyExist(RegistryHive.LocalMachine, _354_KEYBOARD_LAYOUT_PATH, _354_SCAN_CODE).Invert();
+
+        public static bool _355() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _355_STICKY_KEYS_PATH, _355_FLAGS)
+                                              .HasNullOrValue(_355_ENABLED_VALUE);
+
+        public static bool _356() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _356_AUTOPLAY_HANDLERS_PATH, _356_AUTOPLAY)
+                                              .HasNullOrValue(_356_ENABLED_VALUE);
+
+        public static bool _357() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _357_THUMBNAIL_CACHE_PATH, _357_AUTOPLAY)
+                                              .HasNullOrValue(_357_ENABLED_VALUE);
+
+        public static bool _358() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, WINLOGON_PATH, _358_RESTART_APPS)
+                                              .HasNullOrValue(DISABLED_VALUE).Invert();
+
+        public static bool _359()
+        {
+            if (DomainHelper.PcInDomain().Invert())
+            {
+                return true;
+            }
+
+            var fr = FirewallHelper.IsRuleGroupEnabled(int.MaxValue, "@FirewallAPI.dll,-32752");
+            throw new PcNotJoinedInDomainException();
+        }
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

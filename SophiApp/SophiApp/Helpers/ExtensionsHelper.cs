@@ -18,6 +18,8 @@ namespace SophiApp.Helpers
 
         public static bool HasNullOrValue(this int? integer, int value) => integer is null || integer == value;
 
+        public static bool HasNullOrValue(this string str, string value) => str is null || str == value;
+
         public static bool HasValue(this int? integer, int value) => integer == value;
 
         public static bool Invert(this bool value) => !value;

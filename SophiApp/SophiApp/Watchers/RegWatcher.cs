@@ -52,7 +52,7 @@ namespace SophiApp.Watchers
                 while (true)
                 {
                     SystemThemeChanged();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                 }
             });
         }
