@@ -1827,6 +1827,58 @@
         "Tag": "System"
     },
     {
+        "Id": 363,
+        "Header": {
+            "EN": "Uninstall the KB5005463 update and block it from the further intalling",
+            "RU": "Удалить обновление KB5005463 и заблокировать его от дальнейшей установки"
+        },
+        "Description": {
+            "EN": "The KB5005463 update installs the PC Health Check app to check if PC meets the system requirements of Windows 11",
+            "RU": "Обновление KB5005463 устанавливает приложение PC Health Check для проверки соответствия компьютера системным требованиям Windows 11"
+        },
+        "Type": "RadioGroup",
+        "Tag": "Privacy",
+        "ChildElements": [
+            {
+                "Id": 364,
+                "ChildHeader": {
+                    "EN": "Block",
+                    "RU": "Блокировать"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 365,
+                "ChildHeader": {
+                    "EN": "Do not block",
+                    "RU": "не блокировать"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Type": "RadioButton"
+            }
+        ]
+    },
+    {
+        "Id": 366,
+        "Header": {
+            "EN": "Install the latest Microsoft Visual C++ Redistributable",
+            "RU": "Установить последнюю версию Microsoft Visual C++ Redistributable"
+        },
+        "Description": {
+            "EN": "Microsoft Visual C++ Redistributable 2015—2022 x64 will be downloaded from the Microsoft recource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files",
+            "RU": "Пакет Microsoft Visual C++ Redistributable 2015—2022 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы"
+        },
+        "Type": "Switch",
+        "Tag": "System"
+    },
+    {
         "Id": 400,
         "Header": {
             "EN": "Show recently added apps in the Start menu",
