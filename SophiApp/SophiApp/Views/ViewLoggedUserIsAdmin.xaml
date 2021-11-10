@@ -13,7 +13,7 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
-            <Setter Property="Tag" Value="{StaticResource Tags.Conditions.LoggedUserIsAdmin}" />
+            <Setter Property="Tag" Value="{StaticResource Tags.Conditions.LoggedUserAdmin}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
         <Style TargetType="{x:Type Grid}">
@@ -29,11 +29,11 @@
                     VerticalAlignment="Center"
                     Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                     Style="{DynamicResource NormalText}"
-                    Text="{DynamicResource Conditions.LoggedUserIsAdmin}"
+                    Text="{DynamicResource Conditions.LoggedUserAdmin}"
                     TextWrapping="Wrap" />
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.Conditions.LoggedUserIsAdmin}">
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.Conditions.LoggedUserAdmin}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>

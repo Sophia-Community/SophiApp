@@ -42,9 +42,16 @@ namespace SophiApp.Helpers
             {
                 FileName = processName,
                 Arguments = args,
-                WindowStyle = windowStyle
+                WindowStyle = windowStyle,
             });
         }
+
+        internal static void StartWait(string processName, string args, ProcessWindowStyle windowStyle) => Process.Start(new ProcessStartInfo()
+        {
+            FileName = processName,
+            Arguments = args,
+            WindowStyle = windowStyle,
+        }).WaitForExit();
 
         internal static void Stop(string processName)
         {

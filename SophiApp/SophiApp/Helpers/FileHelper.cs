@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -26,7 +27,6 @@ namespace SophiApp.Helpers
             if (linkAndTargetAreDirectories)
             {
                 relativePathAttribute = FileAttributes.Directory;
-
                 // set the link path to the parent directory, so that PathRelativePathToW returns a path that works
                 // for directory symlink traversal
                 linkPath = Path.GetDirectoryName(linkPath.TrimEnd(Path.DirectorySeparatorChar));
@@ -133,6 +133,22 @@ namespace SophiApp.Helpers
             {
                 MarkFileDelete(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories));
             }
+        }
+
+        internal static void Download(string from, string save)
+        {
+            using (var client = new WebClient())
+            {
+                client.DownloadFile(from, save);
+            }
+        }
+
+        internal static void FileDelete(string filePath) => File.Delete(filePath);
+
+        internal static void FileDelete(params string[] filesPath)
+        {
+            foreach (var file in filesPath)
+                FileDelete(file);
         }
 
         internal static bool IsSymbolicLink(string dirPath)

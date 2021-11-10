@@ -60,6 +60,10 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,7 +96,7 @@
     <Compile Include="Commons\ElementStatus.cs" />
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="Conditions\NoNewVersion.cs" />
-    <Compile Include="Conditions\LoggedUserIsAdmin.cs" />
+    <Compile Include="Conditions\LoggedUserAdmin.cs" />
     <Compile Include="Conditions\OsBuildVersion.cs" />
     <Compile Include="Conditions\OsNotInfected.cs" />
     <Compile Include="Conditions\OsUpdateBuildRevision.cs" />
@@ -254,7 +258,7 @@
     <Compile Include="Views\ViewSystem.xaml.cs" />
     <Compile Include="Views\ViewTaskSheduler.xaml.cs" />
     <Compile Include="Views\ViewUwpApps.xaml.cs" />
-    <Compile Include="Watchers\RegWatcher.cs" />
+    <Compile Include="Watchers\RegistryWatcher.cs" />
     <Page Include="Commons\Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -508,6 +512,15 @@
     <COMReference Include="NetFwTypeLib">
       <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
       <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WUApiLib">
+      <Guid>{B596CC9F-56E5-419E-A622-E01BB457431E}</Guid>
+      <VersionMajor>2</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>

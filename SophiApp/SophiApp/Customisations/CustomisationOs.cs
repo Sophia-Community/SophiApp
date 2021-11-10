@@ -3,6 +3,7 @@ using SophiApp.Helpers;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
 using static SophiApp.Customisations.CustomisationConstants;
@@ -729,7 +730,7 @@ namespace SophiApp.Customisations
                                                                         _353_DEFAULT_KEYBOARD_PATH,
                                                                             _353_INITIAL_INDICATORS,
                                                                                 IsChecked ? _353_ENABLED_VALUE
-                                                                                         : _353_DISABLED_VALUE,
+                                                                                          : _353_DISABLED_VALUE,
                                                                                     RegistryValueKind.String);
 
         public static void _354(bool IsChecked)
@@ -747,7 +748,7 @@ namespace SophiApp.Customisations
                                                                         _355_STICKY_KEYS_PATH,
                                                                             _355_FLAGS,
                                                                                 IsChecked ? _355_ENABLED_VALUE
-                                                                                         : _355_DISABLED_VALUE,
+                                                                                          : _355_DISABLED_VALUE,
                                                                                     RegistryValueKind.String);
 
         public static void _356(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
@@ -770,6 +771,49 @@ namespace SophiApp.Customisations
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
+
+        public static void _359(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                FirewallHelper.SetGroupRule(profileMask: 2, enable: true, _359_FILE_PRINTER_SHARING_GROUP, _359_NETWORK_DISCOVERY_GROUP);
+                _ = PowerShell.Create().AddCommand(_359_SET_PROFILE_PS).AddParameter(_359_NET_CATEGORY_PARAM, _359_PRIVATE_VALUE).Invoke();
+                return;
+            }
+
+            FirewallHelper.SetGroupRule(profileMask: 2, enable: false, _359_FILE_PRINTER_SHARING_GROUP, _359_NETWORK_DISCOVERY_GROUP);
+        }
+
+        public static void _360(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        UPDATE_UX_SETTINGS_PATH,
+                                                                            _360_ACTIVE_HOURS,
+                                                                                IsChecked ? _360_MANUAL_STATE
+                                                                                          : _360_AUTO_STATE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _361(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        UPDATE_UX_SETTINGS_PATH,
+                                                                            _361_IS_EXPEDITED,
+                                                                                IsChecked ? ENABLED_VALUE
+                                                                                          : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _363(bool _)
+        {
+            ProcessHelper.StartWait(WUSA_EXE, KB5005463_FIX_UNINSTALL_ARG, ProcessWindowStyle.Hidden);
+            _ = ComObjectHelper.SetUpdateHidden(KB5005463_FIX);
+        }
+
+        public static void _364(bool _) => ProcessHelper.StartWait(WUSA_EXE, KB5005463_FIX_UNINSTALL_ARG, ProcessWindowStyle.Hidden);
+
+        public static void _365(bool _)
+        {
+            var file = $"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _365_DOWNLOAD_FOLDER)}\\{_365_VC_REDISTRX64}";
+            var log = $"{Environment.GetEnvironmentVariable("TEMP")}\\{_365_VC_REDISTRX64_LOG}";
+            FileHelper.Download(_365_DOWNLOAD_URL, file);
+            ProcessHelper.StartWait(file, _365_VC_REDISTRX64_ARG, ProcessWindowStyle.Hidden);
+            FileHelper.FileDelete(file, log);
+        }
 
         public static void _800(bool IsChecked)
         {

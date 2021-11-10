@@ -4,7 +4,7 @@ namespace SophiApp.Commons
 {
     internal struct Tags
     {
-        internal static readonly string ConditionLoggedUserIsAdmin = Application.Current.FindResource("Tags.Conditions.LoggedUserIsAdmin") as string;
+        internal static readonly string ConditionLoggedUserAdmin = Application.Current.FindResource("Tags.Conditions.LoggedUserAdmin") as string;
         internal static readonly string ConditionNoNewVersion = Application.Current.FindResource("Tags.Conditions.NoNewVersion") as string;
         internal static readonly string ConditionOsBuildVersion = Application.Current.FindResource("Tags.Conditions.OsBuildVersion") as string;
         internal static readonly string ConditionOsNotInfected = Application.Current.FindResource("Tags.Conditions.OsNotInfected") as string;

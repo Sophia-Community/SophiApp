@@ -12,10 +12,10 @@ namespace SophiApp.Helpers
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-systemparametersinfow
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW")]
-        private extern static bool SystemParametersInfo(uint uiAction, uint uiParam, [MarshalAs(UnmanagedType.Bool)] out bool pvParam, uint fWinIni);
+        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, [MarshalAs(UnmanagedType.Bool)] out bool pvParam, uint fWinIni);
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW")]
-        private extern static bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);
+        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);
 
         internal static bool GetInputSettings()
         {

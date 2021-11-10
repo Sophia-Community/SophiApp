@@ -1827,7 +1827,7 @@
         "Tag": "System"
     },
     {
-        "Id": 363,
+        "Id": 362,
         "Header": {
             "EN": "Uninstall the KB5005463 update and block it from the further intalling",
             "RU": "Удалить обновление KB5005463 и заблокировать его от дальнейшей установки"
@@ -1837,10 +1837,10 @@
             "RU": "Обновление KB5005463 устанавливает приложение PC Health Check для проверки соответствия компьютера системным требованиям Windows 11"
         },
         "Type": "RadioGroup",
-        "Tag": "Privacy",
+        "Tag": "System",
         "ChildElements": [
             {
-                "Id": 364,
+                "Id": 363,
                 "ChildHeader": {
                     "EN": "Block",
                     "RU": "Блокировать"
@@ -1852,10 +1852,10 @@
                 "Type": "RadioButton"
             },
             {
-                "Id": 365,
+                "Id": 364,
                 "ChildHeader": {
                     "EN": "Do not block",
-                    "RU": "не блокировать"
+                    "RU": "Не блокировать"
                 },
                 "ChildDescription": {
                     "EN": "",
@@ -1866,7 +1866,7 @@
         ]
     },
     {
-        "Id": 366,
+        "Id": 365,
         "Header": {
             "EN": "Install the latest Microsoft Visual C++ Redistributable",
             "RU": "Установить последнюю версию Microsoft Visual C++ Redistributable"

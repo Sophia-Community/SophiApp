@@ -277,7 +277,7 @@ namespace SophiApp.Customisations
 
         public static bool _316() => DomainHelper.PcInDomain() ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
                                                                           .HasNullOrValue(DISABLED_VALUE).Invert()
-                                                               : throw new PcNotJoinedInDomainException();
+                                                               : throw new PcNotJoinedToDomainException();
 
         public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
                                               .HasNullOrValue(_317_ENABLED_VALUE);
@@ -376,16 +376,25 @@ namespace SophiApp.Customisations
         public static bool _358() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, WINLOGON_PATH, _358_RESTART_APPS)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _359()
-        {
-            if (DomainHelper.PcInDomain().Invert())
-            {
-                return true;
-            }
+        public static bool _359() => DomainHelper.PcInDomain().Invert()
+                                     ? FirewallHelper.IsRuleGroupEnabled(_359_FILE_PRINTER_SHARING_GROUP) && FirewallHelper.IsRuleGroupEnabled(_359_NETWORK_DISCOVERY_GROUP)
+                                     : throw new PcJoinedToDomainException();
 
-            var fr = FirewallHelper.IsRuleGroupEnabled(int.MaxValue, "@FirewallAPI.dll,-32752");
-            throw new PcNotJoinedInDomainException();
-        }
+        public static bool _360() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _360_ACTIVE_HOURS)
+                                              .HasNullOrValue(_360_MANUAL_STATE);
+
+        public static bool _361() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _361_IS_EXPEDITED)
+                                              .HasNullOrValue(DISABLED_VALUE).Invert();
+
+        public static bool _362() => WmiHelper.QuickFixInstalled(KB5005463_FIX)
+                                     ? true
+                                     : throw new QuickFixNotInstalledException(KB5005463_FIX);
+
+        public static bool _363() => _364().Invert();
+
+        public static bool _364() => ComObjectHelper.UpdateInstalled(KB5005463_FIX);
+
+        public static bool _365() => false;
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

@@ -26,7 +26,7 @@ namespace SophiApp.Helpers
         private void InitializingConditions() => Conditions = new List<ICondition>()
         {
             new OsBuildVersion(), new OsUpdateBuildRevision(),
-            new LoggedUserIsAdmin(), new OsNotInfected(),
+            new LoggedUserAdmin(), new OsNotInfected(),
             //new NoNewVersion()
         };
 

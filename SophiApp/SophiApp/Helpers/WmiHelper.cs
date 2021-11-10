@@ -12,14 +12,14 @@ namespace SophiApp.Helpers
 
         internal static string GetActivePowerPlanId()
         {
-            var searcher = GetManagementObjectSearcher(@"Root\cimv2\power", "SELECT * FROM Win32_PowerPlan WHERE IsActive = True");
+            var searcher = GetManagementObjectSearcher(@"Root\Cimv2\power", "SELECT * FROM Win32_PowerPlan WHERE IsActive = True");
             var activePlan = searcher.Get().Cast<ManagementBaseObject>().First();
             return (activePlan.GetPropertyValue("InstanceId") as string).Split('\\')[1];
         }
 
         internal static int GetBitLockerVolumeProtectionStatus()
         {
-            var searcher = GetManagementObjectSearcher(@"Root\cimv2\security\MicrosoftVolumeEncryption", "SELECT * FROM Win32_Encryptablevolume");
+            var searcher = GetManagementObjectSearcher(@"Root\Cimv2\security\MicrosoftVolumeEncryption", "SELECT * FROM Win32_Encryptablevolume");
             var status = searcher.Get().Cast<ManagementBaseObject>().FirstOrDefault().Properties[PROTECTION_STATUS].Value;
             return Convert.ToInt32(status);
         }
@@ -42,6 +42,24 @@ namespace SophiApp.Helpers
             foreach (var adapter in adapters)
             {
                 if (adapter.Properties["AllowComputerToTurnOffDevice"].Value.ToUshort() == 2)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        internal static bool QuickFixInstalled(string fixID)
+        {
+            bool result = false;
+            var scope = @"Root\Cimv2";
+            var query = $"SELECT HotFixID FROM Win32_QuickFixEngineering";
+
+            foreach (ManagementBaseObject fix in GetManagementObjectSearcher(scope, query).Get())
+            {
+                if (fix.Properties["HotFixID"].Value as string == fixID)
                 {
                     result = true;
                     break;

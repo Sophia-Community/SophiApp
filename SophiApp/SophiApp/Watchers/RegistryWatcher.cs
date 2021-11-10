@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace SophiApp.Watchers
 {
-    internal class RegWatcher
+    internal class RegistryWatcher
     {
         private const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string USES_LIGHT_THEME = "AppsUseLightTheme";
 
         private static readonly object locked = new object();
-        private static RegWatcher instance;
+        private static RegistryWatcher instance;
         private static byte systemTheme = RegHelper.GetByteValue(RegistryHive.CurrentUser, PERSONALIZE_PATH, USES_LIGHT_THEME);
 
-        private RegWatcher()
+        private RegistryWatcher()
         {
         }
 
@@ -32,14 +32,14 @@ namespace SophiApp.Watchers
             }
         }
 
-        internal static RegWatcher GetInstance()
+        internal static RegistryWatcher GetInstance()
         {
             if (instance == null)
             {
                 lock (locked)
                 {
                     if (instance == null)
-                        instance = new RegWatcher();
+                        instance = new RegistryWatcher();
                 }
             }
             return instance;

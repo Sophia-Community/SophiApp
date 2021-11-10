@@ -25,7 +25,7 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 DebugHelper.StartApplyingSettings(CustomActions.Count);
-                var stopwatch = Stopwatch.StartNew();
+                var totalStopWatch = Stopwatch.StartNew();
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetLoadingPanelVisibility();
 
@@ -33,8 +33,10 @@ namespace SophiApp.ViewModels
                 {
                     try
                     {
+                        var actionStopWatch = Stopwatch.StartNew();
                         action.Invoke();
-                        DebugHelper.ActionTaked(action.Id, action.Parameter);
+                        actionStopWatch.Stop();
+                        DebugHelper.ActionPerformed(action.Id, action.Parameter, actionStopWatch.Elapsed.TotalSeconds);
                     }
                     catch (Exception e)
                     {
@@ -51,8 +53,8 @@ namespace SophiApp.ViewModels
                               .ForEach(element => element.GetCustomisationStatus());
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
-                stopwatch.Stop();
-                DebugHelper.StopApplyingSettings(stopwatch.Elapsed.TotalSeconds);
+                totalStopWatch.Stop();
+                DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
             });
         }
 
@@ -78,7 +80,13 @@ namespace SophiApp.ViewModels
 
         private void DebugModeClicked(object args) => DebugMode = DebugMode.Invert();
 
-        private void HamburgerClicked(object args) => SetVisibleViewTag(args as string);
+        private void HamburgerClicked(object args)
+        {
+            var tag = args as string;
+
+            if (VisibleViewByTag != tag)
+                SetVisibleViewTag(tag);
+        }
 
         private async void HyperLinkClickedAsync(object args)
         {
@@ -142,7 +150,7 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                var regWatcher = RegWatcher.GetInstance();
+                var regWatcher = RegistryWatcher.GetInstance();
                 regWatcher.SystemThemeChangedEvent += OnSystemThemeChanged;
                 _ = regWatcher.Start();
             });

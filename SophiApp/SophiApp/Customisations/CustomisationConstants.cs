@@ -4,6 +4,7 @@ namespace SophiApp.Customisations
 {
     internal static class CustomisationConstants
     {
+        internal const int _10_SECONDS_TIMEOUT = 10000;
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
         internal const string _104_DISABLED = "Disabled";
@@ -187,7 +188,19 @@ namespace SophiApp.Customisations
         internal const string _357_THUMBNAIL_CACHE_PATH = @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Thumbnail Cache";
         internal const string _358_RESTART_APPS = "RestartApps";
         internal const string _359_FILE_PRINTER_SHARING_GROUP = "@FirewallAPI.dll,-32752";
+        internal const string _359_NET_CATEGORY_PARAM = "NetworkCategory";
         internal const string _359_NETWORK_DISCOVERY_GROUP = "@FirewallAPI.dll,-28502";
+        internal const string _359_PRIVATE_VALUE = "Private";
+        internal const string _359_SET_PROFILE_PS = "Set-NetConnectionProfile";
+        internal const string _360_ACTIVE_HOURS = "SmartActiveHoursState";
+        internal const byte _360_AUTO_STATE = 1;
+        internal const byte _360_MANUAL_STATE = 0;
+        internal const string _361_IS_EXPEDITED = "IsExpedited";
+        internal const string _365_DOWNLOAD_FOLDER = "{374DE290-123F-4565-9164-39C4925E467B}";
+        internal const string _365_DOWNLOAD_URL = "https://aka.ms/vs/16/release/vc_redist.x64.exe";
+        internal const string _365_VC_REDISTRX64 = "vc_redist.x64.exe";
+        internal const string _365_VC_REDISTRX64_ARG = "/install /passive /norestart";
+        internal const string _365_VC_REDISTRX64_LOG = "dd_vcredist_amd64_*.log";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -276,6 +289,8 @@ namespace SophiApp.Customisations
         internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
         internal const string ITEM_NAME = "ItemName";
         internal const string JPEG_QUALITY = "JPEGImportQuality";
+        internal const string KB5005463_FIX = "KB5005463";
+        internal const string KB5005463_FIX_UNINSTALL_ARG = "/uninstall /kb:5005463 /quite /norestart";
         internal const byte LAUNCH_PC_VALUE = 1;
         internal const byte LAUNCH_QA_VALUE = 2;
         internal const string LAUNCH_TO = "LaunchTo";
@@ -317,6 +332,7 @@ namespace SophiApp.Customisations
         internal const string TEMP = "TEMP";
         internal const string TEMP_FOLDER = "Temp";
         internal const string TMP = "TMP";
+        internal const string UPDATE_UX_SETTINGS_PATH = @"SOFTWARE\Microsoft\WindowsUpdate\UX\Settings";
         internal const string USER_SHELL_FOLDERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
@@ -324,6 +340,7 @@ namespace SophiApp.Customisations
         internal const string WIN_VER_PRO = "Professional";
         internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
+        internal const string WUSA_EXE = "wusa.exe";
         internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

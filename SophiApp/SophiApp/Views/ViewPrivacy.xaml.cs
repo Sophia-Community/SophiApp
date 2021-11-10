@@ -13,7 +13,7 @@ namespace SophiApp.Views
     public partial class ViewPrivacy : UserControl
     {
         // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
-        public static new readonly DependencyProperty TagProperty =
+        public new static readonly DependencyProperty TagProperty =
             DependencyProperty.Register("Tag", typeof(string), typeof(ViewPrivacy), new PropertyMetadata(default));
 
         public ViewPrivacy()

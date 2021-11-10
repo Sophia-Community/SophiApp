@@ -36,11 +36,18 @@ namespace SophiApp.Helpers
             $"{APP_FOLDER}: \"{AppHelper.StartupFolder}\""
         };
 
+        private static List<string> InitLog = new List<string>();
         private static List<string> StatusLog = new List<string>();
 
         private static void WriteInfoLog(string record) => InfoLog.Add(record);
 
         private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
+
+        private static void WriteInitLog(string record)
+        {
+            var dateTime = DateTime.Now;
+            InitLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
+        }
 
         private static void WriteStatusLog(string record)
         {
@@ -48,7 +55,7 @@ namespace SophiApp.Helpers
             StatusLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
         }
 
-        internal static void ActionTaked(uint actionID, bool actionParameter) => WriteStatusLog($"Customization action {actionID} with parameter {actionParameter} completed successfully");
+        internal static void ActionPerformed(uint actionID, bool actionParameter, double totalSeconds) => WriteStatusLog($"Customization action {actionID} with parameter {actionParameter} completed successfully in {totalSeconds:N0} second(s)");
 
         internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
 
@@ -84,7 +91,7 @@ namespace SophiApp.Helpers
 
         internal static void OsConditionChanged(ICondition condition) => WriteStatusLog($"{condition.Tag} is: {condition.Result}");
 
-        internal static void Save(string path) => File.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(StatusLog));
+        internal static void Save(string path) => File.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
 
         internal static void SelectedLocalization(string localization) => WriteStatusLog($"Localization selected: {localization}");
 
@@ -98,15 +105,17 @@ namespace SophiApp.Helpers
 
         internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
 
-        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying the setting(s) took {totalSeconds:N0} seconds");
+        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying the setting(s) took {totalSeconds:N0} second(s)");
 
-        internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} seconds to initialize Os conditions");
+        internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Os conditions");
 
-        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} seconds to initialize texted elements");
+        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize texted elements");
 
-        internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} seconds to reset texted elements");
+        internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
 
         internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The element {elementID} has changed status to: {elementStatus}");
+
+        internal static void TextedElementInit(uint elementID, double totalSeconds) => WriteInitLog($"The element {elementID} was initialized in {totalSeconds:N3} second(s)");
 
         internal static void UpdateNotNecessary() => WriteInfoLog("No update required");
 

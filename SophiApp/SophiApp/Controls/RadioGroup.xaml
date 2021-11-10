@@ -54,7 +54,7 @@
                         </ContextMenu>
                     </Grid.ContextMenu>
                 </Grid>
-                <Border />
+                <Border x:Name="BorderLine" />
                 <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type models:RadioButton}">
@@ -69,7 +69,8 @@
             </StackPanel>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.50" />
+                    <Setter TargetName="TextBlockHeader" Property="Opacity" Value="0.50" />
+                    <Setter TargetName="BorderLine" Property="Opacity" Value="0.50" />
                 </Trigger>
                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
                     <Setter TargetName="TextBlockHeader" Property="Text">

@@ -16,9 +16,23 @@ namespace SophiApp.Helpers
         }
     }
 
-    internal class PcNotJoinedInDomainException : Exception
+    internal class PcJoinedToDomainException : Exception
     {
-        public PcNotJoinedInDomainException() : base("PC is not joined to domain")
+        public PcJoinedToDomainException() : base("PC is joined to domain")
+        {
+        }
+    }
+
+    internal class PcNotJoinedToDomainException : Exception
+    {
+        public PcNotJoinedToDomainException() : base("PC is not joined to domain")
+        {
+        }
+    }
+
+    internal class QuickFixNotInstalledException : Exception
+    {
+        public QuickFixNotInstalledException(string fixID) : base($"{fixID} wasn't installed on this OS")
         {
         }
     }

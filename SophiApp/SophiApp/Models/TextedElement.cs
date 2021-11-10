@@ -1,9 +1,11 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Dto;
+using SophiApp.Helpers;
 using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace SophiApp.Models
 {
@@ -190,8 +192,11 @@ namespace SophiApp.Models
 
         internal virtual void Init()
         {
+            var stopwatch = Stopwatch.StartNew();
             ChangeLanguage(Language);
             GetCustomisationStatus();
+            stopwatch.Stop();
+            DebugHelper.TextedElementInit(Id, stopwatch.Elapsed.TotalSeconds);
         }
 
         public virtual void ChangeLanguage(UILanguage language)
