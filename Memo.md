@@ -1,14 +1,3 @@
-4. Функцию: "Отключить поиск через Bing в меню "Пуск"" отображать только, если регион США
-
-```powershell
-(Get-ItemPropertyValue -Path "HKCU:\Control Panel\International\Geo" -Name Nation) -eq 244
-```
-
-C# (NetFramework 4.8):
-
-* <https://docs.microsoft.com/en-us/dotnet/api/system.globalization.regioninfo.geoid?view=netframework-4.8>
-* <https://docs.microsoft.com/ru-ru/windows/win32/intl/table-of-geographical-locations> (244)
-
 1. Добавить возможность копировать описание функции, нажав в контекстном меню рамки "Копировать"
 
 2. Функция для экспорта ico из файла. Понадобится в будущем
@@ -30,8 +19,6 @@ $Icon.ToBitMap().Save($FileName,$Format)
 ```
 3. <https://github.com/WindowsNotifications?q=&type=&language=c%23>
 
-4. <https://pastebin.com/mKEFmnC1>
-
 ============================================================================================
 
 ## Кастомный scrollviewer
@@ -46,48 +33,22 @@ $Icon.ToBitMap().Save($FileName,$Format)
 
 <https://github.com/zeluisping/LoadingIndicators.WPF/blob/master/src/LoadingIndicators.WPF/Styles/LoadingRing.xaml>
 
-## Работа с JSON
-
-* <http://www.jsonutils.com/>
-* <https://jsonformatter.org/json-pretty-print>
-
-## Регулярные выражения
-
-<https://regex101.com/>
-
-<http://alexweinberger.com/main/pinning-network-program-taskbar-programmatically-windows-10/>
-
-## Получить номер билда
-
-```powershell
-[System.Environment]::OSVersion.Version.Build
-Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild
-```
-
-<https://fastspring.com>
-
-Не забыть про черту, отделяющую заголовки от дочерних элементов. Смотреть 1 рисунок на макете
-Залить соответствующим цветом выпадающий список. Сейчас белый почему-то
-
 # Expands a Microsoft @-prefixed indirect string
 
 https://github.com/SamuelArnold/StarKill3r/blob/master/Star%20Killer/Star%20Killer/bin/Debug/Scripts/SANS-SEC505-master/scripts/Day1-PowerShell/Expand-IndirectString.ps1
 
 ```powershell
-cls
 $ExcludedAppxPackages = @(
 	# Microsoft Desktop App Installer
 	"Microsoft.DesktopAppInstaller",
 
 	# Store Experience Host
-	# Узел для покупок Microsoft Store
 	"Microsoft.StorePurchaseApp",
 
 	# Microsoft Store
 	"Microsoft.WindowsStore",
 
 	# Web Media Extensions
-	# Расширения для интернет-мультимедиа
 	"Microsoft.WebMediaExtensions"
 )
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
