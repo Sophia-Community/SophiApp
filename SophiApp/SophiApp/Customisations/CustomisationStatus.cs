@@ -3,6 +3,7 @@ using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System;
 using System.Linq;
+using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
 using static SophiApp.Customisations.CustomisationConstants;
@@ -336,7 +337,7 @@ namespace SophiApp.Customisations
 
         public static bool _339() => WmiHelper.HasNetworkAdaptersPowerSave();
 
-        public static bool _340() => (string.Format("{0:X2}", RegHelper.GetValue(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS)) == _340_DISABLED_VALUE).Invert();
+        public static bool _340() => (PowerShell.Create().AddScript(_340_GET_IPV6_PS).Invoke()).Count > 0;
 
         public static bool _342() => _343().Invert();
 
@@ -386,15 +387,16 @@ namespace SophiApp.Customisations
         public static bool _361() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _361_IS_EXPEDITED)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _362() => WmiHelper.QuickFixInstalled(KB5005463_FIX)
-                                     ? true
-                                     : throw new QuickFixNotInstalledException(KB5005463_FIX);
-
         public static bool _363() => _364().Invert();
 
         public static bool _364() => ComObjectHelper.UpdateInstalled(KB5005463_FIX);
 
-        public static bool _365() => false;
+        public static bool _365()
+        {
+            var latestVersion = new Version(PowerShell.Create().AddScript(_365_GET_VC_VERSION_PS).Invoke().First().BaseObject as string);
+            var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
+            return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
+        }
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

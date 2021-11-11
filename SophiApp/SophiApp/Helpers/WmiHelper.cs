@@ -51,24 +51,6 @@ namespace SophiApp.Helpers
             return result;
         }
 
-        internal static bool QuickFixInstalled(string fixID)
-        {
-            bool result = false;
-            var scope = @"Root\Cimv2";
-            var query = $"SELECT HotFixID FROM Win32_QuickFixEngineering";
-
-            foreach (ManagementBaseObject fix in GetManagementObjectSearcher(scope, query).Get())
-            {
-                if (fix.Properties["HotFixID"].Value as string == fixID)
-                {
-                    result = true;
-                    break;
-                }
-            }
-
-            return result;
-        }
-
         internal static void SetNetworkAdaptersPowerSave(bool enablePowerSave)
         {
             // https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/hh872363(v=vs.85)

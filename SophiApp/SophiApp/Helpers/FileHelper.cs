@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -132,14 +131,6 @@ namespace SophiApp.Helpers
             catch (Exception)
             {
                 MarkFileDelete(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories));
-            }
-        }
-
-        internal static void Download(string from, string save)
-        {
-            using (var client = new WebClient())
-            {
-                client.DownloadFile(from, save);
             }
         }
 

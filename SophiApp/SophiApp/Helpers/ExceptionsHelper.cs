@@ -30,13 +30,6 @@ namespace SophiApp.Helpers
         }
     }
 
-    internal class QuickFixNotInstalledException : Exception
-    {
-        public QuickFixNotInstalledException(string fixID) : base($"{fixID} wasn't installed on this OS")
-        {
-        }
-    }
-
     internal class RegistryKeyNotFoundException : Exception
     {
         public RegistryKeyNotFoundException(string key) : base($"The registry key \"{key}\" wasn't found")

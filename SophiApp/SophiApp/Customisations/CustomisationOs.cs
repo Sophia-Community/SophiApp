@@ -674,16 +674,7 @@ namespace SophiApp.Customisations
 
         public static void _339(bool IsChecked) => WmiHelper.SetNetworkAdaptersPowerSave(IsChecked);
 
-        public static void _340(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                RegHelper.SetValue(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS, unchecked((int)_340_DISABLED_VALUE_UTF), RegistryValueKind.DWord);
-                return;
-            }
-
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, _340_IPV6_PARAMETERS_PATH, _340_IPV6_DISABLED_COMPONENTS);
-        }
+        public static void _340(bool IsChecked) => PowerShell.Create().AddScript(IsChecked ? _340_ENABLE_NET_BINDING_PS : _340_DISABLE_NET_BINDING_PS).Invoke();
 
         public static void _342(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE);
 
@@ -806,13 +797,15 @@ namespace SophiApp.Customisations
 
         public static void _364(bool _) => ProcessHelper.StartWait(WUSA_EXE, KB5005463_FIX_UNINSTALL_ARG, ProcessWindowStyle.Hidden);
 
-        public static void _365(bool _)
+        public static void _365(bool IsChecked)
         {
-            var file = $"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _365_DOWNLOAD_FOLDER)}\\{_365_VC_REDISTRX64}";
-            var log = $"{Environment.GetEnvironmentVariable("TEMP")}\\{_365_VC_REDISTRX64_LOG}";
-            FileHelper.Download(_365_DOWNLOAD_URL, file);
-            ProcessHelper.StartWait(file, _365_VC_REDISTRX64_ARG, ProcessWindowStyle.Hidden);
-            FileHelper.FileDelete(file, log);
+            if (IsChecked)
+            {
+                var installer = $"{Environment.GetEnvironmentVariable(TEMP)}\\{_365_VC_REDISTRX64}";
+                WebHelper.Download(_365_DOWNLOAD_URL, installer);
+                ProcessHelper.StartWait(installer, _365_VC_REDISTRX64_ARG, ProcessWindowStyle.Hidden);
+                FileHelper.FileDelete(installer);
+            }
         }
 
         public static void _800(bool IsChecked)

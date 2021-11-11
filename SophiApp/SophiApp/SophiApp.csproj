@@ -209,6 +209,7 @@
     <Compile Include="Helpers\ThemesHelper.cs" />
     <Compile Include="Helpers\ToastHelper.cs" />
     <Compile Include="Helpers\UwpHelper.cs" />
+    <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Interfaces\ICondition.cs" />
     <Compile Include="Interfaces\IElement.cs" />

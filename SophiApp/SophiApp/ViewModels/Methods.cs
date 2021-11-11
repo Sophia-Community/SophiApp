@@ -307,7 +307,7 @@ namespace SophiApp.ViewModels
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
 
-            if (conditionsHelper.Result)
+            if (true) //if (conditionsHelper.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);
                 await InitTextedElementsAsync();

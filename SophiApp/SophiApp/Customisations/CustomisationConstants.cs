@@ -156,10 +156,9 @@ namespace SophiApp.Customisations
         internal const string _338_NET_FRAMEWORK32_PATH = @"SOFTWARE\Wow6432Node\Microsoft\.NETFramework";
         internal const string _338_NET_FRAMEWORK64_PATH = @"SOFTWARE\Microsoft\.NETFramework";
         internal const string _338_USE_LATEST_CLR = "OnlyUseLatestCLR";
-        internal const string _340_DISABLED_VALUE = "FFFFFFFF";
-        internal const uint _340_DISABLED_VALUE_UTF = 0xffffffffu;
-        internal const string _340_IPV6_DISABLED_COMPONENTS = "DisabledComponents";
-        internal const string _340_IPV6_PARAMETERS_PATH = @"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters";
+        internal const string _340_DISABLE_NET_BINDING_PS = "Disable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
+        internal const string _340_ENABLE_NET_BINDING_PS = "Enable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
+        internal const string _340_GET_IPV6_PS = @"((@((Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration -Namespace root\cimv2 | Where-Object -FilterScript {$_.IPEnabled -eq $true}).IPAddress)) -match ':')";
         internal const string _345_DESKTOP_FOLDER = "Desktop";
         internal const byte _348_AUTOMATICALLY_VALUE = 3;
         internal const byte _349_DEFAULT_VALUE = 2;
@@ -196,11 +195,15 @@ namespace SophiApp.Customisations
         internal const byte _360_AUTO_STATE = 1;
         internal const byte _360_MANUAL_STATE = 0;
         internal const string _361_IS_EXPEDITED = "IsExpedited";
-        internal const string _365_DOWNLOAD_FOLDER = "{374DE290-123F-4565-9164-39C4925E467B}";
         internal const string _365_DOWNLOAD_URL = "https://aka.ms/vs/16/release/vc_redist.x64.exe";
+
+        internal const string _365_GET_VC_VERSION_PS = @"$Parameters = @{
+                                                         Uri = 'https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json'
+                                                         UseBasicParsing = $true }
+                                                         ((Invoke-RestMethod @Parameters).Supported | Where-Object -FilterScript {($_.Name -eq 'Visual C++ Redistributable for Visual Studio 2022') -and($_.Architecture -eq 'x64')}).Version";
+
         internal const string _365_VC_REDISTRX64 = "vc_redist.x64.exe";
         internal const string _365_VC_REDISTRX64_ARG = "/install /passive /norestart";
-        internal const string _365_VC_REDISTRX64_LOG = "dd_vcredist_amd64_*.log";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
