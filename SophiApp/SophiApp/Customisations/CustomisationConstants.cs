@@ -195,7 +195,7 @@ namespace SophiApp.Customisations
         internal const byte _360_AUTO_STATE = 1;
         internal const byte _360_MANUAL_STATE = 0;
         internal const string _361_IS_EXPEDITED = "IsExpedited";
-        internal const string _365_DOWNLOAD_URL = "https://aka.ms/vs/16/release/vc_redist.x64.exe";
+        internal const string _365_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
 
         internal const string _365_GET_VC_VERSION_PS = @"$Parameters = @{
                                                          Uri = 'https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json'
