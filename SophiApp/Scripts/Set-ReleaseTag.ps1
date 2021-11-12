@@ -50,3 +50,5 @@ else
 {
 	Write-Host "`nAssemblyInfo.cs not found"
 }
+
+Write-Host "test"
