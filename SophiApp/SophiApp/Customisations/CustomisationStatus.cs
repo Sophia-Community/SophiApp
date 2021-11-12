@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
 using System.Linq;
@@ -389,11 +390,12 @@ namespace SophiApp.Customisations
 
         public static bool _363() => _364().Invert();
 
-        public static bool _364() => ComObjectHelper.UpdateInstalled(KB5005463_FIX);
+        public static bool _364() => ComObjectHelper.UpdateInstalled(KB5005463_FIX) is false;
 
         public static bool _365()
         {
-            var latestVersion = new Version(PowerShell.Create().AddScript(_365_GET_VC_VERSION_PS).Invoke().First().BaseObject as string);
+            var vcVersions = WebHelper.GetJsonRequest(_365_VC_VERSION_URL, new VCRedistrDto());
+            var latestVersion = vcVersions.Supported.Where(item => item.Name == _365_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
             var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }

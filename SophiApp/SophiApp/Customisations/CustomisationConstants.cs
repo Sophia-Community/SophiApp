@@ -196,14 +196,10 @@ namespace SophiApp.Customisations
         internal const byte _360_MANUAL_STATE = 0;
         internal const string _361_IS_EXPEDITED = "IsExpedited";
         internal const string _365_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
-
-        internal const string _365_GET_VC_VERSION_PS = @"$Parameters = @{
-                                                         Uri = 'https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json'
-                                                         UseBasicParsing = $true }
-                                                         ((Invoke-RestMethod @Parameters).Supported | Where-Object -FilterScript {($_.Name -eq 'Visual C++ Redistributable for Visual Studio 2022') -and($_.Architecture -eq 'x64')}).Version";
-
+        internal const string _365_VC_REDISTR_FOR_VS_2022 = "Visual C++ Redistributable for Visual Studio 2022";
         internal const string _365_VC_REDISTRX64 = "vc_redist.x64.exe";
         internal const string _365_VC_REDISTRX64_ARG = "/install /passive /norestart";
+        internal const string _365_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -293,7 +289,7 @@ namespace SophiApp.Customisations
         internal const string ITEM_NAME = "ItemName";
         internal const string JPEG_QUALITY = "JPEGImportQuality";
         internal const string KB5005463_FIX = "KB5005463";
-        internal const string KB5005463_FIX_UNINSTALL_ARG = "/uninstall /kb:5005463 /quite /norestart";
+        internal const string KB5005463_FIX_UNINSTALL_ARG = "/uninstall /kb:5005463 /quiet /norestart";
         internal const byte LAUNCH_PC_VALUE = 1;
         internal const byte LAUNCH_QA_VALUE = 2;
         internal const string LAUNCH_TO = "LaunchTo";
@@ -344,6 +340,7 @@ namespace SophiApp.Customisations
         internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         internal const string WUSA_EXE = "wusa.exe";
+        internal const string X64 = "x64";
         internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
