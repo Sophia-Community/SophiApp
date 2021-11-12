@@ -22,7 +22,7 @@
 
 	Copyright (c) 2021 Inestic
 #>
-Clear-Host
+#Clear-Host
 
 Write-Host "Uncomment-AppMethods.ps1"
 
