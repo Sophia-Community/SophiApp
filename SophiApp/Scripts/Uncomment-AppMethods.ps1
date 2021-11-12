@@ -22,7 +22,6 @@
 
 	Copyright (c) 2021 Inestic
 #>
-Clear-Host
 
 $ConditionsHelper = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Helpers\ConditionsHelper.cs"
 $CommentPattern = "//"

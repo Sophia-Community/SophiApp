@@ -22,7 +22,6 @@
 
 	Copyright (c) 2021 Inestic
 #>
-Clear-Host
 $SophiAppCs = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\SophiApp.csproj"
 $SearchPattern = "Windows.winmd"
 $WinmdPattern = "      <HintPath>{0}\{1}</HintPath>" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\Windows.winmd"
