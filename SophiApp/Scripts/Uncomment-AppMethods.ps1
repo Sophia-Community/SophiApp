@@ -24,6 +24,8 @@
 #>
 Clear-Host
 
+Write-Host "Uncomment-AppMethods.ps1"
+
 $ConditionsHelper = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Helpers\ConditionsHelper.cs"
 $CommentPattern = "//"
 $UpdatePattern = "//new NoNewVersion()"
