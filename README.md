@@ -2,6 +2,11 @@
 
 The SophiApp functionality will be fully based on the [Sophia Script for Windows 10](https://github.com/farag2/Sophia-Script-for-Windows) logic except some functions and will be written in C#.
 
+# Screenshots
+
+![Image](https://i.imgur.com/xBBsgdu.jpg)
+![Image](https://i.imgur.com/53yDQUQ.png)
+
 # Windows 10 versions support
 
 SophiApp will support only the latest Windows 10 version, 2004 and higher. If you are using a different version, please update it if possible, so as not to upset our testing department. :smile:
