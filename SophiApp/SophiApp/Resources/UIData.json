@@ -1836,37 +1836,11 @@
             "EN": "The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11",
             "RU": "Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11"
         },
-        "Type": "RadioGroup",
-        "Tag": "System",
-        "ChildElements": [
-            {
-                "Id": 363,
-                "ChildHeader": {
-                    "EN": "Block",
-                    "RU": "Блокировать"
-                },
-                "ChildDescription": {
-                    "EN": "",
-                    "RU": ""
-                },
-                "Type": "RadioButton"
-            },
-            {
-                "Id": 364,
-                "ChildHeader": {
-                    "EN": "Do not block",
-                    "RU": "Не блокировать"
-                },
-                "ChildDescription": {
-                    "EN": "",
-                    "RU": ""
-                },
-                "Type": "RadioButton"
-            }
-        ]
+        "Type": "CheckBox",
+        "Tag": "System"
     },
     {
-        "Id": 365,
+        "Id": 363,
         "Header": {
             "EN": "Install the latest Microsoft Visual C++ Redistributable",
             "RU": "Установить последнюю версию Microsoft Visual C++ Redistributable"
@@ -1918,58 +1892,59 @@
         "Tag": "StartMenu"
     },
     {
-        "Id": 403,
+        "Id": 500,
         "Header": {
-            "EN": "Pin the shortcuts to Start",
-            "RU": "Закрепить ярлыки на начальном экране"
+            "EN": "UWP apps",
+            "RU": "UWP-приложения"
         },
         "Description": {
             "EN": "",
             "RU": ""
         },
-        "Type": "RadioGroup",
-        "Tag": "StartMenu",
-        "ChildElements": [
-            {
-                "Id": 404,
-                "ChildHeader": {
-                    "EN": "Control Panel",
-                    "RU": "Панель управления"
-                },
-                "ChildDescription": {
-                    "EN": "",
-                    "RU": ""
-                },
-                "Type": "RadioButton"
-            },
-            {
-                "Id": 405,
-                "ChildHeader": {
-                    "EN": "Devices and Printers",
-                    "RU": "Устройства и принтеры"
-                },
-                "ChildDescription": {
-                    "EN": "",
-                    "RU": ""
-                },
-                "Type": "RadioButton"
-            },
-            {
-                "Id": 406,
-                "ChildHeader": {
-                    "EN": "PowerShell",
-                    "RU": "PowerShell"
-                },
-                "ChildDescription": {
-                    "EN": "",
-                    "RU": ""
-                },
-                "Type": "RadioButton"
-            }
-        ]
+        "Type": "Switch",
+        "Tag": "UwpApps"
     },
     {
-        "Id": 500,
+        "Id": 501,
+        "Header": {
+            "EN": "HEVC video codec (H.265)",
+            "RU": "Кодек HEVC (H.265)"
+        },
+        "Description": {
+            "EN": "The codec allows you to open images and videos in .heif and .hevc formats, respectively",
+            "RU": "Кодек позволяет открывать изображения и видео в форматах .heif и .hevc соответственно"
+        },
+        "Type": "Switch",
+        "Tag": "UwpApps"
+    },
+    {
+        "Id": 502,
+        "Header": {
+            "EN": "Cortana autostarting",
+            "RU": "Автозагрузка Кортаны"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "Switch",
+        "Tag": "UwpApps"
+    },
+    {
+        "Id": 503,
+        "Header": {
+            "EN": "Let all UWP apps run in the background",
+            "RU": "Разрешить всем UWP-приложениям работать в фоновом режиме"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "Switch",
+        "Tag": "UwpApps"
+    },
+    {
+        "Id": 600,
         "Header": {
             "EN": "Xbox Game Bar",
             "RU": "Xbox Game Bar"
@@ -1982,7 +1957,7 @@
         "Tag": "Games"
     },
     {
-        "Id": 501,
+        "Id": 601,
         "Header": {
             "EN": "Xbox Game Bar tips",
             "RU": "Советы Xbox Game Bar"
@@ -1995,7 +1970,7 @@
         "Tag": "Games"
     },
     {
-        "Id": 502,
+        "Id": 602,
         "Header": {
             "EN": "Hardware-accelerated GPU scheduling",
             "RU": "Планирование графического процессора с аппаратным ускорением"
@@ -2008,7 +1983,7 @@
         "Tag": "Games"
     },
     {
-        "Id": 600,
+        "Id": 700,
         "Header": {
             "EN": "Windows Cleanup",
             "RU": "Очистка Windows"
@@ -2021,7 +1996,7 @@
         "Tag": "TaskSheduler"
     },
     {
-        "Id": 601,
+        "Id": 701,
         "Header": {
             "EN": "Сleaning up the %SystemRoot%\\SoftwareDistribution\\Download folder",
             "RU": "Очистка папки %SystemRoot%\\SoftwareDistribution\\Download"
@@ -2034,7 +2009,7 @@
         "Tag": "TaskSheduler"
     },
     {
-        "Id": 602,
+        "Id": 702,
         "Header": {
             "EN": "Сleaning up the  %TEMP%",
             "RU": "Очистка папки %TEMP%"
@@ -2047,7 +2022,7 @@
         "Tag": "TaskSheduler"
     },
     {
-        "Id": 700,
+        "Id": 800,
         "Header": {
             "EN": "Enable Microsoft Defender Exploit Guard network protection",
             "RU": "Включить защиту сети в Microsoft Defender Exploit Guard"
@@ -2060,7 +2035,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 701,
+        "Id": 801,
         "Header": {
             "EN": "Enable detection for potentially unwanted applications and block them",
             "RU": "Включить обнаружение потенциально нежелательных приложений и блокировать их"
@@ -2073,7 +2048,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 702,
+        "Id": 802,
         "Header": {
             "EN": "Enable sandboxing for Microsoft Defender",
             "RU": "Включить песочницу для Microsoft Defender"
@@ -2086,7 +2061,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 703,
+        "Id": 803,
         "Header": {
             "EN": "Enable events auditing generated when a process is created or starts",
             "RU": "Включить аудит событий, возникающих при создании или запуске процесса"
@@ -2099,7 +2074,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 704,
+        "Id": 804,
         "Header": {
             "EN": "Include command line in process creation events",
             "RU": "Включать командную строку в событиях создания процесса"
@@ -2112,7 +2087,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 705,
+        "Id": 805,
         "Header": {
             "EN": "Create \"Process Creation\" Event Viewer Custom View",
             "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий"
@@ -2125,7 +2100,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 706,
+        "Id": 806,
         "Header": {
             "EN": "Enable logging for all Windows PowerShell modules",
             "RU": "Включить ведение журнала для всех модулей Windows PowerShell"
@@ -2138,7 +2113,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 707,
+        "Id": 807,
         "Header": {
             "EN": "Enable logging for all PowerShell scripts input to the Windows PowerShell event log",
             "RU": "Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell"
@@ -2151,7 +2126,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 708,
+        "Id": 808,
         "Header": {
             "EN": "Enable apps and files checking within Microsofot Defender SmartScreen",
             "RU": "Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender"
@@ -2164,7 +2139,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 709,
+        "Id": 809,
         "Header": {
             "EN": "Enable the Attachment Manager marking files that have been downloaded from the Internet as unsafe",
             "RU": "Включить проверку Диспетчера вложений файлов, скачанных из интернета как небезопасные"
@@ -2177,7 +2152,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 710,
+        "Id": 810,
         "Header": {
             "EN": "Enable Windows Script Host",
             "RU": "Включить Windows Script Host"
@@ -2190,7 +2165,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 711,
+        "Id": 811,
         "Header": {
             "EN": "WindowsSandbox",
             "RU": "WindowsSandbox"
@@ -2203,7 +2178,7 @@
         "Tag": "Security"
     },
     {
-        "Id": 800,
+        "Id": 900,
         "Header": {
             "EN": "The \"Extract all\" item in the Windows Installer (.msi) context menu",
             "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)"
@@ -2216,7 +2191,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 801,
+        "Id": 901,
         "Header": {
             "EN": "The \"Install\" item in the Cabinet archives (.cab) context menu",
             "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab)"
@@ -2229,7 +2204,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 802,
+        "Id": 902,
         "Header": {
             "EN": "The \"Run as different user\" item in the executable files context menu (.exe)",
             "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню исполняемых файлов (.exe)"
@@ -2242,7 +2217,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 803,
+        "Id": 903,
         "Header": {
             "EN": "The \"Cast to Device\" item in the media files and folders context menu",
             "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок"
@@ -2255,7 +2230,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 804,
+        "Id": 904,
         "Header": {
             "EN": "The \"Share\" item in the context menu",
             "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню"
@@ -2268,7 +2243,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 805,
+        "Id": 905,
         "Header": {
             "EN": "The \"Edit with Paint 3D\" item in the media files context menu",
             "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов"
@@ -2281,7 +2256,7 @@
         "Tag": "ContextMenu",
         "ChildElements": [
             {
-                "Id": 806,
+                "Id": 906,
                 "ChildHeader": {
                     "EN": ".bmp",
                     "RU": ".bmp"
@@ -2293,7 +2268,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 807,
+                "Id": 907,
                 "ChildHeader": {
                     "EN": ".gif",
                     "RU": ".gif"
@@ -2305,7 +2280,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 808,
+                "Id": 908,
                 "ChildHeader": {
                     "EN": ".jpe",
                     "RU": ".jpe"
@@ -2317,7 +2292,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 809,
+                "Id": 909,
                 "ChildHeader": {
                     "EN": ".jpeg",
                     "RU": ".jpeg"
@@ -2329,7 +2304,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 810,
+                "Id": 910,
                 "ChildHeader": {
                     "EN": ".jpg",
                     "RU": ".jpg"
@@ -2341,7 +2316,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 811,
+                "Id": 911,
                 "ChildHeader": {
                     "EN": ".png",
                     "RU": ".png"
@@ -2353,7 +2328,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 812,
+                "Id": 912,
                 "ChildHeader": {
                     "EN": ".tif",
                     "RU": ".tif"
@@ -2365,7 +2340,7 @@
                 "Type": "CheckBox"
             },
             {
-                "Id": 813,
+                "Id": 913,
                 "ChildHeader": {
                     "EN": ".tiff",
                     "RU": ".tiff"
@@ -2379,7 +2354,7 @@
         ]
     },
     {
-        "Id": 814,
+        "Id": 914,
         "Header": {
             "EN": "Show the \"Edit with Photos\" item in the media files context menu",
             "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов"
@@ -2392,7 +2367,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 815,
+        "Id": 915,
         "Header": {
             "EN": "The \"Create a new video\" item in the media files context menu",
             "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов"
@@ -2405,7 +2380,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 816,
+        "Id": 916,
         "Header": {
             "EN": "The \"Edit\" item in the image files context menu",
             "RU": "Пункт \"Изменить\" в контекстном меню изображений"
@@ -2418,7 +2393,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 817,
+        "Id": 917,
         "Header": {
             "EN": "The \"Print\" item in the .bat and .cmd files context menu",
             "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
@@ -2431,7 +2406,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 818,
+        "Id": 918,
         "Header": {
             "EN": "The \"Include in Library\" menu option in the folders and drives context menu",
             "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков"
@@ -2444,7 +2419,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 819,
+        "Id": 919,
         "Header": {
             "EN": "The \"Send to\" item in the folders context menu",
             "RU": "Пункт \"Отправить\" в контекстном меню папок"
@@ -2457,7 +2432,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 820,
+        "Id": 920,
         "Header": {
             "EN": "\"Turn on BitLocker\" item in the drives context menu",
             "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
@@ -2470,7 +2445,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 821,
+        "Id": 921,
         "Header": {
             "EN": "The \"Bitmap image\" item in the \"New\" context menu",
             "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\""
@@ -2483,7 +2458,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 822,
+        "Id": 922,
         "Header": {
             "EN": "The \"Rich Text Document\" item in the \"New\" context menu",
             "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\""
@@ -2496,7 +2471,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 823,
+        "Id": 923,
         "Header": {
             "EN": "The \"Compressed (zipped) Folder\" item in the \"New\" context menu",
             "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
@@ -2509,7 +2484,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 824,
+        "Id": 924,
         "Header": {
             "EN": "Make the \"Open\", \"Print\", and \"Edit\" items are available when you select more than 15 files",
             "RU": "Сделать элементы \"Открыть\", \"Изменить\" и \"Печать\" доступными контекстного меню при выделении более 15 элементов"
@@ -2522,7 +2497,7 @@
         "Tag": "ContextMenu"
     },
     {
-        "Id": 825,
+        "Id": 925,
         "Header": {
             "EN": "The \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog",
             "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
