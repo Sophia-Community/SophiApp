@@ -51,6 +51,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class UpdateNotInstalledException : Exception
+    {
+        public UpdateNotInstalledException(string kbID) : base($"Update {kbID} is not installed on this PC")
+        {
+        }
+    }
+
     internal class UwpAppNotFoundException : Exception
     {
         public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found on OS")

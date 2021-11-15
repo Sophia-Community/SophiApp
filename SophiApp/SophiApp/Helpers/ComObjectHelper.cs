@@ -40,25 +40,22 @@ namespace SophiApp.Helpers
             return result;
         }
 
-        internal static bool UpdateInstalled(string kbID)
+        internal static bool UpdateIsInstalled(string kbID, string resultCode)
         {
             var result = false;
-            var articleID = kbID.Substring(2);
-            UpdateSession session = (UpdateSession)Activator.CreateInstance(Type.GetTypeFromProgID("Microsoft.Update.Session"));
-            IUpdateSearcher searcher = session.CreateUpdateSearcher();
-            ISearchResult updates = searcher.Search("IsHidden = 0");
+            OperationResultCode operationResult;
+            _ = Enum.TryParse(resultCode, out operationResult);
+            var session = Activator.CreateInstance(Type.GetTypeFromProgID("Microsoft.Update.Session")) as UpdateSession;
+            var searcher = session.CreateUpdateSearcher();
+            var updates = searcher.QueryHistory(0, searcher.GetTotalHistoryCount());
 
-            foreach (IUpdate update in updates.Updates)
+            foreach (IUpdateHistoryEntry update in updates)
             {
                 if (result == false)
                 {
-                    foreach (string id in update.KBArticleIDs)
+                    if (update.Title.Contains(kbID) && update.ResultCode == operationResult)
                     {
-                        if (id == articleID)
-                        {
-                            result = true;
-                            break;
-                        }
+                        result = true;
                     }
                 }
 

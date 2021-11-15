@@ -388,14 +388,14 @@ namespace SophiApp.Customisations
         public static bool _361() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _361_IS_EXPEDITED)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _363() => _364().Invert();
+        public static bool _362() => ComObjectHelper.UpdateIsInstalled(kbID: KB5005463_UPD, resultCode: "orcSucceeded")
+                                     ? true
+                                     : throw new UpdateNotInstalledException(KB5005463_UPD);
 
-        public static bool _364() => ComObjectHelper.UpdateInstalled(KB5005463_FIX) is false;
-
-        public static bool _365()
+        public static bool _363()
         {
-            var vcVersions = WebHelper.GetJsonRequest(_365_VC_VERSION_URL, new VCRedistrDto());
-            var latestVersion = vcVersions.Supported.Where(item => item.Name == _365_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
+            var vcVersions = WebHelper.GetJsonRequest(_363_VC_VERSION_URL, new VCRedistrDto());
+            var latestVersion = vcVersions.Supported.Where(item => item.Name == _363_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
             var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }

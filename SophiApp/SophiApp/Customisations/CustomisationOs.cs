@@ -2,6 +2,7 @@
 using SophiApp.Helpers;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Principal;
@@ -789,21 +790,19 @@ namespace SophiApp.Customisations
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _363(bool _)
+        public static void _362(bool _)
         {
-            ProcessHelper.StartWait(WUSA_EXE, KB5005463_FIX_UNINSTALL_ARG, ProcessWindowStyle.Hidden);
-            _ = ComObjectHelper.SetUpdateHidden(KB5005463_FIX);
+            var msi = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK)).Where(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK).First();
+            ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {msi["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
         }
 
-        public static void _364(bool _) => ProcessHelper.StartWait(WUSA_EXE, KB5005463_FIX_UNINSTALL_ARG, ProcessWindowStyle.Hidden);
-
-        public static void _365(bool IsChecked)
+        public static void _363(bool IsChecked)
         {
             if (IsChecked)
             {
-                var installer = $"{Environment.GetEnvironmentVariable(TEMP)}\\{_365_VC_REDISTRX64}";
-                WebHelper.Download(_365_DOWNLOAD_URL, installer);
-                ProcessHelper.StartWait(installer, _365_VC_REDISTRX64_ARG, ProcessWindowStyle.Hidden);
+                var installer = $"{Environment.GetEnvironmentVariable(TEMP)}\\{_363_VC_REDISTRX64}";
+                WebHelper.Download(_363_DOWNLOAD_URL, installer);
+                ProcessHelper.StartWait(installer, _363_VC_REDISTRX64_ARG, ProcessWindowStyle.Hidden);
                 FileHelper.FileDelete(installer);
             }
         }
