@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace SophiApp.Helpers
 {
@@ -25,14 +25,14 @@ namespace SophiApp.Helpers
 
     internal class PcJoinedToDomainException : Exception
     {
-        public PcJoinedToDomainException() : base("PC is joined to domain")
+        public PcJoinedToDomainException() : base("PC is domain-joined")
         {
         }
     }
 
     internal class PcNotJoinedToDomainException : Exception
     {
-        public PcNotJoinedToDomainException() : base("PC is not joined to domain")
+        public PcNotJoinedToDomainException() : base("PC is not domain-joined")
         {
         }
     }
