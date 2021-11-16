@@ -16,6 +16,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class OneDriveIsInstalledException : Exception
+    {
+        public OneDriveIsInstalledException() : base("OneDrive must be uninstalled from this PC")
+        {
+        }
+    }
+
     internal class PcJoinedToDomainException : Exception
     {
         public PcJoinedToDomainException() : base("PC is joined to domain")

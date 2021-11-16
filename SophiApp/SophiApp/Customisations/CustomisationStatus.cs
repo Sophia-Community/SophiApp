@@ -3,6 +3,7 @@ using Microsoft.Win32.TaskScheduler;
 using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Principal;
@@ -344,6 +345,10 @@ namespace SophiApp.Customisations
 
         public static bool _343() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
 
+        public static bool _344() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _344_ONEDRIVE_SETUP_PATH, _344_UNINSTALL_STRING)?.Contains(_344_UNINSTALL_MASK) == true
+                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, _344_ONEDRIVE_SETUP_PATH, _344_UNINSTALL_STRING)?.Contains(_344_UNINSTALL_MASK) == true
+                                     ? true : throw new OneDriveIsInstalledException();
+
         public static bool _345() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
                                         == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _345_DESKTOP_FOLDER);
 
@@ -388,9 +393,9 @@ namespace SophiApp.Customisations
         public static bool _361() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _361_IS_EXPEDITED)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _362() => ComObjectHelper.UpdateIsInstalled(kbID: KB5005463_UPD, resultCode: "orcSucceeded")
-                                     ? true
-                                     : throw new UpdateNotInstalledException(KB5005463_UPD);
+        public static bool _362() => MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK))
+                                              .Where(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK)
+                                              .FirstOrDefault() != null ? false : throw new UpdateNotInstalledException(KB5005463_UPD);
 
         public static bool _363()
         {
@@ -399,6 +404,23 @@ namespace SophiApp.Customisations
             var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }
+
+        public static bool _364() => true;
+
+        public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
+
+        public static bool _401() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS) == ENABLED_VALUE;
+
+        public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
+
+        public static bool _600() => RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
+                                     && RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
+
+        public static bool _601() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) && UwpHelper.PackageExist(GAMING_APP_UWP)
+                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException($"{XBOX_GAMING_OVERLAY_UWP} or {GAMING_APP_UWP}");
+
+        public static bool _602() => RegHelper.GetByteValue(RegistryHive.LocalMachine, _602_GRAPHICS_DRIVERS_PATH, _602_HWSCH_MODE) == _602_ENABLED_VALUE;
 
         public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
 

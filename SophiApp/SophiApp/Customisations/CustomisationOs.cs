@@ -792,8 +792,8 @@ namespace SophiApp.Customisations
 
         public static void _362(bool _)
         {
-            var msi = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK)).Where(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK).First();
-            ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {msi["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
+            var poperties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK)).Where(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK).First();
+            ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {poperties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
         }
 
         public static void _363(bool IsChecked)
@@ -806,6 +806,62 @@ namespace SophiApp.Customisations
                 FileHelper.FileDelete(installer);
             }
         }
+
+        public static void _400(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS, _400_DISABLED_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _401(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS, DISABLED_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _402(bool IsChecked)
+        {
+            var bytes = File.ReadAllBytes(_402_POWERSHELL_LNK);
+            bytes[0x15] = (byte)(IsChecked ? bytes[0x15] | 0x20 : bytes[0x15] ^ 0x20);
+            File.WriteAllBytes(_402_POWERSHELL_LNK, bytes);
+        }
+
+        public static void _600(bool IsChecked)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser,
+                                _600_GAME_DVR_PATH,
+                                    _600_APP_CAPTURE,
+                                        IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                            RegistryValueKind.DWord);
+
+            RegHelper.SetValue(RegistryHive.CurrentUser,
+                                _600_GAME_CONFIG_PATH,
+                                    _600_GAME_DVR,
+                                        IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                            RegistryValueKind.DWord);
+        }
+
+        public static void _601(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                    _601_GAME_BAR_PATH,
+                                                        _601_SHOW_PANEL,
+                                                            IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                RegistryValueKind.DWord);
+
+        public static void _602(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                    _602_GRAPHICS_DRIVERS_PATH,
+                                                        _602_HWSCH_MODE,
+                                                            IsChecked ? _602_ENABLED_VALUE : _602_DISABLED_VALUE,
+                                                                RegistryValueKind.DWord);
 
         public static void _800(bool IsChecked)
         {

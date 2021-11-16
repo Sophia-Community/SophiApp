@@ -159,6 +159,9 @@ namespace SophiApp.Customisations
         internal const string _340_DISABLE_NET_BINDING_PS = "Disable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
         internal const string _340_ENABLE_NET_BINDING_PS = "Enable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
         internal const string _340_GET_IPV6_PS = @"((@((Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration -Namespace root\cimv2 | Where-Object -FilterScript {$_.IPEnabled -eq $true}).IPAddress)) -match ':')";
+        internal const string _344_ONEDRIVE_SETUP_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OneDriveSetup.exe";
+        internal const string _344_UNINSTALL_MASK = "/uninstall";
+        internal const string _344_UNINSTALL_STRING = "UninstallString";
         internal const string _345_DESKTOP_FOLDER = "Desktop";
         internal const byte _348_AUTOMATICALLY_VALUE = 3;
         internal const byte _349_DEFAULT_VALUE = 2;
@@ -195,7 +198,6 @@ namespace SophiApp.Customisations
         internal const byte _360_AUTO_STATE = 1;
         internal const byte _360_MANUAL_STATE = 0;
         internal const string _361_IS_EXPEDITED = "IsExpedited";
-        internal const string _362_INSTALLER_PATH = @"C:\Windows\Installer";
         internal const string _362_MSI_MASK = "*.msi";
         internal const string _362_MSIEXEC_EXE = "msiexec.exe";
         internal const string _362_PC_HEALTH_CHECK = "Windows PC Health Check";
@@ -205,6 +207,19 @@ namespace SophiApp.Customisations
         internal const string _363_VC_REDISTRX64 = "vc_redist.x64.exe";
         internal const string _363_VC_REDISTRX64_ARG = "/install /passive /norestart";
         internal const string _363_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
+        internal const byte _400_DISABLED_VALUE = 1;
+        internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
+        internal const string _401_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
+        internal const string _600_APP_CAPTURE = "AppCaptureEnabled";
+        internal const string _600_GAME_CONFIG_PATH = @"System\GameConfigStore";
+        internal const string _600_GAME_DVR = "GameDVR_Enabled";
+        internal const string _600_GAME_DVR_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR";
+        internal const string _601_GAME_BAR_PATH = @"SOFTWARE\Microsoft\GameBar";
+        internal const string _601_SHOW_PANEL = "ShowStartupPanel";
+        internal const byte _602_DISABLED_VALUE = 1;
+        internal const byte _602_ENABLED_VALUE = 2;
+        internal const string _602_GRAPHICS_DRIVERS_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers";
+        internal const string _602_HWSCH_MODE = "HwSchMode";
         internal const string _800_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _800_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _800_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -288,6 +303,7 @@ namespace SophiApp.Customisations
         internal const string ENVIRONMENT_SYSTEM_DRIVE = "%SystemDrive%";
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
+        internal const string GAMING_APP_UWP = "Microsoft.GamingApp";
         internal const string IMAGES_FOLDER = "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}";
         internal const string INPUT_ENG_VALUE = "0409:00000409";
         internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
@@ -346,8 +362,11 @@ namespace SophiApp.Customisations
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         internal const string WUSA_EXE = "wusa.exe";
         internal const string X64 = "x64";
+        internal const string XBOX_GAMING_OVERLAY_UWP = "Microsoft.XboxGamingOverlay";
         internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
+        internal static string _362_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
+        internal static string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 }

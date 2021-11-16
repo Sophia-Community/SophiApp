@@ -51,8 +51,7 @@
                     VerticalAlignment="Top"
                     Icon="{DynamicResource Icon.StartMenu}"
                     Tag="{StaticResource Tags.View.StartMenu}"
-                    Text="{DynamicResource Localization.StartMenu}"
-                    IsHitTestVisible="False" />
+                    Text="{DynamicResource Localization.StartMenu}" />
 
                 <local:HamburgerButton
                     Margin="0,180,0,0"
@@ -60,8 +59,7 @@
                     Icon="{DynamicResource Icon.Games}"
                     IconMargin="8, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Games}"
-                    Text="{DynamicResource Localization.Games}"
-                    IsHitTestVisible="False" />
+                    Text="{DynamicResource Localization.Games}" />
 
                 <local:HamburgerButton
                     Margin="0,225,0,0"
