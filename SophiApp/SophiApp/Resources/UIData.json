@@ -55,7 +55,7 @@
         "Id": 104,
         "Header": {
             "EN": "The Windows Error Reporting",
-            "RU": "Запись отчетов об ошибках Window"
+            "RU": "Запись отчетов об ошибках Windows"
         },
         "Description": {
             "EN": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.",
