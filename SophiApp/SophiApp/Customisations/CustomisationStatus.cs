@@ -422,77 +422,77 @@ namespace SophiApp.Customisations
 
         public static bool _602() => RegHelper.GetByteValue(RegistryHive.LocalMachine, _602_GRAPHICS_DRIVERS_PATH, _602_HWSCH_MODE) == _602_ENABLED_VALUE;
 
-        public static bool _800() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
+        public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
-        public static bool _801() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _801_CAB_COM_PATH);
+        public static bool _901() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _901_CAB_COM_PATH);
 
-        public static bool _802() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _802_RUNAS_USER_PATH, _802_EXTENDED).Invert();
+        public static bool _902() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _902_RUNAS_USER_PATH, _902_EXTENDED).Invert();
 
-        public static bool _803() => (RegHelper.GetStringValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _803_CAST_TO_DEV_GUID) == _803_CAST_TO_DEV_VALUE)
+        public static bool _903() => (RegHelper.GetStringValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _903_CAST_TO_DEV_GUID) == _903_CAST_TO_DEV_VALUE)
                                                .Invert();
 
-        public static bool _804() => RegHelper.KeyExist(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _804_SHARE_GUID).Invert();
+        public static bool _904() => RegHelper.KeyExist(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID).Invert();
 
-        public static bool _805() => UwpHelper.PackageExist(_805_MS_PAINT_3D) ? true : throw new UwpAppNotFoundException(_805_MS_PAINT_3D);
+        public static bool _905() => UwpHelper.PackageExist(_905_MS_PAINT_3D) ? true : throw new UwpAppNotFoundException(_905_MS_PAINT_3D);
 
-        public static bool _806() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _806_BMP_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _906() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _906_BMP_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _807() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _807_GIF_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _907() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _907_GIF_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _808() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _808_JPE_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _908() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _908_JPE_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _809() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _809_JPEG_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _909() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _909_JPEG_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _810() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _810_JPG_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _910() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _910_JPG_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _811() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _811_PNG_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _911() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _911_PNG_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _812() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _812_TIF_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _912() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _912_TIF_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _813() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _813_TIFF_EXT, PROGRAM_ACCESS_ONLY).Invert();
+        public static bool _913() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _913_TIFF_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _814() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _814_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY).Invert()
+        public static bool _914() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _914_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new UwpAppNotFoundException(UWP_MS_WIN_PHOTOS);
 
-        public static bool _815() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _815_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY).Invert()
+        public static bool _915() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _915_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new UwpAppNotFoundException(UWP_MS_WIN_PHOTOS);
 
-        public static bool _816() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _816_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY).Invert()
+        public static bool _916() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _916_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
-        public static bool _817() => (RegHelper.KeyExist(RegistryHive.ClassesRoot, _817_BAT_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY)
-                                     || RegHelper.KeyExist(RegistryHive.ClassesRoot, _817_CMD_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY))
+        public static bool _917() => (RegHelper.KeyExist(RegistryHive.ClassesRoot, _917_BAT_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY)
+                                     || RegHelper.KeyExist(RegistryHive.ClassesRoot, _917_CMD_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY))
                                                    .Invert();
 
-        public static bool _818() => RegHelper.GetStringValue(RegistryHive.ClassesRoot, _818_LIB_LOCATION_PATH, string.Empty) == _818_SHOW_VALUE;
+        public static bool _918() => RegHelper.GetStringValue(RegistryHive.ClassesRoot, _918_LIB_LOCATION_PATH, string.Empty) == _918_SHOW_VALUE;
 
-        public static bool _819() => RegHelper.GetStringValue(RegistryHive.ClassesRoot, _819_SEND_TO_PATH, string.Empty) == _819_SHOW_VALUE;
+        public static bool _919() => RegHelper.GetStringValue(RegistryHive.ClassesRoot, _919_SEND_TO_PATH, string.Empty) == _919_SHOW_VALUE;
 
-        public static bool _820() => OsHelper.IsEdition(WIN_VER_PRO) || OsHelper.IsEdition(WIN_VER_ENT)
+        public static bool _920() => OsHelper.IsEdition(WIN_VER_PRO) || OsHelper.IsEdition(WIN_VER_ENT)
                                      ? WmiHelper.GetBitLockerVolumeProtectionStatus() == DISABLED_VALUE
-                                                ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _820_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY).Invert()
+                                                ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _920_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                                 : throw new BitlockerIsEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
 
         public static bool _821() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _821_BMP_SHELL_NEW, _821_BMP_ITEM_NAME)
-                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _821_BMP_SHELL_NEW, _821_BMP_NULL_FILE)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
+                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
                                      : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
-        public static bool _822() => DismHelper.CapabilityIsInstalled(_822_MS_WORD_PAD)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _822_RTF_SHELL_NEW, ITEM_NAME)
-                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _822_RTF_SHELL_NEW, DATA)
-                                     : throw new WindowsCapabilityNotInstalledException(_822_MS_WORD_PAD);
+        public static bool _922() => DismHelper.CapabilityIsInstalled(_922_MS_WORD_PAD)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, ITEM_NAME)
+                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, DATA)
+                                     : throw new WindowsCapabilityNotInstalledException(_922_MS_WORD_PAD);
 
-        public static bool _823() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _823_ZIP_SHELLNEW_PATH);
+        public static bool _923() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _923_ZIP_SHELLNEW_PATH);
 
-        public static bool _824() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _824_PROMPT_NAME)
-                                              .HasNullOrValue(_824_PROMPT_VALUE);
+        public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _924_PROMPT_NAME)
+                                              .HasNullOrValue(_924_PROMPT_VALUE);
 
-        public static bool _825() => RegHelper.KeyExist(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _825_NO_USE_NAME).Invert();
+        public static bool _925() => RegHelper.KeyExist(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
 
         /// <summary>
         /// There must be a little magic in every app

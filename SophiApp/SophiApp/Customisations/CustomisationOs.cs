@@ -863,272 +863,272 @@ namespace SophiApp.Customisations
                                                             IsChecked ? _602_ENABLED_VALUE : _602_DISABLED_VALUE,
                                                                 RegistryValueKind.DWord);
 
-        public static void _800(bool IsChecked)
+        public static void _900(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_COM_PATH, string.Empty, _800_MSI_EXTRACT_VALUE);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH, MUIVERB, _800_MSI_MUIVERB_VALUE);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH, _800_MSI_ICON, _800_MSI_ICON_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_COM_PATH, string.Empty, _900_MSI_EXTRACT_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH, MUIVERB, _900_MSI_MUIVERB_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH, _900_MSI_ICON, _900_MSI_ICON_VALUE);
                 return;
             }
 
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _800_MSI_EXTRACT_PATH);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
         }
 
-        public static void _801(bool IsChecked)
+        public static void _901(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _801_CAB_COM_PATH, string.Empty, _801_CAB_VALUE);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _801_CAB_RUNAS_PATH, MUIVERB, _801_MUIVERB_VALUE);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _801_CAB_RUNAS_PATH, _801_CAB_LUA_SHIELD, string.Empty);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _901_CAB_COM_PATH, string.Empty, _901_CAB_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _901_CAB_RUNAS_PATH, MUIVERB, _901_MUIVERB_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _901_CAB_RUNAS_PATH, _901_CAB_LUA_SHIELD, string.Empty);
                 return;
             }
 
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _801_CAB_RUNAS_PATH);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _901_CAB_RUNAS_PATH);
         }
 
-        public static void _802(bool IsChecked)
+        public static void _902(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _802_RUNAS_USER_PATH, _802_EXTENDED);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _902_RUNAS_USER_PATH, _902_EXTENDED);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _802_RUNAS_USER_PATH, _802_EXTENDED, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _902_RUNAS_USER_PATH, _902_EXTENDED, string.Empty);
         }
 
-        public static void _803(bool IsChecked)
+        public static void _903(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _803_CAST_TO_DEV_GUID);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _903_CAST_TO_DEV_GUID);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _803_CAST_TO_DEV_GUID, _803_CAST_TO_DEV_VALUE);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _903_CAST_TO_DEV_GUID, _903_CAST_TO_DEV_VALUE);
         }
 
-        public static void _804(bool IsChecked)
+        public static void _904(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _804_SHARE_GUID);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _804_SHARE_GUID, string.Empty);
+            RegHelper.SetValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID, string.Empty);
         }
 
-        public static void _806(bool IsChecked)
+        public static void _906(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _806_BMP_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _906_BMP_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _806_BMP_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _906_BMP_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _807(bool IsChecked)
+        public static void _907(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _807_GIF_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _907_GIF_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _807_GIF_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _907_GIF_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _808(bool IsChecked)
+        public static void _908(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _808_JPE_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _908_JPE_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _808_JPE_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _908_JPE_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _809(bool IsChecked)
+        public static void _909(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _809_JPEG_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _909_JPEG_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _809_JPEG_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _909_JPEG_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _810(bool IsChecked)
+        public static void _910(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _810_JPG_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _910_JPG_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _810_JPG_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _910_JPG_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _811(bool IsChecked)
+        public static void _911(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _811_PNG_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _911_PNG_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _811_PNG_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _911_PNG_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _812(bool IsChecked)
+        public static void _912(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _812_TIF_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _912_TIF_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _812_TIF_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _912_TIF_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _813(bool IsChecked)
+        public static void _913(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _813_TIFF_EXT, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _913_TIFF_EXT, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _813_TIFF_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _913_TIFF_EXT, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _814(bool IsChecked)
+        public static void _914(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _814_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _914_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _814_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _914_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _815(bool IsChecked)
+        public static void _915(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _815_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _915_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _815_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _915_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _816(bool IsChecked)
+        public static void _916(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _816_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _916_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _816_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _916_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _817(bool IsChecked)
+        public static void _917(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _817_BAT_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _817_CMD_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _917_BAT_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _917_CMD_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _817_BAT_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _817_CMD_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _917_BAT_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _917_CMD_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _818(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot, _818_LIB_LOCATION_PATH, string.Empty,
-                                                                                IsChecked ? _818_SHOW_VALUE : _818_HIDE_VALUE);
+        public static void _918(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot, _918_LIB_LOCATION_PATH, string.Empty,
+                                                                                IsChecked ? _918_SHOW_VALUE : _918_HIDE_VALUE);
 
-        public static void _819(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot, _819_SEND_TO_PATH, string.Empty,
-                                                                                IsChecked ? _819_SHOW_VALUE : _819_HIDE_VALUE);
+        public static void _919(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot, _919_SEND_TO_PATH, string.Empty,
+                                                                                IsChecked ? _919_SHOW_VALUE : _919_HIDE_VALUE);
 
-        public static void _820(bool IsChecked)
+        public static void _920(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _820_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY);
+                RegHelper.DeleteKey(RegistryHive.ClassesRoot, _920_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.ClassesRoot, _820_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
+            RegHelper.SetValue(RegistryHive.ClassesRoot, _920_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY, string.Empty);
         }
 
-        public static void _821(bool IsChecked)
+        public static void _921(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _821_BMP_SHELL_NEW, _821_BMP_ITEM_NAME, _821_BMP_ITEM_VALUE, RegistryValueKind.ExpandString);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _821_BMP_SHELL_NEW, _821_BMP_NULL_FILE, string.Empty);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME, _921_BMP_ITEM_VALUE, RegistryValueKind.ExpandString);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE, string.Empty);
                 return;
             }
 
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _821_BMP_SHELL_NEW);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW);
         }
 
-        public static void _822(bool IsChecked)
+        public static void _922(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _822_RTF_SHELL_NEW, DATA, _822_DATA_VALUE);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _822_RTF_SHELL_NEW, ITEM_NAME, _822_ITEM_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, DATA, _922_DATA_VALUE);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, ITEM_NAME, _922_ITEM_VALUE);
                 return;
             }
 
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _822_RTF_SHELL_NEW);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW);
         }
 
-        public static void _823(bool IsChecked)
+        public static void _923(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _823_ZIP_SHELLNEW_PATH, DATA, _823_ZIP_DATA, RegistryValueKind.Binary);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _823_ZIP_SHELLNEW_PATH, ITEM_NAME, _823_ITEM_DATA, RegistryValueKind.ExpandString);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _923_ZIP_SHELLNEW_PATH, DATA, _823_ZIP_DATA, RegistryValueKind.Binary);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _923_ZIP_SHELLNEW_PATH, ITEM_NAME, _923_ITEM_DATA, RegistryValueKind.ExpandString);
                 return;
             }
 
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _823_ZIP_SHELLNEW_PATH);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _923_ZIP_SHELLNEW_PATH);
         }
 
-        public static void _824(bool IsChecked)
+        public static void _924(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _824_PROMPT_NAME, _824_PROMPT_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _924_PROMPT_NAME, _924_PROMPT_VALUE, RegistryValueKind.DWord);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _824_PROMPT_NAME);
+            RegHelper.DeleteKey(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _924_PROMPT_NAME);
         }
 
-        public static void _825(bool IsChecked)
+        public static void _925(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _825_NO_USE_NAME);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _825_NO_USE_NAME, _825_NO_USE_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME, _925_NO_USE_VALUE, RegistryValueKind.DWord);
         }
     }
 }
