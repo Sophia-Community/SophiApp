@@ -1853,19 +1853,6 @@
         "Tag": "System"
     },
     {
-        "Id": 364,
-        "Header": {
-            "EN": "Remove OneDrive",
-            "RU": "Удалить OneDrive"
-        },
-        "Description": {
-            "EN": "",
-            "RU": ""
-        },
-        "Type": "CheckBox",
-        "Tag": "System"
-    },
-    {
         "Id": 400,
         "Header": {
             "EN": "Show recently added apps in the Start menu",
