@@ -80,8 +80,8 @@
             {
                 "Id": 106,
                 "ChildHeader": {
-                    "EN": "Automatically (Recommended)",
-                    "RU": "Автоматически (рекомендуется)"
+                    "EN": "Automatically",
+                    "RU": "Автоматически"
                 },
                 "ChildDescription": {
                     "EN": "",
@@ -1595,8 +1595,8 @@
     {
         "Id": 344,
         "Header": {
-            "EN": "Choose the location where to save screenshots by pressing Win+PrtScn",
-            "RU": "Выбрать, куда сохранять скриншоты по нажатию Win+PrtScn"
+            "EN": "Folder for saving screenshots by pressing Win+PrtScn",
+            "RU": "Папка для сохранения скриншотов по нажатию Win+PrtScn"
         },
         "Description": {
             "EN": "The function will be applied only if you choose to remove OneDrive. Otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks",
