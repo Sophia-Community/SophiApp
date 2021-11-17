@@ -8,6 +8,7 @@ namespace SophiApp.Helpers
 {
     internal class OsHelper
     {
+        private const string START_MENU_PROCESS = "StartMenuExperienceHost";
         private const string CURRENT_BUILD = "CurrentBuild";
         private const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
         private const string DISPLAY_VERSION_NAME = "DisplayVersion";
@@ -109,14 +110,16 @@ namespace SophiApp.Helpers
 
         public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
 
-        public static void Refresh()
+        public static void RefreshEnvironment()
         {
-            // Update desktop icons
+            // Update Desktop Icons
             SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
-            // Update environment variables
+            // Update Environment Variables
             SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, null, SMTO_ABORTIFHUNG, 100, IntPtr.Zero);
-            // Update taskbar
+            // Update Taskbar
             SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, TRAY_SETTINGS);
+            // Update Start Menu
+            ProcessHelper.Stop(START_MENU_PROCESS);
         }
     }
 }

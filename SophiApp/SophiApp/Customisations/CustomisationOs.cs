@@ -857,7 +857,7 @@ namespace SophiApp.Customisations
                                                             IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
                                                                 RegistryValueKind.DWord);
 
-        public static void _602(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+        public static void _602(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
                                                     _602_GRAPHICS_DRIVERS_PATH,
                                                         _602_HWSCH_MODE,
                                                             IsChecked ? _602_ENABLED_VALUE : _602_DISABLED_VALUE,

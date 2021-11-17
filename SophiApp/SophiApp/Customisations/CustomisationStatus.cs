@@ -345,8 +345,8 @@ namespace SophiApp.Customisations
 
         public static bool _343() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
 
-        public static bool _344() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _344_ONEDRIVE_SETUP_PATH, _344_UNINSTALL_STRING)?.Contains(_344_UNINSTALL_MASK) == true
-                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, _344_ONEDRIVE_SETUP_PATH, _344_UNINSTALL_STRING)?.Contains(_344_UNINSTALL_MASK) == true
+        public static bool _344() => RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true
+                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true
                                      ? true : throw new OneDriveIsInstalledException();
 
         public static bool _345() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
@@ -405,7 +405,8 @@ namespace SophiApp.Customisations
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }
 
-        public static bool _364() => true;
+        public static bool _364() => RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true
+                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true;
 
         public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
 
@@ -416,11 +417,24 @@ namespace SophiApp.Customisations
         public static bool _600() => RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
                                      && RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
 
-        public static bool _601() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) && UwpHelper.PackageExist(GAMING_APP_UWP)
+        public static bool _601() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
                                      ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
                                      : throw new UwpAppNotFoundException($"{XBOX_GAMING_OVERLAY_UWP} or {GAMING_APP_UWP}");
 
-        public static bool _602() => RegHelper.GetByteValue(RegistryHive.LocalMachine, _602_GRAPHICS_DRIVERS_PATH, _602_HWSCH_MODE) == _602_ENABLED_VALUE;
+        public static bool _602()
+        {
+            var adapterDAC = WmiHelper.GetVideoControllerDacType();
+            var pcIsVM = WmiHelper.IsVirtualMachine();
+            var wddmVersion = RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _602_FEATURE_SET_PATH, _602_WDDM_VERSION);
+
+            return adapterDAC != _602_INTERNAL_DAC_TYPE && adapterDAC != null
+                    ? pcIsVM != true
+                        ? wddmVersion >= _602_WDDM_VERSION_MIN
+                            ? RegHelper.GetByteValue(RegistryHive.LocalMachine, _602_GRAPHICS_DRIVERS_PATH, _602_HWSCH_MODE) == _602_ENABLED_VALUE
+                            : throw new WddmMinimalVersionException($"{_602_WDDM_VERSION_MIN}", $"{wddmVersion}")
+                        : throw new PcIsVirtualMachineException()
+                    : throw new AdapterTypeInternalOrNullException($"{adapterDAC}");
+        }
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 

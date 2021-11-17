@@ -2,6 +2,27 @@ using System;
 
 namespace SophiApp.Helpers
 {
+    internal class AdapterTypeInternalOrNullException : Exception
+    {
+        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a \"Internal\" or null, current adapter DAC type: {dacType}")
+        {
+        }
+    }
+
+    internal class PcIsVirtualMachineException : Exception
+    {
+        public PcIsVirtualMachineException() : base("The computer should not be a virtual machine")
+        {
+        }
+    }
+
+    internal class WddmMinimalVersionException : Exception
+    {
+        public WddmMinimalVersionException(string minimumVersion, string currentVersion) : base($"WDDM minimum version must be: {minimumVersion}, current WDDM version: {currentVersion}")
+        {
+        }
+    }
+
     internal class BitlockerIsEnabledException : Exception
     {
         public BitlockerIsEnabledException() : base("BitLocker protection is enabled")

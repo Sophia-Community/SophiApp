@@ -47,7 +47,7 @@ namespace SophiApp.ViewModels
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 OsHelper.PostMessage();
-                OsHelper.Refresh();
+                OsHelper.RefreshEnvironment();
                 TextedElements.Where(element => element.Status != ElementStatus.DISABLED)
                               .ToList()
                               .ForEach(element => element.GetCustomisationStatus());
@@ -303,11 +303,11 @@ namespace SophiApp.ViewModels
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
-            await conditionsHelper.InvokeAsync();
+            //await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
 
-            if (conditionsHelper.Result)
+            if (true) //if (conditionsHelper.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);
                 await InitTextedElementsAsync();

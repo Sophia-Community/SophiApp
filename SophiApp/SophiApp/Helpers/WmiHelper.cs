@@ -68,5 +68,22 @@ namespace SophiApp.Helpers
                 _ = adapter.Put();
             }
         }
+
+        internal static string GetVideoControllerDacType()
+        {
+            var scope = @"Root\Cimv2";
+            var query = "SELECT * FROM CIM_VideoController";
+            var adapter = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+            return adapter.Properties["AdapterDACType"].Value as string;
+        }
+
+        internal static bool IsVirtualMachine()
+        {
+            var scope = @"Root\Cimv2";
+            var query = "SELECT * FROM CIM_ComputerSystem";
+            var computer = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+            var model = computer.Properties["Model"].Value as string;
+            return model.Contains("Virtual");
+        }
     }
 }
