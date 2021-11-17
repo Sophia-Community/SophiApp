@@ -64,6 +64,9 @@ jobs:
       run: |
         $Build_Directory = Rename-Item -Path $env:App_Release_Path -NewName $env:App_Name -PassThru | Select-Object -ExpandProperty FullName
         Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
+        # Get the file hash
+        $Hash = (Get-FileHash -Path $env:App_Zip -Algorithm SHA256).Hash
+        Write-Host SophiApp.zip SHA256 hash: $Hash
 
     - name: Release Build
       uses: svenstaro/upload-release-action@master
