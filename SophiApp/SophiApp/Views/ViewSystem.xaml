@@ -86,6 +86,17 @@
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
                                     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:ButtonGroup}">
+                                <controls:ButtonGroup
+                                    Margin="20,10,0,5"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
+                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                    Icon="{DynamicResource Icon.OneDrive}"
+                                    IconMargin="0, 10, 15, 10"
+                                    IconHorizontalAlignment="Center"
+                                    IconVerticalAlignment="Center"
+                                    HeaderMargin="0, 3, 0, 0" />
+                            </DataTemplate>
                         </ItemsControl.Resources>
                     </ItemsControl>
                 </ScrollViewer>

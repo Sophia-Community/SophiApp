@@ -159,9 +159,6 @@ namespace SophiApp.Customisations
         internal const string _340_DISABLE_NET_BINDING_PS = "Disable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
         internal const string _340_ENABLE_NET_BINDING_PS = "Enable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
         internal const string _340_GET_IPV6_PS = @"((@((Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration -Namespace root\cimv2 | Where-Object -FilterScript {$_.IPEnabled -eq $true}).IPAddress)) -match ':')";
-        internal const string ONEDRIVE_SETUP_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OneDriveSetup.exe";
-        internal const string ONEDRIVE_UNINSTALL_MASK = "/uninstall";
-        internal const string ONEDRIVE_UNINSTALL_STRING = "UninstallString";
         internal const string _345_DESKTOP_FOLDER = "Desktop";
         internal const byte _348_AUTOMATICALLY_VALUE = 3;
         internal const byte _349_DEFAULT_VALUE = 2;
@@ -218,11 +215,11 @@ namespace SophiApp.Customisations
         internal const string _601_SHOW_PANEL = "ShowStartupPanel";
         internal const byte _602_DISABLED_VALUE = 1;
         internal const byte _602_ENABLED_VALUE = 2;
-        internal const string _602_GRAPHICS_DRIVERS_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers";
         internal const string _602_FEATURE_SET_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers\FeatureSetUsage";
+        internal const string _602_GRAPHICS_DRIVERS_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers";
         internal const string _602_HWSCH_MODE = "HwSchMode";
-        internal const string _602_WDDM_VERSION = "WddmVersion_Min";
         internal const string _602_INTERNAL_DAC_TYPE = "Internal";
+        internal const string _602_WDDM_VERSION = "WddmVersion_Min";
         internal const int _602_WDDM_VERSION_MIN = 2700;
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
@@ -327,6 +324,9 @@ namespace SophiApp.Customisations
         internal const string MUIVERB = "MUIVerb";
         internal const string ONE_DRIVE = "OneDrive";
         internal const string ONE_DRIVE_AUTH = "FileCoAuth";
+        internal const string ONEDRIVE_SETUP_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OneDriveSetup.exe";
+        internal const string ONEDRIVE_UNINSTALL_MASK = "/uninstall";
+        internal const string ONEDRIVE_UNINSTALL_STRING = "UninstallString";
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
         internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
@@ -367,10 +367,11 @@ namespace SophiApp.Customisations
         internal const string WUSA_EXE = "wusa.exe";
         internal const string X64 = "x64";
         internal const string XBOX_GAMING_OVERLAY_UWP = "Microsoft.XboxGamingOverlay";
-        internal static string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
+        internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
+        internal static readonly string _362_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
+        internal static readonly string _365_ONEDRIVE_SETUP_EXE = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SysWOW64\OneDriveSetup.exe";
+        internal static readonly string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
-        internal static string _362_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
-        internal static string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 }

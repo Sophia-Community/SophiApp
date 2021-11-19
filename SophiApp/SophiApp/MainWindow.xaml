@@ -27,6 +27,8 @@
     controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
     controls:Switch.MouseEnter="TextedElement_MouseEnter"
     controls:Switch.MouseLeave="TextedElement_MouseLeave"
+    controls:ButtonGroup.MouseEnter="TextedElement_MouseEnter"
+    controls:ButtonGroup.MouseLeave="TextedElement_MouseLeave"
     Closed="Window_Closed"
     Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen"

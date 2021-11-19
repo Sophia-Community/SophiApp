@@ -53,6 +53,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="IsEnabled" Value="{Binding Path=IsEnabled}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -84,7 +85,7 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.50" />
+                    <Setter Property="Opacity" Value="0.5" />
                 </Trigger>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
                     <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="1" />

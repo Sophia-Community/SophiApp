@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Localization = SophiApp.Commons.Localization;
 
@@ -300,13 +302,15 @@ namespace SophiApp.ViewModels
 
         internal async void InitData()
         {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(1033);
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
+            //TODO: For debug only!
             //await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
-
+            //TODO: For debug only!
             if (true) //if (conditionsHelper.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);

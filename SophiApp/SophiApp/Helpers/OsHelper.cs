@@ -8,7 +8,6 @@ namespace SophiApp.Helpers
 {
     internal class OsHelper
     {
-        private const string START_MENU_PROCESS = "StartMenuExperienceHost";
         private const string CURRENT_BUILD = "CurrentBuild";
         private const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
         private const string DISPLAY_VERSION_NAME = "DisplayVersion";
@@ -20,6 +19,7 @@ namespace SophiApp.Helpers
         private const string REGISTRED_ORGANIZATION_NAME = "RegisteredOrganization";
         private const string REGISTRED_OWNER_NAME = "RegisteredOwner";
         private const int SMTO_ABORTIFHUNG = 0x0002;
+        private const string START_MENU_PROCESS = "StartMenuExperienceHost";
         private const string TRAY_SETTINGS = "TraySettings";
         private const string UBR = "UBR";
         private const int WM_SETTINGCHANGE = 0x1a;

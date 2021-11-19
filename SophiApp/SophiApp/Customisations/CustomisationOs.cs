@@ -792,7 +792,7 @@ namespace SophiApp.Customisations
 
         public static void _362(bool _)
         {
-            var poperties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK)).Where(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK).First();
+            var poperties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK)).First(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK);
             ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {poperties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
         }
 
@@ -802,9 +802,22 @@ namespace SophiApp.Customisations
             {
                 var installer = $"{Environment.GetEnvironmentVariable(TEMP)}\\{_363_VC_REDISTRX64}";
                 WebHelper.Download(_363_DOWNLOAD_URL, installer);
-                ProcessHelper.StartWait(installer, _363_VC_REDISTRX64_ARG, ProcessWindowStyle.Hidden);
+                ProcessHelper.StartWait(installer, _363_VC_REDISTRX64_ARG);
                 FileHelper.FileDelete(installer);
             }
+        }
+
+        public static void _365(bool _)
+        {
+            if (File.Exists(_365_ONEDRIVE_SETUP_EXE))
+            {
+                ProcessHelper.StartWait(_365_ONEDRIVE_SETUP_EXE, null);
+                return;
+            }
+        }
+
+        public static void _366(bool _)
+        {
         }
 
         public static void _400(bool IsChecked)

@@ -46,7 +46,7 @@ namespace SophiApp.Helpers
             });
         }
 
-        internal static void StartWait(string processName, string args, ProcessWindowStyle windowStyle) => Process.Start(new ProcessStartInfo()
+        internal static void StartWait(string processName, string args, ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal) => Process.Start(new ProcessStartInfo()
         {
             FileName = processName,
             Arguments = args,

@@ -27,6 +27,8 @@
         </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Command" Value="{Binding HamburgerClickedCommand}" />
             <Setter Property="CommandParameter" Value="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />

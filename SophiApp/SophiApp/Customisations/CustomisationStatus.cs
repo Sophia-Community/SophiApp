@@ -405,8 +405,26 @@ namespace SophiApp.Customisations
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }
 
-        public static bool _364() => RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true
-                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true;
+        //public static bool _365()
+        //{
+        //    try
+        //    {
+        //        return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
+        //                        .Contains(ONEDRIVE_UNINSTALL_MASK) ||
+        //               RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
+        //                        .Contains(ONEDRIVE_UNINSTALL_MASK);
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new OneDriveIsInstalledException();
+        //    }
+        //}
+
+        //public static bool _366() => RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) is true
+        //                             || RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) is true
+        //                             ? true
+        //                             : throw new OneDriveNotInstalledException();
 
         public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
 
@@ -435,6 +453,11 @@ namespace SophiApp.Customisations
                         : throw new PcIsVirtualMachineException()
                     : throw new AdapterTypeInternalOrNullException($"{adapterDAC}");
         }
+
+        public static bool _821() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
+                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
+                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
+                                     : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
@@ -490,11 +513,6 @@ namespace SophiApp.Customisations
                                                 ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _920_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                                 : throw new BitlockerIsEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
-
-        public static bool _821() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
-                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
-                                     : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
         public static bool _922() => DismHelper.CapabilityIsInstalled(_922_MS_WORD_PAD)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, ITEM_NAME)

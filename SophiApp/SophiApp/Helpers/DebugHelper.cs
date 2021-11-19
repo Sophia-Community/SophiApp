@@ -39,21 +39,15 @@ namespace SophiApp.Helpers
         private static List<string> InitLog = new List<string>();
         private static List<string> StatusLog = new List<string>();
 
+        private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
+
         private static void WriteInfoLog(string record) => InfoLog.Add(record);
 
         private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
 
-        private static void WriteInitLog(string record)
-        {
-            var dateTime = DateTime.Now;
-            InitLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
-        }
+        private static void WriteInitLog(string record) => InitLog.Add($"{DateTime} {record}");
 
-        private static void WriteStatusLog(string record)
-        {
-            var dateTime = DateTime.Now;
-            StatusLog.Add($"{dateTime.ToShortDateString()} {dateTime.ToLongTimeString()} {record}");
-        }
+        private static void WriteStatusLog(string record) => StatusLog.Add($"{DateTime} {record}");
 
         internal static void ActionPerformed(uint actionID, bool actionParameter, double totalSeconds) => WriteStatusLog($"Customization action {actionID} with parameter {actionParameter} completed successfully in {totalSeconds:N0} second(s)");
 
@@ -67,12 +61,11 @@ namespace SophiApp.Helpers
 
         internal static void HasException(string message, Exception e)
         {
-            var dateTime = DateTime.Now;
             ErrorsLog.AddRange(new List<string>()
             {
-                $"{dateTime} {message}",
-                $"{dateTime} Error information: {e.Message}",
-                $"{dateTime} The method that caused the error: {e.TargetSite.Name}"
+                $"{DateTime} {message}",
+                $"{DateTime} Error information: {e.Message}",
+                $"{DateTime} The method that caused the error: {e.TargetSite.Name}"
             });
         }
 

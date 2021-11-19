@@ -1849,8 +1849,47 @@
             "EN": "Microsoft Visual C++ Redistributable 2015—2022 x64 will be downloaded from the Microsoft recource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files",
             "RU": "Пакет Microsoft Visual C++ Redistributable 2015—2022 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы"
         },
-        "Type": "Switch",
+        "Type": "CheckBox",
         "Tag": "System"
+    },
+    {
+        "Id": 364,
+        "Header": {
+            "EN": "OneDrive",
+            "RU": "OneDrive"
+        },
+        "Description": {
+            "EN": "",
+            "RU": ""
+        },
+        "Type": "ButtonGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 365,
+                "ChildHeader": {
+                    "EN": "Install",
+                    "RU": "Установить"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Type": "Button"
+            },
+            {
+                "Id": 366,
+                "ChildHeader": {
+                    "EN": "Uninstall",
+                    "RU": "Удалить"
+                },
+                "ChildDescription": {
+                    "EN": "",
+                    "RU": ""
+                },
+                "Type": "Button"
+            }
+        ]
     },
     {
         "Id": 400,

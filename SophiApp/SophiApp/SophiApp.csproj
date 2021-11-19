@@ -90,6 +90,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ButtonGroup.xaml.cs">
+      <DependentUpon>ButtonGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dto\CustomActionDto.cs" />
     <Compile Include="Dto\ReleaseDto.cs" />
     <Compile Include="Dto\TextedElementDto.cs" />
@@ -222,6 +225,8 @@
     <Compile Include="Interfaces\IParentElements.cs" />
     <Compile Include="Models\AdvancedSwitch.cs" />
     <Compile Include="Models\AdvancedRadioGroup.cs" />
+    <Compile Include="Models\Button.cs" />
+    <Compile Include="Models\ButtonGroup.cs" />
     <Compile Include="Models\IconFolderCheckBox.cs" />
     <Compile Include="Models\IconWinCheckBox.cs" />
     <Compile Include="Models\TextedElement.cs" />
@@ -281,6 +286,10 @@
     <Page Include="Controls\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ButtonGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ChangesPanel.xaml">
       <Generator>MSBuild:Compile</Generator>

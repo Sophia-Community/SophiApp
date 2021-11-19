@@ -17,6 +17,10 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(FilledButton), new PropertyMetadata(default));
 
+        // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IdProperty =
+            DependencyProperty.Register("Id", typeof(uint), typeof(FilledButton), new PropertyMetadata(default));
+
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(FilledButton), new PropertyMetadata(default));
@@ -36,6 +40,12 @@ namespace SophiApp.Controls
         {
             get => GetValue(CommandParameterProperty);
             set => SetValue(CommandParameterProperty, value);
+        }
+
+        public uint Id
+        {
+            get { return (uint)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
         }
 
         public string Text

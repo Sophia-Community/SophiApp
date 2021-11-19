@@ -9,20 +9,6 @@ namespace SophiApp.Helpers
         }
     }
 
-    internal class PcIsVirtualMachineException : Exception
-    {
-        public PcIsVirtualMachineException() : base("The computer should not be a virtual machine")
-        {
-        }
-    }
-
-    internal class WddmMinimalVersionException : Exception
-    {
-        public WddmMinimalVersionException(string minimumVersion, string currentVersion) : base($"WDDM minimum version must be: {minimumVersion}, current WDDM version: {currentVersion}")
-        {
-        }
-    }
-
     internal class BitlockerIsEnabledException : Exception
     {
         public BitlockerIsEnabledException() : base("BitLocker protection is enabled")
@@ -40,6 +26,20 @@ namespace SophiApp.Helpers
     internal class OneDriveIsInstalledException : Exception
     {
         public OneDriveIsInstalledException() : base("OneDrive must be uninstalled from this PC")
+        {
+        }
+    }
+
+    internal class OneDriveNotInstalledException : Exception
+    {
+        public OneDriveNotInstalledException() : base("OneDrive is not installed on this PC")
+        {
+        }
+    }
+
+    internal class PcIsVirtualMachineException : Exception
+    {
+        public PcIsVirtualMachineException() : base("The computer should not be a virtual machine")
         {
         }
     }
@@ -89,6 +89,13 @@ namespace SophiApp.Helpers
     internal class UwpAppNotFoundException : Exception
     {
         public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found on OS")
+        {
+        }
+    }
+
+    internal class WddmMinimalVersionException : Exception
+    {
+        public WddmMinimalVersionException(string minimumVersion, string currentVersion) : base($"WDDM minimum version must be: {minimumVersion}, current WDDM version: {currentVersion}")
         {
         }
     }

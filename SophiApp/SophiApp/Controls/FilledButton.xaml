@@ -32,13 +32,13 @@
                             Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
                             BorderThickness="0"
                             CornerRadius="2">
-                            <StackPanel
-                                Margin="14,0,14,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                                Orientation="Horizontal">
-                                <TextBlock Style="{DynamicResource NormalText}" Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:FilledButton}}}" />
+                            <StackPanel Margin="14,0,14,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Orientation="Horizontal">
+                                <TextBlock Style="{DynamicResource NormalText}"
+                                           Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:FilledButton}}}" />
                             </StackPanel>
                         </Border>
                     </ControlTemplate>
