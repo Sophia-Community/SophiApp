@@ -63,14 +63,12 @@
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                     Id="{Binding Id}"
-                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                    Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:RadioGroup}">
                                 <controls:RadioGroup
                                     Margin="20,10,0,5"
-                                    Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewStartMenu}}}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                    Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewStartMenu}}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:CheckBox}">
                                 <controls:CheckBox

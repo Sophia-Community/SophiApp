@@ -50,9 +50,7 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
-                TextedElements.Where(element => element.Status != ElementStatus.DISABLED)
-                              .ToList()
-                              .ForEach(element => element.GetCustomisationStatus());
+                TextedElements.ForEach(element => element.GetCustomisationStatus());
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 totalStopWatch.Stop();
@@ -280,7 +278,7 @@ namespace SophiApp.ViewModels
                 return;
             }
 
-            CustomActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.SETTOACTIVE);
+            CustomActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.CHECKED);
         }
 
         private void SetLoadingPanelVisibility() => LoadingPanelVisibility = !LoadingPanelVisibility;

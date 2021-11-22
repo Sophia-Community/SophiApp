@@ -65,17 +65,12 @@
                             <controls:RadioButton
                                 Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type controls:AdvancedRadioGroup}}}"
                                 Id="{Binding Id}"
-                                IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </ItemsControl.Resources>
                 </ItemsControl>
             </StackPanel>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="TextBlockHeader" Property="Opacity" Value="0.50" />
-                    <Setter TargetName="BordelLine" Property="Opacity" Value="0.50" />
-                </Trigger>
                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
                     <Setter TargetName="TextBlockHeader" Property="Text">
                         <Setter.Value>

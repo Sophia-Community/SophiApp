@@ -53,7 +53,6 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="IsEnabled" Value="{Binding Path=IsEnabled}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -84,16 +83,16 @@
                 </Grid.ContextMenu>
             </Grid>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.5" />
-                </Trigger>
+                <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
+                    <Setter TargetName="BorderSwitch" Property="IsEnabled" Value="False" />
+                </DataTrigger>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
                     <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="1" />
                     <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
                     <Setter TargetName="BorderSwitch" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground}" />
                 </Trigger>
-                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
+                <DataTrigger Binding="{Binding Path=Status}" Value="CHECKED">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard x:Name="AnimationSwitchMarginToRight" Storyboard="{StaticResource Animation.Switch.Margin.ToRight}" />
                     </DataTrigger.EnterActions>
@@ -101,7 +100,7 @@
                         <RemoveStoryboard BeginStoryboardName="AnimationSwitchMarginToRight" />
                     </DataTrigger.ExitActions>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
+                <DataTrigger Binding="{Binding Path=Status}" Value="UNCHECKED">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard x:Name="AnimationSwitchMarginToLeft" Storyboard="{StaticResource Animation.Switch.Margin.ToLeft}" />
                     </DataTrigger.EnterActions>

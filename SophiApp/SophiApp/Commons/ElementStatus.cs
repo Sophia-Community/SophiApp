@@ -1,11 +1,9 @@
 ﻿namespace SophiApp.Commons
 {
-    internal enum ElementStatus
+    public enum ElementStatus
     {
-        DISABLED,
-        CHECKED,
         UNCHECKED,
-        SETTODEFAULT,
-        SETTOACTIVE
+        CHECKED,
+        DISABLED
     }
 }

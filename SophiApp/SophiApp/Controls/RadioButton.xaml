@@ -68,16 +68,20 @@
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.50" />
-                </Trigger>
-                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
+                <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
+                    <Setter TargetName="BorderRound" Property="BorderThickness" Value="1" />
+                    <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.View.Background}" />
+                    <Setter TargetName="EllipseDot" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="BorderRound" Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Status}" Value="UNCHECKED">
                     <Setter TargetName="BorderRound" Property="BorderThickness" Value="1" />
                     <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
                     <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                     <Setter TargetName="EllipseDot" Property="Visibility" Value="Hidden" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
+                <DataTrigger Binding="{Binding Path=Status}" Value="CHECKED">
                     <Setter TargetName="BorderRound" Property="BorderThickness" Value="0" />
                     <Setter TargetName="BorderRound" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                     <Setter TargetName="BorderRound" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />

@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,9 +31,9 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty IdProperty =
             DependencyProperty.Register("Id", typeof(uint), typeof(RadioButton), new PropertyMetadata(default));
 
-        // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsCheckedProperty =
-            DependencyProperty.Register("IsChecked", typeof(bool), typeof(RadioButton), new PropertyMetadata(default(bool)));
+        // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(RadioButton), new PropertyMetadata(ElementStatus.UNCHECKED));
 
         public RadioButton()
         {
@@ -75,10 +76,10 @@ namespace SophiApp.Controls
             set { SetValue(IdProperty, value); }
         }
 
-        public bool IsChecked
+        public ElementStatus Status
         {
-            get { return (bool)GetValue(IsCheckedProperty); }
-            set { SetValue(IsCheckedProperty, value); }
+            get { return (ElementStatus)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
         }
 
         private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Header);
@@ -89,12 +90,6 @@ namespace SophiApp.Controls
 
         private void RadioButton_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
 
-        private void RadioButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (IsChecked)
-                return;
-
-            Command?.Execute(DataContext);
-        }
+        private void RadioButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(DataContext);
     }
 }

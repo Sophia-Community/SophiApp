@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,9 +31,9 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty IdProperty =
             DependencyProperty.Register("Id", typeof(uint), typeof(Switch), new PropertyMetadata(default));
 
-        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsCheckedProperty =
-            DependencyProperty.Register("IsChecked", typeof(bool), typeof(Switch), new PropertyMetadata(default));
+        // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(Switch), new PropertyMetadata(ElementStatus.UNCHECKED));
 
         public Switch()
         {
@@ -72,9 +73,10 @@ namespace SophiApp.Controls
             set { SetValue(IdProperty, value); }
         }
 
-        public bool IsChecked
+        public ElementStatus Status
         {
-            get => (bool)GetValue(IsCheckedProperty); set => SetValue(IsCheckedProperty, value);
+            get { return (ElementStatus)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
         }
 
         private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);

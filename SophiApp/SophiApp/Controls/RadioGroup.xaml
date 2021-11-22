@@ -61,8 +61,7 @@
                             <controls:RadioButton
                                 Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type controls:RadioGroup}}}"
                                 Id="{Binding Id}"
-                                IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                Status="{Binding Status}" />
                         </DataTemplate>
                     </ItemsControl.Resources>
                 </ItemsControl>
