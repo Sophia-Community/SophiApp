@@ -143,10 +143,10 @@
                                 Header="{DynamicResource Localization.Settings.Advanced}"
                                 IsChecked="{Binding AdvancedSettingsVisibility}" />
 
-                            <controls:FilledButton
+                            <controls:CommandButton
+                                IsEnabled="False"
                                 Margin="{StaticResource BlockIndent}"
                                 HorizontalAlignment="Left"
-                                IsEnabled="False"
                                 Text="{DynamicResource Localization.Settings.Reset}" />
 
                             <TextBlock
@@ -163,7 +163,7 @@
                                 IsChecked="{Binding DebugMode}"
                                 Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}" />
 
-                            <controls:FilledButton
+                            <controls:CommandButton
                                 Margin="{StaticResource BlockIndent}"
                                 HorizontalAlignment="Left"
                                 Command="{Binding SaveDebugLogCommand}"

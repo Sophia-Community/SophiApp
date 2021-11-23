@@ -207,7 +207,7 @@
                     </StackPanel>
 
                     <Grid Grid.Column="0">
-                        <!--  Grid For Views With Description and Info Panel  -->
+                        <!--  Grid For Views Description and Info Panel  -->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <!--  Views Row  -->

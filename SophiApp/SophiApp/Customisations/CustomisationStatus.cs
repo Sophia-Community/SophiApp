@@ -454,11 +454,6 @@ namespace SophiApp.Customisations
                     : throw new AdapterTypeInternalOrNullException($"{adapterDAC}");
         }
 
-        public static bool _821() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
-                                     ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
-                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
-                                     : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
-
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
         public static bool _901() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _901_CAB_COM_PATH);
@@ -513,6 +508,11 @@ namespace SophiApp.Customisations
                                                 ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _920_BITLOCKER_BDELEV_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                                 : throw new BitlockerIsEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
+
+        public static bool _921() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
+                                                                                                                                                                                                             ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
+                                        && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
+                                     : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
         public static bool _922() => DismHelper.CapabilityIsInstalled(_922_MS_WORD_PAD)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, ITEM_NAME)

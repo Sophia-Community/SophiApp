@@ -92,15 +92,18 @@
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.50" />
-                </Trigger>
-                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="False">
+                <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.View.Background}" />
+                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="BorderCheckBox" Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Status}" Value="UNCHECKED">
                     <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
                     <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                     <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="True">
+                <DataTrigger Binding="{Binding Path=Status}" Value="CHECKED">
                     <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                     <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                     <Setter TargetName="PathCheckBox" Property="Visibility" Value="Visible" />

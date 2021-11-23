@@ -140,8 +140,7 @@
                                     <controls:CheckBox
                                         Margin="0,10,0,12"
                                         Command="{Binding Path=Command, RelativeSource={RelativeSource AncestorType={x:Type controls:ExpandingGroup}}}"
-                                        IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                        IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                        Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
@@ -149,11 +148,6 @@
                 </ScrollViewer>
             </DockPanel>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="TextBlockHeader" Property="Opacity" Value="0.50" />
-                    <Setter TargetName="ViewboxArrow" Property="Opacity" Value="0.50" />
-                    <Setter TargetName="BorderLine" Property="Opacity" Value="0.50" />
-                </Trigger>
                 <DataTrigger Binding="{Binding Path=IsExpanded, RelativeSource={RelativeSource Self}}" Value="True">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard>

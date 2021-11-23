@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -34,9 +35,9 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty IdProperty =
             DependencyProperty.Register("Id", typeof(uint), typeof(AdvancedSwitch), new PropertyMetadata(default));
 
-        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsCheckedProperty =
-            DependencyProperty.Register("IsChecked", typeof(bool), typeof(AdvancedSwitch), new PropertyMetadata(default));
+        // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(AdvancedSwitch), new PropertyMetadata(ElementStatus.UNCHECKED));
 
         public AdvancedSwitch()
         {
@@ -82,9 +83,10 @@ namespace SophiApp.Controls
             set { SetValue(IdProperty, value); }
         }
 
-        public bool IsChecked
+        public ElementStatus Status
         {
-            get => (bool)GetValue(IsCheckedProperty); set => SetValue(IsCheckedProperty, value);
+            get { return (ElementStatus)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
         }
 
         private void AdvancedSwitch_MouseEnter(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseEnterEvent) { Source = Description });

@@ -42,7 +42,6 @@
                                 <controls:AdvancedRadioGroup
                                     Margin="20,10,0,5"
                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                     Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
@@ -52,8 +51,7 @@
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                     Id="{Binding Id}"
-                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                    Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}"
                                     Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:Switch}">
@@ -75,20 +73,17 @@
                                     Margin="20,10,0,5"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
                                     Id="{Binding Id}"
-                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                    Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:ExpandingGroup}">
                                 <controls:ExpandingGroup
                                     Margin="20,10,0,5"
-                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:ButtonGroup}">
                                 <controls:ButtonGroup
                                     Margin="20,10,0,5"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}"
-                                    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                     Icon="{DynamicResource Icon.OneDrive}"
                                     IconMargin="0, 10, 15, 10"
                                     IconHorizontalAlignment="Center"

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SophiApp.Commons;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,6 +21,10 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
             DependencyProperty.Register("Id", typeof(uint), typeof(FilledButton), new PropertyMetadata(default));
+
+        // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(FilledButton), new PropertyMetadata(ElementStatus.UNCHECKED));
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
@@ -46,6 +51,12 @@ namespace SophiApp.Controls
         {
             get { return (uint)GetValue(IdProperty); }
             set { SetValue(IdProperty, value); }
+        }
+
+        public ElementStatus Status
+        {
+            get { return (ElementStatus)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
         }
 
         public string Text

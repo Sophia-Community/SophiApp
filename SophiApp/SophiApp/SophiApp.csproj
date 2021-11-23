@@ -93,6 +93,9 @@
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CommandButton.xaml.cs">
+      <DependentUpon>CommandButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dto\CustomActionDto.cs" />
     <Compile Include="Dto\ReleaseDto.cs" />
     <Compile Include="Dto\TextedElementDto.cs" />
@@ -298,6 +301,10 @@
     <Page Include="Controls\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\CommandButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DropDownList.xaml">
       <Generator>MSBuild:Compile</Generator>
