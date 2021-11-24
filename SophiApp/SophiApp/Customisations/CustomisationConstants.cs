@@ -322,11 +322,6 @@ namespace SophiApp.Customisations
         internal const byte MIN_TELEMETRY_VALUE = 1;
         internal const string MITIGATION_USER_PREFERENCE = "UserPreference";
         internal const string MUIVERB = "MUIVerb";
-        internal const string ONE_DRIVE = "OneDrive";
-        internal const string ONE_DRIVE_AUTH = "FileCoAuth";
-        internal const string ONEDRIVE_SETUP_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OneDriveSetup.exe";
-        internal const string ONEDRIVE_UNINSTALL_MASK = "/uninstall";
-        internal const string ONEDRIVE_UNINSTALL_STRING = "UninstallString";
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
         internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";

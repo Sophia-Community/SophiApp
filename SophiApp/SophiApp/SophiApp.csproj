@@ -212,6 +212,7 @@
     <Compile Include="Helpers\LocalizationsHelper.cs" />
     <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="Helpers\MsiHelper.cs" />
+    <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\OsHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RegHelper.cs" />

@@ -345,9 +345,7 @@ namespace SophiApp.Customisations
 
         public static bool _343() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
 
-        public static bool _344() => RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true
-                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) == true
-                                     ? true : throw new OneDriveIsInstalledException();
+        public static bool _344() => OneDriveHelper.IsInstalled() ? throw new OneDriveIsInstalledException() : true;
 
         public static bool _345() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
                                         == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _345_DESKTOP_FOLDER);
@@ -405,26 +403,9 @@ namespace SophiApp.Customisations
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }
 
-        //public static bool _365()
-        //{
-        //    try
-        //    {
-        //        return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
-        //                        .Contains(ONEDRIVE_UNINSTALL_MASK) ||
-        //               RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
-        //                        .Contains(ONEDRIVE_UNINSTALL_MASK);
+        public static bool _365() => OneDriveHelper.IsInstalled() ? throw new OneDriveIsInstalledException() : true;
 
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new OneDriveIsInstalledException();
-        //    }
-        //}
-
-        //public static bool _366() => RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) is true
-        //                             || RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)?.Contains(ONEDRIVE_UNINSTALL_MASK) is true
-        //                             ? true
-        //                             : throw new OneDriveNotInstalledException();
+        public static bool _366() => OneDriveHelper.IsInstalled() ? true : throw new OneDriveNotInstalledException();
 
         public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
 

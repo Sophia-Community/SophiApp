@@ -486,7 +486,7 @@ namespace SophiApp.Customisations
             var userName = Environment.UserName;
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
-            ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
+            OneDriveHelper.StopProcesses();
             FileHelper.CreateDirectory(systemDriveTemp);
             FileHelper.DirectoryLazyDelete(systemRootTemp);
 
@@ -526,7 +526,7 @@ namespace SophiApp.Customisations
             var userName = Environment.UserName;
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
-            ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_AUTH);
+            OneDriveHelper.StopProcesses();
             FileHelper.DirectoryDelete(localAppDataTemp);
             FileHelper.CreateDirectory(systemRootTemp, localAppDataTemp);
 
@@ -818,6 +818,9 @@ namespace SophiApp.Customisations
 
         public static void _366(bool _)
         {
+            var uninstallStrings = OneDriveHelper.GetUninstallString().Split(null, 3);
+            OneDriveHelper.StopProcesses();
+            ProcessHelper.StartWait(uninstallStrings.First(), uninstallStrings.Last());
         }
 
         public static void _400(bool IsChecked)
