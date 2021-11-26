@@ -809,18 +809,18 @@ namespace SophiApp.Customisations
 
         public static void _365(bool _)
         {
-            if (File.Exists(_365_ONEDRIVE_SETUP_EXE))
-            {
-                ProcessHelper.StartWait(_365_ONEDRIVE_SETUP_EXE, null);
-                return;
-            }
+            //if (File.Exists(_365_ONEDRIVE_SETUP_EXE))
+            //{
+            //    ProcessHelper.StartWait(_365_ONEDRIVE_SETUP_EXE, null);
+            //    return;
+            //}
         }
 
         public static void _366(bool _)
         {
-            var uninstallStrings = OneDriveHelper.GetUninstallString().Split(null, 3);
-            OneDriveHelper.StopProcesses();
-            ProcessHelper.StartWait(uninstallStrings.First(), uninstallStrings.Last());
+            //var uninstallStrings = OneDriveHelper.ParseUninstallString()
+            //OneDriveHelper.StopProcesses();
+            //ProcessHelper.StartWait(uninstallStrings.First(), uninstallStrings.Last());
         }
 
         public static void _400(bool IsChecked)

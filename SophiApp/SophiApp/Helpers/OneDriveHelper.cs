@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
 
 namespace SophiApp.Helpers
 {
@@ -12,27 +11,29 @@ namespace SophiApp.Helpers
         internal const string ONE_DRIVE_AUTH = "FileCoAuth";
         internal const string ONE_DRIVE_SETUP = "OneDriveSetup";
 
-        internal static string GetUninstallString()
-        {
-            return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING) ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
-        }
+        //internal static string GetUninstallString()
+        //{
+        //    return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING) ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
+        //}
 
         internal static bool IsInstalled()
         {
-            try
-            {
-                return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK)
-                        || RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return (RegHelper.KeyExist(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
+                        && RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK))
+                        || (RegHelper.KeyExist(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
+                            && RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK));
         }
 
         internal static void StopProcesses()
         {
             ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_SETUP, ONE_DRIVE_AUTH);
         }
+
+        //internal static string[] ParseUninstallString()
+        //{
+        //    var str = GetUninstallString();
+        //    var index = str.IndexOf('/');
+        //    return new string[] { str.Substring(0,)
+        //}
     }
 }

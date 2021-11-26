@@ -84,7 +84,8 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
-                    <Setter TargetName="BorderSwitch" Property="IsEnabled" Value="False" />
+                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="Visibility" Value="Collapsed" />
                 </DataTrigger>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
                     <Setter TargetName="BorderSwitch" Property="BorderThickness" Value="1" />

@@ -75,111 +75,11 @@ namespace SophiApp.Models
             }
         }
 
-        //public virtual bool IsChecked
-        //{
-        //    get => isChecked;
-        //    private set
-        //    {
-        //        isChecked = value;
-        //        OnPropertyChanged("IsChecked");
-        //    }
-        //}
-
-        //public virtual bool IsClicked
-        //{
-        //    get => isClicked;
-        //    private set
-        //    {
-        //        isClicked = value;
-        //        OnPropertyChanged("IsClicked");
-        //    }
-        //}
-
-        //public virtual bool IsEnabled
-        //{
-        //    get => isEnabled;
-        //    private set
-        //    {
-        //        isEnabled = value;
-        //        OnPropertyChanged("IsEnabled");
-        //    }
-        //}
-
         public string Tag { get; }
-
-        //private ElementStatus GetStatus()
-        //{
-        //    if (IsEnabled & IsChecked & IsClicked == false)
-        //        return ElementStatus.CHECKED;
-
-        //    if (IsEnabled & IsChecked == false & IsClicked == false)
-        //        return ElementStatus.UNCHECKED;
-
-        //    if (IsEnabled & IsChecked == false & IsClicked)
-        //        return ElementStatus.SETTODEFAULT;
-
-        //    if (IsEnabled & IsChecked & IsChecked)
-        //        return ElementStatus.SETTOACTIVE;
-
-        //    return ElementStatus.DISABLED;
-        //}
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        //private void SetStatus(ElementStatus status)
-        //{
-        //    switch (status)
-        //    {
-        //        case ElementStatus.DISABLED:
-        //            IsEnabled = IsChecked = IsClicked = false;
-        //            break;
-
-        //        case ElementStatus.CHECKED:
-        //            IsEnabled = IsChecked = true;
-        //            IsClicked = false;
-        //            break;
-
-        //        case ElementStatus.UNCHECKED:
-        //            IsEnabled = true;
-        //            IsChecked = IsClicked = false;
-        //            break;
-
-        //        case ElementStatus.SETTODEFAULT:
-        //            IsEnabled = IsClicked = true;
-        //            IsChecked = false;
-        //            break;
-
-        //        case ElementStatus.SETTOACTIVE:
-        //            IsEnabled = IsChecked = IsClicked = true;
-        //            break;
-
-        //        default:
-        //            break;
-        //    }
-        //}
-
         internal void ChangeStatus() => Status = Status == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
-
-        //{
-        //    switch (Status)
-        //    {
-        //        case ElementStatus.CHECKED:
-        //            Status = ElementStatus.SETTODEFAULT;
-        //            break;
-
-        //        case ElementStatus.UNCHECKED:
-        //            Status = ElementStatus.SETTOACTIVE;
-        //            break;
-
-        //        case ElementStatus.SETTODEFAULT:
-        //            Status = ElementStatus.CHECKED;
-        //            break;
-
-        //        case ElementStatus.SETTOACTIVE:
-        //            Status = ElementStatus.UNCHECKED;
-        //            break;
-        //    }
-        //}
 
         internal virtual void GetCustomisationStatus()
         {
