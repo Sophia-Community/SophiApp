@@ -218,9 +218,7 @@ namespace SophiApp.ViewModels
             {
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
-                TextedElements.Where(element => element.Status != ElementStatus.DISABLED)
-                              .ToList()
-                              .ForEach(element => element.GetCustomisationStatus());
+                TextedElements.ForEach(element => element.GetCustomisationStatus());
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();

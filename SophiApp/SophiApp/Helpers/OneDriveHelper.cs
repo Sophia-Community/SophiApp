@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.Text.RegularExpressions;
 
 namespace SophiApp.Helpers
 {
@@ -11,17 +13,18 @@ namespace SophiApp.Helpers
         internal const string ONE_DRIVE_AUTH = "FileCoAuth";
         internal const string ONE_DRIVE_SETUP = "OneDriveSetup";
 
-        //internal static string GetUninstallString()
-        //{
-        //    return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING) ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
-        //}
+        private static string GetUninstallString()
+        {
+            return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
+                    ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
+        }
 
         internal static bool IsInstalled()
         {
             return (RegHelper.KeyExist(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
                         && RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK))
                         || (RegHelper.KeyExist(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
-                            && RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK));
+                            && RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING).Contains(ONEDRIVE_UNINSTALL_MASK));
         }
 
         internal static void StopProcesses()
@@ -29,11 +32,13 @@ namespace SophiApp.Helpers
             ProcessHelper.Stop(ONE_DRIVE, ONE_DRIVE_SETUP, ONE_DRIVE_AUTH);
         }
 
-        //internal static string[] ParseUninstallString()
-        //{
-        //    var str = GetUninstallString();
-        //    var index = str.IndexOf('/');
-        //    return new string[] { str.Substring(0,)
-        //}
+        internal static void Uninstall()
+        {
+            var uninstallString = Regex.Replace(GetUninstallString(), @"\s*/", @",/").Split(',');
+            Array.ForEach(uninstallString, str => str.Trim());
+            StopProcesses();
+            ProcessHelper.StartWait(uninstallString[0], uninstallString.Length == 2 ? uninstallString[1]
+                                                                                    : $"{uninstallString[1]} {uninstallString[2]}");
+        }
     }
 }

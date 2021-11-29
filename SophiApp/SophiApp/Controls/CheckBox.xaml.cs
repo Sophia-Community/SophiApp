@@ -33,7 +33,7 @@ namespace SophiApp.Controls
 
         // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StatusProperty =
-            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(CheckBox), new PropertyMetadata(ElementStatus.UNCHECKED));
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(CheckBox), new PropertyMetadata(default));
 
         public CheckBox()
         {

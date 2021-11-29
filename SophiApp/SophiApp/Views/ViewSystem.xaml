@@ -66,6 +66,7 @@
                             <DataTemplate DataType="{x:Type models:RadioGroup}">
                                 <controls:RadioGroup
                                     Margin="20,10,0,5"
+                                    Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:CheckBox}">
@@ -78,6 +79,7 @@
                             <DataTemplate DataType="{x:Type models:ExpandingGroup}">
                                 <controls:ExpandingGroup
                                     Margin="20,10,0,5"
+                                    Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:ButtonGroup}">

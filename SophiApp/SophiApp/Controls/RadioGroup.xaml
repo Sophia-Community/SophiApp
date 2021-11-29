@@ -67,9 +67,10 @@
                 </ItemsControl>
             </StackPanel>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.50" />
-                </Trigger>
+                <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
+                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
                     <Setter TargetName="TextBlockHeader" Property="Text">
                         <Setter.Value>

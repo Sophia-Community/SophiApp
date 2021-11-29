@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,6 +34,10 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for IsExpanded.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(ExpandingGroup), new PropertyMetadata(true));
+
+        // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(ExpandingGroup), new PropertyMetadata(default));
 
         public ExpandingGroup()
         {
@@ -79,6 +84,12 @@ namespace SophiApp.Controls
         {
             get { return (bool)GetValue(IsExpandedProperty); }
             set { SetValue(IsExpandedProperty, value); }
+        }
+
+        public ElementStatus Status
+        {
+            get { return (ElementStatus)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
         }
 
         private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);

@@ -816,12 +816,7 @@ namespace SophiApp.Customisations
             //}
         }
 
-        public static void _366(bool _)
-        {
-            //var uninstallStrings = OneDriveHelper.ParseUninstallString()
-            //OneDriveHelper.StopProcesses();
-            //ProcessHelper.StartWait(uninstallStrings.First(), uninstallStrings.Last());
-        }
+        public static void _366(bool _) => OneDriveHelper.Uninstall();
 
         public static void _400(bool IsChecked)
         {

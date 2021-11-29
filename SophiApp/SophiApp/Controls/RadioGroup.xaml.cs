@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -29,6 +30,10 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IdProperty =
             DependencyProperty.Register("Id", typeof(uint), typeof(RadioGroup), new PropertyMetadata(default));
+
+        // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(ElementStatus), typeof(RadioGroup), new PropertyMetadata(default));
 
         public RadioGroup()
         {
@@ -69,6 +74,12 @@ namespace SophiApp.Controls
         {
             get { return (uint)GetValue(IdProperty); }
             set { SetValue(IdProperty, value); }
+        }
+
+        public ElementStatus Status
+        {
+            get { return (ElementStatus)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); }
         }
 
         private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);

@@ -148,6 +148,10 @@
                 </ScrollViewer>
             </DockPanel>
             <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
+                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
                 <DataTrigger Binding="{Binding Path=IsExpanded, RelativeSource={RelativeSource Self}}" Value="True">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard>
