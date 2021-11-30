@@ -150,7 +150,16 @@ namespace SophiApp.Helpers
 
         internal static void TryDeleteDirectory(string dirPath)
         {
-            Directory.Delete(dirPath, recursive: true);
+            if (Directory.Exists(dirPath))
+            {
+                try
+                {
+                    Directory.Delete(dirPath, recursive: true);
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }

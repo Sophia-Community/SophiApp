@@ -1,10 +1,20 @@
 ﻿using Microsoft.Win32.TaskScheduler;
+using System;
+using System.Collections.Generic;
 
 namespace SophiApp.Helpers
 {
     internal class ScheduledTaskHelper
     {
         private static Task GetTask(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}");
+
+        internal static void Delete(IEnumerable<Task> tasks)
+        {
+            foreach (var task in tasks)
+                TaskService.Instance.RootFolder.DeleteTask(task.Name);
+        }
+
+        internal static IEnumerable<Task> FindAll(Predicate<Task> filter) => TaskService.Instance.FindAllTasks(filter);
 
         internal static TaskState GetTaskState(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}")?.State ?? throw new SheduledTaskNotFoundException(taskName);
 

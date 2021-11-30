@@ -11,6 +11,8 @@ namespace SophiApp.Helpers
 
         internal static void DeleteKey(RegistryHive hive, string path, string name) => SetKey(hive, path).DeleteValue(name);
 
+        internal static void DeleteKey(RegistryHive hive, string path, string name, bool throwOnMissingValue) => SetKey(hive, path).DeleteValue(name, throwOnMissingValue);
+
         internal static void DeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).DeleteSubKeyTree(subKey, true);
 
         internal static byte[] GetByteArrayValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as byte[];
@@ -31,10 +33,18 @@ namespace SophiApp.Helpers
 
         internal static bool SubKeyExist(RegistryHive hive, string path) => (GetKey(hive, path) is null).Invert();
 
+        internal static void TryDeleteKey(RegistryHive hive, string path, params string[] names)
+        {
+            foreach (var name in names)
+                DeleteKey(hive, path, name, false);
+        }
+
         internal static void TryDeleteKey(RegistryHive hive, string path, string name)
         {
             if (KeyExist(hive, path, name))
                 SetKey(hive, path).DeleteValue(name);
         }
+
+        internal static void TryDeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).DeleteSubKeyTree(subKey, false);
     }
 }
