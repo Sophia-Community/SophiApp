@@ -18,5 +18,6 @@
     <system:String x:Key="Tags.Conditions.UpdateBuildRevision">UpdateBuildRevision</system:String>
     <system:String x:Key="Tags.Conditions.LoggedUserAdmin">LoggedUserAdmin</system:String>
     <system:String x:Key="Tags.Conditions.OsNotInfected">OsNotInfected</system:String>
+    <system:String x:Key="Tags.Conditions.Windows10DebloaterNotUsed">Windows10DebloaterNotUsed</system:String>
     <system:String x:Key="Tags.Conditions.NoNewVersion">NoNewVersion</system:String>
 </ResourceDictionary>

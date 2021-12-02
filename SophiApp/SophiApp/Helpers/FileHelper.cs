@@ -134,7 +134,17 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static void FileDelete(string filePath) => File.Delete(filePath);
+        internal static void DirectoryLazyDelete(params string[] dirsPath)
+        {
+            foreach (var dir in dirsPath)
+                DirectoryLazyDelete(dir);
+        }
+
+        internal static void FileDelete(string filePath)
+        {
+            if (File.Exists(filePath))
+                File.Delete(filePath);
+        }
 
         internal static void FileDelete(params string[] filesPath)
         {

@@ -5,6 +5,7 @@
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
         private const string AppSelectedThemePropertyName = "AppSelectedTheme";
         private const string AppThemesPropertyName = "AppThemes";
+        private const string ConditionsHelperErrorPropertyName = "ConditionsHelperError";
         private const string CustomActionsCounterPropertyName = "CustomActionsCounter";
         private const string DebugModePropertyName = "DebugMode";
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";

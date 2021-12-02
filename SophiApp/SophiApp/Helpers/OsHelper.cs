@@ -18,6 +18,7 @@ namespace SophiApp.Helpers
         private const string PRODUCT_NAME = "ProductName";
         private const string REGISTRED_ORGANIZATION_NAME = "RegisteredOrganization";
         private const string REGISTRED_OWNER_NAME = "RegisteredOwner";
+        private const string REGSVR_32 = "regsvr32.exe";
         private const int SMTO_ABORTIFHUNG = 0x0002;
         private const string START_MENU_PROCESS = "StartMenuExperienceHost";
         private const string TRAY_SETTINGS = "TraySettings";
@@ -106,6 +107,12 @@ namespace SophiApp.Helpers
             var werSvc = ServiceHelper.Get(ERROR_REPORTING_SERVICE);
             ServiceHelper.SetStartMode(werSvc, System.ServiceProcess.ServiceStartMode.Manual);
             werSvc.Start();
+        }
+
+        internal static void UnregisterDlls(string[] syncShell64Dlls)
+        {
+            foreach (var dll in syncShell64Dlls)
+                ProcessHelper.StartWait(REGSVR_32, $"/u /s {dll}");
         }
 
         public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);

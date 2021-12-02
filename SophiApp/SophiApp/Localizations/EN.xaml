@@ -45,10 +45,10 @@
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
-    <system:String x:Key="Conditions.SomethingWrong">Unbelievable! Something went wrong and you hit a secret level</system:String>
     <system:String x:Key="Conditions.OsBuildVersion">Supported Windows 10 versions: 2004/20H2/21H1/21H2</system:String>
     <system:String x:Key="Conditions.UpdateBuildRevision">Supported cumulative update: 1151 and higher</system:String>
     <system:String x:Key="Conditions.LoggedUserAdmin">The logged-on user doesn't have admin rights</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Probably your OS was infected via the Win 10 Tweaker backdoor</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. Preventively, reinstall the entire OS</system:String>
     <system:String x:Key="Conditions.NoNewVersion">A new version found</system:String>
 </ResourceDictionary>

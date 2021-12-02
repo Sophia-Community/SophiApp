@@ -119,6 +119,7 @@ namespace SophiApp.ViewModels
         {
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
+            conditionsHelperError = string.Empty;
             DebugMode = true;
             LoadingPanelVisibility = false;
             HamburgerHitTest = false;
@@ -179,6 +180,7 @@ namespace SophiApp.ViewModels
         private void OnConditionsHelperError(object sender, Exception e)
         {
             DebugHelper.HasException("An error occurred during the startup condition check", e);
+            ConditionsHelperError = e.Message;
             SetVisibleViewTag(Tags.ConditionSomethingWrong);
         }
 

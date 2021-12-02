@@ -10,6 +10,7 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
+        private string conditionsHelperError;
         private List<CustomActionDto> CustomActions;
         private bool debugMode;
         private bool hamburgerHitTest;
@@ -42,6 +43,16 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
+
+        public string ConditionsHelperError
+        {
+            get => conditionsHelperError;
+            set
+            {
+                conditionsHelperError = value;
+                OnPropertyChanged(ConditionsHelperErrorPropertyName);
+            }
+        }
 
         public int CustomActionsCounter => CustomActions.Count;
 

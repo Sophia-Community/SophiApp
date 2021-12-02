@@ -90,6 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Conditions\Windows10DebloaterNotUsed.cs" />
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>
     </Compile>
@@ -274,6 +275,9 @@
     <Compile Include="Views\ViewSystem.xaml.cs" />
     <Compile Include="Views\ViewTaskSheduler.xaml.cs" />
     <Compile Include="Views\ViewUwpApps.xaml.cs" />
+    <Compile Include="Views\ViewWindows10DebloaterNotUsed.xaml.cs">
+      <DependentUpon>ViewWindows10DebloaterNotUsed.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Watchers\RegistryWatcher.cs" />
     <Page Include="Commons\Fonts.xaml">
       <SubType>Designer</SubType>
@@ -490,6 +494,10 @@
     <Page Include="Views\ViewUwpApps.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ViewWindows10DebloaterNotUsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
