@@ -18,7 +18,6 @@ namespace SophiApp.Helpers
         }
 
         public event EventHandler<ICondition> ConditionResult;
-
         public event EventHandler<Exception> ErrorOccurred;
 
         public bool Result { get; set; } = false;
@@ -41,7 +40,7 @@ namespace SophiApp.Helpers
                         Result = condition.Invoke();
                         ConditionResult?.Invoke(null, condition);
 
-                        if (Result.Invert())
+                        if (Result == false)
                             break;
                     }
                     catch (Exception e)
