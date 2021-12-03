@@ -807,14 +807,7 @@ namespace SophiApp.Customisations
             }
         }
 
-        public static void _365(bool _)
-        {
-            if (File.Exists(_365_ONEDRIVE_SETUP_EXE))
-            {
-                ProcessHelper.StartWait(_365_ONEDRIVE_SETUP_EXE, null);
-                return;
-            }
-        }
+        public static void _365(bool _) => OneDriveHelper.Install();
 
         public static void _366(bool _) => OneDriveHelper.Uninstall();
 

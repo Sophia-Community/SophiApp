@@ -12,23 +12,43 @@ namespace SophiApp.Helpers
         private const string ONE_DRIVE_AUTH = "FileCoAuth";
         private const string ONE_DRIVE_CONSUMER = "OneDriveConsumer";
         private const string ONE_DRIVE_SETUP = "OneDriveSetup";
+        private const string ONE_DRIVE_SETUP_EXE = "OneDriveSetup.exe";
+        private const string ONE_DRIVE_XML = "https://g.live.com/1rewlive5skydrive/OneDriveProduction";
         private const string ONEDRIVE_SETUP_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OneDriveSetup.exe";
         private const string ONEDRIVE_UNINSTALL_MASK = "/uninstall";
         private const string ONEDRIVE_UNINSTALL_STRING = "UninstallString";
         private const string SOFTWARE_ONE_DRIVE = @"SOFTWARE\Microsoft\OneDrive";
         private const string SOFTWARE_WOW6432_ONE_DRIVE = @"SOFTWARE\WOW6432Node\Microsoft\OneDrive";
         private const string SYNC_SHELL64_DLL = "FileSyncShell64.dll";
+        private const string USER_DOWNLOAD_FOLDER = "{374DE290-123F-4565-9164-39C4925E467B}";
+        private const string USER_SHELL_FOLDER = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders";
         private static readonly string APPDATA_MS_ONE_DRIVE_FOLDER = $@"{Environment.GetEnvironmentVariable("LOCALAPPDATA")}\Microsoft\OneDrive";
         private static readonly string APPDATA_ONE_DRIVE_FOLDER = $@"{Environment.GetEnvironmentVariable("LOCALAPPDATA")}\OneDrive";
         private static readonly string ONE_DRIVE_FOLDER = Environment.GetEnvironmentVariable(ONE_DRIVE);
         private static readonly string ONE_DRIVE_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk";
         private static readonly string ONE_DRIVE_TEMP = $@"{Environment.GetEnvironmentVariable("SystemDrive")}\OneDriveTemp";
         private static readonly string PROGRAM_DATA_ONE_DRIVE = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft OneDrive";
+        internal static readonly string ONEDRIVE_SETUP_EXE = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SysWOW64\OneDriveSetup.exe";
 
         private static string GetUninstallString()
         {
             return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
                     ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
+        }
+
+        internal static void Install()
+        {
+            if (File.Exists(ONEDRIVE_SETUP_EXE))
+            {
+                ProcessHelper.StartWait(ONEDRIVE_SETUP_EXE, null);
+                return;
+            }
+
+            var oneDriveUrl = WebHelper.GetXmlRequest(ONE_DRIVE_XML).DocumentElement.FirstChild.LastChild.Attributes[2].Value;
+            var oneDriveFile = $@"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDER, USER_DOWNLOAD_FOLDER)}\{ONE_DRIVE_SETUP_EXE}";
+            WebHelper.Download(url: oneDriveUrl, file: oneDriveFile, deleteIsExisting: true);
+            ProcessHelper.StartWait(oneDriveFile, null);
+            FileHelper.FileDelete(oneDriveFile);
         }
 
         internal static bool IsInstalled()

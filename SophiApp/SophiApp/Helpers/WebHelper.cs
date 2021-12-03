@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using System.Net;
+using System.Xml;
 
 namespace SophiApp.Helpers
 {
@@ -12,6 +13,14 @@ namespace SophiApp.Helpers
             {
                 client.DownloadFile(url, file);
             }
+        }
+
+        internal static void Download(string url, string file, bool deleteIsExisting)
+        {
+            if (deleteIsExisting && File.Exists(file))
+                File.Delete(file);
+
+            Download(url, file);
         }
 
         internal static T GetJsonRequest<T>(string url, T dto)
@@ -26,6 +35,13 @@ namespace SophiApp.Helpers
                 var parsedJson = JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
                 return parsedJson;
             }
+        }
+
+        internal static XmlDocument GetXmlRequest(string url)
+        {
+            XmlDocument myXmlDocument = new XmlDocument();
+            myXmlDocument.Load(url);
+            return myXmlDocument;
         }
     }
 }

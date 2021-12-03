@@ -6,7 +6,7 @@
 	None
 
 	.OUTPUTS
-	Dlls in "Bin" folder
+	Binary files in "Bin" folder
 
 	.NOTES
 	Designed for GitHub Actions
@@ -30,7 +30,7 @@
 #>
 
 $ReleaseBinDir = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\bin\Release\Bin"
-$WinMD = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\Windows.winmd"
+$BinaryFiles = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\*"
 
 if(!(Test-Path -Path $ReleaseBinDir))
 {
@@ -102,5 +102,5 @@ $Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "Bin/net45
 $Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "$ReleaseBinDir\$($_.Name)", $true)}
 $ZIP.Dispose()
 
-Copy-Item -Path $WinMD -Destination $ReleaseBinDir
+Copy-Item -Path $BinaryFiles -Destination $ReleaseBinDir
 Remove-Item -Path "$ReleaseBinDir\*.zip" -Force
