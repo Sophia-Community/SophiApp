@@ -18,6 +18,7 @@ namespace SophiApp.Helpers
         }
 
         public event EventHandler<ICondition> ConditionResult;
+
         public event EventHandler<Exception> ErrorOccurred;
 
         public bool Result { get; set; } = false;

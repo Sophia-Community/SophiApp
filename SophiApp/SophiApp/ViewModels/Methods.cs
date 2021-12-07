@@ -50,6 +50,7 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
+                DismHelper.GetInstance().GetInstalledComponents();
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
@@ -173,7 +174,7 @@ namespace SophiApp.ViewModels
         private void OnConditionsChanged(object sender, ICondition e)
         {
             DebugHelper.OsConditionChanged(e);
-            if (e.Result.Invert())
+            if (e.Result == false)
                 SetVisibleViewTag(e.Tag);
         }
 
@@ -220,6 +221,7 @@ namespace SophiApp.ViewModels
             {
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
+                DismHelper.GetInstance().GetInstalledComponents();
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
             });
             SetLoadingPanelVisibility();
@@ -298,6 +300,22 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private async Task UwpAppsElementsAsync()
+        {
+            await Task.Run(() =>
+            {
+                DebugHelper.StartInitUwpApps();
+                var stopwatch = Stopwatch.StartNew();
+                var a = UwpHelper.FindPackagesForCurrentUser();
+                //TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                //                            .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
+                //                                                                            statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
+                //                            .ToList();
+                stopwatch.Stop();
+                DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
+            });
+        }
+
         internal async void InitData()
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(1033);
@@ -305,14 +323,16 @@ namespace SophiApp.ViewModels
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
             //TODO: For debug only!
-            await conditionsHelper.InvokeAsync();
+            //await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
             //TODO: For debug only!
-            if (conditionsHelper.Result) // if (true)
+            if (true) //  if (conditionsHelper.Result) // if (true)
             {
                 MouseHelper.ShowWaitCursor(show: true);
+                await DismHelper.GetInstanceAsync();
                 await InitTextedElementsAsync();
+                await UwpAppsElementsAsync();
                 await InitWatchersAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);

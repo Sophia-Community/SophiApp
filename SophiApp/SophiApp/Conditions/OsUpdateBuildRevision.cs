@@ -11,6 +11,6 @@ namespace SophiApp.Conditions
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionUpdateBuildRevision;
 
-        public bool Invoke() => OsHelper.GetUpdateBuildRevision() >= MIN_SUPPORT_UBR;
+        public bool Invoke() => Result = OsHelper.GetUpdateBuildRevision() >= MIN_SUPPORT_UBR;
     }
 }

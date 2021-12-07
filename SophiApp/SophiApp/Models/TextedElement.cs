@@ -14,9 +14,6 @@ namespace SophiApp.Models
         private string description;
         private string header;
         private ElementStatus status;
-        //private bool isChecked;
-        //private bool isClicked;
-        //private bool isEnabled;
 
         public TextedElement((TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler,
                                 EventHandler<TextedElement> StatusHandler, Func<bool> Customisation, UILanguage Language) parameters)

@@ -96,6 +96,8 @@ namespace SophiApp.Helpers
 
         internal static void StartInitTextedElements() => WriteStatusLog("Started initialization of texted elements");
 
+        internal static void StartInitUwpApps() => WriteStatusLog("Started initialization of Uwp apps");
+
         internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying the setting(s) took {totalSeconds:N0} second(s)");
@@ -103,6 +105,8 @@ namespace SophiApp.Helpers
         internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Os conditions");
 
         internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize texted elements");
+
+        internal static void StopInitUwpApps(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Uwp apps");
 
         internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
 

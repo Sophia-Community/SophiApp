@@ -195,6 +195,7 @@
     <Compile Include="Customisations\CustomisationConstants.cs" />
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
+    <Compile Include="Dto\UwpAppDto.cs" />
     <Compile Include="Dto\VCRedistrDto.cs" />
     <Compile Include="Helpers\ComObjectHelper.cs" />
     <Compile Include="Helpers\ConditionsHelper.cs" />
