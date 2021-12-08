@@ -10,7 +10,7 @@
              IsVisibleChanged="ViewUwpApps_IsVisibleChanged">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="TextedElementsCollection" Source="{Binding TextedElements}" Filter="TextedElementsFilter" />
+        <CollectionViewSource x:Key="UwpElementsCollection" Source="{Binding UwpElements}" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />

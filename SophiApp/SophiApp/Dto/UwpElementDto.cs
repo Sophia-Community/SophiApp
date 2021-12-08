@@ -1,6 +1,6 @@
 ﻿namespace SophiApp.Dto
 {
-    internal class UwpAppDto
+    internal class UwpElementDto
     {
         public string DisplayName { get; set; }
         public string Logo { get; set; }

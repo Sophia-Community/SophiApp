@@ -48,11 +48,14 @@ namespace SophiApp.ViewModels
 
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
+                DismHelper.GetInstance().GetInstalledComponents();
+                TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
+                              .ToList()
+                              .ForEach(element => element.GetCustomisationStatus());
+                InitUwpElements();
+                SetLoadingPanelVisibility();
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
-                DismHelper.GetInstance().GetInstalledComponents();
-                TextedElements.ForEach(element => element.GetCustomisationStatus());
-                SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 totalStopWatch.Stop();
                 DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
@@ -148,6 +151,19 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private void InitUwpElements()
+        {
+            DebugHelper.StartInitUwpApps();
+            var stopwatch = Stopwatch.StartNew();
+            UwpElements = UwpHelper.GetCurrentUserDto()
+                             .Select(dto => FabricHelper.CreateUwpElement(dto))
+                             .ToList();
+            stopwatch.Stop();
+            DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
+        }
+
+        private async Task InitUwpElementsAsync() => await Task.Run(() => InitUwpElements());
+
         private async Task InitWatchersAsync()
         {
             await Task.Run(() =>
@@ -223,6 +239,7 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 DismHelper.GetInstance().GetInstalledComponents();
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
+                InitUwpElements();
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();
@@ -300,22 +317,6 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async Task UwpAppsElementsAsync()
-        {
-            await Task.Run(() =>
-            {
-                DebugHelper.StartInitUwpApps();
-                var stopwatch = Stopwatch.StartNew();
-                var a = UwpHelper.FindPackagesForCurrentUser();
-                //TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
-                //                            .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
-                //                                                                            statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
-                //                            .ToList();
-                stopwatch.Stop();
-                DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
-            });
-        }
-
         internal async void InitData()
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(1033);
@@ -332,7 +333,7 @@ namespace SophiApp.ViewModels
                 MouseHelper.ShowWaitCursor(show: true);
                 await DismHelper.GetInstanceAsync();
                 await InitTextedElementsAsync();
-                await UwpAppsElementsAsync();
+                await InitUwpElementsAsync();
                 await InitWatchersAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);

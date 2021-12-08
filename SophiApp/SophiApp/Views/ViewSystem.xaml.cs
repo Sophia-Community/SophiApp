@@ -32,7 +32,7 @@ namespace SophiApp.Views
         {
             e.Handled = true;
             var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta) { RoutedEvent = MouseWheelEvent };
-            var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+            var scrollViewer = Template.FindName("ScrollViewerSystem", this) as ScrollViewer;
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
         }
 
@@ -42,7 +42,7 @@ namespace SophiApp.Views
         {
             if (IsVisible)
             {
-                var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
+                var scrollViewer = Template.FindName("ScrollViewerSystem", this) as ScrollViewer;
                 scrollViewer?.ScrollToTop();
             }
         }

@@ -77,7 +77,7 @@ namespace SophiApp.Helpers
             RegHelper.TryDeleteKey(RegistryHive.CurrentUser, ENVIRONMENT, ONE_DRIVE, ONE_DRIVE_CONSUMER);
             RegHelper.TryDeleteSubKeyTree(RegistryHive.CurrentUser, SOFTWARE_ONE_DRIVE);
             RegHelper.TryDeleteSubKeyTree(RegistryHive.LocalMachine, SOFTWARE_WOW6432_ONE_DRIVE);
-            FileHelper.TryDeleteDirectory(PROGRAM_DATA_ONE_DRIVE);
+            FileHelper.DirectoryLazyDelete(PROGRAM_DATA_ONE_DRIVE);
             FileHelper.TryDeleteDirectory(ONE_DRIVE_TEMP);
             ScheduledTaskHelper.Delete(ScheduledTaskHelper.FindAll(task => task.Name.Contains(ONE_DRIVE)));
 

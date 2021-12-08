@@ -1,8 +1,5 @@
-﻿using SophiApp.Helpers;
-using SophiApp.Models;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace SophiApp.Views
@@ -35,8 +32,6 @@ namespace SophiApp.Views
             var scrollViewer = Template.FindName("ScrollViewerContent", this) as ScrollViewer;
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
         }
-
-        private void TextedElementsFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tag);
 
         private void ViewUwpApps_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

@@ -219,6 +219,7 @@
                         <views:ViewPersonalization Grid.Row="0" />
                         <views:ViewSystem Grid.Row="0" />
                         <views:ViewStartMenu Grid.Row="0" />
+                        <views:ViewUwpApps Grid.Row="0" />
                         <views:ViewGames Grid.Row="0" />
                         <views:ViewTaskSheduler Grid.Row="0" />
                         <views:ViewSecurity Grid.Row="0" />

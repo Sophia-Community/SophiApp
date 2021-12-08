@@ -101,6 +101,8 @@ namespace SophiApp.ViewModels
 
         public List<TextedElement> TextedElements { get; private set; }
 
+        public List<UwpElement> UwpElements { get; private set; }
+
         public bool ViewsHitTest
         {
             get => viewsHitTest;

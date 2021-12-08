@@ -43,5 +43,11 @@ namespace SophiApp.Helpers
             element.Init();
             return element;
         }
+
+        internal static UwpElement CreateUwpElement(UwpElementDto dto)
+        {
+            var type = Type.GetType($"{MODELS}.UwpElement");
+            return Activator.CreateInstance(type, dto) as UwpElement;
+        }
     }
 }

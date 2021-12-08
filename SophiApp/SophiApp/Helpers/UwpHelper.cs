@@ -8,7 +8,7 @@ namespace SophiApp.Helpers
 {
     internal class UwpHelper
     {
-        internal static IEnumerable<UwpAppDto> FindPackagesForCurrentUser()
+        internal static IEnumerable<UwpElementDto> GetCurrentUserDto()
         {
             var script = @"# The following UWP apps will be excluded from the display
 $ExcludedAppxPackages = @(
@@ -50,7 +50,7 @@ foreach ($AppxPackage in $AppxPackages)
 }";
             foreach (var uwp in PowerShell.Create().AddScript(script).Invoke())
             {
-                yield return new UwpAppDto()
+                yield return new UwpElementDto()
                 {
                     Name = uwp.Properties["Name"].Value as string,
                     PackageFullName = uwp.Properties["PackageFullName"].Value as string,

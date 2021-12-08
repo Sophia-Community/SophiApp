@@ -27,6 +27,7 @@
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Id" Value="{Binding Id}" />
+            <Setter Property="Height" Value="100" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>

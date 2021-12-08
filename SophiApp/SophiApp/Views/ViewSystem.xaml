@@ -35,7 +35,7 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
+                <ScrollViewer x:Name="ScrollViewerSystem" Style="{DynamicResource ViewScrollStyle}">
                     <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">

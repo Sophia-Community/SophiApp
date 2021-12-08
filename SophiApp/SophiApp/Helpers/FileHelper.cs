@@ -124,13 +124,33 @@ namespace SophiApp.Helpers
 
         internal static void DirectoryLazyDelete(string dirPath)
         {
-            try
+            if (Directory.Exists(dirPath))
             {
-                Directory.Delete(dirPath, true);
-            }
-            catch (Exception)
-            {
-                MarkFileDelete(Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories));
+                foreach (var file in Directory.GetFiles(dirPath, "*", SearchOption.AllDirectories))
+                {
+                    try
+                    {
+                        File.Delete(file);
+                    }
+                    catch (Exception)
+                    {
+                        MarkFileDelete(file);
+                    }
+                }
+
+                foreach (var dir in Directory.GetDirectories(dirPath, "*", SearchOption.AllDirectories))
+                {
+                    try
+                    {
+                        Directory.Delete(dir);
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                }
+
+                TryDeleteDirectory(dirPath);
             }
         }
 

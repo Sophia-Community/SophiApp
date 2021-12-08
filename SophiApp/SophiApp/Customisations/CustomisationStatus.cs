@@ -403,9 +403,9 @@ namespace SophiApp.Customisations
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }
 
-        public static bool _365() => OneDriveHelper.IsInstalled() ? throw new OneDriveIsInstalledException() : true;
+        public static bool _365() => OneDriveHelper.IsInstalled() ? throw new OneDriveIsInstalledException() : false;
 
-        public static bool _366() => OneDriveHelper.IsInstalled() ? true : throw new OneDriveNotInstalledException();
+        public static bool _366() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
 
         public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
 
