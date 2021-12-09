@@ -14,5 +14,6 @@
         private const string ViewsHitTestPropertyName = "ViewsHitTest";
         private const string VisibleViewByTagPropertyName = "VisibleViewByTag";
         private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
+        private const string UwpElementsPropertyName = "UwpElements";
     }
 }

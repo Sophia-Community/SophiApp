@@ -10,7 +10,7 @@
              IsVisibleChanged="ViewUwpApps_IsVisibleChanged">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="UwpElementsCollection" Source="{Binding UwpElements}" />
+        <CollectionViewSource x:Key="UwpElementsCollection" Source="{Binding UwpElements}"/>
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -25,11 +25,54 @@
             <Setter Property="IsHitTestVisible" Value="{Binding ViewsHitTest, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
+        <Style x:Key="BorderLineStyle" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="Grid.Row" Value="0"/>
+        </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
+                    <StackPanel>
+                        <Grid x:Name="GridUwpAppsContent" Margin="20, 0, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="TextBlockForAllUsers"
+                                   Style="{DynamicResource NormalText}"
+                                   Text="{DynamicResource Localization.ViewUwpApps.ForAllUsers}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                       Grid.Row="0"/>
+
+                            <controls:SimpleSwitch x:Name="SwitchForAllUsers"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   Grid.Row="0"
+                                                   Command="{Binding SwitchUwpAppsForAllClickedCommand}"/>
+
+                            <Border Style="{StaticResource BorderLineStyle}"/>
+
+                            <ItemsControl ItemsSource="{Binding Source={StaticResource UwpElementsCollection}}"
+                                          Grid.Row="1">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.Resources>
+                                    <DataTemplate DataType="{x:Type models:UwpElement}">
+                                        <controls:UwpButton Margin="10"/>
+                                    </DataTemplate>
+                                </ItemsControl.Resources>
+                            </ItemsControl>
+
+                        </Grid>
+                    </StackPanel>
                 </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>

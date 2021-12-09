@@ -51,4 +51,5 @@
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed">Стабильность Вашей ОС могла быть нарушена использованием скрипта Windows10Debloater от Sycnex. В целях профилактики переустановите ОС</system:String>
     <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия</system:String>
+    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всех пользователей</system:String>
 </ResourceDictionary>

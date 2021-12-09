@@ -97,6 +97,12 @@
     <Compile Include="Controls\CommandButton.xaml.cs">
       <DependentUpon>CommandButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SimpleSwitch.xaml.cs">
+      <DependentUpon>SimpleSwitch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UwpButton.xaml.cs">
+      <DependentUpon>UwpButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dto\CustomActionDto.cs" />
     <Compile Include="Dto\ReleaseDto.cs" />
     <Compile Include="Dto\TextedElementDto.cs" />
@@ -389,6 +395,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SimpleSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Switch.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -400,6 +410,10 @@
     <Page Include="Controls\TitleRight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\UwpButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Localizations\EN.xaml">
       <Generator>MSBuild:Compile</Generator>

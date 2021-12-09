@@ -52,7 +52,7 @@ namespace SophiApp.ViewModels
                 TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
                               .ToList()
                               .ForEach(element => element.GetCustomisationStatus());
-                InitUwpElements();
+                GetUwpElements();
                 SetLoadingPanelVisibility();
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
@@ -117,7 +117,22 @@ namespace SophiApp.ViewModels
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
+            SwitchUwpAppsForAllClickedCommand = new RelayCommand(new Action<object>(SwitchUwpAppsForAllClickedAsync));
         }
+
+        private void GetUwpElements(bool forAllUsers = false)
+        {
+            DebugHelper.StartInitUwpApps();
+            var stopwatch = Stopwatch.StartNew();
+            UwpElements = UwpHelper.GetPackagesDto(forAllUsers)
+                                   .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                   .ToList();
+            stopwatch.Stop();
+            DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
+
+        }
+
+        private async Task InitUwpElementsAsync() => await Task.Run(() => GetUwpElements());
 
         private void InitProperties()
         {
@@ -150,19 +165,6 @@ namespace SophiApp.ViewModels
                 DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
             });
         }
-
-        private void InitUwpElements()
-        {
-            DebugHelper.StartInitUwpApps();
-            var stopwatch = Stopwatch.StartNew();
-            UwpElements = UwpHelper.GetCurrentUserDto()
-                             .Select(dto => FabricHelper.CreateUwpElement(dto))
-                             .ToList();
-            stopwatch.Stop();
-            DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
-        }
-
-        private async Task InitUwpElementsAsync() => await Task.Run(() => InitUwpElements());
 
         private async Task InitWatchersAsync()
         {
@@ -239,7 +241,7 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(CustomActionsCounterPropertyName);
                 DismHelper.GetInstance().GetInstalledComponents();
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
-                InitUwpElements();
+                GetUwpElements();
             });
             SetLoadingPanelVisibility();
             SetControlsHitTest();
@@ -305,6 +307,8 @@ namespace SophiApp.ViewModels
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
+
+        private async void SwitchUwpAppsForAllClickedAsync(object args) => await Task.Run(() => GetUwpElements((ElementStatus)args == ElementStatus.CHECKED));
 
         private async void TextedElementClickedAsync(object args)
         {

@@ -51,4 +51,5 @@
     <system:String x:Key="Conditions.OsIsInfected">Probably your OS was infected via the Win 10 Tweaker backdoor</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. Preventively, reinstall the entire OS</system:String>
     <system:String x:Key="Conditions.NoNewVersion">A new version found</system:String>
+    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">For all users</system:String>
 </ResourceDictionary>

@@ -8,9 +8,9 @@ namespace SophiApp.Helpers
 {
     internal class UwpHelper
     {
-        internal static IEnumerable<UwpElementDto> GetCurrentUserDto()
+        internal static IEnumerable<UwpElementDto> GetPackagesDto(bool forAllUsers = false)
         {
-            var script = @"# The following UWP apps will be excluded from the display
+            var currentUserScript = @"# The following UWP apps will be excluded from the display
 $ExcludedAppxPackages = @(
 # Microsoft Desktop App Installer
 'Microsoft.DesktopAppInstaller',
@@ -48,7 +48,47 @@ foreach ($AppxPackage in $AppxPackages)
 		DisplayName     = $PackageId.DisplayName
 	}
 }";
-            foreach (var uwp in PowerShell.Create().AddScript(script).Invoke())
+
+            var allUsersScript = @"# The following UWP apps will be excluded from the display
+$ExcludedAppxPackages = @(
+# Microsoft Desktop App Installer
+'Microsoft.DesktopAppInstaller',
+
+# Store Experience Host
+'Microsoft.StorePurchaseApp',
+
+# Microsoft Store
+'Microsoft.WindowsStore',
+
+# Windows Terminal
+'Microsoft.WindowsTerminal',
+'Microsoft.WindowsTerminalPreview',
+
+# Web Media Extensions
+'Microsoft.WebMediaExtensions'
+)
+
+$AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
+$PackagesIds = [Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Select-Object -Property Name, DisplayName, Logo
+
+foreach ($AppxPackage in $AppxPackages)
+{
+	$PackageId = $PackagesIds | Where-Object -FilterScript {$_.Name -eq $AppxPackage.Name}
+
+	if (-not $PackageId)
+	{
+		continue
+	}
+
+	 [PSCustomObject]@{
+		Name            = $AppxPackage.Name
+		PackageFullName = $AppxPackage.PackageFullName
+		Logo            = $PackageId.Logo -replace 'file:///', ''
+		DisplayName     = $PackageId.DisplayName
+	}
+}";
+
+            foreach (var uwp in PowerShell.Create().AddScript(forAllUsers ? allUsersScript : currentUserScript).Invoke())
             {
                 yield return new UwpElementDto()
                 {
