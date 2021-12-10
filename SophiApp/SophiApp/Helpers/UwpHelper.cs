@@ -1,4 +1,5 @@
 ﻿using SophiApp.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -44,11 +45,10 @@ foreach ($AppxPackage in $AppxPackages)
 	 [PSCustomObject]@{
 		Name            = $AppxPackage.Name
 		PackageFullName = $AppxPackage.PackageFullName
-		Logo            = $PackageId.Logo -replace 'file:///', ''
+		Logo            = $PackageId.Logo
 		DisplayName     = $PackageId.DisplayName
 	}
 }";
-
             var allUsersScript = @"# The following UWP apps will be excluded from the display
 $ExcludedAppxPackages = @(
 # Microsoft Desktop App Installer
@@ -83,21 +83,21 @@ foreach ($AppxPackage in $AppxPackages)
 	 [PSCustomObject]@{
 		Name            = $AppxPackage.Name
 		PackageFullName = $AppxPackage.PackageFullName
-		Logo            = $PackageId.Logo -replace 'file:///', ''
+		Logo            = $PackageId.Logo
 		DisplayName     = $PackageId.DisplayName
 	}
 }";
 
             foreach (var uwp in PowerShell.Create().AddScript(forAllUsers ? allUsersScript : currentUserScript).Invoke())
             {
-                yield return new UwpElementDto()
-                {
-                    Name = uwp.Properties["Name"].Value as string,
-                    PackageFullName = uwp.Properties["PackageFullName"].Value as string,
-                    Logo = uwp.Properties["Logo"].Value as string,
-                    DisplayName = uwp.Properties["DisplayName"].Value as string
+				yield return new UwpElementDto()
+				{
+					Name = uwp.Properties["Name"].Value as string,
+					PackageFullName = uwp.Properties["PackageFullName"].Value as string,
+					Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
+					DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
                 };
-            }
+			}
         }
 
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()

@@ -20,9 +20,7 @@
     <SolidColorBrush x:Key="Brush.Window.Acсent.Hight" Color="#E92F2F" />
     <SolidColorBrush x:Key="Brush.Window.Acсent.Light" Color="#7DB9E7" />
     <SolidColorBrush x:Key="Brush.Window.Light" Color="#E5E5E5" />
-    
-    
-    
+    <SolidColorBrush x:Key="Brush.Window.Highlight" Color="#0078D4" />
     <SolidColorBrush
         x:Key="Brush.Hamburger.Separator.Background"
         Opacity="0.1"

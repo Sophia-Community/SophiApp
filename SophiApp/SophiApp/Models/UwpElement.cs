@@ -1,4 +1,5 @@
 ﻿using SophiApp.Dto;
+using System;
 
 namespace SophiApp.Models
 {
@@ -13,7 +14,7 @@ namespace SophiApp.Models
         }
 
         public string DisplayName { get; set; }
-        public string Logo { get; set; }
+        public Uri Logo { get; set; }
         public string Name { get; set; }
         public string PackageFullName { get; set; }
     }

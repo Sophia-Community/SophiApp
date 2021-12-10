@@ -118,6 +118,12 @@ namespace SophiApp.ViewModels
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
             SwitchUwpAppsForAllClickedCommand = new RelayCommand(new Action<object>(SwitchUwpAppsForAllClickedAsync));
+            UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
+        }
+
+        private void UwpButtonClickedAsync(object obj)
+        {
+            throw new NotImplementedException();
         }
 
         private void GetUwpElements(bool forAllUsers = false)

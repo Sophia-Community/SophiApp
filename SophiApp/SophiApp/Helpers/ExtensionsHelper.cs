@@ -7,6 +7,8 @@ namespace SophiApp.Helpers
 {
     public static class ExtensionsHelper
     {
+        public static T GetFirstValue<T>(this object obj) => (T)Convert.ChangeType(obj is object[] ? (obj as object[]).First() : obj, typeof(T));
+
         public static void AddDataObject(this List<CustomActionDto> list, uint id, Action<bool> action, bool parameter) => list.Add(new CustomActionDto()
         {
             Id = id,

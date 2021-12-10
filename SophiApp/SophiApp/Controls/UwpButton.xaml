@@ -28,12 +28,34 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Light}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0, -7, 0, 0"/>
+            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="CommandParameter" Value="{Binding Self}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                            
+                            <Grid x:Name="GridHighligth" 
+                                  Background="{DynamicResource Brush.Window.Highlight}"
+                                  Opacity="0.65"
+                                  Visibility="Hidden"
+                                  Panel.ZIndex="20">
+                                <Viewbox Width="25" Height="25" Margin="0, 0, 6, 6">
+                                    <Path x:Name="IconClose" 
+                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                                </Viewbox>
+                            </Grid>
+                            <Image x:Name="ImageUwp" Source="{Binding Logo}" Stretch="UniformToFill" Width="48" Height="48" Panel.ZIndex="10"/>
                         </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="GridHighligth" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="GridHighligth" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -43,18 +65,18 @@
         <ControlTemplate>
             <Border>
                 <Grid>
-                    <ToggleButton/>
+                    <ToggleButton x:Name="ToggleButton" ToolTip="{Binding DisplayName}"/>
+                    <TextBlock x:Name="TextBlockDisplayName"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                               Style="{DynamicResource SmallText}"
+                               Text="{Binding DisplayName}"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis"
+                               Margin="5, 0, 5, 0"/>
                 </Grid>
             </Border>
-
-            <!--<ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.50" />
-                </Trigger>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard Storyboard="{StaticResource ButtonClickAnimation}" />
-                </EventTrigger>
-            </ControlTemplate.Triggers>-->
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

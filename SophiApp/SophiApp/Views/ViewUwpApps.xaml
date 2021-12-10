@@ -61,12 +61,12 @@
                                           Grid.Row="1">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel/>
+                                        <StackPanel Orientation="Horizontal"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.Resources>
                                     <DataTemplate DataType="{x:Type models:UwpElement}">
-                                        <controls:UwpButton Margin="10"/>
+                                        <controls:UwpButton Command="{Binding Path=DataContext.UwpButtonClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"/>
                                     </DataTemplate>
                                 </ItemsControl.Resources>
                             </ItemsControl>
