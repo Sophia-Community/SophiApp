@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SophiApp.Controls"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             ToggleButton.Checked="ToggleButton_Clicked"
+             ToggleButton.Unchecked="ToggleButton_Clicked">
 
     <UserControl.Resources>
         <Style TargetType="Border">
@@ -16,8 +18,9 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="100" />
+            <Setter Property="Width" Value="64" />
+            <Setter Property="Height" Value="80" />
+            <Setter Property="ToolTip" Value="{Binding DisplayName}"/>
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
         </Style>
@@ -26,35 +29,49 @@
             <Setter Property="Width" Value="64"/>
             <Setter Property="Height" Value="64"/>
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Light}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0, -7, 0, 0"/>
-            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}"/>
-            <Setter Property="CommandParameter" Value="{Binding Self}"/>
+            <Setter Property="IsChecked" Value="{Binding Path=IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWayToSource}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                            <Grid x:Name="GridHighligth" 
+                            <Grid x:Name="GridHighligthIcon"
                                   Background="{DynamicResource Brush.Window.Highlight}"
                                   Opacity="0.65"
                                   Visibility="Hidden"
                                   Panel.ZIndex="20">
-                                <Viewbox Width="25" Height="25" Margin="0, 0, 6, 6">
-                                    <Path x:Name="IconClose" 
-                                      Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                                      Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                                <Viewbox x:Name="ViewIconClose"
+                                         Width="25"
+                                         Height="25"
+                                         Margin="0, 0, 6, 6">
+                                    <Path x:Name="IconClose"
+                                          Fill="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
                                 </Viewbox>
                             </Grid>
-                            <Image x:Name="ImageUwp" Source="{Binding Logo}" Stretch="UniformToFill" Width="48" Height="48" Panel.ZIndex="10"/>
+                            <Image x:Name="ImageUwp"
+                                   Source="{Binding Logo}"
+                                   Stretch="UniformToFill"
+                                   Width="48"
+                                   Height="48"
+                                   Panel.ZIndex="10"/>
                         </Grid>
-                        <ControlTemplate.Triggers>
+                        <ControlTemplate.Triggers>                            
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="GridHighligth" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="GridHighligthIcon" Property="Visibility" Value="Visible"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="GridHighligth" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="GridHighligthIcon" Property="Visibility" Value="Hidden"/>
                             </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="GridHighligthIcon" Property="Visibility" Value="Visible"/>
+                            </MultiTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -65,16 +82,15 @@
         <ControlTemplate>
             <Border>
                 <Grid>
-                    <ToggleButton x:Name="ToggleButton" ToolTip="{Binding DisplayName}"/>
+                    <ToggleButton x:Name="ToggleButton" />
                     <TextBlock x:Name="TextBlockDisplayName"
-                               HorizontalAlignment="Center"
+                               HorizontalAlignment="Left"
                                VerticalAlignment="Bottom"
                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                Style="{DynamicResource SmallText}"
                                Text="{Binding DisplayName}"
                                TextWrapping="NoWrap"
-                               TextTrimming="CharacterEllipsis"
-                               Margin="5, 0, 5, 0"/>
+                               TextTrimming="CharacterEllipsis" />
                 </Grid>
             </Border>
         </ControlTemplate>

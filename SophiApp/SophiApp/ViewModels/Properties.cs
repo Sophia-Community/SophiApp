@@ -20,7 +20,8 @@ namespace SophiApp.ViewModels
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
-        private List<UwpElement> uwpElements;
+        private List<UwpElement> uwpElementsCurrentUser;
+        private List<UwpElement> uwpElementsAllUsers;
 
         public bool AdvancedSettingsVisibility
         {
@@ -102,13 +103,23 @@ namespace SophiApp.ViewModels
 
         public List<TextedElement> TextedElements { get; private set; }
 
-        public List<UwpElement> UwpElements
+        public List<UwpElement> UwpElementsCurrentUser
         {
-            get => uwpElements;
+            get => uwpElementsCurrentUser;
             private set
             {
-                uwpElements = value;
-                OnPropertyChanged(UwpElementsPropertyName);
+                uwpElementsCurrentUser = value;
+                OnPropertyChanged(UwpElementsCurrentUserPropertyName);
+            }
+        }
+
+        public List<UwpElement> UwpElementsAllUsers
+        {
+            get => uwpElementsAllUsers;
+            private set
+            {
+                uwpElementsAllUsers = value;
+                OnPropertyChanged(UwpElementsAllUsersPropertyName);
             }
         }
 

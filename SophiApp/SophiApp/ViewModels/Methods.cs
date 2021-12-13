@@ -117,28 +117,32 @@ namespace SophiApp.ViewModels
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
-            SwitchUwpAppsForAllClickedCommand = new RelayCommand(new Action<object>(SwitchUwpAppsForAllClickedAsync));
             UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
         }
 
-        private void UwpButtonClickedAsync(object obj)
+        private void UwpButtonClickedAsync(object args)
         {
-            throw new NotImplementedException();
+
         }
 
-        private void GetUwpElements(bool forAllUsers = false)
+        private void GetUwpElements()
         {
             DebugHelper.StartInitUwpApps();
             var stopwatch = Stopwatch.StartNew();
-            UwpElements = UwpHelper.GetPackagesDto(forAllUsers)
-                                   .Select(dto => FabricHelper.CreateUwpElement(dto))
-                                   .ToList();
+            UwpElementsCurrentUser = UwpHelper.GetPackagesDto(forAllUsers: false)
+                                              .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                              .ToList();
+
+            UwpElementsAllUsers = UwpHelper.GetPackagesDto(forAllUsers: true)
+                                           .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                           .ToList();
             stopwatch.Stop();
             DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
 
         }
 
         private async Task InitUwpElementsAsync() => await Task.Run(() => GetUwpElements());
+        
 
         private void InitProperties()
         {
@@ -313,8 +317,6 @@ namespace SophiApp.ViewModels
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
-
-        private async void SwitchUwpAppsForAllClickedAsync(object args) => await Task.Run(() => GetUwpElements((ElementStatus)args == ElementStatus.CHECKED));
 
         private async void TextedElementClickedAsync(object args)
         {

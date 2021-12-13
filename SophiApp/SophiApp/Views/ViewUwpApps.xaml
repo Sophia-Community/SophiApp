@@ -10,7 +10,8 @@
              IsVisibleChanged="ViewUwpApps_IsVisibleChanged">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="UwpElementsCollection" Source="{Binding UwpElements}"/>
+        <CollectionViewSource x:Key="UwpElementsCurrentUserCollection" Source="{Binding UwpElementsCurrentUser}"/>
+        <CollectionViewSource x:Key="UwpElementsAllUsersCollection" Source="{Binding UwpElementsAllUsers}"/>
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -43,34 +44,50 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <TextBlock x:Name="TextBlockForAllUsers"
-                                   Style="{DynamicResource NormalText}"
-                                   Text="{DynamicResource Localization.ViewUwpApps.ForAllUsers}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
+                                       Style="{DynamicResource NormalText}"
+                                       Text="{DynamicResource Localization.ViewUwpApps.ForAllUsers}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
                                        Grid.Row="0"/>
 
                             <controls:SimpleSwitch x:Name="SwitchForAllUsers"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Right"
-                                                   Grid.Row="0"
-                                                   Command="{Binding SwitchUwpAppsForAllClickedCommand}"/>
+                                                   Grid.Row="0"/>
 
                             <Border Style="{StaticResource BorderLineStyle}"/>
 
-                            <ItemsControl ItemsSource="{Binding Source={StaticResource UwpElementsCollection}}"
+                            <ItemsControl x:Name="ItemsCurrentUserUwp" 
+                                          ItemsSource="{Binding Source={StaticResource UwpElementsCurrentUserCollection}}"
                                           Grid.Row="1">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
+                                        <WrapPanel Orientation="Horizontal"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.Resources>
                                     <DataTemplate DataType="{x:Type models:UwpElement}">
-                                        <controls:UwpButton Command="{Binding Path=DataContext.UwpButtonClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"/>
+                                        <controls:UwpButton Margin="0, 15, 10, 0"
+                                                            Command="{Binding Path=DataContext.UwpButtonClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"/>
                                     </DataTemplate>
                                 </ItemsControl.Resources>
                             </ItemsControl>
 
+                            <ItemsControl x:Name="ItemsAllUsersUwp"
+                                          ItemsSource="{Binding Source={StaticResource UwpElementsAllUsersCollection}}"
+                                          Grid.Row="1">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.Resources>
+                                    <DataTemplate DataType="{x:Type models:UwpElement}">
+                                        <controls:UwpButton Margin="0, 15, 10, 0"
+                                                            Command="{Binding Path=DataContext.UwpButtonClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"/>
+                                    </DataTemplate>
+                                </ItemsControl.Resources>
+                            </ItemsControl>
                         </Grid>
                     </StackPanel>
                 </ScrollViewer>
@@ -92,6 +109,28 @@
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                 </Trigger>
+                <Trigger SourceName="SwitchForAllUsers" Property="Status" Value="UNCHECKED">
+                    <Setter TargetName="ItemsAllUsersUwp" Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+                <Trigger SourceName="SwitchForAllUsers" Property="Status" Value="CHECKED">
+                    <Setter TargetName="ItemsCurrentUserUwp" Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+                <Trigger SourceName="SwitchForAllUsers" Property="Status" Value="CHECKED">
+                    <Setter TargetName="ItemsCurrentUserUwp" Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding UwpElementsCurrentUser.Count}" Value="0">
+                    <Setter TargetName="SwitchForAllUsers" Property="Status" Value="CHECKED"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding UwpElementsAllUsers.Count}" Value="0">
+                    <Setter TargetName="SwitchForAllUsers" Property="Status" Value="UNCHECKED"/>
+                </DataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding UwpElementsCurrentUser.Count}" Value="0"/>
+                        <Condition Binding="{Binding UwpElementsAllUsers.Count}" Value="0"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter TargetName="GridUwpAppsContent" Property="Visibility" Value="Collapsed"/>
+                </MultiDataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

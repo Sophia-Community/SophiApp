@@ -25,6 +25,16 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
+        public bool IsChecked
+        {
+            get { return (bool)GetValue(IsCheckedProperty); }
+            set { SetValue(IsCheckedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(UwpButton), new PropertyMetadata(default));
+
         public ICommand Command
         {
             get { return (ICommand)GetValue(CommandProperty); }
@@ -34,5 +44,11 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(UwpButton), new PropertyMetadata(default));
+
+        private void ToggleButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Command?.Execute(this);
+        }
     }
 }

@@ -88,16 +88,17 @@ foreach ($AppxPackage in $AppxPackages)
 	}
 }";
 
-            foreach (var uwp in PowerShell.Create().AddScript(forAllUsers ? allUsersScript : currentUserScript).Invoke())
-            {
-				yield return new UwpElementDto()
-				{
-					Name = uwp.Properties["Name"].Value as string,
-					PackageFullName = uwp.Properties["PackageFullName"].Value as string,
-					Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
-					DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
-                };
-			}
+            return PowerShell.Create()
+					  .AddScript(forAllUsers ? allUsersScript : currentUserScript)
+					  .Invoke()
+					  .Where(uwp => uwp.Properties["Logo"].Value != null)
+					  .Select(uwp => new UwpElementDto()
+					  {
+						  Name = uwp.Properties["Name"].Value as string,
+						  PackageFullName = uwp.Properties["PackageFullName"].Value as string,
+						  Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
+						  DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
+                      });
         }
 
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
