@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
+using SophiApp.Customisations;
 using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
@@ -36,7 +37,17 @@ namespace SophiApp.ViewModels
                     try
                     {
                         var actionStopWatch = Stopwatch.StartNew();
-                        action.Invoke();
+
+                        if (action is UwpCustomisation)
+                        {
+                            UwpCustomisation customisation = action as UwpCustomisation;
+                            customisation.Invoke();
+                        }
+                        else
+                        {
+                            action.Invoke();
+                        }
+
                         actionStopWatch.Stop();
                         DebugHelper.ActionPerformed(action.Id, action.Parameter, actionStopWatch.Elapsed.TotalSeconds);
                     }
@@ -118,12 +129,15 @@ namespace SophiApp.ViewModels
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
             UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
+            SwitchUwpForAllUsersClickedCommand = new RelayCommand(new Action<object>(SwitchUwpForAllUsersClicked));
         }
 
-        private void UwpButtonClickedAsync(object args)
-        {
+        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED 
+                                                                                                            ? ElementStatus.CHECKED 
+                                                                                                            : ElementStatus.UNCHECKED;
 
-        }
+        private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
+
 
         private void GetUwpElements()
         {
@@ -156,7 +170,8 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = true;
             AdvancedSettingsVisibility = false;
             VisibleViewByTag = Tags.ViewLoading;
-            CustomActions = new List<CustomActionDto>();
+            CustomActions = new List<Customisation>();
+            UwpForAllUsersState = ElementStatus.UNCHECKED;
             DebugHelper.AppLanguage($"{ Localization.Language }");
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
@@ -282,20 +297,33 @@ namespace SophiApp.ViewModels
             WindowCloseHitTest = windowCloseHitTest;
         }
 
+        private void SetCustomAction(UwpElement uwp)
+        {
+            if (CustomActions.ContainsId(uwp.PackageFullName))
+            {
+                CustomActions.RemoveAction(uwp.PackageFullName);
+                OnPropertyChanged(CustomActionsCounterPropertyName);
+                return;
+            }
+
+            CustomActions.AddAction(uwp.PackageFullName, UwpHelper.RemovePackage, UwpForAllUsersState == ElementStatus.CHECKED);
+            OnPropertyChanged(CustomActionsCounterPropertyName);
+        }
+
         private void SetCustomAction(RadioGroup group)
         {
             group.ChildElements.ForEach(child =>
             {
                 if (CustomActions.ContainsId(child.Id))
                 {
-                    CustomActions.RemoveDataObject(child.Id);
+                    CustomActions.RemoveAction(child.Id);
                     OnPropertyChanged(CustomActionsCounterPropertyName);
                     return;
                 }
 
                 if (child.Status == ElementStatus.CHECKED && child.Id != group.DefaultId)
                 {
-                    CustomActions.AddDataObject(child.Id, CustomisationsHelper.GetCustomisationOs(child.Id), true);
+                    CustomActions.AddAction(child.Id, CustomisationsHelper.GetCustomisationOs(child.Id), true);
                     OnPropertyChanged(CustomActionsCounterPropertyName);
                 }
             });
@@ -305,11 +333,13 @@ namespace SophiApp.ViewModels
         {
             if (CustomActions.ContainsId(element.Id))
             {
-                CustomActions.RemoveDataObject(element.Id);
+                CustomActions.RemoveAction(element.Id);
+                OnPropertyChanged(CustomActionsCounterPropertyName);
                 return;
             }
 
-            CustomActions.AddDataObject(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.CHECKED);
+            CustomActions.AddAction(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.CHECKED);
+            OnPropertyChanged(CustomActionsCounterPropertyName);
         }
 
         private void SetLoadingPanelVisibility() => LoadingPanelVisibility = !LoadingPanelVisibility;
@@ -325,7 +355,6 @@ namespace SophiApp.ViewModels
                 var element = args as TextedElement;
                 element.ChangeStatus();
                 SetCustomAction(element);
-                OnPropertyChanged(CustomActionsCounterPropertyName);
             });
         }
 

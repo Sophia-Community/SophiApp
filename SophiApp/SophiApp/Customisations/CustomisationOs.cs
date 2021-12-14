@@ -792,7 +792,9 @@ namespace SophiApp.Customisations
 
         public static void _362(bool _)
         {
-            var poperties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK)).First(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK);
+            var poperties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK))
+                                     .First(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK);
+
             ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {poperties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
         }
 

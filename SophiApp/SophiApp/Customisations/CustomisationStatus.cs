@@ -392,8 +392,9 @@ namespace SophiApp.Customisations
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
         public static bool _362() => MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK))
-                                              .Where(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK)
-                                              .FirstOrDefault() != null ? false : throw new UpdateNotInstalledException(KB5005463_UPD);
+                                              .FirstOrDefault(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK) != null 
+                                                                                                                                ? false 
+                                                                                                                                : throw new UpdateNotInstalledException(KB5005463_UPD);
 
         public static bool _363()
         {

@@ -36,6 +36,8 @@ namespace SophiApp.Helpers
             $"{APP_FOLDER}: \"{AppHelper.StartupFolder}\""
         };
 
+        internal static void UwpForAllUsersState(ElementStatus value) => WriteStatusLog($"Uwp for all users switch state is: {value}");
+
         private static List<string> InitLog = new List<string>();
         private static List<string> StatusLog = new List<string>();
 
@@ -96,7 +98,7 @@ namespace SophiApp.Helpers
 
         internal static void StartInitTextedElements() => WriteStatusLog("Started initialization of texted elements");
 
-        internal static void StartInitUwpApps() => WriteStatusLog("Started initialization of Uwp apps");
+        internal static void StartInitUwpApps() => WriteStatusLog("Started initialization of uwp elements");
 
         internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
 
@@ -106,7 +108,7 @@ namespace SophiApp.Helpers
 
         internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize texted elements");
 
-        internal static void StopInitUwpApps(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Uwp apps");
+        internal static void StopInitUwpApps(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize uwp elements");
 
         internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
 

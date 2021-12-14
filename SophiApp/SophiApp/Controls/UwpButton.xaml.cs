@@ -48,7 +48,7 @@ namespace SophiApp.Controls
         private void ToggleButton_Clicked(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            Command?.Execute(this);
+            Command?.Execute(DataContext);
         }
     }
 }

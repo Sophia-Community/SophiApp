@@ -16,5 +16,6 @@
         private const string WindowCloseHitTestPropertyName = "WindowCloseHitTest";
         private const string UwpElementsCurrentUserPropertyName = "UwpElementsCurrentUser";
         private const string UwpElementsAllUsersPropertyName = "UwpElementsAllUsers";
+        private const string UwpForAllUsersStatePropertyName = "UwpForAllUsersState";
     }
 }

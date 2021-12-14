@@ -53,7 +53,9 @@
                             <controls:SimpleSwitch x:Name="SwitchForAllUsers"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Right"
-                                                   Grid.Row="0"/>
+                                                   Grid.Row="0"
+                                                   Status="{Binding UwpForAllUsersState}"
+                                                   Command="{Binding SwitchUwpForAllUsersClickedCommand}"/>
 
                             <Border Style="{StaticResource BorderLineStyle}"/>
 

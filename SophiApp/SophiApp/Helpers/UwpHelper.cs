@@ -89,20 +89,25 @@ foreach ($AppxPackage in $AppxPackages)
 }";
 
             return PowerShell.Create()
-					  .AddScript(forAllUsers ? allUsersScript : currentUserScript)
-					  .Invoke()
-					  .Where(uwp => uwp.Properties["Logo"].Value != null)
-					  .Select(uwp => new UwpElementDto()
-					  {
-						  Name = uwp.Properties["Name"].Value as string,
-						  PackageFullName = uwp.Properties["PackageFullName"].Value as string,
-						  Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
-						  DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
+                      .AddScript(forAllUsers ? allUsersScript : currentUserScript)
+                      .Invoke()
+                      .Where(uwp => uwp.Properties["Logo"].Value != null)
+                      .Select(uwp => new UwpElementDto()
+                      {
+                          Name = uwp.Properties["Name"].Value as string,
+                          PackageFullName = uwp.Properties["PackageFullName"].Value as string,
+                          Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
+                          DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
                       });
         }
 
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
                                                                                      .Select(package => package.Id.Name)
                                                                                      .Contains(packageName);
+
+        internal static void RemovePackage(string packageName, bool allUsers)
+        {
+            _ = new PackageManager().RemovePackageAsync(packageName, allUsers ? RemovalOptions.RemoveForAllUsers : RemovalOptions.None);
+        }
     }
 }

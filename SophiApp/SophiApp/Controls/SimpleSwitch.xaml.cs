@@ -46,10 +46,7 @@ namespace SophiApp.Controls
             InitializeComponent();
         }
 
-        private void SimpleSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Status = Status == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
-            Command?.Execute(Status);
-        }
+        private void SimpleSwitch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(Status);
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Customisations;
 using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Models;
@@ -11,7 +12,7 @@ namespace SophiApp.ViewModels
     {
         private bool advancedSettingsVisibility;
         private string conditionsHelperError;
-        private List<CustomActionDto> CustomActions;
+        private List<Customisation> CustomActions;
         private bool debugMode;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;
@@ -22,6 +23,18 @@ namespace SophiApp.ViewModels
         private bool windowCloseHitTest;
         private List<UwpElement> uwpElementsCurrentUser;
         private List<UwpElement> uwpElementsAllUsers;
+        private ElementStatus uwpForAllUsersState;
+
+        public ElementStatus UwpForAllUsersState
+        { 
+            get => uwpForAllUsersState;
+            set
+            {
+                uwpForAllUsersState = value;
+                DebugHelper.UwpForAllUsersState(value);
+                OnPropertyChanged(UwpForAllUsersStatePropertyName);
+            }
+        }
 
         public bool AdvancedSettingsVisibility
         {
