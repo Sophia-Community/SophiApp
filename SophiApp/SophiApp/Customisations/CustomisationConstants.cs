@@ -54,7 +54,6 @@ namespace SophiApp.Customisations
         internal const byte _205_HIDE_VALUE = 1;
         internal const byte _205_SHOW_VALUE = 0;
         internal const string _206_HIDE_MERGE_CONF = "HideMergeConflicts";
-        internal const string _210_CORTANA = "Microsoft.549981C3F5F10";
         internal const string _210_CORTANA_BUTTON = "ShowCortanaButton";
         internal const string _211_SHOW_SYNC_PROVIDER = "ShowSyncProviderNotifications";
         internal const string _212_SNAP_ASSIST = "SnapAssist";
@@ -207,6 +206,11 @@ namespace SophiApp.Customisations
         internal const byte _400_DISABLED_VALUE = 1;
         internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
         internal const string _401_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
+        internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
+        internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
+        internal const string _501_CORTANA_STATE = "State";
+        internal const byte _501_DISABLED_VALUE = 1;
+        internal const byte _501_ENABLED_VALUE = 2;
         internal const string _600_APP_CAPTURE = "AppCaptureEnabled";
         internal const string _600_GAME_CONFIG_PATH = @"System\GameConfigStore";
         internal const string _600_GAME_DVR = "GameDVR_Enabled";
@@ -353,6 +357,7 @@ namespace SophiApp.Customisations
         internal const string TMP = "TMP";
         internal const string UPDATE_UX_SETTINGS_PATH = @"SOFTWARE\Microsoft\WindowsUpdate\UX\Settings";
         internal const string USER_SHELL_FOLDERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders";
+        internal const string UWP_MS_CORTANA = "Microsoft.549981C3F5F10";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";

@@ -36,8 +36,6 @@ namespace SophiApp.ViewModels
                 {
                     try
                     {
-                        var actionStopWatch = Stopwatch.StartNew();
-
                         if (action is UwpCustomisation)
                         {
                             UwpCustomisation customisation = action as UwpCustomisation;
@@ -47,9 +45,6 @@ namespace SophiApp.ViewModels
                         {
                             action.Invoke();
                         }
-
-                        actionStopWatch.Stop();
-                        DebugHelper.ActionPerformed(action.Id, action.Parameter, actionStopWatch.Elapsed.TotalSeconds);
                     }
                     catch (Exception e)
                     {
@@ -95,6 +90,21 @@ namespace SophiApp.ViewModels
 
         private void DebugModeClicked(object args) => DebugMode = DebugMode.Invert();
 
+        private void GetUwpElements()
+        {
+            DebugHelper.StartInitUwpApps();
+            var stopwatch = Stopwatch.StartNew();
+            UwpElementsCurrentUser = UwpHelper.GetPackagesDto(forAllUsers: false)
+                                              .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                              .ToList();
+
+            UwpElementsAllUsers = UwpHelper.GetPackagesDto(forAllUsers: true)
+                                           .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                           .ToList();
+            stopwatch.Stop();
+            DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
+        }
+
         private void HamburgerClicked(object args)
         {
             var tag = args as string;
@@ -132,32 +142,6 @@ namespace SophiApp.ViewModels
             SwitchUwpForAllUsersClickedCommand = new RelayCommand(new Action<object>(SwitchUwpForAllUsersClicked));
         }
 
-        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED 
-                                                                                                            ? ElementStatus.CHECKED 
-                                                                                                            : ElementStatus.UNCHECKED;
-
-        private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
-
-
-        private void GetUwpElements()
-        {
-            DebugHelper.StartInitUwpApps();
-            var stopwatch = Stopwatch.StartNew();
-            UwpElementsCurrentUser = UwpHelper.GetPackagesDto(forAllUsers: false)
-                                              .Select(dto => FabricHelper.CreateUwpElement(dto))
-                                              .ToList();
-
-            UwpElementsAllUsers = UwpHelper.GetPackagesDto(forAllUsers: true)
-                                           .Select(dto => FabricHelper.CreateUwpElement(dto))
-                                           .ToList();
-            stopwatch.Stop();
-            DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);
-
-        }
-
-        private async Task InitUwpElementsAsync() => await Task.Run(() => GetUwpElements());
-        
-
         private void InitProperties()
         {
             localizationsHelper = new LocalizationsHelper();
@@ -190,6 +174,8 @@ namespace SophiApp.ViewModels
                 DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
             });
         }
+
+        private async Task InitUwpElementsAsync() => await Task.Run(() => GetUwpElements());
 
         private async Task InitWatchersAsync()
         {
@@ -348,6 +334,10 @@ namespace SophiApp.ViewModels
 
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
+        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED
+                                                                                                                                                                                                                                                                                            ? ElementStatus.CHECKED
+                                                                                                            : ElementStatus.UNCHECKED;
+
         private async void TextedElementClickedAsync(object args)
         {
             await Task.Run(() =>
@@ -357,6 +347,8 @@ namespace SophiApp.ViewModels
                 SetCustomAction(element);
             });
         }
+
+        private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
 
         internal async void InitData()
         {

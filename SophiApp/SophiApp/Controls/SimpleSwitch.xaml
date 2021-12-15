@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="SophiApp.Controls.SimpleSwitch"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:SophiApp.Controls"
              mc:Ignorable="d">
 
@@ -30,8 +30,8 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Width" Value="40" />
             <Setter Property="Height" Value="20" />
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
         <Style TargetType="{x:Type Ellipse}">
             <Setter Property="Height" Value="10" />
@@ -51,16 +51,16 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Width" Value="42"/>
-            <Setter Property="Height" Value="22"/>            
+            <Setter Property="Width" Value="42" />
+            <Setter Property="Height" Value="22" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>                
+            <Grid>
                 <Border x:Name="BorderSwitch" MouseLeftButtonDown="SimpleSwitch_MouseLeftButtonDown">
                     <Ellipse x:Name="EllipseSwitch" />
-                </Border>                
+                </Border>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger SourceName="EllipseSwitch" Property="Margin" Value="{StaticResource Margin.Switch.Ellipse.Left}">
@@ -84,7 +84,7 @@
                     <DataTrigger.ExitActions>
                         <RemoveStoryboard BeginStoryboardName="AnimationSwitchMarginToLeft" />
                     </DataTrigger.ExitActions>
-                </DataTrigger>                
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

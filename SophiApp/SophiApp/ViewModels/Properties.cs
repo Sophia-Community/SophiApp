@@ -1,6 +1,5 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Customisations;
-using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Collections.Generic;
@@ -18,23 +17,12 @@ namespace SophiApp.ViewModels
         private bool loadingPanelVisibility;
         private LocalizationsHelper localizationsHelper;
         private ThemesHelper themesHelper;
+        private List<UwpElement> uwpElementsAllUsers;
+        private List<UwpElement> uwpElementsCurrentUser;
+        private ElementStatus uwpForAllUsersState;
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
-        private List<UwpElement> uwpElementsCurrentUser;
-        private List<UwpElement> uwpElementsAllUsers;
-        private ElementStatus uwpForAllUsersState;
-
-        public ElementStatus UwpForAllUsersState
-        { 
-            get => uwpForAllUsersState;
-            set
-            {
-                uwpForAllUsersState = value;
-                DebugHelper.UwpForAllUsersState(value);
-                OnPropertyChanged(UwpForAllUsersStatePropertyName);
-            }
-        }
 
         public bool AdvancedSettingsVisibility
         {
@@ -116,6 +104,16 @@ namespace SophiApp.ViewModels
 
         public List<TextedElement> TextedElements { get; private set; }
 
+        public List<UwpElement> UwpElementsAllUsers
+        {
+            get => uwpElementsAllUsers;
+            private set
+            {
+                uwpElementsAllUsers = value;
+                OnPropertyChanged(UwpElementsAllUsersPropertyName);
+            }
+        }
+
         public List<UwpElement> UwpElementsCurrentUser
         {
             get => uwpElementsCurrentUser;
@@ -126,13 +124,14 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public List<UwpElement> UwpElementsAllUsers
+        public ElementStatus UwpForAllUsersState
         {
-            get => uwpElementsAllUsers;
-            private set
+            get => uwpForAllUsersState;
+            set
             {
-                uwpElementsAllUsers = value;
-                OnPropertyChanged(UwpElementsAllUsersPropertyName);
+                uwpForAllUsersState = value;
+                DebugHelper.UwpForAllUsersState(value);
+                OnPropertyChanged(UwpForAllUsersStatePropertyName);
             }
         }
 

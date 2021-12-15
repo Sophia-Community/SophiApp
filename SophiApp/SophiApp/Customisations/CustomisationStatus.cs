@@ -128,10 +128,10 @@ namespace SophiApp.Customisations
         public static bool _209() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, LAUNCH_TO)
                                               .HasNullOrValue(LAUNCH_QA_VALUE);
 
-        public static bool _210() => UwpHelper.PackageExist(_210_CORTANA)
+        public static bool _210() => UwpHelper.PackageExist(UWP_MS_CORTANA)
                                               ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _210_CORTANA_BUTTON)
                                                          .HasNullOrValue(ENABLED_VALUE)
-                                              : throw new UwpAppNotFoundException(_210_CORTANA);
+                                              : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
         public static bool _211() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _211_SHOW_SYNC_PROVIDER)
                                               .HasNullOrValue(ENABLED_VALUE);
@@ -339,7 +339,7 @@ namespace SophiApp.Customisations
 
         public static bool _339() => WmiHelper.HasNetworkAdaptersPowerSave();
 
-        public static bool _340() => (PowerShell.Create().AddScript(_340_GET_IPV6_PS).Invoke()).Count > 0;
+        public static bool _340() => PowerShell.Create().AddScript(_340_GET_IPV6_PS).Invoke().Count > 0;
 
         public static bool _342() => _343().Invert();
 
@@ -386,14 +386,14 @@ namespace SophiApp.Customisations
                                      : throw new PcJoinedToDomainException();
 
         public static bool _360() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _360_ACTIVE_HOURS)
-                                              .HasNullOrValue(_360_MANUAL_STATE);
+                                              .HasNullOrValue(_360_AUTO_STATE);
 
         public static bool _361() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _361_IS_EXPEDITED)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
         public static bool _362() => MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK))
-                                              .FirstOrDefault(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK) != null 
-                                                                                                                                ? false 
+                                              .FirstOrDefault(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK) != null
+                                                                                                                                ? false
                                                                                                                                 : throw new UpdateNotInstalledException(KB5005463_UPD);
 
         public static bool _363()
@@ -413,6 +413,12 @@ namespace SophiApp.Customisations
         public static bool _401() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS) == ENABLED_VALUE;
 
         public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
+
+        public static bool _500() => UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO) && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS);
+
+        public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
+                                     ? RegHelper.GetByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
         public static bool _600() => RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
                                      && RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;

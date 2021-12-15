@@ -779,8 +779,8 @@ namespace SophiApp.Customisations
         public static void _360(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
                                                                         UPDATE_UX_SETTINGS_PATH,
                                                                             _360_ACTIVE_HOURS,
-                                                                                IsChecked ? _360_MANUAL_STATE
-                                                                                          : _360_AUTO_STATE,
+                                                                                IsChecked ? _360_AUTO_STATE
+                                                                                          : _360_MANUAL_STATE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _361(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
@@ -792,10 +792,10 @@ namespace SophiApp.Customisations
 
         public static void _362(bool _)
         {
-            var poperties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK))
+            var properties = MsiHelper.GetProperties(Directory.GetFiles(_362_INSTALLER_PATH, _362_MSI_MASK))
                                      .First(property => property[_362_PRODUCT_NAME] == _362_PC_HEALTH_CHECK);
 
-            ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {poperties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
+            ProcessHelper.StartWait(_362_MSIEXEC_EXE, $"/uninstall {properties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
         }
 
         public static void _363(bool IsChecked)
@@ -841,6 +841,12 @@ namespace SophiApp.Customisations
             bytes[0x15] = (byte)(IsChecked ? bytes[0x15] | 0x20 : bytes[0x15] ^ 0x20);
             File.WriteAllBytes(_402_POWERSHELL_LNK, bytes);
         }
+
+        public static void _501(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot,
+                                                                        _501_CORTANA_STARTUP_PATH,
+                                                                            _501_CORTANA_STATE,
+                                                                                IsChecked ? _501_ENABLED_VALUE : _501_DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _600(bool IsChecked)
         {

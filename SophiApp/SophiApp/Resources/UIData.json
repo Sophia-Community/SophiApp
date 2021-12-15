@@ -1933,19 +1933,6 @@
     {
         "Id": 500,
         "Header": {
-            "EN": "UWP apps",
-            "RU": "UWP-приложения"
-        },
-        "Description": {
-            "EN": "",
-            "RU": ""
-        },
-        "Type": "Switch",
-        "Tag": "UwpApps"
-    },
-    {
-        "Id": 501,
-        "Header": {
             "EN": "HEVC video codec (H.265)",
             "RU": "Кодек HEVC (H.265)"
         },
@@ -1957,7 +1944,7 @@
         "Tag": "UwpApps"
     },
     {
-        "Id": 502,
+        "Id": 501,
         "Header": {
             "EN": "Cortana autostarting",
             "RU": "Автозагрузка Кортаны"
@@ -1970,7 +1957,7 @@
         "Tag": "UwpApps"
     },
     {
-        "Id": 503,
+        "Id": 502,
         "Header": {
             "EN": "Let all UWP apps run in the background",
             "RU": "Разрешить всем UWP-приложениям работать в фоновом режиме"

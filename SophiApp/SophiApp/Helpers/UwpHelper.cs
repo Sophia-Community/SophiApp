@@ -1,8 +1,11 @@
 ﻿using SophiApp.Dto;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
+using Windows.Foundation;
 using Windows.Management.Deployment;
 
 namespace SophiApp.Helpers
@@ -89,16 +92,16 @@ foreach ($AppxPackage in $AppxPackages)
 }";
 
             return PowerShell.Create()
-                      .AddScript(forAllUsers ? allUsersScript : currentUserScript)
-                      .Invoke()
-                      .Where(uwp => uwp.Properties["Logo"].Value != null)
-                      .Select(uwp => new UwpElementDto()
-                      {
-                          Name = uwp.Properties["Name"].Value as string,
-                          PackageFullName = uwp.Properties["PackageFullName"].Value as string,
-                          Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
-                          DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
-                      });
+                             .AddScript(forAllUsers ? allUsersScript : currentUserScript)
+                             .Invoke()
+                             .Where(uwp => uwp.Properties["Logo"].Value != null)
+                             .Select(uwp => new UwpElementDto()
+                             {
+                                 Name = uwp.Properties["Name"].Value as string,
+                                 PackageFullName = uwp.Properties["PackageFullName"].Value as string,
+                                 Logo = uwp.Properties["Logo"].Value.GetFirstValue<Uri>(),
+                                 DisplayName = uwp.Properties["DisplayName"].Value.GetFirstValue<string>()
+                             });
         }
 
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
@@ -107,7 +110,22 @@ foreach ($AppxPackage in $AppxPackages)
 
         internal static void RemovePackage(string packageName, bool allUsers)
         {
-            _ = new PackageManager().RemovePackageAsync(packageName, allUsers ? RemovalOptions.RemoveForAllUsers : RemovalOptions.None);
+            var stopwatch = Stopwatch.StartNew();
+            var packageManager = new PackageManager();
+            var deploymentOperation = packageManager.RemovePackageAsync(packageName, allUsers ? RemovalOptions.RemoveForAllUsers : RemovalOptions.None);
+            var opCompletedEvent = new ManualResetEvent(false);
+            deploymentOperation.Completed = (depProgress, status) => { opCompletedEvent.Set(); };
+            opCompletedEvent.WaitOne();
+            stopwatch.Stop();
+
+            if (deploymentOperation.Status == AsyncStatus.Error)
+            {
+                var deploymentResult = deploymentOperation.GetResults();
+                DebugHelper.UwpRemovedHasException(packageName, deploymentOperation.ErrorCode, deploymentResult.ErrorText);
+                return;
+            }
+
+            DebugHelper.UwpRemoved(packageName, stopwatch.Elapsed.TotalSeconds, deploymentOperation.Status);
         }
     }
 }

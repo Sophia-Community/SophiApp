@@ -4,6 +4,7 @@ using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Windows.Foundation;
 
 namespace SophiApp.Helpers
 {
@@ -36,9 +37,8 @@ namespace SophiApp.Helpers
             $"{APP_FOLDER}: \"{AppHelper.StartupFolder}\""
         };
 
-        internal static void UwpForAllUsersState(ElementStatus value) => WriteStatusLog($"Uwp for all users switch state is: {value}");
-
         private static List<string> InitLog = new List<string>();
+
         private static List<string> StatusLog = new List<string>();
 
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
@@ -50,8 +50,6 @@ namespace SophiApp.Helpers
         private static void WriteInitLog(string record) => InitLog.Add($"{DateTime} {record}");
 
         private static void WriteStatusLog(string record) => StatusLog.Add($"{DateTime} {record}");
-
-        internal static void ActionPerformed(uint actionID, bool actionParameter, double totalSeconds) => WriteStatusLog($"Customization action {actionID} with parameter {actionParameter} completed successfully in {totalSeconds:N0} second(s)");
 
         internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
 
@@ -117,6 +115,12 @@ namespace SophiApp.Helpers
         internal static void TextedElementInit(uint elementID, double totalSeconds) => WriteInitLog($"The element {elementID} was initialized in {totalSeconds:N3} second(s)");
 
         internal static void UpdateNotNecessary() => WriteInfoLog("No update required");
+
+        internal static void UwpForAllUsersState(ElementStatus value) => WriteStatusLog($"Uwp for all users switch state is: {value}");
+
+        internal static void UwpRemoved(string packageName, double totalSeconds, AsyncStatus result) => WriteStatusLog($"The UWP package {packageName} was removed in {totalSeconds:N3} second(s) with the result: {result}");
+
+        internal static void UwpRemovedHasException(string packageName, Exception errorCode, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorCode}, {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
     }
