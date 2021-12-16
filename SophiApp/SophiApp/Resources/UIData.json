@@ -1933,8 +1933,8 @@
     {
         "Id": 500,
         "Header": {
-            "EN": "HEVC video codec (H.265)",
-            "RU": "Кодек HEVC (H.265)"
+            "EN": "Download and install the HEVC video codec (H.265)",
+            "RU": "Скачать и установить видеокодек HEVC (H.265)"
         },
         "Description": {
             "EN": "The codec allows you to open images and videos in .heif and .hevc formats, respectively",
