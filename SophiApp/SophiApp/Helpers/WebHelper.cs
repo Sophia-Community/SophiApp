@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace SophiApp.Helpers
@@ -23,7 +26,7 @@ namespace SophiApp.Helpers
             Download(url, file);
         }
 
-        internal static T GetJsonRequest<T>(string url, T dto)
+        internal static T GetJsonResponse<T>(string url, T dto)
         {
             var request = WebRequest.CreateHttp(url);
             request.UserAgent = AppHelper.UserAgent;
@@ -37,7 +40,17 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static XmlDocument GetXmlRequest(string url)
+        internal static async Task<string> GetPostResponse(string uri, Dictionary<string, string> parameters)
+        {
+            using (var client = new HttpClient())
+            {
+                var content = new FormUrlEncodedContent(parameters);
+                var response = await client.PostAsync(uri, content);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        internal static XmlDocument GetXmlResponse(string url)
         {
             XmlDocument myXmlDocument = new XmlDocument();
             myXmlDocument.Load(url);

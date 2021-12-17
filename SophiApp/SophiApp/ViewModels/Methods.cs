@@ -357,14 +357,14 @@ namespace SophiApp.ViewModels
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
             //TODO: For debug only!
-            //await conditionsHelper.InvokeAsync();
+            await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
             //TODO: For debug only!
-            if (true) //  if (conditionsHelper.Result) // if (true)
+            if (conditionsHelper.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);
-                await DismHelper.GetInstanceAsync();
+                _ = await DismHelper.GetInstanceAsync();
                 await InitTextedElementsAsync();
                 await InitUwpElementsAsync();
                 await InitWatchersAsync();

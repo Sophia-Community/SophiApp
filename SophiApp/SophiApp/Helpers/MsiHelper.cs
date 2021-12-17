@@ -1,17 +1,23 @@
 ﻿using Microsoft.Deployment.WindowsInstaller;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SophiApp.Helpers
 {
     internal class MsiHelper
     {
-        internal static IEnumerable<Dictionary<string, string>> GetProperties(string[] paths)
+        internal static ConcurrentBag<Dictionary<string, string>> GetProperties(string[] paths)
         {
-            foreach (var path in paths)
+            var propertyBag = new ConcurrentBag<Dictionary<string, string>>();
+
+            Parallel.ForEach(paths, path =>
             {
-                yield return GetProperties(path);
-            }
+                propertyBag.Add(GetProperties(path));
+            });
+
+            return propertyBag;
         }
 
         internal static Dictionary<string, string> GetProperties(string path)

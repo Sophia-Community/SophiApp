@@ -398,7 +398,7 @@ namespace SophiApp.Customisations
 
         public static bool _363()
         {
-            var vcVersions = WebHelper.GetJsonRequest(_363_VC_VERSION_URL, new VCRedistrDto());
+            var vcVersions = WebHelper.GetJsonResponse(_363_VC_VERSION_URL, new VCRedistrDto());
             var latestVersion = vcVersions.Supported.Where(item => item.Name == _363_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
             var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
@@ -414,7 +414,9 @@ namespace SophiApp.Customisations
 
         public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
 
-        public static bool _500() => UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO) && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS);
+        public static bool _500() => UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO).Invert() && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+                                     ? false
+                                     : throw new UwpAppFoundException(_500_UWP_HEVC_VIDEO);
 
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
                                      ? RegHelper.GetByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE

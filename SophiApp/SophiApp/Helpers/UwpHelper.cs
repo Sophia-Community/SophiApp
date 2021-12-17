@@ -104,8 +104,18 @@ foreach ($AppxPackage in $AppxPackages)
                              });
         }
 
+        internal static void InstallPackage(string package)
+        {
+            var packageUri = new Uri(package);
+            var packageManager = new PackageManager();
+            var deploymentOperation = packageManager.AddPackageAsync(packageUri, null, DeploymentOptions.None);
+            var opCompletedEvent = new ManualResetEvent(false);
+            deploymentOperation.Completed = (depProgress, status) => { opCompletedEvent.Set(); };
+            opCompletedEvent.WaitOne();
+        }
+
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
-                                                                                     .Select(package => package.Id.Name)
+                                                                                             .Select(package => package.Id.Name)
                                                                                      .Contains(packageName);
 
         internal static void RemovePackage(string packageName, bool allUsers)
@@ -121,7 +131,7 @@ foreach ($AppxPackage in $AppxPackages)
             if (deploymentOperation.Status == AsyncStatus.Error)
             {
                 var deploymentResult = deploymentOperation.GetResults();
-                DebugHelper.UwpRemovedHasException(packageName, deploymentOperation.ErrorCode, deploymentResult.ErrorText);
+                DebugHelper.UwpRemovedHasException(packageName, deploymentResult.ErrorText);
                 return;
             }
 

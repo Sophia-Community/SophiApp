@@ -92,7 +92,7 @@
                                 </ItemsControl.Resources>
                             </ItemsControl>
                         </Grid>
-                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}" Margin="0, 20, 0, 0">
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}" Margin="0, 10, 0, 0">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:Switch}">
                                     <controls:Switch
@@ -102,6 +102,12 @@
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:CheckBox}">
+                                    <controls:CheckBox Margin="20,10,0,5"
+                                                       Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"
+                                                       Id="{Binding Id}"
+                                                       Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

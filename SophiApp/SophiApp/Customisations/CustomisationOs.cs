@@ -1,12 +1,14 @@
 ﻿using Microsoft.Win32;
 using SophiApp.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
+using System.Text.RegularExpressions;
 using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
@@ -840,6 +842,28 @@ namespace SophiApp.Customisations
             var bytes = File.ReadAllBytes(_402_POWERSHELL_LNK);
             bytes[0x15] = (byte)(IsChecked ? bytes[0x15] | 0x20 : bytes[0x15] ^ 0x20);
             File.WriteAllBytes(_402_POWERSHELL_LNK, bytes);
+        }
+
+        public static void _500(bool _)
+        {
+            var hevcvLink = new List<KeyValuePair<string, string>>();
+            var adguardPattern = "<tr style.*<a href=\"(?<Url>.*)\"\\s.*>(?<Version>.*)<\\/a>";
+            var hevcvPattern = "Microsoft.HEVCVideoExtension_.*_x64__8wekyb3d8bbwe.appx";
+            var adguardResponse = WebHelper.GetPostResponse(_500_ADGUARD_LINK, _500_ADGUARD_WEB_PARAMS).Result;
+
+            foreach (var link in Regex.Matches(adguardResponse, adguardPattern).Cast<Match>().ToList())
+            {
+                if (Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern))
+                {
+                    hevcvLink.Add(new KeyValuePair<string, string>(link.Groups["Version"].Value, link.Groups["Url"].Value));
+                    break;
+                }
+            }
+
+            var appx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvLink.FirstOrDefault().Key}";
+            WebHelper.Download(hevcvLink.FirstOrDefault().Value, appx, true);
+            UwpHelper.InstallPackage(appx);
+            FileHelper.FileDelete(appx);
         }
 
         public static void _501(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot,

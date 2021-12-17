@@ -44,7 +44,7 @@ namespace SophiApp.Helpers
                 return;
             }
 
-            var oneDriveUrl = WebHelper.GetXmlRequest(ONE_DRIVE_XML).DocumentElement.FirstChild.LastChild.Attributes[2].Value;
+            var oneDriveUrl = WebHelper.GetXmlResponse(ONE_DRIVE_XML).DocumentElement.FirstChild.LastChild.Attributes[2].Value;
             var oneDriveFile = $@"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDER, USER_DOWNLOAD_FOLDER)}\{ONE_DRIVE_SETUP_EXE}";
             WebHelper.Download(url: oneDriveUrl, file: oneDriveFile, deleteIsExisting: true);
             ProcessHelper.StartWait(oneDriveFile, null);

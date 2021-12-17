@@ -1940,7 +1940,7 @@
             "EN": "The codec allows you to open images and videos in .heif and .hevc formats, respectively",
             "RU": "Кодек позволяет открывать изображения и видео в форматах .heif и .hevc соответственно"
         },
-        "Type": "Switch",
+        "Type": "CheckBox",
         "Tag": "UwpApps"
     },
     {
@@ -1948,19 +1948,6 @@
         "Header": {
             "EN": "Cortana autostarting",
             "RU": "Автозагрузка Кортаны"
-        },
-        "Description": {
-            "EN": "",
-            "RU": ""
-        },
-        "Type": "Switch",
-        "Tag": "UwpApps"
-    },
-    {
-        "Id": 502,
-        "Header": {
-            "EN": "Let all UWP apps run in the background",
-            "RU": "Разрешить всем UWP-приложениям работать в фоновом режиме"
         },
         "Description": {
             "EN": "",

@@ -4,7 +4,7 @@ namespace SophiApp.Helpers
 {
     internal class AdapterTypeInternalOrNullException : Exception
     {
-        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a \"Internal\" or null, current adapter DAC type: {dacType ?? "null"}")
+        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a \"Internal\" or null, current adapter DAC type: {dacType}")
         {
         }
     }
@@ -82,6 +82,13 @@ namespace SophiApp.Helpers
     internal class UpdateNotInstalledException : Exception
     {
         public UpdateNotInstalledException(string kbID) : base($"Update {kbID} is not installed on this PC")
+        {
+        }
+    }
+
+    internal class UwpAppFoundException : Exception
+    {
+        public UwpAppFoundException(string name) : base($"The UWP package {name} found on OS")
         {
         }
     }

@@ -120,7 +120,7 @@ namespace SophiApp.Helpers
 
         internal static void UwpRemoved(string packageName, double totalSeconds, AsyncStatus result) => WriteStatusLog($"The UWP package {packageName} was removed in {totalSeconds:N3} second(s) with the result: {result}");
 
-        internal static void UwpRemovedHasException(string packageName, Exception errorCode, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorCode}, {errorText}");
+        internal static void UwpRemovedHasException(string packageName, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
     }
