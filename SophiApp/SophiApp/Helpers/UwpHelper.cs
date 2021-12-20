@@ -115,7 +115,7 @@ foreach ($AppxPackage in $AppxPackages)
         }
 
         internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
-                                                                                             .Select(package => package.Id.Name)
+                                                                                     .Select(package => package.Id.Name)
                                                                                      .Contains(packageName);
 
         internal static void RemovePackage(string packageName, bool allUsers)

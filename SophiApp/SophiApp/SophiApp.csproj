@@ -57,7 +57,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Deployment.WindowsInstaller, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\dmitriy.demin\Documents\GitHub\SophiUI\SophiApp\SophiApp\Binary\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+      <HintPath>C:\Users\DimDim\Documents\GitHub\SophiApp\SophiApp\Binary\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -66,7 +66,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\dmitriy.demin\Documents\GitHub\SophiUI\SophiApp\SophiApp\Binary\System.Management.Automation.dll</HintPath>
+      <HintPath>C:\Users\DimDim\Documents\GitHub\SophiApp\SophiApp\Binary\System.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
@@ -79,7 +79,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Windows">
-      <HintPath>C:\Users\dmitriy.demin\Documents\GitHub\SophiUI\SophiApp\SophiApp\Binary\Windows.winmd</HintPath>
+      <HintPath>C:\Users\DimDim\Documents\GitHub\SophiApp\SophiApp\Binary\Windows.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -555,7 +555,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="TaskScheduler">
-      <Version>2.9.2</Version>
+      <Version>2.9.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

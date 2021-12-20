@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SophiApp.Helpers
 {
@@ -33,18 +35,33 @@ namespace SophiApp.Helpers
 
         internal static bool SubKeyExist(RegistryHive hive, string path) => (GetKey(hive, path) is null).Invert();
 
+        internal static void TryDeleteKey(RegistryHive hive, IEnumerable<string> paths, string name)
+        {
+            foreach (var path in paths)
+                DeleteKey(hive, path, name, false);
+        }
+
         internal static void TryDeleteKey(RegistryHive hive, string path, params string[] names)
         {
             foreach (var name in names)
                 DeleteKey(hive, path, name, false);
         }
 
-        internal static void TryDeleteKey(RegistryHive hive, string path, string name)
+        internal static void TryDeleteValue(RegistryHive hive, string path, string name)
         {
             if (KeyExist(hive, path, name))
                 SetKey(hive, path).DeleteValue(name);
         }
 
         internal static void TryDeleteSubKeyTree(RegistryHive hive, string subKey) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).DeleteSubKeyTree(subKey, false);
+
+        internal static IEnumerable<string> GetSubKeyNames(RegistryHive hive, string path)
+        {
+            foreach (var name in GetKey(hive, path).GetSubKeyNames())
+            {
+                yield return $@"{ path }\{ name }";
+            }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SophiApp.Helpers;
+using System;
 using System.Collections.Generic;
 
 namespace SophiApp.Customisations
@@ -210,340 +211,239 @@ namespace SophiApp.Customisations
         internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
-
         internal const string _501_CORTANA_STATE = "State";
-
         internal const byte _501_DISABLED_VALUE = 1;
-
         internal const byte _501_ENABLED_VALUE = 2;
-
         internal const string _600_APP_CAPTURE = "AppCaptureEnabled";
-
         internal const string _600_GAME_CONFIG_PATH = @"System\GameConfigStore";
-
         internal const string _600_GAME_DVR = "GameDVR_Enabled";
-
         internal const string _600_GAME_DVR_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR";
-
         internal const string _601_GAME_BAR_PATH = @"SOFTWARE\Microsoft\GameBar";
-
         internal const string _601_SHOW_PANEL = "ShowStartupPanel";
-
         internal const byte _602_DISABLED_VALUE = 1;
-
         internal const byte _602_ENABLED_VALUE = 2;
-
         internal const string _602_FEATURE_SET_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers\FeatureSetUsage";
-
         internal const string _602_GRAPHICS_DRIVERS_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers";
-
         internal const string _602_HWSCH_MODE = "HwSchMode";
-
         internal const string _602_INTERNAL_DAC_TYPE = "Internal";
-
         internal const string _602_WDDM_VERSION = "WddmVersion_Min";
-
         internal const int _602_WDDM_VERSION_MIN = 2700;
+        internal const string _700_VOLUME_CACHES_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches";
+        internal const string _700_STATE_FLAGS_1337 = "StateFlags1337";
+        internal const string _700_CLEANUP_TASK_ARG = @"-NoExit -Command ""Get-Process -Name cleanmgr | Stop-Process -Force;
+Get-Process -Name Dism | Stop-Process -Force;
+Get-Process -Name DismHost | Stop-Process -Force;
+$ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo;
+$ProcessInfo.FileName = """"""$env:SystemRoot\system32\cleanmgr.exe"""""";
+$ProcessInfo.Arguments = """"""/sagerun:1337"""""";
+$ProcessInfo.UseShellExecute = $true;
+$ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized;
+$Process = New-Object -TypeName System.Diagnostics.Process;
+$Process.StartInfo = $ProcessInfo;
+$Process.Start() | Out-Null;
+Start-Sleep -Seconds 3;
+[int]$SourceMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle;
+function MinimizeWindow
+    {
+        [CmdletBinding()]
+        param
+    (
+        [Parameter(Mandatory = $true)]
+		$Process
+    )
+	$ShowWindowAsync = @{
+        Namespace = """"""WinAPI""""""
+        Name = """"""Win32ShowWindowAsync""""""
+        Language = """"""CSharp""""""
+        MemberDefinition = @'
+[DllImport(""""""user32.dll"""""")]
+public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+'@
+    }
 
+    if (-not(""""""WinAPI.Win32ShowWindowAsync"""""" -as [type]))
+    {
+        Add-Type @ShowWindowAsync
+    }
+	$MainWindowHandle = (Get-Process -Name $Process | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle;
+    [WinAPI.Win32ShowWindowAsync]::ShowWindowAsync($MainWindowHandle, 2);
+    }
+
+while ($true)
+{
+    [int]$CurrentMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle;
+    if ($SourceMainWindowHandle -ne $CurrentMainWindowHandle)
+    {
+        MinimizeWindow -Process cleanmgr;
+        break;
+    }
+    Start-Sleep -Milliseconds 5;
+}
+$ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo;
+$ProcessInfo.FileName = """"""$env:SystemRoot\system32\dism.exe"""""";
+$ProcessInfo.Arguments = """"""/Online /English /Cleanup-Image /StartComponentCleanup /NoRestart"""""";
+$ProcessInfo.UseShellExecute = $true;
+$ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized;
+$Process = New-Object -TypeName System.Diagnostics.Process;
+$Process.StartInfo = $ProcessInfo;
+$Process.Start() | Out-Null;""
+";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
-
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
-
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
-
         internal const string _900_MSI_ICON = "Icon";
-
         internal const string _900_MSI_ICON_VALUE = "shell32.dll,-16817";
-
         internal const string _900_MSI_MUIVERB_VALUE = "@shell32.dll,-37514";
-
         internal const string _901_CAB_COM_PATH = @"CABFolder\Shell\RunAs\Command";
-
         internal const string _901_CAB_LUA_SHIELD = "HasLUAShield";
-
         internal const string _901_CAB_RUNAS_PATH = @"CABFolder\Shell\RunAs";
-
         internal const string _901_CAB_VALUE = "cmd /c DISM.exe /Online /Add-Package /PackagePath:\"%1\" /NoRestart & pause\"";
-
         internal const string _901_MUIVERB_VALUE = "@shell32.dll,-10210";
-
         internal const string _902_EXTENDED = @"Extended";
-
         internal const string _902_RUNAS_USER_PATH = @"exefile\shell\runasuser";
-
         internal const string _903_CAST_TO_DEV_GUID = @"{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
-
         internal const string _903_CAST_TO_DEV_VALUE = "Play to menu";
-
         internal const string _904_SHARE_GUID = @"{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}";
-
         internal const string _905_MS_PAINT_3D = "Microsoft.MSPaint";
-
         internal const string _906_BMP_EXT = @"SystemFileAssociations\.bmp\Shell\3D Edit";
-
         internal const string _907_GIF_EXT = @"SystemFileAssociations\.gif\Shell\3D Edit";
-
         internal const string _908_JPE_EXT = @"SystemFileAssociations\.jpe\Shell\3D Edit";
-
         internal const string _909_JPEG_EXT = @"SystemFileAssociations\.jpeg\Shell\3D Edit";
-
         internal const string _910_JPG_EXT = @"SystemFileAssociations\.jpg\Shell\3D Edit";
-
         internal const string _911_PNG_EXT = @"SystemFileAssociations\.png\Shell\3D Edit";
-
         internal const string _912_TIF_EXT = @"SystemFileAssociations\.tif\Shell\3D Edit";
-
         internal const string _913_TIFF_EXT = @"SystemFileAssociations\.tiff\Shell\3D Edit";
-
         internal const string _914_PHOTOS_SHELL_EDIT_PATH = @"AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\Shell\ShellEdit";
-
         internal const string _915_PHOTOS_SHELL_VIDEO_PATH = @"AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\Shell\ShellCreateVideo";
-
         internal const string _916_IMG_SHELL_EDIT_PATH = @"SystemFileAssociations\image\shell\edit";
-
         internal const string _917_BAT_SHELL_EDIT_PATH = @"batfile\shell\print";
-
         internal const string _917_CMD_SHELL_EDIT_PATH = @"cmdfile\shell\print";
-
         internal const string _918_HIDE_VALUE = "-{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
-
         internal const string _918_LIB_LOCATION_PATH = @"Folder\ShellEx\ContextMenuHandlers\Library Location";
-
         internal const string _918_SHOW_VALUE = "{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
-
         internal const string _919_HIDE_VALUE = "-{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
-
         internal const string _919_SEND_TO_PATH = @"AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo";
-
         internal const string _919_SHOW_VALUE = "{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
-
         internal const string _920_BITLOCKER_BDELEV_PATH = @"Drive\shell\encrypt-bde-elev";
-
         internal const string _921_BMP_ITEM_NAME = "ItemName";
-
         internal const string _921_BMP_ITEM_VALUE = @"@%systemroot%\system32\mspaint.exe,-59414";
-
         internal const string _921_BMP_NULL_FILE = "NullFile";
-
         internal const string _921_BMP_SHELL_NEW = @".bmp\ShellNew";
-
         internal const string _922_DATA_VALUE = "{\rtf1}";
-
         internal const string _922_ITEM_VALUE = @"@%ProgramFiles%\Windows NT\Accessories\WORDPAD.EXE,-213";
-
         internal const string _922_MS_WORD_PAD = "Microsoft.Windows.WordPad~~~~0.0.1.0";
-
         internal const string _922_RTF_SHELL_NEW = @".rtf\ShellNew";
-
         internal const string _923_ITEM_DATA = @"@%SystemRoot%\system32\zipfldr.dll,-10194";
-
         internal const string _923_ZIP_SHELLNEW_PATH = @".zip\CompressedFolder\ShellNew";
-
         internal const string _924_PROMPT_NAME = "MultipleInvokePromptMinimum";
-
         internal const int _924_PROMPT_VALUE = 300;
-
         internal const string _925_NO_USE_NAME = "NoUseStoreOpenWith";
-
         internal const byte _925_NO_USE_VALUE = 1;
-
         internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";
-
         internal const byte ADMIN_PROMPT_DEFAULT_VALUE = 5;
-
         internal const byte ADMIN_PROMPT_NEVER_VALUE = 0;
-
         internal const string ADVANCED_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced";
-
         internal const byte ALL_ITEMS_ICON_CATEGORY_VALUE = 0;
-
         internal const byte ALL_ITEMS_ICON_SMALL_VALUE = 1;
-
         internal const string ALL_ITEMS_ICON_VIEW = "AllItemsIconView";
-
         internal const string ALLOW_TELEMETRY = "AllowTelemetry";
-
         internal const string APPS_USES_THEME = "AppsUseLightTheme";
-
         internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint~~~~0.0.1.0";
-
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
-
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
-
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
-
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
-
         internal const string CONTROL_PANEL_USER_PROFILE_PATH = @"Control Panel\International\User Profile";
-
         internal const string CURRENT_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
-
         internal const byte DARK_THEME_VALUE = 0;
-
         internal const string DATA = "Data";
-
         internal const string DATA_COLLECTION_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
-
         internal const byte DEFAULT_TELEMETRY_VALUE = 3;
-
         internal const string DESKTOP_ICON_THIS_COMPUTER = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
-
         internal const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
-
         internal const byte DIALOG_COMPACT_VALUE = 0;
-
         internal const byte DIALOG_DETAILED_VALUE = 1;
-
         internal const byte DISABLED_VALUE = 0;
-
         internal const byte ENABLED_VALUE = 1;
-
         internal const string ENTHUSIAST_MODE = "EnthusiastMode";
-
         internal const string ENVIRONMENT = "Environment";
-
         internal const string ENVIRONMENT_LOCAL_APPDATA = "%LOCALAPPDATA%";
-
         internal const string ENVIRONMENT_SYSTEM_DRIVE = "%SystemDrive%";
-
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
-
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
-
         internal const string GAMING_APP_UWP = "Microsoft.GamingApp";
-
         internal const string IMAGES_FOLDER = "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}";
-
         internal const string INPUT_ENG_VALUE = "0409:00000409";
-
         internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
-
         internal const string ITEM_NAME = "ItemName";
-
         internal const string JPEG_QUALITY = "JPEGImportQuality";
-
         internal const string KB5005463_FIX_UNINSTALL_ARG = "/uninstall /kb:5005463 /quiet /norestart";
-
         internal const string KB5005463_UPD = "KB5005463";
-
         internal const byte LAUNCH_PC_VALUE = 1;
-
         internal const byte LAUNCH_QA_VALUE = 2;
-
         internal const string LAUNCH_TO = "LaunchTo";
-
         internal const byte LIGHT_THEME_VALUE = 1;
-
         internal const string MAPS_TASK_PATH = @"Microsoft\Windows\Maps";
-
         internal const string MAX_TELEMETRY_ALLOWED = "MaxTelemetryAllowed";
-
         internal const byte MIN_ENT_TELEMETRY_VALUE = 0;
-
         internal const byte MIN_TELEMETRY_VALUE = 1;
-
         internal const string MITIGATION_USER_PREFERENCE = "UserPreference";
-
         internal const string MUIVERB = "MUIVerb";
-
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-
         internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
-
         internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
-
         internal const string POWERCFG_EXE = "powercfg.exe";
-
         internal const string POWERSHELL_EXE = "powershell.exe";
-
         internal const string PROGRAM_ACCESS_ONLY = "ProgrammaticAccessOnly";
-
         internal const string SERVICE_SPOOLER = "Spooler";
-
         internal const string SESSION_MANAGER_ENVIRONMENT = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
-
         internal const string SHELL_EXT_BLOCKED_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
-
         internal const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
-
         internal const string SIUF_PATH = @"SOFTWARE\Microsoft\Siuf\Rules";
-
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
-
         internal const string START_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
-
         internal const string STARTUP_PAGE = "StartupPage";
-
         internal const byte STARTUP_PAGE_CATEGORY_VALUE = 0;
-
         internal const byte STARTUP_PAGE_ICON_VALUE = 1;
-
         internal const string STATUS_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager";
-
         internal const string STORAGE_POLICY_01 = "01";
-
         internal const string STORAGE_POLICY_2048 = "2048";
-
         internal const string STORAGE_POLICY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy";
-
         internal const string SYSTEM_USES_THEME = "SystemUsesLightTheme";
-
         internal const byte TASKBAR_SEARCH_BOX_VALUE = 2;
-
         internal const byte TASKBAR_SEARCH_HIDE_VALUE = 0;
-
         internal const byte TASKBAR_SEARCH_ICON_VALUE = 1;
-
         internal const string TASKBAR_SEARCH_MODE = "SearchboxTaskbarMode";
-
         internal const string TASKBAR_SEARCH_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Search";
-
         internal const string TEMP = "TEMP";
-
         internal const string TEMP_FOLDER = "Temp";
-
         internal const string TMP = "TMP";
-
         internal const string UPDATE_UX_SETTINGS_PATH = @"SOFTWARE\Microsoft\WindowsUpdate\UX\Settings";
-
         internal const string USER_DOWNLOAD_FOLDER = "{374DE290-123F-4565-9164-39C4925E467B}";
-
         internal const string USER_SHELL_FOLDERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders";
-
         internal const string UWP_MS_CORTANA = "Microsoft.549981C3F5F10";
-
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
-
         internal const string WIN_VER_EDU = "Education";
-
         internal const string WIN_VER_ENT = "Enterprise";
-
         internal const string WIN_VER_PRO = "Professional";
-
         internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
-
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
-
         internal const string WUSA_EXE = "wusa.exe";
-
         internal const string X64 = "x64";
-
         internal const string XBOX_GAMING_OVERLAY_UWP = "Microsoft.XboxGamingOverlay";
-
         internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
-
         internal static readonly string _362_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
-
         internal static readonly string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
-
-        internal static readonly Dictionary<string, string> _500_ADGUARD_WEB_PARAMS = new Dictionary<string, string>()
-        {
+        internal static readonly Dictionary<string, string> _500_ADGUARD_WEB_PARAMS = new Dictionary<string, string>()        {
             { "ContentType", "application/x-www-form-urlencoded" }, { "type", "url" }, { "url", "https://www.microsoft.com/store/productId/9n4wgh0z6vhq" },
             { "ring", "RP" }, { "lang", "en-US" }
         };
-
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        internal const string SOPHIA_SCRIPT_SCHEDULED_PATH = "Sophia Script";
+        internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
+        internal const string _700_SOPHIA_CLEANUP_TASK = "Windows Cleanup";
+        internal const string _700_SOPHIA_CLEANUP_TASK_DESCRIPTION = "Cleaning up Windows unused files and updates using built-in Disk cleanup app";
+
     }
 }

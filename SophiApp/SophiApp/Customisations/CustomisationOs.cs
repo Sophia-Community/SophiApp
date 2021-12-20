@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System;
 using System.Collections.Generic;
@@ -503,7 +504,7 @@ namespace SophiApp.Customisations
                 }
                 else
                 {
-                    ScheduledTaskHelper.RegisterLogonTask(name: _307_SYMBOLIC_LINK_TASK, description: null, execute: POWERSHELL_EXE, args: _307_TASK_ARGS, username: userName);
+                    ScheduledTaskHelper.RegisterLogonTask(name: _307_SYMBOLIC_LINK_TASK, description: null, execute: POWERSHELL_EXE, arg: _307_TASK_ARGS, username: userName);
                 }
             }
 
@@ -542,7 +543,7 @@ namespace SophiApp.Customisations
                 }
                 else
                 {
-                    ScheduledTaskHelper.RegisterLogonTask(name: _308_TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, args: _308_TASK_ARGS, username: userName);
+                    ScheduledTaskHelper.RegisterLogonTask(name: _308_TEMPORARY_TASK, description: null, execute: POWERSHELL_EXE, arg: _308_TASK_ARGS, username: userName);
                 }
             }
 
@@ -846,24 +847,17 @@ namespace SophiApp.Customisations
 
         public static void _500(bool _)
         {
-            var hevcvLink = new List<KeyValuePair<string, string>>();
             var adguardPattern = "<tr style.*<a href=\"(?<Url>.*)\"\\s.*>(?<Version>.*)<\\/a>";
             var hevcvPattern = "Microsoft.HEVCVideoExtension_.*_x64__8wekyb3d8bbwe.appx";
             var adguardResponse = WebHelper.GetPostResponse(_500_ADGUARD_LINK, _500_ADGUARD_WEB_PARAMS).Result;
+            var hevcvDto = Regex.Matches(adguardResponse, adguardPattern)
+                                 .Cast<Match>()
+                                 .FirstOrDefault(link => Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern));
 
-            foreach (var link in Regex.Matches(adguardResponse, adguardPattern).Cast<Match>().ToList())
-            {
-                if (Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern))
-                {
-                    hevcvLink.Add(new KeyValuePair<string, string>(link.Groups["Version"].Value, link.Groups["Url"].Value));
-                    break;
-                }
-            }
-
-            var appx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvLink.FirstOrDefault().Key}";
-            WebHelper.Download(hevcvLink.FirstOrDefault().Value, appx, true);
-            UwpHelper.InstallPackage(appx);
-            FileHelper.FileDelete(appx);
+            var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
+            WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
+            UwpHelper.InstallPackage(hevcvAppx);
+            FileHelper.FileDelete(hevcvAppx);
         }
 
         public static void _501(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot,
@@ -898,6 +892,20 @@ namespace SophiApp.Customisations
                                                         _602_HWSCH_MODE,
                                                             IsChecked ? _602_ENABLED_VALUE : _602_DISABLED_VALUE,
                                                                 RegistryValueKind.DWord);
+
+        public static void _700(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                var taskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+                var taskTrigger = new LogonTrigger();
+                var keys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
+                RegHelper.TryDeleteKey(RegistryHive.LocalMachine, keys, _700_STATE_FLAGS_1337);
+                ScheduledTaskHelper.RegisterTask(taskName: taskName, taskDescription: _700_SOPHIA_CLEANUP_TASK_DESCRIPTION, execute: POWERSHELL_EXE, 
+                                                    arg: _700_CLEANUP_TASK_ARG, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, taskTrigger);
+                return;
+            }
+        }
 
         public static void _900(bool IsChecked)
         {

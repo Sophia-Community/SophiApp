@@ -18,11 +18,11 @@ namespace SophiApp.Helpers
 
         internal static TaskState GetTaskState(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}")?.State ?? throw new SheduledTaskNotFoundException(taskName);
 
-        internal static void RegisterLogonTask(string name, string description, string execute, string args, string username)
+        internal static void RegisterLogonTask(string name, string description, string execute, string arg, string username)
         {
             var td = TaskService.Instance.NewTask();
             td.Triggers.Add(new LogonTrigger() { UserId = username });
-            td.Actions.Add(execute, args);
+            td.Actions.Add(execute, arg);
             td.Principal.UserId = username;
             td.Principal.RunLevel = TaskRunLevel.Highest;
             td.Settings.Compatibility = TaskCompatibility.V2_2;
@@ -36,6 +36,22 @@ namespace SophiApp.Helpers
             var task = GetTask(taskPath, taskName);
             if (task != null)
                 task.Enabled = enable;
+        }
+
+        internal static bool Exist(string taskPath, string taskName) => (GetTask(taskPath, taskName) is null).Invert();
+
+        internal static void RegisterTask(string taskName, string taskDescription, string execute, string arg, string userName, TaskRunLevel runLevel, Trigger trigger)
+        {
+            var td = TaskService.Instance.NewTask();
+            td.Triggers.Add(trigger);
+            td.Actions.Add(execute, arg);
+            td.Principal.UserId = userName;
+            td.Principal.RunLevel = runLevel;
+            td.Settings.Compatibility = TaskCompatibility.V2_2;
+            td.Settings.StartWhenAvailable = true;
+            td.RegistrationInfo.Author = AppHelper.AppName;
+            td.RegistrationInfo.Description = taskDescription;
+            _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
         }
     }
 }

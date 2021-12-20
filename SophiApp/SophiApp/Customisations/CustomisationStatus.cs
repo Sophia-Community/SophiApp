@@ -227,7 +227,7 @@ namespace SophiApp.Customisations
 
         public static bool _248()
         {
-            RegHelper.TryDeleteKey(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _248_LINK);
+            RegHelper.TryDeleteValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _248_LINK);
             return RegHelper.GetStringValue(RegistryHive.CurrentUser, _248_EXPLORER_NAMING_PATH, _248_SHORTCUT) is null;
         }
 
@@ -443,6 +443,9 @@ namespace SophiApp.Customisations
                         : throw new PcIsVirtualMachineException()
                     : throw new AdapterTypeInternalOrNullException($"{adapterDAC}");
         }
+
+        public static bool _700() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _700_SOPHIA_CLEANUP_TASK)
+                                        || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _700_SOPHIA_CLEANUP_TASK);
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 

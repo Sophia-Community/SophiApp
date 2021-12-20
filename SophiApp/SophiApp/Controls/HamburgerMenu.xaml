@@ -53,12 +53,13 @@
                     Tag="{StaticResource Tags.View.StartMenu}"
                     Text="{DynamicResource Localization.StartMenu}" />
 
-                <local:HamburgerButton VerticalAlignment="Top"
-                                       Margin="0, 180, 0, 0"
-                                       Icon="{DynamicResource Icon.UwpApps}"
-                                       IconMargin="21, 0, 0, 0"
-                                       Text="{DynamicResource Localization.UwpApps}"
-                                       Tag="{StaticResource Tags.View.UwpApps}" />
+                <local:HamburgerButton 
+                    VerticalAlignment="Top"
+                    Margin="0, 180, 0, 0"
+                    Icon="{DynamicResource Icon.UwpApps}"
+                    IconMargin="21, 0, 0, 0"
+                    Text="{DynamicResource Localization.UwpApps}"
+                    Tag="{StaticResource Tags.View.UwpApps}" />
 
                 <local:HamburgerButton
                     Margin="0,225,0,0"
@@ -74,8 +75,7 @@
                     Icon="{DynamicResource Icon.TaskSheduler}"
                     IconMargin="7, 8, 0, 0"
                     Tag="{StaticResource Tags.View.TaskSheduler}"
-                    Text="{DynamicResource Localization.TaskSheduler}"
-                    IsHitTestVisible="False" />
+                    Text="{DynamicResource Localization.TaskSheduler}" />
 
                 <local:HamburgerButton
                     Margin="0,315,0,0"
