@@ -90,6 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\LocalizedText.cs" />
     <Compile Include="Conditions\Windows10DebloaterNotUsed.cs" />
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>
@@ -234,6 +235,7 @@
     <Compile Include="Helpers\UwpHelper.cs" />
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
+    <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="Interfaces\ICondition.cs" />
     <Compile Include="Interfaces\IElement.cs" />
     <Compile Include="Interfaces\IParentElements.cs" />

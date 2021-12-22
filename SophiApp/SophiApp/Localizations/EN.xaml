@@ -52,4 +52,14 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. Preventively, reinstall the entire OS</system:String>
     <system:String x:Key="Conditions.NoNewVersion">A new version found</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">For all users</system:String>
+    <system:String x:Key="Localization.CleanupTask.Description">Cleaning up Windows unused files and updates using built-in Disk cleanup app</system:String>
+    <system:String x:Key="Localization.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates</system:String>
+    <system:String x:Key="Localization.NotificationTask.Title">Important Information</system:String>
+    <system:String x:Key="Localization.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
+    <system:String x:Key="Localization.NotificationTask.Event">Windows cleanup won't take long. Next time this notification will appear in 30 days</system:String>
+    <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
+    <system:String x:Key="Localization.Time.Minute">1 minute</system:String>
+    <system:String x:Key="Localization.Time.HalfHour">30 minutes</system:String>
+    <system:String x:Key="Localization.Time.FourHours">4 hours</system:String>
+    <system:String x:Key="Localization.Run">Run</system:String>
 </ResourceDictionary>

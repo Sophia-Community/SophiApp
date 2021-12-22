@@ -2,7 +2,6 @@
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -897,12 +896,31 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                var taskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
-                var taskTrigger = new LogonTrigger();
+                var cleanupTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+                var cleanupTaskTrigger = new LogonTrigger();
+                var notificationTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
+                var notificationTaskTrigger = new DailyTrigger(daysInterval: _700_SOPHIA_CLEANUP_NOTIFICATION_INTERVAL);
+                notificationTaskTrigger.StartBoundary = DateTime.Today.AddHours(21);
+                var notificationTaskArg = TextHelper.LocalizeCleanupTaskToast(_700_CLEANUP_TOAST_TASK_ARG);
                 var keys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
+
                 RegHelper.TryDeleteKey(RegistryHive.LocalMachine, keys, _700_STATE_FLAGS_1337);
-                ScheduledTaskHelper.RegisterTask(taskName: taskName, taskDescription: _700_SOPHIA_CLEANUP_TASK_DESCRIPTION, execute: POWERSHELL_EXE, 
-                                                    arg: _700_CLEANUP_TASK_ARG, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, taskTrigger);
+
+                ScheduledTaskHelper.RegisterTask(taskName: cleanupTaskName, taskDescription: _700_SOPHIA_CLEANUP_TASK_DESCRIPTION, execute: POWERSHELL_EXE,
+                                                    arg: _700_CLEANUP_TASK_ARG, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, cleanupTaskTrigger);
+
+                // Persist the Settings notifications to prevent to immediately disappear from Action Center
+                RegHelper.SetValue(RegistryHive.CurrentUser, _700_ACTION_CENTER_APPX_PATH, _700_SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
+                // Register the "WindowsCleanup" protocol to be able to run the scheduled task by clicking the "Run" button in a toast
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP, string.Empty, _700_WINDOWS_CLEANUP_URL, RegistryValueKind.String);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP, _700_URL_PROTOCOL, string.Empty, RegistryValueKind.String);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP, _700_EDIT_FLAGS, _700_EDIT_FLAGS_VALUE, RegistryValueKind.DWord);
+                //# Start the "Windows Cleanup" task if the "Run" button clicked
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP_OPEN_PATH, string.Empty, _700_WINDOWS_CLEANUP_COMMAND, RegistryValueKind.String);
+
+                ScheduledTaskHelper.RegisterTask(taskName: notificationTaskName, taskDescription: _700_SOPHIA_NOTIFICATION_TASK_DESCRIPTION, execute: POWERSHELL_EXE,
+                                                    arg: notificationTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, notificationTaskTrigger);
+
                 return;
             }
         }

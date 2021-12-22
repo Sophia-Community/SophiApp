@@ -53,7 +53,7 @@
                     Tag="{StaticResource Tags.View.StartMenu}"
                     Text="{DynamicResource Localization.StartMenu}" />
 
-                <local:HamburgerButton 
+                <local:HamburgerButton
                     VerticalAlignment="Top"
                     Margin="0, 180, 0, 0"
                     Icon="{DynamicResource Icon.UwpApps}"

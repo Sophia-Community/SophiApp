@@ -52,4 +52,14 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed">Стабильность Вашей ОС могла быть нарушена использованием скрипта Windows10Debloater от Sycnex. В целях профилактики переустановите ОС</system:String>
     <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всех пользователей</system:String>
+    <system:String x:Key="Localization.CleanupTask.Description">Очистка неиспользуемых файлов и обновлений Windows, используя встроенную программу Очистка диска</system:String>
+    <system:String x:Key="Localization.NotificationTask.Description">Всплывающее уведомление с напоминанием об очистке неиспользуемых файлов и обновлений Windows</system:String>
+    <system:String x:Key="Localization.NotificationTask.Title">Важная информация</system:String>
+    <system:String x:Key="Localization.NotificationTask.EventTitle">Запустить задачу по очистке неиспользуемых файлов и обновлений Windows?</system:String>
+    <system:String x:Key="Localization.NotificationTask.Event">Очистка Windows не займет много времени. Следующий раз это уведомление появится через 30 дней</system:String>
+    <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Выберите интервал повтора уведомления</system:String>
+    <system:String x:Key="Localization.Time.Minute">1 минута</system:String>
+    <system:String x:Key="Localization.Time.HalfHour">30 минут</system:String>
+    <system:String x:Key="Localization.Time.FourHours">4 часа</system:String>
+    <system:String x:Key="Localization.Run">Запустить</system:String>
 </ResourceDictionary>

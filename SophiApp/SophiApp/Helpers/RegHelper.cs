@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SophiApp.Helpers
@@ -62,6 +61,5 @@ namespace SophiApp.Helpers
                 yield return $@"{ path }\{ name }";
             }
         }
-
     }
 }
