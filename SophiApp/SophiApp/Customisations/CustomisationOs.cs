@@ -9,6 +9,7 @@ using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
 using System.Text.RegularExpressions;
+using System.Windows;
 using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
@@ -894,23 +895,28 @@ namespace SophiApp.Customisations
 
         public static void _700(bool IsChecked)
         {
+            var cleanupTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+            var notificationTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
+
+            var volumeCachesKeys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
+            RegHelper.TryDeleteKey(RegistryHive.LocalMachine, volumeCachesKeys, _700_STATE_FLAGS_1337);
+
             if (IsChecked)
             {
-                var cleanupTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+                var cleanupTaskDescription = Application.Current.FindResource("Localization.CleanupTask.Description") as string;
                 var cleanupTaskTrigger = new LogonTrigger();
-                var notificationTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
-                var notificationTaskTrigger = new DailyTrigger(daysInterval: _700_SOPHIA_CLEANUP_NOTIFICATION_INTERVAL);
-                notificationTaskTrigger.StartBoundary = DateTime.Today.AddHours(21);
+
+                var notificationTaskDescription = Application.Current.FindResource("Localization.NotificationTask.Description") as string;
+                var notificationTaskTrigger = new DailyTrigger(daysInterval: _700_30_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
                 var notificationTaskArg = TextHelper.LocalizeCleanupTaskToast(_700_CLEANUP_TOAST_TASK_ARG);
-                var keys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
 
-                RegHelper.TryDeleteKey(RegistryHive.LocalMachine, keys, _700_STATE_FLAGS_1337);
+                RegHelper.SetValue(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH, _700_VOLUME_CACHES_NAMES, _700_STATE_FLAGS_1337, _700_STATE_FLAGS_1337_VALUE, RegistryValueKind.DWord);
 
-                ScheduledTaskHelper.RegisterTask(taskName: cleanupTaskName, taskDescription: _700_SOPHIA_CLEANUP_TASK_DESCRIPTION, execute: POWERSHELL_EXE,
+                ScheduledTaskHelper.RegisterTask(taskName: cleanupTaskName, taskDescription: cleanupTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: _700_CLEANUP_TASK_ARG, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, cleanupTaskTrigger);
 
                 // Persist the Settings notifications to prevent to immediately disappear from Action Center
-                RegHelper.SetValue(RegistryHive.CurrentUser, _700_ACTION_CENTER_APPX_PATH, _700_SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
                 // Register the "WindowsCleanup" protocol to be able to run the scheduled task by clicking the "Run" button in a toast
                 RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP, string.Empty, _700_WINDOWS_CLEANUP_URL, RegistryValueKind.String);
                 RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP, _700_URL_PROTOCOL, string.Empty, RegistryValueKind.String);
@@ -918,11 +924,34 @@ namespace SophiApp.Customisations
                 //# Start the "Windows Cleanup" task if the "Run" button clicked
                 RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP_OPEN_PATH, string.Empty, _700_WINDOWS_CLEANUP_COMMAND, RegistryValueKind.String);
 
-                ScheduledTaskHelper.RegisterTask(taskName: notificationTaskName, taskDescription: _700_SOPHIA_NOTIFICATION_TASK_DESCRIPTION, execute: POWERSHELL_EXE,
+                ScheduledTaskHelper.RegisterTask(taskName: notificationTaskName, taskDescription: notificationTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: notificationTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, notificationTaskTrigger);
 
                 return;
             }
+
+            RegHelper.DeleteKey(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER);
+            ScheduledTaskHelper.DeleteTask(new string[] { cleanupTaskName, notificationTaskName }, false);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP);
+        }
+
+        public static void _701(bool ISChecked)
+        {
+            var softwareDistributionTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
+
+            if (ISChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
+                var softwareDistributionTaskDescription = Application.Current.FindResource("Localization.SoftwareDistributionTask.Description") as string;
+                var softwareDistributionTaskTrigger = new DailyTrigger(daysInterval: _701_90_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
+                var softwareDistributionTaskArg = TextHelper.LocalizeSoftwareDistributionTaskToast(_701_SOFTWARE_DISTRIBUTION_TASK_ARG);
+                ScheduledTaskHelper.RegisterTask(taskName: softwareDistributionTaskName, taskDescription: softwareDistributionTaskDescription, execute: POWERSHELL_EXE,
+                                                    arg: softwareDistributionTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, softwareDistributionTaskTrigger);
+
+                return;
+            }
+
+            ScheduledTaskHelper.DeleteTask(softwareDistributionTaskName, false);
         }
 
         public static void _900(bool IsChecked)

@@ -1,20 +1,31 @@
-﻿using SophiApp.Commons;
+﻿using System.Windows;
 
 namespace SophiApp.Helpers
 {
     internal class TextHelper
     {
+        private static readonly char delimiter = '\n';
+        private static readonly char placeholder = '*';
+
         internal static string LocalizeCleanupTaskToast(string cleanupTaskToast)
         {
-            var toast = cleanupTaskToast.Split('\n');
-            toast[6] = toast[6].Replace("<text></text>", $"<text>{LocalizedText.NotificationTaskTitle}</text>");
-            toast[9] = toast[9].Replace("hint-wrap=\"true\"></text>", $"hint-wrap=\"true\">{LocalizedText.NotificationTaskEventTitle}</text>");
-            toast[14] = toast[14].Replace("hint-wrap=\"true\"></text>", $"hint-wrap=\"true\">{LocalizedText.NotificationTaskEvent}</text>");
-            toast[21] = toast[21].Replace("\"\"", $"\"{LocalizedText.NotificationTaskSnoozeInterval}\"");
-            toast[22] = toast[22].Replace("\"\"", $"\"{LocalizedText.Minute}\"");
-            toast[23] = toast[23].Replace("\"\"", $"\"{LocalizedText.HalfHour}\"");
-            toast[24] = toast[24].Replace("\"\"", $"\"{LocalizedText.FourHours}\"");
-            toast[27] = toast[27].Replace("\"\"", $"\"{LocalizedText.Run}\"");
+            var toast = cleanupTaskToast.Split(delimiter);
+            toast[6] = toast[6].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.NotificationTask.Title")}");
+            toast[9] = toast[9].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.NotificationTask.EventTitle")}");
+            toast[14] = toast[14].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.NotificationTask.Event")}");
+            toast[21] = toast[21].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.NotificationTask.SnoozeInterval")}");
+            toast[22] = toast[22].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Time.Minute")}");
+            toast[23] = toast[23].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Time.HalfHour")}");
+            toast[24] = toast[24].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Time.FourHours")}");
+            toast[27] = toast[27].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Run")}");
+            return string.Join("", toast);
+        }
+
+        internal static string LocalizeSoftwareDistributionTaskToast(string softwareDistributionToast)
+        {
+            var toast = softwareDistributionToast.Split(delimiter);
+            toast[8] = toast[8].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Toast.Title.Notificaton")}");
+            toast[11] = toast[11].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.SoftwareDistributionTask.Event")}");
             return string.Join("", toast);
         }
     }

@@ -1,5 +1,4 @@
-﻿using SophiApp.Commons;
-using SophiApp.Helpers;
+﻿using SophiApp.Helpers;
 using System;
 using System.Collections.Generic;
 
@@ -229,10 +228,9 @@ namespace SophiApp.Customisations
         internal const string _602_INTERNAL_DAC_TYPE = "Internal";
         internal const string _602_WDDM_VERSION = "WddmVersion_Min";
         internal const int _602_WDDM_VERSION_MIN = 2700;
-        internal const string _700_VOLUME_CACHES_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches";
-        internal const string _700_STATE_FLAGS_1337 = "StateFlags1337";
+        internal const byte _700_30_DAYS_INTERVAL = 30;
 
-        internal const string _700_CLEANUP_TASK_ARG = @"-WindowStyle Hidden -Command ""Get-Process -Name cleanmgr | Stop-Process -Force;
+        internal const string _700_CLEANUP_TASK_ARG = @"-WindowStyle Hidden -Command Get-Process -Name cleanmgr | Stop-Process -Force;
 Get-Process -Name Dism | Stop-Process -Force;
 Get-Process -Name DismHost | Stop-Process -Force;
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo;
@@ -288,56 +286,88 @@ $ProcessInfo.UseShellExecute = $true;
 $ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized;
 $Process = New-Object -TypeName System.Diagnostics.Process;
 $Process.StartInfo = $ProcessInfo;
-$Process.Start() | Out-Null;""
-";
+$Process.Start() | Out-Null;";
 
-        internal const string _700_CLEANUP_TOAST_TASK_ARG = @"-WindowStyle Hidden -Command ""[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
+        internal const string _700_CLEANUP_TOAST_TASK_ARG = @"-WindowStyle Hidden -Command [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
 [xml]$ToastTemplate = @""""""
-<toast duration=""""Long"""" scenario=""""reminder"""">
+<toast duration=""""""Long"""""" scenario=""""""reminder"""""">
 	<visual>
-		<binding template=""""ToastGeneric"""">
-			<text></text>
+		<binding template = """"""ToastGeneric"""""" >
+            <text>*</text>
 			<group>
 				<subgroup>
-					<text hint-style=""""title"""" hint-wrap=""""true""""></text>
+					<text hint-style=""""""title"""""" hint-wrap=""""""true"""""">*</text>
 				</subgroup>
 			</group>
 			<group>
 				<subgroup>
-					<text hint-style=""""body"""" hint-wrap=""""true""""></text>
+					<text hint-style=""""""body"""""" hint-wrap=""""""true"""""">*</text>
 				</subgroup>
 			</group>
 		</binding>
 	</visual>
-	<audio src=""""ms-winsoundevent:notification.default""""/>
-	<actions>
-		<input id=""""SnoozeTimer"""" type=""""selection"""" title="""""""" defaultInput=""""1"""">
-			<selection id=""""1"""" content=""""""""/>
-			<selection id=""""30"""" content=""""""""/>
-			<selection id=""""240"""" content="""""""" />
+	<audio src=""""""ms-winsoundevent:notification.default""""""/>
+    <actions>
+        <input id=""""""SnoozeTimer"""""" type=""""""selection"""""" title=""""""*"""""" defaultInput=""""""1"""""">
+			<selection id=""""""1"""""" content=""""""*"""""" />
+			<selection id=""""""30"""""" content=""""""*"""""" />
+			<selection id=""""""240"""""" content=""""""*"""""" />
 		</input>
-		<action activationType=""""system"""" arguments=""""snooze"""" hint-inputId=""""SnoozeTimer"""" content="""""""" id=""""test-snooze""""/>
-		<action arguments=""""WindowsCleanup:"""" content="""""""" activationType=""""protocol""""/>
-		<action arguments=""""dismiss"""" content="""""""" activationType=""""system""""/>
+		<action activationType=""""""system"""""" arguments=""""""snooze"""""" hint-inputId=""""""SnoozeTimer"""""" content="""""""""""" id=""""""test-snooze""""""/>
+		<action arguments=""""""WindowsCleanup:"""""" content=""""""*"""""" activationType=""""""protocol""""""/>
+		<action arguments=""""""dismiss"""""" content="""""""""""" activationType=""""""system""""""/>
 	</actions>
 </toast>
 """"""@
 $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)""
-";
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
 
-        internal const string _700_ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
-        internal const string _700_SHOW_IN_ACTION_CENTER = "ShowInActionCenter";
-        internal const string _700_WINDOWS_CLEANUP = "WindowsCleanup";
-        internal const string _700_WINDOWS_CLEANUP_OPEN_PATH = @"WindowsCleanup\shell\open\command";
-        internal const string _700_WINDOWS_CLEANUP_COMMAND = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath ''\SophiApp\'' -TaskName ''Windows Cleanup''}""' -Force";
-        internal const string _700_WINDOWS_CLEANUP_URL = "URL:WindowsCleanup";
-        internal const string _700_URL_PROTOCOL = "URL Protocol";
         internal const string _700_EDIT_FLAGS = "EditFlags";
         internal const uint _700_EDIT_FLAGS_VALUE = 2162688;
+        internal const string _700_SOPHIA_CLEANUP_NOTIFICATION_TASK = "Windows Cleanup Notification";
+        internal const string _700_SOPHIA_CLEANUP_TASK = "Windows Cleanup";
+        internal const string _700_STATE_FLAGS_1337 = "StateFlags1337";
+        internal const byte _700_STATE_FLAGS_1337_VALUE = 2;
+        internal const string _700_URL_PROTOCOL = "URL Protocol";
+        internal const string _700_VOLUME_CACHES_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches";
+        internal const string _700_WINDOWS_CLEANUP = "WindowsCleanup";
+
+        internal const string _700_WINDOWS_CLEANUP_COMMAND = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath 'SophiApp' -TaskName 'Windows Cleanup'}"" -Force";
+
+        internal const string _700_WINDOWS_CLEANUP_OPEN_PATH = @"WindowsCleanup\shell\open\command";
+
+        internal const string _700_WINDOWS_CLEANUP_URL = "URL:WindowsCleanup";
+
+        internal const byte _701_90_DAYS_INTERVAL = 90;
+
+        internal const string _701_SOFTWARE_DISTRIBUTION_TASK_ARG = @"-WindowStyle Hidden -Command (Get-Service -Name wuauserv).WaitForStatus('Stopped', '01:00:00')
+Get-ChildItem -Path $env:SystemRoot\SoftwareDistribution\Download -Recurse -Force | Remove-Item -Recurse -Force
+[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
+[Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
+[xml]$ToastTemplate = @""""""
+<toast duration=""""""Long"""""">
+	<visual>
+		<binding template = """"""ToastGeneric"""""">
+			<text>*</text>
+			<group>
+				<subgroup>
+					<text hint-style=""""""body"""""" hint-wrap=""""""true"""""">*</text>
+				</subgroup>
+			</group>
+		</binding>
+	</visual>
+	<audio src = """"""ms-winsoundevent:notification.default""""""/>
+</toast>
+""""""@
+$ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
+$ToastXml.LoadXml($ToastTemplate.OuterXml)
+$ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
+
+        internal const string _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK = "SoftwareDistribution";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -389,6 +419,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const int _924_PROMPT_VALUE = 300;
         internal const string _925_NO_USE_NAME = "NoUseStoreOpenWith";
         internal const byte _925_NO_USE_VALUE = 1;
+        internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
         internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";
         internal const byte ADMIN_PROMPT_DEFAULT_VALUE = 5;
         internal const byte ADMIN_PROMPT_NEVER_VALUE = 0;
@@ -448,9 +479,11 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string SERVICE_SPOOLER = "Spooler";
         internal const string SESSION_MANAGER_ENVIRONMENT = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
         internal const string SHELL_EXT_BLOCKED_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
+        internal const string SHOW_IN_ACTION_CENTER = "ShowInActionCenter";
         internal const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
         internal const string SIUF_PATH = @"SOFTWARE\Microsoft\Siuf\Rules";
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
+        internal const string SOPHIA_SCRIPT_SCHEDULED_PATH = "Sophia Script";
         internal const string START_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
         internal const string STARTUP_PAGE = "StartupPage";
         internal const byte STARTUP_PAGE_CATEGORY_VALUE = 0;
@@ -481,6 +514,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string WUSA_EXE = "wusa.exe";
         internal const string X64 = "x64";
         internal const string XBOX_GAMING_OVERLAY_UWP = "Microsoft.XboxGamingOverlay";
+        internal static readonly DateTime _21_PM_TASK_START = DateTime.Today.AddHours(21);
         internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static readonly string _362_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
         internal static readonly string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
@@ -490,15 +524,9 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
             { "ring", "RP" }, { "lang", "en-US" }
         };
 
+        internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "Device Driver Packages", "Previous Installations", "Setup Log Files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows Upgrade Log Files" };
+        internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        internal const string SOPHIA_SCRIPT_SCHEDULED_PATH = "Sophia Script";
-        internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
-        internal const string _700_SOPHIA_CLEANUP_TASK = "Windows Cleanup";
-        internal const string _700_SOPHIA_CLEANUP_NOTIFICATION_TASK = "Windows Cleanup Notification";
-        internal const byte _700_SOPHIA_CLEANUP_NOTIFICATION_INTERVAL = 30;
-        internal static readonly string _700_SOPHIA_CLEANUP_TASK_DESCRIPTION = LocalizedText.CleanupTaskDescription;
-        internal static readonly string _700_SOPHIA_NOTIFICATION_TASK_DESCRIPTION = LocalizedText.NotificationTaskDescription;
-        internal static readonly DateTime _700_SOPHIA_NOTIFICATION_TASK_START = DateTime.Today.AddHours(21);
     }
 }

@@ -23,13 +23,6 @@ namespace SophiApp.Helpers
 
         public bool Result { get; set; } = false;
 
-        private void InitializingConditions() => Conditions = new List<ICondition>()
-        {
-            new OsBuildVersion(), new OsUpdateBuildRevision(), new LoggedUserAdmin(),
-            new OsNotInfected(), new Windows10DebloaterNotUsed(),
-            //new NoNewVersion()
-        };
-
         internal async Task InvokeAsync()
         {
             await Task.Run(() =>
@@ -53,5 +46,12 @@ namespace SophiApp.Helpers
                 }
             });
         }
+
+        private void InitializingConditions() => Conditions = new List<ICondition>()
+        {
+            new OsBuildVersion(), new OsUpdateBuildRevision(), new LoggedUserAdmin(),
+            new OsNotInfected(), new Windows10DebloaterNotUsed(),
+            //new NoNewVersion()
+        };
     }
 }

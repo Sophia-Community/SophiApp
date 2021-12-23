@@ -31,19 +31,19 @@ namespace SophiApp.Helpers
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
 
-        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
+        public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern int PostMessageW(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int Msg, IntPtr wParam, string lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern bool SendNotifyMessage(IntPtr hWnd, uint Msg, IntPtr wParam, string lParam);
-
-        [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
+        public static void RefreshEnvironment()
+        {
+            // Update Desktop Icons
+            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
+            // Update Environment Variables
+            SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, null, SMTO_ABORTIFHUNG, 100, IntPtr.Zero);
+            // Update Taskbar
+            SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, TRAY_SETTINGS);
+            // Update Start Menu
+            ProcessHelper.Stop(START_MENU_PROCESS);
+        }
 
         internal static ushort GetBuild() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD).ToUshort();
 
@@ -115,18 +115,18 @@ namespace SophiApp.Helpers
                 ProcessHelper.StartWait(REGSVR_32, $"/u /s {dll}");
         }
 
-        public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
+        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
 
-        public static void RefreshEnvironment()
-        {
-            // Update Desktop Icons
-            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
-            // Update Environment Variables
-            SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, null, SMTO_ABORTIFHUNG, 100, IntPtr.Zero);
-            // Update Taskbar
-            SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, TRAY_SETTINGS);
-            // Update Start Menu
-            ProcessHelper.Stop(START_MENU_PROCESS);
-        }
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int PostMessageW(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int Msg, IntPtr wParam, string lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern bool SendNotifyMessage(IntPtr hWnd, uint Msg, IntPtr wParam, string lParam);
+
+        [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
     }
 }

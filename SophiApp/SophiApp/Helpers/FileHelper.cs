@@ -15,53 +15,6 @@ namespace SophiApp.Helpers
             MOVEFILE_DELAY_UNTIL_REBOOT = 0x00000004
         }
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, int dwFlags);
-
-        private static string GetTargetPathRelativeToLink(string linkPath, string targetPath, bool linkAndTargetAreDirectories = false)
-        {
-            string returnPath;
-
-            FileAttributes relativePathAttribute = 0;
-            if (linkAndTargetAreDirectories)
-            {
-                relativePathAttribute = FileAttributes.Directory;
-                // set the link path to the parent directory, so that PathRelativePathToW returns a path that works
-                // for directory symlink traversal
-                linkPath = Path.GetDirectoryName(linkPath.TrimEnd(Path.DirectorySeparatorChar));
-            }
-
-            StringBuilder relativePath = new StringBuilder(maxRelativePathLengthUnicodeChars);
-            if (!PathRelativePathToW(relativePath, linkPath, relativePathAttribute, targetPath, relativePathAttribute))
-            {
-                Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
-                returnPath = targetPath;
-            }
-            else
-            {
-                returnPath = relativePath.ToString();
-            }
-
-            return returnPath;
-        }
-
-        private static void MarkFileDelete(params string[] files)
-        {
-            foreach (var file in files)
-                _ = MoveFileEx(file, null, MoveFileFlags.MOVEFILE_DELAY_UNTIL_REBOOT);
-        }
-
-        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        private static extern bool MoveFileEx(string lpExistingFileName, string lpNewFileName, MoveFileFlags dwFlags);
-
-        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool PathRelativePathToW(
-            StringBuilder pszPath,
-            string pszFrom,
-            FileAttributes dwAttrFrom,
-            string pszTo,
-            FileAttributes dwAttrTo);
-
         internal static void CreateDirectory(string dirPath)
         {
             try
@@ -191,5 +144,52 @@ namespace SophiApp.Helpers
                 }
             }
         }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, int dwFlags);
+
+        private static string GetTargetPathRelativeToLink(string linkPath, string targetPath, bool linkAndTargetAreDirectories = false)
+        {
+            string returnPath;
+
+            FileAttributes relativePathAttribute = 0;
+            if (linkAndTargetAreDirectories)
+            {
+                relativePathAttribute = FileAttributes.Directory;
+                // set the link path to the parent directory, so that PathRelativePathToW returns a path that works
+                // for directory symlink traversal
+                linkPath = Path.GetDirectoryName(linkPath.TrimEnd(Path.DirectorySeparatorChar));
+            }
+
+            StringBuilder relativePath = new StringBuilder(maxRelativePathLengthUnicodeChars);
+            if (!PathRelativePathToW(relativePath, linkPath, relativePathAttribute, targetPath, relativePathAttribute))
+            {
+                Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                returnPath = targetPath;
+            }
+            else
+            {
+                returnPath = relativePath.ToString();
+            }
+
+            return returnPath;
+        }
+
+        private static void MarkFileDelete(params string[] files)
+        {
+            foreach (var file in files)
+                _ = MoveFileEx(file, null, MoveFileFlags.MOVEFILE_DELAY_UNTIL_REBOOT);
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        private static extern bool MoveFileEx(string lpExistingFileName, string lpNewFileName, MoveFileFlags dwFlags);
+
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool PathRelativePathToW(
+            StringBuilder pszPath,
+            string pszFrom,
+            FileAttributes dwAttrFrom,
+            string pszTo,
+            FileAttributes dwAttrTo);
     }
 }

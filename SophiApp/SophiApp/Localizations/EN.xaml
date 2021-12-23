@@ -43,6 +43,7 @@
     <system:String x:Key="Localization.ViewChanges.Apply">Apply</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">An update for SophiApp is avalaible</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
+    <system:String x:Key="Localization.Toast.Title.Notificaton">Notification</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
     <system:String x:Key="Conditions.OsBuildVersion">Supported Windows 10 versions: 2004/20H2/21H1/21H2</system:String>
@@ -58,6 +59,8 @@
     <system:String x:Key="Localization.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
     <system:String x:Key="Localization.NotificationTask.Event">Windows cleanup won't take long. Next time this notification will appear in 30 days</system:String>
     <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">The "%SystemRoot%\SoftwareDistribution\Download" folder cleanup</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache successfully deleted</system:String>
     <system:String x:Key="Localization.Time.Minute">1 minute</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 minutes</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 hours</system:String>

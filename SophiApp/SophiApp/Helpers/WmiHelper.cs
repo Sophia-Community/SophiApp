@@ -8,8 +8,6 @@ namespace SophiApp.Helpers
     {
         private const string PROTECTION_STATUS = "ProtectionStatus";
 
-        private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
-
         internal static string GetActivePowerPlanId()
         {
             var searcher = GetManagementObjectSearcher(@"Root\Cimv2\power", "SELECT * FROM Win32_PowerPlan WHERE IsActive = True");
@@ -85,5 +83,7 @@ namespace SophiApp.Helpers
                 _ = adapter.Put();
             }
         }
+
+        private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
     }
 }

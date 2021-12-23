@@ -43,6 +43,7 @@
     <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление для SophiApp</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
+    <system:String x:Key="Localization.Toast.Title.Notificaton">Уведомление</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
     <system:String x:Key="Conditions.OsBuildVersion">Поддерживаемые версии Windows 10: 2004/20H2/21H1/21H2</system:String>
@@ -58,6 +59,8 @@
     <system:String x:Key="Localization.NotificationTask.EventTitle">Запустить задачу по очистке неиспользуемых файлов и обновлений Windows?</system:String>
     <system:String x:Key="Localization.NotificationTask.Event">Очистка Windows не займет много времени. Следующий раз это уведомление появится через 30 дней</system:String>
     <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Выберите интервал повтора уведомления</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки "%SystemRoot%\SoftwareDistribution\Download"</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кэш обновлений Windows успешно удален</system:String>
     <system:String x:Key="Localization.Time.Minute">1 минута</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 минут</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 часа</system:String>

@@ -15,41 +15,6 @@ namespace SophiApp.Helpers
 
         private const uint SERVICE_QUERY_CONFIG = 0x00000001;
 
-        [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool ChangeServiceConfig(
-        IntPtr hService,
-        UInt32 nServiceType,
-        UInt32 nStartType,
-        UInt32 nErrorControl,
-        String lpBinaryPathName,
-        String lpLoadOrderGroup,
-        IntPtr lpdwTagId,
-        [In] char[] lpDependencies,
-        String lpServiceStartName,
-        String lpPassword,
-        String lpDisplayName);
-
-        [DllImport("advapi32.dll", EntryPoint = "CloseServiceHandle")]
-        private static extern int CloseServiceHandle(IntPtr hSCObject);
-
-        [DllImport("advapi32.dll", EntryPoint = "OpenSCManagerW", ExactSpelling = true, CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern IntPtr OpenSCManager(string machineName, string databaseName, uint dwAccess);
-
-        [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        private static extern IntPtr OpenService(IntPtr hSCManager, string lpServiceName, uint dwDesiredAccess);
-
-        internal static ServiceController Get(string serviceName) => new ServiceController(serviceName);
-
-        internal static void Restart(string serviceName)
-        {
-            var timeout = 10.0;
-            var service = new ServiceController(serviceName);
-            service.Stop();
-            service.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(timeout));
-            service.Start();
-            service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(timeout));
-        }
-
         public static void SetStartMode(ServiceController svc, ServiceStartMode mode)
         {
             var scManagerHandle = OpenSCManager(null, null, SC_MANAGER_ALL_ACCESS);
@@ -92,5 +57,40 @@ namespace SophiApp.Helpers
             CloseServiceHandle(serviceHandle);
             CloseServiceHandle(scManagerHandle);
         }
+
+        internal static ServiceController Get(string serviceName) => new ServiceController(serviceName);
+
+        internal static void Restart(string serviceName)
+        {
+            var timeout = 10.0;
+            var service = new ServiceController(serviceName);
+            service.Stop();
+            service.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(timeout));
+            service.Start();
+            service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(timeout));
+        }
+
+        [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool ChangeServiceConfig(
+        IntPtr hService,
+        UInt32 nServiceType,
+        UInt32 nStartType,
+        UInt32 nErrorControl,
+        String lpBinaryPathName,
+        String lpLoadOrderGroup,
+        IntPtr lpdwTagId,
+        [In] char[] lpDependencies,
+        String lpServiceStartName,
+        String lpPassword,
+        String lpDisplayName);
+
+        [DllImport("advapi32.dll", EntryPoint = "CloseServiceHandle")]
+        private static extern int CloseServiceHandle(IntPtr hSCObject);
+
+        [DllImport("advapi32.dll", EntryPoint = "OpenSCManagerW", ExactSpelling = true, CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern IntPtr OpenSCManager(string machineName, string databaseName, uint dwAccess);
+
+        [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern IntPtr OpenService(IntPtr hSCManager, string lpServiceName, uint dwDesiredAccess);
     }
 }

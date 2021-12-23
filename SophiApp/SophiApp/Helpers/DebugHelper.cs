@@ -43,14 +43,6 @@ namespace SophiApp.Helpers
 
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
 
-        private static void WriteInfoLog(string record) => InfoLog.Add(record);
-
-        private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
-
-        private static void WriteInitLog(string record) => InitLog.Add($"{DateTime} {record}");
-
-        private static void WriteStatusLog(string record) => StatusLog.Add($"{DateTime} {record}");
-
         internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
 
         internal static void AppLanguage(string language) => WriteInfoLog($"{APP_LOC}: {language}");
@@ -123,5 +115,13 @@ namespace SophiApp.Helpers
         internal static void UwpRemovedHasException(string packageName, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
+
+        private static void WriteInfoLog(string record) => InfoLog.Add(record);
+
+        private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
+
+        private static void WriteInitLog(string record) => InitLog.Add($"{DateTime} {record}");
+
+        private static void WriteStatusLog(string record) => StatusLog.Add($"{DateTime} {record}");
     }
 }

@@ -16,6 +16,14 @@ namespace SophiApp.Models
         public List<TextedElement> ChildElements { get; set; } = new List<TextedElement>();
         public List<TextedElementDto> ChildsDTO { get; set; }
 
+        public override void ChangeLanguage(UILanguage language)
+        {
+            base.ChangeLanguage(language);
+            ChildElements.ForEach(child => child.ChangeLanguage(language));
+        }
+
+        public void OnChildErrorOccured(TextedElement child, Exception e) => base.ErrorOccurred(child, e);
+
         internal override void GetCustomisationStatus()
         {
             try
@@ -29,13 +37,5 @@ namespace SophiApp.Models
                 ErrorOccurred?.Invoke(this, e);
             }
         }
-
-        public override void ChangeLanguage(UILanguage language)
-        {
-            base.ChangeLanguage(language);
-            ChildElements.ForEach(child => child.ChangeLanguage(language));
-        }
-
-        public void OnChildErrorOccured(TextedElement child, Exception e) => base.ErrorOccurred(child, e);
     }
 }

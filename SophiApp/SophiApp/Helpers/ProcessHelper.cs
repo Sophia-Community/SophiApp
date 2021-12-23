@@ -8,13 +8,6 @@ namespace SophiApp.Helpers
 {
     internal class ProcessHelper
     {
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool CloseHandle(IntPtr hObject);
-
-        [DllImport("advapi32.dll", SetLastError = true)]
-        private static extern bool OpenProcessToken(IntPtr ProcessHandle, uint DesiredAccess, out IntPtr TokenHandle);
-
         internal static WindowsIdentity GetProcessUser(string process)
         {
             IntPtr processHandle = IntPtr.Zero;
@@ -71,5 +64,12 @@ namespace SophiApp.Helpers
             foreach (var proc in processNames)
                 Stop(proc);
         }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CloseHandle(IntPtr hObject);
+
+        [DllImport("advapi32.dll", SetLastError = true)]
+        private static extern bool OpenProcessToken(IntPtr ProcessHandle, uint DesiredAccess, out IntPtr TokenHandle);
     }
 }

@@ -10,15 +10,6 @@ namespace SophiApp.Helpers
     {
         private const string MODELS = "SophiApp.Models";
 
-        private static TextedElement GetTextedElement(TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler,
-                                                        EventHandler<TextedElement> StatusHandler, UILanguage Language)
-        {
-            var parameters = (Dto, ErrorHandler, StatusHandler, Customisation: CustomisationsHelper.GetCustomisationStatus(Dto.Id), Language);
-            var type = Type.GetType($"{MODELS}.{parameters.Dto.Type}");
-            var element = Activator.CreateInstance(type, parameters) as TextedElement;
-            return element;
-        }
-
         internal static TextedElement CreateTextedElement(TextedElementDto dto, Action<TextedElement, Exception> errorHandler,
                                                                     EventHandler<TextedElement> statusHandler, UILanguage language)
         {
@@ -48,6 +39,15 @@ namespace SophiApp.Helpers
         {
             var type = Type.GetType($"{MODELS}.UwpElement");
             return Activator.CreateInstance(type, dto) as UwpElement;
+        }
+
+        private static TextedElement GetTextedElement(TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler,
+                                                                        EventHandler<TextedElement> StatusHandler, UILanguage Language)
+        {
+            var parameters = (Dto, ErrorHandler, StatusHandler, Customisation: CustomisationsHelper.GetCustomisationStatus(Dto.Id), Language);
+            var type = Type.GetType($"{MODELS}.{parameters.Dto.Type}");
+            var element = Activator.CreateInstance(type, parameters) as TextedElement;
+            return element;
         }
     }
 }
