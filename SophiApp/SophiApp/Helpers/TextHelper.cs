@@ -21,6 +21,14 @@ namespace SophiApp.Helpers
             return string.Join("", toast);
         }
 
+        internal static string LocalizeClearTempTaskToast(string clearTempTaskToast)
+        {
+            var toast = clearTempTaskToast.Split(delimiter);
+            toast[7] = toast[7].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Toast.Title.Notificaton")}");
+            toast[10] = toast[10].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.ClearTempTask.Event")}");
+            return string.Join("", toast);
+        }
+
         internal static string LocalizeSoftwareDistributionTaskToast(string softwareDistributionToast)
         {
             var toast = softwareDistributionToast.Split(delimiter);

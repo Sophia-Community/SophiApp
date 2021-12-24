@@ -104,12 +104,12 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border
                         x:Name="BorderThumb"
-                        Width="4"
+                        Width="8"
                         Margin="8,0,-2,0"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="0"
-                        CornerRadius="4" />
+                        CornerRadius="0" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -61,6 +61,8 @@
     <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">The "%SystemRoot%\SoftwareDistribution\Download" folder cleanup</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache successfully deleted</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Description">The "%Temp%" folder cleanup</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Event">The temp files folder successfully cleaned up</system:String>
     <system:String x:Key="Localization.Time.Minute">1 minute</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 minutes</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 hours</system:String>

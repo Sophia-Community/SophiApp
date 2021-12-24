@@ -925,7 +925,7 @@ namespace SophiApp.Customisations
                 RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP_OPEN_PATH, string.Empty, _700_WINDOWS_CLEANUP_COMMAND, RegistryValueKind.String);
 
                 ScheduledTaskHelper.RegisterTask(taskName: notificationTaskName, taskDescription: notificationTaskDescription, execute: POWERSHELL_EXE,
-                                                    arg: notificationTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, notificationTaskTrigger);
+                                                    arg: notificationTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: notificationTaskTrigger);
 
                 return;
             }
@@ -946,12 +946,30 @@ namespace SophiApp.Customisations
                 var softwareDistributionTaskTrigger = new DailyTrigger(daysInterval: _701_90_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
                 var softwareDistributionTaskArg = TextHelper.LocalizeSoftwareDistributionTaskToast(_701_SOFTWARE_DISTRIBUTION_TASK_ARG);
                 ScheduledTaskHelper.RegisterTask(taskName: softwareDistributionTaskName, taskDescription: softwareDistributionTaskDescription, execute: POWERSHELL_EXE,
-                                                    arg: softwareDistributionTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, softwareDistributionTaskTrigger);
+                                                    arg: softwareDistributionTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: softwareDistributionTaskTrigger);
 
                 return;
             }
 
             ScheduledTaskHelper.DeleteTask(softwareDistributionTaskName, false);
+        }
+
+        public static void _702(bool IsChecked)
+        {
+            var clearTempTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
+
+            if (IsChecked)
+            {
+                var clearTempTaskDescription = Application.Current.FindResource("Localization.ClearTempTask.Description") as string;
+                var clearTempTaskTrigger = new DailyTrigger(daysInterval: _702_60_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
+                var clearTempTaskArg = TextHelper.LocalizeClearTempTaskToast(_702_CLEAR_TEMP_ARG);
+                ScheduledTaskHelper.RegisterTask(taskName: clearTempTaskName, taskDescription: clearTempTaskDescription, execute: POWERSHELL_EXE,
+                                                    arg: clearTempTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: clearTempTaskTrigger);
+
+                return;
+            }
+
+            ScheduledTaskHelper.DeleteTask(clearTempTaskName, false);
         }
 
         public static void _900(bool IsChecked)

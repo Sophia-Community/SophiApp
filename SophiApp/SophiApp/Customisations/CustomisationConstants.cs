@@ -230,19 +230,19 @@ namespace SophiApp.Customisations
         internal const int _602_WDDM_VERSION_MIN = 2700;
         internal const byte _700_30_DAYS_INTERVAL = 30;
 
-        internal const string _700_CLEANUP_TASK_ARG = @"-WindowStyle Hidden -Command Get-Process -Name cleanmgr | Stop-Process -Force;
-Get-Process -Name Dism | Stop-Process -Force;
-Get-Process -Name DismHost | Stop-Process -Force;
-$ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo;
-$ProcessInfo.FileName = """"""$env:SystemRoot\system32\cleanmgr.exe"""""";
-$ProcessInfo.Arguments = """"""/sagerun:1337"""""";
-$ProcessInfo.UseShellExecute = $true;
-$ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized;
-$Process = New-Object -TypeName System.Diagnostics.Process;
-$Process.StartInfo = $ProcessInfo;
-$Process.Start() | Out-Null;
-Start-Sleep -Seconds 3;
-[int]$SourceMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle;
+        internal const string _700_CLEANUP_TASK_ARG = @"-WindowStyle Hidden -Command Get-Process -Name cleanmgr | Stop-Process -Force
+Get-Process -Name Dism | Stop-Process -Force
+Get-Process -Name DismHost | Stop-Process -Force
+$ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
+$ProcessInfo.FileName = """"""$env:SystemRoot\system32\cleanmgr.exe""""""
+$ProcessInfo.Arguments = """"""/sagerun:1337""""""
+$ProcessInfo.UseShellExecute = $true
+$ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized
+$Process = New-Object -TypeName System.Diagnostics.Process
+$Process.StartInfo = $ProcessInfo
+$Process.Start() | Out-Null
+Start-Sleep -Seconds 3
+[int]$SourceMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
 function MinimizeWindow
     {
         [CmdletBinding()]
@@ -257,7 +257,7 @@ function MinimizeWindow
         Language = """"""CSharp""""""
         MemberDefinition = @'
 [DllImport(""""""user32.dll"""""")]
-public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow)
 '@
     }
 
@@ -265,28 +265,28 @@ public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
     {
         Add-Type @ShowWindowAsync
     }
-	$MainWindowHandle = (Get-Process -Name $Process | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle;
-    [WinAPI.Win32ShowWindowAsync]::ShowWindowAsync($MainWindowHandle, 2);
+	$MainWindowHandle = (Get-Process -Name $Process | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
+    [WinAPI.Win32ShowWindowAsync]::ShowWindowAsync($MainWindowHandle, 2)
     }
 
 while ($true)
 {
-    [int]$CurrentMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle;
+    [int]$CurrentMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
     if ($SourceMainWindowHandle -ne $CurrentMainWindowHandle)
     {
-        MinimizeWindow -Process cleanmgr;
-        break;
+        MinimizeWindow -Process cleanmgr
+        break
     }
-    Start-Sleep -Milliseconds 5;
+    Start-Sleep -Milliseconds 5
 }
-$ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo;
-$ProcessInfo.FileName = """"""$env:SystemRoot\system32\dism.exe"""""";
-$ProcessInfo.Arguments = """"""/Online /English /Cleanup-Image /StartComponentCleanup /NoRestart"""""";
-$ProcessInfo.UseShellExecute = $true;
-$ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized;
-$Process = New-Object -TypeName System.Diagnostics.Process;
-$Process.StartInfo = $ProcessInfo;
-$Process.Start() | Out-Null;";
+$ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
+$ProcessInfo.FileName = """"""$env:SystemRoot\system32\dism.exe""""""
+$ProcessInfo.Arguments = """"""/Online /English /Cleanup-Image /StartComponentCleanup /NoRestart""""""
+$ProcessInfo.UseShellExecute = $true
+$ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized
+$Process = New-Object -TypeName System.Diagnostics.Process
+$Process.StartInfo = $ProcessInfo
+$Process.Start() | Out-Null";
 
         internal const string _700_CLEANUP_TOAST_TASK_ARG = @"-WindowStyle Hidden -Command [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
@@ -334,13 +334,9 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _700_URL_PROTOCOL = "URL Protocol";
         internal const string _700_VOLUME_CACHES_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches";
         internal const string _700_WINDOWS_CLEANUP = "WindowsCleanup";
-
         internal const string _700_WINDOWS_CLEANUP_COMMAND = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath 'SophiApp' -TaskName 'Windows Cleanup'}"" -Force";
-
         internal const string _700_WINDOWS_CLEANUP_OPEN_PATH = @"WindowsCleanup\shell\open\command";
-
         internal const string _700_WINDOWS_CLEANUP_URL = "URL:WindowsCleanup";
-
         internal const byte _701_90_DAYS_INTERVAL = 90;
 
         internal const string _701_SOFTWARE_DISTRIBUTION_TASK_ARG = @"-WindowStyle Hidden -Command (Get-Service -Name wuauserv).WaitForStatus('Stopped', '01:00:00')
@@ -368,6 +364,32 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
 
         internal const string _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK = "SoftwareDistribution";
+        internal const byte _702_60_DAYS_INTERVAL = 60;
+
+        internal const string _702_CLEAR_TEMP_ARG = @"-WindowStyle Hidden -Command Get-ChildItem -Path $env:TEMP -Recurse -Force | Where-Object {$_.CreationTime -lt (Get-Date).AddDays(-1)} | Remove-Item -Recurse -Force
+[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
+[Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
+[xml]$ToastTemplate = @""""""
+<toast duration=""""""Long"""""">
+	<visual>
+		<binding template=""""""ToastGeneric"""""">
+			<text>*</text>
+			<group>
+				<subgroup>
+					<text hint-style=""""""body"""""" hint-wrap=""""""true"""""">*</text>
+				</subgroup>
+			</group>
+		</binding>
+	</visual>
+	<audio src=""""""ms-winsoundevent:notification.default"""""" />
+</toast>
+""""""@
+$ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
+$ToastXml.LoadXml($ToastTemplate.OuterXml)
+$ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
+
+        internal const string _702_SOPHIA_CLEAR_TEMP_TASK = "Temp";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";

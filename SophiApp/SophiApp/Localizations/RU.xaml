@@ -61,6 +61,8 @@
     <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Выберите интервал повтора уведомления</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки "%SystemRoot%\SoftwareDistribution\Download"</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кэш обновлений Windows успешно удален</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки "%Temp%"</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>
     <system:String x:Key="Localization.Time.Minute">1 минута</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 минут</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 часа</system:String>

@@ -450,6 +450,9 @@ namespace SophiApp.Customisations
         public static bool _701() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK)
                                         || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK);
 
+        public static bool _702() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK)
+                                        || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
+
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
         public static bool _901() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _901_CAB_COM_PATH);
