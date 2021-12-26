@@ -365,12 +365,16 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.CurrentUser, _230_STUCK_RECTS3_PATH, _230_STUCK_RECTS3_SETTINGS, settings, RegistryValueKind.Binary);
         }
 
-        public static void _231(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        _213_FEEDS_PATH,
-                                                                            _231_SHELL_FEEDS,
-                                                                                IsChecked ? _231_SHELL_FEEDS_ENABLED_VALUE
-                                                                                         : _231_SHELL_FEEDS_DISABLED_VALUE,
-                                                                                    RegistryValueKind.DWord);
+        public static void _231(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, _231_FEEDS_POLICY_PATH, _231_ENABLE_FEEDS);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, _231_FEEDS_POLICY_PATH, _231_ENABLE_FEEDS, _231_SHELL_FEEDS_ENABLED_VALUE, RegistryValueKind.DWord);
+        }
 
         public static void _233(bool _)
         {

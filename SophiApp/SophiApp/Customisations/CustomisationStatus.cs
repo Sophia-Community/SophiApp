@@ -163,11 +163,9 @@ namespace SophiApp.Customisations
         public static bool _221() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _221_SHOW_TASK_VIEW)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _222() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _222_PEOPLE_EXPLORER_PATH, _222_PEOPLE_BAND)
-                                              .HasNullOrValue(ENABLED_VALUE);
+        public static bool _222() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _222_PEOPLE_EXPLORER_PATH, _222_PEOPLE_BAND) == ENABLED_VALUE;
 
-        public static bool _223() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _223_SHOW_SECONDS)
-                                              .HasNullOrValue(ENABLED_VALUE);
+        public static bool _223() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _223_SHOW_SECONDS) == ENABLED_VALUE;
 
         public static bool _225() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_HIDE_VALUE;
 
@@ -176,8 +174,7 @@ namespace SophiApp.Customisations
         public static bool _227() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE)
                                               .HasNullOrValue(TASKBAR_SEARCH_BOX_VALUE);
 
-        public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _228_PEN_WORKSPACE_PATH, _228_PEN_WORKSPACE_VISIBILITY)
-                                              .HasNullOrValue(ENABLED_VALUE);
+        public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _228_PEN_WORKSPACE_PATH, _228_PEN_WORKSPACE_VISIBILITY) == ENABLED_VALUE;
 
         public static bool _229() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _229_AUTO_TRAY)
                                               .HasNullOrValue(_229_AUTO_TRAY_HIDE_VALUE)
@@ -187,7 +184,7 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, _230_STUCK_RECTS3_PATH, _230_STUCK_RECTS3_SETTINGS)[9] == _230_STUCK_RECTS3_SHOW_VALUE
                                      : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{_230_STUCK_RECTS3_PATH}\{_230_STUCK_RECTS3_SETTINGS}");
 
-        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _213_FEEDS_PATH, _231_SHELL_FEEDS)
+        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_FEEDS_PATH, _231_SHELL_FEEDS)
                                               .HasNullOrValue(_231_SHELL_FEEDS_ENABLED_VALUE);
 
         public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTROL_PANEL_EXPLORER_PATH, ALL_ITEMS_ICON_VIEW).HasValue(ALL_ITEMS_ICON_CATEGORY_VALUE)
@@ -422,11 +419,11 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
-        public static bool _600() => RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
-                                     && RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
+        public static bool _600() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
+                                     && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
 
         public static bool _601() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
-                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
+                                     ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
                                      : throw new UwpAppNotFoundException($"{XBOX_GAMING_OVERLAY_UWP} or {GAMING_APP_UWP}");
 
         public static bool _602()

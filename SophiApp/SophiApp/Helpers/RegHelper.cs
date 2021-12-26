@@ -16,7 +16,7 @@ namespace SophiApp.Helpers
 
         internal static byte GetByteValue(RegistryHive hive, string path, string name) => Convert.ToByte(GetKey(hive, path).GetValue(name));
 
-        internal static byte? GetNullableByteValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as byte?;
+        internal static byte? GetNullableByteValue(RegistryHive hive, string path, string name) => (GetKey(hive, path)?.GetValue(name)) is null ? null as byte? : Convert.ToByte(GetKey(hive, path).GetValue(name));
 
         internal static int? GetNullableIntValue(RegistryHive hive, string path, string name) => GetKey(hive, path)?.GetValue(name) as int?;
 

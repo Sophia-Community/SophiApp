@@ -58,8 +58,7 @@ namespace SophiApp.Customisations
         internal const string _206_HIDE_MERGE_CONF = "HideMergeConflicts";
         internal const string _210_CORTANA_BUTTON = "ShowCortanaButton";
         internal const string _211_SHOW_SYNC_PROVIDER = "ShowSyncProviderNotifications";
-        internal const string _212_SNAP_ASSIST = "SnapAssist";
-        internal const string _213_FEEDS_PATH = @"Software\Microsoft\Windows\CurrentVersion\Feeds";
+        internal const string _212_SNAP_ASSIST = "SnapAssist";        
         internal const byte _216_EXPANDED_VALUE = 0;
         internal const byte _216_MINIMIZED_VALUE = 1;
         internal const string _216_RIBBON_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ribbon";
@@ -85,8 +84,10 @@ namespace SophiApp.Customisations
         internal const string _230_STUCK_RECTS3_PATH = @"Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3";
         internal const string _230_STUCK_RECTS3_SETTINGS = "Settings";
         internal const byte _230_STUCK_RECTS3_SHOW_VALUE = 0;
+        internal const string _231_ENABLE_FEEDS = "EnableFeeds";
+        internal const string _231_FEEDS_POLICY_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Windows Feeds";
+        internal const string _231_FEEDS_PATH = @"Software\Microsoft\Windows\CurrentVersion\Feeds";
         internal const string _231_SHELL_FEEDS = "ShellFeedsTaskbarViewMode";
-        internal const byte _231_SHELL_FEEDS_DISABLED_VALUE = 2;
         internal const byte _231_SHELL_FEEDS_ENABLED_VALUE = 0;
         internal const byte _242_HIDE_ALERT_VALUE = 1;
         internal const string _242_NO_NEW_APP_ALERT = "NoNewAppAlert";
