@@ -419,7 +419,7 @@ namespace SophiApp.Customisations
                                      : throw new UwpAppFoundException(_500_UWP_HEVC_VIDEO);
 
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
-                                     ? RegHelper.GetByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE
+                                     ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
         public static bool _600() => RegHelper.GetByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE

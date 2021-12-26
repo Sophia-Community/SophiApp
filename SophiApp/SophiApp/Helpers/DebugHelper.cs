@@ -63,7 +63,7 @@ namespace SophiApp.Helpers
 
         internal static void HasUpdateRelease(ReleaseDto release) => WriteInfoLog(new List<string>()
         {
-            $"New version is available: {release.tag_name}",
+            $"Version is available: {release.tag_name}",
             $"Is prerelease: {release.prerelease}",
             $"Is draft: {release.draft}"
         });
