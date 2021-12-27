@@ -33,12 +33,12 @@
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" MouseLeftButtonDown="TitleLeft_MouseLeftButtonDown">
                 <StackPanel>
                     <Ellipse />
-                    <TextBlock
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                        Style="{DynamicResource SmallText}"
-                        Text="{Binding Path=(helpers:AppHelper.AppName)}" />
+                    <TextBlock HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="5, 0, 0, 0"
+                               Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                               Style="{DynamicResource SmallText}"
+                               Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
                 </StackPanel>
             </Grid>
         </ControlTemplate>

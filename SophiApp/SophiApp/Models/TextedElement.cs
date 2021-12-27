@@ -32,6 +32,14 @@ namespace SophiApp.Models
 
         public event EventHandler<TextedElement> StatusChanged;
 
+        protected Dictionary<UILanguage, string> Descriptions { get; set; }
+
+        internal Func<bool> CustomisationStatus { get; set; }
+
+        internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
+
+        internal UILanguage Language { get; set; }
+
         public string Description
         {
             get => description;
@@ -67,16 +75,8 @@ namespace SophiApp.Models
         }
 
         public string Tag { get; }
-        internal Func<bool> CustomisationStatus { get; set; }
-        internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
-        internal UILanguage Language { get; set; }
-        protected Dictionary<UILanguage, string> Descriptions { get; set; }
 
-        public virtual void ChangeLanguage(UILanguage language)
-        {
-            Header = Headers[language];
-            Description = Descriptions[language];
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         internal void ChangeStatus() => Status = Status == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
 
@@ -101,6 +101,10 @@ namespace SophiApp.Models
             DebugHelper.TextedElementInit(Id, stopwatch.Elapsed.TotalSeconds);
         }
 
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public virtual void ChangeLanguage(UILanguage language)
+        {
+            Header = Headers[language];
+            Description = Descriptions[language];
+        }
     }
 }

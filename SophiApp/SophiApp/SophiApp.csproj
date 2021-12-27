@@ -224,6 +224,7 @@
     <Compile Include="Helpers\MsiHelper.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\OsHelper.cs" />
+    <Compile Include="Helpers\PowerShellHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RegHelper.cs" />
     <Compile Include="Helpers\ScheduledTaskHelper.cs" />

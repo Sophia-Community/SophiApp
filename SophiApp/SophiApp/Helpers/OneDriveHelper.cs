@@ -7,7 +7,6 @@ namespace SophiApp.Helpers
 {
     internal class OneDriveHelper
     {
-        internal static readonly string ONEDRIVE_SETUP_EXE = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SysWOW64\OneDriveSetup.exe";
         private const string ENVIRONMENT = "Environment";
         private const string ONE_DRIVE = "OneDrive";
         private const string ONE_DRIVE_AUTH = "FileCoAuth";
@@ -29,19 +28,26 @@ namespace SophiApp.Helpers
         private static readonly string ONE_DRIVE_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk";
         private static readonly string ONE_DRIVE_TEMP = $@"{Environment.GetEnvironmentVariable("SystemDrive")}\OneDriveTemp";
         private static readonly string PROGRAM_DATA_ONE_DRIVE = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft OneDrive";
+        internal static readonly string ONEDRIVE_SETUP_EXE = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SysWOW64\OneDriveSetup.exe";
+
+        private static string GetUninstallString()
+        {
+            return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
+                    ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
+        }
 
         internal static void Install()
         {
             if (File.Exists(ONEDRIVE_SETUP_EXE))
             {
-                ProcessHelper.StartWait(ONEDRIVE_SETUP_EXE, null);
+                ProcessHelper.StartWait(ONEDRIVE_SETUP_EXE);
                 return;
             }
 
             var oneDriveUrl = WebHelper.GetXmlResponse(ONE_DRIVE_XML).DocumentElement.FirstChild.LastChild.Attributes[2].Value;
             var oneDriveFile = $@"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDER, USER_DOWNLOAD_FOLDER)}\{ONE_DRIVE_SETUP_EXE}";
             WebHelper.Download(url: oneDriveUrl, file: oneDriveFile, deleteIsExisting: true);
-            ProcessHelper.StartWait(oneDriveFile, null);
+            ProcessHelper.StartWait(oneDriveFile);
             FileHelper.FileDelete(oneDriveFile);
         }
 
@@ -81,12 +87,6 @@ namespace SophiApp.Helpers
             OsHelper.UnregisterDlls(syncShell64Dlls);
             FileHelper.DirectoryLazyDelete(oneDriveFolder, APPDATA_ONE_DRIVE_FOLDER, APPDATA_MS_ONE_DRIVE_FOLDER);
             FileHelper.FileDelete(ONE_DRIVE_LNK);
-        }
-
-        private static string GetUninstallString()
-        {
-            return RegHelper.GetStringValue(RegistryHive.CurrentUser, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING)
-                    ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
         }
     }
 }

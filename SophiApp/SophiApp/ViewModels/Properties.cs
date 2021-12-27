@@ -35,6 +35,8 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public string AppName { get => AppHelper.AppName; }
+
         public Theme AppSelectedTheme
         {
             get => themesHelper.SelectedTheme;
@@ -101,7 +103,6 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> LocalizationList => localizationsHelper.GetNames();
-
         public List<TextedElement> TextedElements { get; private set; }
 
         public List<UwpElement> UwpElementsAllUsers
@@ -134,6 +135,8 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(UwpForAllUsersStatePropertyName);
             }
         }
+
+        public string Version { get => AppHelper.Version.ToString(); }
 
         public bool ViewsHitTest
         {

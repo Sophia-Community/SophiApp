@@ -21,6 +21,17 @@ namespace SophiApp.Watchers
 
         internal event EventHandler<byte> SystemThemeChangedEvent;
 
+        private void SystemThemeChanged()
+        {
+            var currentTheme = RegHelper.GetByteValue(RegistryHive.CurrentUser, PERSONALIZE_PATH, USES_LIGHT_THEME);
+
+            if (currentTheme != systemTheme)
+            {
+                systemTheme = currentTheme;
+                SystemThemeChangedEvent?.Invoke(null, currentTheme);
+            }
+        }
+
         internal static RegistryWatcher GetInstance()
         {
             if (instance == null)
@@ -44,17 +55,6 @@ namespace SophiApp.Watchers
                     Thread.Sleep(2500);
                 }
             });
-        }
-
-        private void SystemThemeChanged()
-        {
-            var currentTheme = RegHelper.GetByteValue(RegistryHive.CurrentUser, PERSONALIZE_PATH, USES_LIGHT_THEME);
-
-            if (currentTheme != systemTheme)
-            {
-                systemTheme = currentTheme;
-                SystemThemeChangedEvent?.Invoke(null, currentTheme);
-            }
         }
     }
 }

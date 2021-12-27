@@ -21,30 +21,6 @@ namespace SophiApp.ViewModels
 {
     internal partial class AppVM
     {
-        internal async void InitData()
-        {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(1033);
-            DebugHelper.StartInitOsConditions();
-            var stopwatch = Stopwatch.StartNew();
-            var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
-            //TODO: For debug only!
-            await conditionsHelper.InvokeAsync();
-            stopwatch.Stop();
-            DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
-            //TODO: For debug only!
-            if (conditionsHelper.Result)
-            {
-                MouseHelper.ShowWaitCursor(show: true);
-                _ = await DismHelper.GetInstanceAsync();
-                await InitTextedElementsAsync();
-                await InitUwpElementsAsync();
-                await InitWatchersAsync();
-                SetVisibleViewTag(Tags.ViewPrivacy);
-                SetControlsHitTest(hamburgerHitTest: true);
-                MouseHelper.ShowWaitCursor(show: false);
-            }
-        }
-
         private void AdvancedSettingsClicked(object args) => AdvancedSettingsVisibility = AdvancedSettingsVisibility.Invert();
 
         private async void ApplyingSettingsAsync(object args)
@@ -78,14 +54,15 @@ namespace SophiApp.ViewModels
 
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
-                DismHelper.GetInstance().GetInstalledComponents();
                 TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
                               .ToList()
                               .ForEach(element => element.GetCustomisationStatus());
                 GetUwpElements();
-                SetLoadingPanelVisibility();
+                DismHelper.GetInstance().GetInstalledComponents();
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
+                OsHelper.SafelyRestartExplorerProcess();
+                SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 totalStopWatch.Stop();
                 DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
@@ -373,5 +350,29 @@ namespace SophiApp.ViewModels
         }
 
         private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
+
+        internal async void InitData()
+        {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(1033);
+            DebugHelper.StartInitOsConditions();
+            var stopwatch = Stopwatch.StartNew();
+            var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
+            //TODO: For debug only!
+            await conditionsHelper.InvokeAsync();
+            stopwatch.Stop();
+            DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
+            //TODO: For debug only!
+            if (conditionsHelper.Result)
+            {
+                MouseHelper.ShowWaitCursor(show: true);
+                _ = await DismHelper.GetInstanceAsync();
+                await InitTextedElementsAsync();
+                await InitUwpElementsAsync();
+                await InitWatchersAsync();
+                SetVisibleViewTag(Tags.ViewPrivacy);
+                SetControlsHitTest(hamburgerHitTest: true);
+                MouseHelper.ShowWaitCursor(show: false);
+            }
+        }
     }
 }

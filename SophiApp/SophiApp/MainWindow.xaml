@@ -53,7 +53,14 @@
             <Setter Property="Width" Value="1074" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Title" Value="{Binding Path=(helpers:AppHelper.AppName)}" />
+            <Setter Property="Title">
+                <Setter.Value>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="AppName" />
+                        <Binding Path="Version" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Style>
     <Window.Resources>

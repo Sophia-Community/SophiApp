@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,6 +9,13 @@ namespace SophiApp.Helpers
 {
     internal class ProcessHelper
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CloseHandle(IntPtr hObject);
+
+        [DllImport("advapi32.dll", SetLastError = true)]
+        private static extern bool OpenProcessToken(IntPtr ProcessHandle, uint DesiredAccess, out IntPtr TokenHandle);
+
         internal static WindowsIdentity GetProcessUser(string process)
         {
             IntPtr processHandle = IntPtr.Zero;
@@ -39,12 +47,20 @@ namespace SophiApp.Helpers
             });
         }
 
-        internal static void StartWait(string processName, string args, ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal) => Process.Start(new ProcessStartInfo()
+        internal static void StartWait(string processName, string args = null, ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal) => Process.Start(new ProcessStartInfo()
         {
             FileName = processName,
             Arguments = args,
             WindowStyle = windowStyle,
         }).WaitForExit();
+
+        internal static void StartWait(string processName, List<string> args, ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal)
+        {
+            foreach (var path in args)
+            {
+                StartWait(processName, path, windowStyle);
+            }
+        }
 
         internal static void Stop(string processName)
         {
@@ -64,12 +80,5 @@ namespace SophiApp.Helpers
             foreach (var proc in processNames)
                 Stop(proc);
         }
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool CloseHandle(IntPtr hObject);
-
-        [DllImport("advapi32.dll", SetLastError = true)]
-        private static extern bool OpenProcessToken(IntPtr ProcessHandle, uint DesiredAccess, out IntPtr TokenHandle);
     }
 }

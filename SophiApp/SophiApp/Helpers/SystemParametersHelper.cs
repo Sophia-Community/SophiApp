@@ -11,6 +11,12 @@ namespace SophiApp.Helpers
         private const int SPIF_UPDATEINIFILE = 0x01;
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-systemparametersinfow
 
+        [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW")]
+        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, [MarshalAs(UnmanagedType.Bool)] out bool pvParam, uint fWinIni);
+
+        [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW")]
+        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);
+
         internal static bool GetInputSettings()
         {
             _ = SystemParametersInfo(SPI_GETTHREADLOCALINPUTSETTINGS, 0, out bool result, 0);
@@ -18,11 +24,5 @@ namespace SophiApp.Helpers
         }
 
         internal static void SetInputSettings(bool value) => SystemParametersInfo(SPI_SETTHREADLOCALINPUTSETTINGS, 0, Convert.ToByte(value), SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
-
-        [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW")]
-        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, [MarshalAs(UnmanagedType.Bool)] out bool pvParam, uint fWinIni);
-
-        [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW")]
-        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);
     }
 }

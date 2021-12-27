@@ -63,6 +63,24 @@
                         Grid.Row="1"
                         Style="{DynamicResource ViewScrollStyle}">
                         <StackPanel>
+                            <controls:GitHubHyperLink
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
+
+                            <StackPanel Style="{StaticResource PanelContainer}">
+
+                                <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.Settings.Version}" />
+
+                                <TextBlock Style="{DynamicResource NormalText}" Text=":" />
+
+                                <TextBlock
+                                    Margin="3,0,0,0"
+                                    Style="{DynamicResource NormalText}"
+                                    Text="{Binding Source={x:Static helpers:AppHelper.Version}}" />
+                            </StackPanel>
+
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
                                 Style="{DynamicResource SubHeaderText}"
@@ -86,24 +104,6 @@
                                 Command="{Binding LocalizationChangeCommand}"
                                 SelectedText="{Binding Localization.Name, UpdateSourceTrigger=PropertyChanged}"
                                 Source="{Binding LocalizationList, UpdateSourceTrigger=PropertyChanged}" />
-
-                            <controls:GitHubHyperLink
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
-
-                            <StackPanel Style="{StaticResource PanelContainer}">
-
-                                <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.Settings.Version}" />
-
-                                <TextBlock Style="{DynamicResource NormalText}" Text=":" />
-
-                                <TextBlock
-                                    Margin="3,0,0,0"
-                                    Style="{DynamicResource NormalText}"
-                                    Text="{Binding Source={x:Static helpers:AppHelper.Version}}" />
-                            </StackPanel>
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"

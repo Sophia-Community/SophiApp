@@ -34,6 +34,13 @@ namespace SophiApp.Helpers
             { new Theme() { Alias = LIGHT_THEME_ALIAS, Name = Application.Current.FindResource("Localization.Settings.Themes.Light") as string, Uri = new Uri(LIGHT_THEME_URI, UriKind.Absolute) } }
         };
 
+        private void Init()
+        {
+            var regThemeValue = RegHelper.GetByteValue(RegistryHive.CurrentUser, THEME_REGISTRY_PATH, THEME_REGISTRY_VALUE);
+            SelectedTheme = Themes[regThemeValue];
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = SelectedTheme.Uri });
+        }
+
         internal void ChangeTheme(Theme theme)
         {
             var dictionary = Application.Current.Resources.MergedDictionaries.First(dict => dict.Source == SelectedTheme.Uri);
@@ -42,12 +49,5 @@ namespace SophiApp.Helpers
         }
 
         internal Theme Find(string name) => Themes.Find(theme => theme.Name == name);
-
-        private void Init()
-        {
-            var regThemeValue = RegHelper.GetByteValue(RegistryHive.CurrentUser, THEME_REGISTRY_PATH, THEME_REGISTRY_VALUE);
-            SelectedTheme = Themes[regThemeValue];
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = SelectedTheme.Uri });
-        }
     }
 }

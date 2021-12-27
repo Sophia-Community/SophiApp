@@ -14,17 +14,9 @@ namespace SophiApp.Models
             ChildsDTO = parameters.Dto.ChildElements;
         }
 
+        internal uint DefaultId { get; private set; }
         public List<TextedElement> ChildElements { get; set; } = new List<TextedElement>();
         public List<TextedElementDto> ChildsDTO { get; set; }
-        internal uint DefaultId { get; private set; }
-
-        public override void ChangeLanguage(UILanguage language)
-        {
-            base.ChangeLanguage(language);
-            ChildElements.ForEach(child => child.ChangeLanguage(language));
-        }
-
-        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
 
         internal override void GetCustomisationStatus()
         {
@@ -40,5 +32,13 @@ namespace SophiApp.Models
                 ErrorOccurred?.Invoke(this, e);
             }
         }
+
+        public override void ChangeLanguage(UILanguage language)
+        {
+            base.ChangeLanguage(language);
+            ChildElements.ForEach(child => child.ChangeLanguage(language));
+        }
+
+        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
     }
 }

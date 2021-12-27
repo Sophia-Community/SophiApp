@@ -1,17 +1,24 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Threading;
 
 namespace SophiApp.Helpers
 {
     internal class OsHelper
     {
+        private const string AUTORESTART_SHELL = "AutoRestartShell";
         private const string CURRENT_BUILD = "CurrentBuild";
         private const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private const byte DISABLED_VALUE = 0;
         private const string DISPLAY_VERSION_NAME = "DisplayVersion";
         private const string EDITION_ID_NAME = "EditionID";
+        private const byte ENABLED_VALUE = 1;
+        private const string EXPLORER = "explorer";
         private const string MAJOR_VERSION_NUMBER = "CurrentMajorVersionNumber";
         private const string MINOR_VERSION_NUMBER = "CurrentMinorVersionNumber";
         private const int Msg = 273;
@@ -21,8 +28,10 @@ namespace SophiApp.Helpers
         private const string REGSVR_32 = "regsvr32.exe";
         private const int SMTO_ABORTIFHUNG = 0x0002;
         private const string START_MENU_PROCESS = "StartMenuExperienceHost";
+        private const int TIMEOUT_3_SECONDS = 3000;
         private const string TRAY_SETTINGS = "TraySettings";
         private const string UBR = "UBR";
+        private const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
@@ -31,19 +40,19 @@ namespace SophiApp.Helpers
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
 
-        public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
+        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
 
-        public static void RefreshEnvironment()
-        {
-            // Update Desktop Icons
-            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
-            // Update Environment Variables
-            SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, null, SMTO_ABORTIFHUNG, 100, IntPtr.Zero);
-            // Update Taskbar
-            SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, TRAY_SETTINGS);
-            // Update Start Menu
-            ProcessHelper.Stop(START_MENU_PROCESS);
-        }
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int PostMessageW(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int Msg, IntPtr wParam, string lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern bool SendNotifyMessage(IntPtr hWnd, uint Msg, IntPtr wParam, string lParam);
+
+        [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
         internal static ushort GetBuild() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD).ToUshort();
 
@@ -75,6 +84,23 @@ namespace SophiApp.Helpers
         }
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
+
+        internal static void SafelyRestartExplorerProcess()
+        {
+            // Save opened folders
+            var openedFolders = ComObjectHelper.GetOpenedFolders().ToList();
+            // Terminate the File Explorer process
+            RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, DISABLED_VALUE, RegistryValueKind.DWord);
+            ProcessHelper.Stop(EXPLORER);
+            Thread.Sleep(TIMEOUT_3_SECONDS);
+            RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, ENABLED_VALUE, RegistryValueKind.DWord);
+            // Start the File Explorer process
+            ProcessHelper.StartWait(EXPLORER);
+            Thread.Sleep(TIMEOUT_3_SECONDS);
+            // Restoring closed folders
+            ProcessHelper.StartWait(EXPLORER, openedFolders, ProcessWindowStyle.Minimized);
+            Thread.Sleep(TIMEOUT_3_SECONDS);
+        }
 
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
         {
@@ -115,18 +141,18 @@ namespace SophiApp.Helpers
                 ProcessHelper.StartWait(REGSVR_32, $"/u /s {dll}");
         }
 
-        private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
+        public static void PostMessage() => PostMessageW(hWnd, Msg, UIntPtr, IntPtr.Zero);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern int PostMessageW(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int Msg, IntPtr wParam, string lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern bool SendNotifyMessage(IntPtr hWnd, uint Msg, IntPtr wParam, string lParam);
-
-        [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
+        public static void RefreshEnvironment()
+        {
+            // Update Desktop Icons
+            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
+            // Update Environment Variables
+            SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, null, SMTO_ABORTIFHUNG, 100, IntPtr.Zero);
+            // Update Taskbar
+            SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, TRAY_SETTINGS);
+            // Update Start Menu
+            ProcessHelper.Stop(START_MENU_PROCESS);
+        }
     }
 }

@@ -11,6 +11,10 @@ namespace SophiApp.Controls
     /// </summary>
     public partial class IconWinCheckBox : UserControl
     {
+        private new static readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IconWinCheckBox));
+
+        private new static readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IconWinCheckBox));
+
         // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(IconWinCheckBox), new PropertyMetadata(default));
@@ -30,10 +34,6 @@ namespace SophiApp.Controls
         // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StatusProperty =
             DependencyProperty.Register("Status", typeof(ElementStatus), typeof(IconWinCheckBox), new PropertyMetadata(ElementStatus.UNCHECKED));
-
-        private new static readonly RoutedEvent MouseEnterEvent = EventManager.RegisterRoutedEvent("MouseEnter", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IconWinCheckBox));
-
-        private new static readonly RoutedEvent MouseLeaveEvent = EventManager.RegisterRoutedEvent("MouseLeave", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IconWinCheckBox));
 
         public IconWinCheckBox()
         {

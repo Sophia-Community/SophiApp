@@ -10,7 +10,6 @@ namespace SophiApp.Helpers
 {
     internal class LocalizationsHelper
     {
-        internal Localization Selected;
         private const string EN_NAME = "English";
         private const string EN_URI = "pack://application:,,,/Localizations/EN.xaml";
         private const string RU_NAME = "Русский";
@@ -22,11 +21,19 @@ namespace SophiApp.Helpers
             { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} }
         };
 
+        internal Localization Selected;
+
         public LocalizationsHelper()
         {
-            var language = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
+            var language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper();
             Selected = FindNameOrDefault(language);
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = Selected.Uri });
+        }
+
+        private Localization FindNameOrDefault(string name)
+        {
+            var parsedName = Enum.GetNames(typeof(UILanguage)).Contains(name) ? (UILanguage)Enum.Parse(typeof(UILanguage), name) : UILanguage.EN;
+            return LocalizationsData.Find(localization => localization.Language == parsedName);
         }
 
         internal void Change(Localization localization)
@@ -39,11 +46,5 @@ namespace SophiApp.Helpers
         internal Localization FindName(string text) => LocalizationsData.Find(localization => localization.Name == text);
 
         internal List<string> GetNames() => LocalizationsData.Select(localization => localization.Name).ToList();
-
-        private Localization FindNameOrDefault(string name)
-        {
-            var parsedName = Enum.GetNames(typeof(UILanguage)).Contains(name) ? (UILanguage)Enum.Parse(typeof(UILanguage), name) : UILanguage.EN;
-            return LocalizationsData.Find(localization => localization.Language == parsedName);
-        }
     }
 }

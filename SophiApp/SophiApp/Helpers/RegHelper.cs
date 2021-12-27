@@ -6,6 +6,10 @@ namespace SophiApp.Helpers
 {
     internal class RegHelper
     {
+        private static RegistryKey GetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath);
+
+        private static RegistryKey SetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath, true) ?? RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).CreateSubKey(keyPath, true);
+
         internal static void DeleteKey(RegistryHive hive, string path, string name) => SetKey(hive, path).DeleteValue(name);
 
         internal static void DeleteKey(RegistryHive hive, string path, string name, bool throwOnMissingValue) => SetKey(hive, path).DeleteValue(name, throwOnMissingValue);
@@ -65,9 +69,5 @@ namespace SophiApp.Helpers
             if (KeyExist(hive, path, name))
                 SetKey(hive, path).DeleteValue(name);
         }
-
-        private static RegistryKey GetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath);
-
-        private static RegistryKey SetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath, true) ?? RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).CreateSubKey(keyPath, true);
     }
 }

@@ -6,6 +6,8 @@ namespace SophiApp.Helpers
 {
     internal class ScheduledTaskHelper
     {
+        private static Task GetTask(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}");
+
         internal static void DeleteTask(IEnumerable<Task> tasks)
         {
             foreach (var task in tasks)
@@ -59,7 +61,5 @@ namespace SophiApp.Helpers
             if (task != null)
                 task.Enabled = enable;
         }
-
-        private static Task GetTask(string taskPath, string taskName) => TaskService.Instance.GetTask($@"{taskPath}\{taskName}");
     }
 }

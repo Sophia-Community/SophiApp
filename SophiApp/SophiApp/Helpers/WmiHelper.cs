@@ -8,6 +8,8 @@ namespace SophiApp.Helpers
     {
         private const string PROTECTION_STATUS = "ProtectionStatus";
 
+        private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
+
         internal static string GetActivePowerPlanId()
         {
             var searcher = GetManagementObjectSearcher(@"Root\Cimv2\power", "SELECT * FROM Win32_PowerPlan WHERE IsActive = True");
@@ -20,6 +22,15 @@ namespace SophiApp.Helpers
             var searcher = GetManagementObjectSearcher(@"Root\Cimv2\security\MicrosoftVolumeEncryption", "SELECT * FROM Win32_Encryptablevolume");
             var status = searcher.Get().Cast<ManagementBaseObject>().FirstOrDefault().Properties[PROTECTION_STATUS].Value;
             return Convert.ToInt32(status);
+        }
+
+        internal static T GetProperty<T>(string nameSpace, string className, string propertyName)
+        {
+            var searcher = GetManagementObjectSearcher(nameSpace, $"SELECT {propertyName} FROM {className}");
+            return (T)searcher.Get()
+                              .Cast<ManagementBaseObject>()
+                              .FirstOrDefault()
+                              .GetPropertyValue($"{propertyName}");
         }
 
         internal static string GetVideoControllerDacType()
@@ -83,7 +94,5 @@ namespace SophiApp.Helpers
                 _ = adapter.Put();
             }
         }
-
-        private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
     }
 }

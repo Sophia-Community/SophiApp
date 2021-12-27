@@ -83,8 +83,7 @@
                     Icon="{DynamicResource Icon.Security}"
                     IconMargin="7, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Security}"
-                    Text="{DynamicResource Localization.Security}"
-                    IsHitTestVisible="False" />
+                    Text="{DynamicResource Localization.Security}" />
 
                 <local:HamburgerButton
                     Margin="0,360,0,0"

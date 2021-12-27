@@ -58,7 +58,7 @@ namespace SophiApp.Customisations
         internal const string _206_HIDE_MERGE_CONF = "HideMergeConflicts";
         internal const string _210_CORTANA_BUTTON = "ShowCortanaButton";
         internal const string _211_SHOW_SYNC_PROVIDER = "ShowSyncProviderNotifications";
-        internal const string _212_SNAP_ASSIST = "SnapAssist";        
+        internal const string _212_SNAP_ASSIST = "SnapAssist";
         internal const byte _216_EXPANDED_VALUE = 0;
         internal const byte _216_MINIMIZED_VALUE = 1;
         internal const string _216_RIBBON_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ribbon";
@@ -85,10 +85,11 @@ namespace SophiApp.Customisations
         internal const string _230_STUCK_RECTS3_SETTINGS = "Settings";
         internal const byte _230_STUCK_RECTS3_SHOW_VALUE = 0;
         internal const string _231_ENABLE_FEEDS = "EnableFeeds";
-        internal const string _231_FEEDS_POLICY_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Windows Feeds";
         internal const string _231_FEEDS_PATH = @"Software\Microsoft\Windows\CurrentVersion\Feeds";
-        internal const string _231_SHELL_FEEDS = "ShellFeedsTaskbarViewMode";
+        internal const string _231_FEEDS_POLICY_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Windows Feeds";
+        internal const byte _231_SHELL_FEEDS_DISABLED_VALUE = 2;
         internal const byte _231_SHELL_FEEDS_ENABLED_VALUE = 0;
+        internal const string _231_SHELL_FEEDS_MODE = "ShellFeedsTaskbarViewMode";
         internal const byte _242_HIDE_ALERT_VALUE = 1;
         internal const string _242_NO_NEW_APP_ALERT = "NoNewAppAlert";
         internal const byte _242_SHOW_ALERT_VALUE = 0;
@@ -391,6 +392,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
 
         internal const string _702_SOPHIA_CLEAR_TEMP_TASK = "Temp";
+        internal const string _800_ENABLE_NETWORK_PROTECTION = "EnableNetworkProtection";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -451,6 +453,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const byte ALL_ITEMS_ICON_SMALL_VALUE = 1;
         internal const string ALL_ITEMS_ICON_VIEW = "AllItemsIconView";
         internal const string ALLOW_TELEMETRY = "AllowTelemetry";
+        internal const string ANTISPYWARE_ENABLED = "AntispywareEnabled";
         internal const string APPS_USES_THEME = "AppsUseLightTheme";
         internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint~~~~0.0.1.0";
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
@@ -463,6 +466,9 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string DATA = "Data";
         internal const string DATA_COLLECTION_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
         internal const byte DEFAULT_TELEMETRY_VALUE = 3;
+        internal const string DEFENDER_COMPUTER_STATUS_CLASS = "MSFT_MpComputerStatus";
+        internal const string DEFENDER_NAMESPACE = @"Root\Microsoft\Windows\Defender";
+        internal const string DEFENDER_PREFERENCE_PS = "Get-MpPreference";
         internal const string DESKTOP_ICON_THIS_COMPUTER = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
         internal const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
         internal const byte DIALOG_COMPACT_VALUE = 0;

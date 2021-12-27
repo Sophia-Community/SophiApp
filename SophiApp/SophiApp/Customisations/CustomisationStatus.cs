@@ -184,8 +184,8 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, _230_STUCK_RECTS3_PATH, _230_STUCK_RECTS3_SETTINGS)[9] == _230_STUCK_RECTS3_SHOW_VALUE
                                      : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{_230_STUCK_RECTS3_PATH}\{_230_STUCK_RECTS3_SETTINGS}");
 
-        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_FEEDS_PATH, _231_SHELL_FEEDS)
-                                              .HasNullOrValue(_231_SHELL_FEEDS_ENABLED_VALUE);
+        public static bool _231() => (RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_FEEDS_PATH, _231_SHELL_FEEDS_MODE) == _231_SHELL_FEEDS_DISABLED_VALUE
+                                        || RegHelper.GetNullableByteValue(RegistryHive.LocalMachine, _231_FEEDS_POLICY_PATH, _231_ENABLE_FEEDS) == _231_SHELL_FEEDS_ENABLED_VALUE).Invert();
 
         public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTROL_PANEL_EXPLORER_PATH, ALL_ITEMS_ICON_VIEW).HasValue(ALL_ITEMS_ICON_CATEGORY_VALUE)
                                      && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTROL_PANEL_EXPLORER_PATH, STARTUP_PAGE).HasValue(STARTUP_PAGE_ICON_VALUE);
@@ -449,6 +449,9 @@ namespace SophiApp.Customisations
 
         public static bool _702() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK)
                                         || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
+
+        public static bool _800() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
+                                        && PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE;
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
