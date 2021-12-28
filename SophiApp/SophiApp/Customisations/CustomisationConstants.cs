@@ -9,7 +9,6 @@ namespace SophiApp.Customisations
         internal const int _10_SECONDS_TIMEOUT = 10000;
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
-        internal const string _104_DISABLED = "Disabled";
         internal const byte _104_DISABLED_DEFAULT_VALUE = 1;
         internal const string _104_QUEUE_TASK = "QueueReporting";
         internal const string _104_QUEUE_TASK_PATH = @"Microsoft\Windows\Windows Error Reporting";
@@ -35,7 +34,6 @@ namespace SophiApp.Customisations
         internal const string _119_HTTP_ACCEPT = "HttpAcceptLanguageOptOut";
         internal const byte _119_HTTP_ACCEPT_DEFAULT_VALUE = 1;
         internal const string _119_USER_PROFILE_PATH = @"Control Panel\International\User Profile";
-        internal const string _120_ADVERT_ENABLED = "Enabled";
         internal const string _120_ADVERT_INFO_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo";
         internal const string _121_SUB_CONTENT = "SubscribedContent-310093Enabled";
         internal const string _122_SUB_CONTENT = "SubscribedContent-338389Enabled";
@@ -393,6 +391,45 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 
         internal const string _702_SOPHIA_CLEAR_TEMP_TASK = "Temp";
         internal const string _800_ENABLE_NETWORK_PROTECTION = "EnableNetworkProtection";
+        internal const string _800_SET_NETWORK_PROTECTION_PS = "Set-MpPreference -EnableNetworkProtection";
+        internal const string _801_PUA_PROTECTION = "PUAProtection";
+        internal const string _801_SET_PUA_PROTECTION_PS = "Set-MpPreference -PUAProtection";
+        internal const string _802_DEFENDER_SANDBOX_PROCESS = "MsMpEngCP";
+        internal const string _802_DEFENDER_USE_SANDBOX_ARGS = "/M MP_FORCE_USE_SANDBOX";
+        internal const string _802_SETX_APP = "setx";
+        internal const string _803_PROGRAM_AUDIT_DISABLED_CMD = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
+        internal const string _803_PROGRAM_AUDIT_ENABLED_CMD = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable";
+
+        internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+    $true
+}
+else
+{
+    $false
+}";
+
+        internal const string _804_COMMAND_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+    $ProcessCreationIncludeCmdLine_Enabled = Get-ItemPropertyValue -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit -Name ProcessCreationIncludeCmdLine_Enabled
+    if ($ProcessCreationIncludeCmdLine_Enabled -eq 1)
+    {
+        $true
+    }
+    else
+    {
+        $false
+    }
+}
+else
+{
+    $false
+}";
+
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -455,6 +492,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string ALLOW_TELEMETRY = "AllowTelemetry";
         internal const string ANTISPYWARE_ENABLED = "AntispywareEnabled";
         internal const string APPS_USES_THEME = "AppsUseLightTheme";
+        internal const string AUDITPOL_APP = "auditpol";
         internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint~~~~0.0.1.0";
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
@@ -473,7 +511,9 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
         internal const byte DIALOG_COMPACT_VALUE = 0;
         internal const byte DIALOG_DETAILED_VALUE = 1;
+        internal const string DISABLED = "Disabled";
         internal const byte DISABLED_VALUE = 0;
+        internal const string ENABLED = "Enabled";
         internal const byte ENABLED_VALUE = 1;
         internal const string ENTHUSIAST_MODE = "EnthusiastMode";
         internal const string ENVIRONMENT = "Environment";

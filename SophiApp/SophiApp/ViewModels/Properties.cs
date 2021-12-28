@@ -10,6 +10,7 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
+        private string buildName;
         private string conditionsHelperError;
         private List<Customisation> CustomActions;
         private bool debugMode;
@@ -48,6 +49,7 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
+        public string BuildName { get => buildName; }
 
         public string ConditionsHelperError
         {

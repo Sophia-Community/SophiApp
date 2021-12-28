@@ -39,7 +39,7 @@ namespace SophiApp.Customisations
         public static bool _104()
         {
             var taskState = ScheduledTaskHelper.GetTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK);
-            var reportingValue = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _104_WER_PATH, _104_DISABLED);
+            var reportingValue = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _104_WER_PATH, DISABLED);
             var reportingService = ServiceHelper.Get(_104_WER_SERVICE);
             return taskState == TaskState.Ready &&
                     reportingValue != _104_DISABLED_DEFAULT_VALUE &&
@@ -74,7 +74,7 @@ namespace SophiApp.Customisations
 
         public static bool _119() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _119_USER_PROFILE_PATH, _119_HTTP_ACCEPT) != _119_HTTP_ACCEPT_DEFAULT_VALUE;
 
-        public static bool _120() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _120_ADVERT_INFO_PATH, _120_ADVERT_ENABLED)
+        public static bool _120() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _120_ADVERT_INFO_PATH, ENABLED)
                                               .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _121() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _121_SUB_CONTENT)
@@ -452,6 +452,16 @@ namespace SophiApp.Customisations
 
         public static bool _800() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
                                         && PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE;
+
+        public static bool _801() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
+                                        && PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE;
+
+        public static bool _802() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
+                                        && ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS);
+
+        public static bool _803() => PowerShellHelper.GetScriptValue<bool>(_803_PROGRAM_AUDIT_ENABLED_PS);
+
+        public static bool _804() => PowerShellHelper.GetScriptValue<bool>(_804_COMMAND_AUDIT_ENABLED_PS);
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 

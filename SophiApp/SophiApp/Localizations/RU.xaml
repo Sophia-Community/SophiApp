@@ -67,4 +67,5 @@
     <system:String x:Key="Localization.Time.HalfHour">30 минут</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 часа</system:String>
     <system:String x:Key="Localization.Run">Запустить</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
 </ResourceDictionary>

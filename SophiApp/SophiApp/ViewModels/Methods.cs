@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
@@ -149,6 +150,7 @@ namespace SophiApp.ViewModels
             themesHelper = new ThemesHelper();
             conditionsHelperError = string.Empty;
             DebugMode = true;
+            buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;
             LoadingPanelVisibility = false;
             HamburgerHitTest = false;
             ViewsHitTest = true;

@@ -62,7 +62,7 @@ namespace SophiApp.Customisations
             if (IsChecked)
             {
                 ScheduledTaskHelper.TryChangeTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK, true);
-                RegHelper.DeleteKey(RegistryHive.CurrentUser, _104_WER_PATH, _104_DISABLED);
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, _104_WER_PATH, DISABLED);
                 ServiceHelper.SetStartMode(werService, ServiceStartMode.Manual);
                 werService.Start();
                 return;
@@ -71,7 +71,7 @@ namespace SophiApp.Customisations
             if (OsHelper.IsEdition(_104_CORE).Invert())
             {
                 ScheduledTaskHelper.TryChangeTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK, false);
-                RegHelper.SetValue(RegistryHive.CurrentUser, _104_WER_PATH, _104_DISABLED, _104_DISABLED_DEFAULT_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.CurrentUser, _104_WER_PATH, DISABLED, _104_DISABLED_DEFAULT_VALUE, RegistryValueKind.DWord);
             }
 
             werService.Stop();
@@ -126,7 +126,7 @@ namespace SophiApp.Customisations
 
         public static void _120(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         _120_ADVERT_INFO_PATH,
-                                                                            _120_ADVERT_ENABLED,
+                                                                            ENABLED,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
@@ -975,6 +975,14 @@ namespace SophiApp.Customisations
 
             ScheduledTaskHelper.DeleteTask(clearTempTaskName, false);
         }
+
+        public static void _800(bool IsChecked) => PowerShellHelper.InvokeScript($"{_800_SET_NETWORK_PROTECTION_PS} {(IsChecked ? ENABLED : DISABLED)}");
+
+        public static void _801(bool IsChecked) => PowerShellHelper.InvokeScript($"{_801_SET_PUA_PROTECTION_PS} {(IsChecked ? ENABLED : DISABLED)}");
+
+        public static void _802(bool IsChecked) => ProcessHelper.StartWait(processName: _802_SETX_APP, args: $"{_802_DEFENDER_USE_SANDBOX_ARGS} {(IsChecked ? ENABLED_VALUE : DISABLED_VALUE)}", ProcessWindowStyle.Hidden);
+
+        public static void _803(bool IsChecked) => ProcessHelper.StartWait(processName: AUDITPOL_APP, args: IsChecked ? _803_PROGRAM_AUDIT_ENABLED_CMD : _803_PROGRAM_AUDIT_DISABLED_CMD, ProcessWindowStyle.Hidden);
 
         public static void _900(bool IsChecked)
         {

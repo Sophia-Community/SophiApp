@@ -70,15 +70,15 @@
                                 CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
 
                             <StackPanel Style="{StaticResource PanelContainer}">
-
                                 <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.Settings.Version}" />
-
-                                <TextBlock Style="{DynamicResource NormalText}" Text=":" />
-
-                                <TextBlock
-                                    Margin="3,0,0,0"
-                                    Style="{DynamicResource NormalText}"
-                                    Text="{Binding Source={x:Static helpers:AppHelper.Version}}" />
+                                <TextBlock Style="{DynamicResource NormalText}">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}: {0} [ {1} ]">
+                                            <Binding Path="Version" />
+                                            <Binding Path="BuildName" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             </StackPanel>
 
                             <TextBlock
@@ -185,21 +185,21 @@
 
                             <controls:ActorLink
                                 Margin="{StaticResource ActorLinkIndent}"
-                                Actor="{DynamicResource Localization.Settings.Designer.Name}"
-                                Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:AppHelper.DesignerLink}"
-                                Icon="{DynamicResource Icon.LinkedIn}"
-                                IconMargin="10, 0, 0, 5"
-                                Role="{DynamicResource Localization.Settings.Designer}" />
-
-                            <controls:ActorLink
-                                Margin="{StaticResource ActorLinkIndent}"
                                 Actor="{DynamicResource Localization.Settings.Coder.Name}"
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.CoderLink}"
                                 Icon="{DynamicResource Icon.GitHub}"
                                 IconMargin="10, 0, 0, 20"
                                 Role="{DynamicResource Localization.Settings.Coder}" />
+
+                            <controls:ActorLink
+                                Margin="{StaticResource ActorLinkIndent}"
+                                Actor="{DynamicResource Localization.Settings.Designer.Name}"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:AppHelper.DesignerLink}"
+                                Icon="{DynamicResource Icon.LinkedIn}"
+                                IconMargin="10, 0, 0, 5"
+                                Role="{DynamicResource Localization.Settings.Designer}" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
