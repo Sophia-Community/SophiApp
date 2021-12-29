@@ -16,6 +16,19 @@ namespace SophiApp.Views
         public new static readonly DependencyProperty TagProperty =
             DependencyProperty.Register("Tag", typeof(string), typeof(ViewGames), new PropertyMetadata(default));
 
+
+        public int TextedElementsCount
+        {
+            get { return (int)GetValue(TextedElementsCountProperty); }
+            set { SetValue(TextedElementsCountProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ElementsCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextedElementsCountProperty =
+            DependencyProperty.Register("TextedElementsCount", typeof(int), typeof(ViewGames), new PropertyMetadata(0));
+
+
+
         public ViewGames()
         {
             InitializeComponent();
@@ -36,7 +49,16 @@ namespace SophiApp.Views
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
         }
 
-        private void TextedElementsFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tag);
+        private void TextedElementsFilter(object sender, FilterEventArgs e)
+        {
+            var element = e.Item as TextedElement;
+            var isValidElement = FilterHelper.FilterByTag(elementTag: element.Tag, viewTag: Tag);
+
+            if (isValidElement && element.Status != Commons.ElementStatus.DISABLED)
+                TextedElementsCount++;
+
+            e.Accepted = isValidElement;
+        }
 
         private void ViewGames_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

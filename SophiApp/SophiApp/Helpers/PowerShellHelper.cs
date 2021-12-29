@@ -8,7 +8,7 @@ namespace SophiApp.Helpers
     {
         internal static T GetScriptProperty<T>(string script, string propertyName) => (T)InvokeScript(script).FirstOrDefault().Properties[propertyName].Value;
 
-        internal static T GetScriptValue<T>(string script) => (T)InvokeScript(script).FirstOrDefault().BaseObject;
+        internal static T GetScriptResult<T>(string script) => (T)InvokeScript(script).FirstOrDefault().BaseObject;
 
         internal static Collection<PSObject> InvokeScript(string script) => PowerShell.Create().AddScript(script).Invoke();
     }

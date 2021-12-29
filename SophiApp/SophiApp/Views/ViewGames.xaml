@@ -15,7 +15,7 @@
         <CollectionViewSource
             x:Key="TextedElementsCollection"
             Filter="TextedElementsFilter"
-            Source="{Binding TextedElements}" />
+            Source="{Binding TextedElements}"/>
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
@@ -35,6 +35,15 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                <TextBlock x:Name="TextBlockIsEmpty"
+                           Margin="10"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                           Style="{DynamicResource NormalText}"
+                           Text="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                           TextWrapping="Wrap"
+                           Visibility="Collapsed"/>
                 <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
                     <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                         <ItemsControl.Resources>
@@ -88,9 +97,12 @@
                 </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                    <Setter TargetName="TextBlockIsEmpty" Property="Visibility" Value="Visible"/>
+                </DataTrigger>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Games}">
                     <Setter Property="Visibility" Value="Visible" />
-                </DataTrigger>
+                </DataTrigger>                
                 <Trigger Property="Visibility" Value="Visible">
                     <Trigger.EnterActions>
                         <BeginStoryboard>

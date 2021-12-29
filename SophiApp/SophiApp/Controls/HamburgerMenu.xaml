@@ -8,12 +8,19 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type Border}">
+        <!--<Style TargetType="{x:Type Border}">
             <Setter Property="Grid.Row" Value="1" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Hamburger.Separator.Background}" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="Margin" Value="0,405,0,0" />
+        </Style>-->
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Hamburger.Separator.Background}" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Margin" Value="0,360,0,0" />
         </Style>
         <Style TargetType="local:HamburgerMenu">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -80,6 +87,24 @@
                 <local:HamburgerButton
                     Margin="0,315,0,0"
                     VerticalAlignment="Top"
+                    Icon="{DynamicResource Icon.ContextMenu}"
+                    IconMargin="6, 10, 0, 0"
+                    Tag="{StaticResource Tags.View.ContextMenu}"
+                    Text="{DynamicResource Localization.ContextMenu}" />
+
+                <!--  Hamburger Buttons Separator  -->
+                <Border />
+                <local:HamburgerButton
+                    Margin="0,362,0,0"
+                    VerticalAlignment="Top"
+                    Icon="{DynamicResource Icon.Settings}"
+                    IconMargin="6, 7, 0, 0"
+                    Tag="{StaticResource Tags.View.Settings}"
+                    Text="{DynamicResource Localization.Settings}" />
+
+                <!--<local:HamburgerButton
+                    Margin="0,315,0,0"
+                    VerticalAlignment="Top"
                     Icon="{DynamicResource Icon.Security}"
                     IconMargin="7, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Security}"
@@ -93,7 +118,7 @@
                     Tag="{StaticResource Tags.View.ContextMenu}"
                     Text="{DynamicResource Localization.ContextMenu}" />
 
-                <!--  Hamburger Buttons Separator  -->
+                --><!--  Hamburger Buttons Separator  --><!--
                 <Border />
                 <local:HamburgerButton
                     Margin="0,407,0,0"
@@ -101,7 +126,7 @@
                     Icon="{DynamicResource Icon.Settings}"
                     IconMargin="6, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Settings}"
-                    Text="{DynamicResource Localization.Settings}" />
+                    Text="{DynamicResource Localization.Settings}" />-->
 
                 <!--<local:SearchBar VerticalAlignment="Bottom"
                                  Margin="10, 0, 10, 20"

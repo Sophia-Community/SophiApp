@@ -663,9 +663,9 @@ namespace SophiApp.Customisations
             updateManager.RemoveService(_334_SERVICE_MANAGER_GUID);
         }
 
-        public static void _336(bool _) => ProcessHelper.Start(POWERCFG_EXE, _336_HIGH_POWER_ARG, ProcessWindowStyle.Hidden);
+        public static void _336(bool _) => ProcessHelper.Start(POWERCFG_EXE, _336_HIGH_POWER_ARGS, ProcessWindowStyle.Hidden);
 
-        public static void _337(bool _) => ProcessHelper.Start(POWERCFG_EXE, _337_BALANCED_POWER_ARG, ProcessWindowStyle.Hidden);
+        public static void _337(bool _) => ProcessHelper.Start(POWERCFG_EXE, _337_BALANCED_POWER_ARGS, ProcessWindowStyle.Hidden);
 
         public static void _338(bool IsChecked)
         {
@@ -811,8 +811,8 @@ namespace SophiApp.Customisations
             {
                 var installer = $"{Environment.GetEnvironmentVariable(TEMP)}\\{_363_VC_REDISTRX64}";
                 WebHelper.Download(_363_DOWNLOAD_URL, installer);
-                ProcessHelper.StartWait(installer, _363_VC_REDISTRX64_ARG);
-                FileHelper.FileDelete(installer);
+                ProcessHelper.StartWait(installer, _363_VC_REDISTRX64_ARGS);
+                FileHelper.TryDeleteFile(installer);
             }
         }
 
@@ -861,7 +861,7 @@ namespace SophiApp.Customisations
             var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
             WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
             UwpHelper.InstallPackage(hevcvAppx);
-            FileHelper.FileDelete(hevcvAppx);
+            FileHelper.TryDeleteFile(hevcvAppx);
         }
 
         public static void _501(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot,
@@ -912,12 +912,12 @@ namespace SophiApp.Customisations
 
                 var notificationTaskDescription = Application.Current.FindResource("Localization.NotificationTask.Description") as string;
                 var notificationTaskTrigger = new DailyTrigger(daysInterval: _700_30_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
-                var notificationTaskArg = TextHelper.LocalizeCleanupTaskToast(_700_CLEANUP_TOAST_TASK_ARG);
+                var notificationTaskArg = TextHelper.LocalizeCleanupTaskToast(_700_CLEANUP_TOAST_TASK_ARGS);
 
                 RegHelper.SetValue(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH, _700_VOLUME_CACHES_NAMES, _700_STATE_FLAGS_1337, _700_STATE_FLAGS_1337_VALUE, RegistryValueKind.DWord);
 
                 ScheduledTaskHelper.RegisterTask(taskName: cleanupTaskName, taskDescription: cleanupTaskDescription, execute: POWERSHELL_EXE,
-                                                    arg: _700_CLEANUP_TASK_ARG, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, cleanupTaskTrigger);
+                                                    arg: _700_CLEANUP_TASK_ARGS, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, cleanupTaskTrigger);
 
                 // Persist the Settings notifications to prevent to immediately disappear from Action Center
                 RegHelper.SetValue(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
@@ -948,7 +948,7 @@ namespace SophiApp.Customisations
                 RegHelper.SetValue(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
                 var softwareDistributionTaskDescription = Application.Current.FindResource("Localization.SoftwareDistributionTask.Description") as string;
                 var softwareDistributionTaskTrigger = new DailyTrigger(daysInterval: _701_90_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
-                var softwareDistributionTaskArg = TextHelper.LocalizeSoftwareDistributionTaskToast(_701_SOFTWARE_DISTRIBUTION_TASK_ARG);
+                var softwareDistributionTaskArg = TextHelper.LocalizeSoftwareDistributionTaskToast(_701_SOFTWARE_DISTRIBUTION_TASK_ARGS);
                 ScheduledTaskHelper.RegisterTask(taskName: softwareDistributionTaskName, taskDescription: softwareDistributionTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: softwareDistributionTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: softwareDistributionTaskTrigger);
 
@@ -966,7 +966,7 @@ namespace SophiApp.Customisations
             {
                 var clearTempTaskDescription = Application.Current.FindResource("Localization.ClearTempTask.Description") as string;
                 var clearTempTaskTrigger = new DailyTrigger(daysInterval: _702_60_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
-                var clearTempTaskArg = TextHelper.LocalizeClearTempTaskToast(_702_CLEAR_TEMP_ARG);
+                var clearTempTaskArg = TextHelper.LocalizeClearTempTaskToast(_702_CLEAR_TEMP_ARGS);
                 ScheduledTaskHelper.RegisterTask(taskName: clearTempTaskName, taskDescription: clearTempTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: clearTempTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: clearTempTaskTrigger);
 
@@ -982,7 +982,35 @@ namespace SophiApp.Customisations
 
         public static void _802(bool IsChecked) => ProcessHelper.StartWait(processName: _802_SETX_APP, args: $"{_802_DEFENDER_USE_SANDBOX_ARGS} {(IsChecked ? ENABLED_VALUE : DISABLED_VALUE)}", ProcessWindowStyle.Hidden);
 
-        public static void _803(bool IsChecked) => ProcessHelper.StartWait(processName: AUDITPOL_APP, args: IsChecked ? _803_PROGRAM_AUDIT_ENABLED_CMD : _803_PROGRAM_AUDIT_DISABLED_CMD, ProcessWindowStyle.Hidden);
+        public static void _803(bool IsChecked) => ProcessHelper.StartWait(processName: AUDITPOL_APP, args: IsChecked ? PROCESS_AUDIT_ENABLED_ARGS : PROCESS_AUDIT_DISABLED_ARGS, ProcessWindowStyle.Hidden);
+
+        public static void _804(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                ProcessHelper.StartWait(AUDITPOL_APP, PROCESS_AUDIT_ENABLED_ARGS, ProcessWindowStyle.Hidden);
+                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED);
+        }
+
+        public static void _805(bool IsChecked)
+        {
+            var processCreationXml = $@"{_805_EVENT_VIEWS_PATH}\{_805_PROCESS_CREATION_XML}";
+
+            if (IsChecked)
+            {
+                var eventViewerXml = TextHelper.LocalizeEventViewerCustomXml(_805_PROCESS_CREATION_XML_DATA);
+                ProcessHelper.StartWait(AUDITPOL_APP, PROCESS_AUDIT_ENABLED_ARGS, ProcessWindowStyle.Hidden);
+                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
+                FileHelper.Create(processCreationXml);
+                return;
+            }
+
+            FileHelper.TryDeleteFile(processCreationXml);            
+        }
 
         public static void _900(bool IsChecked)
         {

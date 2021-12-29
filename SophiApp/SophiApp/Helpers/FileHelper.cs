@@ -160,7 +160,7 @@ namespace SophiApp.Helpers
                 DirectoryLazyDelete(dir);
         }
 
-        internal static void FileDelete(string filePath)
+        internal static void TryDeleteFile(string filePath)
         {
             if (File.Exists(filePath))
                 File.Delete(filePath);
@@ -169,7 +169,7 @@ namespace SophiApp.Helpers
         internal static void FileDelete(params string[] filesPath)
         {
             foreach (var file in filesPath)
-                FileDelete(file);
+                TryDeleteFile(file);
         }
 
         internal static bool IsSymbolicLink(string dirPath)
@@ -190,6 +190,16 @@ namespace SophiApp.Helpers
                 {
                 }
             }
+        }
+
+        internal static void Create(string filePath)
+        {
+            var dirPath = filePath.Substring(0, filePath.LastIndexOf(Path.DirectorySeparatorChar));
+            
+            if (Directory.Exists(dirPath).Invert())
+                Directory.CreateDirectory(dirPath);
+
+            File.Create(filePath);
         }
     }
 }

@@ -14,7 +14,7 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Height" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}" />
-            <Setter Property="Width" Value="2" />
+            <Setter Property="Width" Value="4" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
             <Setter Property="Visibility">
                 <Setter.Value>

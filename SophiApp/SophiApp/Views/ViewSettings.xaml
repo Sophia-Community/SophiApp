@@ -198,8 +198,17 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.DesignerLink}"
                                 Icon="{DynamicResource Icon.LinkedIn}"
-                                IconMargin="10, 0, 0, 5"
+                                IconMargin="10, 0, 0, 6"
                                 Role="{DynamicResource Localization.Settings.Designer}" />
+
+                            <controls:ActorLink
+                                Margin="{StaticResource ActorLinkIndent}"
+                                Actor="{DynamicResource Localization.Settings.Logotype.Creator}"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:AppHelper.LogotypeCreatorLink}"
+                                Icon="{DynamicResource Icon.LinkedIn}"
+                                IconMargin="10, 0, 0, 6"
+                                Role="{DynamicResource Localization.Settings.Logotype}" />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

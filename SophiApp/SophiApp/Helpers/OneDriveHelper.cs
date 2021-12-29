@@ -48,7 +48,7 @@ namespace SophiApp.Helpers
             var oneDriveFile = $@"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDER, USER_DOWNLOAD_FOLDER)}\{ONE_DRIVE_SETUP_EXE}";
             WebHelper.Download(url: oneDriveUrl, file: oneDriveFile, deleteIsExisting: true);
             ProcessHelper.StartWait(oneDriveFile);
-            FileHelper.FileDelete(oneDriveFile);
+            FileHelper.TryDeleteFile(oneDriveFile);
         }
 
         internal static bool IsInstalled()
@@ -86,7 +86,7 @@ namespace SophiApp.Helpers
 
             OsHelper.UnregisterDlls(syncShell64Dlls);
             FileHelper.DirectoryLazyDelete(oneDriveFolder, APPDATA_ONE_DRIVE_FOLDER, APPDATA_MS_ONE_DRIVE_FOLDER);
-            FileHelper.FileDelete(ONE_DRIVE_LNK);
+            FileHelper.TryDeleteFile(ONE_DRIVE_LNK);
         }
     }
 }

@@ -114,9 +114,14 @@ foreach ($AppxPackage in $AppxPackages)
             opCompletedEvent.WaitOne();
         }
 
-        internal static bool PackageExist(string packageName) => new PackageManager().FindPackages()
-                                                                                     .Select(package => package.Id.Name)
-                                                                                     .Contains(packageName);
+        internal static bool PackageExist(string packageName)
+        {
+            var sid = OsHelper.GetCurrentUserSid().Value;
+            var packageManager = new PackageManager();
+            return packageManager.FindPackagesForUser(sid)
+                                 .Where(package => package.Id.Name == packageName)
+                                 .Count() > 0;
+        }
 
         internal static void RemovePackage(string packageName, bool allUsers)
         {

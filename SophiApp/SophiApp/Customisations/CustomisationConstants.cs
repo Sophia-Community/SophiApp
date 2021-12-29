@@ -151,9 +151,9 @@ namespace SophiApp.Customisations
         internal const string _333_OPENSSH_CLIENT_CAPABILITY = "OpenSSH.Client~~~~0.0.1.0";
         internal const string _334_SERVICE_MANAGER_GUID = "7971f918-a847-4430-9279-4a52d1efe18d";
         internal const string _334_UPDATE_SERVICE_MANAGER = "Microsoft.Update.ServiceManager";
-        internal const string _336_HIGH_POWER_ARG = "/SETACTIVE SCHEME_MIN";
+        internal const string _336_HIGH_POWER_ARGS = "/SETACTIVE SCHEME_MIN";
         internal const string _336_HIGH_POWER_GUID = "{8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}";
-        internal const string _337_BALANCED_POWER_ARG = "/SETACTIVE SCHEME_BALANCED";
+        internal const string _337_BALANCED_POWER_ARGS = "/SETACTIVE SCHEME_BALANCED";
         internal const string _338_NET_FRAMEWORK32_PATH = @"SOFTWARE\Wow6432Node\Microsoft\.NETFramework";
         internal const string _338_NET_FRAMEWORK64_PATH = @"SOFTWARE\Microsoft\.NETFramework";
         internal const string _338_USE_LATEST_CLR = "OnlyUseLatestCLR";
@@ -203,7 +203,7 @@ namespace SophiApp.Customisations
         internal const string _363_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
         internal const string _363_VC_REDISTR_FOR_VS_2022 = "Visual C++ Redistributable for Visual Studio 2022";
         internal const string _363_VC_REDISTRX64 = "vc_redist.x64.exe";
-        internal const string _363_VC_REDISTRX64_ARG = "/install /passive /norestart";
+        internal const string _363_VC_REDISTRX64_ARGS = "/install /passive /norestart";
         internal const string _363_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
         internal const byte _400_DISABLED_VALUE = 1;
         internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
@@ -230,7 +230,7 @@ namespace SophiApp.Customisations
         internal const int _602_WDDM_VERSION_MIN = 2700;
         internal const byte _700_30_DAYS_INTERVAL = 30;
 
-        internal const string _700_CLEANUP_TASK_ARG = @"-WindowStyle Hidden -Command Get-Process -Name cleanmgr | Stop-Process -Force
+        internal const string _700_CLEANUP_TASK_ARGS = @"-WindowStyle Hidden -Command Get-Process -Name cleanmgr | Stop-Process -Force
 Get-Process -Name Dism | Stop-Process -Force
 Get-Process -Name DismHost | Stop-Process -Force
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
@@ -288,7 +288,7 @@ $Process = New-Object -TypeName System.Diagnostics.Process
 $Process.StartInfo = $ProcessInfo
 $Process.Start() | Out-Null";
 
-        internal const string _700_CLEANUP_TOAST_TASK_ARG = @"-WindowStyle Hidden -Command [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
+        internal const string _700_CLEANUP_TOAST_TASK_ARGS = @"-WindowStyle Hidden -Command [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
 [xml]$ToastTemplate = @""""""
 <toast duration=""""""Long"""""" scenario=""""""reminder"""""">
@@ -339,7 +339,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _700_WINDOWS_CLEANUP_URL = "URL:WindowsCleanup";
         internal const byte _701_90_DAYS_INTERVAL = 90;
 
-        internal const string _701_SOFTWARE_DISTRIBUTION_TASK_ARG = @"-WindowStyle Hidden -Command (Get-Service -Name wuauserv).WaitForStatus('Stopped', '01:00:00')
+        internal const string _701_SOFTWARE_DISTRIBUTION_TASK_ARGS = @"-WindowStyle Hidden -Command (Get-Service -Name wuauserv).WaitForStatus('Stopped', '01:00:00')
 Get-ChildItem -Path $env:SystemRoot\SoftwareDistribution\Download -Recurse -Force | Remove-Item -Recurse -Force
 [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
@@ -366,7 +366,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK = "SoftwareDistribution";
         internal const byte _702_60_DAYS_INTERVAL = 60;
 
-        internal const string _702_CLEAR_TEMP_ARG = @"-WindowStyle Hidden -Command Get-ChildItem -Path $env:TEMP -Recurse -Force | Where-Object {$_.CreationTime -lt (Get-Date).AddDays(-1)} | Remove-Item -Recurse -Force
+        internal const string _702_CLEAR_TEMP_ARGS = @"-WindowStyle Hidden -Command Get-ChildItem -Path $env:TEMP -Recurse -Force | Where-Object {$_.CreationTime -lt (Get-Date).AddDays(-1)} | Remove-Item -Recurse -Force
 [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
 [xml]$ToastTemplate = @""""""
@@ -397,8 +397,8 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _802_DEFENDER_SANDBOX_PROCESS = "MsMpEngCP";
         internal const string _802_DEFENDER_USE_SANDBOX_ARGS = "/M MP_FORCE_USE_SANDBOX";
         internal const string _802_SETX_APP = "setx";
-        internal const string _803_PROGRAM_AUDIT_DISABLED_CMD = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
-        internal const string _803_PROGRAM_AUDIT_ENABLED_CMD = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable";
+        internal const string PROCESS_AUDIT_DISABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
+        internal const string PROCESS_AUDIT_ENABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable";
 
         internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
@@ -429,7 +429,52 @@ else
 {
     $false
 }";
+        internal const string POLICIES_AUDIT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit";
+        internal const string PROCESS_CREATION_ENABLED = "ProcessCreationIncludeCmdLine_Enabled";
 
+        internal const string _805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+	$ProcessCreationIncludeCmdLine_Enabled = Get-ItemPropertyValue -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit -Name ProcessCreationIncludeCmdLine_Enabled
+	if ($ProcessCreationIncludeCmdLine_Enabled -eq 1)
+	{
+		if (Test-Path -Path ""$env:ProgramData\Microsoft\Event Viewer\Views\ProcessCreation.xml"")
+		{
+			$true
+		}
+        else
+        {
+            $false
+        }
+	}
+    else
+    {
+        $false
+    }
+}
+else
+{
+    $false
+}";
+        internal const string _805_PROCESS_CREATION_XML = "ProcessCreation.xml";
+        internal const string _805_PROCESS_CREATION_XML_DATA = @"<ViewerConfig>
+	<QueryConfig>
+		<QueryParams>
+			<UserQuery/>
+		</QueryParams>
+		<QueryNode>
+			<Name>*</Name>
+			<Description>*</Description>
+			<QueryList>
+				<Query Id=""0"" Path=""Security"">
+					<Select Path=""Security"">*</Select>
+                </Query>
+            </QueryList>
+        </QueryNode>
+    </QueryConfig>
+</ViewerConfig>";
+        internal readonly static string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -527,7 +572,7 @@ else
         internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
         internal const string ITEM_NAME = "ItemName";
         internal const string JPEG_QUALITY = "JPEGImportQuality";
-        internal const string KB5005463_FIX_UNINSTALL_ARG = "/uninstall /kb:5005463 /quiet /norestart";
+        internal const string KB5005463_FIX_UNINSTALL_ARGS = "/uninstall /kb:5005463 /quiet /norestart";
         internal const string KB5005463_UPD = "KB5005463";
         internal const byte LAUNCH_PC_VALUE = 1;
         internal const byte LAUNCH_QA_VALUE = 2;

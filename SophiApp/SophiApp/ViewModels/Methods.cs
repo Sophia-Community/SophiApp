@@ -129,19 +129,19 @@ namespace SophiApp.ViewModels
 
         private void InitCommands()
         {
+            AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
+            ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
+            AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
             DebugModeClickedCommand = new RelayCommand(new Action<object>(DebugModeClicked));
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
-            TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
-            RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
-            AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
-            LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
             HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClickedAsync));
-            AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
-            SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
+            LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
+            RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
-            ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
-            UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
+            SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             SwitchUwpForAllUsersClickedCommand = new RelayCommand(new Action<object>(SwitchUwpForAllUsersClicked));
+            TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
+            UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
         }
 
         private void InitProperties()

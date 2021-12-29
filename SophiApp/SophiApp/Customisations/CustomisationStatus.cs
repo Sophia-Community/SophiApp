@@ -419,8 +419,10 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
-        public static bool _600() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
-                                     && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
+        public static bool _600() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
+                                     ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
+                                        && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException($"{XBOX_GAMING_OVERLAY_UWP} or {GAMING_APP_UWP}");
 
         public static bool _601() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
                                      ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
@@ -459,9 +461,11 @@ namespace SophiApp.Customisations
         public static bool _802() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
                                         && ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS);
 
-        public static bool _803() => PowerShellHelper.GetScriptValue<bool>(_803_PROGRAM_AUDIT_ENABLED_PS);
+        public static bool _803() => PowerShellHelper.GetScriptResult<bool>(_803_PROGRAM_AUDIT_ENABLED_PS);
 
-        public static bool _804() => PowerShellHelper.GetScriptValue<bool>(_804_COMMAND_AUDIT_ENABLED_PS);
+        public static bool _804() => PowerShellHelper.GetScriptResult<bool>(_804_COMMAND_AUDIT_ENABLED_PS);
+
+        public static bool _805() => PowerShellHelper.GetScriptResult<bool>(_805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS);
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
