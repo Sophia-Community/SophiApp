@@ -24,7 +24,7 @@
     <system:String x:Key="Localization.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
     <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
     <system:String x:Key="Localization.NotificationTask.Title">Important Information</system:String>
-    <system:String x:Key="Localization.OsNotSupported">Unfortunately, this version of Windows is not supported</system:String>
+    <system:String x:Key="Localization.OsNotSupported">Unfortunately, this Window version is not supported</system:String>
     <system:String x:Key="Localization.Personalization">Personalization</system:String>
     <system:String x:Key="Localization.Privacy">Privacy</system:String>
     <system:String x:Key="Localization.Run">Run</system:String>
@@ -37,7 +37,7 @@
     <system:String x:Key="Localization.Settings.Debug">Debug</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Create a dump</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Debug mode</system:String>
-    <system:String x:Key="Localization.Settings.Designer">UI/UX development by:</system:String>
+    <system:String x:Key="Localization.Settings.Designer">UI/UX development:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
     <system:String x:Key="Localization.Settings.Export">Export</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
@@ -45,7 +45,7 @@
     <system:String x:Key="Localization.Settings.Languages">Display language</system:String>
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
-    <system:String x:Key="Localization.Settings.Logotype">Logotype:</system:String>
+    <system:String x:Key="Localization.Settings.Logotype">Logo:</system:String>
     <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia &quot;Nataly&quot; Ivanova</system:String>
     <system:String x:Key="Localization.Settings.Reset">Reset all settings to their original defaults</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
