@@ -46,7 +46,7 @@
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Logo:</system:String>
-    <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia &quot;Nataly&quot; Ivanova</system:String>
+    <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia Gumenyuk</system:String>
     <system:String x:Key="Localization.Settings.Reset">Reset all settings to their original defaults</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
     <system:String x:Key="Localization.Settings.Themes">Theme</system:String>
@@ -65,7 +65,7 @@
     <system:String x:Key="Localization.Time.Minute">1 minute</system:String>
     <system:String x:Key="Localization.Toast.Title.Notificaton">Notification</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
-    <system:String x:Key="Localization.Toast.Update.Header">An update for SophiApp is avalaible</system:String>
+    <system:String x:Key="Localization.Toast.Update.Header">An update for SophiApp is available</system:String>
     <system:String x:Key="Localization.UwpApps">UWP Apps</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Apply</system:String>
     <system:String x:Key="Localization.ViewChanges.Cancel">Cancel</system:String>
