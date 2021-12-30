@@ -46,7 +46,7 @@
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий &quot;farag&quot; Нефёдов</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Логотип:</system:String>
-    <system:String x:Key="Localization.Settings.Logotype.Creator">Наталья &quot;Nataly&quot; Иванова</system:String>
+    <system:String x:Key="Localization.Settings.Logotype.Creator">Наталья Гуменюк</system:String>
     <system:String x:Key="Localization.Settings.Reset">Вернуть все настройки по умолчанию</system:String>
     <system:String x:Key="Localization.Settings.Team">Участники проекта</system:String>
     <system:String x:Key="Localization.Settings.Themes">Тема</system:String>
