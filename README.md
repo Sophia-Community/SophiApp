@@ -1,23 +1,117 @@
-# Deus vult!
+# SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
 
-The SophiApp functionality will be fully based on the [Sophia Script for Windows 10](https://github.com/farag2/Sophia-Script-for-Windows) logic except some functions and will be written in C#.
+<img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
-# Screenshots
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" height="30px"/>
 
-![Image](https://i.imgur.com/xBBsgdu.jpg)
-![Image](https://i.imgur.com/53yDQUQ.png)
+<p align="left">
+  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"></a>
 
-# Windows 10 versions support
+  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/sophiapp"></a>
+  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
+  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/tokei/lines/github/Sophia-Community/SophiApp"></a>
 
-SophiApp will support only the latest Windows 10 version, 2004 and higher. If you are using a different version, please update it if possible, so as not to upset our testing department. :smile:
+  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a>
 
-# News
+  <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1/"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
+  <a href="https://www.linkedin.com/mwlite/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
+  <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://github.com/websemantics/bragit/blob/master/demo/img/heart.svg" height="17px"/>
 
-If you want to be kept up-to-date of the latest SophiApp news visit our Telegram channel & group
+  <a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
+  <a href="https://t.me/Sophia_Chat"><img src="https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram"></a>
+</p>
 
-<a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
-<a href="https://t.me/Sophia_Chat"><img src="https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram"></a>
+Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/>
 
-<img src="https://img.shields.io/github/workflow/status/SophiaUI/SophiApp/Build?label=GitHub%20Actions&logo=GitHub">
 
-![GitHub all releases](https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total)
+<a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
+
+***
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q51QUJC)
+
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a>
+
+***
+
+<p align="center">
+	&bull;
+	<a href="#screenshots">Screenshots</a>
+	&bull;
+	<a href="#core-features">Core features</a>
+	&bull;
+	<a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
+</p>
+
+***
+
+## Screenshots
+
+![Image](https://i.imgur.com/ixqsK7B.png)
+![Image](https://i.imgur.com/2lAw0UR.png)
+![Image](https://i.imgur.com/AgSAAhm.png)
+![Image](https://i.imgur.com/Dv9CSAE.png)
+![Image](https://i.imgur.com/KGieRa0.png)
+![Image](https://i.imgur.com/XyoScE7.png)
+![Image](https://i.imgur.com/aqDvcsd.png)
+![Image](https://i.imgur.com/HndU06Q.png)
+![Image](https://i.imgur.com/wFDNpzZ.png)
+![Image](https://i.imgur.com/jornXGR.png)
+
+## System Requirements
+
+* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` for now. Requires the `1151` build and higher. Windows 11 is in the works.
+
+## Installation
+
+SophiApp is fully portable: doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder and run `SophiApp.exe`
+
+## Core features
+
+* All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
+  * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
+* The app shows the `actual` state of every feature in the UI;
+* Set up Privacy & Telemetry;
+* Turn off diagnostics tracking scheduled tasks;
+* Set up UI & Personalization;
+* Uninstall OneDrive "correctly";
+* Uninstall UWP apps displaying localized packages names;
+  * An UWP apps list is being rendered dynamically using local icons
+* Disable Windows features displaying friendly packages names;
+* Uninstall Windows capabilities displaying friendly packages names;
+* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats;
+* Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates;
+  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-windows-cleanup-scheduled-task)
+* Create tasks in the Task Scheduler to clear
+  * `%SystemRoot%\SoftwareDistribution\Download`
+  * `%TEMP%`
+* Configure the Windows security;
+* Many more File Explorer and context menu "deep" tweaks.
+
+##  Adendum
+
+* You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
+  * The hidden functions will marked with a gear in UI;
+* The app requires that the `current logged-in user` has admin privileges;
+* After closing the SophiApp, it creates a log file that you can attach to an open issue to help us understands the bug. The log file doesn't contain any sensitive personal information.
+
+## Translating
+
+* Feel free to translate the UI into your language by translating the [JSON](https://github.com/Sophia-Community/SophiApp/blob/master/SophiApp/SophiApp/Resources/UIData.json) and creating a [.xml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
+
+## The 3rd party libraries used
+
+* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+* [TaskScheduler](https://github.com/dahall/taskscheduler)
+* [ManagedDism](https://github.com/jeffkl/ManagedDism)
+* [wix3](https://github.com/wixtoolset/wix3)
+
+## Ask a question on
+
+* [Telegram discussion group](https://t.me/sophia_chat)
+* [Telegram channel](https://t.me/sophianews)
+* [Ru-Board](link)
+* [rutracker](link)
+* [My Digital Life](link)
+* [Reddit](link)
+  * PM [me](https://www.reddit.com/user/farag2/)
