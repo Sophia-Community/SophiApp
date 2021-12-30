@@ -17,6 +17,7 @@
             Filter="TextedElementsFilter"
             Source="{Binding TextedElements}"/>
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
+        <converters:IntToVisibility x:Key="IntToVisibilityConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
@@ -36,14 +37,15 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <TextBlock x:Name="TextBlockIsEmpty"
-                           Margin="10"
+                           Margin="0"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                            Style="{DynamicResource NormalText}"
-                           Text="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                           Text="{DynamicResource Localization.ViewGames.Empty}"
                            TextWrapping="Wrap"
-                           Visibility="Collapsed"/>
+                           Panel.ZIndex="10"
+                           Visibility="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToVisibilityConverter}}"/>
                 <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
                     <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
                         <ItemsControl.Resources>
@@ -97,9 +99,9 @@
                 </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                <!--<DataTrigger Binding="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource IntToVisibilityConverter}">
                     <Setter TargetName="TextBlockIsEmpty" Property="Visibility" Value="Visible"/>
-                </DataTrigger>
+                </DataTrigger>-->
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Games}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>                

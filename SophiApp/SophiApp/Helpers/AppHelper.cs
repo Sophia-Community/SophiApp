@@ -28,5 +28,6 @@ namespace SophiApp.Helpers
         public static string GitHubRepo => GITHUB_REPO;
         public static string LeaderLink => LEADER_LINK;
         public static string LogotypeCreatorLink => LOGOTYPE_CREATOR_LINK;
-        public static Version Version => Assembly.GetExecutingAssembly().GetName().Version;    }
+        public static Version Version => Assembly.GetExecutingAssembly().GetName().Version;
+    }
 }

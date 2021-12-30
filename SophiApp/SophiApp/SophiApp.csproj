@@ -54,6 +54,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SophiApp.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Deployment.WindowsInstaller, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -103,6 +106,7 @@
     <Compile Include="Controls\UwpButton.xaml.cs">
       <DependentUpon>UwpButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\IntToVisibility.cs" />
     <Compile Include="Customisations\Customisation.cs" />
     <Compile Include="Customisations\UwpCustomisation.cs" />
     <Compile Include="Dto\CustomActionDto.cs" />
@@ -592,6 +596,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="SophiApp.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
