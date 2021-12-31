@@ -48,7 +48,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ## Screenshots [Helen]
 
 ![Image](https://i.imgur.com/ixqsK7B.png)
-![Image](https://i.imgur.com/2lAw0UR.png)
+![Image](https://i.imgur.com/Z0Ytf4C.png)
 ![Image](https://i.imgur.com/AgSAAhm.png)
 ![Image](https://i.imgur.com/Dv9CSAE.png)
 ![Image](https://i.imgur.com/KGieRa0.png)
