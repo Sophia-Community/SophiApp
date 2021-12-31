@@ -19,7 +19,7 @@
       "RU": "Уровень сбора диагностических данных ОС"
     },
     "Description": {
-      "EN": "As a part of using Windows, your device sends Microsoft a limited set of adata that is necessary to keep your device and operating system secure, up to date, and working as expected",
+      "EN": "As a part of using Windows, your device sends Microsoft a limited set of adata that is necessary to keep your device and operating system secure, up to date, and working as expected.",
       "RU": "При использовании Windows ваше устройство отправляет в Майкрософт ограниченный набор данных, которые необходимы для защиты вашего устройства и операционной системы, а также для его корректной работы"
     },
     "Type": "RadioGroup",
@@ -71,7 +71,7 @@
       "RU": "Частота отправки запросов"
     },
     "Description": {
-      "EN": "Choose how often Windows asks for your feedback",
+      "EN": "Choose how often Windows asks for your feedback.",
       "RU": "Укажите, как часто Windows следует запрашивать ваш отзыв"
     },
     "Type": "RadioGroup",
@@ -123,7 +123,7 @@
           "RU": "ProgramDataUpdater"
         },
         "ChildDescription": {
-          "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program",
+          "EN": "This task collects program telemetry information from users participating in the Customer Experience Improvement Program.",
           "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
         },
         "Type": "CheckBox"
@@ -135,7 +135,7 @@
           "RU": "Proxy"
         },
         "ChildDescription": {
-          "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program",
+          "EN": "This task collects and uploads autochk SQM data from users participating in the Customer Experience Improvement Program.",
           "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
         },
         "Type": "CheckBox"
@@ -147,7 +147,7 @@
           "RU": "Consolidator"
         },
         "ChildDescription": {
-          "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft",
+          "EN": "This task collects and sends usage data to Microsoft from users participating in the Customer Experience Improvement Program.",
           "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
         },
         "Type": "CheckBox"
@@ -171,7 +171,7 @@
           "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
         },
         "ChildDescription": {
-          "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program",
+          "EN": "The Windows Disk Diagnostic task reports general disk and system information to Microsoft from users participating in the Customer Experience Program.",
           "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
         },
         "Type": "CheckBox"
@@ -183,7 +183,7 @@
           "RU": "MapsToastTask"
         },
         "ChildDescription": {
-          "EN": "This task shows various Map related toasts",
+          "EN": "This task shows various Map related toasts.",
           "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам"
         },
         "Type": "CheckBox"
@@ -195,7 +195,7 @@
           "RU": "MapsUpdateTask"
         },
         "ChildDescription": {
-          "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps",
+          "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps.",
           "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт"
         },
         "Type": "CheckBox"
@@ -207,7 +207,7 @@
           "RU": "FamilySafetyMonitor"
         },
         "ChildDescription": {
-          "EN": "Initializes Family Safety monitoring and enforcement",
+          "EN": "This task initializes Family Safety monitoring and enforcement.",
           "RU": "Инициализация контроля и применения правил семейной безопасности"
         },
         "Type": "CheckBox"
@@ -219,7 +219,7 @@
           "RU": "XblGameSaveTask"
         },
         "ChildDescription": {
-          "EN": "XblGameSave Standby Task",
+          "EN": "The XblGameSave Standby Task, which syncronizes synchronizes game progress when the OS is idle.",
           "RU": "Задание XblGameSave, синхронизирующее прогресс в игре во время простоя ОС"
         },
         "Type": "CheckBox"
@@ -233,7 +233,7 @@
       "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
     },
     "Description": {
-      "EN": "Some updates require you to restart your PC and sign in to Windows in order to finish installing the update, which means you might sign in to Windows and find you can’t use your PC until the update is finished. Windows 10 helps prevent this from happening by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to help keep your account and personal info safe",
+      "EN": "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows 10 helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.",
       "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows 10 помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации"
     },
     "Type": "Switch",
@@ -268,11 +268,11 @@
   {
     "Id": 121,
     "Header": {
-      "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight what's new and suggested",
+      "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers",
       "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
     },
     "Description": {
-      "EN": "Windows 10 may opens a tips window to show you what's new about the operating system",
+      "EN": "Windows 10 may open a pop-up window to show you what's new about the operating system.",
       "RU": "Windows 10 может открывать всплывающее окошко с подсказками, что нового в операционной системе"
     },
     "Type": "CheckBox",
@@ -281,7 +281,7 @@
   {
     "Id": 122,
     "Header": {
-      "EN": "Get tip and suggestions as you use Windows",
+      "EN": "Get tips and suggestions as you use Windows",
       "RU": "Получать советы и предложения при использовании Windows"
     },
     "Description": {
@@ -294,7 +294,7 @@
   {
     "Id": 123,
     "Header": {
-      "EN": "Show me suggested content in the Settings app",
+      "EN": "Show suggested content in the Settings app",
       "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
     },
     "Description": {
@@ -307,11 +307,11 @@
   {
     "Id": 124,
     "Header": {
-      "EN": "Turn on automatic installing suggested apps",
+      "EN": "Turn on automatic suggested app installation",
       "RU": "Включить автоматическую установку рекомендованных приложений"
     },
     "Description": {
-      "EN": "Windows may silently download and install some suggested apps from the Microsoft Store without any confirmation",
+      "EN": "Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.",
       "RU": "Windows может в тихом режиме загружать и устанавливать некоторые приложения из Microsoft Store без какого-либо подтверждения"
     },
     "Type": "CheckBox",
@@ -324,7 +324,7 @@
       "RU": "Показывать предложения по настройке устройства"
     },
     "Description": {
-      "EN": "Windows 10 may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up",
+      "EN": "Windows 10 may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up.",
       "RU": "Windows 10 может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить"
     },
     "Type": "CheckBox",
@@ -337,7 +337,7 @@
       "RU": "Персонализированные возможности"
     },
     "Description": {
-      "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen",
+      "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.",
       "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций"
     },
     "Type": "CheckBox",
