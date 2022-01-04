@@ -7,20 +7,18 @@
         Direction="360"
         Opacity="0.20"
         Color="#000000" />
-    <LinearGradientBrush x:Key="Brush.Window.Title.Logo.Background" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.2" Color="#ec939e" />
-        <GradientStop Offset="0.8" Color="#8b95e5" />
-    </LinearGradientBrush>
-    <SolidColorBrush x:Key="Brush.Window.Background" Color="#FFFFFF" />
-    <SolidColorBrush x:Key="Brush.Window.Foreground" Color="#000000" />
     <SolidColorBrush x:Key="Brush.Button.Foreground" Color="#FFFFFF" />
-    <SolidColorBrush x:Key="Brush.Window.Unaccent" Color="#BEBEBE" />
-    <SolidColorBrush x:Key="Brush.Window.Element.Hover" Color="#F1F1F1" />
-    <SolidColorBrush x:Key="Brush.Window.Acсent.Normal" Color="#0078D4" />
+    <SolidColorBrush x:Key="Brush.Logo.Background" Color="#868686" />
+    <SolidColorBrush x:Key="Brush.Logo.Foreground" Color="#000000" />
     <SolidColorBrush x:Key="Brush.Window.Acсent.Hight" Color="#E92F2F" />
     <SolidColorBrush x:Key="Brush.Window.Acсent.Light" Color="#7DB9E7" />
-    <SolidColorBrush x:Key="Brush.Window.Light" Color="#E5E5E5" />
+    <SolidColorBrush x:Key="Brush.Window.Acсent.Normal" Color="#0078D4" />
+    <SolidColorBrush x:Key="Brush.Window.Background" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="Brush.Window.Element.Hover" Color="#F1F1F1" />
+    <SolidColorBrush x:Key="Brush.Window.Foreground" Color="#000000" />
     <SolidColorBrush x:Key="Brush.Window.Highlight" Color="#0078D4" />
+    <SolidColorBrush x:Key="Brush.Window.Light" Color="#E5E5E5" />
+    <SolidColorBrush x:Key="Brush.Window.Unaccent" Color="#BEBEBE" />
     <SolidColorBrush
         x:Key="Brush.Hamburger.Separator.Background"
         Opacity="0.1"

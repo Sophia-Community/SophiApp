@@ -138,7 +138,7 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public string Version { get => AppHelper.Version.ToString(); }
+        public string Version { get => AppHelper.ShortVersion; }
 
         public bool ViewsHitTest
         {

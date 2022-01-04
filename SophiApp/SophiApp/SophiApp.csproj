@@ -100,6 +100,9 @@
     <Compile Include="Controls\CommandButton.xaml.cs">
       <DependentUpon>CommandButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Logo.xaml.cs">
+      <DependentUpon>Logo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SimpleSwitch.xaml.cs">
       <DependentUpon>SimpleSwitch.xaml</DependentUpon>
     </Compile>
@@ -262,38 +265,20 @@
     <Compile Include="ViewModels\Methods.cs" />
     <Compile Include="ViewModels\Properties.cs" />
     <Compile Include="ViewModels\Constants.cs" />
+    <Compile Include="Views\ViewConditionsTemplate.xaml.cs">
+      <DependentUpon>ViewConditionsTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewContextMenu.xaml.cs" />
     <Compile Include="Views\ViewGames.xaml.cs" />
     <Compile Include="Views\ViewLoading.xaml.cs" />
-    <Compile Include="Views\ViewLoggedUserIsAdmin.xaml.cs">
-      <DependentUpon>ViewLoggedUserIsAdmin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewNoNewVersion.xaml.cs">
-      <DependentUpon>ViewNoNewVersion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewOsBuildVersion.xaml.cs">
-      <DependentUpon>ViewOsBuildVersion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewOsIsInfected.xaml.cs">
-      <DependentUpon>ViewOsIsInfected.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ViewOsUpdateBuildRevision.xaml.cs">
-      <DependentUpon>ViewOsUpdateBuildRevision.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ViewPersonalization.xaml.cs" />
     <Compile Include="Views\ViewPrivacy.xaml.cs" />
     <Compile Include="Views\ViewSecurity.xaml.cs" />
     <Compile Include="Views\ViewSettings.xaml.cs" />
-    <Compile Include="Views\ViewSomethingWrong.xaml.cs">
-      <DependentUpon>ViewSomethingWrong.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ViewStartMenu.xaml.cs" />
     <Compile Include="Views\ViewSystem.xaml.cs" />
     <Compile Include="Views\ViewTaskSheduler.xaml.cs" />
     <Compile Include="Views\ViewUwpApps.xaml.cs" />
-    <Compile Include="Views\ViewWindows10DebloaterNotUsed.xaml.cs">
-      <DependentUpon>ViewWindows10DebloaterNotUsed.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Watchers\RegistryWatcher.cs" />
     <Page Include="Commons\Fonts.xaml">
       <SubType>Designer</SubType>
@@ -370,6 +355,10 @@
     <Page Include="Controls\LoadingRing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Logo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -451,6 +440,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ViewConditionsTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewContextMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -462,26 +455,6 @@
     <Page Include="Views\ViewLoading.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ViewLoggedUserIsAdmin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewNoNewVersion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewOsBuildVersion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewOsIsInfected.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewOsUpdateBuildRevision.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewPersonalization.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -499,10 +472,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ViewSomethingWrong.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ViewStartMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -518,10 +487,6 @@
     <Page Include="Views\ViewUwpApps.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ViewWindows10DebloaterNotUsed.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

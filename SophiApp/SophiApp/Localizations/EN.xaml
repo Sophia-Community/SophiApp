@@ -39,9 +39,7 @@
     <system:String x:Key="Localization.Settings.DebugMode">Debug mode</system:String>
     <system:String x:Key="Localization.Settings.Designer">UI/UX development:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
-    <system:String x:Key="Localization.Settings.Export">Export</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
-    <system:String x:Key="Localization.Settings.Import">Import</system:String>
     <system:String x:Key="Localization.Settings.Languages">Display language</system:String>
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>

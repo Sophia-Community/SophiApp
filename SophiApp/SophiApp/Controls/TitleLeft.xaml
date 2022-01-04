@@ -12,14 +12,6 @@
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="Orientation" Value="Horizontal" />
         </Style>
-        <Style TargetType="{x:Type Ellipse}">
-            <Setter Property="Width" Value="12" />
-            <Setter Property="Height" Value="12" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="10,0,10,0" />
-            <Setter Property="Fill" Value="{DynamicResource Brush.Window.Title.Logo.Background}" />
-        </Style>
         <Style TargetType="{x:Type local:TitleLeft}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
@@ -32,7 +24,7 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" MouseLeftButtonDown="TitleLeft_MouseLeftButtonDown">
                 <StackPanel>
-                    <Ellipse />
+                    <local:Logo Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5, 0, 5 ,0" />
                     <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="5, 0, 0, 0"

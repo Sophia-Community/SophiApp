@@ -1009,7 +1009,7 @@ namespace SophiApp.Customisations
                 return;
             }
 
-            FileHelper.TryDeleteFile(processCreationXml);            
+            FileHelper.TryDeleteFile(processCreationXml);
         }
 
         public static void _900(bool IsChecked)

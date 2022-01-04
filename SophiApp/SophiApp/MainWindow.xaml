@@ -9,10 +9,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:SophiApp.Views"
     x:Name="Window"
+    Closed="Window_Closed"
     controls:AdvancedRadioGroup.MouseEnter="TextedElement_MouseEnter"
     controls:AdvancedRadioGroup.MouseLeave="TextedElement_MouseLeave"
     controls:AdvancedSwitch.MouseEnter="TextedElement_MouseEnter"
     controls:AdvancedSwitch.MouseLeave="TextedElement_MouseLeave"
+    controls:ButtonGroup.MouseEnter="TextedElement_MouseEnter"
+    controls:ButtonGroup.MouseLeave="TextedElement_MouseLeave"
     controls:CheckBox.MouseEnter="TextedElement_MouseEnter"
     controls:CheckBox.MouseLeave="TextedElement_MouseLeave"
     controls:ExpandingGroup.MouseEnter="TextedElement_MouseEnter"
@@ -27,9 +30,6 @@
     controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
     controls:Switch.MouseEnter="TextedElement_MouseEnter"
     controls:Switch.MouseLeave="TextedElement_MouseLeave"
-    controls:ButtonGroup.MouseEnter="TextedElement_MouseEnter"
-    controls:ButtonGroup.MouseLeave="TextedElement_MouseLeave"
-    Closed="Window_Closed"
     Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -190,13 +190,13 @@
                 <controls:HamburgerMenu Grid.Column="0" />
                 <views:ViewLoading Grid.Column="1" Panel.ZIndex="30" />
                 <views:ViewSettings Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewSomethingWrong Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewOsBuildVersion Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewOsUpdateBuildRevision Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewLoggedUserIsAdmin Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewOsIsInfected Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewWindows10DebloaterNotUsed Grid.Column="1" Panel.ZIndex="20" />
-                <views:ViewNoNewVersion Grid.Column="1" Panel.ZIndex="20" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsLoggedUserIsAdmin" Grid.Column="1" Panel.ZIndex="20" Text="{DynamicResource Conditions.LoggedUserAdmin}" Tag="{StaticResource Tags.Conditions.LoggedUserAdmin}" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsNoNewVersion" Grid.Column="1" Panel.ZIndex="20" Text="{DynamicResource Conditions.NoNewVersion}" Tag="{StaticResource Tags.Conditions.NoNewVersion}" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsOsBuildVersion" Grid.Column="1" Panel.ZIndex="20" Text="{DynamicResource Conditions.OsBuildVersion}" Tag="{StaticResource Tags.Conditions.OsBuildVersion}" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsOsIsInfected"  Grid.Column="1" Panel.ZIndex="20" Text="{DynamicResource Conditions.OsIsInfected}" Tag="{StaticResource Tags.Conditions.OsNotInfected}" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsOsUpdateBuildRevision" Grid.Column="1" Panel.ZIndex="20" Text="{DynamicResource Conditions.UpdateBuildRevision}" Tag="{StaticResource Tags.Conditions.UpdateBuildRevision}" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsSomethingWrong" Grid.Column="1" Panel.ZIndex="20" Text="{Binding Path=ConditionsHelperError, UpdateSourceTrigger=PropertyChanged}" Tag="{StaticResource Tags.Conditions.SomethingWrong}" />
+                <views:ViewConditionsTemplate x:Name="ViewConditionsWindows10DebloaterNotUsed" Grid.Column="1" Panel.ZIndex="20" Text="{DynamicResource Conditions.Windows10DebloaterNotUsed}" Tag="{StaticResource Tags.Conditions.Windows10DebloaterNotUsed}" />
                 <Grid Grid.Column="1" Panel.ZIndex="10">
                     <!--  Wrapper Grid For Views With Description and Info Panel  -->
                     <Grid.ColumnDefinitions>

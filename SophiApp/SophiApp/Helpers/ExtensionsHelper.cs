@@ -36,13 +36,19 @@ namespace SophiApp.Helpers
 
         public static List<T> Merge<T>(this List<T> source, List<T> mergeable)
         {
-            source.AddRange(mergeable);
+            if (mergeable.NotEmpty())
+                source.AddRange(mergeable);
+
             return source;
         }
 
+        public static bool NotEmpty<T>(this List<T> list) => list.Count > 0;
+
         public static List<string> Split(this List<string> source, string splitter)
         {
-            source.Add(splitter);
+            if (source.NotEmpty() && source.Last() != string.Empty)
+                source.Add(splitter);
+
             return source;
         }
 

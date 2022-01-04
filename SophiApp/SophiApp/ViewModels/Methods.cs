@@ -148,7 +148,6 @@ namespace SophiApp.ViewModels
         {
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
-            conditionsHelperError = string.Empty;
             DebugMode = true;
             buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;
             LoadingPanelVisibility = false;

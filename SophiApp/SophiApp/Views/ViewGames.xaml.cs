@@ -16,18 +16,9 @@ namespace SophiApp.Views
         public new static readonly DependencyProperty TagProperty =
             DependencyProperty.Register("Tag", typeof(string), typeof(ViewGames), new PropertyMetadata(default));
 
-
-        public int TextedElementsCount
-        {
-            get { return (int)GetValue(TextedElementsCountProperty); }
-            set { SetValue(TextedElementsCountProperty, value); }
-        }
-
         // Using a DependencyProperty as the backing store for ElementsCount.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextedElementsCountProperty =
             DependencyProperty.Register("TextedElementsCount", typeof(int), typeof(ViewGames), new PropertyMetadata(0));
-
-
 
         public ViewGames()
         {
@@ -39,6 +30,12 @@ namespace SophiApp.Views
         {
             get => (string)GetValue(TagProperty);
             set => SetValue(TagProperty, value);
+        }
+
+        public int TextedElementsCount
+        {
+            get { return (int)GetValue(TextedElementsCountProperty); }
+            set { SetValue(TextedElementsCountProperty, value); }
         }
 
         private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)

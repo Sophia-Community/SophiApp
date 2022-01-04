@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SophiApp.Helpers
 {
@@ -30,14 +29,6 @@ namespace SophiApp.Helpers
             return string.Join("", toast);
         }
 
-        internal static string LocalizeSoftwareDistributionTaskToast(string softwareDistributionToast)
-        {
-            var toast = softwareDistributionToast.Split(delimiter);
-            toast[8] = toast[8].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Toast.Title.Notificaton")}");
-            toast[11] = toast[11].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.SoftwareDistributionTask.Event")}");
-            return string.Join("", toast);
-        }
-
         internal static string LocalizeEventViewerCustomXml(string eventViewerCustomXml)
         {
             var securityString = "*[System[(EventID=4688)]]";
@@ -46,6 +37,14 @@ namespace SophiApp.Helpers
             xml[7] = xml[7].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.EventViewer.CustomView.Description")}");
             xml[10] = xml[10].Replace($"{placeholder}", securityString);
             return string.Join("", xml);
+        }
+
+        internal static string LocalizeSoftwareDistributionTaskToast(string softwareDistributionToast)
+        {
+            var toast = softwareDistributionToast.Split(delimiter);
+            toast[8] = toast[8].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Toast.Title.Notificaton")}");
+            toast[11] = toast[11].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.SoftwareDistributionTask.Event")}");
+            return string.Join("", toast);
         }
     }
 }

@@ -62,6 +62,16 @@ namespace SophiApp.Helpers
             string pszTo,
             FileAttributes dwAttrTo);
 
+        internal static void Create(string filePath)
+        {
+            var dirPath = filePath.Substring(0, filePath.LastIndexOf(Path.DirectorySeparatorChar));
+
+            if (Directory.Exists(dirPath).Invert())
+                Directory.CreateDirectory(dirPath);
+
+            File.Create(filePath);
+        }
+
         internal static void CreateDirectory(string dirPath)
         {
             try
@@ -160,12 +170,6 @@ namespace SophiApp.Helpers
                 DirectoryLazyDelete(dir);
         }
 
-        internal static void TryDeleteFile(string filePath)
-        {
-            if (File.Exists(filePath))
-                File.Delete(filePath);
-        }
-
         internal static void FileDelete(params string[] filesPath)
         {
             foreach (var file in filesPath)
@@ -192,14 +196,10 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static void Create(string filePath)
+        internal static void TryDeleteFile(string filePath)
         {
-            var dirPath = filePath.Substring(0, filePath.LastIndexOf(Path.DirectorySeparatorChar));
-            
-            if (Directory.Exists(dirPath).Invert())
-                Directory.CreateDirectory(dirPath);
-
-            File.Create(filePath);
+            if (File.Exists(filePath))
+                File.Delete(filePath);
         }
     }
 }

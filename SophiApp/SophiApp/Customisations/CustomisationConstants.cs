@@ -397,8 +397,6 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _802_DEFENDER_SANDBOX_PROCESS = "MsMpEngCP";
         internal const string _802_DEFENDER_USE_SANDBOX_ARGS = "/M MP_FORCE_USE_SANDBOX";
         internal const string _802_SETX_APP = "setx";
-        internal const string PROCESS_AUDIT_DISABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
-        internal const string PROCESS_AUDIT_ENABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable";
 
         internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
@@ -429,8 +427,6 @@ else
 {
     $false
 }";
-        internal const string POLICIES_AUDIT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit";
-        internal const string PROCESS_CREATION_ENABLED = "ProcessCreationIncludeCmdLine_Enabled";
 
         internal const string _805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
@@ -457,7 +453,9 @@ else
 {
     $false
 }";
+
         internal const string _805_PROCESS_CREATION_XML = "ProcessCreation.xml";
+
         internal const string _805_PROCESS_CREATION_XML_DATA = @"<ViewerConfig>
 	<QueryConfig>
 		<QueryParams>
@@ -474,7 +472,7 @@ else
         </QueryNode>
     </QueryConfig>
 </ViewerConfig>";
-        internal readonly static string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
+
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -585,10 +583,14 @@ else
         internal const string MITIGATION_USER_PREFERENCE = "UserPreference";
         internal const string MUIVERB = "MUIVerb";
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
+        internal const string POLICIES_AUDIT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit";
         internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
         internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
         internal const string POWERCFG_EXE = "powercfg.exe";
         internal const string POWERSHELL_EXE = "powershell.exe";
+        internal const string PROCESS_AUDIT_DISABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
+        internal const string PROCESS_AUDIT_ENABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable";
+        internal const string PROCESS_CREATION_ENABLED = "ProcessCreationIncludeCmdLine_Enabled";
         internal const string PROGRAM_ACCESS_ONLY = "ProgrammaticAccessOnly";
         internal const string SERVICE_SPOOLER = "Spooler";
         internal const string SESSION_MANAGER_ENVIRONMENT = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
@@ -639,6 +641,7 @@ else
         };
 
         internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "Device Driver Packages", "Previous Installations", "Setup Log Files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows Upgrade Log Files" };
+        internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
         internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

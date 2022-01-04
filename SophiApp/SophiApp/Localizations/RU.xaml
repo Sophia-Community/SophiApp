@@ -39,9 +39,7 @@
     <system:String x:Key="Localization.Settings.DebugMode">Режим отладки</system:String>
     <system:String x:Key="Localization.Settings.Designer">Разработка UI/UX:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Владимир Nameless</system:String>
-    <system:String x:Key="Localization.Settings.Export">Экспорт</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
-    <system:String x:Key="Localization.Settings.Import">Импорт</system:String>
     <system:String x:Key="Localization.Settings.Languages">Язык интерфейса</system:String>
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий &quot;farag&quot; Нефёдов</system:String>

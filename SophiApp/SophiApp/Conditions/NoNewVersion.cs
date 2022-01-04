@@ -30,14 +30,14 @@ namespace SophiApp.Conditions
                     var serverResponse = reader.ReadToEnd();
                     var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
                     DebugHelper.HasUpdateRelease(release);
-                    var isNewVersion = new Version(release.tag_name) > AppHelper.Version
+                    var isNewVersion = new Version(release.tag_name.Substring(0, 3)) > AppHelper.Version
                                                                      && release.prerelease.Invert()
                                                                      && release.draft.Invert();
 
                     if (isNewVersion)
                     {
                         DebugHelper.IsNewRelease();
-                        ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: release.tag_name);
+                        ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.ShortVersion}", newVersion: release.tag_name);
                     }
 
                     DebugHelper.UpdateNotNecessary();
