@@ -5,14 +5,14 @@
 
     <system:String x:Key="Conditions.LoggedUserAdmin">The logged-on user doesn't have admin rights</system:String>
     <system:String x:Key="Conditions.NoNewVersion">A new version was found</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion">Supported Windows 10 versions: 2004/20H2/21H1/21H2</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion">Your Windows isn't compatible with SophiApp. Supported OS: Windows 10 2004/20H2/21H1/21H2. Please run Windows Update to update your Windows to latest version.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
-    <system:String x:Key="Conditions.UpdateBuildRevision">Supported cumulative update: 1151 and higher</system:String>
+    <system:String x:Key="Conditions.UpdateBuildRevision">The minimum Windows 10 supported build is 1151. Your version is lower. Please run Windows Update to update your Windows to latest Windows 10 version.</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. As a precaution, reinstall the entire OS.</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the %Temp% folder.</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Event">The %Temp% files folder was successfully cleaned up.</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
