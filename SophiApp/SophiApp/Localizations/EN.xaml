@@ -69,6 +69,6 @@
     <system:String x:Key="Localization.ViewChanges.Cancel">Cancel</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">settings</system:String>
-    <system:String x:Key="Localization.ViewGames.Empty">Thre is no data to display, or the necessary packages have been removed.</system:String>
+    <system:String x:Key="Localization.ViewGames.Empty">There is no data to display, or the necessary packages have been removed.</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">For all users</system:String>
 </ResourceDictionary>
