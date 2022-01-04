@@ -336,9 +336,7 @@ namespace SophiApp.ViewModels
 
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
-        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED
-                                                                                                                                                                                                                                                                                            ? ElementStatus.CHECKED
-                                                                                                            : ElementStatus.UNCHECKED;
+        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
 
         private async void TextedElementClickedAsync(object args)
         {
@@ -358,11 +356,10 @@ namespace SophiApp.ViewModels
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
-            //TODO: For debug only!
             await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
-            //TODO: For debug only!
+
             if (conditionsHelper.Result)
             {
                 MouseHelper.ShowWaitCursor(show: true);

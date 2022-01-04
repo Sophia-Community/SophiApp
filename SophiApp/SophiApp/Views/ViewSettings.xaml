@@ -116,13 +116,7 @@
                                 HorizontalAlignment="Left"
                                 Command="{Binding AdvancedSettingsClickedCommand}"
                                 Header="{DynamicResource Localization.Settings.Advanced}"
-                                IsChecked="{Binding AdvancedSettingsVisibility}" />
-
-                            <controls:CommandButton
-                                IsEnabled="False"
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Text="{DynamicResource Localization.Settings.Reset}" />
+                                IsChecked="{Binding AdvancedSettingsVisibility}" />                           
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
