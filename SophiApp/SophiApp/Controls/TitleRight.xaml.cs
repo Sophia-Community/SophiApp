@@ -29,5 +29,10 @@ namespace SophiApp.Controls
                 Application.Current.MainWindow.DragMove();
             }
         }
+
+        private void IconRestore_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Application.Current.MainWindow.WindowState = Application.Current.MainWindow.WindowState == WindowState.Normal
+                                                                                               ? WindowState.Maximized 
+                                                                                               : WindowState.Normal;
+
     }
 }

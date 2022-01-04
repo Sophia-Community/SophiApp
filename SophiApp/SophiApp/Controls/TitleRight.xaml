@@ -45,13 +45,29 @@
                 </Grid>
                 <Grid
                     Margin="0,0,35,0"
+                    MouseLeftButtonDown="IconRestore_MouseLeftButtonDown"
+                    Style="{StaticResource Grid.Icon.Wrapper}">
+                    <Viewbox>
+                        <Path x:Name="IconRestore" />
+                    </Viewbox>
+                </Grid>
+                <Grid
+                    Margin="0,0,70,0"
                     MouseLeftButtonDown="IconMinimize_MouseLeftButtonDown"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
-                        <Path x:Name="CloseMinimize" Data="M20,14H4V10H20" />
+                        <Path x:Name="IconMinimize" Data="M20,14H4V10H20" />
                     </Viewbox>
                 </Grid>
             </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=WindowState,RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="Normal">
+                    <Setter TargetName="IconRestore" Property="Data" Value="M4,4H20V20H4V4M6,8V18H18V8H6Z"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=WindowState,RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="Maximized">
+                    <Setter TargetName="IconRestore" Property="Data" Value="M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z"/>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>
