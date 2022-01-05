@@ -473,8 +473,7 @@ namespace SophiApp.Customisations
 
         public static bool _902() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _902_RUNAS_USER_PATH, _902_EXTENDED).Invert();
 
-        public static bool _903() => (RegHelper.GetStringValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _903_CAST_TO_DEV_GUID) == _903_CAST_TO_DEV_VALUE)
-                                               .Invert();
+        public static bool _903() => (RegHelper.GetStringValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _903_CAST_TO_DEV_GUID) == _903_CAST_TO_DEV_VALUE).Invert();
 
         public static bool _904() => RegHelper.KeyExist(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID).Invert();
 

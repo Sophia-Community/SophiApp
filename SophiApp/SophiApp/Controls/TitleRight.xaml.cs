@@ -30,9 +30,7 @@ namespace SophiApp.Controls
             }
         }
 
-        private void IconRestore_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Application.Current.MainWindow.WindowState = Application.Current.MainWindow.WindowState == WindowState.Normal
-                                                                                               ? WindowState.Maximized 
-                                                                                               : WindowState.Normal;
+        private void IconRestore_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => (Application.Current.MainWindow as MainWindow).ChangeSize();
 
     }
 }

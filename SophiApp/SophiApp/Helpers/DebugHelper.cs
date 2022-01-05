@@ -69,12 +69,16 @@ namespace SophiApp.Helpers
             });
         }
 
+        internal static void StartInitDismInstalledComponents() => WriteStatusLog("Started initialization of DISM components");
+
         internal static void HasUpdateRelease(ReleaseDto release) => WriteInfoLog(new List<string>()
         {
             $"Version is available: {release.tag_name}",
             $"Is prerelease: {release.prerelease}",
             $"Is draft: {release.draft}"
         });
+
+        internal static void StopInitDismInstalledComponents(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize DISM components");
 
         internal static void HasUpdateResponse() => WriteInfoLog("When checking for an update, a response was received from the update server");
 
