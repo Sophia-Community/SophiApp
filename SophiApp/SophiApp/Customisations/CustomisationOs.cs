@@ -275,9 +275,9 @@ namespace SophiApp.Customisations
 
         public static void _217(bool IsChecked)
         {
-            var shellState = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _217_SHELL_STATE);
+            var shellState = RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _217_SHELL_STATE);
             shellState[4] = IsChecked ? _217_SHELL_ENABLED_VALUE : _217_SHELL_DISABLED_VALUE;
-            RegHelper.SetValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _217_SHELL_STATE, shellState, RegistryValueKind.Binary);
+            RegHelper.SetValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _217_SHELL_STATE, shellState, RegistryValueKind.Binary);
         }
 
         public static void _218(bool IsChecked)
@@ -292,14 +292,14 @@ namespace SophiApp.Customisations
         }
 
         public static void _219(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        CURRENT_EXPLORER_PATH,
+                                                                        CURRENT_VERSION_EXPLORER_PATH,
                                                                             _219_SHOW_RECENT,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _220(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        CURRENT_EXPLORER_PATH,
+                                                                        CURRENT_VERSION_EXPLORER_PATH,
                                                                             _220_SHOW_FREQUENT,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                          : DISABLED_VALUE,
@@ -352,7 +352,7 @@ namespace SophiApp.Customisations
                                                                                     RegistryValueKind.DWord);
 
         public static void _229(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        CURRENT_EXPLORER_PATH,
+                                                                        CURRENT_VERSION_EXPLORER_PATH,
                                                                             _229_AUTO_TRAY,
                                                                                 IsChecked ? _229_AUTO_TRAY_SHOW_VALUE
                                                                                          : _229_AUTO_TRAY_HIDE_VALUE,
@@ -1012,6 +1012,60 @@ namespace SophiApp.Customisations
             FileHelper.TryDeleteFile(processCreationXml);
         }
 
+        public static void _806(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.LocalMachine, _806_POWERSHELL_MODULE_LOGGING_PATH, _806_ENABLE_MODULE_LOGGING, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, _806_POWERSHELL_MODULE_NAMES_PATH, _806_ALL_MODULE, _806_ALL_MODULE, RegistryValueKind.String);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _806_POWERSHELL_MODULE_LOGGING_PATH, _806_ENABLE_MODULE_LOGGING);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _806_POWERSHELL_MODULE_NAMES_PATH, _806_ALL_MODULE);
+        }
+
+        public static void _807(bool ISChecked)
+        {
+            if (ISChecked)
+            {
+                RegHelper.SetValue(RegistryHive.LocalMachine, _807_POWERSHELL_SCRIPT_BLOCK_LOGGING_PATH, _807_ENABLE_SCRIPT_BLOCK_LOGGING, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _807_POWERSHELL_SCRIPT_BLOCK_LOGGING_PATH, _807_ENABLE_SCRIPT_BLOCK_LOGGING);
+        }
+
+        public static void _808(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        CURRENT_VERSION_EXPLORER_PATH,
+                                                                            _808_SMART_SCREEN_ENABLED,
+                                                                                IsChecked ? _808_SMART_SCREEN_ENABLED_VALUE : _808_SMART_SCREEN_DISABLED_VALUE,
+                                                                                    RegistryValueKind.String);
+
+        public static void _809(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, _809_CURRENT_POLICIES_ATTACHMENTS_PATH, _809_SAFE_ZONE_INFO);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.CurrentUser, _809_CURRENT_POLICIES_ATTACHMENTS_PATH, _809_SAFE_ZONE_INFO, _809_DISABLED_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _810(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, _810_WSH_SETTINGS_PATH, ENABLED);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.CurrentUser, _810_WSH_SETTINGS_PATH, ENABLED, DISABLED_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _811(bool IsChecked) => DismHelper.SetFeatureState(_811_WINDOWS_SANDBOX_FEATURE, IsChecked);
+
         public static void _900(bool IsChecked)
         {
             if (IsChecked)
@@ -1262,11 +1316,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _924_PROMPT_NAME, _924_PROMPT_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME, _924_PROMPT_VALUE, RegistryValueKind.DWord);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _924_PROMPT_NAME);
+            RegHelper.DeleteKey(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME);
         }
 
         public static void _925(bool IsChecked)

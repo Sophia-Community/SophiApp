@@ -101,7 +101,7 @@
                     Tag="{StaticResource Tags.View.ContextMenu}"
                     Text="{DynamicResource Localization.ContextMenu}" />
 
-                  <!--Hamburger Buttons Separator-->  
+                  <!--Hamburger Buttons Separator-->
                 <Border />
                 <local:HamburgerButton
                     Margin="0,407,0,0"
@@ -111,8 +111,8 @@
                     Tag="{StaticResource Tags.View.Settings}"
                     Text="{DynamicResource Localization.Settings}" />
 
-                <local:SearchBar Margin="10, 497, 10, 0"
-                                 VerticalAlignment="Top" />
+                <local:SearchBar Margin="10, 0, 10, 20"
+                                 VerticalAlignment="Bottom" />
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

@@ -11,6 +11,18 @@ namespace SophiApp.Conditions
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionOsNotInfected;
 
-        public bool Invoke() => Result = RegHelper.SubKeyExist(Microsoft.Win32.RegistryHive.CurrentUser, W10T_REGISTRY_PATH).Invert();
+        public bool Invoke()
+        {
+            try
+            {
+                Result = RegHelper.SubKeyExist(Microsoft.Win32.RegistryHive.CurrentUser, W10T_REGISTRY_PATH).Invert();
+            }
+            catch (System.Security.SecurityException)
+            {
+                Result = false;
+            }
+
+            return Result;
+        }
     }
 }

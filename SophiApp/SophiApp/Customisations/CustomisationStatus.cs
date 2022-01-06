@@ -147,17 +147,17 @@ namespace SophiApp.Customisations
         public static bool _216() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _216_RIBBON_EXPLORER_PATH, _216_TABLET_MODE_OFF)
                                               .HasNullOrValue(_216_MINIMIZED_VALUE);
 
-        public static bool _217() => RegHelper.KeyExist(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _217_SHELL_STATE)
-                                     ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _217_SHELL_STATE)[4] == _217_SHELL_ENABLED_VALUE
-                                     : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{CURRENT_EXPLORER_PATH}\{_217_SHELL_STATE}");
+        public static bool _217() => RegHelper.KeyExist(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _217_SHELL_STATE)
+                                     ? RegHelper.GetByteArrayValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _217_SHELL_STATE)[4] == _217_SHELL_ENABLED_VALUE
+                                     : throw new RegistryKeyNotFoundException($@"{RegistryHive.CurrentUser}\{CURRENT_VERSION_EXPLORER_PATH}\{_217_SHELL_STATE}");
 
         public static bool _218() => RegHelper.GetStringValue(RegistryHive.LocalMachine, _218_3D_OBJECT_PROPERTY_PATH, _218_PC_POLICY) == null
                                      || RegHelper.GetStringValue(RegistryHive.LocalMachine, _218_3D_OBJECT_PROPERTY_PATH, _218_PC_POLICY) != _218_3D_OBJECT_HIDE_VALUE;
 
-        public static bool _219() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _219_SHOW_RECENT)
+        public static bool _219() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _219_SHOW_RECENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _220() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _220_SHOW_FREQUENT)
+        public static bool _220() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _220_SHOW_FREQUENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _221() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _221_SHOW_TASK_VIEW)
@@ -176,7 +176,7 @@ namespace SophiApp.Customisations
 
         public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _228_PEN_WORKSPACE_PATH, _228_PEN_WORKSPACE_VISIBILITY) == ENABLED_VALUE;
 
-        public static bool _229() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _229_AUTO_TRAY)
+        public static bool _229() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _229_AUTO_TRAY)
                                               .HasNullOrValue(_229_AUTO_TRAY_HIDE_VALUE)
                                               .Invert();
 
@@ -224,7 +224,7 @@ namespace SophiApp.Customisations
 
         public static bool _248()
         {
-            RegHelper.TryDeleteValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _248_LINK);
+            RegHelper.TryDeleteValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _248_LINK);
             return RegHelper.GetStringValue(RegistryHive.CurrentUser, _248_EXPLORER_NAMING_PATH, _248_SHORTCUT) is null;
         }
 
@@ -467,6 +467,19 @@ namespace SophiApp.Customisations
 
         public static bool _805() => PowerShellHelper.GetScriptResult<bool>(_805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS);
 
+        public static bool _806() => RegHelper.GetNullableByteValue(RegistryHive.LocalMachine, _806_POWERSHELL_MODULE_LOGGING_PATH, _806_ENABLE_MODULE_LOGGING) == ENABLED_VALUE
+                                     && RegHelper.GetStringValue(RegistryHive.LocalMachine, _806_POWERSHELL_MODULE_NAMES_PATH, _806_ALL_MODULE) == _806_ALL_MODULE;
+
+        public static bool _807() => RegHelper.GetNullableByteValue(RegistryHive.LocalMachine, _807_POWERSHELL_SCRIPT_BLOCK_LOGGING_PATH, _807_ENABLE_SCRIPT_BLOCK_LOGGING) == ENABLED_VALUE;
+
+        public static bool _808() => RegHelper.GetStringValue(RegistryHive.LocalMachine, CURRENT_VERSION_EXPLORER_PATH, _808_SMART_SCREEN_ENABLED) == _808_SMART_SCREEN_ENABLED_VALUE;
+
+        public static bool _809() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _809_CURRENT_POLICIES_ATTACHMENTS_PATH, _809_SAFE_ZONE_INFO) == _809_DISABLED_VALUE).Invert();
+
+        public static bool _810() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _810_WSH_SETTINGS_PATH, ENABLED) == DISABLED_VALUE).Invert();
+
+        public static bool _811() => DismHelper.FeatureIsInstalled(_811_WINDOWS_SANDBOX_FEATURE);
+
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
         public static bool _901() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _901_CAB_COM_PATH);
@@ -533,7 +546,7 @@ namespace SophiApp.Customisations
 
         public static bool _923() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _923_ZIP_SHELLNEW_PATH);
 
-        public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_EXPLORER_PATH, _924_PROMPT_NAME)
+        public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME)
                                               .HasNullOrValue(_924_PROMPT_VALUE);
 
         public static bool _925() => RegHelper.KeyExist(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();

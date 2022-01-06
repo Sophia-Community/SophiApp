@@ -34,10 +34,9 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" MouseLeftButtonDown="TitleRight_MouseLeftButtonDown">
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid
                     IsHitTestVisible="{Binding WindowCloseHitTest, UpdateSourceTrigger=PropertyChanged}"
-                    MouseLeftButtonDown="IconClose_MouseLeftButtonDown"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
                         <Path x:Name="IconClose" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
@@ -45,7 +44,6 @@
                 </Grid>
                 <Grid
                     Margin="0,0,35,0"
-                    MouseLeftButtonDown="IconRestore_MouseLeftButtonDown"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
                         <Path x:Name="IconRestore" />
@@ -53,7 +51,6 @@
                 </Grid>
                 <Grid
                     Margin="0,0,70,0"
-                    MouseLeftButtonDown="IconMinimize_MouseLeftButtonDown"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
                         <Path x:Name="IconMinimize" Data="M20,14H4V10H20" />
@@ -62,10 +59,10 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=IsMaximized,RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="True">
-                    <Setter TargetName="IconRestore" Property="Data" Value="M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z"/>
+                    <Setter TargetName="IconRestore" Property="Data" Value="M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Path=IsMaximized,RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="False">
-                    <Setter TargetName="IconRestore" Property="Data" Value="M4,4H20V20H4V4M6,8V18H18V8H6Z"/>
+                    <Setter TargetName="IconRestore" Property="Data" Value="M4,4H20V20H4V4M6,8V18H18V8H6Z" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

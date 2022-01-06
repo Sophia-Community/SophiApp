@@ -473,6 +473,20 @@ else
     </QueryConfig>
 </ViewerConfig>";
 
+        internal const string _806_ALL_MODULE = "*";
+        internal const string _806_ENABLE_MODULE_LOGGING = "EnableModuleLogging";
+        internal const string _806_POWERSHELL_MODULE_LOGGING_PATH = @"SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging";
+        internal const string _806_POWERSHELL_MODULE_NAMES_PATH = @"SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging\ModuleNames";
+        internal const string _807_ENABLE_SCRIPT_BLOCK_LOGGING = "EnableScriptBlockLogging";
+        internal const string _807_POWERSHELL_SCRIPT_BLOCK_LOGGING_PATH = @"SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging";
+        internal const string _808_SMART_SCREEN_DISABLED_VALUE = "Off";
+        internal const string _808_SMART_SCREEN_ENABLED = "SmartScreenEnabled";
+        internal const string _808_SMART_SCREEN_ENABLED_VALUE = "Warn";
+        internal const string _809_CURRENT_POLICIES_ATTACHMENTS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments";
+        internal const byte _809_DISABLED_VALUE = 1;
+        internal const string _809_SAFE_ZONE_INFO = "SaveZoneInformation";
+        internal const string _810_WSH_SETTINGS_PATH = @"SOFTWARE\Microsoft\Windows Script Host\Settings";
+        internal const string _811_WINDOWS_SANDBOX_FEATURE = "Containers-DisposableClientVM";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -542,7 +556,7 @@ else
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
         internal const string CONTROL_PANEL_USER_PROFILE_PATH = @"Control Panel\International\User Profile";
-        internal const string CURRENT_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
+        internal const string CURRENT_VERSION_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
         internal const byte DARK_THEME_VALUE = 0;
         internal const string DATA = "Data";
         internal const string DATA_COLLECTION_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
