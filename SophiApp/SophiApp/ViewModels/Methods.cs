@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shell;
 using Localization = SophiApp.Commons.Localization;
 
 namespace SophiApp.ViewModels
@@ -26,6 +27,8 @@ namespace SophiApp.ViewModels
 
         private async void ApplyingSettingsAsync(object args)
         {
+            ShowTaskBarItemInfoProgress();
+
             await Task.Run(() =>
             {
                 DebugHelper.StartApplyingSettings(CustomActions.Count);
@@ -68,6 +71,8 @@ namespace SophiApp.ViewModels
                 totalStopWatch.Stop();
                 DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
             });
+
+            ShowTaskBarItemInfoProgress();
         }
 
         private async void AppThemeChangeAsync(object args)
@@ -244,6 +249,7 @@ namespace SophiApp.ViewModels
 
         private async void ResetTextedElementsStateAsync(object args)
         {
+            ShowTaskBarItemInfoProgress();
             DebugHelper.StartResetTextedElements();
             var stopwatch = Stopwatch.StartNew();
             SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
@@ -260,6 +266,7 @@ namespace SophiApp.ViewModels
             SetControlsHitTest();
             stopwatch.Stop();
             DebugHelper.StopResetTextedElements(stopwatch.Elapsed.TotalSeconds);
+            ShowTaskBarItemInfoProgress();
         }
 
         private async void SaveDebugLogAsync(object args)
@@ -336,9 +343,13 @@ namespace SophiApp.ViewModels
 
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
-        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED
-                                                                                                                                                                                                                                                                                            ? ElementStatus.CHECKED
-                                                                                                            : ElementStatus.UNCHECKED;
+        private void ShowTaskBarItemInfoProgress()
+        {
+            var taskbarInfo = Application.Current.MainWindow.FindName("TaskBarItemInfo") as TaskbarItemInfo;
+            taskbarInfo.ProgressState = taskbarInfo.ProgressState == TaskbarItemProgressState.None ? TaskbarItemProgressState.Indeterminate : TaskbarItemProgressState.None;
+        }
+
+        private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
 
         private async void TextedElementClickedAsync(object args)
         {
@@ -358,13 +369,13 @@ namespace SophiApp.ViewModels
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
-            //TODO: For debug only!
             await conditionsHelper.InvokeAsync();
             stopwatch.Stop();
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
-            //TODO: For debug only!
+
             if (conditionsHelper.Result)
             {
+                ShowTaskBarItemInfoProgress();
                 MouseHelper.ShowWaitCursor(show: true);
                 _ = await DismHelper.GetInstanceAsync();
                 await InitTextedElementsAsync();
@@ -373,6 +384,7 @@ namespace SophiApp.ViewModels
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);
+                ShowTaskBarItemInfoProgress();
             }
         }
     }

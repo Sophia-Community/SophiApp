@@ -92,6 +92,8 @@ namespace SophiApp.Helpers
 
         internal static void StartApplyingSettings(int actionsCount) => WriteStatusLog($"Started applying {actionsCount} setting(s)");
 
+        internal static void StartInitDismInstalledComponents() => WriteStatusLog("Started initialization of DISM components");
+
         internal static void StartInitOsConditions() => WriteStatusLog("Starting the initial OS conditions");
 
         internal static void StartInitTextedElements() => WriteStatusLog("Started initialization of texted elements");
@@ -101,6 +103,8 @@ namespace SophiApp.Helpers
         internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying the setting(s) took {totalSeconds:N0} second(s)");
+
+        internal static void StopInitDismInstalledComponents(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize DISM components");
 
         internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Os conditions");
 

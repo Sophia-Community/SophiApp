@@ -31,8 +31,8 @@ namespace SophiApp.Helpers
         {
             get
             {
-                var version = Assembly.GetExecutingAssembly().GetName().Version;
-                return $"{version.Major}.{version.Minor}";
+                var version = Version;
+                return $"{version.Major}.{version.Minor}.{version.Build}";
             }
         }
 

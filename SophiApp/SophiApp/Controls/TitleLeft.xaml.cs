@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows.Controls;
 
 namespace SophiApp.Controls
 {
@@ -12,16 +10,6 @@ namespace SophiApp.Controls
         public TitleLeft()
         {
             InitializeComponent();
-        }
-
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-
-        private void TitleLeft_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.MouseDevice.LeftButton == MouseButtonState.Pressed)
-                Application.Current.MainWindow.DragMove();
         }
     }
 }

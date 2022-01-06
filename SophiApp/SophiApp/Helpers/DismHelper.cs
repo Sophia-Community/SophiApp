@@ -1,5 +1,6 @@
 ﻿using Microsoft.Dism;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -98,12 +99,18 @@ namespace SophiApp.Helpers
 
         internal void GetInstalledComponents()
         {
+            DebugHelper.StartInitDismInstalledComponents();
+            var stopwatch = Stopwatch.StartNew();
+
             DismApi.Initialize(DismLogLevel.LogErrors);
             var session = DismApi.OpenOnlineSession();
             Capabilites = DismApi.GetCapabilities(session).ToList();
             Features = DismApi.GetFeatures(session).ToList();
             session.Close();
             DismApi.Shutdown();
+
+            stopwatch.Stop();
+            DebugHelper.StopInitDismInstalledComponents(stopwatch.Elapsed.TotalSeconds);
         }
     }
 }

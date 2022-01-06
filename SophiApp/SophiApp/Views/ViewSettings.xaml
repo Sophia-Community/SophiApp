@@ -118,12 +118,6 @@
                                 Header="{DynamicResource Localization.Settings.Advanced}"
                                 IsChecked="{Binding AdvancedSettingsVisibility}" />
 
-                            <controls:CommandButton
-                                IsEnabled="False"
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Text="{DynamicResource Localization.Settings.Reset}" />
-
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
                                 Style="{DynamicResource SubHeaderText}"

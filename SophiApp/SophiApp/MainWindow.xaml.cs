@@ -12,6 +12,10 @@ namespace SophiApp
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(MainWindow), new PropertyMetadata(default));
 
+        // Using a DependencyProperty as the backing store for IsMaximized.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsMaximizedProperty =
+            DependencyProperty.Register("IsMaximized", typeof(bool), typeof(MainWindow), new PropertyMetadata(default));
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,6 +25,12 @@ namespace SophiApp
         {
             get { return (string)GetValue(DescriptionProperty); }
             set { SetValue(DescriptionProperty, value); }
+        }
+
+        public bool IsMaximized
+        {
+            get { return (bool)GetValue(IsMaximizedProperty); }
+            private set { SetValue(IsMaximizedProperty, value); }
         }
 
         private void TextedElement_MouseEnter(object sender, RoutedEventArgs e)

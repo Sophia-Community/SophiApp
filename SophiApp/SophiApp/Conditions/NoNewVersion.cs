@@ -30,7 +30,7 @@ namespace SophiApp.Conditions
                     var serverResponse = reader.ReadToEnd();
                     var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
                     DebugHelper.HasUpdateRelease(release);
-                    var isNewVersion = new Version(release.tag_name.Substring(0, 3)) > AppHelper.Version
+                    var isNewVersion = new Version(release.tag_name.Substring(0, 5)) > AppHelper.Version
                                                                      && release.prerelease.Invert()
                                                                      && release.draft.Invert();
 
