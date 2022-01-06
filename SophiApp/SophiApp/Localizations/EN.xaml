@@ -4,23 +4,23 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Conditions.LoggedUserAdmin">The logged-on user doesn't have admin rights</system:String>
-    <system:String x:Key="Conditions.NoNewVersion">A new version found</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion">Supported Windows 10 versions: 2004/20H2/21H1/21H2</system:String>
-    <system:String x:Key="Conditions.OsIsInfected">Probably your OS was infected via the Win 10 Tweaker backdoor</system:String>
-    <system:String x:Key="Conditions.UpdateBuildRevision">Supported cumulative update: 1151 and higher</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. Preventively, reinstall the entire OS</system:String>
+    <system:String x:Key="Conditions.NoNewVersion">A new version was found</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion">Your Windows isn't compatible with SophiApp. Supported OS: Windows 10 2004/20H2/21H1/21H2. Please run Windows Update to update your Windows to latest version.</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
+    <system:String x:Key="Conditions.UpdateBuildRevision">The minimum Windows 10 supported build is 1151. Your version is lower. Please run Windows Update to update your Windows to latest Windows 10 version.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. As a precaution, reinstall the entire OS.</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
-    <system:String x:Key="Localization.CleanupTask.Description">Cleaning up Windows unused files and updates using built-in Disk cleanup app</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Description">The "%Temp%" folder cleanup</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Event">The temp files folder successfully cleaned up</system:String>
+    <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
-    <system:String x:Key="Localization.EventViewer.CustomView.Description">Process creation and command-line auditing events</system:String>
+    <system:String x:Key="Localization.EventViewer.CustomView.Description">Process creation and command-line auditing events.</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Name">Process Creation</system:String>
     <system:String x:Key="Localization.Games">Games</system:String>
-    <system:String x:Key="Localization.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates</system:String>
-    <system:String x:Key="Localization.NotificationTask.Event">Windows cleanup won't take long. Next time this notification will appear in 30 days</system:String>
+    <system:String x:Key="Localization.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates.</system:String>
+    <system:String x:Key="Localization.NotificationTask.Event">Windows cleanup won't take long. This notification will re-appear in 30 days.</system:String>
     <system:String x:Key="Localization.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
     <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
     <system:String x:Key="Localization.NotificationTask.Title">Important Information</system:String>
@@ -45,6 +45,7 @@
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Logo:</system:String>
     <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia Gumenyuk</system:String>
+    <system:String x:Key="Localization.Settings.Reset">Reset all settings to their original values</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
     <system:String x:Key="Localization.Settings.Themes">Theme</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Dark</system:String>
@@ -52,8 +53,8 @@
     <system:String x:Key="Localization.Settings.Updates">Updates</system:String>
     <system:String x:Key="Localization.Settings.UpdateVersion">Check for updates</system:String>
     <system:String x:Key="Localization.Settings.Version">Version</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">The "%SystemRoot%\SoftwareDistribution\Download" folder cleanup</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache successfully deleted</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleans up the "%SystemRoot%\SoftwareDistribution\Download" folder.</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.StartMenu">Start Menu</system:String>
     <system:String x:Key="Localization.System">System</system:String>
     <system:String x:Key="Localization.TaskSheduler">Scheduled Tasks</system:String>
@@ -68,6 +69,6 @@
     <system:String x:Key="Localization.ViewChanges.Cancel">Cancel</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">settings</system:String>
-    <system:String x:Key="Localization.ViewGames.Empty">No data to display, or necessary packages were removed</system:String>
+    <system:String x:Key="Localization.ViewGames.Empty">There is no data to display, or the necessary packages have been removed.</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">For all users</system:String>
 </ResourceDictionary>
