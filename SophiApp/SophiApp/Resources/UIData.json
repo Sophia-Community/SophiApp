@@ -2050,8 +2050,8 @@
   {
     "Id": 801,
     "Header": {
-      "EN": "Enable detection for potentially unwanted applications and block them",
-      "RU": "Включить обнаружение потенциально нежелательных приложений и блокировать их"
+      "EN": "Enable detection in Microsoft Defender for unwanted applications and block them",
+      "RU": "Включить в Microsoft Defender обнаружение потенциально нежелательных приложений и блокировать их"
     },
     "Description": {
       "EN": "",
@@ -2102,12 +2102,12 @@
   {
     "Id": 805,
     "Header": {
-      "EN": "Create \"Process Creation\" Event Viewer Custom View",
+      "EN": "Create \"Process Creation\" Custom View in the Event Viewer",
       "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий"
     },
     "Description": {
-      "EN": "If you prefer a GUI based approach, it is also possible to create a custom view in the Even Viewer, where all processes and their arguments will be logged. In order this feature to work events auditing and command line in process creation events will be enabled. For more information, read the Microsoft blog: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/",
-      "RU": "Если вы предпочитаете подход на основе графического интерфейса, в \"Просмотре событий\" можно создать собственное представление, где будут журналироваться запускаемые процессов и их аргументы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса. Более подробно читайте в блоге  Microsoft: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/"
+      "EN": "If you prefer a GUI based approach, it is also possible to create a custom view in the Event Viewer, where all processes and their arguments will be logged. In order this feature to work events auditing and command line in process creation events will be enabled. For more information, read the Microsoft blog: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/",
+      "RU": "Если вы предпочитаете подход на основе графического интерфейса, в \"Просмотре событий\" можно создать собственное представление, где будут журналироваться запускаемые процессов и их аргументы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса. Более подробно читайте в блоге Microsoft: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/"
     },
     "Type": "CheckBox",
     "Tag": "Security"
@@ -2141,8 +2141,8 @@
   {
     "Id": 808,
     "Header": {
-      "EN": "Enable apps and files checking within Microsofot Defender SmartScreen",
-      "RU": "Включить проверку приложений и файлов фильтром SmartScreen в Microsoft Defender"
+      "EN": "Check apps and files within Microsoft Defender SmartScreen",
+      "RU": "Проверять приложения и файлы фильтром SmartScreen в Microsoft Defender"
     },
     "Description": {
       "EN": "",
@@ -2154,12 +2154,12 @@
   {
     "Id": 809,
     "Header": {
-      "EN": "Enable the Attachment Manager marking files that have been downloaded from the Internet as unsafe",
-      "RU": "Включить проверку Диспетчера вложений файлов, скачанных из интернета как небезопасные"
+      "EN": "Mark files that have been downloaded from the Internet as unsafe",
+      "RU": "Отмечать файлы, скачанных из интернета, как небезопасные"
     },
     "Description": {
-      "EN": "The Attachment Manager is included in Windows to protect from unsafe attachments from unsafe files saved from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\".",
-      "RU": "Диспетчер вложений включен в Windows для защиты от небезопасных вложений и от небезопасных файлов, которые вы можете сохранить из интернета. Если диспетчер вложений определяет вложение, которое может быть небезопасным, он предотвращает (блокирует) открытие файла или предупреждает вас перед открытием файла. Метаданные сохраняются как альтернативный поток данных (ADS). Если вы хотите разблокировать загруженный файл вручную, вы можете сделать это, щелкнув его правой кнопкой мыши, выбрав Свойства и нажав \"Разблокировать\"."
+      "EN": "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\".",
+      "RU": "Диспетчер вложений включен в Windows для защиты от небезопасных файлов, скачанных из интернета. Если диспетчер вложений определяет файл как небезопасный, то предотвращатся (блокируется) его открытие, или перед открытием файла всплывает предупреждение. Метаданные сохраняются как альтернативный поток данных (ADS). Если вы хотите разблокировать загруженный файл вручную, вы можете сделать это, открыв свойство файла и нажав \"Разблокировать\"."
     },
     "Type": "CheckBox",
     "Tag": "Security"
@@ -2172,7 +2172,7 @@
     },
     "Description": {
       "EN": "Attackers frequently send malicious JavaScript files. This policy blocks WSH from executing .js and .vbs files.",
-      "RU": "Злоумышленники часто отправляют вредоносные JavaScript-файлы. Эта политика блокирует запуск файлов .js и .vbs"
+      "RU": "Злоумышленники часто отправляют вредоносные JavaScript-файлы. Эта политика блокирует запуск .js- и .vbs-файлов"
     },
     "Type": "AdvancedSwitch",
     "Tag": "Security"
@@ -2180,8 +2180,8 @@
   {
     "Id": 811,
     "Header": {
-      "EN": "WindowsSandbox",
-      "RU": "WindowsSandbox"
+      "EN": "Windows Sandbox",
+      "RU": "Windows Sandbox"
     },
     "Description": {
       "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
