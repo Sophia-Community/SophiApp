@@ -34,22 +34,23 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                  MouseLeftButtonDown="GridTitle_MouseLeftButtonDown">
+                <Grid MouseLeftButtonDown="GridClosed_MouseLeftButtonDown"
                     IsHitTestVisible="{Binding WindowCloseHitTest, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
                         <Path x:Name="IconClose" Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
                     </Viewbox>
                 </Grid>
-                <Grid
+                <Grid MouseLeftButtonDown="GridRestore_MouseLeftButtonDown"
                     Margin="0,0,35,0"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>
                         <Path x:Name="IconRestore" />
                     </Viewbox>
                 </Grid>
-                <Grid
+                <Grid MouseLeftButtonDown="GridMinimize_MouseLeftButtonDown"
                     Margin="0,0,70,0"
                     Style="{StaticResource Grid.Icon.Wrapper}">
                     <Viewbox>

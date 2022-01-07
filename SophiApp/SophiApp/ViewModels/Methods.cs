@@ -10,10 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Shell;
@@ -27,7 +25,7 @@ namespace SophiApp.ViewModels
 
         private async void ApplyingSettingsAsync(object args)
         {
-            ShowTaskBarItemInfoProgress();
+            SetTaskbarItemInfoProgress();
 
             await Task.Run(() =>
             {
@@ -72,7 +70,7 @@ namespace SophiApp.ViewModels
                 DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
             });
 
-            ShowTaskBarItemInfoProgress();
+            SetTaskbarItemInfoProgress();
         }
 
         private async void AppThemeChangeAsync(object args)
@@ -249,7 +247,6 @@ namespace SophiApp.ViewModels
 
         private async void ResetTextedElementsStateAsync(object args)
         {
-            ShowTaskBarItemInfoProgress();
             DebugHelper.StartResetTextedElements();
             var stopwatch = Stopwatch.StartNew();
             SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
@@ -266,7 +263,6 @@ namespace SophiApp.ViewModels
             SetControlsHitTest();
             stopwatch.Stop();
             DebugHelper.StopResetTextedElements(stopwatch.Elapsed.TotalSeconds);
-            ShowTaskBarItemInfoProgress();
         }
 
         private async void SaveDebugLogAsync(object args)
@@ -341,13 +337,13 @@ namespace SophiApp.ViewModels
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
-        private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
-
-        private void ShowTaskBarItemInfoProgress()
+        private void SetTaskbarItemInfoProgress()
         {
             var taskbarInfo = Application.Current.MainWindow.FindName("TaskBarItemInfo") as TaskbarItemInfo;
             taskbarInfo.ProgressState = taskbarInfo.ProgressState == TaskbarItemProgressState.None ? TaskbarItemProgressState.Indeterminate : TaskbarItemProgressState.None;
         }
+
+        private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
         private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
 
@@ -363,9 +359,8 @@ namespace SophiApp.ViewModels
 
         private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
 
-        internal async void InitData()
+        internal async void Initialize()
         {
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(1033);
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
             var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
@@ -375,7 +370,6 @@ namespace SophiApp.ViewModels
 
             if (conditionsHelper.Result)
             {
-                ShowTaskBarItemInfoProgress();
                 MouseHelper.ShowWaitCursor(show: true);
                 _ = await DismHelper.GetInstanceAsync();
                 await InitTextedElementsAsync();
@@ -384,7 +378,6 @@ namespace SophiApp.ViewModels
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);
-                ShowTaskBarItemInfoProgress();
             }
         }
     }

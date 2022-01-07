@@ -21,7 +21,8 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                  MouseLeftButtonDown="GridTitle_MouseLeftButtonDown">
                 <StackPanel>
                     <local:Logo Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5, 0, 5 ,0" />
                     <TextBlock HorizontalAlignment="Left"

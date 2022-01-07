@@ -28,7 +28,13 @@
     controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
     controls:Switch.MouseEnter="TextedElement_MouseEnter"
     controls:Switch.MouseLeave="TextedElement_MouseLeave"
+    controls:TitleLeft.MouseLeftButtonDown="Title_MouseLeftButtonDown"
+    controls:TitleRight.CloseButtonClicked="Title_CloseButtonClicked"
+    controls:TitleRight.MinimizeButtonClicked="Title_MinimizeButtonClicked"
+    controls:TitleRight.MinMaxButtonClicked="Title_MinMaxButtonClicked"
+    controls:TitleRight.MouseLeftButtonDown="Title_MouseLeftButtonDown"
     Loaded="Window_Loaded"
+    SizeChanged="Window_SizeChanged"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.TaskbarItemInfo>

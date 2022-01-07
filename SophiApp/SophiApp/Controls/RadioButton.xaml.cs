@@ -90,6 +90,10 @@ namespace SophiApp.Controls
 
         private void RadioButton_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
 
-        private void RadioButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(DataContext);
+        private void RadioButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Status == ElementStatus.UNCHECKED)
+                Command?.Execute(DataContext);
+        }
     }
 }
