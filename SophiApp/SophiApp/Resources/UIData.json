@@ -9,7 +9,7 @@
       "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic",
       "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Privacy"
   },
   {
@@ -71,7 +71,7 @@
       "RU": "Частота отправки запросов"
     },
     "Description": {
-      "EN": "Choose how often Windows asks for your feedback.",
+      "EN": "Choose how often Windows asks for your feedback",
       "RU": "Укажите, как часто Windows следует запрашивать ваш отзыв"
     },
     "Type": "RadioGroup",
@@ -123,7 +123,7 @@
           "RU": "ProgramDataUpdater"
         },
         "ChildDescription": {
-          "EN": "This task collects program telemetry information from users participating in the Customer Experience Improvement Program.",
+          "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program.",
           "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
         },
         "Type": "CheckBox"
@@ -135,7 +135,7 @@
           "RU": "Proxy"
         },
         "ChildDescription": {
-          "EN": "This task collects and uploads autochk SQM data from users participating in the Customer Experience Improvement Program.",
+          "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program.",
           "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
         },
         "Type": "CheckBox"
@@ -147,7 +147,7 @@
           "RU": "Consolidator"
         },
         "ChildDescription": {
-          "EN": "This task collects and sends usage data to Microsoft from users participating in the Customer Experience Improvement Program.",
+          "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft.",
           "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
         },
         "Type": "CheckBox"
@@ -159,7 +159,7 @@
           "RU": "UsbCeip"
         },
         "ChildDescription": {
-          "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything",
+          "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything.",
           "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий"
         },
         "Type": "CheckBox"
@@ -171,7 +171,7 @@
           "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
         },
         "ChildDescription": {
-          "EN": "The Windows Disk Diagnostic task reports general disk and system information to Microsoft from users participating in the Customer Experience Program.",
+          "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program.",
           "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
         },
         "Type": "CheckBox"
@@ -207,7 +207,7 @@
           "RU": "FamilySafetyMonitor"
         },
         "ChildDescription": {
-          "EN": "This task initializes Family Safety monitoring and enforcement.",
+          "EN": "Initializes Family Safety monitoring and enforcement.",
           "RU": "Инициализация контроля и применения правил семейной безопасности"
         },
         "Type": "CheckBox"
@@ -219,7 +219,7 @@
           "RU": "XblGameSaveTask"
         },
         "ChildDescription": {
-          "EN": "The XblGameSave Standby Task, which syncronizes synchronizes game progress when the OS is idle.",
+          "EN": "The XblGameSave Standby Task, which syncronizes game progress when the OS is idle.",
           "RU": "Задание XblGameSave, синхронизирующее прогресс в игре во время простоя ОС"
         },
         "Type": "CheckBox"
@@ -236,7 +236,7 @@
       "EN": "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows 10 helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.",
       "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows 10 помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Privacy"
   },
   {
@@ -502,7 +502,7 @@
   {
     "Id": 211,
     "Header": {
-      "EN": "Show sync provider notifications within File Explorer",
+      "EN": "Show sync provider notifications within File Explorer.",
       "RU": "Показывать уведомления поставщика синхронизации в проводнике"
     },
     "Description": {
@@ -943,7 +943,7 @@
         "Id": 245,
         "ChildHeader": {
           "EN": "Maximum (No Reduction)",
-          "RU": "Максимальный"
+          "RU": "Максимальный (без сжатия)"
         },
         "ChildDescription": {
           "EN": "",
@@ -1040,7 +1040,7 @@
       "EN": "Automatically free up space, delete temporary files, and manage locally available cloud content.",
       "RU": "Автоматически освободить место, удалить временные файлы, управлять доступным локально содержимым облака"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1105,7 +1105,7 @@
       "EN": "It is not recommended to turn it off on laptops.",
       "RU": "Не рекомендуется выключать на ноутбуках"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1157,7 +1157,7 @@
       "EN": "By default, the maximum path length limit in Windows is 260 characters. A local path is structured in the following order: drive letter, colon, backslash, name components separated by backslashes, and a terminating null character.",
       "RU": "По умолчанию максимальная длина пути в Windows составляет 260 символов. Локальный путь строится в следующем порядке: буква диска, двоеточие, обратная косая черта, компоненты имени, разделенные обратными косыми чертами, и завершающий нулевой символ"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1222,7 +1222,7 @@
       "EN": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders.",
       "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1248,7 +1248,7 @@
       "EN": "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available.",
       "RU": "Для сокращения времени входа в систему Windows не ждет полной инициализации сети при запуске или входе в систему. Параметры политики применяются асинхронно при запуске компьютера и при входе пользователя в систему. В результате операционная система не ждет полной инициализации сети при запуске и входе в систему. Существующие пользователи входят в систему, используя кэшированные учетные данные. Это сокращает время входа в систему. Групповая политика применяется в фоновом режиме после того, как сеть становится доступной"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1472,7 +1472,7 @@
       "EN": "Get Microsoft Office and other updates together with Windows updates.",
       "RU": "Получайте Microsoft Office и другие обновления вместе с обновленями Windows"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1524,7 +1524,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1537,7 +1537,7 @@
       "EN": "It is not recommended to turn off the network adapters to save power on laptops.",
       "RU": "Не рекомендуется отключать все сетевые адаптеры для экономии энергии на ноутбуках"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1550,7 +1550,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1639,7 +1639,7 @@
     },
     "Description": {
       "EN": "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?",
-      "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок"
+      "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок. Хотите ли вы помогать Microsoft устранять неполадок при возникновении на вашем устройстве проблем?"
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1693,7 +1693,7 @@
       "EN": "To make sure your device can successfully update and that it runs its best, Windows reserves a portion of storage space on your device for use by temporary files, caches, and other files. When your device is low on space, Windows will clear reserved storage so it can be used for other processes, like a Windows update. Reserving storage also helps keep disk space usage on your device more predictable and more stable. After disabling the reserved storage will be deleted after the next update installation.",
       "RU": "Чтобы обеспечить возможность обновления вашего устройства, а также его наилучшую работу, Windows резервирует часть дискового пространства на вашем устройстве для кэша, временных и других файлов. Когда на устройстве заканчивается свободное место, Windows очищает зарезервированное хранилище, освобождая место для других процессов, например обновления Windows. Зарезервированное хранилище также помогает использовать дисковое пространство на вашем устройстве более предсказуемо и стабильно. Зарезервированное хранилище будет удалено после следующей установки обновлений"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1706,7 +1706,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1719,7 +1719,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1732,7 +1732,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1745,7 +1745,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1758,7 +1758,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1771,7 +1771,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1784,7 +1784,7 @@
       "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
       "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1797,7 +1797,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1810,7 +1810,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1823,7 +1823,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "System"
   },
   {
@@ -1901,7 +1901,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "StartMenu"
   },
   {
@@ -1914,7 +1914,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "StartMenu"
   },
   {
@@ -1927,7 +1927,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "StartMenu"
   },
   {
@@ -1937,7 +1937,7 @@
       "RU": "Скачать и установить видеокодек HEVC (H.265)"
     },
     "Description": {
-      "EN": "The codec allows you to open images and videos in .heif and .hevc formats, respectively.",
+      "EN": "The codec allows you to open images and videos in .heif and .hevc formats, respectively",
       "RU": "Кодек позволяет открывать изображения и видео в форматах .heif и .hevc соответственно"
     },
     "Type": "CheckBox",
@@ -1953,7 +1953,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "UwpApps"
   },
   {
@@ -1966,7 +1966,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Games"
   },
   {
@@ -1979,7 +1979,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Games"
   },
   {
@@ -1992,7 +1992,7 @@
       "EN": "Reduce latecy and improve performance. Only if you have a dedicated GPU and WDDM verion is 2.7 or higher.",
       "RU": "Уменьшить время задержки и увеличить производительность. Только при наличии внешней видеокарты и WDDM версии 2.7 и выше"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Games"
   },
   {
@@ -2044,7 +2044,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2057,7 +2057,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2070,7 +2070,7 @@
       "EN": "Running Windows Defender Antivirus in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm.",
       "RU": "Запуск Windows Defender Antivirus в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2083,7 +2083,7 @@
       "EN": "Event 4688 logs each program that is executed, who the program ran as and the process that started this process. When you start a program you are creating a process that stays open until the program exits. This process is identified by the Process ID. You can correlate this event to other events by Process ID to determine what the program did while it ran and when it exited (event 4689).",
       "RU": "Событие 4688 журналирует каждую выполненную программу, от имени кого была запущена программа и процесс, который запустил этот процесс. Когда вы запускаете программу, вы создаете процесс, который остается открытым до выхода программы. Этот процесс идентифицируется по Process ID. Вы можете соотнести это событие с другими событиями по идентификатору процесса, чтобы определить, что делала программа во время выполнения и когда она завершилась (событие 4689)"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2096,7 +2096,7 @@
       "EN": "If you enable this policy setting the command line information for every process will be logged in the security event log. When this policy setting is enabled it will be possible to read the command line arguments for any successfully created process. In order this feature to work events auditing will be enabled.",
       "RU": "Если вы включаете этот параметр политики, сведения из командной строки заносятся в журнал событий безопасности. Когда включен этот параметр политики, можно будет прочитать аргументы командной строки для любого успешно созданного процесса. Для того, чтобы работал данный функционал, будет включен аудит событий"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2109,7 +2109,7 @@
       "EN": "If you prefer a GUI based approach, it is also possible to create a custom view in the Even Viewer, where all processes and their arguments will be logged. In order this feature to work events auditing and command line in process creation events will be enabled. For more information, read the Microsoft blog: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/",
       "RU": "Если вы предпочитаете подход на основе графического интерфейса, в \"Просмотре событий\" можно создать собственное представление, где будут журналироваться запускаемые процессов и их аргументы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса. Более подробно читайте в блоге  Microsoft: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2122,7 +2122,7 @@
       "EN": "If you enable this policy setting, pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in Event Viewer. For the built-in Windows PowerShell 5.1 only",
       "RU": "Если этот параметр политики включен, события конвейерного выполнения для участников указанных модулей записываются в журнал Windows PowerShell в средстве просмотра событий. Только для встроенного Windows PowerShell 5.1"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2135,7 +2135,7 @@
       "EN": "Windows PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation to the Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational event log. For the built-in Windows PowerShell 5.1 only",
       "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational. Только для встроенного Windows PowerShell 5.1"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2148,7 +2148,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2161,7 +2161,7 @@
       "EN": "The Attachment Manager is included in Windows to protect from unsafe attachments from unsafe files saved from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\".",
       "RU": "Диспетчер вложений включен в Windows для защиты от небезопасных вложений и от небезопасных файлов, которые вы можете сохранить из интернета. Если диспетчер вложений определяет вложение, которое может быть небезопасным, он предотвращает (блокирует) открытие файла или предупреждает вас перед открытием файла. Метаданные сохраняются как альтернативный поток данных (ADS). Если вы хотите разблокировать загруженный файл вручную, вы можете сделать это, щелкнув его правой кнопкой мыши, выбрав Свойства и нажав \"Разблокировать\"."
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
@@ -2187,13 +2187,13 @@
       "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы, вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
     },
-    "Type": "Switch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {
     "Id": 900,
     "Header": {
-      "EN": "Add the \"Extract all\" item in the Windows Installer (.msi) context menu",
+      "EN": "The \"Extract all\" item in the Windows Installer (.msi) context menu",
       "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)"
     },
     "Description": {
@@ -2206,7 +2206,7 @@
   {
     "Id": 901,
     "Header": {
-      "EN": "Add the \"Install\" item in the Cabinet archives (.cab) context menu",
+      "EN": "The \"Install\" item in the Cabinet archives (.cab) context menu",
       "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab)"
     },
     "Description": {
@@ -2219,7 +2219,7 @@
   {
     "Id": 902,
     "Header": {
-      "EN": "Show the \"Run as different user\" item in the executable files context menu (.exe)",
+      "EN": "The \"Run as different user\" item in the executable files context menu (.exe)",
       "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню исполняемых файлов (.exe)"
     },
     "Description": {
@@ -2232,7 +2232,7 @@
   {
     "Id": 903,
     "Header": {
-      "EN": "Show the \"Cast to Device\" item in the media files and folders context menu",
+      "EN": "The \"Cast to Device\" item in the media files and folders context menu",
       "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок"
     },
     "Description": {
@@ -2245,7 +2245,7 @@
   {
     "Id": 904,
     "Header": {
-      "EN": "Show the \"Share\" item in the context menu",
+      "EN": "The \"Share\" item in the context menu",
       "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню"
     },
     "Description": {
@@ -2258,7 +2258,7 @@
   {
     "Id": 905,
     "Header": {
-      "EN": "Select when to show the \"Edit with Paint 3D\" item in the media files context menu",
+      "EN": "The \"Edit with Paint 3D\" item in the media files context menu",
       "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов"
     },
     "Description": {
@@ -2382,7 +2382,7 @@
   {
     "Id": 915,
     "Header": {
-      "EN": "Show the \"Create a new video\" item in the media files context menu",
+      "EN": "The \"Create a new video\" item in the media files context menu",
       "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов"
     },
     "Description": {
@@ -2395,7 +2395,7 @@
   {
     "Id": 916,
     "Header": {
-      "EN": "Show the \"Edit\" item in the image files context menu",
+      "EN": "The \"Edit\" item in the image files context menu",
       "RU": "Пункт \"Изменить\" в контекстном меню изображений"
     },
     "Description": {
@@ -2408,7 +2408,7 @@
   {
     "Id": 917,
     "Header": {
-      "EN": "Show the \"Print\" item in the .bat and .cmd files context menu",
+      "EN": "The \"Print\" item in the .bat and .cmd files context menu",
       "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
     },
     "Description": {
@@ -2421,7 +2421,7 @@
   {
     "Id": 918,
     "Header": {
-      "EN": "Show the \"Include in Library\" menu option in the folders and drives context menu",
+      "EN": "The \"Include in Library\" menu option in the folders and drives context menu",
       "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков"
     },
     "Description": {
@@ -2434,7 +2434,7 @@
   {
     "Id": 919,
     "Header": {
-      "EN": "Show the \"Send to\" item in the folders context menu",
+      "EN": "The \"Send to\" item in the folders context menu",
       "RU": "Пункт \"Отправить\" в контекстном меню папок"
     },
     "Description": {
@@ -2447,7 +2447,7 @@
   {
     "Id": 920,
     "Header": {
-      "EN": "Show the \"Turn on BitLocker\" item in the drives context menu",
+      "EN": "The \"Turn on BitLocker\" item in the drives context menu",
       "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
     },
     "Description": {
@@ -2460,7 +2460,7 @@
   {
     "Id": 921,
     "Header": {
-      "EN": "Show the \"Bitmap image\" item in the \"New\" context menu",
+      "EN": "The \"Bitmap image\" item in the \"New\" context menu",
       "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\""
     },
     "Description": {
@@ -2473,7 +2473,7 @@
   {
     "Id": 922,
     "Header": {
-      "EN": "Show the \"Rich Text Document\" item in the \"New\" context menu",
+      "EN": "The \"Rich Text Document\" item in the \"New\" context menu",
       "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\""
     },
     "Description": {
@@ -2486,7 +2486,7 @@
   {
     "Id": 923,
     "Header": {
-      "EN": "Show the \"Compressed (zipped) Folder\" item in the \"New\" context menu",
+      "EN": "The \"Compressed (zipped) Folder\" item in the \"New\" context menu",
       "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
     },
     "Description": {
@@ -2512,7 +2512,7 @@
   {
     "Id": 925,
     "Header": {
-      "EN": "Show the \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog",
+      "EN": "The \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog",
       "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
     },
     "Description": {
