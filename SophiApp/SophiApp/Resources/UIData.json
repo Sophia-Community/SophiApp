@@ -2050,7 +2050,7 @@
   {
     "Id": 801,
     "Header": {
-      "EN": "Enable detection in Microsoft Defender for unwanted applications and block them",
+      "EN": "Enable detection in Microsoft Defender for potentially unwanted applications and block them",
       "RU": "Включить в Microsoft Defender обнаружение потенциально нежелательных приложений и блокировать их"
     },
     "Description": {
