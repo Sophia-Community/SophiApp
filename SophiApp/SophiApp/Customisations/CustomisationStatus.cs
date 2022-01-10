@@ -459,7 +459,8 @@ namespace SophiApp.Customisations
                                         && PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE;
 
         public static bool _802() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
-                                        && ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS);
+                                        && (ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS)
+                                            || Environment.GetEnvironmentVariable(_802_FORCE_USE_SANDBOX, EnvironmentVariableTarget.Machine) == _802_SANDBOX_ENABLED_VALUE);
 
         public static bool _803() => PowerShellHelper.GetScriptResult<bool>(_803_PROGRAM_AUDIT_ENABLED_PS);
 

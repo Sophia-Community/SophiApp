@@ -1005,7 +1005,7 @@ namespace SophiApp.Customisations
                 var eventViewerXml = TextHelper.LocalizeEventViewerCustomXml(_805_PROCESS_CREATION_XML_DATA);
                 ProcessHelper.StartWait(AUDITPOL_APP, PROCESS_AUDIT_ENABLED_ARGS, ProcessWindowStyle.Hidden);
                 RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
-                FileHelper.Create(processCreationXml);
+                FileHelper.WriteAllText(processCreationXml, eventViewerXml);
                 return;
             }
 

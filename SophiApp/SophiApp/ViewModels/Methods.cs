@@ -370,6 +370,7 @@ namespace SophiApp.ViewModels
 
             if (conditionsHelper.Result)
             {
+                SetTaskbarItemInfoProgress();
                 MouseHelper.ShowWaitCursor(show: true);
                 _ = await DismHelper.GetInstanceAsync();
                 await InitTextedElementsAsync();
@@ -378,6 +379,7 @@ namespace SophiApp.ViewModels
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);
+                SetTaskbarItemInfoProgress();
             }
         }
     }

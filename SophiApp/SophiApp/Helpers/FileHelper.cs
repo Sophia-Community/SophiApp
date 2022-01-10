@@ -62,14 +62,14 @@ namespace SophiApp.Helpers
             string pszTo,
             FileAttributes dwAttrTo);
 
-        internal static void Create(string filePath)
+        internal static void WriteAllText(string path, string text)
         {
-            var dirPath = filePath.Substring(0, filePath.LastIndexOf(Path.DirectorySeparatorChar));
+            var dirPath = path.Substring(0, path.LastIndexOf(Path.DirectorySeparatorChar));
 
             if (Directory.Exists(dirPath).Invert())
                 Directory.CreateDirectory(dirPath);
 
-            File.Create(filePath);
+            File.WriteAllText(path, text);
         }
 
         internal static void CreateDirectory(string dirPath)

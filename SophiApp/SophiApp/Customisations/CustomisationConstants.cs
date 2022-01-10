@@ -396,6 +396,8 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _801_SET_PUA_PROTECTION_PS = "Set-MpPreference -PUAProtection";
         internal const string _802_DEFENDER_SANDBOX_PROCESS = "MsMpEngCP";
         internal const string _802_DEFENDER_USE_SANDBOX_ARGS = "/M MP_FORCE_USE_SANDBOX";
+        internal const string _802_FORCE_USE_SANDBOX = "MP_FORCE_USE_SANDBOX";
+        internal const string _802_SANDBOX_ENABLED_VALUE = "1";
         internal const string _802_SETX_APP = "setx";
 
         internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
@@ -457,16 +459,16 @@ else
         internal const string _805_PROCESS_CREATION_XML = "ProcessCreation.xml";
 
         internal const string _805_PROCESS_CREATION_XML_DATA = @"<ViewerConfig>
-	<QueryConfig>
-		<QueryParams>
-			<UserQuery/>
-		</QueryParams>
-		<QueryNode>
-			<Name>*</Name>
-			<Description>*</Description>
-			<QueryList>
-				<Query Id=""0"" Path=""Security"">
-					<Select Path=""Security"">*</Select>
+    <QueryConfig>
+        <QueryParams>
+            <UserQuery/>
+        </QueryParams>
+        <QueryNode>
+            <Name>*</Name>
+            <Description>*</Description>
+            <QueryList>
+                <Query Id=""0"" Path=""Security"">
+                    <Select Path=""Security"">*</Select>
                 </Query>
             </QueryList>
         </QueryNode>
