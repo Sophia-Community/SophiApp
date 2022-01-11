@@ -24,6 +24,14 @@ namespace SophiApp.Helpers
             return Convert.ToInt32(status);
         }
 
+        internal static T GetComputerSystemInfo<T>(string propertyName)
+        {
+            var scope = @"Root\Cimv2";
+            var query = "SELECT * FROM CIM_ComputerSystem";
+            var info = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+            return (T)info.Properties[propertyName].Value;
+        }
+
         internal static T GetProperty<T>(string nameSpace, string className, string propertyName)
         {
             var searcher = GetManagementObjectSearcher(nameSpace, $"SELECT {propertyName} FROM {className}");
@@ -75,6 +83,14 @@ namespace SophiApp.Helpers
             var computer = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
             var model = computer.Properties["Model"].Value as string;
             return model.Contains("Virtual");
+        }
+
+        internal static bool ProcessorVirtualizationIsEnabled()
+        {
+            var scope = @"Root\Cimv2";
+            var query = "SELECT * FROM CIM_Processor";
+            var processor = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+            return (bool)processor.Properties["VirtualizationFirmwareEnabled"].Value;
         }
 
         internal static void SetNetworkAdaptersPowerSave(bool enablePowerSave)

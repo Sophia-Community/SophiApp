@@ -39,10 +39,17 @@
                     <RowDefinition Height="410" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid Style="{StaticResource GridContainerStyle}">
-                    <controls:Logo Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 0, 0, 50" />
-                    <TextBlock Margin="15, 0, 15, 0"
-                               VerticalAlignment="Bottom"
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="100" />
+                    </Grid.RowDefinitions>
+                    <controls:Logo Grid.Row="1" Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBlock Grid.Row="3"
+                               Margin="10, 0, 10, 0"
+                               VerticalAlignment="Top"
                                HorizontalAlignment="Center"
                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                Style="{DynamicResource NormalText}"

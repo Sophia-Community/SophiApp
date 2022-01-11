@@ -488,6 +488,7 @@ else
         internal const byte _809_DISABLED_VALUE = 1;
         internal const string _809_SAFE_ZONE_INFO = "SaveZoneInformation";
         internal const string _810_WSH_SETTINGS_PATH = @"SOFTWARE\Microsoft\Windows Script Host\Settings";
+        internal const string _811_HYPERVISOR_PRESENT = "HypervisorPresent";
         internal const string _811_WINDOWS_SANDBOX_FEATURE = "Containers-DisposableClientVM";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";

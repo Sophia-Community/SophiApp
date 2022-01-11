@@ -479,7 +479,11 @@ namespace SophiApp.Customisations
 
         public static bool _810() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _810_WSH_SETTINGS_PATH, ENABLED) == DISABLED_VALUE).Invert();
 
-        public static bool _811() => DismHelper.FeatureIsInstalled(_811_WINDOWS_SANDBOX_FEATURE);
+        public static bool _811() => OsHelper.IsEdition(WIN_VER_PRO) || OsHelper.IsEdition(WIN_VER_ENT)
+                                     ? WmiHelper.ProcessorVirtualizationIsEnabled() || WmiHelper.GetComputerSystemInfo<bool>(_811_HYPERVISOR_PRESENT)
+                                        ? DismHelper.FeatureIsInstalled(_811_WINDOWS_SANDBOX_FEATURE)
+                                        : throw new VitualizationNotSupportedException()
+                                     : throw new WindowsEditionNotSupportedException();
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 

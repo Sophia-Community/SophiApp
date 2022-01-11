@@ -62,16 +62,6 @@ namespace SophiApp.Helpers
             string pszTo,
             FileAttributes dwAttrTo);
 
-        internal static void WriteAllText(string path, string text)
-        {
-            var dirPath = path.Substring(0, path.LastIndexOf(Path.DirectorySeparatorChar));
-
-            if (Directory.Exists(dirPath).Invert())
-                Directory.CreateDirectory(dirPath);
-
-            File.WriteAllText(path, text);
-        }
-
         internal static void CreateDirectory(string dirPath)
         {
             try
@@ -200,6 +190,16 @@ namespace SophiApp.Helpers
         {
             if (File.Exists(filePath))
                 File.Delete(filePath);
+        }
+
+        internal static void WriteAllText(string path, string text)
+        {
+            var dirPath = path.Substring(0, path.LastIndexOf(Path.DirectorySeparatorChar));
+
+            if (Directory.Exists(dirPath).Invert())
+                Directory.CreateDirectory(dirPath);
+
+            File.WriteAllText(path, text);
         }
     }
 }

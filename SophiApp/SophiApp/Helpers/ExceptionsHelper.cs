@@ -100,6 +100,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class VitualizationNotSupportedException : Exception
+    {
+        public VitualizationNotSupportedException() : base("The CPU does not support virtualization")
+        {
+        }
+    }
+
     internal class WddmMinimalVersionException : Exception
     {
         public WddmMinimalVersionException(string minimumVersion, string currentVersion) : base($"WDDM minimum version must be: {minimumVersion}, current WDDM version: {currentVersion}")
