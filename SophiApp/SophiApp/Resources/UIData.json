@@ -2155,7 +2155,7 @@
     "Id": 809,
     "Header": {
       "EN": "Mark files that have been downloaded from the Internet as unsafe",
-      "RU": "Отмечать файлы, скачанных из интернета, как небезопасные"
+      "RU": "Отмечать файлы, скачанных из интернета как небезопасные"
     },
     "Description": {
       "EN": "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\".",
@@ -2185,7 +2185,7 @@
     },
     "Description": {
       "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
-      "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы, вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
+      "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
     },
     "Type": "CheckBox",
     "Tag": "Security"
