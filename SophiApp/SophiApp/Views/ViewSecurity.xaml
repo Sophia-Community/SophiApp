@@ -12,6 +12,7 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Thickness x:Key="ItemsMargin" Left="20" Top="5" Right="0" Bottom="5" />
         <CollectionViewSource
             x:Key="TextedElementsCollection"
             Filter="TextedElementsFilter"
@@ -40,14 +41,14 @@
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
                                 <controls:AdvancedRadioGroup
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
                                     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                     Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
                                 <controls:AdvancedSwitch
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
@@ -57,7 +58,7 @@
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:Switch}">
                                 <controls:Switch
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
@@ -66,20 +67,20 @@
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:RadioGroup}">
                                 <controls:RadioGroup
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:CheckBox}">
                                 <controls:CheckBox
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:ExpandingGroup}">
                                 <controls:ExpandingGroup
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSecurity}}}" />
                             </DataTemplate>

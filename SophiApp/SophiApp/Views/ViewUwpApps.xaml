@@ -10,6 +10,8 @@
              IsVisibleChanged="ViewUwpApps_IsVisibleChanged">
 
     <UserControl.Resources>
+        <Thickness x:Key="ItemsMargin" Left="20" Top="5" Right="0" Bottom="5" />
+        <Thickness x:Key="UwpItemsMargin" Left="0" Top="15" Right="10" Bottom="0" />
         <CollectionViewSource x:Key="UwpElementsCurrentUserCollection" Source="{Binding UwpElementsCurrentUser}" />
         <CollectionViewSource x:Key="UwpElementsAllUsersCollection" Source="{Binding UwpElementsAllUsers}" />
         <CollectionViewSource x:Key="TextedElementsCollection" Filter="TextedElementsFilter" Source="{Binding TextedElements}" />
@@ -70,7 +72,7 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.Resources>
                                     <DataTemplate DataType="{x:Type models:UwpElement}">
-                                        <controls:UwpButton Margin="0, 15, 10, 0"
+                                        <controls:UwpButton Margin="{StaticResource UwpItemsMargin}"
                                                             Command="{Binding Path=DataContext.UwpButtonClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}" />
                                     </DataTemplate>
                                 </ItemsControl.Resources>
@@ -86,7 +88,7 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.Resources>
                                     <DataTemplate DataType="{x:Type models:UwpElement}">
-                                        <controls:UwpButton Margin="0, 15, 10, 0"
+                                        <controls:UwpButton Margin="{StaticResource UwpItemsMargin}"
                                                             Command="{Binding Path=DataContext.UwpButtonClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}" />
                                     </DataTemplate>
                                 </ItemsControl.Resources>
@@ -96,7 +98,7 @@
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:Switch}">
                                     <controls:Switch
-                                    Margin="20,10,0,5"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
@@ -104,7 +106,7 @@
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">
-                                    <controls:CheckBox Margin="20,10,0,5"
+                                    <controls:CheckBox Margin="{StaticResource ItemsMargin}"
                                                        Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"
                                                        Id="{Binding Id}"
                                                        Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />

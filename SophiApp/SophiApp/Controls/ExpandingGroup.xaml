@@ -21,7 +21,7 @@
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="0.5" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
-            <Setter Property="Margin" Value="0,5,0,10" />
+            <Setter Property="Margin" Value="0,10,0,10" />
         </Style>
         <Style TargetType="{x:Type DockPanel}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -70,7 +70,7 @@
             <Setter Property="ScrollViewer.Height">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource ActualHeightMultiplyConverter}">
-                        <Binding ElementName="ItemsControlContent" Path="ActualHeight" />
+                        <Binding ElementName="PanelControlContent" Path="ActualHeight" />
                         <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </Setter.Value>
@@ -129,8 +129,8 @@
                     </Grid>
                 </Grid>
                 <ScrollViewer x:Name="ScrollViewContent">
-                    <StackPanel>
-                        <Border x:Name="BorderLine" />
+                    <StackPanel x:Name="PanelControlContent">
+                        <Border />
                         <ItemsControl
                             x:Name="ItemsControlContent"
                             Margin="-5"
@@ -144,6 +144,7 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
+                        <Border />
                     </StackPanel>
                 </ScrollViewer>
             </DockPanel>

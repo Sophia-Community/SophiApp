@@ -21,14 +21,10 @@ namespace SophiApp.Helpers
         internal static bool CapabilityIsInstalled(string name)
         {
             var index = Capabilites.FindIndex(c => c.Name == name);
-            return index != -1 && Capabilites[index].State == DismPackageFeatureState.Installed;
+            return Capabilites[index].State == DismPackageFeatureState.Installed;
         }
 
-        internal static bool FeatureIsInstalled(string name)
-        {
-            var index = Features.FindIndex(f => f.FeatureName == name);
-            return index != -1 && Features[index].State == DismPackageFeatureState.Installed;
-        }
+        internal static bool FeatureIsInstalled(string name) => PowerShellHelper.GetScriptResult<bool>($"(Get-WindowsOptionalFeature -FeatureName { name } -Online).State -eq 'Enabled'");
 
         internal static DismHelper GetInstance()
         {

@@ -11,6 +11,7 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Thickness x:Key="ItemsMargin" Left="20" Top="5" Right="0" Bottom="5" />
         <CollectionViewSource
             x:Key="TextedElementsCollection"
             Filter="TextedElementsFilter"
@@ -38,14 +39,14 @@
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
                                 <controls:IconWinCheckBox
-                                    Margin="20,0,0,10"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
                                 <controls:IconFolderCheckBox
-                                    Margin="20,0,0,10"
+                                    Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />

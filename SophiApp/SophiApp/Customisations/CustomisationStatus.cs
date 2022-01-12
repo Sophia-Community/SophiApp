@@ -551,8 +551,7 @@ namespace SophiApp.Customisations
 
         public static bool _923() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _923_ZIP_SHELLNEW_PATH);
 
-        public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME)
-                                              .HasNullOrValue(_924_PROMPT_VALUE);
+        public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME) == _924_PROMPT_VALUE;
 
         public static bool _925() => RegHelper.KeyExist(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
 
