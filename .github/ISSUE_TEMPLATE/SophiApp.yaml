@@ -23,6 +23,10 @@ body:
   validations:
     required: true
 
+body:
+- type: markdown
+  attributes:
+    value: >
       If SophiApp crashes at the startup, please run this PowerShell code as admin to find out what caused the program to crash, and attach the table, too.
 
       ```powershell
