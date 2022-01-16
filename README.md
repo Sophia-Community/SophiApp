@@ -60,7 +60,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## System Requirements
 
-* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` for now. Requires the `1151` build and higher. Windows 11 is in the works.
+* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` for now. Requires the `1151` build and higher. Windows 11 is in the works;
+* The app requires that the `current logged-in user` has admin privileges.
 
 ## Installation
 
@@ -92,7 +93,6 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 * You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
   * The hidden functions will marked with a gear in UI;
-* The app requires that the `current logged-in user` has admin privileges;
 * After closing the SophiApp, it creates a log file that you can attach to an open issue to help us understands the bug. The log file doesn't contain any sensitive personal information.
 
 ## Translating
