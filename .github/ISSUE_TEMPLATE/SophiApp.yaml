@@ -43,4 +43,5 @@ body:
       }
 
       Get-WinEvent -FilterHashtable $HashTable | Where-Object -FilterScript {($_.Level -eq "2") -and ($_.Message -match "SophiApp.exe")} | Select-Object -First 1 | Format-List -Property *
+
       ```
