@@ -7,8 +7,11 @@ body:
     value: >
       Make sure you are able to repro it on the latest released version. Please open a [new discussion](https://github.com/Sophia-Community/SophiApp/discussions/new) if you have an idea.
       If you prefer Telegram, you may visit out [chat](https://t.me/sophia_chat). Languages allowed: English & русский.
-      
+
+      If SophiApp crashes at the startup, please run this PowerShell code as admin to find out what caused the program to crash, and attach the table, too.
+
       ```powershell
+
       $HashTable = @{
          LogName = "Application"
          Id      = "1000"
