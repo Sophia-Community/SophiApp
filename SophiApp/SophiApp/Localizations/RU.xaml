@@ -70,4 +70,5 @@
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
     <system:String x:Key="Localization.ViewGames.Empty">Нет данных для отображения, или удалены необходимые пакеты</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всех пользователей</system:String>
+    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">Это описание uwp checkbox для всех пользователей</system:String>
 </ResourceDictionary>

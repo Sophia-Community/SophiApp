@@ -26,6 +26,8 @@
     controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
     controls:RadioGroup.MouseEnter="TextedElement_MouseEnter"
     controls:RadioGroup.MouseLeave="TextedElement_MouseLeave"
+    controls:SimpleCheckBox.MouseEnter="TextedElement_MouseEnter"
+    controls:SimpleCheckBox.MouseLeave="TextedElement_MouseLeave"
     controls:Switch.MouseEnter="TextedElement_MouseEnter"
     controls:Switch.MouseLeave="TextedElement_MouseLeave"
     controls:TitleLeft.MouseLeftButtonDown="Title_MouseLeftButtonDown"

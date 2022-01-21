@@ -147,7 +147,7 @@ namespace SophiApp.ViewModels
             UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
         }
 
-        private void InitProperties()
+        private void InitializeProperties()
         {
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
@@ -165,7 +165,7 @@ namespace SophiApp.ViewModels
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
 
-        private async Task InitTextedElementsAsync()
+        private async Task InitializeTextedElementsAsync()
         {
             await Task.Run(() =>
             {
@@ -180,9 +180,9 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private async Task InitUwpElementsAsync() => await Task.Run(() => GetUwpElements());
+        private async Task InitializeUwpElementsAsync() => await Task.Run(() => GetUwpElements());
 
-        private async Task InitWatchersAsync()
+        private async Task InitializeWatchersAsync()
         {
             await Task.Run(() =>
             {
@@ -373,9 +373,9 @@ namespace SophiApp.ViewModels
                 SetTaskbarItemInfoProgress();
                 MouseHelper.ShowWaitCursor(show: true);
                 _ = await DismHelper.GetInstanceAsync();
-                await InitTextedElementsAsync();
-                await InitUwpElementsAsync();
-                await InitWatchersAsync();
+                await InitializeTextedElementsAsync();
+                await InitializeUwpElementsAsync();
+                await InitializeWatchersAsync();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 SetControlsHitTest(hamburgerHitTest: true);
                 MouseHelper.ShowWaitCursor(show: false);

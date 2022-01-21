@@ -46,19 +46,18 @@
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="TextBlockForAllUsers"
-                                       Style="{DynamicResource NormalText}"
-                                       Text="{DynamicResource Localization.ViewUwpApps.ForAllUsers}"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Grid.Row="0" />
 
-                            <controls:SimpleSwitch x:Name="SwitchForAllUsers"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Right"
-                                                   Grid.Row="0"
-                                                   Status="{Binding UwpForAllUsersState}"
-                                                   Command="{Binding SwitchUwpForAllUsersClickedCommand}" />
+                            <controls:SimpleCheckBox x:Name="SimpleCheckBoxForAllUsers"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Right"
+                                                     Grid.Row="0"
+                                                     IsChecked="{Binding UwpForAllUsersState}"
+                                                     Header="{DynamicResource Localization.ViewUwpApps.ForAllUsers}"
+                                                     Description="{DynamicResource Localization.ViewUwpApps.ForAllUsers.Description}"
+                                                     Background="{DynamicResource Brush.View.Background}"
+                                                     Foreground="{DynamicResource Brush.Window.Foreground}"
+                                                     Hover="{DynamicResource Brush.Window.Acсent.Normal}"
+                                                     Command="{Binding SwitchUwpForAllUsersClickedCommand}" />
 
                             <Border Style="{StaticResource BorderLineStyle}" />
 
@@ -133,21 +132,12 @@
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                 </Trigger>
-                <Trigger SourceName="SwitchForAllUsers" Property="Status" Value="UNCHECKED">
+                <Trigger SourceName="SimpleCheckBoxForAllUsers" Property="IsChecked" Value="UNCHECKED">
                     <Setter TargetName="ItemsAllUsersUwp" Property="Visibility" Value="Collapsed" />
                 </Trigger>
-                <Trigger SourceName="SwitchForAllUsers" Property="Status" Value="CHECKED">
+                <Trigger SourceName="SimpleCheckBoxForAllUsers" Property="IsChecked" Value="CHECKED">
                     <Setter TargetName="ItemsCurrentUserUwp" Property="Visibility" Value="Collapsed" />
                 </Trigger>
-                <Trigger SourceName="SwitchForAllUsers" Property="Status" Value="CHECKED">
-                    <Setter TargetName="ItemsCurrentUserUwp" Property="Visibility" Value="Collapsed" />
-                </Trigger>
-                <DataTrigger Binding="{Binding UwpElementsCurrentUser.Count}" Value="0">
-                    <Setter TargetName="SwitchForAllUsers" Property="Status" Value="CHECKED" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding UwpElementsAllUsers.Count}" Value="0">
-                    <Setter TargetName="SwitchForAllUsers" Property="Status" Value="UNCHECKED" />
-                </DataTrigger>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding UwpElementsCurrentUser.Count}" Value="0" />

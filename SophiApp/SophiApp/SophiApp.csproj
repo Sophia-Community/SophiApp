@@ -103,6 +103,9 @@
     <Compile Include="Controls\Logo.xaml.cs">
       <DependentUpon>Logo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SimpleCheckBox.xaml.cs">
+      <DependentUpon>SimpleCheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SimpleSwitch.xaml.cs">
       <DependentUpon>SimpleSwitch.xaml</DependentUpon>
     </Compile>
@@ -389,6 +392,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\SettingSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SimpleCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
