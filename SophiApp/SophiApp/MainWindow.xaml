@@ -64,7 +64,7 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Title">
                 <Setter.Value>
-                    <MultiBinding StringFormat="{}{0} {1} beta 1">
+                    <MultiBinding StringFormat="{}{0} {1} beta 2">
                         <Binding Path="AppName" />
                         <Binding Path="Version" />
                     </MultiBinding>
