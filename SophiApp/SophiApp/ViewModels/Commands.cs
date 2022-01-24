@@ -11,6 +11,7 @@ namespace SophiApp.ViewModels
         public RelayCommand HamburgerClickedCommand { get; private set; }
         public RelayCommand HyperLinkClickedCommand { get; private set; }
         public RelayCommand LocalizationChangeCommand { get; private set; }
+        public RelayCommand OpenUpdateCenterWindowCommand { get; private set; }
         public RelayCommand RadioGroupClickedCommand { get; private set; }
         public RelayCommand ResetTextedElementsStateCommand { get; private set; }
         public RelayCommand SaveDebugLogCommand { get; private set; }

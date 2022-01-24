@@ -3,12 +3,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Conditions.LoggedUserAdmin">The logged-on user doesn't have admin rights</system:String>
-    <system:String x:Key="Conditions.NoNewVersion">A new version was found</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion">Your Windows isn't compatible with SophiApp. Supported OS: Windows 10 2004/20H2/21H1/21H2. Please run Windows Update to update your Windows to latest version.</system:String>
+    <system:String x:Key="Conditions.LoggedUserAdmin">The logged-on user doesn't have admin rights.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion">A new version was found.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Your Windows isn't compatible with SophiApp.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">Supported OS: Windows 10 2004/20H2/21H1/21H2.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
-    <system:String x:Key="Conditions.UpdateBuildRevision">The minimum Windows 10 supported build is 1151. Your version is lower. Please run Windows Update to update your Windows to latest Windows 10 version.</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed">The Windows OS stability may have been compromised by using Sycnex's Windows10Debloater PowerShell script. As a precaution, reinstall the entire OS.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Your version is lower.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">The minimum Windows 10 supported build is 1151.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.ReinstallOs">As a precaution, reinstall the entire OS.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex's Windows10Debloater PowerShell script.</system:String>
+    <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows update</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>

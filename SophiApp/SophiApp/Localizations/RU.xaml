@@ -3,12 +3,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Conditions.LoggedUserAdmin">Текущий вошедший пользователь не обладает правами администратора</system:String>
-    <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion">Ваша версия Windows не совместима с SophiApp. Поддерживаемые ОС: Windows 10 2004/20H2/21H1/21H2. Пожалуйста, запустите проверку обновлений Windows, чтобы обновить Windows до последней версии</system:String>
-    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном</system:String>
-    <system:String x:Key="Conditions.UpdateBuildRevision">Минимальная поддерживаемая версия накопительного пакета Windows 10: 1151. Версия вашего билда ниже. Пожалуйста, запустите проверку обновлений Windows, чтобы обновить Windows до последней версии</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed">Стабильность Вашей ОС могла быть нарушена использованием скрипта Windows10Debloater от Sycnex. В целях профилактики переустановите ОС</system:String>
+    <system:String x:Key="Conditions.LoggedUserAdmin">Текущий вошедший пользователь не обладает правами администратора.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Ваша версия Windows не совместима с SophiApp.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">Поддерживаемые ОС: Windows 10 2004/20H2/21H1/21H2.</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Версия вашего билда ниже.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">Минимальная поддерживаемая версия накопительного пакета Windows 10: 1151.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.ReinstallOs">В целях профилактики переустановите ОС.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex.</system:String>
+    <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Открыть Центр обновления Windows</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Очистка неиспользуемых файлов и обновлений Windows, используя встроенную программу Очистка диска</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>

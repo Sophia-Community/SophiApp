@@ -8,19 +8,19 @@ namespace SophiApp.Views
     /// </summary>
     public partial class ViewConditionsTemplate : UserControl
     {
-        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(ViewConditionsTemplate), new PropertyMetadata(default));
+        // Using a DependencyProperty as the backing store for TextContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextContentProperty =
+            DependencyProperty.Register("TextContent", typeof(object), typeof(ViewConditionsTemplate), new PropertyMetadata(default));
 
         public ViewConditionsTemplate()
         {
             InitializeComponent();
         }
 
-        public string Text
+        public object TextContent
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get { return (object)GetValue(TextContentProperty); }
+            set { SetValue(TextContentProperty, value); }
         }
     }
 }

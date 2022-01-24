@@ -27,16 +27,19 @@
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <Style TargetType="{x:Type Grid}" x:Key="GridContainerStyle">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Grid.Row" Value="0" />
+        <Style TargetType="{x:Type ContentPresenter}">
+            <Setter Property="Grid.Row" Value="3" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="Content" Value="{Binding Path=TextContent, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="410" />
+                    <RowDefinition Height="450" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
@@ -44,17 +47,10 @@
                         <RowDefinition Height="50" />
                         <RowDefinition Height="200" />
                         <RowDefinition Height="50" />
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="150" />
                     </Grid.RowDefinitions>
                     <controls:Logo Grid.Row="1" Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <TextBlock Grid.Row="3"
-                               Margin="10, 0, 10, 0"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Center"
-                               Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                               Style="{DynamicResource NormalText}"
-                               Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"
-                               TextWrapping="Wrap" />
+                    <ContentPresenter Content="{Binding Path=TextContent, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Grid>
             </Grid>
         </ControlTemplate>

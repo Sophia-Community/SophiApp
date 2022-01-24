@@ -139,6 +139,7 @@ namespace SophiApp.ViewModels
             HamburgerClickedCommand = new RelayCommand(new Action<object>(HamburgerClicked));
             HyperLinkClickedCommand = new RelayCommand(new Action<object>(HyperLinkClickedAsync));
             LocalizationChangeCommand = new RelayCommand(new Action<object>(LocalizationChangeAsync));
+            OpenUpdateCenterWindowCommand = new RelayCommand(new Action<object>(OpenUpdateCenterWindowAsync));
             RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
@@ -233,6 +234,15 @@ namespace SophiApp.ViewModels
         }
 
         private void OnTextedElementStatusChanged(object sender, TextedElement element) => DebugHelper.TextedElementChanged(element.Id, element.Status);
+
+        private async void OpenUpdateCenterWindowAsync(object obj)
+        {
+            await Task.Run(() =>
+            {
+                const string UPDATE_CENTER_WINDOW = "ms-settings:windowsupdate-action";
+                _ = ProcessHelper.Start(UPDATE_CENTER_WINDOW, null, ProcessWindowStyle.Normal);
+            });
+        }
 
         private async void RadioGroupClickedAsync(object args)
         {
