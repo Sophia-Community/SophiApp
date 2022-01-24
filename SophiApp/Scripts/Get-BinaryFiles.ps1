@@ -63,21 +63,15 @@ $ZIP.Dispose()
 
 # Download the TaskScheduler package
 $Parameters = @{
-	Uri             = "https://api.github.com/repos/dahall/TaskScheduler/releases/latest"
+	Uri             = "https://www.nuget.org/api/v2/package/TaskScheduler"
+        OutFile         = "$ReleaseBinDir\TaskScheduler.zip"
 	UseBasicParsing = $true
 }
-$TaskSchedulerLatestVersion = ((Invoke-RestMethod @Parameters).assets | Where-Object -FilterScript {$_.browser_download_url -match "TaskScheduler.zip"}).browser_download_url
-$Parameters = @{
-	Uri             = $TaskSchedulerLatestVersion
-	OutFile         = "$ReleaseBinDir\TaskScheduler.zip"
-	UseBasicParsing = $true
-}
-Invoke-RestMethod @Parameters
 
 # Extract Microsoft.Win32.TaskScheduler.dll from the archive
 Add-Type -Assembly System.IO.Compression.FileSystem
 $ZIP = [IO.Compression.ZipFile]::OpenRead("$ReleaseBinDir\TaskScheduler.zip")
-$Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "net452/Microsoft.Win32.TaskScheduler.dll"}
+$Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "lib/net452/Microsoft.Win32.TaskScheduler.dll"}
 $Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "$ReleaseBinDir\$($_.Name)", $true)}
 $ZIP.Dispose()
 
