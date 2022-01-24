@@ -16,10 +16,10 @@
 	https://github.com/Inestic
 
 	.VERSION
-	v1.0.0
+	v1.0.1
 
 	.DATE
-	02.11.2021
+	24.01.2022
 
 	Copyright (c) 2021 farag2, Inestic
 	
@@ -32,12 +32,13 @@
 $ReleaseBinDir = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\bin\Release\Bin"
 $BinaryFiles = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\*"
 
-if(!(Test-Path -Path $ReleaseBinDir))
+if (-not (Test-Path -Path $ReleaseBinDir))
 {
-	New-Item -Path (Split-Path -Path $ReleaseBinDir -Parent) -Name "Bin" -ItemType Directory
+	New-Item -Path (Split-Path -Path $ReleaseBinDir -Parent) -Name Bin -ItemType Directory
 }
 
 # Download the microsoft.dism package
+# https://github.com/jeffkl/ManagedDism
 $Parameters = @{
 	Uri             = "https://api.github.com/repos/jeffkl/ManagedDism/releases/latest"
 	UseBasicParsing = $true
@@ -62,11 +63,13 @@ $Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractT
 $ZIP.Dispose()
 
 # Download the TaskScheduler package
+# https://www.nuget.org/packages/TaskScheduler
 $Parameters = @{
 	Uri             = "https://www.nuget.org/api/v2/package/TaskScheduler"
         OutFile         = "$ReleaseBinDir\TaskScheduler.zip"
 	UseBasicParsing = $true
 }
+Invoke-RestMethod @Parameters
 
 # Extract Microsoft.Win32.TaskScheduler.dll from the archive
 Add-Type -Assembly System.IO.Compression.FileSystem
@@ -76,6 +79,7 @@ $Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractT
 $ZIP.Dispose()
 
 # Download the Newtonsoft.Json package
+# https://github.com/JamesNK/Newtonsoft.Json
 $Parameters = @{
 	Uri             = "https://api.github.com/repos/JamesNK/Newtonsoft.Json/releases/latest"
 	UseBasicParsing = $true
