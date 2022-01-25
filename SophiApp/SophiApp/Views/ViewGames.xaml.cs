@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,7 +52,7 @@ namespace SophiApp.Views
             var element = e.Item as TextedElement;
             var isValidElement = FilterHelper.FilterByTag(elementTag: element.Tag, viewTag: Tag);
 
-            if (isValidElement && element.Status != Commons.ElementStatus.DISABLED)
+            if (isValidElement && element.Status != ElementStatus.DISABLED)
                 TextedElementsCount++;
 
             e.Accepted = isValidElement;
