@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Conditions.LoggedUserAdmin">Текущий вошедший пользователь не обладает правами администратора.</system:String>
+    <system:String x:Key="Conditions.LoggedUserAdmin">Чтобы запустить SophiApp, вы должны быть единственным вошедшим в систему пользователем с правами администратора. Пожалуйста, закройте все прочие запущенные сессии пользователей и повторите попытку</system:String>
     <system:String x:Key="Conditions.NoNewVersion">Обнаружена новая версия.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Ваша версия Windows не совместима с SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
