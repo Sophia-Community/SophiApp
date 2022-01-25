@@ -849,19 +849,26 @@ namespace SophiApp.Customisations
             File.WriteAllBytes(_402_POWERSHELL_LNK, bytes);
         }
 
-        public static void _500(bool _)
+        public static void _500(bool IsChecked)
         {
-            var adguardPattern = "<tr style.*<a href=\"(?<Url>.*)\"\\s.*>(?<Version>.*)<\\/a>";
-            var hevcvPattern = "Microsoft.HEVCVideoExtension_.*_x64__8wekyb3d8bbwe.appx";
-            var adguardResponse = WebHelper.GetPostResponse(_500_ADGUARD_LINK, _500_ADGUARD_WEB_PARAMS).Result;
-            var hevcvDto = Regex.Matches(adguardResponse, adguardPattern)
-                                 .Cast<Match>()
-                                 .FirstOrDefault(link => Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern));
+            if (IsChecked)
+            {
+                var adguardPattern = "<tr style.*<a href=\"(?<Url>.*)\"\\s.*>(?<Version>.*)<\\/a>";
+                var hevcvPattern = "Microsoft.HEVCVideoExtension_.*_x64__8wekyb3d8bbwe.appx";
+                var adguardResponse = WebHelper.GetPostResponse(_500_ADGUARD_LINK, _500_ADGUARD_WEB_PARAMS).Result;
+                var hevcvDto = Regex.Matches(adguardResponse, adguardPattern)
+                                     .Cast<Match>()
+                                     .FirstOrDefault(link => Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern));
 
-            var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
-            WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
-            UwpHelper.InstallPackage(hevcvAppx);
-            FileHelper.TryDeleteFile(hevcvAppx);
+                var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
+                WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
+                UwpHelper.InstallPackage(hevcvAppx);
+                FileHelper.TryDeleteFile(hevcvAppx);
+                return;
+            }
+
+            var hevcPackage = UwpHelper.GetPackage(_500_UWP_HEVC_VIDEO);
+            UwpHelper.RemovePackage(packageFullName: hevcPackage.Id.FullName, allUsers: false);
         }
 
         public static void _501(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot,

@@ -411,9 +411,9 @@ namespace SophiApp.Customisations
 
         public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
 
-        public static bool _500() => UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO).Invert() && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
-                                     ? false
-                                     : throw new UwpAppFoundException(_500_UWP_HEVC_VIDEO);
+        public static bool _500() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+                                     ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
+                                     : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS);
 
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
                                      ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE

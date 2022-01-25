@@ -50,7 +50,7 @@
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Logo:</system:String>
-    <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia Gumenyuk</system:String>    
+    <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia Gumenyuk</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
     <system:String x:Key="Localization.Settings.Themes">Theme</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Dark</system:String>

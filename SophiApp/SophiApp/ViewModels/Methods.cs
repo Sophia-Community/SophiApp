@@ -101,10 +101,12 @@ namespace SophiApp.ViewModels
             var stopwatch = Stopwatch.StartNew();
             UwpElementsCurrentUser = UwpHelper.GetPackagesDto(forAllUsers: false)
                                               .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                              .OrderBy(uwp => uwp.DisplayName)
                                               .ToList();
 
             UwpElementsAllUsers = UwpHelper.GetPackagesDto(forAllUsers: true)
                                            .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                           .OrderBy(uwp => uwp.DisplayName)
                                            .ToList();
             stopwatch.Stop();
             DebugHelper.StopInitUwpApps(stopwatch.Elapsed.TotalSeconds);

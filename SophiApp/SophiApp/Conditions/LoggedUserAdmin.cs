@@ -11,6 +11,11 @@ namespace SophiApp.Conditions
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionLoggedUserAdmin;
 
-        public bool Invoke() => Result = ProcessHelper.GetProcessUser(EXPLORER_PROCESS_NAME).Name == ProcessHelper.GetProcessUser(APP_PROCESS_NAME).Name;
+        public bool Invoke()
+        {
+            var explorerIdentity = ProcessHelper.GetProcessIdentity(EXPLORER_PROCESS_NAME);
+            var appIdentity = ProcessHelper.GetProcessIdentity(APP_PROCESS_NAME);
+            return Result = explorerIdentity.TrueForAll(id => id.Name == appIdentity[0].Name) && appIdentity.Count == 1;
+        }
     }
 }

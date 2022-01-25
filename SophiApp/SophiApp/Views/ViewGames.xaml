@@ -19,15 +19,15 @@
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <converters:IntToVisibility x:Key="IntToVisibilityConverter" />
         <Style TargetType="{x:Type StackPanel}">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Panel.ZIndex" Value="10"/>
-            <Setter Property="Visibility" Value="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToVisibilityConverter}}"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Panel.ZIndex" Value="10" />
+            <Setter Property="Visibility" Value="{Binding TextedElementsCount, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToVisibilityConverter}}" />
         </Style>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Margin" Value="0, 0, 0, 10"/>
-            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0, 0, 0, 10" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
@@ -48,14 +48,14 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <StackPanel>
-                    <controls:Logo Width="200" 
-                                   Height="200" 
-                                   VerticalAlignment="Center" 
+                    <controls:Logo Width="200"
+                                   Height="200"
+                                   VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Margin="0, 0, 0, 20"/>
+                                   Margin="0, 0, 0, 20" />
 
                     <TextBlock Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                               Style="{DynamicResource BoldText}" 
+                               Style="{DynamicResource BoldText}"
                                HorizontalAlignment="Center"
                                Text="{DynamicResource Localization.ViewGames.NoData}" />
 

@@ -16,25 +16,26 @@ namespace SophiApp.Helpers
         [DllImport("advapi32.dll", SetLastError = true)]
         private static extern bool OpenProcessToken(IntPtr ProcessHandle, uint DesiredAccess, out IntPtr TokenHandle);
 
-        internal static WindowsIdentity GetProcessUser(string process)
+        internal static List<WindowsIdentity> GetProcessIdentity(string process)
         {
             IntPtr processHandle = IntPtr.Zero;
+            var identity = new List<WindowsIdentity>();
 
-            try
+            foreach (var proc in Process.GetProcessesByName(process))
             {
-                var proc = Process.GetProcessesByName(process).First();
-                OpenProcessToken(proc.Handle, 8, out processHandle);
-                return new WindowsIdentity(processHandle);
+                try
+                {
+                    OpenProcessToken(proc.Handle, 8, out processHandle);
+                    identity.Add(new WindowsIdentity(processHandle));
+                }
+                finally
+                {
+                    if (processHandle != IntPtr.Zero)
+                        CloseHandle(processHandle);
+                }
             }
-            catch (Exception)
-            {
-                throw new Exception($"Cannot find the process called: {process}");
-            }
-            finally
-            {
-                if (processHandle != IntPtr.Zero)
-                    CloseHandle(processHandle);
-            }
+
+            return identity;
         }
 
         internal static bool ProcessExist(string processName) => Process.GetProcessesByName(processName).Count() > 0;

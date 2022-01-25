@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Management.Deployment;
 
@@ -12,6 +13,15 @@ namespace SophiApp.Helpers
 {
     internal class UwpHelper
     {
+        internal static Package GetPackage(string packageName)
+        {
+            var sid = OsHelper.GetCurrentUserSid().Value;
+            var packageManager = new PackageManager();
+            return packageManager.FindPackagesForUser(sid)
+                                 .Where(package => package.Id.Name == packageName)
+                                 .First();
+        }
+
         internal static IEnumerable<UwpElementDto> GetPackagesDto(bool forAllUsers = false)
         {
             var currentUserScript = @"# The following UWP apps will be excluded from the display
@@ -123,11 +133,11 @@ foreach ($AppxPackage in $AppxPackages)
                                  .Count() > 0;
         }
 
-        internal static void RemovePackage(string packageName, bool allUsers)
+        internal static void RemovePackage(string packageFullName, bool allUsers)
         {
             var stopwatch = Stopwatch.StartNew();
             var packageManager = new PackageManager();
-            var deploymentOperation = packageManager.RemovePackageAsync(packageName, allUsers ? RemovalOptions.RemoveForAllUsers : RemovalOptions.None);
+            var deploymentOperation = packageManager.RemovePackageAsync(packageFullName, allUsers ? RemovalOptions.RemoveForAllUsers : RemovalOptions.None);
             var opCompletedEvent = new ManualResetEvent(false);
             deploymentOperation.Completed = (depProgress, status) => { opCompletedEvent.Set(); };
             opCompletedEvent.WaitOne();
@@ -136,11 +146,11 @@ foreach ($AppxPackage in $AppxPackages)
             if (deploymentOperation.Status == AsyncStatus.Error)
             {
                 var deploymentResult = deploymentOperation.GetResults();
-                DebugHelper.UwpRemovedHasException(packageName, deploymentResult.ErrorText);
+                DebugHelper.UwpRemovedHasException(packageFullName, deploymentResult.ErrorText);
                 return;
             }
 
-            DebugHelper.UwpRemoved(packageName, stopwatch.Elapsed.TotalSeconds, deploymentOperation.Status);
+            DebugHelper.UwpRemoved(packageFullName, stopwatch.Elapsed.TotalSeconds, deploymentOperation.Status);
         }
     }
 }
