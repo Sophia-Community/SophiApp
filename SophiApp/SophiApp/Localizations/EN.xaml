@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Conditions.LoggedUserAdmin">The logged-on user doesn't have admin rights.</system:String>
+    <system:String x:Key="Conditions.LoggedUserAdmin">To be able to run SophiApp, you must be the only logged-on account with admin rights. Please log off other running open sessions and try again.</system:String>
     <system:String x:Key="Conditions.NoNewVersion">A new version was found.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Your Windows isn't compatible with SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
