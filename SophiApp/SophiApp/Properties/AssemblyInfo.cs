@@ -9,9 +9,9 @@ using System.Windows;
 [assembly: AssemblyTitle("SophiApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("The Sophia Project")]
 [assembly: AssemblyProduct("SophiApp")]
-[assembly: AssemblyCopyright("Copyright © 2021")]
+[assembly: AssemblyCopyright("Copyright © 2019–2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
