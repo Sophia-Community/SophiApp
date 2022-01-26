@@ -2067,8 +2067,8 @@
       "RU": "Включить песочницу для Microsoft Defender"
     },
     "Description": {
-      "EN": "Running Windows Defender Antivirus in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm.",
-      "RU": "Запуск Windows Defender Antivirus в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда"
+      "EN": "Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm.",
+      "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда"
     },
     "Type": "CheckBox",
     "Tag": "Security"
