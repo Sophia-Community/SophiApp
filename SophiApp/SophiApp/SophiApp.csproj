@@ -93,6 +93,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Conditions\IsSingleSession.cs" />
+    <Compile Include="Conditions\OnlyOneRun.cs" />
     <Compile Include="Conditions\Windows10DebloaterNotUsed.cs" />
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>

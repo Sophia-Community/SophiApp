@@ -176,7 +176,7 @@ namespace SophiApp.ViewModels
                 var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                            statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
+                                                                                                statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
                                             .ToList();
                 stopwatch.Stop();
                 DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);

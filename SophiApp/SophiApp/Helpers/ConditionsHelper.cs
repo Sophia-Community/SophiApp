@@ -25,8 +25,8 @@ namespace SophiApp.Helpers
 
         private void InitializingConditions() => Conditions = new List<ICondition>()
         {
-            new OsBuildVersion(), new OsUpdateBuildRevision(), new LoggedUserAdmin(),
-            new OsNotInfected(), new Windows10DebloaterNotUsed(),
+            new OsBuildVersion(), new OsUpdateBuildRevision(), new OnlyOneRun(), new IsSingleSession(),
+            new LoggedUserAdmin(), new OsNotInfected(), new Windows10DebloaterNotUsed(),
             //new NoNewVersion()
         };
 

@@ -3,8 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Conditions.LoggedUserAdmin">To be able to run SophiApp, you must be the only logged-on account with admin rights. Please log off other running open sessions and try again.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion">A new SophiApp version was found online. Please download new version with bug fixes from the official GitHub page.</system:String>
+    <system:String x:Key="Conditions.IsSingleSession.Login">To be able to run SophiApp, you must be the only logged-on account with admin rights.</system:String>
+    <system:String x:Key="Conditions.IsSingleSession.Logoff">Please log off other running open sessions and try again.</system:String>
+    <system:String x:Key="Conditions.LoggedUserAdmin">The current logged in user does not have administrator privileges.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Please download new version with bug fixes from the official GitHub page.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version was found online.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Download new version</system:String>
+    <system:String x:Key="Conditions.OnlyOneRun">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Your Windows isn't compatible with SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">Supported OS: Windows 10 2004/20H2/21H1/21H2.</system:String>
