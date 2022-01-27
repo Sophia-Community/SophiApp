@@ -278,6 +278,9 @@
     <Compile Include="Views\ViewLoading.xaml.cs" />
     <Compile Include="Views\ViewPersonalization.xaml.cs" />
     <Compile Include="Views\ViewPrivacy.xaml.cs" />
+    <Compile Include="Views\ViewSearch.xaml.cs">
+      <DependentUpon>ViewSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewSecurity.xaml.cs" />
     <Compile Include="Views\ViewSettings.xaml.cs" />
     <Compile Include="Views\ViewStartMenu.xaml.cs" />
@@ -472,6 +475,10 @@
     <Page Include="Views\ViewPrivacy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ViewSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewSecurity.xaml">
       <Generator>MSBuild:Compile</Generator>

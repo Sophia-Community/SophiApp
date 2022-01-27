@@ -17,6 +17,7 @@
     <system:String x:Key="Tags.View.Loading">Loading</system:String>
     <system:String x:Key="Tags.View.Personalization">Personalization</system:String>
     <system:String x:Key="Tags.View.Privacy">Privacy</system:String>
+    <system:String x:Key="Tags.View.Search">Search</system:String>
     <system:String x:Key="Tags.View.Security">Security</system:String>
     <system:String x:Key="Tags.View.Settings">Settings</system:String>
     <system:String x:Key="Tags.View.StartMenu">StartMenu</system:String>

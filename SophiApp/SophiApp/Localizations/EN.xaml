@@ -81,6 +81,7 @@
     <system:String x:Key="Localization.ViewChanges.Setting">settings</system:String>
     <system:String x:Key="Localization.ViewGames.NoData">There is no data to display,</system:String>
     <system:String x:Key="Localization.ViewGames.PackagesRemoved">or the necessary packages have been removed.</system:String>
+    <system:String x:Key="Localization.ViewSearch.Running">Searching...</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">For all users</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">When you uninstall UWP apps for all users, new created accounts will not include the removed UWP apps. You are only able to restore them back to current profile and must use installation packages or download them from the Microsoft Store. But the installation will be made only in the current profile.</system:String>
 </ResourceDictionary>

@@ -3,6 +3,7 @@ using SophiApp.Dto;
 using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SophiApp.Models
 {
@@ -15,6 +16,15 @@ namespace SophiApp.Models
 
         public List<TextedElement> ChildElements { get; set; } = new List<TextedElement>();
         public List<TextedElementDto> ChildsDTO { get; set; }
+
+        internal override bool ContainsText(string text)
+        {
+            if (base.ContainsText(text))
+                return true;
+
+            var desiredText = text.ToLower();
+            return ChildElements.Any(child => child.Header.ToLower().Contains(desiredText) || child.Description.ToLower().Contains(desiredText));
+        }
 
         internal override void GetCustomisationStatus()
         {

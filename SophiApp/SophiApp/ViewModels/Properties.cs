@@ -13,6 +13,8 @@ namespace SophiApp.ViewModels
         private string buildName;
         private string conditionsHelperError;
         private List<Customisation> CustomActions;
+        private List<TextedElement> foundTextedElement;
+        private SearchState search;
         private bool debugMode;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;
@@ -24,6 +26,26 @@ namespace SophiApp.ViewModels
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
+
+        public SearchState Search
+        { 
+            get => search; 
+            set
+            {
+                search = value;
+                OnPropertyChanged(SearchPropertyName);
+            }
+        }
+
+        public List<TextedElement> FoundTextedElement 
+        { 
+            get => foundTextedElement; 
+            private set
+            {
+                foundTextedElement = value;
+                OnPropertyChanged(FoundTextedElementPropertyName);
+            }
+        }
 
         public bool AdvancedSettingsVisibility
         {

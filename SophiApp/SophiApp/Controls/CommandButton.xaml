@@ -10,10 +10,9 @@
         <Storyboard
             x:Key="ButtonClickAnimation"
             Completed="OnStoryboardCompleted"
-            Storyboard.TargetName="ButtonTemplate"
-            Storyboard.TargetProperty="RenderTransform.ScaleX">
+            Storyboard.TargetName="ButtonAnimatedScaleTransform"
+            Storyboard.TargetProperty="(ScaleTransform.ScaleX)">
             <DoubleAnimation AutoReverse="True"
-                             From="1.0"
                              To="0.8"
                              Duration="0:0:0.05" />
         </Storyboard>
@@ -25,6 +24,7 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -57,7 +57,7 @@
         <ControlTemplate>
             <Button x:Name="ButtonTemplate">
                 <Button.RenderTransform>
-                    <ScaleTransform CenterX="50" CenterY="50" ScaleX="1.0" ScaleY="1.0" />
+                    <ScaleTransform x:Name="ButtonAnimatedScaleTransform" ScaleX="1.0" ScaleY="1.0" />
                 </Button.RenderTransform>
             </Button>
             <ControlTemplate.Triggers>

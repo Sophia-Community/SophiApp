@@ -18,6 +18,7 @@ namespace SophiApp.Commons
         internal static readonly string ViewLoading = Application.Current.FindResource("Tags.View.Loading") as string;
         internal static readonly string ViewPersonalization = Application.Current.FindResource("Tags.View.Personalization") as string;
         internal static readonly string ViewPrivacy = Application.Current.FindResource("Tags.View.Privacy") as string;
+        internal static readonly string ViewSearch = Application.Current.FindResource("Tags.View.Search") as string;
         internal static readonly string ViewSecurity = Application.Current.FindResource("Tags.View.Security") as string;
         internal static readonly string ViewSettings = Application.Current.FindResource("Tags.View.Settings") as string;
         internal static readonly string ViewStartMenu = Application.Current.FindResource("Tags.View.StartMenu") as string;

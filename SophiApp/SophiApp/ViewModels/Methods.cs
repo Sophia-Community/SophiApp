@@ -145,9 +145,11 @@ namespace SophiApp.ViewModels
             RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
+            SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync), new Predicate<object>(SearchClicked_CanExecute));
             SwitchUwpForAllUsersClickedCommand = new RelayCommand(new Action<object>(SwitchUwpForAllUsersClicked));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
+
         }
 
         private void InitializeProperties()
@@ -163,6 +165,8 @@ namespace SophiApp.ViewModels
             AdvancedSettingsVisibility = false;
             VisibleViewByTag = Tags.ViewLoading;
             CustomActions = new List<Customisation>();
+            FoundTextedElement = new List<TextedElement>();
+            Search = SearchState.Stopped;
             UwpForAllUsersState = ElementStatus.UNCHECKED;
             DebugHelper.AppLanguage($"{ Localization.Language }");
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
@@ -291,6 +295,29 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private bool SearchClicked_CanExecute(object arg) => string.IsNullOrWhiteSpace(arg as string).Invert();
+
+        private async void SearchClickedAsync(object arg)
+        {
+            await Task.Run(() =>
+            {
+                var stopwatch = Stopwatch.StartNew();
+                var searchString = arg as string;
+                FoundTextedElement.Clear();
+                Search = SearchState.Running;
+                SetVisibleViewTag(Tags.ViewSearch);
+                FoundTextedElement = TextedElements.Where(element => element.Status != ElementStatus.DISABLED
+                                                                        && element.ContainsText(searchString)).ToList();
+
+//                Серьезность Код Число Контекст данных Путь привязки Целевой объект Конечный тип Описание    Файл Строка  Проект
+//Ошибка  40  4   AdvancedRadioGroup IsEnabled   AdvancedRadioGroup.IsEnabled Boolean Свойство IsEnabled не найдено для объекта типа AdvancedRadioGroup.			
+
+
+                Search = SearchState.Stopped;
+                stopwatch.Stop();
+                DebugHelper.StopSearch(searchString, stopwatch.Elapsed.TotalSeconds, foundTextedElement.Count);
+            });
+        }
         private void SetAppSelectedTheme(Theme theme) => AppSelectedTheme = theme;
 
         private void SetControlsHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)

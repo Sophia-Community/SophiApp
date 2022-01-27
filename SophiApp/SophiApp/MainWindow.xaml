@@ -58,9 +58,9 @@
             <Setter Property="ResizeMode" Value="CanResize" />
             <Setter Property="ShowInTaskbar" Value="True" />
             <Setter Property="MinHeight" Value="615" />
-            <Setter Property="MinWidth" Value="1074" />
+            <Setter Property="MinWidth" Value="1280" />
             <Setter Property="Height" Value="615" />
-            <Setter Property="Width" Value="1074" />
+            <Setter Property="Width" Value="1280" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Title">
@@ -327,17 +327,19 @@
                             <RowDefinition Height="52" />
                             <!--  Info Panel Row  -->
                         </Grid.RowDefinitions>
-                        <views:ViewPrivacy Grid.Row="0" />
-                        <views:ViewPersonalization Grid.Row="0" />
+                        <views:ViewUwpApps Grid.Row="0" />
+                        <views:ViewTaskSheduler Grid.Row="0" />
                         <views:ViewSystem Grid.Row="0" />
                         <views:ViewStartMenu Grid.Row="0" />
-                        <views:ViewUwpApps Grid.Row="0" />
-                        <views:ViewGames Grid.Row="0" />
-                        <views:ViewTaskSheduler Grid.Row="0" />
                         <views:ViewSecurity Grid.Row="0" />
+                        <views:ViewSearch Grid.Row="0"/>
+                        <views:ViewPrivacy Grid.Row="0" />
+                        <views:ViewPersonalization Grid.Row="0" />
+                        <views:ViewGames Grid.Row="0" />
                         <views:ViewContextMenu Grid.Row="0" />
-                        <controls:ChangesPanel Grid.Row="1" />
+
                         <controls:LoadingPanel Grid.Row="1" />
+                        <controls:ChangesPanel Grid.Row="1" />
                     </Grid>
                 </Grid>
             </Grid>

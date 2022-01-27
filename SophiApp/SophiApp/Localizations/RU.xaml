@@ -13,8 +13,8 @@
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Ваша версия Windows не совместима с SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">Поддерживаемые ОС: Windows 10 2004/20H2/21H1/21H2.</system:String>
-    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Версия вашего билда ниже</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Версия вашего билда ниже.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">Минимальная поддерживаемая версия накопительного пакета Windows 10: 1151.</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.ReinstallOs">В целях профилактики переустановите ОС.</system:String>
@@ -81,6 +81,7 @@
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
     <system:String x:Key="Localization.ViewGames.NoData">Нет данных для отображения,</system:String>
     <system:String x:Key="Localization.ViewGames.PackagesRemoved">или удалены необходимые пакеты.</system:String>
+    <system:String x:Key="Localization.ViewSearch.Running">Ищем...</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всех пользователей</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">При удалении UWP-приложений для всех пользователей новые учетные записи не будут включать удаленные UWP-приложения, и становится невозможно восстановить их обратно без использования установочных пакетов или скачивания из Microsoft Store. Но установка последних будет произведена лишь в текущий профиль</system:String>
 </ResourceDictionary>

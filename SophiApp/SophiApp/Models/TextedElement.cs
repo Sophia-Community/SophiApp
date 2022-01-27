@@ -92,6 +92,12 @@ namespace SophiApp.Models
             }
         }
 
+        internal virtual bool ContainsText(string text)
+        {
+            var desiredText = text.ToLower();            
+            return Header.ToLower().Contains(desiredText) || Description.ToLower().Contains(desiredText);
+        }
+
         internal virtual void Init()
         {
             var stopwatch = Stopwatch.StartNew();

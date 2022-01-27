@@ -127,5 +127,8 @@ namespace SophiApp.Helpers
         internal static void UwpRemovedHasException(string packageName, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
+
+        internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
+        
     }
 }
