@@ -2102,12 +2102,12 @@
   {
     "Id": 805,
     "Header": {
-      "EN": "Create \"Process Creation\" Custom View in the Event Viewer",
+      "EN": "Create the \"Process Creation\" Custom View in the Event Viewer",
       "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий"
     },
     "Description": {
-      "EN": "If you prefer a GUI based approach, it is also possible to create a custom view in the Event Viewer, where all processes and their arguments will be logged. In order this feature to work events auditing and command line in process creation events will be enabled. For more information, read the Microsoft blog: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/",
-      "RU": "Если вы предпочитаете подход на основе графического интерфейса, в \"Просмотре событий\" можно создать собственное представление, где будут журналироваться запускаемые процессов и их аргументы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса. Более подробно читайте в блоге Microsoft: https://devblogs.microsoft.com/commandline/how-to-determine-what-just-ran-on-windows-console/"
+      "EN": "Create a custom view for logging all processes and their arguments in the \"Event Viewer\". In order this feature to work events auditing and command line in process creation events will be enabled.",
+      "RU": "Создать в \"Просмотре событий\" настраиваемое представление для журналирования запускаемых процессов и их аргументов. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса"
     },
     "Type": "CheckBox",
     "Tag": "Security"
@@ -2119,8 +2119,8 @@
       "RU": "Включить ведение журнала для всех модулей Windows PowerShell"
     },
     "Description": {
-      "EN": "If you enable this policy setting, pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in Event Viewer. For the built-in Windows PowerShell 5.1 only",
-      "RU": "Если этот параметр политики включен, события конвейерного выполнения для участников указанных модулей записываются в журнал Windows PowerShell в средстве просмотра событий. Только для встроенного Windows PowerShell 5.1"
+      "EN": "If you enable this policy setting, pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in the Event Viewer. For the built-in Windows PowerShell 5.1 only",
+      "RU": "Если этот параметр политики включен, события конвейерного выполнения для участников указанных модулей записываются в журнал Windows PowerShell в \"Просмотре событий\". Только для встроенного Windows PowerShell 5.1"
     },
     "Type": "CheckBox",
     "Tag": "Security"
