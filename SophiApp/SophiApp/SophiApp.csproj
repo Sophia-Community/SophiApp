@@ -102,6 +102,9 @@
     <Compile Include="Controls\CommandButton.xaml.cs">
       <DependentUpon>CommandButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Heart.xaml.cs">
+      <DependentUpon>Heart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Logo.xaml.cs">
       <DependentUpon>Logo.xaml</DependentUpon>
     </Compile>
@@ -343,6 +346,10 @@
     <Page Include="Controls\HamburgerMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Heart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\IconButton.xaml">
       <Generator>MSBuild:Compile</Generator>

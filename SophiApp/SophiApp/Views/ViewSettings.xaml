@@ -178,6 +178,11 @@
                                 Icon="{DynamicResource Icon.LinkedIn}"
                                 IconMargin="10, 0, 0, 6"
                                 Role="{DynamicResource Localization.Settings.Logotype}" />
+
+                            <controls:Heart Width="20" 
+                                            Height="20"
+                                            Margin="{StaticResource BlockIndent}"
+                                            HorizontalAlignment="Left"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
