@@ -110,8 +110,5 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 * [Telegram discussion group](https://t.me/sophia_chat)
 * [Telegram channel](https://t.me/sophianews)
-* [Ru-Board](link)
-* [rutracker](link)
-* [My Digital Life](link)
-* [Reddit](link)
-  * PM [me](https://www.reddit.com/user/farag2/)
+* [Ru-Board](https://forum.ru-board.com/topic.cgi?forum=5&topic=50903)
+* [Reddit](https://www.reddit.com/user/farag2/)
