@@ -80,6 +80,12 @@ namespace SophiApp.Models
 
         internal void ChangeStatus() => Status = Status == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
 
+        internal virtual bool ContainsText(string text)
+        {
+            var desiredText = text.ToLower();
+            return Header.ToLower().Contains(desiredText) || Description.ToLower().Contains(desiredText);
+        }
+
         internal virtual void GetCustomisationStatus()
         {
             try
@@ -90,12 +96,6 @@ namespace SophiApp.Models
             {
                 ErrorOccurred?.Invoke(this, e);
             }
-        }
-
-        internal virtual bool ContainsText(string text)
-        {
-            var desiredText = text.ToLower();            
-            return Header.ToLower().Contains(desiredText) || Description.ToLower().Contains(desiredText);
         }
 
         internal virtual void Init()

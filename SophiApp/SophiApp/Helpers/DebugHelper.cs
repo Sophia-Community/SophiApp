@@ -22,6 +22,9 @@ namespace SophiApp.Helpers
         private const string USER_NAME = "Current user";
         private const string USER_REGION = "User region";
         private static List<string> ErrorsLog = new List<string>();
+        
+        private static readonly object infoLogLocker = new object();
+        private static readonly object statusLogLocker = new object();
 
         private static List<string> InfoLog = new List<string>
         {
@@ -43,13 +46,25 @@ namespace SophiApp.Helpers
 
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
 
-        private static void WriteInfoLog(string record) => InfoLog.Add(record);
+        private static void WriteInfoLog(string record)
+        {
+            lock (infoLogLocker)
+            {
+                InfoLog.Add(record);
+            }
+        }
 
         private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
 
         private static void WriteInitLog(string record) => InitLog.Add($"{DateTime} {record}");
 
-        private static void WriteStatusLog(string record) => StatusLog.Add($"{DateTime} {record}");
+        private static void WriteStatusLog(string record)
+        {
+            lock (statusLogLocker)
+            {
+                StatusLog.Add($"{DateTime} {record}");
+            }
+        }
 
         internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
 
@@ -114,6 +129,8 @@ namespace SophiApp.Helpers
 
         internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
 
+        internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
+
         internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The element {elementID} has changed status to: {elementStatus}");
 
         internal static void TextedElementInit(uint elementID, double totalSeconds) => WriteInitLog($"The element {elementID} was initialized in {totalSeconds:N3} second(s)");
@@ -127,8 +144,5 @@ namespace SophiApp.Helpers
         internal static void UwpRemovedHasException(string packageName, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
-
-        internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
-        
     }
 }

@@ -81,6 +81,7 @@
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
     <system:String x:Key="Localization.ViewGames.NoData">Нет данных для отображения,</system:String>
     <system:String x:Key="Localization.ViewGames.PackagesRemoved">или удалены необходимые пакеты.</system:String>
+    <system:String x:Key="Localization.ViewSearch.NotFound">Ничего не найдено</system:String>
     <system:String x:Key="Localization.ViewSearch.Running">Ищем...</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всех пользователей</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">При удалении UWP-приложений для всех пользователей новые учетные записи не будут включать удаленные UWP-приложения, и становится невозможно восстановить их обратно без использования установочных пакетов или скачивания из Microsoft Store. Но установка последних будет произведена лишь в текущий профиль</system:String>

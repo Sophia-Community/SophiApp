@@ -162,187 +162,180 @@
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="22" />
         </Style>
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
-            <Setter Property="CornerRadius" Value="0" />
-        </Style>
         <Style x:Key="Style.Panel.Description" TargetType="{x:Type StackPanel}">
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Grid.Column" Value="1" />
         </Style>
     </Window.Resources>
-    <Border>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35" />
-                <!--  Window Title Row  -->
-                <RowDefinition Height="*" />
-                <!--  Window Content Row  -->
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <!--  Window Title Row  -->
+            <RowDefinition Height="*" />
+            <!--  Window Content Row  -->
+        </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <!--  Window Title Grid  -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250" />
-                    <!--  Hamburger Title Column  -->
-                    <ColumnDefinition Width="*" />
-                    <!--  Views Title Column  -->
-                </Grid.ColumnDefinitions>
-                <controls:TitleLeft Grid.Column="0" />
-                <controls:TitleRight Grid.Column="1" />
-            </Grid>
+        <Grid Grid.Row="0">
+            <!--  Window Title Grid  -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <!--  Hamburger Title Column  -->
+                <ColumnDefinition Width="*" />
+                <!--  Views Title Column  -->
+            </Grid.ColumnDefinitions>
+            <controls:TitleLeft Grid.Column="0" />
+            <controls:TitleRight Grid.Column="1" />
+        </Grid>
 
-            <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
-                <!--  Window Content Grid  -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250" />
-                    <!--  Hamburger Column  -->
-                    <ColumnDefinition Width="*" />
-                    <!--  Column For Views Without Description  -->
-                </Grid.ColumnDefinitions>
-                <controls:HamburgerMenu Grid.Column="0" />
-                <views:ViewLoading Grid.Column="1" Panel.ZIndex="30" />
-                <views:ViewSettings Grid.Column="1" Panel.ZIndex="20" />
+        <Grid Grid.Row="1" Background="{DynamicResource Brush.View.Background}">
+            <!--  Window Content Grid  -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <!--  Hamburger Column  -->
+                <ColumnDefinition Width="*" />
+                <!--  Column For Views Without Description  -->
+            </Grid.ColumnDefinitions>
+            <controls:HamburgerMenu Grid.Column="0" />
+            <views:ViewLoading Grid.Column="1" Panel.ZIndex="30" />
+            <views:ViewSettings Grid.Column="1" Panel.ZIndex="20" />
 
-                <views:ViewConditionsTemplate x:Name="ViewConditionsOsBuildVersion" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OsBuildVersion}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.NotCompatible}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <controls:CommandButton
+            <views:ViewConditionsTemplate x:Name="ViewConditionsOsBuildVersion" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OsBuildVersion}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.NotCompatible}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <controls:CommandButton
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center"
                                 Command="{Binding OpenUpdateCenterWindowCommand}"
                                 Text="{DynamicResource Conditions.WindowsUpdateCenter.Open}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsOsUpdateBuildRevision" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.UpdateBuildRevision}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.LowerVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <controls:CommandButton
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsOsUpdateBuildRevision" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.UpdateBuildRevision}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.LowerVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <controls:CommandButton
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center"
                                 Command="{Binding OpenUpdateCenterWindowCommand}"
                                 Text="{DynamicResource Conditions.WindowsUpdateCenter.Open}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsIsSingleSession" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.IsSingleSession}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.IsSingleSession.Login}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsLoggedUserIsAdmin" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.LoggedUserAdmin}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.LoggedUserAdmin}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsOnlyOneRun" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OnlyOneRun}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.OnlyOneRun}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsOsIsInfected"  Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OsNotInfected}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.OsIsInfected}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsWindows10DebloaterNotUsed" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.Windows10DebloaterNotUsed}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.StabilityCompromised}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.SycnexScript}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsNoNewVersion" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.NoNewVersion}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.NoNewVersion.HasNew}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.NoNewVersion.DownloadFixed}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <controls:CommandButton
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsIsSingleSession" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.IsSingleSession}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.IsSingleSession.Login}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsLoggedUserIsAdmin" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.LoggedUserAdmin}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.LoggedUserAdmin}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" />
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsOnlyOneRun" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OnlyOneRun}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.OnlyOneRun}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" />
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsOsIsInfected"  Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OsNotInfected}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.OsIsInfected}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsWindows10DebloaterNotUsed" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.Windows10DebloaterNotUsed}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.StabilityCompromised}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.SycnexScript}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsNoNewVersion" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.NoNewVersion}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.NoNewVersion.HasNew}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.NoNewVersion.DownloadFixed}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <controls:CommandButton
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center"
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}"
                                 Text="{DynamicResource Conditions.NoNewVersion.OpenGitHub}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewConditionsSomethingWrong" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.SomethingWrong}">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path=ConditionsHelperError}"
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsSomethingWrong" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.SomethingWrong}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=ConditionsHelperError}"
                                    Style="{StaticResource BoldText}"
                                    Margin="{StaticResource MarginViewConditionsText}"
                                    TextWrapping="Wrap"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
-                            <controls:CommandButton
+                        <controls:CommandButton
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Left"
                                 Command="{Binding SaveDebugLogCommand}"
                                 Text="{DynamicResource Localization.Settings.Debug.Save}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
+                    </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
 
-                <Grid Grid.Column="1" Panel.ZIndex="10">
-                    <!--  Wrapper Grid For Views With Description and Info Panel  -->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*" />
-                        <!--  Views and Info Panel Column  -->
-                        <ColumnDefinition Width="2*" />
-                        <!--  Description Column  -->
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Style="{DynamicResource Style.Panel.Description}">
-                        <!--  Description Panel  -->
-                        <TextBlock
+            <Grid Grid.Column="1" Panel.ZIndex="10">
+                <!--  Wrapper Grid For Views With Description and Info Panel  -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <!--  Views and Info Panel Column  -->
+                    <ColumnDefinition Width="2*" />
+                    <!--  Description Column  -->
+                </Grid.ColumnDefinitions>
+                <StackPanel Style="{DynamicResource Style.Panel.Description}">
+                    <!--  Description Panel  -->
+                    <TextBlock
                             Margin="5"
                             Style="{DynamicResource NormalText}"
                             Text="{Binding ElementName=Window, Path=Description}"
                             TextWrapping="Wrap" />
-                    </StackPanel>
+                </StackPanel>
 
-                    <Grid Grid.Column="0">
-                        <!--  Grid For Views Description and Info Panel  -->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <!--  Views Row  -->
-                            <RowDefinition Height="52" />
-                            <!--  Info Panel Row  -->
-                        </Grid.RowDefinitions>
-                        <views:ViewUwpApps Grid.Row="0" />
-                        <views:ViewTaskSheduler Grid.Row="0" />
-                        <views:ViewSystem Grid.Row="0" />
-                        <views:ViewStartMenu Grid.Row="0" />
-                        <views:ViewSecurity Grid.Row="0" />
-                        <views:ViewSearch Grid.Row="0"/>
-                        <views:ViewPrivacy Grid.Row="0" />
-                        <views:ViewPersonalization Grid.Row="0" />
-                        <views:ViewGames Grid.Row="0" />
-                        <views:ViewContextMenu Grid.Row="0" />
+                <Grid Grid.Column="0">
+                    <!--  Grid For Views Description and Info Panel  -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <!--  Views Row  -->
+                        <RowDefinition Height="52" />
+                        <!--  Info Panel Row  -->
+                    </Grid.RowDefinitions>
+                    <views:ViewUwpApps Grid.Row="0" />
+                    <views:ViewTaskSheduler Grid.Row="0" />
+                    <views:ViewSystem Grid.Row="0" />
+                    <views:ViewStartMenu Grid.Row="0" />
+                    <views:ViewSecurity Grid.Row="0" />
+                    <views:ViewSearch Grid.Row="0" />
+                    <views:ViewPrivacy Grid.Row="0" />
+                    <views:ViewPersonalization Grid.Row="0" />
+                    <views:ViewGames Grid.Row="0" />
+                    <views:ViewContextMenu Grid.Row="0" />
 
-                        <controls:LoadingPanel Grid.Row="1" />
-                        <controls:ChangesPanel Grid.Row="1" />
-                    </Grid>
+                    <controls:LoadingPanel Grid.Row="1" />
+                    <controls:ChangesPanel Grid.Row="1" />
                 </Grid>
             </Grid>
         </Grid>
-    </Border>
+    </Grid>
 </Window>

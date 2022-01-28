@@ -24,7 +24,7 @@
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
             <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Template">

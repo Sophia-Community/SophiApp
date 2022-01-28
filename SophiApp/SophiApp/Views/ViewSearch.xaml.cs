@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SophiApp.Views
 {
@@ -20,6 +9,10 @@ namespace SophiApp.Views
     /// </summary>
     public partial class ViewSearch : UserControl
     {
+        // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
+        public new static readonly DependencyProperty TagProperty =
+            DependencyProperty.Register("Tag", typeof(string), typeof(ViewSearch), new PropertyMetadata(default));
+
         public ViewSearch()
         {
             InitializeComponent();
@@ -31,10 +24,6 @@ namespace SophiApp.Views
             get { return (string)GetValue(TagProperty); }
             set { SetValue(TagProperty, value); }
         }
-
-        // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
-        public static new readonly DependencyProperty TagProperty =
-            DependencyProperty.Register("Tag", typeof(string), typeof(ViewSearch), new PropertyMetadata(default));
 
         private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)
         {

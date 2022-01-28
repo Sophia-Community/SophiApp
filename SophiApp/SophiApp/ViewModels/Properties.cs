@@ -13,12 +13,12 @@ namespace SophiApp.ViewModels
         private string buildName;
         private string conditionsHelperError;
         private List<Customisation> CustomActions;
-        private List<TextedElement> foundTextedElement;
-        private SearchState search;
         private bool debugMode;
+        private List<TextedElement> foundTextedElement;
         private bool hamburgerHitTest;
         private bool loadingPanelVisibility;
         private LocalizationsHelper localizationsHelper;
+        private SearchState search;
         private ThemesHelper themesHelper;
         private List<UwpElement> uwpElementsAllUsers;
         private List<UwpElement> uwpElementsCurrentUser;
@@ -26,26 +26,6 @@ namespace SophiApp.ViewModels
         private bool viewsHitTest;
         private string visibleViewByTag;
         private bool windowCloseHitTest;
-
-        public SearchState Search
-        { 
-            get => search; 
-            set
-            {
-                search = value;
-                OnPropertyChanged(SearchPropertyName);
-            }
-        }
-
-        public List<TextedElement> FoundTextedElement 
-        { 
-            get => foundTextedElement; 
-            private set
-            {
-                foundTextedElement = value;
-                OnPropertyChanged(FoundTextedElementPropertyName);
-            }
-        }
 
         public bool AdvancedSettingsVisibility
         {
@@ -71,6 +51,7 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
+
         public string BuildName { get => buildName; }
 
         public string ConditionsHelperError
@@ -93,6 +74,16 @@ namespace SophiApp.ViewModels
                 debugMode = value;
                 DebugHelper.DebugMode(value);
                 OnPropertyChanged(DebugModePropertyName);
+            }
+        }
+
+        public List<TextedElement> FoundTextedElement
+        {
+            get => foundTextedElement;
+            private set
+            {
+                foundTextedElement = value;
+                OnPropertyChanged(FoundTextedElementPropertyName);
             }
         }
 
@@ -127,6 +118,17 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> LocalizationList => localizationsHelper.GetNames();
+
+        public SearchState Search
+        {
+            get => search;
+            set
+            {
+                search = value;
+                OnPropertyChanged(SearchPropertyName);
+            }
+        }
+
         public List<TextedElement> TextedElements { get; private set; }
 
         public List<UwpElement> UwpElementsAllUsers
