@@ -83,9 +83,9 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
 * The app shows the `actual` state of every feature in the UI;
 * Has a built-in search engine;
-  * If you use the searching feature, it will locate the function you can change.
+  * If you use the searching feature, it will locate the function you can change. [GIF](#searching-feature)
 * Supports dark & light themes;
-  * The app can change its' theme instantly when you change your default Windows theme mode for apps. 
+  * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
 * Set up Privacy & Telemetry;
 * Turn off diagnostics tracking scheduled tasks;
 * Set up UI & Personalization;
