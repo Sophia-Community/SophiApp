@@ -47,16 +47,26 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## Screenshots [Helen]
 
-![Image](https://i.imgur.com/ixqsK7B.png)
-![Image](https://i.imgur.com/Z0Ytf4C.png)
-![Image](https://i.imgur.com/AgSAAhm.png)
-![Image](https://i.imgur.com/Dv9CSAE.png)
-![Image](https://i.imgur.com/KGieRa0.png)
-![Image](https://i.imgur.com/XyoScE7.png)
-![Image](https://i.imgur.com/aqDvcsd.png)
-![Image](https://i.imgur.com/HndU06Q.png)
-![Image](https://i.imgur.com/wFDNpzZ.png)
-![Image](https://i.imgur.com/jornXGR.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/7.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/8.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.png)
+
+## Searching feature
+
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/search.gif)
+
+## Instantly changing theme
+
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
 ## System Requirements
 
@@ -89,6 +99,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`
 * Configure the Windows security;
+* The ability to copy functions' description or header
 * Many more File Explorer and context menu "deep" tweaks.
 
 ##  Adendum
