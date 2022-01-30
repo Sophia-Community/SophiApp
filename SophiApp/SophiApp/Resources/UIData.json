@@ -2002,8 +2002,8 @@
       "RU": "Очистка Windows"
     },
     "Description": {
-      "EN": "Create the \"Windows Cleanup\" scheduled task for cleaning up Windows unused files and updates. A native interactive toast notification will pop-up every 30 days.",
-      "RU": "Создать задачу \"Windows Cleanup\" по очистке неиспользуемых файлов и обновлений Windows в Планировщике заданий. Нативный интерактивный тост всплывает каждые 30 дней"
+      "EN": "Create the \"Windows Cleanup\" scheduled task for cleaning up Windows unused files and updates under the SophiApp folder in the Task Scheduler. A native toast notification will be displayed where you can choose to snooze, run the cleanup task or dismiss",
+      "RU": "Создать задачу \"Windows Cleanup\" по очистке неиспользуемых файлов и обновлений Windows в Планировщике заданий в папке SophiApp в Планировщике заданий. Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить ли, запустить задание или отменить"
     },
     "Type": "IconWinCheckBox",
     "Tag": "TaskSheduler"
@@ -2011,12 +2011,12 @@
   {
     "Id": 701,
     "Header": {
-      "EN": "Сlean up the %SystemRoot%\\SoftwareDistribution\\Download folder",
-      "RU": "Очистка папки %SystemRoot%\\SoftwareDistribution\\Download"
+      "EN": "Сlean up the Windows Updates download folder",
+      "RU": "Очистка папки загрузки обновлений Windows"
     },
     "Description": {
-      "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up the %SystemRoot%\\SoftwareDistribution\\Download folder. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
-      "RU": "Создать задачу \"SoftwareDistribution\" по очистке папки %SystemRoot%\\SoftwareDistribution\\Download в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней"
+      "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up %SystemRoot%\\SoftwareDistribution\\Download under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
+      "RU": "Создать задание \"SoftwareDistribution\" по очистке %SystemRoot%\\SoftwareDistribution\\Download в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней"
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskSheduler"
@@ -2028,8 +2028,8 @@
       "RU": "Очистка папки %TEMP%"
     },
     "Description": {
-      "EN": "Create the \"Temp\" scheduled task for cleaning up the %TEMP% folder. Only files older than one day will be deleted. The task runs every 60 days.",
-      "RU": "Создать задачу \"Temp\" в Планировщике заданий по очистке папки %TEMP%. Удаляться будут только файлы старше одного дня. Задача выполняется каждые 60 дней"
+      "EN": "Create the \"Temp\" scheduled task for cleaning up the %TEMP% folder under the SophiApp folder in the Task Scheduler. Only files older than one day will be deleted. The task runs every 60 days.",
+      "RU": "Создать задание \"Temp\" по очистке папки %TEMP% в папке SophiApp в Планировщике заданий. Удаляться будут только файлы старше одного дня. Задача выполняется каждые 60 дней"
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskSheduler"
