@@ -36,7 +36,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 <p align="center">
 	&bull;
-	<a href="#screenshots">Screenshots</a>
+	<a href="#screenshots-helen">Screenshots</a>
 	&bull;
 	<a href="#core-features">Core features</a>
 	&bull;
