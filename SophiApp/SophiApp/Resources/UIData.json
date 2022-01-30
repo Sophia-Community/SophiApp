@@ -2024,8 +2024,8 @@
   {
     "Id": 702,
     "Header": {
-      "EN": "Сlean up the %TEMP% folder",
-      "RU": "Очистка папки %TEMP%"
+      "EN": "Clean up the temporary folder",
+      "RU": "Очистка папки временных файлов"
     },
     "Description": {
       "EN": "Create the \"Temp\" scheduled task for cleaning up the %TEMP% folder under the SophiApp folder in the Task Scheduler. Only files older than one day will be deleted. The task runs every 60 days.",
