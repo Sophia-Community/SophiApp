@@ -45,29 +45,6 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ***
 
-## Screenshots [Helen]
-
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/7.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/8.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.png)
-
-## Searching feature
-
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/search.gif)
-
-## Instantly changing theme
-
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
-
 ## System Requirements
 
 * Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` for now. Requires the `1151` build and higher. Windows 11 is in the works;
@@ -103,6 +80,29 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 * Configure the Windows security;
 * The ability to copy functions' description or header
 * Many more File Explorer and context menu "deep" tweaks.
+
+## Screenshots [Helen]
+
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/7.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/8.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.png)
+
+## Searching feature
+
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/search.gif)
+
+## Instantly changing theme
+
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
 ##  Adendum
 
