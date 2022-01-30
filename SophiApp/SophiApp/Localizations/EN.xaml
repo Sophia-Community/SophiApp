@@ -5,7 +5,7 @@
 
     <system:String x:Key="Conditions.IsSingleSession.Login">To be able to run SophiApp, you must be the only logged-on account with admin rights.</system:String>
     <system:String x:Key="Conditions.IsSingleSession.Logoff">Please log off other running open sessions and try again.</system:String>
-    <system:String x:Key="Conditions.LoggedUserAdmin">The current logged in user does not have admi rights.</system:String>
+    <system:String x:Key="Conditions.LoggedUserAdmin">The current logged in user does not have admin rights.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Please download new version with bug fixes from the official GitHub page.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version was found online.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Download a new version</system:String>
