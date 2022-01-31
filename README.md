@@ -95,7 +95,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.gif)
 
 ## Searching feature
 
