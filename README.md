@@ -56,6 +56,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ## Core features
 
+* Pure C# + WPF; 
 * All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
 * The app shows the `actual` state of every feature in the UI;
@@ -74,7 +75,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 * Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats;
 * Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates;
   * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-windows-cleanup-scheduled-task)
-* Create tasks in the Task Scheduler to clear
+* Create tasks in the Task Scheduler to clean
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`
 * Configure the Windows security;
@@ -112,7 +113,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ## Translating
 
-* Feel free to translate the UI into your language by translating the [JSON](https://github.com/Sophia-Community/SophiApp/blob/master/SophiApp/SophiApp/Resources/UIData.json) and creating a [.xml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
+* Feel free to translate the UI into your language by translating the [JSON](https://github.com/Sophia-Community/SophiApp/blob/master/SophiApp/SophiApp/Resources/UIData.json) and creating an [.xml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
 
 ## The 3rd party libraries used
 
