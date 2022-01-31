@@ -9,7 +9,7 @@
     <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Please download new version with bug fixes from the official GitHub page.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version was found online.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Download a new version</system:String>
-    <system:String x:Key="Conditions.OnlyOneRun">Please do not run multiple copies of SophiApp at the same time.</system:String>
+    <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Your Windows isn't compatible with SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">Supported OS: Windows 10 2004/20H2/21H1/21H2.</system:String>
@@ -21,6 +21,8 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex's Windows10Debloater PowerShell script.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows Update</system:String>
+    <system:String x:Key="Localization.About.MadeWith">Made with</system:String>
+    <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
@@ -62,7 +64,6 @@
     <system:String x:Key="Localization.Settings.Themes.Light">Light</system:String>
     <system:String x:Key="Localization.Settings.Updates">Updates</system:String>
     <system:String x:Key="Localization.Settings.UpdateVersion">Check for updates</system:String>
-    <system:String x:Key="Localization.Settings.Version">Version</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleans up the "%SystemRoot%\SoftwareDistribution\Download" folder.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.StartMenu">Start Menu</system:String>

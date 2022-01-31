@@ -6,15 +6,14 @@ namespace SophiApp.Conditions
 {
     internal class OsBuildVersion : ICondition
     {
-        private const uint MAX_SUPPORT_BUILD = 19044;
-        private const uint MIN_SUPPORT_BUILD = 19041;
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionOsBuildVersion;
 
         public bool Invoke()
         {
             var build = OsHelper.GetBuild();
-            return Result = build >= MIN_SUPPORT_BUILD && build <= MAX_SUPPORT_BUILD;
+            return Result = build >= OsHelper.WIN10_MIN_SUPPORT_BUILD && build <= OsHelper.WIN10_MAX_SUPPORT_BUILD;
         }
+
     }
 }

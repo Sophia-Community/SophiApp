@@ -6,7 +6,7 @@
     <system:String x:Key="Tags.Conditions.IsSingleSession">IsSingleSession</system:String>
     <system:String x:Key="Tags.Conditions.LoggedUserAdmin">LoggedUserAdmin</system:String>
     <system:String x:Key="Tags.Conditions.NoNewVersion">NoNewVersion</system:String>
-    <system:String x:Key="Tags.Conditions.OnlyOneRun">OnlyOneRun</system:String>
+    <system:String x:Key="Tags.Conditions.OneInstanceOnly">OneInstanceOnly</system:String>
     <system:String x:Key="Tags.Conditions.OsBuildVersion">OsBuildVersion</system:String>
     <system:String x:Key="Tags.Conditions.OsNotInfected">OsNotInfected</system:String>
     <system:String x:Key="Tags.Conditions.SomethingWrong">SomethingWrong</system:String>

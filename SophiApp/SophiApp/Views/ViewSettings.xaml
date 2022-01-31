@@ -51,8 +51,6 @@
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <!--  View header row  -->
-                        <RowDefinition Height="10" />
                         <!--  View UI content row  -->
                         <RowDefinition Height="*" />
                         <!--  View UI content indent row  -->
@@ -60,26 +58,33 @@
                     </Grid.RowDefinitions>
                     <ScrollViewer
                         x:Name="ScrollViewerSettings"
-                        Grid.Row="1"
+                        Grid.Row="0"
+                        Margin="0, 3, 0, 0"
                         Style="{DynamicResource ViewScrollStyle}">
                         <StackPanel>
-                            <controls:GitHubHyperLink
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
-
                             <StackPanel Style="{StaticResource PanelContainer}">
-                                <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.Settings.Version}" />
+                                <TextBlock Style="{DynamicResource NormalText}" Text="{x:Static helpers:AppHelper.AppName}" />
                                 <TextBlock Style="{DynamicResource NormalText}">
                                     <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}: {0} [ {1} ]">
+                                        <MultiBinding StringFormat="{} {0} [{1}]">
                                             <Binding Path="Version" />
                                             <Binding Path="BuildName" />
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
                             </StackPanel>
+
+                            <StackPanel Style="{StaticResource PanelContainer}">                                
+                                <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.About.MadeWith}"/>
+                                <controls:Heart Width="20" Height="20" Margin="7, 2, 7, 0"/>
+                                <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.About.OfWindows}"/>
+                            </StackPanel>
+
+                            <controls:GitHubHyperLink
+                                Margin="{StaticResource BlockIndent}"
+                                HorizontalAlignment="Left"
+                                Command="{Binding HyperLinkClickedCommand}"
+                                CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />                            
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
@@ -177,12 +182,7 @@
                                 CommandParameter="{x:Static helpers:AppHelper.LogotypeCreatorLink}"
                                 Icon="{DynamicResource Icon.LinkedIn}"
                                 IconMargin="10, 0, 0, 6"
-                                Role="{DynamicResource Localization.Settings.Logotype}" />
-
-                            <controls:Heart Width="20" 
-                                            Height="20"
-                                            Margin="{StaticResource BlockIndent}"
-                                            HorizontalAlignment="Left"/>
+                                Role="{DynamicResource Localization.Settings.Logotype}" />                            
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

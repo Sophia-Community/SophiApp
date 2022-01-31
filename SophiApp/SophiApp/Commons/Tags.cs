@@ -7,7 +7,7 @@ namespace SophiApp.Commons
         internal static readonly string ConditionIsSingleSession = Application.Current.FindResource("Tags.Conditions.IsSingleSession") as string;
         internal static readonly string ConditionLoggedUserAdmin = Application.Current.FindResource("Tags.Conditions.LoggedUserAdmin") as string;
         internal static readonly string ConditionNoNewVersion = Application.Current.FindResource("Tags.Conditions.NoNewVersion") as string;
-        internal static readonly string ConditionOnlyOneRun = Application.Current.FindResource("Tags.Conditions.OnlyOneRun") as string;
+        internal static readonly string ConditionOneInstanceOnly = Application.Current.FindResource("Tags.Conditions.OneInstanceOnly") as string;
         internal static readonly string ConditionOsBuildVersion = Application.Current.FindResource("Tags.Conditions.OsBuildVersion") as string;
         internal static readonly string ConditionOsNotInfected = Application.Current.FindResource("Tags.Conditions.OsNotInfected") as string;
         internal static readonly string ConditionSomethingWrong = Application.Current.FindResource("Tags.Conditions.SomethingWrong") as string;

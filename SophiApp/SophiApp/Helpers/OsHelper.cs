@@ -11,28 +11,32 @@ namespace SophiApp.Helpers
 {
     internal class OsHelper
     {
+        internal const uint WIN10_MIN_SUPPORT_BUILD = 19041;
+        internal const uint WIN10_MAX_SUPPORT_BUILD = 19044;
+        internal const uint WIN11_MIN_SUPPORT_BUILD = 22000;
+
+        private const byte DISABLED_VALUE = 0;
+        private const byte ENABLED_VALUE = 1;
+        private const int Msg = 273;
+        private const int SMTO_ABORTIFHUNG = 0x0002;
+        private const int TIMEOUT_3_SECONDS = 3000;
+        private const int WM_SETTINGCHANGE = 0x1a;
         private const string AUTORESTART_SHELL = "AutoRestartShell";
         private const string CURRENT_BUILD = "CurrentBuild";
         private const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
-        private const byte DISABLED_VALUE = 0;
         private const string DISPLAY_VERSION_NAME = "DisplayVersion";
         private const string EDITION_ID_NAME = "EditionID";
-        private const byte ENABLED_VALUE = 1;
         private const string EXPLORER = "explorer";
         private const string MAJOR_VERSION_NUMBER = "CurrentMajorVersionNumber";
         private const string MINOR_VERSION_NUMBER = "CurrentMinorVersionNumber";
-        private const int Msg = 273;
         private const string PRODUCT_NAME = "ProductName";
         private const string REGISTRED_ORGANIZATION_NAME = "RegisteredOrganization";
         private const string REGISTRED_OWNER_NAME = "RegisteredOwner";
         private const string REGSVR_32 = "regsvr32.exe";
-        private const int SMTO_ABORTIFHUNG = 0x0002;
         private const string START_MENU_PROCESS = "StartMenuExperienceHost";
-        private const int TIMEOUT_3_SECONDS = 3000;
         private const string TRAY_SETTINGS = "TraySettings";
         private const string UBR = "UBR";
         private const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
-        private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
         private static readonly string REGISTRY_CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
@@ -54,6 +58,8 @@ namespace SophiApp.Helpers
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
 
+        private static bool IsWindows11() => GetBuild() >= WIN11_MIN_SUPPORT_BUILD;
+
         internal static ushort GetBuild() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, CURRENT_BUILD).ToUshort();
 
         internal static string GetCurrentCultureName() => CultureInfo.CurrentCulture.EnglishName;
@@ -64,7 +70,11 @@ namespace SophiApp.Helpers
 
         internal static string GetEdition() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: EDITION_ID_NAME) as string;
 
-        internal static string GetProductName() => RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: PRODUCT_NAME) as string;
+        internal static string GetProductName()
+        {
+            var productName = RegHelper.GetValue(hive: RegistryHive.LocalMachine, path: CURRENT_VERSION, name: PRODUCT_NAME) as string;
+            return IsWindows11() ? productName.Replace("0", "1") : productName;
+        }
 
         internal static string GetRegionName() => RegionInfo.CurrentRegion.EnglishName;
 

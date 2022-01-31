@@ -1,4 +1,5 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -87,5 +88,9 @@ namespace SophiApp.Controls
         private void SimpleCheckBox_MouseLeave(object sender, MouseEventArgs e) => RaiseEvent(new RoutedEventArgs(MouseLeaveEvent));
 
         private void SimpleCheckBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(null);
+
+        private void ContextMenu_DescriptionCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Description);
+
+        private void ContextMenu_HeaderCopyClick(object sender, RoutedEventArgs e) => ClipboardHelper.CopyText(Header);
     }
 }

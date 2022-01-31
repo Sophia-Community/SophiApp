@@ -44,6 +44,12 @@
                     <ColumnDefinition Width="40" />
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                        <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
+                    </ContextMenu>
+                </Grid.ContextMenu>
                 <TextBlock
                     x:Name="TextBlockHeader"
                     HorizontalAlignment="Left"

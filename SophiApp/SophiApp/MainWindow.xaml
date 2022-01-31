@@ -241,10 +241,10 @@
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
-            <views:ViewConditionsTemplate x:Name="ViewConditionsOnlyOneRun" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OnlyOneRun}">
+            <views:ViewConditionsTemplate x:Name="ViewConditionsOneInstanceOnly" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.OneInstanceOnly}">
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
-                        <TextBlock Text="{DynamicResource Conditions.OnlyOneRun}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" />
+                        <TextBlock Text="{DynamicResource Conditions.OneInstanceOnly}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
