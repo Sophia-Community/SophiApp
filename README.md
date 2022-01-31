@@ -109,7 +109,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 * You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
   * The hidden functions will marked with a gear in UI;
-* After closing the SophiApp, it creates a log file that you can attach to an open issue to help us understands the bug. The log file doesn't contain any sensitive personal information.
+* After closing SophiApp, it creates a log file that you can attach to an open issue (or send to the [Telegram] group(https://t.me/sophia_chat)) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
 
 ## Translating
 
