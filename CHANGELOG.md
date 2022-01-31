@@ -24,7 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   * Closed #23.
 * Add the ability to maximize window;
   * Closed #24.
-* Window title bar now displays the app version.
+* Window title bar now displays the app version;
+* Minor UI changes;
+* Minor bug fixed.
 
 ## 1.0.0.0 beta 1 — 30.12.2021
 
