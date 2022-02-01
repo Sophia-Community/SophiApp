@@ -23,6 +23,8 @@
 
 Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/>
 
+<a href="https://www.comss.ru/page.php?id=9679"><img src="https://cdn.comss.net/img/logo51.png" width=77px height=77px></a>
+<a href="https://www.majorgeeks.com/files/details/sophiapp.html"><img src="https://www.majorgeeks.com/images/logos/majorgeeks.gif" width=77px height=75px></a>
 
 <a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
