@@ -95,23 +95,6 @@ namespace SophiApp.Helpers
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
-        internal static void SafelyRestartExplorerProcess()
-        {
-            // Save opened folders
-            var openedFolders = ComObjectHelper.GetOpenedFolders().ToList();
-            // Terminate the File Explorer process
-            RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, DISABLED_VALUE, RegistryValueKind.DWord);
-            ProcessHelper.Stop(EXPLORER);
-            Thread.Sleep(TIMEOUT_3_SECONDS);
-            RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, ENABLED_VALUE, RegistryValueKind.DWord);
-            // Start the File Explorer process
-            ProcessHelper.StartWait(EXPLORER);
-            Thread.Sleep(TIMEOUT_3_SECONDS);
-            // Restoring closed folders
-            ProcessHelper.StartWait(EXPLORER, openedFolders, ProcessWindowStyle.Minimized);
-            Thread.Sleep(TIMEOUT_3_SECONDS);
-        }
-
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
         {
             // RecommendedTroubleshooting

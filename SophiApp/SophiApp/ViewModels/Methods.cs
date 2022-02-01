@@ -63,7 +63,6 @@ namespace SophiApp.ViewModels
                 DismHelper.GetInstance().GetInstalledComponents();
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
-                OsHelper.SafelyRestartExplorerProcess();
                 SetLoadingPanelVisibility();
                 SetControlsHitTest();
                 SetVisibleViewTag(Tags.ViewPrivacy);
