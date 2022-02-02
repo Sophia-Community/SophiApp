@@ -8,42 +8,51 @@ namespace SophiApp.Helpers
 {
     internal class DismHelper
     {
-        private static readonly object locked = new object();
-        private static List<DismCapability> Capabilites;
-        private static List<DismFeature> Features;
-        private static DismHelper instance;
-
-        private DismHelper()
-        {
-            GetInstalledComponents();
-        }
-
         internal static bool CapabilityIsInstalled(string name)
         {
-            var index = Capabilites.FindIndex(c => c.Name == name);
-            return Capabilites[index].State == DismPackageFeatureState.Installed;
+            var result = default(bool);
+            DismApi.Initialize(DismLogLevel.LogErrors);
+            var session = DismApi.OpenOnlineSession();
+
+            try
+            {
+                var capability = DismApi.GetCapabilityInfo(session, name);
+                result = capability.State == DismPackageFeatureState.Installed || capability.State == DismPackageFeatureState.InstallPending;
+            }
+            catch (DismRebootRequiredException)
+            {
+            }
+            finally
+            {
+                session.Close();
+                DismApi.Shutdown();
+            }
+
+            return result;
         }
 
         internal static bool FeatureIsInstalled(string name)
         {
-            var index = Features.FindIndex(f => f.FeatureName == name);
-            return Features[index].State == DismPackageFeatureState.Installed || Features[index].State == DismPackageFeatureState.InstallPending;
-        }
+            var result = default(bool);
+            DismApi.Initialize(DismLogLevel.LogErrors);
+            var session = DismApi.OpenOnlineSession();
 
-        internal static DismHelper GetInstance()
-        {
-            if (instance == null)
+            try
             {
-                lock (locked)
-                {
-                    if (instance == null)
-                        instance = new DismHelper();
-                }
+                var feature = DismApi.GetFeatureInfo(session, name);
+                result = feature.FeatureState == DismPackageFeatureState.Installed || feature.FeatureState == DismPackageFeatureState.InstallPending;
             }
-            return instance;
-        }
+            catch (DismRebootRequiredException)
+            {
+            }
+            finally
+            {
+                session.Close();
+                DismApi.Shutdown();
+            }
 
-        internal static async Task<DismHelper> GetInstanceAsync() => await Task.Run(() => GetInstance());
+            return result;
+        }        
 
         internal static void SetCapabilityState(string name, bool enable)
         {
@@ -97,20 +106,5 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal void GetInstalledComponents()
-        {
-            DebugHelper.StartInitDismInstalledComponents();
-            var stopwatch = Stopwatch.StartNew();
-
-            DismApi.Initialize(DismLogLevel.LogErrors);
-            var session = DismApi.OpenOnlineSession();
-            Capabilites = DismApi.GetCapabilities(session).ToList();
-            Features = DismApi.GetFeatures(session).ToList();
-            session.Close();
-            DismApi.Shutdown();
-
-            stopwatch.Stop();
-            DebugHelper.StopInitDismInstalledComponents(stopwatch.Elapsed.TotalSeconds);
-        }
     }
 }

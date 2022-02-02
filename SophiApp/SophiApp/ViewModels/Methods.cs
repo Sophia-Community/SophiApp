@@ -60,7 +60,6 @@ namespace SophiApp.ViewModels
                               .ToList()
                               .ForEach(element => element.GetCustomisationStatus());
                 GetUwpElements();
-                DismHelper.GetInstance().GetInstalledComponents();
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
                 SetLoadingPanelVisibility();
@@ -270,7 +269,6 @@ namespace SophiApp.ViewModels
             {
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsCounterPropertyName);
-                DismHelper.GetInstance().GetInstalledComponents();
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
                 GetUwpElements();
             });
@@ -407,7 +405,6 @@ namespace SophiApp.ViewModels
             {
                 SetTaskbarItemInfoProgress();
                 MouseHelper.ShowWaitCursor(show: true);
-                _ = await DismHelper.GetInstanceAsync();
                 await InitializeTextedElementsAsync();
                 await InitializeUwpElementsAsync();
                 await InitializeWatchersAsync();

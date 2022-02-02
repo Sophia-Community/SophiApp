@@ -1265,204 +1265,6 @@
     "Tag": "System"
   },
   {
-    "Id": 318,
-    "Header": {
-      "EN": "Windows Features",
-      "RU": "Компоненты Windows"
-    },
-    "Description": {
-      "EN": "",
-      "RU": ""
-    },
-    "Type": "ExpandingGroup",
-    "Tag": "System",
-    "ChildElements": [
-      {
-        "Id": 319,
-        "ChildHeader": {
-          "EN": "Legacy Components",
-          "RU": "Компоненты прежних версий"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 320,
-        "ChildHeader": {
-          "EN": "Windows PowerShell 2.0",
-          "RU": "Windows PowerShell 2.0"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 321,
-        "ChildHeader": {
-          "EN": "Windows PowerShell 2.0 Engine",
-          "RU": "Обработчик Windows PowerShell 2.0"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 322,
-        "ChildHeader": {
-          "EN": "Microsoft XPS Document Writer",
-          "RU": "Средство записи XPS-документов (Microsoft)"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 323,
-        "ChildHeader": {
-          "EN": "Work Folders Client",
-          "RU": "Клиент рабочих папок"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 324,
-        "ChildHeader": {
-          "EN": "Media Features",
-          "RU": "Компоненты работы с мультимедиа"
-        },
-        "ChildDescription": {
-          "EN": "If you want to keep \"Multimedia settings\" in the advanced settings of Power Options do not disable this feature.",
-          "RU": "Если вы хотите оставить параметр \"Параметры мультимедиа\" в дополнительных параметрах электропитания, не отключайте этот компонент"
-        },
-        "Type": "CheckBox"
-      }
-    ]
-  },
-  {
-    "Id": 325,
-    "Header": {
-      "EN": "Optional features",
-      "RU": "Дополнительные компоненты"
-    },
-    "Description": {
-      "EN": "",
-      "RU": ""
-    },
-    "Type": "ExpandingGroup",
-    "Tag": "System",
-    "ChildElements": [
-      {
-        "Id": 326,
-        "ChildHeader": {
-          "EN": "Steps Recorder",
-          "RU": "Средство записи действий"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 327,
-        "ChildHeader": {
-          "EN": "Microsoft Quick Assist",
-          "RU": "Быстрая поддержка (Майкрософт)"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 328,
-        "ChildHeader": {
-          "EN": "Microsoft Paint",
-          "RU": "Microsoft Paint"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 329,
-        "ChildHeader": {
-          "EN": "WordPad",
-          "RU": "WordPad"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 330,
-        "ChildHeader": {
-          "EN": "Internet Explorer 11",
-          "RU": "Internet Explorer 11"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 331,
-        "ChildHeader": {
-          "EN": "Math Recognizer",
-          "RU": "Распознаватель математических знаков"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 332,
-        "ChildHeader": {
-          "EN": "Windows Media Player",
-          "RU": "Проигрыватель Windows Media"
-        },
-        "ChildDescription": {
-          "EN": "If you want to keep \"Multimedia settings\" in the advanced settings of Power Options do not uninstall this feature.",
-          "RU": "Если вы хотите оставить параметр \"Параметры мультимедиа\" в дополнительных параметрах электропитания, не удаляйте этот компонент"
-        },
-        "Type": "CheckBox"
-      },
-      {
-        "Id": 333,
-        "ChildHeader": {
-          "EN": "OpenSSH Client",
-          "RU": "Клиент OpenSSH"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": ""
-        },
-        "Type": "CheckBox"
-      }
-    ]
-  },
-  {
     "Id": 334,
     "Header": {
       "EN": "Receive updates for other Microsoft products",
@@ -2188,6 +1990,19 @@
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
     },
     "Type": "CheckBox",
+    "Tag": "Security"
+  },
+  {
+    "Id": 812,
+    "Header": {
+      "EN": "Enable Windows PowerShell 2.0 Engine",
+      "RU": "Включить обработчик Windows PowerShell 2.0"
+    },
+    "Description": {
+      "EN": "",
+      "RU": ""
+    },
+    "Type": "AdvancedSwitch",
     "Tag": "Security"
   },
   {

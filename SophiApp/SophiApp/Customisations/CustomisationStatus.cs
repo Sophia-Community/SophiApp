@@ -282,34 +282,6 @@ namespace SophiApp.Customisations
         public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
                                               .HasNullOrValue(_317_ENABLED_VALUE);
 
-        public static bool _319() => DismHelper.FeatureIsInstalled(_319_LEGACY_COMPONENTS_FEATURE);
-
-        public static bool _320() => DismHelper.FeatureIsInstalled(_320_POWERSHELL_V2_FEATURE);
-
-        public static bool _321() => DismHelper.FeatureIsInstalled(_321_POWERSHELL_V2_ROOT_FEATURE);
-
-        public static bool _322() => DismHelper.FeatureIsInstalled(_322_XPS_SERVICES_FEATURE);
-
-        public static bool _323() => DismHelper.FeatureIsInstalled(_323_WORK_FOLDERS_FEATURE);
-
-        public static bool _324() => DismHelper.FeatureIsInstalled(_324_MEDIA_PLAYBACK_FEATURE);
-
-        public static bool _326() => DismHelper.CapabilityIsInstalled(_326_STEPS_RECORDER_CAPABILITY);
-
-        public static bool _327() => DismHelper.CapabilityIsInstalled(_327_QUICK_SUPPORT_CAPABILITY);
-
-        public static bool _328() => DismHelper.CapabilityIsInstalled(_328_MS_PAINT_CAPABILITY);
-
-        public static bool _329() => DismHelper.CapabilityIsInstalled(_329_MS_WORDPAD_CAPABILITY);
-
-        public static bool _330() => DismHelper.CapabilityIsInstalled(_330_INTERNET_EXPLORER_CAPABILITY);
-
-        public static bool _331() => DismHelper.CapabilityIsInstalled(_331_MATH_RECOGNIZER_CAPABILITY);
-
-        public static bool _332() => DismHelper.CapabilityIsInstalled(_332_MEDIA_PLAYER_CAPABILITY);
-
-        public static bool _333() => DismHelper.CapabilityIsInstalled(_333_OPENSSH_CLIENT_CAPABILITY);
-
         public static bool _334()
         {
             var result = false;
@@ -484,6 +456,8 @@ namespace SophiApp.Customisations
                                         ? DismHelper.FeatureIsInstalled(_811_WINDOWS_SANDBOX_FEATURE)
                                         : throw new VitualizationNotSupportedException()
                                      : throw new WindowsEditionNotSupportedException();
+
+        public static bool _812() => DismHelper.FeatureIsInstalled(_812_POWERSHELL_V2_ROOT_FEATURE);
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 

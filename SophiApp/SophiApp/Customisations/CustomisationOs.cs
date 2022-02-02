@@ -622,34 +622,6 @@ namespace SophiApp.Customisations
                                                                                          : _317_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _319(bool IsChecked) => DismHelper.SetFeatureState(_319_LEGACY_COMPONENTS_FEATURE, IsChecked);
-
-        public static void _320(bool IsChecked) => DismHelper.SetFeatureState(_320_POWERSHELL_V2_FEATURE, IsChecked);
-
-        public static void _321(bool IsChecked) => DismHelper.SetFeatureState(_321_POWERSHELL_V2_ROOT_FEATURE, IsChecked);
-
-        public static void _322(bool IsChecked) => DismHelper.SetFeatureState(_322_XPS_SERVICES_FEATURE, IsChecked);
-
-        public static void _323(bool IsChecked) => DismHelper.SetFeatureState(_323_WORK_FOLDERS_FEATURE, IsChecked);
-
-        public static void _324(bool IsChecked) => DismHelper.SetFeatureState(_324_MEDIA_PLAYBACK_FEATURE, IsChecked);
-
-        public static void _326(bool IsChecked) => DismHelper.SetCapabilityState(_326_STEPS_RECORDER_CAPABILITY, IsChecked);
-
-        public static void _327(bool IsChecked) => DismHelper.SetCapabilityState(_327_QUICK_SUPPORT_CAPABILITY, IsChecked);
-
-        public static void _328(bool IsChecked) => DismHelper.SetCapabilityState(_328_MS_PAINT_CAPABILITY, IsChecked);
-
-        public static void _329(bool IsChecked) => DismHelper.SetCapabilityState(_329_MS_WORDPAD_CAPABILITY, IsChecked);
-
-        public static void _330(bool IsChecked) => DismHelper.SetCapabilityState(_330_INTERNET_EXPLORER_CAPABILITY, IsChecked);
-
-        public static void _331(bool IsChecked) => DismHelper.SetCapabilityState(_331_MATH_RECOGNIZER_CAPABILITY, IsChecked);
-
-        public static void _332(bool IsChecked) => DismHelper.SetCapabilityState(_332_MEDIA_PLAYER_CAPABILITY, IsChecked);
-
-        public static void _333(bool IsChecked) => DismHelper.SetCapabilityState(_333_OPENSSH_CLIENT_CAPABILITY, IsChecked);
-
         public static void _334(bool IsChecked)
         {
             var updateManager = ComObjectHelper.CreateFromProgID(_334_UPDATE_SERVICE_MANAGER);
@@ -1072,6 +1044,8 @@ namespace SophiApp.Customisations
         }
 
         public static void _811(bool IsChecked) => DismHelper.SetFeatureState(_811_WINDOWS_SANDBOX_FEATURE, IsChecked);
+
+        public static void _812(bool IsChecked) => DismHelper.SetFeatureState(_812_POWERSHELL_V2_ROOT_FEATURE, IsChecked);
 
         public static void _900(bool IsChecked)
         {
