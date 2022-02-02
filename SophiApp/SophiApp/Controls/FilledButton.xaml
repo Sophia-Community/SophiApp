@@ -22,9 +22,9 @@
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <!--<Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
-            <Setter Property="BorderBrush" Value="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="BorderBrush" Value="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}" />-->
             <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
@@ -54,8 +54,8 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="MinWidth" Value="126" />
             <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Button.Foreground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -67,15 +67,18 @@
             </Button>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Status}" Value="CHECKED">
-                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                    <Setter TargetName="ButtonTemplate" Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
+                    <Setter TargetName="ButtonTemplate" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                    <Setter TargetName="ButtonTemplate" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Status}" Value="UNCHECKED">
-                    <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+                    <Setter TargetName="ButtonTemplate" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="ButtonTemplate" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Status}" Value="DISABLED">
-                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
-                    <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Light}" />
+                    <Setter TargetName="ButtonTemplate" Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
+                    <Setter TargetName="ButtonTemplate" Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
+                    <Setter TargetName="ButtonTemplate" Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Light}" />
                     <Setter TargetName="ButtonTemplate" Property="IsEnabled" Value="False" />
                 </DataTrigger>
                 <EventTrigger RoutedEvent="Button.Click">
