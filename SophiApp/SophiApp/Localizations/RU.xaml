@@ -28,7 +28,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
-    <system:String x:Key="Localization.Customizations.RestartNecessary">После применения настроек, пожалуйста, перезагрузите ПК</system:String>
+    <system:String x:Key="Localization.Customizations.RestartNecessary">Пожалуйста, перезагрузитесь после применения настроек</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Description">События создания нового процесса и аудит командной строки</system:String>
