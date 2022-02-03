@@ -1,5 +1,7 @@
 ﻿using SophiApp.Commons;
+using SophiApp.Customisations;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
@@ -12,7 +14,7 @@ namespace SophiApp.Converters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             var localization = values[0] as Localization;
-            var counter = System.Convert.ToString(values[1]).ToCharArray();
+            var counter = System.Convert.ToString((values[1] as List<Customisation>).Count).ToCharArray();
             var word = values[2] as string;
 
             if (localization.Language == UILanguage.RU)

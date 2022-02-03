@@ -332,8 +332,10 @@
                     <views:ViewGames Grid.Row="0" />
                     <views:ViewContextMenu Grid.Row="0" />
 
-                    <controls:LoadingPanel Grid.Row="1" />
                     <controls:ChangesPanel Grid.Row="1" />
+                    <controls:LoadingPanel Grid.Row="1" />
+                    <controls:RestartPanel Grid.Row="1"/>
+
                 </Grid>
             </Grid>
         </Grid>

@@ -32,7 +32,7 @@ namespace SophiApp.ViewModels
                 DebugHelper.StartApplyingSettings(CustomActions.Count);
                 var totalStopWatch = Stopwatch.StartNew();
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
-                SetLoadingPanelVisibility();
+                SetInfoPanelVisibility(InfoPanelVisibility.Loading);
 
                 CustomActions.ForEach(action =>
                 {
@@ -55,14 +55,14 @@ namespace SophiApp.ViewModels
                 });
 
                 CustomActions.Clear();
-                OnPropertyChanged(CustomActionsCounterPropertyName);
+                OnPropertyChanged(CustomActionsPropertyName);
                 TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
                               .ToList()
                               .ForEach(element => element.GetCustomisationStatus());
                 GetUwpElements();
                 OsHelper.PostMessage();
                 OsHelper.RefreshEnvironment();
-                SetLoadingPanelVisibility();
+                SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
                 SetControlsHitTest();
                 SetVisibleViewTag(Tags.ViewPrivacy);
                 totalStopWatch.Stop();
@@ -155,13 +155,13 @@ namespace SophiApp.ViewModels
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
             DebugMode = true;
-            buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;
-            LoadingPanelVisibility = false;
+            buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;            
             HamburgerHitTest = false;
             ViewsHitTest = true;
             WindowCloseHitTest = true;
             AdvancedSettingsVisibility = false;
             VisibleViewByTag = Tags.ViewLoading;
+            InfoPanelVisibility = InfoPanelVisibility.HideAll;
             CustomActions = new List<Customisation>();
             FoundTextedElement = new List<TextedElement>();
             Search = SearchState.Stopped;
@@ -169,6 +169,8 @@ namespace SophiApp.ViewModels
             DebugHelper.AppLanguage($"{ Localization.Language }");
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
+
+        private void SetInfoPanelVisibility(InfoPanelVisibility visibility) => InfoPanelVisibility = visibility;
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -264,15 +266,17 @@ namespace SophiApp.ViewModels
             DebugHelper.StartResetTextedElements();
             var stopwatch = Stopwatch.StartNew();
             SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
-            SetLoadingPanelVisibility();
+            SetInfoPanelVisibility(InfoPanelVisibility.Loading);
+
             await Task.Run(() =>
             {
                 CustomActions.Clear();
-                OnPropertyChanged(CustomActionsCounterPropertyName);
+                OnPropertyChanged(CustomActionsPropertyName);
                 TextedElements.ForEach(element => element.GetCustomisationStatus());
                 GetUwpElements();
             });
-            SetLoadingPanelVisibility();
+
+            SetInfoPanelVisibility(InfoPanelVisibility.HideAll);
             SetControlsHitTest();
             SetVisibleViewTag(Tags.ViewPrivacy);
             stopwatch.Stop();
@@ -323,50 +327,52 @@ namespace SophiApp.ViewModels
 
         private void SetCustomAction(UwpElement uwp)
         {
+            SetInfoPanelVisibility(InfoPanelVisibility.HideAll);
             if (CustomActions.ContainsId(uwp.PackageFullName))
             {
                 CustomActions.RemoveAction(uwp.PackageFullName);
-                OnPropertyChanged(CustomActionsCounterPropertyName);
+                OnPropertyChanged(CustomActionsPropertyName);
                 return;
             }
 
             CustomActions.AddAction(uwp.PackageFullName, UwpHelper.RemovePackage, UwpForAllUsersState == ElementStatus.CHECKED);
-            OnPropertyChanged(CustomActionsCounterPropertyName);
+            OnPropertyChanged(CustomActionsPropertyName);
         }
 
         private void SetCustomAction(RadioGroup group)
         {
+            SetInfoPanelVisibility(InfoPanelVisibility.HideAll);
             group.ChildElements.ForEach(child =>
             {
                 if (CustomActions.ContainsId(child.Id))
                 {
                     CustomActions.RemoveAction(child.Id);
-                    OnPropertyChanged(CustomActionsCounterPropertyName);
+                    OnPropertyChanged(CustomActionsPropertyName);
                     return;
                 }
 
                 if (child.Status == ElementStatus.CHECKED && child.Id != group.DefaultId)
                 {
                     CustomActions.AddAction(child.Id, CustomisationsHelper.GetCustomisationOs(child.Id), true);
-                    OnPropertyChanged(CustomActionsCounterPropertyName);
+                    OnPropertyChanged(CustomActionsPropertyName);
                 }
             });
         }
 
         private void SetCustomAction(TextedElement element)
         {
+            SetInfoPanelVisibility(InfoPanelVisibility.HideAll);
+
             if (CustomActions.ContainsId(element.Id))
             {
                 CustomActions.RemoveAction(element.Id);
-                OnPropertyChanged(CustomActionsCounterPropertyName);
+                OnPropertyChanged(CustomActionsPropertyName);
                 return;
             }
 
             CustomActions.AddAction(element.Id, CustomisationsHelper.GetCustomisationOs(element.Id), element.Status == ElementStatus.CHECKED);
-            OnPropertyChanged(CustomActionsCounterPropertyName);
+            OnPropertyChanged(CustomActionsPropertyName);
         }
-
-        private void SetLoadingPanelVisibility() => LoadingPanelVisibility = !LoadingPanelVisibility;
 
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 

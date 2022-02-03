@@ -2,6 +2,12 @@
 
 namespace SophiApp.Commons
 {
+    internal enum InfoPanelVisibility
+    {
+        HideAll,
+        Loading,
+        RestartNecessary
+    }
     internal struct Tags
     {
         internal static readonly string ConditionIsSingleSession = Application.Current.FindResource("Tags.Conditions.IsSingleSession") as string;

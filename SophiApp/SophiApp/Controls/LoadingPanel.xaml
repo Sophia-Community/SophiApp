@@ -1,15 +1,13 @@
 ﻿<UserControl
     x:Class="SophiApp.Controls.LoadingPanel"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converters="clr-namespace:SophiApp.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:SophiApp.Controls"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Style TargetType="{x:Type Canvas}">
             <Setter Property="Width" Value="34" />
             <Setter Property="Height" Value="34" />
@@ -32,7 +30,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Height" Value="52" />
-            <Setter Property="Visibility" Value="{Binding LoadingPanelVisibility, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}" />
+            <Setter Property="Visibility" Value="Collapsed"/>
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -44,6 +42,11 @@
                     VerticalAlignment="Center"
                     Visibility="{Binding Path=Visibility, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding InfoPanelVisibility}" Value="Loading">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

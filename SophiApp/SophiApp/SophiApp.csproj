@@ -108,6 +108,9 @@
     <Compile Include="Controls\Logo.xaml.cs">
       <DependentUpon>Logo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RestartPanel.xaml.cs">
+      <DependentUpon>RestartPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SimpleCheckBox.xaml.cs">
       <DependentUpon>SimpleCheckBox.xaml</DependentUpon>
     </Compile>
@@ -211,7 +214,6 @@
     </Compile>
     <Compile Include="Converters\ActualHeightMultiply.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
-    <Compile Include="Converters\ChangesPanelVisibility.cs" />
     <Compile Include="Converters\IntToChanges.cs" />
     <Compile Include="Converters\IntToSettings.cs" />
     <Compile Include="Converters\TagToVisibility.cs" />
@@ -390,6 +392,10 @@
     <Page Include="Controls\ResetButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RestartPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ScrollViewer.xaml">
       <SubType>Designer</SubType>

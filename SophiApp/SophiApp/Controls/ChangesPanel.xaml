@@ -10,7 +10,6 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:ChangesPanelVisibility x:Key="ChangesPanelVisibilityConverter" />
         <converters:IntToChanges x:Key="IntToChangesConverter" />
         <converters:IntToSettings x:Key="IntToSettingsConverter" />
         <Style TargetType="{x:Type local:ChangesPanel}">
@@ -22,14 +21,7 @@
             <Setter Property="Height" Value="52" />
             <Setter Property="ChangedText" Value="{DynamicResource Localization.ViewChanges.Changed}" />
             <Setter Property="SettingText" Value="{DynamicResource Localization.ViewChanges.Setting}" />
-            <Setter Property="Visibility">
-                <Setter.Value>
-                    <MultiBinding Converter="{StaticResource ChangesPanelVisibilityConverter}">
-                        <Binding Path="VisibleViewByTag" UpdateSourceTrigger="PropertyChanged" />
-                        <Binding Path="CustomActionsCounter" UpdateSourceTrigger="PropertyChanged" />
-                    </MultiBinding>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Visibility" Value="Visible"/>     
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -47,7 +39,7 @@
                         <TextBlock.Text>
                             <MultiBinding Converter="{StaticResource IntToChangesConverter}">
                                 <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
-                                <Binding Path="CustomActionsCounter" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="CustomActions" UpdateSourceTrigger="PropertyChanged" />
                                 <Binding
                                     Path="ChangedText"
                                     RelativeSource="{RelativeSource TemplatedParent}"
@@ -61,18 +53,15 @@
                         FontWeight="Bold"
                         Foreground="{DynamicResource Brush.Window.Acсent.Normal}"
                         Style="{DynamicResource NormalText}"
-                        Text="{Binding CustomActionsCounter, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding CustomActions.Count, UpdateSourceTrigger=PropertyChanged}"
                         TextWrapping="NoWrap" />
 
                     <TextBlock Style="{DynamicResource NormalText}" TextWrapping="NoWrap">
                         <TextBlock.Text>
                             <MultiBinding Converter="{StaticResource IntToSettingsConverter}">
                                 <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
-                                <Binding Path="CustomActionsCounter" UpdateSourceTrigger="PropertyChanged" />
-                                <Binding
-                                    Path="SettingText"
-                                    RelativeSource="{RelativeSource TemplatedParent}"
-                                    UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="CustomActions" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="SettingText" RelativeSource="{RelativeSource TemplatedParent}" UpdateSourceTrigger="PropertyChanged" />
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
@@ -95,6 +84,11 @@
                         Text="{DynamicResource Localization.ViewChanges.Apply}" />
                 </StackPanel>
             </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding CustomActions.Count}" Value="0">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

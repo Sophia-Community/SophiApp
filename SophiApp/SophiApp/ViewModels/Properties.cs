@@ -10,22 +10,42 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
-        private string buildName;
-        private string conditionsHelperError;
-        private List<Customisation> CustomActions;
         private bool debugMode;
-        private List<TextedElement> foundTextedElement;
         private bool hamburgerHitTest;
-        private bool loadingPanelVisibility;
-        private LocalizationsHelper localizationsHelper;
-        private SearchState search;
-        private ThemesHelper themesHelper;
+        private bool viewsHitTest;
+        private bool windowCloseHitTest;
+        private ElementStatus uwpForAllUsersState;
+        private InfoPanelVisibility infoPanelVisibility;
+        private List<Customisation> customActions;
+        private List<TextedElement> foundTextedElement;
         private List<UwpElement> uwpElementsAllUsers;
         private List<UwpElement> uwpElementsCurrentUser;
-        private ElementStatus uwpForAllUsersState;
-        private bool viewsHitTest;
+        private LocalizationsHelper localizationsHelper;
+        private SearchState search;
+        private string buildName;
+        private string conditionsHelperError;
         private string visibleViewByTag;
-        private bool windowCloseHitTest;
+        private ThemesHelper themesHelper;
+
+        public List<Customisation> CustomActions
+        {
+            get => customActions;
+            private set
+            {
+                customActions = value;
+                OnPropertyChanged(CustomActionsPropertyName);
+            }
+        }
+
+        public InfoPanelVisibility InfoPanelVisibility 
+        { 
+            get => infoPanelVisibility;
+            private set
+            {
+                infoPanelVisibility = value;
+                OnPropertyChanged(InfoPanelVisibilityPropertyName);
+            }
+        }
 
         public bool AdvancedSettingsVisibility
         {
@@ -64,8 +84,6 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public int CustomActionsCounter => CustomActions.Count;
-
         public bool DebugMode
         {
             get => debugMode;
@@ -94,16 +112,6 @@ namespace SophiApp.ViewModels
             {
                 hamburgerHitTest = value;
                 OnPropertyChanged(HamburgerHitTestPropertyName);
-            }
-        }
-
-        public bool LoadingPanelVisibility
-        {
-            get => loadingPanelVisibility;
-            set
-            {
-                loadingPanelVisibility = value;
-                OnPropertyChanged(LoadingPanelVisibilityPropertyName);
             }
         }
 
