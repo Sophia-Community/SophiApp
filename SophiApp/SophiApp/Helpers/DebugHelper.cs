@@ -10,10 +10,11 @@ namespace SophiApp.Helpers
 {
     internal class DebugHelper
     {
-        private const string APP_FOLDER = "Application folder";
-        private const string APP_LOC = "Application localization";
-        private const string APP_THEME = "Application theme";
-        private const string APP_VER = "Application version";
+        private const string APP_FOLDER = "App folder";
+        private const string APP_LOC = "App localization";
+        private const string APP_THEME = "App theme";
+        private const string APP_VER = "App version";
+        private const string IS_RELEASE = "Is release";
         private const string PC_NAME = "Computer name";
         private const string REG_ORG = "Registered organization";
         private const string REG_OWNER = "Registered owner";
@@ -37,6 +38,7 @@ namespace SophiApp.Helpers
             $"{USER_CULTURE}: {OsHelper.GetCurrentCultureName()}",
             $"{USER_REGION}: {OsHelper.GetRegionName()}",
             $"{APP_VER}: {AppHelper.Version}",
+            $"{IS_RELEASE}: {AppHelper.IsRelease}",
             $"{APP_FOLDER}: \"{AppHelper.StartupFolder}\""
         };
 
@@ -86,9 +88,8 @@ namespace SophiApp.Helpers
 
         internal static void HasUpdateRelease(ReleaseDto release) => WriteInfoLog(new List<string>()
         {
-            $"Version is available: {release.tag_name}",
-            $"Is prerelease: {release.prerelease}",
-            $"Is draft: {release.draft}"
+            $"Release version is available: {release.SophiApp_release}",
+            $"Pre-release version is available: {release.SophiApp_pre_release}",
         });
 
         internal static void HasUpdateResponse() => WriteInfoLog("When checking for an update, a response was received from the update server");

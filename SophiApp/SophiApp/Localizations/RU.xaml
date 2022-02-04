@@ -13,7 +13,9 @@
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Ваша версия Windows не совместима с SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">Поддерживаемые ОС: Windows 10 2004/20H2/21H1/21H2.</system:String>
-    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном. Подробнее: https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном.</system:String>
+    <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
+    <system:String x:Key="Conditions.OsIsInfected.More">Подробнее: </system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Версия вашего билда ниже, чем поддерживаемая</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">Минимальная поддерживаемая версия накопительного пакета Windows 10: 1151.</system:String>
@@ -28,7 +30,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
-    <system:String x:Key="Localization.Customizations.RestartNecessary">Пожалуйста, перезагрузитесь после применения настроек</system:String>
+    <system:String x:Key="Localization.Customizations.RebootRequired">Пожалуйста, перезагрузитесь после применения настроек</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Description">События создания нового процесса и аудит командной строки</system:String>

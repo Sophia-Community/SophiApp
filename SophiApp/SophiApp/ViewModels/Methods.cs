@@ -172,18 +172,15 @@ namespace SophiApp.ViewModels
 
         private void SetInfoPanelVisibility(InfoPanelVisibility visibility) => InfoPanelVisibility = visibility;
 
-        private async Task InitializeTextedElementsAsync()
+        private async Task DeserializeTextedElementsAsync()
         {
             await Task.Run(() =>
             {
-                DebugHelper.StartInitTextedElements();
-                var stopwatch = Stopwatch.StartNew();
                 TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                                statusHandler: OnTextedElementStatusChanged, language: Localization.Language))
+                                                                                                statusHandler: OnTextedElementStatusChanged, 
+                                                                                                    language: Localization.Language))
                                             .ToList();
-                stopwatch.Stop();
-                DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
             });
         }
 
@@ -411,6 +408,7 @@ namespace SophiApp.ViewModels
             {
                 SetTaskbarItemInfoProgress();
                 MouseHelper.ShowWaitCursor(show: true);
+                await DeserializeTextedElementsAsync();
                 await InitializeTextedElementsAsync();
                 await InitializeUwpElementsAsync();
                 await InitializeWatchersAsync();
@@ -420,5 +418,34 @@ namespace SophiApp.ViewModels
                 SetTaskbarItemInfoProgress();
             }
         }
+
+        private async Task InitializeTextedElementsAsync()
+        {
+            DebugHelper.StartInitTextedElements();
+            var stopwatch = Stopwatch.StartNew();
+            await Task.Run(() => TextedElements.ForEach(element => element.Init()));
+            stopwatch.Stop();
+            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
+        }
+
+        //TODO: InitializeTextedElementsAsync - test version
+        //private async Task InitializeTextedElementsAsync()
+        //{
+        //    DebugHelper.StartInitTextedElements();
+        //    var stopwatch = Stopwatch.StartNew();
+
+        //    var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"), 
+        //                            InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"), 
+        //                            InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
+
+        //    await Task.WhenAll(task);
+        //    stopwatch.Stop();
+        //    DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
+        //}
+
+        //private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
+        //                                                                                               .ToList()
+        //                                                                                               .ForEach(element => element.Init()));
+
     }
 }

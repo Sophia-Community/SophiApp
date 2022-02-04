@@ -11,6 +11,7 @@ namespace SophiApp.Helpers
         internal static bool CapabilityIsInstalled(string name)
         {
             var result = default(bool);
+
             DismApi.Initialize(DismLogLevel.LogErrors);
             var session = DismApi.OpenOnlineSession();
 
@@ -34,6 +35,7 @@ namespace SophiApp.Helpers
         internal static bool FeatureIsInstalled(string name)
         {
             var result = default(bool);
+
             DismApi.Initialize(DismLogLevel.LogErrors);
             var session = DismApi.OpenOnlineSession();
 
@@ -53,32 +55,6 @@ namespace SophiApp.Helpers
 
             return result;
         }        
-
-        internal static void SetCapabilityState(string name, bool enable)
-        {
-            DismApi.Initialize(DismLogLevel.LogErrors);
-            var session = DismApi.OpenOnlineSession();
-
-            try
-            {
-                if (enable)
-                {
-                    DismApi.AddCapability(session, name, false, null);
-                }
-                else
-                {
-                    DismApi.RemoveCapability(session, name);
-                }
-            }
-            catch (DismRebootRequiredException)
-            {
-            }
-            finally
-            {
-                session.Close();
-                DismApi.Shutdown();
-            }
-        }
 
         internal static void SetFeatureState(string name, bool enable)
         {
@@ -104,6 +80,7 @@ namespace SophiApp.Helpers
                 session.Close();
                 DismApi.Shutdown();
             }
+
         }
 
     }

@@ -40,7 +40,6 @@ namespace SophiApp.Helpers
                 });
             }
 
-            element.Init();
             return element;
         }
 

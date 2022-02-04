@@ -20,7 +20,7 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
 
-                <TextBlock Text="{DynamicResource Localization.Customizations.RestartNecessary}"
+                <TextBlock Text="{DynamicResource Localization.Customizations.RebootRequired}"
                            Style="{DynamicResource BoldText}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>

@@ -252,6 +252,12 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsIsInfected}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <controls:ActorLink Margin="{StaticResource MarginViewConditionsText}"
+                                            HorizontalAlignment="Center"
+                                            Actor="{DynamicResource Conditions.OsIsInfected.Link}"
+                                            Command="{Binding HyperLinkClickedCommand}"
+                                            CommandParameter="{DynamicResource Conditions.OsIsInfected.Link}"
+                                            Role="{DynamicResource Conditions.OsIsInfected.More}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>

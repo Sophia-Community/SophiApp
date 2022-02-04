@@ -20,7 +20,7 @@ namespace SophiApp.Conditions
         {
             try
             {
-                HttpWebRequest request = WebRequest.CreateHttp(AppHelper.GitHubApiReleases);
+                HttpWebRequest request = WebRequest.CreateHttp(AppHelper.SophiAppVersionsJson);
                 request.UserAgent = AppHelper.UserAgent;
                 var response = request.GetResponse();
                 DebugHelper.HasUpdateResponse();
@@ -28,20 +28,22 @@ namespace SophiApp.Conditions
                 {
                     StreamReader reader = new StreamReader(dataStream);
                     var serverResponse = reader.ReadToEnd();
-                    var release = JsonConvert.DeserializeObject<List<ReleaseDto>>(serverResponse).FirstOrDefault();
+                    var release = JsonConvert.DeserializeObject<ReleaseDto>(serverResponse);                    
                     DebugHelper.HasUpdateRelease(release);
-                    var isNewVersion = new Version(release.tag_name) > AppHelper.Version
-                                                                     && release.prerelease.Invert()
-                                                                     && release.draft.Invert();
+                    var releasedVersion = new Version(AppHelper.IsRelease ? release.SophiApp_release : release.SophiApp_pre_release);
+                    var hasNewVersion = releasedVersion > AppHelper.Version;
 
-                    if (isNewVersion)
+                    if (hasNewVersion)
                     {
                         DebugHelper.IsNewRelease();
-                        ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: release.tag_name);
+                        ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: $"{releasedVersion}");
                     }
-
-                    DebugHelper.UpdateNotNecessary();
-                    return Result = isNewVersion.Invert();
+                    else
+                    {
+                        DebugHelper.UpdateNotNecessary();
+                    }
+                    
+                    return Result = hasNewVersion.Invert();
                 }
             }
             catch (WebException e)
