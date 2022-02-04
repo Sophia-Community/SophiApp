@@ -14,6 +14,5 @@ namespace SophiApp.Conditions
             var build = OsHelper.GetBuild();
             return Result = build >= OsHelper.WIN10_MIN_SUPPORT_BUILD && build <= OsHelper.WIN10_MAX_SUPPORT_BUILD;
         }
-
     }
 }

@@ -10,42 +10,22 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
-        private bool debugMode;
-        private bool hamburgerHitTest;
-        private bool viewsHitTest;
-        private bool windowCloseHitTest;
-        private ElementStatus uwpForAllUsersState;
-        private InfoPanelVisibility infoPanelVisibility;
-        private List<Customisation> customActions;
-        private List<TextedElement> foundTextedElement;
-        private List<UwpElement> uwpElementsAllUsers;
-        private List<UwpElement> uwpElementsCurrentUser;
-        private LocalizationsHelper localizationsHelper;
-        private SearchState search;
         private string buildName;
         private string conditionsHelperError;
-        private string visibleViewByTag;
+        private List<Customisation> customActions;
+        private bool debugMode;
+        private List<TextedElement> foundTextedElement;
+        private bool hamburgerHitTest;
+        private InfoPanelVisibility infoPanelVisibility;
+        private LocalizationsHelper localizationsHelper;
+        private SearchState search;
         private ThemesHelper themesHelper;
-
-        public List<Customisation> CustomActions
-        {
-            get => customActions;
-            private set
-            {
-                customActions = value;
-                OnPropertyChanged(CustomActionsPropertyName);
-            }
-        }
-
-        public InfoPanelVisibility InfoPanelVisibility 
-        { 
-            get => infoPanelVisibility;
-            private set
-            {
-                infoPanelVisibility = value;
-                OnPropertyChanged(InfoPanelVisibilityPropertyName);
-            }
-        }
+        private List<UwpElement> uwpElementsAllUsers;
+        private List<UwpElement> uwpElementsCurrentUser;
+        private ElementStatus uwpForAllUsersState;
+        private bool viewsHitTest;
+        private string visibleViewByTag;
+        private bool windowCloseHitTest;
 
         public bool AdvancedSettingsVisibility
         {
@@ -84,6 +64,16 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public List<Customisation> CustomActions
+        {
+            get => customActions;
+            private set
+            {
+                customActions = value;
+                OnPropertyChanged(CustomActionsPropertyName);
+            }
+        }
+
         public bool DebugMode
         {
             get => debugMode;
@@ -112,6 +102,16 @@ namespace SophiApp.ViewModels
             {
                 hamburgerHitTest = value;
                 OnPropertyChanged(HamburgerHitTestPropertyName);
+            }
+        }
+
+        public InfoPanelVisibility InfoPanelVisibility
+        {
+            get => infoPanelVisibility;
+            private set
+            {
+                infoPanelVisibility = value;
+                OnPropertyChanged(InfoPanelVisibilityPropertyName);
             }
         }
 

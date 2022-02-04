@@ -1,8 +1,4 @@
 ﻿using Microsoft.Dism;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SophiApp.Helpers
 {
@@ -54,7 +50,7 @@ namespace SophiApp.Helpers
             }
 
             return result;
-        }        
+        }
 
         internal static void SetFeatureState(string name, bool enable)
         {
@@ -80,8 +76,6 @@ namespace SophiApp.Helpers
                 session.Close();
                 DismApi.Shutdown();
             }
-
         }
-
     }
 }

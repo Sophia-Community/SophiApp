@@ -21,7 +21,7 @@
             <Setter Property="Height" Value="52" />
             <Setter Property="ChangedText" Value="{DynamicResource Localization.ViewChanges.Changed}" />
             <Setter Property="SettingText" Value="{DynamicResource Localization.ViewChanges.Setting}" />
-            <Setter Property="Visibility" Value="Visible"/>     
+            <Setter Property="Visibility" Value="Visible" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -86,7 +86,7 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding CustomActions.Count}" Value="0">
-                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Setter Property="Visibility" Value="Collapsed" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

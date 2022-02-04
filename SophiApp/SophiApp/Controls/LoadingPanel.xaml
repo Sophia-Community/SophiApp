@@ -30,7 +30,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Height" Value="52" />
-            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Visibility" Value="Collapsed" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -44,7 +44,7 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding InfoPanelVisibility}" Value="Loading">
-                    <Setter Property="Visibility" Value="Visible"/>
+                    <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

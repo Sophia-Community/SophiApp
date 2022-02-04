@@ -4,9 +4,7 @@ using SophiApp.Dto;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 
 namespace SophiApp.Conditions
@@ -28,7 +26,7 @@ namespace SophiApp.Conditions
                 {
                     StreamReader reader = new StreamReader(dataStream);
                     var serverResponse = reader.ReadToEnd();
-                    var release = JsonConvert.DeserializeObject<ReleaseDto>(serverResponse);                    
+                    var release = JsonConvert.DeserializeObject<ReleaseDto>(serverResponse);
                     DebugHelper.HasUpdateRelease(release);
                     var releasedVersion = new Version(AppHelper.IsRelease ? release.SophiApp_release : release.SophiApp_pre_release);
                     var hasNewVersion = releasedVersion > AppHelper.Version;
@@ -42,7 +40,7 @@ namespace SophiApp.Conditions
                     {
                         DebugHelper.UpdateNotNecessary();
                     }
-                    
+
                     return Result = hasNewVersion.Invert();
                 }
             }

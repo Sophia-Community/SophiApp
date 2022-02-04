@@ -5,12 +5,12 @@ namespace SophiApp.Helpers
 {
     internal class AppHelper
     {
-        private const bool IS_RELEASE = true;
         private const string CODER_LINK = "https://github.com/Inestic";
         private const string DEBUG_EXT = "log";
         private const string DESIGNER_LINK = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
         private const string GITHUB_RELEASES_PAGE = "https://github.com/Sophia-Community/SophiApp/releases";
         private const string GITHUB_REPO = "https://github.com/Sophia-Community/SophiApp";
+        private const bool IS_RELEASE = true;
         private const string LEADER_LINK = "https://github.com/farag2";
         private const string LOGOTYPE_CREATOR_LINK = "https://www.linkedin.com/mwlite/in/наталия-гуменюк-ba4a04161";
         private const string SOPHIAPP_VERSIONS_JSON = "https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/sophiapp_versions.json";
@@ -21,12 +21,12 @@ namespace SophiApp.Helpers
         internal static string SophiAppVersionsJson => SOPHIAPP_VERSIONS_JSON;
         internal static string StartupFolder => AppDomain.CurrentDomain.BaseDirectory;
         internal static string UserAgent => USER_AGENT;
-        public static bool IsRelease => IS_RELEASE;
         public static string AppName => APP_NAME;
         public static string CoderLink => CODER_LINK;
         public static string DesignerLink => DESIGNER_LINK;
         public static string GitHubReleasesPage => GITHUB_RELEASES_PAGE;
         public static string GitHubRepo => GITHUB_REPO;
+        public static bool IsRelease => IS_RELEASE;
         public static string LeaderLink => LEADER_LINK;
         public static string LogotypeCreatorLink => LOGOTYPE_CREATOR_LINK;
 

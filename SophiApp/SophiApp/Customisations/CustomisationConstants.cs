@@ -135,7 +135,6 @@ namespace SophiApp.Customisations
         internal const byte _317_DISABLED_VALUE = 1;
         internal const byte _317_ENABLED_VALUE = 0;
         internal const string _317_PRINTER_LEGACY_MODE = "LegacyDefaultPrinterMode";
-        internal const string _812_POWERSHELL_V2_ROOT_FEATURE = "MicrosoftWindowsPowerShellV2Root";
         internal const string _334_SERVICE_MANAGER_GUID = "7971f918-a847-4430-9279-4a52d1efe18d";
         internal const string _334_UPDATE_SERVICE_MANAGER = "Microsoft.Update.ServiceManager";
         internal const string _336_HIGH_POWER_ARGS = "/SETACTIVE SCHEME_MIN";
@@ -477,6 +476,7 @@ else
         internal const string _810_WSH_SETTINGS_PATH = @"SOFTWARE\Microsoft\Windows Script Host\Settings";
         internal const string _811_HYPERVISOR_PRESENT = "HypervisorPresent";
         internal const string _811_WINDOWS_SANDBOX_FEATURE = "Containers-DisposableClientVM";
+        internal const string _812_POWERSHELL_V2_ROOT_FEATURE = "MicrosoftWindowsPowerShellV2Root";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";

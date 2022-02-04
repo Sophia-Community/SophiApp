@@ -513,7 +513,7 @@ namespace SophiApp.Customisations
                                                 : throw new BitlockerIsEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
 
-        public static bool _921() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT) 
+        public static bool _921() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
                                         && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
                                      : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);

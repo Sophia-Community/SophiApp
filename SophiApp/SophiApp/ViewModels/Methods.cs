@@ -94,6 +94,18 @@ namespace SophiApp.ViewModels
 
         private void DebugModeClicked(object args) => DebugMode = DebugMode.Invert();
 
+        private async Task DeserializeTextedElementsAsync()
+        {
+            await Task.Run(() =>
+            {
+                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                                            .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
+                                                                                                statusHandler: OnTextedElementStatusChanged,
+                                                                                                    language: Localization.Language))
+                                            .ToList();
+            });
+        }
+
         private void GetUwpElements()
         {
             DebugHelper.StartInitUwpApps();
@@ -155,7 +167,7 @@ namespace SophiApp.ViewModels
             localizationsHelper = new LocalizationsHelper();
             themesHelper = new ThemesHelper();
             DebugMode = true;
-            buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;            
+            buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;
             HamburgerHitTest = false;
             ViewsHitTest = true;
             WindowCloseHitTest = true;
@@ -170,18 +182,13 @@ namespace SophiApp.ViewModels
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
 
-        private void SetInfoPanelVisibility(InfoPanelVisibility visibility) => InfoPanelVisibility = visibility;
-
-        private async Task DeserializeTextedElementsAsync()
+        private async Task InitializeTextedElementsAsync()
         {
-            await Task.Run(() =>
-            {
-                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
-                                            .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                                statusHandler: OnTextedElementStatusChanged, 
-                                                                                                    language: Localization.Language))
-                                            .ToList();
-            });
+            DebugHelper.StartInitTextedElements();
+            var stopwatch = Stopwatch.StartNew();
+            await Task.Run(() => TextedElements.ForEach(element => element.Init()));
+            stopwatch.Stop();
+            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
 
         private async Task InitializeUwpElementsAsync() => await Task.Run(() => GetUwpElements());
@@ -371,6 +378,8 @@ namespace SophiApp.ViewModels
             OnPropertyChanged(CustomActionsPropertyName);
         }
 
+        private void SetInfoPanelVisibility(InfoPanelVisibility visibility) => InfoPanelVisibility = visibility;
+
         private void SetLocalizationProperty(Localization localization) => Localization = localization;
 
         private void SetTaskbarItemInfoProgress()
@@ -419,23 +428,14 @@ namespace SophiApp.ViewModels
             }
         }
 
-        private async Task InitializeTextedElementsAsync()
-        {
-            DebugHelper.StartInitTextedElements();
-            var stopwatch = Stopwatch.StartNew();
-            await Task.Run(() => TextedElements.ForEach(element => element.Init()));
-            stopwatch.Stop();
-            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
-        }
-
         //TODO: InitializeTextedElementsAsync - test version
         //private async Task InitializeTextedElementsAsync()
         //{
         //    DebugHelper.StartInitTextedElements();
         //    var stopwatch = Stopwatch.StartNew();
 
-        //    var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"), 
-        //                            InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"), 
+        //    var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
+        //                            InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
         //                            InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
 
         //    await Task.WhenAll(task);
@@ -446,6 +446,5 @@ namespace SophiApp.ViewModels
         //private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
         //                                                                                               .ToList()
         //                                                                                               .ForEach(element => element.Init()));
-
     }
 }

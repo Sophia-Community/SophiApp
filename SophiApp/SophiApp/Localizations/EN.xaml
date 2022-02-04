@@ -15,7 +15,7 @@
     <system:String x:Key="Conditions.OsBuildVersion.Supported">Supported OS: Windows 10 2004/20H2/21H1/21H2.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
-    <system:String x:Key="Conditions.OsIsInfected.More">Read more: </system:String>
+    <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Your version is lower than the supported one.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">The minimum Windows 10 supported build is 1151.</system:String>

@@ -22,10 +22,9 @@ namespace SophiApp.Helpers
         private const string USER_DOMAIN = "User domain";
         private const string USER_NAME = "Current user";
         private const string USER_REGION = "User region";
-        private static List<string> ErrorsLog = new List<string>();
-        
         private static readonly object infoLogLocker = new object();
         private static readonly object statusLogLocker = new object();
+        private static List<string> ErrorsLog = new List<string>();
 
         private static List<string> InfoLog = new List<string>
         {
