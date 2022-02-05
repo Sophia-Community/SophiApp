@@ -48,6 +48,10 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ***
 
+## About SophiApp  
+
+SophiApp is a free, open-source app for fine-tuning Windows 10 (Windows 11 is in the work). It offers a modern UI/UX, tons of tweaks, and shows how Windows can be configured without making any harm to the OS.
+
 ## System Requirements
 
 * Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` for now. Requires the `1151` build and higher. Windows 11 is in the works;
