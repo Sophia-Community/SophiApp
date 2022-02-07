@@ -9,6 +9,7 @@
     <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Please download new version with bug fixes from the official GitHub page.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version was found online.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Download a new version</system:String>
+    <system:String x:Key="Conditions.NoRebootRequired">Please restart your PC before proceeding.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Your Windows isn't compatible with SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
@@ -16,6 +17,7 @@
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
+    <system:String x:Key="Conditions.RiskAgree">I understand the risk and agree to be responsible for possible damages</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Your version is lower than the supported one.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">The minimum Windows 10 supported build is 1151.</system:String>

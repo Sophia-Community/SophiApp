@@ -2002,7 +2002,7 @@
       "EN": "",
       "RU": ""
     },
-    "Type": "AdvancedSwitch",
+    "Type": "CheckBox",
     "Tag": "Security"
   },
   {

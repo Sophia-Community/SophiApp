@@ -98,7 +98,7 @@ namespace SophiApp.Models
             }
         }
 
-        internal virtual void Init()
+        internal virtual void Initialize()
         {
             var stopwatch = Stopwatch.StartNew();
             ChangeLanguage(Language);

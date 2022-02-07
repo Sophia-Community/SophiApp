@@ -477,6 +477,7 @@ else
         internal const string _811_HYPERVISOR_PRESENT = "HypervisorPresent";
         internal const string _811_WINDOWS_SANDBOX_FEATURE = "Containers-DisposableClientVM";
         internal const string _812_POWERSHELL_V2_ROOT_FEATURE = "MicrosoftWindowsPowerShellV2Root";
+        internal const string _812_POWERSHELL_V2_ROOT_STATE_PS = @"(Get-WindowsOptionalFeature -FeatureName MicrosoftWindowsPowerShellV2 -Online).State.ToString()";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";
@@ -646,6 +647,9 @@ else
 
         internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "Device Driver Packages", "Previous Installations", "Setup Log Files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows Upgrade Log Files" };
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
+        internal static readonly string _811_WINDOWS_SANDBOX_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WindowsSandbox.exe";
+        internal static readonly string _922_MS_WORDPAD_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows NT\Accessories\wordpad.exe";
+        internal static readonly string MS_PAINT_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\mspaint.exe";
         internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
         internal static byte[] _354_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

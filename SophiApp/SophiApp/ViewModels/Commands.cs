@@ -14,6 +14,7 @@ namespace SophiApp.ViewModels
         public RelayCommand OpenUpdateCenterWindowCommand { get; private set; }
         public RelayCommand RadioGroupClickedCommand { get; private set; }
         public RelayCommand ResetTextedElementsStateCommand { get; private set; }
+        public RelayCommand RiskAgreeClickedCommand { get; private set; }
         public RelayCommand SaveDebugLogCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
         public RelayCommand SwitchUwpForAllUsersClickedCommand { get; private set; }

@@ -14,7 +14,7 @@ namespace SophiApp.Helpers
         private const string APP_LOC = "App localization";
         private const string APP_THEME = "App theme";
         private const string APP_VER = "App version";
-        private const string IS_RELEASE = "Is release";
+        private const string APP_IS_RELEASE = "App is release";
         private const string PC_NAME = "Computer name";
         private const string REG_ORG = "Registered organization";
         private const string REG_OWNER = "Registered owner";
@@ -37,7 +37,7 @@ namespace SophiApp.Helpers
             $"{USER_CULTURE}: {OsHelper.GetCurrentCultureName()}",
             $"{USER_REGION}: {OsHelper.GetRegionName()}",
             $"{APP_VER}: {AppHelper.Version}",
-            $"{IS_RELEASE}: {AppHelper.IsRelease}",
+            $"{APP_IS_RELEASE}: {AppHelper.IsRelease}",
             $"{APP_FOLDER}: \"{AppHelper.StartupFolder}\""
         };
 
@@ -140,5 +140,8 @@ namespace SophiApp.Helpers
         internal static void UwpRemovedHasException(string packageName, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
+
+        internal static void RiskAgreed() => WriteStatusLog("THE USER HAS AGREED TO ASSUME THE RISKS AND LIABILITY FOR ANY POSSIBLE DAMAGES");
+
     }
 }

@@ -99,7 +99,7 @@ namespace SophiApp
             GetStartupPosition();
             var appVM = new AppVM();
             DataContext = appVM;
-            appVM.Initialize();
+            appVM.InitializeOsConditionsAsync();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

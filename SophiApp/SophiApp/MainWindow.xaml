@@ -75,6 +75,7 @@
     </Window.Style>
     <Window.Resources>
         <Thickness x:Key="MarginViewConditionsText" Left="5" Top="0" Right="5" Bottom="10" />
+        <Thickness x:Key="DoubleMarginViewConditionsText" Left="5" Top="20" Right="5" Bottom="0" />
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -227,6 +228,13 @@
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewConditionsNoRebootRequired" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.NoRebootRequired}">
+                    <views:ViewConditionsTemplate.TextContent>
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Conditions.NoRebootRequired}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </views:ViewConditionsTemplate.TextContent>
+                </views:ViewConditionsTemplate>
             <views:ViewConditionsTemplate x:Name="ViewConditionsIsSingleSession" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.IsSingleSession}">
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
@@ -258,6 +266,7 @@
                                             Command="{Binding HyperLinkClickedCommand}"
                                             CommandParameter="{DynamicResource Conditions.OsIsInfected.Link}"
                                             Role="{DynamicResource Conditions.OsIsInfected.More}" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}"/>
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -267,6 +276,7 @@
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.StabilityCompromised}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.SycnexScript}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}"/>
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>

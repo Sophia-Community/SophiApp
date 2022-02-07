@@ -143,7 +143,7 @@ namespace SophiApp.ViewModels
             MouseHelper.ShowWaitCursor(show: false);
         }
 
-        private void InitCommands()
+        private void InitializeCommands()
         {
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
@@ -155,11 +155,18 @@ namespace SophiApp.ViewModels
             OpenUpdateCenterWindowCommand = new RelayCommand(new Action<object>(OpenUpdateCenterWindowAsync));
             RadioGroupClickedCommand = new RelayCommand(new Action<object>(RadioGroupClickedAsync));
             ResetTextedElementsStateCommand = new RelayCommand(new Action<object>(ResetTextedElementsStateAsync));
+            RiskAgreeClickedCommand = new RelayCommand(new Action<object>(RiskAgreeClickedAsync));
             SaveDebugLogCommand = new RelayCommand(new Action<object>(SaveDebugLogAsync));
             SearchClickedCommand = new RelayCommand(new Action<object>(SearchClickedAsync), new Predicate<object>(SearchClicked_CanExecute));
             SwitchUwpForAllUsersClickedCommand = new RelayCommand(new Action<object>(SwitchUwpForAllUsersClicked));
             TextedElementClickedCommand = new RelayCommand(new Action<object>(TextedElementClickedAsync));
             UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
+        }
+
+        private async void RiskAgreeClickedAsync(object obj)
+        {
+            DebugHelper.RiskAgreed();
+            await InitializeDataAsync();
         }
 
         private void InitializeProperties()
@@ -170,9 +177,9 @@ namespace SophiApp.ViewModels
             buildName = Application.Current.TryFindResource("Localization.Build.Name") as string;
             HamburgerHitTest = false;
             ViewsHitTest = true;
+            VisibleViewByTag = Tags.ViewLoading;
             WindowCloseHitTest = true;
             AdvancedSettingsVisibility = false;
-            VisibleViewByTag = Tags.ViewLoading;
             InfoPanelVisibility = InfoPanelVisibility.HideAll;
             CustomActions = new List<Customisation>();
             FoundTextedElement = new List<TextedElement>();
@@ -180,15 +187,6 @@ namespace SophiApp.ViewModels
             UwpForAllUsersState = ElementStatus.UNCHECKED;
             DebugHelper.AppLanguage($"{ Localization.Language }");
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
-        }
-
-        private async Task InitializeTextedElementsAsync()
-        {
-            DebugHelper.StartInitTextedElements();
-            var stopwatch = Stopwatch.StartNew();
-            await Task.Run(() => TextedElements.ForEach(element => element.Init()));
-            stopwatch.Stop();
-            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
 
         private async Task InitializeUwpElementsAsync() => await Task.Run(() => GetUwpElements());
@@ -404,7 +402,7 @@ namespace SophiApp.ViewModels
 
         private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
 
-        internal async void Initialize()
+        internal async void InitializeOsConditionsAsync()
         {
             DebugHelper.StartInitOsConditions();
             var stopwatch = Stopwatch.StartNew();
@@ -414,37 +412,40 @@ namespace SophiApp.ViewModels
             DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
 
             if (conditionsHelper.Result)
-            {
-                SetTaskbarItemInfoProgress();
-                MouseHelper.ShowWaitCursor(show: true);
-                await DeserializeTextedElementsAsync();
-                await InitializeTextedElementsAsync();
-                await InitializeUwpElementsAsync();
-                await InitializeWatchersAsync();
-                SetVisibleViewTag(Tags.ViewPrivacy);
-                SetControlsHitTest(hamburgerHitTest: true);
-                MouseHelper.ShowWaitCursor(show: false);
-                SetTaskbarItemInfoProgress();
-            }
+                await InitializeDataAsync();
         }
 
-        //TODO: InitializeTextedElementsAsync - test version
-        //private async Task InitializeTextedElementsAsync()
-        //{
-        //    DebugHelper.StartInitTextedElements();
-        //    var stopwatch = Stopwatch.StartNew();
+        private async Task InitializeDataAsync()
+        {
+            SetVisibleViewTag(Tags.ViewLoading);
+            SetTaskbarItemInfoProgress();
+            MouseHelper.ShowWaitCursor(show: true);
+            await DeserializeTextedElementsAsync();
+            await InitializeTextedElementsAsync();
+            await InitializeUwpElementsAsync();
+            await InitializeWatchersAsync();
+            SetVisibleViewTag(Tags.ViewPrivacy);
+            SetControlsHitTest(hamburgerHitTest: true);
+            MouseHelper.ShowWaitCursor(show: false);
+            SetTaskbarItemInfoProgress();
+        }
 
-        //    var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
-        //                            InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
-        //                            InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
+        private async Task InitializeTextedElementsAsync()
+        {
+            DebugHelper.StartInitTextedElements();
+            var stopwatch = Stopwatch.StartNew();
 
-        //    await Task.WhenAll(task);
-        //    stopwatch.Stop();
-        //    DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
-        //}
+            var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
+                                    InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
+                                    InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
 
-        //private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
-        //                                                                                               .ToList()
-        //                                                                                               .ForEach(element => element.Init()));
+            await Task.WhenAll(task);
+            stopwatch.Stop();
+            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
+        }
+
+        private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
+                                                                                                       .ToList()
+                                                                                                       .ForEach(element => element.Initialize()));
     }
 }

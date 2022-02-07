@@ -9,6 +9,7 @@
     <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Пожалуйста, скачайте новую версию с исправленными ошибками с официальной страницы GitHub.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.HasNew">Доступна новая версия SophiApp.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Скачать новую версию</system:String>
+    <system:String x:Key="Conditions.NoRebootRequired">Перед тем как продолжить, пожалуйста, перезагрузите ПК.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Пожалуйста, не запускайте несколько копий SophiApp одновременно.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Ваша версия Windows не совместима с SophiApp.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
@@ -16,6 +17,7 @@
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Подробнее:</system:String>
+    <system:String x:Key="Conditions.RiskAgree">Я понимаю риск и согласен нести ответственность за любой ущерб</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Версия вашего билда ниже, чем поддерживаемая</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">Минимальная поддерживаемая версия накопительного пакета Windows 10: 1151.</system:String>

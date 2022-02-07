@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Dism;
+using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Dto;
 using SophiApp.Helpers;
@@ -453,11 +454,11 @@ namespace SophiApp.Customisations
 
         public static bool _811() => OsHelper.IsEdition(WIN_VER_PRO) || OsHelper.IsEdition(WIN_VER_ENT)
                                      ? WmiHelper.ProcessorVirtualizationIsEnabled() || WmiHelper.GetComputerSystemInfo<bool>(_811_HYPERVISOR_PRESENT)
-                                        ? DismHelper.FeatureIsInstalled(_811_WINDOWS_SANDBOX_FEATURE)
+                                        ? File.Exists(_811_WINDOWS_SANDBOX_EXE)
                                         : throw new VitualizationNotSupportedException()
                                      : throw new WindowsEditionNotSupportedException();
 
-        public static bool _812() => DismHelper.FeatureIsInstalled(_812_POWERSHELL_V2_ROOT_FEATURE);
+        public static bool _812() => PowerShellHelper.GetScriptResult<string>(_812_POWERSHELL_V2_ROOT_STATE_PS) == ENABLED;
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 
@@ -495,7 +496,7 @@ namespace SophiApp.Customisations
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _915_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new UwpAppNotFoundException(UWP_MS_WIN_PHOTOS);
 
-        public static bool _916() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
+        public static bool _916() => File.Exists(MS_PAINT_EXE)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _916_IMG_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
@@ -513,12 +514,12 @@ namespace SophiApp.Customisations
                                                 : throw new BitlockerIsEnabledException()
                                      : throw new WindowsEditionNotSupportedException();
 
-        public static bool _921() => DismHelper.CapabilityIsInstalled(CAPABILITY_MS_PAINT)
+        public static bool _921() => File.Exists(MS_PAINT_EXE)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_ITEM_NAME)
                                         && RegHelper.KeyExist(RegistryHive.ClassesRoot, _921_BMP_SHELL_NEW, _921_BMP_NULL_FILE)
                                      : throw new WindowsCapabilityNotInstalledException(CAPABILITY_MS_PAINT);
 
-        public static bool _922() => DismHelper.CapabilityIsInstalled(_922_MS_WORD_PAD)
+        public static bool _922() => File.Exists(_922_MS_WORDPAD_EXE)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, ITEM_NAME)
                                         && RegHelper.KeyExist(RegistryHive.ClassesRoot, _922_RTF_SHELL_NEW, DATA)
                                      : throw new WindowsCapabilityNotInstalledException(_922_MS_WORD_PAD);
