@@ -1,0 +1,9 @@
+.github/
+img/
+SophiApp/Binary/
+gitattributes
+CHANGELOG.md
+.tokeignore
+LICENSE
+README.md
+sophiapp_versions.json
