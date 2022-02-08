@@ -21,9 +21,9 @@
     <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Версия вашего билда ниже, чем поддерживаемая.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Запустите проверку обновлений Windows, чтобы обновить Windows до последней версии.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">Минимальная поддерживаемая версия накопительного пакета Windows 10: 1151.</system:String>
-    <system:String x:Key="Conditions.ReinstallOs">На всякий случай переустановите ОС.</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex.</system:String>
+    <system:String x:Key="Conditions.ReinstallOs">На всякий случай переустановите ОС</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">скрипта Windows10Debloater от Sycnex.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Открыть Центр обновления Windows</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">При применении настроек произошла ошибка!</system:String>
     <system:String x:Key="Localization.About.MadeWith">Сделано с</system:String>
