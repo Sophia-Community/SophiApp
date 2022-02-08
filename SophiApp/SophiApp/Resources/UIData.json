@@ -1343,19 +1343,6 @@
     "Tag": "System"
   },
   {
-    "Id": 340,
-    "Header": {
-      "EN": "Enable the Internet Protocol Version 6 (TCP/IPv6) component for all network adapters",
-      "RU": "Включить IP версии 6 (TCP/IPv6) для всех сетевых адаптеров"
-    },
-    "Description": {
-      "EN": "",
-      "RU": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "System"
-  },
-  {
     "Id": 341,
     "Header": {
       "EN": "Override for default input method",
@@ -1988,19 +1975,6 @@
     "Description": {
       "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
-    },
-    "Type": "CheckBox",
-    "Tag": "Security"
-  },
-  {
-    "Id": 812,
-    "Header": {
-      "EN": "Enable Windows PowerShell 2.0 Engine",
-      "RU": "Включить обработчик Windows PowerShell 2.0"
-    },
-    "Description": {
-      "EN": "",
-      "RU": ""
     },
     "Type": "CheckBox",
     "Tag": "Security"

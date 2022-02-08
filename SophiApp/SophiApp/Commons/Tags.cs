@@ -11,6 +11,7 @@ namespace SophiApp.Commons
 
     internal struct Tags
     {
+        internal static readonly string ApplyingException = Application.Current.FindResource("Tags.View.ApplyingException") as string;
         internal static readonly string ConditionIsSingleSession = Application.Current.FindResource("Tags.Conditions.IsSingleSession") as string;
         internal static readonly string ConditionLoggedUserAdmin = Application.Current.FindResource("Tags.Conditions.LoggedUserAdmin") as string;
         internal static readonly string ConditionNoNewVersion = Application.Current.FindResource("Tags.Conditions.NoNewVersion") as string;

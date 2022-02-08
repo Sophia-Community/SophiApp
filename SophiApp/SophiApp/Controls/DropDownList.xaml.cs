@@ -15,6 +15,10 @@ namespace SophiApp.Controls
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(DropDownList), new PropertyMetadata(default));
 
+        // Using a DependencyProperty as the backing store for IsOpened.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsOpenedProperty =
+            DependencyProperty.Register("IsOpened", typeof(bool), typeof(DropDownList), new PropertyMetadata(default));
+
         // Using a DependencyProperty as the backing store for SelectedText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedTextProperty =
             DependencyProperty.Register("SelectedText", typeof(string), typeof(DropDownList), new PropertyMetadata(default));
@@ -32,6 +36,12 @@ namespace SophiApp.Controls
         {
             get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
+        }
+
+        public bool IsOpened
+        {
+            get { return (bool)GetValue(IsOpenedProperty); }
+            set { SetValue(IsOpenedProperty, value); }
         }
 
         public string SelectedText
@@ -56,6 +66,11 @@ namespace SophiApp.Controls
         {
             var popup = Template.FindName("Popup", this) as Popup;
             popup.IsOpen = true;
+        }
+
+        private void DropDownList_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = true;
         }
 
         private void ListBoxContent_SelectionChanged(object sender, SelectionChangedEventArgs e)

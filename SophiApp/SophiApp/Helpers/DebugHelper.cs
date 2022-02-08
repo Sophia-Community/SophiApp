@@ -11,10 +11,10 @@ namespace SophiApp.Helpers
     internal class DebugHelper
     {
         private const string APP_FOLDER = "App folder";
+        private const string APP_IS_RELEASE = "App is release";
         private const string APP_LOC = "App localization";
         private const string APP_THEME = "App theme";
         private const string APP_VER = "App version";
-        private const string APP_IS_RELEASE = "App is release";
         private const string PC_NAME = "Computer name";
         private const string REG_ORG = "Registered organization";
         private const string REG_OWNER = "Registered owner";
@@ -99,6 +99,8 @@ namespace SophiApp.Helpers
 
         internal static void OsConditionChanged(ICondition condition) => WriteStatusLog($"{condition.Tag} is: {condition.Result}");
 
+        internal static void RiskAgreed() => WriteStatusLog("THE USER HAS AGREED TO ASSUME THE RISKS AND LIABILITY FOR ANY POSSIBLE DAMAGES");
+
         internal static void Save(string path) => File.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
 
         internal static void SelectedLocalization(string localization) => WriteStatusLog($"Localization selected: {localization}");
@@ -140,8 +142,5 @@ namespace SophiApp.Helpers
         internal static void UwpRemovedHasException(string packageName, string errorText) => WriteStatusLog($"An error occurred while removing the package {packageName}: {errorText}");
 
         internal static void VisibleViewChanged(string value) => WriteStatusLog($"Active view is: {value}");
-
-        internal static void RiskAgreed() => WriteStatusLog("THE USER HAS AGREED TO ASSUME THE RISKS AND LIABILITY FOR ANY POSSIBLE DAMAGES");
-
     }
 }

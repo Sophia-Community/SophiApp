@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Shell;
@@ -29,12 +30,14 @@ namespace SophiApp.ViewModels
 
             await Task.Run(() =>
             {
+                var applyingCancellationSource = new CancellationTokenSource();
+                var token = applyingCancellationSource.Token;
+
                 DebugHelper.StartApplyingSettings(CustomActions.Count);
-                var totalStopWatch = Stopwatch.StartNew();
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
                 SetInfoPanelVisibility(InfoPanelVisibility.Loading);
 
-                CustomActions.ForEach(action =>
+                foreach (var action in CustomActions)
                 {
                     try
                     {
@@ -51,22 +54,32 @@ namespace SophiApp.ViewModels
                     catch (Exception e)
                     {
                         DebugHelper.HasException($"Customization action {action.Id} with parameter {action.Parameter} caused an error", e);
+                        applyingCancellationSource.Cancel();
+                        CustomActions.Clear();
+                        OnPropertyChanged(CustomActionsPropertyName);
+                        SetVisibleViewTag(Tags.ApplyingException);
+                        SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false);
+                        break;
                     }
-                });
+                }
 
-                CustomActions.Clear();
-                OnPropertyChanged(CustomActionsPropertyName);
-                TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
-                              .ToList()
-                              .ForEach(element => element.GetCustomisationStatus());
-                GetUwpElements();
-                OsHelper.PostMessage();
-                OsHelper.RefreshEnvironment();
-                SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
-                SetControlsHitTest();
-                SetVisibleViewTag(Tags.ViewPrivacy);
-                totalStopWatch.Stop();
-                DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
+                if (token.IsCancellationRequested.Invert())
+                {
+                    var totalStopWatch = Stopwatch.StartNew();
+                    CustomActions.Clear();
+                    OnPropertyChanged(CustomActionsPropertyName);
+                    TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
+                                  .ToList()
+                                  .ForEach(element => element.GetCustomisationStatus());
+                    GetUwpElements();
+                    OsHelper.PostMessage();
+                    OsHelper.RefreshEnvironment();
+                    SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
+                    SetControlsHitTest();
+                    SetVisibleViewTag(Tags.ViewPrivacy);
+                    totalStopWatch.Stop();
+                    DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
+                }
             });
 
             SetTaskbarItemInfoProgress();
@@ -163,10 +176,19 @@ namespace SophiApp.ViewModels
             UwpButtonClickedCommand = new RelayCommand(new Action<object>(UwpButtonClickedAsync));
         }
 
-        private async void RiskAgreeClickedAsync(object obj)
+        private async Task InitializeDataAsync()
         {
-            DebugHelper.RiskAgreed();
-            await InitializeDataAsync();
+            SetVisibleViewTag(Tags.ViewLoading);
+            SetTaskbarItemInfoProgress();
+            MouseHelper.ShowWaitCursor(show: true);
+            await DeserializeTextedElementsAsync();
+            await InitializeTextedElementsAsync();
+            await InitializeUwpElementsAsync();
+            await InitializeWatchersAsync();
+            SetVisibleViewTag(Tags.ViewPrivacy);
+            SetControlsHitTest(hamburgerHitTest: true);
+            MouseHelper.ShowWaitCursor(show: false);
+            SetTaskbarItemInfoProgress();
         }
 
         private void InitializeProperties()
@@ -187,6 +209,24 @@ namespace SophiApp.ViewModels
             UwpForAllUsersState = ElementStatus.UNCHECKED;
             DebugHelper.AppLanguage($"{ Localization.Language }");
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
+        }
+
+        private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
+                                                                                                        .ToList()
+                                                                                                        .ForEach(element => element.Initialize()));
+
+        private async Task InitializeTextedElementsAsync()
+        {
+            DebugHelper.StartInitTextedElements();
+            var stopwatch = Stopwatch.StartNew();
+
+            var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
+                                    InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
+                                    InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
+
+            await Task.WhenAll(task);
+            stopwatch.Stop();
+            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
 
         private async Task InitializeUwpElementsAsync() => await Task.Run(() => GetUwpElements());
@@ -283,6 +323,12 @@ namespace SophiApp.ViewModels
             SetVisibleViewTag(Tags.ViewPrivacy);
             stopwatch.Stop();
             DebugHelper.StopResetTextedElements(stopwatch.Elapsed.TotalSeconds);
+        }
+
+        private async void RiskAgreeClickedAsync(object obj)
+        {
+            DebugHelper.RiskAgreed();
+            await InitializeDataAsync();
         }
 
         private async void SaveDebugLogAsync(object args)
@@ -414,38 +460,5 @@ namespace SophiApp.ViewModels
             if (conditionsHelper.Result)
                 await InitializeDataAsync();
         }
-
-        private async Task InitializeDataAsync()
-        {
-            SetVisibleViewTag(Tags.ViewLoading);
-            SetTaskbarItemInfoProgress();
-            MouseHelper.ShowWaitCursor(show: true);
-            await DeserializeTextedElementsAsync();
-            await InitializeTextedElementsAsync();
-            await InitializeUwpElementsAsync();
-            await InitializeWatchersAsync();
-            SetVisibleViewTag(Tags.ViewPrivacy);
-            SetControlsHitTest(hamburgerHitTest: true);
-            MouseHelper.ShowWaitCursor(show: false);
-            SetTaskbarItemInfoProgress();
-        }
-
-        private async Task InitializeTextedElementsAsync()
-        {
-            DebugHelper.StartInitTextedElements();
-            var stopwatch = Stopwatch.StartNew();
-
-            var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
-                                    InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
-                                    InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
-
-            await Task.WhenAll(task);
-            stopwatch.Stop();
-            DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
-        }
-
-        private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                       .ToList()
-                                                                                                       .ForEach(element => element.Initialize()));
     }
 }

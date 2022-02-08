@@ -13,6 +13,7 @@
     <system:String x:Key="Tags.Conditions.SomethingWrong">SomethingWrong</system:String>
     <system:String x:Key="Tags.Conditions.UpdateBuildRevision">UpdateBuildRevision</system:String>
     <system:String x:Key="Tags.Conditions.Windows10DebloaterNotUsed">Windows10DebloaterNotUsed</system:String>
+    <system:String x:Key="Tags.View.ApplyingException">ApplyingException</system:String>
     <system:String x:Key="Tags.View.ContextMenu">ContextMenu</system:String>
     <system:String x:Key="Tags.View.Games">Games</system:String>
     <system:String x:Key="Tags.View.Loading">Loading</system:String>

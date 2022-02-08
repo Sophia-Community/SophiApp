@@ -31,7 +31,7 @@
             <Setter Property="Grid.Row" Value="3" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="Margin" Value="10, 0, 10, 10" />
             <Setter Property="Content" Value="{Binding Path=TextContent, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
     </UserControl.Resources>
@@ -50,7 +50,7 @@
                         <RowDefinition Height="150" />
                     </Grid.RowDefinitions>
                     <controls:Logo Grid.Row="1" Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <ContentPresenter Content="{Binding Path=TextContent, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <ContentPresenter />
                 </Grid>
             </Grid>
         </ControlTemplate>

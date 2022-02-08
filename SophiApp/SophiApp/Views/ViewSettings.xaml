@@ -193,7 +193,7 @@
                 </DataTrigger>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Settings}">
                     <Setter Property="Visibility" Value="Visible" />
-                </DataTrigger>
+                </DataTrigger> 
                 <Trigger Property="Visibility" Value="Visible">
                     <Trigger.EnterActions>
                         <BeginStoryboard>

@@ -1,5 +1,4 @@
-﻿using Microsoft.Dism;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Dto;
 using SophiApp.Helpers;
@@ -425,15 +424,12 @@ namespace SophiApp.Customisations
         public static bool _702() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK)
                                         || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
 
-        public static bool _800() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
-                                        && PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE;
+        public static bool _800() => PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE;
 
-        public static bool _801() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
-                                        && PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE;
+        public static bool _801() => PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE;
 
-        public static bool _802() => WmiHelper.GetProperty<bool>(nameSpace: DEFENDER_NAMESPACE, className: DEFENDER_COMPUTER_STATUS_CLASS, propertyName: ANTISPYWARE_ENABLED)
-                                        && (ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS)
-                                            || Environment.GetEnvironmentVariable(_802_FORCE_USE_SANDBOX, EnvironmentVariableTarget.Machine) == _802_SANDBOX_ENABLED_VALUE);
+        public static bool _802() => ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS)
+                                        || Environment.GetEnvironmentVariable(_802_FORCE_USE_SANDBOX, EnvironmentVariableTarget.Machine) == _802_SANDBOX_ENABLED_VALUE;
 
         public static bool _803() => PowerShellHelper.GetScriptResult<bool>(_803_PROGRAM_AUDIT_ENABLED_PS);
 

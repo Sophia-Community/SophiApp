@@ -32,15 +32,6 @@ namespace SophiApp.Helpers
             return (T)info.Properties[propertyName].Value;
         }
 
-        internal static T GetProperty<T>(string nameSpace, string className, string propertyName)
-        {
-            var searcher = GetManagementObjectSearcher(nameSpace, $"SELECT {propertyName} FROM {className}");
-            return (T)searcher.Get()
-                              .Cast<ManagementBaseObject>()
-                              .FirstOrDefault()
-                              .GetPropertyValue($"{propertyName}");
-        }
-
         internal static string GetVideoControllerDacType()
         {
             var scope = @"Root\Cimv2";

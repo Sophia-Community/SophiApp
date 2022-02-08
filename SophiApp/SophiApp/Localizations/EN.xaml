@@ -21,10 +21,11 @@
     <system:String x:Key="Conditions.OsUpdateBuildRevision.LowerVersion">Your version is lower than the supported one.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">The minimum Windows 10 supported build is 1151.</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.ReinstallOs">As a precaution, reinstall the entire OS.</system:String>
+    <system:String x:Key="Conditions.ReinstallOs">As a precaution, reinstall the entire OS.</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex's Windows10Debloater PowerShell script.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows Update</system:String>
+    <system:String x:Key="Localization.ViewApplyingException.HasException">An error occurred when applying the OS settings!</system:String>
     <system:String x:Key="Localization.About.MadeWith">Made with</system:String>
     <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>

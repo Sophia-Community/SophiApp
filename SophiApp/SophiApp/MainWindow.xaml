@@ -260,13 +260,14 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsIsInfected}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:ActorLink Margin="{StaticResource MarginViewConditionsText}"
                                             HorizontalAlignment="Center"
                                             Actor="{DynamicResource Conditions.OsIsInfected.Link}"
                                             Command="{Binding HyperLinkClickedCommand}"
                                             CommandParameter="{DynamicResource Conditions.OsIsInfected.Link}"
                                             Role="{DynamicResource Conditions.OsIsInfected.More}" />
-                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}"/>
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -275,8 +276,8 @@
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.StabilityCompromised}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.SycnexScript}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}"/>
+                        <TextBlock Text="{DynamicResource Conditions.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -309,6 +310,16 @@
                                 Command="{Binding SaveDebugLogCommand}"
                                 Text="{DynamicResource Localization.Settings.Debug.Save}" />
                     </StackPanel>
+                </views:ViewConditionsTemplate.TextContent>
+            </views:ViewConditionsTemplate>
+            <views:ViewConditionsTemplate x:Name="ViewApplyingException" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.View.ApplyingException}">
+                <views:ViewConditionsTemplate.TextContent>
+                    <TextBlock Text="{DynamicResource Localization.ViewApplyingException.HasException}"
+                                   Style="{StaticResource BoldText}"
+                                   Margin="{StaticResource MarginViewConditionsText}"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" />
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
 
