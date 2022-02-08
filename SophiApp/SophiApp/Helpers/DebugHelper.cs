@@ -91,15 +91,15 @@ namespace SophiApp.Helpers
             $"Pre-release version is available: {release.SophiApp_pre_release}",
         });
 
-        internal static void HasUpdateResponse() => WriteInfoLog("When checking for an update, a response was received from the update server");
+        internal static void HasUpdateResponse() => WriteInfoLog("After checking for update a response was received from the update server");
 
-        internal static void IsNewRelease() => WriteInfoLog("The update can be done");
+        internal static void IsNewRelease() => WriteInfoLog("The update can be proceeded");
 
-        internal static void LinkClicked(string link) => WriteStatusLog($"Clicked link: \"{link}\"");
+        internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
 
         internal static void OsConditionChanged(ICondition condition) => WriteStatusLog($"{condition.Tag} is: {condition.Result}");
 
-        internal static void RiskAgreed() => WriteStatusLog("THE USER HAS AGREED TO ASSUME THE RISKS AND LIABILITY FOR ANY POSSIBLE DAMAGES");
+        internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
         internal static void Save(string path) => File.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
 
@@ -117,7 +117,7 @@ namespace SophiApp.Helpers
 
         internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
 
-        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying the setting(s) took {totalSeconds:N0} second(s)");
+        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 
         internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Os conditions");
 
@@ -129,13 +129,13 @@ namespace SophiApp.Helpers
 
         internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
 
-        internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The element {elementID} has changed status to: {elementStatus}");
+        internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The {elementID} element changed status to: {elementStatus}");
 
-        internal static void TextedElementInit(uint elementID, double totalSeconds) => WriteInitLog($"The element {elementID} was initialized in {totalSeconds:N3} second(s)");
+        internal static void TextedElementInit(uint elementID, double totalSeconds) => WriteInitLog($"The {elementID} element was initialized in {totalSeconds:N3} second(s)");
 
         internal static void UpdateNotNecessary() => WriteInfoLog("No update required");
 
-        internal static void UwpForAllUsersState(ElementStatus value) => WriteStatusLog($"Uwp for all users switch state is: {value}");
+        internal static void UwpForAllUsersState(ElementStatus value) => WriteStatusLog($"The \"UWP for all users\" switch state is: {value}");
 
         internal static void UwpRemoved(string packageName, double totalSeconds, AsyncStatus result) => WriteStatusLog($"The UWP package {packageName} was removed in {totalSeconds:N3} second(s) with the result: {result}");
 
