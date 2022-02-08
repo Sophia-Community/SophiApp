@@ -23,7 +23,7 @@
     <system:String x:Key="Conditions.OsUpdateBuildRevision.Supported">The minimum Windows 10 supported build is 1151.</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex's Windows10Debloater PowerShell script.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows Update</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">An error occurred while applying settings!</system:String>
     <system:String x:Key="Localization.About.MadeWith">Made with</system:String>
