@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace SophiApp.Views
 {
@@ -21,6 +20,6 @@ namespace SophiApp.Views
                 var scrollViewer = Template.FindName("ScrollViewerSettings", this) as ScrollViewer;
                 scrollViewer?.ScrollToTop();
             }
-        }        
+        }
     }
 }

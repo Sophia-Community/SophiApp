@@ -28,7 +28,7 @@ namespace SophiApp.ViewModels
         {
             SetTaskbarItemInfoProgress();
 
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 var applyingCancellationSource = new CancellationTokenSource();
                 var token = applyingCancellationSource.Token;
@@ -68,9 +68,7 @@ namespace SophiApp.ViewModels
                     var totalStopWatch = Stopwatch.StartNew();
                     CustomActions.Clear();
                     OnPropertyChanged(CustomActionsPropertyName);
-                    TextedElements.Where(e => e.Status != ElementStatus.DISABLED)
-                                  .ToList()
-                                  .ForEach(element => element.GetCustomisationStatus());
+                    await GetTextedElementsStatusAsync();
                     GetUwpElements();
                     OsHelper.PostMessage();
                     OsHelper.RefreshEnvironment();
@@ -117,6 +115,22 @@ namespace SophiApp.ViewModels
                                                                                                     language: Localization.Language))
                                             .ToList();
             });
+        }
+
+        private Task GetTextedElementsStatus(string tag)
+        {
+            return Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag && element.Status != ElementStatus.DISABLED)
+                                                      .ToList()
+                                                      .ForEach(element => element.GetCustomisationStatus()));
+        }
+
+        private async Task GetTextedElementsStatusAsync()
+        {
+            var task = new Task[] { GetTextedElementsStatus("Privacy"), GetTextedElementsStatus("Personalization"), GetTextedElementsStatus("System"),
+                                    GetTextedElementsStatus("StartMenu"), GetTextedElementsStatus("UwpApps"), GetTextedElementsStatus("Games"),
+                                    GetTextedElementsStatus("TaskScheduler"), GetTextedElementsStatus("Security"), GetTextedElementsStatus("ContextMenu") };
+
+            await Task.WhenAll(task);
         }
 
         private void GetUwpElements()
@@ -212,8 +226,8 @@ namespace SophiApp.ViewModels
         }
 
         private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                        .ToList()
-                                                                                                        .ForEach(element => element.Initialize()));
+                                                                                                         .ToList()
+                                                                                                         .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
