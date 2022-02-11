@@ -10,7 +10,7 @@ namespace SophiApp.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return System.Convert.ToInt32(value) == 0 ? Visibility.Visible : Visibility.Collapsed;
-        } //=> System.Convert.ToInt32(value) == 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

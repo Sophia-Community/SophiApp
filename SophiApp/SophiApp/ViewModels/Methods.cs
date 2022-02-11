@@ -225,9 +225,9 @@ namespace SophiApp.ViewModels
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
 
-        private Task InitializeTextedElements(string tag) => Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                         .ToList()
-                                                                                                         .ForEach(element => element.Initialize()));
+        private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
+                                                                                                        .ToList()
+                                                                                                        .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -236,7 +236,7 @@ namespace SophiApp.ViewModels
 
             var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
                                     InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
-                                    InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
+                                    InitializeTextedElements("TaskSheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
 
             await Task.WhenAll(task);
             stopwatch.Stop();
