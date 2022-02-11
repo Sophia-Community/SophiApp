@@ -37,13 +37,12 @@ namespace SophiApp.Helpers
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
 
-        internal const uint WIN10_MAX_SUPPORT_BUILD = 19044;
         internal const uint WIN10_MIN_SUPPORT_BUILD = 19041;
-        internal const uint WIN11_MIN_SUPPORT_BUILD = 22000;
+        internal const uint WIN11_SUPPORT_BUILD = 22000;
 
         private static WindowsIdentity GetCurrentUser() => System.Security.Principal.WindowsIdentity.GetCurrent();
 
-        private static bool IsWindows11() => GetBuild() >= WIN11_MIN_SUPPORT_BUILD;
+        private static bool IsWindows11() => GetBuild() >= WIN11_SUPPORT_BUILD;
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int PostMessageW(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);

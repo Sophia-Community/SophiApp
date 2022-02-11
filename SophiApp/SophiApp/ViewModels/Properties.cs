@@ -2,6 +2,7 @@
 using SophiApp.Customisations;
 using SophiApp.Helpers;
 using SophiApp.Models;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -137,7 +138,7 @@ namespace SophiApp.ViewModels
             }
         }
 
-        public List<TextedElement> TextedElements { get; private set; }
+        public ConcurrentBag<TextedElement> TextedElements { get; private set; }
 
         public List<UwpElement> UwpElementsAllUsers
         {

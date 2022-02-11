@@ -7,6 +7,7 @@ using SophiApp.Interfaces;
 using SophiApp.Models;
 using SophiApp.Watchers;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -109,11 +110,12 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
-                TextedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                var deserializedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                             .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
                                                                                                 statusHandler: OnTextedElementStatusChanged,
-                                                                                                    language: Localization.Language))
-                                            .ToList();
+                                                                                                    language: Localization.Language));
+
+                TextedElements = new ConcurrentBag<TextedElement>(deserializedElements);
             });
         }
 
@@ -260,7 +262,12 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var localization = localizationsHelper.FindName(args as string);
-                TextedElements.ForEach(element => element.ChangeLanguage(localization.Language));
+
+                foreach (var element in TextedElements)
+                {
+                    element.ChangeLanguage(localization.Language);
+                }
+
                 localizationsHelper.Change(localization);
                 SetLocalizationProperty(localization);
                 OnPropertyChanged(AppSelectedThemePropertyName);
@@ -328,7 +335,12 @@ namespace SophiApp.ViewModels
             {
                 CustomActions.Clear();
                 OnPropertyChanged(CustomActionsPropertyName);
-                TextedElements.ForEach(element => element.GetCustomisationStatus());
+
+                foreach (var element in TextedElements)
+                {
+                    element.GetCustomisationStatus();
+                }
+
                 GetUwpElements();
             });
 

@@ -217,11 +217,12 @@
             <views:ViewConditionsTemplate x:Name="ViewConditionsOsUpdateBuildRevision" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.UpdateBuildRevision}">
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
-                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.LowerVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.MinimumVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.Windows10Build.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.Windows11Build.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:CommandButton
-                                Margin="0, 10, 0, 0"
+                                Margin="0, 10, 0, 10"
                                 HorizontalAlignment="Center"
                                 Command="{Binding OpenUpdateCenterWindowCommand}"
                                 Text="{DynamicResource Conditions.WindowsUpdateCenter.Open}" />
@@ -231,8 +232,9 @@
             <views:ViewConditionsTemplate x:Name="ViewConditionsNoRebootRequired" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.NoRebootRequired}">
                     <views:ViewConditionsTemplate.TextContent>
                         <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.NoRebootRequired}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        </StackPanel>
+                        <TextBlock Text="{DynamicResource Conditions.NoRebootRequired.RebootPending}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.NoRebootRequired.PleaseReboot}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                    </StackPanel>
                     </views:ViewConditionsTemplate.TextContent>
                 </views:ViewConditionsTemplate>
             <views:ViewConditionsTemplate x:Name="ViewConditionsIsSingleSession" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.Conditions.IsSingleSession}">
@@ -276,7 +278,6 @@
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.StabilityCompromised}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.SycnexScript}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>

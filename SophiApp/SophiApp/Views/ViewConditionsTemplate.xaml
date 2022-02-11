@@ -39,7 +39,7 @@
         <ControlTemplate>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="450" />
+                    <RowDefinition Height="500" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
@@ -47,7 +47,7 @@
                         <RowDefinition Height="50" />
                         <RowDefinition Height="200" />
                         <RowDefinition Height="50" />
-                        <RowDefinition Height="150" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <controls:Logo Grid.Row="1" Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <ContentPresenter />

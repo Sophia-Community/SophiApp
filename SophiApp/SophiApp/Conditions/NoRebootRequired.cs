@@ -2,20 +2,32 @@
 using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SophiApp.Conditions
 {
     internal class NoRebootRequired : ICondition
     {
-        private const string REBOOT_PENDING = "RebootPending";
-        private const string REBOOT_REQUIRED = "RebootRequired";
-        private const string SYSTEM_REBOOT_PENDING = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing";
-        private const string UPDATE_REBOOT_REQUIRED = @"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update";
+        private const string CBS_PACKAGES_PENDING = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\PackagesPending";
+        private const string CBS_REBOOT_IN_PROGRESS = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootInProgress";
+        private const string CBS_REBOOT_PENDING = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending";
+        private const string UPDATE_POST_REBOOT = @"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\PostRebootReporting";
+        private const string UPDATE_REBOOT_REQUIRED = @"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired";
 
         public bool Result { get; set; }
         public string Tag { get; set; } = Tags.ConditionNoRebootRequired;
 
-        public bool Invoke() => Result = RegHelper.KeyExist(RegistryHive.LocalMachine, SYSTEM_REBOOT_PENDING, REBOOT_PENDING).Invert()
-                                            || RegHelper.KeyExist(RegistryHive.LocalMachine, UPDATE_REBOOT_REQUIRED, REBOOT_REQUIRED).Invert();
+        public bool Invoke()
+        {
+            var registryRebootRequired = new List<bool>
+            {
+                RegHelper.SubKeyExist(RegistryHive.LocalMachine, CBS_PACKAGES_PENDING), RegHelper.SubKeyExist(RegistryHive.LocalMachine, CBS_REBOOT_PENDING),
+                RegHelper.SubKeyExist(RegistryHive.LocalMachine, CBS_REBOOT_IN_PROGRESS), RegHelper.SubKeyExist(RegistryHive.LocalMachine, UPDATE_POST_REBOOT),
+                RegHelper.SubKeyExist(RegistryHive.LocalMachine, UPDATE_REBOOT_REQUIRED)
+            };
+
+            return Result = registryRebootRequired.Any(k => k == true).Invert();
+        }
     }
 }
