@@ -3,6 +3,7 @@
     internal partial class AppVM
     {
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
+        private const string ApplyingSettingsErrorPropertyName = "ApplyingSettingsError";
         private const string AppSelectedThemePropertyName = "AppSelectedTheme";
         private const string AppThemesPropertyName = "AppThemes";
         private const string ConditionsHelperErrorPropertyName = "ConditionsHelperError";

@@ -9,10 +9,10 @@ using System.Net;
 
 namespace SophiApp.Conditions
 {
-    internal class NoNewVersion : ICondition
+    internal class NewVersionCondition : IStartupCondition
     {
-        public bool Result { get; set; }
-        public string Tag { get; set; } = Tags.ConditionNoNewVersion;
+        public bool HasProblem { get; set; }
+        public ConditionsTag Tag { get; set; } = ConditionsTag.NewVersion;
 
         public bool Invoke()
         {
@@ -41,13 +41,13 @@ namespace SophiApp.Conditions
                         DebugHelper.UpdateNotNecessary();
                     }
 
-                    return Result = hasNewVersion.Invert();
+                    return HasProblem = hasNewVersion;
                 }
             }
             catch (WebException e)
             {
                 DebugHelper.HasException("An error occurred while checking for an update", e);
-                return Result = true;
+                return HasProblem = true;
             }
             catch (Exception e)
             {

@@ -93,10 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Conditions\IsSingleSession.cs" />
-    <Compile Include="Conditions\OneInstanceOnly.cs" />
-    <Compile Include="Conditions\NoRebootRequired.cs" />
-    <Compile Include="Conditions\Windows10DebloaterNotUsed.cs" />
+    <Compile Include="StartupConditions\SingleAdminSessionCondition.cs" />
+    <Compile Include="StartupConditions\SingleInstanceCondition.cs" />
+    <Compile Include="StartupConditions\RebootRequiredCondition.cs" />
+    <Compile Include="StartupConditions\SycnexScriptCondition.cs" />
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>
     </Compile>
@@ -133,11 +133,10 @@
     <Compile Include="Commons\Theme.cs" />
     <Compile Include="Commons\ElementStatus.cs" />
     <Compile Include="Commons\UILanguage.cs" />
-    <Compile Include="Conditions\NoNewVersion.cs" />
-    <Compile Include="Conditions\LoggedUserAdmin.cs" />
-    <Compile Include="Conditions\OsBuildVersion.cs" />
-    <Compile Include="Conditions\OsNotInfected.cs" />
-    <Compile Include="Conditions\OsUpdateBuildRevision.cs" />
+    <Compile Include="StartupConditions\NewVersionCondition.cs" />
+    <Compile Include="StartupConditions\OsVersionCondition.cs" />
+    <Compile Include="StartupConditions\Win10TweakerCondition.cs" />
+    <Compile Include="StartupConditions\OsBuildVersionCondition.cs" />
     <Compile Include="Controls\ActorLink.xaml.cs">
       <DependentUpon>ActorLink.xaml</DependentUpon>
     </Compile>
@@ -224,7 +223,7 @@
     <Compile Include="Dto\UwpElementDto.cs" />
     <Compile Include="Dto\VCRedistrDto.cs" />
     <Compile Include="Helpers\ComObjectHelper.cs" />
-    <Compile Include="Helpers\ConditionsHelper.cs" />
+    <Compile Include="Helpers\StartupConditionsHelper.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CustomisationsHelper.cs" />
@@ -254,7 +253,7 @@
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
     <Compile Include="Helpers\TextHelper.cs" />
-    <Compile Include="Interfaces\ICondition.cs" />
+    <Compile Include="Interfaces\IStartupCondition.cs" />
     <Compile Include="Interfaces\IElement.cs" />
     <Compile Include="Interfaces\IParentElements.cs" />
     <Compile Include="Models\AdvancedSwitch.cs" />

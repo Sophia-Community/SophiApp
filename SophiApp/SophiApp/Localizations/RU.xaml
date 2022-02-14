@@ -27,7 +27,8 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex. На всякий случай переустановите ОС.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Открыть Центр обновления Windows</system:String>
-    <system:String x:Key="Localization.ViewApplyingException.HasException">При применении настроек произошла ошибка!</system:String>
+    <system:String x:Key="Localization.ViewApplyingException.InApplying">При применении</system:String>
+    <system:String x:Key="Localization.ViewApplyingException.HasException">произошла ошибка.</system:String>
     <system:String x:Key="Localization.About.MadeWith">Сделано с</system:String>
     <system:String x:Key="Localization.About.OfWindows">к Windows&#174;</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>

@@ -11,6 +11,7 @@ namespace SophiApp.ViewModels
     internal partial class AppVM
     {
         private bool advancedSettingsVisibility;
+        private string applyingSettingsError;
         private string buildName;
         private string conditionsHelperError;
         private List<Customisation> customActions;
@@ -39,6 +40,16 @@ namespace SophiApp.ViewModels
             }
         }
 
+        public string ApplyingSettingsError
+        {
+            get => applyingSettingsError;
+            private set
+            {
+                applyingSettingsError = value;
+                OnPropertyChanged(ApplyingSettingsErrorPropertyName);
+            }
+        }
+
         public string AppName { get => AppHelper.AppName; }
 
         public Theme AppSelectedTheme
@@ -52,7 +63,6 @@ namespace SophiApp.ViewModels
         }
 
         public List<string> AppThemes => themesHelper.Themes.Select(theme => theme.Name).ToList();
-
         public string BuildName { get => buildName; }
 
         public string ConditionsHelperError
@@ -115,6 +125,10 @@ namespace SophiApp.ViewModels
                 OnPropertyChanged(InfoPanelVisibilityPropertyName);
             }
         }
+
+        public bool IsRelease { get; } = AppHelper.IsRelease;
+
+        public bool IsWindows11 { get; } = OsHelper.IsWindows11();
 
         public Localization Localization
         {

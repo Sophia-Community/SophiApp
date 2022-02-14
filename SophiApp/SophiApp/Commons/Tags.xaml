@@ -3,16 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Tags.Conditions.IsSingleSession">IsSingleSession</system:String>
-    <system:String x:Key="Tags.Conditions.LoggedUserAdmin">LoggedUserAdmin</system:String>
-    <system:String x:Key="Tags.Conditions.NoNewVersion">NoNewVersion</system:String>
-    <system:String x:Key="Tags.Conditions.NoRebootRequired">NoRebootRequired</system:String>
-    <system:String x:Key="Tags.Conditions.OneInstanceOnly">OneInstanceOnly</system:String>
-    <system:String x:Key="Tags.Conditions.OsBuildVersion">OsBuildVersion</system:String>
-    <system:String x:Key="Tags.Conditions.OsNotInfected">OsNotInfected</system:String>
-    <system:String x:Key="Tags.Conditions.SomethingWrong">SomethingWrong</system:String>
-    <system:String x:Key="Tags.Conditions.UpdateBuildRevision">UpdateBuildRevision</system:String>
-    <system:String x:Key="Tags.Conditions.Windows10DebloaterNotUsed">Windows10DebloaterNotUsed</system:String>
     <system:String x:Key="Tags.View.ApplyingException">ApplyingException</system:String>
     <system:String x:Key="Tags.View.ContextMenu">ContextMenu</system:String>
     <system:String x:Key="Tags.View.Games">Games</system:String>

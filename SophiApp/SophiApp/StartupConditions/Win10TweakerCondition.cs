@@ -4,25 +4,25 @@ using SophiApp.Interfaces;
 
 namespace SophiApp.Conditions
 {
-    internal class OsNotInfected : ICondition
+    internal class Win10TweakerCondition : IStartupCondition
     {
         private readonly string W10T_REGISTRY_PATH = @"Software\Win 10 Tweaker";
 
-        public bool Result { get; set; }
-        public string Tag { get; set; } = Tags.ConditionOsNotInfected;
+        public bool HasProblem { get; set; }
+        public ConditionsTag Tag { get; set; } = ConditionsTag.Win10Tweaker;
 
         public bool Invoke()
         {
             try
             {
-                Result = RegHelper.SubKeyExist(Microsoft.Win32.RegistryHive.CurrentUser, W10T_REGISTRY_PATH).Invert();
+                HasProblem = RegHelper.SubKeyExist(Microsoft.Win32.RegistryHive.CurrentUser, W10T_REGISTRY_PATH);
             }
             catch (System.Security.SecurityException)
             {
-                Result = false;
+                HasProblem = true;
             }
 
-            return Result;
+            return HasProblem;
         }
     }
 }

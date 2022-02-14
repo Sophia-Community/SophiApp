@@ -31,8 +31,22 @@
                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                Style="{DynamicResource SmallText}"
                                Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+
+                    <TextBlock x:Name="TextBlockPreRelease"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="5, 0, 0, 0"
+                               Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                               Style="{DynamicResource SmallText}"
+                               Text="PR"
+                               Visibility="Collapsed" />
                 </StackPanel>
             </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsRelease}" Value="False">
+                    <Setter TargetName="TextBlockPreRelease" Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

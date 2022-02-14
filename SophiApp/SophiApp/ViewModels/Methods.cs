@@ -58,6 +58,8 @@ namespace SophiApp.ViewModels
                         applyingCancellationSource.Cancel();
                         CustomActions.Clear();
                         OnPropertyChanged(CustomActionsPropertyName);
+                        var errorDescription = $@"{Application.Current.FindResource("Localization.ViewApplyingException.InApplying")} {TextedElements.Where(element => element.Id == action.Id).First().Header} {Application.Current.FindResource("Localization.ViewApplyingException.HasException")}";
+                        SetApplyingSettingsError(errorDescription);
                         SetVisibleViewTag(Tags.ApplyingException);
                         SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false);
                         break;
@@ -111,9 +113,10 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var deserializedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
-                                            .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                                statusHandler: OnTextedElementStatusChanged,
-                                                                                                    language: Localization.Language));
+                                                      .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
+                                                                                                        statusHandler: OnTextedElementStatusChanged,
+                                                                                                            language: Localization.Language))
+                                                      .OrderByDescending(element => element.Id);
 
                 TextedElements = new ConcurrentBag<TextedElement>(deserializedElements);
             });
@@ -228,8 +231,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                        .ToList()
-                                                                                                        .ForEach(element => element.Initialize()));
+                                                                                                          .ToList()
+                                                                                                          .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -275,18 +278,17 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private void OnConditionsChanged(object sender, ICondition e)
+        private void OnConditionsHasError(object sender, Exception e)
         {
-            DebugHelper.OsConditionChanged(e);
-            if (e.Result == false)
-                SetVisibleViewTag(e.Tag);
+            DebugHelper.HasException("An error occurred during the startup OS condition check", e);
+            ConditionsHelperError = e.Message;
+            SetVisibleViewTag($"{ConditionsTag.SomethingWrong}");
         }
 
-        private void OnConditionsHelperError(object sender, Exception e)
+        private void OnConditionsHasProblem(object sender, IStartupCondition e)
         {
-            DebugHelper.HasException("An error occurred during the startup condition check", e);
-            ConditionsHelperError = e.Message;
-            SetVisibleViewTag(Tags.ConditionSomethingWrong);
+            DebugHelper.OsConditionHasProblem(e);
+            SetVisibleViewTag($"{e.Tag}");
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
@@ -390,6 +392,8 @@ namespace SophiApp.ViewModels
             });
         }
 
+        private void SetApplyingSettingsError(string description) => ApplyingSettingsError = description;
+
         private void SetAppSelectedTheme(Theme theme) => AppSelectedTheme = theme;
 
         private void SetControlsHitTest(bool hamburgerHitTest = true, bool viewsHitTest = true, bool windowCloseHitTest = true)
@@ -474,16 +478,16 @@ namespace SophiApp.ViewModels
 
         private async void UwpButtonClickedAsync(object args) => await Task.Run(() => SetCustomAction(args as UwpElement));
 
-        internal async void InitializeOsConditionsAsync()
+        internal async void InitializeStartupConditionsAsync()
         {
-            DebugHelper.StartInitOsConditions();
+            DebugHelper.StartStartupConditions();
             var stopwatch = Stopwatch.StartNew();
-            var conditionsHelper = new ConditionsHelper(errorHandler: OnConditionsHelperError, resultHandler: OnConditionsChanged);
-            await conditionsHelper.InvokeAsync();
+            var conditionsHelper = new StartupConditionsHelper(errorHandler: OnConditionsHasError, resultHandler: OnConditionsHasProblem); //TODO: OnConditionsHasError !!!
+            await conditionsHelper.CheckAsync();
             stopwatch.Stop();
-            DebugHelper.StopInitOsConditions(stopwatch.Elapsed.TotalSeconds);
+            DebugHelper.StopStartupConditions(stopwatch.Elapsed.TotalSeconds);
 
-            if (conditionsHelper.Result)
+            if (conditionsHelper.HasProblem.Invert())
                 await InitializeDataAsync();
         }
     }

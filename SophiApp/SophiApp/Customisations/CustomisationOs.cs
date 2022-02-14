@@ -18,6 +18,7 @@ namespace SophiApp.Customisations
     {
         public static void _100(bool IsChecked)
         {
+            throw new ArgumentOutOfRangeException();
             var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK);
             var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).FirstOrDefault();
 

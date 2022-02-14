@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SophiApp.Conditions
 {
-    internal class NoRebootRequired : ICondition
+    internal class RebootRequiredCondition : IStartupCondition
     {
         private const string CBS_PACKAGES_PENDING = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\PackagesPending";
         private const string CBS_REBOOT_IN_PROGRESS = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootInProgress";
@@ -15,8 +15,8 @@ namespace SophiApp.Conditions
         private const string UPDATE_POST_REBOOT = @"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\PostRebootReporting";
         private const string UPDATE_REBOOT_REQUIRED = @"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired";
 
-        public bool Result { get; set; }
-        public string Tag { get; set; } = Tags.ConditionNoRebootRequired;
+        public bool HasProblem { get; set; }
+        public ConditionsTag Tag { get; set; } = ConditionsTag.RebootRequired;
 
         public bool Invoke()
         {
@@ -27,7 +27,7 @@ namespace SophiApp.Conditions
                 RegHelper.SubKeyExist(RegistryHive.LocalMachine, UPDATE_REBOOT_REQUIRED)
             };
 
-            return Result = registryRebootRequired.Any(k => k == true).Invert();
+            return HasProblem = registryRebootRequired.Any(k => k == true);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace SophiApp.Helpers
 
         internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
 
-        internal static void OsConditionChanged(ICondition condition) => WriteStatusLog($"{condition.Tag} is: {condition.Result}");
+        internal static void OsConditionHasProblem(IStartupCondition condition) => WriteStatusLog($"{condition.Tag} is has problem: {condition.HasProblem}");
 
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
@@ -109,17 +109,15 @@ namespace SophiApp.Helpers
 
         internal static void StartApplyingSettings(int actionsCount) => WriteStatusLog($"Started applying {actionsCount} setting(s)");
 
-        internal static void StartInitOsConditions() => WriteStatusLog("Starting the initial OS conditions");
-
         internal static void StartInitTextedElements() => WriteStatusLog("Started initialization of texted elements");
 
         internal static void StartInitUwpApps() => WriteStatusLog("Started initialization of uwp elements");
 
         internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
 
-        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
+        internal static void StartStartupConditions() => WriteStatusLog("Starting the OS conditions check");
 
-        internal static void StopInitOsConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize Os conditions");
+        internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 
         internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize texted elements");
 
@@ -128,6 +126,8 @@ namespace SophiApp.Helpers
         internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
 
         internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
+
+        internal static void StopStartupConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to Os conditions checks");
 
         internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The {elementID} element changed status to: {elementStatus}");
 
