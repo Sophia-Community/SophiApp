@@ -16,12 +16,6 @@ body:
     - label: Refer to the [System requirements](https://github.com/Sophia-Community/SophiApp/blob/master/README.md#system-requirements);
     - label: Attach a created log. You may find it in the app folder
 - type: textarea
-   attributes:
-     label: Description
-     description: A clear description of what the bug is.
-   validations:
-     required: true
-- type: textarea
   attributes:
     label: Steps To Reproduce
     description: Steps to reproduce the behavior.
@@ -32,13 +26,13 @@ body:
      4. An error occurs
   validations:
     required: false
-  - type: textarea
+- type: textarea
     attributes:
       label: Expected behavior
       description: A clear description of what is expected to happen.
     validations:
       required: true
-  - type: input
+- type: input
     id: sophiapp-version
     attributes:
       label: Files Version
@@ -46,14 +40,14 @@ body:
       placeholder: e.g. 1.0.0.22
     validations:
       required: true
-  - type: input
+- type: input
     attributes:
       label: Windows Version
       description: Which version of Windows are you using? Press <kbd>Win</kbd> + <kbd>Pause/Break</kbd> to open the page to copy from.
       placeholder: e.g. Windows 11 21H2 22000.527
     validations:
       required: true
-  - type: textarea
+- type: textarea
     attributes:
       label: Logs
       description: |
