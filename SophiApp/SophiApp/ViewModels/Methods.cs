@@ -58,8 +58,7 @@ namespace SophiApp.ViewModels
                         applyingCancellationSource.Cancel();
                         CustomActions.Clear();
                         OnPropertyChanged(CustomActionsPropertyName);
-                        var errorDescription = $@"{Application.Current.FindResource("Localization.ViewApplyingException.InApplying")} {TextedElements.Where(element => element.Id == action.Id).First().Description} {Application.Current.FindResource("Localization.ViewApplyingException.HasException")}";
-                        SetApplyingSettingsError(errorDescription);
+                        SetApplyingSettingsError(TextedElements.Where(element => element.Id == action.Id).First().Header);
                         SetVisibleViewTag(Tags.ApplyingException);
                         SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false);
                         break;

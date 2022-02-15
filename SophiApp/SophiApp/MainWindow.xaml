@@ -74,8 +74,8 @@
         </Style>
     </Window.Style>
     <Window.Resources>
-        <Thickness x:Key="MarginViewConditionsText" Left="5" Top="0" Right="5" Bottom="10" />
         <Thickness x:Key="DoubleMarginViewConditionsText" Left="5" Top="20" Right="5" Bottom="0" />
+        <Thickness x:Key="MarginViewConditionsText" Left="5" Top="0" Right="5" Bottom="10" />
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -329,10 +329,19 @@
             </views:ViewConditionsTemplate>
             <views:ViewConditionsTemplate x:Name="ViewApplyingException" Grid.Column="1" Panel.ZIndex="20" Tag="{StaticResource Tags.View.ApplyingException}">
                 <views:ViewConditionsTemplate.TextContent>
-                    <TextBlock Text="{Binding ApplyingSettingsError}"
-                                       Style="{StaticResource BoldText}"
-                                       Margin="{StaticResource MarginViewConditionsText}"
-                                       TextWrapping="Wrap" />
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Localization.ViewApplyingException.InApplying}"
+                                   Style="{StaticResource BoldText}"
+                                   Margin="{StaticResource MarginViewConditionsText}"/>
+
+                        <TextBlock Text="{Binding ApplyingSettingsError, StringFormat='&quot;{0}&quot;'}"
+                                   Style="{StaticResource BoldText}"
+                                   Margin="{StaticResource MarginViewConditionsText}"/>
+
+                        <TextBlock Text="{DynamicResource Localization.ViewApplyingException.HasException}"
+                                   Style="{StaticResource BoldText}"
+                                   Margin="{StaticResource MarginViewConditionsText}"/>
+                    </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
             <Grid Grid.Column="1" Panel.ZIndex="10">
