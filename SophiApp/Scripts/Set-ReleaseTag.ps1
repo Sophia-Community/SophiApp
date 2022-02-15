@@ -67,7 +67,9 @@ if (Test-Path -Path $AppHelper)
 	$AppHelperContent = Get-Content -Path $AppHelper
 	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern $IsReleasePattern | Select-Object -Last 1).LineNumber
 	$AppHelperContent[$IsReleaseLineNumber - 1] = $IsReleaseString
-	Set-Content -Path $AppHelper -Value $AppHelperContent -Confirm:$false -Encoding UTF8 -Force	
+	Set-Content -Path $AppHelper -Value $AppHelperContent -Confirm:$false -Encoding UTF8 -Force
+	
+	Write-Host "`nAppHelper.cs saved"
 }
 else
 {

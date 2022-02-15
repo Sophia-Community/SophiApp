@@ -23,9 +23,9 @@
 	Copyright (c) 2021 Inestic
 #>
 
-$ConditionsHelper = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Helpers\ConditionsHelper.cs"
+$ConditionsHelper = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Helpers\StartupConditionsHelper.cs"
 $CommentPattern = "//"
-$UpdatePattern = "//new NoNewVersion()"
+$UpdatePattern = "//new NewVersionCondition()"
 
 Write-Host "`nPath to ConditionsHelper.cs: ""$ConditionsHelper"""
 
