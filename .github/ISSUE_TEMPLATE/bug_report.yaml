@@ -1,5 +1,6 @@
 name: SophiApp 🐛
 description: Report errors or unexpected behavior 🤔
+labels: bug
 body:
   - type: markdown
     attributes:
