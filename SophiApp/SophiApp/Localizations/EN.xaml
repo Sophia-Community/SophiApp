@@ -19,13 +19,13 @@
     <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAgree">I understand the risk and agree to be responsible for any possible damage</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your OS build version is lower than the supported one.</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Please run Windows Update to update your Windows to the latest version.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">The minimum supported build: Windows 10 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">The minimum supported build: Windows 11 22000.493.</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex. Reinstall the OS just in case.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your OS build version is lower than the supported one.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">The minimum supported build: Windows 10 1904x.1151.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">The minimum supported build: Windows 11 22000.493.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.RunUpdate">Please run Windows Update to update your Windows to the latest version.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows Update</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">While applying</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">an error occurred.</system:String>
