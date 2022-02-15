@@ -81,8 +81,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Windows">
-      <HintPath>C:\Users\Test\Documents\GitHub\SophiApp\SophiApp\Binary\Windows.winmd</HintPath>
+    <Reference Include="Windows, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binary\Windows.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -555,7 +556,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="TaskScheduler">
-      <Version>2.9.3</Version>
+      <Version>2.10.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

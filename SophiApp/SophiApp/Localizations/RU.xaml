@@ -73,7 +73,7 @@
     <system:String x:Key="Localization.Settings.Themes.Light">Светлая</system:String>
     <system:String x:Key="Localization.Settings.Updates">Обновления</system:String>
     <system:String x:Key="Localization.Settings.UpdateVersion">Проверить обновления</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки "%SystemRoot%\SoftwareDistribution\Download"</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки &quot;%SystemRoot%\SoftwareDistribution\Download&quot;</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кэш обновлений Windows успешно удален</system:String>
     <system:String x:Key="Localization.StartMenu">Пуск</system:String>
     <system:String x:Key="Localization.System">Система</system:String>

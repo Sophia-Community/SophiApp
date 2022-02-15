@@ -73,7 +73,7 @@
     <system:String x:Key="Localization.Settings.Themes.Light">Light</system:String>
     <system:String x:Key="Localization.Settings.Updates">Updates</system:String>
     <system:String x:Key="Localization.Settings.UpdateVersion">Check for updates</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleans up the "%SystemRoot%\SoftwareDistribution\Download" folder.</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleans up the &quot;%SystemRoot%\SoftwareDistribution\Download&quot; folder.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.StartMenu">Start Menu</system:String>
     <system:String x:Key="Localization.System">System</system:String>
