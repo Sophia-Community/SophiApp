@@ -27,7 +27,7 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 0
-        
+    
     - name: Preparing The App Files
       run: |
         . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
