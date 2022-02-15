@@ -6,9 +6,6 @@ body:
     attributes:
       label: Your Idea
       description: If you have an idea to improve SophiApp, describe it clearly.
-  - type: markdown
-    attributes:
-      value: |
   - type: input
     id: sophiapp-version
     attributes:
