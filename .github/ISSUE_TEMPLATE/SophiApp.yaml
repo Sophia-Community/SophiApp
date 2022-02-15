@@ -15,13 +15,53 @@ body:
     - label: Verify that this is not a Windows issue;
     - label: Refer to the [System requirements](https://github.com/Sophia-Community/SophiApp/blob/master/README.md#system-requirements);
     - label: Attach a created log. You may find it in the app folder
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear description of what the bug is.
+    validations:
+      required: true
 - type: textarea
   attributes:
-    label: Steps to reproduce
-    description: >
-      Write something :)
+    label: Steps To Reproduce
+    description: Steps to reproduce the behavior.
+    placeholder: |
+     1. Go to...
+     2. Do this...
+     3. Do that...
+     4. An error occurs
   validations:
-    required: true
+    required: false
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear description of what is expected to happen.
+    validations:
+      required: true
+  - type: input
+    id: sophiapp-version
+    attributes:
+      label: Files Version
+      description: Which version of SophiApp are you using? The version number can be found in the Settings
+      placeholder: e.g. 1.0.0.22
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Windows Version
+      description: Which version of Windows are you using? Press <kbd>Win</kbd> + <kbd>Pause/Break</kbd> to open the page to copy from.
+      placeholder: e.g. Windows 11 21H2 22000.527
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Logs
+      description: |
+        Log files to help us to isolate issue.
+      placeholder: |
+        You can attach image(s) or log file(s) by dragging them into this area.
+    validations:
+      required: true
 
 - type: markdown
   attributes:
