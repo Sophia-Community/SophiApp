@@ -21,7 +21,7 @@ jobs:
       App_Release_Path: SophiApp\SophiApp\bin\Release
       App_Script_Path: SophiApp\Scripts
       Binary_Folder_Name: Bin
-      Pre_Release: ${{ ToJson(github.event) }}
+      Pre_Release: ${{ ToJson(github.event.release) }}
 
     steps:
     - name: Checkout
