@@ -28,15 +28,14 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Dump GitHub context       
-      run: echo '${{ toJSON(github.ref) }}'    
-    
     - name: Preparing The App Files
       run: |
         . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
         . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
         . "$env:App_Script_Path\Set-DebugMode.ps1"        
         . "$env:App_Script_Path\Set-WinmdPath.ps1"
+      env:
+        Pre-Release: ${{ github.event.release.prerelease }}
       
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
