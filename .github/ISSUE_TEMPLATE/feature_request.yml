@@ -1,0 +1,28 @@
+name: Feature Request
+description: An idea to make SophiApp better
+labels: [feature request]
+body:
+  - type: textarea
+    attributes:
+      label: Your Idea
+      description: If you have an idea to improve SophiApp, describe it clearly.
+  - type: markdown
+    attributes:
+      value: |
+  - type: input
+    id: sophiapp-version
+    attributes:
+      label: SophiApp Version
+      description: Which version of SophiApp are you using? The version number can be found in the Settings
+      placeholder: e.g. 1.0.0.22
+  - type: input
+    attributes:
+      label: Windows Version
+      description: Which version of Windows are you using? Press <kbd>Win</kbd> + <kbd>Pause/Break</kbd> to open the page to copy from.
+      placeholder: e.g. Windows 11 21H2 22000.527
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Comments
+      description: Additional information or screenshots.
