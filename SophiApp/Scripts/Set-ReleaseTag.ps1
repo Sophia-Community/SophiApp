@@ -24,7 +24,10 @@
 #>
 $ReleaseApi = "https://api.github.com/repos/Sophia-Community/SophiApp/releases"
 $ReleaseResponse = (Invoke-WebRequest -Uri $ReleaseApi | ConvertFrom-Json)[0]
-Write-Host "`nRelease: $ReleaseResponse"
+$ReleaseTag = $ReleaseResponse.tag_name
+$IsPreRelease = $ReleaseResponse.prerelease
+Write-Host "`nRelease tag: $ReleaseTag"
+Write-Host "`nIs Pre-Release: $IsPreRelease"
 #$ReleaseTag = $args[0].Split("/") | Select-Object -Last 1
 #$AssemblyInfo = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Properties\AssemblyInfo.cs"
 #$AssemblyPattern = "AssemblyVersion"
