@@ -30,12 +30,15 @@ jobs:
     
     - name: Preparing The App Files
       run: |
+        echo *************
+        echo "$Pre_Release"
+        echo *************
         . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
         . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
         . "$env:App_Script_Path\Set-DebugMode.ps1"        
         . "$env:App_Script_Path\Set-WinmdPath.ps1"
       env:
-        Pre-Release: ${{ github.event.release.prerelease }}
+        Pre_Release: ${{ ToJson(github.event.release) }}
       
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
