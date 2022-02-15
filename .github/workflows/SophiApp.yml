@@ -21,7 +21,6 @@ jobs:
       App_Release_Path: SophiApp\SophiApp\bin\Release
       App_Script_Path: SophiApp\Scripts
       Binary_Folder_Name: Bin
-      Pre_Release: ${{ ToJson(github.event.release) }}
 
     steps:
     - name: Checkout
@@ -31,9 +30,6 @@ jobs:
     
     - name: Preparing The App Files
       run: |
-        echo *************
-        echo "$env:Pre_Release"
-        echo *************
         . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
         . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
         . "$env:App_Script_Path\Set-DebugMode.ps1"        
