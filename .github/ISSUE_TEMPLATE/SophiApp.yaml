@@ -60,7 +60,7 @@ body:
   - type: markdown
     attributes:
       value: >
-        If SophiApp crashes at the startup, please run this PowerShell code as `admin` [(how-to)](https://www.howtogeek.com/662611/9-ways-to-open-powershell-in-windows-10/) to find out what caused the program to crash, and attach the table, too.
+        If SophiApp crashes at the startup, please run this PowerShell code as `admin` [(how-to)](https://allthings.how/how-to-open-windows-powershell-as-an-admin-on-windows-11/) to find out what caused the program to crash, and attach the table, too.
 
         ```powershell
 
