@@ -1,6 +1,6 @@
-name: Feature Request
+name: Feature Request ⭐
 description: An idea to make SophiApp better
-labels: [feature request]
+labels: "feature request"
 body:
   - type: textarea
     attributes:
