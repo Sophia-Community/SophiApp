@@ -12,6 +12,8 @@ namespace SophiApp.ViewModels
     {
         private bool advancedSettingsVisibility;
         private string applyingSettingsError;
+        private string applyingSettingsErrorHasException;
+        private string applyingSettingsErrorInApplying;
         private string buildName;
         private string conditionsHelperError;
         private List<Customisation> customActions;
@@ -47,6 +49,26 @@ namespace SophiApp.ViewModels
             {
                 applyingSettingsError = value;
                 OnPropertyChanged(ApplyingSettingsErrorPropertyName);
+            }
+        }
+
+        public string ApplyingSettingsErrorHasException
+        {
+            get => applyingSettingsErrorHasException;
+            private set
+            {
+                applyingSettingsErrorHasException = value;
+                OnPropertyChanged(ApplyingSettingsErrorHasExceptionPropertyName);
+            }
+        }
+
+        public string ApplyingSettingsErrorInApplying
+        {
+            get => applyingSettingsErrorInApplying;
+            private set
+            {
+                applyingSettingsErrorInApplying = value;
+                OnPropertyChanged(ApplyingSettingsErrorInApplyingPropertyName);
             }
         }
 

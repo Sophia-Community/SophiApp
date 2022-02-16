@@ -3,11 +3,12 @@
     internal partial class AppVM
     {
         private const string AdvancedSettingsVisibilityPropertyName = "AdvancedSettingsVisibility";
+        private const string ApplyingSettingsErrorHasExceptionPropertyName = "ApplyingSettingsErrorHasException";
+        private const string ApplyingSettingsErrorInApplyingPropertyName = "ApplyingSettingsErrorInApplying";
         private const string ApplyingSettingsErrorPropertyName = "ApplyingSettingsError";
         private const string AppSelectedThemePropertyName = "AppSelectedTheme";
         private const string AppThemesPropertyName = "AppThemes";
         private const string ConditionsHelperErrorPropertyName = "ConditionsHelperError";
-        private const string CustomActionsCounterPropertyName = "CustomActionsCounter";
         private const string CustomActionsPropertyName = "CustomActions";
         private const string DebugModePropertyName = "DebugMode";
         private const string FoundTextedElementPropertyName = "FoundTextedElement";

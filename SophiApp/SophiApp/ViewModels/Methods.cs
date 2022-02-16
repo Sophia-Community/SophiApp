@@ -230,8 +230,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                          .ToList()
-                                                                                                          .ForEach(element => element.Initialize()));
+                                                                                                            .ToList()
+                                                                                                            .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -391,7 +391,15 @@ namespace SophiApp.ViewModels
             });
         }
 
-        private void SetApplyingSettingsError(string description) => ApplyingSettingsError = description;
+        private void SetApplyingSettingsError(string name)
+        {
+            var applyingString = Application.Current.FindResource("Localization.ViewApplyingException.InApplying") as string;
+            var exceptionString = Application.Current.FindResource("Localization.ViewApplyingException.HasException") as string;
+
+            ApplyingSettingsError = name;
+            ApplyingSettingsErrorInApplying = applyingString;
+            ApplyingSettingsErrorHasException = exceptionString;
+        }
 
         private void SetAppSelectedTheme(Theme theme) => AppSelectedTheme = theme;
 
