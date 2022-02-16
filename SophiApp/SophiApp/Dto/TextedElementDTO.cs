@@ -13,5 +13,7 @@ namespace SophiApp.Dto
         public uint Id { get; set; }
         public string Tag { get; set; }
         public string Type { get; set; }
+        public bool Windows10Supported { get; set; }
+        public bool Windows11Supported { get; set; }
     }
 }
