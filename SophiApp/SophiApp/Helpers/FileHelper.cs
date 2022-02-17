@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -200,6 +201,16 @@ namespace SophiApp.Helpers
                 Directory.CreateDirectory(dirPath);
 
             File.WriteAllText(path, text);
+        }
+
+        internal static void WriteAllLines(string path, List<string> list)
+        {
+            var dirPath = path.Substring(0, path.LastIndexOf(Path.DirectorySeparatorChar));
+
+            if (Directory.Exists(dirPath).Invert())
+                Directory.CreateDirectory(dirPath);
+
+            File.WriteAllLines(path, list);
         }
     }
 }

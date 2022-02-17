@@ -13,6 +13,40 @@ namespace SophiApp.Customisations
 {
     public static class CustomisationStatus
     {
+        public static bool _203() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH);
+
+        public static bool _212() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _212_EXPLORER_COMPACT_MODE) == ENABLED_VALUE;
+
+        public static bool _215() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == ENABLED_VALUE;
+
+        public static bool _224() => _225().Invert();
+
+        public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
+
+        public static bool _226() => RegHelper.GetByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == ENABLED_VALUE;
+
+        public static bool _230() => UwpHelper.PackageExist(_230_UWP_WEB_EXPERIENCE)
+                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) == ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException(_230_UWP_WEB_EXPERIENCE);
+
+        public static bool _241() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _241_TASKBAR_TEAMS_ICON) == ENABLED_VALUE;
+
+        public static bool _347() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
+                                     ? _348().Invert()
+                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+
+        public static bool _348() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH) == false
+                                     || (RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE) == DELEGATION_CONSOLE_VALUE
+                                            && RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL) == DELEGATION_CONSOLE_VALUE);
+
+        public static bool _502() => UwpHelper.PackageExist(_502_UWP_MICROSOFT_TEAMS)
+                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _502_TEAMS_STARTUP_PATH, STATE) == _502_TEAMS_ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
+
+        public static bool _926() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
+                                     ? RegHelper.KeyExist(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT).Invert()
+                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+
         public static bool _100()
         {
             var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK).StartType;
@@ -392,7 +426,7 @@ namespace SophiApp.Customisations
                                      : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS);
 
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
-                                     ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, _501_CORTANA_STATE) == _501_ENABLED_VALUE
+                                     ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, STATE) == _501_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
         public static bool _600() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)

@@ -16,6 +16,100 @@ namespace SophiApp.Customisations
 {
     public static class CustomisationOs
     {
+        public static void _203(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH, null, string.Empty, RegistryValueKind.String);
+                return;
+            }
+
+            RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_PATH);
+        }
+
+        public static void _212(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        ADVANCED_EXPLORER_PATH,
+                                                                            _212_EXPLORER_COMPACT_MODE,
+                                                                                IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _215(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        ADVANCED_EXPLORER_PATH,
+                                                                            _215_SNAP_ASSIST_FLYOUT,
+                                                                                IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _224(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _224_TASKBAR_ALIGNMENT_LEFT, RegistryValueKind.DWord);
+
+        public static void _225(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _225_TASKBAR_ALIGNMENT_CENTER, RegistryValueKind.DWord);
+
+        public static void _226(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        TASKBAR_SEARCH_PATH,
+                                                                            TASKBAR_SEARCH_MODE,
+                                                                                IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _230(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        ADVANCED_EXPLORER_PATH,
+                                                                            _230_WIDGETS_IN_TASKBAR,
+                                                                                IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _241(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        ADVANCED_EXPLORER_PATH,
+                                                                            _241_TASKBAR_TEAMS_ICON,
+                                                                                IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _347(bool _)
+        {
+            var windowsTerminalAppx = UwpHelper.GetPackage(UWP_WINDOWS_TERMINAL);
+            var windowsTerminalPath = $@"SOFTWARE\Classes\PackagedCom\Package\{windowsTerminalAppx.Id.FullName}\Class";
+            var subkeys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, windowsTerminalPath);
+
+            foreach (var subkey in subkeys)
+            {
+                var delegationGuid = subkey.Substring(subkey.LastIndexOf("\\") + 1);
+
+                if (RegHelper.GetByteValue(RegistryHive.LocalMachine, subkey, _347_SERVER_ID) == DISABLED_VALUE)
+                {
+                    RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE, delegationGuid, RegistryValueKind.String);
+                }
+
+                if (RegHelper.GetByteValue(RegistryHive.LocalMachine, subkey, _347_SERVER_ID) == ENABLED_VALUE)
+                {
+                    RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, delegationGuid, RegistryValueKind.String);
+                }
+            }
+        }
+
+        public static void _348(bool _)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
+            RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
+        }
+
+        public static void _502(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        _502_TEAMS_STARTUP_PATH,
+                                                                            STATE,
+                                                                                IsChecked ? _502_TEAMS_ENABLED_VALUE : _502_TEAMS_DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _926(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT, _926_WINDOWS_TERMINAL, RegistryValueKind.String);
+        }
+
+
+
+
+
         public static void _100(bool IsChecked)
         {
             var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK);
@@ -843,7 +937,7 @@ namespace SophiApp.Customisations
 
         public static void _501(bool IsChecked) => RegHelper.SetValue(RegistryHive.ClassesRoot,
                                                                         _501_CORTANA_STARTUP_PATH,
-                                                                            _501_CORTANA_STATE,
+                                                                            STATE,
                                                                                 IsChecked ? _501_ENABLED_VALUE : _501_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 

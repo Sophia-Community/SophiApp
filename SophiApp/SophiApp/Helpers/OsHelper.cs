@@ -34,7 +34,7 @@ namespace SophiApp.Helpers
 
         internal const uint WIN10_MAX_SUPPORT_BUILD = 19044;
         internal const uint WIN10_MIN_SUPPORT_BUILD = 19041;
-        internal const uint WIN11_SUPPORT_BUILD = 22000;
+        internal const uint WIN11_MIN_SUPPORT_BUILD = 22000;
 
         private static WindowsIdentity GetCurrentUser() => WindowsIdentity.GetCurrent();
 
@@ -85,7 +85,7 @@ namespace SophiApp.Helpers
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
-        internal static bool IsWindows11() => GetBuild() / 1000 == WIN11_BUILD_NUMBER;
+        internal static bool IsWindows11() => true; // GetBuild() / 1000 == WIN11_BUILD_NUMBER;
 
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
         {

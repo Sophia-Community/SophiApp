@@ -6,6 +6,33 @@ namespace SophiApp.Customisations
 {
     internal static class CustomisationConstants
     {
+        internal const string _203_WIN10_EXPLORER_PATH = @"Software\Classes\CLSID\{d93ed569-3b3e-4bff-8355-3c44f6a52bb5}";
+        internal readonly static string _203_WIN10_EXPLORER_INPROC_PATH = $@"{_203_WIN10_EXPLORER_PATH}\InprocServer32";
+        internal const string _212_EXPLORER_COMPACT_MODE = "UseCompactMode";
+        internal const string _215_SNAP_ASSIST_FLYOUT = "EnableSnapAssistFlyout";
+        internal const string EXPLORER_TASKBAR_ALIGNMENT = "TaskbarAl";
+        internal const byte _225_TASKBAR_ALIGNMENT_CENTER = 1;
+        internal const byte _224_TASKBAR_ALIGNMENT_LEFT = 0;
+        internal const string _230_UWP_WEB_EXPERIENCE = "MicrosoftWindows.Client.WebExperience";
+        internal const string _230_WIDGETS_IN_TASKBAR = "TaskbarDa";
+        internal const string _241_TASKBAR_TEAMS_ICON = "TaskbarMn";
+        internal const string UWP_WINDOWS_TERMINAL = "Microsoft.WindowsTerminal";
+        internal const string _502_UWP_MICROSOFT_TEAMS = "MicrosoftTeams";
+        internal const string DELEGATION_CONSOLE = "DelegationConsole";
+        internal const string DELEGATION_TERMINAL = "DelegationTerminal";
+        internal const string CONSOLE_STARTUP_PATH = @"Console\%%Startup";
+        internal const string _347_SERVER_ID = "ServerId";
+        internal const string DELEGATION_CONSOLE_VALUE = "{00000000-0000-0000-0000-000000000000}";
+        internal const string _502_TEAMS_STARTUP_PATH = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask";
+        internal const byte _502_TEAMS_ENABLED_VALUE = 2;
+        internal const byte _502_TEAMS_DISABLED_VALUE = 1;
+        internal const string _926_TERMINAL_CONTEXT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
+        internal const string _926_TERMINAL_OPEN_CONTEXT = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
+        internal const string _926_WINDOWS_TERMINAL = "WindowsTerminal";
+
+
+
+
         internal const int _10_SECONDS_TIMEOUT = 10000;
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
@@ -197,7 +224,7 @@ namespace SophiApp.Customisations
         internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
-        internal const string _501_CORTANA_STATE = "State";
+        internal const string STATE = "State";
         internal const byte _501_DISABLED_VALUE = 1;
         internal const byte _501_ENABLED_VALUE = 2;
         internal const string _600_APP_CAPTURE = "AppCaptureEnabled";

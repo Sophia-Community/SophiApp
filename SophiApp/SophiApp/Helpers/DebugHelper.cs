@@ -81,7 +81,7 @@ namespace SophiApp.Helpers
             {
                 $"{DateTime} {message}",
                 $"{DateTime} Error information: {e.Message}",
-                $"{DateTime} The method that caused the error: {e.TargetSite.Name}"
+                $"{DateTime} The method that caused the error: {e.TargetSite?.Name ?? "no data"}"
             });
         }
 
@@ -101,7 +101,7 @@ namespace SophiApp.Helpers
 
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
-        internal static void Save(string path) => File.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
+        internal static void Save(string path) => FileHelper.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
 
         internal static void SelectedLocalization(string localization) => WriteStatusLog($"Localization selected: {localization}");
 
