@@ -13,7 +13,7 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Пожалуйста, перезагрузите ваш ПК перед запуском SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Пожалуйста, не запускайте несколько копий SophiApp одновременно.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp не совместима с Вашей версией Windows.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите проверку обновлений, чтобы обновить Windows до последней версии.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите Центр обновления Windows, чтобы обновить ОС до последней версии.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp поддерживает Windows 10 2004/20H2/21H1/21H2 и Windows 11 21H2.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Подробнее:</system:String>
