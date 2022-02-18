@@ -13,40 +13,6 @@ namespace SophiApp.Customisations
 {
     public static class CustomisationStatus
     {
-        public static bool _203() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH);
-
-        public static bool _212() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _212_EXPLORER_COMPACT_MODE) == ENABLED_VALUE;
-
-        public static bool _215() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == ENABLED_VALUE;
-
-        public static bool _224() => _225().Invert();
-
-        public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
-
-        public static bool _226() => RegHelper.GetByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == ENABLED_VALUE;
-
-        public static bool _230() => UwpHelper.PackageExist(_230_UWP_WEB_EXPERIENCE)
-                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) == ENABLED_VALUE
-                                     : throw new UwpAppNotFoundException(_230_UWP_WEB_EXPERIENCE);
-
-        public static bool _241() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _241_TASKBAR_TEAMS_ICON) == ENABLED_VALUE;
-
-        public static bool _347() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
-                                     ? _348().Invert()
-                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
-
-        public static bool _348() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH) == false
-                                     || (RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE) == DELEGATION_CONSOLE_VALUE
-                                            && RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL) == DELEGATION_CONSOLE_VALUE);
-
-        public static bool _502() => UwpHelper.PackageExist(_502_UWP_MICROSOFT_TEAMS)
-                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _502_TEAMS_STARTUP_PATH, STATE) == _502_TEAMS_ENABLED_VALUE
-                                     : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
-
-        public static bool _926() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
-                                     ? RegHelper.KeyExist(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT).Invert()
-                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
-
         public static bool _100()
         {
             var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK).StartType;
@@ -141,6 +107,8 @@ namespace SophiApp.Customisations
         public static bool _202() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER)
                                               .HasNullOrValue(ENABLED_VALUE);
 
+        public static bool _203() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH);
+
         public static bool _204() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _204_AUTO_CHECK_SELECT)
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
@@ -166,11 +134,15 @@ namespace SophiApp.Customisations
                                                          .HasNullOrValue(ENABLED_VALUE)
                                               : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
 
+        public static bool _212() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _212_EXPLORER_COMPACT_MODE) == ENABLED_VALUE;
+
         public static bool _213() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _213_SHOW_SYNC_PROVIDER)
                                               .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _214() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _214_SNAP_ASSIST)
                                               .HasNullOrValue(ENABLED_VALUE);
+
+        public static bool _215() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == ENABLED_VALUE;
 
         public static bool _217() => _218().Invert();
 
@@ -190,11 +162,21 @@ namespace SophiApp.Customisations
         public static bool _222() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _222_SHOW_RECENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
+        public static bool _224() => _225().Invert();
+
+        public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
+
+        public static bool _226() => RegHelper.GetByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == ENABLED_VALUE;
+
         public static bool _227() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _227_SHOW_FREQUENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _228_SHOW_TASK_VIEW)
                                               .HasNullOrValue(ENABLED_VALUE);
+
+        public static bool _230() => UwpHelper.PackageExist(_230_UWP_WEB_EXPERIENCE)
+                                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) == ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException(_230_UWP_WEB_EXPERIENCE);
 
         public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_PEOPLE_EXPLORER_PATH, _231_PEOPLE_BAND) == ENABLED_VALUE;
 
@@ -219,6 +201,8 @@ namespace SophiApp.Customisations
 
         public static bool _240() => (RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _240_FEEDS_PATH, _240_SHELL_FEEDS_MODE) == _240_SHELL_FEEDS_DISABLED_VALUE
                                         || RegHelper.GetNullableByteValue(RegistryHive.LocalMachine, _240_FEEDS_POLICY_PATH, _240_ENABLE_FEEDS) == _240_SHELL_FEEDS_ENABLED_VALUE).Invert();
+
+        public static bool _241() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _241_TASKBAR_TEAMS_ICON) == ENABLED_VALUE;
 
         public static bool _243() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTROL_PANEL_EXPLORER_PATH, ALL_ITEMS_ICON_VIEW).HasValue(ALL_ITEMS_ICON_CATEGORY_VALUE)
                                      && RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTROL_PANEL_EXPLORER_PATH, STARTUP_PAGE).HasValue(STARTUP_PAGE_ICON_VALUE);
@@ -398,6 +382,14 @@ namespace SophiApp.Customisations
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
 
+        public static bool _347() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ? _348().Invert()
+                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+
+        public static bool _348() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH) == false
+                                     || (RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE) == DELEGATION_CONSOLE_VALUE
+                                            && RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL) == DELEGATION_CONSOLE_VALUE);
+
         public static bool _349() => MsiHelper.GetProperties(Directory.GetFiles(_349_INSTALLER_PATH, _349_MSI_MASK))
                                               .FirstOrDefault(property => property[_349_PRODUCT_NAME] == _349_PC_HEALTH_CHECK) != null
                                                                                                                                 ? false
@@ -428,6 +420,10 @@ namespace SophiApp.Customisations
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
                                      ? RegHelper.GetNullableByteValue(RegistryHive.ClassesRoot, _501_CORTANA_STARTUP_PATH, STATE) == _501_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(UWP_MS_CORTANA);
+
+        public static bool _502() => UwpHelper.PackageExist(_502_UWP_MICROSOFT_TEAMS)
+                                                                                                             ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _502_TEAMS_STARTUP_PATH, STATE) == _502_TEAMS_ENABLED_VALUE
+                                     : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
 
         public static bool _600() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
                                      ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
@@ -563,6 +559,16 @@ namespace SophiApp.Customisations
         public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME) == _924_PROMPT_VALUE;
 
         public static bool _925() => RegHelper.KeyExist(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
+
+        public static bool _926() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
+                                                                                                                                                                                                                                                                                                                                                                                                             ? RegHelper.KeyExist(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT).Invert()
+                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+
+        public static bool _927() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
+                                     ? RegHelper.GetStringValue(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_COMMAND_PATH, null) == _927_TERMINAL_CONTEXT_MENU
+                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+
+        public static bool _928() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _928_WIN10_CONTEXT_MENU_PATH, null) == string.Empty;
 
         /// <summary>
         /// There must be a little magic in every app

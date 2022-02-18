@@ -23,7 +23,6 @@ namespace SophiApp.Helpers
         private const string START_MENU_PROCESS = "StartMenuExperienceHost";
         private const string TRAY_SETTINGS = "TraySettings";
         private const string UBR = "UBR";
-        private const uint WIN11_BUILD_NUMBER = 22;
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
@@ -32,9 +31,11 @@ namespace SophiApp.Helpers
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
 
-        internal const uint WIN10_MAX_SUPPORT_BUILD = 19044;
-        internal const uint WIN10_MIN_SUPPORT_BUILD = 19041;
-        internal const uint WIN11_MIN_SUPPORT_BUILD = 22000;
+        internal const uint WIN10_MAX_SUPPORTED_BUILD = 19044;
+        internal const uint WIN10_MIN_SUPPORTED_BUILD = 19041;
+        internal const uint WIN10_MIN_SUPPORTED_UBR = 1151;
+        internal const uint WIN11_MIN_SUPPORTED_BUILD = 22000;
+        internal const uint WIN11_MIN_SUPPORTED_UBR = 493;
 
         private static WindowsIdentity GetCurrentUser() => WindowsIdentity.GetCurrent();
 
@@ -85,7 +86,7 @@ namespace SophiApp.Helpers
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
-        internal static bool IsWindows11() => true; // GetBuild() / 1000 == WIN11_BUILD_NUMBER;
+        internal static bool IsWindows11() => GetBuild() / 1000 == 22;
 
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
         {

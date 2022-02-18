@@ -6,33 +6,6 @@ namespace SophiApp.Customisations
 {
     internal static class CustomisationConstants
     {
-        internal const string _203_WIN10_EXPLORER_PATH = @"Software\Classes\CLSID\{d93ed569-3b3e-4bff-8355-3c44f6a52bb5}";
-        internal readonly static string _203_WIN10_EXPLORER_INPROC_PATH = $@"{_203_WIN10_EXPLORER_PATH}\InprocServer32";
-        internal const string _212_EXPLORER_COMPACT_MODE = "UseCompactMode";
-        internal const string _215_SNAP_ASSIST_FLYOUT = "EnableSnapAssistFlyout";
-        internal const string EXPLORER_TASKBAR_ALIGNMENT = "TaskbarAl";
-        internal const byte _225_TASKBAR_ALIGNMENT_CENTER = 1;
-        internal const byte _224_TASKBAR_ALIGNMENT_LEFT = 0;
-        internal const string _230_UWP_WEB_EXPERIENCE = "MicrosoftWindows.Client.WebExperience";
-        internal const string _230_WIDGETS_IN_TASKBAR = "TaskbarDa";
-        internal const string _241_TASKBAR_TEAMS_ICON = "TaskbarMn";
-        internal const string UWP_WINDOWS_TERMINAL = "Microsoft.WindowsTerminal";
-        internal const string _502_UWP_MICROSOFT_TEAMS = "MicrosoftTeams";
-        internal const string DELEGATION_CONSOLE = "DelegationConsole";
-        internal const string DELEGATION_TERMINAL = "DelegationTerminal";
-        internal const string CONSOLE_STARTUP_PATH = @"Console\%%Startup";
-        internal const string _347_SERVER_ID = "ServerId";
-        internal const string DELEGATION_CONSOLE_VALUE = "{00000000-0000-0000-0000-000000000000}";
-        internal const string _502_TEAMS_STARTUP_PATH = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask";
-        internal const byte _502_TEAMS_ENABLED_VALUE = 2;
-        internal const byte _502_TEAMS_DISABLED_VALUE = 1;
-        internal const string _926_TERMINAL_CONTEXT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
-        internal const string _926_TERMINAL_OPEN_CONTEXT = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
-        internal const string _926_WINDOWS_TERMINAL = "WindowsTerminal";
-
-
-
-
         internal const int _10_SECONDS_TIMEOUT = 10000;
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
@@ -73,6 +46,7 @@ namespace SophiApp.Customisations
         internal const string _126_PRIVACY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy";
         internal const string _126_TAILORED_DATA = "TailoredExperiencesWithDiagnosticDataEnabled";
         internal const string _127_DISABLE_SEARCH_SUGGESTIONS = "DisableSearchBoxSuggestions";
+        internal const string _203_WIN10_EXPLORER_PATH = @"Software\Classes\CLSID\{d93ed569-3b3e-4bff-8355-3c44f6a52bb5}";
         internal const string _204_AUTO_CHECK_SELECT = "AutoCheckSelect";
         internal const byte _205_DISABLED_VALUE = 2;
         internal const byte _205_ENABLED_VALUE = 1;
@@ -82,8 +56,10 @@ namespace SophiApp.Customisations
         internal const byte _206_SHOW_VALUE = 0;
         internal const string _207_HIDE_MERGE_CONF = "HideMergeConflicts";
         internal const string _211_CORTANA_BUTTON = "ShowCortanaButton";
+        internal const string _212_EXPLORER_COMPACT_MODE = "UseCompactMode";
         internal const string _213_SHOW_SYNC_PROVIDER = "ShowSyncProviderNotifications";
         internal const string _214_SNAP_ASSIST = "SnapAssist";
+        internal const string _215_SNAP_ASSIST_FLYOUT = "EnableSnapAssistFlyout";
         internal const byte _219_EXPANDED_VALUE = 0;
         internal const byte _219_MINIMIZED_VALUE = 1;
         internal const string _219_RIBBON_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ribbon";
@@ -95,8 +71,12 @@ namespace SophiApp.Customisations
         internal const string _221_3D_OBJECT_PROPERTY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}\PropertyBag";
         internal const string _221_PC_POLICY = "ThisPCPolicy";
         internal const string _222_SHOW_RECENT = "ShowRecent";
+        internal const byte _224_TASKBAR_ALIGNMENT_LEFT = 0;
+        internal const byte _225_TASKBAR_ALIGNMENT_CENTER = 1;
         internal const string _227_SHOW_FREQUENT = "ShowFrequent";
         internal const string _228_SHOW_TASK_VIEW = "ShowTaskViewButton";
+        internal const string _230_UWP_WEB_EXPERIENCE = "MicrosoftWindows.Client.WebExperience";
+        internal const string _230_WIDGETS_IN_TASKBAR = "TaskbarDa";
         internal const string _231_PEOPLE_BAND = "PeopleBand";
         internal const string _231_PEOPLE_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People";
         internal const string _232_SHOW_SECONDS = "ShowSecondsInSystemClock";
@@ -115,6 +95,7 @@ namespace SophiApp.Customisations
         internal const byte _240_SHELL_FEEDS_DISABLED_VALUE = 2;
         internal const byte _240_SHELL_FEEDS_ENABLED_VALUE = 0;
         internal const string _240_SHELL_FEEDS_MODE = "ShellFeedsTaskbarViewMode";
+        internal const string _241_TASKBAR_TEAMS_ICON = "TaskbarMn";
         internal const byte _242_SHOW_ALERT_VALUE = 0;
         internal const byte _252_HIDE_ALERT_VALUE = 1;
         internal const string _252_NO_NEW_APP_ALERT = "NoNewAppAlert";
@@ -208,6 +189,7 @@ namespace SophiApp.Customisations
         internal const byte _344_AUTO_STATE = 1;
         internal const byte _344_MANUAL_STATE = 0;
         internal const string _345_IS_EXPEDITED = "IsExpedited";
+        internal const string _347_SERVER_ID = "ServerId";
         internal const string _349_MSI_MASK = "*.msi";
         internal const string _349_MSIEXEC_EXE = "msiexec.exe";
         internal const string _349_PC_HEALTH_CHECK = "Windows PC Health Check";
@@ -224,9 +206,12 @@ namespace SophiApp.Customisations
         internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
-        internal const string STATE = "State";
         internal const byte _501_DISABLED_VALUE = 1;
         internal const byte _501_ENABLED_VALUE = 2;
+        internal const byte _502_TEAMS_DISABLED_VALUE = 1;
+        internal const byte _502_TEAMS_ENABLED_VALUE = 2;
+        internal const string _502_TEAMS_STARTUP_PATH = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask";
+        internal const string _502_UWP_MICROSOFT_TEAMS = "MicrosoftTeams";
         internal const string _600_APP_CAPTURE = "AppCaptureEnabled";
         internal const string _600_GAME_CONFIG_PATH = @"System\GameConfigStore";
         internal const string _600_GAME_DVR = "GameDVR_Enabled";
@@ -556,6 +541,19 @@ else
         internal const int _924_PROMPT_VALUE = 300;
         internal const string _925_NO_USE_NAME = "NoUseStoreOpenWith";
         internal const byte _925_NO_USE_VALUE = 1;
+        internal const string _926_TERMINAL_CONTEXT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
+        internal const string _926_TERMINAL_OPEN_CONTEXT = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
+        internal const string _926_WINDOWS_TERMINAL = "WindowsTerminal";
+        internal const string _927_BACKGROUND_SHELL_COMMAND_PATH = @"Directory\Background\shell\runas\command";
+        internal const string _927_BACKGROUND_SHELL_RUNAS_PATH = @"Directory\Background\shell\runas";
+        internal const string _927_DIRECTORY_SHELL_COMMAND_PATH = @"Directory\shell\runas\command";
+        internal const string _927_DIRECTORY_SHELL_RUNAS_PATH = @"Directory\shell\runas";
+        internal const string _927_NO_WORKING_DIR = "NoWorkingDirectory";
+        internal const string _927_TERMINAL_CONTEXT_MENU = @"wt.exe -d ""%1""";
+        internal const string _927_TERMINAL_ICON = "Icon";
+        internal const string _927_TERMINAL_ICON_VALUE = "imageres.dll,73";
+        internal const string _927_TERMINAL_RUNAS_ADMIN = @"wt.exe -d ""%V""";
+        internal const string _928_WIN10_CONTEXT_MENU_PATH = @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32";
         internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
         internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";
         internal const byte ADMIN_PROMPT_DEFAULT_VALUE = 5;
@@ -570,6 +568,7 @@ else
         internal const string AUDITPOL_APP = "auditpol";
         internal const string CAPABILITY_MS_PAINT = "Microsoft.Windows.MSPaint~~~~0.0.1.0";
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
+        internal const string CONSOLE_STARTUP_PATH = @"Console\%%Startup";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
@@ -582,6 +581,9 @@ else
         internal const string DEFENDER_COMPUTER_STATUS_CLASS = "MSFT_MpComputerStatus";
         internal const string DEFENDER_NAMESPACE = @"Root\Microsoft\Windows\Defender";
         internal const string DEFENDER_PREFERENCE_PS = "Get-MpPreference";
+        internal const string DELEGATION_CONSOLE = "DelegationConsole";
+        internal const string DELEGATION_CONSOLE_VALUE = "{00000000-0000-0000-0000-000000000000}";
+        internal const string DELEGATION_TERMINAL = "DelegationTerminal";
         internal const string DESKTOP_ICON_THIS_COMPUTER = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
         internal const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
         internal const byte DIALOG_COMPACT_VALUE = 0;
@@ -596,6 +598,7 @@ else
         internal const string ENVIRONMENT_SYSTEM_DRIVE = "%SystemDrive%";
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
+        internal const string EXPLORER_TASKBAR_ALIGNMENT = "TaskbarAl";
         internal const string GAMING_APP_UWP = "Microsoft.GamingApp";
         internal const string IMAGES_FOLDER = "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}";
         internal const string INPUT_ENG_VALUE = "0409:00000409";
@@ -636,6 +639,7 @@ else
         internal const string STARTUP_PAGE = "StartupPage";
         internal const byte STARTUP_PAGE_CATEGORY_VALUE = 0;
         internal const byte STARTUP_PAGE_ICON_VALUE = 1;
+        internal const string STATE = "State";
         internal const string STATUS_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager";
         internal const string STORAGE_POLICY_01 = "01";
         internal const string STORAGE_POLICY_2048 = "2048";
@@ -654,6 +658,7 @@ else
         internal const string USER_SHELL_FOLDERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders";
         internal const string UWP_MS_CORTANA = "Microsoft.549981C3F5F10";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
+        internal const string UWP_WINDOWS_TERMINAL = "Microsoft.WindowsTerminal";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
@@ -662,6 +667,7 @@ else
         internal const string WUSA_EXE = "wusa.exe";
         internal const string X64 = "x64";
         internal const string XBOX_GAMING_OVERLAY_UWP = "Microsoft.XboxGamingOverlay";
+        internal static readonly string _203_WIN10_EXPLORER_INPROC_PATH = $@"{_203_WIN10_EXPLORER_PATH}\InprocServer32";
         internal static readonly DateTime _21_PM_TASK_START = DateTime.Today.AddHours(21);
         internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static readonly string _349_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";

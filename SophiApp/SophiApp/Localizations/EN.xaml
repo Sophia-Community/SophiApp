@@ -4,8 +4,7 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Conditions.IsSingleSession.Login">To be able to run SophiApp, you must be the only logged-on account with admin rights.</system:String>
-    <system:String x:Key="Conditions.IsSingleSession.Logoff">Please log off other running open sessions and try again.</system:String>
-    <system:String x:Key="Conditions.LoggedUserAdmin">The current logged in user does not have admin rights.</system:String>
+    <system:String x:Key="WindowsTerminal.OpenIsAdmin">Open in Windows Terminal</system:String>
     <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Please download a new version of SophiApp with bug fixes from the official GitHub page.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version was found online.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Download a new version</system:String>
@@ -13,7 +12,7 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Please reboot your PC before running SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp isn't compatible with your Windows.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update your Windows to latest version.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update the OS to the latest version.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2 &amp; Windows 11 21H2.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
@@ -58,7 +57,7 @@
     <system:String x:Key="Localization.Settings.Coder.Name">Dmitry &quot;Inestic&quot; Demin</system:String>
     <system:String x:Key="Localization.Settings.Debug">Debug</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Create a dump</system:String>
-    <system:String x:Key="Localization.Settings.DebugMode">Debug mode</system:String>
+    <system:String x:Key="Localization.Settings.DebugMode">Dev mode</system:String>
     <system:String x:Key="Localization.Settings.Designer">UI/UX development:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
