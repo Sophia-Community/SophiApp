@@ -122,7 +122,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ## Translating
 
-* Feel free to translate the UI into your language by translating the [JSON](https://github.com/Sophia-Community/SophiApp/blob/master/SophiApp/SophiApp/Resources/UIData.json) and creating an [.xml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
+* Feel free to translate the UI into your language by translating the [JSON](https://github.com/Sophia-Community/SophiApp/blob/master/SophiApp/SophiApp/Resources/UIData.json) and creating an [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
 
 ## The 3rd party libraries used
 
