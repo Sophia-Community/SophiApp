@@ -342,6 +342,7 @@
                     </TextBlock>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
+
             <Grid Grid.Column="1" Panel.ZIndex="10">
                 <!--  Wrapper Grid For Views With Description and Info Panel  -->
                 <Grid.ColumnDefinitions>

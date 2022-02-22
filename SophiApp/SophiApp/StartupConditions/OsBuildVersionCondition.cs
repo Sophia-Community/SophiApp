@@ -11,6 +11,11 @@ namespace SophiApp.Conditions
         public bool HasProblem { get; set; }
         public ConditionsTag Tag { get; set; } = ConditionsTag.OsBuildVersion;
 
-        public bool Invoke() => HasProblem = (OsHelper.GetUpdateBuildRevision() >= MIN_SUPPORT_UBR).Invert();
+        public bool Invoke()
+        {
+            var ubr = OsHelper.GetUpdateBuildRevision();
+            var hasProblem = OsHelper.IsWindows11() ? ubr >= OsHelper.WIN11_MIN_SUPPORTED_UBR : ubr >= OsHelper.WIN10_MIN_SUPPORTED_UBR;
+            return HasProblem = hasProblem.Invert();
+        }
     }
 }

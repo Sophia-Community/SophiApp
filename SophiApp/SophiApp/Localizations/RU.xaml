@@ -4,11 +4,9 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Conditions.IsSingleSession.Login">Вы должны быть единственным вошедшим в систему пользователем с правами администратора.</system:String>
-    <system:String x:Key="Conditions.IsSingleSession.Logoff">Пожалуйста, закройте все прочие запущенные сессии пользователей и повторите попытку.</system:String>
-    <system:String x:Key="Conditions.LoggedUserAdmin">Текущий вошедший пользователь не обладает правами администратора.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.DownloadFixed">Пожалуйста, скачайте новую версию SophiApp с исправленными ошибками с GitHub.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.HasNew">Доступна новая версия SophiApp.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Скачать новую версию</system:String>
+    <system:String x:Key="WindowsTerminal.OpenIsAdmin">Открыть в Терминале Windows</system:String>
+    <system:String x:Key="Conditions.NoNewVersion.HasNew">Доступна новая версия SophiApp с исправленными ошибками.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Открыть страницу GitHub</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.RebootPending">Компьютер ожидает перезагрузки.</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Пожалуйста, перезагрузите ваш ПК перед запуском SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Пожалуйста, не запускайте несколько копий SophiApp одновременно.</system:String>
@@ -36,7 +34,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
-    <system:String x:Key="Localization.Customizations.RebootRequired">Пожалуйста, перезагрузитесь после применения настроек</system:String>
+    <system:String x:Key="Localization.Customizations.RebootRequired">После применения настроек перезагрузите ваш ПК</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Description">События создания нового процесса и аудит командной строки</system:String>
@@ -58,7 +56,7 @@
     <system:String x:Key="Localization.Settings.Coder.Name">Дмитрий &quot;Inestic&quot; Дёмин</system:String>
     <system:String x:Key="Localization.Settings.Debug">Отладка</system:String>
     <system:String x:Key="Localization.Settings.Debug.Save">Создать файл отладки</system:String>
-    <system:String x:Key="Localization.Settings.DebugMode">Режим отладки</system:String>
+    <system:String x:Key="Localization.Settings.DebugMode">Режим разработчика</system:String>
     <system:String x:Key="Localization.Settings.Designer">Разработка UI/UX:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Владимир Nameless</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
@@ -94,5 +92,5 @@
     <system:String x:Key="Localization.ViewSearch.NotFound">Ничего не найдено</system:String>
     <system:String x:Key="Localization.ViewSearch.Running">Поиск...</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всех пользователей</system:String>
-    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">При удалении UWP-приложений для всех пользователей новые учетные записи не будут включать удаленные UWP-приложения, и становится невозможно восстановить их обратно без использования установочных пакетов или скачивания из Microsoft Store. Но установка последних будет произведена лишь в текущий профиль</system:String>
+    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">При удалении UWP-приложений для всех пользователей новые учетные записи не будут включать удаленные UWP-приложения, и становится невозможным восстановить их обратно без использования установочных пакетов или скачивания из Microsoft Store. Но установка последних будет произведена лишь в текущий профиль</system:String>
 </ResourceDictionary>

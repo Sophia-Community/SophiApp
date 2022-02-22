@@ -10,7 +10,10 @@
       "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 100,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 101,
@@ -49,7 +52,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 101,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 104,
@@ -62,7 +68,10 @@
       "RU": "Функция создания отчетов об ошибках позволяет пользователям уведомлять Майкрософт о сбоях приложений, сбоях ядра, неотвечающих приложениях и других проблемах, связанных с приложениями. Корпорация Майкрософт может использовать функцию отчетов об ошибках для предоставления клиентам сведений об устранении неполадок, решениях или обновлениях для конкретных проблем"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 104,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 105,
@@ -101,7 +110,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 105,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 108,
@@ -224,7 +236,10 @@
         },
         "Type": "CheckBox"
       }
-    ]
+    ],
+    "ViewId": 108,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 118,
@@ -237,7 +252,10 @@
       "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows 10 помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 118,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 119,
@@ -250,7 +268,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 119,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 120,
@@ -263,7 +284,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 120,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 121,
@@ -276,7 +300,10 @@
       "RU": "Windows 10 может открывать всплывающее окошко с подсказками, что нового в операционной системе"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 121,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 122,
@@ -289,7 +316,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 122,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 123,
@@ -302,7 +332,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 123,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 124,
@@ -315,7 +348,10 @@
       "RU": "Windows может в тихом режиме загружать и устанавливать некоторые приложения из Microsoft Store без какого-либо подтверждения"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 124,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 125,
@@ -328,7 +364,10 @@
       "RU": "Windows 10 может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 125,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 126,
@@ -341,7 +380,10 @@
       "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций"
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 126,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 127,
@@ -354,7 +396,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Privacy"
+    "Tag": "Privacy",
+    "ViewId": 127,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 200,
@@ -373,7 +418,7 @@
         "Id": 201,
         "ChildHeader": {
           "EN": "Show",
-          "RU": "Отобразить"
+          "RU": "Показывать"
         },
         "ChildDescription": {
           "EN": "",
@@ -393,7 +438,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 200,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 203,
@@ -406,7 +454,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 203,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 204,
@@ -419,7 +470,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 204,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 205,
@@ -432,7 +486,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 205,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 206,
@@ -445,7 +502,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 206,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 207,
@@ -484,7 +544,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 207,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 210,
@@ -497,7 +560,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 210,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 211,
@@ -510,7 +576,10 @@
       "RU": "Отключить рекламные уведомления OneDrive в проводнике"
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 211,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 212,
@@ -523,7 +592,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 212,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 213,
@@ -562,7 +634,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 213,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 216,
@@ -575,7 +650,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 216,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 217,
@@ -588,7 +666,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 217,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 218,
@@ -601,7 +682,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 218,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 219,
@@ -614,7 +698,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 219,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 220,
@@ -627,7 +714,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 220,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 221,
@@ -640,7 +730,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 221,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 222,
@@ -653,7 +746,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 222,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 223,
@@ -666,7 +762,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 223,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 224,
@@ -717,7 +816,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 224,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 228,
@@ -730,7 +832,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 228,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 229,
@@ -743,7 +848,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 229,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 230,
@@ -756,7 +864,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 230,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 231,
@@ -769,7 +880,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 231,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 232,
@@ -820,7 +934,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 232,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 236,
@@ -859,7 +976,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 236,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 239,
@@ -898,7 +1018,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 239,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 242,
@@ -911,7 +1034,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 242,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 243,
@@ -924,7 +1050,10 @@
       "RU": "В Windows 10 после завершения настройки при новой установке, обновлении или при входе в новую учетную запись запускается \"анимация первого входа\", которая включает несколько сообщений по мере настройки среды учетной записи"
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 243,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 244,
@@ -963,7 +1092,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 244,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 247,
@@ -976,7 +1108,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 247,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 248,
@@ -989,7 +1124,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 248,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 249,
@@ -1002,7 +1140,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 249,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 250,
@@ -1015,7 +1156,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 250,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 251,
@@ -1028,7 +1172,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Personalization"
+    "Tag": "Personalization",
+    "ViewId": 251,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 300,
@@ -1041,7 +1188,10 @@
       "RU": "Автоматически освободить место, удалить временные файлы, управлять доступным локально содержимым облака"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 300,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 301,
@@ -1080,7 +1230,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 301,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 304,
@@ -1093,7 +1246,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 304,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 305,
@@ -1106,7 +1262,10 @@
       "RU": "Не рекомендуется выключать на ноутбуках"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 305,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 306,
@@ -1145,7 +1304,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 306,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 309,
@@ -1158,7 +1320,10 @@
       "RU": "По умолчанию максимальная длина пути в Windows составляет 260 символов. Локальный путь строится в следующем порядке: буква диска, двоеточие, обратная косая черта, компоненты имени, разделенные обратными косыми чертами, и завершающий нулевой символ"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 309,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 310,
@@ -1171,7 +1336,10 @@
       "RU": "По умолчанию Windows 10 не отображает Stop-ошибку при появлении BSoD"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 310,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 311,
@@ -1210,7 +1378,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 311,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 314,
@@ -1223,7 +1394,10 @@
       "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 314,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 315,
@@ -1236,7 +1410,10 @@
       "RU": "Оптимизация доставки центра обновления Windows работает, позволяя получать обновления для Windows и приложения Microsoft Store из источников в дополнение к Microsoft, например другим компьютерам в локальной сети или компьютерам в Интернете, которые загружают эти же файлы. Оптимизация доставки также отправляет обновления и приложения с компьютера на другие компьютеры в локальной сети или на компьютеры в Интернете на основе ваших настроек. Обмен данными между компьютерами помогает сократить пропускную способность Интернета, необходимую для поддержания более чем одного устройства, и может сделать загрузку более успешной, если у вас есть ограниченное или ненадежное Интернет-соединение"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 315,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 316,
@@ -1249,7 +1426,10 @@
       "RU": "Для сокращения времени входа в систему Windows не ждет полной инициализации сети при запуске или входе в систему. Параметры политики применяются асинхронно при запуске компьютера и при входе пользователя в систему. В результате операционная система не ждет полной инициализации сети при запуске и входе в систему. Существующие пользователи входят в систему, используя кэшированные учетные данные. Это сокращает время входа в систему. Групповая политика применяется в фоновом режиме после того, как сеть становится доступной"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 316,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 317,
@@ -1262,7 +1442,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 317,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 334,
@@ -1275,7 +1458,10 @@
       "RU": "Получайте Microsoft Office и другие обновления вместе с обновленями Windows"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 334,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 335,
@@ -1314,7 +1500,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 335,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 338,
@@ -1327,7 +1516,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 338,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 339,
@@ -1340,7 +1532,10 @@
       "RU": "Не рекомендуется отключать все сетевые адаптеры для экономии энергии на ноутбуках"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 339,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 341,
@@ -1379,7 +1574,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 341,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 344,
@@ -1418,7 +1616,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 344,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 347,
@@ -1457,7 +1658,10 @@
         },
         "Type": "RadioButton"
       }
-    ]
+    ],
+    "ViewId": 347,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 350,
@@ -1470,7 +1674,10 @@
       "RU": "По умолчанию все окна проводника, включая оболочку рабочего стола, запускаются в одном процессе explorer.exe. Если одно окно проводника зависает или аварийно завершается, это приведет к зависанию всей графической оболочки, пока процесс не перезапустится. Таким образом, каждый процесс explorer.exe будет иметь свой собственный идентификатор процесса (PID) для повышения стабильности оболочки проводника"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 350,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 351,
@@ -1483,7 +1690,10 @@
       "RU": "Чтобы обеспечить возможность обновления вашего устройства, а также его наилучшую работу, Windows резервирует часть дискового пространства на вашем устройстве для кэша, временных и других файлов. Когда на устройстве заканчивается свободное место, Windows очищает зарезервированное хранилище, освобождая место для других процессов, например обновления Windows. Зарезервированное хранилище также помогает использовать дисковое пространство на вашем устройстве более предсказуемо и стабильно. Зарезервированное хранилище будет удалено после следующей установки обновлений"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 351,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 352,
@@ -1496,7 +1706,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 352,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 353,
@@ -1509,7 +1722,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 353,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 354,
@@ -1522,7 +1738,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 354,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 355,
@@ -1535,7 +1754,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 355,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 356,
@@ -1548,7 +1770,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 356,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 357,
@@ -1561,7 +1786,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 357,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 358,
@@ -1574,7 +1802,10 @@
       "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 358,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 359,
@@ -1587,7 +1818,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 359,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 360,
@@ -1600,7 +1834,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 360,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 361,
@@ -1613,7 +1850,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 361,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 362,
@@ -1626,7 +1866,10 @@
       "RU": "Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 362,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 363,
@@ -1639,7 +1882,10 @@
       "RU": "Пакет Microsoft Visual C++ Redistributable 2015—2022 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы"
     },
     "Type": "CheckBox",
-    "Tag": "System"
+    "Tag": "System",
+    "ViewId": 363,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 364,
@@ -1678,7 +1924,10 @@
         },
         "Type": "Button"
       }
-    ]
+    ],
+    "ViewId": 364,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 400,
@@ -1691,7 +1940,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "StartMenu"
+    "Tag": "StartMenu",
+    "ViewId": 400,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 401,
@@ -1704,7 +1956,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "StartMenu"
+    "Tag": "StartMenu",
+    "ViewId": 401,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 402,
@@ -1717,7 +1972,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "StartMenu"
+    "Tag": "StartMenu",
+    "ViewId": 402,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 500,
@@ -1730,7 +1988,10 @@
       "RU": "Кодек позволяет открывать изображения и видео в форматах .heif и .hevc соответственно"
     },
     "Type": "CheckBox",
-    "Tag": "UwpApps"
+    "Tag": "UwpApps",
+    "ViewId": 500,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 501,
@@ -1743,7 +2004,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "UwpApps"
+    "Tag": "UwpApps",
+    "ViewId": 501,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 600,
@@ -1756,7 +2020,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Games"
+    "Tag": "Games",
+    "ViewId": 600,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 601,
@@ -1769,7 +2036,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Games"
+    "Tag": "Games",
+    "ViewId": 601,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 602,
@@ -1782,7 +2052,10 @@
       "RU": "Уменьшить время задержки и увеличить производительность. Только при наличии внешней видеокарты и WDDM версии 2.7 и выше"
     },
     "Type": "CheckBox",
-    "Tag": "Games"
+    "Tag": "Games",
+    "ViewId": 602,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 700,
@@ -1795,7 +2068,10 @@
       "RU": "Создать задачу \"Windows Cleanup\" по очистке неиспользуемых файлов и обновлений Windows в Планировщике заданий в папке SophiApp в Планировщике заданий. Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить ли, запустить задание или отменить"
     },
     "Type": "IconWinCheckBox",
-    "Tag": "TaskSheduler"
+    "Tag": "TaskSheduler",
+    "ViewId": 700,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 701,
@@ -1808,7 +2084,10 @@
       "RU": "Создать задание \"SoftwareDistribution\" по очистке %SystemRoot%\\SoftwareDistribution\\Download в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней"
     },
     "Type": "IconFolderCheckBox",
-    "Tag": "TaskSheduler"
+    "Tag": "TaskSheduler",
+    "ViewId": 701,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 702,
@@ -1821,7 +2100,10 @@
       "RU": "Создать задание \"Temp\" по очистке папки %TEMP% в папке SophiApp в Планировщике заданий. Удаляться будут только файлы старше одного дня. Задача выполняется каждые 60 дней"
     },
     "Type": "IconFolderCheckBox",
-    "Tag": "TaskSheduler"
+    "Tag": "TaskSheduler",
+    "ViewId": 702,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 800,
@@ -1834,7 +2116,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 800,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 801,
@@ -1847,7 +2132,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 801,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 802,
@@ -1860,7 +2148,10 @@
       "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 802,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 803,
@@ -1873,7 +2164,10 @@
       "RU": "Событие 4688 журналирует каждую выполненную программу, от имени кого была запущена программа и процесс, который запустил этот процесс. Когда вы запускаете программу, вы создаете процесс, который остается открытым до выхода программы. Этот процесс идентифицируется по Process ID. Вы можете соотнести это событие с другими событиями по идентификатору процесса, чтобы определить, что делала программа во время выполнения и когда она завершилась (событие 4689)"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 803,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 804,
@@ -1886,7 +2180,10 @@
       "RU": "Если вы включаете этот параметр политики, сведения из командной строки заносятся в журнал событий безопасности. Когда включен этот параметр политики, можно будет прочитать аргументы командной строки для любого успешно созданного процесса. Для того, чтобы работал данный функционал, будет включен аудит событий"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 804,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 805,
@@ -1899,7 +2196,10 @@
       "RU": "Создать в \"Просмотре событий\" настраиваемое представление для журналирования запускаемых процессов и их аргументов. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 805,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 806,
@@ -1912,7 +2212,10 @@
       "RU": "Если этот параметр политики включен, события конвейерного выполнения для участников указанных модулей записываются в журнал Windows PowerShell в \"Просмотре событий\". Только для встроенного Windows PowerShell 5.1"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 806,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 807,
@@ -1925,7 +2228,10 @@
       "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational. Только для встроенного Windows PowerShell 5.1"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 807,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 808,
@@ -1938,7 +2244,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 808,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 809,
@@ -1951,7 +2260,10 @@
       "RU": "Диспетчер вложений включен в Windows для защиты от небезопасных файлов, скачанных из интернета. Если диспетчер вложений определяет файл как небезопасный, то предотвращатся (блокируется) его открытие, или перед открытием файла всплывает предупреждение. Метаданные сохраняются как альтернативный поток данных (ADS). Если вы хотите разблокировать загруженный файл вручную, вы можете сделать это, открыв свойство файла и нажав \"Разблокировать\"."
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 809,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 810,
@@ -1964,7 +2276,10 @@
       "RU": "Злоумышленники часто отправляют вредоносные JavaScript-файлы. Эта политика блокирует запуск .js- и .vbs-файлов"
     },
     "Type": "AdvancedSwitch",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 810,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 811,
@@ -1977,7 +2292,10 @@
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
     },
     "Type": "CheckBox",
-    "Tag": "Security"
+    "Tag": "Security",
+    "ViewId": 811,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 900,
@@ -1990,7 +2308,10 @@
       "RU": "Пункт контекстного меню \"Извлечь все\" извлечет содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл"
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 900,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 901,
@@ -2003,7 +2324,10 @@
       "RU": "Этот пункт контекстного меню, используя DISM, позволяет упростить установку обновлений .cab одним щелчком в его контекстном меню. Если по умолчанию расширение .cab ассоциировано со сторонним приложением (7-Zip, WinRAR и т.д.), добавленный пункт контекстного меню \"Установить\" не будет отображаться, пока вы не восстановите ассоциацию по умолчанию для типа файла .cab"
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 901,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 902,
@@ -2016,7 +2340,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 902,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 903,
@@ -2029,7 +2356,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 903,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 904,
@@ -2042,7 +2372,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 904,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 905,
@@ -2153,7 +2486,10 @@
         },
         "Type": "CheckBox"
       }
-    ]
+    ],
+    "ViewId": 905,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 914,
@@ -2166,7 +2502,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 914,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 915,
@@ -2179,7 +2518,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 915,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 916,
@@ -2192,7 +2534,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 916,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 917,
@@ -2205,7 +2550,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 917,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 918,
@@ -2218,7 +2566,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 918,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 919,
@@ -2231,7 +2582,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 919,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 920,
@@ -2244,7 +2598,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 920,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 921,
@@ -2257,7 +2614,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 921,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 922,
@@ -2270,7 +2630,10 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 922,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 923,
@@ -2283,7 +2646,10 @@
       "RU": "Данный пункт контекстного меню может быть заблокирован также сторонней программой"
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 923,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 924,
@@ -2296,7 +2662,10 @@
       "RU": "По умолчанию пункты контекстного меню \"Открыть\", \"Печать\", \"Правка\" не будут отображаться при выборе более 15 пунктов, чтобы избежать случайного выполнения этих действий над большим количеством файлов"
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 924,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   },
   {
     "Id": 925,
@@ -2309,6 +2678,9 @@
       "RU": ""
     },
     "Type": "CheckBox",
-    "Tag": "ContextMenu"
+    "Tag": "ContextMenu",
+    "ViewId": 925,
+    "Windows10Supported": true,
+    "Windows11Supported": true,
   }
 ]

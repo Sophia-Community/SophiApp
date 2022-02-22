@@ -72,7 +72,8 @@
                 <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
                     <Setter TargetName="TextBlockHeader" Property="Text">
                         <Setter.Value>
-                            <MultiBinding StringFormat="{}[ {0} ] {1}">
+                            <MultiBinding StringFormat="{}VId {0} Id {1} | {2}">
+                                <Binding Path="ViewId" />
                                 <Binding Path="Id" />
                                 <Binding Path="Header" />
                             </MultiBinding>

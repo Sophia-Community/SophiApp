@@ -112,10 +112,11 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var deserializedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                                                      .Where(dto => IsWindows11 ? dto.Windows11Supported : dto.Windows10Supported)
                                                       .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
                                                                                                         statusHandler: OnTextedElementStatusChanged,
                                                                                                             language: Localization.Language))
-                                                      .OrderByDescending(element => element.Id);
+                                                      .OrderByDescending(element => element.ViewId);
 
                 TextedElements = new ConcurrentBag<TextedElement>(deserializedElements);
             });
@@ -230,8 +231,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                            .ToList()
-                                                                                                            .ForEach(element => element.Initialize()));
+                                                                                                              .ToList()
+                                                                                                              .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {

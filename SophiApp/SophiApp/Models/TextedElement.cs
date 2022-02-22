@@ -18,14 +18,17 @@ namespace SophiApp.Models
         public TextedElement((TextedElementDto Dto, Action<TextedElement, Exception> ErrorHandler,
                                 EventHandler<TextedElement> StatusHandler, Func<bool> Customisation, UILanguage Language) parameters)
         {
-            Headers = parameters.Dto.Header ?? parameters.Dto.ChildHeader;
-            Descriptions = parameters.Dto.Description ?? parameters.Dto.ChildDescription;
-            Id = parameters.Dto.Id;
-            Tag = parameters.Dto.Tag;
-            ErrorOccurred = parameters.ErrorHandler;
-            StatusChanged = parameters.StatusHandler;
-            Language = parameters.Language;
             CustomisationStatus = parameters.Customisation;
+            Descriptions = parameters.Dto.Description ?? parameters.Dto.ChildDescription;
+            ErrorOccurred = parameters.ErrorHandler;
+            Headers = parameters.Dto.Header ?? parameters.Dto.ChildHeader;
+            Id = parameters.Dto.Id;
+            Language = parameters.Language;
+            StatusChanged = parameters.StatusHandler;
+            Tag = parameters.Dto.Tag;
+            ViewId = parameters.Dto.ViewId;
+            Windows10Supported = parameters.Dto.Windows10Supported;
+            Windows11Supported = parameters.Dto.Windows11Supported;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -37,8 +40,9 @@ namespace SophiApp.Models
         internal Func<bool> CustomisationStatus { get; set; }
 
         internal Action<TextedElement, Exception> ErrorOccurred { get; set; }
-
         internal UILanguage Language { get; set; }
+        internal bool Windows10Supported { get; private set; }
+        internal bool Windows11Supported { get; private set; }
 
         public string Description
         {
@@ -75,6 +79,7 @@ namespace SophiApp.Models
         }
 
         public string Tag { get; }
+        public uint ViewId { get; }
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
