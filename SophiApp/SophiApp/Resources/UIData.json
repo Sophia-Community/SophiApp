@@ -2929,8 +2929,8 @@
   {
     "Id": 928,
     "Header": {
-      "EN": "Enable the Windows context menu style",
-      "RU": "Включить стиль контекстного меню из Windows"
+      "EN": "Enable the Windows 10 context menu style",
+      "RU": "Включить стиль контекстного меню из Windows 10"
     },
     "Description": {
       "EN": "",
