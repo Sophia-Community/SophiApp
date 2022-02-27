@@ -244,7 +244,7 @@
   {
     "Id": 118,
     "Header": {
-      "EN": "Use sign-in info to automatically finish setting up device after an update.",
+      "EN": "Use sign-in info to automatically finish setting up device after an update",
       "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
     },
     "Description": {
@@ -260,7 +260,7 @@
   {
     "Id": 119,
     "Header": {
-      "EN": "Let websites provide locally relevant content by accessing language list.",
+      "EN": "Let websites provide locally relevant content by accessing language list",
       "RU": "Позволить веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
     },
     "Description": {
@@ -276,7 +276,7 @@
   {
     "Id": 120,
     "Header": {
-      "EN": "Let apps show me personalized ads by using my advertising ID.",
+      "EN": "Let apps show me personalized ads by using my advertising ID",
       "RU": "Разрешить приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы"
     },
     "Description": {
@@ -292,7 +292,7 @@
   {
     "Id": 121,
     "Header": {
-      "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers.",
+      "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers",
       "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
     },
     "Description": {
@@ -308,7 +308,7 @@
   {
     "Id": 122,
     "Header": {
-      "EN": "Get tips and suggestions as you use Windows.",
+      "EN": "Get tips and suggestions as you use Windows",
       "RU": "Получать советы и предложения при использовании Windows"
     },
     "Description": {
@@ -324,7 +324,7 @@
   {
     "Id": 123,
     "Header": {
-      "EN": "Show suggested content in the Settings app.",
+      "EN": "Show suggested content in the Settings app",
       "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
     },
     "Description": {
@@ -340,7 +340,7 @@
   {
     "Id": 124,
     "Header": {
-      "EN": "Turn on automatic suggested app installation.",
+      "EN": "Turn on automatic suggested app installation",
       "RU": "Включить автоматическую установку рекомендованных приложений"
     },
     "Description": {
@@ -356,7 +356,7 @@
   {
     "Id": 125,
     "Header": {
-      "EN": "Offer suggestions on how I can set up my device.",
+      "EN": "Offer suggestions on how I can set up my device",
       "RU": "Показывать предложения по настройке устройства"
     },
     "Description": {
@@ -600,7 +600,7 @@
   {
     "Id": 213,
     "Header": {
-      "EN": "Show sync provider notifications within File Explorer.",
+      "EN": "Show sync provider notifications within File Explorer",
       "RU": "Показывать уведомления поставщика синхронизации в проводнике"
     },
     "Description": {
@@ -813,7 +813,7 @@
     "Id": 227,
     "Header": {
       "EN": "Show the search button on the taskbar",
-      "RU": "Показывать кнопку поиска на панели задач"
+      "RU": "Показать кнопку поиска на панели задач"
     },
     "Description": {
       "EN": "",
@@ -829,7 +829,7 @@
     "Id": 228,
     "Header": {
       "EN": "Show Task View button on the taskbar",
-      "RU": "Показывать кнопку Просмотра задач на панели задач"
+      "RU": "Отобразить кнопку Просмотра задач на панели задач"
     },
     "Description": {
       "EN": "",
@@ -845,7 +845,7 @@
     "Id": 229,
     "Header": {
       "EN": "Show the Task view button on the taskbar",
-      "RU": "Показывать кнопку \"Представление задач\" на панели задач"
+      "RU": "Показать кнопку \"Представление задач\" на панели задач"
     },
     "Description": {
       "EN": "",
@@ -861,7 +861,7 @@
     "Id": 230,
     "Header": {
       "EN": "Show the widgets icon on the taskbar",
-      "RU": "Показывать кнопку \"Мини-приложения\" на панели задач"
+      "RU": "Отобразить кнопку \"Мини-приложения\" на панели задач"
     },
     "Description": {
       "EN": "",
