@@ -2227,8 +2227,8 @@
       "RU": "Xbox Game Bar"
     },
     "Description": {
-      "EN": "",
-      "RU": ""
+      "EN": "To prevent popping up the \"You'll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
+      "RU": "Чтобы предотвратить появление вплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", Вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее"
     },
     "Type": "CheckBox",
     "Tag": "Games",
