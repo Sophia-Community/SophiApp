@@ -869,6 +869,7 @@
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
+    "ViewId": 230,
     "Windows10Supported": false,
     "Windows11Supported": true
   },
