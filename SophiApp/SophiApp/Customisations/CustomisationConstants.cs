@@ -220,6 +220,8 @@ namespace SophiApp.Customisations
         internal const string _600_GAME_DVR_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR";
         internal const string _601_GAME_BAR_PATH = @"SOFTWARE\Microsoft\GameBar";
         internal const string _601_SHOW_PANEL = "ShowStartupPanel";
+        internal const string _601_UWP_GAMING_APP = "Microsoft.GamingApp";
+        internal const string _601_UWP_XBOX_GAMING_OVERLAY = "Microsoft.XboxGamingOverlay";
         internal const byte _602_DISABLED_VALUE = 1;
         internal const byte _602_ENABLED_VALUE = 2;
         internal const string _602_FEATURE_SET_PATH = @"SYSTEM\CurrentControlSet\Control\GraphicsDrivers\FeatureSetUsage";
@@ -601,7 +603,6 @@ else
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
         internal const string EXPLORER_TASKBAR_ALIGNMENT = "TaskbarAl";
-        internal const string GAMING_APP_UWP = "Microsoft.GamingApp";
         internal const string IMAGES_FOLDER = "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}";
         internal const string INPUT_ENG_VALUE = "0409:00000409";
         internal const string INPUT_METHOD_OVERRIDE = "InputMethodOverride";
@@ -668,7 +669,6 @@ else
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         internal const string WUSA_EXE = "wusa.exe";
         internal const string X64 = "x64";
-        internal const string XBOX_GAMING_OVERLAY_UWP = "Microsoft.XboxGamingOverlay";
         internal static readonly string _203_WIN10_EXPLORER_INPROC_PATH = $@"{_203_WIN10_EXPLORER_PATH}\InprocServer32";
         internal static readonly DateTime _21_PM_TASK_START = DateTime.Today.AddHours(21);
         internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";

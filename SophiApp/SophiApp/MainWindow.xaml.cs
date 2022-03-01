@@ -92,7 +92,12 @@ namespace SophiApp
             DragMove();
         }
 
-        private void Window_Closed(object sender, System.EventArgs e) => ((sender as MainWindow).DataContext as AppVM).SaveDebugLogCommand.Execute(null);
+        private async void Window_Closed(object sender, System.EventArgs e)
+        {
+            var vm = DataContext as AppVM;
+            vm.SaveDebugLogCommand.Execute(null);
+            await vm.RemoveFrameworkLog();
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

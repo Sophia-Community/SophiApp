@@ -176,7 +176,7 @@ namespace SophiApp.Customisations
                                               .HasNullOrValue(ENABLED_VALUE);
 
         public static bool _230() => UwpHelper.PackageExist(_230_UWP_WEB_EXPERIENCE)
-                                     ? RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) == ENABLED_VALUE
+                                     ? (RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) == DISABLED_VALUE).Invert()
                                      : throw new UwpAppNotFoundException(_230_UWP_WEB_EXPERIENCE);
 
         public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_PEOPLE_EXPLORER_PATH, _231_PEOPLE_BAND) == ENABLED_VALUE;
@@ -425,14 +425,12 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _502_TEAMS_STARTUP_PATH, STATE) == _502_TEAMS_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
 
-        public static bool _600() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
-                                     ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
-                                        && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE
-                                     : throw new UwpAppNotFoundException($"{XBOX_GAMING_OVERLAY_UWP} or {GAMING_APP_UWP}");
+        public static bool _600() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
+                                        && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
 
-        public static bool _601() => UwpHelper.PackageExist(XBOX_GAMING_OVERLAY_UWP) || UwpHelper.PackageExist(GAMING_APP_UWP)
+        public static bool _601() => UwpHelper.PackageExist(_601_UWP_XBOX_GAMING_OVERLAY) || UwpHelper.PackageExist(_601_UWP_GAMING_APP)
                                      ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
-                                     : throw new UwpAppNotFoundException($"{XBOX_GAMING_OVERLAY_UWP} or {GAMING_APP_UWP}");
+                                     : throw new UwpAppNotFoundException($"{_601_UWP_XBOX_GAMING_OVERLAY} or {_601_UWP_GAMING_APP}");
 
         public static bool _602()
         {
