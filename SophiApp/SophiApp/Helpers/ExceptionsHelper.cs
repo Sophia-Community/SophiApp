@@ -16,6 +16,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class MicrosoftDefenderNotRunning : Exception
+    {
+        public MicrosoftDefenderNotRunning() : base("Microsoft Defender is not running")
+        {
+        }
+    }
+
     internal class NetworkAdapterNotEnergySavingException : Exception
     {
         public NetworkAdapterNotEnergySavingException() : base("Your network card(s) does not support power saving mode")

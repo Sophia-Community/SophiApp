@@ -6,9 +6,29 @@ namespace SophiApp.Helpers
 {
     internal class WmiHelper
     {
+        private const string ANTISPYWARE_ENABLED = "AntispywareEnabled";
         private const string PROTECTION_STATUS = "ProtectionStatus";
 
         private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
+
+        internal static bool DefenderIsRun()
+        {
+            bool isRun;
+
+            try
+            {
+                var scope = @"Root/Microsoft/Windows/Defender";
+                var query = $"SELECT * FROM MSFT_MpComputerStatus";
+                var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First().Properties[ANTISPYWARE_ENABLED].Value;
+                isRun = Convert.ToBoolean(status);
+            }
+            catch (Exception)
+            {
+                isRun = false;
+            }
+
+            return isRun;
+        }
 
         internal static string GetActivePowerPlanId()
         {

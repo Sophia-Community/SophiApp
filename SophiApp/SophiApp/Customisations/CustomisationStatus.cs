@@ -456,12 +456,18 @@ namespace SophiApp.Customisations
         public static bool _702() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK)
                                         || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
 
-        public static bool _800() => PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE;
+        public static bool _800() => WmiHelper.DefenderIsRun()
+                                     ? PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
+                                     : throw new MicrosoftDefenderNotRunning();
 
-        public static bool _801() => PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE;
+        public static bool _801() => WmiHelper.DefenderIsRun()
+                                     ? PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE
+                                     : throw new MicrosoftDefenderNotRunning();
 
-        public static bool _802() => ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS)
-                                        || Environment.GetEnvironmentVariable(_802_FORCE_USE_SANDBOX, EnvironmentVariableTarget.Machine) == _802_SANDBOX_ENABLED_VALUE;
+        public static bool _802() => WmiHelper.DefenderIsRun()
+                                     ? ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS)
+                                        || Environment.GetEnvironmentVariable(_802_FORCE_USE_SANDBOX, EnvironmentVariableTarget.Machine) == _802_SANDBOX_ENABLED_VALUE
+                                     : throw new MicrosoftDefenderNotRunning();
 
         public static bool _803() => PowerShellHelper.GetScriptResult<bool>(_803_PROGRAM_AUDIT_ENABLED_PS);
 
@@ -474,7 +480,9 @@ namespace SophiApp.Customisations
 
         public static bool _807() => RegHelper.GetNullableByteValue(RegistryHive.LocalMachine, _807_POWERSHELL_SCRIPT_BLOCK_LOGGING_PATH, _807_ENABLE_SCRIPT_BLOCK_LOGGING) == ENABLED_VALUE;
 
-        public static bool _808() => RegHelper.GetStringValue(RegistryHive.LocalMachine, CURRENT_VERSION_EXPLORER_PATH, _808_SMART_SCREEN_ENABLED) == _808_SMART_SCREEN_ENABLED_VALUE;
+        public static bool _808() => WmiHelper.DefenderIsRun()
+                                     ? RegHelper.GetStringValue(RegistryHive.LocalMachine, CURRENT_VERSION_EXPLORER_PATH, _808_SMART_SCREEN_ENABLED) == _808_SMART_SCREEN_ENABLED_VALUE
+                                     : throw new MicrosoftDefenderNotRunning();
 
         public static bool _809() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _809_CURRENT_POLICIES_ATTACHMENTS_PATH, _809_SAFE_ZONE_INFO) == _809_DISABLED_VALUE).Invert();
 
