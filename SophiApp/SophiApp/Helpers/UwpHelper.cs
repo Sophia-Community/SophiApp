@@ -32,6 +32,9 @@ $ExcludedAppxPackages = @(
 # Store Experience Host
 'Microsoft.StorePurchaseApp',
 
+# Notepad
+'Microsoft.WindowsNotepad',
+
 # Microsoft Store
 'Microsoft.WindowsStore',
 
@@ -44,6 +47,21 @@ $ExcludedAppxPackages = @(
 )
 
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
+
+# The Bundle packages contains no Microsoft Teams
+if (Get-AppxPackage -Name MicrosoftTeams -AllUsers:$false)
+{
+	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
+	$AppxPackages += Get-AppxPackage -Name MicrosoftTeams -AllUsers:$AllUsers | Select-Object -Index 0
+}
+
+# The Bundle packages contains no Spotify
+if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$false)
+{
+	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
+	$AppxPackages += Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$AllUsers | Select-Object -Index 0
+}
+
 $PackagesIds = [Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Select-Object -Property Name, DisplayName, Logo
 
 foreach ($AppxPackage in $AppxPackages)
@@ -70,6 +88,9 @@ $ExcludedAppxPackages = @(
 # Store Experience Host
 'Microsoft.StorePurchaseApp',
 
+# Notepad
+'Microsoft.WindowsNotepad',
+
 # Microsoft Store
 'Microsoft.WindowsStore',
 
@@ -82,6 +103,21 @@ $ExcludedAppxPackages = @(
 )
 
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
+
+# The Bundle packages contains no Microsoft Teams
+if (Get-AppxPackage -Name MicrosoftTeams -AllUsers:$true)
+{
+	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
+	$AppxPackages += Get-AppxPackage -Name MicrosoftTeams -AllUsers:$AllUsers | Select-Object -Index 0
+}
+
+# The Bundle packages contains no Spotify
+if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$AllUsers)
+{
+	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
+	$AppxPackages += Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$AllUsers | Select-Object -Index 0
+}
+
 $PackagesIds = [Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Select-Object -Property Name, DisplayName, Logo
 
 foreach ($AppxPackage in $AppxPackages)

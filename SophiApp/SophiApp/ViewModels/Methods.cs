@@ -33,6 +33,7 @@ namespace SophiApp.ViewModels
             {
                 var applyingCancellationSource = new CancellationTokenSource();
                 var token = applyingCancellationSource.Token;
+                var viewTag = VisibleViewByTag;
 
                 DebugHelper.StartApplyingSettings(CustomActions.Count);
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
@@ -76,7 +77,7 @@ namespace SophiApp.ViewModels
                     OsHelper.RefreshEnvironment();
                     SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
                     SetControlsHitTest();
-                    SetVisibleViewTag(Tags.ViewPrivacy);
+                    SetVisibleViewTag(viewTag);
                     totalStopWatch.Stop();
                     DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
                 }

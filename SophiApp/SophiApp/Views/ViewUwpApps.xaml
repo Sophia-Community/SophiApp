@@ -49,7 +49,6 @@
 
                             <controls:SimpleCheckBox x:Name="SimpleCheckBoxForAllUsers"
                                                      VerticalAlignment="Center"
-                                                     HorizontalAlignment="Right"
                                                      Grid.Row="0"
                                                      IsChecked="{Binding UwpForAllUsersState}"
                                                      Header="{DynamicResource Localization.ViewUwpApps.ForAllUsers}"
