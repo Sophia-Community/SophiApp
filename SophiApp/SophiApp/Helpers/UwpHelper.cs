@@ -52,14 +52,14 @@ $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle | Where-Object -Filter
 if (Get-AppxPackage -Name MicrosoftTeams -AllUsers:$false)
 {
 	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
-	$AppxPackages += Get-AppxPackage -Name MicrosoftTeams -AllUsers:$AllUsers | Select-Object -Index 0
+	$AppxPackages += Get-AppxPackage -Name MicrosoftTeams -AllUsers:$false | Select-Object -Index 0
 }
 
 # The Bundle packages contains no Spotify
 if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$false)
 {
 	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
-	$AppxPackages += Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$AllUsers | Select-Object -Index 0
+	$AppxPackages += Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$false | Select-Object -Index 0
 }
 
 $PackagesIds = [Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Select-Object -Property Name, DisplayName, Logo
@@ -108,14 +108,14 @@ $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Obje
 if (Get-AppxPackage -Name MicrosoftTeams -AllUsers:$true)
 {
 	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
-	$AppxPackages += Get-AppxPackage -Name MicrosoftTeams -AllUsers:$AllUsers | Select-Object -Index 0
+	$AppxPackages += Get-AppxPackage -Name MicrosoftTeams -AllUsers:$true | Select-Object -Index 0
 }
 
 # The Bundle packages contains no Spotify
-if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$AllUsers)
+if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$true)
 {
 	# Temporarily hack: due to the fact that there are actually two Microsoft Teams packages, we need to choose the first one to display
-	$AppxPackages += Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$AllUsers | Select-Object -Index 0
+	$AppxPackages += Get-AppxPackage -Name SpotifyAB.SpotifyMusic -AllUsers:$true | Select-Object -Index 0
 }
 
 $PackagesIds = [Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -Property DisplayName, Logo -ExpandProperty Id | Select-Object -Property Name, DisplayName, Logo

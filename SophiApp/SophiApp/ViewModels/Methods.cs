@@ -33,7 +33,6 @@ namespace SophiApp.ViewModels
             {
                 var applyingCancellationSource = new CancellationTokenSource();
                 var token = applyingCancellationSource.Token;
-                var viewTag = VisibleViewByTag;
 
                 DebugHelper.StartApplyingSettings(CustomActions.Count);
                 SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false, windowCloseHitTest: false);
@@ -77,7 +76,6 @@ namespace SophiApp.ViewModels
                     OsHelper.RefreshEnvironment();
                     SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
                     SetControlsHitTest();
-                    SetVisibleViewTag(viewTag);
                     totalStopWatch.Stop();
                     DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
                 }
@@ -349,7 +347,6 @@ namespace SophiApp.ViewModels
 
             SetInfoPanelVisibility(InfoPanelVisibility.HideAll);
             SetControlsHitTest();
-            SetVisibleViewTag(Tags.ViewPrivacy);
             stopwatch.Stop();
             DebugHelper.StopResetTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
@@ -491,7 +488,7 @@ namespace SophiApp.ViewModels
         {
             DebugHelper.StartStartupConditions();
             var stopwatch = Stopwatch.StartNew();
-            var conditionsHelper = new StartupConditionsHelper(errorHandler: OnConditionsHasError, resultHandler: OnConditionsHasProblem); //TODO: OnConditionsHasError !!!
+            var conditionsHelper = new StartupConditionsHelper(errorHandler: OnConditionsHasError, resultHandler: OnConditionsHasProblem);
             await conditionsHelper.CheckAsync();
             stopwatch.Stop();
             DebugHelper.StopStartupConditions(stopwatch.Elapsed.TotalSeconds);

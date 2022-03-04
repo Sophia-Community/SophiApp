@@ -328,15 +328,9 @@ namespace SophiApp.Customisations
 
         public static bool _323() => WmiHelper.HasNetworkAdaptersPowerSave();
 
-        //TODO: Deprecated !!!
-        //public static bool _340() => PowerShell.Create().AddScript(_340_GET_IPV6_PS).Invoke().Count > 0;
-
         public static bool _325() => _326().Invert();
 
         public static bool _326() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
-
-        //TODO: Deprecated ???
-        //public static bool _344() => OneDriveHelper.IsInstalled() ? throw new OneDriveIsInstalledException() : true;
 
         public static bool _328() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
                                         == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _328_DESKTOP_FOLDER);
@@ -386,7 +380,9 @@ namespace SophiApp.Customisations
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
 
-        public static bool _346() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH) == false
+        public static bool _346() => _347().Invert();
+
+        public static bool _347() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH) == false
                                      || (RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE) == DELEGATION_CONSOLE_VALUE
                                             && RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL) == DELEGATION_CONSOLE_VALUE);
 

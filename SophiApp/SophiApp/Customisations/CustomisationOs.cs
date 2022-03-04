@@ -703,9 +703,6 @@ namespace SophiApp.Customisations
 
         public static void _323(bool IsChecked) => WmiHelper.SetNetworkAdaptersPowerSave(IsChecked);
 
-        //TODO: Deprecated !!!
-        //public static void _340(bool IsChecked) => PowerShell.Create().AddScript(IsChecked ? _340_ENABLE_NET_BINDING_PS : _340_DISABLE_NET_BINDING_PS).Invoke();
-
         public static void _325(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE);
 
         public static void _326(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE, INPUT_ENG_VALUE, RegistryValueKind.String);
@@ -839,6 +836,12 @@ namespace SophiApp.Customisations
                     RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, delegationGuid, RegistryValueKind.String);
                 }
             }
+        }
+
+        public static void _347(bool _)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
+            RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
         }
 
         public static void _348(bool _)
