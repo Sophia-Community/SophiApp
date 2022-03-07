@@ -142,7 +142,7 @@ namespace SophiApp.Customisations
         public static bool _214() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _214_SNAP_ASSIST)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _215() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == ENABLED_VALUE;
+        public static bool _215() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_USE_COMPACT_MODE) == ENABLED_VALUE;
 
         public static bool _217() => _218().Invert();
 

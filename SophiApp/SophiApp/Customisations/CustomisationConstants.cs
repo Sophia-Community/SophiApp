@@ -62,6 +62,7 @@ namespace SophiApp.Customisations
         internal const string _213_SHOW_SYNC_PROVIDER = "ShowSyncProviderNotifications";
         internal const string _214_SNAP_ASSIST = "SnapAssist";
         internal const string _215_SNAP_ASSIST_FLYOUT = "EnableSnapAssistFlyout";
+        internal const string _215_USE_COMPACT_MODE = "UseCompactMode";
         internal const byte _219_EXPANDED_VALUE = 0;
         internal const byte _219_MINIMIZED_VALUE = 1;
         internal const string _219_RIBBON_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ribbon";
