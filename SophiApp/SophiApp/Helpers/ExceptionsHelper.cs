@@ -1,4 +1,5 @@
 using System;
+using Windows.ApplicationModel;
 
 namespace SophiApp.Helpers
 {
@@ -12,6 +13,13 @@ namespace SophiApp.Helpers
     internal class BitlockerIsEnabledException : Exception
     {
         public BitlockerIsEnabledException() : base("BitLocker protection is enabled")
+        {
+        }
+    }
+
+    internal class MicrosoftDefenderNotRunning : Exception
+    {
+        public MicrosoftDefenderNotRunning() : base("Microsoft Defender is not running")
         {
         }
     }
@@ -90,6 +98,14 @@ namespace SophiApp.Helpers
     {
         public UwpAppFoundException(string name) : base($"The UWP package {name} found on OS")
         {
+        }
+    }
+
+    internal class UwpNotSupportedVersion : Exception
+    {
+        public UwpNotSupportedVersion(string packageFullName) : base($"This UWP package version {packageFullName} not supported")
+        {
+
         }
     }
 

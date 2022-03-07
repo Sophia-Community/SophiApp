@@ -65,7 +65,7 @@
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
             <Setter Property="Title">
                 <Setter.Value>
-                    <MultiBinding StringFormat="{}{0} {1} beta 2">
+                    <MultiBinding StringFormat="{}{0} {1}">
                         <Binding Path="AppName" />
                         <Binding Path="Version" />
                     </MultiBinding>
@@ -342,6 +342,7 @@
                     </TextBlock>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
+
             <Grid Grid.Column="1" Panel.ZIndex="10">
                 <!--  Wrapper Grid For Views With Description and Info Panel  -->
                 <Grid.ColumnDefinitions>

@@ -47,7 +47,7 @@ namespace SophiApp.Conditions
             catch (WebException e)
             {
                 DebugHelper.HasException("An error occurred while checking for an update", e);
-                return HasProblem = true;
+                return HasProblem;
             }
             catch (Exception e)
             {

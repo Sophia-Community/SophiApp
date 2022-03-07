@@ -76,7 +76,6 @@ namespace SophiApp.ViewModels
                     OsHelper.RefreshEnvironment();
                     SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
                     SetControlsHitTest();
-                    SetVisibleViewTag(Tags.ViewPrivacy);
                     totalStopWatch.Stop();
                     DebugHelper.StopApplyingSettings(totalStopWatch.Elapsed.TotalSeconds);
                 }
@@ -112,10 +111,11 @@ namespace SophiApp.ViewModels
             await Task.Run(() =>
             {
                 var deserializedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
+                                                      .Where(dto => IsWindows11 ? dto.Windows11Supported : dto.Windows10Supported)
                                                       .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
                                                                                                         statusHandler: OnTextedElementStatusChanged,
                                                                                                             language: Localization.Language))
-                                                      .OrderByDescending(element => element.Id);
+                                                      .OrderByDescending(element => element.ViewId);
 
                 TextedElements = new ConcurrentBag<TextedElement>(deserializedElements);
             });
@@ -230,8 +230,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                            .ToList()
-                                                                                                            .ForEach(element => element.Initialize()));
+                                                                                                                    .ToList()
+                                                                                                                    .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -347,7 +347,6 @@ namespace SophiApp.ViewModels
 
             SetInfoPanelVisibility(InfoPanelVisibility.HideAll);
             SetControlsHitTest();
-            SetVisibleViewTag(Tags.ViewPrivacy);
             stopwatch.Stop();
             DebugHelper.StopResetTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
@@ -489,7 +488,7 @@ namespace SophiApp.ViewModels
         {
             DebugHelper.StartStartupConditions();
             var stopwatch = Stopwatch.StartNew();
-            var conditionsHelper = new StartupConditionsHelper(errorHandler: OnConditionsHasError, resultHandler: OnConditionsHasProblem); //TODO: OnConditionsHasError !!!
+            var conditionsHelper = new StartupConditionsHelper(errorHandler: OnConditionsHasError, resultHandler: OnConditionsHasProblem);
             await conditionsHelper.CheckAsync();
             stopwatch.Stop();
             DebugHelper.StopStartupConditions(stopwatch.Elapsed.TotalSeconds);
@@ -497,5 +496,7 @@ namespace SophiApp.ViewModels
             if (conditionsHelper.HasProblem.Invert())
                 await InitializeDataAsync();
         }
+
+        internal async Task RemoveFrameworkLog() => await Task.Run(() => FileHelper.TryDeleteFile(AppHelper.AppFrameworkLog));
     }
 }

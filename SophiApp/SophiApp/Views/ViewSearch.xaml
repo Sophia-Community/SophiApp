@@ -108,6 +108,20 @@
                                     Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSearch}}}" />
                             </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
+                                <controls:IconWinCheckBox
+                                    Margin="{StaticResource ItemsMargin}"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSearch}}}"
+                                    Id="{Binding Id}"
+                                    Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
+                                <controls:IconFolderCheckBox
+                                    Margin="{StaticResource ItemsMargin}"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSearch}}}"
+                                    Id="{Binding Id}"
+                                    Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
                         </ItemsControl.Resources>
                     </ItemsControl>
                 </ScrollViewer>

@@ -45,8 +45,8 @@
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Grid x:Name="GridContainer" Background="{DynamicResource Brush.Window.Background}">
                             <TextBlock
-                                Margin="0,3,0,3"
-                                HorizontalAlignment="Center"
+                                Margin="43,3,0,3"
+                                HorizontalAlignment="Left"
                                 Foreground="{DynamicResource Brush.Window.Foreground}"
                                 Style="{DynamicResource NormalText}"
                                 Text="{Binding}" />
