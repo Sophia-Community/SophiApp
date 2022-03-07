@@ -339,7 +339,7 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Windows may open a pop-up window to show you what\u0027s new about the operating system.",
+      "EN": "Windows may open a pop-up window to show you what's new about the operating system.",
       "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе",
       "DE": ""
     },
@@ -718,7 +718,7 @@
   {
     "Id": 215,
     "Header": {
-      "EN": "Show snap layouts when I hover over a windows\u0027s maximaze button",
+      "EN": "Show snap layouts when I hover over a windows's maximaze button",
       "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
       "DE": ""
     },
@@ -1496,7 +1496,7 @@
   {
     "Id": 261,
     "Header": {
-      "EN": "When I grab a windows\u0027s title bar and shake it, minimize all other windows",
+      "EN": "When I grab a windows's title bar and shake it, minimize all other windows",
       "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна",
       "DE": ""
     },
@@ -1580,7 +1580,7 @@
   {
     "Id": 304,
     "Header": {
-      "EN": "Delete temporary files that aren\u0027t used by apps",
+      "EN": "Delete temporary files that aren't used by apps",
       "RU": "Удалять временные файлы, не используемые в приложениях",
       "DE": ""
     },
@@ -1771,7 +1771,7 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that\u0027s needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
+      "EN": "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that's needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
       "RU": "Оптимизация доставки центра обновления Windows работает, позволяя получать обновления для Windows и приложения Microsoft Store из источников в дополнение к Microsoft, например другим компьютерам в локальной сети или компьютерам в Интернете, которые загружают эти же файлы. Оптимизация доставки также отправляет обновления и приложения с компьютера на другие компьютеры в локальной сети или на компьютеры в Интернете на основе ваших настроек. Обмен данными между компьютерами помогает сократить пропускную способность Интернета, необходимую для поддержания более чем одного устройства, и может сделать загрузку более успешной, если у вас есть ограниченное или ненадежное Интернет-соединение",
       "DE": ""
     },
@@ -2526,7 +2526,7 @@
       "DE": ""
     },
     "Description": {
-      "EN": "To prevent popping up the \"You\u0027ll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
+      "EN": "To prevent popping up the \"You'll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
       "RU": "Чтобы предотвратить появление вплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", Вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее",
       "DE": ""
     },
@@ -2832,7 +2832,7 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it\u0027s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn\u0027t work in Home Edition.",
+      "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home",
       "DE": ""
     },
