@@ -380,11 +380,42 @@ namespace SophiApp.Customisations
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
 
-        public static bool _346() => _347().Invert();
+        public static bool _346()
+        {
+            if (UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL))
+            {
+                var terminal = UwpHelper.GetPackage(UWP_WINDOWS_TERMINAL);
 
-        public static bool _347() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH) == false
-                                     || (RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE) == DELEGATION_CONSOLE_VALUE
-                                            && RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL) == DELEGATION_CONSOLE_VALUE);
+                if (terminal.Id.Version.Major == MINIMAL_TERMINAL_VERSION.Major
+                    && terminal.Id.Version.Minor >= MINIMAL_TERMINAL_VERSION.Minor)
+                {
+                    var terminalClassRegistryPath = $@"SOFTWARE\Classes\PackagedCom\Package\{terminal.Id.FullName}\Class";
+
+                    var consoleGuid = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, terminalClassRegistryPath)
+                                               .Where(key => RegHelper.GetByteValue(RegistryHive.LocalMachine, key, TERMINAL_REGISTRY_SERVER_ID) == DISABLED_VALUE)
+                                               .FirstOrDefault()
+                                               .Split('\\')
+                                               .LastOrDefault();
+
+                    var terminalGuid = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, terminalClassRegistryPath)
+                                                .Where(key => RegHelper.GetByteValue(RegistryHive.LocalMachine, key, TERMINAL_REGISTRY_SERVER_ID) == ENABLED_VALUE)
+                                                .FirstOrDefault()
+                                                .Split('\\')
+                                                .LastOrDefault();
+
+                    var consoleDelegation = RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE);
+                    var terminalDelegation = RegHelper.GetStringValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL);
+
+                    return consoleDelegation == consoleGuid && terminalDelegation == terminalGuid;
+                }
+
+                throw new UwpNotSupportedVersion(terminal.Id.FullName);
+            }
+
+            throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+        }
+ 
+        public static bool _347() => _346().Invert();
 
         public static bool _348() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
                                               .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PC_HEALTH_CHECK) != null

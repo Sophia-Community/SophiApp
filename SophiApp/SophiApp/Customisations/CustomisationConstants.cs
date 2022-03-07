@@ -1,11 +1,13 @@
 ﻿using SophiApp.Helpers;
 using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel;
 
 namespace SophiApp.Customisations
 {
     internal static class CustomisationConstants
     {
+        internal static readonly PackageVersion MINIMAL_TERMINAL_VERSION = new PackageVersion() { Major = 1, Minor = 11 };
         internal const int _10_SECONDS_TIMEOUT = 10000;
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
@@ -191,7 +193,7 @@ namespace SophiApp.Customisations
         internal const byte _343_AUTO_STATE = 1;
         internal const byte _343_MANUAL_STATE = 0;
         internal const string _344_IS_EXPEDITED = "IsExpedited";
-        internal const string _347_SERVER_ID = "ServerId";
+        internal const string TERMINAL_REGISTRY_SERVER_ID = "ServerId";
         internal const string _348_MSI_MASK = "*.msi";
         internal const string _348_MSIEXEC_EXE = "msiexec.exe";
         internal const string _348_PC_HEALTH_CHECK = "Windows PC Health Check";

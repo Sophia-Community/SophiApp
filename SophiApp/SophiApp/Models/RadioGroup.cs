@@ -38,7 +38,7 @@ namespace SophiApp.Models
             catch (Exception e)
             {
                 ChildElements.ForEach(child => child.Status = ElementStatus.DISABLED);
-                ErrorOccurred?.Invoke(this, e);
+                OnChildErrorOccured(this, e);
             }
         }
 
@@ -48,6 +48,6 @@ namespace SophiApp.Models
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
 
-        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, new Exception($"Child with id {element.Id} caused an error: {e.Message}. Method caused an error: {e.TargetSite.DeclaringType.FullName}"));
+        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, e);
     }
 }

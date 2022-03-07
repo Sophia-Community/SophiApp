@@ -826,12 +826,12 @@ namespace SophiApp.Customisations
             {
                 var delegationGuid = subkey.Substring(subkey.LastIndexOf("\\") + 1);
 
-                if (RegHelper.GetByteValue(RegistryHive.LocalMachine, subkey, _347_SERVER_ID) == DISABLED_VALUE)
+                if (RegHelper.GetByteValue(RegistryHive.LocalMachine, subkey, TERMINAL_REGISTRY_SERVER_ID) == DISABLED_VALUE)
                 {
                     RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE, delegationGuid, RegistryValueKind.String);
                 }
 
-                if (RegHelper.GetByteValue(RegistryHive.LocalMachine, subkey, _347_SERVER_ID) == ENABLED_VALUE)
+                if (RegHelper.GetByteValue(RegistryHive.LocalMachine, subkey, TERMINAL_REGISTRY_SERVER_ID) == ENABLED_VALUE)
                 {
                     RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, delegationGuid, RegistryValueKind.String);
                 }
