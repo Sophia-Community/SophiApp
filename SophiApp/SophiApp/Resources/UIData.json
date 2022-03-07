@@ -3,11 +3,13 @@
     "Id": 100,
     "Header": {
       "EN": "The telemetry service",
-      "RU": "Служба телеметрии"
+      "RU": "Служба телеметрии",
+      "DE": ""
     },
     "Description": {
       "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic.",
-      "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии"
+      "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -19,11 +21,13 @@
     "Id": 101,
     "Header": {
       "EN": "The OS level of diagnostic data gathering",
-      "RU": "Уровень сбора диагностических данных ОС"
+      "RU": "Уровень сбора диагностических данных ОС",
+      "DE": ""
     },
     "Description": {
       "EN": "As a part of using Windows, your device sends Microsoft a limited set of adata that is necessary to keep your device and operating system secure, up to date, and working as expected.",
-      "RU": "При использовании Windows ваше устройство отправляет в Майкрософт ограниченный набор данных, которые необходимы для защиты вашего устройства и операционной системы, а также для его корректной работы"
+      "RU": "При использовании Windows ваше устройство отправляет в Майкрософт ограниченный набор данных, которые необходимы для защиты вашего устройства и операционной системы, а также для его корректной работы",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Privacy",
@@ -32,11 +36,13 @@
         "Id": 102,
         "ChildHeader": {
           "EN": "Default",
-          "RU": "По умолчанию"
+          "RU": "По умолчанию",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -44,11 +50,13 @@
         "Id": 103,
         "ChildHeader": {
           "EN": "Minimal",
-          "RU": "Минимальный"
+          "RU": "Минимальный",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -61,11 +69,13 @@
     "Id": 104,
     "Header": {
       "EN": "The Windows Error Reporting",
-      "RU": "Запись отчетов об ошибках Windows"
+      "RU": "Запись отчетов об ошибках Windows",
+      "DE": ""
     },
     "Description": {
       "EN": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.",
-      "RU": "Функция создания отчетов об ошибках позволяет пользователям уведомлять Майкрософт о сбоях приложений, сбоях ядра, неотвечающих приложениях и других проблемах, связанных с приложениями. Корпорация Майкрософт может использовать функцию отчетов об ошибках для предоставления клиентам сведений об устранении неполадок, решениях или обновлениях для конкретных проблем"
+      "RU": "Функция создания отчетов об ошибках позволяет пользователям уведомлять Майкрософт о сбоях приложений, сбоях ядра, неотвечающих приложениях и других проблемах, связанных с приложениями. Корпорация Майкрософт может использовать функцию отчетов об ошибках для предоставления клиентам сведений об устранении неполадок, решениях или обновлениях для конкретных проблем",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -77,11 +87,13 @@
     "Id": 105,
     "Header": {
       "EN": "Feedback frequency",
-      "RU": "Частота отправки запросов"
+      "RU": "Частота отправки запросов",
+      "DE": ""
     },
     "Description": {
       "EN": "Choose how often Windows asks for your feedback.",
-      "RU": "Укажите, как часто Windows следует запрашивать ваш отзыв"
+      "RU": "Укажите, как часто Windows следует запрашивать ваш отзыв",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Privacy",
@@ -90,11 +102,13 @@
         "Id": 106,
         "ChildHeader": {
           "EN": "Automatically",
-          "RU": "Автоматически"
+          "RU": "Автоматически",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -102,11 +116,13 @@
         "Id": 107,
         "ChildHeader": {
           "EN": "Never",
-          "RU": "Никогда"
+          "RU": "Никогда",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -119,11 +135,13 @@
     "Id": 108,
     "Header": {
       "EN": "Diagnostic Tracking Tasks",
-      "RU": "Задачи диагностического отслеживания"
+      "RU": "Задачи диагностического отслеживания",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "ExpandingGroup",
     "Tag": "Privacy",
@@ -132,11 +150,13 @@
         "Id": 109,
         "ChildHeader": {
           "EN": "ProgramDataUpdater",
-          "RU": "ProgramDataUpdater"
+          "RU": "ProgramDataUpdater",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program.",
-          "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО"
+          "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -144,11 +164,13 @@
         "Id": 110,
         "ChildHeader": {
           "EN": "Proxy",
-          "RU": "Proxy"
+          "RU": "Proxy",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program.",
-          "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения"
+          "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -156,11 +178,13 @@
         "Id": 111,
         "ChildHeader": {
           "EN": "Consolidator",
-          "RU": "Consolidator"
+          "RU": "Consolidator",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft.",
-          "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт"
+          "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -168,11 +192,13 @@
         "Id": 112,
         "ChildHeader": {
           "EN": "UsbCeip",
-          "RU": "UsbCeip"
+          "RU": "UsbCeip",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft.  The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything.",
-          "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий"
+          "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -180,11 +206,13 @@
         "Id": 113,
         "ChildHeader": {
           "EN": "Microsoft-Windows-DiskDiagnosticDataCollector",
-          "RU": "Microsoft-Windows-DiskDiagnosticDataCollector"
+          "RU": "Microsoft-Windows-DiskDiagnosticDataCollector",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program.",
-          "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт"
+          "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -192,11 +220,13 @@
         "Id": 114,
         "ChildHeader": {
           "EN": "MapsToastTask",
-          "RU": "MapsToastTask"
+          "RU": "MapsToastTask",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "This task shows various Map related toasts.",
-          "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам"
+          "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -204,11 +234,13 @@
         "Id": 115,
         "ChildHeader": {
           "EN": "MapsUpdateTask",
-          "RU": "MapsUpdateTask"
+          "RU": "MapsUpdateTask",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps.",
-          "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт"
+          "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -216,11 +248,13 @@
         "Id": 116,
         "ChildHeader": {
           "EN": "FamilySafetyMonitor",
-          "RU": "FamilySafetyMonitor"
+          "RU": "FamilySafetyMonitor",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "Initializes Family Safety monitoring and enforcement.",
-          "RU": "Инициализация контроля и применения правил семейной безопасности"
+          "RU": "Инициализация контроля и применения правил семейной безопасности",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -228,11 +262,13 @@
         "Id": 117,
         "ChildHeader": {
           "EN": "XblGameSaveTask",
-          "RU": "XblGameSaveTask"
+          "RU": "XblGameSaveTask",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "The XblGameSave Standby Task, which syncronizes game progress when the OS is idle.",
-          "RU": "Задание XblGameSave, синхронизирующее прогресс в игре во время простоя ОС"
+          "RU": "Задание XblGameSave, синхронизирующее прогресс в игре во время простоя ОС",
+          "DE": ""
         },
         "Type": "CheckBox"
       }
@@ -245,11 +281,13 @@
     "Id": 118,
     "Header": {
       "EN": "Use sign-in info to automatically finish setting up device after an update",
-      "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления"
+      "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
+      "DE": ""
     },
     "Description": {
       "EN": "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.",
-      "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации"
+      "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -261,11 +299,13 @@
     "Id": 119,
     "Header": {
       "EN": "Let websites provide locally relevant content by accessing language list",
-      "RU": "Позволить веб-сайтам предоставлять местную информацию за счет доступа к списку языков"
+      "RU": "Позволить веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -277,11 +317,13 @@
     "Id": 120,
     "Header": {
       "EN": "Let apps show me personalized ads by using my advertising ID",
-      "RU": "Разрешить приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы"
+      "RU": "Разрешить приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -293,11 +335,13 @@
     "Id": 121,
     "Header": {
       "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers",
-      "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях"
+      "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
+      "DE": ""
     },
     "Description": {
-      "EN": "Windows may open a pop-up window to show you what's new about the operating system.",
-      "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе"
+      "EN": "Windows may open a pop-up window to show you what\u0027s new about the operating system.",
+      "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -309,11 +353,13 @@
     "Id": 122,
     "Header": {
       "EN": "Get tips and suggestions as you use Windows",
-      "RU": "Получать советы и предложения при использовании Windows"
+      "RU": "Получать советы и предложения при использовании Windows",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -325,11 +371,13 @@
     "Id": 123,
     "Header": {
       "EN": "Show suggested content in the Settings app",
-      "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\""
+      "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -341,11 +389,13 @@
     "Id": 124,
     "Header": {
       "EN": "Turn on automatic suggested app installation",
-      "RU": "Включить автоматическую установку рекомендованных приложений"
+      "RU": "Включить автоматическую установку рекомендованных приложений",
+      "DE": ""
     },
     "Description": {
       "EN": "Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.",
-      "RU": "Windows может в тихом режиме загружать и устанавливать некоторые приложения из Microsoft Store без какого-либо подтверждения"
+      "RU": "Windows может в тихом режиме загружать и устанавливать некоторые приложения из Microsoft Store без какого-либо подтверждения",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -357,11 +407,13 @@
     "Id": 125,
     "Header": {
       "EN": "Offer suggestions on how I can set up my device",
-      "RU": "Показывать предложения по настройке устройства"
+      "RU": "Показывать предложения по настройке устройства",
+      "DE": ""
     },
     "Description": {
       "EN": "Windows may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up.",
-      "RU": "Windows может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить"
+      "RU": "Windows может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -373,11 +425,13 @@
     "Id": 126,
     "Header": {
       "EN": "Tailored experiences",
-      "RU": "Персонализированные возможности"
+      "RU": "Персонализированные возможности",
+      "DE": ""
     },
     "Description": {
       "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.",
-      "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций"
+      "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -389,11 +443,13 @@
     "Id": 127,
     "Header": {
       "EN": "Enable Bing search in the Start Menu",
-      "RU": "Включить поиск через Bing в меню \"Пуск\""
+      "RU": "Включить поиск через Bing в меню \"Пуск\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -405,11 +461,13 @@
     "Id": 200,
     "Header": {
       "EN": "Show the \"This PC\" icon on Desktop",
-      "RU": "Отображать значок \"Этот компьютер\" на рабочем столе"
+      "RU": "Отображать значок \"Этот компьютер\" на рабочем столе",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -418,11 +476,13 @@
         "Id": 201,
         "ChildHeader": {
           "EN": "Show",
-          "RU": "Показывать"
+          "RU": "Показывать",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -430,11 +490,13 @@
         "Id": 202,
         "ChildHeader": {
           "EN": "Hide",
-          "RU": "Скрыть"
+          "RU": "Скрыть",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -447,11 +509,13 @@
     "Id": 203,
     "Header": {
       "EN": "Enable the Windows 10 File Explorer",
-      "RU": "Включить проводник из Windows 10"
+      "RU": "Включить проводник из Windows 10",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -463,11 +527,13 @@
     "Id": 204,
     "Header": {
       "EN": "Use check boxes to select items",
-      "RU": "Использовать флажки для выбора элементов"
+      "RU": "Использовать флажки для выбора элементов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -479,11 +545,13 @@
     "Id": 205,
     "Header": {
       "EN": "Show hidden files, folders, and drives",
-      "RU": "Отображать скрытые файлы, папки и диски"
+      "RU": "Отображать скрытые файлы, папки и диски",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -495,11 +563,13 @@
     "Id": 206,
     "Header": {
       "EN": "Show the file name extensions",
-      "RU": "Отображать расширения имён файлов"
+      "RU": "Отображать расширения имён файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -511,11 +581,13 @@
     "Id": 207,
     "Header": {
       "EN": "Hide folder merge conflicts",
-      "RU": "Скрывать конфликт слияния папок"
+      "RU": "Скрывать конфликт слияния папок",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -527,11 +599,13 @@
     "Id": 208,
     "Header": {
       "EN": "Open File Explorer to:",
-      "RU": "Открывать проводник для:"
+      "RU": "Открывать проводник для:",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -540,11 +614,13 @@
         "Id": 209,
         "ChildHeader": {
           "EN": "This PC",
-          "RU": "Этот компьютер"
+          "RU": "Этот компьютер",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -552,11 +628,13 @@
         "Id": 210,
         "ChildHeader": {
           "EN": "Quick access",
-          "RU": "Быстрый доступ"
+          "RU": "Быстрый доступ",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -569,11 +647,13 @@
     "Id": 211,
     "Header": {
       "EN": "Show Cortana button on the taskbar",
-      "RU": "Показать кнопку Кортаны на панели задач"
+      "RU": "Показать кнопку Кортаны на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -585,11 +665,13 @@
     "Id": 212,
     "Header": {
       "EN": "Enable the File Explorer compact mode",
-      "RU": "Включить компактный вид проводника"
+      "RU": "Включить компактный вид проводника",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -601,11 +683,13 @@
     "Id": 213,
     "Header": {
       "EN": "Show sync provider notifications within File Explorer",
-      "RU": "Показывать уведомления поставщика синхронизации в проводнике"
+      "RU": "Показывать уведомления поставщика синхронизации в проводнике",
+      "DE": ""
     },
     "Description": {
       "EN": "Disable OneDrive ad notifications within File Explorer.",
-      "RU": "Отключить рекламные уведомления OneDrive в проводнике"
+      "RU": "Отключить рекламные уведомления OneDrive в проводнике",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -617,11 +701,13 @@
     "Id": 214,
     "Header": {
       "EN": "When I snap a window, show what I can snap next to it",
-      "RU": "При прикреплении окна показывать, что можно прикрепить рядом с ним"
+      "RU": "При прикреплении окна показывать, что можно прикрепить рядом с ним",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -632,12 +718,14 @@
   {
     "Id": 215,
     "Header": {
-      "EN": "Show snap layouts when I hover over a windows's maximaze button",
-      "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач"
+      "EN": "Show snap layouts when I hover over a windows\u0027s maximaze button",
+      "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -649,11 +737,13 @@
     "Id": 216,
     "Header": {
       "EN": "Display the file transfer dialog box",
-      "RU": "Отображать диалоговое окно передачи файлов"
+      "RU": "Отображать диалоговое окно передачи файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -662,11 +752,13 @@
         "Id": 217,
         "ChildHeader": {
           "EN": "In the detailed mode",
-          "RU": "В развернутом виде"
+          "RU": "В развернутом виде",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -674,11 +766,13 @@
         "Id": 218,
         "ChildHeader": {
           "EN": "In the compact mode",
-          "RU": "В свернутом виде"
+          "RU": "В свернутом виде",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -691,11 +785,13 @@
     "Id": 219,
     "Header": {
       "EN": "Minimize the File Explorer ribbon",
-      "RU": "Свернуть ленту проводника"
+      "RU": "Свернуть ленту проводника",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -707,11 +803,13 @@
     "Id": 220,
     "Header": {
       "EN": "Display the recycle bin files delete confirmation dialog",
-      "RU": "Запрашивать подтверждение на удаление файлов в корзину"
+      "RU": "Запрашивать подтверждение на удаление файлов в корзину",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -723,11 +821,13 @@
     "Id": 221,
     "Header": {
       "EN": "Show the \"3D Objects\" folder in \"This PC\" and Quick access",
-      "RU": "Показывать папку \"Объемные объекты\" в \"Этот компьютер\" и панели быстрого доступа"
+      "RU": "Показывать папку \"Объемные объекты\" в \"Этот компьютер\" и панели быстрого доступа",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -739,11 +839,13 @@
     "Id": 222,
     "Header": {
       "EN": "Show frequently used folders in Quick access",
-      "RU": "Показать часто используемые папки на панели быстрого доступа"
+      "RU": "Показать часто используемые папки на панели быстрого доступа",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -755,11 +857,13 @@
     "Id": 223,
     "Header": {
       "EN": "Show recently used files in Quick access",
-      "RU": "Показать недавно использовавшиеся файлы на панели быстрого доступа"
+      "RU": "Показать недавно использовавшиеся файлы на панели быстрого доступа",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -771,11 +875,13 @@
     "Id": 224,
     "Header": {
       "EN": "Set the taskbar alignment",
-      "RU": "Установить выравнивание панели задач"
+      "RU": "Установить выравнивание панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -784,11 +890,13 @@
         "Id": 225,
         "ChildHeader": {
           "EN": "To the left",
-          "RU": "По левому краю"
+          "RU": "По левому краю",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -796,11 +904,13 @@
         "Id": 226,
         "ChildHeader": {
           "EN": "To the center",
-          "RU": "По центру"
+          "RU": "По центру",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -813,11 +923,13 @@
     "Id": 227,
     "Header": {
       "EN": "Show the search button on the taskbar",
-      "RU": "Показать кнопку поиска на панели задач"
+      "RU": "Показать кнопку поиска на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -829,11 +941,13 @@
     "Id": 228,
     "Header": {
       "EN": "Show Task View button on the taskbar",
-      "RU": "Отобразить кнопку Просмотра задач на панели задач"
+      "RU": "Отобразить кнопку Просмотра задач на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -845,11 +959,13 @@
     "Id": 229,
     "Header": {
       "EN": "Show the Task view button on the taskbar",
-      "RU": "Показать кнопку \"Представление задач\" на панели задач"
+      "RU": "Показать кнопку \"Представление задач\" на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -861,11 +977,13 @@
     "Id": 230,
     "Header": {
       "EN": "Show the widgets icon on the taskbar",
-      "RU": "Отобразить кнопку \"Мини-приложения\" на панели задач"
+      "RU": "Отобразить кнопку \"Мини-приложения\" на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -877,11 +995,13 @@
     "Id": 231,
     "Header": {
       "EN": "Show People button on the taskbar",
-      "RU": "Показывать панель \"Люди\" на панели задач"
+      "RU": "Показывать панель \"Люди\" на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -893,11 +1013,13 @@
     "Id": 232,
     "Header": {
       "EN": "Show seconds on the taskbar clock",
-      "RU": "Отображать секунды в системных часах на панели задач"
+      "RU": "Отображать секунды в системных часах на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -909,11 +1031,13 @@
     "Id": 233,
     "Header": {
       "EN": "Search on the taskbar",
-      "RU": "Поиск на панели задач"
+      "RU": "Поиск на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -922,11 +1046,13 @@
         "Id": 234,
         "ChildHeader": {
           "EN": "Hidden",
-          "RU": "Скрыто"
+          "RU": "Скрыто",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -934,11 +1060,13 @@
         "Id": 235,
         "ChildHeader": {
           "EN": "Hide search icon",
-          "RU": "Показать значок поиска"
+          "RU": "Показать значок поиска",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -946,11 +1074,13 @@
         "Id": 236,
         "ChildHeader": {
           "EN": "Show search box",
-          "RU": "Показать поле поиска"
+          "RU": "Показать поле поиска",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -963,11 +1093,13 @@
     "Id": 237,
     "Header": {
       "EN": "Show Windows Ink Workspace button on the taskbar",
-      "RU": "Показать кнопку Windows Ink Workspace на панели задач"
+      "RU": "Показать кнопку Windows Ink Workspace на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -979,11 +1111,13 @@
     "Id": 238,
     "Header": {
       "EN": "Always show all icons in the notification area",
-      "RU": "Всегда отображать все значки в области уведомлений"
+      "RU": "Всегда отображать все значки в области уведомлений",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -995,11 +1129,13 @@
     "Id": 239,
     "Header": {
       "EN": "Show the Meet Now icon in the notification area",
-      "RU": "Отображать иконку \"Провести собрание\" в области уведомлений"
+      "RU": "Отображать иконку \"Провести собрание\" в области уведомлений",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1011,11 +1147,13 @@
     "Id": 240,
     "Header": {
       "EN": "Show \"News and Interests\" on the taskbar",
-      "RU": "Отображать \"Новости и интересы\" на панели задач"
+      "RU": "Отображать \"Новости и интересы\" на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1027,11 +1165,13 @@
     "Id": 241,
     "Header": {
       "EN": "Show the Chat icon (Microsoft Teams) on the taskbar",
-      "RU": "Отобразить кнопку чата (Microsoft Teams) на панели задач"
+      "RU": "Отобразить кнопку чата (Microsoft Teams) на панели задач",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1043,11 +1183,13 @@
     "Id": 242,
     "Header": {
       "EN": "View the Control Panel by",
-      "RU": "Просмотр иконок Панели управления"
+      "RU": "Просмотр иконок Панели управления",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -1056,11 +1198,13 @@
         "Id": 243,
         "ChildHeader": {
           "EN": "Large icons",
-          "RU": "Крупные значки"
+          "RU": "Крупные значки",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1068,11 +1212,13 @@
         "Id": 244,
         "ChildHeader": {
           "EN": "Small icons",
-          "RU": "Маленькие значки"
+          "RU": "Маленькие значки",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1080,11 +1226,13 @@
         "Id": 245,
         "ChildHeader": {
           "EN": "Category",
-          "RU": "Категория"
+          "RU": "Категория",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1097,11 +1245,13 @@
     "Id": 246,
     "Header": {
       "EN": "Default Windows color mode",
-      "RU": "Режим Windows по умолчанию"
+      "RU": "Режим Windows по умолчанию",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -1110,11 +1260,13 @@
         "Id": 247,
         "ChildHeader": {
           "EN": "Light",
-          "RU": "Светлый"
+          "RU": "Светлый",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1122,11 +1274,13 @@
         "Id": 248,
         "ChildHeader": {
           "EN": "Dark",
-          "RU": "Тёмный"
+          "RU": "Тёмный",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1139,11 +1293,13 @@
     "Id": 249,
     "Header": {
       "EN": "Default app color mode",
-      "RU": "Режим приложения по умолчанию"
+      "RU": "Режим приложения по умолчанию",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -1152,11 +1308,13 @@
         "Id": 250,
         "ChildHeader": {
           "EN": "Light",
-          "RU": "Светлый"
+          "RU": "Светлый",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1164,11 +1322,13 @@
         "Id": 251,
         "ChildHeader": {
           "EN": "Dark",
-          "RU": "Тёмный"
+          "RU": "Тёмный",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1181,11 +1341,13 @@
     "Id": 252,
     "Header": {
       "EN": "Show the \"New App Installed\" indicator",
-      "RU": "Показывать уведомление \"Установлено новое приложение\""
+      "RU": "Показывать уведомление \"Установлено новое приложение\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1197,11 +1359,13 @@
     "Id": 253,
     "Header": {
       "EN": "Show first sign-in animation after the upgrade",
-      "RU": "Показывать анимацию при первом входе в систему после обновления"
+      "RU": "Показывать анимацию при первом входе в систему после обновления",
+      "DE": ""
     },
     "Description": {
       "EN": "In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the \"first sign-in animation\" that features several messages to configure the account environment.",
-      "RU": "В Windows после завершения настройки при новой установке, обновлении или при входе в новую учетную запись запускается \"анимация первого входа\", которая включает несколько сообщений по мере настройки среды учетной записи"
+      "RU": "В Windows после завершения настройки при новой установке, обновлении или при входе в новую учетную запись запускается \"анимация первого входа\", которая включает несколько сообщений по мере настройки среды учетной записи",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1213,11 +1377,13 @@
     "Id": 254,
     "Header": {
       "EN": "Set the quality factor of the JPEG desktop wallpapers to",
-      "RU": "Коэффициент качества обоев рабочего стола в формате JPEG"
+      "RU": "Коэффициент качества обоев рабочего стола в формате JPEG",
+      "DE": ""
     },
     "Description": {
       "EN": "When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85% and store it as the TranscodedWallpaper file in the %APPDATA%\\Microsoft\\Windows\\Themes folder. If you use a PNG image as your desktop background wallpaper or slideshow, you are not affected by this automatic quality reduction since it only applies to JPEG images.",
-      "RU": "Когда вы устанавливаете изображение в качестве обоев рабочего стола или слайд-шоу в формате JPEG, при импорте операционная система снижает качество исходного изображения до 85 % и сохраняет его как файл TranscodedWallpaper в папке %APPDATA%\\Microsoft\\Windows\\Themes. Однако, если вы используете PNG-изображение в качестве фоновых обоев рабочего стола или слайд-шоу, то это автоматическое снижение качества вас не коснется, поскольку оно происходит только с изображениями JPEG"
+      "RU": "Когда вы устанавливаете изображение в качестве обоев рабочего стола или слайд-шоу в формате JPEG, при импорте операционная система снижает качество исходного изображения до 85 % и сохраняет его как файл TranscodedWallpaper в папке %APPDATA%\\Microsoft\\Windows\\Themes. Однако, если вы используете PNG-изображение в качестве фоновых обоев рабочего стола или слайд-шоу, то это автоматическое снижение качества вас не коснется, поскольку оно происходит только с изображениями JPEG",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -1226,11 +1392,13 @@
         "Id": 255,
         "ChildHeader": {
           "EN": "Maximum (No Reduction)",
-          "RU": "Максимальный (без сжатия)"
+          "RU": "Максимальный (без сжатия)",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1238,11 +1406,13 @@
         "Id": 256,
         "ChildHeader": {
           "EN": "Default",
-          "RU": "По умолчанию"
+          "RU": "По умолчанию",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1255,11 +1425,13 @@
     "Id": 257,
     "Header": {
       "EN": "Notify me when a restart is required to finish updating",
-      "RU": "Уведомлять меня о необходимости перезагрузки для завершения обновления"
+      "RU": "Уведомлять меня о необходимости перезагрузки для завершения обновления",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1271,11 +1443,13 @@
     "Id": 258,
     "Header": {
       "EN": "Add the \"- Shortcut\" suffix to the file name of created shortcuts",
-      "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков"
+      "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1287,11 +1461,13 @@
     "Id": 259,
     "Header": {
       "EN": "Use the PrtScn button to open screen snipping",
-      "RU": "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана"
+      "RU": "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1303,11 +1479,13 @@
     "Id": 260,
     "Header": {
       "EN": "Let me use a different input method for each app window",
-      "RU": "Позволить выбирать метод ввода для каждого окна"
+      "RU": "Позволить выбирать метод ввода для каждого окна",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1318,12 +1496,14 @@
   {
     "Id": 261,
     "Header": {
-      "EN": "When I grab a windows's title bar and shake it, minimize all other windows",
-      "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна"
+      "EN": "When I grab a windows\u0027s title bar and shake it, minimize all other windows",
+      "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1335,11 +1515,13 @@
     "Id": 300,
     "Header": {
       "EN": "Storage Sense",
-      "RU": "Контроль памяти"
+      "RU": "Контроль памяти",
+      "DE": ""
     },
     "Description": {
       "EN": "Storage Sense runs when disk space is low. We clean enough space to help your system runs its best.",
-      "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места жля оптимальной работы системы"
+      "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места жля оптимальной работы системы",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1351,11 +1533,13 @@
     "Id": 301,
     "Header": {
       "EN": "Run Storage Sense",
-      "RU": "Запуск Контроля памяти"
+      "RU": "Запуск Контроля памяти",
+      "DE": ""
     },
     "Description": {
       "EN": "Storage Sense runs when disk space is low and frees up enough space for optimal OS operation. It is better to create the \"Windows Cleanup\" task in the \"Task Scheduler\" section to clean up Windows more effectively.",
-      "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальной работы системы. Но лучше в разделе \"Планировщик заданий\" создайте задание \"Windows Cleanup\", чтобы эффективнее очищать Windows"
+      "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальной работы системы. Но лучше в разделе \"Планировщик заданий\" создайте задание \"Windows Cleanup\", чтобы эффективнее очищать Windows",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1364,11 +1548,13 @@
         "Id": 302,
         "ChildHeader": {
           "EN": "Every month",
-          "RU": "Каждый месяц"
+          "RU": "Каждый месяц",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1376,11 +1562,13 @@
         "Id": 303,
         "ChildHeader": {
           "EN": "During low free disk space",
-          "RU": "Когда остается мало место на диске"
+          "RU": "Когда остается мало место на диске",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1392,12 +1580,14 @@
   {
     "Id": 304,
     "Header": {
-      "EN": "Delete temporary files that aren't used by apps",
-      "RU": "Удалять временные файлы, не используемые в приложениях"
+      "EN": "Delete temporary files that aren\u0027t used by apps",
+      "RU": "Удалять временные файлы, не используемые в приложениях",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1409,11 +1599,13 @@
     "Id": 305,
     "Header": {
       "EN": "Hibernate",
-      "RU": "Режим гибернации"
+      "RU": "Режим гибернации",
+      "DE": ""
     },
     "Description": {
       "EN": "Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to the C:\\hiberfil.sys file, and turns off your computer. By default, the size of the hidden system protected file C:\\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. It is not recommended to turn it off on mobile devices.",
-      "RU": "Гибернация — это энергосберегающее состояние, используемое в основном для мобильных устройств. В отличии от спящего режима, гибернация сохраняет открытые документы и программы на системный накопитель в файл C:\\hiberfil.sys, а затем выключает компьютер. По умолчанию размер скрытого системного файла C:\\hiberfil.sys составляет 40 % от общего объема установленно оперативной памяти. При отключении гибернации будет также отключен быстрый запуск, и скроется соответствующий пункт в меню питания. Не рекомендуется выключать на мобильных устройствах"
+      "RU": "Гибернация — это энергосберегающее состояние, используемое в основном для мобильных устройств. В отличии от спящего режима, гибернация сохраняет открытые документы и программы на системный накопитель в файл C:\\hiberfil.sys, а затем выключает компьютер. По умолчанию размер скрытого системного файла C:\\hiberfil.sys составляет 40 % от общего объема установленно оперативной памяти. При отключении гибернации будет также отключен быстрый запуск, и скроется соответствующий пункт в меню питания. Не рекомендуется выключать на мобильных устройствах",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1425,11 +1617,13 @@
     "Id": 306,
     "Header": {
       "EN": "The temp environment variable path",
-      "RU": "Путь переменной среды для временных файлов"
+      "RU": "Путь переменной среды для временных файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "Use only in case if you are the only user on this PC, otherwise all users will use the same folder for all temporary files.",
-      "RU": "Используйте только в случае, если вы единственный пользователь на ПК, иначе все пользователи будут использовать одну и ту же папка для временных файлов."
+      "RU": "Используйте только в случае, если вы единственный пользователь на ПК, иначе все пользователи будут использовать одну и ту же папка для временных файлов.",
+      "DE": ""
     },
     "Type": "AdvancedRadioGroup",
     "Tag": "System",
@@ -1438,11 +1632,13 @@
         "Id": 307,
         "ChildHeader": {
           "EN": "%SystemDrive%\\Temp",
-          "RU": "%SystemDrive%\\Temp"
+          "RU": "%SystemDrive%\\Temp",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1450,11 +1646,13 @@
         "Id": 308,
         "ChildHeader": {
           "EN": "%LOCALAPPDATA%\\Temp (default)",
-          "RU": "%LOCALAPPDATA%\\Temp (по умолчанию)"
+          "RU": "%LOCALAPPDATA%\\Temp (по умолчанию)",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1467,11 +1665,13 @@
     "Id": 309,
     "Header": {
       "EN": "Enable the Windows 260 character path limit",
-      "RU": "Включить ограничение Windows на 260 символов в пути"
+      "RU": "Включить ограничение Windows на 260 символов в пути",
+      "DE": ""
     },
     "Description": {
       "EN": "By default, the maximum path length limit in Windows is 260 characters. A local path is structured in the following order: drive letter, colon, backslash, name components separated by backslashes, and a terminating null character.",
-      "RU": "По умолчанию максимальная длина пути в Windows составляет 260 символов. Локальный путь строится в следующем порядке: буква диска, двоеточие, обратная косая черта, компоненты имени, разделенные обратными косыми чертами, и завершающий нулевой символ"
+      "RU": "По умолчанию максимальная длина пути в Windows составляет 260 символов. Локальный путь строится в следующем порядке: буква диска, двоеточие, обратная косая черта, компоненты имени, разделенные обратными косыми чертами, и завершающий нулевой символ",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1483,11 +1683,13 @@
     "Id": 310,
     "Header": {
       "EN": "Display Stop error code when BSoD occurs",
-      "RU": "Отображать код Stop-ошибки при появлении BSoD"
+      "RU": "Отображать код Stop-ошибки при появлении BSoD",
+      "DE": ""
     },
     "Description": {
       "EN": "By default, Windows does not display a Stop error code when a BSoD occurs, which helps to identify the causes of a BSoD.",
-      "RU": "По умолчанию Windows не отображает код Stop-ошибку при появлении BSoD, который помогает выявлять причины появления BSoD"
+      "RU": "По умолчанию Windows не отображает код Stop-ошибку при появлении BSoD, который помогает выявлять причины появления BSoD",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1499,11 +1701,13 @@
     "Id": 311,
     "Header": {
       "EN": "Choose when to be notified about changes to your computer",
-      "RU": "Настройка уведомления об изменении параметров компьютера"
+      "RU": "Настройка уведомления об изменении параметров компьютера",
+      "DE": ""
     },
     "Description": {
       "EN": "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run.",
-      "RU": "Когда включен контроль учетных записей пользователей (UAC), Windows запрашивает согласие или просит ввести учетные данные действительной учетной записи локального администратора перед запуском программы или задачи, требующей полного маркера доступа администратора. Этот запрос гарантирует, что вредоносное программное обеспечение не может быть тихо установлено или запущено"
+      "RU": "Когда включен контроль учетных записей пользователей (UAC), Windows запрашивает согласие или просит ввести учетные данные действительной учетной записи локального администратора перед запуском программы или задачи, требующей полного маркера доступа администратора. Этот запрос гарантирует, что вредоносное программное обеспечение не может быть тихо установлено или запущено",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1512,11 +1716,13 @@
         "Id": 312,
         "ChildHeader": {
           "EN": "Notify me only when apps try to make changes to my computer",
-          "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер"
+          "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
-          "RU": "При включении этого параметра рабочий стол будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)"
+          "RU": "При включении этого параметра рабочий стол будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1524,11 +1730,13 @@
         "Id": 313,
         "ChildHeader": {
           "EN": "Never notify",
-          "RU": "Никогда не уведомлять"
+          "RU": "Никогда не уведомлять",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
-          "RU": "При включении этого параметра рабочий стол никогда не будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)."
+          "RU": "При включении этого параметра рабочий стол никогда не будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC).",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1541,11 +1749,13 @@
     "Id": 314,
     "Header": {
       "EN": "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode",
-      "RU": "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами"
+      "RU": "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами",
+      "DE": ""
     },
     "Description": {
       "EN": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders.",
-      "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок"
+      "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1557,11 +1767,13 @@
     "Id": 315,
     "Header": {
       "EN": "Enable downloading updates with delivery optimization",
-      "RU": "Включить загрузку обновлений с помощью оптимизации доставки"
+      "RU": "Включить загрузку обновлений с помощью оптимизации доставки",
+      "DE": ""
     },
     "Description": {
-      "EN": "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that's needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
-      "RU": "Оптимизация доставки центра обновления Windows работает, позволяя получать обновления для Windows и приложения Microsoft Store из источников в дополнение к Microsoft, например другим компьютерам в локальной сети или компьютерам в Интернете, которые загружают эти же файлы. Оптимизация доставки также отправляет обновления и приложения с компьютера на другие компьютеры в локальной сети или на компьютеры в Интернете на основе ваших настроек. Обмен данными между компьютерами помогает сократить пропускную способность Интернета, необходимую для поддержания более чем одного устройства, и может сделать загрузку более успешной, если у вас есть ограниченное или ненадежное Интернет-соединение"
+      "EN": "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that\u0027s needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
+      "RU": "Оптимизация доставки центра обновления Windows работает, позволяя получать обновления для Windows и приложения Microsoft Store из источников в дополнение к Microsoft, например другим компьютерам в локальной сети или компьютерам в Интернете, которые загружают эти же файлы. Оптимизация доставки также отправляет обновления и приложения с компьютера на другие компьютеры в локальной сети или на компьютеры в Интернете на основе ваших настроек. Обмен данными между компьютерами помогает сократить пропускную способность Интернета, необходимую для поддержания более чем одного устройства, и может сделать загрузку более успешной, если у вас есть ограниченное или ненадежное Интернет-соединение",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1573,11 +1785,13 @@
     "Id": 316,
     "Header": {
       "EN": "Always wait for the network at computer startup and logon for workgroup networks",
-      "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп"
+      "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп",
+      "DE": ""
     },
     "Description": {
       "EN": "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available.",
-      "RU": "Для сокращения времени входа в систему Windows не ждет полной инициализации сети при запуске или входе в систему. Параметры политики применяются асинхронно при запуске компьютера и при входе пользователя в систему. В результате операционная система не ждет полной инициализации сети при запуске и входе в систему. Существующие пользователи входят в систему, используя кэшированные учетные данные. Это сокращает время входа в систему. Групповая политика применяется в фоновом режиме после того, как сеть становится доступной"
+      "RU": "Для сокращения времени входа в систему Windows не ждет полной инициализации сети при запуске или входе в систему. Параметры политики применяются асинхронно при запуске компьютера и при входе пользователя в систему. В результате операционная система не ждет полной инициализации сети при запуске и входе в систему. Существующие пользователи входят в систему, используя кэшированные учетные данные. Это сокращает время входа в систему. Групповая политика применяется в фоновом режиме после того, как сеть становится доступной",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1589,11 +1803,13 @@
     "Id": 317,
     "Header": {
       "EN": "Let Windows manage my default printer",
-      "RU": "Разрешать Windows управлять принтером, используемым по умолчанию"
+      "RU": "Разрешать Windows управлять принтером, используемым по умолчанию",
+      "DE": ""
     },
     "Description": {
       "EN": "By default, Windows make the last used printer as the default one.",
-      "RU": "По умолчанию Windows запоминает последний используемый принтер как принтер по умолчанию"
+      "RU": "По умолчанию Windows запоминает последний используемый принтер как принтер по умолчанию",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1605,11 +1821,13 @@
     "Id": 318,
     "Header": {
       "EN": "Receive updates for other Microsoft products",
-      "RU": "Получать обновления для других продуктов Майкрософт"
+      "RU": "Получать обновления для других продуктов Майкрософт",
+      "DE": ""
     },
     "Description": {
       "EN": "Get Microsoft Office and other updates together with Windows updates.",
-      "RU": "Получайте Microsoft Office и другие обновления вместе с обновленями Windows"
+      "RU": "Получайте Microsoft Office и другие обновления вместе с обновленями Windows",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1621,11 +1839,13 @@
     "Id": 319,
     "Header": {
       "EN": "Choose the power plan",
-      "RU": "Выбор схемы управления питанием"
+      "RU": "Выбор схемы управления питанием",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1634,11 +1854,13 @@
         "Id": 320,
         "ChildHeader": {
           "EN": "High performance",
-          "RU": "Высокая производительность"
+          "RU": "Высокая производительность",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "It is not recommended to turn on the \"High performance\" power scheme on laptops.",
-          "RU": "Не рекомендуется включать схему управления питанием \"Высокая производительность\" для ноутбуков"
+          "RU": "Не рекомендуется включать схему управления питанием \"Высокая производительность\" для ноутбуков",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1646,11 +1868,13 @@
         "Id": 321,
         "ChildHeader": {
           "EN": "Balanced",
-          "RU": "Сбалансированная"
+          "RU": "Сбалансированная",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1663,11 +1887,13 @@
     "Id": 322,
     "Header": {
       "EN": "Use the latest installed .NET Framework runtime for all apps",
-      "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений"
+      "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
+      "DE": ""
     },
     "Description": {
       "EN": "If an app requires the legacy .NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed .NET Framework.",
-      "RU": "Если для работы приложения требуется установка устаревшего .NET Framework 2.0, 3.0 или 3.5, включение данной функции заставит приложение принудительно использовать последнюю установленный .NET Framework"
+      "RU": "Если для работы приложения требуется установка устаревшего .NET Framework 2.0, 3.0 или 3.5, включение данной функции заставит приложение принудительно использовать последнюю установленный .NET Framework",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1679,11 +1905,13 @@
     "Id": 323,
     "Header": {
       "EN": "Allow the computer to turn off the network adapters to save power",
-      "RU": "Разрешить отключение всех сетевых адаптеров для экономии энергии"
+      "RU": "Разрешить отключение всех сетевых адаптеров для экономии энергии",
+      "DE": ""
     },
     "Description": {
       "EN": "It is not recommended to turn off the network adapters to save power on laptops.",
-      "RU": "Не рекомендуется отключать все сетевые адаптеры для экономии энергии на ноутбуках"
+      "RU": "Не рекомендуется отключать все сетевые адаптеры для экономии энергии на ноутбуках",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1695,11 +1923,13 @@
     "Id": 324,
     "Header": {
       "EN": "Override for default input method",
-      "RU": "Переопределить метод ввода по умолчанию"
+      "RU": "Переопределить метод ввода по умолчанию",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1708,11 +1938,13 @@
         "Id": 325,
         "ChildHeader": {
           "EN": "Use language list",
-          "RU": "Использовать список языков"
+          "RU": "Использовать список языков",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1720,11 +1952,13 @@
         "Id": 326,
         "ChildHeader": {
           "EN": "English",
-          "RU": "Английский"
+          "RU": "Английский",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1737,11 +1971,13 @@
     "Id": 327,
     "Header": {
       "EN": "Select folder to save screenshots when pressing Win+PrtScn",
-      "RU": "Папка для сохранения скриншотов по нажатию Win+PrtScn"
+      "RU": "Папка для сохранения скриншотов по нажатию Win+PrtScn",
+      "DE": ""
     },
     "Description": {
       "EN": "The function will be applied only if you have chosen to remove OneDrive. Otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks.",
-      "RU": "Функция будет применена только в случае, если вы выбрали удаление OneDrive, иначе ломается функционал резервного копирования для папок \"Рабочий стол\" и \"Изображения\""
+      "RU": "Функция будет применена только в случае, если вы выбрали удаление OneDrive, иначе ломается функционал резервного копирования для папок \"Рабочий стол\" и \"Изображения\"",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1750,11 +1986,13 @@
         "Id": 328,
         "ChildHeader": {
           "EN": "Desktop",
-          "RU": "Рабочий стол"
+          "RU": "Рабочий стол",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1762,11 +2000,13 @@
         "Id": 329,
         "ChildHeader": {
           "EN": "Pictures folder",
-          "RU": "Папка \"Изображения\""
+          "RU": "Папка \"Изображения\"",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1779,11 +2019,13 @@
     "Id": 330,
     "Header": {
       "EN": "Recommended troubleshooting",
-      "RU": "Рекомендованные способы устранения ошибок"
+      "RU": "Рекомендованные способы устранения ошибок",
+      "DE": ""
     },
     "Description": {
       "EN": "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?",
-      "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок. Хотите ли вы помогать Microsoft устранять неполадок при возникновении на вашем устройстве проблем?"
+      "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок. Хотите ли вы помогать Microsoft устранять неполадок при возникновении на вашем устройстве проблем?",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1792,11 +2034,13 @@
         "Id": 331,
         "ChildHeader": {
           "EN": "Run troubleshooters automatically, then notify",
-          "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять"
+          "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
-          "RU": "Чтобы данная функция заработала, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows"
+          "RU": "Чтобы данная функция заработала, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -1804,11 +2048,13 @@
         "Id": 332,
         "ChildHeader": {
           "EN": "Ask me before running troubleshooter",
-          "RU": "Спрашивать перед запуском средств устранения неполадок"
+          "RU": "Спрашивать перед запуском средств устранения неполадок",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
-          "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows"
+          "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -1821,11 +2067,13 @@
     "Id": 333,
     "Header": {
       "EN": "Launch folder windows in a separate process",
-      "RU": "Запускать окна с папками в отдельном процессе"
+      "RU": "Запускать окна с папками в отдельном процессе",
+      "DE": ""
     },
     "Description": {
       "EN": "By default, all File Explorer windows, including the desktop shell, run in a single explorer.exe process. If one File Explorer window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell.",
-      "RU": "По умолчанию все окна проводника, включая оболочку рабочего стола, запускаются в одном процессе explorer.exe. Если одно окно проводника зависает или аварийно завершается, это приведет к зависанию всей графической оболочки, пока процесс не перезапустится. Таким образом, каждый процесс explorer.exe будет иметь свой собственный идентификатор процесса (PID) для повышения стабильности оболочки проводника"
+      "RU": "По умолчанию все окна проводника, включая оболочку рабочего стола, запускаются в одном процессе explorer.exe. Если одно окно проводника зависает или аварийно завершается, это приведет к зависанию всей графической оболочки, пока процесс не перезапустится. Таким образом, каждый процесс explorer.exe будет иметь свой собственный идентификатор процесса (PID) для повышения стабильности оболочки проводника",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1837,11 +2085,13 @@
     "Id": 334,
     "Header": {
       "EN": "Enable reserved storage",
-      "RU": "Включить зарезервированное хранилище"
+      "RU": "Включить зарезервированное хранилище",
+      "DE": ""
     },
     "Description": {
       "EN": "To make sure your device can successfully update and that it runs its best, Windows reserves a portion of storage space on your device for use by temporary files, caches, and other files. When your device is low on space, Windows will clear reserved storage so it can be used for other processes, like a Windows update. Reserving storage also helps keep disk space usage on your device more predictable and more stable. After disabling the reserved storage will be deleted after the next update installation.",
-      "RU": "Чтобы обеспечить возможность обновления вашего устройства, а также его наилучшую работу, Windows резервирует часть дискового пространства на вашем устройстве для кэша, временных и других файлов. Когда на устройстве заканчивается свободное место, Windows очищает зарезервированное хранилище, освобождая место для других процессов, например обновления Windows. Зарезервированное хранилище также помогает использовать дисковое пространство на вашем устройстве более предсказуемо и стабильно. Зарезервированное хранилище будет удалено после следующей установки обновлений"
+      "RU": "Чтобы обеспечить возможность обновления вашего устройства, а также его наилучшую работу, Windows резервирует часть дискового пространства на вашем устройстве для кэша, временных и других файлов. Когда на устройстве заканчивается свободное место, Windows очищает зарезервированное хранилище, освобождая место для других процессов, например обновления Windows. Зарезервированное хранилище также помогает использовать дисковое пространство на вашем устройстве более предсказуемо и стабильно. Зарезервированное хранилище будет удалено после следующей установки обновлений",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1853,11 +2103,13 @@
     "Id": 335,
     "Header": {
       "EN": "Enable help look up via F1",
-      "RU": "Включить открытие справки по нажатию F1"
+      "RU": "Включить открытие справки по нажатию F1",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1869,11 +2121,13 @@
     "Id": 336,
     "Header": {
       "EN": "Enable Num Lock at startup",
-      "RU": "Включить Num Lock при загрузке"
+      "RU": "Включить Num Lock при загрузке",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1885,11 +2139,13 @@
     "Id": 337,
     "Header": {
       "EN": "Enable Caps Lock",
-      "RU": "Включить Caps Lock"
+      "RU": "Включить Caps Lock",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1901,11 +2157,13 @@
     "Id": 338,
     "Header": {
       "EN": "Press the Shift key 5 times to turn Sticky keys",
-      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить залипание клавиш"
+      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить залипание клавиш",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1917,11 +2175,13 @@
     "Id": 339,
     "Header": {
       "EN": "Use AutoPlay for all media and devices",
-      "RU": "Использовать автозапуск для всех носителей и устройств"
+      "RU": "Использовать автозапуск для всех носителей и устройств",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1933,11 +2193,13 @@
     "Id": 340,
     "Header": {
       "EN": "Enable thumbnail cache removal",
-      "RU": "Включить удаление кэша миниатюр"
+      "RU": "Включить удаление кэша миниатюр",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1949,11 +2211,13 @@
     "Id": 341,
     "Header": {
       "EN": "Restart apps after singning in",
-      "RU": "Перезапустить приложения после входа"
+      "RU": "Перезапустить приложения после входа",
+      "DE": ""
     },
     "Description": {
       "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
-      "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами"
+      "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1965,11 +2229,13 @@
     "Id": 342,
     "Header": {
       "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
-      "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп"
+      "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1981,11 +2247,13 @@
     "Id": 343,
     "Header": {
       "EN": "Automatically adjust active hours for me based on daily usage",
-      "RU": "Автоматически изменять период активности для этого устройства на основе действий"
+      "RU": "Автоматически изменять период активности для этого устройства на основе действий",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -1997,11 +2265,13 @@
     "Id": 344,
     "Header": {
       "EN": "Restart as soon as possible to finish updating",
-      "RU": "Перезапустить устройство как можно быстрее, чтобы завершить обновление"
+      "RU": "Перезапустить устройство как можно быстрее, чтобы завершить обновление",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2013,11 +2283,13 @@
     "Id": 345,
     "Header": {
       "EN": "Default terminal app",
-      "RU": "Приложение терминала по умолчанию"
+      "RU": "Приложение терминала по умолчанию",
+      "DE": ""
     },
     "Description": {
       "EN": "Set Windows Terminal as default terminal app to host the user interface for command-line applications.",
-      "RU": "Установить Windows Terminal как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки"
+      "RU": "Установить Windows Terminal как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки",
+      "DE": ""
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -2026,11 +2298,13 @@
         "Id": 346,
         "ChildHeader": {
           "EN": "Windows Terminal",
-          "RU": "Windows Terminal"
+          "RU": "Windows Terminal",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       },
@@ -2038,11 +2312,13 @@
         "Id": 347,
         "ChildHeader": {
           "EN": "Windows Console Host",
-          "RU": "Узел консоли Windows"
+          "RU": "Узел консоли Windows",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "RadioButton"
       }
@@ -2055,11 +2331,13 @@
     "Id": 348,
     "Header": {
       "EN": "Uninstall the \"PC Health Check\" app",
-      "RU": "Удалить приложение \"Проверка работоспособности ПК\""
+      "RU": "Удалить приложение \"Проверка работоспособности ПК\"",
+      "DE": ""
     },
     "Description": {
       "EN": "The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
-      "RU": "Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11"
+      "RU": "Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2071,11 +2349,13 @@
     "Id": 349,
     "Header": {
       "EN": "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-      "RU": "Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 x64"
+      "RU": "Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
+      "DE": ""
     },
     "Description": {
       "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
-      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x64 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы"
+      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x64 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2087,11 +2367,13 @@
     "Id": 350,
     "Header": {
       "EN": "OneDrive",
-      "RU": "OneDrive"
+      "RU": "OneDrive",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "ButtonGroup",
     "Tag": "System",
@@ -2100,11 +2382,13 @@
         "Id": 351,
         "ChildHeader": {
           "EN": "Install",
-          "RU": "Установить"
+          "RU": "Установить",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "Button"
       },
@@ -2112,11 +2396,13 @@
         "Id": 352,
         "ChildHeader": {
           "EN": "Uninstall",
-          "RU": "Удалить"
+          "RU": "Удалить",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "Button"
       }
@@ -2129,11 +2415,13 @@
     "Id": 400,
     "Header": {
       "EN": "Show recently added apps in the Start menu",
-      "RU": "Показывать недавно добавленные приложения в меню \"Пуск\""
+      "RU": "Показывать недавно добавленные приложения в меню \"Пуск\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "StartMenu",
@@ -2145,11 +2433,13 @@
     "Id": 401,
     "Header": {
       "EN": "Show app suggestions in the Start menu",
-      "RU": "Показывать рекомендации в меню \"Пуск\""
+      "RU": "Показывать рекомендации в меню \"Пуск\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "StartMenu",
@@ -2161,11 +2451,13 @@
     "Id": 402,
     "Header": {
       "EN": "Run the Windows PowerShell shortcut from the Start menu as Administrator",
-      "RU": "Запускать ярлык Windows PowerShell в меню \"Пуск\" от имени Администратора"
+      "RU": "Запускать ярлык Windows PowerShell в меню \"Пуск\" от имени Администратора",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "StartMenu",
@@ -2177,11 +2469,13 @@
     "Id": 500,
     "Header": {
       "EN": "Download and install the HEVC video codec (H.265)",
-      "RU": "Скачать и установить видеокодек HEVC (H.265)"
+      "RU": "Скачать и установить видеокодек HEVC (H.265)",
+      "DE": ""
     },
     "Description": {
       "EN": "The codec allows you to open images and videos in .heif and .hevc formats, respectively.",
-      "RU": "Кодек позволяет открывать изображения и видео в форматах .heif и .hevc соответственно"
+      "RU": "Кодек позволяет открывать изображения и видео в форматах .heif и .hevc соответственно",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "UwpApps",
@@ -2193,11 +2487,13 @@
     "Id": 501,
     "Header": {
       "EN": "Autostart Cortana",
-      "RU": "Автозагрузка Кортаны"
+      "RU": "Автозагрузка Кортаны",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "UwpApps",
@@ -2209,11 +2505,13 @@
     "Id": 502,
     "Header": {
       "EN": "Enable Microsoft Teams autostarting",
-      "RU": "Включить автозагрузку Microsoft Teams"
+      "RU": "Включить автозагрузку Microsoft Teams",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "UwpApps",
@@ -2224,11 +2522,13 @@
     "Id": 600,
     "Header": {
       "EN": "Xbox Game Bar",
-      "RU": "Xbox Game Bar"
+      "RU": "Xbox Game Bar",
+      "DE": ""
     },
     "Description": {
-      "EN": "To prevent popping up the \"You'll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
-      "RU": "Чтобы предотвратить появление вплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", Вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее"
+      "EN": "To prevent popping up the \"You\u0027ll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
+      "RU": "Чтобы предотвратить появление вплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", Вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Games",
@@ -2240,11 +2540,13 @@
     "Id": 601,
     "Header": {
       "EN": "Xbox Game Bar tips",
-      "RU": "Советы Xbox Game Bar"
+      "RU": "Советы Xbox Game Bar",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Games",
@@ -2256,11 +2558,13 @@
     "Id": 602,
     "Header": {
       "EN": "Hardware-accelerated GPU scheduling",
-      "RU": "Планирование графического процессора с аппаратным ускорением"
+      "RU": "Планирование графического процессора с аппаратным ускорением",
+      "DE": ""
     },
     "Description": {
       "EN": "Reduce latecy and improve performance. Only if you have a dedicated GPU and WDDM verion is 2.7 or higher.",
-      "RU": "Уменьшить время задержки и увеличить производительность. Только при наличии внешней видеокарты и WDDM версии 2.7 и выше"
+      "RU": "Уменьшить время задержки и увеличить производительность. Только при наличии внешней видеокарты и WDDM версии 2.7 и выше",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Games",
@@ -2272,11 +2576,13 @@
     "Id": 700,
     "Header": {
       "EN": "Windows Cleanup",
-      "RU": "Очистка Windows"
+      "RU": "Очистка Windows",
+      "DE": ""
     },
     "Description": {
       "EN": "Create the \"Windows Cleanup\" scheduled task for cleaning up Windows unused files and updates under the SophiApp folder in the Task Scheduler. A native toast notification will be displayed where you can choose to snooze, run the cleanup task or dismiss.",
-      "RU": "Создать задание \"Windows Cleanup\" по очистке неиспользуемых файлов и обновлений Windows в Планировщике заданий в папке SophiApp в Планировщике заданий. Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить, запустить задание или отменить"
+      "RU": "Создать задание \"Windows Cleanup\" по очистке неиспользуемых файлов и обновлений Windows в Планировщике заданий в папке SophiApp в Планировщике заданий. Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить, запустить задание или отменить",
+      "DE": ""
     },
     "Type": "IconWinCheckBox",
     "Tag": "TaskSheduler",
@@ -2288,11 +2594,13 @@
     "Id": 701,
     "Header": {
       "EN": "Сlean up the Windows Updates download folder",
-      "RU": "Очистка папки загрузки обновлений Windows"
+      "RU": "Очистка папки загрузки обновлений Windows",
+      "DE": ""
     },
     "Description": {
       "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up %SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
-      "RU": "Создать задание \"SoftwareDistribution\" по очистке %SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней"
+      "RU": "Создать задание \"SoftwareDistribution\" по очистке %SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней",
+      "DE": ""
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskSheduler",
@@ -2304,11 +2612,13 @@
     "Id": 702,
     "Header": {
       "EN": "Clean up the temporary folder",
-      "RU": "Очистка папки временных файлов"
+      "RU": "Очистка папки временных файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "Create the \"Temp\" scheduled task for cleaning up the temp folder under the SophiApp folder in the Task Scheduler. Only files older than one day will be deleted. The task runs every 60 days.",
-      "RU": "Создать задание \"Temp\" по очистке папки временных файлов в папке SophiApp в Планировщике заданий. Удаляться будут только файлы старше одного дня. Задача выполняется каждые 60 дней"
+      "RU": "Создать задание \"Temp\" по очистке папки временных файлов в папке SophiApp в Планировщике заданий. Удаляться будут только файлы старше одного дня. Задача выполняется каждые 60 дней",
+      "DE": ""
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskSheduler",
@@ -2320,11 +2630,13 @@
     "Id": 800,
     "Header": {
       "EN": "Enable Microsoft Defender Exploit Guard network protection",
-      "RU": "Включить защиту сети в Microsoft Defender Exploit Guard"
+      "RU": "Включить защиту сети в Microsoft Defender Exploit Guard",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2336,11 +2648,13 @@
     "Id": 801,
     "Header": {
       "EN": "Enable detection in Microsoft Defender for potentially unwanted applications and block them",
-      "RU": "Включить в Microsoft Defender обнаружение потенциально нежелательных приложений и блокировать их"
+      "RU": "Включить в Microsoft Defender обнаружение потенциально нежелательных приложений и блокировать их",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2352,11 +2666,13 @@
     "Id": 802,
     "Header": {
       "EN": "Enable sandboxing for Microsoft Defender",
-      "RU": "Включить песочницу для Microsoft Defender"
+      "RU": "Включить песочницу для Microsoft Defender",
+      "DE": ""
     },
     "Description": {
       "EN": "Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm.",
-      "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда"
+      "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2368,11 +2684,13 @@
     "Id": 803,
     "Header": {
       "EN": "Enable events auditing generated when a process is created or starts",
-      "RU": "Включить аудит событий, возникающих при создании или запуске процесса"
+      "RU": "Включить аудит событий, возникающих при создании или запуске процесса",
+      "DE": ""
     },
     "Description": {
       "EN": "Enable logging of each app execution, who the app ran as and the process that started this process (event 4688). You can correlate this event to other events by Process ID to determine what the program did while it ran and when it exited (event 4689).",
-      "RU": "Включить журналирование запуска каждой программы, от имени кого она была запущена, и процесс, который запустил этот процесс (событие 4688). Вы можете соотнести это событие с другими событиями по идентификатору процесса, чтобы определить, что делала программа во время выполнения и когда она завершилась (событие 4689)"
+      "RU": "Включить журналирование запуска каждой программы, от имени кого она была запущена, и процесс, который запустил этот процесс (событие 4688). Вы можете соотнести это событие с другими событиями по идентификатору процесса, чтобы определить, что делала программа во время выполнения и когда она завершилась (событие 4689)",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2384,11 +2702,13 @@
     "Id": 804,
     "Header": {
       "EN": "Include command line in process creation events",
-      "RU": "Включать командную строку в событиях создания процесса"
+      "RU": "Включать командную строку в событиях создания процесса",
+      "DE": ""
     },
     "Description": {
       "EN": "It will be possible to read the command line arguments for any successfully created process (event 4688). In order for this functionality to work, events auditing will be enabled.",
-      "RU": "Cтановится возможным прочитать аргументы командной строки для любого успешно созданного процесса (событие 4688). Для того, чтобы работал данный функционал, будет включен аудит событий"
+      "RU": "Cтановится возможным прочитать аргументы командной строки для любого успешно созданного процесса (событие 4688). Для того, чтобы работал данный функционал, будет включен аудит событий",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2400,11 +2720,13 @@
     "Id": 805,
     "Header": {
       "EN": "Create the \"Process Creation\" Custom View in the Event Viewer",
-      "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий"
+      "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий",
+      "DE": ""
     },
     "Description": {
       "EN": "The \"Process Creation\" Custom View is designed to filter running processes and their arguments for better system security auditing. In order for this functionality to work, event and command line auditing in process creation events will be enabled.",
-      "RU": "Настраиваемое представление \"Создание процесса\" создано для фильтрации запускаемых процессов и их аргументов для проведения более удобного аудита безопасности системы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса"
+      "RU": "Настраиваемое представление \"Создание процесса\" создано для фильтрации запускаемых процессов и их аргументов для проведения более удобного аудита безопасности системы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2416,11 +2738,13 @@
     "Id": 806,
     "Header": {
       "EN": "Enable logging for all Windows PowerShell modules",
-      "RU": "Включить ведение журнала для всех модулей Windows PowerShell"
+      "RU": "Включить ведение журнала для всех модулей Windows PowerShell",
+      "DE": ""
     },
     "Description": {
       "EN": "Pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in the Event Viewer. For the built-in Windows PowerShell 5.1 only",
-      "RU": "События конвейерного выполнения для участников указанных модулей записываются в журнал Windows PowerShell в \"Просмотре событий\". Только для встроенного Windows PowerShell 5.1"
+      "RU": "События конвейерного выполнения для участников указанных модулей записываются в журнал Windows PowerShell в \"Просмотре событий\". Только для встроенного Windows PowerShell 5.1",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2432,11 +2756,13 @@
     "Id": 807,
     "Header": {
       "EN": "Enable logging for all PowerShell scripts input to the Windows PowerShell event log",
-      "RU": "Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell"
+      "RU": "Включить ведение журнала для всех вводимых сценариев PowerShell в журнале событий Windows PowerShell",
+      "DE": ""
     },
     "Description": {
       "EN": "Windows PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation to the Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational event log. For the built-in Windows PowerShell 5.1 only.",
-      "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational. Только для встроенного Windows PowerShell 5.1"
+      "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational. Только для встроенного Windows PowerShell 5.1",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2448,11 +2774,13 @@
     "Id": 808,
     "Header": {
       "EN": "Check apps and files within Microsoft Defender SmartScreen",
-      "RU": "Проверять приложения и файлы фильтром SmartScreen в Microsoft Defender"
+      "RU": "Проверять приложения и файлы фильтром SmartScreen в Microsoft Defender",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2464,11 +2792,13 @@
     "Id": 809,
     "Header": {
       "EN": "Mark files that have been downloaded from the Internet as unsafe",
-      "RU": "Отмечать файлы, скачанных из интернета как небезопасные"
+      "RU": "Отмечать файлы, скачанных из интернета как небезопасные",
+      "DE": ""
     },
     "Description": {
       "EN": "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\".",
-      "RU": "Диспетчер вложений включен в Windows для защиты от небезопасных файлов, скачанных из интернета. Если диспетчер вложений определяет файл как небезопасный, то предотвращатся (блокируется) его открытие, или перед открытием файла всплывает предупреждение. Метаданные сохраняются как альтернативный поток данных (ADS). Если вы хотите разблокировать загруженный файл вручную, вы можете сделать это, открыв свойство файла и нажав \"Разблокировать\"."
+      "RU": "Диспетчер вложений включен в Windows для защиты от небезопасных файлов, скачанных из интернета. Если диспетчер вложений определяет файл как небезопасный, то предотвращатся (блокируется) его открытие, или перед открытием файла всплывает предупреждение. Метаданные сохраняются как альтернативный поток данных (ADS). Если вы хотите разблокировать загруженный файл вручную, вы можете сделать это, открыв свойство файла и нажав \"Разблокировать\".",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2480,11 +2810,13 @@
     "Id": 810,
     "Header": {
       "EN": "Enable Windows Script Host",
-      "RU": "Включить Windows Script Host"
+      "RU": "Включить Windows Script Host",
+      "DE": ""
     },
     "Description": {
       "EN": "This function blocks WSH from executing .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
-      "RU": "Эта функция блокирует запуск .js- и .vbs-скриптов, предотвращая запуск зловредных JavaScript-скриптов"
+      "RU": "Эта функция блокирует запуск .js- и .vbs-скриптов, предотвращая запуск зловредных JavaScript-скриптов",
+      "DE": ""
     },
     "Type": "AdvancedSwitch",
     "Tag": "Security",
@@ -2496,11 +2828,13 @@
     "Id": 811,
     "Header": {
       "EN": "Windows Sandbox",
-      "RU": "Windows Sandbox"
+      "RU": "Windows Sandbox",
+      "DE": ""
     },
     "Description": {
-      "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
-      "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home"
+      "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it\u0027s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn\u0027t work in Home Edition.",
+      "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -2512,11 +2846,13 @@
     "Id": 900,
     "Header": {
       "EN": "The \"Extract all\" item in the Windows Installer (.msi) context menu",
-      "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)"
+      "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)",
+      "DE": ""
     },
     "Description": {
       "EN": "The \"Extract all\" context menu item will extract all contents of the .msi file into the \"Extracted\" folder at the same location as .msi file is.",
-      "RU": "Пункт контекстного меню \"Извлечь все\" извлечет содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл"
+      "RU": "Пункт контекстного меню \"Извлечь все\" извлечет содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2528,11 +2864,13 @@
     "Id": 901,
     "Header": {
       "EN": "The \"Install\" item in the Cabinet archives (.cab) context menu",
-      "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab)"
+      "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab)",
+      "DE": ""
     },
     "Description": {
       "EN": "This context menu item, using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7-Zip, WinRAR, etc...) by default, the \"Install\" context menu item will not show until you restore the default association for the .cab file type.",
-      "RU": "Этот пункт контекстного меню, используя DISM, позволяет упростить установку обновлений .cab одним щелчком в его контекстном меню. Если по умолчанию расширение .cab ассоциировано со сторонним приложением (7-Zip, WinRAR и т. д.), добавленный пункт контекстного меню \"Установить\" не будет отображаться, пока вы не восстановите ассоциацию по умолчанию для типа файла .cab"
+      "RU": "Этот пункт контекстного меню, используя DISM, позволяет упростить установку обновлений .cab одним щелчком в его контекстном меню. Если по умолчанию расширение .cab ассоциировано со сторонним приложением (7-Zip, WinRAR и т. д.), добавленный пункт контекстного меню \"Установить\" не будет отображаться, пока вы не восстановите ассоциацию по умолчанию для типа файла .cab",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2544,11 +2882,13 @@
     "Id": 902,
     "Header": {
       "EN": "The \"Run as different user\" item in the executable files context menu (.exe)",
-      "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню исполняемых файлов (.exe)"
+      "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню исполняемых файлов (.exe)",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2560,11 +2900,13 @@
     "Id": 903,
     "Header": {
       "EN": "The \"Cast to Device\" item in the media files and folders context menu",
-      "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок"
+      "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2576,11 +2918,13 @@
     "Id": 904,
     "Header": {
       "EN": "The \"Share\" item in the context menu",
-      "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню"
+      "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2592,11 +2936,13 @@
     "Id": 905,
     "Header": {
       "EN": "The \"Edit with Paint 3D\" item in the media files context menu",
-      "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов"
+      "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "ExpandingGroup",
     "Tag": "ContextMenu",
@@ -2605,11 +2951,13 @@
         "Id": 906,
         "ChildHeader": {
           "EN": ".bmp",
-          "RU": ".bmp"
+          "RU": ".bmp",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2617,11 +2965,13 @@
         "Id": 907,
         "ChildHeader": {
           "EN": ".gif",
-          "RU": ".gif"
+          "RU": ".gif",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2629,11 +2979,13 @@
         "Id": 908,
         "ChildHeader": {
           "EN": ".jpe",
-          "RU": ".jpe"
+          "RU": ".jpe",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2641,11 +2993,13 @@
         "Id": 909,
         "ChildHeader": {
           "EN": ".jpeg",
-          "RU": ".jpeg"
+          "RU": ".jpeg",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2653,11 +3007,13 @@
         "Id": 910,
         "ChildHeader": {
           "EN": ".jpg",
-          "RU": ".jpg"
+          "RU": ".jpg",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2665,11 +3021,13 @@
         "Id": 911,
         "ChildHeader": {
           "EN": ".png",
-          "RU": ".png"
+          "RU": ".png",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2677,11 +3035,13 @@
         "Id": 912,
         "ChildHeader": {
           "EN": ".tif",
-          "RU": ".tif"
+          "RU": ".tif",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       },
@@ -2689,11 +3049,13 @@
         "Id": 913,
         "ChildHeader": {
           "EN": ".tiff",
-          "RU": ".tiff"
+          "RU": ".tiff",
+          "DE": ""
         },
         "ChildDescription": {
           "EN": "",
-          "RU": ""
+          "RU": "",
+          "DE": ""
         },
         "Type": "CheckBox"
       }
@@ -2706,11 +3068,13 @@
     "Id": 914,
     "Header": {
       "EN": "Show the \"Edit with Photos\" item in the media files context menu",
-      "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов"
+      "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2722,11 +3086,13 @@
     "Id": 915,
     "Header": {
       "EN": "The \"Create a new video\" item in the media files context menu",
-      "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов"
+      "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2738,11 +3104,13 @@
     "Id": 916,
     "Header": {
       "EN": "The \"Edit\" item in the image files context menu",
-      "RU": "Пункт \"Изменить\" в контекстном меню изображений"
+      "RU": "Пункт \"Изменить\" в контекстном меню изображений",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2754,11 +3122,13 @@
     "Id": 917,
     "Header": {
       "EN": "The \"Print\" item in the .bat and .cmd files context menu",
-      "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов"
+      "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2770,11 +3140,13 @@
     "Id": 918,
     "Header": {
       "EN": "The \"Include in Library\" menu option in the folders and drives context menu",
-      "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков"
+      "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2786,11 +3158,13 @@
     "Id": 919,
     "Header": {
       "EN": "The \"Send to\" item in the folders context menu",
-      "RU": "Пункт \"Отправить\" в контекстном меню папок"
+      "RU": "Пункт \"Отправить\" в контекстном меню папок",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2802,11 +3176,13 @@
     "Id": 920,
     "Header": {
       "EN": "The \"Turn on BitLocker\" item in the drives context menu",
-      "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков"
+      "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2818,11 +3194,13 @@
     "Id": 921,
     "Header": {
       "EN": "The \"Bitmap image\" item in the \"New\" context menu",
-      "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\""
+      "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2834,11 +3212,13 @@
     "Id": 922,
     "Header": {
       "EN": "The \"Rich Text Document\" item in the \"New\" context menu",
-      "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\""
+      "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2850,11 +3230,13 @@
     "Id": 923,
     "Header": {
       "EN": "The \"Compressed (zipped) Folder\" item in the \"New\" context menu",
-      "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\""
+      "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2866,11 +3248,13 @@
     "Id": 924,
     "Header": {
       "EN": "Make the \"Open\", \"Print\", and \"Edit\" items available when selecting more than 15 files",
-      "RU": "Сделать элементы \"Открыть\", \"Изменить\" и \"Печать\" доступными контекстного меню при выделении более 15 элементов"
+      "RU": "Сделать элементы \"Открыть\", \"Изменить\" и \"Печать\" доступными контекстного меню при выделении более 15 элементов",
+      "DE": ""
     },
     "Description": {
       "EN": "Dy default, the \"Open\", \"Print\", \"Edit\" context menu items will not appear if selecting more than 15 items to avoid accidentally performing these actions on a large number of files.",
-      "RU": "По умолчанию пункты контекстного меню \"Открыть\", \"Печать\", \"Правка\" не будут отображаться при выборе более 15 пунктов, чтобы избежать случайного выполнения этих действий над большим количеством файлов"
+      "RU": "По умолчанию пункты контекстного меню \"Открыть\", \"Печать\", \"Правка\" не будут отображаться при выборе более 15 пунктов, чтобы избежать случайного выполнения этих действий над большим количеством файлов",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2882,11 +3266,13 @@
     "Id": 925,
     "Header": {
       "EN": "The \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog",
-      "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\""
+      "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\"",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2898,11 +3284,13 @@
     "Id": 926,
     "Header": {
       "EN": "Show the \"Open in Windows Terminal\" item in the folders context menu",
-      "RU": "Отображать пункт \"Открыть в Терминале Windows\" в контекстном меню папок"
+      "RU": "Отображать пункт \"Открыть в Терминале Windows\" в контекстном меню папок",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2914,11 +3302,13 @@
     "Id": 927,
     "Header": {
       "EN": "Show the \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu",
-      "RU": "Отображать пункт \"Открыть в Терминале Windows\" (Администратор) в контекстном меню Рабочего стола и папок"
+      "RU": "Отображать пункт \"Открыть в Терминале Windows\" (Администратор) в контекстном меню Рабочего стола и папок",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -2930,11 +3320,13 @@
     "Id": 928,
     "Header": {
       "EN": "Enable the Windows 10 context menu style",
-      "RU": "Включить стиль контекстного меню из Windows 10"
+      "RU": "Включить стиль контекстного меню из Windows 10",
+      "DE": ""
     },
     "Description": {
       "EN": "",
-      "RU": ""
+      "RU": "",
+      "DE": ""
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
