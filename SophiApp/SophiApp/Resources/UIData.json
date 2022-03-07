@@ -2156,13 +2156,13 @@
   {
     "Id": 338,
     "Header": {
-      "EN": "Press the Shift key 5 times to turn Sticky keys",
-      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить залипание клавиш",
+      "EN": "Allow the shortcut key to Start Sticky Keys",
+      "RU": "Разрешить включение залипания клавиш с помощью сочетания клавиш",
       "DE": ""
     },
     "Description": {
-      "EN": "",
-      "RU": "",
+      "EN": "Press the Shift key five times to turn Sticky keys on",
+      "RU": "Нажать клавишу Shift пять раз, чтоюы включить или выключить залипание клавиш",
       "DE": ""
     },
     "Type": "CheckBox",
