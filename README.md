@@ -13,8 +13,8 @@
 
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a>
 
-  <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1/"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
-  <a href="https://www.linkedin.com/mwlite/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
+  <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
+  <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
   <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://github.com/websemantics/bragit/blob/master/demo/img/heart.svg" height="17px"/>
 
   <a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
@@ -65,6 +65,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 ## Core features
 
 * Pure C# + WPF;
+* `SophiApp` uses the MVVM pattern;
 * Multithreading support;
 * All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
@@ -116,6 +117,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ##  Adendum
 
+* Some features require an internet connection. You should note that the appropriate features will be hidden in UI.
 * You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
   * The hidden functions will marked with a gear in UI;
 * After closing SophiApp, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
