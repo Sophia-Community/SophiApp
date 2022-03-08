@@ -8,7 +8,7 @@
     <system:String x:Key="Conditions.NoNewVersion.HasNew">Доступна новая версия SophiApp с исправленными ошибками.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Открыть страницу GitHub</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.RebootPending">Компьютер ожидает перезагрузки.</system:String>
-    <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Пожалуйста, перезагрузите ваш ПК перед запуском SophiApp.</system:String>
+    <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Пожалуйста, перезагрузите ваш ПК перед запуском SophiApp</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Пожалуйста, не запускайте несколько копий SophiApp одновременно.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp не совместима с Вашей версией Windows.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите Центр обновления Windows, чтобы обновить ОС до последней версии.</system:String>
