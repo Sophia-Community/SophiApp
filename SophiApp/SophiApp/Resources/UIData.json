@@ -2161,8 +2161,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Press the Shift key five times to turn Sticky keys on",
-      "RU": "Нажать клавишу Shift пять раз, чтобы включить или выключить залипание клавиш",
+      "EN": "Press the Shift key 5 times to turn Sticky keys on or off",
+      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить или выключить залипание клавиш",
       "DE": ""
     },
     "Type": "CheckBox",
