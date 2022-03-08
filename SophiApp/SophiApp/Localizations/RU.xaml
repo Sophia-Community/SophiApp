@@ -60,7 +60,7 @@
     <system:String x:Key="Localization.Settings.Designer">Разработка UI/UX:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Владимир Nameless</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
-    <system:String x:Key="Localization.Settings.Languages">Язык интерфейса</system:String>
+    <system:String x:Key="Localization.Settings.Languages">Язык</system:String>
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Дмитрий &quot;farag&quot; Нефёдов</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Логотип:</system:String>
