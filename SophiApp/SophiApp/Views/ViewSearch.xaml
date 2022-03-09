@@ -122,6 +122,16 @@
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:ButtonGroup}">
+                                <controls:ButtonGroup
+                                    Margin="{StaticResource ItemsMargin}"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSearch}}}"
+                                    Icon="{DynamicResource Icon.OneDrive}"
+                                    IconMargin="0, 10, 15, 10"
+                                    IconHorizontalAlignment="Center"
+                                    IconVerticalAlignment="Center"
+                                    HeaderMargin="0, 3, 0, 0" />
+                            </DataTemplate>
                         </ItemsControl.Resources>
                     </ItemsControl>
                 </ScrollViewer>

@@ -58,7 +58,8 @@ namespace SophiApp.ViewModels
                         applyingCancellationSource.Cancel();
                         CustomActions.Clear();
                         OnPropertyChanged(CustomActionsPropertyName);
-                        SetApplyingSettingsError(TextedElements.Where(element => element.Id == action.Id).First().Header);
+                        var faultyElement = FindFaultyElement(action.Id);
+                        SetApplyingSettingsError(faultyElement.Header);
                         SetVisibleViewTag(Tags.ApplyingException);
                         SetControlsHitTest(hamburgerHitTest: false, viewsHitTest: false);
                         break;
@@ -119,6 +120,13 @@ namespace SophiApp.ViewModels
 
                 TextedElements = new ConcurrentBag<TextedElement>(deserializedElements);
             });
+        }
+
+        private TextedElement FindFaultyElement(uint id)
+        {
+            return TextedElements.Where(element => element.Id == id).FirstOrDefault()
+                   ?? TextedElements.Where(element => element is IParentElements parent && parent.ChildElements.Any(child => child.Id == id))
+                                    .First();
         }
 
         private Task GetTextedElementsStatus(string tag)
@@ -230,8 +238,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                                    .ToList()
-                                                                                                                    .ForEach(element => element.Initialize()));
+                                                                                                                      .ToList()
+                                                                                                                      .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {

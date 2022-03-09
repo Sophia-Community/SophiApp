@@ -1,5 +1,4 @@
 using System;
-using Windows.ApplicationModel;
 
 namespace SophiApp.Helpers
 {
@@ -101,17 +100,16 @@ namespace SophiApp.Helpers
         }
     }
 
-    internal class UwpNotSupportedVersion : Exception
-    {
-        public UwpNotSupportedVersion(string packageFullName) : base($"This UWP package version {packageFullName} not supported")
-        {
-
-        }
-    }
-
     internal class UwpAppNotFoundException : Exception
     {
         public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found on OS")
+        {
+        }
+    }
+
+    internal class UwpNotSupportedVersion : Exception
+    {
+        public UwpNotSupportedVersion(string packageFullName) : base($"This UWP package version {packageFullName} not supported")
         {
         }
     }

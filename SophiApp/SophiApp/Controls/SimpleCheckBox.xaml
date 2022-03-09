@@ -58,7 +58,7 @@
                     Style="{DynamicResource NormalText}"
                     Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
                     TextWrapping="Wrap"
-                    Grid.Column="0"/>
+                    Grid.Column="0" />
 
                 <Border x:Name="BorderCheckBox" MouseLeftButtonDown="SimpleCheckBox_MouseLeftButtonDown">
                     <Path x:Name="PathCheckBox" />

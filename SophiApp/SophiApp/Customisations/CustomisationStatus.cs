@@ -142,7 +142,7 @@ namespace SophiApp.Customisations
         public static bool _214() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _214_SNAP_ASSIST)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _215() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_USE_COMPACT_MODE) == ENABLED_VALUE;
+        public static bool _215() => (RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == DISABLED_VALUE).Invert();
 
         public static bool _217() => _218().Invert();
 
@@ -172,11 +172,13 @@ namespace SophiApp.Customisations
         public static bool _227() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _227_SHOW_FREQUENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _228_SHOW_TASK_VIEW)
+        public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON)
                                               .HasNullOrValue(ENABLED_VALUE);
 
+        public static bool _229() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON) == ENABLED_VALUE;
+
         public static bool _230() => UwpHelper.PackageExist(_230_UWP_WEB_EXPERIENCE)
-                                     ? (RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) == DISABLED_VALUE).Invert()
+                                     ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) != DISABLED_VALUE
                                      : throw new UwpAppNotFoundException(_230_UWP_WEB_EXPERIENCE);
 
         public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_PEOPLE_EXPLORER_PATH, _231_PEOPLE_BAND) == ENABLED_VALUE;
@@ -414,7 +416,7 @@ namespace SophiApp.Customisations
 
             throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
         }
- 
+
         public static bool _347() => _346().Invert();
 
         public static bool _348() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))

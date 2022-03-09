@@ -7,7 +7,6 @@ namespace SophiApp.Customisations
 {
     internal static class CustomisationConstants
     {
-        internal static readonly PackageVersion MINIMAL_TERMINAL_VERSION = new PackageVersion() { Major = 1, Minor = 11 };
         internal const int _10_SECONDS_TIMEOUT = 10000;
         internal const string _100_DIAG_TRACK = "DiagTrack";
         internal const string _104_CORE = "Core";
@@ -78,7 +77,6 @@ namespace SophiApp.Customisations
         internal const byte _224_TASKBAR_ALIGNMENT_LEFT = 0;
         internal const byte _225_TASKBAR_ALIGNMENT_CENTER = 1;
         internal const string _227_SHOW_FREQUENT = "ShowFrequent";
-        internal const string _228_SHOW_TASK_VIEW = "ShowTaskViewButton";
         internal const string _230_UWP_WEB_EXPERIENCE = "MicrosoftWindows.Client.WebExperience";
         internal const string _230_WIDGETS_IN_TASKBAR = "TaskbarDa";
         internal const string _231_PEOPLE_BAND = "PeopleBand";
@@ -194,7 +192,6 @@ namespace SophiApp.Customisations
         internal const byte _343_AUTO_STATE = 1;
         internal const byte _343_MANUAL_STATE = 0;
         internal const string _344_IS_EXPEDITED = "IsExpedited";
-        internal const string TERMINAL_REGISTRY_SERVER_ID = "ServerId";
         internal const string _348_MSI_MASK = "*.msi";
         internal const string _348_MSIEXEC_EXE = "msiexec.exe";
         internal const string _348_PC_HEALTH_CHECK = "Windows PC Health Check";
@@ -637,6 +634,7 @@ else
         internal const string SESSION_MANAGER_ENVIRONMENT = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
         internal const string SHELL_EXT_BLOCKED_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
         internal const string SHOW_IN_ACTION_CENTER = "ShowInActionCenter";
+        internal const string SHOW_TASKVIEW_BUTTON = "ShowTaskViewButton";
         internal const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
         internal const string SIUF_PATH = @"SOFTWARE\Microsoft\Siuf\Rules";
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
@@ -658,6 +656,7 @@ else
         internal const string TASKBAR_SEARCH_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Search";
         internal const string TEMP = "TEMP";
         internal const string TEMP_FOLDER = "Temp";
+        internal const string TERMINAL_REGISTRY_SERVER_ID = "ServerId";
         internal const string TMP = "TMP";
         internal const string UPDATE_UX_SETTINGS_PATH = @"SOFTWARE\Microsoft\WindowsUpdate\UX\Settings";
         internal const string USER_DOWNLOAD_FOLDER = "{374DE290-123F-4565-9164-39C4925E467B}";
@@ -687,6 +686,7 @@ else
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
         internal static readonly string _811_WINDOWS_SANDBOX_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WindowsSandbox.exe";
         internal static readonly string _922_MS_WORDPAD_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows NT\Accessories\wordpad.exe";
+        internal static readonly PackageVersion MINIMAL_TERMINAL_VERSION = new PackageVersion() { Major = 1, Minor = 11 };
         internal static readonly string MS_PAINT_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\mspaint.exe";
         internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
         internal static byte[] _337_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };

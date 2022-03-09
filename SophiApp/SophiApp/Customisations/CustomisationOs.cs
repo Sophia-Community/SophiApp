@@ -64,7 +64,12 @@ namespace SophiApp.Customisations
                 ScheduledTaskHelper.TryChangeTaskState(_104_QUEUE_TASK_PATH, _104_QUEUE_TASK, true);
                 RegHelper.DeleteKey(RegistryHive.CurrentUser, _104_WER_PATH, DISABLED);
                 ServiceHelper.SetStartMode(werService, ServiceStartMode.Manual);
-                werService.Start();
+
+                if (werService.Status == ServiceControllerStatus.Stopped)
+                {
+                    werService.Start();
+                }
+
                 return;
             }
 
@@ -74,7 +79,11 @@ namespace SophiApp.Customisations
                 RegHelper.SetValue(RegistryHive.CurrentUser, _104_WER_PATH, DISABLED, _104_DISABLED_DEFAULT_VALUE, RegistryValueKind.DWord);
             }
 
-            werService.Stop();
+            if (werService.Status == ServiceControllerStatus.Running)
+            {
+                werService.Stop();
+            }
+
             ServiceHelper.SetStartMode(werService, ServiceStartMode.Disabled);
         }
 
@@ -342,7 +351,14 @@ namespace SophiApp.Customisations
 
         public static void _228(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         ADVANCED_EXPLORER_PATH,
-                                                                            _228_SHOW_TASK_VIEW,
+                                                                            SHOW_TASKVIEW_BUTTON,
+                                                                                IsChecked ? ENABLED_VALUE
+                                                                                          : DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
+
+        public static void _229(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        ADVANCED_EXPLORER_PATH,
+                                                                            SHOW_TASKVIEW_BUTTON,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
@@ -531,7 +547,7 @@ namespace SophiApp.Customisations
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _305(bool IsChecked) => ProcessHelper.Start(POWERCFG_EXE, IsChecked ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
+        public static void _305(bool IsChecked) => ProcessHelper.StartWait(POWERCFG_EXE, IsChecked ? _305_HIBERNATE_ON : _305_HIBERNATE_OFF, ProcessWindowStyle.Hidden);
 
         public static void _307(bool _)
         {
