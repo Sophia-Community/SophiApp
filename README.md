@@ -64,8 +64,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ## Core features
 
-* Pure C# + WPF;
-* `SophiApp` uses the MVVM pattern;
+* `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
 * Multithreading support;
 * All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
