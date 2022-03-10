@@ -142,7 +142,7 @@ namespace SophiApp.Customisations
         public static bool _214() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _214_SNAP_ASSIST)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _215() => (RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == DISABLED_VALUE).Invert();
+        public static bool _215() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _215_SNAP_ASSIST_FLYOUT) == DISABLED_VALUE).Invert();
 
         public static bool _217() => _218().Invert();
 
@@ -169,8 +169,7 @@ namespace SophiApp.Customisations
 
         public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
 
-        public static bool _227() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _227_SHOW_FREQUENT)
-                                              .HasNullOrValue(ENABLED_VALUE);
+        public static bool _227() => RegHelper.GetByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == ENABLED_VALUE;
 
         public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON)
                                               .HasNullOrValue(ENABLED_VALUE);
@@ -185,7 +184,7 @@ namespace SophiApp.Customisations
 
         public static bool _232() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _232_SHOW_SECONDS) == ENABLED_VALUE;
 
-        public static bool _234() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_HIDE_VALUE;
+        public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_HIDE_VALUE;
 
         public static bool _235() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_ICON_VALUE;
 
@@ -255,8 +254,7 @@ namespace SophiApp.Customisations
 
         public static bool _260() => SystemParametersHelper.GetInputSettings();
 
-        public static bool _261() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _261_DISALLOW_WINDOWS_SHAKE)
-                                              .HasNullOrValue(_261_ENABLED_VALUE);
+        public static bool _261() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _261_DISALLOW_WINDOWS_SHAKE) == DISABLED_VALUE;
 
         public static bool _300() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
@@ -432,7 +430,11 @@ namespace SophiApp.Customisations
             return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
         }
 
-        public static bool _351() => OneDriveHelper.IsInstalled() ? throw new OneDriveIsInstalledException() : false;
+        public static bool _351() => OneDriveHelper.IsInstalled()
+                                     ? throw new OneDriveIsInstalledException()
+                                     : OneDriveHelper.HasSetupExe() || HttpHelper.IsOnline()
+                                        ? false
+                                        : throw new OneDriveIsInstalledException();
 
         public static bool _352() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
 
@@ -442,7 +444,7 @@ namespace SophiApp.Customisations
 
         public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
 
-        public static bool _500() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+        public static bool _500() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS) && HttpHelper.IsOnline()
                                      ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
                                      : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS);
 

@@ -36,9 +36,11 @@ namespace SophiApp.Helpers
                     ?? RegHelper.GetStringValue(RegistryHive.LocalMachine, ONEDRIVE_SETUP_PATH, ONEDRIVE_UNINSTALL_STRING);
         }
 
+        internal static bool HasSetupExe() => File.Exists(ONEDRIVE_SETUP_EXE);
+
         internal static void Install()
         {
-            if (File.Exists(ONEDRIVE_SETUP_EXE))
+            if (HasSetupExe())
             {
                 ProcessHelper.StartWait(ONEDRIVE_SETUP_EXE);
                 return;

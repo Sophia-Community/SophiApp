@@ -284,7 +284,8 @@ namespace SophiApp.Customisations
         public static void _215(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         ADVANCED_EXPLORER_PATH,
                                                                             _215_SNAP_ASSIST_FLYOUT,
-                                                                                IsChecked ? ENABLED_VALUE : DISABLED_VALUE,
+                                                                                IsChecked ? ENABLED_VALUE
+                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _217(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
@@ -343,8 +344,8 @@ namespace SophiApp.Customisations
         public static void _225(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _225_TASKBAR_ALIGNMENT_CENTER, RegistryValueKind.DWord);
 
         public static void _227(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        CURRENT_VERSION_EXPLORER_PATH,
-                                                                            _227_SHOW_FREQUENT,
+                                                                        TASKBAR_SEARCH_PATH,
+                                                                            TASKBAR_SEARCH_MODE,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
