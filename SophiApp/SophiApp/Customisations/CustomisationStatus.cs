@@ -169,7 +169,7 @@ namespace SophiApp.Customisations
 
         public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
 
-        public static bool _227() => RegHelper.GetByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == ENABLED_VALUE;
+        public static bool _227() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == DISABLED_VALUE).Invert();
 
         public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON)
                                               .HasNullOrValue(ENABLED_VALUE);
