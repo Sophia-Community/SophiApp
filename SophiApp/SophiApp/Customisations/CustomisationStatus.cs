@@ -169,12 +169,11 @@ namespace SophiApp.Customisations
 
         public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
 
-        public static bool _227() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == DISABLED_VALUE).Invert();
+        public static bool _227() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) != DISABLED_VALUE;
 
-        public static bool _228() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON)
-                                              .HasNullOrValue(ENABLED_VALUE);
+        public static bool _228() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON) != DISABLED_VALUE;
 
-        public static bool _229() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON) == ENABLED_VALUE;
+        public static bool _229() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, SHOW_TASKVIEW_BUTTON) != DISABLED_VALUE;
 
         public static bool _230() => UwpHelper.PackageExist(_230_UWP_WEB_EXPERIENCE)
                                      ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) != DISABLED_VALUE
@@ -259,18 +258,11 @@ namespace SophiApp.Customisations
         public static bool _300() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _301() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01) == ENABLED_VALUE
-                                              ? true
-                                              : throw new RegistryKeyUnexpectedValue($@"{RegistryHive.CurrentUser}\{STORAGE_POLICY_PATH}\{STORAGE_POLICY_01}");
+        public static bool _302() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048) == _302_STORAGE_POLICY_MONTH_VALUE;
 
-        public static bool _302() => _303().Invert();
+        public static bool _303() => _302().Invert();
 
-        public static bool _303() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048)
-                                              .HasNullOrValue(DISABLED_VALUE);
-
-        public static bool _304() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01) == ENABLED_VALUE
-                                              ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, _304_STORAGE_POLICY_04).HasNullOrValue(DISABLED_VALUE).Invert()
-                                              : throw new RegistryKeyUnexpectedValue($@"{RegistryHive.CurrentUser}\{STORAGE_POLICY_PATH}\{STORAGE_POLICY_01}");
+        public static bool _304() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, _304_STORAGE_POLICY_04).HasNullOrValue(DISABLED_VALUE).Invert();
 
         public static bool _305() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _305_POWER_CONTROL_PATH, _305_HIBERNATE) == _305_ENABLED_VALUE;
 

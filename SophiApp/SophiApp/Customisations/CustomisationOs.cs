@@ -534,12 +534,20 @@ namespace SophiApp.Customisations
                                                                         STORAGE_POLICY_PATH,
                                                                             STORAGE_POLICY_01,
                                                                                 IsChecked ? ENABLED_VALUE
-                                                                                         : DISABLED_VALUE,
+                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _302(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048, _302_STORAGE_POLICY_MONTH_VALUE, RegistryValueKind.DWord);
+        public static void _302(bool _)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01, ENABLED_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048, _302_STORAGE_POLICY_MONTH_VALUE, RegistryValueKind.DWord);
+        }
 
-        public static void _303(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048, DISABLED_VALUE, RegistryValueKind.DWord);
+        public static void _303(bool _)
+        {
+            RegHelper.SetValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01, ENABLED_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048, DISABLED_VALUE, RegistryValueKind.DWord);
+        }
 
         public static void _304(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         STORAGE_POLICY_PATH,
