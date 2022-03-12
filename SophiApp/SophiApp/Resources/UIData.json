@@ -2156,8 +2156,8 @@
   {
     "Id": 338,
     "Header": {
-      "EN": "Allow the shortcut key to Start Sticky Keys",
-      "RU": "Разрешить включение залипания клавиш с помощью сочетания клавиш",
+      "EN": "Keyboard shortcut for Sticky keys",
+      "RU": "Сочетание клавиш для залипания клавиш",
       "DE": ""
     },
     "Description": {
