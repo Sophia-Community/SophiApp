@@ -2818,7 +2818,7 @@
       "RU": "Эта функция блокирует запуск .js- и .vbs-скриптов, предотвращая запуск зловредных JavaScript-скриптов",
       "DE": ""
     },
-    "Type": "AdvancedSwitch",
+    "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 810,
     "Windows10Supported": true,
