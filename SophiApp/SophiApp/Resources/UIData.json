@@ -1406,7 +1406,7 @@
         "Id": 256,
         "ChildHeader": {
           "EN": "80% (by default)",
-          "RU": " 80 % (по умолчанию)",
+          "RU": "80 % (по умолчанию)",
           "DE": ""
         },
         "ChildDescription": {
