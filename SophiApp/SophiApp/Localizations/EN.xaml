@@ -34,7 +34,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
-    <system:String x:Key="Localization.Customizations.RebootRequired">Please Make sure to reboot your PC after applying settings</system:String>
+    <system:String x:Key="Localization.Customizations.RebootRequired">Please make sure to reboot your PC after applying settings</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Description">Process creation and command-line auditing events.</system:String>
