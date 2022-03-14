@@ -881,10 +881,25 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                var installer = $"{Environment.GetEnvironmentVariable(TEMP)}\\{_349_VC_REDISTRX64}";
+                var temp = Environment.GetEnvironmentVariable(TEMP);
+                var installer = $"{temp}\\{_349_VC_REDISTRX64_EXE}";
                 WebHelper.Download(_349_DOWNLOAD_URL, installer);
-                ProcessHelper.StartWait(installer, _349_VC_REDISTRX64_ARGS);
+                ProcessHelper.StartWait(installer, _349_VC_REDISTRX64_INSTALL_ARGS);
                 FileHelper.TryDeleteFile(installer);
+                Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
+                         .ToList()
+                         .ForEach(log => FileHelper.TryDeleteFile(log));
+
+                return;
+            }
+
+            var vcRedistrGuid = RegHelper.GetStringValue(RegistryHive.LocalMachine, _349_VC_REDISTRX64_REGISTRY_PATH, null);
+            var vcCachePath = $@"{ENVIRONMENT_PROGRAM_DATA}\Package Cache\{vcRedistrGuid}\{_349_VC_REDISTRX64_EXE}";
+            var vcFileVersion = FileVersionInfo.GetVersionInfo(vcCachePath);
+
+            if (vcFileVersion.ProductName.Contains(_349_VC_REDISTRX64_NAME_PATTERN))
+            {
+                ProcessHelper.StartWait(vcCachePath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
             }
         }
 

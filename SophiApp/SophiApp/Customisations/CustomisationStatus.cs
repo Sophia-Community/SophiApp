@@ -183,7 +183,7 @@ namespace SophiApp.Customisations
 
         public static bool _232() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _232_SHOW_SECONDS) == ENABLED_VALUE;
 
-        public static bool _233() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_HIDE_VALUE;
+        public static bool _234() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_HIDE_VALUE;
 
         public static bool _235() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) == TASKBAR_SEARCH_ICON_VALUE;
 
@@ -256,7 +256,8 @@ namespace SophiApp.Customisations
         public static bool _261() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _261_DISALLOW_WINDOWS_SHAKE) != ENABLED_VALUE;
 
         public static bool _300() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01)
-                                              .HasNullOrValue(DISABLED_VALUE).Invert();
+                                              .HasNullOrValue(DISABLED_VALUE)
+                                              .Invert();
 
         public static bool _302() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_2048) == _302_STORAGE_POLICY_MONTH_VALUE;
 
