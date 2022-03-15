@@ -96,7 +96,7 @@ namespace SophiApp.Helpers
 
         internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
 
-        internal static void OsConditionHasProblem(IStartupCondition condition) => WriteStatusLog($"{condition.Tag} is has problem: {condition.HasProblem}");
+        internal static void OsConditionHasProblem(IStartupCondition condition) => WriteStatusLog($"{condition.Tag} has a problem: {condition.HasProblem}");
 
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
@@ -106,21 +106,21 @@ namespace SophiApp.Helpers
 
         internal static void SelectedTheme(string value) => WriteStatusLog($"Theme selected: {value}");
 
-        internal static void StartApplyingSettings(int actionsCount) => WriteStatusLog($"Started applying {actionsCount} setting(s)");
+        internal static void StartApplyingSettings(int actionsCount) => WriteStatusLog($"Applying {actionsCount} setting(s) started");
 
-        internal static void StartInitTextedElements() => WriteStatusLog("Started initialization of texted elements");
+        internal static void StartInitTextedElements() => WriteStatusLog("Initialization of the texted elements started");
 
-        internal static void StartInitUwpApps() => WriteStatusLog("Started initialization of uwp elements");
+        internal static void StartInitUwpApps() => WriteStatusLog("Initialization of the UWP elements started");
 
-        internal static void StartResetTextedElements() => WriteStatusLog("Started reset texted elements status");
+        internal static void StartResetTextedElements() => WriteStatusLog("Resetting texted elements status started");
 
-        internal static void StartStartupConditions() => WriteStatusLog("Starting the OS conditions check");
+        internal static void StartStartupConditions() => WriteStatusLog("The OS conditions checkings started");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 
-        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize texted elements");
+        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize the texted elements");
 
-        internal static void StopInitUwpApps(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize uwp elements");
+        internal static void StopInitUwpApps(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize the UWP elements");
 
         internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
 
