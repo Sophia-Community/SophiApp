@@ -97,6 +97,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="StartupConditions\DefenderIsBrokenCondition.cs" />
     <Compile Include="StartupConditions\SingleAdminSessionCondition.cs" />
     <Compile Include="StartupConditions\SingleInstanceCondition.cs" />
     <Compile Include="StartupConditions\RebootRequiredCondition.cs" />

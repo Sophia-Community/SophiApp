@@ -4,15 +4,16 @@ namespace SophiApp.Commons
 {
     internal enum ConditionsTag
     {
-        OsVersion,
-        OsBuildVersion,
-        RebootRequired,
-        SingleInstance,
-        SingleAdminSession,
-        Win10Tweaker,
-        SycnexScript,
+        DefenderIsBroken,
         NewVersion,
-        SomethingWrong
+        OsBuildVersion,
+        OsVersion,
+        RebootRequired,
+        SingleAdminSession,
+        SingleInstance,
+        SomethingWrong,
+        SycnexScript,
+        Win10Tweaker
     }
 
     internal enum InfoPanelVisibility

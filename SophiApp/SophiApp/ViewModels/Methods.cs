@@ -75,6 +75,7 @@ namespace SophiApp.ViewModels
                     GetUwpElements();
                     OsHelper.PostMessage();
                     OsHelper.RefreshEnvironment();
+                    OsHelper.SafelyRestartExplorerProcess();
                     SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
                     SetControlsHitTest();
                     totalStopWatch.Stop();
@@ -238,8 +239,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                                            .ToList()
-                                                                                                                            .ForEach(element => element.Initialize()));
+                                                                                                                                .ToList()
+                                                                                                                                .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {

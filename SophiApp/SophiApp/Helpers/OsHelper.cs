@@ -1,17 +1,25 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SophiApp.Helpers
 {
     internal class OsHelper
     {
+        private const string AUTORESTART_SHELL = "AutoRestartShell";
         private const string CURRENT_BUILD = "CurrentBuild";
         private const string CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private const byte DISABLED_VALUE = 0;
         private const string DISPLAY_VERSION_NAME = "DisplayVersion";
         private const string EDITION_ID_NAME = "EditionID";
+        private const byte ENABLED_VALUE = 1;
+        private const string EXPLORER = "explorer";
         private const string MAJOR_VERSION_NUMBER = "CurrentMajorVersionNumber";
         private const string MINOR_VERSION_NUMBER = "CurrentMinorVersionNumber";
         private const int Msg = 273;
@@ -21,9 +29,11 @@ namespace SophiApp.Helpers
         private const string REGSVR_32 = "regsvr32.exe";
         private const int SMTO_ABORTIFHUNG = 0x0002;
         private const string START_MENU_PROCESS = "StartMenuExperienceHost";
+        private const int TIMEOUT_3_SECONDS = 3000;
         private const string TRAY_SETTINGS = "TraySettings";
         private const string UBR = "UBR";
         private const uint WIN11_BUILD_NUMBER = 22;
+        private const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
@@ -88,6 +98,23 @@ namespace SophiApp.Helpers
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
 
         internal static bool IsWindows11() => GetBuild() / 1000 == WIN11_BUILD_NUMBER;
+
+        internal static void SafelyRestartExplorerProcess()
+        {
+            // Save opened folders
+            var openedFolders = ComObjectHelper.GetOpenedFolders().ToList();
+            // Terminate the File Explorer process
+            RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, DISABLED_VALUE, RegistryValueKind.DWord);
+            ProcessHelper.Stop(EXPLORER);
+            Task.Delay(TIMEOUT_3_SECONDS);
+            RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, ENABLED_VALUE, RegistryValueKind.DWord);
+            // Start the File Explorer process
+            ProcessHelper.StartWait(EXPLORER);
+            Thread.Sleep(TIMEOUT_3_SECONDS);
+            // Restoring closed folders
+            ProcessHelper.StartWait(EXPLORER, openedFolders, ProcessWindowStyle.Minimized);
+            Task.Delay(TIMEOUT_3_SECONDS);
+        }
 
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
         {

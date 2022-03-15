@@ -18,6 +18,7 @@
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAgree">Я осознаю риск и согласен нести ответственность за любой возможный ущерб</system:String>
     <system:String x:Key="Conditions.ReinstallOs">На всякий случай переустановите ОС.</system:String>
+    <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender сломан или удален</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex. На всякий случай переустановите ОС.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версия сборки вашей ОС ниже поддерживаемой.</system:String>

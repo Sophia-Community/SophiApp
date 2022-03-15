@@ -1,5 +1,6 @@
 ﻿using SophiApp.Conditions;
 using SophiApp.Interfaces;
+using SophiApp.StartupConditions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace SophiApp.Helpers
         {
             new OsVersionCondition(), new OsBuildVersionCondition(), new RebootRequiredCondition(), new SingleInstanceCondition(),
             new SingleAdminSessionCondition(), new Win10TweakerCondition(), new SycnexScriptCondition(),
-            new NewVersionCondition()
+            new DefenderIsBrokenCondition(), new NewVersionCondition()
         };
 
         internal async Task CheckAsync()

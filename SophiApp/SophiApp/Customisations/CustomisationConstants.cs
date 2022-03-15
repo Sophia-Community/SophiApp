@@ -199,11 +199,11 @@ namespace SophiApp.Customisations
         internal const string _349_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
         internal const string _349_VC_REDISTR_FOR_VS_2022 = "Visual C++ Redistributable for Visual Studio 2022";
         internal const string _349_VC_REDISTRX64_EXE = "vc_redist.x64.exe";
-        internal const string _349_VC_REDISTRX64_REGISTRY_PATH = @"SOFTWARE\Classes\Installer\Dependencies\VC,redist.x64,amd64,14.31,bundle";
+        internal const string _349_VC_REDISTRX64_INSTALL_ARGS = "/install /passive /norestart";
         internal const string _349_VC_REDISTRX64_LOG_PATTERN = "dd_vcredist_amd64_*.log";
         internal const string _349_VC_REDISTRX64_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x64)";
+        internal const string _349_VC_REDISTRX64_REGISTRY_PATH = @"SOFTWARE\Classes\Installer\Dependencies\VC,redist.x64,amd64,14.31,bundle";
         internal const string _349_VC_REDISTRX64_UNINSTALL_ARGS = "/uninstall /passive /norestart";
-        internal const string _349_VC_REDISTRX64_INSTALL_ARGS = "/install /passive /norestart";
         internal const string _349_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
         internal const byte _400_DISABLED_VALUE = 1;
         internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
@@ -630,7 +630,6 @@ else
         internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
         internal const string POWERCFG_EXE = "powercfg.exe";
         internal const string POWERSHELL_EXE = "powershell.exe";
-        internal static readonly string ENVIRONMENT_PROGRAM_DATA = Environment.GetEnvironmentVariable("ProgramData");
         internal const string PROCESS_AUDIT_DISABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
         internal const string PROCESS_AUDIT_ENABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:enable /failure:enable";
         internal const string PROCESS_CREATION_ENABLED = "ProcessCreationIncludeCmdLine_Enabled";
@@ -691,6 +690,7 @@ else
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
         internal static readonly string _811_WINDOWS_SANDBOX_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WindowsSandbox.exe";
         internal static readonly string _922_MS_WORDPAD_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows NT\Accessories\wordpad.exe";
+        internal static readonly string ENVIRONMENT_PROGRAM_DATA = Environment.GetEnvironmentVariable("ProgramData");
         internal static readonly PackageVersion MINIMAL_TERMINAL_VERSION = new PackageVersion() { Major = 1, Minor = 11 };
         internal static readonly string MS_PAINT_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\mspaint.exe";
         internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;

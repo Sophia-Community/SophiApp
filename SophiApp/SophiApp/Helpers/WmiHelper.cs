@@ -7,9 +7,35 @@ namespace SophiApp.Helpers
     internal class WmiHelper
     {
         private const string ANTISPYWARE_ENABLED = "AntispywareEnabled";
+        private const string DEFENDER_GUID = "{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}";
+        private const string DEFENDER_INSTANCE_GUID = "instanceGuid";
+        private const string PRODUCT_STATE = "productState";
         private const string PROTECTION_STATUS = "ProtectionStatus";
 
         private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
+
+        internal static bool AntiVirusProtectionDisabled()
+        {
+            var scope = @"Root/SecurityCenter2";
+            var query = "SELECT * FROM Antivirusproduct";
+            var defender = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>()
+                                                                          .Where(avProduct => avProduct.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID)
+                                                                          .First();
+
+            var avState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);
+
+            if (avState == "00" || avState == "01")
+            {
+                var _3rdAntivirus = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>()
+                                                                                   .Where(avProduct => avProduct.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string != DEFENDER_GUID)
+                                                                                   .First();
+
+                if (_3rdAntivirus.GetPropertyValue(PRODUCT_STATE) == null)
+                    return true;
+            }
+
+            return false;
+        }
 
         internal static bool DefenderIsRun()
         {
@@ -18,7 +44,7 @@ namespace SophiApp.Helpers
             try
             {
                 var scope = @"Root/Microsoft/Windows/Defender";
-                var query = $"SELECT * FROM MSFT_MpComputerStatus";
+                var query = "SELECT * FROM MSFT_MpComputerStatus";
                 var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First().Properties[ANTISPYWARE_ENABLED].Value;
                 isRun = Convert.ToBoolean(status);
             }

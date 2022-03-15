@@ -126,7 +126,7 @@ namespace SophiApp.Helpers
 
         internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
 
-        internal static void StopStartupConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to Os conditions checks");
+        internal static void StopStartupConditions(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to OS conditions checks");
 
         internal static void TextedElementChanged(uint elementID, ElementStatus elementStatus) => WriteStatusLog($"The {elementID} element changed status to: {elementStatus}");
 
