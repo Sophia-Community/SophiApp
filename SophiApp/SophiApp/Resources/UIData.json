@@ -2197,8 +2197,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again.",
-      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново",
+      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden %LOCALAPPDATA%\Microsoft\Windows\Explorer folder.",
+      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново. Кэш эскизов хранится в виде файлов .db, расположенных в скрытой папке %LOCALAPPDATA%\Microsoft\Windows\Explorer",
       "DE": ""
     },
     "Type": "CheckBox",
