@@ -28,10 +28,9 @@ namespace SophiApp.Helpers
             {
                 var _3rdAntivirus = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>()
                                                                                    .Where(avProduct => avProduct.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string != DEFENDER_GUID)
-                                                                                   .First();
+                                                                                   .FirstOrDefault();
 
-                if (_3rdAntivirus.GetPropertyValue(PRODUCT_STATE) == null)
-                    return true;
+                return _3rdAntivirus?.GetPropertyValue(PRODUCT_STATE) == null;
             }
 
             return false;

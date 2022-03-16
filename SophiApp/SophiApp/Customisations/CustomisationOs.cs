@@ -803,7 +803,7 @@ namespace SophiApp.Customisations
 
         public static void _340(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
                                                                         _340_THUMBNAIL_CACHE_PATH,
-                                                                            _340_AUTOPLAY,
+                                                                            _340_AUTORUN,
                                                                                 IsChecked ? _340_ENABLED_VALUE
                                                                                           : _340_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);

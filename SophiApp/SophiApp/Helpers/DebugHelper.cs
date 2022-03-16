@@ -96,7 +96,7 @@ namespace SophiApp.Helpers
 
         internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
 
-        internal static void OsConditionHasProblem(IStartupCondition condition) => WriteStatusLog($"{condition.Tag} has a problem: {condition.HasProblem}");
+        internal static void OsConditionHasValue(IStartupCondition condition) => WriteStatusLog($"{condition.Tag} has value: {condition.HasProblem}");
 
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 

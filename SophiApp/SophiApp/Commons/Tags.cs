@@ -4,7 +4,7 @@ namespace SophiApp.Commons
 {
     internal enum ConditionsTag
     {
-        DefenderIsBroken,
+        DefenderWarning,
         NewVersion,
         OsBuildVersion,
         OsVersion,

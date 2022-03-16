@@ -356,7 +356,7 @@ namespace SophiApp.Customisations
         public static bool _339() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _339_AUTOPLAY_HANDLERS_PATH, _339_AUTOPLAY)
                                               .HasNullOrValue(_339_ENABLED_VALUE);
 
-        public static bool _340() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _340_THUMBNAIL_CACHE_PATH, _340_AUTOPLAY)
+        public static bool _340() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _340_THUMBNAIL_CACHE_PATH, _340_AUTORUN)
                                               .HasNullOrValue(_340_ENABLED_VALUE);
 
         public static bool _341() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, WINLOGON_PATH, _341_RESTART_APPS)
@@ -449,11 +449,12 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _502_TEAMS_STARTUP_PATH, STATE) == _502_TEAMS_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
 
-        public static bool _600() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == ENABLED_VALUE
-                                        && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == ENABLED_VALUE;
+        public static bool _600() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == DISABLED_VALUE
+                                        & RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == DISABLED_VALUE).Invert();
 
         public static bool _601() => UwpHelper.PackageExist(_601_UWP_XBOX_GAMING_OVERLAY) || UwpHelper.PackageExist(_601_UWP_GAMING_APP)
-                                     ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == ENABLED_VALUE
+                                     ? (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == DISABLED_VALUE)
+                                                 .Invert()
                                      : throw new UwpAppNotFoundException($"{_601_UWP_XBOX_GAMING_OVERLAY} or {_601_UWP_GAMING_APP}");
 
         public static bool _602()

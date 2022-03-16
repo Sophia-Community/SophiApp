@@ -175,7 +175,7 @@ namespace SophiApp.Customisations
         internal const string _339_AUTOPLAY_HANDLERS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers";
         internal const byte _339_DISABLED_VALUE = 1;
         internal const byte _339_ENABLED_VALUE = 0;
-        internal const string _340_AUTOPLAY = "Autorun";
+        internal const string _340_AUTORUN = "Autorun";
         internal const string _340_DISABLE_NET_BINDING_PS = "Disable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
         internal const byte _340_DISABLED_VALUE = 0;
         internal const string _340_ENABLE_NET_BINDING_PS = "Enable-NetAdapterBinding –Name * –ComponentID ms_tcpip6";
