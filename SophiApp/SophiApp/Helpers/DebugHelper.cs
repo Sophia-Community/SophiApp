@@ -1,4 +1,4 @@
-﻿using SophiApp.Commons;
+using SophiApp.Commons;
 using SophiApp.Dto;
 using SophiApp.Interfaces;
 using System;
@@ -108,21 +108,21 @@ namespace SophiApp.Helpers
 
         internal static void StartApplyingSettings(int actionsCount) => WriteStatusLog($"Applying {actionsCount} setting(s) started");
 
-        internal static void StartInitTextedElements() => WriteStatusLog("Initialization of the texted elements started");
+        internal static void StartInitTextedElements() => WriteStatusLog("Initialization of the elements started");
 
         internal static void StartInitUwpApps() => WriteStatusLog("Initialization of the UWP elements started");
 
-        internal static void StartResetTextedElements() => WriteStatusLog("Resetting texted elements status started");
+        internal static void StartResetTextedElements() => WriteStatusLog("The elements status resetting started");
 
         internal static void StartStartupConditions() => WriteStatusLog("The OS conditions checkings started");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 
-        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize the texted elements");
+        internal static void StopInitTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize elements");
 
         internal static void StopInitUwpApps(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to initialize the UWP elements");
 
-        internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset texted elements");
+        internal static void StopResetTextedElements(double totalSeconds) => WriteStatusLog($"It took {totalSeconds:N0} second(s) to reset elements");
 
         internal static void StopSearch(string searchString, double totalSeconds, int elementFound) => WriteStatusLog($"It took {totalSeconds:N3} seconds to search for \"{searchString}\" and found {elementFound} item(s)");
 
