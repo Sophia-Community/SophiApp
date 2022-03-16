@@ -2197,8 +2197,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "",
-      "RU": "",
+      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again.",
+      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново",
       "DE": ""
     },
     "Type": "CheckBox",
