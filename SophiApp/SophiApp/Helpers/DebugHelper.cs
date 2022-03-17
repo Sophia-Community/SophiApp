@@ -9,6 +9,7 @@ namespace SophiApp.Helpers
 {
     internal class DebugHelper
     {
+        private const string ANTIVIRUS = "Antivirus";
         private const string APP_FOLDER = "App folder";
         private const string APP_IS_RELEASE = "App is release";
         private const string APP_LOC = "App localization";
@@ -16,13 +17,21 @@ namespace SophiApp.Helpers
         private const string APP_VER = "App version";
         private const string PC_NAME = "Computer name";
         private const string REG_ORG = "Registered organization";
+
         private const string REG_OWNER = "Registered owner";
+
         private const string USER_CULTURE = "User culture";
+
         private const string USER_DOMAIN = "User domain";
+
         private const string USER_NAME = "Current user";
+
         private const string USER_REGION = "User region";
+
         private static readonly object infoLogLocker = new object();
+
         private static readonly object statusLogLocker = new object();
+
         private static List<string> ErrorsLog = new List<string>();
 
         private static List<string> InfoLog = new List<string>
@@ -73,6 +82,8 @@ namespace SophiApp.Helpers
         internal static void AppTheme(string theme) => WriteInfoLog($"{APP_THEME}: {theme}");
 
         internal static void DebugMode(bool value) => WriteStatusLog($"Debug mode is: {value}");
+
+        internal static void FoundExternalAntiVirus(string antiVirusName) => WriteInfoLog($"{ANTIVIRUS}: {antiVirusName}");
 
         internal static void HasException(string message, Exception e)
         {

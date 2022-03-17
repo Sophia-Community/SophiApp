@@ -9,6 +9,16 @@ namespace SophiApp.StartupConditions
         public bool HasProblem { get; set; }
         public ConditionsTag Tag { get; set; } = ConditionsTag.DefenderWarning;
 
-        public bool Invoke() => HasProblem = WmiHelper.AntiVirusProtectionDisabled();
+        public bool Invoke()
+        {
+            if (WmiHelper.HasExternalAntiVirus())
+            {
+                var antivirusName = WmiHelper.GetAntiVirusInfo<string>("displayName");
+                DebugHelper.FoundExternalAntiVirus(antivirusName);
+                return HasProblem = false;
+            }
+
+            return HasProblem = WmiHelper.DefenderProtectionDisabled();
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace SophiApp.Commons
         SingleInstance,
         SomethingWrong,
         SycnexScript,
-        Win10Tweaker
+        Win10Tweaker,
+        Win10TweakerBrokeDefender,
     }
 
     internal enum InfoPanelVisibility

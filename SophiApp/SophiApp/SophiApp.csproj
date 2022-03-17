@@ -140,6 +140,7 @@
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="StartupConditions\NewVersionCondition.cs" />
     <Compile Include="StartupConditions\OsVersionCondition.cs" />
+    <Compile Include="StartupConditions\Win10TweakerBrokeDefender.cs" />
     <Compile Include="StartupConditions\Win10TweakerCondition.cs" />
     <Compile Include="StartupConditions\OsBuildVersionCondition.cs" />
     <Compile Include="Controls\ActorLink.xaml.cs">
