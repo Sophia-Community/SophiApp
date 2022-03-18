@@ -4,7 +4,7 @@ using SophiApp.Interfaces;
 
 namespace SophiApp.StartupConditions
 {
-    internal class Win10TweakerBrokeDefender : IStartupCondition
+    internal class Win10TweakerDefenderBroken : IStartupCondition
     {
         private const string AME_WRONG_VERSION = "0.0.0.0";
 
