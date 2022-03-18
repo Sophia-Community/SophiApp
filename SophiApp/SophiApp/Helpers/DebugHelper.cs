@@ -16,30 +16,20 @@ namespace SophiApp.Helpers
         private const string APP_THEME = "App theme";
         private const string APP_VER = "App version";
         private const string PC_NAME = "Computer name";
-        private const string REG_ORG = "Registered organization";
-
-        private const string REG_OWNER = "Registered owner";
-
         private const string USER_CULTURE = "User culture";
-
         private const string USER_DOMAIN = "User domain";
-
         private const string USER_NAME = "Current user";
-
         private const string USER_REGION = "User region";
 
         private static readonly object infoLogLocker = new object();
-
+        private static readonly Version OS_VERSION = OsHelper.GetVersion();
         private static readonly object statusLogLocker = new object();
-
         private static List<string> ErrorsLog = new List<string>();
 
         private static List<string> InfoLog = new List<string>
         {
-            $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()} build: {OsHelper.GetVersion()}",
+            $"{OsHelper.GetProductName()} {OsHelper.GetDisplayVersion()} build {OS_VERSION.Build}.{OS_VERSION.Revision}",
             $"{PC_NAME}: {Environment.MachineName}",
-            $"{REG_ORG}: {OsHelper.GetRegisteredOrganization()}",
-            $"{REG_OWNER}: {OsHelper.GetRegisteredOwner()}",
             $"{USER_NAME}: {Environment.UserName}",
             $"{USER_DOMAIN}: {Environment.GetEnvironmentVariable("userdnsdomain") ?? Environment.UserDomainName}",
             $"{USER_CULTURE}: {OsHelper.GetCurrentCultureName()}",
@@ -50,7 +40,6 @@ namespace SophiApp.Helpers
         };
 
         private static List<string> InitLog = new List<string>();
-
         private static List<string> StatusLog = new List<string>();
 
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }

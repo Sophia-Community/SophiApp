@@ -52,6 +52,8 @@ namespace SophiApp.Helpers
             return source;
         }
 
+        public static int ToInt32(this object value) => Convert.ToInt32(value);
+
         public static ushort ToUshort(this object value) => Convert.ToUInt16(value);
     }
 }

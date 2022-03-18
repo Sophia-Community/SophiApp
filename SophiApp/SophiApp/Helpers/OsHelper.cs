@@ -86,13 +86,13 @@ namespace SophiApp.Helpers
 
         internal static ushort GetUpdateBuildRevision() => Convert.ToUInt16(RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, UBR));
 
-        internal static string GetVersion()
+        internal static Version GetVersion()
         {
-            var majorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MAJOR_VERSION_NUMBER);
-            var minorVersion = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MINOR_VERSION_NUMBER);
-            var buildVersion = GetBuild();
-            var ubrVersion = GetUpdateBuildRevision();
-            return $"{majorVersion}.{minorVersion}.{buildVersion}.{ubrVersion}";
+            var major = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MAJOR_VERSION_NUMBER).ToInt32();
+            var minor = RegHelper.GetValue(hive: RegistryHive.LocalMachine, REGISTRY_CURRENT_VERSION, MINOR_VERSION_NUMBER).ToInt32();
+            var build = GetBuild();
+            var revision = GetUpdateBuildRevision();
+            return new Version(major, minor, build, revision);
         }
 
         internal static bool IsEdition(string name) => GetEdition().Contains(name);
