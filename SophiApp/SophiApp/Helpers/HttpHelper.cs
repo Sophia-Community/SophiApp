@@ -6,11 +6,14 @@ namespace SophiApp.Helpers
     internal class HttpHelper
     {
         private const string PROBE_URL = "https://www.google.com";
-        private static readonly HttpClient client = new HttpClient();
+        private static bool online = isOnline();
+        internal static bool IsOnline { get => online; }
 
-        internal static bool IsOnline()
+        private static bool isOnline()
         {
             bool result;
+            var client = new HttpClient();
+
             client.DefaultRequestHeaders.ConnectionClose = true;
 
             try

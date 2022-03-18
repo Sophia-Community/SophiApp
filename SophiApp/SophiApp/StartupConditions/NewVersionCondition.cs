@@ -16,33 +16,40 @@ namespace SophiApp.Conditions
 
         public bool Invoke()
         {
+            DebugHelper.IsOnline();
+
             try
             {
-                HttpWebRequest request = WebRequest.CreateHttp(AppHelper.SophiAppVersionsJson);
-                request.UserAgent = AppHelper.UserAgent;
-                var response = request.GetResponse();
-                DebugHelper.HasUpdateResponse();
-                using (Stream dataStream = response.GetResponseStream())
+                if (HttpHelper.IsOnline)
                 {
-                    StreamReader reader = new StreamReader(dataStream);
-                    var serverResponse = reader.ReadToEnd();
-                    var release = JsonConvert.DeserializeObject<ReleaseDto>(serverResponse);
-                    DebugHelper.HasUpdateRelease(release);
-                    var releasedVersion = new Version(AppHelper.IsRelease ? release.SophiApp_release : release.SophiApp_pre_release);
-                    var hasNewVersion = releasedVersion > AppHelper.Version;
+                    HttpWebRequest request = WebRequest.CreateHttp(AppHelper.SophiAppVersionsJson);
+                    request.UserAgent = AppHelper.UserAgent;
+                    var response = request.GetResponse();
 
-                    if (hasNewVersion)
+                    using (Stream dataStream = response.GetResponseStream())
                     {
-                        DebugHelper.IsNewRelease();
-                        ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: $"{releasedVersion}");
-                    }
-                    else
-                    {
-                        DebugHelper.UpdateNotNecessary();
-                    }
+                        StreamReader reader = new StreamReader(dataStream);
+                        var serverResponse = reader.ReadToEnd();
+                        var release = JsonConvert.DeserializeObject<ReleaseDto>(serverResponse);
+                        DebugHelper.HasUpdateRelease(release);
+                        var releasedVersion = new Version(AppHelper.IsRelease ? release.SophiApp_release : release.SophiApp_pre_release);
+                        var hasNewVersion = releasedVersion > AppHelper.Version;
 
-                    return HasProblem = hasNewVersion;
+                        if (hasNewVersion)
+                        {
+                            DebugHelper.IsNewRelease();
+                            ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: $"{releasedVersion}");
+                        }
+                        else
+                        {
+                            DebugHelper.UpdateNotNecessary();
+                        }
+
+                        return HasProblem = hasNewVersion;
+                    }
                 }
+
+                return HasProblem;
             }
             catch (WebException e)
             {

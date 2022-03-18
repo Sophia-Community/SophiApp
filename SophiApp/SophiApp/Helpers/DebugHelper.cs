@@ -15,12 +15,12 @@ namespace SophiApp.Helpers
         private const string APP_LOC = "App localization";
         private const string APP_THEME = "App theme";
         private const string APP_VER = "App version";
+        private const string HAS_INTERNET_ACCESS = "App has access to Internet";
         private const string PC_NAME = "Computer name";
         private const string USER_CULTURE = "User culture";
         private const string USER_DOMAIN = "User domain";
-        private const string USER_NAME = "Current user";
+        private const string USER_NAME = "User";
         private const string USER_REGION = "User region";
-
         private static readonly object infoLogLocker = new object();
         private static readonly Version OS_VERSION = OsHelper.GetVersion();
         private static readonly object statusLogLocker = new object();
@@ -41,7 +41,6 @@ namespace SophiApp.Helpers
 
         private static List<string> InitLog = new List<string>();
         private static List<string> StatusLog = new List<string>();
-
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
 
         private static void WriteInfoLog(string record)
@@ -90,9 +89,9 @@ namespace SophiApp.Helpers
             $"Pre-release version is available: {release.SophiApp_pre_release}",
         });
 
-        internal static void HasUpdateResponse() => WriteInfoLog("After checking for update a response was received from the update server");
-
         internal static void IsNewRelease() => WriteInfoLog("The update can be proceeded");
+
+        internal static void IsOnline() => WriteInfoLog($"{HAS_INTERNET_ACCESS}: {HttpHelper.IsOnline}");
 
         internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
 

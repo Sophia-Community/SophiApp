@@ -30,6 +30,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class NoInternetConnectionException : Exception
+    {
+        public NoInternetConnectionException() : base("No Internet connection")
+        {
+        }
+    }
+
     internal class OneDriveIsInstalledException : Exception
     {
         public OneDriveIsInstalledException() : base("OneDrive is installed on this PC")

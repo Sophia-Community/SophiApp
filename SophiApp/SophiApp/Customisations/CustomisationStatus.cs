@@ -288,9 +288,10 @@ namespace SophiApp.Customisations
         public static bool _315() => RegHelper.GetNullableIntValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _316() => DomainHelper.PcInDomain() ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
-                                                                          .HasNullOrValue(DISABLED_VALUE).Invert()
-                                                               : throw new PcNotJoinedToDomainException();
+        public static bool _316() => DomainHelper.PcInDomain
+                                    ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
+                                               .HasNullOrValue(DISABLED_VALUE).Invert()
+                                    : throw new PcNotJoinedToDomainException();
 
         public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
                                               .HasNullOrValue(_317_ENABLED_VALUE);
@@ -362,7 +363,7 @@ namespace SophiApp.Customisations
         public static bool _341() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, WINLOGON_PATH, _341_RESTART_APPS)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _342() => DomainHelper.PcInDomain().Invert()
+        public static bool _342() => DomainHelper.PcInDomain.Invert()
                                      ? FirewallHelper.IsRuleGroupEnabled(_342_FILE_PRINTER_SHARING_GROUP) && FirewallHelper.IsRuleGroupEnabled(_342_NETWORK_DISCOVERY_GROUP)
                                      : throw new PcJoinedToDomainException();
 
@@ -417,15 +418,20 @@ namespace SophiApp.Customisations
 
         public static bool _349()
         {
-            var vcVersions = WebHelper.GetJsonResponse(_349_VC_VERSION_URL, new VCRedistrDto());
-            var latestVersion = vcVersions.Supported.Where(item => item.Name == _349_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
-            var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
-            return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
+            if (HttpHelper.IsOnline)
+            {
+                var vcVersions = WebHelper.GetJsonResponse(_349_VC_VERSION_URL, new VCRedistrDto());
+                var latestVersion = vcVersions.Supported.Where(item => item.Name == _349_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
+                var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
+                return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
+            }
+
+            throw new NoInternetConnectionException();
         }
 
         public static bool _351() => OneDriveHelper.IsInstalled()
                                      ? throw new OneDriveIsInstalledException()
-                                     : OneDriveHelper.HasSetupExe() || HttpHelper.IsOnline()
+                                     : OneDriveHelper.HasSetupExe() || HttpHelper.IsOnline
                                         ? false
                                         : throw new OneDriveIsInstalledException();
 
@@ -437,7 +443,7 @@ namespace SophiApp.Customisations
 
         public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
 
-        public static bool _500() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS) && HttpHelper.IsOnline()
+        public static bool _500() => UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS) && HttpHelper.IsOnline
                                      ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
                                      : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS);
 

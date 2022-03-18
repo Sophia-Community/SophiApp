@@ -5,7 +5,10 @@ namespace SophiApp.Helpers
 {
     internal class DomainHelper
     {
-        internal static bool PcInDomain()
+        private static bool hasDomain = PcHasDomain();
+        public static bool PcInDomain { get => hasDomain; }
+
+        private static bool PcHasDomain()
         {
             bool result;
 
