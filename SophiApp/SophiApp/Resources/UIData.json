@@ -1381,8 +1381,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85% and store it as the TranscodedWallpaper file in the %APPDATA%\\Microsoft\\Windows\\Themes folder. If you use a PNG image as your desktop background wallpaper or slideshow, you are not affected by this automatic quality reduction since it only applies to JPEG images.",
-      "RU": "Когда вы устанавливаете изображение в качестве обоев рабочего стола или слайд-шоу в формате JPEG, при импорте операционная система снижает качество исходного изображения до 85 % и сохраняет его как файл TranscodedWallpaper в папке %APPDATA%\\Microsoft\\Windows\\Themes. Однако, если вы используете PNG-изображение в качестве фоновых обоев рабочего стола или слайд-шоу, то это автоматическое снижение качества вас не коснется, поскольку оно происходит только с изображениями JPEG",
+      "EN": "When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85% and store it as the TranscodedWallpaper file in the \n%APPDATA%\\Microsoft\\Windows\\Themes folder. If you use a PNG image as your desktop background wallpaper or slideshow, you are not affected by this automatic quality reduction since it only applies to JPEG images.",
+      "RU": "Когда вы устанавливаете изображение в качестве обоев рабочего стола или слайд-шоу в формате JPEG, при импорте операционная система снижает качество исходного изображения до 85 % и сохраняет его как файл TranscodedWallpaper в папке \n%APPDATA%\\Microsoft\\Windows\\Themes. Однако, если вы используете PNG-изображение в качестве фоновых обоев рабочего стола или слайд-шоу, то это автоматическое снижение качества вас не коснется, поскольку оно происходит только с изображениями JPEG",
       "DE": ""
     },
     "Type": "RadioGroup",
@@ -1603,8 +1603,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to the C:\\hiberfil.sys file, and turns off your computer. By default, the size of the hidden system protected file C:\\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. It is not recommended to turn it off on mobile devices.",
-      "RU": "Гибернация — это энергосберегающее состояние, используемое в основном для мобильных устройств. В отличии от спящего режима, гибернация сохраняет открытые документы и программы на системный накопитель в файл C:\\hiberfil.sys, а затем выключает компьютер. По умолчанию размер скрытого системного файла C:\\hiberfil.sys составляет 40 % от общего объема установленно оперативной памяти. При отключении гибернации будет также отключен быстрый запуск, и скроется соответствующий пункт в меню питания. Не рекомендуется выключать на мобильных устройствах",
+      "EN": "Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to the \nC:\\hiberfil.sys file, and turns off your computer. By default, the size of the hidden system protected file C:\\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. It is not recommended to turn it off on mobile devices.",
+      "RU": "Гибернация — это энергосберегающее состояние, используемое в основном для мобильных устройств. В отличии от спящего режима, гибернация сохраняет открытые документы и программы на системный накопитель в файл \nC:\\hiberfil.sys, а затем выключает компьютер. По умолчанию размер скрытого системного файла C:\\hiberfil.sys составляет 40 % от общего объема установленно оперативной памяти. При отключении гибернации будет также отключен быстрый запуск, и скроется соответствующий пункт в меню питания. Не рекомендуется выключать на мобильных устройствах",
       "DE": ""
     },
     "Type": "CheckBox",
@@ -2527,7 +2527,7 @@
     },
     "Description": {
       "EN": "To prevent popping up the \"You'll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
-      "RU": "Чтобы предотвратить появление вплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", Вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее",
+      "RU": "Чтобы предотвратить появление вплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее",
       "DE": ""
     },
     "Type": "CheckBox",
@@ -2562,8 +2562,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Reduce latecy and improve performance. Only if you have a dedicated GPU and WDDM verion is 2.7 or higher.",
-      "RU": "Уменьшить время задержки и увеличить производительность. Только при наличии внешней видеокарты и WDDM версии 2.7 и выше",
+      "EN": "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better.",
+      "RU": "При наличии соответствующего оборудования и драйверов Windows может переложить большую часть планирования GPU на выделенный процессор планирования на основе GPU. Благодаря функции аппаратного ускорения GPU процессор планирования GPU и память (VRAM) берут на себя ту же работу и запускают ее в пакетном режиме для рендеринга кадров. Таким образом, ваш GPU освобождает процессор от некоторой работы и уменьшает задержку, чтобы потенциально улучшить работу вашего ПК",
       "DE": ""
     },
     "Type": "CheckBox",
@@ -2598,8 +2598,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up %SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
-      "RU": "Создать задание \"SoftwareDistribution\" по очистке %SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней",
+      "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up \n%SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
+      "RU": "Создать задание \"SoftwareDistribution\" по очистке \n%SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней",
       "DE": ""
     },
     "Type": "IconFolderCheckBox",
@@ -2760,8 +2760,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "Windows PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation to the Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational event log. For the built-in Windows PowerShell 5.1 only.",
-      "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational. Только для встроенного Windows PowerShell 5.1",
+      "EN": "Windows PowerShell will log the processing of commands, script blocks, functions, and scripts - whether invoked interactively, or through automation to the \"Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational\" event log. For the built-in Windows PowerShell 5.1 only.",
+      "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий \"Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational\". Только для встроенного Windows PowerShell 5.1",
       "DE": ""
     },
     "Type": "CheckBox",
