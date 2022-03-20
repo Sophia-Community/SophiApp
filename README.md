@@ -15,7 +15,7 @@
 
   <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
   <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
-  <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://github.com/websemantics/bragit/blob/master/demo/img/heart.svg" height="17px"/>
+  <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/heart.svg" height="17px"/>
 
   [telegram-news-badge]: https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram
   [telegram-news]: https://t.me/sophianews
