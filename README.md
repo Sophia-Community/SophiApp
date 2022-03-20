@@ -33,7 +33,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 <a href="https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml"><img src="https://pbs.twimg.com/profile_images/513959345847955458/Ego1jjO6_400x400.png" width=77px height=77px></a>
 <a href="https://www.deskmodder.de/blog/2022/02/07/sophiapp-einmal-angeschaut/"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
 
-<a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
+<a href="https://github.com/Sophia-Community/SophiApp/releases"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
 ***
 
