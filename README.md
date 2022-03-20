@@ -17,8 +17,13 @@
   <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
   <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://github.com/websemantics/bragit/blob/master/demo/img/heart.svg" height="17px"/>
 
-  <a href="https://t.me/SophiaNews"><img src="https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram"></a>
-  <a href="https://t.me/Sophia_Chat"><img src="https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram"></a>
+  [telegram-news-badge]: https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram
+  [telegram-news]: https://t.me/sophianews
+  [telegram-group]: https://t.me/sophia_chat
+  [telegram-group-badge]: https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram
+
+  [![Telegram][telegram-news-badge]][telegram-news]
+  [![Telegram][telegram-group-badge]][telegram-group]
 </p>
 
 Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/>
@@ -31,8 +36,6 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 <a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
 ***
-
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q51QUJC)
 
 <a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a>
 
@@ -49,7 +52,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ***
 
-## About SophiApp  
+## About SophiApp
 
 SophiApp is a free, open-source app for fine-tuning Windows 10 (Windows 11 is in the work). It offers a modern UI/UX, tons of tweaks, and shows how Windows can be configured without making any harm to the OS.
 
