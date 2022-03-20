@@ -119,7 +119,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ##  Adendum
 
-* Some features require an internet connection. You should note that the appropriate features will be hidden in UI.
+* Some functions depend on Internet access. If not, they will be hidden in UI until the access will appear back;
 * You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
   * The hidden functions will marked with a gear in UI;
 * After closing SophiApp, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
