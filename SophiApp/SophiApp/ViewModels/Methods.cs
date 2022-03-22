@@ -185,7 +185,7 @@ namespace SophiApp.ViewModels
 
         private void InitializeCommands()
         {
-            TaskShedulerOpenClickedCommand = new RelayCommand(new Action<object>(TaskShedulerOpenClicked));
+            TaskSchedulerOpenClickedCommand = new RelayCommand(new Action<object>(TaskSchedulerOpenClicked));
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
@@ -250,7 +250,7 @@ namespace SophiApp.ViewModels
 
             var task = new Task[] { InitializeTextedElements("Privacy"), InitializeTextedElements("Personalization"), InitializeTextedElements("System"),
                                     InitializeTextedElements("StartMenu"), InitializeTextedElements("UwpApps"), InitializeTextedElements("Games"),
-                                    InitializeTextedElements("TaskSheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
+                                    InitializeTextedElements("TaskScheduler"), InitializeTextedElements("Security"), InitializeTextedElements("ContextMenu") };
 
             await Task.WhenAll(task);
             stopwatch.Stop();
@@ -482,7 +482,7 @@ namespace SophiApp.ViewModels
 
         private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
 
-        private void TaskShedulerOpenClicked(object args) => ProcessHelper.Start(MSC_TASK_SHEDULER, null, ProcessWindowStyle.Normal);
+        private void TaskSchedulerOpenClicked(object args) => ProcessHelper.Start(MSC_TASK_SHEDULER, null, ProcessWindowStyle.Normal);
 
         private async void TextedElementClickedAsync(object args)
         {

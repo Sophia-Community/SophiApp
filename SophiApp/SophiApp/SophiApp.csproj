@@ -296,7 +296,7 @@
     <Compile Include="Views\ViewSettings.xaml.cs" />
     <Compile Include="Views\ViewStartMenu.xaml.cs" />
     <Compile Include="Views\ViewSystem.xaml.cs" />
-    <Compile Include="Views\ViewTaskSheduler.xaml.cs" />
+    <Compile Include="Views\ViewTaskScheduler.xaml.cs" />
     <Compile Include="Views\ViewUwpApps.xaml.cs" />
     <Compile Include="Watchers\RegistryWatcher.cs" />
     <Page Include="Commons\Fonts.xaml">
@@ -519,7 +519,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ViewTaskSheduler.xaml">
+    <Page Include="Views\ViewTaskScheduler.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

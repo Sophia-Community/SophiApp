@@ -35,7 +35,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
-    <system:String x:Key="Localization.ViewTaskSheduler.Open">Open Task Sheduler</system:String>
+    <system:String x:Key="Localization.ViewTaskScheduler.Open">Open Task Scheduler</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Please Make sure to reboot your PC after applying settings</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
@@ -77,7 +77,7 @@
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.StartMenu">Start Menu</system:String>
     <system:String x:Key="Localization.System">System</system:String>
-    <system:String x:Key="Localization.TaskSheduler">Scheduled Tasks</system:String>
+    <system:String x:Key="Localization.TaskScheduler">Scheduled Tasks</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 hours</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 minutes</system:String>
     <system:String x:Key="Localization.Time.Minute">1 minute</system:String>

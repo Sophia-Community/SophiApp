@@ -2585,7 +2585,7 @@
       "DE": ""
     },
     "Type": "IconWinCheckBox",
-    "Tag": "TaskSheduler",
+    "Tag": "TaskScheduler",
     "ViewId": 700,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -2603,7 +2603,7 @@
       "DE": ""
     },
     "Type": "IconFolderCheckBox",
-    "Tag": "TaskSheduler",
+    "Tag": "TaskScheduler",
     "ViewId": 701,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -2621,7 +2621,7 @@
       "DE": ""
     },
     "Type": "IconFolderCheckBox",
-    "Tag": "TaskSheduler",
+    "Tag": "TaskScheduler",
     "ViewId": 702,
     "Windows10Supported": true,
     "Windows11Supported": true

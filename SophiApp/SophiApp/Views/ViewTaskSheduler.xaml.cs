@@ -8,15 +8,15 @@ using System.Windows.Input;
 namespace SophiApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ViewTaskSheduler.xaml
+    /// Логика взаимодействия для ViewTaskScheduler.xaml
     /// </summary>
-    public partial class ViewTaskSheduler : UserControl
+    public partial class ViewTaskScheduler : UserControl
     {
         // Using a DependencyProperty as the backing store for Tag.  This enables animation, styling, binding, etc...
         public new static readonly DependencyProperty TagProperty =
-            DependencyProperty.Register("Tag", typeof(string), typeof(ViewTaskSheduler), new PropertyMetadata(default));
+            DependencyProperty.Register("Tag", typeof(string), typeof(ViewTaskScheduler), new PropertyMetadata(default));
 
-        public ViewTaskSheduler()
+        public ViewTaskScheduler()
         {
             InitializeComponent();
             AddHandler(PreviewMouseWheelEvent, new MouseWheelEventHandler(OnChildMouseWheelEvent), true);
@@ -38,7 +38,7 @@ namespace SophiApp.Views
 
         private void TextedElementsFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tag);
 
-        private void ViewTaskSheduler_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void ViewTaskScheduler_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (IsVisible)
             {

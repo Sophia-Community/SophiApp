@@ -149,7 +149,7 @@
         </Canvas>
     </Viewbox>
     <Viewbox
-        x:Key="Icon.TaskSheduler"
+        x:Key="Icon.TaskScheduler"
         Width="48"
         Height="44"
         x:Shared="False">

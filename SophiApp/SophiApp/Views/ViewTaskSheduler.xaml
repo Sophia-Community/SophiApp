@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="SophiApp.Views.ViewTaskSheduler"
+    x:Class="SophiApp.Views.ViewTaskScheduler"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:SophiApp.Controls"
@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:SophiApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:SophiApp.Models"
-    IsVisibleChanged="ViewTaskSheduler_IsVisibleChanged"
+    IsVisibleChanged="ViewTaskScheduler_IsVisibleChanged"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -20,13 +20,13 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
         </Style>
-        <Style TargetType="{x:Type local:ViewTaskSheduler}">
+        <Style TargetType="{x:Type local:ViewTaskScheduler}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
-            <Setter Property="Tag" Value="{StaticResource Tags.View.TaskSheduler}" />
+            <Setter Property="Tag" Value="{StaticResource Tags.View.TaskScheduler}" />
             <Setter Property="IsHitTestVisible" Value="{Binding ViewsHitTest, UpdateSourceTrigger=PropertyChanged}" />
             <Setter Property="Visibility" Value="Collapsed" />
         </Style>
@@ -41,28 +41,28 @@
                                 <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
                                     <controls:IconWinCheckBox
                                     Margin="{StaticResource ItemsMargin}"
-                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskScheduler}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
                                     <controls:IconFolderCheckBox
                                     Margin="{StaticResource ItemsMargin}"
-                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskScheduler}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
-                        <controls:CommandButton Text="{DynamicResource Localization.ViewTaskSheduler.Open}"
+                        <controls:CommandButton Text="{DynamicResource Localization.ViewTaskScheduler.Open}"
                                          HorizontalAlignment="Center"
                                          Margin="0, 20, 0, 10"
-                                         Command="{Binding TaskShedulerOpenClickedCommand}" />
+                                         Command="{Binding TaskSchedulerOpenClickedCommand}" />
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.TaskSheduler}">
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.TaskScheduler}">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
                 <Trigger Property="Visibility" Value="Visible">

@@ -37,7 +37,7 @@ namespace SophiApp.Commons
         internal static readonly string ViewSettings = Application.Current.FindResource("Tags.View.Settings") as string;
         internal static readonly string ViewStartMenu = Application.Current.FindResource("Tags.View.StartMenu") as string;
         internal static readonly string ViewSystem = Application.Current.FindResource("Tags.View.System") as string;
-        internal static readonly string ViewTaskSheduler = Application.Current.FindResource("Tags.View.TaskSheduler") as string;
+        internal static readonly string ViewTaskScheduler = Application.Current.FindResource("Tags.View.TaskScheduler") as string;
         internal static readonly string ViewUwpApps = Application.Current.FindResource("Tags.View.UwpApps") as string;
     }
 }

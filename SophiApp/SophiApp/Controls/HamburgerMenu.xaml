@@ -72,10 +72,10 @@
                 <local:HamburgerButton
                     Margin="0,270,0,0"
                     VerticalAlignment="Top"
-                    Icon="{DynamicResource Icon.TaskSheduler}"
+                    Icon="{DynamicResource Icon.TaskScheduler}"
                     IconMargin="7, 8, 0, 0"
-                    Tag="{StaticResource Tags.View.TaskSheduler}"
-                    Text="{DynamicResource Localization.TaskSheduler}" />
+                    Tag="{StaticResource Tags.View.TaskScheduler}"
+                    Text="{DynamicResource Localization.TaskScheduler}" />
 
                 <local:HamburgerButton
                     Margin="0,315,0,0"

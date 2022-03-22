@@ -35,7 +35,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
-    <system:String x:Key="Localization.ViewTaskSheduler.Open">Открыть Планировщик заданий</system:String>
+    <system:String x:Key="Localization.ViewTaskScheduler.Open">Открыть Планировщик заданий</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">После применения настроек перезагрузите ваш ПК</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копировать описание</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
@@ -77,7 +77,7 @@
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кэш обновлений Windows успешно удален</system:String>
     <system:String x:Key="Localization.StartMenu">Пуск</system:String>
     <system:String x:Key="Localization.System">Система</system:String>
-    <system:String x:Key="Localization.TaskSheduler">Планировщик заданий</system:String>
+    <system:String x:Key="Localization.TaskScheduler">Планировщик заданий</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 часа</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 минут</system:String>
     <system:String x:Key="Localization.Time.Minute">1 минута</system:String>
