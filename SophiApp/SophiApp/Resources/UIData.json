@@ -2814,8 +2814,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "This function blocks WSH from executing .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
-      "RU": "Эта функция блокирует запуск .js- и .vbs-скриптов, предотвращая запуск зловредных JavaScript-скриптов",
+      "EN": "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
+      "RU": "Отключение этой функции блокирует выполнение сценариев .js и .vbs, предотвращая запуск вредоносных сценариев JavaScript",
       "DE": ""
     },
     "Type": "CheckBox",
