@@ -165,9 +165,9 @@ namespace SophiApp.Customisations
         public static bool _223() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _223_SHOW_FREQUENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _224() => _225().Invert();
+        public static bool _225() => _226().Invert();
 
-        public static bool _225() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_CENTER;
+        public static bool _226() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _226_TASKBAR_ALIGNMENT_CENTER;
 
         public static bool _227() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) != DISABLED_VALUE;
 
@@ -412,9 +412,9 @@ namespace SophiApp.Customisations
         public static bool _347() => _346().Invert();
 
         public static bool _348() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PC_HEALTH_CHECK) != null
-                                                                                                                                ? false
-                                                                                                                                : throw new UpdateNotInstalledException(KB5005463_UPD);
+                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PC_HEALTH_CHECK) is null
+                                                                                                                               ? throw new UpdateNotInstalledException(KB5005463_UPD)
+                                                                                                                               : false;
 
         public static bool _349()
         {

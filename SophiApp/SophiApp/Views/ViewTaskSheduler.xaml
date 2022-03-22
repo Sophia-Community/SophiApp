@@ -35,24 +35,30 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
-                    <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
-                        <ItemsControl.Resources>
-                            <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
-                                <controls:IconWinCheckBox
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type models:IconWinCheckBox}">
+                                    <controls:IconWinCheckBox
                                     Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
-                                <controls:IconFolderCheckBox
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:IconFolderCheckBox}">
+                                    <controls:IconFolderCheckBox
                                     Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewTaskSheduler}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </ItemsControl.Resources>
-                    </ItemsControl>
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                        <controls:CommandButton Text="{DynamicResource Localization.ViewTaskSheduler.Open}"
+                                         HorizontalAlignment="Center"
+                                         Margin="0, 20, 0, 10"
+                                         Command="{Binding TaskShedulerOpenClickedCommand}" />
+                    </StackPanel>
                 </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>

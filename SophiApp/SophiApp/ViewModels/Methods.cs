@@ -185,6 +185,7 @@ namespace SophiApp.ViewModels
 
         private void InitializeCommands()
         {
+            TaskShedulerOpenClickedCommand = new RelayCommand(new Action<object>(TaskShedulerOpenClicked));
             AdvancedSettingsClickedCommand = new RelayCommand(new Action<object>(AdvancedSettingsClicked));
             ApplyingSettingsCommand = new RelayCommand(new Action<object>(ApplyingSettingsAsync));
             AppThemeChangeCommand = new RelayCommand(new Action<object>(AppThemeChangeAsync));
@@ -239,8 +240,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                                                        .ToList()
-                                                                                                                                        .ForEach(element => element.Initialize()));
+                                                                                                                                          .ToList()
+                                                                                                                                          .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -480,6 +481,8 @@ namespace SophiApp.ViewModels
         private void SetVisibleViewTag(string tag) => VisibleViewByTag = tag;
 
         private void SwitchUwpForAllUsersClicked(object args) => UwpForAllUsersState = UwpForAllUsersState == ElementStatus.UNCHECKED ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
+
+        private void TaskShedulerOpenClicked(object args) => ProcessHelper.Start(MSC_TASK_SHEDULER, null, ProcessWindowStyle.Normal);
 
         private async void TextedElementClickedAsync(object args)
         {

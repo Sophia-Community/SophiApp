@@ -18,8 +18,7 @@ namespace SophiApp.Helpers
             var sid = OsHelper.GetCurrentUserSid().Value;
             var packageManager = new PackageManager();
             return packageManager.FindPackagesForUser(sid)
-                                 .Where(package => package.Id.Name == packageName)
-                                 .First();
+                                 .First(package => package.Id.Name.Equals(packageName));
         }
 
         internal static IEnumerable<UwpElementDto> GetPackagesDto(bool forAllUsers = false)

@@ -74,8 +74,8 @@ namespace SophiApp.Customisations
         internal const string _221_PC_POLICY = "ThisPCPolicy";
         internal const string _222_SHOW_RECENT = "ShowRecent";
         internal const string _223_SHOW_FREQUENT = "ShowFrequent";
-        internal const byte _224_TASKBAR_ALIGNMENT_LEFT = 0;
-        internal const byte _225_TASKBAR_ALIGNMENT_CENTER = 1;
+        internal const byte _225_TASKBAR_ALIGNMENT_LEFT = 0;
+        internal const byte _226_TASKBAR_ALIGNMENT_CENTER = 1;
         internal const string _227_SHOW_FREQUENT = "ShowFrequent";
         internal const string _230_UWP_WEB_EXPERIENCE = "MicrosoftWindows.Client.WebExperience";
         internal const string _230_WIDGETS_IN_TASKBAR = "TaskbarDa";

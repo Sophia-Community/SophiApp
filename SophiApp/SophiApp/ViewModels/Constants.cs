@@ -15,6 +15,7 @@
         private const string HamburgerHitTestPropertyName = "HamburgerHitTest";
         private const string InfoPanelVisibilityPropertyName = "InfoPanelVisibility";
         private const string LocalizationPropertyName = "Localization";
+        private const string MSC_TASK_SHEDULER = "taskschd.msc";
         private const string SearchPropertyName = "Search";
         private const string UwpElementsAllUsersPropertyName = "UwpElementsAllUsers";
         private const string UwpElementsCurrentUserPropertyName = "UwpElementsCurrentUser";

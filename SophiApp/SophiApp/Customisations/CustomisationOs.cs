@@ -339,9 +339,9 @@ namespace SophiApp.Customisations
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _224(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _224_TASKBAR_ALIGNMENT_LEFT, RegistryValueKind.DWord);
+        public static void _225(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _225_TASKBAR_ALIGNMENT_LEFT, RegistryValueKind.DWord);
 
-        public static void _225(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _225_TASKBAR_ALIGNMENT_CENTER, RegistryValueKind.DWord);
+        public static void _226(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT, _226_TASKBAR_ALIGNMENT_CENTER, RegistryValueKind.DWord);
 
         public static void _227(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         TASKBAR_SEARCH_PATH,
@@ -608,7 +608,7 @@ namespace SophiApp.Customisations
 
             ServiceHelper.Restart(SERVICE_SPOOLER);
             OneDriveHelper.StopProcesses();
-            FileHelper.DirectoryDelete(localAppDataTemp);
+            FileHelper.DirectoryLazyDelete(localAppDataTemp);
             FileHelper.CreateDirectory(systemRootTemp, localAppDataTemp);
 
             if (FileHelper.IsSymbolicLink(currentTemp).Invert())

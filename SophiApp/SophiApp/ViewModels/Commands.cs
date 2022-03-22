@@ -18,6 +18,7 @@ namespace SophiApp.ViewModels
         public RelayCommand SaveDebugLogCommand { get; private set; }
         public RelayCommand SearchClickedCommand { get; private set; }
         public RelayCommand SwitchUwpForAllUsersClickedCommand { get; private set; }
+        public RelayCommand TaskShedulerOpenClickedCommand { get; private set; }
         public RelayCommand TextedElementClickedCommand { get; private set; }
         public RelayCommand UwpButtonClickedCommand { get; private set; }
     }
