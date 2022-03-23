@@ -2792,7 +2792,7 @@
     "Id": 809,
     "Header": {
       "EN": "Mark files that have been downloaded from the Internet as unsafe",
-      "RU": "Отмечать файлы, скачанных из интернета как небезопасные",
+      "RU": "Отмечать файлы, скачанные из интернета как небезопасные",
       "DE": ""
     },
     "Description": {
@@ -2815,7 +2815,7 @@
     },
     "Description": {
       "EN": "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
-      "RU": "Отключение этой функции блокирует выполнение сценариев .js и .vbs, предотвращая запуск вредоносных сценариев JavaScript",
+      "RU": "Отключение этой функции блокирует выполнение .js- и .vbs-сценариев, предотвращая запуск вредоносных сценариев JavaScript",
       "DE": ""
     },
     "Type": "CheckBox",
