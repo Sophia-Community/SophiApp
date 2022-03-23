@@ -102,10 +102,9 @@ namespace SophiApp.Customisations
         public static bool _127() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS)
                                               .HasNullOrValue(DISABLED_VALUE);
 
-        public static bool _201() => _202().Invert();
+        public static bool _201() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER) == DISABLED_VALUE;
 
-        public static bool _202() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER)
-                                              .HasNullOrValue(ENABLED_VALUE);
+        public static bool _202() => _201().Invert();
 
         public static bool _203() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH);
 
@@ -165,9 +164,9 @@ namespace SophiApp.Customisations
         public static bool _223() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _223_SHOW_FREQUENT)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _225() => _226().Invert();
+        public static bool _225() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _225_TASKBAR_ALIGNMENT_LEFT;
 
-        public static bool _226() => RegHelper.GetByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, EXPLORER_TASKBAR_ALIGNMENT) == _226_TASKBAR_ALIGNMENT_CENTER;
+        public static bool _226() => _225().Invert();
 
         public static bool _227() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE) != DISABLED_VALUE;
 
@@ -512,7 +511,7 @@ namespace SophiApp.Customisations
         public static bool _807() => RegHelper.GetNullableByteValue(RegistryHive.LocalMachine, _807_POWERSHELL_SCRIPT_BLOCK_LOGGING_PATH, _807_ENABLE_SCRIPT_BLOCK_LOGGING) == ENABLED_VALUE;
 
         public static bool _808() => WmiHelper.DefenderIsRun()
-                                     ? RegHelper.GetStringValue(RegistryHive.LocalMachine, CURRENT_VERSION_EXPLORER_PATH, _808_SMART_SCREEN_ENABLED) == _808_SMART_SCREEN_ENABLED_VALUE
+                                     ? (RegHelper.GetStringValue(RegistryHive.LocalMachine, CURRENT_VERSION_EXPLORER_PATH, _808_SMART_SCREEN_ENABLED) == _808_SMART_SCREEN_DISABLED_VALUE).Invert()
                                      : throw new MicrosoftDefenderNotRunning();
 
         public static bool _809() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _809_CURRENT_POLICIES_ATTACHMENTS_PATH, _809_SAFE_ZONE_INFO) == _809_DISABLED_VALUE).Invert();
@@ -535,7 +534,7 @@ namespace SophiApp.Customisations
 
         public static bool _903() => (RegHelper.GetStringValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _903_CAST_TO_DEV_GUID) == _903_CAST_TO_DEV_VALUE).Invert();
 
-        public static bool _904() => RegHelper.KeyExist(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID).Invert();
+        public static bool _904() => RegHelper.GetStringValue(RegistryHive.ClassesRoot, _904_CONTEXT_MENU_MODERN_SHARE_PATH, string.Empty) == CONTEXT_MENU_SHARE_GUID;
 
         public static bool _905() => UwpHelper.PackageExist(_905_MS_PAINT_3D) ? true : throw new UwpAppNotFoundException(_905_MS_PAINT_3D);
 
@@ -606,6 +605,8 @@ namespace SophiApp.Customisations
                                      : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
 
         public static bool _928() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _928_WIN10_CONTEXT_MENU_PATH, null) == string.Empty;
+
+        public static bool _929() => RegHelper.KeyExist(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, CONTEXT_MENU_SHARE_GUID).Invert();
 
         /// <summary>
         /// There must be a little magic in every app
