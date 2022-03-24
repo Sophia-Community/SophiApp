@@ -1004,6 +1004,7 @@ namespace SophiApp.Customisations
             var appCleanupTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
             var appNotificationTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
             var scriptCleanupTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+            var scriptNotificationTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
 
             var volumeCachesKeys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
             RegHelper.TryDeleteKey(RegistryHive.LocalMachine, volumeCachesKeys, _700_STATE_FLAGS_1337);
@@ -1038,7 +1039,7 @@ namespace SophiApp.Customisations
             }
 
             RegHelper.DeleteKey(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER);
-            ScheduledTaskHelper.TryDeleteTask(appCleanupTask, appNotificationTask, scriptCleanupTask);
+            ScheduledTaskHelper.TryDeleteTask(appCleanupTask, appNotificationTask, scriptCleanupTask, scriptNotificationTask);
             ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
             RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP);
         }
