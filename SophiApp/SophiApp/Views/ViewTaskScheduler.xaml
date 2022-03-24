@@ -56,7 +56,7 @@
                         </ItemsControl>
                         <controls:CommandButton Text="{DynamicResource Localization.ViewTaskScheduler.Open}"
                                          HorizontalAlignment="Center"
-                                         Margin="0, 20, 0, 10"
+                                         Margin="{StaticResource ItemsMargin}"
                                          Command="{Binding TaskSchedulerOpenClickedCommand}" />
                     </StackPanel>
                 </ScrollViewer>

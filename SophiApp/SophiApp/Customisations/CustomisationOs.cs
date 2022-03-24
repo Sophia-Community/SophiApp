@@ -1001,8 +1001,9 @@ namespace SophiApp.Customisations
 
         public static void _700(bool IsChecked)
         {
-            var cleanupTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
-            var notificationTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
+            var appCleanupTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+            var appNotificationTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
+            var scriptCleanupTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
 
             var volumeCachesKeys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
             RegHelper.TryDeleteKey(RegistryHive.LocalMachine, volumeCachesKeys, _700_STATE_FLAGS_1337);
@@ -1018,7 +1019,7 @@ namespace SophiApp.Customisations
 
                 RegHelper.SetValue(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH, _700_VOLUME_CACHES_NAMES, _700_STATE_FLAGS_1337, _700_STATE_FLAGS_1337_VALUE, RegistryValueKind.DWord);
 
-                ScheduledTaskHelper.RegisterTask(taskName: cleanupTaskName, taskDescription: cleanupTaskDescription, execute: POWERSHELL_EXE,
+                ScheduledTaskHelper.RegisterTask(taskName: appCleanupTask, taskDescription: cleanupTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: _700_CLEANUP_TASK_ARGS, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, cleanupTaskTrigger);
 
                 // Persist the Settings notifications to prevent to immediately disappear from Action Center
@@ -1030,21 +1031,22 @@ namespace SophiApp.Customisations
                 //# Start the "Windows Cleanup" task if the "Run" button clicked
                 RegHelper.SetValue(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP_OPEN_PATH, string.Empty, _700_WINDOWS_CLEANUP_COMMAND, RegistryValueKind.String);
 
-                ScheduledTaskHelper.RegisterTask(taskName: notificationTaskName, taskDescription: notificationTaskDescription, execute: POWERSHELL_EXE,
+                ScheduledTaskHelper.RegisterTask(taskName: appNotificationTask, taskDescription: notificationTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: notificationTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: notificationTaskTrigger);
 
                 return;
             }
 
             RegHelper.DeleteKey(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER);
-            ScheduledTaskHelper.DeleteTask(new string[] { cleanupTaskName, notificationTaskName }, false);
+            ScheduledTaskHelper.TryDeleteTask(appCleanupTask, appNotificationTask, scriptCleanupTask);
             ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
             RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP);
         }
 
         public static void _701(bool ISChecked)
         {
-            var softwareDistributionTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
+            var appSoftwareDistributionTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
+            var scriptSoftwareDistributionTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
 
             if (ISChecked)
             {
@@ -1052,32 +1054,33 @@ namespace SophiApp.Customisations
                 var softwareDistributionTaskDescription = Application.Current.FindResource("Localization.SoftwareDistributionTask.Description") as string;
                 var softwareDistributionTaskTrigger = new DailyTrigger(daysInterval: _701_90_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
                 var softwareDistributionTaskArg = TextHelper.LocalizeSoftwareDistributionTaskToast(_701_SOFTWARE_DISTRIBUTION_TASK_ARGS);
-                ScheduledTaskHelper.RegisterTask(taskName: softwareDistributionTaskName, taskDescription: softwareDistributionTaskDescription, execute: POWERSHELL_EXE,
+                ScheduledTaskHelper.RegisterTask(taskName: appSoftwareDistributionTask, taskDescription: softwareDistributionTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: softwareDistributionTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: softwareDistributionTaskTrigger);
 
                 return;
             }
 
-            ScheduledTaskHelper.DeleteTask(softwareDistributionTaskName, false);
+            ScheduledTaskHelper.TryDeleteTask(appSoftwareDistributionTask, scriptSoftwareDistributionTask);
             ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
         }
 
         public static void _702(bool IsChecked)
         {
-            var clearTempTaskName = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
+            var appClearTempTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
+            var scriptClearTempTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
 
             if (IsChecked)
             {
                 var clearTempTaskDescription = Application.Current.FindResource("Localization.ClearTempTask.Description") as string;
                 var clearTempTaskTrigger = new DailyTrigger(daysInterval: _702_60_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
                 var clearTempTaskArg = TextHelper.LocalizeClearTempTaskToast(_702_CLEAR_TEMP_ARGS);
-                ScheduledTaskHelper.RegisterTask(taskName: clearTempTaskName, taskDescription: clearTempTaskDescription, execute: POWERSHELL_EXE,
+                ScheduledTaskHelper.RegisterTask(taskName: appClearTempTask, taskDescription: clearTempTaskDescription, execute: POWERSHELL_EXE,
                                                     arg: clearTempTaskArg, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: clearTempTaskTrigger);
 
                 return;
             }
 
-            ScheduledTaskHelper.DeleteTask(clearTempTaskName, false);
+            ScheduledTaskHelper.TryDeleteTask(appClearTempTask, scriptClearTempTask);
             ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
         }
 

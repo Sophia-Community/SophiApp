@@ -16,12 +16,6 @@ namespace SophiApp.Helpers
 
         internal static void DeleteTask(string task, bool throwNotExist) => TaskService.Instance.RootFolder.DeleteTask(task, throwNotExist);
 
-        internal static void DeleteTask(IEnumerable<string> tasks, bool throwNotExist)
-        {
-            foreach (var task in tasks)
-                DeleteTask(task, throwNotExist);
-        }
-
         internal static bool Exist(string taskPath, string taskName) => (GetTask(taskPath, taskName) is null).Invert();
 
         internal static IEnumerable<Task> FindAll(Predicate<Task> filter) => TaskService.Instance.FindAllTasks(filter);
@@ -66,12 +60,25 @@ namespace SophiApp.Helpers
         {
             try
             {
-                TaskService.Instance.RootFolder.DeleteFolder(folder);
+                TaskService.Instance.RootFolder.DeleteFolder(folder, false);
             }
-            catch (System.Runtime.InteropServices.COMException)
+            catch (Exception)
             {
             }
         }
 
+        internal static void TryDeleteTask(params string[] tasks)
+        {
+            foreach (var task in tasks)
+            {
+                try
+                {
+                    DeleteTask(task, false);
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
     }
 }
