@@ -78,7 +78,7 @@ namespace SophiApp.Helpers
             ErrorsLog.AddRange(new List<string>()
             {
                 $"{DateTime} {message}",
-                $"{DateTime} Error information: {e.Message}",
+                $"{DateTime} Information: {e.Message}",
                 $"{DateTime} The method that caused the error: {e.TargetSite.Name}"
             });
         }
