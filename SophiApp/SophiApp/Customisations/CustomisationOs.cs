@@ -200,7 +200,7 @@ namespace SophiApp.Customisations
 
         public static void _201(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER, DISABLED_VALUE, RegistryValueKind.DWord);
 
-        public static void _202(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER);
+        public static void _202(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER, false);
 
         public static void _203(bool IsChecked)
         {
@@ -1038,6 +1038,7 @@ namespace SophiApp.Customisations
 
             RegHelper.DeleteKey(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER);
             ScheduledTaskHelper.DeleteTask(new string[] { cleanupTaskName, notificationTaskName }, false);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
             RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP);
         }
 
@@ -1058,6 +1059,7 @@ namespace SophiApp.Customisations
             }
 
             ScheduledTaskHelper.DeleteTask(softwareDistributionTaskName, false);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
         }
 
         public static void _702(bool IsChecked)
@@ -1076,6 +1078,7 @@ namespace SophiApp.Customisations
             }
 
             ScheduledTaskHelper.DeleteTask(clearTempTaskName, false);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
         }
 
         public static void _800(bool IsChecked) => PowerShellHelper.InvokeScript($"{_800_SET_NETWORK_PROTECTION_PS} {(IsChecked ? ENABLED : DISABLED)}");
@@ -1222,11 +1225,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, _904_CONTEXT_MENU_MODERN_SHARE_PATH, string.Empty, CONTEXT_MENU_SHARE_GUID, RegistryValueKind.String);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, _904_SHARE_GUID, string.Empty);
+            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _904_CONTEXT_MENU_MODERN_SHARE_PATH);
         }
 
         public static void _906(bool IsChecked)
@@ -1481,6 +1484,17 @@ namespace SophiApp.Customisations
             }
 
             RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, _928_WIN10_CONTEXT_MENU_PATH);
+        }
+
+        public static void _929(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, CONTEXT_MENU_SHARE_GUID);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, CONTEXT_MENU_SHARE_GUID, string.Empty, RegistryValueKind.String);
         }
     }
 }

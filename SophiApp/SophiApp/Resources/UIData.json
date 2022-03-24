@@ -2792,7 +2792,7 @@
     "Id": 809,
     "Header": {
       "EN": "Mark files that have been downloaded from the Internet as unsafe",
-      "RU": "Отмечать файлы, скачанных из интернета как небезопасные",
+      "RU": "Отмечать файлы, скачанные из интернета как небезопасные",
       "DE": ""
     },
     "Description": {
@@ -2815,7 +2815,7 @@
     },
     "Description": {
       "EN": "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
-      "RU": "Отключение этой функции блокирует выполнение сценариев .js и .vbs, предотвращая запуск вредоносных сценариев JavaScript",
+      "RU": "Отключение этой функции блокирует выполнение .js- и .vbs-сценариев, предотвращая запуск вредоносных сценариев JavaScript",
       "DE": ""
     },
     "Type": "CheckBox",
@@ -2929,7 +2929,7 @@
     "Type": "CheckBox",
     "Tag": "ContextMenu",
     "ViewId": 904,
-    "Windows10Supported": true,
+    "Windows10Supported": false,
     "Windows11Supported": true
   },
   {
@@ -3333,5 +3333,23 @@
     "ViewId": 928,
     "Windows10Supported": false,
     "Windows11Supported": true
+  },
+  {
+    "Id": 929,
+    "Header": {
+      "EN": "The \"Share\" item in the context menu",
+      "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню",
+      "DE": ""
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "ContextMenu",
+    "ViewId": 904,
+    "Windows10Supported": true,
+    "Windows11Supported": false
   }
 ]

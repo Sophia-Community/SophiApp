@@ -513,7 +513,7 @@ else
         internal const string _902_RUNAS_USER_PATH = @"exefile\shell\runasuser";
         internal const string _903_CAST_TO_DEV_GUID = @"{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
         internal const string _903_CAST_TO_DEV_VALUE = "Play to menu";
-        internal const string _904_SHARE_GUID = @"{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}";
+        internal const string _904_CONTEXT_MENU_MODERN_SHARE_PATH = @"AllFilesystemObjects\shellex\ContextMenuHandlers\ModernSharing";
         internal const string _905_MS_PAINT_3D = "Microsoft.MSPaint";
         internal const string _906_BMP_EXT = @"SystemFileAssociations\.bmp\Shell\3D Edit";
         internal const string _907_GIF_EXT = @"SystemFileAssociations\.gif\Shell\3D Edit";
@@ -578,6 +578,7 @@ else
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
         internal const string CONSOLE_STARTUP_PATH = @"Console\%%Startup";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
+        internal const string CONTEXT_MENU_SHARE_GUID = @"{e2bf9676-5f8f-435c-97eb-11607a5bedf7}";
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
         internal const string CONTROL_PANEL_USER_PROFILE_PATH = @"Control Panel\International\User Profile";
