@@ -578,7 +578,7 @@ else
         internal const string CEIP_TASK_PATH = @"Microsoft\Windows\Customer Experience Improvement Program";
         internal const string CONSOLE_STARTUP_PATH = @"Console\%%Startup";
         internal const string CONTENT_DELIVERY_MANAGER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
-        internal const string CONTEXT_MENU_SHARE_GUID = @"{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}";
+        internal const string CONTEXT_MENU_SHARE_GUID = @"{e2bf9676-5f8f-435c-97eb-11607a5bedf7}";
         internal const string CONTROL_PANEL_DESKTOP_PATH = @"Control Panel\Desktop";
         internal const string CONTROL_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel";
         internal const string CONTROL_PANEL_USER_PROFILE_PATH = @"Control Panel\International\User Profile";

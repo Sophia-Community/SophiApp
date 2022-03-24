@@ -61,5 +61,17 @@ namespace SophiApp.Helpers
             if (task != null)
                 task.Enabled = enable;
         }
+
+        internal static void TryDeleteFolder(string folder)
+        {
+            try
+            {
+                TaskService.Instance.RootFolder.DeleteFolder(folder);
+            }
+            catch (System.Runtime.InteropServices.COMException)
+            {
+            }
+        }
+
     }
 }

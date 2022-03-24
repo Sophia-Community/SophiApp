@@ -1038,6 +1038,7 @@ namespace SophiApp.Customisations
 
             RegHelper.DeleteKey(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER);
             ScheduledTaskHelper.DeleteTask(new string[] { cleanupTaskName, notificationTaskName }, false);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
             RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP);
         }
 
@@ -1058,6 +1059,7 @@ namespace SophiApp.Customisations
             }
 
             ScheduledTaskHelper.DeleteTask(softwareDistributionTaskName, false);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
         }
 
         public static void _702(bool IsChecked)
@@ -1076,6 +1078,7 @@ namespace SophiApp.Customisations
             }
 
             ScheduledTaskHelper.DeleteTask(clearTempTaskName, false);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH);
         }
 
         public static void _800(bool IsChecked) => PowerShellHelper.InvokeScript($"{_800_SET_NETWORK_PROTECTION_PS} {(IsChecked ? ENABLED : DISABLED)}");
