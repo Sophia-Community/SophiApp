@@ -5,7 +5,7 @@
 
     <system:String x:Key="Conditions.IsSingleSession.Login">To be able to run SophiApp, you must be the only logged-on account with admin rights.</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">Open in Windows Terminal</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version is available with bug fixes.</system:String>
+    <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version is available.</system:String>
     <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Open the GitHub page</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.RebootPending">The PC is waiting to be restarted.</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Please reboot your PC before running SophiApp.</system:String>
