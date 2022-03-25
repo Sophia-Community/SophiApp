@@ -47,6 +47,8 @@ namespace SophiApp.Helpers
                             ConditionHasProblem?.Invoke(null, condition);
                             break;
                         }
+
+                        DebugHelper.StartupConditionsInvoked(condition.GetType().Name);
                     }
                     catch (Exception e)
                     {

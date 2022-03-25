@@ -58,6 +58,9 @@
                                         CommandParameter="{Binding Path=Text, ElementName=TextBoxSearch}"
                                         Key="Return" />
                         </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu Visibility="Collapsed" />
+                        </TextBox.ContextMenu>
                     </TextBox>
                 </Grid>
             </Border>

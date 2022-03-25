@@ -56,6 +56,20 @@ namespace SophiApp.Helpers
                 task.Enabled = enable;
         }
 
+        internal static void TryDeleteFolder(params string[] folders)
+        {
+            foreach (var folder in folders)
+            {
+                try
+                {
+                    TryDeleteFolder(folder);
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
         internal static void TryDeleteFolder(string folder)
         {
             try

@@ -123,11 +123,6 @@
                                 Header="{DynamicResource Localization.Settings.Advanced}"
                                 IsChecked="{Binding AdvancedSettingsVisibility}" />
 
-                            <TextBlock
-                                Margin="{StaticResource BlockIndent}"
-                                Style="{DynamicResource SubHeaderText}"
-                                Text="{DynamicResource Localization.Settings.Debug}" />
-
                             <controls:SettingSwitch
                                 Width="290"
                                 Margin="{StaticResource BlockIndent}"
@@ -136,12 +131,6 @@
                                 Header="{DynamicResource Localization.Settings.DebugMode}"
                                 IsChecked="{Binding DebugMode}"
                                 Visibility="{Binding DebugMode, Converter={StaticResource BoolToVisibilityConverter}}" />
-
-                            <controls:CommandButton
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Command="{Binding SaveDebugLogCommand}"
-                                Text="{DynamicResource Localization.Settings.Debug.Save}" />
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
