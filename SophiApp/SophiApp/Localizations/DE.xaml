@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
@@ -36,7 +36,7 @@
     <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Open Task Scheduler</system:String>
-    <system:String x:Key="Localization.Customizations.RebootRequired">Please Make sure to reboot your PC after applying settings</system:String>
+    <system:String x:Key="Localization.Customizations.RebootRequired">Please reboot your PC after applying settings</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Copy description</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Description">Process creation and command-line auditing events.</system:String>
