@@ -54,8 +54,8 @@
     <system:String x:Key="Localization.About.OfWindows">до Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
     <system:String x:Key="Localization.Settings.Themes">Тема</system:String>
-    <system:String x:Key="Localization.Settings.Themes.Dark">Тёмная</system:String>
-    <system:String x:Key="Localization.Settings.Themes.Light">Светлая</system:String>
+    <system:String x:Key="Localization.Settings.Themes.Dark">Темна</system:String>
+    <system:String x:Key="Localization.Settings.Themes.Light">Світла</system:String>
     <system:String x:Key="Localization.Settings.Languages">Мова</system:String>
     <system:String x:Key="Localization.Settings">Налаштування</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Розширенні налаштування</system:String>
