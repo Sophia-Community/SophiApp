@@ -209,6 +209,8 @@ namespace SophiApp.Customisations
         internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
         internal const string _401_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
         internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
+        internal const string _500_HEVC_LINK = "https://github.com/Sophia-Community/SophiApp/blob/master/AppX/Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
+        internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
         internal const string _501_CORTANA_STATE = "State";

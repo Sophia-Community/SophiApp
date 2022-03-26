@@ -246,7 +246,7 @@
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
-                        <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:CommandButton
                                 Margin="0, 10, 0, 10"
                                 HorizontalAlignment="Center"
@@ -288,7 +288,7 @@
                                             Command="{Binding HyperLinkClickedCommand}"
                                             CommandParameter="{DynamicResource Conditions.OsIsInfected.Link}"
                                             Role="{DynamicResource Conditions.OsIsInfected.More}" />
-                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAcceptance}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -297,7 +297,7 @@
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.StabilityCompromised}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.Windows10DebloaterNotUsed.SycnexScript}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAcceptance}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -305,7 +305,7 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.DefenderIsBroken}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAcceptance}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -313,21 +313,21 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.DefenderIsBroken}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAgree}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
+                        <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAcceptance}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
             <views:ViewConditionsTemplate x:Name="ViewNewVersionCondition" Grid.Column="1" Panel.ZIndex="20" Tag="NewVersion">
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
-                        <TextBlock Text="{DynamicResource Conditions.NoNewVersion.HasNew}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.NoNewVersion.DownloadFixed}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.NewVersion.HasNew}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.NewVersion.DownloadFixed}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:CommandButton
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center"
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}"
-                                Text="{DynamicResource Conditions.NoNewVersion.OpenGitHub}" />
+                                Text="{DynamicResource Conditions.NewVersion.OpenGitHub}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
@@ -335,11 +335,6 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{Binding Path=ConditionsHelperError}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" TextWrapping="Wrap" HorizontalAlignment="Center" />
-                        <controls:CommandButton
-                                Margin="0, 10, 0, 0"
-                                HorizontalAlignment="Center"
-                                Command="{Binding SaveDebugLogCommand}"
-                                Text="{DynamicResource Localization.Settings.Debug.Save}" />
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>

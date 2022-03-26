@@ -1,11 +1,11 @@
-<ResourceDictionary
+﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Conditions.IsSingleSession.Login">Ви маєте бути єдиним увійшовшим в систему користувачем з правами адміністратора.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.HasNew">Доступна нова версія SophiApp</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Відкрити сторінку GitHub</system:String>
+    <system:String x:Key="Conditions.NewVersion.HasNew">Доступна нова версія SophiApp</system:String>
+    <system:String x:Key="Conditions.NewVersion.OpenGitHub">Відкрити сторінку GitHub</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.RebootPending">Комп'ютер очікує перезавантаження.</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Будь ласка, перезавантажте ваш ПК перед запуском SophiApp</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Будь ласка, не запускайте декілька копій SophiApp одночасно.</system:String>
@@ -15,7 +15,7 @@
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була заражена трояном.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Детальніше:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
-    <system:String x:Key="Conditions.RiskAgree">Я усвідомлюю ризик і згоден нести відповідальність за будь-яку можливу шкоду</system:String>
+    <system:String x:Key="Conditions.RiskAcceptance">Я усвідомлюю ризик і згоден нести відповідальність за будь-яку можливу шкоду</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Про всяк випадок перевстановіть ОС.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender пошкоджено або видалено з ОС</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабільність Вашої ОС могла бути порушена використанням скрипту</system:String>
@@ -39,16 +39,16 @@
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кеш оновлень Windows успішно видалений</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки тимчасових файлів</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка тимчасових файлів успішно очищена</system:String>
-    <system:String x:Key="Localization.NotificationTask.Description">Спливаюче повідомлення з нагадуванням про очищення файлів та оновлень Windows, що не використовуються</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Спливаюче повідомлення з нагадуванням про очищення файлів та оновлень Windows, що не використовуються</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Очистка невикористовуємих файлів та оновлень Windows, використовуючи вбудовану програму Очистка диска</system:String>
-    <system:String x:Key="Localization.NotificationTask.Title">Важлива інформація</system:String>
-    <system:String x:Key="Localization.NotificationTask.Event">Очистка Windows не займе багато часу. Наступний раз це повідомлення з'явиться через 30 днів</system:String>
-    <system:String x:Key="Localization.NotificationTask.EventTitle">Запустити завдання з очищення файлів та оновлень Windows, які не використовуються?</system:String>
-    <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Оберіть інтервал повтору повідомлення</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Важлива інформація</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Очистка Windows не займе багато часу. Наступний раз це повідомлення з'явиться через 30 днів</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Запустити завдання з очищення файлів та оновлень Windows, які не використовуються?</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">Оберіть інтервал повтору повідомлення</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 години</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 хвилин</system:String>
     <system:String x:Key="Localization.Time.Minute">1 хвилина</system:String>
-    <system:String x:Key="Localization.Run">Запустити</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Запустити</system:String>
     <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
     <system:String x:Key="Localization.About.MadeWith">Зроблено з</system:String>
     <system:String x:Key="Localization.About.OfWindows">до Windows&#174;</system:String>
@@ -64,8 +64,8 @@
     <system:String x:Key="Localization.Settings.Team">Учасники проєкту</system:String>
     <system:String x:Key="Localization.Settings.Leader">Керівник проєкту:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Дмитро &quot;farag&quot; Нефєдов</system:String>
-    <system:String x:Key="Localization.Settings.Coder">Розробка:</system:String>
-    <system:String x:Key="Localization.Settings.Coder.Name">Дмитро &quot;Inestic&quot; Дьомін</system:String>
+    <system:String x:Key="Localization.Settings.Developer">Розробка:</system:String>
+    <system:String x:Key="Localization.Settings.Developer.Name">Дмитро &quot;Inestic&quot; Дьомін</system:String>
     <system:String x:Key="Localization.Settings.Designer">Розробка UI/UX:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Володимир Nameless</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Логотип:</system:String>
@@ -76,7 +76,7 @@
     <system:String x:Key="Localization.Toast.Title.Notificaton">Повідомлення</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Скачати</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступне оновлення для SophiApp</system:String>
-   <system:String x:Key="Localization.ViewChanges.Cancel">Відміна</system:String>
+    <system:String x:Key="Localization.ViewChanges.Cancel">Відміна</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Застосувати</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Змінено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">налаштувань</system:String>
@@ -91,4 +91,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Відкрити Планувальник завдань</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Після застосування налаштувань перезавантажте ваш ПК</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">Відкрити у Терміналі Windows</system:String>
-</ResourceDictionary>
+    </ResourceDictionary>

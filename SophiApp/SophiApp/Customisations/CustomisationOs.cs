@@ -615,7 +615,7 @@ namespace SophiApp.Customisations
             {
                 FileHelper.DirectoryLazyDelete(currentTemp);
 
-                if (FileHelper.DirectoryIsEmpty(currentTemp))
+                if (Directory.Exists(currentTemp) && FileHelper.DirectoryIsEmpty(currentTemp))
                 {
                     FileHelper.DirectoryDelete(currentTemp);
                 }
@@ -940,15 +940,8 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                var adguardPattern = "<tr style.*<a href=\"(?<Url>.*)\"\\s.*>(?<Version>.*)<\\/a>";
-                var hevcvPattern = "Microsoft.HEVCVideoExtension_.*_x64__8wekyb3d8bbwe.appx";
-                var adguardResponse = WebHelper.GetPostResponse(_500_ADGUARD_LINK, _500_ADGUARD_WEB_PARAMS).Result;
-                var hevcvDto = Regex.Matches(adguardResponse, adguardPattern)
-                                     .Cast<Match>()
-                                     .FirstOrDefault(link => Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern));
-
-                var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
-                WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
+                var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ _500_HEVC_APPX_NAME }";
+                WebHelper.Download(_500_HEVC_LINK, hevcvAppx, true);
                 UwpHelper.InstallPackage(hevcvAppx);
                 FileHelper.TryDeleteFile(hevcvAppx);
                 return;
@@ -1014,7 +1007,7 @@ namespace SophiApp.Customisations
                 var cleanupTaskDescription = Application.Current.FindResource("Localization.CleanupTask.Description") as string;
                 var cleanupTaskTrigger = new LogonTrigger();
 
-                var notificationTaskDescription = Application.Current.FindResource("Localization.NotificationTask.Description") as string;
+                var notificationTaskDescription = Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Description") as string;
                 var notificationTaskTrigger = new DailyTrigger(daysInterval: _700_30_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
                 var notificationTaskArg = TextHelper.LocalizeCleanupTaskToast(_700_CLEANUP_TOAST_TASK_ARGS);
 

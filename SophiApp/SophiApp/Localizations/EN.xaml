@@ -4,8 +4,8 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Conditions.IsSingleSession.Login">To be able to run SophiApp, you must be the only logged-on account with admin rights.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.HasNew">A new SophiApp version is available.</system:String>
-    <system:String x:Key="Conditions.NoNewVersion.OpenGitHub">Open the GitHub page</system:String>
+    <system:String x:Key="Conditions.NewVersion.HasNew">A new SophiApp version is available.</system:String>
+    <system:String x:Key="Conditions.NewVersion.OpenGitHub">Open the GitHub page</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.RebootPending">The PC is waiting to be restarted.</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Please reboot your PC before running SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
@@ -15,7 +15,7 @@
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
-    <system:String x:Key="Conditions.RiskAgree">I understand the risk and agree to be responsible for any possible damage</system:String>
+    <system:String x:Key="Conditions.RiskAcceptance">I understand the risk and agree to be responsible for any possible damage</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender broken or removed from the OS</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
@@ -39,16 +39,16 @@
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
-    <system:String x:Key="Localization.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates.</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
-    <system:String x:Key="Localization.NotificationTask.Title">Important Information</system:String>
-    <system:String x:Key="Localization.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
-    <system:String x:Key="Localization.NotificationTask.Event">Windows cleanup won't take long. This notification will re-appear in 30 days.</system:String>
-    <system:String x:Key="Localization.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Important Information</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Windows cleanup won't take long. This notification will re-appear in 30 days.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">Select a Reminder Interval</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 hours</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 minutes</system:String>
     <system:String x:Key="Localization.Time.Minute">1 minute</system:String>
-    <system:String x:Key="Localization.Run">Run</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Run</system:String>
     <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
     <system:String x:Key="Localization.About.MadeWith">Made with</system:String>
     <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>
@@ -64,8 +64,8 @@
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
-    <system:String x:Key="Localization.Settings.Coder">Developed by:</system:String>
-    <system:String x:Key="Localization.Settings.Coder.Name">Dmitry &quot;Inestic&quot; Demin</system:String>
+    <system:String x:Key="Localization.Settings.Developer">Developed by:</system:String>
+    <system:String x:Key="Localization.Settings.Developer.Name">Dmitry &quot;Inestic&quot; Demin</system:String>
     <system:String x:Key="Localization.Settings.Designer">UI/UX development:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
     <system:String x:Key="Localization.Settings.Logotype">Logo:</system:String>

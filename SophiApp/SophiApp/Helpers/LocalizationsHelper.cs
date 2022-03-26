@@ -16,12 +16,15 @@ namespace SophiApp.Helpers
         private const string EN_URI = "pack://application:,,,/Localizations/EN.xaml";
         private const string RU_NAME = "Русский";
         private const string RU_URI = "pack://application:,,,/Localizations/RU.xaml";
+        private const string UA_NAME = "Українська";
+        private const string UA_URI = "pack://application:,,,/Localizations/UA.xaml";
 
         private List<Localization> LocalizationsData = new List<Localization>()
         {
             { new Localization() { Name = DE_NAME, Language = UILanguage.DE, Uri = new Uri(DE_URI, UriKind.Absolute)} },
             { new Localization() { Name = EN_NAME, Language = UILanguage.EN, Uri = new Uri(EN_URI, UriKind.Absolute)} },
-            { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} }
+            { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} },
+            { new Localization() { Name = UA_NAME, Language = UILanguage.RU, Uri = new Uri(UA_URI, UriKind.Absolute)} }
         };
 
         internal Localization Selected;

@@ -148,12 +148,12 @@
 
                             <controls:ActorLink
                                 Margin="{StaticResource ActorLinkIndent}"
-                                Actor="{DynamicResource Localization.Settings.Coder.Name}"
+                                Actor="{DynamicResource Localization.Settings.Developer.Name}"
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.CoderLink}"
                                 Icon="{DynamicResource Icon.GitHub}"
                                 IconMargin="10, 0, 0, 20"
-                                Role="{DynamicResource Localization.Settings.Coder}" />
+                                Role="{DynamicResource Localization.Settings.Developer}" />
 
                             <controls:ActorLink
                                 Margin="{StaticResource ActorLinkIndent}"

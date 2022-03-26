@@ -105,10 +105,7 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static void DirectoryDelete(string dirPath)
-        {
-            Directory.Delete(dirPath, recursive: true);
-        }
+        internal static void DirectoryDelete(string dirPath) => Directory.Delete(dirPath, recursive: true);
 
         internal static bool DirectoryIsEmpty(string dirPath)
         {

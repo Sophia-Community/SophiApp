@@ -41,10 +41,7 @@ namespace SophiApp.Helpers
         };
 
         private static List<string> InitLog = new List<string>();
-
         private static List<string> StatusLog = new List<string>();
-
-        private static List<string> TraceLog = new List<string>();
 
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
 
@@ -104,12 +101,7 @@ namespace SophiApp.Helpers
 
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
-        internal static void Save(string path)
-        {
-            TraceLog = Environment.StackTrace.Split('\n').ToList();
-            var debugData = InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog).Split(string.Empty).Merge(TraceLog);
-            FileHelper.WriteAllLines(path, debugData);
-        }
+        internal static void Save(string path) => FileHelper.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
 
         internal static void SelectedLocalization(string localization) => WriteStatusLog($"Localization selected: {localization}");
 
@@ -125,7 +117,7 @@ namespace SophiApp.Helpers
 
         internal static void StartStartupConditions() => WriteStatusLog("The OS conditions checkings started");
 
-        internal static void StartupConditionsInvoked(string name) => WriteStatusLog($"{name} is: True");
+        internal static void StartupConditionsInvoked(string name) => WriteStatusLog($"{name}: OK");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 

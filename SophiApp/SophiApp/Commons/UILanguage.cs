@@ -4,6 +4,7 @@
     {
         DE,
         EN,
-        RU
+        RU,
+        UA
     }
 }
