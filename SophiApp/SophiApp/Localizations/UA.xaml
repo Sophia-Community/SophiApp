@@ -85,7 +85,7 @@
     <system:String x:Key="Localization.ViewSearch.NotFound">Нічого не знайдено</system:String>
     <system:String x:Key="Localization.ViewSearch.Running">Пошук...</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всіх користувачів</system:String>
-    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">При удалении UWP-приложений для всех пользователей новые учетные записи не будут включать удаленные UWP-приложения, и становится невозможно восстановить их обратно без использования установочных пакетов или скачивания из Microsoft Store. Но установка последних будет произведена лишь в текущий профиль</system:String>
+    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">Якщо ви видаляєте UWP-програми для всіх користувачів, нові облікові записи не включатимуть видалені UWP-програми, і їх неможливо відновити без використання інсталяційних пакетів або завантажень з Microsoft Store. Але встановлення останніх буде здійснена лише в поточний профіль</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копіювати опис</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копіювати заголовок</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Відкрити Планувальник завдань</system:String>
