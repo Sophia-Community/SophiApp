@@ -59,7 +59,6 @@
     <system:String x:Key="Localization.Settings.Languages">Language</system:String>
     <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Advanced settings</system:String>
-    <system:String x:Key="Localization.Settings.Debug">Debug</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Dev Mode</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
     <system:String x:Key="Localization.Settings.Leader">Project Manager:</system:String>

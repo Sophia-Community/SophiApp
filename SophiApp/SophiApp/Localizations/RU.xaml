@@ -59,7 +59,6 @@
     <system:String x:Key="Localization.Settings.Languages">Язык</system:String>
     <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Расширенные настройки</system:String>
-    <system:String x:Key="Localization.Settings.Debug">Отладка</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Режим разработчика</system:String>
     <system:String x:Key="Localization.Settings.Team">Участники проекта</system:String>
     <system:String x:Key="Localization.Settings.Leader">Руководитель проекта:</system:String>
