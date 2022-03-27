@@ -35,7 +35,7 @@
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">При применении</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">произошла ошибка</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки &quot;%SystemRoot%\SoftwareDistribution\Download&quot;</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки %SystemRoot%\SoftwareDistribution\Download</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кэш обновлений Windows успешно удален</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>

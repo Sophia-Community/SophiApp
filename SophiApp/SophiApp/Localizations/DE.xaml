@@ -35,7 +35,7 @@
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">While applying</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">an error occurred.</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleans up the &quot;%SystemRoot%\SoftwareDistribution\Download&quot; folder.</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleaning up the %SystemRoot%\SoftwareDistribution\Download folder.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
