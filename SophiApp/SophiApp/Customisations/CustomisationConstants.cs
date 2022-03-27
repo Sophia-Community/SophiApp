@@ -683,11 +683,6 @@ else
         internal static readonly string _348_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
         internal static readonly string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
 
-        internal static readonly Dictionary<string, string> _500_ADGUARD_WEB_PARAMS = new Dictionary<string, string>()        {
-            { "ContentType", "application/x-www-form-urlencoded" }, { "type", "url" }, { "url", "https://www.microsoft.com/store/productId/9n4wgh0z6vhq" },
-            { "ring", "RP" }, { "lang", "en-US" }
-        };
-
         internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "Device Driver Packages", "Previous Installations", "Setup Log Files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows Upgrade Log Files" };
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
         internal static readonly string _811_WINDOWS_SANDBOX_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WindowsSandbox.exe";
