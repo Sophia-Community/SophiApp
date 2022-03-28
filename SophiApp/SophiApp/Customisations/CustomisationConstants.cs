@@ -407,7 +407,8 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _802_SANDBOX_ENABLED_VALUE = "1";
         internal const string _802_SETX_APP = "setx";
 
-        internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+        internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"ping.exe | Out-Null
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
 {
@@ -418,7 +419,8 @@ else
     $false
 }";
 
-        internal const string _804_COMMAND_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+        internal const string _804_COMMAND_AUDIT_ENABLED_PS = @"ping.exe | Out-Null
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
 {
@@ -437,7 +439,8 @@ else
     $false
 }";
 
-        internal const string _805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+        internal const string _805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS = @"ping.exe | Out-Null
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
 {
