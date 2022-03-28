@@ -2288,7 +2288,7 @@
     },
     "Description": {
       "EN": "Set Windows Terminal as default terminal app to host the user interface for command-line applications.",
-      "RU": "Установить Windows Terminal как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки",
+      "RU": "Установить Терминал Windows как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки",
       "DE": ""
     },
     "Type": "RadioGroup",

@@ -72,6 +72,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 * All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
 * The app shows the `actual` state of every feature in the UI;
+* Supports high resolutions;
 * Has a built-in search engine;
   * Functions can be found by searching by their heades and descriptions. [GIF](#searching-feature)
 * Supports dark & light themes;
@@ -91,7 +92,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`
 * Configure the Windows security;
-* The ability to copy functions' description or header
+* The ability to copy functions' description or header;
 * Many more File Explorer and context menu "deep" tweaks.
 
 ## Screenshots [Helen]
