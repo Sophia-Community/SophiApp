@@ -240,8 +240,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                                                                .ToList()
-                                                                                                                                                .ForEach(element => element.Initialize()));
+                                                                                                          .ToList()
+                                                                                                          .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -296,7 +296,6 @@ namespace SophiApp.ViewModels
 
         private void OnConditionsHasProblem(object sender, IStartupCondition e)
         {
-            DebugHelper.OsConditionHasValue(e);
             SetVisibleViewTag($"{e.Tag}");
         }
 
@@ -308,6 +307,10 @@ namespace SophiApp.ViewModels
         {
             await Task.Run(() =>
             {
+                //if ((element is RadioGroup).Invert())
+                //{
+                //    DebugHelper.HasException($"An error occured in element: {element.Id}", e);
+                //}
                 DebugHelper.HasException($"An error occured in element: {element.Id}", e);
                 element.Status = ElementStatus.DISABLED;
             });

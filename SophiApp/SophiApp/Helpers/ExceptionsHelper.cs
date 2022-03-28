@@ -4,7 +4,7 @@ namespace SophiApp.Helpers
 {
     internal class AdapterTypeInternalOrNullException : Exception
     {
-        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null, current adapter DAC type: {dacType ?? "no data"}")
+        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null. Current adapter DAC type: {dacType ?? "no data"}")
         {
         }
     }
@@ -88,7 +88,7 @@ namespace SophiApp.Helpers
 
     internal class SheduledTaskNotFoundException : Exception
     {
-        public SheduledTaskNotFoundException(string name) : base($"Scheduled task {name} wasn't found on OS")
+        public SheduledTaskNotFoundException(string name) : base($"Scheduled task {name} wasn't found in OS")
         {
         }
     }
@@ -102,14 +102,14 @@ namespace SophiApp.Helpers
 
     internal class UwpAppFoundException : Exception
     {
-        public UwpAppFoundException(string name) : base($"The UWP package {name} found on OS")
+        public UwpAppFoundException(string name) : base($"The UWP package {name} found in OS")
         {
         }
     }
 
     internal class UwpAppNotFoundException : Exception
     {
-        public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found on OS")
+        public UwpAppNotFoundException(string name) : base($"The UWP package {name} wasn't found in OS")
         {
         }
     }
@@ -123,7 +123,7 @@ namespace SophiApp.Helpers
 
     internal class VitualizationNotSupportedException : Exception
     {
-        public VitualizationNotSupportedException() : base("The CPU does not support virtualization")
+        public VitualizationNotSupportedException() : base("The virtualization (VT-x/SVM) isn't enabled in UEFI (BIOS)")
         {
         }
     }
@@ -137,7 +137,7 @@ namespace SophiApp.Helpers
 
     internal class WindowsCapabilityNotInstalledException : Exception
     {
-        public WindowsCapabilityNotInstalledException(string name) : base($"The Windows capability {name} wasn't installed on this OS")
+        public WindowsCapabilityNotInstalledException(string name) : base($"The Windows capability {name} wasn't installed in this OS")
         {
         }
     }

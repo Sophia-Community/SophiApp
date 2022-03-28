@@ -208,8 +208,8 @@ namespace SophiApp.Customisations
         internal const byte _400_DISABLED_VALUE = 1;
         internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
         internal const string _401_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
-        internal const string _500_HEVC_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
+        internal const string _500_HEVC_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
         internal const string _501_CORTANA_STATE = "State";
@@ -407,7 +407,8 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _802_SANDBOX_ENABLED_VALUE = "1";
         internal const string _802_SETX_APP = "setx";
 
-        internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+        internal const string _803_PROGRAM_AUDIT_ENABLED_PS = @"ping.exe | Out-Null
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
 {
@@ -418,7 +419,8 @@ else
     $false
 }";
 
-        internal const string _804_COMMAND_AUDIT_ENABLED_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+        internal const string _804_COMMAND_AUDIT_ENABLED_PS = @"ping.exe | Out-Null
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
 {
@@ -437,7 +439,8 @@ else
     $false
 }";
 
-        internal const string _805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+        internal const string _805_EVENT_VIEWER_IS_CUSTOM_VIEW_PS = @"ping.exe | Out-Null
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
 {
