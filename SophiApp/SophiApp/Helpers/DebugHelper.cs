@@ -1,9 +1,7 @@
 using SophiApp.Commons;
 using SophiApp.Dto;
-using SophiApp.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Windows.Foundation;
 
 namespace SophiApp.Helpers
@@ -55,7 +53,7 @@ namespace SophiApp.Helpers
 
         private static void WriteInfoLog(List<string> list) => InfoLog.AddRange(list);
 
-        private static void WriteInitLog(string record) => InitLog.Add($"{DateTime} {record}");
+        private static void WriteInitLog(string record) => InitLog.Add(record);
 
         private static void WriteStatusLog(string record)
         {
@@ -79,9 +77,10 @@ namespace SophiApp.Helpers
         {
             ErrorsLog.AddRange(new List<string>()
             {
-                $"{DateTime} {message}",
-                $"{DateTime} Information: {e.Message}",
-                $"{DateTime} The method that caused the error: {e.TargetSite.Name}"
+                message,
+                $"Information: {e.Message}",
+                $"The method that caused the error: {e.TargetSite.Name}",
+                string.Empty
             });
         }
 
@@ -97,11 +96,14 @@ namespace SophiApp.Helpers
 
         internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
 
-        internal static void OsConditionHasValue(IStartupCondition condition) => WriteStatusLog($"{condition.Tag} has value: {condition.HasProblem}");
-
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
-        internal static void Save(string path) => FileHelper.WriteAllLines(path, InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog));
+        internal static void Save(string path)
+        {
+            InitLog.Sort();
+            var logData = InfoLog.Split(string.Empty).Merge(ErrorsLog).Split(string.Empty).Merge(InitLog).Split(string.Empty).Merge(StatusLog);
+            FileHelper.WriteAllLines(path, logData);
+        }
 
         internal static void SelectedLocalization(string localization) => WriteStatusLog($"Localization selected: {localization}");
 
@@ -117,7 +119,7 @@ namespace SophiApp.Helpers
 
         internal static void StartStartupConditions() => WriteStatusLog("The OS conditions checkings started");
 
-        internal static void StartupConditionsInvoked(string name) => WriteStatusLog($"{name}: OK");
+        internal static void StartupConditionsInvoked(string name, bool result) => WriteStatusLog($"{name}: {result}");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 

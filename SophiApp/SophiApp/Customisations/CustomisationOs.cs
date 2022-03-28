@@ -8,7 +8,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
-using System.Text.RegularExpressions;
 using System.Windows;
 using static SophiApp.Customisations.CustomisationConstants;
 

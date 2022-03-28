@@ -14,7 +14,7 @@ namespace SophiApp.Models
             ChildsDTO = parameters.Dto.ChildElements;
         }
 
-        internal uint DefaultId { get; private set; }
+        internal uint? DefaultId { get; private set; }
         public List<TextedElement> ChildElements { get; set; } = new List<TextedElement>();
         public List<TextedElementDto> ChildsDTO { get; set; }
 
@@ -29,17 +29,22 @@ namespace SophiApp.Models
 
         internal override void GetCustomisationStatus()
         {
-            try
+            base.GetCustomisationStatus();
+
+            foreach (var child in ChildElements)
             {
-                base.GetCustomisationStatus();
-                ChildElements.ForEach(child => child.GetCustomisationStatus());
-                DefaultId = ChildElements.First(element => element.Status == ElementStatus.CHECKED).Id;
+                try
+                {
+                    child.GetCustomisationStatus();
+                }
+                catch (Exception e)
+                {
+                    OnChildErrorOccured(child, e);
+                    break;
+                }
             }
-            catch (Exception e)
-            {
-                ChildElements.ForEach(child => child.Status = ElementStatus.DISABLED);
-                OnChildErrorOccured(this, e);
-            }
+
+            DefaultId = ChildElements.FirstOrDefault(element => element.Status == ElementStatus.CHECKED)?.Id;
         }
 
         public override void ChangeLanguage(UILanguage language)
@@ -48,6 +53,6 @@ namespace SophiApp.Models
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
 
-        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, e);
+        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(element, e);
     }
 }

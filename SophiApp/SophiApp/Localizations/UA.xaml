@@ -90,4 +90,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Відкрити Планувальник завдань</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Після застосування налаштувань перезавантажте ваш ПК</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">Відкрити у Терміналі Windows</system:String>
-    </ResourceDictionary>
+</ResourceDictionary>

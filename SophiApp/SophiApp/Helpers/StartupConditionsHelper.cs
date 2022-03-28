@@ -41,14 +41,13 @@ namespace SophiApp.Helpers
                     try
                     {
                         HasProblem = condition.Invoke();
+                        DebugHelper.StartupConditionsInvoked(name: condition.GetType().Name, result: HasProblem.Invert());
 
                         if (HasProblem)
                         {
                             ConditionHasProblem?.Invoke(null, condition);
                             break;
                         }
-
-                        DebugHelper.StartupConditionsInvoked(condition.GetType().Name);
                     }
                     catch (Exception e)
                     {
