@@ -178,7 +178,7 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _230_WIDGETS_IN_TASKBAR) != DISABLED_VALUE
                                      : throw new UwpAppNotFoundException(_230_UWP_WEB_EXPERIENCE);
 
-        public static bool _231() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_PEOPLE_EXPLORER_PATH, _231_PEOPLE_BAND) == ENABLED_VALUE;
+        public static bool _231() => (RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _231_PEOPLE_EXPLORER_PATH, _231_PEOPLE_BAND) == DISABLED_VALUE).Invert();
 
         public static bool _232() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _232_SHOW_SECONDS) == ENABLED_VALUE;
 
@@ -189,7 +189,7 @@ namespace SophiApp.Customisations
         public static bool _236() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, TASKBAR_SEARCH_PATH, TASKBAR_SEARCH_MODE)
                                               .HasNullOrValue(TASKBAR_SEARCH_BOX_VALUE);
 
-        public static bool _237() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _237_PEN_WORKSPACE_PATH, _237_PEN_WORKSPACE_VISIBILITY) == ENABLED_VALUE;
+        public static bool _237() => (RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _237_PEN_WORKSPACE_PATH, _237_PEN_WORKSPACE_VISIBILITY) == DISABLED_VALUE).Invert();
 
         public static bool _238() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _238_AUTO_TRAY)
                                               .HasNullOrValue(_238_AUTO_TRAY_HIDE_VALUE)
