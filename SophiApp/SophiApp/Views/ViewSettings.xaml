@@ -15,7 +15,7 @@
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Thickness
             x:Key="BlockIndent"
-            Bottom="15"
+            Bottom="12"
             Left="20"
             Right="0"
             Top="0" />
@@ -76,7 +76,7 @@
 
                             <StackPanel Style="{StaticResource PanelContainer}">
                                 <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.About.MadeWith}" />
-                                <controls:Heart Width="20" Height="20" Margin="7, 2, 7, 0" />
+                                <controls:Heart Width="20" Height="20" Margin="7, 0, 7, 0" />
                                 <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.About.OfWindows}" />
                             </StackPanel>
 
@@ -115,13 +115,20 @@
                                 Style="{DynamicResource SubHeaderText}"
                                 Text="{DynamicResource Localization.Settings}" />
 
-                            <controls:SettingSwitch
-                                Width="290"
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Command="{Binding AdvancedSettingsClickedCommand}"
-                                Header="{DynamicResource Localization.Settings.Advanced}"
-                                IsChecked="{Binding AdvancedSettingsVisibility}" />
+                            <StackPanel Orientation="Horizontal">
+                                <controls:SettingSwitch 
+                                    Width="290"
+                                    Margin="{StaticResource BlockIndent}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding AdvancedSettingsClickedCommand}"
+                                    Header="{DynamicResource Localization.Settings.Advanced}"
+                                    IsChecked="{Binding AdvancedSettingsVisibility}" />
+                                <ContentPresenter Content="{DynamicResource Icon.Settings}"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="-10, 0, 0, 0"/>
+                            </StackPanel>
 
                             <controls:SettingSwitch
                                 Width="290"
