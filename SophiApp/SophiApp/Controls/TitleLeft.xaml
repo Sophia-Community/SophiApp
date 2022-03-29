@@ -38,7 +38,7 @@
                                Margin="5, 0, 0, 0"
                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                Style="{DynamicResource SmallText}"
-                               Text="RC9"
+                               Text="RC10"
                                Visibility="Collapsed" />
                 </StackPanel>
             </Grid>
