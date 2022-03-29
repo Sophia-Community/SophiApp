@@ -15,7 +15,7 @@
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Thickness
             x:Key="BlockIndent"
-            Bottom="12"
+            Bottom="15"
             Left="20"
             Right="0"
             Top="0" />
@@ -115,23 +115,23 @@
                                 Style="{DynamicResource SubHeaderText}"
                                 Text="{DynamicResource Localization.Settings}" />
 
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="{StaticResource BlockIndent}">
+
+                                <ContentPresenter Content="{DynamicResource Icon.Settings.Small}"
+                                                  VerticalAlignment="Stretch"
+                                                  Margin="0, 0, 10, 2"/>
+                                
                                 <controls:SettingSwitch 
                                     Width="290"
-                                    Margin="{StaticResource BlockIndent}"
-                                    HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
                                     Command="{Binding AdvancedSettingsClickedCommand}"
                                     Header="{DynamicResource Localization.Settings.Advanced}"
                                     IsChecked="{Binding AdvancedSettingsVisibility}" />
-                                <ContentPresenter Content="{DynamicResource Icon.Settings}"
-                                                  VerticalAlignment="Center"
-                                                  HorizontalAlignment="Left"
-                                                  Margin="-10, 0, 0, 0"/>
                             </StackPanel>
 
                             <controls:SettingSwitch
-                                Width="290"
+                                Width="315"
                                 Margin="{StaticResource BlockIndent}"
                                 HorizontalAlignment="Left"
                                 Command="{Binding DebugModeClickedCommand}"
