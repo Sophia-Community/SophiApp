@@ -67,6 +67,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ## Core features
 
+* Dynamic rendering UI—nothing is hardcoded;
 * 130+ tweaks;
 * `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
 * Multithreading support;
