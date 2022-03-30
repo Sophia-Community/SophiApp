@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         configuration: [Release]
-        platform: [Any CPU]
+        platform: [x64]
 
     runs-on: windows-latest
 
