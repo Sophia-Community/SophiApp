@@ -1,8 +1,0 @@
-name: Localization Request ⭐
-description: Translate SophiApp into your language
-labels: localization
-body:
-  - type: textarea
-    attributes:
-      label: Comments
-      description: Additional information or screenshots
