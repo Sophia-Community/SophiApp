@@ -64,26 +64,28 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## About SophiApp
 
-[![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Made%20with%20❤️%20of%20Windows®&width=400&height=70)](https://github.com/Akshay090/svg-banners)
+[![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Made%20with%20❤️%20of%20Windows®&width=400&height=70)]
 
-SophiApp is a free, open-source app for fine-tuning Windows 10 (Windows 11 is in the work). It offers a modern UI/UX, more than 130 tweaks, and shows how Windows can be configured without making any harm to the OS.
+SophiApp is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to the OS.
 
 ## System Requirements
 
-* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` for now. Requires the `1151` build and higher. Windows 11 is in the works;
+* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` & `Windows 11 21H2` for now. Requires the `1151` and `556` build (or higher) respectively;
+  * Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3) & [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) release history.
 * To be able to run SophiApp, you must be the only logged-on account with admin rights.
 
 ## Installation
 
-SophiApp is fully portable: doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder and run `SophiApp.exe`
+SophiApp is fully portable: doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
 
 ## Core features
 
-* Dynamic rendering UI—nothing is hardcoded;
-* 130+ tweaks;
+* Dynamic rendering UI—nothing is hardcoded; 👻
+* 130+ tweaks; ⭐
 * `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
 * Multithreading support;
-* All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
+* SophiApp is checked by the static analyzer, the license for which by courtesy of PVS-Studio.
+* All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
 * The app shows the `actual` state of every feature in the UI;
 * Supports high resolutions;
