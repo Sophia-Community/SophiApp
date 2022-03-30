@@ -54,7 +54,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## About SophiApp
 
-SophiApp is a free, open-source app for fine-tuning Windows 10 (Windows 11 is in the work). It offers a modern UI/UX, tons of tweaks, and shows how Windows can be configured without making any harm to the OS.
+SophiApp is a free, open-source app for fine-tuning Windows 10 (Windows 11 is in the work). It offers a modern UI/UX, more than 130 tweaks, and shows how Windows can be configured without making any harm to the OS.
 
 ## System Requirements
 
@@ -67,6 +67,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 
 ## Core features
 
+* 130+ tweaks;
 * `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
 * Multithreading support;
 * All builds are being compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
