@@ -4,7 +4,7 @@ namespace SophiApp.Helpers
 {
     internal class AdapterTypeInternalOrNullException : Exception
     {
-        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null. Current adapter DAC type: {dacType ?? "no data"}")
+        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null")
         {
         }
     }

@@ -53,7 +53,7 @@ namespace SophiApp.Helpers
             return (activePlan.GetPropertyValue("InstanceId") as string).Split('\\')[1];
         }
 
-        internal static ManagementBaseObject GetAntiVirusInfo() => GetAntiVirusProduct().FirstOrDefault(av => av.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string != DEFENDER_GUID);
+        internal static ManagementBaseObject GetAntiVirusInfo() => GetAntiVirusProduct().First(av => av.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string != DEFENDER_GUID);
 
         internal static T GetAntiVirusInfo<T>(string property) => (T)GetAntiVirusInfo().GetPropertyValue(property);
 
@@ -62,7 +62,7 @@ namespace SophiApp.Helpers
         internal static int GetBitLockerVolumeProtectionStatus()
         {
             var searcher = GetManagementObjectSearcher(@"Root\Cimv2\security\MicrosoftVolumeEncryption", "SELECT * FROM Win32_Encryptablevolume");
-            var status = searcher.Get().Cast<ManagementBaseObject>().FirstOrDefault().Properties[PROTECTION_STATUS].Value;
+            var status = searcher.Get().Cast<ManagementBaseObject>().First().Properties[PROTECTION_STATUS].Value;
             return Convert.ToInt32(status);
         }
 

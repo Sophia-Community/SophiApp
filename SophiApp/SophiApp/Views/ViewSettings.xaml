@@ -110,11 +110,6 @@
                                 SelectedText="{Binding Localization.Name, UpdateSourceTrigger=PropertyChanged}"
                                 Source="{Binding LocalizationList, UpdateSourceTrigger=PropertyChanged}" />
 
-                            <TextBlock
-                                Margin="{StaticResource BlockIndent}"
-                                Style="{DynamicResource SubHeaderText}"
-                                Text="{DynamicResource Localization.Settings}" />
-
                             <StackPanel Orientation="Horizontal"
                                         Margin="{StaticResource BlockIndent}">
 
@@ -150,7 +145,7 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.LeaderLink}"
                                 Icon="{DynamicResource Icon.GitHub}"
-                                IconMargin="10, 0, 0, 12"
+                                IconMargin="10, -14, 0, 0"
                                 Role="{DynamicResource Localization.Settings.Leader}" />
 
                             <controls:ActorLink
@@ -159,7 +154,7 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.CoderLink}"
                                 Icon="{DynamicResource Icon.GitHub}"
-                                IconMargin="10, 0, 0, 20"
+                                IconMargin="10, -14, 0, 0"
                                 Role="{DynamicResource Localization.Settings.Developer}" />
 
                             <controls:ActorLink
@@ -168,7 +163,7 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.DesignerLink}"
                                 Icon="{DynamicResource Icon.LinkedIn}"
-                                IconMargin="10, 0, 0, 6"
+                                IconMargin="10, -7, 0, 0"
                                 Role="{DynamicResource Localization.Settings.Designer}" />
 
                             <controls:ActorLink
@@ -177,7 +172,7 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.LogotypeCreatorLink}"
                                 Icon="{DynamicResource Icon.LinkedIn}"
-                                IconMargin="10, 0, 0, 6"
+                                IconMargin="10, -7, 0, 0"
                                 Role="{DynamicResource Localization.Settings.Logotype}" />
                         </StackPanel>
                     </ScrollViewer>

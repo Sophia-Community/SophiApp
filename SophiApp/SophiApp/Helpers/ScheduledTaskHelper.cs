@@ -35,18 +35,31 @@ namespace SophiApp.Helpers
             _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(name, td);
         }
 
+        internal static void RegisterTask(string taskName, string taskDescription, string execute, string arg, string userName, TaskRunLevel runLevel)
+        {
+            var task = TaskService.Instance.NewTask();
+            task.Actions.Add(execute, arg);
+            task.Principal.UserId = userName;
+            task.Principal.RunLevel = runLevel;
+            task.Settings.Compatibility = TaskCompatibility.V2_2;
+            task.Settings.StartWhenAvailable = true;
+            task.RegistrationInfo.Author = AppHelper.AppName;
+            task.RegistrationInfo.Description = taskDescription;
+            _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, task);
+        }
+
         internal static void RegisterTask(string taskName, string taskDescription, string execute, string arg, string userName, TaskRunLevel runLevel, Trigger trigger)
         {
-            var td = TaskService.Instance.NewTask();
-            td.Triggers.Add(trigger);
-            td.Actions.Add(execute, arg);
-            td.Principal.UserId = userName;
-            td.Principal.RunLevel = runLevel;
-            td.Settings.Compatibility = TaskCompatibility.V2_2;
-            td.Settings.StartWhenAvailable = true;
-            td.RegistrationInfo.Author = AppHelper.AppName;
-            td.RegistrationInfo.Description = taskDescription;
-            _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
+            var task = TaskService.Instance.NewTask();
+            task.Triggers.Add(trigger);
+            task.Actions.Add(execute, arg);
+            task.Principal.UserId = userName;
+            task.Principal.RunLevel = runLevel;
+            task.Settings.Compatibility = TaskCompatibility.V2_2;
+            task.Settings.StartWhenAvailable = true;
+            task.RegistrationInfo.Author = AppHelper.AppName;
+            task.RegistrationInfo.Description = taskDescription;
+            _ = TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, task);
         }
 
         internal static void TryChangeTaskState(string taskPath, string taskName, bool enable)

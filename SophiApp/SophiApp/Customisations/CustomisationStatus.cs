@@ -16,7 +16,7 @@ namespace SophiApp.Customisations
         public static bool _100()
         {
             var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK).StartType;
-            var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).FirstOrDefault();
+            var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).First();
             return diagTrack is ServiceStartMode.Automatic && firewallRule.Enabled && firewallRule.Action is NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
         }
 
@@ -386,13 +386,13 @@ namespace SophiApp.Customisations
 
                     var consoleGuid = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, terminalClassRegistryPath)
                                                .Where(key => RegHelper.GetByteValue(RegistryHive.LocalMachine, key, TERMINAL_REGISTRY_SERVER_ID) == DISABLED_VALUE)
-                                               .FirstOrDefault()
+                                               .First()
                                                .Split('\\')
                                                .LastOrDefault();
 
                     var terminalGuid = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, terminalClassRegistryPath)
                                                 .Where(key => RegHelper.GetByteValue(RegistryHive.LocalMachine, key, TERMINAL_REGISTRY_SERVER_ID) == ENABLED_VALUE)
-                                                .FirstOrDefault()
+                                                .First()
                                                 .Split('\\')
                                                 .LastOrDefault();
 
@@ -596,7 +596,7 @@ namespace SophiApp.Customisations
 
         public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME) == _924_PROMPT_VALUE;
 
-        public static bool _925() => RegHelper.KeyExist(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
+        public static bool _925() => RegHelper.KeyExist(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
 
         public static bool _926() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
                                      ? RegHelper.KeyExist(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT).Invert()

@@ -6,7 +6,7 @@ namespace SophiApp.Helpers
 {
     internal class PowerShellHelper
     {
-        internal static T GetScriptProperty<T>(string script, string propertyName) => (T)InvokeScript(script).FirstOrDefault().Properties[propertyName].Value;
+        internal static T GetScriptProperty<T>(string script, string propertyName) => (T)InvokeScript(script).First().Properties[propertyName].Value;
 
         internal static T GetScriptResult<T>(string script) => (T)InvokeScript(script).First().BaseObject;
 

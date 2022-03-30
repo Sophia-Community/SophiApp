@@ -22,8 +22,8 @@ namespace SophiApp.Dto
 
     internal class VCRedistrDto
     {
-        public List<VCItem> Supported;
+        public List<VCItem> Supported = new List<VCItem>();
 
-        public List<VCItem> Unsupported;
+        public List<VCItem> Unsupported = new List<VCItem>();
     }
 }

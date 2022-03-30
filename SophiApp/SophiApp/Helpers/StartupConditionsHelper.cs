@@ -52,7 +52,7 @@ namespace SophiApp.Helpers
                     catch (Exception e)
                     {
                         HasProblem = true;
-                        ErrorOccurred.Invoke(this, e);
+                        ErrorOccurred?.Invoke(this, e);
                         break;
                     }
                 }

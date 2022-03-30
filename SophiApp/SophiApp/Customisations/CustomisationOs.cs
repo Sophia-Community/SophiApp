@@ -18,7 +18,7 @@ namespace SophiApp.Customisations
         public static void _100(bool IsChecked)
         {
             var diagTrack = ServiceHelper.Get(_100_DIAG_TRACK);
-            var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).FirstOrDefault();
+            var firewallRule = FirewallHelper.GetGroupRule(_100_DIAG_TRACK).First();
 
             if (IsChecked)
             {
@@ -576,7 +576,7 @@ namespace SophiApp.Customisations
 
                 if (FileHelper.DirectoryIsEmpty(currentTemp))
                 {
-                    FileHelper.DirectoryDelete(localAppDataTemp);
+                    FileHelper.TryDirectoryDelete(localAppDataTemp);
                     FileHelper.CreateDirectoryLink(localAppDataTemp, systemDriveTemp);
                 }
                 else
@@ -600,7 +600,6 @@ namespace SophiApp.Customisations
         public static void _308(bool _)
         {
             var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
-            var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
             var userName = Environment.UserName;
@@ -616,7 +615,7 @@ namespace SophiApp.Customisations
 
                 if (Directory.Exists(currentTemp) && FileHelper.DirectoryIsEmpty(currentTemp))
                 {
-                    FileHelper.DirectoryDelete(currentTemp);
+                    FileHelper.TryDirectoryDelete(currentTemp);
                 }
                 else
                 {
@@ -1004,7 +1003,6 @@ namespace SophiApp.Customisations
             if (IsChecked)
             {
                 var cleanupTaskDescription = Application.Current.FindResource("Localization.CleanupTask.Description") as string;
-                var cleanupTaskTrigger = new LogonTrigger();
 
                 var notificationTaskDescription = Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Description") as string;
                 var notificationTaskTrigger = new DailyTrigger(daysInterval: _700_30_DAYS_INTERVAL) { StartBoundary = _21_PM_TASK_START };
@@ -1013,7 +1011,7 @@ namespace SophiApp.Customisations
                 RegHelper.SetValue(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH, _700_VOLUME_CACHES_NAMES, _700_STATE_FLAGS_1337, _700_STATE_FLAGS_1337_VALUE, RegistryValueKind.DWord);
 
                 ScheduledTaskHelper.RegisterTask(taskName: appCleanupTask, taskDescription: cleanupTaskDescription, execute: POWERSHELL_EXE,
-                                                    arg: _700_CLEANUP_TASK_ARGS, userName: Environment.UserName, runLevel: TaskRunLevel.Highest, cleanupTaskTrigger);
+                                                    arg: _700_CLEANUP_TASK_ARGS, userName: Environment.UserName, runLevel: TaskRunLevel.Highest);
 
                 // Persist the Settings notifications to prevent to immediately disappear from Action Center
                 RegHelper.SetValue(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER, ENABLED_VALUE, RegistryValueKind.DWord);
@@ -1430,11 +1428,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME);
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME, _925_NO_USE_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME, _925_NO_USE_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _926(bool IsChecked)
