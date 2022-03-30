@@ -11,7 +11,7 @@
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/tokei/lines/github/Sophia-Community/SophiApp"></a>
 
-  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a>
+  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a> <a href="https://pvs-studio.com/pvs-studio"><img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/></a>
 
   <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
   <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
@@ -43,9 +43,19 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 <p align="center">
 	&bull;
-	<a href="#screenshots-helen">Screenshots</a>
+	<a href="#system-requirements">System Requirements</a>
+	&bull;
+	<a href="#installation">Installation</a>
 	&bull;
 	<a href="#core-features">Core features</a>
+	&bull;
+	<a href="#screenshots-helen">Screenshots</a>
+	&bull;
+	<a href="#adendum">Adendum</a>
+	&bull;
+	<a href="#translating">Translating</a>
+	&bull;
+	<a href="#ask-a-question-on">Ask a question on</a>
 	&bull;
 	<a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
@@ -53,6 +63,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ***
 
 ## About SophiApp
+
+[![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Made%20with%20❤️%20of%20Windows®&width=400&height=70)](https://github.com/Akshay090/svg-banners)
 
 SophiApp is a free, open-source app for fine-tuning Windows 10 (Windows 11 is in the work). It offers a modern UI/UX, more than 130 tweaks, and shows how Windows can be configured without making any harm to the OS.
 
@@ -126,6 +138,7 @@ SophiApp is fully portable: doesn't have any config (yet) and doesn't save any d
 * You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
   * The hidden functions will marked with a gear in UI;
 * After closing SophiApp, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
+* Big thanks to PVS-Studio for providing us with [free license](https://pvs-studio.com/en/order/open-source-license) (for being an Open Source project) for their [static analyzer](https://pvs-studio.com/pvs-studio). <img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/>
 
 ## Translating
 
