@@ -50,7 +50,7 @@ if (-not ("WinAPI.ForegroundWindow" -as [type]))
 	Add-Type @SetForegroundWindow
 }
 
-Get-Process -Name explorer | Where-Object -FilterScript {$_.MainWindowTitle -match "Sophia Script for Windows $([System.Environment]::OSVersion.Version.Major)"} | ForEach-Object -Process {
+Get-Process -Name explorer | Where-Object -FilterScript {$_.MainWindowTitle -eq "SophiApp"} | ForEach-Object -Process {
 	# Show window, if minimized
 	[WinAPI.ForegroundWindow]::ShowWindowAsync($_.MainWindowHandle, 5)
 
