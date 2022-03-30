@@ -46,7 +46,7 @@ namespace SophiApp.Helpers
         internal const uint WIN10_MIN_SUPPORTED_BUILD = 19041;
         internal const uint WIN10_MIN_SUPPORTED_UBR = 1151;
         internal const uint WIN11_MIN_SUPPORTED_BUILD = 22000;
-        internal const uint WIN11_MIN_SUPPORTED_UBR = 493;
+        internal const uint WIN11_MIN_SUPPORTED_UBR = 556;
 
         private static WindowsIdentity GetCurrentUser() => WindowsIdentity.GetCurrent();
 
