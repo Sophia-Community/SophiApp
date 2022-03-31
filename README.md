@@ -70,7 +70,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## System Requirements
 
-* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64` & `Windows 11 21H2`. Requires the `1151` and `556` build (or higher) respectively;
+* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64`, `Windows 11 21H2`, Windows 11 Insider Preview (22509+). Requires the `1151` and `556` build (or higher) respectively;
   * Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3) & [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) release history.
 * To be able to run SophiApp, you must be the only logged-on account with admin rights.
 
