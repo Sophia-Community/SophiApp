@@ -33,6 +33,7 @@
     <system:String x:Key="Localization.TaskScheduler">Scheduled Tasks</system:String>
     <system:String x:Key="Localization.Security">Security</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
+    <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">While applying</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">an error occurred.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleaning up the %SystemRoot%\SoftwareDistribution\Download folder.</system:String>
@@ -57,7 +58,6 @@
     <system:String x:Key="Localization.Settings.Themes.Dark">Dark</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Light</system:String>
     <system:String x:Key="Localization.Settings.Languages">Language</system:String>
-    <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Advanced settings</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Dev Mode</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>

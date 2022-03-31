@@ -33,6 +33,7 @@
     <system:String x:Key="Localization.TaskScheduler">Планувальник завдань</system:String>
     <system:String x:Key="Localization.Security">Безпека</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстне меню</system:String>
+    <system:String x:Key="Localization.Settings">Налаштування</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">При застосуванні</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">сталася помилка</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки %SystemRoot%\SoftwareDistribution\Download</system:String>
@@ -57,7 +58,6 @@
     <system:String x:Key="Localization.Settings.Themes.Dark">Темна</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Світла</system:String>
     <system:String x:Key="Localization.Settings.Languages">Мова</system:String>
-    <system:String x:Key="Localization.Settings">Налаштування</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Розширенні налаштування</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Режим розробника</system:String>
     <system:String x:Key="Localization.Settings.Team">Учасники проєкту</system:String>
