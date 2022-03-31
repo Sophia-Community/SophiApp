@@ -309,7 +309,7 @@
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
-            <views:ViewConditionsTemplate x:Name="ViewWin10TweakerBrokeDefender"  Grid.Column="1" Panel.ZIndex="20" Tag="Win10TweakerBrokeDefender">
+            <views:ViewConditionsTemplate x:Name="ViewWin10TweakerBrokeDefender"  Grid.Column="1" Panel.ZIndex="20" Tag="DefenderCorrupted">
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.DefenderIsBroken}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />

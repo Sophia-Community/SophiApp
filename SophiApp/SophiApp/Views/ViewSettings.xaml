@@ -115,9 +115,9 @@
 
                                 <ContentPresenter Content="{DynamicResource Icon.Settings.Small}"
                                                   VerticalAlignment="Stretch"
-                                                  Margin="0, 0, 10, 2"/>
-                                
-                                <controls:SettingSwitch 
+                                                  Margin="0, 0, 10, 2" />
+
+                                <controls:SettingSwitch
                                     Width="290"
                                     VerticalAlignment="Center"
                                     Command="{Binding AdvancedSettingsClickedCommand}"
