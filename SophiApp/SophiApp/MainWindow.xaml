@@ -218,28 +218,46 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.MinimumVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.Windows10Build.Supported}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center">
+                        <TextBlock Text="{DynamicResource Conditions.Windows10Build.Supported}" 
+                                   Margin="{StaticResource MarginViewConditionsText}" 
+                                   HorizontalAlignment="Center"
+                                   Visibility="Collapsed">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BoldText}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsWindows11}" Value="False">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsWindows11}" Value="True">
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="{DynamicResource Conditions.Windows11InsiderBuild.Supported}" 
+                                   Margin="{StaticResource MarginViewConditionsText}" 
+                                   HorizontalAlignment="Center">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BoldText}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsWindows11InsiderPreview}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsWindows11InsiderPreview}" Value="False">
                                             <Setter Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
-                        <TextBlock Text="{DynamicResource Conditions.Windows11Build.Supported}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center">
+                        <TextBlock Text="{DynamicResource Conditions.Windows11Build.Supported}"
+                                   Margin="{StaticResource MarginViewConditionsText}"
+                                   HorizontalAlignment="Center">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BoldText}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsWindows11}" Value="True">
+                                        <DataTrigger Binding="{Binding IsWindows11InsiderPreview}" Value="False">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsWindows11}" Value="False">
+                                        <DataTrigger Binding="{Binding IsWindows11InsiderPreview}" Value="True">
                                             <Setter Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
                                     </Style.Triggers>
