@@ -21,9 +21,9 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex. На всякий случай переустановите ОС.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версия сборки вашей ОС ниже поддерживаемой.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">Минимальная поддерживаемая сборка: Windows 10 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">Минимальная поддерживаемая сборка: Windows 11 22000.493.</system:String>
-    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Минимальная поддерживаемая сборка: Windows 11 Insider Preview 22509.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">Минимальная поддерживаемая сборка Windows 10: 1904x.1151.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">Минимальная поддерживаемая сборка Windows 11: 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Минимальная поддерживаемая Windows 11 Insider Preview сборка: 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Открыть Центр обновления Windows</system:String>
     <system:String x:Key="Localization.Privacy">Конфиденциальность</system:String>
     <system:String x:Key="Localization.Personalization">Персонализация</system:String>
