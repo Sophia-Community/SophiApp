@@ -22,7 +22,7 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater від Sycnex. Про всяк випадок перевстановіть ОС.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версія збірки вашої ОС нижча підтримуваної.</system:String>
     <system:String x:Key="Conditions.Windows10Build.Supported">Мінімальна підтримувана збірка Windows 10: 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">Мінімальна підтримувана збіркаWindows 11: 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">Мінімальна підтримувана збірка Windows 11: 22000.493.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Мінімальна підтримувана збірка Windows 11 Insider Preview: 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Відкрити Центр оновлення Windows</system:String>
     <system:String x:Key="Localization.Privacy">Конфіденційність</system:String>
