@@ -11,7 +11,7 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp isn't compatible with your Windows.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update the OS to the latest version.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2 &amp; Windows 11 21H2.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2, Windows 11 21H2, &amp; Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
