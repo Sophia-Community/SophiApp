@@ -76,8 +76,8 @@
     <system:String x:Key="Localization.Toast.Title.Notificaton">Уведомление</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление для SophiApp</system:String>
-    <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
     <system:String x:Key="Localization.ViewChanges.Cancel">Отмена</system:String>
+    <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Изменено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
     <system:String x:Key="Localization.ViewGames.NoData">Нет данных для отображения,</system:String>
