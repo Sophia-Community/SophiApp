@@ -2634,8 +2634,8 @@
       "DE": ""
     },
     "Description": {
-      "EN": "",
-      "RU": "",
+      "EN": "Network protection helps to prevent users from using any application to access dangerous domains that may host phishing scams, exploits, and other malicious content on the internet.",
+      "RU": "Защита сети помогает пользователю предотвратить подключение приложений к опасным доменам, на которых могут размещаться фишинговые аферы, эксплойты и прочий другой вредоносный контент в интернете",
       "DE": ""
     },
     "Type": "CheckBox",
