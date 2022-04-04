@@ -489,11 +489,12 @@ namespace SophiApp.Customisations
                                         || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
 
         public static bool _800() => WmiHelper.DefenderIsRun()
-                                     ? PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
+                                     ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _800_DEFENDER_NETWORK_PROTECTION_POLICIES_PATH, _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
+                                        || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _800_DEFENDER_NETWORK_PROTECTION_PATH, _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
                                      : throw new MicrosoftDefenderNotRunning();
 
         public static bool _801() => WmiHelper.DefenderIsRun()
-                                     ? PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE
+                                     ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _801_WINDOWS_DEFENDER_PATH, _801_PUA_PROTECTION) == ENABLED_VALUE
                                      : throw new MicrosoftDefenderNotRunning();
 
         public static bool _802() => WmiHelper.DefenderIsRun()

@@ -150,9 +150,8 @@ namespace SophiApp.ViewModels
 
         public bool IsRelease { get; } = AppHelper.IsRelease;
 
-        public bool IsWindows11InsiderPreview { get; } = OsHelper.GetBuild() >= OsHelper.WIN11_INSIDER_BUILD_PATTERN;
-
         public bool IsWindows11 { get; } = OsHelper.IsWindows11();
+        public bool IsWindows11InsiderPreview { get; } = OsHelper.GetBuild() >= OsHelper.WIN11_INSIDER_BUILD_PATTERN;
 
         public Localization Localization
         {

@@ -24,7 +24,7 @@ namespace SophiApp.Helpers
             { new Localization() { Name = DE_NAME, Language = UILanguage.DE, Uri = new Uri(DE_URI, UriKind.Absolute)} },
             { new Localization() { Name = EN_NAME, Language = UILanguage.EN, Uri = new Uri(EN_URI, UriKind.Absolute)} },
             { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} },
-            { new Localization() { Name = UA_NAME, Language = UILanguage.RU, Uri = new Uri(UA_URI, UriKind.Absolute)} }
+            { new Localization() { Name = UA_NAME, Language = UILanguage.UA, Uri = new Uri(UA_URI, UriKind.Absolute)} }
         };
 
         internal Localization Selected;

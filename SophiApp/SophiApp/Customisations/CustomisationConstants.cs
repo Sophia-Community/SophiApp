@@ -208,6 +208,7 @@ namespace SophiApp.Customisations
         internal const byte _400_DISABLED_VALUE = 1;
         internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
         internal const string _401_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
+        internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
         internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_HEVC_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
@@ -397,10 +398,13 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
 
         internal const string _702_SOPHIA_CLEAR_TEMP_TASK = "Temp";
+        internal const string _800_DEFENDER_NETWORK_PROTECTION_PATH = @"SOFTWARE\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection";
+        internal const string _800_DEFENDER_NETWORK_PROTECTION_POLICIES_PATH = @"SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection";
         internal const string _800_ENABLE_NETWORK_PROTECTION = "EnableNetworkProtection";
         internal const string _800_SET_NETWORK_PROTECTION_PS = "Set-MpPreference -EnableNetworkProtection";
         internal const string _801_PUA_PROTECTION = "PUAProtection";
         internal const string _801_SET_PUA_PROTECTION_PS = "Set-MpPreference -PUAProtection";
+        internal const string _801_WINDOWS_DEFENDER_PATH = @"SOFTWARE\Microsoft\Windows Defender";
         internal const string _802_DEFENDER_SANDBOX_PROCESS = "MsMpEngCP";
         internal const string _802_DEFENDER_USE_SANDBOX_ARGS = "/M MP_FORCE_USE_SANDBOX";
         internal const string _802_FORCE_USE_SANDBOX = "MP_FORCE_USE_SANDBOX";
@@ -593,7 +597,6 @@ else
         internal const byte DEFAULT_TELEMETRY_VALUE = 3;
         internal const string DEFENDER_COMPUTER_STATUS_CLASS = "MSFT_MpComputerStatus";
         internal const string DEFENDER_NAMESPACE = @"Root\Microsoft\Windows\Defender";
-        internal const string DEFENDER_PREFERENCE_PS = "Get-MpPreference";
         internal const string DELEGATION_CONSOLE = "DelegationConsole";
         internal const string DELEGATION_CONSOLE_VALUE = "{00000000-0000-0000-0000-000000000000}";
         internal const string DELEGATION_TERMINAL = "DelegationTerminal";
@@ -685,6 +688,12 @@ else
         internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static readonly string _348_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
         internal static readonly string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
+
+        internal static readonly Dictionary<string, string> _500_ADGUARD_WEB_PARAMS = new Dictionary<string, string>()
+        {
+            { "ContentType", "application/x-www-form-urlencoded" }, { "type", "url" }, { "url", "https://www.microsoft.com/store/productId/9n4wgh0z6vhq" },
+            { "ring", "RP" }, { "lang", "en-US" }
+        };
 
         internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "Device Driver Packages", "Previous Installations", "Setup Log Files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows Upgrade Log Files" };
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";

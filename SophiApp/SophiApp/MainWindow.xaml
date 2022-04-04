@@ -218,8 +218,8 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.MinimumVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.Windows10Build.Supported}" 
-                                   Margin="{StaticResource MarginViewConditionsText}" 
+                        <TextBlock Text="{DynamicResource Conditions.Windows10Build.Supported}"
+                                   Margin="{StaticResource MarginViewConditionsText}"
                                    HorizontalAlignment="Center"
                                    Visibility="Collapsed">
                             <TextBlock.Style>
@@ -232,8 +232,8 @@
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
-                        <TextBlock Text="{DynamicResource Conditions.Windows11InsiderBuild.Supported}" 
-                                   Margin="{StaticResource MarginViewConditionsText}" 
+                        <TextBlock Text="{DynamicResource Conditions.Windows11InsiderBuild.Supported}"
+                                   Margin="{StaticResource MarginViewConditionsText}"
                                    HorizontalAlignment="Center">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BoldText}">
