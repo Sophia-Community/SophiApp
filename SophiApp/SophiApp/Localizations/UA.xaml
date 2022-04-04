@@ -79,7 +79,7 @@
     <system:String x:Key="Localization.ViewChanges.Cancel">Відміна</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Застосувати</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Змінено</system:String>
-    <system:String x:Key="Localization.ViewChanges.Setting">налаштувань</system:String>
+    <system:String x:Key="Localization.ViewChanges.Setting">налаштування</system:String>
     <system:String x:Key="Localization.ViewGames.NoData">Відсутні дані для відображення,</system:String>
     <system:String x:Key="Localization.ViewGames.PackagesRemoved">або видалені необхідні пакети.</system:String>
     <system:String x:Key="Localization.ViewSearch.NotFound">Нічого не знайдено</system:String>
