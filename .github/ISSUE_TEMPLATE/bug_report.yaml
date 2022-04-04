@@ -36,7 +36,7 @@ body:
     attributes:
       label: SophiApp version
       description: Which version of SophiApp are you using? The version number can be found in the Settings
-      placeholder: e.g. 1.0.0.22
+      placeholder: e.g. 1.0.0.45
     validations:
       required: true
   - type: input
