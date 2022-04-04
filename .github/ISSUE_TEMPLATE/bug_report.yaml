@@ -12,7 +12,8 @@ body:
       options:
       - label: Verify that this is not a Windows issue;
       - label: Refer to the [System requirements](https://github.com/Sophia-Community/SophiApp/blob/master/README.md#system-requirements);
-      - label: Attach a created log. You may find it in the `Logs` folder
+      - label: SophiApp may not work on a homebrew Windows;
+      - label: Attach a created log. You may find it in the `Logs` folder.
   - type: textarea
     attributes:
       label: Steps To Reproduce
@@ -35,7 +36,7 @@ body:
     attributes:
       label: SophiApp version
       description: Which version of SophiApp are you using? The version number can be found in the Settings
-      placeholder: e.g. 1.0.0.22
+      placeholder: e.g. 1.0.0.45
     validations:
       required: true
   - type: input
