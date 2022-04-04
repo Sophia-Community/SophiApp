@@ -86,7 +86,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 * Multithreading support;
 * `SophiApp` is checked by the static analyzer, the license for which by courtesy of PVS-Studio.
 * All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
-  * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed;
+  * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into you GitHub account to be able to view Acions logs);
 * The app shows the `actual` state of every feature in the UI;
 * Supports high resolutions;
 * Has a built-in search engine;
