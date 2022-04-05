@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,10 @@ namespace SophiApp.Views
         public new static readonly DependencyProperty TagProperty =
             DependencyProperty.Register("Tag", typeof(string), typeof(ViewStartMenu), new PropertyMetadata(default));
 
+        // Using a DependencyProperty as the backing store for TextedElementsCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextedElementsCountProperty =
+            DependencyProperty.Register("TextedElementsCount", typeof(int), typeof(ViewStartMenu), new PropertyMetadata(default));
+
         public ViewStartMenu()
         {
             InitializeComponent();
@@ -28,6 +33,12 @@ namespace SophiApp.Views
             set { SetValue(TagProperty, value); }
         }
 
+        public int TextedElementsCount
+        {
+            get { return (int)GetValue(TextedElementsCountProperty); }
+            set { SetValue(TextedElementsCountProperty, value); }
+        }
+
         private void OnChildMouseWheelEvent(object sender, MouseWheelEventArgs e)
         {
             e.Handled = true;
@@ -36,7 +47,16 @@ namespace SophiApp.Views
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
         }
 
-        private void TextedElementsFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tag);
+        private void TextedElementsFilter(object sender, FilterEventArgs e)
+        {
+            var element = e.Item as TextedElement;
+            var isValidElement = FilterHelper.FilterByTag(elementTag: element.Tag, viewTag: Tag);
+
+            if (isValidElement && element.Status != ElementStatus.DISABLED)
+                TextedElementsCount++;
+
+            e.Accepted = isValidElement;
+        }
 
         private void ViewStartMenu_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
