@@ -85,7 +85,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 * 130+ tweaks; ⭐
 * `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
 * Multithreading support;
-* `SophiApp` is checked by the static analyzer, the license for which by courtesy of PVS-Studio.
+* `SophiApp` is checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio; <img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/>
+  * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license). 
 * All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into you GitHub account to be able to view Acions logs);
 * The app shows the `actual` state of every feature in the UI;
@@ -145,7 +146,6 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 * You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
   * The hidden functions will marked with a gear in UI;
 * After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
-* Big thanks to PVS-Studio for providing us with [free license](https://pvs-studio.com/en/order/open-source-license) (for being an Open Source project) for their [static analyzer](https://pvs-studio.com/pvs-studio). <img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/>
 
 ## Translating
 
