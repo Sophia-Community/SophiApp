@@ -38,7 +38,7 @@
     <system:String x:Key="Localization.ViewApplyingException.InApplying">While applying</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">an error occurred.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleaning up the %SystemRoot%\SoftwareDistribution\Download folder.</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates.</system:String>
