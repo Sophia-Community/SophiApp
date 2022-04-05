@@ -3629,10 +3629,10 @@
   {
     "Id": 924,
     "Header": {
-      "EN": "Make the \"Open\", \"Print\", and \"Edit\" items available when selecting more than 15 files",
-      "RU": "Сделать элементы \"Открыть\", \"Изменить\" и \"Печать\" доступными контекстного меню при выделении более 15 элементов",
+      "EN": "Make the \"Open\", \"Print\", and \"Edit\" context menu items available when selecting more than 15 files",
+      "RU": "Сделать элементы \"Открыть\", \"Изменить\" и \"Печать\" контекстного меню доступными при выделении более 15 элементов",
       "DE": "",
-      "UA": "Зробити елементи \"Відкрити\", \"Змінити\" та \"Друк\" доступними контекстного меню при виділенні більше 15 елементів"
+      "UA": "Зробити елементи \"Відкрити\", \"Змінити\" та \"Друк\" контекстного меню доступними при виділенні більше 15 елементів"
     },
     "Description": {
       "EN": "Dy default, the \"Open\", \"Print\", \"Edit\" context menu items will not appear if selecting more than 15 items to avoid accidentally performing these actions on a large number of files.",
