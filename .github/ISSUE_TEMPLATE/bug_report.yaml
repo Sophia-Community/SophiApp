@@ -32,11 +32,11 @@ body:
     validations:
       required: true
   - type: textarea
-     attributes:
-       label: Actual behaviour
-       placeholder: The app closes unexpectedly...
-     validations:
-       required: true
+    attributes:
+      label: Actual behaviour
+      placeholder: The app closes unexpectedly...
+    validations:
+      required: true
   - type: markdown
     attributes:
       value: |
