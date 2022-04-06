@@ -878,9 +878,10 @@ namespace SophiApp.Customisations
 
         public static void _349(bool IsChecked)
         {
+            var temp = Environment.GetEnvironmentVariable(TEMP);
+
             if (IsChecked)
             {
-                var temp = Environment.GetEnvironmentVariable(TEMP);
                 var installer = $"{temp}\\{_349_VC_REDISTRX64_EXE}";
                 WebHelper.Download(_349_DOWNLOAD_URL, installer);
                 ProcessHelper.StartWait(installer, _349_VC_REDISTRX64_INSTALL_ARGS);
@@ -899,6 +900,9 @@ namespace SophiApp.Customisations
             if (vcFileVersion.ProductName.Contains(_349_VC_REDISTRX64_NAME_PATTERN))
             {
                 ProcessHelper.StartWait(vcCachePath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
+                Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
+                         .ToList()
+                         .ForEach(log => FileHelper.TryDeleteFile(log));
             }
         }
 
