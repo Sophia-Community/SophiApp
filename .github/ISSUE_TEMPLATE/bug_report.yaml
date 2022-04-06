@@ -31,19 +31,38 @@ body:
       description: A clear description of what is expected to happen.
     validations:
       required: true
-  - type: input
-    id: sophiapp-version
+  - type: textarea
+     attributes:
+       label: Actual behaviour
+       placeholder: The app closes unexpectedly...
+     validations:
+       required: true
+  - type: markdown
     attributes:
-      label: SophiApp version
-      description: Which version of SophiApp are you using? The version number can be found in the Settings
-      placeholder: e.g. 1.0.0.45
-    validations:
-      required: true
+      value: |
+        # Device information
   - type: input
     attributes:
       label: Windows Version
       description: Which version of Windows are you using? Press <kbd>Win</kbd> + <kbd>Pause/Break</kbd> to open the page to copy from.
       placeholder: e.g. Windows 11 21H2 22000.527
+    validations:
+      required: true
+  - type: input
+    id: sophiapp-version
+    attributes:
+      label: SophiApp version
+      description: Which version of SophiApp are you using?
+      placeholder: e.g. 1.0.0.45
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: SophiApp release type
+      description: You can find this information in Settings
+      options:
+        - Firefox
+        - Firefox Beta
     validations:
       required: true
   - type: textarea
