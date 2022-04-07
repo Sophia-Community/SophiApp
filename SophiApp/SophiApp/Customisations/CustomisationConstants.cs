@@ -194,7 +194,9 @@ namespace SophiApp.Customisations
         internal const string _344_IS_EXPEDITED = "IsExpedited";
         internal const string _348_MSI_MASK = "*.msi";
         internal const string _348_MSIEXEC_EXE = "msiexec.exe";
-        internal const string _348_PC_HEALTH_CHECK = "Windows PC Health Check";
+        internal const string _348_PCHC = "Windows PC Health Check";
+        internal const string _348_PCHC_PATH = @"SOFTWARE\Microsoft\PCHC";
+        internal const string _348_PCHC_PREVIOUS_UNINSTALL = "PreviousUninstall";
         internal const string _348_PRODUCT_NAME = "ProductName";
         internal const string _349_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
         internal const string _349_VC_REDISTR_FOR_VS_2022 = "Visual C++ Redistributable for Visual Studio 2022";

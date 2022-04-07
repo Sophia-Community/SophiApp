@@ -692,7 +692,7 @@ namespace SophiApp.Customisations
                                                                         _317_CURRENT_VERSION_WINDOWS_PATH,
                                                                             _317_PRINTER_LEGACY_MODE,
                                                                                 IsChecked ? _317_ENABLED_VALUE
-                                                                                         : _317_DISABLED_VALUE,
+                                                                                          : _317_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _318(bool IsChecked)
@@ -871,9 +871,10 @@ namespace SophiApp.Customisations
         public static void _348(bool _)
         {
             var properties = MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                     .First(property => property[_348_PRODUCT_NAME] == _348_PC_HEALTH_CHECK);
+                                      .First(property => property[_348_PRODUCT_NAME] == _348_PCHC);
 
             ProcessHelper.StartWait(_348_MSIEXEC_EXE, $"/uninstall {properties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
+            RegHelper.SetValue(RegistryHive.LocalMachine, _348_PCHC_PATH, _348_PCHC_PREVIOUS_UNINSTALL, ENABLED_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _349(bool IsChecked)

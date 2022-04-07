@@ -78,6 +78,15 @@ namespace SophiApp.Helpers
 
         internal static ManagementBaseObject GetMsftMpComputerStatus() => GetManagementObjectSearcher(DEFENDER_ROOT, SELECT_ALL_FROM_MSF_MPCOMPUTER_STATUS).Get().Cast<ManagementBaseObject>().First();
 
+        /// <summary>
+        /// Check for UWP apps updates.
+        /// </summary>
+        internal static void GetUwpAppsUpdates()
+        {
+            var appManagement = new ManagementClass(@"Root\cimv2\mdm\dmmap", "MDM_EnterpriseModernAppManagement_AppManagement01", null);
+            appManagement.InvokeMethod("UpdateScanMethod", null, null);
+        }
+
         internal static string GetVideoControllerDacType()
         {
             var scope = @"Root\Cimv2";

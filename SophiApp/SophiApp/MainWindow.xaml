@@ -205,6 +205,7 @@
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.NotCompatible}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.SupportedInsider}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:CommandButton
                                 Margin="0, 10, 0, 0"
