@@ -115,6 +115,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## Screenshots [Helen]
 
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
@@ -126,7 +127,6 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.gif)
 
 ## Searching feature
 
