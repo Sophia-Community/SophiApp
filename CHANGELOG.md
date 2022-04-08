@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Added Windows 11 Insider Preview support (22509+). Closes [#40](https://github.com/Sophia-Community/SophiApp/issues/40);
 * UI/UX updated;
 * Updated and expanded localizations;
-* Added German and Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
+* Added 🇩🇪 German and 🇺🇦 Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
 * Updated functions' descriptions;
 * CHuge code refactoring;
 * Many bugs fixed.
