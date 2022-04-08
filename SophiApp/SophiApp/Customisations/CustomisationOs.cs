@@ -8,6 +8,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
+using System.Text.RegularExpressions;
 using System.Windows;
 using static SophiApp.Customisations.CustomisationConstants;
 
@@ -691,7 +692,7 @@ namespace SophiApp.Customisations
                                                                         _317_CURRENT_VERSION_WINDOWS_PATH,
                                                                             _317_PRINTER_LEGACY_MODE,
                                                                                 IsChecked ? _317_ENABLED_VALUE
-                                                                                         : _317_DISABLED_VALUE,
+                                                                                          : _317_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
         public static void _318(bool IsChecked)
@@ -870,16 +871,18 @@ namespace SophiApp.Customisations
         public static void _348(bool _)
         {
             var properties = MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                     .First(property => property[_348_PRODUCT_NAME] == _348_PC_HEALTH_CHECK);
+                                      .First(property => property[_348_PRODUCT_NAME] == _348_PCHC);
 
             ProcessHelper.StartWait(_348_MSIEXEC_EXE, $"/uninstall {properties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
+            RegHelper.SetValue(RegistryHive.LocalMachine, _348_PCHC_PATH, _348_PCHC_PREVIOUS_UNINSTALL, ENABLED_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _349(bool IsChecked)
         {
+            var temp = Environment.GetEnvironmentVariable(TEMP);
+
             if (IsChecked)
             {
-                var temp = Environment.GetEnvironmentVariable(TEMP);
                 var installer = $"{temp}\\{_349_VC_REDISTRX64_EXE}";
                 WebHelper.Download(_349_DOWNLOAD_URL, installer);
                 ProcessHelper.StartWait(installer, _349_VC_REDISTRX64_INSTALL_ARGS);
@@ -898,6 +901,9 @@ namespace SophiApp.Customisations
             if (vcFileVersion.ProductName.Contains(_349_VC_REDISTRX64_NAME_PATTERN))
             {
                 ProcessHelper.StartWait(vcCachePath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
+                Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
+                         .ToList()
+                         .ForEach(log => FileHelper.TryDeleteFile(log));
             }
         }
 
@@ -938,8 +944,15 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ _500_HEVC_APPX_NAME }";
-                WebHelper.Download(_500_HEVC_LINK, hevcvAppx, true);
+                var adguardPattern = "<tr style.*<a href=\"(?<Url>.*)\"\\s.*>(?<Version>.*)<\\/a>";
+                var hevcvPattern = "Microsoft.HEVCVideoExtension_.*_x64__8wekyb3d8bbwe.appx";
+                var adguardResponse = WebHelper.GetPostResponse(_500_ADGUARD_LINK, _500_ADGUARD_WEB_PARAMS).Result;
+                var hevcvDto = Regex.Matches(adguardResponse, adguardPattern)
+                                    .Cast<Match>()
+                                    .FirstOrDefault(link => Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern));
+
+                var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
+                WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
                 UwpHelper.InstallPackage(hevcvAppx);
                 FileHelper.TryDeleteFile(hevcvAppx);
                 return;

@@ -11,7 +11,8 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp isn't compatible with your Windows.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update the OS to the latest version.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2 &amp; Windows 11 21H2.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, &amp; Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Your OS may have been infected through a backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Read more:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
@@ -21,8 +22,9 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex. Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your OS build version is lower than the supported one.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">The minimum supported build: Windows 10 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">The minimum supported build: Windows 11 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">The minimum supported Windows 10 build is 1904x.1151.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">The minimum supported Windows 11 build is 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">The minimum supported Windows 11 Insider Preview build is 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows Update</system:String>
     <system:String x:Key="Localization.Privacy">Privacy</system:String>
     <system:String x:Key="Localization.Personalization">Personalization</system:String>
@@ -33,12 +35,13 @@
     <system:String x:Key="Localization.TaskScheduler">Scheduled Tasks</system:String>
     <system:String x:Key="Localization.Security">Security</system:String>
     <system:String x:Key="Localization.ContextMenu">Context Menu</system:String>
+    <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">While applying</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">an error occurred.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Cleaning up the %SystemRoot%\SoftwareDistribution\Download folder.</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Event">The Windows update cache was successfully deleted.</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Cleans up the temporary files folder.</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Event">The temporary files folder was successfully cleaned up.</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Event">Temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates.</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Important Information</system:String>
@@ -57,7 +60,6 @@
     <system:String x:Key="Localization.Settings.Themes.Dark">Dark</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Light</system:String>
     <system:String x:Key="Localization.Settings.Languages">Language</system:String>
-    <system:String x:Key="Localization.Settings">Settings</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Advanced settings</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Dev Mode</system:String>
     <system:String x:Key="Localization.Settings.Team">Project Members</system:String>
@@ -75,6 +77,7 @@
     <system:String x:Key="Localization.Toast.Title.Notificaton">Notification</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Download</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">An update for SophiApp is available</system:String>
+    <system:String x:Key="Localization.View.NoData">There is no data to display.</system:String>
     <system:String x:Key="Localization.ViewChanges.Cancel">Cancel</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Apply</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Changed</system:String>

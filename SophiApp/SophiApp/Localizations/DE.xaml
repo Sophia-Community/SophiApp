@@ -11,7 +11,8 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Bitte nicht mehrere Kopien von SophiApp gleichzeitig ausführen.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Die SophiApp ist nicht mit Ihrem Windows kompatibel.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Bitte Windows Update ausführen, um das Betriebssystem auf die neueste Version zu aktualisieren.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp unterstützt Windows 10 2004/20H2/21H1/21H2 &amp; Windows 11 21H2.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp unterstützt Windows 10 2004/20H2/21H1/21H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 und Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ihr Betriebssystem kann durch eine Hintertür in Win 10 Tweaker infiziert worden sein.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Mehr lesen:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
@@ -21,8 +22,9 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Die Stabilität des Windows-Betriebssystems kann durch die Verwendung des</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater-Skripts von Sycnex beeinträchtigt worden sein. Betriebssystem vorsichtshalber neu installieren.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Die Build-Version Ihres Betriebssystems ist niedriger als die unterstützte Version.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">Der minimal unterstützte Build: Windows 10 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">Der minimal unterstützte Build: Windows 11 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">Der minimal unterstützte Build ist Windows 10 1904x.1151.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">Der minimal unterstützte Build ist Windows 11 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Der minimal unterstützte Windows 11 Insider Preview Build ist 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Windows Update öffnen</system:String>
     <system:String x:Key="Localization.Privacy">Datenschutz</system:String>
     <system:String x:Key="Localization.Personalization">Personalisierung</system:String>
@@ -33,6 +35,7 @@
     <system:String x:Key="Localization.TaskScheduler">Geplante Aufgaben</system:String>
     <system:String x:Key="Localization.Security">Sicherheit</system:String>
     <system:String x:Key="Localization.ContextMenu">Kontextmenü</system:String>
+    <system:String x:Key="Localization.Settings">Einstellungen</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">Bei der Anwendung</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">ist ein Fehler aufgetreten.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Ordner %SystemRoot%\SoftwareDistribution\Download bereinigen.</system:String>
@@ -57,7 +60,6 @@
     <system:String x:Key="Localization.Settings.Themes.Dark">Dunkel</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Hell</system:String>
     <system:String x:Key="Localization.Settings.Languages">Sprache</system:String>
-    <system:String x:Key="Localization.Settings">Einstellungen</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Erweiterte Einstellungen</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Dev-Modus</system:String>
     <system:String x:Key="Localization.Settings.Team">Projektmitglieder</system:String>
@@ -75,6 +77,7 @@
     <system:String x:Key="Localization.Toast.Title.Notificaton">Benachrichtigung/system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Herunterladen</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Update für SophiApp verfügbar</system:String>
+    <system:String x:Key="Localization.View.NoData">Es sind keine Daten zu sehen.</system:String>
     <system:String x:Key="Localization.ViewChanges.Cancel">Abbrechen</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Anwenden</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Geändert</system:String>

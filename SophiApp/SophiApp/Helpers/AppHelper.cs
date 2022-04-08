@@ -6,7 +6,7 @@ namespace SophiApp.Helpers
     internal class AppHelper
     {
         private const string CODER_LINK = "https://github.com/Inestic";
-        private const string DEBUG_EXT = "log";
+        private const string DEBUG_EXT = "txt";
         private const string DESIGNER_LINK = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
         private const string GITHUB_RELEASES_PAGE = "https://github.com/Sophia-Community/SophiApp/releases";
         private const string GITHUB_REPO = "https://github.com/Sophia-Community/SophiApp";

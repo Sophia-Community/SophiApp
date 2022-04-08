@@ -28,7 +28,7 @@ namespace SophiApp.Helpers
         {
             new OsVersionCondition(), new OsBuildVersionCondition(), new RebootRequiredCondition(),
             new SingleInstanceCondition(), new SingleAdminSessionCondition(), new Win10TweakerCondition(),
-            new SycnexScriptCondition(), new DefenderWarningCondition(), new Win10TweakerDefenderBroken(),
+            new SycnexScriptCondition(), new DefenderWarningCondition(), new DefenderNotCorruptedCondition(),
             //new NewVersionCondition()
         };
 

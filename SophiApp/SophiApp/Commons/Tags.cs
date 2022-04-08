@@ -14,7 +14,7 @@ namespace SophiApp.Commons
         SomethingWrong,
         SycnexScript,
         Win10Tweaker,
-        Win10TweakerBrokeDefender,
+        DefenderCorrupted,
     }
 
     internal enum InfoPanelVisibility

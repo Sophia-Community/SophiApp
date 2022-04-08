@@ -411,7 +411,7 @@ namespace SophiApp.Customisations
         public static bool _347() => _346().Invert();
 
         public static bool _348() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PC_HEALTH_CHECK) is null
+                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PCHC) is null
                                                                                                                                ? throw new UpdateNotInstalledException(KB5005463_UPD)
                                                                                                                                : false;
 
@@ -489,11 +489,12 @@ namespace SophiApp.Customisations
                                         || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
 
         public static bool _800() => WmiHelper.DefenderIsRun()
-                                     ? PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
+                                     ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _800_DEFENDER_NETWORK_PROTECTION_POLICIES_PATH, _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
+                                        || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _800_DEFENDER_NETWORK_PROTECTION_PATH, _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
                                      : throw new MicrosoftDefenderNotRunning();
 
         public static bool _801() => WmiHelper.DefenderIsRun()
-                                     ? PowerShellHelper.GetScriptProperty<byte>(script: DEFENDER_PREFERENCE_PS, propertyName: _801_PUA_PROTECTION) == ENABLED_VALUE
+                                     ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _801_WINDOWS_DEFENDER_PATH, _801_PUA_PROTECTION) == ENABLED_VALUE
                                      : throw new MicrosoftDefenderNotRunning();
 
         public static bool _802() => WmiHelper.DefenderIsRun()

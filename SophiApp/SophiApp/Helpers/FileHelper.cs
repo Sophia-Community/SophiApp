@@ -105,18 +105,6 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static void TryDirectoryDelete(string dirPath)
-        {
-            try
-            {
-                Directory.Delete(dirPath, recursive: true);
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         internal static bool DirectoryIsEmpty(string dirPath)
         {
             byte count = 0;
@@ -198,6 +186,17 @@ namespace SophiApp.Helpers
         {
             if (File.Exists(filePath))
                 File.Delete(filePath);
+        }
+
+        internal static void TryDirectoryDelete(string dirPath)
+        {
+            try
+            {
+                Directory.Delete(dirPath, recursive: true);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         internal static void WriteAllLines(string path, List<string> list)

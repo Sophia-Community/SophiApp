@@ -205,6 +205,7 @@
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.NotCompatible}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.Supported}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.SupportedInsider}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:CommandButton
                                 Margin="0, 10, 0, 0"
@@ -218,30 +219,27 @@
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.OsUpdateBuildRevision.MinimumVersion}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                        <TextBlock Text="{DynamicResource Conditions.Windows10Build.Supported}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center">
+                        <TextBlock Margin="{StaticResource MarginViewConditionsText}"
+                                   HorizontalAlignment="Center">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BoldText}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsWindows11}" Value="False">
-                                            <Setter Property="Visibility" Value="Visible" />
+                                            <Setter Property="Text" Value="{DynamicResource Conditions.Windows10Build.Supported}" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsWindows11}" Value="True">
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <TextBlock Text="{DynamicResource Conditions.Windows11Build.Supported}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center">
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BoldText}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsWindows11}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsWindows11}" Value="False">
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </DataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsWindows11InsiderPreview}" Value="False" />
+                                                <Condition Binding="{Binding IsWindows11}" Value="True" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Text" Value="{DynamicResource Conditions.Windows11Build.Supported}" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsWindows11InsiderPreview}" Value="True" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Text" Value="{DynamicResource Conditions.Windows11InsiderBuild.Supported}" />
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>
@@ -309,7 +307,7 @@
                     </StackPanel>
                 </views:ViewConditionsTemplate.TextContent>
             </views:ViewConditionsTemplate>
-            <views:ViewConditionsTemplate x:Name="ViewWin10TweakerBrokeDefender"  Grid.Column="1" Panel.ZIndex="20" Tag="Win10TweakerBrokeDefender">
+            <views:ViewConditionsTemplate x:Name="ViewWin10TweakerBrokeDefender"  Grid.Column="1" Panel.ZIndex="20" Tag="DefenderCorrupted">
                 <views:ViewConditionsTemplate.TextContent>
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Conditions.DefenderIsBroken}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />

@@ -11,7 +11,8 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Пожалуйста, не запускайте несколько копий SophiApp одновременно.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp не совместима с Вашей версией Windows.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустите Центр обновления Windows, чтобы обновить ОС до актуальной версии.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp поддерживает Windows 10 2004/20H2/21H1/21H2 и Windows 11 21H2.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp поддерживает Windows 10 2004/20H2/21H1/21H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 и Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, возможно, через бэкдор в Win 10 Tweaker была заражена трояном.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Подробнее:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
@@ -21,8 +22,9 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex. На всякий случай переустановите ОС.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версия сборки вашей ОС ниже поддерживаемой.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">Минимальная поддерживаемая сборка: Windows 10 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">Минимальная поддерживаемая сборка: Windows 11 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">Минимальная поддерживаемая сборка Windows 10: 1904x.1151.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">Минимальная поддерживаемая сборка Windows 11: 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Минимальная поддерживаемая сборка Windows 11 Insider Preview: 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Открыть Центр обновления Windows</system:String>
     <system:String x:Key="Localization.Privacy">Конфиденциальность</system:String>
     <system:String x:Key="Localization.Personalization">Персонализация</system:String>
@@ -33,6 +35,7 @@
     <system:String x:Key="Localization.TaskScheduler">Планировщик заданий</system:String>
     <system:String x:Key="Localization.Security">Безопасность</system:String>
     <system:String x:Key="Localization.ContextMenu">Контекстное меню</system:String>
+    <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">При применении</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">произошла ошибка</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки %SystemRoot%\SoftwareDistribution\Download</system:String>
@@ -57,7 +60,6 @@
     <system:String x:Key="Localization.Settings.Themes.Dark">Тёмная</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Светлая</system:String>
     <system:String x:Key="Localization.Settings.Languages">Язык</system:String>
-    <system:String x:Key="Localization.Settings">Настройки</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Расширенные настройки</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Режим разработчика</system:String>
     <system:String x:Key="Localization.Settings.Team">Участники проекта</system:String>
@@ -75,8 +77,9 @@
     <system:String x:Key="Localization.Toast.Title.Notificaton">Уведомление</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Загрузить</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступно обновление для SophiApp</system:String>
-    <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
+    <system:String x:Key="Localization.View.NoData">Нет данных для отображения</system:String>
     <system:String x:Key="Localization.ViewChanges.Cancel">Отмена</system:String>
+    <system:String x:Key="Localization.ViewChanges.Apply">Применить</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Изменено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">настроек</system:String>
     <system:String x:Key="Localization.ViewGames.NoData">Нет данных для отображения,</system:String>
