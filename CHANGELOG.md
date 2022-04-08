@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Updated functions' descriptions;
 * CHuge code refactoring;
 * Many bugs fixed.
-* [Post](https://t.me/SophiaNews/746) in the Telegram group about the announcement.
+* [Post](https://t.me/SophiaNews/746) on the Telegram channel about the announcement.
 
 ## 1.0.0.13 beta 2 — 31.01.2022
 
