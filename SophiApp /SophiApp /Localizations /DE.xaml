@@ -74,7 +74,7 @@
     <system:String x:Key="Localization.EventViewer.CustomView.Description">Ereignisse bei der Erstellung von Prozessen und der Befehlszeilenüberprüfung.</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Name">Prozess-Erstellung</system:String>
     <system:String x:Key="Localization.Search">Suchen</system:String>
-    <system:String x:Key="Localization.Toast.Title.Notificaton">Benachrichtigung/system:String>
+    <system:String x:Key="Localization.Toast.Title.Notificaton">Benachrichtigung</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Herunterladen</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Update für SophiApp verfügbar</system:String>
     <system:String x:Key="Localization.View.NoData">Es sind keine Daten zu sehen.</system:String>
