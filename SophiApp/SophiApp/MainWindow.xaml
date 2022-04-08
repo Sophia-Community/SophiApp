@@ -229,21 +229,21 @@
                                         </DataTrigger>
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
-                                                <Condition Binding="{Binding IsWindows11InsiderPreview}" Value="False"/>
-                                                <Condition Binding="{Binding IsWindows11}" Value="True"/>
+                                                <Condition Binding="{Binding IsWindows11InsiderPreview}" Value="False" />
+                                                <Condition Binding="{Binding IsWindows11}" Value="True" />
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="Text" Value="{DynamicResource Conditions.Windows11Build.Supported}" />
                                         </MultiDataTrigger>
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
-                                                <Condition Binding="{Binding IsWindows11InsiderPreview}" Value="True"/>
+                                                <Condition Binding="{Binding IsWindows11InsiderPreview}" Value="True" />
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="Text" Value="{DynamicResource Conditions.Windows11InsiderBuild.Supported}" />
                                         </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>
-                        </TextBlock>                        
+                        </TextBlock>
                         <TextBlock Text="{DynamicResource Conditions.OsBuildVersion.RunUpdate}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         <controls:CommandButton
                                 Margin="0, 10, 0, 10"

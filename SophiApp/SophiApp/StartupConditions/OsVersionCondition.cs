@@ -22,7 +22,7 @@ namespace SophiApp.Conditions
                 {
                     ComObjectHelper.EnableUpdateForOtherProducts();
                     Thread.Sleep(1000);
-                    WmiHelper.GetUwpAppsUpdates();
+                    PowerShellHelper.GetUwpAppsUpdates();
                     Thread.Sleep(1000);
                     ComObjectHelper.SetWindowsUpdateDetectNow();
                 }
