@@ -53,8 +53,8 @@
     <system:String x:Key="Localization.Time.Minute">1 Minute</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Ausführen</system:String>
     <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
-    <system:String x:Key="Localization.About.MadeWith">Hergestellt mit</system:String>
-    <system:String x:Key="Localization.About.OfWindows">von Windows&#174;</system:String>
+    <system:String x:Key="Localization.About.MadeWith">Erstellt mit</system:String>
+    <system:String x:Key="Localization.About.OfWindows">für Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
     <system:String x:Key="Localization.Settings.Themes">Thema</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Dunkel</system:String>
