@@ -31,7 +31,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 <a href="https://www.comss.ru/page.php?id=9679"><img src="https://cdn.comss.net/img/logo51.png" width=77px height=77px></a>
 <a href="https://www.majorgeeks.com/files/details/sophiapp.html"><img src="https://www.majorgeeks.com/images/logos/majorgeeks.gif" width=77px height=77px></a>
 <a href="https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml"><img src="https://pbs.twimg.com/profile_images/513959345847955458/Ego1jjO6_400x400.png" width=77px height=77px></a>
-<a href="https://www.deskmodder.de/blog/2022/02/07/sophiapp-einmal-angeschaut/"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
+<a href="https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
 
 <a href="https://github.com/Sophia-Community/SophiApp/releases"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
