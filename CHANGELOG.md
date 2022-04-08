@@ -5,11 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.0.50 — 08.04.2022
+
+* UI render engine updated;
+  * It is now possible to choose where to put the new ID in the JSON config without breaking the sequence of the IDs.
+* Startup checkings updated;
+* Added Windows 11 Insider Preview support (22509+). Closes [#40](https://github.com/Sophia-Community/SophiApp/issues/40);
+* UI/UX updated;
+* Updated and expanded localizations;
+* Added German and Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
+* Updated functions' descriptions;
+* CHuge code refactoring;
+* Many bugs fixed.
+* [Post](https://t.me/SophiaNews/746) in the Telegram group about the announcement.
+
 ## 1.0.0.13 beta 2 — 31.01.2022
 
 * Uploaded the most up-to-date screenshots that reflects the current state of development;
   * [Screeshots](https://github.com/Sophia-Community/SophiApp#screenshots-helen)
-* The `Security` category completed'
+* The `Security` category completed;
 * Added description to the `UWP applications` category;
   * Remind you that you may copy any header and description by right-clicking header.
 * Removed the frame from the app window;
