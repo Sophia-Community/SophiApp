@@ -26,7 +26,7 @@
   [![Telegram][telegram-group-badge]][telegram-group]
 </p>
 
-Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/>
+Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/>
 
 <a href="https://www.comss.ru/page.php?id=9679"><img src="https://cdn.comss.net/img/logo51.png" width=77px height=77px></a>
 <a href="https://www.majorgeeks.com/files/details/sophiapp.html"><img src="https://www.majorgeeks.com/images/logos/majorgeeks.gif" width=77px height=77px></a>
