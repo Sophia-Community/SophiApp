@@ -100,7 +100,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 * Set up UI & Personalization;
 * Uninstall OneDrive "correctly";
 * Uninstall UWP apps displaying localized packages names;
-  * An UWP apps list is being rendered dynamically using local icons
+  * An UWP apps list is rendered dynamically using local icons
 * Disable Windows features displaying friendly packages names;
 * Uninstall Windows capabilities displaying friendly packages names;
 * Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats;
