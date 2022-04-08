@@ -77,7 +77,7 @@
     <system:String x:Key="Localization.Toast.Title.Notificaton">Benachrichtigung</system:String>
     <system:String x:Key="Localization.Toast.Update.Download">Herunterladen</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Update für SophiApp verfügbar</system:String>
-    <system:String x:Key="Localization.View.NoData">Es gibt keine anzuzeigenden Daten.</system:String>
+    <system:String x:Key="Localization.View.NoData">Es gibt keine Daten zu sehen.</system:String>
     <system:String x:Key="Localization.ViewChanges.Cancel">Abbrechen</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Anwenden</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Geändert</system:String>
