@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * UI render engine updated;
   * It is now possible to choose where to put the new ID in the JSON config without breaking the sequence of the IDs.
 * Startup checkings updated;
-* Added Windows 11 Insider Preview support (22509+). Closes [#40](https://github.com/Sophia-Community/SophiApp/issues/40);
+* Added Windows 11 & Windows 11 Insider Preview support (22509+). Closes [#40](https://github.com/Sophia-Community/SophiApp/issues/40);
 * UI/UX updated;
 * Updated and expanded localizations;
 * Added 🇩🇪 German and 🇺🇦 Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
