@@ -90,7 +90,7 @@
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">Wenn Sie UWP-Apps für alle Benutzer deinstallieren, werden neu erstellte Konten die entfernten UWP-Apps nicht enthalten. Sie können sie nur im aktuellen Profil wiederherstellen und müssen Installationspakete verwenden oder sie aus dem Microsoft Store herunterladen. Die Installation wird jedoch nur im aktuellen Profil durchgeführt.</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Beschreibung kopieren</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Header kopieren</system:String>
-    <system:String x:Key="Localization.ViewTaskScheduler.Open">Task Scheduler öffnen</system:String>
+    <system:String x:Key="Localization.ViewTaskScheduler.Open">Aufgabenplanung öffnen</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Bitte PC nach dem Anwenden der Einstellungen neu starten</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">In Windows Terminal öffnen</system:String>
 </ResourceDictionary>
