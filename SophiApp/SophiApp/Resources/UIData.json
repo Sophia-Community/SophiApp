@@ -318,7 +318,7 @@
     "Header": {
       "EN": "Use sign-in info to automatically finish setting up device after an update",
       "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
-      "DE": "Verwenden von my sign-info automatisch zu beenden einrichten meiner Geräte nach einem Update oder Neustart",
+      "DE": "Anmeldeinformationen verwenden, um die Einrichtung des Geräts nach einer Aktualisierung automatisch abzuschließen",
       "UA": "Використовувати дані для входу для автоматичного завершення налаштування пристрою та відкриття програм після перезапуску або оновлення"
     },
     "Description": {
@@ -338,7 +338,7 @@
     "Header": {
       "EN": "Let websites provide locally relevant content by accessing language list",
       "RU": "Позволить веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
-      "DE": "Den Websites die lokalspezifische Information durch den Zugriff auf die Sprachenliste bereitstellen lassen",
+      "DE": "Webseiten können lokal relevante Inhalte durch Zugriff auf die Sprachliste bereitstellen",
       "UA": "Дозволити веб-сторінкам надавати місцеву інформацію за рахунок доступу до списку мов"
     },
     "Description": {
@@ -358,7 +358,7 @@
     "Header": {
       "EN": "Let apps show me personalized ads by using my advertising ID",
       "RU": "Разрешить приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы",
-      "DE": "Ermöglichen Apps interessenbezogene Werbung zu anzeigen, indem sie meine Werbe-ID verwenden",
+      "DE": "Apps können mir personalisierte Werbung anzeigen, indem sie meine Werbe-ID verwenden",
       "UA": "Дозволити застосункам відображати персональну рекламу за допомогою мого ідентифікатора реклами"
     },
     "Description": {
@@ -378,13 +378,13 @@
     "Header": {
       "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers",
       "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-      "DE": "Windows Willkommensbildschirm nach Aktualisierung und gelegentlich beim Anmelden zur Beschreibung neuer Funktionen und Angebote",
+      "DE": "Anzeige der Windows-Willkommenserlebnisse nach Updates und gelegentlich bei der Anmeldung, um neue Funktionen und Angebote hervorzuheben",
       "UA": "Відображати екран вітання Windows після оновлень і іноді при вході, щоб повідомити про нові функції та пропозиції"
     },
     "Description": {
       "EN": "Windows may open a pop-up window to show you what's new about the operating system.",
       "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе",
-      "DE": "Windows kann ein Popupfenster mit neuer Information über das Betriebssystem öffnen",
+      "DE": "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren",
       "UA": "Windows може відкривати спливаюче вікно з підказками про те, що нового в операційній системі"
     },
     "Type": "CheckBox",
@@ -398,7 +398,7 @@
     "Header": {
       "EN": "Get tips and suggestions as you use Windows",
       "RU": "Получать советы и предложения при использовании Windows",
-      "DE": "Zur Verwendung von Windows Tipps und Beratung erhalten",
+      "DE": "Vorschläge für die Verwendung von Windows holen",
       "UA": "Отримувати поради та пропозиції при використанні Windows"
     },
     "Description": {
@@ -418,7 +418,7 @@
     "Header": {
       "EN": "Show suggested content in the Settings app",
       "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\"",
-      "DE": "Inhalts-Vorschläge in der Einstellungen-App anzeigen",
+      "DE": "Vorgeschlagene Inhalte in der Einstellungen-App anzeigen",
       "UA": "Відображати рекомендований вміст у застосунку \"Параметри\""
     },
     "Description": {
@@ -458,13 +458,13 @@
     "Header": {
       "EN": "Offer suggestions on how I can set up my device",
       "RU": "Показывать предложения по настройке устройства",
-      "DE": "Vorschläge zur Aufstellung des Geräts anzeigen",
+      "DE": "Vorschläge machen, wie ich mein Gerät einrichten kann",
       "UA": "Відображати пропозиції налаштування пристрою"
     },
     "Description": {
       "EN": "Windows may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up.",
       "RU": "Windows может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить",
-      "DE": "Windows kannmanchmal einen Popupfenster \"Mehr aus Windows herausholen\" mit zusätzlichen Diensten für die individuelle Anpassung vom Benutzer anzeigen",
+      "DE": "Windows zeigt möglicherweise gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann",
       "UA": "Windows може іноді відображати спливаюче вікно \"Використовуйте Windows ще ефективніше\", в якому відображаються додаткові служби, які користувач може налаштувати"
     },
     "Type": "CheckBox",
@@ -478,11 +478,11 @@
     "Header": {
       "EN": "Tailored experiences",
       "RU": "Персонализированные возможности",
-      "DE": "Personalisierte Funktionen",
+      "DE": "Maßgeschneiderte Erfahrungen",
       "UA": "Персоналізовані можливості"
     },
     "Description": {
-      "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.",
+      "EN": "Microsoft bietet Ihnen maßgeschneiderte Erfahrungen auf der Grundlage der von Ihnen gewählten Einstellung für Diagnosedaten.",
       "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций",
       "DE": "Lassen Sie Microsoft Ihnen maßgeschneiderte Lösungen bieten, die auf der Grundlage der Diagnosedaten entsprechend Ihren Einstellungen basieren",
       "UA": "Дозвольте корпорації Майкрософт використовувати ваші діагностичні дані для покращення вашої роботи зі службами Майкрософт за допомогою персоналізованих порад, реклами та рекомендацій"
@@ -498,7 +498,7 @@
     "Header": {
       "EN": "Enable Bing search in the Start Menu",
       "RU": "Включить поиск через Bing в меню \"Пуск\"",
-      "DE": "Die Bing-Suchmaschine auf Startseite aktivieren",
+      "DE": "Bing-Suchmaschine im Startmenü aktivieren",
       "UA": "Увімкнути пошук через Bing у меню \"Пуск\""
     },
     "Description": {
@@ -518,7 +518,7 @@
     "Header": {
       "EN": "Show the \"This PC\" icon on Desktop",
       "RU": "Отображать значок \"Этот компьютер\" на рабочем столе",
-      "DE": "Das Symbol \"Dieser PC\" auf Startseite anzeigen",
+      "DE": "Das Symbol \"Dieser PC\" auf Desktop anzeigen",
       "UA": "Відображати значок \"Цей комп'ютер\" на робочому столі"
     },
     "Description": {
@@ -535,7 +535,7 @@
         "ChildHeader": {
           "EN": "Show",
           "RU": "Показывать",
-          "DE": "Einblenden",
+          "DE": "Anzeigen",
           "UA": "Відображати"
         },
         "ChildDescription": {
@@ -592,7 +592,7 @@
     "Header": {
       "EN": "Use check boxes to select items",
       "RU": "Использовать флажки для выбора элементов",
-      "DE": "Zur Auswahl von Elementen die Checkboxen anklicken",
+      "DE": "Kontrollkästchen zur Auswahl von Elementen verwenden",
       "UA": "Використовувати прапорці для вибору елементів"
     },
     "Description": {
@@ -612,7 +612,7 @@
     "Header": {
       "EN": "Show hidden files, folders, and drives",
       "RU": "Отображать скрытые файлы, папки и диски",
-      "DE": "Alle versteckte Dateien, Verzeichnisse und Laufwerke einblenden",
+      "DE": "Alle versteckte Dateien, Verzeichnisse und Laufwerke anzeigen",
       "UA": "Відображати приховані файли, папки та диски"
     },
     "Description": {
@@ -632,7 +632,7 @@
     "Header": {
       "EN": "Show the file name extensions",
       "RU": "Отображать расширения имён файлов",
-      "DE": "Dateinamenserweiterung einblenden",
+      "DE": "Dateinamenserweiterung anzeigen",
       "UA": "Відображати розширення імен файлів"
     },
     "Description": {
@@ -652,7 +652,7 @@
     "Header": {
       "EN": "Hide folder merge conflicts",
       "RU": "Скрывать конфликт слияния папок",
-      "DE": "Ordnerzusammenführungskonflikt ausblenden",
+      "DE": "Konflikte beim Zusammenführen von Ordnern ausblenden",
       "UA": "Приховувати конфлікт злиття папок"
     },
     "Description": {
@@ -705,7 +705,7 @@
         "ChildHeader": {
           "EN": "Quick access",
           "RU": "Быстрый доступ",
-          "DE": "Schneller Zugriff",
+          "DE": "Schnellzugriff",
           "UA": "Швидкий доступ"
         },
         "ChildDescription": {
@@ -746,7 +746,7 @@
     "Header": {
       "EN": "Enable the File Explorer compact mode",
       "RU": "Включить компактный вид проводника",
-      "DE": "Kompaktmodus des Datei-Explorers",
+      "DE": "Kompaktmodus des Datei-Explorers aktivieren",
       "UA": "Увімкнути компактний вигляд провідника"
     },
     "Description": {
@@ -786,7 +786,7 @@
     "Header": {
       "EN": "When I snap a window, show what I can snap next to it",
       "RU": "При прикреплении окна показывать, что можно прикрепить рядом с ним",
-      "DE": "Zeigen, was man daneben einrasten kann, wenn ich ein Fenster einraste",
+      "DE": "Anzeigen, was man daneben einrasten kann, wenn ich ein Fenster einraste",
       "UA": "При закріпленні вікна показувати, що ще можна закріпити біля нього"
     },
     "Description": {
@@ -806,7 +806,7 @@
     "Header": {
       "EN": "Show snap layouts when I hover over a windows's maximize button",
       "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
-      "DE": "Aktivieren Sie das Kontrollkästchen neben der Option Snap-Layouts anzeigen, wenn ich den Mauszeiger über die Schaltfläche zum Maximieren eines Fensters bewege",
+      "DE": "Snap-Layouts anzeigen, wenn ich mit dem Mauszeiger über die Schaltfläche "Maximieren" eines Fensters fahre",
       "UA": "Відображати макети прикріплення, частиною яких є додаток при наведенні вказівника миші на кнопки панелі завдань"
     },
     "Description": {
@@ -843,7 +843,7 @@
         "ChildHeader": {
           "EN": "In the detailed mode",
           "RU": "В развернутом виде",
-          "DE": "Im Vollbildmodus",
+          "DE": "Im detaillierten Modus",
           "UA": "В розгорнутому вигляді"
         },
         "ChildDescription": {
@@ -857,7 +857,7 @@
       {
         "Id": 218,
         "ChildHeader": {
-          "EN": "In the compact mode",
+          "EN": "Im Kompaktmodus",
           "RU": "В свернутом виде",
           "DE": "Im Minimodus",
           "UA": "В згорнутому вигляді"
@@ -880,7 +880,7 @@
     "Header": {
       "EN": "Minimize the File Explorer ribbon",
       "RU": "Свернуть ленту проводника",
-      "DE": "Menüband minimieren",
+      "DE": "Multifunktionsleiste des Datei-Explorers minimieren",
       "UA": "Приховати стрічку провідника"
     },
     "Description": {
@@ -900,7 +900,7 @@
     "Header": {
       "EN": "Display the recycle bin files delete confirmation dialog",
       "RU": "Запрашивать подтверждение на удаление файлов в корзину",
-      "DE": "Dialog zur Bestätigung der Papierkorb Löschbestätigung anzeigen",
+      "DE": "Anzeige des Bestätigungsdialogs zum Löschen von Papierkorbdateien",
       "UA": "Запитувати підтвердження для видалення файлів у кошик"
     },
     "Description": {
@@ -960,7 +960,7 @@
     "Header": {
       "EN": "Show recently used files in Quick access",
       "RU": "Показать недавно использовавшиеся файлы на панели быстрого доступа",
-      "DE": "Die Liste zuletzt geöffneter Dateien in der Schnellzugriffsleiste anzeigen",
+      "DE": "Zuletzt verwendete Dateien im Schnellzugriff anzeigen",
       "UA": "Відобразити файли, що нещодавно використовувались на панелі швидкого доступу"
     },
     "Description": {
@@ -980,7 +980,7 @@
     "Header": {
       "EN": "Set the taskbar alignment",
       "RU": "Установить выравнивание панели задач",
-      "DE": "Ausrichtungsoptionen der Taskleiste konfigurieren",
+      "DE": "Ausrichtung der Taskleiste festlegen",
       "UA": "Встановити вирівнювання панелі завдань"
     },
     "Description": {
@@ -1054,7 +1054,7 @@
     "Header": {
       "EN": "Show Task View button on the taskbar",
       "RU": "Отобразить кнопку Просмотра задач на панели задач",
-      "DE": "Die Vorgangsansichtfläche in der Taskleiste anzeigen",
+      "DE": "Die Schaltfläche Aufgabenansicht in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку Перегляду завдань на панелі завдань"
     },
     "Description": {
@@ -1074,7 +1074,7 @@
     "Header": {
       "EN": "Show the Task view button on the taskbar",
       "RU": "Показать кнопку \"Представление задач\" на панели задач",
-      "DE": "\"Vorgangsansichtfläche\" in der Taskleiste anzeigen",
+      "DE": "Schaltfläche Aufgabenansicht in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку \"Представлення завдань\" на панелі завдань"
     },
     "Description": {
@@ -1094,7 +1094,7 @@
     "Header": {
       "EN": "Show the widgets icon on the taskbar",
       "RU": "Отобразить кнопку \"Мини-приложения\" на панели задач",
-      "DE": "\"Widgets\" in der Taskleiste anzeigen",
+      "DE": "Widget-Symbol in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку \"Міні-додатки\" на панелі завдань"
     },
     "Description": {
@@ -1114,7 +1114,7 @@
     "Header": {
       "EN": "Show People on the taskbar",
       "RU": "Показывать панель \"Люди\" на панели задач",
-      "DE": "\"Leute\" in der Taskleiste anzeigen",
+      "DE": "Die Leiste \"Leute\" in der Taskleiste anzeigen",
       "UA": "Відображати панель \"Люди\" на панелі завдань"
     },
     "Description": {
@@ -1134,7 +1134,7 @@
     "Header": {
       "EN": "Show seconds on the taskbar clock",
       "RU": "Отображать секунды в системных часах на панели задач",
-      "DE": "Die Sekunden auf der Uhr in der Taskleiste anzeigen",
+      "DE": "Sekunden auf der Taskleistenuhr anzeigen",
       "UA": "Відображати секунди в системному годиннику на панелі завдань"
     },
     "Description": {
@@ -1171,7 +1171,7 @@
         "ChildHeader": {
           "EN": "Hidden",
           "RU": "Скрыто",
-          "DE": "Versteckt",
+          "DE": "Ausblenden",
           "UA": "Приховано"
         },
         "ChildDescription": {
@@ -1187,7 +1187,7 @@
         "ChildHeader": {
           "EN": "Show search icon",
           "RU": "Показать значок поиска",
-          "DE": "Das Suchensymbol anzeigen",
+          "DE": "Suchsymbol anzeigen",
           "UA": "Відобразити значок пошуку"
         },
         "ChildDescription": {
@@ -1203,7 +1203,7 @@
         "ChildHeader": {
           "EN": "Show search box",
           "RU": "Показать поле поиска",
-          "DE": "Das Suchfeld anzeigen",
+          "DE": "Suchfeld anzeigen",
           "UA": "Відобразити поле пошуку"
         },
         "ChildDescription": {
@@ -1224,7 +1224,7 @@
     "Header": {
       "EN": "Show Windows Ink Workspace button on the taskbar",
       "RU": "Показать кнопку Windows Ink Workspace на панели задач",
-      "DE": "Windows Ink Workspace in der Taskleiste anzeigen",
+      "DE": "Schaltfläche Windows-Ink-Arbeitsbereich in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку Windows Ink Workspace на панелі завдань"
     },
     "Description": {
@@ -1304,7 +1304,7 @@
     "Header": {
       "EN": "Show the Chat icon (Microsoft Teams) on the taskbar",
       "RU": "Отобразить кнопку чата (Microsoft Teams) на панели задач",
-      "DE": "Ein Chat-Symbol (Microsoft Teams) in der Taskleiste anzeigen",
+      "DE": "Chat-Symbol (Microsoft Teams) in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку чату (Microsoft Teams) на панелі завдань"
     },
     "Description": {
@@ -1324,7 +1324,7 @@
     "Header": {
       "EN": "View the Control Panel by",
       "RU": "Просмотр иконок Панели управления",
-      "DE": "Anzeigen die Symbole der Systemsteuerung",
+      "DE": "Anzeigen der Systemsteuerungsymbole nach",
       "UA": "Перегляд іконок Панелі керування"
     },
     "Description": {
@@ -1394,7 +1394,7 @@
     "Header": {
       "EN": "Default Windows color mode",
       "RU": "Режим Windows по умолчанию",
-      "DE": "Standardmäßige Windows-Farbschema",
+      "DE": "Standard-Farbmodus von Windows",
       "UA": "Режим Windows за замовчуванням"
     },
     "Description": {
@@ -1411,7 +1411,7 @@
         "ChildHeader": {
           "EN": "Light",
           "RU": "Светлый",
-          "DE": "Licht",
+          "DE": "Hell",
           "UA": "Світлий"
         },
         "ChildDescription": {
@@ -1448,7 +1448,7 @@
     "Header": {
       "EN": "Default app color mode",
       "RU": "Режим приложения по умолчанию",
-      "DE": "Standardmäßige App-Farbschema",
+      "DE": "Standard-Farbmodus der Anwendung",
       "UA": "Режим додатку за замовчуванням"
     },
     "Description": {
@@ -1465,7 +1465,7 @@
         "ChildHeader": {
           "EN": "Light",
           "RU": "Светлый",
-          "DE": "Licht",
+          "DE": "Hell",
           "UA": "Світлий"
         },
         "ChildDescription": {
@@ -1502,7 +1502,7 @@
     "Header": {
       "EN": "Show the \"New App Installed\" indicator",
       "RU": "Показывать уведомление \"Установлено новое приложение\"",
-      "DE": "Die Benachrichtigung \"Neu installierte App\" anzeigen",
+      "DE": "Indikator \"Neue App installiert\" anzeigen",
       "UA": "Відображати сповіщення \"Встановлено новий додаток\""
     },
     "Description": {
@@ -1528,7 +1528,7 @@
     "Description": {
       "EN": "In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the \"first sign-in animation\" that features several messages to configure the account environment.",
       "RU": "В Windows после завершения настройки при новой установке, обновлении или при входе в новую учетную запись запускается \"анимация первого входа\", которая включает несколько сообщений по мере настройки среды учетной записи",
-      "DE": "In Windows, Nachdem Sie das Setup neuer Installation oder Aktualisierung abgeschlossen haben bzw. bei der Registrierung zeigt die \"Erstanmeldeanimation\" an, die mehrere Meldungen zur Konfiguration der Kontoumgebung enthält",
+      "DE": "In Windows wird nach Abschluss des Setups bei einer Neuinstallation, einem Upgrade oder der Anmeldung bei einem neuen Konto die \"Erstanmeldeanimation\" angezeigt, die mehrere Meldungen zur Konfiguration der Kontoumgebung enthält.",
       "UA": "У Windows після завершення налаштування при новій установці, оновленні або при вході до нового облікового запису запускається \"анімація першого входу\", яка включає кілька повідомлень у міру налаштування середовища облікового запису"
     },
     "Type": "CheckBox",
@@ -1542,13 +1542,13 @@
     "Header": {
       "EN": "Set the quality factor of the JPEG desktop wallpapers to",
       "RU": "Коэффициент качества обоев рабочего стола в формате JPEG",
-      "DE": "Stellen den Qualitätsfaktor des JPEG Desktophintergrunds auf",
+      "DE": "Stellen Sie den Qualitätsfaktor der JPEG-Desktop-Hintergrundbilder auf",
       "UA": "Коефіцієнт якості шпалер робочого стола у форматі JPEG"
     },
     "Description": {
       "EN": "When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85% and store it as the TranscodedWallpaper file in the \n%APPDATA%\\Microsoft\\Windows\\Themes folder. If you use a PNG image as your desktop background wallpaper or slideshow, you are not affected by this automatic quality reduction since it only applies to JPEG images.",
       "RU": "Когда вы устанавливаете изображение в качестве обоев рабочего стола или слайд-шоу в формате JPEG, при импорте операционная система снижает качество исходного изображения до 85 % и сохраняет его как файл TranscodedWallpaper в папке \n%APPDATA%\\Microsoft\\Windows\\Themes. Однако, если вы используете PNG-изображение в качестве фоновых обоев рабочего стола или слайд-шоу, то это автоматическое снижение качества вас не коснется, поскольку оно происходит только с изображениями JPEG",
-      "DE": "Wenn ein JPEG-Bild als Bildschirmhintergrund oder als Diashow eingestellt ist, reduziert das Betriebssystem die Qualität um 85 % und ihn wie ein TranscodedWallpaper-Datei am \n%APPDATA%\\Microsoft\\Windows\\Themes speichert. Wenn ein PNG-Bild als Bildschirmhintergrund oder als Diashow eingestellt ist, reduziert die Qualität nicht. Das ist nur fur JPEG.",
+      "DE": "Wenn Sie ein JPEG-Bild als Desktop-Hintergrundbild oder Diashow festlegen, reduziert das Betriebssystem die Qualität des Originalbildes auf 85 % und speichert es als TranscodedWallpaper-Datei im Ordner \n%APPDATA%\\Microsoft\\Windows\\Themes. Wenn Sie ein PNG-Bild als Desktop-Hintergrundbild oder Diashow verwenden, sind Sie von dieser automatischen Qualitätsminderung nicht betroffen, da sie nur für JPEG-Bilder gilt.",
       "UA": "Коли ви встановлюєте зображення у якості шпалер робочого стола або слайд-шоу в форматі JPEG, при імпорті операційна система знижує якість вихідного зображення до 85 % та зберігає його як файл TranscodedWallpaper у папці \n%APPDATA%\\Microsoft\\Windows\\Themes. Проте, якщо ви використовуєте PNG-зображення у якості фонових шпалер робочого стола або слайд-шоу, то це автоматичне зниження якості вас не торкнеться, оскільки воно відбувається тільки з зображеннями JPEG"
     },
     "Type": "RadioGroup",
@@ -1559,7 +1559,7 @@
         "ChildHeader": {
           "EN": "100% (no reduction)",
           "RU": "100 % (без сжатия)",
-          "DE": "100% (keine Reduktion)",
+          "DE": "100% (keine Reduzierung)",
           "UA": "100% (без зжаття)"
         },
         "ChildDescription": {
@@ -1596,7 +1596,7 @@
     "Header": {
       "EN": "Notify me when a restart is required to finish updating",
       "RU": "Уведомлять меня о необходимости перезагрузки для завершения обновления",
-      "DE": "Benachrichtigen mich, wenn ein Neustart erforderlich ist, um die Aktualisierung abzuschließen",
+      "DE": "Benachrichtigen Sie mich, wenn ein Neustart erforderlich ist, um die Aktualisierung abzuschließen",
       "UA": "Повідомляти мене про необхідність перезавантаження для завершення оновлення"
     },
     "Description": {
@@ -1616,7 +1616,7 @@
     "Header": {
       "EN": "Add the \"- Shortcut\" suffix to the file name of created shortcuts",
       "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков",
-      "DE": "Das Suffix \"-Verknüpfung\" an den Dateinamen der erstellten Verknüpfungen hinfügen.",
+      "DE": "Suffix \"-Verknüpfung\" an den Dateinamen der erstellten Verknüpfungen anfügen.",
       "UA": "Додавати \"- ярлик\" до імені створюваних ярликів"
     },
     "Description": {
@@ -1636,7 +1636,7 @@
     "Header": {
       "EN": "Use the PrtScn button to open screen snipping",
       "RU": "Использовать кнопку PRINT SCREEN, чтобы запустить функцию создания фрагмента экрана",
-      "DE": "Die Taste PrtScn verwenden um Snipping zu aktivieren",
+      "DE": "Die Taste PrtScn verwenden um Snipping zu öffnen",
       "UA": "Використовувати кнопку PRINT SCREEN, щоб запустити функцію створення фрагменту екрана"
     },
     "Description": {
@@ -1716,13 +1716,13 @@
     "Header": {
       "EN": "Run Storage Sense",
       "RU": "Запуск Контроля памяти",
-      "DE": "Aktivieren die Speicheroptimierung",
+      "DE": "Speicheroptimierung starten",
       "UA": "Запуск Контролю пам'яті"
     },
     "Description": {
       "EN": "Storage Sense runs when disk space is low and frees up enough space for optimal OS operation. It is better to create the \"Windows Cleanup\" task in the \"Task Scheduler\" section to clean up Windows more effectively.",
       "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальной работы системы. Но лучше в разделе \"Планировщик заданий\" создайте задание \"Windows Cleanup\", чтобы эффективнее очищать Windows",
-      "DE": "Wenn der Speicherplatz knapp wird, aktiwiert die System die Speicheroptimierung um Ihr Speicherplatz zu befreien. Aber \"Windows Cleanup\" ",
+      "DE": "Speicheroptimierung wird ausgeführt, wenn nur noch wenig Speicherplatz auf der Festplatte vorhanden ist und gibt genügend Platz für einen optimalen Betrieb des Betriebssystems frei. Es ist besser, die Aufgabe \"Windows Cleanup\" im Abschnitt \"Task Scheduler\" zu erstellen, um Windows effektiver aufzuräumen.",
       "UA": "Контроль пам'яті запускається, якщо на диску мало вільного місця. Функція контролю пам'яті звільняє достатньо місця для оптимальної роботи системи. Але краще в розділі \"Планувальник завдань\" створіть завдання \"Windows Cleanup\", щоб ефективніше очищати Windows"
     },
     "Type": "RadioGroup",
@@ -1770,7 +1770,7 @@
     "Header": {
       "EN": "Delete temporary files that aren't used by apps",
       "RU": "Удалять временные файлы, не используемые в приложениях",
-      "DE": "Löschen die temporäre Dateien der Apps",
+      "DE": "Temporäre Dateien löschen, die nicht von Anwendungen verwendet werden",
       "UA": "Видаляти тимчасові файли, які не використовуються в додатках"
     },
     "Description": {
@@ -1796,7 +1796,7 @@
     "Description": {
       "EN": "Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to the \nC:\\hiberfil.sys file, and turns off your computer. By default, the size of the hidden system protected file C:\\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. It is not recommended to turn it off on mobile devices.",
       "RU": "Гибернация — это энергосберегающее состояние, используемое в основном для мобильных устройств. В отличии от спящего режима, гибернация сохраняет открытые документы и программы на системный накопитель в файл \nC:\\hiberfil.sys, а затем выключает компьютер. По умолчанию размер скрытого системного файла C:\\hiberfil.sys составляет 40 % от общего объема установленной оперативной памяти. При отключении гибернации будет также отключен быстрый запуск, и скроется соответствующий пункт в меню питания. Не рекомендуется выключать на мобильных устройствах",
-      "DE": "Hibernation ist der Ruhezustand, der hauptsächlich für Laptops verwendet ist. Die Hibernation speichert geöffnete Dokumente und Programme auf dem Systemlaufwerk in der Datei \nC:\\hiberfil.sys vor dem Ausschalten des Computers anders als Schlafmodus. Standardmäßig beträgt die Größe der versteckten systemgeschützten Datei C:\\hiberfil.sys 40 % des gesamten installierten Arbeitsspeichers. Durch die Deaktivierung der Hibernation wird auch der Schnellstart deaktiviert, und die Hibernation wird nicht mehr im Menü Energie angezeigt. Es wird nicht empfohlen, die Hibernation auf mobilen Geräten zu deaktivieren.",
+      "DE": "Hibernation ist ein Stromsparzustand, der vor allem bei Laptops verwendet wird. Im Gegensatz zum Ruhezustand werden im Ruhezustand die geöffneten Dokumente und Programme auf dem Systemlaufwerk in der Datei \nC:\\hiberfil.sys abgelegt und der Computer ausgeschaltet. Standardmäßig beträgt die Größe der versteckten systemgeschützten Datei C:\\hiberfil.sys 40 % des gesamten installierten Arbeitsspeichers. Durch die Deaktivierung des Ruhezustands wird auch der Schnellstart deaktiviert, und der Ruhezustand wird nicht mehr im Menü Energie angezeigt. Es wird nicht empfohlen, den Ruhezustand auf mobilen Geräten zu deaktivieren.",
       "UA": "Гібернація — це енергозберігаючий стан, який використовується в основному для мобільних пристроїв. На відміну від сплячого режиму, гібернація зберігає відкриті документи та програми на системний накопичувач у файл \nC:\\hiberfil.sys, а потім вимикає комп'ютер. За замовчуванням розмір прихованого системного файлу C:\\hiberfil.sys становить 40 % від загального обсягу встановленої оперативної пам'яті. При відключенні гібернації буде також відключено швидкий запуск, і приховається відповідний пункт в меню живлення. Не рекомендується вимикати на мобільних пристроях"
     },
     "Type": "CheckBox",
@@ -1810,13 +1810,13 @@
     "Header": {
       "EN": "The temp environment variable path",
       "RU": "Путь переменной среды для временных файлов",
-      "DE": "Der Pfad der Umgebungsvariable für temporäre Dateien",
+      "DE": "Pfad der temporären Umgebungsvariablen",
       "UA": "Шлях змінного середовища для тимчасових файлів"
     },
     "Description": {
       "EN": "Use only in case if you are the only user on this PC, otherwise all users will use the same folder for all temporary files.",
       "RU": "Используйте только в случае, если вы единственный пользователь на ПК, иначе все пользователи будут использовать одну и ту же папка для временных файлов.",
-      "DE": "Nur verwenden, wenn Sie der einzige Benutzer auf diesem PC sind. Sonst verwenden alle Benutzer denselben Ordner für alle temporären Dateien.",
+      "DE": "Diese Option nur verwenden, wenn Sie der einzige Benutzer auf diesem PC sind, da sonst alle Benutzer denselben Ordner für alle temporären Dateien verwenden.",
       "UA": "Використовуйте тільки у випадку, якщо ви єдиний користувач ПК, інакше всі користувачі будуть використовувати одну й ту саму папку для тимчасових файлів."
     },
     "Type": "AdvancedRadioGroup",
@@ -1864,7 +1864,7 @@
     "Header": {
       "EN": "Enable the Windows 260 character path limit",
       "RU": "Включить ограничение Windows на 260 символов в пути",
-      "DE": "Gesamlänge von 260 Zeichen für Pfade aktivieren",
+      "DE": "Windows-Pfadbegrenzung auf 260 Zeichen aktivieren",
       "UA": "Увімкнути обмеження Windows до 260 символів у шляху"
     },
     "Description": {
@@ -1884,13 +1884,13 @@
     "Header": {
       "EN": "Display Stop error code when BSoD occurs",
       "RU": "Отображать код Stop-ошибки при появлении BSoD",
-      "DE": "Anzeigen den STOPP-Fehlercode beim Bluescreen (BSoD)",
+      "DE": "Stop-Fehlercodes beim Auftreten von BSoD anzeigen",
       "UA": "Відображати код Stop-помилки при появі BSoD"
     },
     "Description": {
       "EN": "By default, Windows does not display a Stop error code when a BSoD occurs, which helps to identify the causes of a BSoD.",
       "RU": "По умолчанию Windows не отображает код Stop-ошибки при появлении BSoD, который помогает выявлять причины появления BSoD",
-      "DE": "Standardmäßig, zeigt Windows beim BSoD keinen STOPP-Fehlercode an: dieser Fehlercode hilft die Ursachen für den BSoD zu ermitteln",
+      "DE": "Standardmäßig zeigt Windows beim Auftreten eines BSoDs keinen Stop-Fehlercode an, was bei der Ermittlung der Ursachen eines BSoDs hilfreich ist.",
       "UA": "За замовчуванням Windows не відображає код Stop-помилки при появі BSoD, який допомагає виявляти причини появи BSoD"
     },
     "Type": "CheckBox",
@@ -1904,7 +1904,7 @@
     "Header": {
       "EN": "Choose when to be notified about changes to your computer",
       "RU": "Настройка уведомления об изменении параметров компьютера",
-      "DE": "Wählen, wann Sie über Änderungen an Ihrem Computer benachrichtigt werden",
+      "DE": "Wählen, wann Sie über Änderungen an Ihrem Computer benachrichtigt werden möchten",
       "UA": "Налаштування сповіщення про зміни параметрів комп'ютера"
     },
     "Description": {
@@ -1921,13 +1921,13 @@
         "ChildHeader": {
           "EN": "Notify me only when apps try to make changes to my computer",
           "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер",
-          "DE": "Nur benachrichtigen, wenn Programme Änderungen auf dem Computer vorzunehmen versuchen",
+          "DE": "Mich nur benachrichtigen, wenn Anwendungen versuchen, Änderungen an meinem Computer vorzunehmen",
           "UA": "Повідомляти мене лише при спробах додатків внести зміни до комп'ютера"
         },
         "ChildDescription": {
           "EN": "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
           "RU": "При включении этого параметра рабочий стол будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)",
-          "DE": "Wenn diese Einstellung aktiviert ist, wird der Desktop abgeblendet, wenn Sie von der Eingabeaufforderung der Benutzerkontensteuerung (UAC) eine Erhöhungsanforderung erhalten",
+          "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop abgedunkelt, wenn Sie von der Benutzerkontensteuerung (UAC) eine Aufforderung zum Hochfahren erhalten.",
           "UA": "При увімкненні цього параметра робочий стіл буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)"
         },
         "Type": "RadioButton"
@@ -1943,8 +1943,8 @@
         "ChildDescription": {
           "EN": "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
           "RU": "При включении этого параметра рабочий стол никогда не будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC).",
-          "DE": "Wenn diese Einstellung aktiviert ist, wird der Desktop nie abgeblendet, wenn Sie von der Eingabeaufforderung der Benutzerkontensteuerung (UAC) eine Erhöhungsanforderung erhalten",
-          "UA": "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)."
+          "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop niemals gedimmt, wenn Sie eine Erhöhungsanforderung von der Eingabeaufforderung der Benutzerkontensteuerung (UAC) erhalten.",
+          "UA": "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC).
         },
         "Type": "RadioButton"
       }
