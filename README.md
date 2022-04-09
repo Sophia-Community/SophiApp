@@ -77,10 +77,32 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ## System Requirements
 
-* Currently supports `Windows 10 2004/20H2/21H1/21H2 x64`, `Windows 11 21H2`, and `Windows 11 Insider Preview` (22509+). Requires the `1151` and `556` builds (or higher) for `Windows 10` and `Windows 11` respectively;
-  * Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history;
+### Minimum supported Windows versions and builds
+
+### Windows 11 Insider Preview
+
+|Version|   Build   |      Editions     | Script version |
+|:-----:|:---------:|:-----------------:|:--------------:|
+| 22H2  | 22509     |Home/Pro/Enterprise|[1.0.0.50](https://github.com/Sophia-Community/SophiApp/releases/latest)|
+
+### Windows 11
+
+|Version|   Build   |      Editions     | Script version |
+|:-----:|:---------:|:-----------------:|:--------------:|
+| 21H2  | 22000.556 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/Sophia-Community/SophiApp/releases/latest)|
+
+### Windows 10
+
+|Version|    Marketing name   | Build      | Arch|      Editions     | Script version |
+|:-----:|:-------------------:|:----------:|:---:|:-----------------:|:--------------:|
+| 21H2  | October 2021 Update | 19044.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 2004  | May 2020 Update     | 19041.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+
+Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history;
 * To be able to run `SophiApp`, you must be the only logged-on account with admin rights;
-* `SophiApp` may not work on a homebrew Windows. Especially, if homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by uprooting system components on purpose.
+* 🔥🔥🔥`SophiApp` may not work on a homebrew Windows. Especially, if homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by uprooting system components on purpose.
 
 ## Installation
 
