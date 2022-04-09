@@ -857,9 +857,9 @@
       {
         "Id": 218,
         "ChildHeader": {
-          "EN": "Im Kompaktmodus",
+          "EN": "In the compact mode",
           "RU": "В свернутом виде",
-          "DE": "Im Minimodus",
+          "DE": "Im Kompaktmodus",
           "UA": "В згорнутому вигляді"
         },
         "ChildDescription": {
