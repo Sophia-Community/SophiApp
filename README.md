@@ -35,8 +35,10 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 <a href="https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml"><img src="https://pbs.twimg.com/profile_images/513959345847955458/Ego1jjO6_400x400.png" width=77px height=77px></a>
 <a href="https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
 <a href="https://nsaneforums.com/topic/425896-sophiapp-10050/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
+<a href="https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/">
 
 <a href="https://4sysops.com/archives/sophiapp-tweak-windows-10-settings-with-a-gui/"><img src="https://i.imgur.com/cZ32Hkt.png"></a>
+<img src="https://upload.wikimedia.org/wikipedia/en/5/58/Reddit_logo_new.svg" width=250px></a>
 
 ***
 
