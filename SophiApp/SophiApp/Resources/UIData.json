@@ -857,9 +857,9 @@
       {
         "Id": 218,
         "ChildHeader": {
-          "EN": "Im Kompaktmodus",
+          "EN": "In the compact mode",
           "RU": "В свернутом виде",
-          "DE": "Im Minimodus",
+          "DE": "Im Kompaktmodus",
           "UA": "В згорнутому вигляді"
         },
         "ChildDescription": {
@@ -1114,7 +1114,7 @@
     "Header": {
       "EN": "Show People on the taskbar",
       "RU": "Показывать панель \"Люди\" на панели задач",
-      "DE": "Die Leiste \"Leute\" in der Taskleiste anzeigen",
+      "DE": "Symbol \"Kontakte\" in der Taskleiste anzeigen",
       "UA": "Відображати панель \"Люди\" на панелі завдань"
     },
     "Description": {
