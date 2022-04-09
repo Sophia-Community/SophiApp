@@ -34,15 +34,17 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 <a href="https://www.majorgeeks.com/files/details/sophiapp.html"><img src="https://www.majorgeeks.com/images/logos/majorgeeks.gif" width=77px height=77px></a>
 <a href="https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml"><img src="https://pbs.twimg.com/profile_images/513959345847955458/Ego1jjO6_400x400.png" width=77px height=77px></a>
 <a href="https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
-<a href="hhttps://nsaneforums.com/topic/425896-sophiapp-10050/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
+<a href="https://nsaneforums.com/topic/425896-sophiapp-10050/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
 
-<a href="https://github.com/Sophia-Community/SophiApp/releases"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
+<a href="https://4sysops.com/archives/sophiapp-tweak-windows-10-settings-with-a-gui/"><img src="https://i.imgur.com/cZ32Hkt.png"></a>
 
 ***
 
 ## Our project is non-profit, but we would welcome your support
 
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a>
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a> <a href="https://github.com/Sophia-Community/SophiApp/releases">
+
+<img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
 ***
 
