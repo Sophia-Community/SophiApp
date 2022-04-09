@@ -1112,9 +1112,9 @@
   {
     "Id": 231,
     "Header": {
-      "EN": "Show People button on the taskbar",
+      "EN": "Show People on the taskbar",
       "RU": "Показывать панель \"Люди\" на панели задач",
-      "DE": "Schaltfläche "Leute anzeigen" in der Taskleiste",
+      "DE": "Die Leiste \"Leute\" in der Taskleiste anzeigen",
       "UA": "Відображати панель \"Люди\" на панелі завдань"
     },
     "Description": {
@@ -1526,9 +1526,9 @@
       "UA": "Відображати анімацію при першому вході в систему після оновлення"
     },
     "Description": {
-      "EN": "In Windows wird nach Abschluss des Setups bei einer Neuinstallation, einem Upgrade oder der Anmeldung bei einem neuen Konto die \"Erstanmeldeanimation\" angezeigt, die mehrere Meldungen zur Konfiguration der Kontoumgebung enthält.",
+      "EN": "In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the \"first sign-in animation\" that features several messages to configure the account environment.",
       "RU": "В Windows после завершения настройки при новой установке, обновлении или при входе в новую учетную запись запускается \"анимация первого входа\", которая включает несколько сообщений по мере настройки среды учетной записи",
-      "DE": "In Windows, Nachdem Sie das Setup neuer Installation oder Aktualisierung abgeschlossen haben bzw. bei der Registrierung zeigt die \"Erstanmeldeanimation\" an, die mehrere Meldungen zur Konfiguration der Kontoumgebung enthält",
+      "DE": "In Windows wird nach Abschluss des Setups bei einer Neuinstallation, einem Upgrade oder der Anmeldung bei einem neuen Konto die \"Erstanmeldeanimation\" angezeigt, die mehrere Meldungen zur Konfiguration der Kontoumgebung enthält.",
       "UA": "У Windows після завершення налаштування при новій установці, оновленні або при вході до нового облікового запису запускається \"анімація першого входу\", яка включає кілька повідомлень у міру налаштування середовища облікового запису"
     },
     "Type": "CheckBox",
