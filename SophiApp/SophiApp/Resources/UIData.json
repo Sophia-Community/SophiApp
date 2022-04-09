@@ -806,7 +806,7 @@
     "Header": {
       "EN": "Show snap layouts when I hover over a windows's maximize button",
       "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
-      "DE": "Snap-Layouts anzeigen, wenn ich mit dem Mauszeiger über die Schaltfläche "Maximieren" eines Fensters fahre",
+      "DE": "Snap-Layouts anzeigen, wenn ich mit dem Mauszeiger über die Schaltfläche \"Maximieren\" eines Fensters fahre",
       "UA": "Відображати макети прикріплення, частиною яких є додаток при наведенні вказівника миші на кнопки панелі завдань"
     },
     "Description": {
@@ -1944,7 +1944,7 @@
           "EN": "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
           "RU": "При включении этого параметра рабочий стол никогда не будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC).",
           "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop niemals gedimmt, wenn Sie eine Erhöhungsanforderung von der Eingabeaufforderung der Benutzerkontensteuerung (UAC) erhalten.",
-          "UA": "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC).
+          "UA": "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)."
         },
         "Type": "RadioButton"
       }
