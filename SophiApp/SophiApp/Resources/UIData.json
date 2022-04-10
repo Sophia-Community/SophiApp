@@ -2614,7 +2614,7 @@
     "Description": {
       "EN": "The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
       "RU": "Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11",
-      "DE": "Das Update KB5005463 installiert die \"PC Health Check"\ -App, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt.",
+      "DE": "Das Update KB5005463 installiert die \"PC Health Check\" -App, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt.",
       "UA": "Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11"
     },
     "Type": "CheckBox",
@@ -2867,7 +2867,7 @@
     "Description": {
       "EN": "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better.",
       "RU": "При наличии соответствующего оборудования и драйверов Windows может переложить большую часть планирования GPU на выделенный процессор планирования на основе GPU. Благодаря функции аппаратного ускорения GPU процессор планирования GPU и память (VRAM) берут на себя ту же работу и запускают ее в пакетном режиме для рендеринга кадров. Таким образом, ваш GPU освобождает процессор от некоторой работы и уменьшает задержку, чтобы потенциально улучшить работу вашего ПК",
-      "DE": "Mit richtiger Hardware und richtigen Treibern kann Windows den Großteil der GPU-Planung an einen speziellen GPU-basierten Planungsprozessor auslagern. Mit der Funktion "Hardwarebeschleunigte GPU-Planung" übernehmen der Planungsprozessor und der Speicher (VRAM) des Grafikprozessors die gleiche Arbeit und führen sie in Stapeln aus, um die Bilder zu rendern. Auf diese Weise entlastet der Grafikprozessor den Prozessor und verringert die Latenzzeit, wodurch Ihr PC möglicherweise besser läuft.",
+      "DE": "Mit richtiger Hardware und richtigen Treibern kann Windows den Großteil der GPU-Planung an einen speziellen GPU-basierten Planungsprozessor auslagern. Mit der Funktion \"Hardwarebeschleunigte GPU-Planung\" übernehmen der Planungsprozessor und der Speicher (VRAM) des Grafikprozessors die gleiche Arbeit und führen sie in Stapeln aus, um die Bilder zu rendern. Auf diese Weise entlastet der Grafikprozessor den Prozessor und verringert die Latenzzeit, wodurch Ihr PC möglicherweise besser läuft.",
       "UA": "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам'ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК."
     },
     "Type": "CheckBox",
@@ -2907,7 +2907,7 @@
     "Description": {
       "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up \n%SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
       "RU": "Создать задание \"SoftwareDistribution\" по очистке \n%SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней",
-      "DE": "In der Aufgabenplanung unter dem Ordner \"SophiApp"\ die geplante Aufgabe \"SoftwareDistribution"\ zum Bereinigen von \n%SystemRoot%\\SoftwareDistribution\\Download erstellen, wohin alle Windows Updates heruntergeladen werden. Der Aufgabe wartet, bis der Windows Updates-Dienst beendet ist. Die Aufgabe wird alle 90 Tage ausgeführt.",
+      "DE": "In der Aufgabenplanung unter dem Ordner \"SophiApp\" die geplante Aufgabe \"SoftwareDistribution\" zum Bereinigen von \n%SystemRoot%\\SoftwareDistribution\\Download erstellen, wohin alle Windows Updates heruntergeladen werden. Der Aufgabe wartet, bis der Windows Updates-Dienst beendet ist. Die Aufgabe wird alle 90 Tage ausgeführt.",
       "UA": "Створити завдання \"SoftwareDistribution\" з очищення \n%SystemRoot%\\SoftwareDistribution\\Download, куди завантажуються інсталяційні файли всіх оновлень Windows, у папці SophiApp у Планувальнику завдань. Завдання чекатиме, поки служба оновлень Windows не закінчить роботу. Завдання виконується кожні 90 днів"
     },
     "Type": "IconFolderCheckBox",
