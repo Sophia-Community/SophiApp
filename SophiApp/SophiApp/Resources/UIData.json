@@ -645,7 +645,7 @@
     "Tag": "Personalization",
     "ViewId": 206,
     "Windows10Supported": true,
-    "Windows11Supported": true
+    "Windows11Supported": tru3
   },
   {
     "Id": 207,
@@ -2560,7 +2560,7 @@
     "Description": {
       "EN": "Set Windows Terminal as default terminal app to host the user interface for command-line applications.",
       "RU": "Установить Windows Terminal как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки",
-      "DE": "Windows-Terminal als Standard-Terminal-App festlegen, um die Benutzeroberfläche für Befehlszeilenanwendungen bereitzustellen.",
+      "DE": "Standard-Terminalanwendung festlegen, die die Benutzeroberfläche für Befehlszeilenanwendungen bereitstellt.",
       "UA": "Встановити Windows Terminal як додаток терміналу за замовчуванням для розміщення інтерфейсу для додатків командного рядка"
     },
     "Type": "RadioGroup",
