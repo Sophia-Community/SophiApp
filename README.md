@@ -87,7 +87,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ### Windows 11
 
-|Version|   Build   |      Editions     | Script version |
+|Version|   Build   |      Editions     | App version |
 |:-----:|:---------:|:-----------------:|:--------------:|
 | 21H2  | 22000.556 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/Sophia-Community/SophiApp/releases/latest)|
 
