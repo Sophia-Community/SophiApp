@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 1.0.0.53 — 11.04.2022
 
 * Startup checkings updated;
-  * Now SophiApp checks whether Microsoft Defender was disabled via policies. Reported by Hypertyrannical :star:.
+  * Now SophiApp checks whether Microsoft Defender was disabled via policies.
 * Updated the German translation. Huge thanks to [Henry2o1o](https://github.com/Henry2o1o);
 * Added the ability to download the latest stable build of SophiApp via PowerShell. Just type the command below, and it will download SophiaApp.zip from GitHub to the Downloads folder, expand the archive, and remove it. Elevated privileges are not needed. The app won't be launched.
 
