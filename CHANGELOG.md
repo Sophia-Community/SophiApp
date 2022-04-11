@@ -28,7 +28,7 @@ https://imgur.com/a/wCcs0Xi
 * Updated and expanded localizations;
 * Added 🇩🇪 German and 🇺🇦 Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
 * Updated functions' descriptions;
-* CHuge code refactoring;
+* Huge code refactoring;
 * Many bugs fixed.
 * [Post](https://t.me/SophiaNews/746) on the Telegram channel about the announcement.
 
