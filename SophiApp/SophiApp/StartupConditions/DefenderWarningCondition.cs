@@ -11,14 +11,20 @@ namespace SophiApp.StartupConditions
 
         public bool Invoke()
         {
-            if (WmiHelper.HasExternalAntiVirus())
+            if (WindowsDefenderHelper.DisabledByGpo().Invert())
             {
-                var antivirusName = WmiHelper.GetAntiVirusInfo<string>("displayName");
-                DebugHelper.FoundExternalAntiVirus(antivirusName);
-                return HasProblem = false;
+                if (WmiHelper.HasExternalAntiVirus())
+                {
+                    var antivirusName = WmiHelper.GetAntiVirusInfo<string>("displayName");
+                    DebugHelper.FoundExternalAntiVirus(antivirusName);
+                }
+                else
+                {
+                    HasProblem = WmiHelper.DefenderProtectionIsDisabled();
+                }
             }
 
-            return HasProblem = WmiHelper.DefenderProtectionDisabled();
+            return HasProblem;
         }
     }
 }

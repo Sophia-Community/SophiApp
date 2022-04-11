@@ -39,7 +39,7 @@ namespace SophiApp.Helpers
             return isRun;
         }
 
-        internal static bool DefenderProtectionDisabled()
+        internal static bool DefenderProtectionIsDisabled()
         {
             var defender = GetAntiVirusProduct().Where(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID).First();
             var defenderState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);

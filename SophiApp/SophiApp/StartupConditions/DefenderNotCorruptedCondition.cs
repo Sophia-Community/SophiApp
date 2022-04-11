@@ -11,6 +11,14 @@ namespace SophiApp.StartupConditions
         public bool HasProblem { get; set; }
         public ConditionsTag Tag { get; set; } = ConditionsTag.DefenderCorrupted;
 
-        public bool Invoke() => WmiHelper.HasExternalAntiVirus() ? HasProblem = false : WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
+        public bool Invoke()
+        {
+            if (WindowsDefenderHelper.DisabledByGpo() || WmiHelper.HasExternalAntiVirus())
+            {
+                return HasProblem;
+            }
+
+            return HasProblem = WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
+        }
     }
 }
