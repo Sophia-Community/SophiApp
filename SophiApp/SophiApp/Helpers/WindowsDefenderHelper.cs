@@ -4,7 +4,7 @@ namespace SophiApp.Helpers
 {
     internal class WindowsDefenderHelper
     {
-        internal static bool DisabledByGpo()
+        internal static bool DisabledByGroupPolicy()
         {
             const string DISABLE_RTM_MONITORING = "DisableRealtimeMonitoring";
             const string DISABLE_ANTI_SPYWARE = "DisableAntiSpyware";

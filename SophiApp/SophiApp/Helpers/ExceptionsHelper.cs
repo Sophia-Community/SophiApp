@@ -16,6 +16,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class MicrosoftDefenderDisabledByGroupPolicy : Exception
+    {
+        public MicrosoftDefenderDisabledByGroupPolicy() : base("Microsoft Defender disabled by group policy")
+        {
+        }
+    }
+
     internal class MicrosoftDefenderNotRunning : Exception
     {
         public MicrosoftDefenderNotRunning() : base("Microsoft Defender is not running")
