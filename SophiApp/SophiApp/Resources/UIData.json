@@ -2986,7 +2986,7 @@
     },
     "Description": {
       "EN": "Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm. The sandbox for Microsoft Defender is enabled by default in Windows 11.",
-      "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда. В Windows 11 песочницу для Microsoft Defender включена по умолчанию",
+      "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда. В Windows 11 песочница для Microsoft Defender включена по умолчанию",
       "DE": "Durch die Ausführung von Microsoft Defender in einer Sandbox wird sichergestellt, dass im unwahrscheinlichen Fall einer Kompromittierung böswillige Aktionen auf die isolierte Umgebung beschränkt bleiben und der Rest des Systems vor Schaden geschützt wird. Die Sandbox für Microsoft Defender ist in Windows 11 standardmäßig aktiviert.",
       "UA": "Запуск Microsoft Defender у пісочниці гарантує, що при малоймовірній компрометації шкідливі дії будуть обмежені ізольованим середовищем, захищаючи решту системи від шкоди. У Windows 11 пісочницю для Microsoft Defender включено за замовчуванням"
     },
