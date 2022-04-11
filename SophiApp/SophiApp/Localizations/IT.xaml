@@ -23,7 +23,7 @@
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">L'attuale versione di windows non è supportata.</system:String>
     <system:String x:Key="Conditions.Windows10Build.Supported">è richiesto Windows 10 versione 1904x.1151.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">o Windows 11 versione 22000.493.</system:String>
-    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">The minimum supported Windows 11 Insider Preview build is 22509.</system:String>
+    <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">La versione insider minima è la build Windows 11 Insider Preview 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Apri Windows Update</system:String>
     <system:String x:Key="Localization.Privacy">Privacy</system:String>
     <system:String x:Key="Localization.Personalization">Personalizzazione</system:String>
@@ -35,16 +35,16 @@
     <system:String x:Key="Localization.Security">Sicurezza</system:String>
     <system:String x:Key="Localization.ContextMenu">Menu contestuale</system:String>
     <system:String x:Key="Localization.Settings">Impostazioni</system:String>
-    <system:String x:Key="Localization.ViewApplyingException.InApplying">While applying</system:String>
+    <system:String x:Key="Localization.ViewApplyingException.InApplying">Mentre si applicavano le modifiche</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">c'è stato un'errore.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">pulendo la cartella %SystemRoot%\SoftwareDistribution\Download.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event"La cache di Windows update è stata eliminata.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">è in corso la pulizia della cartella dei file temporanei.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">La cartella dei file temporanei è stata pulita.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Notifiche Pop-up per ricordarti di cancellare i file di Windows inutilizzati e gli aggiornamenti già installati.</system:String>
-    <system:String x:Key="Localization.CleanupTask.Description">Cleans up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
+    <system:String x:Key="Localization.CleanupTask.Description">Cancellazzione dei file temporanei e degli aggiornamenti di Windows già installati con l'app Pulizia disco.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Informazioni importanti </system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Esguire una pulizia dei file temporanei e degli aggiornamenti di Windows già installati?</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">La pulizia di Windows non richiederà molto. Questa notifica riapparirà fra 30 giorni.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">Seleziona fra quanto tempo vuoi che venga rimostrata la notifica</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 ore</system:String>
@@ -53,7 +53,7 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">esegui</system:String>
     <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
     <system:String x:Key="Localization.About.MadeWith">Fatto col</system:String>
-    <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>
+    <system:String x:Key="Localization.About.OfWindows">per Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
     <system:String x:Key="Localization.Settings.Themes">Temi</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">scuro</system:String>
