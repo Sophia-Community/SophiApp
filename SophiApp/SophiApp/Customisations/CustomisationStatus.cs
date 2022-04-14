@@ -412,17 +412,28 @@ namespace SophiApp.Customisations
 
         public static bool _348() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
                                               .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PCHC) is null
-                                                                                                                               ? throw new UpdateNotInstalledException(KB5005463_UPD)
-                                                                                                                               : false;
+                                     ? throw new UpdateNotInstalledException(KB5005463_UPD)
+                                     : false;
 
         public static bool _349()
         {
             if (HttpHelper.IsOnline)
             {
-                var vcVersions = WebHelper.GetJsonResponse(_349_VC_VERSION_URL, new VCRedistrDto());
-                var latestVersion = vcVersions.Supported.Where(item => item.Name == _349_VC_REDISTR_FOR_VS_2022 && item.Architecture == X64).Select(item => item.Version).First();
-                var registryVersionPath = $@"Installer\Dependencies\VC,redist.x64,amd64,{latestVersion.Major}.{latestVersion.Minor},bundle";
-                return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryVersionPath, "Version") != null;
+                var cloudRedistrLibs = WebHelper.GetJsonResponse<CPPRedistrCollection>(_349_VC_VERSION_URL);
+                var cloudCPPRedistrLib = cloudRedistrLibs.Supported.First(libs => libs.Name == _349_VC_REDISTR_FOR_VS_2022 && libs.Architecture == X64);
+
+                try
+                {
+                    var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH).FirstOrDefault(key => key.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN));
+                    var registryCPPRedistrLibVersion = Version.Parse(RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_VERSION_NAME) as string ?? "0.0.0.0");
+
+                    return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_DISPLAY_NAME).Contains(_349_VC_REDISTRX64_NAME_PATTERN)
+                            || registryCPPRedistrLibVersion > cloudCPPRedistrLib.Version;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
 
             throw new NoInternetConnectionException();

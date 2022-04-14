@@ -245,7 +245,7 @@
     <Compile Include="Customisations\CustomisationOs.cs" />
     <Compile Include="Customisations\CustomisationStatus.cs" />
     <Compile Include="Dto\UwpElementDto.cs" />
-    <Compile Include="Dto\VCRedistrDto.cs" />
+    <Compile Include="Dto\CPPRedistrCollection.cs" />
     <Compile Include="Helpers\ComObjectHelper.cs" />
     <Compile Include="Helpers\StartupConditionsHelper.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
