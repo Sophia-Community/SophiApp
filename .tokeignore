@@ -1,6 +1,7 @@
 .github/
 img/
 SophiApp/Binary/
+SophiApp/SophiApp/Recourses/UIData_*.json
 gitattributes
 CHANGELOG.md
 .tokeignore
