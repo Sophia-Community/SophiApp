@@ -3,7 +3,14 @@ using System.Collections.Generic;
 
 namespace SophiApp.Dto
 {
-    internal class VCItem
+    internal class CPPRedistrCollection
+    {
+        public List<CPPRedistrLib> Supported = new List<CPPRedistrLib>();
+
+        public List<CPPRedistrLib> Unsupported = new List<CPPRedistrLib>();
+    }
+
+    internal class CPPRedistrLib
     {
         public string Architecture { get; set; }
         public string Download { get; set; }
@@ -18,12 +25,5 @@ namespace SophiApp.Dto
         public uint UninstallKey { get; set; }
         public string URL { get; set; }
         public Version Version { get; set; }
-    }
-
-    internal class VCRedistrDto
-    {
-        public List<VCItem> Supported = new List<VCItem>();
-
-        public List<VCItem> Unsupported = new List<VCItem>();
     }
 }

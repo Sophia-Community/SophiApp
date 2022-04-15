@@ -26,13 +26,13 @@ namespace SophiApp.Helpers
             Download(url, file);
         }
 
-        internal static T GetJsonResponse<T>(string url, T dto)
+        internal static T GetJsonResponse<T>(string url)
         {
-            var request = WebRequest.CreateHttp(url);
-            request.UserAgent = AppHelper.UserAgent;
-            var response = request.GetResponse();
+            var webRequest = WebRequest.CreateHttp(url);
+            webRequest.UserAgent = AppHelper.UserAgent;
+            var webResponse = webRequest.GetResponse();
 
-            using (var dataStream = response.GetResponseStream())
+            using (var dataStream = webResponse.GetResponseStream())
             {
                 var reader = new StreamReader(dataStream);
                 var parsedJson = JsonConvert.DeserializeObject<T>(reader.ReadToEnd());

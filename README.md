@@ -83,22 +83,22 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 |Version|   Build   |      Editions     | App version |
 |:-----:|:---------:|:-----------------:|:--------------:|
-| 22H2  | 22509     |Home/Pro/Enterprise|[1.0.0.50](https://github.com/Sophia-Community/SophiApp/releases/latest)|
+| 22H2  |   22509   |Home/Pro/Enterprise|[1.0.0.53](https://github.com/Sophia-Community/SophiApp/releases/latest)|
 
 ### Windows 11
 
 |Version|   Build   |      Editions     | App version |
 |:-----:|:---------:|:-----------------:|:--------------:|
-| 21H2  | 22000.556 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/Sophia-Community/SophiApp/releases/latest)|
+| 21H2  | 22000.556 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/Sophia-Community/SophiApp/releases/latest)|
 
 ### Windows 10
 
 |Version|    Marketing name   | Build      | Arch|      Editions     | App version |
 |:-----:|:-------------------:|:----------:|:---:|:-----------------:|:--------------:|
-| 21H2  | October 2021 Update | 19044.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
-| 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
-| 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
-| 2004  | May 2020 Update     | 19041.1151 | x64 |Home/Pro/Enterprise|[1.0.0.50](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 21H2  | October 2021 Update | 19044.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+| 2004  | May 2020 Update     | 19041.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
 
 ### Beta version
 [Download](https://github.com/farag2/Sophia-Script-for-Windows/releases/releases)
@@ -135,8 +135,6 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 * Uninstall OneDrive "correctly";
 * Uninstall UWP apps displaying localized packages names;
   * An UWP apps list is rendered dynamically using local icons
-* Disable Windows features displaying friendly packages names;
-* Uninstall Windows capabilities displaying friendly packages names;
 * Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats;
 * Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates;
   * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-scheduled-tasks)

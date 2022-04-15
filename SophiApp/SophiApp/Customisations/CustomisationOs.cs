@@ -890,21 +890,36 @@ namespace SophiApp.Customisations
                 Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
                          .ToList()
                          .ForEach(log => FileHelper.TryDeleteFile(log));
-
                 return;
             }
 
-            var vcRedistrGuid = RegHelper.GetStringValue(RegistryHive.LocalMachine, _349_VC_REDISTRX64_REGISTRY_PATH, null);
-            var vcCachePath = $@"{ENVIRONMENT_PROGRAM_DATA}\Package Cache\{vcRedistrGuid}\{_349_VC_REDISTRX64_EXE}";
-            var vcFileVersion = FileVersionInfo.GetVersionInfo(vcCachePath);
+            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH).First(key => key.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN));
+            var registryGuidRedistrLib = RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, null);
 
-            if (vcFileVersion.ProductName.Contains(_349_VC_REDISTRX64_NAME_PATTERN))
+            var localRedistrLibPath = $@"{ENVIRONMENT_PROGRAM_DATA}\{_349_PACKAGE_CACHE_NAME}\{registryGuidRedistrLib}\{_349_VC_REDISTRX64_EXE}";
+            var localRedistrLib = FileVersionInfo.GetVersionInfo(localRedistrLibPath);
+
+            if (localRedistrLib.ProductName.Contains(_349_VC_REDISTRX64_NAME_PATTERN))
             {
-                ProcessHelper.StartWait(vcCachePath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
-                Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
-                         .ToList()
-                         .ForEach(log => FileHelper.TryDeleteFile(log));
+                ProcessHelper.StartWait(localRedistrLibPath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
+
+                foreach (var log in Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN))
+                {
+                    FileHelper.TryDeleteFile(log);
+                }
             }
+
+            //var vcRedistrGuid = RegHelper.GetStringValue(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH, null);
+            //var vcCachePath = $@"{ENVIRONMENT_PROGRAM_DATA}\Package Cache\{vcRedistrGuid}\{_349_VC_REDISTRX64_EXE}";
+            //var vcFileVersion = FileVersionInfo.GetVersionInfo(vcCachePath);
+
+            //if (vcFileVersion.ProductName.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN))
+            //{
+            //    ProcessHelper.StartWait(vcCachePath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
+            //    Directory.EnumerateFileSystemEntries(temp, _349_REDISTRX64_REGISTRY_NAME_PATTERN)
+            //             .ToList()
+            //             .ForEach(log => FileHelper.TryDeleteFile(log));
+            //}
         }
 
         public static void _351(bool _) => OneDriveHelper.Install();
