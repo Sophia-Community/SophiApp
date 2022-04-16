@@ -1,4 +1,4 @@
-#(?)
+
 [
     {
         "Id":  100,
@@ -209,10 +209,10 @@
     {
         "Id":  118,
         "Header":  {
-                       "IT":  "Use sign-in info to automatically finish setting up device after an update"
+                       "IT":  "Usa le credenziali per configurare automaticamente il dispositivo dopo gli aggiornamenti"
                    },
         "Description":  {
-                            "IT":  "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe."
+                            "IT":  "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette a windows di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -223,7 +223,7 @@
     {
         "Id":  119,
         "Header":  {
-                       "IT":  "Let websites provide locally relevant content by accessing language list"
+                       "IT":  "Permetti ai siti web di fornire contanuti più rilevanti accedendo alla lista delle lingue installate"
                    },
         "Description":  {
                             "IT":  ""
@@ -237,7 +237,7 @@
     {
         "Id":  120,
         "Header":  {
-                       "IT":  "Let apps show me personalized ads by using my advertising ID"
+                       "IT":  "Permetti alle app di mostrarmi pubblicità personalizzate usando il mio id pubblicitario"
                    },
         "Description":  {
                             "IT":  ""
@@ -251,10 +251,10 @@
     {
         "Id":  121,
         "Header":  {
-                       "IT":  "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers"
+                       "IT":  "Mostra la Windows welcome experiences dopo gli aggiornamenti e in occasione di nuove funzionalità o promozioni"
                    },
         "Description":  {
-                            "IT":  "Windows may open a pop-up window to show you what\u0027s new about the operating system."
+                            "IT":  "Windows potrebbe mostrare un pop-up per farti scoprire\u0027s le novità del sistema operativo."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -265,7 +265,7 @@
     {
         "Id":  122,
         "Header":  {
-                       "IT":  "Get tips and suggestions as you use Windows"
+                       "IT":  "Ottieni consigli su come usare Windows"
                    },
         "Description":  {
                             "IT":  ""
@@ -293,10 +293,10 @@
     {
         "Id":  124,
         "Header":  {
-                       "IT":  "Turn on automatic suggested app installation"
+                       "IT":  "abilita l'istallazione automatica delle app consigliate"
                    },
         "Description":  {
-                            "IT":  "Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation."
+                            "IT":  "Windows può scaricare e installare silenziosamente alcune app suggerite da Microsoft Store senza alcuna conferma dell'utente."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -307,10 +307,10 @@
     {
         "Id":  125,
         "Header":  {
-                       "IT":  "Offer suggestions on how I can set up my device"
+                       "IT":  "Offri suggerimenti su come posso personalizzare il mio dispositivo"
                    },
         "Description":  {
-                            "IT":  "Windows may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up."
+                            "IT":  "Windows può visualizzare un \ "Ottieni ancora più con Windows \" occasionalmente che promuove servizi aggiuntivi che l'utente può acquistare."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -321,7 +321,7 @@
     {
         "Id":  126,
         "Header":  {
-                       "IT":  "Tailored experiences"
+                       "IT":  "Esperienza su misura"
                    },
         "Description":  {
                             "IT":  "Microsoft bietet Ihnen maßgeschneiderte Erfahrungen auf der Grundlage der von Ihnen gewählten Einstellung für Diagnosedaten."
@@ -335,7 +335,7 @@
     {
         "Id":  127,
         "Header":  {
-                       "IT":  "Enable Bing search in the Start Menu"
+                       "IT":  "Abilita Bing search nel menu Start"
                    },
         "Description":  {
                             "IT":  ""
@@ -349,7 +349,7 @@
     {
         "Id":  200,
         "Header":  {
-                       "IT":  "Show the \"This PC\" icon on Desktop"
+                       "IT":  "Mostra l'icona \ "Questo PC \" sul desktop"
                    },
         "Description":  {
                             "IT":  ""
@@ -360,7 +360,7 @@
                               {
                                   "Id":  201,
                                   "ChildHeader":  {
-                                                      "IT":  "Show"
+                                                      "IT":  "Mostra"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -370,7 +370,7 @@
                               {
                                   "Id":  202,
                                   "ChildHeader":  {
-                                                      "IT":  "Hide"
+                                                      "IT":  "Nascondere"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -385,7 +385,7 @@
     {
         "Id":  203,
         "Header":  {
-                       "IT":  "Enable the Windows 10 File Explorer"
+                       "IT":  "Abilita il Esplora file di Windows 10"
                    },
         "Description":  {
                             "IT":  ""
@@ -399,7 +399,7 @@
     {
         "Id":  204,
         "Header":  {
-                       "IT":  "Use check boxes to select items"
+                       "IT":  "Utilizzare le caselle di spunta per selezionare gli elementi"
                    },
         "Description":  {
                             "IT":  ""
@@ -413,7 +413,7 @@
     {
         "Id":  205,
         "Header":  {
-                       "IT":  "Show hidden files, folders, and drives"
+                       "IT":  "Mostra file nascosti, cartelle e dischi"
                    },
         "Description":  {
                             "IT":  ""
@@ -427,7 +427,7 @@
     {
         "Id":  206,
         "Header":  {
-                       "IT":  "Show the file name extensions"
+                       "IT":  "Mostra le estensioni del nome dei file"
                    },
         "Description":  {
                             "IT":  ""
@@ -441,7 +441,7 @@
     {
         "Id":  207,
         "Header":  {
-                       "IT":  "Hide folder merge conflicts"
+                       "IT":  "Nascondi i conflitti di unione delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -455,7 +455,7 @@
     {
         "Id":  208,
         "Header":  {
-                       "IT":  "Open File Explorer to:"
+                       "IT":  "Apri esplora file in:"
                    },
         "Description":  {
                             "IT":  ""
@@ -466,7 +466,7 @@
                               {
                                   "Id":  209,
                                   "ChildHeader":  {
-                                                      "IT":  "This PC"
+                                                      "IT":  "Questo PC"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -476,7 +476,7 @@
                               {
                                   "Id":  210,
                                   "ChildHeader":  {
-                                                      "IT":  "Quick access"
+                                                      "IT":  "Accesso rapido"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -491,7 +491,7 @@
     {
         "Id":  211,
         "Header":  {
-                       "IT":  "Show Cortana button on the taskbar"
+                       "IT":  "Mostra il pulsante Cortana sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -505,7 +505,7 @@
     {
         "Id":  212,
         "Header":  {
-                       "IT":  "Enable the File Explorer compact mode"
+                       "IT":  "Abilita la modalità Compatta di Esplora file"
                    },
         "Description":  {
                             "IT":  ""
@@ -519,10 +519,10 @@
     {
         "Id":  213,
         "Header":  {
-                       "IT":  "Show sync provider notifications within File Explorer"
+                       "IT":  "Mostra notifiche del provider di sincronizzazione all'interno di esplora file"
                    },
         "Description":  {
-                            "IT":  "Disable OneDrive ad notifications within File Explorer."
+                            "IT":  "Disabilita le notifiche pubblicitarie di OneDrive all'interno di esplora file."
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -533,7 +533,7 @@
     {
         "Id":  214,
         "Header":  {
-                       "IT":  "When I snap a window, show what I can snap next to it"
+                       "IT":  "Quando aggancio una finestra, mostra quello che posso agganciare accanto ad essa"
                    },
         "Description":  {
                             "IT":  ""
@@ -547,7 +547,7 @@
     {
         "Id":  215,
         "Header":  {
-                       "IT":  "Show snap layouts when I hover over a windows\u0027s maximize button"
+                       "IT":  "Mostra snap layouts quando mantengo il mouse sul pulsante\u0027s massimizza"
                    },
         "Description":  {
                             "IT":  ""
@@ -561,7 +561,7 @@
     {
         "Id":  216,
         "Header":  {
-                       "IT":  "Display the file transfer dialog box"
+                       "IT":  "Visualizza la finestra di dialogo del trasferimento di file"
                    },
         "Description":  {
                             "IT":  ""
@@ -572,7 +572,7 @@
                               {
                                   "Id":  217,
                                   "ChildHeader":  {
-                                                      "IT":  "In the detailed mode"
+                                                      "IT":  "Nella modalità dettagliata"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -582,7 +582,7 @@
                               {
                                   "Id":  218,
                                   "ChildHeader":  {
-                                                      "IT":  "In the compact mode"
+                                                      "IT":  "Nella modalità compatta"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -597,7 +597,7 @@
     {
         "Id":  219,
         "Header":  {
-                       "IT":  "Minimize the File Explorer ribbon"
+                       "IT":  "Minimizza il ribbon in Esplora file"
                    },
         "Description":  {
                             "IT":  ""
@@ -1578,7 +1578,7 @@
                        "IT":  "Launch folder windows in a separate process"
                    },
         "Description":  {
-                            "IT":  "By default, all File Explorer windows, including the desktop shell, run in a single explorer.exe process. If one File Explorer window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell."
+                            "IT":  "By default, all Esplora file windows, including the desktop shell, run in a single explorer.exe process. If one Esplora file window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1676,7 +1676,7 @@
                        "IT":  "Enable thumbnail cache removal"
                    },
         "Description":  {
-                            "IT":  "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder."
+                            "IT":  "Windows deletes automatically thumbnail cache after restart or shutdown, and Esplora file has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
