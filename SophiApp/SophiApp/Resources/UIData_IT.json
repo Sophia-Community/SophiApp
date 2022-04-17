@@ -611,7 +611,7 @@
     {
         "Id":  220,
         "Header":  {
-                       "IT":  "Display the recycle bin files delete confirmation dialog"
+                       "IT":  "Mostra conferma di eliminazione file"
                    },
         "Description":  {
                             "IT":  ""
@@ -625,7 +625,7 @@
     {
         "Id":  221,
         "Header":  {
-                       "IT":  "Show the \"3D Objects\" folder in \"This PC\" and Quick access"
+                       "IT":  "Mostra \"Oggetti 3D\" cartella in \"Questo PC\" e  accesso rapido"
                    },
         "Description":  {
                             "IT":  ""
@@ -639,7 +639,7 @@
     {
         "Id":  222,
         "Header":  {
-                       "IT":  "Show frequently used folders in Quick access"
+                       "IT":  "Show frequently used folders in accesso rapido"
                    },
         "Description":  {
                             "IT":  ""
@@ -653,7 +653,7 @@
     {
         "Id":  223,
         "Header":  {
-                       "IT":  "Show recently used files in Quick access"
+                       "IT":  "Mostra i file usati di recente in accesso rapido"
                    },
         "Description":  {
                             "IT":  ""
@@ -667,7 +667,7 @@
     {
         "Id":  224,
         "Header":  {
-                       "IT":  "Set the taskbar alignment"
+                       "IT":  "Imposta l'allineamento della barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -678,7 +678,7 @@
                               {
                                   "Id":  225,
                                   "ChildHeader":  {
-                                                      "IT":  "To the left"
+                                                      "IT":  "Sinistra"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -688,7 +688,7 @@
                               {
                                   "Id":  226,
                                   "ChildHeader":  {
-                                                      "IT":  "To the center"
+                                                      "IT":  "Centro"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -703,7 +703,7 @@
     {
         "Id":  227,
         "Header":  {
-                       "IT":  "Show the search button on the taskbar"
+                       "IT":  "Mostra il pulsante di ricerca sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -717,7 +717,7 @@
     {
         "Id":  228,
         "Header":  {
-                       "IT":  "Show Task View button on the taskbar"
+                       "IT":  "Mostra il pulsante Visualizzazione attività sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -731,7 +731,7 @@
     {
         "Id":  229,
         "Header":  {
-                       "IT":  "Show the Task view button on the taskbar"
+                       "IT":  "Mostra il pulsante Visualizzazione attività sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -745,7 +745,7 @@
     {
         "Id":  230,
         "Header":  {
-                       "IT":  "Show the widgets icon on the taskbar"
+                       "IT":  "Mostra l'icona dei widget sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -759,7 +759,7 @@
     {
         "Id":  231,
         "Header":  {
-                       "IT":  "Show People on the taskbar"
+                       "IT":  "Mostra l'icona persone sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -773,7 +773,7 @@
     {
         "Id":  232,
         "Header":  {
-                       "IT":  "Show seconds on the taskbar clock"
+                       "IT":  "Mostra secondi sull'orologio della barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -787,7 +787,7 @@
     {
         "Id":  233,
         "Header":  {
-                       "IT":  "Search on the taskbar"
+                       "IT":  "Pulsante cerca sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -798,7 +798,7 @@
                               {
                                   "Id":  234,
                                   "ChildHeader":  {
-                                                      "IT":  "Hidden"
+                                                      "IT":  "Nascosto"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -808,7 +808,7 @@
                               {
                                   "Id":  235,
                                   "ChildHeader":  {
-                                                      "IT":  "Show search icon"
+                                                      "IT":  "Mostra l'icona di cerca"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -818,7 +818,7 @@
                               {
                                   "Id":  236,
                                   "ChildHeader":  {
-                                                      "IT":  "Show search box"
+                                                      "IT":  "Mostra la casella di ricerca"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -833,7 +833,7 @@
     {
         "Id":  237,
         "Header":  {
-                       "IT":  "Show Windows Ink Workspace button on the taskbar"
+                       "IT":  "Mostra il pulsante workspace di Windows Ink sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -847,7 +847,7 @@
     {
         "Id":  238,
         "Header":  {
-                       "IT":  "Always show all icons in the notification area"
+                       "IT":  "Mostra sempre tutte le icone nell'area di notificafica"
                    },
         "Description":  {
                             "IT":  ""
@@ -861,7 +861,7 @@
     {
         "Id":  239,
         "Header":  {
-                       "IT":  "Show the Meet Now icon in the notification area"
+                       "IT":  "Mostra l'icona di Meet Now nell'area di notifica"
                    },
         "Description":  {
                             "IT":  ""
@@ -875,7 +875,7 @@
     {
         "Id":  240,
         "Header":  {
-                       "IT":  "Show \"News and Interests\" on the taskbar"
+                       "IT":  "Mostra \"News and Interests\" sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -889,7 +889,7 @@
     {
         "Id":  241,
         "Header":  {
-                       "IT":  "Show the Chat icon (Microsoft Teams) on the taskbar"
+                       "IT":  "Mostra l'icona della chat (Microsoft Teams) sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -903,7 +903,7 @@
     {
         "Id":  242,
         "Header":  {
-                       "IT":  "View the Control Panel by"
+                       "IT":  "Visualizza il pannello di controllo in modalità"
                    },
         "Description":  {
                             "IT":  ""
@@ -914,7 +914,7 @@
                               {
                                   "Id":  243,
                                   "ChildHeader":  {
-                                                      "IT":  "Large icons"
+                                                      "IT":  "Icone grandi"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -924,7 +924,7 @@
                               {
                                   "Id":  244,
                                   "ChildHeader":  {
-                                                      "IT":  "Small icons"
+                                                      "IT":  "Icone Piccole"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -934,7 +934,7 @@
                               {
                                   "Id":  245,
                                   "ChildHeader":  {
-                                                      "IT":  "Category"
+                                                      "IT":  "Categorie"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -949,7 +949,7 @@
     {
         "Id":  246,
         "Header":  {
-                       "IT":  "Default Windows color mode"
+                       "IT":  "Tema di Windows"
                    },
         "Description":  {
                             "IT":  ""
@@ -960,7 +960,7 @@
                               {
                                   "Id":  247,
                                   "ChildHeader":  {
-                                                      "IT":  "Light"
+                                                      "IT":  "Leggera"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -970,7 +970,7 @@
                               {
                                   "Id":  248,
                                   "ChildHeader":  {
-                                                      "IT":  "Dark"
+                                                      "IT":  "Scuro"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -985,7 +985,7 @@
     {
         "Id":  249,
         "Header":  {
-                       "IT":  "Default app color mode"
+                       "IT":  "Tema delle app"
                    },
         "Description":  {
                             "IT":  ""
@@ -996,7 +996,7 @@
                               {
                                   "Id":  250,
                                   "ChildHeader":  {
-                                                      "IT":  "Light"
+                                                      "IT":  "Chiaro"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1006,7 +1006,7 @@
                               {
                                   "Id":  251,
                                   "ChildHeader":  {
-                                                      "IT":  "Dark"
+                                                      "IT":  "Scuro"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1021,7 +1021,7 @@
     {
         "Id":  252,
         "Header":  {
-                       "IT":  "Show the \"New App Installed\" indicator"
+                       "IT":  "Mostra il \"New App Installed\" indicatoree"
                    },
         "Description":  {
                             "IT":  ""
@@ -1035,10 +1035,10 @@
     {
         "Id":  253,
         "Header":  {
-                       "IT":  "Show first sign-in animation after the upgrade"
+                       "IT":  "Mostra l'animazione di primo accesso dopo l'aggiornamento"
                    },
         "Description":  {
-                            "IT":  "In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the \"first sign-in animation\" that features several messages to configure the account environment."
+                            "IT":  "In Windows, dopo aver completato la configurazione su una nuova installazione o aggiornamento o quando si accede a un nuovo account, visualizza il \"Animazione primo accesso\"che presenta diversi messaggi per configurare l'ambiente dell'account."
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1049,10 +1049,10 @@
     {
         "Id":  254,
         "Header":  {
-                       "IT":  "Set the quality factor of the JPEG desktop wallpapers to"
+                       "IT":  "Impostare la qualità degli sfondi desktop JPEG a"
                    },
         "Description":  {
-                            "IT":  "When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85% and store it as the TranscodedWallpaper file in the \n%APPDATA%\\Microsoft\\Windows\\Themes folder. If you use a PNG image as your desktop background wallpaper or slideshow, you are not affected by this automatic quality reduction since it only applies to JPEG images."
+                            "IT":  "Quando si imposta un'immagine JPEG come sfondo del desktop o come presentazione, il sistema operativo riduce la qualità dell'immagine originale all'85% e lo memorizza come file TranscodedWallpaper nella cartella \ N% AppData% \\ Microsoft \\ windows \\.Se si utilizza un'immagine PNG come sfondo del desktop  o come slideshow, non sei interessato da questa riduzione automatica della qualità poiché si applica solo alle immagini JPEG."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1060,7 +1060,7 @@
                               {
                                   "Id":  255,
                                   "ChildHeader":  {
-                                                      "IT":  "100% (no reduction)"
+                                                      "IT":  "100% (nessuna riduzione)"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1070,7 +1070,7 @@
                               {
                                   "Id":  256,
                                   "ChildHeader":  {
-                                                      "IT":  "80% (by default)"
+                                                      "IT":  "80% (predefinito)"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1085,7 +1085,7 @@
     {
         "Id":  257,
         "Header":  {
-                       "IT":  "Notify me when a restart is required to finish updating"
+                       "IT":  "Avvisami quando è necessario un riavvio per terminare l'aggiornamento"
                    },
         "Description":  {
                             "IT":  ""
@@ -1099,7 +1099,7 @@
     {
         "Id":  258,
         "Header":  {
-                       "IT":  "Add the \"- Shortcut\" suffix to the file name of created shortcuts"
+                       "IT":  "Aggiungi il suffisso \ "- Collegamento \" al nome del file delle scorciatoie create"
                    },
         "Description":  {
                             "IT":  ""
@@ -1113,7 +1113,7 @@
     {
         "Id":  259,
         "Header":  {
-                       "IT":  "Use the PrtScn button to open screen snipping"
+                       "IT":  "Utilizzare il pulsante Stamp/PrtScn per aprire lo schermo con lo snipping"
                    },
         "Description":  {
                             "IT":  ""
@@ -1127,7 +1127,7 @@
     {
         "Id":  260,
         "Header":  {
-                       "IT":  "Let me use a different input method for each app window"
+                       "IT":  "Permetti l'uso di un metodo di input diverso per ogni istanza dell'app"
                    },
         "Description":  {
                             "IT":  ""
@@ -1141,7 +1141,7 @@
     {
         "Id":  261,
         "Header":  {
-                       "IT":  "When I grab a windows\u0027s title bar and shake it, minimize all other windows"
+                       "IT":  "Quando prendo la barra del titolo di una finestra\u0027s e la scuoto minimizza tutte le altre finestre"
                    },
         "Description":  {
                             "IT":  ""
@@ -1155,10 +1155,10 @@
     {
         "Id":  300,
         "Header":  {
-                       "IT":  "Storage Sense"
+                       "IT":  "Sensore di memoria "
                    },
         "Description":  {
-                            "IT":  "Storage Sense runs when disk space is low. We clean enough space to help your system runs its best."
+                            "IT":  "Senso di memoria viene eseguito quando lo spazio su disco è basso. Pulisce abbastanza spazio per aiutare il tuo sistema a funzionare meglio."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1169,10 +1169,10 @@
     {
         "Id":  301,
         "Header":  {
-                       "IT":  "Run Storage Sense"
+                       "IT":  "Esegui il sensore di memoria."
                    },
         "Description":  {
-                            "IT":  "Storage Sense runs when disk space is low and frees up enough space for optimal OS operation. It is better to create the \"Windows Cleanup\" task in the \"Task Scheduler\" section to clean up Windows more effectively."
+                            "IT":  "Sensore di memoria si esegue quando lo spazio su disco è basso e libera spazio sufficiente per un funzionamento ottimale del sistema operativo.È meglio creare l'attività \ "Pulizia di windows \" nella sezione \ "Operazioni Pianificate \" per ripulire windows in modo più efficace."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1180,7 +1180,7 @@
                               {
                                   "Id":  302,
                                   "ChildHeader":  {
-                                                      "IT":  "Every month"
+                                                      "IT":  "Ogni mese"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1190,7 +1190,7 @@
                               {
                                   "Id":  303,
                                   "ChildHeader":  {
-                                                      "IT":  "During low free disk space"
+                                                      "IT":  "Se lo spazio libero su disco libero"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1205,7 +1205,7 @@
     {
         "Id":  304,
         "Header":  {
-                       "IT":  "Delete temporary files that aren\u0027t used by apps"
+                       "IT":  "Elimina file temporanei che non sono utilizzati dalle app"
                    },
         "Description":  {
                             "IT":  ""
@@ -1219,10 +1219,10 @@
     {
         "Id":  305,
         "Header":  {
-                       "IT":  "Hibernate"
+                       "IT":  "Ibernazione"
                    },
         "Description":  {
-                            "IT":  "Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to the \nC:\\hiberfil.sys file, and turns off your computer. By default, the size of the hidden system protected file C:\\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. It is not recommended to turn it off on mobile devices."
+                            "IT":  "Ibernazione è uno stato di risparmio energetico utilizzato principalmente per laptop. A differenza della sospensione, l'ibernazione mette i documenti e i programmi aperti sull'unità di sistema nel file C: \\ hiberfil.sys e spegne il computer. Per impostazione predefinita, la dimensione del file protetto del sistema nascosto C: \\ hiberfil.sys è il 40% della quantità totale di RAM installata. Disabilitare l'ibernazione disabiliterà anche l'avvio rapido e l'ibernazione non verrà più visualizzato nel menu di alimentazione.Non è consigliato spegnerlo sui dispositivi mobili."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1233,10 +1233,10 @@
     {
         "Id":  306,
         "Header":  {
-                       "IT":  "The temp environment variable path"
+                       "IT":  "Il percorso variabile dell'ambiente temp"
                    },
         "Description":  {
-                            "IT":  "Use only in case if you are the only user on this PC, otherwise all users will use the same folder for all temporary files."
+                            "IT":  "Utilizzare Solo nel caso in cui si sia l'unico utente su questo PC, altrimenti tutti gli utenti utilizzeranno la stessa cartella per tutti i file temporanei."
                         },
         "Type":  "AdvancedRadioGroup",
         "Tag":  "System",
@@ -1269,10 +1269,10 @@
     {
         "Id":  309,
         "Header":  {
-                       "IT":  "Enable the Windows 260 character path limit"
+                       "IT":  "Abilita il limite di carattere del percorso a 260"
                    },
         "Description":  {
-                            "IT":  "By default, the maximum path length limit in Windows is 260 characters. A local path is structured in the following order: drive letter, colon, backslash, name components separated by backslashes, and a terminating null character."
+                            "IT":  "Per impostazione predefinita, il limite massimo di lunghezza del percorso in Windows è 260 caratteri. Un percorso locale è strutturato nel seguente ordine: Lettera di unità, due punti, barra, nome cartell separati da barre indietro e un carattere null terminale."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1283,10 +1283,10 @@
     {
         "Id":  310,
         "Header":  {
-                       "IT":  "Display Stop error code when BSoD occurs"
+                       "IT":  "Display Codice di errore quando si verifica un BSOD"
                    },
         "Description":  {
-                            "IT":  "By default, Windows does not display a Stop error code when a BSoD occurs, which helps to identify the causes of a BSoD."
+                            "IT":  "Per impostazione predefinita, Windows non visualizza un codice di errore quando si verifica un BSOD, che aiuterebbe a identificare le cause di un BSOD."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1297,7 +1297,7 @@
     {
         "Id":  311,
         "Header":  {
-                       "IT":  "Choose when to be notified about changes to your computer"
+                       "IT":  "Scegliere quando si verrà avvisato di modifiche al tuo computer"
                    },
         "Description":  {
                             "IT":  "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run."
