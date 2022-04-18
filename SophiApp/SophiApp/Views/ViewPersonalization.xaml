@@ -17,10 +17,19 @@
             x:Key="TextedElementsCollection"
             Filter="TextedElementsFilter"
             Source="{Binding TextedElements}" />
+        <CollectionViewSource
+            x:Key="StartMenuElementsCollection"
+            Filter="StartMenuFilter"
+            Source="{Binding TextedElements}" />
         <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <Style TargetType="{x:Type ItemsControl}">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="IsTabStop" Value="False" />
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
+            <Setter Property="Margin" Value="20,10,0,10" />
         </Style>
         <Style TargetType="{x:Type local:ViewPersonalization}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -37,17 +46,18 @@
         <ControlTemplate>
             <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
                 <ScrollViewer x:Name="ScrollViewerContent" Style="{DynamicResource ViewScrollStyle}">
-                    <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
-                        <ItemsControl.Resources>
-                            <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
-                                <controls:AdvancedRadioGroup
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource TextedElementsCollection}}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type models:AdvancedRadioGroup}">
+                                    <controls:AdvancedRadioGroup
                                     Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}"
                                     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
                                     Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}, Converter={StaticResource BoolToVisibilityConverter}}" />
-                            </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
-                                <controls:AdvancedSwitch
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:AdvancedSwitch}">
+                                    <controls:AdvancedSwitch
                                     Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}"
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
@@ -55,37 +65,50 @@
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}"
                                     Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}, Converter={StaticResource BoolToVisibilityConverter}}" />
-                            </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:Switch}">
-                                <controls:Switch
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:Switch}">
+                                    <controls:Switch
                                     Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}"
                                     Description="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     Header="{Binding Header, UpdateSourceTrigger=PropertyChanged}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:RadioGroup}">
-                                <controls:RadioGroup
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:RadioGroup}">
+                                    <controls:RadioGroup
                                     Margin="{StaticResource ItemsMargin}"
                                     Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.RadioGroupClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}" />
-                            </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:CheckBox}">
-                                <controls:CheckBox
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:CheckBox}">
+                                    <controls:CheckBox
                                     Margin="{StaticResource ItemsMargin}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}"
                                     Id="{Binding Id}"
                                     Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                            <DataTemplate DataType="{x:Type models:ExpandingGroup}">
-                                <controls:ExpandingGroup
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:ExpandingGroup}">
+                                    <controls:ExpandingGroup
                                     Margin="{StaticResource ItemsMargin}"
                                     Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}" />
-                            </DataTemplate>
-                        </ItemsControl.Resources>
-                    </ItemsControl>
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                        <Border x:Name="CategorySplitterBorder"/>
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource StartMenuElementsCollection}}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type models:CheckBox}">
+                                    <controls:CheckBox
+                                        Margin="{StaticResource ItemsMargin}"
+                                        Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewPersonalization}}}"
+                                        Id="{Binding Id}"
+                                        Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                    </StackPanel>
                 </ScrollViewer>
             </Grid>
             <ControlTemplate.Triggers>

@@ -167,7 +167,13 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
             <Setter Property="Grid.Column" Value="1" />
         </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+            <Setter Property="CornerRadius" Value="0" />
+        </Style>
     </Window.Resources>
+    <Border>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
@@ -380,7 +386,6 @@
                     <views:ViewUwpApps Grid.Row="0" />
                     <views:ViewTaskScheduler Grid.Row="0" />
                     <views:ViewSystem Grid.Row="0" />
-                    <views:ViewStartMenu Grid.Row="0" />
                     <views:ViewSecurity Grid.Row="0" />
                     <views:ViewSearch Grid.Row="0" />
                     <views:ViewPrivacy Grid.Row="0" />
@@ -395,4 +400,5 @@
             </Grid>
         </Grid>
     </Grid>
+    </Border>
 </Window>

@@ -1,4 +1,5 @@
-﻿using SophiApp.Helpers;
+﻿using SophiApp.Commons;
+using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,5 +47,7 @@ namespace SophiApp.Views
                 scrollViewer?.ScrollToTop();
             }
         }
+
+        private void StartMenuFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tags.ViewStartMenu);
     }
 }
