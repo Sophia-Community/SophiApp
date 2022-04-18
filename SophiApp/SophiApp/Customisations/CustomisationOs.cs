@@ -908,18 +908,6 @@ namespace SophiApp.Customisations
                     FileHelper.TryDeleteFile(log);
                 }
             }
-
-            //var vcRedistrGuid = RegHelper.GetStringValue(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH, null);
-            //var vcCachePath = $@"{ENVIRONMENT_PROGRAM_DATA}\Package Cache\{vcRedistrGuid}\{_349_VC_REDISTRX64_EXE}";
-            //var vcFileVersion = FileVersionInfo.GetVersionInfo(vcCachePath);
-
-            //if (vcFileVersion.ProductName.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN))
-            //{
-            //    ProcessHelper.StartWait(vcCachePath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
-            //    Directory.EnumerateFileSystemEntries(temp, _349_REDISTRX64_REGISTRY_NAME_PATTERN)
-            //             .ToList()
-            //             .ForEach(log => FileHelper.TryDeleteFile(log));
-            //}
         }
 
         public static void _351(bool _) => OneDriveHelper.Install();

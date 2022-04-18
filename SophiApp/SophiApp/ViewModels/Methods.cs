@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SophiApp.Commons;
+using SophiApp.Conditions;
 using SophiApp.Customisations;
 using SophiApp.Dto;
 using SophiApp.Helpers;
@@ -297,6 +298,21 @@ namespace SophiApp.ViewModels
         private void OnConditionsHasProblem(object sender, IStartupCondition e)
         {
             SetVisibleViewTag($"{e.Tag}");
+
+            if (e is OsVersionCondition)
+            {
+                try
+                {
+                    ComObjectHelper.EnableUpdateForOtherProducts();
+                    Thread.Sleep(1000);
+                    PowerShellHelper.GetUwpAppsUpdates();
+                    Thread.Sleep(1000);
+                    ComObjectHelper.SetWindowsUpdateDetectNow();
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
 
         private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
