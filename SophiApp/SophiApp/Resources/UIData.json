@@ -482,7 +482,7 @@
       "UA": "Персоналізовані можливості"
     },
     "Description": {
-      "EN": "Microsoft bietet Ihnen maßgeschneiderte Erfahrungen auf der Grundlage der von Ihnen gewählten Einstellung für Diagnosedaten.",
+      "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.",
       "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций",
       "DE": "Lassen Sie Microsoft Ihnen maßgeschneiderte Lösungen bieten, die auf der Grundlage der Diagnosedaten entsprechend Ihren Einstellungen basieren",
       "UA": "Дозвольте корпорації Майкрософт використовувати ваші діагностичні дані для покращення вашої роботи зі службами Майкрософт за допомогою персоналізованих порад, реклами та рекомендацій"
@@ -2608,14 +2608,14 @@
     "Header": {
       "EN": "Uninstall the \"PC Health Check\" app",
       "RU": "Удалить приложение \"Проверка работоспособности ПК\"",
-      "DE": "\"PC Health Check\" -App deinstallieren",
+      "DE": "PC-Integritätsprüfungsanwendung deinstallieren",
       "UA": "Видалити програму \"Перевірка працездатності ПК\""
     },
     "Description": {
-      "EN": "The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
-      "RU": "Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11",
-      "DE": "Das Update KB5005463 installiert die \"PC Health Check\" -App, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt.",
-      "UA": "Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11"
+      "EN": "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
+      "RU": "Удалить приложение \"Проверка работоспособности ПК Windows\" и заблокировать его установку в будущем. Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11",
+      "DE": "Deinstallieren Sie die PC-Integritätsprüfungsanwendung und verhindern Sie, dass sie in Zukunft installiert wird. Das Update KB5005463 installiert die PC-Integritätsprüfungsanwendung, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt.",
+      "UA": "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11"
     },
     "Type": "CheckBox",
     "Tag": "System",

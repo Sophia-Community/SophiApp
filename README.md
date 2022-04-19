@@ -5,7 +5,7 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" height="30px"/> &emsp; <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" height="30px"/>
 
 <p align="left">
-  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"></a>
+  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"> </a><a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
 
   <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/sophiapp"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
@@ -106,7 +106,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ***
 
 Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history;
-* To be able to run `SophiApp`, you must be the only logged-on account with admin rights;
+* It's allowed to be logged in one admin user only during application startup;
 * 🔥🔥🔥`SophiApp` may not work on a homebrew Windows. Especially, if homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by uprooting system components on purpose.
 
 ## Installation

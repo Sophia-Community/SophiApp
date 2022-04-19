@@ -323,7 +323,7 @@
                        "EN":  "Tailored experiences"
                    },
         "Description":  {
-                            "EN":  "Microsoft bietet Ihnen maßgeschneiderte Erfahrungen auf der Grundlage der von Ihnen gewählten Einstellung für Diagnosedaten."
+                            "EN":  "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -1781,7 +1781,7 @@
                        "EN":  "Uninstall the \"PC Health Check\" app"
                    },
         "Description":  {
-                            "EN":  "The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11."
+                            "EN":  "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
