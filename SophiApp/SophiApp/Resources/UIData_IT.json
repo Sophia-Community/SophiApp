@@ -1300,7 +1300,7 @@
                        "IT":  "Scegliere quando si verrà avvisato di modifiche al tuo computer"
                    },
         "Description":  {
-                            "IT":  "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run."
+                            "IT":  "Quando il controllo dell'account utente (UAC) È abilitato, Windows richiede il consenso o richiede le credenziali di un conto amministratore locale valido prima di avviare un programma o un'attività che richiede un token di accesso all'amministratore completo. Questo prompt garantisce che nessun software dannoso possa essere installato o eseguito in silenzio."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1308,20 +1308,20 @@
                               {
                                   "Id":  312,
                                   "ChildHeader":  {
-                                                      "IT":  "Notify me only when apps try to make changes to my computer"
+                                                      "IT":  "Avvisami solo quando le app cercano di apportare modifiche al mio computer"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt."
+                                                           "IT":  "Con questa impostazione abilitata, vi verrà chiesta conferma quando si ottiene una richiesta di elevazione da parte del prompt del controllo dell'account utente (UAC)."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  313,
                                   "ChildHeader":  {
-                                                      "IT":  "Never notify"
+                                                      "IT":  "Non notificare mai"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt."
+                                                           "IT":  "Con questa impostazione abilitata, non riceverai alcuna richiesta di conferma quando ottieni una richiesta di elevazione dal prompt del controllo account utente (UAC)."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1333,10 +1333,10 @@
     {
         "Id":  314,
         "Header":  {
-                       "IT":  "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode"
+                       "IT":  "(?)"
                    },
         "Description":  {
-                            "IT":  "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders."
+                            "IT":  "L'UAC abilitato con le impostazioni predefinite non consente l'accesso a unità di rete mappate da applicazioni in esecuzione in modalità amministratore. Ciò significa che se si esegue la riga di comando o un file manager con privilegi elevati, non mostreranno le lettere di unità delle cartelle di rete montate."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1347,10 +1347,10 @@
     {
         "Id":  315,
         "Header":  {
-                       "IT":  "Enable downloading updates with delivery optimization"
+                       "IT":  "Abilita il download degli aggiornamenti con l'ottimizzazione recapito"
                    },
         "Description":  {
-                            "IT":  "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that\u0027s needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection."
+                            "IT":  "Windows Update Ottimizzazione recapito funziona permettendoti di ottenere aggiornamenti di Windows e APP di Microsoft Store da fonti oltre a Microsoft, come altri PC sulla rete locale o PC su Internet che scaricano gli stessi file. L'ottimizzazione recapito invia anche aggiornamenti ad altri PC sulla rete locale o su Internet, in base alle tue impostazioni. La condivisione di questi dati tra PC aiuta a ridurre la larghezza di banda Internet che è necessario per mantenere più di un dispositivo aggiornato. Permrtte quindi di eseguire il download se si dispone di una connessione Internet limitata o inaffidabile."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1361,10 +1361,10 @@
     {
         "Id":  316,
         "Header":  {
-                       "IT":  "Always wait for the network at computer startup and logon for workgroup networks"
+                       "IT":  "Attendi sempre l'inizializzazione della rete all'avvio del computer e all'accesso per le reti del gruppo di lavoro"
                    },
         "Description":  {
-                            "IT":  "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available."
+                            "IT":  "Per ridurre il tempo di accesso Windows non attende che la rete sia completamente inizializzata all'avvio o all'accesso."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1375,10 +1375,10 @@
     {
         "Id":  317,
         "Header":  {
-                       "IT":  "Let Windows manage my default printer"
+                       "IT":  "Consentire Windows di gestire la mia stampante predefinita"
                    },
         "Description":  {
-                            "IT":  "By default, Windows make the last used printer as the default one."
+                            "IT":  "Per impostazione predefinita, Windows rendono l'ultima stampante utilizzata come quella predefinita."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1389,10 +1389,10 @@
     {
         "Id":  318,
         "Header":  {
-                       "IT":  "Receive updates for other Microsoft products"
+                       "IT":  "Ricevi aggiornamenti per altri prodotti Microsoft"
                    },
         "Description":  {
-                            "IT":  "Get Microsoft Office and other updates together with Windows updates."
+                            "IT":  "Ottieni Microsoft Office e altri aggiornamenti insieme agli aggiornamenti di Windows."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1403,7 +1403,7 @@
     {
         "Id":  319,
         "Header":  {
-                       "IT":  "Choose the power plan"
+                       "IT":  "Scegli il piano energetico"
                    },
         "Description":  {
                             "IT":  ""
@@ -1414,7 +1414,7 @@
                               {
                                   "Id":  320,
                                   "ChildHeader":  {
-                                                      "IT":  "High performance"
+                                                      "IT":  "Elevate prestazioni"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  "It is not recommended to turn on the \"High performance\" power scheme on laptops."
@@ -1424,7 +1424,7 @@
                               {
                                   "Id":  321,
                                   "ChildHeader":  {
-                                                      "IT":  "Balanced"
+                                                      "IT":  "Equilibrata"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1439,10 +1439,10 @@
     {
         "Id":  322,
         "Header":  {
-                       "IT":  "Use the latest installed .NET Framework runtime for all apps"
+                       "IT":  "Utilizzare l'ultimo runtime .NET Framework installato per tutte le app"
                    },
         "Description":  {
-                            "IT":  "If an app requires the legacy .NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed .NET Framework version."
+                            "IT":  "Se un'app richiede che l'eredità .NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l'applicazione per utilizzare la versione più recente .NET Framework installata."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1453,10 +1453,10 @@
     {
         "Id":  323,
         "Header":  {
-                       "IT":  "Allow the computer to turn off the network adapters to save power"
+                       "IT":  "Consentire al computer di spegnere gli adattatori di rete per risparmiare energia"
                    },
         "Description":  {
-                            "IT":  "It is not recommended to turn off the network adapters to save power on laptops."
+                            "IT":  "Non è consigliato disattivare gli adattatori di rete per risparmiare energia sui laptop."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1467,7 +1467,7 @@
     {
         "Id":  324,
         "Header":  {
-                       "IT":  "Override for default input method"
+                       "IT":  "Sovrascrivi il metodo di input predefinito"
                    },
         "Description":  {
                             "IT":  ""
@@ -1478,7 +1478,7 @@
                               {
                                   "Id":  325,
                                   "ChildHeader":  {
-                                                      "IT":  "Use language list"
+                                                      "IT":  "Usando la lista lingue"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1488,7 +1488,7 @@
                               {
                                   "Id":  326,
                                   "ChildHeader":  {
-                                                      "IT":  "English"
+                                                      "IT":  "inglese"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1503,10 +1503,10 @@
     {
         "Id":  327,
         "Header":  {
-                       "IT":  "Select folder to save screenshots when pressing Win+PrtScn"
+                       "IT":  "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN"
                    },
         "Description":  {
-                            "IT":  "Select the \"Desktop\" if you choose to remove OneDrive only (or it was uninstalled before), otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks."
+                            "IT":  "Selezionare \ "Desktop \" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \ "Desktop \" e \ "Immagini \" si romperanno in OneDrive."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1514,7 +1514,7 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "IT":  "Desktop"
+                                                      "IT":  "desktop"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1524,7 +1524,7 @@
                               {
                                   "Id":  329,
                                   "ChildHeader":  {
-                                                      "IT":  "Pictures folder"
+                                                      "IT":  "Immagini"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1539,10 +1539,10 @@
     {
         "Id":  330,
         "Header":  {
-                       "IT":  "Recommended troubleshooting"
+                       "IT":  "Risoluzione dei problemi consigliati"
                    },
         "Description":  {
-                            "IT":  "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?"
+                            "IT":  "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che i problemi di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1550,20 +1550,20 @@
                               {
                                   "Id":  331,
                                   "ChildHeader":  {
-                                                      "IT":  "Run troubleshooters automatically, then notify"
+                                                      "IT":  "Eseguire automaticamente i problemi di risoluzione dei problemi, quindi notifica"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on."
+                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \ "Dati diagnostici opzionali \" e la funzione di segnalazione degli errori verrà attivata."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  332,
                                   "ChildHeader":  {
-                                                      "IT":  "Ask me before running troubleshooter"
+                                                      "IT":  "Chiedimi prima di eseguire la risoluzione dei problemi"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on."
+                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \ "Dati diagnostici opzionali \" e la funzione di segnalazione degli errori verrà attivata."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1575,10 +1575,10 @@
     {
         "Id":  333,
         "Header":  {
-                       "IT":  "Launch folder windows in a separate process"
+                       "IT":  "Avvia esplora file in un processo separato"
                    },
         "Description":  {
-                            "IT":  "By default, all Esplora file windows, including the desktop shell, run in a single explorer.exe process. If one Esplora file window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell."
+                            "IT":  "Per impostazione predefinita, tutte le istanze di Esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1589,10 +1589,10 @@
     {
         "Id":  334,
         "Header":  {
-                       "IT":  "Enable reserved storage"
+                       "IT":  "Abilita lo spazio riservato"
                    },
         "Description":  {
-                            "IT":  "To make sure your device can successfully update and that it runs its best, Windows reserves a portion of storage space on your device for use by temporary files, caches, and other files. When your device is low on space, Windows will clear reserved storage so it can be used for other processes, like a Windows update. Reserving storage also helps keep disk space usage on your device more predictable and more stable. After disabling the reserved storage will be deleted after the next update installation."
+                            "IT":  "Per assicurarsi che il dispositivo possa aggiornarlo con successo e che esegue il meglio, Windows si riserva una porzione di spazio di archiviazione sul dispositivo per l'utilizzo da file temporanei, cache e altri file.Quando il tuo dispositivo è basso sullo spazio, Windows cancellerà l'archiviazione riservata in modo che possa essere utilizzato per altri processi, come un aggiornamento di Windows.L'archiviazione riservata aiuta anche a mantenere l'utilizzo dello spazio su disco sul tuo dispositivo più prevedibile e più stabile.Dopo aver disabilitato lo stoccaggio riservato verrà cancellato dopo l'installazione successiva di un aggiornamento."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1603,7 +1603,7 @@
     {
         "Id":  335,
         "Header":  {
-                       "IT":  "Enable help look up via F1"
+                       "IT":  "Abilita cerca aiuto premendo F1"
                    },
         "Description":  {
                             "IT":  ""
@@ -1617,7 +1617,7 @@
     {
         "Id":  336,
         "Header":  {
-                       "IT":  "Enable Num Lock at startup"
+                       "IT":  "Abilita il blocco numeroso all'avvio"
                    },
         "Description":  {
                             "IT":  ""
@@ -1631,7 +1631,7 @@
     {
         "Id":  337,
         "Header":  {
-                       "IT":  "Enable Caps Lock"
+                       "IT":  "Abilita blocco maiuscolo"
                    },
         "Description":  {
                             "IT":  ""
@@ -1645,10 +1645,10 @@
     {
         "Id":  338,
         "Header":  {
-                       "IT":  "Keyboard shortcut for Sticky keys"
+                       "IT":  "Scorciatoia da tastiera per tasti permanenti"
                    },
         "Description":  {
-                            "IT":  "Press the Shift key 5 times to turn Sticky keys on or off"
+                            "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1659,7 +1659,7 @@
     {
         "Id":  339,
         "Header":  {
-                       "IT":  "Use AutoPlay for all media and devices"
+                       "IT":  "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
                    },
         "Description":  {
                             "IT":  ""
@@ -1673,10 +1673,10 @@
     {
         "Id":  340,
         "Header":  {
-                       "IT":  "Enable thumbnail cache removal"
+                       "IT":  "Abilita la rimozione della cache delle miniature"
                    },
         "Description":  {
-                            "IT":  "Windows deletes automatically thumbnail cache after restart or shutdown, and Esplora file has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder."
+                            "IT":  "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella Hidden \ N% LOCALIPPDATA% \ Microsoft \\ Windows \\ Explorer."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1687,10 +1687,10 @@
     {
         "Id":  341,
         "Header":  {
-                       "IT":  "Restart apps after signing in"
+                       "IT":  "Riavvia le app dopo aver effettuato l'accesso"
                    },
         "Description":  {
-                            "IT":  "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions."
+                            "IT":  "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1701,7 +1701,7 @@
     {
         "Id":  342,
         "Header":  {
-                       "IT":  "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks"
+                       "IT":  "Abilita \ "Discovery di rete \" e \ "File e Stampanti Sharing \" per le reti del gruppo di lavoro"
                    },
         "Description":  {
                             "IT":  ""
@@ -1715,7 +1715,7 @@
     {
         "Id":  343,
         "Header":  {
-                       "IT":  "Automatically adjust active hours for me based on daily usage"
+                       "IT":  "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano"
                    },
         "Description":  {
                             "IT":  ""
@@ -1729,7 +1729,7 @@
     {
         "Id":  344,
         "Header":  {
-                       "IT":  "Restart as soon as possible to finish updating"
+                       "IT":  "Riavvia il prima possibile per terminare l'aggiornamento"
                    },
         "Description":  {
                             "IT":  ""
@@ -1743,10 +1743,10 @@
     {
         "Id":  345,
         "Header":  {
-                       "IT":  "Default terminal app"
+                       "IT":  "App predefinita dell terminale"
                    },
         "Description":  {
-                            "IT":  "Set Windows Terminal as default terminal app to host the user interface for command-line applications."
+                            "IT":  "Imposta il terminale di Windows come app terminale predefinita per ospitare l'interfaccia utente per le applicazioni della riga di comando."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1754,7 +1754,7 @@
                               {
                                   "Id":  346,
                                   "ChildHeader":  {
-                                                      "IT":  "Windows Terminal"
+                                                      "IT":  "Terminael Windows"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1779,10 +1779,10 @@
     {
         "Id":  348,
         "Header":  {
-                       "IT":  "Uninstall the \"PC Health Check\" app"
+                       "IT":  "Disinstallare l'app \ "PC Health Check \""
                    },
         "Description":  {
-                            "IT":  "The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11."
+                            "IT":  "L'aggiornamento KB5005463 installa l'app \ "PC Health Check \" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1793,10 +1793,10 @@
     {
         "Id":  349,
         "Header":  {
-                       "IT":  "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64"
+                       "IT":  "Installare gli ultimi pacchetti Microsoft Visual C ++ 2015-2022 x64"
                    },
         "Description":  {
-                            "IT":  "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files."
+                            "IT":  "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1818,7 +1818,7 @@
                               {
                                   "Id":  351,
                                   "ChildHeader":  {
-                                                      "IT":  "Install"
+                                                      "IT":  "Installa"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1828,7 +1828,7 @@
                               {
                                   "Id":  352,
                                   "ChildHeader":  {
-                                                      "IT":  "Uninstall"
+                                                      "IT":  "Disinstalla"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1843,7 +1843,7 @@
     {
         "Id":  400,
         "Header":  {
-                       "IT":  "Show recently added apps in the Start menu"
+                       "IT":  "Mostra app aggiunte di recente nel menu Start"
                    },
         "Description":  {
                             "IT":  ""
@@ -1857,7 +1857,7 @@
     {
         "Id":  401,
         "Header":  {
-                       "IT":  "Show app suggestions in the Start menu"
+                       "IT":  "Mostra suggerimenti app nel menu Start"
                    },
         "Description":  {
                             "IT":  ""
@@ -1871,7 +1871,7 @@
     {
         "Id":  402,
         "Header":  {
-                       "IT":  "Run the Windows PowerShell shortcut from the Start menu as Administrator"
+                       "IT":  "Eseguire il collegamento di Windows PowerShell dal menu Start come amministratore"
                    },
         "Description":  {
                             "IT":  ""
@@ -1885,10 +1885,10 @@
     {
         "Id":  500,
         "Header":  {
-                       "IT":  "Download and install the HEVC video codec (H.265)"
+                       "IT":  "Scarica e installa il codec video HEVC (H.265)"
                    },
         "Description":  {
-                            "IT":  "The codec allows you to open images and videos in .heif and .hevc formats, respectively."
+                            "IT":  "Il codec ti consente di aprire immagini e video in formati .heif e .hevc, rispettivamente."
                         },
         "Type":  "CheckBox",
         "Tag":  "UwpApps",
@@ -1899,7 +1899,7 @@
     {
         "Id":  501,
         "Header":  {
-                       "IT":  "Autostart Cortana"
+                       "IT":  "autoAvvia Cortana"
                    },
         "Description":  {
                             "IT":  ""
@@ -1913,7 +1913,7 @@
     {
         "Id":  502,
         "Header":  {
-                       "IT":  "Enable Microsoft Teams autostarting"
+                       "IT":  "Abilita Autoavvio di Microsoft Teamss"
                    },
         "Description":  {
                             "IT":  ""
@@ -1926,10 +1926,10 @@
     {
         "Id":  600,
         "Header":  {
-                       "IT":  "Xbox Game Bar"
+                       "IT":  "Xbox Game Bar."
                    },
         "Description":  {
-                            "IT":  "To prevent popping up the \"You\u0027ll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before."
+                            "IT":  "Per evitare lo spuntare di "Hai bisogno di una nuova app per aprire questo ms-gamingoverlay\" ATTENZIONE, è necessario disabilitare l'app Xbox Game Bar, anche se lo ha disinstallato prima."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -1940,7 +1940,7 @@
     {
         "Id":  601,
         "Header":  {
-                       "IT":  "Xbox Game Bar tips"
+                       "IT":  "Consigli Xbox Game Bar"
                    },
         "Description":  {
                             "IT":  ""
@@ -1954,10 +1954,10 @@
     {
         "Id":  602,
         "Header":  {
-                       "IT":  "Hardware-accelerated GPU scheduling"
+                       "IT":  "Pianificazione GPU con accellerazione hardware"
                    },
         "Description":  {
-                            "IT":  "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU\u0027s scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better."
+                            "IT":  "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU \ U0027S e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -1971,7 +1971,7 @@
                        "IT":  "Windows Cleanup"
                    },
         "Description":  {
-                            "IT":  "Create the \"Windows Cleanup\" scheduled task for cleaning up Windows unused files and updates under the SophiApp folder in the Task Scheduler. A native toast notification will be displayed where you can choose to snooze, run the cleanup task or dismiss."
+                            "IT":  "Creare l'attività pianificata \ "Windows Cleanup \" per la pulizia di file e aggiornamenti non utilizzati di Windows sotto la cartella SophiaPP nello scheduler di attività. Una notifica verrà visualizzata dove è possibile scegliere di  eseguire il compito di pulizia o noa."
                         },
         "Type":  "IconWinCheckBox",
         "Tag":  "TaskScheduler",
@@ -1982,10 +1982,10 @@
     {
         "Id":  701,
         "Header":  {
-                       "IT":  "Сlean up the Windows Updates download folder"
+                       "IT":  "Сlean up lo cartella di download degli aggiornamenti di Windowsornamenti di Windowsr"
                    },
         "Description":  {
-                            "IT":  "Create the \"SoftwareDistribution\" scheduled task for cleaning up \n%SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days."
+                            "IT":  "Creare la commissione pianificata \ "SoftwareDistribution \" per la pulizia Up \ N% SystemRoot% \\ download SoftwaredAreDistribution \\ download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L'attività attende che il servizio di aggiornamento di Windows finisse il servizio.L'attività viene eseguita ogni 90 giorni."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -1996,10 +1996,10 @@
     {
         "Id":  702,
         "Header":  {
-                       "IT":  "Clean up the temporary folder"
+                       "IT":  "Pulisci la cartella temporanear"
                    },
         "Description":  {
-                            "IT":  "Create the \"Temp\" scheduled task for cleaning up the temp folder under the SophiApp folder in the Task Scheduler. Only files older than one day will be deleted. The task runs every 60 days."
+                            "IT":  "Creare l'attività pianificata \ "Temp \" per la pulizia della cartella TEMP nella cartella SophiaPP nello scheduler di attività.Solo i file più vecchi di un giorno saranno cancellati.L'attività viene eseguita ogni 60 giorni."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
