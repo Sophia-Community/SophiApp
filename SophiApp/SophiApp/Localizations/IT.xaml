@@ -7,6 +7,7 @@
     <system:String x:Key="Conditions.NewVersion.HasNew">é disponibile una nuova versione di SophiApp.</system:String>
     <system:String x:Key="Conditions.NewVersion.OpenGitHub">Apri la repository su GitHub</system:String>
     <system:String x:Key="Conditions.NoRebootRequired.RebootPending">Il Pc sta per essere riavviato.</system:String>
+    <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Si prega di riavviare il PC prima di eseguire la SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Non eseguire più istanze di SophiApp contemporaneamente.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp non è compatibile con la tua versione di Windows.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Esegui Windows Update per aggiornare il sistema operativo all'ultima versione.</system:String>
