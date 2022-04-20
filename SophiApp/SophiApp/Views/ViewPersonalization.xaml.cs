@@ -37,6 +37,8 @@ namespace SophiApp.Views
             scrollViewer.RaiseEvent(mouseWheelEventArgs);
         }
 
+        private void StartMenuFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tags.ViewStartMenu);
+
         private void TextedElementsFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tag);
 
         private void ViewPersonalization_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -47,7 +49,5 @@ namespace SophiApp.Views
                 scrollViewer?.ScrollToTop();
             }
         }
-
-        private void StartMenuFilter(object sender, FilterEventArgs e) => e.Accepted = FilterHelper.FilterByTag(elementTag: (e.Item as TextedElement).Tag, viewTag: Tags.ViewStartMenu);
     }
 }

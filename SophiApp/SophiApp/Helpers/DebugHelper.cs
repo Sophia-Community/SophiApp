@@ -1,4 +1,5 @@
 using SophiApp.Commons;
+using SophiApp.Customisations;
 using SophiApp.Dto;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace SophiApp.Helpers
         };
 
         private static List<string> InitLog = new List<string>();
+
         private static List<string> StatusLog = new List<string>();
 
         private static string DateTime { get => System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"); }
@@ -62,6 +64,8 @@ namespace SophiApp.Helpers
                 StatusLog.Add($"{DateTime} {record}");
             }
         }
+
+        internal static void ActionTaken(Customisation action) => WriteStatusLog($"Customization action {action.Id} with parameter {action.Parameter} has been successfully applied");
 
         internal static void AdvancedSettinsVisibility(bool value) => WriteStatusLog($"Advanced settings is visible: {value}");
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
-using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
 using System.IO;
@@ -415,29 +414,30 @@ namespace SophiApp.Customisations
                                      ? throw new UpdateNotInstalledException(KB5005463_UPD)
                                      : false;
 
-        public static bool _349()
-        {
-            if (HttpHelper.IsOnline)
-            {
-                var cloudRedistrLibs = WebHelper.GetJsonResponse<CPPRedistrCollection>(_349_VC_VERSION_URL);
-                var cloudCPPRedistrLib = cloudRedistrLibs.Supported.First(libs => libs.Name == _349_VC_REDISTR_FOR_VS_2022 && libs.Architecture == X64);
+        //TODO: Del it!
+        //public static bool _349()
+        //{
+        //    if (HttpHelper.IsOnline)
+        //    {
+        //        var cloudRedistrLibs = WebHelper.GetJsonResponse<CPPRedistrCollection>(_349_VC_VERSION_URL);
+        //        var cloudCPPRedistrLib = cloudRedistrLibs.Supported.First(libs => libs.Name == _349_VC_REDISTR_FOR_VS_2022 && libs.Architecture == X64);
 
-                try
-                {
-                    var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH).FirstOrDefault(key => key.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN));
-                    var registryCPPRedistrLibVersion = Version.Parse(RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_VERSION_NAME) as string ?? "0.0.0.0");
+        //        try
+        //        {
+        //            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH).FirstOrDefault(key => key.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN));
+        //            var registryCPPRedistrLibVersion = Version.Parse(RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_VERSION_NAME) as string ?? "0.0.0.0");
 
-                    return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_DISPLAY_NAME).Contains(_349_VC_REDISTRX64_NAME_PATTERN)
-                            || registryCPPRedistrLibVersion > cloudCPPRedistrLib.Version;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
+        //            return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_DISPLAY_NAME).Contains(_349_VC_REDISTRX64_NAME_PATTERN)
+        //                    || registryCPPRedistrLibVersion > cloudCPPRedistrLib.Version;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return false;
+        //        }
+        //    }
 
-            throw new NoInternetConnectionException();
-        }
+        //    throw new NoInternetConnectionException();
+        //}
 
         public static bool _351() => OneDriveHelper.IsInstalled()
                                      ? throw new OneDriveIsInstalledException()

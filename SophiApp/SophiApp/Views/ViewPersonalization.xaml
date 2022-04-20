@@ -96,7 +96,7 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
-                        <Border x:Name="CategorySplitterBorder"/>
+                        <Border x:Name="CategorySplitterBorder" />
                         <ItemsControl ItemsSource="{Binding Source={StaticResource StartMenuElementsCollection}}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type models:CheckBox}">

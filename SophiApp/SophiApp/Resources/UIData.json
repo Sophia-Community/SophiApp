@@ -2624,7 +2624,7 @@
     "Windows11Supported": false
   },
   {
-    "Id": 349,
+    "Id": 353,
     "Header": {
       "EN": "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
       "RU": "Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
@@ -2637,8 +2637,42 @@
       "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien",
       "UA": "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли"
     },
-    "Type": "CheckBox",
+    "Type": "MsCppPackageButtonGroup",
     "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 354,
+        "ChildHeader": {
+          "EN": "Install",
+          "RU": "Установить",
+          "DE": "Installieren",
+          "UA": "Встановити"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": ""
+        },
+        "Type": "Button"
+      },
+      {
+        "Id": 355,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": ""
+        },
+        "Type": "Button"
+      }
+    ],
     "ViewId": 349,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -2657,7 +2691,7 @@
       "DE": "",
       "UA": ""
     },
-    "Type": "ButtonGroup",
+    "Type": "OneDriveButtonGroup",
     "Tag": "System",
     "ChildElements": [
       {

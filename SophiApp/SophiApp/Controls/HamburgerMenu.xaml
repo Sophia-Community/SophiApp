@@ -80,18 +80,18 @@
                 <local:HamburgerButton
                     Margin="0,270,0,0"
                     VerticalAlignment="Top"
-                    Icon="{DynamicResource Icon.ContextMenu}"
-                    IconMargin="6, 10, 0, 0"
-                    Tag="{StaticResource Tags.View.ContextMenu}"
-                    Text="{DynamicResource Localization.ContextMenu}" />
-
-                <local:HamburgerButton
-                    Margin="0,315,0,0"
-                    VerticalAlignment="Top"
                     Icon="{DynamicResource Icon.Security}"
                     IconMargin="7, 7, 0, 0"
                     Tag="{StaticResource Tags.View.Security}"
                     Text="{DynamicResource Localization.Security}" />
+
+                <local:HamburgerButton
+                    Margin="0,315,0,0"
+                    VerticalAlignment="Top"
+                    Icon="{DynamicResource Icon.ContextMenu}"
+                    IconMargin="6, 10, 0, 0"
+                    Tag="{StaticResource Tags.View.ContextMenu}"
+                    Text="{DynamicResource Localization.ContextMenu}" />
 
                   <!--Hamburger Buttons Separator-->
                 <Border />

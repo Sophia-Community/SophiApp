@@ -1,8 +1,6 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
-using System;
-using System.Threading;
 
 namespace SophiApp.Conditions
 {
