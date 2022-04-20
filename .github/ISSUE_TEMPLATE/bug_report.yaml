@@ -12,7 +12,8 @@ body:
       options:
       - label: Verify that this is not a Windows issue;
       - label: Refer to the [System requirements](https://github.com/Sophia-Community/SophiApp/blob/master/README.md#system-requirements);
-      - label: SophiApp may not work on a homebrew Windows;
+      - label: I do not use a homebrew Windows image;
+      - label: I did not tweak Windows before that could cause system instability;
       - label: Attach a created log. You may find it in the `Logs` folder.
   - type: textarea
     attributes:
@@ -61,8 +62,8 @@ body:
       label: SophiApp release type
       description: You can find this information in Settings
       options:
-        - Firefox
-        - Firefox Beta
+        - SophiApp
+        - SophiApp Beta
     validations:
       required: true
   - type: textarea
