@@ -310,7 +310,7 @@
                        "IT":  "Offri suggerimenti su come posso personalizzare il mio dispositivo"
                    },
         "Description":  {
-                            "IT":  "Windows può visualizzare un \ "Ottieni ancora più con Windows \" occasionalmente che promuove servizi aggiuntivi che l'utente può acquistare."
+                            "IT":  "Windows può visualizzare un \"Ottieni ancora più con Windows\" occasionalmente che promuove servizi aggiuntivi che l'utente può acquistare."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -349,7 +349,7 @@
     {
         "Id":  200,
         "Header":  {
-                       "IT":  "Mostra l'icona \ "Questo PC \" sul desktop"
+                       "IT":  "Mostra l'icona \"Questo PC\" sul desktop"
                    },
         "Description":  {
                             "IT":  ""
@@ -1052,7 +1052,7 @@
                        "IT":  "Impostare la qualità degli sfondi desktop JPEG a"
                    },
         "Description":  {
-                            "IT":  "Quando si imposta un'immagine JPEG come sfondo del desktop o come presentazione, il sistema operativo riduce la qualità dell'immagine originale all'85% e lo memorizza come file TranscodedWallpaper nella cartella \ N% AppData% \\ Microsoft \\ windows \\.Se si utilizza un'immagine PNG come sfondo del desktop  o come slideshow, non sei interessato da questa riduzione automatica della qualità poiché si applica solo alle immagini JPEG."
+                            "IT":  "Quando si imposta un'immagine JPEG come sfondo del desktop o come presentazione, il sistema operativo riduce la qualità dell'immagine originale all'85% e lo memorizza come file TranscodedWallpaper nella cartella \n%AppData%\\Microsoft\\Windows\\Themes .Se si utilizza un'immagine PNG come sfondo del desktop  o come slideshow, non sei interessato da questa riduzione automatica della qualità poiché si applica solo alle immagini JPEG."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1099,7 +1099,7 @@
     {
         "Id":  258,
         "Header":  {
-                       "IT":  "Aggiungi il suffisso \ "- Collegamento \" al nome del file delle scorciatoie create"
+                       "IT":  "Aggiungi il suffisso \"- Collegamento\" al nome del file delle scorciatoie create"
                    },
         "Description":  {
                             "IT":  ""
@@ -1172,7 +1172,7 @@
                        "IT":  "Esegui il sensore di memoria."
                    },
         "Description":  {
-                            "IT":  "Sensore di memoria si esegue quando lo spazio su disco è basso e libera spazio sufficiente per un funzionamento ottimale del sistema operativo.È meglio creare l'attività \ "Pulizia di windows \" nella sezione \ "Operazioni Pianificate \" per ripulire windows in modo più efficace."
+                            "IT":  "Sensore di memoria si esegue quando lo spazio su disco è basso e libera spazio sufficiente per un funzionamento ottimale del sistema operativo.È meglio creare l'attività \"Pulizia di windows\" nella sezione \"Operazioni Pianificate\" per ripulire windows in modo più efficace."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1506,7 +1506,7 @@
                        "IT":  "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN"
                    },
         "Description":  {
-                            "IT":  "Selezionare \ "Desktop \" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \ "Desktop \" e \ "Immagini \" si romperanno in OneDrive."
+                            "IT":  "Selezionare \"Desktop\" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \"Desktop\" e \"Immagini\" si romperanno in OneDrive."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1553,7 +1553,7 @@
                                                       "IT":  "Eseguire automaticamente i problemi di risoluzione dei problemi, quindi notifica"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \ "Dati diagnostici opzionali \" e la funzione di segnalazione degli errori verrà attivata."
+                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
                                                        },
                                   "Type":  "RadioButton"
                               },
@@ -1563,7 +1563,7 @@
                                                       "IT":  "Chiedimi prima di eseguire la risoluzione dei problemi"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \ "Dati diagnostici opzionali \" e la funzione di segnalazione degli errori verrà attivata."
+                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1676,7 +1676,7 @@
                        "IT":  "Abilita la rimozione della cache delle miniature"
                    },
         "Description":  {
-                            "IT":  "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella Hidden \ N% LOCALIPPDATA% \ Microsoft \\ Windows \\ Explorer."
+                            "IT":  "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1701,7 +1701,7 @@
     {
         "Id":  342,
         "Header":  {
-                       "IT":  "Abilita \ "Discovery di rete \" e \ "File e Stampanti Sharing \" per le reti del gruppo di lavoro"
+                       "IT":  "Abilita \"Discovery di rete\" e \"File e Stampanti Sharing\" per le reti del gruppo di lavoro"
                    },
         "Description":  {
                             "IT":  ""
@@ -1779,10 +1779,10 @@
     {
         "Id":  348,
         "Header":  {
-                       "IT":  "Disinstallare l'app \ "PC Health Check \""
+                       "IT":  "Disinstallare l'app \"PC Health Check\""
                    },
         "Description":  {
-                            "IT":  "L'aggiornamento KB5005463 installa l'app \ "PC Health Check \" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
+                            "IT":  "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1929,7 +1929,7 @@
                        "IT":  "Xbox Game Bar."
                    },
         "Description":  {
-                            "IT":  "Per evitare lo spuntare di "Hai bisogno di una nuova app per aprire questo ms-gamingoverlay\" ATTENZIONE, è necessario disabilitare l'app Xbox Game Bar, anche se lo ha disinstallato prima."
+                            "IT":  "Per evitare lo spuntare di \"Hai bisogno di una nuova app per aprire questo ms-gamingoverlay\" ATTENZIONE, è necessario disabilitare l'app Xbox Game Bar, anche se lo ha disinstallato prima."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -1957,7 +1957,7 @@
                        "IT":  "Pianificazione GPU con accellerazione hardware"
                    },
         "Description":  {
-                            "IT":  "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU \ U0027S e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
+                            "IT":  "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU \u0027S e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -1971,7 +1971,7 @@
                        "IT":  "Windows Cleanup"
                    },
         "Description":  {
-                            "IT":  "Creare l'attività pianificata \ "Windows Cleanup \" per la pulizia di file e aggiornamenti non utilizzati di Windows sotto la cartella SophiaPP nello scheduler di attività. Una notifica verrà visualizzata dove è possibile scegliere di  eseguire il compito di pulizia o noa."
+                            "IT":  "Creare l'attività pianificata \"Windows Cleanup\" per la pulizia di file e aggiornamenti non utilizzati di Windows sotto la cartella SophiaPP nello scheduler di attività. Una notifica verrà visualizzata dove è possibile scegliere di  eseguire il compito di pulizia o noa."
                         },
         "Type":  "IconWinCheckBox",
         "Tag":  "TaskScheduler",
@@ -1985,7 +1985,7 @@
                        "IT":  "Сlean up lo cartella di download degli aggiornamenti di Windowsornamenti di Windowsr"
                    },
         "Description":  {
-                            "IT":  "Creare la commissione pianificata \ "SoftwareDistribution \" per la pulizia Up \ N% SystemRoot% \\ download SoftwaredAreDistribution \\ download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L'attività attende che il servizio di aggiornamento di Windows finisse il servizio.L'attività viene eseguita ogni 90 giorni."
+                            "IT":  "Creare la commissione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L'attività attende che il servizio di aggiornamento di Windows finisse il servizio.L'attività viene eseguita ogni 90 giorni."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -1999,7 +1999,7 @@
                        "IT":  "Pulisci la cartella temporanear"
                    },
         "Description":  {
-                            "IT":  "Creare l'attività pianificata \ "Temp \" per la pulizia della cartella TEMP nella cartella SophiaPP nello scheduler di attività.Solo i file più vecchi di un giorno saranno cancellati.L'attività viene eseguita ogni 60 giorni."
+                            "IT":  "Creare l'attività pianificata \"Temp\" per la pulizia della cartella TEMP nella cartella SophiaPP nello scheduler di attività.Solo i file più vecchi di un giorno saranno cancellati.L'attività viene eseguita ogni 60 giorni."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -2080,7 +2080,7 @@
     {
         "Id":  805,
         "Header":  {
-                       "IT":  "Creare la visualizzazione personalizzata \ "Process Creation \" nel visualizzatore di eventilizzatore di eventi"
+                       "IT":  "Creare la visualizzazione personalizzata \"Process Creation\" nel visualizzatore di eventilizzatore di eventi"
                    },
         "Description":  {
                             "IT":  " \"Process Creation\", La vista personalizzata è progettata per filtrare i processi in esecuzione e i loro argomenti per un migliore controllo della sicurezza del sistema. Affinché questa funzionalità funzioni, l'evento e l'auditing della riga di comando negli eventi di creazione del processo saranno abilitati."
@@ -2111,7 +2111,7 @@
                        "IT":  "Abilita la registrazione per tutti gli input di script PowerShell al registro eventi di Windows PowerShell"
                    },
         "Description":  {
-                            "IT":  "Windows PowerShell registrerà l'elaborazione di comandi, blocchi di script, funzioni e script - invocato interattivamente, o tramite automazione alle \ "Applicazioni e servizi registrati \\ Microsoft \\ Windows \\ PowerShell \\ Operational \" nel registro eventi.Solo per Windows PowerShell 5.1 integrato."
+                            "IT":  "Windows PowerShell registrerà l'elaborazione di comandi, blocchi di script, funzioni e script - invocato interattivamente, o tramite automazione alle \"Applicazioni e servizi registrati \\ Microsoft \\ Windows \\ PowerShell \\ Operational \" nel registro eventi.Solo per Windows PowerShell 5.1 integrato."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2178,10 +2178,10 @@
     {
         "Id":  900,
         "Header":  {
-                       "IT":  "La voce \ "Estrai tutto \" nel menu di scelta rapida di Windows Installer (.msi)"
+                       "IT":  "La voce \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (.msi)"
                    },
         "Description":  {
-                            "IT":  "La voce \"Extract all\" nel menù contestuale estrarrà tutti i contenuti del file .msi nella cartella \ "estratti \" nella stessa posizione del file .msi."
+                            "IT":  "La voce \"Extract all\" nel menù contestuale estrarrà tutti i contenuti del file .msi nella cartella \"estratti\" nella stessa posizione del file .msi."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2192,10 +2192,10 @@
     {
         "Id":  901,
         "Header":  {
-                       "IT":  "L'elemento \ "Installa \" nel menu contestuale negli archivi"
+                       "IT":  "L'elemento \"Installa\" nel menu contestuale negli archivi"
                    },
         "Description":  {
-                            "IT":  "Questa voce di menu contestuale, utilizzando DIS, consente di semplificare l'installazione di aggiornamenti .CAB con un solo clic nel suo menu di scelta rapida.Se si dispone del tipo di interno del file .Cab associato ad aprire con un'app di terze parti (7-zip, winrar, ecc ...) Per impostazione predefinita, la voce del menu di scelta rapida \ "Installa \" non verrà visualizzata fino a quando non si ripristina l'associazione predefinit aper il tipo di file .cab."
+                            "IT":  "Questa voce di menu contestuale, utilizzando DIS, consente di semplificare l'installazione di aggiornamenti .CAB con un solo clic nel suo menu di scelta rapida.Se si dispone del tipo di interno del file .Cab associato ad aprire con un'app di terze parti (7-zip, winrar, ecc ...) Per impostazione predefinita, la voce del menu di scelta rapida \"Installa\" non verrà visualizzata fino a quando non si ripristina l'associazione predefinit aper il tipo di file .cab."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2206,7 +2206,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "IT":  "L'elemento \ "Esegui come diverso utente \" nel menu contestuale dei file eseguibili (.exe)"
+                       "IT":  "L'elemento \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
                    },
         "Description":  {
                             "IT":  ""
@@ -2220,7 +2220,7 @@
     {
         "Id":  903,
         "Header":  {
-                       "IT":  "L'elemento \ "Trasmetti a\" nel menu di controllo dei file multimediali e delle cartelle"
+                       "IT":  "L'elemento \"Trasmetti a\" nel menu di controllo dei file multimediali e delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2234,7 +2234,7 @@
     {
         "Id":  904,
         "Header":  {
-                       "IT":  "L'elemento \ "Condividi \" nel menu di scelta rapida"
+                       "IT":  "L'elemento \"Condividi\" nel menu di scelta rapida"
                    },
         "Description":  {
                             "IT":  ""
@@ -2248,7 +2248,7 @@
     {
         "Id":  905,
         "Header":  {
-                       "IT":  "L'elemento \ "Modifica con Paint 3D \" nel menu di scelta rapida dei file multimediali"
+                       "IT":  "L'elemento \"Modifica con Paint 3D\" nel menu di scelta rapida dei file multimediali"
                    },
         "Description":  {
                             "IT":  ""
@@ -2344,7 +2344,7 @@
     {
         "Id":  914,
         "Header":  {
-                       "IT":  "Mostra la voce \ "Modifica con foto \" nel menu di scelta rapida dei file multimediali"
+                       "IT":  "Mostra la voce \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
                    },
         "Description":  {
                             "IT":  ""
@@ -2358,7 +2358,7 @@
     {
         "Id":  915,
         "Header":  {
-                       "IT":  "Voce \ "Crea un nuovo video \" nel menu di scelta rapida dei file multimediali"
+                       "IT":  "Voce \"Crea un nuovo video\" nel menu di scelta rapida dei file multimediali"
                    },
         "Description":  {
                             "IT":  ""
@@ -2372,7 +2372,7 @@
     {
         "Id":  916,
         "Header":  {
-                       "IT":  "L'elemento \ "Modifica \" nel menu di scelta rapida dei file di immagine"
+                       "IT":  "L'elemento \"Modifica\" nel menu di scelta rapida dei file di immagine"
                    },
         "Description":  {
                             "IT":  ""
@@ -2400,7 +2400,7 @@
     {
         "Id":  918,
         "Header":  {
-                       "IT":  "L'opzione menu \ "includi nella libreria \" nel menu di scelta rapida delle cartelle e delle unità"
+                       "IT":  "L'opzione menu \"includi nella libreria\" nel menu di scelta rapida delle cartelle e delle unità"
                    },
         "Description":  {
                             "IT":  ""
@@ -2414,7 +2414,7 @@
     {
         "Id":  919,
         "Header":  {
-                       "IT":  "L'elemento \ "Invia a \" nel menu di scelta rapida delle cartelle"
+                       "IT":  "L'elemento \"Invia a\" nel menu di scelta rapida delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2428,7 +2428,7 @@
     {
         "Id":  920,
         "Header":  {
-                       "IT":  "L'elemento \ "Attiva BitLocker \" nel menu di scelta rapida dei dischi"
+                       "IT":  "L'elemento \"Attiva BitLocker\" nel menu di scelta rapida dei dischi"
                    },
         "Description":  {
                             "IT":  ""
@@ -2442,7 +2442,7 @@
     {
         "Id":  921,
         "Header":  {
-                       "IT":  "L'elemento \ "Nuova immagine bitmap \" nel menu di scelta rapida \ "nuovo \""
+                       "IT":  "L'elemento \"Nuova immagine bitmap\" nel menu di scelta rapida \"nuovo\""
                    },
         "Description":  {
                             "IT":  ""
@@ -2456,7 +2456,7 @@
     {
         "Id":  922,
         "Header":  {
-                       "IT":  "L'elemento \ "Nuovo documento rich text \" nel menu di scelta rapida \ "nuovo \""
+                       "IT":  "L'elemento \"Nuovo documento rich text\" nel menu di scelta rapida \"nuovo\""
                    },
         "Description":  {
                             "IT":  ""
@@ -2470,7 +2470,7 @@
     {
         "Id":  923,
         "Header":  {
-                       "IT":  "L'elemento \ "Nuova zip \" nel menu di scelta rapida \ "nuovo \""
+                       "IT":  "L'elemento \"Nuova zip\" nel menu di scelta rapida \"nuovo \""
                    },
         "Description":  {
                             "IT":  ""
@@ -2484,10 +2484,10 @@
     {
         "Id":  924,
         "Header":  {
-                       "IT":  "Rendi le voci del menu di scelta rapida \ "apri \", \ "Stampa \" e \ "Modifica \" disponibili quando si seleziona più di 15 file"
+                       "IT":  "Rendi le voci del menu di scelta rapida \"apri\", \"Stampa\" e \"Modifica\" disponibili quando si seleziona più di 15 file"
                    },
         "Description":  {
-                            "IT":  "Per impostazione predefinita, le voci del menu di scelta rapida \ "Open \", \ "Stampa \", \ "Modifica \" non verranno visualizzate se selezionando più di 15 elementi per evitare di eseguire accidentalmente queste azioni su un numero elevato di file."
+                            "IT":  "Per impostazione predefinita, le voci del menu di scelta rapida \"Open\", \"Stampa\", \"Modifica\" non verranno visualizzate se selezionando più di 15 elementi per evitare di eseguire accidentalmente queste azioni su un numero elevato di file."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2512,7 +2512,7 @@
     {
         "Id":  926,
         "Header":  {
-                       "IT":  "Mostra l'elemento \ "Apri in Windows Terminal \" nel menu di scelta rapida delle cartelle"
+                       "IT":  "Mostra l'elemento \"Apri in Windows Terminal\" nel menu di scelta rapida delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2554,7 +2554,7 @@
     {
         "Id":  929,
         "Header":  {
-                       "IT":  "La voce \ "Condividi \" nel menu di scelta rapida"
+                       "IT":  "La voce \"Condividi\" nel menu di scelta rapida"
                    },
         "Description":  {
                             "IT":  ""
