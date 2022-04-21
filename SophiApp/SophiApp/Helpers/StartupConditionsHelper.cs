@@ -36,16 +36,18 @@ namespace SophiApp.Helpers
         {
             await Task.Run(() =>
             {
-                foreach (var condition in Conditions)
+                for (int i = 0; i < Conditions.Count; i++)
                 {
                     try
                     {
-                        HasProblem = condition.Invoke();
-                        DebugHelper.StartupConditionsInvoked(name: condition.GetType().Name, result: HasProblem.Invert());
+                        var isLastCondition = Conditions.Count - i == 1;
+                        HasProblem = Conditions[i].Invoke();
+                        DebugHelper.StartupConditionInvoked(name: Conditions[i].GetType().Name, result: HasProblem.Invert());
+                        DebugHelper.NextStartupCondition(name: isLastCondition ? Conditions[i].GetType().Name : Conditions[i + 1].GetType().Name, isLast: isLastCondition);
 
                         if (HasProblem)
                         {
-                            ConditionHasProblem?.Invoke(null, condition);
+                            ConditionHasProblem?.Invoke(null, Conditions[i]);
                             break;
                         }
                     }

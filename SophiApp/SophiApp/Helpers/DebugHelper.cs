@@ -16,6 +16,8 @@ namespace SophiApp.Helpers
         private const string APP_THEME = "App theme";
         private const string APP_VER = "App version";
         private const string HAS_INTERNET_ACCESS = "App has access to Internet";
+        private const string LAST_CONDITION = "This is last condition";
+        private const string NEXT_CONDITION = "The next condition to be run:";
         private const string PC_NAME = "Computer name";
         private const string USER_CULTURE = "User culture";
         private const string USER_DOMAIN = "User domain";
@@ -83,7 +85,7 @@ namespace SophiApp.Helpers
             {
                 message,
                 $"Information: {e.Message}",
-                $"The method that caused the error: {e.TargetSite.Name}",
+                $"The method that caused the error: {e.TargetSite.ReflectedType.FullName}",
                 string.Empty
             });
         }
@@ -99,6 +101,8 @@ namespace SophiApp.Helpers
         internal static void IsOnline() => WriteInfoLog($"{HAS_INTERNET_ACCESS}: {HttpHelper.IsOnline}");
 
         internal static void LinkClicked(string link) => WriteStatusLog($"Link clicked: \"{link}\"");
+
+        internal static void NextStartupCondition(string name, bool isLast) => WriteStatusLog(isLast ? LAST_CONDITION : $"{NEXT_CONDITION} {name}");
 
         internal static void RiskAgreed() => WriteStatusLog("USER AGREED TO ASSUME THE RISK AND LIABILITY FOR ANY POSSIBLE DAMAGE");
 
@@ -123,7 +127,7 @@ namespace SophiApp.Helpers
 
         internal static void StartStartupConditions() => WriteStatusLog("The OS conditions checkings started");
 
-        internal static void StartupConditionsInvoked(string name, bool result) => WriteStatusLog($"{name}: {result}");
+        internal static void StartupConditionInvoked(string name, bool result) => WriteStatusLog($"{name} run result: {result}");
 
         internal static void StopApplyingSettings(double totalSeconds) => WriteStatusLog($"Applying setting(s) took {totalSeconds:N0} second(s)");
 
