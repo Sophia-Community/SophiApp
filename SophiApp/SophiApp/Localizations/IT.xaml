@@ -39,12 +39,12 @@
     <system:String x:Key="Localization.ViewApplyingException.InApplying">Mentre si applicavano le modifiche</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">c'è stato un'errore.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">pulendo la cartella %SystemRoot%\SoftwareDistribution\Download.</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Event"La cache di Windows update è stata eliminata.</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">La cache di Windows update è stata eliminata.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">è in corso la pulizia della cartella dei file temporanei.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">La cartella dei file temporanei è stata pulita.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Notifiche Pop-up per ricordarti di cancellare i file di Windows inutilizzati e gli aggiornamenti già installati.</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cancellazzione dei file temporanei e degli aggiornamenti di Windows già installati con l'app Pulizia disco.</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Informazioni importanti </system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Informazioni importanti</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Esguire una pulizia dei file temporanei e degli aggiornamenti di Windows già installati?</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">La pulizia di Windows non richiederà molto. Questa notifica riapparirà fra 30 giorni.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">Seleziona fra quanto tempo vuoi che venga rimostrata la notifica</system:String>
@@ -57,10 +57,10 @@
     <system:String x:Key="Localization.About.OfWindows">per Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
     <system:String x:Key="Localization.Settings.Themes">Temi</system:String>
-    <system:String x:Key="Localization.Settings.Themes.Dark">scuro</system:String>
+    <system:String x:Key="Localization.Settings.Themes.Dark">Scuro</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Chiaro</system:String>
     <system:String x:Key="Localization.Settings.Languages">Langua</system:String>
-    <system:String x:Key="Localization.Settings.Advanced">impostazioni avanzate</system:String>
+    <system:String x:Key="Localization.Settings.Advanced">Impostazioni avanzate</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Modalità sviluppatore</system:String>
     <system:String x:Key="Localization.Settings.Team">Memberi del progetto</system:String>
     <system:String x:Key="Localization.Settings.Leader">Capo del progetto:</system:String>
