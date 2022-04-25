@@ -120,6 +120,7 @@
       <DependentUpon>OneDriveButtonGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Helpers\VisualRedistrLibsHelper.cs" />
     <Compile Include="Helpers\WindowsDefenderHelper.cs" />
     <Compile Include="Models\MsCppPackageButtonGroup.cs" />
     <Compile Include="Models\OneDriveButtonGroup.cs" />

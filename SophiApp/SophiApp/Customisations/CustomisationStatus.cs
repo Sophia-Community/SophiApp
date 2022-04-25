@@ -414,31 +414,6 @@ namespace SophiApp.Customisations
                                      ? throw new UpdateNotInstalledException(KB5005463_UPD)
                                      : false;
 
-        //TODO: Del it!
-        //public static bool _349()
-        //{
-        //    if (HttpHelper.IsOnline)
-        //    {
-        //        var cloudRedistrLibs = WebHelper.GetJsonResponse<CPPRedistrCollection>(_349_VC_VERSION_URL);
-        //        var cloudCPPRedistrLib = cloudRedistrLibs.Supported.First(libs => libs.Name == _349_VC_REDISTR_FOR_VS_2022 && libs.Architecture == X64);
-
-        //        try
-        //        {
-        //            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH).FirstOrDefault(key => key.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN));
-        //            var registryCPPRedistrLibVersion = Version.Parse(RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_VERSION_NAME) as string ?? "0.0.0.0");
-
-        //            return RegHelper.GetStringValue(RegistryHive.ClassesRoot, registryPathRedistrLib, _349_DISPLAY_NAME).Contains(_349_VC_REDISTRX64_NAME_PATTERN)
-        //                    || registryCPPRedistrLibVersion > cloudCPPRedistrLib.Version;
-        //        }
-        //        catch (Exception)
-        //        {
-        //            return false;
-        //        }
-        //    }
-
-        //    throw new NoInternetConnectionException();
-        //}
-
         public static bool _351() => OneDriveHelper.IsInstalled()
                                      ? throw new OneDriveIsInstalledException()
                                      : OneDriveHelper.HasSetupExe() || HttpHelper.IsOnline
@@ -446,6 +421,16 @@ namespace SophiApp.Customisations
                                         : throw new OneDriveIsInstalledException();
 
         public static bool _352() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
+
+        public static bool _354() => HttpHelper.IsOnline
+                                     ? VisualRedistrLibsHelper.GetCloudLatestVersion() > VisualRedistrLibsHelper.GetInstalledVersion()
+                                        ? false
+                                        : throw new VisualRedistrLibsLastVersionException()
+                                     : throw new NoInternetConnectionException();
+
+        public static bool _355() => VisualRedistrLibsHelper.IsInstalled()
+                                     ? false
+                                     : throw new VisualRedistrLibsNotInstalled();
 
         public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
 
