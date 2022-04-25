@@ -6,7 +6,7 @@
       "RU": "Служба телеметрии",
       "DE": "Telemetriedienst",
       "UA": "Служба телеметрії",
-      "IT": "Il servizio di telemetria"
+      "IT": "Servizio di telemetria"
     },
     "Description": {
       "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic.",
@@ -65,7 +65,7 @@
           "RU": "Минимальный",
           "DE": "Minimal",
           "UA": "Мінімальний",
-          "IT": "Minimi"
+          "IT": "Minimo"
         },
         "ChildDescription": {
           "EN": "",
@@ -304,7 +304,7 @@
           "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт",
           "DE": "Diese Aufgabe sucht Updates für Karten, die haben Sie für die Offlineverwendung heruntergeladen. Deaktivierung des Tasks verhindert, dass Windows Sie über Updates für Karten informiert",
           "UA": "Це завдання перевіряє наявність оновлень для карт, завантажених для автономного використання. Якщо вимкнути це завдання, Windows не зможе повідомляти вас про появу оновлених карт",
-          "IT": "Questo processo aggiorna le mappe offline. Disabilitandola from non ti notificherà gli aggiornamenti delle mappe."
+          "IT": "Questo processo aggiorna le mappe offline. Disabilitandolo non verrai notificato riguardo gli aggiornamenti delle mappe."
         },
         "Type": "CheckBox"
       },
@@ -340,7 +340,7 @@
           "RU": "Задание XblGameSave, синхронизирующее прогресс в игре во время простоя ОС",
           "DE": "Der XblGameSave Standby Task, um den Spielfortschritt zu synchronisieren, wenn das Betriebssystem im Leerlauf ist",
           "UA": "Завдання XblGameSave, що синхронізує прогрес у грі під час простою ОС",
-          "IT": "Il processo standbay di XblGameSave, che sincronizza i progressi nei videogiochi quando il sitema è inutilizzato."
+          "IT": "Il processo standbay di XblGameSave sincronizza i progressi nei videogiochi quando il sitema è inutilizzato."
         },
         "Type": "CheckBox"
       }
@@ -363,7 +363,7 @@
       "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации",
       "DE": "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen",
       "UA": "Деякі оновлення вимагають перезавантаження комп\u0027ютера та входу в Windows для завершення інсталяції оновлення, що означає, що ви можете увійти до Windows і виявити, що не можете використовувати свій комп\u0027ютер до завершення оновлення. Windows допомагає запобігти цьому, дозволяючи Windows використовувати інформацію про вхід до системи для створення спеціального маркера. Цей токен використовується для автоматичного входу в систему після перезавантаження, завершення налаштування комп\u0027ютера та подальшого блокування комп\u0027ютера для забезпечення безпеки вашого облікового запису та особистої інформації",
-      "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l\u0027istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell\u0027istallazione. Windows previene questo creando un token che permette a windows di accedere automaticamente. Dopo la fine dell\u0027installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
+      "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l\u0027istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell\u0027istallazione. Windows previene questo creando un token che permette di accedere automaticamente. Dopo la fine dell\u0027installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -429,7 +429,7 @@
       "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе",
       "DE": "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren",
       "UA": "Windows може відкривати спливаюче вікно з підказками про те, що нового в операційній системі",
-      "IT": "Windows potrebbe mostrare un pop-up per farti scoprire\u0027s le novità del sistema operativo."
+      "IT": "Windows potrebbe mostrare un pop-up per farti scoprire le novità del sistema operativo."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -488,7 +488,7 @@
       "RU": "Включить автоматическую установку рекомендованных приложений",
       "DE": "Automatische Installation der empfohlenen Apps aktivieren",
       "UA": "Увімкнути автоматичне встановлення рекомендованих додатків",
-      "IT": "abilita l\u0027istallazione automatica delle app consigliate"
+      "IT": "Abilita l'installazione automatica delle app consigliate"
     },
     "Description": {
       "EN": "Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.",
@@ -894,7 +894,7 @@
       "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
       "DE": "Snap-Layouts anzeigen, wenn ich mit dem Mauszeiger über die Schaltfläche \"Maximieren\" eines Fensters fahre",
       "UA": "Відображати макети прикріплення, частиною яких є додаток при наведенні вказівника миші на кнопки панелі завдань",
-      "IT": "Mostra snap layouts quando mantengo il mouse sul pulsante\u0027s massimizza"
+      "IT": "Mostra snap layouts quando mantengo il mouse sul pulsante massimizza"
     },
     "Description": {
       "EN": "",
@@ -1856,7 +1856,7 @@
       "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна",
       "DE": "Wenn ich die Titelleiste des Fensters greife und schüttle, werden alle anderen Fenster minimiert",
       "UA": "При захваті заголовка вікна та струшуванні згортаються всі інші вікна",
-      "IT": "Quando prendo la barra del titolo di una finestra\u0027s e la scuoto minimizza tutte le altre finestre"
+      "IT": "Quando prendo la barra del titolo di una finestra e la scuoto minimizza tutte le altre finestre"
     },
     "Description": {
       "EN": "",
@@ -3210,7 +3210,7 @@
       "RU": "При наличии соответствующего оборудования и драйверов Windows может переложить большую часть планирования GPU на выделенный процессор планирования на основе GPU. Благодаря функции аппаратного ускорения GPU процессор планирования GPU и память (VRAM) берут на себя ту же работу и запускают ее в пакетном режиме для рендеринга кадров. Таким образом, ваш GPU освобождает процессор от некоторой работы и уменьшает задержку, чтобы потенциально улучшить работу вашего ПК",
       "DE": "Mit richtiger Hardware und richtigen Treibern kann Windows den Großteil der GPU-Planung an einen speziellen GPU-basierten Planungsprozessor auslagern. Mit der Funktion \"Hardwarebeschleunigte GPU-Planung\" übernehmen der Planungsprozessor und der Speicher (VRAM) des Grafikprozessors die gleiche Arbeit und führen sie in Stapeln aus, um die Bilder zu rendern. Auf diese Weise entlastet der Grafikprozessor den Prozessor und verringert die Latenzzeit, wodurch Ihr PC möglicherweise besser läuft.",
       "UA": "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам\u0027ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК.",
-      "IT": "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU \u0027S e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
+      "IT": "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
     },
     "Type": "CheckBox",
     "Tag": "Games",
@@ -3540,7 +3540,7 @@
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home",
       "DE": "Windows Sandbox bietet eine schlanke Desktop-Umgebung, um Anwendungen isoliert sicher auszuführen. Software, die in der Sandbox-Umgebung installiert wird, bleibt in der Sandbox und wird getrennt vom Host-Computer ausgeführt. Eine Sandbox ist temporär. Wenn sie geschlossen wird, werden die gesamte Software, die Dateien und der Status gelöscht. Jedes Mal, wenn Sie die Anwendung öffnen, erhalten Sie eine neue Instanz der Sandbox, die in der Home Edition nicht funtioniert.",
       "UA": "Windows Sandbox є легким середовищем робочого столу для безпечного запуску додатків в ізольованому середовищі. Програмне забезпечення, встановлене серед Windows Sandbox, залишається в пісочниці і запускається окремо від основної машини. Пісочниця є тимчасовою. Коли вона закривається, все програмне забезпечення, файли та стан видаляються. При кожному відкритті нового екземпляра пісочниці ви отримуєте новий екземпляр пісочниці. Не працює у редакції Home",
-      "IT": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it\u0027s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn\u0027t work in Home Edition."
+      "IT": "Windows Sandbox Fornisce un ambiente desktop leggero per eseguire in modo sicuro le applicazioni in isolamento. Il software installato all'interno dell'ambiente sandbox di Windows rimane sandboxed e funziona separatamente dalla macchina host. Una sandbox è temporanea: quando viene chiusa, tutti i software e i file vengono cancellati. Ottieni un'istanza nuova di zecca della sandbox ogni volta che apri l'applicazione. Non disponibile nella versione Home."
     },
     "Type": "CheckBox",
     "Tag": "Security",
