@@ -2904,11 +2904,11 @@
   {
     "Id": 353,
     "Header": {
-      "EN": "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-      "RU": "Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
-      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64 installieren",
-      "UA": "Встановити останню версію пакетів Microsoft Visual C++ 2015–2022 x64",
-      "IT": "Installare gli ultimi pacchetti Microsoft Visual C ++ 2015-2022 x64"
+      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
+      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
+      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
+      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
+      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
     },
     "Description": {
       "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
