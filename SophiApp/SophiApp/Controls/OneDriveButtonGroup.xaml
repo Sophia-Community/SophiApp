@@ -33,6 +33,12 @@
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel Style="{StaticResource PanelBase}" MouseEnter="Panel_MouseEnter" MouseLeave="Panel_MouseLeave">
+                <StackPanel.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                        <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
+                    </ContextMenu>
+                </StackPanel.ContextMenu>
                 <Border x:Name="BorderLine" />
                 <StackPanel Orientation="Horizontal">
                     <ContentPresenter Margin="{Binding Path=IconMargin, RelativeSource={RelativeSource Mode=TemplatedParent}}"

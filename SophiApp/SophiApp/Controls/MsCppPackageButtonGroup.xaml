@@ -41,6 +41,12 @@
                            Margin="0, 10, 5, 10"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left" />
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                            <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
+                        </ContextMenu>
+                    </Grid.ContextMenu>
                 </Grid>
                 <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.ItemsPanel>

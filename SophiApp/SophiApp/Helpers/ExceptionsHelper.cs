@@ -128,6 +128,20 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class VisualRedistrLibsLastVersionException : Exception
+    {
+        public VisualRedistrLibsLastVersionException() : base("The latest version of Visual C++ Redistributable 2015–2022 x64 is installed")
+        {
+        }
+    }
+
+    internal class VisualRedistrLibsNotInstalled : Exception
+    {
+        public VisualRedistrLibsNotInstalled() : base("The Visual C++ Redistributable 2015–2022 x64 is not installed on this PC")
+        {
+        }
+    }
+
     internal class VitualizationNotSupportedException : Exception
     {
         public VitualizationNotSupportedException() : base("The virtualization (VT-x/SVM) isn't enabled in UEFI (BIOS)")
