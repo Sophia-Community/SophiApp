@@ -466,7 +466,7 @@
       "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\"",
       "DE": "Vorgeschlagene Inhalte in der Einstellungen-App anzeigen",
       "UA": "Відображати рекомендований вміст у застосунку \"Параметри\"",
-      "IT": "Show suggested content in the Settings app"
+      "IT": "Mostra i contenuti suggeriti nell'app impostazion"
     },
     "Description": {
       "EN": "",
@@ -3225,7 +3225,7 @@
       "RU": "Очистка Windows",
       "DE": "Windows Datenbereinigung",
       "UA": "Очищення Windows",
-      "IT": "Windows Cleanup"
+      "IT": "Pulizia di Windows"
     },
     "Description": {
       "EN": "Create the \"Windows Cleanup\" scheduled task for cleaning up Windows unused files and updates under the SophiApp folder in the Task Scheduler. A native toast notification will be displayed where you can choose to snooze, run the cleanup task or dismiss.",
@@ -3247,14 +3247,14 @@
       "RU": "Очистка папки загрузки обновлений Windows",
       "DE": "Windows-Updates-Download-Ordner bereinigen",
       "UA": "Очищення папки завантаження оновлень Windows",
-      "IT": "Сlean up lo cartella di download degli aggiornamenti di Windowsornamenti di Windowsr"
+      "IT": "Pulisci la cartella di download degli aggiornamenti di Windowsornamenti di Windowsr"
     },
     "Description": {
       "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up \n%SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
       "RU": "Создать задание \"SoftwareDistribution\" по очистке \n%SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней",
       "DE": "In der Aufgabenplanung unter dem Ordner \"SophiApp\" die geplante Aufgabe \"SoftwareDistribution\" zum Bereinigen von \n%SystemRoot%\\SoftwareDistribution\\Download erstellen, wohin alle Windows Updates heruntergeladen werden. Der Aufgabe wartet, bis der Windows Updates-Dienst beendet ist. Die Aufgabe wird alle 90 Tage ausgeführt.",
       "UA": "Створити завдання \"SoftwareDistribution\" з очищення \n%SystemRoot%\\SoftwareDistribution\\Download, куди завантажуються інсталяційні файли всіх оновлень Windows, у папці SophiApp у Планувальнику завдань. Завдання чекатиме, поки служба оновлень Windows не закінчить роботу. Завдання виконується кожні 90 днів",
-      "IT": "Creare la commissione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L\u0027attività attende che il servizio di aggiornamento di Windows finisse il servizio.L\u0027attività viene eseguita ogni 90 giorni."
+      "IT": "Creare l'operazione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L\u0027attività attende che il servizio di aggiornamento di Windows finisse il servizio.L\u0027attività viene eseguita ogni 90 giorni."
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskScheduler",
@@ -3269,7 +3269,7 @@
       "RU": "Очистка папки временных файлов",
       "DE": "Ordner für temporäre Dateien bereinigen",
       "UA": "Очищення папки тимчасових файлів",
-      "IT": "Pulisci la cartella temporanear"
+      "IT": "Pulisci la cartella file temporanei"
     },
     "Description": {
       "EN": "Create the \"Temp\" scheduled task for cleaning up the temp folder under the SophiApp folder in the Task Scheduler. Only files older than one day will be deleted. The task runs every 60 days.",
@@ -3401,7 +3401,7 @@
       "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий",
       "DE": "Benutzerdefinierte Ansicht \"Prozesserstellung\" in der Ereignisanzeige erstellen",
       "UA": "Створити налаштовуємий перегляд \"Створення процесу\" у Перегляді подій",
-      "IT": "Creare la visualizzazione personalizzata \"Process Creation\" nel visualizzatore di eventilizzatore di eventi"
+      "IT": "Creare la visualizzazione personalizzata \"Process Creation\" nel visualizzatore di eventi"
     },
     "Description": {
       "EN": "The \"Process Creation\" Custom View is designed to filter running processes and their arguments for better system security auditing. In order for this functionality to work, event and command line auditing in process creation events will be enabled.",
@@ -3489,7 +3489,7 @@
       "RU": "Отмечать файлы, скачанные из интернета как небезопасные",
       "DE": "Dateien, die aus dem Internet heruntergeladen werden, als unsicher markieren",
       "UA": "Відмічати файли, завантажені з Інтернету як небезпечні",
-      "IT": "Segna i file che sono stati scaricati da Internet come pericoloso"
+      "IT": "Segna i file che sono stati scaricati da Internet come pericolosi"
     },
     "Description": {
       "EN": "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\".",
@@ -3511,7 +3511,7 @@
       "RU": "Включить Windows Script Host",
       "DE": "Windows Script Host aktivieren",
       "UA": "Увімкнути Windows Script Host",
-      "IT": "Abilita host di script di Windows"
+      "IT": "Abilita script host di Windows"
     },
     "Description": {
       "EN": "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
