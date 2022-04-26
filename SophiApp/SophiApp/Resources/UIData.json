@@ -12,7 +12,7 @@
       "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic.",
       "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии",
       "DE": "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren",
-      "UA": "Налаштувати службу \"Функціональні можливості для підключених користувачів та телеметрія\" (DiagTrack) та з\u0027єднання для вихідного трафіку клієнта єдиної телеметрії",
+      "UA": "Налаштувати службу \"Функціональні можливості для підключених користувачів та телеметрія\" (DiagTrack) та з'єднання для вихідного трафіку клієнта єдиної телеметрії",
       "IT": "Configurare le esperienze utente collegate e il servizio Telemetry (Digtrack) e la connessione per il traffico in uscita del client di telemetria unificata."
     },
     "Type": "CheckBox",
@@ -94,7 +94,7 @@
       "EN": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.",
       "RU": "Функция создания отчетов об ошибках позволяет пользователям уведомлять Майкрософт о сбоях приложений, сбоях ядра, неотвечающих приложениях и других проблемах, связанных с приложениями. Корпорация Майкрософт может использовать функцию отчетов об ошибках для предоставления клиентам сведений об устранении неполадок, решениях или обновлениях для конкретных проблем",
       "DE": "Mithilfe von Fehlerberichten ermöglicht Anwendern Microsoft über Software- und Kernel-Fehler, nicht mehr reagierenden Anwendung und anderen anwendungsbezogenen Probleme benachrichtigen. So kann Microsoft die gesammelten Informationen über Fehlerberichterstellung verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen uUpdates für ihre spezifischen Probleme zur Verfügung zu stellen",
-      "UA": "Функція створення звітів про помилки дозволяє користувачам повідомляти Майкрософт про збої програм, збої ядра, програми, що не відповідають, та інші проблеми, пов\u0027язані з програмами. Корпорація Майкрософт може використовувати функцію звітів про помилки для надання клієнтам відомостей про виправлення неполадок, рішення або оновлення для конкретних проблем",
+      "UA": "Функція створення звітів про помилки дозволяє користувачам повідомляти Майкрософт про збої програм, збої ядра, програми, що не відповідають, та інші проблеми, пов'язані з програмами. Корпорація Майкрософт може використовувати функцію звітів про помилки для надання клієнтам відомостей про виправлення неполадок, рішення або оновлення для конкретних проблем",
       "IT": "Il servizio di segnalazine degli errori permette agli utenti di segnalare a  Microsoft i crash delle app e del kernel, cosicchè vengano fornite soluzione ai problemi riportati."
     },
     "Type": "CheckBox",
@@ -232,7 +232,7 @@
           "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт",
           "DE": "Wenn der Benutzer der Teilnahme am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit zugestimmt hat, erfasst diese Aufgabe Verwendungsdaten, die an Microsoft gesendet werden",
           "UA": "Якщо користувач виявив бажання брати участь у програмі з покращення якості програмного забезпечення Windows, це завдання буде збирати та надсилати відомості про роботу програмного забезпечення до корпорації Майкрософт.",
-          "IT": "Se si aderisce Windows Customer Experience Improvement Program, questo processo colleziona e invia dati d\u0027utilizo alla Microsoft."
+          "IT": "Se si aderisce Windows Customer Experience Improvement Program, questo processo colleziona e invia dati d'utilizo alla Microsoft."
         },
         "Type": "CheckBox"
       },
@@ -249,8 +249,8 @@
           "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft. The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything.",
           "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий",
           "DE": "Die USB-CEIP-Aufgabe (Customer Experience Improvement Program) sammelt und speichert Statistiken und Informationen über Ihren Computer, die sich auf den Universal Serial Bus beziehen, und sendet sie an die Windows Device Connectivity Engineering Group bei Microsoft. Die erhaltenen Informationen werden verwendet, um die Zuverlässigkeit, Stabilität und allgemeine Funktionalität von USB in Windows zu verbessern. Wenn der Benutzer nicht zugestimmt hat, an Windows CEIP teilzunehmen, führt diese Aufgabe nichts aus.",
-          "UA": "При виконанні завдання програми покращення якості ПЗ шини USB (USB CEIP) здійснюється збір статистичних даних про використання універсальної послідовної шини USB та відомостей про комп\u0027ютер, що надсилаються інженерній групі Майкрософт з питань підключення пристроїв у Windows. Отримані відомості використовуються для підвищення надійності, стабільності та загальної продуктивності шини USB у Windows. За відсутності згоди користувача на участь у програмі покращення програмного забезпечення Windows завдання не виконує жодних дій",
-          "IT": "Il processo USB CEIP (Customer Experience Improvement Program) colleziona dati relativi all\u0027USB ed informazioni sul dispositivo e li invia al team  Windows Device Connectivity engineering  della Microsoft. Tali informazioni servono per migliorare il funzionamento dell\u0027USB in Windows. Se l\u0027utente non participa al programma Windows CEIP, questo processo non fà nulla."
+          "UA": "При виконанні завдання програми покращення якості ПЗ шини USB (USB CEIP) здійснюється збір статистичних даних про використання універсальної послідовної шини USB та відомостей про комп'ютер, що надсилаються інженерній групі Майкрософт з питань підключення пристроїв у Windows. Отримані відомості використовуються для підвищення надійності, стабільності та загальної продуктивності шини USB у Windows. За відсутності згоди користувача на участь у програмі покращення програмного забезпечення Windows завдання не виконує жодних дій",
+          "IT": "Il processo USB CEIP (Customer Experience Improvement Program) colleziona dati relativi all'USB ed informazioni sul dispositivo e li invia al team  Windows Device Connectivity engineering  della Microsoft. Tali informazioni servono per migliorare il funzionamento dell'USB in Windows. Se l'utente non participa al programma Windows CEIP, questo processo non fà nulla."
         },
         "Type": "CheckBox"
       },
@@ -362,8 +362,8 @@
       "EN": "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.",
       "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации",
       "DE": "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen",
-      "UA": "Деякі оновлення вимагають перезавантаження комп\u0027ютера та входу в Windows для завершення інсталяції оновлення, що означає, що ви можете увійти до Windows і виявити, що не можете використовувати свій комп\u0027ютер до завершення оновлення. Windows допомагає запобігти цьому, дозволяючи Windows використовувати інформацію про вхід до системи для створення спеціального маркера. Цей токен використовується для автоматичного входу в систему після перезавантаження, завершення налаштування комп\u0027ютера та подальшого блокування комп\u0027ютера для забезпечення безпеки вашого облікового запису та особистої інформації",
-      "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l\u0027istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell\u0027istallazione. Windows previene questo creando un token che permette di accedere automaticamente. Dopo la fine dell\u0027installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
+      "UA": "Деякі оновлення вимагають перезавантаження комп'ютера та входу в Windows для завершення інсталяції оновлення, що означає, що ви можете увійти до Windows і виявити, що не можете використовувати свій комп'ютер до завершення оновлення. Windows допомагає запобігти цьому, дозволяючи Windows використовувати інформацію про вхід до системи для створення спеціального маркера. Цей токен використовується для автоматичного входу в систему після перезавантаження, завершення налаштування комп'ютера та подальшого блокування комп'ютера для забезпечення безпеки вашого облікового запису та особистої інформації",
+      "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -425,7 +425,7 @@
       "IT": "Mostra la Windows welcome experiences dopo gli aggiornamenti e in occasione di nuove funzionalità o promozioni"
     },
     "Description": {
-      "EN": "Windows may open a pop-up window to show you what\u0027s new about the operating system.",
+      "EN": "Windows may open a pop-up window to show you what's new about the operating system.",
       "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе",
       "DE": "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren",
       "UA": "Windows може відкривати спливаюче вікно з підказками про те, що нового в операційній системі",
@@ -495,7 +495,7 @@
       "RU": "Windows может в тихом режиме загружать и устанавливать некоторые приложения из Microsoft Store без какого-либо подтверждения",
       "DE": "Windows kann einige Apps aus dem Microsoft Store unbemerkt ohne Bestätigung herunterladen und installieren",
       "UA": "Windows в тихому режимі може завантажувати та інсталювати деякі програми з Microsoft Store без будь-якого підтвердження",
-      "IT": "Windows può scaricare e installare silenziosamente alcune app suggerite da Microsoft Store senza alcuna conferma dell\u0027utente."
+      "IT": "Windows può scaricare e installare silenziosamente alcune app suggerite da Microsoft Store senza alcuna conferma dell'utente."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -517,7 +517,7 @@
       "RU": "Windows может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить",
       "DE": "Windows zeigt möglicherweise gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann",
       "UA": "Windows може іноді відображати спливаюче вікно \"Використовуйте Windows ще ефективніше\", в якому відображаються додаткові служби, які користувач може налаштувати",
-      "IT": "Windows può visualizzare un \"Ottieni ancora più con Windows\" occasionalmente che promuove servizi aggiuntivi che l\u0027utente può acquistare."
+      "IT": "Windows può visualizzare un \"Ottieni ancora più con Windows\" occasionalmente che promuove servizi aggiuntivi che l'utente può acquistare."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -575,7 +575,7 @@
       "EN": "Show the \"This PC\" icon on Desktop",
       "RU": "Отображать значок \"Этот компьютер\" на рабочем столе",
       "DE": "Das Symbol \"Dieser PC\" auf Desktop anzeigen",
-      "UA": "Відображати значок \"Цей комп\u0027ютер\" на робочому столі",
+      "UA": "Відображати значок \"Цей комп'ютер\" на робочому столі",
       "IT": "Icona \"Questo PC\" sul desktop"
     },
     "Description": {
@@ -764,7 +764,7 @@
           "EN": "This PC",
           "RU": "Этот компьютер",
           "DE": "Dieser PC",
-          "UA": "Цей комп\u0027ютер",
+          "UA": "Цей комп'ютер",
           "IT": "Questo PC"
         },
         "ChildDescription": {
@@ -850,14 +850,14 @@
       "RU": "Показывать уведомления поставщика синхронизации в проводнике",
       "DE": "Synchronisationsanbieter-Benachrichtigungen im Datei-Explorer anzeigen",
       "UA": "Відображати повідомлення постачальника синхронізації у провіднику",
-      "IT": "Mostra notifiche del provider di sincronizzazione all\u0027interno di esplora file"
+      "IT": "Mostra notifiche del provider di sincronizzazione all'interno di esplora file"
     },
     "Description": {
       "EN": "Disable OneDrive ad notifications within File Explorer.",
       "RU": "Отключить рекламные уведомления OneDrive в проводнике",
       "DE": "Anzeige der OneDrive-Benachrichtigungen im Datei-Explorer deaktivieren",
       "UA": "Вимкнути рекламні повідомлення OneDrive у провіднику",
-      "IT": "Disabilita le notifiche pubblicitarie di OneDrive all\u0027interno di esplora file."
+      "IT": "Disabilita le notifiche pubblicitarie di OneDrive all'interno di esplora file."
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -890,7 +890,7 @@
   {
     "Id": 215,
     "Header": {
-      "EN": "Show snap layouts when I hover over a windows\u0027s maximize button",
+      "EN": "Show snap layouts when I hover over a windows's maximize button",
       "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
       "DE": "Snap-Layouts anzeigen, wenn ich mit dem Mauszeiger über die Schaltfläche \"Maximieren\" eines Fensters fahre",
       "UA": "Відображати макети прикріплення, частиною яких є додаток при наведенні вказівника миші на кнопки панелі завдань",
@@ -1019,7 +1019,7 @@
       "EN": "Show the \"3D Objects\" folder in \"This PC\" and Quick access",
       "RU": "Показывать папку \"Объемные объекты\" в \"Этот компьютер\" и панели быстрого доступа",
       "DE": "Den Ordner \"3D-Objekte\" in \"Dieser PC\" und Schnellzugriffsleiste anzeigen",
-      "UA": "Відображати папку \"Об\u0027ємні об\u0027єкти\" в \"Цей комп\u0027ютер\" та панелі швидкого доступу",
+      "UA": "Відображати папку \"Об'ємні об'єкти\" в \"Цей комп'ютер\" та панелі швидкого доступу",
       "IT": "Mostra \"Oggetti 3D\" cartella in \"Questo PC\" e  accesso rapido"
     },
     "Description": {
@@ -1086,7 +1086,7 @@
       "RU": "Установить выравнивание панели задач",
       "DE": "Ausrichtung der Taskleiste festlegen",
       "UA": "Встановити вирівнювання панелі завдань",
-      "IT": "Imposta l\u0027allineamento della barra delle applicazioni"
+      "IT": "Imposta l'allineamento della barra delle applicazioni"
     },
     "Description": {
       "EN": "",
@@ -1212,7 +1212,7 @@
       "RU": "Отобразить кнопку \"Мини-приложения\" на панели задач",
       "DE": "Widget-Symbol in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку \"Міні-додатки\" на панелі завдань",
-      "IT": "Mostra l\u0027icona dei widget sulla barra delle applicazioni"
+      "IT": "Mostra l'icona dei widget sulla barra delle applicazioni"
     },
     "Description": {
       "EN": "",
@@ -1234,7 +1234,7 @@
       "RU": "Показывать панель \"Люди\" на панели задач",
       "DE": "Symbol \"Kontakte\" in der Taskleiste anzeigen",
       "UA": "Відображати панель \"Люди\" на панелі завдань",
-      "IT": "Mostra l\u0027icona persone sulla barra delle applicazioni"
+      "IT": "Mostra l'icona persone sulla barra delle applicazioni"
     },
     "Description": {
       "EN": "",
@@ -1256,7 +1256,7 @@
       "RU": "Отображать секунды в системных часах на панели задач",
       "DE": "Sekunden auf der Taskleistenuhr anzeigen",
       "UA": "Відображати секунди в системному годиннику на панелі завдань",
-      "IT": "Mostra secondi sull\u0027orologio della barra delle applicazioni"
+      "IT": "Mostra secondi sull'orologio della barra delle applicazioni"
     },
     "Description": {
       "EN": "",
@@ -1315,7 +1315,7 @@
           "RU": "Показать значок поиска",
           "DE": "Suchsymbol anzeigen",
           "UA": "Відобразити значок пошуку",
-          "IT": "Mostra l\u0027icona di cerca"
+          "IT": "Mostra l'icona di cerca"
         },
         "ChildDescription": {
           "EN": "",
@@ -1378,7 +1378,7 @@
       "RU": "Всегда отображать все значки в области уведомлений",
       "DE": "Immer alle Symbole im Infobereich zeigen",
       "UA": "Завжди відображати всі значки в області сповіщень",
-      "IT": "Mostra sempre tutte le icone nell\u0027area di notificafica"
+      "IT": "Mostra sempre tutte le icone nell'area di notificafica"
     },
     "Description": {
       "EN": "",
@@ -1400,7 +1400,7 @@
       "RU": "Отображать иконку \"Провести собрание\" в области уведомлений",
       "DE": "\"Besprechung beginnen\" im Infobereich anzeigen",
       "UA": "Відображати іконку \"Провести зібрання\" в області сповіщень",
-      "IT": "Mostra l\u0027icona di Meet Now nell\u0027area di notifica"
+      "IT": "Mostra l'icona di Meet Now nell'area di notifica"
     },
     "Description": {
       "EN": "",
@@ -1444,7 +1444,7 @@
       "RU": "Отобразить кнопку чата (Microsoft Teams) на панели задач",
       "DE": "Chat-Symbol (Microsoft Teams) in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку чату (Microsoft Teams) на панелі завдань",
-      "IT": "Mostra l\u0027icona delle chat (Microsoft Teams) sulla barra delle applicazioni"
+      "IT": "Mostra l'icona delle chat (Microsoft Teams) sulla barra delle applicazioni"
     },
     "Description": {
       "EN": "",
@@ -1686,14 +1686,14 @@
       "RU": "Показывать анимацию при первом входе в систему после обновления",
       "DE": "Animation der ersten Anmeldung nach dem Upgrade anzeigen",
       "UA": "Відображати анімацію при першому вході в систему після оновлення",
-      "IT": "Mostra l\u0027animazione di primo accesso dopo l\u0027aggiornamento"
+      "IT": "Mostra l'animazione di primo accesso dopo l'aggiornamento"
     },
     "Description": {
       "EN": "In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the \"first sign-in animation\" that features several messages to configure the account environment.",
       "RU": "В Windows после завершения настройки при новой установке, обновлении или при входе в новую учетную запись запускается \"анимация первого входа\", которая включает несколько сообщений по мере настройки среды учетной записи",
       "DE": "In Windows wird nach Abschluss des Setups bei einer Neuinstallation, einem Upgrade oder der Anmeldung bei einem neuen Konto die \"Erstanmeldeanimation\" angezeigt, die mehrere Meldungen zur Konfiguration der Kontoumgebung enthält.",
       "UA": "У Windows після завершення налаштування при новій установці, оновленні або при вході до нового облікового запису запускається \"анімація першого входу\", яка включає кілька повідомлень у міру налаштування середовища облікового запису",
-      "IT": "In Windows, dopo aver completato la configurazione su una nuova installazione o aggiornamento o quando si accede a un nuovo account, visualizza il \"Animazione primo accesso\"che presenta diversi messaggi per configurare l\u0027ambiente dell\u0027account."
+      "IT": "In Windows, dopo aver completato la configurazione su una nuova installazione o aggiornamento o quando si accede a un nuovo account, visualizza il \"Animazione primo accesso\"che presenta diversi messaggi per configurare l'ambiente dell'account."
     },
     "Type": "CheckBox",
     "Tag": "Personalization",
@@ -1715,7 +1715,7 @@
       "RU": "Когда вы устанавливаете изображение в качестве обоев рабочего стола или слайд-шоу в формате JPEG, при импорте операционная система снижает качество исходного изображения до 85 % и сохраняет его как файл TranscodedWallpaper в папке \n%APPDATA%\\Microsoft\\Windows\\Themes. Однако, если вы используете PNG-изображение в качестве фоновых обоев рабочего стола или слайд-шоу, то это автоматическое снижение качества вас не коснется, поскольку оно происходит только с изображениями JPEG",
       "DE": "Wenn Sie ein JPEG-Bild als Desktop-Hintergrundbild oder Diashow festlegen, reduziert das Betriebssystem die Qualität des Originalbildes auf 85 % und speichert es als TranscodedWallpaper-Datei im Ordner \n%APPDATA%\\Microsoft\\Windows\\Themes. Wenn Sie ein PNG-Bild als Desktop-Hintergrundbild oder Diashow verwenden, sind Sie von dieser automatischen Qualitätsminderung nicht betroffen, da sie nur für JPEG-Bilder gilt.",
       "UA": "Коли ви встановлюєте зображення у якості шпалер робочого стола або слайд-шоу в форматі JPEG, при імпорті операційна система знижує якість вихідного зображення до 85 % та зберігає його як файл TranscodedWallpaper у папці \n%APPDATA%\\Microsoft\\Windows\\Themes. Проте, якщо ви використовуєте PNG-зображення у якості фонових шпалер робочого стола або слайд-шоу, то це автоматичне зниження якості вас не торкнеться, оскільки воно відбувається тільки з зображеннями JPEG",
-      "IT": "Quando si imposta un\u0027immagine JPEG come sfondo del desktop o come presentazione, il sistema operativo riduce la qualità dell\u0027immagine originale all\u002785% e lo memorizza come file TranscodedWallpaper nella cartella \n%AppData%\\Microsoft\\Windows\\Themes .Se si utilizza un\u0027immagine PNG come sfondo del desktop  o come slideshow, non sei interessato da questa riduzione automatica della qualità poiché si applica solo alle immagini JPEG."
+      "IT": "Quando si imposta un'immagine JPEG come sfondo del desktop o come presentazione, il sistema operativo riduce la qualità dell'immagine originale all'85% e lo memorizza come file TranscodedWallpaper nella cartella \n%AppData%\\Microsoft\\Windows\\Themes .Se si utilizza un'immagine PNG come sfondo del desktop  o come slideshow, non sei interessato da questa riduzione automatica della qualità poiché si applica solo alle immagini JPEG."
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -1768,7 +1768,7 @@
       "RU": "Уведомлять меня о необходимости перезагрузки для завершения обновления",
       "DE": "Benachrichtigen Sie mich, wenn ein Neustart erforderlich ist, um die Aktualisierung abzuschließen",
       "UA": "Повідомляти мене про необхідність перезавантаження для завершення оновлення",
-      "IT": "Avvisami quando è necessario un riavvio per terminare l\u0027aggiornamento"
+      "IT": "Avvisami quando è necessario un riavvio per terminare l'aggiornamento"
     },
     "Description": {
       "EN": "",
@@ -1834,7 +1834,7 @@
       "RU": "Позволить выбирать метод ввода для каждого окна",
       "DE": "Für jedes Anwendungsfenster eine andere Eingabemethode verwenden lassen",
       "UA": "Дозволити обирати метод введення для кожного вікна",
-      "IT": "Permetti l\u0027uso di un metodo di input diverso per ogni istanza dell\u0027app"
+      "IT": "Permetti l'uso di un metodo di input diverso per ogni istanza dell'app"
     },
     "Description": {
       "EN": "",
@@ -1852,7 +1852,7 @@
   {
     "Id": 261,
     "Header": {
-      "EN": "When I grab a windows\u0027s title bar and shake it, minimize all other windows",
+      "EN": "When I grab a windows's title bar and shake it, minimize all other windows",
       "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна",
       "DE": "Wenn ich die Titelleiste des Fensters greife und schüttle, werden alle anderen Fenster minimiert",
       "UA": "При захваті заголовка вікна та струшуванні згортаються всі інші вікна",
@@ -1877,14 +1877,14 @@
       "EN": "Storage Sense",
       "RU": "Контроль памяти",
       "DE": "Speicheroptimierung",
-      "UA": "Контроль пам\u0027яті",
+      "UA": "Контроль пам'яті",
       "IT": "Sensore di memoria "
     },
     "Description": {
       "EN": "Storage Sense runs when disk space is low. We clean enough space to help your system runs its best.",
       "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальной работы системы",
       "DE": "Wenn der Speicherplatz knapp wird, aktiwiert die System die Speicheroptimierung um Ihr Speicherplatz zu befreien",
-      "UA": "Контроль пам\u0027яті запускається, якщо на диску недостатньо вільного місця. Функція контролю пам\u0027яті звільняє достатньо місця для оптимальної роботи системи",
+      "UA": "Контроль пам'яті запускається, якщо на диску недостатньо вільного місця. Функція контролю пам'яті звільняє достатньо місця для оптимальної роботи системи",
       "IT": "Senso di memoria viene eseguito quando lo spazio su disco è basso. Pulisce abbastanza spazio per aiutare il tuo sistema a funzionare meglio."
     },
     "Type": "CheckBox",
@@ -1899,15 +1899,15 @@
       "EN": "Run Storage Sense",
       "RU": "Запуск Контроля памяти",
       "DE": "Speicheroptimierung starten",
-      "UA": "Запуск Контролю пам\u0027яті",
+      "UA": "Запуск Контролю пам'яті",
       "IT": "Esegui il sensore di memoria."
     },
     "Description": {
       "EN": "Storage Sense runs when disk space is low and frees up enough space for optimal OS operation. It is better to create the \"Windows Cleanup\" task in the \"Task Scheduler\" section to clean up Windows more effectively.",
       "RU": "Контроль памяти запускается, если на диске мало свободного места. Функция контроля памяти освобождает достаточно места для оптимальной работы системы. Но лучше в разделе \"Планировщик заданий\" создайте задание \"Windows Cleanup\", чтобы эффективнее очищать Windows",
       "DE": "Speicheroptimierung wird ausgeführt, wenn nur noch wenig Speicherplatz auf der Festplatte vorhanden ist und gibt genügend Platz für einen optimalen Betrieb des Betriebssystems frei. Es ist besser, die Aufgabe \"Windows Cleanup\" im Abschnitt \"Task Scheduler\" zu erstellen, um Windows effektiver aufzuräumen.",
-      "UA": "Контроль пам\u0027яті запускається, якщо на диску мало вільного місця. Функція контролю пам\u0027яті звільняє достатньо місця для оптимальної роботи системи. Але краще в розділі \"Планувальник завдань\" створіть завдання \"Windows Cleanup\", щоб ефективніше очищати Windows",
-      "IT": "Sensore di memoria si esegue quando lo spazio su disco è basso e libera spazio sufficiente per un funzionamento ottimale del sistema operativo.È meglio creare l\u0027attività \"Pulizia di windows\" nella sezione \"Operazioni Pianificate\" per ripulire windows in modo più efficace."
+      "UA": "Контроль пам'яті запускається, якщо на диску мало вільного місця. Функція контролю пам'яті звільняє достатньо місця для оптимальної роботи системи. Але краще в розділі \"Планувальник завдань\" створіть завдання \"Windows Cleanup\", щоб ефективніше очищати Windows",
+      "IT": "Sensore di memoria si esegue quando lo spazio su disco è basso e libera spazio sufficiente per un funzionamento ottimale del sistema operativo.È meglio creare l'attività \"Pulizia di windows\" nella sezione \"Operazioni Pianificate\" per ripulire windows in modo più efficace."
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -1956,7 +1956,7 @@
   {
     "Id": 304,
     "Header": {
-      "EN": "Delete temporary files that aren\u0027t used by apps",
+      "EN": "Delete temporary files that aren't used by apps",
       "RU": "Удалять временные файлы, не используемые в приложениях",
       "DE": "Temporäre Dateien löschen, die nicht von Anwendungen verwendet werden",
       "UA": "Видаляти тимчасові файли, які не використовуються в додатках",
@@ -1988,8 +1988,8 @@
       "EN": "Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to the \nC:\\hiberfil.sys file, and turns off your computer. By default, the size of the hidden system protected file C:\\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. It is not recommended to turn it off on mobile devices.",
       "RU": "Гибернация — это энергосберегающее состояние, используемое в основном для мобильных устройств. В отличии от спящего режима, гибернация сохраняет открытые документы и программы на системный накопитель в файл \nC:\\hiberfil.sys, а затем выключает компьютер. По умолчанию размер скрытого системного файла C:\\hiberfil.sys составляет 40 % от общего объема установленной оперативной памяти. При отключении гибернации будет также отключен быстрый запуск, и скроется соответствующий пункт в меню питания. Не рекомендуется выключать на мобильных устройствах",
       "DE": "Hibernation ist ein Stromsparzustand, der vor allem bei Laptops verwendet wird. Im Gegensatz zum Ruhezustand werden im Ruhezustand die geöffneten Dokumente und Programme auf dem Systemlaufwerk in der Datei \nC:\\hiberfil.sys abgelegt und der Computer ausgeschaltet. Standardmäßig beträgt die Größe der versteckten systemgeschützten Datei C:\\hiberfil.sys 40 % des gesamten installierten Arbeitsspeichers. Durch die Deaktivierung des Ruhezustands wird auch der Schnellstart deaktiviert, und der Ruhezustand wird nicht mehr im Menü Energie angezeigt. Es wird nicht empfohlen, den Ruhezustand auf mobilen Geräten zu deaktivieren.",
-      "UA": "Гібернація — це енергозберігаючий стан, який використовується в основному для мобільних пристроїв. На відміну від сплячого режиму, гібернація зберігає відкриті документи та програми на системний накопичувач у файл \nC:\\hiberfil.sys, а потім вимикає комп\u0027ютер. За замовчуванням розмір прихованого системного файлу C:\\hiberfil.sys становить 40 % від загального обсягу встановленої оперативної пам\u0027яті. При відключенні гібернації буде також відключено швидкий запуск, і приховається відповідний пункт в меню живлення. Не рекомендується вимикати на мобільних пристроях",
-      "IT": "Ibernazione è uno stato di risparmio energetico utilizzato principalmente per laptop. A differenza della sospensione, l\u0027ibernazione mette i documenti e i programmi aperti sull\u0027unità di sistema nel file C: \\ hiberfil.sys e spegne il computer. Per impostazione predefinita, la dimensione del file protetto del sistema nascosto C: \\ hiberfil.sys è il 40% della quantità totale di RAM installata. Disabilitare l\u0027ibernazione disabiliterà anche l\u0027avvio rapido e l\u0027ibernazione non verrà più visualizzato nel menu di alimentazione.Non è consigliato spegnerlo sui dispositivi mobili."
+      "UA": "Гібернація — це енергозберігаючий стан, який використовується в основному для мобільних пристроїв. На відміну від сплячого режиму, гібернація зберігає відкриті документи та програми на системний накопичувач у файл \nC:\\hiberfil.sys, а потім вимикає комп'ютер. За замовчуванням розмір прихованого системного файлу C:\\hiberfil.sys становить 40 % від загального обсягу встановленої оперативної пам'яті. При відключенні гібернації буде також відключено швидкий запуск, і приховається відповідний пункт в меню живлення. Не рекомендується вимикати на мобільних пристроях",
+      "IT": "Ibernazione è uno stato di risparmio energetico utilizzato principalmente per laptop. A differenza della sospensione, l'ibernazione mette i documenti e i programmi aperti sull'unità di sistema nel file C: \\ hiberfil.sys e spegne il computer. Per impostazione predefinita, la dimensione del file protetto del sistema nascosto C: \\ hiberfil.sys è il 40% della quantità totale di RAM installata. Disabilitare l'ibernazione disabiliterà anche l'avvio rapido e l'ibernazione non verrà più visualizzato nel menu di alimentazione.Non è consigliato spegnerlo sui dispositivi mobili."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2004,14 +2004,14 @@
       "RU": "Путь переменной среды для временных файлов",
       "DE": "Pfad der temporären Umgebungsvariablen",
       "UA": "Шлях змінного середовища для тимчасових файлів",
-      "IT": "Il percorso variabile dell\u0027ambiente temp"
+      "IT": "Il percorso variabile dell'ambiente temp"
     },
     "Description": {
       "EN": "Use only in case if you are the only user on this PC, otherwise all users will use the same folder for all temporary files.",
       "RU": "Используйте только в случае, если вы единственный пользователь на ПК, иначе все пользователи будут использовать одну и ту же папка для временных файлов.",
       "DE": "Diese Option nur verwenden, wenn Sie der einzige Benutzer auf diesem PC sind, da sonst alle Benutzer denselben Ordner für alle temporären Dateien verwenden.",
       "UA": "Використовуйте тільки у випадку, якщо ви єдиний користувач ПК, інакше всі користувачі будуть використовувати одну й ту саму папку для тимчасових файлів.",
-      "IT": "Utilizzare Solo nel caso in cui si sia l\u0027unico utente su questo PC, altrimenti tutti gli utenti utilizzeranno la stessa cartella per tutti i file temporanei."
+      "IT": "Utilizzare Solo nel caso in cui si sia l'unico utente su questo PC, altrimenti tutti gli utenti utilizzeranno la stessa cartella per tutti i file temporanei."
     },
     "Type": "AdvancedRadioGroup",
     "Tag": "System",
@@ -2107,7 +2107,7 @@
       "EN": "Choose when to be notified about changes to your computer",
       "RU": "Настройка уведомления об изменении параметров компьютера",
       "DE": "Wählen, wann Sie über Änderungen an Ihrem Computer benachrichtigt werden möchten",
-      "UA": "Налаштування сповіщення про зміни параметрів комп\u0027ютера",
+      "UA": "Налаштування сповіщення про зміни параметрів комп'ютера",
       "IT": "Scegliere quando si verrà avvisato di modifiche al tuo computer"
     },
     "Description": {
@@ -2115,7 +2115,7 @@
       "RU": "Когда включен контроль учетных записей пользователей (UAC), Windows запрашивает согласие или просит ввести учетные данные действительной учетной записи локального администратора перед запуском программы или задачи, требующей полного маркера доступа администратора. Этот запрос гарантирует, что вредоносное программное обеспечение не может быть тихо установлено или запущено",
       "DE": "Wenn die Benutzerkontensteuerung (UAC) aktiviert ist, fragt Windows vor dem Start eines Programms oder einer Aufgabe, für die ein Zugriffstoken für den vollständigen Administratorzugriff erforderlich ist, nach der Zustimmung oder nach den Anmeldeinformationen eines gültigen lokalen Administratorkontos. Diese Aufforderung stellt sicher, dass keine bösartige Software unbemerkt installiert oder ausgeführt werden kann.",
       "UA": "Коли увімкнено контроль облікових записів користувачів (UAC), Windows запитує згоду або просить ввести облікові дані дійсного облікового запису локального адміністратора перед запуском додатку або завдання, що вимагає повного маркера доступу адміністратора. Цей запит гарантує, що шкідливе програмне забезпечення не може бути тихо встановлене або запущене",
-      "IT": "Quando il controllo dell\u0027account utente (UAC) È abilitato, Windows richiede il consenso o richiede le credenziali di un conto amministratore locale valido prima di avviare un programma o un\u0027attività che richiede un token di accesso all\u0027amministratore completo. Questo prompt garantisce che nessun software dannoso possa essere installato o eseguito in silenzio."
+      "IT": "Quando il controllo dell'account utente (UAC) È abilitato, Windows richiede il consenso o richiede le credenziali di un conto amministratore locale valido prima di avviare un programma o un'attività che richiede un token di accesso all'amministratore completo. Questo prompt garantisce che nessun software dannoso possa essere installato o eseguito in silenzio."
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -2126,7 +2126,7 @@
           "EN": "Notify me only when apps try to make changes to my computer",
           "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер",
           "DE": "Mich nur benachrichtigen, wenn Anwendungen versuchen, Änderungen an meinem Computer vorzunehmen",
-          "UA": "Повідомляти мене лише при спробах додатків внести зміни до комп\u0027ютера",
+          "UA": "Повідомляти мене лише при спробах додатків внести зміни до комп'ютера",
           "IT": "Avvisami solo quando le app cercano di apportare modifiche al mio computer"
         },
         "ChildDescription": {
@@ -2134,7 +2134,7 @@
           "RU": "При включении этого параметра рабочий стол будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)",
           "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop abgedunkelt, wenn Sie von der Benutzerkontensteuerung (UAC) eine Aufforderung zum Hochfahren erhalten.",
           "UA": "При увімкненні цього параметра робочий стіл буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)",
-          "IT": "Con questa impostazione abilitata, vi verrà chiesta conferma quando si ottiene una richiesta di elevazione da parte del prompt del controllo dell\u0027account utente (UAC)."
+          "IT": "Con questa impostazione abilitata, vi verrà chiesta conferma quando si ottiene una richiesta di elevazione da parte del prompt del controllo dell'account utente (UAC)."
         },
         "Type": "RadioButton"
       },
@@ -2168,14 +2168,14 @@
       "RU": "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами",
       "DE": "Den Zugriff auf zugeordnete Laufwerke von einer Anwendung, die mit erweiterten Berechtigungen im Freigabemodus für Administratoren läuft.",
       "UA": "Увімкнути доступ до мережевих дисків при увімкненому режимі схвалення адміністратором при доступі з додатків, запущених із підвищеними правами",
-      "IT": "Permetti l\u0027accesso ai dischi mappati alle app eseguite come amministratore"
+      "IT": "Permetti l'accesso ai dischi mappati alle app eseguite come amministratore"
     },
     "Description": {
       "EN": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders.",
       "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок",
       "DE": "Aktivierte UAC mit den Standardeinstellungen erlaubt keinen Zugriff auf zugeordnete Netzlaufwerke von Anwendungen, die im Administratormodus ausgeführt werden. Das heißt, wenn Sie die Befehlszeile oder einen Dateimanager mit erhöhten Rechten ausführen, werden die Laufwerksbuchstaben der eingebundenen Netzwerkordner nicht angezeigt.",
       "UA": "Увімкнений UAC із налаштуваннями за замовчуванням не дозволяє отримати доступ до підключених мережевих дисків із додатків, запущених у привілейованому режимі. Це означає, що при запуску командного рядка або файлового менеджера з підвищеними правами, в них не буде видно літер дисків змонтованих мережевих папок",
-      "IT": "L\u0027UAC abilitato con le impostazioni predefinite non consente l\u0027accesso a unità di rete mappate da applicazioni in esecuzione in modalità amministratore. Ciò significa che se si esegue la riga di comando o un file manager con privilegi elevati, non mostreranno le lettere di unità delle cartelle di rete montate."
+      "IT": "L'UAC abilitato con le impostazioni predefinite non consente l'accesso a unità di rete mappate da applicazioni in esecuzione in modalità amministratore. Ciò significa che se si esegue la riga di comando o un file manager con privilegi elevati, non mostreranno le lettere di unità delle cartelle di rete montate."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2190,14 +2190,14 @@
       "RU": "Включить загрузку обновлений с помощью оптимизации доставки",
       "DE": "Herunterladen von Updates mit Übermittlungsoptimierung aktivieren",
       "UA": "Увімкнути завантаження оновлень за допомогою оптимізації доставки",
-      "IT": "Abilita il download degli aggiornamenti con l\u0027ottimizzazione recapito"
+      "IT": "Abilita il download degli aggiornamenti con l'ottimizzazione recapito"
     },
     "Description": {
-      "EN": "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that\u0027s needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
+      "EN": "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that's needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
       "RU": "Оптимизация доставки центра обновления Windows работает, позволяя получать обновления для Windows и приложения Microsoft Store из источников в дополнение к Microsoft, например другим компьютерам в локальной сети или компьютерам в Интернете, которые загружают эти же файлы. Оптимизация доставки также отправляет обновления и приложения с компьютера на другие компьютеры в локальной сети или на компьютеры в Интернете на основе ваших настроек. Обмен данными между компьютерами помогает сократить пропускную способность Интернета, необходимую для поддержания более чем одного устройства, и может сделать загрузку более успешной, если у вас есть ограниченное или ненадежное Интернет-соединение",
       "DE": "Die Übermittlungsoptimierung von Windows-Updates ermöglicht es Ihnen, Windows-Updates und Microsoft Store-Apps nicht nur von Microsoft, sondern auch von anderen PCs in Ihrem lokalen Netzwerk oder PCs im Internet zu beziehen, die dieselben Dateien herunterladen. Die Übermittlungsoptimierung sendet auch Updates und Anwendungen von Ihrem PC an andere PCs in Ihrem lokalen Netzwerk oder PCs im Internet, je nach Ihren Einstellungen. Die gemeinsame Nutzung dieser Daten zwischen PCs trägt dazu bei, die Internet-Bandbreite zu reduzieren, die benötigt wird, um mehr als ein Gerät auf dem neuesten Stand zu halten, oder kann Downloads erfolgreicher machen, wenn Sie eine begrenzte oder unzuverlässige Internetverbindung haben.",
-      "UA": "Оптимізація доставки центру оновлення Windows працює, дозволяючи отримувати оновлення для Windows і додатки Microsoft Store з джерел в придачу до Microsoft, наприклад, інших комп\u0027ютерів у локальній мережі або комп\u0027ютерів в Інтернеті, які завантажують ті ж файли. Оптимізація доставки також надсилає оновлення та програми з комп\u0027ютера на інші комп\u0027ютери в локальній мережі або на комп\u0027ютери в Інтернеті на основі ваших налаштувань. Обмін даними між комп\u0027ютерами допомагає скоротити пропускну здатність Інтернету, необхідну для підтримки більш ніж одного пристрою, і може зробити завантаження успішнішим, якщо у вас є обмежене або ненадійне підключення до Інтернету.",
-      "IT": "Windows Update Ottimizzazione recapito funziona permettendoti di ottenere aggiornamenti di Windows e APP di Microsoft Store da fonti oltre a Microsoft, come altri PC sulla rete locale o PC su Internet che scaricano gli stessi file. L\u0027ottimizzazione recapito invia anche aggiornamenti ad altri PC sulla rete locale o su Internet, in base alle tue impostazioni. La condivisione di questi dati tra PC aiuta a ridurre la larghezza di banda Internet che è necessario per mantenere più di un dispositivo aggiornato. Permrtte quindi di eseguire il download se si dispone di una connessione Internet limitata o inaffidabile."
+      "UA": "Оптимізація доставки центру оновлення Windows працює, дозволяючи отримувати оновлення для Windows і додатки Microsoft Store з джерел в придачу до Microsoft, наприклад, інших комп'ютерів у локальній мережі або комп'ютерів в Інтернеті, які завантажують ті ж файли. Оптимізація доставки також надсилає оновлення та програми з комп'ютера на інші комп'ютери в локальній мережі або на комп'ютери в Інтернеті на основі ваших налаштувань. Обмін даними між комп'ютерами допомагає скоротити пропускну здатність Інтернету, необхідну для підтримки більш ніж одного пристрою, і може зробити завантаження успішнішим, якщо у вас є обмежене або ненадійне підключення до Інтернету.",
+      "IT": "Windows Update Ottimizzazione recapito funziona permettendoti di ottenere aggiornamenti di Windows e APP di Microsoft Store da fonti oltre a Microsoft, come altri PC sulla rete locale o PC su Internet che scaricano gli stessi file. L'ottimizzazione recapito invia anche aggiornamenti ad altri PC sulla rete locale o su Internet, in base alle tue impostazioni. La condivisione di questi dati tra PC aiuta a ridurre la larghezza di banda Internet che è necessario per mantenere più di un dispositivo aggiornato. Permrtte quindi di eseguire il download se si dispone di una connessione Internet limitata o inaffidabile."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2212,14 +2212,14 @@
       "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп",
       "DE": "Bei Arbeitsgruppennetzwerken beim Starten des Computers und bei der Anmeldung immer auf das Netzwerk warten",
       "UA": "Завжди зачікувати мережу під час запуску та входу в систему для робочих груп",
-      "IT": "Attendi sempre l\u0027inizializzazione della rete all\u0027avvio del computer e all\u0027accesso per le reti del gruppo di lavoro"
+      "IT": "Attendi sempre l'inizializzazione della rete all'avvio del computer e all'accesso per le reti del gruppo di lavoro"
     },
     "Description": {
       "EN": "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available.",
       "RU": "Для сокращения времени входа в систему Windows не ждет полной инициализации сети при запуске или входе в систему. Параметры политики применяются асинхронно при запуске компьютера и при входе пользователя в систему. В результате операционная система не ждет полной инициализации сети при запуске и входе в систему. Существующие пользователи входят в систему, используя кэшированные учетные данные. Это сокращает время входа в систему. Групповая политика применяется в фоновом режиме после того, как сеть становится доступной",
       "DE": "Um die Anmeldezeit zu verkürzen, wartet Windows nicht darauf, dass das Netzwerk beim Start oder bei der Anmeldung vollständig initialisiert wird. Die Richtlinieneinstellungen werden asynchron beim Start des Computers und bei der Anmeldung des Benutzers angewendet. Daher wartet das Betriebssystem nicht darauf, dass das Netzwerk beim Starten und bei der Anmeldung vollständig initialisiert wird. Vorhandene Benutzer werden mit zwischengespeicherten Anmeldedaten angemeldet. Dies verkürzt die Anmeldezeiten. Die Gruppenrichtlinien werden im Hintergrund angewendet, nachdem das Netzwerk verfügbar ist.",
-      "UA": "Для скорочення часу входу в систему Windows не чекає повної ініціалізації мережі під час запуску або входу в систему. Параметри політики застосовуються асинхронно під час запуску комп\u0027ютера та входу користувача до системи. В результаті операційна система не чекає повної ініціалізації мережі при запуску та вході в систему. Існуючі користувачі входять до системи, використовуючи кешовані облікові дані. Це скорочує час входу до системи. Групова політика застосовується у фоновому режимі після того, як мережа стає доступною",
-      "IT": "Per ridurre il tempo di accesso Windows non attende che la rete sia completamente inizializzata all\u0027avvio o all\u0027accesso."
+      "UA": "Для скорочення часу входу в систему Windows не чекає повної ініціалізації мережі під час запуску або входу в систему. Параметри політики застосовуються асинхронно під час запуску комп'ютера та входу користувача до системи. В результаті операційна система не чекає повної ініціалізації мережі при запуску та вході в систему. Існуючі користувачі входять до системи, використовуючи кешовані облікові дані. Це скорочує час входу до системи. Групова політика застосовується у фоновому режимі після того, як мережа стає доступною",
+      "IT": "Per ridurre il tempo di accesso Windows non attende che la rete sia completamente inizializzata all'avvio o all'accesso."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2240,8 +2240,8 @@
       "EN": "By default, Windows make the last used printer as the default one.",
       "RU": "По умолчанию Windows запоминает последний используемый принтер как принтер по умолчанию",
       "DE": "In der Standardeinstellung macht Windows den zuletzt verwendeten Drucker zum Standarddrucker.",
-      "UA": "За промовчанням Windows запам\u0027ятовує останній використовуваний принтер як принтер за замовчуванням",
-      "IT": "Per impostazione predefinita, Windows rendono l\u0027ultima stampante utilizzata come quella predefinita."
+      "UA": "За промовчанням Windows запам'ятовує останній використовуваний принтер як принтер за замовчуванням",
+      "IT": "Per impostazione predefinita, Windows rendono l'ultima stampante utilizzata come quella predefinita."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2345,7 +2345,7 @@
       "RU": "Если для работы приложения требуется установка устаревшего .NET Framework 2.0, 3.0 или 3.5, включение данной функции заставит приложение принудительно использовать последнюю установленную версию .NET Framework",
       "DE": "Wenn für eine Anwendung das ältere .NET Framework 2.0, 3.0 oder 3.5 installiert sein muss, erzwingt die Aktivierung dieser Funktion, dass die Anwendung die neueste installierte .NET Framework-Version verwendet.",
       "UA": "Якщо для роботи програми потрібна установка застарілого .NET Framework 2.0, 3.0 або 3.5, увімкнення цієї функції змусить програму примусово використовувати останню версію .NET Framework.",
-      "IT": "Se un\u0027app richiede che l\u0027eredità .NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l\u0027applicazione per utilizzare la versione più recente .NET Framework installata."
+      "IT": "Se un'app richiede che l'eredità .NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l'applicazione per utilizzare la versione più recente .NET Framework installata."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2527,7 +2527,7 @@
           "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
           "RU": "Чтобы данная функция заработала, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows",
           "DE": "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden.",
-          "UA": "Щоб ця функція запрацювала, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов\u0027язкові діагностичні дані\" та увімкнеться створення звітів про помилки Windows",
+          "UA": "Щоб ця функція запрацювала, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов'язкові діагностичні дані\" та увімкнеться створення звітів про помилки Windows",
           "IT": "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
         },
         "Type": "RadioButton"
@@ -2545,7 +2545,7 @@
           "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
           "RU": "Чтобы заработала данная функция, уровень сбора диагностических сведений ОС будет установлен на \"Необязательные диагностические данные\" и включится создание отчетов об ошибках Windows",
           "DE": "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden.",
-          "UA": "Щоб запрацювала дана функція, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов\u0027язкові діагностичні дані\" та ввімкнеться створення звітів про помилки Windows",
+          "UA": "Щоб запрацювала дана функція, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов'язкові діагностичні дані\" та ввімкнеться створення звітів про помилки Windows",
           "IT": "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
         },
         "Type": "RadioButton"
@@ -2569,7 +2569,7 @@
       "RU": "По умолчанию все окна проводника, включая оболочку рабочего стола, запускаются в одном процессе explorer.exe. Если одно окно проводника зависает или аварийно завершается, это приведет к зависанию всей графической оболочки, пока процесс не перезапустится. Таким образом, каждый процесс explorer.exe будет иметь свой собственный идентификатор процесса (PID) для повышения стабильности оболочки проводника",
       "DE": "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern",
       "UA": "За замовчуванням, всі вікна провідника, включаючи оболонку робочого стола, запускаються в одному процесі explorer.exe. Якщо одне вікно провідника зависає або аварійно завершується, це призведе до зависання всієї графічної оболонки, доки процес не перезапуститься. Таким чином, кожен процес explorer.exe матиме власний ідентифікатор процесу (PID) для підвищення стабільності оболонки провідника",
-      "IT": "Per impostazione predefinita, tutte le istanze di esplora file, compreso l\u0027interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l\u0027intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
+      "IT": "Per impostazione predefinita, tutte le istanze di esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2591,7 +2591,7 @@
       "RU": "Чтобы обеспечить возможность обновления вашего устройства, а также его наилучшую работу, Windows резервирует часть дискового пространства на вашем устройстве для кэша, временных и других файлов. Когда на устройстве заканчивается свободное место, Windows очищает зарезервированное хранилище, освобождая место для других процессов, например обновления Windows. Зарезервированное хранилище также помогает использовать дисковое пространство на вашем устройстве более предсказуемо и стабильно. Зарезервированное хранилище будет удалено после следующей установки обновлений",
       "DE": "Um sicherzustellen, dass Ihr Gerät erfolgreich aktualisiert werden kann und optimal funktioniert, reserviert Windows einen Teil des Speicherplatzes auf Ihrem Gerät für temporäre Dateien, Caches und andere Dateien. Wenn der Speicherplatz auf dem Gerät knapp wird, leert Windows den reservierten Speicherplatz, damit er für andere Prozesse, z. B. ein Windows-Update, verwendet werden kann. Das Reservieren von Speicherplatz trägt auch dazu bei, dass die Nutzung des Speicherplatzes auf Ihrem Gerät vorhersehbarer und stabiler wird. Nach der Deaktivierung wird der reservierte Speicherplatz nach der nächsten Update-Installation gelöscht.",
       "UA": "Щоб забезпечити оновлення вашого пристрою, а також його найкращу роботу, Windows резервує частину дискового простору на вашому пристрої для кешу, тимчасових та інших файлів. Коли на пристрої закінчується вільне місце, Windows очищає зарезервоване сховище, звільнюючи місце для інших процесів, наприклад, оновлення Windows. Зарезервоване сховище також допомагає використовувати дисковий простір на вашому пристрої більш передбачуваним та стабільним. Зарезервоване сховище буде видалено після наступних встановлень оновлень",
-      "IT": "Per assicurarsi che il dispositivo possa aggiornarlo con successo e che esegue il meglio, Windows si riserva una porzione di spazio di archiviazione sul dispositivo per l\u0027utilizzo da file temporanei, cache e altri file.Quando il tuo dispositivo è basso sullo spazio, Windows cancellerà l\u0027archiviazione riservata in modo che possa essere utilizzato per altri processi, come un aggiornamento di Windows.L\u0027archiviazione riservata aiuta anche a mantenere l\u0027utilizzo dello spazio su disco sul tuo dispositivo più prevedibile e più stabile.Dopo aver disabilitato lo stoccaggio riservato verrà cancellato dopo l\u0027installazione successiva di un aggiornamento."
+      "IT": "Per assicurarsi che il dispositivo possa aggiornarlo con successo e che esegue il meglio, Windows si riserva una porzione di spazio di archiviazione sul dispositivo per l'utilizzo da file temporanei, cache e altri file.Quando il tuo dispositivo è basso sullo spazio, Windows cancellerà l'archiviazione riservata in modo che possa essere utilizzato per altri processi, come un aggiornamento di Windows.L'archiviazione riservata aiuta anche a mantenere l'utilizzo dello spazio su disco sul tuo dispositivo più prevedibile e più stabile.Dopo aver disabilitato lo stoccaggio riservato verrà cancellato dopo l'installazione successiva di un aggiornamento."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2723,7 +2723,7 @@
       "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново. Кэш эскизов хранится в виде файлов .db, расположенных в скрытой папке \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
       "DE": "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert.",
       "UA": "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
-      "IT": "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l\u0027arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
+      "IT": "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2738,7 +2738,7 @@
       "RU": "Перезапустить приложения после входа",
       "DE": "Apps nach der Anmeldung neu starten",
       "UA": "Перезавантажити додатки після входу",
-      "IT": "Riavvia le app dopo aver effettuato l\u0027accesso"
+      "IT": "Riavvia le app dopo aver effettuato l'accesso"
     },
     "Description": {
       "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
@@ -2782,7 +2782,7 @@
       "RU": "Автоматически изменять период активности для этого устройства на основе действий",
       "DE": "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung",
       "UA": "Автоматично змінювати період активності цього пристрою на основі дій",
-      "IT": "Regolare automaticamente le ore attive per me in base all\u0027utilizzo quotidiano"
+      "IT": "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano"
     },
     "Description": {
       "EN": "",
@@ -2804,7 +2804,7 @@
       "RU": "Перезапустить устройство как можно быстрее, чтобы завершить обновление",
       "DE": "Einen Neustart sobald wie möglich durchführen um die Aktualisierung abzuschließen",
       "UA": "Перезапустити пристрій якнайшвидше, щоб завершити оновлення",
-      "IT": "Riavvia il prima possibile per terminare l\u0027aggiornamento"
+      "IT": "Riavvia il prima possibile per terminare l'aggiornamento"
     },
     "Description": {
       "EN": "",
@@ -2833,7 +2833,7 @@
       "RU": "Установить Windows Terminal как приложение терминала по умолчанию для размещения пользовательского интерфейса для приложений командной строки",
       "DE": "Standard-Terminalanwendung festlegen, die die Benutzeroberfläche für Befehlszeilenanwendungen bereitstellt.",
       "UA": "Встановити Windows Terminal як додаток терміналу за замовчуванням для розміщення інтерфейсу для додатків командного рядка",
-      "IT": "Imposta il terminale di Windows come app terminale predefinita per ospitare l\u0027interfaccia utente per le applicazioni della riga di comando."
+      "IT": "Imposta il terminale di Windows come app terminale predefinita per ospitare l'interfaccia utente per le applicazioni della riga di comando."
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -2886,14 +2886,14 @@
       "RU": "Удалить приложение \"Проверка работоспособности ПК\"",
       "DE": "PC-Integritätsprüfungsanwendung deinstallieren",
       "UA": "Видалити програму \"Перевірка працездатності ПК\"",
-      "IT": "Disinstallare l\u0027app \"PC Health Check\""
+      "IT": "Disinstallare l'app \"PC Health Check\""
     },
     "Description": {
       "EN": "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
       "RU": "Удалить приложение \"Проверка работоспособности ПК Windows\" и заблокировать его установку в будущем. Обновление KB5005463 устанавливает приложение \"Проверка работоспособности ПК\" для проверки соответствия компьютера системным требованиям Windows 11",
       "DE": "Deinstallieren Sie die PC-Integritätsprüfungsanwendung und verhindern Sie, dass sie in Zukunft installiert wird. Das Update KB5005463 installiert die PC-Integritätsprüfungsanwendung, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt.",
-      "UA": "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп\u0027ютера системним вимогам Windows 11",
-      "IT": "L\u0027aggiornamento KB5005463 installa l\u0027app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
+      "UA": "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11",
+      "IT": "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -3162,11 +3162,11 @@
       "IT": "Xbox Game Bar."
     },
     "Description": {
-      "EN": "To prevent popping up the \"You\u0027ll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
+      "EN": "To prevent popping up the \"You'll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.",
       "RU": "Чтобы предотвратить появление всплывающей ошибки \"Вам понадобится новое приложение, чтобы открыть этот ms-gamingoverlay\", вам необходимо отключить Xbox Game Bar, даже если вы удалили его ранее",
       "DE": "Um zu verhindern, dass die Warnung \"Sie benötigen eine neue App, um dieses ms-gamingoverlay\" zu öffnen, müssen Sie die Xbox Game Bar-App deaktivieren, auch wenn Sie sie zuvor deinstalliert haben.",
       "UA": "Щоб запобігти появі спливаючої помилки \"Вам знадобиться нова програма, щоб відкрити цей ms-gamingoverlay\", вам необхідно відключити Xbox Game Bar, навіть якщо ви видалили його раніше",
-      "IT": "Per evitare lo spuntare di \"Hai bisogno di una nuova app per aprire questo ms-gamingoverlay\" ATTENZIONE, è necessario disabilitare l\u0027app Xbox Game Bar, anche se lo ha disinstallato prima."
+      "IT": "Per evitare lo spuntare di \"Hai bisogno di una nuova app per aprire questo ms-gamingoverlay\" ATTENZIONE, è necessario disabilitare l'app Xbox Game Bar, anche se lo ha disinstallato prima."
     },
     "Type": "CheckBox",
     "Tag": "Games",
@@ -3206,10 +3206,10 @@
       "IT": "Pianificazione GPU con accellerazione hardware"
     },
     "Description": {
-      "EN": "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU\u0027s scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better.",
+      "EN": "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better.",
       "RU": "При наличии соответствующего оборудования и драйверов Windows может переложить большую часть планирования GPU на выделенный процессор планирования на основе GPU. Благодаря функции аппаратного ускорения GPU процессор планирования GPU и память (VRAM) берут на себя ту же работу и запускают ее в пакетном режиме для рендеринга кадров. Таким образом, ваш GPU освобождает процессор от некоторой работы и уменьшает задержку, чтобы потенциально улучшить работу вашего ПК",
       "DE": "Mit richtiger Hardware und richtigen Treibern kann Windows den Großteil der GPU-Planung an einen speziellen GPU-basierten Planungsprozessor auslagern. Mit der Funktion \"Hardwarebeschleunigte GPU-Planung\" übernehmen der Planungsprozessor und der Speicher (VRAM) des Grafikprozessors die gleiche Arbeit und führen sie in Stapeln aus, um die Bilder zu rendern. Auf diese Weise entlastet der Grafikprozessor den Prozessor und verringert die Latenzzeit, wodurch Ihr PC möglicherweise besser läuft.",
-      "UA": "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам\u0027ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК.",
+      "UA": "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам'ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК.",
       "IT": "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
     },
     "Type": "CheckBox",
@@ -3232,7 +3232,7 @@
       "RU": "Создать задание \"Windows Cleanup\" по очистке неиспользуемых файлов и обновлений Windows в Планировщике заданий в папке SophiApp. Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить, запустить задание или отменить",
       "DE": "Die geplante Aufgabe \"Windows-Bereinigung\" zum Bereinigen nicht verwendeter Windows-Dateien und -Updates im SophiApp-Ordner in der Aufgabenplanung anlegen. Es wird eine native Toast-Benachrichtigung angezeigt, in der Sie wählen können, ob Sie die Bereinigungsaufgabe in den Schlummermodus versetzen, ausführen oder beenden möchten.",
       "UA": "Створити завдання \"Windows Cleanup\" з очищення файлів та оновлень Windows, що не використовуються, у Планувальнику завдань у папці SophiApp. Перед початком очищення спливе нативний тост, де ви зможете обрати відкласти, запустити завдання або скасувати",
-      "IT": "Creare l\u0027attività pianificata \"Windows Cleanup\" per la pulizia di file e aggiornamenti non utilizzati di Windows sotto la cartella SophiaPP nello scheduler di attività. Una notifica verrà visualizzata dove è possibile scegliere di  eseguire il compito di pulizia o noa."
+      "IT": "Creare l'attività pianificata \"Windows Cleanup\" per la pulizia di file e aggiornamenti non utilizzati di Windows sotto la cartella SophiaPP nello scheduler di attività. Una notifica verrà visualizzata dove è possibile scegliere di  eseguire il compito di pulizia o noa."
     },
     "Type": "IconWinCheckBox",
     "Tag": "TaskScheduler",
@@ -3254,7 +3254,7 @@
       "RU": "Создать задание \"SoftwareDistribution\" по очистке \n%SystemRoot%\\SoftwareDistribution\\Download, куда скачиваются установочные файлы всех обновлений Windows, в папке SophiApp в Планировщике заданий. Задача будет ждать, пока служба обновлений Windows не закончит работу. Задача выполняется каждые 90 дней",
       "DE": "In der Aufgabenplanung unter dem Ordner \"SophiApp\" die geplante Aufgabe \"SoftwareDistribution\" zum Bereinigen von \n%SystemRoot%\\SoftwareDistribution\\Download erstellen, wohin alle Windows Updates heruntergeladen werden. Der Aufgabe wartet, bis der Windows Updates-Dienst beendet ist. Die Aufgabe wird alle 90 Tage ausgeführt.",
       "UA": "Створити завдання \"SoftwareDistribution\" з очищення \n%SystemRoot%\\SoftwareDistribution\\Download, куди завантажуються інсталяційні файли всіх оновлень Windows, у папці SophiApp у Планувальнику завдань. Завдання чекатиме, поки служба оновлень Windows не закінчить роботу. Завдання виконується кожні 90 днів",
-      "IT": "Creare l'operazione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L\u0027attività attende che il servizio di aggiornamento di Windows finisse il servizio.L\u0027attività viene eseguita ogni 90 giorni."
+      "IT": "Creare l'operazione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L'attività attende che il servizio di aggiornamento di Windows finisse il servizio.L'attività viene eseguita ogni 90 giorni."
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskScheduler",
@@ -3276,7 +3276,7 @@
       "RU": "Создать задание \"Temp\" по очистке папки временных файлов в папке SophiApp в Планировщике заданий. Удаляться будут только файлы старше одного дня. Задача выполняется каждые 60 дней",
       "DE": "Die geplante Aufgabe \"Temp\" zur Bereinigung des temporären Ordners unter dem SophiApp-Ordner in Aufgabenplanung erstellen. Nur Dateien, die älter als ein Tag sind, werden gelöscht. Die Aufgabe wird alle 60 Tage ausgeführt.",
       "UA": "Створити завдання \"Temp\" з очищення папки тимчасових файлів у папці SophiApp у Планувальнику завдань. Видалятимуться лише файли старші одного дня. Завдання виконується кожні 60 днів",
-      "IT": "Creare l\u0027attività pianificata \"Temp\" per la pulizia della cartella TEMP nella cartella SophiaPP nello scheduler di attività.Solo i file più vecchi di un giorno saranno cancellati.L\u0027attività viene eseguita ogni 60 giorni."
+      "IT": "Creare l'attività pianificata \"Temp\" per la pulizia della cartella TEMP nella cartella SophiaPP nello scheduler di attività.Solo i file più vecchi di un giorno saranno cancellati.L'attività viene eseguita ogni 60 giorni."
     },
     "Type": "IconFolderCheckBox",
     "Tag": "TaskScheduler",
@@ -3342,7 +3342,7 @@
       "RU": "Запуск Microsoft Defender в песочнице гарантирует, что при маловероятной компрометации вредоносные действия будут ограничены изолированной средой, защищая остальную часть системы от вреда. В Windows 11 песочница для Microsoft Defender включена по умолчанию",
       "DE": "Durch die Ausführung von Microsoft Defender in einer Sandbox wird sichergestellt, dass im unwahrscheinlichen Fall einer Kompromittierung böswillige Aktionen auf die isolierte Umgebung beschränkt bleiben und der Rest des Systems vor Schaden geschützt wird. Die Sandbox für Microsoft Defender ist in Windows 11 standardmäßig aktiviert.",
       "UA": "Запуск Microsoft Defender у пісочниці гарантує, що при малоймовірній компрометації шкідливі дії будуть обмежені ізольованим середовищем, захищаючи решту системи від шкоди. У Windows 11 пісочницю для Microsoft Defender включено за замовчуванням",
-      "IT": "L\u0027esecuzione del di Microsoft Defender in una sandbox assicura che nell\u0027improbabile evento di compromissioni, le azioni dannose siano limitate all\u0027ambiente isolato, proteggendo il resto del sistema dal danno. La sandbox per Microsoft Defender è abilitata per impostazione predefinita in Windows 11.e predefinita in Windows 11."
+      "IT": "L'esecuzione del di Microsoft Defender in una sandbox assicura che nell'improbabile evento di compromissioni, le azioni dannose siano limitate all'ambiente isolato, proteggendo il resto del sistema dal danno. La sandbox per Microsoft Defender è abilitata per impostazione predefinita in Windows 11.e predefinita in Windows 11."
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -3357,14 +3357,14 @@
       "RU": "Включить аудит событий, возникающих при создании или запуске процесса",
       "DE": "Überprüfen von Ereignissen, die beim Erstellen oder Starten eines Prozesses erzeugt werden aktivieren",
       "UA": "Увімкнути аудит подій, що виникають під час створення або запуску процесу",
-      "IT": "Abilita l\u0027auditing degli eventi quando viene creato un processo"
+      "IT": "Abilita l'auditing degli eventi quando viene creato un processo"
     },
     "Description": {
       "EN": "Enable logging of each app execution, who the app ran as and the process that started this process (event 4688). You can correlate this event to other events by Process ID to determine what the program did while it ran and when it exited (event 4689).",
       "RU": "Включить журналирование запуска каждой программы, от имени кого она была запущена, и процесс, который запустил этот процесс (событие 4688). Вы можете соотнести это событие с другими событиями по идентификатору процесса, чтобы определить, что делала программа во время выполнения и когда она завершилась (событие 4689)",
       "DE": "Protokollierung jeder App-Ausführung aktivieren, unter welchem Namen die App ausgeführt wurde und welcher Prozess diesen Prozess gestartet hat (Ereignis 4688). Sie können dieses Ereignis mit anderen Ereignissen nach Prozess-ID korrelieren, um festzustellen, was das Programm während der Ausführung getan hat und wann es beendet wurde (Ereignis 4689).",
       "UA": "Увімкнути журналювання запуску кожної програми, від імені якої вона була запущена, і процес, який запустив цей процес (подія 4688). Ви можете співвіднести цю подію з іншими подіями щодо ідентифікатора процесу, щоб визначити, що робила програма під час виконання та коли вона завершилася (подія 4689)",
-      "IT": "Abilita l\u0027auditing di ciascuna esecuzione dell\u0027app. È così possibile correlare questo evento ad altri eventi tramite ID di processo per determinare ciò che il programma ha fatto mentre era in esecuzione o e quando è stato arrestato (evento 4689)."
+      "IT": "Abilita l'auditing di ciascuna esecuzione dell'app. È così possibile correlare questo evento ad altri eventi tramite ID di processo per determinare ciò che il programma ha fatto mentre era in esecuzione o e quando è stato arrestato (evento 4689)."
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -3386,7 +3386,7 @@
       "RU": "Cтановится возможным прочитать аргументы командной строки для любого успешно созданного процесса (событие 4688). Для того, чтобы работал данный функционал, будет включен аудит событий",
       "DE": "Es wird möglich sein, die Befehlszeilenargumente für jeden erfolgreich erstellten Prozess zu lesen (Ereignis 4688). Damit diese Funktion funktioniert, wird die Ereignisüberwachung aktiviert.",
       "UA": "Становиться можливим прочитати аргументи командного рядка будь-якого успішно створеного процесу (подія 4688). Для того, щоб працював цей функціонал, буде увімкнено аудит подій",
-      "IT": "Sarà possibile leggere gli argomenti della riga di comando per qualsiasi processo creato con successo (evento 4688).Affinché questa funzionalità funzioni, l\u0027auditing degli eventi sarà abilitato."
+      "IT": "Sarà possibile leggere gli argomenti della riga di comando per qualsiasi processo creato con successo (evento 4688).Affinché questa funzionalità funzioni, l'auditing degli eventi sarà abilitato."
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -3408,7 +3408,7 @@
       "RU": "Настраиваемое представление \"Создание процесса\" создано для фильтрации запускаемых процессов и их аргументов для проведения более удобного аудита безопасности системы. Для того, чтобы работал данный функционал, буден включен аудит событий и командной строки в событиях создания процесса",
       "DE": "Eine benutzerdefinierte Ansicht \"Prozesserstellung\" ist dazu gedacht, laufende Prozesse und ihre Argumente zu filtern, um die Systemsicherheit besser zu überprüfen. Damit diese Funktion funktioniert, wird die Ereignis- und Befehlszeilenüberprüfung in den Ereignissen der Prozesserstellung aktiviert.",
       "UA": "Налаштовуємий перегляд \"Створення процесу\" призначений для фільтрації запущених процесів та їх аргументів для кращого аудиту безпеки системи. Для того, щоб працював даний функціонал, буде увімкнено аудит подій та командного рядка у подіях створення процесу",
-      "IT": " \"Process Creation\", La vista personalizzata è progettata per filtrare i processi in esecuzione e i loro argomenti per un migliore controllo della sicurezza del sistema. Affinché questa funzionalità funzioni, l\u0027evento e l\u0027auditing della riga di comando negli eventi di creazione del processo saranno abilitati."
+      "IT": " \"Process Creation\", La vista personalizzata è progettata per filtrare i processi in esecuzione e i loro argomenti per un migliore controllo della sicurezza del sistema. Affinché questa funzionalità funzioni, l'evento e l'auditing della riga di comando negli eventi di creazione del processo saranno abilitati."
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -3452,7 +3452,7 @@
       "RU": "Windows PowerShell регистрирует обработку команд, блоков сценариев, функций и сценариев, вызываемых в интерактивном режиме или с помощью служб автоматизации в журнал событий \"Журналы приложений и служб\\Microsoft\\Windows\\PowerShell\\Operational\". Только для встроенного Windows PowerShell 5.1",
       "DE": "Windows PowerShell protokolliert die Verarbeitung von Befehlen, Skriptblöcken, Funktionen und Skripts, unabhängig davon, ob sie interaktiv oder durch Automatisierung aufgerufen werden - \"Anwendungs- und Dienstprotokolle\\Microsoft\\Windows\\PowerShell\\Operational\". Nur für die integrierte Windows PowerShell 5.1.",
       "UA": "Windows PowerShell реєструє обробку команд, блоків сценаріїв, функцій і сценаріїв, що викликаються в інтерактивному режимі або за допомогою служб автоматизації в журнал подій \"Журнали додатків та служб\\Microsoft\\Windows\\PowerShell\\Operational\". Тільки для вбудованого Windows PowerShell 5.1",
-      "IT": "Windows PowerShell registrerà l\u0027elaborazione di comandi, blocchi di script, funzioni e script - invocato interattivamente, o tramite automazione alle \"Applicazioni e servizi registrati \\ Microsoft \\ Windows \\ PowerShell \\ Operational \" nel registro eventi.Solo per Windows PowerShell 5.1 integrato."
+      "IT": "Windows PowerShell registrerà l'elaborazione di comandi, blocchi di script, funzioni e script - invocato interattivamente, o tramite automazione alle \"Applicazioni e servizi registrati \\ Microsoft \\ Windows \\ PowerShell \\ Operational \" nel registro eventi.Solo per Windows PowerShell 5.1 integrato."
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -3467,7 +3467,7 @@
       "RU": "Проверять приложения и файлы фильтром SmartScreen в Microsoft Defender",
       "DE": "Dateien und Apps mit Microsoft Defender SmartScreen überprüfen",
       "UA": "Перевіряти програми та файли фільтром SmartScreen у Microsoft Defender",
-      "IT": "Controlla app e file all\u0027interno Microsoft Defender SmartScreen"
+      "IT": "Controlla app e file all'interno Microsoft Defender SmartScreen"
     },
     "Description": {
       "EN": "",
@@ -3518,7 +3518,7 @@
       "RU": "Отключение этой функции блокирует выполнение .js- и .vbs-сценариев, предотвращая запуск вредоносных сценариев JavaScript",
       "DE": "Wenn diese Funktion deaktiviert wird, werden alle .js- and .vbs-Skripts blockiert, um böswilligen JavaScript-Code am Ausführen zu hindern.",
       "UA": "Відключення цієї функції блокує виконання .js- та .vbs-сценаріїв, запобігаючи запуску шкідливих сценаріїв JavaScript",
-      "IT": "La disattivazione di questa funzione blocca l\u0027esecuzione di script .js e .vbs, impedendo agli script di javascript dannosi da eseguire."
+      "IT": "La disattivazione di questa funzione blocca l'esecuzione di script .js e .vbs, impedendo agli script di javascript dannosi da eseguire."
     },
     "Type": "CheckBox",
     "Tag": "Security",
@@ -3536,7 +3536,7 @@
       "IT": "Windows Sandbox"
     },
     "Description": {
-      "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it\u0027s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn\u0027t work in Home Edition.",
+      "EN": "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.",
       "RU": "Windows Sandbox предоставляет собой легкую среду рабочего стола для безопасного запуска приложений в изолированной среде. Программное обеспечение, установленное в среде Windows Sandbox, остается в песочнице и запускается отдельно от основной машины. Песочница является временной. Когда она закрывается, все программное обеспечение, файлы и состояние удаляются. При каждом открытии нового экземпляра песочницы вы получаете совершенно новый экземпляр песочницы. Не работает в редакции Home",
       "DE": "Windows Sandbox bietet eine schlanke Desktop-Umgebung, um Anwendungen isoliert sicher auszuführen. Software, die in der Sandbox-Umgebung installiert wird, bleibt in der Sandbox und wird getrennt vom Host-Computer ausgeführt. Eine Sandbox ist temporär. Wenn sie geschlossen wird, werden die gesamte Software, die Dateien und der Status gelöscht. Jedes Mal, wenn Sie die Anwendung öffnen, erhalten Sie eine neue Instanz der Sandbox, die in der Home Edition nicht funtioniert.",
       "UA": "Windows Sandbox є легким середовищем робочого столу для безпечного запуску додатків в ізольованому середовищі. Програмне забезпечення, встановлене серед Windows Sandbox, залишається в пісочниці і запускається окремо від основної машини. Пісочниця є тимчасовою. Коли вона закривається, все програмне забезпечення, файли та стан видаляються. При кожному відкритті нового екземпляра пісочниці ви отримуєте новий екземпляр пісочниці. Не працює у редакції Home",
@@ -3584,7 +3584,7 @@
       "RU": "Этот пункт контекстного меню, используя DISM, позволяет упростить установку обновлений .cab одним щелчком в его контекстном меню. Если по умолчанию расширение .cab ассоциировано со сторонним приложением (7-Zip, WinRAR и т. д.), добавленный пункт контекстного меню \"Установить\" не будет отображаться, пока вы не восстановите ассоциацию по умолчанию для типа файла .cab",
       "DE": "Dieser Kontextmenüeintrag, der DISM verwendet, ermöglicht die Vereinfachung der Installation von .cab-Updates mit einem einzigen Klick im Kontextmenü. Wenn Sie die Dateierweiterung .cab standardmäßig mit einer Anwendung eines Drittanbieters (7-Zip, WinRAR usw.) verknüpft haben, wird der Kontextmenüeintrag \"Installieren\" erst angezeigt, wenn Sie die Standardzuordnung für den Dateityp .cab wiederherstellen.",
       "UA": "Цей пункт контекстного меню, використовуючи DISM, дозволяє спростити встановлення .cab одним кліком у його контекстному меню. Якщо за замовчуванням розширення .cab асоційовано зі стороннім додатком (7-Zip, WinRAR тощо), доданий пункт контекстного меню \"Встановити\" не відображатиметься, доки ви не відновите асоціацію за замовчуванням для типу файлу .cab",
-      "IT": "Questa voce di menu contestuale, utilizzando DIS, consente di semplificare l\u0027installazione di aggiornamenti .CAB con un solo clic nel suo menu di scelta rapida.Se si dispone del tipo di interno del file .Cab associato ad aprire con un\u0027app di terze parti (7-zip, winrar, ecc ...) Per impostazione predefinita, la voce del menu di scelta rapida \"Installa\" non verrà visualizzata fino a quando non si ripristina l\u0027associazione predefinit aper il tipo di file .cab."
+      "IT": "Questa voce di menu contestuale, utilizzando DIS, consente di semplificare l'installazione di aggiornamenti .CAB con un solo clic nel suo menu di scelta rapida.Se si dispone del tipo di interno del file .Cab associato ad aprire con un'app di terze parti (7-zip, winrar, ecc ...) Per impostazione predefinita, la voce del menu di scelta rapida \"Installa\" non verrà visualizzata fino a quando non si ripristina l'associazione predefinit aper il tipo di file .cab."
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -4009,7 +4009,7 @@
       "RU": "Пункт \"Документ в формате RTF\" в контекстном меню \"Создать\"",
       "DE": "Diesen Kontextmenüeintrag \"Rich Text Document\" \"Neu\" anzeigen",
       "UA": "Пункт \"Документ у форматі RTF\" у контекстному меню \"Створити\"",
-      "IT": "L\u0027elemento \"Nuovo documento rich text\" nel menu di scelta rapida \"nuovo\""
+      "IT": "L'elemento \"Nuovo documento rich text\" nel menu di scelta rapida \"nuovo\""
     },
     "Description": {
       "EN": "",
