@@ -129,7 +129,7 @@
           "RU": "Автоматически",
           "DE": "Automatisch",
           "UA": "Автоматично",
-          "IT": "Automatico"
+          "IT": "Automatica"
         },
         "ChildDescription": {
           "EN": "",
@@ -576,7 +576,7 @@
       "RU": "Отображать значок \"Этот компьютер\" на рабочем столе",
       "DE": "Das Symbol \"Dieser PC\" auf Desktop anzeigen",
       "UA": "Відображати значок \"Цей комп\u0027ютер\" на робочому столі",
-      "IT": "Mostra l\u0027icona \"Questo PC\" sul desktop"
+      "IT": "Icona \"Questo PC\" sul desktop"
     },
     "Description": {
       "EN": "",
@@ -613,7 +613,7 @@
           "RU": "Скрыть",
           "DE": "Ausblenden",
           "UA": "Приховати",
-          "IT": "Nascondere"
+          "IT": "Nascondi"
         },
         "ChildDescription": {
           "EN": "",
@@ -636,7 +636,7 @@
       "RU": "Включить проводник из Windows 10",
       "DE": "Windows 10 Datei-Explorer aktivieren",
       "UA": "Увімкнути провідник із Windows 10",
-      "IT": "Abilita il Esplora file di Windows 10"
+      "IT": "Abilita l'esplora file di Windows 10"
     },
     "Description": {
       "EN": "",
@@ -680,7 +680,7 @@
       "RU": "Отображать скрытые файлы, папки и диски",
       "DE": "Alle versteckte Dateien, Verzeichnisse und Laufwerke anzeigen",
       "UA": "Відображати приховані файли, папки та диски",
-      "IT": "Mostra file nascosti, cartelle e dischi"
+      "IT": "Mostra file, cartelle e dischi nascosti"
     },
     "Description": {
       "EN": "",
@@ -828,7 +828,7 @@
       "RU": "Включить компактный вид проводника",
       "DE": "Kompaktmodus des Datei-Explorers aktivieren",
       "UA": "Увімкнути компактний вигляд провідника",
-      "IT": "Abilita la modalità Compatta di Esplora file"
+      "IT": "Abilita la modalità compatta di esplora file"
     },
     "Description": {
       "EN": "",
@@ -976,7 +976,7 @@
       "RU": "Свернуть ленту проводника",
       "DE": "Multifunktionsleiste des Datei-Explorers minimieren",
       "UA": "Приховати стрічку провідника",
-      "IT": "Minimizza il ribbon in Esplora file"
+      "IT": "Minimizza il ribbon in esplora file"
     },
     "Description": {
       "EN": "",
@@ -1042,7 +1042,7 @@
       "RU": "Показать часто используемые папки на панели быстрого доступа",
       "DE": "Häufig verwendete Ordner in der Schnellzugriffsleiste anzeigen",
       "UA": "Відобразити папки, що часто використовуються на панелі швидкого доступу",
-      "IT": "Show frequently used folders in accesso rapido"
+      "IT": "Mostra le cartelle usate frequentemente in accesso rapido"
     },
     "Description": {
       "EN": "",
@@ -1123,7 +1123,7 @@
           "RU": "По центру",
           "DE": "Zentriert",
           "UA": "По центру",
-          "IT": "Centro"
+          "IT": "Centrata"
         },
         "ChildDescription": {
           "EN": "",
@@ -1444,7 +1444,7 @@
       "RU": "Отобразить кнопку чата (Microsoft Teams) на панели задач",
       "DE": "Chat-Symbol (Microsoft Teams) in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку чату (Microsoft Teams) на панелі завдань",
-      "IT": "Mostra l\u0027icona della chat (Microsoft Teams) sulla barra delle applicazioni"
+      "IT": "Mostra l\u0027icona delle chat (Microsoft Teams) sulla barra delle applicazioni"
     },
     "Description": {
       "EN": "",
@@ -1563,7 +1563,7 @@
           "RU": "Светлый",
           "DE": "Hell",
           "UA": "Світлий",
-          "IT": "Leggera"
+          "IT": "Chiaro"
         },
         "ChildDescription": {
           "EN": "",
@@ -1790,7 +1790,7 @@
       "RU": "Дoбaвлять \"- яpлык\" к имени coздaвaeмых яpлыков",
       "DE": "Suffix \"-Verknüpfung\" an den Dateinamen der erstellten Verknüpfungen anfügen.",
       "UA": "Додавати \"- ярлик\" до імені створюваних ярликів",
-      "IT": "Aggiungi il suffisso \"- Collegamento\" al nome del file delle scorciatoie create"
+      "IT": "Aggiungi il suffisso \"- Collegamento\" al nome delle scorciatoie create"
     },
     "Description": {
       "EN": "",
@@ -1937,7 +1937,7 @@
           "RU": "Когда остается мало места на диске",
           "DE": "Bei wenig freiem Speicherplatz",
           "UA": "Коли залишається мало місця на диску",
-          "IT": "Se lo spazio libero su disco libero"
+          "IT": "Se lo spazio libero su disco è scarso"
         },
         "ChildDescription": {
           "EN": "",
@@ -2064,7 +2064,7 @@
       "RU": "Включить ограничение Windows на 260 символов в пути",
       "DE": "Windows-Pfadbegrenzung auf 260 Zeichen aktivieren",
       "UA": "Увімкнути обмеження Windows до 260 символів у шляху",
-      "IT": "Abilita il limite di carattere del percorso a 260"
+      "IT": "Abilita il limite di caratteri dei percorsi a 260"
     },
     "Description": {
       "EN": "By default, the maximum path length limit in Windows is 260 characters. A local path is structured in the following order: drive letter, colon, backslash, name components separated by backslashes, and a terminating null character.",
@@ -2086,7 +2086,7 @@
       "RU": "Отображать код Stop-ошибки при появлении BSoD",
       "DE": "Stop-Fehlercodes beim Auftreten von BSoD anzeigen",
       "UA": "Відображати код Stop-помилки при появі BSoD",
-      "IT": "Display Codice di errore quando si verifica un BSOD"
+      "IT": "Mostra il codice di errore quando si verifica un BSOD"
     },
     "Description": {
       "EN": "By default, Windows does not display a Stop error code when a BSoD occurs, which helps to identify the causes of a BSoD.",
@@ -2297,7 +2297,7 @@
           "RU": "Высокая производительность",
           "DE": "Hohe Leistung",
           "UA": "Висока продуктивність",
-          "IT": "Elevate prestazioni"
+          "IT": "Prestazioni elevate"
         },
         "ChildDescription": {
           "EN": "It is not recommended to turn on the \"High performance\" power scheme on laptops.",
@@ -2338,7 +2338,7 @@
       "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
       "DE": "Neueste installierte .NET Framework-Laufzeitumgebung für alle Anwendungen verwenden",
       "UA": "Використовувати останнє встановлене середовище виконання .NET Framework для всіх програм",
-      "IT": "Utilizzare l\u0027ultimo runtime .NET Framework installato per tutte le app"
+      "IT": "Utilizzare l'ultima versione del runtime .NET Framework installato per tutte le app"
     },
     "Description": {
       "EN": "If an app requires the legacy .NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed .NET Framework version.",
@@ -2461,7 +2461,7 @@
           "RU": "Рабочий стол",
           "DE": "Desktop",
           "UA": "Робочий стіл",
-          "IT": "desktop"
+          "IT": "Desktop"
         },
         "ChildDescription": {
           "EN": "",
@@ -2509,7 +2509,7 @@
       "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок. Хотите ли вы помогать Microsoft устранять неполадок при возникновении на вашем устройстве проблем?",
       "DE": "Microsoft kann Fehlerbehebungsprogramme empfehlen und ausführen, um Probleme zu beheben. Inwieweit möchten Sie, dass Microsoft Ihnen hilft, wenn es auf Ihrem Gerät Probleme gibt, die mit Hilfe von Troubleshootern behoben werden können?",
       "UA": "Корпорація Майкрософт може рекомендувати та запускати засоби усунення недоліків для виправлення помилок. Чи хотіли б ви допомагати Майкрософт усувати недоліки, якщо виникнуть проблеми?",
-      "IT": "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che i problemi di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
+      "IT": "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
     },
     "Type": "RadioGroup",
     "Tag": "System",
@@ -2521,7 +2521,7 @@
           "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять",
           "DE": "Fehlerbehebungen automatisch durchführen und dann benachrichtigen",
           "UA": "Автоматично запускати засоби усунення недоліків, а потім сповіщувати",
-          "IT": "Eseguire automaticamente i problemi di risoluzione dei problemi, quindi notifica"
+          "IT": "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica"
         },
         "ChildDescription": {
           "EN": "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
@@ -2569,7 +2569,7 @@
       "RU": "По умолчанию все окна проводника, включая оболочку рабочего стола, запускаются в одном процессе explorer.exe. Если одно окно проводника зависает или аварийно завершается, это приведет к зависанию всей графической оболочки, пока процесс не перезапустится. Таким образом, каждый процесс explorer.exe будет иметь свой собственный идентификатор процесса (PID) для повышения стабильности оболочки проводника",
       "DE": "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern",
       "UA": "За замовчуванням, всі вікна провідника, включаючи оболонку робочого стола, запускаються в одному процесі explorer.exe. Якщо одне вікно провідника зависає або аварійно завершується, це призведе до зависання всієї графічної оболонки, доки процес не перезапуститься. Таким чином, кожен процес explorer.exe матиме власний ідентифікатор процесу (PID) для підвищення стабільності оболонки провідника",
-      "IT": "Per impostazione predefinita, tutte le istanze di Esplora file, compreso l\u0027interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l\u0027intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
+      "IT": "Per impostazione predefinita, tutte le istanze di esplora file, compreso l\u0027interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l\u0027intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2628,7 +2628,7 @@
       "RU": "Включить Num Lock при загрузке",
       "DE": "Num Lock beim Systemstart aktivieren",
       "UA": "Увімкнути Num Lock під час завантаження",
-      "IT": "Abilita il blocco numeroso all\u0027avvio"
+      "IT": "Abilita il blocco numerico all'avvio"
     },
     "Description": {
       "EN": "",
@@ -2672,7 +2672,7 @@
       "RU": "Сочетание клавиш для залипания клавиш",
       "DE": "Tastaturkürzel für Feststelltasten",
       "UA": "Поєднання клавіш для залипання клавіш",
-      "IT": "Scorciatoia da tastiera per tasti permanenti"
+      "IT": "Scorciatoia da tastiera per i tasti permanenti"
     },
     "Description": {
       "EN": "Press the Shift key 5 times to turn Sticky keys on or off",
@@ -2760,7 +2760,7 @@
       "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
       "DE": "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren.",
       "UA": "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп",
-      "IT": "Abilita \"Discovery di rete\" e \"File e Stampanti Sharing\" per le reti del gruppo di lavoro"
+      "IT": "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
     },
     "Description": {
       "EN": "",
@@ -2826,7 +2826,7 @@
       "RU": "Приложение терминала по умолчанию",
       "DE": "Standard-Terminal-App",
       "UA": "Додаток терміналу за замовчуванням",
-      "IT": "App predefinita dell terminale"
+      "IT": "App predefinita del terminale"
     },
     "Description": {
       "EN": "Set Windows Terminal as default terminal app to host the user interface for command-line applications.",
@@ -3247,7 +3247,7 @@
       "RU": "Очистка папки загрузки обновлений Windows",
       "DE": "Windows-Updates-Download-Ordner bereinigen",
       "UA": "Очищення папки завантаження оновлень Windows",
-      "IT": "Pulisci la cartella di download degli aggiornamenti di Windowsornamenti di Windowsr"
+      "IT": "Pulisci la cartella di download degli aggiornamenti di Windows"
     },
     "Description": {
       "EN": "Create the \"SoftwareDistribution\" scheduled task for cleaning up \n%SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days.",
@@ -3401,7 +3401,7 @@
       "RU": "Создать настраиваемое представление \"Создание процесса\" в Просмотре событий",
       "DE": "Benutzerdefinierte Ansicht \"Prozesserstellung\" in der Ereignisanzeige erstellen",
       "UA": "Створити налаштовуємий перегляд \"Створення процесу\" у Перегляді подій",
-      "IT": "Creare la visualizzazione personalizzata \"Process Creation\" nel visualizzatore di eventi"
+      "IT": "Creare la visualizzazione personalizzata \"Creazione processi\" nel visualizzatore di eventi"
     },
     "Description": {
       "EN": "The \"Process Creation\" Custom View is designed to filter running processes and their arguments for better system security auditing. In order for this functionality to work, event and command line auditing in process creation events will be enabled.",
@@ -3423,7 +3423,7 @@
       "RU": "Включить ведение журнала для всех модулей Windows PowerShell",
       "DE": "Protokollierung für alle Windows PowerShell-Module aktivieren",
       "UA": "Увімкнути журнал для всіх модулів Windows PowerShell",
-      "IT": "Abilita l\u0027auditing di tutti i moduli Windows PowerShell"
+      "IT": "Abilita l'auditing di tutti i moduli di Windows PowerShell"
     },
     "Description": {
       "EN": "Pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in the Event Viewer. For the built-in Windows PowerShell 5.1 only",
@@ -3511,7 +3511,7 @@
       "RU": "Включить Windows Script Host",
       "DE": "Windows Script Host aktivieren",
       "UA": "Увімкнути Windows Script Host",
-      "IT": "Abilita script host di Windows"
+      "IT": "Abilita Windows Script Host"
     },
     "Description": {
       "EN": "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JavaScript scripts from running.",
@@ -3555,14 +3555,14 @@
       "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)",
       "DE": "Eintrag \"Alle extrahieren\" im Windows Installer-Kontextmenü (.msi)",
       "UA": "Пункт \"Вилучити все\" у контекстному меню Windows Installer (.msi)",
-      "IT": "La voce \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (.msi)"
+      "IT": "Mostra l'opzione \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (.msi)"
     },
     "Description": {
       "EN": "The \"Extract all\" context menu item will extract all contents of the .msi file into the \"Extracted\" folder at the same location as .msi file is.",
       "RU": "Пункт контекстного меню \"Извлечь все\" извлечет содержимое .msi файла в папку \"Extracted\" в том же месте, где находится .msi файл",
       "DE": "Der Kontextmenüeintrag \"Alles extrahieren\" extrahiert den gesamten Inhalt der .msi-Datei in den Ordner \"Extrahiert\" am gleichen Ort wie die .msi-Datei.",
       "UA": "Пункт контекстного меню \"Вилучити все\" витягне вміст .msi файлу в папку \"Extracted\" в тому ж місці, де знаходиться .msi файл",
-      "IT": "La voce \"Extract all\" nel menù contestuale estrarrà tutti i contenuti del file .msi nella cartella \"estratti\" nella stessa posizione del file .msi."
+      "IT": "Mostra l'opzione \"Extract all\" nel menù contestuale estrarrà tutti i contenuti del file .msi nella cartella \"estratti\" nella stessa posizione del file .msi."
     },
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -3577,7 +3577,7 @@
       "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab)",
       "DE": "Der Eintrag \"Installieren\" im Kontextmenü der Cabinet-Archive (.cab)",
       "UA": "Пункт \"Встановити\" у контекстному меню Cabinet-архівів (.cab)",
-      "IT": "L\u0027elemento \"Installa\" nel menu contestuale negli archivi"
+      "IT": "Mostra l'opzione \"Installa\" nel menu contestuale negli archivi"
     },
     "Description": {
       "EN": "This context menu item, using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7-Zip, WinRAR, etc...) by default, the \"Install\" context menu item will not show until you restore the default association for the .cab file type.",
@@ -3599,7 +3599,7 @@
       "RU": "Пункт \"Запуск от имени другого пользователя\" в контекстном меню исполняемых файлов (.exe)",
       "DE": "Diesen Kontextmenüeintrag \"Unter anderem Benutzernamen ausführen\" für ausführbare Dateien (.exe) anzeigen",
       "UA": "Пункт \"Запуск від імені іншого користувача\" у контекстному меню файлів, що виконуються (.exe)",
-      "IT": "L\u0027elemento \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
+      "IT": "Mostra l'opzione \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
     },
     "Description": {
       "EN": "",
@@ -3621,7 +3621,7 @@
       "RU": "Пункт \"Передать на устройство\" в контекстном меню медиа-файлов и папок",
       "DE": "Diesen Kontextmenüeintrag \"Auf Gerät übertragen\" für Mediendateien anzeigen",
       "UA": "Пункт \"Передати на пристрій\" у контекстному меню медіа-файлів та папок",
-      "IT": "L\u0027elemento \"Trasmetti a\" nel menu di controllo dei file multimediali e delle cartelle"
+      "IT": "Mostra l'opzione \"Trasmetti a\" nel menu di controllo dei file multimediali e delle cartelle"
     },
     "Description": {
       "EN": "",
@@ -3643,7 +3643,7 @@
       "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню",
       "DE": "Diesen Kontextmenüeintrag \"Teilen\" anzeigen",
       "UA": "Пункт \"Надіслати\" (поділитися) у контекстному меню",
-      "IT": "L\u0027elemento \"Condividi\" nel menu di scelta rapida"
+      "IT": "Mostra l'opzione\"Condividi\" nel menu di scelta rapida"
     },
     "Description": {
       "EN": "",
@@ -3665,7 +3665,7 @@
       "RU": "Пункт \"Изменить с помощью Paint 3D\" в контекстном меню медиа-файлов",
       "DE": "Diesen Kontextmenüeintrag \"Mit Paint 3D bearbeiten\" für Mediendateien anzeigen",
       "UA": "Пункт \"Змінити за допомогою Paint 3D\" у контекстному меню медіа-файлів",
-      "IT": "L\u0027elemento \"Modifica con Paint 3D\" nel menu di scelta rapida dei file multimediali"
+      "IT": "Mostra l'opzione \"Modifica con Paint 3D\" nel menu di scelta rapida dei file multimediali"
     },
     "Description": {
       "EN": "",
@@ -3833,7 +3833,7 @@
       "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов",
       "DE": "Diesen Kontextmenüeintrag \"Mit Fotos bearbeiten\" anzeigen",
       "UA": "Показувати пункт \"Змінити за допомогою програми \"Фотографії\"\" у контекстному меню медіа-файлів",
-      "IT": "Mostra la voce \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
+      "IT": "Mostra Mostra l'opzione \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
     },
     "Description": {
       "EN": "",
@@ -3855,7 +3855,7 @@
       "RU": "Пункт \"Создать новое видео\" в контекстном меню медиа-файлов",
       "DE": "Diesen Kontextmenüeintrag \"Video erstellen\" anzeigen",
       "UA": "Пункт \"Створити нове відео\" у контекстному меню медіа-файлів",
-      "IT": "Voce \"Crea un nuovo video\" nel menu di scelta rapida dei file multimediali"
+      "IT": "Mostra l'opzione  \"Crea un nuovo video\" nel menu di scelta rapida dei file multimediali"
     },
     "Description": {
       "EN": "",
@@ -3877,7 +3877,7 @@
       "RU": "Пункт \"Изменить\" в контекстном меню изображений",
       "DE": "Diesen Kontextmenüeintrag \"Bearbeiten\" für Bilddateien anzeigen",
       "UA": "Пункт \"Змінити\" у контекстному меню зображень",
-      "IT": "L\u0027elemento \"Modifica\" nel menu di scelta rapida dei file di immagine"
+      "IT": "Mostra l'opzione \"Modifica\" nel menu di scelta rapida dei file di immagine"
     },
     "Description": {
       "EN": "",
@@ -3899,7 +3899,7 @@
       "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов",
       "DE": "Diesen Kontextmenüeintrag \"Drucken\" für .bat- und .cmd-Dateien anzeigen",
       "UA": "Пункт \"Друк\" у контекстному меню .bat та .cmd файлів",
-      "IT": "La voce \"Mostra\" nel menu di scelta rapida .bat e .cmd"
+      "IT": "Mostra l'opzione \"Mostra\" nel menu di scelta rapida .bat e .cmd"
     },
     "Description": {
       "EN": "",
@@ -3921,7 +3921,7 @@
       "RU": "Пункт \"Добавить в библиотеку\" в контекстном меню папок и дисков",
       "DE": "Diesen Kontextmenüeintrag \"Zur Bibliothek hinzufügen\" für Ordner und Disks anzeigen",
       "UA": "Пункт \"Додати до бібліотеки\" в контекстному меню папок та дисків",
-      "IT": "L\u0027opzione menu \"includi nella libreria\" nel menu di scelta rapida delle cartelle e delle unità"
+      "IT": "Mostra l'opzione \"includi nella libreria\" nel menu di scelta rapida delle cartelle e delle unità"
     },
     "Description": {
       "EN": "",
@@ -3943,7 +3943,7 @@
       "RU": "Пункт \"Отправить\" в контекстном меню папок",
       "DE": "Diesen Kontextmenüeintrag \"Senden\" für Ordner anzeigen",
       "UA": "Пункт \"Надіслати\" в контекстному меню папок",
-      "IT": "L\u0027elemento \"Invia a\" nel menu di scelta rapida delle cartelle"
+      "IT": "Mostra l'opzione \"Invia a\" nel menu di scelta rapida delle cartelle"
     },
     "Description": {
       "EN": "",
@@ -3965,7 +3965,7 @@
       "RU": "Пункт \"Включить BitLocker\" в контекстном меню дисков",
       "DE": "Diesen Kontextmenüeintrag \"BitLocker aktivieren\" für Laufwerke anzeigen",
       "UA": "Пункт \"Увімкнути BitLocker\" у контекстному меню дисків",
-      "IT": "L\u0027elemento \"Attiva BitLocker\" nel menu di scelta rapida dei dischi"
+      "IT": "Mostra l'opzione \"Attiva BitLocker\" nel menu di scelta rapida dei dischi"
     },
     "Description": {
       "EN": "",
@@ -3987,7 +3987,7 @@
       "RU": "Пункт \"Точечный рисунок\" в контекстном меню \"Создать\"",
       "DE": "Diesen Kontextmenüeintrag \"Bitmap-Bild\" \"Neu\" erstellen",
       "UA": "Пункт \"Точковий малюнок\" у контекстному меню \"Створити\"",
-      "IT": "L\u0027elemento \"Nuova immagine bitmap\" nel menu di scelta rapida \"nuovo\""
+      "IT": "Mostra l'opzione \"Nuova immagine bitmap\" nel menu di scelta rapida \"nuovo\""
     },
     "Description": {
       "EN": "",
@@ -4031,7 +4031,7 @@
       "RU": "Пункт \"Сжатая ZIP-папка\" в контекстном меню \"Создать\"",
       "DE": "Diesen Kontextmenüeintrag \"Komprimierter ZIP-Ordner\" \"Neu\" anzeigen",
       "UA": "Пункт \"Стиснута ZIP-папка\" в контекстному меню \"Створити\"",
-      "IT": "L\u0027elemento \"Nuova zip\" nel menu di scelta rapida \"nuovo \""
+      "IT": "Mostra l'opzione \"Nuova zip\" nel menu di scelta rapida \"nuovo \""
     },
     "Description": {
       "EN": "",
@@ -4075,7 +4075,7 @@
       "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\"",
       "DE": "Element \"Im Microsoft Store nach einer App suchen\" im Dialogfeld \"Öffnen mit\" anzeigen",
       "UA": "Пункт \"Пошук додатку в Microsoft Store\" у діалозі \"Відкрити за допомогою\"",
-      "IT": "The \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog"
+      "IT": "Mostra l'opzione \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog"
     },
     "Description": {
       "EN": "",
@@ -4097,7 +4097,7 @@
       "RU": "Отображать пункт \"Открыть в Терминале Windows\" в контекстном меню папок",
       "DE": "Im Ordnerkontextmenü \"In Windows Terminal öffnen\" anzeigen",
       "UA": "Відображати пункт \"Відкрити в Терміналі Windows\" у контекстному меню папок",
-      "IT": "Mostra l\u0027elemento \"Apri in Windows Terminal\" nel menu di scelta rapida delle cartelle"
+      "IT": "Mostra l'opzione \"Apri in Windows Terminal\" nel menu di scelta rapida delle cartelle"
     },
     "Description": {
       "EN": "",
@@ -4119,7 +4119,7 @@
       "RU": "Отображать пункт \"Открыть в Терминале Windows\" (Администратор) в контекстном меню папок",
       "DE": "Im Ordnerkontextmenü \"In Windows Terminal öffnen\" als (Admin) anzeigen",
       "UA": "Відображати пункт \"Відкрити в Терміналі Windows\" (Адміністратор) у контекстному меню папок",
-      "IT": "Show the \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu"
+      "IT": "Mostra l'opzione \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu"
     },
     "Description": {
       "EN": "",
@@ -4163,7 +4163,7 @@
       "RU": "Пункт \"Отправить\" (поделиться) в контекстном меню",
       "DE": "\"Teilen\" im Kontextmenü anzeigen",
       "UA": "Пункт \"Надіслати\" (поділитися) у контекстному меню",
-      "IT": "La voce \"Condividi\" nel menu di scelta rapida"
+      "IT": "Mostra l'opzione \"Condividi\" nel menu di scelta rapida"
     },
     "Description": {
       "EN": "",
