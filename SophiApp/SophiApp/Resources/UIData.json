@@ -363,7 +363,11 @@
       "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации",
       "DE": "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen",
       "UA": "Деякі оновлення вимагають перезавантаження комп'ютера та входу в Windows для завершення інсталяції оновлення, що означає, що ви можете увійти до Windows і виявити, що не можете використовувати свій комп'ютер до завершення оновлення. Windows допомагає запобігти цьому, дозволяючи Windows використовувати інформацію про вхід до системи для створення спеціального маркера. Цей токен використовується для автоматичного входу в систему після перезавантаження, завершення налаштування комп'ютера та подальшого блокування комп'ютера для забезпечення безпеки вашого облікового запису та особистої інформації",
+<<<<<<< master
       "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
+=======
+      "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette a windows di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
+>>>>>>> master
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -429,7 +433,11 @@
       "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе",
       "DE": "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren",
       "UA": "Windows може відкривати спливаюче вікно з підказками про те, що нового в операційній системі",
+<<<<<<< master
       "IT": "Windows potrebbe mostrare un pop-up per farti scoprire le novità del sistema operativo."
+=======
+      "IT": "Windows potrebbe mostrare un pop-up per farti scoprire's le novità del sistema operativo."
+>>>>>>> master
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -488,7 +496,11 @@
       "RU": "Включить автоматическую установку рекомендованных приложений",
       "DE": "Automatische Installation der empfohlenen Apps aktivieren",
       "UA": "Увімкнути автоматичне встановлення рекомендованих додатків",
+<<<<<<< master
       "IT": "Abilita l'installazione automatica delle app consigliate"
+=======
+      "IT": "abilita l'istallazione automatica delle app consigliate"
+>>>>>>> master
     },
     "Description": {
       "EN": "Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.",
@@ -576,7 +588,11 @@
       "RU": "Отображать значок \"Этот компьютер\" на рабочем столе",
       "DE": "Das Symbol \"Dieser PC\" auf Desktop anzeigen",
       "UA": "Відображати значок \"Цей комп'ютер\" на робочому столі",
+<<<<<<< master
       "IT": "Icona \"Questo PC\" sul desktop"
+=======
+      "IT": "Mostra l'icona \"Questo PC\" sul desktop"
+>>>>>>> master
     },
     "Description": {
       "EN": "",
@@ -894,7 +910,11 @@
       "RU": "Показывать макеты прикрепления, частью которых является приложение, при наведении указателя мыши на кнопки панели задач",
       "DE": "Snap-Layouts anzeigen, wenn ich mit dem Mauszeiger über die Schaltfläche \"Maximieren\" eines Fensters fahre",
       "UA": "Відображати макети прикріплення, частиною яких є додаток при наведенні вказівника миші на кнопки панелі завдань",
+<<<<<<< master
       "IT": "Mostra snap layouts quando mantengo il mouse sul pulsante massimizza"
+=======
+      "IT": "Mostra snap layouts quando mantengo il mouse sul pulsante's massimizza"
+>>>>>>> master
     },
     "Description": {
       "EN": "",
@@ -1444,7 +1464,11 @@
       "RU": "Отобразить кнопку чата (Microsoft Teams) на панели задач",
       "DE": "Chat-Symbol (Microsoft Teams) in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку чату (Microsoft Teams) на панелі завдань",
+<<<<<<< master
       "IT": "Mostra l'icona delle chat (Microsoft Teams) sulla barra delle applicazioni"
+=======
+      "IT": "Mostra l'icona della chat (Microsoft Teams) sulla barra delle applicazioni"
+>>>>>>> master
     },
     "Description": {
       "EN": "",
@@ -1856,7 +1880,11 @@
       "RU": "При захвате заголовка окна и встряхивании сворачиваются все остальные окна",
       "DE": "Wenn ich die Titelleiste des Fensters greife und schüttle, werden alle anderen Fenster minimiert",
       "UA": "При захваті заголовка вікна та струшуванні згортаються всі інші вікна",
+<<<<<<< master
       "IT": "Quando prendo la barra del titolo di una finestra e la scuoto minimizza tutte le altre finestre"
+=======
+      "IT": "Quando prendo la barra del titolo di una finestra's e la scuoto minimizza tutte le altre finestre"
+>>>>>>> master
     },
     "Description": {
       "EN": "",
@@ -2338,7 +2366,11 @@
       "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
       "DE": "Neueste installierte .NET Framework-Laufzeitumgebung für alle Anwendungen verwenden",
       "UA": "Використовувати останнє встановлене середовище виконання .NET Framework для всіх програм",
+<<<<<<< master
       "IT": "Utilizzare l'ultima versione del runtime .NET Framework installato per tutte le app"
+=======
+      "IT": "Utilizzare l'ultimo runtime .NET Framework installato per tutte le app"
+>>>>>>> master
     },
     "Description": {
       "EN": "If an app requires the legacy .NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed .NET Framework version.",
@@ -2569,7 +2601,11 @@
       "RU": "По умолчанию все окна проводника, включая оболочку рабочего стола, запускаются в одном процессе explorer.exe. Если одно окно проводника зависает или аварийно завершается, это приведет к зависанию всей графической оболочки, пока процесс не перезапустится. Таким образом, каждый процесс explorer.exe будет иметь свой собственный идентификатор процесса (PID) для повышения стабильности оболочки проводника",
       "DE": "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern",
       "UA": "За замовчуванням, всі вікна провідника, включаючи оболонку робочого стола, запускаються в одному процесі explorer.exe. Якщо одне вікно провідника зависає або аварійно завершується, це призведе до зависання всієї графічної оболонки, доки процес не перезапуститься. Таким чином, кожен процес explorer.exe матиме власний ідентифікатор процесу (PID) для підвищення стабільності оболонки провідника",
+<<<<<<< master
       "IT": "Per impostazione predefinita, tutte le istanze di esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
+=======
+      "IT": "Per impostazione predefinita, tutte le istanze di Esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
+>>>>>>> master
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2882,11 +2918,11 @@
   {
     "Id": 348,
     "Header": {
-      "EN": "Uninstall the \"PC Health Check\" app",
-      "RU": "Удалить приложение \"Проверка работоспособности ПК\"",
-      "DE": "PC-Integritätsprüfungsanwendung deinstallieren",
-      "UA": "Видалити програму \"Перевірка працездатності ПК\"",
-      "IT": "Disinstallare l'app \"PC Health Check\""
+      "EN": "PC Health Check app",
+      "RU": "Приложение \"Проверка работоспособности ПК\"",
+      "DE": "PC-Integritätsprüfungsanwendung",
+      "UA": "Програма \"Перевірка працездатності ПК\"",
+      "IT": "L'app \"PC Health Check\""
     },
     "Description": {
       "EN": "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
@@ -2895,8 +2931,28 @@
       "UA": "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11",
       "IT": "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
     },
-    "Type": "CheckBox",
+    "Type": "PcHealthCheckButtonGroup",
     "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 349,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
     "ViewId": 348,
     "Windows10Supported": true,
     "Windows11Supported": false
@@ -2904,11 +2960,11 @@
   {
     "Id": 353,
     "Header": {
-      "EN": "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-      "RU": "Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
-      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64 installieren",
-      "UA": "Встановити останню версію пакетів Microsoft Visual C++ 2015–2022 x64",
-      "IT": "Installare gli ultimi pacchetti Microsoft Visual C ++ 2015-2022 x64"
+      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
+      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
+      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
+      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
+      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
     },
     "Description": {
       "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
@@ -3210,7 +3266,7 @@
       "RU": "При наличии соответствующего оборудования и драйверов Windows может переложить большую часть планирования GPU на выделенный процессор планирования на основе GPU. Благодаря функции аппаратного ускорения GPU процессор планирования GPU и память (VRAM) берут на себя ту же работу и запускают ее в пакетном режиме для рендеринга кадров. Таким образом, ваш GPU освобождает процессор от некоторой работы и уменьшает задержку, чтобы потенциально улучшить работу вашего ПК",
       "DE": "Mit richtiger Hardware und richtigen Treibern kann Windows den Großteil der GPU-Planung an einen speziellen GPU-basierten Planungsprozessor auslagern. Mit der Funktion \"Hardwarebeschleunigte GPU-Planung\" übernehmen der Planungsprozessor und der Speicher (VRAM) des Grafikprozessors die gleiche Arbeit und führen sie in Stapeln aus, um die Bilder zu rendern. Auf diese Weise entlastet der Grafikprozessor den Prozessor und verringert die Latenzzeit, wodurch Ihr PC möglicherweise besser läuft.",
       "UA": "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам'ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК.",
-      "IT": "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
+      "IT": "CCon il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
     },
     "Type": "CheckBox",
     "Tag": "Games",
