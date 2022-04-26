@@ -45,6 +45,6 @@ namespace SophiApp.Models
             ChildElements.ForEach(child => child.ChangeLanguage(language));
         }
 
-        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(element, e);
+        public void OnChildErrorOccured(TextedElement element, Exception e) => ErrorOccurred?.Invoke(this, e);
     }
 }
