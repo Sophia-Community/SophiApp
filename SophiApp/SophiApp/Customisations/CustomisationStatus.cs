@@ -409,8 +409,8 @@ namespace SophiApp.Customisations
 
         public static bool _347() => _346().Invert();
 
-        public static bool _348() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PCHC) is null
+        public static bool _349() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
+                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PCHC) == null
                                      ? throw new UpdateNotInstalledException(KB5005463_UPD)
                                      : false;
 

@@ -83,6 +83,11 @@
                                     Status="{Binding Status,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}" />
                             </DataTemplate>
+                            <DataTemplate DataType="{x:Type models:PcHealthCheckButtonGroup}">
+                                <controls:PcHealthCheckButtonGroup
+                                    Margin="{StaticResource ItemsMargin}"
+                                    Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewSystem}}}" />
+                            </DataTemplate>
                             <DataTemplate DataType="{x:Type models:MsCppPackageButtonGroup}">
                                 <controls:MsCppPackageButtonGroup
                                     Margin="{StaticResource ItemsMargin}"

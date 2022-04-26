@@ -2895,8 +2895,28 @@
       "UA": "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп\u0027ютера системним вимогам Windows 11",
       "IT": "L\u0027aggiornamento KB5005463 installa l\u0027app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
     },
-    "Type": "CheckBox",
+    "Type": "PcHealthCheckButtonGroup",
     "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 349,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
     "ViewId": 348,
     "Windows10Supported": true,
     "Windows11Supported": false

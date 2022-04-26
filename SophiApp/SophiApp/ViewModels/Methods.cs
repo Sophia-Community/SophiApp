@@ -241,8 +241,8 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                                                      .ToList()
-                                                                                                                                      .ForEach(element => element.Initialize()));
+                                                                                                                                        .ToList()
+                                                                                                                                        .ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {

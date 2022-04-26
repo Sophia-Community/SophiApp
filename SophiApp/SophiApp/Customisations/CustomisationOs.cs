@@ -868,7 +868,7 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
         }
 
-        public static void _348(bool _)
+        public static void _349(bool _)
         {
             var properties = MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
                                       .First(property => property[_348_PRODUCT_NAME] == _348_PCHC);

@@ -27,6 +27,8 @@
     controls:MsCppPackageButtonGroup.MouseLeave="TextedElement_MouseLeave"
     controls:OneDriveButtonGroup.MouseEnter="TextedElement_MouseEnter"
     controls:OneDriveButtonGroup.MouseLeave="TextedElement_MouseLeave"
+    controls:PcHealthCheckButtonGroup.MouseEnter="TextedElement_MouseEnter"
+    controls:PcHealthCheckButtonGroup.MouseLeave="TextedElement_MouseLeave"
     controls:RadioButton.MouseEnter="TextedElement_MouseEnter"
     controls:RadioButton.MouseLeave="TextedElement_MouseLeave"
     controls:RadioGroup.MouseEnter="TextedElement_MouseEnter"
