@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.0.56 — 27.04.2022
+
+Diff from v1.0.0.53
+[1.0.0.53...1.0.0.56](https://github.com/Sophia-Community/SophiApp/compare/1.0.0.53...1.0.0.56)
+
+* Added Italian translation <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> 
+  * Thanks to @THEBOSSMAGNUS;
+* Added board to the app window;
+* The Start menu functions were moved to the Personalization;
+* Brought to the similar designs functions
+  * PC Health Check app;
+  * The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64;
+  * OneDrive.
+* Fixed a bug when the app didn't detect correctly whether C++ Redistributable packages' version was installed higher than SophiApp offered.
+
+![Снимок экрана (1)](https://user-images.githubusercontent.com/10544660/165491772-c0c4d344-f890-4253-8819-51925f5de39f.png)
+
 ## 1.0.0.53 — 11.04.2022
 
 * Startup checkings updated;
