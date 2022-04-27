@@ -2882,11 +2882,11 @@
   {
     "Id": 348,
     "Header": {
-      "EN": "Uninstall the \"PC Health Check\" app",
-      "RU": "Удалить приложение \"Проверка работоспособности ПК\"",
-      "DE": "PC-Integritätsprüfungsanwendung deinstallieren",
-      "UA": "Видалити програму \"Перевірка працездатності ПК\"",
-      "IT": "Disinstallare l'app \"PC Health Check\""
+      "EN": "PC Health Check app",
+      "RU": "Приложение \"Проверка работоспособности ПК\"",
+      "DE": "PC-Integritätsprüfungsanwendung",
+      "UA": "Програма \"Перевірка працездатності ПК\"",
+      "IT": "L'app \"PC Health Check\""
     },
     "Description": {
       "EN": "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
@@ -2895,8 +2895,28 @@
       "UA": "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11",
       "IT": "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
     },
-    "Type": "CheckBox",
+    "Type": "PcHealthCheckButtonGroup",
     "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 349,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
     "ViewId": 348,
     "Windows10Supported": true,
     "Windows11Supported": false
@@ -2904,11 +2924,11 @@
   {
     "Id": 353,
     "Header": {
-      "EN": "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-      "RU": "Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
-      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64 installieren",
-      "UA": "Встановити останню версію пакетів Microsoft Visual C++ 2015–2022 x64",
-      "IT": "Installare gli ultimi pacchetti Microsoft Visual C ++ 2015-2022 x64"
+      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
+      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
+      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
+      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
+      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
     },
     "Description": {
       "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
