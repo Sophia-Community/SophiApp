@@ -43,7 +43,7 @@ https://imgur.com/a/wCcs0Xi
 * Added Windows 11 & Windows 11 Insider Preview support (22509+). Closes [#40](https://github.com/Sophia-Community/SophiApp/issues/40);
 * UI/UX updated;
 * Updated and expanded localizations;
-* Added 🇩🇪 German and 🇺🇦 Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
+* Added <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> German and <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> Ukrainian translations. Closes [#45](https://github.com/Sophia-Community/SophiApp/issues/45);
 * Updated functions' descriptions;
 * Huge code refactoring;
 * Many bugs fixed.
