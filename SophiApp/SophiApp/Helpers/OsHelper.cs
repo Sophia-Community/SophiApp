@@ -108,14 +108,14 @@ namespace SophiApp.Helpers
             // Terminate the File Explorer process
             RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, DISABLED_VALUE, RegistryValueKind.DWord);
             ProcessHelper.Stop(EXPLORER);
-            _ = Task.Delay(TIMEOUT_3_SECONDS);
+            Task.Delay(TIMEOUT_3_SECONDS).Wait();
             RegHelper.SetValue(RegistryHive.LocalMachine, WINLOGON_PATH, AUTORESTART_SHELL, ENABLED_VALUE, RegistryValueKind.DWord);
             // Start the File Explorer process
-            ProcessHelper.StartWait(EXPLORER);
-            Thread.Sleep(TIMEOUT_3_SECONDS);
+            _ = ProcessHelper.Start(EXPLORER);
+            Task.Delay(TIMEOUT_3_SECONDS).Wait();
             // Restoring closed folders
             ProcessHelper.StartWait(EXPLORER, openedFolders, ProcessWindowStyle.Minimized);
-            _ = Task.Delay(TIMEOUT_3_SECONDS);
+            Task.Delay(TIMEOUT_3_SECONDS).Wait();
         }
 
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
