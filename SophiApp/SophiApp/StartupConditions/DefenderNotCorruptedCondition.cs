@@ -13,7 +13,7 @@ namespace SophiApp.StartupConditions
 
         public bool Invoke()
         {
-            if (WindowsDefenderHelper.DisabledByGroupPolicy() || WmiHelper.HasExternalAntiVirus())
+            if (OsHelper.IsEnterpriseG || WindowsDefenderHelper.DisabledByGroupPolicy() || WmiHelper.HasExternalAntiVirus())
             {
                 return HasProblem;
             }

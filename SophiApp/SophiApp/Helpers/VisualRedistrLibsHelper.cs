@@ -16,14 +16,6 @@ namespace SophiApp.Helpers
         private const string VERSION_NAME = "Version";
         private const string X64 = "x64";
 
-        private static string GetRegistryPropertyValue(string propertyName)
-        {
-            var registryData = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
-                                        .FirstOrDefault(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
-
-            return RegHelper.GetValue(RegistryHive.ClassesRoot, registryData, propertyName) as string;
-        }
-
         internal static Version GetCloudLatestVersion()
         {
             var cloudLibsData = WebHelper.GetJsonResponse<CPPRedistrCollection>(CLOUD_VC_VERSION_URL);
@@ -32,7 +24,10 @@ namespace SophiApp.Helpers
 
         internal static Version GetInstalledVersion()
         {
-            var version = IsInstalled() ? GetRegistryPropertyValue(VERSION_NAME) : "0.0.0.0";
+            var registryData = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
+                                        .FirstOrDefault(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
+
+            var version = registryData is null ? "0.0.0.0" : RegHelper.GetValue(RegistryHive.ClassesRoot, registryData, VERSION_NAME) as string;
             return Version.Parse(version);
         }
 

@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace SophiApp.Helpers
@@ -32,6 +31,7 @@ namespace SophiApp.Helpers
         private const int TIMEOUT_3_SECONDS = 3000;
         private const string TRAY_SETTINGS = "TraySettings";
         private const string UBR = "UBR";
+        private const string WIN_ENTERPRISE_G = "EnterpriseG";
         private const uint WIN11_BUILD_NUMBER = 22;
         private const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         private const int WM_SETTINGCHANGE = 0x1a;
@@ -49,6 +49,8 @@ namespace SophiApp.Helpers
         internal const uint WIN11_MIN_SUPPORTED_BUILD = 22000;
         internal const uint WIN11_MIN_SUPPORTED_INSIDER_BUILD = 22509;
         internal const uint WIN11_MIN_SUPPORTED_UBR = 556;
+
+        internal static bool IsEnterpriseG = GetEdition() == WIN_ENTERPRISE_G;
 
         private static WindowsIdentity GetCurrentUser() => WindowsIdentity.GetCurrent();
 
