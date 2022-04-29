@@ -63,13 +63,13 @@
     <system:String x:Key="Localization.Settings.Advanced">Impostazioni avanzate</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Modalità sviluppatore</system:String>
     <system:String x:Key="Localization.Settings.Team">Memberi del progetto</system:String>
-    <system:String x:Key="Localization.Settings.Leader">Capo del progetto:</system:String>
+    <system:String x:Key="Localization.Settings.Leader">Capo progetto:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
-    <system:String x:Key="Localization.Settings.Developer">Sviluppato da:</system:String>
+    <system:String x:Key="Localization.Settings.Developer">Sviluppatore:</system:String>
     <system:String x:Key="Localization.Settings.Developer.Name">Dmitry &quot;Inestic&quot; Demin</system:String>
-    <system:String x:Key="Localization.Settings.Designer">Interfaccia utente:</system:String>
+    <system:String x:Key="Localization.Settings.Designer">Designer interfaccia utente:</system:String>
     <system:String x:Key="Localization.Settings.Designer.Name">Vladimir Nameless</system:String>
-    <system:String x:Key="Localization.Settings.Logotype">Logo:</system:String>
+    <system:String x:Key="Localization.Settings.Logotype">Designer logo:</system:String>
     <system:String x:Key="Localization.Settings.Logotype.Creator">Natalia Gumenyuk</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Description">Creazione processo e controllo eventi dell'interfaccia a riga di comando.</system:String>
     <system:String x:Key="Localization.EventViewer.CustomView.Name">Creazione processo</system:String>

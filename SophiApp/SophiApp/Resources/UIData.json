@@ -2004,7 +2004,7 @@
       "RU": "Путь переменной среды для временных файлов",
       "DE": "Pfad der temporären Umgebungsvariablen",
       "UA": "Шлях змінного середовища для тимчасових файлів",
-      "IT": "Il percorso variabile dell'ambiente temp"
+      "IT": "Percorso cartella per i file temporanei"
     },
     "Description": {
       "EN": "Use only in case if you are the only user on this PC, otherwise all users will use the same folder for all temporary files.",
@@ -4095,7 +4095,7 @@
       "RU": "Пункт \"Поиск приложения в Microsoft Store\" в диалоге \"Открыть с помощью\"",
       "DE": "Element \"Im Microsoft Store nach einer App suchen\" im Dialogfeld \"Öffnen mit\" anzeigen",
       "UA": "Пункт \"Пошук додатку в Microsoft Store\" у діалозі \"Відкрити за допомогою\"",
-      "IT": "Mostra l'opzione \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog"
+      "IT": "Mostra l'opzione \"Cerca un'app nel Microsoft Store\" nel menu \"Apri con\""
     },
     "Description": {
       "EN": "",
@@ -4139,7 +4139,7 @@
       "RU": "Отображать пункт \"Открыть в Терминале Windows\" (Администратор) в контекстном меню папок",
       "DE": "Im Ordnerkontextmenü \"In Windows Terminal öffnen\" als (Admin) anzeigen",
       "UA": "Відображати пункт \"Відкрити в Терміналі Windows\" (Адміністратор) у контекстному меню папок",
-      "IT": "Mostra l'opzione \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu"
+      "IT": "Mostra l'opzione \"Apri in Windows Terminal\" (Admin) Nel menu contestuale del desktop e delle cartelle"
     },
     "Description": {
       "EN": "",
