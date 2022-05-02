@@ -1778,27 +1778,61 @@
     {
         "Id":  348,
         "Header":  {
-                       "EN":  "Uninstall the \"PC Health Check\" app"
+                       "EN":  "PC Health Check app"
                    },
         "Description":  {
                             "EN":  "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11."
                         },
-        "Type":  "CheckBox",
+        "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  349,
+                                  "ChildHeader":  {
+                                                      "EN":  "Uninstall"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  348,
         "Windows10Supported":  true,
         "Windows11Supported":  false
     },
     {
-        "Id":  349,
+        "Id":  353,
         "Header":  {
-                       "EN":  "Install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64"
+                       "EN":  "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64"
                    },
         "Description":  {
                             "EN":  "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files."
                         },
-        "Type":  "CheckBox",
+        "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "EN":  "Install"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "EN":  "Uninstall"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  349,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -1811,7 +1845,7 @@
         "Description":  {
                             "EN":  ""
                         },
-        "Type":  "ButtonGroup",
+        "Type":  "OneDriveButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
