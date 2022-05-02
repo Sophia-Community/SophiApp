@@ -1778,27 +1778,61 @@
     {
         "Id":  348,
         "Header":  {
-                       "UA":  "Видалити програму \"Перевірка працездатності ПК\""
+                       "UA":  "Програма \"Перевірка працездатності ПК\""
                    },
         "Description":  {
                             "UA":  "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп\u0027ютера системним вимогам Windows 11"
                         },
-        "Type":  "CheckBox",
+        "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  349,
+                                  "ChildHeader":  {
+                                                      "UA":  "Видалити"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "UA":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  348,
         "Windows10Supported":  true,
         "Windows11Supported":  false
     },
     {
-        "Id":  349,
+        "Id":  353,
         "Header":  {
-                       "UA":  "Встановити останню версію пакетів Microsoft Visual C++ 2015–2022 x64"
+                       "UA":  "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64"
                    },
         "Description":  {
                             "UA":  "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли"
                         },
-        "Type":  "CheckBox",
+        "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "UA":  "Встановити"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "UA":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "UA":  "Видалити"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "UA":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  349,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -1811,7 +1845,7 @@
         "Description":  {
                             "UA":  ""
                         },
-        "Type":  "ButtonGroup",
+        "Type":  "OneDriveButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
