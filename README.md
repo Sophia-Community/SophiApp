@@ -181,7 +181,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 ## Translating
 
-* Feel free to translate the UI into your language by taking as a basis one of [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/blob/master/SophiApp/SophiApp/Resources) and creating an [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
+* Feel free to translate the UI into your language by taking as a basis one of [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) and creating a new [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
 
 ## The 3rd party libraries used
 
