@@ -1,9 +1,8 @@
-
 [
     {
         "Id":  100,
         "Header":  {
-                       "IT":  "Il servizio di telemetria"
+                       "IT":  "Servizio di telemetria"
                    },
         "Description":  {
                             "IT":  "Configurare le esperienze utente collegate e il servizio Telemetry (Digtrack) e la connessione per il traffico in uscita del client di telemetria unificata."
@@ -38,7 +37,7 @@
                               {
                                   "Id":  103,
                                   "ChildHeader":  {
-                                                      "IT":  "Minimi"
+                                                      "IT":  "Minimo"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -78,7 +77,7 @@
                               {
                                   "Id":  106,
                                   "ChildHeader":  {
-                                                      "IT":  "Automatico"
+                                                      "IT":  "Automatica"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -177,7 +176,7 @@
                                                       "IT":  "MapsUpdateTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "Questo processo aggiorna le mappe offline. Disabilitandola from non ti notificherà gli aggiornamenti delle mappe."
+                                                           "IT":  "Questo processo aggiorna le mappe offline. Disabilitandolo non verrai notificato riguardo gli aggiornamenti delle mappe."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -197,7 +196,7 @@
                                                       "IT":  "XblGameSaveTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  "Il processo standbay di XblGameSave, che sincronizza i progressi nei videogiochi quando il sitema è inutilizzato."
+                                                           "IT":  "Il processo standbay di XblGameSave sincronizza i progressi nei videogiochi quando il sitema è inutilizzato."
                                                        },
                                   "Type":  "CheckBox"
                               }
@@ -212,7 +211,7 @@
                        "IT":  "Usa le credenziali per configurare automaticamente il dispositivo dopo gli aggiornamenti"
                    },
         "Description":  {
-                            "IT":  "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette a windows di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
+                            "IT":  "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -254,7 +253,7 @@
                        "IT":  "Mostra la Windows welcome experiences dopo gli aggiornamenti e in occasione di nuove funzionalità o promozioni"
                    },
         "Description":  {
-                            "IT":  "Windows potrebbe mostrare un pop-up per farti scoprire\u0027s le novità del sistema operativo."
+                            "IT":  "Windows potrebbe mostrare un pop-up per farti scoprire le novità del sistema operativo."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -279,7 +278,7 @@
     {
         "Id":  123,
         "Header":  {
-                       "IT":  "Show suggested content in the Settings app"
+                       "IT":  "Mostra i contenuti suggeriti nell'app impostazion"
                    },
         "Description":  {
                             "IT":  ""
@@ -293,7 +292,7 @@
     {
         "Id":  124,
         "Header":  {
-                       "IT":  "abilita l'istallazione automatica delle app consigliate"
+                       "IT":  "Abilita l'installazione automatica delle app consigliate"
                    },
         "Description":  {
                             "IT":  "Windows può scaricare e installare silenziosamente alcune app suggerite da Microsoft Store senza alcuna conferma dell'utente."
@@ -349,7 +348,7 @@
     {
         "Id":  200,
         "Header":  {
-                       "IT":  "Mostra l'icona \"Questo PC\" sul desktop"
+                       "IT":  "Icona \"Questo PC\" sul desktop"
                    },
         "Description":  {
                             "IT":  ""
@@ -370,7 +369,7 @@
                               {
                                   "Id":  202,
                                   "ChildHeader":  {
-                                                      "IT":  "Nascondere"
+                                                      "IT":  "Nascondi"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -385,7 +384,7 @@
     {
         "Id":  203,
         "Header":  {
-                       "IT":  "Abilita il Esplora file di Windows 10"
+                       "IT":  "Abilita l'esplora file di Windows 10"
                    },
         "Description":  {
                             "IT":  ""
@@ -413,7 +412,7 @@
     {
         "Id":  205,
         "Header":  {
-                       "IT":  "Mostra file nascosti, cartelle e dischi"
+                       "IT":  "Mostra file, cartelle e dischi nascosti"
                    },
         "Description":  {
                             "IT":  ""
@@ -505,7 +504,7 @@
     {
         "Id":  212,
         "Header":  {
-                       "IT":  "Abilita la modalità Compatta di Esplora file"
+                       "IT":  "Abilita la modalità compatta di esplora file"
                    },
         "Description":  {
                             "IT":  ""
@@ -547,7 +546,7 @@
     {
         "Id":  215,
         "Header":  {
-                       "IT":  "Mostra snap layouts quando mantengo il mouse sul pulsante\u0027s massimizza"
+                       "IT":  "Mostra snap layouts quando mantengo il mouse sul pulsante massimizza"
                    },
         "Description":  {
                             "IT":  ""
@@ -597,7 +596,7 @@
     {
         "Id":  219,
         "Header":  {
-                       "IT":  "Minimizza il ribbon in Esplora file"
+                       "IT":  "Minimizza il ribbon in esplora file"
                    },
         "Description":  {
                             "IT":  ""
@@ -639,7 +638,7 @@
     {
         "Id":  222,
         "Header":  {
-                       "IT":  "Show frequently used folders in accesso rapido"
+                       "IT":  "Mostra le cartelle usate frequentemente in accesso rapido"
                    },
         "Description":  {
                             "IT":  ""
@@ -688,7 +687,7 @@
                               {
                                   "Id":  226,
                                   "ChildHeader":  {
-                                                      "IT":  "Centro"
+                                                      "IT":  "Centrata"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -889,7 +888,7 @@
     {
         "Id":  241,
         "Header":  {
-                       "IT":  "Mostra l'icona della chat (Microsoft Teams) sulla barra delle applicazioni"
+                       "IT":  "Mostra l'icona delle chat (Microsoft Teams) sulla barra delle applicazioni"
                    },
         "Description":  {
                             "IT":  ""
@@ -960,7 +959,7 @@
                               {
                                   "Id":  247,
                                   "ChildHeader":  {
-                                                      "IT":  "Leggera"
+                                                      "IT":  "Chiaro"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1099,7 +1098,7 @@
     {
         "Id":  258,
         "Header":  {
-                       "IT":  "Aggiungi il suffisso \"- Collegamento\" al nome del file delle scorciatoie create"
+                       "IT":  "Aggiungi il suffisso \"- Collegamento\" al nome delle scorciatoie create"
                    },
         "Description":  {
                             "IT":  ""
@@ -1141,7 +1140,7 @@
     {
         "Id":  261,
         "Header":  {
-                       "IT":  "Quando prendo la barra del titolo di una finestra\u0027s e la scuoto minimizza tutte le altre finestre"
+                       "IT":  "Quando prendo la barra del titolo di una finestra e la scuoto minimizza tutte le altre finestre"
                    },
         "Description":  {
                             "IT":  ""
@@ -1190,7 +1189,7 @@
                               {
                                   "Id":  303,
                                   "ChildHeader":  {
-                                                      "IT":  "Se lo spazio libero su disco libero"
+                                                      "IT":  "Se lo spazio libero su disco è scarso"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1233,7 +1232,7 @@
     {
         "Id":  306,
         "Header":  {
-                       "IT":  "Il percorso variabile dell'ambiente temp"
+                       "IT":  "Percorso cartella per i file temporanei"
                    },
         "Description":  {
                             "IT":  "Utilizzare Solo nel caso in cui si sia l'unico utente su questo PC, altrimenti tutti gli utenti utilizzeranno la stessa cartella per tutti i file temporanei."
@@ -1269,7 +1268,7 @@
     {
         "Id":  309,
         "Header":  {
-                       "IT":  "Abilita il limite di carattere del percorso a 260"
+                       "IT":  "Abilita il limite di caratteri dei percorsi a 260"
                    },
         "Description":  {
                             "IT":  "Per impostazione predefinita, il limite massimo di lunghezza del percorso in Windows è 260 caratteri. Un percorso locale è strutturato nel seguente ordine: Lettera di unità, due punti, barra, nome cartell separati da barre indietro e un carattere null terminale."
@@ -1283,7 +1282,7 @@
     {
         "Id":  310,
         "Header":  {
-                       "IT":  "Display Codice di errore quando si verifica un BSOD"
+                       "IT":  "Mostra il codice di errore quando si verifica un BSOD"
                    },
         "Description":  {
                             "IT":  "Per impostazione predefinita, Windows non visualizza un codice di errore quando si verifica un BSOD, che aiuterebbe a identificare le cause di un BSOD."
@@ -1414,7 +1413,7 @@
                               {
                                   "Id":  320,
                                   "ChildHeader":  {
-                                                      "IT":  "Elevate prestazioni"
+                                                      "IT":  "Prestazioni elevate"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  "It is not recommended to turn on the \"High performance\" power scheme on laptops."
@@ -1439,7 +1438,7 @@
     {
         "Id":  322,
         "Header":  {
-                       "IT":  "Utilizzare l'ultimo runtime .NET Framework installato per tutte le app"
+                       "IT":  "Utilizzare l'ultima versione del runtime .NET Framework installato per tutte le app"
                    },
         "Description":  {
                             "IT":  "Se un'app richiede che l'eredità .NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l'applicazione per utilizzare la versione più recente .NET Framework installata."
@@ -1514,7 +1513,7 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "IT":  "desktop"
+                                                      "IT":  "Desktop"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1542,7 +1541,7 @@
                        "IT":  "Risoluzione dei problemi consigliati"
                    },
         "Description":  {
-                            "IT":  "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che i problemi di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
+                            "IT":  "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1550,7 +1549,7 @@
                               {
                                   "Id":  331,
                                   "ChildHeader":  {
-                                                      "IT":  "Eseguire automaticamente i problemi di risoluzione dei problemi, quindi notifica"
+                                                      "IT":  "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
@@ -1578,7 +1577,7 @@
                        "IT":  "Avvia esplora file in un processo separato"
                    },
         "Description":  {
-                            "IT":  "Per impostazione predefinita, tutte le istanze di Esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
+                            "IT":  "Per impostazione predefinita, tutte le istanze di esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1617,7 +1616,7 @@
     {
         "Id":  336,
         "Header":  {
-                       "IT":  "Abilita il blocco numeroso all'avvio"
+                       "IT":  "Abilita il blocco numerico all'avvio"
                    },
         "Description":  {
                             "IT":  ""
@@ -1645,7 +1644,7 @@
     {
         "Id":  338,
         "Header":  {
-                       "IT":  "Scorciatoia da tastiera per tasti permanenti"
+                       "IT":  "Scorciatoia da tastiera per i tasti permanenti"
                    },
         "Description":  {
                             "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
@@ -1701,7 +1700,7 @@
     {
         "Id":  342,
         "Header":  {
-                       "IT":  "Abilita \"Discovery di rete\" e \"File e Stampanti Sharing\" per le reti del gruppo di lavoro"
+                       "IT":  "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
                    },
         "Description":  {
                             "IT":  ""
@@ -1743,7 +1742,7 @@
     {
         "Id":  345,
         "Header":  {
-                       "IT":  "App predefinita dell terminale"
+                       "IT":  "App predefinita del terminale"
                    },
         "Description":  {
                             "IT":  "Imposta il terminale di Windows come app terminale predefinita per ospitare l'interfaccia utente per le applicazioni della riga di comando."
@@ -1779,27 +1778,61 @@
     {
         "Id":  348,
         "Header":  {
-                       "IT":  "Disinstallare l'app \"PC Health Check\""
+                       "IT":  "L'app \"PC Health Check\""
                    },
         "Description":  {
                             "IT":  "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11."
                         },
-        "Type":  "CheckBox",
+        "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  349,
+                                  "ChildHeader":  {
+                                                      "IT":  "Disinstalla"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  348,
         "Windows10Supported":  true,
         "Windows11Supported":  false
     },
     {
-        "Id":  349,
+        "Id":  353,
         "Header":  {
-                       "IT":  "Installare gli ultimi pacchetti Microsoft Visual C ++ 2015-2022 x64"
+                       "IT":  "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
                    },
         "Description":  {
                             "IT":  "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
                         },
-        "Type":  "CheckBox",
+        "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "IT":  "Installa"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "IT":  "Disinstalla"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  349,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -1812,7 +1845,7 @@
         "Description":  {
                             "IT":  ""
                         },
-        "Type":  "ButtonGroup",
+        "Type":  "OneDriveButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
@@ -1957,7 +1990,7 @@
                        "IT":  "Pianificazione GPU con accellerazione hardware"
                    },
         "Description":  {
-                            "IT":  "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU \u0027S e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
+                            "IT":  "Con il giusto hardware e driver, Windows può scaricare la maggior parte della pianificazione della GPU per un processore di pianificazione basato sulla GPU dedicato.Con la funzione di pianificazione GPU accelerata ad hardware, il processore di pianificazione della GPU e la memoria (VRAM) prende lo stesso lavoro e lo esegue in lotti per renderizzare i fotogrammi. In questo modo, la GPU allevia il processore da qualche lavoro e riduce la latenza."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -1968,7 +2001,7 @@
     {
         "Id":  700,
         "Header":  {
-                       "IT":  "Windows Cleanup"
+                       "IT":  "Pulizia di Windows"
                    },
         "Description":  {
                             "IT":  "Creare l'attività pianificata \"Windows Cleanup\" per la pulizia di file e aggiornamenti non utilizzati di Windows sotto la cartella SophiaPP nello scheduler di attività. Una notifica verrà visualizzata dove è possibile scegliere di  eseguire il compito di pulizia o noa."
@@ -1982,10 +2015,10 @@
     {
         "Id":  701,
         "Header":  {
-                       "IT":  "Сlean up lo cartella di download degli aggiornamenti di Windowsornamenti di Windowsr"
+                       "IT":  "Pulisci la cartella di download degli aggiornamenti di Windows"
                    },
         "Description":  {
-                            "IT":  "Creare la commissione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L'attività attende che il servizio di aggiornamento di Windows finisse il servizio.L'attività viene eseguita ogni 90 giorni."
+                            "IT":  "Creare l'operazione pianificata \"SoftwareDistribution\" per la pulizia Up \n%SystemRoot%\\SoftwareDistribution\\Download, dove vengono scaricati tutti gli aggiornamenti di Windows, sotto la cartella SophiaPP nel pianificatore di attività. L'attività attende che il servizio di aggiornamento di Windows finisse il servizio.L'attività viene eseguita ogni 90 giorni."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -1996,7 +2029,7 @@
     {
         "Id":  702,
         "Header":  {
-                       "IT":  "Pulisci la cartella temporanear"
+                       "IT":  "Pulisci la cartella file temporanei"
                    },
         "Description":  {
                             "IT":  "Creare l'attività pianificata \"Temp\" per la pulizia della cartella TEMP nella cartella SophiaPP nello scheduler di attività.Solo i file più vecchi di un giorno saranno cancellati.L'attività viene eseguita ogni 60 giorni."
@@ -2080,7 +2113,7 @@
     {
         "Id":  805,
         "Header":  {
-                       "IT":  "Creare la visualizzazione personalizzata \"Process Creation\" nel visualizzatore di eventilizzatore di eventi"
+                       "IT":  "Creare la visualizzazione personalizzata \"Creazione processi\" nel visualizzatore di eventi"
                    },
         "Description":  {
                             "IT":  " \"Process Creation\", La vista personalizzata è progettata per filtrare i processi in esecuzione e i loro argomenti per un migliore controllo della sicurezza del sistema. Affinché questa funzionalità funzioni, l'evento e l'auditing della riga di comando negli eventi di creazione del processo saranno abilitati."
@@ -2094,7 +2127,7 @@
     {
         "Id":  806,
         "Header":  {
-                       "IT":  "Abilita l'auditing di tutti i moduli Windows PowerShell"
+                       "IT":  "Abilita l'auditing di tutti i moduli di Windows PowerShell"
                    },
         "Description":  {
                             "IT":  "Gli eventi di esecuzione della pipeline per i moduli sono registrati nel registro Windows PowerShell nel Viewer eventi. Solo per Windows PowerShell 5.1 integrato"
@@ -2136,7 +2169,7 @@
     {
         "Id":  809,
         "Header":  {
-                       "IT":  "Segna i file che sono stati scaricati da Internet come pericoloso"
+                       "IT":  "Segna i file che sono stati scaricati da Internet come pericolosi"
                    },
         "Description":  {
                             "IT":  "Il gestore degli allegati è incluso in Windows per proteggere da file non sicuri scaricati da Internet.Se il gestore degli allegati identifica un allegato che potrebbe non essere sicuro, il gestore degli allegati impedisce di aprire il file o ti avvisa prima di aprire il file. I metadati vengono salvati come un flusso di dati alternativo (ADS).Se si desidera sbloccare manualmente un file scaricato, è possibile farlo facendo clic con il pulsante destro del mouse, selezionando Proprietà e facendo clic su \"Sblocca\"."
@@ -2150,7 +2183,7 @@
     {
         "Id":  810,
         "Header":  {
-                       "IT":  "Abilita host di script di Windows"
+                       "IT":  "Abilita Windows Script Host"
                    },
         "Description":  {
                             "IT":  "La disattivazione di questa funzione blocca l'esecuzione di script .js e .vbs, impedendo agli script di javascript dannosi da eseguire."
@@ -2167,7 +2200,7 @@
                        "IT":  "Windows Sandbox"
                    },
         "Description":  {
-                            "IT":  "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it\u0027s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn\u0027t work in Home Edition."
+                            "IT":  "Windows Sandbox Fornisce un ambiente desktop leggero per eseguire in modo sicuro le applicazioni in isolamento. Il software installato all'interno dell'ambiente sandbox di Windows rimane sandboxed e funziona separatamente dalla macchina host. Una sandbox è temporanea: quando viene chiusa, tutti i software e i file vengono cancellati. Ottieni un'istanza nuova di zecca della sandbox ogni volta che apri l'applicazione. Non disponibile nella versione Home."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2178,10 +2211,10 @@
     {
         "Id":  900,
         "Header":  {
-                       "IT":  "La voce \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (.msi)"
+                       "IT":  "Mostra l'opzione \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (.msi)"
                    },
         "Description":  {
-                            "IT":  "La voce \"Extract all\" nel menù contestuale estrarrà tutti i contenuti del file .msi nella cartella \"estratti\" nella stessa posizione del file .msi."
+                            "IT":  "Mostra l'opzione \"Extract all\" nel menù contestuale estrarrà tutti i contenuti del file .msi nella cartella \"estratti\" nella stessa posizione del file .msi."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2192,7 +2225,7 @@
     {
         "Id":  901,
         "Header":  {
-                       "IT":  "L'elemento \"Installa\" nel menu contestuale negli archivi"
+                       "IT":  "Mostra l'opzione \"Installa\" nel menu contestuale negli archivi"
                    },
         "Description":  {
                             "IT":  "Questa voce di menu contestuale, utilizzando DIS, consente di semplificare l'installazione di aggiornamenti .CAB con un solo clic nel suo menu di scelta rapida.Se si dispone del tipo di interno del file .Cab associato ad aprire con un'app di terze parti (7-zip, winrar, ecc ...) Per impostazione predefinita, la voce del menu di scelta rapida \"Installa\" non verrà visualizzata fino a quando non si ripristina l'associazione predefinit aper il tipo di file .cab."
@@ -2206,7 +2239,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "IT":  "L'elemento \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
+                       "IT":  "Mostra l'opzione \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
                    },
         "Description":  {
                             "IT":  ""
@@ -2220,7 +2253,7 @@
     {
         "Id":  903,
         "Header":  {
-                       "IT":  "L'elemento \"Trasmetti a\" nel menu di controllo dei file multimediali e delle cartelle"
+                       "IT":  "Mostra l'opzione \"Trasmetti a\" nel menu di controllo dei file multimediali e delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2234,7 +2267,7 @@
     {
         "Id":  904,
         "Header":  {
-                       "IT":  "L'elemento \"Condividi\" nel menu di scelta rapida"
+                       "IT":  "Mostra l'opzione\"Condividi\" nel menu di scelta rapida"
                    },
         "Description":  {
                             "IT":  ""
@@ -2248,7 +2281,7 @@
     {
         "Id":  905,
         "Header":  {
-                       "IT":  "L'elemento \"Modifica con Paint 3D\" nel menu di scelta rapida dei file multimediali"
+                       "IT":  "Mostra l'opzione \"Modifica con Paint 3D\" nel menu di scelta rapida dei file multimediali"
                    },
         "Description":  {
                             "IT":  ""
@@ -2344,7 +2377,7 @@
     {
         "Id":  914,
         "Header":  {
-                       "IT":  "Mostra la voce \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
+                       "IT":  "Mostra Mostra l'opzione \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
                    },
         "Description":  {
                             "IT":  ""
@@ -2358,7 +2391,7 @@
     {
         "Id":  915,
         "Header":  {
-                       "IT":  "Voce \"Crea un nuovo video\" nel menu di scelta rapida dei file multimediali"
+                       "IT":  "Mostra l'opzione  \"Crea un nuovo video\" nel menu di scelta rapida dei file multimediali"
                    },
         "Description":  {
                             "IT":  ""
@@ -2372,7 +2405,7 @@
     {
         "Id":  916,
         "Header":  {
-                       "IT":  "L'elemento \"Modifica\" nel menu di scelta rapida dei file di immagine"
+                       "IT":  "Mostra l'opzione \"Modifica\" nel menu di scelta rapida dei file di immagine"
                    },
         "Description":  {
                             "IT":  ""
@@ -2386,7 +2419,7 @@
     {
         "Id":  917,
         "Header":  {
-                       "IT":  "La voce \"Mostra\" nel menu di scelta rapida .bat e .cmd"
+                       "IT":  "Mostra l'opzione \"Mostra\" nel menu di scelta rapida .bat e .cmd"
                    },
         "Description":  {
                             "IT":  ""
@@ -2400,7 +2433,7 @@
     {
         "Id":  918,
         "Header":  {
-                       "IT":  "L'opzione menu \"includi nella libreria\" nel menu di scelta rapida delle cartelle e delle unità"
+                       "IT":  "Mostra l'opzione \"includi nella libreria\" nel menu di scelta rapida delle cartelle e delle unità"
                    },
         "Description":  {
                             "IT":  ""
@@ -2414,7 +2447,7 @@
     {
         "Id":  919,
         "Header":  {
-                       "IT":  "L'elemento \"Invia a\" nel menu di scelta rapida delle cartelle"
+                       "IT":  "Mostra l'opzione \"Invia a\" nel menu di scelta rapida delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2428,7 +2461,7 @@
     {
         "Id":  920,
         "Header":  {
-                       "IT":  "L'elemento \"Attiva BitLocker\" nel menu di scelta rapida dei dischi"
+                       "IT":  "Mostra l'opzione \"Attiva BitLocker\" nel menu di scelta rapida dei dischi"
                    },
         "Description":  {
                             "IT":  ""
@@ -2442,7 +2475,7 @@
     {
         "Id":  921,
         "Header":  {
-                       "IT":  "L'elemento \"Nuova immagine bitmap\" nel menu di scelta rapida \"nuovo\""
+                       "IT":  "Mostra l'opzione \"Nuova immagine bitmap\" nel menu di scelta rapida \"nuovo\""
                    },
         "Description":  {
                             "IT":  ""
@@ -2470,7 +2503,7 @@
     {
         "Id":  923,
         "Header":  {
-                       "IT":  "L'elemento \"Nuova zip\" nel menu di scelta rapida \"nuovo \""
+                       "IT":  "Mostra l'opzione \"Nuova zip\" nel menu di scelta rapida \"nuovo \""
                    },
         "Description":  {
                             "IT":  ""
@@ -2498,7 +2531,7 @@
     {
         "Id":  925,
         "Header":  {
-                       "IT":  "The \"Look for an app in the Microsoft Store\" items in the \"Open with\" dialog"
+                       "IT":  "Mostra l'opzione \"Cerca un'app nel Microsoft Store\" nel menu \"Apri con\""
                    },
         "Description":  {
                             "IT":  ""
@@ -2512,7 +2545,7 @@
     {
         "Id":  926,
         "Header":  {
-                       "IT":  "Mostra l'elemento \"Apri in Windows Terminal\" nel menu di scelta rapida delle cartelle"
+                       "IT":  "Mostra l'opzione \"Apri in Windows Terminal\" nel menu di scelta rapida delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2526,7 +2559,7 @@
     {
         "Id":  927,
         "Header":  {
-                       "IT":  "Show the \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu"
+                       "IT":  "Mostra l'opzione \"Apri in Windows Terminal\" (Admin) Nel menu contestuale del desktop e delle cartelle"
                    },
         "Description":  {
                             "IT":  ""
@@ -2554,7 +2587,7 @@
     {
         "Id":  929,
         "Header":  {
-                       "IT":  "La voce \"Condividi\" nel menu di scelta rapida"
+                       "IT":  "Mostra l'opzione \"Condividi\" nel menu di scelta rapida"
                    },
         "Description":  {
                             "IT":  ""
