@@ -1778,27 +1778,61 @@
     {
         "Id":  348,
         "Header":  {
-                       "DE":  "\"PC Health Check\" -App deinstallieren"
+                       "DE":  "PC-Integritätsprüfungsanwendung"
                    },
         "Description":  {
-                            "DE":  "Das Update KB5005463 installiert die \"PC Health Check\" -App, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt."
+                            "DE":  "Deinstallieren Sie die PC-Integritätsprüfungsanwendung und verhindern Sie, dass sie in Zukunft installiert wird. Das Update KB5005463 installiert die PC-Integritätsprüfungsanwendung, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt."
                         },
-        "Type":  "CheckBox",
+        "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  349,
+                                  "ChildHeader":  {
+                                                      "DE":  "Deinstallieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  348,
         "Windows10Supported":  true,
         "Windows11Supported":  false
     },
     {
-        "Id":  349,
+        "Id":  353,
         "Header":  {
-                       "DE":  "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64 installieren"
+                       "DE":  "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64"
                    },
         "Description":  {
                             "DE":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien"
                         },
-        "Type":  "CheckBox",
+        "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "DE":  "Installieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "DE":  "Deinstallieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
         "ViewId":  349,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -1811,7 +1845,7 @@
         "Description":  {
                             "DE":  ""
                         },
-        "Type":  "ButtonGroup",
+        "Type":  "OneDriveButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
