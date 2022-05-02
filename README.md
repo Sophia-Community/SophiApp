@@ -81,26 +81,27 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ### Windows 11 Insider Preview
 
-|Version|   Build   |      Editions     | App version |
-|:-----:|:---------:|:-----------------:|:--------------:|
-| 22H2  |   22509   |Home/Pro/Enterprise|[1.0.0.53](https://github.com/Sophia-Community/SophiApp/releases/latest)|
+|Version|   Build   |
+|:-----:|:---------:|
+| 22H2  |   22509   |
 
 ### Windows 11
 
-|Version|   Build   |      Editions     | App version |
-|:-----:|:---------:|:-----------------:|:--------------:|
-| 21H2  | 22000.556 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/Sophia-Community/SophiApp/releases/latest)|
+|Version|   Build   |      Editions     |
+|:-----:|:---------:|:-----------------:|
+| 21H2  | 22000.556 |Home/Pro/Enterprise|
 
 ### Windows 10
 
-|Version|    Marketing name   | Build      | Arch|      Editions     | App version |
-|:-----:|:-------------------:|:----------:|:---:|:-----------------:|:--------------:|
-| 21H2  | October 2021 Update | 19044.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
-| 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
-| 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
-| 2004  | May 2020 Update     | 19041.1151 | x64 |Home/Pro/Enterprise|[1.0.0.53](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest)|
+|Version|    Marketing name   | Build      | Arch|      Editions     |
+|:-----:|:-------------------:|:----------:|:---:|:-----------------:|
+| 21H2  | October 2021 Update | 19044.1151 | x64 |Home/Pro/Enterprise|
+| 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|
+| 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|
+| 2004  | May 2020 Update     | 19041.1151 | x64 |Home/Pro/Enterprise|
 
 ### Beta version
+
 [Download](https://github.com/farag2/Sophia-Script-for-Windows/releases/releases)
 
 ***
