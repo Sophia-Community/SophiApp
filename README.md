@@ -126,7 +126,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 * The app shows the `actual` state of every feature in the UI;
 * Supports high resolutions;
 * Has a built-in search engine;
-  * Functions can be found by searching by their heades and descriptions. [GIF](#searching-feature)
+  * Functions can be found by searching by their headers and descriptions. [GIF](#searching-feature)
 * Supports dark & light themes;
   * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
 * Set up Privacy & Telemetry;
