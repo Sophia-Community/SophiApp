@@ -102,7 +102,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ### Beta version
 
-[Download](https://github.com/farag2/Sophia-Script-for-Windows/releases/releases)
+[Download](https://github.com/farag2/Sophia-Script-for-Windows/releases)
 
 ***
 
