@@ -120,7 +120,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 * 130+ tweaks; ⭐
 * `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
 * Multithreading support;
-* `SophiApp` is checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio; <img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/>
+* `SophiApp` is checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio;
   * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license). 
 * All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into you GitHub account to be able to view Actions logs);
