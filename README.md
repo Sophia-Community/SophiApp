@@ -154,6 +154,9 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
+
+## Localized UWP packages names
+
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/7.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/8.png)
