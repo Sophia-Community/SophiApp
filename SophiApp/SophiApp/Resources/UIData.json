@@ -3850,9 +3850,9 @@
     "Id": 914,
     "Header": {
       "EN": "Show the \"Edit with Photos\" item in the media files context menu",
-      "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов",
+      "RU": "Показывать пункт \"Изменить с помощью приложения «Фотографии»\" в контекстном меню медиа-файлов",
       "DE": "Diesen Kontextmenüeintrag \"Mit Fotos bearbeiten\" anzeigen",
-      "UA": "Показувати пункт \"Змінити за допомогою програми \"Фотографії\"\" у контекстному меню медіа-файлів",
+      "UA": "Показувати пункт \"Змінити за допомогою програми «Фотографії»\" у контекстному меню медіа-файлів",
       "IT": "Mostra Mostra l'opzione \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
     },
     "Description": {
