@@ -3158,7 +3158,7 @@
       "RU": "Включить автозагрузку Microsoft Teams",
       "DE": "Microsoft Teams Autostart aktivieren",
       "UA": "Увімкнути автозавантаження Microsoft Teams",
-      "IT": "Abilita Autoavvio di Microsoft Teamss"
+      "IT": "Abilita Autoavvio di Microsoft Teams"
     },
     "Description": {
       "EN": "",
@@ -3170,6 +3170,48 @@
     "Type": "CheckBox",
     "Tag": "UwpApps",
     "Windows10Supported": false,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 503,
+    "Header": {
+      "EN": "Restore the Microsoft Store",
+      "RU": "Восстановление Microsoft Store",
+      "DE": "Restore the Microsoft Store",
+      "UA": "Restore the Microsoft Store",
+      "IT": "Ripristina il Microsoft Store"
+    },
+    "Description": {
+      "EN": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "RU": "При повреждении или удалении Microsoft Store его можно восстановить, скачав все необходимые зависимости с ресурса Microsoft (необходимо подключение к интернету). Скачивание и установка может занимать до 10 минут. Пожалуйста, не закрывайте консоль до ее автоматического закрытия.",
+      "DE": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "UA": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "IT": "Se il Microsoft Store è danneggiato o rimosso, puoi ripristinarlo scaricando le dipendenze necessarie dai server Microsoft (connessione a Internet richiesta). Il download e l'installazione possone richiedere fino a 10 minuti. No chiudere la console, si chiuderà automaticamente alla fine del processo."
+    },
+    "Type": "AdvancedButtonGroup",
+    "Tag": "UwpApps",
+    "ChildElements": [
+      {
+        "Id": 504,
+        "ChildHeader": {
+          "EN": "Restore",
+          "RU": "Восстановить",
+          "DE": "Restore",
+          "UA": "Restore",
+          "IT": "Ripristina"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 503,
+    "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
