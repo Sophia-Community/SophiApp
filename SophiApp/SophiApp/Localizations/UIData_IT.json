@@ -1956,6 +1956,32 @@
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
+  {
+    "Id": 503,
+    "Header": {
+      "IT": "Ripristina il Microsoft Store"
+    },
+    "Description": {
+      "IT": "Se il Microsoft Store è stato danneggiato o rimosso, puoi ripristinarlo scaricando le dipendenze necessarie dai server Microsoft (connessione a Internet richiesta). Il download e l'installazione possone richiedere fino a 10 minuti. No chiudere la console, si chiuderà automaticamente alla fine del processo."
+    },
+    "Type": "AdvancedButtonGroup",
+    "Tag": "UwpApps",
+    "ChildElements": [
+      {
+        "Id": 504,
+        "ChildHeader": {
+          "IT": "Ripristina"
+        },
+        "ChildDescription": {
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 503,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
     {
         "Id":  600,
         "Header":  {

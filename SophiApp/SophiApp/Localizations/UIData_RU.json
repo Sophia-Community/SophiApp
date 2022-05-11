@@ -1956,6 +1956,32 @@
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
+  {
+    "Id": 503,
+    "Header": {
+      "RU": "Восстановление Microsoft Store"
+    },
+    "Description": {
+      "RU": "При повреждении или удалении Microsoft Store его можно восстановить, скачав все необходимые зависимости с ресурса Microsoft (необходимо подключение к интернету). Скачивание и установка может занимать до 10 минут. Пожалуйста, не закрывайте консоль до ее автоматического закрытия"
+    },
+    "Type": "AdvancedButtonGroup",
+    "Tag": "UwpApps",
+    "ChildElements": [
+      {
+        "Id": 504,
+        "ChildHeader": {
+          "RU": "Восстановить"
+        },
+        "ChildDescription": {
+          "RU": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 503,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
     {
         "Id":  600,
         "Header":  {

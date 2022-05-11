@@ -3176,16 +3176,16 @@
     "Id": 503,
     "Header": {
       "EN": "Restore the Microsoft Store",
-      "RU": "Восстановление Microsoft Store",
+      "RU": "Восстановить Microsoft Store",
       "DE": "Restore the Microsoft Store",
-      "UA": "Restore the Microsoft Store",
+      "UA": "Відновити Microsoft Store",
       "IT": "Ripristina il Microsoft Store"
     },
     "Description": {
-      "EN": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
-      "RU": "При повреждении или удалении Microsoft Store его можно восстановить, скачав все необходимые зависимости с ресурса Microsoft (необходимо подключение к интернету). Скачивание и установка может занимать до 10 минут. Пожалуйста, не закрывайте консоль до ее автоматического закрытия.",
+      "EN": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (Internet connection required). Downloading and installation can take up to 10 minutes. A console window will run when restoring so please do not close it. The console will automatically close when finished.",
+      "RU": "При повреждении или удалении Microsoft Store его можно восстановить, скачав все необходимые зависимости с ресурса Microsoft (необходимо подключение к интернету). Скачивание и установка может занимать до 10 минут. Пожалуйста, не закрывайте консоль до ее автоматического закрытия",
       "DE": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
-      "UA": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "UA": "При пошкодженні або видаленні Microsoft Store ви можете відновити його, завантаживши всі необхідні залежності для ресурсів Microsoft (потрібне підключення до Інтернету). Завантаження і встановлення може зайняти до 10 хвилин. Будь ласка, не закривайте консоль, перш ніж вона буде автоматично закрита",
       "IT": "Se il Microsoft Store è stato danneggiato o rimosso, puoi ripristinarlo scaricando le dipendenze necessarie dai server Microsoft (connessione a Internet richiesta). Il download e l'installazione possone richiedere fino a 10 minuti. No chiudere la console, si chiuderà automaticamente alla fine del processo."
     },
     "Type": "AdvancedButtonGroup",
@@ -3197,7 +3197,7 @@
           "EN": "Restore",
           "RU": "Восстановить",
           "DE": "Restore",
-          "UA": "Restore",
+          "UA": "Відновити",
           "IT": "Ripristina"
         },
         "ChildDescription": {

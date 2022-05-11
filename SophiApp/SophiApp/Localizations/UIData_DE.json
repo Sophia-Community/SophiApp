@@ -1956,6 +1956,32 @@
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
+  {
+    "Id": 503,
+    "Header": {
+      "DE": "Wiederherstellung des Microsoft Store"
+    },
+    "Description": {
+      "DE": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically."
+    },
+    "Type": "AdvancedButtonGroup",
+    "Tag": "UwpApps",
+    "ChildElements": [
+      {
+        "Id": 504,
+        "ChildHeader": {
+          "DE": "Wiederherstellen"
+        },
+        "ChildDescription": {
+          "DE": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 503,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
     {
         "Id":  600,
         "Header":  {

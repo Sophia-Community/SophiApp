@@ -1956,6 +1956,32 @@
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
+  {
+    "Id": 503,
+    "Header": {
+      "UA": "Відновити Microsoft Store"
+    },
+    "Description": {
+      "UA": "При пошкодженні або видаленні Microsoft Store ви можете відновити його, завантаживши всі необхідні залежності для ресурсів Microsoft (потрібне підключення до Інтернету).  Завантаження і встановлення може зайняти до 10 хвилин. Будь ласка, не закривайте консоль, перш ніж вона буде автоматично закрита",
+    },
+    "Type": "AdvancedButtonGroup",
+    "Tag": "UwpApps",
+    "ChildElements": [
+      {
+        "Id": 504,
+        "ChildHeader": {
+          "UA": "Відновити"
+        },
+        "ChildDescription": {
+          "UA": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 503,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
     {
         "Id":  600,
         "Header":  {
