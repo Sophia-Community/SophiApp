@@ -9,6 +9,8 @@
     xmlns:views="clr-namespace:SophiApp.Views"
     x:Name="Window"
     Closed="Window_Closed"
+    controls:AdvancedButtonGroup.MouseEnter="TextedElement_MouseEnter"
+    controls:AdvancedButtonGroup.MouseLeave="TextedElement_MouseLeave"
     controls:AdvancedRadioGroup.MouseEnter="TextedElement_MouseEnter"
     controls:AdvancedRadioGroup.MouseLeave="TextedElement_MouseLeave"
     controls:AdvancedSwitch.MouseEnter="TextedElement_MouseEnter"

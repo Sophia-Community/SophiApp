@@ -976,6 +976,8 @@ namespace SophiApp.Customisations
                                                                                           : _502_TEAMS_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
+        public static void _504(bool _) => ProcessHelper.Start(processName: POWERSHELL_EXE, args: _504_MICROSOFT_STORE_RESET);
+
         public static void _600(bool IsChecked)
         {
             RegHelper.SetValue(RegistryHive.CurrentUser,

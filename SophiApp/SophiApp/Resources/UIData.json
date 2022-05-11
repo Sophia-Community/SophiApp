@@ -3173,6 +3173,48 @@
     "Windows11Supported": true
   },
   {
+    "Id": 503,
+    "Header": {
+      "EN": "Restore the Microsoft Store",
+      "RU": "Восстановление Microsoft Store",
+      "DE": "Restore the Microsoft Store",
+      "UA": "Restore the Microsoft Store",
+      "IT": "Restore the Microsoft Store"
+    },
+    "Description": {
+      "EN": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "RU": "При повреждении или удалении Microsoft Store его можно восстановить, скачав все необходимые зависимости с ресурса Microsoft (необходимо подключение к интернету). Скачивание и установка может занимать до 10 минут. Пожалуйста, не закрывайте консоль до ее автоматического закрытия.",
+      "DE": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "UA": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+      "IT": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically."
+    },
+    "Type": "AdvancedButtonGroup",
+    "Tag": "UwpApps",
+    "ChildElements": [
+      {
+        "Id": 504,
+        "ChildHeader": {
+          "EN": "Restore",
+          "RU": "Восстановить",
+          "DE": "Restore",
+          "UA": "Restore",
+          "IT": "Restore"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 503,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
     "Id": 600,
     "Header": {
       "EN": "Xbox Game Bar",

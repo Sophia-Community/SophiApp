@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
              xmlns:local="clr-namespace:SophiApp.Views"
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:SophiApp.Controls"
@@ -12,6 +13,7 @@
     <UserControl.Resources>
         <Thickness x:Key="ItemsMargin" Left="20" Top="5" Right="0" Bottom="5" />
         <Thickness x:Key="UwpItemsMargin" Left="0" Top="15" Right="10" Bottom="0" />
+        <converters:BoolToVisibility x:Key="BoolToVisibilityConverter" />
         <CollectionViewSource x:Key="UwpElementsCurrentUserCollection" Source="{Binding UwpElementsCurrentUser}" />
         <CollectionViewSource x:Key="UwpElementsAllUsersCollection" Source="{Binding UwpElementsAllUsers}" />
         <CollectionViewSource x:Key="TextedElementsCollection" Filter="TextedElementsFilter" Source="{Binding TextedElements}" />
@@ -108,6 +110,11 @@
                                                        Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"
                                                        Id="{Binding Id}"
                                                        Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type models:AdvancedButtonGroup}">
+                                    <controls:AdvancedButtonGroup Margin="{StaticResource ItemsMargin}"
+                                                                  Command="{Binding Path=DataContext.TextedElementClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}}"
+                                                                  Visibility="{Binding Path=DataContext.AdvancedSettingsVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:ViewUwpApps}}, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

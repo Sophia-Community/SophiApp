@@ -226,6 +226,7 @@ namespace SophiApp.Customisations
         internal const byte _502_TEAMS_ENABLED_VALUE = 2;
         internal const string _502_TEAMS_STARTUP_PATH = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask";
         internal const string _502_UWP_MICROSOFT_TEAMS = "MicrosoftTeams";
+        internal const string _504_MICROSOFT_STORE_RESET = "wsreset -i";
         internal const string _600_APP_CAPTURE = "AppCaptureEnabled";
         internal const string _600_GAME_CONFIG_PATH = @"System\GameConfigStore";
         internal const string _600_GAME_DVR = "GameDVR_Enabled";

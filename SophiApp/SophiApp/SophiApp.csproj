@@ -113,6 +113,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\AdvancedButtonGroup.xaml.cs">
+      <DependentUpon>AdvancedButtonGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MsCppPackageButtonGroup.xaml.cs">
       <DependentUpon>MsCppPackageButtonGroup.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,7 @@
     <Compile Include="Helpers\HttpHelper.cs" />
     <Compile Include="Helpers\VisualRedistrLibsHelper.cs" />
     <Compile Include="Helpers\WindowsDefenderHelper.cs" />
+    <Compile Include="Models\AdvancedButtonGroup.cs" />
     <Compile Include="Models\MsCppPackageButtonGroup.cs" />
     <Compile Include="Models\OneDriveButtonGroup.cs" />
     <Compile Include="Models\PcHealthCheckButtonGroup.cs" />
@@ -341,6 +345,10 @@
     <Page Include="Controls\ActorLink.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AdvancedButtonGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Button.xaml">
       <Generator>MSBuild:Compile</Generator>

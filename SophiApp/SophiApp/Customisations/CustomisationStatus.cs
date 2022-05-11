@@ -452,6 +452,10 @@ namespace SophiApp.Customisations
                                      ? RegHelper.GetByteValue(RegistryHive.CurrentUser, _502_TEAMS_STARTUP_PATH, STATE) == _502_TEAMS_ENABLED_VALUE
                                      : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
 
+        public static bool _504() => HttpHelper.IsOnline
+                                     ? false
+                                     : throw new NoInternetConnectionException();
+
         public static bool _600() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == DISABLED_VALUE
                                         & RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == DISABLED_VALUE).Invert();
 
