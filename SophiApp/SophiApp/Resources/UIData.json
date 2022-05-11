@@ -3179,14 +3179,22 @@
       "RU": "Восстановление Microsoft Store",
       "DE": "Restore the Microsoft Store",
       "UA": "Restore the Microsoft Store",
+<<<<<<< HEAD
       "IT": "Ripristina il Microsoft Store"
+=======
+      "IT": "Restore the Microsoft Store"
+>>>>>>> c2786e6ac358773fa1583c97513459768c5b8b1c
     },
     "Description": {
       "EN": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
       "RU": "При повреждении или удалении Microsoft Store его можно восстановить, скачав все необходимые зависимости с ресурса Microsoft (необходимо подключение к интернету). Скачивание и установка может занимать до 10 минут. Пожалуйста, не закрывайте консоль до ее автоматического закрытия.",
       "DE": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
       "UA": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically.",
+<<<<<<< HEAD
       "IT": "Se il Microsoft Store è danneggiato o rimosso, puoi ripristinarlo scaricando le dipendenze necessarie dai server Microsoft (connessione a Internet richiesta). Il download e l'installazione possone richiedere fino a 10 minuti. No chiudere la console, si chiuderà automaticamente alla fine del processo."
+=======
+      "IT": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (the Internet connection required). Downloading and installation can take up to 10 minutes. Please do not close the console before it closes automatically."
+>>>>>>> c2786e6ac358773fa1583c97513459768c5b8b1c
     },
     "Type": "AdvancedButtonGroup",
     "Tag": "UwpApps",
@@ -3198,7 +3206,11 @@
           "RU": "Восстановить",
           "DE": "Restore",
           "UA": "Restore",
+<<<<<<< HEAD
           "IT": "Ripristina"
+=======
+          "IT": "Restore"
+>>>>>>> c2786e6ac358773fa1583c97513459768c5b8b1c
         },
         "ChildDescription": {
           "EN": "",
@@ -3892,9 +3904,9 @@
     "Id": 914,
     "Header": {
       "EN": "Show the \"Edit with Photos\" item in the media files context menu",
-      "RU": "Показывать пункт \"Изменить с помощью приложения \"Фотографии\"\" в контекстном меню медиа-файлов",
+      "RU": "Показывать пункт \"Изменить с помощью приложения «Фотографии»\" в контекстном меню медиа-файлов",
       "DE": "Diesen Kontextmenüeintrag \"Mit Fotos bearbeiten\" anzeigen",
-      "UA": "Показувати пункт \"Змінити за допомогою програми \"Фотографії\"\" у контекстному меню медіа-файлів",
+      "UA": "Показувати пункт \"Змінити за допомогою програми «Фотографії»\" у контекстному меню медіа-файлів",
       "IT": "Mostra Mostra l'opzione \"Modifica con foto\" nel menu di scelta rapida dei file multimediali"
     },
     "Description": {
