@@ -226,7 +226,7 @@ namespace SophiApp.Customisations
         internal const byte _502_TEAMS_ENABLED_VALUE = 2;
         internal const string _502_TEAMS_STARTUP_PATH = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask";
         internal const string _502_UWP_MICROSOFT_TEAMS = "MicrosoftTeams";
-        internal const string _504_MICROSOFT_STORE_RESET = "wsreset -i";
+        internal const string _504_MICROSOFT_STORE_RESET = "-i";
         internal const string _600_APP_CAPTURE = "AppCaptureEnabled";
         internal const string _600_GAME_CONFIG_PATH = @"System\GameConfigStore";
         internal const string _600_GAME_DVR = "GameDVR_Enabled";
@@ -688,6 +688,7 @@ else
         internal const string WIN_VER_PRO = "Professional";
         internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
+        internal const string WSRESET_EXE = "WSreset.exe";
         internal const string WUSA_EXE = "wusa.exe";
         internal const string X64 = "x64";
         internal static readonly string _203_WIN10_EXPLORER_INPROC_PATH = $@"{_203_WIN10_EXPLORER_PATH}\InprocServer32";
