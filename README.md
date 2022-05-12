@@ -163,6 +163,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
 
 ## Searching feature
 
