@@ -453,7 +453,9 @@ namespace SophiApp.Customisations
                                      : throw new UwpAppNotFoundException(_502_UWP_MICROSOFT_TEAMS);
 
         public static bool _504() => HttpHelper.IsOnline
-                                     ? false
+                                     ? File.Exists(_504_MS_STORE_RESET_EXE)
+                                        ? false
+                                        : throw new FileNotExistException(_504_MS_STORE_RESET_EXE)
                                      : throw new NoInternetConnectionException();
 
         public static bool _600() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == DISABLED_VALUE

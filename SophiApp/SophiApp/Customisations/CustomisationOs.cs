@@ -951,7 +951,7 @@ namespace SophiApp.Customisations
                                     .Cast<Match>()
                                     .FirstOrDefault(link => Regex.IsMatch(link.Groups["Version"].Value, hevcvPattern));
 
-                var hevcvAppx = $@"{ RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{ hevcvDto.Groups["Version"].Value }";
+                var hevcvAppx = $@"{RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, USER_DOWNLOAD_FOLDER)}\{hevcvDto.Groups["Version"].Value}";
                 WebHelper.Download(hevcvDto.Groups["Url"].Value, hevcvAppx, true);
                 UwpHelper.InstallPackage(hevcvAppx);
                 FileHelper.TryDeleteFile(hevcvAppx);
@@ -976,7 +976,7 @@ namespace SophiApp.Customisations
                                                                                           : _502_TEAMS_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _504(bool _) => ProcessHelper.Start(processName: WSRESET_EXE, args: _504_MICROSOFT_STORE_RESET);
+        public static void _504(bool _) => ProcessHelper.Start(processName: WSRESET_EXE, args: _504_MS_STORE_RESET_ARG);
 
         public static void _600(bool IsChecked)
         {

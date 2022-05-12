@@ -30,7 +30,7 @@ namespace SophiApp.Helpers
         {
             foreach (var name in GetKey(hive, path).GetSubKeyNames())
             {
-                yield return $@"{ path }\{ name }";
+                yield return $@"{path}\{name}";
             }
         }
 

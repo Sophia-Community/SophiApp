@@ -16,6 +16,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class FileNotExistException : Exception
+    {
+        public FileNotExistException(string filePath) : base($"File does not exist \"{filePath}\"")
+        {
+        }
+    }
+
     internal class MicrosoftDefenderDisabledByGroupPolicy : Exception
     {
         public MicrosoftDefenderDisabledByGroupPolicy() : base("Microsoft Defender disabled by group policy")

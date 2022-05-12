@@ -236,7 +236,7 @@ namespace SophiApp.ViewModels
             FoundTextedElement = new List<TextedElement>();
             Search = SearchState.Stopped;
             UwpForAllUsersState = ElementStatus.UNCHECKED;
-            DebugHelper.AppLanguage($"{ Localization.Language }");
+            DebugHelper.AppLanguage($"{Localization.Language}");
             DebugHelper.AppTheme(AppSelectedTheme.Alias);
         }
 
