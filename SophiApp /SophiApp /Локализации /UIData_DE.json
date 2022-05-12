@@ -1959,7 +1959,7 @@
   {
     "Id": 503,
     "Header": {
-      "DE": "Wiederherstellung des Microsoft Store"
+      "DE": "Microsoft Store wiederherstellen"
     },
     "Description": {
       "DE": "Wenn der Microsoft Store beschädigt oder entfernt wurde, können Sie ihn wiederherstellen, indem Sie alle erforderlichen Abhängigkeiten von der Microsoft-Ressource herunterladen (Internetverbindung erforderlich). Das Herunterladen und die Installation können bis zu 10 Minuten dauern. Bitte schließen Sie die Konsole nicht, bevor sie sich automatisch schließt."
