@@ -13,8 +13,8 @@
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Esegui Windows Update per aggiornare il sistema operativo all'ultima versione.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supporta Windows 10 2004/20H2/21H1/21H2,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, &amp; Windows 11 Insider Preview.</system:String>
-    <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Some Windows components may have been broken.</system:String>
-    <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Please re-install the OS.</system:String>
+    <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Alcuni componenti di Windows potrebbero essere rotti.</system:String>
+    <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Si prega di reinstallare il sistema operativo.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Il tuo sistema potrebbe essere infettato per una backdoor in Win 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Scopri di più:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
