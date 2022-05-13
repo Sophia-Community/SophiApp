@@ -253,7 +253,7 @@
                        "EN":  "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers"
                    },
         "Description":  {
-                            "EN":  "Windows may open a pop-up window to show you what\u0027s new about the operating system."
+                            "EN":  "Windows may open a pop-up window to show you what's new about the operating system."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -546,7 +546,7 @@
     {
         "Id":  215,
         "Header":  {
-                       "EN":  "Show snap layouts when I hover over a windows\u0027s maximize button"
+                       "EN":  "Show snap layouts when I hover over a windows's maximize button"
                    },
         "Description":  {
                             "EN":  ""
@@ -1140,7 +1140,7 @@
     {
         "Id":  261,
         "Header":  {
-                       "EN":  "When I grab a windows\u0027s title bar and shake it, minimize all other windows"
+                       "EN":  "When I grab a windows's title bar and shake it, minimize all other windows"
                    },
         "Description":  {
                             "EN":  ""
@@ -1204,7 +1204,7 @@
     {
         "Id":  304,
         "Header":  {
-                       "EN":  "Delete temporary files that aren\u0027t used by apps"
+                       "EN":  "Delete temporary files that aren't used by apps"
                    },
         "Description":  {
                             "EN":  ""
@@ -1296,46 +1296,52 @@
     {
         "Id":  311,
         "Header":  {
-                       "EN":  "Choose when to be notified about changes to your computer"
+                       "EN":  "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode"
                    },
         "Description":  {
-                            "EN":  "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run."
+                            "EN":  "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  312,
-                                  "ChildHeader":  {
-                                                      "EN":  "Notify me only when apps try to make changes to my computer"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt."
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  313,
-                                  "ChildHeader":  {
-                                                      "EN":  "Never notify"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt."
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  311,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  312,
+        "Header":  {
+                       "EN":  "Enable downloading updates with delivery optimization"
+                   },
+        "Description":  {
+                            "EN":  "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that's needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  312,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  313,
+        "Header":  {
+                       "EN":  "Always wait for the network at computer startup and logon for workgroup networks"
+                   },
+        "Description":  {
+                            "EN":  "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  313,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
         "Id":  314,
         "Header":  {
-                       "EN":  "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode"
+                       "EN":  "Let Windows manage my default printer"
                    },
         "Description":  {
-                            "EN":  "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders."
+                            "EN":  "By default, Windows make the last used printer as the default one."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1346,10 +1352,10 @@
     {
         "Id":  315,
         "Header":  {
-                       "EN":  "Enable downloading updates with delivery optimization"
+                       "EN":  "Receive updates for other Microsoft products"
                    },
         "Description":  {
-                            "EN":  "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that\u0027s needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection."
+                            "EN":  "Get Microsoft Office and other updates together with Windows updates."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1360,48 +1366,6 @@
     {
         "Id":  316,
         "Header":  {
-                       "EN":  "Always wait for the network at computer startup and logon for workgroup networks"
-                   },
-        "Description":  {
-                            "EN":  "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  316,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  317,
-        "Header":  {
-                       "EN":  "Let Windows manage my default printer"
-                   },
-        "Description":  {
-                            "EN":  "By default, Windows make the last used printer as the default one."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  317,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  318,
-        "Header":  {
-                       "EN":  "Receive updates for other Microsoft products"
-                   },
-        "Description":  {
-                            "EN":  "Get Microsoft Office and other updates together with Windows updates."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  318,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  319,
-        "Header":  {
                        "EN":  "Choose the power plan"
                    },
         "Description":  {
@@ -1411,7 +1375,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  320,
+                                  "Id":  317,
                                   "ChildHeader":  {
                                                       "EN":  "High performance"
                                                   },
@@ -1421,7 +1385,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  321,
+                                  "Id":  318,
                                   "ChildHeader":  {
                                                       "EN":  "Balanced"
                                                   },
@@ -1431,12 +1395,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  319,
+        "ViewId":  316,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  322,
+        "Id":  319,
         "Header":  {
                        "EN":  "Use the latest installed .NET Framework runtime for all apps"
                    },
@@ -1445,12 +1409,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  322,
+        "ViewId":  319,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  323,
+        "Id":  320,
         "Header":  {
                        "EN":  "Allow the computer to turn off the network adapters to save power"
                    },
@@ -1459,12 +1423,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  324,
+        "ViewId":  320,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  324,
+        "Id":  321,
         "Header":  {
                        "EN":  "Override for default input method"
                    },
@@ -1475,7 +1439,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  325,
+                                  "Id":  322,
                                   "ChildHeader":  {
                                                       "EN":  "Use language list"
                                                   },
@@ -1485,9 +1449,45 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  326,
+                                  "Id":  323,
                                   "ChildHeader":  {
                                                       "EN":  "English"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  321,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  324,
+        "Header":  {
+                       "EN":  "Select folder to save screenshots when pressing Win+PrtScn"
+                   },
+        "Description":  {
+                            "EN":  "Select the \"Desktop\" if you choose to remove OneDrive only (or it was uninstalled before), otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  325,
+                                  "ChildHeader":  {
+                                                      "EN":  "Desktop"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  326,
+                                  "ChildHeader":  {
+                                                      "EN":  "Pictures folder"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  ""
@@ -1502,10 +1502,10 @@
     {
         "Id":  327,
         "Header":  {
-                       "EN":  "Select folder to save screenshots when pressing Win+PrtScn"
+                       "EN":  "Recommended troubleshooting"
                    },
         "Description":  {
-                            "EN":  "Select the \"Desktop\" if you choose to remove OneDrive only (or it was uninstalled before), otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks."
+                            "EN":  "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1513,20 +1513,20 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "EN":  "Desktop"
+                                                      "EN":  "Run troubleshooters automatically, then notify"
                                                   },
                                   "ChildDescription":  {
-                                                           "EN":  ""
+                                                           "EN":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  329,
                                   "ChildHeader":  {
-                                                      "EN":  "Pictures folder"
+                                                      "EN":  "Ask me before running troubleshooter"
                                                   },
                                   "ChildDescription":  {
-                                                           "EN":  ""
+                                                           "EN":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1538,46 +1538,52 @@
     {
         "Id":  330,
         "Header":  {
-                       "EN":  "Recommended troubleshooting"
+                       "EN":  "Launch folder windows in a separate process"
                    },
         "Description":  {
-                            "EN":  "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?"
+                            "EN":  "By default, all File Explorer windows, including the desktop shell, run in a single explorer.exe process. If one File Explorer window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  331,
-                                  "ChildHeader":  {
-                                                      "EN":  "Run troubleshooters automatically, then notify"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on."
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  332,
-                                  "ChildHeader":  {
-                                                      "EN":  "Ask me before running troubleshooter"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on."
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  330,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  331,
+        "Header":  {
+                       "EN":  "Enable reserved storage"
+                   },
+        "Description":  {
+                            "EN":  "To make sure your device can successfully update and that it runs its best, Windows reserves a portion of storage space on your device for use by temporary files, caches, and other files. When your device is low on space, Windows will clear reserved storage so it can be used for other processes, like a Windows update. Reserving storage also helps keep disk space usage on your device more predictable and more stable. After disabling the reserved storage will be deleted after the next update installation."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  331,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  332,
+        "Header":  {
+                       "EN":  "Enable help look up via F1"
+                   },
+        "Description":  {
+                            "EN":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  332,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
         "Id":  333,
         "Header":  {
-                       "EN":  "Launch folder windows in a separate process"
+                       "EN":  "Enable Num Lock at startup"
                    },
         "Description":  {
-                            "EN":  "By default, all File Explorer windows, including the desktop shell, run in a single explorer.exe process. If one File Explorer window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell."
+                            "EN":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1588,10 +1594,10 @@
     {
         "Id":  334,
         "Header":  {
-                       "EN":  "Enable reserved storage"
+                       "EN":  "Enable Caps Lock"
                    },
         "Description":  {
-                            "EN":  "To make sure your device can successfully update and that it runs its best, Windows reserves a portion of storage space on your device for use by temporary files, caches, and other files. When your device is low on space, Windows will clear reserved storage so it can be used for other processes, like a Windows update. Reserving storage also helps keep disk space usage on your device more predictable and more stable. After disabling the reserved storage will be deleted after the next update installation."
+                            "EN":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1602,10 +1608,10 @@
     {
         "Id":  335,
         "Header":  {
-                       "EN":  "Enable help look up via F1"
+                       "EN":  "Keyboard shortcut for Sticky keys"
                    },
         "Description":  {
-                            "EN":  ""
+                            "EN":  "Press the Shift key 5 times to turn Sticky keys on or off"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1616,7 +1622,7 @@
     {
         "Id":  336,
         "Header":  {
-                       "EN":  "Enable Num Lock at startup"
+                       "EN":  "Use AutoPlay for all media and devices"
                    },
         "Description":  {
                             "EN":  ""
@@ -1630,10 +1636,10 @@
     {
         "Id":  337,
         "Header":  {
-                       "EN":  "Enable Caps Lock"
+                       "EN":  "Enable thumbnail cache removal"
                    },
         "Description":  {
-                            "EN":  ""
+                            "EN":  "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1644,10 +1650,10 @@
     {
         "Id":  338,
         "Header":  {
-                       "EN":  "Keyboard shortcut for Sticky keys"
+                       "EN":  "Restart apps after signing in"
                    },
         "Description":  {
-                            "EN":  "Press the Shift key 5 times to turn Sticky keys on or off"
+                            "EN":  "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1658,7 +1664,7 @@
     {
         "Id":  339,
         "Header":  {
-                       "EN":  "Use AutoPlay for all media and devices"
+                       "EN":  "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks"
                    },
         "Description":  {
                             "EN":  ""
@@ -1672,10 +1678,10 @@
     {
         "Id":  340,
         "Header":  {
-                       "EN":  "Enable thumbnail cache removal"
+                       "EN":  "Automatically adjust active hours for me based on daily usage"
                    },
         "Description":  {
-                            "EN":  "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder."
+                            "EN":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1686,10 +1692,10 @@
     {
         "Id":  341,
         "Header":  {
-                       "EN":  "Restart apps after signing in"
+                       "EN":  "Restart as soon as possible to finish updating"
                    },
         "Description":  {
-                            "EN":  "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions."
+                            "EN":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1700,48 +1706,6 @@
     {
         "Id":  342,
         "Header":  {
-                       "EN":  "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks"
-                   },
-        "Description":  {
-                            "EN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  342,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  343,
-        "Header":  {
-                       "EN":  "Automatically adjust active hours for me based on daily usage"
-                   },
-        "Description":  {
-                            "EN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  343,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  344,
-        "Header":  {
-                       "EN":  "Restart as soon as possible to finish updating"
-                   },
-        "Description":  {
-                            "EN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  344,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  345,
-        "Header":  {
                        "EN":  "Default terminal app"
                    },
         "Description":  {
@@ -1751,7 +1715,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  346,
+                                  "Id":  343,
                                   "ChildHeader":  {
                                                       "EN":  "Windows Terminal"
                                                   },
@@ -1761,7 +1725,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  347,
+                                  "Id":  344,
                                   "ChildHeader":  {
                                                       "EN":  "Windows Console Host"
                                                   },
@@ -1771,12 +1735,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  345,
+        "ViewId":  342,
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
-        "Id":  348,
+        "Id":  345,
         "Header":  {
                        "EN":  "PC Health Check app"
                    },
@@ -1786,6 +1750,42 @@
         "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
+                              {
+                                  "Id":  346,
+                                  "ChildHeader":  {
+                                                      "EN":  "Uninstall"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  345,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  347,
+        "Header":  {
+                       "EN":  "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64"
+                   },
+        "Description":  {
+                            "EN":  "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files."
+                        },
+        "Type":  "MsCppPackageButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  348,
+                                  "ChildHeader":  {
+                                                      "EN":  "Install"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
                               {
                                   "Id":  349,
                                   "ChildHeader":  {
@@ -1797,43 +1797,7 @@
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  348,
-        "Windows10Supported":  true,
-        "Windows11Supported":  false
-    },
-    {
-        "Id":  353,
-        "Header":  {
-                       "EN":  "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64"
-                   },
-        "Description":  {
-                            "EN":  "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files."
-                        },
-        "Type":  "MsCppPackageButtonGroup",
-        "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  354,
-                                  "ChildHeader":  {
-                                                      "EN":  "Install"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  ""
-                                                       },
-                                  "Type":  "Button"
-                              },
-                              {
-                                  "Id":  355,
-                                  "ChildHeader":  {
-                                                      "EN":  "Uninstall"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  ""
-                                                       },
-                                  "Type":  "Button"
-                              }
-                          ],
-        "ViewId":  349,
+        "ViewId":  347,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
@@ -1956,39 +1920,39 @@
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
-  {
-    "Id": 503,
-    "Header": {
-      "EN": "Restore the Microsoft Store"
+    {
+        "Id":  503,
+        "Header":  {
+                       "EN":  "Restore the Microsoft Store"
+                   },
+        "Description":  {
+                            "EN":  "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (Internet connection required). Downloading and installation can take up to 10 minutes. A console window will run when restoring so please do not close it. The console will automatically close when finished."
+                        },
+        "Type":  "AdvancedButtonGroup",
+        "Tag":  "UwpApps",
+        "ChildElements":  [
+                              {
+                                  "Id":  504,
+                                  "ChildHeader":  {
+                                                      "EN":  "Restore"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  503,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
     },
-    "Description": {
-      "EN": "If the Microsoft Store is damaged or removed, you can restore it by downloading all the necessary dependencies from the Microsoft resource (Internet connection required). Downloading and installation can take up to 10 minutes. A console window will run when restoring so please do not close it. The console will automatically close when finished."
-    },
-    "Type": "AdvancedButtonGroup",
-    "Tag": "UwpApps",
-    "ChildElements": [
-      {
-        "Id": 504,
-        "ChildHeader": {
-          "EN": "Restore"
-        },
-        "ChildDescription": {
-          "EN": ""
-        },
-        "Type": "Button"
-      }
-    ],
-    "ViewId": 503,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
     {
         "Id":  600,
         "Header":  {
                        "EN":  "Xbox Game Bar"
                    },
         "Description":  {
-                            "EN":  "To prevent popping up the \"You\u0027ll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before."
+                            "EN":  "To prevent popping up the \"You'll need a new app to open this ms-gamingoverlay\" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -2016,7 +1980,7 @@
                        "EN":  "Hardware-accelerated GPU scheduling"
                    },
         "Description":  {
-                            "EN":  "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU\u0027s scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better."
+                            "EN":  "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -2226,11 +2190,47 @@
                        "EN":  "Windows Sandbox"
                    },
         "Description":  {
-                            "EN":  "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it\u0027s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn\u0027t work in Home Edition."
+                            "EN":  "Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
         "ViewId":  811,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  812,
+        "Header":  {
+                       "EN":  "Choose when to be notified about changes to your computer"
+                   },
+        "Description":  {
+                            "EN":  "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Security",
+        "ChildElements":  [
+                              {
+                                  "Id":  813,
+                                  "ChildHeader":  {
+                                                      "EN":  "Notify me only when apps try to make changes to my computer"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt."
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  814,
+                                  "ChildHeader":  {
+                                                      "EN":  "Never notify"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt."
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  812,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
