@@ -13,6 +13,8 @@
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустіть Центр оновлення Windows, щоб оновити ОС до актуальної версії.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp підтримує Windows 10 2004/20H2/21H1/21H2,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 та Windows 11 Insider Preview.</system:String>
+    <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Some Windows components may have been broken.</system:String>
+    <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Please re-install the OS.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була заражена трояном.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Детальніше:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>

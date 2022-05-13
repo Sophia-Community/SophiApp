@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.ServiceProcess;
 
@@ -49,6 +50,8 @@ namespace SophiApp.Helpers
             service.Start();
             service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(timeout));
         }
+
+        internal static bool ServiceExist(string serviceName) => ServiceController.GetServices().Any(service => service.ServiceName == serviceName);
 
         public static void SetStartMode(ServiceController svc, ServiceStartMode mode)
         {

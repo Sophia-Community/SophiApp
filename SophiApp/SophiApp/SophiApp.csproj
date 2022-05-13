@@ -133,6 +133,7 @@
     <Compile Include="Models\OneDriveButtonGroup.cs" />
     <Compile Include="Models\PcHealthCheckButtonGroup.cs" />
     <Compile Include="StartupConditions\DefenderWarningCondition.cs" />
+    <Compile Include="StartupConditions\OsFilesNotCorruptedCondition.cs" />
     <Compile Include="StartupConditions\SingleAdminSessionCondition.cs" />
     <Compile Include="StartupConditions\SingleInstanceCondition.cs" />
     <Compile Include="StartupConditions\RebootRequiredCondition.cs" />

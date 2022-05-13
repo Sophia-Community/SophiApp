@@ -4,9 +4,11 @@ namespace SophiApp.Commons
 {
     internal enum ConditionsTag
     {
+        DefenderCorrupted,
         DefenderWarning,
         NewVersion,
         OsBuildVersion,
+        OsFilesNotCorrupted,
         OsVersion,
         RebootRequired,
         SingleAdminSession,
@@ -14,7 +16,6 @@ namespace SophiApp.Commons
         SomethingWrong,
         SycnexScript,
         Win10Tweaker,
-        DefenderCorrupted,
     }
 
     internal enum InfoPanelVisibility
