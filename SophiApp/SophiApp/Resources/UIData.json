@@ -2104,88 +2104,6 @@
   {
     "Id": 311,
     "Header": {
-      "EN": "Choose when to be notified about changes to your computer",
-      "RU": "Настройка уведомления об изменении параметров компьютера",
-      "DE": "Wählen, wann Sie über Änderungen an Ihrem Computer benachrichtigt werden möchten",
-      "UA": "Налаштування сповіщення про зміни параметрів комп'ютера",
-      "IT": "Scegliere quando si verrà avvisato di modifiche al tuo computer"
-    },
-    "Description": {
-      "EN": "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run.",
-      "RU": "Когда включен контроль учетных записей пользователей (UAC), Windows запрашивает согласие или просит ввести учетные данные действительной учетной записи локального администратора перед запуском программы или задачи, требующей полного маркера доступа администратора. Этот запрос гарантирует, что вредоносное программное обеспечение не может быть тихо установлено или запущено",
-      "DE": "Wenn die Benutzerkontensteuerung (UAC) aktiviert ist, fragt Windows vor dem Start eines Programms oder einer Aufgabe, für die ein Zugriffstoken für den vollständigen Administratorzugriff erforderlich ist, nach der Zustimmung oder nach den Anmeldeinformationen eines gültigen lokalen Administratorkontos. Diese Aufforderung stellt sicher, dass keine bösartige Software unbemerkt installiert oder ausgeführt werden kann.",
-      "UA": "Коли увімкнено контроль облікових записів користувачів (UAC), Windows запитує згоду або просить ввести облікові дані дійсного облікового запису локального адміністратора перед запуском додатку або завдання, що вимагає повного маркера доступу адміністратора. Цей запит гарантує, що шкідливе програмне забезпечення не може бути тихо встановлене або запущене",
-      "IT": "Quando il controllo dell'account utente (UAC) È abilitato, Windows richiede il consenso o richiede le credenziali di un conto amministratore locale valido prima di avviare un programma o un'attività che richiede un token di accesso all'amministratore completo. Questo prompt garantisce che nessun software dannoso possa essere installato o eseguito in silenzio."
-    },
-    "Type": "RadioGroup",
-    "Tag": "System",
-    "ChildElements": [
-      {
-        "Id": 312,
-        "ChildHeader": {
-          "EN": "Notify me only when apps try to make changes to my computer",
-          "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер",
-          "DE": "Mich nur benachrichtigen, wenn Anwendungen versuchen, Änderungen an meinem Computer vorzunehmen",
-          "UA": "Повідомляти мене лише при спробах додатків внести зміни до комп'ютера",
-          "IT": "Avvisami solo quando le app cercano di apportare modifiche al mio computer"
-        },
-        "ChildDescription": {
-          "EN": "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
-          "RU": "При включении этого параметра рабочий стол будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)",
-          "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop abgedunkelt, wenn Sie von der Benutzerkontensteuerung (UAC) eine Aufforderung zum Hochfahren erhalten.",
-          "UA": "При увімкненні цього параметра робочий стіл буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)",
-          "IT": "Con questa impostazione abilitata, vi verrà chiesta conferma quando si ottiene una richiesta di elevazione da parte del prompt del controllo dell'account utente (UAC)."
-        },
-        "Type": "RadioButton"
-      },
-      {
-        "Id": 313,
-        "ChildHeader": {
-          "EN": "Never notify",
-          "RU": "Никогда не уведомлять",
-          "DE": "Nie benachrichtigen",
-          "UA": "Ніколи не повідомляти",
-          "IT": "Non notificare mai"
-        },
-        "ChildDescription": {
-          "EN": "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
-          "RU": "При включении этого параметра рабочий стол никогда не будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC).",
-          "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop niemals gedimmt, wenn Sie eine Erhöhungsanforderung von der Eingabeaufforderung der Benutzerkontensteuerung (UAC) erhalten.",
-          "UA": "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC).",
-          "IT": "Con questa impostazione abilitata, non riceverai alcuna richiesta di conferma quando ottieni una richiesta di elevazione dal prompt del controllo account utente (UAC)."
-        },
-        "Type": "RadioButton"
-      }
-    ],
-    "ViewId": 311,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 314,
-    "Header": {
-      "EN": "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode",
-      "RU": "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами",
-      "DE": "Den Zugriff auf zugeordnete Laufwerke von einer Anwendung, die mit erweiterten Berechtigungen im Freigabemodus für Administratoren läuft.",
-      "UA": "Увімкнути доступ до мережевих дисків при увімкненому режимі схвалення адміністратором при доступі з додатків, запущених із підвищеними правами",
-      "IT": "Permetti l'accesso ai dischi mappati alle app eseguite come amministratore"
-    },
-    "Description": {
-      "EN": "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders.",
-      "RU": "Включенный UAC с настройками по умолчанию не позволяет получить доступ к подключенным сетевым дискам из приложений, запущенных в привилегированном режиме. Это означает, что при запуске командной строки или файлового менеджера с повышенными правами, в них не будут видны буквы дисков смонтированных сетевых папок",
-      "DE": "Aktivierte UAC mit den Standardeinstellungen erlaubt keinen Zugriff auf zugeordnete Netzlaufwerke von Anwendungen, die im Administratormodus ausgeführt werden. Das heißt, wenn Sie die Befehlszeile oder einen Dateimanager mit erhöhten Rechten ausführen, werden die Laufwerksbuchstaben der eingebundenen Netzwerkordner nicht angezeigt.",
-      "UA": "Увімкнений UAC із налаштуваннями за замовчуванням не дозволяє отримати доступ до підключених мережевих дисків із додатків, запущених у привілейованому режимі. Це означає, що при запуску командного рядка або файлового менеджера з підвищеними правами, в них не буде видно літер дисків змонтованих мережевих папок",
-      "IT": "L'UAC abilitato con le impostazioni predefinite non consente l'accesso a unità di rete mappate da applicazioni in esecuzione in modalità amministratore. Ciò significa che se si esegue la riga di comando o un file manager con privilegi elevati, non mostreranno le lettere di unità delle cartelle di rete montate."
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 314,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 315,
-    "Header": {
       "EN": "Enable downloading updates with delivery optimization",
       "RU": "Включить загрузку обновлений с помощью оптимизации доставки",
       "DE": "Herunterladen von Updates mit Übermittlungsoptimierung aktivieren",
@@ -2201,12 +2119,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 315,
+    "ViewId": 311,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 316,
+    "Id": 312,
     "Header": {
       "EN": "Always wait for the network at computer startup and logon for workgroup networks",
       "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп",
@@ -2223,12 +2141,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 316,
+    "ViewId": 312,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 317,
+    "Id": 313,
     "Header": {
       "EN": "Let Windows manage my default printer",
       "RU": "Разрешать Windows управлять принтером, используемым по умолчанию",
@@ -2245,12 +2163,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 317,
+    "ViewId": 313,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 318,
+    "Id": 314,
     "Header": {
       "EN": "Receive updates for other Microsoft products",
       "RU": "Получать обновления для других продуктов Майкрософт",
@@ -2267,12 +2185,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 318,
+    "ViewId": 314,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 319,
+    "Id": 315,
     "Header": {
       "EN": "Choose the power plan",
       "RU": "Выбор схемы управления питанием",
@@ -2291,7 +2209,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 320,
+        "Id": 316,
         "ChildHeader": {
           "EN": "High performance",
           "RU": "Высокая производительность",
@@ -2309,7 +2227,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 321,
+        "Id": 317,
         "ChildHeader": {
           "EN": "Balanced",
           "RU": "Сбалансированная",
@@ -2327,12 +2245,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 319,
+    "ViewId": 315,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 322,
+    "Id": 318,
     "Header": {
       "EN": "Use the latest installed .NET Framework runtime for all apps",
       "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
@@ -2349,12 +2267,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 322,
+    "ViewId": 318,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 323,
+    "Id": 319,
     "Header": {
       "EN": "Allow the computer to turn off the network adapters to save power",
       "RU": "Разрешить отключение всех сетевых адаптеров для экономии энергии",
@@ -2371,12 +2289,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 324,
+    "ViewId": 319,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 324,
+    "Id": 320,
     "Header": {
       "EN": "Override for default input method",
       "RU": "Переопределить метод ввода по умолчанию",
@@ -2395,7 +2313,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 325,
+        "Id": 321,
         "ChildHeader": {
           "EN": "Use language list",
           "RU": "Использовать список языков",
@@ -2413,7 +2331,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 326,
+        "Id": 322,
         "ChildHeader": {
           "EN": "English",
           "RU": "Английский",
@@ -2431,12 +2349,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 324,
+    "ViewId": 320,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 327,
+    "Id": 323,
     "Header": {
       "EN": "Select folder to save screenshots when pressing Win+PrtScn",
       "RU": "Папка для сохранения скриншотов по нажатию Win+PrtScn",
@@ -2455,7 +2373,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 328,
+        "Id": 324,
         "ChildHeader": {
           "EN": "Desktop",
           "RU": "Рабочий стол",
@@ -2473,7 +2391,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 329,
+        "Id": 325,
         "ChildHeader": {
           "EN": "Pictures folder",
           "RU": "Папка \"Изображения\"",
@@ -2491,12 +2409,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 327,
+    "ViewId": 323,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 330,
+    "Id": 326,
     "Header": {
       "EN": "Recommended troubleshooting",
       "RU": "Рекомендованные способы устранения ошибок",
@@ -2515,7 +2433,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 331,
+        "Id": 327,
         "ChildHeader": {
           "EN": "Run troubleshooters automatically, then notify",
           "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять",
@@ -2533,7 +2451,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 332,
+        "Id": 328,
         "ChildHeader": {
           "EN": "Ask me before running troubleshooter",
           "RU": "Спрашивать перед запуском средств устранения неполадок",
@@ -2551,12 +2469,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 330,
+    "ViewId": 326,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 333,
+    "Id": 329,
     "Header": {
       "EN": "Launch folder windows in a separate process",
       "RU": "Запускать окна с папками в отдельном процессе",
@@ -2573,12 +2491,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 333,
+    "ViewId": 329,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 334,
+    "Id": 330,
     "Header": {
       "EN": "Enable reserved storage",
       "RU": "Включить зарезервированное хранилище",
@@ -2595,6 +2513,94 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
+    "ViewId": 330,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 331 ,
+    "Header": {
+      "EN": "Enable help look up via F1",
+      "RU": "Включить открытие справки по нажатию F1",
+      "DE": "Hilfe mit F1-Taste aktivieren",
+      "UA": "Увімкнути відкриття довідки з натисканням F1",
+      "IT": "Abilita cerca aiuto premendo F1"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 331,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 332,
+    "Header": {
+      "EN": "Enable Num Lock at startup",
+      "RU": "Включить Num Lock при загрузке",
+      "DE": "Num Lock beim Systemstart aktivieren",
+      "UA": "Увімкнути Num Lock під час завантаження",
+      "IT": "Abilita il blocco numerico all'avvio"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 332,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 333,
+    "Header": {
+      "EN": "Enable Caps Lock",
+      "RU": "Включить Caps Lock",
+      "DE": "Feststelltaste aktivieren",
+      "UA": "Увімкнути Caps Lock",
+      "IT": "Abilita blocco maiuscolo"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 333,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 334,
+    "Header": {
+      "EN": "Keyboard shortcut for Sticky keys",
+      "RU": "Сочетание клавиш для залипания клавиш",
+      "DE": "Tastaturkürzel für Feststelltasten",
+      "UA": "Поєднання клавіш для залипання клавіш",
+      "IT": "Scorciatoia da tastiera per i tasti permanenti"
+    },
+    "Description": {
+      "EN": "Press the Shift key 5 times to turn Sticky keys on or off",
+      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить или выключить залипание клавиш",
+      "DE": "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten",
+      "UA": "Натисніть клавішу SHIFT 5 разів, щоб увімкнути або вимкнути залипання клавіш",
+      "IT": "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
     "ViewId": 334,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -2602,11 +2608,11 @@
   {
     "Id": 335,
     "Header": {
-      "EN": "Enable help look up via F1",
-      "RU": "Включить открытие справки по нажатию F1",
-      "DE": "Hilfe mit F1-Taste aktivieren",
-      "UA": "Увімкнути відкриття довідки з натисканням F1",
-      "IT": "Abilita cerca aiuto premendo F1"
+      "EN": "Use AutoPlay for all media and devices",
+      "RU": "Использовать автозапуск для всех носителей и устройств",
+      "DE": "Automatische Wiedergabe für alle Medien und Geräte verwenden",
+      "UA": "Використовувати автозавантаження для всіх носіїв та пристроїв",
+      "IT": "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
     },
     "Description": {
       "EN": "",
@@ -2624,18 +2630,18 @@
   {
     "Id": 336,
     "Header": {
-      "EN": "Enable Num Lock at startup",
-      "RU": "Включить Num Lock при загрузке",
-      "DE": "Num Lock beim Systemstart aktivieren",
-      "UA": "Увімкнути Num Lock під час завантаження",
-      "IT": "Abilita il blocco numerico all'avvio"
+      "EN": "Enable thumbnail cache removal",
+      "RU": "Включить удаление кэша миниатюр",
+      "DE": "Thumbnail-Cache entfernen aktivieren",
+      "UA": "Увімкнути видалення кешу мініатюр",
+      "IT": "Abilita la rimozione della cache delle miniature"
     },
     "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
+      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder.",
+      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново. Кэш эскизов хранится в виде файлов .db, расположенных в скрытой папке \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
+      "DE": "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert.",
+      "UA": "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
+      "IT": "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2646,18 +2652,18 @@
   {
     "Id": 337,
     "Header": {
-      "EN": "Enable Caps Lock",
-      "RU": "Включить Caps Lock",
-      "DE": "Feststelltaste aktivieren",
-      "UA": "Увімкнути Caps Lock",
-      "IT": "Abilita blocco maiuscolo"
+      "EN": "Restart apps after signing in",
+      "RU": "Перезапустить приложения после входа",
+      "DE": "Apps nach der Anmeldung neu starten",
+      "UA": "Перезавантажити додатки після входу",
+      "IT": "Riavvia le app dopo aver effettuato l'accesso"
     },
     "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
+      "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
+      "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами",
+      "DE": "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet.",
+      "UA": "Автоматичне збереження моїх додатків, що перезапускаються при виході з системи і перезапускати їх після виходу. Якщо у попередньому сеансі програма була запущена від імені адміністратора, вона перезапускається із звичайними правами",
+      "IT": "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2668,18 +2674,18 @@
   {
     "Id": 338,
     "Header": {
-      "EN": "Keyboard shortcut for Sticky keys",
-      "RU": "Сочетание клавиш для залипания клавиш",
-      "DE": "Tastaturkürzel für Feststelltasten",
-      "UA": "Поєднання клавіш для залипання клавіш",
-      "IT": "Scorciatoia da tastiera per i tasti permanenti"
+      "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
+      "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
+      "DE": "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren.",
+      "UA": "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп",
+      "IT": "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
     },
     "Description": {
-      "EN": "Press the Shift key 5 times to turn Sticky keys on or off",
-      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить или выключить залипание клавиш",
-      "DE": "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten",
-      "UA": "Натисніть клавішу SHIFT 5 разів, щоб увімкнути або вимкнути залипання клавіш",
-      "IT": "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2690,11 +2696,11 @@
   {
     "Id": 339,
     "Header": {
-      "EN": "Use AutoPlay for all media and devices",
-      "RU": "Использовать автозапуск для всех носителей и устройств",
-      "DE": "Automatische Wiedergabe für alle Medien und Geräte verwenden",
-      "UA": "Використовувати автозавантаження для всіх носіїв та пристроїв",
-      "IT": "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
+      "EN": "Automatically adjust active hours for me based on daily usage",
+      "RU": "Автоматически изменять период активности для этого устройства на основе действий",
+      "DE": "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung",
+      "UA": "Автоматично змінювати період активності цього пристрою на основі дій",
+      "IT": "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano"
     },
     "Description": {
       "EN": "",
@@ -2712,94 +2718,6 @@
   {
     "Id": 340,
     "Header": {
-      "EN": "Enable thumbnail cache removal",
-      "RU": "Включить удаление кэша миниатюр",
-      "DE": "Thumbnail-Cache entfernen aktivieren",
-      "UA": "Увімкнути видалення кешу мініатюр",
-      "IT": "Abilita la rimozione della cache delle miniature"
-    },
-    "Description": {
-      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder.",
-      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново. Кэш эскизов хранится в виде файлов .db, расположенных в скрытой папке \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
-      "DE": "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert.",
-      "UA": "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
-      "IT": "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 340,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 341,
-    "Header": {
-      "EN": "Restart apps after signing in",
-      "RU": "Перезапустить приложения после входа",
-      "DE": "Apps nach der Anmeldung neu starten",
-      "UA": "Перезавантажити додатки після входу",
-      "IT": "Riavvia le app dopo aver effettuato l'accesso"
-    },
-    "Description": {
-      "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
-      "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами",
-      "DE": "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet.",
-      "UA": "Автоматичне збереження моїх додатків, що перезапускаються при виході з системи і перезапускати їх після виходу. Якщо у попередньому сеансі програма була запущена від імені адміністратора, вона перезапускається із звичайними правами",
-      "IT": "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 341,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 342,
-    "Header": {
-      "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
-      "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
-      "DE": "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren.",
-      "UA": "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп",
-      "IT": "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 342,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 343,
-    "Header": {
-      "EN": "Automatically adjust active hours for me based on daily usage",
-      "RU": "Автоматически изменять период активности для этого устройства на основе действий",
-      "DE": "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung",
-      "UA": "Автоматично змінювати період активності цього пристрою на основі дій",
-      "IT": "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 343,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 344,
-    "Header": {
       "EN": "Restart as soon as possible to finish updating",
       "RU": "Перезапустить устройство как можно быстрее, чтобы завершить обновление",
       "DE": "Einen Neustart sobald wie möglich durchführen um die Aktualisierung abzuschließen",
@@ -2815,12 +2733,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 344,
+    "ViewId": 340,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 345,
+    "Id": 341,
     "Header": {
       "EN": "Default terminal app",
       "RU": "Приложение терминала по умолчанию",
@@ -2839,7 +2757,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 346,
+        "Id": 342,
         "ChildHeader": {
           "EN": "Windows Terminal",
           "RU": "Windows Terminal",
@@ -2857,7 +2775,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 347,
+        "Id": 343,
         "ChildHeader": {
           "EN": "Windows Console Host",
           "RU": "Узел консоли Windows",
@@ -2875,12 +2793,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 345,
+    "ViewId": 344,
     "Windows10Supported": false,
     "Windows11Supported": true
   },
   {
-    "Id": 348,
+    "Id": 344,
     "Header": {
       "EN": "PC Health Check app",
       "RU": "Приложение \"Проверка работоспособности ПК\"",
@@ -2899,7 +2817,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 349,
+        "Id": 345,
         "ChildHeader": {
           "EN": "Uninstall",
           "RU": "Удалить",
@@ -2917,12 +2835,12 @@
         "Type": "Button"
       }
     ],
-    "ViewId": 348,
+    "ViewId": 344,
     "Windows10Supported": true,
     "Windows11Supported": false
   },
   {
-    "Id": 353,
+    "Id": 346,
     "Header": {
       "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
       "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
@@ -2941,7 +2859,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 354,
+        "Id": 347,
         "ChildHeader": {
           "EN": "Install",
           "RU": "Установить",
@@ -2959,7 +2877,7 @@
         "Type": "Button"
       },
       {
-        "Id": 355,
+        "Id": 348,
         "ChildHeader": {
           "EN": "Uninstall",
           "RU": "Удалить",
@@ -2977,7 +2895,7 @@
         "Type": "Button"
       }
     ],
-    "ViewId": 349,
+    "ViewId": 346,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
@@ -3607,6 +3525,66 @@
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 811,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 812,
+    "Header": {
+      "EN": "Choose when to be notified about changes to your computer",
+      "RU": "Настройка уведомления об изменении параметров компьютера",
+      "DE": "Wählen, wann Sie über Änderungen an Ihrem Computer benachrichtigt werden möchten",
+      "UA": "Налаштування сповіщення про зміни параметрів комп'ютера",
+      "IT": "Scegliere quando si verrà avvisato di modifiche al tuo computer"
+    },
+    "Description": {
+      "EN": "When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run.",
+      "RU": "Когда включен контроль учетных записей пользователей (UAC), Windows запрашивает согласие или просит ввести учетные данные действительной учетной записи локального администратора перед запуском программы или задачи, требующей полного маркера доступа администратора. Этот запрос гарантирует, что вредоносное программное обеспечение не может быть тихо установлено или запущено",
+      "DE": "Wenn die Benutzerkontensteuerung (UAC) aktiviert ist, fragt Windows vor dem Start eines Programms oder einer Aufgabe, für die ein Zugriffstoken für den vollständigen Administratorzugriff erforderlich ist, nach der Zustimmung oder nach den Anmeldeinformationen eines gültigen lokalen Administratorkontos. Diese Aufforderung stellt sicher, dass keine bösartige Software unbemerkt installiert oder ausgeführt werden kann.",
+      "UA": "Коли увімкнено контроль облікових записів користувачів (UAC), Windows запитує згоду або просить ввести облікові дані дійсного облікового запису локального адміністратора перед запуском додатку або завдання, що вимагає повного маркера доступу адміністратора. Цей запит гарантує, що шкідливе програмне забезпечення не може бути тихо встановлене або запущене",
+      "IT": "Quando il controllo dell'account utente (UAC) È abilitato, Windows richiede il consenso o richiede le credenziali di un conto amministratore locale valido prima di avviare un programma o un'attività che richiede un token di accesso all'amministratore completo. Questo prompt garantisce che nessun software dannoso possa essere installato o eseguito in silenzio."
+    },
+    "Type": "RadioGroup",
+    "Tag": "Security",
+    "ChildElements": [
+      {
+        "Id": 813,
+        "ChildHeader": {
+          "EN": "Notify me only when apps try to make changes to my computer",
+          "RU": "Уведомлять меня только при попытках приложений внести изменения в компьютер",
+          "DE": "Mich nur benachrichtigen, wenn Anwendungen versuchen, Änderungen an meinem Computer vorzunehmen",
+          "UA": "Повідомляти мене лише при спробах додатків внести зміни до комп'ютера",
+          "IT": "Avvisami solo quando le app cercano di apportare modifiche al mio computer"
+        },
+        "ChildDescription": {
+          "EN": "With this setting enabled, your desktop will be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
+          "RU": "При включении этого параметра рабочий стол будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC)",
+          "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop abgedunkelt, wenn Sie von der Benutzerkontensteuerung (UAC) eine Aufforderung zum Hochfahren erhalten.",
+          "UA": "При увімкненні цього параметра робочий стіл буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)",
+          "IT": "Con questa impostazione abilitata, vi verrà chiesta conferma quando si ottiene una richiesta di elevazione da parte del prompt del controllo dell'account utente (UAC)."
+        },
+        "Type": "RadioButton"
+      },
+      {
+        "Id": 814,
+        "ChildHeader": {
+          "EN": "Never notify",
+          "RU": "Никогда не уведомлять",
+          "DE": "Nie benachrichtigen",
+          "UA": "Ніколи не повідомляти",
+          "IT": "Non notificare mai"
+        },
+        "ChildDescription": {
+          "EN": "With this setting enabled, your desktop will never be dimmed when you get an elevation request by the User Account Control (UAC) prompt.",
+          "RU": "При включении этого параметра рабочий стол никогда не будет затемняться, когда вы получаете запрос на повышение уровня контроля учетных записей пользователей (UAC).",
+          "DE": "Wenn diese Einstellung aktiviert ist, wird Ihr Desktop niemals gedimmt, wenn Sie eine Erhöhungsanforderung von der Eingabeaufforderung der Benutzerkontensteuerung (UAC) erhalten.",
+          "UA": "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC).",
+          "IT": "Con questa impostazione abilitata, non riceverai alcuna richiesta di conferma quando ottieni una richiesta di elevazione dal prompt del controllo account utente (UAC)."
+        },
+        "Type": "RadioButton"
+      }
+    ],
+    "ViewId": 812,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
