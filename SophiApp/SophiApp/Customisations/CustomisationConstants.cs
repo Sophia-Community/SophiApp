@@ -511,8 +511,6 @@ else
         internal const string _810_WSH_SETTINGS_PATH = @"SOFTWARE\Microsoft\Windows Script Host\Settings";
         internal const string _811_HYPERVISOR_PRESENT = "HypervisorPresent";
         internal const string _811_WINDOWS_SANDBOX_FEATURE = "Containers-DisposableClientVM";
-        internal const string _812_POWERSHELL_V2_ROOT_FEATURE = "MicrosoftWindowsPowerShellV2Root";
-        internal const string _812_POWERSHELL_V2_ROOT_STATE_PS = @"(Get-WindowsOptionalFeature -FeatureName MicrosoftWindowsPowerShellV2 -Online).State.ToString()";
         internal const string _900_MSI_EXTRACT_COM_PATH = @"Msi.Package\shell\Extract\Command";
         internal const string _900_MSI_EXTRACT_PATH = @"Msi.Package\shell\Extract";
         internal const string _900_MSI_EXTRACT_VALUE = "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"";

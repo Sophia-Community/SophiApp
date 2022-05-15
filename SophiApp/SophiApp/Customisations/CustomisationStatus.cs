@@ -276,11 +276,6 @@ namespace SophiApp.Customisations
         public static bool _310() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _310_SYSTEM_CRASH_CONTROL_PATH, _310_DISPLAY_PARAMS)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _312() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT)
-                                              .HasNullOrValue(ADMIN_PROMPT_DEFAULT_VALUE);
-
-        public static bool _313() => _312().Invert();
-
         public static bool _314() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _314_ENABLE_LINKED) == _314_ENABLE_LINKED_VALUE;
 
         public static bool _315() => RegHelper.GetNullableIntValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE)
@@ -559,7 +554,10 @@ namespace SophiApp.Customisations
                                         : throw new VitualizationNotSupportedException()
                                      : throw new WindowsEditionNotSupportedException();
 
-        public static bool _812() => PowerShellHelper.GetScriptResult<string>(_812_POWERSHELL_V2_ROOT_STATE_PS) == ENABLED;
+        public static bool _813() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT)
+                                              .HasNullOrValue(ADMIN_PROMPT_DEFAULT_VALUE);
+
+        public static bool _814() => _813().Invert();
 
         public static bool _900() => RegHelper.SubKeyExist(RegistryHive.ClassesRoot, _900_MSI_EXTRACT_PATH);
 

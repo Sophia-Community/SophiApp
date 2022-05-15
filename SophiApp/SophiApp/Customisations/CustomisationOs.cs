@@ -650,10 +650,6 @@ namespace SophiApp.Customisations
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _312(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_DEFAULT_VALUE, RegistryValueKind.DWord);
-
-        public static void _313(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_NEVER_VALUE, RegistryValueKind.DWord);
-
         public static void _314(bool IsChecked)
         {
             if (IsChecked)
@@ -1180,7 +1176,9 @@ namespace SophiApp.Customisations
 
         public static void _811(bool IsChecked) => DismHelper.SetFeatureState(_811_WINDOWS_SANDBOX_FEATURE, IsChecked);
 
-        public static void _812(bool IsChecked) => DismHelper.SetFeatureState(_812_POWERSHELL_V2_ROOT_FEATURE, IsChecked);
+        public static void _813(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_DEFAULT_VALUE, RegistryValueKind.DWord);
+
+        public static void _814 (bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_NEVER_VALUE, RegistryValueKind.DWord);
 
         public static void _900(bool IsChecked)
         {
