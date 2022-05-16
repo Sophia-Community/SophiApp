@@ -104,6 +104,14 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 [Download](https://github.com/farag2/Sophia-Script-for-Windows/releases)
 
+### How to download SophiApp via PowerShell
+
+* Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
+
+```powershell
+irm app.sophi.app -useb | iex
+```
+
 ***
 
 Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history;
