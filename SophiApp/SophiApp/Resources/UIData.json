@@ -2102,7 +2102,7 @@
     "Windows11Supported": true
   },
   {
-    "Id": 311,
+    "Id": 314,
     "Header": {
       "EN": "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode",
       "RU": "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами",
@@ -2119,12 +2119,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 311,
+    "ViewId": 314,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 312,
+    "Id": 315,
     "Header": {
       "EN": "Enable downloading updates with delivery optimization",
       "RU": "Включить загрузку обновлений с помощью оптимизации доставки",
@@ -2141,12 +2141,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 312,
+    "ViewId": 315,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 313,
+    "Id": 316,
     "Header": {
       "EN": "Always wait for the network at computer startup and logon for workgroup networks",
       "RU": "Всегда ждать сеть при запуске и входе в систему для рабочих групп",
@@ -2163,12 +2163,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 313,
+    "ViewId": 316,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 314,
+    "Id": 317,
     "Header": {
       "EN": "Let Windows manage my default printer",
       "RU": "Разрешать Windows управлять принтером, используемым по умолчанию",
@@ -2185,12 +2185,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 314,
+    "ViewId": 317,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 315,
+    "Id": 318,
     "Header": {
       "EN": "Receive updates for other Microsoft products",
       "RU": "Получать обновления для других продуктов Майкрософт",
@@ -2207,12 +2207,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 315,
+    "ViewId": 318,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 316,
+    "Id": 319,
     "Header": {
       "EN": "Choose the power plan",
       "RU": "Выбор схемы управления питанием",
@@ -2231,7 +2231,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 317,
+        "Id": 320,
         "ChildHeader": {
           "EN": "High performance",
           "RU": "Высокая производительность",
@@ -2249,7 +2249,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 318,
+        "Id": 321,
         "ChildHeader": {
           "EN": "Balanced",
           "RU": "Сбалансированная",
@@ -2267,12 +2267,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 316,
+    "ViewId": 319,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 319,
+    "Id": 322,
     "Header": {
       "EN": "Use the latest installed .NET Framework runtime for all apps",
       "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
@@ -2289,12 +2289,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 319,
+    "ViewId": 322,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 320,
+    "Id": 323,
     "Header": {
       "EN": "Allow the computer to turn off the network adapters to save power",
       "RU": "Разрешить отключение всех сетевых адаптеров для экономии энергии",
@@ -2311,12 +2311,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 320,
+    "ViewId": 324,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 321,
+    "Id": 324,
     "Header": {
       "EN": "Override for default input method",
       "RU": "Переопределить метод ввода по умолчанию",
@@ -2335,7 +2335,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 322,
+        "Id": 325,
         "ChildHeader": {
           "EN": "Use language list",
           "RU": "Использовать список языков",
@@ -2353,73 +2353,13 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 323,
+        "Id": 326,
         "ChildHeader": {
           "EN": "English",
           "RU": "Английский",
           "DE": "Englisch",
           "UA": "Англійська",
           "IT": "inglese"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": ""
-        },
-        "Type": "RadioButton"
-      }
-    ],
-    "ViewId": 321,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 324,
-    "Header": {
-      "EN": "Select folder to save screenshots when pressing Win+PrtScn",
-      "RU": "Папка для сохранения скриншотов по нажатию Win+PrtScn",
-      "DE": "Ordner zum Speichern von Screenshots auswählen beim Win+PrtScn drücken",
-      "UA": "Папка для збереження скріншотів за натисканням Win+PrtScn",
-      "IT": "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN"
-    },
-    "Description": {
-      "EN": "Select the \"Desktop\" if you choose to remove OneDrive only (or it was uninstalled before), otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks.",
-      "RU": "Отмечайте пункт \"Рабочий стол\", только если вы выбрали удаление OneDrive (или он уже был удален), иначе ломается функционал резервного копирования для папок \"Рабочий стол\" и \"Изображения\" в OneDrive",
-      "DE": "\"Desktop\" auswählen, wenn Sie nur OneDrive entfernen möchten (oder es zuvor deinstalliert wurde), andernfalls wird die Sicherungsfunktion für die Ordner \"Desktop\" und \"Bilder\" in OneDrive unterbrochen.",
-      "UA": "Позначайте пункт \"Робочий стіл\", тільки якщо ви обрали видалення OneDrive (або він вже був видалений), інакше ламається функціонал резервного копіювання для папок \"Робочий стіл\" та \"Зображення\" в OneDrive",
-      "IT": "Selezionare \"Desktop\" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \"Desktop\" e \"Immagini\" si romperanno in OneDrive."
-    },
-    "Type": "RadioGroup",
-    "Tag": "System",
-    "ChildElements": [
-      {
-        "Id": 325,
-        "ChildHeader": {
-          "EN": "Desktop",
-          "RU": "Рабочий стол",
-          "DE": "Desktop",
-          "UA": "Робочий стіл",
-          "IT": "Desktop"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": ""
-        },
-        "Type": "RadioButton"
-      },
-      {
-        "Id": 326,
-        "ChildHeader": {
-          "EN": "Pictures folder",
-          "RU": "Папка \"Изображения\"",
-          "DE": "Ordner \"Bilder\"",
-          "UA": "Папка \"Зображення\"",
-          "IT": "Immagini"
         },
         "ChildDescription": {
           "EN": "",
@@ -2438,6 +2378,66 @@
   {
     "Id": 327,
     "Header": {
+      "EN": "Select folder to save screenshots when pressing Win+PrtScn",
+      "RU": "Папка для сохранения скриншотов по нажатию Win+PrtScn",
+      "DE": "Ordner zum Speichern von Screenshots auswählen beim Win+PrtScn drücken",
+      "UA": "Папка для збереження скріншотів за натисканням Win+PrtScn",
+      "IT": "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN"
+    },
+    "Description": {
+      "EN": "Select the \"Desktop\" if you choose to remove OneDrive only (or it was uninstalled before), otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks.",
+      "RU": "Отмечайте пункт \"Рабочий стол\", только если вы выбрали удаление OneDrive (или он уже был удален), иначе ломается функционал резервного копирования для папок \"Рабочий стол\" и \"Изображения\" в OneDrive",
+      "DE": "\"Desktop\" auswählen, wenn Sie nur OneDrive entfernen möchten (oder es zuvor deinstalliert wurde), andernfalls wird die Sicherungsfunktion für die Ordner \"Desktop\" und \"Bilder\" in OneDrive unterbrochen.",
+      "UA": "Позначайте пункт \"Робочий стіл\", тільки якщо ви обрали видалення OneDrive (або він вже був видалений), інакше ламається функціонал резервного копіювання для папок \"Робочий стіл\" та \"Зображення\" в OneDrive",
+      "IT": "Selezionare \"Desktop\" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \"Desktop\" e \"Immagini\" si romperanno in OneDrive."
+    },
+    "Type": "RadioGroup",
+    "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 328,
+        "ChildHeader": {
+          "EN": "Desktop",
+          "RU": "Рабочий стол",
+          "DE": "Desktop",
+          "UA": "Робочий стіл",
+          "IT": "Desktop"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "RadioButton"
+      },
+      {
+        "Id": 329,
+        "ChildHeader": {
+          "EN": "Pictures folder",
+          "RU": "Папка \"Изображения\"",
+          "DE": "Ordner \"Bilder\"",
+          "UA": "Папка \"Зображення\"",
+          "IT": "Immagini"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "RadioButton"
+      }
+    ],
+    "ViewId": 327,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 330,
+    "Header": {
       "EN": "Recommended troubleshooting",
       "RU": "Рекомендованные способы устранения ошибок",
       "DE": "Empfohlene Fehlerbehebung",
@@ -2455,7 +2455,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 328,
+        "Id": 331,
         "ChildHeader": {
           "EN": "Run troubleshooters automatically, then notify",
           "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять",
@@ -2473,7 +2473,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 329,
+        "Id": 332,
         "ChildHeader": {
           "EN": "Ask me before running troubleshooter",
           "RU": "Спрашивать перед запуском средств устранения неполадок",
@@ -2491,12 +2491,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 327,
+    "ViewId": 330,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 330,
+    "Id": 333,
     "Header": {
       "EN": "Launch folder windows in a separate process",
       "RU": "Запускать окна с папками в отдельном процессе",
@@ -2513,12 +2513,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 330,
+    "ViewId": 333,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 331,
+    "Id": 334,
     "Header": {
       "EN": "Enable reserved storage",
       "RU": "Включить зарезервированное хранилище",
@@ -2535,12 +2535,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 331,
+    "ViewId": 334,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 332 ,
+    "Id": 335,
     "Header": {
       "EN": "Enable help look up via F1",
       "RU": "Включить открытие справки по нажатию F1",
@@ -2557,72 +2557,6 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 332,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 333,
-    "Header": {
-      "EN": "Enable Num Lock at startup",
-      "RU": "Включить Num Lock при загрузке",
-      "DE": "Num Lock beim Systemstart aktivieren",
-      "UA": "Увімкнути Num Lock під час завантаження",
-      "IT": "Abilita il blocco numerico all'avvio"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 333,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 334,
-    "Header": {
-      "EN": "Enable Caps Lock",
-      "RU": "Включить Caps Lock",
-      "DE": "Feststelltaste aktivieren",
-      "UA": "Увімкнути Caps Lock",
-      "IT": "Abilita blocco maiuscolo"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
-    "ViewId": 334,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 335,
-    "Header": {
-      "EN": "Keyboard shortcut for Sticky keys",
-      "RU": "Сочетание клавиш для залипания клавиш",
-      "DE": "Tastaturkürzel für Feststelltasten",
-      "UA": "Поєднання клавіш для залипання клавіш",
-      "IT": "Scorciatoia da tastiera per i tasti permanenti"
-    },
-    "Description": {
-      "EN": "Press the Shift key 5 times to turn Sticky keys on or off",
-      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить или выключить залипание клавиш",
-      "DE": "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten",
-      "UA": "Натисніть клавішу SHIFT 5 разів, щоб увімкнути або вимкнути залипання клавіш",
-      "IT": "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
-    },
-    "Type": "CheckBox",
-    "Tag": "System",
     "ViewId": 335,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -2630,11 +2564,11 @@
   {
     "Id": 336,
     "Header": {
-      "EN": "Use AutoPlay for all media and devices",
-      "RU": "Использовать автозапуск для всех носителей и устройств",
-      "DE": "Automatische Wiedergabe für alle Medien und Geräte verwenden",
-      "UA": "Використовувати автозавантаження для всіх носіїв та пристроїв",
-      "IT": "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
+      "EN": "Enable Num Lock at startup",
+      "RU": "Включить Num Lock при загрузке",
+      "DE": "Num Lock beim Systemstart aktivieren",
+      "UA": "Увімкнути Num Lock під час завантаження",
+      "IT": "Abilita il blocco numerico all'avvio"
     },
     "Description": {
       "EN": "",
@@ -2652,18 +2586,18 @@
   {
     "Id": 337,
     "Header": {
-      "EN": "Enable thumbnail cache removal",
-      "RU": "Включить удаление кэша миниатюр",
-      "DE": "Thumbnail-Cache entfernen aktivieren",
-      "UA": "Увімкнути видалення кешу мініатюр",
-      "IT": "Abilita la rimozione della cache delle miniature"
+      "EN": "Enable Caps Lock",
+      "RU": "Включить Caps Lock",
+      "DE": "Feststelltaste aktivieren",
+      "UA": "Увімкнути Caps Lock",
+      "IT": "Abilita blocco maiuscolo"
     },
     "Description": {
-      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder.",
-      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново. Кэш эскизов хранится в виде файлов .db, расположенных в скрытой папке \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
-      "DE": "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert.",
-      "UA": "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
-      "IT": "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2674,18 +2608,18 @@
   {
     "Id": 338,
     "Header": {
-      "EN": "Restart apps after signing in",
-      "RU": "Перезапустить приложения после входа",
-      "DE": "Apps nach der Anmeldung neu starten",
-      "UA": "Перезавантажити додатки після входу",
-      "IT": "Riavvia le app dopo aver effettuato l'accesso"
+      "EN": "Keyboard shortcut for Sticky keys",
+      "RU": "Сочетание клавиш для залипания клавиш",
+      "DE": "Tastaturkürzel für Feststelltasten",
+      "UA": "Поєднання клавіш для залипання клавіш",
+      "IT": "Scorciatoia da tastiera per i tasti permanenti"
     },
     "Description": {
-      "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
-      "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами",
-      "DE": "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet.",
-      "UA": "Автоматичне збереження моїх додатків, що перезапускаються при виході з системи і перезапускати їх після виходу. Якщо у попередньому сеансі програма була запущена від імені адміністратора, вона перезапускається із звичайними правами",
-      "IT": "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
+      "EN": "Press the Shift key 5 times to turn Sticky keys on or off",
+      "RU": "Нажмите клавишу SHIFT 5 раз, чтобы включить или выключить залипание клавиш",
+      "DE": "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten",
+      "UA": "Натисніть клавішу SHIFT 5 разів, щоб увімкнути або вимкнути залипання клавіш",
+      "IT": "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2696,11 +2630,11 @@
   {
     "Id": 339,
     "Header": {
-      "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
-      "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
-      "DE": "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren.",
-      "UA": "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп",
-      "IT": "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
+      "EN": "Use AutoPlay for all media and devices",
+      "RU": "Использовать автозапуск для всех носителей и устройств",
+      "DE": "Automatische Wiedergabe für alle Medien und Geräte verwenden",
+      "UA": "Використовувати автозавантаження для всіх носіїв та пристроїв",
+      "IT": "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
     },
     "Description": {
       "EN": "",
@@ -2718,6 +2652,72 @@
   {
     "Id": 340,
     "Header": {
+      "EN": "Enable thumbnail cache removal",
+      "RU": "Включить удаление кэша миниатюр",
+      "DE": "Thumbnail-Cache entfernen aktivieren",
+      "UA": "Увімкнути видалення кешу мініатюр",
+      "IT": "Abilita la rimozione della cache delle miniature"
+    },
+    "Description": {
+      "EN": "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder.",
+      "RU": "После перезагрузки или выключения Windows автоматически очищает кэш эскизов, и проводник пересоздаёт эскизы каждый раз заново. Кэш эскизов хранится в виде файлов .db, расположенных в скрытой папке \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
+      "DE": "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert.",
+      "UA": "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
+      "IT": "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 340,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 341,
+    "Header": {
+      "EN": "Restart apps after signing in",
+      "RU": "Перезапустить приложения после входа",
+      "DE": "Apps nach der Anmeldung neu starten",
+      "UA": "Перезавантажити додатки після входу",
+      "IT": "Riavvia le app dopo aver effettuato l'accesso"
+    },
+    "Description": {
+      "EN": "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
+      "RU": "Автоматическое сохранение моих перезапускаемых приложений при выходе из системы и перезапускать их после выхода. Если в предыдущем сеансе программа была запущена от имени администратора, она перезапускается с обычными правами",
+      "DE": "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet.",
+      "UA": "Автоматичне збереження моїх додатків, що перезапускаються при виході з системи і перезапускати їх після виходу. Якщо у попередньому сеансі програма була запущена від імені адміністратора, вона перезапускається із звичайними правами",
+      "IT": "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 341,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 342,
+    "Header": {
+      "EN": "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
+      "RU": "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
+      "DE": "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren.",
+      "UA": "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп",
+      "IT": "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 342,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 343,
+    "Header": {
       "EN": "Automatically adjust active hours for me based on daily usage",
       "RU": "Автоматически изменять период активности для этого устройства на основе действий",
       "DE": "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung",
@@ -2733,12 +2733,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 340,
+    "ViewId": 343,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 341,
+    "Id": 344,
     "Header": {
       "EN": "Restart as soon as possible to finish updating",
       "RU": "Перезапустить устройство как можно быстрее, чтобы завершить обновление",
@@ -2755,12 +2755,12 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 341,
+    "ViewId": 344,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
   {
-    "Id": 342,
+    "Id": 345,
     "Header": {
       "EN": "Default terminal app",
       "RU": "Приложение терминала по умолчанию",
@@ -2779,7 +2779,7 @@
     "Tag": "System",
     "ChildElements": [
       {
-        "Id": 343,
+        "Id": 346,
         "ChildHeader": {
           "EN": "Windows Terminal",
           "RU": "Windows Terminal",
@@ -2797,7 +2797,7 @@
         "Type": "RadioButton"
       },
       {
-        "Id": 344,
+        "Id": 347,
         "ChildHeader": {
           "EN": "Windows Console Host",
           "RU": "Узел консоли Windows",
@@ -2815,12 +2815,12 @@
         "Type": "RadioButton"
       }
     ],
-    "ViewId": 342,
+    "ViewId": 345,
     "Windows10Supported": false,
     "Windows11Supported": true
   },
   {
-    "Id": 345,
+    "Id": 348,
     "Header": {
       "EN": "PC Health Check app",
       "RU": "Приложение \"Проверка работоспособности ПК\"",
@@ -2838,66 +2838,6 @@
     "Type": "PcHealthCheckButtonGroup",
     "Tag": "System",
     "ChildElements": [
-      {
-        "Id": 346,
-        "ChildHeader": {
-          "EN": "Uninstall",
-          "RU": "Удалить",
-          "DE": "Deinstallieren",
-          "UA": "Видалити",
-          "IT": "Disinstalla"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": ""
-        },
-        "Type": "Button"
-      }
-    ],
-    "ViewId": 345,
-    "Windows10Supported": true,
-    "Windows11Supported": false
-  },
-  {
-    "Id": 347,
-    "Header": {
-      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
-      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
-      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
-      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
-    },
-    "Description": {
-      "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
-      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x64 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы",
-      "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien",
-      "UA": "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли",
-      "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
-    },
-    "Type": "MsCppPackageButtonGroup",
-    "Tag": "System",
-    "ChildElements": [
-      {
-        "Id": 348,
-        "ChildHeader": {
-          "EN": "Install",
-          "RU": "Установить",
-          "DE": "Installieren",
-          "UA": "Встановити",
-          "IT": "Installa"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": ""
-        },
-        "Type": "Button"
-      },
       {
         "Id": 349,
         "ChildHeader": {
@@ -2917,7 +2857,67 @@
         "Type": "Button"
       }
     ],
-    "ViewId": 347,
+    "ViewId": 348,
+    "Windows10Supported": true,
+    "Windows11Supported": false
+  },
+  {
+    "Id": 353,
+    "Header": {
+      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
+      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
+      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
+      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
+      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
+    },
+    "Description": {
+      "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
+      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x64 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы",
+      "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien",
+      "UA": "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли",
+      "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
+    },
+    "Type": "MsCppPackageButtonGroup",
+    "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 354,
+        "ChildHeader": {
+          "EN": "Install",
+          "RU": "Установить",
+          "DE": "Installieren",
+          "UA": "Встановити",
+          "IT": "Installa"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      },
+      {
+        "Id": 355,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 349,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
