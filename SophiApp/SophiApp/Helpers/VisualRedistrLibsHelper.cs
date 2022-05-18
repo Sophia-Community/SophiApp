@@ -33,11 +33,18 @@ namespace SophiApp.Helpers
 
         internal static bool IsInstalled()
         {
-            var vcRegistryPath = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
+            try
+            {
+                var vcRegistryPath = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
                                           .FirstOrDefault(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
 
-            return vcRegistryPath != null && RegHelper.GetStringValue(RegistryHive.ClassesRoot, vcRegistryPath, DISPLAY_NAME)
-                                                      .Contains(MSREDISTR_LIB_VS_2022_NAME);
+                return vcRegistryPath != null && RegHelper.GetStringValue(RegistryHive.ClassesRoot, vcRegistryPath, DISPLAY_NAME)
+                                                          .Contains(MSREDISTR_LIB_VS_2022_NAME);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

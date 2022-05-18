@@ -6,7 +6,7 @@ namespace SophiApp.Helpers
 {
     internal class RegHelper
     {
-        private static RegistryKey GetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath);
+        private static RegistryKey GetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64)?.OpenSubKey(keyPath);
 
         private static RegistryKey SetKey(RegistryHive hive, string keyPath) => RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).OpenSubKey(keyPath, true) ?? RegistryKey.OpenBaseKey(hive, RegistryView.Registry64).CreateSubKey(keyPath, true);
 
