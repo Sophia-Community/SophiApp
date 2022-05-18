@@ -2311,7 +2311,7 @@
     },
     "Type": "CheckBox",
     "Tag": "System",
-    "ViewId": 324,
+    "ViewId": 323,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
@@ -2862,66 +2862,6 @@
     "Windows11Supported": false
   },
   {
-    "Id": 353,
-    "Header": {
-      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
-      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
-      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
-      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
-    },
-    "Description": {
-      "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
-      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x64 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы",
-      "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien",
-      "UA": "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли",
-      "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
-    },
-    "Type": "MsCppPackageButtonGroup",
-    "Tag": "System",
-    "ChildElements": [
-      {
-        "Id": 354,
-        "ChildHeader": {
-          "EN": "Install",
-          "RU": "Установить",
-          "DE": "Installieren",
-          "UA": "Встановити",
-          "IT": "Installa"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": ""
-        },
-        "Type": "Button"
-      },
-      {
-        "Id": 355,
-        "ChildHeader": {
-          "EN": "Uninstall",
-          "RU": "Удалить",
-          "DE": "Deinstallieren",
-          "UA": "Видалити",
-          "IT": "Disinstalla"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": ""
-        },
-        "Type": "Button"
-      }
-    ],
-    "ViewId": 349,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
     "Id": 350,
     "Header": {
       "EN": "OneDrive",
@@ -2977,7 +2917,67 @@
         "Type": "Button"
       }
     ],
-    "ViewId": 352,
+    "ViewId": 349,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 353,
+    "Header": {
+      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
+      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
+      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
+      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
+      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
+    },
+    "Description": {
+      "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
+      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x64 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы",
+      "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien",
+      "UA": "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли",
+      "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
+    },
+    "Type": "MsCppPackageButtonGroup",
+    "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 354,
+        "ChildHeader": {
+          "EN": "Install",
+          "RU": "Установить",
+          "DE": "Installieren",
+          "UA": "Встановити",
+          "IT": "Installa"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      },
+      {
+        "Id": 355,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 350,
     "Windows10Supported": true,
     "Windows11Supported": true
   },

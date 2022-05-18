@@ -418,9 +418,11 @@ namespace SophiApp.Customisations
         public static bool _352() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
 
         public static bool _354() => HttpHelper.IsOnline
-                                     ? VisualRedistrLibsHelper.GetCloudLatestVersion() > VisualRedistrLibsHelper.GetInstalledVersion()
-                                        ? false
-                                        : throw new VisualRedistrLibsLastVersionException()
+                                     ? VisualRedistrLibsHelper.IsInstalled()
+                                        ? VisualRedistrLibsHelper.GetCloudLatestVersion() > VisualRedistrLibsHelper.GetInstalledVersion()
+                                            ? false
+                                            : throw new VisualRedistrLibsLastVersionException()
+                                        : false
                                      : throw new NoInternetConnectionException();
 
         public static bool _355() => VisualRedistrLibsHelper.IsInstalled()

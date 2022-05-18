@@ -25,9 +25,9 @@ namespace SophiApp.Helpers
         internal static Version GetInstalledVersion()
         {
             var registryData = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
-                                        .FirstOrDefault(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
+                                        .First(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
 
-            var version = registryData is null ? "0.0.0.0" : RegHelper.GetValue(RegistryHive.ClassesRoot, registryData, VERSION_NAME) as string;
+            var version = RegHelper.GetValue(RegistryHive.ClassesRoot, registryData, VERSION_NAME) as string;
             return Version.Parse(version);
         }
 
