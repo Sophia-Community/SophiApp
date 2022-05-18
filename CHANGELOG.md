@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.0.60 — 18.05.2022
+
+Diff from v1.0.0.56
+[1.0.0.56...1.0.0.60](https://github.com/Sophia-Community/SophiApp/compare/1.0.0.56...1.0.0.60)
+
+* Fixed bug when app stuck while applying settings.
+  * #48 closed. Thanks to Vladimir for providing us remote access to his PC.
+* Formally, added Windows 10 Enterprise Government homebrew version support as an exception.
+  * All Defender related functions will be disabled due to this Windows 10 version has Defender deactivated;
+  * #58 closed.
+* Added an advanced feature to restore the Microsoft Store via official method.
+  * Internet connection required.
+![Снимок экрана (31)](https://user-images.githubusercontent.com/10544660/167956381-6afa5475-4a48-4d34-ab03-8773b7ffec5c.png)
+* Fix a bug in the function that helps to install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64 when both `Install` and `Uninstall` were not clickable.
+
 ## 1.0.0.56 — 27.04.2022
 
 Diff from v1.0.0.53
