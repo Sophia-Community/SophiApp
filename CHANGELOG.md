@@ -16,6 +16,7 @@ Diff from v1.0.0.56
   * All Defender related functions will be disabled due to this Windows 10 version has Defender deactivated;
   * #58 closed.
 * Added an advanced feature to restore the Microsoft Store and all its dependencies via official method.
+  * All advanced features can be enabled in the Settings. They will mark with a gear.
   * Internet connection required.
 ![Снимок экрана (31)](https://user-images.githubusercontent.com/10544660/167956381-6afa5475-4a48-4d34-ab03-8773b7ffec5c.png)
 * Fix a bug in the function that helps to install the latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64 when both `Install` and `Uninstall` were not clickable.
