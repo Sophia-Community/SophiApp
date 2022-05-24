@@ -1277,7 +1277,7 @@
       "EN": "Search on the taskbar",
       "RU": "Поиск на панели задач",
       "DE": "Suchfeld in der Taskleiste",
-      "UA": "",
+      "UA": "Пошук на панелі завдань",
       "IT": "Pulsante cerca sulla barra delle applicazioni"
     },
     "Description": {
@@ -1869,6 +1869,84 @@
     "Tag": "Personalization",
     "ViewId": 261,
     "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 262,
+    "Header": {
+      "EN": "Configure Start layout",
+      "RU": "Настроить макет начального экрана",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "RadioGroup",
+    "Tag": "Personalization",
+    "ChildElements": [
+      {
+        "Id": 263,
+        "ChildHeader": {
+          "EN": "",
+          "RU": "По умолчанию",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "RadioButton"
+      },
+      {
+        "Id": 264,
+        "ChildHeader": {
+          "EN": "",
+          "RU": "Больше закреплений",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "RadioButton"
+      },
+      {
+        "Id": 265,
+        "ChildHeader": {
+          "EN": "",
+          "RU": "Больше закреплений",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": ""
+        },
+        "Type": "RadioButton"
+      }
+    ],
+    "ViewId": 262,
+    "Windows10Supported": false,
     "Windows11Supported": true
   },
   {
