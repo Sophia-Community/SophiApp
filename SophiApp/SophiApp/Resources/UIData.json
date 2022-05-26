@@ -1950,6 +1950,72 @@
     "Windows11Supported": true
   },
   {
+    "Id": 266,
+    "Header": {
+      "EN": "Show recently added apps in the Start menu",
+      "RU": "Показывать недавно добавленные приложения в меню \"Пуск\"",
+      "DE": "Zuletzt hinzugefügte Apps im Startmenü anzeigen",
+      "UA": "Відображати нещодавно додані додатки в меню \"Пуск\"",
+      "IT": "Mostra app aggiunte di recente nel menu Start"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "StartMenu",
+    "ViewId": 266,
+    "Windows10Supported": true,
+    "Windows11Supported": false
+  },
+  {
+    "Id": 267,
+    "Header": {
+      "EN": "Show app suggestions in the Start menu",
+      "RU": "Показывать рекомендации в меню \"Пуск\"",
+      "DE": "App-Vorschläge im Startmenü anzeigen",
+      "UA": "Відображати рекомендації в меню \"Пуск\"",
+      "IT": "Mostra suggerimenti app nel menu Start"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "StartMenu",
+    "ViewId": 267,
+    "Windows10Supported": true,
+    "Windows11Supported": false
+  },
+  {
+    "Id": 268,
+    "Header": {
+      "EN": "Run the Windows PowerShell shortcut from the Start menu as Administrator",
+      "RU": "Запускать ярлык Windows PowerShell в меню \"Пуск\" от имени Администратора",
+      "DE": "Windows PowerShell als Administrator im Startmenü ausführen",
+      "UA": "Запускати ярлик Windows PowerShell у меню \"Пуск\" від імені Адміністратора",
+      "IT": "Eseguire il collegamento di Windows PowerShell dal menu Start come amministratore"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "StartMenu",
+    "ViewId": 268,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
     "Id": 300,
     "Header": {
       "EN": "Storage Sense",
@@ -3056,72 +3122,6 @@
       }
     ],
     "ViewId": 350,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 400,
-    "Header": {
-      "EN": "Show recently added apps in the Start menu",
-      "RU": "Показывать недавно добавленные приложения в меню \"Пуск\"",
-      "DE": "Zuletzt hinzugefügte Apps im Startmenü anzeigen",
-      "UA": "Відображати нещодавно додані додатки в меню \"Пуск\"",
-      "IT": "Mostra app aggiunte di recente nel menu Start"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "StartMenu",
-    "ViewId": 400,
-    "Windows10Supported": true,
-    "Windows11Supported": false
-  },
-  {
-    "Id": 401,
-    "Header": {
-      "EN": "Show app suggestions in the Start menu",
-      "RU": "Показывать рекомендации в меню \"Пуск\"",
-      "DE": "App-Vorschläge im Startmenü anzeigen",
-      "UA": "Відображати рекомендації в меню \"Пуск\"",
-      "IT": "Mostra suggerimenti app nel menu Start"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "StartMenu",
-    "ViewId": 401,
-    "Windows10Supported": true,
-    "Windows11Supported": false
-  },
-  {
-    "Id": 402,
-    "Header": {
-      "EN": "Run the Windows PowerShell shortcut from the Start menu as Administrator",
-      "RU": "Запускать ярлык Windows PowerShell в меню \"Пуск\" от имени Администратора",
-      "DE": "Windows PowerShell als Administrator im Startmenü ausführen",
-      "UA": "Запускати ярлик Windows PowerShell у меню \"Пуск\" від імені Адміністратора",
-      "IT": "Eseguire il collegamento di Windows PowerShell dal menu Start come amministratore"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "StartMenu",
-    "ViewId": 402,
     "Windows10Supported": true,
     "Windows11Supported": true
   },

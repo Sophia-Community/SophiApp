@@ -253,6 +253,20 @@ namespace SophiApp.Customisations
 
         public static bool _261() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _261_DISALLOW_WINDOWS_SHAKE) != ENABLED_VALUE;
 
+        public static bool _263() => OsHelper.GetVersion().Build >= _263_MIN_SUPPORTED_VERSION
+                                     ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_DEFAULT_VALUE
+                                     : throw new WindowsEditionNotSupportedException();
+
+        public static bool _264() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_PINS_VALUE;
+
+        public static bool _265() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_RECOMMENDATIONS_VALUE;
+
+        public static bool _266() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS) != _266_DISABLED_VALUE;
+
+        public static bool _267() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _267_APP_SUGGESTIONS) == ENABLED_VALUE;
+
+        public static bool _268() => (File.ReadAllBytes(_268_POWERSHELL_LNK)[0x15] == 2).Invert();
+
         public static bool _300() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01)
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
@@ -428,12 +442,6 @@ namespace SophiApp.Customisations
         public static bool _355() => VisualRedistrLibsHelper.IsInstalled()
                                      ? false
                                      : throw new VisualRedistrLibsNotInstalled();
-
-        public static bool _400() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS) != _400_DISABLED_VALUE;
-
-        public static bool _401() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS) == ENABLED_VALUE;
-
-        public static bool _402() => (File.ReadAllBytes(_402_POWERSHELL_LNK)[0x15] == 2).Invert();
 
         public static bool _500() => HttpHelper.IsOnline
                                      ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)

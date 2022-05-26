@@ -530,6 +530,50 @@ namespace SophiApp.Customisations
                                                                                          : _261_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
+        public static void _263(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                ADVANCED_EXPLORER_PATH,
+                                                                    START_LAYOUT,
+                                                                        START_LAYOUT_DEFAULT_VALUE);
+
+        public static void _264(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                ADVANCED_EXPLORER_PATH,
+                                                                    START_LAYOUT,
+                                                                        START_LAYOUT_PINS_VALUE);
+
+        public static void _265(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                ADVANCED_EXPLORER_PATH,
+                                                                    START_LAYOUT,
+                                                                        START_LAYOUT_RECOMMENDATIONS_VALUE);
+
+        public static void _266(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS, _266_DISABLED_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _267(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _267_APP_SUGGESTIONS, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _267_APP_SUGGESTIONS, DISABLED_VALUE, RegistryValueKind.DWord);
+        }
+
+        public static void _268(bool IsChecked)
+        {
+            var bytes = File.ReadAllBytes(_268_POWERSHELL_LNK);
+            bytes[0x15] = (byte)(IsChecked ? bytes[0x15] | 0x20 : bytes[0x15] ^ 0x20);
+            File.WriteAllBytes(_268_POWERSHELL_LNK, bytes);
+        }
+
         public static void _300(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         STORAGE_POLICY_PATH,
                                                                             STORAGE_POLICY_01,
@@ -905,35 +949,6 @@ namespace SophiApp.Customisations
                          .ToList()
                          .ForEach(log => FileHelper.TryDeleteFile(log));
             }
-        }
-
-        public static void _400(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS);
-                return;
-            }
-
-            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _400_HIDE_ADDED_APPS, _400_DISABLED_VALUE, RegistryValueKind.DWord);
-        }
-
-        public static void _401(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                RegHelper.SetValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS, ENABLED_VALUE, RegistryValueKind.DWord);
-                return;
-            }
-
-            RegHelper.SetValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _401_APP_SUGGESTIONS, DISABLED_VALUE, RegistryValueKind.DWord);
-        }
-
-        public static void _402(bool IsChecked)
-        {
-            var bytes = File.ReadAllBytes(_402_POWERSHELL_LNK);
-            bytes[0x15] = (byte)(IsChecked ? bytes[0x15] | 0x20 : bytes[0x15] ^ 0x20);
-            File.WriteAllBytes(_402_POWERSHELL_LNK, bytes);
         }
 
         public static void _500(bool IsChecked)

@@ -116,6 +116,10 @@ namespace SophiApp.Customisations
         internal const byte _261_DISABLED_VALUE = 1;
         internal const string _261_DISALLOW_WINDOWS_SHAKE = "DisallowShaking";
         internal const byte _261_ENABLED_VALUE = 0;
+        internal const int _263_MIN_SUPPORTED_VERSION = 22509;
+        internal const byte _266_DISABLED_VALUE = 1;
+        internal const string _266_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
+        internal const string _267_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
         internal const byte _302_STORAGE_POLICY_MONTH_VALUE = 30;
         internal const string _304_STORAGE_POLICY_04 = "04";
         internal const byte _305_ENABLED_VALUE = 1;
@@ -211,9 +215,6 @@ namespace SophiApp.Customisations
         internal const string _349_VC_REDISTRX64_UNINSTALL_ARGS = "/uninstall /passive /norestart";
         internal const string _349_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
         internal const string _349_VERSION_NAME = "Version";
-        internal const byte _400_DISABLED_VALUE = 1;
-        internal const string _400_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
-        internal const string _401_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
         internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
         internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_HEVC_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
@@ -656,6 +657,10 @@ else
         internal const string SIUF_PATH = @"SOFTWARE\Microsoft\Siuf\Rules";
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
         internal const string SOPHIA_SCRIPT_SCHEDULED_PATH = "Sophia Script";
+        internal const string START_LAYOUT = "Start_Layout";
+        internal const byte START_LAYOUT_DEFAULT_VALUE = 0;
+        internal const byte START_LAYOUT_PINS_VALUE = 1;
+        internal const byte START_LAYOUT_RECOMMENDATIONS_VALUE = 2;
         internal const string START_PANEL_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
         internal const string STARTUP_PAGE = "StartupPage";
         internal const byte STARTUP_PAGE_CATEGORY_VALUE = 0;
@@ -691,9 +696,9 @@ else
         internal const string X64 = "x64";
         internal static readonly string _203_WIN10_EXPLORER_INPROC_PATH = $@"{_203_WIN10_EXPLORER_PATH}\InprocServer32";
         internal static readonly DateTime _21_PM_TASK_START = DateTime.Today.AddHours(21);
+        internal static readonly string _268_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
         internal static readonly string _315_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static readonly string _348_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
-        internal static readonly string _402_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
 
         internal static readonly Dictionary<string, string> _500_ADGUARD_WEB_PARAMS = new Dictionary<string, string>()
         {
