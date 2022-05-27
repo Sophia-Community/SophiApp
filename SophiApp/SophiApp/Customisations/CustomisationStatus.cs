@@ -254,7 +254,7 @@ namespace SophiApp.Customisations
         public static bool _261() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _261_DISALLOW_WINDOWS_SHAKE) != ENABLED_VALUE;
 
         public static bool _263() => OsHelper.GetVersion().Build >= _263_MIN_SUPPORTED_VERSION
-                                     ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_DEFAULT_VALUE
+                                     ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_DEFAULT_VALUE || RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == null
                                      : throw new WindowsEditionNotSupportedException();
 
         public static bool _264() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_PINS_VALUE;
