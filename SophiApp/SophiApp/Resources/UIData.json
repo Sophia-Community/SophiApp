@@ -1876,7 +1876,7 @@
     "Header": {
       "EN": "Configure Start layout",
       "RU": "Настроить макет начального экрана",
-      "DE": "",
+      "DE": "Startlayout konfigurieren",
       "UA": "",
       "IT": ""
     },
@@ -1893,11 +1893,11 @@
       {
         "Id": 263,
         "ChildHeader": {
-          "EN": "",
+          "EN": "Default",
           "RU": "По умолчанию",
-          "DE": "",
-          "UA": "",
-          "IT": ""
+          "DE": "Standard",
+          "UA": "За замовчуванням",
+          "IT": "Predefinita"
         },
         "ChildDescription": {
           "EN": "",
@@ -1911,11 +1911,11 @@
       {
         "Id": 264,
         "ChildHeader": {
-          "EN": "",
+          "EN": "More pins",
           "RU": "Больше закреплений",
-          "DE": "",
-          "UA": "",
-          "IT": ""
+          "DE": "Mehr angeheftete Elemente",
+          "UA": "Iншi закрiплення",
+          "IT": "Altri elementi ancorati"
         },
         "ChildDescription": {
           "EN": "",
@@ -1929,11 +1929,11 @@
       {
         "Id": 265,
         "ChildHeader": {
-          "EN": "",
+          "EN": "More recommendations",
           "RU": "Больше рекомендаций",
-          "DE": "",
-          "UA": "",
-          "IT": ""
+          "DE": "Mehr angeheftete Empfehlungen",
+          "UA": "Бiльше рекомендацiй",
+          "IT": "Altri elementi consigliati"
         },
         "ChildDescription": {
           "EN": "",
