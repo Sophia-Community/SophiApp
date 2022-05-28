@@ -211,3 +211,4 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 * [Ru-Board](https://forum.ru-board.com/topic.cgi?forum=5&topic=50903)
 * [MyDigitalLife](https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/)
 * [Reddit](https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/)
+* [rutracker](https://rutracker.org/forum/viewtopic.php?t=6218047)
