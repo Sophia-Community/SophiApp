@@ -58,4 +58,4 @@ Get-Process -Name explorer | Where-Object -FilterScript {$_.MainWindowTitle -eq 
 
 	# Force move the console window to the foreground
 	[WinAPI.ForegroundWindow]::SetForegroundWindow($_.MainWindowHandle)
-}
+} | Out-Null
