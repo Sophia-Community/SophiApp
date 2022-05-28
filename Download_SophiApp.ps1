@@ -61,4 +61,4 @@ Get-Process -Name explorer | Where-Object -FilterScript {$_.MainWindowTitle -eq 
 } | Out-Null
 
 Write-Information -MessageData "" -InformationAction Continue
-Write-Verbose -Message "Archive was expended to `"$DownloadsFolder\SophiApp`"" -Verbose
+Write-Verbose -Message "Archive was expanded to `"$DownloadsFolder\SophiApp`"" -Verbose
