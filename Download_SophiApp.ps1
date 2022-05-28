@@ -50,12 +50,15 @@ if (-not ("WinAPI.ForegroundWindow" -as [type]))
 	Add-Type @SetForegroundWindow
 }
 
+Start-Sleep -Seconds 1
+
 Get-Process -Name explorer | Where-Object -FilterScript {$_.MainWindowTitle -eq "SophiApp"} | ForEach-Object -Process {
 	# Show window, if minimized
 	[WinAPI.ForegroundWindow]::ShowWindowAsync($_.MainWindowHandle, 5)
 
-	Start-Sleep -Seconds 3
-
 	# Force move the console window to the foreground
 	[WinAPI.ForegroundWindow]::SetForegroundWindow($_.MainWindowHandle)
-}
+} | Out-Null
+
+Write-Information -MessageData "" -InformationAction Continue
+Write-Verbose -Message "Archive was expended to `"$DownloadsFolder\SophiApp`"" -Verbose
