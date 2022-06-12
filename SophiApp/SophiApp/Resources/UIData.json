@@ -9,11 +9,11 @@
       "IT": "Servizio di telemetria"
     },
     "Description": {
-      "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic.",
-      "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии",
-      "DE": "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren",
-      "UA": "Налаштувати службу \"Функціональні можливості для підключених користувачів та телеметрія\" (DiagTrack) та з'єднання для вихідного трафіку клієнта єдиної телеметрії",
-      "IT": "Configurare le esperienze utente collegate e il servizio Telemetry (Digtrack) e la connessione per il traffico in uscita del client di telemetria unificata."
+      "EN": "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the \"Connected User Experiences and Telemetry\" service (DiagTrack) can cause you not being able to get Xbox achievements anymore",
+      "RU": "Настроить cлужбу \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии. Отключение службы \"Функциональные возможности для подключенных пользователей и телеметрия\" (DiagTrack) может привести к тому, что вы больше не сможете получать достижения Xbox",
+      "DE": "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren. Das Deaktivieren des Dienstes \"Benutzererfahrungen und Telemetrie im verbundenen Modus\" (DiagTrack) kann dazu führen, dass Sie keine Xbox-Erfolge mehr erhalten können.",
+      "UA": "Налаштувати службу \"Функціональні можливості для підключених користувачів та телеметрія\" (DiagTrack) та з'єднання для вихідного трафіку клієнта єдиної телеметрії. Вимкнення служби \"Функціональні можливості для підключених користувачів і телеметрія\" (DiagTrack) може призвести до того, що ви більше не зможете отримувати досягнення Xbox.",
+      "IT": "Configurare le esperienze utente collegate e il servizio Telemetry (Digtrack) e la connessione per il traffico in uscita del client di telemetria unificata. La disabilitazione del servizio \"Esperienze utente connesse e telemetria\" (DiagTrack) può impedirti di ottenere più risultati Xbox."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
