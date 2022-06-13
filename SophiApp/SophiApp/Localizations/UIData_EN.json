@@ -2051,7 +2051,7 @@
     {
         "Id":  701,
         "Header":  {
-                       "EN":  "Сlean up the Windows Updates download folder"
+                       "EN":  "Clean up the Windows Updates download folder"
                    },
         "Description":  {
                             "EN":  "Create the \"SoftwareDistribution\" scheduled task for cleaning up \n%SystemRoot%\\SoftwareDistribution\\Download, where all Windows updates are downloaded to, under the SophiApp folder in the Task Scheduler. The task will wait until the Windows Updates service finishes running. The task runs every 90 days."
