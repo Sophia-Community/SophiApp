@@ -5,7 +5,7 @@
                        "DE":  "Telemetriedienst"
                    },
         "Description":  {
-                            "DE":  "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren"
+                            "DE":  "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren. Das Deaktivieren des Dienstes \"Benutzererfahrungen und Telemetrie im verbundenen Modus\" (DiagTrack) kann dazu führen, dass Sie keine Xbox-Erfolge mehr erhalten können."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -1152,6 +1152,94 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  262,
+        "Header":  {
+                       "DE":  "Startlayout konfigurieren"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  263,
+                                  "ChildHeader":  {
+                                                      "DE":  "Standard"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  264,
+                                  "ChildHeader":  {
+                                                      "DE":  "Mehr angeheftete Elemente"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  265,
+                                  "ChildHeader":  {
+                                                      "DE":  "Mehr angeheftete Empfehlungen"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  262,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  266,
+        "Header":  {
+                       "DE":  "Zuletzt hinzugefügte Apps im Startmenü anzeigen"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "StartMenu",
+        "ViewId":  266,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  267,
+        "Header":  {
+                       "DE":  "App-Vorschläge im Startmenü anzeigen"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "StartMenu",
+        "ViewId":  267,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  268,
+        "Header":  {
+                       "DE":  "Windows PowerShell als Administrator im Startmenü ausführen"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "StartMenu",
+        "ViewId":  268,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "DE":  "Speicheroptimierung"
@@ -1294,54 +1382,12 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  311,
+        "Id":  314,
         "Header":  {
                        "DE":  "Den Zugriff auf zugeordnete Laufwerke von einer Anwendung, die mit erweiterten Berechtigungen im Freigabemodus für Administratoren läuft."
                    },
         "Description":  {
                             "DE":  "Aktivierte UAC mit den Standardeinstellungen erlaubt keinen Zugriff auf zugeordnete Netzlaufwerke von Anwendungen, die im Administratormodus ausgeführt werden. Das heißt, wenn Sie die Befehlszeile oder einen Dateimanager mit erhöhten Rechten ausführen, werden die Laufwerksbuchstaben der eingebundenen Netzwerkordner nicht angezeigt."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  311,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  312,
-        "Header":  {
-                       "DE":  "Herunterladen von Updates mit Übermittlungsoptimierung aktivieren"
-                   },
-        "Description":  {
-                            "DE":  "Die Übermittlungsoptimierung von Windows-Updates ermöglicht es Ihnen, Windows-Updates und Microsoft Store-Apps nicht nur von Microsoft, sondern auch von anderen PCs in Ihrem lokalen Netzwerk oder PCs im Internet zu beziehen, die dieselben Dateien herunterladen. Die Übermittlungsoptimierung sendet auch Updates und Anwendungen von Ihrem PC an andere PCs in Ihrem lokalen Netzwerk oder PCs im Internet, je nach Ihren Einstellungen. Die gemeinsame Nutzung dieser Daten zwischen PCs trägt dazu bei, die Internet-Bandbreite zu reduzieren, die benötigt wird, um mehr als ein Gerät auf dem neuesten Stand zu halten, oder kann Downloads erfolgreicher machen, wenn Sie eine begrenzte oder unzuverlässige Internetverbindung haben."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  312,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  313,
-        "Header":  {
-                       "DE":  "Bei Arbeitsgruppennetzwerken beim Starten des Computers und bei der Anmeldung immer auf das Netzwerk warten"
-                   },
-        "Description":  {
-                            "DE":  "Um die Anmeldezeit zu verkürzen, wartet Windows nicht darauf, dass das Netzwerk beim Start oder bei der Anmeldung vollständig initialisiert wird. Die Richtlinieneinstellungen werden asynchron beim Start des Computers und bei der Anmeldung des Benutzers angewendet. Daher wartet das Betriebssystem nicht darauf, dass das Netzwerk beim Starten und bei der Anmeldung vollständig initialisiert wird. Vorhandene Benutzer werden mit zwischengespeicherten Anmeldedaten angemeldet. Dies verkürzt die Anmeldezeiten. Die Gruppenrichtlinien werden im Hintergrund angewendet, nachdem das Netzwerk verfügbar ist."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  313,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  314,
-        "Header":  {
-                       "DE":  "Windows meinen Standarddrucker verwalten lassen"
-                   },
-        "Description":  {
-                            "DE":  "In der Standardeinstellung macht Windows den zuletzt verwendeten Drucker zum Standarddrucker."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1352,10 +1398,10 @@
     {
         "Id":  315,
         "Header":  {
-                       "DE":  "Updates für andere Microsoft-Produkte erhalten."
+                       "DE":  "Herunterladen von Updates mit Übermittlungsoptimierung aktivieren"
                    },
         "Description":  {
-                            "DE":  "Microsoft Office und andere Updates zusammen mit Windows-Updates holen."
+                            "DE":  "Die Übermittlungsoptimierung von Windows-Updates ermöglicht es Ihnen, Windows-Updates und Microsoft Store-Apps nicht nur von Microsoft, sondern auch von anderen PCs in Ihrem lokalen Netzwerk oder PCs im Internet zu beziehen, die dieselben Dateien herunterladen. Die Übermittlungsoptimierung sendet auch Updates und Anwendungen von Ihrem PC an andere PCs in Ihrem lokalen Netzwerk oder PCs im Internet, je nach Ihren Einstellungen. Die gemeinsame Nutzung dieser Daten zwischen PCs trägt dazu bei, die Internet-Bandbreite zu reduzieren, die benötigt wird, um mehr als ein Gerät auf dem neuesten Stand zu halten, oder kann Downloads erfolgreicher machen, wenn Sie eine begrenzte oder unzuverlässige Internetverbindung haben."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1366,6 +1412,48 @@
     {
         "Id":  316,
         "Header":  {
+                       "DE":  "Bei Arbeitsgruppennetzwerken beim Starten des Computers und bei der Anmeldung immer auf das Netzwerk warten"
+                   },
+        "Description":  {
+                            "DE":  "Um die Anmeldezeit zu verkürzen, wartet Windows nicht darauf, dass das Netzwerk beim Start oder bei der Anmeldung vollständig initialisiert wird. Die Richtlinieneinstellungen werden asynchron beim Start des Computers und bei der Anmeldung des Benutzers angewendet. Daher wartet das Betriebssystem nicht darauf, dass das Netzwerk beim Starten und bei der Anmeldung vollständig initialisiert wird. Vorhandene Benutzer werden mit zwischengespeicherten Anmeldedaten angemeldet. Dies verkürzt die Anmeldezeiten. Die Gruppenrichtlinien werden im Hintergrund angewendet, nachdem das Netzwerk verfügbar ist."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  316,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  317,
+        "Header":  {
+                       "DE":  "Windows meinen Standarddrucker verwalten lassen"
+                   },
+        "Description":  {
+                            "DE":  "In der Standardeinstellung macht Windows den zuletzt verwendeten Drucker zum Standarddrucker."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  317,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  318,
+        "Header":  {
+                       "DE":  "Updates für andere Microsoft-Produkte erhalten."
+                   },
+        "Description":  {
+                            "DE":  "Microsoft Office und andere Updates zusammen mit Windows-Updates holen."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  318,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  319,
+        "Header":  {
                        "DE":  "Energiesparplan auswählen"
                    },
         "Description":  {
@@ -1375,7 +1463,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  317,
+                                  "Id":  320,
                                   "ChildHeader":  {
                                                       "DE":  "Hohe Leistung"
                                                   },
@@ -1385,7 +1473,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  318,
+                                  "Id":  321,
                                   "ChildHeader":  {
                                                       "DE":  "Ausgeglichen"
                                                   },
@@ -1395,12 +1483,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  316,
+        "ViewId":  319,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  319,
+        "Id":  322,
         "Header":  {
                        "DE":  "Neueste installierte .NET Framework-Laufzeitumgebung für alle Anwendungen verwenden"
                    },
@@ -1409,12 +1497,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  319,
+        "ViewId":  322,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  320,
+        "Id":  323,
         "Header":  {
                        "DE":  "Dem Computer erlauben, die Netzwerkadapter auszuschalten, um Strom zu sparen"
                    },
@@ -1423,12 +1511,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  320,
+        "ViewId":  323,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  321,
+        "Id":  324,
         "Header":  {
                        "DE":  "Standard-Eingabemethode überschreiben"
                    },
@@ -1439,7 +1527,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  322,
+                                  "Id":  325,
                                   "ChildHeader":  {
                                                       "DE":  "Sprachliste verwenden"
                                                   },
@@ -1449,45 +1537,9 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  323,
-                                  "ChildHeader":  {
-                                                      "DE":  "Englisch"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "DE":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
-        "ViewId":  321,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  324,
-        "Header":  {
-                       "DE":  "Ordner zum Speichern von Screenshots auswählen beim Win+PrtScn drücken"
-                   },
-        "Description":  {
-                            "DE":  "\"Desktop\" auswählen, wenn Sie nur OneDrive entfernen möchten (oder es zuvor deinstalliert wurde), andernfalls wird die Sicherungsfunktion für die Ordner \"Desktop\" und \"Bilder\" in OneDrive unterbrochen."
-                        },
-        "Type":  "RadioGroup",
-        "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  325,
-                                  "ChildHeader":  {
-                                                      "DE":  "Desktop"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "DE":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
                                   "Id":  326,
                                   "ChildHeader":  {
-                                                      "DE":  "Ordner \"Bilder\""
+                                                      "DE":  "Englisch"
                                                   },
                                   "ChildDescription":  {
                                                            "DE":  ""
@@ -1502,10 +1554,10 @@
     {
         "Id":  327,
         "Header":  {
-                       "DE":  "Empfohlene Fehlerbehebung"
+                       "DE":  "Ordner zum Speichern von Screenshots auswählen beim Win+PrtScn drücken"
                    },
         "Description":  {
-                            "DE":  "Microsoft kann Fehlerbehebungsprogramme empfehlen und ausführen, um Probleme zu beheben. Inwieweit möchten Sie, dass Microsoft Ihnen hilft, wenn es auf Ihrem Gerät Probleme gibt, die mit Hilfe von Troubleshootern behoben werden können?"
+                            "DE":  "\"Desktop\" auswählen, wenn Sie nur OneDrive entfernen möchten (oder es zuvor deinstalliert wurde), andernfalls wird die Sicherungsfunktion für die Ordner \"Desktop\" und \"Bilder\" in OneDrive unterbrochen."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1513,20 +1565,20 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "DE":  "Fehlerbehebungen automatisch durchführen und dann benachrichtigen"
+                                                      "DE":  "Desktop"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden."
+                                                           "DE":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  329,
                                   "ChildHeader":  {
-                                                      "DE":  "Mich fragen, bevor die Problembehandlung gestartet wird"
+                                                      "DE":  "Ordner \"Bilder\""
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden."
+                                                           "DE":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1538,52 +1590,46 @@
     {
         "Id":  330,
         "Header":  {
-                       "DE":  "Ordnerfenster in einem separaten Prozess starten"
+                       "DE":  "Empfohlene Fehlerbehebung"
                    },
         "Description":  {
-                            "DE":  "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern"
+                            "DE":  "Microsoft kann Fehlerbehebungsprogramme empfehlen und ausführen, um Probleme zu beheben. Inwieweit möchten Sie, dass Microsoft Ihnen hilft, wenn es auf Ihrem Gerät Probleme gibt, die mit Hilfe von Troubleshootern behoben werden können?"
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  331,
+                                  "ChildHeader":  {
+                                                      "DE":  "Fehlerbehebungen automatisch durchführen und dann benachrichtigen"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden."
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  332,
+                                  "ChildHeader":  {
+                                                      "DE":  "Mich fragen, bevor die Problembehandlung gestartet wird"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden."
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
         "ViewId":  330,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  331,
-        "Header":  {
-                       "DE":  "Reservierten Speicher aktivieren"
-                   },
-        "Description":  {
-                            "DE":  "Um sicherzustellen, dass Ihr Gerät erfolgreich aktualisiert werden kann und optimal funktioniert, reserviert Windows einen Teil des Speicherplatzes auf Ihrem Gerät für temporäre Dateien, Caches und andere Dateien. Wenn der Speicherplatz auf dem Gerät knapp wird, leert Windows den reservierten Speicherplatz, damit er für andere Prozesse, z. B. ein Windows-Update, verwendet werden kann. Das Reservieren von Speicherplatz trägt auch dazu bei, dass die Nutzung des Speicherplatzes auf Ihrem Gerät vorhersehbarer und stabiler wird. Nach der Deaktivierung wird der reservierte Speicherplatz nach der nächsten Update-Installation gelöscht."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  331,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  332,
-        "Header":  {
-                       "DE":  "Hilfe mit F1-Taste aktivieren"
-                   },
-        "Description":  {
-                            "DE":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  332,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
         "Id":  333,
         "Header":  {
-                       "DE":  "Num Lock beim Systemstart aktivieren"
+                       "DE":  "Ordnerfenster in einem separaten Prozess starten"
                    },
         "Description":  {
-                            "DE":  ""
+                            "DE":  "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1594,10 +1640,10 @@
     {
         "Id":  334,
         "Header":  {
-                       "DE":  "Feststelltaste aktivieren"
+                       "DE":  "Reservierten Speicher aktivieren"
                    },
         "Description":  {
-                            "DE":  ""
+                            "DE":  "Um sicherzustellen, dass Ihr Gerät erfolgreich aktualisiert werden kann und optimal funktioniert, reserviert Windows einen Teil des Speicherplatzes auf Ihrem Gerät für temporäre Dateien, Caches und andere Dateien. Wenn der Speicherplatz auf dem Gerät knapp wird, leert Windows den reservierten Speicherplatz, damit er für andere Prozesse, z. B. ein Windows-Update, verwendet werden kann. Das Reservieren von Speicherplatz trägt auch dazu bei, dass die Nutzung des Speicherplatzes auf Ihrem Gerät vorhersehbarer und stabiler wird. Nach der Deaktivierung wird der reservierte Speicherplatz nach der nächsten Update-Installation gelöscht."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1608,10 +1654,10 @@
     {
         "Id":  335,
         "Header":  {
-                       "DE":  "Tastaturkürzel für Feststelltasten"
+                       "DE":  "Hilfe mit F1-Taste aktivieren"
                    },
         "Description":  {
-                            "DE":  "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten"
+                            "DE":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1622,7 +1668,7 @@
     {
         "Id":  336,
         "Header":  {
-                       "DE":  "Automatische Wiedergabe für alle Medien und Geräte verwenden"
+                       "DE":  "Num Lock beim Systemstart aktivieren"
                    },
         "Description":  {
                             "DE":  ""
@@ -1636,10 +1682,10 @@
     {
         "Id":  337,
         "Header":  {
-                       "DE":  "Thumbnail-Cache entfernen aktivieren"
+                       "DE":  "Feststelltaste aktivieren"
                    },
         "Description":  {
-                            "DE":  "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert."
+                            "DE":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1650,10 +1696,10 @@
     {
         "Id":  338,
         "Header":  {
-                       "DE":  "Apps nach der Anmeldung neu starten"
+                       "DE":  "Tastaturkürzel für Feststelltasten"
                    },
         "Description":  {
-                            "DE":  "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet."
+                            "DE":  "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1664,7 +1710,7 @@
     {
         "Id":  339,
         "Header":  {
-                       "DE":  "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren."
+                       "DE":  "Automatische Wiedergabe für alle Medien und Geräte verwenden"
                    },
         "Description":  {
                             "DE":  ""
@@ -1678,10 +1724,10 @@
     {
         "Id":  340,
         "Header":  {
-                       "DE":  "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung"
+                       "DE":  "Thumbnail-Cache entfernen aktivieren"
                    },
         "Description":  {
-                            "DE":  ""
+                            "DE":  "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1692,10 +1738,10 @@
     {
         "Id":  341,
         "Header":  {
-                       "DE":  "Einen Neustart sobald wie möglich durchführen um die Aktualisierung abzuschließen"
+                       "DE":  "Apps nach der Anmeldung neu starten"
                    },
         "Description":  {
-                            "DE":  ""
+                            "DE":  "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1706,6 +1752,48 @@
     {
         "Id":  342,
         "Header":  {
+                       "DE":  "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren."
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  342,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  343,
+        "Header":  {
+                       "DE":  "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  343,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  344,
+        "Header":  {
+                       "DE":  "Einen Neustart sobald wie möglich durchführen um die Aktualisierung abzuschließen"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  344,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  345,
+        "Header":  {
                        "DE":  "Standard-Terminal-App"
                    },
         "Description":  {
@@ -1715,7 +1803,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  343,
+                                  "Id":  346,
                                   "ChildHeader":  {
                                                       "DE":  "Windows Terminal"
                                                   },
@@ -1725,7 +1813,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  344,
+                                  "Id":  347,
                                   "ChildHeader":  {
                                                       "DE":  "Windows Console Host"
                                                   },
@@ -1735,12 +1823,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  342,
+        "ViewId":  345,
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
-        "Id":  345,
+        "Id":  348,
         "Header":  {
                        "DE":  "PC-Integritätsprüfungsanwendung"
                    },
@@ -1750,42 +1838,6 @@
         "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
-                              {
-                                  "Id":  346,
-                                  "ChildHeader":  {
-                                                      "DE":  "Deinstallieren"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "DE":  ""
-                                                       },
-                                  "Type":  "Button"
-                              }
-                          ],
-        "ViewId":  345,
-        "Windows10Supported":  true,
-        "Windows11Supported":  false
-    },
-    {
-        "Id":  347,
-        "Header":  {
-                       "DE":  "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64"
-                   },
-        "Description":  {
-                            "DE":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien"
-                        },
-        "Type":  "MsCppPackageButtonGroup",
-        "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  348,
-                                  "ChildHeader":  {
-                                                      "DE":  "Installieren"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "DE":  ""
-                                                       },
-                                  "Type":  "Button"
-                              },
                               {
                                   "Id":  349,
                                   "ChildHeader":  {
@@ -1797,9 +1849,9 @@
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  347,
+        "ViewId":  348,
         "Windows10Supported":  true,
-        "Windows11Supported":  true
+        "Windows11Supported":  false
     },
     {
         "Id":  350,
@@ -1833,49 +1885,43 @@
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  352,
+        "ViewId":  349,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  400,
+        "Id":  353,
         "Header":  {
-                       "DE":  "Zuletzt hinzugefügte Apps im Startmenü anzeigen"
+                       "DE":  "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64"
                    },
         "Description":  {
-                            "DE":  ""
+                            "DE":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien"
                         },
-        "Type":  "CheckBox",
-        "Tag":  "StartMenu",
-        "ViewId":  400,
-        "Windows10Supported":  true,
-        "Windows11Supported":  false
-    },
-    {
-        "Id":  401,
-        "Header":  {
-                       "DE":  "App-Vorschläge im Startmenü anzeigen"
-                   },
-        "Description":  {
-                            "DE":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "StartMenu",
-        "ViewId":  401,
-        "Windows10Supported":  true,
-        "Windows11Supported":  false
-    },
-    {
-        "Id":  402,
-        "Header":  {
-                       "DE":  "Windows PowerShell als Administrator im Startmenü ausführen"
-                   },
-        "Description":  {
-                            "DE":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "StartMenu",
-        "ViewId":  402,
+        "Type":  "MsCppPackageButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "DE":  "Installieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "DE":  "Deinstallieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  350,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },

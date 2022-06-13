@@ -2,10 +2,10 @@
     {
         "Id":  100,
         "Header":  {
-                       "UA":  "Служба телеметрії"
+                       "TR":  "Telemetri hizmeti"
                    },
         "Description":  {
-                            "UA":  "Налаштувати службу \"Функціональні можливості для підключених користувачів та телеметрія\" (DiagTrack) та з'єднання для вихідного трафіку клієнта єдиної телеметрії. Вимкнення служби \"Функціональні можливості для підключених користувачів і телеметрія\" (DiagTrack) може призвести до того, що ви більше не зможете отримувати досягнення Xbox."
+                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -16,10 +16,10 @@
     {
         "Id":  101,
         "Header":  {
-                       "UA":  "Рівень збирання діагностичних даних ОС"
+                       "TR":  "Tanılama verileri toplamanın işletim sistemi düzeyi"
                    },
         "Description":  {
-                            "UA":  "При використанні Windows ваш пристрій відправляє до Майкрософт обмежений набір даних, які необхідні для захисту вашого пристрою і операційної системи, а також для її коректної роботи"
+                            "TR":  "Windows kullanmanın bir parçası olarak, cihazınız Microsoft'a cihazınızın ve işletim sisteminizin güvenli, güncel ve beklendiği gibi çalışması için gerekli olan sınırlı bir veri seti gönderir."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Privacy",
@@ -27,20 +27,20 @@
                               {
                                   "Id":  102,
                                   "ChildHeader":  {
-                                                      "UA":  "За замовчуванням"
+                                                      "TR":  "Varsayılan"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  103,
                                   "ChildHeader":  {
-                                                      "UA":  "Мінімальний"
+                                                      "TR":  "En az"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -52,10 +52,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "UA":  "Запис звітів про помилки Windows"
+                       "TR":  "Windows Hata Bildirimi"
                    },
         "Description":  {
-                            "UA":  "Функція створення звітів про помилки дозволяє користувачам повідомляти Майкрософт про збої програм, збої ядра, програми, що не відповідають, та інші проблеми, пов'язані з програмами. Корпорація Майкрософт може використовувати функцію звітів про помилки для надання клієнтам відомостей про виправлення неполадок, рішення або оновлення для конкретних проблем"
+                            "TR":  "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -66,10 +66,10 @@
     {
         "Id":  105,
         "Header":  {
-                       "UA":  "Частота надсилання запитів"
+                       "TR":  "Geri bildirim sıklığı"
                    },
         "Description":  {
-                            "UA":  "Вкажіть, як часто Windows слід запитувати ваш відгук"
+                            "TR":  "Windows'un ne sıklıkta geri bildiriminizi isteyeceğini seçin."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Privacy",
@@ -77,20 +77,20 @@
                               {
                                   "Id":  106,
                                   "ChildHeader":  {
-                                                      "UA":  "Автоматично"
+                                                      "TR":  "Otomatik olarak"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  107,
                                   "ChildHeader":  {
-                                                      "UA":  "Ніколи"
+                                                      "TR":  "Hiçbir zaman"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -102,10 +102,10 @@
     {
         "Id":  108,
         "Header":  {
-                       "UA":  "Завдання діагностичного відстеження"
+                       "TR":  "Teşhis İzleme Görevleri"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "ExpandingGroup",
         "Tag":  "Privacy",
@@ -113,90 +113,90 @@
                               {
                                   "Id":  109,
                                   "ChildHeader":  {
-                                                      "UA":  "ProgramDataUpdater"
+                                                      "TR":  "ProgramDataUpdater"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Збір телеметричних даних програми за участю у програмі покращення якості ПЗ"
+                                                           "TR":  "Microsoft Müşteri Deneyimini Geliştirme Programına dahil edilmişse program telemetri bilgilerini toplar."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  110,
                                   "ChildHeader":  {
-                                                      "UA":  "Proxy"
+                                                      "TR":  "Proxy"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Це завдання збирає та завантажує дані SQM за участю у програмі покращення якості програмного забезпечення"
+                                                           "TR":  "Bu görev, Microsoft Müşteri Deneyimini Geliştirme Programına dahil edilmişse otomatik SQM verilerini toplar ve karşıya yükler."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  111,
                                   "ChildHeader":  {
-                                                      "UA":  "Consolidator"
+                                                      "TR":  "Consolidator"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Якщо користувач виявив бажання брати участь у програмі з покращення якості програмного забезпечення Windows, це завдання буде збирати та надсилати відомості про роботу програмного забезпечення до корпорації Майкрософт."
+                                                           "TR":  "Kullanıcı, Windows Müşteri Deneyimini Geliştirme Programına katılmayı kabul ettiyse, bu iş kullanım verilerini toplar ve Microsoft'a gönderir."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  112,
                                   "ChildHeader":  {
-                                                      "UA":  "UsbCeip"
+                                                      "TR":  "UsbCeip"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "При виконанні завдання програми покращення якості ПЗ шини USB (USB CEIP) здійснюється збір статистичних даних про використання універсальної послідовної шини USB та відомостей про комп'ютер, що надсилаються інженерній групі Майкрософт з питань підключення пристроїв у Windows. Отримані відомості використовуються для підвищення надійності, стабільності та загальної продуктивності шини USB у Windows. За відсутності згоди користувача на участь у програмі покращення програмного забезпечення Windows завдання не виконує жодних дій"
+                                                           "TR":  "USB CEIP (Müşteri Deneyimi Geliştirme Programı) görevi, Evrensel Seri Veri Yolu ile ilgili istatistikleri ve makinenizle ilgili bilgileri toplar ve bunları Microsoft'taki Windows Aygıt Bağlantısı mühendislik grubuna gönderir. Alınan bilgiler, Windows'ta USB'nin güvenilirliğini, kararlılığını ve genel işlevselliğini geliştirmeye yardımcı olmak için kullanılır. Kullanıcı Windows CEIP'e katılmayı kabul etmemişse, bu görev hiçbir şey yapmaz."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  113,
                                   "ChildHeader":  {
-                                                      "UA":  "Microsoft-Windows-DiskDiagnosticDataCollector"
+                                                      "TR":  "Microsoft-Windows-DiskDiagnosticDataCollector"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Для користувачів, які беруть участь у програмі контролю якості програмного забезпечення, служба діагностики дисків Windows надає загальні відомості про диски та систему до корпорації Майкрософт"
+                                                           "TR":  "Windows Disk Tanılama, Müşteri Deneyimi Programına katılan kullanıcılar için genel disk ve sistem bilgilerini Microsoft'a bildirir."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  114,
                                   "ChildHeader":  {
-                                                      "UA":  "MapsToastTask"
+                                                      "TR":  "MapsToastTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Це завдання відображає різні тостові повідомлення, що стосуються карт"
+                                                           "TR":  "Bu görev, Harita ile ilgili çeşitli gereksizleri gösterir."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  115,
                                   "ChildHeader":  {
-                                                      "UA":  "MapsUpdateTask"
+                                                      "TR":  "MapsUpdateTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Це завдання перевіряє наявність оновлень для карт, завантажених для автономного використання. Якщо вимкнути це завдання, Windows не зможе повідомляти вас про появу оновлених карт"
+                                                           "TR":  "Bu görev, çevrimdışı kullanım için indirdiğiniz haritaların güncellemelerini kontrol eder. Bu görevi devre dışı bırakmak, Windows'un size güncellenen haritaları bildirmesini engeller."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  116,
                                   "ChildHeader":  {
-                                                      "UA":  "FamilySafetyMonitor"
+                                                      "TR":  "FamilySafetyMonitor"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Ініціалізація контролю та застосування правил сімейної безпеки"
+                                                           "TR":  "Aile Güvenliği izleme ve uygulamasını başlatır."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  117,
                                   "ChildHeader":  {
-                                                      "UA":  "XblGameSaveTask"
+                                                      "TR":  "XblGameSaveTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Завдання XblGameSave, що синхронізує прогрес у грі під час простою ОС"
+                                                           "TR":  "İşletim sistemi boştayken oyun ilerlemesini senkronize eden XblGameSave Bekleme Görevi."
                                                        },
                                   "Type":  "CheckBox"
                               }
@@ -208,10 +208,10 @@
     {
         "Id":  118,
         "Header":  {
-                       "UA":  "Використовувати дані для входу для автоматичного завершення налаштування пристрою та відкриття програм після перезапуску або оновлення"
+                       "TR":  "Bir güncellemeden sonra cihazın kurulumunu otomatik olarak tamamlamak için oturum açma bilgilerini kullanın"
                    },
         "Description":  {
-                            "UA":  "Деякі оновлення вимагають перезавантаження комп'ютера та входу в Windows для завершення інсталяції оновлення, що означає, що ви можете увійти до Windows і виявити, що не можете використовувати свій комп'ютер до завершення оновлення. Windows допомагає запобігти цьому, дозволяючи Windows використовувати інформацію про вхід до системи для створення спеціального маркера. Цей токен використовується для автоматичного входу в систему після перезавантаження, завершення налаштування комп'ютера та подальшого блокування комп'ютера для забезпечення безпеки вашого облікового запису та особистої інформації"
+                            "TR":  "Bazı güncellemeler, güncellemeyi yüklemeyi tamamlamak için bilgisayarınızı yeniden başlatmanızı ve ardından Windows'ta oturum açmanızı gerektirir; bu, güncelleme tamamlanana kadar bilgisayarınızı kullanamayabilirsiniz. Windows, Windows'un özel bir belirteç oluşturmak için oturum açma bilgilerinizi kullanmasına izin vererek bunu önlemeye yardımcı olur. Bu belirteç, yeniden başlattıktan sonra otomatik olarak oturum açmak, bilgisayarınızın kurulumunu tamamlamak ve ardından hesabınızı ve kişisel bilgilerinizi güvende tutmak için bilgisayarınızı kilitlemek için kullanılır."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -222,10 +222,10 @@
     {
         "Id":  119,
         "Header":  {
-                       "UA":  "Дозволити веб-сторінкам надавати місцеву інформацію за рахунок доступу до списку мов"
+                       "TR":  "Web sitelerinin dil listesine erişerek yerel olarak alakalı içerik sağlamasına izin verin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -236,10 +236,10 @@
     {
         "Id":  120,
         "Header":  {
-                       "UA":  "Дозволити застосункам відображати персональну рекламу за допомогою мого ідентифікатора реклами"
+                       "TR":  "Uygulamaların reklam kimliğimi kullanarak bana kişiselleştirilmiş reklamlar göstermesine izin ver"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -250,10 +250,10 @@
     {
         "Id":  121,
         "Header":  {
-                       "UA":  "Відображати екран вітання Windows після оновлень і іноді при вході, щоб повідомити про нові функції та пропозиції"
+                       "TR":  "Güncellemelerden sonra ve ara sıra yeni özellikleri ve teklifleri vurgulamak için oturum açtığımda Windows karşılama deneyimlerini göster"
                    },
         "Description":  {
-                            "UA":  "Windows може відкривати спливаюче вікно з підказками про те, що нового в операційній системі"
+                            "TR":  "Windows, işletim sistemindeki yenilikleri size göstermek için bir açılır pencere açabilir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -264,10 +264,10 @@
     {
         "Id":  122,
         "Header":  {
-                       "UA":  "Отримувати поради та пропозиції при використанні Windows"
+                       "TR":  "Windows'u kullanırken ipuçları ve öneriler alın"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -278,10 +278,10 @@
     {
         "Id":  123,
         "Header":  {
-                       "UA":  "Відображати рекомендований вміст у застосунку \"Параметри\""
+                       "TR":  "Önerilen içeriği Ayarlar uygulamasında göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -292,10 +292,10 @@
     {
         "Id":  124,
         "Header":  {
-                       "UA":  "Увімкнути автоматичне встановлення рекомендованих додатків"
+                       "TR":  "Otomatik önerilen uygulama yüklemesini açın"
                    },
         "Description":  {
-                            "UA":  "Windows в тихому режимі може завантажувати та інсталювати деякі програми з Microsoft Store без будь-якого підтвердження"
+                            "TR":  "Windows, herhangi bir kullanıcı onayı olmadan Microsoft Store'dan önerilen bazı uygulamaları sessizce indirebilir ve yükleyebilir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -306,10 +306,10 @@
     {
         "Id":  125,
         "Header":  {
-                       "UA":  "Відображати пропозиції налаштування пристрою"
+                       "TR":  "Cihazımı nasıl kurabileceğime dair önerilerde bulunun"
                    },
         "Description":  {
-                            "UA":  "Windows може іноді відображати спливаюче вікно \"Використовуйте Windows ще ефективніше\", в якому відображаються додаткові служби, які користувач може налаштувати"
+                            "TR":  "Windows, zaman zaman kullanıcının kurabileceği ek hizmetleri görüntüleyen bir \"Windows'tan daha da fazlasını alın\" istemi görüntüleyebilir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -320,10 +320,10 @@
     {
         "Id":  126,
         "Header":  {
-                       "UA":  "Персоналізовані можливості"
+                       "TR":  "Kişiye özel deneyimler"
                    },
         "Description":  {
-                            "UA":  "Дозвольте корпорації Майкрософт використовувати ваші діагностичні дані для покращення вашої роботи зі службами Майкрософт за допомогою персоналізованих порад, реклами та рекомендацій"
+                            "TR":  "Microsoft'un, seçtiğiniz tanılama verileri ayarına dayalı olarak size özel deneyimler sunmasına izin verin."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -334,10 +334,10 @@
     {
         "Id":  127,
         "Header":  {
-                       "UA":  "Увімкнути пошук через Bing у меню \"Пуск\""
+                       "TR":  "Başlat Menüsünde Bing aramasını etkinleştirin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -348,10 +348,10 @@
     {
         "Id":  200,
         "Header":  {
-                       "UA":  "Відображати значок \"Цей комп'ютер\" на робочому столі"
+                       "TR":  "Masaüstünde \"Bu Bilgisayar\" simgesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -359,20 +359,20 @@
                               {
                                   "Id":  201,
                                   "ChildHeader":  {
-                                                      "UA":  "Відображати"
+                                                      "TR":  "Göster"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  202,
                                   "ChildHeader":  {
-                                                      "UA":  "Приховати"
+                                                      "TR":  "Gizle"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -384,10 +384,10 @@
     {
         "Id":  203,
         "Header":  {
-                       "UA":  "Увімкнути провідник із Windows 10"
+                       "TR":  "Windows 10 Dosya Gezgini'ni etkinleştirin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -398,10 +398,10 @@
     {
         "Id":  204,
         "Header":  {
-                       "UA":  "Використовувати прапорці для вибору елементів"
+                       "TR":  "Öğeleri seçmek için onay kutularını kullanın"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -412,10 +412,10 @@
     {
         "Id":  205,
         "Header":  {
-                       "UA":  "Відображати приховані файли, папки та диски"
+                       "TR":  "Gizli dosyaları, klasörleri ve sürücüleri göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -426,10 +426,10 @@
     {
         "Id":  206,
         "Header":  {
-                       "UA":  "Відображати розширення імен файлів"
+                       "TR":  "Dosya adı uzantılarını göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -440,10 +440,10 @@
     {
         "Id":  207,
         "Header":  {
-                       "UA":  "Приховувати конфлікт злиття папок"
+                       "TR":  "Klasör birleştirme çakışmalarını gizle"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -454,10 +454,10 @@
     {
         "Id":  208,
         "Header":  {
-                       "UA":  "Відкривати провідник для:"
+                       "TR":  "Dosya Gezgini'ni şunun için açın:"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -465,20 +465,20 @@
                               {
                                   "Id":  209,
                                   "ChildHeader":  {
-                                                      "UA":  "Цей комп'ютер"
+                                                      "TR":  "Bu bilgisayar"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  210,
                                   "ChildHeader":  {
-                                                      "UA":  "Швидкий доступ"
+                                                      "TR":  "Hızlı erişim"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -490,10 +490,10 @@
     {
         "Id":  211,
         "Header":  {
-                       "UA":  "Відобразити кнопку Кортани на панелі завдань"
+                       "TR":  "Görev çubuğunda Cortana düğmesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -504,10 +504,10 @@
     {
         "Id":  212,
         "Header":  {
-                       "UA":  "Увімкнути компактний вигляд провідника"
+                       "TR":  "Dosya Gezgini kompakt modunu etkinleştirin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -518,10 +518,10 @@
     {
         "Id":  213,
         "Header":  {
-                       "UA":  "Відображати повідомлення постачальника синхронізації у провіднику"
+                       "TR":  "Dosya Gezgini'nde senkronizasyon sağlayıcı bildirimlerini göster"
                    },
         "Description":  {
-                            "UA":  "Вимкнути рекламні повідомлення OneDrive у провіднику"
+                            "TR":  "Dosya Gezgini'nde OneDrive reklam bildirimlerini devre dışı bırakın."
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -532,10 +532,10 @@
     {
         "Id":  214,
         "Header":  {
-                       "UA":  "При закріпленні вікна показувати, що ще можна закріпити біля нього"
+                       "TR":  "Bir pencereyi tutturduğumda, yanına ne yapıştırabileceğimi göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -546,10 +546,10 @@
     {
         "Id":  215,
         "Header":  {
-                       "UA":  "Відображати макети прикріплення, частиною яких є додаток при наведенні вказівника миші на кнопки панелі завдань"
+                       "TR":  "Bir pencerenin ekranı kapla düğmesinin üzerine geldiğimde ek düzenleri göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -560,10 +560,10 @@
     {
         "Id":  216,
         "Header":  {
-                       "UA":  "Показувати діалогове вікно передачі файлів"
+                       "TR":  "Dosya aktarımı iletişim kutusunu görüntüle"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -571,20 +571,20 @@
                               {
                                   "Id":  217,
                                   "ChildHeader":  {
-                                                      "UA":  "В розгорнутому вигляді"
+                                                      "TR":  "ayrıntılı modda"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  218,
                                   "ChildHeader":  {
-                                                      "UA":  "В згорнутому вигляді"
+                                                      "TR":  "kompakt modda"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -596,10 +596,10 @@
     {
         "Id":  219,
         "Header":  {
-                       "UA":  "Приховати стрічку провідника"
+                       "TR":  "Dosya Gezgini şeridini simge durumuna küçültün"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -610,10 +610,10 @@
     {
         "Id":  220,
         "Header":  {
-                       "UA":  "Запитувати підтвердження для видалення файлів у кошик"
+                       "TR":  "Geri dönüşüm kutusu dosyalarını silme onayı iletişim kutusunu görüntüle"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -624,10 +624,10 @@
     {
         "Id":  221,
         "Header":  {
-                       "UA":  "Відображати папку \"Об'ємні об'єкти\" в \"Цей комп'ютер\" та панелі швидкого доступу"
+                       "TR":  "\"Bu Bilgisayar\"da \"3B Nesneler\" klasörünü ve Hızlı erişim'i göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -638,10 +638,10 @@
     {
         "Id":  222,
         "Header":  {
-                       "UA":  "Відобразити папки, що часто використовуються на панелі швидкого доступу"
+                       "TR":  "Hızlı erişimde sık kullanılan klasörleri göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -652,10 +652,10 @@
     {
         "Id":  223,
         "Header":  {
-                       "UA":  "Відобразити файли, що нещодавно використовувались на панелі швидкого доступу"
+                       "TR":  "Son kullanılan dosyaları Hızlı erişimde göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -666,10 +666,10 @@
     {
         "Id":  224,
         "Header":  {
-                       "UA":  "Встановити вирівнювання панелі завдань"
+                       "TR":  "Görev çubuğu hizalamasını ayarlayın"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -677,20 +677,20 @@
                               {
                                   "Id":  225,
                                   "ChildHeader":  {
-                                                      "UA":  "По лівому краю"
+                                                      "TR":  "Sola"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  226,
                                   "ChildHeader":  {
-                                                      "UA":  "По центру"
+                                                      "TR":  "Orta"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -702,10 +702,10 @@
     {
         "Id":  227,
         "Header":  {
-                       "UA":  "Відображати кнопку пошука на панелі завдань"
+                       "TR":  "Görev çubuğunda arama düğmesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -716,10 +716,10 @@
     {
         "Id":  228,
         "Header":  {
-                       "UA":  "Відобразити кнопку Перегляду завдань на панелі завдань"
+                       "TR":  "Görev çubuğunda Görev Görünümü düğmesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -730,10 +730,10 @@
     {
         "Id":  229,
         "Header":  {
-                       "UA":  "Відобразити кнопку \"Представлення завдань\" на панелі завдань"
+                       "TR":  "Görev çubuğunda Görev görünümü düğmesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -744,10 +744,10 @@
     {
         "Id":  230,
         "Header":  {
-                       "UA":  "Відобразити кнопку \"Міні-додатки\" на панелі завдань"
+                       "TR":  "Widget simgesini görev çubuğunda göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -758,10 +758,10 @@
     {
         "Id":  231,
         "Header":  {
-                       "UA":  "Відображати панель \"Люди\" на панелі завдань"
+                       "TR":  "Kişileri görev çubuğunda göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -772,10 +772,10 @@
     {
         "Id":  232,
         "Header":  {
-                       "UA":  "Відображати секунди в системному годиннику на панелі завдань"
+                       "TR":  "Görev çubuğu saatinde saniyeleri göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -786,10 +786,10 @@
     {
         "Id":  233,
         "Header":  {
-                       "UA":  "Пошук на панелі завдань"
+                       "TR":  "Görev çubuğunda ara"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -797,30 +797,30 @@
                               {
                                   "Id":  234,
                                   "ChildHeader":  {
-                                                      "UA":  "Приховано"
+                                                      "TR":  "Gizli"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  235,
                                   "ChildHeader":  {
-                                                      "UA":  "Відобразити значок пошуку"
+                                                      "TR":  "Arama simgesini göster"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  236,
                                   "ChildHeader":  {
-                                                      "UA":  "Відобразити поле пошуку"
+                                                      "TR":  "Arama kutusunu göster"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -832,10 +832,10 @@
     {
         "Id":  237,
         "Header":  {
-                       "UA":  "Відобразити кнопку Windows Ink Workspace на панелі завдань"
+                       "TR":  "Görev çubuğunda Windows Mürekkep Çalışma Alanı düğmesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -846,10 +846,10 @@
     {
         "Id":  238,
         "Header":  {
-                       "UA":  "Завжди відображати всі значки в області сповіщень"
+                       "TR":  "Tüm simgeleri her zaman bildirim alanında göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -860,10 +860,10 @@
     {
         "Id":  239,
         "Header":  {
-                       "UA":  "Відображати іконку \"Провести зібрання\" в області сповіщень"
+                       "TR":  "Bildirim alanında Şimdi Tanış simgesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -874,10 +874,10 @@
     {
         "Id":  240,
         "Header":  {
-                       "UA":  "Відображати \"Новини та інтереси\" на панелі завдань"
+                       "TR":  "Görev çubuğunda \"Haberler ve İlgi Alanları\"nı göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -888,10 +888,10 @@
     {
         "Id":  241,
         "Header":  {
-                       "UA":  "Відобразити кнопку чату (Microsoft Teams) на панелі завдань"
+                       "TR":  "Sgörev çubuğundaki Sohbet simgesinin (Microsoft Teams) nasıl"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -902,10 +902,10 @@
     {
         "Id":  242,
         "Header":  {
-                       "UA":  "Перегляд іконок Панелі керування"
+                       "TR":  "Kontrol Panelini şuradan görüntüleyin:"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -913,30 +913,30 @@
                               {
                                   "Id":  243,
                                   "ChildHeader":  {
-                                                      "UA":  "Великі значки"
+                                                      "TR":  "Büyük ikonlar"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  244,
                                   "ChildHeader":  {
-                                                      "UA":  "Маленькі значки"
+                                                      "TR":  "Küçük ikonlar"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  245,
                                   "ChildHeader":  {
-                                                      "UA":  "Категорія"
+                                                      "TR":  "Kategori"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -948,10 +948,10 @@
     {
         "Id":  246,
         "Header":  {
-                       "UA":  "Режим Windows за замовчуванням"
+                       "TR":  "Varsayılan Windows renk modu"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -959,20 +959,20 @@
                               {
                                   "Id":  247,
                                   "ChildHeader":  {
-                                                      "UA":  "Світлий"
+                                                      "TR":  "Aydınlık"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  248,
                                   "ChildHeader":  {
-                                                      "UA":  "Темний"
+                                                      "TR":  "Karanlık"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -984,10 +984,10 @@
     {
         "Id":  249,
         "Header":  {
-                       "UA":  "Режим додатку за замовчуванням"
+                       "TR":  "Varsayılan uygulama renk modu"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -995,20 +995,20 @@
                               {
                                   "Id":  250,
                                   "ChildHeader":  {
-                                                      "UA":  "Світлий"
+                                                      "TR":  "Aydınlık"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  251,
                                   "ChildHeader":  {
-                                                      "UA":  "Темний"
+                                                      "TR":  "Karanlık"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1020,10 +1020,10 @@
     {
         "Id":  252,
         "Header":  {
-                       "UA":  "Відображати сповіщення \"Встановлено новий додаток\""
+                       "TR":  "\"Yeni Uygulama Yüklendi\" göstergesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1034,10 +1034,10 @@
     {
         "Id":  253,
         "Header":  {
-                       "UA":  "Відображати анімацію при першому вході в систему після оновлення"
+                       "TR":  "Yükseltmeden sonra ilk oturum açma animasyonunu göster"
                    },
         "Description":  {
-                            "UA":  "У Windows після завершення налаштування при новій установці, оновленні або при вході до нового облікового запису запускається \"анімація першого входу\", яка включає кілька повідомлень у міру налаштування середовища облікового запису"
+                            "TR":  "Windows'ta, yeni bir yüklemede, yükseltmede veya yeni bir hesapta oturum açarken kurulumu tamamladıktan sonra, hesap ortamını yapılandırmak için çeşitli mesajlar içeren \"ilk oturum açma animasyonu\"nu görüntüler."
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1048,10 +1048,10 @@
     {
         "Id":  254,
         "Header":  {
-                       "UA":  "Коефіцієнт якості шпалер робочого стола у форматі JPEG"
+                       "TR":  "JPEG masaüstü duvar kağıtlarının kalite faktörünü şu şekilde ayarlayın:"
                    },
         "Description":  {
-                            "UA":  "Коли ви встановлюєте зображення у якості шпалер робочого стола або слайд-шоу в форматі JPEG, при імпорті операційна система знижує якість вихідного зображення до 85 % та зберігає його як файл TranscodedWallpaper у папці \n%APPDATA%\\Microsoft\\Windows\\Themes. Проте, якщо ви використовуєте PNG-зображення у якості фонових шпалер робочого стола або слайд-шоу, то це автоматичне зниження якості вас не торкнеться, оскільки воно відбувається тільки з зображеннями JPEG"
+                            "TR":  "Bir JPEG görüntüsünü masaüstü duvar kağıdı veya slayt gösterisi olarak ayarladığınızda, işletim sistemi orijinal görüntünün kalitesini %85'e düşürür ve onu TranscodingWallpaper dosyası olarak \n%APPDATA%\\Microsoft\\Windows\\Themes klasöründe depolar. . Bir PNG görüntüsünü masaüstü arka plan duvar kağıdınız veya slayt gösteriniz olarak kullanırsanız, yalnızca JPEG görüntüleri için geçerli olduğundan bu otomatik kalite düşüşünden etkilenmezsiniz."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1059,20 +1059,20 @@
                               {
                                   "Id":  255,
                                   "ChildHeader":  {
-                                                      "UA":  "100% (без зжаття)"
+                                                      "TR":  "%100 (azalma yok)"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  256,
                                   "ChildHeader":  {
-                                                      "UA":  "80% (за замовчуванням)"
+                                                      "TR":  "%80 (varsayılan olarak)"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1084,10 +1084,10 @@
     {
         "Id":  257,
         "Header":  {
-                       "UA":  "Повідомляти мене про необхідність перезавантаження для завершення оновлення"
+                       "TR":  "Güncellemeyi bitirmek için yeniden başlatma gerektiğinde bana bildir"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1098,10 +1098,10 @@
     {
         "Id":  258,
         "Header":  {
-                       "UA":  "Додавати \"- ярлик\" до імені створюваних ярликів"
+                       "TR":  "Oluşturulan kısayolların dosya adına \"- Kısayol\" son ekini ekleyin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1112,10 +1112,10 @@
     {
         "Id":  259,
         "Header":  {
-                       "UA":  "Використовувати кнопку PRINT SCREEN, щоб запустити функцію створення фрагменту екрана"
+                       "TR":  "Ekran alıntısını açmak için PrtScn düğmesini kullanın"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1126,10 +1126,10 @@
     {
         "Id":  260,
         "Header":  {
-                       "UA":  "Дозволити обирати метод введення для кожного вікна"
+                       "TR":  "Her uygulama penceresi için farklı bir giriş yöntemi kullanmama izin ver"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1140,10 +1140,10 @@
     {
         "Id":  261,
         "Header":  {
-                       "UA":  "При захваті заголовка вікна та струшуванні згортаються всі інші вікна"
+                       "TR":  "Bir pencerenin başlık çubuğunu alıp salladığımda, diğer tüm pencereleri simge durumuna küçültün"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1154,10 +1154,10 @@
     {
         "Id":  262,
         "Header":  {
-                       "UA":  ""
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  null
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1165,30 +1165,30 @@
                               {
                                   "Id":  263,
                                   "ChildHeader":  {
-                                                      "UA":  "За замовчуванням"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  264,
                                   "ChildHeader":  {
-                                                      "UA":  "Iншi закрiплення"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  265,
                                   "ChildHeader":  {
-                                                      "UA":  "Бiльше рекомендацiй"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1200,10 +1200,10 @@
     {
         "Id":  266,
         "Header":  {
-                       "UA":  "Відображати нещодавно додані додатки в меню \"Пуск\""
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1214,10 +1214,10 @@
     {
         "Id":  267,
         "Header":  {
-                       "UA":  "Відображати рекомендації в меню \"Пуск\""
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1228,10 +1228,10 @@
     {
         "Id":  268,
         "Header":  {
-                       "UA":  "Запускати ярлик Windows PowerShell у меню \"Пуск\" від імені Адміністратора"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1242,10 +1242,10 @@
     {
         "Id":  300,
         "Header":  {
-                       "UA":  "Контроль пам'яті"
+                       "TR":  "Storage Sense"
                    },
         "Description":  {
-                            "UA":  "Контроль пам'яті запускається, якщо на диску недостатньо вільного місця. Функція контролю пам'яті звільняє достатньо місця для оптимальної роботи системи"
+                            "TR":  "Storage Sense, disk alanı azaldığında çalışır. Sisteminizin en iyi şekilde çalışmasına yardımcı olmak için yeterli alanı temizliyoruz."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1256,10 +1256,10 @@
     {
         "Id":  301,
         "Header":  {
-                       "UA":  "Запуск Контролю пам'яті"
+                       "TR":  "Storage Sense'yi Çalıştır"
                    },
         "Description":  {
-                            "UA":  "Контроль пам'яті запускається, якщо на диску мало вільного місця. Функція контролю пам'яті звільняє достатньо місця для оптимальної роботи системи. Але краще в розділі \"Планувальник завдань\" створіть завдання \"Windows Cleanup\", щоб ефективніше очищати Windows"
+                            "TR":  "Storage Sense, disk alanı azaldığında çalışır ve optimum işletim sistemi çalışması için yeterli alan boşaltır. Windows'u daha etkili bir şekilde temizlemek için \"Görev Zamanlayıcı\" bölümünde \"Windows Temizleme\" görevini oluşturmak daha iyidir."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1267,20 +1267,20 @@
                               {
                                   "Id":  302,
                                   "ChildHeader":  {
-                                                      "UA":  "Кожен місяць"
+                                                      "TR":  "Every month"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  303,
                                   "ChildHeader":  {
-                                                      "UA":  "Коли залишається мало місця на диску"
+                                                      "TR":  "Düşük boş disk alanı sırasında"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1292,10 +1292,10 @@
     {
         "Id":  304,
         "Header":  {
-                       "UA":  "Видаляти тимчасові файли, які не використовуються в додатках"
+                       "TR":  "Uygulamalar tarafından kullanılmayan geçici dosyaları silin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1306,10 +1306,10 @@
     {
         "Id":  305,
         "Header":  {
-                       "UA":  "Режим гібернації"
+                       "TR":  "Hazırda Bekleme"
                    },
         "Description":  {
-                            "UA":  "Гібернація — це енергозберігаючий стан, який використовується в основному для мобільних пристроїв. На відміну від сплячого режиму, гібернація зберігає відкриті документи та програми на системний накопичувач у файл \nC:\\hiberfil.sys, а потім вимикає комп'ютер. За замовчуванням розмір прихованого системного файлу C:\\hiberfil.sys становить 40 % від загального обсягу встановленої оперативної пам'яті. При відключенні гібернації буде також відключено швидкий запуск, і приховається відповідний пункт в меню живлення. Не рекомендується вимикати на мобільних пристроях"
+                            "TR":  "Hazırda Bekletme, öncelikle dizüstü bilgisayarlar için kullanılan bir güç tasarrufu durumudur. Uyku modundan farklı olarak, hazırda bekletme modu, sistem sürücüsündeki açık belgelerinizi ve programlarınızı \nC:\\hiberfil.sys dosyasına koyar ve bilgisayarınızı kapatır. Varsayılan olarak, gizli sistem korumalı C:\\hiberfil.sys dosyasının boyutu, kurulu toplam RAM miktarının %40'ıdır. Hazırda bekletme modunun devre dışı bırakılması ayrıca hızlı başlatmayı da devre dışı bırakır ve hazırda bekletme modu artık Güç menüsünde gösterilmez. Mobil cihazlarda kapatmanız önerilmez."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1320,10 +1320,10 @@
     {
         "Id":  306,
         "Header":  {
-                       "UA":  "Шлях змінного середовища для тимчасових файлів"
+                       "TR":  "Geçici ortam değişkeni yolu"
                    },
         "Description":  {
-                            "UA":  "Використовуйте тільки у випадку, якщо ви єдиний користувач ПК, інакше всі користувачі будуть використовувати одну й ту саму папку для тимчасових файлів."
+                            "TR":  "Yalnızca bu bilgisayardaki tek kullanıcıysanız kullanın, aksi takdirde tüm kullanıcılar tüm geçici dosyalar için aynı klasörü kullanır."
                         },
         "Type":  "AdvancedRadioGroup",
         "Tag":  "System",
@@ -1331,20 +1331,20 @@
                               {
                                   "Id":  307,
                                   "ChildHeader":  {
-                                                      "UA":  "%SystemDrive%\\Temp"
+                                                      "TR":  "%SystemDrive%\\Temp"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  308,
                                   "ChildHeader":  {
-                                                      "UA":  "%LOCALAPPDATA%\\Temp (за замовчуванням)"
+                                                      "TR":  "%LOCALAPPDATA%\\Temp (varsayılan)"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1356,10 +1356,10 @@
     {
         "Id":  309,
         "Header":  {
-                       "UA":  "Увімкнути обмеження Windows до 260 символів у шляху"
+                       "TR":  "Windows 260 karakter yolu sınırını etkinleştirin"
                    },
         "Description":  {
-                            "UA":  "За замовчуванням максимальна довжина шляху в Windows складає 260 символів. Локальний шлях будується у наступному порядку: буква диску, двокрапка, зворотна коса риска, компоненти імені, які розділені зворотними косими рисами, і завершуючий нульовий символ"
+                            "TR":  "Varsayılan olarak, Windows'ta maksimum yol uzunluğu sınırı 260 karakterdir. Bir yerel yol şu sırayla yapılandırılmıştır: sürücü harfi, iki nokta üst üste, ters eğik çizgi, ters eğik çizgilerle ayrılmış ad bileşenleri ve bir sonlandırıcı boş karakter."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1370,10 +1370,10 @@
     {
         "Id":  310,
         "Header":  {
-                       "UA":  "Відображати код Stop-помилки при появі BSoD"
+                       "TR":  "BSoD oluştuğunda Dur hata kodunu görüntüle"
                    },
         "Description":  {
-                            "UA":  "За замовчуванням Windows не відображає код Stop-помилки при появі BSoD, який допомагає виявляти причини появи BSoD"
+                            "TR":  "Varsayılan olarak Windows, bir BSoD oluştuğunda, bir BSoD'nin nedenlerini belirlemeye yardımcı olan bir Dur hata kodu görüntülemez."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1384,10 +1384,10 @@
     {
         "Id":  314,
         "Header":  {
-                       "UA":  "Увімкнути доступ до мережевих дисків при увімкненому режимі схвалення адміністратором при доступі з додатків, запущених із підвищеними правами"
+                       "TR":  "Windows'un varsayılan yazıcımı yönetmesine izin ver"
                    },
         "Description":  {
-                            "UA":  "Увімкнений UAC із налаштуваннями за замовчуванням не дозволяє отримати доступ до підключених мережевих дисків із додатків, запущених у привілейованому режимі. Це означає, що при запуску командного рядка або файлового менеджера з підвищеними правами, в них не буде видно літер дисків змонтованих мережевих папок"
+                            "TR":  "Varsayılan olarak, Windows son kullanılan yazıcıyı varsayılan yazıcı yapar."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1398,10 +1398,10 @@
     {
         "Id":  315,
         "Header":  {
-                       "UA":  "Увімкнути завантаження оновлень за допомогою оптимізації доставки"
+                       "TR":  "Diğer Microsoft ürünleri için güncellemeleri alın"
                    },
         "Description":  {
-                            "UA":  "Оптимізація доставки центру оновлення Windows працює, дозволяючи отримувати оновлення для Windows і додатки Microsoft Store з джерел в придачу до Microsoft, наприклад, інших комп'ютерів у локальній мережі або комп'ютерів в Інтернеті, які завантажують ті ж файли. Оптимізація доставки також надсилає оновлення та програми з комп'ютера на інші комп'ютери в локальній мережі або на комп'ютери в Інтернеті на основі ваших налаштувань. Обмін даними між комп'ютерами допомагає скоротити пропускну здатність Інтернету, необхідну для підтримки більш ніж одного пристрою, і може зробити завантаження успішнішим, якщо у вас є обмежене або ненадійне підключення до Інтернету."
+                            "TR":  "Windows güncellemeleriyle birlikte Microsoft Office ve diğer güncellemeleri alın."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1412,10 +1412,10 @@
     {
         "Id":  316,
         "Header":  {
-                       "UA":  "Завжди зачікувати мережу під час запуску та входу в систему для робочих груп"
+                       "TR":  "Güç planını seçin"
                    },
         "Description":  {
-                            "UA":  "Для скорочення часу входу в систему Windows не чекає повної ініціалізації мережі під час запуску або входу в систему. Параметри політики застосовуються асинхронно під час запуску комп'ютера та входу користувача до системи. В результаті операційна система не чекає повної ініціалізації мережі при запуску та вході в систему. Існуючі користувачі входять до системи, використовуючи кешовані облікові дані. Це скорочує час входу до системи. Групова політика застосовується у фоновому режимі після того, як мережа стає доступною"
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1426,10 +1426,10 @@
     {
         "Id":  317,
         "Header":  {
-                       "UA":  "Дозволяти Windows керувати принтером, який використовується за замовчуванням"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  "За промовчанням Windows запам'ятовує останній використовуваний принтер як принтер за замовчуванням"
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1440,10 +1440,10 @@
     {
         "Id":  318,
         "Header":  {
-                       "UA":  "Отримувати оновлення для інших продуктів Майкрософт"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  "Отримуйте Microsoft Office та інші оновлення разом з оновленнями Windows"
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1454,10 +1454,10 @@
     {
         "Id":  319,
         "Header":  {
-                       "UA":  "Вибір схеми керування живленням"
+                       "TR":  "Tüm uygulamalar için en son yüklenen .NET Framework çalışma zamanını kullanın"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1465,20 +1465,20 @@
                               {
                                   "Id":  320,
                                   "ChildHeader":  {
-                                                      "UA":  "Висока продуктивність"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Не рекомендовано вмикати схему керування живленням \"Висока продуктивність\" для ноутбуків"
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  321,
                                   "ChildHeader":  {
-                                                      "UA":  "Збалансована"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1490,10 +1490,10 @@
     {
         "Id":  322,
         "Header":  {
-                       "UA":  "Використовувати останнє встановлене середовище виконання .NET Framework для всіх програм"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  "Якщо для роботи програми потрібна установка застарілого .NET Framework 2.0, 3.0 або 3.5, увімкнення цієї функції змусить програму примусово використовувати останню версію .NET Framework."
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1504,10 +1504,10 @@
     {
         "Id":  323,
         "Header":  {
-                       "UA":  "Дозволити відключення всіх мережевих адаптерів для економії енергії"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  "Не рекомендується відключати всі адаптери для економії енергії на ноутбуках"
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1518,10 +1518,10 @@
     {
         "Id":  324,
         "Header":  {
-                       "UA":  "Перевизначити метод введення за замовчуванням"
+                       "TR":  "Win+PrtScn tuşlarına basarken ekran görüntülerinin kaydedileceği klasörü seçin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  "Yalnızca OneDrive'ı kaldırmayı seçerseniz (veya daha önce kaldırılmışsa), \"Masaüstü\"nü seçin, aksi takdirde OneDrive'daki \"Masaüstü\" ve \"Resimler\" klasörleri için yedekleme işlevi bozulur."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1529,20 +1529,20 @@
                               {
                                   "Id":  325,
                                   "ChildHeader":  {
-                                                      "UA":  "Використовувати список мов"
+                                                      "TR":  "Masaüstü"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  326,
                                   "ChildHeader":  {
-                                                      "UA":  "Англійська"
+                                                      "TR":  "Resimler klasörü"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1554,10 +1554,10 @@
     {
         "Id":  327,
         "Header":  {
-                       "UA":  "Папка для збереження скріншотів за натисканням Win+PrtScn"
+                       "TR":  "Önerilen sorun giderme"
                    },
         "Description":  {
-                            "UA":  "Позначайте пункт \"Робочий стіл\", тільки якщо ви обрали видалення OneDrive (або він вже був видалений), інакше ламається функціонал резервного копіювання для папок \"Робочий стіл\" та \"Зображення\" в OneDrive"
+                            "TR":  "Microsoft, sorunları gidermek için sorun gidericiler önerebilir ve çalıştırabilir. Cihazınızda sorun gidericilerin çözebileceği sorunlar olduğunda Microsoft'un ne kadar yardım etmesini istiyorsunuz?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1565,20 +1565,20 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "UA":  "Робочий стіл"
+                                                      "TR":  "Sorun gidericileri otomatik olarak çalıştırın, ardından bilgilendirin"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  329,
                                   "ChildHeader":  {
-                                                      "UA":  "Папка \"Зображення\""
+                                                      "TR":  "Sorun gidericiyi çalıştırmadan önce bana sor"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1590,10 +1590,10 @@
     {
         "Id":  330,
         "Header":  {
-                       "UA":  "Рекомендовані способи усунення помилок"
+                       "TR":  "Klasör pencerelerini ayrı bir işlemde başlatın"
                    },
         "Description":  {
-                            "UA":  "Корпорація Майкрософт може рекомендувати та запускати засоби усунення недоліків для виправлення помилок. Чи хотіли б ви допомагати Майкрософт усувати недоліки, якщо виникнуть проблеми?"
+                            "TR":  "Varsayılan olarak, masaüstü kabuğu da dahil olmak üzere tüm Dosya Gezgini pencereleri tek bir explorer.exe işleminde çalışır. Bir Dosya Gezgini penceresi kilitlenirse veya çökerse, süreç yeniden başlayana kadar tüm grafik kabuğun donmasına neden olur. Etkinleştirildiğinde, gezgin kabuğunun kararlılığını artırmak için her explorer.exe işleminin kendi işlem kimliği (PID) olacaktır."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1601,20 +1601,20 @@
                               {
                                   "Id":  331,
                                   "ChildHeader":  {
-                                                      "UA":  "Автоматично запускати засоби усунення недоліків, а потім сповіщувати"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Щоб ця функція запрацювала, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов'язкові діагностичні дані\" та увімкнеться створення звітів про помилки Windows"
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  332,
                                   "ChildHeader":  {
-                                                      "UA":  "Запитувати перед запуском засобів усунення недоліків"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Щоб запрацювала дана функція, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов'язкові діагностичні дані\" та ввімкнеться створення звітів про помилки Windows"
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1626,10 +1626,10 @@
     {
         "Id":  333,
         "Header":  {
-                       "UA":  "Запускати вікна із папками в окремому процесі"
+                       "TR":  "Başlangıçta Num Lock'u etkinleştir"
                    },
         "Description":  {
-                            "UA":  "За замовчуванням, всі вікна провідника, включаючи оболонку робочого стола, запускаються в одному процесі explorer.exe. Якщо одне вікно провідника зависає або аварійно завершується, це призведе до зависання всієї графічної оболонки, доки процес не перезапуститься. Таким чином, кожен процес explorer.exe матиме власний ідентифікатор процесу (PID) для підвищення стабільності оболонки провідника"
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1640,10 +1640,10 @@
     {
         "Id":  334,
         "Header":  {
-                       "UA":  "Увімкнути зарезервоване сховище"
+                       "TR":  "Caps Lock'u etkinleştir"
                    },
         "Description":  {
-                            "UA":  "Щоб забезпечити оновлення вашого пристрою, а також його найкращу роботу, Windows резервує частину дискового простору на вашому пристрої для кешу, тимчасових та інших файлів. Коли на пристрої закінчується вільне місце, Windows очищає зарезервоване сховище, звільнюючи місце для інших процесів, наприклад, оновлення Windows. Зарезервоване сховище також допомагає використовувати дисковий простір на вашому пристрої більш передбачуваним та стабільним. Зарезервоване сховище буде видалено після наступних встановлень оновлень"
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1654,10 +1654,10 @@
     {
         "Id":  335,
         "Header":  {
-                       "UA":  "Увімкнути відкриття довідки з натисканням F1"
+                       "TR":  "Yapışkan tuşlar için klavye kısayolu"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  "Yapışkan tuşları açmak veya kapatmak için Shift tuşuna 5 kez basın"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1668,10 +1668,10 @@
     {
         "Id":  336,
         "Header":  {
-                       "UA":  "Увімкнути Num Lock під час завантаження"
+                       "TR":  "Tüm medya ve cihazlar için Otomatik Kullan'ı kullanın"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1682,10 +1682,10 @@
     {
         "Id":  337,
         "Header":  {
-                       "UA":  "Увімкнути Caps Lock"
+                       "TR":  "Küçük resim önbelleğini kaldırmayı etkinleştir"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  "Windows, yeniden başlatma veya kapatmadan sonra küçük resim önbelleğini otomatik olarak siler ve Dosya Gezgini, küçük resimleri yeniden oluşturması gerekir. Küçük resim önbelleği, gizli \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer klasöründe bulunan .db dosyaları olarak depolanır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1696,10 +1696,10 @@
     {
         "Id":  338,
         "Header":  {
-                       "UA":  "Поєднання клавіш для залипання клавіш"
+                       "TR":  "Oturum açtıktan sonra uygulamaları yeniden başlatın"
                    },
         "Description":  {
-                            "UA":  "Натисніть клавішу SHIFT 5 разів, щоб увімкнути або вимкнути залипання клавіш"
+                            "TR":  "Yeniden başlatılabilir uygulamalarımı otomatik olarak kaydedin ve tekrar oturum açtığımda yeniden başlatın. Program önceki oturumda yönetici olarak çalıştırılmışsa, yönetici olmayan izinlerle yeniden başlatılacaktır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1710,10 +1710,10 @@
     {
         "Id":  339,
         "Header":  {
-                       "UA":  "Використовувати автозавантаження для всіх носіїв та пристроїв"
+                       "TR":  "Çalışma grubu ağları için \"Ağ Keşfi\" ve \"Dosya ve Yazıcı Paylaşımı\"nı etkinleştirin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1724,10 +1724,10 @@
     {
         "Id":  340,
         "Header":  {
-                       "UA":  "Увімкнути видалення кешу мініатюр"
+                       "TR":  "Günlük kullanıma göre aktif saatleri benim için otomatik olarak ayarla"
                    },
         "Description":  {
-                            "UA":  "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer"
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1738,10 +1738,10 @@
     {
         "Id":  341,
         "Header":  {
-                       "UA":  "Перезавантажити додатки після входу"
+                       "TR":  "Güncellemeyi bitirmek için mümkün olan en kısa sürede yeniden başlatın"
                    },
         "Description":  {
-                            "UA":  "Автоматичне збереження моїх додатків, що перезапускаються при виході з системи і перезапускати їх після виходу. Якщо у попередньому сеансі програма була запущена від імені адміністратора, вона перезапускається із звичайними правами"
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1752,10 +1752,10 @@
     {
         "Id":  342,
         "Header":  {
-                       "UA":  "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп"
+                       "TR":  "Varsayılan terminal uygulaması"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  "Komut satırı uygulamaları için kullanıcı arabirimini barındırmak için Windows Terminalini varsayılan terminal uygulaması olarak ayarlayın."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1766,10 +1766,10 @@
     {
         "Id":  343,
         "Header":  {
-                       "UA":  "Автоматично змінювати період активності цього пристрою на основі дій"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1780,10 +1780,10 @@
     {
         "Id":  344,
         "Header":  {
-                       "UA":  "Перезапустити пристрій якнайшвидше, щоб завершити оновлення"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1794,10 +1794,10 @@
     {
         "Id":  345,
         "Header":  {
-                       "UA":  "Додаток терміналу за замовчуванням"
+                       "TR":  "PC Sağlık Kontrolü uygulaması"
                    },
         "Description":  {
-                            "UA":  "Встановити Windows Terminal як додаток терміналу за замовчуванням для розміщення інтерфейсу для додатків командного рядка"
+                            "TR":  "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1805,20 +1805,20 @@
                               {
                                   "Id":  346,
                                   "ChildHeader":  {
-                                                      "UA":  "Windows Terminal"
+                                                      "TR":  "Kaldır"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  347,
                                   "ChildHeader":  {
-                                                      "UA":  "Вузол консолі Windows"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1830,10 +1830,10 @@
     {
         "Id":  348,
         "Header":  {
-                       "UA":  "Програма \"Перевірка працездатності ПК\""
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11"
+                            "TR":  null
                         },
         "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
@@ -1841,10 +1841,10 @@
                               {
                                   "Id":  349,
                                   "ChildHeader":  {
-                                                      "UA":  "Видалити"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               }
@@ -1856,10 +1856,10 @@
     {
         "Id":  350,
         "Header":  {
-                       "UA":  "OneDrive"
+                       "TR":  "OneDrive"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "OneDriveButtonGroup",
         "Tag":  "System",
@@ -1867,20 +1867,20 @@
                               {
                                   "Id":  351,
                                   "ChildHeader":  {
-                                                      "UA":  "Встановити"
+                                                      "TR":  "Kur"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "Button"
                               },
                               {
                                   "Id":  352,
                                   "ChildHeader":  {
-                                                      "UA":  "Видалити"
+                                                      "TR":  "Kaldır"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "Button"
                               }
@@ -1892,10 +1892,10 @@
     {
         "Id":  353,
         "Header":  {
-                       "UA":  "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64"
+                       "TR":  null
                    },
         "Description":  {
-                            "UA":  "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли"
+                            "TR":  null
                         },
         "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
@@ -1903,20 +1903,20 @@
                               {
                                   "Id":  354,
                                   "ChildHeader":  {
-                                                      "UA":  "Встановити"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               },
                               {
                                   "Id":  355,
                                   "ChildHeader":  {
-                                                      "UA":  "Видалити"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               }
@@ -1928,10 +1928,10 @@
     {
         "Id":  500,
         "Header":  {
-                       "UA":  "Завантажити та встановити відеокодек HEVC (H.265)"
+                       "TR":  "HEVC video codec bileşenini indirin ve yükleyin (H.265)"
                    },
         "Description":  {
-                            "UA":  "Кодек дозволяє відкривати зображення та відео у форматах .heif та .hevc відповідно"
+                            "TR":  "Codec, görüntüleri ve videoları sırasıyla .heif ve .hevc biçimlerinde açmanıza olanak tanır."
                         },
         "Type":  "CheckBox",
         "Tag":  "UwpApps",
@@ -1942,10 +1942,10 @@
     {
         "Id":  501,
         "Header":  {
-                       "UA":  "Автозавантаження Кортани"
+                       "TR":  "Cortana'yı otomatik başlat"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "UwpApps",
@@ -1956,10 +1956,10 @@
     {
         "Id":  502,
         "Header":  {
-                       "UA":  "Увімкнути автозавантаження Microsoft Teams"
+                       "TR":  "Microsoft Teams otomatik başlatmayı etkinleştir"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "UwpApps",
@@ -1969,10 +1969,10 @@
     {
         "Id":  503,
         "Header":  {
-                       "UA":  "Відновити Microsoft Store"
+                       "TR":  "Microsoft Mağazasını Geri Yükle"
                    },
         "Description":  {
-                            "UA":  "При пошкодженні або видаленні Microsoft Store ви можете відновити його, завантаживши всі необхідні залежності для ресурсів Microsoft (потрібне підключення до Інтернету). Завантаження і встановлення може зайняти до 10 хвилин. Будь ласка, не закривайте консоль, перш ніж вона буде автоматично закрита"
+                            "TR":  "Microsoft Mağazası zarar görmüş veya kaldırılmışsa, gerekli tüm bağımlılıkları Microsoft kaynağından indirerek geri yükleyebilirsiniz (İnternet bağlantısı gerekir). İndirme ve kurulum 10 dakika kadar sürebilir. Geri yükleme sırasında bir konsol penceresi açılacaktır, bu yüzden lütfen kapatmayın. Bittiğinde konsol otomatik olarak kapanacaktır."
                         },
         "Type":  "AdvancedButtonGroup",
         "Tag":  "UwpApps",
@@ -1980,10 +1980,10 @@
                               {
                                   "Id":  504,
                                   "ChildHeader":  {
-                                                      "UA":  "Відновити"
+                                                      "TR":  "Geri Yükle"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "Button"
                               }
@@ -1995,10 +1995,10 @@
     {
         "Id":  600,
         "Header":  {
-                       "UA":  "Xbox Game Bar"
+                       "TR":  "Xbox Game Bar"
                    },
         "Description":  {
-                            "UA":  "Щоб запобігти появі спливаючої помилки \"Вам знадобиться нова програма, щоб відкрити цей ms-gamingoverlay\", вам необхідно відключити Xbox Game Bar, навіть якщо ви видалили його раніше"
+                            "TR":  "\"Bu ms-gamingoverlay'i açmak için yeni bir uygulamaya ihtiyacınız olacak\" uyarısının açılmasını önlemek için, daha önce kaldırmış olsanız bile Xbox Game Bar uygulamasını devre dışı bırakmanız gerekir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -2009,10 +2009,10 @@
     {
         "Id":  601,
         "Header":  {
-                       "UA":  "Поради Xbox Game Bar"
+                       "TR":  "Xbox Game Bar ipuçları"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -2023,10 +2023,10 @@
     {
         "Id":  602,
         "Header":  {
-                       "UA":  "Планування графічного процесора з апаратним прискоренням"
+                       "TR":  "Donanım hızlandırmalı GPU zamanlaması"
                    },
         "Description":  {
-                            "UA":  "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам'ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК."
+                            "TR":  "Windows, doğru donanım ve sürücülerle GPU zamanlamasının çoğunu özel bir GPU tabanlı zamanlama işlemcisine aktarabilir. Donanım Hızlandırmalı GPU Zamanlama özelliğiyle, GPU'nun zamanlama işlemcisi ve belleği (VRAM) aynı işi üstlenir ve kareleri oluşturmak için gruplar halinde çalıştırır. Bu şekilde, GPU'nuz işlemciyi bazı çalışmalardan kurtarır ve potansiyel olarak PC'nizin daha iyi çalışmasını sağlamak için gecikmeyi azaltır."
                         },
         "Type":  "CheckBox",
         "Tag":  "Games",
@@ -2037,10 +2037,10 @@
     {
         "Id":  700,
         "Header":  {
-                       "UA":  "Очищення Windows"
+                       "TR":  "Windows Temizleme"
                    },
         "Description":  {
-                            "UA":  "Створити завдання \"Windows Cleanup\" з очищення файлів та оновлень Windows, що не використовуються, у Планувальнику завдань у папці SophiApp. Перед початком очищення спливе нативний тост, де ви зможете обрати відкласти, запустити завдання або скасувати"
+                            "TR":  "Görev Zamanlayıcı'daki SophiApp klasörü altında kullanılmayan Windows dosyalarını ve güncellemelerini temizlemek için \"Windows Temizleme\" zamanlanmış görevini oluşturun. Ertelemeyi, temizleme görevini çalıştırmayı veya kapatmayı seçebileceğiniz yerel bir tost bildirimi görüntülenecektir."
                         },
         "Type":  "IconWinCheckBox",
         "Tag":  "TaskScheduler",
@@ -2051,10 +2051,10 @@
     {
         "Id":  701,
         "Header":  {
-                       "UA":  "Очищення папки завантаження оновлень Windows"
+                       "TR":  "Windows Güncellemeleri indirme klasörünü temizleyin"
                    },
         "Description":  {
-                            "UA":  "Створити завдання \"SoftwareDistribution\" з очищення \n%SystemRoot%\\SoftwareDistribution\\Download, куди завантажуються інсталяційні файли всіх оновлень Windows, у папці SophiApp у Планувальнику завдань. Завдання чекатиме, поки служба оновлень Windows не закінчить роботу. Завдання виконується кожні 90 днів"
+                            "TR":  "Görev Zamanlayıcı'daki SophiApp klasörü altında tüm Windows güncellemelerinin indirildiği \n%SystemRoot%\\SoftwareDistribution\\Download temizliği için \"SoftwareDistribution\" zamanlanmış görevini oluşturun. Görev, Windows Güncellemeleri hizmetinin çalışması bitene kadar bekleyecektir. Görev her 90 günde bir çalışır."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -2065,10 +2065,10 @@
     {
         "Id":  702,
         "Header":  {
-                       "UA":  "Очищення папки тимчасових файлів"
+                       "TR":  "Geçici klasörü temizleyin"
                    },
         "Description":  {
-                            "UA":  "Створити завдання \"Temp\" з очищення папки тимчасових файлів у папці SophiApp у Планувальнику завдань. Видалятимуться лише файли старші одного дня. Завдання виконується кожні 60 днів"
+                            "TR":  "Görev Zamanlayıcı'daki SophiApp klasörü altındaki geçici klasörü temizlemek için \"Temp\" zamanlanmış görevini oluşturun. Yalnızca bir günden eski dosyalar silinecektir. Görev her 60 günde bir çalışır."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -2079,10 +2079,10 @@
     {
         "Id":  800,
         "Header":  {
-                       "UA":  "Увімкнути захист мережі у Microsoft Defender Exploit Guard"
+                       "TR":  "Microsoft Defender Exploit Guard ağ korumasını etkinleştirin"
                    },
         "Description":  {
-                            "UA":  "Захист мережі допомагає користувачеві запобігти підключенню додатків до небезпечних доменів, на яких можуть розміщуватися фішингові афери, експлойти та інший шкідливий контент в інтернеті"
+                            "TR":  "Ağ koruması, kullanıcıların internette kimlik avı dolandırıcılığı, açıklardan yararlanma ve diğer kötü amaçlı içerikleri barındırabilecek tehlikeli alanlara erişmek için herhangi bir uygulamayı kullanmasını önlemeye yardımcı olur."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2093,10 +2093,10 @@
     {
         "Id":  801,
         "Header":  {
-                       "UA":  "Увімкнути в Microsoft Defender виявлення потенційно небажаних програм та блокувати їх"
+                       "TR":  "Potansiyel olarak istenmeyen uygulamalar için Microsoft Defender'da algılamayı etkinleştirin ve bunları engelleyin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2107,10 +2107,10 @@
     {
         "Id":  802,
         "Header":  {
-                       "UA":  "Увімкнути пісочницю для Microsoft Defender"
+                       "TR":  "Microsoft Defender için korumalı alanı etkinleştir"
                    },
         "Description":  {
-                            "UA":  "Запуск Microsoft Defender у пісочниці гарантує, що при малоймовірній компрометації шкідливі дії будуть обмежені ізольованим середовищем, захищаючи решту системи від шкоди. У Windows 11 пісочницю для Microsoft Defender включено за замовчуванням"
+                            "TR":  "Microsoft Defender'ı bir korumalı alanda çalıştırmak, olası bir güvenlik ihlali durumunda, kötü amaçlı eylemlerin yalıtılmış ortamla sınırlı olmasını sağlayarak sistemin geri kalanını zarar görmekten korur. Microsoft Defender için sanal alan, Windows 11'de varsayılan olarak etkindir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2121,10 +2121,10 @@
     {
         "Id":  803,
         "Header":  {
-                       "UA":  "Увімкнути аудит подій, що виникають під час створення або запуску процесу"
+                       "TR":  "Bir süreç oluşturulduğunda veya başlatıldığında oluşturulan olayları denetlemeyi etkinleştir"
                    },
         "Description":  {
-                            "UA":  "Увімкнути журналювання запуску кожної програми, від імені якої вона була запущена, і процес, який запустив цей процес (подія 4688). Ви можете співвіднести цю подію з іншими подіями щодо ідентифікатора процесу, щоб визначити, що робила програма під час виконання та коли вона завершилася (подія 4689)"
+                            "TR":  "Her uygulama yürütmesinin, uygulamanın kim olarak çalıştığı ve bu süreci başlatan sürecin (olay 4688) günlüğe kaydedilmesini etkinleştirin. Programın çalışırken ve çıkarken ne yaptığını (olay 4689) belirlemek için bu olayı Process ID'ye göre diğer olaylarla ilişkilendirebilirsiniz."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2135,10 +2135,10 @@
     {
         "Id":  804,
         "Header":  {
-                       "UA":  "Вмикати командний рядок у подіях створення процесу"
+                       "TR":  "İşlem oluşturma olaylarına komut satırını dahil et"
                    },
         "Description":  {
-                            "UA":  "Становиться можливим прочитати аргументи командного рядка будь-якого успішно створеного процесу (подія 4688). Для того, щоб працював цей функціонал, буде увімкнено аудит подій"
+                            "TR":  "Başarılı bir şekilde oluşturulmuş herhangi bir işlem için komut satırı argümanlarını okumak mümkün olacaktır (olay 4688). Bu işlevin çalışması için olay denetimi etkinleştirilecektir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2149,10 +2149,10 @@
     {
         "Id":  805,
         "Header":  {
-                       "UA":  "Створити налаштовуємий перегляд \"Створення процесу\" у Перегляді подій"
+                       "TR":  "Olay Görüntüleyicide \"İşlem Oluşturma\" Özel Görünümünü oluşturun"
                    },
         "Description":  {
-                            "UA":  "Налаштовуємий перегляд \"Створення процесу\" призначений для фільтрації запущених процесів та їх аргументів для кращого аудиту безпеки системи. Для того, щоб працював даний функціонал, буде увімкнено аудит подій та командного рядка у подіях створення процесу"
+                            "TR":  "\"Süreç Oluşturma\" Özel Görünümü, daha iyi sistem güvenliği denetimi için çalışan süreçleri ve bunların argümanlarını filtrelemek üzere tasarlanmıştır. Bu işlevin çalışması için süreç oluşturma olaylarında olay ve komut satırı denetimi etkinleştirilecektir."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2163,10 +2163,10 @@
     {
         "Id":  806,
         "Header":  {
-                       "UA":  "Увімкнути журнал для всіх модулів Windows PowerShell"
+                       "TR":  "Tüm Windows PowerShell modülleri için günlüğe kaydetmeyi etkinleştir"
                    },
         "Description":  {
-                            "UA":  "Події конвеєрного виконання для учасників зазначених модулів записуються в журнал Windows PowerShell у \"Перегляд подій\". Тільки для вбудованого Windows PowerShell 5.1"
+                            "TR":  "Belirtilen modüllerin üyeleri için işlem hattı yürütme olayları, Olay Görüntüleyicisi'ndeki Windows PowerShell günlüğüne kaydedilir. Yalnızca yerleşik Windows PowerShell 5.1 için"
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2177,10 +2177,10 @@
     {
         "Id":  807,
         "Header":  {
-                       "UA":  "Увімкнути ведення журналу для всіх введених сценаріїв PowerShell у журналі подій Windows PowerShell"
+                       "TR":  "Windows PowerShell olay günlüğüne girilen tüm PowerShell komut dosyaları için günlüğe kaydetmeyi etkinleştir"
                    },
         "Description":  {
-                            "UA":  "Windows PowerShell реєструє обробку команд, блоків сценаріїв, функцій і сценаріїв, що викликаються в інтерактивному режимі або за допомогою служб автоматизації в журнал подій \"Журнали додатків та служб\\Microsoft\\Windows\\PowerShell\\Operational\". Тільки для вбудованого Windows PowerShell 5.1"
+                            "TR":  "Windows PowerShell, komutların, komut dosyası bloklarının, işlevlerin ve komut dosyalarının işlenmesini - ister etkileşimli olarak çağrılsın ister otomasyon aracılığıyla \"Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational\" olay günlüğüne kaydeder. Yalnızca yerleşik Windows PowerShell 5.1 için."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2191,10 +2191,10 @@
     {
         "Id":  808,
         "Header":  {
-                       "UA":  "Перевіряти програми та файли фільтром SmartScreen у Microsoft Defender"
+                       "TR":  "Microsoft Defender SmartScreen içindeki uygulamaları ve dosyaları kontrol edin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2205,10 +2205,10 @@
     {
         "Id":  809,
         "Header":  {
-                       "UA":  "Відмічати файли, завантажені з Інтернету як небезпечні"
+                       "TR":  "İnternetten indirilen dosyaları güvensiz olarak işaretleyin"
                    },
         "Description":  {
-                            "UA":  "Диспетчер вкладень увімкнений у Windows для захисту від небезпечних файлів, завантажених з Інтернету. Якщо диспетчер вкладень визначає файл як небезпечний, то запобігне (блокується) його відкриття, або перед відкриттям файлу спливає попередження. Метадані зберігаються як альтернативний потік даних (ADS). Якщо ви хочете розблокувати завантажений файл вручну, ви можете зробити це, відкривши властивість файлу та натиснувши \"Розблокувати\"."
+                            "TR":  "Ek Yöneticisi, Internet'ten indirilen güvenli olmayan dosyalardan korunmak için Windows'a dahil edilmiştir. Ek Yöneticisi güvenli olmayan bir ek tanımlarsa, Ek Yöneticisi dosyayı açmanızı engeller (engeller) veya dosyayı açmadan önce sizi uyarır. Meta veriler, Alternatif Veri Akışı (ADS) olarak kaydedilir. İndirilen bir dosyanın engellemesini manuel olarak kaldırmak istiyorsanız, bunu sağ tıklayıp Özellikler'i seçerek ve \"Engellemeyi Kaldır\"a tıklayarak yapabilirsiniz."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2219,10 +2219,10 @@
     {
         "Id":  810,
         "Header":  {
-                       "UA":  "Увімкнути Windows Script Host"
+                       "TR":  "Windows Komut Dosyası Ana Bilgisayarını Etkinleştir"
                    },
         "Description":  {
-                            "UA":  "Відключення цієї функції блокує виконання .js- та .vbs-сценаріїв, запобігаючи запуску шкідливих сценаріїв JavaScript"
+                            "TR":  "Bu özelliğin devre dışı bırakılması, .js ve .vbs komut dosyalarının yürütülmesini engelleyerek kötü amaçlı JavaScript komut dosyalarının çalışmasını engeller."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2233,10 +2233,10 @@
     {
         "Id":  811,
         "Header":  {
-                       "UA":  "Windows Sandbox"
+                       "TR":  "Windows Sandbox"
                    },
         "Description":  {
-                            "UA":  "Windows Sandbox є легким середовищем робочого столу для безпечного запуску додатків в ізольованому середовищі. Програмне забезпечення, встановлене серед Windows Sandbox, залишається в пісочниці і запускається окремо від основної машини. Пісочниця є тимчасовою. Коли вона закривається, все програмне забезпечення, файли та стан видаляються. При кожному відкритті нового екземпляра пісочниці ви отримуєте новий екземпляр пісочниці. Не працює у редакції Home"
+                            "TR":  "Windows Sandbox, uygulamaları izole bir şekilde güvenli bir şekilde çalıştırmak için hafif bir masaüstü ortamı sağlar. Windows Sandbox ortamına yüklenen yazılım, korumalı alanda kalır ve ana makineden ayrı çalışır. Sandbox geçicidir. Kapatıldığında, tüm yazılımlar ve dosyalar ve durum silinir. Uygulamayı her açtığınızda sandbox'ın yepyeni bir örneğini alırsınız. Home Edition'da çalışmıyor."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2247,10 +2247,10 @@
     {
         "Id":  812,
         "Header":  {
-                       "UA":  "Налаштування сповіщення про зміни параметрів комп'ютера"
+                       "TR":  "Bilgisayarınızdaki değişiklikler hakkında ne zaman bilgilendirileceğini seçin"
                    },
         "Description":  {
-                            "UA":  "Коли увімкнено контроль облікових записів користувачів (UAC), Windows запитує згоду або просить ввести облікові дані дійсного облікового запису локального адміністратора перед запуском додатку або завдання, що вимагає повного маркера доступу адміністратора. Цей запит гарантує, що шкідливе програмне забезпечення не може бути тихо встановлене або запущене"
+                            "TR":  "Kullanıcı Hesabı Denetimi (UAC) etkinleştirildiğinde, Windows, tam yönetici erişim belirteci gerektiren bir program veya görevi başlatmadan önce geçerli bir yerel yönetici hesabının onayını veya kimlik bilgilerini ister. Bu istem, hiçbir kötü amaçlı yazılımın sessizce kurulmamasını veya çalıştırılmamasını sağlar."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Security",
@@ -2258,20 +2258,20 @@
                               {
                                   "Id":  813,
                                   "ChildHeader":  {
-                                                      "UA":  "Повідомляти мене лише при спробах додатків внести зміни до комп'ютера"
+                                                      "TR":  "Yalnızca uygulamalar bilgisayarımda değişiklik yapmaya çalıştığında beni bilgilendir"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "При увімкненні цього параметра робочий стіл буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)"
+                                                           "TR":  "Bu ayar etkinleştirildiğinde, Kullanıcı Hesabı Denetimi (UAC) isteminden bir yükseltme isteği aldığınızda masaüstünüz karartılır."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  814,
                                   "ChildHeader":  {
-                                                      "UA":  "Ніколи не повідомляти"
+                                                      "TR":  "Asla haber verme"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  "Коли цей параметр увімкнено, робочий стіл ніколи не буде затемнюватися, коли ви отримуєте запит на підвищення рівня контролю облікових записів користувачів (UAC)."
+                                                           "TR":  "Bu ayar etkinleştirildiğinde, Kullanıcı Hesabı Denetimi (UAC) isteminden bir yükseltme isteği aldığınızda masaüstünüz asla kararmaz."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -2283,10 +2283,10 @@
     {
         "Id":  900,
         "Header":  {
-                       "UA":  "Пункт \"Вилучити все\" у контекстному меню Windows Installer (.msi)"
+                       "TR":  "Windows Installer (.msi) bağlam menüsündeki \"Tümünü ayıkla\" öğesi"
                    },
         "Description":  {
-                            "UA":  "Пункт контекстного меню \"Вилучити все\" витягне вміст .msi файлу в папку \"Extracted\" в тому ж місці, де знаходиться .msi файл"
+                            "TR":  "\"Tümünü ayıkla\" bağlam menüsü öğesi, .msi dosyasının tüm içeriğini .msi dosyasıyla aynı konumdaki \"Çıkarılan\" klasörüne çıkaracaktır."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2297,10 +2297,10 @@
     {
         "Id":  901,
         "Header":  {
-                       "UA":  "Пункт \"Встановити\" у контекстному меню Cabinet-архівів (.cab)"
+                       "TR":  "Kabine arşivleri (.cab) bağlam menüsündeki \"Yükle\" öğesi"
                    },
         "Description":  {
-                            "UA":  "Цей пункт контекстного меню, використовуючи DISM, дозволяє спростити встановлення .cab одним кліком у його контекстному меню. Якщо за замовчуванням розширення .cab асоційовано зі стороннім додатком (7-Zip, WinRAR тощо), доданий пункт контекстного меню \"Встановити\" не відображатиметься, доки ви не відновите асоціацію за замовчуванням для типу файлу .cab"
+                            "TR":  "DISM kullanan bu içerik menüsü öğesi, içerik menüsünde tek bir tıklama ile .cab güncellemelerinin kurulumunu basitleştirmeye izin verir. Varsayılan olarak bir üçüncü taraf uygulamasıyla (7-Zip, WinRAR, vb...) açmak için ilişkilendirilmiş .cab dosya uzantısı türüne sahipseniz, varsayılan ilişkilendirmeyi geri yükleyene kadar \"Yükle\" bağlam menüsü öğesi gösterilmeyecektir. .cab dosya türü için."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2311,10 +2311,10 @@
     {
         "Id":  902,
         "Header":  {
-                       "UA":  "Пункт \"Запуск від імені іншого користувача\" у контекстному меню файлів, що виконуються (.exe)"
+                       "TR":  "Yürütülebilir dosyalar bağlam menüsündeki (.exe) \"Farklı kullanıcı olarak çalıştır\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2325,10 +2325,10 @@
     {
         "Id":  903,
         "Header":  {
-                       "UA":  "Пункт \"Передати на пристрій\" у контекстному меню медіа-файлів та папок"
+                       "TR":  "Medya dosyaları ve klasörleri bağlam menüsündeki \"Cihaza Yayınla\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2339,10 +2339,10 @@
     {
         "Id":  904,
         "Header":  {
-                       "UA":  "Пункт \"Надіслати\" (поділитися) у контекстному меню"
+                       "TR":  "Bağlam menüsündeki \"Paylaş\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2353,10 +2353,10 @@
     {
         "Id":  905,
         "Header":  {
-                       "UA":  "Пункт \"Змінити за допомогою Paint 3D\" у контекстному меню медіа-файлів"
+                       "TR":  "Medya dosyaları bağlam menüsündeki \"Paint 3D ile Düzenle\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "ExpandingGroup",
         "Tag":  "ContextMenu",
@@ -2364,80 +2364,80 @@
                               {
                                   "Id":  906,
                                   "ChildHeader":  {
-                                                      "UA":  ".bmp"
+                                                      "TR":  ".bmp"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  907,
                                   "ChildHeader":  {
-                                                      "UA":  ".gif"
+                                                      "TR":  ".gif"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  908,
                                   "ChildHeader":  {
-                                                      "UA":  ".jpe"
+                                                      "TR":  ".jpe"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  909,
                                   "ChildHeader":  {
-                                                      "UA":  ".jpeg"
+                                                      "TR":  ".jpeg"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  910,
                                   "ChildHeader":  {
-                                                      "UA":  ".jpg"
+                                                      "TR":  ".jpg"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  911,
                                   "ChildHeader":  {
-                                                      "UA":  ".png"
+                                                      "TR":  ".png"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  912,
                                   "ChildHeader":  {
-                                                      "UA":  ".tif"
+                                                      "TR":  ".tif"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  913,
                                   "ChildHeader":  {
-                                                      "UA":  ".tiff"
+                                                      "TR":  ".tiff"
                                                   },
                                   "ChildDescription":  {
-                                                           "UA":  ""
+                                                           "TR":  ""
                                                        },
                                   "Type":  "CheckBox"
                               }
@@ -2449,10 +2449,10 @@
     {
         "Id":  914,
         "Header":  {
-                       "UA":  "Показувати пункт \"Змінити за допомогою програми «Фотографії»\" у контекстному меню медіа-файлів"
+                       "TR":  "Medya dosyaları bağlam menüsünde \"Fotoğraflarla Düzenle\" öğesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2463,10 +2463,10 @@
     {
         "Id":  915,
         "Header":  {
-                       "UA":  "Пункт \"Створити нове відео\" у контекстному меню медіа-файлів"
+                       "TR":  "Medya dosyaları bağlam menüsündeki \"Yeni video oluştur\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2477,10 +2477,10 @@
     {
         "Id":  916,
         "Header":  {
-                       "UA":  "Пункт \"Змінити\" у контекстному меню зображень"
+                       "TR":  "Görüntü dosyaları bağlam menüsündeki \"Düzenle\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2491,10 +2491,10 @@
     {
         "Id":  917,
         "Header":  {
-                       "UA":  "Пункт \"Друк\" у контекстному меню .bat та .cmd файлів"
+                       "TR":  ".bat ve .cmd dosyaları bağlam menüsündeki \"Yazdır\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2505,10 +2505,10 @@
     {
         "Id":  918,
         "Header":  {
-                       "UA":  "Пункт \"Додати до бібліотеки\" в контекстному меню папок та дисків"
+                       "TR":  "Klasörler ve sürücüler bağlam menüsündeki \"Kütüphaneye Dahil Et\" menü seçeneği"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2519,10 +2519,10 @@
     {
         "Id":  919,
         "Header":  {
-                       "UA":  "Пункт \"Надіслати\" в контекстному меню папок"
+                       "TR":  "Klasörler bağlam menüsündeki \"Gönder\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2533,10 +2533,10 @@
     {
         "Id":  920,
         "Header":  {
-                       "UA":  "Пункт \"Увімкнути BitLocker\" у контекстному меню дисків"
+                       "TR":  "Sürücüler bağlam menüsündeki \"BitLocker'ı Aç\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2547,10 +2547,10 @@
     {
         "Id":  921,
         "Header":  {
-                       "UA":  "Пункт \"Точковий малюнок\" у контекстному меню \"Створити\""
+                       "TR":  "\"Yeni\" bağlam menüsündeki \"Bitmap görüntüsü\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2561,10 +2561,10 @@
     {
         "Id":  922,
         "Header":  {
-                       "UA":  "Пункт \"Документ у форматі RTF\" у контекстному меню \"Створити\""
+                       "TR":  "\"Yeni\" bağlam menüsündeki \"Zengin Metin Belgesi\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2575,10 +2575,10 @@
     {
         "Id":  923,
         "Header":  {
-                       "UA":  "Пункт \"Стиснута ZIP-папка\" в контекстному меню \"Створити\""
+                       "TR":  "\"Yeni\" bağlam menüsündeki \"Sıkıştırılmış (sıkıştırılmış) Klasör\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2589,10 +2589,10 @@
     {
         "Id":  924,
         "Header":  {
-                       "UA":  "Зробити елементи \"Відкрити\", \"Змінити\" та \"Друк\" контекстного меню доступними при виділенні більше 15 елементів"
+                       "TR":  "15'ten fazla dosya seçerken \"Aç\", \"Yazdır\" ve \"Düzenle\" bağlam menüsü öğelerini kullanılabilir yapın"
                    },
         "Description":  {
-                            "UA":  "За замовчуванням пункти контекстного меню \"Відкрити\", \"Друк\", \"Правка\" не відображатимуться при виборі більше 15 пунктів, щоб уникнути випадкового виконання цих дій над великою кількістю файлів"
+                            "TR":  "Varsayılan olarak, bu eylemleri yanlışlıkla çok sayıda dosya üzerinde gerçekleştirmeyi önlemek için 15'ten fazla öğe seçildiğinde \"Aç\", \"Yazdır\", \"Düzenle\" bağlam menüsü öğeleri görünmez."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2603,10 +2603,10 @@
     {
         "Id":  925,
         "Header":  {
-                       "UA":  "Пункт \"Пошук додатку в Microsoft Store\" у діалозі \"Відкрити за допомогою\""
+                       "TR":  "\"Birlikte aç\" iletişim kutusundaki \"Microsoft Store'da bir uygulama arayın\" öğeleri"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2617,10 +2617,10 @@
     {
         "Id":  926,
         "Header":  {
-                       "UA":  "Відображати пункт \"Відкрити в Терміналі Windows\" у контекстному меню папок"
+                       "TR":  "Klasörler bağlam menüsünde \"Windows Terminalinde Aç\" öğesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2631,10 +2631,10 @@
     {
         "Id":  927,
         "Header":  {
-                       "UA":  "Відображати пункт \"Відкрити в Терміналі Windows\" (Адміністратор) у контекстному меню папок"
+                       "TR":  "Masaüstü ve klasörler bağlam menüsünde \"Windows Terminalinde Aç\" (Yönetici) öğesini göster"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2645,10 +2645,10 @@
     {
         "Id":  928,
         "Header":  {
-                       "UA":  "Увімкнути стиль контекстного меню з Windows 10"
+                       "TR":  "Windows 10 bağlam menüsü stilini etkinleştirin"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
@@ -2659,10 +2659,10 @@
     {
         "Id":  929,
         "Header":  {
-                       "UA":  "Пункт \"Надіслати\" (поділитися) у контекстному меню"
+                       "TR":  "Bağlam menüsündeki \"Paylaş\" öğesi"
                    },
         "Description":  {
-                            "UA":  ""
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",
