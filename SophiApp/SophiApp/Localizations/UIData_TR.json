@@ -5,7 +5,7 @@
                        "TR":  "Telemetri hizmeti"
                    },
         "Description":  {
-                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın. \"Bağlı Kullanıcı Deneyimleri ve Telemetri\" hizmetini (DiagTrack) devre dışı bırakmak, artık Xbox başarılarını alamamanıza neden olabilir"
+                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -55,7 +55,8 @@
                        "TR":  "Windows Hata Bildirimi"
                    },
         "Description":  {
-            "TR": "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."                        },
+                            "TR":  "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."
+                        },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
         "ViewId":  104,
@@ -1153,10 +1154,10 @@
     {
         "Id":  262,
         "Header":  {
-                       "EN":  "Configure Start layout"
+                       "TR":  null
                    },
         "Description":  {
-                            "EN":  ""
+                            "TR":  null
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1164,30 +1165,30 @@
                               {
                                   "Id":  263,
                                   "ChildHeader":  {
-                                                      "EN":  "Default"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "EN":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  264,
                                   "ChildHeader":  {
-                                                      "EN":  "More pins"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "EN":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  265,
                                   "ChildHeader":  {
-                                                      "EN":  "More recommendations"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "EN":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1199,10 +1200,10 @@
     {
         "Id":  266,
         "Header":  {
-                       "TR":  "Başlat menüsünde son eklenen uygulamaları göster"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1213,10 +1214,10 @@
     {
         "Id":  267,
         "Header":  {
-                       "TR":  "Başlat menüsünde uygulama önerilerini göster"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1227,10 +1228,10 @@
     {
         "Id":  268,
         "Header":  {
-                       "TR":  "Başlat menüsünden Windows PowerShell kısayolunu Yönetici olarak çalıştırın"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1383,10 +1384,10 @@
     {
         "Id":  311,
         "Header":  {
-                       "TR":  "Yönetici Onay Modu ile yükseltilmiş izinlerle çalışan uygulamadan eşlenen sürücülere erişimi etkinleştirin"
+                       "TR":  "Windows'un varsayılan yazıcımı yönetmesine izin ver"
                    },
         "Description":  {
-                            "TR":  "Varsayılan ayarlarla etkinleştirilen UAC, yönetici modunda çalışan uygulamalardan eşlenen ağ sürücülerine erişime izin vermez. Bu, komut satırını veya yükseltilmiş ayrıcalıklara sahip bir dosya yöneticisini çalıştırırsanız, bağlı ağ klasörlerinin sürücü harflerini göstermeyecekleri anlamına gelir."
+                            "TR":  "Varsayılan olarak, Windows son kullanılan yazıcıyı varsayılan yazıcı yapar."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1397,10 +1398,10 @@
     {
         "Id":  312,
         "Header":  {
-                       "TR":  "Teslimat optimizasyonu ile güncellemeleri indirmeyi etkinleştirin"
+                       "TR":  "Diğer Microsoft ürünleri için güncellemeleri alın"
                    },
         "Description":  {
-                            "TR":  "Windows Update Teslimat Optimizasyonu, yerel ağınızdaki diğer bilgisayarlar veya aynı dosyaları indiren İnternetteki bilgisayarlar gibi Microsoft'a ek olarak kaynaklardan Windows güncellemeleri ve Microsoft Store uygulamaları almanıza izin vererek çalışır. Teslimat Optimizasyonu ayrıca, ayarlarınıza bağlı olarak bilgisayarınızdan yerel ağınızdaki diğer bilgisayarlara veya İnternet'teki bilgisayarlara güncellemeler ve uygulamalar gönderir. Bu verilerin bilgisayarlar arasında paylaşılması, birden fazla cihazı güncel tutmak için gereken İnternet bant genişliğini azaltmaya yardımcı olur veya sınırlı veya güvenilmez bir İnternet bağlantınız varsa indirme işlemlerini daha başarılı hale getirebilir."
+                            "TR":  "Windows güncellemeleriyle birlikte Microsoft Office ve diğer güncellemeleri alın."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1411,10 +1412,10 @@
     {
         "Id":  313,
         "Header":  {
-                       "TR":  "Her zaman bilgisayar başlangıcında ağı bekleyin ve çalışma grubu ağlarında oturum açın"
+                       "TR":  "Güç planını seçin"
                    },
         "Description":  {
-                            "TR":  "Oturum açma süresini azaltmak için Windows, başlatma veya oturum açma sırasında ağın tamamen başlatılmasını beklemez. İlke ayarları, bilgisayar başlatıldığında ve kullanıcı oturum açtığında eşzamansız olarak uygulanır. Sonuç olarak işletim sistemi, ağın tamamen dolmasını beklemez. başlatma ve oturum açma sırasında başlatıldı.Mevcut kullanıcılar önbelleğe alınmış kimlik bilgileri kullanılarak oturum açar.Bu, oturum açma sürelerini azaltır.Grup İlkesi, ağ kullanılabilir hale geldikten sonra arka planda uygulanır."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1425,10 +1426,10 @@
     {
         "Id":  314,
         "Header":  {
-                       "TR":  "Windows'un varsayılan yazıcımı yönetmesine izin ver"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  "Varsayılan olarak, Windows son kullanılan yazıcıyı varsayılan yazıcı yapar."
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1439,10 +1440,10 @@
     {
         "Id":  315,
         "Header":  {
-                       "TR":  "Diğer Microsoft ürünleri için güncellemeleri alın"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  "Windows güncellemeleriyle birlikte Microsoft Office ve diğer güncellemeleri alın."
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1453,10 +1454,10 @@
     {
         "Id":  316,
         "Header":  {
-                       "TR":  "Güç planını seçin"
+                       "TR":  "Tüm uygulamalar için en son yüklenen .NET Framework çalışma zamanını kullanın"
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1464,20 +1465,20 @@
                               {
                                   "Id":  317,
                                   "ChildHeader":  {
-                                                      "TR":  "Yüksek performans"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  "Dizüstü bilgisayarlarda \"Yüksek performans\" güç düzenini açmanız önerilmez."
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  318,
                                   "ChildHeader":  {
-                                                      "TR":  "Dengeli"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1489,10 +1490,10 @@
     {
         "Id":  319,
         "Header":  {
-                       "TR":  "Tüm uygulamalar için en son yüklenen .NET Framework çalışma zamanını kullanın"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1503,10 +1504,10 @@
     {
         "Id":  320,
         "Header":  {
-                       "TR":  "Güçten tasarruf etmek için bilgisayarın ağ bağdaştırıcılarını kapatmasına izin verin"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  "Dizüstü bilgisayarlarda güç tasarrufu yapmak için ağ bağdaştırıcılarının kapatılması önerilmez."
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1517,10 +1518,10 @@
     {
         "Id":  321,
         "Header":  {
-                       "TR":  "Varsayılan giriş yöntemi için geçersiz kıl"
+                       "TR":  "Win+PrtScn tuşlarına basarken ekran görüntülerinin kaydedileceği klasörü seçin"
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  "Yalnızca OneDrive'ı kaldırmayı seçerseniz (veya daha önce kaldırılmışsa), \"Masaüstü\"nü seçin, aksi takdirde OneDrive'daki \"Masaüstü\" ve \"Resimler\" klasörleri için yedekleme işlevi bozulur."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1528,7 +1529,7 @@
                               {
                                   "Id":  322,
                                   "ChildHeader":  {
-                                                      "TR":  "Dil listesini kullan"
+                                                      "TR":  "Masaüstü"
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
@@ -1538,7 +1539,7 @@
                               {
                                   "Id":  323,
                                   "ChildHeader":  {
-                                                      "TR":  "İngilizce"
+                                                      "TR":  "Resimler klasörü"
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
@@ -1553,10 +1554,10 @@
     {
         "Id":  324,
         "Header":  {
-                       "TR":  "Win+PrtScn tuşlarına basarken ekran görüntülerinin kaydedileceği klasörü seçin"
+                       "TR":  "Önerilen sorun giderme"
                    },
         "Description":  {
-                            "TR":  "Yalnızca OneDrive'ı kaldırmayı seçerseniz (veya daha önce kaldırılmışsa), \"Masaüstü\"nü seçin, aksi takdirde OneDrive'daki \"Masaüstü\" ve \"Resimler\" klasörleri için yedekleme işlevi bozulur."
+                            "TR":  "Microsoft, sorunları gidermek için sorun gidericiler önerebilir ve çalıştırabilir. Cihazınızda sorun gidericilerin çözebileceği sorunlar olduğunda Microsoft'un ne kadar yardım etmesini istiyorsunuz?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1564,20 +1565,20 @@
                               {
                                   "Id":  325,
                                   "ChildHeader":  {
-                                                      "TR":  "Masaüstü"
+                                                      "TR":  "Sorun gidericileri otomatik olarak çalıştırın, ardından bilgilendirin"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  326,
                                   "ChildHeader":  {
-                                                      "TR":  "Resimler klasörü"
+                                                      "TR":  "Sorun gidericiyi çalıştırmadan önce bana sor"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1589,10 +1590,10 @@
     {
         "Id":  327,
         "Header":  {
-                       "TR":  "Önerilen sorun giderme"
+                       "TR":  "Klasör pencerelerini ayrı bir işlemde başlatın"
                    },
         "Description":  {
-                            "TR":  "Microsoft, sorunları gidermek için sorun gidericiler önerebilir ve çalıştırabilir. Cihazınızda sorun gidericilerin çözebileceği sorunlar olduğunda Microsoft'un ne kadar yardım etmesini istiyorsunuz?"
+                            "TR":  "Varsayılan olarak, masaüstü kabuğu da dahil olmak üzere tüm Dosya Gezgini pencereleri tek bir explorer.exe işleminde çalışır. Bir Dosya Gezgini penceresi kilitlenirse veya çökerse, süreç yeniden başlayana kadar tüm grafik kabuğun donmasına neden olur. Etkinleştirildiğinde, gezgin kabuğunun kararlılığını artırmak için her explorer.exe işleminin kendi işlem kimliği (PID) olacaktır."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1600,20 +1601,20 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "TR":  "Sorun gidericileri otomatik olarak çalıştırın, ardından bilgilendirin"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  329,
                                   "ChildHeader":  {
-                                                      "TR":  "Sorun gidericiyi çalıştırmadan önce bana sor"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1625,10 +1626,10 @@
     {
         "Id":  330,
         "Header":  {
-                       "TR":  "Klasör pencerelerini ayrı bir işlemde başlatın"
+                       "TR":  "Başlangıçta Num Lock'u etkinleştir"
                    },
         "Description":  {
-                            "TR":  "Varsayılan olarak, masaüstü kabuğu da dahil olmak üzere tüm Dosya Gezgini pencereleri tek bir explorer.exe işleminde çalışır. Bir Dosya Gezgini penceresi kilitlenirse veya çökerse, süreç yeniden başlayana kadar tüm grafik kabuğun donmasına neden olur. Etkinleştirildiğinde, gezgin kabuğunun kararlılığını artırmak için her explorer.exe işleminin kendi işlem kimliği (PID) olacaktır."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1639,10 +1640,10 @@
     {
         "Id":  331,
         "Header":  {
-                       "TR":  "Ayrılmış depolamayı etkinleştir"
+                       "TR":  "Caps Lock'u etkinleştir"
                    },
         "Description":  {
-                            "TR":  "To cihazınızın başarıyla güncellendiğinden ve en iyi şekilde çalıştığından emin olun; Windows, geçici dosyalar, önbellekler ve diğer dosyalar tarafından kullanılmak üzere cihazınızdaki depolama alanının bir kısmını ayırır. Cihazınızda boş alan azaldığında, Windows, Windows güncellemesi gibi diğer işlemler için kullanılabilmesi için ayrılmış depolama alanını temizler. Depolama alanı ayırmak, cihazınızdaki disk alanı kullanımının daha öngörülebilir ve daha kararlı olmasına da yardımcı olur. Devre dışı bırakıldıktan sonra, ayrılmış depolama alanı bir sonraki güncelleme kurulumundan sonra silinecektir."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1653,10 +1654,10 @@
     {
         "Id":  332,
         "Header":  {
-                       "TR":  "F1 aracılığıyla yardım aramasını etkinleştir"
+                       "TR":  "Yapışkan tuşlar için klavye kısayolu"
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  "Yapışkan tuşları açmak veya kapatmak için Shift tuşuna 5 kez basın"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1667,7 +1668,7 @@
     {
         "Id":  333,
         "Header":  {
-                       "TR":  "Başlangıçta Num Lock'u etkinleştir"
+                       "TR":  "Tüm medya ve cihazlar için Otomatik Kullan'ı kullanın"
                    },
         "Description":  {
                             "TR":  ""
@@ -1681,10 +1682,10 @@
     {
         "Id":  334,
         "Header":  {
-                       "TR":  "Caps Lock'u etkinleştir"
+                       "TR":  "Küçük resim önbelleğini kaldırmayı etkinleştir"
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  "Windows, yeniden başlatma veya kapatmadan sonra küçük resim önbelleğini otomatik olarak siler ve Dosya Gezgini, küçük resimleri yeniden oluşturması gerekir. Küçük resim önbelleği, gizli \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer klasöründe bulunan .db dosyaları olarak depolanır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1695,10 +1696,10 @@
     {
         "Id":  335,
         "Header":  {
-                       "TR":  "Yapışkan tuşlar için klavye kısayolu"
+                       "TR":  "Oturum açtıktan sonra uygulamaları yeniden başlatın"
                    },
         "Description":  {
-                            "TR":  "Yapışkan tuşları açmak veya kapatmak için Shift tuşuna 5 kez basın"
+                            "TR":  "Yeniden başlatılabilir uygulamalarımı otomatik olarak kaydedin ve tekrar oturum açtığımda yeniden başlatın. Program önceki oturumda yönetici olarak çalıştırılmışsa, yönetici olmayan izinlerle yeniden başlatılacaktır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1709,7 +1710,7 @@
     {
         "Id":  336,
         "Header":  {
-                       "TR":  "Tüm medya ve cihazlar için Otomatik Kullan'ı kullanın"
+                       "TR":  "Çalışma grubu ağları için \"Ağ Keşfi\" ve \"Dosya ve Yazıcı Paylaşımı\"nı etkinleştirin"
                    },
         "Description":  {
                             "TR":  ""
@@ -1723,10 +1724,10 @@
     {
         "Id":  337,
         "Header":  {
-                       "TR":  "Küçük resim önbelleğini kaldırmayı etkinleştir"
+                       "TR":  "Günlük kullanıma göre aktif saatleri benim için otomatik olarak ayarla"
                    },
         "Description":  {
-                            "TR":  "Windows, yeniden başlatma veya kapatmadan sonra küçük resim önbelleğini otomatik olarak siler ve Dosya Gezgini, küçük resimleri yeniden oluşturması gerekir. Küçük resim önbelleği, gizli \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer klasöründe bulunan .db dosyaları olarak depolanır."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1737,10 +1738,10 @@
     {
         "Id":  338,
         "Header":  {
-                       "TR":  "Oturum açtıktan sonra uygulamaları yeniden başlatın"
+                       "TR":  "Güncellemeyi bitirmek için mümkün olan en kısa sürede yeniden başlatın"
                    },
         "Description":  {
-                            "TR":  "Yeniden başlatılabilir uygulamalarımı otomatik olarak kaydedin ve tekrar oturum açtığımda yeniden başlatın. Program önceki oturumda yönetici olarak çalıştırılmışsa, yönetici olmayan izinlerle yeniden başlatılacaktır."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1751,10 +1752,10 @@
     {
         "Id":  339,
         "Header":  {
-                       "TR":  "Çalışma grubu ağları için \"Ağ Keşfi\" ve \"Dosya ve Yazıcı Paylaşımı\"nı etkinleştirin"
+                       "TR":  "Varsayılan terminal uygulaması"
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  "Komut satırı uygulamaları için kullanıcı arabirimini barındırmak için Windows Terminalini varsayılan terminal uygulaması olarak ayarlayın."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1765,10 +1766,10 @@
     {
         "Id":  340,
         "Header":  {
-                       "TR":  "Günlük kullanıma göre aktif saatleri benim için otomatik olarak ayarla"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1779,10 +1780,10 @@
     {
         "Id":  341,
         "Header":  {
-                       "TR":  "Güncellemeyi bitirmek için mümkün olan en kısa sürede yeniden başlatın"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  ""
+                            "TR":  null
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1793,10 +1794,10 @@
     {
         "Id":  342,
         "Header":  {
-                       "TR":  "Varsayılan terminal uygulaması"
+                       "TR":  "PC Sağlık Kontrolü uygulaması"
                    },
         "Description":  {
-                            "TR":  "Komut satırı uygulamaları için kullanıcı arabirimini barındırmak için Windows Terminalini varsayılan terminal uygulaması olarak ayarlayın."
+                            "TR":  "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1804,7 +1805,7 @@
                               {
                                   "Id":  343,
                                   "ChildHeader":  {
-                                                      "TR":  "Windows Terminal"
+                                                      "TR":  "Kaldır"
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
@@ -1814,10 +1815,10 @@
                               {
                                   "Id":  344,
                                   "ChildHeader":  {
-                                                      "TR":  "Windows Console Host"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1829,10 +1830,10 @@
     {
         "Id":  345,
         "Header":  {
-                       "TR":  "PC Sağlık Kontrolü uygulaması"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
+                            "TR":  null
                         },
         "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
@@ -1840,10 +1841,10 @@
                               {
                                   "Id":  346,
                                   "ChildHeader":  {
-                                                      "TR":  "Kaldır"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               }
@@ -1891,10 +1892,10 @@
     {
         "Id":  350,
         "Header":  {
-                       "TR":  "En son Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64"
+                       "TR":  null
                    },
         "Description":  {
-                            "TR":  "Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64, Microsoft kaynağından (internet bağlantısı gerekir) indirilecek ve sessizce yüklenecektir. Visual Studio 2015'ten bu yana Visual Studio sürümleri, aynı yeniden dağıtılabilir dosyaları paylaşır."
+                            "TR":  null
                         },
         "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
@@ -1902,20 +1903,20 @@
                               {
                                   "Id":  351,
                                   "ChildHeader":  {
-                                                      "TR":  "Kur"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               },
                               {
                                   "Id":  352,
                                   "ChildHeader":  {
-                                                      "TR":  "Kaldır"
+                                                      "TR":  null
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  ""
+                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               }

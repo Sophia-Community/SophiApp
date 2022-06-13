@@ -1382,12 +1382,54 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  314,
+        "Id":  311,
         "Header":  {
                        "IT":  "Permetti l'accesso ai dischi mappati alle app eseguite come amministratore"
                    },
         "Description":  {
                             "IT":  "L'UAC abilitato con le impostazioni predefinite non consente l'accesso a unità di rete mappate da applicazioni in esecuzione in modalità amministratore. Ciò significa che se si esegue la riga di comando o un file manager con privilegi elevati, non mostreranno le lettere di unità delle cartelle di rete montate."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  311,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  312,
+        "Header":  {
+                       "IT":  "Abilita il download degli aggiornamenti con l'ottimizzazione recapito"
+                   },
+        "Description":  {
+                            "IT":  "Windows Update Ottimizzazione recapito funziona permettendoti di ottenere aggiornamenti di Windows e APP di Microsoft Store da fonti oltre a Microsoft, come altri PC sulla rete locale o PC su Internet che scaricano gli stessi file. L'ottimizzazione recapito invia anche aggiornamenti ad altri PC sulla rete locale o su Internet, in base alle tue impostazioni. La condivisione di questi dati tra PC aiuta a ridurre la larghezza di banda Internet che è necessario per mantenere più di un dispositivo aggiornato. Permrtte quindi di eseguire il download se si dispone di una connessione Internet limitata o inaffidabile."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  312,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  313,
+        "Header":  {
+                       "IT":  "Attendi sempre l'inizializzazione della rete all'avvio del computer e all'accesso per le reti del gruppo di lavoro"
+                   },
+        "Description":  {
+                            "IT":  "Per ridurre il tempo di accesso Windows non attende che la rete sia completamente inizializzata all'avvio o all'accesso."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  313,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  314,
+        "Header":  {
+                       "IT":  "Consentire Windows di gestire la mia stampante predefinita"
+                   },
+        "Description":  {
+                            "IT":  "Per impostazione predefinita, Windows rendono l'ultima stampante utilizzata come quella predefinita."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1398,10 +1440,10 @@
     {
         "Id":  315,
         "Header":  {
-                       "IT":  "Abilita il download degli aggiornamenti con l'ottimizzazione recapito"
+                       "IT":  "Ricevi aggiornamenti per altri prodotti Microsoft"
                    },
         "Description":  {
-                            "IT":  "Windows Update Ottimizzazione recapito funziona permettendoti di ottenere aggiornamenti di Windows e APP di Microsoft Store da fonti oltre a Microsoft, come altri PC sulla rete locale o PC su Internet che scaricano gli stessi file. L'ottimizzazione recapito invia anche aggiornamenti ad altri PC sulla rete locale o su Internet, in base alle tue impostazioni. La condivisione di questi dati tra PC aiuta a ridurre la larghezza di banda Internet che è necessario per mantenere più di un dispositivo aggiornato. Permrtte quindi di eseguire il download se si dispone di una connessione Internet limitata o inaffidabile."
+                            "IT":  "Ottieni Microsoft Office e altri aggiornamenti insieme agli aggiornamenti di Windows."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1412,48 +1454,6 @@
     {
         "Id":  316,
         "Header":  {
-                       "IT":  "Attendi sempre l'inizializzazione della rete all'avvio del computer e all'accesso per le reti del gruppo di lavoro"
-                   },
-        "Description":  {
-                            "IT":  "Per ridurre il tempo di accesso Windows non attende che la rete sia completamente inizializzata all'avvio o all'accesso."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  316,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  317,
-        "Header":  {
-                       "IT":  "Consentire Windows di gestire la mia stampante predefinita"
-                   },
-        "Description":  {
-                            "IT":  "Per impostazione predefinita, Windows rendono l'ultima stampante utilizzata come quella predefinita."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  317,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  318,
-        "Header":  {
-                       "IT":  "Ricevi aggiornamenti per altri prodotti Microsoft"
-                   },
-        "Description":  {
-                            "IT":  "Ottieni Microsoft Office e altri aggiornamenti insieme agli aggiornamenti di Windows."
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  318,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  319,
-        "Header":  {
                        "IT":  "Scegli il piano energetico"
                    },
         "Description":  {
@@ -1463,7 +1463,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  320,
+                                  "Id":  317,
                                   "ChildHeader":  {
                                                       "IT":  "Prestazioni elevate"
                                                   },
@@ -1473,7 +1473,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  321,
+                                  "Id":  318,
                                   "ChildHeader":  {
                                                       "IT":  "Equilibrata"
                                                   },
@@ -1483,12 +1483,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  319,
+        "ViewId":  316,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  322,
+        "Id":  319,
         "Header":  {
                        "IT":  "Utilizzare l'ultima versione del runtime .NET Framework installato per tutte le app"
                    },
@@ -1497,12 +1497,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  322,
+        "ViewId":  319,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  323,
+        "Id":  320,
         "Header":  {
                        "IT":  "Consentire al computer di spegnere gli adattatori di rete per risparmiare energia"
                    },
@@ -1511,12 +1511,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  323,
+        "ViewId":  320,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  324,
+        "Id":  321,
         "Header":  {
                        "IT":  "Sovrascrivi il metodo di input predefinito"
                    },
@@ -1527,7 +1527,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  325,
+                                  "Id":  322,
                                   "ChildHeader":  {
                                                       "IT":  "Usando la lista lingue"
                                                   },
@@ -1537,9 +1537,45 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  326,
+                                  "Id":  323,
                                   "ChildHeader":  {
                                                       "IT":  "inglese"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  321,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  324,
+        "Header":  {
+                       "IT":  "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN"
+                   },
+        "Description":  {
+                            "IT":  "Selezionare \"Desktop\" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \"Desktop\" e \"Immagini\" si romperanno in OneDrive."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  325,
+                                  "ChildHeader":  {
+                                                      "IT":  "Desktop"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  326,
+                                  "ChildHeader":  {
+                                                      "IT":  "Immagini"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  ""
@@ -1554,10 +1590,10 @@
     {
         "Id":  327,
         "Header":  {
-                       "IT":  "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN"
+                       "IT":  "Risoluzione dei problemi consigliati"
                    },
         "Description":  {
-                            "IT":  "Selezionare \"Desktop\" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \"Desktop\" e \"Immagini\" si romperanno in OneDrive."
+                            "IT":  "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1565,20 +1601,20 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "IT":  "Desktop"
+                                                      "IT":  "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  ""
+                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  329,
                                   "ChildHeader":  {
-                                                      "IT":  "Immagini"
+                                                      "IT":  "Chiedimi prima di eseguire la risoluzione dei problemi"
                                                   },
                                   "ChildDescription":  {
-                                                           "IT":  ""
+                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1590,46 +1626,52 @@
     {
         "Id":  330,
         "Header":  {
-                       "IT":  "Risoluzione dei problemi consigliati"
+                       "IT":  "Avvia esplora file in un processo separato"
                    },
         "Description":  {
-                            "IT":  "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?"
+                            "IT":  "Per impostazione predefinita, tutte le istanze di esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  331,
-                                  "ChildHeader":  {
-                                                      "IT":  "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  332,
-                                  "ChildHeader":  {
-                                                      "IT":  "Chiedimi prima di eseguire la risoluzione dei problemi"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  330,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  331,
+        "Header":  {
+                       "IT":  "Abilita lo spazio riservato"
+                   },
+        "Description":  {
+                            "IT":  "Per assicurarsi che il dispositivo possa aggiornarlo con successo e che esegue il meglio, Windows si riserva una porzione di spazio di archiviazione sul dispositivo per l'utilizzo da file temporanei, cache e altri file.Quando il tuo dispositivo è basso sullo spazio, Windows cancellerà l'archiviazione riservata in modo che possa essere utilizzato per altri processi, come un aggiornamento di Windows.L'archiviazione riservata aiuta anche a mantenere l'utilizzo dello spazio su disco sul tuo dispositivo più prevedibile e più stabile.Dopo aver disabilitato lo stoccaggio riservato verrà cancellato dopo l'installazione successiva di un aggiornamento."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  331,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  332,
+        "Header":  {
+                       "IT":  "Abilita cerca aiuto premendo F1"
+                   },
+        "Description":  {
+                            "IT":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  332,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
         "Id":  333,
         "Header":  {
-                       "IT":  "Avvia esplora file in un processo separato"
+                       "IT":  "Abilita il blocco numerico all'avvio"
                    },
         "Description":  {
-                            "IT":  "Per impostazione predefinita, tutte le istanze di esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer."
+                            "IT":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1640,10 +1682,10 @@
     {
         "Id":  334,
         "Header":  {
-                       "IT":  "Abilita lo spazio riservato"
+                       "IT":  "Abilita blocco maiuscolo"
                    },
         "Description":  {
-                            "IT":  "Per assicurarsi che il dispositivo possa aggiornarlo con successo e che esegue il meglio, Windows si riserva una porzione di spazio di archiviazione sul dispositivo per l'utilizzo da file temporanei, cache e altri file.Quando il tuo dispositivo è basso sullo spazio, Windows cancellerà l'archiviazione riservata in modo che possa essere utilizzato per altri processi, come un aggiornamento di Windows.L'archiviazione riservata aiuta anche a mantenere l'utilizzo dello spazio su disco sul tuo dispositivo più prevedibile e più stabile.Dopo aver disabilitato lo stoccaggio riservato verrà cancellato dopo l'installazione successiva di un aggiornamento."
+                            "IT":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1654,10 +1696,10 @@
     {
         "Id":  335,
         "Header":  {
-                       "IT":  "Abilita cerca aiuto premendo F1"
+                       "IT":  "Scorciatoia da tastiera per i tasti permanenti"
                    },
         "Description":  {
-                            "IT":  ""
+                            "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1668,7 +1710,7 @@
     {
         "Id":  336,
         "Header":  {
-                       "IT":  "Abilita il blocco numerico all'avvio"
+                       "IT":  "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
                    },
         "Description":  {
                             "IT":  ""
@@ -1682,10 +1724,10 @@
     {
         "Id":  337,
         "Header":  {
-                       "IT":  "Abilita blocco maiuscolo"
+                       "IT":  "Abilita la rimozione della cache delle miniature"
                    },
         "Description":  {
-                            "IT":  ""
+                            "IT":  "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1696,10 +1738,10 @@
     {
         "Id":  338,
         "Header":  {
-                       "IT":  "Scorciatoia da tastiera per i tasti permanenti"
+                       "IT":  "Riavvia le app dopo aver effettuato l'accesso"
                    },
         "Description":  {
-                            "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
+                            "IT":  "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1710,7 +1752,7 @@
     {
         "Id":  339,
         "Header":  {
-                       "IT":  "Utilizzare AutoPlay per tutti i supporti e i dispositivi"
+                       "IT":  "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
                    },
         "Description":  {
                             "IT":  ""
@@ -1724,10 +1766,10 @@
     {
         "Id":  340,
         "Header":  {
-                       "IT":  "Abilita la rimozione della cache delle miniature"
+                       "IT":  "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano"
                    },
         "Description":  {
-                            "IT":  "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
+                            "IT":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1738,10 +1780,10 @@
     {
         "Id":  341,
         "Header":  {
-                       "IT":  "Riavvia le app dopo aver effettuato l'accesso"
+                       "IT":  "Riavvia il prima possibile per terminare l'aggiornamento"
                    },
         "Description":  {
-                            "IT":  "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative."
+                            "IT":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1752,48 +1794,6 @@
     {
         "Id":  342,
         "Header":  {
-                       "IT":  "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro"
-                   },
-        "Description":  {
-                            "IT":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  342,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  343,
-        "Header":  {
-                       "IT":  "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano"
-                   },
-        "Description":  {
-                            "IT":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  343,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  344,
-        "Header":  {
-                       "IT":  "Riavvia il prima possibile per terminare l'aggiornamento"
-                   },
-        "Description":  {
-                            "IT":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  344,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  345,
-        "Header":  {
                        "IT":  "App predefinita del terminale"
                    },
         "Description":  {
@@ -1803,7 +1803,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  346,
+                                  "Id":  343,
                                   "ChildHeader":  {
                                                       "IT":  "Terminal Windows"
                                                   },
@@ -1813,7 +1813,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  347,
+                                  "Id":  344,
                                   "ChildHeader":  {
                                                       "IT":  "Windows Console Host"
                                                   },
@@ -1823,12 +1823,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  345,
+        "ViewId":  342,
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
-        "Id":  348,
+        "Id":  345,
         "Header":  {
                        "IT":  "L'app \"PC Health Check\""
                    },
@@ -1838,6 +1838,42 @@
         "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
+                              {
+                                  "Id":  346,
+                                  "ChildHeader":  {
+                                                      "IT":  "Disinstalla"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  345,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  347,
+        "Header":  {
+                       "IT":  "OneDrive"
+                   },
+        "Description":  {
+                            "IT":  ""
+                        },
+        "Type":  "OneDriveButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  348,
+                                  "ChildHeader":  {
+                                                      "IT":  "Installa"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
                               {
                                   "Id":  349,
                                   "ChildHeader":  {
@@ -1849,19 +1885,19 @@
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  348,
+        "ViewId":  347,
         "Windows10Supported":  true,
-        "Windows11Supported":  false
+        "Windows11Supported":  true
     },
     {
         "Id":  350,
         "Header":  {
-                       "IT":  "OneDrive"
+                       "IT":  "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
                    },
         "Description":  {
-                            "IT":  ""
+                            "IT":  "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
                         },
-        "Type":  "OneDriveButtonGroup",
+        "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
@@ -1876,42 +1912,6 @@
                               },
                               {
                                   "Id":  352,
-                                  "ChildHeader":  {
-                                                      "IT":  "Disinstalla"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "IT":  ""
-                                                       },
-                                  "Type":  "Button"
-                              }
-                          ],
-        "ViewId":  349,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  353,
-        "Header":  {
-                       "IT":  "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64"
-                   },
-        "Description":  {
-                            "IT":  "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file."
-                        },
-        "Type":  "MsCppPackageButtonGroup",
-        "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  354,
-                                  "ChildHeader":  {
-                                                      "IT":  "Installa"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "IT":  ""
-                                                       },
-                                  "Type":  "Button"
-                              },
-                              {
-                                  "Id":  355,
                                   "ChildHeader":  {
                                                       "IT":  "Disinstalla"
                                                   },
