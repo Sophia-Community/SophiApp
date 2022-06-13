@@ -3641,7 +3641,7 @@
     {
         "Id":  701,
         "Header":  {
-                       "EN":  "Сlean up the Windows Updates download folder",
+                       "EN":  "Clean up the Windows Updates download folder",
                        "RU":  "Очистка папки загрузки обновлений Windows",
                        "DE":  "Windows-Updates-Download-Ordner bereinigen",
                        "UA":  "Очищення папки завантаження оновлень Windows",
