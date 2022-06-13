@@ -5,7 +5,7 @@
                        "TR":  "Telemetri hizmeti"
                    },
         "Description":  {
-                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın."
+                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın. \"Bağlı Kullanıcı Deneyimleri ve Telemetri\" hizmetini (DiagTrack) devre dışı bırakmak, artık Xbox başarılarını alamamanıza neden olabilir"
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -55,8 +55,7 @@
                        "TR":  "Windows Hata Bildirimi"
                    },
         "Description":  {
-                            "TR":  "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."
-                        },
+            "TR": "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."                        },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
         "ViewId":  104,
@@ -1154,10 +1153,10 @@
     {
         "Id":  262,
         "Header":  {
-                       "TR":  null
+                       "EN":  "Configure Start layout"
                    },
         "Description":  {
-                            "TR":  null
+                            "EN":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1165,30 +1164,30 @@
                               {
                                   "Id":  263,
                                   "ChildHeader":  {
-                                                      "TR":  null
+                                                      "EN":  "Default"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  null
+                                                           "EN":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  264,
                                   "ChildHeader":  {
-                                                      "TR":  null
+                                                      "EN":  "More pins"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  null
+                                                           "EN":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  265,
                                   "ChildHeader":  {
-                                                      "TR":  null
+                                                      "EN":  "More recommendations"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  null
+                                                           "EN":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1200,10 +1199,10 @@
     {
         "Id":  266,
         "Header":  {
-                       "TR":  null
+                       "TR":  "Başlat menüsünde son eklenen uygulamaları göster"
                    },
         "Description":  {
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1214,10 +1213,10 @@
     {
         "Id":  267,
         "Header":  {
-                       "TR":  null
+                       "TR":  "Başlat menüsünde uygulama önerilerini göster"
                    },
         "Description":  {
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1228,10 +1227,10 @@
     {
         "Id":  268,
         "Header":  {
-                       "TR":  null
+                       "TR":  "Başlat menüsünden Windows PowerShell kısayolunu Yönetici olarak çalıştırın"
                    },
         "Description":  {
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -1382,6 +1381,48 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  311,
+        "Header":  {
+                       "TR":  "Yönetici Onay Modu ile yükseltilmiş izinlerle çalışan uygulamadan eşlenen sürücülere erişimi etkinleştirin"
+                   },
+        "Description":  {
+                            "TR":  "Varsayılan ayarlarla etkinleştirilen UAC, yönetici modunda çalışan uygulamalardan eşlenen ağ sürücülerine erişime izin vermez. Bu, komut satırını veya yükseltilmiş ayrıcalıklara sahip bir dosya yöneticisini çalıştırırsanız, bağlı ağ klasörlerinin sürücü harflerini göstermeyecekleri anlamına gelir."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  311,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  312,
+        "Header":  {
+                       "TR":  "Teslimat optimizasyonu ile güncellemeleri indirmeyi etkinleştirin"
+                   },
+        "Description":  {
+                            "TR":  "Windows Update Teslimat Optimizasyonu, yerel ağınızdaki diğer bilgisayarlar veya aynı dosyaları indiren İnternetteki bilgisayarlar gibi Microsoft'a ek olarak kaynaklardan Windows güncellemeleri ve Microsoft Store uygulamaları almanıza izin vererek çalışır. Teslimat Optimizasyonu ayrıca, ayarlarınıza bağlı olarak bilgisayarınızdan yerel ağınızdaki diğer bilgisayarlara veya İnternet'teki bilgisayarlara güncellemeler ve uygulamalar gönderir. Bu verilerin bilgisayarlar arasında paylaşılması, birden fazla cihazı güncel tutmak için gereken İnternet bant genişliğini azaltmaya yardımcı olur veya sınırlı veya güvenilmez bir İnternet bağlantınız varsa indirme işlemlerini daha başarılı hale getirebilir."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  312,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  313,
+        "Header":  {
+                       "TR":  "Her zaman bilgisayar başlangıcında ağı bekleyin ve çalışma grubu ağlarında oturum açın"
+                   },
+        "Description":  {
+                            "TR":  "Oturum açma süresini azaltmak için Windows, başlatma veya oturum açma sırasında ağın tamamen başlatılmasını beklemez. İlke ayarları, bilgisayar başlatıldığında ve kullanıcı oturum açtığında eşzamansız olarak uygulanır. Sonuç olarak işletim sistemi, ağın tamamen dolmasını beklemez. başlatma ve oturum açma sırasında başlatıldı.Mevcut kullanıcılar önbelleğe alınmış kimlik bilgileri kullanılarak oturum açar.Bu, oturum açma sürelerini azaltır.Grup İlkesi, ağ kullanılabilir hale geldikten sonra arka planda uygulanır."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  313,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  314,
         "Header":  {
                        "TR":  "Windows'un varsayılan yazıcımı yönetmesine izin ver"
@@ -1417,37 +1458,31 @@
         "Description":  {
                             "TR":  ""
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  317,
+                                  "ChildHeader":  {
+                                                      "TR":  "Yüksek performans"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  "Dizüstü bilgisayarlarda \"Yüksek performans\" güç düzenini açmanız önerilmez."
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  318,
+                                  "ChildHeader":  {
+                                                      "TR":  "Dengeli"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
         "ViewId":  316,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  317,
-        "Header":  {
-                       "TR":  null
-                   },
-        "Description":  {
-                            "TR":  null
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  317,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  318,
-        "Header":  {
-                       "TR":  null
-                   },
-        "Description":  {
-                            "TR":  null
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  318,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
@@ -1459,59 +1494,59 @@
         "Description":  {
                             "TR":  "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  320,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  321,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  319,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  322,
+        "Id":  320,
         "Header":  {
-                       "TR":  null
+                       "TR":  "Güçten tasarruf etmek için bilgisayarın ağ bağdaştırıcılarını kapatmasına izin verin"
                    },
         "Description":  {
-                            "TR":  null
+                            "TR":  "Dizüstü bilgisayarlarda güç tasarrufu yapmak için ağ bağdaştırıcılarının kapatılması önerilmez."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  322,
+        "ViewId":  320,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  323,
+        "Id":  321,
         "Header":  {
-                       "TR":  null
+                       "TR":  "Varsayılan giriş yöntemi için geçersiz kıl"
                    },
         "Description":  {
-                            "TR":  null
+                            "TR":  ""
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "System",
-        "ViewId":  323,
+        "ChildElements":  [
+                              {
+                                  "Id":  322,
+                                  "ChildHeader":  {
+                                                      "TR":  "Dil listesini kullan"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  323,
+                                  "ChildHeader":  {
+                                                      "TR":  "İngilizce"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  321,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
@@ -1595,31 +1630,37 @@
         "Description":  {
                             "TR":  "Varsayılan olarak, masaüstü kabuğu da dahil olmak üzere tüm Dosya Gezgini pencereleri tek bir explorer.exe işleminde çalışır. Bir Dosya Gezgini penceresi kilitlenirse veya çökerse, süreç yeniden başlayana kadar tüm grafik kabuğun donmasına neden olur. Etkinleştirildiğinde, gezgin kabuğunun kararlılığını artırmak için her explorer.exe işleminin kendi işlem kimliği (PID) olacaktır."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  331,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  332,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  330,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  331,
+        "Header":  {
+                       "TR":  "Ayrılmış depolamayı etkinleştir"
+                   },
+        "Description":  {
+                            "TR":  "To cihazınızın başarıyla güncellendiğinden ve en iyi şekilde çalıştığından emin olun; Windows, geçici dosyalar, önbellekler ve diğer dosyalar tarafından kullanılmak üzere cihazınızdaki depolama alanının bir kısmını ayırır. Cihazınızda boş alan azaldığında, Windows, Windows güncellemesi gibi diğer işlemler için kullanılabilmesi için ayrılmış depolama alanını temizler. Depolama alanı ayırmak, cihazınızdaki disk alanı kullanımının daha öngörülebilir ve daha kararlı olmasına da yardımcı olur. Devre dışı bırakıldıktan sonra, ayrılmış depolama alanı bir sonraki güncelleme kurulumundan sonra silinecektir."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  331,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  332,
+        "Header":  {
+                       "TR":  "F1 aracılığıyla yardım aramasını etkinleştir"
+                   },
+        "Description":  {
+                            "TR":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  332,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
@@ -1757,38 +1798,32 @@
         "Description":  {
                             "TR":  "Komut satırı uygulamaları için kullanıcı arabirimini barındırmak için Windows Terminalini varsayılan terminal uygulaması olarak ayarlayın."
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  343,
+                                  "ChildHeader":  {
+                                                      "TR":  "Windows Terminal"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  344,
+                                  "ChildHeader":  {
+                                                      "TR":  "Windows Console Host"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
         "ViewId":  342,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  343,
-        "Header":  {
-                       "TR":  null
-                   },
-        "Description":  {
-                            "TR":  null
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  343,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  344,
-        "Header":  {
-                       "TR":  null
-                   },
-        "Description":  {
-                            "TR":  null
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "System",
-        "ViewId":  344,
-        "Windows10Supported":  true,
+        "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
@@ -1799,7 +1834,7 @@
         "Description":  {
                             "TR":  "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
@@ -1810,51 +1845,15 @@
                                   "ChildDescription":  {
                                                            "TR":  ""
                                                        },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  347,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
-        "ViewId":  345,
-        "Windows10Supported":  false,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  348,
-        "Header":  {
-                       "TR":  null
-                   },
-        "Description":  {
-                            "TR":  null
-                        },
-        "Type":  "PcHealthCheckButtonGroup",
-        "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  349,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  348,
+        "ViewId":  345,
         "Windows10Supported":  true,
         "Windows11Supported":  false
     },
     {
-        "Id":  350,
+        "Id":  347,
         "Header":  {
                        "TR":  "OneDrive"
                    },
@@ -1862,6 +1861,42 @@
                             "TR":  ""
                         },
         "Type":  "OneDriveButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  348,
+                                  "ChildHeader":  {
+                                                      "TR":  "Kur"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  349,
+                                  "ChildHeader":  {
+                                                      "TR":  "Kaldır"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  347,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  350,
+        "Header":  {
+                       "TR":  "En son Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64"
+                   },
+        "Description":  {
+                            "TR":  "Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64, Microsoft kaynağından (internet bağlantısı gerekir) indirilecek ve sessizce yüklenecektir. Visual Studio 2015'ten bu yana Visual Studio sürümleri, aynı yeniden dağıtılabilir dosyaları paylaşır."
+                        },
+        "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
         "ChildElements":  [
                               {
@@ -1881,42 +1916,6 @@
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
-                                                       },
-                                  "Type":  "Button"
-                              }
-                          ],
-        "ViewId":  349,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  353,
-        "Header":  {
-                       "TR":  null
-                   },
-        "Description":  {
-                            "TR":  null
-                        },
-        "Type":  "MsCppPackageButtonGroup",
-        "Tag":  "System",
-        "ChildElements":  [
-                              {
-                                  "Id":  354,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
-                                                       },
-                                  "Type":  "Button"
-                              },
-                              {
-                                  "Id":  355,
-                                  "ChildHeader":  {
-                                                      "TR":  null
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  null
                                                        },
                                   "Type":  "Button"
                               }
