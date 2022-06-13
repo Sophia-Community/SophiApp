@@ -2462,7 +2462,7 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  314,
+        "Id":  311,
         "Header":  {
                        "EN":  "Enable access to mapped drives from app running with elevated permissions with Admin Approval Mode",
                        "RU":  "Включить доступ к сетевым дискам при включенном режиме одобрения администратором при доступе из программ, запущенных с повышенными правами",
@@ -2481,12 +2481,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  314,
+        "ViewId":  311,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  315,
+        "Id":  312,
         "Header":  {
                        "EN":  "Enable downloading updates with delivery optimization",
                        "RU":  "Включить загрузку обновлений с помощью оптимизации доставки",
@@ -2505,12 +2505,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  315,
+        "ViewId":  312,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  316,
+        "Id":  313,
         "Header":  {
                        "EN":  "Always wait for the network at computer startup and logon for workgroup networks",
                        "RU":  "Всегда ждать сеть при запуске и входе в систему для рабочих групп",
@@ -2529,12 +2529,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  316,
+        "ViewId":  313,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  317,
+        "Id":  314,
         "Header":  {
                        "EN":  "Let Windows manage my default printer",
                        "RU":  "Разрешать Windows управлять принтером, используемым по умолчанию",
@@ -2553,12 +2553,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  317,
+        "ViewId":  314,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  318,
+        "Id":  315,
         "Header":  {
                        "EN":  "Receive updates for other Microsoft products",
                        "RU":  "Получать обновления для других продуктов Майкрософт",
@@ -2577,12 +2577,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  318,
+        "ViewId":  315,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  319,
+        "Id":  316,
         "Header":  {
                        "EN":  "Choose the power plan",
                        "RU":  "Выбор схемы управления питанием",
@@ -2603,7 +2603,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  320,
+                                  "Id":  317,
                                   "ChildHeader":  {
                                                       "EN":  "High performance",
                                                       "RU":  "Высокая производительность",
@@ -2623,7 +2623,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  321,
+                                  "Id":  318,
                                   "ChildHeader":  {
                                                       "EN":  "Balanced",
                                                       "RU":  "Сбалансированная",
@@ -2643,12 +2643,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  319,
+        "ViewId":  316,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  322,
+        "Id":  319,
         "Header":  {
                        "EN":  "Use the latest installed .NET Framework runtime for all apps",
                        "RU":  "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
@@ -2667,12 +2667,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  322,
+        "ViewId":  319,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  323,
+        "Id":  320,
         "Header":  {
                        "EN":  "Allow the computer to turn off the network adapters to save power",
                        "RU":  "Разрешить отключение всех сетевых адаптеров для экономии энергии",
@@ -2691,12 +2691,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  323,
+        "ViewId":  320,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  324,
+        "Id":  321,
         "Header":  {
                        "EN":  "Override for default input method",
                        "RU":  "Переопределить метод ввода по умолчанию",
@@ -2717,7 +2717,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  325,
+                                  "Id":  322,
                                   "ChildHeader":  {
                                                       "EN":  "Use language list",
                                                       "RU":  "Использовать список языков",
@@ -2737,7 +2737,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  326,
+                                  "Id":  323,
                                   "ChildHeader":  {
                                                       "EN":  "English",
                                                       "RU":  "Английский",
@@ -2757,12 +2757,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  324,
+        "ViewId":  321,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  327,
+        "Id":  324,
         "Header":  {
                        "EN":  "Select folder to save screenshots when pressing Win+PrtScn",
                        "RU":  "Папка для сохранения скриншотов по нажатию Win+PrtScn",
@@ -2783,7 +2783,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  328,
+                                  "Id":  325,
                                   "ChildHeader":  {
                                                       "EN":  "Desktop",
                                                       "RU":  "Рабочий стол",
@@ -2803,7 +2803,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  329,
+                                  "Id":  326,
                                   "ChildHeader":  {
                                                       "EN":  "Pictures folder",
                                                       "RU":  "Папка \"Изображения\"",
@@ -2823,12 +2823,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  327,
+        "ViewId":  324,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  330,
+        "Id":  327,
         "Header":  {
                        "EN":  "Recommended troubleshooting",
                        "RU":  "Рекомендованные способы устранения ошибок",
@@ -2849,7 +2849,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  331,
+                                  "Id":  328,
                                   "ChildHeader":  {
                                                       "EN":  "Run troubleshooters automatically, then notify",
                                                       "RU":  "Автоматически запускать средства устранения неполадок, а затем уведомлять",
@@ -2869,7 +2869,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  332,
+                                  "Id":  329,
                                   "ChildHeader":  {
                                                       "EN":  "Ask me before running troubleshooter",
                                                       "RU":  "Спрашивать перед запуском средств устранения неполадок",
@@ -2889,12 +2889,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  330,
+        "ViewId":  327,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  333,
+        "Id":  330,
         "Header":  {
                        "EN":  "Launch folder windows in a separate process",
                        "RU":  "Запускать окна с папками в отдельном процессе",
@@ -2913,12 +2913,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  333,
+        "ViewId":  330,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  334,
+        "Id":  331,
         "Header":  {
                        "EN":  "Enable reserved storage",
                        "RU":  "Включить зарезервированное хранилище",
@@ -2937,12 +2937,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  334,
+        "ViewId":  331,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  335,
+        "Id":  332,
         "Header":  {
                        "EN":  "Enable help look up via F1",
                        "RU":  "Включить открытие справки по нажатию F1",
@@ -2961,12 +2961,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  335,
+        "ViewId":  332,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  336,
+        "Id":  333,
         "Header":  {
                        "EN":  "Enable Num Lock at startup",
                        "RU":  "Включить Num Lock при загрузке",
@@ -2985,12 +2985,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  336,
+        "ViewId":  333,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  337,
+        "Id":  334,
         "Header":  {
                        "EN":  "Enable Caps Lock",
                        "RU":  "Включить Caps Lock",
@@ -3009,12 +3009,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  337,
+        "ViewId":  334,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  338,
+        "Id":  335,
         "Header":  {
                        "EN":  "Keyboard shortcut for Sticky keys",
                        "RU":  "Сочетание клавиш для залипания клавиш",
@@ -3033,12 +3033,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  338,
+        "ViewId":  335,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  339,
+        "Id":  336,
         "Header":  {
                        "EN":  "Use AutoPlay for all media and devices",
                        "RU":  "Использовать автозапуск для всех носителей и устройств",
@@ -3057,12 +3057,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  339,
+        "ViewId":  336,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  340,
+        "Id":  337,
         "Header":  {
                        "EN":  "Enable thumbnail cache removal",
                        "RU":  "Включить удаление кэша миниатюр",
@@ -3081,12 +3081,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  340,
+        "ViewId":  337,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  341,
+        "Id":  338,
         "Header":  {
                        "EN":  "Restart apps after signing in",
                        "RU":  "Перезапустить приложения после входа",
@@ -3105,12 +3105,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  341,
+        "ViewId":  338,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  342,
+        "Id":  339,
         "Header":  {
                        "EN":  "Enable \"Network Discovery\" and \"File and Printers Sharing\" for workgroup networks",
                        "RU":  "Включить сетевое обнаружение и общий доступ к файлам и принтерам для рабочих групп",
@@ -3129,12 +3129,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  342,
+        "ViewId":  339,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  343,
+        "Id":  340,
         "Header":  {
                        "EN":  "Automatically adjust active hours for me based on daily usage",
                        "RU":  "Автоматически изменять период активности для этого устройства на основе действий",
@@ -3153,12 +3153,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  343,
+        "ViewId":  340,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  344,
+        "Id":  341,
         "Header":  {
                        "EN":  "Restart as soon as possible to finish updating",
                        "RU":  "Перезапустить устройство как можно быстрее, чтобы завершить обновление",
@@ -3177,12 +3177,12 @@
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
-        "ViewId":  344,
+        "ViewId":  341,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  345,
+        "Id":  342,
         "Header":  {
                        "EN":  "Default terminal app",
                        "RU":  "Приложение терминала по умолчанию",
@@ -3203,7 +3203,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  346,
+                                  "Id":  343,
                                   "ChildHeader":  {
                                                       "EN":  "Windows Terminal",
                                                       "RU":  "Windows Terminal",
@@ -3223,7 +3223,7 @@
                                   "Type":  "RadioButton"
                               },
                               {
-                                  "Id":  347,
+                                  "Id":  344,
                                   "ChildHeader":  {
                                                       "EN":  "Windows Console Host",
                                                       "RU":  "Узел консоли Windows",
@@ -3243,12 +3243,12 @@
                                   "Type":  "RadioButton"
                               }
                           ],
-        "ViewId":  345,
+        "ViewId":  342,
         "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
-        "Id":  348,
+        "Id":  345,
         "Header":  {
                        "EN":  "PC Health Check app",
                        "RU":  "Приложение \"Проверка работоспособности ПК\"",
@@ -3269,7 +3269,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  349,
+                                  "Id":  346,
                                   "ChildHeader":  {
                                                       "EN":  "Uninstall",
                                                       "RU":  "Удалить",
@@ -3289,12 +3289,12 @@
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  348,
+        "ViewId":  345,
         "Windows10Supported":  true,
         "Windows11Supported":  false
     },
     {
-        "Id":  350,
+        "Id":  347,
         "Header":  {
                        "EN":  "OneDrive",
                        "RU":  "OneDrive",
@@ -3315,7 +3315,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  351,
+                                  "Id":  348,
                                   "ChildHeader":  {
                                                       "EN":  "Install",
                                                       "RU":  "Установить",
@@ -3335,7 +3335,7 @@
                                   "Type":  "Button"
                               },
                               {
-                                  "Id":  352,
+                                  "Id":  349,
                                   "ChildHeader":  {
                                                       "EN":  "Uninstall",
                                                       "RU":  "Удалить",
@@ -3355,12 +3355,12 @@
                                   "Type":  "Button"
                               }
                           ],
-        "ViewId":  349,
+        "ViewId":  347,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
     {
-        "Id":  353,
+        "Id":  350,
         "Header":  {
                        "EN":  "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
                        "RU":  "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x64",
@@ -3381,7 +3381,7 @@
         "Tag":  "System",
         "ChildElements":  [
                               {
-                                  "Id":  354,
+                                  "Id":  351,
                                   "ChildHeader":  {
                                                       "EN":  "Install",
                                                       "RU":  "Установить",
@@ -3401,7 +3401,7 @@
                                   "Type":  "Button"
                               },
                               {
-                                  "Id":  355,
+                                  "Id":  352,
                                   "ChildHeader":  {
                                                       "EN":  "Uninstall",
                                                       "RU":  "Удалить",
