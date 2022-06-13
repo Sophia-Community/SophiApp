@@ -15,7 +15,7 @@
                             "DE":  "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren. Das Deaktivieren des Dienstes \"Benutzererfahrungen und Telemetrie im verbundenen Modus\" (DiagTrack) kann dazu führen, dass Sie keine Xbox-Erfolge mehr erhalten können.",
                             "UA":  "Налаштувати службу \"Функціональні можливості для підключених користувачів та телеметрія\" (DiagTrack) та з'єднання для вихідного трафіку клієнта єдиної телеметрії. Вимкнення служби \"Функціональні можливості для підключених користувачів і телеметрія\" (DiagTrack) може призвести до того, що ви більше не зможете отримувати досягнення Xbox.",
                             "IT":  "Configurare le esperienze utente collegate e il servizio Telemetry (Digtrack) e la connessione per il traffico in uscita del client di telemetria unificata. La disabilitazione del servizio \"Esperienze utente connesse e telemetria\" (DiagTrack) può impedirti di ottenere più risultati Xbox.",
-                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın."
+                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın. \"Bağlı Kullanıcı Deneyimleri ve Telemetri\" hizmetini (DiagTrack) devre dışı bırakmak, artık Xbox başarılarını alamamanıza neden olabilir"
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -2145,7 +2145,7 @@
                        "DE":  "Zuletzt hinzugefügte Apps im Startmenü anzeigen",
                        "UA":  "Відображати нещодавно додані додатки в меню \"Пуск\"",
                        "IT":  "Mostra app aggiunte di recente nel menu Start",
-                       "TR":  null
+                       "TR":  "Başlat menüsünde son eklenen uygulamaları göster"
                    },
         "Description":  {
                             "EN":  "",
@@ -2153,7 +2153,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -2169,7 +2169,7 @@
                        "DE":  "App-Vorschläge im Startmenü anzeigen",
                        "UA":  "Відображати рекомендації в меню \"Пуск\"",
                        "IT":  "Mostra suggerimenti app nel menu Start",
-                       "TR":  null
+                       "TR":  "Başlat menüsünde uygulama önerilerini göster"
                    },
         "Description":  {
                             "EN":  "",
@@ -2177,7 +2177,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -2193,7 +2193,7 @@
                        "DE":  "Windows PowerShell als Administrator im Startmenü ausführen",
                        "UA":  "Запускати ярлик Windows PowerShell у меню \"Пуск\" від імені Адміністратора",
                        "IT":  "Eseguire il collegamento di Windows PowerShell dal menu Start come amministratore",
-                       "TR":  null
+                       "TR":  "Başlat menüsünden Windows PowerShell kısayolunu Yönetici olarak çalıştırın"
                    },
         "Description":  {
                             "EN":  "",
@@ -2201,7 +2201,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "StartMenu",
@@ -2469,7 +2469,7 @@
                        "DE":  "Den Zugriff auf zugeordnete Laufwerke von einer Anwendung, die mit erweiterten Berechtigungen im Freigabemodus für Administratoren läuft.",
                        "UA":  "Увімкнути доступ до мережевих дисків при увімкненому режимі схвалення адміністратором при доступі з додатків, запущених із підвищеними правами",
                        "IT":  "Permetti l'accesso ai dischi mappati alle app eseguite come amministratore",
-                       "TR":  "Windows'un varsayılan yazıcımı yönetmesine izin ver"
+                       "TR":  "Yönetici Onay Modu ile yükseltilmiş izinlerle çalışan uygulamadan eşlenen sürücülere erişimi etkinleştirin"
                    },
         "Description":  {
                             "EN":  "Enabled UAC with the default settings does not allow access to mapped network drives from applications running in administrator mode. This means that if you run the command line or a file manager with elevated privileges, they will not show the drive letters of the mounted network folders.",
@@ -2477,7 +2477,7 @@
                             "DE":  "Aktivierte UAC mit den Standardeinstellungen erlaubt keinen Zugriff auf zugeordnete Netzlaufwerke von Anwendungen, die im Administratormodus ausgeführt werden. Das heißt, wenn Sie die Befehlszeile oder einen Dateimanager mit erhöhten Rechten ausführen, werden die Laufwerksbuchstaben der eingebundenen Netzwerkordner nicht angezeigt.",
                             "UA":  "Увімкнений UAC із налаштуваннями за замовчуванням не дозволяє отримати доступ до підключених мережевих дисків із додатків, запущених у привілейованому режимі. Це означає, що при запуску командного рядка або файлового менеджера з підвищеними правами, в них не буде видно літер дисків змонтованих мережевих папок",
                             "IT":  "L'UAC abilitato con le impostazioni predefinite non consente l'accesso a unità di rete mappate da applicazioni in esecuzione in modalità amministratore. Ciò significa che se si esegue la riga di comando o un file manager con privilegi elevati, non mostreranno le lettere di unità delle cartelle di rete montate.",
-                            "TR":  "Varsayılan olarak, Windows son kullanılan yazıcıyı varsayılan yazıcı yapar."
+                            "TR":  "Varsayılan ayarlarla etkinleştirilen UAC, yönetici modunda çalışan uygulamalardan eşlenen ağ sürücülerine erişime izin vermez. Bu, komut satırını veya yükseltilmiş ayrıcalıklara sahip bir dosya yöneticisini çalıştırırsanız, bağlı ağ klasörlerinin sürücü harflerini göstermeyecekleri anlamına gelir."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2493,7 +2493,7 @@
                        "DE":  "Herunterladen von Updates mit Übermittlungsoptimierung aktivieren",
                        "UA":  "Увімкнути завантаження оновлень за допомогою оптимізації доставки",
                        "IT":  "Abilita il download degli aggiornamenti con l'ottimizzazione recapito",
-                       "TR":  "Diğer Microsoft ürünleri için güncellemeleri alın"
+                       "TR":  "Teslimat optimizasyonu ile güncellemeleri indirmeyi etkinleştirin"
                    },
         "Description":  {
                             "EN":  "Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from sources in addition to Microsoft, like other PCs on your local network, or PCs on the Internet that are downloading the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that's needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.",
@@ -2501,7 +2501,7 @@
                             "DE":  "Die Übermittlungsoptimierung von Windows-Updates ermöglicht es Ihnen, Windows-Updates und Microsoft Store-Apps nicht nur von Microsoft, sondern auch von anderen PCs in Ihrem lokalen Netzwerk oder PCs im Internet zu beziehen, die dieselben Dateien herunterladen. Die Übermittlungsoptimierung sendet auch Updates und Anwendungen von Ihrem PC an andere PCs in Ihrem lokalen Netzwerk oder PCs im Internet, je nach Ihren Einstellungen. Die gemeinsame Nutzung dieser Daten zwischen PCs trägt dazu bei, die Internet-Bandbreite zu reduzieren, die benötigt wird, um mehr als ein Gerät auf dem neuesten Stand zu halten, oder kann Downloads erfolgreicher machen, wenn Sie eine begrenzte oder unzuverlässige Internetverbindung haben.",
                             "UA":  "Оптимізація доставки центру оновлення Windows працює, дозволяючи отримувати оновлення для Windows і додатки Microsoft Store з джерел в придачу до Microsoft, наприклад, інших комп'ютерів у локальній мережі або комп'ютерів в Інтернеті, які завантажують ті ж файли. Оптимізація доставки також надсилає оновлення та програми з комп'ютера на інші комп'ютери в локальній мережі або на комп'ютери в Інтернеті на основі ваших налаштувань. Обмін даними між комп'ютерами допомагає скоротити пропускну здатність Інтернету, необхідну для підтримки більш ніж одного пристрою, і може зробити завантаження успішнішим, якщо у вас є обмежене або ненадійне підключення до Інтернету.",
                             "IT":  "Windows Update Ottimizzazione recapito funziona permettendoti di ottenere aggiornamenti di Windows e APP di Microsoft Store da fonti oltre a Microsoft, come altri PC sulla rete locale o PC su Internet che scaricano gli stessi file. L'ottimizzazione recapito invia anche aggiornamenti ad altri PC sulla rete locale o su Internet, in base alle tue impostazioni. La condivisione di questi dati tra PC aiuta a ridurre la larghezza di banda Internet che è necessario per mantenere più di un dispositivo aggiornato. Permrtte quindi di eseguire il download se si dispone di una connessione Internet limitata o inaffidabile.",
-                            "TR":  "Windows güncellemeleriyle birlikte Microsoft Office ve diğer güncellemeleri alın."
+                            "TR":  "Windows Update Teslimat Optimizasyonu, yerel ağınızdaki diğer bilgisayarlar veya aynı dosyaları indiren İnternetteki bilgisayarlar gibi Microsoft'a ek olarak kaynaklardan Windows güncellemeleri ve Microsoft Store uygulamaları almanıza izin vererek çalışır. Teslimat Optimizasyonu ayrıca, ayarlarınıza bağlı olarak bilgisayarınızdan yerel ağınızdaki diğer bilgisayarlara veya İnternet'teki bilgisayarlara güncellemeler ve uygulamalar gönderir. Bu verilerin bilgisayarlar arasında paylaşılması, birden fazla cihazı güncel tutmak için gereken İnternet bant genişliğini azaltmaya yardımcı olur veya sınırlı veya güvenilmez bir İnternet bağlantınız varsa indirme işlemlerini daha başarılı hale getirebilir."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2517,7 +2517,7 @@
                        "DE":  "Bei Arbeitsgruppennetzwerken beim Starten des Computers und bei der Anmeldung immer auf das Netzwerk warten",
                        "UA":  "Завжди зачікувати мережу під час запуску та входу в систему для робочих груп",
                        "IT":  "Attendi sempre l'inizializzazione della rete all'avvio del computer e all'accesso per le reti del gruppo di lavoro",
-                       "TR":  "Güç planını seçin"
+                       "TR":  "Her zaman bilgisayar başlangıcında ağı bekleyin ve çalışma grubu ağlarında oturum açın"
                    },
         "Description":  {
                             "EN":  "To reduce login time Windows does not wait for the network to be fully initialized at startup or login. Policy settings apply asynchronously when the computer starts and when the user signs in. As a result operating system does not wait for the network to be fully initialized at startup and sign-in. Existing users are logged on by using cached credentials. This reduces log-in times. Group Policy is applied in the background after the network becomes available.",
@@ -2525,7 +2525,7 @@
                             "DE":  "Um die Anmeldezeit zu verkürzen, wartet Windows nicht darauf, dass das Netzwerk beim Start oder bei der Anmeldung vollständig initialisiert wird. Die Richtlinieneinstellungen werden asynchron beim Start des Computers und bei der Anmeldung des Benutzers angewendet. Daher wartet das Betriebssystem nicht darauf, dass das Netzwerk beim Starten und bei der Anmeldung vollständig initialisiert wird. Vorhandene Benutzer werden mit zwischengespeicherten Anmeldedaten angemeldet. Dies verkürzt die Anmeldezeiten. Die Gruppenrichtlinien werden im Hintergrund angewendet, nachdem das Netzwerk verfügbar ist.",
                             "UA":  "Для скорочення часу входу в систему Windows не чекає повної ініціалізації мережі під час запуску або входу в систему. Параметри політики застосовуються асинхронно під час запуску комп'ютера та входу користувача до системи. В результаті операційна система не чекає повної ініціалізації мережі при запуску та вході в систему. Існуючі користувачі входять до системи, використовуючи кешовані облікові дані. Це скорочує час входу до системи. Групова політика застосовується у фоновому режимі після того, як мережа стає доступною",
                             "IT":  "Per ridurre il tempo di accesso Windows non attende che la rete sia completamente inizializzata all'avvio o all'accesso.",
-                            "TR":  ""
+                            "TR":  "Oturum açma süresini azaltmak için Windows, başlatma veya oturum açma sırasında ağın tamamen başlatılmasını beklemez. İlke ayarları, bilgisayar başlatıldığında ve kullanıcı oturum açtığında eşzamansız olarak uygulanır. Sonuç olarak işletim sistemi, ağın tamamen dolmasını beklemez. başlatma ve oturum açma sırasında başlatıldı.Mevcut kullanıcılar önbelleğe alınmış kimlik bilgileri kullanılarak oturum açar.Bu, oturum açma sürelerini azaltır.Grup İlkesi, ağ kullanılabilir hale geldikten sonra arka planda uygulanır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2541,7 +2541,7 @@
                        "DE":  "Windows meinen Standarddrucker verwalten lassen",
                        "UA":  "Дозволяти Windows керувати принтером, який використовується за замовчуванням",
                        "IT":  "Consentire Windows di gestire la mia stampante predefinita",
-                       "TR":  null
+                       "TR":  "Windows'un varsayılan yazıcımı yönetmesine izin ver"
                    },
         "Description":  {
                             "EN":  "By default, Windows make the last used printer as the default one.",
@@ -2549,7 +2549,7 @@
                             "DE":  "In der Standardeinstellung macht Windows den zuletzt verwendeten Drucker zum Standarddrucker.",
                             "UA":  "За промовчанням Windows запам'ятовує останній використовуваний принтер як принтер за замовчуванням",
                             "IT":  "Per impostazione predefinita, Windows rendono l'ultima stampante utilizzata come quella predefinita.",
-                            "TR":  null
+                            "TR":  "Varsayılan olarak, Windows son kullanılan yazıcıyı varsayılan yazıcı yapar."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2565,7 +2565,7 @@
                        "DE":  "Updates für andere Microsoft-Produkte erhalten.",
                        "UA":  "Отримувати оновлення для інших продуктів Майкрософт",
                        "IT":  "Ricevi aggiornamenti per altri prodotti Microsoft",
-                       "TR":  null
+                       "TR":  "Diğer Microsoft ürünleri için güncellemeleri alın"
                    },
         "Description":  {
                             "EN":  "Get Microsoft Office and other updates together with Windows updates.",
@@ -2573,7 +2573,7 @@
                             "DE":  "Microsoft Office und andere Updates zusammen mit Windows-Updates holen.",
                             "UA":  "Отримуйте Microsoft Office та інші оновлення разом з оновленнями Windows",
                             "IT":  "Ottieni Microsoft Office e altri aggiornamenti insieme agli aggiornamenti di Windows.",
-                            "TR":  null
+                            "TR":  "Windows güncellemeleriyle birlikte Microsoft Office ve diğer güncellemeleri alın."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2589,7 +2589,7 @@
                        "DE":  "Energiesparplan auswählen",
                        "UA":  "Вибір схеми керування живленням",
                        "IT":  "Scegli il piano energetico",
-                       "TR":  "Tüm uygulamalar için en son yüklenen .NET Framework çalışma zamanını kullanın"
+                       "TR":  "Güç planını seçin"
                    },
         "Description":  {
                             "EN":  "",
@@ -2597,7 +2597,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -2610,7 +2610,7 @@
                                                       "DE":  "Hohe Leistung",
                                                       "UA":  "Висока продуктивність",
                                                       "IT":  "Prestazioni elevate",
-                                                      "TR":  null
+                                                      "TR":  "Yüksek performans"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "It is not recommended to turn on the \"High performance\" power scheme on laptops.",
@@ -2618,7 +2618,7 @@
                                                            "DE":  "Es wird nicht empfohlen, einen Energiesparplan \"Hohe Leistung\" auf einem Laptop verwenden.",
                                                            "UA":  "Не рекомендовано вмикати схему керування живленням \"Висока продуктивність\" для ноутбуків",
                                                            "IT":  "It is not recommended to turn on the \"High performance\" power scheme on laptops.",
-                                                           "TR":  null
+                                                           "TR":  "Dizüstü bilgisayarlarda \"Yüksek performans\" güç düzenini açmanız önerilmez."
                                                        },
                                   "Type":  "RadioButton"
                               },
@@ -2630,7 +2630,7 @@
                                                       "DE":  "Ausgeglichen",
                                                       "UA":  "Збалансована",
                                                       "IT":  "Equilibrata",
-                                                      "TR":  null
+                                                      "TR":  "Dengeli"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -2638,7 +2638,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -2655,7 +2655,7 @@
                        "DE":  "Neueste installierte .NET Framework-Laufzeitumgebung für alle Anwendungen verwenden",
                        "UA":  "Використовувати останнє встановлене середовище виконання .NET Framework для всіх програм",
                        "IT":  "Utilizzare l'ultima versione del runtime .NET Framework installato per tutte le app",
-                       "TR":  null
+                       "TR":  "Tüm uygulamalar için en son yüklenen .NET Framework çalışma zamanını kullanın"
                    },
         "Description":  {
                             "EN":  "If an app requires the legacy .NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed .NET Framework version.",
@@ -2663,7 +2663,7 @@
                             "DE":  "Wenn für eine Anwendung das ältere .NET Framework 2.0, 3.0 oder 3.5 installiert sein muss, erzwingt die Aktivierung dieser Funktion, dass die Anwendung die neueste installierte .NET Framework-Version verwendet.",
                             "UA":  "Якщо для роботи програми потрібна установка застарілого .NET Framework 2.0, 3.0 або 3.5, увімкнення цієї функції змусить програму примусово використовувати останню версію .NET Framework.",
                             "IT":  "Se un'app richiede che l'eredità .NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l'applicazione per utilizzare la versione più recente .NET Framework installata.",
-                            "TR":  null
+                            "TR":  "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2679,7 +2679,7 @@
                        "DE":  "Dem Computer erlauben, die Netzwerkadapter auszuschalten, um Strom zu sparen",
                        "UA":  "Дозволити відключення всіх мережевих адаптерів для економії енергії",
                        "IT":  "Consentire al computer di spegnere gli adattatori di rete per risparmiare energia",
-                       "TR":  null
+                       "TR":  "Güçten tasarruf etmek için bilgisayarın ağ bağdaştırıcılarını kapatmasına izin verin"
                    },
         "Description":  {
                             "EN":  "It is not recommended to turn off the network adapters to save power on laptops.",
@@ -2687,7 +2687,7 @@
                             "DE":  "Es wird nicht empfohlen, die Netzwerkadapter auszuschalten, um bei Laptops Strom zu sparen.",
                             "UA":  "Не рекомендується відключати всі адаптери для економії енергії на ноутбуках",
                             "IT":  "Non è consigliato disattivare gli adattatori di rete per risparmiare energia sui laptop.",
-                            "TR":  null
+                            "TR":  "Dizüstü bilgisayarlarda güç tasarrufu yapmak için ağ bağdaştırıcılarının kapatılması önerilmez."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2703,7 +2703,7 @@
                        "DE":  "Standard-Eingabemethode überschreiben",
                        "UA":  "Перевизначити метод введення за замовчуванням",
                        "IT":  "Sovrascrivi il metodo di input predefinito",
-                       "TR":  "Win+PrtScn tuşlarına basarken ekran görüntülerinin kaydedileceği klasörü seçin"
+                       "TR":  "Varsayılan giriş yöntemi için geçersiz kıl"
                    },
         "Description":  {
                             "EN":  "",
@@ -2711,7 +2711,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  "Yalnızca OneDrive'ı kaldırmayı seçerseniz (veya daha önce kaldırılmışsa), \"Masaüstü\"nü seçin, aksi takdirde OneDrive'daki \"Masaüstü\" ve \"Resimler\" klasörleri için yedekleme işlevi bozulur."
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -2724,7 +2724,7 @@
                                                       "DE":  "Sprachliste verwenden",
                                                       "UA":  "Використовувати список мов",
                                                       "IT":  "Usando la lista lingue",
-                                                      "TR":  "Masaüstü"
+                                                      "TR":  "Dil listesini kullan"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -2744,7 +2744,7 @@
                                                       "DE":  "Englisch",
                                                       "UA":  "Англійська",
                                                       "IT":  "inglese",
-                                                      "TR":  "Resimler klasörü"
+                                                      "TR":  "İngilizce"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -2769,7 +2769,7 @@
                        "DE":  "Ordner zum Speichern von Screenshots auswählen beim Win+PrtScn drücken",
                        "UA":  "Папка для збереження скріншотів за натисканням Win+PrtScn",
                        "IT":  "Seleziona la cartella per salvare gli screenshot quando si preme Win + PRTSCN",
-                       "TR":  "Önerilen sorun giderme"
+                       "TR":  "Win+PrtScn tuşlarına basarken ekran görüntülerinin kaydedileceği klasörü seçin"
                    },
         "Description":  {
                             "EN":  "Select the \"Desktop\" if you choose to remove OneDrive only (or it was uninstalled before), otherwise the backup functionality for the \"Desktop\" and \"Pictures\" folders in OneDrive breaks.",
@@ -2777,7 +2777,7 @@
                             "DE":  "\"Desktop\" auswählen, wenn Sie nur OneDrive entfernen möchten (oder es zuvor deinstalliert wurde), andernfalls wird die Sicherungsfunktion für die Ordner \"Desktop\" und \"Bilder\" in OneDrive unterbrochen.",
                             "UA":  "Позначайте пункт \"Робочий стіл\", тільки якщо ви обрали видалення OneDrive (або він вже був видалений), інакше ламається функціонал резервного копіювання для папок \"Робочий стіл\" та \"Зображення\" в OneDrive",
                             "IT":  "Selezionare \"Desktop\" Se si sceglie di rimuovere solo OneDrive (o è stato disinstallato prima), altrimenti la funzionalità di backup per le cartelle \"Desktop\" e \"Immagini\" si romperanno in OneDrive.",
-                            "TR":  "Microsoft, sorunları gidermek için sorun gidericiler önerebilir ve çalıştırabilir. Cihazınızda sorun gidericilerin çözebileceği sorunlar olduğunda Microsoft'un ne kadar yardım etmesini istiyorsunuz?"
+                            "TR":  "Yalnızca OneDrive'ı kaldırmayı seçerseniz (veya daha önce kaldırılmışsa), \"Masaüstü\"nü seçin, aksi takdirde OneDrive'daki \"Masaüstü\" ve \"Resimler\" klasörleri için yedekleme işlevi bozulur."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -2790,7 +2790,7 @@
                                                       "DE":  "Desktop",
                                                       "UA":  "Робочий стіл",
                                                       "IT":  "Desktop",
-                                                      "TR":  "Sorun gidericileri otomatik olarak çalıştırın, ardından bilgilendirin"
+                                                      "TR":  "Masaüstü"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -2798,7 +2798,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
@@ -2810,7 +2810,7 @@
                                                       "DE":  "Ordner \"Bilder\"",
                                                       "UA":  "Папка \"Зображення\"",
                                                       "IT":  "Immagini",
-                                                      "TR":  "Sorun gidericiyi çalıştırmadan önce bana sor"
+                                                      "TR":  "Resimler klasörü"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -2818,7 +2818,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -2835,7 +2835,7 @@
                        "DE":  "Empfohlene Fehlerbehebung",
                        "UA":  "Рекомендовані способи усунення помилок",
                        "IT":  "Risoluzione dei problemi consigliati",
-                       "TR":  "Klasör pencerelerini ayrı bir işlemde başlatın"
+                       "TR":  "Önerilen sorun giderme"
                    },
         "Description":  {
                             "EN":  "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?",
@@ -2843,7 +2843,7 @@
                             "DE":  "Microsoft kann Fehlerbehebungsprogramme empfehlen und ausführen, um Probleme zu beheben. Inwieweit möchten Sie, dass Microsoft Ihnen hilft, wenn es auf Ihrem Gerät Probleme gibt, die mit Hilfe von Troubleshootern behoben werden können?",
                             "UA":  "Корпорація Майкрософт може рекомендувати та запускати засоби усунення недоліків для виправлення помилок. Чи хотіли б ви допомагати Майкрософт усувати недоліки, якщо виникнуть проблеми?",
                             "IT":  "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?",
-                            "TR":  "Varsayılan olarak, masaüstü kabuğu da dahil olmak üzere tüm Dosya Gezgini pencereleri tek bir explorer.exe işleminde çalışır. Bir Dosya Gezgini penceresi kilitlenirse veya çökerse, süreç yeniden başlayana kadar tüm grafik kabuğun donmasına neden olur. Etkinleştirildiğinde, gezgin kabuğunun kararlılığını artırmak için her explorer.exe işleminin kendi işlem kimliği (PID) olacaktır."
+                            "TR":  "Microsoft, sorunları gidermek için sorun gidericiler önerebilir ve çalıştırabilir. Cihazınızda sorun gidericilerin çözebileceği sorunlar olduğunda Microsoft'un ne kadar yardım etmesini istiyorsunuz?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -2856,7 +2856,7 @@
                                                       "DE":  "Fehlerbehebungen automatisch durchführen und dann benachrichtigen",
                                                       "UA":  "Автоматично запускати засоби усунення недоліків, а потім сповіщувати",
                                                       "IT":  "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica",
-                                                      "TR":  null
+                                                      "TR":  "Sorun gidericileri otomatik olarak çalıştırın, ardından bilgilendirin"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
@@ -2864,7 +2864,7 @@
                                                            "DE":  "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden.",
                                                            "UA":  "Щоб ця функція запрацювала, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов'язкові діагностичні дані\" та увімкнеться створення звітів про помилки Windows",
                                                            "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata.",
-                                                           "TR":  null
+                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
                                                        },
                                   "Type":  "RadioButton"
                               },
@@ -2876,7 +2876,7 @@
                                                       "DE":  "Mich fragen, bevor die Problembehandlung gestartet wird",
                                                       "UA":  "Запитувати перед запуском засобів усунення недоліків",
                                                       "IT":  "Chiedimi prima di eseguire la risoluzione dei problemi",
-                                                      "TR":  null
+                                                      "TR":  "Sorun gidericiyi çalıştırmadan önce bana sor"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "In order this feature to work the OS level of diagnostic data gathering will be set to \"Optional diagnostic data\", and the error reporting feature will be turned on.",
@@ -2884,7 +2884,7 @@
                                                            "DE":  "Damit diese Funktion funktioniert, muss die Betriebssystemebene der Diagnosedatenerfassung auf \"Optionale Diagnosedaten\" eingestellt und die Fehlerberichtsfunktion aktiviert werden.",
                                                            "UA":  "Щоб запрацювала дана функція, рівень збору діагностичних відомостей ОС буде встановлений на \"Необов'язкові діагностичні дані\" та ввімкнеться створення звітів про помилки Windows",
                                                            "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata.",
-                                                           "TR":  null
+                                                           "TR":  "Bu özelliğin çalışması için tanısal veri toplamanın işletim sistemi seviyesi \"Opsiyonel tanılama verileri\" olarak ayarlanacak ve hata raporlama özelliği açılacaktır."
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -2901,7 +2901,7 @@
                        "DE":  "Ordnerfenster in einem separaten Prozess starten",
                        "UA":  "Запускати вікна із папками в окремому процесі",
                        "IT":  "Avvia esplora file in un processo separato",
-                       "TR":  "Başlangıçta Num Lock'u etkinleştir"
+                       "TR":  "Klasör pencerelerini ayrı bir işlemde başlatın"
                    },
         "Description":  {
                             "EN":  "By default, all File Explorer windows, including the desktop shell, run in a single explorer.exe process. If one File Explorer window hangs or crashes, it will cause the whole graphical shell to freeze until the process restarts. When enabled, each explorer.exe process will have its own process ID (PID) to improve stability of the explorer shell.",
@@ -2909,7 +2909,7 @@
                             "DE":  "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern",
                             "UA":  "За замовчуванням, всі вікна провідника, включаючи оболонку робочого стола, запускаються в одному процесі explorer.exe. Якщо одне вікно провідника зависає або аварійно завершується, це призведе до зависання всієї графічної оболонки, доки процес не перезапуститься. Таким чином, кожен процес explorer.exe матиме власний ідентифікатор процесу (PID) для підвищення стабільності оболонки провідника",
                             "IT":  "Per impostazione predefinita, tutte le istanze di esplora file, compreso l'interfaccia del desktop, eseguire in un unico processo Explorer.exe. Se una finestra di file Esplora si blocca o si blocca, farà crashare l'intera interfaccia grafica si congelare fino a quando il processo si riavvia.Se abilitato, ogni processo Explorer.exe avrà il proprio ID processo (PID) per migliorare la stabilità del guscio di Explorer.",
-                            "TR":  ""
+                            "TR":  "Varsayılan olarak, masaüstü kabuğu da dahil olmak üzere tüm Dosya Gezgini pencereleri tek bir explorer.exe işleminde çalışır. Bir Dosya Gezgini penceresi kilitlenirse veya çökerse, süreç yeniden başlayana kadar tüm grafik kabuğun donmasına neden olur. Etkinleştirildiğinde, gezgin kabuğunun kararlılığını artırmak için her explorer.exe işleminin kendi işlem kimliği (PID) olacaktır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2925,7 +2925,7 @@
                        "DE":  "Reservierten Speicher aktivieren",
                        "UA":  "Увімкнути зарезервоване сховище",
                        "IT":  "Abilita lo spazio riservato",
-                       "TR":  "Caps Lock'u etkinleştir"
+                       "TR":  "Ayrılmış depolamayı etkinleştir"
                    },
         "Description":  {
                             "EN":  "To make sure your device can successfully update and that it runs its best, Windows reserves a portion of storage space on your device for use by temporary files, caches, and other files. When your device is low on space, Windows will clear reserved storage so it can be used for other processes, like a Windows update. Reserving storage also helps keep disk space usage on your device more predictable and more stable. After disabling the reserved storage will be deleted after the next update installation.",
@@ -2933,7 +2933,7 @@
                             "DE":  "Um sicherzustellen, dass Ihr Gerät erfolgreich aktualisiert werden kann und optimal funktioniert, reserviert Windows einen Teil des Speicherplatzes auf Ihrem Gerät für temporäre Dateien, Caches und andere Dateien. Wenn der Speicherplatz auf dem Gerät knapp wird, leert Windows den reservierten Speicherplatz, damit er für andere Prozesse, z. B. ein Windows-Update, verwendet werden kann. Das Reservieren von Speicherplatz trägt auch dazu bei, dass die Nutzung des Speicherplatzes auf Ihrem Gerät vorhersehbarer und stabiler wird. Nach der Deaktivierung wird der reservierte Speicherplatz nach der nächsten Update-Installation gelöscht.",
                             "UA":  "Щоб забезпечити оновлення вашого пристрою, а також його найкращу роботу, Windows резервує частину дискового простору на вашому пристрої для кешу, тимчасових та інших файлів. Коли на пристрої закінчується вільне місце, Windows очищає зарезервоване сховище, звільнюючи місце для інших процесів, наприклад, оновлення Windows. Зарезервоване сховище також допомагає використовувати дисковий простір на вашому пристрої більш передбачуваним та стабільним. Зарезервоване сховище буде видалено після наступних встановлень оновлень",
                             "IT":  "Per assicurarsi che il dispositivo possa aggiornarlo con successo e che esegue il meglio, Windows si riserva una porzione di spazio di archiviazione sul dispositivo per l'utilizzo da file temporanei, cache e altri file.Quando il tuo dispositivo è basso sullo spazio, Windows cancellerà l'archiviazione riservata in modo che possa essere utilizzato per altri processi, come un aggiornamento di Windows.L'archiviazione riservata aiuta anche a mantenere l'utilizzo dello spazio su disco sul tuo dispositivo più prevedibile e più stabile.Dopo aver disabilitato lo stoccaggio riservato verrà cancellato dopo l'installazione successiva di un aggiornamento.",
-                            "TR":  ""
+                            "TR":  "To cihazınızın başarıyla güncellendiğinden ve en iyi şekilde çalıştığından emin olun; Windows, geçici dosyalar, önbellekler ve diğer dosyalar tarafından kullanılmak üzere cihazınızdaki depolama alanının bir kısmını ayırır. Cihazınızda boş alan azaldığında, Windows, Windows güncellemesi gibi diğer işlemler için kullanılabilmesi için ayrılmış depolama alanını temizler. Depolama alanı ayırmak, cihazınızdaki disk alanı kullanımının daha öngörülebilir ve daha kararlı olmasına da yardımcı olur. Devre dışı bırakıldıktan sonra, ayrılmış depolama alanı bir sonraki güncelleme kurulumundan sonra silinecektir."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2949,7 +2949,7 @@
                        "DE":  "Hilfe mit F1-Taste aktivieren",
                        "UA":  "Увімкнути відкриття довідки з натисканням F1",
                        "IT":  "Abilita cerca aiuto premendo F1",
-                       "TR":  "Yapışkan tuşlar için klavye kısayolu"
+                       "TR":  "F1 aracılığıyla yardım aramasını etkinleştir"
                    },
         "Description":  {
                             "EN":  "",
@@ -2957,7 +2957,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  "Yapışkan tuşları açmak veya kapatmak için Shift tuşuna 5 kez basın"
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2973,7 +2973,7 @@
                        "DE":  "Num Lock beim Systemstart aktivieren",
                        "UA":  "Увімкнути Num Lock під час завантаження",
                        "IT":  "Abilita il blocco numerico all'avvio",
-                       "TR":  "Tüm medya ve cihazlar için Otomatik Kullan'ı kullanın"
+                       "TR":  "Başlangıçta Num Lock'u etkinleştir"
                    },
         "Description":  {
                             "EN":  "",
@@ -2997,7 +2997,7 @@
                        "DE":  "Feststelltaste aktivieren",
                        "UA":  "Увімкнути Caps Lock",
                        "IT":  "Abilita blocco maiuscolo",
-                       "TR":  "Küçük resim önbelleğini kaldırmayı etkinleştir"
+                       "TR":  "Caps Lock'u etkinleştir"
                    },
         "Description":  {
                             "EN":  "",
@@ -3005,7 +3005,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  "Windows, yeniden başlatma veya kapatmadan sonra küçük resim önbelleğini otomatik olarak siler ve Dosya Gezgini, küçük resimleri yeniden oluşturması gerekir. Küçük resim önbelleği, gizli \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer klasöründe bulunan .db dosyaları olarak depolanır."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3021,7 +3021,7 @@
                        "DE":  "Tastaturkürzel für Feststelltasten",
                        "UA":  "Поєднання клавіш для залипання клавіш",
                        "IT":  "Scorciatoia da tastiera per i tasti permanenti",
-                       "TR":  "Oturum açtıktan sonra uygulamaları yeniden başlatın"
+                       "TR":  "Yapışkan tuşlar için klavye kısayolu"
                    },
         "Description":  {
                             "EN":  "Press the Shift key 5 times to turn Sticky keys on or off",
@@ -3029,7 +3029,7 @@
                             "DE":  "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten",
                             "UA":  "Натисніть клавішу SHIFT 5 разів, щоб увімкнути або вимкнути залипання клавіш",
                             "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti",
-                            "TR":  "Yeniden başlatılabilir uygulamalarımı otomatik olarak kaydedin ve tekrar oturum açtığımda yeniden başlatın. Program önceki oturumda yönetici olarak çalıştırılmışsa, yönetici olmayan izinlerle yeniden başlatılacaktır."
+                            "TR":  "Yapışkan tuşları açmak veya kapatmak için Shift tuşuna 5 kez basın"
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3045,7 +3045,7 @@
                        "DE":  "Automatische Wiedergabe für alle Medien und Geräte verwenden",
                        "UA":  "Використовувати автозавантаження для всіх носіїв та пристроїв",
                        "IT":  "Utilizzare AutoPlay per tutti i supporti e i dispositivi",
-                       "TR":  "Çalışma grubu ağları için \"Ağ Keşfi\" ve \"Dosya ve Yazıcı Paylaşımı\"nı etkinleştirin"
+                       "TR":  "Tüm medya ve cihazlar için Otomatik Kullan'ı kullanın"
                    },
         "Description":  {
                             "EN":  "",
@@ -3069,7 +3069,7 @@
                        "DE":  "Thumbnail-Cache entfernen aktivieren",
                        "UA":  "Увімкнути видалення кешу мініатюр",
                        "IT":  "Abilita la rimozione della cache delle miniature",
-                       "TR":  "Günlük kullanıma göre aktif saatleri benim için otomatik olarak ayarla"
+                       "TR":  "Küçük resim önbelleğini kaldırmayı etkinleştir"
                    },
         "Description":  {
                             "EN":  "Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. The thumbnail cache is stored as .db files located in the hidden \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer folder.",
@@ -3077,7 +3077,7 @@
                             "DE":  "Windows löscht nach dem Neustart oder Herunterfahren automatisch den Miniaturbild-Cache und der Datei-Explorer muss die Miniaturbilder erneut erstellen. Der Miniaturbild-Cache wird als .db-Dateien im versteckten Ordner \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer gespeichert.",
                             "UA":  "Після перезавантаження або вимкнення Windows автоматично очищує кеш ескізів, і провідник перестворює ескізи щоразу знову. Кеш ескізів зберігається у вигляді файлів .db, розташованих у прихованій папці \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",
                             "IT":  "Windows Elimina automaticamente la cache delle miniature dopo il riavvio o l'arresto e esplora file deve ricreare nuovamente le miniature.La cache delle miniature è memorizzata come file .db situato nella cartella nascosta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer.",
-                            "TR":  ""
+                            "TR":  "Windows, yeniden başlatma veya kapatmadan sonra küçük resim önbelleğini otomatik olarak siler ve Dosya Gezgini, küçük resimleri yeniden oluşturması gerekir. Küçük resim önbelleği, gizli \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer klasöründe bulunan .db dosyaları olarak depolanır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3093,7 +3093,7 @@
                        "DE":  "Apps nach der Anmeldung neu starten",
                        "UA":  "Перезавантажити додатки після входу",
                        "IT":  "Riavvia le app dopo aver effettuato l'accesso",
-                       "TR":  "Güncellemeyi bitirmek için mümkün olan en kısa sürede yeniden başlatın"
+                       "TR":  "Oturum açtıktan sonra uygulamaları yeniden başlatın"
                    },
         "Description":  {
                             "EN":  "Automatically save my restartable apps and restart them when I sign back in. If the program was run as administrator in the previous session, it will be restarted with non-admin permissions.",
@@ -3101,7 +3101,7 @@
                             "DE":  "Automatisches Speichern meiner neu zu startenden Anwendungen und deren Neustart, wenn ich mich wieder anmelde. Wenn das Programm in der vorherigen Sitzung als Administrator ausgeführt wurde, wird es mit Nicht-Administrator-Berechtigungen neu gestartet.",
                             "UA":  "Автоматичне збереження моїх додатків, що перезапускаються при виході з системи і перезапускати їх після виходу. Якщо у попередньому сеансі програма була запущена від імені адміністратора, вона перезапускається із звичайними правами",
                             "IT":  "Salvare automaticamente le mie app raivviabili e riavviarle quando ritorno. Se il programma è stato eseguito come amministratore nella sessione precedente, verrà riavviato con autorizzazioni non amministrative.",
-                            "TR":  ""
+                            "TR":  "Yeniden başlatılabilir uygulamalarımı otomatik olarak kaydedin ve tekrar oturum açtığımda yeniden başlatın. Program önceki oturumda yönetici olarak çalıştırılmışsa, yönetici olmayan izinlerle yeniden başlatılacaktır."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3117,7 +3117,7 @@
                        "DE":  "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren.",
                        "UA":  "Увімкнути мережеве виявлення та загальний доступ до файлів та принтерів для робочих груп",
                        "IT":  "Abilita \"Discovery di rete\" e \"File e Stampanti condivise\" per le reti del gruppo di lavoro",
-                       "TR":  "Varsayılan terminal uygulaması"
+                       "TR":  "Çalışma grubu ağları için \"Ağ Keşfi\" ve \"Dosya ve Yazıcı Paylaşımı\"nı etkinleştirin"
                    },
         "Description":  {
                             "EN":  "",
@@ -3125,7 +3125,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  "Komut satırı uygulamaları için kullanıcı arabirimini barındırmak için Windows Terminalini varsayılan terminal uygulaması olarak ayarlayın."
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3141,7 +3141,7 @@
                        "DE":  "Automatische Anpassung der aktiven Stunden für mich auf der Grundlage der täglichen Nutzung",
                        "UA":  "Автоматично змінювати період активності цього пристрою на основі дій",
                        "IT":  "Regolare automaticamente le ore attive per me in base all'utilizzo quotidiano",
-                       "TR":  null
+                       "TR":  "Günlük kullanıma göre aktif saatleri benim için otomatik olarak ayarla"
                    },
         "Description":  {
                             "EN":  "",
@@ -3149,7 +3149,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3165,7 +3165,7 @@
                        "DE":  "Einen Neustart sobald wie möglich durchführen um die Aktualisierung abzuschließen",
                        "UA":  "Перезапустити пристрій якнайшвидше, щоб завершити оновлення",
                        "IT":  "Riavvia il prima possibile per terminare l'aggiornamento",
-                       "TR":  null
+                       "TR":  "Güncellemeyi bitirmek için mümkün olan en kısa sürede yeniden başlatın"
                    },
         "Description":  {
                             "EN":  "",
@@ -3173,7 +3173,7 @@
                             "DE":  "",
                             "UA":  "",
                             "IT":  "",
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -3189,7 +3189,7 @@
                        "DE":  "Standard-Terminal-App",
                        "UA":  "Додаток терміналу за замовчуванням",
                        "IT":  "App predefinita del terminale",
-                       "TR":  "PC Sağlık Kontrolü uygulaması"
+                       "TR":  "Varsayılan terminal uygulaması"
                    },
         "Description":  {
                             "EN":  "Set Windows Terminal as default terminal app to host the user interface for command-line applications.",
@@ -3197,7 +3197,7 @@
                             "DE":  "Standard-Terminalanwendung festlegen, die die Benutzeroberfläche für Befehlszeilenanwendungen bereitstellt.",
                             "UA":  "Встановити Windows Terminal як додаток терміналу за замовчуванням для розміщення інтерфейсу для додатків командного рядка",
                             "IT":  "Imposta il terminale di Windows come app terminale predefinita per ospitare l'interfaccia utente per le applicazioni della riga di comando.",
-                            "TR":  "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
+                            "TR":  "Komut satırı uygulamaları için kullanıcı arabirimini barındırmak için Windows Terminalini varsayılan terminal uygulaması olarak ayarlayın."
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -3210,7 +3210,7 @@
                                                       "DE":  "Windows Terminal",
                                                       "UA":  "Windows Terminal",
                                                       "IT":  "Terminal Windows",
-                                                      "TR":  "Kaldır"
+                                                      "TR":  "Windows Terminal"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -3230,7 +3230,7 @@
                                                       "DE":  "Windows Console Host",
                                                       "UA":  "Вузол консолі Windows",
                                                       "IT":  "Windows Console Host",
-                                                      "TR":  null
+                                                      "TR":  "Windows Console Host"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -3238,7 +3238,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -3255,7 +3255,7 @@
                        "DE":  "PC-Integritätsprüfungsanwendung",
                        "UA":  "Програма \"Перевірка працездатності ПК\"",
                        "IT":  "L'app \"PC Health Check\"",
-                       "TR":  null
+                       "TR":  "PC Sağlık Kontrolü uygulaması"
                    },
         "Description":  {
                             "EN":  "Uninstall the \"PC Health Check\" app and prevent it from installing in the future. The KB5005463 update installs the \"PC Health Check\" app to check if PC meets the system requirements of Windows 11.",
@@ -3263,7 +3263,7 @@
                             "DE":  "Deinstallieren Sie die PC-Integritätsprüfungsanwendung und verhindern Sie, dass sie in Zukunft installiert wird. Das Update KB5005463 installiert die PC-Integritätsprüfungsanwendung, um zu überprüfen, ob der PC die Systemanforderungen von Windows 11 erfüllt.",
                             "UA":  "Видалити програму \"Перевірка працездатності ПК Windows\" та заблокувати її встановлення в майбутньому. Оновлення KB5005463 встановлює програму \"Перевірка працездатності ПК\" для перевірки відповідності комп'ютера системним вимогам Windows 11",
                             "IT":  "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11.",
-                            "TR":  null
+                            "TR":  "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
                         },
         "Type":  "PcHealthCheckButtonGroup",
         "Tag":  "System",
@@ -3276,7 +3276,7 @@
                                                       "DE":  "Deinstallieren",
                                                       "UA":  "Видалити",
                                                       "IT":  "Disinstalla",
-                                                      "TR":  null
+                                                      "TR":  "Kaldır"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -3284,7 +3284,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "Button"
                               }
@@ -3367,7 +3367,7 @@
                        "DE":  "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64",
                        "UA":  "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x64",
                        "IT":  "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x64",
-                       "TR":  null
+                       "TR":  "En son Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64"
                    },
         "Description":  {
                             "EN":  "The Microsoft Visual C++ Redistributable Packages 2015–2022 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
@@ -3375,7 +3375,7 @@
                             "DE":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien",
                             "UA":  "Пакети Visual C++ Redistributable 2015–2022 x64 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли",
                             "IT":  "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file.",
-                            "TR":  null
+                            "TR":  "Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64, Microsoft kaynağından (internet bağlantısı gerekir) indirilecek ve sessizce yüklenecektir. Visual Studio 2015'ten bu yana Visual Studio sürümleri, aynı yeniden dağıtılabilir dosyaları paylaşır."
                         },
         "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
@@ -3388,7 +3388,7 @@
                                                       "DE":  "Installieren",
                                                       "UA":  "Встановити",
                                                       "IT":  "Installa",
-                                                      "TR":  null
+                                                      "TR":  "Kur"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -3396,7 +3396,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "Button"
                               },
@@ -3408,7 +3408,7 @@
                                                       "DE":  "Deinstallieren",
                                                       "UA":  "Видалити",
                                                       "IT":  "Disinstalla",
-                                                      "TR":  null
+                                                      "TR":  "Kaldır"
                                                   },
                                   "ChildDescription":  {
                                                            "EN":  "",
@@ -3416,7 +3416,7 @@
                                                            "DE":  "",
                                                            "UA":  "",
                                                            "IT":  "",
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "Button"
                               }
