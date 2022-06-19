@@ -126,7 +126,7 @@
     "Description": {
       "EN": "Choose how often Windows asks for your feedback.",
       "RU": "Укажите, как часто Windows следует запрашивать ваш отзыв.",
-      "DE": "Wie oft soll Windows nach Ihrem Feedback fragen?.",
+      "DE": "Wie oft soll Windows nach Ihrem Feedback fragen?",
       "UA": "Вкажіть, як часто Windows слід запитувати ваш відгук.",
       "IT": "Frequenza richiesta feedback da parte di windows.",
       "TR": "Windows'un ne sıklıkta geri bildiriminizi isteyeceğini seçin."
@@ -197,7 +197,7 @@
       "IT": "",
       "TR": ""
     },
-    "Type": "ExpandingGroup.",
+    "Type": "ExpandingGroup",
     "Tag": "Privacy",
     "ChildElements": [
       {
@@ -2057,9 +2057,9 @@
       "EN": "Configure Start layout",
       "RU": "Настроить макет начального экрана",
       "DE": "Startlayout konfigurieren",
-      "UA": "",
-      "IT": "",
-      "TR": ""
+      "UA": "Налаштувати макет початкового екрану",
+      "IT": "Configura il layout di inizio",
+      "TR": "Başlangıç düzenini yapılandır"
     },
     "Description": {
       "EN": "",
@@ -2067,7 +2067,7 @@
       "DE": "",
       "UA": "",
       "IT": "",
-      "TR": null
+      "TR": ""
     },
     "Type": "RadioGroup",
     "Tag": "Personalization",
@@ -2080,7 +2080,7 @@
           "DE": "Standard",
           "UA": "За замовчуванням",
           "IT": "Predefinita",
-          "TR": ""
+          "TR": "Varsayılan"
         },
         "ChildDescription": {
           "EN": "",
@@ -2088,7 +2088,7 @@
           "DE": "",
           "UA": "",
           "IT": "",
-          "TR": null
+          "TR": ""
         },
         "Type": "RadioButton"
       },
@@ -2108,7 +2108,7 @@
           "DE": "",
           "UA": "",
           "IT": "",
-          "TR": null
+          "TR": ""
         },
         "Type": "RadioButton"
       },
@@ -2128,7 +2128,7 @@
           "DE": "",
           "UA": "",
           "IT": "",
-          "TR": null
+          "TR": ""
         },
         "Type": "RadioButton"
       }
@@ -2156,7 +2156,7 @@
       "TR": ""
     },
     "Type": "CheckBox",
-    "Tag": "StartMenu.",
+    "Tag": "StartMenu",
     "ViewId": 266,
     "Windows10Supported": true,
     "Windows11Supported": false
@@ -2180,7 +2180,7 @@
       "TR": ""
     },
     "Type": "CheckBox",
-    "Tag": "StartMenu.",
+    "Tag": "StartMenu",
     "ViewId": 267,
     "Windows10Supported": true,
     "Windows11Supported": false
@@ -2204,7 +2204,7 @@
       "TR": ""
     },
     "Type": "CheckBox",
-    "Tag": "StartMenu.",
+    "Tag": "StartMenu",
     "ViewId": 268,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -2365,7 +2365,7 @@
       "IT": "Utilizzare Solo nel caso in cui si sia l'unico utente su questo PC, altrimenti tutti gli utenti utilizzeranno la stessa cartella per tutti i file temporanei.",
       "TR": "Yalnızca bu bilgisayardaki tek kullanıcıysanız kullanın, aksi takdirde tüm kullanıcılar tüm geçici dosyalar için aynı klasörü kullanır."
     },
-    "Type": "AdvancedRadioGroup.",
+    "Type": "AdvancedRadioGroup",
     "Tag": "System",
     "ChildElements": [
       {
@@ -2650,20 +2650,20 @@
   {
     "Id": 319,
     "Header": {
-      "EN": "Use the latest installed NET Framework runtime for all apps",
-      "RU": "Использовать последнюю установленную среду выполнения NET Framework для всех приложений",
-      "DE": "Neueste installierte NET Framework-Laufzeitumgebung für alle Anwendungen verwenden",
-      "UA": "Використовувати останнє встановлене середовище виконання NET Framework для всіх програм",
-      "IT": "Utilizzare l'ultima versione del runtime NET Framework installato per tutte le app",
-      "TR": "Tüm uygulamalar için en son yüklenen NET Framework çalışma zamanını kullanın"
+      "EN": "Use the latest installed .NET Framework runtime for all apps",
+      "RU": "Использовать последнюю установленную среду выполнения .NET Framework для всех приложений",
+      "DE": "Neueste installierte .NET Framework-Laufzeitumgebung für alle Anwendungen verwenden",
+      "UA": "Використовувати останнє встановлене середовище виконання .NET Framework для всіх програм",
+      "IT": "Utilizzare l'ultima versione del runtime .NET Framework installato per tutte le app",
+      "TR": "Tüm uygulamalar için en son yüklenen .NET Framework çalışma zamanını kullanın"
     },
     "Description": {
-      "EN": "If an app requires the legacy .NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed .NET Framework version.",
-      "RU": "Если для работы приложения требуется установка устаревшего .NET Framework 2.0, 3.0 или 3.5, включение данной функции заставит приложение принудительно использовать последнюю установленную версию .NET Framework.",
-      "DE": "Wenn für eine Anwendung das ältere .NET Framework 2.0, 3.0 oder 3.5 installiert sein muss, erzwingt die Aktivierung dieser Funktion, dass die Anwendung die neueste installierte .NET Framework-Version verwendet.",
-      "UA": "Якщо для роботи програми потрібна установка застарілого .NET Framework 2.0, 3.0 або 3.5, увімкнення цієї функції змусить програму примусово використовувати останню версію .NET Framework.",
-      "IT": "Se un'app richiede che l'eredità .NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l'applicazione per utilizzare la versione più recente .NET Framework installata.",
-      "TR": "Bir uygulama eski .NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen .NET Framework sürümünü kullanmaya zorlar."
+      "EN": "If an app requires the legacy ..NET Framework 2.0, 3.0, or 3.5 to be installed, enabling this feature will force the application to use the latest installed ..NET Framework version.",
+      "RU": "Если для работы приложения требуется установка устаревшего ..NET Framework 2.0, 3.0 или 3.5, включение данной функции заставит приложение принудительно использовать последнюю установленную версию ..NET Framework.",
+      "DE": "Wenn für eine Anwendung das ältere ..NET Framework 2.0, 3.0 oder 3.5 installiert sein muss, erzwingt die Aktivierung dieser Funktion, dass die Anwendung die neueste installierte ..NET Framework-Version verwendet.",
+      "UA": "Якщо для роботи програми потрібна установка застарілого ..NET Framework 2.0, 3.0 або 3.5, увімкнення цієї функції змусить програму примусово використовувати останню версію ..NET Framework.",
+      "IT": "Se un'app richiede che l'eredità ..NET Framework 2.0, 3.0, o 3.5 da installare, abilitando questa funzione forzerà l'applicazione per utilizzare la versione più recente ..NET Framework installata.",
+      "TR": "Bir uygulama eski ..NET Framework 2.0, 3.0 veya 3.5'in yüklenmesini gerektiriyorsa, bu özelliğin etkinleştirilmesi uygulamayı en son yüklenen ..NET Framework sürümünü kullanmaya zorlar."
     },
     "Type": "CheckBox",
     "Tag": "System",
@@ -2838,11 +2838,11 @@
       "TR": "Önerilen sorun giderme"
     },
     "Description": {
-      "EN": "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?.",
-      "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок. Хотите ли вы помогать Microsoft устранять неполадок при возникновении на вашем устройстве проблем?.",
-      "DE": "Microsoft kann Fehlerbehebungsprogramme empfehlen und ausführen, um Probleme zu beheben. Inwieweit möchten Sie, dass Microsoft Ihnen hilft, wenn es auf Ihrem Gerät Probleme gibt, die mit Hilfe von Troubleshootern behoben werden können?.",
-      "UA": "Корпорація Майкрософт може рекомендувати та запускати засоби усунення недоліків для виправлення помилок. Чи хотіли б ви допомагати Майкрософт усувати недоліки, якщо виникнуть проблеми?.",
-      "IT": "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?.",
+      "EN": "Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?",
+      "RU": "Корпорация Майкрософт может рекомендовать и запускать средства устранения неполадок для исправления ошибок. Хотите ли вы помогать Microsoft устранять неполадок при возникновении на вашем устройстве проблем?",
+      "DE": "Microsoft kann Fehlerbehebungsprogramme empfehlen und ausführen, um Probleme zu beheben. Inwieweit möchten Sie, dass Microsoft Ihnen hilft, wenn es auf Ihrem Gerät Probleme gibt, die mit Hilfe von Troubleshootern behoben werden können?",
+      "UA": "Корпорація Майкрософт може рекомендувати та запускати засоби усунення недоліків для виправлення помилок. Чи хотіли б ви допомагати Майкрософт усувати недоліки, якщо виникнуть проблеми?",
+      "IT": "Microsoft può consigliare ed eseguire il programma di risoluzione dei problemi per correggere i problemi. Quanto vuoi che Microsoft ti aiuti quando ci sono problemi sul tuo dispositivo che il programma di risoluzione dei che problemi potrebbero essere in grado di risolvere?",
       "TR": "Microsoft, sorunları gidermek için sorun gidericiler önerebilir ve çalıştırabilir. Cihazınızda sorun gidericilerin çözebileceği sorunlar olduğunda Microsoft'un ne kadar yardım etmesini istiyorsunuz?"
     },
     "Type": "RadioGroup",
@@ -3601,7 +3601,7 @@
       "TR": "Donanım hızlandırmalı GPU zamanlaması"
     },
     "Description": {
-      "EN": "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) takes over the same work and runs it in batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better.",
+      "EN": "With the right hardware and drivers, Windows can offload most of GPU scheduling to a dedicated GPU-based scheduling processor. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) takes over the same work and runs it in .batches to render the frames. In that way, your GPU relieves the processor from some work and reduces latency to potentially make your PC run better.",
       "RU": "При наличии соответствующего оборудования и драйверов Windows может переложить большую часть планирования GPU на выделенный процессор планирования на основе GPU. Благодаря функции аппаратного ускорения GPU процессор планирования GPU и память (VRAM) берут на себя ту же работу и запускают ее в пакетном режиме для рендеринга кадров. Таким образом, ваш GPU освобождает процессор от некоторой работы и уменьшает задержку, чтобы потенциально улучшить работу вашего ПК.",
       "DE": "Mit richtiger Hardware und richtigen Treibern kann Windows den Großteil der GPU-Planung an einen speziellen GPU-basierten Planungsprozessor auslagern. Mit der Funktion \"Hardwarebeschleunigte GPU-Planung\" übernehmen der Planungsprozessor und der Speicher (VRAM) des Grafikprozessors die gleiche Arbeit und führen sie in Stapeln aus, um die Bilder zu rendern. Auf diese Weise entlastet der Grafikprozessor den Prozessor und verringert die Latenzzeit, wodurch Ihr PC möglicherweise besser läuft.",
       "UA": "За наявності відповідного обладнання та драйверів Windows може перекласти більшу частину планування GPU на виділений процесор планування на основі GPU. Завдяки функції апаратного прискорення GPU процесор планування GPU та пам'ять (VRAM) беруть на себе ту саму роботу та запускають її в пакетному режимі для рендерингу кадрів. Таким чином, ваш GPU звільняє процесор від деякої роботи та зменшує затримку, щоб потенційно покращити роботу вашого ПК.",
@@ -4043,12 +4043,12 @@
   {
     "Id": 900,
     "Header": {
-      "EN": "The \"Extract all\" item in the Windows Installer (msi) context menu",
-      "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (msi)",
-      "DE": "Eintrag \"Alle extrahieren\" im Windows Installer-Kontextmenü (msi)",
-      "UA": "Пункт \"Вилучити все\" у контекстному меню Windows Installer (msi)",
-      "IT": "Mostra l'opzione \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (msi)",
-      "TR": "Windows Installer (msi) bağlam menüsündeki \"Tümünü ayıkla\" öğesi"
+      "EN": "The \"Extract all\" item in the Windows Installer (.msi) context menu",
+      "RU": "Пункт \"Извлечь все\" в контекстном меню Windows Installer (.msi)",
+      "DE": "Eintrag \"Alle extrahieren\" im Windows Installer-Kontextmenü (.msi)",
+      "UA": "Пункт \"Вилучити все\" у контекстному меню Windows Installer (.msi)",
+      "IT": "Mostra l'opzione \"Estrai tutto\" nel menu di scelta rapida di Windows Installer (.msi)",
+      "TR": "Windows Installer (.msi) bağlam menüsündeki \"Tümünü ayıkla\" öğesi"
     },
     "Description": {
       "EN": "The \"Extract all\" context menu item will extract all contents of the .msi file into the \"Extracted\" folder at the same location as .msi file is.",
@@ -4067,12 +4067,12 @@
   {
     "Id": 901,
     "Header": {
-      "EN": "The \"Install\" item in the Cabinet archives (cab) context menu",
-      "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (cab)",
-      "DE": "Der Eintrag \"Installieren\" im Kontextmenü der Cabinet-Archive (cab)",
-      "UA": "Пункт \"Встановити\" у контекстному меню Cabinet-архівів (cab)",
+      "EN": "The \"Install\" item in the Cabinet archives (.cab context menu",
+      "RU": "Пункт \"Установить\" в контекстном меню Cabinet-архивов (.cab",
+      "DE": "Der Eintrag \"Installieren\" im Kontextmenü der Cabinet-Archive (.cab",
+      "UA": "Пункт \"Встановити\" у контекстному меню Cabinet-архівів (.cab",
       "IT": "Mostra l'opzione \"Installa\" nel menu contestuale negli archivi",
-      "TR": "Kabine arşivleri (cab) bağlam menüsündeki \"Yükle\" öğesi"
+      "TR": "Kabine arşivleri (.cab bağlam menüsündeki \"Yükle\" öğesi"
     },
     "Description": {
       "EN": "This context menu item, using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7-Zip, WinRAR, etc...) by default, the \"Install\" context menu item will not show until you restore the default association for the .cab file type.",
@@ -4178,7 +4178,7 @@
       "IT": "",
       "TR": ""
     },
-    "Type": "ExpandingGroup.",
+    "Type": "ExpandingGroup",
     "Tag": "ContextMenu",
     "ChildElements": [
       {
@@ -4421,12 +4421,12 @@
   {
     "Id": 917,
     "Header": {
-      "EN": "The \"Print\" item in the bat and cmd files context menu",
-      "RU": "Пункт \"Печать\" в контекстном меню bat и cmd файлов",
-      "DE": "Diesen Kontextmenüeintrag \"Drucken\" für bat- und cmd-Dateien anzeigen",
-      "UA": "Пункт \"Друк\" у контекстному меню bat та cmd файлів",
-      "IT": "Mostra l'opzione \"Mostra\" nel menu di scelta rapida bat e cmd",
-      "TR": "bat ve cmd dosyaları bağlam menüsündeki \"Yazdır\" öğesi"
+      "EN": "The \"Print\" item in the .bat and .cmd files context menu",
+      "RU": "Пункт \"Печать\" в контекстном меню .bat и .cmd файлов",
+      "DE": "Diesen Kontextmenüeintrag \"Drucken\" für .bat- und .cmd-Dateien anzeigen",
+      "UA": "Пункт \"Друк\" у контекстному меню .bat та .cmd файлів",
+      "IT": "Mostra l'opzione \"Mostra\" nel menu di scelta rapida .bat e .cmd",
+      "TR": ".bat ve .cmd dosyaları bağlam menüsündeki \"Yazdır\" öğesi"
     },
     "Description": {
       "EN": "",
