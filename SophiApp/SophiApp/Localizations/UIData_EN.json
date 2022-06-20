@@ -211,7 +211,7 @@
                        "EN":  "Use sign-in info to automatically finish setting up device after an update"
                    },
         "Description":  {
-                            "EN":  "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe."
+                            "EN":  "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevent this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
