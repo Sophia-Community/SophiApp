@@ -3265,7 +3265,7 @@
       "IT": "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11.",
       "TR": "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
     },
-    "Type": "PcHealthCheckButtonGroup.",
+    "Type": "PcHealthCheckButtonGroup",
     "Tag": "System",
     "ChildElements": [
       {
