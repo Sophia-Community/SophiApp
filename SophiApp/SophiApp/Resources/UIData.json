@@ -692,30 +692,6 @@
     "Windows11Supported": true
   },
   {
-    "Id": 203,
-    "Header": {
-      "EN": "Enable the Windows 10 File Explorer",
-      "RU": "Включить проводник из Windows 10",
-      "DE": "Windows 10 Datei-Explorer aktivieren",
-      "UA": "Увімкнути провідник із Windows 10",
-      "IT": "Abilita l'esplora file di Windows 10",
-      "TR": "Windows 10 Dosya Gezgini'ni etkinleştirin"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": "",
-      "TR": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "Personalization",
-    "ViewId": 203,
-    "Windows10Supported": false,
-    "Windows11Supported": true
-  },
-  {
     "Id": 204,
     "Header": {
       "EN": "Use check boxes to select items",
@@ -3265,7 +3241,7 @@
       "IT": "L'aggiornamento KB5005463 installa l'app \"PC Health Check\" per verificare se PC soddisfa i requisiti di sistema di Windows 11.",
       "TR": "\"PC Health Check\" uygulamasını kaldırın ve gelecekte yüklenmesini önleyin. KB5005463 güncellemesi, PC'nin Windows 11'in sistem gereksinimlerini karşılayıp karşılamadığını kontrol etmek için \"PC Health Check\" uygulamasını yükler."
     },
-    "Type": "PcHealthCheckButtonGroup.",
+    "Type": "PcHealthCheckButtonGroup",
     "Tag": "System",
     "ChildElements": [
       {
@@ -3311,7 +3287,7 @@
       "IT": "",
       "TR": ""
     },
-    "Type": "OneDriveButtonGroup.",
+    "Type": "OneDriveButtonGroup",
     "Tag": "System",
     "ChildElements": [
       {
@@ -3377,7 +3353,7 @@
       "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x64 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file.",
       "TR": "Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x64, Microsoft kaynağından (internet bağlantısı gerekir) indirilecek ve sessizce yüklenecektir. Visual Studio 2015'ten bu yana Visual Studio sürümleri, aynı yeniden dağıtılabilir dosyaları paylaşır."
     },
-    "Type": "MsCppPackageButtonGroup.",
+    "Type": "MsCppPackageButtonGroup",
     "Tag": "System",
     "ChildElements": [
       {
@@ -3514,7 +3490,7 @@
       "IT": "Se il Microsoft Store è stato danneggiato o rimosso, puoi ripristinarlo scaricando le dipendenze necessarie dai server Microsoft (connessione a Internet richiesta). Il download e l'installazione possone richiedere fino a 10 minuti. No chiudere la console, si chiuderà automaticamente alla fine del processo.",
       "TR": "Microsoft Mağazası zarar görmüş veya kaldırılmışsa, gerekli tüm bağımlılıkları Microsoft kaynağından indirerek geri yükleyebilirsiniz (İnternet bağlantısı gerekir). İndirme ve kurulum 10 dakika kadar sürebilir. Geri yükleme sırasında bir konsol penceresi açılacaktır, bu yüzden lütfen kapatmayın. Bittiğinde konsol otomatik olarak kapanacaktır."
     },
-    "Type": "AdvancedButtonGroup.",
+    "Type": "AdvancedButtonGroup",
     "Tag": "UwpApps",
     "ChildElements": [
       {

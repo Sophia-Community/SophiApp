@@ -94,5 +94,6 @@
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copia titolo</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Apri Utilità di pianificazione</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">riavvia il computer dopo aver Applicato le impostazioni</system:String>
+    <system:String x:Key="Localization.Loading">The current OS settings are being read...</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">Apri in Windows Terminal</system:String>
 </ResourceDictionary>

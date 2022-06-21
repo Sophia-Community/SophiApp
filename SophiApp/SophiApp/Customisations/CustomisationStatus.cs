@@ -105,8 +105,6 @@ namespace SophiApp.Customisations
 
         public static bool _202() => _201().Invert();
 
-        public static bool _203() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH);
-
         public static bool _204() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _204_AUTO_CHECK_SELECT)
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
@@ -290,27 +288,28 @@ namespace SophiApp.Customisations
         public static bool _310() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _310_SYSTEM_CRASH_CONTROL_PATH, _310_DISPLAY_PARAMS)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _314() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _314_ENABLE_LINKED) == _314_ENABLE_LINKED_VALUE;
+        public static bool _311() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _311_ENABLE_LINKED) == _311_ENABLE_LINKED_VALUE;
 
-        public static bool _315() => RegHelper.GetNullableIntValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE)
+        public static bool _312() => RegHelper.GetNullableIntValue(RegistryHive.Users, _312_DELIVERY_SETTINGS_PATH, _312_DOWNLOAD_MODE)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _316() => DomainHelper.PcInDomain
-                                    ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY)
-                                               .HasNullOrValue(DISABLED_VALUE).Invert()
+        public static bool _313() => DomainHelper.PcInDomain
+                                    ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _313_WINLOGON_PATH, _313_FOREGROUND_POLICY)
+                                               .HasNullOrValue(DISABLED_VALUE)
+                                               .Invert()
                                     : throw new PcNotJoinedToDomainException();
 
-        public static bool _317() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _317_CURRENT_VERSION_WINDOWS_PATH, _317_PRINTER_LEGACY_MODE)
-                                              .HasNullOrValue(_317_ENABLED_VALUE);
+        public static bool _314() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _314_CURRENT_VERSION_WINDOWS_PATH, _314_PRINTER_LEGACY_MODE)
+                                              .HasNullOrValue(_314_ENABLED_VALUE);
 
-        public static bool _318()
+        public static bool _315()
         {
             var result = false;
-            var updateManager = ComObjectHelper.CreateFromProgID(_318_UPDATE_SERVICE_MANAGER);
+            var updateManager = ComObjectHelper.CreateFromProgID(_315_UPDATE_SERVICE_MANAGER);
 
             foreach (var service in updateManager.Services)
             {
-                if (service.ServiceID == _318_SERVICE_MANAGER_GUID)
+                if (service.ServiceID == _315_SERVICE_MANAGER_GUID)
                 {
                     result = service.IsDefaultAUService;
                     break;
@@ -320,68 +319,69 @@ namespace SophiApp.Customisations
             return result;
         }
 
-        public static bool _320() => WmiHelper.GetActivePowerPlanId() == _320_HIGH_POWER_GUID;
+        public static bool _317() => WmiHelper.GetActivePowerPlanId() == _317_HIGH_POWER_GUID;
 
-        public static bool _321() => _320().Invert();
+        public static bool _318() => _317().Invert();
 
-        public static bool _322() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _322_NET_FRAMEWORK64_PATH, _322_USE_LATEST_CLR) == ENABLED_VALUE
-                                     || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _322_NET_FRAMEWORK32_PATH, _322_USE_LATEST_CLR) == ENABLED_VALUE;
+        public static bool _319() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _319_NET_FRAMEWORK64_PATH, _319_USE_LATEST_CLR) == ENABLED_VALUE
+                                     || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _319_NET_FRAMEWORK32_PATH, _319_USE_LATEST_CLR) == ENABLED_VALUE;
 
-        public static bool _323() => WmiHelper.HasNetworkAdaptersPowerSave();
+        public static bool _320() => WmiHelper.HasNetworkAdaptersPowerSave();
 
-        public static bool _325() => _326().Invert();
+        public static bool _322() => _323().Invert();
 
-        public static bool _326() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
+        public static bool _323() => RegHelper.GetStringValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE) == INPUT_ENG_VALUE;
 
-        public static bool _328() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
-                                        == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _328_DESKTOP_FOLDER);
+        public static bool _325() => RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER)
+                                        == RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _325_DESKTOP_FOLDER);
 
-        public static bool _329() => _328().Invert();
+        public static bool _326() => _325().Invert();
 
-        public static bool _331() => _332().Invert();
+        public static bool _328() => _329().Invert();
 
-        public static bool _332() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, WINDOWS_MITIGATION_PATH, MITIGATION_USER_PREFERENCE)
-                                              .HasNullOrValue(_332_DEFAULT_VALUE);
+        public static bool _329() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, WINDOWS_MITIGATION_PATH, MITIGATION_USER_PREFERENCE)
+                                              .HasNullOrValue(_329_DEFAULT_VALUE);
 
-        public static bool _333() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _333_SEPARATE_PROCESS)
+        public static bool _330() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _330_SEPARATE_PROCESS)
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
 
-        public static bool _334() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _334_RESERVE_MANAGER_PATH, _334_SHIPPED_RESERVES)
+        public static bool _331() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _331_RESERVE_MANAGER_PATH, _331_SHIPPED_RESERVES)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _335() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _335_TYPELIB_PATH)
+        public static bool _332() => RegHelper.SubKeyExist(RegistryHive.CurrentUser, _332_TYPELIB_PATH)
                                               .Invert();
 
-        public static bool _336() => RegHelper.GetStringValue(RegistryHive.Users, _336_DEFAULT_KEYBOARD_PATH, _336_INITIAL_INDICATORS) == _336_ENABLED_VALUE;
+        public static bool _333() => RegHelper.GetStringValue(RegistryHive.Users, _333_DEFAULT_KEYBOARD_PATH, _333_INITIAL_INDICATORS) == _333_ENABLED_VALUE;
 
-        public static bool _337() => RegHelper.KeyExist(RegistryHive.LocalMachine, _337_KEYBOARD_LAYOUT_PATH, _337_SCAN_CODE)
+        public static bool _334() => RegHelper.KeyExist(RegistryHive.LocalMachine, _334_KEYBOARD_LAYOUT_PATH, _334_SCAN_CODE)
                                               .Invert();
 
-        public static bool _338() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _338_STICKY_KEYS_PATH, _338_FLAGS)
-                                              .HasNullOrValue(_338_ENABLED_VALUE);
+        public static bool _335() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _335_STICKY_KEYS_PATH, _335_FLAGS)
+                                              .HasNullOrValue(_335_ENABLED_VALUE);
 
-        public static bool _339() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _339_AUTOPLAY_HANDLERS_PATH, _339_AUTOPLAY)
-                                              .HasNullOrValue(_339_ENABLED_VALUE);
+        public static bool _336() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _336_AUTOPLAY_HANDLERS_PATH, _336_AUTOPLAY)
+                                              .HasNullOrValue(_336_ENABLED_VALUE);
 
-        public static bool _340() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _340_THUMBNAIL_CACHE_PATH, _340_AUTORUN)
-                                              .HasNullOrValue(_340_ENABLED_VALUE);
+        public static bool _337() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _337_THUMBNAIL_CACHE_PATH, _337_AUTORUN)
+                                              .HasNullOrValue(_337_ENABLED_VALUE);
 
-        public static bool _341() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, WINLOGON_PATH, _341_RESTART_APPS)
-                                              .HasNullOrValue(DISABLED_VALUE).Invert();
-
-        public static bool _342() => DomainHelper.PcInDomain.Invert()
-                                     ? FirewallHelper.IsRuleGroupEnabled(_342_FILE_PRINTER_SHARING_GROUP) && FirewallHelper.IsRuleGroupEnabled(_342_NETWORK_DISCOVERY_GROUP)
-                                     : throw new PcJoinedToDomainException();
-
-        public static bool _343() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _343_ACTIVE_HOURS)
-                                              .HasNullOrValue(_343_AUTO_STATE);
-
-        public static bool _344() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _344_IS_EXPEDITED)
+        public static bool _338() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, WINLOGON_PATH, _338_RESTART_APPS)
                                               .HasNullOrValue(DISABLED_VALUE)
                                               .Invert();
 
-        public static bool _346()
+        public static bool _339() => DomainHelper.PcInDomain.Invert()
+                                     ? FirewallHelper.IsRuleGroupEnabled(_339_FILE_PRINTER_SHARING_GROUP) && FirewallHelper.IsRuleGroupEnabled(_339_NETWORK_DISCOVERY_GROUP)
+                                     : throw new PcJoinedToDomainException();
+
+        public static bool _340() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _340_ACTIVE_HOURS)
+                                              .HasNullOrValue(_340_AUTO_STATE);
+
+        public static bool _341() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, UPDATE_UX_SETTINGS_PATH, _341_IS_EXPEDITED)
+                                              .HasNullOrValue(DISABLED_VALUE)
+                                              .Invert();
+
+        public static bool _343()
         {
             if (UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL))
             {
@@ -416,22 +416,22 @@ namespace SophiApp.Customisations
             throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
         }
 
-        public static bool _347() => _346().Invert();
+        public static bool _344() => _343().Invert();
 
-        public static bool _349() => MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                              .FirstOrDefault(property => property[_348_PRODUCT_NAME] == _348_PCHC) == null
+        public static bool _346() => MsiHelper.GetProperties(Directory.GetFiles(_346_INSTALLER_PATH, _346_MSI_MASK))
+                                              .FirstOrDefault(property => property[_346_PRODUCT_NAME] == _346_PCHC) == null
                                      ? throw new UpdateNotInstalledException(KB5005463_UPD)
                                      : false;
 
-        public static bool _351() => OneDriveHelper.IsInstalled()
+        public static bool _348() => OneDriveHelper.IsInstalled()
                                      ? throw new OneDriveIsInstalledException()
                                      : OneDriveHelper.HasSetupExe() || HttpHelper.IsOnline
                                         ? false
                                         : throw new OneDriveIsInstalledException();
 
-        public static bool _352() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
+        public static bool _349() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
 
-        public static bool _354() => HttpHelper.IsOnline
+        public static bool _351() => HttpHelper.IsOnline
                                      ? VisualRedistrLibsHelper.IsInstalled()
                                         ? VisualRedistrLibsHelper.GetCloudLatestVersion() > VisualRedistrLibsHelper.GetInstalledVersion()
                                             ? false
@@ -439,7 +439,7 @@ namespace SophiApp.Customisations
                                         : false
                                      : throw new NoInternetConnectionException();
 
-        public static bool _355() => VisualRedistrLibsHelper.IsInstalled()
+        public static bool _352() => VisualRedistrLibsHelper.IsInstalled()
                                      ? false
                                      : throw new VisualRedistrLibsNotInstalled();
 

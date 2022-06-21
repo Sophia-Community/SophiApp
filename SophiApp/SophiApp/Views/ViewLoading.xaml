@@ -25,6 +25,11 @@
         <ControlTemplate>
             <Grid>
                 <controls:LoadingRing Visibility="{Binding Path=Visibility, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
+                <TextBlock Style="{DynamicResource BoldText}"
+                           Text="{DynamicResource Localization.Loading}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="0, 100, 0, 0" />
             </Grid>
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Loading}">

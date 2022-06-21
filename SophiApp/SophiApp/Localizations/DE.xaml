@@ -94,5 +94,6 @@
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Header kopieren</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Aufgabenplanung öffnen</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Bitte PC nach dem Anwenden der Einstellungen neu starten</system:String>
+    <system:String x:Key="Localization.Loading">The current OS settings are being read...</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">In Windows Terminal öffnen</system:String>
 </ResourceDictionary>

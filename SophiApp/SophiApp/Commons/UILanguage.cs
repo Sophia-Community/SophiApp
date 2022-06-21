@@ -6,6 +6,7 @@
         EN,
         IT,
         RU,
-        UA
+        TR,
+        UA,
     }
 }

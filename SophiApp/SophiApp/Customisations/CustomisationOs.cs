@@ -202,17 +202,6 @@ namespace SophiApp.Customisations
 
         public static void _202(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER, false);
 
-        public static void _203(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                RegHelper.SetValue(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_INPROC_PATH, null, string.Empty, RegistryValueKind.String);
-                return;
-            }
-
-            RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, _203_WIN10_EXPLORER_PATH);
-        }
-
         public static void _204(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         ADVANCED_EXPLORER_PATH,
                                                                             _204_AUTO_CHECK_SELECT,
@@ -694,193 +683,193 @@ namespace SophiApp.Customisations
                                                                                          : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _314(bool IsChecked)
+        public static void _311(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _314_ENABLE_LINKED, _314_ENABLE_LINKED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _311_ENABLE_LINKED, _311_ENABLE_LINKED_VALUE, RegistryValueKind.DWord);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _314_ENABLE_LINKED);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _311_ENABLE_LINKED);
         }
+
+        public static void _312(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.Users, _312_DELIVERY_SETTINGS_PATH, _312_DOWNLOAD_MODE, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.Users, _312_DELIVERY_SETTINGS_PATH, _312_DOWNLOAD_MODE, DISABLED_VALUE, RegistryValueKind.DWord);
+            FileHelper.TryDeleteDirectory(_312_DELIVERY_OPT_PATH);
+        }
+
+        public static void _313(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.LocalMachine, _313_WINLOGON_PATH, _313_FOREGROUND_POLICY, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _313_WINLOGON_PATH, _313_FOREGROUND_POLICY);
+        }
+
+        public static void _314(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        _314_CURRENT_VERSION_WINDOWS_PATH,
+                                                                            _314_PRINTER_LEGACY_MODE,
+                                                                                IsChecked ? _314_ENABLED_VALUE
+                                                                                          : _314_DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _315(bool IsChecked)
         {
+            var updateManager = ComObjectHelper.CreateFromProgID(_315_UPDATE_SERVICE_MANAGER);
+
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE, ENABLED_VALUE, RegistryValueKind.DWord);
+                updateManager.AddService2(_315_SERVICE_MANAGER_GUID, 7, "");
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.Users, _315_DELIVERY_SETTINGS_PATH, _315_DOWNLOAD_MODE, DISABLED_VALUE, RegistryValueKind.DWord);
-            FileHelper.TryDeleteDirectory(_315_DELIVERY_OPT_PATH);
+            updateManager.RemoveService(_315_SERVICE_MANAGER_GUID);
         }
 
-        public static void _316(bool IsChecked)
+        public static void _317(bool _) => ProcessHelper.Start(POWERCFG_EXE, _317_HIGH_POWER_ARGS, ProcessWindowStyle.Hidden);
+
+        public static void _318(bool _) => ProcessHelper.Start(POWERCFG_EXE, _318_BALANCED_POWER_ARGS, ProcessWindowStyle.Hidden);
+
+        public static void _319(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, _319_NET_FRAMEWORK64_PATH, _319_USE_LATEST_CLR, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, _319_NET_FRAMEWORK32_PATH, _319_USE_LATEST_CLR, ENABLED_VALUE, RegistryValueKind.DWord);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, _316_WINLOGON_PATH, _316_FOREGROUND_POLICY);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _319_NET_FRAMEWORK64_PATH, _319_USE_LATEST_CLR);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, _319_NET_FRAMEWORK32_PATH, _319_USE_LATEST_CLR);
         }
 
-        public static void _317(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        _317_CURRENT_VERSION_WINDOWS_PATH,
-                                                                            _317_PRINTER_LEGACY_MODE,
-                                                                                IsChecked ? _317_ENABLED_VALUE
-                                                                                          : _317_DISABLED_VALUE,
-                                                                                    RegistryValueKind.DWord);
+        public static void _320(bool IsChecked) => WmiHelper.SetNetworkAdaptersPowerSave(IsChecked);
 
-        public static void _318(bool IsChecked)
-        {
-            var updateManager = ComObjectHelper.CreateFromProgID(_318_UPDATE_SERVICE_MANAGER);
+        public static void _322(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE);
 
-            if (IsChecked)
-            {
-                updateManager.AddService2(_318_SERVICE_MANAGER_GUID, 7, "");
-                return;
-            }
+        public static void _323(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE, INPUT_ENG_VALUE, RegistryValueKind.String);
 
-            updateManager.RemoveService(_318_SERVICE_MANAGER_GUID);
-        }
-
-        public static void _320(bool _) => ProcessHelper.Start(POWERCFG_EXE, _320_HIGH_POWER_ARGS, ProcessWindowStyle.Hidden);
-
-        public static void _321(bool _) => ProcessHelper.Start(POWERCFG_EXE, _321_BALANCED_POWER_ARGS, ProcessWindowStyle.Hidden);
-
-        public static void _322(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                RegHelper.SetValue(RegistryHive.LocalMachine, _322_NET_FRAMEWORK64_PATH, _322_USE_LATEST_CLR, ENABLED_VALUE, RegistryValueKind.DWord);
-                RegHelper.SetValue(RegistryHive.LocalMachine, _322_NET_FRAMEWORK32_PATH, _322_USE_LATEST_CLR, ENABLED_VALUE, RegistryValueKind.DWord);
-                return;
-            }
-
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, _322_NET_FRAMEWORK64_PATH, _322_USE_LATEST_CLR);
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, _322_NET_FRAMEWORK32_PATH, _322_USE_LATEST_CLR);
-        }
-
-        public static void _323(bool IsChecked) => WmiHelper.SetNetworkAdaptersPowerSave(IsChecked);
-
-        public static void _325(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE);
-
-        public static void _326(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, CONTROL_PANEL_USER_PROFILE_PATH, INPUT_METHOD_OVERRIDE, INPUT_ENG_VALUE, RegistryValueKind.String);
-
-        public static void _328(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
+        public static void _325(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                 USER_SHELL_FOLDERS_PATH,
                                                                     IMAGES_FOLDER,
-                                                                        RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _328_DESKTOP_FOLDER),
+                                                                        RegHelper.GetStringValue(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, _325_DESKTOP_FOLDER),
                                                                             RegistryValueKind.ExpandString);
 
-        public static void _329(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER);
+        public static void _326(bool _) => RegHelper.DeleteKey(RegistryHive.CurrentUser, USER_SHELL_FOLDERS_PATH, IMAGES_FOLDER);
 
-        public static void _331(bool _) => OsHelper.SetRecommendedTroubleshooting(_331_AUTOMATICALLY_VALUE);
+        public static void _328(bool _) => OsHelper.SetRecommendedTroubleshooting(_328_AUTOMATICALLY_VALUE);
 
-        public static void _332(bool _) => OsHelper.SetRecommendedTroubleshooting(_332_DEFAULT_VALUE);
+        public static void _329(bool _) => OsHelper.SetRecommendedTroubleshooting(_329_DEFAULT_VALUE);
 
-        public static void _333(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+        public static void _330(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         ADVANCED_EXPLORER_PATH,
-                                                                            _333_SEPARATE_PROCESS,
+                                                                            _330_SEPARATE_PROCESS,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _334(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
-                                                                        _334_RESERVE_MANAGER_PATH,
-                                                                            _334_SHIPPED_RESERVES,
+        public static void _331(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        _331_RESERVE_MANAGER_PATH,
+                                                                            _331_SHIPPED_RESERVES,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _335(bool IsChecked)
+        public static void _332(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, _335_TYPELIB_PATH);
+                RegHelper.DeleteSubKeyTree(RegistryHive.CurrentUser, _332_TYPELIB_PATH);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.CurrentUser, _335_TYPELIB_WIN64_PATH, string.Empty, string.Empty);
+            RegHelper.SetValue(RegistryHive.CurrentUser, _332_TYPELIB_WIN64_PATH, string.Empty, string.Empty);
         }
 
-        public static void _336(bool IsChecked) => RegHelper.SetValue(RegistryHive.Users,
-                                                                        _336_DEFAULT_KEYBOARD_PATH,
-                                                                            _336_INITIAL_INDICATORS,
+        public static void _333(bool IsChecked) => RegHelper.SetValue(RegistryHive.Users,
+                                                                        _333_DEFAULT_KEYBOARD_PATH,
+                                                                            _333_INITIAL_INDICATORS,
+                                                                                IsChecked ? _333_ENABLED_VALUE
+                                                                                          : _333_DISABLED_VALUE,
+                                                                                    RegistryValueKind.String);
+
+        public static void _334(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, _334_KEYBOARD_LAYOUT_PATH, _334_SCAN_CODE);
+                return;
+            }
+
+            RegHelper.SetValue(RegistryHive.LocalMachine, _334_KEYBOARD_LAYOUT_PATH, _334_SCAN_CODE, _334_DISABLED_VALUE, RegistryValueKind.Binary);
+        }
+
+        public static void _335(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        _335_STICKY_KEYS_PATH,
+                                                                            _335_FLAGS,
+                                                                                IsChecked ? _335_ENABLED_VALUE
+                                                                                          : _335_DISABLED_VALUE,
+                                                                                    RegistryValueKind.String);
+
+        public static void _336(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
+                                                                        _336_AUTOPLAY_HANDLERS_PATH,
+                                                                            _336_AUTOPLAY,
                                                                                 IsChecked ? _336_ENABLED_VALUE
                                                                                           : _336_DISABLED_VALUE,
-                                                                                    RegistryValueKind.String);
+                                                                                    RegistryValueKind.DWord);
 
-        public static void _337(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, _337_KEYBOARD_LAYOUT_PATH, _337_SCAN_CODE);
-                return;
-            }
-
-            RegHelper.SetValue(RegistryHive.LocalMachine, _337_KEYBOARD_LAYOUT_PATH, _337_SCAN_CODE, _337_DISABLED_VALUE, RegistryValueKind.Binary);
-        }
+        public static void _337(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+                                                                        _337_THUMBNAIL_CACHE_PATH,
+                                                                            _337_AUTORUN,
+                                                                                IsChecked ? _337_ENABLED_VALUE
+                                                                                          : _337_DISABLED_VALUE,
+                                                                                    RegistryValueKind.DWord);
 
         public static void _338(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        _338_STICKY_KEYS_PATH,
-                                                                            _338_FLAGS,
-                                                                                IsChecked ? _338_ENABLED_VALUE
-                                                                                          : _338_DISABLED_VALUE,
-                                                                                    RegistryValueKind.String);
-
-        public static void _339(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                        _339_AUTOPLAY_HANDLERS_PATH,
-                                                                            _339_AUTOPLAY,
-                                                                                IsChecked ? _339_ENABLED_VALUE
-                                                                                          : _339_DISABLED_VALUE,
-                                                                                    RegistryValueKind.DWord);
-
-        public static void _340(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
-                                                                        _340_THUMBNAIL_CACHE_PATH,
-                                                                            _340_AUTORUN,
-                                                                                IsChecked ? _340_ENABLED_VALUE
-                                                                                          : _340_DISABLED_VALUE,
-                                                                                    RegistryValueKind.DWord);
-
-        public static void _341(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         WINLOGON_PATH,
-                                                                            _341_RESTART_APPS,
+                                                                            _338_RESTART_APPS,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _342(bool IsChecked)
+        public static void _339(bool IsChecked)
         {
             if (IsChecked)
             {
-                FirewallHelper.SetGroupRule(profileMask: 2, enable: true, _342_FILE_PRINTER_SHARING_GROUP, _342_NETWORK_DISCOVERY_GROUP);
-                _ = PowerShell.Create().AddCommand(_342_SET_PROFILE_PS).AddParameter(_342_NET_CATEGORY_PARAM, _342_PRIVATE_VALUE).Invoke();
+                FirewallHelper.SetGroupRule(profileMask: 2, enable: true, _339_FILE_PRINTER_SHARING_GROUP, _339_NETWORK_DISCOVERY_GROUP);
+                _ = PowerShell.Create().AddCommand(_339_SET_PROFILE_PS).AddParameter(_339_NET_CATEGORY_PARAM, _339_PRIVATE_VALUE).Invoke();
                 return;
             }
 
-            FirewallHelper.SetGroupRule(profileMask: 2, enable: false, _342_FILE_PRINTER_SHARING_GROUP, _342_NETWORK_DISCOVERY_GROUP);
+            FirewallHelper.SetGroupRule(profileMask: 2, enable: false, _339_FILE_PRINTER_SHARING_GROUP, _339_NETWORK_DISCOVERY_GROUP);
         }
 
-        public static void _343(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+        public static void _340(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
                                                                         UPDATE_UX_SETTINGS_PATH,
-                                                                            _343_ACTIVE_HOURS,
-                                                                                IsChecked ? _343_AUTO_STATE
-                                                                                          : _343_MANUAL_STATE,
+                                                                            _340_ACTIVE_HOURS,
+                                                                                IsChecked ? _340_AUTO_STATE
+                                                                                          : _340_MANUAL_STATE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _344(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
+        public static void _341(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
                                                                         UPDATE_UX_SETTINGS_PATH,
-                                                                            _344_IS_EXPEDITED,
+                                                                            _341_IS_EXPEDITED,
                                                                                 IsChecked ? ENABLED_VALUE
                                                                                           : DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _346(bool _)
+        public static void _343(bool _)
         {
             var windowsTerminalAppx = UwpHelper.GetPackage(UWP_WINDOWS_TERMINAL);
             var windowsTerminalPath = $@"SOFTWARE\Classes\PackagedCom\Package\{windowsTerminalAppx.Id.FullName}\Class";
@@ -902,50 +891,50 @@ namespace SophiApp.Customisations
             }
         }
 
-        public static void _347(bool _)
+        public static void _344(bool _)
         {
             RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_CONSOLE, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
             RegHelper.SetValue(RegistryHive.CurrentUser, CONSOLE_STARTUP_PATH, DELEGATION_TERMINAL, DELEGATION_CONSOLE_VALUE, RegistryValueKind.String);
         }
 
-        public static void _349(bool _)
+        public static void _346(bool _)
         {
-            var properties = MsiHelper.GetProperties(Directory.GetFiles(_348_INSTALLER_PATH, _348_MSI_MASK))
-                                      .First(property => property[_348_PRODUCT_NAME] == _348_PCHC);
+            var properties = MsiHelper.GetProperties(Directory.GetFiles(_346_INSTALLER_PATH, _346_MSI_MASK))
+                                      .First(property => property[_346_PRODUCT_NAME] == _346_PCHC);
 
-            ProcessHelper.StartWait(_348_MSIEXEC_EXE, $"/uninstall {properties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
-            RegHelper.SetValue(RegistryHive.LocalMachine, _348_PCHC_PATH, _348_PCHC_PREVIOUS_UNINSTALL, ENABLED_VALUE, RegistryValueKind.DWord);
+            ProcessHelper.StartWait(_346_MSIEXEC_EXE, $"/uninstall {properties["Path"]} /quiet /norestart", ProcessWindowStyle.Hidden);
+            RegHelper.SetValue(RegistryHive.LocalMachine, _346_PCHC_PATH, _346_PCHC_PREVIOUS_UNINSTALL, ENABLED_VALUE, RegistryValueKind.DWord);
         }
 
-        public static void _351(bool _) => OneDriveHelper.Install();
+        public static void _348(bool _) => OneDriveHelper.Install();
 
-        public static void _352(bool _) => OneDriveHelper.Uninstall();
+        public static void _349(bool _) => OneDriveHelper.Uninstall();
 
-        public static void _354(bool _)
+        public static void _351(bool _)
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
-            var installer = $"{temp}\\{_349_VC_REDISTRX64_EXE}";
-            WebHelper.Download(_349_DOWNLOAD_URL, installer);
-            ProcessHelper.StartWait(installer, _349_VC_REDISTRX64_INSTALL_ARGS);
+            var installer = $"{temp}\\{VC_REDISTRX64_EXE}";
+            WebHelper.Download(VC_DOWNLOAD_URL, installer);
+            ProcessHelper.StartWait(installer, VC_REDISTRX64_INSTALL_ARGS);
             FileHelper.TryDeleteFile(installer);
-            Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
+            Directory.EnumerateFileSystemEntries(temp, VC_REDISTRX64_LOG_PATTERN)
                      .ToList()
                      .ForEach(log => FileHelper.TryDeleteFile(log));
         }
 
-        public static void _355(bool _)
+        public static void _352(bool _)
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
-            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _349_VC_REDISTRX64_REGISTRY_PATH).First(key => key.Contains(_349_REDISTRX64_REGISTRY_NAME_PATTERN));
+            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _352_VC_REDISTRX64_REGISTRY_PATH).First(key => key.Contains(_352_REDISTRX64_REGISTRY_NAME_PATTERN));
             var registryGuidRedistrLib = RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, null);
-            var localRedistrLibPath = $@"{ENVIRONMENT_PROGRAM_DATA}\{_349_PACKAGE_CACHE_NAME}\{registryGuidRedistrLib}\{_349_VC_REDISTRX64_EXE}";
+            var localRedistrLibPath = $@"{ENVIRONMENT_PROGRAM_DATA}\{_352_PACKAGE_CACHE_NAME}\{registryGuidRedistrLib}\{VC_REDISTRX64_EXE}";
             var localRedistrLib = FileVersionInfo.GetVersionInfo(localRedistrLibPath);
 
-            if (localRedistrLib.ProductName.Contains(_349_VC_REDISTRX64_NAME_PATTERN))
+            if (localRedistrLib.ProductName.Contains(_352_VC_REDISTRX64_NAME_PATTERN))
             {
-                ProcessHelper.StartWait(localRedistrLibPath, _349_VC_REDISTRX64_UNINSTALL_ARGS);
+                ProcessHelper.StartWait(localRedistrLibPath, _352_VC_REDISTRX64_UNINSTALL_ARGS);
 
-                Directory.EnumerateFileSystemEntries(temp, _349_VC_REDISTRX64_LOG_PATTERN)
+                Directory.EnumerateFileSystemEntries(temp, VC_REDISTRX64_LOG_PATTERN)
                          .ToList()
                          .ForEach(log => FileHelper.TryDeleteFile(log));
             }
