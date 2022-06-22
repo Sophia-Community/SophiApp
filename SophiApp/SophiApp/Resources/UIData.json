@@ -3404,16 +3404,16 @@
   {
     "Id": 353,
     "Header": {
-      "EN": "The latest .NET Runtime 6 x86",
-      "RU": "Последняя версия .NET Runtime 6 x86",
+      "EN": "The latest .NET Desktop Runtime 6 x86",
+      "RU": "Последняя версия .NET Desktop Runtime 6 x86",
       "DE": "",
       "UA": "",
       "IT": "",
       "TR": ""
     },
     "Description": {
-      "EN": "The .NET Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
-      "RU": "Пакет .NET Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
+      "EN": "The .NET Desktop Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
+      "RU": "Пакет .NET Desktop Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": "",
       "UA": "",
       "IT": "",
@@ -3470,16 +3470,16 @@
   {
     "Id": 356,
     "Header": {
-      "EN": "The latest .NET Runtime 6 x64",
-      "RU": "Последняя версия .NET Runtime 6 x64",
+      "EN": "The latest .NET Desktop Runtime 6 x64",
+      "RU": "Последняя версия .NET Desktop Runtime 6 x64",
       "DE": "",
       "UA": "",
       "IT": "",
       "TR": ""
     },
     "Description": {
-      "EN": ".NET Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
-      "RU": "Пакет .NET Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
+      "EN": ".NET Desktop Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
+      "RU": "Пакет .NET Desktop Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": "",
       "UA": "",
       "IT": "",
