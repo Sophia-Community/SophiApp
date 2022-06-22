@@ -3402,6 +3402,138 @@
     "Windows11Supported": true
   },
   {
+    "Id": 353,
+    "Header": {
+      "EN": "The latest .NET Runtime 6 x86",
+      "RU": "Последняя версия .NET Runtime 6 x86",
+      "DE": "",
+      "UA": "",
+      "IT": "",
+      "TR": ""
+    },
+    "Description": {
+      "EN": "The .NET Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
+      "RU": "Пакет .NET Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
+      "DE": "",
+      "UA": "",
+      "IT": "",
+      "TR": ""
+    },
+    "Type": "MsNETButtonGroup",
+    "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 354,
+        "ChildHeader": {
+          "EN": "Install",
+          "RU": "Установить",
+          "DE": "Installieren",
+          "UA": "Встановити",
+          "IT": "Installa",
+          "TR": "Kur"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": "",
+          "TR": ""
+        },
+        "Type": "Button"
+      },
+      {
+        "Id": 355,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla",
+          "TR": "Kaldır"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": "",
+          "TR": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 353,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
+    "Id": 356,
+    "Header": {
+      "EN": "The latest .NET Runtime 6 x64",
+      "RU": "Последняя версия .NET Runtime 6 x64",
+      "DE": "",
+      "UA": "",
+      "IT": "",
+      "TR": ""
+    },
+    "Description": {
+      "EN": ".NET Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
+      "RU": "Пакет .NET Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
+      "DE": "",
+      "UA": "",
+      "IT": "",
+      "TR": ""
+    },
+    "Type": "MsNETButtonGroup",
+    "Tag": "System",
+    "ChildElements": [
+      {
+        "Id": 357,
+        "ChildHeader": {
+          "EN": "Install",
+          "RU": "Установить",
+          "DE": "Installieren",
+          "UA": "Встановити",
+          "IT": "Installa",
+          "TR": "Kur"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": "",
+          "TR": ""
+        },
+        "Type": "Button"
+      },
+      {
+        "Id": 358,
+        "ChildHeader": {
+          "EN": "Uninstall",
+          "RU": "Удалить",
+          "DE": "Deinstallieren",
+          "UA": "Видалити",
+          "IT": "Disinstalla",
+          "TR": "Kaldır"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": "",
+          "TR": ""
+        },
+        "Type": "Button"
+      }
+    ],
+    "ViewId": 356,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
     "Id": 500,
     "Header": {
       "EN": "Download and install the HEVC video codec (H.265)",
