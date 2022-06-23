@@ -3408,7 +3408,7 @@
       "RU": "Последняя версия .NET Desktop Runtime 6 x86",
       "DE": "",
       "UA": "",
-      "IT": "",
+      "IT": "L'ultima versione del .NET Desktop Runtime 6 x86",
       "TR": ""
     },
     "Description": {
@@ -3416,7 +3416,7 @@
       "RU": "Пакет .NET Desktop Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": "",
       "UA": "",
-      "IT": "",
+      "IT": "Il .NET Desktop Runtime 6 x86 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
       "TR": ""
     },
     "Type": "MsNETButtonGroup",
@@ -3474,7 +3474,7 @@
       "RU": "Последняя версия .NET Desktop Runtime 6 x64",
       "DE": "",
       "UA": "",
-      "IT": "",
+      "IT": "L'ultima versione del .NET Desktop Runtime 6 x64",
       "TR": ""
     },
     "Description": {
@@ -3482,7 +3482,7 @@
       "RU": "Пакет .NET Desktop Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": "",
       "UA": "",
-      "IT": "",
+      "IT": "Il .NET Desktop Runtime 6 x64 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
       "TR": ""
     },
     "Type": "MsNETButtonGroup",
