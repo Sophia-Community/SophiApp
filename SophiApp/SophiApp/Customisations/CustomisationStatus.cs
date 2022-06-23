@@ -443,6 +443,32 @@ namespace SophiApp.Customisations
                                      ? false
                                      : throw new VisualRedistrLibsNotInstalled();
 
+        public static bool _354()
+        {
+            if (HttpHelper.IsOnline)
+            {
+                var cloudNetVersion = AppHelper.CloudNet6Version.LatestRelease;
+                return DotNetHelper.HasInstalled(cloudNetVersion, DotNetRid.Win_x86)
+                        ? throw new DotNetInstalledException(cloudNetVersion)
+                        : false;
+            }
+
+            throw new NoInternetConnectionException();
+        }
+
+        public static bool _357()
+        {
+            if (HttpHelper.IsOnline)
+            {
+                var cloudNetVersion = AppHelper.CloudNet6Version.LatestRelease;
+                return DotNetHelper.HasInstalled(cloudNetVersion, DotNetRid.Win_x64)
+                        ? throw new DotNetInstalledException(cloudNetVersion)
+                        : false;
+            }
+
+            throw new NoInternetConnectionException();
+        }
+
         public static bool _500() => HttpHelper.IsOnline
                                      ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
                                         ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)

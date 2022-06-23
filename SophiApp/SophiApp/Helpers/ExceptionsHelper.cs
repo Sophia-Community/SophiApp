@@ -16,6 +16,20 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class DotNetInstalledException : Exception
+    {
+        public DotNetInstalledException(Version version) : base($".Net version {version} already installed on this PC")
+        {
+        }
+    }
+
+    internal class DotNetNotInstalledException : Exception
+    {
+        public DotNetNotInstalledException(Version version) : base($".Net version {version} is not installed on this PC")
+        {
+        }
+    }
+
     internal class FileNotExistException : Exception
     {
         public FileNotExistException(string filePath) : base($"File does not exist \"{filePath}\"")

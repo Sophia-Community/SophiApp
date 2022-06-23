@@ -119,17 +119,23 @@
     <Compile Include="Controls\MsCppPackageButtonGroup.xaml.cs">
       <DependentUpon>MsCppPackageButtonGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MsNETButtonGroup.xaml.cs">
+      <DependentUpon>MsNETButtonGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OneDriveButtonGroup.xaml.cs">
       <DependentUpon>OneDriveButtonGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PcHealthCheckButtonGroup.xaml.cs">
       <DependentUpon>PcHealthCheckButtonGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dto\MsNetDto.cs" />
+    <Compile Include="Helpers\DotNetHelper.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
     <Compile Include="Helpers\VisualRedistrLibsHelper.cs" />
     <Compile Include="Helpers\WindowsDefenderHelper.cs" />
     <Compile Include="Models\AdvancedButtonGroup.cs" />
     <Compile Include="Models\MsCppPackageButtonGroup.cs" />
+    <Compile Include="Models\MsNETButtonGroup.cs" />
     <Compile Include="Models\OneDriveButtonGroup.cs" />
     <Compile Include="Models\PcHealthCheckButtonGroup.cs" />
     <Compile Include="StartupConditions\DefenderWarningCondition.cs" />
@@ -424,6 +430,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MsCppPackageButtonGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MsNETButtonGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,6 +27,8 @@
     controls:IconWinCheckBox.MouseLeave="TextedElement_MouseLeave"
     controls:MsCppPackageButtonGroup.MouseEnter="TextedElement_MouseEnter"
     controls:MsCppPackageButtonGroup.MouseLeave="TextedElement_MouseLeave"
+    controls:MsNETButtonGroup.MouseEnter="TextedElement_MouseEnter"
+    controls:MsNETButtonGroup.MouseLeave="TextedElement_MouseLeave"
     controls:OneDriveButtonGroup.MouseEnter="TextedElement_MouseEnter"
     controls:OneDriveButtonGroup.MouseLeave="TextedElement_MouseLeave"
     controls:PcHealthCheckButtonGroup.MouseEnter="TextedElement_MouseEnter"

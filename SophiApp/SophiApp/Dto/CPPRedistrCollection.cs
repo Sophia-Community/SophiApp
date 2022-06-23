@@ -16,9 +16,7 @@ namespace SophiApp.Dto
         public string Download { get; set; }
         public string Install { get; set; }
         public string Name { get; set; }
-
         public string ProductCode { get; set; }
-
         public uint Release { get; set; }
         public string SilentInstall { get; set; }
         public string SilentUninstall { get; set; }
