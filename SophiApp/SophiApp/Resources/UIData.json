@@ -3406,7 +3406,7 @@
     "Header": {
       "EN": "The latest .NET Desktop Runtime 6 x86",
       "RU": "Последняя версия .NET Desktop Runtime 6 x86",
-      "DE": "",
+      "DE": "Neueste .NET Desktop Runtime 6 x86",
       "UA": "",
       "IT": "",
       "TR": ""
@@ -3414,7 +3414,7 @@
     "Description": {
       "EN": "The .NET Desktop Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
       "RU": "Пакет .NET Desktop Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
-      "DE": "",
+      "DE": ".NET Desktop Runtime 6 x86 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
       "UA": "",
       "IT": "",
       "TR": ""
@@ -3472,7 +3472,7 @@
     "Header": {
       "EN": "The latest .NET Desktop Runtime 6 x64",
       "RU": "Последняя версия .NET Desktop Runtime 6 x64",
-      "DE": "",
+      "DE": "Neueste .NET Desktop Runtime 6 x64",
       "UA": "",
       "IT": "",
       "TR": ""
@@ -3480,7 +3480,7 @@
     "Description": {
       "EN": ".NET Desktop Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
       "RU": "Пакет .NET Desktop Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
-      "DE": "",
+      "DE": ".NET Desktop Runtime 6 x64 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
       "UA": "",
       "IT": "",
       "TR": ""
