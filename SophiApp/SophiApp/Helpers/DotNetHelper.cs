@@ -20,11 +20,23 @@ namespace SophiApp.Helpers
             {DotNetRid.Win_x86, "win-x86" }, {DotNetRid.Win_x64, "win-x64" }
         };
 
-        internal static bool HasInstalled(Version version, DotNetRid rid)
+        internal static bool IsInstalled(Version version, DotNetRid rid)
         {
-            var runtime = $"dotnet-runtime-{version}-{Platform[rid]}.exe";
+            var runtime = $"windowsdesktop-runtime-{version}-{Platform[rid]}.exe";
             return Directory.GetFileSystemEntries(ENVIRONMENT_PACKAGE_CACHE, runtime, SearchOption.AllDirectories)
                             .Count() == 1;
+        }
+
+        internal static bool IsInstalled(string runtime, DotNetRid rid)
+        {
+            return Directory.GetFileSystemEntries(ENVIRONMENT_PACKAGE_CACHE, runtime, SearchOption.AllDirectories)
+                            .Count() == 1;
+        }
+
+        internal static void Uninstall(string runtime)
+        {
+            var runtimeFile = Directory.GetFileSystemEntries(ENVIRONMENT_PACKAGE_CACHE, runtime, SearchOption.AllDirectories).First();
+            ProcessHelper.StartWait(runtimeFile, "/uninstall /passive /norestart");
         }
     }
 }

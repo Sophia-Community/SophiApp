@@ -448,26 +448,34 @@ namespace SophiApp.Customisations
             if (HttpHelper.IsOnline)
             {
                 var cloudNetVersion = AppHelper.CloudNet6Version.LatestRelease;
-                return DotNetHelper.HasInstalled(cloudNetVersion, DotNetRid.Win_x86)
+                return DotNetHelper.IsInstalled(cloudNetVersion, DotNetRid.Win_x86)
                         ? throw new DotNetInstalledException(cloudNetVersion)
                         : false;
             }
 
             throw new NoInternetConnectionException();
         }
+
+        public static bool _355() => DotNetHelper.IsInstalled("windowsdesktop-runtime-6.*-win-x86.exe", DotNetRid.Win_x86)
+                                        ? false
+                                        : throw new FileNotExistException("windowsdesktop-runtime-6.*-win-x86.exe");
 
         public static bool _357()
         {
             if (HttpHelper.IsOnline)
             {
                 var cloudNetVersion = AppHelper.CloudNet6Version.LatestRelease;
-                return DotNetHelper.HasInstalled(cloudNetVersion, DotNetRid.Win_x64)
+                return DotNetHelper.IsInstalled(cloudNetVersion, DotNetRid.Win_x64)
                         ? throw new DotNetInstalledException(cloudNetVersion)
                         : false;
             }
 
             throw new NoInternetConnectionException();
         }
+
+        public static bool _358() => DotNetHelper.IsInstalled("windowsdesktop-runtime-6.*-win-x64.exe", DotNetRid.Win_x86)
+                                        ? false
+                                        : throw new FileNotExistException("windowsdesktop-runtime-6.*-win-x64.exe");
 
         public static bool _500() => HttpHelper.IsOnline
                                      ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
