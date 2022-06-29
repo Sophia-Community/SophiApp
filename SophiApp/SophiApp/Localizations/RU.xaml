@@ -94,6 +94,6 @@
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копировать заголовок</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Открыть Планировщик заданий</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">После применения настроек перезагрузите ваш ПК</system:String>
-    <system:String x:Key="Localization.Loading">Идет считывание текущих настроек ОС...</system:String>
+    <system:String x:Key="Localization.Loading">Чтение текущих настроек...</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">Открыть в Терминале Windows</system:String>
 </ResourceDictionary>

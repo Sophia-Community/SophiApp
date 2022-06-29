@@ -94,6 +94,6 @@
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Copy header</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Open Task Scheduler</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Please reboot your PC after applying settings</system:String>
-    <system:String x:Key="Localization.Loading">The current OS settings are being read...</system:String>
+    <system:String x:Key="Localization.Loading">Reading current settings...</system:String>
     <system:String x:Key="WindowsTerminal.OpenIsAdmin">Open in Windows Terminal</system:String>
 </ResourceDictionary>

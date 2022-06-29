@@ -41,50 +41,8 @@
       "IT": "Utilizzando Windows, il dispositivo invia a Microsoft dati necessari per mantenere il sistema sicuro, aggiornato e funzionante.",
       "TR": "Windows kullanmanın bir parçası olarak, cihazınız Microsoft'a cihazınızın ve işletim sisteminizin güvenli, güncel ve beklendiği gibi çalışması için gerekli olan sınırlı bir veri seti gönderir."
     },
-    "Type": "RadioGroup",
+    "Type": "CheckBox",
     "Tag": "Privacy",
-    "ChildElements": [
-      {
-        "Id": 102,
-        "ChildHeader": {
-          "EN": "Default",
-          "RU": "По умолчанию",
-          "DE": "Standardmäßig",
-          "UA": "За замовчуванням",
-          "IT": "Default",
-          "TR": "Varsayılan"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": "",
-          "TR": ""
-        },
-        "Type": "RadioButton"
-      },
-      {
-        "Id": 103,
-        "ChildHeader": {
-          "EN": "Minimal",
-          "RU": "Минимальный",
-          "DE": "Minimal",
-          "UA": "Мінімальний",
-          "IT": "Minimo",
-          "TR": "En az"
-        },
-        "ChildDescription": {
-          "EN": "",
-          "RU": "",
-          "DE": "",
-          "UA": "",
-          "IT": "",
-          "TR": ""
-        },
-        "Type": "RadioButton"
-      }
-    ],
     "ViewId": 101,
     "Windows10Supported": true,
     "Windows11Supported": true
@@ -92,12 +50,12 @@
   {
     "Id": 104,
     "Header": {
-      "EN": "The Windows Error Reporting",
-      "RU": "Запись отчетов об ошибках Windows",
-      "DE": "Windows-Fehlerberichterstattung",
-      "UA": "Запис звітів про помилки Windows",
-      "IT": "Windows Error Reporting",
-      "TR": "Windows Hata Bildirimi"
+      "EN": "Send optional diagnostic data",
+      "RU": "Отправлять необязательные диагностические данные",
+      "DE": "Optionale Diagnosedaten senden",
+      "UA": "Надсилати необов'язкові діагностичні дані",
+      "IT": "Invia dati di diagnostica facoltativi",
+      "TR": "İsteğe bağlı tanılama verilerini gönder"
     },
     "Description": {
       "EN": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.",
