@@ -960,7 +960,7 @@
           "DE": "Im detaillierten Modus",
           "UA": "В розгорнутому вигляді",
           "IT": "Nella modalità dettagliata",
-          "TR": "ayrıntılı modda"
+          "TR": "Ayrıntılı modda"
         },
         "ChildDescription": {
           "EN": "",
@@ -980,7 +980,7 @@
           "DE": "Im Kompaktmodus",
           "UA": "В згорнутому вигляді",
           "IT": "Nella modalità compatta",
-          "TR": "kompakt modda"
+          "TR": "Kompakt modda"
         },
         "ChildDescription": {
           "EN": "",
@@ -1517,7 +1517,7 @@
       "DE": "Chat-Symbol (Microsoft Teams) in der Taskleiste anzeigen",
       "UA": "Відобразити кнопку чату (Microsoft Teams) на панелі завдань",
       "IT": "Mostra l'icona delle chat (Microsoft Teams) sulla barra delle applicazioni",
-      "TR": "Sgörev çubuğundaki Sohbet simgesinin (Microsoft Teams) nasıl"
+      "TR": "Görev çubuğunda Sohbet simgesini (Microsoft Teams) göster"
     },
     "Description": {
       "EN": "",
@@ -2034,7 +2034,7 @@
           "DE": "Mehr angeheftete Elemente",
           "UA": "Iншi закрiплення",
           "IT": "Altri elementi ancorati",
-          "TR": ""
+          "TR": "Daha fazla sabitleme"
         },
         "ChildDescription": {
           "EN": "",
@@ -2054,7 +2054,7 @@
           "DE": "Mehr angeheftete Empfehlungen",
           "UA": "Бiльше рекомендацiй",
           "IT": "Altri elementi consigliati",
-          "TR": ""
+          "TR": "Daha fazla öneri"
         },
         "ChildDescription": {
           "EN": "",
@@ -3164,7 +3164,7 @@
           "DE": "Windows Console Host",
           "UA": "Вузол консолі Windows",
           "IT": "Windows Console Host",
-          "TR": "Windows Console Host"
+          "TR": "Windows Konsol Host"
         },
         "ChildDescription": {
           "EN": "",
@@ -3367,7 +3367,7 @@
       "DE": "Neueste .NET Desktop Runtime 6 x86",
       "UA": "",
       "IT": "L'ultima versione del .NET Desktop Runtime 6 x86",
-      "TR": ""
+      "TR": "En son .NET Desktop Runtime 6 x86"
     },
     "Description": {
       "EN": "The .NET Desktop Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
@@ -3375,7 +3375,7 @@
       "DE": ".NET Desktop Runtime 6 x86 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
       "UA": "",
       "IT": "Il .NET Desktop Runtime 6 x86 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
-      "TR": ""
+      "TR": ".NET Desktop Runtime 6 x86, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
     },
     "Type": "MsNETButtonGroup",
     "Tag": "System",
@@ -3433,7 +3433,7 @@
       "DE": "Neueste .NET Desktop Runtime 6 x64",
       "UA": "",
       "IT": "L'ultima versione del .NET Desktop Runtime 6 x64",
-      "TR": ""
+      "TR": "En son .NET Desktop Runtime 6 x64"
     },
     "Description": {
       "EN": ".NET Desktop Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
@@ -3441,7 +3441,7 @@
       "DE": ".NET Desktop Runtime 6 x64 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
       "UA": "",
       "IT": "Il .NET Desktop Runtime 6 x64 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
-      "TR": ""
+      "TR": ".NET Desktop Runtime 6 x64, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
     },
     "Type": "MsNETButtonGroup",
     "Tag": "System",
