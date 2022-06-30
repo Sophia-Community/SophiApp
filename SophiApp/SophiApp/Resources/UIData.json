@@ -58,12 +58,12 @@
       "TR": "İsteğe bağlı tanılama verilerini gönder"
     },
     "Description": {
-      "EN": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.",
-      "RU": "Функция создания отчетов об ошибках позволяет пользователям уведомлять Майкрософт о сбоях приложений, сбоях ядра, неотвечающих приложениях и других проблемах, связанных с приложениями. Корпорация Майкрософт может использовать функцию отчетов об ошибках для предоставления клиентам сведений об устранении неполадок, решениях или обновлениях для конкретных проблем.",
-      "DE": "Mithilfe von Fehlerberichten ermöglicht Anwendern Microsoft über Software- und Kernel-Fehler, nicht mehr reagierenden Anwendung und anderen anwendungsbezogenen Probleme benachrichtigen. So kann Microsoft die gesammelten Informationen über Fehlerberichterstellung verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen uUpdates für ihre spezifischen Probleme zur Verfügung zu stellen.",
-      "UA": "Функція створення звітів про помилки дозволяє користувачам повідомляти Майкрософт про збої програм, збої ядра, програми, що не відповідають, та інші проблеми, пов'язані з програмами. Корпорація Майкрософт може використовувати функцію звітів про помилки для надання клієнтам відомостей про виправлення неполадок, рішення або оновлення для конкретних проблем.",
+      "EN": "Help Microsoft imrpove your Windows exprereince and fix problems more quickly by sending us additional diagnostic data.",
+      "RU": "Помогие корпорации Майкрософт улучшить работу Windows и устранять проблемы быстрее, отправляя дополнительные диагностические данные.",
+      "DE": "Helfen Sie Microsoft, Ihre Windows-Erfahnung zu verbessern und Probleme schneller zu beheben, indem Sie uns zusätzliche Diagnosedaten senden.",
+      "UA": "Щоб допомогти корпорації Майкрософт покращити роботу з Windows i усувати проблеми швидше, надсилайте нам додатковi дiагностичнi данi.",
       "IT": "Il servizio di segnalazine degli errori permette agli utenti di segnalare a  Microsoft i crash delle app e del kernel, cosicchè vengano fornite soluzione ai problemi riportati.",
-      "TR": "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."
+      "TR": "Bize ek tanılama verileri göndererek Microsoft'un Windows deneyiminizi geliştirmesine ve sorunları daha hızlı çözmesine yardımci olun."
     },
     "Type": "CheckBox",
     "Tag": "Privacy",

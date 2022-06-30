@@ -21,7 +21,7 @@
     <system:String x:Key="Conditions.RiskAcceptance">Ich bin mir des Risikos bewusst und übernehme die Verantwortung für eventuelle Schäden</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Betriebssystem vorsichtshalber neu installieren.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender defekt oder aus dem Betriebssystem entfernt</system:String>
-    <system:String x:Key="Conditions.SpoolerCorrupted">The &quot;Print Manager&quot; service has been removed from the OS</system:String>
+    <system:String x:Key="Conditions.SpoolerCorrupted">Der Dienst &quot;Print Spooler&quot; wurde aus dem Betriebssystem entfernt</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Die Stabilität des Windows-Betriebssystems kann durch die Verwendung des</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater-Skripts von Sycnex beeinträchtigt worden sein. Betriebssystem vorsichtshalber neu installieren.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Die Build-Version Ihres Betriebssystems ist niedriger als die unterstützte Version.</system:String>

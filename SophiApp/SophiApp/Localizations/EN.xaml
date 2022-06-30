@@ -21,7 +21,7 @@
     <system:String x:Key="Conditions.RiskAcceptance">I understand the risk and agree to be responsible for any possible damage</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender broken or removed from the OS</system:String>
-    <system:String x:Key="Conditions.SpoolerCorrupted">The &quot;Print Manager&quot; service has been removed from the OS</system:String>
+    <system:String x:Key="Conditions.SpoolerCorrupted">The &quot;Print Spooler&quot; service was removed from the OS</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex. Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your OS build version is lower than the supported one.</system:String>
