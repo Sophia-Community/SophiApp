@@ -53,6 +53,21 @@ namespace SophiApp.Helpers
 
         internal static bool ServiceExist(string serviceName) => ServiceController.GetServices().Any(service => service.ServiceName == serviceName);
 
+        internal static void TryRestart(string serviceName)
+        {
+            try
+            {
+                var service = Get(serviceName);
+                if (service.StartType != ServiceStartMode.Disabled)
+                {
+                    Restart(serviceName);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         public static void SetStartMode(ServiceController svc, ServiceStartMode mode)
         {
             var scManagerHandle = OpenSCManager(null, null, SC_MANAGER_ALL_ACCESS);

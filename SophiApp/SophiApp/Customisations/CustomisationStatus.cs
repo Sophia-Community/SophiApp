@@ -478,9 +478,11 @@ namespace SophiApp.Customisations
                                         : throw new FileNotExistException("windowsdesktop-runtime-6.*-win-x64.exe");
 
         public static bool _500() => HttpHelper.IsOnline
-                                     ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
-                                        ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
-                                        : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS)
+                                     ? OsHelper.GetBuild() < 22517
+                                        ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+                                            ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
+                                            : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS)
+                                        : throw new WindowsBuildNotSupportedException()
                                      : throw new NoInternetConnectionException();
 
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)

@@ -177,6 +177,13 @@ namespace SophiApp.Helpers
         }
     }
 
+    internal class WindowsBuildNotSupportedException : Exception
+    {
+        public WindowsBuildNotSupportedException() : base("This OS build is not supported")
+        {
+        }
+    }
+
     internal class WindowsCapabilityNotInstalledException : Exception
     {
         public WindowsCapabilityNotInstalledException(string name) : base($"The Windows capability {name} wasn't installed in this OS")

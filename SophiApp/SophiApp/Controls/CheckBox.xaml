@@ -71,7 +71,8 @@
             <ControlTemplate.Triggers>
                 <DataTrigger Binding="{Binding Path=Status}" Value="DISABLED">
                     <Setter Property="IsEnabled" Value="False" />
-                    <Setter TargetName="BorderCheckBox" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{DynamicResource Brush.View.Background}" />
                     <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden" />
                     <Setter Property="Opacity" Value="0.50" />
                 </DataTrigger>

@@ -708,7 +708,7 @@ else
         };
 
         internal static readonly string _504_MS_STORE_RESET_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WSReset.exe";
-        internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "Device Driver Packages", "Language Pack", "Previous Installations", "Setup Log Files", "System error memory dump files", "System error minidump files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows ESD installation files", "Windows Upgrade Log Files" };
+        internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "BranchCache", "Device Driver Packages", "Language Pack", "Previous Installations", "Setup Log Files", "System error memory dump files", "System error minidump files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows ESD installation files", "Windows Upgrade Log Files" };
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
         internal static readonly string _811_WINDOWS_SANDBOX_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WindowsSandbox.exe";
         internal static readonly string _922_MS_WORDPAD_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows NT\Accessories\wordpad.exe";
