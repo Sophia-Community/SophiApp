@@ -55,16 +55,9 @@ namespace SophiApp.Helpers
 
         internal static void TryRestart(string serviceName)
         {
-            try
+            if (Get(serviceName).StartType != ServiceStartMode.Disabled)
             {
-                var service = Get(serviceName);
-                if (service.StartType != ServiceStartMode.Disabled)
-                {
-                    Restart(serviceName);
-                }
-            }
-            catch (Exception)
-            {
+                Restart(serviceName);
             }
         }
 

@@ -21,6 +21,7 @@
     <system:String x:Key="Conditions.RiskAcceptance">Riski anlıyorum ve olası herhangi bir hasardan sorumlu olmayı kabul ediyorum</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Her ihtimale karşı işletim sistemini yeniden yükleyin.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender bozuk veya işletim sisteminden kaldırıldı</system:String>
+    <system:String x:Key="Conditions.SpoolerCorrupted">The &quot;Print Manager&quot; service has been removed from the OS</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Windows işletim sistemi kararlılığı aşağıdakiler kullanılarak tehlikeye atılmış olabilir:</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex'ten Windows10Debloater komut dosyası. Her ihtimale karşı işletim sistemini yeniden yükleyin.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">İşletim sistemi derleme sürümünüz desteklenen sürümden daha düşük.</system:String>

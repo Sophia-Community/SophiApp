@@ -21,6 +21,7 @@
     <system:String x:Key="Conditions.RiskAcceptance">Я усвідомлюю ризик і згоден нести відповідальність за будь-яку можливу шкоду</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Про всяк випадок перевстановіть ОС.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender пошкоджено або видалено з ОС</system:String>
+    <system:String x:Key="Conditions.SpoolerCorrupted">The &quot;Print Manager&quot; service has been removed from the OS</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабільність Вашої ОС могла бути порушена використанням скрипту</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater від Sycnex. Про всяк випадок перевстановіть ОС.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версія збірки вашої ОС нижча підтримуваної.</system:String>

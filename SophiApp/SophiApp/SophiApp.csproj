@@ -143,6 +143,7 @@
     <Compile Include="StartupConditions\SingleAdminSessionCondition.cs" />
     <Compile Include="StartupConditions\SingleInstanceCondition.cs" />
     <Compile Include="StartupConditions\RebootRequiredCondition.cs" />
+    <Compile Include="StartupConditions\SpoolerNotCorruptedCondition.cs" />
     <Compile Include="StartupConditions\SycnexScriptCondition.cs" />
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>

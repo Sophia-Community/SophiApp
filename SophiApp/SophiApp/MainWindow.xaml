@@ -339,6 +339,13 @@
                         </StackPanel>
                     </views:ViewConditionsTemplate.TextContent>
                 </views:ViewConditionsTemplate>
+                <views:ViewConditionsTemplate x:Name="ViewSpoolerCorruptedCondition" Grid.Column="1" Panel.ZIndex="20" Tag="SpoolerCorrupted">
+                    <views:ViewConditionsTemplate.TextContent>
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Conditions.SpoolerCorrupted}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </views:ViewConditionsTemplate.TextContent>
+                </views:ViewConditionsTemplate>
                 <views:ViewConditionsTemplate x:Name="ViewNewVersionCondition" Grid.Column="1" Panel.ZIndex="20" Tag="NewVersion">
                     <views:ViewConditionsTemplate.TextContent>
                         <StackPanel>
