@@ -954,7 +954,15 @@ namespace SophiApp.Customisations
                      .ForEach(log => FileHelper.TryDeleteFile(log));
         }
 
-        public static void _355(bool _) => DotNetHelper.Uninstall("windowsdesktop-runtime-6.*-win-x86.exe");
+        public static void _355(bool _)
+        {
+            var temp = Environment.GetEnvironmentVariable(TEMP);
+            DotNetHelper.Uninstall("windowsdesktop-runtime-6.*-win-x86.exe");
+            Directory.EnumerateFileSystemEntries(temp, DOTNET_LOG_PATTERN)
+                     .ToList()
+                     .ForEach(log => FileHelper.TryDeleteFile(log));
+        }
+
 
         public static void _357(bool _)
         {
@@ -970,7 +978,14 @@ namespace SophiApp.Customisations
                      .ForEach(log => FileHelper.TryDeleteFile(log));
         }
 
-        public static void _358(bool _) => DotNetHelper.Uninstall("windowsdesktop-runtime-6.*-win-x64.exe");
+        public static void _358(bool _)
+        {
+            var temp = Environment.GetEnvironmentVariable(TEMP);
+            DotNetHelper.Uninstall("windowsdesktop-runtime-6.*-win-x64.exe");
+            Directory.EnumerateFileSystemEntries(temp, DOTNET_LOG_PATTERN)
+                     .ToList()
+                     .ForEach(log => FileHelper.TryDeleteFile(log));
+        }
 
         public static void _500(bool IsChecked)
         {
