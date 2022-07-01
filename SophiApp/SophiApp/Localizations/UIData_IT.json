@@ -21,30 +21,8 @@
         "Description":  {
                             "IT":  "Utilizzando Windows, il dispositivo invia a Microsoft dati necessari per mantenere il sistema sicuro, aggiornato e funzionante."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "Privacy",
-        "ChildElements":  [
-                              {
-                                  "Id":  102,
-                                  "ChildHeader":  {
-                                                      "IT":  "Default"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "IT":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  103,
-                                  "ChildHeader":  {
-                                                      "IT":  "Minimo"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "IT":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -52,7 +30,7 @@
     {
         "Id":  104,
         "Header":  {
-                       "IT":  "Windows Error Reporting"
+                       "IT":  "Invia dati di diagnostica facoltativi"
                    },
         "Description":  {
                             "IT":  "Il servizio di segnalazine degli errori permette agli utenti di segnalare a  Microsoft i crash delle app e del kernel, cosicchè vengano fornite soluzione ai problemi riportati."
@@ -66,7 +44,7 @@
     {
         "Id":  105,
         "Header":  {
-                       "IT":  "Frequenza feedback "
+                       "IT":  "Frequenza feedback"
                    },
         "Description":  {
                             "IT":  "Frequenza richiesta feedback da parte di windows."
@@ -379,20 +357,6 @@
                           ],
         "ViewId":  200,
         "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  203,
-        "Header":  {
-                       "IT":  "Abilita l'esplora file di Windows 10"
-                   },
-        "Description":  {
-                            "IT":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "Personalization",
-        "ViewId":  203,
-        "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
@@ -1154,7 +1118,7 @@
     {
         "Id":  262,
         "Header":  {
-                       "IT":  ""
+                       "IT":  "Configura il layout di inizio"
                    },
         "Description":  {
                             "IT":  ""
@@ -1256,7 +1220,7 @@
     {
         "Id":  301,
         "Header":  {
-                       "IT":  "Esegui il sensore di memoria."
+                       "IT":  "Esegui il sensore di memoria"
                    },
         "Description":  {
                             "IT":  "Sensore di memoria si esegue quando lo spazio su disco è basso e libera spazio sufficiente per un funzionamento ottimale del sistema operativo.È meglio creare l'attività \"Pulizia di windows\" nella sezione \"Operazioni Pianificate\" per ripulire windows in modo più efficace."
@@ -1699,7 +1663,7 @@
                        "IT":  "Scorciatoia da tastiera per i tasti permanenti"
                    },
         "Description":  {
-                            "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti"
+                            "IT":  "Premere il tasto Maiusc 5 volte per attivare o disattivare i tasti permanenti."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1926,6 +1890,78 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  353,
+        "Header":  {
+                       "IT":  "L'ultima versione del .NET Desktop Runtime 6 x86"
+                   },
+        "Description":  {
+                            "IT":  "Il .NET Desktop Runtime 6 x86 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "IT":  "Installa"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "IT":  "Disinstalla"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  353,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  356,
+        "Header":  {
+                       "IT":  "L'ultima versione del .NET Desktop Runtime 6 x64"
+                   },
+        "Description":  {
+                            "IT":  "Il .NET Desktop Runtime 6 x64 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  357,
+                                  "ChildHeader":  {
+                                                      "IT":  "Installa"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  358,
+                                  "ChildHeader":  {
+                                                      "IT":  "Disinstalla"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "IT":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  500,
         "Header":  {
                        "IT":  "Scarica e installa il codec video HEVC (H.265)"
@@ -1995,7 +2031,7 @@
     {
         "Id":  600,
         "Header":  {
-                       "IT":  "Xbox Game Bar."
+                       "IT":  "Xbox Game Bar"
                    },
         "Description":  {
                             "IT":  "Per evitare lo spuntare di \"Hai bisogno di una nuova app per aprire questo ms-gamingoverlay\" ATTENZIONE, è necessario disabilitare l'app Xbox Game Bar, anche se lo ha disinstallato prima."
@@ -2166,7 +2202,7 @@
                        "IT":  "Abilita l'auditing di tutti i moduli di Windows PowerShell"
                    },
         "Description":  {
-                            "IT":  "Gli eventi di esecuzione della pipeline per i moduli sono registrati nel registro Windows PowerShell nel Viewer eventi. Solo per Windows PowerShell 5.1 integrato"
+                            "IT":  "Gli eventi di esecuzione della pipeline per i moduli sono registrati nel registro Windows PowerShell nel Viewer eventi. Solo per Windows PowerShell 5.1 integrato."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2208,7 +2244,7 @@
                        "IT":  "Segna i file che sono stati scaricati da Internet come pericolosi"
                    },
         "Description":  {
-                            "IT":  "Il gestore degli allegati è incluso in Windows per proteggere da file non sicuri scaricati da Internet.Se il gestore degli allegati identifica un allegato che potrebbe non essere sicuro, il gestore degli allegati impedisce di aprire il file o ti avvisa prima di aprire il file. I metadati vengono salvati come un flusso di dati alternativo (ADS).Se si desidera sbloccare manualmente un file scaricato, è possibile farlo facendo clic con il pulsante destro del mouse, selezionando Proprietà e facendo clic su \"Sblocca\"."
+                            "IT":  "Il gestore degli allegati è incluso in Windows per proteggere da file non sicuri scaricati da Internet.Se il gestore degli allegati identifica un allegato che potrebbe non essere sicuro, il gestore degli allegati impedisce di aprire il file o ti avvisa prima di aprire il file. I metadati vengono salvati come un flusso di dati alternativo (ADS).Se si desidera sbloccare manualmente un file scaricato, è possibile farlo facendo clic con il pulsante destro del mouse, selezionando Proprietà e facendo clic su \"Sblocca\""
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2311,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "IT":  "Mostra l'opzione \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
+                       "IT":  "Mostra l'opzione \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (exe)"
                    },
         "Description":  {
                             "IT":  ""

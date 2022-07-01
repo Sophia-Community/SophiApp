@@ -5,7 +5,7 @@
                        "EN":  "The telemetry service"
                    },
         "Description":  {
-                            "EN":  "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the \"Connected User Experiences and Telemetry\" service (DiagTrack) can cause you not being able to get Xbox achievements anymore"
+                            "EN":  "Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the \"Connected User Experiences and Telemetry\" service (DiagTrack) can cause you not being able to get Xbox achievements anymore."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -21,30 +21,8 @@
         "Description":  {
                             "EN":  "As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "Privacy",
-        "ChildElements":  [
-                              {
-                                  "Id":  102,
-                                  "ChildHeader":  {
-                                                      "EN":  "Default"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  103,
-                                  "ChildHeader":  {
-                                                      "EN":  "Minimal"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "EN":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -52,10 +30,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "EN":  "The Windows Error Reporting"
+                       "EN":  "Send optional diagnostic data"
                    },
         "Description":  {
-                            "EN":  "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems."
+                            "EN":  "Help Microsoft imrpove your Windows exprereince and fix problems more quickly by sending us additional diagnostic data."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -211,7 +189,7 @@
                        "EN":  "Use sign-in info to automatically finish setting up device after an update"
                    },
         "Description":  {
-                            "EN":  "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevent this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe."
+                            "EN":  "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -253,7 +231,7 @@
                        "EN":  "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers"
                    },
         "Description":  {
-                            "EN":  "Windows may open a pop-up window to show you what's new about the operating system."
+                            "EN":  "Windows may open a pop-up window to show you what's new about the operating System"
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -379,20 +357,6 @@
                           ],
         "ViewId":  200,
         "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  203,
-        "Header":  {
-                       "EN":  "Enable the Windows 10 File Explorer"
-                   },
-        "Description":  {
-                            "EN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "Personalization",
-        "ViewId":  203,
-        "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
@@ -1699,7 +1663,7 @@
                        "EN":  "Keyboard shortcut for Sticky keys"
                    },
         "Description":  {
-                            "EN":  "Press the Shift key 5 times to turn Sticky keys on or off"
+                            "EN":  "Press the Shift key 5 times to turn Sticky keys on or off."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1922,6 +1886,78 @@
                               }
                           ],
         "ViewId":  350,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  353,
+        "Header":  {
+                       "EN":  "The latest .NET Desktop Runtime 6 x86"
+                   },
+        "Description":  {
+                            "EN":  "The .NET Desktop Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "EN":  "Install"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "EN":  "Uninstall"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  353,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  356,
+        "Header":  {
+                       "EN":  "The latest .NET Desktop Runtime 6 x64"
+                   },
+        "Description":  {
+                            "EN":  ".NET Desktop Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  357,
+                                  "ChildHeader":  {
+                                                      "EN":  "Install"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  358,
+                                  "ChildHeader":  {
+                                                      "EN":  "Uninstall"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  356,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
@@ -2166,7 +2202,7 @@
                        "EN":  "Enable logging for all Windows PowerShell modules"
                    },
         "Description":  {
-                            "EN":  "Pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in the Event Viewer. For the built-in Windows PowerShell 5.1 only"
+                            "EN":  "Pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in the Event Viewer. For the built-in Windows PowerShell 5.1 only."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2208,7 +2244,7 @@
                        "EN":  "Mark files that have been downloaded from the Internet as unsafe"
                    },
         "Description":  {
-                            "EN":  "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\"."
+                            "EN":  "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\""
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2311,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "EN":  "The \"Run as different user\" item in the executable files context menu (.exe)"
+                       "EN":  "The \"Run as different user\" item in the executable files context menu (exe)"
                    },
         "Description":  {
                             "EN":  ""

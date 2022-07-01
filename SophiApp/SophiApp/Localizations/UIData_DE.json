@@ -19,32 +19,10 @@
                        "DE":  "Ebene der Diagnosedatenerfassung des Betriebssystems"
                    },
         "Description":  {
-                            "DE":  "Bei Verwendung von Windows Ihr Gerät sendet an Microsoft begrenzten Datensätz, um Ihr Gerät und Betriebssystem zu schützen und aktualizieren, damit sie korrekt funktionieren"
+                            "DE":  "Bei Verwendung von Windows Ihr Gerät sendet an Microsoft begrenzten Datensätz, um Ihr Gerät und Betriebssystem zu schützen und aktualizieren, damit sie korrekt funktionieren."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "Privacy",
-        "ChildElements":  [
-                              {
-                                  "Id":  102,
-                                  "ChildHeader":  {
-                                                      "DE":  "Standardmäßig"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "DE":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  103,
-                                  "ChildHeader":  {
-                                                      "DE":  "Minimal"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "DE":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -52,10 +30,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "DE":  "Windows-Fehlerberichterstattung"
+                       "DE":  "Optionale Diagnosedaten senden"
                    },
         "Description":  {
-                            "DE":  "Mithilfe von Fehlerberichten ermöglicht Anwendern Microsoft über Software- und Kernel-Fehler, nicht mehr reagierenden Anwendung und anderen anwendungsbezogenen Probleme benachrichtigen. So kann Microsoft die gesammelten Informationen über Fehlerberichterstellung verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen uUpdates für ihre spezifischen Probleme zur Verfügung zu stellen"
+                            "DE":  "Helfen Sie Microsoft, Ihre Windows-Erfahnung zu verbessern und Probleme schneller zu beheben, indem Sie uns zusätzliche Diagnosedaten senden."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -116,7 +94,7 @@
                                                       "DE":  "ProgramDataUpdater"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Telemetriedatenerfassung in der Programm zur Verbesserung der Benutzerfreundlichkeit der Software"
+                                                           "DE":  "Telemetriedatenerfassung in der Programm zur Verbesserung der Benutzerfreundlichkeit der Software."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -126,7 +104,7 @@
                                                       "DE":  "Proxy"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Diese Aufgabe sammelt und lädt autochk SQM-Daten hoch beim Teilnehmen am Programm zur Verbesserung der Benutzerfreundlichkeit"
+                                                           "DE":  "Diese Aufgabe sammelt und lädt autochk SQM-Daten hoch beim Teilnehmen am Programm zur Verbesserung der Benutzerfreundlichkeit."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -136,7 +114,7 @@
                                                       "DE":  "Consolidator"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Wenn der Benutzer der Teilnahme am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit zugestimmt hat, erfasst diese Aufgabe Verwendungsdaten, die an Microsoft gesendet werden"
+                                                           "DE":  "Wenn der Benutzer der Teilnahme am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit zugestimmt hat, erfasst diese Aufgabe Verwendungsdaten, die an Microsoft gesendet werden."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -156,7 +134,7 @@
                                                       "DE":  "Microsoft-Windows-DiskDiagnosticDataCollector"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Die Windows-Datenträgerdiagnose meldet allgemeine Festplatten- und Systeminformationen an Microsoft für die Benutzer, die am Customer Experience Program teilnehmen"
+                                                           "DE":  "Die Windows-Datenträgerdiagnose meldet allgemeine Festplatten- und Systeminformationen an Microsoft für die Benutzer, die am Customer Experience Program teilnehmen."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -166,7 +144,7 @@
                                                       "DE":  "MapsToastTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Diese Aufgabe zeigt verschiedene kartenbezogene Toasts"
+                                                           "DE":  "Diese Aufgabe zeigt verschiedene kartenbezogene Toasts."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -176,7 +154,7 @@
                                                       "DE":  "MapsUpdateTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Diese Aufgabe sucht Updates für Karten, die haben Sie für die Offlineverwendung heruntergeladen. Deaktivierung des Tasks verhindert, dass Windows Sie über Updates für Karten informiert"
+                                                           "DE":  "Diese Aufgabe sucht Updates für Karten, die haben Sie für die Offlineverwendung heruntergeladen. Deaktivierung des Tasks verhindert, dass Windows Sie über Updates für Karten informiert."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -186,7 +164,7 @@
                                                       "DE":  "FamilySafetyMonitor"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Initialisierung der Überwachung und Durchsetzung der Familiensicherheit"
+                                                           "DE":  "Initialisierung der Überwachung und Durchsetzung der Familiensicherheit."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -196,7 +174,7 @@
                                                       "DE":  "XblGameSaveTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Der XblGameSave Standby Task, um den Spielfortschritt zu synchronisieren, wenn das Betriebssystem im Leerlauf ist"
+                                                           "DE":  "Der XblGameSave Standby Task, um den Spielfortschritt zu synchronisieren, wenn das Betriebssystem im Leerlauf ist."
                                                        },
                                   "Type":  "CheckBox"
                               }
@@ -211,7 +189,7 @@
                        "DE":  "Anmeldeinformationen verwenden, um die Einrichtung des Geräts nach einer Aktualisierung automatisch abzuschließen"
                    },
         "Description":  {
-                            "DE":  "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen"
+                            "DE":  "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -253,7 +231,7 @@
                        "DE":  "Anzeige der Windows-Willkommenserlebnisse nach Updates und gelegentlich bei der Anmeldung, um neue Funktionen und Angebote hervorzuheben"
                    },
         "Description":  {
-                            "DE":  "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren"
+                            "DE":  "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -295,7 +273,7 @@
                        "DE":  "Automatische Installation der empfohlenen Apps aktivieren"
                    },
         "Description":  {
-                            "DE":  "Windows kann einige Apps aus dem Microsoft Store unbemerkt ohne Bestätigung herunterladen und installieren"
+                            "DE":  "Windows kann einige Apps aus dem Microsoft Store unbemerkt ohne Bestätigung herunterladen und installieren."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -309,7 +287,7 @@
                        "DE":  "Vorschläge machen, wie ich mein Gerät einrichten kann"
                    },
         "Description":  {
-                            "DE":  "Windows zeigt möglicherweise gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann"
+                            "DE":  "Windows zeigt möglicherweise gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -323,7 +301,7 @@
                        "DE":  "Maßgeschneiderte Erfahrungen"
                    },
         "Description":  {
-                            "DE":  "Lassen Sie Microsoft Ihnen maßgeschneiderte Lösungen bieten, die auf der Grundlage der Diagnosedaten entsprechend Ihren Einstellungen basieren"
+                            "DE":  "Lassen Sie Microsoft Ihnen maßgeschneiderte Lösungen bieten, die auf der Grundlage der Diagnosedaten entsprechend Ihren Einstellungen basieren."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -379,20 +357,6 @@
                           ],
         "ViewId":  200,
         "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
-        "Id":  203,
-        "Header":  {
-                       "DE":  "Windows 10 Datei-Explorer aktivieren"
-                   },
-        "Description":  {
-                            "DE":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "Personalization",
-        "ViewId":  203,
-        "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
@@ -521,7 +485,7 @@
                        "DE":  "Synchronisationsanbieter-Benachrichtigungen im Datei-Explorer anzeigen"
                    },
         "Description":  {
-                            "DE":  "Anzeige der OneDrive-Benachrichtigungen im Datei-Explorer deaktivieren"
+                            "DE":  "Anzeige der OneDrive-Benachrichtigungen im Datei-Explorer deaktivieren."
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -1098,7 +1062,7 @@
     {
         "Id":  258,
         "Header":  {
-                       "DE":  "Suffix \"-Verknüpfung\" an den Dateinamen der erstellten Verknüpfungen anfügen."
+                       "DE":  "Suffix \"-Verknüpfung\" an den Dateinamen der erstellten Verknüpfungen anfügen"
                    },
         "Description":  {
                             "DE":  ""
@@ -1245,7 +1209,7 @@
                        "DE":  "Speicheroptimierung"
                    },
         "Description":  {
-                            "DE":  "Wenn der Speicherplatz knapp wird, aktiwiert die System die Speicheroptimierung um Ihr Speicherplatz zu befreien"
+                            "DE":  "Wenn der Speicherplatz knapp wird, aktiwiert die System die Speicheroptimierung um Ihr Speicherplatz zu befreien."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1359,7 +1323,7 @@
                        "DE":  "Windows-Pfadbegrenzung auf 260 Zeichen aktivieren"
                    },
         "Description":  {
-                            "DE":  "Standardmäßig hat Windows eine Gesamlänge von 260 Zeichen für Pfade. Einer lokale Pfad ist wie folgt strukturiert: Laufwerksbuchstabe, Doppelpunkt, Rücktaste, Namensbestandteile (getrennt durch Rücktasten) und ein abschließendes Nullbyte"
+                            "DE":  "Standardmäßig hat Windows eine Gesamlänge von 260 Zeichen für Pfade. Einer lokale Pfad ist wie folgt strukturiert: Laufwerksbuchstabe, Doppelpunkt, Rücktaste, Namensbestandteile (getrennt durch Rücktasten) und ein abschließendes Nullbyte."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1384,7 +1348,7 @@
     {
         "Id":  311,
         "Header":  {
-                       "DE":  "Den Zugriff auf zugeordnete Laufwerke von einer Anwendung, die mit erweiterten Berechtigungen im Freigabemodus für Administratoren läuft."
+                       "DE":  "Den Zugriff auf zugeordnete Laufwerke von einer Anwendung, die mit erweiterten Berechtigungen im Freigabemodus für Administratoren läuft"
                    },
         "Description":  {
                             "DE":  "Aktivierte UAC mit den Standardeinstellungen erlaubt keinen Zugriff auf zugeordnete Netzlaufwerke von Anwendungen, die im Administratormodus ausgeführt werden. Das heißt, wenn Sie die Befehlszeile oder einen Dateimanager mit erhöhten Rechten ausführen, werden die Laufwerksbuchstaben der eingebundenen Netzwerkordner nicht angezeigt."
@@ -1440,7 +1404,7 @@
     {
         "Id":  315,
         "Header":  {
-                       "DE":  "Updates für andere Microsoft-Produkte erhalten."
+                       "DE":  "Updates für andere Microsoft-Produkte erhalten"
                    },
         "Description":  {
                             "DE":  "Microsoft Office und andere Updates zusammen mit Windows-Updates holen."
@@ -1629,7 +1593,7 @@
                        "DE":  "Ordnerfenster in einem separaten Prozess starten"
                    },
         "Description":  {
-                            "DE":  "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern"
+                            "DE":  "Standardmäßig werden alle Datei-Explorer-Fenster, einschließlich der Desktop-Öberfläche, in einem einzigen Explorer.exe-Prozess ausgeführt. Wenn ein Datei-Explorer-Fenster hängen bleibt oder abstürzt, friert die gesamte grafische Desktop ein, bis der Prozess neu gestartet wird. Wenn diese Option aktiviert ist, hat jeder Explorer.exe-Prozess seine eigene Prozess-ID (PID), um die Stabilität des Explorer-Desktop zu verbessern."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1699,7 +1663,7 @@
                        "DE":  "Tastaturkürzel für Feststelltasten"
                    },
         "Description":  {
-                            "DE":  "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten"
+                            "DE":  "Die Umschalttaste 5x betätigen, um die Feststelltasten ein- oder auszuschalten."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1752,7 +1716,7 @@
     {
         "Id":  339,
         "Header":  {
-                       "DE":  "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren."
+                       "DE":  "\"Netzwerkerkennung\" und \"Datei- und Druckerfreigabe\" für Arbeitsgruppennetzwerke aktivieren"
                    },
         "Description":  {
                             "DE":  ""
@@ -1895,7 +1859,7 @@
                        "DE":  "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x64"
                    },
         "Description":  {
-                            "DE":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien"
+                            "DE":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien."
                         },
         "Type":  "MsCppPackageButtonGroup",
         "Tag":  "System",
@@ -1926,9 +1890,81 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  353,
+        "Header":  {
+                       "DE":  "Neueste .NET Desktop Runtime 6 x86"
+                   },
+        "Description":  {
+                            "DE":  ".NET Desktop Runtime 6 x86 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "DE":  "Installieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "DE":  "Deinstallieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  353,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  356,
+        "Header":  {
+                       "DE":  "Neueste .NET Desktop Runtime 6 x64"
+                   },
+        "Description":  {
+                            "DE":  ".NET Desktop Runtime 6 x64 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  357,
+                                  "ChildHeader":  {
+                                                      "DE":  "Installieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  358,
+                                  "ChildHeader":  {
+                                                      "DE":  "Deinstallieren"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  500,
         "Header":  {
-                       "DE":  "HEVC Video Codec (H.265) herunterladen und installieren"
+                       "DE":  "HEVC Video Codec (H265) herunterladen und installieren"
                    },
         "Description":  {
                             "DE":  "Mit diesem Codec können Sie Bilder und Videos im Format .heif und .hevc öffnen."
@@ -2082,7 +2118,7 @@
                        "DE":  "Netzwerkschutz von Microsoft Defender Exploit Guard aktivieren"
                    },
         "Description":  {
-                            "DE":  "Der Netzwerkschutz verhindert die System vor eine Anwendung auf gefährliche Domänen, die Phishing-Betrug, Exploits und andere bösartige Inhalte enthalten können, von Benutzer schützt"
+                            "DE":  "Der Netzwerkschutz verhindert die System vor eine Anwendung auf gefährliche Domänen, die Phishing-Betrug, Exploits und andere bösartige Inhalte enthalten können, von Benutzer schützt."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2166,7 +2202,7 @@
                        "DE":  "Protokollierung für alle Windows PowerShell-Module aktivieren"
                    },
         "Description":  {
-                            "DE":  "Pipeline-Ausführungsereignisse für Mitglieder der angegebenen Module werden im Windows PowerShell-Protokoll in der \"Ereignisanzeige\" aufgezeichnet. Nur für die integrierte Windows PowerShell 5.1"
+                            "DE":  "Pipeline-Ausführungsereignisse für Mitglieder der angegebenen Module werden im Windows PowerShell-Protokoll in der \"Ereignisanzeige\" aufgezeichnet. Nur für die integrierte Windows PowerShell 5.1."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2177,7 +2213,7 @@
     {
         "Id":  807,
         "Header":  {
-                       "DE":  "Protokollierung für alle PowerShell-Skripts in Windows PowerShell-Protokoll aktivieren."
+                       "DE":  "Protokollierung für alle PowerShell-Skripts in Windows PowerShell-Protokoll aktivieren"
                    },
         "Description":  {
                             "DE":  "Windows PowerShell protokolliert die Verarbeitung von Befehlen, Skriptblöcken, Funktionen und Skripts, unabhängig davon, ob sie interaktiv oder durch Automatisierung aufgerufen werden - \"Anwendungs- und Dienstprotokolle\\Microsoft\\Windows\\PowerShell\\Operational\". Nur für die integrierte Windows PowerShell 5.1."
@@ -2208,7 +2244,7 @@
                        "DE":  "Dateien, die aus dem Internet heruntergeladen werden, als unsicher markieren"
                    },
         "Description":  {
-                            "DE":  "Der Attachment Manager ist in Windows enthalten, um vor unsicheren heruntergeladenen Dateien System zu schützen. Wenn der Attachment Manager eine Anlage identifiziert, die unsicher sein könnte, verhindert (blockiert) er das Öffnen der Datei oder warnt Sie, bevor Sie die Datei öffnen. Die Metadaten werden als Alternativer Datenstrom (ADS) gespeichert. Wenn Sie eine heruntergeladene Datei manuell entsperren möchten, können Sie dies tun, indem Sie mit der rechten Maustaste auf die Datei klicken, Eigenschaften auswählen und auf \"Entsperren\" klicken,"
+                            "DE":  "Der Attachment Manager ist in Windows enthalten, um vor unsicheren heruntergeladenen Dateien System zu schützen. Wenn der Attachment Manager eine Anlage identifiziert, die unsicher sein könnte, verhindert (blockiert) er das Öffnen der Datei oder warnt Sie, bevor Sie die Datei öffnen. Die Metadaten werden als Alternativer Datenstrom (ADS) gespeichert. Wenn Sie eine heruntergeladene Datei manuell entsperren möchten, können Sie dies tun, indem Sie mit der rechten Maustaste auf die Datei klicken, Eigenschaften auswählen und auf \"Entsperren\" klicken,."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2311,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "DE":  "Diesen Kontextmenüeintrag \"Unter anderem Benutzernamen ausführen\" für ausführbare Dateien (.exe) anzeigen"
+                       "DE":  "Diesen Kontextmenüeintrag \"Unter anderem Benutzernamen ausführen\" für ausführbare Dateien (exe) anzeigen"
                    },
         "Description":  {
                             "DE":  ""
@@ -2592,7 +2628,7 @@
                        "DE":  "Diese Kontextmenüeinträge \"Öffnen\", \"Drucken\" und \"Bearbeiten\" verfügbar machen, wenn mehr als 15 Dateien ausgewählt werden"
                    },
         "Description":  {
-                            "DE":  "Diese Kontextmenüeinträge \"Öffnen\", \"Drucken\" und \"Bearbeiten\" nicht verfügbar machen, wenn mehr als 15 Dateien ausgewählt werden, um Durchführung dieser Aktionen bei viele Dateien zu vermeiden"
+                            "DE":  "Diese Kontextmenüeinträge \"Öffnen\", \"Drucken\" und \"Bearbeiten\" nicht verfügbar machen, wenn mehr als 15 Dateien ausgewählt werden, um Durchführung dieser Aktionen bei viele Dateien zu vermeiden."
                         },
         "Type":  "CheckBox",
         "Tag":  "ContextMenu",

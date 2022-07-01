@@ -21,30 +21,8 @@
         "Description":  {
                             "TR":  "Windows kullanmanın bir parçası olarak, cihazınız Microsoft'a cihazınızın ve işletim sisteminizin güvenli, güncel ve beklendiği gibi çalışması için gerekli olan sınırlı bir veri seti gönderir."
                         },
-        "Type":  "RadioGroup",
+        "Type":  "CheckBox",
         "Tag":  "Privacy",
-        "ChildElements":  [
-                              {
-                                  "Id":  102,
-                                  "ChildHeader":  {
-                                                      "TR":  "Varsayılan"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              },
-                              {
-                                  "Id":  103,
-                                  "ChildHeader":  {
-                                                      "TR":  "En az"
-                                                  },
-                                  "ChildDescription":  {
-                                                           "TR":  ""
-                                                       },
-                                  "Type":  "RadioButton"
-                              }
-                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -52,10 +30,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "TR":  "Windows Hata Bildirimi"
+                       "TR":  "İsteğe bağlı tanılama verilerini gönder"
                    },
         "Description":  {
-                            "TR":  "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."
+                            "TR":  "Bize ek tanılama verileri göndererek Microsoft'un Windows deneyiminizi geliştirmesine ve sorunları daha hızlı çözmesine yardımci olun."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -382,20 +360,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  203,
-        "Header":  {
-                       "TR":  "Windows 10 Dosya Gezgini'ni etkinleştirin"
-                   },
-        "Description":  {
-                            "TR":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "Personalization",
-        "ViewId":  203,
-        "Windows10Supported":  false,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  204,
         "Header":  {
                        "TR":  "Öğeleri seçmek için onay kutularını kullanın"
@@ -571,7 +535,7 @@
                               {
                                   "Id":  217,
                                   "ChildHeader":  {
-                                                      "TR":  "ayrıntılı modda"
+                                                      "TR":  "Ayrıntılı modda"
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
@@ -581,7 +545,7 @@
                               {
                                   "Id":  218,
                                   "ChildHeader":  {
-                                                      "TR":  "kompakt modda"
+                                                      "TR":  "Kompakt modda"
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
@@ -888,7 +852,7 @@
     {
         "Id":  241,
         "Header":  {
-                       "TR":  "Sgörev çubuğundaki Sohbet simgesinin (Microsoft Teams) nasıl"
+                       "TR":  "Görev çubuğunda Sohbet simgesini (Microsoft Teams) göster"
                    },
         "Description":  {
                             "TR":  ""
@@ -1154,10 +1118,10 @@
     {
         "Id":  262,
         "Header":  {
-                       "TR":  null
+                       "TR":  "Başlangıç düzenini yapılandır"
                    },
         "Description":  {
-                            "TR":  null
+                            "TR":  ""
                         },
         "Type":  "RadioGroup",
         "Tag":  "Personalization",
@@ -1165,30 +1129,30 @@
                               {
                                   "Id":  263,
                                   "ChildHeader":  {
-                                                      "TR":  null
+                                                      "TR":  "Varsayılan"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  264,
                                   "ChildHeader":  {
-                                                      "TR":  null
+                                                      "TR":  "Daha fazla sabitleme"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
                               {
                                   "Id":  265,
                                   "ChildHeader":  {
-                                                      "TR":  null
+                                                      "TR":  "Daha fazla öneri"
                                                   },
                                   "ChildDescription":  {
-                                                           "TR":  null
+                                                           "TR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -1815,7 +1779,7 @@
                               {
                                   "Id":  344,
                                   "ChildHeader":  {
-                                                      "TR":  "Windows Console Host"
+                                                      "TR":  "Windows Konsol Host"
                                                   },
                                   "ChildDescription":  {
                                                            "TR":  ""
@@ -1922,6 +1886,78 @@
                               }
                           ],
         "ViewId":  350,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  353,
+        "Header":  {
+                       "TR":  "En son .NET Desktop Runtime 6 x86"
+                   },
+        "Description":  {
+                            "TR":  ".NET Desktop Runtime 6 x86, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "TR":  "Kur"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "TR":  "Kaldır"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  353,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  356,
+        "Header":  {
+                       "TR":  "En son .NET Desktop Runtime 6 x64"
+                   },
+        "Description":  {
+                            "TR":  ".NET Desktop Runtime 6 x64, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  357,
+                                  "ChildHeader":  {
+                                                      "TR":  "Kur"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  358,
+                                  "ChildHeader":  {
+                                                      "TR":  "Kaldır"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  356,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
@@ -2311,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "TR":  "Yürütülebilir dosyalar bağlam menüsündeki (.exe) \"Farklı kullanıcı olarak çalıştır\" öğesi"
+                       "TR":  "Yürütülebilir dosyalar bağlam menüsündeki (exe) \"Farklı kullanıcı olarak çalıştır\" öğesi"
                    },
         "Description":  {
                             "TR":  ""
