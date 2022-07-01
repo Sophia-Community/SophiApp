@@ -116,6 +116,7 @@ irm app.sophi.app -useb | iex
 ***
 
 Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history;
+
 * It's allowed to be logged in one admin user only during application startup;
 * 🔥🔥🔥`SophiApp` may not work on a homebrew Windows. Especially, if homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by uprooting system components on purpose.
 
@@ -127,17 +128,17 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 * Dynamic rendering UI—nothing is hardcoded; 👻
 * 130+ tweaks; ⭐
-* `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern;
+* `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) pattern;
 * Multithreading support;
 * `SophiApp` is checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio;
-  * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license). 
+  * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license).
 * All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into you GitHub account to be able to view Actions logs);
 * The app shows the `actual` state of every feature in the UI;
-* Supports high resolutions;
+* High resolutions support;
 * Has a built-in search engine;
   * Functions can be found by searching by their headers and descriptions. [GIF](#searching-feature)
-* Supports dark & light themes;
+* Dark & light themes support;
   * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
 * Set up Privacy & Telemetry;
 * Turn off diagnostics tracking scheduled tasks;
@@ -182,14 +183,14 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
-### Native interactive toasts for the scheduled tasks
+### Native interactive toasts for the `Windows Cleanup` scheduled task
 
 ![Image](https://i.imgur.com/h17EpTG.png)
 
-##  Adendum
+## Addendum
 
 * Some functions depend on Internet access. If not, they will be hidden in UI until the access will appear back;
-* You are able to enable hidden functions in UI by turning on the "Advanced settings" in the Settings;
+* You are able to enable hidden functions in UI by turning on the `Advanced settings` in the Settings;
   * The hidden functions will marked with a gear in UI;
 * After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
 
