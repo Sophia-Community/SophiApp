@@ -231,7 +231,7 @@
                        "EN":  "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers"
                    },
         "Description":  {
-                            "EN":  "Windows may open a pop-up window to show you what's new about the operating System"
+                            "EN":  "Windows may open a pop-up window to show you what's new about the operating system."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -2244,7 +2244,7 @@
                        "EN":  "Mark files that have been downloaded from the Internet as unsafe"
                    },
         "Description":  {
-                            "EN":  "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\""
+                            "EN":  "The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on \"Unblock\"."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2347,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "EN":  "The \"Run as different user\" item in the executable files context menu (exe)"
+                       "EN":  "The \"Run as different user\" item in the executable files context menu (.exe)"
                    },
         "Description":  {
                             "EN":  ""

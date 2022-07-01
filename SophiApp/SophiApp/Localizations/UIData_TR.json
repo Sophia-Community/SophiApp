@@ -2347,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "TR":  "Yürütülebilir dosyalar bağlam menüsündeki (exe) \"Farklı kullanıcı olarak çalıştır\" öğesi"
+                       "TR":  "Yürütülebilir dosyalar bağlam menüsündeki (.exe) \"Farklı kullanıcı olarak çalıştır\" öğesi"
                    },
         "Description":  {
                             "TR":  ""

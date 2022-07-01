@@ -1964,7 +1964,7 @@
     {
         "Id":  500,
         "Header":  {
-                       "DE":  "HEVC Video Codec (H265) herunterladen und installieren"
+                       "DE":  "HEVC Video Codec (H.265) herunterladen und installieren"
                    },
         "Description":  {
                             "DE":  "Mit diesem Codec können Sie Bilder und Videos im Format .heif und .hevc öffnen."
@@ -2244,7 +2244,7 @@
                        "DE":  "Dateien, die aus dem Internet heruntergeladen werden, als unsicher markieren"
                    },
         "Description":  {
-                            "DE":  "Der Attachment Manager ist in Windows enthalten, um vor unsicheren heruntergeladenen Dateien System zu schützen. Wenn der Attachment Manager eine Anlage identifiziert, die unsicher sein könnte, verhindert (blockiert) er das Öffnen der Datei oder warnt Sie, bevor Sie die Datei öffnen. Die Metadaten werden als Alternativer Datenstrom (ADS) gespeichert. Wenn Sie eine heruntergeladene Datei manuell entsperren möchten, können Sie dies tun, indem Sie mit der rechten Maustaste auf die Datei klicken, Eigenschaften auswählen und auf \"Entsperren\" klicken,."
+                            "DE":  "Der Attachment Manager ist in Windows enthalten, um vor unsicheren heruntergeladenen Dateien System zu schützen. Wenn der Attachment Manager eine Anlage identifiziert, die unsicher sein könnte, verhindert (blockiert) er das Öffnen der Datei oder warnt Sie, bevor Sie die Datei öffnen. Die Metadaten werden als Alternativer Datenstrom (ADS) gespeichert. Wenn Sie eine heruntergeladene Datei manuell entsperren möchten, können Sie dies tun, indem Sie mit der rechten Maustaste auf die Datei klicken, Eigenschaften auswählen und auf \"Entsperren\" klicken."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2347,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "DE":  "Diesen Kontextmenüeintrag \"Unter anderem Benutzernamen ausführen\" für ausführbare Dateien (exe) anzeigen"
+                       "DE":  "Diesen Kontextmenüeintrag \"Unter anderem Benutzernamen ausführen\" für ausführbare Dateien (.exe) anzeigen"
                    },
         "Description":  {
                             "DE":  ""

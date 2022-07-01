@@ -2244,7 +2244,7 @@
                        "IT":  "Segna i file che sono stati scaricati da Internet come pericolosi"
                    },
         "Description":  {
-                            "IT":  "Il gestore degli allegati è incluso in Windows per proteggere da file non sicuri scaricati da Internet.Se il gestore degli allegati identifica un allegato che potrebbe non essere sicuro, il gestore degli allegati impedisce di aprire il file o ti avvisa prima di aprire il file. I metadati vengono salvati come un flusso di dati alternativo (ADS).Se si desidera sbloccare manualmente un file scaricato, è possibile farlo facendo clic con il pulsante destro del mouse, selezionando Proprietà e facendo clic su \"Sblocca\""
+                            "IT":  "Il gestore degli allegati è incluso in Windows per proteggere da file non sicuri scaricati da Internet.Se il gestore degli allegati identifica un allegato che potrebbe non essere sicuro, il gestore degli allegati impedisce di aprire il file o ti avvisa prima di aprire il file. I metadati vengono salvati come un flusso di dati alternativo (ADS).Se si desidera sbloccare manualmente un file scaricato, è possibile farlo facendo clic con il pulsante destro del mouse, selezionando Proprietà e facendo clic su \"Sblocca\"."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
@@ -2347,7 +2347,7 @@
     {
         "Id":  902,
         "Header":  {
-                       "IT":  "Mostra l'opzione \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (exe)"
+                       "IT":  "Mostra l'opzione \"Esegui come diverso utente\" nel menu contestuale dei file eseguibili (.exe)"
                    },
         "Description":  {
                             "IT":  ""
