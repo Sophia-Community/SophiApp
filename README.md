@@ -115,45 +115,45 @@ irm app.sophi.app -useb | iex
 
 ***
 
-Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history;
+Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history:
 
-* It's allowed to be logged in one admin user only during application startup;
+* It's allowed to be logged in one admin user only during application startup.
 * 🔥🔥🔥`SophiApp` may not work on a homebrew Windows. Especially, if homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by uprooting system components on purpose.
 
 ## Installation
 
-`SophiApp` is fully portable: doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
+`SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
 
 ## Core features
 
-* Dynamic rendering UI—nothing is hardcoded; 👻
-* 130+ tweaks; ⭐
-* `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) pattern;
-* Multithreading support;
-* `SophiApp` is checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio;
+* Dynamic rendering UI—nothing is hardcoded. 👻
+* 130+ tweaks. ⭐
+* `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) pattern.
+* Multithreading support.
+* `SophiApp` is checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio.
   * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license).
 * All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into you GitHub account to be able to view Actions logs);
-* The app shows the `actual` state of every feature in the UI;
-* High resolutions support;
-* Has a built-in search engine;
-  * Functions can be found by searching by their headers and descriptions. [GIF](#searching-feature)
-* Dark & light themes support;
+* The app shows the `actual` state of every feature in the UI.
+* High resolutions support.
+* It Has a built-in search engine.
+  * Functions can be found by searching their headers and descriptions. [GIF](#searching-feature)
+* Dark & light themes support.
   * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
-* Set up Privacy & Telemetry;
-* Turn off diagnostics tracking scheduled tasks;
-* Set up UI & Personalization;
-* Uninstall OneDrive "correctly";
-* Uninstall UWP apps displaying localized packages names;
+* Set up Privacy & Telemetry.
+* Turn off diagnostics tracking scheduled tasks.
+* Set up UI & Personalization.
+* Uninstall OneDrive "correctly".
+* Uninstall UWP apps displaying localized packages names.
   * An UWP apps list is rendered dynamically using local icons
-* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats;
-* Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates;
+* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats.
+* Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates.
   * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-scheduled-tasks)
 * Create tasks in the Task Scheduler to clean
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`
-* Configure the Windows security;
-* The ability to copy functions' description or header;
+* Configure the Windows security.
+* The ability to copy functions' description or header.
 * Many more File Explorer and context menu "deep" tweaks.
 
 ## Screenshots [Helen]
@@ -189,10 +189,10 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 ## Addendum
 
-* Some functions depend on Internet access. If not, they will be hidden in UI until the access will appear back;
-* You are able to enable hidden functions in UI by turning on the `Advanced settings` in the Settings;
-  * The hidden functions will marked with a gear in UI;
-* After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry, nor on any server.
+* Some functions depend on Internet access. If not, they will be hidden in UI until the access appears back.
+* You can enable hidden functions in UI by turning on the `Advanced settings` in the Settings.
+  * The hidden functions will marked with a gear in UI.
+* After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry or any other server.
 
 ## Translating
 
