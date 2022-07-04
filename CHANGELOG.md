@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.0.70 — 04.07.2022
+
+Diff from v1.0.0.62
+[1.0.0.62...1.0.0.70](https://github.com/Sophia-Community/SophiApp/compare/1.0.0.62...1.0.0.70)
+
+* Fixed bug when the app didn't launch without the internet connection;
+* Fixed bug when child elements left a blank space in the UI;
+  * From this time, if some conditions aren't met for a function to render in the UI, it will be greyed out;
+  * ![image](https://i.imgur.com/TxWUTbS.png)
+  * Reported by `BuddhAudio`.
+* Fixed bug in function for adding the "Open in Windows Terminal" (Admin) item in the Desktop and folders context menu when you couldn't open Windows Terminal as admin in a path ends in a backslash `\`;
+  * Read more [here](https://github.com/microsoft/terminal/issues/4571);
+  * To apply the fix turn off this feature and turn again.
+* Fixed bug in the `Set the diagnostic data collection to minimum` function;
+  * Now it uses `gpedit.msc` path: `HKLM:\Software\Policies\Microsoft\Windows\DataCollection` instead of `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection`;
+  * To apply the fix set the diagnostic data collection to the default value and then to the minimum back, if you're well aware of the consequences.
+* Added Turkish translation <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> ;
+  * Thanks to @daswareinfach.
+* Add feature to install the latest .NET Desktop Runtime 6 x86/x64 version;
+  * The Internet access required.
+  * <https://dotnet.microsoft.com/en-us/download/dotnet/6.0>
+* Added startup condition if the "Print Spooler" service was removed from OS. If so, the app will block loading.
+* Feature to enable the `Windows 10 File Explorer` was removed;
+* Added `SearchHighlights` function to hide search highlights for Windows 10;
+* Добавлена страница с описанием на русском: <https://github.com/Sophia-Community/SophiApp/blob/master/README_ru-ru.md>
+* Updated translations;
+* Formaly added Windows 10 22H2 support;
+* Code refactoring.
+
 ## 1.0.0.60 — 18.05.2022
 
 Diff from v1.0.0.56
