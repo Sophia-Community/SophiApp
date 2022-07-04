@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
 using System.Diagnostics;
@@ -943,7 +944,8 @@ namespace SophiApp.Customisations
         public static void _354(bool _)
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
-            var latestRelease = AppHelper.CloudNet6Version.Releases.Where(release => release.ReleaseVersion == $"{AppHelper.CloudNet6Version.LatestRelease}").First();
+            var cloudNet6 = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+            var latestRelease = cloudNet6.Releases.Where(release => release.ReleaseVersion == $"{cloudNet6.LatestRelease}").First();
             var latestRuntime = latestRelease.WindowsDesktop.Files.Where(file => file.Name == "windowsdesktop-runtime-win-x86.exe").First();
             var installer = $@"{temp}\{latestRuntime.Url.Substring(latestRuntime.Url.LastIndexOf('/') + 1)}";
             WebHelper.Download(latestRuntime.Url, installer);
@@ -963,11 +965,11 @@ namespace SophiApp.Customisations
                      .ForEach(log => FileHelper.TryDeleteFile(log));
         }
 
-
         public static void _357(bool _)
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
-            var latestRelease = AppHelper.CloudNet6Version.Releases.Where(release => release.ReleaseVersion == $"{AppHelper.CloudNet6Version.LatestRelease}").First();
+            var cloudNet6 = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+            var latestRelease = cloudNet6.Releases.Where(release => release.ReleaseVersion == $"{cloudNet6.LatestRelease}").First();
             var latestRuntime = latestRelease.WindowsDesktop.Files.Where(file => file.Name == "windowsdesktop-runtime-win-x64.exe").First();
             var installer = $@"{temp}\{latestRuntime.Url.Substring(latestRuntime.Url.LastIndexOf('/') + 1)}";
             WebHelper.Download(latestRuntime.Url, installer);

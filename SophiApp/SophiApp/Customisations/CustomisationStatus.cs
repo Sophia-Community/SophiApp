@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
 using System.IO;
@@ -447,9 +448,9 @@ namespace SophiApp.Customisations
         {
             if (HttpHelper.IsOnline)
             {
-                var cloudNetVersion = AppHelper.CloudNet6Version.LatestRelease;
-                return DotNetHelper.IsInstalled(cloudNetVersion, DotNetRid.Win_x86)
-                        ? throw new DotNetInstalledException(cloudNetVersion)
+                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+                return DotNetHelper.IsInstalled(cloudNetVersion.LatestRelease, DotNetRid.Win_x86)
+                        ? throw new DotNetInstalledException(cloudNetVersion.LatestRelease)
                         : false;
             }
 
@@ -464,9 +465,9 @@ namespace SophiApp.Customisations
         {
             if (HttpHelper.IsOnline)
             {
-                var cloudNetVersion = AppHelper.CloudNet6Version.LatestRelease;
-                return DotNetHelper.IsInstalled(cloudNetVersion, DotNetRid.Win_x64)
-                        ? throw new DotNetInstalledException(cloudNetVersion)
+                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+                return DotNetHelper.IsInstalled(cloudNetVersion.LatestRelease, DotNetRid.Win_x64)
+                        ? throw new DotNetInstalledException(cloudNetVersion.LatestRelease)
                         : false;
             }
 

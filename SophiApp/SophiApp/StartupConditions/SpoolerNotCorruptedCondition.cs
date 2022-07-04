@@ -1,12 +1,7 @@
 ﻿using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SophiApp.StartupConditions
 {
@@ -24,7 +19,7 @@ namespace SophiApp.StartupConditions
                 return HasProblem = ServiceHelper.Get(SERVICE_SPOOLER).StartType == ServiceStartMode.Disabled;
             }
 
-            return HasProblem;           
+            return HasProblem;
         }
     }
 }
