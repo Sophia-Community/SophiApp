@@ -48,26 +48,68 @@
     "Windows11Supported": true
   },
   {
-    "Id": 104,
+    "Id": 101,
     "Header": {
-      "EN": "Send optional diagnostic data",
-      "RU": "Отправлять необязательные диагностические данные",
-      "DE": "Optionale Diagnosedaten senden",
-      "UA": "Надсилати необов'язкові діагностичні дані",
-      "IT": "Invia dati di diagnostica facoltativi",
-      "TR": "İsteğe bağlı tanılama verilerini gönder"
+      "EN": "The OS level of diagnostic data gathering",
+      "RU": "Уровень сбора диагностических данных ОС",
+      "DE": "Ebene der Diagnosedatenerfassung des Betriebssystems",
+      "UA": "Рівень збирання діагностичних даних ОС",
+      "IT": "Livello di raccolta dati del sistema operativo",
+      "TR": "Tanılama verileri toplamanın işletim sistemi düzeyi"
     },
     "Description": {
-      "EN": "Help Microsoft imrpove your Windows exprereince and fix problems more quickly by sending us additional diagnostic data.",
-      "RU": "Помогие корпорации Майкрософт улучшить работу Windows и устранять проблемы быстрее, отправляя дополнительные диагностические данные.",
-      "DE": "Helfen Sie Microsoft, Ihre Windows-Erfahnung zu verbessern und Probleme schneller zu beheben, indem Sie uns zusätzliche Diagnosedaten senden.",
-      "UA": "Щоб допомогти корпорації Майкрософт покращити роботу з Windows i усувати проблеми швидше, надсилайте нам додатковi дiагностичнi данi.",
-      "IT": "Il servizio di segnalazine degli errori permette agli utenti di segnalare a  Microsoft i crash delle app e del kernel, cosicchè vengano fornite soluzione ai problemi riportati.",
-      "TR": "Bize ek tanılama verileri göndererek Microsoft'un Windows deneyiminizi geliştirmesine ve sorunları daha hızlı çözmesine yardımci olun."
+      "EN": "As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected.",
+      "RU": "При использовании Windows ваше устройство отправляет в Майкрософт ограниченный набор данных, которые необходимы для защиты вашего устройства и операционной системы, а также для его корректной работы.",
+      "DE": "Bei Verwendung von Windows Ihr Gerät sendet an Microsoft begrenzten Datensätz, um Ihr Gerät und Betriebssystem zu schützen und aktualizieren, damit sie korrekt funktionieren.",
+      "UA": "При використанні Windows ваш пристрій відправляє до Майкрософт обмежений набір даних, які необхідні для захисту вашого пристрою і операційної системи, а також для її коректної роботи.",
+      "IT": "Utilizzando Windows, il dispositivo invia a Microsoft dati necessari per mantenere il sistema sicuro, aggiornato e funzionante.",
+      "TR": "Windows kullanmanın bir parçası olarak, cihazınız Microsoft'a cihazınızın ve işletim sisteminizin güvenli, güncel ve beklendiği gibi çalışması için gerekli olan sınırlı bir veri seti gönderir."
     },
-    "Type": "CheckBox",
+    "Type": "RadioGroup",
     "Tag": "Privacy",
-    "ViewId": 104,
+    "ChildElements": [
+      {
+        "Id": 102,
+        "ChildHeader": {
+          "EN": "Default",
+          "RU": "По умолчанию",
+          "DE": "Standardmäßig",
+          "UA": "За замовчуванням",
+          "IT": "Default",
+          "TR": "Varsayılan"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": "",
+          "TR": ""
+        },
+        "Type": "RadioButton"
+      },
+      {
+        "Id": 103,
+        "ChildHeader": {
+          "EN": "Minimal",
+          "RU": "Минимальный",
+          "DE": "Minimal",
+          "UA": "Мінімальний",
+          "IT": "Minimo",
+          "TR": "En az"
+        },
+        "ChildDescription": {
+          "EN": "",
+          "RU": "",
+          "DE": "",
+          "UA": "",
+          "IT": "",
+          "TR": ""
+        },
+        "Type": "RadioButton"
+      }
+    ],
+    "ViewId": 101,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
