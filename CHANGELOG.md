@@ -14,7 +14,7 @@ Diff from v1.0.0.62
 * Fixed bug when child elements left a blank space in the UI;
   * From this time, if some conditions aren't met for a function to render in the UI, it will be greyed out;
   * ![image](https://i.imgur.com/TxWUTbS.png)
-  * Reported by `BuddhAudio`.
+  * Reported by `greglou`.
 * Fixed bug in function for adding the "Open in Windows Terminal" (Admin) item in the Desktop and folders context menu when you couldn't open Windows Terminal as admin in a path ends in a backslash `\`;
   * Read more [here](https://github.com/microsoft/terminal/issues/4571);
   * To apply the fix turn off this feature and turn again.
