@@ -17,7 +17,6 @@ namespace SophiApp.Helpers
         private const string SOPHIAPP_VERSIONS_JSON = "https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/sophiapp_versions.json";
         private const string USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.49";
         private static readonly string APP_NAME = Assembly.GetExecutingAssembly().GetName().Name;
-        private static readonly MsNetDto cloudNet6Version = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
         private static readonly string FRAMEWORK_LOG = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Microsoft\CLR_v4.0\UsageLogs\SophiApp.exe.log");
         private static readonly string LOGS_FOLDER = "Logs";
         internal static string AppFrameworkLog => FRAMEWORK_LOG;
@@ -26,7 +25,6 @@ namespace SophiApp.Helpers
         internal static string StartupFolder => AppDomain.CurrentDomain.BaseDirectory;
         internal static string UserAgent => USER_AGENT;
         public static string AppName => APP_NAME;
-        public static MsNetDto CloudNet6Version => cloudNet6Version;
         public static string CoderLink => CODER_LINK;
         public static string DesignerLink => DESIGNER_LINK;
         public static string GitHubReleasesPage => GITHUB_RELEASES_PAGE;
