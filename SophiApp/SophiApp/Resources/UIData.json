@@ -3407,7 +3407,7 @@
       "EN": "The latest .NET Desktop Runtime 6 x86",
       "RU": "Последняя версия .NET Desktop Runtime 6 x86",
       "DE": "Neueste .NET Desktop Runtime 6 x86",
-      "UA": "",
+      "UA": "Остання версія .NET Desktop Runtime 6 x86",
       "IT": "L'ultima versione del .NET Desktop Runtime 6 x86",
       "TR": "En son .NET Desktop Runtime 6 x86"
     },
@@ -3415,7 +3415,7 @@
       "EN": "The .NET Desktop Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
       "RU": "Пакет .NET Desktop Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": ".NET Desktop Runtime 6 x86 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
-      "UA": "",
+      "UA": "Пакет .NET Desktop Runtime 6 x86 буде завантажено з ресурсу Microsoft (необхідний доступ в інтернет) і встановлений у тихому режимі.",
       "IT": "Il .NET Desktop Runtime 6 x86 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
       "TR": ".NET Desktop Runtime 6 x86, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
     },
@@ -3473,7 +3473,7 @@
       "EN": "The latest .NET Desktop Runtime 6 x64",
       "RU": "Последняя версия .NET Desktop Runtime 6 x64",
       "DE": "Neueste .NET Desktop Runtime 6 x64",
-      "UA": "",
+      "UA": "Остання версія .NET Desktop Runtime 6 x64",
       "IT": "L'ultima versione del .NET Desktop Runtime 6 x64",
       "TR": "En son .NET Desktop Runtime 6 x64"
     },
@@ -3481,7 +3481,7 @@
       "EN": ".NET Desktop Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
       "RU": "Пакет .NET Desktop Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": ".NET Desktop Runtime 6 x64 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
-      "UA": "",
+      "UA": "Пакет .NET Desktop Runtime 6 x64 буде завантажено з ресурсу Microsoft (необхідний доступ в інтернет) і встановлений у тихому режимі.",
       "IT": "Il .NET Desktop Runtime 6 x64 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
       "TR": ".NET Desktop Runtime 6 x64, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
     },
