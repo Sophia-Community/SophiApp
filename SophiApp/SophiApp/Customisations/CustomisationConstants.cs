@@ -570,7 +570,7 @@ else
         internal const string _927_TERMINAL_CONTEXT_MENU = @"wt.exe -d ""%1""";
         internal const string _927_TERMINAL_ICON = "Icon";
         internal const string _927_TERMINAL_ICON_VALUE = "imageres.dll,73";
-        internal const string _927_TERMINAL_RUNAS_ADMIN = @"wt.exe -d ""%V""";
+        internal const string _927_TERMINAL_RUNAS_ADMIN = @"wt.exe -d ""%V\.""";
         internal const string _928_WIN10_CONTEXT_MENU_PATH = @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32";
         internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
         internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";
