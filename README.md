@@ -1,3 +1,8 @@
+<div align="right">
+  This page also in:
+  <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
+</div>
+
 # SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
@@ -96,6 +101,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 |Version|    Marketing name   | Build      | Arch|      Editions     |
 |:-----:|:-------------------:|:----------:|:---:|:-----------------:|
+| 22H2  | October 2022 Update | 19045.1151 | x64 |Home/Pro/Enterprise|
 | 21H2  | October 2021 Update | 19044.1151 | x64 |Home/Pro/Enterprise|
 | 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|
 | 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|
@@ -103,7 +109,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ### Beta version
 
-[Download](https://github.com/farag2/Sophia-Script-for-Windows/releases)
+[Download](https://github.com/Sophia-Community/SophiApp/releases)
 
 ### How to download SophiApp via PowerShell
 
