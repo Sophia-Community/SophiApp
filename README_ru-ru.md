@@ -103,7 +103,7 @@
 
 ### Бета-версии
 
-[Download](https://github.com/farag2/Sophia-Script-for-Windows/releases)
+[Скачать](https://github.com/Sophia-Community/SophiApp/releases)
 
 ### Как скачать SophiApp через PowerShell
 
