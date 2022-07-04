@@ -25,7 +25,7 @@ namespace SophiApp.Customisations
         public static bool _103()
         {
             var allowTelemetry = RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, ALLOW_TELEMETRY);
-            var maxTelemetry = RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, MAX_TELEMETRY_ALLOWED);
+            var maxTelemetry = RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH_Allowed, MAX_TELEMETRY_ALLOWED);
             var showedToast = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, DIAG_TRACK_PATH, SHOWED_TOAST_LEVEL);
             return (allowTelemetry is MIN_ENT_TELEMETRY_VALUE &&
                         maxTelemetry is MIN_ENT_TELEMETRY_VALUE &&
