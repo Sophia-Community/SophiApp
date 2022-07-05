@@ -21,8 +21,30 @@
         "Description":  {
                             "EN":  "As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected."
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "Privacy",
+        "ChildElements":  [
+                              {
+                                  "Id":  102,
+                                  "ChildHeader":  {
+                                                      "EN":  "Default"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  103,
+                                  "ChildHeader":  {
+                                                      "EN":  "Minimal"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "EN":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -30,10 +52,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "EN":  "Send optional diagnostic data"
+                       "EN":  "The Windows Error Reporting"
                    },
         "Description":  {
-                            "EN":  "Help Microsoft imrpove your Windows exprereince and fix problems more quickly by sending us additional diagnostic data."
+                            "EN":  "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",

@@ -21,8 +21,30 @@
         "Description":  {
                             "DE":  "Bei Verwendung von Windows Ihr Gerät sendet an Microsoft begrenzten Datensätz, um Ihr Gerät und Betriebssystem zu schützen und aktualizieren, damit sie korrekt funktionieren."
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "Privacy",
+        "ChildElements":  [
+                              {
+                                  "Id":  102,
+                                  "ChildHeader":  {
+                                                      "DE":  "Standardmäßig"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  103,
+                                  "ChildHeader":  {
+                                                      "DE":  "Minimal"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "DE":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -30,10 +52,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "DE":  "Optionale Diagnosedaten senden"
+                       "DE":  "Windows-Fehlerberichterstattung"
                    },
         "Description":  {
-                            "DE":  "Helfen Sie Microsoft, Ihre Windows-Erfahnung zu verbessern und Probleme schneller zu beheben, indem Sie uns zusätzliche Diagnosedaten senden."
+                            "DE":  "Mithilfe von Fehlerberichten ermöglicht Anwendern Microsoft über Software- und Kernel-Fehler, nicht mehr reagierenden Anwendung und anderen anwendungsbezogenen Probleme benachrichtigen. So kann Microsoft die gesammelten Informationen über Fehlerberichterstellung verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen uUpdates für ihre spezifischen Probleme zur Verfügung zu stellen."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",

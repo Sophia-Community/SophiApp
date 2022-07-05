@@ -21,8 +21,30 @@
         "Description":  {
                             "TR":  "Windows kullanmanın bir parçası olarak, cihazınız Microsoft'a cihazınızın ve işletim sisteminizin güvenli, güncel ve beklendiği gibi çalışması için gerekli olan sınırlı bir veri seti gönderir."
                         },
-        "Type":  "CheckBox",
+        "Type":  "RadioGroup",
         "Tag":  "Privacy",
+        "ChildElements":  [
+                              {
+                                  "Id":  102,
+                                  "ChildHeader":  {
+                                                      "TR":  "Varsayılan"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  103,
+                                  "ChildHeader":  {
+                                                      "TR":  "En az"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "TR":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
         "ViewId":  101,
         "Windows10Supported":  true,
         "Windows11Supported":  true
@@ -30,10 +52,10 @@
     {
         "Id":  104,
         "Header":  {
-                       "TR":  "İsteğe bağlı tanılama verilerini gönder"
+                       "TR":  "Windows Hata Bildirimi"
                    },
         "Description":  {
-                            "TR":  "Bize ek tanılama verileri göndererek Microsoft'un Windows deneyiminizi geliştirmesine ve sorunları daha hızlı çözmesine yardımci olun."
+                            "TR":  "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
