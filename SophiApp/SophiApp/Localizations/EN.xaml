@@ -25,8 +25,8 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex. Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your OS build version is lower than the supported one.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">The minimum supported Windows 10 build is 1904x.1151.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">The minimum supported Windows 11 build is 22000.493.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">The minimum supported Windows 10 build is 1904x.1706.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">The minimum supported Windows 11 build is 22000.739.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">The minimum supported Windows 11 Insider Preview build is 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Open Windows Update</system:String>
     <system:String x:Key="Localization.Privacy">Privacy</system:String>
