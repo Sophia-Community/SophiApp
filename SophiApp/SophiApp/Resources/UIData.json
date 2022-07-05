@@ -3415,7 +3415,7 @@
       "EN": "The .NET Desktop Runtime 6 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
       "RU": "Пакет .NET Desktop Runtime 6 x86 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": ".NET Desktop Runtime 6 x86 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
-      "UA": "Пакет .NET Desktop Runtime 6 x86 буде завантажено з ресурсу Microsoft (необхідний доступ в інтернет) і встановлений у тихому режимі.",
+      "UA": "Пакет .NET Desktop Runtime 6 x86 буде завантажено з ресурсу Microsoft (необхідний доступ в Iнтернет) і встановлений у тихому режимі.",
       "IT": "Il .NET Desktop Runtime 6 x86 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
       "TR": ".NET Desktop Runtime 6 x86, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
     },
@@ -3481,7 +3481,7 @@
       "EN": ".NET Desktop Runtime 6 x64 will be downloaded from the Microsoft resource (the internet connection required) and installed silently.",
       "RU": "Пакет .NET Desktop Runtime 6 x64 будет скачан с ресурса Microsoft (необходим доступ в интернет) и установлен в тихом режиме.",
       "DE": ".NET Desktop Runtime 6 x64 wird von der Microsoft-Ressource heruntergeladen (Internetverbindung erforderlich) und unbemerkt installiert.",
-      "UA": "Пакет .NET Desktop Runtime 6 x64 буде завантажено з ресурсу Microsoft (необхідний доступ в інтернет) і встановлений у тихому режимі.",
+      "UA": "Пакет .NET Desktop Runtime 6 x64 буде завантажено з ресурсу Microsoft (необхідний доступ в Iнтернет) і встановлений у тихому режимі.",
       "IT": "Il .NET Desktop Runtime 6 x64 verra scaricato dai server microsoft (connessione Internet richiesta) ed installato automaticamente.",
       "TR": ".NET Desktop Runtime 6 x64, Microsoft kaynağından (internet bağlantısı gereklidir) indirilecek ve sessizce yüklenecektir."
     },
@@ -3808,7 +3808,7 @@
       "EN": "Network protection helps to prevent users from using any application to access dangerous domains that may host phishing scams, exploits, and other malicious content on the internet.",
       "RU": "Защита сети помогает пользователю предотвратить подключение приложений к опасным доменам, на которых могут размещаться фишинговые аферы, эксплойты и прочий другой вредоносный контент в интернете.",
       "DE": "Der Netzwerkschutz verhindert die System vor eine Anwendung auf gefährliche Domänen, die Phishing-Betrug, Exploits und andere bösartige Inhalte enthalten können, von Benutzer schützt.",
-      "UA": "Захист мережі допомагає користувачеві запобігти підключенню додатків до небезпечних доменів, на яких можуть розміщуватися фішингові афери, експлойти та інший шкідливий контент в інтернеті.",
+      "UA": "Захист мережі допомагає користувачеві запобігти підключенню додатків до небезпечних доменів, на яких можуть розміщуватися фішингові афери, експлойти та інший шкідливий контент в Iнтернеті.",
       "IT": "La protezione dagli exploit consente di impedire agli utenti di utilizzare qualsiasi applicazione per accedere a domini pericolosi che possono ospitare truffe di phishing, exploit e altri contenuti dannosi su Internet.",
       "TR": "Ağ koruması, kullanıcıların internette kimlik avı dolandırıcılığı, açıklardan yararlanma ve diğer kötü amaçlı içerikleri barındırabilecek tehlikeli alanlara erişmek için herhangi bir uygulamayı kullanmasını önlemeye yardımcı olur."
     },
