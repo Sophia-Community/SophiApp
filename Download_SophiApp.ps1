@@ -7,7 +7,18 @@
 #>
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$DownloadsFolder = Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}"
+if ((Get-Location).Path -eq $env:USERPROFILE)
+{
+	$DownloadsFolder = Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}"
+}
+elseif ((Get-Location).Path -eq "$env:SystemRoot\System32")
+{
+	$DownloadsFolder = Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}"
+}
+else
+{
+	$DownloadsFolder = (Get-Location).Path
+}
 
 $Parameters = @{
 	Uri              = "https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/sophiapp_versions.json"
@@ -38,11 +49,11 @@ $SetForegroundWindow = @{
 	Name      = "ForegroundWindow"
 	Language  = "CSharp"
 	MemberDefinition = @"
-		[DllImport("user32.dll")]
-		public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-		[DllImport("user32.dll")]
-		[return: MarshalAs(UnmanagedType.Bool)]
-		public static extern bool SetForegroundWindow(IntPtr hWnd);
+[DllImport("user32.dll")]
+public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+[DllImport("user32.dll")]
+[return: MarshalAs(UnmanagedType.Bool)]
+public static extern bool SetForegroundWindow(IntPtr hWnd);
 "@
 }
 if (-not ("WinAPI.ForegroundWindow" -as [type]))
