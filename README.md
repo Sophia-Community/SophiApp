@@ -94,7 +94,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 * BTC: `13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n`
 * USDT (TRC20): `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`
 * ETH: `0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`
-* 
+
 ## System Requirements
 
 ### Minimum supported Windows versions and builds
