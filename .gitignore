@@ -216,7 +216,7 @@ AppPackages/
 BundleArtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt
-*.appx
+# *.appx
 *.appxbundle
 *.appxupload
 
