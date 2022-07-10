@@ -46,15 +46,13 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ***
 
-## Our project is non-profit, but we would welcome your support
-
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a> <a href="https://github.com/Sophia-Community/SophiApp/releases">
-
-<img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
+<a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
 ***
 
 <p align="center">
+	&bull;
+	<a href="#donations">Donations</a>
 	&bull;
 	<a href="#system-requirements">System Requirements</a>
 	&bull;
@@ -81,6 +79,22 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 `SophiApp` is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to the OS.
 
+## Donations
+
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a>
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/farag)
+
+![ko-fi](https://storage.ko-fi.com/cdn/useruploads/Q5Q51QUJC/qrcode.png)
+
+## ⠀⠀⠀BTC⠀⠀⠀⠀⠀USDT⠀⠀⠀⠀⠀ETH
+
+<img src="./img/BTC.png" width=130px> <img src="./img/USDT.png" width=130px> <img src="./img/ETH.png" width=130px>
+
+* BTC: `13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n`
+* USDT (TRC20): `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`
+* ETH: `0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`
+* 
 ## System Requirements
 
 ### Minimum supported Windows versions and builds
