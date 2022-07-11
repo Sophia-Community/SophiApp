@@ -196,7 +196,7 @@
                                                       "EN":  "XblGameSaveTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "EN":  "The XblGameSave Standby Task, which synchronizes game progress when the OS is idle."
+                                                           "EN":  "The XblGameSave Standby Task, which syncronizes game progress when the OS is idle."
                                                        },
                                   "Type":  "CheckBox"
                               }
@@ -309,7 +309,7 @@
                        "EN":  "Offer suggestions on how I can set up my device"
                    },
         "Description":  {
-                            "EN":  "Windows may occasionally display a \"Get even more out of Windows\" prompt that displays additional services that user may set up."
+                            "EN":  "Windows may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -702,7 +702,7 @@
     {
         "Id":  228,
         "Header":  {
-                       "EN":  "Show the Task View button on the taskbar"
+                       "EN":  "Show Task View button on the taskbar"
                    },
         "Description":  {
                             "EN":  ""
