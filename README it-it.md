@@ -2,6 +2,7 @@
   This page also in:
   <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
 </div>
+  <a title="Eanglish" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/>
 
 # SophiApp. Il prossimo capitolo del progetto [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
 
