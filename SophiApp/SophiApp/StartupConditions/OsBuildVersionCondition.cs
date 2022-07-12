@@ -14,7 +14,7 @@ namespace SophiApp.Conditions
             var ubr = OsHelper.GetUpdateBuildRevision();
             var build = OsHelper.GetBuild();
             var hasProblem = OsHelper.IsWindows11()
-                             ? ubr >= OsHelper.WIN11_MIN_SUPPORTED_UBR || build >= OsHelper.WIN11_MIN_SUPPORTED_INSIDER_BUILD
+                             ? build >= OsHelper.WIN11_MIN_SUPPORTED_INSIDER_BUILD || build == OsHelper.WIN11_MIN_SUPPORTED_BUILD
                              : ubr >= OsHelper.WIN10_MIN_SUPPORTED_UBR;
 
             return HasProblem = hasProblem.Invert();
