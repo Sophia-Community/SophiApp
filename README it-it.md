@@ -154,7 +154,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 * Il codice della`SophiApp` è controllato [static analyzer](https://pvs-studio.com/pvs-studio), la cui licenza è stata gentilemnte concessa da PVS-Studio.
 * Tutte le build sono compilate in cloud con [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * Puoi comparare l'hash sum dello zip comunicato nella pagiana release con quello nella sezione `Compress Files` per verificare che l'archivio non sia stato manomesso(richiede un'account GitHub);
-* The app shows the `actual` state of every feature in the UI.
+* L'app mostra lo stato  `attuale` di ogni features nella UI.
 * High resolutions support.
 * It Has a built-in search engine.
   * Functions can be found by searching their headers and descriptions. [GIF](#searching-feature)
