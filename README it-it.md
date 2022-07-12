@@ -59,7 +59,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#installazione">Installazione</a>
     •
-    <a href="#features-prinxipali">Features principali</a>
+    <a href="#features-principali">Features principali</a>
     •
     <a href="#screenshot-helen">Screenshot</a>
     •
