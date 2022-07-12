@@ -211,9 +211,8 @@ namespace SophiApp.Customisations
         internal const string _352_VC_REDISTRX64_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x64)";
         internal const string _352_VC_REDISTRX64_REGISTRY_PATH = @"Installer\Dependencies";
         internal const string _352_VC_REDISTRX64_UNINSTALL_ARGS = "/uninstall /passive /norestart";
-        internal const string _500_ADGUARD_LINK = "https://store.rg-adguard.net/api/GetFiles";
-        internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
-        internal const string _500_HEVC_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_x64__8wekyb3d8bbwe.Appx";
+        internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
+        internal const string _500_HEVC_APPX_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
         internal const string _501_CORTANA_STATE = "State";
@@ -701,13 +700,6 @@ else
         internal static readonly string _268_POWERSHELL_LNK = $@"{Environment.GetEnvironmentVariable("APPDATA")}\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk";
         internal static readonly string _312_DELIVERY_OPT_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\SoftwareDistribution\DeliveryOptimization";
         internal static readonly string _346_INSTALLER_PATH = $@"{Environment.GetEnvironmentVariable("SystemRoot")}\Installer";
-
-        internal static readonly Dictionary<string, string> _500_ADGUARD_WEB_PARAMS = new Dictionary<string, string>()
-        {
-            { "ContentType", "application/x-www-form-urlencoded" }, { "type", "url" }, { "url", "https://www.microsoft.com/store/productId/9n4wgh0z6vhq" },
-            { "ring", "RP" }, { "lang", "en-US" }
-        };
-
         internal static readonly string _504_MS_STORE_RESET_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WSReset.exe";
         internal static readonly IEnumerable<string> _700_VOLUME_CACHES_NAMES = new string[] { "Delivery Optimization Files", "BranchCache", "Device Driver Packages", "Language Pack", "Previous Installations", "Setup Log Files", "System error memory dump files", "System error minidump files", "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows ESD installation files", "Windows Upgrade Log Files" };
         internal static readonly string _805_EVENT_VIEWS_PATH = $@"{Environment.GetEnvironmentVariable("ProgramData")}\Microsoft\Event Viewer\Views";
