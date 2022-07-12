@@ -2,6 +2,7 @@
 {
     internal enum UILanguage
     {
+        CZ,
         DE,
         EN,
         IT,

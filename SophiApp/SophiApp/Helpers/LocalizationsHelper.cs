@@ -10,6 +10,8 @@ namespace SophiApp.Helpers
 {
     internal class LocalizationsHelper
     {
+        private const string CZ_NAME = "čeština";
+        private const string CZ_URI = "pack://application:,,,/Localizations/CZ.xaml";
         private const string DE_NAME = "Deutsche";
         private const string DE_URI = "pack://application:,,,/Localizations/DE.xaml";
         private const string EN_NAME = "English";
@@ -25,6 +27,7 @@ namespace SophiApp.Helpers
 
         private List<Localization> LocalizationsData = new List<Localization>()
         {
+            { new Localization() { Name = CZ_NAME, Language = UILanguage.CZ, Uri = new Uri(CZ_URI, UriKind.Absolute)} },
             { new Localization() { Name = DE_NAME, Language = UILanguage.DE, Uri = new Uri(DE_URI, UriKind.Absolute)} },
             { new Localization() { Name = EN_NAME, Language = UILanguage.EN, Uri = new Uri(EN_URI, UriKind.Absolute)} },
             { new Localization() { Name = IT_NAME, Language = UILanguage.IT, Uri = new Uri(IT_URI, UriKind.Absolute)} },
