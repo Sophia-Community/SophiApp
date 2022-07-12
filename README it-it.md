@@ -3,7 +3,7 @@
   <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
 </div>
 
-# SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
+# SophiApp. Il prossimo capitolo del progetto [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
@@ -32,7 +32,7 @@
 
 </p>
 
-Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> 
+Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> 
 
 ***
 
@@ -53,21 +53,21 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 <p align="center">
     •
-    <a href="#donations">Donations</a>
+    <a href="#donazioni">Donazioni</a>
     •
-    <a href="#system-requirements">System Requirements</a>
+    <a href="#Requisiti-di-sistema">Requisiti di sistema</a>
     •
-    <a href="#installation">Installation</a>
+    <a href="#installazione">Installazione</a>
     •
-    <a href="#core-features">Core features</a>
+    <a href="#features-prinxipali">Features principali</a>
     •
-    <a href="#screenshots-helen">Screenshots</a>
+    <a href="#screenshot-helen">Screenshot</a>
     •
-    <a href="#adendum">Adendum</a>
+    <a href="#Note">Note</a>
     •
-    <a href="#translating">Translating</a>
+    <a href="#Traduzione">Traduzione</a>
     •
-    <a href="#ask-a-question-on">Ask a question on</a>
+    <a href="#Ottieni-assistenza-via">Assistenza</a>
     •
     <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
@@ -145,7 +145,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`
 
-## Features Principali
+## Features principali
 
 * UI renderizzata dinamicamente—nulla è hardcoded. 👻
 * 130+ opzioni. ⭐
@@ -155,28 +155,29 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 * Tutte le build sono compilate in cloud con [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * Puoi comparare l'hash sum dello zip comunicato nella pagiana release con quello nella sezione `Compress Files` per verificare che l'archivio non sia stato manomesso(richiede un'account GitHub);
 * L'app mostra lo stato  `attuale` di ogni features nella UI.
-* High resolutions support.
-* It Has a built-in search engine.
-  * Functions can be found by searching their headers and descriptions. [GIF](#searching-feature)
-* Dark & light themes support.
-  * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
-* Set up Privacy & Telemetry.
-* Turn off diagnostics tracking scheduled tasks.
-* Set up UI & Personalization.
-* Uninstall OneDrive "correctly".
-* Uninstall UWP apps displaying localized packages names.
-  * An UWP apps list is rendered dynamically using local icons
-* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats.
-* Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates.
-  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-scheduled-tasks)
-* Create tasks in the Task Scheduler to clean
+* Supporto per le alte risoluzioni.
+* Motore di ricerca integrato.
+  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave  [GIF](#searching-feature)
+* Supporto al tema chiaro e scuro.
+  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato. [GIF](#instantly-changing-theme)
+* Modifica la privacy e la telemetria.
+* Disattiva le attività pianificate di raccolta dati diagnostica.
+* Personalizza la UI.
+* Disinstalla OneDrive "correttamente".
+* Disinstalla le app UWP.
+  * I nopi delle app sono tradotti nella lingua del pc
+  * La lista delle app UWP è renderizzata dinamicamente con le icone locali
+* Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft usando <https://store.rg-adguard.net> per poter aprire i video .heic e .heif .
+* Crea le opreazioni pianificate `Windows Cleanup` e `Windows Cleanup Notification`per ripulire Windows dai file inutillizati e dagli aggiornamenti installati.
+  * Una [notifica](#native-interactive-toasts-for-the-scheduled-tasks) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia
+* Creaoperazioni pianificate per ripulire
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`
-* Configure the Windows security.
-* The ability to copy functions' description or header.
-* Many more File Explorer and context menu "deep" tweaks.
+* Configura la sicurezza di windows Windows.
+* ÈPossibile copiare il nome o la descrizione delle varie funzioni.
+* Molteplici personalizzazioni di esplora risorse e dei menu contestuale.
 
-## Screenshots [Helen]
+## Screenshot [Helen]
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
@@ -185,7 +186,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
 
-## Localized UWP packages names
+## Nomi delle app UWP tradotti
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/7.png)
@@ -195,37 +196,37 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
 
-## Searching feature
+## Ricerca
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/search.gif)
 
-## Instantly changing theme
+## Cambio istantaneo del tema
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
-### Native interactive toasts for the `Windows Cleanup` scheduled task
+### Notifiche interattive per l'operazione pianificate di `pulizia di windows` `
 
 ![Image](https://i.imgur.com/h17EpTG.png)
 
-## Addendum
+## Note
 
-* Some functions depend on Internet access. If not, they will be hidden in UI until the access appears back.
-* You can enable hidden functions in UI by turning on the `Advanced settings` in the Settings.
-  * The hidden functions will marked with a gear in UI.
-* After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry or any other server.
+* Alcune funzioni richiedono l'accesso ad internet. Se questo non è disponibile non compariranno nella UI.
+* Puoi sbloccare alcune funzioni nascoste abilitando `Impostazioni avanzate` nelle impostazioni.
+  * Saranno contrassegnate da un'ingranaggio.
+* Dopo che la `SophiApp` viene chiusa, verra creato un file di log che puoi inviare con una issues di GitHub o sul  [gruppo Telegram](https://t.me/sophia_chat) per aiutarci a identificare il bug. Il file non contiene informazioni personali. Non salviamo dati ne nel registro di windows o in altri server.
 
-## Translating
+## Traduzione
 
-* Feel free to translate the UI into your language by taking as a basis one of [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) and creating a new [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
+* Sentiti libero di tradurre la UI nella tua lingua usando come base [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) e creando un nuovo file  [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) .
 
-## The 3rd party libraries used
+## Librerie di terze parti usate
 
 * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 * [TaskScheduler](https://github.com/dahall/taskscheduler)
 * [ManagedDism](https://github.com/jeffkl/ManagedDism)
 * [wix3](https://github.com/wixtoolset/wix3)
 
-## Ask a question on
+## Ottieni assistenza via
 
 * [Telegram discussion group](https://t.me/sophia_chat)
 * [Telegram channel](https://t.me/sophianews)
