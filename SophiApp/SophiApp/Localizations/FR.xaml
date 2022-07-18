@@ -48,8 +48,8 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Rappel de notification sur le nettoyage des fichiers et mises à jour inutilisés de Windows.</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Nettoie les fichiers inutilisés de Windows et les mises à jour à l'aide de l'application de nettoyage de disque intégrée.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Information importante</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Exécuter la tâche pour nettoyer les fichiers et les mises à jour inutilisés de Windows ?</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Le nettoyage de Windows ne prendra pas longtemps. Cette notification réapparaîtra dans 30 jours.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Exécuter la tâche pour nettoyer les fichiers et les mises à jour inutilisés de Windows?</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Le nettoyage de Windows ne prendra pas longtemps. Cette notification réapparaîtra dans 30 jours.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">Sélectionnez un intervalle de rappel</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 heures</system:String>
     <system:String x:Key="Localization.Time.HalfHour">30 minutes</system:String>
