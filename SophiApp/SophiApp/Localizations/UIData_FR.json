@@ -1345,7 +1345,7 @@
                        "FR":  "Activer la limite de caractères des chemins à 260"
                    },
         "Description":  {
-                            "FR":  "Par défaut, la limite maximale de longueur de chemin dans Windows est de 260 caractères. Un chemin d'accès local est structuré dans l'ordre suivant : lettre de lecteur, deux-points, barre oblique inverse, composants de nom séparés par des barres obliques inverses et un caractère nul de fin."
+                            "FR":  "Par défaut, la limite maximale de longueur de chemin dans Windows est de 260 caractères. Un chemin d'accès local est structuré dans l'ordre suivant: lettre de lecteur, deux-points, barre oblique inverse, composants de nom séparés par des barres obliques inverses et un caractère nul de fin."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1579,7 +1579,7 @@
                        "FR":  "Dépannage recommandé"
                    },
         "Description":  {
-                            "FR":  "Microsoft peut recommander et exécuter l'utilitaire de résolution des problèmes en cas de problème. Dans quelle mesure souhaitez-vous que Microsoft vous aide en cas de problèmes sur votre appareil que les dépanneurs pourraient être en mesure de résoudre ?"
+                            "FR":  "Microsoft peut recommander et exécuter l'utilitaire de résolution des problèmes en cas de problème. Dans quelle mesure souhaitez-vous que Microsoft vous aide en cas de problèmes sur votre appareil que les dépanneurs pourraient être en mesure de résoudre?"
                         },
         "Type":  "RadioGroup",
         "Tag":  "System",
@@ -1713,7 +1713,7 @@
                        "FR":  "Activer la suppression du cache des vignettes"
                    },
         "Description":  {
-                            "FR":  "Windows supprime automatiquement le cache des vignettes après le redémarrage ou l'arrêt, et l'Explorateur de fichiers doit recréer à nouveau les vignettes. Le cache des vignettes est stocké sous forme de fichiers .db situés dans le dossier masqué \%LOCALAPPDATA%\Microsoft\Windows\Explorer."
+                            "FR":  "Windows supprime automatiquement le cache des vignettes après le redémarrage ou l'arrêt, et l'Explorateur de fichiers doit recréer à nouveau les vignettes. Le cache des vignettes est stocké sous forme de fichiers .db situés dans le dossier masqué %LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2112,7 +2112,7 @@
                        "FR":  "Nettoyer le dossier de téléchargement des mises à jour Windows"
                    },
         "Description":  {
-                            "FR":  "Créez la tâche planifiée \"SoftwareDistribution\" pour nettoyer \%SystemRoot%\SoftwareDistribution\Download, où toutes les mises à jour Windows sont téléchargées, sous le dossier SophiApp dans le Planificateur de tâches. La tâche attendra la fin de l'exécution du service Windows Updates. La tâche s'exécute tous les 90 jours."
+                            "FR":  "Créez la tâche planifiée \"SoftwareDistribution\" pour nettoyer %SystemRoot%\\SoftwareDistribution\\Download, où toutes les mises à jour Windows sont téléchargées, sous le dossier SophiApp dans le Planificateur de tâches. La tâche attendra la fin de l'exécution du service Windows Updates. La tâche s'exécute tous les 90 jours."
                         },
         "Type":  "IconFolderCheckBox",
         "Tag":  "TaskScheduler",
@@ -2238,7 +2238,7 @@
                        "FR":  "Activer la journalisation pour tous les scripts PowerShell entrés dans le journal des événements Windows PowerShell"
                    },
         "Description":  {
-                            "FR":  "Windows PowerShell consignera le traitement des commandes, des blocs de script, des fonctions et des scripts, qu'ils soient invoqués de manière interactive ou via l'automatisation dans le journal des événements \"Applications and Services Logs\Microsoft\Windows\PowerShell\Operational\". Pour le Windows PowerShell 5.1 intégré uniquement."
+                            "FR":  "Windows PowerShell consignera le traitement des commandes, des blocs de script, des fonctions et des scripts, qu'ils soient invoqués de manière interactive ou via l'automatisation dans le journal des événements \"Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational\". Pour le Windows PowerShell 5.1 intégré uniquement."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
