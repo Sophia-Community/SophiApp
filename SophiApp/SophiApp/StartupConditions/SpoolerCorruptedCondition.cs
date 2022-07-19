@@ -5,7 +5,7 @@ using System.ServiceProcess;
 
 namespace SophiApp.StartupConditions
 {
-    internal class SpoolerNotCorruptedCondition : IStartupCondition
+    internal class SpoolerCorruptedCondition : IStartupCondition
     {
         public bool HasProblem { get; set; } = true;
         public ConditionsTag Tag { get; set; } = ConditionsTag.SpoolerCorrupted;

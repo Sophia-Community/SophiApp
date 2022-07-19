@@ -20,7 +20,7 @@ namespace SophiApp.Helpers
 
         private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
 
-        internal static bool DefenderIsRun()
+        internal static bool AntiSpywareIsEnabled()
         {
             bool isRun;
 
@@ -44,6 +44,17 @@ namespace SophiApp.Helpers
             var defender = GetAntiVirusProduct().Where(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID).First();
             var defenderState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);
             return defenderState == "00" || defenderState == "01";
+        }
+
+        // https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-windowsdefenderproductstatus?view=graph-rest-beta
+        internal static int DefenderProductStatus()
+        {
+            var scope = @"Root/Microsoft/Windows/Defender";
+            var query = "SELECT * FROM MSFT_MpComputerStatus";
+            return GetManagementObjectSearcher(scope, query)
+                .Get().Cast<ManagementBaseObject>()
+                .First().Properties["ProductStatus"]
+                .Value.ToInt32();
         }
 
         internal static string GetActivePowerPlanId()

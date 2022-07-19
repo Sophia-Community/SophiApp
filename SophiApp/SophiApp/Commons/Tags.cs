@@ -5,7 +5,6 @@ namespace SophiApp.Commons
     internal enum ConditionsTag
     {
         DefenderCorrupted,
-        DefenderWarning,
         NewVersion,
         OsBuildVersion,
         OsFilesNotCorrupted,
