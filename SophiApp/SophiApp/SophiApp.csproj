@@ -518,6 +518,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Localizations\FR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Localizations\IT.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
