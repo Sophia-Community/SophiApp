@@ -11,27 +11,35 @@ namespace SophiApp.Helpers
         internal static bool DisabledByGroupPolicy()
         {
             const string DISABLE_RTM_MONITORING = "DisableRealtimeMonitoring";
+            const string DISABLE_BEHAVIOR_MONITORING = "DisableBehaviorMonitoring";
             const string DISABLE_ANTI_SPYWARE = "DisableAntiSpyware";
-            const string DEFENDER_REAL_TIME_PATH = @"SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time";
+            const string DEFENDER_REAL_TIME_PATH = @"SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection";
             const string DEFENDER_PATH = @"SOFTWARE\Policies\Microsoft\Windows Defender";
             const int DISABLED_VALUE = 1;
 
             return RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_PATH, DISABLE_ANTI_SPYWARE) == DISABLED_VALUE
-                    || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_RTM_MONITORING) == DISABLED_VALUE;
+                    || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_RTM_MONITORING) == DISABLED_VALUE
+                        || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_BEHAVIOR_MONITORING) == DISABLED_VALUE;
         }
 
         internal static bool IsCorrupted()
         {
-            var protectionDisabled = WmiHelper.DefenderProtectionIsDisabled();
-            var servicesRunning = AllServicesIsRunning();
-            var antiSpyEnabled = WmiHelper.AntiSpywareIsEnabled();
-            var productEnabled = WmiHelper.DefenderProductStatus() != 1;
-            var amEngineDisabled = WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
+            try
+            {
+                var protectionDisabled = WmiHelper.DefenderProtectionIsDisabled();
+                var servicesRunning = AllServicesIsRunning();
+                var antiSpywareEnabled = WmiHelper.AntiSpywareIsEnabled();
+                var productEnabled = WmiHelper.DefenderProductStatus() != 1;
+                var amEngineDisabled = WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
+                var disabledByGroupPolicy = DisabledByGroupPolicy();
 
-            return protectionDisabled == false && amEngineDisabled == false
-                    && servicesRunning && antiSpyEnabled && productEnabled
-                    ? false
-                    : true;
+                return protectionDisabled || amEngineDisabled || disabledByGroupPolicy
+                    || !servicesRunning || !antiSpywareEnabled || !productEnabled;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
         }
 
         private static bool AllServicesIsRunning()

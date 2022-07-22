@@ -7,7 +7,7 @@ namespace SophiApp.Commons
         DefenderCorrupted,
         NewVersion,
         OsBuildVersion,
-        OsFilesNotCorrupted,
+        OsFilesCorrupted,
         OsVersion,
         RebootRequired,
         SingleAdminSession,
