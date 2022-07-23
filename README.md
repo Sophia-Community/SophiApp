@@ -115,11 +115,11 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 |Version|    Marketing name   | Build      | Arch|      Editions     |
 |:-----:|:-------------------:|:----------:|:---:|:-----------------:|
-| 22H2  | October 2022 Update | 19045.1706 | x64 |Home/Pro/Enterprise|
-| 21H2  | October 2021 Update | 19044.1706 | x64 |Home/Pro/Enterprise|
-| 21H1  | May 2021 Update     | 19043.1706 | x64 |Home/Pro/Enterprise|
-| 20H2  | October 2020 Update | 19042.1706 | x64 |Home/Pro/Enterprise|
-| 2004  | May 2020 Update     | 19041.1706 | x64 |Home/Pro/Enterprise|
+| 22H2  | October 2022 Update | 19045.1766 | x64 |Home/Pro/Enterprise|
+| 21H2  | October 2021 Update | 19044.1766 | x64 |Home/Pro/Enterprise|
+| 21H1  | May 2021 Update     | 19043.1766 | x64 |Home/Pro/Enterprise|
+| 20H2  | October 2020 Update | 19042.1766 | x64 |Home/Pro/Enterprise|
+| 2004  | May 2020 Update     | 19041.1766 | x64 |Home/Pro/Enterprise|
 
 ### Beta version
 
