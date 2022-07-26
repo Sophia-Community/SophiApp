@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Windows;
 
 namespace SophiApp.Helpers
 {
@@ -54,7 +55,7 @@ namespace SophiApp.Helpers
             {
                 var scope = @"Root/Microsoft/Windows/Defender";
                 var query = "SELECT * FROM MSFT_MpComputerStatus";
-                var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+                _ = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
                 return true;
             }
             catch (Exception)

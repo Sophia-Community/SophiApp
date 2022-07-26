@@ -26,12 +26,14 @@ namespace SophiApp.Helpers
         {
             try
             {
+                var servicesRunning = AllServicesIsRunning();
                 var protectionDisabled = WmiHelper.DefenderProtectionIsDisabled();
                 var productEnabled = WmiHelper.DefenderProductStatus() != 1;
                 var amEngineDisabled = WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
                 var disabledByGroupPolicy = DisabledByGroupPolicy();
 
-                return protectionDisabled || amEngineDisabled || disabledByGroupPolicy || !productEnabled;
+                return servicesRunning || protectionDisabled 
+                    || amEngineDisabled || disabledByGroupPolicy || !productEnabled;
             }
             catch (Exception)
             {
