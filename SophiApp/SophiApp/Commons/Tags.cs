@@ -13,7 +13,6 @@ namespace SophiApp.Commons
         SingleAdminSession,
         SingleInstance,
         SomethingWrong,
-        SpoolerCorrupted,
         SycnexScript,
         Win10Tweaker,
     }
