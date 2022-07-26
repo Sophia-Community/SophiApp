@@ -13,8 +13,9 @@ namespace SophiApp.StartupConditions
 
         public bool Invoke()
         {
-            return HasProblem = !WmiHelper.AntiSpywareIsEnabled()
-                || !ServiceHelper.ServiceExist(WINDOWS_UPDATE_SERVICE);
+            return HasProblem = !WindowsDefenderHelper.AllServicesIsRunning()
+                || !WmiHelper.DefenderWmiCacheIsValid()
+                    || !ServiceHelper.ServiceExist(WINDOWS_UPDATE_SERVICE);
         }
     }
 }

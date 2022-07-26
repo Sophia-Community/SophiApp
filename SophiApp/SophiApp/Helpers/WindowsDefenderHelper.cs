@@ -27,13 +27,11 @@ namespace SophiApp.Helpers
             try
             {
                 var protectionDisabled = WmiHelper.DefenderProtectionIsDisabled();
-                var servicesRunning = AllServicesIsRunning();
                 var productEnabled = WmiHelper.DefenderProductStatus() != 1;
                 var amEngineDisabled = WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
                 var disabledByGroupPolicy = DisabledByGroupPolicy();
 
-                return protectionDisabled || amEngineDisabled || disabledByGroupPolicy
-                    || !servicesRunning || !productEnabled;
+                return protectionDisabled || amEngineDisabled || disabledByGroupPolicy || !productEnabled;
             }
             catch (Exception)
             {
@@ -41,7 +39,7 @@ namespace SophiApp.Helpers
             }
         }
 
-        private static bool AllServicesIsRunning()
+        internal static bool AllServicesIsRunning()
         {
             try
             {

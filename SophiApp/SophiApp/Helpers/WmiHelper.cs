@@ -23,19 +23,10 @@ namespace SophiApp.Helpers
         internal static bool AntiSpywareIsEnabled()
         {
             bool isRun;
-
-            try
-            {
-                var scope = @"Root/Microsoft/Windows/Defender";
-                var query = "SELECT * FROM MSFT_MpComputerStatus";
-                var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First().Properties[ANTISPYWARE_ENABLED].Value;
-                isRun = Convert.ToBoolean(status);
-            }
-            catch (Exception)
-            {
-                isRun = false;
-            }
-
+            var scope = @"Root/Microsoft/Windows/Defender";
+            var query = "SELECT * FROM MSFT_MpComputerStatus";
+            var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First().Properties[ANTISPYWARE_ENABLED].Value;
+            isRun = Convert.ToBoolean(status);
             return isRun;
         }
 
@@ -55,6 +46,21 @@ namespace SophiApp.Helpers
                 .Get().Cast<ManagementBaseObject>()
                 .First().Properties["ProductStatus"]
                 .Value.ToInt32();
+        }
+
+        internal static bool DefenderWmiCacheIsValid()
+        {
+            try
+            {
+                var scope = @"Root/Microsoft/Windows/Defender";
+                var query = "SELECT * FROM MSFT_MpComputerStatus";
+                var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         internal static string GetActivePowerPlanId()
