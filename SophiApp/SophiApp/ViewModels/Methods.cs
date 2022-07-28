@@ -214,6 +214,7 @@ namespace SophiApp.ViewModels
             await InitializeTextedElementsAsync();
             await InitializeUwpElementsAsync();
             await InitializeWatchersAsync();
+            await InitializeWindowsDefenderState();
             SetVisibleViewTag(Tags.ViewPrivacy);
             SetControlsHitTest(hamburgerHitTest: true);
             MouseHelper.ShowWaitCursor(show: false);
@@ -241,8 +242,7 @@ namespace SophiApp.ViewModels
         }
 
         private async Task InitializeTextedElements(string tag) => await Task.Run(() => TextedElements.Where(element => element.Tag == tag)
-                                                                                                                                            .ToList()
-                                                                                                                                            .ForEach(element => element.Initialize()));
+        .ToList().ForEach(element => element.Initialize()));
 
         private async Task InitializeTextedElementsAsync()
         {
@@ -267,6 +267,19 @@ namespace SophiApp.ViewModels
                 var regWatcher = RegistryWatcher.GetInstance();
                 regWatcher.SystemThemeChangedEvent += OnSystemThemeChanged;
                 _ = regWatcher.Start();
+            });
+        }
+
+        private async Task InitializeWindowsDefenderState()
+        {
+            var customisationIds = new List<uint>() { 800, 801, 808 };
+            await Task.Run(() =>
+            {
+                if (WindowsDefenderHelper.IsCorrupted())
+                {
+                    var defenderCustomisations = TextedElements.Where(element => customisationIds.Contains(element.Id)).ToList();
+                    defenderCustomisations.ForEach(element => element.Status = ElementStatus.DISABLED);
+                }
             });
         }
 

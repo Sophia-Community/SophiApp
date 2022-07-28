@@ -11,19 +11,13 @@ namespace SophiApp.StartupConditions
 
         public bool Invoke()
         {
-            if (OsHelper.IsEnterpriseG)
-            {
-                return HasProblem;
-            }
-
             if (WmiHelper.HasExternalAntiVirus())
             {
                 var antivirusName = WmiHelper.GetAntiVirusInfo<string>("displayName");
                 DebugHelper.FoundExternalAntiVirus(antivirusName);
-                return HasProblem;
             }
 
-            return HasProblem = WindowsDefenderHelper.IsCorrupted();
+            return HasProblem;
         }
     }
 }

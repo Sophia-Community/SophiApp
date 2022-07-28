@@ -13,7 +13,7 @@ namespace SophiApp.StartupConditions
 
         public bool Invoke()
         {
-            return HasProblem = !WmiHelper.DefenderWmiCacheIsValid()
+            return HasProblem = !WindowsDefenderHelper.AllServicesExist()
                     || !ServiceHelper.ServiceExist(WINDOWS_UPDATE_SERVICE);
         }
     }
