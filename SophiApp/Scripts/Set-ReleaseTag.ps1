@@ -5,15 +5,17 @@ $Parameters = @{
 (Invoke-RestMethod @Parameters) | Select-Object -First 1 | ForEach-Object -Process {
 	if ($_.prerelease)
 	{
-		$Script:IsReleaseString = "        private const bool IS_RELEASE = true;"
+		$IsReleaseString = "        private const bool IS_RELEASE = true;"
 		Write-Host "`nIs Pre-Release: true"
 	}
 	else
 	{
-		$Script:IsReleasePattern = "        private const bool IS_RELEASE ="
+		$IsReleaseString = "        private const bool IS_RELEASE = false;"
+		Write-Host "`nIs Pre-Release: false"
 	}
 }
 
+$IsReleasePattern = "        private const bool IS_RELEASE ="
 $ReleaseTag          = $args[0].Split("/") | Select-Object -Last 1
 $AssemblyInfo        = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Properties\AssemblyInfo.cs"
 $AssemblyPattern     = "AssemblyVersion"
@@ -50,7 +52,7 @@ if (Test-Path -Path $AppHelper)
 	Write-Host "`nAppHelper.cs found"
 
 	$AppHelperContent = Get-Content -Path $AppHelper
-	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern $Script:IsReleasePattern | Select-Object -Last 1).LineNumber
+	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern $IsReleasePattern | Select-Object -Last 1).LineNumber
 	$AppHelperContent[$IsReleaseLineNumber - 1] = $Script:IsReleaseString
 	Set-Content -Path $AppHelper -Value $AppHelperContent -Confirm:$false -Encoding UTF8 -Force
 
