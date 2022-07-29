@@ -5,12 +5,12 @@ $Parameters = @{
 (Invoke-RestMethod @Parameters) | Select-Object -First 1 | ForEach-Object -Process {
 	if ($_.prerelease)
 	{
-		$IsReleaseString = "        private const bool IS_RELEASE = true;"
+		$Script:IsReleaseString = "        private const bool IS_RELEASE = true;"
 		Write-Host "`nIs Pre-Release: true"
 	}
 	else
 	{
-		$IsReleasePattern = "        private const bool IS_RELEASE ="
+		$Script:IsReleasePattern = "        private const bool IS_RELEASE ="
 	}
 }
 
@@ -50,8 +50,8 @@ if (Test-Path -Path $AppHelper)
 	Write-Host "`nAppHelper.cs found"
 
 	$AppHelperContent = Get-Content -Path $AppHelper
-	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern $IsReleasePattern | Select-Object -Last 1).LineNumber
-	$AppHelperContent[$IsReleaseLineNumber - 1] = $IsReleaseString
+	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern $Script:IsReleasePattern | Select-Object -Last 1).LineNumber
+	$AppHelperContent[$IsReleaseLineNumber - 1] = $Script:IsReleaseString
 	Set-Content -Path $AppHelper -Value $AppHelperContent -Confirm:$false -Encoding UTF8 -Force
 
 	Write-Host "`nAppHelper.cs saved"
