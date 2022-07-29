@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
-using System.Windows;
 
 namespace SophiApp.Helpers
 {
@@ -21,25 +20,23 @@ namespace SophiApp.Helpers
 
         private static ManagementObjectSearcher GetManagementObjectSearcher(string scope, string query) => new ManagementObjectSearcher(scope, query);
 
-        internal static bool AntiSpywareIsEnabled()
+        internal static bool AntiSpywareEnabled()
         {
-            bool isRun;
             var scope = @"Root/Microsoft/Windows/Defender";
             var query = "SELECT * FROM MSFT_MpComputerStatus";
             var status = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First().Properties[ANTISPYWARE_ENABLED].Value;
-            isRun = Convert.ToBoolean(status);
-            return isRun;
+            return (bool)status;
         }
 
-        internal static bool DefenderProtectionIsDisabled()
+        internal static bool DefenderProtectionEnabled()
         {
             var defender = GetAntiVirusProduct().Where(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID).First();
             var defenderState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);
-            return defenderState == "00" || defenderState == "01";
+            return defenderState != "00" | defenderState != "01";
         }
 
         // https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-windowsdefenderproductstatus?view=graph-rest-beta
-        internal static int DefenderProductStatus()
+        internal static int GetDefenderProductStatus()
         {
             var scope = @"Root/Microsoft/Windows/Defender";
             var query = "SELECT * FROM MSFT_MpComputerStatus";
@@ -55,7 +52,7 @@ namespace SophiApp.Helpers
             {
                 var scope = @"Root/Microsoft/Windows/Defender";
                 var query = "SELECT * FROM MSFT_MpComputerStatus";
-                _ = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>().First();
+                _ = GetManagementObjectSearcher(scope, query).Get().Cast<ManagementBaseObject>();
                 return true;
             }
             catch (Exception)

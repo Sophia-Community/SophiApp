@@ -9,7 +9,7 @@ namespace SophiApp.Helpers
         private const string AME_WRONG_VERSION = "0.0.0.0";
         private static readonly List<string> DEFENDER_SERVICES = new List<string>() { "WinDefend", "SecurityHealthService", "wscsvc" };
 
-        internal static bool DisabledByGroupPolicy()
+        internal static bool NotDisabledByGpo()
         {
             const string DISABLE_RTM_MONITORING = "DisableRealtimeMonitoring";
             const string DISABLE_BEHAVIOR_MONITORING = "DisableBehaviorMonitoring";
@@ -18,27 +18,29 @@ namespace SophiApp.Helpers
             const string DEFENDER_PATH = @"SOFTWARE\Policies\Microsoft\Windows Defender";
             const int DISABLED_VALUE = 1;
 
-            return RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_PATH, DISABLE_ANTI_SPYWARE) == DISABLED_VALUE
-                    || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_RTM_MONITORING) == DISABLED_VALUE
-                        || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_BEHAVIOR_MONITORING) == DISABLED_VALUE;
+            return RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_PATH, DISABLE_ANTI_SPYWARE) != DISABLED_VALUE
+                    || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_RTM_MONITORING) != DISABLED_VALUE
+                        || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, DEFENDER_REAL_TIME_PATH, DISABLE_BEHAVIOR_MONITORING) != DISABLED_VALUE;
         }
 
-        internal static bool IsCorrupted()
+        internal static bool IsValid()
         {
             try
             {
-                //var servicesRunning = AllServicesIsRunning();
-                //var protectionDisabled = WmiHelper.DefenderProtectionIsDisabled();
-                //var productEnabled = WmiHelper.DefenderProductStatus() != 1;
-                //var amEngineDisabled = WmiHelper.GetDefenderAMEngineVersion() == AME_WRONG_VERSION;
-                //var disabledByGroupPolicy = DisabledByGroupPolicy();
+                var wmiCacheIsValid = WmiHelper.DefenderWmiCacheIsValid();
+                var protectionEnabled = WmiHelper.DefenderProtectionEnabled();
+                var antiSpywareEnabled = WmiHelper.AntiSpywareEnabled();
+                var productEnabled = WmiHelper.GetDefenderProductStatus() != 1;
+                var engineEnabled = WmiHelper.GetDefenderAMEngineVersion() != AME_WRONG_VERSION;
+                var notDisabledByGpo = NotDisabledByGpo();
 
-                //return servicesRunning || protectionDisabled 
-                //    || amEngineDisabled || disabledByGroupPolicy || !productEnabled;
+                return wmiCacheIsValid && protectionEnabled && antiSpywareEnabled
+                        && productEnabled && engineEnabled
+                            && notDisabledByGpo;
             }
             catch (Exception)
             {
-                return true;
+                return false;
             }
         }
 

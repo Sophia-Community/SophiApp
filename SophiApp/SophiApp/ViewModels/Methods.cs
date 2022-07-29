@@ -272,13 +272,13 @@ namespace SophiApp.ViewModels
 
         private async Task InitializeWindowsDefenderState()
         {
-            var customisationIds = new List<uint>() { 800, 801, 808 };
+            var elementsToDisableId = new List<uint>() { 800, 801, 802 };
             await Task.Run(() =>
             {
-                if (WindowsDefenderHelper.IsCorrupted())
+                if (WindowsDefenderHelper.IsValid().Invert())
                 {
-                    var defenderCustomisations = TextedElements.Where(element => customisationIds.Contains(element.Id)).ToList();
-                    defenderCustomisations.ForEach(element => element.Status = ElementStatus.DISABLED);
+                    TextedElements.Where(element => elementsToDisableId.Contains(element.Id))
+                    .ToList().ForEach(element => element.Status = ElementStatus.DISABLED);
                 }
             });
         }
