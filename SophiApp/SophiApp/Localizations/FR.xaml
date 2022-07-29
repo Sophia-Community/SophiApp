@@ -21,7 +21,6 @@
     <system:String x:Key="Conditions.RiskAcceptance">Je comprends le risque et j'accepte d'être responsable de tout dommage éventuel</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Réinstallez le système d'exploitation au cas où.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender cassé ou supprimé du système d'exploitation</system:String>
-    <system:String x:Key="Conditions.SpoolerCorrupted">Le service &quot;spouleur d'impression&quot; à été supprimé du système</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">La stabilité du système d'exploitation Windows peut avoir été compromise en utilisant</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Script Windows10Debloater de Sycnex. Réinstallez le système d'exploitation au cas où.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">La version de build de votre système d'exploitation est inférieure à celle prise en charge.</system:String>

@@ -269,7 +269,7 @@
                         </StackPanel>
                     </views:ViewConditionsTemplate.TextContent>
                 </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewOsFilesNotCorruptedCondition" Grid.Column="1" Panel.ZIndex="20" Tag="OsFilesNotCorrupted">
+                <views:ViewConditionsTemplate x:Name="ViewOsFilesNotCorruptedCondition" Grid.Column="1" Panel.ZIndex="20" Tag="OsFilesCorrupted">
                     <views:ViewConditionsTemplate.TextContent>
                         <StackPanel>
                             <TextBlock Text="{DynamicResource Conditions.OsFilesNotCorrupted.IsCorrupted}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
@@ -323,26 +323,11 @@
                         </StackPanel>
                     </views:ViewConditionsTemplate.TextContent>
                 </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewDefenderWarningCondition" Grid.Column="1" Panel.ZIndex="20" Tag="DefenderWarning">
+                <views:ViewConditionsTemplate x:Name="ViewDefenderIsBrokenCondition"  Grid.Column="1" Panel.ZIndex="20" Tag="DefenderCorrupted">
                     <views:ViewConditionsTemplate.TextContent>
                         <StackPanel>
                             <TextBlock Text="{DynamicResource Conditions.DefenderIsBroken}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                             <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAcceptance}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewWin10TweakerBrokeDefender"  Grid.Column="1" Panel.ZIndex="20" Tag="DefenderCorrupted">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.DefenderIsBroken}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <controls:SettingSwitch Header="{DynamicResource Conditions.RiskAcceptance}" Margin="{StaticResource DoubleMarginViewConditionsText}" HorizontalAlignment="Center" Command="{Binding RiskAgreeClickedCommand}" />
-                        </StackPanel>
-                    </views:ViewConditionsTemplate.TextContent>
-                </views:ViewConditionsTemplate>
-                <views:ViewConditionsTemplate x:Name="ViewSpoolerCorruptedCondition" Grid.Column="1" Panel.ZIndex="20" Tag="SpoolerCorrupted">
-                    <views:ViewConditionsTemplate.TextContent>
-                        <StackPanel>
-                            <TextBlock Text="{DynamicResource Conditions.SpoolerCorrupted}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                         </StackPanel>
                     </views:ViewConditionsTemplate.TextContent>
                 </views:ViewConditionsTemplate>
