@@ -208,6 +208,9 @@
     <Compile Include="Controls\GitHubHyperLink.xaml.cs">
       <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TelegramHyperLink.xaml.cs">
+      <DependentUpon>TelegramHyperLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
