@@ -86,7 +86,7 @@
                                 Command="{Binding HyperLinkClickedCommand}"
                                 CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
 
-                            <controls:GitHubHyperLink
+                            <controls:TelegramHyperLink
                                 Margin="{StaticResource BlockIndent}"
                                 HorizontalAlignment="Left"
                                 Command="{Binding HyperLinkClickedCommand}"
