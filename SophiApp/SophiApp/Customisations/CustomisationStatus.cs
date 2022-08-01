@@ -501,7 +501,7 @@ namespace SophiApp.Customisations
                                      : throw new NoInternetConnectionException();
 
         public static bool _600() => (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_DVR_PATH, _600_APP_CAPTURE) == DISABLED_VALUE
-                                        & RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == DISABLED_VALUE).Invert();
+                                        && RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _600_GAME_CONFIG_PATH, _600_GAME_DVR) == DISABLED_VALUE).Invert();
 
         public static bool _601() => UwpHelper.PackageExist(_601_UWP_XBOX_GAMING_OVERLAY) || UwpHelper.PackageExist(_601_UWP_GAMING_APP)
                                      ? (RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, _601_GAME_BAR_PATH, _601_SHOW_PANEL) == DISABLED_VALUE)

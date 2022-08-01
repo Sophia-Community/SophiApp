@@ -28,13 +28,13 @@ namespace SophiApp.Helpers
             try
             {
                 var wmiCacheIsValid = WmiHelper.DefenderWmiCacheIsValid();
-                var protectionEnabled = WmiHelper.DefenderProtectionEnabled();
+                var protectionDisabled = WmiHelper.DefenderProtectionDisabled();
                 var antiSpywareEnabled = WmiHelper.AntiSpywareEnabled();
                 var productEnabled = WmiHelper.GetDefenderProductStatus() != 1;
                 var engineEnabled = WmiHelper.GetDefenderAMEngineVersion() != AME_WRONG_VERSION;
                 var notDisabledByGpo = NotDisabledByGpo();
 
-                return wmiCacheIsValid && protectionEnabled && antiSpywareEnabled
+                return wmiCacheIsValid && !protectionDisabled && antiSpywareEnabled
                         && productEnabled && engineEnabled
                             && notDisabledByGpo;
             }

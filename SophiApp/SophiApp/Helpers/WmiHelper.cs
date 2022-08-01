@@ -28,11 +28,11 @@ namespace SophiApp.Helpers
             return (bool)status;
         }
 
-        internal static bool DefenderProtectionEnabled()
+        internal static bool DefenderProtectionDisabled()
         {
             var defender = GetAntiVirusProduct().Where(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID).First();
             var defenderState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);
-            return defenderState != "00" || defenderState != "01";
+            return defenderState == "00" || defenderState == "01";
         }
 
         // https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-windowsdefenderproductstatus?view=graph-rest-beta
