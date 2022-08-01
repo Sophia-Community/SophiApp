@@ -253,12 +253,12 @@ namespace SophiApp.Customisations
         public static bool _261() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, _261_DISALLOW_WINDOWS_SHAKE) != ENABLED_VALUE;
 
         public static bool _263() => OsHelper.GetVersion().Build >= _263_MIN_SUPPORTED_VERSION
-                                     ? RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_DEFAULT_VALUE || RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == null
+                                     ? RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_DEFAULT_VALUE || RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == null
                                      : throw new WindowsEditionNotSupportedException();
 
-        public static bool _264() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_PINS_VALUE;
+        public static bool _264() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_PINS_VALUE;
 
-        public static bool _265() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_RECOMMENDATIONS_VALUE;
+        public static bool _265() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_RECOMMENDATIONS_VALUE;
 
         public static bool _266() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS) != _266_DISABLED_VALUE;
 
@@ -534,11 +534,6 @@ namespace SophiApp.Customisations
 
         public static bool _800()
         {
-            if (WindowsDefenderHelper.NotDisabledByGpo())
-            {
-                throw new MicrosoftDefenderDisabledByGroupPolicy();
-            }
-
             return WmiHelper.AntiSpywareEnabled()
                    ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _800_DEFENDER_NETWORK_PROTECTION_POLICIES_PATH, _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
                         || RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _800_DEFENDER_NETWORK_PROTECTION_PATH, _800_ENABLE_NETWORK_PROTECTION) == ENABLED_VALUE
@@ -547,11 +542,6 @@ namespace SophiApp.Customisations
 
         public static bool _801()
         {
-            if (WindowsDefenderHelper.NotDisabledByGpo())
-            {
-                throw new MicrosoftDefenderDisabledByGroupPolicy();
-            }
-
             return WmiHelper.AntiSpywareEnabled()
                    ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _801_WINDOWS_DEFENDER_PATH, _801_PUA_PROTECTION) == ENABLED_VALUE
                    : throw new MicrosoftDefenderNotRunning();
@@ -559,11 +549,6 @@ namespace SophiApp.Customisations
 
         public static bool _802()
         {
-            if (WindowsDefenderHelper.NotDisabledByGpo())
-            {
-                throw new MicrosoftDefenderDisabledByGroupPolicy();
-            }
-
             return WmiHelper.AntiSpywareEnabled() ? ProcessHelper.ProcessExist(_802_DEFENDER_SANDBOX_PROCESS)
                                                 || Environment.GetEnvironmentVariable(_802_FORCE_USE_SANDBOX, EnvironmentVariableTarget.Machine) == _802_SANDBOX_ENABLED_VALUE
                                              : throw new MicrosoftDefenderNotRunning();
@@ -582,11 +567,6 @@ namespace SophiApp.Customisations
 
         public static bool _808()
         {
-            if (WindowsDefenderHelper.NotDisabledByGpo())
-            {
-                throw new MicrosoftDefenderDisabledByGroupPolicy();
-            }
-
             return WmiHelper.AntiSpywareEnabled() ? (RegHelper.GetStringValue(RegistryHive.LocalMachine, CURRENT_VERSION_EXPLORER_PATH, _808_SMART_SCREEN_ENABLED) == _808_SMART_SCREEN_DISABLED_VALUE).Invert()
                                              : throw new MicrosoftDefenderNotRunning();
         }
