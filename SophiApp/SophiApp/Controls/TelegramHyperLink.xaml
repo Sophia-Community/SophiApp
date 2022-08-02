@@ -28,11 +28,6 @@
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel MouseLeftButtonDown="TelegramHyperLink_MouseLeftButtonDown">
-                <TextBlock
-                    Margin="0,0,10,0"
-                    Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                    Style="{DynamicResource SubHeaderText}"
-                    Text="{DynamicResource Localization.Settings.Telegram}" />
                 <ContentPresenter Content="{DynamicResource Icon.Telegram}" />
             </StackPanel>
         </ControlTemplate>

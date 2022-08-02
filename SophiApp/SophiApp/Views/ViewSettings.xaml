@@ -72,6 +72,17 @@
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
+                                <controls:GitHubHyperLink
+                                    Margin="10, 0, 0, 0"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding HyperLinkClickedCommand}"
+                                    CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
+
+                                <controls:TelegramHyperLink
+                                    Margin="10, -2, 0, 0"
+                                    HorizontalAlignment="Left"
+                                    Command="{Binding HyperLinkClickedCommand}"
+                                    CommandParameter="{x:Static helpers:AppHelper.TelegramLink}" />
                             </StackPanel>
 
                             <StackPanel Style="{StaticResource PanelContainer}">
@@ -79,18 +90,6 @@
                                 <controls:Heart Width="20" Height="20" Margin="7, 0, 7, 0" />
                                 <TextBlock Style="{DynamicResource NormalText}" Text="{DynamicResource Localization.About.OfWindows}" />
                             </StackPanel>
-
-                            <controls:GitHubHyperLink
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:AppHelper.GitHubRepo}" />
-
-                            <controls:TelegramHyperLink
-                                Margin="{StaticResource BlockIndent}"
-                                HorizontalAlignment="Left"
-                                Command="{Binding HyperLinkClickedCommand}"
-                                CommandParameter="{x:Static helpers:AppHelper.TelegramLink}" />
 
                             <TextBlock
                                 Margin="{StaticResource BlockIndent}"
