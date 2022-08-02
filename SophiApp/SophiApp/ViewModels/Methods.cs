@@ -272,7 +272,7 @@ namespace SophiApp.ViewModels
 
         private async Task InitializeWindowsDefenderState()
         {
-            var elementsToDisableId = new List<uint>() { 800, 801, 802 };
+            var elementsToDisableId = new List<uint>() { 800, 801, 802, 808 };
             await Task.Run(() =>
             {
                 if (WindowsDefenderHelper.IsValid().Invert())
