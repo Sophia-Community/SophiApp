@@ -208,6 +208,9 @@
     <Compile Include="Controls\GitHubHyperLink.xaml.cs">
       <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TelegramHyperLink.xaml.cs">
+      <DependentUpon>TelegramHyperLink.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
     </Compile>
@@ -389,6 +392,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\GitHubHyperLink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TelegramHyperLink.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -10,6 +10,7 @@ namespace SophiApp.Helpers
         private const string DESIGNER_LINK = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
         private const string GITHUB_RELEASES_PAGE = "https://github.com/Sophia-Community/SophiApp/releases";
         private const string GITHUB_REPO = "https://github.com/Sophia-Community/SophiApp";
+        private const string TELEGRAM_LINK = "https://t.me/sophia_chat";
         private const bool IS_RELEASE = true;
         private const string LEADER_LINK = "https://github.com/farag2";
         private const string LOGOTYPE_CREATOR_LINK = "https://www.linkedin.com/mwlite/in/наталия-гуменюк-ba4a04161";
@@ -28,6 +29,7 @@ namespace SophiApp.Helpers
         public static string DesignerLink => DESIGNER_LINK;
         public static string GitHubReleasesPage => GITHUB_RELEASES_PAGE;
         public static string GitHubRepo => GITHUB_REPO;
+        public static string TelegramLink => TELEGRAM_LINK;
         public static bool IsRelease => IS_RELEASE;
         public static string LeaderLink => LEADER_LINK;
         public static string LogotypeCreatorLink => LOGOTYPE_CREATOR_LINK;

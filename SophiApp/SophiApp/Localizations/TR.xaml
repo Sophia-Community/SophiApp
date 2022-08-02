@@ -58,6 +58,7 @@
     <system:String x:Key="Localization.About.MadeWith">Windows&#174;</system:String>
     <system:String x:Key="Localization.About.OfWindows">ile hazırlandı.</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
+    <system:String x:Key="Localization.Settings.Telegram">Telegram</system:String>
     <system:String x:Key="Localization.Settings.Themes">Tema</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Karanlık</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Aydınlık</system:String>
