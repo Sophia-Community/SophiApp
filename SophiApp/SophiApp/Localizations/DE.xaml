@@ -58,7 +58,6 @@
     <system:String x:Key="Localization.About.MadeWith">Erstellt mit</system:String>
     <system:String x:Key="Localization.About.OfWindows">für Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
-    <system:String x:Key="Localization.Settings.Telegram">Telegram</system:String>
     <system:String x:Key="Localization.Settings.Themes">Thema</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Dunkel</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Hell</system:String>

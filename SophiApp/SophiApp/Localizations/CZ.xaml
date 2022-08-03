@@ -58,7 +58,6 @@
     <system:String x:Key="Localization.About.MadeWith">Vytvořeno s</system:String>
     <system:String x:Key="Localization.About.OfWindows">z Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
-    <system:String x:Key="Localization.Settings.Telegram">Telegram</system:String>
     <system:String x:Key="Localization.Settings.Themes">Vzhled</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Tmavý</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Světlý</system:String>
