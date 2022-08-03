@@ -149,7 +149,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 * UI renderizzata dinamicamente—nulla è hardcoded. 👻
 * 130+ opzioni. ⭐
-* `SophiApp` usa il pattern [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel).
+* `SophiApp` usa il pattern [MVVM](https://it.wikipedia.org/wiki/Model-view-viewmodel).
 * Supporto al multithreading.
 * Il codice della`SophiApp` è controllato [static analyzer](https://pvs-studio.com/pvs-studio), la cui licenza è stata gentilemnte concessa da PVS-Studio.
 * Tutte le build sono compilate in cloud con [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
