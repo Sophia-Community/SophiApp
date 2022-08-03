@@ -5,6 +5,7 @@
         CZ,
         DE,
         EN,
+        FR,
         IT,
         RU,
         TR,

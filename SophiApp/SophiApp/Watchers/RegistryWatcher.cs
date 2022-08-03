@@ -12,7 +12,7 @@ namespace SophiApp.Watchers
         private const string USES_LIGHT_THEME = "AppsUseLightTheme";
 
         private static readonly object locked = new object();
-        private static RegistryWatcher instance;
+        private static volatile RegistryWatcher instance;
         private static byte systemTheme = RegHelper.GetByteValue(RegistryHive.CurrentUser, PERSONALIZE_PATH, USES_LIGHT_THEME);
 
         private RegistryWatcher()

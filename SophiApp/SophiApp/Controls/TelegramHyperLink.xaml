@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="SophiApp.Controls.GitHubHyperLink"
+    x:Class="SophiApp.Controls.TelegramHyperLink"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,7 +17,7 @@
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        <Style TargetType="{x:Type local:GitHubHyperLink}">
+        <Style TargetType="{x:Type local:TelegramHyperLink}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -27,8 +27,8 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <StackPanel MouseLeftButtonDown="GitHubHyperLink_MouseLeftButtonDown">
-                <ContentPresenter Content="{DynamicResource Icon.GitHub}" />
+            <StackPanel MouseLeftButtonDown="TelegramHyperLink_MouseLeftButtonDown">
+                <ContentPresenter Content="{DynamicResource Icon.Telegram}" />
             </StackPanel>
         </ControlTemplate>
     </UserControl.Template>

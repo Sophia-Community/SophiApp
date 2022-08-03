@@ -21,7 +21,6 @@
     <system:String x:Key="Conditions.RiskAcceptance">Ich bin mir des Risikos bewusst und übernehme die Verantwortung für eventuelle Schäden</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Betriebssystem vorsichtshalber neu installieren.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender defekt oder aus dem Betriebssystem entfernt</system:String>
-    <system:String x:Key="Conditions.SpoolerCorrupted">Der Dienst &quot;Print Spooler&quot; wurde aus dem Betriebssystem entfernt</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Die Stabilität des Windows-Betriebssystems kann durch die Verwendung des</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater-Skripts von Sycnex beeinträchtigt worden sein. Betriebssystem vorsichtshalber neu installieren.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Die Build-Version Ihres Betriebssystems ist niedriger als die unterstützte Version.</system:String>
@@ -59,6 +58,7 @@
     <system:String x:Key="Localization.About.MadeWith">Erstellt mit</system:String>
     <system:String x:Key="Localization.About.OfWindows">für Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
+    <system:String x:Key="Localization.Settings.Telegram">Telegram</system:String>
     <system:String x:Key="Localization.Settings.Themes">Thema</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Dunkel</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Hell</system:String>

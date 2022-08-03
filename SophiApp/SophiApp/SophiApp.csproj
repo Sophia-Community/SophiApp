@@ -138,12 +138,10 @@
     <Compile Include="Models\MsNETButtonGroup.cs" />
     <Compile Include="Models\OneDriveButtonGroup.cs" />
     <Compile Include="Models\PcHealthCheckButtonGroup.cs" />
-    <Compile Include="StartupConditions\DefenderWarningCondition.cs" />
-    <Compile Include="StartupConditions\OsFilesNotCorruptedCondition.cs" />
+    <Compile Include="StartupConditions\OsFilesCorruptedCondition.cs" />
     <Compile Include="StartupConditions\SingleAdminSessionCondition.cs" />
     <Compile Include="StartupConditions\SingleInstanceCondition.cs" />
     <Compile Include="StartupConditions\RebootRequiredCondition.cs" />
-    <Compile Include="StartupConditions\SpoolerNotCorruptedCondition.cs" />
     <Compile Include="StartupConditions\SycnexScriptCondition.cs" />
     <Compile Include="Controls\ButtonGroup.xaml.cs">
       <DependentUpon>ButtonGroup.xaml</DependentUpon>
@@ -183,7 +181,7 @@
     <Compile Include="Commons\UILanguage.cs" />
     <Compile Include="StartupConditions\NewVersionCondition.cs" />
     <Compile Include="StartupConditions\OsVersionCondition.cs" />
-    <Compile Include="StartupConditions\DefenderNotCorruptedCondition.cs" />
+    <Compile Include="StartupConditions\DefenderCorruptedCondition.cs" />
     <Compile Include="StartupConditions\Win10TweakerCondition.cs" />
     <Compile Include="StartupConditions\OsBuildVersionCondition.cs" />
     <Compile Include="Controls\ActorLink.xaml.cs">
@@ -209,6 +207,9 @@
     </Compile>
     <Compile Include="Controls\GitHubHyperLink.xaml.cs">
       <DependentUpon>GitHubHyperLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TelegramHyperLink.xaml.cs">
+      <DependentUpon>TelegramHyperLink.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\HamburgerButton.xaml.cs">
       <DependentUpon>HamburgerButton.xaml</DependentUpon>
@@ -394,6 +395,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\TelegramHyperLink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\HamburgerButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -515,6 +520,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Localizations\EN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Localizations\FR.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -2,6 +2,7 @@
 img/
 SophiApp/Binary/
 SophiApp/SophiApp/Localizations/UIData_*.json
+AppX/*.Appx
 gitattributes
 CHANGELOG.md
 .tokeignore

@@ -21,7 +21,6 @@
     <system:String x:Key="Conditions.RiskAcceptance">Sono consapevole dei rischi e mi assumo la responsabilità di potenziali danni</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Reinstalla il sistema operativo se necessario.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender rimosso dal sistema</system:String>
-    <system:String x:Key="Conditions.SpoolerCorrupted">Il servizio &quot;Spooler di stampa&quot; è stato rimosso dal sistema operativo</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">La stabilità di Windows potrebbe essere stata compromessa da</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script di Sycnex. Reinstalla windows se necessario.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">L'attuale versione di windows non è supportata.</system:String>
@@ -59,6 +58,7 @@
     <system:String x:Key="Localization.About.MadeWith">Fatto col</system:String>
     <system:String x:Key="Localization.About.OfWindows">per Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
+    <system:String x:Key="Localization.Settings.Telegram">Telegram</system:String>
     <system:String x:Key="Localization.Settings.Themes">Temi</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Scuro</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Chiaro</system:String>

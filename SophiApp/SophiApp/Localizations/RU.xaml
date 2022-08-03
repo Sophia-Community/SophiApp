@@ -21,7 +21,6 @@
     <system:String x:Key="Conditions.RiskAcceptance">Я осознаю риск и согласен нести ответственность за любой возможный ущерб</system:String>
     <system:String x:Key="Conditions.ReinstallOs">На всякий случай переустановите ОС.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender сломан или удален из ОС</system:String>
-    <system:String x:Key="Conditions.SpoolerCorrupted">Служба &quot;Диспетчер печати&quot; удалена из ОС</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабильность Вашей ОС могла быть нарушена использованием скрипта</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater от Sycnex. На всякий случай переустановите ОС.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версия сборки вашей ОС ниже поддерживаемой.</system:String>
@@ -59,6 +58,7 @@
     <system:String x:Key="Localization.About.MadeWith">Сделано с</system:String>
     <system:String x:Key="Localization.About.OfWindows">к Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
+    <system:String x:Key="Localization.Settings.Telegram">Telegram</system:String>
     <system:String x:Key="Localization.Settings.Themes">Тема</system:String>
     <system:String x:Key="Localization.Settings.Themes.Dark">Тёмная</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Светлая</system:String>
