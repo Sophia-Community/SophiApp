@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.77 — 04.08.2022
+
+* All startup checking were re-written from the scratch;
+  * If Microsoft Defender was disabled or replaced another 3rd party AV, the appropriate functions will be disabled and greyed out.
+* Fixed `Configure Start layout` function (for Windows 11 22H2 only) not working;
+* Fixed `Download and install the HEVC video codec (H.265)` function for installing HEVC codec not working;
+* Increased SophiApp.exe icon up to 256x256 pixels;
+* Added Czech 🇨🇿 translation;
+  * Thanks to @luciusagarthy.
+* Added French 🇫🇷 translation;
+* Added Telegram link to the Settings page;
+* The main [page](https://github.com/Sophia-Community/SophiApp/blob/master/README.md) was translated into Italian 🇮🇹 , and русский 🇷🇺. 
+
 ## 1.0.0.70 — 04.07.2022
 
 Diff from v1.0.0.62
