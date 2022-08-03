@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   * Thanks to @luciusagarthy.
 * Added French 🇫🇷 translation;
 * Added Telegram link to the Settings page;
+* Removed now unnecessary zero in build, having moved to the `MAJOR.MINOR.PATCH` versioning;
+* Minor changes;
 * The main [page](https://github.com/Sophia-Community/SophiApp/blob/master/README.md) was translated into Italian 🇮🇹 , and русский 🇷🇺. 
 
 ## 1.0.0.70 — 04.07.2022
