@@ -12,7 +12,7 @@
 <p align="left">
   <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"> </a><a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
 
-  <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/sophiapp"></a>
+  <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/tokei/lines/github/Sophia-Community/SophiApp"></a>
 
@@ -68,7 +68,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 	&bull;
 	<a href="#ask-a-question-on">Ask a question on</a>
 	&bull;
-	<a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
 
 ***
@@ -103,7 +103,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 |Version|   Build   |
 |:-----:|:---------:|
-| 22H2  |   22509+   |
+| 22H2  |   22509+  |
 
 ### Windows 11
 
@@ -233,3 +233,4 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 * [MyDigitalLife](https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/)
 * [Reddit](https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/)
 * [rutracker](https://rutracker.org/forum/viewtopic.php?t=6218047)
+
