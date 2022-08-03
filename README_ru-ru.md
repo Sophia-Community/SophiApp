@@ -13,7 +13,7 @@
 <p align="left">
   <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"> </a><a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
 
-  <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/sophiapp"></a>
+  <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/tokei/lines/github/Sophia-Community/SophiApp"></a>
 
