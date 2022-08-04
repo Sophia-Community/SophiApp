@@ -41,7 +41,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 <a href="https://www.majorgeeks.com/files/details/sophiapp.html"><img src="https://www.majorgeeks.com/images/logos/majorgeeks.gif" width=77px height=77px></a>
 <a href="https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml"><img src="https://pbs.twimg.com/profile_images/513959345847955458/Ego1jjO6_400x400.png" width=77px height=77px></a>
 <a href="https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
-<a href="https://nsaneforums.com/topic/429938-sophiapp-10071/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
+<a href="https://nsaneforums.com/news/software-news/sophiapp-1077-r7471/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
 
 <a href="https://4sysops.com/archives/sophiapp-tweak-windows-10-settings-with-a-gui/"><img src="https://i.imgur.com/cZ32Hkt.png"></a> <a href="https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/reddit.svg" width=90px></a> <a href="https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/"><img src="https://i.imgur.com/QbjiGsQ.png"></a> <a href="https://dtf.ru/flood/1210072-sophiapp-ili-tonkaya-nastroyka-windows-10-11"><img src="https://i.imgur.com/43cbvuG.png" width=200px></a>
 
