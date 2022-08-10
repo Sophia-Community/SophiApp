@@ -10,10 +10,10 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Před spuštěním SophiApp proveďte restart počítače.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Nespouštějte více instancí SophiApp zároveň.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp není podporovaná ve vaší verzi Windows.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Spusťte Windows Update pro aktualizaci operačního systému na nejnovější verzi.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp podporuje Windows 10 2004/20H2/21H1/21H2,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, &amp; Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Některé komponenty Windows mohou být poškozené.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Spusťte Windows Update pro aktualizaci operačního systému na nejnovější verzi.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Prosím proveďte reinstalaci operačního systému.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Váš operační systém může být infikován bezpečnostní mezerou v aplikaci WIN 10 Tweaker.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Číst více:</system:String>
