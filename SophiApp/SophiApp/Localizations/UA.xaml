@@ -15,7 +15,7 @@
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 та Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Деякі компоненти Windows можуть бути пошкоджені.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Будь ласка, перевстановіть ОС</system:String>
-    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була заражена трояном.</system:String>
+    <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була інфікована трояном.</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">Детальніше:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">Я усвідомлюю ризик і згоден нести відповідальність за будь-яку можливу шкоду</system:String>
@@ -23,7 +23,7 @@
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender пошкоджено або видалено з ОС</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабільність Вашої ОС могла бути порушена використанням скрипту</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater від Sycnex. Про всяк випадок перевстановіть ОС.</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версія збірки вашої ОС нижча підтримуваної.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версія збірки вашої ОС нижча за підтримувану.</system:String>
     <system:String x:Key="Conditions.Windows10Build.Supported">Мінімальна підтримувана збірка Windows 10: 1904x.1706.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">Мінімальна підтримувана збірка Windows 11: 22000.739.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Мінімальна підтримувана збірка Windows 11 Insider Preview: 22509.</system:String>
@@ -40,14 +40,14 @@
     <system:String x:Key="Localization.Settings">Налаштування</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">При застосуванні</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">сталася помилка</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки %SystemRoot%\SoftwareDistribution\Download</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очищення папки %SystemRoot%\SoftwareDistribution\Download</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кеш оновлень Windows успішно видалений</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки тимчасових файлів</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Description">Очищення папки тимчасових файлів</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка тимчасових файлів успішно очищена</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Спливаюче повідомлення з нагадуванням про очищення файлів та оновлень Windows, що не використовуються</system:String>
-    <system:String x:Key="Localization.CleanupTask.Description">Очистка невикористовуємих файлів та оновлень Windows, використовуючи вбудовану програму Очистка диска</system:String>
+    <system:String x:Key="Localization.CleanupTask.Description">Очищення невикористовуємих файлів та оновлень Windows, використовуючи вбудовану програму Очистка диска</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Важлива інформація</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Очистка Windows не займе багато часу. Наступний раз це повідомлення з'явиться через 30 днів</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Очищення Windows не займе багато часу. Наступний раз це повідомлення з'явиться через 30 днів</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Запустити завдання з очищення файлів та оновлень Windows, які не використовуються?</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">Оберіть інтервал повтору повідомлення</system:String>
     <system:String x:Key="Localization.Time.FourHours">4 години</system:String>
@@ -77,10 +77,10 @@
     <system:String x:Key="Localization.EventViewer.CustomView.Name">Створення процесу</system:String>
     <system:String x:Key="Localization.Search">Пошук</system:String>
     <system:String x:Key="Localization.Toast.Title.Notificaton">Повідомлення</system:String>
-    <system:String x:Key="Localization.Toast.Update.Download">Скачати</system:String>
+    <system:String x:Key="Localization.Toast.Update.Download">Завантажити</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступне оновлення для SophiApp</system:String>
     <system:String x:Key="Localization.View.NoData">Немає даних для відображення</system:String>
-    <system:String x:Key="Localization.ViewChanges.Cancel">Відміна</system:String>
+    <system:String x:Key="Localization.ViewChanges.Cancel">Відмінити</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Застосувати</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Змінено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">налаштування</system:String>
@@ -89,7 +89,7 @@
     <system:String x:Key="Localization.ViewSearch.NotFound">Нічого не знайдено</system:String>
     <system:String x:Key="Localization.ViewSearch.Running">Пошук...</system:String>
     <system:String x:Key="Localization.ViewUwpApps.ForAllUsers">Для всіх користувачів</system:String>
-    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">Якщо ви видаляєте UWP-програми для всіх користувачів, нові облікові записи не включатимуть видалені UWP-програми, і їх неможливо відновити без використання інсталяційних пакетів або завантажень з Microsoft Store. Але встановлення останніх буде здійснено лише в поточний профіль</system:String>
+    <system:String x:Key="Localization.ViewUwpApps.ForAllUsers.Description">Якщо ви видаляєте UWP-додатки для всіх користувачів, нові облікові записи не включатимуть видалені UWP-додатки, і їх буде неможливо відновити без використання інсталяційних пакетів або завантажень з Microsoft Store. Але встановлення останніх буде здійснено лише в поточний профіль</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Description.Copy">Копіювати опис</system:String>
     <system:String x:Key="Localization.Element.ContextMenu.Header.Copy">Копіювати заголовок</system:String>
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Відкрити Планувальник завдань</system:String>
