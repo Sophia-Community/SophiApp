@@ -2217,14 +2217,14 @@
       {
         "Id": 256,
         "ChildHeader": {
-          "EN": "80% (by default)",
-          "RU": "80 % (по умолчанию)",
-          "DE": "80% (standardmäßig)",
-          "UA": "80% (за замовчуванням)",
-          "IT": "80% (predefinito)",
-          "TR": "%80 (varsayılan olarak)",
-          "CZ": "80% (výchozí)",
-          "FR": "80% (par défaut)"
+          "EN": "85% (by default)",
+          "RU": "85 % (по умолчанию)",
+          "DE": "85% (standardmäßig)",
+          "UA": "85% (за замовчуванням)",
+          "IT": "85% (predefinito)",
+          "TR": "%85 (varsayılan olarak)",
+          "CZ": "85% (výchozí)",
+          "FR": "85% (par défaut)"
         },
         "ChildDescription": {
           "EN": "",
