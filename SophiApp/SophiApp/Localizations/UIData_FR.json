@@ -30,7 +30,7 @@
                                                       "FR":  "Défaut"
                                                   },
                                   "ChildDescription":  {
-                                                           "FR":  "Applique les paramètres par défaut ; Les données de diagnostic obligatoires sont des informations sur votre appareil, ses paramètres et fonctionnalités, et qui indiquent s’il fonctionne correctement. Il s’agit du niveau minimal de données de diagnostic nécessaires pour contribuer à préserver la fiabilité, la sécurité et le fonctionnement normal de votre appareil."
+                                                           "FR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
@@ -40,7 +40,7 @@
                                                       "FR":  "Minimal"
                                                   },
                                   "ChildDescription":  {
-                                                           "FR":  "Applique les paramètres minimal ; Les données de diagnostic facultatives incluent des détails supplémentaires sur votre appareil, ses paramètres, ses fonctionnalités et son état d’intégrité. Les données de diagnostic facultatives incluent également des informations sur les sites Web que vous consultez, l’activité de l’appareil (parfois appelée « utilisation ») et le rapport d’erreurs amélioré. Les données de diagnostic facultatives peuvent également inclure l’état de la mémoire de votre appareil, dès lors qu’un incident touchant le système ou une application se produit (pouvant involontairement inclure des portions d’un fichier que vous utilisiez lors de la survenue du problème)"
+                                                           "FR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -80,7 +80,7 @@
                                                       "FR":  "Automatiquement"
                                                   },
                                   "ChildDescription":  {
-                                                           "FR":  "Windows vous demandera régulièrement des commentaires."
+                                                           "FR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               },
@@ -90,7 +90,7 @@
                                                       "FR":  "Jamais"
                                                   },
                                   "ChildDescription":  {
-                                                           "FR":  "Windows ne vous demandera jamais des commentaires."
+                                                           "FR":  ""
                                                        },
                                   "Type":  "RadioButton"
                               }
@@ -105,7 +105,7 @@
                        "FR":  "Tâches de suivi de diagnostic"
                    },
         "Description":  {
-                            "FR":  "Microsoft collecte des données de diagnostic Windows pour résoudre les problèmes et maintenir Windows à jour, préserver sa sécurité ainsi que son fonctionnement. Cela permet également d’améliorer Windows et les produits et services Microsoft connexes et, pour les clients qui ont activé le paramètre Expériences personnalisées, de fournir des conseils et des recommandations plus pertinents afin d’améliorer les produits et services Microsoft et tiers parties pour les besoins de chaque client."
+                            "FR":  ""
                         },
         "Type":  "ExpandingGroup",
         "Tag":  "Privacy",

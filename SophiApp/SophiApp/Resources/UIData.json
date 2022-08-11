@@ -72,7 +72,7 @@
           "IT": "",
           "TR": "",
           "CZ": "",
-          "FR": "Applique les paramètres par défaut ; Les données de diagnostic obligatoires sont des informations sur votre appareil, ses paramètres et fonctionnalités, et qui indiquent s’il fonctionne correctement. Il s’agit du niveau minimal de données de diagnostic nécessaires pour contribuer à préserver la fiabilité, la sécurité et le fonctionnement normal de votre appareil."
+          "FR": ""
         },
         "Type": "RadioButton"
       },
@@ -96,7 +96,7 @@
           "IT": "",
           "TR": "",
           "CZ": "",
-          "FR": "Applique les paramètres minimal ; Les données de diagnostic facultatives incluent des détails supplémentaires sur votre appareil, ses paramètres, ses fonctionnalités et son état d’intégrité. Les données de diagnostic facultatives incluent également des informations sur les sites Web que vous consultez, l’activité de l’appareil (parfois appelée « utilisation ») et le rapport d’erreurs amélioré. Les données de diagnostic facultatives peuvent également inclure l’état de la mémoire de votre appareil, dès lors qu’un incident touchant le système ou une application se produit (pouvant involontairement inclure des portions d’un fichier que vous utilisiez lors de la survenue du problème)"
+          "FR": ""
         },
         "Type": "RadioButton"
       }
@@ -178,7 +178,7 @@
           "IT": "",
           "TR": "",
           "CZ": "",
-          "FR": "Windows vous demandera régulièrement des commentaires."
+          "FR": ""
         },
         "Type": "RadioButton"
       },
@@ -202,7 +202,7 @@
           "IT": "",
           "TR": "",
           "CZ": "",
-          "FR": "Windows ne vous demandera jamais des commentaires."
+          "FR": ""
         },
         "Type": "RadioButton"
       }
@@ -231,7 +231,7 @@
       "IT": "",
       "TR": "",
       "CZ": "",
-      "FR": "Microsoft collecte des données de diagnostic Windows pour résoudre les problèmes et maintenir Windows à jour, préserver sa sécurité ainsi que son fonctionnement. Cela permet également d’améliorer Windows et les produits et services Microsoft connexes et, pour les clients qui ont activé le paramètre Expériences personnalisées, de fournir des conseils et des recommandations plus pertinents afin d’améliorer les produits et services Microsoft et tiers parties pour les besoins de chaque client."
+      "FR": ""
     },
     "Type": "ExpandingGroup",
     "Tag": "Privacy",
@@ -533,7 +533,7 @@
       "IT": "",
       "TR": "",
       "CZ": "",
-      "FR": "Windows génère un identifiant de publicité unique pour chaque utilisateur d’un appareil, qui peut être utilisé par les développeurs d’applications et des réseaux publicitaires pour servir leurs objectifs, notamment afin de proposer de la publicité plus pertinente dans les applications. Lorsque l’identifiant de publicité est activé, les applications peuvent y accéder et l’utiliser de la même façon que les sites Web peuvent accéder à un identifiant unique stocké dans un cookie et l’utiliser. Les développeurs d’applications (et les réseaux publicitaires avec lesquels ils collaborent) peuvent ainsi associer des données personnelles qu’ils recueillent à votre identifiant de publicité, puis utiliser ces données personnelles pour afficher des annonces publicitaires plus pertinentes et d’autres expériences personnalisées dans leurs applications."
+      "FR": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -589,7 +589,7 @@
       "IT": "",
       "TR": "",
       "CZ": "",
-      "FR": "Windows inclut un certain nombre de fonctionnalités d’expérience utilisateur qui fournissent des conseils utiles, des « faits amusants » et des suggestions lorsque vous utilisez Windows, ainsi que des suggestions d’application du Microsoft Store. Ces fonctionnalités sont conçues pour aider les utilisateurs à tirer le meilleur parti de leur expérience avec Windows10, par exemple, en partageant de nouvelles fonctionnalités, en fournissant plus de détails sur les fonctionnalités qu’ils utilisent, ou en partageant du contenu disponible dans MicrosoftStore. Voici quelques exemples de ces expériences utilisateur:"
+      "FR": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -617,7 +617,7 @@
       "IT": "",
       "TR": "",
       "CZ": "",
-      "FR": "Windows peut mettre en avant certaines fonctionnalités du système dans les paramètres. Vous pouvez désactiver ces suggestions."
+      "FR": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
@@ -729,7 +729,7 @@
       "IT": "",
       "TR": "",
       "CZ": "",
-      "FR": "Affiche les résultats webn du moteur de recherche Bing lorsque vous effectuez une recherche à partir du menu Démarrer de Windows."
+      "FR": ""
     },
     "Type": "CheckBox",
     "Tag": "Privacy",
