@@ -17,7 +17,9 @@
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/tokei/lines/github/Sophia-Community/SophiApp"></a>
 
-  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a> <a href="https://pvs-studio.com/pvs-studio"><img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/></a>
+  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a>
+  <a href="https://community.chocolatey.org/packages/sophiapp"><img src="https://img.shields.io/chocolatey/dt/sophiapp?color=blue&label=chocolatey%20package"></a>
+  <a href="https://pvs-studio.com/pvs-studio"><img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/></a>
 
   <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
   <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
@@ -144,6 +146,12 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 ## Installation
 
 `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
+
+On Windows, you can also do the installation using the [Chocolatey package](https://community.chocolatey.org/packages/sophiapp):
+
+```powershell
+choco install sophiapp --confirm
+```
 
 ## Core features
 
