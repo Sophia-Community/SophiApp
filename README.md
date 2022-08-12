@@ -148,8 +148,9 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
 
 On Windows, you can also do the installation using the [Chocolatey package](https://community.chocolatey.org/packages/sophiapp):
+
 ```powershell
-choco install sophiapp
+choco install sophiapp --confirm
 ```
 
 ## Core features
