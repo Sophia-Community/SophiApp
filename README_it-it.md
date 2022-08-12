@@ -147,6 +147,12 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`
 
+È anche possibile eseguire l'installazione utilizzando il [pacchetto Chocolatey](https://community.chocolatey.org/packages/sophiapp):
+
+```powershell
+choco install sophiapp --confirm
+```
+
 ## Features principali
 
 * UI renderizzata dinamicamente—nulla è hardcoded. 👻
