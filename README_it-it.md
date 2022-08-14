@@ -66,6 +66,8 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#features-principali">Features principali</a>
     •
+    <a href="#videos">Videos</a>
+    •
     <a href="#screenshot-helen">Screenshot</a>
     •
     <a href="#Note">Note</a>
@@ -187,6 +189,10 @@ choco install sophiapp --confirm
 * Configura la sicurezza di windows Windows.
 * ÈPossibile copiare il nome o la descrizione delle varie funzioni.
 * Molteplici personalizzazioni di esplora risorse e dei menu contestuale.
+
+## Video
+
+[![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
 ## Screenshot [Helen]
 
