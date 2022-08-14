@@ -66,6 +66,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 	&bull;
 	<a href="#core-features">Core features</a>
 	&bull;
+	<a href="#videos">Videos</a>
+	&bull;
 	<a href="#screenshots-helen">Screenshots</a>
 	&bull;
 	<a href="#adendum">Adendum</a>
@@ -187,6 +189,10 @@ choco install sophiapp --confirm
 * Configure the Windows security.
 * The ability to copy functions' description or header.
 * Many more File Explorer and context menu "deep" tweaks.
+
+## Videos
+
+[![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
 ## Screenshots [Helen]
 
