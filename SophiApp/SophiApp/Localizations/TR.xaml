@@ -12,7 +12,6 @@
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp, Windows'unuzla uyumlu değil.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp, Windows 10 2004/20H2/21H1/21H2/22H2'yi destekler,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 &amp; Windows 11 Insider Preview.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">İşletim sistemini en son sürüme güncellemek için lütfen Windows Update'i çalıştırın.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Bazı Windows bileşenleri bozulmuş olabilir.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Lütfen işletim sistemini yeniden yükleyin.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">İşletim sisteminize Win 10 Tweaker'daki backdoor bulaşmış olabilir.</system:String>
@@ -23,10 +22,11 @@
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender bozuk veya işletim sisteminden kaldırıldı</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Windows işletim sistemi kararlılığı aşağıdakiler kullanılarak tehlikeye atılmış olabilir:</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex'ten Windows10Debloater komut dosyası. Her ihtimale karşı işletim sistemini yeniden yükleyin.</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">İşletim sistemi derleme sürümünüz desteklenen sürümden daha düşük.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">Desteklenen minimum Windows 10 yapısı 1904x.1706'dir.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">Desteklenen minimum Windows 11 yapısı 22000.739'tür.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Windows sürümünüz güncel değil.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp için Windows 10 1904x.1706 ve üstü gerekir.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp için Windows 11 22000.739 ve üstü gerekir.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Desteklenen minimum Windows 11 Insider Preview derlemesi 22509'dur.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">İşletim sistemini en son sürüme güncellemek için lütfen Windows Update'i çalıştırın.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Windows Update'i açın</system:String>
     <system:String x:Key="Localization.Privacy">Gizlilik</system:String>
     <system:String x:Key="Localization.Personalization">Kişiselleştirme</system:String>
