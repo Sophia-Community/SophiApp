@@ -141,7 +141,7 @@ namespace SophiApp.Helpers
             const string MITIGATION_USER_PREFERENCE = "UserPreference";
             const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
             const string ALLOW_TELEMETRY = "AllowTelemetry";
-            const string MAX_TELEMETRY = "MaxTelemetryAllowed ";
+            const string MAX_TELEMETRY = "MaxTelemetryAllowed";
             const string QUEUE_REPORTING_TASK = "QueueReporting";
             const string QUEUE_TASK_PATH = @"Microsoft\Windows\Windows Error Reporting";
             const string ERROR_REPORTING_SERVICE = "WerSvc";
