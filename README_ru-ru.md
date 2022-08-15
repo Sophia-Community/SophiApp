@@ -66,6 +66,8 @@
 	&bull;
 	<a href="#ключевые-функции">Ключевые функции</a>
 	&bull;
+	<a href="#видео">Видео</a>
+	&bull;
 	<a href="#скриншоты-helen">Скриншоты</a>
 	&bull;
 	<a href="#дополнение">Дополнение</a>
@@ -187,6 +189,10 @@ choco install sophiapp --confirm
 * Настроить безопасность Windows;
 * Возможность копирования описание и заголовки функций;
 * Огромное количество твиков по кастомизации проводника и контекстного меню.
+
+## Видео
+
+[![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
 ## Скриншоты [Helen]
 

@@ -66,6 +66,8 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#features-principali">Features principali</a>
     •
+    <a href="#videos">Videos</a>
+    •
     <a href="#screenshot-helen">Screenshot</a>
     •
     <a href="#Note">Note</a>
@@ -133,7 +135,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 
 ### Come scaricare SophiApp con PowerShell
 
-* Download delll'ultima versione della SophiApp  incollando (`anche senza i permessi di amministratore`) in PowerShell
+* Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -150,7 +152,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`
 
-È anche possibile eseguire l'installazione utilizzando il [pacchetto Chocolatey](https://community.chocolatey.org/packages/sophiapp):
+È anche possibile eseguire l'installazione utilizzando il [pacchetto di Chocolatey](https://community.chocolatey.org/packages/sophiapp):
 
 ```powershell
 choco install sophiapp --confirm
@@ -187,6 +189,10 @@ choco install sophiapp --confirm
 * Configura la sicurezza di windows Windows.
 * ÈPossibile copiare il nome o la descrizione delle varie funzioni.
 * Molteplici personalizzazioni di esplora risorse e dei menu contestuale.
+
+## Video
+
+[![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
 ## Screenshot [Helen]
 
