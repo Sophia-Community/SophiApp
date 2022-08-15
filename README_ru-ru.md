@@ -238,7 +238,7 @@ choco install sophiapp --confirm
 
 ## Сторонние библиотеки
 
-* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+* [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
 * [TaskScheduler](https://github.com/dahall/taskscheduler)
 * [ManagedDism](https://github.com/jeffkl/ManagedDism)
 * [wix3](https://github.com/wixtoolset/wix3)
