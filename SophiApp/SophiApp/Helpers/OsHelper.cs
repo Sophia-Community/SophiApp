@@ -129,7 +129,7 @@ namespace SophiApp.Helpers
         internal static void SetRecommendedTroubleshooting(byte autoOrDefault)
         {
             // RecommendedTroubleshooting
-            // https://github.com/farag2/Sophia-Script-for-Windows/blob/7de71e369387de8e6fb0f00f296191017df2c51b/Sophia%20Script/Sophia%20Script%20for%20Windows%2010/Module/Sophia.psm1#L6716
+            // https://github.com/farag2/Sophia-Script-for-Windows/blob/master/Sophia%20Script/Sophia%20Script%20for%20Windows%2010/Module/Sophia.psm1#L7158
             // 3 - Automatically
             // 2 - Default
 
@@ -141,7 +141,7 @@ namespace SophiApp.Helpers
             const string MITIGATION_USER_PREFERENCE = "UserPreference";
             const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
             const string ALLOW_TELEMETRY = "AllowTelemetry";
-            const string MAX_TELEMETRY = "MaxTelemetryAllowed ";
+            const string MAX_TELEMETRY = "MaxTelemetryAllowed";
             const string QUEUE_REPORTING_TASK = "QueueReporting";
             const string QUEUE_TASK_PATH = @"Microsoft\Windows\Windows Error Reporting";
             const string ERROR_REPORTING_SERVICE = "WerSvc";

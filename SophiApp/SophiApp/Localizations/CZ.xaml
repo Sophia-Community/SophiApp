@@ -27,6 +27,7 @@
     <system:String x:Key="Conditions.Windows10Build.Supported">Minimální podporovaná verze Windows 10 je 1904x.1706.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">Minimální podporovaná verze Windows 11 je 22000.739.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Minimální podporovaná verze Windows 11 Insider Preview je 22509.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Bitte Windows Update ausführen, um das Betriebssystem auf die neueste Version zu aktualisieren.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Spusťte Windows Update</system:String>
     <system:String x:Key="Localization.Privacy">Soukromí</system:String>
     <system:String x:Key="Localization.Personalization">Personalizace</system:String>
