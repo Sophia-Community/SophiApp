@@ -11,7 +11,7 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Bitte nicht mehrere Kopien von SophiApp gleichzeitig ausführen.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">Die SophiApp ist nicht mit Ihrem Windows kompatibel.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp unterstützt Windows 10 2004/20H2/21H1/21H2/22H2,</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 und Windows 11 Insider Preview.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 und Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Bitte Windows Update ausführen, um das Betriebssystem auf die neueste Version zu aktualisieren.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Einige Windows-Komponenten sind möglicherweise beschädigt.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Bitte installieren Sie das Betriebssystem neu.</system:String>
