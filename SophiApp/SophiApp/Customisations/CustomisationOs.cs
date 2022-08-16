@@ -39,7 +39,7 @@ namespace SophiApp.Customisations
         public static void _102(bool _)
         {
             RegHelper.DeleteKey(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, ALLOW_TELEMETRY);
-            RegHelper.SetValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, MAX_TELEMETRY_ALLOWED, DEFAULT_TELEMETRY_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH_ALLOWED, MAX_TELEMETRY_ALLOWED, DEFAULT_TELEMETRY_VALUE, RegistryValueKind.DWord);
             RegHelper.SetValue(RegistryHive.CurrentUser, DIAG_TRACK_PATH, SHOWED_TOAST_LEVEL, DEFAULT_TELEMETRY_VALUE, RegistryValueKind.DWord);
         }
 
@@ -51,7 +51,7 @@ namespace SophiApp.Customisations
                                         ? MIN_ENT_TELEMETRY_VALUE : MIN_TELEMETRY_VALUE,
                                             RegistryValueKind.DWord);
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH, MAX_TELEMETRY_ALLOWED, MIN_TELEMETRY_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, DATA_COLLECTION_PATH_ALLOWED, MAX_TELEMETRY_ALLOWED, MIN_TELEMETRY_VALUE, RegistryValueKind.DWord);
             RegHelper.SetValue(RegistryHive.CurrentUser, DIAG_TRACK_PATH, SHOWED_TOAST_LEVEL, MIN_TELEMETRY_VALUE, RegistryValueKind.DWord);
         }
 
