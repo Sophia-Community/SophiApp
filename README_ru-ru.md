@@ -81,7 +81,7 @@
 
 ***
 
-## About SophiApp
+## О SophiApp
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
