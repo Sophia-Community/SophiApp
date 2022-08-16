@@ -10,9 +10,8 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Будь ласка, перезавантажте ваш ПК перед запуском SophiApp</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Будь ласка, не запускайте декілька копій SophiApp одночасно.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp несумісна з Вашою версією Windows.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp підтримує Windows 10 2004/20H2/21H1/21H2,</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 та Windows 11 Insider Preview.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустіть Центр оновлення Windows, щоб оновити ОС до актуальної версії.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp підтримує Windows 10 2004/20H2/21H1/21H2/22H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 та Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Деякі компоненти Windows можуть бути пошкоджені.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Будь ласка, перевстановіть ОС</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була інфікована трояном.</system:String>
@@ -23,10 +22,11 @@
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender пошкоджено або видалено з ОС</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабільність Вашої ОС могла бути порушена використанням скрипту</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater від Sycnex. Про всяк випадок перевстановіть ОС.</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Версія збірки вашої ОС нижча за підтримувану.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">Мінімальна підтримувана збірка Windows 10: 1904x.1706.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">Мінімальна підтримувана збірка Windows 11: 22000.739.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Ваша версія Windows застаріла.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">Для роботи SophiApp потрібна Windows 10 1904x.1706 та вище.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">Для роботи SophiApp потрібна Windows 11 22000.739 та вище.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Мінімальна підтримувана збірка Windows 11 Insider Preview: 22509.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Запустіть Центр оновлення Windows, щоб оновити ОС до актуальної версії.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Відкрити Центр оновлення Windows</system:String>
     <system:String x:Key="Localization.Privacy">Конфіденційність</system:String>
     <system:String x:Key="Localization.Personalization">Персоналізація</system:String>

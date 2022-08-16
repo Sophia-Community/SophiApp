@@ -11,13 +11,22 @@ namespace SophiApp.Conditions
 
         public bool Invoke()
         {
-            var ubr = OsHelper.GetUpdateBuildRevision();
-            var build = OsHelper.GetBuild();
-            var hasProblem = OsHelper.IsWindows11()
-                             ? build >= OsHelper.WIN11_MIN_SUPPORTED_INSIDER_BUILD || build == OsHelper.WIN11_MIN_SUPPORTED_BUILD
-                             : ubr >= OsHelper.WIN10_MIN_SUPPORTED_UBR;
+            var buildRevision = OsHelper.GetUpdateBuildRevision();
+            var buildVersion = OsHelper.GetBuild();
+            return HasProblem = OsHelper.IsWindows11() ? CheckWindows11(buildVersion, buildRevision) : CheckWindows10(buildRevision);
+        }
 
-            return HasProblem = hasProblem.Invert();
+        private bool CheckWindows11(ushort buildVersion, ushort buildRevision)
+        {
+            if (buildVersion == OsHelper.WIN11_MIN_SUPPORTED_BUILD)
+                return buildRevision < 739;
+
+            return buildVersion < 22509;
+        }
+
+        private bool CheckWindows10(ushort buildRevision)
+        {
+            return buildRevision < 1706;
         }
     }
 }
