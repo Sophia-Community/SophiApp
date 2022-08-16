@@ -70,7 +70,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 	&bull;
 	<a href="#screenshots-helen">Screenshots</a>
 	&bull;
-	<a href="#adendum">Adendum</a>
+	<a href="#addendum">Addendum</a>
 	&bull;
 	<a href="#translating">Translating</a>
 	&bull;
