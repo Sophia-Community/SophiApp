@@ -83,7 +83,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 
 ## Riguardo SophiApp
 
-![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Made%20with%20❤️%20of%20Windows®&width=400&height=70)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
 `SophiApp` è un'app gratuita e open-source per la personalizzazione di `Windows 10` & `Windows 11`. Offre una moderna  UI/UX, più di 130 opzioni e dimostra come sia possibile configurare Windows senza danneggiarlo.
 
