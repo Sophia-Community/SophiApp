@@ -11,7 +11,7 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Будь ласка, не запускайте декілька копій SophiApp одночасно.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp несумісна з Вашою версією Windows.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp підтримує Windows 10 2004/20H2/21H1/21H2/22H2,</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 та Windows 11 Insider Preview.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 та Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Деякі компоненти Windows можуть бути пошкоджені.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Будь ласка, перевстановіть ОС</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була інфікована трояном.</system:String>

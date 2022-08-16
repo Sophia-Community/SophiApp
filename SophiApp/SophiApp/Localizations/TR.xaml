@@ -11,7 +11,7 @@
     <system:String x:Key="Conditions.OneInstanceOnly">Lütfen aynı anda birden fazla SophiApp kopyası çalıştırmayın.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp, Windows'unuzla uyumlu değil.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp, Windows 10 2004/20H2/21H1/21H2/22H2'yi destekler,</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2 &amp; Windows 11 Insider Preview.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 &amp; Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Bazı Windows bileşenleri bozulmuş olabilir.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Lütfen işletim sistemini yeniden yükleyin.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">İşletim sisteminize Win 10 Tweaker'daki backdoor bulaşmış olabilir.</system:String>
