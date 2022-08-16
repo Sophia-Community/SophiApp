@@ -82,7 +82,7 @@
 
 ## Про SophiApp
 
-![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Made%20with%20❤️%20of%20Windows®&width=400&height=70)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
 `SophiApp` — це безкоштовний додаток з відкритим вихідним кодом для тонкого налаштування `Windows 10` та `Windows 11`. Воно пропонує сучасні UI/UX, більше 130 різних функцій і показує, як можна налаштувати Windows, не ламаючи функціонал ОС.
 
