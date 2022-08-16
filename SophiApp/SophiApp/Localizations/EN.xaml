@@ -10,7 +10,7 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Please reboot your PC before running SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Please do not run multiple copies of SophiApp at the same time.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp isn't compatible with your Windows.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supports Windows 10 2004/20H2/21H1/21H2/22H2,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, &amp; Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Some Windows components may have been broken.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Please re-install the OS.</system:String>
