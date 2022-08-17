@@ -16,7 +16,7 @@ jobs:
 
     env:
       App_Name: SophiApp
-      App_Zip: SophiApp.zip      
+      App_Zip: SophiApp.zip
       App_Project_Path: SophiApp\SophiApp.sln
       App_Release_Path: SophiApp\SophiApp\bin\Release
       App_Script_Path: SophiApp\Scripts
@@ -27,25 +27,25 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 0
-    
+
     - name: Preparing The App Files
       run: |
         . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
         . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
-        . "$env:App_Script_Path\Set-DebugMode.ps1"        
+        . "$env:App_Script_Path\Set-DebugMode.ps1"
         . "$env:App_Script_Path\Set-WinmdPath.ps1"
-      
+
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
       with:
         nuget-version: latest
-      
+
     - name: Restore NuGet Package
       run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
-    
+
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@master
-    
+
     - name: Run MSBuild
       run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration /p:platform=$env:Platform
       env:
@@ -59,7 +59,7 @@ jobs:
         $DestinationFolder = "{0}\{1}" -f $env:App_Release_Path, $env:Binary_Folder_Name        
         Get-ChildItem -Path $env:App_Release_Path -Exclude $ExcludedTypes | Remove-Item -Force -Recurse -Confirm:$false
         . "$env:App_Script_Path\Get-BinaryFiles.ps1"
-    
+
     - name: Compress Files
       run: |
         $Build_Directory = Rename-Item -Path $env:App_Release_Path -NewName $env:App_Name -PassThru | Select-Object -ExpandProperty FullName

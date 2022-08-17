@@ -1,27 +1,54 @@
-name: Badges
+name: Badge
 
 on:
   push:
     branches:
       - master
-    tags:
-      - '*.*.*'
+    # Trigger Action for a new release only
+    # tags:
+    # - '*.*.*'
+  pull_request:
+    branches:
+      - master
 
 jobs:
   update-badges:
     name: Update Badges
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@main
       - name: Download cloc
-        run: sudo apt-get update -y && sudo apt-get install -y cloc
+        run: |
+          $Parameters = @{
+              Uri             = "https://api.github.com/repos/AlDanial/cloc/releases/latest"
+              UseBasicParsing = $true
+              Verbose         = $true
+          }
+          $Tag = (Invoke-RestMethod @Parameters).tag_name.replace("v", "")
+
+          $Parameters = @{
+              Uri             = "https://github.com/AlDanial/cloc/releases/download/v$Tag/cloc-$Tag.exe"
+              OutFile         = "$PSScriptRoot\cloc.exe"
+              UseBasicParsing = $true
+              Verbose         = $true
+          }
+          Invoke-WebRequest @Parameters
+
       - name: Get the Numbers
         run: |
-          chmod +x Scripts/cloc.sh
-          echo "CODE_LINES=$(Scripts/cloc.sh --loc)" >> $GITHUB_ENV
-          echo "COMMENT_PERCENTAGE=$(Scripts/cloc.sh --percentage)" >> $GITHUB_ENV
-      - name: Create Lines-of-Code-Badge
+          $JSON    = & "$PSScriptRoot\cloc.exe" "SophiApp/SophiApp" --exclude-list-file=".clocignore" --json | ConvertFrom-Json
+          $blank   = $JSON.SUM.blank
+          $comment = $JSON.SUM.comment
+          $code    = $JSON.SUM.code
+          # "$((($blank + $comment + $code)/1000).ToString("#.#").replace(",", "."))k"
+          $Summary = ("{0:N1}k" -f (($blank + $comment + $code)/1000)).replace(",", ".")
+
+          Write-Verbose -Message ($blank + $comment + $code) -Verbose
+
+          echo "CODE_LINES=$Summary" >> $env:GITHUB_ENV
+
+      - name: Writing to Gist
         uses: schneegans/dynamic-badges-action@master
         with:
           auth: ${{ secrets.GIST_SophiApp }}
