@@ -1,11 +1,12 @@
-name: Badges
+name: Badge
 
 on:
   push:
     branches:
       - master
-    tags:
-      - '*.*.*'
+  pull_request:
+    branches:
+      - master
 
 jobs:
   update-badges:
