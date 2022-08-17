@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+    # Trigger Action for a new release only
     # tags:
     # - '*.*.*'
   pull_request:
