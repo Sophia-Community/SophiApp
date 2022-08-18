@@ -2570,6 +2570,34 @@
     "Windows11Supported": true
   },
   {
+      "Id":  269,
+      "Header": {
+      "EN": "Show search highlights",
+      "RU": "Показать главное в поиске",
+      "DE": "Suchhighlights anzaigen",
+      "UA": "Показати виділені результати пошуку",
+      "IT": "Mostra ricerca elementi in evidenza",
+      "TR": "Arama öne çıkanlarını göster",
+      "CZ": "Zobrazit trendy vyhledávaní",
+      "FR": "Afficher les recherches à la une"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": "",
+      "TR": "",
+      "CZ": "",
+      "FR": ""
+    },
+      "Type":  "CheckBox",
+      "Tag":  "System",
+      "ViewId":  269,
+      "Windows10Supported":  true,
+      "Windows11Supported":  true
+  },
+  {
     "Id": 300,
     "Header": {
       "EN": "Storage Sense",
@@ -3327,7 +3355,7 @@
           "RU": "Автоматически запускать средства устранения неполадок, а затем уведомлять",
           "DE": "Fehlerbehebungen automatisch durchführen und dann benachrichtigen",
           "UA": "Автоматично запускати засоби усунення недоліків, а потім сповіщувати",
-          "IT": "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica",
+          "IT": "Eseguire automaticamente il programma di risoluzione dei problemi, quindi notifica",
           "TR": "Sorun gidericileri otomatik olarak çalıştırın, ardından bilgilendirin",
           "CZ": "Spustit nástroj pro odstraňování problémů automaticky, poté upozornit",
           "FR": "Exécutez l'utilitaire de résolution des problèmes automatiquement, puis notifiez-moi"
@@ -4154,6 +4182,34 @@
     "Windows11Supported": true
   },
   {
+    "Id": 359,
+    "Header": {
+      "EN": "Proxy by ProstoVPN.AntiZapret",
+      "RU": "Прокси от ProstoVPN.AntiZapret",
+      "DE": "Proxy von ProstoVPN.AntiZapret",
+      "UA": "Проксі від ProstoVPN.AntiZapret",
+      "IT": "Proxy di ProstoVPN.AntiZapret",
+      "TR": "ProstoVPN.AntiZapret tarafından Proxy",
+      "CZ": "Proxy od ProstoVPN.AntiZapret",
+      "FR": "Proxy par ProstoVPN.AntiZapret"
+    },
+    "Description": {
+      "EN": "Enable proxying only blocked sites from the unified registry of Roskomnadzor. The function is applicable for Russia only.",
+      "RU": "Включить проксирование только заблокированных сайтов из единого реестра Роскомнадзора через PAC-файл ProstoVPN.AntiZapret",
+      "DE": "Aktivieren Sie das Proxying nur für gesperrte Websites aus dem einheitlichen Register von Roskomnadzor. Die Funktion ist nur für Russland anwendbar.",
+      "UA": "Увімкнути проксування лише заблокованих сайтів з єдиного реєстру Роскомнагляду через PAC-файл ProstoVPN.AntiZapret.",
+      "IT": "Abilita il proxy solo dei siti bloccati dal registro unificato del Roskomnadzor. La funzione è applicabile solo alla Russia.",
+      "TR": "Roskomnadzor'un birleşik kayıt defterinden yalnızca engellenen sitelerin proxy'sini etkinleştirin. Bu işlev yalnızca Rusya için geçerlidir.",
+      "CZ": "Povolit proxy pouze blokované stránky z jednotného registru Roskomnadzoru. Funkce platí pouze pro Rusko.",
+      "FR": "Activez le proxy uniquement pour les sites bloqués à partir du registre unifié de Roskomnadzor. Cette fonction est applicable seulement si vous résidez en Russie."
+    },
+    "Type": "CheckBox",
+    "Tag": "System",
+    "ViewId": 359,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
     "Id": 500,
     "Header": {
       "EN": "Download and install the HEVC video codec (H.265)",
@@ -4173,7 +4229,7 @@
       "IT": "Il codec ti consente di aprire immagini e video in formati .heif e .hevc, rispettivamente.",
       "TR": "Codec, görüntüleri ve videoları sırasıyla .heif ve .hevc biçimlerinde açmanıza olanak tanır.",
       "CZ": "Kodek umožňuje otevírat obrázky a videa ve formátech .heif a .hevc.",
-      "FR": "Le codec vous permet d'ouvrir des images et des vidéos aux formats .heif et .hevc"
+      "FR": "Le codec vous permet d'ouvrir des images et des vidéos aux formats .heif et .hevc."
     },
     "Type": "CheckBox",
     "Tag": "UwpApps",

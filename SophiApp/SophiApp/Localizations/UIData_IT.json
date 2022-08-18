@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "IT":  "Mostra ricerca elementi in evidenza"
+                   },
+        "Description":  {
+                            "IT":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "IT":  "Sensore di memoria "
@@ -1587,7 +1601,7 @@
                               {
                                   "Id":  328,
                                   "ChildHeader":  {
-                                                      "IT":  "Eseguire automaticamente il programma  di risoluzione dei problemi, quindi notifica"
+                                                      "IT":  "Eseguire automaticamente il programma di risoluzione dei problemi, quindi notifica"
                                                   },
                                   "ChildDescription":  {
                                                            "IT":  "Per far funzionare questa funzione, il livello del sistema operativo della raccolta dei dati diagnostici sarà impostato su \"Dati diagnostici opzionali\" e la funzione di segnalazione degli errori verrà attivata."
@@ -1980,6 +1994,20 @@
                               }
                           ],
         "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "IT":  "Proxy di ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "IT":  "Activez le proxy uniquement pour les sites bloqués à partir du registre unifié de Roskomnadzor. Cette fonction est applicable seulement si vous résidez en Russie."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },

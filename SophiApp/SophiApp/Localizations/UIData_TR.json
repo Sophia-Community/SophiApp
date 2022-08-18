@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "TR":  "Arama öne çıkanlarını göster"
+                   },
+        "Description":  {
+                            "TR":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "TR":  "Storage Sense"
@@ -1980,6 +1994,20 @@
                               }
                           ],
         "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "TR":  "ProstoVPN.AntiZapret tarafından Proxy"
+                   },
+        "Description":  {
+                            "TR":  "Roskomnadzor'un birleşik kayıt defterinden yalnızca engellenen sitelerin proxy'sini etkinleştirin. Bu işlev yalnızca Rusya için geçerlidir."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },

@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "CZ":  "Zobrazit trendy vyhledávaní"
+                   },
+        "Description":  {
+                            "CZ":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "CZ":  "Inteligentní úložiště"
@@ -1980,6 +1994,20 @@
                               }
                           ],
         "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "CZ":  "Proxy od ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "CZ":  "Povolit proxy pouze blokované stránky z jednotného registru Roskomnadzoru. Funkce platí pouze pro Rusko."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },

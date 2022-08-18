@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "RU":  "Показать главное в поиске"
+                   },
+        "Description":  {
+                            "RU":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "RU":  "Контроль памяти"
@@ -1980,6 +1994,20 @@
                               }
                           ],
         "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "RU":  "Прокси от ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "RU":  "Включить проксирование только заблокированных сайтов из единого реестра Роскомнадзора через PAC-файл ProstoVPN.AntiZapret"
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },
