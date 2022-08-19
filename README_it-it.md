@@ -180,7 +180,7 @@ choco install sophiapp --confirm
 * Disinstalla le app UWP.
   * I nopi delle app sono tradotti nella lingua del pc
   * La lista delle app UWP è renderizzata dinamicamente con le icone locali
-* Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft usando <https://store.rg-adguard.net> per poter aprire i video .heic e .heif .
+* Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft per poter aprire i video .heic e .heif.
 * Crea le opreazioni pianificate `Windows Cleanup` e `Windows Cleanup Notification`per ripulire Windows dai file inutillizati e dagli aggiornamenti installati.
   * Una [notifica](#native-interactive-toasts-for-the-scheduled-tasks) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia
 * Creaoperazioni pianificate per ripulire
