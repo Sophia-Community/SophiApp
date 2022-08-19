@@ -2486,6 +2486,34 @@
     "Windows11Supported": true
   },
   {
+    "Id": 269,
+    "Header": {
+      "EN": "Show search highlights",
+      "RU": "Показать главное в поиске",
+      "DE": "Suchhighlights anzaigen",
+      "UA": "Показати виділені результати пошуку",
+      "IT": "Mostra ricerca elementi in evidenza",
+      "TR": "Arama öne çıkanlarını göster",
+      "CZ": "Zobrazit trendy vyhledávaní",
+      "FR": "Afficher les recherches à la une"
+    },
+    "Description": {
+      "EN": "",
+      "RU": "",
+      "DE": "",
+      "UA": "",
+      "IT": "",
+      "TR": "",
+      "CZ": "",
+      "FR": ""
+    },
+    "Type": "CheckBox",
+    "Tag": "StartMenu",
+    "ViewId": 263,
+    "Windows10Supported": true,
+    "Windows11Supported": true
+  },
+  {
     "Id": 266,
     "Header": {
       "EN": "Show recently added apps in the Start menu",
@@ -2509,7 +2537,7 @@
     },
     "Type": "CheckBox",
     "Tag": "StartMenu",
-    "ViewId": 266,
+    "ViewId": 264,
     "Windows10Supported": true,
     "Windows11Supported": false
   },
@@ -2537,7 +2565,7 @@
     },
     "Type": "CheckBox",
     "Tag": "StartMenu",
-    "ViewId": 267,
+    "ViewId": 265,
     "Windows10Supported": true,
     "Windows11Supported": false
   },
@@ -2565,35 +2593,7 @@
     },
     "Type": "CheckBox",
     "Tag": "StartMenu",
-    "ViewId": 268,
-    "Windows10Supported": true,
-    "Windows11Supported": true
-  },
-  {
-    "Id": 269,
-    "Header": {
-      "EN": "Show search highlights",
-      "RU": "Показать главное в поиске",
-      "DE": "Suchhighlights anzaigen",
-      "UA": "Показати виділені результати пошуку",
-      "IT": "Mostra ricerca elementi in evidenza",
-      "TR": "Arama öne çıkanlarını göster",
-      "CZ": "Zobrazit trendy vyhledávaní",
-      "FR": "Afficher les recherches à la une"
-    },
-    "Description": {
-      "EN": "",
-      "RU": "",
-      "DE": "",
-      "UA": "",
-      "IT": "",
-      "TR": "",
-      "CZ": "",
-      "FR": ""
-    },
-    "Type": "CheckBox",
-    "Tag": "StartMenu",
-    "ViewId": 269,
+    "ViewId": 266,
     "Windows10Supported": true,
     "Windows11Supported": true
   },
