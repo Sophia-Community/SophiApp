@@ -563,6 +563,11 @@ namespace SophiApp.Customisations
             File.WriteAllBytes(_268_POWERSHELL_LNK, bytes);
         }
 
+        public static void _269(bool IsChecked)
+        {
+
+        }
+
         public static void _300(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         STORAGE_POLICY_PATH,
                                                                             STORAGE_POLICY_01,
