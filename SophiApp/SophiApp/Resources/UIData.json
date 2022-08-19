@@ -4184,14 +4184,14 @@
   {
     "Id": 359,
     "Header": {
-      "EN": "Proxy by ProstoVPN.AntiZapret",
-      "RU": "Прокси от ProstoVPN.AntiZapret",
-      "DE": "Proxy von ProstoVPN.AntiZapret",
-      "UA": "Проксі від ProstoVPN.AntiZapret",
-      "IT": "Proxy di ProstoVPN.AntiZapret",
-      "TR": "ProstoVPN.AntiZapret tarafından Proxy",
-      "CZ": "Proxy od ProstoVPN.AntiZapret",
-      "FR": "Proxy par ProstoVPN.AntiZapret"
+      "EN": "Enable proxy by ProstoVPN.AntiZapret",
+      "RU": "Включить Прокси от ProstoVPN.AntiZapret",
+      "DE": "Proxy durch ProstoVPN.AntiZapret aktivieren",
+      "UA": "Увімкнути проксі від ProstoVPN.AntiZapret",
+      "IT": "Abilita proxy tramite ProstoVPN.AntiZapret",
+      "TR": "ProstoVPN.AntiZapret ile proxy'yi etkinleştirin",
+      "CZ": "Povolte proxy server pomocí ProstoVPN.AntiZapret",
+      "FR": "Activez le proxy par ProstoVPN.AntiZapret"
     },
     "Description": {
       "EN": "Enable proxying only blocked sites from the unified registry of Roskomnadzor. The function is applicable for Russia only.",
