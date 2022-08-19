@@ -4195,7 +4195,7 @@
     },
     "Description": {
       "EN": "Enable proxying only blocked sites from the unified registry of Roskomnadzor. The function is applicable for Russia only.",
-      "RU": "Включить проксирование только заблокированных сайтов из единого реестра Роскомнадзора через PAC-файл ProstoVPN.AntiZapret",
+      "RU": "Включить проксирование только заблокированных сайтов из единого реестра Роскомнадзора через PAC-файл ProstoVPN.AntiZapret. Функция применима только для России.",
       "DE": "Aktivieren Sie das Proxying nur für gesperrte Websites aus dem einheitlichen Register von Roskomnadzor. Die Funktion ist nur für Russland anwendbar.",
       "UA": "Увімкнути проксування лише заблокованих сайтів з єдиного реєстру Роскомнагляду через PAC-файл ProstoVPN.AntiZapret.",
       "IT": "Abilita il proxy solo dei siti bloccati dal registro unificato del Roskomnadzor. La funzione è applicabile solo alla Russia.",
