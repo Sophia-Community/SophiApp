@@ -5,8 +5,10 @@ using SophiApp.Helpers;
 using System;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Principal;
 using System.ServiceProcess;
+using System.Xml.Linq;
 using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
@@ -260,6 +262,13 @@ namespace SophiApp.Customisations
         public static bool _267() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _267_APP_SUGGESTIONS) == ENABLED_VALUE;
 
         public static bool _268() => (File.ReadAllBytes(_268_POWERSHELL_LNK)[0x15] == 2).Invert();
+        public static bool _269()
+        {
+            var showDynamicContent = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _269_FEEDS_DSB_PATH, _269_SHOW_DYNAMIC_CONTENT) == DISABLED_VALUE;
+            var dynamicSearchBox = RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _269_FEEDS_DSB_PATH, _269_DYNAMIC_SEARCH_BOX) == DISABLED_VALUE;
+            return !showDynamicContent || !dynamicSearchBox;
+
+        }
 
         public static bool _300() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01)
                                               .HasNullOrValue(DISABLED_VALUE)

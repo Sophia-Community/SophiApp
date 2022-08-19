@@ -120,6 +120,9 @@ namespace SophiApp.Customisations
         internal const byte _266_DISABLED_VALUE = 1;
         internal const string _266_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
         internal const string _267_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
+        internal const string _269_FEEDS_DSB_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds\DSB";
+        internal const string _269_SHOW_DYNAMIC_CONTENT = "ShowDynamicContent";
+        internal const string _269_DYNAMIC_SEARCH_BOX = "IsDynamicSearchBoxEnabled";
         internal const byte _302_STORAGE_POLICY_MONTH_VALUE = 30;
         internal const string _304_STORAGE_POLICY_04 = "04";
         internal const byte _305_ENABLED_VALUE = 1;
