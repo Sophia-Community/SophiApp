@@ -565,7 +565,15 @@ namespace SophiApp.Customisations
 
         public static void _269(bool IsChecked)
         {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, _269_FEEDS_DSB_PATH, _269_SHOW_DYNAMIC_CONTENT, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.CurrentUser, _269_SEARCH_SETTINGS_PATH, _269_DYNAMIC_SEARCH_BOX, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
 
+            RegHelper.SetValue(RegistryHive.CurrentUser, _269_FEEDS_DSB_PATH, _269_SHOW_DYNAMIC_CONTENT, DISABLED_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, _269_SEARCH_SETTINGS_PATH, _269_DYNAMIC_SEARCH_BOX, DISABLED_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _300(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
@@ -991,6 +999,17 @@ namespace SophiApp.Customisations
             Directory.EnumerateFileSystemEntries(temp, DOTNET_LOG_PATTERN)
                      .ToList()
                      .ForEach(log => FileHelper.TryDeleteFile(log));
+        }
+
+        public static void _359(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, _359_INTERNET_SETTINGS_PATH, _359_AUTO_CONFIG_URL, _359_ANTIZAPRET_PROXY_LINK, RegistryValueKind.String);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.CurrentUser, _359_INTERNET_SETTINGS_PATH, _359_AUTO_CONFIG_URL);
         }
 
         public static void _500(bool IsChecked)

@@ -2570,8 +2570,8 @@
     "Windows11Supported": true
   },
   {
-      "Id":  269,
-      "Header": {
+    "Id": 269,
+    "Header": {
       "EN": "Show search highlights",
       "RU": "Показать главное в поиске",
       "DE": "Suchhighlights anzaigen",
@@ -2591,11 +2591,11 @@
       "CZ": "",
       "FR": ""
     },
-      "Type":  "CheckBox",
-      "Tag":  "System",
-      "ViewId":  269,
-      "Windows10Supported":  true,
-      "Windows11Supported":  true
+    "Type": "CheckBox",
+    "Tag": "StartMenu",
+    "ViewId": 269,
+    "Windows10Supported": true,
+    "Windows11Supported": true
   },
   {
     "Id": 300,
