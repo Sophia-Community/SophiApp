@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.80 — 19.08.2022
+
+* Огромная статья на Хабре о том, как шла разработка: <https://habr.com/post/683452/>
+* Fixed minor bugs in startup checkings;
+* Added function to enable proxy by [ProstoVPN.AntiZapret](https://antizapret.prostovpn.org). The function is applicable for Russia only;
+* Added function to disable `Search highlights`;
+* Now you can download `SophiApp` via [choco](https://community.chocolatey.org/packages/sophiapp). Thanks to @Xav83
+
+  ```powershell
+  choco install sophiapp --confirm
+  ```
+
+* Minor changes;
+
+SophiApp.zip SHA256 hash ([the Compress Files step](https://github.com/Sophia-Community/SophiApp/runs/7919354110?check_suite_focus=true#step:9:16)): `E0AB6EA3C63DD73E03553A268812CC347B5A3BE09244430B7096D53157E4DDF5`
+
 ## 1.0.77 — 04.08.2022
 
 * All startup checking were re-written from the scratch;
