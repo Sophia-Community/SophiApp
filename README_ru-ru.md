@@ -181,7 +181,7 @@ choco install sophiapp --confirm
 * Правильно и до конца удалить OneDrive, не нарушив целостность ОС;
 * Удалить UWP-приложения, отображая локализированные имена пакетов;
   * Список UWP-приложений ренендерится динамически, используя локальные иконки приложений.
-* Скачать и установить из Microsoft Store [HEVC-расширение](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) для возможности открытия файлов .heic- and .heif-форматов, используя парсер от <https://store.rg-adguard.net>;
+* Скачать и установить из Microsoft Store [HEVC-расширение](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) для возможности открытия файлов .heic- and .heif-форматов;
 * Создать задачи `Windows Cleanup` и `Windows Cleanup Notification` в Планировщике заданий по очистке неиспользуемых файлов и обновлений Windows;
   * Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить ли, отменить или запустить задание. [GIF](#native-interactive-toasts-for-the-scheduled-tasks)
 * Создать задания в Планировщике заданий по очистке
