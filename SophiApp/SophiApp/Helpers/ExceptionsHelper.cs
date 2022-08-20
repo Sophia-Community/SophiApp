@@ -197,4 +197,11 @@ namespace SophiApp.Helpers
         {
         }
     }
+
+    internal class WrongGeoIdException : Exception
+    {
+        public WrongGeoIdException(int expectedGeoId, int currentGeoId) : base($"Wrong GeoId. Expected value {expectedGeoId}, received {currentGeoId}")
+        {
+        }
+    }
 }

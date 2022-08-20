@@ -120,6 +120,10 @@ namespace SophiApp.Customisations
         internal const byte _266_DISABLED_VALUE = 1;
         internal const string _266_HIDE_ADDED_APPS = "HideRecentlyAddedApps";
         internal const string _267_APP_SUGGESTIONS = "SubscribedContent-338388Enabled";
+        internal const string _269_FEEDS_DSB_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds\DSB";
+        internal const string _269_SEARCH_SETTINGS_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings";
+        internal const string _269_SHOW_DYNAMIC_CONTENT = "ShowDynamicContent";
+        internal const string _269_DYNAMIC_SEARCH_BOX = "IsDynamicSearchBoxEnabled";
         internal const byte _302_STORAGE_POLICY_MONTH_VALUE = 30;
         internal const string _304_STORAGE_POLICY_04 = "04";
         internal const byte _305_ENABLED_VALUE = 1;
@@ -211,6 +215,10 @@ namespace SophiApp.Customisations
         internal const string _352_VC_REDISTRX64_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x64)";
         internal const string _352_VC_REDISTRX64_REGISTRY_PATH = @"Installer\Dependencies";
         internal const string _352_VC_REDISTRX64_UNINSTALL_ARGS = "/uninstall /passive /norestart";
+        internal const int _359_RUSSIA_GEOID = 203;
+        internal const string _359_INTERNET_SETTINGS_PATH = @"Software\Microsoft\Windows\CurrentVersion\Internet Settings";
+        internal const string _359_ANTIZAPRET_PROXY_LINK = @"https://antizapret.prostovpn.org/proxy.pac";
+        internal const string _359_AUTO_CONFIG_URL = "AutoConfigURL";
         internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_HEVC_APPX_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";

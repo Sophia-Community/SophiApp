@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "FR":  "Afficher les recherches à la une"
+                   },
+        "Description":  {
+                            "FR":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "FR":  "Assistant Stockage"
@@ -1984,12 +1998,26 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  359,
+        "Header":  {
+                       "FR":  "Proxy par ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "FR":  "Activez le proxy uniquement pour les sites bloqués à partir du registre unifié de Roskomnadzor. Cette fonction est applicable seulement si vous résidez en Russie."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  500,
         "Header":  {
                        "FR":  "Téléchargez et installez le codec vidéo HEVC (H.265)"
                    },
         "Description":  {
-                            "FR":  "Le codec vous permet d'ouvrir des images et des vidéos aux formats .heif et .hevc"
+                            "FR":  "Le codec vous permet d'ouvrir des images et des vidéos aux formats .heif et .hevc."
                         },
         "Type":  "CheckBox",
         "Tag":  "UwpApps",

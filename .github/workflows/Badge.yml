@@ -7,9 +7,6 @@ on:
     # Trigger Action for a new release only
     # tags:
     # - '*.*.*'
-  pull_request:
-    branches:
-      - master
 
 jobs:
   update-badges:

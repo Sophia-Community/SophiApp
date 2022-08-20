@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "UA": "Показати виділені результати пошуку"
+                   },
+        "Description":  {
+                            "UA": ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "UA":  "Контроль пам'яті"
@@ -1980,6 +1994,20 @@
                               }
                           ],
         "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "TR":  "Проксі від ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "TR":  "Увімкнути проксування лише заблокованих сайтів з єдиного реєстру Роскомнагляду через PAC-файл ProstoVPN.AntiZapret."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },

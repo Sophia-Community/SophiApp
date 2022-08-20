@@ -1226,6 +1226,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  269,
+        "Header":  {
+                       "DE":  "Suchhighlights anzaigen"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  300,
         "Header":  {
                        "DE":  "Speicheroptimierung"
@@ -1980,6 +1994,20 @@
                               }
                           ],
         "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "DE":  "Proxy von ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "DE":  "Aktivieren Sie das Proxying nur für gesperrte Websites aus dem einheitlichen Register von Roskomnadzor. Die Funktion ist nur für Russland anwendbar."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
         "Windows10Supported":  true,
         "Windows11Supported":  true
     },

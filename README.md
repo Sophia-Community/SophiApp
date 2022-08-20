@@ -49,7 +49,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 <a href="https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
 <a href="https://nsaneforums.com/topic/430792-sophiapp-1077/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
 
-<a href="https://4sysops.com/archives/sophiapp-tweak-windows-10-settings-with-a-gui/"><img src="https://i.imgur.com/cZ32Hkt.png"></a> <a href="https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/reddit.svg" width=90px></a> <a href="https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/"><img src="https://i.imgur.com/QbjiGsQ.png"></a> <a href="https://dtf.ru/flood/1210072-sophiapp-ili-tonkaya-nastroyka-windows-10-11"><img src="https://i.imgur.com/43cbvuG.png" width=200px></a>
+<a href="https://4sysops.com/archives/sophiapp-tweak-windows-10-settings-with-a-gui/"><img src="https://i.imgur.com/cZ32Hkt.png"></a> <a href="https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/reddit.svg" width=90px></a> <a href="https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/"><img src="https://i.imgur.com/QbjiGsQ.png"></a> <a href="https://dtf.ru/flood/1210072-sophiapp-ili-tonkaya-nastroyka-windows-10-11"><img src="https://i.imgur.com/43cbvuG.png" width=200px></a> <a href="https://habr.com/company/skillfactory/blog/553800"><img src="https://hsto.org/getpro/moikrug/uploads/company/901/244/761/logo/medium_c35efb293cd85320d66e74304d3a8076.jpg" width=66px></a>
 
 ***
 
@@ -181,7 +181,7 @@ choco install sophiapp --confirm
 * Uninstall OneDrive "correctly".
 * Uninstall UWP apps displaying localized packages names.
   * An UWP apps list is rendered dynamically using local icons
-* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) from Microsoft server using <https://store.rg-adguard.net> parser to be able to open .heic and .heif formats.
+* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) to be able to open .heic and .heif formats.
 * Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates.
   * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-scheduled-tasks)
 * Create tasks in the Task Scheduler to clean

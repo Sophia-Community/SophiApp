@@ -5,12 +5,12 @@ $Parameters = @{
 (Invoke-RestMethod @Parameters) | Select-Object -First 1 | ForEach-Object -Process {
 	if ($_.prerelease)
 	{
-		$IsReleaseString = "        private const bool IS_RELEASE = true;"
+		$IsReleaseString = "        private const bool IS_RELEASE = false;"
 		Write-Host "`nIs Pre-Release: true"
 	}
 	else
 	{
-		$IsReleaseString = "        private const bool IS_RELEASE = false;"
+		$IsReleaseString = "        private const bool IS_RELEASE = true;"
 		Write-Host "`nIs Pre-Release: false"
 	}
 }
