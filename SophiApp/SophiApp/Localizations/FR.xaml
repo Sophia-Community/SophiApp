@@ -10,9 +10,8 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">Veuillez redémarrer votre PC avant d'exécuter SophiApp.</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">Veuillez ne pas exécuter plusieurs copies de SophiApp en même temps.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp n'est pas compatible avec votre Windows.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supporte Windows 10 2004/20H2/21H1/21H2,</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, &amp; Windows 11 Insider Preview.</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Veuillez exécuter Windows Update pour mettre à jour le système d'exploitation vers la dernière version.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp supporte Windows 10 2004/20H2/21H1/21H2/22H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 &amp; Windows 11 Insider Preview.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Certains composants Windows peuvent avoir été endommagés.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Veuillez réinstaller le système d'exploitation.</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Votre système d'exploitation a peut-être été infecté par une porte dérobée dans Win 10 Tweaker.</system:String>
@@ -23,10 +22,11 @@
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender cassé ou supprimé du système d'exploitation</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">La stabilité du système d'exploitation Windows peut avoir été compromise en utilisant</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Script Windows10Debloater de Sycnex. Réinstallez le système d'exploitation au cas où.</system:String>
-    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">La version de build de votre système d'exploitation est inférieure à celle prise en charge.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">La version minimum supportée de Windows 10 est la build 1904x.1706.</system:String>
-    <system:String x:Key="Conditions.Windows11Build.Supported">La version minimum supportée de Windows 11 est build 22000.739.</system:String>
+    <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Votre version de Windows n'est pas à jour.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp nécessite Windows 10 1904x.1706 et plus.</system:String>
+    <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp nécessite Windows 11 est build 22000.739 et plus.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">La version minimum supportée Windows 11 Insider Preview est la build 22509.</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Veuillez exécuter Windows Update pour mettre à jour le système d'exploitation vers la dernière version.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Ouvrir Windows Update</system:String>
     <system:String x:Key="Localization.Privacy">Confidentialité</system:String>
     <system:String x:Key="Localization.Personalization">Personalisation</system:String>

@@ -594,8 +594,8 @@ else
         internal const string CURRENT_VERSION_EXPLORER_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
         internal const byte DARK_THEME_VALUE = 0;
         internal const string DATA = "Data";
-        internal const string DATA_COLLECTION_PATH = @"SOFTWARE\Policies\Microsoft\Windows\DataCollection";
-        internal const string DATA_COLLECTION_PATH_Allowed = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
+        internal const string DATA_COLLECTION_PATH = @"Software\Policies\Microsoft\Windows\DataCollection";
+        internal const string DATA_COLLECTION_PATH_ALLOWED = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
         internal const byte DEFAULT_TELEMETRY_VALUE = 3;
         internal const string DEFENDER_COMPUTER_STATUS_CLASS = "MSFT_MpComputerStatus";
         internal const string DEFENDER_NAMESPACE = @"Root\Microsoft\Windows\Defender";

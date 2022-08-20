@@ -115,9 +115,10 @@ namespace SophiApp.ViewModels
             {
                 var deserializedElements = JsonConvert.DeserializeObject<IEnumerable<TextedElementDto>>(Encoding.UTF8.GetString(Properties.Resources.UIData))
                                                       .Where(dto => IsWindows11 ? dto.Windows11Supported : dto.Windows10Supported)
-                                                      .Select(dto => FabricHelper.CreateTextedElement(dto: dto, errorHandler: OnTextedElementErrorAsync,
-                                                                                                        statusHandler: OnTextedElementStatusChanged,
-                                                                                                            language: Localization.Language))
+                                                      .Select(dto => FabricHelper.CreateTextedElement(dto: dto,
+                                                                                                      errorHandler: OnTextedElementErrorAsync,
+                                                                                                      statusHandler: OnTextedElementStatusChanged,
+                                                                                                      language: Localization.Language))
                                                       .OrderByDescending(element => element.ViewId);
 
                 TextedElements = new ConcurrentBag<TextedElement>(deserializedElements);

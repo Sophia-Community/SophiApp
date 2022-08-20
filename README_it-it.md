@@ -84,7 +84,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 
 ## Riguardo SophiApp
 
-![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Made%20with%20❤️%20of%20Windows®&width=400&height=70)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
 `SophiApp` è un'app gratuita e open-source per la personalizzazione di `Windows 10` & `Windows 11`. Offre una moderna  UI/UX, più di 130 opzioni e dimostra come sia possibile configurare Windows senza danneggiarlo.
 
@@ -136,7 +136,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 
 ### Come scaricare SophiApp con PowerShell
 
-* Download delll'ultima versione della SophiApp  incollando (`anche senza i permessi di amministratore`) in PowerShell
+* Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -153,7 +153,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`
 
-È anche possibile eseguire l'installazione utilizzando il [pacchetto Chocolatey](https://community.chocolatey.org/packages/sophiapp):
+È anche possibile eseguire l'installazione utilizzando il [pacchetto di Chocolatey](https://community.chocolatey.org/packages/sophiapp):
 
 ```powershell
 choco install sophiapp --confirm
@@ -239,7 +239,7 @@ choco install sophiapp --confirm
 
 ## Librerie di terze parti usate
 
-* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+* [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
 * [TaskScheduler](https://github.com/dahall/taskscheduler)
 * [ManagedDism](https://github.com/jeffkl/ManagedDism)
 * [wix3](https://github.com/wixtoolset/wix3)
