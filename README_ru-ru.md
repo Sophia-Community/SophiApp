@@ -86,7 +86,7 @@
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
-`SophiApp` — это бесплатное приложение с открытым исходным кодом для тонкой настройки `Windows 10` и `Windows 11`. Оно предлагает современные UI/UX, более 130 разных функций и показывает, как можно настроить Windows, не ломая функционал ОС.
+> **Note**: `SophiApp` — это бесплатное приложение с открытым исходным кодом для тонкой настройки `Windows 10` и `Windows 11`. Оно предлагает современные UI/UX, более 130 разных функций и показывает, как можно настроить Windows, не ломая функционал ОС.
 
 ## Пожертвования
 
@@ -96,13 +96,10 @@
 
 ![ko-fi](https://storage.ko-fi.com/cdn/useruploads/Q5Q51QUJC/qrcode.png)
 
-## ⠀⠀⠀BTC⠀⠀⠀⠀⠀USDT⠀⠀⠀⠀⠀ETH
-
-<img src="./img/BTC.png" width=130px> <img src="./img/USDT.png" width=130px> <img src="./img/ETH.png" width=130px>
-
-* BTC: `13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n`
-* USDT (TRC20): `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`
-* ETH: `0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`
+|                 BTC                 |            USDT (TRC20)              |                    ETH                     |
+|:-----------------------------------:|:------------------------------------:|:------------------------------------------:|
+|<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
+|`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
 
 ## Системные требования
 
