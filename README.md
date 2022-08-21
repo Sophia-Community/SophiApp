@@ -86,7 +86,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
-`SophiApp` is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to the OS.
+> **Note**: `SophiApp` is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to the OS.
 
 ## Donations
 
@@ -96,14 +96,11 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ![ko-fi](https://storage.ko-fi.com/cdn/useruploads/Q5Q51QUJC/qrcode.png)
 
-## ⠀⠀⠀BTC⠀⠀⠀⠀⠀USDT⠀⠀⠀⠀⠀ETH
-
-<img src="./img/BTC.png" width=130px> <img src="./img/USDT.png" width=130px> <img src="./img/ETH.png" width=130px>
-
-* BTC: `13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n`
-* USDT (TRC20): `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`
-* ETH: `0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`
-
+|                 BTC                 |            USDT (TRC20)              |                    ETH                     |
+|:-----------------------------------:|:------------------------------------:|:------------------------------------------:|
+|<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
+|`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
+	
 ## System Requirements
 
 ### Minimum supported Windows versions and builds
