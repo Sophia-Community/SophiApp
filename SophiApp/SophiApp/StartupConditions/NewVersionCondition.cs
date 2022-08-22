@@ -11,7 +11,7 @@ namespace SophiApp.Conditions
 {
     internal class NewVersionCondition : IStartupCondition
     {
-        public bool HasProblem { get; set; }
+        public bool HasProblem { get; set; } = default;
         public ConditionsTag Tag { get; set; } = ConditionsTag.NewVersion;
 
         public bool Invoke()
@@ -33,9 +33,8 @@ namespace SophiApp.Conditions
                         var release = JsonConvert.DeserializeObject<ReleaseDto>(serverResponse);
                         DebugHelper.HasUpdateRelease(release);
                         var releasedVersion = new Version(AppHelper.IsRelease ? release.SophiApp_release : release.SophiApp_pre_release);
-                        var hasNewVersion = releasedVersion > AppHelper.Version;
 
-                        if (hasNewVersion)
+                        if (releasedVersion > AppHelper.Version)
                         {
                             DebugHelper.IsNewRelease();
                             ToastHelper.ShowUpdateToast(currentVersion: $"{AppHelper.Version}", newVersion: $"{releasedVersion}");
@@ -45,7 +44,7 @@ namespace SophiApp.Conditions
                             DebugHelper.UpdateNotNecessary();
                         }
 
-                        return HasProblem = hasNewVersion;
+                        return HasProblem;
                     }
                 }
 
