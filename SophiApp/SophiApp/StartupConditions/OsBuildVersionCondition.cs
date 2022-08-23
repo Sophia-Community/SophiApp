@@ -18,10 +18,7 @@ namespace SophiApp.Conditions
 
         private bool CheckWindows11(ushort buildVersion, ushort buildRevision)
         {
-            if (buildVersion == OsHelper.WIN11_MIN_SUPPORTED_BUILD)
-                return buildRevision < 739;
-
-            return buildVersion < 22509;
+            return buildVersion < 22000;
         }
 
         private bool CheckWindows10(ushort buildRevision)
