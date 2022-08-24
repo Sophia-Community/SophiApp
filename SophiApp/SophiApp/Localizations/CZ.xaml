@@ -24,7 +24,7 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Stabilita operačního systému Windows mohla být ohrožena použitím</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">skriptu Windows10Debloater od Sycnex. Pro jistotu reinstalujte operační systém.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Vaše verze systému Windows je zastaralá.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp vyžaduje Windows 10 1904x.1706 a vyšší.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp vyžaduje Windows 10 19044.1706 a vyšší.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp vyžaduje Windows 11 je 22000.739 a vyšší.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Minimální podporovaná verze Windows 11 Insider Preview je 22509.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Spusťte Windows Update</system:String>

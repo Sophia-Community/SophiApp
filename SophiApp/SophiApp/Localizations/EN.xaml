@@ -23,7 +23,7 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex. Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your version of Windows is out of date.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp requires Windows 10 1904x.1706 and higher.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp requires Windows 10 19044.1706 and higher.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp requires Windows 11 22000.739 and higher.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">The minimum supported Windows 11 Insider Preview build is 22509.</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">Please run Windows Update to update the OS to the latest version.</system:String>
