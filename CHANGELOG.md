@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.81 — 24.08.2022
+
+* The minimum required Windows 10 version is now `19044.1706`;
+* The app now doesn't block UI if a new version is available;
+  * You will get a notification toast only.
+
 ## 1.0.80 — 19.08.2022
 
 * Огромная статья на Хабре о том, как шла разработка: <https://habr.com/post/683452/>
