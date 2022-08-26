@@ -2003,7 +2003,7 @@
                        "EN":  "Proxy by ProstoVPN.AntiZapret"
                    },
         "Description":  {
-                            "EN":  "Aktivieren Sie das Proxying nur für gesperrte Websites aus dem einheitlichen Register von Roskomnadzor. Die Funktion ist nur für Russland anwendbar."
+                            "EN":  "Enable proxying only blocked sites from the unified registry of Roskomnadzor. The function is applicable for Russia only."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
