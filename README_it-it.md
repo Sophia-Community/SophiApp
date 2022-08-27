@@ -219,7 +219,7 @@ choco install sophiapp --confirm
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
-### Notifiche interattive per l'operazione pianificate di `pulizia di windows` `
+### Notifiche interattive per l'operazione pianificate di `pulizia di windows`
 
 ![Image](https://i.imgur.com/h17EpTG.png)
 
