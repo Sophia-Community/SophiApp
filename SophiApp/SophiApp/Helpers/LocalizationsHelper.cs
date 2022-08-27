@@ -26,6 +26,8 @@ namespace SophiApp.Helpers
         private const string TR_URI = "pack://application:,,,/Localizations/TR.xaml";
         private const string UA_NAME = "Українська";
         private const string UA_URI = "pack://application:,,,/Localizations/UA.xaml";
+        private const string zh_CN_NAME = "汉语";
+        private const string zh_CN_URI = "pack://application:,,,/Localizations/zh_CN.xaml";
 
         private List<Localization> LocalizationsData = new List<Localization>()
         {
@@ -37,6 +39,7 @@ namespace SophiApp.Helpers
             { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} },
             { new Localization() { Name = TR_NAME, Language = UILanguage.TR, Uri = new Uri(TR_URI, UriKind.Absolute)} },
             { new Localization() { Name = UA_NAME, Language = UILanguage.UA, Uri = new Uri(UA_URI, UriKind.Absolute)} },
+            { new Localization() { Name = zh_CN_NAME, Language = UILanguage.zh_CN, Uri = new Uri(zh_CN_URI, UriKind.Absolute)} }
         };
 
         internal Localization Selected;

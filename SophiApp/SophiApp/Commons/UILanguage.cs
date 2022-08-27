@@ -10,5 +10,6 @@
         RU,
         TR,
         UA,
+        zh_CN
     }
 }
