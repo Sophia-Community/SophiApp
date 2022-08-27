@@ -38,7 +38,7 @@
   [![Discord][discord-news-badge]][discord-link]
 </p>
 
-Доступно на: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/>
+Доступно на: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="11px"/>
 
 ***
 
@@ -58,26 +58,26 @@
 ***
 
 <p align="center">
-	&bull;
-	<a href="#пожертвования">Пожертвования</a>
-	&bull;
-	<a href="#системные-требования">Системные требования</a>
-	&bull;
-	<a href="#установка">Установка</a>
-	&bull;
-	<a href="#ключевые-функции">Ключевые функции</a>
-	&bull;
-	<a href="#видео">Видео</a>
-	&bull;
-	<a href="#скриншоты-helen">Скриншоты</a>
-	&bull;
-	<a href="#дополнение">Дополнение</a>
-	&bull;
-	<a href="#как-перевести">Как перевести</a>
-	&bull;
-	<a href="#задай-свой-вопрос">Задай свой вопрос</a>
-	&bull;
-	<a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал изменений</a>
+ &bull;
+ <a href="#пожертвования">Пожертвования</a>
+ &bull;
+ <a href="#системные-требования">Системные требования</a>
+ &bull;
+ <a href="#установка">Установка</a>
+ &bull;
+ <a href="#ключевые-функции">Ключевые функции</a>
+ &bull;
+ <a href="#видео">Видео</a>
+ &bull;
+ <a href="#скриншоты-helen">Скриншоты</a>
+ &bull;
+ <a href="#дополнение">Дополнение</a>
+ &bull;
+ <a href="#как-перевести">Как перевести</a>
+ &bull;
+ <a href="#задай-свой-вопрос">Задай свой вопрос</a>
+ &bull;
+ <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал изменений</a>
 </p>
 
 ***
@@ -169,9 +169,9 @@ choco install sophiapp --confirm
 * Приложение отображает `текущее` состояние каждой функции в UI;
 * Поддержка выского разрешения;
 * Имеет встроенный движок поиска;
-  * Функции могут быть найдены по заголовкам и описанию. [GIF](#searching-feature)
+  * Функции могут быть найдены по заголовкам и описанию. [GIF](#функция-поиска)
 * Поддержка темной и светлой тем;
-  * Программа умеет менять тему мгновенно, когда вы меняете тему приложений Windows по умолчанию. [GIF](#instantly-changing-theme)
+  * Программа умеет менять тему мгновенно, когда вы меняете тему приложений Windows по умолчанию. [GIF](#мгновенно-меняющаяся-тема)
 * Настроить конфиденциальность и телеметрию;
 * Выключить задания диагностического характера в Планировщике заданий;
 * Настроить UI и персонализацию;
@@ -180,7 +180,7 @@ choco install sophiapp --confirm
   * Список UWP-приложений ренендерится динамически, используя локальные иконки приложений.
 * Скачать и установить из Microsoft Store [HEVC-расширение](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) для возможности открытия файлов .heic- and .heif-форматов;
 * Создать задачи `Windows Cleanup` и `Windows Cleanup Notification` в Планировщике заданий по очистке неиспользуемых файлов и обновлений Windows;
-  * Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить ли, отменить или запустить задание. [GIF](#native-interactive-toasts-for-the-scheduled-tasks)
+  * Перед началом очистки всплывет нативный тост, где вы сможете выбрать отложить ли, отменить или запустить задание. [GIF](#нативный-интерактивный-тост-для-задания-по-очистке-windows)
 * Создать задания в Планировщике заданий по очистке
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`

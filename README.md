@@ -38,8 +38,8 @@
   [![Discord][discord-news-badge]][discord-link]
 </p>
 
-Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/>
-	
+Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="11px"/>
+
 ***
 
 <a href="https://rutracker.org/forum/viewtopic.php?t=6218047"><img src="https://static.t-ru.org/logo/logo-3.svg" width=200px></a>
@@ -58,26 +58,26 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ***
 
 <p align="center">
-	&bull;
-	<a href="#donations">Donations</a>
-	&bull;
-	<a href="#system-requirements">System Requirements</a>
-	&bull;
-	<a href="#installation">Installation</a>
-	&bull;
-	<a href="#core-features">Core features</a>
-	&bull;
-	<a href="#videos">Videos</a>
-	&bull;
-	<a href="#screenshots-helen">Screenshots</a>
-	&bull;
-	<a href="#addendum">Addendum</a>
-	&bull;
-	<a href="#translating">Translating</a>
-	&bull;
-	<a href="#ask-a-question-on">Ask a question on</a>
-	&bull;
-        <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
+ &bull;
+ <a href="#donations">Donations</a>
+ &bull;
+ <a href="#system-requirements">System Requirements</a>
+ &bull;
+ <a href="#installation">Installation</a>
+ &bull;
+ <a href="#core-features">Core features</a>
+ &bull;
+ <a href="#videos">Videos</a>
+ &bull;
+ <a href="#screenshots-helen">Screenshots</a>
+ &bull;
+ <a href="#addendum">Addendum</a>
+ &bull;
+ <a href="#translating">Translating</a>
+ &bull;
+ <a href="#ask-a-question-on">Ask a question on</a>
+ &bull;
+ <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
 
 ***
@@ -100,7 +100,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 |:-----------------------------------:|:------------------------------------:|:------------------------------------------:|
 |<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
 |`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
-	
+
 ## System Requirements
 
 ### Minimum supported Windows versions and builds
@@ -180,7 +180,7 @@ choco install sophiapp --confirm
   * An UWP apps list is rendered dynamically using local icons
 * Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) to be able to open .heic and .heif formats.
 * Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates.
-  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-scheduled-tasks)
+  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-windows-cleanup-scheduled-task)
 * Create tasks in the Task Scheduler to clean
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`

@@ -38,7 +38,7 @@
   [![Discord][discord-news-badge]][discord-link]
 </p>
 
-Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/>
+Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="11px"/>
 
 ***
 
@@ -168,9 +168,9 @@ choco install sophiapp --confirm
 * L'app mostra lo stato  `attuale` di ogni features nella UI.
 * Supporto per le alte risoluzioni.
 * Motore di ricerca integrato.
-  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave  [GIF](#searching-feature)
+  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave [GIF](#ricerca)
 * Supporto al tema chiaro e scuro.
-  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato. [GIF](#instantly-changing-theme)
+  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato. [GIF](#cambio-istantaneo-del-tema)
 * Modifica la privacy e la telemetria.
 * Disattiva le attività pianificate di raccolta dati diagnostica.
 * Personalizza la UI.
@@ -180,7 +180,7 @@ choco install sophiapp --confirm
   * La lista delle app UWP è renderizzata dinamicamente con le icone locali
 * Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft per poter aprire i video .heic e .heif.
 * Crea le opreazioni pianificate `Windows Cleanup` e `Windows Cleanup Notification`per ripulire Windows dai file inutillizati e dagli aggiornamenti installati.
-  * Una [notifica](#native-interactive-toasts-for-the-scheduled-tasks) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia
+  * Una [notifica](#notifiche-interattive-per-loperazione-pianificate-di-pulizia-di-windows) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia
 * Creaoperazioni pianificate per ripulire
   * `%SystemRoot%\SoftwareDistribution\Download`
   * `%TEMP%`
