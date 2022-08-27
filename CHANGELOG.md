@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 1.0.80 — 19.08.2022
 
 * Огромная статья на Хабре о том, как шла разработка: <https://habr.com/post/683452/>
-* Fixed minor bugs in startup checkings;
+* Fixed minor bugs in startup checks;
 * Added function to enable proxy by [ProstoVPN.AntiZapret](https://antizapret.prostovpn.org). The function is applicable for Russia only;
 * Added function to disable `Search highlights`;
 * Now you can download `SophiApp` via [choco](https://community.chocolatey.org/packages/sophiapp). Thanks to @Xav83
@@ -76,7 +76,7 @@ Diff from v1.0.0.62
 * Added `SearchHighlights` function to hide search highlights for Windows 10;
 * Добавлена страница с описанием на русском: <https://github.com/Sophia-Community/SophiApp/blob/master/README_ru-ru.md>
 * Updated translations;
-* Formaly added Windows 10 22H2 support;
+* Formally added Windows 10 22H2 support;
 * Code refactoring.
 
 ## 1.0.0.60 — 18.05.2022
@@ -114,7 +114,7 @@ Diff from v1.0.0.53
 
 ## 1.0.0.53 — 11.04.2022
 
-* Startup checkings updated;
+* Startup checks updated;
   * Now SophiApp checks whether Microsoft Defender was disabled via policies.
 * Updated the German translation. Huge thanks to [Henry2o1o](https://github.com/Henry2o1o);
 * Added the ability to download the latest stable build of SophiApp via PowerShell. Just type the command below, and it will download SophiaApp.zip from GitHub to the Downloads folder, expand the archive, and remove it. Elevated privileges are not needed. The app won't be launched.
@@ -129,7 +129,7 @@ https://imgur.com/a/wCcs0Xi
 
 * UI render engine updated;
   * It is now possible to choose where to put the new ID in the JSON config without breaking the sequence of the IDs.
-* Startup checkings updated;
+* Startup checks updated;
 * Added Windows 11 & Windows 11 Insider Preview support (22509+). Closes [#40](https://github.com/Sophia-Community/SophiApp/issues/40);
 * UI/UX updated;
 * Updated and expanded localizations;
@@ -142,7 +142,7 @@ https://imgur.com/a/wCcs0Xi
 ## 1.0.0.13 beta 2 — 31.01.2022
 
 * Uploaded the most up-to-date screenshots that reflects the current state of development;
-  * [Screeshots](https://github.com/Sophia-Community/SophiApp#screenshots-helen)
+  * [Screenshots](https://github.com/Sophia-Community/SophiApp#screenshots-helen)
 * The `Security` category completed;
 * Added description to the `UWP applications` category;
   * Remind you that you may copy any header and description by right-clicking header.
