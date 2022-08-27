@@ -5,19 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
-
-
-# [Donate](https://github.com/Sophia-Community/SophiApp#donations)
-
-[![actions](https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram)](https://t.me/SophiaNews) [![actions](https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram)](https://t.me/Sophia_Chat) [![actions](https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build%20Release?label=GitHub%20Actions&logo=GitHub)](https://github.com/Sophia-Community/SophiApp/actions) [![Discord](https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield)](https://discord.gg/sSryhaEv79)
-
 ## 1.0.82 — 27.08.2022
 
-Diff from v1.0.82
-[1.0.81...1.0.82](https://github.com/Sophia-Community/SophiApp/compare/1.0.81...1.0.82)
-
-* Огромная статья на Хабре о том, как шла разработка: <https://habr.com/post/683452/>
 * Added the Chinese localization 🇨🇳;
   * Closes #119;
   * Thanks to @wcxu21.
