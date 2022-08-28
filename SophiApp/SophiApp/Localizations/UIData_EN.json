@@ -323,7 +323,7 @@
                        "EN":  "Tailored experiences"
                    },
         "Description":  {
-                            "EN":  "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen."
+                            "EN":  "Let Microsoft offer you tailored experiences based on the diagnostic data setting you have chosen."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
