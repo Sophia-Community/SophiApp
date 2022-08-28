@@ -42,17 +42,6 @@
 
 ***
 
-<a href="https://rutracker.org/forum/viewtopic.php?t=6218047"><img src="https://static.t-ru.org/logo/logo-3.svg" width=200px></a>
-<a href="https://www.comss.ru/page.php?id=9679"><img src="https://cdn.comss.net/img/logo51.png" width=77px height=77px></a>
-<a href="https://www.majorgeeks.com/files/details/sophiapp.html"><img src="https://www.majorgeeks.com/images/logos/majorgeeks.gif" width=77px height=77px></a>
-<a href="https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml"><img src="https://pbs.twimg.com/profile_images/513959345847955458/Ego1jjO6_400x400.png" width=77px height=77px></a>
-<a href="https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch"><img src="https://pbs.twimg.com/profile_images/559308748598951936/T8rDc30R_400x400.png" width=77px height=77px></a>
-<a href="https://nsaneforums.com/topic/430792-sophiapp-1077/"><img src="https://nsaneforums.com/uploads/monthly_2021_11/Logo.webp.a8670660066bead066a50a855b45b312.webp"></a>
-
-<a href="https://4sysops.com/archives/sophiapp-tweak-windows-10-settings-with-a-gui/"><img src="https://i.imgur.com/cZ32Hkt.png"></a> <a href="https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/reddit.svg" width=90px></a> <a href="https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/"><img src="https://i.imgur.com/QbjiGsQ.png"></a> <a href="https://dtf.ru/flood/1325292-sophiapp-ili-kak-my-delali-opensors-programmu-dlya-nastroyki-windows-10-11"><img src="https://i.imgur.com/43cbvuG.png" width=200px></a>
-
-***
-
 <a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
 ***
@@ -241,12 +230,18 @@ choco install sophiapp --confirm
 * [ManagedDism](https://github.com/jeffkl/ManagedDism)
 * [wix3](https://github.com/wixtoolset/wix3)
 
-## Задай свой вопрос
+## Медиа
 
 * [![Discord](https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield)](https://discord.gg/sSryhaEv79)
-* Группа по обсуждению в [Telegram](https://t.me/sophia_chat)
-* Канал в [Telegram](https://t.me/sophianews)
+* [Telegram discussion group](https://t.me/sophia_chat)
+* [Telegram channel](https://t.me/sophianews)
 * [Ru-Board](https://forum.ru-board.com/topic.cgi?forum=5&topic=50903)
-* [MyDigitalLife](https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/)
+* [RuTracker.org](https://rutracker.org/forum/viewtopic.php?t=6218047)
+* [Comss.ru](https://www.comss.ru/page.php?id=9679)
+* [MajorGeeks.Com](https://www.majorgeeks.com/files/details/sophiapp.html)
+* [Softpedia](https://www.softpedia.com/get/Tweak/System-Tweak/SophiApp.shtml)
+* [Deskmodder.de](https://www.deskmodder.de/blog/2022/04/08/sophiapp-1-0-0-50-als-finale-version-jetzt-auch-in-deutsch)
 * [Reddit](https://www.reddit.com/r/Windows11/comments/tzx74s/sophiapp_the_next_chapter_of_the_sophia_script/)
-* [rutracker](https://rutracker.org/forum/viewtopic.php?t=6218047)
+* [My Digital Life](https://forums.mydigitallife.net/threads/win32-sophiapp-for-windows-10-windows-11-1-0-0-50-x64-2022.85225/)
+* [DTF](https://dtf.ru/flood/1325292-sophiapp-ili-kak-my-delali-opensors-programmu-dlya-nastroyki-windows-10-11)
+* [Habr](https://habr.com/post/683452/)
