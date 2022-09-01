@@ -10,7 +10,7 @@
     <system:String x:Key="Conditions.NoRebootRequired.PleaseReboot">请在运行 SophiApp 之前重新启动您的计算机。</system:String>
     <system:String x:Key="Conditions.OneInstanceOnly">请不要同时运行多个 SophiApp 副本。</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.NotCompatible">SophiApp 与您的 Windows 不兼容。</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp 支持 Windows 10 2004/20H2/21H1/21H2/22H2,</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp 支持 Windows 10 21H2/22H2,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 和 Windows 11 预览体验计划版本。</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">某些 Windows 组件可能已损坏。</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">请重新安装操作系统。</system:String>

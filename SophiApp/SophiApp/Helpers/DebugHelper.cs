@@ -125,7 +125,7 @@ namespace SophiApp.Helpers
 
         internal static void StartResetTextedElements() => WriteStatusLog("The elements status resetting started");
 
-        internal static void StartStartupConditions() => WriteStatusLog("The OS conditions checkings started");
+        internal static void StartStartupConditions() => WriteStatusLog("The OS conditions check started");
 
         internal static void StartupConditionInvoked(string name, bool result) => WriteStatusLog($"{name} run result: {result}");
 
