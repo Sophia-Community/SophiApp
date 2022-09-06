@@ -5,7 +5,7 @@
   <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
 </div>
 
-# SophiApp. Il prossimo capitolo del progetto [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
+# SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
@@ -54,7 +54,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#installazione">Installazione</a>
     •
-    <a href="#features-principali">Features principali</a>
+    <a href="#caratteristiche-principali">Caratteristiche principali</a>
     •
     <a href="#videos">Videos</a>
     •
