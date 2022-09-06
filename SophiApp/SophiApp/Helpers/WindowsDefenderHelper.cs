@@ -30,13 +30,10 @@ namespace SophiApp.Helpers
                 var wmiCacheIsValid = WmiHelper.DefenderWmiCacheIsValid();
                 var protectionDisabled = WmiHelper.DefenderProtectionDisabled();
                 var antiSpywareEnabled = WmiHelper.AntiSpywareEnabled();
-                var productEnabled = WmiHelper.GetDefenderProductStatus() != 1;
                 var engineEnabled = WmiHelper.GetDefenderAMEngineVersion() != AME_WRONG_VERSION;
                 var notDisabledByGpo = NotDisabledByGpo();
 
-                return wmiCacheIsValid && !protectionDisabled && antiSpywareEnabled
-                        && productEnabled && engineEnabled
-                            && notDisabledByGpo;
+                return wmiCacheIsValid && !protectionDisabled && antiSpywareEnabled && engineEnabled && notDisabledByGpo;
             }
             catch (Exception)
             {

@@ -35,17 +35,6 @@ namespace SophiApp.Helpers
             return defenderState == "00" || defenderState == "01";
         }
 
-        // https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-windowsdefenderproductstatus?view=graph-rest-beta
-        internal static int GetDefenderProductStatus()
-        {
-            var scope = @"Root/Microsoft/Windows/Defender";
-            var query = "SELECT * FROM MSFT_MpComputerStatus";
-            return GetManagementObjectSearcher(scope, query)
-                .Get().Cast<ManagementBaseObject>()
-                .First().Properties["ProductStatus"]
-                .Value.ToInt32();
-        }
-
         internal static bool DefenderWmiCacheIsValid()
         {
             try
