@@ -5,7 +5,7 @@
   <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
 </div>
 
-# SophiApp. Следующий шаг проекта [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
+# SophiApp. Следующая глава проекта [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
