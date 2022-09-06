@@ -5,7 +5,7 @@
   <a title="Russian" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
 </div>
 
-# SophiApp. Наступний крок проєкту [Sophia Script] (https://github.com/farag2/Sophia-Script-for-Windows)
+# SophiApp. Наступний крок проєкту [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
