@@ -95,8 +95,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 |            Versione             |    Nome di mercato      |    Build   | Architettura |        Edizioni          |
 |:--------------------------------|------------------------:|:----------:|:------------:|:------------------------:|
 | Windows 11 Insider Preview 23H2 |      2022 Update        |   22509    |              | Home/Pro/Enterprise      |
-| Windows 11 22H2                 |                         | 22000.739  |              | Home/Pro/Enterprise      |
-| Windows 10 22H2                 |   October 2022 Update   | 19045.1706 |      x64     | Home/Pro/Enterprise      |
+| Windows 11 21H2                 |                         | 22000.739  |              | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |      x64     | Home/Pro/Enterprise/LTSC |
 
 ### Versione beta
