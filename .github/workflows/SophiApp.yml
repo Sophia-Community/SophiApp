@@ -14,14 +14,6 @@ jobs:
 
     runs-on: windows-latest
 
-    env:
-      App_Name: SophiApp
-      App_Zip: SophiApp.zip
-      App_Project_Path: SophiApp\SophiApp.sln
-      App_Release_Path: SophiApp\SophiApp\bin\Release
-      App_Script_Path: SophiApp\Scripts
-      Binary_Folder_Name: Bin
-
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -30,10 +22,10 @@ jobs:
 
     - name: Preparing The App Files
       run: |
-        . "$env:App_Script_Path\Set-ReleaseTag.ps1" "${{ github.ref }}"
-        . "$env:App_Script_Path\Uncomment-AppMethods.ps1"
-        . "$env:App_Script_Path\Set-DebugMode.ps1"
-        . "$env:App_Script_Path\Set-WinmdPath.ps1"
+        . "SophiApp\Scripts\Set-ReleaseTag.ps1" "${{ github.ref }}"
+        . "SophiApp\Scripts\Uncomment-AppMethods.ps1"
+        . "SophiApp\Scripts\Set-DebugMode.ps1"
+        . "SophiApp\Scripts\Set-WinmdPath.ps1"
 
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
@@ -47,25 +39,25 @@ jobs:
       uses: microsoft/setup-msbuild@master
 
     - name: Run MSBuild
-      run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration /p:platform=$env:Platform
+      run: msbuild SophiApp\SophiApp.sln /p:Configuration=$env:Configuration /p:platform=$env:Platform
       env:
-        Platform: ${{ matrix.platform }}        
+        Platform: ${{ matrix.platform }}
         Configuration: ${{ matrix.configuration }}
 
     - name: Cleanup Files
       run: |
         $ExcludedTypes = @("*.exe", "*.config")
-        $SourceFolder = "{0}\*" -f $env:App_Release_Path
-        $DestinationFolder = "{0}\{1}" -f $env:App_Release_Path, $env:Binary_Folder_Name        
-        Get-ChildItem -Path $env:App_Release_Path -Exclude $ExcludedTypes | Remove-Item -Force -Recurse -Confirm:$false
+        $SourceFolder = "{0}\*" -f SophiApp\SophiApp\bin\Release
+        $DestinationFolder = "{0}\{1}" -f SophiApp\SophiApp\bin\Release, Bin
+        Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude $ExcludedTypes | Remove-Item -Force -Recurse -Confirm:$false
         . "$env:App_Script_Path\Get-BinaryFiles.ps1"
 
     - name: Compress Files
       run: |
-        $Build_Directory = Rename-Item -Path $env:App_Release_Path -NewName $env:App_Name -PassThru | Select-Object -ExpandProperty FullName
-        Compress-Archive -Path $Build_Directory -DestinationPath $env:App_Zip -CompressionLevel Optimal
+        $Build_Directory = Rename-Item -Path SophiApp\SophiApp\bin\Release -NewName SophiApp -PassThru | Select-Object -ExpandProperty FullName
+        Compress-Archive -Path $Build_Directory -DestinationPath SophiApp.zip -CompressionLevel Optimal
         # Get the file hash
-        Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path $env:App_Zip -Algorithm SHA256).Hash)"
+        Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
 
     - name: Release Build
       uses: svenstaro/upload-release-action@master
