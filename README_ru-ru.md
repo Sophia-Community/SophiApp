@@ -5,7 +5,7 @@
   <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
 </div>
 
-# SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
+# SophiApp. Следующий шаг проекта [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
@@ -118,7 +118,7 @@ choco install sophiapp --confirm
 
 ***
 
-Сверьтесь с историей обновлений [Windows 10](https://support.microsoft.com/ru-ru/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/ru-ru/windows-insider/flight-hub/).
+Сверьтесь с историей обновлений [Windows 10](https://support.microsoft.com/ru-ru/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/ru-ru/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/ru-ru/windows-insider/flight-hub/).
 
 * Запуск приложения возможен только если в системе присутствует один вошедший пользователь с администраторскими правами;
 * 🔥🔥🔥 `SophiApp` может не работать на "самопальных" сборках Windows. Особенно, если сборка была создана так, что в ней специально был сломан Microsoft Defender и выключена телеметрия, вырезав системные компоненты.
@@ -131,7 +131,7 @@ choco install sophiapp --confirm
 
 * Динамически отрисовывающийся UI: элементы не запрограммированы жестко; 👻
 * Более 130 твиков; ⭐
-* `SophiApp` использует паттерн [MVVM](https://ru.wikipedia.org/wiki/Model-view-viewmodel);
+* `SophiApp` использует паттерн [MVVM](https://ru.wikipedia.org/wiki/Model-View-ViewModel);
 * Поддержка многопоточности;
 * `SophiApp` проверяется [статическим анализатором](https://pvs-studio.com/pvs-studio), лицензию на который предоставили в PVS-Studio;
   * Большое спасибо им за предоставление нам [лицензии](https://pvs-studio.com/en/order/open-source-license).
