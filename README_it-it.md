@@ -90,39 +90,31 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 |<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
 |`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
 
-## Requisiti di sistema
+### Requisiti minimi di sistema
 
-### Versioni e build minime supportate
-
-### Windows 11 Insider Preview
-
-| Versione | Build  |
-|:--------:|:------:|
-| 22H2     | 22509+ |
-
-### Windows 11
-
-| Versione | Build     | Edizioni            |
-|:--------:|:---------:|:-------------------:|
-| 21H2     | 22000.739 | Home/Pro/Enterprise |
-
-### Windows 10
-
-| Versione | Nome di mercato     | Build      | Architettura | Edizioni            |
-|:--------:|:-------------------:|:----------:|:------------:|:-------------------:|
-| 22H2     | October 2022 Update | 19045.1706 | x64          | Home/Pro/Enterprise |
-| 21H2     | October 2021 Update | 19044.1706 | x64          | Home/Pro/Enterprise |
+|            Versione             |    Nome di mercato      |    Build   | Architettura |        Edizioni          |
+|:--------------------------------|------------------------:|:----------:|:------------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 |      2022 Update        |   22509    |              | Home/Pro/Enterprise      |
+| Windows 11 22H2                 |                         | 22000.739  |              | Home/Pro/Enterprise      |
+| Windows 10 22H2                 |   October 2022 Update   | 19045.1706 |      x64     | Home/Pro/Enterprise      |
+| Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |      x64     | Home/Pro/Enterprise/LTSC |
 
 ### Versione beta
 
 [Download](https://github.com/Sophia-Community/SophiApp/releases)
 
-### Come scaricare SophiApp con PowerShell
+### Come scaricare SophiApp con PowerShell/Chocolatey
 
 * Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
+```
+
+[Pacchetto di Chocolatey](https://community.chocolatey.org/packages/sophiapp)
+
+```powershell
+choco install sophiapp --confirm
 ```
 
 ***
@@ -136,43 +128,39 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`
 
-È anche possibile eseguire l'installazione utilizzando il [pacchetto di Chocolatey](https://community.chocolatey.org/packages/sophiapp):
+## Caratteristiche principali
 
-```powershell
-choco install sophiapp --confirm
-```
-
-## Features principali
-
-* UI renderizzata dinamicamente—nulla è hardcoded. 👻
-* 130+ opzioni. ⭐
-* `SophiApp` usa il pattern [MVVM](https://it.wikipedia.org/wiki/Model-view-viewmodel).
-* Supporto al multithreading.
-* Il codice della`SophiApp` è controllato [static analyzer](https://pvs-studio.com/pvs-studio), la cui licenza è stata gentilemnte concessa da PVS-Studio.
-* Tutte le build sono compilate in cloud con [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
-  * Puoi comparare l'hash sum dello zip comunicato nella pagiana release con quello nella sezione `Compress Files` per verificare che l'archivio non sia stato manomesso(richiede un'account GitHub);
-* L'app mostra lo stato  `attuale` di ogni features nella UI.
-* Supporto per le alte risoluzioni.
-* Motore di ricerca integrato.
-  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave [GIF](#ricerca)
-* Supporto al tema chiaro e scuro.
-  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato. [GIF](#cambio-istantaneo-del-tema)
-* Modifica la privacy e la telemetria.
-* Disattiva le attività pianificate di raccolta dati diagnostica.
-* Personalizza la UI.
-* Disinstalla OneDrive "correttamente".
-* Disinstalla le app UWP.
-  * I nopi delle app sono tradotti nella lingua del pc
-  * La lista delle app UWP è renderizzata dinamicamente con le icone locali
-* Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft per poter aprire i video .heic e .heif.
-* Crea le opreazioni pianificate `Windows Cleanup` e `Windows Cleanup Notification`per ripulire Windows dai file inutillizati e dagli aggiornamenti installati.
-  * Una [notifica](#notifiche-interattive-per-loperazione-pianificate-di-pulizia-di-windows) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia
-* Creaoperazioni pianificate per ripulire
-  * `%SystemRoot%\SoftwareDistribution\Download`
-  * `%TEMP%`
-* Configura la sicurezza di windows Windows.
-* ÈPossibile copiare il nome o la descrizione delle varie funzioni.
-* Molteplici personalizzazioni di esplora risorse e dei menu contestuale.
+* UI renderizzata dinamicamente—nulla è hardcoded; 👻
+* 130+ opzioni; ⭐
+* `SophiApp` usa il pattern [MVVM](https://it.wikipedia.org/wiki/Model-view-viewmodel);
+* Supporto al multithreading;
+* Il codice della`SophiApp` è controllato [static analyzer](https://pvs-studio.com/pvs-studio), la cui licenza è stata gentilemnte concessa da PVS-Studio;
+* Tutte le build sono compilate in cloud con [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions);
+  * Puoi comparare l'hash sum dello zip comunicato nella pagiana release con quello nella sezione `Compress Files` per verificare che l'archivio non sia stato manomesso(richiede un'account GitHub).
+* L'app mostra lo stato  `attuale` di ogni features nella UI;
+* Supporto per le alte risoluzioni;
+* Motore di ricerca integrato;
+  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave [GIF](#ricerca).
+* Supporto al tema chiaro e scuro;
+  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato. [GIF](#cambio-istantaneo-del-tema).
+* Modifica la privacy e la telemetria;
+* Disattiva le attività pianificate di raccolta dati diagnostica;
+* Personalizza la UI;
+* Installare i più recenti `Microsoft Visual C++ Redistributable Packages 2015–2022 x64`;
+* Installare i più recenti `.NET Desktop Runtime 6 x86/x64`;
+* Disinstalla OneDrive "correttamente";
+* Disinstalla le app UWP;
+  * I nopi delle app sono tradotti nella lingua del pc;
+  * La lista delle app UWP è renderizzata dinamicamente con le icone locali.
+* Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft per poter aprire i video .heic e .heif;
+* Crea le opreazioni pianificate `Windows Cleanup` e `Windows Cleanup Notification`per ripulire Windows dai file inutillizati e dagli aggiornamenti installati;
+  * Una [notifica](#notifiche-interattive-per-loperazione-pianificate-di-pulizia-di-windows) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia.
+* Creaoperazioni pianificate per ripulire;
+  * `%SystemRoot%\SoftwareDistribution\Download`;
+  * `%TEMP%`.
+* Configura la sicurezza di windows Windows;
+* ÈPossibile copiare il nome o la descrizione delle varie funzioni;
+* Molteplici personalizzazioni di esplora risorse e dei menu contestuale;
 
 ## Video
 

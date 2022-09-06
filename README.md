@@ -90,39 +90,31 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 |<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
 |`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
 
-## System Requirements
+### Minimum System Requirements
 
-### Minimum supported Windows versions and builds
-
-### Windows 11 Insider Preview
-
-|Version|   Build   |
-|:-----:|:---------:|
-| 22H2  |   22509+  |
-
-### Windows 11
-
-|Version|   Build   |      Editions     |
-|:-----:|:---------:|:-----------------:|
-| 21H2  | 22000.739 |Home/Pro/Enterprise|
-
-### Windows 10
-
-|Version|    Marketing name   | Build      | Arch|      Editions     |
-|:-----:|:-------------------:|:----------:|:---:|:-----------------:|
-| 22H2  | October 2022 Update | 19045.1706 | x64 |Home/Pro/Enterprise|
-| 21H2  | October 2021 Update | 19044.1706 | x64 |Home/Pro/Enterprise|
+|            Version              |    Marketing name       |    Build   |    Arch     |        Editions          |
+|:--------------------------------|------------------------:|:----------:|:-----------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 |      2022 Update        |   22509    |             | Home/Pro/Enterprise      |
+| Windows 11 22H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
+| Windows 10 22H2                 |   October 2022 Update   | 19045.1706 |     x64     | Home/Pro/Enterprise      |
+| Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
 
 ### Beta version
 
 [Download](https://github.com/Sophia-Community/SophiApp/releases)
 
-### How to download SophiApp via PowerShell
+### How to download SophiApp via PowerShell/Chocolatey
 
 * Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
+```
+
+[Chocolatey](https://community.chocolatey.org/packages/sophiapp)
+
+```powershell
+choco install sophiapp --confirm
 ```
 
 ***
@@ -136,13 +128,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
 
-On Windows, you can also do the installation using the [Chocolatey package](https://community.chocolatey.org/packages/sophiapp):
-
-```powershell
-choco install sophiapp --confirm
-```
-
-## Core features
+## Key features
 
 * Dynamic rendering UI—nothing is hardcoded. 👻
 * 130+ tweaks. ⭐
@@ -161,6 +147,8 @@ choco install sophiapp --confirm
 * Set up Privacy & Telemetry.
 * Turn off diagnostics tracking scheduled tasks.
 * Set up UI & Personalization.
+* Install the latest `Microsoft Visual C++ Redistributable Packages 2015–2022 x64`;
+* Install the latest `.NET Desktop Runtime 6 x86/x64`;
 * Uninstall OneDrive "correctly".
 * Uninstall UWP apps displaying localized packages names.
   * An UWP apps list is rendered dynamically using local icons
