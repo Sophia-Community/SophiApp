@@ -15,7 +15,7 @@
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">Деякі компоненти Windows можуть бути пошкоджені.</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">Будь ласка, перевстановіть ОС</system:String>
     <system:String x:Key="Conditions.OsIsInfected">Ваша ОС, можливо, через бекдор в Win 10 Tweaker була інфікована трояном.</system:String>
-    <system:String x:Key="Conditions.OsIsInfected.More">Детальніше:</system:String>
+    <system:String x:Key="Conditions.OsIsInfected.More">Докладніше:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">Я усвідомлюю ризик і згоден нести відповідальність за будь-яку можливу шкоду</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Про всяк випадок перевстановіть ОС.</system:String>
@@ -62,7 +62,7 @@
     <system:String x:Key="Localization.Settings.Themes.Dark">Темна</system:String>
     <system:String x:Key="Localization.Settings.Themes.Light">Світла</system:String>
     <system:String x:Key="Localization.Settings.Languages">Мова</system:String>
-    <system:String x:Key="Localization.Settings.Advanced">Розширенні налаштування</system:String>
+    <system:String x:Key="Localization.Settings.Advanced">Розширені налаштування</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Режим розробника</system:String>
     <system:String x:Key="Localization.Settings.Team">Учасники проєкту</system:String>
     <system:String x:Key="Localization.Settings.Leader">Керівник проєкту:</system:String>
@@ -80,7 +80,7 @@
     <system:String x:Key="Localization.Toast.Update.Download">Завантажити</system:String>
     <system:String x:Key="Localization.Toast.Update.Header">Доступне оновлення для SophiApp</system:String>
     <system:String x:Key="Localization.View.NoData">Немає даних для відображення</system:String>
-    <system:String x:Key="Localization.ViewChanges.Cancel">Відмінити</system:String>
+    <system:String x:Key="Localization.ViewChanges.Cancel">Скасувати</system:String>
     <system:String x:Key="Localization.ViewChanges.Apply">Застосувати</system:String>
     <system:String x:Key="Localization.ViewChanges.Changed">Змінено</system:String>
     <system:String x:Key="Localization.ViewChanges.Setting">налаштування</system:String>
