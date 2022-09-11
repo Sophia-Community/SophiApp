@@ -1,4 +1,4 @@
-﻿using SophiApp.Dto;
+using SophiApp.Dto;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -164,8 +164,7 @@ foreach ($AppxPackage in $AppxPackages)
             var sid = OsHelper.GetCurrentUserSid().Value;
             var packageManager = new PackageManager();
             return packageManager.FindPackagesForUser(sid)
-                                 .Where(package => package.Id.Name == packageName)
-                                 .Count() > 0;
+.Count(package => package.Id.Name == packageName) > 0;
         }
 
         internal static void RemovePackage(string packageFullName, bool allUsers)

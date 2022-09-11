@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using SophiApp.Dto;
 using SophiApp.Helpers;
@@ -957,8 +957,8 @@ namespace SophiApp.Customisations
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
             var cloudNet6 = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
-            var latestRelease = cloudNet6.Releases.Where(release => release.ReleaseVersion == $"{cloudNet6.LatestRelease}").First();
-            var latestRuntime = latestRelease.WindowsDesktop.Files.Where(file => file.Name == "windowsdesktop-runtime-win-x86.exe").First();
+            var latestRelease = cloudNet6.Releases.First(release => release.ReleaseVersion == $"{cloudNet6.LatestRelease}");
+            var latestRuntime = latestRelease.WindowsDesktop.Files.First(file => file.Name == "windowsdesktop-runtime-win-x86.exe");
             var installer = $@"{temp}\{latestRuntime.Url.Substring(latestRuntime.Url.LastIndexOf('/') + 1)}";
             WebHelper.Download(latestRuntime.Url, installer);
             ProcessHelper.StartWait(installer, DOTNET_INSTALL_ARGS);
@@ -981,8 +981,8 @@ namespace SophiApp.Customisations
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
             var cloudNet6 = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
-            var latestRelease = cloudNet6.Releases.Where(release => release.ReleaseVersion == $"{cloudNet6.LatestRelease}").First();
-            var latestRuntime = latestRelease.WindowsDesktop.Files.Where(file => file.Name == "windowsdesktop-runtime-win-x64.exe").First();
+            var latestRelease = cloudNet6.Releases.First(release => release.ReleaseVersion == $"{cloudNet6.LatestRelease}");
+            var latestRuntime = latestRelease.WindowsDesktop.Files.First(file => file.Name == "windowsdesktop-runtime-win-x64.exe");
             var installer = $@"{temp}\{latestRuntime.Url.Substring(latestRuntime.Url.LastIndexOf('/') + 1)}";
             WebHelper.Download(latestRuntime.Url, installer);
             ProcessHelper.StartWait(installer, DOTNET_INSTALL_ARGS);

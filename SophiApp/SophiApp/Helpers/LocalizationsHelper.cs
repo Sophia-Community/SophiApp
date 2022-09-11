@@ -1,4 +1,4 @@
-﻿using SophiApp.Commons;
+using SophiApp.Commons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +59,7 @@ namespace SophiApp.Helpers
 
         internal void Change(Localization localization)
         {
-            var resDict = Application.Current.Resources.MergedDictionaries.Where(d => d.Source == Selected.Uri).First();
+            var resDict = Application.Current.Resources.MergedDictionaries.First(d => d.Source == Selected.Uri);
             resDict.Source = localization.Uri;
             Selected = localization;
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -30,7 +30,7 @@ namespace SophiApp.Helpers
 
         internal static bool DefenderProtectionDisabled()
         {
-            var defender = GetAntiVirusProduct().Where(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID).First();
+            var defender = GetAntiVirusProduct().First(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID);
             var defenderState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);
             return defenderState == "00" || defenderState == "01";
         }

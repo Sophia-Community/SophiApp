@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using SophiApp.Commons;
 using SophiApp.Conditions;
 using SophiApp.Customisations;
@@ -128,8 +128,7 @@ namespace SophiApp.ViewModels
         private TextedElement FindFaultyElement(uint id)
         {
             return TextedElements.Where(element => element.Id == id).FirstOrDefault()
-                   ?? TextedElements.Where(element => element is IParentElements parent && parent.ChildElements.Any(child => child.Id == id))
-                                    .First();
+                   ?? TextedElements.First(element => element is IParentElements parent && parent.ChildElements.Any(child => child.Id == id));
         }
 
         private Task GetTextedElementsStatus(string tag)
