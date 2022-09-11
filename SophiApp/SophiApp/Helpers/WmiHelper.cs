@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -149,7 +149,7 @@ namespace SophiApp.Helpers
 
             foreach (ManagementObject adapter in adapters)
             {
-                adapter.SetPropertyValue("AllowComputerToTurnOffDevice", enablePowerSave == true ? 2 : 1);
+                adapter.SetPropertyValue("AllowComputerToTurnOffDevice", enablePowerSave? 2 : 1);
                 _ = adapter.Put();
             }
         }

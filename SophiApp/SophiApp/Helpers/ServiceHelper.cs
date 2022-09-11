@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -92,7 +92,7 @@ namespace SophiApp.Helpers
                 null,
                 null);
 
-            if (result == false)
+            if (!result)
             {
                 int nError = Marshal.GetLastWin32Error();
                 var win32Exception = new Win32Exception(nError);
