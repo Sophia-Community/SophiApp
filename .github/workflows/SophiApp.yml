@@ -20,12 +20,16 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Preparing The App Files
+    - name: Preparing files
       run: |
-        . "SophiApp\Scripts\Set-ReleaseTag.ps1" "${{ github.ref }}"
+        . "SophiApp\Scripts\Set-ReleaseTag.ps1" "${{ github.ref_name }}"
         . "SophiApp\Scripts\Uncomment-AppMethods.ps1"
         . "SophiApp\Scripts\Set-DebugMode.ps1"
         . "SophiApp\Scripts\Set-WinmdPath.ps1"
+
+    - name: Downloading files
+      run: |
+        . SophiApp\Scripts\Get-Dependencies.ps1
 
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
@@ -44,19 +48,28 @@ jobs:
         Platform: ${{ matrix.platform }}
         Configuration: ${{ matrix.configuration }}
 
-    - name: Cleanup Files
+    - name: Files Cleanup
       run: |
-        $ExcludedTypes = @("*.exe", "*.config")
-        $SourceFolder = "{0}\*" -f SophiApp\SophiApp\bin\Release
-        $DestinationFolder = "{0}\{1}" -f SophiApp\SophiApp\bin\Release, Bin
-        Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude $ExcludedTypes | Remove-Item -Force -Recurse -Confirm:$false
-        . "$env:App_Script_Path\Get-BinaryFiles.ps1"
+        Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
+        . SophiApp\Scripts\Copy-Dependencies.ps1
 
-    - name: Compress Files
+    - name: Compress Folder
       run: |
-        $Build_Directory = Rename-Item -Path SophiApp\SophiApp\bin\Release -NewName SophiApp -PassThru | Select-Object -ExpandProperty FullName
-        Compress-Archive -Path $Build_Directory -DestinationPath SophiApp.zip -CompressionLevel Optimal
-        # Get the file hash
+        $Parameters = @{
+            Path     = "SophiApp\SophiApp\bin\Release"
+            NewName  = "SophiApp"
+            PassThru = $true
+        }
+        $Build_Directory = (Rename-Item @Parameters).FullName
+        
+        $Parameters = @{
+            Path             = $Build_Directory
+            DestinationPath  = "SophiApp.zip"
+            CompressionLevel = "Optimal"
+        }
+        Compress-Archive @Parameters
+
+        # Get SophiApp.zip hash
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
 
     - name: Release Build
