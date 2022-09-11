@@ -98,13 +98,9 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 | Windows 11 21H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
 
-### Beta version
-
-[Download](https://github.com/Sophia-Community/SophiApp/releases)
-
 ### How to download SophiApp via PowerShell/Chocolatey
 
-* Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
+Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -115,6 +111,10 @@ irm app.sophi.app -useb | iex
 ```powershell
 choco install sophiapp --confirm
 ```
+
+### Beta versions
+
+[Download](https://github.com/Sophia-Community/SophiApp/releases)
 
 ***
 
@@ -139,7 +139,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into you GitHub account to be able to view Actions logs);
 * The app shows the `actual` state of every feature in the UI.
 * High resolutions support.
-* It Has a built-in search engine.
+* It has a built-in search engine.
   * Functions can be found by searching their headers and descriptions. [GIF](#searching-feature)
 * Dark & light themes support.
   * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)

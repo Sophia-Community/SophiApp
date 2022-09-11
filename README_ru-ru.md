@@ -98,13 +98,9 @@
 | Windows 11 21H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
 
-### Бета-версии
-
-[Скачать](https://github.com/Sophia-Community/SophiApp/releases)
-
 ### Скачать SophiApp через PowerShell/Chocolatey
 
-* Скачать архив с последней версией SophiApp, выполнив в PowerShell (`в том числе и не от имени администратора`)
+Скачать архив с последней версией SophiApp, выполнив в PowerShell (`в том числе и не от имени администратора`)
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -115,6 +111,10 @@ irm app.sophi.app -useb | iex
 ```powershell
 choco install sophiapp --confirm
 ```
+
+### Бета-версии
+
+[Скачать](https://github.com/Sophia-Community/SophiApp/releases)
 
 ***
 

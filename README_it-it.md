@@ -98,13 +98,9 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 | Windows 11 21H2                 |                         | 22000.739  |              | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |      x64     | Home/Pro/Enterprise/LTSC |
 
-### Versione beta
-
-[Download](https://github.com/Sophia-Community/SophiApp/releases)
-
 ### Come scaricare SophiApp con PowerShell/Chocolatey
 
-* Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
+Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -115,6 +111,10 @@ irm app.sophi.app -useb | iex
 ```powershell
 choco install sophiapp --confirm
 ```
+
+### Versione beta
+
+[Download](https://github.com/Sophia-Community/SophiApp/releases)
 
 ***
 
