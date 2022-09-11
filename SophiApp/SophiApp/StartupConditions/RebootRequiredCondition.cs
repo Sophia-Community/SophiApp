@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using SophiApp.Commons;
 using SophiApp.Helpers;
 using SophiApp.Interfaces;
@@ -27,7 +27,7 @@ namespace SophiApp.Conditions
                 RegHelper.SubKeyExist(RegistryHive.LocalMachine, UPDATE_REBOOT_REQUIRED)
             };
 
-            return HasProblem = registryRebootRequired.Any(key => key == true);
+            return HasProblem = registryRebootRequired.Any(key => key);
         }
     }
 }
