@@ -64,7 +64,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
  &bull;
  <a href="#translating">Translating</a>
  &bull;
- <a href="#ask-a-question-on">Ask a question on</a>
+ <a href="#media">Media</a>
  &bull;
  <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
@@ -207,7 +207,7 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 * Feel free to translate the UI into your language by taking as a basis one of [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) and creating a new [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
 
-## The 3rd party libraries used
+## 3rd party libraries
 
 * [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
 * [TaskScheduler](https://github.com/dahall/taskscheduler)
