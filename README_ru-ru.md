@@ -62,9 +62,9 @@
  &bull;
  <a href="#дополнение">Дополнение</a>
  &bull;
- <a href="#как-перевести">Как перевести</a>
+ <a href="#перевод">Перевод</a>
  &bull;
- <a href="#задай-свой-вопрос">Задай свой вопрос</a>
+ <a href="#медиа">Медиа</a>
  &bull;
  <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал изменений</a>
 </p>
@@ -203,7 +203,7 @@ choco install sophiapp --confirm
   * Скрытые функции будут помечены шестеренкой в UI;
 * После закрытия `SophiApp` создается лог-файл, который вы можете прикрепить к открытому issue или отправить в группу в [Telegram](https://t.me/sophia_chat), чтобы помочь нам разобраться с ошибкой. Лог-файл не содержит приватную информацию. Мы не храним никакие данные ни в реестре Windows или на каком-либо другом сервере.
 
-## Как перевести
+## Перевод
 
 * Вы можете перевести UI на ваш язык, взяв за основу один из файлов [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations), а также новый файл [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations).
 
