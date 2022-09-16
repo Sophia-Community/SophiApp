@@ -50,7 +50,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#donazioni">Donazioni</a>
     •
-    <a href="#Requisiti-di-sistema">Requisiti di sistema</a>
+    <a href="#requisiti-di-sistema">Requisiti di sistema</a>
     •
     <a href="#installazione">Installazione</a>
     •
@@ -60,11 +60,11 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#screenshot-helen">Screenshot</a>
     •
-    <a href="#Note">Note</a>
+    <a href="#note">Note</a>
     •
-    <a href="#Traduzione">Traduzione</a>
+    <a href="#traduzione">Traduzione</a>
     •
-    <a href="#Ottieni-assistenza-via">Assistenza</a>
+    <a href="#media">Media</a>
     •
     <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
@@ -207,7 +207,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 * Sentiti libero di tradurre la UI nella tua lingua usando come base [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) e creando un nuovo file  [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) .
 
-## Librerie di terze parti usate
+## Librerie di terze parti
 
 * [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
 * [TaskScheduler](https://github.com/dahall/taskscheduler)
