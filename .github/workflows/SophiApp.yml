@@ -72,7 +72,7 @@ jobs:
         # Get SophiApp.zip hash
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
 
-    - name: ReleaseNotesTemplat
+    - name: ReleaseNotesTemplate
       id: read_release
       run: |
         $Parameters = @{
