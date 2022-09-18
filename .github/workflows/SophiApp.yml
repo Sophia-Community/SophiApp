@@ -72,12 +72,26 @@ jobs:
         # Get SophiApp.zip hash
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
 
-    - name: Release Build
-      uses: svenstaro/upload-release-action@master
+    - name: ReleaseNotesTemplat
+      id: read_release
+      run: |
+        $Parameters = @{
+            Uri             = "https://api.github.com/repos/Sophia-Community/SophiApp/releases"
+            UseBasicParsing = $true
+            Verbose         = $true
+        }
+        $Penultimate = (Invoke-RestMethod @Parameters).tag_name | Select-Object -Index 1
+
+        # https://en.wikipedia.org/wiki/Percent-encoding
+        $Release = (Get-Content -Path ReleaseNotesTemplate.md -Encoding utf8 -Raw).replace("%", "%25").replace("`n", "%0A").replace("`r", "%0D").replace("NewVersion", "${{ github.ref_name }}").replace("OldVersion", $Penultimate).replace("CurrentDate", $(Get-Date -f "dd.MM.yyyy"))
+
+        # https://trstringer.com/github-actions-multiline-strings/
+        echo "::set-output name=RELEASE_BODY::$Release"
+
+    - name: Uploading
+      uses: softprops/action-gh-release@master
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: SophiApp.zip
-        tag: ${{ github.ref }}
-        overwrite: true
-        file_glob: true
-        prerelease: true
+        name: ${{ github.ref_name }}
+        token: ${{ github.token }}
+        files: SophiApp.zip
+        body: ${{ steps.read_release.outputs.RELEASE_BODY }}
