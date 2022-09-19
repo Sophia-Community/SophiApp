@@ -35,7 +35,7 @@ namespace SophiApp.Helpers
             }
         }
 
-        internal static bool ProcessExist(string processName) => Process.GetProcessesByName(processName).Count() > 0;
+        internal static bool ProcessExist(string processName) => Process.GetProcessesByName(processName).Any();
 
         internal static Process Start(string processName, string args = null, ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal)
         {

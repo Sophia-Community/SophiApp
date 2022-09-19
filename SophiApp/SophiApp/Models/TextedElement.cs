@@ -91,7 +91,7 @@ namespace SophiApp.Models
             return Header.ToLower().Contains(desiredText) || Description.ToLower().Contains(desiredText);
         }
 
-        internal virtual void GetCustomisationStatus()
+        internal virtual void LoadCustomisationStatus()
         {
             try
             {
@@ -107,7 +107,7 @@ namespace SophiApp.Models
         {
             var stopwatch = Stopwatch.StartNew();
             ChangeLanguage(Language);
-            GetCustomisationStatus();
+            LoadCustomisationStatus();
             stopwatch.Stop();
             DebugHelper.TextedElementInit(Id, stopwatch.Elapsed.TotalSeconds);
         }

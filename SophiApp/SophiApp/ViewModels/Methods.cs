@@ -73,7 +73,7 @@ namespace SophiApp.ViewModels
                     CustomActions.Clear();
                     OnPropertyChanged(CustomActionsPropertyName);
                     await GetTextedElementsStatusAsync();
-                    GetUwpElements();
+                    LoadUwpElements();
                     OsHelper.PostMessage();
                     OsHelper.RefreshEnvironment();
                     OsHelper.SafelyRestartExplorerProcess();
@@ -127,16 +127,15 @@ namespace SophiApp.ViewModels
 
         private TextedElement FindFaultyElement(uint id)
         {
-            return TextedElements.Where(element => element.Id == id).FirstOrDefault()
-                   ?? TextedElements.Where(element => element is IParentElements parent && parent.ChildElements.Any(child => child.Id == id))
-                                    .First();
+            return TextedElements.FirstOrDefault(element => element.Id == id)
+                   ?? TextedElements.First(element => element is IParentElements parent && parent.ChildElements.Any(child => child.Id == id));
         }
 
         private Task GetTextedElementsStatus(string tag)
         {
             return Task.Factory.StartNew(() => TextedElements.Where(element => element.Tag == tag && element.Status != ElementStatus.DISABLED)
                                                       .ToList()
-                                                      .ForEach(element => element.GetCustomisationStatus()));
+                                                      .ForEach(element => element.LoadCustomisationStatus()));
         }
 
         private async Task GetTextedElementsStatusAsync()
@@ -148,17 +147,17 @@ namespace SophiApp.ViewModels
             await Task.WhenAll(task);
         }
 
-        private void GetUwpElements()
+        private void LoadUwpElements()
         {
             DebugHelper.StartInitUwpApps();
             var stopwatch = Stopwatch.StartNew();
             UwpElementsCurrentUser = UwpHelper.GetPackagesDto(forAllUsers: false)
-                                              .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                              .Select(FabricHelper.CreateUwpElement)
                                               .OrderBy(uwp => uwp.DisplayName)
                                               .ToList();
 
             UwpElementsAllUsers = UwpHelper.GetPackagesDto(forAllUsers: true)
-                                           .Select(dto => FabricHelper.CreateUwpElement(dto))
+                                           .Select(FabricHelper.CreateUwpElement)
                                            .OrderBy(uwp => uwp.DisplayName)
                                            .ToList();
             stopwatch.Stop();
@@ -259,7 +258,7 @@ namespace SophiApp.ViewModels
             DebugHelper.StopInitTextedElements(stopwatch.Elapsed.TotalSeconds);
         }
 
-        private async Task InitializeUwpElementsAsync() => await Task.Run(() => GetUwpElements());
+        private async Task InitializeUwpElementsAsync() => await Task.Run(() => LoadUwpElements());
 
         private async Task InitializeWatchersAsync()
         {
@@ -319,7 +318,7 @@ namespace SophiApp.ViewModels
                 {
                     ComObjectHelper.EnableUpdateForOtherProducts();
                     Thread.Sleep(1000);
-                    PowerShellHelper.GetUwpAppsUpdates();
+                    PowerShellHelper.LoadUwpAppsUpdates();
                     Thread.Sleep(1000);
                     ComObjectHelper.SetWindowsUpdateDetectNow();
                 }
@@ -378,10 +377,10 @@ namespace SophiApp.ViewModels
 
                 foreach (var element in TextedElements)
                 {
-                    element.GetCustomisationStatus();
+                    element.LoadCustomisationStatus();
                 }
 
-                GetUwpElements();
+                LoadUwpElements();
             });
 
             SetInfoPanelVisibility(InfoPanelVisibility.HideAll);

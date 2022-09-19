@@ -26,12 +26,12 @@ namespace SophiApp.Models
             return ChildElements.Any(child => child.Header.ToLower().Contains(desiredText) || child.Description.ToLower().Contains(desiredText));
         }
 
-        internal override void GetCustomisationStatus()
+        internal override void LoadCustomisationStatus()
         {
             try
             {
                 Status = CustomisationStatus.Invoke() ? ElementStatus.CHECKED : ElementStatus.UNCHECKED;
-                ChildElements.ForEach(child => child.GetCustomisationStatus());
+                ChildElements.ForEach(child => child.LoadCustomisationStatus());
             }
             catch (Exception e)
             {

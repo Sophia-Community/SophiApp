@@ -530,7 +530,7 @@ namespace SophiApp.Customisations
             var wddmVersion = RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _602_FEATURE_SET_PATH, _602_WDDM_VERSION);
 
             return adapterDAC != _602_INTERNAL_DAC_TYPE && adapterDAC != null
-                    ? pcIsVM != true
+                    ? pcIsVM is false
                         ? wddmVersion >= _602_WDDM_VERSION_MIN
                             ? RegHelper.GetByteValue(RegistryHive.LocalMachine, _602_GRAPHICS_DRIVERS_PATH, _602_HWSCH_MODE) == _602_ENABLED_VALUE
                             : throw new WddmMinimalVersionException($"{_602_WDDM_VERSION_MIN}", $"{wddmVersion}")

@@ -92,7 +92,7 @@ namespace SophiApp.Helpers
                 null,
                 null);
 
-            if (result == false)
+            if (result is false)
             {
                 int nError = Marshal.GetLastWin32Error();
                 var win32Exception = new Win32Exception(nError);

@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Management.Automation;
 
 namespace SophiApp.Helpers
 {
@@ -12,7 +11,7 @@ namespace SophiApp.Helpers
 
         internal static T GetScriptResult<T>(string script) => (T)InvokeScript(script).First().BaseObject;
 
-        internal static void GetUwpAppsUpdates() => InvokeScript(getUwpUpdate);
+        internal static void LoadUwpAppsUpdates() => InvokeScript(getUwpUpdate);
 
         internal static Collection<PSObject> InvokeScript(string script) => PowerShell.Create().AddScript(script).Invoke();
     }

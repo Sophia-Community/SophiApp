@@ -38,7 +38,7 @@ namespace SophiApp.Helpers
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
         private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
-        private static readonly string REGISTRY_CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private const string REGISTRY_CURRENT_VERSION = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
 
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);

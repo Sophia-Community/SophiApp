@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using Windows.Data.Xml.Dom;
-using Windows.UI.Notifications;
 
 namespace SophiApp.Helpers
 {

@@ -18,7 +18,7 @@ namespace SophiApp.Helpers
         private const string USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.49";
         private static readonly string APP_NAME = Assembly.GetExecutingAssembly().GetName().Name;
         private static readonly string FRAMEWORK_LOG = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Microsoft\CLR_v4.0\UsageLogs\SophiApp.exe.log");
-        private static readonly string LOGS_FOLDER = "Logs";
+        private const string LOGS_FOLDER = "Logs";
         internal static string AppFrameworkLog => FRAMEWORK_LOG;
         internal static string DebugFile => $@"{StartupFolder}{LOGS_FOLDER}\{APP_NAME}-{Environment.MachineName}-{DateTime.Now.ToFileTime()}.{DEBUG_EXT}";
         internal static string SophiAppVersionsJson => SOPHIAPP_VERSIONS_JSON;
