@@ -27,7 +27,7 @@ namespace SophiApp.Conditions
                 RegHelper.SubKeyExist(RegistryHive.LocalMachine, UPDATE_REBOOT_REQUIRED)
             };
 
-            return HasProblem = registryRebootRequired.Any(key => key);
+            return HasProblem = registryRebootRequired.Any(key => key == true);
         }
     }
 }

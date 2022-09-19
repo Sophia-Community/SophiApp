@@ -41,7 +41,7 @@ namespace SophiApp
             private set { SetValue(IsMaximizedProperty, value); }
         }
 
-        private void LoadStartupPosition()
+        private void GetStartupPosition()
         {
             startupLeft = Left;
             startupTop = Top;
@@ -101,7 +101,7 @@ namespace SophiApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadStartupPosition();
+            GetStartupPosition();
             var appVM = new AppVM();
             DataContext = appVM;
             appVM.InitializeStartupConditionsAsync();

@@ -1,6 +1,7 @@
 ﻿using SophiApp.Helpers;
 using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel;
 
 namespace SophiApp.Customisations
 {

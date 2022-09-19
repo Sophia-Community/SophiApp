@@ -11,7 +11,7 @@ namespace SophiApp.Helpers
 
         private static bool isOnline()
         {
-            bool result = default;
+            bool result;
             var client = new HttpClient();
 
             client.DefaultRequestHeaders.ConnectionClose = true;

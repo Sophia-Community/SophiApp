@@ -3,6 +3,7 @@ using SophiApp.Customisations;
 using SophiApp.Dto;
 using System;
 using System.Collections.Generic;
+using Windows.Foundation;
 
 namespace SophiApp.Helpers
 {

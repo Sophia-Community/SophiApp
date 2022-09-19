@@ -30,7 +30,7 @@ namespace SophiApp.Helpers
 
         internal static bool DefenderProtectionDisabled()
         {
-            var defender = GetAntiVirusProduct().First(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID);
+            var defender = GetAntiVirusProduct().Where(product => product.GetPropertyValue(DEFENDER_INSTANCE_GUID) as string == DEFENDER_GUID).First();
             var defenderState = string.Format("0x{0:x}", defender.GetPropertyValue(PRODUCT_STATE)).Substring(3, 2);
             return defenderState == "00" || defenderState == "01";
         }
@@ -149,7 +149,7 @@ namespace SophiApp.Helpers
 
             foreach (ManagementObject adapter in adapters)
             {
-                adapter.SetPropertyValue("AllowComputerToTurnOffDevice", enablePowerSave ? 2 : 1);
+                adapter.SetPropertyValue("AllowComputerToTurnOffDevice", enablePowerSave == true ? 2 : 1);
                 _ = adapter.Put();
             }
         }

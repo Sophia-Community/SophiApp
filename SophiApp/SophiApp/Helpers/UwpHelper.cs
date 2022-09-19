@@ -3,7 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Management.Automation;
 using System.Threading;
+using Windows.ApplicationModel;
+using Windows.Foundation;
+using Windows.Management.Deployment;
 
 namespace SophiApp.Helpers
 {
@@ -160,7 +164,8 @@ foreach ($AppxPackage in $AppxPackages)
             var sid = OsHelper.GetCurrentUserSid().Value;
             var packageManager = new PackageManager();
             return packageManager.FindPackagesForUser(sid)
-                                 .Any(package => package.Id.Name == packageName);
+                                 .Where(package => package.Id.Name == packageName)
+                                 .Count() > 0;
         }
 
         internal static void RemovePackage(string packageFullName, bool allUsers)

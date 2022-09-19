@@ -55,7 +55,7 @@ namespace SophiApp.Helpers
 
         internal static bool AllServicesExist()
         {
-            return DEFENDER_SERVICES.TrueForAll(ServiceHelper.ServiceExist);
+            return DEFENDER_SERVICES.TrueForAll(service => ServiceHelper.ServiceExist(service));
         }
     }
 }

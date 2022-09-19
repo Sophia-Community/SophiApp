@@ -13,8 +13,8 @@ namespace SophiApp.Helpers
         private const string LIGHT_THEME_URI = "pack://application:,,,/Themes/Light.xaml";
         private const string THEME_REGISTRY_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string THEME_REGISTRY_VALUE = "AppsUseLightTheme";
-        private const string DARK_THEME_ALIAS = "DARK";
-        private const string LIGHT_THEME_ALIAS = "LIGHT";
+        private static readonly string DARK_THEME_ALIAS = "DARK";
+        private static readonly string LIGHT_THEME_ALIAS = "LIGHT";
         private Theme selectedTheme;
 
         public ThemesHelper()

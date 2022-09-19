@@ -4,8 +4,8 @@ namespace SophiApp.Helpers
 {
     internal class TextHelper
     {
-        private const char delimiter = '\n';
-        private const char placeholder = '*';
+        private static readonly char delimiter = '\n';
+        private static readonly char placeholder = '*';
 
         internal static string LocalizeCleanupTaskToast(string cleanupTaskToast)
         {
