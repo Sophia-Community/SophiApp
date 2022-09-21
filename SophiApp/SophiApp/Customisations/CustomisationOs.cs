@@ -519,20 +519,11 @@ namespace SophiApp.Customisations
                                                                                          : _261_DISABLED_VALUE,
                                                                                     RegistryValueKind.DWord);
 
-        public static void _263(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                ADVANCED_EXPLORER_PATH,
-                                                                    START_LAYOUT,
-                                                                        START_LAYOUT_DEFAULT_VALUE);
+        public static void _263(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_DEFAULT_VALUE, RegistryValueKind.DWord);
 
-        public static void _264(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                ADVANCED_EXPLORER_PATH,
-                                                                    START_LAYOUT,
-                                                                        START_LAYOUT_PINS_VALUE);
+        public static void _264(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,  ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_PINS_VALUE, RegistryValueKind.DWord);
 
-        public static void _265(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,
-                                                                ADVANCED_EXPLORER_PATH,
-                                                                    START_LAYOUT,
-                                                                        START_LAYOUT_RECOMMENDATIONS_VALUE);
+        public static void _265(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_RECOMMENDATIONS_VALUE, RegistryValueKind.DWord);
 
         public static void _266(bool IsChecked)
         {
