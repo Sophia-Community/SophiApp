@@ -2617,20 +2617,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  920,
-        "Header":  {
-                       "zh_CN":  "驱动器上下文菜单中的\"打开 BitLocker\"项"
-                   },
-        "Description":  {
-                            "zh_CN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  920,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  921,
         "Header":  {
                        "zh_CN":  "\"新建\"上下文菜单中的\"位图图像\"项"

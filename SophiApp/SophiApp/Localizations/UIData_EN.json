@@ -2617,20 +2617,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  920,
-        "Header":  {
-                       "EN":  "The \"Turn on BitLocker\" item in the drives context menu"
-                   },
-        "Description":  {
-                            "EN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  920,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  921,
         "Header":  {
                        "EN":  "The \"Bitmap image\" item in the \"New\" context menu"

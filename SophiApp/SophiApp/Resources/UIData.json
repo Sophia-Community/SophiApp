@@ -5865,36 +5865,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  920,
-        "Header":  {
-                       "EN":  "The \"Turn on BitLocker\" item in the drives context menu",
-                       "RU":  "Пункт \"Включить BitLocker\" в контекстном меню дисков",
-                       "DE":  "Diesen Kontextmenüeintrag \"BitLocker aktivieren\" für Laufwerke anzeigen",
-                       "UA":  "Пункт \"Увімкнути BitLocker\" у контекстному меню дисків",
-                       "IT":  "Mostra l'opzione \"Attiva BitLocker\" nel menu di scelta rapida dei dischi",
-                       "TR":  "Sürücüler bağlam menüsündeki \"BitLocker'ı Aç\" öğesi",
-                       "CZ":  "Zobrazit položku \"Spravovat nástroj BitLocker\" v kontextové nabídce disků",
-                       "FR":  "Affiche l'option \"Activer BitLocker\" dans le menu contextuel des lecteurs",
-                       "zh_CN":  "驱动器上下文菜单中的\"打开 BitLocker\"项"
-                   },
-        "Description":  {
-                            "EN":  "",
-                            "RU":  "",
-                            "DE":  "",
-                            "UA":  "",
-                            "IT":  "",
-                            "TR":  "",
-                            "CZ":  "",
-                            "FR":  "",
-                            "zh_CN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  920,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  921,
         "Header":  {
                        "EN":  "The \"Bitmap image\" item in the \"New\" context menu",

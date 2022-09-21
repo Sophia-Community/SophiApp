@@ -2617,20 +2617,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  920,
-        "Header":  {
-                       "IT":  "Mostra l'opzione \"Attiva BitLocker\" nel menu di scelta rapida dei dischi"
-                   },
-        "Description":  {
-                            "IT":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  920,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  921,
         "Header":  {
                        "IT":  "Mostra l'opzione \"Nuova immagine bitmap\" nel menu di scelta rapida \"nuovo\""

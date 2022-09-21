@@ -2617,20 +2617,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  920,
-        "Header":  {
-                       "FR":  "Affiche l'option \"Activer BitLocker\" dans le menu contextuel des lecteurs"
-                   },
-        "Description":  {
-                            "FR":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  920,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  921,
         "Header":  {
                        "FR":  "Affiche l'option \"Image bitmap\" au menu contextuel \"Nouveau\""
