@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.84 — 21.09.2022
+
+* Action config was totally [re-written](https://github.com/Sophia-Community/SophiApp/blob/master/.github/workflows/SophiApp.yml);
+  * Closes #128.
+* Fixed the HEVC codec function not working on the latest Windows 11 22H2 build;
+* Fixed bug in the function for changing the Start layouts on Windows 22H2 build;
+* Removed function regarding adding feature to open Terminal as admin in the context menu item due to its' unnecessity. Terminal does it better via internal settings.
+* Fixed typos in descriptions;
+* Updated the Ukrainian translation;
+  * Thanks to @lowl1f3.
+
 ## 1.0.82 — 27.08.2022
 
 * Added the Chinese localization 🇨🇳;
