@@ -94,11 +94,11 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 |            Version              |    Marketing name       |    Build   |    Arch     |        Editions          |
 |:--------------------------------|------------------------:|:----------:|:-----------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2022 Update        |   22509    |             | Home/Pro/Enterprise      |
+| Windows 11 Insider Preview 23H2 |      2023 Update        |   22509    |             | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
 
-### How to download SophiApp via PowerShell/Chocolatey
+### How to download SophiApp via PowerShell/Chocolatey/Scoop
 
 Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
 
@@ -110,6 +110,12 @@ irm app.sophi.app -useb | iex
 
 ```powershell
 choco install sophiapp --confirm
+```
+
+[Scoop](https://scoop.sh/#/apps?q=sophiapp&s=2&d=1&o=true)
+
+```powershell
+scoop install sophiapp
 ```
 
 ### Beta versions

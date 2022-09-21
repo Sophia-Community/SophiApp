@@ -94,11 +94,11 @@
 
 |               Версия            |  Маркетинговое название |   Сборка   | Архитектура |         Издания          |
 |:--------------------------------|------------------------:|:----------:|:-----------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2022 Update        |   22509    |             | Home/Pro/Enterprise      |
+| Windows 11 Insider Preview 23H2 |      2023 Update        |   22509    |             | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
 
-### Скачать SophiApp через PowerShell/Chocolatey
+### Скачать SophiApp через PowerShell/Chocolatey/Scoop
 
 Скачать архив с последней версией SophiApp, выполнив в PowerShell (`в том числе и не от имени администратора`)
 
@@ -106,10 +106,16 @@
 irm app.sophi.app -useb | iex
 ```
 
-[Chocolatey-пакет](https://community.chocolatey.org/packages/sophiapp)
+[Chocolatey](https://community.chocolatey.org/packages/sophiapp)
 
 ```powershell
 choco install sophiapp --confirm
+```
+
+[Scoop](https://scoop.sh/#/apps?q=sophiapp&s=2&d=1&o=true)
+
+```powershell
+scoop install sophiapp
 ```
 
 ### Бета-версии
