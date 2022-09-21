@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "zh_CN":  "在桌面和文件夹上下文菜单中显示\"在 Windows 终端中打开\"（管理员）项"
-                   },
-        "Description":  {
-                            "zh_CN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "zh_CN":  "启用 Windows 10 上下文菜单样式"

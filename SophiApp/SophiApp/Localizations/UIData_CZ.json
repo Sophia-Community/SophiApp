@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "CZ":  "Zobrazit položku \"Otevřít v terminálu Windows\" (správce) v kontextové nabídce Plocha a složky"
-                   },
-        "Description":  {
-                            "CZ":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "CZ":  "Povolit Windows 10 styl kontextové nabídky"

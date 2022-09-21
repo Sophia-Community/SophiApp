@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "IT":  "Mostra l'opzione \"Apri in Windows Terminal\" (Admin) Nel menu contestuale del desktop e delle cartelle"
-                   },
-        "Description":  {
-                            "IT":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "IT":  "Abilita il menu di scelta rapida di Windows 10"

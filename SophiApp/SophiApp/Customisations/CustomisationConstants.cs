@@ -569,15 +569,6 @@ else
         internal const string _926_TERMINAL_CONTEXT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
         internal const string _926_TERMINAL_OPEN_CONTEXT = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
         internal const string _926_WINDOWS_TERMINAL = "WindowsTerminal";
-        internal const string _927_BACKGROUND_SHELL_COMMAND_PATH = @"Directory\Background\shell\runas\command";
-        internal const string _927_BACKGROUND_SHELL_RUNAS_PATH = @"Directory\Background\shell\runas";
-        internal const string _927_DIRECTORY_SHELL_COMMAND_PATH = @"Directory\shell\runas\command";
-        internal const string _927_DIRECTORY_SHELL_RUNAS_PATH = @"Directory\shell\runas";
-        internal const string _927_NO_WORKING_DIR = "NoWorkingDirectory";
-        internal const string _927_TERMINAL_CONTEXT_MENU = @"wt.exe -d ""%1""";
-        internal const string _927_TERMINAL_ICON = "Icon";
-        internal const string _927_TERMINAL_ICON_VALUE = "imageres.dll,73";
-        internal const string _927_TERMINAL_RUNAS_ADMIN = @"wt.exe -d ""%V\.""";
         internal const string _928_WIN10_CONTEXT_MENU_PATH = @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32";
         internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
         internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";

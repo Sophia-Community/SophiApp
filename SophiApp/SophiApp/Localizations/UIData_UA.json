@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "UA":  "Відображати пункт \"Відкрити в Терміналі Windows\" (Адміністратор) у контекстному меню папок"
-                   },
-        "Description":  {
-                            "UA":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "UA":  "Увімкнути стиль контекстного меню з Windows 10"

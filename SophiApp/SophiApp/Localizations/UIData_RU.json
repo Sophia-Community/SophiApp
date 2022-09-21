@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "RU":  "Отображать пункт \"Открыть в Терминале Windows\" (Администратор) в контекстном меню папок"
-                   },
-        "Description":  {
-                            "RU":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "RU":  "Включить стиль контекстного меню из Windows 10"

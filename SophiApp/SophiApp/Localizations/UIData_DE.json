@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "DE":  "Im Ordnerkontextmenü \"In Windows Terminal öffnen\" als (Admin) anzeigen"
-                   },
-        "Description":  {
-                            "DE":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "DE":  "Windows 10 Kontextmenüstil aktivieren"

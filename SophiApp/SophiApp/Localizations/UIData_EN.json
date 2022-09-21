@@ -2715,20 +2715,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "EN":  "Show the \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu"
-                   },
-        "Description":  {
-                            "EN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "EN":  "Enable the Windows 10 context menu style"

@@ -673,10 +673,6 @@ namespace SophiApp.Customisations
                                      ? RegHelper.KeyExist(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT).Invert()
                                      : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
 
-        public static bool _927() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
-                                     ? RegHelper.GetStringValue(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_COMMAND_PATH, null) == _927_TERMINAL_CONTEXT_MENU
-                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
-
         public static bool _928() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _928_WIN10_CONTEXT_MENU_PATH, null) == string.Empty;
 
         public static bool _929() => RegHelper.KeyExist(RegistryHive.LocalMachine, SHELL_EXT_BLOCKED_PATH, CONTEXT_MENU_SHARE_GUID).Invert();

@@ -1528,29 +1528,6 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT, _926_WINDOWS_TERMINAL, RegistryValueKind.String);
         }
 
-        public static void _927(bool IsChecked)
-        {
-            if (IsChecked)
-            {
-                var terminalOpenIsAdmin = Application.Current.FindResource("WindowsTerminal.OpenIsAdmin") as string;
-
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_BACKGROUND_SHELL_RUNAS_PATH, null, terminalOpenIsAdmin, RegistryValueKind.String);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_BACKGROUND_SHELL_RUNAS_PATH, _927_TERMINAL_ICON, _927_TERMINAL_ICON_VALUE, RegistryValueKind.String);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_BACKGROUND_SHELL_RUNAS_PATH, _927_NO_WORKING_DIR, string.Empty, RegistryValueKind.String);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_BACKGROUND_SHELL_COMMAND_PATH, null, _927_TERMINAL_RUNAS_ADMIN, RegistryValueKind.String);
-
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_RUNAS_PATH, null, terminalOpenIsAdmin, RegistryValueKind.String);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_RUNAS_PATH, _927_TERMINAL_ICON, _927_TERMINAL_ICON_VALUE, RegistryValueKind.String);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_RUNAS_PATH, _927_NO_WORKING_DIR, String.Empty, RegistryValueKind.String);
-                RegHelper.SetValue(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_COMMAND_PATH, null, _927_TERMINAL_CONTEXT_MENU, RegistryValueKind.String);
-
-                return;
-            }
-
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _927_BACKGROUND_SHELL_RUNAS_PATH);
-            RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _927_DIRECTORY_SHELL_RUNAS_PATH);
-        }
-
         public static void _928(bool IsChecked)
         {
             if (IsChecked)

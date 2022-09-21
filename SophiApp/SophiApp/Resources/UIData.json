@@ -6075,36 +6075,6 @@
         "Windows11Supported":  true
     },
     {
-        "Id":  927,
-        "Header":  {
-                       "EN":  "Show the \"Open in Windows Terminal\" (Admin) item in the Desktop and folders context menu",
-                       "RU":  "Отображать пункт \"Открыть в Терминале Windows\" (Администратор) в контекстном меню папок",
-                       "DE":  "Im Ordnerkontextmenü \"In Windows Terminal öffnen\" als (Admin) anzeigen",
-                       "UA":  "Відображати пункт \"Відкрити в Терміналі Windows\" (Адміністратор) у контекстному меню папок",
-                       "IT":  "Mostra l'opzione \"Apri in Windows Terminal\" (Admin) Nel menu contestuale del desktop e delle cartelle",
-                       "TR":  "Masaüstü ve klasörler bağlam menüsünde \"Windows Terminalinde Aç\" (Yönetici) öğesini göster",
-                       "CZ":  "Zobrazit položku \"Otevřít v terminálu Windows\" (správce) v kontextové nabídce Plocha a složky",
-                       "FR":  "Affiche l'option \"Ouvrir dans Windows Terminal\" (Admin) dans le menu contextuel du Bureau et des dossiers",
-                       "zh_CN":  "在桌面和文件夹上下文菜单中显示\"在 Windows 终端中打开\"（管理员）项"
-                   },
-        "Description":  {
-                            "EN":  "",
-                            "RU":  "",
-                            "DE":  "",
-                            "UA":  "",
-                            "IT":  "",
-                            "TR":  "",
-                            "CZ":  "",
-                            "FR":  "",
-                            "zh_CN":  ""
-                        },
-        "Type":  "CheckBox",
-        "Tag":  "ContextMenu",
-        "ViewId":  927,
-        "Windows10Supported":  true,
-        "Windows11Supported":  true
-    },
-    {
         "Id":  928,
         "Header":  {
                        "EN":  "Enable the Windows 10 context menu style",
