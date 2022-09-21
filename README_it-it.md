@@ -115,6 +115,7 @@ choco install sophiapp --confirm
 [Scoop](https://scoop.sh/#/apps?q=sophiapp&s=2&d=1&o=true)
 
 ```powershell
+scoop bucket add extras
 scoop install sophiapp
 ```
 
