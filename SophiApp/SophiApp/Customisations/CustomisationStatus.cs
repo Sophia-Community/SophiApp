@@ -494,11 +494,9 @@ namespace SophiApp.Customisations
         }
 
         public static bool _500() => HttpHelper.IsOnline
-                                     ? OsHelper.GetBuild() < 22517
                                         ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
                                             ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
                                             : throw new UwpAppFoundException(UWP_MS_WIN_PHOTOS)
-                                        : throw new WindowsBuildNotSupportedException()
                                      : throw new NoInternetConnectionException();
 
         public static bool _501() => UwpHelper.PackageExist(UWP_MS_CORTANA)
