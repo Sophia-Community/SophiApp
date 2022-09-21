@@ -112,6 +112,12 @@ irm app.sophi.app -useb | iex
 choco install sophiapp --confirm
 ```
 
+[Scoop](https://scoop.sh/#/apps?q=sophiapp&s=2&d=1&o=true)
+
+```powershell
+scoop install sophiapp
+```
+
 ### Versione beta
 
 [Download](https://github.com/Sophia-Community/SophiApp/releases)
