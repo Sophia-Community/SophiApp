@@ -9,4 +9,4 @@ Diff from vOldVersion
 
 
 
-SophiApp.zip SHA256 hash ([the Compress Files step](html_url#step:11:22)): `SHA256_hash`
+SophiApp.zip SHA256 hash ([the Compress Files step](html_url#step:11:8)): `SHA256_hash`
