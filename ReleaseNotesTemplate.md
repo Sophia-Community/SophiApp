@@ -6,3 +6,7 @@
 
 Diff from vOldVersion
 [OldVersion...NewVersion](https://github.com/Sophia-Community/SophiApp/compare/OldVersion...NewVersion)
+
+
+
+SophiApp.zip SHA256 hash ([the Compress Files step](html_url#step:11:9)): `SHA256_hash`
