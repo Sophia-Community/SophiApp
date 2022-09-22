@@ -69,7 +69,9 @@ jobs:
         }
         Compress-Archive @Parameters
 
-        # Get SophiApp.zip hash
+    - name: Get SophiApp.zip hash
+      run: |
+        $SHA256_hash = (Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
 
     - name: ReleaseNotesTemplate
@@ -82,8 +84,10 @@ jobs:
         }
         $Penultimate = (Invoke-RestMethod @Parameters).tag_name | Select-Object -Index 1
 
+        $html_url = ((irm "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs").jobs | Where-Object -FilterScript {$_.run_id -eq "${{ github.run_id }}"}).html_url
+
         # https://en.wikipedia.org/wiki/Percent-encoding
-        $Release = (Get-Content -Path ReleaseNotesTemplate.md -Encoding utf8 -Raw).replace("%", "%25").replace("`n", "%0A").replace("`r", "%0D").replace("NewVersion", "${{ github.ref_name }}").replace("OldVersion", $Penultimate).replace("CurrentDate", $(Get-Date -f "dd.MM.yyyy"))
+        $Release = (Get-Content -Path ReleaseNotesTemplate.md -Encoding utf8 -Raw).replace("%", "%25").replace("`n", "%0A").replace("`r", "%0D").replace("NewVersion", "${{ github.ref_name }}").replace("OldVersion", $Penultimate).replace("CurrentDate", $(Get-Date -f "dd.MM.yyyy")).replace("html_url", $html_url).replace("SHA256_hash", $SHA256_hash)
 
         # https://trstringer.com/github-actions-multiline-strings/
         echo "::set-output name=RELEASE_BODY::$Release"
