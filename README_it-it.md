@@ -175,21 +175,12 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 ## Screenshot [Helen]
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
 
 ## Nomi delle app UWP tradotti
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/7.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/12.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/8.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/10.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/11.png)
 
 ## Ricerca
 
