@@ -205,13 +205,6 @@ Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-
 
 * Feel free to translate the UI into your language by taking as a basis one of [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) and creating a new [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations) file.
 
-## 3rd party libraries
-
-* [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
-* [TaskScheduler](https://github.com/dahall/taskscheduler)
-* [ManagedDism](https://github.com/jeffkl/ManagedDism)
-* [wix3](https://github.com/wixtoolset/wix3)
-
 ## Media
 
 * [![Discord](https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield)](https://discord.gg/sSryhaEv79)

@@ -199,13 +199,6 @@ scoop install sophiapp
 
 * Ви можете перекласти UI на вашу мову, взявши за основу один з файлів [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations), а також новий файл [ .xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations).
 
-## Сторонні бібліотеки
-
-* [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
-* [TaskScheduler](https://github.com/dahall/taskscheduler)
-* [ManagedDism](https://github.com/jeffkl/ManagedDism)
-* [wix3](https://github.com/wixtoolset/wix3)
-
 ## Медіа
 
 * [![Discord](https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield)](https://discord.gg/sSryhaEv79)

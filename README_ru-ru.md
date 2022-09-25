@@ -198,19 +198,12 @@ scoop install sophiapp
 
 * Некоторые функции зависят от доступа в интернет. При его отсутствии, они будут скрыты в UI, пока не появится доступ в интернет;
 * Вы можете активировать скрытые функции в UI, включив `Расширенные настройки` в `Настройках`;
-  * Скрытые функции будут помечены шестеренкой в UI;
+  * Скрытые функции будут помечены шестерёнкой в UI;
 * После закрытия `SophiApp` создается лог-файл, который вы можете прикрепить к открытому issue или отправить в группу в [Telegram](https://t.me/sophia_chat), чтобы помочь нам разобраться с ошибкой. Лог-файл не содержит приватную информацию. Мы не храним никакие данные ни в реестре Windows или на каком-либо другом сервере.
 
 ## Перевод
 
 * Вы можете перевести UI на ваш язык, взяв за основу один из файлов [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations), а также новый файл [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/SophiApp/SophiApp/Localizations).
-
-## Сторонние библиотеки
-
-* [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
-* [TaskScheduler](https://github.com/dahall/taskscheduler)
-* [ManagedDism](https://github.com/jeffkl/ManagedDism)
-* [wix3](https://github.com/wixtoolset/wix3)
 
 ## Медиа
 
