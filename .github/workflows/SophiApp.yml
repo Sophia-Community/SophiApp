@@ -61,7 +61,6 @@ jobs:
             PassThru = $true
         }
         $Build_Directory = (Rename-Item @Parameters).FullName
-        echo "::set-output name=Build_Directory::$Build_Directory"
 
         $Parameters = @{
             Path             = $Build_Directory
@@ -74,9 +73,9 @@ jobs:
       id: hash
       run: |
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
-        $Build_Directory = ${{ github.Build_Directory }}
-        $Build_Directory
-        $exe_hash = (Get-FileHash -Path "$Build_Directory\SophiApp.exe" -Algorithm SHA256).Hash
+        test-path "SophiApp\SophiApp\bin\Release\SophiApp.exe"
+        test-path "SophiApp\SophiApp.exe"
+        $exe_hash = (Get-FileHash -Path "SophiApp\SophiApp.exe" -Algorithm SHA256).Hash
         echo "::set-output name=exe_hash::$exe_hash"
 
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
