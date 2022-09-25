@@ -48,12 +48,20 @@ jobs:
         Platform: ${{ matrix.platform }}
         Configuration: ${{ matrix.configuration }}
 
-    - name: Files Cleanup
+    - name: Cleanup & files hashes
       run: |
         Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
         . SophiApp\Scripts\Copy-Dependencies.ps1
+        
+        Get-ChildItem -Path $ReleaseBinDir -Recurse | ForEach-Object -Process {
+            Get-FileHash -Path $_.FullName -Algorithm SHA256
+        }
 
-    - name: Compress Folder
+        $zip_hash = (Get-FileHash -Path $ReleaseBinDir\SophiApp.exe -Algorithm SHA256).Hash
+        echo "::set-output name=zip_hash::$zip_hash"
+
+    - name: Compressing folder
+      id: zip_hash
       run: |
         $Parameters = @{
             Path     = "SophiApp\SophiApp\bin\Release"
@@ -69,16 +77,8 @@ jobs:
         }
         Compress-Archive @Parameters
 
-    - name: Get hashes
-      id: hash
-      run: |
-        Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
-        (get-childitem SophiApp\SophiApp\bin\Release -recurse).name
-        $exe_hash = (Get-FileHash -Path "SophiApp\SophiApp.exe" -Algorithm SHA256).Hash
-        echo "::set-output name=exe_hash::$exe_hash"
-
-        Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
         $zip_hash = (Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash
+        Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
         echo "::set-output name=zip_hash::$zip_hash"
 
     - name: ReleaseNotesTemplate
@@ -94,7 +94,7 @@ jobs:
         $html_url = ((irm "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs").jobs | Where-Object -FilterScript {$_.run_id -eq "${{ github.run_id }}"}).html_url
 
         # https://en.wikipedia.org/wiki/Percent-encoding
-        $Release = (Get-Content -Path ReleaseNotesTemplate.md -Encoding utf8 -Raw).replace("%", "%25").replace("`n", "%0A").replace("`r", "%0D").replace("NewVersion", "${{ github.ref_name }}").replace("OldVersion", $Penultimate).replace("CurrentDate", $(Get-Date -f "dd.MM.yyyy")).replace("html_url", $html_url).replace("SHA256_hash", "${{ steps.hash.outputs.zip_hash }}")
+        $Release = (Get-Content -Path ReleaseNotesTemplate.md -Encoding utf8 -Raw).replace("%", "%25").replace("`n", "%0A").replace("`r", "%0D").replace("NewVersion", "${{ github.ref_name }}").replace("OldVersion", $Penultimate).replace("CurrentDate", $(Get-Date -f "dd.MM.yyyy")).replace("html_url", $html_url).replace("SHA256_hash", "${{ steps.zip_hash.outputs.zip_hash }}")
 
         # https://trstringer.com/github-actions-multiline-strings/
         echo "::set-output name=RELEASE_BODY::$Release"
