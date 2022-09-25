@@ -73,11 +73,7 @@ jobs:
       id: hash
       run: |
         Write-Host -Object "SophiApp.zip SHA256 hash: $((Get-FileHash -Path SophiApp.zip -Algorithm SHA256).Hash)"
-        test-path D:\a\SophiApp\SophiApp\SophiApp\SophiApp\bin\Release\SophiApp.exe
-        test-path SophiApp\SophiApp\SophiApp\SophiApp\bin\Release\SophiApp.exe
-        test-path SophiApp\SophiApp\SophiApp\bin\Release\SophiApp.exe
-        test-path SophiApp\SophiApp\bin\Release\SophiApp.exe
-        test-path SophiApp\bin\Release\SophiApp.exe
+        (get-childitem SophiApp\SophiApp\bin\Release -recurse).name
         $exe_hash = (Get-FileHash -Path "SophiApp\SophiApp.exe" -Algorithm SHA256).Hash
         echo "::set-output name=exe_hash::$exe_hash"
 
