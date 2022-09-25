@@ -42,7 +42,16 @@ $ExcludedAppxPackages = @(
 'Microsoft.WindowsTerminalPreview',
 
 # Web Media Extensions
-'Microsoft.WebMediaExtensions'
+'Microsoft.WebMediaExtensions',
+
+# AV1 Video Extension
+'Microsoft.AV1VideoExtension',
+
+# HEVC Video Extensions from Device Manufacturer
+'Microsoft.HEVCVideoExtension',
+
+# Raw Image Extension
+'Microsoft.RawImageExtensio'
 )
 
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
