@@ -3,5 +3,3 @@ New-Item -Path (Split-Path -Path $ReleaseBinDir -Parent) -Name Bin -ItemType Dir
 
 # Copy downloaded dependencies to the created Bin folder
 Get-ChildItem -Path "SophiApp\Binary" | Copy -Destination $ReleaseBinDir -Force
-
-$ReleaseBinDir
