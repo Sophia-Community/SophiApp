@@ -90,13 +90,14 @@
 |<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
 |`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
 
-## Минимальные системные требования
+## Системные требования
 
-|               Версия            |  Маркетинговое название |   Сборка   | Архитектура |         Издания          |
-|:--------------------------------|------------------------:|:----------:|:-----------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2023 Update        |   22509    |             | Home/Pro/Enterprise      |
-| Windows 11 21H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
-| Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
+|               Версия            |  Маркетинговое название |   Сборка    | Архитектура |         Издания          |
+|:--------------------------------|------------------------:|:-----------:|:-----------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 |      2023 Update        |   25206+    |             | Home/Pro/Enterprise      |
+| Windows 11 22H2                 |      2022 Update        |   22621+    |             | Home/Pro/Enterprise      |
+| Windows 11 21H2                 |                         | 22000.739+  |             | Home/Pro/Enterprise      |
+| Windows 10 21H2                 |   October 2021 Update   | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
 
 ### Скачать SophiApp через PowerShell/Chocolatey/Scoop
 

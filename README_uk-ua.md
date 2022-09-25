@@ -88,15 +88,16 @@
 |<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
 |`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
 
-## Мінімальні системні вимоги
+## Системні вимоги
 
-|               Версія            |    Маркетингова назва   |   Збірка   | Архітектура |         Видання          |
-|:--------------------------------|------------------------:|:----------:|:-----------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2023 Update        |   22509    |             | Home/Pro/Enterprise      |
-| Windows 11 21H2                 |                         | 22000.739  |             | Home/Pro/Enterprise      |
-| Windows 10 21H2                 |   October 2021 Update   | 19044.1706 |     x64     | Home/Pro/Enterprise/LTSC |
+|               Версія            |    Маркетингова назва   |   Збірка    | Архітектура |         Видання          |
+|:--------------------------------|------------------------:|:-----------:|:-----------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 |      2023 Update        |   25206+    |             | Home/Pro/Enterprise      |
+| Windows 11 22H2                 |      2022 Update        |   22621+    |             | Home/Pro/Enterprise      |
+| Windows 11 21H2                 |                         | 22000.739+  |             | Home/Pro/Enterprise      |
+| Windows 10 21H2                 |   October 2021 Update   | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
 
-### Як завантажити SophiApp через PowerShell/Chocolatey/Scoop
+### Завантажити SophiApp через PowerShell/Chocolatey/Scoop
 
 Завантажити архів з останньою версією SophiApp, виконавши в PowerShell (`в тому числі і не від імені адміністратора`)
 
