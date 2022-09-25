@@ -61,7 +61,7 @@ jobs:
             PassThru = $true
         }
         $Build_Directory = (Rename-Item @Parameters).FullName
-        echo "::set-output name=Build_Directory:: $Build_Directory"
+        echo "::set-output name=Build_Directory::$Build_Directory"
 
         $Parameters = @{
             Path             = $Build_Directory
