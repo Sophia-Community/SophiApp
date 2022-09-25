@@ -53,6 +53,7 @@ jobs:
         Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
         . SophiApp\Scripts\Copy-Dependencies.ps1
         
+        (Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Recurse).Name
         Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Recurse | ForEach-Object -Process {
             Get-FileHash -Path $_.FullName -Algorithm SHA256
         }
