@@ -48,19 +48,11 @@ jobs:
         Platform: ${{ matrix.platform }}
         Configuration: ${{ matrix.configuration }}
 
-    - name: Cleanup & files hashes
+    - name: Cleanup
       run: |
         Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
         . SophiApp\Scripts\Copy-Dependencies.ps1
         
-        (Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Recurse).Name
-        Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Recurse | ForEach-Object -Process {
-            Get-FileHash -Path $_.FullName -Algorithm SHA256
-        }
-
-        $zip_hash = (Get-FileHash -Path SophiApp\SophiApp\bin\Release\SophiApp.exe -Algorithm SHA256).Hash
-        echo "::set-output name=zip_hash::$zip_hash"
-
     - name: Compressing folder
       id: zip_hash
       run: |
