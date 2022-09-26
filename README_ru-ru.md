@@ -125,7 +125,7 @@ scoop install sophiapp
 
 [Бета-версии](https://github.com/Sophia-Community/SophiApp/releases)
 
-> `SophiApp` полностью переносная (портабельная): не имеет конфигурационных файлов (пока) и сохраняет некие данные в реестр. Просто извлеките папку `SophiApp` вместе с папкой `Bin` и файлом `SophiApp.exe.config` и запустите `SophiApp.exe`.
+> **Note**: `SophiApp` полностью переносная (портабельная): не имеет конфигурационных файлов (пока) и сохраняет некие данные в реестр. Просто извлеките папку `SophiApp` вместе с папкой `Bin` и файлом `SophiApp.exe.config` и запустите `SophiApp.exe`.
 
 ***
 
