@@ -58,7 +58,7 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
     •
     <a href="#videos">Videos</a>
     •
-    <a href="#screenshot-helen">Screenshot</a>
+    <a href="#screenshot">Screenshot</a>
     •
     <a href="#note">Note</a>
     •
@@ -99,6 +99,8 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 | Windows 11 21H2                 |                         | 22000.739+  |             | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
 
+**Note**: Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), e [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/):
+
 ### Scaricare SophiApp con PowerShell/Chocolatey/Scoop
 
 Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
@@ -125,8 +127,6 @@ scoop install sophiapp
 [Download](https://github.com/Sophia-Community/SophiApp/releases)
 
 ***
-
-Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), e [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/):
 
 * É permesso essere connessi come utente amministratore solamente durante l'avvio dell'applicazione.
 * 🔥🔥🔥`SophiApp` potrebbe non funzionare su versioni personalizzate di Windows; specialmente se dall'ISO personalizzata  sono stati rimossi componenti di sistema per disattivare Microsoft Defender o la telemetria dell'OS.
@@ -173,7 +173,7 @@ Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.
 
 [![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
-## Screenshot [Helen]
+## Screenshot
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)

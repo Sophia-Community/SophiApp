@@ -35,7 +35,9 @@
 
   [discord-news-badge]: https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield
   [discord-link]: https://discord.gg/sSryhaEv79
+
   [![Discord][discord-news-badge]][discord-link]
+
 </p>
 
 Доступно на: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="11px"/>
@@ -56,7 +58,7 @@
  &bull;
  <a href="#ключові-особливості">Ключові особливості</a>
  &bull;
- <a href="#скріншоти-helen">Скріншоти</a>
+ <a href="#скріншоти">Скріншоти</a>
  &bull;
  <a href="#доповнення">Доповнення</a>
  &bull;
@@ -83,10 +85,10 @@
 
 ![ko-fi](https://storage.ko-fi.com/cdn/useruploads/Q5Q51QUJC/qrcode.png)
 
-|                 BTC                 |            USDT (TRC20)              |                    ETH                     |
-|:-----------------------------------:|:------------------------------------:|:------------------------------------------:|
-|<img src="./img/BTC.png" width=130px>|<img src="./img/USDT.png" width=130px>|<img src="./img/ETH.png" width=130px>       |
-|`13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n` |`TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`  |`0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6`|
+| BTC                                   | USDT (TRC20)                           | ETH                                          |
+|:-------------------------------------:|:--------------------------------------:|:--------------------------------------------:|
+| <img src="./img/BTC.png" width=130px> | <img src="./img/USDT.png" width=130px> | <img src="./img/ETH.png" width=130px>        |
+| `13QVRYxgGjZtKQgfb6VPRZyyUmnqeaTm1n`  | `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`   | `0x089f05c00e2f75e9b0cd939f21c207b1afe5b2f6` |
 
 ## Системні вимоги
 
@@ -96,6 +98,8 @@
 | Windows 11 22H2                 |      2022 Update        |   22621+    |             | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                         | 22000.739+  |             | Home/Pro/Enterprise      |
 | Windows 10 21H2                 |   October 2021 Update   | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
+
+**Note**: Звіртеся з історією оновлень [Windows 10](https://support.microsoft.com/uk-ua/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/uk-ua/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/uk-ua/windows-insider/flight-hub/).
 
 ### Завантажити SophiApp через PowerShell/Chocolatey/Scoop
 
@@ -118,13 +122,11 @@ scoop bucket add extras
 scoop install sophiapp
 ```
 
-### Бета-версії
-
-[Завантажити](https://github.com/Sophia-Community/SophiApp/releases)
+[Бета-версії](https://github.com/Sophia-Community/SophiApp/releases)
 
 ***
 
-Звіртеся з історією оновлень [Windows 10](https://support.microsoft.com/uk-ua/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/uk-ua/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/uk-ua/windows-insider/flight-hub/).
+### Увага
 
 * Запуск додатку можливий лише якщо в системі присутній один користувач з правами адміністратора;
 * 🔥🔥🔥 `SophiApp` може не працювати на "самопальних" збірках Windows. Особливо, якщо збірка була створена так, що в ній спеціально було зламано Microsoft Defender і вимкнено телеметрію, вирізавши системні компоненти.
@@ -139,13 +141,13 @@ scoop install sophiapp
 * Більше 130 твіків; ⭐
 * `SophiApp` використовує патерн [MVVM](https://uk.wikipedia.org/wiki/Model-View-ViewModel);
 * Підтримка багатопоточності;
-* `SophiApp` перевіряється [статичним аналізатором](https://pvs-studio.com/pvs-studio), ліцензію на який надали у PVS-Studio;
+* Перевіряється [статичним аналізатором](https://pvs-studio.com/pvs-studio), ліцензію на який надали у PVS-Studio;
   * Велика подяка їм за надання нам [ліцензії](https://pvs-studio.com/en/order/open-source-license).
 * Усі збірки компілюються у хмарі з використанням [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * Ви можете порівняти хеш-суму архіву на сторінці релізу з хеш-сумою в хмарній консолі на кроці `Compress Files`, щоб бути впевненим, що архів не підмінився після релізу (для відкриття хмарних логів ви повинні були залогінені в обліковий запис GitHub;
 * Додаток відображає `поточний` стан кожної функції в UI;
 * Підтримка високої роздільної здатності;;
-* Має вбудований двигун пошуку;
+* Вбудований двигун пошуку;
   * Функції можуть бути знайдені за заголовками та описом. [GIF](#функція-пошуку)
 * Підтримка темної та світлої тем.;
   * Програма вміє змінювати тему миттєво, коли ви змінюєте тему додатків Windows за замовчуванням. [GIF](#миттєво-змінювана-тема)
@@ -167,7 +169,7 @@ scoop install sophiapp
 * Можливість копіювання опису та заголовків функцій;
 * Величезна кількість твіків з кастомізації провідника та контекстного меню.
 
-## Скріншоти [Helen]
+## Скріншоти
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
