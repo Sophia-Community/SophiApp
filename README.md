@@ -77,7 +77,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
-> `SophiApp` is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to the OS.
+> **Note**: `SophiApp` is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to the OS.
 
 ## Donations
 
@@ -101,7 +101,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 | Windows 11 21H2                 |                     | 22000.739+  |      | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update | 19044.1706+ | x64  | Home/Pro/Enterprise/LTSC |
 
-Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history 
+> **Note**: Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history 
 
 ### Download SophiApp via PowerShell/Chocolatey/Scoop
 
@@ -126,9 +126,7 @@ scoop install sophiapp
 
  [Beta versions](https://github.com/Sophia-Community/SophiApp/releases)
 
-
-
-> `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into the registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
+> **Note**: `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into the registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
 
 ***
 
