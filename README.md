@@ -95,7 +95,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ### System Requirements
 
 | Version                         | Marketing name      | Build       | Arch | Editions                 |
-|:------------------------------- | -------------------:|:-----------:|:----:|:------------------------:|
+|:-------------------------------:|:-------------------:|:-----------:|:----:|:------------------------:|
 | Windows 11 Insider Preview 23H2 | 2023 Update         | 25206+      |      | Home/Pro/Enterprise      |
 | Windows 11 22H2                 | 2022 Update         | 22621+      |      | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                     | 22000.739+  |      | Home/Pro/Enterprise      |
