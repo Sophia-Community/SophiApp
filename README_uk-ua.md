@@ -172,12 +172,14 @@ scoop install sophiapp
 ## Скріншоти
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/9.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
 
 ## Локалізовані імена UWP-додатків
 
-![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/6.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
+![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
 
 ## Функція пошуку
 
