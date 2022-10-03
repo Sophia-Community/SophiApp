@@ -60,7 +60,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
  •
  <a href="#videos">Videos</a>
  •
- <a href="#screenshots-helen">Screenshots</a>
+ <a href="#screenshots">Screenshots</a>
  •
  <a href="#addendum">Addendum</a>
  •
@@ -173,7 +173,7 @@ scoop install sophiapp
 
 [![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
-## Screenshots [Helen]
+## Screenshots
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
