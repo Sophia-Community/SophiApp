@@ -5111,7 +5111,7 @@
                             "IT":  "",
                             "TR":  "",
                             "CZ":  "",
-                            "FR":  "Le contrôle d'application \u0026 navigateur dans Sécurité Windows fournit les paramètres de Microsoft Defender SmartScreen, ce qui permet de protéger votre appareil contre les applications, fichiers, sites web et téléchargements potentiellement dangereux.",
+                            "FR":  "",
                             "zh_CN":  ""
                         },
         "Type":  "CheckBox",
