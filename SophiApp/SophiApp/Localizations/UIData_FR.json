@@ -2701,6 +2701,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  927,
+        "Header":  {
+                       "FR":  "Lancer Windows Terminal depuis de menu de contexte en tant qu'Administrateur par défaut"
+                   },
+        "Description":  {
+                            "FR":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  928,
         "Header":  {
                        "FR":  "Active/restaure le style du menu contextuel de Windows 10 (menu contextuel classique)"

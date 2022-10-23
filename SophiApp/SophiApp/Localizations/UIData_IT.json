@@ -2701,6 +2701,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  927,
+        "Header":  {
+                       "IT":  "Avvia di default Windows Terminal come amministratore dal menu contestuale delle cartelle"
+                   },
+        "Description":  {
+                            "IT":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  928,
         "Header":  {
                        "IT":  "Abilita il menu di scelta rapida di Windows 10"

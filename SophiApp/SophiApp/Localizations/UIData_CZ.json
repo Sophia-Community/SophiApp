@@ -2701,6 +2701,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  927,
+        "Header":  {
+                       "CZ":  "Spusťte Terminál Windows z kontextové nabídky složek jako výchozí správce"
+                   },
+        "Description":  {
+                            "CZ":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  928,
         "Header":  {
                        "CZ":  "Povolit Windows 10 styl kontextové nabídky"

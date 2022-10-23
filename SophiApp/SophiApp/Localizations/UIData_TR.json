@@ -2701,6 +2701,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  927,
+        "Header":  {
+                       "TR":  "Windows Terminal'i klasörler bağlam menüsünden varsayılan olarak yönetici olarak başlatın"
+                   },
+        "Description":  {
+                            "TR":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  928,
         "Header":  {
                        "TR":  "Windows 10 bağlam menüsü stilini etkinleştirin"

@@ -20,7 +20,7 @@
     <system:String x:Key="Conditions.RiskAcceptance">I understand the risk and agree to be responsible for any possible damage</system:String>
     <system:String x:Key="Conditions.ReinstallOs">Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender broken or removed from the OS</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows OS stability may have been compromised by using</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">The Windows stability may have been compromised by using</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script from Sycnex. Reinstall the OS just in case.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Your version of Windows is out of date.</system:String>
     <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp requires Windows 10 19044.1706 and higher.</system:String>

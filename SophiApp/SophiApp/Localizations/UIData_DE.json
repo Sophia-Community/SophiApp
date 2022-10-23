@@ -2701,6 +2701,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  927,
+        "Header":  {
+                       "DE":  "Starten Sie das Windows-Terminal über das Kontextmenü des Ordners standardmäßig als Administrator"
+                   },
+        "Description":  {
+                            "DE":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  928,
         "Header":  {
                        "DE":  "Windows 10 Kontextmenüstil aktivieren"

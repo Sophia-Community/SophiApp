@@ -2701,6 +2701,20 @@
         "Windows11Supported":  true
     },
     {
+        "Id":  927,
+        "Header":  {
+                       "zh_CN":  "默认情况下，以管理员身份从文件夹的上下文菜单中启动Windows终端"
+                   },
+        "Description":  {
+                            "zh_CN":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
         "Id":  928,
         "Header":  {
                        "zh_CN":  "启用 Windows 10 上下文菜单样式"

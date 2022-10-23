@@ -6127,6 +6127,36 @@
     "Windows10Supported": true,
     "Windows11Supported": true
   },
+    {
+        "Id":  927,
+        "Header":  {
+                       "EN":  "Launch Windows Terminal from the folders context menu as administrator by default",
+                       "RU":  "Запускать Терминал Windows из контекстного меню папок от имени администратора по умолчанию",
+                       "DE":  "Starten Sie das Windows-Terminal über das Kontextmenü des Ordners standardmäßig als Administrator",
+                       "UA":  "Запускати Термінал Windows з контекстного меню папок від імені адміністратора за замовчуванням",
+                       "IT":  "Avvia di default Windows Terminal come amministratore dal menu contestuale delle cartelle",
+                       "TR":  "Windows Terminal'i klasörler bağlam menüsünden varsayılan olarak yönetici olarak başlatın",
+                       "CZ":  "Spusťte Terminál Windows z kontextové nabídky složek jako výchozí správce",
+                       "FR":  "Lancer Windows Terminal depuis de menu de contexte en tant qu'Administrateur par défaut",
+                       "zh_CN":  "默认情况下，以管理员身份从文件夹的上下文菜单中启动Windows终端"
+                   },
+        "Description":  {
+                            "EN":  "",
+                            "RU":  "",
+                            "DE":  "",
+                            "UA":  "",
+                            "IT":  "",
+                            "TR":  "",
+                            "CZ":  "",
+                            "FR":  "",
+                            "zh_CN":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
   {
     "Id": 928,
     "Header": {
