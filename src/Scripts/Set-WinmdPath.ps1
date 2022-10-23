@@ -10,12 +10,9 @@
 
 	.NOTES
 	Designed for GitHub Actions
-	
+
 	.LINK
 	https://github.com/Inestic
-
-	.VERSION
-	v1.0.0
 
 	.DATE
 	02.11.2021
@@ -28,17 +25,17 @@ function Set-BinaryLink
 	[CmdletBinding()]
 	param
 	(
-    	[Parameter(Mandatory=$True)]
-    	[ValidateNotNull()]
-    	[string]$CsProjPath,
-		
-    	[Parameter(Mandatory=$True)]
-    	[ValidateNotNull()]
-    	[string]$SearchPattern,
+		[Parameter(Mandatory=$True)]
+		[ValidateNotNull()]
+		[string]$CsProjPath,
 		
 		[Parameter(Mandatory=$True)]
-    	[ValidateNotNull()]
-    	[string]$ChangePattern
+		[ValidateNotNull()]
+		[string]$SearchPattern,
+		
+		[Parameter(Mandatory=$True)]
+		[ValidateNotNull()]
+		[string]$ChangePattern
 	)
 	
 	process

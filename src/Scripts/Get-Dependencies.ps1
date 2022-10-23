@@ -9,7 +9,7 @@
 	https://github.com/JamesNK/Newtonsoft.Json
 #>
 
-New-Item -Path SophiApp\Binary -ItemType Directory -Force
+New-Item -Path src\Binary -ItemType Directory -Force
 
 # https://www.nuget.org/packages/Microsoft.Dism
 Write-Verbose -Message Microsoft.Dism -Verbose
@@ -24,7 +24,7 @@ Invoke-RestMethod @Parameters
 Add-Type -Assembly System.IO.Compression.FileSystem
 $ZIP = [IO.Compression.ZipFile]::OpenRead("$PSScriptRoot\microsoft.dism.zip")
 $Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "lib/net40/Microsoft.Dism.dll"}
-$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "SophiApp\Binary\$($_.Name)", $true)}
+$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "src\Binary\$($_.Name)", $true)}
 $ZIP.Dispose()
 
 # https://www.nuget.org/packages/WiX
@@ -40,7 +40,7 @@ Invoke-RestMethod @Parameters
 Add-Type -Assembly System.IO.Compression.FileSystem
 $ZIP = [IO.Compression.ZipFile]::OpenRead("$PSScriptRoot\wix.zip")
 $Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "tools/Microsoft.Deployment.WindowsInstaller.dll"}
-$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "SophiApp\Binary\$($_.Name)", $true)}
+$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "src\Binary\$($_.Name)", $true)}
 $ZIP.Dispose()
 
 # https://www.nuget.org/packages/TaskScheduler
@@ -56,7 +56,7 @@ Invoke-RestMethod @Parameters
 Add-Type -Assembly System.IO.Compression.FileSystem
 $ZIP = [IO.Compression.ZipFile]::OpenRead("$PSScriptRoot\TaskScheduler.zip")
 $Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "lib/net452/Microsoft.Win32.TaskScheduler.dll"}
-$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "SophiApp\Binary\$($_.Name)", $true)}
+$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "src\Binary\$($_.Name)", $true)}
 $ZIP.Dispose()
 
 # https://www.nuget.org/packages/Newtonsoft.Json
@@ -72,14 +72,14 @@ Invoke-RestMethod @Parameters
 Add-Type -Assembly System.IO.Compression.FileSystem
 $ZIP = [IO.Compression.ZipFile]::OpenRead("$PSScriptRoot\newtonsoft.json.zip")
 $Entries = $ZIP.Entries | Where-Object -FilterScript {$_.FullName -eq "lib/net45/Newtonsoft.Json.dll"}
-$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "SophiApp\Binary\$($_.Name)", $true)}
+$Entries | ForEach-Object -Process {[IO.Compression.ZipFileExtensions]::ExtractToFile($_, "src\Binary\$($_.Name)", $true)}
 $ZIP.Dispose()
 
 # Coping Windows.winmd
 Write-Verbose -Message Windows.winmd -Verbose
 $Parameters = @{
 	Path        = "${env:ProgramFiles(x86)}\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd"
-	Destination = "SophiApp\Binary"
+	Destination = "src\Binary"
 }
 Copy-Item @Parameters
 
@@ -87,6 +87,6 @@ Copy-Item @Parameters
 Write-Verbose -Message System.Management.Automation.dll -Verbose
 $Parameters = @{
 	Path        = "${env:ProgramFiles(x86)}\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll"
-	Destination = "SophiApp\Binary"
+	Destination = "src\Binary"
 }
 Copy-Item @Parameters

@@ -22,14 +22,14 @@ jobs:
 
     - name: Preparing files
       run: |
-        . "SophiApp\Scripts\Set-ReleaseTag.ps1" "${{ github.ref_name }}"
-        . "SophiApp\Scripts\Uncomment-AppMethods.ps1"
-        . "SophiApp\Scripts\Set-DebugMode.ps1"
-        . "SophiApp\Scripts\Set-WinmdPath.ps1"
+        . "src\Scripts\Set-ReleaseTag.ps1" "${{ github.ref_name }}"
+        . "src\Scripts\Uncomment-AppMethods.ps1"
+        . "src\Scripts\Set-DebugMode.ps1"
+        . "src\Scripts\Set-WinmdPath.ps1"
 
     - name: Downloading files
       run: |
-        . SophiApp\Scripts\Get-Dependencies.ps1
+        . src\Scripts\Get-Dependencies.ps1
 
     - name: Setup NuGet
       uses: nuget/setup-nuget@main
@@ -37,27 +37,27 @@ jobs:
         nuget-version: latest
 
     - name: Restore NuGet Package
-      run: nuget restore "D:\a\SophiApp\SophiApp\SophiApp\SophiApp.sln"
+      run: nuget restore "src\SophiApp.sln"
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@master
 
     - name: Run MSBuild
-      run: msbuild SophiApp\SophiApp.sln /p:Configuration=$env:Configuration /p:platform=$env:Platform
+      run: msbuild src\SophiApp.sln /p:Configuration=$env:Configuration /p:platform=$env:Platform
       env:
         Platform: ${{ matrix.platform }}
         Configuration: ${{ matrix.configuration }}
 
     - name: Cleanup
       run: |
-        Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
-        . SophiApp\Scripts\Copy-Dependencies.ps1
+        Get-ChildItem -Path src\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
+        . src\Scripts\Copy-Dependencies.ps1
         
     - name: Compressing folder
       id: zip_hash
       run: |
         $Parameters = @{
-            Path     = "SophiApp\SophiApp\bin\Release"
+            Path     = "src\SophiApp\bin\Release"
             NewName  = "SophiApp"
             PassThru = $true
         }
