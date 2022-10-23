@@ -1,7 +1,5 @@
-﻿using SophiApp.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Windows.ApplicationModel;
 
 namespace SophiApp.Customisations
 {
@@ -210,15 +208,17 @@ namespace SophiApp.Customisations
         internal const string _349_VC_REDISTR_FOR_VS_2022 = "Visual C++ Redistributable for Visual Studio 2022";
         internal const string _349_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
         internal const string _349_VERSION_NAME = "Version";
-        internal const string _352_PACKAGE_CACHE_NAME = "Package Cache";
+        internal const string PACKAGE_CACHE_NAME = "Package Cache";
         internal const string _352_REDISTRX64_REGISTRY_NAME_PATTERN = "VC,redist.x64,amd64";
         internal const string _352_VC_REDISTRX64_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x64)";
-        internal const string _352_VC_REDISTRX64_REGISTRY_PATH = @"Installer\Dependencies";
-        internal const string _352_VC_REDISTRX64_UNINSTALL_ARGS = "/uninstall /passive /norestart";
+        internal const string VC_REDISTR_REGISTRY_PATH = @"Installer\Dependencies";
+        internal const string VC_UNINSTALL_ARGS = "/uninstall /passive /norestart";
         internal const int _359_RUSSIA_GEOID = 203;
         internal const string _359_INTERNET_SETTINGS_PATH = @"Software\Microsoft\Windows\CurrentVersion\Internet Settings";
         internal const string _359_ANTIZAPRET_PROXY_LINK = @"https://antizapret.prostovpn.org/proxy.pac";
         internal const string _359_AUTO_CONFIG_URL = "AutoConfigURL";
+        internal const string _362_REDISTRX86_REGISTRY_NAME_PATTERN = "VC,redist.x86,x86";
+        internal const string _362_VC_REDISTRX86_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x86)";
         internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_HEVC_APPX_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
@@ -353,7 +353,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         internal const string _700_URL_PROTOCOL = "URL Protocol";
         internal const string _700_VOLUME_CACHES_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches";
         internal const string _700_WINDOWS_CLEANUP = "WindowsCleanup";
-        internal const string _700_WINDOWS_CLEANUP_COMMAND = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath 'SophiApp' -TaskName 'Windows Cleanup'}"" -Force";
+        internal const string _700_WINDOWS_CLEANUP_COMMAND = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath 'Sophia' -TaskName 'Windows Cleanup'}"" -Force";
         internal const string _700_WINDOWS_CLEANUP_OPEN_PATH = @"WindowsCleanup\shell\open\command";
         internal const string _700_WINDOWS_CLEANUP_URL = "URL:WindowsCleanup";
         internal const byte _701_90_DAYS_INTERVAL = 90;
@@ -653,7 +653,7 @@ else
         internal const string SHOWED_TOAST_LEVEL = "ShowedToastAtLevel";
         internal const string SIUF_PATH = @"SOFTWARE\Microsoft\Siuf\Rules";
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
-        internal const string SOPHIA_SCRIPT_SCHEDULED_PATH = "Sophia Script";
+        internal const string SOPHIA_SCHEDULED_PATH = "Sophia";
         internal const string START_LAYOUT = "Start_Layout";
         internal const byte START_LAYOUT_DEFAULT_VALUE = 0;
         internal const byte START_LAYOUT_PINS_VALUE = 1;
@@ -683,10 +683,13 @@ else
         internal const string UWP_MS_CORTANA = "Microsoft.549981C3F5F10";
         internal const string UWP_MS_WIN_PHOTOS = "Microsoft.Windows.Photos";
         internal const string UWP_WINDOWS_TERMINAL = "Microsoft.WindowsTerminal";
-        internal const string VC_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
+        internal const string VC_X64_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x64.exe";
+        internal const string VC_X86_DOWNLOAD_URL = "https://aka.ms/vs/17/release/vc_redist.x86.exe";
         internal const string VC_REDISTRX64_EXE = "vc_redist.x64.exe";
-        internal const string VC_REDISTRX64_INSTALL_ARGS = "/install /passive /norestart";
+        internal const string VC_REDISTRX86_EXE = "vc_redist.x86.exe";
+        internal const string VC_INSTALL_ARGS = "/install /passive /norestart";
         internal const string VC_REDISTRX64_LOG_PATTERN = "dd_vcredist_amd64_*.log";
+        internal const string VC_REDISTRX86_LOG_PATTERN = "dd_vcredist_amd86_*.log";
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
@@ -707,7 +710,6 @@ else
         internal static readonly string ENVIRONMENT_PROGRAM_DATA = Environment.GetEnvironmentVariable("ProgramData");
         internal static readonly PackageVersion MINIMAL_TERMINAL_VERSION = new PackageVersion() { Major = 1, Minor = 11 };
         internal static readonly string MS_PAINT_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\mspaint.exe";
-        internal static readonly string SOPHIA_APP_SCHEDULED_PATH = AppHelper.AppName;
         internal static byte[] _334_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }

@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
 using System.Windows;
@@ -521,7 +520,7 @@ namespace SophiApp.Customisations
 
         public static void _263(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_DEFAULT_VALUE, RegistryValueKind.DWord);
 
-        public static void _264(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser,  ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_PINS_VALUE, RegistryValueKind.DWord);
+        public static void _264(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_PINS_VALUE, RegistryValueKind.DWord);
 
         public static void _265(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT, START_LAYOUT_RECOMMENDATIONS_VALUE, RegistryValueKind.DWord);
 
@@ -918,8 +917,8 @@ namespace SophiApp.Customisations
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
             var installer = $"{temp}\\{VC_REDISTRX64_EXE}";
-            WebHelper.Download(VC_DOWNLOAD_URL, installer);
-            ProcessHelper.StartWait(installer, VC_REDISTRX64_INSTALL_ARGS);
+            WebHelper.Download(VC_X64_DOWNLOAD_URL, installer);
+            ProcessHelper.StartWait(installer, VC_INSTALL_ARGS);
             FileHelper.TryDeleteFile(installer);
             Directory.EnumerateFileSystemEntries(temp, VC_REDISTRX64_LOG_PATTERN)
                      .ToList()
@@ -929,14 +928,14 @@ namespace SophiApp.Customisations
         public static void _352(bool _)
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
-            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, _352_VC_REDISTRX64_REGISTRY_PATH).First(key => key.Contains(_352_REDISTRX64_REGISTRY_NAME_PATTERN));
+            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, VC_REDISTR_REGISTRY_PATH).First(key => key.Contains(_352_REDISTRX64_REGISTRY_NAME_PATTERN));
             var registryGuidRedistrLib = RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, null);
-            var localRedistrLibPath = $@"{ENVIRONMENT_PROGRAM_DATA}\{_352_PACKAGE_CACHE_NAME}\{registryGuidRedistrLib}\{VC_REDISTRX64_EXE}";
+            var localRedistrLibPath = $@"{ENVIRONMENT_PROGRAM_DATA}\{PACKAGE_CACHE_NAME}\{registryGuidRedistrLib}\{VC_REDISTRX64_EXE}";
             var localRedistrLib = FileVersionInfo.GetVersionInfo(localRedistrLibPath);
 
             if (localRedistrLib.ProductName.Contains(_352_VC_REDISTRX64_NAME_PATTERN))
             {
-                ProcessHelper.StartWait(localRedistrLibPath, _352_VC_REDISTRX64_UNINSTALL_ARGS);
+                ProcessHelper.StartWait(localRedistrLibPath, VC_UNINSTALL_ARGS);
 
                 Directory.EnumerateFileSystemEntries(temp, VC_REDISTRX64_LOG_PATTERN)
                          .ToList()
@@ -1003,6 +1002,36 @@ namespace SophiApp.Customisations
             RegHelper.DeleteKey(RegistryHive.CurrentUser, _359_INTERNET_SETTINGS_PATH, _359_AUTO_CONFIG_URL);
         }
 
+        public static void _361(bool _)
+        {
+            var temp = Environment.GetEnvironmentVariable(TEMP);
+            var installer = $"{temp}\\{VC_REDISTRX86_EXE}";
+            WebHelper.Download(VC_X86_DOWNLOAD_URL, installer);
+            ProcessHelper.StartWait(installer, VC_INSTALL_ARGS);
+            FileHelper.TryDeleteFile(installer);
+            Directory.EnumerateFileSystemEntries(temp, VC_REDISTRX86_LOG_PATTERN)
+                     .ToList()
+                     .ForEach(log => FileHelper.TryDeleteFile(log));
+        }
+
+        public static void _362(bool _)
+        {
+            var temp = Environment.GetEnvironmentVariable(TEMP);
+            var registryPathRedistrLib = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, VC_REDISTR_REGISTRY_PATH).First(key => key.Contains(_362_REDISTRX86_REGISTRY_NAME_PATTERN));
+            var registryGuidRedistrLib = RegHelper.GetValue(RegistryHive.ClassesRoot, registryPathRedistrLib, null);
+            var localRedistrLibPath = $@"{ENVIRONMENT_PROGRAM_DATA}\{PACKAGE_CACHE_NAME}\{registryGuidRedistrLib}\{VC_REDISTRX86_EXE}";
+            var localRedistrLib = FileVersionInfo.GetVersionInfo(localRedistrLibPath);
+
+            if (localRedistrLib.ProductName.Contains(_362_REDISTRX86_REGISTRY_NAME_PATTERN))
+            {
+                ProcessHelper.StartWait(localRedistrLibPath, VC_UNINSTALL_ARGS);
+
+                Directory.EnumerateFileSystemEntries(temp, VC_REDISTRX86_LOG_PATTERN)
+                         .ToList()
+                         .ForEach(log => FileHelper.TryDeleteFile(log));
+            }
+        }
+
         public static void _500(bool IsChecked)
         {
             if (IsChecked)
@@ -1063,10 +1092,8 @@ namespace SophiApp.Customisations
 
         public static void _700(bool IsChecked)
         {
-            var appCleanupTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
-            var appNotificationTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
-            var scriptCleanupTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
-            var scriptNotificationTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
+            var appCleanupTask = $@"{SOPHIA_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_TASK}";
+            var appNotificationTask = $@"{SOPHIA_SCHEDULED_PATH}\{_700_SOPHIA_CLEANUP_NOTIFICATION_TASK}";
 
             var volumeCachesKeys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
             RegHelper.TryDeleteKey(RegistryHive.LocalMachine, volumeCachesKeys, _700_STATE_FLAGS_1337);
@@ -1100,15 +1127,15 @@ namespace SophiApp.Customisations
             }
 
             RegHelper.DeleteKey(RegistryHive.CurrentUser, ACTION_CENTER_APPX_PATH, SHOW_IN_ACTION_CENTER);
-            ScheduledTaskHelper.TryDeleteTask(appCleanupTask, appNotificationTask, scriptCleanupTask, scriptNotificationTask);
-            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH, SOPHIA_SCRIPT_SCHEDULED_PATH);
+            ScheduledTaskHelper.TryDeleteTask(appCleanupTask, appNotificationTask);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_SCHEDULED_PATH);
             RegHelper.DeleteSubKeyTree(RegistryHive.ClassesRoot, _700_WINDOWS_CLEANUP);
         }
 
         public static void _701(bool ISChecked)
         {
-            var appSoftwareDistributionTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
-            var scriptSoftwareDistributionTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
+            var appSoftwareDistributionTask = $@"{SOPHIA_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
+            var scriptSoftwareDistributionTask = $@"{SOPHIA_SCHEDULED_PATH}\{_701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK}";
 
             if (ISChecked)
             {
@@ -1123,13 +1150,12 @@ namespace SophiApp.Customisations
             }
 
             ScheduledTaskHelper.TryDeleteTask(appSoftwareDistributionTask, scriptSoftwareDistributionTask);
-            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH, SOPHIA_SCRIPT_SCHEDULED_PATH);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_SCHEDULED_PATH);
         }
 
         public static void _702(bool IsChecked)
         {
-            var appClearTempTask = $@"{SOPHIA_APP_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
-            var scriptClearTempTask = $@"{SOPHIA_SCRIPT_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
+            var appClearTempTask = $@"{SOPHIA_SCHEDULED_PATH}\{_702_SOPHIA_CLEAR_TEMP_TASK}";
 
             if (IsChecked)
             {
@@ -1142,8 +1168,8 @@ namespace SophiApp.Customisations
                 return;
             }
 
-            ScheduledTaskHelper.TryDeleteTask(appClearTempTask, scriptClearTempTask);
-            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_APP_SCHEDULED_PATH, SOPHIA_SCRIPT_SCHEDULED_PATH);
+            ScheduledTaskHelper.TryDeleteTask(appClearTempTask);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_SCHEDULED_PATH);
         }
 
         public static void _800(bool IsChecked) => PowerShellHelper.InvokeScript($"{_800_SET_NETWORK_PROTECTION_PS} {(IsChecked ? ENABLED : DISABLED)}");

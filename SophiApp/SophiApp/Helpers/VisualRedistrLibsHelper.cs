@@ -9,37 +9,66 @@ namespace SophiApp.Helpers
     {
         private const string CLOUD_VC_VERSION_URL = "https://raw.githubusercontent.com/aaronparker/vcredist/main/VcRedist/VisualCRedistributables.json";
         private const string DISPLAY_NAME = "DisplayName";
-        private const string MSREDISTR_LIB_VS_2022_NAME = "Microsoft Visual C++ 2015-2022 Redistributable (x64)";
+        private const string MSREDISTR_X64_LIB_VS_2022_NAME = "Microsoft Visual C++ 2015-2022 Redistributable (x64)";
+        private const string MSREDISTR_X86_LIB_VS_2022_NAME = "Microsoft Visual C++ 2015-2022 Redistributable (x32)";
         private const string REDISTR_LIB_VS_2022_NAME = "Visual C++ Redistributable for Visual Studio 2022";
-        private const string REDISTRX64_REGISTRY_NAME_PATTERN = "VC,redist.x64,amd64";
-        private const string REDISTRX64_REGISTRY_PATH = @"Installer\Dependencies";
+        private const string REDISTRX64_REGISTRY_NAME_PATTERN = "VC,redist.x64,amd64,14";
+        private const string REDISTRX32_REGISTRY_NAME_PATTERN = "VC,redist.x86,x86,14";
+        private const string INSTALLER_DEPENDENCIES_PATH = @"Installer\Dependencies";
         private const string VERSION_NAME = "Version";
         private const string X64 = "x64";
+        private const string X86 = "x86";
 
-        internal static Version GetCloudLatestVersion()
+        internal static Version GetX64CloudLatestVersion()
         {
             var cloudLibsData = WebHelper.GetJsonResponse<CPPRedistrCollection>(CLOUD_VC_VERSION_URL);
             return cloudLibsData.Supported.First(libs => libs.Name == REDISTR_LIB_VS_2022_NAME && libs.Architecture == X64).Version;
         }
 
-        internal static Version GetInstalledVersion()
+        internal static Version GetX86CloudLatestVersion()
         {
-            var registryData = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
+            var cloudLibsData = WebHelper.GetJsonResponse<CPPRedistrCollection>(CLOUD_VC_VERSION_URL);
+            var a = cloudLibsData.Supported.First(libs => libs.Name == REDISTR_LIB_VS_2022_NAME && libs.Architecture == X86).Version;
+            return cloudLibsData.Supported.First(libs => libs.Name == REDISTR_LIB_VS_2022_NAME && libs.Architecture == X86).Version;
+        }
+
+        internal static Version GetX64InstalledVersion()
+        {
+            var registryData = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, INSTALLER_DEPENDENCIES_PATH)
                                         .First(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
 
             var version = RegHelper.GetValue(RegistryHive.ClassesRoot, registryData, VERSION_NAME) as string;
             return Version.Parse(version);
         }
 
-        internal static bool IsInstalled()
+        internal static Version GetX86InstalledVersion()
+        {
+            var registryData = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, INSTALLER_DEPENDENCIES_PATH)
+                                        .First(key => key.Contains(REDISTRX32_REGISTRY_NAME_PATTERN));
+
+            var version = RegHelper.GetValue(RegistryHive.ClassesRoot, registryData, VERSION_NAME) as string;
+            return Version.Parse(version);
+        }
+
+        internal static bool X64IsInstalled()
         {
             try
             {
-                var vcRegistryPath = RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, REDISTRX64_REGISTRY_PATH)
-                                          .FirstOrDefault(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN));
+                return RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, INSTALLER_DEPENDENCIES_PATH)
+                                          .First(key => key.Contains(REDISTRX64_REGISTRY_NAME_PATTERN)) != null;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
-                return vcRegistryPath != null && RegHelper.GetStringValue(RegistryHive.ClassesRoot, vcRegistryPath, DISPLAY_NAME)
-                                                          .Contains(MSREDISTR_LIB_VS_2022_NAME);
+        internal static bool X86IsInstalled()
+        {
+            try
+            {
+                return RegHelper.GetSubKeyNames(RegistryHive.ClassesRoot, INSTALLER_DEPENDENCIES_PATH)
+                                          .First(key => key.Contains(REDISTRX32_REGISTRY_NAME_PATTERN)) != null;
             }
             catch (Exception)
             {

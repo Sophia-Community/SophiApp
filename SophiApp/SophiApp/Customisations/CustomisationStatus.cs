@@ -437,14 +437,14 @@ namespace SophiApp.Customisations
         public static bool _349() => OneDriveHelper.IsInstalled() ? false : throw new OneDriveNotInstalledException();
 
         public static bool _351() => HttpHelper.IsOnline
-                                     ? VisualRedistrLibsHelper.IsInstalled()
-                                        ? VisualRedistrLibsHelper.GetCloudLatestVersion() > VisualRedistrLibsHelper.GetInstalledVersion()
+                                     ? VisualRedistrLibsHelper.X64IsInstalled()
+                                        ? VisualRedistrLibsHelper.GetX64CloudLatestVersion() > VisualRedistrLibsHelper.GetX64InstalledVersion()
                                             ? false
                                             : throw new VisualRedistrLibsLastVersionException()
                                         : false
                                      : throw new NoInternetConnectionException();
 
-        public static bool _352() => VisualRedistrLibsHelper.IsInstalled()
+        public static bool _352() => VisualRedistrLibsHelper.X64IsInstalled()
                                      ? false
                                      : throw new VisualRedistrLibsNotInstalled();
 
@@ -493,6 +493,18 @@ namespace SophiApp.Customisations
             return hasAntizapretPac;
         }
 
+        public static bool _361() => HttpHelper.IsOnline
+                                     ? VisualRedistrLibsHelper.X86IsInstalled()
+                                        ? VisualRedistrLibsHelper.GetX86CloudLatestVersion() > VisualRedistrLibsHelper.GetX86InstalledVersion()
+                                            ? false
+                                            : throw new VisualRedistrLibsLastVersionException()
+                                        : false
+                                     : throw new NoInternetConnectionException();
+
+        public static bool _362() => VisualRedistrLibsHelper.X86IsInstalled()
+                                     ? false
+                                     : throw new VisualRedistrLibsNotInstalled();
+
         public static bool _500() => HttpHelper.IsOnline
                                         ? UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
                                             ? UwpHelper.PackageExist(_500_UWP_HEVC_VIDEO)
@@ -536,14 +548,12 @@ namespace SophiApp.Customisations
                     : throw new AdapterTypeInternalOrNullException($"{adapterDAC}");
         }
 
-        public static bool _700() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _700_SOPHIA_CLEANUP_TASK)
-                                        || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _700_SOPHIA_CLEANUP_TASK);
+        public static bool _700() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCHEDULED_PATH, taskName: _700_SOPHIA_CLEANUP_TASK)
+                                        && ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCHEDULED_PATH, taskName: _700_SOPHIA_CLEANUP_NOTIFICATION_TASK);
 
-        public static bool _701() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK)
-                                        || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK);
+        public static bool _701() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCHEDULED_PATH, taskName: _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK);
 
-        public static bool _702() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCRIPT_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK)
-                                        || ScheduledTaskHelper.Exist(taskPath: SOPHIA_APP_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
+        public static bool _702() => ScheduledTaskHelper.Exist(taskPath: SOPHIA_SCHEDULED_PATH, taskName: _702_SOPHIA_CLEAR_TEMP_TASK);
 
         public static bool _800()
         {
