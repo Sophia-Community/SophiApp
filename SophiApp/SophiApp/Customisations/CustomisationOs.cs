@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Security.Principal;
 using System.ServiceProcess;
 using System.Windows;

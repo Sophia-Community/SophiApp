@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Management.Automation;
 
 namespace SophiApp.Helpers
 {

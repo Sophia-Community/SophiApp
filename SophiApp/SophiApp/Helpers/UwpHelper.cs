@@ -3,7 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Management.Automation;
 using System.Threading;
+using Windows.ApplicationModel;
+using Windows.Foundation;
+using Windows.Management.Deployment;
 
 namespace SophiApp.Helpers
 {
