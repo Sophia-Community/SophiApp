@@ -1,6 +1,6 @@
 <#
 	.SYNOPSIS
-	Download binary for SophiApp build action
+	Download binaries for SophiApp build action
 
 	.NOTES
 	https://developer.microsoft.com/ru-ru/windows/downloads/sdk-archive/
@@ -89,6 +89,3 @@ $Parameters = @{
 	Destination = "SophiApp\Binary"
 }
 Copy-Item @Parameters
-
-(get-childitem SophiApp\Binary).fullname
-write-host "D:\a\SophiApp\SophiApp\SophiApp\SophiApp\SophiApp\Binary\Windows.winmd"
