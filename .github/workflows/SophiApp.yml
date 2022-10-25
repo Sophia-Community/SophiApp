@@ -23,7 +23,6 @@ jobs:
     - name: Preparing files
       run: |
         . "src\Scripts\Set-ReleaseTag.ps1" "${{ github.ref_name }}"
-        . "src\Scripts\Uncomment-AppMethods.ps1"
         . "src\Scripts\Set-DebugMode.ps1"
 
     - name: Downloading files
