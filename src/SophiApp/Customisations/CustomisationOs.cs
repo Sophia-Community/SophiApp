@@ -191,11 +191,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS);
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, POLICY_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS, ENABLED_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, POLICY_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS, ENABLED_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _201(bool _) => RegHelper.SetValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER, DISABLED_VALUE, RegistryValueKind.DWord);
@@ -461,11 +461,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _252_NO_NEW_APP_ALERT);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICY_EXPLORER_PATH, _252_NO_NEW_APP_ALERT);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _252_NO_NEW_APP_ALERT, _252_HIDE_ALERT_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_EXPLORER_PATH, _252_NO_NEW_APP_ALERT, _252_HIDE_ALERT_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _253(bool IsChecked) => RegHelper.SetValue(RegistryHive.LocalMachine,
@@ -529,11 +529,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICY_EXPLORER_PATH, _266_HIDE_ADDED_APPS);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS, _266_DISABLED_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_EXPLORER_PATH, _266_HIDE_ADDED_APPS, _266_DISABLED_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _267(bool IsChecked)
@@ -597,7 +597,7 @@ namespace SophiApp.Customisations
 
         public static void _307(bool _)
         {
-            var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
+            var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{LOCAL_APPDATA}\\{TEMP_FOLDER}");
             var systemDriveTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_DRIVE}\\{TEMP_FOLDER}");
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
@@ -637,7 +637,7 @@ namespace SophiApp.Customisations
 
         public static void _308(bool _)
         {
-            var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_LOCAL_APPDATA}\\{TEMP_FOLDER}");
+            var localAppDataTemp = Environment.ExpandEnvironmentVariables($"{LOCAL_APPDATA}\\{TEMP_FOLDER}");
             var systemRootTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_SYSTEM_ROOT}\\{TEMP_FOLDER}");
             var currentTemp = Environment.ExpandEnvironmentVariables($"{ENVIRONMENT_TEMP}");
             var userName = Environment.UserName;
@@ -691,11 +691,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _311_ENABLE_LINKED, _311_ENABLE_LINKED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, _311_ENABLE_LINKED, _311_ENABLE_LINKED_VALUE, RegistryValueKind.DWord);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _311_ENABLE_LINKED);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, _311_ENABLE_LINKED);
         }
 
         public static void _312(bool IsChecked)
@@ -1186,11 +1186,11 @@ namespace SophiApp.Customisations
             if (IsChecked)
             {
                 ProcessHelper.StartWait(AUDITPOL_APP, PROCESS_AUDIT_ENABLED_ARGS, ProcessWindowStyle.Hidden);
-                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED);
+            RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICY_AUDIT_PATH, PROCESS_CREATION_ENABLED);
         }
 
         public static void _805(bool IsChecked)
@@ -1201,7 +1201,7 @@ namespace SophiApp.Customisations
             {
                 var eventViewerXml = TextHelper.LocalizeEventViewerCustomXml(_805_PROCESS_CREATION_XML_DATA);
                 ProcessHelper.StartWait(AUDITPOL_APP, PROCESS_AUDIT_ENABLED_ARGS, ProcessWindowStyle.Hidden);
-                RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_AUDIT_PATH, PROCESS_CREATION_ENABLED, ENABLED_VALUE, RegistryValueKind.DWord);
                 FileHelper.WriteAllText(processCreationXml, eventViewerXml);
                 return;
             }
@@ -1263,9 +1263,9 @@ namespace SophiApp.Customisations
 
         public static void _811(bool IsChecked) => DismHelper.SetFeatureState(_811_WINDOWS_SANDBOX_FEATURE, IsChecked);
 
-        public static void _813(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_DEFAULT_VALUE, RegistryValueKind.DWord);
+        public static void _813(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_DEFAULT_VALUE, RegistryValueKind.DWord);
 
-        public static void _814(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_NEVER_VALUE, RegistryValueKind.DWord);
+        public static void _814(bool _) => RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, ADMIN_PROMPT, ADMIN_PROMPT_NEVER_VALUE, RegistryValueKind.DWord);
 
         public static void _900(bool IsChecked)
         {
@@ -1528,22 +1528,22 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME);
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, POLICY_EXPLORER_PATH, _925_NO_USE_NAME);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME, _925_NO_USE_VALUE, RegistryValueKind.DWord);
+            RegHelper.SetValue(RegistryHive.CurrentUser, POLICY_EXPLORER_PATH, _925_NO_USE_NAME, _925_NO_USE_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _926(bool IsChecked)
         {
             if (IsChecked)
             {
-                RegHelper.DeleteKey(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT);
+                RegHelper.DeleteKey(RegistryHive.LocalMachine, POLICY_BLOCKED_PATH, WIN_TERMINAL_ID);
                 return;
             }
 
-            RegHelper.SetValue(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT, _926_WINDOWS_TERMINAL, RegistryValueKind.String);
+            RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_BLOCKED_PATH, WIN_TERMINAL_ID, _926_WINDOWS_TERMINAL, RegistryValueKind.String);
         }
 
         public static void _928(bool IsChecked)

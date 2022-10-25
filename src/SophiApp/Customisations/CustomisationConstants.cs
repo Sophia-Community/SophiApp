@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Windows.ApplicationModel;
 
 namespace SophiApp.Customisations
@@ -567,8 +568,8 @@ else
         internal const int _924_PROMPT_VALUE = 300;
         internal const string _925_NO_USE_NAME = "NoUseStoreOpenWith";
         internal const byte _925_NO_USE_VALUE = 1;
-        internal const string _926_TERMINAL_CONTEXT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
-        internal const string _926_TERMINAL_OPEN_CONTEXT = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
+        internal const string POLICY_BLOCKED_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked";
+        internal const string WIN_TERMINAL_ID = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
         internal const string _926_WINDOWS_TERMINAL = "WindowsTerminal";
         internal const string _928_WIN10_CONTEXT_MENU_PATH = @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32";
         internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
@@ -614,7 +615,7 @@ else
         internal const byte ENABLED_VALUE = 1;
         internal const string ENTHUSIAST_MODE = "EnthusiastMode";
         internal const string ENVIRONMENT = "Environment";
-        internal const string ENVIRONMENT_LOCAL_APPDATA = "%LOCALAPPDATA%";
+        internal const string LOCAL_APPDATA = "%LOCALAPPDATA%";
         internal const string ENVIRONMENT_SYSTEM_DRIVE = "%SystemDrive%";
         internal const string ENVIRONMENT_SYSTEM_ROOT = "%SystemRoot%";
         internal const string ENVIRONMENT_TEMP = "%TEMP%";
@@ -637,9 +638,9 @@ else
         internal const string MITIGATION_USER_PREFERENCE = "UserPreference";
         internal const string MUIVERB = "MUIVerb";
         internal const string PERSONALIZE_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-        internal const string POLICIES_AUDIT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit";
-        internal const string POLICIES_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
-        internal const string POLICIES_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
+        internal const string POLICY_AUDIT_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit";
+        internal const string POLICY_EXPLORER_PATH = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
+        internal const string POLICY_SYSTEM_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
         internal const string POWERCFG_EXE = "powercfg.exe";
         internal const string POWERSHELL_EXE = "powershell.exe";
         internal const string PROCESS_AUDIT_DISABLED_ARGS = @"/set /subcategory:""{0CCE922B-69AE-11D9-BED3-505054503030}"" /success:disable /failure:disable";
@@ -709,9 +710,10 @@ else
         internal static readonly string _811_WINDOWS_SANDBOX_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\WindowsSandbox.exe";
         internal static readonly string _922_MS_WORDPAD_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows NT\Accessories\wordpad.exe";
         internal static readonly string ENVIRONMENT_PROGRAM_DATA = Environment.GetEnvironmentVariable("ProgramData");
-        internal static readonly PackageVersion MINIMAL_TERMINAL_VERSION = new PackageVersion() { Major = 1, Minor = 11 };
+        internal static readonly Version MIN_TERMINAL_SUPPORT_VERSION = new Version(1, 11);
         internal static readonly string MS_PAINT_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\mspaint.exe";
         internal static byte[] _334_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        internal static readonly string TERMINAL_SETTINGS_JSON_PATH = $@"{ Environment.ExpandEnvironmentVariables(LOCAL_APPDATA) }\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
     }
 }

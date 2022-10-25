@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using Newtonsoft.Json;
 using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
@@ -8,7 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceProcess;
+using System.Text;
 using System.Threading;
+using Windows.Data.Json;
 using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
@@ -96,7 +99,7 @@ namespace SophiApp.Customisations
         public static bool _126() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, _126_PRIVACY_PATH, _126_TAILORED_DATA)
                                               .HasNullOrValue(ENABLED_VALUE);
 
-        public static bool _127() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS)
+        public static bool _127() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, POLICY_EXPLORER_PATH, _127_DISABLE_SEARCH_SUGGESTIONS)
                                               .HasNullOrValue(DISABLED_VALUE);
 
         public static bool _201() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_THIS_COMPUTER) == DISABLED_VALUE;
@@ -220,7 +223,7 @@ namespace SophiApp.Customisations
         public static bool _251() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, PERSONALIZE_PATH, APPS_USES_THEME)
                                               .HasNullOrValue(DARK_THEME_VALUE);
 
-        public static bool _252() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _252_NO_NEW_APP_ALERT)
+        public static bool _252() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICY_EXPLORER_PATH, _252_NO_NEW_APP_ALERT)
                                               .HasNullOrValue(_252_SHOW_ALERT_VALUE);
 
         public static bool _253() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, WINLOGON_PATH, _253_FIRST_LOGON_ANIMATION)
@@ -257,7 +260,7 @@ namespace SophiApp.Customisations
 
         public static bool _265() => RegHelper.GetNullableByteValue(RegistryHive.CurrentUser, ADVANCED_EXPLORER_PATH, START_LAYOUT) == START_LAYOUT_RECOMMENDATIONS_VALUE;
 
-        public static bool _266() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_EXPLORER_PATH, _266_HIDE_ADDED_APPS) != _266_DISABLED_VALUE;
+        public static bool _266() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICY_EXPLORER_PATH, _266_HIDE_ADDED_APPS) != _266_DISABLED_VALUE;
 
         public static bool _267() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CONTENT_DELIVERY_MANAGER_PATH, _267_APP_SUGGESTIONS) == ENABLED_VALUE;
 
@@ -293,7 +296,7 @@ namespace SophiApp.Customisations
         public static bool _310() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _310_SYSTEM_CRASH_CONTROL_PATH, _310_DISPLAY_PARAMS)
                                               .HasNullOrValue(DISABLED_VALUE).Invert();
 
-        public static bool _311() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, _311_ENABLE_LINKED) == _311_ENABLE_LINKED_VALUE;
+        public static bool _311() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, _311_ENABLE_LINKED) == _311_ENABLE_LINKED_VALUE;
 
         public static bool _312() => RegHelper.GetNullableIntValue(RegistryHive.Users, _312_DELIVERY_SETTINGS_PATH, _312_DOWNLOAD_MODE)
                                               .HasNullOrValue(ENABLED_VALUE);
@@ -392,8 +395,8 @@ namespace SophiApp.Customisations
             {
                 var terminal = UwpHelper.GetPackage(UWP_WINDOWS_TERMINAL);
 
-                if (terminal.Id.Version.Major == MINIMAL_TERMINAL_VERSION.Major
-                    && terminal.Id.Version.Minor >= MINIMAL_TERMINAL_VERSION.Minor)
+                if (terminal.Id.Version.Major == MIN_TERMINAL_SUPPORT_VERSION.Major
+                    && terminal.Id.Version.Minor >= MIN_TERMINAL_SUPPORT_VERSION.Minor)
                 {
                     var terminalClassRegistryPath = $@"SOFTWARE\Classes\PackagedCom\Package\{terminal.Id.FullName}\Class";
 
@@ -604,7 +607,7 @@ namespace SophiApp.Customisations
                                         : throw new VitualizationNotSupportedException()
                                      : throw new WindowsEditionNotSupportedException();
 
-        public static bool _813() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICIES_SYSTEM_PATH, ADMIN_PROMPT)
+        public static bool _813() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, ADMIN_PROMPT)
                                               .HasNullOrValue(ADMIN_PROMPT_DEFAULT_VALUE);
 
         public static bool _814() => _813().Invert();
@@ -677,10 +680,19 @@ namespace SophiApp.Customisations
 
         public static bool _924() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, CURRENT_VERSION_EXPLORER_PATH, _924_PROMPT_NAME) == _924_PROMPT_VALUE;
 
-        public static bool _925() => RegHelper.KeyExist(RegistryHive.CurrentUser, POLICIES_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
+        public static bool _925() => RegHelper.KeyExist(RegistryHive.CurrentUser, POLICY_EXPLORER_PATH, _925_NO_USE_NAME).Invert();
 
         public static bool _926() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
-                                     ? RegHelper.KeyExist(RegistryHive.LocalMachine, _926_TERMINAL_CONTEXT_PATH, _926_TERMINAL_OPEN_CONTEXT).Invert()
+                                     ? RegHelper.KeyExist(RegistryHive.LocalMachine, POLICY_BLOCKED_PATH, WIN_TERMINAL_ID).Invert()
+                                     : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
+
+        public static bool _927() => UwpHelper.PackageExist(UWP_WINDOWS_TERMINAL)
+                                     ? RegHelper.KeyExist(RegistryHive.LocalMachine, POLICY_BLOCKED_PATH, WIN_TERMINAL_ID)
+                                        ? throw new ApplicationBlockedByPolicyException(UWP_WINDOWS_TERMINAL)
+                                        : UwpHelper.GetVersion(UWP_WINDOWS_TERMINAL) >= MIN_TERMINAL_SUPPORT_VERSION
+                                            && UwpHelper.GetVersion(UWP_WINDOWS_TERMINAL).Minor >= MIN_TERMINAL_SUPPORT_VERSION.Minor
+                                                ? JsonConvert.DeserializeObject<WinTerminalSettingsDto>(File.ReadAllText(TERMINAL_SETTINGS_JSON_PATH)).Profiles.Defaults.Elevate
+                                                : true
                                      : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
 
         public static bool _928() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _928_WIN10_CONTEXT_MENU_PATH, null) == string.Empty;

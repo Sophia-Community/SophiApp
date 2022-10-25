@@ -4,7 +4,14 @@ namespace SophiApp.Helpers
 {
     internal class AdapterTypeInternalOrNullException : Exception
     {
-        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null")
+        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null. You adapter type is: { dacType }")
+        {
+        }
+    }
+
+    internal class ApplicationBlockedByPolicyException : Exception
+    {
+        public ApplicationBlockedByPolicyException(string name) : base($"Application {name} blocked by policy")
         {
         }
     }

@@ -158,6 +158,12 @@ foreach ($AppxPackage in $AppxPackages)
                              });
         }
 
+        internal static Version GetVersion(string package)
+        {
+            var packageVersion = GetPackage(package).Id.Version;
+            return new Version(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
+        }
+
         internal static void InstallPackage(string package)
         {
             var packageUri = new Uri(package);
