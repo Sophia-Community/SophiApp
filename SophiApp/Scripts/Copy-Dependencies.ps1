@@ -1,5 +1,3 @@
-$ReleaseBinDir = "$(Split-Path -Path $PSScriptRoot -Parent)\src\bin\Release\Bin"
-New-Item -Path (Split-Path -Path $ReleaseBinDir -Parent) -Name Bin -ItemType Directory -Force
-
+New-Item -Path SophiApp\SophiApp\bin\Release\Bin -ItemType Directory -Force
 # Copy downloaded dependencies to the created Bin folder
-Get-ChildItem -Path "SophiApp\Binary" | Copy -Destination $ReleaseBinDir -Force
+Get-ChildItem -Path "SophiApp\Binary" | Copy -Destination SophiApp\SophiApp\bin\Release\Bin -Force

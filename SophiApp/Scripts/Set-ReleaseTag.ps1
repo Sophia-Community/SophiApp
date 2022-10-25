@@ -15,46 +15,38 @@ $Parameters = @{
 	}
 }
 
-$IsReleasePattern = "        private const bool IS_RELEASE ="
 $ReleaseTag          = $args[0].Split("/") | Select-Object -Last 1
-$AssemblyInfo        = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Properties\AssemblyInfo.cs"
-$AssemblyPattern     = "AssemblyVersion"
-$AssemblyFilePattern = "AssemblyFileVersion"
 $AssemblyString      = '[assembly: AssemblyVersion("{0}")]' -f $ReleaseTag
 $AssemblyFileString  = '[assembly: AssemblyFileVersion("{0}")]' -f $ReleaseTag
 
-Write-Host "`nRelease tag: `"$ReleaseTag`""
-Write-Host "`nPath to AssemblyInfo.cs: ""$AssemblyInfo"""
+Write-Host "`nRelease tag: $ReleaseTag"
 
-if (Test-Path -Path $AssemblyInfo)
+if (Test-Path -Path "SophiApp\SophiApp\Properties\AssemblyInfo.cs")
 {
 	Write-Host "`nAssemblyInfo.cs found"
 
-	$AssemblyContent = Get-Content -Path $AssemblyInfo
-	$AssemblyLineNumber = ($AssemblyContent | Select-String -Pattern $AssemblyPattern | Select-Object -Last 1).LineNumber
-	$AssemblyFileLineNumber = ($AssemblyContent | Select-String -Pattern $AssemblyFilePattern).LineNumber
+	$AssemblyContent = Get-Content -Path "SophiApp\SophiApp\Properties\AssemblyInfo.cs"
+	$AssemblyLineNumber = ($AssemblyContent | Select-String -Pattern "AssemblyVersion" | Select-Object -Last 1).LineNumber
+	$AssemblyFileLineNumber = ($AssemblyContent | Select-String -Pattern "AssemblyFileVersion").LineNumber
 	$AssemblyContent[$AssemblyLineNumber - 1] = $AssemblyString
 	$AssemblyContent[$AssemblyFileLineNumber - 1] = $AssemblyFileString
-	Set-Content -Path $AssemblyInfo -Value $AssemblyContent -Confirm:$false -Encoding UTF8 -Force
+	Set-Content -Path "SophiApp\SophiApp\Properties\AssemblyInfo.cs" -Value $AssemblyContent -Confirm:$false -Encoding UTF8 -Force
 
-	Write-Host "`nFile ""$AssemblyInfo"" saved"
+	Write-Host "`nFile SophiApp\SophiApp\Properties\AssemblyInfo.cs saved"
 }
 else
 {
 	Write-Host "`nAssemblyInfo.cs not found"
 }
 
-$AppHelper = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), "SophiApp\Helpers\AppHelper.cs"
-Write-Host "`nPath to AppHelper.cs: ""$AppHelper"""
-
-if (Test-Path -Path $AppHelper)
+if (Test-Path -Path "SophiApp\SophiApp\Helpers\AppHelper.cs")
 {
 	Write-Host "`nAppHelper.cs found"
 
-	$AppHelperContent = Get-Content -Path $AppHelper
-	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern $IsReleasePattern | Select-Object -Last 1).LineNumber
+	$AppHelperContent = Get-Content -Path "SophiApp\SophiApp\Helpers\AppHelper.cs"
+	$IsReleaseLineNumber = ($AppHelperContent | Select-String -Pattern "        private const bool IS_RELEASE =" | Select-Object -Last 1).LineNumber
 	$AppHelperContent[$IsReleaseLineNumber - 1] = $Script:IsReleaseString
-	Set-Content -Path $AppHelper -Value $AppHelperContent -Confirm:$false -Encoding UTF8 -Force
+	Set-Content -Path "SophiApp\SophiApp\Helpers\AppHelper.cs" -Value $AppHelperContent -Confirm:$false -Encoding UTF8 -Force
 
 	Write-Host "`nAppHelper.cs saved"
 }
