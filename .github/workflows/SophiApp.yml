@@ -42,21 +42,21 @@ jobs:
       uses: microsoft/setup-msbuild@master
 
     - name: Run MSBuild
-      run: msbuild SophiApp\SophiApp.sln /p:Configuration=$env:Configuration /p:platform=$env:Platform
+      run: msbuild src\SophiApp.sln /p:Configuration=$env:Configuration /p:platform=$env:Platform
       env:
         Platform: ${{ matrix.platform }}
         Configuration: ${{ matrix.configuration }}
 
     - name: Cleanup
       run: |
-        Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
+        Get-ChildItem -Path src\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
         . src\Scripts\Copy-Dependencies.ps1
 
     - name: Compressing folder
       id: zip_hash
       run: |
         $Parameters = @{
-            Path     = "SophiApp\SophiApp\bin\Release"
+            Path     = "src\SophiApp\bin\Release"
             NewName  = "SophiApp"
             PassThru = $true
         }
