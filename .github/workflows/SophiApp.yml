@@ -25,7 +25,6 @@ jobs:
         . "SophiApp\Scripts\Set-ReleaseTag.ps1" "${{ github.ref_name }}"
         . "SophiApp\Scripts\Uncomment-AppMethods.ps1"
         . "SophiApp\Scripts\Set-DebugMode.ps1"
-        . "SophiApp\Scripts\Set-WinmdPath.ps1"
 
     - name: Downloading files
       run: |
