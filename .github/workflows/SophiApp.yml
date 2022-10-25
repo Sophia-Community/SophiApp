@@ -49,7 +49,10 @@ jobs:
     - name: Cleanup
       run: |
         Get-ChildItem -Path src\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
-        . src\Scripts\Copy-Dependencies.ps1
+
+        # Copy downloaded dependencies to the created Bin folder
+        New-Item -Path src\SophiApp\bin\Release\Bin -ItemType Directory -Force
+        Get-ChildItem -Path "src\Binary" | Copy -Destination src\SophiApp\bin\Release\Bin -Force
 
     - name: Compressing folder
       id: zip_hash
