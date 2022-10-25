@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="SophiApp.Views.ViewLoading"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SophiApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local:ViewLoading}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Tag" Value="{StaticResource Tags.View.Loading}" />
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid>
+                <controls:LoadingRing Visibility="{Binding Path=Visibility, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}" />
+                <TextBlock Style="{DynamicResource BoldText}"
+                           Text="{DynamicResource Localization.Loading}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="0, 100, 0, 0" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding VisibleViewByTag, UpdateSourceTrigger=PropertyChanged}" Value="{StaticResource Tags.View.Loading}">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

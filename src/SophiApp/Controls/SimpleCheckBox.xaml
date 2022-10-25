@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="SophiApp.Controls.SimpleCheckBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Path}">
+            <Setter Property="Fill" Value="{DynamicResource Brush.Button.Foreground}" />
+            <Setter Property="Data" Value="M16.3516 6.35156L8 14.7109L3.64844 10.3516L4.35156 9.64844L8 13.2891L15.6484 5.64844L16.3516 6.35156Z" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="1" />
+            <Setter Property="Grid.Column" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="MinWidth" Value="450" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style TargetType="{x:Type local:SimpleCheckBox}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid MouseEnter="SimpleCheckBox_MouseEnter" MouseLeave="SimpleCheckBox_MouseLeave">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                        <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
+                    </ContextMenu>
+                </Grid.ContextMenu>
+                <TextBlock
+                    x:Name="TextBlockHeader"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                    Style="{DynamicResource NormalText}"
+                    Text="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}"
+                    TextWrapping="Wrap"
+                    Grid.Column="0" />
+
+                <Border x:Name="BorderCheckBox" MouseLeftButtonDown="SimpleCheckBox_MouseLeftButtonDown">
+                    <Path x:Name="PathCheckBox" />
+                </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="UNCHECKED">
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{Binding Path=Foreground,RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{Binding Path=Background,RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Hidden" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}" Value="CHECKED">
+                    <Setter TargetName="BorderCheckBox" Property="BorderBrush" Value="{Binding Path=Hover,RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter TargetName="BorderCheckBox" Property="Background" Value="{Binding Path=Hover,RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter TargetName="PathCheckBox" Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

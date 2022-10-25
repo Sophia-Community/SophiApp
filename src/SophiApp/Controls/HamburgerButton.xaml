@@ -1,0 +1,96 @@
+﻿<UserControl
+    x:Class="SophiApp.Controls.HamburgerButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:SophiApp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:TagToVisibility x:Key="Tag.To.Visibility.Converter" />
+        <Style x:Key="BorderMarker" TargetType="{x:Type Border}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Height" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}" />
+            <Setter Property="Width" Value="4" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Tag.To.Visibility.Converter}">
+                        <Binding Path="DataContext.VisibleViewByTag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}" />
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Command" Value="{Binding HamburgerClickedCommand}" />
+            <Setter Property="CommandParameter" Value="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="GridWrapper" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Grid x:Name="GridContent">
+                                <Border x:Name="BorderMarker" Style="{StaticResource BorderMarker}" />
+                                <ContentPresenter
+                                    Margin="{Binding Path=IconMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Path=Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}" />
+
+                                <TextBlock
+                                    Margin="{Binding Path=TextMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource Brush.Window.Foreground}"
+                                    Style="{DynamicResource NormalText}"
+                                    Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HamburgerButton}}}" />
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource Brush.Window.Element.Hover}" />
+                            </Trigger>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation
+                                                AutoReverse="True"
+                                                SpeedRatio="3"
+                                                Storyboard.TargetName="GridContent"
+                                                Storyboard.TargetProperty="Margin"
+                                                From="0, 0, 0, 0"
+                                                To="0, 10, 0, 0"
+                                                Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type local:HamburgerButton}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="TextMargin" Value="60, 0, 0, 0" />
+            <Setter Property="IconMargin" Value="10, 0, 0, 7" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Button x:Name="Button" />
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

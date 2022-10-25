@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="SophiApp.Controls.SearchBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d"
+             MouseLeave="SearchBar_MouseLeave">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="2" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SearchBar.Foreground}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="MaxLength" Value="32" />
+            <Setter Property="MaxLines" Value="1" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="CaretBrush" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style TargetType="{x:Type local:SearchBar}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Width" Value="230" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Border>
+                <Grid>
+                    <TextBox x:Name="TextBoxSearch">
+                        <TextBox.InputBindings>
+                            <KeyBinding Command="{Binding SearchClickedCommand}"
+                                        CommandParameter="{Binding Path=Text, ElementName=TextBoxSearch}"
+                                        Key="Return" />
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu Visibility="Collapsed" />
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.50" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="TextBoxSearch" Property="Text" Value="{x:Null}" />
+                    <Setter TargetName="TextBoxSearch" Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter TargetName="TextBoxSearch" Property="Text" Value="{DynamicResource Localization.Search}" />
+                    <Setter TargetName="TextBoxSearch" Property="Foreground" Value="{DynamicResource Brush.SearchBar.Foreground}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

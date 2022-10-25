@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="SophiApp.Controls.ChangesPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SophiApp.Controls"
+    xmlns:converters="clr-namespace:SophiApp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:IntToChanges x:Key="IntToChangesConverter" />
+        <converters:IntToSettings x:Key="IntToSettingsConverter" />
+        <Style TargetType="{x:Type local:ChangesPanel}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Height" Value="52" />
+            <Setter Property="ChangedText" Value="{DynamicResource Localization.ViewChanges.Changed}" />
+            <Setter Property="SettingText" Value="{DynamicResource Localization.ViewChanges.Setting}" />
+            <Setter Property="Visibility" Value="Visible" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                <StackPanel
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="20,0,0,0"
+                        Style="{DynamicResource NormalText}"
+                        TextWrapping="NoWrap">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource IntToChangesConverter}">
+                                <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="CustomActions" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding
+                                    Path="ChangedText"
+                                    RelativeSource="{RelativeSource TemplatedParent}"
+                                    UpdateSourceTrigger="PropertyChanged" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                    <TextBlock
+                        Margin="5,0,5,0"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource Brush.Window.Acсent.Normal}"
+                        Style="{DynamicResource NormalText}"
+                        Text="{Binding CustomActions.Count, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="NoWrap" />
+
+                    <TextBlock Style="{DynamicResource NormalText}" TextWrapping="NoWrap">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource IntToSettingsConverter}">
+                                <Binding Path="Localization" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="CustomActions" UpdateSourceTrigger="PropertyChanged" />
+                                <Binding Path="SettingText" RelativeSource="{RelativeSource TemplatedParent}" UpdateSourceTrigger="PropertyChanged" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+                    <controls:Button
+                        Margin="0,0,10,0"
+                        Command="{Binding ResetTextedElementsStateCommand}"
+                        Text="{DynamicResource Localization.ViewChanges.Cancel}" />
+
+                    <controls:CommandButton
+                        Margin="0,0,10,0"
+                        Command="{Binding ApplyingSettingsCommand}"
+                        Text="{DynamicResource Localization.ViewChanges.Apply}" />
+                </StackPanel>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding CustomActions.Count}" Value="0">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

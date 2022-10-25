@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="SophiApp.Views.ViewConditionsTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiApp.Views"
+             xmlns:converters="clr-namespace:SophiApp.Converters"
+             xmlns:controls="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
+        <Style TargetType="{x:Type local:ViewConditionsTemplate}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">
+                        <Binding Path="VisibleViewByTag" UpdateSourceTrigger="PropertyChanged" />
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style TargetType="{x:Type ContentPresenter}">
+            <Setter Property="Grid.Row" Value="3" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="10, 0, 10, 10" />
+            <Setter Property="Content" Value="{Binding Path=TextContent, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <controls:Logo Grid.Row="1" Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <ContentPresenter />
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

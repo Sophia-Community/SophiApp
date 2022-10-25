@@ -1,0 +1,68 @@
+﻿<UserControl
+    x:Class="SophiApp.Controls.ActorLink"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{DynamicResource NormalText}"
+                                       Text="{Binding Path=Role, RelativeSource={RelativeSource AncestorType={x:Type local:ActorLink}}}" />
+
+                            <TextBlock
+                                x:Name="TextBlockActor"
+                                Margin="3,0,0,0"
+                                Foreground="{DynamicResource Brush.Window.Acсent.Normal}"
+                                Style="{DynamicResource NormalText}"
+                                Text="{Binding Path=Actor, RelativeSource={RelativeSource AncestorType={x:Type local:ActorLink}}}" />
+
+                            <ContentPresenter
+                                Width="20"
+                                Height="20"
+                                Margin="{Binding Path=IconMargin, RelativeSource={RelativeSource AncestorType={x:Type local:ActorLink}}}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{Binding Path=Icon, RelativeSource={RelativeSource AncestorType={x:Type local:ActorLink}}}" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="TextBlockActor" Property="IsMouseOver" Value="True">
+                                <Setter TargetName="TextBlockActor" Property="TextBlock.TextDecorations" Value="Underline" />
+                                <Setter TargetName="TextBlockActor" Property="ForceCursor" Value="True" />
+                                <Setter TargetName="TextBlockActor" Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type local:ActorLink}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="MinWidth" Value="146" />
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Button />
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

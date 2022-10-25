@@ -1,0 +1,88 @@
+﻿<UserControl
+    x:Class="SophiApp.Controls.AdvancedRadioGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SophiApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SophiApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:SophiApp.Models"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ItemsControl}">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="IsTabStop" Value="False" />
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
+            <Setter Property="Margin" Value="0,15,0,0" />
+        </Style>
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style TargetType="{x:Type local:AdvancedRadioGroup}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Header" Value="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Description" Value="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.View.Background}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+            <Setter Property="Margin" Value="20,0,0,20" />
+            <Setter Property="Id" Value="{Binding Id}" />
+            <Setter Property="Icon" Value="{DynamicResource Icon.Settings.Small}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <StackPanel>
+                <StackPanel
+                    x:Name="HeaderWrapper"
+                    MouseEnter="Header_MouseEnter"
+                    MouseLeave="Header_MouseLeave"
+                    Orientation="Horizontal">
+                    <ContentPresenter Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock
+                        x:Name="TextBlockHeader"
+                        Margin="10,0,0,0"
+                        Style="{DynamicResource NormalText}"
+                        Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"
+                        TextWrapping="Wrap" />
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
+                            <MenuItem Click="ContextMenu_DescriptionCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Description.Copy}" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+                <Border x:Name="BordelLine" />
+                <ItemsControl ItemsSource="{Binding ChildElements}">
+                    <ItemsControl.Resources>
+                        <DataTemplate DataType="{x:Type models:RadioButton}">
+                            <controls:RadioButton
+                                Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type controls:AdvancedRadioGroup}}}"
+                                Id="{Binding Id}"
+                                Status="{Binding Status, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </ItemsControl.Resources>
+                </ItemsControl>
+            </StackPanel>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DebugMode}" Value="True">
+                    <Setter TargetName="TextBlockHeader" Property="Text">
+                        <Setter.Value>
+                            <MultiBinding StringFormat="{}VId {0} Id {1} | {2}">
+                                <Binding Path="ViewId" />
+                                <Binding Path="Id" />
+                                <Binding Path="Header" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

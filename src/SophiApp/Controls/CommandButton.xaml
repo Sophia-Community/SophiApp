@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="SophiApp.Controls.CommandButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Storyboard
+            x:Key="ButtonClickAnimation"
+            Completed="OnStoryboardCompleted"
+            Storyboard.TargetName="ButtonAnimatedScaleTransform"
+            Storyboard.TargetProperty="(ScaleTransform.ScaleX)">
+            <DoubleAnimation AutoReverse="True"
+                             To="0.8"
+                             Duration="0:0:0.05" />
+        </Storyboard>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="0"
+                                CornerRadius="2">
+                            <StackPanel Margin="14,0,14,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Orientation="Horizontal">
+                                <TextBlock Style="{DynamicResource NormalText}"
+                                           Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:CommandButton}}}" />
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type local:CommandButton}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="MinWidth" Value="126" />
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Button.Foreground}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Button x:Name="ButtonTemplate">
+                <Button.RenderTransform>
+                    <ScaleTransform x:Name="ButtonAnimatedScaleTransform" ScaleX="1.0" ScaleY="1.0" />
+                </Button.RenderTransform>
+            </Button>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Normal}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource Brush.Window.Acсent.Light}" />
+                </Trigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonClickAnimation}" />
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

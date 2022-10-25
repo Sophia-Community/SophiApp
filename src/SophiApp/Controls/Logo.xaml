@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="SophiApp.Controls.Logo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SophiApp.Controls"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Viewbox}">
+            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinWidth" Value="{Binding Path=MinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="MinHeight" Value="{Binding Path=MinHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style TargetType="{x:Type local:Logo}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Viewbox>
+                <Canvas Canvas.Left="0" Canvas.Top="0" Width="800" Height="800">
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="0.5" Y="0.5" />
+                    </Canvas.RenderTransform>
+                    <Canvas.Resources />
+                    <Canvas>
+                        <Canvas>
+                            <Path Fill="{DynamicResource Brush.Logo.Foreground}" Data="M43.67 401.36c0-205.85 166.88-372.73 372.73-372.73c99.23 0 189.39 38.79 256.19 102.01    C602.77 60.01 505.85 16.24 398.7 16.24c-212.69 0-385.12 172.42-385.12 385.12S186.01 786.47 398.7 786.47    c107.15 0 204.07-43.77 273.88-114.4C605.79 735.3 515.63 774.09 416.4 774.09C210.54 774.09 43.67 607.21 43.67 401.36z" />
+                            <Path Fill="{DynamicResource Brush.Logo.Background}" Data="M672.58 130.64C605.79 67.41 515.63 28.63 416.4 28.63c-205.85 0-372.73 166.88-372.73 372.73    S210.54 774.09 416.4 774.09c99.23 0 189.39-38.79 256.19-102.01c71.77-67.94 116.54-164.09 116.54-270.72    S744.35 198.58 672.58 130.64z" />
+                        </Canvas>
+                        <Canvas>
+                            <Ellipse Canvas.Left="677" Canvas.Top="505.8" Width="31.1" Height="31.1" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                        </Canvas>
+                        <Canvas>
+                            <Ellipse Canvas.Left="400.7" Canvas.Top="680.3" Width="31.1" Height="31.1" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                        </Canvas>
+                        <Canvas>
+                            <Ellipse Canvas.Left="705.6" Canvas.Top="458.3" Width="19.3" Height="19.3" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                        </Canvas>
+                        <Canvas>
+                            <Ellipse Canvas.Left="124.7" Canvas.Top="505.8" Width="31.1" Height="31.1" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                        </Canvas>
+                        <Canvas>
+                            <Ellipse Canvas.Left="107.9" Canvas.Top="458.3" Width="19.3" Height="19.3" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                        </Canvas>
+                        <Canvas>
+                            <Canvas>
+                                <Ellipse Canvas.Left="304.1" Canvas.Top="713.8" Width="19.3" Height="19.3" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                            </Canvas>
+                            <Canvas>
+                                <Ellipse Canvas.Left="510.2" Canvas.Top="713.8" Width="19.3" Height="19.3" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                            </Canvas>
+                        </Canvas>
+                        <Canvas>
+                            <Path Fill="{DynamicResource Brush.Logo.Foreground}" Data="M464.68 210.88c-8.59 0-15.55 6.96-15.55 15.55c0 8.59 6.96 15.55 15.55 15.55c8.59 0 15.55-6.96 15.55-15.55    C480.23 217.84 473.27 210.88 464.68 210.88z" />
+                            <Ellipse Canvas.Left="418.6" Canvas.Top="242.8" Width="19.3" Height="19.3" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                            <Path Fill="{DynamicResource Brush.Logo.Foreground}" Data="M289.26 463.69c8.59 0 15.55-6.96 15.55-15.55c0-8.59-6.96-15.55-15.55-15.55c-8.59 0-15.55 6.96-15.55 15.55    C273.71 456.73 280.67 463.69 289.26 463.69z" />
+                            <Ellipse Canvas.Left="316.1" Canvas.Top="412.4" Width="19.3" Height="19.3" Fill="{DynamicResource Brush.Logo.Foreground}" />
+                        </Canvas>
+                        <Path Fill="{DynamicResource Brush.Logo.Foreground}" Data="M577.58 457.86c-0.12-5.09-0.5-10.11-1.03-15.13c-1.07-10.02-2.84-20-5.42-29.89   c-2.58-9.89-5.98-19.69-10.29-29.24c-4.33-9.55-9.71-18.76-16.03-27.43c-12.58-17.37-29.34-32.15-47.98-42.51   c-18.69-10.41-38.85-16.49-58.64-19.82c-4.96-0.82-9.91-1.47-14.84-1.98c-2.47-0.28-4.92-0.43-7.38-0.62l-6.31-0.48   c-3.99-0.29-7.98-0.57-11.86-1.13l-5.87-0.71l-5.75-0.99c-7.7-1.25-15.06-3.15-22.22-5.31c-7.08-2.3-13.85-4.97-20.19-8.14   c-12.59-6.44-23.03-15.11-30.61-25.75c-3.82-5.3-6.84-11.19-9.11-17.38c-0.44-1.19-0.82-2.41-1.18-3.62c0 0-9.91-36.14 6.57-65.3   c11.41-18.62 39.15-47.65 100.5-44.79c2.38 0.14 4.74 0.32 7.08 0.59c12.63 1.45 24.91 4.73 34.99 11.55   c10.17 6.62 17.76 17.19 21.58 29.84c0 0 4.43 11.14 4.43 20.63s3.77-0.5 3.77-0.5c1.94-7.39 1.56-14.46 0.82-21.9   c-0.79-7.41-2.66-14.93-6.01-22c-3.34-7.06-8.12-13.6-13.88-19.11c-11.62-11.06-26.47-17.69-41.16-21.59   c-7.39-1.96-14.86-3.32-22.3-4.26c-7.45-0.95-14.84-1.42-22.45-1.55c-15.13-0.22-30.87 1.28-46.43 6.29   c-7.77 2.44-15.46 5.81-22.79 10.1c-7.32 4.29-14.18 9.64-20.27 15.77c-12.26 12.27-21.17 27.59-26.45 43.44   c-2.68 7.94-4.58 16.02-5.82 24.17c-0.61 4.08-1.06 8.18-1.33 12.34c-0.13 2.08-0.23 4.18-0.26 6.32l-0.01 3.28l0.05 1.56   l-0.02 0.62l-0.02 1.29l0.02 2.35c0.02 1.54 0.11 2.95 0.19 4.41c0.2 2.85 0.48 5.65 0.89 8.4c0.81 5.51 1.95 10.91 3.51 16.2   c3.12 10.57 7.63 20.8 13.53 30.2c11.85 18.86 28.98 33.75 47.31 44.11c9.21 5.12 18.69 9.4 28.31 12.7   c9.61 3.21 19.3 5.9 28.95 7.75l7.25 1.42l7.22 1.07c4.83 0.79 9.62 1.27 14.41 1.74l12.63 1.25c3.83 0.43 7.61 0.96 11.34 1.61   c14.88 2.65 28.89 7.17 40.96 14.06c12.17 6.73 22.56 15.68 30.77 26.78c8.19 11.09 14.44 24.16 18.57 38.38   c2.06 7.11 3.58 14.49 4.57 21.97c0.52 3.73 0.83 7.49 1.11 11.21c0.13 1.86 0.22 3.7 0.27 5.5l0.04 2.63l0 1.22l-0.01 0.54l0 0.22   l0.01-0.02l-0.07 2.28c0.01-0.22 0.02 0.47 0.02 0.79l-0.01 1.3l-0.09 2.8c-0.08 1.91-0.22 3.89-0.4 5.86   c-0.36 3.96-0.89 7.96-1.57 11.94c-1.35 7.96-3.39 15.79-5.87 23.39c-5.02 15.2-12.58 29.18-22.55 41.05   c-9.9 11.96-22.49 21.58-36.93 28.81c-14.41 7.34-30.79 11.81-47.83 14.6c-8.51 1.36-17.04 2.1-25.51 2.17   c-8.47 0.13-16.9-0.41-25.14-1.87c-4.13-0.71-8.21-1.63-12.21-2.82c-4.03-1.11-7.99-2.48-11.86-4.09   c-7.79-3.14-15.12-7.43-22.12-12.38c-13.89-10.07-25.75-23.68-35.15-39.22c-4.73-7.84-8.95-16.11-12.56-24.73   c-1.45-3.46-6.65-1.99-5.98 1.7c0.02 0.09 0.03 0.19 0.05 0.28c1.74 9.44 4.35 18.78 7.78 27.92c3.42 9.14 7.77 18.04 13.02 26.54   c5.29 8.48 11.61 16.46 18.84 23.73c14.53 14.46 33.12 25.5 53.09 31.56c19.96 6.28 40.89 7.99 61.19 7.07   c10.14-0.45 20.38-1.58 30.59-3.63c10.22-1.99 20.42-4.87 30.4-8.75c19.97-7.7 38.84-20.01 54.25-35.8   c15.44-15.81 27-34.93 35.02-54.88c4.04-10 7.09-20.29 9.37-30.74c1.14-5.23 2.08-10.5 2.8-15.86c0.36-2.68 0.67-5.38 0.92-8.15   l0.32-4.22l0.11-2.22c0.01-0.43 0.03-0.77 0.04-1.17l0.13-1.84l0.1-2.08l0.11-3.97C577.65 462.96 577.64 460.4 577.58 457.86z" />
+                    </Canvas>
+                </Canvas>
+            </Viewbox>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>
