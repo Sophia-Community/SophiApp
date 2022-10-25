@@ -221,7 +221,7 @@ namespace SophiApp.Customisations
         internal const string _362_REDISTRX86_REGISTRY_NAME_PATTERN = "VC,redist.x86,x86";
         internal const string _362_VC_REDISTRX86_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x86)";
         internal const string _500_HEVC_APPX_NAME = "Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
-        internal const string _500_HEVC_APPX_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/AppX/Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
+        internal const string _500_HEVC_APPX_LINK = "https://github.com/Sophia-Community/SophiApp/raw/master/Misc/Microsoft.HEVCVideoExtension_2.0.51121.0_x64__8wekyb3d8bbwe.Appx";
         internal const string _500_UWP_HEVC_VIDEO = "Microsoft.HEVCVideoExtension";
         internal const string _501_CORTANA_STARTUP_PATH = @"Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\Microsoft.549981C3F5F10_8wekyb3d8bbwe\CortanaStartupId";
         internal const string _501_CORTANA_STATE = "State";
