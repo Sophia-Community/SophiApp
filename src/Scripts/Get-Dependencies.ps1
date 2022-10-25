@@ -8,7 +8,7 @@
 	https://github.com/dahall/TaskScheduler
 	https://github.com/JamesNK/Newtonsoft.Json
 #>
-New-Item -Path SophiApp\Binary -ItemType Directory -Force
+New-Item -Path src\Binary -ItemType Directory -Force
 
 # https://www.nuget.org/packages/Microsoft.Dism
 Write-Verbose -Message Microsoft.Dism -Verbose
