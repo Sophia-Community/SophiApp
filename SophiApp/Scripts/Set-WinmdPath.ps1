@@ -31,6 +31,16 @@ function Set-BinaryLink
 	}
 }
 
-Set-BinaryLink -CsProjPath "SophiApp\SophiApp\SophiApp.csproj" -SearchPattern "Windows.winmd" -ChangePattern "      <HintPath>SophiApp\Binary\Windows.winmd</HintPath>"
-Set-BinaryLink -CsProjPath "SophiApp\SophiApp\SophiApp.csproj" -SearchPattern "Microsoft.Deployment.WindowsInstaller.dll" -ChangePattern "      <HintPath>SophiApp\Binary\Microsoft.Deployment.WindowsInstaller.dll</HintPath>"
-Set-BinaryLink -CsProjPath "SophiApp\SophiApp\SophiApp.csproj" -SearchPattern "System.Management.Automation.dll" -ChangePattern "      <HintPath>SophiApp\Binary\Microsoft.Deployment.WindowsInstaller.dll</HintPath>"
+$WinMdSearchPattern = "Windows.winmd"
+$WinmdChangePattern = "      <HintPath>{0}\{1}</HintPath>" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\Windows.winmd"
+
+$WindowsInstallerPattern = "Microsoft.Deployment.WindowsInstaller.dll"
+$WindowsInstallerChangePattern = "      <HintPath>{0}\{1}</HintPath>" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\Microsoft.Deployment.WindowsInstaller.dll"
+
+$SystemManagementAutomationPattern = "System.Management.Automation.dll"
+$SystemManagementAutomationChangePattern = "      <HintPath>{0}\{1}</HintPath>" -f (Split-Path -Path $PSScriptRoot -Parent), "Binary\System.Management.Automation.dll"
+
+
+Set-BinaryLink -CsProjPath $SophiAppCs -SearchPattern $WinMdSearchPattern -ChangePattern $WinmdChangePattern
+Set-BinaryLink -CsProjPath $SophiAppCs -SearchPattern $WindowsInstallerPattern -ChangePattern $WindowsInstallerChangePattern
+Set-BinaryLink -CsProjPath $SophiAppCs -SearchPattern $SystemManagementAutomationPattern -ChangePattern $SystemManagementAutomationChangePattern
