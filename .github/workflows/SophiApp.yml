@@ -52,7 +52,7 @@ jobs:
       run: |
         Get-ChildItem -Path SophiApp\SophiApp\bin\Release -Exclude @("*.exe", "*.config") | Remove-Item -Force -Recurse -Confirm:$false
         . SophiApp\Scripts\Copy-Dependencies.ps1
-        
+
     - name: Compressing folder
       id: zip_hash
       run: |

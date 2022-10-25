@@ -1,10 +1,4 @@
-<#
-	.SYNOPSIS
-	Set path to binary files for SophiApp.csproj
-
-	.LINK
-	https://github.com/Inestic
-#>
+# Set path to binary files for SophiApp.csproj
 function Set-BinaryLink
 {
 	[CmdletBinding()]
@@ -28,19 +22,12 @@ function Set-BinaryLink
 
 	process
 	{
-		if (Test-Path -Path $CsProjPath)
-		{
-			$Content = Get-Content -Path $CsProjPath -Encoding UTF8
-			$LineNumber = ($Content | Select-String -Pattern $SearchPattern | Select-Object -Last 1).LineNumber
-			$FormatedString = $Content[$LineNumber - 1]
-			$Content[$LineNumber - 1] = $ChangePattern
+		$Content = Get-Content -Path $CsProjPath -Encoding UTF8
+		$LineNumber = ($Content | Select-String -Pattern $SearchPattern | Select-Object -Last 1).LineNumber
+		$FormatedString = $Content[$LineNumber - 1]
+		$Content[$LineNumber - 1] = $ChangePattern
 
-			Set-Content -Path $CsProjPath -Value $Content -Confirm:$false -Encoding UTF8 -Force
-		}
-		else
-		{
-			Write-Warning -Message "File: $CsProjPath not found!"
-		}
+		Set-Content -Path $CsProjPath -Value $Content -Confirm:$false -Encoding UTF8 -Force
 	}
 }
 

@@ -89,3 +89,6 @@ $Parameters = @{
 	Destination = "SophiApp\Binary"
 }
 Copy-Item @Parameters
+
+(get-childitem SophiApp\Binary).fullname
+write-host "D:\a\SophiApp\SophiApp\SophiApp\SophiApp\SophiApp\Binary\Windows.winmd"
