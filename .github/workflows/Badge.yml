@@ -34,7 +34,7 @@ jobs:
 
       - name: Get the Numbers
         run: |
-          $JSON    = & "$PSScriptRoot\cloc.exe" "SophiApp/SophiApp" --exclude-list-file=".clocignore" --json | ConvertFrom-Json
+          $JSON    = & "$PSScriptRoot\cloc.exe" "src/SophiApp" --exclude-list-file=".clocignore" --json | ConvertFrom-Json
           $blank   = $JSON.SUM.blank
           $comment = $JSON.SUM.comment
           $code    = $JSON.SUM.code
