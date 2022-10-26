@@ -9,9 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceProcess;
-using System.Text;
 using System.Threading;
-using Windows.Data.Json;
 using static SophiApp.Customisations.CustomisationConstants;
 
 namespace SophiApp.Customisations
@@ -690,9 +688,9 @@ namespace SophiApp.Customisations
                                      ? RegHelper.KeyExist(RegistryHive.LocalMachine, POLICY_BLOCKED_PATH, WIN_TERMINAL_ID)
                                         ? throw new ApplicationBlockedByPolicyException(UWP_WINDOWS_TERMINAL)
                                         : UwpHelper.GetVersion(UWP_WINDOWS_TERMINAL) >= MIN_TERMINAL_SUPPORT_VERSION
-                                            && UwpHelper.GetVersion(UWP_WINDOWS_TERMINAL).Minor >= MIN_TERMINAL_SUPPORT_VERSION.Minor
+                                            && UwpHelper.GetVersion(UWP_WINDOWS_TERMINAL) >= MIN_TERMINAL_SUPPORT_VERSION
                                                 ? JsonConvert.DeserializeObject<WinTerminalSettingsDto>(File.ReadAllText(TERMINAL_SETTINGS_JSON_PATH)).Profiles.Defaults.Elevate
-                                                : true
+                                                : throw new WrongApplicationVersionException(UWP_WINDOWS_TERMINAL, UwpHelper.GetVersion(UWP_WINDOWS_TERMINAL), MIN_TERMINAL_SUPPORT_VERSION)
                                      : throw new UwpAppNotFoundException(UWP_WINDOWS_TERMINAL);
 
         public static bool _928() => RegHelper.GetStringValue(RegistryHive.CurrentUser, _928_WIN10_CONTEXT_MENU_PATH, null) == string.Empty;

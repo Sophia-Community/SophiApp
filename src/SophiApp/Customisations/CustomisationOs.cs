@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SophiApp.Dto;
 using SophiApp.Helpers;
 using System;
@@ -1544,6 +1546,22 @@ namespace SophiApp.Customisations
             }
 
             RegHelper.SetValue(RegistryHive.LocalMachine, POLICY_BLOCKED_PATH, WIN_TERMINAL_ID, _926_WINDOWS_TERMINAL, RegistryValueKind.String);
+        }
+
+        public static void _927(bool IsChecked)
+        {
+            JObject config = JsonConvert.DeserializeObject(File.ReadAllText(TERMINAL_SETTINGS_JSON_PATH)) as JObject;
+            JToken elevate = config.SelectToken("profiles.defaults.elevate");
+
+            if (elevate == null)
+            {
+                var defaults = config.SelectToken("profiles.defaults") as JObject;
+                defaults.Add(new JProperty("elevate", string.Empty));
+                elevate = config.SelectToken("profiles.defaults.elevate");
+            }
+
+            elevate.Replace(IsChecked);
+            File.WriteAllText(TERMINAL_SETTINGS_JSON_PATH, config.ToString());
         }
 
         public static void _928(bool IsChecked)

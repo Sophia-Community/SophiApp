@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Windows.ApplicationModel;
 
 namespace SophiApp.Customisations
 {
@@ -714,6 +712,6 @@ else
         internal static readonly string MS_PAINT_EXE = $@"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\mspaint.exe";
         internal static byte[] _334_DISABLED_VALUE = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
         internal static byte[] _823_ZIP_DATA = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        internal static readonly string TERMINAL_SETTINGS_JSON_PATH = $@"{ Environment.ExpandEnvironmentVariables(LOCAL_APPDATA) }\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
+        internal static readonly string TERMINAL_SETTINGS_JSON_PATH = $@"{Environment.ExpandEnvironmentVariables(LOCAL_APPDATA)}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
     }
 }

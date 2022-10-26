@@ -4,7 +4,7 @@ namespace SophiApp.Helpers
 {
     internal class AdapterTypeInternalOrNullException : Exception
     {
-        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null. You adapter type is: { dacType }")
+        public AdapterTypeInternalOrNullException(string dacType) : base($"Video adapter DAC type should not be a internal or null. You adapter type is: {dacType}")
         {
         }
     }
@@ -201,6 +201,13 @@ namespace SophiApp.Helpers
     internal class WindowsEditionNotSupportedException : Exception
     {
         public WindowsEditionNotSupportedException() : base("Unsupported Windows edition")
+        {
+        }
+    }
+
+    internal class WrongApplicationVersionException : Exception
+    {
+        public WrongApplicationVersionException(string name, Version current, Version expected) : base($"The {name} version is {current}, minimal supported version {expected}")
         {
         }
     }
