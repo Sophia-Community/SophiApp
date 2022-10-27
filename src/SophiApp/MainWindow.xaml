@@ -303,7 +303,7 @@
                     <views:ViewConditionsTemplate.TextContent>
                         <StackPanel>
                             <TextBlock Text="{DynamicResource Conditions.OsIsInfected}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{DynamicResource Conditions.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{DynamicResource Conditions.OsFilesNotCorrupted.ReinstallOs}" Style="{StaticResource BoldText}" Margin="{StaticResource MarginViewConditionsText}" HorizontalAlignment="Center" />
                             <controls:ActorLink Margin="{StaticResource MarginViewConditionsText}"
                                             HorizontalAlignment="Center"
                                             Actor="{DynamicResource Conditions.OsIsInfected.Link}"

@@ -19,7 +19,6 @@
     <system:String x:Key="Conditions.OsIsInfected.More">Mehr lesen:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">Ich bin mir des Risikos bewusst und übernehme die Verantwortung für eventuelle Schäden</system:String>
-    <system:String x:Key="Conditions.ReinstallOs">Betriebssystem vorsichtshalber neu installieren.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender defekt oder aus dem Betriebssystem entfernt</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Die Stabilität des Windows-Betriebssystems kann durch die Verwendung des</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater-Skripts von Sycnex beeinträchtigt worden sein. Betriebssystem vorsichtshalber neu installieren.</system:String>
@@ -95,5 +94,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Aufgabenplanung öffnen</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Bitte PC nach dem Anwenden der Einstellungen neu starten</system:String>
     <system:String x:Key="Localization.Loading">Lesen der aktuellen Einstellungen...</system:String>
-    <system:String x:Key="WindowsTerminal.OpenIsAdmin">In Windows Terminal öffnen</system:String>
 </ResourceDictionary>

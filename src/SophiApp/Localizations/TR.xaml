@@ -18,7 +18,6 @@
     <system:String x:Key="Conditions.OsIsInfected.More">Devamını oku:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">Riski anlıyorum ve olası herhangi bir hasardan sorumlu olmayı kabul ediyorum</system:String>
-    <system:String x:Key="Conditions.ReinstallOs">Her ihtimale karşı işletim sistemini yeniden yükleyin.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender bozuk veya işletim sisteminden kaldırıldı</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Windows işletim sistemi kararlılığı aşağıdakiler kullanılarak tehlikeye atılmış olabilir:</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex'ten Windows10Debloater komut dosyası. Her ihtimale karşı işletim sistemini yeniden yükleyin.</system:String>
@@ -95,5 +94,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Görev Zamanlayıcıyı Aç</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Ayarları uyguladıktan sonra lütfen bilgisayarınızı yeniden başlatın</system:String>
     <system:String x:Key="Localization.Loading">Geçerli ayarlar okunuyor...</system:String>
-    <system:String x:Key="WindowsTerminal.OpenIsAdmin">Windows Terminalinde Aç</system:String>
 </ResourceDictionary>

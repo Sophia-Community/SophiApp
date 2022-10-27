@@ -18,7 +18,6 @@
     <system:String x:Key="Conditions.OsIsInfected.More">Докладніше:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">Я усвідомлюю ризик і згоден нести відповідальність за будь-яку можливу шкоду</system:String>
-    <system:String x:Key="Conditions.ReinstallOs">Про всяк випадок перевстановіть ОС.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender пошкоджено або видалено з ОС</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабільність Вашої ОС могла бути порушена використанням скрипту</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater від Sycnex. Про всяк випадок перевстановіть ОС.</system:String>
@@ -95,5 +94,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Відкрити Планувальник завдань</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Після застосування налаштувань перезавантажте ваш ПК</system:String>
     <system:String x:Key="Localization.Loading">Зчитування поточних налаштувань...</system:String>
-    <system:String x:Key="WindowsTerminal.OpenIsAdmin">Відкрити у Терміналі Windows</system:String>
 </ResourceDictionary>

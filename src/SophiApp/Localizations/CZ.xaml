@@ -19,7 +19,6 @@
     <system:String x:Key="Conditions.OsIsInfected.More">Číst více:</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">Rozumím rizikům a přebírám veškerou zodpovědnost za jakékoliv poškození</system:String>
-    <system:String x:Key="Conditions.ReinstallOs">Pro jistotu reinstalujte operační systém.</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender je poškození nebo byl odebrán z operačního systému</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Stabilita operačního systému Windows mohla být ohrožena použitím</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">skriptu Windows10Debloater od Sycnex. Pro jistotu reinstalujte operační systém.</system:String>
@@ -95,5 +94,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">Otevřít naplánované úlohy</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">Prosím restartujte počítač po použití nastavení</system:String>
     <system:String x:Key="Localization.Loading">Načítá se aktuální nastavení...</system:String>
-    <system:String x:Key="WindowsTerminal.OpenIsAdmin">Otevřít v příkazové řádce Windows</system:String>
 </ResourceDictionary>
