@@ -98,7 +98,8 @@
 | Windows 11 Insider Preview 23H2 |      2023 Update        |   25206+    |             | Home/Pro/Enterprise      |
 | Windows 11 22H2                 |      2022 Update        |   22621+    |             | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                         | 22000.739+  |             | Home/Pro/Enterprise      |
-| Windows 10 21H2                 |   October 2021 Update   | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
+| Windows 10 22H2                 | 2022 Update             | 19045.2006+ |     x64     | Home/Pro/Enterprise      |
+| Windows 10 21H2                 | October 2021 Update     | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
 
 **Note**: Сверьтесь с историей обновлений [Windows 10](https://support.microsoft.com/ru-ru/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/ru-ru/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/ru-ru/windows-insider/flight-hub/).
 
