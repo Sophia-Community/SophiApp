@@ -1100,6 +1100,7 @@ namespace SophiApp.Customisations
 
             var volumeCachesKeys = RegHelper.GetSubKeyNames(RegistryHive.LocalMachine, _700_VOLUME_CACHES_PATH);
             RegHelper.TryDeleteKey(RegistryHive.LocalMachine, volumeCachesKeys, _700_STATE_FLAGS_1337);
+            ScheduledTaskHelper.TryDeleteFolder(SOPHIA_SCRIPT_SCHEDULED_FOLDER, SOPHIAPP_SCHEDULED_FOLDER);
 
             if (IsChecked)
             {

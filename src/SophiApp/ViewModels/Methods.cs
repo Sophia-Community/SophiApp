@@ -70,13 +70,14 @@ namespace SophiApp.ViewModels
                 if (token.IsCancellationRequested.Invert())
                 {
                     var totalStopWatch = Stopwatch.StartNew();
-                    CustomActions.Clear();
                     OnPropertyChanged(CustomActionsPropertyName);
                     await GetTextedElementsStatusAsync();
                     GetUwpElements();
                     OsHelper.PostMessage();
                     OsHelper.RefreshEnvironment();
                     OsHelper.SafelyRestartExplorerProcess();
+                    RunPostRestartExplorerActions();
+                    CustomActions.Clear();
                     SetInfoPanelVisibility(InfoPanelVisibility.RestartNecessary);
                     SetControlsHitTest();
                     totalStopWatch.Stop();
@@ -460,6 +461,14 @@ namespace SophiApp.ViewModels
 
             CustomActions.AddAction(uwp.PackageFullName, UwpHelper.RemovePackage, UwpForAllUsersState == ElementStatus.CHECKED);
             OnPropertyChanged(CustomActionsPropertyName);
+        }
+
+        private void RunPostRestartExplorerActions()
+        {
+            var meetAction = CustomActions.Find(action => action.Id == 239);
+
+            if (meetAction?.Parameter ?? false)
+                meetAction.Invoke();
         }
 
         private void SetCustomAction(RadioGroup group)

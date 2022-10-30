@@ -75,6 +75,7 @@ namespace SophiApp.Helpers
             {
                 try
                 {
+                    TryDeleteTask(FindAll(task => task.Folder.Name == folder));
                     TryDeleteFolder(folder);
                 }
                 catch (Exception)
@@ -101,6 +102,20 @@ namespace SophiApp.Helpers
                 try
                 {
                     DeleteTask(task, false);
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        internal static void TryDeleteTask(IEnumerable<Task> tasks)
+        {
+            foreach (var task in tasks)
+            {
+                try
+                {
+                    TaskService.Instance.RootFolder.DeleteTask(task.Path, false);
                 }
                 catch (Exception)
                 {

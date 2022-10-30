@@ -654,6 +654,8 @@ else
         internal const string SIUF_PATH = @"SOFTWARE\Microsoft\Siuf\Rules";
         internal const string SIUF_PERIOD = "NumberOfSIUFInPeriod";
         internal const string SOPHIA_SCHEDULED_PATH = "Sophia";
+        internal const string SOPHIA_SCRIPT_SCHEDULED_FOLDER = "Sophia Script";
+        internal const string SOPHIAPP_SCHEDULED_FOLDER = "SophiApp";
         internal const string START_LAYOUT = "Start_Layout";
         internal const byte START_LAYOUT_DEFAULT_VALUE = 0;
         internal const byte START_LAYOUT_PINS_VALUE = 1;
