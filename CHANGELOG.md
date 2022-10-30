@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 1.0.84 — 21.09.2022
 
+* Small code refactoring;
+* Code refactoring for CI/CD scripts;
+* Fixed old bug in Meet Now function when it didn't save registry key value;
+* The function to open `Windows Terminal` as admin in the context menu item as administrator is back;
+  * It fully relies on `Windows Terminal` feature by editing its config. No more 3rd part context menu items.
+* Improved all scheduled tasks creation;
+  * Unified tasks with [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows): they are created now in `Sophia` folder;
+  * When you remove all tasks in the `Task Scheduler`, folder will be removed too;
+  * If you run the app, it will show that you haven't any scheduled tasks created due to they are created in a new folder by default. Create them again, and all your old tasks will be removed without traces.
+
+## 1.0.84 — 21.09.2022
+
 * Action config was totally [re-written](https://github.com/Sophia-Community/SophiApp/blob/master/.github/workflows/SophiApp.yml);
   * Closes #128.
 * Fixed the HEVC codec function not working on the latest Windows 11 22H2 build;
