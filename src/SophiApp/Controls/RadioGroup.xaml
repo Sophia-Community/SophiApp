@@ -17,7 +17,7 @@
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="0.5" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Unaccent}" />
-            <Setter Property="Margin" Value="0,15,0,0" />
+            <Setter Property="Margin" Value="0,0,0,0" />
         </Style>
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="Orientation" Value="Vertical" />
@@ -38,15 +38,18 @@
     <UserControl.Template>
         <ControlTemplate>
             <StackPanel>
+                <Border />
                 <Grid
                     x:Name="HeaderWrapper"
                     MouseEnter="Header_MouseEnter"
-                    MouseLeave="Header_MouseLeave">
+                    MouseLeave="Header_MouseLeave"
+                    MinHeight="15">
                     <TextBlock
                         x:Name="TextBlockHeader"
-                        Style="{DynamicResource NormalText}"
+                        Style="{DynamicResource BoldText}"
                         Text="{Binding Header}"
-                        TextWrapping="Wrap" />
+                        TextWrapping="Wrap"
+                        Margin="0, 10, 5, 10" />
                     <Grid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Click="ContextMenu_HeaderCopyClick" Header="{DynamicResource Localization.Element.ContextMenu.Header.Copy}" />
@@ -54,7 +57,7 @@
                         </ContextMenu>
                     </Grid.ContextMenu>
                 </Grid>
-                <Border x:Name="BorderLine" />
+                <Border />
                 <ItemsControl ItemsSource="{Binding ChildElements}">
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type models:RadioButton}">
