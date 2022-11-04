@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.87 — 04.11.2022
+
+* Finally, headings are now bold 😸;
+  * #150 closed.
+
+![light](https://user-images.githubusercontent.com/10544660/199981391-3401e761-177a-4dc1-af56-93100856f52e.png)
+![dark](https://user-images.githubusercontent.com/10544660/199981407-3d7bec70-3476-4d4f-ba78-f441830ee41e.png)
+
 ## 1.0.86 — 30.10.2022
 
 * Small code refactoring;
