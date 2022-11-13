@@ -707,7 +707,7 @@
     "Id": 125,
     "Header": {
       "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
-      "RU": "Предложить способы завершения настройки этого устрйоства для наиболее эффектиивного использования Windows",
+      "RU": "Предложить способы завершения настройки этого устройства для наиболее эффектиивного использования Windows",
       "DE": "Vorschläge machen, wie ich mein Gerät einrichten kann",
       "UA": "Відображати пропозиції налаштування пристрою",
       "IT": "Offri suggerimenti su come posso personalizzare il mio dispositivo",
@@ -4526,26 +4526,26 @@
   {
     "Id": 360,
     "Header": {
-      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x32",
-      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x32",
-      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x32",
-      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x32",
-      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x32",
-      "TR": "En son Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x32",
-      "CZ": "Nejnovější balíčky Microsoft Visual C++ Redistributable 2015–2022 x32",
-      "FR": "Les derniers packages redistribuables Microsoft Visual C++ 2015–2022 x32",
-      "zh_CN": "最新的 Microsoft Visual C++ Redistributable Packages 2015–2022 x32"
+      "EN": "The latest Microsoft Visual C++ Redistributable Packages 2015–2022 x86",
+      "RU": "Последняя версия распространяемых пакетов Microsoft Visual C++ 2015–2022 x86",
+      "DE": "Die neuesten Microsoft Visual C++ Redistributable Pakete 2015-2022 x86",
+      "UA": "Остання версія розповсюджуваних пакетів Microsoft Visual C++ 2015–2022 x86",
+      "IT": "Gli ultimi pacchetti ridistribuibili di Microsoft Visual C++ 2015–2022 x86",
+      "TR": "En son Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x86",
+      "CZ": "Nejnovější balíčky Microsoft Visual C++ Redistributable 2015–2022 x86",
+      "FR": "Les derniers packages redistribuables Microsoft Visual C++ 2015–2022 x86",
+      "zh_CN": "最新的 Microsoft Visual C++ Redistributable Packages 2015–2022 x86"
     },
     "Description": {
-      "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x32 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
-      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x32 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы.",
-      "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x32 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien.",
-      "UA": "Пакети Visual C++ Redistributable 2015–2022 x32 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли.",
-      "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x32 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file.",
-      "TR": "Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x32, Microsoft kaynağından (internet bağlantısı gerekir) indirilecek ve sessizce yüklenecektir. Visual Studio 2015'ten bu yana Visual Studio sürümleri, aynı yeniden dağıtılabilir dosyaları paylaşır.",
-      "CZ": "Balíčky Microsoft Visual C++ Redistributable 2015–2022 x32 budou staženy z úložiště Microsoft (vyžadováno připojení k internetu) a nainstalovány na pozadí. Verze programu Visual Studio od verze Visual Studio 2015 sdílí stejné redistribuovatelné soubory.",
-      "FR": "Les packages redistribuables Microsoft Visual C++ 2015–2022 x32 seront téléchargés à partir de la ressource Microsoft (connexion internet requise) et installés en mode silencieux. Les versions de Visual Studio depuis Visual Studio 2015 partagent les mêmes fichiers redistribuables.",
-      "zh_CN": "Microsoft Visual C++ Redistributable Packages 2015–2022 x32 将从 Microsoft 资源（需要 Internet 连接）下载并静默安装。 自 Visual Studio 2015 起的 Visual Studio 版本共享相同的可再发行文件。"
+      "EN": "The Microsoft Visual C++ Redistributable Packages 2015–2022 x86 will be downloaded from the Microsoft resource (the internet connection required) and installed silently. Visual Studio versions since Visual Studio 2015 share the same redistributable files.",
+      "RU": "Пакеты Visual C++ Redistributable 2015–2022 x86 будут скачаны с ресурса Microsoft (необходим доступ в интернет) и установлены в тихом режиме. Начиная с Visual Studio 2015, распространяемые компоненты C++ используют одни и те же файлы.",
+      "DE": "Microsoft Visual C++ Redistributable Packages 2015–2022 x86 wird vom Microsoft-Website heruntergeladen (eine Internetverbindung ist erforderlich) und im Hintergrund installiert. Die verteilte C++-Komponenten verwenden die gleichen Redistributions-Dateien.",
+      "UA": "Пакети Visual C++ Redistributable 2015–2022 x86 будуть завантажені з ресурсу Microsoft (необхідний доступ до Інтернету) та встановлені в тихому режимі. Починаючи з Visual Studio 2015, компоненти C++, що розповсюджуються, використовують одні і ті ж файли.",
+      "IT": "La Microsoft Visual C++ Redistributable Packages 2015–2022 x86 Verrà scaricato dai server Microsoft (la connessione Internet è richiesta) e installali in silenziosamente. Visual Studio Versioni da Visual Studio 2015 Condividi gli stessi file.",
+      "TR": "Microsoft Visual C++ Yeniden Dağıtılabilir Paketleri 2015–2022 x86, Microsoft kaynağından (internet bağlantısı gerekir) indirilecek ve sessizce yüklenecektir. Visual Studio 2015'ten bu yana Visual Studio sürümleri, aynı yeniden dağıtılabilir dosyaları paylaşır.",
+      "CZ": "Balíčky Microsoft Visual C++ Redistributable 2015–2022 x86 budou staženy z úložiště Microsoft (vyžadováno připojení k internetu) a nainstalovány na pozadí. Verze programu Visual Studio od verze Visual Studio 2015 sdílí stejné redistribuovatelné soubory.",
+      "FR": "Les packages redistribuables Microsoft Visual C++ 2015–2022 x86 seront téléchargés à partir de la ressource Microsoft (connexion internet requise) et installés en mode silencieux. Les versions de Visual Studio depuis Visual Studio 2015 partagent les mêmes fichiers redistribuables.",
+      "zh_CN": "Microsoft Visual C++ Redistributable Packages 2015–2022 x86 将从 Microsoft 资源（需要 Internet 连接）下载并静默安装。 自 Visual Studio 2015 起的 Visual Studio 版本共享相同的可再发行文件。"
     },
     "Type": "MsCppPackageButtonGroup",
     "Tag": "System",
