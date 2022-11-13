@@ -138,37 +138,34 @@ scoop install sophiapp
 
 ## Key features
 
-* Dynamic rendering UI—nothing is hardcoded. 👻
 * 130+ tweaks. ⭐
+* Configure your Windows by officially documented methods.
+* SophiApp has a dynamically rendered UI—nothing is hardcoded. 👻
+* SophiApp displays the current state of every feature for your Windows.
 * `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) pattern.
 * Multithreading support.
 * Checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio.
   * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license).
 * All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into your GitHub account to be able to view Actions logs);
-* The app shows the `actual` state of every feature in the UI.
 * High resolutions support.
 * Built-in search engine.
   * Functions can be found by searching their headers and descriptions. [GIF](#searching-feature)
 * Dark & light themes support.
   * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
-* Set up Privacy & Telemetry.
-* Turn off diagnostics tracking scheduled tasks.
-* Set up UI & Personalization.
+* Configure Privacy & Telemetry.
+* Configure UI & Personalization of your system.
 * Install the latest `Microsoft Visual C++ Redistributable Packages 2015–2022 x64`;
 * Install the latest `.NET Desktop Runtime 6 x86/x64`;
 * Uninstall OneDrive "correctly".
-* Uninstall UWP apps displaying localized packages names.
-  * An UWP apps list is rendered dynamically using local icons
-* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) to be able to open .heic and .heif formats.
-* Create a `Windows Cleanup` and `Windows Cleanup Notification` scheduled tasks for Windows cleaning up unused files and updates.
-  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-windows-cleanup-scheduled-task)
-* Create tasks in the Task Scheduler to clean
-  * `%SystemRoot%\SoftwareDistribution\Download`
-  * `%TEMP%`
-* Configure the Windows security.
+* Uninstall UWP apps using a dynamically rendered list of apps with localized packages names and native icons.
+* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) to let you open .heic and .heif formats.
+* Create a `Windows Cleanup` and `Windows Cleanup Notification` to clean up Windows unused files and updates using a native toast notification.
+  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-windows-cleanup-scheduled-task).
+* Create scheduled tasks to clean `%SystemRoot%\SoftwareDistribution\Download` & `%TEMP%`.
+* Configure Windows Security.
 * The ability to copy functions' descriptions or headers.
-* Many more File Explorer and context menu "deep" tweaks.
+* Many unique tweaks.
 
 ## Videos
 
