@@ -13,12 +13,12 @@
     <system:String x:Key="Conditions.OsBuildVersion.Supported">SophiApp 支持 Windows 10 21H2/22H2,</system:String>
     <system:String x:Key="Conditions.OsBuildVersion.SupportedInsider">Windows 11 21H2, 22H2 和 Windows 11 预览体验计划版本。</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.IsCorrupted">某些 Windows 组件可能已损坏。</system:String>
+    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">请运行 Windows Update 以将操作系统更新到最新版本。</system:String>
     <system:String x:Key="Conditions.OsFilesNotCorrupted.ReinstallOs">请重新安装操作系统。</system:String>
     <system:String x:Key="Conditions.OsIsInfected">您的操作系统可能已通过 Win 10 Tweaker 中的后门被感染。</system:String>
     <system:String x:Key="Conditions.OsIsInfected.More">阅读更多：</system:String>
     <system:String x:Key="Conditions.OsIsInfected.Link">https://itnan.ru/post.php?c=1&amp;p=557388</system:String>
     <system:String x:Key="Conditions.RiskAcceptance">我了解风险并同意对任何可能的损害负责</system:String>
-    <system:String x:Key="Conditions.ReinstallOs">以防万一，请重新安装操作系统。</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender 损坏或从操作系统中删除</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Windows 操作系统的稳定性可能已因使用而受到影响</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">来自 SYcnex 的 Windows10Debloater 脚本。 以防万一，请重新安装操作系统。</system:String>
@@ -26,7 +26,6 @@
     <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp 需要 Windows 10 19044.1706 及更高版本。</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp 需要 Windows 11 22000.739 及更高版本。</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">受支持的最低 Windows 11 Insider Preview 版本为 22509。</system:String>
-    <system:String x:Key="Conditions.OsBuildVersion.RunUpdate">请运行 Windows Update 以将操作系统更新到最新版本。</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">打开 Windows 更新</system:String>
     <system:String x:Key="Localization.Privacy">隐私</system:String>
     <system:String x:Key="Localization.Personalization">个性化</system:String>
@@ -40,19 +39,14 @@
     <system:String x:Key="Localization.Settings">设置</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">正在应用时</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">发生错误。</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Description">清理 %SystemRoot%\SoftwareDistribution\Download 文件夹。</system:String>
-    <system:String x:Key="Localization.SoftwareDistributionTask.Event">Windows 更新缓存已成功删除。</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Description">清理临时文件夹。</system:String>
-    <system:String x:Key="Localization.ClearTempTask.Event">临时文件夹已成功清理。</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">关于清理 Windows 未使用的文件和更新的弹出通知提醒。</system:String>
-    <system:String x:Key="Localization.CleanupTask.Description">使用内置的磁盘清理应用程序清理 Windows 未使用的文件和更新。</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">重要信息</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">运行任务以清理 Windows 未使用的文件和更新？</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Event">Windows 清理不会花费很长时间。 此通知将在 30 天后重新出现。</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.SnoozeInterval">选择提醒间隔</system:String>
-    <system:String x:Key="Localization.Time.FourHours">4 小时</system:String>
-    <system:String x:Key="Localization.Time.HalfHour">30 分钟</system:String>
-    <system:String x:Key="Localization.Time.Minute">1 分钟</system:String>
+    <system:String x:Key="Localization.CleanupTask.Description">使用内置的磁盘清理应用程序清理 Windows 未使用的文件和更新。</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">关于清理 Windows 未使用的文件和更新的弹出通知提醒。</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Event">Windows 更新缓存已成功删除。</system:String>
+    <system:String x:Key="Localization.SoftwareDistributionTask.Description">清理 %SystemRoot%\SoftwareDistribution\Download 文件夹。</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Description">清理临时文件夹。</system:String>
+    <system:String x:Key="Localization.ClearTempTask.Event">临时文件夹已成功清理。</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">运行</system:String>
     <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
     <system:String x:Key="Localization.About.MadeWith">用心开发</system:String>
@@ -95,5 +89,4 @@
     <system:String x:Key="Localization.ViewTaskScheduler.Open">打开任务计划程序</system:String>
     <system:String x:Key="Localization.Customizations.RebootRequired">请在应用设置后重新启动您的计算机</system:String>
     <system:String x:Key="Localization.Loading">正在读取当前设置...</system:String>
-    <system:String x:Key="WindowsTerminal.OpenIsAdmin">在 Windows 终端中打开</system:String>
 </ResourceDictionary>
