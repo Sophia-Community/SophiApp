@@ -39,7 +39,7 @@
     <system:String x:Key="Localization.Settings">Paramètres</system:String>
     <system:String x:Key="Localization.ViewApplyingException.InApplying">Lors de l'application</system:String>
     <system:String x:Key="Localization.ViewApplyingException.HasException">une erreur s'est produite.</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Nettoyer Windows</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Title">Nettoyage de Windows</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Exécuter la tâche pour nettoyer les fichiers et les mises à jour inutilisés de Windows?</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Nettoie les fichiers inutilisés de Windows et les mises à jour à l'aide de l'application de nettoyage de disque intégrée.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Rappel de notification sur le nettoyage des fichiers et mises à jour inutilisés de Windows.</system:String>
