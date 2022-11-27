@@ -203,7 +203,7 @@ scoop install sophiapp
 
 ## Переклад
 
-* Ви можете перекласти UI на вашу мову, взявши за основу один з файлів [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/Src/SophiApp/Localizations), а також новий файл [ .xaml](https://github.com/Sophia-Community/SophiApp/tree/master/Src/SophiApp/Localizations).
+* Ви можете перекласти UI на вашу мову, взявши за основу один з файлів [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations), а також новий файл [ .xaml](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations).
 
 ## Медіа
 
