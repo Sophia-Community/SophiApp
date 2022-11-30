@@ -12,7 +12,7 @@ namespace SophiApp.Helpers
             var toast = cleanupTaskToast.Split(delimiter);
             toast[6] = toast[6].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Title")}");
             toast[9] = toast[9].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.EventTitle")}");
-            toast[27] = toast[27].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Run")}");
+            toast[16] = toast[16].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Run")}");
             return string.Join("", toast);
         }
 

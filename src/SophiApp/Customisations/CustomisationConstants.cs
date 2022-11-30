@@ -310,15 +310,10 @@ $Process.Start() | Out-Null";
         internal const string _700_CLEANUP_TOAST_TASK_ARGS = @"-WindowStyle Hidden -Command [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
 [xml]$ToastTemplate = @""""""
-<toast duration=""""""Long"""""" scenario=""""""reminder"""""">
+<toast duration=""""""Long"""""">
 	<visual>
-		<binding template = """"""ToastGeneric"""""" >
-            <text>*</text>
-			<group>
-				<subgroup>
-					<text hint-style=""""""title"""""" hint-wrap=""""""true"""""">*</text>
-				</subgroup>
-			</group>
+		<binding template=""""""ToastGeneric"""""">
+			<text>*</text>
 			<group>
 				<subgroup>
 					<text hint-style=""""""body"""""" hint-wrap=""""""true"""""">*</text>
@@ -326,23 +321,17 @@ $Process.Start() | Out-Null";
 			</group>
 		</binding>
 	</visual>
-	<audio src=""""""ms-winsoundevent:notification.default""""""/>
-    <actions>
-        <input id=""""""SnoozeTimer"""""" type=""""""selection"""""" title=""""""*"""""" defaultInput=""""""1"""""">
-			<selection id=""""""1"""""" content=""""""*"""""" />
-			<selection id=""""""30"""""" content=""""""*"""""" />
-			<selection id=""""""240"""""" content=""""""*"""""" />
-		</input>
-		<action activationType=""""""system"""""" arguments=""""""snooze"""""" hint-inputId=""""""SnoozeTimer"""""" content="""""""""""" id=""""""test-snooze""""""/>
-		<action arguments=""""""WindowsCleanup:"""""" content=""""""*"""""" activationType=""""""protocol""""""/>
-		<action arguments=""""""dismiss"""""" content="""""""""""" activationType=""""""system""""""/>
+	<audio src=""""""ms-winsoundevent:notification.default"""""" />
+	<actions>
+		<action content=""""""*"""""" arguments=""""""WindowsCleanup:"""""" activationType=""""""protocol""""""/>
+		<action content="""""""""""" arguments=""""""dismiss"""""" activationType=""""""system""""""/>
 	</actions>
 </toast>
 """"""@
 $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""Sophia"""""").Show($ToastMessage)";
 
         internal const string _700_EDIT_FLAGS = "EditFlags";
         internal const uint _700_EDIT_FLAGS_VALUE = 2162688;
@@ -380,7 +369,7 @@ Get-ChildItem -Path $env:SystemRoot\SoftwareDistribution\Download -Recurse -Forc
 $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""Sophia"""""").Show($ToastMessage)";
 
         internal const string _701_SOPHIA_SOFTWARE_DISTRIBUTION_TASK = "SoftwareDistribution";
         internal const byte _702_60_DAYS_INTERVAL = 60;
@@ -406,7 +395,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"""""").Show($ToastMessage)";
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""""""Sophia"""""").Show($ToastMessage)";
 
         internal const string _702_SOPHIA_CLEAR_TEMP_TASK = "Temp";
         internal const string _800_DEFENDER_NETWORK_PROTECTION_PATH = @"SOFTWARE\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection";
