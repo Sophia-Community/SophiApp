@@ -5796,7 +5796,7 @@
     "Tag": "ContextMenu",
     "ViewId": 914,
     "Windows10Supported": true,
-    "Windows11Supported": true
+    "Windows11Supported": false
   },
   {
     "Id": 915,
@@ -5826,7 +5826,7 @@
     "Tag": "ContextMenu",
     "ViewId": 915,
     "Windows10Supported": true,
-    "Windows11Supported": true
+    "Windows11Supported": false
   },
   {
     "Id": 916,

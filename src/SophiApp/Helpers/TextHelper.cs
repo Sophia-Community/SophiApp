@@ -12,11 +12,6 @@ namespace SophiApp.Helpers
             var toast = cleanupTaskToast.Split(delimiter);
             toast[6] = toast[6].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Title")}");
             toast[9] = toast[9].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.EventTitle")}");
-            toast[14] = toast[14].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Event")}");
-            toast[21] = toast[21].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.SnoozeInterval")}");
-            toast[22] = toast[22].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Time.Minute")}");
-            toast[23] = toast[23].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Time.HalfHour")}");
-            toast[24] = toast[24].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.Time.FourHours")}");
             toast[27] = toast[27].Replace($"{placeholder}", $"{Application.Current.FindResource("Localization.CleanupTask.NotificationTask.Run")}");
             return string.Join("", toast);
         }
