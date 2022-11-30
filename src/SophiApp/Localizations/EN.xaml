@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Event">Temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">The %TEMP% folder cleanup.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Run</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Made with</system:String>
     <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>

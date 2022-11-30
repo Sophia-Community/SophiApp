@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Event">Složka s dočasnými soubory byla úspěšně vyčištěna.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Čištění složky s dočasnými soubory.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Spustit</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helena]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Vytvořeno s</system:String>
     <system:String x:Key="Localization.About.OfWindows">z Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>

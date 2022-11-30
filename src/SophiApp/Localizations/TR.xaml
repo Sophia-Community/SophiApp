@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">Geçici dosyalar klasörünü temizler.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Geçici dosyalar klasörü başarıyla temizlendi.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Çalıştır</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Windows&#174;</system:String>
     <system:String x:Key="Localization.About.OfWindows">ile hazırlandı.</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>

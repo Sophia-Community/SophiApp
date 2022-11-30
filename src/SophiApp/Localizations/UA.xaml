@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Event">Папка тимчасових файлів успішно очищена</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Очищення папки тимчасових файлів</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Запустити</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Зроблено з</system:String>
     <system:String x:Key="Localization.About.OfWindows">до Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>

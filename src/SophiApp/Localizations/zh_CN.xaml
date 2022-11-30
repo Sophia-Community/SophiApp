@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Description">清理临时文件夹。</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">临时文件夹已成功清理。</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">运行</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">用心开发</system:String>
     <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>

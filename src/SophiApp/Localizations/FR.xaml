@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Event">Le dossier des fichiers temporaires a été nettoyé avec succès.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Nettoie le dossier des fichiers temporaires.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Exécuter</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Fabriqué avec</system:String>
     <system:String x:Key="Localization.About.OfWindows">de Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>

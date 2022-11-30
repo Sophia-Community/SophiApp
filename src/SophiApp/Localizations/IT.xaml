@@ -48,7 +48,7 @@
     <system:String x:Key="Localization.ClearTempTask.Event">La cartella dei file temporanei è stata pulita.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">è in corso la pulizia della cartella dei file temporanei.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">esegui</system:String>
-    <system:String x:Key="Localization.Build.Name">[Helen]</system:String>
+    <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Fatto col</system:String>
     <system:String x:Key="Localization.About.OfWindows">per Windows&#174;</system:String>
     <system:String x:Key="Localization.Settings.GitHub">GitHub</system:String>
