@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using SophiApp.Commons;
 using SophiApp.Conditions;
 using SophiApp.Customisations;
@@ -217,6 +218,7 @@ namespace SophiApp.ViewModels
             await InitializeUwpElementsAsync();
             await InitializeWatchersAsync();
             await InitializeWindowsDefenderState();
+            await PrepareOsData();
             SetVisibleViewTag(Tags.ViewPrivacy);
             SetControlsHitTest(hamburgerHitTest: true);
             MouseHelper.ShowWaitCursor(show: false);
@@ -351,6 +353,17 @@ namespace SophiApp.ViewModels
             {
                 const string UPDATE_CENTER_WINDOW = "ms-settings:windowsupdate-action";
                 _ = ProcessHelper.Start(UPDATE_CENTER_WINDOW, null, ProcessWindowStyle.Normal);
+            });
+        }
+
+        private async Task PrepareOsData()
+        {
+            await Task.Run(() =>
+            {
+                // Persist Sophia notifications to prevent to immediately disappear from Action Center
+                RegHelper.SetValue(RegistryHive.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Sophia", "ShowInActionCenter", 1, RegistryValueKind.DWord);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, @"AppUserModelId\Sophia", "DisplayName", "Sophia", RegistryValueKind.String);
+                RegHelper.SetValue(RegistryHive.ClassesRoot, @"AppUserModelId\Sophia", "ShowInSettings", 0, RegistryValueKind.DWord);
             });
         }
 
