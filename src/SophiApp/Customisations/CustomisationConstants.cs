@@ -559,7 +559,7 @@ else
         internal const string WIN_TERMINAL_ID = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
         internal const string _926_WINDOWS_TERMINAL = "WindowsTerminal";
         internal const string _928_WIN10_CONTEXT_MENU_PATH = @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32";
-        internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel";
+        internal const string ACTION_CENTER_APPX_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Sophia";
         internal const string ADMIN_PROMPT = "ConsentPromptBehaviorAdmin";
         internal const byte ADMIN_PROMPT_DEFAULT_VALUE = 5;
         internal const byte ADMIN_PROMPT_NEVER_VALUE = 0;
