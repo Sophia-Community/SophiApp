@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Updated the Scheduled tasks notification toasts UI;
   * ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/Toasts.png)
-  * Remove and re-create SophiApp scheduled tasks to get new toasts UI;
-* Json.NET bumped to 13.0.2.
- * Minor changes.
+  * Remove and re-create SophiApp scheduled tasks to get new toasts UI.
+* Json.NET bumped to 13.0.2;
+* Minor changes.
 
 ## 1.0.87 — 04.11.2022
 
