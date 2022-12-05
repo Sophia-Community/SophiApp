@@ -988,7 +988,7 @@ namespace SophiApp.Customisations
         public static void _358(bool _)
         {
             var temp = Environment.GetEnvironmentVariable(TEMP);
-            DotNetHelper.Uninstall("windowsdesktop-runtime-6.*-win-x64.exe");
+            DotNetHelper.Uninstall("windowsdesktop-runtime-7.*-win-x64.exe");
             Directory.EnumerateFileSystemEntries(temp, DOTNET_LOG_PATTERN)
                      .ToList()
                      .ForEach(log => FileHelper.TryDeleteFile(log));
