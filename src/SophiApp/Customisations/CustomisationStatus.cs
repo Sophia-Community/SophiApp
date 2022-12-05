@@ -453,7 +453,7 @@ namespace SophiApp.Customisations
         {
             if (HttpHelper.IsOnline)
             {
-                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/7.0/releases.json");
                 return DotNetHelper.IsInstalled(cloudNetVersion.LatestRelease, DotNetRid.Win_x86)
                         ? throw new DotNetInstalledException(cloudNetVersion.LatestRelease)
                         : false;
@@ -462,15 +462,15 @@ namespace SophiApp.Customisations
             throw new NoInternetConnectionException();
         }
 
-        public static bool _355() => DotNetHelper.IsInstalled("windowsdesktop-runtime-6.*-win-x86.exe", DotNetRid.Win_x86)
+        public static bool _355() => DotNetHelper.IsInstalled("windowsdesktop-runtime-7.*-win-x86.exe", DotNetRid.Win_x86)
                                         ? false
-                                        : throw new FileNotExistException("windowsdesktop-runtime-6.*-win-x86.exe");
+                                        : throw new FileNotExistException("windowsdesktop-runtime-7.*-win-x86.exe");
 
         public static bool _357()
         {
             if (HttpHelper.IsOnline)
             {
-                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/7.0/releases.json");
                 return DotNetHelper.IsInstalled(cloudNetVersion.LatestRelease, DotNetRid.Win_x64)
                         ? throw new DotNetInstalledException(cloudNetVersion.LatestRelease)
                         : false;
@@ -479,9 +479,9 @@ namespace SophiApp.Customisations
             throw new NoInternetConnectionException();
         }
 
-        public static bool _358() => DotNetHelper.IsInstalled("windowsdesktop-runtime-6.*-win-x64.exe", DotNetRid.Win_x86)
+        public static bool _358() => DotNetHelper.IsInstalled("windowsdesktop-runtime-7.*-win-x64.exe", DotNetRid.Win_x86)
                                         ? false
-                                        : throw new FileNotExistException("windowsdesktop-runtime-6.*-win-x64.exe");
+                                        : throw new FileNotExistException("windowsdesktop-runtime-7.*-win-x64.exe");
 
         public static bool _359()
         {
