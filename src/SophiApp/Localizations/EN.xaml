@@ -43,11 +43,11 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Run task to clean up Windows unused files and updates?</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Cleaning up Windows unused files and updates using the built-in Disk Cleanup app.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Pop-up notification reminder about cleaning up Windows unused files and updates.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Run</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Windows update cache was successfully deleted.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">The %SystemRoot%\SoftwareDistribution\Download folder clean up.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Temporary files folder was successfully cleaned up.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">The %TEMP% folder cleanup.</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Run</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Made with</system:String>
     <system:String x:Key="Localization.About.OfWindows">of Windows&#174;</system:String>

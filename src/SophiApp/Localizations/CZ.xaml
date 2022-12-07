@@ -43,11 +43,11 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Spustit úlohu pro vyčištění nepoužívaních souborů a aktualizací Windows?</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Čistí nepoužívané soubory a aktualizace Windows prostřednictvím integrovaného nástroje Vyčištění disku.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Pop-up upozornění pro připomenutí čištění nepoužívaních souborů a aktualizací Windows.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Spustit</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Mezipaměť aktualizací systému Windows byla úspěšně vymazána.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Čištění složky %SystemRoot%\SoftwareDistribution\Download.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Složka s dočasnými soubory byla úspěšně vyčištěna.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Čištění složky s dočasnými soubory.</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Spustit</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Vytvořeno s</system:String>
     <system:String x:Key="Localization.About.OfWindows">z Windows&#174;</system:String>

@@ -1,0 +1,2745 @@
+[
+    {
+        "Id":  100,
+        "Header":  {
+                       "ES":  "Servicio de telemetria"
+                   },
+        "Description":  {
+                            "ES":  "Configure el servicio Experiencias de usuario conectado y telemetria (DiagTrack) y la conexion para el trafico saliente del cliente de telemetria unificada.Deshabilitar el servicio \"Experiencias de usuario conectado y telemetria\" (DiagTrack) puede hacer que ya no puedas obtener los logros de Xbox."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  100,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  101,
+        "Header":  {
+                       "ES":  "Nivel del sistema operativo de recopilacion de datos de diagnostico"
+                   },
+        "Description":  {
+                            "ES":  "Como parte del uso de Windows, su dispositivo envia a Microsoft un conjunto limitado de datos que son necesarios para mantener su dispositivo y sistema operativo seguros, actualizados y funcionando como se espera."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Privacy",
+        "ChildElements":  [
+                              {
+                                  "Id":  102,
+                                  "ChildHeader":  {
+                                                      "ES":  "Por defecto"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  103,
+                                  "ChildHeader":  {
+                                                      "ES":  "Minimo"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  101,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  104,
+        "Header":  {
+                       "ES":  "Informe de errores de Windows"
+                   },
+        "Description":  {
+                            "ES":  "La funcion de informe de errores permite a los usuarios notificar a Microsoft sobre fallas en la aplicacion, fallas en el kernel, aplicaciones que no responden y otros problemas especificos de la aplicacion. Microsoft puede usar la funcion de informe de errores para proporcionar a los clientes informacion sobre solucion de problemas, soluciones o actualizaciones para sus problemas especificos."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  104,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  105,
+        "Header":  {
+                       "ES":  "Frecuencia de retroalimentacion"
+                   },
+        "Description":  {
+                            "ES":  "Elija la frecuencia con la que Windows solicita sus comentarios."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Privacy",
+        "ChildElements":  [
+                              {
+                                  "Id":  106,
+                                  "ChildHeader":  {
+                                                      "ES":  "Automaticamente"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  107,
+                                  "ChildHeader":  {
+                                                      "ES":  "Nunca"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  105,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  108,
+        "Header":  {
+                       "ES":  "Tareas de seguimiento de diagnostico"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "ExpandingGroup",
+        "Tag":  "Privacy",
+        "ChildElements":  [
+                              {
+                                  "Id":  109,
+                                  "ChildHeader":  {
+                                                      "ES":  "ProgramDataUpdater"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Recopila informacion de telemetria del programa si se inscribio en el Programa de mejora de la experiencia del cliente de Microsoft."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  110,
+                                  "ChildHeader":  {
+                                                      "ES":  "Proxy"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Esta tarea recopila y carga datos de Autochk SQM si se inscribio en el Programa de mejora de la experiencia del cliente de Microsoft."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  111,
+                                  "ChildHeader":  {
+                                                      "ES":  "consolidador"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Si el usuario ha dado su consentimiento para participar en el Programa de mejora de la experiencia del usuario de Windows, este trabajo recopila y envia datos de uso a Microsoft."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  112,
+                                  "ChildHeader":  {
+                                                      "ES":  "UsbCeip"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "La tarea USB CEIP (Programa de mejora de la experiencia del cliente) recopila informacion y estadisticas relacionadas con Universal Serial Bus sobre su maquina y las envia al grupo de ingenieria de Conectividad de dispositivos de Windows en Microsoft. La informacion recibida se usa para ayudar a mejorar la confiabilidad, la estabilidad y la funcionalidad general de USB en Windows. Si el usuario no ha dado su consentimiento para participar en Windows CEIP, esta tarea no hace nada."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  113,
+                                  "ChildHeader":  {
+                                                      "ES":  "Microsoft-Windows-DiskDiagnosticDataCollector"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "El Diagnostico de disco de Windows informa informacion general del disco y del sistema a Microsoft para los usuarios que participan en el Programa de experiencia del cliente."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  114,
+                                  "ChildHeader":  {
+                                                      "ES":  "MapsToastTask"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Esta tarea muestra varios avisos relacionados con el mapa."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  115,
+                                  "ChildHeader":  {
+                                                      "ES":  "MapsUpdateTask"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Esta tarea busca actualizaciones de los mapas que ha descargado para su uso sin conexion. Deshabilitar esta tarea evitara que Windows le notifique sobre mapas actualizados."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  116,
+                                  "ChildHeader":  {
+                                                      "ES":  "FamilySafetyMonitor"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Inicializa la supervision y aplicacion de Proteccion infantil."
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  117,
+                                  "ChildHeader":  {
+                                                      "ES":  "XblGameSaveTask"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "La tarea en espera de XblGameSave, que sincroniza el progreso del juego cuando el sistema operativo esta inactivo."
+                                                       },
+                                  "Type":  "CheckBox"
+                              }
+                          ],
+        "ViewId":  108,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  118,
+        "Header":  {
+                       "ES":  "Use la informacion de inicio de sesion para finalizar automaticamente la configuracion del dispositivo despues de una actualizacion"
+                   },
+        "Description":  {
+                            "ES":  "Algunas actualizaciones requieren que reinicie su PC y luego inicie sesion en Windows para terminar de instalar la actualizacion, lo que significa que es posible que no pueda usar su PC hasta que finalice la actualizacion. Windows ayuda a evitar esto al permitir que Windows use su informacion de inicio de sesion para crear un token especial. Este token se usa para iniciar sesion automaticamente despues de un reinicio, terminar de configurar su PC y luego bloquear su PC para mantener segura su cuenta y su informacion personal."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  118,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  119,
+        "Header":  {
+                       "ES":  "Permita que los sitios web proporcionen contenido localmente relevante accediendo a la lista de idiomas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  119,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  120,
+        "Header":  {
+                       "ES":  "Permitir que las aplicaciones me muestren anuncios personalizados usando mi ID de publicidad"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  120,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  121,
+        "Header":  {
+                       "ES":  "Muestre las experiencias de bienvenida de Windows despues de las actualizaciones y ocasionalmente cuando inicie sesion para resaltar nuevas caracteristicas y ofertas."
+                   },
+        "Description":  {
+                            "ES":  "Windows puede abrir una ventana emergente para mostrarle las novedades del sistema operativo."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  121,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  122,
+        "Header":  {
+                       "ES":  "Obtenga consejos y sugerencias mientras usa Windows"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  122,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  123,
+        "Header":  {
+                       "ES":  "Mostrar contenido sugerido en la aplicacion Configuracion"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  123,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  124,
+        "Header":  {
+                       "ES":  "Activar la instalacion automatica de aplicaciones sugeridas"
+                   },
+        "Description":  {
+                            "ES":  "Windows puede descargar e instalar silenciosamente algunas aplicaciones sugeridas de Microsoft Store sin la confirmacion del usuario."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  124,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  125,
+        "Header":  {
+                       "ES":  "Sugerir formas en que puedo terminar de configurar mi dispositivo para aprovechar al maximo Windows"
+                   },
+        "Description":  {
+                            "ES":  "Windows puede mostrar un mensaje \"Obtenga aun mas de Windows\" de vez en cuando que muestra servicios adicionales que el usuario puede configurar."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  125,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  126,
+        "Header":  {
+                       "ES":  "Experiencias a medida"
+                   },
+        "Description":  {
+                            "ES":  "Permita que Microsoft le ofrezca experiencias personalizadas basadas en la configuracion de datos de diagnostico que haya elegido."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  126,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  127,
+        "Header":  {
+                       "ES":  "Habilitar la busqueda de Bing en el menu Inicio"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Privacy",
+        "ViewId":  127,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  200,
+        "Header":  {
+                       "ES":  "Mostrar el icono \"Mi PC\" en el escritorio"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  201,
+                                  "ChildHeader":  {
+                                                      "ES":  "Mostrar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  202,
+                                  "ChildHeader":  {
+                                                      "ES":  "Ocultar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  200,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  204,
+        "Header":  {
+                       "ES":  "Use casillas de verificacion para seleccionar elementos"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  204,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  205,
+        "Header":  {
+                       "ES":  "Mostrar archivos, carpetas y unidades ocultos"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  205,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  206,
+        "Header":  {
+                       "ES":  "Mostrar las extensiones de nombre de archivo"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  206,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  207,
+        "Header":  {
+                       "ES":  "Ocultar conflictos de combinacion de carpetas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  207,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  208,
+        "Header":  {
+                       "ES":  "Abra el explorador de archivos para:"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  209,
+                                  "ChildHeader":  {
+                                                      "ES":  "Este equipo"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  210,
+                                  "ChildHeader":  {
+                                                      "ES":  "Acceso rapido"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  208,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  211,
+        "Header":  {
+                       "ES":  "Mostrar el boton de Cortana en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  211,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  212,
+        "Header":  {
+                       "ES":  "Habilite el modo compacto del Explorador de archivos"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  212,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  213,
+        "Header":  {
+                       "ES":  "Mostrar notificaciones del proveedor de sincronizacion en el Explorador de archivos"
+                   },
+        "Description":  {
+                            "ES":  "Deshabilite las notificaciones de anuncios de OneDrive en el Explorador de archivos."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  213,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  214,
+        "Header":  {
+                       "ES":  "Cuando tomo una ventana, muestro lo que puedo tomar junto a ella"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  214,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  215,
+        "Header":  {
+                       "ES":  "Mostrar diseños instantaneos cuando paso el mouse sobre un boton de maximizar de Windows"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  215,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  216,
+        "Header":  {
+                       "ES":  "Mostrar el cuadro de dialogo de transferencia de archivos"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  217,
+                                  "ChildHeader":  {
+                                                      "ES":  "Modo detallado"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  218,
+                                  "ChildHeader":  {
+                                                      "ES":  "Modo compacto"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  216,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  219,
+        "Header":  {
+                       "ES":  "Minimizar la cinta del Explorador de archivos"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  220,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  220,
+        "Header":  {
+                       "ES":  "Mostrar el cuadro de dialogo de confirmacion de eliminacion de archivos de la papelera de reciclaje"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  220,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  221,
+        "Header":  {
+                       "ES":  "Mostrar la carpeta \"Objetos 3D\" en \"Esta PC\" y Acceso rapido"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  221,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  222,
+        "Header":  {
+                       "ES":  "Mostrar carpetas de uso frecuente en Acceso rapido"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  222,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  223,
+        "Header":  {
+                       "ES":  "Mostrar archivos usados recientemente en Acceso rapido"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  223,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  224,
+        "Header":  {
+                       "ES":  "Establecer la alineacion de la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  225,
+                                  "ChildHeader":  {
+                                                      "ES":  "A la izquierda"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  226,
+                                  "ChildHeader":  {
+                                                      "ES":  "En el centro"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  224,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  227,
+        "Header":  {
+                       "ES":  "Mostrar el boton de busqueda en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  227,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  228,
+        "Header":  {
+                       "ES":  "Mostrar el boton Vista de tareas en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  228,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  229,
+        "Header":  {
+                       "ES":  "Mostrar el boton Vista de tareas en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  229,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  230,
+        "Header":  {
+                       "ES":  "Mostrar el icono de widgets en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  230,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  231,
+        "Header":  {
+                       "ES":  "Mostrar People en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  231,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  232,
+        "Header":  {
+                       "ES":  "Mostrar segundos en el reloj de la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  232,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  233,
+        "Header":  {
+                       "ES":  "Buscar en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  234,
+                                  "ChildHeader":  {
+                                                      "ES":  "Oculto"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  235,
+                                  "ChildHeader":  {
+                                                      "ES":  "Mostrar icono de busqueda"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  236,
+                                  "ChildHeader":  {
+                                                      "ES":  "Mostrar cuadro de busqueda"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  233,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  237,
+        "Header":  {
+                       "ES":  "Mostrar el boton area de trabajo de Windows Ink en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  237,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  238,
+        "Header":  {
+                       "ES":  "Mostrar siempre todos los iconos en el area de notificacion"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  238,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  239,
+        "Header":  {
+                       "ES":  "Mostrar el icono Meet Now en el area de notificacion"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  239,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  240,
+        "Header":  {
+                       "ES":  "Mostrar \"Noticias e intereses\" en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  240,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  241,
+        "Header":  {
+                       "ES":  "Mostrar el icono de Chat (Microsoft Teams) en la barra de tareas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  241,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  242,
+        "Header":  {
+                       "ES":  "Ver el panel de control por"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  243,
+                                  "ChildHeader":  {
+                                                      "ES":  "Iconos grandes"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  244,
+                                  "ChildHeader":  {
+                                                      "ES":  "Iconos pequeños"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  245,
+                                  "ChildHeader":  {
+                                                      "ES":  "Categoria"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  242,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  246,
+        "Header":  {
+                       "ES":  "Modo de color predeterminado de Windows"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  247,
+                                  "ChildHeader":  {
+                                                      "ES":  "Claro"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  248,
+                                  "ChildHeader":  {
+                                                      "ES":  "Oscuro"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  246,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  249,
+        "Header":  {
+                       "ES":  "Modo de color predeterminado de la aplicacion"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  250,
+                                  "ChildHeader":  {
+                                                      "ES":  "Claro"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  251,
+                                  "ChildHeader":  {
+                                                      "ES":  "Oscuro"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  249,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  252,
+        "Header":  {
+                       "ES":  "Mostrar el indicador \"Nueva aplicacion instalada\""
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  252,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  253,
+        "Header":  {
+                       "ES":  "Mostrar la primera animacion de inicio de sesion despues de la actualizacion"
+                   },
+        "Description":  {
+                            "ES":  "En Windows, despues de completar la configuracion en una nueva instalacion, actualizacion o al iniciar sesion en una nueva cuenta, se muestra la \"animacion de primer inicio de sesion\" que presenta varios mensajes para configurar el entorno de la cuenta."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  253,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  254,
+        "Header":  {
+                       "ES":  "Establezca el factor de calidad de los fondos de escritorio .JPEG"
+                   },
+        "Description":  {
+                            "ES":  "Cuando configura una imagen JPEG como fondo de escritorio o presentacion de diapositivas, el sistema operativo reduce la calidad de la imagen original al 85 % y la almacena como el archivo TranscodedWallpaper en la carpeta \n%APPDATA%\\Microsoft\\Windows\\Themes . Si usa una imagen PNG como fondo de escritorio o presentacion de diapositivas, no se vera afectado por esta reduccion de calidad automatica, ya que solo se aplica a las imagenes JPEG."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  255,
+                                  "ChildHeader":  {
+                                                      "ES":  "100% (Sin reduccion)"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  256,
+                                  "ChildHeader":  {
+                                                      "ES":  "80% (Predeterminado)"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  254,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  257,
+        "Header":  {
+                       "ES":  "Notificarme cuando sea necesario reiniciar para finalizar la actualizacion"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  257,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  258,
+        "Header":  {
+                       "ES":  "Agregue el sufijo \"- Acceso directo\" al nombre de archivo de los accesos directos creados"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  258,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  259,
+        "Header":  {
+                       "ES":  "Use el boton PrtScn para abrir recortes de pantalla"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  259,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  260,
+        "Header":  {
+                       "ES":  "Permitir usar un metodo de entrada diferente para cada ventana de la aplicacion"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  260,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  261,
+        "Header":  {
+                       "ES":  "Cuando se presiona la barra de titulo de una ventana y lo muevo, minimice todas las demas ventanas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  261,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  262,
+        "Header":  {
+                       "ES":  "Configurar diseño de inicio"
+                   },
+        "Description":  {
+                            "ES":  "Se muestran mas aplicaciones en el menu inicio"
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Personalization",
+        "ChildElements":  [
+                              {
+                                  "Id":  263,
+                                  "ChildHeader":  {
+                                                      "ES":  "Predeterminado"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  264,
+                                  "ChildHeader":  {
+                                                      "ES":  "Mas anclados"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  265,
+                                  "ChildHeader":  {
+                                                      "ES":  "Mas recomendaciones"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  262,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  266,
+        "Header":  {
+                       "ES":  "Mostrar aplicaciones agregadas recientemente en el menu Inicio"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "StartMenu",
+        "ViewId":  266,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  267,
+        "Header":  {
+                       "ES":  "Mostrar sugerencias de aplicaciones en el menu Inicio"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "StartMenu",
+        "ViewId":  267,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  268,
+        "Header":  {
+                       "ES":  "Ejecute el acceso directo de Windows PowerShell desde el menu Inicio como administrador"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "StartMenu",
+        "ViewId":  268,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  269,
+        "Header":  {
+                       "ES":  "Mostrar busqueda destacados"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  269,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  300,
+        "Header":  {
+                       "ES":  "Sensor de almacenamiento"
+                   },
+        "Description":  {
+                            "ES":  "Sensor de almacenamiento se ejecuta cuando el espacio en disco es bajo. Limpia suficiente espacio para ayudar a que su sistema funcione de la mejor manera."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  300,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  301,
+        "Header":  {
+                       "ES":  "Ejecutar Sensor de almacenamiento"
+                   },
+        "Description":  {
+                            "ES":  "Sensor de almacenamiento se ejecuta cuando el espacio en disco es bajo y libera suficiente espacio para un funcionamiento optimo del sistema operativo. Es mejor crear la tarea \"Limpieza de Windows\" en la seccion \"Programador de tareas\" para limpiar Windows de manera mas eficaz."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  302,
+                                  "ChildHeader":  {
+                                                      "ES":  "Cada mes"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  303,
+                                  "ChildHeader":  {
+                                                      "ES":  "Cuando hay poco espacio libre en disco"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  301,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  304,
+        "Header":  {
+                       "ES":  "Eliminar archivos temporales que no utilizan las aplicaciones"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  304,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  305,
+        "Header":  {
+                       "ES":  "Hibernar"
+                   },
+        "Description":  {
+                            "ES":  "Hibernar es un estado de ahorro de energia que se usa principalmente para computadoras portatiles. A diferencia de la suspension, la hibernacion coloca sus documentos y programas abiertos en la unidad del sistema en el archivo \nC:\\hiberfil.sys y apaga su computadora. De forma predeterminada, el tamaño del archivo protegido del sistema oculto C:\\hiberfil.sys es el 40 % de la cantidad total de RAM instalada. Deshabilitar la hibernacion tambien deshabilitara el inicio rapido y la hibernacion ya no se mostrara en el menu de energia. No se recomienda apagarlo en dispositivos moviles."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  305,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  306,
+        "Header":  {
+                       "ES":  "Ruta de la variable de entorno temporal"
+                   },
+        "Description":  {
+                            "ES":  "uselo solo en caso de que sea el unico usuario en esta PC; de lo contrario, todos los usuarios usaran la misma carpeta para todos los archivos temporales."
+                        },
+        "Type":  "AdvancedRadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  307,
+                                  "ChildHeader":  {
+                                                      "ES":  "%SystemDrive%\\Temp"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  308,
+                                  "ChildHeader":  {
+                                                      "ES":  "%LOCALAPPDATA%\\Temp (default)"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  306,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  309,
+        "Header":  {
+                       "ES":  "Habilite el limite de ruta de caracteres de Windows 260"
+                   },
+        "Description":  {
+                            "ES":  "De forma predeterminada, el limite maximo de longitud de ruta en Windows es de 260 caracteres. Una ruta local esta estructurada en el siguiente orden: letra de unidad, dos puntos, barra invertida, componentes de nombre separados por barras invertidas y un caracter nulo de terminacion."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  309,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  310,
+        "Header":  {
+                       "ES":  "Muestra el codigo de error de detencion cuando ocurre BSoD(Pantalla azul)"
+                   },
+        "Description":  {
+                            "ES":  "De manera predeterminada, Windows no muestra un codigo de error de detencion cuando ocurre una BSoD, lo que ayuda a identificar las causas de una BSoD."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  310,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  311,
+        "Header":  {
+                       "ES":  "Habilite el acceso a las unidades asignadas desde la aplicacion que se ejecuta con permisos elevados con el modo de aprobacion del administrador"
+                   },
+        "Description":  {
+                            "ES":  "El UAC habilitado con la configuracion predeterminada no permite el acceso a unidades de red asignadas desde aplicaciones que se ejecutan en modo administrador. Esto significa que si ejecuta la linea de comandos o un administrador de archivos con privilegios elevados, no mostraran las letras de unidad de las carpetas de red montadas."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  311,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  312,
+        "Header":  {
+                       "ES":  "Habilitar la descarga de actualizaciones con optimizacion de entrega"
+                   },
+        "Description":  {
+                            "ES":  "La Optimizacion de entrega de actualizaciones de Windows funciona al permitirle obtener actualizaciones de Windows y aplicaciones de Microsoft Store de fuentes ademas de Microsoft, como otras PC en su red local o PC en Internet que descargan los mismos archivos. La Optimizacion de entrega tambien envia actualizaciones y aplicaciones desde su PC a otras PC en su red local o PC en Internet, segun su configuracion. Compartir estos datos entre PC ayuda a reducir el ancho de banda de Internet que se necesita para mantener actualizado mas de un dispositivo o puede hacer que las descargas sean mas exitosas si tiene una conexion a Internet limitada o poco confiable."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  312,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  313,
+        "Header":  {
+                       "ES":  "Siempre espere la red al iniciar la computadora e inicie sesion para redes de grupos de trabajo"
+                   },
+        "Description":  {
+                            "ES":  "Para reducir el tiempo de inicio de sesion, Windows no espera a que la red se inicialice por completo al iniciar o iniciar sesion. La configuracion de la politica se aplica de forma asincronica cuando la computadora se inicia y cuando el usuario inicia sesion. Como resultado, el sistema operativo no espera a que la red se inicialice por completo al iniciarse e iniciar sesion. Los usuarios existentes inician sesion con credenciales almacenadas en cache. Esto reduce los tiempos de inicio de sesion. La directiva de grupo se aplica en segundo plano una vez que la red esta disponible."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  313,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  314,
+        "Header":  {
+                       "ES":  "Permitir que Windows administre mi impresora predeterminada"
+                   },
+        "Description":  {
+                            "ES":  "De forma predeterminada, Windows hace que la ultima impresora utilizada sea la predeterminada."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  314,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  315,
+        "Header":  {
+                       "ES":  "Recibir actualizaciones para otros productos de Microsoft"
+                   },
+        "Description":  {
+                            "ES":  "Obtenga Microsoft Office y otras actualizaciones junto con las actualizaciones de Windows."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  315,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  316,
+        "Header":  {
+                       "ES":  "Plan de energia"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  317,
+                                  "ChildHeader":  {
+                                                      "ES":  "Alto rendimiento"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "No se recomienda activar el esquema de energia \"Alto rendimiento\" en las computadoras portatiles."
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  318,
+                                  "ChildHeader":  {
+                                                      "ES":  "Equilibrado"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  316,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  319,
+        "Header":  {
+                       "ES":  "Use la ultima version de .NET Framework instalada para todas las aplicaciones"
+                   },
+        "Description":  {
+                            "ES":  "Si una aplicacion requiere que se instale el .NET Framework 2.0, 3.0 o 3.5 heredado, habilitar esta funcion obligara a la aplicacion a usar la ultima version instalada de .NET Framework."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  319,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  320,
+        "Header":  {
+                       "ES":  "Permitir que la computadora apague los adaptadores de red para ahorrar energia"
+                   },
+        "Description":  {
+                            "ES":  "No se recomienda apagar los adaptadores de red para ahorrar energia en las computadoras portatiles."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  320,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  321,
+        "Header":  {
+                       "ES":  "Anular el metodo de entrada predeterminado"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  322,
+                                  "ChildHeader":  {
+                                                      "ES":  "Usar lista de idiomas"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  323,
+                                  "ChildHeader":  {
+                                                      "ES":  "Ingles"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  321,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  324,
+        "Header":  {
+                       "ES":  "Seleccione la carpeta para guardar capturas de pantalla al presionar Win+PrtScn"
+                   },
+        "Description":  {
+                            "ES":  "Seleccione \"Escritorio\" si elige eliminar solo OneDrive (o si se desinstalo antes); de lo contrario, se rompe la funcionalidad de copia de seguridad para las carpetas \"Escritorio\" e \"Imagenes\" en OneDrive."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  325,
+                                  "ChildHeader":  {
+                                                      "ES":  "Escritorio"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  326,
+                                  "ChildHeader":  {
+                                                      "ES":  "Carpeta de imagenes"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  324,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  327,
+        "Header":  {
+                       "ES":  "Solucion de problemas recomendada"
+                   },
+        "Description":  {
+                            "ES":  "Microsoft puede recomendar y ejecutar solucionadores de problemas para solucionar problemas. ¿Cuanto desea que Microsoft le ayude cuando hay problemas en su dispositivo que los solucionadores de problemas podrian solucionar?"
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  328,
+                                  "ChildHeader":  {
+                                                      "ES":  "Ejecute los solucionadores de problemas automaticamente, luego notifique"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Para que esta funcion funcione, el nivel del sistema operativo de recopilacion de datos de diagnostico se establecera en \"Datos de diagnostico opcionales\" y se activara la funcion de informe de errores."
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  329,
+                                  "ChildHeader":  {
+                                                      "ES":  "Preguntarme antes de ejecutar el solucionador de problemas"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Para que esta funcion funcione, el nivel del sistema operativo de recopilacion de datos de diagnostico se establecera en \"Datos de diagnostico opcionales\" y se activara la funcion de informe de errores."
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  327,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  330,
+        "Header":  {
+                       "ES":  "Iniciar ventanas de carpetas en un proceso separado"
+                   },
+        "Description":  {
+                            "ES":  "De forma predeterminada, todas las ventanas del Explorador de archivos, incluido el shell del escritorio, se ejecutan en un unico proceso explorer.exe. Si una ventana del Explorador de archivos se cuelga o falla, hara que todo el shell grafico se congele hasta que se reinicie el proceso. Cuando esta habilitado, cada proceso explorer.exe tendra su propio ID de proceso (PID) para mejorar la estabilidad del shell del explorador."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  330,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  331,
+        "Header":  {
+                       "ES":  "Habilitar almacenamiento reservado"
+                   },
+        "Description":  {
+                            "ES":  "Para asegurarse de que su dispositivo pueda actualizarse con exito y que funcione de la mejor manera, Windows reserva una parte del espacio de almacenamiento en su dispositivo para que lo usen los archivos temporales, caches y otros archivos. Cuando su dispositivo tiene poco espacio, Windows borrara el almacenamiento reservado para que pueda usarse para otros procesos, como una actualizacion de Windows. Reservar almacenamiento tambien ayuda a que el uso del espacio en disco de su dispositivo sea mas predecible y estable. Despues de deshabilitar, el almacenamiento reservado se eliminara despues de la instalacion de la proxima actualizacion."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  331,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  332,
+        "Header":  {
+                       "ES":  "Habilitar busqueda de ayuda a traves de F1"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  332,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  333,
+        "Header":  {
+                       "ES":  "Habilitar Bloq Num al inicio"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  333,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  334,
+        "Header":  {
+                       "ES":  "Habilitar la tecla Bloq Mayus"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  334,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  335,
+        "Header":  {
+                       "ES":  "Metodo abreviado de teclado para teclas adhesivas"
+                   },
+        "Description":  {
+                            "ES":  "Presione la tecla Mayus 5 veces para activar o desactivar las teclas adhesivas."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  335,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  336,
+        "Header":  {
+                       "ES":  "Use reproduccion automatica para todos los medios y dispositivos"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  336,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  337,
+        "Header":  {
+                       "ES":  "Habilitar la eliminacion de cache de miniaturas"
+                   },
+        "Description":  {
+                            "ES":  "Windows elimina automaticamente la cache de miniaturas despues de reiniciar o apagar, y el Explorador de archivos tiene que volver a crear las miniaturas. La cache de miniaturas se almacena como archivos .db ubicados en la carpeta oculta \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  337,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  338,
+        "Header":  {
+                       "ES":  "Reiniciar aplicaciones despues de iniciar sesion"
+                   },
+        "Description":  {
+                            "ES":  "Guarde automaticamente mis aplicaciones reiniciables y reinicielas cuando vuelva a iniciar sesion. Si el programa se ejecuto como administrador en la sesion anterior, se reiniciara con permisos que no sean de administrador."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  338,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  339,
+        "Header":  {
+                       "ES":  "Habilite \"Deteccion de redes\" y \"Compartir archivos e impresoras\" para redes de grupos de trabajo"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  339,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  340,
+        "Header":  {
+                       "ES":  "Ajustar automaticamente las horas activas para mi en funcion del uso diario"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  340,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  341,
+        "Header":  {
+                       "ES":  "Reinicie lo antes posible para terminar de actualizar"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  341,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  342,
+        "Header":  {
+                       "ES":  "Aplicacion de terminal predeterminada"
+                   },
+        "Description":  {
+                            "ES":  "Configure Windows Terminal como aplicacion de terminal predeterminada para alojar la interfaz de usuario para aplicaciones de linea de comandos."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  343,
+                                  "ChildHeader":  {
+                                                      "ES":  "Terminal de Windows"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  344,
+                                  "ChildHeader":  {
+                                                      "ES":  "Host de consola de Windows"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  342,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  345,
+        "Header":  {
+                       "ES":  "Aplicacion de verificacion de estado de la PC"
+                   },
+        "Description":  {
+                            "ES":  "Desinstale la aplicacion \"PC Health Check\" y evite que se instale en el futuro. La actualizacion KB5005463 instala la aplicacion \"PC Health Check\" para verificar si la PC cumple con los requisitos del sistema de Windows 11."
+                        },
+        "Type":  "PcHealthCheckButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  346,
+                                  "ChildHeader":  {
+                                                      "ES":  "Desinstalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  345,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  347,
+        "Header":  {
+                       "ES":  "OneDrive"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "OneDriveButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  348,
+                                  "ChildHeader":  {
+                                                      "ES":  "Instalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  349,
+                                  "ChildHeader":  {
+                                                      "ES":  "Desinstalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  347,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  350,
+        "Header":  {
+                       "ES":  "Los ultimos paquetes redistribuibles de Microsoft Visual C++ 2015–2022 x64"
+                   },
+        "Description":  {
+                            "ES":  "Los paquetes redistribuibles de Microsoft Visual C++ 2015–2022 x64 se descargaran del recurso de Microsoft (se requiere conexion a Internet) y se instalaran de forma silenciosa. Las versiones de Visual Studio desde Visual Studio 2015 comparten los mismos archivos redistribuibles."
+                        },
+        "Type":  "MsCppPackageButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  351,
+                                  "ChildHeader":  {
+                                                      "ES":  "Instalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  352,
+                                  "ChildHeader":  {
+                                                      "ES":  "Desinstalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  350,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  353,
+        "Header":  {
+                       "ES":  "La ultima .NET Desktop Runtime 6 x86"
+                   },
+        "Description":  {
+                            "ES":  ".NET Desktop Runtime 6 x86 se descargara del recurso de Microsoft (se requiere conexion a Internet) y se instalara de forma silenciosa."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  354,
+                                  "ChildHeader":  {
+                                                      "ES":  "Instalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  355,
+                                  "ChildHeader":  {
+                                                      "ES":  "Desinstalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  353,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  356,
+        "Header":  {
+                       "ES":  "La ultima .NET Desktop Runtime 6 x64"
+                   },
+        "Description":  {
+                            "ES":  ".NET Desktop Runtime 6 x64 se descargara del recurso de Microsoft (se requiere conexion a Internet) y se instalara de forma silenciosa."
+                        },
+        "Type":  "MsNETButtonGroup",
+        "Tag":  "System",
+        "ChildElements":  [
+                              {
+                                  "Id":  357,
+                                  "ChildHeader":  {
+                                                      "ES":  "Instalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              },
+                              {
+                                  "Id":  358,
+                                  "ChildHeader":  {
+                                                      "ES":  "Desinstalar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  356,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  359,
+        "Header":  {
+                       "ES":  "Proxy por ProstoVPN.AntiZapret"
+                   },
+        "Description":  {
+                            "ES":  "Habilite el proxy solo de sitios bloqueados del registro unificado de Roskomnadzor. La funcion es aplicable solo para Rusia."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "System",
+        "ViewId":  359,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  500,
+        "Header":  {
+                       "ES":  "Descargue e instale el codec de video HEVC (H.265)"
+                   },
+        "Description":  {
+                            "ES":  "El codec le permite abrir imagenes y videos en formatos .heif y .hevc, respectivamente."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "UwpApps",
+        "ViewId":  500,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  501,
+        "Header":  {
+                       "ES":  "Inicio automatico de Cortana"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "UwpApps",
+        "ViewId":  501,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  502,
+        "Header":  {
+                       "ES":  "Habilitar el inicio automatico de Microsoft Teams"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "UwpApps",
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  503,
+        "Header":  {
+                       "ES":  "Restaurar la tienda de Microsoft"
+                   },
+        "Description":  {
+                            "ES":  "Si Microsoft Store esta dañado o eliminado, puede restaurarlo descargando todas las dependencias necesarias del recurso de Microsoft (se requiere conexion a Internet). La descarga y la instalacion pueden tardar hasta 10 minutos. Se abrira una ventana de la consola durante la restauracion, asi que no la cierre. La consola se cerrara automaticamente cuando termine."
+                        },
+        "Type":  "AdvancedButtonGroup",
+        "Tag":  "UwpApps",
+        "ChildElements":  [
+                              {
+                                  "Id":  504,
+                                  "ChildHeader":  {
+                                                      "ES":  "Restaurar"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "Button"
+                              }
+                          ],
+        "ViewId":  503,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  600,
+        "Header":  {
+                       "ES":  "Barra de juegos de Xbox"
+                   },
+        "Description":  {
+                            "ES":  "Para evitar que aparezca la advertencia \"Necesitaras una nueva aplicacion para abrir este ms-gamingoverlay\", debes deshabilitar la aplicacion Xbox Game Bar, incluso si la desinstalaste antes."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Games",
+        "ViewId":  600,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  601,
+        "Header":  {
+                       "ES":  "Consejos de la barra de juegos de Xbox"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Games",
+        "ViewId":  601,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  602,
+        "Header":  {
+                       "ES":  "Programacion de GPU acelerada por hardware"
+                   },
+        "Description":  {
+                            "ES":  "Con el hardware y los controladores correctos, Windows puede descargar la mayor parte de la programacion de GPU a un procesador de programacion basado en GPU dedicado. Con la funcion de programacion de GPU acelerada por hardware, el procesador de programacion y la memoria (VRAM) de la GPU se encargan del mismo trabajo y lo ejecutan en lotes para representar los fotogramas. De esa manera, su GPU libera al procesador de algo de trabajo y reduce la latencia para potencialmente hacer que su PC funcione mejor."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Games",
+        "ViewId":  602,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  700,
+        "Header":  {
+                       "ES":  "limpieza de ventanas"
+                   },
+        "Description":  {
+                            "ES":  "Cree la tarea programada \"Limpieza de Windows\" para limpiar archivos y actualizaciones no utilizados de Windows en la carpeta SophiApp en el Programador de tareas. Se mostrara una notificacion de brindis nativa donde puede optar por posponer, ejecutar la tarea de limpieza o descartar."
+                        },
+        "Type":  "IconWinCheckBox",
+        "Tag":  "TaskScheduler",
+        "ViewId":  700,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  701,
+        "Header":  {
+                       "ES":  "Limpie la carpeta de descarga de actualizaciones de Windows"
+                   },
+        "Description":  {
+                            "ES":  "Cree la tarea programada \"SoftwareDistribution\" para limpiar \n%SystemRoot%\\SoftwareDistribution\\Download, donde se descargan todas las actualizaciones de Windows, en la carpeta SophiApp en el Programador de tareas. La tarea esperara hasta que el servicio de actualizaciones de Windows termine de ejecutarse. La tarea se ejecuta cada 90 dias."
+                        },
+        "Type":  "IconFolderCheckBox",
+        "Tag":  "TaskScheduler",
+        "ViewId":  701,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  702,
+        "Header":  {
+                       "ES":  "Limpiar archivos temporales"
+                   },
+        "Description":  {
+                            "ES":  "Cree la tarea programada \"Temp\" para limpiar la carpeta temporal en la carpeta SophiApp en el Programador de tareas. Solo se eliminaran los archivos que tengan mas de un dia. La tarea se ejecuta cada 60 dias."
+                        },
+        "Type":  "IconFolderCheckBox",
+        "Tag":  "TaskScheduler",
+        "ViewId":  702,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  800,
+        "Header":  {
+                       "ES":  "Habilitar la proteccion de red de Microsoft Defender Exploit Guard"
+                   },
+        "Description":  {
+                            "ES":  "La proteccion de la red ayuda a evitar que los usuarios usen cualquier aplicacion para acceder a dominios peligrosos que pueden albergar estafas de phishing, exploits y otro contenido malicioso en Internet."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  800,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  801,
+        "Header":  {
+                       "ES":  "Habilite la deteccion en Microsoft Defender para aplicaciones potencialmente no deseadas y bloqueelas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  801,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  802,
+        "Header":  {
+                       "ES":  "Habilitar el espacio aislado para Microsoft Defender"
+                   },
+        "Description":  {
+                            "ES":  "La ejecucion de Microsoft Defender en un espacio aislado garantiza que, en el improbable caso de un compromiso, las acciones maliciosas se limiten al entorno aislado, protegiendo el resto del sistema de daños. El espacio aislado para Microsoft Defender esta habilitado de forma predeterminada en Windows 11."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  802,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  803,
+        "Header":  {
+                       "ES":  "Habilitar la auditoria de eventos generados cuando se crea o inicia un proceso"
+                   },
+        "Description":  {
+                            "ES":  "Habilite el registro de cada ejecucion de la aplicacion, quien ejecuto la aplicacion y el proceso que inicio este proceso (evento 4688). Puede correlacionar este evento con otros eventos por ID de proceso para determinar que hizo el programa mientras se ejecutaba y cuando se cerro (evento 4689)."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  803,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  804,
+        "Header":  {
+                       "ES":  "Incluir linea de comando en eventos de creacion de procesos"
+                   },
+        "Description":  {
+                            "ES":  "Sera posible leer los argumentos de la linea de comando para cualquier proceso creado con exito (evento 4688). Para que esta funcionalidad funcione, se habilitara la auditoria de eventos."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  804,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  805,
+        "Header":  {
+                       "ES":  "Cree la vista personalizada \"Creacion de procesos\" en el Visor de eventos"
+                   },
+        "Description":  {
+                            "ES":  "La vista personalizada \"Creacion de procesos\" esta diseñada para filtrar los procesos en ejecucion y sus argumentos para una mejor auditoria de seguridad del sistema. Para que esta funcionalidad funcione, se habilitara la auditoria de eventos y lineas de comandos en los eventos de creacion de procesos."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  805,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  806,
+        "Header":  {
+                       "ES":  "Habilite el registro para todos los modulos de Windows PowerShell"
+                   },
+        "Description":  {
+                            "ES":  "Los eventos de ejecucion de canalizacion para los miembros de los modulos especificados se registran en el registro de Windows PowerShell en el Visor de eventos. Solo para Windows PowerShell 5.1 integrado."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  806,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  807,
+        "Header":  {
+                       "ES":  "Habilite el registro para todas las entradas de scripts de PowerShell en el registro de eventos de Windows PowerShell"
+                   },
+        "Description":  {
+                            "ES":  "Windows PowerShell registrara el procesamiento de comandos, bloques de secuencias de comandos, funciones y secuencias de comandos, ya sea que se invoquen de forma interactiva o mediante la automatizacion en el registro de eventos \"Registros de aplicaciones y servicios\\Microsoft\\Windows\\PowerShell\\Operational\". Solo para Windows PowerShell 5.1 integrado."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  807,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  808,
+        "Header":  {
+                       "ES":  "Comprobar aplicaciones y archivos en Microsoft Defender SmartScreen"
+                   },
+        "Description":  {
+                            "ES":  "SmartScreen de Microsoft Defender protege frente a malware de sitios web y aplicaciones de suplantacion de identidad, y la descarga de archivos potencialmente maliciosos"
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  808,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  809,
+        "Header":  {
+                       "ES":  "Marcar archivos que se han descargado de Internet como no seguros"
+                   },
+        "Description":  {
+                            "ES":  "El Administrador de archivos adjuntos se incluye en Windows para protegerlo de archivos no seguros descargados de Internet. Si el Administrador de archivos adjuntos identifica un archivo adjunto que podria no ser seguro, el Administrador de archivos adjuntos evita (bloquea) que abra el archivo o le advierte antes de abrirlo. Los metadatos se guardan como un flujo de datos alternativo (ADS). Si desea desbloquear un archivo descargado manualmente, puede hacerlo haciendo clic derecho sobre el, seleccionando Propiedades y haciendo clic en \"Desbloquear\"."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  809,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  810,
+        "Header":  {
+                       "ES":  "Habilitar host de secuencias de comandos de Windows"
+                   },
+        "Description":  {
+                            "ES":  "Deshabilitar esta funcion bloquea la ejecucion de secuencias de comandos .js y .vbs, lo que evita que se ejecuten secuencias de comandos JavaScript maliciosas."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  810,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  811,
+        "Header":  {
+                       "ES":  "Espacio aislado de Windows"
+                   },
+        "Description":  {
+                            "ES":  "Espacio aislado de Windows proporciona un entorno de escritorio ligero para ejecutar aplicaciones de forma aislada y segura. El software instalado dentro del entorno de Windows Sandbox permanece aislado y se ejecuta por separado de la maquina host. Una caja de arena es temporal. Cuando se cierra, se eliminan todo el software, los archivos y el estado. Obtiene una nueva instancia de la zona de pruebas cada vez que abre la aplicacion. No funciona en Home Edition."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Security",
+        "ViewId":  811,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  812,
+        "Header":  {
+                       "ES":  "Elija cuando recibir notificaciones sobre cambios en su computadora (UAC)"
+                   },
+        "Description":  {
+                            "ES":  "Cuando el Control de cuentas de usuario (UAC) esta habilitado, Windows solicita el consentimiento o las credenciales de una cuenta de administrador local valida antes de iniciar un programa o una tarea que requiera un token de acceso de administrador completo. Este aviso garantiza que ningun software malicioso se pueda instalar o ejecutar de forma silenciosa."
+                        },
+        "Type":  "RadioGroup",
+        "Tag":  "Security",
+        "ChildElements":  [
+                              {
+                                  "Id":  813,
+                                  "ChildHeader":  {
+                                                      "ES":  "Notificarme solo cuando las aplicaciones intenten hacer cambios en mi computadora"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Con esta configuracion habilitada, su escritorio se atenuara cuando reciba una solicitud de elevacion por parte del aviso de Control de cuentas de usuario (UAC)."
+                                                       },
+                                  "Type":  "RadioButton"
+                              },
+                              {
+                                  "Id":  814,
+                                  "ChildHeader":  {
+                                                      "ES":  "Nunca Notificarme"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  "Con esta configuracion habilitada, su escritorio nunca se atenuara cuando reciba una solicitud de elevacion por parte del aviso de Control de cuentas de usuario (UAC)."
+                                                       },
+                                  "Type":  "RadioButton"
+                              }
+                          ],
+        "ViewId":  812,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  900,
+        "Header":  {
+                       "ES":  "Agregar \"Extraer todo\" en el menu contextual de Windows Installer (.msi)"
+                   },
+        "Description":  {
+                            "ES":  "La opcion del menu contextual \"Extraer todo\" extraera todo el contenido del archivo .msi en la carpeta \"Extraido\" en la misma ubicacion que el archivo .msi."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  900,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  901,
+        "Header":  {
+                       "ES":  "Agregar \"Instalar\" en el menu contextual de los archivos del gabinete (.cab)"
+                   },
+        "Description":  {
+                            "ES":  "La opcion del menu contextual, utilizando DISM, permite simplificar la instalacion de actualizaciones .cab con un solo clic en su menu contextual. Si tiene el tipo de extension de archivo .cab asociado para abrir con una aplicacion de terceros (7-Zip, WinRAR, etc...) de forma predeterminada, el elemento del menu contextual \"Instalar\" no se mostrara hasta que restablezca la asociacion predeterminada para el tipo de archivo .cab."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  901,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  902,
+        "Header":  {
+                       "ES":  "Agregar \"Ejecutar como otro usuario\" en el menu contextual de archivos ejecutables (.exe)"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  902,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  903,
+        "Header":  {
+                       "ES":  "Agregar \"Transmitir a dispositivo\" en el menu contextual de carpetas y archivos multimedia"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  903,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  904,
+        "Header":  {
+                       "ES":  "Agregar \"Compartir\" en el menu contextual"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  904,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  905,
+        "Header":  {
+                       "ES":  "Agregar \"Editar con Paint 3D\" en el menu contextual de archivos multimedia"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "ExpandingGroup",
+        "Tag":  "ContextMenu",
+        "ChildElements":  [
+                              {
+                                  "Id":  906,
+                                  "ChildHeader":  {
+                                                      "ES":  ".bmp"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  907,
+                                  "ChildHeader":  {
+                                                      "ES":  ".gif"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  908,
+                                  "ChildHeader":  {
+                                                      "ES":  ".jpe"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  909,
+                                  "ChildHeader":  {
+                                                      "ES":  ".jpeg"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  910,
+                                  "ChildHeader":  {
+                                                      "ES":  ".jpg"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  911,
+                                  "ChildHeader":  {
+                                                      "ES":  ".png"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  912,
+                                  "ChildHeader":  {
+                                                      "ES":  ".tif"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              },
+                              {
+                                  "Id":  913,
+                                  "ChildHeader":  {
+                                                      "ES":  ".tiff"
+                                                  },
+                                  "ChildDescription":  {
+                                                           "ES":  ""
+                                                       },
+                                  "Type":  "CheckBox"
+                              }
+                          ],
+        "ViewId":  905,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  914,
+        "Header":  {
+                       "ES":  "Agregar \"Editar con fotos\" en el menu contextual de archivos multimedia"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  914,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  915,
+        "Header":  {
+                       "ES":  "Agregar \"Crear un nuevo video\" en el menu contextual de archivos multimedia"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  915,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  916,
+        "Header":  {
+                       "ES":  "Agregar \"Editar\" en el menu contextual de archivos de imagen"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  916,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  917,
+        "Header":  {
+                       "ES":  "Agregar \"Imprimir\" en el menu contextual de los archivos .bat y .cmd"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  917,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  918,
+        "Header":  {
+                       "ES":  "Agregar \"Incluir en biblioteca\" en el menu contextual de carpetas y unidades"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  918,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  919,
+        "Header":  {
+                       "ES":  "Agregar \"Enviar a\" en el menu contextual de carpetas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  919,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  921,
+        "Header":  {
+                       "ES":  "Agregar \"Imagen de mapa de bits\" en el menu contextual \"Nuevo\""
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  921,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  922,
+        "Header":  {
+                       "ES":  "Agregar \"Documento de texto enriquecido\" en el menu contextual \"Nuevo\""
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  922,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    },
+    {
+        "Id":  923,
+        "Header":  {
+                       "ES":  "Agregar \"Carpeta comprimida (en zip)\" en el menu contextual \"Nuevo\""
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  923,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  924,
+        "Header":  {
+                       "ES":  "Haga que las opciones del menu contextual \"Abrir\", \"Imprimir\" y \"Editar\" esten disponibles al seleccionar mas de 15 archivos"
+                   },
+        "Description":  {
+                            "ES":  "De forma predeterminada, los elementos del menu contextual \"Abrir\", \"Imprimir\", \"Editar\" no apareceran si se seleccionan mas de 15 elementos para evitar realizar estas acciones accidentalmente en una gran cantidad de archivos."
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  924,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  925,
+        "Header":  {
+                       "ES":  "Agregar \"Buscar una aplicacion en Microsoft Store\" en el cuadro de dialogo \"Abrir con\""
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  925,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  926,
+        "Header":  {
+                       "ES":  "Agregar \"Abrir en Windows Terminal\" en el menu contextual de carpetas"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  926,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  927,
+        "Header":  {
+                       "ES":  "Inicie Terminal de Windows desde el menu contextual de carpetas como administrador de forma predeterminada"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  927,
+        "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  928,
+        "Header":  {
+                       "ES":  "Habilite el estilo del menu contextual de Windows 10"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  928,
+        "Windows10Supported":  false,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  929,
+        "Header":  {
+                       "ES":  "Agregar \"Compartir\" en el menu contextual"
+                   },
+        "Description":  {
+                            "ES":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "ContextMenu",
+        "ViewId":  904,
+        "Windows10Supported":  true,
+        "Windows11Supported":  false
+    }
+]

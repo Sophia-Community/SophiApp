@@ -43,11 +43,11 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Exécuter la tâche pour nettoyer les fichiers et les mises à jour inutilisés de Windows?</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Nettoie les fichiers inutilisés de Windows et les mises à jour à l'aide de l'application de nettoyage de disque intégrée.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Rappel de notification sur le nettoyage des fichiers et mises à jour inutilisés de Windows.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Exécuter</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Nettoyage du dossier %SystemRoot%\SoftwareDistribution\Download.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Le cache de mise à jour Windows a été supprimé avec succès.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Le dossier des fichiers temporaires a été nettoyé avec succès.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Nettoie le dossier des fichiers temporaires.</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Exécuter</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Fabriqué avec</system:String>
     <system:String x:Key="Localization.About.OfWindows">de Windows&#174;</system:String>

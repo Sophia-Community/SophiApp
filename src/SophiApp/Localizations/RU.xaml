@@ -43,11 +43,11 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Запустить задачу по очистке неиспользуемых файлов и обновлений Windows?</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Очистка неиспользуемых файлов и обновлений Windows, используя встроенную программу Очистка диска</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Всплывающее уведомление с напоминанием об очистке неиспользуемых файлов и обновлений Windows</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Запустить</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Кэш обновлений Windows успешно удален</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">Очистка папки %SystemRoot%\SoftwareDistribution\Download</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Папка временных файлов успешно очищена</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Очистка папки временных файлов</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Запустить</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Сделано с</system:String>
     <system:String x:Key="Localization.About.OfWindows">к Windows&#174;</system:String>

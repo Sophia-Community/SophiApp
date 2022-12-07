@@ -43,11 +43,11 @@
     <system:String x:Key="Localization.CleanupTask.NotificationTask.EventTitle">Windows'ta kullanılmayan dosyaları ve güncellemeleri temizlemek için görev çalıştırılsın mı?</system:String>
     <system:String x:Key="Localization.CleanupTask.Description">Yerleşik Disk Temizleme uygulamasını kullanarak Windows'ta kullanılmayan dosyaları ve güncellemeleri temizler.</system:String>
     <system:String x:Key="Localization.CleanupTask.NotificationTask.Description">Windows'ta kullanılmayan dosyaların ve güncellemelerin temizlenmesi hakkında açılır bildirim hatırlatıcısı.</system:String>
+    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Çalıştır</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Event">Windows güncelleme önbelleği başarıyla silindi.</system:String>
     <system:String x:Key="Localization.SoftwareDistributionTask.Description">%SystemRoot%\SoftwareDistribution\Download klasörünü temizleme.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Description">Geçici dosyalar klasörünü temizler.</system:String>
     <system:String x:Key="Localization.ClearTempTask.Event">Geçici dosyalar klasörü başarıyla temizlendi.</system:String>
-    <system:String x:Key="Localization.CleanupTask.NotificationTask.Run">Çalıştır</system:String>
     <system:String x:Key="Localization.Build.Name">Helen</system:String>
     <system:String x:Key="Localization.About.MadeWith">Windows&#174;</system:String>
     <system:String x:Key="Localization.About.OfWindows">ile hazırlandı.</system:String>
