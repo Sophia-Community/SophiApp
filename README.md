@@ -37,14 +37,13 @@
   [discord-link]: https://discord.gg/sSryhaEv79
 
   [![Discord][discord-news-badge]][discord-link]
-
 </p>
 
 Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" height="11px"/> <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="11px"/>
 
 ***
 
-  <a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
+<a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
 
 ***
 
@@ -99,7 +98,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 | Windows 10 22H2                 | 2022 Update         | 19045.2006+ | x64  | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update | 19044.1706+ | x64  | Home/Pro/Enterprise/LTSC |
 
-> **Note**: Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history 
+> **Note**: Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history 
 
 ### Download SophiApp via PowerShell/Chocolatey/Scoop
 
@@ -122,20 +121,20 @@ scoop bucket add extras
 scoop install sophiapp
 ```
 
- [Beta versions](https://github.com/Sophia-Community/SophiApp/releases)
+[Beta versions](https://github.com/Sophia-Community/SophiApp/releases)
 
-> **Note**: `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into the registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`
+> **Note**: `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into the registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`.
 
 ***
 
-### Warning:
+### Warning
 
 * It's allowed to be logged in as one admin user only during application startup.
 * 🔥🔥🔥`SophiApp` may not work on a homebrew Windows. Especially, if the homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by purposely uprooting system components
 
 ## Key features
 
-* 130+ tweaks. ⭐
+* 130+ tweaks.
 * Configure your Windows by officially documented methods.
 * SophiApp has a dynamically rendered UI—nothing is hardcoded. 👻
 * SophiApp displays the current state of every feature for your Windows.
@@ -147,19 +146,18 @@ scoop install sophiapp
   * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into your GitHub account to be able to view Actions logs);
 * High resolutions support.
 * Built-in search engine.
-  * Functions can be found by searching their headers and descriptions. [GIF](#searching-feature)
+  * Functions can be found by searching their headers and descriptions.
 * Dark & light themes support.
-  * The app can change its' theme instantly when you change your default Windows theme mode for apps. [GIF](#instantly-changing-theme)
+  * The app can change its' theme instantly when you change your default Windows theme mode for apps.
 * Configure Privacy & Telemetry.
 * Configure UI & Personalization of your system.
-* Install the latest `Microsoft Visual C++ Redistributable Packages 2015–2022 x64`;
-* Install the latest `.NET Desktop Runtime 6 x86/x64`;
+* Install the latest `Microsoft Visual C++ Redistributable Packages 2015–2022 x86/x64`;
+* Install the latest `.NET Desktop Runtime 7 x86/x64`;
 * Uninstall OneDrive "correctly".
 * Uninstall UWP apps using a dynamically rendered list of apps with localized packages names and native icons.
 * Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) to let you open .heic and .heif formats.
-* Create a `Windows Cleanup` and `Windows Cleanup Notification` to clean up Windows unused files and updates using a native toast notification.
-  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or [dismiss](#native-interactive-toasts-for-the-windows-cleanup-scheduled-task).
-* Create scheduled tasks to clean `%SystemRoot%\SoftwareDistribution\Download` & `%TEMP%`.
+* Create a scheduled task to clean up Windows unused files and updates using a native toast notification.
+  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or dismiss.
 * Configure Windows Security.
 * The ability to copy functions' descriptions or headers.
 * Many unique tweaks.

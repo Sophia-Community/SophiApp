@@ -35,6 +35,7 @@
 
   [discord-news-badge]: https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield
   [discord-link]: https://discord.gg/sSryhaEv79
+
   [![Discord][discord-news-badge]][discord-link]
 </p>
 
@@ -79,11 +80,8 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 
 ## Donazioni
 
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px></a>
-
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/farag)
-
-![ko-fi](https://storage.ko-fi.com/cdn/useruploads/Q5Q51QUJC/qrcode.png)
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left">
+</a><a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
 
 | ![ko-fi](https://img.shields.io/badge/tether-168363?style=for-the-badge&logo=tether&logoColor=white) |
 |:----------------------------------------------------------------------------------------------------:|
@@ -123,50 +121,44 @@ scoop bucket add extras
 scoop install sophiapp
 ```
 
-### Versione beta
+[Beta versions](https://github.com/Sophia-Community/SophiApp/releases)
 
-[Download](https://github.com/Sophia-Community/SophiApp/releases)
+> **Note**: `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`.
 
 ***
+
+### Avvertimento
 
 * É permesso essere connessi come utente amministratore solamente durante l'avvio dell'applicazione.
 * 🔥🔥🔥`SophiApp` potrebbe non funzionare su versioni personalizzate di Windows; specialmente se dall'ISO personalizzata  sono stati rimossi componenti di sistema per disattivare Microsoft Defender o la telemetria dell'OS.
 
-## Installazione
-
-> **Note**: `SophiApp` è completamente portatile: non ha nessun file di configurazione (per ora) e non salva dati nel registro. Estrai la cartella della`SophiApp`, la cartella bin `Bin` , il file `SophiApp.exe.config`, ed esegui `SophiApp.exe`
-
 ## Caratteristiche principali
 
-* UI renderizzata dinamicamente—nulla è hardcoded; 👻
 * 130+ opzioni; ⭐
+* Configura il tuo Windows con metodi ufficialmente documentati;
+* UI renderizzata dinamicamente—nulla è hardcoded; 👻
+* SophiApp visualizza lo stato corrente di ogni funzionalità per Windows;
 * `SophiApp` usa il pattern [MVVM](https://it.wikipedia.org/wiki/Model-view-viewmodel);
 * Supporto al multithreading;
 * Il codice della`SophiApp` è controllato [static analyzer](https://pvs-studio.com/pvs-studio), la cui licenza è stata gentilemnte concessa da PVS-Studio;
 * Tutte le build sono compilate in cloud con [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions);
-  * Puoi comparare l'hash sum dello zip comunicato nella pagiana release con quello nella sezione `Compress Files` per verificare che l'archivio non sia stato manomesso(richiede un'account GitHub).
+  * Puoi comparare l'hash sum dello zip comunicato nella pagiana release con quello nella sezione `Compress Files` per verificare che l'archivio non sia stato manomesso (richiede un'account GitHub).
 * L'app mostra lo stato  `attuale` di ogni features nella UI;
 * Supporto per le alte risoluzioni;
 * Motore di ricerca integrato;
-  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave [GIF](#ricerca).
+  * Le funzionalità possono essere cercate tramite l'inserimento di parole chiave ricerca.
 * Supporto al tema chiaro e scuro;
-  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato. [GIF](#cambio-istantaneo-del-tema).
+  * L'app potrà cambiere il suo tema instantanemente se quello di default di windows per le altre app verra cambiato.
 * Modifica la privacy e la telemetria;
 * Disattiva le attività pianificate di raccolta dati diagnostica;
-* Personalizza la UI;
 * Installare i più recenti `Microsoft Visual C++ Redistributable Packages 2015–2022 x64`;
-* Installare i più recenti `.NET Desktop Runtime 6 x86/x64`;
+* Installare i più recenti `.NET Desktop Runtime 7 x86/x64`;
 * Disinstalla OneDrive "correttamente";
-* Disinstalla le app UWP;
-  * I nopi delle app sono tradotti nella lingua del pc;
-  * La lista delle app UWP è renderizzata dinamicamente con le icone locali.
+* Disinstalla le app UWP utilizzando un elenco di app con rendering dinamico con nomi di pacchetti localizzati e icone native.
 * Scarica e installa [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) dai server Microsoft per poter aprire i video .heic e .heif;
-* Crea le opreazioni pianificate `Windows Cleanup` e `Windows Cleanup Notification`per ripulire Windows dai file inutillizati e dagli aggiornamenti installati;
+* Crea un'attività pianificata per ripulire Windows dai file inutillizati e dagli aggiornamenti installati;
   * Una [notifica](#notifiche-interattive-per-loperazione-pianificate-di-pulizia-di-windows) verrà mostrata che permettera di rimandare, eseguire o annullare l'operazione pianificata di pulizia.
-* Creaoperazioni pianificate per ripulire;
-  * `%SystemRoot%\SoftwareDistribution\Download`;
-  * `%TEMP%`.
-* Configura la sicurezza di windows Windows;
+* Configura la sicurezza di Windows;
 * ÈPossibile copiare il nome o la descrizione delle varie funzioni;
 * Molteplici personalizzazioni di esplora risorse e dei menu contestuale;
 
