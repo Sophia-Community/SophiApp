@@ -100,6 +100,8 @@ Disponibile in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Fl
 
 **Note**: Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), e [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/):
 
+## Installazione
+
 ### Scaricare SophiApp con PowerShell/Chocolatey/Scoop
 
 Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell

@@ -100,6 +100,8 @@
 
 **Note**: Звіртеся з історією оновлень [Windows 10](https://support.microsoft.com/uk-ua/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/uk-ua/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/uk-ua/windows-insider/flight-hub/).
 
+## Встановлення
+
 ### Завантажити SophiApp через PowerShell/Chocolatey/Scoop
 
 Завантажити архів з останньою версією SophiApp, виконавши в PowerShell (`в тому числі і не від імені адміністратора`)

@@ -100,6 +100,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 > **Note**: Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history 
 
+## Installation
+
 ### Download SophiApp via PowerShell/Chocolatey/Scoop
 
 Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
