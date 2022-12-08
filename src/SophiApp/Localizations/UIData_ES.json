@@ -133,7 +133,7 @@
                               {
                                   "Id":  111,
                                   "ChildHeader":  {
-                                                      "ES":  "consolidador"
+                                                      "ES":  "Consolidador"
                                                   },
                                   "ChildDescription":  {
                                                            "ES":  "Si el usuario ha dado su consentimiento para participar en el Programa de mejora de la experiencia del usuario de Windows, este trabajo recopila y envia datos de uso a Microsoft."
