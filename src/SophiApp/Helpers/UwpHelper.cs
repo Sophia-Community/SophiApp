@@ -17,13 +17,13 @@ namespace SophiApp.Helpers
         {
             var sid = OsHelper.GetCurrentUserSid().Value;
             var packageManager = new PackageManager();
-            return packageManager.FindPackagesForUser(sid)
-                                 .First(package => package.Id.Name.Equals(packageName));
+            return packageManager.FindPackagesForUser(sid).First(package => package.Id.Name.Equals(packageName));
         }
 
         internal static IEnumerable<UwpElementDto> GetPackagesDto(bool forAllUsers = false)
         {
-            var currentUserScript = @"# The following UWP apps will be excluded from the display
+            var currentUserScript = @"
+# The following UWP apps will be excluded from the display
 $ExcludedAppxPackages = @(
 # Microsoft Desktop App Installer
 'Microsoft.DesktopAppInstaller',
@@ -51,7 +51,10 @@ $ExcludedAppxPackages = @(
 'Microsoft.HEVCVideoExtension',
 
 # Raw Image Extension
-'Microsoft.RawImageExtensio'
+'Microsoft.RawImageExtension',
+
+# HEIF Image Extensions
+'Microsoft.HEIFImageExtension'
 )
 
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
@@ -81,14 +84,15 @@ foreach ($AppxPackage in $AppxPackages)
 		continue
 	}
 
-	 [PSCustomObject]@{
+	[PSCustomObject]@{
 		Name            = $AppxPackage.Name
 		PackageFullName = $AppxPackage.PackageFullName
 		Logo            = $PackageId.Logo
 		DisplayName     = $PackageId.DisplayName
 	}
 }";
-            var allUsersScript = @"# The following UWP apps will be excluded from the display
+            var allUsersScript = @"
+# The following UWP apps will be excluded from the display
 $ExcludedAppxPackages = @(
 # Microsoft Desktop App Installer
 'Microsoft.DesktopAppInstaller',
@@ -107,7 +111,19 @@ $ExcludedAppxPackages = @(
 'Microsoft.WindowsTerminalPreview',
 
 # Web Media Extensions
-'Microsoft.WebMediaExtensions'
+'Microsoft.WebMediaExtensions',
+
+# AV1 Video Extension
+'Microsoft.AV1VideoExtension',
+
+# HEVC Video Extensions from Device Manufacturer
+'Microsoft.HEVCVideoExtension',
+
+# Raw Image Extension
+'Microsoft.RawImageExtension',
+
+# HEIF Image Extensions
+'Microsoft.HEIFImageExtension'
 )
 
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}
@@ -145,9 +161,7 @@ foreach ($AppxPackage in $AppxPackages)
 	}
 }";
 
-            return PowerShell.Create()
-                             .AddScript(forAllUsers ? allUsersScript : currentUserScript)
-                             .Invoke()
+            return PowerShell.Create().AddScript(forAllUsers ? allUsersScript : currentUserScript).Invoke()
                              .Where(uwp => uwp.Properties["Logo"].Value != null)
                              .Select(uwp => new UwpElementDto()
                              {
@@ -178,9 +192,7 @@ foreach ($AppxPackage in $AppxPackages)
         {
             var sid = OsHelper.GetCurrentUserSid().Value;
             var packageManager = new PackageManager();
-            return packageManager.FindPackagesForUser(sid)
-                                 .Where(package => package.Id.Name == packageName)
-                                 .Count() > 0;
+            return packageManager.FindPackagesForUser(sid).Where(package => package.Id.Name == packageName).Count() > 0;
         }
 
         internal static void RemovePackage(string packageFullName, bool allUsers)
