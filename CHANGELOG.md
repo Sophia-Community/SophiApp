@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.91 — 11.12.2022
+
+* Bumped Json.NET to 13.0.2;
+* Added Spanish translation
+  * Thanks to @Marcosgt3.
+* Minor changes.
+
 ## 1.0.90 — 06.12.2022
 
 * Fixed `Sophia` registry key wasn't saving;
@@ -16,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Updated the Scheduled tasks notification toasts UI;
   * ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/Toasts.png)
   * Remove and re-create SophiApp scheduled tasks to get new toasts UI.
-* Json.NET bumped to 13.0.2;
+* Json.NET bumped to 13.0.1;
 * Minor changes.
 
 ## 1.0.87 — 04.11.2022
