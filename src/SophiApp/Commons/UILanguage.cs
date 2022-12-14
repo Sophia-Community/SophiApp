@@ -8,6 +8,7 @@
         ES,
         FR,
         IT,
+        PL,
         RU,
         TR,
         UA,
