@@ -79,7 +79,7 @@
  &bull;
  <a href="#ключові-особливості">Ключові особливості</a>
  &bull;
- <a href="#видео">Відео</a>
+ <a href="#відео">Відео</a>
  &bull;
  <a href="#скріншоти">Скріншоти</a>
  &bull;
@@ -186,7 +186,7 @@ scoop install sophiapp
 * Можливість копіювання опису та заголовків функцій;
 * Величезна кількість твіків з кастомізації провідника та контекстного меню.
 
-## Видео
+## Відео
 
 [![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
