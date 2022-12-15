@@ -12,7 +12,7 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" height="30px"/> &emsp; <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" height="30px"/> &emsp; <a href="https://pvs-studio.com/pvs-studio"><img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/></a>
 
 <p align="left">
-  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"> </a><a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
+  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"></a> <a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
 
   <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
@@ -87,7 +87,7 @@
  &bull;
  <a href="#переклад">Переклад</a>
  &bull;
- <a href="#медiа">Медіа</a>
+ <a href="#медіа">Медіа</a>
  &bull;
  <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал змін</a>
 </p>
@@ -160,8 +160,8 @@ scoop install sophiapp
 
 * UI, що динамічно відмальовується: елементи не запрограмовані жорстко; 👻
 * Більше 130 твіків; ⭐
-* SophiApp використовує динамічно генерований UI - нічого не захардшкірено; 👻
-* Налаштуйте Windows офіційно задокументованими методами;
+* SophiApp використовує динамічно генерований UI - нічого не захардкожено; 👻
+* Налаштування Windows офіційно задокументованими методами;
 * `SophiApp` використовує патерн [MVVM](https://uk.wikipedia.org/wiki/Model-View-ViewModel);
 * Підтримка багатопоточності;
 * Перевіряється [статичним аналізатором](https://pvs-studio.com/pvs-studio), ліцензію на який надали у PVS-Studio;
@@ -178,13 +178,13 @@ scoop install sophiapp
 * Встановлення останньої версії розповсюджуваних пакетів `Microsoft Visual C++ 2015–2022 x86/x64`;
 * Встановлення останньої версії `.NET Desktop Runtime 7 x86/x64`;
 * Правильно і до кінця видаляє OneDrive, не порушивши цілісність ОС;
-* Видалити UWP-додатків, використовуючи динамічно генерований список локалізованих імен та нативних іконок пакетів;
+* Видалення UWP-додатків, використовуючи динамічно генерований список локалізованих імен та нативних іконок пакетів;
 * Завантаження та встановлення з Microsoft Store [HEVC-розширення](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) для можливості відкриття файлів .heic- and .heif-форматів;
 * Створення заплановане завдання у Планувальнику завдань з очищення файлів та оновлень Windows, що не використовуються.;
   * Перед початком очищення спливе нативний тост, де ви зможете обрати відкласти, скасувати або запустити завдання. [GIF](#нативний-інтерактивний-тост-з-очищення-windows)
 * Налаштування безпеки Windows;
 * Можливість копіювання опису та заголовків функцій;
-* Величезна кількість твіків з кастомізації провідника та контекстного меню.
+* Величезна кількість твіків з кастомізації Провідника та контекстного меню.
 
 ## Відео
 
@@ -228,8 +228,8 @@ scoop install sophiapp
 ## Медіа
 
 * [![Discord](https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield)](https://discord.gg/sSryhaEv79)
-* [Telegram discussion group](https://t.me/sophia_chat)
-* [Telegram channel](https://t.me/sophianews)
+* [Телеграм-група для обговорення](https://t.me/sophia_chat)
+* [Telegram канал](https://t.me/sophianews)
 * [Ru-Board](https://forum.ru-board.com/topic.cgi?forum=5&topic=50903)
 * [RuTracker.org](https://rutracker.org/forum/viewtopic.php?t=6218047)
 * [Comss.ru](https://www.comss.ru/page.php?id=9679)
