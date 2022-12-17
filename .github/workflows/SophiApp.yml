@@ -38,7 +38,7 @@ jobs:
       run: nuget restore "src\SophiApp.sln"
 
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@master
+      uses: microsoft/setup-msbuild@main
 
     - name: Run MSBuild
       run: msbuild src\SophiApp.sln /p:Configuration=$env:Configuration /p:platform=$env:Platform
