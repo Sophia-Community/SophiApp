@@ -1,0 +1,2745 @@
+[
+    {
+        "Id": 100,
+        "Header": {
+            "PL": "Usługa telemetrii"
+        },
+        "Description": {
+            "PL": "Skonfiguruj usługę Connected User Experiences and Telemetry (DiagTrack) oraz połączenie dla Unified Telemetry Client Outbound Traffic. Wyłączenie usługi \"Connected User Experiences and Telemetry\" (DiagTrack) może spowodować, że nie będziesz już mógł zdobywać osiągnięć Xbox"
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 100,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 101,
+        "Header": {
+            "PL": "Zbieranie danych diagnostycznych z poziomu systemu operacyjnego"
+        },
+        "Description": {
+            "PL": "W ramach korzystania z systemu Windows urządzenie wysyła do firmy Microsoft ograniczony zestaw danych, które są niezbędne do zapewnienia bezpieczeństwa, aktualności i poprawnego działania urządzenia i systemu operacyjnego."
+        },
+        "Type": "RadioGroup",
+        "Tag": "Privacy",
+        "ChildElements": [
+            {
+                "Id": 102,
+                "ChildHeader": {
+                    "PL": "Domyślny"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 103,
+                "ChildHeader": {
+                    "PL": "Minimalny"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 101,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 104,
+        "Header": {
+            "PL": "Raportowanie błędów systemu Windows"
+        },
+        "Description": {
+            "PL": "Funkcja raportowania błędów umożliwia użytkownikom powiadamianie firmy Microsoft o błędach aplikacji, błędach system, wolnych aplikacjach i innych problemach specyficznych dla aplikacji. Firma Microsoft może korzystać z funkcji raportowania błędów, aby dostarczać klientom informacje dotyczące rozwiązywania problemów, rozwiązania lub aktualizacje dotyczące ich konkretnych problemów."
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 104,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 105,
+        "Header": {
+            "PL": "Częstotliwość informacji zwrotnych"
+        },
+        "Description": {
+            "PL": "Wybierz, jak często system Windows może prosić o Twoją opinię."
+        },
+        "Type": "RadioGroup",
+        "Tag": "Privacy",
+        "ChildElements": [
+            {
+                "Id": 106,
+                "ChildHeader": {
+                    "PL": "Automatycznie"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 107,
+                "ChildHeader": {
+                    "PL": "Nigdy"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 105,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 108,
+        "Header": {
+            "PL": "Zadania śledzenia diagnostycznego"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "ExpandingGroup",
+        "Tag": "Privacy",
+        "ChildElements": [
+            {
+                "Id": 109,
+                "ChildHeader": {
+                    "PL": "ProgramDataUpdater"
+                },
+                "ChildDescription": {
+                    "PL": "Gromadzi dane telemetryczne programu, jeśli wyrażono zgodę w programie Microsoft Customer Experience Improvement firmy Microsoft."
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 110,
+                "ChildHeader": {
+                    "PL": "Proxy"
+                },
+                "ChildDescription": {
+                    "PL": "To zadanie zbiera i przesyła dane autochk SQM, jeśli wyrażono zgodę na udział w programie Microsoft Customer Experience Improvement firmy Microsoft."
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 111,
+                "ChildHeader": {
+                    "PL": "Consolidator"
+                },
+                "ChildDescription": {
+                    "PL": "Jeśli użytkownik wyraził zgodę na udział w programie Windows Customer Experience Improvement, to zadanie zbiera i wysyła dane dotyczące użytkowania do firmy Microsoft."
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 112,
+                "ChildHeader": {
+                    "PL": "UsbCeip"
+                },
+                "ChildDescription": {
+                    "PL": "Zadanie USB CEIP (Customer Experience Improvement Program) gromadzi statystyki i informacje o maszynie związane z Universal Serial Bus i wysyła je do  grupy inżynierów Windows Device Connectivity w firmie Microsoft. Otrzymane informacje służą poprawie niezawodności, stabilności i ogólnej funkcjonalności USB w systemie Windows. Jeśli użytkownik nie wyraził zgody na uczestnictwo w Windows CEIP, to zadanie nic nie robi"
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 113,
+                "ChildHeader": {
+                    "PL": "Microsoft-Windows-DiskDiagnosticDataCollector"
+                },
+                "ChildDescription": {
+                    "PL": "Narzędzie Windows Disk Diagnostic zgłasza do firmy Microsoft ogólne informacje o dysku i systemie dla użytkowników uczestniczących w programie Customer Experience Program."
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 114,
+                "ChildHeader": {
+                    "PL": "MapsToastTask"
+                },
+                "ChildDescription": {
+                    "PL": "To zadanie pokazuje różne powiadomienia związane z mapą"
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 115,
+                "ChildHeader": {
+                    "PL": "MapsUpdateTask"
+                },
+                "ChildDescription": {
+                    "PL": "To zadanie sprawdza dostępność aktualizacji map pobranych do użytku w trybie offline. Wyłączenie tego zadania uniemożliwi systemowi Windows powiadamianie użytkownika o zaktualizowanych mapach."
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 116,
+                "ChildHeader": {
+                    "PL": "FamilySafetyMonitor"
+                },
+                "ChildDescription": {
+                    "PL": "Inicjuje monitorowanie i egzekwowanie Family Safety"
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 117,
+                "ChildHeader": {
+                    "PL": "XblGameSaveTask"
+                },
+                "ChildDescription": {
+                    "PL": "Zadanie XblGameSave Standby, które synchronizuje postęp gry, gdy system operacyjny jest bezczynny"
+                },
+                "Type": "CheckBox"
+            }
+        ],
+        "ViewId": 108,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 118,
+        "Header": {
+            "PL": "Użyj danych logowania, aby automatycznie zakończyć konfigurację urządzenia po aktualizacji"
+        },
+        "Description": {
+            "PL": "Niektóre aktualizacje wymagają ponownego uruchomienia komputera, a następnie zalogowania się do systemu Windows w celu dokończenia instalacji aktualizacji, co oznacza, że korzystanie z komputera może nie być możliwe do czasu zakończenia aktualizacji. System Windows zapobiega temu, umożliwiając systemowi Windows na użycie danych logowania do utworzenia specjalnego tokena. Token służy do automatycznego logowania po ponownym uruchomieniu, dokończenia konfiguracji komputera, a następnie zablokowania komputera w celu zapewnienia bezpieczeństwa konta i danych."
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 118,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 119,
+        "Header": {
+            "PL": "Zezwól witrynom internetowym na dostarczanie istotnych treści, uzyskując dostęp do listy języków"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 119,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 120,
+        "Header": {
+            "PL": "Zezwalaj aplikacjom na wyświetlanie spersonalizowanych reklam przy użyciu mojego identyfikatora wyświetlania reklam"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 120,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 121,
+        "Header": {
+            "PL": "Pokaż informacje powitalne systemu Windows po aktualizacjach i od czasu do czasu po zalogowaniu, aby wyróżnić nowe funkcje i oferty"
+        },
+        "Description": {
+            "PL": "System Windows może otworzyć okno, by pokazać, nowe funkcje w systemie operacyjnym."
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 121,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 122,
+        "Header": {
+            "PL": "Uzyskaj porady i sugestie podczas korzystania z systemu Windows"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 122,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 123,
+        "Header": {
+            "PL": "Pokaż sugerowane treści w aplikacji Ustawienia"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 123,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 124,
+        "Header": {
+            "PL": "Włącz automatyczną instalację sugerowanych aplikacji"
+        },
+        "Description": {
+            "PL": "System Windows może dyskretnie pobierać i instalować niektóre sugerowane aplikacje ze sklepu Microsoft Store bez potwierdzenia ze strony użytkownika."
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 124,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 125,
+        "Header": {
+            "PL": "Sugeruj, w jaki sposób można dokończyć konfigurowanie urządzenia, aby w pełni wykorzystać możliwości systemu Windows"
+        },
+        "Description": {
+            "PL": "System Windows może od czasu do czasu wyświetlać monit \"Wykorzystaj jeszcze więcej możliwości systemu Windows\", który wyświetla dodatkowe usługi, które użytkownik może skonfigurować."
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 125,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 126,
+        "Header": {
+            "PL": "Dostosowane doświadczenia"
+        },
+        "Description": {
+            "PL": "Pozwól firmie Microsoft na oferowanie dostosowanych doświadczeń w oparciu o wybrane przez Ciebie ustawienia danych diagnostycznych."
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 126,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 127,
+        "Header": {
+            "PL": "Włącz wyszukiwanie Bing w menu Start"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Privacy",
+        "ViewId": 127,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 200,
+        "Header": {
+            "PL": "Pokaż ikonę \"Ten komputer\" na pulpicie"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 201,
+                "ChildHeader": {
+                    "PL": "Pokaż"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 202,
+                "ChildHeader": {
+                    "PL": "Ukryj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 200,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 204,
+        "Header": {
+            "PL": "Użyj pól wyboru, aby wybrać elementy"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 204,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 205,
+        "Header": {
+            "PL": "Pokaż ukryte pliki, foldery i dyski"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 205,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 206,
+        "Header": {
+            "PL": "Pokaż rozszerzenia plików"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 206,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 207,
+        "Header": {
+            "PL": "Ukryj konflikty scalania folderów"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 207,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 208,
+        "Header": {
+            "PL": "Otwórz Eksplorator plików do:"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 209,
+                "ChildHeader": {
+                    "PL": "Ten komputer"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 210,
+                "ChildHeader": {
+                    "PL": "Szybki dostęp"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 208,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 211,
+        "Header": {
+            "PL": "Pokaż przycisk Cortany na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 211,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 212,
+        "Header": {
+            "PL": "Włącz tryb kompaktowy Eksploratora plików"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 212,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 213,
+        "Header": {
+            "PL": "Pokaż powiadomienia dostawcy synchronizacji w Eksploratorze plików"
+        },
+        "Description": {
+            "PL": "Wyłącz powiadomienia o reklamach usługi OneDrive w Eksploratorze plików."
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 213,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 214,
+        "Header": {
+            "PL": "Po przyciągnięciu okna, pokaż co można przyciągnąć obok niego"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 214,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 215,
+        "Header": {
+            "PL": "Pokaż układy przyciągania po najechaniu kursorem na przycisk maksymalizacji okna"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 215,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 216,
+        "Header": {
+            "PL": "Wyświetlaj okno przesyłania plików"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 217,
+                "ChildHeader": {
+                    "PL": "W trybie szczegółowym"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 218,
+                "ChildHeader": {
+                    "PL": "W trybie kompaktowym"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 216,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 219,
+        "Header": {
+            "PL": "Minimalizuj pasek Eksploratora plików"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 220,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 220,
+        "Header": {
+            "PL": "Wyświetl okno potwierdzenia podczas usuwania plików z kosza"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 220,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 221,
+        "Header": {
+            "PL": "Pokaż folder \"Obiekty 3D\" w \"Ten komputer\" i Szybkim dostępie"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 221,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 222,
+        "Header": {
+            "PL": "Pokaż często używane foldery w Szybkim dostępie"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 222,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 223,
+        "Header": {
+            "PL": "Pokaż ostatnio używane pliki w Szybkim dostępie"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 223,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 224,
+        "Header": {
+            "PL": "Ustaw wyrównanie paska zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 225,
+                "ChildHeader": {
+                    "PL": "Do lewej"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 226,
+                "ChildHeader": {
+                    "PL": "Wyśrodkuj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 224,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 227,
+        "Header": {
+            "PL": "Pokaż przycisk wyszukiwania na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 227,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 228,
+        "Header": {
+            "PL": "Pokaż przycisk Widoku zadań na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 228,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 229,
+        "Header": {
+            "PL": "Pokaż przycisk Widoku zadań na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 229,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 230,
+        "Header": {
+            "PL": "Pokazuj ikonę widżetów na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 230,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 231,
+        "Header": {
+            "PL": "Pokazuj aplikację People na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 231,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 232,
+        "Header": {
+            "PL": "Pokazuj sekundy na zegarze paska zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 232,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 233,
+        "Header": {
+            "PL": "Wyszukaj na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 234,
+                "ChildHeader": {
+                    "PL": "Ukryty"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 235,
+                "ChildHeader": {
+                    "PL": "Pokaż ikonę wyszukiwania"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 236,
+                "ChildHeader": {
+                    "PL": "Pokaż pole wyszukiwania"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 233,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 237,
+        "Header": {
+            "PL": "Pokaż przycisk Windows Ink Workspace na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 237,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 238,
+        "Header": {
+            "PL": "Zawsze pokazuj wszystkie ikony w obszarze powiadomień"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 238,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 239,
+        "Header": {
+            "PL": "Pokazuj ikonę Meet Now teraz w obszarze powiadomień"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 239,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 240,
+        "Header": {
+            "PL": "Pokazuj \"News and Interests\" na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 240,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 241,
+        "Header": {
+            "PL": "Pokazuj ikonę czatu (Microsoft Teams) na pasku zadań"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 241,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 242,
+        "Header": {
+            "PL": "Wyświetl Panel sterowania jako"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 243,
+                "ChildHeader": {
+                    "PL": "Duże ikony"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 244,
+                "ChildHeader": {
+                    "PL": "Małe ikony"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 245,
+                "ChildHeader": {
+                    "PL": "Kategoria"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 242,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 246,
+        "Header": {
+            "PL": "Domyślny tryb kolorów systemu Windows"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 247,
+                "ChildHeader": {
+                    "PL": "Jasny"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 248,
+                "ChildHeader": {
+                    "PL": "Ciemny"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 246,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 249,
+        "Header": {
+            "PL": "Domyślny tryb kolorów aplikacji"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 250,
+                "ChildHeader": {
+                    "PL": "Jasny"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 251,
+                "ChildHeader": {
+                    "PL": "Ciemny"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 249,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 252,
+        "Header": {
+            "PL": "Pokazuj powiadomienie \"Zainstalowano nową aplikację\""
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 252,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 253,
+        "Header": {
+            "PL": "Pokaż animację pierwszego logowania po aktualizacji"
+        },
+        "Description": {
+            "PL": "Po zakończeniu konfiguracji nowej instalacji, aktualizacji lub podczas logowania się na nowe konto, wyświetlaj \"animację pierwszego logowania\" zawierającą kilka komunikatów dotyczących konfigurowania konta."
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 253,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 254,
+        "Header": {
+            "PL": "Ustaw współczynnik jakości tła pulpitu JPEG"
+        },
+        "Description": {
+            "PL": "Gdy ustawisz obraz JPEG jako tło pulpitu lub pokaz slajdów, system operacyjny obniży jakość oryginalnego obrazu do 85% i zapisze go jako plik TranscodedWallpaper w folderze \n%APPDATA%\\Microsoft\\Windows\\Themes . Jeśli używasz obrazu PNG jako tła pulpitu lub pokazu slajdów, automatyczna redukcja jakości nie zostanie zastosowana, ponieważ dotyczy tylko obrazów JPEG."
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 255,
+                "ChildHeader": {
+                    "PL": "100% (bez redukcji)"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 256,
+                "ChildHeader": {
+                    "PL": "80% (domyślnie)"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 254,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 257,
+        "Header": {
+            "PL": "Informuj gdy wymagane jest ponowne uruchomienie w celu zakończenia aktualizacji"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 257,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 258,
+        "Header": {
+            "PL": "Dodawaj sufiks \"- Skrót\" do nazwy pliku utworzonych skrótów"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 258,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 259,
+        "Header": {
+            "PL": "Użyj przycisku PrtScn, aby otworzyć wycinanie ekranu (Snipping Tool)"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 259,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 260,
+        "Header": {
+            "PL": "Pozwalaj na użycie innych metod wprowadzania dla każdego okna aplikacji"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 260,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 261,
+        "Header": {
+            "PL": "Po złapaniu i potrząśnięciu paska z tytułem okna zminimalizuj wszystkie inne okna"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 261,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 262,
+        "Header": {
+            "PL": "Skonfiguruj układ początkowy"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "Personalization",
+        "ChildElements": [
+            {
+                "Id": 263,
+                "ChildHeader": {
+                    "PL": "Domyślnie"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 264,
+                "ChildHeader": {
+                    "PL": "Więcej przypięć"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 265,
+                "ChildHeader": {
+                    "PL": "Więcej rekomendacji"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 262,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 266,
+        "Header": {
+            "PL": "Pokazuj ostatnio dodane aplikacje w menu Start"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "StartMenu",
+        "ViewId": 266,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 267,
+        "Header": {
+            "PL": "Pokazuj sugestie aplikacji w menu Start"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "StartMenu",
+        "ViewId": 267,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 268,
+        "Header": {
+            "PL": "Uruchamiaj skrót Windows PowerShell z menu Start jako administrator"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "StartMenu",
+        "ViewId": 268,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 269,
+        "Header": {
+            "PL": "Pokazuj najciekawsze wyszukiwania"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 269,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 300,
+        "Header": {
+            "PL": "Storage Sense"
+        },
+        "Description": {
+            "PL": "Funkcja Storage Sense działa, gdy na dysku jest mało miejsca. Zwolnione zostanie wystarczająco dużo miejsca, aby Twój system działał jak najlepiej."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 300,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 301,
+        "Header": {
+            "PL": "Uruchom Storage Sense"
+        },
+        "Description": {
+            "PL": "Funkcja Storage Sense działa, gdy na dysku jest mało miejsca i zwalnia wystarczającą ilość miejsca do optymalnego działania systemu operacyjnego. Najlepiej utworzyć zadanie \"Oczyszczanie systemu Windows\" w sekcji \"Harmonogram zadań\", aby regularnie oczyszczać system Windows."
+        },
+        "Type": "RadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 302,
+                "ChildHeader": {
+                    "PL": "Każdego miesiąca"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 303,
+                "ChildHeader": {
+                    "PL": "Podczas małej ilości wolnego miejsca na dysku"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 301,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 304,
+        "Header": {
+            "PL": "Usuń pliki tymczasowe, które nie są używane przez aplikacje"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 304,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 305,
+        "Header": {
+            "PL": "Hibernacja"
+        },
+        "Description": {
+            "PL": "Hibernacja to stan oszczędzania energii, używany głównie w laptopach. W przeciwieństwie do trybu uśpienia, hibernacja umieszcza otwarte dokumenty i programy na dysku systemowym w pliku \nC:\\hiberfil.sys i wyłącza komputer. Domyślnie rozmiar ukrytego pliku chronionego systemu C:\\hiberfil.sys wynosi 40% całkowitej ilości zainstalowanej pamięci RAM. Wyłączenie hibernacji spowoduje również wyłączenie szybkiego uruchamiania, a hibernacja nie będzie już wyświetlana w menu Zasilanie. Nie zaleca się wyłączania go na urządzeniach mobilnych."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 305,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 306,
+        "Header": {
+            "PL": "Zmienna środowiskowa ścieżki tymczasowych plików"
+        },
+        "Description": {
+            "PL": "Używaj tylko w przypadku, gdy jesteś jedynym użytkownikiem tego komputera, w przeciwnym razie wszyscy użytkownicy będą używać tego samego folderu dla wszystkich plików tymczasowych."
+        },
+        "Type": "AdvancedRadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 307,
+                "ChildHeader": {
+                    "PL": "%SystemDrive%\\Temp"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 308,
+                "ChildHeader": {
+                    "PL": "%LOCALAPPDATA%\\Temp (domyślnie)"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 306,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 309,
+        "Header": {
+            "PL": "Włącz ograniczenie do 260 znaków dla ścieżki systemu Windows"
+        },
+        "Description": {
+            "PL": "Domyślnie maksymalny limit długości ścieżki w systemie Windows wynosi 260 znaków. Ścieżka lokalna jest zbudowana w następującej kolejności: litera dysku, dwukropek, ukośnik odwrotny, składniki nazwy oddzielone ukośnikiem odwrotnym i kończący znak null."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 309,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 310,
+        "Header": {
+            "PL": "Wyświetlaj kod błędu zatrzymania, gdy wystąpi BSoD"
+        },
+        "Description": {
+            "PL": "Domyślnie system Windows nie wyświetla kodu błędu zatrzymania po wystąpieniu BSoD, co pomaga zidentyfikować przyczyny BSoD."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 310,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 311,
+        "Header": {
+            "PL": "Włącz dostęp do zmapowanych dysków z uruchomionej aplikacji z podwyższonymi uprawnieniami w trybie Admin Approval"
+        },
+        "Description": {
+            "PL": "Włączony UAC z ustawieniami domyślnymi nie zezwala na dostęp do zmapowanych dysków sieciowych z aplikacji działających w trybie administratora. Oznacza to, że jeśli uruchomisz wiersz poleceń lub menedżera plików z podwyższonymi uprawnieniami, nie pokażą one liter dysków zamontowanych folderów sieciowych."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 311,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 312,
+        "Header": {
+            "PL": "Włącz pobieranie aktualizacji z optymalizacją dostarczania"
+        },
+        "Description": {
+            "PL": "Optymalizacja dostarczania usługi Windows Update umożliwia pobieranie aktualizacji systemu Windows i aplikacji Microsoft Store ze źródeł innych niż Microsoft, takich jak inne komputery w sieci lokalnej lub komputery w Internecie, które pobierają te same pliki. Optymalizacja dostarczania wysyła również aktualizacje i aplikacje z Twojego komputera do innych komputerów w sieci lokalnej lub do komputerów w Internecie, w oparciu o Twoje ustawienia. Udostępnianie tych danych między komputerami pomaga zmniejszyć przepustowość Internetu potrzebną do aktualizowania więcej niż jednego urządzenia lub może zwiększyć skuteczność pobierania w przypadku ograniczonego lub wolnego połączenia internetowego."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 312,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 313,
+        "Header": {
+            "PL": "Zawsze czekaj na połączenie z siecią podczas uruchamiania komputera i logowania do sieci grup roboczych"
+        },
+        "Description": {
+            "PL": "Aby skrócić czas logowania, system Windows nie czeka na pełne zainicjowanie sieci podczas uruchamiania lub logowania. Ustawienia zasad są stosowane asynchronicznie podczas uruchamiania komputera i logowania użytkownika. W rezultacie system operacyjny nie czeka na pełne zainicjowanie sieci podczas uruchamiania i logowania. Istniejący użytkownicy są logowani przy użyciu zapisanych danych logowania. Skraca to czas logowania. Zasady grupy zastosowane zostaną w tle po uzyskaniu dostępu do sieci."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 313,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 314,
+        "Header": {
+            "PL": "Pozwól systemowi Windows na zarządzanie domyślną drukarką"
+        },
+        "Description": {
+            "PL": "Domyślnie system Windows ustawia ostatnio używaną drukarkę jako domyślną."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 314,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 315,
+        "Header": {
+            "PL": "Otrzymuj aktualizacje dla innych produktów firmy Microsoft"
+        },
+        "Description": {
+            "PL": "Pobieraj Microsoft Office i inne aktualizacje wraz z aktualizacjami systemu Windows."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 315,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 316,
+        "Header": {
+            "PL": "Wybierz plan zasilania"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 317,
+                "ChildHeader": {
+                    "PL": "Wysoka wydajność"
+                },
+                "ChildDescription": {
+                    "PL": "Nie zaleca się włączania planu \"Wysoka wydajność\" na laptopach."
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 318,
+                "ChildHeader": {
+                    "PL": "Zrównoważony"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 316,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 319,
+        "Header": {
+            "PL": "Używaj najnowszego zainstalowanego środowiska uruchomieniowego .NET Framework dla wszystkich aplikacji"
+        },
+        "Description": {
+            "PL": "Jeśli aplikacja wymaga starszej wersji .NET Framework 2.0, 3.0 lub 3.5, włączenie tej funkcji wymusi na aplikacji użycie najnowszej zainstalowanej wersji .NET Framework."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 319,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 320,
+        "Header": {
+            "PL": "Pozwalaj na wyłączenie kart sieciowych, by oszczędzać energię"
+        },
+        "Description": {
+            "PL": "Nie zaleca się wyłączania kart sieciowych w celu oszczędzania energii na laptopach."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 320,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 321,
+        "Header": {
+            "PL": "Zastąp domyślną metodę wprowadzania"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "RadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 322,
+                "ChildHeader": {
+                    "PL": "Użyj listy języków"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 323,
+                "ChildHeader": {
+                    "PL": "Angielski"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 321,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 324,
+        "Header": {
+            "PL": "Wybierz folder, do zapisywania zrzutów ekranu po naciśnięciu Win+PrtScn"
+        },
+        "Description": {
+            "PL": "Wybierz opcję \"Pulpit\", jeśli chcesz usunąć tylko usługę OneDrive (lub została ona wcześniej odinstalowana), w przeciwnym razie funkcja tworzenia kopii zapasowych folderów \"Pulpit\" i \"Obrazy\" w usłudze OneDrive zostanie przerwana."
+        },
+        "Type": "RadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 325,
+                "ChildHeader": {
+                    "PL": "Pulpit"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 326,
+                "ChildHeader": {
+                    "PL": "Folder ze zdjęciami"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 324,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 327,
+        "Header": {
+            "PL": "Zalecane rozwiązywanie problemów"
+        },
+        "Description": {
+            "PL": "Firma Microsoft może zalecać i uruchamiać narzędzia do rozwiązywania problemów w celu rozwiązania problemów. Jak bardzo chcesz, aby firma Microsoft pomogła, gdy na Twoim urządzeniu występują problemy, które mogą być w stanie naprawić narzędzia do rozwiązywania problemów?"
+        },
+        "Type": "RadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 328,
+                "ChildHeader": {
+                    "PL": "Automatycznie uruchamiaj narzędzia do rozwiązywania problemów, a następnie powiadamiaj"
+                },
+                "ChildDescription": {
+                    "PL": "Aby ta funkcja działała, poziom zbierania danych diagnostycznych systemu operacyjnego zostanie ustawiony na \"Opcjonalne dane diagnostyczne\", a funkcja raportowania błędów zostanie włączona."
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 329,
+                "ChildHeader": {
+                    "PL": "Zapytaj mnie przed uruchomieniem narzędzia do rozwiązywania problemów"
+                },
+                "ChildDescription": {
+                    "PL": "Aby ta funkcja działała, poziom zbierania danych diagnostycznych systemu operacyjnego zostanie ustawiony na \"Opcjonalne dane diagnostyczne\", a funkcja raportowania błędów zostanie włączona."
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 327,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 330,
+        "Header": {
+            "PL": "Uruchom okna folderów w osobnym procesie"
+        },
+        "Description": {
+            "PL": "Domyślnie wszystkie okna Eksploratora plików, w tym powłoka pulpitu, działają w jednym procesie explorer.exe. Jeśli jedno okno eksploratora plików zawiesi się lub ulegnie awarii, spowoduje to zawieszenie całej warstwy graficznej do czasu ponownego uruchomienia procesu. Po włączeniu każdy proces explorer.exe będzie miał własny identyfikator procesu (PID), co poprawia stabilność eksploratora."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 330,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 331,
+        "Header": {
+            "PL": "Włącz zarezerwowaną pamięć"
+        },
+        "Description": {
+            "PL": "Aby upewnić się, że urządzenie może pomyślnie aktualizować, system Windows rezerwuje część miejsca na urządzeniu do wykorzystania przez pliki tymczasowe, pamięć podręczną i inne pliki. Gdy na urządzeniu jest mało miejsca, system Windows wyczyści zarezerwowaną pamięć, aby można było jej użyć do innych procesów, takich jak aktualizacja systemu Windows. Rezerwowanie przestrzeni dyskowej pomaga również zapewnić większą przewidywalność i stabilność wykorzystania miejsca na dysku na urządzeniu. Po wyłączeniu zarezerwowana pamięć zostanie usunięta po kolejnej instalacji aktualizacji."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 331,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 332,
+        "Header": {
+            "PL": "Włącz wyszukiwanie pomocy za pomocą F1"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 332,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 333,
+        "Header": {
+            "PL": "Włącz Num Lock podczas startu systemu"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 333,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 334,
+        "Header": {
+            "PL": "Włącz Caps Lock"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 334,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 335,
+        "Header": {
+            "PL": "Skrót klawiaturowy dla aplikacji Sticky keys"
+        },
+        "Description": {
+            "PL": "Naciśnij klawisz Shift 5 razy, aby włączyć lub wyłączyć Sticky keys"
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 335,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 336,
+        "Header": {
+            "PL": "Użyj autoodtwarzania dla wszystkich multimediów i urządzeń"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 336,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 337,
+        "Header": {
+            "PL": "Włącz usuwanie pamięci podręcznej miniatur"
+        },
+        "Description": {
+            "PL": "System Windows automatycznie usuwa pamięć podręczną miniatur po ponownym uruchomieniu lub wyłączeniu, a Eksplorator plików musi ponownie utworzyć miniatury. Pamięć podręczna miniatur jest przechowywana jako pliki .db znajdujące się w ukrytym folderze \n%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 337,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 338,
+        "Header": {
+            "PL": "Uruchom ponownie aplikacje po zalogowaniu"
+        },
+        "Description": {
+            "PL": "Automatycznie zapisuj moje aplikacje, które można ponownie uruchomić, i uruchamiaj je, po ponownym zalogowaniu. Jeśli program został uruchomiony jako administrator w poprzedniej sesji, zostanie uruchomiony ponownie z uprawnieniami użytkownika innego niż administrator."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 338,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 339,
+        "Header": {
+            "PL": "Włącz \"Wykrywanie sieci\" i \"Udostępnianie plików i drukarek\" dla sieci grup roboczych"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 339,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 340,
+        "Header": {
+            "PL": "Automatycznie dostosuj godziny aktywności na podstawie użytkowania"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 340,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 341,
+        "Header": {
+            "PL": "Uruchom ponownie tak szybko, jak to możliwe, aby dokończyć aktualizację"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 341,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 342,
+        "Header": {
+            "PL": "Domyślna aplikacja terminala"
+        },
+        "Description": {
+            "PL": "Ustaw Windows Terminal jako domyślną aplikację terminala do obsługi interfejsu użytkownika dla aplikacji wiersza poleceń."
+        },
+        "Type": "RadioGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 343,
+                "ChildHeader": {
+                    "PL": "Windows Terminal"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 344,
+                "ChildHeader": {
+                    "PL": "Windows Console Host"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 342,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 345,
+        "Header": {
+            "PL": "Aplikacja PC Health Check"
+        },
+        "Description": {
+            "PL": "Odinstaluj aplikację \"PC Health Check\" i zapobiegnij jej instalowaniu w przyszłości. Aktualizacja KB5005463 instaluje aplikację \"PC Health Check\" w celu sprawdzenia, czy komputer spełnia wymagania systemowe systemu Windows 11."
+        },
+        "Type": "PcHealthCheckButtonGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 346,
+                "ChildHeader": {
+                    "PL": "Odinstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            }
+        ],
+        "ViewId": 345,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 347,
+        "Header": {
+            "PL": "OneDrive"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "OneDriveButtonGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 348,
+                "ChildHeader": {
+                    "PL": "Zainstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            },
+            {
+                "Id": 349,
+                "ChildHeader": {
+                    "PL": "Odinstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            }
+        ],
+        "ViewId": 347,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 350,
+        "Header": {
+            "PL": "Najnowsze pakiety Microsoft Visual C++ 2015–2022 x64"
+        },
+        "Description": {
+            "PL": "Pakiety Microsoft Visual C++ 2015–2022 x64 zostaną pobrane z zasobów firmy Microsoft (wymagane połączenie internetowe) i zainstalowane w trybie w tle. Wersje programu Visual Studio od programu Visual Studio 2015 współużytkują te same pliki redystrybucyjne."
+        },
+        "Type": "MsCppPackageButtonGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 351,
+                "ChildHeader": {
+                    "PL": "Zainstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            },
+            {
+                "Id": 352,
+                "ChildHeader": {
+                    "PL": "Odinstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            }
+        ],
+        "ViewId": 350,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 353,
+        "Header": {
+            "PL": "Najnowsze .NET Desktop Runtime 6 x86"
+        },
+        "Description": {
+            "PL": ".NET Desktop Runtime 6 x86 zostanie pobrane z zasobów firmy Microsoft (wymagane połączenie internetowe) i zainstalowane w tle."
+        },
+        "Type": "MsNETButtonGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 354,
+                "ChildHeader": {
+                    "PL": "Zainstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            },
+            {
+                "Id": 355,
+                "ChildHeader": {
+                    "PL": "Odinstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            }
+        ],
+        "ViewId": 353,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 356,
+        "Header": {
+            "PL": "Najnowsze .NET Desktop Runtime 6 x64"
+        },
+        "Description": {
+            "PL": "Środowisko .NET Desktop Runtime 6 x64 zostanie pobrane z zasobów firmy Microsoft (wymagane połączenie internetowe) i zainstalowane w tle."
+        },
+        "Type": "MsNETButtonGroup",
+        "Tag": "System",
+        "ChildElements": [
+            {
+                "Id": 357,
+                "ChildHeader": {
+                    "PL": "Zainstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            },
+            {
+                "Id": 358,
+                "ChildHeader": {
+                    "PL": "Odinstaluj"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            }
+        ],
+        "ViewId": 356,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 359,
+        "Header": {
+            "PL": "Proxy od ProstoVPN.AntiZapret"
+        },
+        "Description": {
+            "PL": "Włącza przekierowanie tylko zablokowanych witryn z rejestru Roskomnadzor. Ta funkcja dotyczy tylko Rosji."
+        },
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 359,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 500,
+        "Header": {
+            "PL": "Pobierz i zainstaluj kodek wideo HEVC (H.265)"
+        },
+        "Description": {
+            "PL": "Kodek umożliwia otwieranie obrazów i filmów odpowiednio w formatach .heif i .hevc."
+        },
+        "Type": "CheckBox",
+        "Tag": "UwpApps",
+        "ViewId": 500,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 501,
+        "Header": {
+            "PL": "Autostart Cortany"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "UwpApps",
+        "ViewId": 501,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 502,
+        "Header": {
+            "PL": "Włącz automatyczne uruchamianie Microsoft Teams"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "UwpApps",
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 503,
+        "Header": {
+            "PL": "Przywróć aplikację Sklep Microsoft"
+        },
+        "Description": {
+            "PL": "Jeśli aplikacja Microsoft Store jest uszkodzona lub usunięta, możesz ją przywrócić, pobierając wszystkie niezbędne zależności z zasobu Microsoft (wymagane połączenie z Internetem). Pobieranie i instalacja może zająć do 10 minut. Podczas przywracania uruchomi się okno konsoli, nie zamykaj go. Konsola zamknie się automatycznie po zakończeniu."
+        },
+        "Type": "AdvancedButtonGroup",
+        "Tag": "UwpApps",
+        "ChildElements": [
+            {
+                "Id": 504,
+                "ChildHeader": {
+                    "PL": "Przywrócić"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "Button"
+            }
+        ],
+        "ViewId": 503,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 600,
+        "Header": {
+            "PL": "Pasek gier Xbox"
+        },
+        "Description": {
+            "PL": "Aby zapobiec wyświetlaniu ostrzeżenia \"Będziesz potrzebować nowej aplikacji, aby otworzyć nakładkę ms-gaming\", musisz wyłączyć aplikację pasek gier Xbox, nawet jeśli została ona wcześniej odinstalowana."
+        },
+        "Type": "CheckBox",
+        "Tag": "Games",
+        "ViewId": 600,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 601,
+        "Header": {
+            "PL": "Wskazówki dotyczące paska gier Xbox"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Games",
+        "ViewId": 601,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 602,
+        "Header": {
+            "PL": "Planowanie optymalizacji sprzętowej GPU"
+        },
+        "Description": {
+            "PL": "Dzięki odpowiedniemu sprzętowi i sterownikom system Windows może przenieść większość planowania GPU na dedykowany procesor planowania oparty na GPU. Dzięki funkcji Hardware-Accelerated GPU Scheduling procesor planowania GPU i pamięć (VRAM) przejmują tę samą pracę i uruchamiają ją partiami w celu wyświetlania klatek. W ten sposób GPU odciąża procesor od części pracy i zmniejsza opóźnienia, aby potencjalnie poprawić działanie komputera."
+        },
+        "Type": "CheckBox",
+        "Tag": "Games",
+        "ViewId": 602,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 700,
+        "Header": {
+            "PL": "Oczyszczanie systemu Windows"
+        },
+        "Description": {
+            "PL": "Utwórz zaplanowane zadanie \"Windows Cleanup\" do czyszczenia nieużywanych plików i aktualizacji systemu Windows w folderze SophiApp w Harmonogramie zadań. Zostanie wyświetlone natywne powiadomienie, w którym możesz wybrać opóźnienie, uruchomienie zadania lub anulować."
+        },
+        "Type": "IconWinCheckBox",
+        "Tag": "TaskScheduler",
+        "ViewId": 700,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 701,
+        "Header": {
+            "PL": "Wyczyść folder aktualizacji systemu Windows"
+        },
+        "Description": {
+            "PL": "Utwórz zaplanowane zadanie \"SoftwareDistribution\" do czyszczenia \n%SystemRoot%\\SoftwareDistribution\\Download, do którego pobierane są wszystkie aktualizacje systemu Windows, w folderze SophiApp w Harmonogramie zadań. Zadanie będzie czekać, aż usługa Windows Update zakończy działanie. Zadanie jest uruchamiane co 90 dni."
+        },
+        "Type": "IconFolderCheckBox",
+        "Tag": "TaskScheduler",
+        "ViewId": 701,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 702,
+        "Header": {
+            "PL": "Oczyść folder tymczasowy"
+        },
+        "Description": {
+            "PL": "Utwórz zaplanowane zadanie \"Temp\" w celu wyczyszczenia folderu tymczasowego, w folderze SophiApp w Harmonogramie zadań. Usunięte zostaną tylko pliki starsze niż jeden dzień. Zadanie jest uruchamiane co 60 dni."
+        },
+        "Type": "IconFolderCheckBox",
+        "Tag": "TaskScheduler",
+        "ViewId": 702,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 800,
+        "Header": {
+            "PL": "Włącz ochronę sieci Microsoft Defender Exploit Guard"
+        },
+        "Description": {
+            "PL": "Ochrona sieci uniemożliwia użytkownikom korzystanie z aplikacji z dostępem do niebezpiecznych domen, które mogą zawierać oszustwa związane z wyłudzaniem informacji, lukami bezpieczeństwa i inną złośliwą zawartość w Internecie."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 800,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 801,
+        "Header": {
+            "PL": "Włącz wykrywanie w usłudze Microsoft Defender potencjalnie niechcianych aplikacji i zablokuj je"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 801,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 802,
+        "Header": {
+            "PL": "Włącz piaskownicę dla usługi Microsoft Defender"
+        },
+        "Description": {
+            "PL": "Uruchomienie usługi Microsoft Defender w piaskownicy gwarantuje, że przypadku naruszenia bezpieczeństwa, złośliwe działania zostaną ograniczone do odizolowanego środowiska, chroniąc resztę systemu przed uszkodzeniem. Piaskownica dla usługi Microsoft Defender jest domyślnie włączona w systemie Windows 11."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 802,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 803,
+        "Header": {
+            "PL": "Włącz kontrolę zdarzeń generowaną podczas tworzenia lub uruchamiania procesu"
+        },
+        "Description": {
+            "PL": "Włącz rejestrowanie każdego wykonania aplikacji, kto uruchomił aplikację i proces, który rozpoczął ten proces (zdarzenie 4688). Można skorelować to zdarzenie z innymi zdarzeniami według identyfikatora procesu, aby określić, co program zrobił podczas działania i kiedy zakończył działanie (zdarzenie 4689)."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 803,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 804,
+        "Header": {
+            "PL": "Dołącz wiersz poleceń do zdarzeń tworzenia procesu"
+        },
+        "Description": {
+            "PL": "Możliwe będzie odczytanie argumentów wiersza poleceń dla każdego pomyślnie utworzonego procesu (zdarzenie 4688). Aby ta funkcjonalność działała, zostanie włączona kontrola zdarzeń."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 804,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 805,
+        "Header": {
+            "PL": "Utwórz widok niestandardowy \"Process Creation\" w Podglądzie zdarzeń"
+        },
+        "Description": {
+            "PL": "Widok niestandardowy \"Process Creation\" służy do filtrowania uruchomionych procesów i ich argumentów w celu lepszego audytu bezpieczeństwa systemu. Aby ta funkcjonalność działała, zostanie włączona kontrola zdarzeń i wiersza poleceń w zdarzeniach tworzenia procesu."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 805,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 806,
+        "Header": {
+            "PL": "Włącz logowanie dla wszystkich modułów programu Windows PowerShell"
+        },
+        "Description": {
+            "PL": "Zdarzenia wykonania dla elementów określonych modułów są rejestrowane w dzienniku programu Windows PowerShell w Podglądzie zdarzeń. Tylko dla wbudowanego środowiska Windows PowerShell 5.1."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 806,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 807,
+        "Header": {
+            "PL": "Włącz rejestrowanie dla wszystkich skryptów programu PowerShell wprowadzanych do dziennika zdarzeń programu Windows PowerShell"
+        },
+        "Description": {
+            "PL": "Program Windows PowerShell rejestruje przetwarzanie poleceń, bloków skryptów, funkcji i skryptów — niezależnie od tego, czy są one wywoływane interaktywnie, czy przez automatyzację, w dzienniku zdarzeń \"Applications and Services Logs\\Microsoft\\Windows\\PowerShell\\Operational\". Tylko dla wbudowanego środowiska Windows PowerShell 5.1."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 807,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 808,
+        "Header": {
+            "PL": "Sprawdź aplikacje i pliki w Microsoft Defender SmartScreen"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 808,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 809,
+        "Header": {
+            "PL": "Oznaczaj pliki pobrane z Internetu jako niebezpieczne"
+        },
+        "Description": {
+            "PL": "Menedżer załączników został zawarty w systemie Windows w celu ochrony przed niebezpiecznymi plikami pobieranymi z Internetu. Jeśli Menedżer załączników zidentyfikuje załącznik, który może być niebezpieczny, uniemożliwia (blokuje) otwarcie pliku lub ostrzega przed otwarciem pliku. Metadane są zapisywane jako alternatywny strumień danych (ADS). Jeśli chcesz ręcznie odblokować pobrany plik, możesz to zrobić, klikając go prawym przyciskiem myszy, wybierając Właściwości i klikając \"Odblokuj\"."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 809,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 810,
+        "Header": {
+            "PL": "Włącz hosta skryptów systemu Windows"
+        },
+        "Description": {
+            "PL": "Wyłączenie tej funkcji blokuje wykonywanie skryptów .js i .vbs, uniemożliwiając uruchamianie złośliwych skryptów JavaScript."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 810,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 811,
+        "Header": {
+            "PL": "Piaskownica Windows"
+        },
+        "Description": {
+            "PL": "Piaskownica Windows zapewnia lekkie środowisko graficzne do bezpiecznego uruchamiania aplikacji w izolacji. Oprogramowanie zainstalowane w środowisku Windows Sandbox pozostaje w trybie piaskownicy i działa niezależnie od komputera hosta. Piaskownica jest tymczasowa. Gdy zostanie zamknięta, całe oprogramowanie i pliki oraz stan są usuwane. Za każdym razem, gdy otwierasz aplikację, otrzymujesz zupełnie nową instancję piaskownicy. Nie działa w Home Edition."
+        },
+        "Type": "CheckBox",
+        "Tag": "Security",
+        "ViewId": 811,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 812,
+        "Header": {
+            "PL": "Wybierz, kiedy chcesz otrzymywać powiadomienia o zmianach na komputerze"
+        },
+        "Description": {
+            "PL": "Gdy kontrola konta użytkownika (UAC) jest włączona, system Windows monituje o zgodę lub monituje o podanie poświadczeń prawidłowego konta administratora lokalnego przed uruchomieniem programu lub zadania wymagającego tokenu pełnego dostępu administratora. Ten monit zapewnia, że żadne złośliwe oprogramowanie nie może zostać po cichu zainstalowane ani uruchomione."
+        },
+        "Type": "RadioGroup",
+        "Tag": "Security",
+        "ChildElements": [
+            {
+                "Id": 813,
+                "ChildHeader": {
+                    "PL": "Powiadamiaj mnie tylko wtedy, gdy aplikacje próbują wprowadzić zmiany na moim komputerze"
+                },
+                "ChildDescription": {
+                    "PL": "Po włączeniu tego ustawienia pulpit zostanie przyciemniony, gdy pojawi się żądanie podniesienia uprawnień przez monit kontroli konta użytkownika (UAC)."
+                },
+                "Type": "RadioButton"
+            },
+            {
+                "Id": 814,
+                "ChildHeader": {
+                    "PL": "Nigdy nie powiadamiaj"
+                },
+                "ChildDescription": {
+                    "PL": "Po włączeniu tego ustawienia pulpit nigdy nie będzie przyciemniony, gdy pojawi się żądanie podniesienia uprawnień przez monit kontroli konta użytkownika (UAC)."
+                },
+                "Type": "RadioButton"
+            }
+        ],
+        "ViewId": 812,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 900,
+        "Header": {
+            "PL": "\"Wyodrębnij wszystko\" w menu kontekstowym Instalatora Windows (msi)."
+        },
+        "Description": {
+            "PL": "Pozycja menu kontekstowego „Wyodrębnij wszystko” spowoduje wyodrębnienie całej zawartości pliku .msi do folderu „Wyodrębnione” w tej samej lokalizacji, w której znajduje się plik .msi."
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 900,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 901,
+        "Header": {
+            "PL": "\"Zainstaluj\" w menu kontekstowym archiwów (.cab)."
+        },
+        "Description": {
+            "PL": "Ta pozycja menu kontekstowego, wykorzystując DISM, pozwala uprościć instalację aktualizacji .cab za pomocą jednego kliknięcia w menu kontekstowym. Jeśli typ rozszerzenia pliku .cab jest domyślnie powiązany z aplikacją innej firmy (7-Zip, WinRAR itp.), pozycja menu kontekstowego \"Zainstaluj\" nie będzie wyświetlana, dopóki nie przywrócisz domyślnego powiązania dla typu pliku .cab."
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 901,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 902,
+        "Header": {
+            "PL": "\"Uruchom jako inny użytkownik\" w menu kontekstowym plików wykonywalnych (.exe)"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 902,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 903,
+        "Header": {
+            "PL": "\"Prześlij na urządzenie\" w menu kontekstowym plików multimedialnych i folderów"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 903,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 904,
+        "Header": {
+            "PL": "\"Udostępnij\" w menu kontekstowym"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 904,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 905,
+        "Header": {
+            "PL": "\"Edytuj w programie Paint 3D\" w menu kontekstowym plików multimedialnych"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "ExpandingGroup",
+        "Tag": "ContextMenu",
+        "ChildElements": [
+            {
+                "Id": 906,
+                "ChildHeader": {
+                    "PL": ".bmp"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 907,
+                "ChildHeader": {
+                    "PL": ".gif"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 908,
+                "ChildHeader": {
+                    "PL": ".jpe"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 909,
+                "ChildHeader": {
+                    "PL": ".jpeg"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 910,
+                "ChildHeader": {
+                    "PL": ".jpg"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 911,
+                "ChildHeader": {
+                    "PL": ".png"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 912,
+                "ChildHeader": {
+                    "PL": ".tif"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            },
+            {
+                "Id": 913,
+                "ChildHeader": {
+                    "PL": ".tiff"
+                },
+                "ChildDescription": {
+                    "PL": ""
+                },
+                "Type": "CheckBox"
+            }
+        ],
+        "ViewId": 905,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 914,
+        "Header": {
+            "PL": "Pokazuj \"Edytuj za pomocą zdjęć\" w menu kontekstowym plików multimedialnych"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 914,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 915,
+        "Header": {
+            "PL": "\"Utwórz nowy film\" w menu kontekstowym plików multimedialnych"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 915,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 916,
+        "Header": {
+            "PL": "\"Edytuj\" w menu kontekstowym plików graficznych"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 916,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 917,
+        "Header": {
+            "PL": "\"Drukuj\" w menu kontekstowym plików .bat i .cmd"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 917,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 918,
+        "Header": {
+            "PL": "\"Dołącz do biblioteki\" w menu kontekstowym folderów i dysków"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 918,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 919,
+        "Header": {
+            "PL": "\"Wyślij do\" w menu kontekstowym folderów"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 919,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 921,
+        "Header": {
+            "PL": "\"Obraz - mapa bitowa\" w menu kontekstowym \"Nowy\"."
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 921,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 922,
+        "Header": {
+            "PL": "\"Dokument w tekstowy\" w menu kontekstowym \"Nowy\"."
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 922,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    },
+    {
+        "Id": 923,
+        "Header": {
+            "PL": "\"Folder skompresowany (zip)\" w menu kontekstowym \"Nowy\"."
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 923,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 924,
+        "Header": {
+            "PL": "Pokaż w menu kontekstowym \"Otwórz\", \"Drukuj\" i \"Edytuj\" przy wybieraniu więcej niż 15 plików"
+        },
+        "Description": {
+            "PL": "Domyślnie pozycje menu kontekstowego \"Otwórz\", \"Drukuj\", \"Edytuj\" nie pojawią się, jeśli wybierzesz więcej niż 15 pozycji, aby uniknąć przypadkowego wykonania tych czynności na dużej liczbie plików."
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 924,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 925,
+        "Header": {
+            "PL": "\"Wyszukaj aplikację w sklepie Microsoft Store\" w oknie dialogowym \"Otwórz za pomocą\"."
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 925,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 926,
+        "Header": {
+            "PL": "Pokazuj \"Otwórz w Windows Terminal\" w menu kontekstowym folderów"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 926,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 927,
+        "Header": {
+            "PL": "Uruchamiaj domyslnie Windows Terminal z menu kontekstowego folderów jako administrator"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 927,
+        "Windows10Supported": true,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 928,
+        "Header": {
+            "PL": "Włącz styl menu kontekstowego systemu Windows 10"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 928,
+        "Windows10Supported": false,
+        "Windows11Supported": true
+    },
+    {
+        "Id": 929,
+        "Header": {
+            "PL": "\"Udostępnij\" w menu kontekstowym"
+        },
+        "Description": {
+            "PL": ""
+        },
+        "Type": "CheckBox",
+        "Tag": "ContextMenu",
+        "ViewId": 904,
+        "Windows10Supported": true,
+        "Windows11Supported": false
+    }
+]

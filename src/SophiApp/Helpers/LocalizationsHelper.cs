@@ -22,6 +22,8 @@ namespace SophiApp.Helpers
         private const string FR_URI = "pack://application:,,,/Localizations/FR.xaml";
         private const string IT_NAME = "Italiano";
         private const string IT_URI = "pack://application:,,,/Localizations/IT.xaml";
+        private const string PL_NAME = "Polski";
+        private const string PL_URI = "pack://application:,,,/Localizations/PL.xaml";
         private const string RU_NAME = "Русский";
         private const string RU_URI = "pack://application:,,,/Localizations/RU.xaml";
         private const string TR_NAME = "Turkçe";
@@ -39,6 +41,7 @@ namespace SophiApp.Helpers
             { new Localization() { Name = ES_NAME, Language = UILanguage.ES, Uri = new Uri(ES_URI, UriKind.Absolute)} },
             { new Localization() { Name = FR_NAME, Language = UILanguage.FR, Uri = new Uri(FR_URI, UriKind.Absolute)} },
             { new Localization() { Name = IT_NAME, Language = UILanguage.IT, Uri = new Uri(IT_URI, UriKind.Absolute)} },
+            { new Localization() { Name = PL_NAME, Language = UILanguage.PL, Uri = new Uri(PL_URI, UriKind.Absolute)} },
             { new Localization() { Name = RU_NAME, Language = UILanguage.RU, Uri = new Uri(RU_URI, UriKind.Absolute)} },
             { new Localization() { Name = TR_NAME, Language = UILanguage.TR, Uri = new Uri(TR_URI, UriKind.Absolute)} },
             { new Localization() { Name = UA_NAME, Language = UILanguage.UA, Uri = new Uri(UA_URI, UriKind.Absolute)} },
