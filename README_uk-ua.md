@@ -1,8 +1,8 @@
 <div align="right">
-  This page also in:
-  <a title="English" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/></a>
-  <a title="Italiano" href="README_it-it.md"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/></a>
-  <a title="Russian" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
+    This page also in:
+    <a title="English" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/></a>
+    <a title="Italiano" href="README_it-it.md"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/></a>
+    <a title="Russian" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
 </div>
 
 # SophiApp. Наступний крок проєкту [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
@@ -40,27 +40,29 @@
 </p>
 
 <p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg" height="20px"/>
 </p>
 
 ***
@@ -70,26 +72,26 @@
 ***
 
 <p align="center">
- &bull;
- <a href="#пожертвування">Пожертвування</a>
- &bull;
- <a href="#системні-вимоги">Системні вимоги</a>
- &bull;
- <a href="#встановлення">Встановлення</a>
- &bull;
- <a href="#ключові-особливості">Ключові особливості</a>
- &bull;
- <a href="#відео">Відео</a>
- &bull;
- <a href="#скріншоти">Скріншоти</a>
- &bull;
- <a href="#доповнення">Доповнення</a>
- &bull;
- <a href="#переклад">Переклад</a>
- &bull;
- <a href="#медіа">Медіа</a>
- &bull;
- <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал змін</a>
+    •
+    <a href="#пожертвування">Пожертвування</a>
+    •
+    <a href="#системні-вимоги">Системні вимоги</a>
+    •
+    <a href="#встановлення">Встановлення</a>
+    •
+    <a href="#ключові-особливості">Ключові особливості</a>
+    •
+    <a href="#відео">Відео</a>
+    •
+    <a href="#скріншоти">Скріншоти</a>
+    •
+    <a href="#доповнення">Доповнення</a>
+    •
+    <a href="#переклад">Переклад</a>
+    •
+    <a href="#медіа">Медіа</a>
+    •
+    <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал змін</a>
 </p>
 
 ***
@@ -102,20 +104,20 @@
 
 ## Пожертвування
 
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left">
-</a><a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left"></a>
+<a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
 
 | ![ko-fi](https://img.shields.io/badge/tether-168363?style=for-the-badge&logo=tether&logoColor=white) |
 |:----------------------------------------------------------------------------------------------------:|
-|                                         USDT (TRC20)                                                 |
-|                             `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                     |
+|                                             USDT (TRC20)                                             |
+|                                 `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                 |
 
 ### Системні вимоги
 
-|               Версія            | Маркетингова назва  |   Збірка    | Архітектура |         Видання          |
-|:--------------------------------|--------------------:|:-----------:|:-----------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2023 Update    |   25206+    |             | Home/Pro/Enterprise      |
-| Windows 11 22H2                 |      2022 Update    |   22621+    |             | Home/Pro/Enterprise      |
+|             Версія              | Маркетингова назва  |   Збірка    | Архітектура |         Видання          |
+|:-------------------------------:|:-------------------:|:-----------:|:-----------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 | 2023 Update         | 25206+      |             | Home/Pro/Enterprise      |
+| Windows 11 22H2                 | 2022 Update         | 22621+      |             | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                     | 22000.739+  |             | Home/Pro/Enterprise      |
 | Windows 10 22H2                 | 2022 Update         | 19045.2006+ |     x64     | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |

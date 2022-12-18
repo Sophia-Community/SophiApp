@@ -1,8 +1,8 @@
 <div align="right">
-  This page also in:
-  <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
-  <a title="English" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/></a>
-  <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
+    This page also in:
+    <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
+    <a title="English" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/></a>
+    <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
 </div>
 
 # SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
@@ -12,7 +12,7 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" height="30px"/> &emsp; <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" height="30px"/> &emsp; <a href="https://pvs-studio.com/pvs-studio"><img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/></a>
 
 <p align="left">
-  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"> </a><a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
+  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"></a> <a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
 
   <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp"></a>
   <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
@@ -40,27 +40,29 @@
 </p>
 
 <p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg" height="20px"/>
 </p>
 
 ***
@@ -102,20 +104,20 @@
 
 ## Donazioni
 
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left">
-</a><a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left"></a>
+<a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
 
 | ![ko-fi](https://img.shields.io/badge/tether-168363?style=for-the-badge&logo=tether&logoColor=white) |
 |:----------------------------------------------------------------------------------------------------:|
-|                                         USDT (TRC20)                                                 |
-|                             `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                     |
+|                                             USDT (TRC20)                                             |
+|                                 `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                 |
 
 ### Requisiti di sistema
 
-|            Versione             |    Nome di mercato  |    Build    | Architettura |        Edizioni          |
-|:--------------------------------|--------------------:|:-----------:|:------------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2023 Update    |   25206+    |              | Home/Pro/Enterprise      |
-| Windows 11 22H2                 |      2022 Update    |   22621+    |              | Home/Pro/Enterprise      |
+|            Versione             |   Nome di mercato   |    Build    | Architettura |         Edizioni         |
+|:-------------------------------:|:-------------------:|:-----------:|:------------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 | 2023 Update         | 25206+      |              | Home/Pro/Enterprise      |
+| Windows 11 22H2                 | 2022 Update         | 22621+      |              | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                     | 22000.739+  |              | Home/Pro/Enterprise      |
 | Windows 10 22H2                 | 2022 Update         | 19045.2006+ |     x64      | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update | 19044.1706+ |     x64      | Home/Pro/Enterprise/LTSC |
@@ -186,7 +188,7 @@ scoop install sophiapp
 * ÈPossibile copiare il nome o la descrizione delle varie funzioni;
 * Molteplici personalizzazioni di esplora risorse e dei menu contestuale;
 
-## Video
+## Videos
 
 [![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 

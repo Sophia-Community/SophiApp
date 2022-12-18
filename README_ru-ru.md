@@ -1,8 +1,8 @@
 <div align="right">
-  This page also in:
-  <a title="English" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/>
-  <a title="Italiano" href="README_it-it.md"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/></a>
-  <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
+    This page also in:
+    <a title="English" href="README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/></a>
+    <a title="Italiano" href="README_it-it.md"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/></a>
+    <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
 </div>
 
 # SophiApp. Следующая глава проекта [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows)
@@ -40,27 +40,29 @@
 </p>
 
 <p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg" height="20px"/>
 </p>
 
 ***
@@ -70,26 +72,26 @@
 ***
 
 <p align="center">
- •
- <a href="#пожертвования">Пожертвования</a>
- •
- <a href="#системные-требования">Системные требования</a>
- •
- <a href="#установка">Установка</a>
- •
- <a href="#ключевые-особенности">Ключевые особенности</a>
- •
- <a href="#видео">Видео</a>
- •
- <a href="#скриншоты">Скриншоты</a>
- •
- <a href="#дополнение">Дополнение</a>
- •
- <a href="#перевод">Перевод</a>
- •
- <a href="#медиа">Медиа</a>
- •
- <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал изменений</a>
+    •
+    <a href="#пожертвования">Пожертвования</a>
+    •
+    <a href="#системные-требования">Системные требования</a>
+    •
+    <a href="#установка">Установка</a>
+    •
+    <a href="#ключевые-особенности">Ключевые особенности</a>
+    •
+    <a href="#видео">Видео</a>
+    •
+    <a href="#скриншоты">Скриншоты</a>
+    •
+    <a href="#дополнение">Дополнение</a>
+    •
+    <a href="#перевод">Перевод</a>
+    •
+    <a href="#медиа">Медиа</a>
+    •
+    <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Журнал изменений</a>
 </p>
 
 ***
@@ -102,25 +104,25 @@
 
 ## Пожертвования
 
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left">
-</a><a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left"></a>
+<a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
 
 | ![ko-fi](https://img.shields.io/badge/tether-168363?style=for-the-badge&logo=tether&logoColor=white) |
 |:----------------------------------------------------------------------------------------------------:|
-|                                         USDT (TRC20)                                                 |
-|                             `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                     |
+|                                             USDT (TRC20)                                             |
+|                                 `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                 |
 
 ### Системные требования
 
-|               Версия            |  Маркетинговое название |   Сборка    | Архитектура |         Издания          |
-|:--------------------------------|------------------------:|:-----------:|:-----------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 |      2023 Update        |   25206+    |             | Home/Pro/Enterprise      |
-| Windows 11 22H2                 |      2022 Update        |   22621+    |             | Home/Pro/Enterprise      |
+|             Версия              |  Маркетинговое название |   Сборка    | Архитектура |         Издания          |
+|:-------------------------------:|:-----------------------:|:-----------:|:-----------:|:------------------------:|
+| Windows 11 Insider Preview 23H2 | 2023 Update             | 25206+      |             | Home/Pro/Enterprise      |
+| Windows 11 22H2                 | 2022 Update             | 22621+      |             | Home/Pro/Enterprise      |
 | Windows 11 21H2                 |                         | 22000.739+  |             | Home/Pro/Enterprise      |
 | Windows 10 22H2                 | 2022 Update             | 19045.2006+ |     x64     | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update     | 19044.1706+ |     x64     | Home/Pro/Enterprise/LTSC |
 
-**Note**: Сверьтесь с историей обновлений [Windows 10](https://support.microsoft.com/ru-ru/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/ru-ru/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/ru-ru/windows-insider/flight-hub/).
+> **Note**: Сверьтесь с историей обновлений [Windows 10](https://support.microsoft.com/ru-ru/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/ru-ru/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) и [Windows 11 Insider Preview](https://docs.microsoft.com/ru-ru/windows-insider/flight-hub/).
 
 ## Установка
 
