@@ -1,8 +1,8 @@
 <div align="right">
-  This page also in:
-  <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
-  <a title="Italiano" href="README_it-it.md"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/></a>
-  <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
+    This page also in:
+    <a title="Русский" href="README_ru-ru.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="11px"/></a>
+    <a title="Italiano" href="README_it-it.md"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="11px"/></a>
+    <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
 </div>
 
 # SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
@@ -12,57 +12,57 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" height="30px"/> &emsp; <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" height="30px"/> &emsp; <a href="https://pvs-studio.com/pvs-studio"><img src="https://cdn.pvs-studio.com/static/images/logo/pvs_logo_7.svg" height="50px"/></a>
 
 <p align="left">
-  <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"> </a><a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
+    <a href="https://github.com/Sophia-Community/SophiApp/actions"><img src="https://img.shields.io/github/workflow/status/Sophia-Community/SophiApp/Build Release?label=GitHub%20Actions&logo=GitHub"></a> <a href="https://github.com/Sophia-Community/SophiApp/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Sophia-Community/SophiApp?label=Commits&style=flat"></a>
 
-  <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp"></a>
-  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
-  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/farag2/c9f6b02ff4037050dcaade30c574bac7/raw/SophiApp.json"></a>
+    <a href="https://github.com/Sophia-Community/sophiapp/releases/latest"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp"></a>
+    <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/v/release/Sophia-Community/SophiApp?include_prereleases&label=pre-release&style=flat"></a>
+    <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/farag2/c9f6b02ff4037050dcaade30c574bac7/raw/SophiApp.json"></a>
 
-  <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a>
-  <a href="https://community.chocolatey.org/packages/sophiapp"><img src="https://img.shields.io/chocolatey/dt/sophiapp?color=blue&label=chocolatey%20package"></a>
+    <a href="https://github.com/Sophia-Community/sophiapp/releases"><img src="https://img.shields.io/github/downloads/Sophia-Community/sophiapp/total?label=downloads%20%28since%20September%202021%29"></a>
+    <a href="https://community.chocolatey.org/packages/sophiapp"><img src="https://img.shields.io/chocolatey/dt/sophiapp?color=blue&label=chocolatey%20package"></a>
 
-  <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
-  <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
-  <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/heart.svg" height="17px"/>
+    <a href="https://www.linkedin.com/in/vladimir-nameless-132745a1"><img src="https://img.shields.io/badge/UI/UX%20by-Vladimir%20Nameless-blue?style=flat&logo=linkedin"></a>
+    <a href="https://www.linkedin.com/in/наталия-гуменюк-ba4a04161"><img src="https://img.shields.io/badge/Logo%20by-Natalia-blue?style=flat&logo=linkedin"></a>
+    <img src="https://img.shields.io/badge/Made%20with-149ce2.svg?color=149ce2"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/heart.svg" height="17px"/>
 
-  [telegram-news-badge]: https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram
-  [telegram-news]: https://t.me/sophianews
-  [telegram-group]: https://t.me/sophia_chat
-  [telegram-group-badge]: https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram
+    [telegram-news-badge]: https://img.shields.io/badge/Sophia%20News-Telegram-blue?style=flat&logo=Telegram
+    [telegram-news]: https://t.me/sophianews
+    [telegram-group]: https://t.me/sophia_chat
+    [telegram-group-badge]: https://img.shields.io/badge/Sophia%20Chat-Telegram-blue?style=flat&logo=Telegram
 
-  [![Telegram][telegram-news-badge]][telegram-news]
-  [![Telegram][telegram-group-badge]][telegram-group]
+    [![Telegram][telegram-news-badge]][telegram-news]
+    [![Telegram][telegram-group-badge]][telegram-group]
 
-  [discord-news-badge]: https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield
-  [discord-link]: https://discord.gg/sSryhaEv79
+    [discord-news-badge]: https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield
+    [discord-link]: https://discord.gg/sSryhaEv79
 
-  [![Discord][discord-news-badge]][discord-link]
+    [![Discord][discord-news-badge]][discord-link]
 </p>
 
 <p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
-  &nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg" height="20px"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" height="20px"/>
+    &nbsp;
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg" height="20px"/>
 </p>
 
 ***
@@ -72,26 +72,26 @@
 ***
 
 <p align="center">
- •
- <a href="#donations">Donations</a>
- •
- <a href="#system-requirements">System Requirements</a>
- •
- <a href="#installation">Installation</a>
- •
- <a href="#key-features">Key features</a>
- •
- <a href="#videos">Videos</a>
- •
- <a href="#screenshots">Screenshots</a>
- •
- <a href="#addendum">Addendum</a>
- •
- <a href="#translating">Translating</a>
- •
- <a href="#media">Media</a>
- •
- <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
+    •
+    <a href="#donations">Donations</a>
+    •
+    <a href="#system-requirements">System Requirements</a>
+    •
+    <a href="#installation">Installation</a>
+    •
+    <a href="#key-features">Key features</a>
+    •
+    <a href="#videos">Videos</a>
+    •
+    <a href="#screenshots">Screenshots</a>
+    •
+    <a href="#addendum">Addendum</a>
+    •
+    <a href="#translating">Translating</a>
+    •
+    <a href="#media">Media</a>
+    •
+    <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
 
 ***
@@ -104,17 +104,17 @@
 
 ## Donations
 
-<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left">
-</a><a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
+<a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left"></a>
+<a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
 
 | ![ko-fi](https://img.shields.io/badge/tether-168363?style=for-the-badge&logo=tether&logoColor=white) |
 |:----------------------------------------------------------------------------------------------------:|
-|                                         USDT (TRC20)                                                 |
-|                             `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                     |
+|                                             USDT (TRC20)                                             |
+|                                 `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                 |
 
 ### System Requirements
 
-| Version                         | Marketing name      | Build       | Arch |        Editions          |
+|             Version             |   Marketing name    |    Build    | Arch |         Editions         |
 |:-------------------------------:|:-------------------:|:-----------:|:----:|:------------------------:|
 | Windows 11 Insider Preview 23H2 | 2023 Update         | 25206+      |      | Home/Pro/Enterprise      |
 | Windows 11 22H2                 | 2022 Update         | 22621+      |      | Home/Pro/Enterprise      |
