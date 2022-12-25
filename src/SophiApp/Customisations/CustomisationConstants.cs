@@ -597,7 +597,7 @@ else
         internal const string DISABLED = "Disabled";
         internal const byte DISABLED_VALUE = 0;
         internal const string DOTNET_INSTALL_ARGS = "/install /passive /norestart";
-        internal const string DOTNET_LOG_PATTERN = "Microsoft_Windows_Desktop_Runtime*.log";
+        internal const string DOTNET_LOG_PATTERN = "Microsoft_.NET_Runtime*.log";
         internal const string ENABLED = "Enabled";
         internal const byte ENABLED_VALUE = 1;
         internal const string ENTHUSIAST_MODE = "EnthusiastMode";
