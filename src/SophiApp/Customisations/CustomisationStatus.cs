@@ -297,7 +297,8 @@ namespace SophiApp.Customisations
         public static bool _311() => RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, POLICY_SYSTEM_PATH, _311_ENABLE_LINKED) == _311_ENABLE_LINKED_VALUE;
 
         public static bool _312() => RegHelper.GetNullableIntValue(RegistryHive.Users, _312_DELIVERY_SETTINGS_PATH, _312_DOWNLOAD_MODE)
-                                              .HasNullOrValue(ENABLED_VALUE);
+                                              .HasNullOrValue(DISABLED_VALUE);
+											  .Invert()
 
         public static bool _313() => DomainHelper.PcInDomain
                                     ? RegHelper.GetNullableIntValue(RegistryHive.LocalMachine, _313_WINLOGON_PATH, _313_FOREGROUND_POLICY)
