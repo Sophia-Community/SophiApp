@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.93 — 08.01.2023
+
+* #167 closed;
+  * Thanks to @SunsetTechuila.
+* Please pay attention that these domains have to be whitelisted in you firewall to let `SophiApp` works. The domains the app interacts with related to `Microsoft` resources to check for the latest Visual C++ Redistributables available, .NET Desktop Runtimes and so on;
+  * https://raw.githubusercontent.com
+  * https://github.com
+  * https://download.visualstudio.microsoft.com
+  * https://dotnetcli.blob.core.windows.net
+  * https://www.google.com
+  * https://g.live.com
+  * https://oneclient.sfx.ms
+* Minor changes.
+
+## 1.0.92 — 17.12.2022
+
+* Added Polish translation
+  * Thanks to @alan-null.
+* Update Ukrainian translation
+  * Thanks to @lowl1f3
+
 ## 1.0.91 — 11.12.2022
 
 * Bumped nuget Json.NET to 13.0.2;
