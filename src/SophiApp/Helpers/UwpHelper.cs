@@ -54,7 +54,10 @@ $ExcludedAppxPackages = @(
 'Microsoft.RawImageExtension',
 
 # HEIF Image Extensions
-'Microsoft.HEIFImageExtension'
+'Microsoft.HEIFImageExtension',
+
+# MPEG-2 Video Extension
+'Microsoft.MPEG2VideoExtension'
 )
 
 $AppxPackages = Get-AppxPackage -PackageTypeFilter Bundle | Where-Object -FilterScript {$_.Name -notin $ExcludedAppxPackages}

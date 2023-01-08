@@ -13,7 +13,7 @@ namespace SophiApp.Helpers
         private const string ONE_DRIVE_CONSUMER = "OneDriveConsumer";
         private const string ONE_DRIVE_SETUP = "OneDriveSetup";
         private const string ONE_DRIVE_SETUP_EXE = "OneDriveSetup.exe";
-        private const string ONE_DRIVE_XML = "https://g.live.com/1rewlive5skydrive/OneDriveProduction";
+        private const string ONE_DRIVE_XML = "https://g.live.com/1rewlive5skydrive/OneDriveProductionV2";
         private const string ONEDRIVE_SETUP_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OneDriveSetup.exe";
         private const string ONEDRIVE_UNINSTALL_MASK = "/uninstall";
         private const string ONEDRIVE_UNINSTALL_STRING = "UninstallString";
