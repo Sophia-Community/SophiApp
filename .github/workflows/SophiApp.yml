@@ -78,8 +78,14 @@ jobs:
     - name: ReleaseNotesTemplate
       id: read_release
       run: |
+        $Token = "${{ secrets.GITHUB_TOKEN }}"
+            $Headers = @{
+            Accept        = "application/json"
+            Authorization = "Bearer $Token"
+        }
         $Parameters = @{
             Uri             = "https://api.github.com/repos/Sophia-Community/SophiApp/releases"
+            Headers         = $Headers
             UseBasicParsing = $true
             Verbose         = $true
         }
