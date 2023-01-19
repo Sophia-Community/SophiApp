@@ -21,7 +21,7 @@
     <system:String x:Key="Conditions.RiskAcceptance">Sono consapevole dei rischi e mi assumo la responsabilità dei potenziali danni</system:String>
     <system:String x:Key="Conditions.DefenderIsBroken">Microsoft Defender rimosso dal sistema</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">La stabilità di Windows potrebbe essere stata compromessa da</system:String>
-    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script di Sycnex. Se neecssario reinstalla Windows.</system:String>
+    <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater script di Sycnex. Se necessario reinstalla Windows.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Questa versione di Windows non é aggiornata.</system:String>
     <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp richiede Windows 10 1940x.1706 o una versione successiva.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp richiede Windows 11 22000.739 o una versione successiva.</system:String>
@@ -58,7 +58,7 @@
     <system:String x:Key="Localization.Settings.Languages">Lingua</system:String>
     <system:String x:Key="Localization.Settings.Advanced">Impostazioni avanzate</system:String>
     <system:String x:Key="Localization.Settings.DebugMode">Modalità sviluppatore</system:String>
-    <system:String x:Key="Localization.Settings.Team">Memberi del progetto</system:String>
+    <system:String x:Key="Localization.Settings.Team">Membri del progetto</system:String>
     <system:String x:Key="Localization.Settings.Leader">Capo progetto:</system:String>
     <system:String x:Key="Localization.Settings.Leader.Name">Dmitry &quot;farag&quot; Nefedov</system:String>
     <system:String x:Key="Localization.Settings.Developer">Sviluppatore:</system:String>
