@@ -5,7 +5,7 @@
                        "DE":  "Telemetriedienst"
                    },
         "Description":  {
-                            "DE":  "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren. Das Deaktivieren des Dienstes \"Benutzererfahrungen und Telemetrie im verbundenen Modus\" (DiagTrack) kann dazu führen, dass Sie keine Xbox-Erfolge mehr erhalten können."
+                            "DE":  "\"Benutzererfahrung und Telemetrie im verbundenen Modus\" (DiagTrack) und vereinigten ausgehenden Telemetrie-Datenverkehr des Clients konfigurieren. Das Deaktivieren des Dienstes \"Benutzererfahrungen und Telemetrie im verbundenen Modus\" (DiagTrack) kann dazu führen, dass Sie keine Xbox-Erfolge mehr erhalten können, wirkt sich auf Feedback Hub aus."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",

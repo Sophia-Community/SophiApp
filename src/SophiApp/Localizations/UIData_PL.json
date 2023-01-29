@@ -5,7 +5,7 @@
             "PL": "Usługa telemetrii"
         },
         "Description": {
-            "PL": "Skonfiguruj usługę Connected User Experiences and Telemetry (DiagTrack) oraz połączenie dla Unified Telemetry Client Outbound Traffic. Wyłączenie usługi \"Connected User Experiences and Telemetry\" (DiagTrack) może spowodować, że nie będziesz już mógł zdobywać osiągnięć Xbox"
+            "PL": "Skonfiguruj usługę Connected User Experiences and Telemetry (DiagTrack) oraz połączenie dla Unified Telemetry Client Outbound Traffic. Wyłączenie usługi \"Connected User Experiences and Telemetry\" (DiagTrack) może spowodować, że nie będziesz już mógł zdobywać osiągnięć Xbox, dotyczy FeedbackHub."
         },
         "Type": "CheckBox",
         "Tag": "Privacy",

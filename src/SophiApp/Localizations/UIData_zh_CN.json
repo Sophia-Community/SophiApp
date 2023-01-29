@@ -5,7 +5,7 @@
                        "zh_CN":  "遥测服务"
                    },
         "Description":  {
-                            "zh_CN":  "配置连接的用户体验和遥测 (DiagTrack) 服务，以及统一遥测客户端出站流量的连接。 禁用\"连接的用户体验和遥测\"服务 (DiagTrack) 可能会导致您无法再获得 Xbox 成就。"
+                            "zh_CN":  "配置连接的用户体验和遥测 (DiagTrack) 服务，以及统一遥测客户端出站流量的连接。 禁用\"连接的用户体验和遥测\"服务 (DiagTrack) 可能会导致您无法再获得 Xbox 成就， 影响到 Feedback Hub。"
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",

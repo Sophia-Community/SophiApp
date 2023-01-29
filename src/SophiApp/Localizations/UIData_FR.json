@@ -5,7 +5,7 @@
                        "FR":  "Le service de télémétrie"
                    },
         "Description":  {
-                            "FR":  "Configurez le service d'expériences des utilisateurs connectés et télémétrie (DiagTrack) et la connexion pour le trafic sortant du client de télémétrie unifiée. La désactivation du service \"service d'expériences des utilisateurs connectés et télémétrie\" (DiagTrack) peut vous empêcher d'obtenir les succès Xbox."
+                            "FR":  "Configurez le service d'expériences des utilisateurs connectés et télémétrie (DiagTrack) et la connexion pour le trafic sortant du client de télémétrie unifiée. La désactivation du service \"service d'expériences des utilisateurs connectés et télémétrie\" (DiagTrack) peut vous empêcher d'obtenir les succès Xbox, affecte Feedback Hub."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",

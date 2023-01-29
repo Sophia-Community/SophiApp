@@ -5,7 +5,7 @@
                        "CZ":  "Telemetrická služba"
                    },
         "Description":  {
-                            "CZ":  "Nakonfigurujte službu Connected User Experiences and Telemetry (DiagTrack) a připojení pro Unified Telemetry Client Outbound Traffic. Deaktivace služby \"Connected User Experiences and Telemetry\" (DiagTrack) může způsobit, že již nebudete moci nadále čerpat výhody s Xbox."
+                            "CZ":  "Nakonfigurujte službu Connected User Experiences and Telemetry (DiagTrack) a připojení pro Unified Telemetry Client Outbound Traffic. Deaktivace služby \"Connected User Experiences and Telemetry\" (DiagTrack) může způsobit, že již nebudete moci nadále čerpat výhody s Xbox, ovlivňuje službu Feedback Hub."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",

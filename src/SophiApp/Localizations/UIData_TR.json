@@ -5,7 +5,7 @@
                        "TR":  "Telemetri hizmeti"
                    },
         "Description":  {
-                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın. \"Bağlı Kullanıcı Deneyimleri ve Telemetri\" hizmetini (DiagTrack) devre dışı bırakmak, artık Xbox başarılarını alamamanıza neden olabilir"
+                            "TR":  "Bağlı Kullanıcı Deneyimleri ve Telemetri (DiagTrack) hizmetini ve Birleşik Telemetri İstemcisi Giden Trafiği bağlantısını yapılandırın. \"Bağlı Kullanıcı Deneyimleri ve Telemetri\" hizmetini (DiagTrack) devre dışı bırakmak, artık Xbox başarılarını alamamanıza neden olabilir, Feedback Hub ı etkiler."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
