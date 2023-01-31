@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.94 — 31.01.2023
+
+* Updated description for disabling DiagTrack service;
+  * Closes #173.
+* Updated Italian translation;
+  * Thanks to @bovirus.
+* Merged #167
+  * Thanks to @SunsetTechuila.
+
+All efforts are directed towards the SophiApp 2.0 development. Read more: <https://t.me/SophiaNews/1311>
+
 ## 1.0.93 — 08.01.2023
 
 * #167 closed;
