@@ -222,6 +222,14 @@ scoop install sophiapp
 * Ви можете активувати приховані функції в UI, увімкнувши `Розширені налаштування` в `Налаштуваннях`;
   * Приховані функції будуть позначені шестернею в UI;
 * Після закриття `SophiApp` створюється лог-файл, який ви можете прикріпити до відкритого issue або відправити до групи в [Telegram](https://t.me/sophia_chat), щоб допомогти нам розібратися з помилкою. Лог-файл не містить приватної інформації. Ми не зберігаємо жодних даних в реєстрі Windows або на якомусь іншому сервері.
+* Список доменів, з якими взаємодіє додаток
+  * <https://raw.githubusercontent.com>
+  * <https://github.com>
+  * <https://download.visualstudio.microsoft.com>
+  * <https://dotnetcli.blob.core.windows.net>
+  * <https://www.google.com>
+  * <https://g.live.com>
+  * <https://oneclient.sfx.ms>
 
 ## Переклад
 

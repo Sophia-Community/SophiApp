@@ -222,6 +222,14 @@ scoop install sophiapp
 * Puoi sbloccare alcune funzioni nascoste abilitando `Impostazioni avanzate` nelle impostazioni.
   * Saranno contrassegnate da un'ingranaggio.
 * Dopo che la `SophiApp` viene chiusa, verra creato un file di log che puoi inviare con una issues di GitHub o sul  [gruppo Telegram](https://t.me/sophia_chat) per aiutarci a identificare il bug. Il file non contiene informazioni personali. Non salviamo dati ne nel registro di windows o in altri server.
+* L'elenco dei domini con cui l'applicazione interagisce
+  * <https://raw.githubusercontent.com>
+  * <https://github.com>
+  * <https://download.visualstudio.microsoft.com>
+  * <https://dotnetcli.blob.core.windows.net>
+  * <https://www.google.com>
+  * <https://g.live.com>
+  * <https://oneclient.sfx.ms>
 
 ## Traduzione
 

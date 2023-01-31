@@ -222,6 +222,14 @@ scoop install sophiapp
 * You can enable hidden functions in UI by turning on the `Advanced settings` in the Settings.
   * The hidden functions will be marked with a gear in UI.
 * After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand the bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry or any other server.
+* The list of domains the app interacts with
+  * <https://raw.githubusercontent.com>
+  * <https://github.com>
+  * <https://download.visualstudio.microsoft.com>
+  * <https://dotnetcli.blob.core.windows.net>
+  * <https://www.google.com>
+  * <https://g.live.com>
+  * <https://oneclient.sfx.ms>
 
 ## Translating
 
