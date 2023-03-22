@@ -104,4 +104,4 @@ jobs:
         name: ${{ github.ref_name }}
         token: ${{ github.token }}
         files: SophiApp.zip
-        body: ${{ steps.read_release.outputs.RELEASE_BODY }}
+        body_path: ${{ steps.read_release.outputs.ReleaseBody }}
