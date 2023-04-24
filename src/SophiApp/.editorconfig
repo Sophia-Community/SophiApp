@@ -1,0 +1,16 @@
+﻿[*.cs]
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = error
+
+# SA1515: Single-line comment should be preceded by blank line
+dotnet_diagnostic.SA1515.severity = error
+
+# IDE0065: Misplaced using directive
+csharp_using_directive_placement = inside_namespace
+
+# IDE0021: Use block body for constructor
+csharp_style_expression_bodied_constructors = when_on_single_line
+
+# SA1101: Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = suggestion
