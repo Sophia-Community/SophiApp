@@ -14,3 +14,72 @@ csharp_style_expression_bodied_constructors = when_on_single_line
 
 # SA1101: Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = suggestion
+
+# IDE0008: Use explicit type
+csharp_style_var_when_type_is_apparent = true
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = error
+
+# IDE0005: Using directive is unnecessary.
+dotnet_diagnostic.IDE0005.severity = error
+
+# IDE0058: Expression value is never used
+csharp_style_unused_value_expression_statement_preference = discard_variable
+
+# IDE0058: Expression value is never used
+dotnet_diagnostic.IDE0058.severity = error
+
+# SA1514: Element documentation header should be preceded by blank line
+dotnet_diagnostic.SA1514.severity = error
+
+# SA1614: Element parameter documentation should have text
+dotnet_diagnostic.SA1614.severity = error
+
+# SA1128: Put constructor initializers on their own line
+dotnet_diagnostic.SA1128.severity = error
+
+# IDE0055: Fix formatting
+dotnet_diagnostic.IDE0055.severity = error
+
+# IDE0060: Remove unused parameter
+dotnet_diagnostic.IDE0060.severity = error
+
+# IDE0021: Use expression body for constructor
+dotnet_diagnostic.IDE0021.severity = error
+
+# CS8604: Возможно, аргумент-ссылка, допускающий значение NULL.
+dotnet_diagnostic.CS8604.severity = error
+
+# IDE0008: Use explicit type
+csharp_style_var_elsewhere = true
+
+# S1481: Unused local variables should be removed
+dotnet_diagnostic.S1481.severity = error
+
+# SA1009: Closing parenthesis should be spaced correctly
+dotnet_diagnostic.SA1009.severity = error
+
+# SA1616: Element return value documentation should have text
+dotnet_diagnostic.SA1616.severity = error
+
+# SA1028: Code should not contain trailing whitespace
+dotnet_diagnostic.SA1028.severity = error
+
+# SA1208: System using directives should be placed before other using directives
+dotnet_diagnostic.SA1208.severity = error
+
+# IDE0025: Use expression body for property
+csharp_style_expression_bodied_properties = when_on_single_line
+
+# IDE0025: Use expression body for property
+dotnet_diagnostic.IDE0025.severity = error
+
+# IDE0032: Use auto property
+dotnet_diagnostic.IDE0032.severity = suggestion
+
+# S3459: Unassigned members should be removed
+dotnet_diagnostic.S3459.severity = error
+
+# S1144: Unused private types or members should be removed
+dotnet_diagnostic.S1144.severity = error

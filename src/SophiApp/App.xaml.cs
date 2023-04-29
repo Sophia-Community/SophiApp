@@ -4,9 +4,11 @@
 
 namespace SophiApp
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using SophiApp.ViewModel;
     using System;
     using System.Windows;
-    using Microsoft.Extensions.Hosting;
 
     /// <summary>
     /// Interaction logic for App.xaml.
@@ -24,13 +26,23 @@ namespace SophiApp
             .UseContentRoot(AppContext.BaseDirectory)
             .ConfigureServices((context, services) =>
             {
+                // Views and Models
+                _ = services.AddTransient<MainVM>();
             })
             .Build();
+
+            var vm = Host.Services.GetService<MainVM>();
+            MainWindow = new MainWindow(vm!);
         }
 
         /// <summary>
         /// Gets a <see cref="IHost"/>.
         /// </summary>
         public IHost Host { get; init; }
+
+        /// <summary>
+        /// Gets <see cref="MainWindow"/>.
+        /// </summary>
+        public new MainWindow MainWindow { get; init; }
     }
 }

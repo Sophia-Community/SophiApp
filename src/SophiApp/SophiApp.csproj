@@ -13,6 +13,7 @@
     <UseStyleCop>true</UseStyleCop>
     <UseSonarAnalyzer>true</UseSonarAnalyzer>
     <UseResults>true</UseResults>
+    <StartupObject>SophiApp.Helpers.AppBuilder</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

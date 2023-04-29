@@ -1,11 +1,53 @@
 ﻿<Window x:Class="SophiApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SophiApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        SnapsToDevicePixels="True"
+        ResizeMode="CanResize"
+        ShowInTaskbar="True"
+        MinHeight="615"
+        MinWidth="1074"
+        Height="615"
+        Width="1074"
+        Foreground="{DynamicResource Window.Foreground.Normal}"
+        Background="{DynamicResource Window.Background.Normal}"
+        Title="{Binding FullName}">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="WindowTaskBarItem" />
+    </Window.TaskbarItemInfo>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+                      CornerRadius="5"
+                      GlassFrameThickness="0"
+                      ResizeBorderThickness="3" />
+    </WindowChrome.WindowChrome>
     <Grid>
+        <Grid.RowDefinitions>
+            <!--  Window Title Row  -->
+            <RowDefinition Height="35" />
+            <!--  Window Content Row  -->
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <!--  Hamburger Column  -->
+                <ColumnDefinition Width="280" />
+                <!--  Page Column  -->
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <!--  Page Content Row  -->
+                    <RowDefinition Height="*" />
+                    <!--  Info Panel Row  -->
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

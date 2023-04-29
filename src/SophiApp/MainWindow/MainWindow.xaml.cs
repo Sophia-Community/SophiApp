@@ -4,6 +4,7 @@
 
 namespace SophiApp
 {
+    using SophiApp.ViewModel;
     using System.Windows;
 
     /// <summary>
@@ -15,5 +16,12 @@ namespace SophiApp
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
         public MainWindow() => InitializeComponent();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
+        /// <param name="vm"><see cref="MainVM"/>.</param>
+        public MainWindow(MainVM vm)
+            : this() => DataContext = vm;
     }
 }
