@@ -1,4 +1,8 @@
-﻿namespace SophiApp.Helpers
+﻿// <copyright file="AppBuilder.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Helpers
 {
     using System;
 

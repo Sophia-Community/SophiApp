@@ -6,6 +6,7 @@ namespace SophiApp
 {
     using SophiApp.ViewModel;
     using System.Windows;
+    using System.Windows.Input;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
@@ -23,5 +24,11 @@ namespace SophiApp
         /// <param name="vm"><see cref="MainVM"/>.</param>
         public MainWindow(MainVM vm)
             : this() => DataContext = vm;
+
+        private void OnMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+                DragMove();
+        }
     }
 }

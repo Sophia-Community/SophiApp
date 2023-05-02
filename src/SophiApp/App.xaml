@@ -4,7 +4,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/ThemeDark.xaml" />
+                <ResourceDictionary Source="Themes/Dark.xaml" />
+                <ResourceDictionary Source="Styles/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

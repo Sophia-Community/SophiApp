@@ -3,6 +3,20 @@
     "settings": {
         "documentationRules": {
             "companyName": "Team Sophia"
+        },
+        "indentation": {
+            "indentationSize": 4,
+            "tabSize": 4,
+            "useTabs": false
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "insideNamespace",
+            "blankLinesBetweenUsingGroups": "allow",
+            "systemUsingDirectivesFirst": true,
+            "elementOrder": [ "kind", "accessibility", "constant", "static", "readonly" ]
+        },
+        "layoutRules": {
+            "newlineAtEndOfFile": "require"
         }
     }
 }

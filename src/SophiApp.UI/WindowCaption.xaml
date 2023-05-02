@@ -1,0 +1,19 @@
+<UserControl x:Class="SophiApp.UI.WindowCaption"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiApp.UI"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="{Binding Path=TextMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="Text" Value="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+        <TextBlock x:Name="CaptionText"/>
+    </Grid>
+</UserControl>
