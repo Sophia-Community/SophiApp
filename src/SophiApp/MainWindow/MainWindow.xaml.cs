@@ -25,10 +25,24 @@ namespace SophiApp
         public MainWindow(MainVM vm)
             : this() => DataContext = vm;
 
+        private void OnMinimizeButtonClicked(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            WindowState = WindowState.Minimized;
+        }
+
+        private void OnMinMaxButtonClicked(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            WindowState = WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+        }
+
         private void OnMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ButtonState == MouseButtonState.Pressed)
+            {
                 DragMove();
+            }
         }
     }
 }

@@ -18,7 +18,9 @@
         Width="1074"
         Foreground="{DynamicResource Window.Foreground.Normal}"
         Background="{DynamicResource Window.Background.Normal}"
-        Title="{Binding FullName}">
+        Title="{Binding FullName}"
+        ui:WindowTitle.MinimizeButtonClicked="OnMinimizeButtonClicked"
+        ui:WindowTitle.MinMaxButtonClicked="OnMinMaxButtonClicked">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo x:Name="WindowTaskBarItem" />
     </Window.TaskbarItemInfo>
@@ -36,7 +38,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ui:WindowTitle Grid.Row="0"
-                        Text="{Binding FullName}" />
+                        Text="{Binding FullName}"
+                        Background="{DynamicResource Window.Background.Normal}" />
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <!--  Hamburger Column  -->

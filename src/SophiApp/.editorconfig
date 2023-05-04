@@ -4,4 +4,40 @@
 dotnet_diagnostic.SA1518.severity = error
 
 # SA1101: Prefix local calls with this
-dotnet_diagnostic.SA1101.severity = recomendation
+dotnet_diagnostic.SA1101.severity = suggestion
+
+# SA1208: System using directives should be placed before other using directives
+dotnet_diagnostic.SA1208.severity = error
+
+# S125: Sections of code should not be commented out
+dotnet_diagnostic.S125.severity = error
+
+# CS1587: За XML-комментарием не следует допустимый элемент языка
+dotnet_diagnostic.CS1587.severity = error
+
+# SA1028: Code should not contain trailing whitespace
+dotnet_diagnostic.SA1028.severity = error
+
+# SA1623: Property summary documentation should match accessors
+dotnet_diagnostic.SA1623.severity = error
+
+# SA1611: Element parameters should be documented
+dotnet_diagnostic.SA1611.severity = error
+
+# SA1507: Code should not contain multiple blank lines in a row
+dotnet_diagnostic.SA1507.severity = error
+
+# S1144: Unused private types or members should be removed
+dotnet_diagnostic.S1144.severity = error
+
+# S1186: Methods should not be empty
+dotnet_diagnostic.S1186.severity = error
+
+# SA1508: Closing braces should not be preceded by blank line
+dotnet_diagnostic.SA1508.severity = error
+
+# SA1201: Elements should appear in the correct order
+dotnet_diagnostic.SA1201.severity = error
+
+# SA1503: Braces should not be omitted
+dotnet_diagnostic.SA1503.severity = error

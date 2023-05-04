@@ -18,12 +18,33 @@ namespace SophiApp.UI
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(WindowTitle), new PropertyMetadata(default));
 
+        private static readonly RoutedEvent MinimizeButtonClickedEvent = EventManager
+            .RegisterRoutedEvent("MinimizeButtonClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(WindowTitle));
+
+        private static readonly RoutedEvent MinMaxButtonClickedEvent = EventManager
+            .RegisterRoutedEvent("MinMaxButtonClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(WindowTitle));
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WindowTitle"/> class.
         /// </summary>
-        public WindowTitle()
+        public WindowTitle() => InitializeComponent();
+
+        /// <summary>
+        /// The event of minimizing a window to the tray.
+        /// </summary>
+        public event RoutedEventHandler MinimizeButtonClicked
         {
-            InitializeComponent();
+            add { AddHandler(MinimizeButtonClickedEvent, value); }
+            remove { RemoveHandler(MinimizeButtonClickedEvent, value); }
+        }
+
+        /// <summary>
+        /// The full screen window event.
+        /// </summary>
+        public event RoutedEventHandler MinMaxButtonClicked
+        {
+            add { AddHandler(MinMaxButtonClickedEvent, value); }
+            remove { RemoveHandler(MinMaxButtonClickedEvent, value); }
         }
 
         /// <summary>
@@ -34,5 +55,11 @@ namespace SophiApp.UI
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
+
+        private void OnMinimizeWindowButtonClicked(object sender, RoutedEventArgs e)
+            => RaiseEvent(new RoutedEventArgs(MinimizeButtonClickedEvent));
+
+        private void OnMinMaxWindowButtonClicked(object sender, RoutedEventArgs e)
+                    => RaiseEvent(new RoutedEventArgs(MinMaxButtonClickedEvent));
     }
 }
