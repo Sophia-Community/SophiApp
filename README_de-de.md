@@ -213,7 +213,7 @@ scoop install sophiapp
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
-### Natives interaktives Toasts for die `Windows Cleanup` Aufgabe
+### Natives interaktives Toasts für die `Windows Cleanup` Aufgabe
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/Toasts.png)
 
