@@ -128,7 +128,7 @@
 
 ## Installation
 
-### Download SophiApp via PowerShell/Chocolatey/Scoop
+### Downloade SophiApp mit PowerShell/Chocolatey/Scoop
 
 Um die allzeit aktuelle SophiApp-Version zu downloaden invoke (`Administrator ist keine Voraussetzung`) in PowerShell
 
