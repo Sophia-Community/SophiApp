@@ -123,13 +123,13 @@
 | Windows 10 22H2                 | 2022 Update         | 19045.2006+ | x64  | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update | 19044.1706+ | x64  | Home/Pro/Enterprise/LTSC |
 
-> **Aufgepasst**: Schaue dir [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9)an und die [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history.
+> **Aufgepasst**: Schaue dir [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) an und die [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history.
 
 ## Installation
 
 ### Downloade SophiApp mit PowerShell/Chocolatey/Scoop
 
-Um die allzeit aktuelle SophiApp-Version zu downloaden invoke (`Administrator ist keine Voraussetzung`) in PowerShell
+Um die aktuelle SophiApp-Version zu downloaden invoke (`Administrator ist keine Voraussetzung`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -170,7 +170,7 @@ scoop install sophiapp
 * Überprüft vom [static analyzer](https://pvs-studio.com/pvs-studio). Die Lizenz wurde freundlicherweise von "PVS-Studio" zur Verfügung gestellt.
   * Großes Dankeschön für die Lizenz: [license](https://pvs-studio.com/en/order/open-source-license).
 * Alle builds sind in der Cloud kompiliert worden mit: [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
-  * Du kannst die Zip-Archiv-Hash-Summe von der "Release"-Page mit dem Hash in der cloud Console vergleichen. In der `Compress Files` Kategorie. Damit kannst du sicher sein, dass das Archiv nicht gespoofed (Du musst in deinem Github-Account eingeloggt sein, um den "Action-Log" zu sehen.);
+  * Du kannst die Zip-Archiv-Hash-Summe von der "Release"-Page mit dem Hash in der cloud Console vergleichen. In der `Compress Files` Kategorie. Damit kannst du sicher sein, dass das Archiv nicht gespoofed ist (Du musst in deinem Github-Account eingeloggt sein, um den "Action-Log" zu sehen.);
 * Unterstützung für hohe Auflösungen.
 * Eingebaute Such-Funktion.
   * Funktionen können über ihren Namen oder die Beschreibung gesucht werden.
