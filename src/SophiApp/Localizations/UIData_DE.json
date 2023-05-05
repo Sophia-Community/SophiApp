@@ -16,10 +16,10 @@
     {
         "Id":  101,
         "Header":  {
-                       "DE":  "Ebene der Diagnosedatenerfassung des Betriebssystems"
+                       "DE":  "Menge der Diagnosedatenerfassung des Betriebssystems"
                    },
         "Description":  {
-                            "DE":  "Bei Verwendung von Windows Ihr Gerät sendet an Microsoft begrenzten Datensätz, um Ihr Gerät und Betriebssystem zu schützen und aktualizieren, damit sie korrekt funktionieren."
+                            "DE":  "Bei Verwendung von Windows sendet ihr Gerät eine begrenzte Anzahl Datensätze, um Ihr Gerät und Betriebssystem zu schützen und zu aktualisieren. Damit wird sichergestellt, dass alles korrekt funktioniert."
                         },
         "Type":  "RadioGroup",
         "Tag":  "Privacy",
@@ -55,7 +55,7 @@
                        "DE":  "Windows-Fehlerberichterstattung"
                    },
         "Description":  {
-                            "DE":  "Mithilfe von Fehlerberichten ermöglicht Anwendern Microsoft über Software- und Kernel-Fehler, nicht mehr reagierenden Anwendung und anderen anwendungsbezogenen Probleme benachrichtigen. So kann Microsoft die gesammelten Informationen über Fehlerberichterstellung verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen uUpdates für ihre spezifischen Probleme zur Verfügung zu stellen."
+                            "DE":  "Fehlerberichte ermöglichen Anwendern, Microsoft über Software- und Kernel-Fehler, nicht mehr reagierende Anwendungen und andere anwendungsbezogenen Probleme zu informieren. Somit kann Microsoft die gesammelten Informationen über Fehlerberichte verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen und Updates für ihre spezifischen Probleme zur Verfügung zu stellen."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -113,10 +113,10 @@
                               {
                                   "Id":  109,
                                   "ChildHeader":  {
-                                                      "DE":  "ProgramDataUpdater"
+                                                      "DE":  "Program Data Updater"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Telemetriedatenerfassung in der Programm zur Verbesserung der Benutzerfreundlichkeit der Software."
+                                                           "DE":  "Telemetriedatenerfassung in dem \"Programm zur Verbesserung der Benutzerfreundlichkeit\"."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -126,17 +126,17 @@
                                                       "DE":  "Proxy"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Diese Aufgabe sammelt und lädt autochk SQM-Daten hoch beim Teilnehmen am Programm zur Verbesserung der Benutzerfreundlichkeit."
+                                                           "DE":  "Diese Aufgabe sammelt und lädt zusätzlich autochk SQM-Daten hoch. Das passiert beim Teilnehmen am \"Programm zur Verbesserung der Benutzerfreundlichkeit\"."
                                                        },
                                   "Type":  "CheckBox"
                               },
                               {
                                   "Id":  111,
                                   "ChildHeader":  {
-                                                      "DE":  "Consolidator"
+                                                      "DE":  "Consolidator(Zusammenfügen)"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Wenn der Benutzer der Teilnahme am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit zugestimmt hat, erfasst diese Aufgabe Verwendungsdaten, die an Microsoft gesendet werden."
+                                                           "DE":  "Wenn der Benutzer der Teilnahme am Windows-Programm \"Programm zur Verbesserung der Benutzerfreundlichkeit\" zugestimmt hat, erfasst diese Aufgabe Verwendungsdaten, die an Microsoft gesendet werden."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -146,7 +146,7 @@
                                                       "DE":  "UsbCeip"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Die USB-CEIP-Aufgabe (Customer Experience Improvement Program) sammelt und speichert Statistiken und Informationen über Ihren Computer, die sich auf den Universal Serial Bus beziehen, und sendet sie an die Windows Device Connectivity Engineering Group bei Microsoft. Die erhaltenen Informationen werden verwendet, um die Zuverlässigkeit, Stabilität und allgemeine Funktionalität von USB in Windows zu verbessern. Wenn der Benutzer nicht zugestimmt hat, an Windows CEIP teilzunehmen, führt diese Aufgabe nichts aus."
+                                                           "DE":  "Die USB-CEIP-Aufgabe (CEIP= \"Programm zur Verbesserung der Benutzerfreundlichkeit\") sammelt und speichert Statistiken und Informationen über Ihren Computer, die sich auf den Universal Serial Bus beziehen, und sendet sie an die Windows Device Connectivity Engineering Group bei Microsoft. Die erhaltenen Informationen werden verwendet, um die Zuverlässigkeit, Stabilität und allgemeine Funktionalität von USB in Windows zu verbessern. Wenn der Benutzer nicht zugestimmt hat, an Windows CEIP teilzunehmen, führt diese Aufgabe nichts aus."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -156,7 +156,7 @@
                                                       "DE":  "Microsoft-Windows-DiskDiagnosticDataCollector"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Die Windows-Datenträgerdiagnose meldet allgemeine Festplatten- und Systeminformationen an Microsoft für die Benutzer, die am Customer Experience Program teilnehmen."
+                                                           "DE":  "Die Windows-Datenträgerdiagnose meldet allgemeine Festplatten- und Systeminformationen an Microsoft für die Benutzer, die am \"Programm zur Verbesserung der Benutzerfreundlichkeit\"."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -176,7 +176,7 @@
                                                       "DE":  "MapsUpdateTask"
                                                   },
                                   "ChildDescription":  {
-                                                           "DE":  "Diese Aufgabe sucht Updates für Karten, die haben Sie für die Offlineverwendung heruntergeladen. Deaktivierung des Tasks verhindert, dass Windows Sie über Updates für Karten informiert."
+                                                           "DE":  "Diese Aufgabe sucht Updates für Karten, die sie für die Offlineverwendung heruntergeladen haben. Deaktivierung des Tasks verhindert, dass Windows Sie über Updates für Karten informiert."
                                                        },
                                   "Type":  "CheckBox"
                               },
@@ -211,7 +211,7 @@
                        "DE":  "Anmeldeinformationen verwenden, um die Einrichtung des Geräts nach einer Aktualisierung automatisch abzuschließen"
                    },
         "Description":  {
-                            "DE":  "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen."
+                            "DE":  "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So kann es vorkommen, das Sie eventuell nicht ihren PC nutzen können, bevor die Updates installiert sind. Windows hilft, dies zu verhindern, indem es mit Ihren Anmeldeinformationen ein spezielles Token erstellen. Dieser Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -309,7 +309,7 @@
                        "DE":  "Vorschläge machen, wie ich mein Gerät einrichten kann"
                    },
         "Description":  {
-                            "DE":  "Windows zeigt möglicherweise gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann."
+                            "DE":  "Windows zeigt gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann."
                         },
         "Type":  "CheckBox",
         "Tag":  "Privacy",
@@ -415,7 +415,7 @@
                        "DE":  "Dateinamenserweiterung anzeigen"
                    },
         "Description":  {
-                            "DE":  ""
+                            "DE":  "Zeigt Dateinamenserweiterungen an. Bei einer Text-Datei wäre das zum Beispiel \".txt\""
                         },
         "Type":  "CheckBox",
         "Tag":  "Personalization",
@@ -440,7 +440,7 @@
     {
         "Id":  208,
         "Header":  {
-                       "DE":  "Datei-Explorer für Folgendes öffnen:"
+                       "DE":  "Datei-Explorer mit folgendem öffnen:"
                    },
         "Description":  {
                             "DE":  ""
@@ -504,7 +504,7 @@
     {
         "Id":  213,
         "Header":  {
-                       "DE":  "Synchronisationsanbieter-Benachrichtigungen im Datei-Explorer anzeigen"
+                       "DE":  "Synchronisationsanbieter-Benachrichtigungen(Datensicherung) im Datei-Explorer anzeigen"
                    },
         "Description":  {
                             "DE":  "Anzeige der OneDrive-Benachrichtigungen im Datei-Explorer deaktivieren."
@@ -546,7 +546,7 @@
     {
         "Id":  216,
         "Header":  {
-                       "DE":  "Dialogfeld der Dateiübertragungsmodus anzeigen"
+                       "DE":  "Dialogfeld des Dateiübertragungsmodus anzeigen"
                    },
         "Description":  {
                             "DE":  ""
@@ -557,7 +557,7 @@
                               {
                                   "Id":  217,
                                   "ChildHeader":  {
-                                                      "DE":  "Im detaillierten Modus"
+                                                      "DE":  "Anzeige im detaillierten Modus"
                                                   },
                                   "ChildDescription":  {
                                                            "DE":  ""
@@ -567,7 +567,7 @@
                               {
                                   "Id":  218,
                                   "ChildHeader":  {
-                                                      "DE":  "Im Kompaktmodus"
+                                                      "DE":  "Anzeige im Kompaktmodus"
                                                   },
                                   "ChildDescription":  {
                                                            "DE":  ""
@@ -832,7 +832,7 @@
     {
         "Id":  238,
         "Header":  {
-                       "DE":  "Immer alle Symbole im Infobereich zeigen"
+                       "DE":  "Immer alle Symbole im Infobereich der Taskleiste zeigen"
                    },
         "Description":  {
                             "DE":  ""
@@ -888,7 +888,7 @@
     {
         "Id":  242,
         "Header":  {
-                       "DE":  "Anzeigen der Systemsteuerungsymbole nach"
+                       "DE":  "\"Ansicht\" der Systemsteuerungsymbole anzeigen als"
                    },
         "Description":  {
                             "DE":  ""
@@ -899,7 +899,7 @@
                               {
                                   "Id":  243,
                                   "ChildHeader":  {
-                                                      "DE":  "Große Symbole"
+                                                      "DE":  "\"Große Symbole\""
                                                   },
                                   "ChildDescription":  {
                                                            "DE":  ""
@@ -909,7 +909,7 @@
                               {
                                   "Id":  244,
                                   "ChildHeader":  {
-                                                      "DE":  "Kleine Symbole"
+                                                      "DE":  "\"Kleine Symbole\""
                                                   },
                                   "ChildDescription":  {
                                                            "DE":  ""
@@ -1098,7 +1098,7 @@
     {
         "Id":  259,
         "Header":  {
-                       "DE":  "Die Taste PrtScn verwenden um Snipping zu öffnen"
+                       "DE":  "Die Taste PrtScn verwenden um Snipping-Tool zu öffnen"
                    },
         "Description":  {
                             "DE":  ""
@@ -1245,7 +1245,7 @@
                        "DE":  "Speicheroptimierung"
                    },
         "Description":  {
-                            "DE":  "Wenn der Speicherplatz knapp wird, aktiwiert die System die Speicheroptimierung um Ihr Speicherplatz zu befreien."
+                            "DE":  "Wenn der Speicherplatz knapp wird, aktiviert das System die Speicheroptimierung, um wieder Speicherplatz freizugeben."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -1359,7 +1359,7 @@
                        "DE":  "Windows-Pfadbegrenzung auf 260 Zeichen aktivieren"
                    },
         "Description":  {
-                            "DE":  "Standardmäßig hat Windows eine Gesamlänge von 260 Zeichen für Pfade. Einer lokale Pfad ist wie folgt strukturiert: Laufwerksbuchstabe, Doppelpunkt, Rücktaste, Namensbestandteile (getrennt durch Rücktasten) und ein abschließendes Nullbyte."
+                            "DE":  "Standardmäßig hat Windows eine Gesamlänge von 260 Zeichen für Pfade. Ein lokaler Pfad ist wie folgt strukturiert: Laufwerksbuchstabe, Doppelpunkt, Rücktaste, Namensbestandteile (getrennt durch Rücktasten) und ein abschließendes Nullbyte."
                         },
         "Type":  "CheckBox",
         "Tag":  "System",
@@ -2179,7 +2179,7 @@
     {
         "Id":  801,
         "Header":  {
-                       "DE":  "Erkennen von Potenziell unerwünschten Anwendungen in Microsoft Defender aktivieren und blockieren der"
+                       "DE":  "Erkennen von Potenziell unerwünschten Anwendungen in Microsoft Defender aktivieren, und blockieren der besagten Anwendungen"
                    },
         "Description":  {
                             "DE":  ""
