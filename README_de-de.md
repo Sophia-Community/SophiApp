@@ -7,7 +7,7 @@
   
 </div>
 
-# SophiApp. Das nächste Kapitel des [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) Projekts
+# SophiApp. Das nächste Kapitel des [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) -Projekts
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
@@ -75,23 +75,23 @@
 
 <p align="center">
     •
-    <a href="#donations">Spenden</a>
+    <a href="#Spenden">Spenden</a>
     •
-    <a href="#system-requirements">System Voraussetzungen</a>
+    <a href="#System Voraussetzungen ">System Voraussetzungen</a>
     •
-    <a href="#installation">Installation</a>
+    <a href="#Installation">Installation</a>
     •
-    <a href="#key-features">Haupt-Features</a>
+    <a href="#Haupt-Features">Haupt-Features</a>
     •
-    <a href="#videos">Videos</a>
+    <a href="#Videos">Videos</a>
     •
-    <a href="#screenshots">Screenshots</a>
+    <a href="#Screenshots">Screenshots</a>
     •
-    <a href="#addendum">Nachtrag</a>
+    <a href="#Nachtrag">Nachtrag</a>
     •
-    <a href="#translating">Übersetzung</a>
+    <a href="#Übersetzung">Übersetzung</a>
     •
-    <a href="#media">Media</a>
+    <a href="#Media">Media</a>
     •
     <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
 </p>
@@ -102,9 +102,9 @@
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
-> **Aufgepasst**: `SophiApp` ist eine freie, open-source app fürs fine-tuning von `Windows 10` & `Windows 11`. Sie bietet ein modernes UI/UX, über 130 einzigartige Tweaks, und zeigt wie Windows konfiguriert werden kann, ohne dem System zu schaden.
+> **Aufgepasst**: `SophiApp` ist eine freie, open-source App für das fine-tuning von `Windows 10` & `Windows 11`. Sie bietet ein modernes UI/UX, über 130 einzigartige Tweaks, und zeigt, wie Windows konfiguriert werden kann, ohne dem System zu schaden.
 
-## Donations
+## Spenden
 
 <a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left"></a>
 <a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
@@ -158,14 +158,14 @@ scoop install sophiapp
 ### Warnung
 
 * Nur ein Admin-User darf gleichzeitig beim starten der Anwendung eingeloggt sein.
-* 🔥🔥🔥`SophiApp` funktioniert eventuell nicht mit einem homebrew Windows. Ganz besonders, wenn das homebrew image von OS Erstellern erstellt worden ist, die nicht wissen was sie tun, Microsoft Defender zerstören und mit voller Absicht OS-Telemetrie deaktivieren indem sie System-Komponenten "uprooten".
+* 🔥🔥🔥`SophiApp` funktioniert eventuell nicht mit einem "homebrew Windows". Ganz besonders, wenn das "homebrew Image" von OS Erstellern erstellt worden ist, die nicht wissen was sie tun, Microsoft Defender zerstören und mit voller Absicht OS-Telemetrie deaktivieren indem sie System-Komponenten "uprooten".
 
 ## Haupt-Features
 
 * 130+ tweaks.
-* Konfiguriere dein Windows mit offiziell dokumentiereten Methoden.
+* Konfiguriere dein Windows mit offiziell dokumentierten Methoden.
 * SophiApp hat ein dynamisch gerendertes UI. Nichts ist hardcoded. 👻
-* SophiApp zeigt den aktuellen Status von jedem Windows feature.
+* SophiApp zeigt den aktuellen Status von jedem Windows-Feature.
 * `SophiApp` macht vom [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) gebrauch.
 * Multithreading wird unterstützt.
 * Überprüft vom [static analyzer](https://pvs-studio.com/pvs-studio). Die Lizenz wurde freundlicherweise von "PVS-Studio" zur Verfügung gestellt.
