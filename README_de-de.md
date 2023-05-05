@@ -77,7 +77,7 @@
     •
     <a href="#Spenden">Spenden</a>
     •
-    <a href="#System Voraussetzungen ">System Voraussetzungen</a>
+    <a href="#System-Voraussetzungen ">System Voraussetzungen</a>
     •
     <a href="#Installation">Installation</a>
     •
@@ -114,7 +114,7 @@
 |                                             USDT (TRC20)                                             |
 |                                 `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                 |
 
-### System Voraussetzungen
+### System-Voraussetzungen
 
 |             Version             |   Marketing name    |    Build    | Arch |         Editions         |
 |:-------------------------------:|:-------------------:|:-----------:|:----:|:------------------------:|
@@ -233,7 +233,7 @@ scoop install sophiapp
   * <https://g.live.com>
   * <https://oneclient.sfx.ms>
 
-## Übersetzen
+## Übersetzung
 
 * Du kannst jederzeit eine Übersetzung beitragen indem du dir ein Template: [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations) nimmst und damit eine neue [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations) Datei erstellst.
 
