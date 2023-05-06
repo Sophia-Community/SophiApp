@@ -15,4 +15,11 @@
         <Setter Property="Margin" Value="16, 0, 0, 0" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
+
+    <Style x:Key="CategoryButtonTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBaseStyle}">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="TextTrimming" Value="None" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
 </ResourceDictionary>

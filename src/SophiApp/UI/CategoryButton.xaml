@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="SophiApp.UI.CategoryButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SophiApp.UI"
+             mc:Ignorable="d" 
+             SnapsToDevicePixels="True"
+             IsTabStop="False"
+             Focusable="False"
+             Foreground="{DynamicResource Window.Foreground.Normal}"
+             Background="{DynamicResource Window.Background.Normal}">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Border x:Name="BorderCategoryButton"
+                    Height="34"
+                    CornerRadius="4"
+                    Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                    Margin="0,0,0,15">
+                <Grid x:Name="GridCategoryButton">
+                    <Border x:Name="CategoryButtonMarker"
+                            Style="{DynamicResource CategoryMenuButtonMarkerStyle}"
+                            Background="{DynamicResource Window.Accent.Normal}" />
+                    <StackPanel x:Name="HamburgerButtonPanel" Orientation="Horizontal">
+                        <ContentControl Width="18"
+                                        Height="18"
+                                        Margin="16,2,20,0"
+                                        Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <TextBlock x:Name="HamburgerButtonText"
+                                   Style="{DynamicResource CategoryButtonTextStyle}"
+                                   Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

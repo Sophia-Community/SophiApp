@@ -1,43 +1,64 @@
 ﻿[*.cs]
 
-# SA1518: Use line endings correctly at end of file
-dotnet_diagnostic.SA1518.severity = error
+# IDE0001: Упрощение имен
+dotnet_diagnostic.IDE0001.severity = error
 
-# SA1101: Prefix local calls with this
-dotnet_diagnostic.SA1101.severity = suggestion
+# SA1514: Element documentation header should be preceded by blank line
+dotnet_diagnostic.SA1514.severity = error
+
+# SA1505: Opening braces should not be followed by blank line
+dotnet_diagnostic.SA1505.severity = error
+
+# IDE0004: Remove Unnecessary Cast
+dotnet_diagnostic.IDE0004.severity = error
+
+# SA1633: File should have header
+dotnet_diagnostic.SA1633.severity = error
+
+# IDE0005: Using directive is unnecessary.
+dotnet_diagnostic.IDE0005.severity = error
+
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = error
+
+# IDE0065: Misplaced using directive
+csharp_using_directive_placement = inside_namespace
 
 # SA1208: System using directives should be placed before other using directives
 dotnet_diagnostic.SA1208.severity = error
 
-# S125: Sections of code should not be commented out
-dotnet_diagnostic.S125.severity = error
+# SA1000: Keywords should be spaced correctly
+dotnet_diagnostic.SA1000.severity = error
 
-# CS1587: За XML-комментарием не следует допустимый элемент языка
-dotnet_diagnostic.CS1587.severity = error
+# SA1516: Elements should be separated by blank line
+dotnet_diagnostic.SA1516.severity = error
 
-# SA1028: Code should not contain trailing whitespace
-dotnet_diagnostic.SA1028.severity = error
+# SA1025: Code should not contain multiple whitespace in a row
+dotnet_diagnostic.SA1025.severity = error
 
-# SA1623: Property summary documentation should match accessors
-dotnet_diagnostic.SA1623.severity = error
-
-# SA1611: Element parameters should be documented
-dotnet_diagnostic.SA1611.severity = error
+# SA1019: Member access symbols should be spaced correctly
+dotnet_diagnostic.SA1019.severity = error
 
 # SA1507: Code should not contain multiple blank lines in a row
 dotnet_diagnostic.SA1507.severity = error
 
-# S1144: Unused private types or members should be removed
-dotnet_diagnostic.S1144.severity = error
-
-# S1186: Methods should not be empty
-dotnet_diagnostic.S1186.severity = error
-
-# SA1508: Closing braces should not be preceded by blank line
-dotnet_diagnostic.SA1508.severity = error
-
 # SA1201: Elements should appear in the correct order
 dotnet_diagnostic.SA1201.severity = error
 
-# SA1503: Braces should not be omitted
-dotnet_diagnostic.SA1503.severity = error
+# SA1623: Property summary documentation should match accessors
+dotnet_diagnostic.SA1623.severity = error
+
+# SA1629: Documentation text should end with a period
+dotnet_diagnostic.SA1629.severity = error
+
+# SA1028: Code should not contain trailing whitespace
+dotnet_diagnostic.SA1028.severity = error
+
+# CS1591: Отсутствует комментарий XML для открытого видимого типа или члена
+dotnet_diagnostic.CS1591.severity = error
+
+# SA1101: Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = suggestion
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = error

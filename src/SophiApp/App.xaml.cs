@@ -4,11 +4,11 @@
 
 namespace SophiApp
 {
+    using System;
+    using System.Windows;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using SophiApp.ViewModel;
-    using System;
-    using System.Windows;
 
     /// <summary>
     /// Interaction logic for App.xaml.

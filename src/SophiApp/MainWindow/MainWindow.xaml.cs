@@ -4,9 +4,10 @@
 
 namespace SophiApp
 {
-    using SophiApp.ViewModel;
     using System.Windows;
     using System.Windows.Input;
+    using SophiApp.UI;
+    using SophiApp.ViewModel;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
@@ -37,10 +38,11 @@ namespace SophiApp
             WindowState = WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
         }
 
-        private void OnMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void OnTitleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ButtonState == MouseButtonState.Pressed)
+            if (e.Source is WindowTitle && e.ButtonState == MouseButtonState.Pressed)
             {
+                e.Handled = true;
                 DragMove();
             }
         }

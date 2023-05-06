@@ -5,4 +5,5 @@
     <SolidColorBrush x:Key="Window.Foreground.Normal" Color="#4B4B4B" />
     <SolidColorBrush x:Key="Window.Accent.High" Color="#E81123" />
     <SolidColorBrush x:Key="Window.Background.Light10" Color="#3F3F3F" />
+    <SolidColorBrush x:Key="Window.Accent.Normal" Color="#0078D4" />
 </ResourceDictionary>

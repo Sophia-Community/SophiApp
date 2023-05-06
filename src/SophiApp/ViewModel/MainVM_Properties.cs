@@ -4,9 +4,11 @@
 
 namespace SophiApp.ViewModel
 {
-    using SophiApp.Extensions;
     using System;
     using System.Reflection;
+    using System.Windows;
+    using CommunityToolkit.Mvvm.Input;
+    using SophiApp.Extensions;
 
     /// <summary>
     /// View model for a <see cref="MainWindow"/>.
@@ -21,5 +23,12 @@ namespace SophiApp.ViewModel
         /// Gets app name and version.
         /// </summary>
         public string FullName => $"{name} {version.ToShortString()} | {Edition}";
+
+        /// <summary>
+        /// Gets close window command.
+        /// </summary>
+        public RelayCommand CloseWindowCommand => new (CloseWindow);
+
+        private void CloseWindow() => Application.Current.MainWindow.Close();
     }
 }

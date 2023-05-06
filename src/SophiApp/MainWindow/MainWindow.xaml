@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:SophiApp.UI"
         mc:Ignorable="d"
-        MouseLeftButtonDown="OnMouseLeftButtonDown"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="False"
@@ -20,7 +19,8 @@
         Background="{DynamicResource Window.Background.Normal}"
         Title="{Binding FullName}"
         ui:WindowTitle.MinimizeButtonClicked="OnMinimizeButtonClicked"
-        ui:WindowTitle.MinMaxButtonClicked="OnMinMaxButtonClicked">
+        ui:WindowTitle.MinMaxButtonClicked="OnMinMaxButtonClicked"
+        ui:WindowTitle.MouseLeftButtonDown="OnTitleMouseLeftButtonDown">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo x:Name="WindowTaskBarItem" />
     </Window.TaskbarItemInfo>
@@ -30,31 +30,35 @@
                       GlassFrameThickness="0"
                       ResizeBorderThickness="3" />
     </WindowChrome.WindowChrome>
-    <Grid>
-        <Grid.RowDefinitions>
-            <!--  Window Title Row  -->
-            <RowDefinition Height="35" />
-            <!--  Window Content Row  -->
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <ui:WindowTitle Grid.Row="0"
+    <Border x:Name="ContentBorder" Style="{DynamicResource WindowContentStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--  Window Title Row  -->
+                <RowDefinition Height="35" />
+                <!--  Window Content Row  -->
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ui:WindowTitle Grid.Row="0"
                         Text="{Binding FullName}"
-                        Background="{DynamicResource Window.Background.Normal}" />
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <!--  Hamburger Column  -->
-                <ColumnDefinition Width="280" />
-                <!--  Page Column  -->
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <!--  Page Content Row  -->
-                    <RowDefinition Height="*" />
-                    <!--  Info Panel Row  -->
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                        Background="{DynamicResource Window.Background.Normal}"
+                        CloseWindowCommand="{Binding CloseWindowCommand}"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--  Category Menu Column  -->
+                    <ColumnDefinition Width="280" />
+                    <!--  Page Column  -->
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <!--  Page Content Row  -->
+                        <RowDefinition Height="*" />
+                        <!--  Info Panel Row  -->
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+                <ui:CategoryMenu Grid.Column="0"/>
             </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

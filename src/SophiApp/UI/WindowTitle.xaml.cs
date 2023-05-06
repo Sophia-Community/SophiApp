@@ -6,12 +6,19 @@ namespace SophiApp.UI
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     /// <summary>
     /// Логика взаимодействия для WindowTitle.xaml.
     /// </summary>
     public partial class WindowTitle : UserControl
     {
+        /// <summary>
+        /// Using a DependencyProperty as the backing store for CloseWindowProperty.
+        /// </summary>
+        public static readonly DependencyProperty CloseWindowProperty =
+            DependencyProperty.Register("CloseWindowCommand", typeof(ICommand), typeof(WindowTitle), new PropertyMetadata(default));
+
         /// <summary>
         /// Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         /// </summary>
@@ -48,6 +55,15 @@ namespace SophiApp.UI
         }
 
         /// <summary>
+        /// Gets or sets window close command.
+        /// </summary>
+        public ICommand CloseWindowCommand
+        {
+            get => (ICommand)GetValue(CloseWindowProperty);
+            set => SetValue(CloseWindowProperty, value);
+        }
+
+        /// <summary>
         /// Gets or sets window title text.
         /// </summary>
         public string Text
@@ -60,6 +76,6 @@ namespace SophiApp.UI
             => RaiseEvent(new RoutedEventArgs(MinimizeButtonClickedEvent));
 
         private void OnMinMaxWindowButtonClicked(object sender, RoutedEventArgs e)
-                    => RaiseEvent(new RoutedEventArgs(MinMaxButtonClickedEvent));
+            => RaiseEvent(new RoutedEventArgs(MinMaxButtonClickedEvent));
     }
 }
