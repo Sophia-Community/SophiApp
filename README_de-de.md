@@ -123,7 +123,7 @@
 | Windows 10 22H2                 | 2022 Update         | 19045.2006+ | x64  | Home/Pro/Enterprise      |
 | Windows 10 21H2                 | October 2021 Update | 19044.1706+ | x64  | Home/Pro/Enterprise/LTSC |
 
-> **Aufgepasst**: Schaue dir [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) an und die [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history.
+> **Aufgepasst**: Schaue dir [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb),  und [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) sowie [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history an.
 
 ## Installation
 
@@ -150,7 +150,7 @@ scoop install sophiapp
 
 [Beta versions](https://github.com/Sophia-Community/SophiApp/releases)
 
-> **Aufgepasst**: `SophiApp` ist vollständig portable: Sie hat (bisher) keine Config und speichert keine Daten in der Registry. Entpacke den `SophiApp` Ordner mit `Bin` Order und `SophiApp.exe.config` Datei, und starte `SophiApp.exe`.
+> **Aufgepasst**: `SophiApp` ist vollständig portable: Die App hat (bisher) keine Konfiguration-Datei und speichert keine Daten in der Registry. Entpacke den `SophiApp` Ordner mit samt `Bin` Ordner und `SophiApp.exe.config` Datei und starte `SophiApp.exe`.
 
 ***
 
@@ -161,14 +161,14 @@ scoop install sophiapp
 
 ## Haupt-Features
 
-* 130+ tweaks.
+* 130+ Tweaks.
 * Konfiguriere dein Windows mit offiziell dokumentierten Methoden.
 * SophiApp hat ein dynamisch gerendertes UI. Nichts ist hardcoded. 👻
 * SophiApp zeigt den aktuellen Status von jedem Windows-Feature.
 * `SophiApp` macht vom [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) gebrauch.
 * Multithreading wird unterstützt.
 * Überprüft vom [static analyzer](https://pvs-studio.com/pvs-studio). Die Lizenz wurde freundlicherweise von "PVS-Studio" zur Verfügung gestellt.
-  * Großes Dankeschön für die Lizenz: [license](https://pvs-studio.com/en/order/open-source-license).
+  * Großes Dankeschön für die: [Lizenz](https://pvs-studio.com/en/order/open-source-license).
 * Alle builds sind in der Cloud kompiliert worden mit: [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
   * Du kannst die Zip-Archiv-Hash-Summe von der "Release"-Page mit dem Hash in der cloud Console vergleichen. In der `Compress Files` Kategorie. Damit kannst du sicher sein, dass das Archiv nicht gespoofed ist (Du musst in deinem Github-Account eingeloggt sein, um den "Action-Log" zu sehen.);
 * Unterstützung für hohe Auflösungen.
@@ -187,7 +187,7 @@ scoop install sophiapp
   * Eine Windows native Toast-Benachrichtigung wird dir angezeigt, bei der du dir aussuchen kannst, ob sie "Schlummern" soll, ob sie die Aufräum-Aktion starten soll oder ob die Aufgabe abgelehnt wird.
 * Konfiguriere die Windows Sicherheit.
 * Kopiere ganz einfach die Namen oder Beschreibungen der einzelnen Funktionen.
-* Viele einzigartige tweaks.
+* Viele einzigartige Tweaks.
 
 ## Videos
 
@@ -205,7 +205,7 @@ scoop install sophiapp
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
 
-## Such-Feature
+## Such-Funktion
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/search.gif)
 
