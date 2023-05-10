@@ -11,10 +11,10 @@
         SnapsToDevicePixels="True"
         ResizeMode="CanResize"
         ShowInTaskbar="True"
-        MinHeight="615"
-        MinWidth="1074"
-        Height="615"
-        Width="1074"
+        MinHeight="600"
+        MinWidth="800"
+        Height="768"
+        Width="1200"
         Foreground="{DynamicResource Window.Foreground.Normal}"
         Background="{DynamicResource Window.Background.Normal}"
         Title="{Binding FullName}"
@@ -39,9 +39,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <ui:WindowTitle Grid.Row="0"
-                        Text="{Binding FullName}"
-                        Background="{DynamicResource Window.Background.Normal}"
-                        CloseWindowCommand="{Binding CloseWindowCommand}"/>
+                            Text="{Binding FullName}"
+                            Background="{DynamicResource Window.Background.Normal}"
+                            CloseWindowCommand="{Binding CloseWindowCommand}"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <!--  Category Menu Column  -->
@@ -57,7 +57,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                 </Grid>
-                <ui:CategoryMenu Grid.Column="0"/>
+                <ui:CategoryMenu Grid.Column="0" />
             </Grid>
         </Grid>
     </Border>

@@ -11,30 +11,51 @@
              Foreground="{DynamicResource Window.Foreground.Normal}"
              Background="{DynamicResource Window.Background.Normal}">
     <UserControl.Resources>
-        
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="BorderCategoryButton"
+                                Height="34"
+                                CornerRadius="4"
+                                Background="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type local:CategoryButton}}}"
+                                Margin="0,0,0,15">
+                            <Grid x:Name="GridCategoryButton">
+                                <Border x:Name="CategoryButtonMarker"
+                                        Style="{DynamicResource CategoryMenuButtonMarkerStyle}"
+                                        Background="{DynamicResource Window.Accent.Normal}" />
+                                <StackPanel x:Name="HamburgerButtonPanel"
+                                            Orientation="Horizontal">
+                                    <ContentControl Width="18"
+                                                    Height="18"
+                                                    Margin="16,2,20,0"
+                                                    Content="{Binding Path=Icon, RelativeSource={RelativeSource AncestorType={x:Type local:CategoryButton}}}" />
+                                    <TextBlock x:Name="HamburgerButtonText"
+                                               Style="{DynamicResource CategoryButtonTextStyle}"
+                                               Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type local:CategoryButton}}}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BorderCategoryButton" Property="Background" Value="{DynamicResource CategoryButton.Hover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="HamburgerButtonText" Property="Foreground" Value="{DynamicResource Window.Unaccented.Normal}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Border x:Name="BorderCategoryButton"
-                    Height="34"
-                    CornerRadius="4"
-                    Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
-                    Margin="0,0,0,15">
-                <Grid x:Name="GridCategoryButton">
-                    <Border x:Name="CategoryButtonMarker"
-                            Style="{DynamicResource CategoryMenuButtonMarkerStyle}"
-                            Background="{DynamicResource Window.Accent.Normal}" />
-                    <StackPanel x:Name="HamburgerButtonPanel" Orientation="Horizontal">
-                        <ContentControl Width="18"
-                                        Height="18"
-                                        Margin="16,2,20,0"
-                                        Content="{Binding Path=Icon, RelativeSource={RelativeSource TemplatedParent}}" />
-                        <TextBlock x:Name="HamburgerButtonText"
-                                   Style="{DynamicResource CategoryButtonTextStyle}"
-                                   Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </StackPanel>
-                </Grid>
-            </Border>
+            <Button Command="{Binding Path=Command, RelativeSource={RelativeSource TemplatedParent}}"
+                    CommandParameter="{Binding Path=CommandParameter, RelativeSource={RelativeSource TemplatedParent}}"/>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

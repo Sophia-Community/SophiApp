@@ -6,9 +6,9 @@ namespace SophiApp.ViewModel
 {
     using System;
     using System.Reflection;
-    using System.Windows;
-    using CommunityToolkit.Mvvm.Input;
+    using CommunityToolkit.Mvvm.ComponentModel;
     using SophiApp.Extensions;
+    using SophiApp.Helpers;
 
     /// <summary>
     /// View model for a <see cref="MainWindow"/>.
@@ -16,19 +16,15 @@ namespace SophiApp.ViewModel
     public partial class MainVM
     {
         private const string Edition = "Community | Private alpha";
+
         private readonly string name = Assembly.GetExecutingAssembly().GetName().Name!;
         private readonly Version version = Assembly.GetExecutingAssembly().GetName().Version!;
+        [ObservableProperty]
+        private PageTag activePage = PageTag.Privacy;
 
         /// <summary>
         /// Gets app name and version.
         /// </summary>
         public string FullName => $"{name} {version.ToShortString()} | {Edition}";
-
-        /// <summary>
-        /// Gets close window command.
-        /// </summary>
-        public RelayCommand CloseWindowCommand => new (CloseWindow);
-
-        private void CloseWindow() => Application.Current.MainWindow.Close();
     }
 }

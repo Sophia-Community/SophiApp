@@ -41,8 +41,8 @@ namespace SophiApp.UI
         /// </summary>
         public event RoutedEventHandler MinimizeButtonClicked
         {
-            add { AddHandler(MinimizeButtonClickedEvent, value); }
-            remove { RemoveHandler(MinimizeButtonClickedEvent, value); }
+            add => AddHandler(MinimizeButtonClickedEvent, value);
+            remove => RemoveHandler(MinimizeButtonClickedEvent, value);
         }
 
         /// <summary>
@@ -50,8 +50,8 @@ namespace SophiApp.UI
         /// </summary>
         public event RoutedEventHandler MinMaxButtonClicked
         {
-            add { AddHandler(MinMaxButtonClickedEvent, value); }
-            remove { RemoveHandler(MinMaxButtonClickedEvent, value); }
+            add => AddHandler(MinMaxButtonClickedEvent, value);
+            remove => RemoveHandler(MinMaxButtonClickedEvent, value);
         }
 
         /// <summary>
