@@ -3,6 +3,7 @@
 
     <Color x:Key="CategoryButton.Shadow">#222222</Color>
     <SolidColorBrush x:Key="CategoryButton.Hover" Color="#000000" Opacity="0.24" />
+    <SolidColorBrush x:Key="CategoryMenu.Splitter.Background" Color="#030303" />
     <SolidColorBrush x:Key="Window.Background.Normal" Color="#2D2D2D" />
     <SolidColorBrush x:Key="Window.Foreground.Normal" Color="#F8F9FC" />
     <SolidColorBrush x:Key="Window.Accent.High" Color="#E81123" />

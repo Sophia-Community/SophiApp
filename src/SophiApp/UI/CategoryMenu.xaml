@@ -125,6 +125,8 @@
                         </Viewbox>
                     </ui:CategoryButton.Icon>
                 </ui:CategoryButton>
+                <Border Style="{DynamicResource CategoryMenuSplitterStyle}"/>
+                <!--<Line Style="{DynamicResource LineCategoryMenuSplitter}"/>-->
                 <ui:CategoryButton Text="{x:Static lang:Resources.Settings}"
                                    Command="{Binding CategoryButtonClickedCommand}"
                                    CommandParameter="Settings">
@@ -140,6 +142,9 @@
                         </Viewbox>
                     </ui:CategoryButton.Icon>
                 </ui:CategoryButton>
+                <Border Style="{DynamicResource CategoryMenuSplitterStyle}"/>
+                <!--<Line Style="{DynamicResource LineCategoryMenuSplitter}"
+                      Margin="20, 5, 0, 15"/>-->
                 <ui:CategoryButton Text="{x:Static lang:Resources.ProVersion}"
                                    Command="{Binding CategoryButtonClickedCommand}"
                                    CommandParameter="ProVersion">

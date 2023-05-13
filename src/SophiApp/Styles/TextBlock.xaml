@@ -14,6 +14,16 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Margin" Value="16, 0, 0, 0" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="4"
+                                  Direction="315"
+                                  Color="{DynamicResource CategoryButton.Shadow}"
+                                  Opacity="0.8"
+                                  BlurRadius="5"
+                                  RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="CategoryButtonTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBaseStyle}">
