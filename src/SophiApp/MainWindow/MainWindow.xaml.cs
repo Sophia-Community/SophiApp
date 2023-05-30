@@ -6,6 +6,7 @@ namespace SophiApp
 {
     using System.Windows;
     using System.Windows.Input;
+    using Microsoft.Extensions.DependencyInjection;
     using SophiApp.UI;
     using SophiApp.ViewModel;
 
@@ -46,5 +47,8 @@ namespace SophiApp
                 DragMove();
             }
         }
+
+        private void OnWindowLoaded(object sender, RoutedEventArgs e) => App.Host!.Services.GetRequiredService<MainVM>()
+            .InitializeComponents();
     }
 }

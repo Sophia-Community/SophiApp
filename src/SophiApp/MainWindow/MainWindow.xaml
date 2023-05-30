@@ -3,6 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:SophiApp.Converters"
+        xmlns:lang="clr-namespace:SophiApp.Properties"
         xmlns:ui="clr-namespace:SophiApp.UI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -18,9 +20,13 @@
         Foreground="{DynamicResource Window.Foreground.Normal}"
         Background="{DynamicResource Window.Background.Normal}"
         Title="{Binding FullName}"
+        Loaded="OnWindowLoaded"
         ui:WindowTitle.MinimizeButtonClicked="OnMinimizeButtonClicked"
         ui:WindowTitle.MinMaxButtonClicked="OnMinMaxButtonClicked"
         ui:WindowTitle.MouseLeftButtonDown="OnTitleMouseLeftButtonDown">
+    <Window.Resources>
+        <converters:PageTagToHitTestVisible x:Key="PageTagToHitTestVisibleConverter"/>
+    </Window.Resources>
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo x:Name="WindowTaskBarItem" />
     </Window.TaskbarItemInfo>
@@ -30,7 +36,8 @@
                       GlassFrameThickness="0"
                       ResizeBorderThickness="3" />
     </WindowChrome.WindowChrome>
-    <Border x:Name="ContentBorder" Style="{DynamicResource WindowContentStyle}">
+    <Border x:Name="ContentBorder"
+            Style="{DynamicResource WindowContentStyle}">
         <Grid>
             <Grid.RowDefinitions>
                 <!--  Window Title Row  -->
@@ -56,8 +63,28 @@
                         <!--  Info Panel Row  -->
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <ui:BusyPage Tag="Busy"/>
+                    <ui:Page Title="{x:Static lang:Resources.Privacy}"
+                             Tag="Privacy"/>
+                    <ui:Page Title="{x:Static lang:Resources.Personalization}"
+                             Tag="Personalization"/>
+                    <ui:Page Title="{x:Static lang:Resources.System}"
+                             Tag="System"/>
+                    <ui:Page Title="{x:Static lang:Resources.Uwp}"
+                             Tag="Uwp"/>
+                    <ui:Page Title="{x:Static lang:Resources.TaskScheduler}"
+                             Tag="TaskScheduler"/>
+                    <ui:Page Title="{x:Static lang:Resources.Security}"
+                             Tag="Security"/>
+                    <ui:Page Title="{x:Static lang:Resources.ContextMenu}"
+                             Tag="ContextMenu"/>
+                    <ui:Page Title="{x:Static lang:Resources.Settings}"
+                             Tag="Settings"/>
+                    <ui:Page Title="{x:Static lang:Resources.ProVersion}"
+                             Tag="ProVersion"/>
                 </Grid>
-                <ui:CategoryMenu Grid.Column="0" />
+                <ui:CategoryMenu Grid.Column="0"
+                                 IsHitTestVisible="{Binding ActivePage, Converter={StaticResource PageTagToHitTestVisibleConverter}}"/>
             </Grid>
         </Grid>
     </Border>

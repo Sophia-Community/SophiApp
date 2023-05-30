@@ -33,4 +33,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="PageBorderStyle" TargetType="{x:Type Border}" BasedOn="{StaticResource BorderBaseStyle}">
+        <Setter Property="CornerRadius" Value="7, 0, 0, 0" />
+        <Setter Property="Background" Value="{DynamicResource Page.Background.Normal}"/>
+    </Style>
 </ResourceDictionary>

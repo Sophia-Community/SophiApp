@@ -27,18 +27,17 @@ namespace SophiApp
             .ConfigureServices((context, services) =>
             {
                 // Views and Models
-                _ = services.AddTransient<MainVM>();
+                _ = services.AddSingleton<MainVM>();
             })
             .Build();
 
-            var vm = Host.Services.GetService<MainVM>();
-            MainWindow = new MainWindow(vm!);
+            MainWindow = new MainWindow(Host.Services.GetRequiredService<MainVM>());
         }
 
         /// <summary>
         /// Gets a <see cref="IHost"/>.
         /// </summary>
-        public IHost Host { get; init; }
+        public static IHost? Host { get; private set; }
 
         /// <summary>
         /// Gets <see cref="MainWindow"/>.

@@ -7,6 +7,7 @@
                 <ResourceDictionary Source="Themes/Dark.xaml" />
                 <ResourceDictionary Source="Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="Styles/Border.xaml" />
+                <ResourceDictionary Source="Styles/Grid.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

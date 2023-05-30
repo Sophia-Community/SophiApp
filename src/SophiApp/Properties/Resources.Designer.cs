@@ -61,6 +61,15 @@ namespace SophiApp.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Чтение настроек.
+        /// </summary>
+        public static string BusyPageReadSettings {
+            get {
+                return ResourceManager.GetString("BusyPageReadSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Контекстное меню.
         /// </summary>
         public static string ContextMenu {

@@ -20,7 +20,13 @@ namespace SophiApp.ViewModel
         private readonly string name = Assembly.GetExecutingAssembly().GetName().Name!;
         private readonly Version version = Assembly.GetExecutingAssembly().GetName().Version!;
         [ObservableProperty]
-        private PageTag activePage = PageTag.Privacy;
+        private PageTag activePage = PageTag.Busy;
+
+        [ObservableProperty]
+        private string busyPageText = Properties.Resources.BusyPageReadSettings;
+
+        [ObservableProperty]
+        private double busyPageProgressBarValue = default;
 
         /// <summary>
         /// Gets app name and version.

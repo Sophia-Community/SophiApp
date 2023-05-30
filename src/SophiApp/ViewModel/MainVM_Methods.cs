@@ -16,6 +16,16 @@ namespace SophiApp.ViewModel
     public partial class MainVM
     {
         /// <summary>
+        /// Initializes application data and environment.
+        /// </summary>
+        public void InitializeComponents()
+        {
+            ActivePage = PageTag.Privacy;
+
+            // TODO: Not implemented!
+        }
+
+        /// <summary>
         /// Appears when the <see cref="CategoryButton"/> is clicked.
         /// </summary>
         [RelayCommand]
