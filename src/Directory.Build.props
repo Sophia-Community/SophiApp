@@ -1,0 +1,20 @@
+<Project>
+    <ItemGroup Condition="'$(UseStyleCop)' == 'true'">
+        <PackageReference Include="StyleCop.Analyzers"
+                          Version="1.1.118"
+                          PrivateAssets="all"
+                          Condition="$(MSBuildProjectExtension) == '.csproj'" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(UseSonarAnalyzer)' == 'true'">
+        <PackageReference Include="SonarAnalyzer.CSharp"
+                          Version="9.2.0.71021"
+                          PrivateAssets="all"
+                          Condition="$(MSBuildProjectExtension) == '.csproj'" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(UseResults)' == 'true'">
+        <PackageReference Include="CSharpFunctionalExtensions"
+                          Version="2.39.0"
+                          PrivateAssets="all"
+                          Condition="$(MSBuildProjectExtension) == '.csproj'" />
+    </ItemGroup>
+</Project>
