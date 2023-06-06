@@ -1,4 +1,8 @@
-﻿namespace SophiApp.Models;
+﻿// <copyright file="LocalSettingsOptions.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Models;
 
 public class LocalSettingsOptions
 {

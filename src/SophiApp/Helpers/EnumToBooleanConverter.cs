@@ -1,7 +1,10 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Data;
+﻿// <copyright file="EnumToBooleanConverter.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Helpers;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Data;
 
 public class EnumToBooleanConverter : IValueConverter
 {

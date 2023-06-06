@@ -1,12 +1,16 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿// <copyright file="ShellViewModel.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
+namespace SophiApp.ViewModels;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Navigation;
-
 using SophiApp.Contracts.Services;
 using SophiApp.Views;
 
-namespace SophiApp.ViewModels;
-
+/// <summary>
+/// Implements the <see cref="ShellViewModel"/> class.
+/// </summary>
 public partial class ShellViewModel : ObservableRecipient
 {
     [ObservableProperty]
@@ -14,6 +18,16 @@ public partial class ShellViewModel : ObservableRecipient
 
     [ObservableProperty]
     private object? selected;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
+    /// </summary>
+    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
+    {
+        NavigationService = navigationService;
+        NavigationService.Navigated += OnNavigated;
+        NavigationViewService = navigationViewService;
+    }
 
     public INavigationService NavigationService
     {
@@ -23,13 +37,6 @@ public partial class ShellViewModel : ObservableRecipient
     public INavigationViewService NavigationViewService
     {
         get;
-    }
-
-    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
-    {
-        NavigationService = navigationService;
-        NavigationService.Navigated += OnNavigated;
-        NavigationViewService = navigationViewService;
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)

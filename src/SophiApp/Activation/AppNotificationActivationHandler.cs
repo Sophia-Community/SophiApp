@@ -1,22 +1,22 @@
-﻿using Microsoft.UI.Dispatching;
-using Microsoft.UI.Xaml;
-using Microsoft.Windows.AppLifecycle;
-using Microsoft.Windows.AppNotifications;
-
-using SophiApp.Contracts.Services;
-using SophiApp.ViewModels;
+﻿// <copyright file="AppNotificationActivationHandler.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Activation;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Xaml;
+using Microsoft.Windows.AppLifecycle;
+using SophiApp.Contracts.Services;
 
 public class AppNotificationActivationHandler : ActivationHandler<LaunchActivatedEventArgs>
 {
-    private readonly INavigationService _navigationService;
-    private readonly IAppNotificationService _notificationService;
+    private readonly INavigationService navigationService;
+    private readonly IAppNotificationService notificationService;
 
     public AppNotificationActivationHandler(INavigationService navigationService, IAppNotificationService notificationService)
     {
-        _navigationService = navigationService;
-        _notificationService = notificationService;
+        this.navigationService = navigationService;
+        this.notificationService = notificationService;
     }
 
     protected override bool CanHandleInternal(LaunchActivatedEventArgs args)

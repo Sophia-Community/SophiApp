@@ -1,10 +1,13 @@
-﻿using System.Text;
+﻿// <copyright file="FileService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Core.Services;
+using System.Text;
 
 using Newtonsoft.Json;
 
 using SophiApp.Core.Contracts.Services;
-
-namespace SophiApp.Core.Services;
 
 public class FileService : IFileService
 {

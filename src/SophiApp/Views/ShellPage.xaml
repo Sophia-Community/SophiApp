@@ -15,7 +15,7 @@
               Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
               IsHitTestVisible="True"
               VerticalAlignment="Top">
-            <Image Source="/Assets/WindowIcon.ico"
+            <Image Source="/Assets/SophiApp.ico"
                    HorizontalAlignment="Left"
                    Width="16"
                    Height="16" />
@@ -28,6 +28,7 @@
         <NavigationView
             x:Name="NavigationViewControl"
             Canvas.ZIndex="0"
+            IsPaneToggleButtonVisible="False"
             IsBackButtonVisible="Visible"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"

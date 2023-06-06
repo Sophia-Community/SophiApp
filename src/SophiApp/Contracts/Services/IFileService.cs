@@ -1,4 +1,8 @@
-﻿namespace SophiApp.Core.Contracts.Services;
+﻿// <copyright file="IFileService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Core.Contracts.Services;
 
 public interface IFileService
 {

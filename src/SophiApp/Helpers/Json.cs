@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿// <copyright file="Json.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Core.Helpers;
+using Newtonsoft.Json;
 
 public static class Json
 {

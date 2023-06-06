@@ -1,9 +1,12 @@
-﻿using SophiApp.Core.Helpers;
+﻿// <copyright file="SettingsStorageExtensions.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Helpers;
+using SophiApp.Core.Helpers;
 
 using Windows.Storage;
 using Windows.Storage.Streams;
-
-namespace SophiApp.Helpers;
 
 // Use these extension methods to store and retrieve local and roaming app data
 // More details regarding storing and retrieving app data at https://docs.microsoft.com/windows/apps/design/app-settings/store-and-retrieve-app-data

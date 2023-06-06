@@ -1,4 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿// <copyright file="NavigationViewService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Services;
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.UI.Xaml.Controls;
 
@@ -6,60 +11,63 @@ using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
 using SophiApp.ViewModels;
 
-namespace SophiApp.Services;
-
 public class NavigationViewService : INavigationViewService
 {
-    private readonly INavigationService _navigationService;
+    private readonly INavigationService navigationService;
 
-    private readonly IPageService _pageService;
+    private readonly IPageService pageService;
 
-    private NavigationView? _navigationView;
+    private NavigationView? navigationView;
 
-    public IList<object>? MenuItems => _navigationView?.MenuItems;
-
-    public object? SettingsItem => _navigationView?.SettingsItem;
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="NavigationViewService"/> class.
+    /// </summary>
+    /// <param name="navigationService"><inheritdoc/></param>
+    /// <param name="pageService"><inheritdoc/></param>
     public NavigationViewService(INavigationService navigationService, IPageService pageService)
     {
-        _navigationService = navigationService;
-        _pageService = pageService;
+        this.navigationService = navigationService;
+        this.pageService = pageService;
     }
 
-    [MemberNotNull(nameof(_navigationView))]
+    public IList<object>? MenuItems => navigationView?.MenuItems;
+
+    public object? SettingsItem => navigationView?.SettingsItem;
+
+    [MemberNotNull(nameof(NavigationViewService.navigationView))]
     public void Initialize(NavigationView navigationView)
     {
-        _navigationView = navigationView;
-        _navigationView.BackRequested += OnBackRequested;
-        _navigationView.ItemInvoked += OnItemInvoked;
+        this.navigationView = navigationView;
+        this.navigationView.BackRequested += OnBackRequested;
+        this.navigationView.ItemInvoked += OnItemInvoked;
     }
 
     public void UnregisterEvents()
     {
-        if (_navigationView != null)
+        if (navigationView != null)
         {
-            _navigationView.BackRequested -= OnBackRequested;
-            _navigationView.ItemInvoked -= OnItemInvoked;
+            navigationView.BackRequested -= OnBackRequested;
+            navigationView.ItemInvoked -= OnItemInvoked;
         }
     }
 
     public NavigationViewItem? GetSelectedItem(Type pageType)
     {
-        if (_navigationView != null)
+        if (navigationView != null)
         {
-            return GetSelectedItem(_navigationView.MenuItems, pageType) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType);
+            return GetSelectedItem(navigationView.MenuItems, pageType) ?? GetSelectedItem(navigationView.FooterMenuItems, pageType);
         }
 
         return null;
     }
 
-    private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => _navigationService.GoBack();
+    private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => navigationService.GoBack();
 
     private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
     {
         if (args.IsSettingsInvoked)
         {
-            _navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
+            navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
         }
         else
         {
@@ -67,7 +75,7 @@ public class NavigationViewService : INavigationViewService
 
             if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
             {
-                _navigationService.NavigateTo(pageKey);
+                navigationService.NavigateTo(pageKey);
             }
         }
     }
@@ -95,7 +103,7 @@ public class NavigationViewService : INavigationViewService
     {
         if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
         {
-            return _pageService.GetPageType(pageKey) == sourcePageType;
+            return pageService.GetPageType(pageKey) == sourcePageType;
         }
 
         return false;

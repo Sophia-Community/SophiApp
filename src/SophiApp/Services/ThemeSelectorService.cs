@@ -1,22 +1,27 @@
-﻿using Microsoft.UI.Xaml;
-
-using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
+﻿// <copyright file="ThemeSelectorService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Services;
+using Microsoft.UI.Xaml;
+using SophiApp.Contracts.Services;
+using SophiApp.Helpers;
 
 public class ThemeSelectorService : IThemeSelectorService
 {
     private const string SettingsKey = "AppBackgroundRequestedTheme";
+    private readonly ILocalSettingsService localSettingsService;
 
-    public ElementTheme Theme { get; set; } = ElementTheme.Default;
-
-    private readonly ILocalSettingsService _localSettingsService;
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ThemeSelectorService"/> class.
+    /// </summary>
+    /// <param name="localSettingsService"><inheritdoc/></param>
     public ThemeSelectorService(ILocalSettingsService localSettingsService)
     {
-        _localSettingsService = localSettingsService;
+        this.localSettingsService = localSettingsService;
     }
+
+    public ElementTheme Theme { get; set; } = ElementTheme.Default;
 
     public async Task InitializeAsync()
     {
@@ -46,7 +51,7 @@ public class ThemeSelectorService : IThemeSelectorService
 
     private async Task<ElementTheme> LoadThemeFromSettingsAsync()
     {
-        var themeName = await _localSettingsService.ReadSettingAsync<string>(SettingsKey);
+        var themeName = await localSettingsService.ReadSettingAsync<string>(SettingsKey);
 
         if (Enum.TryParse(themeName, out ElementTheme cacheTheme))
         {
@@ -58,6 +63,6 @@ public class ThemeSelectorService : IThemeSelectorService
 
     private async Task SaveThemeInSettingsAsync(ElementTheme theme)
     {
-        await _localSettingsService.SaveSettingAsync(SettingsKey, theme.ToString());
+        await localSettingsService.SaveSettingAsync(SettingsKey, theme.ToString());
     }
 }

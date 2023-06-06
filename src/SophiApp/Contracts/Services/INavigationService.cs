@@ -1,7 +1,10 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
+﻿// <copyright file="INavigationService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Contracts.Services;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 public interface INavigationService
 {

@@ -1,6 +1,9 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿// <copyright file="FrameExtensions.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Helpers;
+using Microsoft.UI.Xaml.Controls;
 
 public static class FrameExtensions
 {

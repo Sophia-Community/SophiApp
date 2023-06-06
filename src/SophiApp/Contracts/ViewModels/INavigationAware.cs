@@ -1,4 +1,8 @@
-﻿namespace SophiApp.Contracts.ViewModels;
+﻿// <copyright file="INavigationAware.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.Contracts.ViewModels;
 
 public interface INavigationAware
 {

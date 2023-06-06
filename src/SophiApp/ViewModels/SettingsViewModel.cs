@@ -1,38 +1,39 @@
-﻿using System.Reflection;
-using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-
-using Microsoft.UI.Xaml;
-
-using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
-
-using Windows.ApplicationModel;
+﻿// <copyright file="SettingsViewModel.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.ViewModels;
+using System.Reflection;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml;
+using SophiApp.Contracts.Services;
+using SophiApp.Helpers;
+using Windows.ApplicationModel;
 
+/// <summary>
+/// Implements the <see cref="SettingsViewModel"/> class.
+/// </summary>
 public partial class SettingsViewModel : ObservableRecipient
 {
-    private readonly IThemeSelectorService _themeSelectorService;
+    private readonly IThemeSelectorService themeSelectorService;
 
     [ObservableProperty]
-    private ElementTheme _elementTheme;
+    private ElementTheme elementTheme;
 
     [ObservableProperty]
-    private string _versionDescription;
+    private string versionDescription;
 
-    public ICommand SwitchThemeCommand
-    {
-        get;
-    }
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
+    /// </summary>
+    /// <param name="themeSelectorService"><inheritdoc/></param>
     public SettingsViewModel(IThemeSelectorService themeSelectorService)
     {
-        _themeSelectorService = themeSelectorService;
-        _elementTheme = _themeSelectorService.Theme;
-        _versionDescription = GetVersionDescription();
+        this.themeSelectorService = themeSelectorService;
+        elementTheme = this.themeSelectorService.Theme;
+        versionDescription = GetVersionDescription();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
@@ -40,9 +41,14 @@ public partial class SettingsViewModel : ObservableRecipient
                 if (ElementTheme != param)
                 {
                     ElementTheme = param;
-                    await _themeSelectorService.SetThemeAsync(param);
+                    await this.themeSelectorService.SetThemeAsync(param);
                 }
             });
+    }
+
+    public ICommand SwitchThemeCommand
+    {
+        get;
     }
 
     private static string GetVersionDescription()
@@ -53,7 +59,7 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             var packageVersion = Package.Current.Id.Version;
 
-            version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
+            version = new (packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
         }
         else
         {

@@ -1,50 +1,54 @@
-﻿using Microsoft.Extensions.Options;
+﻿// <copyright file="LocalSettingsService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
+namespace SophiApp.Services;
+using Microsoft.Extensions.Options;
 using SophiApp.Contracts.Services;
 using SophiApp.Core.Contracts.Services;
 using SophiApp.Core.Helpers;
 using SophiApp.Helpers;
 using SophiApp.Models;
-
-using Windows.ApplicationModel;
 using Windows.Storage;
-
-namespace SophiApp.Services;
 
 public class LocalSettingsService : ILocalSettingsService
 {
-    private const string _defaultApplicationDataFolder = "SophiApp/ApplicationData";
-    private const string _defaultLocalSettingsFile = "LocalSettings.json";
+    private const string defaultApplicationDataFolder = "SophiApp/ApplicationData";
+    private const string defaultLocalSettingsFile = "LocalSettings.json";
 
-    private readonly IFileService _fileService;
-    private readonly LocalSettingsOptions _options;
+    private readonly IFileService fileService;
+    private readonly LocalSettingsOptions options;
 
-    private readonly string _localApplicationData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-    private readonly string _applicationDataFolder;
-    private readonly string _localsettingsFile;
+    private readonly string localApplicationData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+    private readonly string applicationDataFolder;
+    private readonly string localsettingsFile;
 
-    private IDictionary<string, object> _settings;
+    private IDictionary<string, object> settings;
 
-    private bool _isInitialized;
+    private bool isInitialized;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LocalSettingsService"/> class.
+    /// </summary>
+    /// <param name="fileService"><inheritdoc/></param>
+    /// <param name="options">Used to retrieve configured <see cref="IOptions{TOptions}"/> instances.</param>
     public LocalSettingsService(IFileService fileService, IOptions<LocalSettingsOptions> options)
     {
-        _fileService = fileService;
-        _options = options.Value;
+        this.fileService = fileService;
+        this.options = options.Value;
 
-        _applicationDataFolder = Path.Combine(_localApplicationData, _options.ApplicationDataFolder ?? _defaultApplicationDataFolder);
-        _localsettingsFile = _options.LocalSettingsFile ?? _defaultLocalSettingsFile;
+        applicationDataFolder = Path.Combine(localApplicationData, this.options.ApplicationDataFolder ?? defaultApplicationDataFolder);
+        localsettingsFile = this.options.LocalSettingsFile ?? defaultLocalSettingsFile;
 
-        _settings = new Dictionary<string, object>();
+        settings = new Dictionary<string, object>();
     }
 
     private async Task InitializeAsync()
     {
-        if (!_isInitialized)
+        if (!isInitialized)
         {
-            _settings = await Task.Run(() => _fileService.Read<IDictionary<string, object>>(_applicationDataFolder, _localsettingsFile)) ?? new Dictionary<string, object>();
-
-            _isInitialized = true;
+            settings = await Task.Run(() => fileService.Read<IDictionary<string, object>>(applicationDataFolder, localsettingsFile)) ?? new Dictionary<string, object>();
+            isInitialized = true;
         }
     }
 
@@ -61,7 +65,7 @@ public class LocalSettingsService : ILocalSettingsService
         {
             await InitializeAsync();
 
-            if (_settings != null && _settings.TryGetValue(key, out var obj))
+            if (settings != null && settings.TryGetValue(key, out var obj))
             {
                 return await Json.ToObjectAsync<T>((string)obj);
             }
@@ -80,9 +84,9 @@ public class LocalSettingsService : ILocalSettingsService
         {
             await InitializeAsync();
 
-            _settings[key] = await Json.StringifyAsync(value);
+            settings[key] = await Json.StringifyAsync(value);
 
-            await Task.Run(() => _fileService.Save(_applicationDataFolder, _localsettingsFile, _settings));
+            await Task.Run(() => fileService.Save(applicationDataFolder, localsettingsFile, settings));
         }
     }
 }

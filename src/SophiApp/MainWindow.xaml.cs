@@ -1,15 +1,24 @@
-﻿using SophiApp.Helpers;
+﻿// <copyright file="MainWindow.xaml.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp;
+using SophiApp.Helpers;
 
 using Windows.UI.ViewManagement;
 
-namespace SophiApp;
-
+/// <summary>
+/// Implements the <see cref="MainWindow"/> class.
+/// </summary>
 public sealed partial class MainWindow : WindowEx
 {
     private Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
 
     private UISettings settings;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainWindow"/> class.
+    /// </summary>
     public MainWindow()
     {
         InitializeComponent();
@@ -24,11 +33,13 @@ public sealed partial class MainWindow : WindowEx
         settings.ColorValuesChanged += Settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event
     }
 
-    // this handles updating the caption button colors correctly when indows system theme is changed
-    // while the app is open
+    /// <summary>
+    /// This handles updating the caption button colors correctly when indows system theme is changed while the app is open.
+    /// </summary>
+    /// <param name="sender">Contains a set of common app user interface settings and operations.</param>
+    /// <param name="args">Arguments passed to the method.</param>
     private void Settings_ColorValuesChanged(UISettings sender, object args)
     {
-        // This calls comes off-thread, hence we will need to dispatch it to current app's thread
         dispatcherQueue.TryEnqueue(() =>
         {
             TitleBarHelper.ApplySystemThemeToCaptionButtons();

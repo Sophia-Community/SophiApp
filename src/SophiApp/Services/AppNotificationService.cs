@@ -1,22 +1,29 @@
-﻿using System.Collections.Specialized;
-using System.Web;
-
-using Microsoft.Windows.AppNotifications;
-
-using SophiApp.Contracts.Services;
-using SophiApp.ViewModels;
+﻿// <copyright file="AppNotificationService.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
 
 namespace SophiApp.Notifications;
+using System.Collections.Specialized;
+using System.Web;
+using Microsoft.Windows.AppNotifications;
+using SophiApp.Contracts.Services;
 
 public class AppNotificationService : IAppNotificationService
 {
-    private readonly INavigationService _navigationService;
+    private readonly INavigationService navigationService;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AppNotificationService"/> class.
+    /// </summary>
+    /// <param name="navigationService"><inheritdoc/></param>
     public AppNotificationService(INavigationService navigationService)
     {
-        _navigationService = navigationService;
+        this.navigationService = navigationService;
     }
 
+    /// <summary>
+    /// Finalizes an instance of the <see cref="AppNotificationService"/> class.
+    /// </summary>
     ~AppNotificationService()
     {
         Unregister();
