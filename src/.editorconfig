@@ -1,4 +1,4 @@
-[*.cs]
+﻿[*.cs]
 
 # S1144: Unused private types or members should be removed
 dotnet_diagnostic.S1144.severity = warning
@@ -118,10 +118,13 @@ dotnet_diagnostic.SA1515.severity = error
 # SA1309: Field names must not begin with underscore
 dotnet_diagnostic.SA1309.severity = error
 
-[*.cs]
-#### Стили именования ####
+# S1481: Unused local variables should be removed
+dotnet_diagnostic.S1481.severity = warning
 
-# Правила именования
+[*.cs]
+#### Naming Styles ####
+
+# Naming rules
 
 dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
 dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
@@ -135,7 +138,7 @@ dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
 dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
 dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
 
-# Спецификации символов
+# Character Specifications
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
@@ -149,7 +152,7 @@ dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, meth
 dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
 dotnet_naming_symbols.non_field_members.required_modifiers = 
 
-# Стили именования
+# Naming Styles
 
 dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.required_suffix = 
@@ -183,9 +186,9 @@ dotnet_diagnostic.SA1204.severity = error
 dotnet_diagnostic.SA1303.severity = suggestion
 
 [*.vb]
-#### Стили именования ####
+#### Naming Styles ####
 
-# Правила именования
+# Naming rules
 
 dotnet_naming_rule.interface_should_be_начинается_с_i.severity = suggestion
 dotnet_naming_rule.interface_should_be_начинается_с_i.symbols = interface
@@ -199,7 +202,7 @@ dotnet_naming_rule.не_являющиеся_полем_члены_should_be_в�
 dotnet_naming_rule.не_являющиеся_полем_члены_should_be_всечастиспрописнойбуквы.symbols = не_являющиеся_полем_члены
 dotnet_naming_rule.не_являющиеся_полем_члены_should_be_всечастиспрописнойбуквы.style = всечастиспрописнойбуквы
 
-# Спецификации символов
+# Character Specifications
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
@@ -213,7 +216,7 @@ dotnet_naming_symbols.не_являющиеся_полем_члены.applicable
 dotnet_naming_symbols.не_являющиеся_полем_члены.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
 dotnet_naming_symbols.не_являющиеся_полем_члены.required_modifiers = 
 
-# Стили именования
+# Naming Styles
 
 dotnet_naming_style.начинается_с_i.required_prefix = I
 dotnet_naming_style.начинается_с_i.required_suffix = 

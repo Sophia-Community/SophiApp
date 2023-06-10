@@ -16,5 +16,4 @@
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
-
 </ResourceDictionary>
