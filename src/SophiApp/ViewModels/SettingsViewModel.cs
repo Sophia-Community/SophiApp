@@ -46,6 +46,9 @@ public partial class SettingsViewModel : ObservableRecipient
             });
     }
 
+    /// <summary>
+    /// Gets app theme switch command.
+    /// </summary>
     public ICommand SwitchThemeCommand
     {
         get;
