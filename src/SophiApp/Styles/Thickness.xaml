@@ -23,13 +23,13 @@
     <Thickness x:Key="XXSmallTopMargin">0,4,0,0</Thickness>
     <Thickness x:Key="XXSmallLeftTopRightBottomMargin">4,4,4,4</Thickness>
 
-    <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
+    <Thickness x:Key="NavigationViewContentGridBorderThickness">0,0,0,0</Thickness>
     <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
-    <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
-    <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
-    <Thickness x:Key="NavigationViewPageContentMargin">56,24,56,0</Thickness>
+    <Thickness x:Key="NavigationViewContentMargin">5,33,0,0</Thickness>
+    <Thickness x:Key="NavigationViewHeaderMargin">32,22,0,0</Thickness>
+    <Thickness x:Key="NavigationViewPageContentMargin">32,12,0,0</Thickness>
 
     <Thickness x:Key="MenuBarContentMargin">36,24,36,0</Thickness>
 
-    <Thickness x:Key="SettingsPageHyperlinkButtonMargin">-12,4,0,0</Thickness>    
+    <Thickness x:Key="SettingsPageHyperlinkButtonMargin">-12,4,0,0</Thickness>
 </ResourceDictionary>

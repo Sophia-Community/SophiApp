@@ -6,19 +6,19 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush x:Key="WindowForegroundNormal" Color="#F5F5F5" />
-            <SolidColorBrush x:Key="WindowBackgroundNormal" Color="#232735" Opacity="0.55" />
-            <SolidColorBrush x:Key="WindowContentBackground" Color="#232735" Opacity="0.85" />
+            <SolidColorBrush x:Key="WindowBackgroundNormal" Color="#232735" Opacity="0.40" />
             <SolidColorBrush x:Key="WindowAccentNormal" Color="#4CC2FF" />
             <SolidColorBrush x:Key="WindowUnaccentedNormal" Color="#BCBCBC" />
+            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#232735" Opacity="0.85" />
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#4CC2FF" />
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Light">
             <SolidColorBrush x:Key="WindowForegroundNormal" Color="#222222" />
             <SolidColorBrush x:Key="WindowBackgroundNormal" Color="#FCFCFC" Opacity="0.55" />
-            <SolidColorBrush x:Key="WindowContentBackground" Color="#FCFCFC" Opacity="0.85" />
             <SolidColorBrush x:Key="WindowAccentNormal" Color="#0078D4" />
             <SolidColorBrush x:Key="WindowUnaccentedNormal" Color="#BCBCBC" />
+            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#FCFCFC" Opacity="0.85" />
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#0078D4" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>

@@ -22,6 +22,7 @@
     <UseStyleCop>true</UseStyleCop>
     <UseSonarAnalyzer>true</UseSonarAnalyzer>
     <UseResults>true</UseResults>
+    <IsPublishable>True</IsPublishable>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Styles\Themes.xaml" />

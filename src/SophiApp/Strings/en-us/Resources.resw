@@ -145,7 +145,7 @@
     <value>ContextMenu</value>
   </data>
   <data name="Shell_ProVersion.Content" xml:space="preserve">
-    <value>ProVersion</value>
+    <value>Pro</value>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>

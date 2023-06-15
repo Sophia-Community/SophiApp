@@ -257,3 +257,7 @@ end_of_line = crlf
 
 # SA1503: Braces should not be omitted
 dotnet_diagnostic.SA1503.severity = error
+
+
+# SA1513: Closing brace should be followed by blank line
+dotnet_diagnostic.SA1513.severity = error
