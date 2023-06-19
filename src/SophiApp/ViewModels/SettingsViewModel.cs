@@ -3,14 +3,12 @@
 // </copyright>
 
 namespace SophiApp.ViewModels;
-using System.Reflection;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
-using Windows.ApplicationModel;
 
 /// <summary>
 /// Implements the <see cref="SettingsViewModel"/> class.
@@ -18,6 +16,9 @@ using Windows.ApplicationModel;
 public partial class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemeSelectorService themeSelectorService;
+
+    [ObservableProperty]
+    private string buildName;
 
     [ObservableProperty]
     private ElementTheme elementTheme;
@@ -32,8 +33,9 @@ public partial class SettingsViewModel : ObservableRecipient
     public SettingsViewModel(IThemeSelectorService themeSelectorService)
     {
         this.themeSelectorService = themeSelectorService;
+        buildName = "Daria";
         elementTheme = this.themeSelectorService.Theme;
-        versionDescription = GetVersionDescription();
+        versionDescription = "SophiApp |";
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>
@@ -52,23 +54,5 @@ public partial class SettingsViewModel : ObservableRecipient
     public ICommand SwitchThemeCommand
     {
         get;
-    }
-
-    private static string GetVersionDescription()
-    {
-        Version version;
-
-        if (RuntimeHelper.IsMSIX)
-        {
-            var packageVersion = Package.Current.Id.Version;
-
-            version = new (packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
-        }
-        else
-        {
-            version = Assembly.GetExecutingAssembly().GetName().Version!;
-        }
-
-        return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
 }

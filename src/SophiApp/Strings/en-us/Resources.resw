@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>SophiApp</value>
-  </data>
-  <data name="AppDescription" xml:space="preserve">
-    <value>SophiApp</value>
-  </data>
   <data name="Shell_Privacy.Content" xml:space="preserve">
     <value>Privacy</value>
   </data>
@@ -190,5 +184,11 @@
   </data>
   <data name="Shell_Settings.Content" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>SophiApp</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>SophiApp</value>
   </data>
 </root>

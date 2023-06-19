@@ -184,6 +184,7 @@ csharp_space_around_binary_operators = before_and_after
 dotnet_diagnostic.SA1413.severity = error
 dotnet_diagnostic.SA1204.severity = error
 dotnet_diagnostic.SA1303.severity = suggestion
+dotnet_diagnostic.SA1625.severity = silent
 
 [*.vb]
 #### Naming Styles ####

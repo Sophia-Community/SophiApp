@@ -22,6 +22,9 @@ using SophiApp.Views;
 /// </summary>
 public partial class App : Application
 {
+    /// <summary>
+    /// Implements methods and properties of the app.
+    /// </summary>
     public App()
     {
         InitializeComponent();
@@ -41,14 +44,13 @@ public partial class App : Application
             services.AddSingleton<IAppNotificationService, AppNotificationService>();
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-            services.AddTransient<INavigationViewService, NavigationViewService>();
-
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
-
-            // Core Services
             services.AddSingleton<IFileService, FileService>();
+
+            services.AddTransient<INavigationViewService, NavigationViewService>();
+            services.AddTransient<IAppContextService, AppContextService>();
 
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();
@@ -77,29 +79,34 @@ public partial class App : Application
         }).
         Build();
 
-        App.GetService<IAppNotificationService>().Initialize();
+        GetService<IAppNotificationService>().Initialize();
 
         UnhandledException += App_UnhandledException;
     }
 
+    /// <summary>
+    /// Gets app main window.
+    /// </summary>
     public static WindowEx MainWindow { get; } = new MainWindow();
 
     public static UIElement? AppTitlebar { get; set; }
 
-    // The .NET Generic Host provides dependency injection, configuration, logging, and other services.
-    // https://docs.microsoft.com/dotnet/core/extensions/generic-host
-    // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
-    // https://docs.microsoft.com/dotnet/core/extensions/configuration
-    // https://docs.microsoft.com/dotnet/core/extensions/logging
+    /// <summary>
+    /// Gets <see cref="IHost"/>.
+    /// </summary>
     public IHost Host
     {
         get;
     }
 
+    /// <summary>
+    /// Gets app service.
+    /// </summary>
+    /// <typeparam name="T">Service type.</typeparam>
     public static T GetService<T>()
         where T : class
     {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App) !.Host.Services.GetService(typeof(T)) is not T service)
         {
             throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }

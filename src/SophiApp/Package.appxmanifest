@@ -12,8 +12,8 @@
 
   <Identity
     Name="6b1d04af-6183-4d18-9eb9-9e3ce0848634"
-    Publisher="CN=Dart Wader"
-    Version="1.0.0.0" />
+    Publisher="CN=Inestic"
+    Version="2.0.0.0" />
     
   <mp:PhoneIdentity PhoneProductId="6b1d04af-6183-4d18-9eb9-9e3ce0848634" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
     

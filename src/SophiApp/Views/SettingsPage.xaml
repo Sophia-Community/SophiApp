@@ -52,7 +52,15 @@
             <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
             <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+
+                <TextBlock Text="{x:Bind ViewModel.BuildName, Mode=OneWay}"
+                           Style="{ThemeResource BodyTextBlockStyle}"
+                           Margin="5, 0, 0, 0"
+                           Foreground="{ThemeResource WindowAccentNormal}"/>
+                </StackPanel>
 
                 <TextBlock
                     x:Uid="Settings_AboutDescription"

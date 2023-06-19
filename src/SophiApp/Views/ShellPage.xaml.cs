@@ -21,7 +21,8 @@ public sealed partial class ShellPage : Page
     /// Initializes a new instance of the <see cref="ShellPage"/> class.
     /// </summary>
     /// <param name="viewModel"><inheritdoc/></param>
-    public ShellPage(ShellViewModel viewModel)
+    /// <param name="appContext"><inheritdoc/></param>
+    public ShellPage(ShellViewModel viewModel, IAppContextService appContext)
     {
         ViewModel = viewModel;
         InitializeComponent();
@@ -29,11 +30,10 @@ public sealed partial class ShellPage : Page
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationViewService.Initialize(NavigationViewControl);
 
-        // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
-        AppTitleBarText.Text = "AppDisplayName".GetLocalized();
+        AppTitleBarText.Text = appContext.GetFullName();
     }
 
     /// <summary>
