@@ -17,7 +17,7 @@ public static class Json
 
     public static async Task<string> StringifyAsync(object value)
     {
-        return await Task.Run<string>(() =>
+        return await Task.Run(() =>
         {
             return JsonConvert.SerializeObject(value);
         });

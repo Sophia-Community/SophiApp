@@ -9,14 +9,14 @@ using SophiApp.Helpers;
 
 public class ThemeSelectorService : IThemeSelectorService
 {
-    private const string SettingsKey = "AppBackgroundRequestedTheme";
-    private readonly ILocalSettingsService localSettingsService;
+    private const string SettingsKey = "AppTheme";
+    private readonly ISettingsService localSettingsService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ThemeSelectorService"/> class.
     /// </summary>
     /// <param name="localSettingsService"><inheritdoc/></param>
-    public ThemeSelectorService(ILocalSettingsService localSettingsService)
+    public ThemeSelectorService(ISettingsService localSettingsService)
     {
         this.localSettingsService = localSettingsService;
     }

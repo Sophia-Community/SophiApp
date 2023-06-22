@@ -48,9 +48,6 @@
     <PackageReference Include="WinUIEx" Version="2.2" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Page Update="Styles\Themes.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
