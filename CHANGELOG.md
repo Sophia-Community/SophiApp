@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Updated Italian, German translations;
   * Thanks to @bovirus and @sensinsane.
-* Fixed URL fro AntiAapret (capable for Russian region only).
+* Fixed URL for AntiZapret (capable for Russian region only).
 
 ## 1.0.94 — 31.01.2023
 
