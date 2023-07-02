@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.95 — 02.07.2023
+
+* Updated Italian, German translations;
+  * Thanks to @bovirus and @sensinsane.
+* Fixed URL fro AntiAapret (capable for Russian region only).
+
 ## 1.0.94 — 31.01.2023
 
 * Updated description for disabling DiagTrack service;
