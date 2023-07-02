@@ -34,7 +34,7 @@ namespace SophiApp.Customisations
 
             diagTrack.Stop();
             ServiceHelper.SetStartMode(diagTrack, ServiceStartMode.Disabled);
-            firewallRule.Enabled = false;
+            firewallRule.Enabled = true;
             firewallRule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
         }
 

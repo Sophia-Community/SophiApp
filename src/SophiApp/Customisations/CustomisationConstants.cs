@@ -215,7 +215,7 @@ namespace SophiApp.Customisations
         internal const string VC_UNINSTALL_ARGS = "/uninstall /passive /norestart";
         internal const int _359_RUSSIA_GEOID = 203;
         internal const string _359_INTERNET_SETTINGS_PATH = @"Software\Microsoft\Windows\CurrentVersion\Internet Settings";
-        internal const string _359_ANTIZAPRET_PROXY_LINK = @"https://antizapret.prostovpn.org/proxy.pac";
+        internal const string _359_ANTIZAPRET_PROXY_LINK = @"https://antizapret.prostovpn.org:8443/proxy.pac";
         internal const string _359_AUTO_CONFIG_URL = "AutoConfigURL";
         internal const string _362_REDISTRX86_REGISTRY_NAME_PATTERN = "VC,redist.x86,x86";
         internal const string _362_VC_REDISTRX86_NAME_PATTERN = "Microsoft Visual C++ 2015-2022 Redistributable (x86)";
