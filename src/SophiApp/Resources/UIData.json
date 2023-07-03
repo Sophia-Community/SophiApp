@@ -4841,7 +4841,7 @@
                        "CZ":  "Nejnovější balíčky Microsoft Visual C++ Redistributable 2015–2022 x64",
                        "FR":  "Les derniers packages redistribuables Microsoft Visual C++ 2015–2022 x64",
                        "zh_CN":  "最新的 Microsoft Visual C++ Redistributable Packages 2015–2022 x64",
-                       "ES":  "Los ultimos paquetes redistribuibles de Microsoft Visual C++ 2015â2022 x64",
+                       "ES":  "Los ultimos paquetes redistribuibles de Microsoft Visual C++ 2015–2022 x64",
                        "PL":  "Najnowsze pakiety Microsoft Visual C++ 2015–2022 x64"
                    },
         "Description":  {
@@ -4854,7 +4854,7 @@
                             "CZ":  "Balíčky Microsoft Visual C++ Redistributable 2015–2022 x64 budou staženy z úložiště Microsoft (vyžadováno připojení k internetu) a nainstalovány na pozadí. Verze programu Visual Studio od verze Visual Studio 2015 sdílí stejné redistribuovatelné soubory.",
                             "FR":  "Les packages redistribuables Microsoft Visual C++ 2015–2022 x64 seront téléchargés à partir de la ressource Microsoft (connexion internet requise) et installés en mode silencieux. Les versions de Visual Studio depuis Visual Studio 2015 partagent les mêmes fichiers redistribuables.",
                             "zh_CN":  "Microsoft Visual C++ Redistributable Packages 2015–2022 x64 将从 Microsoft 资源（需要 Internet 连接）下载并静默安装。 自 Visual Studio 2015 起的 Visual Studio 版本共享相同的可再发行文件。",
-                            "ES":  "Los paquetes redistribuibles de Microsoft Visual C++ 2015â2022 x64 se descargaran del recurso de Microsoft (se requiere conexion a Internet) y se instalaran de forma silenciosa. Las versiones de Visual Studio desde Visual Studio 2015 comparten los mismos archivos redistribuibles.",
+                            "ES":  "Los paquetes redistribuibles de Microsoft Visual C++ 2015–2022 x64 se descargaran del recurso de Microsoft (se requiere conexion a Internet) y se instalaran de forma silenciosa. Las versiones de Visual Studio desde Visual Studio 2015 comparten los mismos archivos redistribuibles.",
                             "PL":  "Pakiety Microsoft Visual C++ 2015–2022 x64 zostaną pobrane z zasobów firmy Microsoft (wymagane połączenie internetowe) i zainstalowane w trybie w tle. Wersje programu Visual Studio od programu Visual Studio 2015 współużytkują te same pliki redystrybucyjne."
                         },
         "Type":  "MsCppPackageButtonGroup",
