@@ -86,6 +86,9 @@ public partial class App : Application
     /// </summary>
     public static WindowEx MainWindow { get; } = new MainWindow();
 
+    /// <summary>
+    /// Gets or sets app titlebar.
+    /// </summary>
     public static UIElement? AppTitlebar { get; set; }
 
     /// <summary>
@@ -103,7 +106,7 @@ public partial class App : Application
     public static T GetService<T>()
         where T : class
     {
-        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App) !.Host.Services.GetService(typeof(T)) is not T service)
         {
             throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
@@ -124,6 +127,7 @@ public partial class App : Application
         await GetService<IActivationService>()
             .ActivateAsync(args);
 
+        MainWindow.Title = Host.Services.GetService<IAppContextService>()?.GetFullName() ?? "AppDisplayName".GetLocalized();
         MainWindow.CenterOnScreen();
     }
 

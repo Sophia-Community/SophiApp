@@ -136,13 +136,10 @@
     <value>Security</value>
   </data>
   <data name="Shell_ContextMenu.Content" xml:space="preserve">
-    <value>ContextMenu</value>
+    <value>Context Menu</value>
   </data>
   <data name="Shell_ProVersion.Content" xml:space="preserve">
-    <value>Pro</value>
-  </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Pro Version</value>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
     <value>Theme</value>
@@ -154,7 +151,7 @@
     <value>Dark</value>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Default</value>
+    <value>Auto</value>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
@@ -190,5 +187,14 @@
   </data>
   <data name="AppDisplayName" xml:space="preserve">
     <value>SophiApp</value>
+  </data>
+  <data name="UserControl_ForWindows.Text" xml:space="preserve">
+    <value>for Windows®</value>
+  </data>
+  <data name="UserControl_MadeWith.Text" xml:space="preserve">
+    <value>Made with</value>
+  </data>
+  <data name="SettingsPage_ContentBlock_SelectedTheme.Title" xml:space="preserve">
+    <value>Selected theme</value>
   </data>
 </root>

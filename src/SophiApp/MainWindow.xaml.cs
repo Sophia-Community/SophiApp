@@ -4,7 +4,6 @@
 
 namespace SophiApp;
 using SophiApp.Helpers;
-
 using Windows.UI.ViewManagement;
 
 /// <summary>
@@ -13,7 +12,6 @@ using Windows.UI.ViewManagement;
 public sealed partial class MainWindow : WindowEx
 {
     private Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-
     private UISettings settings;
 
     /// <summary>
@@ -22,10 +20,8 @@ public sealed partial class MainWindow : WindowEx
     public MainWindow()
     {
         InitializeComponent();
-
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/SophiApp.ico"));
         Content = null;
-        Title = "AppDisplayName".GetLocalized();
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         settings = new UISettings();
         settings.ColorValuesChanged += Settings_ColorValuesChanged;

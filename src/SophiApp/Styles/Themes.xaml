@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SophiApp.Styles">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Dark">
-            <SolidColorBrush x:Key="WindowForegroundNormal" Color="#F5F5F5" />
-            <SolidColorBrush x:Key="WindowBackgroundNormal" Color="#232735" Opacity="0.40" />
-            <SolidColorBrush x:Key="WindowAccentNormal" Color="#4CC2FF" />
-            <SolidColorBrush x:Key="WindowUnaccentedNormal" Color="#BCBCBC" />
+            <SolidColorBrush x:Key="WindowForeground" Color="#F5F5F5" />
+            <SolidColorBrush x:Key="WindowBackground" Color="#232735" Opacity="0.40" />
+            <SolidColorBrush x:Key="WindowAccent" Color="#4CC2FF" />
+            <SolidColorBrush x:Key="WindowAccentHight" Color="#E20036" />
             <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#232735" Opacity="0.85" />
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#4CC2FF" />
+            <SolidColorBrush x:Key="ContentBlockBorder" Color="#FFFFFF" Opacity="0.10" />
+            <SolidColorBrush x:Key="ContentBlockBackground" Color="#000000" Opacity="0.24" />
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Light">
-            <SolidColorBrush x:Key="WindowForegroundNormal" Color="#222222" />
-            <SolidColorBrush x:Key="WindowBackgroundNormal" Color="#FCFCFC" Opacity="0.55" />
-            <SolidColorBrush x:Key="WindowAccentNormal" Color="#0078D4" />
-            <SolidColorBrush x:Key="WindowUnaccentedNormal" Color="#BCBCBC" />
+            <SolidColorBrush x:Key="WindowForeground" Color="#222222" />
+            <SolidColorBrush x:Key="WindowBackground" Color="#FCFCFC" Opacity="0.55" />
+            <SolidColorBrush x:Key="WindowAccent" Color="#0078D4" />
+            <SolidColorBrush x:Key="WindowAccentHight" Color="#E20036" />
             <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#FCFCFC" Opacity="0.85" />
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#0078D4" />
+            <SolidColorBrush x:Key="ContentBlockBorder" Color="#000000" Opacity="0.06" />
+            <SolidColorBrush x:Key="ContentBlockBackground" Color="#FFFFFF" Opacity="0.70" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

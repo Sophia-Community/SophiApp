@@ -4,15 +4,44 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:SophiApp.UserControls"
     xmlns:helpers="using:SophiApp.Helpers"
     xmlns:xaml="using:Microsoft.UI.Xaml"
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+        <helpers:BoolToInversionConverter x:Key="BoolToInversionConverter" />
     </Page.Resources>
     <Grid>
-        <StackPanel x:Name="ContentArea">
-            <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <StackPanel>
+            <uc:MadeForWindows/>
+            <uc:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
+                             Width="270"
+                             Height="110"
+                             HorizontalAlignment="Left">
+                <uc:ContentBlock.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton x:Uid="Settings_Theme_Light"
+                                      Style="{StaticResource ToggleButtonStyle}"
+                                      IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
+                                      IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
+                                      Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                            <ToggleButton.CommandParameter>
+                                <xaml:ElementTheme>Light</xaml:ElementTheme>
+                            </ToggleButton.CommandParameter>
+                        </ToggleButton>
+                        <ToggleButton x:Uid="Settings_Theme_Dark"
+                                      Style="{StaticResource ToggleButtonStyle}"
+                                      IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
+                                      IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
+                                      Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                            <ToggleButton.CommandParameter>
+                                <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                            </ToggleButton.CommandParameter>
+                        </ToggleButton>
+                    </StackPanel>
+                </uc:ContentBlock.Content>
+            </uc:ContentBlock>
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock x:Uid="Settings_Theme" />
                 <StackPanel Margin="{StaticResource XSmallTopMargin}">
@@ -58,8 +87,8 @@
 
                 <TextBlock Text="{x:Bind ViewModel.BuildName, Mode=OneWay}"
                            Style="{ThemeResource BodyTextBlockStyle}"
-                           Margin="5, 0, 0, 0"
-                           Foreground="{ThemeResource WindowAccentNormal}"/>
+                           Margin="5, 1, 0, 0"
+                           Foreground="{ThemeResource WindowAccent}"/>
                 </StackPanel>
 
                 <TextBlock

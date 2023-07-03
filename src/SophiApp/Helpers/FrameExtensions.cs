@@ -5,7 +5,16 @@
 namespace SophiApp.Helpers;
 using Microsoft.UI.Xaml.Controls;
 
+/// <summary>
+/// Implements <see cref="Frame"/> extensions.
+/// </summary>
 public static class FrameExtensions
 {
-    public static object? GetPageViewModel(this Frame frame) => frame?.Content?.GetType().GetProperty("ViewModel")?.GetValue(frame.Content, null);
+    /// <summary>
+    /// Returns the <see cref="Frame"/> ViewModel.
+    /// </summary>
+    /// <param name="frame">Frame for which need to get a ViewModel.</param>
+    /// <returns></returns>
+    public static object? GetPageViewModel(this Frame frame)
+        => frame?.Content?.GetType().GetProperty("ViewModel")?.GetValue(frame.Content, null);
 }
