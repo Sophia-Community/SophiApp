@@ -141,29 +141,14 @@
   <data name="Shell_ProVersion.Content" xml:space="preserve">
     <value>Pro Version</value>
   </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Theme</value>
-  </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
     <value>Light</value>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
     <value>Dark</value>
   </data>
-  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+  <data name="Settings_Theme_Auto.Content" xml:space="preserve">
     <value>Auto</value>
-  </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>TODO: Replace with your app description.</value>
-  </data>
-  <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
-  </data>
-  <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
   </data>
   <data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
@@ -195,6 +180,9 @@
     <value>Made with</value>
   </data>
   <data name="SettingsPage_ContentBlock_SelectedTheme.Title" xml:space="preserve">
-    <value>Selected theme</value>
+    <value>App themes</value>
+  </data>
+  <data name="SettingsPage_ContentBlock_AboutApp.Title" xml:space="preserve">
+    <value>About app</value>
   </data>
 </root>

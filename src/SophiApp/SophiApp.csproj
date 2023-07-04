@@ -25,6 +25,7 @@
     <IsPublishable>True</IsPublishable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\AppLogo.svg" />
     <None Remove="Styles\Generic.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="UserControls\ContentBlock.xaml" />

@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <Style TargetType="Border">
             <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="{ThemeResource ContentBlockBorder}"/>
         </Style>
     </UserControl.Resources>

@@ -8,7 +8,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
 
 /// <summary>
 /// Implements the <see cref="SettingsViewModel"/> class.

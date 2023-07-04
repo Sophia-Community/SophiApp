@@ -15,87 +15,59 @@
     <Grid>
         <StackPanel>
             <uc:MadeForWindows/>
-            <uc:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
-                             Width="270"
-                             Height="110"
-                             HorizontalAlignment="Left">
-                <uc:ContentBlock.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <ToggleButton x:Uid="Settings_Theme_Light"
+            <StackPanel Orientation="Horizontal"
+                        Height="110">
+                <uc:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
+                                 Width="365">
+                    <uc:ContentBlock.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton x:Uid="Settings_Theme_Light"
                                       Style="{StaticResource ToggleButtonStyle}"
                                       IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
                                       IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
                                       Command="{x:Bind ViewModel.SwitchThemeCommand}">
-                            <ToggleButton.CommandParameter>
-                                <xaml:ElementTheme>Light</xaml:ElementTheme>
-                            </ToggleButton.CommandParameter>
-                        </ToggleButton>
-                        <ToggleButton x:Uid="Settings_Theme_Dark"
+                                <ToggleButton.CommandParameter>
+                                    <xaml:ElementTheme>Light</xaml:ElementTheme>
+                                </ToggleButton.CommandParameter>
+                            </ToggleButton>
+                            <ToggleButton x:Uid="Settings_Theme_Dark"
                                       Style="{StaticResource ToggleButtonStyle}"
                                       IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
                                       IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
                                       Command="{x:Bind ViewModel.SwitchThemeCommand}">
-                            <ToggleButton.CommandParameter>
-                                <xaml:ElementTheme>Dark</xaml:ElementTheme>
-                            </ToggleButton.CommandParameter>
-                        </ToggleButton>
-                    </StackPanel>
-                </uc:ContentBlock.Content>
-            </uc:ContentBlock>
-            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                <TextBlock x:Uid="Settings_Theme" />
-                <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                    <RadioButton
-                        x:Uid="Settings_Theme_Light"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Light</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        x:Uid="Settings_Theme_Dark"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        x:Uid="Settings_Theme_Default"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Default</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                </StackPanel>
-            </StackPanel>
+                                <ToggleButton.CommandParameter>
+                                    <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                                </ToggleButton.CommandParameter>
+                            </ToggleButton>
+                            <ToggleButton x:Uid="Settings_Theme_Auto"
+                                      Style="{StaticResource ToggleButtonStyle}"
+                                      IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                                      IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
+                                      Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                                <ToggleButton.CommandParameter>
+                                    <xaml:ElementTheme>Default</xaml:ElementTheme>
+                                </ToggleButton.CommandParameter>
+                            </ToggleButton>
+                        </StackPanel>
+                    </uc:ContentBlock.Content>
+                </uc:ContentBlock>
+                <uc:ContentBlock x:Uid="SettingsPage_ContentBlock_AboutApp"
+                                 Width="270"
+                                 Margin="12, 0, 0, 0">
+                    <uc:ContentBlock.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/AppLogo.svg" Width="22" Height="18"/>
+                            <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
+                                       Style="{ThemeResource BodyTextBlockStyle}"
+                                       Margin="10, 0, 0, 0"/>
 
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
-                           Style="{ThemeResource BodyTextBlockStyle}" />
-
-                <TextBlock Text="{x:Bind ViewModel.BuildName, Mode=OneWay}"
-                           Style="{ThemeResource BodyTextBlockStyle}"
-                           Margin="5, 1, 0, 0"
-                           Foreground="{ThemeResource WindowAccent}"/>
-                </StackPanel>
-
-                <TextBlock
-                    x:Uid="Settings_AboutDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
+                            <TextBlock Text="{x:Bind ViewModel.BuildName, Mode=OneWay}"
+                                       Style="{ThemeResource BodyTextBlockStyle}"
+                                       Margin="5, 1, 0, 0"
+                                       Foreground="{ThemeResource WindowAccent}"/>
+                        </StackPanel>
+                    </uc:ContentBlock.Content>
+                </uc:ContentBlock>
             </StackPanel>
         </StackPanel>
     </Grid>
