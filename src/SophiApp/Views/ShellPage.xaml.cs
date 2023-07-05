@@ -20,9 +20,9 @@ public sealed partial class ShellPage : Page
     /// <summary>
     /// Initializes a new instance of the <see cref="ShellPage"/> class.
     /// </summary>
-    /// <param name="viewModel"><inheritdoc/></param>
-    /// <param name="appContext"><inheritdoc/></param>
-    public ShellPage(ShellViewModel viewModel, IAppContextService appContext)
+    /// <param name="viewModel"><see cref="ShellViewModel"/>.</param>
+    /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
+    public ShellPage(ShellViewModel viewModel, IAppContextService appContextService)
     {
         ViewModel = viewModel;
         InitializeComponent();
@@ -33,7 +33,7 @@ public sealed partial class ShellPage : Page
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
-        AppTitleBarText.Text = appContext.GetFullName();
+        AppTitleBarText.Text = $"{appContextService.GetFullName()} | {appContextService.GetVersionName()}";
     }
 
     /// <summary>

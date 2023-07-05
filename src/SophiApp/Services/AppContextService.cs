@@ -7,16 +7,18 @@ namespace SophiApp.Services
     using System.Reflection;
     using SophiApp.Contracts.Services;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class AppContextService : IAppContextService
     {
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build} | Private alpha";
+        public string GetBuildName() => "Daria";
+
+        /// <inheritdoc/>
+        public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
+
+        /// <inheritdoc/>
+        public string GetVersionName() => "Community";
     }
 }

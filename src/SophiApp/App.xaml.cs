@@ -46,9 +46,8 @@ public partial class App : Application
                 services.AddSingleton<IPageService, PageService>();
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<IFileService, FileService>();
-
+                services.AddSingleton<IAppContextService, AppContextService>();
                 services.AddTransient<INavigationViewService, NavigationViewService>();
-                services.AddTransient<IAppContextService, AppContextService>();
 
                 // Views and ViewModels
                 services.AddTransient<SettingsViewModel>();
@@ -121,12 +120,8 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        GetService<IAppNotificationService>()
-            .Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
-
-        await GetService<IActivationService>()
-            .ActivateAsync(args);
-
+        GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+        await GetService<IActivationService>().ActivateAsync(args);
         MainWindow.Title = Host.Services.GetService<IAppContextService>()?.GetFullName() ?? "AppDisplayName".GetLocalized();
         MainWindow.CenterOnScreen();
     }

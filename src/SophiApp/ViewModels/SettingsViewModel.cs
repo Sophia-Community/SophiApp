@@ -17,24 +17,26 @@ public partial class SettingsViewModel : ObservableRecipient
     private readonly IThemeSelectorService themeSelectorService;
 
     [ObservableProperty]
-    private string buildName;
+    private string build;
 
     [ObservableProperty]
     private ElementTheme elementTheme;
 
     [ObservableProperty]
-    private string versionDescription;
+    private string version;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
     /// </summary>
-    /// <param name="themeSelectorService"><inheritdoc/></param>
-    public SettingsViewModel(IThemeSelectorService themeSelectorService)
+    /// <param name="themeSelectorService"><see cref="IThemeSelectorService"/>.</param>
+    /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
+    public SettingsViewModel(IThemeSelectorService themeSelectorService, IAppContextService appContextService)
     {
         this.themeSelectorService = themeSelectorService;
-        buildName = "Daria";
+
         elementTheme = this.themeSelectorService.Theme;
-        versionDescription = "SophiApp |";
+        version = $"{appContextService.GetFullName()} |";
+        build = appContextService.GetBuildName();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(
             async (param) =>

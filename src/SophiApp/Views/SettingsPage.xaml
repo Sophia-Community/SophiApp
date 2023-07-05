@@ -57,13 +57,13 @@
                     <uc:ContentBlock.Content>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Assets/AppLogo.svg" Width="22" Height="18"/>
-                            <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"
+                            <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
                                        Margin="10, 0, 0, 0"/>
 
-                            <TextBlock Text="{x:Bind ViewModel.BuildName, Mode=OneWay}"
+                            <TextBlock Text="{x:Bind ViewModel.Build, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="5, 1, 0, 0"
+                                       Margin="5, 0, 0, 2"
                                        Foreground="{ThemeResource WindowAccent}"/>
                         </StackPanel>
                     </uc:ContentBlock.Content>
