@@ -29,4 +29,12 @@
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Margin" Value="0, 10, 0, 16" />
     </Style>
+
+    <Style x:Key="IconHyperlinkTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5, 3, 0, 0"/>
+    </Style>
 </ResourceDictionary>

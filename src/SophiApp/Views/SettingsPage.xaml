@@ -1,25 +1,26 @@
-﻿<Page
-    x:Class="SophiApp.Views.SettingsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uc="using:SophiApp.UserControls"
-    xmlns:helpers="using:SophiApp.Helpers"
-    xmlns:xaml="using:Microsoft.UI.Xaml"
-    mc:Ignorable="d">
+﻿<Page x:Class="SophiApp.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:SophiApp.ControlTemplates"
+      xmlns:helpers="using:SophiApp.Helpers"
+      xmlns:service="using:SophiApp.Services"
+      xmlns:xaml="using:Microsoft.UI.Xaml"
+      mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
         <helpers:BoolToInversionConverter x:Key="BoolToInversionConverter" />
     </Page.Resources>
     <Grid>
         <StackPanel>
-            <uc:MadeForWindows/>
+            <controls:MadeForWindows/>
             <StackPanel Orientation="Horizontal"
+                        Margin="{StaticResource SettingPageControlsVerticalMargin}"
                         Height="110">
-                <uc:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
-                                 Width="365">
-                    <uc:ContentBlock.Content>
+                <controls:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
+                                       Width="365">
+                    <controls:ContentBlock.Content>
                         <StackPanel Orientation="Horizontal">
                             <ToggleButton x:Uid="Settings_Theme_Light"
                                       Style="{StaticResource ToggleButtonStyle}"
@@ -49,25 +50,39 @@
                                 </ToggleButton.CommandParameter>
                             </ToggleButton>
                         </StackPanel>
-                    </uc:ContentBlock.Content>
-                </uc:ContentBlock>
-                <uc:ContentBlock x:Uid="SettingsPage_ContentBlock_AboutApp"
-                                 Width="270"
-                                 Margin="12, 0, 0, 0">
-                    <uc:ContentBlock.Content>
+                    </controls:ContentBlock.Content>
+                </controls:ContentBlock>
+                <controls:ContentBlock x:Uid="SettingsPage_ContentBlock_AboutApp"
+                                       Width="270"
+                                       Margin="{StaticResource SettingPageControlsHorizontalMargin}">
+                    <controls:ContentBlock.Content>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Assets/AppLogo.svg" Width="22" Height="18"/>
+                            <Image Source="/Assets/AppLogo.svg"
+                                   Width="22"
+                                   Height="18"/>
                             <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="10, 0, 0, 0"/>
+                                       Margin="{StaticResource SettingPageControlsHorizontalMargin}"/>
 
                             <TextBlock Text="{x:Bind ViewModel.Build, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="5, 0, 0, 2"
+                                       Margin="3, 0, 0, 2"
                                        Foreground="{ThemeResource WindowAccent}"/>
                         </StackPanel>
-                    </uc:ContentBlock.Content>
-                </uc:ContentBlock>
+                    </controls:ContentBlock.Content>
+                </controls:ContentBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="{StaticResource SettingPageControlsVerticalMargin}"
+                        Height="56">
+                <controls:IconHyperlink ImageSource="/Assets/GitHub.svg"
+                                        Text="{x:Bind service:AppContextService.GitHub}"/>
+                <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
+                                        ImageSource="/Assets/Discord.svg"
+                                        Text="{x:Bind service:AppContextService.Discord}"/>
+                <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
+                                        ImageSource="/Assets/Telegram.svg"
+                                        Text="{x:Bind service:AppContextService.Telegram}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

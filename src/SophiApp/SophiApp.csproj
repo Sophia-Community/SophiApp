@@ -26,10 +26,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\AppLogo.svg" />
+    <None Remove="Assets\Discord.svg" />
+    <None Remove="Assets\GitHub.svg" />
+    <None Remove="Assets\Telegram.svg" />
+    <None Remove="ControlTemplates\IconHyperlink.xaml" />
     <None Remove="Styles\Generic.xaml" />
     <None Remove="Styles\Themes.xaml" />
-    <None Remove="UserControls\ContentBlock.xaml" />
-    <None Remove="UserControls\MadeForWindows.xaml" />
+    <None Remove="ControlTemplates\ContentBlock.xaml" />
+    <None Remove="ControlTemplates\MadeForWindows.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
@@ -52,6 +56,12 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ControlTemplates\IconHyperlink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

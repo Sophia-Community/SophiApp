@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="SophiApp.ControlTemplates.ContentBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:SophiApp.ControlTemplates"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ContentBlockBorder}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border>
+        <Grid Background="{ThemeResource ContentBlockBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1"
+                           Style="{StaticResource ContentBlockStyle}"
+                           Text="{x:Bind Title, Mode=OneWay}"/>
+                <ContentControl Grid.Row="2"
+                                Content="{x:Bind Content, Mode=OneWay}"/>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

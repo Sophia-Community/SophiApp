@@ -10,6 +10,21 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class AppContextService : IAppContextService
     {
+        /// <summary>
+        /// Gets discord text.
+        /// </summary>
+        public const string Discord = "Discord";
+
+        /// <summary>
+        /// Gets github text.
+        /// </summary>
+        public const string GitHub = "GitHub";
+
+        /// <summary>
+        /// Gets telegram text.
+        /// </summary>
+        public const string Telegram = "Telegram";
+
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 
         /// <inheritdoc/>

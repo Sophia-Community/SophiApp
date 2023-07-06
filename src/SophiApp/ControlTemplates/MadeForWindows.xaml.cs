@@ -2,7 +2,7 @@
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
-namespace SophiApp.UserControls
+namespace SophiApp.ControlTemplates
 {
     using Microsoft.UI.Xaml.Controls;
 
