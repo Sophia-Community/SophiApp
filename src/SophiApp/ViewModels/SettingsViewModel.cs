@@ -35,7 +35,7 @@ public partial class SettingsViewModel : ObservableRecipient
         this.themeSelectorService = themeSelectorService;
 
         elementTheme = this.themeSelectorService.Theme;
-        version = $"{appContextService.GetFullName()} |";
+        version = appContextService.GetFullName();
         build = appContextService.GetBuildName();
 
         SwitchThemeCommand = new RelayCommand<ElementTheme>(

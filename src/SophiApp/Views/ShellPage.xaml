@@ -19,11 +19,26 @@
                    HorizontalAlignment="Left"
                    Width="16"
                    Height="16" />
-            <TextBlock x:Name="AppTitleBarText"
+            <TextBlock x:Name="AppTitleName"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        Margin="28,0,0,0"
+                       Foreground="{ThemeResource WindowForeground}"/>
+
+            <TextBlock x:Name="AppTitleSplitter"
+                       Text="|"
+                       VerticalAlignment="Center"
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Margin="112,-2,0,0"
+                       Foreground="{ThemeResource WindowForeground}"/>
+
+            <TextBlock x:Name="AppTitleVersion"
+                       VerticalAlignment="Center"
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Margin="120,0,0,0"
                        Foreground="{ThemeResource WindowForeground}"/>
         </Grid>
         <NavigationView x:Name="NavigationViewControl"

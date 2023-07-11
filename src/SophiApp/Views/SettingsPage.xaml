@@ -62,11 +62,15 @@
                                    Height="18"/>
                             <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="{StaticResource SettingPageControlsHorizontalMargin}"/>
+                                       Margin="5, 0, 0, 0"/>
+
+                            <TextBlock Text="|"
+                                       Style="{ThemeResource BodyTextBlockStyle}"
+                                       Margin="5, -1, 0, 0"/>
 
                             <TextBlock Text="{x:Bind ViewModel.Build, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="3, 0, 0, 2"
+                                       Margin="5, 0, 0, 2"
                                        Foreground="{ThemeResource WindowAccent}"/>
                         </StackPanel>
                     </controls:ContentBlock.Content>

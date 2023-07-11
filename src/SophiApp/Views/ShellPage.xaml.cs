@@ -33,7 +33,8 @@ public sealed partial class ShellPage : Page
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
-        AppTitleBarText.Text = $"{appContextService.GetFullName()} | {appContextService.GetVersionName()}";
+        AppTitleName.Text = appContextService.GetFullName();
+        AppTitleVersion.Text = appContextService.GetVersionName();
     }
 
     /// <summary>
@@ -79,8 +80,10 @@ public sealed partial class ShellPage : Page
     {
         var resource = args.WindowActivationState == WindowActivationState.Deactivated ? "WindowCaptionForegroundDisabled" : "WindowCaptionForeground";
 
-        AppTitleBarText.Foreground = (SolidColorBrush)App.Current.Resources[resource];
-        App.AppTitlebar = AppTitleBarText;
+        AppTitleName.Foreground = (SolidColorBrush)App.Current.Resources[resource];
+        AppTitleSplitter.Foreground = (SolidColorBrush)App.Current.Resources[resource];
+        AppTitleVersion.Foreground = (SolidColorBrush)App.Current.Resources[resource];
+        App.AppTitlebar = AppTitleName;
     }
 
     private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)

@@ -21,6 +21,8 @@ public partial class ShellViewModel : ObservableRecipient
     /// <summary>
     /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
     /// </summary>
+    /// <param name="navigationService"><see cref="INavigationService"/>.</param>
+    /// <param name="navigationViewService"><see cref="INavigationViewService"/>.</param>
     public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
     {
         NavigationService = navigationService;
