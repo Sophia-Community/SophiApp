@@ -31,9 +31,12 @@ namespace SophiApp.Services
         public string GetBuildName() => "Daria";
 
         /// <inheritdoc/>
+        public string GetDelimiter() => "|";
+
+        /// <inheritdoc/>
         public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
 
         /// <inheritdoc/>
-        public string GetVersionName() => "Community";
+        public string GetVersionName() => "Community [Private alpha]";
     }
 }

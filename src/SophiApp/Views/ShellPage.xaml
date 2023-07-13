@@ -27,7 +27,7 @@
                        Foreground="{ThemeResource WindowForeground}"/>
 
             <TextBlock x:Name="AppTitleSplitter"
-                       Text="|"
+                       Text="{x:Bind ViewModel.Delimiter}"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"

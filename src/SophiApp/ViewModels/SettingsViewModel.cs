@@ -23,6 +23,9 @@ public partial class SettingsViewModel : ObservableRecipient
     private ElementTheme elementTheme;
 
     [ObservableProperty]
+    private string delimiter;
+
+    [ObservableProperty]
     private string version;
 
     /// <summary>
@@ -35,6 +38,7 @@ public partial class SettingsViewModel : ObservableRecipient
         this.themeSelectorService = themeSelectorService;
 
         elementTheme = this.themeSelectorService.Theme;
+        delimiter = appContextService.GetDelimiter();
         version = appContextService.GetFullName();
         build = appContextService.GetBuildName();
 

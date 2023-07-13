@@ -10,7 +10,7 @@ namespace SophiApp.Contracts.Services
     public interface IAppContextService
     {
         /// <summary>
-        /// Get app name and version.
+        /// Gets app name and version.
         /// </summary>
         string GetFullName();
 
@@ -20,8 +20,13 @@ namespace SophiApp.Contracts.Services
         string GetBuildName();
 
         /// <summary>
-        /// Returns the name of the program version: Community or Pro.
+        /// Gets the name of the program version: Community or Pro.
         /// </summary>
         string GetVersionName();
+
+        /// <summary>
+        /// Gets app name and version delimiter.
+        /// </summary>
+        string GetDelimiter();
     }
 }

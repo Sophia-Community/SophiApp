@@ -64,7 +64,7 @@
                                        Style="{ThemeResource BodyTextBlockStyle}"
                                        Margin="5, 0, 0, 0"/>
 
-                            <TextBlock Text="|"
+                            <TextBlock Text="{x:Bind ViewModel.Delimiter, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
                                        Margin="5, -1, 0, 0"/>
 

@@ -13,6 +13,9 @@ using SophiApp.Contracts.Services;
 public partial class ShellViewModel : ObservableRecipient
 {
     [ObservableProperty]
+    private string delimiter;
+
+    [ObservableProperty]
     private bool isBackEnabled;
 
     [ObservableProperty]
@@ -23,11 +26,13 @@ public partial class ShellViewModel : ObservableRecipient
     /// </summary>
     /// <param name="navigationService"><see cref="INavigationService"/>.</param>
     /// <param name="navigationViewService"><see cref="INavigationViewService"/>.</param>
-    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
+    /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
+    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService, IAppContextService appContextService)
     {
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
+        delimiter = appContextService.GetDelimiter();
     }
 
     public INavigationService NavigationService
