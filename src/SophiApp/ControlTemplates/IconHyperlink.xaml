@@ -5,9 +5,18 @@
              xmlns:local="using:SophiApp.ControlTemplates"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
+             xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+             xmlns:media="using:Microsoft.Xaml.Interactions.Media"
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Storyboard x:Key="TransformStoryboard" AutoReverse="True" SpeedRatio="5">
+            <DoubleAnimation Storyboard.TargetName="TranslateTransform"
+                             Storyboard.TargetProperty="Y"
+                             Duration="00:00:0.3"
+                             To="5"/>
+        </Storyboard>
         <Style TargetType="Border">
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -39,9 +48,30 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
                 <StackPanel>
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform x:Name="TranslateTransform" Y="0" />
+                    </StackPanel.RenderTransform>
                     <Image Source="{x:Bind ImageSource, Mode=OneWay}"/>
-                    <TextBlock Style="{StaticResource IconHyperlinkTextStyle}"
-                               Text="{x:Bind Text, Mode=OneWay}"/>
+                    <TextBlock x:Name="HyperlinkText"
+                               Style="{StaticResource IconHyperlinkTextStyle}"
+                               Text="{x:Bind Text, Mode=OneWay}">
+                        <interactivity:Interaction.Behaviors>
+                        <interactions:EventTriggerBehavior EventName="PointerEntered">
+                            <interactions:ChangePropertyAction TargetObject="{Binding ElementName=HyperlinkText}"
+                                                               PropertyName="Foreground"
+                                                               Value="#0078D4"/>
+                        </interactions:EventTriggerBehavior>
+                        <interactions:EventTriggerBehavior EventName="PointerExited">
+                            <interactions:ChangePropertyAction TargetObject="{Binding ElementName=HyperlinkText}"
+                                                               PropertyName="Foreground"
+                                                               Value="{ThemeResource WindowForeground}"/>
+                        </interactions:EventTriggerBehavior>
+                        <interactions:EventTriggerBehavior EventName="PointerPressed">
+                            <media:ControlStoryboardAction Storyboard="{StaticResource TransformStoryboard}"
+                                                           ControlStoryboardOption="Play"/>
+                        </interactions:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    </TextBlock>
                 </StackPanel>
             </Grid>
         </Grid>
