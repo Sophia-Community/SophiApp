@@ -591,6 +591,7 @@ else
         internal const string DELEGATION_CONSOLE_VALUE = "{00000000-0000-0000-0000-000000000000}";
         internal const string DELEGATION_TERMINAL = "DelegationTerminal";
         internal const string DESKTOP_ICON_THIS_COMPUTER = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
+        internal const string LEARN_ABOUT_THIS_PICTURE = "{2cc5ca98-6485-489a-920e-b3e88a6ccce3}";
         internal const string DIAG_TRACK_PATH = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack";
         internal const byte DIALOG_COMPACT_VALUE = 0;
         internal const byte DIALOG_DETAILED_VALUE = 1;

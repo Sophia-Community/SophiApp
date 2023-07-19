@@ -569,6 +569,17 @@ namespace SophiApp.Customisations
             RegHelper.SetValue(RegistryHive.CurrentUser, _269_SEARCH_SETTINGS_PATH, _269_DYNAMIC_SEARCH_BOX, DISABLED_VALUE, RegistryValueKind.DWord);
         }
 
+        public static void _270(bool IsChecked)
+        {
+            if (IsChecked)
+            {
+                RegHelper.SetValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, LEARN_ABOUT_THIS_PICTURE, ENABLED_VALUE, RegistryValueKind.DWord);
+                return;
+            }
+
+            RegHelper.DeleteKey(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, LEARN_ABOUT_THIS_PICTURE, false);
+        }
+
         public static void _300(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
                                                                         STORAGE_POLICY_PATH,
                                                                             STORAGE_POLICY_01,

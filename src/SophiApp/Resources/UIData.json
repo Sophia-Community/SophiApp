@@ -807,7 +807,7 @@
         "Id":  125,
         "Header":  {
                        "EN":  "Suggest ways I can finish setting up my device to get the most out of Windows",
-                       "RU":  "Предложить способы завершения настройки этого устройства для наиболее эффектиивного использования Windows",
+                       "RU":  "Предложить способы завершения настройки этого устройства для наиболее эффективного использования Windows",
                        "DE":  "Vorschläge machen, wie ich mein Gerät einrichten kann",
                        "UA":  "Відображати пропозиції налаштування пристрою",
                        "IT":  "Offri suggerimenti su come posso personalizzare il mio dispositivo",
@@ -3177,6 +3177,40 @@
         "Tag":  "StartMenu",
         "ViewId":  269,
         "Windows10Supported":  true,
+        "Windows11Supported":  true
+    },
+    {
+        "Id":  270,
+        "Header": {
+                            "EN": "Show the \"Learn about this picture\" icon on Desktop",
+                            "RU": "Отображать значок \"Learn about this picture\" на рабочем столе",
+                            "DE": "Das Symbol \"Learn about this picture\" auf Desktop anzeigen",
+                            "UA": "Відображати значок \"Learn about this picture\" на робочому столі",
+                            "IT": "Icona \"Learn about this picture\" sul desktop",
+                            "TR": "Masaüstünde \"Learn about this picture\" simgesini göster",
+                            "CZ": "Zobrazit ikonu \"Learn about this picture\" na ploše",
+                            "FR": "Afficher l'icône \"Learn about this picture\" sur le bureau",
+                            "zh_CN": "在桌面上显示\"Learn about this picture\"图标",
+                            "ES": "Mostrar el icono \"Learn about this picture\" en el escritorio",
+                            "PL": "Pokaż ikonę \"Learn about this picture\" na pulpicie"
+                  },
+        "Description":  {
+                            "EN":  "",
+                            "RU":  "",
+                            "DE":  "",
+                            "UA":  "",
+                            "IT":  "",
+                            "TR":  "",
+                            "CZ":  "",
+                            "FR":  "",
+                            "zh_CN":  "",
+                            "ES":  "",
+                            "PL":  ""
+                        },
+        "Type":  "CheckBox",
+        "Tag":  "Personalization",
+        "ViewId":  270,
+        "Windows10Supported":  false,
         "Windows11Supported":  true
     },
     {
@@ -7077,5 +7111,6 @@
         "ViewId":  904,
         "Windows10Supported":  true,
         "Windows11Supported":  false
-    }
+    },
+
 ]
