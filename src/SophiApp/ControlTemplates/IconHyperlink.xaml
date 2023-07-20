@@ -57,12 +57,12 @@
                                Text="{x:Bind Text, Mode=OneWay}">
                         <interactivity:Interaction.Behaviors>
                         <interactions:EventTriggerBehavior EventName="PointerEntered">
-                            <interactions:ChangePropertyAction TargetObject="{Binding ElementName=HyperlinkText}"
+                            <interactions:ChangePropertyAction TargetObject="{x:Bind HyperlinkText}"
                                                                PropertyName="Foreground"
                                                                Value="#0078D4"/>
                         </interactions:EventTriggerBehavior>
                         <interactions:EventTriggerBehavior EventName="PointerExited">
-                            <interactions:ChangePropertyAction TargetObject="{Binding ElementName=HyperlinkText}"
+                            <interactions:ChangePropertyAction TargetObject="{x:Bind HyperlinkText}"
                                                                PropertyName="Foreground"
                                                                Value="{ThemeResource WindowForeground}"/>
                         </interactions:EventTriggerBehavior>
