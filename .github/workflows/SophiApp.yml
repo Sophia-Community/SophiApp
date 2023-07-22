@@ -93,13 +93,14 @@ jobs:
 
         # No need to replace special characters with percent-encoding ones
         $Parameters = @{
-            Uri              = "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs"
-            Method           = "Head"
-            UseBasicParsing  = $true
+            Uri             = "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs"
+            Method          = "Head"
+            UseBasicParsing = $true
             Verbose         = $true
         }
+        (Invoke-WebRequest @Parameters).jobs
         $html_url = ((Invoke-WebRequest @Parameters).jobs | Where-Object -FilterScript {$_.run_id -eq "${{ github.run_id }}"}).html_url
-        write-host $html_url
+
         (Get-Content -Path ReleaseNotesTemplate.md -Encoding utf8 -Raw).Replace("NewVersion", "${{ github.ref_name }}").Replace("OldVersion", $Penultimate).Replace("CurrentDate", $(Get-Date -f "dd.MM.yyyy")).Replace("html_url", $html_url).Replace("SHA256_hash", "${{ steps.zip_hash.outputs.zip_hash }}") | Set-Content -Path ReleaseNotesTemplate.md -Encoding UTF8
 
         # https://en.wikipedia.org/wiki/Percent-encoding
