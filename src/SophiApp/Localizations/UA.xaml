@@ -23,8 +23,8 @@
 	<system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Стабільність Вашої ОС могла бути порушена використанням скрипту</system:String>
 	<system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Windows10Debloater від Sycnex. Про всяк випадок перевстановіть ОС.</system:String>
 	<system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Ваша версія Windows застаріла.</system:String>
-	<system:String x:Key="Conditions.Windows10Build.Supported">Для роботи SophiApp потрібна Windows 10 19044.1706 та вище.</system:String>
-	<system:String x:Key="Conditions.Windows11Build.Supported">Для роботи SophiApp потрібна Windows 11 22000.739 та вище.</system:String>
+	<system:String x:Key="Conditions.Windows10Build.Supported">Для роботи SophiApp потрібна Windows 10 19044.3208 та вище.</system:String>
+	<system:String x:Key="Conditions.Windows11Build.Supported">Для роботи SophiApp потрібна Windows 11 22621.1992 та вище.</system:String>
 	<system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Мінімальна підтримувана збірка Windows 11 Insider Preview: 22509.</system:String>
 	<system:String x:Key="Conditions.WindowsUpdateCenter.Open">Відкрити Центр оновлення Windows</system:String>
 	<system:String x:Key="Localization.Privacy">Конфіденційність</system:String>

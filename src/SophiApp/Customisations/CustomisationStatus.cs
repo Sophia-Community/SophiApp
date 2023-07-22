@@ -640,11 +640,11 @@ namespace SophiApp.Customisations
 
         public static bool _913() => RegHelper.KeyExist(RegistryHive.ClassesRoot, _913_TIFF_EXT, PROGRAM_ACCESS_ONLY).Invert();
 
-        public static bool _914() => OsHelper.GetBuild() >= WIN_BUILD_19044 && OsHelper.GetBuild() <= WIN_BUILD_19048 && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+        public static bool _914() => OsHelper.GetBuild() == WIN_BUILD_19045 && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _914_PHOTOS_SHELL_EDIT_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new UwpAppNotFoundException(UWP_MS_WIN_PHOTOS);
 
-        public static bool _915() => OsHelper.GetBuild() >= WIN_BUILD_19044 && OsHelper.GetBuild() <= WIN_BUILD_19048 && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
+        public static bool _915() => OsHelper.GetBuild() == WIN_BUILD_19045 && UwpHelper.PackageExist(UWP_MS_WIN_PHOTOS)
                                      ? RegHelper.KeyExist(RegistryHive.ClassesRoot, _915_PHOTOS_SHELL_VIDEO_PATH, PROGRAM_ACCESS_ONLY).Invert()
                                      : throw new UwpAppNotFoundException(UWP_MS_WIN_PHOTOS);
 

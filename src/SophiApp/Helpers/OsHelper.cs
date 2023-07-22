@@ -33,7 +33,7 @@ namespace SophiApp.Helpers
         private const string UBR = "UBR";
         private const string WIN_ENTERPRISE_G = "EnterpriseG";
         private const uint WIN11_BUILD_NUMBER = 22;
-        private const uint WIN11_INSIDER_BUILD_NUMBER = 25;
+        private const uint WIN11_INSIDER_BUILD_NUMBER = 23;
         private const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
@@ -43,13 +43,11 @@ namespace SophiApp.Helpers
         // Virtual key ID of the F5 in File Explorer
         private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
 
-        internal const uint WIN10_MAX_SUPPORTED_BUILD = 19048;
-        internal const uint WIN10_MIN_SUPPORTED_BUILD = 19044;
-        internal const uint WIN10_MIN_SUPPORTED_UBR = 1706;
+        internal const uint WIN10_MIN_SUPPORTED_BUILD = 19045;
+        internal const uint WIN10_MIN_SUPPORTED_UBR = 3208;
         internal const uint WIN11_INSIDER_BUILD_PATTERN = 22500;
-        internal const uint WIN11_MIN_SUPPORTED_BUILD = 22000;
-        internal const uint WIN11_MIN_SUPPORTED_INSIDER_BUILD = 22509;
-        internal const uint WIN11_MIN_SUPPORTED_UBR = 739;
+        internal const uint WIN11_MIN_SUPPORTED_BUILD = 22621;
+        internal const uint WIN11_MIN_SUPPORTED_UBR = 1992;
 
         internal static bool IsEnterpriseG = GetEdition() == WIN_ENTERPRISE_G;
 
@@ -105,8 +103,7 @@ namespace SophiApp.Helpers
         internal static bool IsWindows11()
         {
             var build = GetBuild() / 1000;
-            return build == WIN11_BUILD_NUMBER
-                   || build == WIN11_INSIDER_BUILD_NUMBER;
+            return build == WIN11_BUILD_NUMBER || build == WIN11_INSIDER_BUILD_NUMBER;
         }
 
         internal static void SafelyRestartExplorerProcess()

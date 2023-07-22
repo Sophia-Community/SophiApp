@@ -685,8 +685,7 @@ else
         internal const string WIN_VER_EDU = "Education";
         internal const string WIN_VER_ENT = "Enterprise";
         internal const string WIN_VER_PRO = "Professional";
-        internal const ushort WIN_BUILD_19044 = 19044;
-        internal const ushort WIN_BUILD_19048 = 19048;
+        internal const ushort WIN_BUILD_19045 = 19045;
         internal const string WINDOWS_MITIGATION_PATH = @"SOFTWARE\Microsoft\WindowsMitigation";
         internal const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         internal const string WSRESET_EXE = "WSreset.exe";
