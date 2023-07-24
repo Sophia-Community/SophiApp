@@ -127,12 +127,24 @@
 
 ## Installation
 
-### Downloade SophiApp mit PowerShell/Chocolatey/Scoop
+### Downloade SophiApp mit PowerShell/Winget/Chocolatey/Scoop
 
 Um die aktuelle SophiApp-Version zu downloaden invoke (`Administrator ist keine Voraussetzung`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
+```
+
+[WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
+
+```powershell
+winget install --id=TeamSophia.SophiApp --accept-source-agreements --location D:\
+```
+
+> **Note**: Wenn Sie `SophiApp` über `WinGet` installiert haben, sollten Sie `SophiApp` zuerst über `WinGet` deinstallieren, es sei denn, Sie sind nicht in der Lage, das Paket erneut herunterzuladen.
+
+```powershell
+`winget uninstall sophiapp --force`
 ```
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)

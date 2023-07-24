@@ -128,12 +128,24 @@
 
 ## Установка
 
-### Скачать SophiApp через PowerShell/Chocolatey/Scoop
+### Скачать SophiApp через PowerShell/Winget/Chocolatey/Scoop
 
 Скачать архив с последней версией SophiApp, выполнив в PowerShell (`в том числе и не от имени администратора`)
 
 ```powershell
 irm app.sophi.app -useb | iex
+```
+
+[WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
+
+```powershell
+winget install --id=TeamSophia.SophiApp --accept-source-agreements --location D:\
+```
+
+> **Note**: Если вы устанавливали `SophiApp` через `WinGet`, перед удалением файлов приложения вы должны сначала деинсталлировать `SophiApp` через `WinGet`, иначе вы не сможете повторно скачать пакет.
+
+```powershell
+`winget uninstall sophiapp --force`
 ```
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)
