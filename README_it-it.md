@@ -139,6 +139,7 @@ irm app.sophi.app -useb | iex
 ```powershell
 winget install sophiapp 
 ```
+> **Nota**: Se hai installato `SophiApp` tramite `WinGet`, devi prima disinstallare `SophiApp` tramite `WinGet` prima di rimuovere i file, altrimenti non sarai in grado di scaricare nuovamente il pacchetto.
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)
 
