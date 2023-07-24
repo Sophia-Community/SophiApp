@@ -135,10 +135,17 @@
 ```powershell
 irm app.sophi.app -useb | iex
 ```
-[Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
+
+[WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
 
 ```powershell
-winget install sophiapp 
+winget install --id=TeamSophia.SophiApp --accept-source-agreements --location D:\
+```
+
+> **Note**: Если вы устанавливали `SophiApp` через `WinGet`, перед удалением файлов приложения вы должны сначала деинсталлировать `SophiApp` через `WinGet`, иначе вы не сможете повторно скачать пакет.
+
+```powershell
+`winget uninstall sophiapp --force`
 ```
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)

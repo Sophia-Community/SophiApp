@@ -138,10 +138,17 @@ Download the always latest SophiApp archive by invoking (`not as administrator t
 ```powershell
 irm app.sophi.app -useb | iex
 ```
-[Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
+
+[WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
 
 ```powershell
-winget install sophiapp 
+winget install --id=TeamSophia.SophiApp --accept-source-agreements --location D:\
+```
+
+> **Note**: If you installed `SophiApp` via `WinGet`, before removing files, you should uninstall `SophiApp` via `WinGet` first, unless you won't be able to re-download package again.
+
+```powershell
+`winget uninstall sophiapp --force`
 ```
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)
