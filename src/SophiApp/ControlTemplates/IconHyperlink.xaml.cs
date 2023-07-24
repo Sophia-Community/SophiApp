@@ -4,6 +4,8 @@
 
 namespace SophiApp.ControlTemplates
 {
+    using System.Windows.Input;
+    using Microsoft.UI.Input;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
     using Microsoft.UI.Xaml.Media;
@@ -13,6 +15,18 @@ namespace SophiApp.ControlTemplates
     /// </summary>
     public sealed partial class IconHyperlink : UserControl
     {
+        /// <summary>
+        /// <see cref="CommandParameter"/>.
+        /// </summary>
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register("CommandParameter", typeof(string), typeof(IconHyperlink), new PropertyMetadata(default));
+
+        /// <summary>
+        /// <see cref="Command"/>.
+        /// </summary>
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(IconHyperlink), new PropertyMetadata(default));
+
         /// <summary>
         /// <see cref="ImageSource"/>.
         /// </summary>
@@ -31,6 +45,24 @@ namespace SophiApp.ControlTemplates
         public IconHyperlink() => InitializeComponent();
 
         /// <summary>
+        /// Gets or sets <see cref="IconHyperlink"/> command parameter.
+        /// </summary>
+        public string CommandParameter
+        {
+            get => (string)GetValue(CommandParameterProperty);
+            set => SetValue(CommandParameterProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets <see cref="IconHyperlink"/> command.
+        /// </summary>
+        public ICommand Command
+        {
+            get => (ICommand)GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
+
+        /// <summary>
         /// Gets or sets <see cref="IconHyperlink"/> icon source.
         /// </summary>
         public ImageSource ImageSource
@@ -46,6 +78,20 @@ namespace SophiApp.ControlTemplates
         {
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
+        }
+
+        private void ChangeCursor(InputSystemCursor cursor) => ProtectedCursor = cursor;
+
+        private void TextBlock_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            e.Handled = true;
+            ChangeCursor(InputSystemCursor.Create(InputSystemCursorShape.Hand));
+        }
+
+        private void TextBlock_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            e.Handled = true;
+            ChangeCursor(InputSystemCursor.Create(InputSystemCursorShape.Arrow));
         }
     }
 }

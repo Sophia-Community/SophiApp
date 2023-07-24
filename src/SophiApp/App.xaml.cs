@@ -33,46 +33,47 @@ public partial class App : Application
             .ConfigureServices((context, services) =>
             {
                 // Default Activation Handler
-                services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
+                _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
 
                 // Other Activation Handlers
-                services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
+                _ = services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
 
                 // Services
-                services.AddSingleton<IAppNotificationService, AppNotificationService>();
-                services.AddSingleton<ISettingsService, SettingsService>();
-                services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-                services.AddSingleton<IActivationService, ActivationService>();
-                services.AddSingleton<IPageService, PageService>();
-                services.AddSingleton<INavigationService, NavigationService>();
-                services.AddSingleton<IFileService, FileService>();
-                services.AddSingleton<IAppContextService, AppContextService>();
-                services.AddTransient<INavigationViewService, NavigationViewService>();
+                _ = services.AddSingleton<IAppNotificationService, AppNotificationService>();
+                _ = services.AddSingleton<ISettingsService, SettingsService>();
+                _ = services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+                _ = services.AddSingleton<IActivationService, ActivationService>();
+                _ = services.AddSingleton<IPageService, PageService>();
+                _ = services.AddSingleton<INavigationService, NavigationService>();
+                _ = services.AddSingleton<IFileService, FileService>();
+                _ = services.AddSingleton<IAppContextService, AppContextService>();
+                _ = services.AddTransient<INavigationViewService, NavigationViewService>();
+                _ = services.AddTransient<IUriService, UriService>();
 
                 // Views and ViewModels
-                services.AddTransient<SettingsViewModel>();
-                services.AddTransient<SettingsPage>();
-                services.AddTransient<ProVersionViewModel>();
-                services.AddTransient<ProVersionPage>();
-                services.AddTransient<ContextMenuViewModel>();
-                services.AddTransient<ContextMenuPage>();
-                services.AddTransient<SecurityViewModel>();
-                services.AddTransient<SecurityPage>();
-                services.AddTransient<TaskSchedulerViewModel>();
-                services.AddTransient<TaskSchedulerPage>();
-                services.AddTransient<UwpViewModel>();
-                services.AddTransient<UwpPage>();
-                services.AddTransient<SystemViewModel>();
-                services.AddTransient<SystemPage>();
-                services.AddTransient<PersonalizationViewModel>();
-                services.AddTransient<PersonalizationPage>();
-                services.AddTransient<PrivacyViewModel>();
-                services.AddTransient<PrivacyPage>();
-                services.AddTransient<ShellPage>();
-                services.AddTransient<ShellViewModel>();
+                _ = services.AddTransient<SettingsViewModel>();
+                _ = services.AddTransient<SettingsPage>();
+                _ = services.AddTransient<ProVersionViewModel>();
+                _ = services.AddTransient<ProVersionPage>();
+                _ = services.AddTransient<ContextMenuViewModel>();
+                _ = services.AddTransient<ContextMenuPage>();
+                _ = services.AddTransient<SecurityViewModel>();
+                _ = services.AddTransient<SecurityPage>();
+                _ = services.AddTransient<TaskSchedulerViewModel>();
+                _ = services.AddTransient<TaskSchedulerPage>();
+                _ = services.AddTransient<UwpViewModel>();
+                _ = services.AddTransient<UwpPage>();
+                _ = services.AddTransient<SystemViewModel>();
+                _ = services.AddTransient<SystemPage>();
+                _ = services.AddTransient<PersonalizationViewModel>();
+                _ = services.AddTransient<PersonalizationPage>();
+                _ = services.AddTransient<PrivacyViewModel>();
+                _ = services.AddTransient<PrivacyPage>();
+                _ = services.AddTransient<ShellViewModel>();
+                _ = services.AddTransient<ShellPage>();
 
                 // Configuration
-                services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+                _ = services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             })
             .Build();
 

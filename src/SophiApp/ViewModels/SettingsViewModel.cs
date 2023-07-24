@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.ViewModels;
+
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -15,6 +16,7 @@ using SophiApp.Contracts.Services;
 public partial class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemeSelectorService themeSelectorService;
+    private readonly IUriService uriService;
 
     [ObservableProperty]
     private string build;
@@ -33,31 +35,40 @@ public partial class SettingsViewModel : ObservableRecipient
     /// </summary>
     /// <param name="themeSelectorService"><see cref="IThemeSelectorService"/>.</param>
     /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
-    public SettingsViewModel(IThemeSelectorService themeSelectorService, IAppContextService appContextService)
+    /// <param name="uriService"><see cref="IUriService"/>.</param>
+    public SettingsViewModel(
+        IThemeSelectorService themeSelectorService, IAppContextService appContextService, IUriService uriService)
     {
         this.themeSelectorService = themeSelectorService;
-
+        this.uriService = uriService;
         elementTheme = this.themeSelectorService.Theme;
         delimiter = appContextService.GetDelimiter();
         version = appContextService.GetFullName();
         build = appContextService.GetBuildName();
-
-        SwitchThemeCommand = new RelayCommand<ElementTheme>(
-            async (param) =>
-            {
-                if (ElementTheme != param)
-                {
-                    ElementTheme = param;
-                    await this.themeSelectorService.SetThemeAsync(param);
-                }
-            });
+        InitializeCommand();
     }
 
     /// <summary>
     /// Gets app theme switch command.
     /// </summary>
-    public ICommand SwitchThemeCommand
+    public ICommand? SwitchThemeCommand { get; private set; }
+
+    /// <summary>
+    /// Gets a resource using an identifier.
+    /// </summary>
+    public ICommand OpenUriCommand { get; private set; }
+
+    private void InitializeCommand()
     {
-        get;
+        SwitchThemeCommand = new RelayCommand<ElementTheme>(async (param) =>
+        {
+            if (ElementTheme != param)
+            {
+                ElementTheme = param;
+                await this.themeSelectorService.SetThemeAsync(param);
+            }
+        });
+
+        OpenUriCommand = new AsyncRelayCommand<string?>((param) => uriService.OpenUri(param));
     }
 }

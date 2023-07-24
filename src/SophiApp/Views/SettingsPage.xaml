@@ -80,7 +80,9 @@
                         Margin="{StaticResource SettingPageControlsVerticalMargin}"
                         Height="56">
                 <controls:IconHyperlink ImageSource="/Assets/GitHub.svg"
-                                        Text="{x:Bind service:AppContextService.GitHub}"/>
+                                        Text="{x:Bind service:AppContextService.GitHub}"
+                                        Command="{x:Bind ViewModel.OpenUriCommand}"
+                                        CommandParameter=""/>
                 <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
                                         ImageSource="/Assets/Discord.svg"
                                         Text="{x:Bind service:AppContextService.Discord}"/>
