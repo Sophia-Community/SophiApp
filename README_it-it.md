@@ -127,12 +127,17 @@
 
 ## Installazione
 
-### Scaricare SophiApp con PowerShell/Chocolatey/Scoop
+### Scaricare SophiApp con PowerShell/Winget/Chocolatey/Scoop
 
 Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
 
 ```powershell
 irm app.sophi.app -useb | iex
+```
+[Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
+
+```powershell
+winget install sophiapp 
 ```
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)
