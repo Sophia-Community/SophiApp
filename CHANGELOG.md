@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.97 — 26.07.2023
+
+* Fixed #188;
+* `SophiApp` was added to [WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
+
+  ```powershell
+  winget install sophiapp --accept-source-agreements --location D:\folder
+  winget install --id=TeamSophia.SophiApp --accept-source-agreements --location D:\folder
+  ```
+
+  * Merged #189;
+
+ > **Note**: If you installed `SophiApp` via `WinGet`, before removing files, you should uninstall `SophiApp` via `WinGet` first, unless you won't be able to re-download package again.
+
+```powershell
+winget uninstall sophiapp --force
+```
+
 ## 1.0.95 — 02.07.2023
 
 * Updated Italian, German translations;
