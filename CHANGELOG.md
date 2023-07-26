@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   * Merged #189;
 
- > **Note**: If you installed `SophiApp` via `WinGet`, before removing files, you should uninstall `SophiApp` via `WinGet` first, unless you won't be able to re-download package again.
+> **Note**: If you installed `SophiApp` via `WinGet`, before removing files, you should uninstall `SophiApp` via `WinGet` first, unless you won't be able to re-download package again.
 
 ```powershell
 winget uninstall sophiapp --force
