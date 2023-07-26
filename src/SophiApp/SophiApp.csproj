@@ -99,7 +99,7 @@
     </Reference>
     <Reference Include="Windows, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.22000.0\Windows.winmd</HintPath>
+      <HintPath>..\Binary\Windows.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -664,9 +664,6 @@
     </PackageReference>
     <PackageReference Include="TaskScheduler">
       <Version>2.10.1</Version>
-    </PackageReference>
-    <PackageReference Include="WixSharp.bin">
-      <Version>1.22.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
