@@ -33,7 +33,8 @@ namespace SophiApp.Helpers
         private const string UBR = "UBR";
         private const string WIN_ENTERPRISE_G = "EnterpriseG";
         private const uint WIN11_BUILD_NUMBER = 22;
-        private const uint WIN11_INSIDER_BUILD_NUMBER = 23;
+        private const uint WIN11_INSIDER_BUILD_NUMBER_23 = 23;
+        private const uint WIN11_INSIDER_BUILD_NUMBER_25 = 25;
         private const string WINLOGON_PATH = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon";
         private const int WM_SETTINGCHANGE = 0x1a;
         private static readonly IntPtr hWnd = new IntPtr(65535);
@@ -104,7 +105,7 @@ namespace SophiApp.Helpers
         internal static bool IsWindows11()
         {
             var build = GetBuild() / 1000;
-            return build == WIN11_BUILD_NUMBER || build == WIN11_INSIDER_BUILD_NUMBER;
+            return build == WIN11_BUILD_NUMBER || build == WIN11_INSIDER_BUILD_NUMBER_23 || build == WIN11_INSIDER_BUILD_NUMBER_25;
         }
 
         internal static void SafelyRestartExplorerProcess()
