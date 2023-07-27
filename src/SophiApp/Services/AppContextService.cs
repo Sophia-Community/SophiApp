@@ -13,17 +13,32 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets discord text.
         /// </summary>
-        public const string Discord = "Discord";
+        public const string DiscordText = "Discord";
 
         /// <summary>
         /// Gets github text.
         /// </summary>
-        public const string GitHub = "GitHub";
+        public const string GitHubText = "GitHub";
 
         /// <summary>
         /// Gets telegram text.
         /// </summary>
-        public const string Telegram = "Telegram";
+        public const string TelegramText = "Telegram";
+
+        /// <summary>
+        /// Gets app discord link.
+        /// </summary>
+        public const string DiscordLink = "https://discord.gg/sSryhaEv79";
+
+        /// <summary>
+        /// Gets app github link.
+        /// </summary>
+        public const string GitHubLink = "https://github.com/Sophia-Community/SophiApp";
+
+        /// <summary>
+        /// Gets app telegram link.
+        /// </summary>
+        public const string TelegramLink = "https://t.me/sophia_chat";
 
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 

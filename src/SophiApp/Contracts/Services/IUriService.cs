@@ -10,9 +10,9 @@ namespace SophiApp.Contracts.Services
     public interface IUriService
     {
         /// <summary>
-        /// Opens a resource using an identifier.
+        /// Opens a resource using an url.
         /// </summary>
-        /// <param name="uri">String with resource identifier.</param>
-        Task OpenUri(string? uri);
+        /// <param name="url">Discoverable url.</param>
+        Task OpenUrl(string? url);
     }
 }

@@ -80,15 +80,21 @@
                         Margin="{StaticResource SettingPageControlsVerticalMargin}"
                         Height="56">
                 <controls:IconHyperlink ImageSource="/Assets/GitHub.svg"
-                                        Text="{x:Bind service:AppContextService.GitHub}"
-                                        Command="{x:Bind ViewModel.OpenUriCommand}"
-                                        CommandParameter=""/>
+                                        Text="{x:Bind service:AppContextService.GitHubText}"
+                                        Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                        CommandParameter="{x:Bind service:AppContextService.GitHubLink}"/>
+
                 <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
                                         ImageSource="/Assets/Discord.svg"
-                                        Text="{x:Bind service:AppContextService.Discord}"/>
+                                        Text="{x:Bind service:AppContextService.DiscordText}"
+                                        Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                        CommandParameter="{x:Bind service:AppContextService.DiscordLink}"/>
+
                 <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
                                         ImageSource="/Assets/Telegram.svg"
-                                        Text="{x:Bind service:AppContextService.Telegram}"/>
+                                        Text="{x:Bind service:AppContextService.TelegramText}"
+                                        Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                        CommandParameter="{x:Bind service:AppContextService.TelegramLink}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

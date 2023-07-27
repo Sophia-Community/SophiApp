@@ -56,10 +56,12 @@ public partial class SettingsViewModel : ObservableRecipient
     /// <summary>
     /// Gets a resource using an identifier.
     /// </summary>
-    public ICommand OpenUriCommand { get; private set; }
+    public ICommand? OpenLinkCommand { get; private set; }
 
     private void InitializeCommand()
     {
+        OpenLinkCommand = new AsyncRelayCommand<string>((param) => uriService.OpenUrl(param));
+
         SwitchThemeCommand = new RelayCommand<ElementTheme>(async (param) =>
         {
             if (ElementTheme != param)
@@ -68,7 +70,5 @@ public partial class SettingsViewModel : ObservableRecipient
                 await this.themeSelectorService.SetThemeAsync(param);
             }
         });
-
-        OpenUriCommand = new AsyncRelayCommand<string?>((param) => uriService.OpenUri(param));
     }
 }
