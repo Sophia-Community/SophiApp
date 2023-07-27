@@ -23,7 +23,7 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Windows işletim sistemi kararlılığı aşağıdakiler kullanılarak tehlikeye atılmış olabilir:</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">Sycnex'ten Windows10Debloater komut dosyası. Her ihtimale karşı işletim sistemini yeniden yükleyin.</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">Windows sürümünüz güncel değil.</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp için Windows 10 19044.3208 ve üstü gerekir.</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp için Windows 10 19045.3208 ve üstü gerekir.</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp için Windows 11 22621.1992 ve üstü gerekir.</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">Desteklenen minimum Windows 11 Insider Preview derlemesi 22509'dur.</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">Windows Update'i açın</system:String>

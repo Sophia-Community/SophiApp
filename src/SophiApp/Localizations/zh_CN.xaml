@@ -23,7 +23,7 @@
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.StabilityCompromised">Windows 操作系统的稳定性可能已因使用而受到影响</system:String>
     <system:String x:Key="Conditions.Windows10DebloaterNotUsed.SycnexScript">来自 SYcnex 的 Windows10Debloater 脚本。 以防万一，请重新安装操作系统。</system:String>
     <system:String x:Key="Conditions.OsUpdateBuildRevision.MinimumVersion">您的 Windows 版本已过期。</system:String>
-    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp 需要 Windows 10 19044.3208 及更高版本。</system:String>
+    <system:String x:Key="Conditions.Windows10Build.Supported">SophiApp 需要 Windows 10 19045.3208 及更高版本。</system:String>
     <system:String x:Key="Conditions.Windows11Build.Supported">SophiApp 需要 Windows 11 22621.1992 及更高版本。</system:String>
     <system:String x:Key="Conditions.Windows11InsiderBuild.Supported">受支持的最低 Windows 11 Insider Preview 版本为 22509。</system:String>
     <system:String x:Key="Conditions.WindowsUpdateCenter.Open">打开 Windows 更新</system:String>
