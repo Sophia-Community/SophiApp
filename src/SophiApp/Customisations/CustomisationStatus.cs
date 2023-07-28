@@ -271,7 +271,7 @@ namespace SophiApp.Customisations
             return showDynamicContent && dynamicSearchBox;
         }
 
-        public static bool _270() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, LEARN_ABOUT_THIS_PICTURE) != ENABLED_VALUE;
+        public static bool _270() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_LEARN_ABOUT_THIS_PICTURE) != ENABLED_VALUE;
 
         public static bool _300() => RegHelper.GetNullableIntValue(RegistryHive.CurrentUser, STORAGE_POLICY_PATH, STORAGE_POLICY_01)
                                               .HasNullOrValue(DISABLED_VALUE)

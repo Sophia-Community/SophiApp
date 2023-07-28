@@ -573,11 +573,11 @@ namespace SophiApp.Customisations
         {
             if (IsChecked)
             {
-                RegHelper.SetValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, LEARN_ABOUT_THIS_PICTURE, ENABLED_VALUE, RegistryValueKind.DWord);
+                RegHelper.DeleteKey(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_LEARN_ABOUT_THIS_PICTURE, false);
                 return;
             }
 
-            RegHelper.DeleteKey(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, LEARN_ABOUT_THIS_PICTURE, false);
+            RegHelper.SetValue(RegistryHive.CurrentUser, START_PANEL_EXPLORER_PATH, DESKTOP_ICON_LEARN_ABOUT_THIS_PICTURE, ENABLED_VALUE, RegistryValueKind.DWord);
         }
 
         public static void _300(bool IsChecked) => RegHelper.SetValue(RegistryHive.CurrentUser,
