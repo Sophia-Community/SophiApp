@@ -115,13 +115,12 @@
 
 ### Requisiti di sistema
 
-|            Versione             |   Nome di mercato   |    Build    | Architettura |         Edizioni         |
-|:-------------------------------:|:-------------------:|:-----------:|:------------:|:------------------------:|
-| Windows 11 Insider Preview 23H2 | 2023 Update         | 25206+      |              | Home/Pro/Enterprise      |
-| Windows 11 22H2                 | 2022 Update         | 22621+      |              | Home/Pro/Enterprise      |
-| Windows 11 21H2                 |                     | 22000.739+  |              | Home/Pro/Enterprise      |
-| Windows 10 22H2                 | 2022 Update         | 19045.2006+ |     x64      | Home/Pro/Enterprise      |
-| Windows 10 21H2                 | October 2021 Update | 19044.1706+ |     x64      | Home/Pro/Enterprise/LTSC |
+|            Versione             | Nome di mercato |    Build    | Architettura |      Edizioni       |
+|:-------------------------------:|:---------------:|:-----------:|:------------:|:-------------------:|
+| Windows 11 Insider Preview 24H2 | 2023 Update     | 25206+      |              | Home/Pro/Enterprise |
+| Windows 11 Insider Preview 23H2 | 2024 Update     | 23451+      |              | Home/Pro/Enterprise |
+| Windows 11 22H2                 | 2022 Update     | 22621.1992+ |              | Home/Pro/Enterprise |
+| Windows 10 22H2                 | 2022 Update     | 19045.3208+ |     x64      | Home/Pro/Enterprise |
 
 > **Note**: Verifica la cronologia delle versioni di [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-7dd3071a-3906-fa2c-c342-f7f86728a6e3), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), e [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/).
 
