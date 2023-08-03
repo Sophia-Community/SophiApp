@@ -35,5 +35,6 @@
 
     <Thickness x:Key="SettingPageControlsHorizontalMargin">12, 0, 0, 0</Thickness>
     <Thickness x:Key="SettingPageControlsVerticalMargin">0, 10, 0, 0</Thickness>
+    <x:Double x:Key="SettingPageContentBlockWidth">270</x:Double>
 
 </ResourceDictionary>

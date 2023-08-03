@@ -4,11 +4,13 @@
 
 namespace SophiApp.ViewModels;
 
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
+using SophiApp.Helpers;
 
 /// <summary>
 /// Implements the <see cref="SettingsViewModel"/> class.
@@ -28,7 +30,14 @@ public partial class SettingsViewModel : ObservableRecipient
     private string delimiter;
 
     [ObservableProperty]
+    private ObservableCollection<ElementThemeWrapper> themes = new ()
+    {
+        new (ElementTheme.Default, "Settings_Themes_Default"), new (ElementTheme.Dark, "Settings_Themes_Dark"), new (ElementTheme.Light, "Settings_Themes_Light"),
+    };
+
+    [ObservableProperty]
     private string version;
+    private ElementThemeWrapper selectedTheme;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
@@ -36,16 +45,31 @@ public partial class SettingsViewModel : ObservableRecipient
     /// <param name="themeSelectorService"><see cref="IThemeSelectorService"/>.</param>
     /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
     /// <param name="uriService"><see cref="IUriService"/>.</param>
-    public SettingsViewModel(
-        IThemeSelectorService themeSelectorService, IAppContextService appContextService, IUriService uriService)
+    public SettingsViewModel(IThemeSelectorService themeSelectorService, IAppContextService appContextService, IUriService uriService)
     {
         this.themeSelectorService = themeSelectorService;
         this.uriService = uriService;
-        elementTheme = this.themeSelectorService.Theme;
         delimiter = appContextService.GetDelimiter();
         version = appContextService.GetFullName();
         build = appContextService.GetBuildName();
+        selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
         InitializeCommand();
+    }
+
+    /// <summary>
+    /// Gets or sets app selected theme.
+    /// </summary>
+    public ElementThemeWrapper SelectedTheme
+    {
+        get => selectedTheme;
+        set
+        {
+            if (value != selectedTheme)
+            {
+                selectedTheme = value;
+                _ = themeSelectorService.SetThemeAsync(selectedTheme.ElementTheme);
+            }
+        }
     }
 
     /// <summary>
@@ -61,14 +85,5 @@ public partial class SettingsViewModel : ObservableRecipient
     private void InitializeCommand()
     {
         OpenLinkCommand = new AsyncRelayCommand<string>((param) => uriService.OpenUrl(param));
-
-        SwitchThemeCommand = new RelayCommand<ElementTheme>(async (param) =>
-        {
-            if (ElementTheme != param)
-            {
-                ElementTheme = param;
-                await this.themeSelectorService.SetThemeAsync(param);
-            }
-        });
     }
 }

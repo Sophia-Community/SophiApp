@@ -141,15 +141,6 @@
   <data name="Shell_ProVersion.Content" xml:space="preserve">
     <value>Pro Version</value>
   </data>
-  <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
-  </data>
-  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
-  </data>
-  <data name="Settings_Theme_Auto.Content" xml:space="preserve">
-    <value>Auto</value>
-  </data>
   <data name="AppNotificationSamplePayload" xml:space="preserve">
     <value>&lt;toast launch="action=ToastClick"&gt;
   &lt;visual&gt;
@@ -184,5 +175,14 @@
   </data>
   <data name="SettingsPage_ContentBlock_AboutApp.Title" xml:space="preserve">
     <value>About app</value>
+  </data>
+  <data name="Settings_Themes_Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Settings_Themes_Default" xml:space="preserve">
+    <value>Like in Windows</value>
+  </data>
+  <data name="Settings_Themes_Light" xml:space="preserve">
+    <value>Light</value>
   </data>
 </root>

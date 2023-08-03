@@ -21,7 +21,7 @@
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="{ThemeResource ContentBlockBorder}"/>
-            <Setter Property="Width" Value="250"/>
+            <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>

@@ -4,6 +4,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:SophiApp.ControlTemplates"
+      xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:helpers="using:SophiApp.Helpers"
       xmlns:service="using:SophiApp.Services"
       xmlns:xaml="using:Microsoft.UI.Xaml"
@@ -17,43 +19,18 @@
             <controls:MadeForWindows/>
             <StackPanel Orientation="Horizontal"
                         Margin="{StaticResource SettingPageControlsVerticalMargin}"
-                        Height="110">
+                        Height="145">
                 <controls:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
-                                       Width="365">
+                                       Width="{StaticResource SettingPageContentBlockWidth}">
                     <controls:ContentBlock.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <ToggleButton x:Uid="Settings_Theme_Light"
-                                      Style="{StaticResource ToggleButtonStyle}"
-                                      IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
-                                      IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
-                                      Command="{x:Bind ViewModel.SwitchThemeCommand}">
-                                <ToggleButton.CommandParameter>
-                                    <xaml:ElementTheme>Light</xaml:ElementTheme>
-                                </ToggleButton.CommandParameter>
-                            </ToggleButton>
-                            <ToggleButton x:Uid="Settings_Theme_Dark"
-                                      Style="{StaticResource ToggleButtonStyle}"
-                                      IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
-                                      IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
-                                      Command="{x:Bind ViewModel.SwitchThemeCommand}">
-                                <ToggleButton.CommandParameter>
-                                    <xaml:ElementTheme>Dark</xaml:ElementTheme>
-                                </ToggleButton.CommandParameter>
-                            </ToggleButton>
-                            <ToggleButton x:Uid="Settings_Theme_Auto"
-                                      Style="{StaticResource ToggleButtonStyle}"
-                                      IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                                      IsHitTestVisible="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToInversionConverter}}"
-                                      Command="{x:Bind ViewModel.SwitchThemeCommand}">
-                                <ToggleButton.CommandParameter>
-                                    <xaml:ElementTheme>Default</xaml:ElementTheme>
-                                </ToggleButton.CommandParameter>
-                            </ToggleButton>
-                        </StackPanel>
+                        <ComboBox Width="225"
+                                  ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
+                                  SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
+                                  DisplayMemberPath="Description"/>
                     </controls:ContentBlock.Content>
                 </controls:ContentBlock>
                 <controls:ContentBlock x:Uid="SettingsPage_ContentBlock_AboutApp"
-                                       Width="270"
+                                       Width="{StaticResource SettingPageContentBlockWidth}"
                                        Margin="{StaticResource SettingPageControlsHorizontalMargin}">
                     <controls:ContentBlock.Content>
                         <StackPanel Orientation="Horizontal">
@@ -79,18 +56,21 @@
             <StackPanel Orientation="Horizontal"
                         Margin="{StaticResource SettingPageControlsVerticalMargin}"
                         Height="56">
-                <controls:IconHyperlink ImageSource="/Assets/GitHub.svg"
+                <controls:IconHyperlink Width="{StaticResource SettingPageContentBlockWidth}"
+                                        ImageSource="/Assets/GitHub.svg"
                                         Text="{x:Bind service:AppContextService.GitHubText}"
                                         Command="{x:Bind ViewModel.OpenLinkCommand}"
                                         CommandParameter="{x:Bind service:AppContextService.GitHubLink}"/>
 
-                <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
+                <controls:IconHyperlink Width="{StaticResource SettingPageContentBlockWidth}"
+                                        Margin="{StaticResource SettingPageControlsHorizontalMargin}"
                                         ImageSource="/Assets/Discord.svg"
                                         Text="{x:Bind service:AppContextService.DiscordText}"
                                         Command="{x:Bind ViewModel.OpenLinkCommand}"
                                         CommandParameter="{x:Bind service:AppContextService.DiscordLink}"/>
 
-                <controls:IconHyperlink Margin="{StaticResource SettingPageControlsHorizontalMargin}"
+                <controls:IconHyperlink Width="{StaticResource SettingPageContentBlockWidth}"
+                                        Margin="{StaticResource SettingPageControlsHorizontalMargin}"
                                         ImageSource="/Assets/Telegram.svg"
                                         Text="{x:Bind service:AppContextService.TelegramText}"
                                         Command="{x:Bind ViewModel.OpenLinkCommand}"
