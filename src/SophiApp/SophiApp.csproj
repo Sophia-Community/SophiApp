@@ -30,6 +30,7 @@
     <None Remove="Assets\GitHub.svg" />
     <None Remove="Assets\Telegram.svg" />
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
+    <None Remove="ControlTemplates\TeamMateLink.xaml" />
     <None Remove="Styles\Generic.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="ControlTemplates\ContentBlock.xaml" />
@@ -95,6 +96,12 @@
     <Content Update="Assets\Wide310x150Logo.scale-200.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ControlTemplates\TeamMateLink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

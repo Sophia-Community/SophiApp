@@ -53,7 +53,7 @@ public partial class SettingsViewModel : ObservableRecipient
         version = appContextService.GetFullName();
         build = appContextService.GetBuildName();
         selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
-        InitializeCommand();
+        OpenLinkCommand = new AsyncRelayCommand<string>((param) => uriService.OpenUrl(param));
     }
 
     /// <summary>
@@ -75,15 +75,10 @@ public partial class SettingsViewModel : ObservableRecipient
     /// <summary>
     /// Gets app theme switch command.
     /// </summary>
-    public ICommand? SwitchThemeCommand { get; private set; }
+    public ICommand? SwitchThemeCommand { get; }
 
     /// <summary>
     /// Gets a resource using an identifier.
     /// </summary>
-    public ICommand? OpenLinkCommand { get; private set; }
-
-    private void InitializeCommand()
-    {
-        OpenLinkCommand = new AsyncRelayCommand<string>((param) => uriService.OpenUrl(param));
-    }
+    public ICommand? OpenLinkCommand { get; }
 }

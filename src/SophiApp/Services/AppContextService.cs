@@ -40,6 +40,31 @@ namespace SophiApp.Services
         /// </summary>
         public const string TelegramLink = "https://t.me/sophia_chat";
 
+        /// <summary>
+        /// Gets app project manager name.
+        /// </summary>
+        public const string ProjectManagerName = "Dmitry “farag” Nefedov";
+
+        /// <summary>
+        /// Gets app developer name.
+        /// </summary>
+        public const string DeveloperName = "Dmitry “Inestic” Demin";
+
+        /// <summary>
+        /// Gets app UX developer name.
+        /// </summary>
+        public const string UxDeveloperName = "Vladimir Nameless";
+
+        /// <summary>
+        /// Gets app UI developer name.
+        /// </summary>
+        public const string UiDeveloperName = "Yaroslav Posmitiukh";
+
+        /// <summary>
+        /// Gets app animation developer name.
+        /// </summary>
+        public const string AnimationDeveloperName = "Maxim Nechiporenko";
+
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 
         /// <inheritdoc/>

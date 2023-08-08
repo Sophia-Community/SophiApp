@@ -170,10 +170,10 @@
   <data name="UserControl_MadeWith.Text" xml:space="preserve">
     <value>Made with</value>
   </data>
-  <data name="SettingsPage_ContentBlock_SelectedTheme.Title" xml:space="preserve">
+  <data name="SettingsPage_SelectedTheme.Title" xml:space="preserve">
     <value>App themes</value>
   </data>
-  <data name="SettingsPage_ContentBlock_AboutApp.Title" xml:space="preserve">
+  <data name="SettingsPage_AboutApp.Title" xml:space="preserve">
     <value>About app</value>
   </data>
   <data name="Settings_Themes_Dark" xml:space="preserve">
@@ -184,5 +184,23 @@
   </data>
   <data name="Settings_Themes_Light" xml:space="preserve">
     <value>Light</value>
+  </data>
+  <data name="SettingsPage_TeamMates.Title" xml:space="preserve">
+    <value>Team mates</value>
+  </data>
+  <data name="SettingsPage_Animation.WorkedOn" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="SettingsPage_DevelopedBy.WorkedOn" xml:space="preserve">
+    <value>Developed by</value>
+  </data>
+  <data name="SettingsPage_ProjectManager.WorkedOn" xml:space="preserve">
+    <value>Project Manager</value>
+  </data>
+  <data name="SettingsPage_UiDevelopment.WorkedOn" xml:space="preserve">
+    <value>UI development</value>
+  </data>
+  <data name="SettingsPage_UxDevelopment.WorkedOn" xml:space="preserve">
+    <value>UX development</value>
   </data>
 </root>

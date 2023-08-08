@@ -20,7 +20,7 @@
             <StackPanel Orientation="Horizontal"
                         Margin="{StaticResource SettingPageControlsVerticalMargin}"
                         Height="145">
-                <controls:ContentBlock x:Uid="SettingsPage_ContentBlock_SelectedTheme"
+                <controls:ContentBlock x:Uid="SettingsPage_SelectedTheme"
                                        Width="{StaticResource SettingPageContentBlockWidth}">
                     <controls:ContentBlock.Content>
                         <ComboBox Width="225"
@@ -29,7 +29,7 @@
                                   DisplayMemberPath="Description"/>
                     </controls:ContentBlock.Content>
                 </controls:ContentBlock>
-                <controls:ContentBlock x:Uid="SettingsPage_ContentBlock_AboutApp"
+                <controls:ContentBlock x:Uid="SettingsPage_AboutApp"
                                        Width="{StaticResource SettingPageContentBlockWidth}"
                                        Margin="{StaticResource SettingPageControlsHorizontalMargin}">
                     <controls:ContentBlock.Content>
@@ -76,6 +76,32 @@
                                         Command="{x:Bind ViewModel.OpenLinkCommand}"
                                         CommandParameter="{x:Bind service:AppContextService.TelegramLink}"/>
             </StackPanel>
+            <controls:ContentBlock x:Uid="SettingsPage_TeamMates"
+                                   Margin="{StaticResource SettingPageControlsVerticalMargin}">
+                <controls:ContentBlock.Content>
+                    <StackPanel>
+                        <controls:TeamMateLink x:Uid="SettingsPage_ProjectManager"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.ProjectManagerName}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_DevelopedBy"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.DeveloperName}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_UxDevelopment"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.UxDeveloperName}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_UiDevelopment"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.UiDeveloperName}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_Animation"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"/>
+                    </StackPanel>
+                </controls:ContentBlock.Content>
+            </controls:ContentBlock>
         </StackPanel>
     </Grid>
 </Page>

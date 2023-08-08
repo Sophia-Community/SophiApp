@@ -37,4 +37,6 @@
     <Thickness x:Key="SettingPageControlsVerticalMargin">0, 10, 0, 0</Thickness>
     <x:Double x:Key="SettingPageContentBlockWidth">270</x:Double>
 
+    <Thickness x:Key="SettingPageTeamMateLinkMargin">0, 0, 0, 5</Thickness>
+
 </ResourceDictionary>
