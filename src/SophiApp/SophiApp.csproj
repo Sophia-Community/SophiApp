@@ -25,6 +25,9 @@
     <IsPublishable>True</IsPublishable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\LinkedIn.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Assets\AppLogo.svg" />
     <None Remove="Assets\Discord.svg" />
     <None Remove="Assets\GitHub.svg" />
@@ -96,6 +99,12 @@
     <Content Update="Assets\Wide310x150Logo.scale-200.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\LinkedIn.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

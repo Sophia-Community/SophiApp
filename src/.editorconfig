@@ -264,3 +264,9 @@ dotnet_diagnostic.SA1503.severity = error
 
 # SA1513: Closing brace should be followed by blank line
 dotnet_diagnostic.SA1513.severity = error
+
+# S1144: Unused private types or members should be removed
+dotnet_diagnostic.S1144.severity = error
+
+# IDE0052: Unused private types or members should be removed
+dotnet_diagnostic.IDE0052.severity = error

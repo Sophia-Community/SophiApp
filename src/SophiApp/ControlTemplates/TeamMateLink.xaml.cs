@@ -8,6 +8,7 @@ namespace SophiApp.ControlTemplates
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
     using Microsoft.UI.Xaml.Media;
+    using SophiApp.Services;
 
     /// <summary>
     /// Implements the logic and appearance of the <see cref="TeamMateLink"/> element.
@@ -51,9 +52,15 @@ namespace SophiApp.ControlTemplates
             DependencyProperty.Register("Delimiter", typeof(string), typeof(TeamMateLink), new PropertyMetadata(":"));
 
         /// <summary>
+        /// <see cref="IconMargin"/>.
+        /// </summary>
+        public static readonly DependencyProperty IconMarginProperty =
+            DependencyProperty.Register("IconMargin", typeof(Thickness), typeof(TeamMateLink), new PropertyMetadata(default));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TeamMateLink"/> class.
         /// </summary>
-        public TeamMateLink() => this.InitializeComponent();
+        public TeamMateLink() => InitializeComponent();
 
         /// <summary>
         /// Gets or sets <see cref="TeamMateLink"/> icon source.
@@ -107,6 +114,28 @@ namespace SophiApp.ControlTemplates
         {
             get => (string)GetValue(DelimiterProperty);
             set => SetValue(DelimiterProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets <see cref="TeamMateLink"/> icon margin.
+        /// </summary>
+        public Thickness IconMargin
+        {
+            get => (Thickness)GetValue(IconMarginProperty);
+            set => SetValue(IconMarginProperty, value);
+        }
+
+        private void TextBlock_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            e.Handled = true;
+            AppContextService.UserCursor = ProtectedCursor;
+            ProtectedCursor = AppContextService.UrlCursor;
+        }
+
+        private void TextBlock_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            e.Handled = true;
+            ProtectedCursor = AppContextService.UserCursor;
         }
     }
 }

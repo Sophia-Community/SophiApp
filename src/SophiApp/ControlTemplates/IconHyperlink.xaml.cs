@@ -5,10 +5,10 @@
 namespace SophiApp.ControlTemplates
 {
     using System.Windows.Input;
-    using Microsoft.UI.Input;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
     using Microsoft.UI.Xaml.Media;
+    using SophiApp.Services;
 
     /// <summary>
     /// Implements the logic and appearance of the <see cref="IconHyperlink"/> element.
@@ -80,18 +80,17 @@ namespace SophiApp.ControlTemplates
             set => SetValue(TextProperty, value);
         }
 
-        private void ChangeCursor(InputSystemCursor cursor) => ProtectedCursor = cursor;
-
         private void TextBlock_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             e.Handled = true;
-            ChangeCursor(InputSystemCursor.Create(InputSystemCursorShape.Hand));
+            AppContextService.UserCursor = ProtectedCursor;
+            ProtectedCursor = AppContextService.UrlCursor;
         }
 
         private void TextBlock_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             e.Handled = true;
-            ChangeCursor(InputSystemCursor.Create(InputSystemCursorShape.Arrow));
+            ProtectedCursor = AppContextService.UserCursor;
         }
     }
 }

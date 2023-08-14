@@ -5,6 +5,7 @@
 namespace SophiApp.Services
 {
     using System.Reflection;
+    using Microsoft.UI.Input;
     using SophiApp.Contracts.Services;
 
     /// <inheritdoc/>
@@ -43,12 +44,12 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets app project manager name.
         /// </summary>
-        public const string ProjectManagerName = "Dmitry “farag” Nefedov";
+        public const string ProjectManagerName = "Dmitry \"farag\" Nefedov";
 
         /// <summary>
         /// Gets app developer name.
         /// </summary>
-        public const string DeveloperName = "Dmitry “Inestic” Demin";
+        public const string DeveloperName = "Dmitry \"Inestic\" Demin";
 
         /// <summary>
         /// Gets app UX developer name.
@@ -65,7 +66,59 @@ namespace SophiApp.Services
         /// </summary>
         public const string AnimationDeveloperName = "Maxim Nechiporenko";
 
+#pragma warning disable S1075 // URIs should not be hardcoded
+        /// <summary>
+        /// Gets app project manager url.
+        /// </summary>
+        public const string ProjectManagerUrl = "https://github.com/farag2";
+
+        /// <summary>
+        /// Gets app developer url.
+        /// </summary>
+        public const string DeveloperUrl = "https://github.com/Inestic";
+
+        /// <summary>
+        /// Gets app UX developer url.
+        /// </summary>
+        public const string UxDeveloperUrl = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
+
+        // TODO: Set UI developer link.
+
+        /// <summary>
+        /// Gets app UI developer url.
+        /// </summary>
+        public const string UiDeveloperUrl = "https://ui-developer-link-here";
+
+        // TODO: Set animation developer link.
+
+        /// <summary>
+        /// Gets app UI developer url.
+        /// </summary>
+        public const string AnimationDeveloperUrl = "https://animation-developer-link-here";
+#pragma warning restore S1075 // URIs should not be hardcoded
+
+        private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
+
+        /// <summary>
+        /// Gets or sets app user cursor.
+        /// </summary>
+        public static InputCursor UserCursor
+        {
+            get => userCursor;
+            set
+            {
+                if (userCursor != value)
+                {
+                    userCursor = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets url hovering cursor.
+        /// </summary>
+        public static InputCursor UrlCursor { get; } = InputSystemCursor.Create(InputSystemCursorShape.Hand);
 
         /// <inheritdoc/>
         public string GetBuildName() => "Daria";

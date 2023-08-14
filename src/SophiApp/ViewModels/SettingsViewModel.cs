@@ -18,7 +18,6 @@ using SophiApp.Helpers;
 public partial class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemeSelectorService themeSelectorService;
-    private readonly IUriService uriService;
 
     [ObservableProperty]
     private string build;
@@ -48,7 +47,6 @@ public partial class SettingsViewModel : ObservableRecipient
     public SettingsViewModel(IThemeSelectorService themeSelectorService, IAppContextService appContextService, IUriService uriService)
     {
         this.themeSelectorService = themeSelectorService;
-        this.uriService = uriService;
         delimiter = appContextService.GetDelimiter();
         version = appContextService.GetFullName();
         build = appContextService.GetBuildName();
@@ -73,12 +71,7 @@ public partial class SettingsViewModel : ObservableRecipient
     }
 
     /// <summary>
-    /// Gets app theme switch command.
-    /// </summary>
-    public ICommand? SwitchThemeCommand { get; }
-
-    /// <summary>
     /// Gets a resource using an identifier.
     /// </summary>
-    public ICommand? OpenLinkCommand { get; }
+    public ICommand OpenLinkCommand { get; }
 }

@@ -36,18 +36,18 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Assets/AppLogo.svg"
                                    Width="22"
-                                   Height="18"/>
+                                   Height="22"/>
                             <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="5, 0, 0, 0"/>
+                                       Margin="13, 2, 0, 0"/>
 
                             <TextBlock Text="{x:Bind ViewModel.Delimiter, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="5, -1, 0, 0"/>
+                                       Margin="5, 1, 0, 0"/>
 
                             <TextBlock Text="{x:Bind ViewModel.Build, Mode=OneWay}"
                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                       Margin="5, 0, 0, 2"
+                                       Margin="5, 2, 0, 0"
                                        Foreground="{ThemeResource WindowAccent}"/>
                         </StackPanel>
                     </controls:ContentBlock.Content>
@@ -77,28 +77,44 @@
                                         CommandParameter="{x:Bind service:AppContextService.TelegramLink}"/>
             </StackPanel>
             <controls:ContentBlock x:Uid="SettingsPage_TeamMates"
-                                   Margin="{StaticResource SettingPageControlsVerticalMargin}">
+                                   Width="{StaticResource SettingPageContentBlockDoubleWidth}"
+                                   Height="252"
+                                   Margin="{StaticResource SettingPageControlsVerticalMargin}"
+                                   HorizontalAlignment="Left">
                 <controls:ContentBlock.Content>
                     <StackPanel>
                         <controls:TeamMateLink x:Uid="SettingsPage_ProjectManager"
                                                ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.ProjectManagerName}"/>
+                                               NickName="{x:Bind service:AppContextService.ProjectManagerName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.ProjectManagerUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_DevelopedBy"
                                                ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.DeveloperName}"/>
+                                               NickName="{x:Bind service:AppContextService.DeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.DeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_UxDevelopment"
-                                               ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.UxDeveloperName}"/>
+                                               ImageSource="/Assets/LinkedIn.svg"
+                                               IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
+                                               NickName="{x:Bind service:AppContextService.UxDeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.UxDeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_UiDevelopment"
-                                               ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.UiDeveloperName}"/>
+                                               ImageSource="/Assets/LinkedIn.svg"
+                                               IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
+                                               NickName="{x:Bind service:AppContextService.UiDeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.UiDeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_Animation"
-                                               ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"/>
+                                               ImageSource="/Assets/LinkedIn.svg"
+                                               IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
+                                               NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.AnimationDeveloperUrl}"/>
                     </StackPanel>
                 </controls:ContentBlock.Content>
             </controls:ContentBlock>
