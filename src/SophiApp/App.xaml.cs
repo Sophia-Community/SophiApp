@@ -6,6 +6,7 @@ namespace SophiApp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using Microsoft.Windows.AppLifecycle;
 using SophiApp.Activation;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
@@ -14,6 +15,7 @@ using SophiApp.Notifications;
 using SophiApp.Services;
 using SophiApp.ViewModels;
 using SophiApp.Views;
+using System.Diagnostics;
 
 /// <summary>
 /// <inheritdoc/>
@@ -26,7 +28,6 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
-
         Host = Microsoft.Extensions.Hosting.Host
             .CreateDefaultBuilder()
             .UseContentRoot(AppContext.BaseDirectory)
@@ -115,13 +116,27 @@ public partial class App : Application
     }
 
     /// <summary>
+    /// Allows only one copy of the app to run.
+    /// </summary>
+    public static void SetSingleInstance()
+    {
+        var appSingletonKey = "2e340960-5e58-4e2d-b0c1-0a1b54145345";
+        var keyInstance = AppInstance.FindOrRegisterForKey(appSingletonKey);
+
+        if (!keyInstance.IsCurrent)
+        {
+            Current.Exit();
+        }
+    }
+
+    /// <summary>
     /// <inheritdoc/>
     /// </summary>
     /// <param name="args"><inheritdoc/>.</param>
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
+        GetService<IAppNotificationService>().Show(string.Format("AppNotificationPayload".GetLocalized(), AppContext.BaseDirectory));
         await GetService<IActivationService>().ActivateAsync(args);
         MainWindow.Title = Host.Services.GetService<IAppContextService>()?.GetFullName() ?? "AppDisplayName".GetLocalized();
         MainWindow.CenterOnScreen();

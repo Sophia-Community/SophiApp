@@ -9,8 +9,7 @@
              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
              xmlns:media="using:Microsoft.Xaml.Interactions.Media"
              mc:Ignorable="d"
-             Background="Transparent"
-             Margin="{StaticResource SettingPageTeamMateLinkMargin}">
+             Background="Transparent">
 
     <UserControl.Resources>
         <Storyboard x:Key="TransformStoryboard" AutoReverse="True" SpeedRatio="5">

@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.Web;
 using Microsoft.Windows.AppNotifications;
 using SophiApp.Contracts.Services;
+using SophiApp.ViewModels;
 
 public class AppNotificationService : IAppNotificationService
 {
@@ -32,7 +33,6 @@ public class AppNotificationService : IAppNotificationService
     public void Initialize()
     {
         AppNotificationManager.Default.NotificationInvoked += OnNotificationInvoked;
-
         AppNotificationManager.Default.Register();
     }
 
@@ -40,39 +40,33 @@ public class AppNotificationService : IAppNotificationService
     {
         // TODO: Handle notification invocations when your app is already running.
 
-        //// // Navigate to a specific page based on the notification arguments.
-        //// if (ParseArguments(args.Argument)["action"] == "Settings")
-        //// {
-        ////    App.MainWindow.DispatcherQueue.TryEnqueue(() =>
-        ////    {
-        ////        _navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
-        ////    });
-        //// }
+        // Navigate to a specific page based on the notification arguments.
+        if (ParseArguments(args.Argument)["action"] == "Settings")
+        {
+            App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
+            });
+        }
 
         App.MainWindow.DispatcherQueue.TryEnqueue(() =>
         {
             App.MainWindow.ShowMessageDialogAsync("TODO: Handle notification invocations when your app is already running.", "Notification Invoked");
-
             App.MainWindow.BringToFront();
         });
     }
 
+    /// <inheritdoc/>
     public bool Show(string payload)
     {
         var appNotification = new AppNotification(payload);
-
         AppNotificationManager.Default.Show(appNotification);
-
         return appNotification.Id != 0;
     }
 
-    public NameValueCollection ParseArguments(string arguments)
-    {
-        return HttpUtility.ParseQueryString(arguments);
-    }
+    /// <inheritdoc/>
+    public NameValueCollection ParseArguments(string arguments) => HttpUtility.ParseQueryString(arguments);
 
-    public void Unregister()
-    {
-        AppNotificationManager.Default.Unregister();
-    }
+    /// <inheritdoc/>
+    public void Unregister() => AppNotificationManager.Default.Unregister();
 }

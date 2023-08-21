@@ -34,10 +34,12 @@
     <None Remove="Assets\Telegram.svg" />
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
     <None Remove="ControlTemplates\TeamMateLink.xaml" />
+    <None Remove="Styles\Button.xaml" />
     <None Remove="Styles\Generic.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="ControlTemplates\ContentBlock.xaml" />
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
+    <None Remove="Styles\ToggleButton.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
@@ -60,6 +62,14 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WinUIEx" Version="2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -102,9 +112,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Styles\ToggleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

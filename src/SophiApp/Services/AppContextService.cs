@@ -54,12 +54,12 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets app UX developer name.
         /// </summary>
-        public const string UxDeveloperName = "Vladimir Nameless";
+        public const string UXDeveloperName = "Vladimir Nameless";
 
         /// <summary>
         /// Gets app UI developer name.
         /// </summary>
-        public const string UiDeveloperName = "Yaroslav Posmitiukh";
+        public const string UIDeveloperName = "Yaroslav Posmitiukh";
 
         /// <summary>
         /// Gets app animation developer name.
@@ -80,14 +80,12 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets app UX developer url.
         /// </summary>
-        public const string UxDeveloperUrl = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
-
-        // TODO: Set UI developer link.
+        public const string UXDeveloperUrl = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
 
         /// <summary>
         /// Gets app UI developer url.
         /// </summary>
-        public const string UiDeveloperUrl = "https://ui-developer-link-here";
+        public const string UIDeveloperUrl = "https://www.linkedin.com/in/artenjoyers/";
 
         // TODO: Set animation developer link.
 
