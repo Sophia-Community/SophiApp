@@ -128,6 +128,6 @@ namespace SophiApp.Services
         public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
 
         /// <inheritdoc/>
-        public string GetVersionName() => "Community [Private alpha]";
+        public string GetVersionName() => "Community [Private Alpha version]";
     }
 }

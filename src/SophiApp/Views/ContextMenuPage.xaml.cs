@@ -4,7 +4,6 @@
 
 namespace SophiApp.Views;
 using Microsoft.UI.Xaml.Controls;
-
 using SophiApp.ViewModels;
 
 /// <summary>

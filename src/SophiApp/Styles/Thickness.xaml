@@ -25,20 +25,10 @@
     <Thickness x:Key="XXSmallLeftTopRightBottomMargin">4,4,4,4</Thickness>
 
     <Thickness x:Key="NavigationViewContentGridBorderThickness">0,0,0,0</Thickness>
-    <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
     <Thickness x:Key="NavigationViewContentMargin">5,33,0,0</Thickness>
     <Thickness x:Key="NavigationViewHeaderMargin">32,22,0,0</Thickness>
     <Thickness x:Key="NavigationViewPageContentMargin">32,10,32,10</Thickness>
-
-    <Thickness x:Key="MenuBarContentMargin">36,24,36,0</Thickness>
-
-    <Thickness x:Key="SettingsPageIconHyperlinkMargin">0,0,0,5</Thickness>
-
-    <Thickness x:Key="SettingPageControlsHorizontalMargin">12, 0, 0, 0</Thickness>
-    <Thickness x:Key="SettingPageControlsVerticalMargin">0, 10, 0, 0</Thickness>
-    <x:Double x:Key="SettingPageContentBlockWidth">270</x:Double>
-    <x:Double x:Key="SettingPageContentBlockLargeWidth">411</x:Double>
-    <x:Double x:Key="SettingPageContentBlockHeight">110</x:Double>
+    <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
 
     <Thickness x:Key="SettingPageTeamMateLinkIconMargin">3, 3, -3, -3</Thickness>
 

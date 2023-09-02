@@ -15,7 +15,6 @@ using SophiApp.Notifications;
 using SophiApp.Services;
 using SophiApp.ViewModels;
 using SophiApp.Views;
-using System.Diagnostics;
 
 /// <summary>
 /// <inheritdoc/>
@@ -48,6 +47,7 @@ public partial class App : Application
                 _ = services.AddSingleton<INavigationService, NavigationService>();
                 _ = services.AddSingleton<IFileService, FileService>();
                 _ = services.AddSingleton<IAppContextService, AppContextService>();
+                _ = services.AddSingleton<IUIDataParserService, UIDataParserService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IUriService, UriService>();
 
@@ -138,8 +138,16 @@ public partial class App : Application
         base.OnLaunched(args);
         GetService<IAppNotificationService>().Show(string.Format("AppNotificationPayload".GetLocalized(), AppContext.BaseDirectory));
         await GetService<IActivationService>().ActivateAsync(args);
-        MainWindow.Title = Host.Services.GetService<IAppContextService>()?.GetFullName() ?? "AppDisplayName".GetLocalized();
+        SetWindowTitle();
         MainWindow.CenterOnScreen();
+        await GetService<IUIDataParserService>().ParseAsync();
+    }
+
+    private void SetWindowTitle()
+    {
+        var appContextService = Host.Services.GetService<IAppContextService>();
+        var title = $"{appContextService?.GetFullName()} {appContextService?.GetDelimiter()} {appContextService?.GetVersionName()}" ?? "AppDisplayName".GetLocalized();
+        MainWindow.Title = title;
     }
 
     private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)

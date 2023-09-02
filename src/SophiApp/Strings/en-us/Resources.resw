@@ -159,10 +159,10 @@
     <value>Settings</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>SophiApp</value>
+    <value>SophiApp Community</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>SophiApp</value>
+    <value>SophiApp Community</value>
   </data>
   <data name="UserControl_ForWindows.Text" xml:space="preserve">
     <value>for Windows®</value>
@@ -206,19 +206,28 @@
   <data name="Button_Apply.Content" xml:space="preserve">
     <value>Apply</value>
   </data>
-  <data name="Button_Disable.Content" xml:space="preserve">
-    <value>Disable</value>
-  </data>
-  <data name="Button_Enable.Content" xml:space="preserve">
-    <value>Enable</value>
-  </data>
   <data name="SettingsPage_SetDefaultSettings.Title" xml:space="preserve">
     <value>Reset all settings to default</value>
   </data>
-  <data name="SettingsPage_VisuallyImpairedVersion.Title" xml:space="preserve">
-    <value>Visually impaired version</value>
-  </data>
   <data name="SettingsPage_Links.Title" xml:space="preserve">
     <value>Links</value>
+  </data>
+  <data name="Action_DiagnosticDataLevel.ChildTitle_1" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Action_DiagnosticDataLevel.ChildTitle_2" xml:space="preserve">
+    <value>Minimal</value>
+  </data>
+  <data name="Action_DiagnosticDataLevel.Description" xml:space="preserve">
+    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected.</value>
+  </data>
+  <data name="Action_DiagnosticDataLevel.Title" xml:space="preserve">
+    <value>The OS level of diagnostic data gathering</value>
+  </data>
+  <data name="Action_DiagTrackService.Description" xml:space="preserve">
+    <value>Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub.</value>
+  </data>
+  <data name="Action_DiagTrackService.Title" xml:space="preserve">
+    <value>The telemetry service</value>
   </data>
 </root>

@@ -8,7 +8,7 @@
              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
              xmlns:media="using:Microsoft.Xaml.Interactions.Media"
              mc:Ignorable="d"
-             Background="Transparent">
+             Height="66">
 
     <UserControl.Resources>
         <Storyboard x:Key="TransformStoryboard" AutoReverse="True" SpeedRatio="5">
@@ -16,37 +16,47 @@
                              Storyboard.TargetProperty="Y"
                              Duration="00:00:0.3"
                              To="5"/>
-        </Storyboard> 
+        </Storyboard>
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ContentBlockBorder}"/>
+            <Setter Property="Background" Value="{ThemeResource ContentBlockBackground}"/>
+        </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+
             <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}"/>
         </Style>
         <Style TargetType="Image">
             <Setter Property="Width" Value="24"/>
             <Setter Property="Height" Value="24"/>
+            <Setter Property="Margin" Value="20, 0, 0, 0"/>
         </Style>
     </UserControl.Resources>
 
-    <StackPanel>
-        <StackPanel.RenderTransform>
-            <TranslateTransform x:Name="TranslateTransform" Y="0" />
-        </StackPanel.RenderTransform>
-        <Image Source="{x:Bind ImageSource, Mode=OneWay}"/>
-        <TextBlock x:Name="HyperlinkText"
-                   Style="{StaticResource IconHyperlinkTextStyle}"
-                   Text="{x:Bind Text, Mode=OneWay}"
-                   PointerEntered="TextBlock_PointerEntered"
-                   PointerExited="TextBlock_PointerExited">
-        <interactivity:Interaction.Behaviors>
-            <interactions:EventTriggerBehavior EventName="PointerPressed">
-                <media:ControlStoryboardAction Storyboard="{StaticResource TransformStoryboard}"
-                                               ControlStoryboardOption="Play"/>
-                <interactions:InvokeCommandAction Command="{x:Bind Command, Mode=OneWay}"
-                                                  CommandParameter="{x:Bind CommandParameter, Mode=OneWay}"/>
-        </interactions:EventTriggerBehavior>
-    </interactivity:Interaction.Behaviors>
-        </TextBlock>
-    </StackPanel>
+    <Border>
+        <StackPanel>
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="TranslateTransform" Y="0" />
+            </StackPanel.RenderTransform>
+            <Image Source="{x:Bind ImageSource, Mode=OneWay}"/>
+            <TextBlock x:Name="HyperlinkText"
+                       Style="{StaticResource IconHyperlinkTextStyle}"
+                       Text="{x:Bind Text, Mode=OneWay}"
+                       PointerEntered="TextBlock_PointerEntered"
+                       PointerExited="TextBlock_PointerExited">
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="PointerPressed">
+                        <media:ControlStoryboardAction Storyboard="{StaticResource TransformStoryboard}"
+                                                       ControlStoryboardOption="Play"/>
+                        <interactions:InvokeCommandAction Command="{x:Bind Command, Mode=OneWay}"
+                                                          CommandParameter="{x:Bind CommandParameter, Mode=OneWay}"/>
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </TextBlock>
+        </StackPanel>
+    </Border>
 </UserControl>

@@ -16,14 +16,17 @@ public class SettingsService : ISettingsService
     private readonly IFileService fileService;
     private readonly string optionsFolder = AppContext.BaseDirectory;
     private readonly string optionsFile = "Settings.json";
-    private IDictionary<string, object> settings;
+    private IDictionary<string, object>? settings;
     private bool isInitialized;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsService"/> class.
     /// </summary>
     /// <param name="fileService"><inheritdoc/></param>
-    public SettingsService(IFileService fileService) => this.fileService = fileService;
+    public SettingsService(IFileService fileService)
+    {
+        this.fileService = fileService;
+    }
 
     /// <summary>
     /// <inheritdoc/>

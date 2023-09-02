@@ -7,9 +7,7 @@ namespace SophiApp.Services
     using System.Diagnostics;
     using SophiApp.Contracts.Services;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class UriService : IUriService
     {
         /// <inheritdoc/>

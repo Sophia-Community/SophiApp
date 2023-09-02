@@ -11,138 +11,143 @@
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
         <helpers:BoolToInversionConverter x:Key="BoolToInversionConverter" />
     </Page.Resources>
-    <Grid>
-        <StackPanel>
-            <controls:MadeForWindows/>
-            <StackPanel Orientation="Horizontal"
-                        Margin="{StaticResource SettingPageControlsVerticalMargin}"
-                        Height="165">
-                <controls:ContentBlock x:Uid="SettingsPage_SelectedTheme"
-                                       Width="{StaticResource SettingPageContentBlockWidth}">
-                    <controls:ContentBlock.Content>
-                        <ComboBox Width="225"
-                                  ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
-                                  SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
-                                  DisplayMemberPath="Description"/>
-                    </controls:ContentBlock.Content>
-                </controls:ContentBlock>
-                <controls:ContentBlock x:Uid="SettingsPage_Links"
-                       Width="{StaticResource SettingPageContentBlockWidth}"
-                       Margin="{StaticResource SettingPageControlsHorizontalMargin}">
-                    <controls:ContentBlock.Content>
-                        <StackPanel>
-                            <controls:IconHyperlink Width="{StaticResource SettingPageContentBlockWidth}"
-                                                    Margin="{StaticResource SettingsPageIconHyperlinkMargin}"
-                                                    ImageSource="/Assets/GitHub.svg"
-                                                    Text="{x:Bind service:AppContextService.GitHubText}"
-                                                    Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                                    CommandParameter="{x:Bind service:AppContextService.GitHubLink}"/>
+    <StackPanel>
+        <controls:MadeForWindows Margin="2, 0, 0, 0"/>
+        <Grid Width="836" HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <controls:ContentBlock x:Uid="SettingsPage_SelectedTheme"
+                                   Grid.Row="0"
+                                   Width="270"
+                                   Height="145"
+                                   Margin="0, 0, 13, 13"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left">
+                <controls:ContentBlock.Content>
+                    <ComboBox Width="228"
+                              ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
+                              SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
+                              DisplayMemberPath="Description"/>
+                </controls:ContentBlock.Content>
+            </controls:ContentBlock>
 
-                            <controls:IconHyperlink Width="{StaticResource SettingPageContentBlockWidth}"
-                                                    Margin="{StaticResource SettingsPageIconHyperlinkMargin}"
-                                                    ImageSource="/Assets/Discord.svg"
-                                                    Text="{x:Bind service:AppContextService.DiscordText}"
-                                                    Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                                    CommandParameter="{x:Bind service:AppContextService.DiscordLink}"/>
+            <controls:IconHyperlink Grid.Row="0"
+                                    Width="553"
+                                    Margin="0, 0, 1, 13"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right" ImageSource="/Assets/GitHub.svg"
+                                    Text="{x:Bind service:AppContextService.GitHubText}"
+                                    Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                    CommandParameter="{x:Bind service:AppContextService.GitHubLink}"/>
 
-                            <controls:IconHyperlink Width="{StaticResource SettingPageContentBlockWidth}"
-                                                    Margin="{StaticResource SettingsPageIconHyperlinkMargin}"
-                                                    ImageSource="/Assets/Telegram.svg"
-                                                    Text="{x:Bind service:AppContextService.TelegramText}"
-                                                    Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                                    CommandParameter="{x:Bind service:AppContextService.TelegramLink}"/>
-                        </StackPanel>
-                    </controls:ContentBlock.Content>
-                </controls:ContentBlock>
-                <controls:ContentBlock x:Uid="SettingsPage_AboutApp"
-                                       Width="{StaticResource SettingPageContentBlockWidth}"
-                                       Margin="{StaticResource SettingPageControlsHorizontalMargin}">
-                    <controls:ContentBlock.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Assets/AppLogo.svg"
-                                   Width="22"
-                                   Height="22"/>
-                            <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
-                                       Style="{StaticResource NormalTextStyle}"
-                                       Margin="13, 2, 0, 0"/>
+            <controls:IconHyperlink Grid.Row="0"
+                                    Width="270"
+                                    Margin="0, 0, 283, 13"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    ImageSource="/Assets/Telegram.svg"
+                                    Text="{x:Bind service:AppContextService.TelegramText}"
+                                    Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                    CommandParameter="{x:Bind service:AppContextService.TelegramLink}"/>
 
-                            <TextBlock Text="{x:Bind ViewModel.Delimiter, Mode=OneWay}"
-                                       Style="{StaticResource NormalTextStyle}"
-                                       Margin="5, 1, 0, 0"/>
+            <controls:IconHyperlink Grid.Row="0"
+                                    Width="270"
+                                    Margin="0, 0, 1, 13"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    ImageSource="/Assets/Discord.svg"
+                                    Text="{x:Bind service:AppContextService.DiscordText}"
+                                    Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                    CommandParameter="{x:Bind service:AppContextService.DiscordLink}"/>
 
-                            <TextBlock Text="{x:Bind ViewModel.Build, Mode=OneWay}"
-                                       Style="{StaticResource NormalTextStyle}"
-                                       Margin="5, 2, 0, 0"
-                                       Foreground="{ThemeResource WindowAccent}"/>
-                        </StackPanel>
-                    </controls:ContentBlock.Content>
-                </controls:ContentBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Margin="{StaticResource SettingPageControlsVerticalMargin}">
-                <StackPanel>
-                    <controls:ContentBlock x:Uid="SettingsPage_VisuallyImpairedVersion"
-                                           Width="{StaticResource SettingPageContentBlockLargeWidth}"
-                                           Height="{StaticResource SettingPageContentBlockHeight}">
-                        <controls:ContentBlock.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <ToggleButton x:Uid="Button_Enable"/>
-                                <ToggleButton x:Uid="Button_Disable"/>
-                            </StackPanel>
-                        </controls:ContentBlock.Content>
-                    </controls:ContentBlock>
-                    <controls:ContentBlock x:Uid="SettingsPage_SetDefaultSettings"
-                                           Width="{StaticResource SettingPageContentBlockLargeWidth}"
-                                           Height="{StaticResource SettingPageContentBlockHeight}"
-                                           Margin="{StaticResource SettingPageControlsVerticalMargin}">
-                        <controls:ContentBlock.Content>
-                            <Button x:Uid="Button_Apply"
-                                    Style="{StaticResource AccentButtonStyle}"/>
-                        </controls:ContentBlock.Content>
-                    </controls:ContentBlock>
-                </StackPanel>
-                <controls:ContentBlock x:Uid="SettingsPage_TeamMates"
-                       Width="{StaticResource SettingPageContentBlockLargeWidth}"
-                       Height="232"
-                       Margin="{StaticResource SettingPageControlsHorizontalMargin}">
-                    <controls:ContentBlock.Content>
-                        <StackPanel>
-                            <controls:TeamMateLink x:Uid="SettingsPage_ProjectManager"
-                                   ImageSource="/Assets/GitHub.svg"
-                                   NickName="{x:Bind service:AppContextService.ProjectManagerName}"
-                                   Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                   CommandParameter="{x:Bind service:AppContextService.ProjectManagerUrl}"/>
+            <controls:ContentBlock x:Uid="SettingsPage_AboutApp"
+                                   Grid.Row="1"
+                                   Width="412"
+                                   Height="108"
+                                   Margin="0, 0, 13, 13"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left">
+                <controls:ContentBlock.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/AppLogo.svg"
+                               Width="22"
+                               Height="22"/>
 
-                            <controls:TeamMateLink x:Uid="SettingsPage_DevelopedBy"
-                                   ImageSource="/Assets/GitHub.svg"
-                                   NickName="{x:Bind service:AppContextService.DeveloperName}"
-                                   Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                   CommandParameter="{x:Bind service:AppContextService.DeveloperUrl}"/>
+                        <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
+                                   Style="{StaticResource NormalTextStyle}"
+                                   Margin="13, 2, 0, 0"/>
 
-                            <controls:TeamMateLink x:Uid="SettingsPage_UxDevelopment"
-                                   ImageSource="/Assets/LinkedIn.svg"
-                                   IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
-                                   NickName="{x:Bind service:AppContextService.UXDeveloperName}"
-                                   Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                   CommandParameter="{x:Bind service:AppContextService.UXDeveloperUrl}"/>
+                        <TextBlock Text="{x:Bind ViewModel.Delimiter, Mode=OneWay}"
+                                   Style="{StaticResource NormalTextStyle}"
+                                   Margin="5, 1, 0, 0"/>
 
-                            <controls:TeamMateLink x:Uid="SettingsPage_UiDevelopment"
-                                   ImageSource="/Assets/LinkedIn.svg"
-                                   IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
-                                   NickName="{x:Bind service:AppContextService.UIDeveloperName}"
-                                   Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                   CommandParameter="{x:Bind service:AppContextService.UIDeveloperUrl}"/>
+                        <TextBlock Text="{x:Bind ViewModel.Build, Mode=OneWay}"
+                                   Style="{StaticResource NormalTextStyle}"
+                                   Margin="5, 2, 0, 0"
+                                   Foreground="{ThemeResource WindowAccent}"/>
+                    </StackPanel>
+                </controls:ContentBlock.Content>
+            </controls:ContentBlock>
 
-                            <controls:TeamMateLink x:Uid="SettingsPage_Animation"
-                                   ImageSource="/Assets/LinkedIn.svg"
-                                   IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
-                                   NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"
-                                   Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                   CommandParameter="{x:Bind service:AppContextService.AnimationDeveloperUrl}"/>
-                        </StackPanel>
-                    </controls:ContentBlock.Content>
-                </controls:ContentBlock>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+            <controls:ContentBlock x:Uid="SettingsPage_SetDefaultSettings"
+                                   Grid.Row="1"
+                                   Width="412"
+                                   Height="108"
+                                   Margin="0, 121, 0, 13"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Left">
+                <controls:ContentBlock.Content>
+                    <Button x:Uid="Button_Apply"
+                            Style="{StaticResource AccentButtonStyle}"/>
+                </controls:ContentBlock.Content>
+            </controls:ContentBlock>
+
+            <controls:ContentBlock x:Uid="SettingsPage_TeamMates"
+                                   Grid.Row="1"
+                                   Width="412"
+                                   Height="229"
+                                   Margin="0, 0, 1, 0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Right">
+                <controls:ContentBlock.Content>
+                    <StackPanel>
+                        <controls:TeamMateLink x:Uid="SettingsPage_ProjectManager"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.ProjectManagerName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.ProjectManagerUrl}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_DevelopedBy"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.DeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.DeveloperUrl}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_UxDevelopment"
+                                               ImageSource="/Assets/LinkedIn.svg"
+                                               IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
+                                               NickName="{x:Bind service:AppContextService.UXDeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.UXDeveloperUrl}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_UiDevelopment"
+                                               ImageSource="/Assets/LinkedIn.svg"
+                                               IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
+                                               NickName="{x:Bind service:AppContextService.UIDeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.UIDeveloperUrl}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_Animation"
+                                               ImageSource="/Assets/LinkedIn.svg"
+                                               IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
+                                               NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.AnimationDeveloperUrl}"/>
+                    </StackPanel>
+                </controls:ContentBlock.Content>
+            </controls:ContentBlock>
+        </Grid>
+    </StackPanel>
 </Page>
