@@ -1,4 +1,4 @@
-﻿// <copyright file="UwpPage.xaml.cs" company="Team Sophia">
+﻿// <copyright file="UWPPage.xaml.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -7,23 +7,23 @@ using Microsoft.UI.Xaml.Controls;
 using SophiApp.ViewModels;
 
 /// <summary>
-/// Implements the <see cref="UwpPage"/> class.
+/// Implements the <see cref="UWPPage"/> class.
 /// </summary>
-public sealed partial class UwpPage : Page
+public sealed partial class UWPPage : Page
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="UwpPage"/> class.
+    /// Initializes a new instance of the <see cref="UWPPage"/> class.
     /// </summary>
-    public UwpPage()
+    public UWPPage()
     {
-        ViewModel = App.GetService<UwpViewModel>();
+        ViewModel = App.GetService<UWPViewModel>();
         InitializeComponent();
     }
 
     /// <summary>
-    /// Gets <see cref="UwpViewModel"/>.
+    /// Gets <see cref="UWPViewModel"/>.
     /// </summary>
-    public UwpViewModel ViewModel
+    public UWPViewModel ViewModel
     {
         get;
     }

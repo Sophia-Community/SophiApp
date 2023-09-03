@@ -16,7 +16,7 @@ namespace SophiApp.Helpers
         Security,
         System,
         TaskScheduler,
-        Uwp,
+        UWP,
     }
 #pragma warning restore CS1591 // There is no XML comment for an open visible type or member.
 }

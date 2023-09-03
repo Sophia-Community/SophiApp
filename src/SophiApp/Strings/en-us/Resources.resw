@@ -126,8 +126,8 @@
   <data name="Shell_System.Content" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="Shell_Uwp.Content" xml:space="preserve">
-    <value>Uwp</value>
+  <data name="Shell_UWP.Content" xml:space="preserve">
+    <value>UWP</value>
   </data>
   <data name="Shell_TaskScheduler.Content" xml:space="preserve">
     <value>Task Scheduler</value>
@@ -171,22 +171,22 @@
     <value>Made with</value>
   </data>
   <data name="SettingsPage_SelectedTheme.Title" xml:space="preserve">
-    <value>App themes</value>
+    <value>Theme</value>
   </data>
   <data name="SettingsPage_AboutApp.Title" xml:space="preserve">
-    <value>About app</value>
+    <value>About</value>
   </data>
   <data name="Settings_Themes_Dark" xml:space="preserve">
     <value>Dark</value>
   </data>
   <data name="Settings_Themes_Default" xml:space="preserve">
-    <value>Like in Windows</value>
+    <value>Follow Windows theme</value>
   </data>
   <data name="Settings_Themes_Light" xml:space="preserve">
     <value>Light</value>
   </data>
   <data name="SettingsPage_TeamMates.Title" xml:space="preserve">
-    <value>Team mates</value>
+    <value>Team</value>
   </data>
   <data name="SettingsPage_Animation.WorkedOn" xml:space="preserve">
     <value>Animation</value>

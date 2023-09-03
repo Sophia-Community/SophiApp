@@ -62,8 +62,8 @@ public partial class App : Application
                 _ = services.AddTransient<SecurityPage>();
                 _ = services.AddTransient<TaskSchedulerViewModel>();
                 _ = services.AddTransient<TaskSchedulerPage>();
-                _ = services.AddTransient<UwpViewModel>();
-                _ = services.AddTransient<UwpPage>();
+                _ = services.AddTransient<UWPViewModel>();
+                _ = services.AddTransient<UWPPage>();
                 _ = services.AddTransient<SystemViewModel>();
                 _ = services.AddTransient<SystemPage>();
                 _ = services.AddTransient<PersonalizationViewModel>();
