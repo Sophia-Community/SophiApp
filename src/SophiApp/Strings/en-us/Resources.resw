@@ -212,22 +212,133 @@
   <data name="SettingsPage_Links.Title" xml:space="preserve">
     <value>Links</value>
   </data>
-  <data name="Action_DiagnosticDataLevel.ChildTitle_1" xml:space="preserve">
+  <data name="Action_DiagnosticDataLevel_ChildTitle_1" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="Action_DiagnosticDataLevel.ChildTitle_2" xml:space="preserve">
+  <data name="Action_DiagnosticDataLevel_ChildTitle_2" xml:space="preserve">
     <value>Minimal</value>
   </data>
-  <data name="Action_DiagnosticDataLevel.Description" xml:space="preserve">
+  <data name="Action_DiagnosticDataLevel_Description" xml:space="preserve">
     <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected.</value>
   </data>
-  <data name="Action_DiagnosticDataLevel.Title" xml:space="preserve">
+  <data name="Action_DiagnosticDataLevel_Title" xml:space="preserve">
     <value>The OS level of diagnostic data gathering</value>
   </data>
-  <data name="Action_DiagTrackService.Description" xml:space="preserve">
+  <data name="Action_DiagTrackService_Description" xml:space="preserve">
     <value>Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub.</value>
   </data>
-  <data name="Action_DiagTrackService.Title" xml:space="preserve">
+  <data name="Action_DiagTrackService_Title" xml:space="preserve">
     <value>The telemetry service</value>
+  </data>
+  <data name="SettingsPage_AppTester.WorkedOn" xml:space="preserve">
+    <value>Tester</value>
+  </data>
+  <data name="Action_ErrorReporting_Description" xml:space="preserve">
+    <value>The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.</value>
+  </data>
+  <data name="Action_ErrorReporting_Title" xml:space="preserve">
+    <value>The Windows Error Reporting</value>
+  </data>
+  <data name="Action_AdvertisingID_Title" xml:space="preserve">
+    <value>Let apps show me personalized ads by using my advertising ID</value>
+  </data>
+  <data name="Action_AppsSilentInstalling_Title" xml:space="preserve">
+    <value>Turn on automatic suggested app installation</value>
+  </data>
+  <data name="Action_BingSearch_Title" xml:space="preserve">
+    <value>Enable Bing search in the Start Menu</value>
+  </data>
+  <data name="Action_FeedbackFrequency_ChildTitle_1" xml:space="preserve">
+    <value>Automatically</value>
+  </data>
+  <data name="Action_FeedbackFrequency_ChildTitle_2" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="Action_FeedbackFrequency_Description" xml:space="preserve">
+    <value>Choose how often Windows asks for your feedback.</value>
+  </data>
+  <data name="Action_FeedbackFrequency_Title" xml:space="preserve">
+    <value>Feedback frequency</value>
+  </data>
+  <data name="Action_LanguageListAccess_Title" xml:space="preserve">
+    <value>Let websites provide locally relevant content by accessing language list</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_1" xml:space="preserve">
+    <value>Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_2" xml:space="preserve">
+    <value>This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_3" xml:space="preserve">
+    <value>If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_4" xml:space="preserve">
+    <value>The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft. The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_5" xml:space="preserve">
+    <value>The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_6" xml:space="preserve">
+    <value>This task shows various Map related toasts.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_7" xml:space="preserve">
+    <value>This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_8" xml:space="preserve">
+    <value>Initializes Family Safety monitoring and enforcement.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildDescription_9" xml:space="preserve">
+    <value>The XblGameSave Standby Task, which syncronizes game progress when the OS is idle.</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_1" xml:space="preserve">
+    <value>ProgramDataUpdater</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_2" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_3" xml:space="preserve">
+    <value>Consolidator</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_4" xml:space="preserve">
+    <value>UsbCeip</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_5" xml:space="preserve">
+    <value>Microsoft-Windows-DiskDiagnosticDataCollector</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_6" xml:space="preserve">
+    <value>MapsToastTask</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_7" xml:space="preserve">
+    <value>MapsUpdateTask</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_8" xml:space="preserve">
+    <value>FamilySafetyMonitor</value>
+  </data>
+  <data name="Action_ScheduledTasks_ChildTitle_9" xml:space="preserve">
+    <value>XblGameSaveTask</value>
+  </data>
+  <data name="Action_ScheduledTasks_Title" xml:space="preserve">
+    <value>Diagnostic Tracking Tasks</value>
+  </data>
+  <data name="Action_SettingsSuggestedContent_Title" xml:space="preserve">
+    <value>Show suggested content in the Settings app</value>
+  </data>
+  <data name="Action_SigninInfo_Description" xml:space="preserve">
+    <value>Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
+  </data>
+  <data name="Action_SigninInfo_Title" xml:space="preserve">
+    <value>Use sign-in info to automatically finish setting up device after an update</value>
+  </data>
+  <data name="Action_TailoredExperiences_Title" xml:space="preserve">
+    <value>Tailored experiences</value>
+  </data>
+  <data name="Action_WhatsNewInWindows_Title" xml:space="preserve">
+    <value>Suggest ways I can finish setting up my device to get the most out of Windows</value>
+  </data>
+  <data name="Action_WindowsTips_Title" xml:space="preserve">
+    <value>Get tips and suggestions as you use Windows</value>
+  </data>
+  <data name="Action_WindowsWelcomeExperience_Title" xml:space="preserve">
+    <value>Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers</value>
   </data>
 </root>

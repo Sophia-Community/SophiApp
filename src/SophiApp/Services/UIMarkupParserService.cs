@@ -1,4 +1,4 @@
-﻿// <copyright file="UIDataParserService.cs" company="Team Sophia">
+﻿// <copyright file="UIMarkupParserService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -12,7 +12,7 @@ namespace SophiApp.Services
     using Windows.ApplicationModel.Resources.Core;
 
     /// <inheritdoc/>
-    public class UIDataParserService : IUIDataParserService
+    public class UIMarkupParserService : IUIMarkupParserService
     {
         /// <inheritdoc/>
         public async Task ParseAsync()
@@ -21,7 +21,7 @@ namespace SophiApp.Services
             var a = await Json.ToObjectAsync<IEnumerable<UIControlDto>>(markupResource);
 
             var stringResourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
-            var str = stringResourceMap.GetValue("Action_DiagnosticDataLevel/ChildTitle_1").ValueAsString;
+            var str = stringResourceMap.GetValue("Action_DiagnosticDataLevel/ChildTitle1").ValueAsString;
         }
     }
 }

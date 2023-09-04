@@ -66,6 +66,11 @@ namespace SophiApp.Services
         /// </summary>
         public const string AnimationDeveloperName = "Maxim Nechiporenko";
 
+        /// <summary>
+        /// Gets app tester name.
+        /// </summary>
+        public const string AppTesterName = "Eugene \"lowlif3\" Zabronsky";
+
 #pragma warning disable S1075 // URIs should not be hardcoded
         /// <summary>
         /// Gets app project manager url.
@@ -80,19 +85,22 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets app UX developer url.
         /// </summary>
-        public const string UXDeveloperUrl = "https://www.linkedin.com/in/vladimir-nameless-132745a1/";
+        public const string UXDeveloperUrl = "https://www.linkedin.com/in/vladimir-palii-132745a1";
 
         /// <summary>
         /// Gets app UI developer url.
         /// </summary>
-        public const string UIDeveloperUrl = "https://www.linkedin.com/in/artenjoyers/";
-
-        // TODO: Set animation developer link.
+        public const string UIDeveloperUrl = "https://www.linkedin.com/in/artenjoyers";
 
         /// <summary>
         /// Gets app UI developer url.
         /// </summary>
-        public const string AnimationDeveloperUrl = "https://animation-developer-link-here";
+        public const string AnimationDeveloperUrl = "https://linktr.ee/crowmax";
+
+        /// <summary>
+        /// Gets app tester url.
+        /// </summary>
+        public const string AppTesterUrl = "https://github.com/lowl1f3";
 #pragma warning restore S1075 // URIs should not be hardcoded
 
         private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);

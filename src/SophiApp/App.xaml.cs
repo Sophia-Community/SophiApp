@@ -47,7 +47,7 @@ public partial class App : Application
                 _ = services.AddSingleton<INavigationService, NavigationService>();
                 _ = services.AddSingleton<IFileService, FileService>();
                 _ = services.AddSingleton<IAppContextService, AppContextService>();
-                _ = services.AddSingleton<IUIDataParserService, UIDataParserService>();
+                _ = services.AddSingleton<IUIMarkupParserService, UIMarkupParserService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IUriService, UriService>();
 
@@ -140,7 +140,7 @@ public partial class App : Application
         await GetService<IActivationService>().ActivateAsync(args);
         SetWindowTitle();
         MainWindow.CenterOnScreen();
-        await GetService<IUIDataParserService>().ParseAsync();
+        await GetService<IUIMarkupParserService>().ParseAsync();
     }
 
     private void SetWindowTitle()

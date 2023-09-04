@@ -17,12 +17,12 @@
     <ApplicationIcon>Assets\SophiApp.ico</ApplicationIcon>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UseWinUI>true</UseWinUI>
+    <IsPublishable>True</IsPublishable>
     <Version>2.0.0</Version>
+    <UseWinUI>true</UseWinUI>
     <UseStyleCop>true</UseStyleCop>
     <UseSonarAnalyzer>true</UseSonarAnalyzer>
     <UseResults>true</UseResults>
-    <IsPublishable>True</IsPublishable>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\LinkedIn.svg" />
@@ -35,7 +35,6 @@
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
     <None Remove="ControlTemplates\TeamMateLink.xaml" />
     <None Remove="Styles\Button.xaml" />
-    <None Remove="Styles\Generic.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="ControlTemplates\ContentBlock.xaml" />
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
@@ -52,6 +51,10 @@
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\Directory.Build.props" Link="Directory.Build.props" />
+    </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
@@ -137,18 +140,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="CSharpFunctionalExtensions" Version="2.40.0" />
-    <PackageReference Update="SonarAnalyzer.CSharp" Version="9.6.0.74858" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="ControlTemplates\IconHyperlink.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Styles\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

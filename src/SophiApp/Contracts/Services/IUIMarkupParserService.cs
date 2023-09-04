@@ -9,7 +9,7 @@ namespace SophiApp.Contracts.Services
     /// <summary>
     /// Service for working with "UIData.json" file.
     /// </summary>
-    public interface IUIDataParserService
+    public interface IUIMarkupParserService
     {
         /// <summary>
         /// Parses the file "UIData.json" and returns a collection of <see cref="UIControlDto"/>.

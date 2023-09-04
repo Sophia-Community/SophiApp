@@ -107,7 +107,7 @@
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_ProVersion" 
                                     helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.ProVersionViewModel"
-                                    Background="{ThemeResource NavigationViewItemPro}"
+                                    Background="{ThemeResource NavigationViewProBackground}"
                                     Margin="0, 20, 0, 0">
                     <NavigationViewItem.Icon>
                         <PathIcon Foreground="{ThemeResource WindowAccent}"
@@ -118,8 +118,7 @@
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
-                        <TextBlock Text="{Binding}"
-                                   Style="{ThemeResource TitleTextBlockStyle}"/>
+                        <TextBlock Text="{Binding}" Style="{ThemeResource TitleTextBlockStyle}"/>
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
@@ -128,8 +127,7 @@
                     <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                         <DataTemplate>
                             <Grid>
-                                <TextBlock Text="{Binding}"
-                                           Style="{ThemeResource TitleTextBlockStyle}" />
+                                <TextBlock Text="{Binding}" Style="{ThemeResource TitleTextBlockStyle}" />
                             </Grid>
                         </DataTemplate>
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>

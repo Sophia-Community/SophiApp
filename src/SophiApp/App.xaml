@@ -10,7 +10,6 @@
                 <ResourceDictionary Source="/Styles/Thickness.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="/Styles/Themes.xaml" />
-                <ResourceDictionary Source="/Styles/Generic.xaml" />
                 <ResourceDictionary Source="/Styles/Button.xaml" />
                 <ResourceDictionary Source="/Styles/ToggleButton.xaml" />
             </ResourceDictionary.MergedDictionaries>

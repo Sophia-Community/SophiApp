@@ -145,6 +145,12 @@
                                                NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
                                                CommandParameter="{x:Bind service:AppContextService.AnimationDeveloperUrl}"/>
+
+                        <controls:TeamMateLink x:Uid="SettingsPage_AppTester"
+                                               ImageSource="/Assets/GitHub.svg"
+                                               NickName="{x:Bind service:AppContextService.AppTesterName}"
+                                               Command="{x:Bind ViewModel.OpenLinkCommand}"
+                                               CommandParameter="{x:Bind service:AppContextService.AppTesterUrl}"/>
                     </StackPanel>
                 </controls:ContentBlock.Content>
             </controls:ContentBlock>

@@ -78,7 +78,6 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
         if (sender is Frame frame && frame.Content is Page page)
         {
             currentPage = page;
-
             UpdateHeader();
             UpdateHeaderTemplate();
         }

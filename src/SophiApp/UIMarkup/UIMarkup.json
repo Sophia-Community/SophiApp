@@ -3,767 +3,108 @@
         "Name": "DiagTrackService",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True"
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "DiagnosticDataLevel",
         "Type": "RadioGroup",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
+        "Windows10Support": "True",
+        "Windows11Support": "True",
         "ChildCounter": 2
     },
     {
         "Name": "ErrorReporting",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "The Windows Error Reporting",
-            "RU": "Запись отчетов об ошибках Windows",
-            "DE": "Windows-Fehlerberichterstattung",
-            "UA": "Запис звітів про помилки Windows",
-            "IT": "Windows Error Reporting",
-            "TR": "Windows Hata Bildirimi",
-            "CZ": "Hlášení chyb systému Windows",
-            "FR": "Le rapport d'erreurs Windows",
-            "zh_CN": "Windows 错误报告",
-            "ES": "Informe de errores de Windows",
-            "PL": "Raportowanie błędów systemu Windows"
-        },
-        "Descriptions": {
-            "EN": "The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.",
-            "RU": "Функция создания отчетов об ошибках позволяет пользователям уведомлять Майкрософт о сбоях приложений, сбоях ядра, неотвечающих приложениях и других проблемах, связанных с приложениями. Корпорация Майкрософт может использовать функцию отчетов об ошибках для предоставления клиентам сведений об устранении неполадок, решениях или обновлениях для конкретных проблем.",
-            "DE": "Mithilfe von Fehlerberichten ermöglicht Anwendern Microsoft über Software- und Kernel-Fehler, nicht mehr reagierenden Anwendung und anderen anwendungsbezogenen Probleme benachrichtigen. So kann Microsoft die gesammelten Informationen über Fehlerberichterstellung verwenden, um den Kunden Informationen zur Fehlerbehebung, Lösungen uUpdates für ihre spezifischen Probleme zur Verfügung zu stellen.",
-            "UA": "Функція створення звітів про помилки дозволяє користувачам повідомляти Майкрософт про збої програм, збої ядра, програми, що не відповідають, та інші проблеми, пов'язані з програмами. Корпорація Майкрософт може використовувати функцію звітів про помилки для надання клієнтам відомостей про виправлення неполадок, рішення або оновлення для конкретних проблем.",
-            "IT": "Il servizio di segnalazine degli errori permette agli utenti di segnalare a  Microsoft i crash delle app e del kernel, cosicchè vengano fornite soluzione ai problemi riportati.",
-            "TR": "Hata raporlama özelliği, kullanıcıların Microsoft'u uygulama hataları, çekirdek hataları, yanıt vermeyen uygulamalar ve diğer uygulamaya özel sorunlar hakkında bilgilendirmelerini sağlar. Microsoft, hata raporlama özelliğini müşterilere sorun giderme bilgileri, çözümleri veya sorunları için güncelleştirmeler sağlamak için kullanabilir. özel sorunlar.",
-            "CZ": "Funkce hlášení chyb umožňuje uživatelům upozorňovat společnost Microsoft na chyby aplikací, chyby jádra, nereagující aplikace a další specifické problémy aplikací. Společnost Microsoft může pomocí funkce hlášení chyb poskytnout zákazníkům informace o řešení problémů, řešení nebo aktualizace pro jejich konkrétní problémy.",
-            "FR": "La fonction de rapport d'erreurs permet aux utilisateurs d'informer Microsoft des erreurs d'application, des erreurs de noyau, des applications qui ne répondent pas et d'autres problèmes spécifiques à l'application. Microsoft peut utiliser la fonctionnalité de rapport d'erreurs pour fournir aux clients des informations de dépannage, des solutions ou des mises à jour pour leurs problèmes spécifiques.",
-            "zh_CN": "错误报告功能使用户能够将应用程序故障、内核故障、无响应的应用程序和其他应用程序特定问题通知 Microsoft。 Microsoft 可以使用错误报告功能为客户提供故障排除信息、解决方案或针对其特定问题的更新。",
-            "ES": "La funcion de informe de errores permite a los usuarios notificar a Microsoft sobre fallas en la aplicacion, fallas en el kernel, aplicaciones que no responden y otros problemas especificos de la aplicacion. Microsoft puede usar la funcion de informe de errores para proporcionar a los clientes informacion sobre solucion de problemas, soluciones o actualizaciones para sus problemas especificos.",
-            "PL": "Funkcja raportowania błędów umożliwia użytkownikom powiadamianie firmy Microsoft o błędach aplikacji, błędach system, wolnych aplikacjach i innych problemach specyficznych dla aplikacji. Firma Microsoft może korzystać z funkcji raportowania błędów, aby dostarczać klientom informacje dotyczące rozwiązywania problemów, rozwiązania lub aktualizacje dotyczące ich konkretnych problemów."
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "FeedbackFrequency",
         "Type": "RadioGroup",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Feedback frequency",
-            "RU": "Частота отправки запросов",
-            "DE": "Häufigkeit von Anfragen",
-            "UA": "Частота надсилання запитів",
-            "IT": "Frequenza feedback",
-            "TR": "Geri bildirim sıklığı",
-            "CZ": "Frekvence zpětné vazby",
-            "FR": "Fréquence des commentaires",
-            "zh_CN": "反馈频率",
-            "ES": "Frecuencia de retroalimentacion",
-            "PL": "Częstotliwość informacji zwrotnych"
-        },
-        "Descriptions": {
-            "EN": "Choose how often Windows asks for your feedback.",
-            "RU": "Укажите, как часто Windows следует запрашивать ваш отзыв.",
-            "DE": "Wie oft soll Windows nach Ihrem Feedback fragen?",
-            "UA": "Вкажіть, як часто Windows слід запитувати ваш відгук.",
-            "IT": "Frequenza richiesta feedback da parte di windows.",
-            "TR": "Windows'un ne sıklıkta geri bildiriminizi isteyeceğini seçin.",
-            "CZ": "Vyberte, jak často vás systém Windows žádá o zpětnou vazbu.",
-            "FR": "Choisissez la fréquence à laquelle Windows vous demande vos commentaires.",
-            "zh_CN": "选择 Windows 要求您提供反馈的频率。",
-            "ES": "Elija la frecuencia con la que Windows solicita sus comentarios.",
-            "PL": "Wybierz, jak często system Windows może prosić o Twoją opinię."
-        },
-        "Childs": [
-            {
-                "Type": "RadioButton",
-                "Headers": {
-                    "EN": "Automatically",
-                    "RU": "Автоматически",
-                    "DE": "Automatisch",
-                    "UA": "Автоматично",
-                    "IT": "Automatica",
-                    "TR": "Otomatik olarak",
-                    "CZ": "Automaticky",
-                    "FR": "Automatiquement",
-                    "zh_CN": "自动",
-                    "ES": "Automaticamente",
-                    "PL": "Automatycznie"
-                },
-                "Descriptions": {
-                    "EN": "",
-                    "RU": "",
-                    "DE": "",
-                    "UA": "",
-                    "IT": "",
-                    "TR": "",
-                    "CZ": "",
-                    "FR": "",
-                    "zh_CN": "",
-                    "ES": "",
-                    "PL": ""
-                }
-            },
-            {
-                "Type": "RadioButton",
-                "Headers": {
-                    "EN": "Never",
-                    "RU": "Никогда",
-                    "DE": "Nie",
-                    "UA": "Ніколи",
-                    "IT": "Mai",
-                    "TR": "Hiçbir zaman",
-                    "CZ": "Nikdy",
-                    "FR": "Jamais",
-                    "zh_CN": "从不",
-                    "ES": "Nunca",
-                    "PL": "Nigdy"
-                },
-                "Descriptions": {
-                    "EN": "",
-                    "RU": "",
-                    "DE": "",
-                    "UA": "",
-                    "IT": "",
-                    "TR": "",
-                    "CZ": "",
-                    "FR": "",
-                    "zh_CN": "",
-                    "ES": "",
-                    "PL": ""
-                }
-            }
-        ]
+        "Windows10Support": "True",
+        "Windows11Support": "True",
+        "ChildCounter": 2
     },
     {
         "Name": "ScheduledTasks",
         "Type": "ExpandingGroup",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Diagnostic Tracking Tasks",
-            "RU": "Задачи диагностического отслеживания",
-            "DE": "Diagnostische Tracking-Aufgaben",
-            "UA": "Завдання діагностичного відстеження",
-            "IT": "Operazioni pianificate di raccolta dati",
-            "TR": "Teşhis İzleme Görevleri",
-            "CZ": "Úlohy diagnostického sledování",
-            "FR": "Tâches de suivi de diagnostic",
-            "zh_CN": "诊断跟踪任务",
-            "ES": "Tareas de seguimiento de diagnostico",
-            "PL": "Zadania śledzenia diagnostycznego"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": "",
-            "DE": "",
-            "UA": "",
-            "IT": "",
-            "TR": "",
-            "CZ": "",
-            "FR": "",
-            "zh_CN": "",
-            "ES": "",
-            "PL": ""
-        },
-        "Childs": [
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "ProgramDataUpdater",
-                    "RU": "ProgramDataUpdater",
-                    "DE": "ProgramDataUpdater",
-                    "UA": "ProgramDataUpdater",
-                    "IT": "ProgramDataUpdater",
-                    "TR": "ProgramDataUpdater",
-                    "CZ": "ProgramDataUpdater",
-                    "FR": "ProgramDataUpdater",
-                    "zh_CN": "ProgramDataUpdater",
-                    "ES": "ProgramDataUpdater",
-                    "PL": "ProgramDataUpdater"
-                },
-                "Descriptions": {
-                    "EN": "Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program.",
-                    "RU": "Сбор телеметрических данных программы при участии в программе улучшения качества ПО.",
-                    "DE": "Telemetriedatenerfassung in der Programm zur Verbesserung der Benutzerfreundlichkeit der Software.",
-                    "UA": "Збір телеметричних даних програми за участю у програмі покращення якості ПЗ.",
-                    "IT": "Colleziona dati sui programmi se si aderisce al Microsoft Customer Experience Improvement Program.",
-                    "TR": "Microsoft Müşteri Deneyimini Geliştirme Programına dahil edilmişse program telemetri bilgilerini toplar.",
-                    "CZ": "Shromažďuje informace o telemetrii programu, pokud jste přihlášeni do programu Microsoft Customer Experience Improvement Program.",
-                    "FR": "Collecte les informations de télémétrie du programme si vous avez opté pour le programme d'amélioration du produit Microsoft.",
-                    "zh_CN": "如果选择加入 Microsoft 客户体验改善计划，则收集计划遥测信息。",
-                    "ES": "Recopila informacion de telemetria del programa si se inscribio en el Programa de mejora de la experiencia del cliente de Microsoft.",
-                    "PL": "Gromadzi dane telemetryczne programu, jeśli wyrażono zgodę w programie Microsoft Customer Experience Improvement firmy Microsoft."
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "Proxy",
-                    "RU": "Proxy",
-                    "DE": "Proxy",
-                    "UA": "Proxy",
-                    "IT": "Proxy",
-                    "TR": "Proxy",
-                    "CZ": "Proxy",
-                    "FR": "Proxy",
-                    "zh_CN": "Proxy",
-                    "ES": "Proxy",
-                    "PL": "Proxy"
-                },
-                "Descriptions": {
-                    "EN": "This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program.",
-                    "RU": "Эта задача собирает и загружает данные SQM при участии в программе улучшения качества программного обеспечения.",
-                    "DE": "Diese Aufgabe sammelt und lädt autochk SQM-Daten hoch beim Teilnehmen am Programm zur Verbesserung der Benutzerfreundlichkeit.",
-                    "UA": "Це завдання збирає та завантажує дані SQM за участю у програмі покращення якості програмного забезпечення.",
-                    "IT": "Questo processo collezziona ed invia i dati autochk SQM se si aderisce al Microsoft Customer Experience Improvement Program.",
-                    "TR": "Bu görev, Microsoft Müşteri Deneyimini Geliştirme Programına dahil edilmişse otomatik SQM verilerini toplar ve karşıya yükler.",
-                    "CZ": "Tato úloha shromažďuje a odesílá data autochk SQM, pokud jste přihlášeni do programu Microsoft Customer Experience Improvement Program.",
-                    "FR": "Cette tâche collecte et charge les données SQM de contrôle automatique si l'option correspondante a été activée dans le Programme d'amélioration des services.",
-                    "zh_CN": "如果选择加入 Microsoft 客户体验改善计划，此任务将收集并上传 autochk SQM 数据。",
-                    "ES": "Esta tarea recopila y carga datos de Autochk SQM si se inscribio en el Programa de mejora de la experiencia del cliente de Microsoft.",
-                    "PL": "To zadanie zbiera i przesyła dane autochk SQM, jeśli wyrażono zgodę na udział w programie Microsoft Customer Experience Improvement firmy Microsoft."
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "Consolidator",
-                    "RU": "Consolidator",
-                    "DE": "Consolidator",
-                    "UA": "Consolidator",
-                    "IT": "Consolidatore",
-                    "TR": "Consolidator",
-                    "CZ": "Consolidator",
-                    "FR": "Consolidator",
-                    "zh_CN": "Consolidator",
-                    "ES": "consolidador",
-                    "PL": "Consolidator"
-                },
-                "Descriptions": {
-                    "EN": "If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft.",
-                    "RU": "Если пользователь изъявил желание участвовать в программе по улучшению качества программного обеспечения Windows, эта задача будет собирать и отправлять сведения о работе программного обеспечения в Майкрософт.",
-                    "DE": "Wenn der Benutzer der Teilnahme am Windows-Programm zur Verbesserung der Benutzerfreundlichkeit zugestimmt hat, erfasst diese Aufgabe Verwendungsdaten, die an Microsoft gesendet werden.",
-                    "UA": "Якщо користувач виявив бажання брати участь у програмі з покращення якості програмного забезпечення Windows, це завдання буде збирати та надсилати відомості про роботу програмного забезпечення до корпорації Майкрософт.",
-                    "IT": "Se si aderisce Windows Customer Experience Improvement Program, questo processo colleziona e invia dati d'utilizo alla Microsoft.",
-                    "TR": "Kullanıcı, Windows Müşteri Deneyimini Geliştirme Programına katılmayı kabul ettiyse, bu iş kullanım verilerini toplar ve Microsoft'a gönderir.",
-                    "CZ": "Pokud uživatel souhlasil s účastí v programu Windows Customer Experience Improvement Program, tato úloha shromažďuje a odesílá údaje o využití společnosti Microsoft.",
-                    "FR": "Si l'utilisateur a consenti à participer au programme d'amélioration de l'expérience client Windows, cette tâche collecte et envoie des données d'utilisation à Microsoft.",
-                    "zh_CN": "如果用户已同意参与 Windows 客户体验改善计划，则此作业会收集使用数据并将其发送给 Microsoft。",
-                    "ES": "Si el usuario ha dado su consentimiento para participar en el Programa de mejora de la experiencia del usuario de Windows, este trabajo recopila y envia datos de uso a Microsoft.",
-                    "PL": "Jeśli użytkownik wyraził zgodę na udział w programie Windows Customer Experience Improvement, to zadanie zbiera i wysyła dane dotyczące użytkowania do firmy Microsoft."
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "UsbCeip",
-                    "RU": "UsbCeip",
-                    "DE": "UsbCeip",
-                    "UA": "UsbCeip",
-                    "IT": "UsbCeip",
-                    "TR": "UsbCeip",
-                    "CZ": "UsbCeip",
-                    "FR": "UsbCeip",
-                    "zh_CN": "UsbCeip",
-                    "ES": "UsbCeip",
-                    "PL": "UsbCeip"
-                },
-                "Descriptions": {
-                    "EN": "The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft. The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything.",
-                    "RU": "При выполнении задачи программы улучшения качества ПО шины USB (USB CEIP) осуществляется сбор статистических данных об использовании универсальной последовательной шины USB и сведений о компьютере, которые направляются инженерной группе Майкрософт по вопросам подключения устройств в Windows. Полученные сведения используются для повышения надежности, стабильности и общей производительности шины USB в Windows. При отсутствии согласия пользователя на участие в программе улучшения программного обеспечения Windows задача не выполняет никаких действий.",
-                    "DE": "Die USB-CEIP-Aufgabe (Customer Experience Improvement Program) sammelt und speichert Statistiken und Informationen über Ihren Computer, die sich auf den Universal Serial Bus beziehen, und sendet sie an die Windows Device Connectivity Engineering Group bei Microsoft. Die erhaltenen Informationen werden verwendet, um die Zuverlässigkeit, Stabilität und allgemeine Funktionalität von USB in Windows zu verbessern. Wenn der Benutzer nicht zugestimmt hat, an Windows CEIP teilzunehmen, führt diese Aufgabe nichts aus.",
-                    "UA": "При виконанні завдання програми покращення якості ПЗ шини USB (USB CEIP) здійснюється збір статистичних даних про використання універсальної послідовної шини USB та відомостей про комп'ютер, що надсилаються інженерній групі Майкрософт з питань підключення пристроїв у Windows. Отримані відомості використовуються для підвищення надійності, стабільності та загальної продуктивності шини USB у Windows. За відсутності згоди користувача на участь у програмі покращення програмного забезпечення Windows завдання не виконує жодних дій.",
-                    "IT": "Il processo USB CEIP (Customer Experience Improvement Program) colleziona dati relativi all'USB ed informazioni sul dispositivo e li invia al team  Windows Device Connectivity engineering  della Microsoft. Tali informazioni servono per migliorare il funzionamento dell'USB in Windows. Se l'utente non participa al programma Windows CEIP, questo processo non fà nulla.",
-                    "TR": "USB CEIP (Müşteri Deneyimi Geliştirme Programı) görevi, Evrensel Seri Veri Yolu ile ilgili istatistikleri ve makinenizle ilgili bilgileri toplar ve bunları Microsoft'taki Windows Aygıt Bağlantısı mühendislik grubuna gönderir. Alınan bilgiler, Windows'ta USB'nin güvenilirliğini, kararlılığını ve genel işlevselliğini geliştirmeye yardımcı olmak için kullanılır. Kullanıcı Windows CEIP'e katılmayı kabul etmemişse, bu görev hiçbir şey yapmaz.",
-                    "CZ": "Úloha USB CEIP (Customer Experience Improvement Program) shromažďuje statistiky a informace o vašem počítači související s Universal Serial Bus a odesílá je do technické skupiny Windows Device Connectivity ve společnosti Microsoft. Získané informace se používají ke zlepšení spolehlivosti, stability a celkové funkčnosti USB v systému Windows. Pokud uživatel nesouhlasil s účastí v programu Windows CEIP, tato úloha neprovede nic.",
-                    "FR": "La tâche USB CEIP (Programme d'amélioration de l'expérience client) collecte des statistiques et des informations relatives à Universal Serial Bus sur votre machine et les envoie au groupe d'ingénierie Windows Device Connectivity de Microsoft. Les informations reçues sont utilisées pour aider à améliorer la fiabilité, la stabilité et la fonctionnalité globale de l'USB dans Windows. Si l'utilisateur n'a pas consenti à participer à Windows CEIP, cette tâche ne fait rien.",
-                    "zh_CN": "USB CEIP（客户体验改善计划）任务收集有关您的计算机的通用串行总线相关统计数据和信息，并将其发送到 Microsoft 的 Windows 设备连接工程组。 收到的信息用于帮助提高 Windows 中 USB 的可靠性、稳定性和整体功能。 如果用户未同意参与 Windows CEIP，则此任务不会执行任何操作。",
-                    "ES": "La tarea USB CEIP (Programa de mejora de la experiencia del cliente) recopila informacion y estadisticas relacionadas con Universal Serial Bus sobre su maquina y las envia al grupo de ingenieria de Conectividad de dispositivos de Windows en Microsoft. La informacion recibida se usa para ayudar a mejorar la confiabilidad, la estabilidad y la funcionalidad general de USB en Windows. Si el usuario no ha dado su consentimiento para participar en Windows CEIP, esta tarea no hace nada.",
-                    "PL": "Zadanie USB CEIP (Customer Experience Improvement Program) gromadzi statystyki i informacje o maszynie związane z Universal Serial Bus i wysyła je do  grupy inżynierów Windows Device Connectivity w firmie Microsoft. Otrzymane informacje służą poprawie niezawodności, stabilności i ogólnej funkcjonalności USB w systemie Windows. Jeśli użytkownik nie wyraził zgody na uczestnictwo w Windows CEIP, to zadanie nic nie robi"
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "RU": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "DE": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "UA": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "IT": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "TR": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "CZ": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "FR": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "zh_CN": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "ES": "Microsoft-Windows-DiskDiagnosticDataCollector",
-                    "PL": "Microsoft-Windows-DiskDiagnosticDataCollector"
-                },
-                "Descriptions": {
-                    "EN": "The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program.",
-                    "RU": "Для пользователей, участвующих в программе контроля качества программного обеспечения, служба диагностики дисков Windows предоставляет общие сведения о дисках и системе в корпорацию Майкрософт.",
-                    "DE": "Die Windows-Datenträgerdiagnose meldet allgemeine Festplatten- und Systeminformationen an Microsoft für die Benutzer, die am Customer Experience Program teilnehmen.",
-                    "UA": "Для користувачів, які беруть участь у програмі контролю якості програмного забезпечення, служба діагностики дисків Windows надає загальні відомості про диски та систему до корпорації Майкрософт.",
-                    "IT": "Il report diagnostico sul disco raccoglie informazioni generali sul disco e sul sistema alla Microsoft per gli utenti partecipanti al Customer Experience Program.",
-                    "TR": "Windows Disk Tanılama, Müşteri Deneyimi Programına katılan kullanıcılar için genel disk ve sistem bilgilerini Microsoft'a bildirir.",
-                    "CZ": "Nástroj Windows Disk Diagnostic hlásí společnosti Microsoft obecné informace o disku a systému pro uživatele účastnící se programu Customer Experience Program.",
-                    "FR": "Le diagnostic de disque Windows rapporte des informations générales sur le disque et le système à Microsoft pour les utilisateurs participant au programme d'expérience client.",
-                    "zh_CN": "Windows 磁盘诊断向 Microsoft 报告参与客户体验计划的用户的一般磁盘和系统信息。",
-                    "ES": "El Diagnostico de disco de Windows informa informacion general del disco y del sistema a Microsoft para los usuarios que participan en el Programa de experiencia del cliente.",
-                    "PL": "Narzędzie Windows Disk Diagnostic zgłasza do firmy Microsoft ogólne informacje o dysku i systemie dla użytkowników uczestniczących w programie Customer Experience Program."
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "MapsToastTask",
-                    "RU": "MapsToastTask",
-                    "DE": "MapsToastTask",
-                    "UA": "MapsToastTask",
-                    "IT": "MapsToastTask",
-                    "TR": "MapsToastTask",
-                    "CZ": "MapsToastTask",
-                    "FR": "MapsToastTask",
-                    "zh_CN": "MapsToastTask",
-                    "ES": "MapsToastTask",
-                    "PL": "MapsToastTask"
-                },
-                "Descriptions": {
-                    "EN": "This task shows various Map related toasts.",
-                    "RU": "Эта задача отображает различные тостовые уведомления, относящиеся к картам.",
-                    "DE": "Diese Aufgabe zeigt verschiedene kartenbezogene Toasts.",
-                    "UA": "Це завдання відображає різні тостові повідомлення, що стосуються карт.",
-                    "IT": "Questo processo mostra notifiche riguardanti le mappe.",
-                    "TR": "Bu görev, Harita ile ilgili çeşitli gereksizleri gösterir.",
-                    "CZ": "Tento proces zobrazuje upozornění týkající se map.",
-                    "FR": "Cette tâche affiche divers toasts liés à la carte.",
-                    "zh_CN": "此任务显示各种与地图相关的 toast。",
-                    "ES": "Esta tarea muestra varios avisos relacionados con el mapa.",
-                    "PL": "To zadanie pokazuje różne powiadomienia związane z mapą"
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "MapsUpdateTask",
-                    "RU": "MapsUpdateTask",
-                    "DE": "MapsUpdateTask",
-                    "UA": "MapsUpdateTask",
-                    "IT": "MapsUpdateTask",
-                    "TR": "MapsUpdateTask",
-                    "CZ": "MapsUpdateTask",
-                    "FR": "MapsUpdateTask",
-                    "zh_CN": "MapsUpdateTask",
-                    "ES": "MapsUpdateTask",
-                    "PL": "MapsUpdateTask"
-                },
-                "Descriptions": {
-                    "EN": "This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps.",
-                    "RU": "Эта задача проверяет наличие обновлений для карт, загруженных для автономного использования. Если отключить эту задачу, Windows не сможет уведомлять вас о появлении обновленных карт.",
-                    "DE": "Diese Aufgabe sucht Updates für Karten, die haben Sie für die Offlineverwendung heruntergeladen. Deaktivierung des Tasks verhindert, dass Windows Sie über Updates für Karten informiert.",
-                    "UA": "Це завдання перевіряє наявність оновлень для карт, завантажених для автономного використання. Якщо вимкнути це завдання, Windows не зможе повідомляти вас про появу оновлених карт.",
-                    "IT": "Questo processo aggiorna le mappe offline. Disabilitandolo non verrai notificato riguardo gli aggiornamenti delle mappe.",
-                    "TR": "Bu görev, çevrimdışı kullanım için indirdiğiniz haritaların güncellemelerini kontrol eder. Bu görevi devre dışı bırakmak, Windows'un size güncellenen haritaları bildirmesini engeller.",
-                    "CZ": "Tato úloha kontroluje aktualizace map, které jste si stáhli pro offline použití. Zakázáním této úlohy zabráníte systému Windows upozorňovat vás na aktualizované mapy.6",
-                    "FR": "Cette tâche vérifie les mises à jour des cartes que vous avez téléchargées pour une utilisation hors ligne. La désactivation de cette tâche empêchera Windows de vous avertir des cartes mises à jour.",
-                    "zh_CN": "此任务检查您已下载以供离线使用的地图的更新。 禁用此任务将阻止 Windows 通知您更新的地图。",
-                    "ES": "Esta tarea busca actualizaciones de los mapas que ha descargado para su uso sin conexion. Deshabilitar esta tarea evitara que Windows le notifique sobre mapas actualizados.",
-                    "PL": "To zadanie sprawdza dostępność aktualizacji map pobranych do użytku w trybie offline. Wyłączenie tego zadania uniemożliwi systemowi Windows powiadamianie użytkownika o zaktualizowanych mapach."
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "FamilySafetyMonitor",
-                    "RU": "FamilySafetyMonitor",
-                    "DE": "FamilySafetyMonitor",
-                    "UA": "FamilySafetyMonitor",
-                    "IT": "FamilySafetyMonitor",
-                    "TR": "FamilySafetyMonitor",
-                    "CZ": "FamilySafetyMonitor",
-                    "FR": "FamilySafetyMonitor",
-                    "zh_CN": "FamilySafetyMonitor",
-                    "ES": "FamilySafetyMonitor",
-                    "PL": "FamilySafetyMonitor"
-                },
-                "Descriptions": {
-                    "EN": "Initializes Family Safety monitoring and enforcement.",
-                    "RU": "Инициализация контроля и применения правил семейной безопасности.",
-                    "DE": "Initialisierung der Überwachung und Durchsetzung der Familiensicherheit.",
-                    "UA": "Ініціалізація контролю та застосування правил сімейної безпеки.",
-                    "IT": "Avvia il monitoraggio di Family Safety.",
-                    "TR": "Aile Güvenliği izleme ve uygulamasını başlatır.",
-                    "CZ": "Inicializuje Rodičovskou kontrolu a vynucení.",
-                    "FR": "Initialise la surveillance et l'application de la sécurité familiale.",
-                    "zh_CN": "初始化家庭安全监控和执行。",
-                    "ES": "Inicializa la supervision y aplicacion de Proteccion infantil.",
-                    "PL": "Inicjuje monitorowanie i egzekwowanie Family Safety"
-                }
-            },
-            {
-                "Type": "CheckBox",
-                "Headers": {
-                    "EN": "XblGameSaveTask",
-                    "RU": "XblGameSaveTask",
-                    "DE": "XblGameSaveTask",
-                    "UA": "XblGameSaveTask",
-                    "IT": "XblGameSaveTask",
-                    "TR": "XblGameSaveTask",
-                    "CZ": "XblGameSaveTask",
-                    "FR": "XblGameSaveTask",
-                    "zh_CN": "XblGameSaveTask",
-                    "ES": "XblGameSaveTask",
-                    "PL": "XblGameSaveTask"
-                },
-                "Descriptions": {
-                    "EN": "The XblGameSave Standby Task, which syncronizes game progress when the OS is idle.",
-                    "RU": "Задание XblGameSave, синхронизирующее прогресс в игре во время простоя ОС.",
-                    "DE": "Der XblGameSave Standby Task, um den Spielfortschritt zu synchronisieren, wenn das Betriebssystem im Leerlauf ist.",
-                    "UA": "Завдання XblGameSave, що синхронізує прогрес у грі під час простою ОС.",
-                    "IT": "Il processo standbay di XblGameSave sincronizza i progressi nei videogiochi quando il sitema è inutilizzato.",
-                    "TR": "İşletim sistemi boştayken oyun ilerlemesini senkronize eden XblGameSave Bekleme Görevi.",
-                    "CZ": "Úloha XblGameSave Standby Task synchronizuje průběh hry, když je operační systém nečinný.",
-                    "FR": "Synchronise les données enregistrées pour les jeux dont la sauvegarde sur Xbox Live est activée. La tâche de veille XblGameSave synchronise la progression du jeu lorsque le système d'exploitation est inactif.",
-                    "zh_CN": "XblGameSave 待机任务，在操作系统空闲时同步游戏进度。",
-                    "ES": "La tarea en espera de XblGameSave, que sincroniza el progreso del juego cuando el sistema operativo esta inactivo.",
-                    "PL": "Zadanie XblGameSave Standby, które synchronizuje postęp gry, gdy system operacyjny jest bezczynny"
-                }
-            }
-        ]
+        "Windows10Support": "True",
+        "Windows11Support": "True",
+        "ChildCounter": 9
     },
     {
         "Name": "SigninInfo",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Use sign-in info to automatically finish setting up device after an update",
-            "RU": "Использовать данные для входа для автоматического завершения настройки устройства и открытия приложений после перезапуска или обновления",
-            "DE": "Anmeldeinformationen verwenden, um die Einrichtung des Geräts nach einer Aktualisierung automatisch abzuschließen",
-            "UA": "Використовувати дані для входу для автоматичного завершення налаштування пристрою та відкриття програм після перезапуску або оновлення",
-            "IT": "Usa le credenziali per configurare automaticamente il dispositivo dopo gli aggiornamenti",
-            "TR": "Bir güncellemeden sonra cihazın kurulumunu otomatik olarak tamamlamak için oturum açma bilgilerini kullanın",
-            "CZ": "Použijte přihlašovací údaje k automatickému dokončení nastavení zařízení po aktualizaci",
-            "FR": "Utiliser les informations de connexion pour terminer automatiquement la configuration de l'appareil après une mise à jour",
-            "zh_CN": "更新后使用登录信息自动完成设备设置",
-            "ES": "Use la informacion de inicio de sesion para finalizar automaticamente la configuracion del dispositivo despues de una actualizacion",
-            "PL": "Użyj danych logowania, aby automatycznie zakończyć konfigurację urządzenia po aktualizacji"
-        },
-        "Descriptions": {
-            "EN": "Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.",
-            "RU": "Некоторые обновления требуют перезагрузки компьютера и входа в Windows для завершения установки обновления, что означает, что вы можете войти в Windows и обнаружить, что не можете использовать свой компьютер до завершения обновления. Windows помогает предотвратить это, позволяя Windows использовать информацию о входе в систему для создания специального маркера. Этот токен используется для автоматического входа в систему после перезагрузки, завершения настройки компьютера и последующей блокировки компьютера для обеспечения безопасности вашей учетной записи и личной информации.",
-            "DE": "Bei manchen Updates muss der Computer neu gestartet werden und dann muss man sich bei Windows anmelden bevor die Updates installiert werden können. So können Sie möglicherweise nicht Ihren PC verwenden kann bevor die Aktualisierung abgeschlossen ist. Windows hilft, dies zu verhindern, mit Ihren Anmeldeinformationen ein spezielles Token zu erstellen. Dieses Token wird verwendet, um sich nach einem Neustart automatisch anzumelden, die Einrichtung des PCs abzuschließen und den PC anschließend zu sperren, um Ihr Konto und Ihre persönlichen Daten zu schützen.",
-            "UA": "Деякі оновлення вимагають перезавантаження комп'ютера та входу в Windows для завершення інсталяції оновлення, що означає, що ви можете увійти до Windows і виявити, що не можете використовувати свій комп'ютер до завершення оновлення. Windows допомагає запобігти цьому, дозволяючи Windows використовувати інформацію про вхід до системи для створення спеціального маркера. Цей токен використовується для автоматичного входу в систему після перезавантаження, завершення налаштування комп'ютера та подальшого блокування комп'ютера для забезпечення безпеки вашого облікового запису та особистої інформації.",
-            "IT": "Alcuni aggiornamenti richiedono il riavvio del PC ed il log-in in Windows per completarne l'istallazione, quindi potresti non essere in grado di usare il dispositivo fino alla fine dell'istallazione. Windows previene questo creando un token che permette di accedere automaticamente. Dopo la fine dell'installazione il tuo account verrà disconnesso per mantenere le informazioni al sicuro.",
-            "TR": "Bazı güncellemeler, güncellemeyi yüklemeyi tamamlamak için bilgisayarınızı yeniden başlatmanızı ve ardından Windows'ta oturum açmanızı gerektirir; bu, güncelleme tamamlanana kadar bilgisayarınızı kullanamayabilirsiniz. Windows, Windows'un özel bir belirteç oluşturmak için oturum açma bilgilerinizi kullanmasına izin vererek bunu önlemeye yardımcı olur. Bu belirteç, yeniden başlattıktan sonra otomatik olarak oturum açmak, bilgisayarınızın kurulumunu tamamlamak ve ardından hesabınızı ve kişisel bilgilerinizi güvende tutmak için bilgisayarınızı kilitlemek için kullanılır.",
-            "CZ": "Některé aktualizace vyžadují, abyste restartovali počítač a poté se přihlásili do systému Windows, aby byla instalace aktualizace dokončena, což znamená, že nebudete moci počítač používat, dokud nebude aktualizace dokončena. Systém Windows tomu pomáhá zabránit tím, že systému Windows umožňuje použít vaše přihlašovací údaje k vytvoření speciálního tokenu. Tento token se používá k automatickému přihlášení po restartu, dokončení nastavení počítače a následnému uzamčení počítače, aby byl váš účet a osobní údaje v bezpečí.",
-            "FR": "Certaines mises à jour nécessitent que vous redémarriez votre PC et que vous vous connectiez ensuite à Windows afin de terminer l'installation de la mise à jour, ce qui signifie que vous ne pourrez peut-être pas utiliser votre PC tant que la mise à jour n'est pas terminée. Windows aide à éviter cela en autorisant Windows à utiliser vos informations de connexion pour créer un jeton spécial. Ce jeton est utilisé pour se connecter automatiquement après un redémarrage, terminer la configuration de votre PC, puis verrouiller votre PC pour protéger votre compte et vos informations personnelles.",
-            "zh_CN": "某些更新要求您重新启动 PC，然后登录 Windows 才能完成更新安装，这意味着您可能在更新完成之前无法使用您的 PC。 Windows 通过允许 Windows 使用您的登录信息来创建特殊令牌来帮助防止这种情况发生。 此令牌用于在重新启动后自动登录、完成 PC 设置，然后锁定您的 PC 以确保您的帐户和个人信息安全。",
-            "ES": "Algunas actualizaciones requieren que reinicie su PC y luego inicie sesion en Windows para terminar de instalar la actualizacion, lo que significa que es posible que no pueda usar su PC hasta que finalice la actualizacion. Windows ayuda a evitar esto al permitir que Windows use su informacion de inicio de sesion para crear un token especial. Este token se usa para iniciar sesion automaticamente despues de un reinicio, terminar de configurar su PC y luego bloquear su PC para mantener segura su cuenta y su informacion personal.",
-            "PL": "Niektóre aktualizacje wymagają ponownego uruchomienia komputera, a następnie zalogowania się do systemu Windows w celu dokończenia instalacji aktualizacji, co oznacza, że korzystanie z komputera może nie być możliwe do czasu zakończenia aktualizacji. System Windows zapobiega temu, umożliwiając systemowi Windows na użycie danych logowania do utworzenia specjalnego tokena. Token służy do automatycznego logowania po ponownym uruchomieniu, dokończenia konfiguracji komputera, a następnie zablokowania komputera w celu zapewnienia bezpieczeństwa konta i danych."
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "LanguageListAccess",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Let websites provide locally relevant content by accessing language list",
-            "RU": "Позволить веб-сайтам предоставлять местную информацию за счет доступа к списку языков",
-            "DE": "Webseiten können lokal relevante Inhalte durch Zugriff auf die Sprachliste bereitstellen",
-            "UA": "Дозволити веб-сторінкам надавати місцеву інформацію за рахунок доступу до списку мов",
-            "IT": "Permetti ai siti web di fornire contanuti più rilevanti accedendo alla lista delle lingue installate",
-            "TR": "Web sitelerinin dil listesine erişerek yerel olarak alakalı içerik sağlamasına izin verin",
-            "CZ": "Umožnit webům poskytovat místně relevantní obsah přístupem k seznamu jazyků",
-            "FR": "Laissez les sites Web fournir un contenu pertinent localement en accédant à la liste des langues",
-            "zh_CN": "让网站通过访问语言列表来提供本地相关的内容",
-            "ES": "Permita que los sitios web proporcionen contenido localmente relevante accediendo a la lista de idiomas",
-            "PL": "Zezwól witrynom internetowym na dostarczanie istotnych treści, uzyskując dostęp do listy języków"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": "",
-            "DE": "",
-            "UA": "",
-            "IT": "",
-            "TR": "",
-            "CZ": "",
-            "FR": "",
-            "zh_CN": "",
-            "ES": "",
-            "PL": ""
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "AdvertisingID",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Let apps show me personalized ads by using my advertising ID",
-            "RU": "Разрешить приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы",
-            "DE": "Apps können mir personalisierte Werbung anzeigen, indem sie meine Werbe-ID verwenden",
-            "UA": "Дозволити застосункам відображати персональну рекламу за допомогою мого ідентифікатора реклами",
-            "IT": "Permetti alle app di mostrarmi pubblicità personalizzate usando il mio id pubblicitario",
-            "TR": "Uygulamaların reklam kimliğimi kullanarak bana kişiselleştirilmiş reklamlar göstermesine izin ver",
-            "CZ": "Umožnit aplikacím zobrazovat mi personalizované reklamy pomocí mého inzertního ID",
-            "FR": "Autoriser les applications à me montrer des publicités personnalisées en utilisant mon identifiant publicitaire",
-            "zh_CN": "让应用使用我的广告 ID 向我展示个性化广告",
-            "ES": "Permitir que las aplicaciones me muestren anuncios personalizados usando mi ID de publicidad",
-            "PL": "Zezwalaj aplikacjom na wyświetlanie spersonalizowanych reklam przy użyciu mojego identyfikatora wyświetlania reklam"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": "",
-            "DE": "",
-            "UA": "",
-            "IT": "",
-            "TR": "",
-            "CZ": "",
-            "FR": "",
-            "zh_CN": "",
-            "ES": "",
-            "PL": ""
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "WindowsWelcomeExperience",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers",
-            "RU": "Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях",
-            "DE": "Anzeige der Windows-Willkommenserlebnisse nach Updates und gelegentlich bei der Anmeldung, um neue Funktionen und Angebote hervorzuheben",
-            "UA": "Відображати екран вітання Windows після оновлень і іноді при вході, щоб повідомити про нові функції та пропозиції",
-            "IT": "Mostra la Windows welcome experiences dopo gli aggiornamenti e in occasione di nuove funzionalità o promozioni",
-            "TR": "Güncellemelerden sonra ve ara sıra yeni özellikleri ve teklifleri vurgulamak için oturum açtığımda Windows karşılama deneyimlerini göster",
-            "CZ": "Ukázat uvítací prostředí Windows po aktualizacích a občas, po přihlášení výběr nových funkcí a nabídek",
-            "FR": "Afficher les expériences d'accueil Windows après les mises à jour et occasionnellement lorsque je me connecte pour mettre en évidence les nouvelles fonctionnalités et offres",
-            "zh_CN": "显示更新后的 Windows 欢迎体验，偶尔在我登录时显示新功能和优惠",
-            "ES": "Muestre las experiencias de bienvenida de Windows despues de las actualizaciones y ocasionalmente cuando inicie sesion para resaltar nuevas caracteristicas y ofertas.",
-            "PL": "Pokaż informacje powitalne systemu Windows po aktualizacjach i od czasu do czasu po zalogowaniu, aby wyróżnić nowe funkcje i oferty"
-        },
-        "Descriptions": {
-            "EN": "Windows may open a pop-up window to show you what's new about the operating system.",
-            "RU": "Windows может открывать всплывающее окно с подсказками, что нового в операционной системе.",
-            "DE": "Windows öffnet möglicherweise ein Popup-Fenster, um Sie über die Neuerungen des Betriebssystems zu informieren.",
-            "UA": "Windows може відкривати спливаюче вікно з підказками про те, що нового в операційній системі.",
-            "IT": "Windows potrebbe mostrare un pop-up per farti scoprire le novità del sistema operativo.",
-            "TR": "Windows, işletim sistemindeki yenilikleri size göstermek için bir açılır pencere açabilir.",
-            "CZ": "Systém Windows může otevřít vyskakovací okno, které vám ukáže, co je nového v operačním systému.",
-            "FR": "Windows peut ouvrir une fenêtre contextuelle pour vous montrer les nouveautés du système d'exploitation.",
-            "zh_CN": "Windows 可能会打开一个弹出窗口，向您显示有关操作系统的新功能。",
-            "ES": "Windows puede abrir una ventana emergente para mostrarle las novedades del sistema operativo.",
-            "PL": "System Windows może otworzyć okno, by pokazać, nowe funkcje w systemie operacyjnym."
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "WindowsTips",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Get tips and suggestions as you use Windows",
-            "RU": "Получать советы и предложения при использовании Windows",
-            "DE": "Vorschläge für die Verwendung von Windows holen",
-            "UA": "Отримувати поради та пропозиції при використанні Windows",
-            "IT": "Ottieni consigli su come usare Windows",
-            "TR": "Windows'u kullanırken ipuçları ve öneriler alın",
-            "CZ": "Získejte tipy a návrhy při používání systému Windows",
-            "FR": "Obtenez des conseils et des suggestions lorsque vous utilisez Windows",
-            "zh_CN": "在使用 Windows 时获取提示和建议",
-            "ES": "Obtenga consejos y sugerencias mientras usa Windows",
-            "PL": "Uzyskaj porady i sugestie podczas korzystania z systemu Windows"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": "",
-            "DE": "",
-            "UA": "",
-            "IT": "",
-            "TR": "",
-            "CZ": "",
-            "FR": "",
-            "zh_CN": "",
-            "ES": "",
-            "PL": ""
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "SettingsSuggestedContent",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Show suggested content in the Settings app",
-            "RU": "Показывать рекомендуемое содержимое в приложении \"Параметры\"",
-            "DE": "Vorgeschlagene Inhalte in der Einstellungen-App anzeigen",
-            "UA": "Відображати рекомендований вміст у застосунку \"Параметри\"",
-            "IT": "Mostra i contenuti suggeriti nell'app impostazion",
-            "TR": "Önerilen içeriği Ayarlar uygulamasında göster",
-            "CZ": "Zobrazit navrhovaný obsah v aplikaci Nastavení",
-            "FR": "Afficher le contenu suggéré dans l'application Paramètres",
-            "zh_CN": "在\"设置\"应用中显示建议的内容",
-            "ES": "Mostrar contenido sugerido en la aplicacion Configuracion",
-            "PL": "Pokaż sugerowane treści w aplikacji Ustawienia"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": "",
-            "DE": "",
-            "UA": "",
-            "IT": "",
-            "TR": "",
-            "CZ": "",
-            "FR": "",
-            "zh_CN": "",
-            "ES": "",
-            "PL": ""
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "AppsSilentInstalling",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Turn on automatic suggested app installation",
-            "RU": "Включить автоматическую установку рекомендованных приложений",
-            "DE": "Automatische Installation der empfohlenen Apps aktivieren",
-            "UA": "Увімкнути автоматичне встановлення рекомендованих додатків",
-            "IT": "Abilita l'installazione automatica delle app consigliate",
-            "TR": "Otomatik önerilen uygulama yüklemesini açın",
-            "CZ": "Zapněte automatickou instalaci doporučené aplikace",
-            "FR": "Activer l'installation automatique de l'application suggérée",
-            "zh_CN": "开启自动建议的应用安装",
-            "ES": "Activar la instalacion automatica de aplicaciones sugeridas",
-            "PL": "Włącz automatyczną instalację sugerowanych aplikacji"
-        },
-        "Descriptions": {
-            "EN": "Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.",
-            "RU": "Windows может в тихом режиме загружать и устанавливать некоторые приложения из Microsoft Store без какого-либо подтверждения.",
-            "DE": "Windows kann einige Apps aus dem Microsoft Store unbemerkt ohne Bestätigung herunterladen und installieren.",
-            "UA": "Windows в тихому режимі може завантажувати та інсталювати деякі програми з Microsoft Store без будь-якого підтвердження.",
-            "IT": "Windows può scaricare e installare silenziosamente alcune app suggerite da Microsoft Store senza alcuna conferma dell'utente.",
-            "TR": "Windows, herhangi bir kullanıcı onayı olmadan Microsoft Store'dan önerilen bazı uygulamaları sessizce indirebilir ve yükleyebilir.",
-            "CZ": "Systém Windows může na pozadí stáhnout a nainstalovat některé navrhované aplikace z obchodu Microsoft Store bez jakéhokoli potvrzení uživatele.",
-            "FR": "Windows peut télécharger et installer silencieusement certaines applications suggérées à partir du Microsoft Store sans aucune confirmation de l'utilisateur.",
-            "zh_CN": "Windows 可能会在没有任何用户确认的情况下静默地从 Microsoft Store 下载并安装一些建议的应用程序。",
-            "ES": "Windows puede descargar e instalar silenciosamente algunas aplicaciones sugeridas de Microsoft Store sin la confirmacion del usuario.",
-            "PL": "System Windows może dyskretnie pobierać i instalować niektóre sugerowane aplikacje ze sklepu Microsoft Store bez potwierdzenia ze strony użytkownika."
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "WhatsNewInWindows",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Suggest ways I can finish setting up my device to get the most out of Windows",
-            "RU": "Предложить способы завершения настройки этого устройства для наиболее эффектиивного использования Windows",
-            "DE": "Vorschläge machen, wie ich mein Gerät einrichten kann",
-            "UA": "Відображати пропозиції налаштування пристрою",
-            "IT": "Offri suggerimenti su come posso personalizzare il mio dispositivo",
-            "TR": "Cihazımı nasıl kurabileceğime dair önerilerde bulunun",
-            "CZ": "Nabídněte návrhy, jak mohu nastavit své zařízení",
-            "FR": "Offrir des suggestions sur la façon dont je peux configurer mon appareil",
-            "zh_CN": "提供有关如何设置设备的建议",
-            "ES": "Sugerir formas en que puedo terminar de configurar mi dispositivo para aprovechar al maximo Windows",
-            "PL": "Sugeruj, w jaki sposób można dokończyć konfigurowanie urządzenia, aby w pełni wykorzystać możliwości systemu Windows"
-        },
-        "Descriptions": {
-            "EN": "Windows may display a \"Get even more out of Windows\" prompt occasionally that displays additional services that user may set up.",
-            "RU": "Windows может иногда отображать всплывающее окошко \"Используйте Windows еще более эффективно\", в котором отображаются дополнительные службы, которые пользователь может настроить.",
-            "DE": "Windows zeigt möglicherweise gelegentlich die Aufforderung \"Mehr aus Windows herausholen\" an, die zusätzliche Dienste anzeigt, die der Benutzer einrichten kann.",
-            "UA": "Windows може іноді відображати спливаюче вікно \"Використовуйте Windows ще ефективніше\", в якому відображаються додаткові служби, які користувач може налаштувати.",
-            "IT": "Windows può visualizzare un \"Ottieni ancora più con Windows\" occasionalmente che promuove servizi aggiuntivi che l'utente può acquistare.",
-            "TR": "Windows, zaman zaman kullanıcının kurabileceği ek hizmetleri görüntüleyen bir \"Windows'tan daha da fazlasını alın\" istemi görüntüleyebilir.",
-            "CZ": "Systém Windows může příležitostně zobrazit výzvu \"Získejte ještě více z Windows\", která zobrazuje další služby, jenž může uživatel nastavit.",
-            "FR": "Windows peut parfois afficher une invite \"Tirez encore plus parti de Windows\" qui affiche des services supplémentaires que l'utilisateur peut configurer.",
-            "zh_CN": "Windows 有时可能会显示\"从 Windows 中获得更多\"提示，其中显示用户可能设置的其他服务。",
-            "ES": "Windows puede mostrar un mensaje \"Obtenga aun mas de Windows\" de vez en cuando que muestra servicios adicionales que el usuario puede configurar.",
-            "PL": "System Windows może od czasu do czasu wyświetlać monit \"Wykorzystaj jeszcze więcej możliwości systemu Windows\", który wyświetla dodatkowe usługi, które użytkownik może skonfigurować."
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "TailoredExperiences",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Tailored experiences",
-            "RU": "Персонализированные возможности",
-            "DE": "Maßgeschneiderte Erfahrungen",
-            "UA": "Персоналізовані можливості",
-            "IT": "Esperienza su misura",
-            "TR": "Kişiye özel deneyimler",
-            "CZ": "Zážitky na míru",
-            "FR": "Expériences sur mesure",
-            "zh_CN": "定制体验",
-            "ES": "Experiencias a medida",
-            "PL": "Dostosowane doświadczenia"
-        },
-        "Descriptions": {
-            "EN": "Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.",
-            "RU": "Разрешите корпорации Майкрософт использовать ваши диагностические данные для улучшения вашей работы со службами Майкрософт с помощью персонализированных советов, рекламы и рекомендаций.",
-            "DE": "Lassen Sie Microsoft Ihnen maßgeschneiderte Lösungen bieten, die auf der Grundlage der Diagnosedaten entsprechend Ihren Einstellungen basieren.",
-            "UA": "Дозвольте корпорації Майкрософт використовувати ваші діагностичні дані для покращення вашої роботи зі службами Майкрософт за допомогою персоналізованих порад, реклами та рекомендацій.",
-            "IT": "Microsoft bietet Ihnen maßgeschneiderte Erfahrungen auf der Grundlage der von Ihnen gewählten Einstellung für Diagnosedaten.",
-            "TR": "Microsoft'un, seçtiğiniz tanılama verileri ayarına dayalı olarak size özel deneyimler sunmasına izin verin.",
-            "CZ": "Dovolte společnosti Microsoft, aby vám nabídla přizpůsobené zkušenosti na základě vámi zvoleného nastavení diagnostických dat.",
-            "FR": "Laissez Microsoft vous proposer des expériences personnalisées en fonction du paramètre de données de diagnostic que vous avez choisi.",
-            "zh_CN": "让 Microsoft 根据您选择的诊断数据设置为您提供量身定制的体验。",
-            "ES": "Permita que Microsoft le ofrezca experiencias personalizadas basadas en la configuracion de datos de diagnostico que haya elegido.",
-            "PL": "Pozwól firmie Microsoft na oferowanie dostosowanych doświadczeń w oparciu o wybrane przez Ciebie ustawienia danych diagnostycznych."
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     },
     {
         "Name": "BingSearch",
         "Type": "CheckBox",
         "Tag": "Privacy",
-        "Windows10": "True",
-        "Windows11": "True",
-        "Headers": {
-            "EN": "Enable Bing search in the Start Menu",
-            "RU": "Включить поиск через Bing в меню \"Пуск\"",
-            "DE": "Bing-Suchmaschine im Startmenü aktivieren",
-            "UA": "Увімкнути пошук через Bing у меню \"Пуск\"",
-            "IT": "Abilita Bing search nel menu Start",
-            "TR": "Başlat Menüsünde Bing aramasını etkinleştirin",
-            "CZ": "Povolit vyhledávání Bing v nabídce Start",
-            "FR": "Activer la recherche Bing dans le menu Démarrer",
-            "zh_CN": "在开始菜单中启用必应搜索",
-            "ES": "Habilitar la busqueda de Bing en el menu Inicio",
-            "PL": "Włącz wyszukiwanie Bing w menu Start"
-        },
-        "Descriptions": {
-            "EN": "",
-            "RU": "",
-            "DE": "",
-            "UA": "",
-            "IT": "",
-            "TR": "",
-            "CZ": "",
-            "FR": "",
-            "zh_CN": "",
-            "ES": "",
-            "PL": ""
-        }
+        "Windows10Support": "True",
+        "Windows11Support": "True"
     }
 ]

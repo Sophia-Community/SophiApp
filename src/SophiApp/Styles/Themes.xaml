@@ -12,9 +12,10 @@
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#4CC2FF" />
             <SolidColorBrush x:Key="ContentBlockBorder" Color="#FFFFFF" Opacity="0.10" />
             <SolidColorBrush x:Key="ContentBlockBackground" Color="#000000" Opacity="0.24" />
-            <LinearGradientBrush x:Key="NavigationViewItemPro" StartPoint="0, 0" EndPoint="1,0">
-                <GradientStop Color="#010101" Offset="0.0"/>
-                <GradientStop Color="#05233e" Offset="0.5"/>
+            <LinearGradientBrush x:Key="NavigationViewProBackground" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#043682" Offset="0.0"/>
+                <GradientStop Color="#8AC9FE" Offset="0.70"/>
+                <GradientStop Color="#8AC9FF" Offset="0.90"/>
             </LinearGradientBrush>
         </ResourceDictionary>
 
@@ -27,9 +28,11 @@
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#0078D4" />
             <SolidColorBrush x:Key="ContentBlockBorder" Color="#000000" Opacity="0.06" />
             <SolidColorBrush x:Key="ContentBlockBackground" Color="#FFFFFF" Opacity="0.70" />
-            <LinearGradientBrush x:Key="NavigationViewItemPro" StartPoint="0, 0" EndPoint="1,0">
-                <GradientStop Color="#FDFEFF" Offset="0.0"/>
-                <GradientStop Color="#F0F6FD" Offset="0.5"/>
+            <LinearGradientBrush x:Key="NavigationViewProBackground" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                <GradientStop Color="#70C7FF" Offset="0.33"/>
+                <GradientStop Color="#8AC5FC" Offset="0.66"/>
+                <GradientStop Color="#FFFFFF" Offset="0.99"/>
             </LinearGradientBrush>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
