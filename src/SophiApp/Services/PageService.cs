@@ -23,7 +23,7 @@ public class PageService : IPageService
         Configure<PrivacyViewModel, PrivacyPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<SystemViewModel, SystemPage>();
-        Configure<UWPViewModel, UWPPage>();
+        Configure<UwpViewModel, UwpPage>();
         Configure<TaskSchedulerViewModel, TaskSchedulerPage>();
         Configure<SecurityViewModel, SecurityPage>();
         Configure<ContextMenuViewModel, ContextMenuPage>();

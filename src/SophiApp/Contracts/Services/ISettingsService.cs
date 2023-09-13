@@ -1,4 +1,4 @@
-﻿// <copyright file="ILocalSettingsService.cs" company="Team Sophia">
+﻿// <copyright file="ISettingsService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 

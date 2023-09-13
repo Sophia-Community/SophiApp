@@ -65,12 +65,12 @@ public class SettingsService : ISettingsService
     {
         if (RuntimeHelper.IsMSIX)
         {
-            ApplicationData.Current.LocalSettings.Values[key] = await Json.StringifyAsync(value);
+            ApplicationData.Current.LocalSettings.Values[key] = await Json.StringifyAsync(value!);
         }
         else
         {
             await InitializeAsync();
-            settings[key] = await Json.StringifyAsync(value);
+            settings![key] = await Json.StringifyAsync(value!);
             await Task.Run(() => fileService.Save(optionsFolder, optionsFile, settings));
         }
     }

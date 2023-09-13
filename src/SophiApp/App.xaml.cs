@@ -47,7 +47,7 @@ public partial class App : Application
                 _ = services.AddSingleton<INavigationService, NavigationService>();
                 _ = services.AddSingleton<IFileService, FileService>();
                 _ = services.AddSingleton<IAppContextService, AppContextService>();
-                _ = services.AddSingleton<IUIMarkupParserService, UIMarkupParserService>();
+                _ = services.AddTransient<IModelBuilderService, ModelBuilderService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IUriService, UriService>();
 
@@ -62,8 +62,8 @@ public partial class App : Application
                 _ = services.AddTransient<SecurityPage>();
                 _ = services.AddTransient<TaskSchedulerViewModel>();
                 _ = services.AddTransient<TaskSchedulerPage>();
-                _ = services.AddTransient<UWPViewModel>();
-                _ = services.AddTransient<UWPPage>();
+                _ = services.AddTransient<UwpViewModel>();
+                _ = services.AddTransient<UwpPage>();
                 _ = services.AddTransient<SystemViewModel>();
                 _ = services.AddTransient<SystemPage>();
                 _ = services.AddTransient<PersonalizationViewModel>();
@@ -95,10 +95,7 @@ public partial class App : Application
     /// <summary>
     /// Gets <see cref="IHost"/>.
     /// </summary>
-    public IHost Host
-    {
-        get;
-    }
+    public IHost Host { get; init; }
 
     /// <summary>
     /// Gets app service.
@@ -140,7 +137,6 @@ public partial class App : Application
         await GetService<IActivationService>().ActivateAsync(args);
         SetWindowTitle();
         MainWindow.CenterOnScreen();
-        await GetService<IUIMarkupParserService>().ParseAsync();
     }
 
     private void SetWindowTitle()

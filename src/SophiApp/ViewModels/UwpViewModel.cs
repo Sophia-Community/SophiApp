@@ -1,4 +1,4 @@
-﻿// <copyright file="UWPViewModel.cs" company="Team Sophia">
+﻿// <copyright file="UwpViewModel.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -6,14 +6,14 @@ namespace SophiApp.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 /// <summary>
-/// Implements the <see cref="UWPViewModel"/> class.
+/// Implements the <see cref="UwpViewModel"/> class.
 /// </summary>
-public partial class UWPViewModel : ObservableRecipient
+public partial class UwpViewModel : ObservableRecipient
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="UWPViewModel"/> class.
+    /// Initializes a new instance of the <see cref="UwpViewModel"/> class.
     /// </summary>
-    public UWPViewModel()
+    public UwpViewModel()
     {
     }
 }

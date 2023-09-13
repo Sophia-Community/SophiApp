@@ -4,9 +4,11 @@
 
 namespace SophiApp.Services
 {
+    using System.Collections.ObjectModel;
     using System.Reflection;
     using Microsoft.UI.Input;
     using SophiApp.Contracts.Services;
+    using SophiApp.Models;
 
     /// <inheritdoc/>
     public class AppContextService : IAppContextService
@@ -107,6 +109,15 @@ namespace SophiApp.Services
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="AppContextService"/> class.
+        /// </summary>
+        /// <param name="modelBuilderService"><see cref="IModelBuilderService"/>.</param>
+        public AppContextService(IModelBuilderService modelBuilderService)
+        {
+            UIModels = modelBuilderService.BuildUIModels();
+        }
+
+        /// <summary>
         /// Gets or sets app user cursor.
         /// </summary>
         public static InputCursor UserCursor
@@ -125,6 +136,11 @@ namespace SophiApp.Services
         /// Gets url hovering cursor.
         /// </summary>
         public static InputCursor UrlCursor { get; } = InputSystemCursor.Create(InputSystemCursorShape.Hand);
+
+        /// <summary>
+        /// Gets <see cref="UIModel"/> collection.
+        /// </summary>
+        public ObservableCollection<UIModel> UIModels { get; private set; }
 
         /// <inheritdoc/>
         public string GetBuildName() => "Daria";

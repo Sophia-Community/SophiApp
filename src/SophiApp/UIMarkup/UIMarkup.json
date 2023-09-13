@@ -12,7 +12,7 @@
         "Tag": "Privacy",
         "Windows10Support": "True",
         "Windows11Support": "True",
-        "ChildCounter": 2
+        "NumberOfItems": 2
     },
     {
         "Name": "ErrorReporting",
@@ -27,7 +27,7 @@
         "Tag": "Privacy",
         "Windows10Support": "True",
         "Windows11Support": "True",
-        "ChildCounter": 2
+        "NumberOfItems": 2
     },
     {
         "Name": "ScheduledTasks",
@@ -35,7 +35,7 @@
         "Tag": "Privacy",
         "Windows10Support": "True",
         "Windows11Support": "True",
-        "ChildCounter": 9
+        "NumberOfItems": 9
     },
     {
         "Name": "SigninInfo",

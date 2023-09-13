@@ -21,7 +21,7 @@ public sealed partial class SecurityPage : Page
     }
 
     /// <summary>
-    /// Gets <see cref="UWPViewModel"/>.
+    /// Gets <see cref="UwpViewModel"/>.
     /// </summary>
     public SecurityViewModel ViewModel
     {

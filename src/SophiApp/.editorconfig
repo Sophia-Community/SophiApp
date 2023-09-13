@@ -119,7 +119,7 @@ dotnet_diagnostic.SA1515.severity = error
 dotnet_diagnostic.SA1309.severity = error
 
 # S1481: Unused local variables should be removed
-dotnet_diagnostic.S1481.severity = warning
+dotnet_diagnostic.S1481.severity = error
 
 [*.cs]
 #### Naming Styles ####
@@ -187,6 +187,13 @@ dotnet_diagnostic.SA1303.severity = suggestion
 dotnet_diagnostic.SA1625.severity = silent
 dotnet_diagnostic.SA1512.severity = error
 dotnet_diagnostic.SA1009.severity = error
+dotnet_diagnostic.SA1107.severity = suggestion
+dotnet_diagnostic.SA1312.severity = error
+dotnet_diagnostic.SA1638.severity = error
+dotnet_diagnostic.S2201.severity = error
+dotnet_diagnostic.SA1636.severity = error
+dotnet_diagnostic.SA1313.severity = error
+dotnet_diagnostic.S2326.severity = error
 
 [*.vb]
 #### Naming Styles ####
@@ -252,7 +259,7 @@ dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_compound_assignment = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion
 dotnet_style_namespace_match_folder = true:suggestion
-dotnet_code_quality_unused_parameters = all:suggestion
+dotnet_code_quality_unused_parameters = all:error
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4
 indent_size = 4
@@ -270,3 +277,6 @@ dotnet_diagnostic.S1144.severity = error
 
 # IDE0052: Unused private types or members should be removed
 dotnet_diagnostic.IDE0052.severity = error
+
+# IDE0060: Удалите неиспользуемый параметр
+dotnet_diagnostic.IDE0060.severity = error

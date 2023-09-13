@@ -22,7 +22,7 @@ public sealed partial class PrivacyPage : Page
     }
 
     /// <summary>
-    /// Gets <see cref="UWPViewModel"/>.
+    /// Gets <see cref="UwpViewModel"/>.
     /// </summary>
     public PrivacyViewModel ViewModel
     {

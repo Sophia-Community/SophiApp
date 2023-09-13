@@ -28,7 +28,7 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <TextBlock x:Uid="UserControl_MadeWith" Style="{StaticResource MediumTextStyle}"/>
+        <TextBlock x:Uid="Control_MadeWith" Style="{StaticResource MediumTextStyle}"/>
         <Viewbox>
             <Viewbox.RenderTransform>
                 <ScaleTransform x:Name="ScaleTransform" ScaleX="1.0" ScaleY="1.0" />
@@ -47,6 +47,6 @@
                 <Path/>
             </Canvas>
         </Viewbox>
-        <TextBlock x:Uid="UserControl_ForWindows" Style="{StaticResource MediumTextStyle}" />
+        <TextBlock x:Uid="Control_ForWindows" Style="{StaticResource MediumTextStyle}" />
     </StackPanel>
 </UserControl>
