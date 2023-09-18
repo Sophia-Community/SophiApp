@@ -6,11 +6,10 @@ namespace SophiApp.Services
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Text;
     using CSharpFunctionalExtensions;
+    using Newtonsoft.Json;
     using SophiApp.Contracts.Services;
-    using SophiApp.Core.Helpers;
     using SophiApp.Helpers;
     using SophiApp.Models;
     using Windows.ApplicationModel.Resources.Core;
@@ -19,30 +18,38 @@ namespace SophiApp.Services
     public class ModelBuilderService : IModelBuilderService
     {
         private readonly ResourceMap resourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
+        private readonly List<UIModel> models;
 
-        /// <inheritdoc/>
-        public ObservableCollection<UIModel> BuildUIModels()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ModelBuilderService"/> class.
+        /// </summary>
+        public ModelBuilderService()
         {
-            var markupJson = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
-            var models = Task.Run(async () =>
-            {
-                return await Json.ToObjectAsync<IEnumerable<UIModelDto>>(markupJson)
-                .ContinueWith(task => task.Result.Select(BuildUIModel));
-            })
-                .Result;
-
-            return new ObservableCollection<UIModel>(models);
+            models = BuildModels();
         }
 
-        private UIModel BuildUIModel(UIModelDto dto)
+        /// <inheritdoc/>
+        public List<UIModel> GetModels(UICategoryTag tag)
         {
-            return dto.Type switch
-            {
-                UIModelType.ExpandingGroup => BuildExpandingGroupModel(dto),
-                UIModelType.RadioGroup => BuildRadioGroupModel(dto),
-                UIModelType.CheckBox => BuildCheckBoxModel(dto),
-                _ => throw new ArgumentOutOfRangeException(paramName: dto.Type.ToString(), message: "An invalid type is specified."),
-            };
+            return models.Where(m => tag == m.Tag)
+                .ToList();
+        }
+
+        private List<UIModel> BuildModels()
+        {
+            var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
+            return JsonConvert.DeserializeObject<IEnumerable<UIModelDto>>(json)?
+                .Select(dto =>
+                {
+                    return dto.Type switch
+                    {
+                        UIModelType.ExpandingGroup => BuildExpandingGroupModel(dto),
+                        UIModelType.RadioGroup => BuildRadioGroupModel(dto),
+                        UIModelType.CheckBox => BuildCheckBoxModel(dto),
+                        _ => throw new ArgumentOutOfRangeException(paramName: dto.Type.ToString(), message: "An invalid type is specified."),
+                    };
+                })
+                .ToList() ?? new List<UIModel>();
         }
 
         private UIModel BuildExpandingGroupModel(UIModelDto dto)

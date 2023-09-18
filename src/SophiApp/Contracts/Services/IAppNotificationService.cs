@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services;
 using System.Collections.Specialized;
 
-// TODO: Remove IAppNotificationService as unused
+// TODO: Fix or remove IAppNotificationService as unused.
 public interface IAppNotificationService
 {
     void Initialize();

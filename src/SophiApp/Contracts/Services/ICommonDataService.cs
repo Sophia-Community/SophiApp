@@ -1,13 +1,13 @@
-﻿// <copyright file="IAppContextService.cs" company="Team Sophia">
+﻿// <copyright file="ICommonDataService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
 namespace SophiApp.Contracts.Services
 {
     /// <summary>
-    /// A service for working with app context.
+    /// A service for working with common app data.
     /// </summary>
-    public interface IAppContextService
+    public interface ICommonDataService
     {
         /// <summary>
         /// Gets app name and version.

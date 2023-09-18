@@ -42,14 +42,14 @@ public partial class SettingsViewModel : ObservableRecipient
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
     /// </summary>
     /// <param name="themeSelectorService"><see cref="IThemeSelectorService"/>.</param>
-    /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
+    /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
     /// <param name="uriService"><see cref="IUriService"/>.</param>
-    public SettingsViewModel(IThemeSelectorService themeSelectorService, IAppContextService appContextService, IUriService uriService)
+    public SettingsViewModel(IThemeSelectorService themeSelectorService, ICommonDataService commonDataService, IUriService uriService)
     {
         this.themeSelectorService = themeSelectorService;
-        delimiter = appContextService.GetDelimiter();
-        version = appContextService.GetFullName();
-        build = appContextService.GetBuildName();
+        delimiter = commonDataService.GetDelimiter();
+        version = commonDataService.GetFullName();
+        build = commonDataService.GetBuildName();
         selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
         OpenLinkCommand = new AsyncRelayCommand<string>((param) => uriService.OpenUrl(param));
     }

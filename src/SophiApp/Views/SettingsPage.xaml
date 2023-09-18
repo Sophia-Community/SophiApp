@@ -38,9 +38,9 @@
                                     Margin="0, 0, 1, 13"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Right" ImageSource="/Assets/GitHub.svg"
-                                    Text="{x:Bind service:AppContextService.GitHubText}"
+                                    Text="{x:Bind service:CommonDataService.GitHubText}"
                                     Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                    CommandParameter="{x:Bind service:AppContextService.GitHubLink}"/>
+                                    CommandParameter="{x:Bind service:CommonDataService.GitHubLink}"/>
 
             <controls:IconHyperlink Grid.Row="0"
                                     Width="270"
@@ -48,9 +48,9 @@
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     ImageSource="/Assets/Telegram.svg"
-                                    Text="{x:Bind service:AppContextService.TelegramText}"
+                                    Text="{x:Bind service:CommonDataService.TelegramText}"
                                     Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                    CommandParameter="{x:Bind service:AppContextService.TelegramLink}"/>
+                                    CommandParameter="{x:Bind service:CommonDataService.TelegramLink}"/>
 
             <controls:IconHyperlink Grid.Row="0"
                                     Width="270"
@@ -58,9 +58,9 @@
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     ImageSource="/Assets/Discord.svg"
-                                    Text="{x:Bind service:AppContextService.DiscordText}"
+                                    Text="{x:Bind service:CommonDataService.DiscordText}"
                                     Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                    CommandParameter="{x:Bind service:AppContextService.DiscordLink}"/>
+                                    CommandParameter="{x:Bind service:CommonDataService.DiscordLink}"/>
 
             <controls:ContentBlock x:Uid="SettingsPage_AboutApp"
                                    Grid.Row="1"
@@ -115,42 +115,42 @@
                     <StackPanel>
                         <controls:TeamMateLink x:Uid="SettingsPage_ProjectManager"
                                                ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.ProjectManagerName}"
+                                               NickName="{x:Bind service:CommonDataService.ProjectManagerName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                               CommandParameter="{x:Bind service:AppContextService.ProjectManagerUrl}"/>
+                                               CommandParameter="{x:Bind service:CommonDataService.ProjectManagerUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_DevelopedBy"
                                                ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.DeveloperName}"
+                                               NickName="{x:Bind service:CommonDataService.DeveloperName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                               CommandParameter="{x:Bind service:AppContextService.DeveloperUrl}"/>
+                                               CommandParameter="{x:Bind service:CommonDataService.DeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_UxDevelopment"
                                                ImageSource="/Assets/LinkedIn.svg"
                                                IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
-                                               NickName="{x:Bind service:AppContextService.UXDeveloperName}"
+                                               NickName="{x:Bind service:CommonDataService.UXDeveloperName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                               CommandParameter="{x:Bind service:AppContextService.UXDeveloperUrl}"/>
+                                               CommandParameter="{x:Bind service:CommonDataService.UXDeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_UiDevelopment"
                                                ImageSource="/Assets/LinkedIn.svg"
                                                IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
-                                               NickName="{x:Bind service:AppContextService.UIDeveloperName}"
+                                               NickName="{x:Bind service:CommonDataService.UIDeveloperName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                               CommandParameter="{x:Bind service:AppContextService.UIDeveloperUrl}"/>
+                                               CommandParameter="{x:Bind service:CommonDataService.UIDeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_Animation"
                                                ImageSource="/Assets/LinkedIn.svg"
                                                IconMargin="{StaticResource SettingPageTeamMateLinkIconMargin}"
-                                               NickName="{x:Bind service:AppContextService.AnimationDeveloperName}"
+                                               NickName="{x:Bind service:CommonDataService.AnimationDeveloperName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                               CommandParameter="{x:Bind service:AppContextService.AnimationDeveloperUrl}"/>
+                                               CommandParameter="{x:Bind service:CommonDataService.AnimationDeveloperUrl}"/>
 
                         <controls:TeamMateLink x:Uid="SettingsPage_AppTester"
                                                ImageSource="/Assets/GitHub.svg"
-                                               NickName="{x:Bind service:AppContextService.AppTesterName}"
+                                               NickName="{x:Bind service:CommonDataService.AppTesterName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
-                                               CommandParameter="{x:Bind service:AppContextService.AppTesterUrl}"/>
+                                               CommandParameter="{x:Bind service:CommonDataService.AppTesterUrl}"/>
                     </StackPanel>
                 </controls:ContentBlock.Content>
             </controls:ContentBlock>

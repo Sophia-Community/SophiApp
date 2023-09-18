@@ -4,7 +4,7 @@
 
 namespace SophiApp.Contracts.Services
 {
-    using System.Collections.ObjectModel;
+    using SophiApp.Helpers;
     using SophiApp.Models;
 
     /// <summary>
@@ -13,8 +13,9 @@ namespace SophiApp.Contracts.Services
     public interface IModelBuilderService
     {
         /// <summary>
-        /// Parses "UIMarkup.json" file and build the <see cref="UIModel"/> classes.
+        /// Gets models using tags.
         /// </summary>
-        ObservableCollection<UIModel> BuildUIModels();
+        /// <param name="tag">Returned models tag.</param>
+        List<UIModel> GetModels(UICategoryTag tag);
     }
 }

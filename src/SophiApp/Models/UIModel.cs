@@ -35,7 +35,7 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets model category tag.
         /// </summary>
-        public UITag Tag { get; init; }
+        public UICategoryTag Tag { get; init; }
 
         /// <summary>
         /// Gets a value indicating whether model supported windows 10.

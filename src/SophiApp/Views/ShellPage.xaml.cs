@@ -21,20 +21,18 @@ public sealed partial class ShellPage : Page
     /// Initializes a new instance of the <see cref="ShellPage"/> class.
     /// </summary>
     /// <param name="viewModel"><see cref="ShellViewModel"/>.</param>
-    /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
-    public ShellPage(ShellViewModel viewModel, IAppContextService appContextService)
+    /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
+    public ShellPage(ShellViewModel viewModel, ICommonDataService commonDataService)
     {
         ViewModel = viewModel;
         InitializeComponent();
-
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationViewService.Initialize(NavigationViewControl);
-
         App.MainWindow.ExtendsContentIntoTitleBar = true;
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
-        AppTitleName.Text = appContextService.GetFullName();
-        AppTitleVersion.Text = appContextService.GetVersionName();
+        AppTitleName.Text = commonDataService.GetFullName();
+        AppTitleVersion.Text = commonDataService.GetVersionName();
     }
 
     /// <summary>
@@ -71,7 +69,6 @@ public sealed partial class ShellPage : Page
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
-
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
     }
@@ -79,7 +76,6 @@ public sealed partial class ShellPage : Page
     private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
     {
         var resource = args.WindowActivationState == WindowActivationState.Deactivated ? "WindowCaptionForegroundDisabled" : "WindowCaptionForeground";
-
         AppTitleName.Foreground = (SolidColorBrush)App.Current.Resources[resource];
         AppTitleSplitter.Foreground = (SolidColorBrush)App.Current.Resources[resource];
         AppTitleVersion.Foreground = (SolidColorBrush)App.Current.Resources[resource];

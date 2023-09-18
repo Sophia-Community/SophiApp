@@ -6,6 +6,8 @@ namespace SophiApp.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
+using SophiApp.Services;
+using SophiApp.Views;
 
 /// <summary>
 /// Implements the <see cref="ShellViewModel"/> class.
@@ -26,13 +28,13 @@ public partial class ShellViewModel : ObservableRecipient
     /// </summary>
     /// <param name="navigationService"><see cref="INavigationService"/>.</param>
     /// <param name="navigationViewService"><see cref="INavigationViewService"/>.</param>
-    /// <param name="appContextService"><see cref="IAppContextService"/>.</param>
-    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService, IAppContextService appContextService)
+    /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
+    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService, ICommonDataService commonDataService)
     {
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
-        delimiter = appContextService.GetDelimiter();
+        delimiter = commonDataService.GetDelimiter();
     }
 
     public INavigationService NavigationService
@@ -48,14 +50,6 @@ public partial class ShellViewModel : ObservableRecipient
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         IsBackEnabled = NavigationService.CanGoBack;
-
-        // TODO: Returns null, so the page is not in the history of pages viewed.
-
-        //// if (e.SourcePageType == typeof(SettingsPage))
-        //// {
-        ////    Selected = NavigationViewService.SettingsItem;
-        ////    return;
-        //// }
 
         var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
         if (selectedItem != null)

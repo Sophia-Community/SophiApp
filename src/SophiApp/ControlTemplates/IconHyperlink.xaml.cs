@@ -83,14 +83,14 @@ namespace SophiApp.ControlTemplates
         private void TextBlock_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             e.Handled = true;
-            AppContextService.UserCursor = ProtectedCursor;
-            ProtectedCursor = AppContextService.UrlCursor;
+            CommonDataService.UserCursor = ProtectedCursor;
+            ProtectedCursor = CommonDataService.UrlCursor;
         }
 
         private void TextBlock_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             e.Handled = true;
-            ProtectedCursor = AppContextService.UserCursor;
+            ProtectedCursor = CommonDataService.UserCursor;
         }
     }
 }

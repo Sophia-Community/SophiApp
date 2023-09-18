@@ -9,7 +9,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
 using SophiApp.Activation;
 using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
 using SophiApp.Models;
 using SophiApp.Notifications;
 using SophiApp.Services;
@@ -42,11 +41,11 @@ public partial class App : Application
                 _ = services.AddSingleton<IAppNotificationService, AppNotificationService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
                 _ = services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-                _ = services.AddSingleton<IActivationService, ActivationService>();
+                _ = services.AddSingleton<IInitializeService, InitializeService>();
                 _ = services.AddSingleton<IPageService, PageService>();
                 _ = services.AddSingleton<INavigationService, NavigationService>();
                 _ = services.AddSingleton<IFileService, FileService>();
-                _ = services.AddSingleton<IAppContextService, AppContextService>();
+                _ = services.AddSingleton<ICommonDataService, CommonDataService>();
                 _ = services.AddTransient<IModelBuilderService, ModelBuilderService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IUriService, UriService>();
@@ -133,17 +132,8 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        GetService<IAppNotificationService>().Show(string.Format("AppNotificationPayload".GetLocalized(), AppContext.BaseDirectory));
-        await GetService<IActivationService>().ActivateAsync(args);
-        SetWindowTitle();
-        MainWindow.CenterOnScreen();
-    }
-
-    private void SetWindowTitle()
-    {
-        var appContextService = Host.Services.GetService<IAppContextService>();
-        var title = $"{appContextService?.GetFullName()} {appContextService?.GetDelimiter()} {appContextService?.GetVersionName()}" ?? "AppDisplayName".GetLocalized();
-        MainWindow.Title = title;
+        await GetService<IInitializeService>()
+            .InitializeAsync(args);
     }
 
     private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -14,7 +14,6 @@ public static class FrameExtensions
     /// Returns the <see cref="Frame"/> ViewModel.
     /// </summary>
     /// <param name="frame">Frame for which need to get a ViewModel.</param>
-    /// <returns></returns>
     public static object? GetPageViewModel(this Frame frame)
         => frame?.Content?.GetType().GetProperty("ViewModel")?.GetValue(frame.Content, null);
 }

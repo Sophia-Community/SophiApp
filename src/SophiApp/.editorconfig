@@ -194,6 +194,11 @@ dotnet_diagnostic.S2201.severity = error
 dotnet_diagnostic.SA1636.severity = error
 dotnet_diagnostic.SA1313.severity = error
 dotnet_diagnostic.S2326.severity = error
+dotnet_diagnostic.SA1117.severity = error
+dotnet_diagnostic.SA1616.severity = error
+
+# CS8618: Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
+dotnet_diagnostic.CS8618.severity = error
 
 [*.vb]
 #### Naming Styles ####
