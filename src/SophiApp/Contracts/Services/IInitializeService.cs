@@ -10,7 +10,7 @@ namespace SophiApp.Contracts.Services;
 public interface IInitializeService
 {
     /// <summary>
-    /// Initializes the data.
+    /// Initializes the application's data and services.
     /// </summary>
     /// <param name="args">Application launch arguments.</param>
     Task InitializeAsync(object args);

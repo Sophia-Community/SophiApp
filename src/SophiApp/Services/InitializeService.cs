@@ -17,8 +17,9 @@ public class InitializeService : IInitializeService
 {
     private readonly ActivationHandler<LaunchActivatedEventArgs> defaultHandler;
     private readonly IEnumerable<IActivationHandler> activationHandlers;
-    private readonly IThemeSelectorService themeSelectorService;
+    private readonly IThemesService themeSelectorService;
     private readonly ICommonDataService commonDataService;
+    private readonly IModelBuilderService modelBuilderService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InitializeService"/> class.
@@ -31,13 +32,15 @@ public class InitializeService : IInitializeService
     public InitializeService(
         ActivationHandler<LaunchActivatedEventArgs> defaultHandler,
         IEnumerable<IActivationHandler> activationHandlers,
-        IThemeSelectorService themeSelectorService,
-        ICommonDataService commonDataService)
+        IThemesService themeSelectorService,
+        ICommonDataService commonDataService,
+        IModelBuilderService modelBuilderService)
     {
         this.defaultHandler = defaultHandler;
         this.activationHandlers = activationHandlers;
         this.themeSelectorService = themeSelectorService;
         this.commonDataService = commonDataService;
+        this.modelBuilderService = modelBuilderService;
     }
 
     /// <summary>
@@ -46,17 +49,10 @@ public class InitializeService : IInitializeService
     /// <param name="args"><inheritdoc/></param>
     public async Task InitializeAsync(object args)
     {
-        await InitializeAsync();
         InitializeMainWindow();
+        await InitializeThemeAsync();
         await InitializeHandleAsync(args);
-        await StartupAsync();
-    }
-
-    private async Task InitializeAsync()
-    {
-        await themeSelectorService.InitializeAsync()
-            .ConfigureAwait(false);
-        await Task.CompletedTask;
+        await BuildModelsAsync();
     }
 
     private void InitializeMainWindow()
@@ -74,6 +70,13 @@ public class InitializeService : IInitializeService
         App.MainWindow.Activate();
     }
 
+    private async Task InitializeThemeAsync()
+    {
+        await themeSelectorService.InitializeAsync();
+        await themeSelectorService.SetRequestedThemeAsync();
+        await Task.CompletedTask;
+    }
+
     private async Task InitializeHandleAsync(object activationArgs)
     {
         var activationHandler = activationHandlers.FirstOrDefault(h => h.CanHandle(activationArgs));
@@ -89,9 +92,9 @@ public class InitializeService : IInitializeService
         }
     }
 
-    private async Task StartupAsync()
+    private async Task BuildModelsAsync()
     {
-        await themeSelectorService.SetRequestedThemeAsync();
+        await modelBuilderService.BuildModelsAsync();
         await Task.CompletedTask;
     }
 }

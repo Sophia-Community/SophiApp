@@ -13,6 +13,11 @@ namespace SophiApp.Contracts.Services
     public interface IModelBuilderService
     {
         /// <summary>
+        /// Using the file "UIMarkup.json" creates a collection of <see cref="UIModel"/> types.
+        /// </summary>
+        Task BuildModelsAsync();
+
+        /// <summary>
         /// Gets models using tags.
         /// </summary>
         /// <param name="tag">Returned models tag.</param>

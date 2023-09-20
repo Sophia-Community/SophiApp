@@ -2,7 +2,7 @@
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
-namespace SophiApp.Core.Helpers;
+namespace SophiApp.Helpers;
 using Newtonsoft.Json;
 
 /// <summary>

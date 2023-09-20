@@ -17,7 +17,7 @@ using SophiApp.Helpers;
 /// </summary>
 public partial class SettingsViewModel : ObservableRecipient
 {
-    private readonly IThemeSelectorService themeSelectorService;
+    private readonly IThemesService themeSelectorService;
 
     [ObservableProperty]
     private string build;
@@ -41,10 +41,10 @@ public partial class SettingsViewModel : ObservableRecipient
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
     /// </summary>
-    /// <param name="themeSelectorService"><see cref="IThemeSelectorService"/>.</param>
+    /// <param name="themeSelectorService"><see cref="IThemesService"/>.</param>
     /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
     /// <param name="uriService"><see cref="IUriService"/>.</param>
-    public SettingsViewModel(IThemeSelectorService themeSelectorService, ICommonDataService commonDataService, IUriService uriService)
+    public SettingsViewModel(IThemesService themeSelectorService, ICommonDataService commonDataService, IUriService uriService)
     {
         this.themeSelectorService = themeSelectorService;
         delimiter = commonDataService.GetDelimiter();

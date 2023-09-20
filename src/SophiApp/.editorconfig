@@ -199,6 +199,10 @@ dotnet_diagnostic.SA1616.severity = error
 
 # CS8618: Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
 dotnet_diagnostic.CS8618.severity = error
+dotnet_diagnostic.S1117.severity = error
+
+# CS1572: Комментарий XML содержит тег param, но параметр с таким именем не существует
+dotnet_diagnostic.CS1572.severity = error
 
 [*.vb]
 #### Naming Styles ####
@@ -273,7 +277,6 @@ end_of_line = crlf
 # SA1503: Braces should not be omitted
 dotnet_diagnostic.SA1503.severity = error
 
-
 # SA1513: Closing brace should be followed by blank line
 dotnet_diagnostic.SA1513.severity = error
 
@@ -283,5 +286,5 @@ dotnet_diagnostic.S1144.severity = error
 # IDE0052: Unused private types or members should be removed
 dotnet_diagnostic.IDE0052.severity = error
 
-# IDE0060: Удалите неиспользуемый параметр
+# IDE0060: Remove unused parameter
 dotnet_diagnostic.IDE0060.severity = error

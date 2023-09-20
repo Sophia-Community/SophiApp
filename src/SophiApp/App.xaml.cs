@@ -40,17 +40,19 @@ public partial class App : Application
                 // Services
                 _ = services.AddSingleton<IAppNotificationService, AppNotificationService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
-                _ = services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+                _ = services.AddSingleton<IThemesService, ThemesService>();
                 _ = services.AddSingleton<IInitializeService, InitializeService>();
                 _ = services.AddSingleton<IPageService, PageService>();
                 _ = services.AddSingleton<INavigationService, NavigationService>();
                 _ = services.AddSingleton<IFileService, FileService>();
                 _ = services.AddSingleton<ICommonDataService, CommonDataService>();
-                _ = services.AddTransient<IModelBuilderService, ModelBuilderService>();
+                _ = services.AddSingleton<IModelBuilderService, ModelBuilderService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IUriService, UriService>();
 
                 // Views and ViewModels
+                _ = services.AddTransient<StartupViewModel>();
+                _ = services.AddTransient<StartupPage>();
                 _ = services.AddTransient<SettingsViewModel>();
                 _ = services.AddTransient<SettingsPage>();
                 _ = services.AddTransient<ProVersionViewModel>();
@@ -77,7 +79,8 @@ public partial class App : Application
             })
             .Build();
 
-        GetService<IAppNotificationService>().Initialize();
+        GetService<IAppNotificationService>()
+            .Initialize();
         UnhandledException += App_UnhandledException;
     }
 
@@ -134,6 +137,12 @@ public partial class App : Application
         base.OnLaunched(args);
         await GetService<IInitializeService>()
             .InitializeAsync(args);
+
+        //_ = GetService<INavigationService>()
+        //    .NavigateTo(typeof(StartupViewModel).FullName!);
+        //await Task.Delay(5000);
+        //_ = GetService<INavigationService>()
+        //    .NavigateTo(pageKey: typeof(PrivacyViewModel).FullName!, clearNavigation: true);
     }
 
     private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)

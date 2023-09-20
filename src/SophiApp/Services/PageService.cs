@@ -4,9 +4,7 @@
 
 namespace SophiApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-
 using Microsoft.UI.Xaml.Controls;
-
 using SophiApp.Contracts.Services;
 using SophiApp.ViewModels;
 using SophiApp.Views;
@@ -20,6 +18,7 @@ public class PageService : IPageService
     /// </summary>
     public PageService()
     {
+        Configure<StartupViewModel, StartupPage>();
         Configure<PrivacyViewModel, PrivacyPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<SystemViewModel, SystemPage>();

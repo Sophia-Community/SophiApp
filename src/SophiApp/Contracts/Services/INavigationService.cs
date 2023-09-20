@@ -6,6 +6,9 @@ namespace SophiApp.Contracts.Services;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
+/// <summary>
+/// Page navigation service.
+/// </summary>
 public interface INavigationService
 {
     event NavigatedEventHandler Navigated;

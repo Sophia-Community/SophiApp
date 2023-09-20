@@ -10,8 +10,7 @@ using SophiApp.Contracts.Services;
 using SophiApp.Contracts.ViewModels;
 using SophiApp.Helpers;
 
-// For more information on navigation between pages see
-// https://github.com/microsoft/TemplateStudio/blob/main/docs/WinUI/navigation.md
+/// <inheritdoc/>
 public class NavigationService : INavigationService
 {
     private readonly IPageService pageService;
@@ -21,7 +20,7 @@ public class NavigationService : INavigationService
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationService"/> class.
     /// </summary>
-    /// <param name="pageService"><inheritdoc/></param>
+    /// <param name="pageService"></param>
     public NavigationService(IPageService pageService)
     {
         this.pageService = pageService;
@@ -115,15 +114,15 @@ public class NavigationService : INavigationService
 
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
-        if (sender is Frame frame)
+        if (sender is Frame page)
         {
-            var clearNavigation = (bool)frame.Tag;
+            var clearNavigation = (bool)page.Tag;
             if (clearNavigation)
             {
-                frame.BackStack.Clear();
+                page.BackStack.Clear();
             }
 
-            if (frame.GetPageViewModel() is INavigationAware navigationAware)
+            if (page.GetPageViewModel() is INavigationAware navigationAware)
             {
                 navigationAware.OnNavigatedTo(e.Parameter);
             }

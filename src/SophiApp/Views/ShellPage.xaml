@@ -18,12 +18,13 @@
             <Image Source="/Assets/SophiApp.ico"
                    HorizontalAlignment="Left"
                    Width="16"
-                   Height="16" />
+                   Height="16"
+                   Margin="5, 0, 0, 0"/>
             <TextBlock x:Name="AppTitleName"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"
-                       Margin="28,0,0,0"
+                       Margin="33,0,0,0"
                        Foreground="{ThemeResource WindowForeground}"/>
 
             <TextBlock x:Name="AppTitleSplitter"
@@ -31,14 +32,14 @@
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"
-                       Margin="112,-2,0,0"
+                       Margin="117,-2,0,0"
                        Foreground="{ThemeResource WindowForeground}"/>
 
             <TextBlock x:Name="AppTitleVersion"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"
-                       Margin="120,0,0,0"
+                       Margin="125,0,0,0"
                        Foreground="{ThemeResource WindowForeground}"/>
         </Grid>
         <NavigationView x:Name="NavigationViewControl"

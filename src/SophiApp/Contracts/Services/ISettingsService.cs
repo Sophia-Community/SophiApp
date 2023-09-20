@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services;
 
 /// <summary>
-/// Service for reading and writing settings.
+/// Service for working with settings file.
 /// </summary>
 public interface ISettingsService
 {

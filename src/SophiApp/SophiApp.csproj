@@ -40,6 +40,7 @@
     <None Remove="ControlTemplates\ContentBlock.xaml" />
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
     <None Remove="Styles\ToggleButton.xaml" />
+    <None Remove="Views\StartupPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
@@ -118,6 +119,9 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\StartupPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Styles\ToggleButton.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

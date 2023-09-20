@@ -26,5 +26,5 @@ public partial class PrivacyViewModel : ObservableRecipient
     /// <summary>
     /// Gets <see cref="UIModel"/> collections.
     /// </summary>
-    public ObservableCollection<UIModel> Models { get; init; }
+    public ObservableCollection<UIModel> Models { get; }
 }

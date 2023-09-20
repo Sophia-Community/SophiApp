@@ -8,7 +8,6 @@ namespace SophiApp.Services
     using System.Collections.Generic;
     using System.Text;
     using CSharpFunctionalExtensions;
-    using Newtonsoft.Json;
     using SophiApp.Contracts.Services;
     using SophiApp.Helpers;
     using SophiApp.Models;
@@ -18,27 +17,21 @@ namespace SophiApp.Services
     public class ModelBuilderService : IModelBuilderService
     {
         private readonly ResourceMap resourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
-        private readonly List<UIModel> models;
+        private List<UIModel> models = new ();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelBuilderService"/> class.
         /// </summary>
         public ModelBuilderService()
         {
-            models = BuildModels();
         }
 
         /// <inheritdoc/>
-        public List<UIModel> GetModels(UICategoryTag tag)
-        {
-            return models.Where(m => tag == m.Tag)
-                .ToList();
-        }
-
-        private List<UIModel> BuildModels()
+        public async Task BuildModelsAsync()
         {
             var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
-            return JsonConvert.DeserializeObject<IEnumerable<UIModelDto>>(json)?
+            models = await Json.ToObjectAsync<IEnumerable<UIModelDto>>(json)
+                .ContinueWith(task => task.Result
                 .Select(dto =>
                 {
                     return dto.Type switch
@@ -49,7 +42,14 @@ namespace SophiApp.Services
                         _ => throw new ArgumentOutOfRangeException(paramName: dto.Type.ToString(), message: "An invalid type is specified."),
                     };
                 })
-                .ToList() ?? new List<UIModel>();
+                .ToList());
+        }
+
+        /// <inheritdoc/>
+        public List<UIModel> GetModels(UICategoryTag tag)
+        {
+            return models.Where(m => tag == m.Tag)
+                .ToList();
         }
 
         private UIModel BuildExpandingGroupModel(UIModelDto dto)
