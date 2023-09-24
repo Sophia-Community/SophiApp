@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
-    # Trigger Action for a new release only
     # tags:
     # - '*.*.*'
+  pull_request:
+    branches:
+      - master
 
 jobs:
   update-badges:
@@ -15,39 +17,25 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@main
-      - name: Download cloc
-        run: |
-          $Token = "${{ secrets.GITHUB_TOKEN }}"
-          $Headers = @{
-              Accept        = "application/json"
-              Authorization = "Bearer $Token"
-          }
-          $Parameters = @{
-              Uri             = "https://api.github.com/repos/AlDanial/cloc/releases/latest"
-              Headers         = $Headers
-              UseBasicParsing = $true
-              Verbose         = $true
-          }
-          $Tag = (Invoke-RestMethod @Parameters).tag_name.replace("v", "")
-
-          $Parameters = @{
-              Uri             = "https://github.com/AlDanial/cloc/releases/download/v$Tag/cloc-$Tag.exe"
-              OutFile         = "$PSScriptRoot\cloc.exe"
-              UseBasicParsing = $true
-              Verbose         = $true
-          }
-          Invoke-WebRequest @Parameters
 
       - name: Get the Numbers
         run: |
-          $JSON    = & "$PSScriptRoot\cloc.exe" "src/SophiApp" --exclude-list-file=".clocignore" --json | ConvertFrom-Json
-          $blank   = $JSON.SUM.blank
-          $comment = $JSON.SUM.comment
-          $code    = $JSON.SUM.code
-          # "$((($blank + $comment + $code)/1000).ToString("#.#").replace(",", "."))k"
-          $Summary = ("{0:N1}k" -f (($blank + $comment + $code)/1000)).replace(",", ".")
+          $ExcudedJSONs = @(
+            "UIData_CZ.json",
+            "UIData_DE.json",
+            "UIData_ES.json",
+            "UIData_FR.json",
+            "UIData_IT.json",
+            "UIData_PL.json",
+            "UIData_RU.json",
+            "UIData_TR.json",
+            "UIData_UA.json",
+            "UIData_zh_CN.json"
+           )
+          $Summary = (Get-ChildItem -Path "src/SophiApp" -Recurse -File -Force | Where-Object -FilterScript {$_.Name -notin $ExcudedJSONs} | ForEach-Object -Process {(Get-Content -Path $_.FullName).Count} | Measure-Object -Sum).Sum
+          $Summary = "{0:N1}k" -f ($Summary/1000)
 
-          Write-Verbose -Message ($blank + $comment + $code) -Verbose
+          Write-Verbose -Message $Summary -Verbose
 
           echo "CODE_LINES=$Summary" >> $env:GITHUB_ENV
 
