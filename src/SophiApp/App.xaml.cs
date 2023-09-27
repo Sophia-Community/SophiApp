@@ -51,7 +51,7 @@ public partial class App : Application
                 _ = services.AddTransient<IUriService, UriService>();
 
                 // Views and ViewModels
-                _ = services.AddTransient<StartupViewModel>();
+                _ = services.AddScoped<StartupViewModel>();
                 _ = services.AddTransient<StartupPage>();
                 _ = services.AddTransient<SettingsViewModel>();
                 _ = services.AddTransient<SettingsPage>();
@@ -137,12 +137,8 @@ public partial class App : Application
         base.OnLaunched(args);
         await GetService<IInitializeService>()
             .InitializeAsync(args);
-
-        //_ = GetService<INavigationService>()
-        //    .NavigateTo(typeof(StartupViewModel).FullName!);
-        //await Task.Delay(5000);
-        //_ = GetService<INavigationService>()
-        //    .NavigateTo(pageKey: typeof(PrivacyViewModel).FullName!, clearNavigation: true);
+        await GetService<ShellViewModel>()
+            .Execute();
     }
 
     private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)

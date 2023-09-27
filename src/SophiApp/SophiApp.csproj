@@ -73,6 +73,9 @@
     <Content Update="Assets\AppLogo.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\AppLogoBig.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\Discord.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

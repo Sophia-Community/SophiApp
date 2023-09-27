@@ -44,6 +44,7 @@
         </Grid>
         <NavigationView x:Name="NavigationViewControl"
                         Canvas.ZIndex="0"
+                        IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                         IsPaneToggleButtonVisible="False"
                         IsBackButtonVisible="Visible"
                         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"

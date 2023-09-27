@@ -11,5 +11,10 @@ namespace SophiApp.ViewModels
     /// </summary>
     public partial class StartupViewModel : ObservableRecipient
     {
+        [ObservableProperty]
+        private string statusText = string.Empty;
+
+        [ObservableProperty]
+        private double progressBarValue = 0.0;
     }
 }
