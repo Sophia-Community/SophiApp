@@ -7,7 +7,9 @@ using System.Text;
 using Newtonsoft.Json;
 using SophiApp.Contracts.Services;
 
+/// <summary>
 /// <inheritdoc/>
+/// </summary>
 public class FileService : IFileService
 {
     /// <summary>

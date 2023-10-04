@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Activation;
 using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
+using SophiApp.Extensions;
 using SophiApp.Views;
 
 /// <summary>

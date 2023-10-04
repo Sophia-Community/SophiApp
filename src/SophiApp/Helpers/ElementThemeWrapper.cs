@@ -5,6 +5,7 @@
 namespace SophiApp.Helpers
 {
     using Microsoft.UI.Xaml;
+    using SophiApp.Extensions;
 
     /// <summary>
     /// <see cref="ElementTheme"/> wrapper.

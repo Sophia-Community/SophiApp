@@ -7,7 +7,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CSharpFunctionalExtensions;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
+using SophiApp.Extensions;
 
 /// <summary>
 /// Implements the <see cref="ShellViewModel"/> class.
@@ -15,6 +15,7 @@ using SophiApp.Helpers;
 public partial class ShellViewModel : ObservableRecipient
 {
     private readonly StartupViewModel startupVM;
+    private readonly ICommonDataService commonDataService;
 
     [ObservableProperty]
     private string delimiter;
@@ -31,10 +32,10 @@ public partial class ShellViewModel : ObservableRecipient
     /// <summary>
     /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
     /// </summary>
-    /// <param name="navigationService"><see cref="INavigationService"/>.</param>
-    /// <param name="navigationViewService"><see cref="INavigationViewService"/>.</param>
-    /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
-    /// <param name="startupVM"><see cref="StartupViewModel"/>.</param>
+    /// <param name="navigationService">Page navigation service.</param>
+    /// <param name="navigationViewService">A service for navigating to View.</param>
+    /// <param name="commonDataService">A service for working with common app data.</param>
+    /// <param name="startupVM">Implements the <see cref="StartupViewModel"/> class.</param>
     public ShellViewModel(
         INavigationService navigationService,
         INavigationViewService navigationViewService,
@@ -42,9 +43,10 @@ public partial class ShellViewModel : ObservableRecipient
         StartupViewModel startupVM)
     {
         NavigationService = navigationService;
+        this.commonDataService = commonDataService;
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
-        delimiter = commonDataService.GetDelimiter();
+        delimiter = this.commonDataService.GetDelimiter();
         this.startupVM = startupVM;
     }
 
@@ -69,7 +71,7 @@ public partial class ShellViewModel : ObservableRecipient
     /// </summary>
     public async Task Execute()
     {
-        SetStatusText("AppDescription");
+        SetStartupVmText("AppDescription");
 
         _ = NavigationService.NavigateTo(typeof(StartupViewModel).FullName!);
         await Task.CompletedTask;
@@ -91,7 +93,7 @@ public partial class ShellViewModel : ObservableRecipient
         }
     }
 
-    private Result SetStatusText(string text)
+    private Result SetStartupVmText(string text)
     {
         startupVM.StatusText = text.GetLocalized();
         return Result.Success();

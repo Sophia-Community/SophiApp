@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
 using SophiApp.Contracts.ViewModels;
-using SophiApp.Helpers;
+using SophiApp.Extensions;
 
 /// <inheritdoc/>
 public class NavigationService : INavigationService

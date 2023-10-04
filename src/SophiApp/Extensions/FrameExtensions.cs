@@ -2,7 +2,7 @@
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
-namespace SophiApp.Helpers;
+namespace SophiApp.Extensions;
 using Microsoft.UI.Xaml.Controls;
 
 /// <summary>

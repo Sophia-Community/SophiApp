@@ -7,6 +7,7 @@ namespace SophiApp.Services
     using System.Reflection;
     using Microsoft.UI.Input;
     using SophiApp.Contracts.Services;
+    using SophiApp.Helpers;
 
     /// <inheritdoc/>
     public class CommonDataService : ICommonDataService
@@ -104,7 +105,21 @@ namespace SophiApp.Services
 #pragma warning restore S1075 // URIs should not be hardcoded
 
         private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
+        private static InputCursor urlCursor = InputSystemCursor.Create(InputSystemCursorShape.Hand);
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
+        private readonly bool isOnline;
+        private readonly OsProperties osProperties;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CommonDataService"/> class.
+        /// </summary>
+        /// <param name="netService">A service for networking.</param>
+        /// <param name="instrumentationService">Service for working with WMI.</param>
+        public CommonDataService(INetService netService, IInstrumentationService instrumentationService)
+        {
+            isOnline = netService.IsOnline();
+            osProperties = instrumentationService.GetOsProperties();
+        }
 
         /// <summary>
         /// Gets or sets app user cursor.
@@ -124,7 +139,27 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets url hovering cursor.
         /// </summary>
-        public static InputCursor UrlCursor { get; } = InputSystemCursor.Create(InputSystemCursorShape.Hand);
+        public static InputCursor UrlCursor
+        {
+            get => urlCursor;
+            private set
+            {
+                if (urlCursor != value)
+                {
+                    urlCursor = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether Internet access is available.
+        /// </summary>
+        public bool IsOnline { get => isOnline; }
+
+        /// <summary>
+        /// Gets a value indicating whether the OS is Windows 11.
+        /// </summary>
+        public bool IsWindows11 { get => osProperties.Caption.Contains("11"); }
 
         /// <inheritdoc/>
         public string GetBuildName() => "Daria";

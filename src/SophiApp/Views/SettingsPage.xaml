@@ -4,12 +4,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:SophiApp.ControlTemplates"
-      xmlns:helpers="using:SophiApp.Helpers"
+      xmlns:converters="using:SophiApp.Converters"
       xmlns:service="using:SophiApp.Services"
       mc:Ignorable="d">
     <Page.Resources>
-        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
-        <helpers:BoolToInversionConverter x:Key="BoolToInversionConverter" />
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+        <converters:BoolToInversionConverter x:Key="BoolToInversionConverter" />
     </Page.Resources>
     <StackPanel>
         <controls:MadeForWindows Margin="2, 0, 0, 0"/>

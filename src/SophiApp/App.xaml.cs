@@ -49,6 +49,8 @@ public partial class App : Application
                 _ = services.AddSingleton<IModelBuilderService, ModelBuilderService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IUriService, UriService>();
+                _ = services.AddTransient<INetService, NetService>();
+                _ = services.AddTransient<IInstrumentationService, InstrumentationService>();
 
                 // Views and ViewModels
                 _ = services.AddScoped<StartupViewModel>();
