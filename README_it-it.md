@@ -137,9 +137,8 @@ irm app.sophi.app -useb | iex
 [Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
 
 ```powershell
-winget download sophiapp 
+winget download --id=TeamSophia.SophiApp --accept-source-agreements --download-directory D:\
 ```
-> **Nota**: Se hai installato `SophiApp` tramite `WinGet`, devi prima disinstallare `SophiApp` tramite `WinGet` prima di rimuovere i file, altrimenti non sarai in grado di scaricare nuovamente il pacchetto.
 
 [Chocolatey](https://community.chocolatey.org/packages/sophiapp)
 
