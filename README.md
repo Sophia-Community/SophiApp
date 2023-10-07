@@ -139,7 +139,7 @@ irm app.sophi.app -useb | iex
 [WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
 
 ```powershell
-winget install --id=TeamSophia.SophiApp --accept-source-agreements --location D:\
+winget download --id=TeamSophia.SophiApp --accept-source-agreements --location D:\
 ```
 
 > **Note**: If you installed `SophiApp` via `WinGet`, before removing files, you should uninstall `SophiApp` via `WinGet` first, unless you won't be able to re-download package again.
