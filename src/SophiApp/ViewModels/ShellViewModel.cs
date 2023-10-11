@@ -15,6 +15,7 @@ using SophiApp.Extensions;
 public partial class ShellViewModel : ObservableRecipient
 {
     private readonly StartupViewModel startupVM;
+    private readonly IRequirementsService requirementsService;
     private readonly ICommonDataService commonDataService;
 
     [ObservableProperty]
@@ -36,11 +37,13 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="navigationViewService">A service for navigating to View.</param>
     /// <param name="commonDataService">A service for working with common app data.</param>
     /// <param name="startupVM">Implements the <see cref="StartupViewModel"/> class.</param>
+    /// <param name="requirementsService">Service for working with OS requirements.</param>
     public ShellViewModel(
         INavigationService navigationService,
         INavigationViewService navigationViewService,
         ICommonDataService commonDataService,
-        StartupViewModel startupVM)
+        StartupViewModel startupVM,
+        IRequirementsService requirementsService)
     {
         NavigationService = navigationService;
         this.commonDataService = commonDataService;
@@ -48,6 +51,7 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationViewService = navigationViewService;
         delimiter = this.commonDataService.GetDelimiter();
         this.startupVM = startupVM;
+        this.requirementsService = requirementsService;
     }
 
     /// <summary>
@@ -69,12 +73,32 @@ public partial class ShellViewModel : ObservableRecipient
     /// <summary>
     /// Executes the ViewModel logic of the MVVM pattern.
     /// </summary>
-    public async Task Execute()
+    public async Task ExecuteAsync()
     {
-        SetStartupVmText("AppDescription");
+        var numberOfChecks = 20;
 
-        _ = NavigationService.NavigateTo(typeof(StartupViewModel).FullName!);
-        await Task.CompletedTask;
+        await Task.Run(() =>
+        {
+            Result.Try(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupVM.StatusText = "OsRequirements_DetectWmiState".GetLocalized();
+                NavigationService.NavigateTo(typeof(StartupViewModel).FullName!);
+            }))
+            .Bind(_ => requirementsService.GetWmiState())
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupVM.ProgressBarValue = startupVM.ProgressBarValue.PartialIncrease(numberOfChecks);
+                startupVM.StatusText = "OsRequirements_DetectOsVersion".GetLocalized();
+            }))
+            .Bind(() => requirementsService.GetOsVersion())
+            .Match(
+                onSuccess: () => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+                {
+                    NavigationViewHitTestVisible = true;
+                    NavigationService.NavigateTo(pageKey: typeof(PrivacyViewModel).FullName!, clearNavigation: true);
+                }),
+                onFailure: pageKey => App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(pageKey)));
+        });
     }
 
     /// <summary>
@@ -91,11 +115,5 @@ public partial class ShellViewModel : ObservableRecipient
         {
             Selected = selectedItem;
         }
-    }
-
-    private Result SetStartupVmText(string text)
-    {
-        startupVM.StatusText = text.GetLocalized();
-        return Result.Success();
     }
 }

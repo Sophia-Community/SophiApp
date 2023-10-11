@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
     <RootNamespace>SophiApp</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x64</Platforms>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
-    <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
@@ -23,6 +23,7 @@
     <UseStyleCop>true</UseStyleCop>
     <UseSonarAnalyzer>true</UseSonarAnalyzer>
     <UseResults>true</UseResults>
+    <StartupObject>SophiApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\LinkedIn.svg" />
@@ -41,6 +42,10 @@
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
     <None Remove="Styles\ToggleButton.xaml" />
     <None Remove="Views\StartupPage.xaml" />
+    <None Remove="Views\Win11Build22KPage.xaml" />
+    <None Remove="Views\Win11BuildLess22KPage.xaml" />
+    <None Remove="Views\Win11UbrLess2283Page.xaml" />
+    <None Remove="Views\WmiStatePage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
@@ -129,6 +134,18 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Win11UbrLess2283Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Win11Build22KPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Win11BuildLess22KPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\WmiStatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\StartupPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

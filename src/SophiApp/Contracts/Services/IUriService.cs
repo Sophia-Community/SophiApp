@@ -13,6 +13,6 @@ namespace SophiApp.Contracts.Services
         /// Opens a resource using an url.
         /// </summary>
         /// <param name="url">Discoverable url.</param>
-        Task OpenUrl(string? url);
+        Task OpenUrlAsync(string url);
     }
 }

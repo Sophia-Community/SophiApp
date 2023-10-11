@@ -51,6 +51,7 @@ public partial class App : Application
                 _ = services.AddTransient<IUriService, UriService>();
                 _ = services.AddTransient<INetService, NetService>();
                 _ = services.AddTransient<IInstrumentationService, InstrumentationService>();
+                _ = services.AddTransient<IRequirementsService, RequirementsService>();
 
                 // Views and ViewModels
                 _ = services.AddScoped<StartupViewModel>();
@@ -73,8 +74,16 @@ public partial class App : Application
                 _ = services.AddTransient<PersonalizationPage>();
                 _ = services.AddTransient<PrivacyViewModel>();
                 _ = services.AddTransient<PrivacyPage>();
-                _ = services.AddTransient<ShellViewModel>();
+                _ = services.AddScoped<ShellViewModel>();
                 _ = services.AddTransient<ShellPage>();
+                _ = services.AddTransient<WmiStateViewModel>();
+                _ = services.AddTransient<WmiStatePage>();
+                _ = services.AddTransient<Win11BuildLess22KViewModel>();
+                _ = services.AddTransient<Win11BuildLess22KPage>();
+                _ = services.AddTransient<Win11Build22KViewModel>();
+                _ = services.AddTransient<Win11Build22KPage>();
+                _ = services.AddTransient<Win11UbrLess2283ViewModel>();
+                _ = services.AddTransient<Win11UbrLess2283Page>();
 
                 // Configuration
                 _ = services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
@@ -83,6 +92,7 @@ public partial class App : Application
 
         GetService<IAppNotificationService>()
             .Initialize();
+
         UnhandledException += App_UnhandledException;
     }
 
@@ -137,10 +147,8 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        await GetService<IInitializeService>()
-            .InitializeAsync(args);
-        await GetService<ShellViewModel>()
-            .Execute();
+        await GetService<IInitializeService>().InitializeAsync(args);
+        await GetService<ShellViewModel>().ExecuteAsync();
     }
 
     private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)

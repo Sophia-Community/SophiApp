@@ -203,6 +203,11 @@ dotnet_diagnostic.S1117.severity = error
 
 # CS1572: Комментарий XML содержит тег param, но параметр с таким именем не существует
 dotnet_diagnostic.CS1572.severity = error
+dotnet_diagnostic.SA1008.severity = error
+dotnet_diagnostic.S2094.severity = error
+dotnet_diagnostic.SA1116.severity = error
+dotnet_diagnostic.SA1127.severity = error
+dotnet_diagnostic.SA1314.severity = suggestion
 
 [*.vb]
 #### Naming Styles ####

@@ -5,7 +5,6 @@
 namespace SophiApp.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using SophiApp.Activation;
 using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
 using SophiApp.Views;
@@ -15,8 +14,6 @@ using SophiApp.Views;
 /// </summary>
 public class InitializeService : IInitializeService
 {
-    private readonly ActivationHandler<LaunchActivatedEventArgs> defaultHandler;
-    private readonly IEnumerable<IActivationHandler> activationHandlers;
     private readonly IThemesService themeSelectorService;
     private readonly ICommonDataService commonDataService;
     private readonly IModelBuilderService modelBuilderService;
@@ -24,20 +21,14 @@ public class InitializeService : IInitializeService
     /// <summary>
     /// Initializes a new instance of the <see cref="InitializeService"/> class.
     /// </summary>
-    /// <param name="defaultHandler">Default activation handler.</param>
-    /// <param name="activationHandlers">Another activation handlers.</param>
     /// <param name="themeSelectorService">A service for working with app themes.</param>
     /// <param name="commonDataService">A service for working with common app data.</param>
     /// <param name="modelBuilderService">MVVM pattern model builder service.</param>
     public InitializeService(
-        ActivationHandler<LaunchActivatedEventArgs> defaultHandler,
-        IEnumerable<IActivationHandler> activationHandlers,
         IThemesService themeSelectorService,
         ICommonDataService commonDataService,
         IModelBuilderService modelBuilderService)
     {
-        this.defaultHandler = defaultHandler;
-        this.activationHandlers = activationHandlers;
         this.themeSelectorService = themeSelectorService;
         this.commonDataService = commonDataService;
         this.modelBuilderService = modelBuilderService;
@@ -51,7 +42,6 @@ public class InitializeService : IInitializeService
     {
         InitializeMainWindow();
         await InitializeThemeAsync();
-        await InitializeHandleAsync(args);
         await BuildModelsAsync();
     }
 
@@ -74,27 +64,10 @@ public class InitializeService : IInitializeService
     {
         await themeSelectorService.InitializeAsync();
         await themeSelectorService.SetRequestedThemeAsync();
-        await Task.CompletedTask;
-    }
-
-    private async Task InitializeHandleAsync(object activationArgs)
-    {
-        var activationHandler = activationHandlers.FirstOrDefault(h => h.CanHandle(activationArgs));
-
-        if (activationHandler != null)
-        {
-            await activationHandler.HandleAsync(activationArgs);
-        }
-
-        if (defaultHandler.CanHandle(activationArgs))
-        {
-            await defaultHandler.HandleAsync(activationArgs);
-        }
     }
 
     private async Task BuildModelsAsync()
     {
         await modelBuilderService.BuildModelsAsync();
-        await Task.CompletedTask;
     }
 }

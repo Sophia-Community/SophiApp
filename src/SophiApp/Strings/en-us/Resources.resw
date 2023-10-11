@@ -302,4 +302,10 @@
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
     <value>!!! No description available !!!</value>
   </data>
+  <data name="OsRequirements_DetectWmiState" xml:space="preserve">
+    <value>Detect Windows Management Instrumentation state</value>
+  </data>
+  <data name="OsRequirements_DetectOsVersion" xml:space="preserve">
+    <value>Detect OS version</value>
+  </data>
 </root>

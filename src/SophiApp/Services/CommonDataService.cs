@@ -73,6 +73,7 @@ namespace SophiApp.Services
         public const string AppTesterName = "Eugene \"lowlif3\" Zabronsky";
 
 #pragma warning disable S1075 // URIs should not be hardcoded
+
         /// <summary>
         /// Gets app project manager url.
         /// </summary>
@@ -102,6 +103,7 @@ namespace SophiApp.Services
         /// Gets app tester url.
         /// </summary>
         public const string AppTesterUrl = "https://github.com/lowl1f3";
+
 #pragma warning restore S1075 // URIs should not be hardcoded
 
         private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
@@ -151,15 +153,14 @@ namespace SophiApp.Services
             }
         }
 
-        /// <summary>
-        /// Gets a value indicating whether Internet access is available.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsOnline { get => isOnline; }
 
-        /// <summary>
-        /// Gets a value indicating whether the OS is Windows 11.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsWindows11 { get => osProperties.Caption.Contains("11"); }
+
+        /// <inheritdoc/>
+        public OsProperties OsProperties { get => osProperties; }
 
         /// <inheritdoc/>
         public string GetBuildName() => "Daria";
