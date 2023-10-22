@@ -10,7 +10,7 @@ namespace SophiApp.Contracts.Services
     public interface INetService
     {
         /// <summary>
-        /// Checking if there is Internet access.
+        /// Determine if there has Internet access.
         /// </summary>
         bool IsOnline();
     }

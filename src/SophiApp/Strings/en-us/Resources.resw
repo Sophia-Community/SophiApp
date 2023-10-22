@@ -302,10 +302,43 @@
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
     <value>!!! No description available !!!</value>
   </data>
-  <data name="OsRequirements_DetectWmiState" xml:space="preserve">
-    <value>Detect Windows Management Instrumentation state</value>
+  <data name="OsRequirements_GetWmiState" xml:space="preserve">
+    <value>Detect WMI state</value>
   </data>
-  <data name="OsRequirements_DetectOsVersion" xml:space="preserve">
+  <data name="OsRequirements_GetVersion" xml:space="preserve">
     <value>Detect OS version</value>
+  </data>
+  <data name="OsRequirements_GetBitness" xml:space="preserve">
+    <value>Detect OS bitness</value>
+  </data>
+  <data name="OsRequirements_Failure_IsX32" xml:space="preserve">
+    <value>SophiApp 2.0 supports 64-bit Windows only</value>
+  </data>
+  <data name="OsRequirements_Failure_Win10Ltsc2k19" xml:space="preserve">
+    <value>SophiApp 2.0 doesn't support Windows 10 Enterprise LTSC 2019</value>
+  </data>
+  <data name="OsRequirements_Failure_Win10Ltsc2k21" xml:space="preserve">
+    <value>SophiApp 2.0 doesn't support Windows 10 Enterprise LTSC 2021</value>
+  </data>
+  <data name="OsRequirements_Failure_Win10UnsupportedBuild" xml:space="preserve">
+    <value>SophiApp 2.0 supports Windows 10 22H2</value>
+  </data>
+  <data name="OsRequirements_Failure_Win10UnsupportedVersion" xml:space="preserve">
+    <value>Your Windows 10 build: {0}.{1}. Supported builds: 19045.3448+. Run Windows Update and try again.</value>
+  </data>
+  <data name="OsRequirements_Failure_Win11UnsupportedBuild" xml:space="preserve">
+    <value>SophiApp 2.0 supports Windows 11 22H2+</value>
+  </data>
+  <data name="OsRequirements_Failure_Win11UnsupportedVersion" xml:space="preserve">
+    <value>Your Windows 11 build: {0}.{1}. Supported builds: 22621.2283+. Run Windows Update and try again.</value>
+  </data>
+  <data name="OsRequirements_Failure_WmiBroken" xml:space="preserve">
+    <value>WMI service is broken</value>
+  </data>
+  <data name="OsRequirements_Failure_UserIsNotAdmin" xml:space="preserve">
+    <value>The logged-on user doesn't have admin rights</value>
+  </data>
+  <data name="OsRequirements_GetUserRights" xml:space="preserve">
+    <value>Check whether the logged-in user is an admin</value>
   </data>
 </root>

@@ -1,19 +1,17 @@
 <Page
-    x:Class="SophiApp.Views.StartupPage"
+    x:Class="SophiApp.Views.RequirementsFailurePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Width="836"
-          VerticalAlignment="Center"
+    <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
           Margin="0, 0, 0, 90">
         <Grid.RowDefinitions>
-            <RowDefinition Height="216"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="56"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Image Grid.Row="0"
@@ -26,19 +24,8 @@
 
         <TextBlock Grid.Row="1"
                    Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
-                   Style="{StaticResource StartupPageTextStyle}"
+                   Style="{StaticResource RequirementsFailurePageTextStyle}"
                    Foreground="{ThemeResource WindowForeground}"
                    Margin="0, 3, 0, 20"/>
-
-        <ProgressBar Grid.Row="2"
-                     Value="{x:Bind ViewModel.ProgressBarValue, Mode=OneWay}"
-                     Maximum="1.0"
-                     Height="3"
-                     Width="492"
-                     Margin="24, 12, 24, 12"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     Background="{ThemeResource ProgressBarBackground}"
-                     Foreground="{ThemeResource WindowAccent}" />
     </Grid>
 </Page>

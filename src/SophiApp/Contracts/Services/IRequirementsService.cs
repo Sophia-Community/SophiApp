@@ -12,13 +12,23 @@ namespace SophiApp.Contracts.Services
     public interface IRequirementsService
     {
         /// <summary>
+        /// Get os bitness.
+        /// </summary>
+        Result GetOsBitness();
+
+        /// <summary>
         /// Get the state of Windows Management Instrumentation.
         /// </summary>
         Result GetWmiState();
 
         /// <summary>
-        /// Get Windows version.
+        /// Get os version.
         /// </summary>
         Result GetOsVersion();
+
+        /// <summary>
+        /// Determines whether the logged in user has administrator privileges.
+        /// </summary>
+        Result HasAdminRights();
     }
 }

@@ -14,7 +14,7 @@ namespace SophiApp.Services
     public class InstrumentationService : IInstrumentationService
     {
         /// <inheritdoc/>
-        public OsProperties GetOsProperties()
+        public OsProperties? GetOsProperties()
         {
             try
             {
@@ -28,7 +28,24 @@ namespace SophiApp.Services
             catch (Exception)
             {
                 // TODO: Log error handler here!
-                return new OsProperties();
+                return null;
+            }
+        }
+
+        /// <inheritdoc/>
+        public ManagementObject? GetUwpAppsManagement()
+        {
+            try
+            {
+                return new ManagementObjectSearcher(scope: "root\\CIMV2\\mdm\\dmmap", queryString: "SELECT * FROM MDM_EnterpriseModernAppManagement_AppManagement01")
+                .Get()
+                .Cast<ManagementObject>()
+                .First();
+            }
+            catch (Exception)
+            {
+                // TODO: Log error handler here!
+                return null;
             }
         }
     }

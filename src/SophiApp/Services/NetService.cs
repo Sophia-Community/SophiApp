@@ -23,6 +23,7 @@ namespace SophiApp.Services
             }
             catch (Exception)
             {
+                // TODO log exception here!
                 return false;
             }
         }

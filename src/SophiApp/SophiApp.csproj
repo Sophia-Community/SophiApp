@@ -41,11 +41,8 @@
     <None Remove="ControlTemplates\ContentBlock.xaml" />
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
     <None Remove="Styles\ToggleButton.xaml" />
+    <None Remove="Views\RequirementsFailurePage.xaml" />
     <None Remove="Views\StartupPage.xaml" />
-    <None Remove="Views\Win11Build22KPage.xaml" />
-    <None Remove="Views\Win11BuildLess22KPage.xaml" />
-    <None Remove="Views\Win11UbrLess2283Page.xaml" />
-    <None Remove="Views\WmiStatePage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
@@ -134,16 +131,7 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Page Update="Views\Win11UbrLess2283Page.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Win11Build22KPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Win11BuildLess22KPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\WmiStatePage.xaml">
+    <Page Update="Views\RequirementsFailurePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\StartupPage.xaml">

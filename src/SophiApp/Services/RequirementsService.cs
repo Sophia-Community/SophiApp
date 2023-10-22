@@ -4,11 +4,12 @@
 
 namespace SophiApp.Services
 {
+    using System.Security.Principal;
     using System.ServiceProcess;
     using CSharpFunctionalExtensions;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
-    using SophiApp.ViewModels;
+    using SophiApp.Helpers;
 
     /// <summary>
     /// <inheritdoc/>
@@ -27,21 +28,28 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public Result GetOsBitness()
+        {
+            return Environment.Is64BitOperatingSystem ? Result.Success() : Result.Failure(nameof(RequirementsFailure.Is32BitOs));
+        }
+
+        /// <inheritdoc/>
         public Result GetWmiState()
         {
-            var mgmtService = new ServiceController("Winmgmt");
-            var mgmtRepository = "chcp 437 | winmgmt /verifyrepository".InvokeAsPoweShell();
-
             try
             {
-                return mgmtService.Status == ServiceControllerStatus.Running && string.Equals(mgmtRepository[0].BaseObject as string, "WMI repository is consistent", StringComparison.InvariantCultureIgnoreCase)
-                ? Result.Success()
-                : Result.Failure(typeof(WmiStateViewModel).FullName!);
+                var repoState = "chcp 437 | winmgmt /verifyrepository".InvokeAsCmd();
+                var serviceIsRun = new ServiceController("Winmgmt").Status == ServiceControllerStatus.Running;
+                var repoIsConsistent = repoState.Contains("WMI repository is consistent", StringComparison.Ordinal);
+                var captionIsCorrect = !string.IsNullOrEmpty(commonDataService.OsProperties.Caption);
+
+                // TODO: Log WMI state here!
+                return serviceIsRun && repoIsConsistent && captionIsCorrect ? Result.Success() : Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
             catch (Exception)
             {
                 // TODO: Log error here!
-                return Result.Failure(typeof(WmiStateViewModel).FullName!);
+                return Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
         }
 
@@ -49,14 +57,29 @@ namespace SophiApp.Services
         public Result GetOsVersion()
         {
 #pragma warning disable S2589 // Boolean expressions should not be gratuitous
+
             return commonDataService.OsProperties.BuildNumber switch
             {
-                var build when commonDataService.IsWindows11 && build < 22000 => Result.Failure(typeof(Win11BuildLess22KViewModel).FullName!),
-                var build when commonDataService.IsWindows11 && build == 22000 => Result.Failure(typeof(Win11Build22KViewModel).FullName!),
-                var build when commonDataService.IsWindows11 && build == 22621 && commonDataService.OsProperties.UpdateBuildRevision < 2283 => Result.Failure(typeof(Win11UbrLess2283ViewModel).FullName!),
+                var build when commonDataService.IsWindows11 && build < 22000 => Result.Failure(nameof(RequirementsFailure.Win11BuildLess22k)),
+                var build when commonDataService.IsWindows11 && build == 22000 => Result.Failure(nameof(RequirementsFailure.Win11BuildEqual22k)),
+                var build when commonDataService.IsWindows11 && build == 22621 && commonDataService.OsProperties.UpdateBuildRevision < 2283 => Result.Failure(nameof(RequirementsFailure.Win11UBRLess2283)),
+                var build when build == 19045 && commonDataService.OsProperties.UpdateBuildRevision < 3448 => Result.Failure(nameof(RequirementsFailure.Win10UBRLess3448)),
+                var build when build < 19045 || build > 19045 => Result.Failure(nameof(RequirementsFailure.Win10WrongBuild)),
+                var build when build == 17763 => Result.Failure(nameof(RequirementsFailure.Win10LTSC2k19)),
+                var build when build == 19044 && commonDataService.OsProperties.Edition.Contains("EnterpriseS", StringComparison.InvariantCultureIgnoreCase) => Result.Failure(nameof(RequirementsFailure.Win10LTSC2k21)),
+                var build when build == 19044 => Result.Failure(nameof(RequirementsFailure.Win10BuildEquals19044)),
                 _ => Result.Success()
             };
+
 #pragma warning restore S2589 // Boolean expressions should not be gratuitous
+        }
+
+        /// <inheritdoc/>
+        public Result HasAdminRights()
+        {
+            using var identity = WindowsIdentity.GetCurrent();
+            var principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.UserIsNotAdmin));
         }
     }
 }

@@ -109,7 +109,6 @@ namespace SophiApp.Services
         private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
         private static InputCursor urlCursor = InputSystemCursor.Create(InputSystemCursorShape.Hand);
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
-        private readonly bool isOnline;
         private readonly OsProperties osProperties;
 
         /// <summary>
@@ -119,8 +118,8 @@ namespace SophiApp.Services
         /// <param name="instrumentationService">Service for working with WMI.</param>
         public CommonDataService(INetService netService, IInstrumentationService instrumentationService)
         {
-            isOnline = netService.IsOnline();
-            osProperties = instrumentationService.GetOsProperties();
+            osProperties = instrumentationService.GetOsProperties() !;
+            IsOnline = netService.IsOnline();
         }
 
         /// <summary>
@@ -154,7 +153,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool IsOnline { get => isOnline; }
+        public bool IsOnline { get; init; }
 
         /// <inheritdoc/>
         public bool IsWindows11 { get => osProperties.Caption.Contains("11"); }

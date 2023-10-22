@@ -4,6 +4,7 @@
 
 namespace SophiApp.Contracts.Services
 {
+    using System.Management;
     using SophiApp.Helpers;
 
     /// <summary>
@@ -14,6 +15,11 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Gets the WMI properties of the Win32_OperatingSystem class.
         /// </summary>
-        OsProperties GetOsProperties();
+        OsProperties? GetOsProperties();
+
+        /// <summary>
+        /// Get UWP apps management.
+        /// </summary>
+        ManagementObject? GetUwpAppsManagement();
     }
 }

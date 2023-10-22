@@ -9,6 +9,7 @@ namespace SophiApp.Services
     using System.Text;
     using CSharpFunctionalExtensions;
     using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
     using Windows.ApplicationModel.Resources.Core;
@@ -30,7 +31,7 @@ namespace SophiApp.Services
         public async Task BuildModelsAsync()
         {
             var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
-            models = await Json.ToObjectAsync<IEnumerable<UIModelDto>>(json)
+            models = await JsonExtensions.ToObjectAsync<IEnumerable<UIModelDto>>(json)
                 .ContinueWith(task => task.Result
                 .Select(dto =>
                 {

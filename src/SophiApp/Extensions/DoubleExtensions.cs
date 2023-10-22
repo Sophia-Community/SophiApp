@@ -10,7 +10,7 @@ namespace SophiApp.Extensions
     public static class DoubleExtensions
     {
         /// <summary>
-        /// Proportionally increases the <paramref name="value"/> using <paramref name="step"/>.
+        /// Partial increases the <paramref name="value"/> using <paramref name="step"/>.
         /// </summary>
         /// <param name="value">Increasing value.</param>
         /// <param name="step">Value increment step.</param>

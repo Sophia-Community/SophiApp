@@ -208,6 +208,7 @@ dotnet_diagnostic.S2094.severity = error
 dotnet_diagnostic.SA1116.severity = error
 dotnet_diagnostic.SA1127.severity = error
 dotnet_diagnostic.SA1314.severity = suggestion
+dotnet_diagnostic.SA1013.severity = error
 
 [*.vb]
 #### Naming Styles ####
