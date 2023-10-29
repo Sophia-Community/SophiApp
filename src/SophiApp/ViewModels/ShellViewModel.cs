@@ -87,7 +87,7 @@ public partial class ShellViewModel : ObservableRecipient
         {
             Result.Try(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
-                startupModel.StatusText = "OsRequirements_GetBitness".GetLocalized();
+                startupModel.StatusText = "OsRequirements_GetOsBitness".GetLocalized();
                 NavigationService.NavigateTo(typeof(StartupViewModel).FullName!);
             }))
             .Bind(_ => requirementsService.GetOsBitness())
@@ -100,15 +100,45 @@ public partial class ShellViewModel : ObservableRecipient
             .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
-                startupModel.StatusText = "OsRequirements_GetVersion".GetLocalized();
+                startupModel.StatusText = "OsRequirements_GetOsVersion".GetLocalized();
             }))
             .Bind(requirementsService.GetOsVersion)
             .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
-                startupModel.StatusText = "OsRequirements_GetUserRights".GetLocalized();
+                startupModel.StatusText = "OsRequirements_AppRunFromLoggedUser".GetLocalized();
             }))
-            .Bind(requirementsService.HasAdminRights)
+            .Bind(requirementsService.AppRunFromLoggedUser)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_MalwareDetection".GetLocalized();
+            }))
+            .Bind(requirementsService.MalwareDetection)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GetFeatureExperiencePackState".GetLocalized();
+            }))
+            .Bind(requirementsService.GetFeatureExperiencePackState)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GetPendingRebootState".GetLocalized();
+            }))
+            .Bind(requirementsService.GetPendingRebootState)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_UpdateDetection".GetLocalized();
+            }))
+            .Bind(requirementsService.UpdateDetection)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GetMsDefenderComponentsState".GetLocalized();
+            }))
+            .Bind(requirementsService.GetMsDefenderComponentsState)
             .Match(
                 onSuccess: () => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
                 {
@@ -118,19 +148,19 @@ public partial class ShellViewModel : ObservableRecipient
                 onFailure: failure =>
                 {
                     var reason = failure.ToEnum<RequirementsFailure>();
-                    var reasonText = GetLocalizedString(reason);
+                    var reasonText = GetLocalized(reason);
                     var needUpdate = NeedUpdate(reason);
-                    requirementsFailureModel.PrepareForNavigate(reasonText, needUpdate);
+                    requirementsFailureModel.PrepareModelForNavigation(reasonText, needUpdate);
                     App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(typeof(RequirementsFailureViewModel).FullName!));
                 });
         });
     }
 
-    private string GetLocalizedString(RequirementsFailure reason)
+    private string GetLocalized(RequirementsFailure reason)
     {
         return reason switch
         {
-            RequirementsFailure.Is32BitOs => "OsRequirements_Failure_IsX32".GetLocalized(),
+            RequirementsFailure.Is32BitOs => "OsRequirements_Failure_Is32BitOs".GetLocalized(),
             RequirementsFailure.WMIBroken => "OsRequirements_Failure_WmiBroken".GetLocalized(),
             RequirementsFailure.Win11BuildLess22k => "OsRequirements_Failure_Win11UnsupportedBuild".GetLocalized(),
             RequirementsFailure.Win11BuildEqual22k => string.Format("OsRequirements_Failure_Win11UnsupportedVersion".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
@@ -140,8 +170,12 @@ public partial class ShellViewModel : ObservableRecipient
             RequirementsFailure.Win10LTSC2k19 => "OsRequirements_Failure_Win10Ltsc2k19".GetLocalized(),
             RequirementsFailure.Win10LTSC2k21 => "OsRequirements_Failure_Win10Ltsc2k21".GetLocalized(),
             RequirementsFailure.Win10BuildEquals19044 => string.Format("OsRequirements_Failure_Win10UnsupportedVersion".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
-            RequirementsFailure.UserIsNotAdmin => "OsRequirements_Failure_UserIsNotAdmin".GetLocalized(),
-            _ => throw new ArgumentOutOfRangeException(paramName: reason.ToString(), message: $"Value: {reason} is not found in {typeof(RequirementsFailure).Name} enumeration.")
+            RequirementsFailure.RunByNotLoggedUser => "OsRequirements_Failure_RunByNotLoggedUser".GetLocalized(),
+            RequirementsFailure.MalwareDetected => string.Format("OsRequirements_Failure_MalwareDetected".GetLocalized(), commonDataService.DetectedMalware),
+            RequirementsFailure.FeatureExperiencePackRemoved => "OsRequirements_Failure_FeatureExperiencePackRemoved".GetLocalized(),
+            RequirementsFailure.RebootRequired => "OsRequirements_Failure_RebootRequired".GetLocalized(),
+            RequirementsFailure.MsDefenderComponentMissing => string.Format("OsRequirements_Failure_MsDefenderComponentMissing".GetLocalized(), commonDataService.MissingDefenderComponent),
+            _ => throw new ArgumentOutOfRangeException(paramName: nameof(reason), message: $"Value: {reason} is not found in {typeof(RequirementsFailure).Name} enumeration.")
         };
     }
 
@@ -149,15 +183,6 @@ public partial class ShellViewModel : ObservableRecipient
     {
         switch (reason)
         {
-            case RequirementsFailure.Is32BitOs:
-            case RequirementsFailure.WMIBroken:
-            case RequirementsFailure.Win11BuildLess22k:
-            case RequirementsFailure.Win10WrongBuild:
-            case RequirementsFailure.Win10LTSC2k19:
-            case RequirementsFailure.Win10LTSC2k21:
-            case RequirementsFailure.UserIsNotAdmin:
-                return false;
-
             case RequirementsFailure.Win11BuildEqual22k:
             case RequirementsFailure.Win11UBRLess2283:
             case RequirementsFailure.Win10UBRLess3448:
@@ -165,7 +190,7 @@ public partial class ShellViewModel : ObservableRecipient
                 return true;
 
             default:
-                throw new ArgumentOutOfRangeException(paramName: nameof(reason), message: $"Value: {reason} is not found in {typeof(RequirementsFailure).Name} enumeration.");
+                return false;
         }
     }
 

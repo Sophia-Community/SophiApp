@@ -31,7 +31,7 @@ namespace SophiApp.ViewModels
         /// </summary>
         /// <param name="text">Set message text.</param>
         /// <param name="runUpdate">Start the system update.</param>
-        public void PrepareForNavigate(string text, bool runUpdate)
+        public void PrepareModelForNavigation(string text, bool runUpdate)
         {
             StatusText = text;
 

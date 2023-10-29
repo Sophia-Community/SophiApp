@@ -21,7 +21,12 @@ namespace SophiApp.Helpers
         Win10LTSC2k19,
         Win10LTSC2k21,
         Win10BuildEquals19044,
-        UserIsNotAdmin,
+        RunByNotLoggedUser,
+        MalwareDetected,
+        FeatureExperiencePackRemoved,
+        RebootRequired,
+        UpdateDetected,
+        MsDefenderComponentMissing,
     }
 
 #pragma warning restore CS1591 // There is no XML comment for an open visible type or member.

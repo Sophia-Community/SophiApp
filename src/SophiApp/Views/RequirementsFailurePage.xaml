@@ -8,7 +8,7 @@
 
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
-          Margin="0, 0, 0, 90">
+          Margin="0, 62, 0, 90">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -19,13 +19,11 @@
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
                Width="373"
-               Height="103"
-               Margin="0, 62, 0, 0"/>
+               Height="103"/>
 
         <TextBlock Grid.Row="1"
                    Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
                    Style="{StaticResource RequirementsFailurePageTextStyle}"
-                   Foreground="{ThemeResource WindowForeground}"
-                   Margin="0, 3, 0, 20"/>
+                   Foreground="{ThemeResource WindowForeground}"/>
     </Grid>
 </Page>

@@ -53,6 +53,7 @@ public partial class App : Application
                 _ = services.AddTransient<IInstrumentationService, InstrumentationService>();
                 _ = services.AddTransient<IRequirementsService, RequirementsService>();
                 _ = services.AddTransient<IUpdateService, UpdateService>();
+                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
 
                 // Views and ViewModels
                 _ = services.AddScoped<StartupViewModel>();

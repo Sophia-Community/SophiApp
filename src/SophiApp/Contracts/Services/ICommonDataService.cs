@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A service for working with common app data.
+    /// A service for transferring common app data between layers of abstractions.
     /// </summary>
     public interface ICommonDataService
     {
@@ -25,6 +25,16 @@ namespace SophiApp.Contracts.Services
         /// Gets a values of OS properties.
         /// </summary>
         OsProperties OsProperties { get; }
+
+        /// <summary>
+        /// Gets or sets malware name detected by <see cref="IRequirementsService"/>.
+        /// </summary>
+        string DetectedMalware { get; set; }
+
+        /// <summary>
+        /// Gets or sets Microsoft Defender missing component name.
+        /// </summary>
+        string MissingDefenderComponent { get; set; }
 
         /// <summary>
         /// Gets app name and version.

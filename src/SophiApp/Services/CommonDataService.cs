@@ -162,6 +162,12 @@ namespace SophiApp.Services
         public OsProperties OsProperties { get => osProperties; }
 
         /// <inheritdoc/>
+        public string DetectedMalware { get; set; } = string.Empty;
+
+        /// <inheritdoc/>
+        public string MissingDefenderComponent { get; set; } = string.Empty;
+
+        /// <inheritdoc/>
         public string GetBuildName() => "Daria";
 
         /// <inheritdoc/>

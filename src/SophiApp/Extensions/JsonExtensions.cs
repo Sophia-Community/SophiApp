@@ -19,7 +19,7 @@ public static class JsonExtensions
     {
         return await Task.Run(() =>
         {
-            return JsonConvert.DeserializeObject<T>(value)!;
+            return JsonConvert.DeserializeObject<T>(value) !;
         });
     }
 

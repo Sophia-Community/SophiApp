@@ -4,6 +4,7 @@
 
 namespace SophiApp.Contracts.Services
 {
+    using System.Diagnostics;
     using System.Management;
     using SophiApp.Helpers;
 
@@ -21,5 +22,11 @@ namespace SophiApp.Contracts.Services
         /// Get UWP apps management.
         /// </summary>
         ManagementObject? GetUwpAppsManagement();
+
+        /// <summary>
+        /// Gets the owner of the process.
+        /// </summary>
+        /// <param name="process">The process for which to find an owner.</param>
+        string GetProcessOwner(Process? process);
     }
 }

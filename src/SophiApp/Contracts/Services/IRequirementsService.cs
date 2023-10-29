@@ -17,7 +17,7 @@ namespace SophiApp.Contracts.Services
         Result GetOsBitness();
 
         /// <summary>
-        /// Get the state of Windows Management Instrumentation.
+        /// Get the Windows Management Instrumentation state.
         /// </summary>
         Result GetWmiState();
 
@@ -27,8 +27,33 @@ namespace SophiApp.Contracts.Services
         Result GetOsVersion();
 
         /// <summary>
-        /// Determines whether the logged in user has administrator privileges.
+        /// Detect that the app is run by a logged-in user.
         /// </summary>
-        Result HasAdminRights();
+        Result AppRunFromLoggedUser();
+
+        /// <summary>
+        /// Detect that Windows was not broken by 3rd party harmful tweakers and trojans.
+        /// </summary>
+        Result MalwareDetection();
+
+        /// <summary>
+        /// Get the Windows Feature Experience Pack state.
+        /// </summary>
+        Result GetFeatureExperiencePackState();
+
+        /// <summary>
+        /// Get a pending reboot state.
+        /// </summary>
+        Result GetPendingRebootState();
+
+        /// <summary>
+        /// Detect latest version of the app.
+        /// </summary>
+        Result UpdateDetection();
+
+        /// <summary>
+        /// Detect that Microsoft Defender components exist.
+        /// </summary>
+        Result GetMsDefenderComponentsState();
     }
 }
