@@ -6,7 +6,7 @@
 <a title="Deutsch" href="README_de-de.md"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/></a>
 </div>
 
-# SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
+# SophiApp. [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) 项目的序章
 
 <img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/img/sophiapp_big.svg" alt="Sophia Script" width='350' align="right">
 
@@ -72,40 +72,40 @@
 
 <p align="center">
     •
-    <a href="#donations">Donations</a>
+    <a href="#捐助">捐助</a>
     •
-    <a href="#system-requirements">System Requirements</a>
+    <a href="#系统要求">系统要求</a>
     •
-    <a href="#installation">Installation</a>
+    <a href="#安装指南">安装指南</a>
     •
-    <a href="#key-features">Key features</a>
+    <a href="#主要功能">主要功能</a>
     •
-    <a href="#videos">Videos</a>
+    <a href="#视频简介">视频简介</a>
     •
-    <a href="#screenshots">Screenshots</a>
+    <a href="#截图">截图</a>
     •
-    <a href="#addendum">Addendum</a>
+    <a href="#附件">附件</a>
     •
-    <a href="#translating">Translating</a>
+    <a href="#帮助翻译">帮助翻译</a>
     •
-    <a href="#media">Media</a>
+    <a href="#媒体">媒体</a>
     •
-    <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">Changelog</a>
+    <a href="https://github.com/Sophia-Community/SophiApp/blob/master/CHANGELOG.md">更新日志</a>
 </p>
 
 ***
 
 ## SophiApp 2.0
 
-`SophiApp 2.0 | Daria` is in active development (no ETA, late 2023). You may follow the developmet commits [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). Read [more](https://t.me/SophiaNews/1311).
+`SophiApp 2.0 | Daria` 正在积极开发中（暂无预计时间，2023 年末）。 你可以在 [这里](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk)关注开发进展。 [了解更多](https://t.me/SophiaNews/1311).
 
-## About SophiApp
+## 关于 SophiApp
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
-> **Note**: `SophiApp` is a free, open-source app for fine-tuning `Windows 10` & `Windows 11`. It offers a modern UI/UX, more than 130 unique tweaks, and shows how Windows can be configured without making any harm to Windows.
+> **Note**: `SophiApp` 是对 `Windows 10` 和 `Windows 11` 微调的开源软件。 它提供了现代的用户界面以及用户体验，130 多种独特的调整，并展示了在不对 Windows 造成任何损害的情况下配置 Windows。  
 
-## Donations
+## 捐助
 
 <a href="https://yoomoney.ru/to/4100116615568835"><img src="https://yoomoney.ru/i/shop/iomoney_logo_color_example.png" width=220px height=46px align="left"></a>
 <a href="https://ko-fi.com/farag"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" width=220px height=46px align="left"></a>
@@ -115,7 +115,7 @@
 |                                             USDT (TRC20)                                             |
 |                                 `TQtMjdocUWbKAeg1kLtB4ApjAVHt1v8Rtf`                                 |
 
-### System Requirements
+### 系统要求
 
 |             Version             | Marketing name |    Build    | Arch |   Editions          |
 |:-------------------------------:|:--------------:|:-----------:|:----:|:-------------------:|
@@ -124,13 +124,13 @@
 | Windows 11 22H2                 | 2022 Update    | 22621.1992+ |      | Home/Pro/Enterprise |
 | Windows 10 22H2                 | 2022 Update    | 19045.3208+ | x64  | Home/Pro/Enterprise |
 
-> **Note**: Check out the [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb), [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9), and [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) release history.
+> **Note**: 请查看 [Windows 10](https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb) 、 [Windows 11](https://support.microsoft.com/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9) 和 [Windows 11 Insider Preview](https://docs.microsoft.com/en-us/windows-insider/flight-hub/) 的发布历史.
 
-## Installation
+## 安装指南
 
-### Download SophiApp via PowerShell/Winget/Chocolatey/Scoop
+### 用 PowerShell/Winget/Chocolatey/Scoop 安装 SophiApp
 
-Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
+在 PowerShell 里运行， （`不已管理员的身份`）下载最新的 SophiApp 压缩包
 
 ```powershell
 irm app.sophi.app -useb | iex
@@ -155,82 +155,82 @@ scoop bucket add extras
 scoop install sophiapp
 ```
 
-[Beta versions](https://github.com/Sophia-Community/SophiApp/releases)
+[Beta 版本](https://github.com/Sophia-Community/SophiApp/releases)
 
-> **Note**: `SophiApp` is fully portable: it doesn't have any config (yet) and doesn't save any data into the registry. Just extract the `SophiApp` folder with `Bin` folder and `SophiApp.exe.config` file, and run `SophiApp.exe`.
+> **Note**: `SophiApp` 是完全可移植的： 它（暂时）没有配置文件，也不会将任何数据保存到注册表中。 解压`SophiApp`文件夹与`Bin`文件夹和`SophiApp.exe.config`文件， 然后运行`SophiApp.exe`即可。 
 
 ***
 
-### Warning
+### 警告
 
-* It's allowed to be logged in as one admin user only during application startup.
-* 🔥🔥🔥`SophiApp` may not work on a homebrew Windows. Especially, if the homebrew image was created by OS makers being all thumbs who break Microsoft Defender and disable OS telemetry by purposely uprooting system components
+* 在应用程序启动时，只允许一个管理员用户登录。
+* 🔥🔥🔥`SophiApp` 可能无法在自制 Windows 上运行。 特别是通过故意连根拔起系统组件损坏Microsoft Defender，以及禁用操作系统遥测的自制系统。 
 
-## Key features
+## 主要功能
 
-* 130+ tweaks.
-* Configure your Windows by officially documented methods.
-* SophiApp has a dynamically rendered UI—nothing is hardcoded. 👻
-* SophiApp displays the current state of every feature for your Windows.
-* `SophiApp` uses the [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) pattern.
-* Multithreading support.
-* Checked by the [static analyzer](https://pvs-studio.com/pvs-studio), the license for which by courtesy of PVS-Studio.
-  * Big thanks to them for providing us the [license](https://pvs-studio.com/en/order/open-source-license).
-* All builds are compiled in cloud via [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions)
-  * You may compare a zip archive hash sum on the release page with the hash in cloud console in the `Compress Files` category to be sure that the archive wasn't spoofed (you have to be logged into your GitHub account to be able to view Actions logs);
-* High resolutions support.
-* Built-in search engine.
-  * Functions can be found by searching their headers and descriptions.
-* Dark & light themes support.
-  * The app can change its' theme instantly when you change your default Windows theme mode for apps.
-* Configure Privacy & Telemetry.
-* Configure UI & Personalization of your system.
-* Install the latest `Microsoft Visual C++ Redistributable Packages 2015–2022 x86/x64`;
-* Install the latest `.NET Desktop Runtime 7 x86/x64`;
-* Uninstall OneDrive "correctly".
-* Uninstall UWP apps using a dynamically rendered list of apps with localized packages names and native icons.
-* Download and install the [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) to let you open .heic and .heif formats.
-* Create a scheduled task to clean up Windows unused files and updates using a native toast notification.
-  * A native toast notification will be displayed where you can choose to snooze, run the cleanup task or dismiss.
-* Configure Windows Security.
-* The ability to copy functions' descriptions or headers.
-* Many unique tweaks.
+* 130+ 可调选项。
+* 通过官方的方法设置 Windows。
+* SophiApp 的用户界面是动态渲染的，没有任何硬编码。 👻
+* SophiApp 可显示 Windows 各项功能的当前状态。
+* `SophiApp` 采用了 [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel) 模组。
+* 多线程支持。
+* 由 [static analyzer](https://pvs-studio.com/pvs-studio) 检查， 许可证由 PVS-Studio 提供。
+  * 大力感谢他们提供的 [license](https://pvs-studio.com/en/order/open-source-license)。
+* 所有编译都由在云端的 [GitHub Actions](https://github.com/Sophia-Community/SophiApp/actions) 完成。
+  * 您可以将发布页面中的压缩包哈希值与云控制台中 `压缩文件` 类别中的哈希值进行比较，以确定压缩包没有被伪造（您必须登录 GitHub 账户才能查看操作日志）；
+* 高分辨率支持。
+* 内置搜索功能。
+  * 可通过搜索标题和说明找到各项功能。
+* 支持深色和浅色主题。
+  * SophiApp 可立即更换主题。
+* 设置系统隐私和遥测。
+* 配置系统界面和个性化。
+* 安装最新的 `Microsoft Visual C++ Redistributable Packages 2015–2022 x86/x64`；
+* 安装最新的 `.NET Desktop Runtime 7 x86/x64`；
+* 以”正确的“方式卸载 OneDrive 。
+* 以动态本地化软件名和图标的方式卸载 UWP 应用。
+* 下载及安装 [HEVC Video Extensions from Device Manufacturer](https://www.microsoft.com/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq) 来打开 .heic 和 .heif 格式。
+* 创建定时提醒，通知清理 Windows 未使用的文件和更新。
+  * 一个原生提醒会提醒您清理电脑，您可以选择稍后处理、运行清理任务或取消。
+* Windows 安全设置。
+* 复制描述或标题的功能。
+* 更多独特的调整。
 
-## Videos
+## 视频简介
 
 [![YT](https://img.youtube.com/vi/J0cvbVG9TGw/2.jpg)](https://www.youtube.com/watch?v=J0cvbVG9TGw&t=387s) [![YT](https://img.youtube.com/vi/CyA-oAkybFo/2.jpg)](https://www.youtube.com/watch?v=CyA-oAkybFo)
 
-## Screenshots
+## 截图
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/0.gif)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/1.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/2.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/3.png)
 
-## Localized UWP packages names
+## 本地化 UWP 软件包名称
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/4.png)
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/5.png)
 
-## Searching feature
+## 搜索功能
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/search.gif)
 
-## Instantly changing theme
+## 瞬时更换主题
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/theme.gif)
 
-### Native interactive toasts for the `Windows Cleanup` scheduled task
+### 原生定时 `Windows Cleanup` 提醒
 
 ![Image](https://github.com/Sophia-Community/SophiApp/raw/master/img/Toasts.png)
 
-## Addendum
+## 附件
 
-* Some functions depend on Internet access. If not, they will be hidden in UI until the access appears back.
-* You can enable hidden functions in UI by turning on the `Advanced settings` in the Settings.
-  * The hidden functions will be marked with a gear in UI.
-* After closing `SophiApp`, it creates a log file that you can attach to an open issue (or send to the [Telegram](https://t.me/sophia_chat) group) to help us understand the bug. The log file doesn't contain any sensitive personal information. We do not store any data neither in the Windows registry or any other server.
-* The list of domains the app interacts with
+* 一些功能需要网络连接。如果没有，他们会隐藏在用户界面中直到有网络。
+* 用户界面中的隐藏功能可从设置中的 `Advanced settings` 开启。
+  * 隐藏的功能将在用户界面中用齿轮标记。
+* 关闭 `SophiApp` 后，它会自动创建日志文件，您可以将其附加到 Issue 中（或发送到 [Telegram](https://t.me/sophia_chat) 群组），以帮助我们了解错误。日志文件不包含任何敏感的个人信息。我们也不会在 Windows 注册表或任何其他服务器中存储任何数据。
+* 以下是应用程序交互的域名列表
   * <https://raw.githubusercontent.com>
   * <https://github.com>
   * <https://download.visualstudio.microsoft.com>
@@ -239,11 +239,11 @@ scoop install sophiapp
   * <https://g.live.com>
   * <https://oneclient.sfx.ms>
 
-## Translating
+## 帮助翻译
 
-* Feel free to translate the UI into your language by taking as a basis one of [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations) and creating a new [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations) file.
+* 请以 [UIData_xx.json](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations) 为基础，创建一个新的 [.xaml](https://github.com/Sophia-Community/SophiApp/tree/master/src/SophiApp/Localizations) 文件，以此将用户界面翻译成您的语言。
 
-## Media
+## 媒体
 
 * [![Discord](https://discordapp.com/api/guilds/1006179075263561779/widget.png?style=shield)](https://discord.gg/sSryhaEv79)
 * [Telegram discussion group](https://t.me/sophia_chat)
