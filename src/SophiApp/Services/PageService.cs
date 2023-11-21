@@ -19,10 +19,6 @@ public class PageService : IPageService
     public PageService()
     {
         Configure<StartupViewModel, StartupPage>();
-        Configure<WmiStateViewModel, WmiStatePage>();
-        Configure<Win11BuildLess22KViewModel, Win11BuildLess22KPage>();
-        Configure<Win11Build22KViewModel, Win11Build22KPage>();
-        Configure<Win11UbrLess2283ViewModel, Win11UbrLess2283Page>();
         Configure<PrivacyViewModel, PrivacyPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<SystemViewModel, SystemPage>();
@@ -32,6 +28,7 @@ public class PageService : IPageService
         Configure<ContextMenuViewModel, ContextMenuPage>();
         Configure<ProVersionViewModel, ProVersionPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<RequirementsFailureViewModel, RequirementsFailurePage>();
     }
 
     /// <summary>

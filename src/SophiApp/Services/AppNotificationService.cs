@@ -3,70 +3,36 @@
 // </copyright>
 
 namespace SophiApp.Notifications;
-using System.Collections.Specialized;
-using System.Web;
-using Microsoft.Windows.AppNotifications;
-using SophiApp.Contracts.Services;
-using SophiApp.ViewModels;
 
+using Microsoft.Win32;
+using SophiApp.Contracts.Services;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
+
+/// <inheritdoc/>
 public class AppNotificationService : IAppNotificationService
 {
-    private readonly INavigationService navigationService;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AppNotificationService"/> class.
-    /// </summary>
-    /// <param name="navigationService"><inheritdoc/></param>
-    public AppNotificationService(INavigationService navigationService)
+    /// <inheritdoc/>
+    public void Register()
     {
-        this.navigationService = navigationService;
-    }
-
-    /// <summary>
-    /// Finalizes an instance of the <see cref="AppNotificationService"/> class.
-    /// </summary>
-    ~AppNotificationService()
-    {
-        Unregister();
-    }
-
-    public void Initialize()
-    {
-        AppNotificationManager.Default.NotificationInvoked += OnNotificationInvoked;
-        AppNotificationManager.Default.Register();
-    }
-
-    public void OnNotificationInvoked(AppNotificationManager sender, AppNotificationActivatedEventArgs args)
-    {
-        // TODO: Handle notification invocations when your app is already running.
-
-        // Navigate to a specific page based on the notification arguments.
-        if (ParseArguments(args.Argument)["action"] == "Settings")
+        try
         {
-            App.MainWindow.DispatcherQueue.TryEnqueue(() =>
-            {
-                navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
-            });
+            Registry.ClassesRoot.CreateSubKey(subkey: "AppUserModelId\\SophiApp", writable: true).SetValue("DisplayName", "SophiApp", RegistryValueKind.String);
+            Registry.ClassesRoot.OpenSubKey(name: "AppUserModelId\\SophiApp", writable: true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
         }
-
-        App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+        catch (Exception)
         {
-            App.MainWindow.ShowMessageDialogAsync("TODO: Handle notification invocations when your app is already running.", "Notification Invoked");
-            App.MainWindow.BringToFront();
-        });
+            // TODO: Log exception here.
+            throw;
+        }
     }
 
     /// <inheritdoc/>
-    public bool Show(string payload)
+    public void Show(string payload)
     {
-        var appNotification = new AppNotification(payload);
-        AppNotificationManager.Default.Show(appNotification);
-        return appNotification.Id != 0;
+        var xml = new XmlDocument();
+        xml.LoadXml(payload);
+        var toast = new ToastNotification(xml);
+        ToastNotificationManager.CreateToastNotifier("SophiApp").Show(toast);
     }
-
-    /// <inheritdoc/>
-    public NameValueCollection ParseArguments(string arguments) => HttpUtility.ParseQueryString(arguments);
-
-    /// <inheritdoc/>
-    public void Unregister() => AppNotificationManager.Default.Unregister();
 }

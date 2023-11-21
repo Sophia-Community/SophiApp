@@ -7,10 +7,20 @@ namespace SophiApp.Contracts.Services
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A service for working with common app data.
+    /// A service for transferring common app data between layers of abstractions.
     /// </summary>
     public interface ICommonDataService
     {
+        /// <summary>
+        /// Gets the url with the version of the app.
+        /// </summary>
+        string AppVersionUrl { get; }
+
+        /// <summary>
+        /// Gets the url to download the new release of the app.
+        /// </summary>
+        string AppReleaseUrl { get; }
+
         /// <summary>
         /// Gets a value indicating whether Internet access is available.
         /// </summary>
@@ -25,6 +35,26 @@ namespace SophiApp.Contracts.Services
         /// Gets a values of OS properties.
         /// </summary>
         OsProperties OsProperties { get; }
+
+        /// <summary>
+        /// Gets or sets malware name detected by <see cref="IRequirementsService"/>.
+        /// </summary>
+        string DetectedMalware { get; set; }
+
+        /// <summary>
+        /// Gets or sets Microsoft Defender missing files name.
+        /// </summary>
+        string MsDefenderFileMissing { get; set; }
+
+        /// <summary>
+        /// Gets or sets Microsoft Defender stopped service name.
+        /// </summary>
+        string MsDefenderServiceStopped { get; set; }
+
+        /// <summary>
+        /// Gets app version.
+        /// </summary>
+        public Version AppVersion { get; }
 
         /// <summary>
         /// Gets app name and version.

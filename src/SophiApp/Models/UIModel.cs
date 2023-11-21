@@ -7,7 +7,7 @@ namespace SophiApp.Models
     using SophiApp.Helpers;
 
     /// <summary>
-    /// The UI element model.
+    /// The UI element base model.
     /// </summary>
     public class UIModel
     {

@@ -19,8 +19,8 @@ public partial class PrivacyViewModel : ObservableRecipient
     /// </summary>
     public PrivacyViewModel()
     {
-        Models = new ObservableCollection<UIModel>(App.GetService<IModelBuilderService>()
-            .GetModels(UICategoryTag.Privacy));
+        var models = App.GetService<IModelBuilderService>().GetModels(UICategoryTag.Privacy);
+        Models = new ObservableCollection<UIModel>(models);
     }
 
     /// <summary>

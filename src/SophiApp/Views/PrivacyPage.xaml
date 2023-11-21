@@ -3,16 +3,36 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:SophiApp.Models"
+    xmlns:helpers="using:SophiApp.Helpers"
     xmlns:vm="using:SophiApp.ViewModels"
     d:DataContext="{d:DesignInstance Type=vm:PrivacyViewModel}"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
-        <ScrollViewer>
-            <ItemsControl ItemsSource="{x:Bind ViewModel.Models, Mode=OneWay}">
+    <Page.Resources>
+        <Thickness x:Key="UIControlsHorizontalMargin">0, 0, 26, 0</Thickness>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        </Style>
+        <DataTemplate x:Key="TextCheckBoxTemplate">
+            <controls:TextCheckBox Title="{Binding Title}"
+                                   Margin="{StaticResource UIControlsHorizontalMargin}"/>
+        </DataTemplate>
+        <helpers:UIDataTemplateSelector x:Key="UIDataTemplateSelector"
+                                        TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
+    </Page.Resources>
 
-            </ItemsControl>
-        </ScrollViewer>
-    </Grid>
+    <ScrollViewer>
+        <ItemsRepeater ItemsSource="{x:Bind ViewModel.Models, Mode=OneWay}">
+            <ItemsRepeater.Layout>
+                <StackLayout Spacing="10"/>
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+                <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+    </ScrollViewer>
 </Page>

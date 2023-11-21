@@ -3,16 +3,20 @@
 // </copyright>
 
 namespace SophiApp.Contracts.Services;
-using System.Collections.Specialized;
 
-// TODO: Fix or remove IAppNotificationService as unused.
+/// <summary>
+/// A service for working with toast notifications.
+/// </summary>
 public interface IAppNotificationService
 {
-    void Initialize();
+    /// <summary>
+    /// Registers the app as a toast notifications sender.
+    /// </summary>
+    void Register();
 
-    bool Show(string payload);
-
-    NameValueCollection ParseArguments(string arguments);
-
-    void Unregister();
+    /// <summary>
+    /// Show the toast notification.
+    /// </summary>
+    /// <param name="payload">Toast payload.</param>
+    void Show(string payload);
 }

@@ -4,6 +4,7 @@
 
 namespace SophiApp.Services;
 using SophiApp.Contracts.Services;
+using SophiApp.Extensions;
 using SophiApp.Helpers;
 using Windows.Storage;
 
@@ -38,7 +39,7 @@ public class SettingsService : ISettingsService
         {
             if (ApplicationData.Current.LocalSettings.Values.TryGetValue(key, out var obj))
             {
-                return await Json.ToObjectAsync<T>((string)obj);
+                return await JsonExtensions.ToObjectAsync<T>((string)obj);
             }
         }
         else
@@ -47,7 +48,7 @@ public class SettingsService : ISettingsService
 
             if (settings != null && settings.TryGetValue(key, out var obj))
             {
-                return await Json.ToObjectAsync<T>((string)obj);
+                return await JsonExtensions.ToObjectAsync<T>((string)obj);
             }
         }
 
@@ -64,12 +65,12 @@ public class SettingsService : ISettingsService
     {
         if (RuntimeHelper.IsMSIX)
         {
-            ApplicationData.Current.LocalSettings.Values[key] = await Json.StringifyAsync(value!);
+            ApplicationData.Current.LocalSettings.Values[key] = await JsonExtensions.StringifyAsync(value!);
         }
         else
         {
             await InitializeAsync();
-            settings![key] = await Json.StringifyAsync(value!);
+            settings![key] = await JsonExtensions.StringifyAsync(value!);
             await Task.Run(() => fileService.Save(optionsFolder, optionsFile, settings));
         }
     }

@@ -7,7 +7,7 @@ namespace SophiApp.Models
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    internal class UIExpandingGroupModel : UIModel
+    public class UIExpandingGroupModel : UIModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UIExpandingGroupModel"/> class.

@@ -35,17 +35,15 @@
     <None Remove="Assets\Telegram.svg" />
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
     <None Remove="ControlTemplates\TeamMateLink.xaml" />
+    <None Remove="ControlTemplates\TextCheckBox.xaml" />
     <None Remove="stylecop.json" />
     <None Remove="Styles\Button.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="ControlTemplates\ContentBlock.xaml" />
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
     <None Remove="Styles\ToggleButton.xaml" />
+    <None Remove="Views\RequirementsFailurePage.xaml" />
     <None Remove="Views\StartupPage.xaml" />
-    <None Remove="Views\Win11Build22KPage.xaml" />
-    <None Remove="Views\Win11BuildLess22KPage.xaml" />
-    <None Remove="Views\Win11UbrLess2283Page.xaml" />
-    <None Remove="Views\WmiStatePage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
@@ -134,16 +132,10 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Page Update="Views\Win11UbrLess2283Page.xaml">
+    <Page Update="ControlTemplates\TextCheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Views\Win11Build22KPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Win11BuildLess22KPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\WmiStatePage.xaml">
+    <Page Update="Views\RequirementsFailurePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\StartupPage.xaml">

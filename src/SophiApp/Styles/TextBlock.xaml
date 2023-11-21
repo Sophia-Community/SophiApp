@@ -10,7 +10,6 @@
         <Setter Property="TextWrapping" Value="NoWrap" />
         <Setter Property="LineStackingStrategy" Value="MaxHeight" />
         <Setter Property="TextLineBounds" Value="Full" />
-        <Setter Property="OpticalMarginAlignment" Value="TrimSideBearings" />
     </Style>
 
     <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
@@ -51,8 +50,25 @@
 
     <Style x:Key="StartupPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
-        <Setter Property="TextTrimming" Value="None" />
-        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0, 20, 0, 20"/>
+    </Style>
+
+    <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0, 20, 0, 20"/>
+    </Style>
+    <Style x:Key="UIControlTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="20, 15, 20, 15"/>
     </Style>
 </ResourceDictionary>

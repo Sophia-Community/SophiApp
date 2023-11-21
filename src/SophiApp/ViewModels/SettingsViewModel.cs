@@ -51,7 +51,7 @@ public partial class SettingsViewModel : ObservableRecipient
         version = commonDataService.GetFullName();
         build = commonDataService.GetBuildName();
         selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
-        OpenLinkCommand = new AsyncRelayCommand<string>((param) => uriService.OpenUrlAsync(param));
+        OpenLinkCommand = new AsyncRelayCommand<string>(url => uriService.OpenUrlAsync(url));
     }
 
     /// <summary>

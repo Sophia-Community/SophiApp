@@ -13,6 +13,8 @@
             <SolidColorBrush x:Key="ContentBlockBorder" Color="#FFFFFF" Opacity="0.10" />
             <SolidColorBrush x:Key="ContentBlockBackground" Color="#000000" Opacity="0.24" />
             <SolidColorBrush x:Key="ProgressBarBackground" Color="#000000" Opacity="0.44" />
+            <SolidColorBrush x:Key="UIControlBackground" Color="#000000" Opacity="0.24" />
+            <SolidColorBrush x:Key="UIControlBorderBackground" Color="#FFFFFF" Opacity="0.10" />
             <LinearGradientBrush x:Key="NavigationViewProBackground" StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Color="#043682" Offset="0.0"/>
                 <GradientStop Color="#8AC9FE" Offset="0.70"/>
@@ -30,6 +32,8 @@
             <SolidColorBrush x:Key="ContentBlockBorder" Color="#000000" Opacity="0.06" />
             <SolidColorBrush x:Key="ContentBlockBackground" Color="#FFFFFF" Opacity="0.70" />
             <SolidColorBrush x:Key="ProgressBarBackground" Color="#000000" Opacity="0.44" />
+            <SolidColorBrush x:Key="UIControlBackground" Color="#FFFFFF" Opacity="0.70" />
+            <SolidColorBrush x:Key="UIControlBorderBackground" Color="#000000" Opacity="0.06" />
             <LinearGradientBrush x:Key="NavigationViewProBackground" StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Color="#FFFFFF" Offset="0.0"/>
                 <GradientStop Color="#70C7FF" Offset="0.33"/>

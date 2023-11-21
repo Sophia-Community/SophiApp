@@ -12,13 +12,58 @@ namespace SophiApp.Contracts.Services
     public interface IRequirementsService
     {
         /// <summary>
-        /// Get the state of Windows Management Instrumentation.
+        /// Get os bitness.
+        /// </summary>
+        Result GetOsBitness();
+
+        /// <summary>
+        /// Get the Windows Management Instrumentation state.
         /// </summary>
         Result GetWmiState();
 
         /// <summary>
-        /// Get Windows version.
+        /// Get os version.
         /// </summary>
         Result GetOsVersion();
+
+        /// <summary>
+        /// Detect that the app is run by a logged-in user.
+        /// </summary>
+        Result AppRunFromLoggedUser();
+
+        /// <summary>
+        /// Detect that Windows was not broken by 3rd party harmful tweakers and trojans.
+        /// </summary>
+        Result MalwareDetection();
+
+        /// <summary>
+        /// Get the Windows Feature Experience Pack state.
+        /// </summary>
+        Result GetFeatureExperiencePackState();
+
+        /// <summary>
+        /// Get a pending reboot state.
+        /// </summary>
+        Result GetPendingRebootState();
+
+        /// <summary>
+        /// Detect latest version of the app.
+        /// </summary>
+        Result UpdateDetection();
+
+        /// <summary>
+        /// Detect that Microsoft Defender files exist.
+        /// </summary>
+        Result GetMsDefenderFilesExist();
+
+        /// <summary>
+        /// Get Microsoft Defender services state.
+        /// </summary>
+        Result GetMsDefenderServicesState();
+
+        /// <summary>
+        /// Get a Microsoft Defender state.
+        /// </summary>
+        Result GetMsDefenderState();
     }
 }

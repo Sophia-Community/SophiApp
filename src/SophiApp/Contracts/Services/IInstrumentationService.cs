@@ -4,6 +4,8 @@
 
 namespace SophiApp.Contracts.Services
 {
+    using System.Diagnostics;
+    using System.Management;
     using SophiApp.Helpers;
 
     /// <summary>
@@ -12,8 +14,24 @@ namespace SophiApp.Contracts.Services
     public interface IInstrumentationService
     {
         /// <summary>
-        /// Gets the WMI properties of the Win32_OperatingSystem class.
+        /// Gets the properties of the Win32_OperatingSystem class.
         /// </summary>
-        OsProperties GetOsProperties();
+        OsProperties? GetOsProperties();
+
+        /// <summary>
+        /// Get UWP apps management.
+        /// </summary>
+        ManagementObject? GetUwpAppsManagement();
+
+        /// <summary>
+        /// Gets the owner of the process.
+        /// </summary>
+        /// <param name="process">The process for which to find an owner.</param>
+        string GetProcessOwner(Process? process);
+
+        /// <summary>
+        /// Get data from the AntiVirusProduct class.
+        /// </summary>
+        List<ManagementObject> GetAntivirusProducts();
     }
 }

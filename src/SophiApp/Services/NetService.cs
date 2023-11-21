@@ -10,7 +10,7 @@ namespace SophiApp.Services
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    internal class NetService : INetService
+    public class NetService : INetService
     {
         /// <inheritdoc/>
         public bool IsOnline()
@@ -23,6 +23,7 @@ namespace SophiApp.Services
             }
             catch (Exception)
             {
+                // TODO log exception here!
                 return false;
             }
         }

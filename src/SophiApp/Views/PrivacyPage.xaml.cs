@@ -11,12 +11,13 @@ using SophiApp.ViewModels;
 /// </summary>
 public sealed partial class PrivacyPage : Page
 {
+    private readonly PrivacyViewModel privacyViewModel = App.GetService<PrivacyViewModel>();
+
     /// <summary>
     /// Initializes a new instance of the <see cref="PrivacyPage"/> class.
     /// </summary>
     public PrivacyPage()
     {
-        ViewModel = App.GetService<PrivacyViewModel>();
         InitializeComponent();
     }
 
@@ -25,6 +26,6 @@ public sealed partial class PrivacyPage : Page
     /// </summary>
     public PrivacyViewModel ViewModel
     {
-        get;
+        get => privacyViewModel;
     }
 }

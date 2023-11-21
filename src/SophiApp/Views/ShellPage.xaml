@@ -135,7 +135,7 @@
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
             </i:Interaction.Behaviors>
-            <Grid Margin="32, 10, 32, 10">
+            <Grid Margin="30, 10, 0, 30">
                 <Frame x:Name="NavigationFrame" />
             </Grid>
         </NavigationView>

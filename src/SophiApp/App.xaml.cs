@@ -38,7 +38,7 @@ public partial class App : Application
                 _ = services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
 
                 // Services
-                _ = services.AddSingleton<IAppNotificationService, AppNotificationService>();
+                _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
                 _ = services.AddSingleton<IThemesService, ThemesService>();
                 _ = services.AddSingleton<IInitializeService, InitializeService>();
@@ -52,6 +52,8 @@ public partial class App : Application
                 _ = services.AddTransient<INetService, NetService>();
                 _ = services.AddTransient<IInstrumentationService, InstrumentationService>();
                 _ = services.AddTransient<IRequirementsService, RequirementsService>();
+                _ = services.AddTransient<IUpdateService, UpdateService>();
+                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
 
                 // Views and ViewModels
                 _ = services.AddScoped<StartupViewModel>();
@@ -72,26 +74,17 @@ public partial class App : Application
                 _ = services.AddTransient<SystemPage>();
                 _ = services.AddTransient<PersonalizationViewModel>();
                 _ = services.AddTransient<PersonalizationPage>();
-                _ = services.AddTransient<PrivacyViewModel>();
+                _ = services.AddScoped<PrivacyViewModel>();
                 _ = services.AddTransient<PrivacyPage>();
                 _ = services.AddScoped<ShellViewModel>();
                 _ = services.AddTransient<ShellPage>();
-                _ = services.AddTransient<WmiStateViewModel>();
-                _ = services.AddTransient<WmiStatePage>();
-                _ = services.AddTransient<Win11BuildLess22KViewModel>();
-                _ = services.AddTransient<Win11BuildLess22KPage>();
-                _ = services.AddTransient<Win11Build22KViewModel>();
-                _ = services.AddTransient<Win11Build22KPage>();
-                _ = services.AddTransient<Win11UbrLess2283ViewModel>();
-                _ = services.AddTransient<Win11UbrLess2283Page>();
+                _ = services.AddScoped<RequirementsFailureViewModel>();
+                _ = services.AddTransient<RequirementsFailurePage>();
 
                 // Configuration
                 _ = services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             })
             .Build();
-
-        GetService<IAppNotificationService>()
-            .Initialize();
 
         UnhandledException += App_UnhandledException;
     }
@@ -102,7 +95,7 @@ public partial class App : Application
     public static WindowEx MainWindow { get; } = new MainWindow();
 
     /// <summary>
-    /// Gets or sets app titlebar.
+    /// Gets or sets app title bar.
     /// </summary>
     public static UIElement? AppTitlebar { get; set; }
 
@@ -143,10 +136,11 @@ public partial class App : Application
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    /// <param name="args"><inheritdoc/>.</param>
+    /// <param name="args"><inheritdoc/></param>
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
+        GetService<IAppNotificationService>().Register();
         await GetService<IInitializeService>().InitializeAsync(args);
         await GetService<ShellViewModel>().ExecuteAsync();
     }
