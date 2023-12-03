@@ -5,6 +5,7 @@
     <a title="Українська" href="README_uk-ua.md"><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" height="11px"/></a>
     <a title="Deutsch" href="README_de-de.md"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" height="11px"/></a>
     <a title="简体中文" href="README_cn-si.md"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People's_Republic_of_China.svg" height="11px"/></a>
+    <a title="Türkçe" href="README_tr-tr.md"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="11px"/></a>
 </div>
 
 # SophiApp. The next chapter of the [Sophia Script](https://github.com/farag2/Sophia-Script-for-Windows) project
@@ -98,7 +99,7 @@
 
 ## SophiApp 2.0
 
-`SophiApp 2.0 | Daria` is in active development (no ETA, late 2023). You may follow the developmet commits [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). Read [more](https://t.me/SophiaNews/1311).
+`SophiApp 2.0 | Daria` is in active development (no ETA, late 2023). You may follow the development commits [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). Read [more](https://t.me/SophiaNews/1311).
 
 ## About SophiApp
 
