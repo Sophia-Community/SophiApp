@@ -175,7 +175,7 @@ public partial class ShellViewModel : ObservableRecipient
             RequirementsFailure.Is32BitOs => "OsRequirementsFailure_Is32BitOs".GetLocalized(),
             RequirementsFailure.WMIBroken => "OsRequirementsFailure_WmiBroken".GetLocalized(),
             RequirementsFailure.Win11BuildLess22631 => string.Format("OsRequirementsFailure_Win11UnsupportedBuild".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
-            RequirementsFailure.Win11BuildEqual22631 => string.Format("OsRequirementsFailure_Win11UnsupportedBuild".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
+            RequirementsFailure.Win11UbrLess2283 => string.Format("OsRequirementsFailure_Win11UnsupportedBuild".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
             RequirementsFailure.Win10EnterpriseSVersion => "OsRequirementsFailure_Win10EnterpriseSVersion".GetLocalized(),
             RequirementsFailure.Win10UnsupportedBuild => string.Format("OsRequirementsFailure_Win10UnsupportedBuild".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
             RequirementsFailure.Win10UpdateBuildRevisionLess3448 => string.Format("OsRequirementsFailure_Win10UnsupportedBuild".GetLocalized(), commonDataService.OsProperties.BuildNumber, commonDataService.OsProperties.UpdateBuildRevision),
@@ -195,7 +195,7 @@ public partial class ShellViewModel : ObservableRecipient
         switch (reason)
         {
             case RequirementsFailure.Win11BuildLess22631:
-            case RequirementsFailure.Win11BuildEqual22631:
+            case RequirementsFailure.Win11UbrLess2283:
             case RequirementsFailure.Win10UnsupportedBuild:
                 return true;
 

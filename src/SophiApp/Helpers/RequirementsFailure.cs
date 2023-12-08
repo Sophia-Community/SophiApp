@@ -22,8 +22,8 @@ namespace SophiApp.Helpers
         Win10EnterpriseSVersion,
         Win10UnsupportedBuild,
         Win10UpdateBuildRevisionLess3448,
-        Win11BuildEqual22631,
         Win11BuildLess22631,
+        Win11UbrLess2283,
         WMIBroken,
     }
 

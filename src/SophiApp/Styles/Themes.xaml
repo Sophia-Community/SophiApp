@@ -17,8 +17,9 @@
             <SolidColorBrush x:Key="UIControlBorderBackground" Color="#FFFFFF" Opacity="0.10" />
             <LinearGradientBrush x:Key="NavigationViewProBackground" StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Color="#043682" Offset="0.0"/>
-                <GradientStop Color="#8AC9FE" Offset="0.70"/>
-                <GradientStop Color="#8AC9FF" Offset="0.90"/>
+                <GradientStop Color="#8AC9FE" Offset="0.33"/>
+                <GradientStop Color="#8AC9FF" Offset="0.66"/>
+                <GradientStop Color="#FFFFFF" Offset="1.0"/>
             </LinearGradientBrush>
         </ResourceDictionary>
 
@@ -36,9 +37,9 @@
             <SolidColorBrush x:Key="UIControlBorderBackground" Color="#000000" Opacity="0.06" />
             <LinearGradientBrush x:Key="NavigationViewProBackground" StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Color="#FFFFFF" Offset="0.0"/>
-                <GradientStop Color="#70C7FF" Offset="0.33"/>
-                <GradientStop Color="#8AC5FC" Offset="0.66"/>
-                <GradientStop Color="#FFFFFF" Offset="0.99"/>
+                <GradientStop Color="#8AC5FC" Offset="0.33"/>
+                <GradientStop Color="#70C7FF" Offset="0.66"/>
+                <GradientStop Color="#FFFFFF" Offset="1.0"/>
             </LinearGradientBrush>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
