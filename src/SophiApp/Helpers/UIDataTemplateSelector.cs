@@ -16,19 +16,24 @@ namespace SophiApp.Helpers
 #pragma warning disable CS8618 // Non-nullable property must contain a non-null value when exiting constructor.
 
         /// <summary>
-        /// Gets or sets <see cref="ControlTemplates.CheckBox"/> template.
+        /// Gets or sets <see cref="TextCheckBox"/> template.
         /// </summary>
         public DataTemplate TextCheckBox { get; set; }
+
+        /// <summary>
+        /// Gets or sets <see cref="ExpandingRadioGroup"/> template.
+        /// </summary>
+        public DataTemplate ExpandingRadioGroup { get; set; }
 
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item)
         {
-            if (item is UICheckBoxModel)
+            return item.GetType() switch
             {
-                return TextCheckBox;
-            }
-
-            return TextCheckBox;
+                var type when type == typeof(UICheckBoxModel) => TextCheckBox,
+                var type when type == typeof(UIExpandingRadioGroupModel) => ExpandingRadioGroup,
+                _ => TextCheckBox, // TODO: Set throw here.
+            };
         }
 #pragma warning restore CS8618 // Non-nullable property must contain a non-null value when exiting constructor.
     }

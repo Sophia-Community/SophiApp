@@ -1,4 +1,4 @@
-﻿// <copyright file="UIItemModel.cs" company="Team Sophia">
+﻿// <copyright file="UIRadioGroupItemModel.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -10,7 +10,8 @@ namespace SophiApp.Models
     /// Child element of a composite UI object.
     /// </summary>
     /// <param name="Title">Item title.</param>
-    public record UIItemModel(string Title)
+    /// <param name="GroupName">Radio button group name.</param>
+    public record UIRadioGroupItemModel(string Title, string GroupName)
     {
     }
 

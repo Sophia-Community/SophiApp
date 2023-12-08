@@ -8,24 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
-        <Style TargetType="Border">
-            <Setter Property="BorderBrush" Value="{ThemeResource UIControlBorderBackground}"/>
-            <Setter Property="Background" Value="{ThemeResource UIControlBackground}"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="MinHeight" Value="53"/>
-        </Style>
-        <Style TargetType="CheckBox">
-            <Setter Property="Margin" Value="17"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="CornerRadius" Value="4"/>
-        </Style>
-    </UserControl.Resources>
-
-    <Border>
+    <Border BorderBrush="{ThemeResource UIControlBorderBackground}"
+            Background="{ThemeResource UIControlBackground}"
+            Style="{StaticResource UIControlBorderStyle}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -34,7 +19,8 @@
             <TextBlock Grid.Column="0"
                        Style="{StaticResource UIControlTitleTextStyle}"
                        Text="{Binding Title}"/>
-            <CheckBox Grid.Column="1"/>
+            <CheckBox Grid.Column="1"
+                      Style="{StaticResource UIControlCheckBoxStyle}"/>
         </Grid>
     </Border>
 </UserControl>

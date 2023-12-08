@@ -15,7 +15,7 @@ namespace SophiApp.Models
         /// <param name="dto">Dto for <see cref="UIRadioGroupModel"/> initialization.</param>
         /// <param name="title">Model title.</param>
         /// <param name="items">Child items.</param>
-        public UIRadioGroupModel(UIModelDto dto, string title, List<UIItemModel> items)
+        public UIRadioGroupModel(UIModelDto dto, string title, List<UIRadioGroupItemModel> items)
             : base(dto, title)
         {
             Items = items;
@@ -24,6 +24,6 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets child items.
         /// </summary>
-        public List<UIItemModel> Items { get; init; }
+        public List<UIRadioGroupItemModel> Items { get; init; }
     }
 }

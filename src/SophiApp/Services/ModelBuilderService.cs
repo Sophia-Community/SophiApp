@@ -20,13 +20,6 @@ namespace SophiApp.Services
         private readonly ResourceMap resourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
         private List<UIModel> models = new ();
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ModelBuilderService"/> class.
-        /// </summary>
-        public ModelBuilderService()
-        {
-        }
-
         /// <inheritdoc/>
         public async Task BuildModelsAsync()
         {
@@ -37,9 +30,10 @@ namespace SophiApp.Services
                 {
                     return dto.Type switch
                     {
+                        UIModelType.CheckBox => BuildCheckBoxModel(dto),
+                        UIModelType.ExpandingRadioGroup => BuildExpandingRadioGroupModel(dto),
                         UIModelType.ExpandingGroup => BuildExpandingGroupModel(dto),
                         UIModelType.RadioGroup => BuildRadioGroupModel(dto),
-                        UIModelType.CheckBox => BuildCheckBoxModel(dto),
                         _ => throw new ArgumentOutOfRangeException(paramName: dto.Type.ToString(), message: "An invalid type is specified."),
                     };
                 })
@@ -53,15 +47,34 @@ namespace SophiApp.Services
                 .ToList();
         }
 
+        private UIModel BuildCheckBoxModel(UIModelDto dto)
+        {
+            var title = GetTitle(dto.Name);
+            return new UICheckBoxModel(dto, title);
+        }
+
+        private UIModel BuildExpandingRadioGroupModel(UIModelDto dto)
+        {
+            var title = GetTitle(dto.Name);
+            var items = Enumerable.Range(1, dto.NumberOfItems)
+                .Select(i =>
+                {
+                    var itemTitle = GetTitle(dto.Name, i);
+                    return new UIRadioGroupItemModel(Title: itemTitle, GroupName: dto.Name);
+                }).ToList();
+
+            return new UIExpandingRadioGroupModel(dto, title, items);
+        }
+
         private UIModel BuildExpandingGroupModel(UIModelDto dto)
         {
-            var title = GetModelTitle(dto.Name);
+            var title = GetTitle(dto.Name);
             var description = GetModelDescription(dto.Name);
             var items = Enumerable.Range(1, dto.NumberOfItems)
                 .Select(i =>
                 {
-                    var title = GetModelItemTitle(dto.Name, i);
-                    return new UIItemModel(title);
+                    var title = GetTitle(dto.Name, i);
+                    return new UIRadioGroupItemModel(Title: title, GroupName: dto.Name);
                 })
                 .ToList();
 
@@ -70,37 +83,27 @@ namespace SophiApp.Services
 
         private UIModel BuildRadioGroupModel(UIModelDto dto)
         {
-            var title = GetModelTitle(dto.Name);
+            var title = GetTitle(dto.Name);
             var items = Enumerable.Range(1, dto.NumberOfItems)
                 .Select(i =>
                 {
-                    var title = GetModelItemTitle(dto.Name, i);
-                    return new UIItemModel(title);
+                    var title = GetTitle(dto.Name, i);
+                    return new UIRadioGroupItemModel(Title: title, GroupName: dto.Name);
                 })
                 .ToList();
 
             return new UIRadioGroupModel(dto, title, items);
         }
 
-        private UIModel BuildCheckBoxModel(UIModelDto dto)
+        private string GetTitle(string name, int? id = null)
         {
-            var title = GetModelTitle(dto.Name);
-            return new UICheckBoxModel(dto, title);
-        }
-
-        private string GetModelTitle(string name)
-        {
-            return resourceMap.GetValue($"UIModel_{name}_Title").ValueAsString;
+            var title = id is null ? $"UIModel_{name}_Title" : $"UIModel_{name}_Title_{id}";
+            return resourceMap.GetValue(title).ValueAsString;
         }
 
         private string GetModelDescription(string name)
         {
             return resourceMap.GetValue($"UIModel_{name}_Description").ValueAsString;
-        }
-
-        private string GetModelItemTitle(string name, int id)
-        {
-            return resourceMap.GetValue($"UIModel_{name}_Title_{id}").ValueAsString;
         }
     }
 }

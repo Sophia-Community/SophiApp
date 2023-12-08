@@ -12,17 +12,15 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Thickness x:Key="UIControlsHorizontalMargin">0, 0, 26, 0</Thickness>
-        <Style TargetType="ScrollViewer">
-            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
-            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-        </Style>
         <DataTemplate x:Key="TextCheckBoxTemplate">
             <controls:TextCheckBox Title="{Binding Title}"
-                                   Margin="{StaticResource UIControlsHorizontalMargin}"/>
+                                   Margin="{StaticResource UIControlsPageRightMargin}"/>
         </DataTemplate>
-        <helpers:UIDataTemplateSelector x:Key="UIDataTemplateSelector"
-                                        TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
+        <DataTemplate x:Key="ExpandingRadioGroupTemplate">
+            <controls:ExpandingRadioGroup Title="{Binding Title}"
+                                          Margin="{StaticResource UIControlsPageRightMargin}"/>
+        </DataTemplate>
+        <helpers:UIDataTemplateSelector x:Key="UIDataTemplateSelector"/>
     </Page.Resources>
 
     <ScrollViewer>
@@ -31,7 +29,8 @@
                 <StackLayout Spacing="10"/>
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
-                <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
+                <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
+                                                ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
             </ItemsRepeater.ItemTemplate>
         </ItemsRepeater>
     </ScrollViewer>

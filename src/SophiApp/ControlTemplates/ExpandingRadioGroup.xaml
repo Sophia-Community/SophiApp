@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.ExpandingRadioGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SophiApp.ControlTemplates"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Name="RB1">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="ExpanderItemTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Style="{StaticResource UIControlTitleTextStyle}"
+                           Text="{Binding Title}"/>
+                <RadioButton Grid.Column="1"
+                             VerticalAlignment="Center"
+                             GroupName="{Binding Path=GroupName}"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource UIControlBorderStyle}"
+            BorderBrush="{StaticResource UIControlBorderBackground}">
+        <Expander IsExpanded="True"
+                  ExpandDirection="Down"
+                  MinHeight="53"
+                  HorizontalAlignment="Stretch"
+                  Background="{ThemeResource UIControlBackground}"
+                  Margin="-1 , -1 , -1, -1">
+            <Expander.Header>
+                <TextBlock Text="{Binding Title}"
+                   Style="{StaticResource UIControlTitleTextStyle}"
+                   Margin="0"
+                   HorizontalAlignment="Stretch"/>
+            </Expander.Header>
+            <Expander.Content>
+                <ItemsRepeater ItemsSource="{Binding Items}"
+                               ItemTemplate="{StaticResource ExpanderItemTemplate}"/>
+            </Expander.Content>
+        </Expander>
+    </Border>
+</UserControl>

@@ -16,7 +16,7 @@ namespace SophiApp.Models
         /// <param name="title">Model title.</param>
         /// <param name="description">Model description.</param>
         /// <param name="items">Child items.</param>
-        public UIExpandingGroupModel(UIModelDto dto, string title, string description, List<UIItemModel> items)
+        public UIExpandingGroupModel(UIModelDto dto, string title, string description, List<UIRadioGroupItemModel> items)
             : base(dto, title)
         {
             Description = description;
@@ -31,6 +31,6 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets child items.
         /// </summary>
-        public List<UIItemModel> Items { get; init; }
+        public List<UIRadioGroupItemModel> Items { get; init; }
     }
 }

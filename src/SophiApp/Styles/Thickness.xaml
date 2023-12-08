@@ -32,4 +32,5 @@
 
     <Thickness x:Key="SettingPageTeamMateLinkIconMargin">3, 3, -3, -3</Thickness>
 
+    <Thickness x:Key="UIControlsPageRightMargin">0, 0, 26, 0</Thickness>
 </ResourceDictionary>

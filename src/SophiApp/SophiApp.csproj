@@ -33,11 +33,15 @@
     <None Remove="Assets\Discord.svg" />
     <None Remove="Assets\GitHub.svg" />
     <None Remove="Assets\Telegram.svg" />
+    <None Remove="ControlTemplates\ExpandingRadioGroup.xaml" />
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
     <None Remove="ControlTemplates\TeamMateLink.xaml" />
     <None Remove="ControlTemplates\TextCheckBox.xaml" />
     <None Remove="stylecop.json" />
+    <None Remove="Styles\Border.xaml" />
     <None Remove="Styles\Button.xaml" />
+    <None Remove="Styles\CheckBox.xaml" />
+    <None Remove="Styles\ScrollViewer.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="ControlTemplates\ContentBlock.xaml" />
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
@@ -132,6 +136,18 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="ControlTemplates\ExpandingRadioGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Border.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="ControlTemplates\TextCheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

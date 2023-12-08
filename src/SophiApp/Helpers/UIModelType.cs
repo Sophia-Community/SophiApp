@@ -15,8 +15,9 @@ namespace SophiApp.Helpers
     public enum UIModelType
     {
         CheckBox,
-        RadioGroup,
         ExpandingGroup,
+        ExpandingRadioGroup,
+        RadioGroup,
     }
 
 #pragma warning restore SA1602 // An item within a C# enumeration is missing an Xml documentation header.

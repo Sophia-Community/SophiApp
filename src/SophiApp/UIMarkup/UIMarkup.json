@@ -1,110 +1,110 @@
 [
-    {
-        "Name": "DiagTrackService",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "DiagnosticDataLevel",
-        "Type": "RadioGroup",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True",
-        "NumberOfItems": 2
-    },
-    {
-        "Name": "ErrorReporting",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "FeedbackFrequency",
-        "Type": "RadioGroup",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True",
-        "NumberOfItems": 2
-    },
-    {
-        "Name": "ScheduledTasks",
-        "Type": "ExpandingGroup",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True",
-        "NumberOfItems": 9
-    },
-    {
-        "Name": "SigninInfo",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "LanguageListAccess",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "AdvertisingID",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "WindowsWelcomeExperience",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "WindowsTips",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "SettingsSuggestedContent",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "AppsSilentInstalling",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "WhatsNewInWindows",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "TailoredExperiences",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    },
-    {
-        "Name": "BingSearch",
-        "Type": "CheckBox",
-        "Tag": "Privacy",
-        "Windows10Support": "True",
-        "Windows11Support": "True"
-    }
+  {
+    "Name": "DiagTrackService",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "DiagnosticDataLevel",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "ErrorReporting",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "FeedbackFrequency",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "ScheduledTasks",
+    "Type": "ExpandingGroup",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 9
+  },
+  {
+    "Name": "SigninInfo",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "LanguageListAccess",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "AdvertisingID",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "WindowsWelcomeExperience",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "WindowsTips",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "SettingsSuggestedContent",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "AppsSilentInstalling",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "WhatsNewInWindows",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "TailoredExperiences",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "BingSearch",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  }
 ]
