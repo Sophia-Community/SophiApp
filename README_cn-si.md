@@ -134,7 +134,7 @@
 在 PowerShell 里运行， （`不已管理员的身份`）下载最新的 SophiApp 压缩包
 
 ```powershell
-irm app.sophi.app -useb | iex
+iwr app.sophia.team | iex
 ```
 
 [WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
