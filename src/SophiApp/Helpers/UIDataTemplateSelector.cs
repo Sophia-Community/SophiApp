@@ -25,6 +25,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public DataTemplate ExpandingRadioGroup { get; set; }
 
+        /// <summary>
+        /// Gets or sets <see cref="ExpandingCheckBoxGroup"/> template.
+        /// </summary>
+        public DataTemplate ExpandingCheckBoxGroup { get; set; }
+
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item)
         {
@@ -32,6 +37,7 @@ namespace SophiApp.Helpers
             {
                 var type when type == typeof(UICheckBoxModel) => TextCheckBox,
                 var type when type == typeof(UIExpandingRadioGroupModel) => ExpandingRadioGroup,
+                var type when type == typeof(UIExpandingCheckBoxGroupModel) => ExpandingCheckBoxGroup,
                 _ => TextCheckBox, // TODO: Set throw here.
             };
         }

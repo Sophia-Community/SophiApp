@@ -15,6 +15,7 @@ namespace SophiApp.Helpers
     public enum UIModelType
     {
         CheckBox,
+        ExpandingCheckBoxGroup,
         ExpandingGroup,
         ExpandingRadioGroup,
         RadioGroup,

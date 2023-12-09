@@ -21,6 +21,6 @@ namespace SophiApp.Contracts.Services
         /// Gets models using tags.
         /// </summary>
         /// <param name="tag">Returned models tag.</param>
-        List<UIModel> GetModels(UICategoryTag tag);
+        List<UIModel> GetModelsByTag(UICategoryTag tag);
     }
 }

@@ -20,6 +20,11 @@
             <controls:ExpandingRadioGroup Title="{Binding Title}"
                                           Margin="{StaticResource UIControlsPageRightMargin}"/>
         </DataTemplate>
+        <DataTemplate x:Key="ExpandingCheckBoxGroupTemplate">
+            <controls:ExpandingCheckBoxGroup Title="{Binding Title}"
+                                             Description="{Binding Description}"
+                                             Margin="{StaticResource UIControlsPageRightMargin}"/>
+        </DataTemplate>
         <helpers:UIDataTemplateSelector x:Key="UIDataTemplateSelector"/>
     </Page.Resources>
 
@@ -30,7 +35,8 @@
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
                 <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
-                                                ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
+                                                ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"
+                                                ExpandingCheckBoxGroup="{StaticResource ExpandingCheckBoxGroupTemplate}"/>
             </ItemsRepeater.ItemTemplate>
         </ItemsRepeater>
     </ScrollViewer>

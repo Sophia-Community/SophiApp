@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UserControl
-    x:Class="SophiApp.ControlTemplates.ExpandingRadioGroup"
+    x:Class="SophiApp.ControlTemplates.ExpandingCheckBoxGroup"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SophiApp.ControlTemplates"
@@ -18,9 +18,9 @@
                 <TextBlock Grid.Column="0"
                            Style="{StaticResource UIControlTitleTextStyle}"
                            Text="{Binding Title}"/>
-                <RadioButton Grid.Column="1"
-                             VerticalAlignment="Center"
-                             GroupName="{Binding Path=GroupName}"/>
+                <CheckBox Grid.Column="1"
+                          Style="{StaticResource UIControlCheckBoxStyle}"
+                          Margin="0"/>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
@@ -30,9 +30,14 @@
         <Expander Style="{StaticResource UIControlExpanderStyle}"
                   Background="{ThemeResource UIControlBackground}">
             <Expander.Header>
-                <TextBlock Text="{Binding Title}"
-                   Style="{StaticResource UIControlTitleTextStyle}"
-                   Margin="0"/>
+                <StackPanel>
+                    <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource UIControlTitleTextStyle}"
+                               Margin="20, 15, 20, 5"/>
+                    <TextBlock Text="{Binding Description}"
+                               Style="{StaticResource UIControlTitleTextStyle}"
+                               Margin="20, 0, 20, 20"/>
+                </StackPanel>
             </Expander.Header>
             <Expander.Content>
                 <ItemsRepeater ItemsSource="{Binding Items}"

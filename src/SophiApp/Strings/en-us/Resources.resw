@@ -258,31 +258,31 @@
     <value>Let websites provide locally relevant content by accessing language list</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_1" xml:space="preserve">
-    <value>ProgramDataUpdater: Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program.</value>
+    <value>ProgramDataUpdater</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_2" xml:space="preserve">
-    <value>Proxy: This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program.</value>
+    <value>Proxy</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_3" xml:space="preserve">
-    <value>Consolidator: If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft.</value>
+    <value>Consolidator</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_4" xml:space="preserve">
-    <value>UsbCeip: The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft. The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows. If the user has not consented to participate in Windows CEIP, this task does not do anything.</value>
+    <value>UsbCeip</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_5" xml:space="preserve">
-    <value>Microsoft-Windows-DiskDiagnosticDataCollector: The Windows Disk Diagnostic reports general disk and system information to Microsoft for users participating in the Customer Experience Program.</value>
+    <value>Microsoft-Windows-DiskDiagnosticDataCollector</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_6" xml:space="preserve">
-    <value>MapsToastTask: This task shows various Map related toasts.</value>
+    <value>MapsToastTask</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_7" xml:space="preserve">
-    <value>MapsUpdateTask: This task checks for updates to maps which you have downloaded for offline use. Disabling this task will prevent Windows from notifying you of updated maps.</value>
+    <value>MapsUpdateTask</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_8" xml:space="preserve">
-    <value>FamilySafetyMonitor: Initializes Family Safety monitoring and enforcement.</value>
+    <value>FamilySafetyMonitor</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title_9" xml:space="preserve">
-    <value>XblGameSaveTask: The XblGameSave Standby Task, which syncronizes game progress when the OS is idle.</value>
+    <value>XblGameSaveTask</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title" xml:space="preserve">
     <value>Diagnostic Tracking Tasks</value>
@@ -306,7 +306,7 @@
     <value>Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers</value>
   </data>
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
-    <value>!!! No description available !!!</value>
+    <value>For users participating in the software quality assurance program, the Windows Disk Diagnostic Service provides general disk and system information to Microsoft.</value>
   </data>
   <data name="OsRequirements_GetWmiState" xml:space="preserve">
     <value>Detect WMI state</value>

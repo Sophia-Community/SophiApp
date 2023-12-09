@@ -14,7 +14,7 @@ namespace SophiApp.Models
         /// </summary>
         /// <param name="dto">Data transfer object for <see cref="UIModel"/>.</param>
         /// <param name="title"><see cref="UIExpandingRadioGroupModel"/> title.</param>
-        /// <param name="items"><see cref="UIExpandingRadioGroupModel"/> items.</param>
+        /// <param name="items"><see cref="UIExpandingRadioGroupModel"/> child items.</param>
         public UIExpandingRadioGroupModel(UIModelDto dto, string title, List<UIRadioGroupItemModel> items)
             : base(dto, title)
         {
@@ -22,7 +22,7 @@ namespace SophiApp.Models
         }
 
         /// <summary>
-        /// Gets <see cref="UIExpandingRadioGroupModel"/> items.
+        /// Gets <see cref="UIExpandingRadioGroupModel"/> child items.
         /// </summary>
         public List<UIRadioGroupItemModel> Items { get; init; }
     }
