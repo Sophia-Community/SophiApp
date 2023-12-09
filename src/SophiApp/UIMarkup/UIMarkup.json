@@ -106,5 +106,12 @@
     "Tag": "Privacy",
     "Windows10Support": "True",
     "Windows11Support": "True"
+  },
+  {
+    "Name": "BrowsingHistory",
+    "Type": "CheckBox",
+    "Tag": "Privacy",
+    "Windows10Support": "False",
+    "Windows11Support": "True"
   }
 ]
