@@ -2,9 +2,10 @@
 	.SYNOPSIS
 	Download the latest SophiApp version
 
-	.EXAMPLE Download the latest SophiApp version
+	.EXAMPLE
 	iwr app.sophia.team | iex
 #>
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 if ($Host.Version.Major -eq 5)
@@ -77,6 +78,3 @@ Get-Process -Name explorer | Where-Object -FilterScript {$_.MainWindowTitle -eq 
 	# Force move the console window to the foreground
 	[WinAPI.ForegroundWindow]::SetForegroundWindow($_.MainWindowHandle)
 } | Out-Null
-
-Write-Information -MessageData "" -InformationAction Continue
-Write-Verbose -Message "Archive was expanded to `"$DownloadsFolder\SophiApp`"" -Verbose
