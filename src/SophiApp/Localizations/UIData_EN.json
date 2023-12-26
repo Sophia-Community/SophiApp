@@ -2308,7 +2308,7 @@
                        "EN":  "Enable Windows Script Host"
                    },
         "Description":  {
-                            "EN":  "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JavaScript scripts from running."
+                            "EN":  "Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious scripts from running."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",

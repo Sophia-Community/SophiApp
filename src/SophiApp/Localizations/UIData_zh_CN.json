@@ -2308,7 +2308,7 @@
                        "zh_CN":  "启用 Windows 脚本主机"
                    },
         "Description":  {
-                            "zh_CN":  "禁用此功能会阻止 .js 和 .vbs 脚本的执行，从而防止恶意 JavaScript 脚本运行。"
+                            "zh_CN":  "禁用此功能可阻止 .js 和 .vbs 脚本的执行，防止恶意脚本运行。"
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",

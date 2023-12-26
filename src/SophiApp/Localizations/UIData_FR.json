@@ -2308,7 +2308,7 @@
                        "FR":  "Activer l'hôte de script Windows"
                    },
         "Description":  {
-                            "FR":  "La désactivation de cette fonctionnalité bloque l'exécution des scripts .js et .vbs, empêchant ainsi l'exécution de scripts JavaScript malveillants."
+                            "FR":  "La désactivation de cette fonctionnalité bloque l'exécution des scripts .js et .vbs, empêchant ainsi l'exécution de scripts malveillants."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",

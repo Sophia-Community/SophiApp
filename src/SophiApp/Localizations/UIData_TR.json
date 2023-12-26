@@ -2308,7 +2308,7 @@
                        "TR":  "Windows Komut Dosyası Ana Bilgisayarını Etkinleştir"
                    },
         "Description":  {
-                            "TR":  "Bu özelliğin devre dışı bırakılması, .js ve .vbs komut dosyalarının yürütülmesini engelleyerek kötü amaçlı JavaScript komut dosyalarının çalışmasını engeller."
+                            "TR":  "Bu özelliğin devre dışı bırakılması, .js ve .vbs komut dosyalarının yürütülmesini engelleyerek kötü amaçlı komut dosyalarının çalışmasını engeller."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",

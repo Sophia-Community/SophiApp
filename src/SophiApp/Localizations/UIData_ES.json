@@ -2308,7 +2308,7 @@
                        "ES":  "Habilitar host de secuencias de comandos de Windows"
                    },
         "Description":  {
-                            "ES":  "Deshabilitar esta funcion bloquea la ejecucion de secuencias de comandos .js y .vbs, lo que evita que se ejecuten secuencias de comandos JavaScript maliciosas."
+                            "ES":  "Deshabilitar esta funcion bloquea la ejecucion de secuencias de comandos .js y .vbs, lo que evita que se ejecuten secuencias de comandos maliciosas."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",

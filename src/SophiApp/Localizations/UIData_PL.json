@@ -2308,7 +2308,7 @@
             "PL": "Włącz hosta skryptów systemu Windows"
         },
         "Description": {
-            "PL": "Wyłączenie tej funkcji blokuje wykonywanie skryptów .js i .vbs, uniemożliwiając uruchamianie złośliwych skryptów JavaScript."
+            "PL": "Wyłączenie tej funkcji blokuje wykonywanie skryptów .js i .vbs, uniemożliwiając uruchamianie złośliwych skryptów."
         },
         "Type": "CheckBox",
         "Tag": "Security",
