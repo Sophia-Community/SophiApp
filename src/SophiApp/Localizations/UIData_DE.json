@@ -2308,7 +2308,7 @@
                        "DE":  "Windows Script Host aktivieren"
                    },
         "Description":  {
-                            "DE":  "Wenn diese Funktion deaktiviert wird, werden alle .js- and .vbs-Skripts blockiert, um böswilligen JavaScript-Code am Ausführen zu hindern."
+                            "DE":  "Wenn diese Funktion deaktiviert wird, werden alle .js- and .vbs-Skripts blockiert, um böswilligen Code am Ausführen zu hindern."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",

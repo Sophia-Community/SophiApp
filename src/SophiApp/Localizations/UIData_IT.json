@@ -2308,7 +2308,7 @@
                        "IT":  "Abilita Windows Script Host"
                    },
         "Description":  {
-                            "IT":  "La disattivazione di questa funzione blocca l'esecuzione di script .js e .vbs, impedendo l'esecuzione di script Javascript dannosi."
+                            "IT":  "La disattivazione di questa funzione blocca l'esecuzione di script .js e .vbs, impedendo l'esecuzione di script dannosi."
                         },
         "Type":  "CheckBox",
         "Tag":  "Security",
