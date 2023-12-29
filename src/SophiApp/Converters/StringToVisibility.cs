@@ -1,4 +1,4 @@
-﻿// <copyright file="BoolToInversionConverter.cs" company="Team Sophia">
+﻿// <copyright file="StringToVisibility.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -9,14 +9,18 @@ namespace SophiApp.Converters
     using Microsoft.UI.Xaml.Data;
 
     /// <inheritdoc/>
-    public class BoolToInversionConverter : IValueConverter
+    internal class StringToVisibility : IValueConverter
     {
         /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, string language)
-            => value is bool ? !(bool)value : throw new ArgumentException("ExceptionBoolToInversionConverterValueMustBeBool");
+        {
+            return (string)value == string.Empty ? Visibility.Collapsed : Visibility.Visible;
+        }
 
         /// <inheritdoc/>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
-            => DependencyProperty.UnsetValue;
+        {
+            return DependencyProperty.UnsetValue;
+        }
     }
 }

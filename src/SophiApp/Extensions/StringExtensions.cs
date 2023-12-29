@@ -25,8 +25,10 @@ namespace SophiApp.Extensions
             process.StartInfo.CreateNoWindow = true;
             process.StartInfo.FileName = "cmd.exe";
             process.StartInfo.Arguments = $"/c {command}";
-            process.Start();
-            return process.StandardOutput.ReadToEnd();
+            _ = process.Start();
+            process.WaitForExit();
+            var result = process.StandardOutput.ReadToEnd();
+            return result;
         }
 
         /// <summary>
@@ -51,6 +53,22 @@ namespace SophiApp.Extensions
             return Enum.IsDefined(typeof(T), value)
                 ? (T)Enum.Parse(typeof(T), value)
                 : throw new ArgumentOutOfRangeException(paramName: value, message: $"Value: {value} is not found in {typeof(T).Name} enumeration.");
+        }
+
+        /// <summary>
+        /// Attempts to delete the specified file. Does not throw any exceptions if it fails.
+        /// </summary>
+        /// <param name="filePath">File to delete.</param>
+        public static void TryDelete(this string filePath)
+        {
+            try
+            {
+                File.Delete(filePath);
+            }
+            catch (Exception)
+            {
+                // Do nothing.
+            }
         }
     }
 }

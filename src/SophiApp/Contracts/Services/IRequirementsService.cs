@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using CSharpFunctionalExtensions;
 
     /// <summary>
-    /// Service for working with OS requirements.
+    /// A service for working with app requirements.
     /// </summary>
     public interface IRequirementsService
     {
@@ -49,7 +49,7 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Detect latest version of the app.
         /// </summary>
-        Result UpdateDetection();
+        Result AppUpdateDetection();
 
         /// <summary>
         /// Detect that Microsoft Defender files exist.

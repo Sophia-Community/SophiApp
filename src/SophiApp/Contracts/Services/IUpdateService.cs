@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services
 {
     /// <summary>
-    /// A service for dealing with OS updates.
+    /// A service for work with updates.
     /// </summary>
     public interface IUpdateService
     {

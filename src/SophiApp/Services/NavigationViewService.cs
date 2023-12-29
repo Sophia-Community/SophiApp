@@ -11,6 +11,7 @@ using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
 using SophiApp.ViewModels;
 
+/// <inheritdoc/>
 public class NavigationViewService : INavigationViewService
 {
     private readonly INavigationService navigationService;

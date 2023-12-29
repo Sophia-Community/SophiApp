@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services;
 
 /// <summary>
-/// A file management service.
+/// A service for working with file.
 /// </summary>
 public interface IFileService
 {

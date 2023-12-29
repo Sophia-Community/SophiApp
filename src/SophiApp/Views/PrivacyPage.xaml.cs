@@ -4,6 +4,9 @@
 
 namespace SophiApp.Views;
 using Microsoft.UI.Xaml.Controls;
+using SophiApp.Extensions;
+using SophiApp.Helpers;
+using SophiApp.Models;
 using SophiApp.ViewModels;
 
 /// <summary>
@@ -11,7 +14,7 @@ using SophiApp.ViewModels;
 /// </summary>
 public sealed partial class PrivacyPage : Page
 {
-    private readonly PrivacyViewModel privacyViewModel = App.GetService<PrivacyViewModel>();
+    private readonly ShellViewModel shellViewModel = App.GetService<ShellViewModel>();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PrivacyPage"/> class.
@@ -22,10 +25,7 @@ public sealed partial class PrivacyPage : Page
     }
 
     /// <summary>
-    /// Gets <see cref="PrivacyViewModel"/>.
+    /// Gets <see cref="UIModel"/> collection.
     /// </summary>
-    public PrivacyViewModel ViewModel
-    {
-        get => privacyViewModel;
-    }
+    public List<UIModel> Models => shellViewModel.Models.FilterByTag(UICategoryTag.Privacy);
 }

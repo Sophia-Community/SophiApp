@@ -8,7 +8,7 @@
 
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center"
-          Margin="0, 62, 0, 90">
+          Margin="0, 62, 20, 90">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

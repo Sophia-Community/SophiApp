@@ -48,7 +48,7 @@
         <Setter Property="Foreground" Value="{ThemeResource WindowAccent}"/>
     </Style>
 
-    <Style x:Key="StartupPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Style x:Key="StartupPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -56,19 +56,27 @@
         <Setter Property="Margin" Value="0, 20, 0, 20"/>
     </Style>
 
-    <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+    <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0, 20, 0, 20"/>
     </Style>
-    <Style x:Key="UIControlTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
-        <Setter Property="FontWeight" Value="Normal" />
+    <Style x:Key="UIControlTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextAlignment" Value="Left"/>
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="20, 15, 20, 15"/>
+        <Setter Property="Margin" Value="0, 15, 10, 5"/>
+    </Style>
+    <Style x:Key="UIControlDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0, 0, 10, 15"/>
     </Style>
 </ResourceDictionary>

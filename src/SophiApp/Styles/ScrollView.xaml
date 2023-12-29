@@ -4,8 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SophiApp.Styles">
 
-    <Style TargetType="ScrollViewer">
-        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+    <Style TargetType="ScrollView">
+        <Setter Property="ZoomMode" Value="Disabled"/>
+        <Setter Property="HorizontalScrollMode" Value="Disabled"/>
+        <Setter Property="VerticalScrollMode" Value="Auto"/>
     </Style>
 </ResourceDictionary>

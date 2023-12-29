@@ -11,13 +11,13 @@ namespace SophiApp.Helpers
     /// </summary>
     public enum UICategoryTag
     {
-        ContextMenu,
-        Personalization,
         Privacy,
-        Security,
+        Personalization,
         System,
-        TaskScheduler,
         UWP,
+        TaskScheduler,
+        Security,
+        ContextMenu,
     }
 
 #pragma warning restore CS1591 // There is no XML comment for an open visible type or member.

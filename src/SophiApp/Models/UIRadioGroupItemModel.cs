@@ -4,16 +4,42 @@
 
 namespace SophiApp.Models
 {
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
-
     /// <summary>
-    /// Child element of a <see cref="UIExpandingRadioGroupModel"/>.
+    /// The <see cref="UIRadioGroupItemModel"/> child item model.
     /// </summary>
-    /// <param name="Title">Item title.</param>
-    /// <param name="GroupName">Radio button group name.</param>
-    public record UIRadioGroupItemModel(string Title, string GroupName)
+    public class UIRadioGroupItemModel
     {
-    }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UIRadioGroupItemModel"/> class.
+        /// </summary>
+        /// <param name="title">A model title.</param>
+        /// <param name="groupName">A model group name.</param>
+        /// <param name="id">A model id.</param>
+        public UIRadioGroupItemModel(string title, string groupName, int id)
+        {
+            Title = title;
+            GroupName = groupName;
+            Id = id;
+        }
 
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
+        /// <summary>
+        /// Gets model title.
+        /// </summary>
+        public string Title { get; init; }
+
+        /// <summary>
+        /// Gets model group name.
+        /// </summary>
+        public string GroupName { get; init; }
+
+        /// <summary>
+        /// Gets model id.
+        /// </summary>
+        public int Id { get; init; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether model is checked.
+        /// </summary>
+        public bool IsChecked { get; set; } = false;
+    }
 }

@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services
 {
     /// <summary>
-    /// Service for working with appx packages.
+    /// A service for working with appx packages.
     /// </summary>
     public interface IAppxPackagesService
     {

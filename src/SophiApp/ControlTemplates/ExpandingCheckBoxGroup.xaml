@@ -6,11 +6,18 @@
     xmlns:local="using:SophiApp.ControlTemplates"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
     <UserControl.Resources>
         <DataTemplate x:Key="ExpanderItemTemplate">
             <Grid>
+                <interactivity:Interaction.Behaviors>
+                    <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
+                        <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
+                    </interaction:DataTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="20"/>
@@ -19,6 +26,8 @@
                            Style="{StaticResource UIControlTitleTextStyle}"
                            Text="{Binding Title}"/>
                 <CheckBox Grid.Column="1"
+                          IsEnabled="{Binding IsEnabled}"
+                          IsChecked="{Binding IsChecked}"
                           Style="{StaticResource UIControlCheckBoxStyle}"
                           Margin="0"/>
             </Grid>
@@ -32,11 +41,10 @@
             <Expander.Header>
                 <StackPanel>
                     <TextBlock Text="{Binding Title}"
-                               Style="{StaticResource UIControlTitleTextStyle}"
-                               Margin="20, 15, 20, 5"/>
+                               Style="{StaticResource UIControlTitleTextStyle}"/>
                     <TextBlock Text="{Binding Description}"
-                               Style="{StaticResource UIControlTitleTextStyle}"
-                               Margin="20, 0, 20, 20"/>
+                               Style="{StaticResource UIControlDescriptionTextStyle}"
+                               Foreground="{ThemeResource UIControlDescriptionBackground}"/>
                 </StackPanel>
             </Expander.Header>
             <Expander.Content>

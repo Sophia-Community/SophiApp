@@ -8,9 +8,7 @@ using SophiApp.Extensions;
 using SophiApp.Helpers;
 using Windows.Storage;
 
-/// <summary>
 /// <inheritdoc/>
-/// </summary>
 public class SettingsService : ISettingsService
 {
     private readonly IFileService fileService;
@@ -28,11 +26,7 @@ public class SettingsService : ISettingsService
         this.fileService = fileService;
     }
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
-    /// <typeparam name="T"><inheritdoc/></typeparam>
-    /// <param name="key"><inheritdoc/></param>
     public async Task<T?> ReadSettingAsync<T>(string key)
     {
         if (RuntimeHelper.IsMSIX)
@@ -55,12 +49,7 @@ public class SettingsService : ISettingsService
         return default;
     }
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
-    /// <typeparam name="T"><inheritdoc/></typeparam>
-    /// <param name="key"><inheritdoc/></param>
-    /// <param name="value"><inheritdoc/></param>
     public async Task SaveSettingAsync<T>(string key, T value)
     {
         if (RuntimeHelper.IsMSIX)

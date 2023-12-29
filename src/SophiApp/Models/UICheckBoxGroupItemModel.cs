@@ -4,15 +4,53 @@
 
 namespace SophiApp.Models
 {
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
-
     /// <summary>
     /// Child element of a <see cref="UIExpandingCheckBoxGroupModel"/>.
     /// </summary>
-    /// <param name="Title">Item title.</param>
-    public record UICheckBoxGroupItemModel(string Title)
+    public class UICheckBoxGroupItemModel
     {
-    }
+        private readonly Func<bool> accessor;
 
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UICheckBoxGroupItemModel"/> class.
+        /// </summary>
+        /// <param name="accessor">Method that sets the IsEnabled state.</param>
+        /// <param name="title">Model title.</param>
+        public UICheckBoxGroupItemModel(Func<bool> accessor, string title)
+        {
+            this.accessor = accessor;
+            Title = title;
+        }
+
+        /// <summary>
+        /// Gets model title.
+        /// </summary>
+        public string Title { get; init; }
+
+        /// <summary>
+        /// Gets a value indicating whether model is checked.
+        /// </summary>
+        public bool IsChecked { get; private set; } = false;
+
+        /// <summary>
+        /// Gets a value indicating whether model enabled state.
+        /// </summary>
+        public bool IsEnabled { get; private set; } = true;
+
+        /// <summary>
+        /// Get the model state.
+        /// </summary>
+        public void GetState()
+        {
+            try
+            {
+                IsChecked = accessor.Invoke();
+            }
+            catch (Exception ex)
+            {
+                IsEnabled = false;
+                App.Logger.LogModelGetStateException(Title, ex);
+            }
+        }
+    }
 }

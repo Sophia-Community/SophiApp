@@ -11,7 +11,14 @@ namespace SophiApp.Models
     /// <summary>
     /// Data transfer object for <see cref="UIModel"/>.
     /// </summary>
-    public record UIModelDto(string Name, UIModelType Type, UICategoryTag Tag, bool Windows10Support, bool Windows11Support, int NumberOfItems);
+    public record UIModelDto(
+        string Name,
+        UIModelType Type,
+        UICategoryTag Tag,
+        int ViewId,
+        bool Windows10Support,
+        bool Windows11Support,
+        int NumberOfItems);
 
 #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
 }

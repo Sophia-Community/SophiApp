@@ -15,6 +15,16 @@ public static class JsonExtensions
     /// </summary>
     /// <typeparam name="T">The type of the object to deserialize to.</typeparam>
     /// <param name="value">The JSON to deserialize.</param>
+    public static T ToObject<T>(string value)
+    {
+        return JsonConvert.DeserializeObject<T>(value) !;
+    }
+
+    /// <summary>
+    /// Deserializes the JSON to the specified .NET type.
+    /// </summary>
+    /// <typeparam name="T">The type of the object to deserialize to.</typeparam>
+    /// <param name="value">The JSON to deserialize.</param>
     public static async Task<T> ToObjectAsync<T>(string value)
     {
         return await Task.Run(() =>

@@ -9,6 +9,7 @@ using SophiApp.Contracts.Services;
 using SophiApp.ViewModels;
 using SophiApp.Views;
 
+/// <inheritdoc/>
 public class PageService : IPageService
 {
     private readonly Dictionary<string, Type> pages = new ();
@@ -31,10 +32,7 @@ public class PageService : IPageService
         Configure<RequirementsFailureViewModel, RequirementsFailurePage>();
     }
 
-    /// <summary>
-    /// Get page by type.
-    /// </summary>
-    /// <param name="key">Page type.</param>
+    /// <inheritdoc/>
     public Type GetPageType(string key)
     {
         Type? pageType;

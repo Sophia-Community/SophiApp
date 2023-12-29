@@ -7,9 +7,7 @@ using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
 
-/// <summary>
 /// <inheritdoc/>
-/// </summary>
 public class ThemesService : IThemesService
 {
     private const string SettingsKey = "AppTheme";
@@ -24,34 +22,26 @@ public class ThemesService : IThemesService
         this.localSettingsService = localSettingsService;
     }
 
-    /// <summary>
-    /// Gets or sets app theme.
-    /// </summary>
-    public ElementTheme Theme { get; set; } = ElementTheme.Default;
-
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
+    public ElementTheme Theme { get; private set; } = ElementTheme.Default;
+
+    /// <inheritdoc/>
     public async Task InitializeAsync()
     {
         Theme = await LoadThemeFromSettingsAsync();
         await Task.CompletedTask;
     }
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
-    /// <param name="theme">Specifies a UI theme that should be used for UIElements.</param>
     public async Task SetThemeAsync(ElementTheme theme)
     {
         Theme = theme;
         await SetRequestedThemeAsync();
         await SaveThemeInSettingsAsync(Theme);
+        App.Logger.LogChangeTheme(Theme);
     }
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public async Task SetRequestedThemeAsync()
     {
         if (App.MainWindow.Content is FrameworkElement rootElement)

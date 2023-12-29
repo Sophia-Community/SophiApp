@@ -9,47 +9,62 @@ namespace SophiApp.Models
     /// <summary>
     /// The UI element model.
     /// </summary>
-    public class UIModel
+    public abstract class UIModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UIModel"/> class.
         /// </summary>
         /// <param name="dto">Dto for <see cref="UIModel"/> initialization.</param>
         /// <param name="title">Model title.</param>
-        public UIModel(UIModelDto dto, string title)
+        protected UIModel(UIModelDto dto, string title)
         {
             Title = title;
-            (Name, Type, Tag, Windows10Support, Windows11Support, _) = dto;
+            (Name, Type, Tag, ViewId, Windows10Support, Windows11Support, _) = dto;
         }
 
         /// <summary>
         /// Gets model unique name.
         /// </summary>
-        public string Name { get; init; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Gets model type.
         /// </summary>
-        public UIModelType Type { get; init; }
+        public UIModelType Type { get; private set; }
 
         /// <summary>
         /// Gets model category tag.
         /// </summary>
-        public UICategoryTag Tag { get; init; }
+        public UICategoryTag Tag { get; private set; }
+
+        /// <summary>
+        /// Gets a value that determines the order in which the model is displayed in the View.
+        /// </summary>
+        public int ViewId { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether model supported windows 10.
         /// </summary>
-        public bool Windows10Support { get; init; }
+        public bool Windows10Support { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether model supported windows 11.
         /// </summary>
-        public bool Windows11Support { get; init; }
+        public bool Windows11Support { get; private set; }
 
         /// <summary>
         /// Gets model title.
         /// </summary>
-        public string Title { get; init; }
+        public string Title { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether model enabled state.
+        /// </summary>
+        public bool IsEnabled { get; protected set; } = true;
+
+        /// <summary>
+        /// Gets the model state.
+        /// </summary>
+        public abstract void GetState();
     }
 }

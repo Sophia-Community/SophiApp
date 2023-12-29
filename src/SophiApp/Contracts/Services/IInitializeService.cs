@@ -5,12 +5,12 @@
 namespace SophiApp.Contracts.Services;
 
 /// <summary>
-/// Service for initialization of data and services.
+/// A service for initializing data and other services.
 /// </summary>
 public interface IInitializeService
 {
     /// <summary>
-    /// Initializes the application's data and services.
+    /// Initializes the app data for services.
     /// </summary>
     /// <param name="args">Application launch arguments.</param>
     Task InitializeAsync(object args);

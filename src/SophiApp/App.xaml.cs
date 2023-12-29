@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
-using SophiApp.Activation;
 using SophiApp.Contracts.Services;
 using SophiApp.Models;
 using SophiApp.Notifications;
@@ -31,55 +30,50 @@ public partial class App : Application
             .UseContentRoot(AppContext.BaseDirectory)
             .ConfigureServices((context, services) =>
             {
-                // Default Activation Handler
-                _ = services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
-
-                // Other Activation Handlers
-                _ = services.AddTransient<IActivationHandler, AppNotificationActivationHandler>();
-
                 // Services
-                _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
+                _ = services.AddScoped<IInstrumentationService, InstrumentationService>();
+                _ = services.AddScoped<ILoggerService, LoggerService>();
+                _ = services.AddSingleton<ICommonDataService, CommonDataService>();
+                _ = services.AddSingleton<IFileService, FileService>();
+                _ = services.AddSingleton<IFirewallService, FirewallService>();
+                _ = services.AddSingleton<IInitializeService, InitializeService>();
+                _ = services.AddSingleton<IModelService, ModelService>();
+                _ = services.AddSingleton<INavigationService, NavigationService>();
+                _ = services.AddSingleton<IPageService, PageService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
                 _ = services.AddSingleton<IThemesService, ThemesService>();
-                _ = services.AddSingleton<IInitializeService, InitializeService>();
-                _ = services.AddSingleton<IPageService, PageService>();
-                _ = services.AddSingleton<INavigationService, NavigationService>();
-                _ = services.AddSingleton<IFileService, FileService>();
-                _ = services.AddSingleton<ICommonDataService, CommonDataService>();
-                _ = services.AddSingleton<IModelBuilderService, ModelBuilderService>();
+                _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
+                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
-                _ = services.AddTransient<IUriService, UriService>();
-                _ = services.AddTransient<INetService, NetService>();
-                _ = services.AddTransient<IInstrumentationService, InstrumentationService>();
+                _ = services.AddTransient<INetworkService, NetworkService>();
                 _ = services.AddTransient<IRequirementsService, RequirementsService>();
                 _ = services.AddTransient<IUpdateService, UpdateService>();
-                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
+                _ = services.AddTransient<IUriService, UriService>();
 
                 // Views and ViewModels
-                _ = services.AddScoped<StartupViewModel>();
-                _ = services.AddTransient<StartupPage>();
-                _ = services.AddTransient<SettingsViewModel>();
-                _ = services.AddTransient<SettingsPage>();
-                _ = services.AddTransient<ProVersionViewModel>();
-                _ = services.AddTransient<ProVersionPage>();
-                _ = services.AddTransient<ContextMenuViewModel>();
-                _ = services.AddTransient<ContextMenuPage>();
-                _ = services.AddTransient<SecurityViewModel>();
-                _ = services.AddTransient<SecurityPage>();
-                _ = services.AddTransient<TaskSchedulerViewModel>();
-                _ = services.AddTransient<TaskSchedulerPage>();
-                _ = services.AddTransient<UwpViewModel>();
-                _ = services.AddTransient<UwpPage>();
-                _ = services.AddTransient<SystemViewModel>();
-                _ = services.AddTransient<SystemPage>();
-                _ = services.AddTransient<PersonalizationViewModel>();
-                _ = services.AddTransient<PersonalizationPage>();
-                _ = services.AddScoped<PrivacyViewModel>();
-                _ = services.AddTransient<PrivacyPage>();
-                _ = services.AddScoped<ShellViewModel>();
-                _ = services.AddTransient<ShellPage>();
                 _ = services.AddScoped<RequirementsFailureViewModel>();
+                _ = services.AddScoped<ShellViewModel>();
+                _ = services.AddScoped<StartupViewModel>();
+                _ = services.AddTransient<ContextMenuPage>();
+                _ = services.AddTransient<ContextMenuViewModel>();
+                _ = services.AddTransient<PersonalizationPage>();
+                _ = services.AddTransient<PersonalizationViewModel>();
+                _ = services.AddTransient<PrivacyPage>();
+                _ = services.AddTransient<ProVersionPage>();
+                _ = services.AddTransient<ProVersionViewModel>();
                 _ = services.AddTransient<RequirementsFailurePage>();
+                _ = services.AddTransient<SecurityPage>();
+                _ = services.AddTransient<SecurityViewModel>();
+                _ = services.AddTransient<SettingsPage>();
+                _ = services.AddTransient<SettingsViewModel>();
+                _ = services.AddTransient<ShellPage>();
+                _ = services.AddTransient<StartupPage>();
+                _ = services.AddTransient<SystemPage>();
+                _ = services.AddTransient<SystemViewModel>();
+                _ = services.AddTransient<TaskSchedulerPage>();
+                _ = services.AddTransient<TaskSchedulerViewModel>();
+                _ = services.AddTransient<UwpPage>();
+                _ = services.AddTransient<UwpViewModel>();
 
                 // Configuration
                 _ = services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
@@ -98,6 +92,11 @@ public partial class App : Application
     /// Gets or sets app title bar.
     /// </summary>
     public static UIElement? AppTitlebar { get; set; }
+
+    /// <summary>
+    /// Gets <see cref="ILoggerService"/>.
+    /// </summary>
+    public static ILoggerService Logger { get; } = GetService<ILoggerService>();
 
     /// <summary>
     /// Gets <see cref="IHost"/>.
@@ -140,14 +139,13 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        GetService<IAppNotificationService>().Register();
+        GetService<IAppNotificationService>().RegisterAsSender();
         await GetService<IInitializeService>().InitializeAsync(args);
         await GetService<ShellViewModel>().ExecuteAsync();
     }
 
     private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
-        // TODO: Log and handle exceptions as appropriate.
-        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+        Logger.LogUnhandledException(e.Exception);
     }
 }

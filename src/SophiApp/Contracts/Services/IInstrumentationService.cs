@@ -9,29 +9,35 @@ namespace SophiApp.Contracts.Services
     using SophiApp.Helpers;
 
     /// <summary>
-    /// Service for working with WMI.
+    /// A service for working with WMI.
     /// </summary>
     public interface IInstrumentationService
     {
         /// <summary>
-        /// Gets the properties of the Win32_OperatingSystem class.
+        /// Get the properties of the Win32_OperatingSystem class.
         /// </summary>
-        OsProperties? GetOsProperties();
+        OsProperties GetOsPropertiesOrDefault();
 
         /// <summary>
         /// Get UWP apps management.
         /// </summary>
-        ManagementObject? GetUwpAppsManagement();
+        ManagementObject? GetUwpAppsManagementOrDefault();
 
         /// <summary>
-        /// Gets the owner of the process.
+        /// Get the owner of the process.
         /// </summary>
         /// <param name="process">The process for which to find an owner.</param>
-        string GetProcessOwner(Process? process);
+        string GetProcessOwnerOrDefault(Process? process);
 
         /// <summary>
         /// Get data from the AntiVirusProduct class.
         /// </summary>
-        List<ManagementObject> GetAntivirusProducts();
+        List<ManagementObject> GetAntivirusProductsOrDefault();
+
+        /// <summary>
+        /// Get user account SID.
+        /// </summary>
+        /// <param name="name">A user name.</param>
+        string GetUserSidOrDefault(string name);
     }
 }

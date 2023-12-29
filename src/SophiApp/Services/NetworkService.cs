@@ -1,4 +1,4 @@
-﻿// <copyright file="NetService.cs" company="Team Sophia">
+﻿// <copyright file="NetworkService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -7,25 +7,27 @@ namespace SophiApp.Services
     using System.Net;
     using SophiApp.Contracts.Services;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
-    public class NetService : INetService
+    public class NetworkService : INetworkService
     {
         /// <inheritdoc/>
         public bool IsOnline()
         {
+            bool isOnline = false;
+
             try
             {
                 var obtainedIps = Dns.GetHostEntry("dns.msftncsi.com").AddressList;
                 var originalIp = new IPAddress(4294929283);
-                return Array.Exists(obtainedIps, ip => ip.Equals(originalIp));
+                isOnline = Array.Exists(obtainedIps, ip => ip.Equals(originalIp));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO log exception here!
-                return false;
+                App.Logger.LogIsOnlineException(ex);
             }
+
+            App.Logger.LogIsOnline(isOnline);
+            return isOnline;
         }
     }
 }

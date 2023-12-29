@@ -1,13 +1,13 @@
-﻿// <copyright file="INetService.cs" company="Team Sophia">
+﻿// <copyright file="INetworkService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
 namespace SophiApp.Contracts.Services
 {
     /// <summary>
-    /// A service for networking.
+    /// A networking service.
     /// </summary>
-    public interface INetService
+    public interface INetworkService
     {
         /// <summary>
         /// Determine if there has Internet access.

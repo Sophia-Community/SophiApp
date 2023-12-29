@@ -6,7 +6,7 @@ namespace SophiApp.Contracts.Services;
 using Microsoft.UI.Xaml.Controls;
 
 /// <summary>
-/// A service for navigating to View.
+/// A View navigation service.
 /// </summary>
 public interface INavigationViewService
 {

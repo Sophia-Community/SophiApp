@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services
 {
     /// <summary>
-    /// A service for working with URIs.
+    /// A service for working with URI.
     /// </summary>
     public interface IUriService
     {

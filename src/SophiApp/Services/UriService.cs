@@ -12,6 +12,14 @@ namespace SophiApp.Services
     {
         /// <inheritdoc/>
         public Task OpenUrlAsync(string url)
-            => string.IsNullOrWhiteSpace(url) ? Task.CompletedTask : Task.FromResult(Process.Start("explorer.exe", url));
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return Task.CompletedTask;
+            }
+
+            App.Logger.LogOpenedUrl(url);
+            return Task.FromResult(Process.Start("explorer.exe", url));
+        }
     }
 }

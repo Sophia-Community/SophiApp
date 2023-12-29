@@ -7,28 +7,32 @@ namespace SophiApp.Services
     using System.Diagnostics;
     using SophiApp.Contracts.Services;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class UpdateService : IUpdateService
     {
         private readonly IInstrumentationService instrumentationService;
+        private readonly ICommonDataService commonDataService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateService"/> class.
         /// </summary>
         /// <param name="instrumentationService">Service for working with WMI.</param>
-        public UpdateService(IInstrumentationService instrumentationService)
+        /// <param name="commonDataService">A service for transferring common app data between layers of abstractions.</param>
+        public UpdateService(IInstrumentationService instrumentationService, ICommonDataService commonDataService)
         {
             this.instrumentationService = instrumentationService;
+            this.commonDataService = commonDataService;
         }
 
         /// <inheritdoc/>
         public void RunOsUpdate()
         {
-            GetUpdatesForOtherMsProducts();
-            GetUpdatesForUwpApps();
-            GetOsUpdates();
+            if (commonDataService.IsOnline)
+            {
+                GetUpdatesForOtherMsProducts();
+                GetUpdatesForUwpApps();
+                GetOsUpdates();
+            }
         }
 
         private void GetUpdatesForOtherMsProducts()
@@ -40,7 +44,7 @@ namespace SophiApp.Services
 
         private void GetUpdatesForUwpApps()
         {
-            _ = instrumentationService.GetUwpAppsManagement()?.InvokeMethod("UpdateScanMethod", Array.Empty<object>());
+            _ = instrumentationService.GetUwpAppsManagementOrDefault()?.InvokeMethod("UpdateScanMethod", Array.Empty<object>());
         }
 
         private void GetOsUpdates()
@@ -61,9 +65,9 @@ namespace SophiApp.Services
                         Arguments = "ms-settings:windowsupdate",
                     });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log exception here!
+                App.Logger.LogOsUpdateException(ex);
             }
         }
     }

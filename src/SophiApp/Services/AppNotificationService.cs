@@ -13,17 +13,16 @@ using Windows.UI.Notifications;
 public class AppNotificationService : IAppNotificationService
 {
     /// <inheritdoc/>
-    public void Register()
+    public void RegisterAsSender()
     {
         try
         {
             Registry.ClassesRoot.CreateSubKey(subkey: "AppUserModelId\\SophiApp", writable: true).SetValue("DisplayName", "SophiApp", RegistryValueKind.String);
             Registry.ClassesRoot.OpenSubKey(name: "AppUserModelId\\SophiApp", writable: true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            // TODO: Log exception here.
-            throw;
+            App.Logger.LogRegisterAsSenderException(ex);
         }
     }
 
@@ -33,6 +32,7 @@ public class AppNotificationService : IAppNotificationService
         var xml = new XmlDocument();
         xml.LoadXml(payload);
         var toast = new ToastNotification(xml);
-        ToastNotificationManager.CreateToastNotifier("SophiApp").Show(toast);
+        ToastNotificationManager.CreateToastNotifier("SophiApp")
+            .Show(toast);
     }
 }

@@ -9,29 +9,23 @@ using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
 using SophiApp.Views;
 
-/// <summary>
 /// <inheritdoc/>
-/// </summary>
 public class InitializeService : IInitializeService
 {
     private readonly IThemesService themeSelectorService;
     private readonly ICommonDataService commonDataService;
-    private readonly IModelBuilderService modelBuilderService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InitializeService"/> class.
     /// </summary>
     /// <param name="themeSelectorService">A service for working with app themes.</param>
     /// <param name="commonDataService">A service for working with common app data.</param>
-    /// <param name="modelBuilderService">MVVM pattern model builder service.</param>
     public InitializeService(
         IThemesService themeSelectorService,
-        ICommonDataService commonDataService,
-        IModelBuilderService modelBuilderService)
+        ICommonDataService commonDataService)
     {
         this.themeSelectorService = themeSelectorService;
         this.commonDataService = commonDataService;
-        this.modelBuilderService = modelBuilderService;
     }
 
     /// <summary>
@@ -42,7 +36,6 @@ public class InitializeService : IInitializeService
     {
         InitializeMainWindow();
         await InitializeThemeAsync();
-        await BuildModelsAsync();
     }
 
     private void InitializeMainWindow()
@@ -64,10 +57,5 @@ public class InitializeService : IInitializeService
     {
         await themeSelectorService.InitializeAsync();
         await themeSelectorService.SetRequestedThemeAsync();
-    }
-
-    private async Task BuildModelsAsync()
-    {
-        await modelBuilderService.BuildModelsAsync();
     }
 }

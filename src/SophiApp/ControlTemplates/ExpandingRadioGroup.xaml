@@ -6,7 +6,15 @@
     xmlns:local="using:SophiApp.ControlTemplates"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
+    mc:Ignorable="d"
+    IsEnabled="{Binding IsEnabled}">
+    <interactivity:Interaction.Behaviors>
+        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
+            <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
+        </interaction:DataTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
 
     <UserControl.Resources>
         <DataTemplate x:Key="ExpanderItemTemplate">
@@ -20,19 +28,24 @@
                            Text="{Binding Title}"/>
                 <RadioButton Grid.Column="1"
                              VerticalAlignment="Center"
-                             GroupName="{Binding Path=GroupName}"/>
+                             GroupName="{Binding GroupName}"
+                             IsChecked="{Binding IsChecked}"/>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
 
     <Border Style="{StaticResource UIControlBorderStyle}"
-            BorderBrush="{StaticResource UIControlBorderBackground}">
+        BorderBrush="{StaticResource UIControlBorderBackground}">
         <Expander Style="{StaticResource UIControlExpanderStyle}"
-                  Background="{ThemeResource UIControlBackground}">
+              Background="{ThemeResource UIControlBackground}">
             <Expander.Header>
-                <TextBlock Text="{Binding Title}"
-                   Style="{StaticResource UIControlTitleTextStyle}"
-                   Margin="0"/>
+                <StackPanel>
+                    <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource UIControlTitleTextStyle}"/>
+                    <TextBlock Text="{Binding Description}"
+                               Style="{StaticResource UIControlDescriptionTextStyle}"
+                               Foreground="{ThemeResource UIControlDescriptionBackground}"/>
+                </StackPanel>
             </Expander.Header>
             <Expander.Content>
                 <ItemsRepeater ItemsSource="{Binding Items}"

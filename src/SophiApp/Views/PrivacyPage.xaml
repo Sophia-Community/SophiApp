@@ -13,23 +13,19 @@
 
     <Page.Resources>
         <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox Title="{Binding Title}"
-                                   Margin="{StaticResource UIControlsPageRightMargin}"/>
+            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"/>
         </DataTemplate>
         <DataTemplate x:Key="ExpandingRadioGroupTemplate">
-            <controls:ExpandingRadioGroup Title="{Binding Title}"
-                                          Margin="{StaticResource UIControlsPageRightMargin}"/>
+            <controls:ExpandingRadioGroup Margin="{StaticResource UIControlsPageRightMargin}"/>
         </DataTemplate>
         <DataTemplate x:Key="ExpandingCheckBoxGroupTemplate">
-            <controls:ExpandingCheckBoxGroup Title="{Binding Title}"
-                                             Description="{Binding Description}"
-                                             Margin="{StaticResource UIControlsPageRightMargin}"/>
+            <controls:ExpandingCheckBoxGroup Margin="{StaticResource UIControlsPageRightMargin}"/>
         </DataTemplate>
         <helpers:UIDataTemplateSelector x:Key="UIDataTemplateSelector"/>
     </Page.Resources>
 
-    <ScrollViewer>
-        <ItemsRepeater ItemsSource="{x:Bind ViewModel.Models, Mode=OneWay}">
+    <ScrollView>
+        <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}">
             <ItemsRepeater.Layout>
                 <StackLayout Spacing="10"/>
             </ItemsRepeater.Layout>
@@ -39,5 +35,5 @@
                                                 ExpandingCheckBoxGroup="{StaticResource ExpandingCheckBoxGroupTemplate}"/>
             </ItemsRepeater.ItemTemplate>
         </ItemsRepeater>
-    </ScrollViewer>
+    </ScrollView>
 </Page>

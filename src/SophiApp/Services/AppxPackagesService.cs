@@ -7,9 +7,7 @@ namespace SophiApp.Services
     using SophiApp.Contracts.Services;
     using Windows.Management.Deployment;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class AppxPackagesService : IAppxPackagesService
     {
         private readonly PackageManager packageManager = new ();

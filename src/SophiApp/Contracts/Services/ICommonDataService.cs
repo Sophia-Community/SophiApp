@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A service for transferring common app data between layers of abstractions.
+    /// A service for transferring app data between layers of DI.
     /// </summary>
     public interface ICommonDataService
     {

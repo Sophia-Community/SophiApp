@@ -127,6 +127,7 @@ public class NavigationService : INavigationService
                 navigationAware.OnNavigatedTo(e.Parameter);
             }
 
+            App.Logger.LogNavigateToPage(e.SourcePageType.Name);
             Navigated?.Invoke(sender, e);
         }
     }

@@ -6,4 +6,5 @@
     <x:Double x:Key="LargeFontSize">22</x:Double>
     <x:Double x:Key="MediumFontSize">18</x:Double>
     <x:Double x:Key="NormalFontSize">14</x:Double>
+    <x:Double x:Key="SmallFontSize">12</x:Double>
 </ResourceDictionary>

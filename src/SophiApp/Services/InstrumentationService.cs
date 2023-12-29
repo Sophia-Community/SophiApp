@@ -4,58 +4,59 @@
 
 namespace SophiApp.Services
 {
+    using System;
     using System.Diagnostics;
     using System.Management;
     using SophiApp.Contracts.Services;
     using SophiApp.Helpers;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class InstrumentationService : IInstrumentationService
     {
         /// <inheritdoc/>
-        public OsProperties? GetOsProperties()
+        public OsProperties GetOsPropertiesOrDefault()
         {
             try
             {
                 using var managementObject = new ManagementObjectSearcher(scope: "root\\CIMV2", queryString: "SELECT * FROM Win32_OperatingSystem")
                     .Get().Cast<ManagementBaseObject>().First();
 
-                return new OsProperties(managementObject.Properties);
+                var osProperties = new OsProperties(managementObject.Properties);
+                App.Logger.LogOsProperties(osProperties);
+                return osProperties;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log error handler here!
-                return null;
+                App.Logger.LogOsPropertiesException(ex);
+                return new OsProperties();
             }
         }
 
         /// <inheritdoc/>
-        public ManagementObject? GetUwpAppsManagement()
+        public ManagementObject? GetUwpAppsManagementOrDefault()
         {
             try
             {
                 return new ManagementObjectSearcher(scope: "root\\CIMV2\\mdm\\dmmap", queryString: "SELECT * FROM MDM_EnterpriseModernAppManagement_AppManagement01")
                     .Get().Cast<ManagementObject>().First();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log error handler here!
+                App.Logger.LogUwpAppsManagementException(ex);
                 return null;
             }
         }
 
         /// <inheritdoc/>
-        public string GetProcessOwner(Process? process)
+        public string GetProcessOwnerOrDefault(Process? process)
         {
+            if (process is null)
+            {
+                return string.Empty;
+            }
+
             try
             {
-                if (process is null)
-                {
-                    return string.Empty;
-                }
-
                 var results = new string[] { string.Empty, string.Empty };
                 using var managementObject = new ManagementObjectSearcher($"Select * from Win32_Process Where ProcessId = {process.Id}")
                     .Get()
@@ -64,25 +65,44 @@ namespace SophiApp.Services
 
                 return (uint)managementObject.InvokeMethod("GetOwner", results) == 0 ? results[0] : string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log error handler here!
+                App.Logger.LogProcessOwnerException(ex);
                 return string.Empty;
             }
         }
 
         /// <inheritdoc/>
-        public List<ManagementObject> GetAntivirusProducts()
+        public List<ManagementObject> GetAntivirusProductsOrDefault()
         {
             try
             {
                 return new ManagementObjectSearcher(scope: "root\\SecurityCenter2", queryString: "SELECT * FROM AntiVirusProduct")
                     .Get().Cast<ManagementObject>().ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log error handler here!
+                App.Logger.LogAntivirusProductsException(ex);
                 return new List<ManagementObject>();
+            }
+        }
+
+        /// <inheritdoc/>
+        public string GetUserSidOrDefault(string name)
+        {
+            try
+            {
+                using var managementObject = new ManagementObjectSearcher("Select * from Win32_UserAccount")
+                    .Get()
+                    .Cast<ManagementObject>()
+                    .FirstOrDefault(obj => (string)obj.GetPropertyValue("Name") == name);
+
+                return managementObject?.GetPropertyValue("Sid") as string ?? string.Empty;
+            }
+            catch (Exception ex)
+            {
+                App.Logger.LogUserSidException(ex);
+                return string.Empty;
             }
         }
     }

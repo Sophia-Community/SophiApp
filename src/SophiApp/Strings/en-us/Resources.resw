@@ -224,26 +224,20 @@
   <data name="UIModel_DiagnosticDataLevel_Title_2" xml:space="preserve">
     <value>Minimal</value>
   </data>
-  <data name="UIModel_DiagnosticDataLevel_Title" xml:space="preserve">
-    <value>The OS level of diagnostic data gathering</value>
+  <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
+    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected.</value>
   </data>
-  <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
+  <data name="UIModel_DiagTrackService_Description" xml:space="preserve">
     <value>Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub.</value>
   </data>
   <data name="SettingsPage_AppTester.WorkedOn" xml:space="preserve">
     <value>Tester</value>
   </data>
-  <data name="UIModel_ErrorReporting_Title" xml:space="preserve">
-    <value>Configure the error reporting feature</value>
+  <data name="UIModel_ErrorReporting_Description" xml:space="preserve">
+    <value>The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.</value>
   </data>
-  <data name="UIModel_AdvertisingID_Title" xml:space="preserve">
-    <value>Let apps show me personalized ads by using my advertising ID</value>
-  </data>
-  <data name="UIModel_AppsSilentInstalling_Title" xml:space="preserve">
-    <value>Turn on automatic suggested app installation</value>
-  </data>
-  <data name="UIModel_BingSearch_Title" xml:space="preserve">
-    <value>Enable Bing search in the Start Menu</value>
+  <data name="UIModel_AppsSilentInstalling_Description" xml:space="preserve">
+    <value>Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.</value>
   </data>
   <data name="UIModel_FeedbackFrequency_Title_1" xml:space="preserve">
     <value>Automatically</value>
@@ -254,59 +248,23 @@
   <data name="UIModel_FeedbackFrequency_Title" xml:space="preserve">
     <value>Feedback frequency</value>
   </data>
-  <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
-    <value>Let websites provide locally relevant content by accessing language list</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_1" xml:space="preserve">
-    <value>ProgramDataUpdater</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_2" xml:space="preserve">
-    <value>Proxy</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_3" xml:space="preserve">
-    <value>Consolidator</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_4" xml:space="preserve">
-    <value>UsbCeip</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_5" xml:space="preserve">
-    <value>Microsoft-Windows-DiskDiagnosticDataCollector</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_6" xml:space="preserve">
-    <value>MapsToastTask</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_7" xml:space="preserve">
-    <value>MapsUpdateTask</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_8" xml:space="preserve">
-    <value>FamilySafetyMonitor</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title_9" xml:space="preserve">
-    <value>XblGameSaveTask</value>
-  </data>
   <data name="UIModel_ScheduledTasks_Title" xml:space="preserve">
     <value>Diagnostic Tracking Tasks</value>
   </data>
-  <data name="UIModel_SettingsSuggestedContent_Title" xml:space="preserve">
-    <value>Show suggested content in the Settings app</value>
+  <data name="UIModel_SigninInfo_Description" xml:space="preserve">
+    <value>Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
   </data>
-  <data name="UIModel_SigninInfo_Title" xml:space="preserve">
-    <value>Use sign-in info to automatically finish setting up device after an update</value>
+  <data name="UIModel_TailoredExperiences_Description" xml:space="preserve">
+    <value>Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.</value>
   </data>
-  <data name="UIModel_TailoredExperiences_Title" xml:space="preserve">
-    <value>Tailored experiences</value>
+  <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
+    <value>Windows may display a "Let's finish setting up your device" prompt occasionally that displays additional services that user may set up.</value>
   </data>
-  <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
-    <value>Suggest ways I can finish setting up my device to get the most out of Windows</value>
-  </data>
-  <data name="UIModel_WindowsTips_Title" xml:space="preserve">
-    <value>Get tips and suggestions as you use Windows</value>
-  </data>
-  <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
-    <value>Show the Windows welcome experiences after updates and occasionally when I sign in to highlight new features and offers</value>
+  <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
+    <value>Windows may open a pop-up window to show you what's new about the operating system.</value>
   </data>
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
-    <value>For users participating in the software quality assurance program, the Windows Disk Diagnostic Service provides general disk and system information to Microsoft.</value>
+    <value>Disable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, StartupAppTask, ProgramDataUpdater, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask, FamilySafetyMonitor, FamilySafetyRefreshTask, XblGameSaveTask.</value>
   </data>
   <data name="OsRequirements_GetWmiState" xml:space="preserve">
     <value>Detect WMI state</value>
@@ -410,22 +368,64 @@
   <data name="OsRequirementsFailure_MsDefenderIsBroken" xml:space="preserve">
     <value>Microsoft Defender broken or removed from the OS</value>
   </data>
-  <data name="OsRequirementsFailure_MsDefenderServiceStopped" xml:space="preserve">
-    <value>{0} is not running</value>
-  </data>
   <data name="OsRequirements_GetMsDefenderServicesState" xml:space="preserve">
     <value>Detect Microsoft Defender services state</value>
   </data>
   <data name="OsRequirements_GetMsDefenderState" xml:space="preserve">
     <value>Detect Microsoft Defender state</value>
   </data>
-  <data name="MsDefenderService_SecurityHealthService" xml:space="preserve">
-    <value>Служба Безопасность Windows</value>
+  <data name="OsRequirements_ReadWindowsSettings" xml:space="preserve">
+    <value>Read Windows settings</value>
   </data>
-  <data name="MsDefenderService_Windefend" xml:space="preserve">
-    <value>Служба антивирусной программы Microsoft Defender</value>
+  <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
+    <value>The telemetry service</value>
   </data>
-  <data name="MsDefenderService_Wscsvc" xml:space="preserve">
-    <value>Служба Центр обеспечения безопасности</value>
+  <data name="UIModel_AdvertisingID_Title" xml:space="preserve">
+    <value>Let apps show me personalized ads by using my advertising ID</value>
+  </data>
+  <data name="UIModel_AppsSilentInstalling_Title" xml:space="preserve">
+    <value>Turn on automatic installing suggested apps</value>
+  </data>
+  <data name="UIModel_BingSearch_Title" xml:space="preserve">
+    <value>Enable Bing search in the Start Menu</value>
+  </data>
+  <data name="UIModel_DiagnosticDataLevel_Title" xml:space="preserve">
+    <value>The OS level of diagnostic data gathering</value>
+  </data>
+  <data name="UIModel_ErrorReporting_Title" xml:space="preserve">
+    <value>The Windows Error Reporting</value>
+  </data>
+  <data name="UIModel_FeedbackFrequency_Description" xml:space="preserve">
+    <value>Choose how often Windows asks for your feedback.</value>
+  </data>
+  <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
+    <value>Let websites show me locally relevant content by accessing language my list</value>
+  </data>
+  <data name="UIModel_SettingsSuggestedContent_Title" xml:space="preserve">
+    <value>Show me suggested content in the Settings app</value>
+  </data>
+  <data name="UIModel_SigninInfo_Title" xml:space="preserve">
+    <value>Use sign-in info to automatically finish setting up device after an update</value>
+  </data>
+  <data name="UIModel_TailoredExperiences_Title" xml:space="preserve">
+    <value>Tailored experiences</value>
+  </data>
+  <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
+    <value>Ways to get the most out of Windows and finish setting up this device</value>
+  </data>
+  <data name="UIModel_WindowsTips_Title" xml:space="preserve">
+    <value>Get tip and suggestions when using Windows</value>
+  </data>
+  <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
+    <value>Show the Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
+  </data>
+  <data name="OsRequirementsFailure_MsDefender_SecurityHealthService_Stopped" xml:space="preserve">
+    <value>Служба Безопасность Windows is not running</value>
+  </data>
+  <data name="OsRequirementsFailure_MsDefender_Windefend_Stopped" xml:space="preserve">
+    <value>Служба антивирусной программы Microsoft Defender is not running</value>
+  </data>
+  <data name="OsRequirementsFailure_MsDefender_Wscsvc_Stopped" xml:space="preserve">
+    <value>Служба Центр обеспечения безопасности is not running</value>
   </data>
 </root>

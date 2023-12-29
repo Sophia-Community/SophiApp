@@ -27,7 +27,7 @@ namespace SophiApp.ViewModels
         }
 
         /// <summary>
-        /// Prepares the ViewModel for display in interface.
+        /// Prepares the ViewModel for display in UI.
         /// </summary>
         /// <param name="text">Set message text.</param>
         /// <param name="runUpdate">Start the system update.</param>

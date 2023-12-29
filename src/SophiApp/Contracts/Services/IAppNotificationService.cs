@@ -10,9 +10,9 @@ namespace SophiApp.Contracts.Services;
 public interface IAppNotificationService
 {
     /// <summary>
-    /// Registers the app as a toast notifications sender.
+    /// Register the <see cref="IAppNotificationService"/> as a toast notifications sender.
     /// </summary>
-    void Register();
+    void RegisterAsSender();
 
     /// <summary>
     /// Show the toast notification.

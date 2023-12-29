@@ -9,7 +9,9 @@ using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
+using SophiApp.Models;
 using System;
+using System.Collections.Concurrent;
 
 /// <summary>
 /// Implements the <see cref="ShellViewModel"/> class.
@@ -20,6 +22,7 @@ public partial class ShellViewModel : ObservableRecipient
     private readonly RequirementsFailureViewModel failureViewModel;
     private readonly IRequirementsService requirementsService;
     private readonly ICommonDataService commonDataService;
+    private readonly IModelService modelService;
 
     [ObservableProperty]
     private string delimiter;
@@ -42,13 +45,15 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="requirementsService">Service for working with OS requirements.</param>
     /// <param name="startupViewModel">Implements the <see cref="StartupViewModel"/> class.</param>
     /// <param name="requirementsFailureViewModel">Implements the <see cref="RequirementsFailureViewModel"/> class.</param>
+    /// <param name="modelService">A service for working with UI models using MVVM pattern.</param>
     public ShellViewModel(
         INavigationService navigationService,
         INavigationViewService navigationViewService,
         ICommonDataService commonDataService,
         IRequirementsService requirementsService,
         StartupViewModel startupViewModel,
-        RequirementsFailureViewModel requirementsFailureViewModel)
+        RequirementsFailureViewModel requirementsFailureViewModel,
+        IModelService modelService)
     {
         NavigationService = navigationService;
         this.commonDataService = commonDataService;
@@ -56,8 +61,9 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationViewService = navigationViewService;
         NavigationService.Navigated += OnNavigated;
         delimiter = this.commonDataService.GetDelimiter();
-        this.startupModel = startupViewModel;
-        this.failureViewModel = requirementsFailureViewModel;
+        startupModel = startupViewModel;
+        failureViewModel = requirementsFailureViewModel;
+        this.modelService = modelService;
     }
 
     /// <summary>
@@ -77,11 +83,16 @@ public partial class ShellViewModel : ObservableRecipient
     }
 
     /// <summary>
+    /// Gets <see cref="UIModel"/> collection.
+    /// </summary>
+    public ConcurrentBag<UIModel> Models { get; private set; } = new ();
+
+    /// <summary>
     /// Executes the ViewModel logic of the MVVM pattern.
     /// </summary>
     public async Task ExecuteAsync()
     {
-        var numberOfRequirements = 11;
+        var numberOfRequirements = 12;
 
         await Task.Run(() =>
         {
@@ -132,7 +143,7 @@ public partial class ShellViewModel : ObservableRecipient
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
                 startupModel.StatusText = "OsRequirements_UpdateDetection".GetLocalized();
             }))
-            .Bind(requirementsService.UpdateDetection)
+            .Bind(requirementsService.AppUpdateDetection)
             .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
@@ -151,6 +162,17 @@ public partial class ShellViewModel : ObservableRecipient
                 startupModel.StatusText = "OsRequirements_GetMsDefenderState".GetLocalized();
             }))
             .Bind(requirementsService.GetMsDefenderState)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.PartialIncrease(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_ReadWindowsSettings".GetLocalized();
+            }))
+            .Tap(async () =>
+            {
+                var models = modelService.BuildModels();
+                Models = new (models);
+                await modelService.GetStateAsync(Models);
+            })
             .Match(
                 onSuccess: () => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
                 {
@@ -160,15 +182,16 @@ public partial class ShellViewModel : ObservableRecipient
                 onFailure: failure =>
                 {
                     var failureReason = failure.ToEnum<RequirementsFailure>();
-                    var reason = GetReason(failureReason);
-                    var needUpdate = NeedRunUpdate(failureReason);
+                    var reason = GetFailureReason(failureReason);
+                    var needUpdate = IsNeedUpdate(failureReason);
+                    App.Logger.LogNavigateToRequirementsFailure(failureReason);
                     failureViewModel.PrepareForNavigation(reason, needUpdate);
                     App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(typeof(RequirementsFailureViewModel).FullName!));
                 });
         });
     }
 
-    private string GetReason(RequirementsFailure reason)
+    private string GetFailureReason(RequirementsFailure reason)
     {
         return reason switch
         {
@@ -184,13 +207,13 @@ public partial class ShellViewModel : ObservableRecipient
             RequirementsFailure.FeatureExperiencePackRemoved => "OsRequirementsFailure_FeatureExperiencePackRemoved".GetLocalized(),
             RequirementsFailure.RebootRequired => "OsRequirementsFailure_RebootRequired".GetLocalized(),
             RequirementsFailure.MsDefenderFilesMissing => string.Format("OsRequirementsFailure_MsDefenderFilesMissing".GetLocalized(), commonDataService.MsDefenderFileMissing),
-            RequirementsFailure.MsDefenderServiceStopped => string.Format("OsRequirementsFailure_MsDefenderServiceStopped".GetLocalized(), commonDataService.MsDefenderServiceStopped),
+            RequirementsFailure.MsDefenderServiceStopped => commonDataService.MsDefenderServiceStopped.GetLocalized(),
             RequirementsFailure.MsDefenderIsBroken => "OsRequirementsFailure_MsDefenderIsBroken".GetLocalized(),
             _ => throw new ArgumentOutOfRangeException(paramName: nameof(reason), message: $"Value: {reason} is not found in {typeof(RequirementsFailure).FullName} enumeration.")
         };
     }
 
-    private bool NeedRunUpdate(RequirementsFailure reason)
+    private bool IsNeedUpdate(RequirementsFailure reason)
     {
         switch (reason)
         {
@@ -212,7 +235,6 @@ public partial class ShellViewModel : ObservableRecipient
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         IsBackEnabled = NavigationService.CanGoBack;
-
         var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
         if (selectedItem != null)
         {

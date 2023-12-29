@@ -4,10 +4,6 @@
 
 namespace SophiApp.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
-using SophiApp.Contracts.Services;
-using SophiApp.Helpers;
-using SophiApp.Models;
-using System.Collections.ObjectModel;
 
 /// <summary>
 /// Implements the <see cref="PrivacyViewModel"/> class.
@@ -19,12 +15,5 @@ public partial class PrivacyViewModel : ObservableRecipient
     /// </summary>
     public PrivacyViewModel()
     {
-        var models = App.GetService<IModelBuilderService>().GetModelsByTag(UICategoryTag.Privacy);
-        Models = new ObservableCollection<UIModel>(models);
     }
-
-    /// <summary>
-    /// Gets <see cref="UIModel"/> collections.
-    /// </summary>
-    public ObservableCollection<UIModel> Models { get; }
 }

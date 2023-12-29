@@ -4,6 +4,7 @@
 
 namespace SophiApp.Services
 {
+    using System;
     using System.Diagnostics;
     using System.Net.Http.Json;
     using System.Security.Principal;
@@ -14,9 +15,7 @@ namespace SophiApp.Services
     using SophiApp.Extensions;
     using SophiApp.Helpers;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class RequirementsService : IRequirementsService
     {
         private readonly ICommonDataService commonDataService;
@@ -46,6 +45,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetOsBitness()
         {
+            App.Logger.LogOsBitness(Environment.Is64BitOperatingSystem);
             return Environment.Is64BitOperatingSystem ? Result.Success() : Result.Failure(nameof(RequirementsFailure.Is32BitOs));
         }
 
@@ -54,17 +54,17 @@ namespace SophiApp.Services
         {
             try
             {
-                var repoState = "chcp 437 | winmgmt /verifyrepository".InvokeAsCmd();
-                var serviceIsRun = new ServiceController("Winmgmt").Status == ServiceControllerStatus.Running;
-                var repoIsConsistent = repoState.Equals("WMI repository is consistent\n");
-                var osCaptionIsCorrect = !string.IsNullOrEmpty(commonDataService.OsProperties.Caption);
-
-                // TODO: Log WMI state here!
-                return serviceIsRun && repoIsConsistent && osCaptionIsCorrect ? Result.Success() : Result.Failure(nameof(RequirementsFailure.WMIBroken));
+                var wmiService = new ServiceController("Winmgmt");
+                var repoState = "chcp 437 | winmgmt /verifyrepository".InvokeAsCmd().Replace("\n", null);
+                var serviceIsRun = wmiService.Status == ServiceControllerStatus.Running;
+                var repoIsConsistent = repoState.Equals("WMI repository is consistent");
+                var osPropertiesIsCorrect = commonDataService.OsProperties.BuildNumber != -1;
+                App.Logger.LogWmiState(serviceState: wmiService.Status, repositoryState: repoState, repositoryIsConsistent: repoIsConsistent);
+                return osPropertiesIsCorrect && serviceIsRun && repoIsConsistent ? Result.Success() : Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log error here!
+                App.Logger.LogWmiStateException(ex);
                 return Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
         }
@@ -92,7 +92,7 @@ namespace SophiApp.Services
         {
             var currentUserName = WindowsIdentity.GetCurrent().Name.Split('\\')[1];
             var loggedUserProcess = Array.Find(array: Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(Process.GetCurrentProcess().SessionId));
-            return instrumentationService.GetProcessOwner(loggedUserProcess).Equals(currentUserName) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.RunByNotLoggedUser));
+            return instrumentationService.GetProcessOwnerOrDefault(loggedUserProcess).Equals(currentUserName) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.RunByNotLoggedUser));
         }
 
         /// <inheritdoc/>
@@ -106,7 +106,6 @@ namespace SophiApp.Services
             var systemDrive = Environment.ExpandEnvironmentVariables("%SystemDrive%");
             var systemRoot = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
             var tempFolder = Environment.ExpandEnvironmentVariables("%TEMP%");
-
             var malwares = new Dictionary<string, Func<bool>>()
             {
                 { "OsRequirements_Malware_Windows10Debloater", () => Directory.Exists($"{systemDrive}\\Temp\\Windows10Debloater") },
@@ -165,6 +164,7 @@ namespace SophiApp.Services
             {
                 if (malware.Value.Invoke())
                 {
+                    App.Logger.LogMalwareDetected(malware.Key.Replace("OsRequirements_Malware_", null));
                     commonDataService.DetectedMalware = malware.Key.GetLocalized();
                     return true;
                 }
@@ -195,27 +195,26 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public Result UpdateDetection()
+        public Result AppUpdateDetection()
         {
-            // TODO: Log online state.
             if (commonDataService.IsOnline)
             {
                 try
                 {
                     using var client = new HttpClient();
-                    var wrapper = client.GetFromJsonAsync<AppVersionWrapper>(commonDataService.AppVersionUrl).Result;
-                    var wrapperVersion = wrapper?.SophiApp_release ?? new Version(0, 0, 0);
+                    var json = client.GetFromJsonAsync<AppVersionWrapper>(commonDataService.AppVersionUrl).Result;
+                    var version = json?.SophiApp_release ?? new Version(0, 0, 0);
+                    App.Logger.LogAppUpdate(version);
 
-                    if (wrapperVersion > commonDataService.AppVersion)
+                    if (version > commonDataService.AppVersion)
                     {
-                        var payload = string.Format("AppUpdateNotification".GetLocalized(), wrapperVersion.ToString(3), commonDataService.AppReleaseUrl);
+                        var payload = string.Format("AppUpdateNotification".GetLocalized(), version.ToString(3), commonDataService.AppReleaseUrl);
                         appNotificationService.Show(payload);
                     }
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    // TODO: Log exception.
-                    throw;
+                    App.Logger.LogAppUpdateException(ex);
                 }
             }
 
@@ -226,21 +225,22 @@ namespace SophiApp.Services
         public Result GetMsDefenderFilesExist()
         {
             var system32Folder = Environment.GetFolderPath(Environment.SpecialFolder.System);
-            var components = new List<string>()
+            var files = new List<string>()
             {
                 $"{system32Folder}\\smartscreen.exe",
                 $"{system32Folder}\\SecurityHealthSystray.exe",
                 $"{system32Folder}\\CompatTelRunner.exe",
             };
 
-            return components.TrueForAll(component =>
+            return files.TrueForAll(file =>
             {
-                if (File.Exists(component))
+                if (File.Exists(file))
                 {
                     return true;
                 }
 
-                commonDataService.MsDefenderFileMissing = component;
+                App.Logger.LogMsDefenderFilesException(file);
+                commonDataService.MsDefenderFileMissing = file;
                 return false;
             }) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsDefenderFilesMissing));
         }
@@ -248,12 +248,12 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderServicesState()
         {
+            var stoppedService = string.Empty;
             var services = new List<string>() { "Windefend", "SecurityHealthService", "Wscsvc" };
-            var serviceName = string.Empty;
 
             return services.TrueForAll(s =>
             {
-                serviceName = $"MsDefenderService_{s}";
+                stoppedService = $"OsRequirementsFailure_MsDefender_{s}_Stopped";
 
                 try
                 {
@@ -264,13 +264,14 @@ namespace SophiApp.Services
                         return true;
                     }
 
-                    commonDataService.MsDefenderServiceStopped = serviceName.GetLocalized();
+                    App.Logger.LogMsDefenderServicesStatusException(service: s, status: service.Status);
+                    commonDataService.MsDefenderServiceStopped = stoppedService;
                     return false;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    // TODO: Log error here!
-                    commonDataService.MsDefenderServiceStopped = serviceName.GetLocalized();
+                    App.Logger.LogMsDefenderServicesException(ex);
+                    commonDataService.MsDefenderServiceStopped = stoppedService;
                     return false;
                 }
             }) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsDefenderServiceStopped));
@@ -280,7 +281,7 @@ namespace SophiApp.Services
         public Result GetMsDefenderState()
         {
             var isEnterpriseG = commonDataService.OsProperties.Edition.Contains("EnterpriseG", StringComparison.InvariantCultureIgnoreCase);
-            var msDefenderProductState = instrumentationService.GetAntivirusProducts().Find(product => product.GetPropertyValue("instanceGuid")
+            var msDefenderProductState = instrumentationService.GetAntivirusProductsOrDefault().Find(product => product.GetPropertyValue("instanceGuid")
             .Equals("{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}"))?.GetPropertyValue("productState");
             var msDefenderState = msDefenderProductState is null ? "00" : string.Format("0x{0:x}", msDefenderProductState).Substring(3, 2);
             var msDefenderEnabled = !(msDefenderState.Equals("00") || msDefenderState.Equals("01")) && !isEnterpriseG;

@@ -4,9 +4,7 @@
 
 namespace SophiApp.Models
 {
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class UIExpandingCheckBoxGroupModel : UIModel
     {
         /// <summary>
@@ -32,5 +30,11 @@ namespace SophiApp.Models
         /// Gets <see cref="UIExpandingCheckBoxGroupModel"/> description.
         /// </summary>
         public string Description { get; init; }
+
+        /// <inheritdoc/>
+        public override void GetState()
+        {
+            Items.ForEach(item => item.GetState());
+        }
     }
 }
