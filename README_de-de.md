@@ -99,6 +99,10 @@
 
 ***
 
+## SophiApp 2.0
+
+`SophiApp 2.0 | Daria` | Daria befindet sich in aktiver Entwicklung (kein ETA, Q2 2024). Sie können die Entwicklung [hier](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk) verfolgen. Lesen Sie [mehr](https://t.me/SophiaNews/2566).
+
 ## Über SophiApp
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)

@@ -99,7 +99,7 @@
 
 ## SophiApp 2.0
 
-`SophiApp 2.0 | Daria` aktif geliştirme aşamasındadır (tahmini varış belli değil, 2023 sonu). Geliştirme commitlerini [buradan](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk) takip edebilirsiniz. [Daha fazlasını okuyun](https://t.me/SophiaNews/1311).
+`SophiApp 2.0 | Daria` aktif geliştirme aşamasındadır (tahmini varış belli değil, 2023 sonu). Geliştirme commitlerini [buradan](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk) takip edebilirsiniz. [Daha fazlasını okuyun](https://t.me/SophiaNews/2566).
 
 ## SophiApp Hakkında
 

@@ -99,12 +99,15 @@
 
 ***
 
+## SophiApp 2.0
+
+`SophiApp 2.0 | Daria` находится в активной разработке (2 квартал 2024). Вы можете следить за разработкой в тестовой ветке [здесь](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). [Подробнее](https://t.me/SophiaNews/2566).
+
 ## О SophiApp
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
 
 > **Note**: `SophiApp` — это бесплатное приложение с открытым исходным кодом для тонкой настройки `Windows 10` и `Windows 11`. Оно предлагает современные UI/UX, более 130 различных функций и демонстрирует, как можно настроить Windows, не ломая ee функционал.
-> 
 
 ## Пожертвования
 

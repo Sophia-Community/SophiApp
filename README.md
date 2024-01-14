@@ -99,7 +99,7 @@
 
 ## SophiApp 2.0
 
-`SophiApp 2.0 | Daria` is in active development (no ETA, late 2023). You may follow the development commits [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). Read [more](https://t.me/SophiaNews/1311).
+`SophiApp 2.0 | Daria` is in active development (no ETA, Q2 2024). You may follow the development commits [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). Read [more](https://t.me/SophiaNews/2566).
 
 ## About SophiApp
 

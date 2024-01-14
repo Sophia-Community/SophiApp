@@ -98,7 +98,7 @@
 
 ## SophiApp 2.0
 
-`SophiApp 2.0 | Daria` 正在积极开发中（暂无预计时间，2023 年末）。 你可以在 [这里](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk)关注开发进展。 [了解更多](https://t.me/SophiaNews/1311).
+`SophiApp 2.0 | Daria` 正在积极开发中（暂无预计时间，2023 年第二季度）。 你可以在 [这里](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk)关注开发进展。 [了解更多](https://t.me/SophiaNews/2566).
 
 ## 关于 SophiApp
 
