@@ -135,7 +135,7 @@
 Download the always latest SophiApp archive by invoking (`not as administrator too`) in PowerShell
 
 ```powershell
-irm app.sophi.app -useb | iex
+iwr app.sophia.team -useb | iex
 ```
 
 [WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)

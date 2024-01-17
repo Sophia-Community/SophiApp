@@ -135,7 +135,7 @@
 Powershell'de çalıştırarak (yönetici olarak da değil) son SophiApp arşivini indirin
 
 ```powershell
-iwr app.sophia.team | iex
+iwr app.sophia.team -useb | iex
 ```
 
 [WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)

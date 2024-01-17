@@ -137,7 +137,7 @@
 Download delll'ultima versione della SophiApp incollando (`anche senza i permessi di amministratore`) in PowerShell
 
 ```powershell
-iwr app.sophia.team | iex
+iwr app.sophia.team -useb | iex
 ```
 [Winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)
 

@@ -3,7 +3,7 @@
 	Download the latest SophiApp version
 
 	.EXAMPLE
-	iwr app.sophia.team | iex
+	iwr app.sophia.team -useb | iex
 #>
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12

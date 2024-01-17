@@ -137,7 +137,7 @@
 Скачать архив с последней версией SophiApp, выполнив в PowerShell (`в том числе и не от имени администратора`)
 
 ```powershell
-iwr app.sophia.team | iex
+iwr app.sophia.team -useb | iex
 ```
 
 [WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/TeamSophia/SophiApp)

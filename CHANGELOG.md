@@ -228,7 +228,7 @@ Diff from v1.0.0.53
 * Added the ability to download the latest stable build of SophiApp via PowerShell. Just type the command below, and it will download SophiaApp.zip from GitHub to the Downloads folder, expand the archive, and remove it. Elevated privileges are not needed. The app won't be launched.
 
   ```powershell
-  irm app.sophi.app | iex
+  iwr app.sophia.team -useb | iex
   ```
 
 https://imgur.com/a/wCcs0Xi
