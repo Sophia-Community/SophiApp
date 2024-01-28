@@ -20,9 +20,6 @@
     <IsPublishable>True</IsPublishable>
     <Version>2.0.0</Version>
     <UseWinUI>true</UseWinUI>
-    <UseStyleCop>true</UseStyleCop>
-    <UseSonarAnalyzer>true</UseSonarAnalyzer>
-    <UseResults>true</UseResults>
     <StartupObject>SophiApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
@@ -32,6 +29,7 @@
     <None Remove="Assets\AppLogo.svg" />
     <None Remove="Assets\Discord.svg" />
     <None Remove="Assets\GitHub.svg" />
+    <None Remove="Assets\Info.svg" />
     <None Remove="Assets\Telegram.svg" />
     <None Remove="ControlTemplates\ExpandingCheckBoxGroup.xaml" />
     <None Remove="ControlTemplates\ExpandingRadioGroup.xaml" />
@@ -74,6 +72,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="2.40.3" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.2.14" />
     <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.2.14" />
@@ -85,8 +84,17 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.18.0.83559">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.Management" Version="8.0.0" />
     <PackageReference Include="System.Management.Automation" Version="7.2.14" />
+    <PackageReference Include="TaskScheduler" Version="2.10.1" />
     <PackageReference Include="WinUIEx" Version="2.3.3" />
   </ItemGroup>
 
@@ -109,6 +117,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\GitHub.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Info.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\LockScreenLogo.scale-200.png">

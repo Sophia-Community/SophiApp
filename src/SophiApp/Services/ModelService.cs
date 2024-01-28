@@ -7,6 +7,7 @@ namespace SophiApp.Services
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Diagnostics;
     using System.Reflection;
     using System.Text;
@@ -27,10 +28,7 @@ namespace SophiApp.Services
         /// Initializes a new instance of the <see cref="ModelService"/> class.
         /// </summary>
         /// <param name="commonDataService">A service for transferring common app data between layers of abstractions.</param>
-        public ModelService(ICommonDataService commonDataService)
-        {
-            this.commonDataService = commonDataService;
-        }
+        public ModelService(ICommonDataService commonDataService) => this.commonDataService = commonDataService;
 
         /// <inheritdoc/>
         public List<UIModel> BuildModels()
@@ -68,22 +66,35 @@ namespace SophiApp.Services
                 GetStateByTag(models, UICategoryTag.Security),
                 GetStateByTag(models, UICategoryTag.ContextMenu));
             timer.Stop();
-            App.Logger.LogAllModelGetStateCompleted(timer, models.Count);
+            App.Logger.LogAllModelsGetState(timer, models.Count);
+        }
+
+        /// <inheritdoc/>
+        public async Task GetStateAsync(ObservableCollection<UIModel> models)
+        {
+            await Task.Run(() =>
+            {
+                foreach (var model in models)
+                {
+                    model.GetState();
+                }
+            });
         }
 
         private UIModel BuildCheckBoxModel(UIModelDto dto)
         {
             var title = GetTitle(dto.Name);
             var description = GetDescription(dto.Name);
-            var accessor = GetBoolAccessor(dto.Name);
-            return new UICheckBoxModel(dto, title, description, accessor);
+            var accessor = GetAccessor<bool>(dto.Name);
+            var mutator = GetMutator<bool>(dto.Name);
+            return new UICheckBoxModel(dto, title, description, accessor, mutator);
         }
 
         private UIModel BuildExpandingRadioGroupModel(UIModelDto dto)
         {
             var title = GetTitle(dto.Name);
             var description = GetDescription(dto.Name);
-            var accessor = GetIntAccessor(dto.Name);
+            var accessor = GetAccessor<int>(dto.Name);
             var items = Enumerable.Range(1, dto.NumberOfItems)
                 .Select(id =>
                 {
@@ -102,7 +113,8 @@ namespace SophiApp.Services
             var items = Enumerable.Range(1, dto.NumberOfItems)
                 .Select(i =>
                 {
-                    var accessor = GetBoolAccessor($"{dto.Name}_{i}");
+                    var accessorName = $"{dto.Name}_{i}";
+                    var accessor = GetAccessor<bool>(accessorName);
                     var itemTitle = GetTitle(dto.Name, i);
                     return new UICheckBoxGroupItemModel(accessor, itemTitle);
                 })
@@ -127,18 +139,20 @@ namespace SophiApp.Services
             return string.Empty;
         }
 
-        private Func<bool> GetBoolAccessor(string name)
+        private Func<T> GetAccessor<T>(string name)
+            where T : struct
         {
-            var type = Type.GetType("SophiApp.Customizations.Accessors") !;
+            var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true) !;
             var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
-            return (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), method!);
+            return (Func<T>)Delegate.CreateDelegate(typeof(Func<T>), method!);
         }
 
-        private Func<int> GetIntAccessor(string name)
+        private Action<T> GetMutator<T>(string name)
+            where T : struct
         {
-            var type = Type.GetType("SophiApp.Customizations.Accessors") !;
+            var type = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true) !;
             var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
-            return (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), method!);
+            return (Action<T>)Delegate.CreateDelegate(typeof(Action<T>), method!);
         }
 
         private Task GetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag)
@@ -150,7 +164,7 @@ namespace SophiApp.Services
                 var timer = Stopwatch.StartNew();
                 m.GetState();
                 timer.Stop();
-                App.Logger.LogModelGetStateCompleted(m.Name, timer);
+                App.Logger.LogModelGetState(m.Name, timer);
             }));
         }
     }

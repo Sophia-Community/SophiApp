@@ -4,9 +4,7 @@
 
 namespace SophiApp.Services;
 using System.Diagnostics.CodeAnalysis;
-
 using Microsoft.UI.Xaml.Controls;
-
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
 using SophiApp.ViewModels;
@@ -15,9 +13,7 @@ using SophiApp.ViewModels;
 public class NavigationViewService : INavigationViewService
 {
     private readonly INavigationService navigationService;
-
     private readonly IPageService pageService;
-
     private NavigationView? navigationView;
 
     /// <summary>
@@ -31,10 +27,20 @@ public class NavigationViewService : INavigationViewService
         this.pageService = pageService;
     }
 
+    /// <summary>
+    /// Gets collection of menu items displayed in the NavigationMenu.
+    /// </summary>
     public IList<object>? MenuItems => navigationView?.MenuItems;
 
+    /// <summary>
+    /// Gets item that represents the entry point to app settings.
+    /// </summary>
     public object? SettingsItem => navigationView?.SettingsItem;
 
+    /// <summary>
+    /// Initialize <see cref="NavigationView"/>.
+    /// </summary>
+    /// <param name="navigationView">Represents a container that enables navigation of app content.</param>
     [MemberNotNull(nameof(NavigationViewService.navigationView))]
     public void Initialize(NavigationView navigationView)
     {
@@ -43,6 +49,9 @@ public class NavigationViewService : INavigationViewService
         this.navigationView.ItemInvoked += OnItemInvoked;
     }
 
+    /// <summary>
+    /// Unregister menu item events.
+    /// </summary>
     public void UnregisterEvents()
     {
         if (navigationView != null)
@@ -52,6 +61,10 @@ public class NavigationViewService : INavigationViewService
         }
     }
 
+    /// <summary>
+    /// Gets selected <see cref="NavigationViewItem"/> in <see cref="NavigationView"/>.
+    /// </summary>
+    /// <param name="pageType">Item page type.</param>
     public NavigationViewItem? GetSelectedItem(Type pageType)
     {
         if (navigationView != null)

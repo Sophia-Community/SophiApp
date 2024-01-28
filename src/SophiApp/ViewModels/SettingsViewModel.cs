@@ -5,7 +5,6 @@
 namespace SophiApp.ViewModels;
 
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
@@ -51,7 +50,7 @@ public partial class SettingsViewModel : ObservableRecipient
         version = commonDataService.GetFullName();
         build = commonDataService.GetBuildName();
         selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
-        OpenLinkCommand = new AsyncRelayCommand<string>(url => uriService.OpenUrlAsync(url));
+        OpenLinkCommand = new AsyncRelayCommand<string>(url => uriService.OpenUrlAsync(url!));
     }
 
     /// <summary>
@@ -73,5 +72,5 @@ public partial class SettingsViewModel : ObservableRecipient
     /// <summary>
     /// Gets a resource using an identifier.
     /// </summary>
-    public ICommand OpenLinkCommand { get; }
+    public IAsyncRelayCommand OpenLinkCommand { get; }
 }

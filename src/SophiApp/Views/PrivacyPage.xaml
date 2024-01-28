@@ -1,5 +1,6 @@
 ﻿<Page
     x:Class="SophiApp.Views.PrivacyPage"
+    x:Name="PagePrivacy"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,7 +14,8 @@
 
     <Page.Resources>
         <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"/>
+            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
+                                   Command="{Binding ElementName=PagePrivacy, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
         <DataTemplate x:Key="ExpandingRadioGroupTemplate">
             <controls:ExpandingRadioGroup Margin="{StaticResource UIControlsPageRightMargin}"/>

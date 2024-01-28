@@ -14,18 +14,23 @@ using SophiApp.ViewModels;
 /// </summary>
 public sealed partial class PrivacyPage : Page
 {
-    private readonly ShellViewModel shellViewModel = App.GetService<ShellViewModel>();
-
     /// <summary>
     /// Initializes a new instance of the <see cref="PrivacyPage"/> class.
     /// </summary>
     public PrivacyPage()
     {
         InitializeComponent();
+        ViewModel = App.GetService<ShellViewModel>();
+        Models = ViewModel.Models.FilterByTag(UICategoryTag.Privacy);
     }
+
+    /// <summary>
+    /// Gets view model for privacy page.
+    /// </summary>
+    public ShellViewModel ViewModel { get; }
 
     /// <summary>
     /// Gets <see cref="UIModel"/> collection.
     /// </summary>
-    public List<UIModel> Models => shellViewModel.Models.FilterByTag(UICategoryTag.Privacy);
+    public List<UIModel> Models { get; }
 }

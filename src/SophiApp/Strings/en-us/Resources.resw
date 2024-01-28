@@ -393,7 +393,7 @@
     <value>The OS level of diagnostic data gathering</value>
   </data>
   <data name="UIModel_ErrorReporting_Title" xml:space="preserve">
-    <value>The Windows Error Reporting</value>
+    <value>Disable Windows Error Reporting</value>
   </data>
   <data name="UIModel_FeedbackFrequency_Description" xml:space="preserve">
     <value>Choose how often Windows asks for your feedback.</value>
@@ -427,5 +427,11 @@
   </data>
   <data name="OsRequirementsFailure_MsDefender_Wscsvc_Stopped" xml:space="preserve">
     <value>Служба Центр обеспечения безопасности is not running</value>
+  </data>
+  <data name="Panel_ApplyCustomizations_ApplyChanges.Text" xml:space="preserve">
+    <value>Apply changes?</value>
+  </data>
+  <data name="Button_Cancel.Content" xml:space="preserve">
+    <value>Cancel</value>
   </data>
 </root>

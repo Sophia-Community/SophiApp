@@ -6,6 +6,7 @@ namespace SophiApp.Customizations
 {
     using System.ServiceProcess;
     using Microsoft.Win32;
+    using Microsoft.Win32.TaskScheduler;
     using NetFwTypeLib;
     using SophiApp.Contracts.Services;
 
@@ -43,7 +44,11 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ErrorReporting()
         {
-            return true;
+            var taskPath = "Microsoft\\Windows\\Windows Error Reporting\\QueueReporting";
+            var reportingTask = TaskService.Instance.GetTask(taskPath) ?? throw new InvalidOperationException($"Failed to find a scheduled task");
+            var reportingRegistryValue = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting")?.GetValue("Disabled") as int? ?? -1;
+            var reportingServiceStartType = new ServiceController("WerSvc").StartType;
+            return reportingTask.State == TaskState.Disabled && reportingRegistryValue.Equals(1) && reportingServiceStartType == ServiceStartMode.Disabled;
         }
 
         /// <summary>
@@ -60,7 +65,24 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ScheduledTasks()
         {
-           return false;
+            var telemetryTasks = new List<Task>()
+            {
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\MareBackup"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\StartupAppTask"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Autochk\\Proxy"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Maps\\MapsToastTask"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Maps\\MapsUpdateTask"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Shell\\FamilySafetyMonitor"),
+                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Shell\\FamilySafetyRefreshTask"),
+                TaskService.Instance.GetTask("\\Microsoft\\XblGameSave\\XblGameSaveTask"),
+            };
+
+            return telemetryTasks.TrueForAll(t => t is null) ? throw new InvalidOperationException("No scheduled telemetry tasks were found") : telemetryTasks.Exists(t => t.State == TaskState.Ready);
         }
 
         /// <summary>

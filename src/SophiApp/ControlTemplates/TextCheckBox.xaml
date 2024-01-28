@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="SophiApp.ControlTemplates.TextCheckBox"
+    x:Name="TextCheckBoxControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SophiApp.ControlTemplates"
@@ -44,7 +45,9 @@
             </StackPanel>
             <CheckBox Grid.Column="1"
                       Style="{StaticResource UIControlCheckBoxStyle}"
-                      IsChecked="{Binding IsChecked}"/>
+                      IsChecked="{Binding IsChecked}"
+                      Command="{Binding Command, ElementName=TextCheckBoxControl}"
+                      CommandParameter="{Binding}"/>
         </Grid>
     </Border>
 </UserControl>

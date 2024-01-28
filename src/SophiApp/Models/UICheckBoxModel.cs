@@ -8,6 +8,8 @@ namespace SophiApp.Models
     public class UICheckBoxModel : UIModel
     {
         private readonly Func<bool> accessor;
+        private readonly Action<bool> mutator;
+        private bool isChecked;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UICheckBoxModel"/> class.
@@ -16,11 +18,13 @@ namespace SophiApp.Models
         /// <param name="title">Model title.</param>
         /// <param name="description">Model description.</param>
         /// <param name="accessor">Method that sets the IsEnabled state.</param>
-        public UICheckBoxModel(UIModelDto dto, string title, string description, Func<bool> accessor)
+        /// <param name="mutator">Method that changes OS settings.</param>
+        public UICheckBoxModel(UIModelDto dto, string title, string description, Func<bool> accessor, Action<bool> mutator)
             : base(dto, title)
         {
-            Description = description;
             this.accessor = accessor;
+            this.mutator = mutator;
+            Description = description;
         }
 
         /// <summary>
@@ -31,7 +35,15 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets a value indicating whether model checked state.
         /// </summary>
-        public bool IsChecked { get; private set; }
+        public bool IsChecked
+        {
+            get => isChecked;
+            private set
+            {
+                isChecked = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <inheritdoc/>
         public override void GetState()
@@ -39,6 +51,10 @@ namespace SophiApp.Models
             try
             {
                 IsChecked = accessor.Invoke();
+                App.Logger.LogModelState(Name, IsChecked);
+
+                // TODO: For debug only!
+                Thread.Sleep(1000);
             }
             catch (Exception ex)
             {

@@ -26,7 +26,7 @@ namespace SophiApp.Services
         public IEnumerable<INetFwRule> GetGroupRules(string groupName)
         {
             var rules = firewallPolicy.Rules.OfType<INetFwRule>().Where(rule => rule.Grouping == groupName);
-            return rules.Any() ? rules : throw new ArgumentNullException(groupName, "No firewall rules were found for the group name.");
+            return rules.Any() ? rules : throw new ArgumentNullException(groupName, "No firewall rules were found for the group name");
         }
     }
 }

@@ -9,9 +9,9 @@
     Closed="OnWindow_Closed"
     PersistenceId="MainWindow"
     MinWidth="1200"
-    MinHeight="768"
+    MinHeight="840"
     Width="1200"
-    Height="768"
+    Height="840"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
         <DesktopAcrylicBackdrop/>

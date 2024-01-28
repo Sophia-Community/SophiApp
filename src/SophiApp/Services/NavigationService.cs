@@ -5,6 +5,7 @@
 namespace SophiApp.Services;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
 using SophiApp.Contracts.ViewModels;
@@ -20,17 +21,16 @@ public class NavigationService : INavigationService
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationService"/> class.
     /// </summary>
-    /// <param name="pageService"></param>
+    /// <param name="pageService">A service for working with app page.</param>
     public NavigationService(IPageService pageService)
     {
         this.pageService = pageService;
     }
 
-    /// <summary>
-    /// Represents the method that will handle the Navigated event.
-    /// </summary>
+    /// <inheritdoc/>
     public event NavigatedEventHandler? Navigated;
 
+    /// <inheritdoc/>
     public Frame? Frame
     {
         get
@@ -52,25 +52,14 @@ public class NavigationService : INavigationService
         }
     }
 
+    /// <inheritdoc/>
     [MemberNotNullWhen(true, nameof(Frame), nameof(frame))]
     public bool CanGoBack => Frame != null && Frame.CanGoBack;
 
-    private void RegisterFrameEvents()
-    {
-        if (frame != null)
-        {
-            frame.Navigated += OnNavigated;
-        }
-    }
+    /// <inheritdoc/>
+    public string LastVmUsed { get; private set; } = string.Empty;
 
-    private void UnregisterFrameEvents()
-    {
-        if (frame != null)
-        {
-            frame.Navigated -= OnNavigated;
-        }
-    }
-
+    /// <inheritdoc/>
     public bool GoBack()
     {
         if (CanGoBack)
@@ -88,15 +77,18 @@ public class NavigationService : INavigationService
         return false;
     }
 
-    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
+    /// <inheritdoc/>
+    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, bool ignorePageType = false)
     {
+        LastVmUsed = pageKey;
         var pageType = pageService.GetPageType(pageKey);
 
-        if (frame != null && (frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(lastParameterUsed))))
+        if (frame != null && (ignorePageType || frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(lastParameterUsed))))
         {
             frame.Tag = clearNavigation;
             var vmBeforeNavigation = frame.GetPageViewModel();
-            var navigated = frame.Navigate(pageType, parameter);
+            var navigateAnimation = ignorePageType ? new SuppressNavigationTransitionInfo() : null;
+            var navigated = frame.Navigate(pageType, parameter, navigateAnimation);
             if (navigated)
             {
                 lastParameterUsed = parameter;
@@ -110,6 +102,22 @@ public class NavigationService : INavigationService
         }
 
         return false;
+    }
+
+    private void RegisterFrameEvents()
+    {
+        if (frame != null)
+        {
+            frame.Navigated += OnNavigated;
+        }
+    }
+
+    private void UnregisterFrameEvents()
+    {
+        if (frame != null)
+        {
+            frame.Navigated -= OnNavigated;
+        }
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)

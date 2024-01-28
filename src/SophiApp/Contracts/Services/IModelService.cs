@@ -5,6 +5,7 @@
 namespace SophiApp.Contracts.Services
 {
     using System.Collections.Concurrent;
+    using System.Collections.ObjectModel;
     using SophiApp.Models;
 
     /// <summary>
@@ -18,9 +19,15 @@ namespace SophiApp.Contracts.Services
         List<UIModel> BuildModels();
 
         /// <summary>
-        /// Using multiple threads gets the models state.
+        /// Using multiple threads to get the models state.
         /// </summary>
         /// <param name="models"><see cref="UIModel"/> collection.</param>
         Task GetStateAsync(ConcurrentBag<UIModel> models);
+
+        /// <summary>
+        /// Using another thread get the models state.
+        /// </summary>
+        /// <param name="models"><see cref="UIModel"/> collection.</param>
+        Task GetStateAsync(ObservableCollection<UIModel> models);
     }
 }

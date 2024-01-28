@@ -31,13 +31,13 @@
 
         <ProgressBar Grid.Row="2"
                      Value="{x:Bind ViewModel.ProgressBarValue, Mode=OneWay}"
-                     Maximum="1.0"
+                     Maximum="100"
                      Height="3"
                      Width="492"
                      Margin="24, 12, 24, 12"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
-                     Background="{ThemeResource ProgressBarBackground}"
-                     Foreground="{ThemeResource WindowAccent}" />
+                     Foreground="{ThemeResource WindowAccent}"
+                     Background="{ThemeResource ProgressBarBackground}"/>
     </Grid>
 </Page>

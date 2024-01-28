@@ -4,12 +4,14 @@
 
 namespace SophiApp.Models
 {
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
     using SophiApp.Helpers;
 
     /// <summary>
     /// The UI element model.
     /// </summary>
-    public abstract class UIModel
+    public abstract class UIModel : INotifyPropertyChanged
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UIModel"/> class.
@@ -21,6 +23,11 @@ namespace SophiApp.Models
             Title = title;
             (Name, Type, Tag, ViewId, Windows10Support, Windows11Support, _) = dto;
         }
+
+        /// <summary>
+        /// Property change event.
+        /// </summary>
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Gets model unique name.
@@ -66,5 +73,14 @@ namespace SophiApp.Models
         /// Gets the model state.
         /// </summary>
         public abstract void GetState();
+
+        /// <summary>
+        /// <see cref="PropertyChanged"/> event handler.
+        /// </summary>
+        /// <param name="name">Property name.</param>
+        protected void OnPropertyChanged([CallerMemberName] string? name = null)
+        {
+            App.MainWindow.DispatcherQueue.TryEnqueue(() => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)));
+        }
     }
 }

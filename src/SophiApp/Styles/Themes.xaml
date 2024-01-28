@@ -16,6 +16,13 @@
             <SolidColorBrush x:Key="UIControlBackground" Color="#000000" Opacity="0.24" />
             <SolidColorBrush x:Key="UIControlBorderBackground" Color="#FFFFFF" Opacity="0.10" />
             <SolidColorBrush x:Key="UIControlDescriptionBackground" Color="#A5A5A5" />
+            <SolidColorBrush x:Key="ApplyCustomizationsPanelBackground" Color="#E3E3E3" />
+            <SolidColorBrush x:Key="ApplyCustomizationsPanelForeground" Color="#404040" />
+            <SolidColorBrush x:Key="SetUpCustomizationsPanelBackground" Color="#E3E3E3" />
+            <SolidColorBrush x:Key="SetUpCustomizationsPanelForeground" Color="#404040" />
+            <SolidColorBrush x:Key="ButtonBackground" Color="#2A2A2A" />
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#454545" />
+            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#454545" />
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Light">
@@ -31,6 +38,13 @@
             <SolidColorBrush x:Key="UIControlBackground" Color="#FFFFFF" Opacity="0.70" />
             <SolidColorBrush x:Key="UIControlBorderBackground" Color="#000000" Opacity="0.06" />
             <SolidColorBrush x:Key="UIControlDescriptionBackground" Color="#656565" />
+            <SolidColorBrush x:Key="ApplyCustomizationsPanelBackground" Color="#E3E3E3" />
+            <SolidColorBrush x:Key="ApplyCustomizationsPanelForeground" Color="#404040" />
+            <SolidColorBrush x:Key="SetUpCustomizationsPanelBackground" Color="#E3E3E3" />
+            <SolidColorBrush x:Key="SetUpCustomizationsPanelForeground" Color="#404040" />
+            <SolidColorBrush x:Key="ButtonBackground" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#454545" />
+            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#454545" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

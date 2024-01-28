@@ -15,6 +15,6 @@ namespace SophiApp.ViewModels
         private string statusText = string.Empty;
 
         [ObservableProperty]
-        private double progressBarValue = 0.0;
+        private int progressBarValue = 0;
     }
 }

@@ -63,7 +63,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogIsOnline(bool isOnline)
         {
-            Log.Information("Has Internet access: {IsOnline}", isOnline);
+            Log.Information("Has internet access: {IsOnline}", isOnline);
         }
 
         /// <inheritdoc/>
@@ -123,15 +123,45 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogAllModelGetStateCompleted(Stopwatch timer, int count)
+        public void LogAllModelsGetState(Stopwatch timer, int count)
         {
             Log.Information("Service {Service} took time to get {Count} models state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
         }
 
         /// <inheritdoc/>
-        public void LogModelGetStateCompleted(string name, Stopwatch timer)
+        public void LogModelGetState(string name, Stopwatch timer)
         {
             Log.Information("Model {Name} took time to get state: {TimeSpent}", name, timer.Elapsed);
+        }
+
+        /// <inheritdoc/>
+        public void LogModelState<T>(string name, T state)
+        {
+            Log.Information("Model {Name} has set the state to: {State}", name, state);
+        }
+
+        /// <inheritdoc/>
+        public void LogModelRefreshState(string name, Stopwatch timer)
+        {
+            Log.Information("Model {Name} took time to refresh state: {TimeSpent}", name, timer.Elapsed);
+        }
+
+        /// <inheritdoc/>
+        public void LogApplicableModelsClear()
+        {
+            Log.Warning("Applicable models collection has been cleaned up");
+        }
+
+        /// <inheritdoc/>
+        public void LogApplicableModelRemoved(string name)
+        {
+            Log.Information("Model {Name} has been removed from applicable models collection", name);
+        }
+
+        /// <inheritdoc/>
+        public void LogApplicableModelAdded(string name)
+        {
+            Log.Information("Model {Name} has been added to applicable models collection", name);
         }
 
         /// <inheritdoc/>
@@ -179,7 +209,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogIsOnlineException(Exception exception)
         {
-            Log.Error(exception, "Failed Internet access check in the {Service}", nameof(INetworkService));
+            Log.Error(exception, "Failed internet access check in the {Service}", nameof(INetworkService));
         }
 
         /// <inheritdoc/>

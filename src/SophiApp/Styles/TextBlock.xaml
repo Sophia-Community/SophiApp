@@ -7,7 +7,7 @@
         <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="LineStackingStrategy" Value="MaxHeight" />
         <Setter Property="TextLineBounds" Value="Full" />
     </Style>
@@ -34,49 +34,59 @@
     <Style x:Key="IconHyperlinkTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="13, 3, 0, 0"/>
+        <Setter Property="Margin" Value="13, 3, 0, 0" />
     </Style>
 
     <Style x:Key="TeamMateLinkWorkedOnStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="Margin" Value="13, 3, 0, 0"/>
+        <Setter Property="Margin" Value="13, 3, 0, 0" />
     </Style>
 
     <Style x:Key="TeamMateLinkNickNameStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="Margin" Value="0, 3, 5, 0"/>
-        <Setter Property="Foreground" Value="{ThemeResource WindowAccent}"/>
+        <Setter Property="Margin" Value="0, 3, 5, 0" />
+        <Setter Property="Foreground" Value="{ThemeResource WindowAccent}" />
     </Style>
 
     <Style x:Key="StartupPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
-        <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="0, 20, 0, 20"/>
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0, 20, 0, 20" />
     </Style>
 
     <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
-        <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="0, 20, 0, 20"/>
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0, 20, 0, 20" />
     </Style>
     <Style x:Key="UIControlTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextWrapping" Value="WrapWholeWords" />
-        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0, 15, 10, 5"/>
+        <Setter Property="Margin" Value="0, 15, 10, 5" />
     </Style>
     <Style x:Key="UIControlDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
-        <Setter Property="TextWrapping" Value="WrapWholeWords" />
-        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0, 0, 10, 15"/>
+        <Setter Property="Margin" Value="0, 0, 10, 15" />
+    </Style>
+    <Style x:Key="ApplyCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="SetUpCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 </ResourceDictionary>

@@ -21,50 +21,50 @@ namespace SophiApp.Contracts.Services
         void CloseAndFlush();
 
         /// <summary>
-        /// Write <see cref="OsProperties"/> data to log.
+        /// Write <see cref="OsProperties"/> data in the log.
         /// </summary>
         /// <param name="properties">Encapsulates OS properties.</param>
         void LogOsProperties(OsProperties properties);
 
         /// <summary>
-        /// Write app properties to log.
+        /// Write app properties in the log.
         /// </summary>
         /// <param name="version">App version.</param>
         /// <param name="directory">App work directory.</param>
         void LogAppProperties(Version version, string directory);
 
         /// <summary>
-        /// Write result of Internet access check to log.
+        /// Write result of Internet access check in the log.
         /// </summary>
         /// <param name="isOnline">Result of Internet access check.</param>
         void LogIsOnline(bool isOnline);
 
         /// <summary>
-        /// Write the page navigation to log.
+        /// Write the page navigation in the log.
         /// </summary>
         /// <param name="name">The name of the page are navigating to.</param>
         void LogNavigateToPage(string name);
 
         /// <summary>
-        /// Write the app theme change to log.
+        /// Write the app theme change in the log.
         /// </summary>
         /// <param name="theme">Specifies a app UI theme.</param>
         void LogChangeTheme(ElementTheme theme);
 
         /// <summary>
-        /// Write the opened url to log.
+        /// Write the opened url in the log.
         /// </summary>
         /// <param name="url">Openable url.</param>
         void LogOpenedUrl(string url);
 
         /// <summary>
-        /// Write the bitness of the os to log.
+        /// Write the bitness of the os in the log.
         /// </summary>
         /// <param name="is64BitOs">Indicates whether the os is 64 bit.</param>
         void LogOsBitness(bool is64BitOs);
 
         /// <summary>
-        /// Write the WMI state to log.
+        /// Write the WMI state in the log.
         /// </summary>
         /// <param name="serviceState">The WMI service state.</param>
         /// <param name="repositoryState">The WMI repository state.</param>
@@ -72,44 +72,76 @@ namespace SophiApp.Contracts.Services
         void LogWmiState(ServiceControllerStatus serviceState, string repositoryState, bool repositoryIsConsistent);
 
         /// <summary>
-        /// Write the detected malware to log.
+        /// Write the detected malware in the log.
         /// </summary>
         /// <param name="name">Malware name.</param>
         void LogMalwareDetected(string name);
 
         /// <summary>
-        /// Write the available version of the app to log.
+        /// Write the available version of the app in the log.
         /// </summary>
         /// <param name="version">Available app version.</param>
         void LogAppUpdate(Version version);
 
         /// <summary>
-        /// Write number of models built to log.
+        /// Write number of models built in the log.
         /// </summary>
         /// <param name="count">Number of models built.</param>
         void LogBuildModels(int count);
 
         /// <summary>
-        /// Write the start of all models state to log.
+        /// Write the start of all models state in the log.
         /// </summary>
         void LogStartAllModelGetState();
 
         /// <summary>
-        /// Write the completion of all models state to log.
+        /// Write the spent time taken by all models to set the state in the log.
         /// </summary>
         /// <param name="timer">Get models state spent time.</param>
         /// <param name="count">Number of models.</param>
-        void LogAllModelGetStateCompleted(Stopwatch timer, int count);
+        void LogAllModelsGetState(Stopwatch timer, int count);
 
         /// <summary>
-        /// Write the completion of one model state to log.
+        /// Write the spent time taken by one model to set the state in the log.
         /// </summary>
         /// <param name="name">The model name.</param>
         /// <param name="timer">Get model state spent time.</param>
-        void LogModelGetStateCompleted(string name, Stopwatch timer);
+        void LogModelGetState(string name, Stopwatch timer);
 
         /// <summary>
-        /// Write <see cref="RequirementsFailure"/> reason in the <see cref="IRequirementsService"/> to log.
+        /// Write the state of the model in the log.
+        /// </summary>
+        /// <typeparam name="T">Type of model state.</typeparam>
+        /// <param name="name">The model name.</param>
+        /// <param name="state">The model state.</param>
+        void LogModelState<T>(string name, T state);
+
+        /// <summary>
+        /// Write the completion of one model refresh state in the log.
+        /// </summary>
+        /// <param name="name">The model name.</param>
+        /// <param name="timer">Get model state spent time.</param>
+        void LogModelRefreshState(string name, Stopwatch timer);
+
+        /// <summary>
+        /// Write information about the deletion of all models in the applied collection in the log.
+        /// </summary>
+        void LogApplicableModelsClear();
+
+        /// <summary>
+        /// Write information about deleting a model from the applied collection in the log.
+        /// </summary>
+        /// <param name="name">Deleted model name.</param>
+        void LogApplicableModelRemoved(string name);
+
+        /// <summary>
+        /// Write information about adding a model to the applied collection in the log.
+        /// </summary>
+        /// <param name="name">Added model name.</param>
+        void LogApplicableModelAdded(string name);
+
+        /// <summary>
+        /// Write <see cref="RequirementsFailure"/> reason in the <see cref="IRequirementsService"/> in the log.
         /// </summary>
         /// <param name="failure">A failure reason.</param>
         void LogNavigateToRequirementsFailure(RequirementsFailure failure);

@@ -11,15 +11,16 @@ namespace SophiApp.Services
     public class UriService : IUriService
     {
         /// <inheritdoc/>
-        public Task OpenUrlAsync(string url)
+        public async Task OpenUrlAsync(string url)
         {
-            if (string.IsNullOrWhiteSpace(url))
+            await Task.Run(() =>
             {
-                return Task.CompletedTask;
-            }
-
-            App.Logger.LogOpenedUrl(url);
-            return Task.FromResult(Process.Start("explorer.exe", url));
+                if (!string.IsNullOrWhiteSpace(url))
+                {
+                    Process.Start("explorer.exe", url);
+                    App.Logger.LogOpenedUrl(url);
+                }
+            });
         }
     }
 }
