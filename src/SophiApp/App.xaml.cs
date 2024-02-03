@@ -39,6 +39,7 @@ public partial class App : Application
                 _ = services.AddSingleton<IInitializeService, InitializeService>();
                 _ = services.AddSingleton<IModelService, ModelService>();
                 _ = services.AddSingleton<INavigationService, NavigationService>();
+                _ = services.AddSingleton<IOsService, OsService>();
                 _ = services.AddSingleton<IPageService, PageService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
                 _ = services.AddSingleton<IThemesService, ThemesService>();

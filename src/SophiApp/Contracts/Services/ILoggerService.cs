@@ -95,26 +95,51 @@ namespace SophiApp.Contracts.Services
         void LogStartAllModelGetState();
 
         /// <summary>
-        /// Write the spent time taken by all models to set the state in the log.
+        /// Write the start all models set state in applicable models collection in the log.
         /// </summary>
-        /// <param name="timer">Get models state spent time.</param>
+        void LogStartApplicableModelsSetState();
+
+        /// <summary>
+        /// Write the spent time taken by all models to get the state in the log.
+        /// </summary>
+        /// <param name="timer">Models get state spent time.</param>
         /// <param name="count">Number of models.</param>
         void LogAllModelsGetState(Stopwatch timer, int count);
+
+        /// <summary>
+        /// Write the spent time taken by all models to set the state in the log.
+        /// </summary>
+        /// <param name="timer">Models set state spent time.</param>
+        /// <param name="count">Number of models.</param>
+        void LogAllModelsSetState(Stopwatch timer, int count);
+
+        /// <summary>
+        /// Write the cancel models set state in applicable models collection in the log.
+        /// </summary>
+        void LogAllModelsSetStateCanceled();
+
+        /// <summary>
+        /// Write the spent time taken by one model to get the state in the log.
+        /// </summary>
+        /// <param name="name">The model name.</param>
+        /// <param name="timer">Model get state spent time.</param>
+        void LogModelGetState(string name, Stopwatch timer);
 
         /// <summary>
         /// Write the spent time taken by one model to set the state in the log.
         /// </summary>
         /// <param name="name">The model name.</param>
-        /// <param name="timer">Get model state spent time.</param>
-        void LogModelGetState(string name, Stopwatch timer);
+        /// <param name="timer">Model set state spent time.</param>
+        void LogModelSetState(string name, Stopwatch timer);
 
         /// <summary>
-        /// Write the state of the model in the log.
+        /// Write the model state changed to the log.
         /// </summary>
         /// <typeparam name="T">Type of model state.</typeparam>
         /// <param name="name">The model name.</param>
         /// <param name="state">The model state.</param>
-        void LogModelState<T>(string name, T state);
+        void LogModelState<T>(string name, T state)
+            where T : struct;
 
         /// <summary>
         /// Write the completion of one model refresh state in the log.
@@ -237,5 +262,15 @@ namespace SophiApp.Contracts.Services
         /// <param name="name">Model name.</param>
         /// <param name="exception">Represents errors that occur during app executing.</param>
         void LogModelGetStateException(string name, Exception exception);
+
+        /// <summary>
+        /// Handles an exception when accessing to set UI model state.
+        /// </summary>
+        /// <typeparam name="T">Type of model parameter.</typeparam>
+        /// <param name="exception">Represents errors that occur during app executing.</param>
+        /// <param name="name">Model name.</param>
+        /// <param name="parameter">Model parameter.</param>
+        void LogModelSetStateException<T>(Exception exception, string name, T parameter)
+            where T : struct;
     }
 }

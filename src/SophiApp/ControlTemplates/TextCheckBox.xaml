@@ -11,7 +11,7 @@
     xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
     xmlns:converters="using:SophiApp.Converters"
     mc:Ignorable="d"
-    IsEnabled="{Binding IsEnabled}">
+    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}">
     <interactivity:Interaction.Behaviors>
         <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
             <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
@@ -45,7 +45,7 @@
             </StackPanel>
             <CheckBox Grid.Column="1"
                       Style="{StaticResource UIControlCheckBoxStyle}"
-                      IsChecked="{Binding IsChecked}"
+                      IsChecked="{Binding IsChecked, Mode=TwoWay}"
                       Command="{Binding Command, ElementName=TextCheckBoxControl}"
                       CommandParameter="{Binding}"/>
         </Grid>

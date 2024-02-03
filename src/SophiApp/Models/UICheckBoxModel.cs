@@ -33,14 +33,15 @@ namespace SophiApp.Models
         public string Description { get; init; }
 
         /// <summary>
-        /// Gets a value indicating whether model checked state.
+        /// Gets or sets a value indicating whether model checked state.
         /// </summary>
         public bool IsChecked
         {
             get => isChecked;
-            private set
+            set
             {
                 isChecked = value;
+                App.Logger.LogModelState(Name, IsChecked);
                 OnPropertyChanged();
             }
         }
@@ -51,7 +52,6 @@ namespace SophiApp.Models
             try
             {
                 IsChecked = accessor.Invoke();
-                App.Logger.LogModelState(Name, IsChecked);
 
                 // TODO: For debug only!
                 Thread.Sleep(1000);
@@ -60,6 +60,23 @@ namespace SophiApp.Models
             {
                 IsEnabled = false;
                 App.Logger.LogModelGetStateException(Name, ex);
+            }
+        }
+
+        /// <inheritdoc/>
+        public override void SetState()
+        {
+            try
+            {
+                mutator.Invoke(IsChecked);
+
+                // TODO: For debug only!
+                Thread.Sleep(1000);
+            }
+            catch (Exception ex)
+            {
+                IsEnabled = false;
+                App.Logger.LogModelSetStateException(ex, Name, IsChecked);
             }
         }
     }

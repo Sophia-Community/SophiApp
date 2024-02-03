@@ -14,32 +14,32 @@ namespace SophiApp.Services
     public class CommonDataService : ICommonDataService
     {
         /// <summary>
-        /// Gets discord text.
+        /// Gets Discord text.
         /// </summary>
         public const string DiscordText = "Discord";
 
         /// <summary>
-        /// Gets github text.
+        /// Gets GitHub text.
         /// </summary>
         public const string GitHubText = "GitHub";
 
         /// <summary>
-        /// Gets telegram text.
+        /// Gets Telegram text.
         /// </summary>
         public const string TelegramText = "Telegram";
 
         /// <summary>
-        /// Gets app discord link.
+        /// Gets app Discord link.
         /// </summary>
         public const string DiscordLink = "https://discord.gg/sSryhaEv79";
 
         /// <summary>
-        /// Gets app github link.
+        /// Gets app GitHub link.
         /// </summary>
         public const string GitHubLink = "https://github.com/Sophia-Community/SophiApp";
 
         /// <summary>
-        /// Gets app telegram link.
+        /// Gets app Telegram link.
         /// </summary>
         public const string TelegramLink = "https://t.me/sophia_chat";
 
@@ -71,7 +71,7 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets app tester name.
         /// </summary>
-        public const string AppTesterName = "Eugene \"lowlif3\" Zabronsky";
+        public const string AppTesterName = "Yevhenii \"lowlif3\" Zabronskyi";
 
 #pragma warning disable S1075 // URIs should not be hardcoded
 

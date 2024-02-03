@@ -54,5 +54,11 @@ namespace SophiApp.Models
                 App.Logger.LogModelGetStateException(Name, ex);
             }
         }
+
+        /// <inheritdoc/>
+        public override void SetState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

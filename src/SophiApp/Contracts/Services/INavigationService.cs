@@ -33,9 +33,9 @@ public interface INavigationService
     }
 
     /// <summary>
-    /// Gets name of last VM used in <see cref="NavigateTo(string, object?, bool, bool)"/>.
+    /// Gets name of last View Model used in <see cref="NavigateTo(string, object?, bool, bool)"/>.
     /// </summary>
-    string LastVmUsed
+    string LastUsedViewModel
     {
         get;
     }

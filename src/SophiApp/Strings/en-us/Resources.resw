@@ -428,10 +428,13 @@
   <data name="OsRequirementsFailure_MsDefender_Wscsvc_Stopped" xml:space="preserve">
     <value>Служба Центр обеспечения безопасности is not running</value>
   </data>
-  <data name="Panel_ApplyCustomizations_ApplyChanges.Text" xml:space="preserve">
+  <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
     <value>Apply changes?</value>
   </data>
   <data name="Button_Cancel.Content" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Panel_SetupCustomizations_Applying" xml:space="preserve">
+    <value>Applying customization(s)</value>
   </data>
 </root>

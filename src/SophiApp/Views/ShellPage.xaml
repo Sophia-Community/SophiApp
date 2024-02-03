@@ -170,7 +170,7 @@
                            HorizontalAlignment="Left"
                            Margin="15, 0, 0, 0"/>
 
-                    <TextBlock x:Uid="Panel_ApplyCustomizations_ApplyChanges"
+                    <TextBlock x:Uid="Panel_ApplyCustomizations_Apply"
                                Style="{StaticResource ApplyCustomizationsTextStyle}"
                                Foreground="{ThemeResource ApplyCustomizationsPanelForeground}"
                                Margin="46, 0, 0, 1"/>
@@ -178,7 +178,8 @@
                     <Button x:Uid="Button_Apply"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
-                            Margin="0, 0, 150, 0"/>
+                            Margin="0, 0, 150, 0"
+                            Command="{x:Bind ViewModel.ApplicableModelsApply_Command, Mode=OneWay}"/>
 
                     <Button x:Uid="Button_Cancel"
                             VerticalAlignment="Center"
@@ -195,8 +196,7 @@
                         </interaction:DataTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </Grid>
-
-                <Grid x:Name="Panel_SetUpCustomizations"
+                <Grid x:Name="Panel_SetupCustomizations"
                       Background="{StaticResource SetUpCustomizationsPanelBackground}"
                       Grid.Row="1"
                       Height="50">
@@ -236,7 +236,8 @@
                             Grid.Column="2"
                             Margin="0, 0, 15, 0"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Right"/>
+                            HorizontalAlignment="Right"
+                            Command="{x:Bind ViewModel.ApplicableModelsCancel_Command, Mode=OneWay}"/>
                     <i:Interaction.Behaviors>
                         <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.SetUpCustomizationsPanelIsVisible, Mode=OneWay}" ComparisonCondition="Equal" Value="False">
                             <interaction:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>
@@ -252,7 +253,6 @@
                         </interaction:DataTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </Grid>
-
             </Grid>
         </NavigationView>
     </Grid>

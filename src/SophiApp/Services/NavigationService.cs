@@ -57,7 +57,7 @@ public class NavigationService : INavigationService
     public bool CanGoBack => Frame != null && Frame.CanGoBack;
 
     /// <inheritdoc/>
-    public string LastVmUsed { get; private set; } = string.Empty;
+    public string LastUsedViewModel { get; private set; } = string.Empty;
 
     /// <inheritdoc/>
     public bool GoBack()
@@ -80,7 +80,7 @@ public class NavigationService : INavigationService
     /// <inheritdoc/>
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, bool ignorePageType = false)
     {
-        LastVmUsed = pageKey;
+        LastUsedViewModel = pageKey;
         var pageType = pageService.GetPageType(pageKey);
 
         if (frame != null && (ignorePageType || frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(lastParameterUsed))))

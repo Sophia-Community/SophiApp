@@ -5,7 +5,6 @@
 namespace SophiApp.Contracts.Services
 {
     using System.Collections.Concurrent;
-    using System.Collections.ObjectModel;
     using SophiApp.Models;
 
     /// <summary>
@@ -25,9 +24,18 @@ namespace SophiApp.Contracts.Services
         Task GetStateAsync(ConcurrentBag<UIModel> models);
 
         /// <summary>
-        /// Using another thread get the models state.
+        /// Using multiple threads to get the models state.
         /// </summary>
-        /// <param name="models"><see cref="UIModel"/> collection.</param>
-        Task GetStateAsync(ObservableCollection<UIModel> models);
+        /// <param name="enumerable"><see cref="UIModel"/> collection.</param>
+        /// <param name="getStateCallback">Action to be performed after invoke get state of each model.</param>
+        Task GetStateAsync(IEnumerable<UIModel> enumerable, Action getStateCallback);
+
+        /// <summary>
+        /// Using multiple threads to set the models state.
+        /// </summary>
+        /// <param name="enumerable"><see cref="UIModel"/> collection.</param>
+        /// <param name="setStateCallback">Action to be performed after invoke set state of each model.</param>
+        /// <param name="token">Propagates notification that operations should be canceled.</param>
+        Task SetStateAsync(IEnumerable<UIModel> enumerable, Action setStateCallback, CancellationToken token);
     }
 }

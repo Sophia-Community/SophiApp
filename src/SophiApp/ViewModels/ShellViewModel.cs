@@ -53,6 +53,8 @@ public partial class ShellViewModel : ObservableRecipient
     [ObservableProperty]
     private int progressBarValue = 0;
 
+    private CancellationTokenSource cancellationTokenSource = new ();
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
     /// </summary>
@@ -83,13 +85,25 @@ public partial class ShellViewModel : ObservableRecipient
         this.modelService = modelService;
 
         ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
+        ApplicableModelsApply_Command = new AsyncRelayCommand(ApplicableModelsApplyAsync);
+        ApplicableModelsCancel_Command = new RelayCommand(ApplicableModelsCancel);
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
     }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to click an "Cancel" button in the "Apply Customizations" panel.
+    /// Gets <see cref="IAsyncRelayCommand"/> to click an "Cancel" button in the "Apply Customizations" panel.
     /// </summary>
     public IAsyncRelayCommand ApplicableModelsClear_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IAsyncRelayCommand"/> to click an "Apply" button in the "Apply Customizations" panel.
+    /// </summary>
+    public IAsyncRelayCommand ApplicableModelsApply_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="RelayCommand"/> to click an "Cancel" button in the "Setup Customizations" panel.
+    /// </summary>
+    public RelayCommand ApplicableModelsCancel_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to click an element in the interface.
@@ -229,47 +243,54 @@ public partial class ShellViewModel : ObservableRecipient
 
     private async Task ApplicableModelsClearAsync()
     {
-        await Task.Run(() =>
-        {
-            _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
-            {
-                NavigationViewHitTestVisible = false;
-                ProgressBarValue = 0;
-                SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
-                SetUpCustomizationsPanelCancelButtonIsVisible = false;
-                SetUpCustomizationsPanelIsVisible = true;
-            });
+        NavigationViewHitTestVisible = false;
+        ProgressBarValue = 0;
+        SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
+        SetUpCustomizationsPanelCancelButtonIsVisible = false;
+        SetUpCustomizationsPanelIsVisible = true;
+        var callback = new Action(() => App.MainWindow.DispatcherQueue.TryEnqueue(() => ProgressBarValue = ProgressBarValue.Increase(ApplicableModels.Count)));
+        await modelService.GetStateAsync(ApplicableModels, callback);
+        ApplicableModels.Clear();
+        App.Logger.LogApplicableModelsClear();
+        SetUpCustomizationsPanelIsVisible = false;
+        NavigationViewHitTestVisible = true;
+    }
 
-            ApplicableModels.ForEach(model =>
-            {
-                var timer = Stopwatch.StartNew();
-                model.GetState();
-                timer.Stop();
-                App.Logger.LogModelRefreshState(model.Name, timer);
-                _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => ProgressBarValue = ProgressBarValue.Increase(ApplicableModels.Count));
-            });
+    private async Task ApplicableModelsApplyAsync()
+    {
+        NavigationViewHitTestVisible = false;
+        ProgressBarValue = 0;
+        SetUpCustomizationsPanelText = "Panel_SetupCustomizations_Applying".GetLocalized();
+        SetUpCustomizationsPanelCancelButtonIsVisible = true;
+        SetUpCustomizationsPanelIsVisible = true;
+        var callback = new Action(() => App.MainWindow.DispatcherQueue.TryEnqueue(() => ProgressBarValue = ProgressBarValue.Increase(ApplicableModels.Count)));
+        await modelService.SetStateAsync(ApplicableModels, callback, cancellationTokenSource.Token);
+        ProgressBarValue = 0;
+        SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
+        SetUpCustomizationsPanelCancelButtonIsVisible = false;
+        await modelService.GetStateAsync(ApplicableModels, callback);
+        ApplicableModels.Clear();
+        App.Logger.LogApplicableModelsClear();
+        SetUpCustomizationsPanelIsVisible = false;
+        NavigationViewHitTestVisible = true;
+    }
 
-            _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
-            {
-                ApplicableModels.Clear();
-                App.Logger.LogApplicableModelsClear();
-                SetUpCustomizationsPanelIsVisible = false;
-                NavigationService.NavigateTo(pageKey: NavigationService.LastVmUsed, ignorePageType: true);
-                NavigationViewHitTestVisible = true;
-            });
-        });
+    private void ApplicableModelsCancel()
+    {
+        SetUpCustomizationsPanelCancelButtonIsVisible = false;
+        cancellationTokenSource.Cancel();
     }
 
     private void UIModelClicked(UIModel model)
     {
-        if (applicableModels.Contains(model))
+        if (ApplicableModels.Contains(model))
         {
-            applicableModels.Remove(model);
+            ApplicableModels.Remove(model);
             App.Logger.LogApplicableModelRemoved(model.Name);
             return;
         }
 
-        applicableModels.Add(model);
+        ApplicableModels.Add(model);
         App.Logger.LogApplicableModelAdded(model.Name);
     }
 }

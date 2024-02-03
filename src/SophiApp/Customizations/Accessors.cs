@@ -23,9 +23,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool DiagTrackService()
         {
-            var diagService = new ServiceController("DiagTrack");
-            var diagFwRule = FirewallService.GetGroupRules("DiagTrack").First();
-            return diagService.StartType == ServiceStartMode.Automatic && diagFwRule.Enabled && diagFwRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+            var diagTrackService = new ServiceController("DiagTrack");
+            var firewallRule = FirewallService.GetGroupRules("DiagTrack").First();
+            return diagTrackService.StartType == ServiceStartMode.Automatic && firewallRule.Enabled && firewallRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
         }
 
         /// <summary>
@@ -44,8 +44,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ErrorReporting()
         {
-            var taskPath = "Microsoft\\Windows\\Windows Error Reporting\\QueueReporting";
-            var reportingTask = TaskService.Instance.GetTask(taskPath) ?? throw new InvalidOperationException($"Failed to find a scheduled task");
+            var reportingTask = TaskService.Instance.GetTask("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a scheduled task");
             var reportingRegistryValue = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting")?.GetValue("Disabled") as int? ?? -1;
             var reportingServiceStartType = new ServiceController("WerSvc").StartType;
             return reportingTask.State == TaskState.Disabled && reportingRegistryValue.Equals(1) && reportingServiceStartType == ServiceStartMode.Disabled;

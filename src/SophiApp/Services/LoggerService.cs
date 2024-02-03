@@ -36,6 +36,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void CloseAndFlush()
         {
+            Log.Information("The app has been closed");
             Log.CloseAndFlush();
         }
 
@@ -49,7 +50,7 @@ namespace SophiApp.Services
             Log.Information("User name: {Name}", Environment.UserName);
             Log.Information("User culture: {Culture}", CultureInfo.CurrentCulture.EnglishName);
             Log.Information("User region: {Region}", RegionInfo.CurrentRegion.EnglishName);
-            Log.Information("User data: {DateTime}", DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"));
+            Log.Information("User date and time: {DateTime}", DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"));
             Log.Information("User time zone: {TimeZone}", TimeZoneInfo.Local.DisplayName);
         }
 
@@ -119,13 +120,31 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogStartAllModelGetState()
         {
-            Log.Information("Service {Service} has started get models state", nameof(IModelService));
+            Log.Warning("Service {Service} has started get models state", nameof(IModelService));
+        }
+
+        /// <inheritdoc/>
+        public void LogStartApplicableModelsSetState()
+        {
+            Log.Warning("Service {Service} has started set model(s) state in the applicable models collection", nameof(IModelService));
         }
 
         /// <inheritdoc/>
         public void LogAllModelsGetState(Stopwatch timer, int count)
         {
-            Log.Information("Service {Service} took time to get {Count} models state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
+            Log.Warning("Service {Service} took time to get {Count} model(s) state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
+        }
+
+        /// <inheritdoc/>
+        public void LogAllModelsSetState(Stopwatch timer, int count)
+        {
+            Log.Warning("Service {Service} took time to set {Count} model(s) state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
+        }
+
+        /// <inheritdoc/>
+        public void LogAllModelsSetStateCanceled()
+        {
+            Log.Warning("Service {Service} has cancel set model(s) state in the applicable models collection", nameof(IModelService));
         }
 
         /// <inheritdoc/>
@@ -135,15 +154,22 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogModelState<T>(string name, T state)
+        public void LogModelSetState(string name, Stopwatch timer)
         {
-            Log.Information("Model {Name} has set the state to: {State}", name, state);
+            Log.Information("Model {Name} took time to set state: {TimeSpent}", name, timer.Elapsed);
+        }
+
+        /// <inheritdoc/>
+        public void LogModelState<T>(string name, T state)
+            where T : struct
+        {
+            Log.Information("Model {Name} state: {State}", name, state);
         }
 
         /// <inheritdoc/>
         public void LogModelRefreshState(string name, Stopwatch timer)
         {
-            Log.Information("Model {Name} took time to refresh state: {TimeSpent}", name, timer.Elapsed);
+            Log.Warning("Model {Name} took time to refresh state: {TimeSpent}", name, timer.Elapsed);
         }
 
         /// <inheritdoc/>
@@ -258,6 +284,13 @@ namespace SophiApp.Services
         public void LogModelGetStateException(string name, Exception exception)
         {
             Log.Error(exception, "An error occurred while get state in the model: {Model}", name);
+        }
+
+        /// <inheritdoc/>
+        public void LogModelSetStateException<T>(Exception exception, string name, T parameter)
+            where T : struct
+        {
+            Log.Error(exception, "An error occurred while set state in the model: {Model} with parameter: {Parameter}", name, parameter);
         }
     }
 }

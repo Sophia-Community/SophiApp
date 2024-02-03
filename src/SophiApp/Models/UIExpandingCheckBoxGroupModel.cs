@@ -36,5 +36,11 @@ namespace SophiApp.Models
         {
             Items.ForEach(item => item.GetState());
         }
+
+        /// <inheritdoc/>
+        public override void SetState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
