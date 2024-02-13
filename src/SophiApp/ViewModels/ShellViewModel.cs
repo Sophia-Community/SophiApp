@@ -13,7 +13,7 @@ using SophiApp.Helpers;
 using SophiApp.Models;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.Threading;
 
 /// <summary>
 /// Implements the <see cref="ShellViewModel"/> class.
@@ -53,7 +53,7 @@ public partial class ShellViewModel : ObservableRecipient
     [ObservableProperty]
     private int progressBarValue = 0;
 
-    private CancellationTokenSource cancellationTokenSource = new ();
+    private CancellationTokenSource? cancellationTokenSource;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
@@ -263,8 +263,10 @@ public partial class ShellViewModel : ObservableRecipient
         SetUpCustomizationsPanelText = "Panel_SetupCustomizations_Applying".GetLocalized();
         SetUpCustomizationsPanelCancelButtonIsVisible = true;
         SetUpCustomizationsPanelIsVisible = true;
+        cancellationTokenSource = new CancellationTokenSource();
         var callback = new Action(() => App.MainWindow.DispatcherQueue.TryEnqueue(() => ProgressBarValue = ProgressBarValue.Increase(ApplicableModels.Count)));
         await modelService.SetStateAsync(ApplicableModels, callback, cancellationTokenSource.Token);
+        cancellationTokenSource.Dispose();
         ProgressBarValue = 0;
         SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
         SetUpCustomizationsPanelCancelButtonIsVisible = false;
@@ -278,7 +280,7 @@ public partial class ShellViewModel : ObservableRecipient
     private void ApplicableModelsCancel()
     {
         SetUpCustomizationsPanelCancelButtonIsVisible = false;
-        cancellationTokenSource.Cancel();
+        cancellationTokenSource?.Cancel();
     }
 
     private void UIModelClicked(UIModel model)

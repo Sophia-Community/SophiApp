@@ -17,9 +17,9 @@ namespace SophiApp.Extensions
         /// Invoke the string as a cmd command.
         /// </summary>
         /// <param name="command">String command to be executed.</param>
-        public static string InvokeAsCmd(this string command)
+        public static Process InvokeAsCmd(this string command)
         {
-            using var process = new Process();
+            var process = new Process();
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
@@ -27,19 +27,7 @@ namespace SophiApp.Extensions
             process.StartInfo.Arguments = $"/c {command}";
             _ = process.Start();
             process.WaitForExit();
-            var result = process.StandardOutput.ReadToEnd();
-            return result;
-        }
-
-        /// <summary>
-        /// Invoke the string as a PowerShell script.
-        /// </summary>
-        /// <param name="script">String to be executed.</param>
-        public static Collection<PSObject> InvokeAsPowerShell(this string script)
-        {
-            // TODO: Who is use this method?
-            using var ps = PowerShell.Create().AddScript(script);
-            return ps.Invoke();
+            return process;
         }
 
         /// <summary>

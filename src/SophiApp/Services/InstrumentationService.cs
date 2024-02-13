@@ -88,22 +88,14 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public string GetUserSidOrDefault(string name)
+        public string GetUserSid(string name)
         {
-            try
-            {
-                using var managementObject = new ManagementObjectSearcher("Select * from Win32_UserAccount")
+            using var managementObject = new ManagementObjectSearcher("Select * from Win32_UserAccount")
                     .Get()
                     .Cast<ManagementObject>()
                     .FirstOrDefault(obj => (string)obj.GetPropertyValue("Name") == name);
 
-                return managementObject?.GetPropertyValue("Sid") as string ?? string.Empty;
-            }
-            catch (Exception ex)
-            {
-                App.Logger.LogUserSidException(ex);
-                return string.Empty;
-            }
+            return managementObject?.GetPropertyValue("Sid") as string ?? throw new InvalidOperationException($"Failed to obtain user SID API in the {nameof(IInstrumentationService)}");
         }
     }
 }

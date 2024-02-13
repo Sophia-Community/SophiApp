@@ -46,6 +46,9 @@ namespace SophiApp.Services
         public Result GetOsBitness()
         {
             App.Logger.LogOsBitness(Environment.Is64BitOperatingSystem);
+
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             return Environment.Is64BitOperatingSystem ? Result.Success() : Result.Failure(nameof(RequirementsFailure.Is32BitOs));
         }
 
@@ -55,16 +58,19 @@ namespace SophiApp.Services
             try
             {
                 var wmiService = new ServiceController("Winmgmt");
-                var repoState = "chcp 437 | winmgmt /verifyrepository".InvokeAsCmd().Replace("\n", null);
+                using var verifyRepository = "winmgmt /verifyrepository".InvokeAsCmd();
                 var serviceIsRun = wmiService.Status == ServiceControllerStatus.Running;
-                var repoIsConsistent = repoState.Equals("WMI repository is consistent");
+                var repoIsConsistent = verifyRepository.ExitCode.Equals(0);
                 var osPropertiesIsCorrect = commonDataService.OsProperties.BuildNumber != -1;
-                App.Logger.LogWmiState(serviceState: wmiService.Status, repositoryState: repoState, repositoryIsConsistent: repoIsConsistent);
+                App.Logger.LogWMIState(wmiService.Status, verifyRepository.ExitCode, repoIsConsistent);
+
+                // TODO: For debug only !!!
+                Thread.Sleep(1500);
                 return osPropertiesIsCorrect && serviceIsRun && repoIsConsistent ? Result.Success() : Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
             catch (Exception ex)
             {
-                App.Logger.LogWmiStateException(ex);
+                App.Logger.LogWMIStateException(ex);
                 return Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
         }
@@ -72,8 +78,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetOsVersion()
         {
-#pragma warning disable S2589 // Boolean expressions should not be gratuitous
-
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             return commonDataService.OsProperties.BuildNumber switch
             {
                 var build when commonDataService.IsWindows11 && build < 22631 => Result.Failure(nameof(RequirementsFailure.Win11BuildLess22631)),
@@ -83,13 +89,13 @@ namespace SophiApp.Services
                 var build when !commonDataService.IsWindows11 && build.Equals(19045) && commonDataService.OsProperties.UpdateBuildRevision < 3448 => Result.Failure(nameof(RequirementsFailure.Win10UpdateBuildRevisionLess3448)),
                 _ => Result.Success()
             };
-
-#pragma warning restore S2589 // Boolean expressions should not be gratuitous
         }
 
         /// <inheritdoc/>
         public Result AppRunFromLoggedUser()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             var currentUserName = WindowsIdentity.GetCurrent().Name.Split('\\')[1];
             var loggedUserProcess = Array.Find(array: Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(Process.GetCurrentProcess().SessionId));
             return instrumentationService.GetProcessOwnerOrDefault(loggedUserProcess).Equals(currentUserName) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.RunByNotLoggedUser));
@@ -98,6 +104,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result MalwareDetection()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var programData = Environment.ExpandEnvironmentVariables("%ProgramData%");
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
@@ -176,12 +184,16 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetFeatureExperiencePackState()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             return appxPackagesService.PackageExist("MicrosoftWindows.Client.CBS") ? Result.Success() : Result.Failure(nameof(RequirementsFailure.FeatureExperiencePackRemoved));
         }
 
         /// <inheritdoc/>
         public Result GetPendingRebootState()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             var rebootParameters = new List<Func<bool>>()
             {
                 () => Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\RebootPending") is not null,
@@ -197,6 +209,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result AppUpdateDetection()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             if (commonDataService.IsOnline)
             {
                 try
@@ -224,6 +238,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderFilesExist()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             var system32Folder = Environment.GetFolderPath(Environment.SpecialFolder.System);
             var files = new List<string>()
             {
@@ -248,6 +264,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderServicesState()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             var stoppedService = string.Empty;
             var services = new List<string>() { "Windefend", "SecurityHealthService", "Wscsvc" };
 
@@ -280,6 +298,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderState()
         {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
             var isEnterpriseG = commonDataService.OsProperties.Edition.Contains("EnterpriseG", StringComparison.InvariantCultureIgnoreCase);
             var msDefenderProductState = instrumentationService.GetAntivirusProductsOrDefault().Find(product => product.GetPropertyValue("instanceGuid")
             .Equals("{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}"))?.GetPropertyValue("productState");

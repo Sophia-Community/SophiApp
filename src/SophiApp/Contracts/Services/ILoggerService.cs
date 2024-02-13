@@ -67,9 +67,9 @@ namespace SophiApp.Contracts.Services
         /// Write the WMI state in the log.
         /// </summary>
         /// <param name="serviceState">The WMI service state.</param>
-        /// <param name="repositoryState">The WMI repository state.</param>
+        /// <param name="repositoryExitCode">The verify WMI repository exit code.</param>
         /// <param name="repositoryIsConsistent">The WMI repository is consistent.</param>
-        void LogWmiState(ServiceControllerStatus serviceState, string repositoryState, bool repositoryIsConsistent);
+        void LogWMIState(ServiceControllerStatus serviceState, int repositoryExitCode, bool repositoryIsConsistent);
 
         /// <summary>
         /// Write the detected malware in the log.
@@ -196,12 +196,6 @@ namespace SophiApp.Contracts.Services
         void LogAntivirusProductsException(Exception exception);
 
         /// <summary>
-        /// Handles an exception when accessing to user SID API in the <see cref="IInstrumentationService"/>.
-        /// </summary>
-        /// <param name="exception">Represents errors that occur during app executing.</param>
-        void LogUserSidException(Exception exception);
-
-        /// <summary>
         /// Handles an unhandled exception occur during app executing.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>
@@ -229,7 +223,7 @@ namespace SophiApp.Contracts.Services
         /// Handles an exception when accessing to WMI API in the <see cref="IRequirementsService"/>.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>
-        void LogWmiStateException(Exception exception);
+        void LogWMIStateException(Exception exception);
 
         /// <summary>
         /// Handles an exception when accessing to app update in the <see cref="IRequirementsService"/>.

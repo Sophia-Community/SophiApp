@@ -13,14 +13,10 @@ namespace SophiApp.Converters
     {
         /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return (string)value == string.Empty ? Visibility.Collapsed : Visibility.Visible;
-        }
+            => (string)value == string.Empty ? Visibility.Collapsed : Visibility.Visible;
 
         /// <inheritdoc/>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            return DependencyProperty.UnsetValue;
-        }
+            => DependencyProperty.UnsetValue;
     }
 }

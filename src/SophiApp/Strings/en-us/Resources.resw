@@ -258,7 +258,7 @@
     <value>Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.</value>
   </data>
   <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
-    <value>Windows may display a "Let's finish setting up your device" prompt occasionally that displays additional services that user may set up.</value>
+    <value>Whats New In Windows function description here.</value>
   </data>
   <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
     <value>Windows may open a pop-up window to show you what's new about the operating system.</value>
@@ -393,7 +393,7 @@
     <value>The OS level of diagnostic data gathering</value>
   </data>
   <data name="UIModel_ErrorReporting_Title" xml:space="preserve">
-    <value>Disable Windows Error Reporting</value>
+    <value>Windows Error Reporting</value>
   </data>
   <data name="UIModel_FeedbackFrequency_Description" xml:space="preserve">
     <value>Choose how often Windows asks for your feedback.</value>
@@ -411,7 +411,7 @@
     <value>Tailored experiences</value>
   </data>
   <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
-    <value>Ways to get the most out of Windows and finish setting up this device</value>
+    <value>Whats New In Windows function title here</value>
   </data>
   <data name="UIModel_WindowsTips_Title" xml:space="preserve">
     <value>Get tip and suggestions when using Windows</value>

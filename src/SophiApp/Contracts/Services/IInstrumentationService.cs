@@ -38,6 +38,6 @@ namespace SophiApp.Contracts.Services
         /// Get user account SID.
         /// </summary>
         /// <param name="name">A user name.</param>
-        string GetUserSidOrDefault(string name);
+        string GetUserSid(string name);
     }
 }

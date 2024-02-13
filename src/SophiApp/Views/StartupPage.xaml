@@ -7,8 +7,7 @@
     mc:Ignorable="d">
 
     <Grid VerticalAlignment="Center"
-          HorizontalAlignment="Center"
-          Margin="0, 0, 0, 90">
+          HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="216"/>
             <RowDefinition Height="Auto"/>

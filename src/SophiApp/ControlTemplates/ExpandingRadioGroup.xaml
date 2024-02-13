@@ -8,8 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:converters="using:SophiApp.Converters"
     mc:Ignorable="d"
-    IsEnabled="{Binding IsEnabled}">
+    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}">
     <interactivity:Interaction.Behaviors>
         <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
             <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
@@ -17,6 +18,7 @@
     </interactivity:Interaction.Behaviors>
 
     <UserControl.Resources>
+        <converters:BoolToInverse x:Key="BoolToInverseConverter"/>
         <DataTemplate x:Key="ExpanderItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -29,15 +31,18 @@
                 <RadioButton Grid.Column="1"
                              VerticalAlignment="Center"
                              GroupName="{Binding GroupName}"
-                             IsChecked="{Binding IsChecked}"/>
+                             IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                             Command="{Binding ViewModel.UIModelClicked_Command}"
+                             CommandParameter="{Binding ParentModel}"
+                             IsHitTestVisible="{Binding IsChecked, Converter={StaticResource BoolToInverseConverter}}"/>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
 
     <Border Style="{StaticResource UIControlBorderStyle}"
-        BorderBrush="{StaticResource UIControlBorderBackground}">
+            BorderBrush="{StaticResource UIControlBorderBackground}">
         <Expander Style="{StaticResource UIControlExpanderStyle}"
-              Background="{ThemeResource UIControlBackground}">
+                  Background="{ThemeResource UIControlBackground}">
             <Expander.Header>
                 <StackPanel>
                     <TextBlock Text="{Binding Title}"

@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:SophiApp.Models"
     xmlns:helpers="using:SophiApp.Helpers"
     xmlns:vm="using:SophiApp.ViewModels"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
     d:DataContext="{d:DesignInstance Type=vm:PrivacyViewModel}"
     mc:Ignorable="d">
 
@@ -20,22 +21,25 @@
         <DataTemplate x:Key="ExpandingRadioGroupTemplate">
             <controls:ExpandingRadioGroup Margin="{StaticResource UIControlsPageRightMargin}"/>
         </DataTemplate>
-        <DataTemplate x:Key="ExpandingCheckBoxGroupTemplate">
-            <controls:ExpandingCheckBoxGroup Margin="{StaticResource UIControlsPageRightMargin}"/>
-        </DataTemplate>
-        <helpers:UIDataTemplateSelector x:Key="UIDataTemplateSelector"/>
     </Page.Resources>
 
-    <ScrollView>
-        <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}">
-            <ItemsRepeater.Layout>
-                <StackLayout Spacing="10"/>
-            </ItemsRepeater.Layout>
-            <ItemsRepeater.ItemTemplate>
-                <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
-                                                ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"
-                                                ExpandingCheckBoxGroup="{StaticResource ExpandingCheckBoxGroupTemplate}"/>
-            </ItemsRepeater.ItemTemplate>
-        </ItemsRepeater>
+    <ScrollView x:Name="PrivacyScrollView">
+        <Grid x:Name="ItemsContainerGrid"
+              IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+            <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}">
+                <ItemsRepeater.Layout>
+                    <StackLayout Spacing="10"/>
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
+                                                    ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </Grid>
+        <i:Interaction.Behaviors>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.ApplicableModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="1">
+                <interaction:CallMethodAction TargetObject="{Binding ElementName=PagePrivacy}" MethodName="CorrectScrollViewPosition"/>
+            </interaction:DataTriggerBehavior>
+        </i:Interaction.Behaviors>
     </ScrollView>
 </Page>

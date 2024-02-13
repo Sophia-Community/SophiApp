@@ -18,7 +18,7 @@ namespace SophiApp.Models
         /// <param name="title">Model title.</param>
         /// <param name="description">Model description.</param>
         /// <param name="accessor">Method that sets the IsEnabled state.</param>
-        /// <param name="mutator">Method that changes OS settings.</param>
+        /// <param name="mutator">Method that changes Windows settings.</param>
         public UICheckBoxModel(UIModelDto dto, string title, string description, Func<bool> accessor, Action<bool> mutator)
             : base(dto, title)
         {
@@ -52,9 +52,6 @@ namespace SophiApp.Models
             try
             {
                 IsChecked = accessor.Invoke();
-
-                // TODO: For debug only!
-                Thread.Sleep(1000);
             }
             catch (Exception ex)
             {

@@ -33,12 +33,12 @@ namespace SophiApp.Helpers
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item)
         {
-            return item.GetType() switch
+            var itemType = item.GetType();
+            return itemType switch
             {
                 var type when type == typeof(UICheckBoxModel) => TextCheckBox,
                 var type when type == typeof(UIExpandingRadioGroupModel) => ExpandingRadioGroup,
-                var type when type == typeof(UIExpandingCheckBoxGroupModel) => ExpandingCheckBoxGroup,
-                _ => TextCheckBox, // TODO: Set throw here.
+                _ => throw new TypeAccessException($"Attempt to access method '{nameof(SelectTemplateCore)}' to type '{itemType}' failed")
             };
         }
 #pragma warning restore CS8618 // Non-nullable property must contain a non-null value when exiting constructor.

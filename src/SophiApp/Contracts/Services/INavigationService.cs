@@ -33,14 +33,6 @@ public interface INavigationService
     }
 
     /// <summary>
-    /// Gets name of last View Model used in <see cref="NavigateTo(string, object?, bool, bool)"/>.
-    /// </summary>
-    string LastUsedViewModel
-    {
-        get;
-    }
-
-    /// <summary>
     /// Navigates to the most recent item in back navigation history.
     /// </summary>
     bool GoBack();

@@ -16,7 +16,7 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class LoggerService : ILoggerService
     {
-        private readonly string logFile = $"{AppContext.BaseDirectory}\\Logs\\SophiApp-{Environment.MachineName.ToUpper()}.log";
+        private readonly string logFile = $"{AppContext.BaseDirectory}\\Log\\SophiApp-{Environment.MachineName.ToUpper()}.log";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoggerService"/> class.
@@ -92,10 +92,10 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogWmiState(ServiceControllerStatus serviceState, string repositoryState, bool repositoryIsConsistent)
+        public void LogWMIState(ServiceControllerStatus serviceState, int repositoryExitCode, bool repositoryIsConsistent)
         {
             Log.Information("WMI service state: {ServiceState}", serviceState);
-            Log.Information("WMI repository state: {RepositoryState}", repositoryState);
+            Log.Information("WMI verify repository exit code: {ExitCode}", repositoryExitCode);
             Log.Information("WMI repository is consistent: {RepositoryIsConsistent}", repositoryIsConsistent);
         }
 
@@ -108,7 +108,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogAppUpdate(Version version)
         {
-            Log.Information("Available app version: {Version}", version);
+            Log.Information("Available new app version: {Version}", version);
         }
 
         /// <inheritdoc/>
@@ -221,12 +221,6 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogUserSidException(Exception exception)
-        {
-            Log.Error(exception, "Failed to obtain user SID API in the {Service}", nameof(IInstrumentationService));
-        }
-
-        /// <inheritdoc/>
         public void LogUnhandledException(Exception exception)
         {
             Log.Fatal(exception, "APP UNHANDLED EXCEPTION");
@@ -251,7 +245,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogWmiStateException(Exception exception)
+        public void LogWMIStateException(Exception exception)
         {
             Log.Error(exception, "Failed to obtain WMI state requirements in the {Service}", nameof(IRequirementsService));
         }

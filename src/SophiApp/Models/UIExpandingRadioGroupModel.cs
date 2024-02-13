@@ -8,6 +8,7 @@ namespace SophiApp.Models
     public class UIExpandingRadioGroupModel : UIModel
     {
         private readonly Func<int> accessor;
+        private readonly Action<int> mutator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UIExpandingRadioGroupModel"/> class.
@@ -16,18 +17,18 @@ namespace SophiApp.Models
         /// <param name="title">Model title.</param>
         /// <param name="description">Model description.</param>
         /// <param name="accessor">Method that sets the model state.</param>
-        /// <param name="items">Model child items.</param>
+        /// <param name="mutator">Method that changes Windows settings.</param>
         public UIExpandingRadioGroupModel(
             UIModelDto dto,
             string title,
             string description,
             Func<int> accessor,
-            List<UIRadioGroupItemModel> items)
+            Action<int> mutator)
             : base(dto, title)
         {
             Description = description;
             this.accessor = accessor;
-            Items = items;
+            this.mutator = mutator;
         }
 
         /// <summary>
@@ -36,9 +37,11 @@ namespace SophiApp.Models
         public string Description { get; init; }
 
         /// <summary>
-        /// Gets <see cref="UIExpandingRadioGroupModel"/> child items.
+        /// Gets or sets <see cref="UIExpandingRadioGroupModel"/> child items.
         /// </summary>
-        public List<UIRadioGroupItemModel> Items { get; init; }
+#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
+        public List<UIRadioGroupItemModel> Items { get; set; } = [];
+#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
 
         /// <inheritdoc/>
         public override void GetState()
@@ -46,7 +49,8 @@ namespace SophiApp.Models
             try
             {
                 var selectedId = accessor.Invoke();
-                Items.ForEach(item => item.IsChecked = item.Id == selectedId);
+                App.Logger.LogModelState(Name, selectedId);
+                _ = Items.First(item => item.Id == selectedId).IsChecked = true;
             }
             catch (Exception ex)
             {
@@ -58,7 +62,20 @@ namespace SophiApp.Models
         /// <inheritdoc/>
         public override void SetState()
         {
-            throw new NotImplementedException();
+            var checkedItem = Items.First(item => item.IsChecked);
+
+            try
+            {
+                mutator.Invoke(checkedItem.Id);
+
+                // TODO: For debug only!
+                Thread.Sleep(1000);
+            }
+            catch (Exception ex)
+            {
+                IsEnabled = false;
+                App.Logger.LogModelSetStateException(ex, Name, checkedItem.Id);
+            }
         }
     }
 }

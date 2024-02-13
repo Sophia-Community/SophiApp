@@ -15,6 +15,7 @@ namespace SophiApp.Services
     using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
+    using SophiApp.ViewModels;
     using Windows.ApplicationModel.Resources.Core;
 
     /// <inheritdoc/>
@@ -41,7 +42,6 @@ namespace SophiApp.Services
                     {
                         UIModelType.CheckBox => BuildCheckBoxModel(dto),
                         UIModelType.ExpandingRadioGroup => BuildExpandingRadioGroupModel(dto),
-                        UIModelType.ExpandingCheckBoxGroup => BuildExpandingCheckBoxGroupModel(dto),
                         _ => throw new TypeAccessException($"An invalid type is specified: {dto.Type}"),
                     };
                 })
@@ -122,32 +122,18 @@ namespace SophiApp.Services
             var title = GetTitle(dto.Name);
             var description = GetDescription(dto.Name);
             var accessor = GetAccessor<int>(dto.Name);
-            var items = Enumerable.Range(1, dto.NumberOfItems)
+            var mutator = GetMutator<int>(dto.Name);
+            var shellViewModel = App.GetService<ShellViewModel>();
+            var model = new UIExpandingRadioGroupModel(dto, title, description, accessor, mutator);
+            model.Items = Enumerable.Range(1, dto.NumberOfItems)
                 .Select(id =>
                 {
                     var itemTitle = GetTitle(dto.Name, id);
-                    return new UIRadioGroupItemModel(itemTitle, dto.Name, id);
+                    return new UIRadioGroupItemModel(itemTitle, dto.Name, id, shellViewModel, model);
                 })
                 .ToList();
 
-            return new UIExpandingRadioGroupModel(dto, title, description, accessor, items);
-        }
-
-        private UIModel BuildExpandingCheckBoxGroupModel(UIModelDto dto)
-        {
-            var title = GetTitle(dto.Name);
-            var description = GetDescription(dto.Name);
-            var items = Enumerable.Range(1, dto.NumberOfItems)
-                .Select(i =>
-                {
-                    var accessorName = $"{dto.Name}_{i}";
-                    var accessor = GetAccessor<bool>(accessorName);
-                    var itemTitle = GetTitle(dto.Name, i);
-                    return new UICheckBoxGroupItemModel(accessor, itemTitle);
-                })
-                .ToList();
-
-            return new UIExpandingCheckBoxGroupModel(dto, title, description, items);
+            return model;
         }
 
         private string GetTitle(string name, int? id = null)
@@ -200,7 +186,9 @@ namespace SophiApp.Services
         {
             return Task.Run(() =>
             {
-                foreach (var model in models.Where(model => model.Tag == tag))
+                var taggedModels = models.Where(model => model.Tag == tag).ToList();
+
+                foreach (var model in taggedModels)
                 {
                     if (token?.IsCancellationRequested ?? false)
                     {
