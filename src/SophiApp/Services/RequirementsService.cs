@@ -84,8 +84,8 @@ namespace SophiApp.Services
             {
                 var build when commonDataService.IsWindows11 && build < 22631 => Result.Failure(nameof(RequirementsFailure.Win11BuildLess22631)),
                 var build when commonDataService.IsWindows11 && build.Equals(22631) && commonDataService.OsProperties.UpdateBuildRevision < 2283 => Result.Failure(nameof(RequirementsFailure.Win11UbrLess2283)),
-                var build when !commonDataService.IsWindows11 && !build.Equals(19045) && commonDataService.OsProperties.Edition.Contains("EnterpriseS", StringComparison.InvariantCultureIgnoreCase) => Result.Failure(nameof(RequirementsFailure.Win10EnterpriseSVersion)),
                 var build when !commonDataService.IsWindows11 && !build.Equals(19045) => Result.Failure(nameof(RequirementsFailure.Win10UnsupportedBuild)),
+                var build when !commonDataService.IsWindows11 && !build.Equals(19045) && commonDataService.OsProperties.Edition.Contains("EnterpriseS", StringComparison.InvariantCultureIgnoreCase) => Result.Failure(nameof(RequirementsFailure.Win10EnterpriseSVersion)),
                 var build when !commonDataService.IsWindows11 && build.Equals(19045) && commonDataService.OsProperties.UpdateBuildRevision < 3448 => Result.Failure(nameof(RequirementsFailure.Win10UpdateBuildRevisionLess3448)),
                 _ => Result.Success()
             };
@@ -107,17 +107,18 @@ namespace SophiApp.Services
             // TODO: For debug only !!!
             Thread.Sleep(1500);
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var programData = Environment.ExpandEnvironmentVariables("%ProgramData%");
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             var programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             var system32Folder = Environment.GetFolderPath(Environment.SpecialFolder.System);
             var systemDrive = Environment.ExpandEnvironmentVariables("%SystemDrive%");
             var systemRoot = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
-            var tempFolder = Environment.ExpandEnvironmentVariables("%TEMP%");
+            var temp = Environment.ExpandEnvironmentVariables("%TEMP%");
             var malwares = new Dictionary<string, Func<bool>>()
             {
                 { "OsRequirements_Malware_Windows10Debloater", () => Directory.Exists($"{systemDrive}\\Temp\\Windows10Debloater") },
-                { "OsRequirements_Malware_Win10BloatRemover", () => Directory.Exists($"{tempFolder}\\.net\\Win10BloatRemover") },
+                { "OsRequirements_Malware_Win10BloatRemover", () => Directory.Exists($"{temp}\\.net\\Win10BloatRemover") },
                 {
                     "OsRequirements_Malware_BloatwareRemoval", () =>
                     {
@@ -160,11 +161,28 @@ namespace SophiApp.Services
                 },
                 { "OsRequirements_Malware_WinCry", () => File.Exists($"{systemRoot}\\TempCleaner.exe") },
                 {
+#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
                     "OsRequirements_Malware_FlibustierWindowsImage", () =>
                     {
-                        var values = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\.NETFramework\\Performance")?.GetValueNames() ?? new string[0];
-                        return Array.Exists(values, k => k.Contains("flibustier"));
+                        var values = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\.NETFramework\\Performance")?.GetValueNames() ?? [];
+                        return Array.Exists(values, key => key.Contains("flibustier"));
                     }
+#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
+                },
+                {
+                    "OsRequirements_Malware_Hone", () => File.Exists($"{localAppData}\\Programs\\Hone\\Hone.exe")
+                },
+                {
+                    "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log")
+                },
+                {
+#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
+                    "OsRequirements_Malware_AutoSettingsPS", () =>
+                    {
+                        var exclusions = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows Defender\\Exclusions\\Paths")?.GetValueNames() ?? [];
+                        return Array.Exists(exclusions!, key => key.Contains("AutoSettingsPS"));
+                    }
+#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
                 },
             };
 
@@ -172,8 +190,8 @@ namespace SophiApp.Services
             {
                 if (malware.Value.Invoke())
                 {
-                    App.Logger.LogMalwareDetected(malware.Key.Replace("OsRequirements_Malware_", null));
                     commonDataService.DetectedMalware = malware.Key.GetLocalized();
+                    App.Logger.LogMalwareDetected(commonDataService.DetectedMalware);
                     return true;
                 }
 
@@ -187,6 +205,31 @@ namespace SophiApp.Services
             // TODO: For debug only !!!
             Thread.Sleep(1500);
             return appxPackagesService.PackageExist("MicrosoftWindows.Client.CBS") ? Result.Success() : Result.Failure(nameof(RequirementsFailure.FeatureExperiencePackRemoved));
+        }
+
+        /// <inheritdoc/>
+        public Result GetEventLogState()
+        {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
+
+            try
+            {
+                return new ServiceController("EventLog").Status == ServiceControllerStatus.Running ? Result.Success() : Result.Failure(nameof(RequirementsFailure.EvenLogBroken));
+            }
+            catch (Exception e)
+            {
+                App.Logger.LogEventLogException(e);
+                return Result.Failure(nameof(RequirementsFailure.EvenLogBroken));
+            }
+        }
+
+        /// <inheritdoc/>
+        public Result GetMicrosoftStoreState()
+        {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
+            return appxPackagesService.PackageExist("Microsoft.WindowsStore") ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsStoreRemoved));
         }
 
         /// <inheritdoc/>
@@ -209,8 +252,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result AppUpdateDetection()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             if (commonDataService.IsOnline)
             {
                 try
@@ -262,27 +303,38 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public Result GetWindowsSecurityState()
+        {
+            // TODO: For debug only !!!
+            Thread.Sleep(1500);
+            var settingsPageVisibility = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer")?.GetValue("SettingsPageVisibility") as string;
+            return settingsPageVisibility?.Contains("hide:windowsdefender") ?? false
+                ? Result.Failure(nameof(RequirementsFailure.SecuritySettingsPageHidden))
+                : Result.Success();
+        }
+
+        /// <inheritdoc/>
         public Result GetMsDefenderServicesState()
         {
             // TODO: For debug only !!!
             Thread.Sleep(1500);
             var stoppedService = string.Empty;
-            var services = new List<string>() { "Windefend", "SecurityHealthService", "Wscsvc" };
+            var services = new List<string>() { "Windefend", "Wscsvc" };
 
-            return services.TrueForAll(s =>
+            return services.TrueForAll(serviceName =>
             {
-                stoppedService = $"OsRequirementsFailure_MsDefender_{s}_Stopped";
+                stoppedService = $"OsRequirementsFailure_MsDefender_{serviceName}_Stopped";
 
                 try
                 {
-                    var service = new ServiceController(s);
+                    var service = new ServiceController(serviceName);
 
                     if (service.Status == ServiceControllerStatus.Running)
                     {
                         return true;
                     }
 
-                    App.Logger.LogMsDefenderServicesStatusException(service: s, status: service.Status);
+                    App.Logger.LogMsDefenderServiceStatus(service: serviceName, status: service.Status);
                     commonDataService.MsDefenderServiceStopped = stoppedService;
                     return false;
                 }

@@ -226,6 +226,12 @@ namespace SophiApp.Contracts.Services
         void LogWMIStateException(Exception exception);
 
         /// <summary>
+        /// Handles occur during the EventLog service is broken.
+        /// </summary>
+        /// <param name="exception">Represents errors that occur during app executing.</param>
+        void LogEventLogException(Exception exception);
+
+        /// <summary>
         /// Handles an exception when accessing to app update in the <see cref="IRequirementsService"/>.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>
@@ -242,7 +248,7 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="service">Not running service.</param>
         /// <param name="status">A service status.</param>
-        void LogMsDefenderServicesStatusException(string service, ServiceControllerStatus status);
+        void LogMsDefenderServiceStatus(string service, ServiceControllerStatus status);
 
         /// <summary>
         /// Handles an exception when accessing to Microsoft Defender service API in the <see cref="IRequirementsService"/>.

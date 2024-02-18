@@ -25,7 +25,7 @@ namespace SophiApp.Customizations
         {
             var diagTrackService = new ServiceController("DiagTrack");
             var firewallRule = FirewallService.GetGroupRules("DiagTrack").First();
-            return diagTrackService.StartType == ServiceStartMode.Automatic && firewallRule.Enabled && firewallRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+            return diagTrackService.StartType == ServiceStartMode.Automatic || firewallRule.Enabled || firewallRule.Action == NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ScheduledTasks()
         {
-            var telemetryTasks = new List<Task>()
+            var telemetryTasks = new List<Task?>()
             {
                 TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\MareBackup"),
                 TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"),
@@ -83,7 +83,7 @@ namespace SophiApp.Customizations
 
             return telemetryTasks.TrueForAll(task => task is null)
                 ? throw new InvalidOperationException("No scheduled telemetry tasks were found")
-                : telemetryTasks.Exists(task => task.State == TaskState.Ready);
+                : telemetryTasks.Exists(task => task?.State == TaskState.Ready);
         }
 
         /// <summary>

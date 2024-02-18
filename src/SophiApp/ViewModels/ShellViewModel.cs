@@ -130,7 +130,7 @@ public partial class ShellViewModel : ObservableRecipient
     /// </summary>
     public async Task ExecuteAsync()
     {
-        var numberOfRequirements = 12;
+        var numberOfRequirements = 15;
         await Task.Run(() =>
         {
             _ = Result.Try(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
@@ -172,6 +172,18 @@ public partial class ShellViewModel : ObservableRecipient
             .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GetEventLogState".GetLocalized();
+            }))
+            .Bind(requirementsService.GetEventLogState)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GetMicrosoftStoreState".GetLocalized();
+            }))
+            .Bind(requirementsService.GetMicrosoftStoreState)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
                 startupModel.StatusText = "OsRequirements_GetPendingRebootState".GetLocalized();
             }))
             .Bind(requirementsService.GetPendingRebootState)
@@ -187,6 +199,12 @@ public partial class ShellViewModel : ObservableRecipient
                 startupModel.StatusText = "OsRequirements_GetMsDefenderFilesExist".GetLocalized();
             }))
             .Bind(requirementsService.GetMsDefenderFilesExist)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GetSecuritySettingsPageState".GetLocalized();
+            }))
+            .Bind(requirementsService.GetWindowsSecurityState)
             .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);

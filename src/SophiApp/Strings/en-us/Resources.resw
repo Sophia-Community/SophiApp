@@ -276,7 +276,7 @@
     <value>Detect OS bitness</value>
   </data>
   <data name="OsRequirementsFailure_Is32BitOs" xml:space="preserve">
-    <value>SophiApp supports 64-bit Windows only</value>
+    <value>SophiApp supports 64-bit Windows only.</value>
   </data>
   <data name="OsRequirementsFailure_Win10UnsupportedBuild" xml:space="preserve">
     <value>Your Windows 10 build: {0}.{1}. Supported builds: 19045.3448+. Run Windows Update and try again.</value>
@@ -288,10 +288,10 @@
     <value>Your Windows 11 build: {0}.{1}. Supported builds: 22621.2283+. Run Windows Update and try again.</value>
   </data>
   <data name="OsRequirementsFailure_WmiBroken" xml:space="preserve">
-    <value>WMI service is broken</value>
+    <value>WMI service is broken.</value>
   </data>
   <data name="OsRequirementsFailure_RunByNotLoggedUser" xml:space="preserve">
-    <value>The logged-on user doesn't have admin rights</value>
+    <value>The logged-on user doesn't have admin rights.</value>
   </data>
   <data name="OsRequirements_AppRunFromLoggedUser" xml:space="preserve">
     <value>Check whether the logged-in user is an admin</value>
@@ -345,16 +345,16 @@
     <value>Check whether Windows Feature Experience Pack was removed by harmful tweakers</value>
   </data>
   <data name="OsRequirements_Malware_FlibustierWindowsImage" xml:space="preserve">
-    <value>flblauncher</value>
+    <value>Flblauncher</value>
   </data>
   <data name="OsRequirementsFailure_FeatureExperiencePackRemoved" xml:space="preserve">
-    <value>Windows Feature Experience Pack broken or removed from the OS</value>
+    <value>Windows Feature Experience Pack broken or removed from the OS.</value>
   </data>
   <data name="OsRequirementsFailure_MsDefenderFilesMissing" xml:space="preserve">
-    <value>File "{0}" broken or removed from the OS</value>
+    <value>File "{0}" broken or removed from the OS.</value>
   </data>
   <data name="OsRequirementsFailure_RebootRequired" xml:space="preserve">
-    <value>The PC is waiting to be restarted</value>
+    <value>The PC is waiting to be restarted.</value>
   </data>
   <data name="OsRequirements_GetMsDefenderFilesExist" xml:space="preserve">
     <value>Detect Microsoft Defender components exists</value>
@@ -366,7 +366,7 @@
     <value>Detect a SophiApp is latest one</value>
   </data>
   <data name="OsRequirementsFailure_MsDefenderIsBroken" xml:space="preserve">
-    <value>Microsoft Defender broken or removed from the OS</value>
+    <value>Microsoft Defender broken or removed from the OS.</value>
   </data>
   <data name="OsRequirements_GetMsDefenderServicesState" xml:space="preserve">
     <value>Detect Microsoft Defender services state</value>
@@ -419,14 +419,11 @@
   <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
     <value>Show the Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
   </data>
-  <data name="OsRequirementsFailure_MsDefender_SecurityHealthService_Stopped" xml:space="preserve">
-    <value>Служба Безопасность Windows is not running</value>
-  </data>
   <data name="OsRequirementsFailure_MsDefender_Windefend_Stopped" xml:space="preserve">
-    <value>Служба антивирусной программы Microsoft Defender is not running</value>
+    <value>Служба антивирусной программы Microsoft Defender is not running.</value>
   </data>
   <data name="OsRequirementsFailure_MsDefender_Wscsvc_Stopped" xml:space="preserve">
-    <value>Служба Центр обеспечения безопасности is not running</value>
+    <value>Служба Центр обеспечения безопасности is not running.</value>
   </data>
   <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
     <value>Apply changes?</value>
@@ -436,5 +433,32 @@
   </data>
   <data name="Panel_SetupCustomizations_Applying" xml:space="preserve">
     <value>Applying customization(s)</value>
+  </data>
+  <data name="OsRequirements_Malware_Hone" xml:space="preserve">
+    <value>Hone</value>
+  </data>
+  <data name="OsRequirements_Malware_WinUtil" xml:space="preserve">
+    <value>Winutil</value>
+  </data>
+  <data name="OsRequirementsFailure_EvenLogStopped" xml:space="preserve">
+    <value>The Event Viewer broken or removed from Windows.</value>
+  </data>
+  <data name="OsRequirementsFailure_MsStoreRemoved" xml:space="preserve">
+    <value>Microsoft Store broken or removed from Windows.</value>
+  </data>
+  <data name="OsRequirements_GetEventLogState" xml:space="preserve">
+    <value>Get Eventlog state</value>
+  </data>
+  <data name="OsRequirements_GetMicrosoftStoreState" xml:space="preserve">
+    <value>Get Microsoft Store state</value>
+  </data>
+  <data name="OsRequirementsFailure_SecuritySettingsPageHidden" xml:space="preserve">
+    <value>The Windows Security Settings page was hidden from UI.</value>
+  </data>
+  <data name="OsRequirements_GetSecuritySettingsPageState" xml:space="preserve">
+    <value>Get Windows Security Settings page state</value>
+  </data>
+  <data name="OsRequirements_Malware_AutoSettingsPS" xml:space="preserve">
+    <value>AutoSettingsPS</value>
   </data>
 </root>

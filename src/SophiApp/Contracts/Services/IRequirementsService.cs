@@ -5,6 +5,7 @@
 namespace SophiApp.Contracts.Services
 {
     using CSharpFunctionalExtensions;
+    using Microsoft.UI.Xaml.Controls;
 
     /// <summary>
     /// A service for working with app requirements.
@@ -32,7 +33,7 @@ namespace SophiApp.Contracts.Services
         Result AppRunFromLoggedUser();
 
         /// <summary>
-        /// Detect that Windows was not broken by 3rd party harmful tweakers and trojans.
+        /// Detect 3rd party harmful tweakers and trojans.
         /// </summary>
         Result MalwareDetection();
 
@@ -40,6 +41,16 @@ namespace SophiApp.Contracts.Services
         /// Get the Windows Feature Experience Pack state.
         /// </summary>
         Result GetFeatureExperiencePackState();
+
+        /// <summary>
+        /// Get the Windows EventLog state.
+        /// </summary>
+        Result GetEventLogState();
+
+        /// <summary>
+        /// Get the Microsoft Store state.
+        /// </summary>
+        Result GetMicrosoftStoreState();
 
         /// <summary>
         /// Get a pending reboot state.
@@ -55,6 +66,11 @@ namespace SophiApp.Contracts.Services
         /// Detect that Microsoft Defender files exist.
         /// </summary>
         Result GetMsDefenderFilesExist();
+
+        /// <summary>
+        /// Detect whether Windows Security Settings page was not hidden from UI.
+        /// </summary>
+        Result GetWindowsSecurityState();
 
         /// <summary>
         /// Get Microsoft Defender services state.

@@ -108,7 +108,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogAppUpdate(Version version)
         {
-            Log.Information("Available new app version: {Version}", version);
+            Log.Information("App version available in the repository: {Version}", version);
         }
 
         /// <inheritdoc/>
@@ -251,6 +251,12 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogEventLogException(Exception exception)
+        {
+            Log.Error(exception, "The EventLog broken or removed from Windows");
+        }
+
+        /// <inheritdoc/>
         public void LogAppUpdateException(Exception exception)
         {
             Log.Error(exception, "Failed to obtain app update requirements in the {Service}", nameof(IRequirementsService));
@@ -263,7 +269,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogMsDefenderServicesStatusException(string service, ServiceControllerStatus status)
+        public void LogMsDefenderServiceStatus(string service, ServiceControllerStatus status)
         {
             Log.Error("Microsoft Defender service: {Service} has status: {Status}", service, status);
         }

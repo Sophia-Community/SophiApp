@@ -125,7 +125,7 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Scheduled tasks state.</param>
         public static void ScheduledTasks(bool isEnabled)
         {
-            new List<Task>()
+            new List<Task?>()
              {
                 TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\MareBackup"),
                 TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"),

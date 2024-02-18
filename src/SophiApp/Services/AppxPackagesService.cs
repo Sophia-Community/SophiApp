@@ -13,14 +13,16 @@ namespace SophiApp.Services
         private readonly PackageManager packageManager = new ();
 
         /// <inheritdoc/>
-        public bool PackageExist(string id, bool forAllUser = false)
+        public bool PackageExist(string packageId, bool forAllUser = false)
         {
             if (forAllUser)
             {
-                return packageManager.FindPackages().FirstOrDefault(p => p.Id.Name.Equals(id)) is not null;
+                return packageManager.FindPackages()
+                    .Any(package => package.Id.Name.Equals(packageId));
             }
 
-            return packageManager.FindPackagesForUser(string.Empty).FirstOrDefault(p => p.Id.Name.Equals(id)) is not null;
+            return packageManager.FindPackagesForUser(string.Empty)
+                .Any(package => package.Id.Name.Equals(packageId));
         }
     }
 }

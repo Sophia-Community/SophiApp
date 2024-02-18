@@ -176,17 +176,17 @@
                                Foreground="{ThemeResource ApplyCustomizationsPanelForeground}"
                                Margin="46, 0, 0, 1"/>
 
-                    <Button x:Uid="Button_Apply"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Margin="0, 0, 150, 0"
-                            Command="{x:Bind ViewModel.ApplicableModelsApply_Command, Mode=OneWay}"/>
-
                     <Button x:Uid="Button_Cancel"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
-                            Margin="0, 0, 15, 0"
+                            Margin="0, 0, 150, 0"
                             Command="{x:Bind ViewModel.ApplicableModelsClear_Command, Mode=OneWay}"/>
+
+                    <Button x:Uid="Button_Apply"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="0, 0, 15, 0"
+                            Command="{x:Bind ViewModel.ApplicableModelsApply_Command, Mode=OneWay}"/>
 
                     <i:Interaction.Behaviors>
                         <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.ApplicableModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">

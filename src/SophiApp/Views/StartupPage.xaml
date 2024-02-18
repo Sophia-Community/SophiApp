@@ -9,9 +9,9 @@
     <Grid VerticalAlignment="Center"
           HorizontalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="216"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="56"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Image Grid.Row="0"
@@ -19,21 +19,20 @@
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
                Width="373"
-               Height="103"
-               Margin="0, 62, 0, 0"/>
+               Height="103"/>
 
         <TextBlock Grid.Row="1"
                    Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
                    Style="{StaticResource StartupPageTextStyle}"
                    Foreground="{ThemeResource WindowForeground}"
-                   Margin="0, 3, 0, 20"/>
+                   Margin="0, 3, 0, 32"/>
 
         <ProgressBar Grid.Row="2"
                      Value="{x:Bind ViewModel.ProgressBarValue, Mode=OneWay}"
                      Maximum="100"
                      Height="3"
                      Width="492"
-                     Margin="24, 12, 24, 12"
+                     Margin="24, 0, 24, 12"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
                      Foreground="{ThemeResource WindowAccent}"

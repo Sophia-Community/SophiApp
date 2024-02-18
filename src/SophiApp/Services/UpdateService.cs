@@ -52,11 +52,11 @@ namespace SophiApp.Services
             try
             {
                 _ = Process.Start(
-                new ProcessStartInfo()
-                {
-                    FileName = "UsoClient.exe",
-                    Arguments = "StartInteractiveScan",
-                });
+                    new ProcessStartInfo()
+                    {
+                        FileName = "UsoClient.exe",
+                        Arguments = "StartInteractiveScan",
+                    });
 
                 _ = Process.Start(
                     new ProcessStartInfo()
