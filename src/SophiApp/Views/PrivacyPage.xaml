@@ -24,8 +24,7 @@
     </Page.Resources>
 
     <ScrollView x:Name="PrivacyScrollView">
-        <Grid x:Name="ItemsContainerGrid"
-              IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+        <Grid x:Name="ItemsContainerGrid" IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
             <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}">
                 <ItemsRepeater.Layout>
                     <StackLayout Spacing="10"/>

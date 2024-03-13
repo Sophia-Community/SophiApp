@@ -211,6 +211,10 @@ dotnet_diagnostic.SA1314.severity = suggestion
 dotnet_diagnostic.SA1013.severity = error
 dotnet_diagnostic.SA1500.severity = error
 
+# CS8602: Разыменование вероятной пустой ссылки.
+dotnet_diagnostic.CS8602.severity = error
+dotnet_diagnostic.SA1311.severity = error
+
 [*.vb]
 #### Naming Styles ####
 
@@ -295,3 +299,4 @@ dotnet_diagnostic.IDE0052.severity = error
 
 # IDE0060: Remove unused parameter
 dotnet_diagnostic.IDE0060.severity = error
+dotnet_style_prefer_collection_expression = when_types_loosely_match:suggestion

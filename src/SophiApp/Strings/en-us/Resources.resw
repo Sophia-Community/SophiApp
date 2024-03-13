@@ -440,7 +440,7 @@
   <data name="OsRequirements_Malware_WinUtil" xml:space="preserve">
     <value>Winutil</value>
   </data>
-  <data name="OsRequirementsFailure_EvenLogStopped" xml:space="preserve">
+  <data name="OsRequirementsFailure_EventLogStopped" xml:space="preserve">
     <value>The Event Viewer broken or removed from Windows.</value>
   </data>
   <data name="OsRequirementsFailure_MsStoreRemoved" xml:space="preserve">
@@ -460,5 +460,80 @@
   </data>
   <data name="OsRequirements_Malware_AutoSettingsPS" xml:space="preserve">
     <value>AutoSettingsPS</value>
+  </data>
+  <data name="UIModel_BitmapImageNewContext_Title" xml:space="preserve">
+    <value>Show "Bitmap image" item in the "New" context menu</value>
+  </data>
+  <data name="UIModel_CABInstallContext_Description" xml:space="preserve">
+    <value>This context menu item, using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7-Zip, WinRAR, etc...) by default, the "Install" context menu item will not show until you restore the default association for the .cab file type.</value>
+  </data>
+  <data name="UIModel_CABInstallContext_Title" xml:space="preserve">
+    <value>Show "Install" item in the Cabinet archives (.cab) context menu</value>
+  </data>
+  <data name="UIModel_CastToDeviceContext_Title" xml:space="preserve">
+    <value>Show "Cast to Device" item in the media files and folders context menu</value>
+  </data>
+  <data name="UIModel_CompressedFolderNewContext_Title" xml:space="preserve">
+    <value>Show "Compressed (zipped) Folder" item in the "New" context menu</value>
+  </data>
+  <data name="UIModel_CreateANewVideoContext_Title" xml:space="preserve">
+    <value>Show "Create a new video" item in the media files context menu</value>
+  </data>
+  <data name="UIModel_EditWithClipchampContext_Title" xml:space="preserve">
+    <value>Show "Edit With Clipchamp" item in the media files context menu</value>
+  </data>
+  <data name="UIModel_EditWithPaint3DContext_Description" xml:space="preserve">
+    <value>Remove "Edit with Paint 3D" item from the context menu of media files for the following extensions: .bmp, .gif, .jpe, .jpeg, .jpg, .png, .tif, .tiff</value>
+  </data>
+  <data name="UIModel_EditWithPaint3DContext_Title" xml:space="preserve">
+    <value>Show "Edit with Paint 3D" item in the media files context menu</value>
+  </data>
+  <data name="UIModel_EditWithPhotosContext_Title" xml:space="preserve">
+    <value>Show the "Edit with Photos" item in the media files context menu</value>
+  </data>
+  <data name="UIModel_ImagesEditContext_Title" xml:space="preserve">
+    <value>Show "Edit" item in the image files context menu</value>
+  </data>
+  <data name="UIModel_IncludeInLibraryContext_Title" xml:space="preserve">
+    <value>Show "Include in Library" item in the folders and drives context menu</value>
+  </data>
+  <data name="UIModel_MSIExtractContext_Description" xml:space="preserve">
+    <value>The "Extract all" context menu item will extract all contents of the .msi file into the "Extracted" folder at the same location as .msi file is.</value>
+  </data>
+  <data name="UIModel_MSIExtractContext_Title" xml:space="preserve">
+    <value>Show "Extract all" item in the Windows Installer (.msi) context menu</value>
+  </data>
+  <data name="UIModel_MultipleInvokeContext_Description" xml:space="preserve">
+    <value>By default, the "Open", "Print", "Edit" context menu items will not appear if selecting more than 15 items to avoid accidentally performing these actions on a large number of files.</value>
+  </data>
+  <data name="UIModel_MultipleInvokeContext_Title" xml:space="preserve">
+    <value>Make "Open", "Print", and "Edit" context menu items available when selecting more than 15 files</value>
+  </data>
+  <data name="UIModel_OpenWindowsTerminalAdminContext_Title" xml:space="preserve">
+    <value>Open Windows Terminal from context menu as administrator by default</value>
+  </data>
+  <data name="UIModel_OpenWindowsTerminalContext_Title" xml:space="preserve">
+    <value>Show "Open in Windows Terminal" item in the folders context menu</value>
+  </data>
+  <data name="UIModel_PrintCMDContext_Title" xml:space="preserve">
+    <value>Show "Print" item in the .bat and .cmd files context menu</value>
+  </data>
+  <data name="UIModel_RichTextDocumentNewContext_Title" xml:space="preserve">
+    <value>Show "Rich Text Document" item in the "New" context menu</value>
+  </data>
+  <data name="UIModel_RunAsDifferentUserContext_Title" xml:space="preserve">
+    <value>Show "Run as different user" item in the executable files context menu (.exe)</value>
+  </data>
+  <data name="UIModel_SendToContext_Title" xml:space="preserve">
+    <value>Show "Send to" item in the folders context menu</value>
+  </data>
+  <data name="UIModel_ShareContext_Title" xml:space="preserve">
+    <value>Show "Share" context menu item</value>
+  </data>
+  <data name="UIModel_UseStoreOpenWith_Title" xml:space="preserve">
+    <value>Show "Look for an app in the Microsoft Store" items in the "Open with" dialog</value>
+  </data>
+  <data name="UIModel_Windows10ContextMenu_Title" xml:space="preserve">
+    <value>Enable Windows 10 context menu style</value>
   </data>
 </root>

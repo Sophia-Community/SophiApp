@@ -51,30 +51,33 @@ public partial class App : Application
                 _ = services.AddTransient<IUpdateService, UpdateService>();
                 _ = services.AddTransient<IUriService, UriService>();
 
-                // Views and ViewModels
+                // ViewModels
                 _ = services.AddScoped<RequirementsFailureViewModel>();
                 _ = services.AddScoped<ShellViewModel>();
                 _ = services.AddScoped<StartupViewModel>();
-                _ = services.AddTransient<ContextMenuPage>();
                 _ = services.AddTransient<ContextMenuViewModel>();
-                _ = services.AddTransient<PersonalizationPage>();
                 _ = services.AddTransient<PersonalizationViewModel>();
+                _ = services.AddTransient<PrivacyViewModel>();
+                _ = services.AddTransient<ProVersionViewModel>();
+                _ = services.AddTransient<SecurityViewModel>();
+                _ = services.AddTransient<SettingsViewModel>();
+                _ = services.AddTransient<SystemViewModel>();
+                _ = services.AddTransient<TaskSchedulerViewModel>();
+                _ = services.AddTransient<UwpViewModel>();
+
+                // Views
+                _ = services.AddTransient<ContextMenuPage>();
+                _ = services.AddTransient<PersonalizationPage>();
                 _ = services.AddTransient<PrivacyPage>();
                 _ = services.AddTransient<ProVersionPage>();
-                _ = services.AddTransient<ProVersionViewModel>();
                 _ = services.AddTransient<RequirementsFailurePage>();
                 _ = services.AddTransient<SecurityPage>();
-                _ = services.AddTransient<SecurityViewModel>();
                 _ = services.AddTransient<SettingsPage>();
-                _ = services.AddTransient<SettingsViewModel>();
                 _ = services.AddTransient<ShellPage>();
                 _ = services.AddTransient<StartupPage>();
                 _ = services.AddTransient<SystemPage>();
-                _ = services.AddTransient<SystemViewModel>();
                 _ = services.AddTransient<TaskSchedulerPage>();
-                _ = services.AddTransient<TaskSchedulerViewModel>();
                 _ = services.AddTransient<UwpPage>();
-                _ = services.AddTransient<UwpViewModel>();
 
                 // Configuration
                 _ = services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));

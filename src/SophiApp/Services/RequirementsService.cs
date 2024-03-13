@@ -215,12 +215,12 @@ namespace SophiApp.Services
 
             try
             {
-                return new ServiceController("EventLog").Status == ServiceControllerStatus.Running ? Result.Success() : Result.Failure(nameof(RequirementsFailure.EvenLogBroken));
+                return new ServiceController("EventLog").Status == ServiceControllerStatus.Running ? Result.Success() : Result.Failure(nameof(RequirementsFailure.EventLogBroken));
             }
             catch (Exception e)
             {
                 App.Logger.LogEventLogException(e);
-                return Result.Failure(nameof(RequirementsFailure.EvenLogBroken));
+                return Result.Failure(nameof(RequirementsFailure.EventLogBroken));
             }
         }
 

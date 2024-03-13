@@ -12,7 +12,7 @@ namespace SophiApp.Extensions
     public static class RegistryKeyExtensions
     {
         /// <summary>
-        /// Retrieves or create a specified subkey.
+        /// Retrieves or create, if missing, a specified subkey.
         /// </summary>
         /// <param name="key">Represents a key-level node in the Windows registry.</param>
         /// <param name="subKey">Path of the subkey to open or create.</param>

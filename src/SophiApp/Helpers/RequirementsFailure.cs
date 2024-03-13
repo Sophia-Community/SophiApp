@@ -11,7 +11,7 @@ namespace SophiApp.Helpers
     /// </summary>
     public enum RequirementsFailure
     {
-        EvenLogBroken,
+        EventLogBroken,
         FeatureExperiencePackRemoved,
         Is32BitOs,
         MalwareDetected,
