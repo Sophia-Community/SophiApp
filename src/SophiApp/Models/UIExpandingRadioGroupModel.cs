@@ -67,9 +67,6 @@ namespace SophiApp.Models
             try
             {
                 mutator.Invoke(checkedItem.Id);
-
-                // TODO: For debug only!
-                Thread.Sleep(1000);
             }
             catch (Exception ex)
             {

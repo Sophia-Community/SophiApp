@@ -46,9 +46,6 @@ namespace SophiApp.Services
         public Result GetOsBitness()
         {
             App.Logger.LogOsBitness(Environment.Is64BitOperatingSystem);
-
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             return Environment.Is64BitOperatingSystem ? Result.Success() : Result.Failure(nameof(RequirementsFailure.Is32BitOs));
         }
 
@@ -63,9 +60,6 @@ namespace SophiApp.Services
                 var repoIsConsistent = verifyRepository.ExitCode.Equals(0);
                 var osPropertiesIsCorrect = commonDataService.OsProperties.BuildNumber != -1;
                 App.Logger.LogWMIState(wmiService.Status, verifyRepository.ExitCode, repoIsConsistent);
-
-                // TODO: For debug only !!!
-                Thread.Sleep(1500);
                 return osPropertiesIsCorrect && serviceIsRun && repoIsConsistent ? Result.Success() : Result.Failure(nameof(RequirementsFailure.WMIBroken));
             }
             catch (Exception ex)
@@ -78,8 +72,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetOsVersion()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             return commonDataService.OsProperties.BuildNumber switch
             {
                 var build when commonDataService.IsWindows11 && build < 22631 => Result.Failure(nameof(RequirementsFailure.Win11BuildLess22631)),
@@ -94,8 +86,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result AppRunFromLoggedUser()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             var currentUserName = WindowsIdentity.GetCurrent().Name.Split('\\')[1];
             var loggedUserProcess = Array.Find(array: Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(Process.GetCurrentProcess().SessionId));
             return instrumentationService.GetProcessOwnerOrDefault(loggedUserProcess).Equals(currentUserName) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.RunByNotLoggedUser));
@@ -104,8 +94,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result MalwareDetection()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var programData = Environment.ExpandEnvironmentVariables("%ProgramData%");
@@ -202,17 +190,12 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetFeatureExperiencePackState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             return appxPackagesService.PackageExist("MicrosoftWindows.Client.CBS") ? Result.Success() : Result.Failure(nameof(RequirementsFailure.FeatureExperiencePackRemoved));
         }
 
         /// <inheritdoc/>
         public Result GetEventLogState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
-
             try
             {
                 return new ServiceController("EventLog").Status == ServiceControllerStatus.Running ? Result.Success() : Result.Failure(nameof(RequirementsFailure.EventLogBroken));
@@ -227,16 +210,12 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMicrosoftStoreState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             return appxPackagesService.PackageExist("Microsoft.WindowsStore") ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsStoreRemoved));
         }
 
         /// <inheritdoc/>
         public Result GetPendingRebootState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             var rebootParameters = new List<Func<bool>>()
             {
                 () => Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\RebootPending") is not null,
@@ -279,17 +258,15 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderFilesExist()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             var system32Folder = Environment.GetFolderPath(Environment.SpecialFolder.System);
-            var files = new List<string>()
+            var defenderFiles = new List<string>()
             {
                 $"{system32Folder}\\smartscreen.exe",
                 $"{system32Folder}\\SecurityHealthSystray.exe",
                 $"{system32Folder}\\CompatTelRunner.exe",
             };
 
-            return files.TrueForAll(file =>
+            return defenderFiles.TrueForAll(file =>
             {
                 if (File.Exists(file))
                 {
@@ -305,9 +282,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetWindowsSecurityState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
-            var settingsPageVisibility = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer")?.GetValue("SettingsPageVisibility") as string;
+            var settingsPageVisibility = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer")
+                ?.GetValue("SettingsPageVisibility") as string;
             return settingsPageVisibility?.Contains("hide:windowsdefender") ?? false
                 ? Result.Failure(nameof(RequirementsFailure.SecuritySettingsPageHidden))
                 : Result.Success();
@@ -316,8 +292,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderServicesState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             var stoppedService = string.Empty;
             var services = new List<string>() { "Windefend", "Wscsvc" };
 
@@ -350,8 +324,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderState()
         {
-            // TODO: For debug only !!!
-            Thread.Sleep(1500);
             var isEnterpriseG = commonDataService.OsProperties.Edition.Contains("EnterpriseG", StringComparison.InvariantCultureIgnoreCase);
             var msDefenderProductState = instrumentationService.GetAntivirusProductsOrDefault().Find(product => product.GetPropertyValue("instanceGuid")
             .Equals("{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}"))?.GetPropertyValue("productState");

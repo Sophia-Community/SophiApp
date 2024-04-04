@@ -22,7 +22,7 @@ public class AppNotificationService : IAppNotificationService
         }
         catch (Exception ex)
         {
-            App.Logger.LogRegisterAsSenderException(ex);
+            App.Logger.LogRegisterNotificationSenderException(ex);
         }
     }
 

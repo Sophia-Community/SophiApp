@@ -84,15 +84,20 @@ namespace SophiApp.Contracts.Services
         void LogAppUpdate(Version version);
 
         /// <summary>
+        /// Write the start of all models build in the log.
+        /// </summary>
+        void LogStartModelsBuild();
+
+        /// <summary>
         /// Write number of models built in the log.
         /// </summary>
         /// <param name="count">Number of models built.</param>
-        void LogBuildModels(int count);
+        void LogAllModelsBuilt(int count);
 
         /// <summary>
         /// Write the start of all models state in the log.
         /// </summary>
-        void LogStartAllModelGetState();
+        void LogStartModelsGetState();
 
         /// <summary>
         /// Write the start all models set state in applicable models collection in the log.
@@ -211,7 +216,7 @@ namespace SophiApp.Contracts.Services
         /// Handles an exception when accessing to register as sender API in the <see cref="IAppNotificationService"/>.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>
-        void LogRegisterAsSenderException(Exception exception);
+        void LogRegisterNotificationSenderException(Exception exception);
 
         /// <summary>
         /// Handles an exception when accessing to os update in the <see cref="IUpdateService"/>.

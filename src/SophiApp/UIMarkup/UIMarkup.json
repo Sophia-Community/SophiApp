@@ -138,7 +138,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "RunAsDifferentUserContext",
+    "Name": "CastToDeviceContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
     "ViewId": 702,
@@ -146,7 +146,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "CastToDeviceContext",
+    "Name": "ShareContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
     "ViewId": 703,
@@ -154,18 +154,10 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "ShareContext",
-    "Type": "CheckBox",
-    "Tag": "ContextMenu",
-    "ViewId": 704,
-    "Windows10Support": "True",
-    "Windows11Support": "True"
-  },
-  {
     "Name": "EditWithClipchampContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 705,
+    "ViewId": 704,
     "Windows10Support": "False",
     "Windows11Support": "True"
   },
@@ -173,31 +165,7 @@
     "Name": "EditWithPaint3DContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 706,
-    "Windows10Support": "True",
-    "Windows11Support": "False"
-  },
-  {
-    "Name": "EditWithPhotosContext",
-    "Type": "CheckBox",
-    "Tag": "ContextMenu",
-    "ViewId": 707,
-    "Windows10Support": "True",
-    "Windows11Support": "False"
-  },
-  {
-    "Name": "CreateANewVideoContext",
-    "Type": "CheckBox",
-    "Tag": "ContextMenu",
-    "ViewId": 708,
-    "Windows10Support": "True",
-    "Windows11Support": "False"
-  },
-  {
-    "Name": "ImagesEditContext",
-    "Type": "CheckBox",
-    "Tag": "ContextMenu",
-    "ViewId": 709,
+    "ViewId": 705,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -205,7 +173,7 @@
     "Name": "PrintCMDContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 710,
+    "ViewId": 706,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -213,7 +181,7 @@
     "Name": "IncludeInLibraryContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 711,
+    "ViewId": 707,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -221,7 +189,7 @@
     "Name": "SendToContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 712,
+    "ViewId": 708,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -229,7 +197,7 @@
     "Name": "BitmapImageNewContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 713,
+    "ViewId": 709,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -237,7 +205,7 @@
     "Name": "RichTextDocumentNewContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 714,
+    "ViewId": 710,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -245,7 +213,7 @@
     "Name": "CompressedFolderNewContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 715,
+    "ViewId": 711,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -253,7 +221,7 @@
     "Name": "MultipleInvokeContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 716,
+    "ViewId": 712,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -261,7 +229,7 @@
     "Name": "UseStoreOpenWith",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 717,
+    "ViewId": 713,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -269,7 +237,7 @@
     "Name": "OpenWindowsTerminalContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 718,
+    "ViewId": 714,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -277,7 +245,7 @@
     "Name": "OpenWindowsTerminalAdminContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 719,
+    "ViewId": 715,
     "Windows10Support": "False",
     "Windows11Support": "True"
   },
@@ -285,7 +253,7 @@
     "Name": "Windows10ContextMenu",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
-    "ViewId": 720,
+    "ViewId": 716,
     "Windows10Support": "False",
     "Windows11Support": "True"
   }

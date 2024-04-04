@@ -198,8 +198,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool MSIExtractContext()
         {
-            var extractMuiVerb = Registry.ClassesRoot.OpenSubKey("Msi.Package\\shell\\Extract")?.GetValue("MUIVerb");
-            return extractMuiVerb?.Equals("@shell32.dll,-37514") ?? false;
+            var muiVerb = Registry.ClassesRoot.OpenSubKey("Msi.Package\\shell\\Extract")?.GetValue("MUIVerb") as string;
+            return muiVerb?.Equals("@shell32.dll,-37514") ?? false;
         }
 
         /// <summary>
@@ -207,17 +207,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool CABInstallContext()
         {
-            var installMuiVerb = Registry.ClassesRoot.OpenSubKey("CABFolder\\Shell\\runas")?.GetValue("MUIVerb");
-            return installMuiVerb?.Equals("@shell32.dll,-10210") ?? false;
-        }
-
-        /// <summary>
-        /// Get "Run as different user" item in the executable files context menu (.exe) state.
-        /// </summary>
-        public static bool RunAsDifferentUserContext()
-        {
-            var runAsExtended = Registry.ClassesRoot.OpenSubKey("exefile\\shell\\runasuser")?.GetValue("Extended") as string;
-            return !string.IsNullOrEmpty(runAsExtended);
+            var muiVerb = Registry.ClassesRoot.OpenSubKey("CABFolder\\Shell\\runas")?.GetValue("MUIVerb") as string;
+            return muiVerb?.Equals("@shell32.dll,-10210") ?? false;
         }
 
         /// <summary>
@@ -238,7 +229,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ShareContext()
         {
-            var shareContext = Registry.ClassesRoot.OpenSubKey("AllFilesystemObjects\\shellex\\ContextMenuHandlers\\ModernSharing")?.GetValue(string.Empty) as string;
+            var shareContext = Registry.ClassesRoot.OpenSubKey("AllFilesystemObjects\\shellex\\ContextMenuHandlers\\ModernSharing")?.GetValue("(default)") as string;
             return shareContext?.Equals("{e2bf9676-5f8f-435c-97eb-11607a5bedf7}") ?? false;
         }
 
@@ -255,7 +246,7 @@ namespace SophiApp.Customizations
             {
                 var userClipchamp = Registry.CurrentUser.OpenSubKey(clipChampPath)?.GetValue(clipChampGuid);
                 var machineClipchamp = Registry.LocalMachine.OpenSubKey(clipChampPath)?.GetValue(clipChampGuid);
-                return userClipchamp is null || machineClipchamp is null;
+                return userClipchamp is null && machineClipchamp is null;
             }
 
             throw new InvalidOperationException($"Appx package \"{clipChampAppx}\" not found in current user environment");
@@ -266,9 +257,11 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool EditWithPaint3DContext()
         {
-            if (AppxPackagesService.PackageExist("Microsoft.MSPaint"))
+            var paintAppx = "Microsoft.MSPaint";
+
+            if (AppxPackagesService.PackageExist(paintAppx))
             {
-                return new List<object?>()
+                var accessValues = new List<object?>()
                 {
                     Registry.ClassesRoot.OpenSubKey("SystemFileAssociations\\.bmp\\Shell\\3D Edit")?.GetValue("ProgrammaticAccessOnly"),
                     Registry.ClassesRoot.OpenSubKey("SystemFileAssociations\\.gif\\Shell\\3D Edit")?.GetValue("ProgrammaticAccessOnly"),
@@ -278,57 +271,12 @@ namespace SophiApp.Customizations
                     Registry.ClassesRoot.OpenSubKey("SystemFileAssociations\\.png\\Shell\\3D Edit")?.GetValue("ProgrammaticAccessOnly"),
                     Registry.ClassesRoot.OpenSubKey("SystemFileAssociations\\.tif\\Shell\\3D Edit")?.GetValue("ProgrammaticAccessOnly"),
                     Registry.ClassesRoot.OpenSubKey("SystemFileAssociations\\.tiff\\Shell\\3D Edit")?.GetValue("ProgrammaticAccessOnly"),
-                }
-                .TrueForAll(value => value is null);
+                };
+
+                return !accessValues.TrueForAll(value => value is not null);
             }
 
-            return false;
-        }
-
-        /// <summary>
-        /// Get "Edit with Photos" item in the media files context menu state.
-        /// </summary>
-        public static bool EditWithPhotosContext()
-        {
-            if (AppxPackagesService.PackageExist("Microsoft.Windows.Photos"))
-            {
-                var shellEdit = Registry.ClassesRoot.OpenSubKey("AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\\Shell\\ShellEdit")?.GetValue("ProgrammaticAccessOnly");
-                return shellEdit is null;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Get "Create a new video" item in the media files context menu state.
-        /// </summary>
-        public static bool CreateANewVideoContext()
-        {
-            var photosAppx = "Microsoft.Windows.Photos";
-
-            if (AppxPackagesService.PackageExist(photosAppx))
-            {
-                var shellCreateVideo = Registry.ClassesRoot.OpenSubKey("AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\\Shell\\ShellCreateVideo")?.GetValue("ProgrammaticAccessOnly");
-                return shellCreateVideo is null;
-            }
-
-            throw new InvalidOperationException($"Appx package \"{photosAppx}\" not found in current user environment");
-        }
-
-        /// <summary>
-        /// Get "Edit" item in the image files context menu state.
-        /// </summary>
-        public static bool ImagesEditContext()
-        {
-            var msPaintPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\\mspaint.exe";
-
-            if (File.Exists(msPaintPath))
-            {
-                var imageShellEdit = Registry.ClassesRoot.OpenSubKey("SystemFileAssociations\\image\\shell\\edit")?.GetValue("ProgrammaticAccessOnly");
-                return imageShellEdit is null;
-            }
-
-            return false;
+            throw new InvalidOperationException($"Appx package \"{paintAppx}\" not found in current user environment");
         }
 
         /// <summary>
@@ -336,9 +284,13 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool PrintCMDContext()
         {
-            var batFile = Registry.ClassesRoot.OpenSubKey("batfile\\shell\\print")?.GetValue("ProgrammaticAccessOnly");
-            var cmdFile = Registry.ClassesRoot.OpenSubKey("cmdfile\\shell\\print")?.GetValue("ProgrammaticAccessOnly");
-            return batFile is null && cmdFile is null;
+            var accessOnlyValues = new List<object?>()
+            {
+                Registry.ClassesRoot.OpenSubKey("batfile\\shell\\print")?.GetValue("ProgrammaticAccessOnly"),
+                Registry.ClassesRoot.OpenSubKey("cmdfile\\shell\\print")?.GetValue("ProgrammaticAccessOnly"),
+            };
+
+            return !accessOnlyValues.TrueForAll(value => value is not null);
         }
 
         /// <summary>
@@ -346,7 +298,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool IncludeInLibraryContext()
         {
-            var libraryLocation = Registry.ClassesRoot.OpenSubKey("Folder\\ShellEx\\ContextMenuHandlers\\Library Location")?.GetValue(string.Empty) as string;
+            var libraryLocation = Registry.ClassesRoot.OpenSubKey("Folder\\ShellEx\\ContextMenuHandlers\\Library Location")?.GetValue("(default)") as string;
             return !libraryLocation?.Equals("-{3dad6c5d-2167-4cae-9914-f99e41c12cfa}") ?? true;
         }
 
@@ -355,8 +307,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool SendToContext()
         {
-            var sendTo = Registry.ClassesRoot.OpenSubKey("AllFilesystemObjects\\shellex\\ContextMenuHandlers\\SendTo")?.GetValue(string.Empty) as string;
-            return sendTo?.Equals("-{7BA4C740-9E81-11CF-99D3-00AA004AE837}") ?? false;
+            var sendTo = Registry.ClassesRoot.OpenSubKey("AllFilesystemObjects\\shellex\\ContextMenuHandlers\\SendTo")?.GetValue("(default)") as string;
+            return !sendTo?.Equals("-{7BA4C740-9E81-11CF-99D3-00AA004AE837}") ?? true;
         }
 
         /// <summary>
@@ -364,17 +316,15 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool BitmapImageNewContext()
         {
-            var msPaintPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\\mspaint.exe";
+            var paintPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\\mspaint.exe";
 
-            if (File.Exists(msPaintPath))
+            if (File.Exists(paintPath))
             {
-                var bmpShellPath = ".bmp\\ShellNew";
-                var itemNameValue = Registry.ClassesRoot.OpenSubKey(bmpShellPath)?.GetValue("ItemName") as string ?? string.Empty;
-                var nullFileValue = Registry.ClassesRoot.OpenSubKey(bmpShellPath)?.GetValue("NullFile");
-                return itemNameValue.Equals($"@{msPaintPath},-59414") && nullFileValue is not null;
+                var bmpShellNew = Registry.ClassesRoot.OpenSubKey(".bmp\\ShellNew");
+                return !(bmpShellNew is null);
             }
 
-            return false;
+            throw new InvalidOperationException($"File \"{paintPath}\" not exist");
         }
 
         /// <summary>
@@ -382,17 +332,15 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RichTextDocumentNewContext()
         {
-            var wordPadPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\Windows NT\\Accessories\\wordpad.exe";
+            var wordpadPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\Windows NT\\Accessories\\wordpad.exe";
 
-            if (File.Exists(wordPadPath))
+            if (File.Exists(wordpadPath))
             {
-                var rtfShellPath = ".rtf\\ShellNew";
-                var dataValue = Registry.ClassesRoot.OpenSubKey(rtfShellPath)?.GetValue("Data") as string ?? string.Empty;
-                var itemName = Registry.ClassesRoot.OpenSubKey(rtfShellPath)?.GetValue("ItemName") as string ?? string.Empty;
-                return dataValue.Equals(@"{\rtf1}") && itemName.Equals($"{wordPadPath},-213", StringComparison.InvariantCultureIgnoreCase);
+                var rtfShellNew = Registry.ClassesRoot.OpenSubKey(".rtf\\ShellNew");
+                return !(rtfShellNew is null);
             }
 
-            return false;
+            throw new InvalidOperationException($"File \"{wordpadPath}\" not exist");
         }
 
         /// <summary>
@@ -400,11 +348,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool CompressedFolderNewContext()
         {
-            // var shellNewPath = ".zip\\ShellNew";
-            // var contextData = Registry.ClassesRoot.OpenSubKey(shellNewPath)?.GetValue("Data");
-            // var contextItemName = Registry.ClassesRoot.OpenSubKey(shellNewPath)?.GetValue("ItemName");
-            // TODO: Need reg data!
-            return true;
+            var zipShellNew = Registry.ClassesRoot.OpenSubKey(".zip\\CompressedFolder\\ShellNew");
+            return !(zipShellNew is null);
         }
 
         /// <summary>
@@ -421,8 +366,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool UseStoreOpenWith()
         {
-            var noUseStore = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("NoUseStoreOpenWith") as int?;
-            return !noUseStore?.Equals(1) ?? true;
+            var storeOpenWith = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("NoUseStoreOpenWith") as int?;
+            return !storeOpenWith?.Equals(1) ?? true;
         }
 
         /// <summary>
@@ -437,9 +382,9 @@ namespace SophiApp.Customizations
                 var extensionsBlockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
                 var terminalContextGuid = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
 
-                var currentUserBlockedGuid = Registry.CurrentUser.OpenSubKey(extensionsBlockPath)?.GetValue(terminalContextGuid);
-                var localMachineBlockedGuid = Registry.LocalMachine.OpenSubKey(extensionsBlockPath)?.GetValue(terminalContextGuid);
-                return !(currentUserBlockedGuid is not null || localMachineBlockedGuid is not null);
+                var userBlockedGuid = Registry.CurrentUser.OpenSubKey(extensionsBlockPath)?.GetValue(terminalContextGuid);
+                var machineBlockedGuid = Registry.LocalMachine.OpenSubKey(extensionsBlockPath)?.GetValue(terminalContextGuid);
+                return userBlockedGuid is null && machineBlockedGuid is null;
             }
 
             throw new InvalidOperationException($"Appx package \"{terminalAppx}\" not found in current user environment");
@@ -457,10 +402,10 @@ namespace SophiApp.Customizations
                 var extensionsBlockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
                 var adminContextGuid = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
 
-                var currentUserBlockedGuid = Registry.CurrentUser.OpenSubKey(extensionsBlockPath)?.GetValue(adminContextGuid);
-                var localMachineBlockedGuid = Registry.LocalMachine.OpenSubKey(extensionsBlockPath)?.GetValue(adminContextGuid);
+                var userBlockedGuid = Registry.CurrentUser.OpenSubKey(extensionsBlockPath)?.GetValue(adminContextGuid);
+                var machineBlockedGuid = Registry.LocalMachine.OpenSubKey(extensionsBlockPath)?.GetValue(adminContextGuid);
 
-                if (currentUserBlockedGuid is not null && localMachineBlockedGuid is not null)
+                if (userBlockedGuid is not null && machineBlockedGuid is not null)
                 {
                     try
                     {
@@ -486,7 +431,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool Windows10ContextMenu()
         {
-            var contextMenuValue = Registry.CurrentUser.OpenSubKey("Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32")?.GetValue(string.Empty) as string;
+            var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32";
+            var contextMenuValue = Registry.CurrentUser.OpenSubKey(contextMenuPath)?.GetValue("(default)") as string;
             return contextMenuValue?.Equals(string.Empty) ?? false;
         }
     }

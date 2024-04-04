@@ -5,7 +5,6 @@
 namespace SophiApp.Contracts.Services
 {
     using CSharpFunctionalExtensions;
-    using Microsoft.UI.Xaml.Controls;
 
     /// <summary>
     /// A service for working with app requirements.

@@ -33,6 +33,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public List<UIModel> BuildModels()
         {
+            App.Logger.LogStartModelsBuild();
             var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
             var models = JsonExtensions.ToObject<IEnumerable<UIModelDto>>(json)
                 .Where(dto => commonDataService.IsWindows11 ? dto.Windows11Support : dto.Windows10Support)
@@ -47,14 +48,14 @@ namespace SophiApp.Services
                 })
                 .OrderByDescending(model => model.ViewId)
                 .ToList();
-            App.Logger.LogBuildModels(models.Count);
+            App.Logger.LogAllModelsBuilt(models.Count);
             return models;
         }
 
         /// <inheritdoc/>
         public async Task GetStateAsync(ConcurrentBag<UIModel> models)
         {
-            App.Logger.LogStartAllModelGetState();
+            App.Logger.LogStartModelsGetState();
             var timer = Stopwatch.StartNew();
             await Task.WhenAll(
                 GetStateByTag(models, UICategoryTag.Privacy),
@@ -72,7 +73,7 @@ namespace SophiApp.Services
         public async Task GetStateAsync(IEnumerable<UIModel> enumerable, Action getStateCallback)
         {
             var models = new ConcurrentBag<UIModel>(enumerable);
-            App.Logger.LogStartAllModelGetState();
+            App.Logger.LogStartModelsGetState();
             var timer = Stopwatch.StartNew();
             await Task.WhenAll(
                 GetStateByTag(models, UICategoryTag.Privacy, getStateCallback),

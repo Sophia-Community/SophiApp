@@ -66,9 +66,6 @@ namespace SophiApp.Models
             try
             {
                 mutator.Invoke(IsChecked);
-
-                // TODO: For debug only!
-                Thread.Sleep(1000);
             }
             catch (Exception ex)
             {

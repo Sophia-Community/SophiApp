@@ -76,7 +76,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogChangeTheme(ElementTheme theme)
         {
-            Log.Information("Change theme to: \"{Theme}\"", theme);
+            Log.Information("Change theme to: {Theme}", theme);
         }
 
         /// <inheritdoc/>
@@ -112,13 +112,19 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogBuildModels(int count)
+        public void LogStartModelsBuild()
+        {
+            Log.Warning("Service {Service} has started build models", nameof(IModelService));
+        }
+
+        /// <inheritdoc/>
+        public void LogAllModelsBuilt(int count)
         {
             Log.Information("Service {Service} built models: {Count}", nameof(IModelService), count);
         }
 
         /// <inheritdoc/>
-        public void LogStartAllModelGetState()
+        public void LogStartModelsGetState()
         {
             Log.Warning("Service {Service} has started get models state", nameof(IModelService));
         }
@@ -233,7 +239,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogRegisterAsSenderException(Exception exception)
+        public void LogRegisterNotificationSenderException(Exception exception)
         {
             Log.Error(exception, "Failed to obtain register as sender API in the {Service}", nameof(IAppNotificationService));
         }

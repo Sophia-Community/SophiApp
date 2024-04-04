@@ -214,6 +214,7 @@ dotnet_diagnostic.SA1500.severity = error
 # CS8602: Разыменование вероятной пустой ссылки.
 dotnet_diagnostic.CS8602.severity = error
 dotnet_diagnostic.SA1311.severity = error
+dotnet_diagnostic.S2178.severity = warning
 
 [*.vb]
 #### Naming Styles ####

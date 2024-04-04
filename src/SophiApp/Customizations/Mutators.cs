@@ -291,19 +291,16 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                Registry.ClassesRoot.OpenOrCreateSubKey($"{msiExtractPath}\\Command")
-                    .SetValue(string.Empty, "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"", RegistryValueKind.String);
+                Registry.ClassesRoot.OpenOrCreateSubKey($"{msiExtractPath}\\Command").SetValue(string.Empty, "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"", RegistryValueKind.String);
 
-                Registry.ClassesRoot.OpenOrCreateSubKey(msiExtractPath)
-                    .SetValue("MUIVerb", "@shell32.dll,-37514", RegistryValueKind.String);
+                Registry.ClassesRoot.OpenSubKey(msiExtractPath, true)?.SetValue("MUIVerb", "@shell32.dll,-37514", RegistryValueKind.String);
 
-                Registry.ClassesRoot.OpenOrCreateSubKey(msiExtractPath)
-                    .SetValue("Icon", "shell32.dll,-16817", RegistryValueKind.String);
+                Registry.ClassesRoot.OpenSubKey(msiExtractPath, true)?.SetValue("Icon", "shell32.dll,-16817", RegistryValueKind.String);
 
                 return;
             }
 
-            Registry.ClassesRoot.DeleteSubKeyTree(msiExtractPath, true);
+            Registry.ClassesRoot.DeleteSubKeyTree(msiExtractPath, false);
         }
 
         /// <summary>
@@ -312,41 +309,23 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Install" item state.</param>
         public static void CABInstallContext(bool isEnabled)
         {
-            var runasPath = "CABFolder\\Shell\\runas";
+            var runAsPath = "CABFolder\\Shell\\runas";
 
             if (isEnabled)
             {
-                Registry.ClassesRoot.OpenOrCreateSubKey($"{runasPath}\\Command")
+                Registry.ClassesRoot.OpenOrCreateSubKey($"{runAsPath}\\Command")
                     .SetValue(string.Empty, "cmd /c DISM.exe /Online /Add-Package /PackagePath:\"%1\" /NoRestart & pause", RegistryValueKind.String);
 
-                Registry.ClassesRoot.OpenOrCreateSubKey(runasPath)
-                    .SetValue("MUIVerb", "@shell32.dll,-10210", RegistryValueKind.String);
+                Registry.ClassesRoot.OpenSubKey(runAsPath, true)
+                    ?.SetValue("MUIVerb", "@shell32.dll,-10210", RegistryValueKind.String);
 
-                Registry.ClassesRoot.OpenOrCreateSubKey(runasPath)
-                    .SetValue("HasLUAShield", string.Empty, RegistryValueKind.String);
+                Registry.ClassesRoot.OpenSubKey(runAsPath, true)
+                    ?.SetValue("HasLUAShield", string.Empty, RegistryValueKind.String);
 
                 return;
             }
 
-            Registry.ClassesRoot.DeleteSubKeyTree(runasPath, true);
-        }
-
-        /// <summary>
-        /// Sets "Run as different user" item in the executable files context menu (.exe) state.
-        /// </summary>
-        /// <param name="isEnabled">"Run as different user" item state.</param>
-        public static void RunAsDifferentUserContext(bool isEnabled)
-        {
-            var runasPath = "exefile\\shell\\runasuser";
-            var runExtendedValue = "Extended";
-
-            if (isEnabled)
-            {
-                Registry.ClassesRoot.OpenSubKey(runasPath, true)?.DeleteValue(runExtendedValue, true);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey(runasPath, true)?.SetValue(runExtendedValue, string.Empty, RegistryValueKind.String);
+            Registry.ClassesRoot.DeleteSubKeyTree(runAsPath, false);
         }
 
         /// <summary>
@@ -356,15 +335,17 @@ namespace SophiApp.Customizations
         public static void CastToDeviceContext(bool isEnabled)
         {
             var blockedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
-            var castToDeviceGuid = "{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
+            var castGuid = "{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
+
+            Registry.LocalMachine.OpenSubKey(blockedPath, true)?.DeleteValue(castGuid, false);
 
             if (isEnabled)
             {
-                Registry.LocalMachine.OpenSubKey(blockedPath, true)?.DeleteValue(castToDeviceGuid, true);
+                Registry.CurrentUser.OpenSubKey(blockedPath, true)?.DeleteValue(castGuid, false);
                 return;
             }
 
-            Registry.LocalMachine.OpenOrCreateSubKey(blockedPath).SetValue(castToDeviceGuid, "Play to menu", RegistryValueKind.String);
+            Registry.CurrentUser.OpenOrCreateSubKey(blockedPath).SetValue(castGuid, string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -373,16 +354,16 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Share" item state.</param>
         public static void ShareContext(bool isEnabled)
         {
-            var blockedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
-            var shareContextGuid = "{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}";
+            var sharingPath = "AllFilesystemObjects\\shellex\\ContextMenuHandlers\\ModernSharing";
+            var shareGuid = "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}";
 
             if (isEnabled)
             {
-                Registry.LocalMachine.OpenSubKey(blockedPath, true)?.DeleteValue(shareContextGuid, true);
+                Registry.ClassesRoot.OpenOrCreateSubKey(sharingPath).SetValue("(default)", shareGuid, RegistryValueKind.String);
                 return;
             }
 
-            Registry.LocalMachine.OpenOrCreateSubKey(blockedPath).SetValue(shareContextGuid, "Play to menu", RegistryValueKind.String);
+            Registry.ClassesRoot.DeleteSubKeyTree(sharingPath, false);
         }
 
         /// <summary>
@@ -394,9 +375,11 @@ namespace SophiApp.Customizations
             var clipChampPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
             var clipChampGuid = "{8AB635F8-9A67-4698-AB99-784AD929F3B4}";
 
+            Registry.LocalMachine.OpenSubKey(clipChampPath, true)?.DeleteValue(clipChampGuid, false);
+
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(clipChampPath, true)?.DeleteValue(clipChampGuid, true);
+                Registry.CurrentUser.OpenSubKey(clipChampPath, true)?.DeleteValue(clipChampGuid, false);
                 return;
             }
 
@@ -411,75 +394,21 @@ namespace SophiApp.Customizations
         {
             var paintContextValue = "ProgrammaticAccessOnly";
             new List<string>()
-                {
-                    ".bmp", ".gif", ".jpe", ".jpeg", ".jpg", ".png", ".tif", ".tiff",
-                }
+            {
+                ".bmp", ".gif", ".jpe", ".jpeg", ".jpg", ".png", ".tif", ".tiff",
+            }
             .ForEach(fileType =>
             {
                 var fileTypePath = $"SystemFileAssociations\\{fileType}\\Shell\\3D Edit";
 
                 if (isEnabled)
                 {
-                    Registry.ClassesRoot.OpenSubKey(fileTypePath, true)?.DeleteValue(paintContextValue, true);
+                    Registry.ClassesRoot.OpenSubKey(fileTypePath, true)?.DeleteValue(paintContextValue, false);
                     return;
                 }
 
                 Registry.ClassesRoot.OpenSubKey(fileTypePath, true)?.SetValue(paintContextValue, string.Empty, RegistryValueKind.String);
             });
-        }
-
-        /// <summary>
-        /// Sets "Edit with Photos" item in the media files context menu state.
-        /// </summary>
-        /// <param name="isEnabled">"Edit with Photos" item state.</param>
-        public static void EditWithPhotosContext(bool isEnabled)
-        {
-            var photoContextPath = "AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\\Shell\\ShellEdit";
-            var photosContextValue = "ProgrammaticAccessOnly";
-
-            if (isEnabled)
-            {
-                Registry.ClassesRoot.OpenSubKey(photoContextPath, true)?.DeleteValue(photosContextValue, true);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey(photoContextPath, true)?.SetValue(photosContextValue, string.Empty, RegistryValueKind.String);
-        }
-
-        /// <summary>
-        /// Sets "Create a new video" item in the media files context menu state.
-        /// </summary>
-        /// <param name="isEnabled">"Create a new video" item state.</param>
-        public static void CreateANewVideoContext(bool isEnabled)
-        {
-            var videoCreatePath = "AppX43hnxtbyyps62jhe9sqpdzxn1790zetc\\Shell\\ShellCreateVideo";
-            var videoContextValue = "ProgrammaticAccessOnly";
-
-            if (isEnabled)
-            {
-                Registry.ClassesRoot.OpenSubKey(videoCreatePath, true)?.DeleteValue(videoContextValue, true);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey(videoCreatePath, true)?.SetValue(videoContextValue, string.Empty, RegistryValueKind.String);
-        }
-
-        /// <summary>
-        /// Sets "Edit" item in the image files context menu state.
-        /// </summary>
-        /// <param name="isEnabled">"Edit" item state.</param>
-        public static void ImagesEditContext(bool isEnabled)
-        {
-            var editContextPath = "SystemFileAssociations\\image\\shell\\edit";
-            var imagesContextValue = "ProgrammaticAccessOnly";
-
-            if (isEnabled)
-            {
-                Registry.ClassesRoot.OpenSubKey(editContextPath, true)?.DeleteValue(imagesContextValue, true);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey(editContextPath, true)?.SetValue(imagesContextValue, string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -494,8 +423,8 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                Registry.ClassesRoot.OpenSubKey(batPrintPath, true)?.DeleteValue(printContextValue, true);
-                Registry.ClassesRoot.OpenSubKey(cmdPrintPath, true)?.DeleteValue(printContextValue, true);
+                Registry.ClassesRoot.OpenSubKey(batPrintPath, true)?.DeleteValue(printContextValue, false);
+                Registry.ClassesRoot.OpenSubKey(cmdPrintPath, true)?.DeleteValue(printContextValue, false);
                 return;
             }
 
@@ -512,14 +441,15 @@ namespace SophiApp.Customizations
             var libraryPath = "Folder\\ShellEx\\ContextMenuHandlers\\Library Location";
             var enableContextValue = "{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
             var disableContextValue = "-{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
+            var defaultContextValue = "(default)";
 
             if (isEnabled)
             {
-                Registry.ClassesRoot.OpenSubKey(libraryPath, true)?.SetValue(string.Empty, enableContextValue, RegistryValueKind.String);
+                Registry.ClassesRoot.OpenSubKey(libraryPath, true)?.SetValue(defaultContextValue, enableContextValue, RegistryValueKind.String);
                 return;
             }
 
-            Registry.ClassesRoot.OpenSubKey(libraryPath, true)?.SetValue(string.Empty, disableContextValue, RegistryValueKind.String);
+            Registry.ClassesRoot.OpenSubKey(libraryPath, true)?.SetValue(defaultContextValue, disableContextValue, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -531,14 +461,15 @@ namespace SophiApp.Customizations
             var sendToPath = "AllFilesystemObjects\\shellex\\ContextMenuHandlers\\SendTo";
             var enableContextValue = "{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
             var disableContextValue = "-{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
+            var defaultContextValue = "(default)";
 
             if (isEnabled)
             {
-                Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(string.Empty, enableContextValue, RegistryValueKind.String);
+                Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(defaultContextValue, enableContextValue, RegistryValueKind.String);
                 return;
             }
 
-            Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(string.Empty, disableContextValue, RegistryValueKind.String);
+            Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(defaultContextValue, disableContextValue, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -556,7 +487,7 @@ namespace SophiApp.Customizations
                 return;
             }
 
-            Registry.ClassesRoot.DeleteSubKeyTree(bmpShellPath, true);
+            Registry.ClassesRoot.DeleteSubKeyTree(bmpShellPath, false);
         }
 
         /// <summary>
@@ -566,16 +497,15 @@ namespace SophiApp.Customizations
         public static void RichTextDocumentNewContext(bool isEnabled)
         {
             var rtfShellPath = ".rtf\\ShellNew";
-            var wordPadPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\Windows NT\\Accessories\\wordpad.exe";
 
             if (isEnabled)
             {
                 Registry.ClassesRoot.OpenOrCreateSubKey(rtfShellPath).SetValue("Data", @"{\rtf1}", RegistryValueKind.String);
-                Registry.ClassesRoot.OpenSubKey(rtfShellPath, true)?.SetValue("ItemName", $"{wordPadPath},-213", RegistryValueKind.ExpandString);
+                Registry.ClassesRoot.OpenSubKey(rtfShellPath, true)?.SetValue("ItemName", "@%ProgramFiles%\\Windows NT\\Accessories\\WORDPAD.EXE,-213", RegistryValueKind.ExpandString);
                 return;
             }
 
-            Registry.ClassesRoot.DeleteSubKeyTree(rtfShellPath, true);
+            Registry.ClassesRoot.DeleteSubKeyTree(rtfShellPath, false);
         }
 
         /// <summary>
@@ -585,17 +515,16 @@ namespace SophiApp.Customizations
         public static void CompressedFolderNewContext(bool isEnabled)
         {
             var zipShellPath = ".zip\\CompressedFolder\\ShellNew";
-            var zipDllPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Windows)}\\System32\\zipfldr.dll";
             var zipContextValue = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
             if (isEnabled)
             {
                 Registry.ClassesRoot.OpenOrCreateSubKey(zipShellPath).SetValue("Data", zipContextValue, RegistryValueKind.Binary);
-                Registry.ClassesRoot.OpenSubKey(zipShellPath, true)?.SetValue("ItemName", $"{zipDllPath},-10194", RegistryValueKind.ExpandString);
+                Registry.ClassesRoot.OpenSubKey(zipShellPath, true)?.SetValue("ItemName", "@%SystemRoot%\\System32\\zipfldr.dll,-10194", RegistryValueKind.ExpandString);
                 return;
             }
 
-            Registry.ClassesRoot.DeleteSubKeyTree(zipDllPath, true);
+            Registry.ClassesRoot.DeleteSubKeyTree(zipShellPath, false);
         }
 
         /// <summary>
@@ -604,16 +533,16 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Open", "Print", and "Edit" context menu items state.</param>
         public static void MultipleInvokeContext(bool isEnabled)
         {
-            var invokeContextPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
-            var invokeContextName = "MultipleInvokePromptMinimum";
+            var multipleContextPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var multipleContextValue = "MultipleInvokePromptMinimum";
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(invokeContextPath, true)?.SetValue(invokeContextName, 300, RegistryValueKind.DWord);
+                Registry.CurrentUser.OpenSubKey(multipleContextPath, true)?.SetValue(multipleContextValue, 300, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey(invokeContextPath, true)?.DeleteValue(invokeContextName, true);
+            Registry.CurrentUser.OpenSubKey(multipleContextPath, true)?.DeleteValue(multipleContextValue, false);
         }
 
         /// <summary>
@@ -627,7 +556,7 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(storeContextPath, true)?.DeleteValue(storeContextValue, true);
+                Registry.CurrentUser.OpenSubKey(storeContextPath, true)?.DeleteValue(storeContextValue, false);
                 return;
             }
 
@@ -640,12 +569,14 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Open in Windows Terminal" item state.</param>
         public static void OpenWindowsTerminalContext(bool isEnabled)
         {
-            var extensionsBlockPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var extensionsBlockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
             var terminalGuid = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
+
+            Registry.LocalMachine.OpenSubKey(extensionsBlockPath, true)?.DeleteValue(terminalGuid, false);
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(extensionsBlockPath, true)?.DeleteValue(terminalGuid, true);
+                Registry.CurrentUser.OpenSubKey(extensionsBlockPath, true)?.DeleteValue(terminalGuid, false);
                 return;
             }
 
@@ -660,7 +591,7 @@ namespace SophiApp.Customizations
         {
             try
             {
-                var terminalSettings = $@"{Environment.ExpandEnvironmentVariables("%LOCALAPPDATA%")}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
+                var terminalSettings = $"{Environment.ExpandEnvironmentVariables("%LOCALAPPDATA%")}\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json";
                 var deserializedSettings = JsonConvert.DeserializeObject(File.ReadAllText(terminalSettings, Encoding.UTF8)) as JObject;
                 var elevateSetting = deserializedSettings?.SelectToken("profiles.defaults.elevate");
 
@@ -672,7 +603,7 @@ namespace SophiApp.Customizations
                 }
 
                 elevateSetting!.Replace(isEnabled);
-                File.WriteAllText(terminalSettings, deserializedSettings!.ToString());
+                File.WriteAllText(terminalSettings, deserializedSettings!.ToString(), Encoding.UTF8);
             }
             catch (Exception ex)
             {
@@ -688,16 +619,16 @@ namespace SophiApp.Customizations
         {
             var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}";
             var contextMenuValue = "InprocServer32";
+            var defaultContextValue = "(default)";
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenOrCreateSubKey($"{contextMenuPath}\\{contextMenuValue}")
-                    .SetValue(string.Empty, string.Empty, RegistryValueKind.String);
-
+                var contextPathValue = $"{contextMenuPath}\\{contextMenuValue}";
+                Registry.CurrentUser.OpenOrCreateSubKey(contextPathValue).SetValue(defaultContextValue, string.Empty, RegistryValueKind.String);
                 return;
             }
 
-            Registry.CurrentUser.DeleteSubKeyTree(contextMenuPath, true);
+            Registry.CurrentUser.DeleteSubKeyTree(contextMenuPath, false);
         }
     }
 }
