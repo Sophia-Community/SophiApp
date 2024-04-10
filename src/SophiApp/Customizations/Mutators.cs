@@ -334,18 +334,18 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Cast to Device" item state.</param>
         public static void CastToDeviceContext(bool isEnabled)
         {
-            var blockedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
-            var castGuid = "{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
+            var shellBlockedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var castToDeviceGuid = "{7AD84985-87B4-4a16-BE58-8B72A5B390F7}";
 
-            Registry.LocalMachine.OpenSubKey(blockedPath, true)?.DeleteValue(castGuid, false);
+            Registry.LocalMachine.OpenSubKey(shellBlockedPath, true)?.DeleteValue(castToDeviceGuid, false);
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(blockedPath, true)?.DeleteValue(castGuid, false);
+                Registry.CurrentUser.OpenSubKey(shellBlockedPath, true)?.DeleteValue(castToDeviceGuid, false);
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey(blockedPath).SetValue(castGuid, string.Empty, RegistryValueKind.String);
+            Registry.CurrentUser.OpenOrCreateSubKey(shellBlockedPath).SetValue(castToDeviceGuid, string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -354,16 +354,18 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Share" item state.</param>
         public static void ShareContext(bool isEnabled)
         {
-            var sharingPath = "AllFilesystemObjects\\shellex\\ContextMenuHandlers\\ModernSharing";
-            var shareGuid = "{e2bf9676-5f8f-435c-97eb-11607a5bedf7}";
+            var shellBlockedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var shareContextGuid = "{E2BF9676-5F8F-435C-97EB-11607A5BEDF7}";
+
+            Registry.LocalMachine.OpenSubKey(shellBlockedPath, true)?.DeleteValue(shareContextGuid, false);
 
             if (isEnabled)
             {
-                Registry.ClassesRoot.OpenOrCreateSubKey(sharingPath).SetValue("(default)", shareGuid, RegistryValueKind.String);
+                Registry.CurrentUser.OpenSubKey(shellBlockedPath, true)?.DeleteValue(shareContextGuid, false);
                 return;
             }
 
-            Registry.ClassesRoot.DeleteSubKeyTree(sharingPath, false);
+            Registry.CurrentUser.OpenOrCreateSubKey(shellBlockedPath).SetValue(shareContextGuid, string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -438,18 +440,11 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Include in Library" item state.</param>
         public static void IncludeInLibraryContext(bool isEnabled)
         {
-            var libraryPath = "Folder\\ShellEx\\ContextMenuHandlers\\Library Location";
-            var enableContextValue = "{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
-            var disableContextValue = "-{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
-            var defaultContextValue = "(default)";
-
-            if (isEnabled)
-            {
-                Registry.ClassesRoot.OpenSubKey(libraryPath, true)?.SetValue(defaultContextValue, enableContextValue, RegistryValueKind.String);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey(libraryPath, true)?.SetValue(defaultContextValue, disableContextValue, RegistryValueKind.String);
+            var libraryContextPath = "Folder\\ShellEx\\ContextMenuHandlers\\Library Location";
+            var enableValue = "{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
+            var disableValue = "-{3dad6c5d-2167-4cae-9914-f99e41c12cfa}";
+            var contextValue = isEnabled ? enableValue : disableValue;
+            Registry.ClassesRoot.OpenSubKey(libraryContextPath, true)?.SetValue(string.Empty, contextValue, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -459,17 +454,10 @@ namespace SophiApp.Customizations
         public static void SendToContext(bool isEnabled)
         {
             var sendToPath = "AllFilesystemObjects\\shellex\\ContextMenuHandlers\\SendTo";
-            var enableContextValue = "{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
-            var disableContextValue = "-{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
-            var defaultContextValue = "(default)";
-
-            if (isEnabled)
-            {
-                Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(defaultContextValue, enableContextValue, RegistryValueKind.String);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(defaultContextValue, disableContextValue, RegistryValueKind.String);
+            var enableValue = "{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
+            var disableValue = "-{7BA4C740-9E81-11CF-99D3-00AA004AE837}";
+            var contextValue = isEnabled ? enableValue : disableValue;
+            Registry.ClassesRoot.OpenSubKey(sendToPath, true)?.SetValue(string.Empty, contextValue, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -619,12 +607,11 @@ namespace SophiApp.Customizations
         {
             var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}";
             var contextMenuValue = "InprocServer32";
-            var defaultContextValue = "(default)";
 
             if (isEnabled)
             {
                 var contextPathValue = $"{contextMenuPath}\\{contextMenuValue}";
-                Registry.CurrentUser.OpenOrCreateSubKey(contextPathValue).SetValue(defaultContextValue, string.Empty, RegistryValueKind.String);
+                Registry.CurrentUser.OpenOrCreateSubKey(contextPathValue).SetValue(string.Empty, string.Empty, RegistryValueKind.String);
                 return;
             }
 

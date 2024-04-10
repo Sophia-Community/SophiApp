@@ -151,7 +151,7 @@
     "Tag": "ContextMenu",
     "ViewId": 703,
     "Windows10Support": "True",
-    "Windows11Support": "True"
+    "Windows11Support": "False"
   },
   {
     "Name": "EditWithClipchampContext",

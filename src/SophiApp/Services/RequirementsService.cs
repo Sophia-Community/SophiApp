@@ -87,7 +87,7 @@ namespace SophiApp.Services
         public Result AppRunFromLoggedUser()
         {
             var currentUserName = WindowsIdentity.GetCurrent().Name.Split('\\')[1];
-            var loggedUserProcess = Array.Find(array: Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(Process.GetCurrentProcess().SessionId));
+            var loggedUserProcess = Array.Find(array: System.Diagnostics.Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(System.Diagnostics.Process.GetCurrentProcess().SessionId));
             return instrumentationService.GetProcessOwnerOrDefault(loggedUserProcess).Equals(currentUserName) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.RunByNotLoggedUser));
         }
 

@@ -4,9 +4,7 @@
 
 namespace SophiApp.Extensions
 {
-    using System.Collections.ObjectModel;
     using System.Diagnostics;
-    using System.Management.Automation;
 
     /// <summary>
     /// Implements <see cref="string"/> extensions.

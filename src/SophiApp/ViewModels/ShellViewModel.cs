@@ -225,7 +225,7 @@ public partial class ShellViewModel : ObservableRecipient
             .Tap(async () =>
             {
                 var models = modelService.BuildModels();
-                Models = new (models);
+                Models = new(models);
                 await modelService.GetStateAsync(Models);
             })
             .Match(
@@ -291,6 +291,10 @@ public partial class ShellViewModel : ObservableRecipient
         await modelService.GetStateAsync(ApplicableModels, callback);
         ApplicableModels.Clear();
         App.Logger.LogApplicableModelsClear();
+        EnvironmentHelper.RefreshUserDesktop();
+        EnvironmentHelper.ForcedRefresh();
+        EnvironmentHelper.StopStartMenu();
+        EnvironmentHelper.StopExplorerProcess();
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
     }
