@@ -409,14 +409,14 @@ namespace SophiApp.Customizations
                 var userBlockedGuid = Registry.CurrentUser.OpenSubKey(extensionsBlockPath)?.GetValue(adminContextGuid);
                 var machineBlockedGuid = Registry.LocalMachine.OpenSubKey(extensionsBlockPath)?.GetValue(adminContextGuid);
 
-                if (userBlockedGuid is not null && machineBlockedGuid is not null)
+                if (userBlockedGuid is null && machineBlockedGuid is null)
                 {
                     try
                     {
                         var terminalSettings = $@"{Environment.ExpandEnvironmentVariables("%LOCALAPPDATA%")}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
                         var jsonSettings = File.ReadAllText(terminalSettings, Encoding.UTF8);
                         var jsonProfile = JsonExtensions.ToObject<MsTerminalSettingsDto>(jsonSettings);
-                        return jsonProfile.Profiles.Defaults.Elevate ?? false;
+                        return jsonProfile?.Profiles?.Defaults?.Elevate ?? false;
                     }
                     catch (ArgumentException)
                     {
@@ -424,7 +424,7 @@ namespace SophiApp.Customizations
                     }
                 }
 
-                return false;
+                return true;
             }
 
             throw new InvalidOperationException($"Appx package \"{terminalAppx}\" not found in current user environment");

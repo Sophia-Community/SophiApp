@@ -6,23 +6,39 @@ namespace SophiApp.Models
 {
     using Newtonsoft.Json;
 
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
+#pragma warning disable SA1402 // File may only contain a single type
+#pragma warning disable CS1591 // There is no XML comment for an open visible type or member
+#pragma warning disable SA1600 // Elements should be documented
 
     /// <summary>
-    /// Data transfer object for Microsoft Windows Terminal json settings file.
+    /// Data transfer object for Windows Terminal settings.
     /// </summary>
-    public record MsTerminalSettingsDto([JsonProperty("profiles")] Profiles Profiles);
+    public class MsTerminalSettingsDto
+    {
+        [JsonProperty("profiles")]
+        public Profiles? Profiles { get; set; }
+    }
 
     /// <summary>
-    /// Gets or set profile settings.
+    /// Gets or set profile settings value.
     /// </summary>
-    public record Profiles([property: JsonProperty("defaults")] Defaults Defaults);
+    public class Profiles
+    {
+        [JsonProperty("defaults")]
+        public Defaults? Defaults { get; set; }
+    }
 
     /// <summary>
-    /// Gets or set profile defaults settings.
+    /// Gets or set defaults profile setting value.
     /// </summary>
-    /// <param name="Elevate">Gets or sets elevate setting.</param>
-    public record Defaults([property: JsonProperty("elevate")] bool? Elevate);
+    public class Defaults
+    {
+        [JsonProperty("elevate")]
+        public bool Elevate { get; set; }
+    }
 
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
+#pragma warning restore SA1402 // File may only contain a single type
+#pragma warning restore CS1591 // There is no XML comment for an open visible type or member
+#pragma warning restore SA1600 // Elements should be documented
+
 }

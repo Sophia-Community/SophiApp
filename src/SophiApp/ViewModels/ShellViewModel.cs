@@ -225,7 +225,7 @@ public partial class ShellViewModel : ObservableRecipient
             .Tap(async () =>
             {
                 var models = modelService.BuildModels();
-                Models = new(models);
+                Models = new (models);
                 await modelService.GetStateAsync(Models);
             })
             .Match(
