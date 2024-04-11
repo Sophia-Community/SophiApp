@@ -249,11 +249,10 @@ namespace SophiApp.Contracts.Services
         void LogMsDefenderFilesException(string file);
 
         /// <summary>
-        /// Handles occur during the Microsoft Defender services not running exception.
+        /// Handles occur during the Microsoft Defender services not found.
         /// </summary>
-        /// <param name="service">Not running service.</param>
-        /// <param name="status">A service status.</param>
-        void LogMsDefenderServiceStatus(string service, ServiceControllerStatus status);
+        /// <param name="service">Microsoft Defender service name.</param>
+        void LogMsDefenderServiceNotFound(string service);
 
         /// <summary>
         /// Handles an exception when accessing to Microsoft Defender service API in the <see cref="IRequirementsService"/>.

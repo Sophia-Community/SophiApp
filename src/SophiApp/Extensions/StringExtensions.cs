@@ -5,6 +5,7 @@
 namespace SophiApp.Extensions
 {
     using System.Diagnostics;
+    using System.ServiceProcess;
 
     /// <summary>
     /// Implements <see cref="string"/> extensions.
@@ -54,6 +55,23 @@ namespace SophiApp.Extensions
             catch (Exception)
             {
                 // Do nothing.
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the specified service exists.
+        /// </summary>
+        /// <param name="service">Service name.</param>
+        public static bool ServiceExist(this string service)
+        {
+            try
+            {
+                var serviceController = new ServiceController(service);
+                return serviceController.ServiceName.Equals(service);
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

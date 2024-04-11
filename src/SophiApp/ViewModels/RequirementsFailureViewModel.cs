@@ -64,7 +64,7 @@ namespace SophiApp.ViewModels
                 RequirementsFailure.RebootRequired => "OsRequirementsFailure_RebootRequired".GetLocalized(),
                 RequirementsFailure.MsDefenderFilesMissing => string.Format("OsRequirementsFailure_MsDefenderFilesMissing".GetLocalized(), commonDataService.MsDefenderFileMissing),
                 RequirementsFailure.SecuritySettingsPageHidden => "OsRequirementsFailure_SecuritySettingsPageHidden".GetLocalized(),
-                RequirementsFailure.MsDefenderServiceStopped => commonDataService.MsDefenderServiceStopped.GetLocalized(),
+                RequirementsFailure.MsDefenderServiceNotFound => commonDataService.MsDefenderServiceStopped.GetLocalized(),
                 RequirementsFailure.MsDefenderIsBroken => "OsRequirementsFailure_MsDefenderIsBroken".GetLocalized(),
                 _ => throw new ArgumentOutOfRangeException(paramName: nameof(reason), message: $"Value: {reason} is not found in {typeof(RequirementsFailure).FullName} enumeration.")
             };

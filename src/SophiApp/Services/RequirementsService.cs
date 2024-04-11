@@ -292,33 +292,19 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result GetMsDefenderServicesState()
         {
-            var stoppedService = string.Empty;
             var services = new List<string>() { "Windefend", "Wscsvc" };
 
             return services.TrueForAll(serviceName =>
             {
-                stoppedService = $"OsRequirementsFailure_MsDefender_{serviceName}_Stopped";
-
-                try
+                if (serviceName.ServiceExist())
                 {
-                    var service = new ServiceController(serviceName);
-
-                    if (service.Status == ServiceControllerStatus.Running)
-                    {
-                        return true;
-                    }
-
-                    App.Logger.LogMsDefenderServiceStatus(service: serviceName, status: service.Status);
-                    commonDataService.MsDefenderServiceStopped = stoppedService;
-                    return false;
+                    return true;
                 }
-                catch (Exception ex)
-                {
-                    App.Logger.LogMsDefenderServicesException(ex);
-                    commonDataService.MsDefenderServiceStopped = stoppedService;
-                    return false;
-                }
-            }) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsDefenderServiceStopped));
+
+                App.Logger.LogMsDefenderServiceNotFound(service: serviceName);
+                commonDataService.MsDefenderServiceStopped = $"OsRequirementsFailure_MsDefender_{serviceName}_NotFound";
+                return false;
+            }) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsDefenderServiceNotFound));
         }
 
         /// <inheritdoc/>

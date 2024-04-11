@@ -17,7 +17,7 @@ namespace SophiApp.Helpers
         MalwareDetected,
         MsDefenderFilesMissing,
         MsDefenderIsBroken,
-        MsDefenderServiceStopped,
+        MsDefenderServiceNotFound,
         MsStoreRemoved,
         RebootRequired,
         RunByNotLoggedUser,

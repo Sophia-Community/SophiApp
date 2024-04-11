@@ -275,9 +275,9 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogMsDefenderServiceStatus(string service, ServiceControllerStatus status)
+        public void LogMsDefenderServiceNotFound(string service)
         {
-            Log.Error("Microsoft Defender service: {Service} has status: {Status}", service, status);
+            Log.Error("Microsoft Defender service: {Service} not found", service);
         }
 
         /// <inheritdoc/>

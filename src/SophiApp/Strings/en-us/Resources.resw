@@ -419,11 +419,11 @@
   <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
     <value>Show the Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
   </data>
-  <data name="OsRequirementsFailure_MsDefender_Windefend_Stopped" xml:space="preserve">
-    <value>Служба антивирусной программы Microsoft Defender is not running.</value>
+  <data name="OsRequirementsFailure_MsDefender_Windefend_NotFound" xml:space="preserve">
+    <value>Служба антивирусной программы Microsoft Defender is not found on you PC.</value>
   </data>
-  <data name="OsRequirementsFailure_MsDefender_Wscsvc_Stopped" xml:space="preserve">
-    <value>Служба Центр обеспечения безопасности is not running.</value>
+  <data name="OsRequirementsFailure_MsDefender_Wscsvc_NotFound" xml:space="preserve">
+    <value>Служба Центр обеспечения безопасности is not found on you PC.</value>
   </data>
   <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
     <value>Apply changes?</value>
