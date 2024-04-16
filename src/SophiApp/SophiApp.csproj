@@ -74,17 +74,17 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Primitives" Version="7.1.2" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.41.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.1" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.1" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.1" />
-    <PackageReference Include="Microsoft.PowerShell.ConsoleHost" Version="7.4.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240227000" />
-    <PackageReference Include="Microsoft.WSMan.Management" Version="7.4.1" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.2" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.2" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.2" />
+    <PackageReference Include="Microsoft.PowerShell.ConsoleHost" Version="7.4.2" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240404000" />
+    <PackageReference Include="Microsoft.WSMan.Management" Version="7.4.2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.21.0.86780">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.23.2.88755">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -93,7 +93,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Management" Version="8.0.0" />
-    <PackageReference Include="System.Management.Automation" Version="7.4.1" />
+    <PackageReference Include="System.Management.Automation" Version="7.4.2" />
     <PackageReference Include="TaskScheduler" Version="2.10.1" />
     <PackageReference Include="WinUIEx" Version="2.3.4" />
   </ItemGroup>

@@ -172,15 +172,15 @@ namespace SophiApp.Services
         private Task GetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null)
         {
             return Task.Run(() => models.Where(model => model.Tag == tag)
-            .ToList()
-            .ForEach(model =>
-            {
-                var timer = Stopwatch.StartNew();
-                model.GetState();
-                timer.Stop();
-                App.Logger.LogModelGetState(model.Name, timer);
-                getStateCallback?.Invoke();
-            }));
+                .ToList()
+                .ForEach(model =>
+                {
+                    var timer = Stopwatch.StartNew();
+                    model.GetState();
+                    timer.Stop();
+                    App.Logger.LogModelGetState(model.Name, timer);
+                    getStateCallback?.Invoke();
+                }));
         }
 
         private Task SetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null, CancellationToken? token = null)

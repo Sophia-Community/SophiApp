@@ -293,8 +293,8 @@ public partial class ShellViewModel : ObservableRecipient
         App.Logger.LogApplicableModelsClear();
         EnvironmentHelper.RefreshUserDesktop();
         EnvironmentHelper.ForcedRefresh();
-        EnvironmentHelper.StopStartMenu();
-        EnvironmentHelper.StopExplorerProcess();
+        ProcessHelper.Stop("StartMenuExperienceHost");
+        ProcessHelper.Stop("explorer");
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
     }

@@ -26,34 +26,19 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Simulate pressing F5 to refresh the desktop.
         /// </summary>
-        public static void RefreshUserDesktop() => _ = PostMessageW(HWnd, Msg, UIntPtr, IntPtr.Zero);
+        public static void RefreshUserDesktop()
+        {
+            PostMessageW(HWnd, Msg, UIntPtr, IntPtr.Zero);
+        }
 
         /// <summary>
         /// Refresh desktop icons, environment variables, taskbar, etc.
         /// </summary>
         public static void ForcedRefresh()
         {
-            _ = SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
-            _ = SendMessageTimeout(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, string.Empty, SMTOABORTIFHUNG, 100, IntPtr.Zero);
-            _ = SendNotifyMessage(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, TRAYSETTINGS);
-        }
-
-        /// <summary>
-        /// Stop the Start Menu process.
-        /// </summary>
-        public static void StopStartMenu() => Process.GetProcessesByName("StartMenuExperienceHost").ForEach(process => process.Close());
-
-        /// <summary>
-        /// Stop all explorer instances but only one in case enabled to launch folder windows in a separate process.
-        /// </summary>
-        public static void StopExplorerProcess()
-        {
-            Process.GetProcessesByName("explorer")
-                .ForEach(process =>
-                {
-                    process.Close();
-                    Thread.Sleep(1000);
-                });
+            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
+            SendMessageTimeout(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, null, SMTOABORTIFHUNG, 100, IntPtr.Zero);
+            SendNotifyMessage(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, TRAYSETTINGS);
         }
 
         /// <summary>
@@ -72,7 +57,7 @@ namespace SophiApp.Helpers
         /// Update environment variables.
         /// </summary>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int msg, IntPtr wParam, string lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
+        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int msg, IntPtr wParam, string? lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
 
         /// <summary>
         /// Update taskbar.

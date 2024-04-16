@@ -5,7 +5,6 @@
 namespace SophiApp.Services
 {
     using System;
-    using System.Diagnostics;
     using System.Net.Http.Json;
     using System.Security.Principal;
     using System.ServiceProcess;
