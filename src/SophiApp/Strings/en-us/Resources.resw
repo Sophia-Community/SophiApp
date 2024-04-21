@@ -536,4 +536,43 @@
   <data name="UIModel_Windows10ContextMenu_Title" xml:space="preserve">
     <value>Enable Windows 10 context menu style</value>
   </data>
+  <data name="OsRequirements_Malware_WinClean" xml:space="preserve">
+    <value>WinClean</value>
+  </data>
+  <data name="UIModel_AppsSmartScreen_Title" xml:space="preserve">
+    <value>Apps Smart Screen title here.</value>
+  </data>
+  <data name="UIModel_AuditProcess_Title" xml:space="preserve">
+    <value>Enable logging of each app execution, who the app ran as and the process that started this process (event 4688). You can correlate this event to other events by Process ID to determine what the program did while it ran and when it exited (event 4689).</value>
+  </data>
+  <data name="UIModel_CommandLineProcessAudit_Title" xml:space="preserve">
+    <value>It will be possible to read the command line arguments for any successfully created process (event 4688). In order for this functionality to work, events auditing will be enabled.</value>
+  </data>
+  <data name="UIModel_DefenderSandbox_Title" xml:space="preserve">
+    <value>Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm. The sandbox for Microsoft Defender is enabled by default in Windows 11.</value>
+  </data>
+  <data name="UIModel_EventViewerCustomView_Title" xml:space="preserve">
+    <value>The "Process Creation" Custom View is designed to filter running processes and their arguments for better system security auditing. In order for this functionality to work, event and command line auditing in process creation events will be enabled.</value>
+  </data>
+  <data name="UIModel_NetworkProtection_Title" xml:space="preserve">
+    <value>Network protection helps to prevent users from using any application to access dangerous domains that may host phishing scams, exploits, and other malicious content on the internet.</value>
+  </data>
+  <data name="UIModel_PowerShellModulesLogging_Title" xml:space="preserve">
+    <value>Pipeline execution events for members of the specified modules are recorded in the Windows PowerShell log in the Event Viewer. For the built-in Windows PowerShell 5.1 only.</value>
+  </data>
+  <data name="UIModel_PowerShellScriptsLogging_Title" xml:space="preserve">
+    <value>Windows PowerShell will log the processing of commands, script blocks, functions, and scripts – whether invoked interactively, or through automation to the "Applications and Services Logs\Microsoft\Windows\PowerShell\Operational" event log. For the built-in Windows PowerShell 5.1 only.</value>
+  </data>
+  <data name="UIModel_PUAppsDetection_Title" xml:space="preserve">
+    <value>PU Apps Detection title here.</value>
+  </data>
+  <data name="UIModel_SaveZoneInformation_Title" xml:space="preserve">
+    <value>The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock".</value>
+  </data>
+  <data name="UIModel_WindowsSandbox_Title" xml:space="preserve">
+    <value>Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.</value>
+  </data>
+  <data name="UIModel_WindowsScriptHost_Title" xml:space="preserve">
+    <value>Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JScript scripts from running.</value>
+  </data>
 </root>

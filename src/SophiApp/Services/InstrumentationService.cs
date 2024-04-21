@@ -78,7 +78,9 @@ namespace SophiApp.Services
             try
             {
                 return new ManagementObjectSearcher(scope: "root\\SecurityCenter2", queryString: "SELECT * FROM AntiVirusProduct")
-                    .Get().Cast<ManagementObject>().ToList();
+                    .Get()
+                    .Cast<ManagementObject>()
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -91,11 +93,22 @@ namespace SophiApp.Services
         public string GetUserSid(string name)
         {
             using var managementObject = new ManagementObjectSearcher("Select * from Win32_UserAccount")
-                    .Get()
-                    .Cast<ManagementObject>()
-                    .FirstOrDefault(obj => (string)obj.GetPropertyValue("Name") == name);
+                .Get()
+                .Cast<ManagementObject>()
+                .FirstOrDefault(obj => (string)obj.GetPropertyValue("Name") == name);
 
             return managementObject?.GetPropertyValue("Sid") as string ?? throw new InvalidOperationException($"Failed to obtain user SID API in the {nameof(IInstrumentationService)}");
+        }
+
+        /// <inheritdoc/>
+        public bool GetAntispywareEnabled()
+        {
+            using var managementObject = new ManagementObjectSearcher(scope: "root/microsoft/windows/defender", queryString: $"Select * from MSFT_MpComputerStatus")
+                .Get()
+                .Cast<ManagementObject>()
+                .FirstOrDefault();
+
+            return managementObject?.GetPropertyValue("AntispywareEnabled") as bool? ?? throw new InvalidOperationException($"Failed to obtain \"AntispywareEnabled\" value from WMI class \"MSFT_MpComputerStatus\" in the {nameof(IInstrumentationService)}");
         }
     }
 }

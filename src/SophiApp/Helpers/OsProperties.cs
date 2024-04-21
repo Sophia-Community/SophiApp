@@ -4,7 +4,6 @@
 
 namespace SophiApp.Helpers
 {
-    using System.Globalization;
     using System.Management;
     using Microsoft.Win32;
 
@@ -28,8 +27,8 @@ namespace SophiApp.Helpers
             : this(
                   Caption: (string?)properties[nameof(Caption)]?.Value ?? "n/a",
                   BuildNumber: int.Parse((string?)properties[nameof(BuildNumber)]?.Value ?? "-1"),
-                  UpdateBuildRevision: (int?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("UBR") ?? -1,
-                  Edition: (string?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("EditionID") ?? "n/a",
+                  UpdateBuildRevision: (int?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("UBR") ?? -1,
+                  Edition: (string?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("EditionID") ?? "n/a",
                   CSName: (string?)properties[nameof(CSName)]?.Value ?? "n/a")
         {
         }

@@ -9,7 +9,7 @@ namespace SophiApp.Contracts.Services
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A service for working with WMI.
+    /// A service for working with WMI API.
     /// </summary>
     public interface IInstrumentationService
     {
@@ -39,5 +39,10 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="name">A user name.</param>
         string GetUserSid(string name);
+
+        /// <summary>
+        /// Get Microsoft Defender antispyware enabled property value.
+        /// </summary>
+        bool GetAntispywareEnabled();
     }
 }

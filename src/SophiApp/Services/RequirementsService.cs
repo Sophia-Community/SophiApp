@@ -21,6 +21,8 @@ namespace SophiApp.Services
         private readonly IInstrumentationService instrumentationService;
         private readonly IAppxPackagesService appxPackagesService;
         private readonly IAppNotificationService appNotificationService;
+        private readonly IOsService osService;
+        private readonly IProcessService processService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequirementsService"/> class.
@@ -29,16 +31,22 @@ namespace SophiApp.Services
         /// <param name="instrumentationService">A service for working with WMI.</param>
         /// <param name="appxPackagesService">A service for working with appx packages.</param>
         /// <param name="appNotificationService">A service for working with notifications.</param>
+        /// <param name="osService">A service for working with Windows services API.</param>
+        /// <param name="processService">A service for working with Windows process API.</param>
         public RequirementsService(
             ICommonDataService commonDataService,
             IInstrumentationService instrumentationService,
             IAppxPackagesService appxPackagesService,
-            IAppNotificationService appNotificationService)
+            IAppNotificationService appNotificationService,
+            IOsService osService,
+            IProcessService processService)
         {
             this.commonDataService = commonDataService;
             this.instrumentationService = instrumentationService;
             this.appxPackagesService = appxPackagesService;
             this.appNotificationService = appNotificationService;
+            this.osService = osService;
+            this.processService = processService;
         }
 
         /// <inheritdoc/>
@@ -54,7 +62,7 @@ namespace SophiApp.Services
             try
             {
                 var wmiService = new ServiceController("Winmgmt");
-                using var verifyRepository = "winmgmt /verifyrepository".InvokeAsCmd();
+                using var verifyRepository = processService.InvokeAsCmd("winmgmt /verifyrepository");
                 var serviceIsRun = wmiService.Status == ServiceControllerStatus.Running;
                 var repoIsConsistent = verifyRepository.ExitCode.Equals(0);
                 var osPropertiesIsCorrect = commonDataService.OsProperties.BuildNumber != -1;
@@ -171,6 +179,7 @@ namespace SophiApp.Services
                     }
 #pragma warning restore SA1010 // Opening square brackets should be spaced correctly
                 },
+                { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
             };
 
             return malwares.Any(malware =>
@@ -295,7 +304,7 @@ namespace SophiApp.Services
 
             return services.TrueForAll(serviceName =>
             {
-                if (serviceName.ServiceExist())
+                if (osService.IsServiceExist(serviceName))
                 {
                     return true;
                 }

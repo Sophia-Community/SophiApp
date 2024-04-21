@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services;
 
 /// <summary>
-/// A service for working with toast notifications.
+/// A service for working with toast notifications API.
 /// </summary>
 public interface IAppNotificationService
 {

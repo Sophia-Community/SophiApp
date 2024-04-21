@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using System.ServiceProcess;
 
     /// <summary>
-    /// Service for work with OS API.
+    /// A service for working with Windows services API.
     /// </summary>
     public interface IOsService
     {
@@ -17,5 +17,11 @@ namespace SophiApp.Contracts.Services
         /// <param name="service">Represents a Windows service and allows you to connect to a running or stopped.</param>
         /// <param name="mode">Indicates the start mode of the service.</param>
         void SetServiceStartMode(ServiceController service, ServiceStartMode mode);
+
+        /// <summary>
+        /// Determines whether the specified service exists.
+        /// </summary>
+        /// <param name="service">Service name.</param>
+        bool IsServiceExist(string service);
     }
 }

@@ -31,25 +31,28 @@ public partial class App : Application
             .ConfigureServices((context, services) =>
             {
                 // Services
-                _ = services.AddScoped<IInstrumentationService, InstrumentationService>();
-                _ = services.AddScoped<ILoggerService, LoggerService>();
-                _ = services.AddSingleton<ICommonDataService, CommonDataService>();
-                _ = services.AddSingleton<IFileService, FileService>();
-                _ = services.AddSingleton<IFirewallService, FirewallService>();
-                _ = services.AddSingleton<IInitializeService, InitializeService>();
-                _ = services.AddSingleton<IModelService, ModelService>();
-                _ = services.AddSingleton<INavigationService, NavigationService>();
-                _ = services.AddSingleton<IOsService, OsService>();
-                _ = services.AddSingleton<IPageService, PageService>();
-                _ = services.AddSingleton<ISettingsService, SettingsService>();
-                _ = services.AddSingleton<IThemesService, ThemesService>();
-                _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
-                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
-                _ = services.AddTransient<INavigationViewService, NavigationViewService>();
-                _ = services.AddTransient<INetworkService, NetworkService>();
-                _ = services.AddTransient<IRequirementsService, RequirementsService>();
-                _ = services.AddTransient<IUpdateService, UpdateService>();
+                _ = services.AddTransient<IXmlService, XmlService>();
                 _ = services.AddTransient<IUriService, UriService>();
+                _ = services.AddTransient<IUpdateService, UpdateService>();
+                _ = services.AddTransient<IRequirementsService, RequirementsService>();
+                _ = services.AddTransient<IProcessService, ProcessService>();
+                _ = services.AddTransient<IPowerShellService, PowerShellService>();
+                _ = services.AddTransient<IOsService, OsService>();
+                _ = services.AddTransient<INetworkService, NetworkService>();
+                _ = services.AddTransient<INavigationViewService, NavigationViewService>();
+                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
+                _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
+                _ = services.AddSingleton<IThemesService, ThemesService>();
+                _ = services.AddSingleton<ISettingsService, SettingsService>();
+                _ = services.AddSingleton<IPageService, PageService>();
+                _ = services.AddSingleton<INavigationService, NavigationService>();
+                _ = services.AddSingleton<IModelService, ModelService>();
+                _ = services.AddSingleton<IInitializeService, InitializeService>();
+                _ = services.AddSingleton<IFirewallService, FirewallService>();
+                _ = services.AddSingleton<IFileService, FileService>();
+                _ = services.AddSingleton<ICommonDataService, CommonDataService>();
+                _ = services.AddScoped<ILoggerService, LoggerService>();
+                _ = services.AddScoped<IInstrumentationService, InstrumentationService>();
 
                 // ViewModels
                 _ = services.AddScoped<RequirementsFailureViewModel>();

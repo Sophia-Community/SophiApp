@@ -4,31 +4,11 @@
 
 namespace SophiApp.Extensions
 {
-    using System.Diagnostics;
-    using System.ServiceProcess;
-
     /// <summary>
     /// Implements <see cref="string"/> extensions.
     /// </summary>
     public static class StringExtensions
     {
-        /// <summary>
-        /// Invoke the string as a cmd command.
-        /// </summary>
-        /// <param name="command">String command to be executed.</param>
-        public static Process InvokeAsCmd(this string command)
-        {
-            var process = new Process();
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.FileName = "cmd.exe";
-            process.StartInfo.Arguments = $"/c {command}";
-            _ = process.Start();
-            process.WaitForExit();
-            return process;
-        }
-
         /// <summary>
         /// Converts the string to enumerated object.
         /// </summary>
@@ -55,23 +35,6 @@ namespace SophiApp.Extensions
             catch (Exception)
             {
                 // Do nothing.
-            }
-        }
-
-        /// <summary>
-        /// Determines whether the specified service exists.
-        /// </summary>
-        /// <param name="service">Service name.</param>
-        public static bool ServiceExist(this string service)
-        {
-            try
-            {
-                var serviceController = new ServiceController(service);
-                return serviceController.ServiceName.Equals(service);
-            }
-            catch (Exception)
-            {
-                return false;
             }
         }
     }

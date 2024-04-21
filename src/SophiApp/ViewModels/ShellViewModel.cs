@@ -25,6 +25,7 @@ public partial class ShellViewModel : ObservableRecipient
     private readonly IRequirementsService requirementsService;
     private readonly ICommonDataService commonDataService;
     private readonly IModelService modelService;
+    private readonly IProcessService processService;
 
     [ObservableProperty]
     private ObservableCollection<UIModel> applicableModels = new ();
@@ -65,6 +66,7 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="startupViewModel">Implements the <see cref="StartupViewModel"/> class.</param>
     /// <param name="requirementsFailureViewModel">Implements the <see cref="RequirementsFailureViewModel"/> class.</param>
     /// <param name="modelService">A service for working with UI models using MVVM pattern.</param>
+    /// <param name="processService">A service for working with Windows process API.</param>
     public ShellViewModel(
         INavigationService navigationService,
         INavigationViewService navigationViewService,
@@ -72,7 +74,8 @@ public partial class ShellViewModel : ObservableRecipient
         IRequirementsService requirementsService,
         StartupViewModel startupViewModel,
         RequirementsFailureViewModel requirementsFailureViewModel,
-        IModelService modelService)
+        IModelService modelService,
+        IProcessService processService)
     {
         NavigationService = navigationService;
         this.commonDataService = commonDataService;
@@ -88,6 +91,7 @@ public partial class ShellViewModel : ObservableRecipient
         ApplicableModelsApply_Command = new AsyncRelayCommand(ApplicableModelsApplyAsync);
         ApplicableModelsCancel_Command = new RelayCommand(ApplicableModelsCancel);
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
+        this.processService = processService;
     }
 
     /// <summary>
@@ -293,8 +297,8 @@ public partial class ShellViewModel : ObservableRecipient
         App.Logger.LogApplicableModelsClear();
         EnvironmentHelper.RefreshUserDesktop();
         EnvironmentHelper.ForcedRefresh();
-        ProcessHelper.Stop("StartMenuExperienceHost");
-        ProcessHelper.Stop("explorer");
+        processService.KillAllProcesses("StartMenuExperienceHost");
+        processService.KillAllProcesses("explorer");
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
     }

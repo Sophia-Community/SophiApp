@@ -30,7 +30,7 @@ public sealed partial class ContextMenuPage : Page
     }
 
     /// <summary>
-    /// Gets view model for privacy page.
+    /// Gets view model for context menu page.
     /// </summary>
     public ShellViewModel ViewModel { get; }
 

@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
 /// <summary>
-/// App page navigation service.
+/// A service for working with app <see cref="Page"/> navigation.
 /// </summary>
 public interface INavigationService
 {

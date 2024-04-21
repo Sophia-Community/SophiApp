@@ -122,6 +122,102 @@
     "Windows11Support": "True"
   },
   {
+    "Name": "NetworkProtection",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 600,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "PUAppsDetection",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 601,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "DefenderSandbox",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 602,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "AuditProcess",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 603,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "CommandLineProcessAudit",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 604,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "EventViewerCustomView",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 605,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "PowerShellModulesLogging",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 606,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "PowerShellScriptsLogging",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 607,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "AppsSmartScreen",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 608,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "SaveZoneInformation",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 609,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "WindowsScriptHost",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 610,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "WindowsSandbox",
+    "Type": "CheckBox",
+    "Tag": "Security",
+    "ViewId": 611,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
     "Name": "MSIExtractContext",
     "Type": "CheckBox",
     "Tag": "ContextMenu",
@@ -143,7 +239,7 @@
     "Tag": "ContextMenu",
     "ViewId": 702,
     "Windows10Support": "True",
-    "Windows11Support": "True"
+    "Windows11Support": "False"
   },
   {
     "Name": "ShareContext",
@@ -183,7 +279,7 @@
     "Tag": "ContextMenu",
     "ViewId": 707,
     "Windows10Support": "True",
-    "Windows11Support": "True"
+    "Windows11Support": "False"
   },
   {
     "Name": "SendToContext",
@@ -246,14 +342,6 @@
     "Type": "CheckBox",
     "Tag": "ContextMenu",
     "ViewId": 715,
-    "Windows10Support": "False",
-    "Windows11Support": "True"
-  },
-  {
-    "Name": "Windows10ContextMenu",
-    "Type": "CheckBox",
-    "Tag": "ContextMenu",
-    "ViewId": 716,
     "Windows10Support": "False",
     "Windows11Support": "True"
   }

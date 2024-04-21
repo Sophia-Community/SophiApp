@@ -24,6 +24,7 @@ namespace SophiApp.Customizations
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly IOsService OsService = App.GetService<IOsService>();
+        private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
 
         /// <summary>
         /// Sets DiagTrack service state.
@@ -279,6 +280,116 @@ namespace SophiApp.Customizations
             }
 
             Registry.CurrentUser.OpenOrCreateSubKey(explorerPath).SetValue(disableSuggestions, 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Sets Windows network protection state.
+        /// </summary>
+        /// <param name="isEnabled">Network protection state.</param>
+        public static void NetworkProtection(bool isEnabled)
+        {
+            var enableProtectionScript = @"Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process;Set-MpPreference -EnableNetworkProtection Enabled";
+            var disableProtectionScript = @"Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process;Set-MpPreference -EnableNetworkProtection Disabled";
+            _ = PowerShellService.Invoke(isEnabled ? enableProtectionScript : disableProtectionScript);
+        }
+
+        /// <summary>
+        /// Sets Windows PUApps detection state.
+        /// </summary>
+        /// <param name="isEnabled">PUApps detection state.</param>
+        public static void PUAppsDetection(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Microsoft Defender sandbox state.
+        /// </summary>
+        /// <param name="isEnabled">Microsoft Defender sandbox state.</param>
+        public static void DefenderSandbox(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows audit process state.
+        /// </summary>
+        /// <param name="isEnabled">Audit process state.</param>
+        public static void AuditProcess(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows command line process audit state.
+        /// </summary>
+        /// <param name="isEnabled">Command line process audit state.</param>
+        public static void CommandLineProcessAudit(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows Event Viewer custom view state.
+        /// </summary>
+        /// <param name="isEnabled">Event Viewer custom view state.</param>
+        public static void EventViewerCustomView(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows PowerShell modules logging state.
+        /// </summary>
+        /// <param name="isEnabled">PowerShell modules logging state.</param>
+        public static void PowerShellModulesLogging(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows PowerShell scripts logging state.
+        /// </summary>
+        /// <param name="isEnabled">PowerShell scripts logging state.</param>
+        public static void PowerShellScriptsLogging(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows SmartScreen state.
+        /// </summary>
+        /// <param name="isEnabled">Windows SmartScreen state.</param>
+        public static void AppsSmartScreen(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows save zone state.
+        /// </summary>
+        /// <param name="isEnabled">Windows save zone state.</param>
+        public static void SaveZoneInformation(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows script host state.
+        /// </summary>
+        /// <param name="isEnabled">Windows script host state.</param>
+        public static void WindowsScriptHost(bool isEnabled)
+        {
+            // Do nothing.
+        }
+
+        /// <summary>
+        /// Sets Windows Sandbox state.
+        /// </summary>
+        /// <param name="isEnabled">Windows Sandbox state.</param>
+        public static void WindowsSandbox(bool isEnabled)
+        {
+            // Do nothing.
         }
 
         /// <summary>
@@ -597,25 +708,6 @@ namespace SophiApp.Customizations
             {
                 throw new InvalidOperationException("Failed to write data to \"Microsoft.WindowsTerminal\" configuration file", ex);
             }
-        }
-
-        /// <summary>
-        /// Sets Windows 10 context menu style state.
-        /// </summary>
-        /// <param name="isEnabled">Windows 10 context menu style state.</param>
-        public static void Windows10ContextMenu(bool isEnabled)
-        {
-            var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}";
-            var contextMenuValue = "InprocServer32";
-
-            if (isEnabled)
-            {
-                var contextPathValue = $"{contextMenuPath}\\{contextMenuValue}";
-                Registry.CurrentUser.OpenOrCreateSubKey(contextPathValue).SetValue(string.Empty, string.Empty, RegistryValueKind.String);
-                return;
-            }
-
-            Registry.CurrentUser.DeleteSubKeyTree(contextMenuPath, false);
         }
     }
 }

@@ -55,6 +55,12 @@
                         <interactions:InvokeCommandAction Command="{x:Bind Command, Mode=OneWay}"
                                                           CommandParameter="{x:Bind CommandParameter, Mode=OneWay}"/>
                     </interactions:EventTriggerBehavior>
+                    <interactions:EventTriggerBehavior EventName="PointerEntered">
+                        <interactions:ChangePropertyAction TargetObject="{Binding ElementName=HyperlinkText}" PropertyName="TextDecorations" Value="Underline"/>
+                    </interactions:EventTriggerBehavior>
+                    <interactions:EventTriggerBehavior EventName="PointerExited">
+                        <interactions:ChangePropertyAction TargetObject="{Binding ElementName=HyperlinkText}" PropertyName="TextDecorations" Value="None"/>
+                    </interactions:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </TextBlock>
         </StackPanel>

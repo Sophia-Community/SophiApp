@@ -19,8 +19,12 @@ namespace SophiApp.Customizations
     public static class Accessors
     {
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
+        private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
+        private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
+        private static readonly IProcessService ProcessService = App.GetService<IProcessService>();
+        private static readonly IXmlService XmlService = App.GetService<IXmlService>();
 
         /// <summary>
         /// Gets DiagTrack service state.
@@ -191,6 +195,186 @@ namespace SophiApp.Customizations
         {
             var searchBoxIsDisabled = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
             return !searchBoxIsDisabled.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Windows network protection state.
+        /// </summary>
+        public static bool NetworkProtection()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                var networkProtectionPath = "Software\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection";
+                var networkProtection = Registry.LocalMachine.OpenSubKey(networkProtectionPath)?.GetValue("EnableNetworkProtection") as int? ?? -1;
+                return networkProtection.Equals(1);
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Windows PUApps detection state.
+        /// </summary>
+        public static bool PUAppsDetection()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                var puaProtection = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows Defender")?.GetValue("PUAProtection") as int? ?? -1;
+                return puaProtection.Equals(1);
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Microsoft Defender sandbox state.
+        /// </summary>
+        public static bool DefenderSandbox()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                return ProcessService.ProcessExist("MsMpEngCP");
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Windows audit process feature state.
+        /// </summary>
+        public static bool AuditProcess()
+        {
+            var auditPolicyScript = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+    $true
+}
+else
+{
+    $false
+}";
+            return PowerShellService.Invoke<bool>(auditPolicyScript);
+        }
+
+        /// <summary>
+        /// Gets Windows command line process audit feature state.
+        /// </summary>
+        public static bool CommandLineProcessAudit()
+        {
+            var auditPolicyScript = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+    $true
+}
+else
+{
+    $false
+}";
+            var cmdProcessAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var auditPolicyIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
+            var cmdProcessAuditIsEnabled = Registry.LocalMachine.OpenSubKey(cmdProcessAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
+            return auditPolicyIsEnabled && cmdProcessAuditIsEnabled.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Windows event viewer custom view feature state.
+        /// </summary>
+        public static bool EventViewerCustomView()
+        {
+            var cmdProcessAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var cmdProcessXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
+            var auditPolicyScript = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+    $true
+}
+else
+{
+    $false
+}";
+
+            var cmdAuditPolicyIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
+            var cmdProcessAuditIsEnabled = Registry.LocalMachine.OpenSubKey(cmdProcessAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
+            var cmdAuditXmlIsEnabled = XmlService.TryLoad(cmdProcessXmlPath)?.SelectSingleNode("//Select[@Path=\"Security\"]")?.InnerText ?? string.Empty;
+            return cmdAuditPolicyIsEnabled && cmdProcessAuditIsEnabled.Equals(1) && cmdAuditXmlIsEnabled.Equals("*[System[(EventID=4688)]]");
+        }
+
+        /// <summary>
+        /// Gets Windows PowerShell modules logging feature state.
+        /// </summary>
+        public static bool PowerShellModulesLogging()
+        {
+            var moduleLoggingPath = "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging";
+            var moduleNamePath = $"{moduleLoggingPath}\\ModuleNames";
+
+            var moduleLoggingIsEnabled = Registry.LocalMachine.OpenSubKey(moduleLoggingPath)?.GetValue("EnableModuleLogging") as int? ?? -1;
+            var moduleNamesIsAny = Registry.LocalMachine.OpenSubKey(moduleNamePath)?.GetValue("*") as string ?? string.Empty;
+            return moduleLoggingIsEnabled.Equals(1) && moduleNamesIsAny.Equals("*");
+        }
+
+        /// <summary>
+        /// Gets Windows PowerShell scripts logging feature state.
+        /// </summary>
+        public static bool PowerShellScriptsLogging()
+        {
+            var scriptLoggingPath = "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging";
+            var scriptLogging = Registry.LocalMachine.OpenSubKey(scriptLoggingPath)?.GetValue("EnableScriptBlockLogging") as int? ?? -1;
+            return scriptLogging.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Windows SmartScreen feature state.
+        /// </summary>
+        public static bool AppsSmartScreen()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                var smartScreenPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+                var smartScreenIsEnabled = Registry.LocalMachine.OpenSubKey(smartScreenPath)?.GetValue("SmartScreenEnabled") as string ?? string.Empty;
+                return !smartScreenIsEnabled.Equals("Off");
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Windows save zone feature state.
+        /// </summary>
+        public static bool SaveZoneInformation()
+        {
+            var saveZonePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments";
+            var saveZoneInformation = Registry.CurrentUser.OpenSubKey(saveZonePath)?.GetValue("SaveZoneInformation") as int? ?? -1;
+            return saveZoneInformation.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Windows script host feature state.
+        /// </summary>
+        public static bool WindowsScriptHost()
+        {
+            var scriptHostPath = "Software\\Microsoft\\Windows Script Host\\Settings";
+            var scriptHostIsEnabled = Registry.CurrentUser.OpenSubKey(scriptHostPath)?.GetValue("Enabled") as int? ?? -1;
+            return !scriptHostIsEnabled.Equals(0);
+        }
+
+        /// <summary>
+        /// Gets Windows Sandbox feature state.
+        /// </summary>
+        public static bool WindowsSandbox()
+        {
+            var windowsEdition = CommonDataService.OsProperties.Edition;
+
+            if (windowsEdition.Equals("Professional") || windowsEdition.Equals("Enterprise"))
+            {
+                var sandboxScript = @"Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process;Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online | Select-Object -ExpandProperty State";
+                var sandboxState = PowerShellService.Invoke(sandboxScript).FirstOrDefault() ?? string.Empty;
+                return !sandboxState.Equals("Disabled");
+            }
+
+            throw new InvalidOperationException("This edition of Windows is unsupported");
         }
 
         /// <summary>
@@ -428,16 +612,6 @@ namespace SophiApp.Customizations
             }
 
             throw new InvalidOperationException($"Appx package \"{terminalAppx}\" not found in current user environment");
-        }
-
-        /// <summary>
-        /// Get Windows 10 context menu style state.
-        /// </summary>
-        public static bool Windows10ContextMenu()
-        {
-            var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32";
-            var contextMenuValue = Registry.CurrentUser.OpenSubKey(contextMenuPath)?.GetValue(string.Empty) as string;
-            return contextMenuValue?.Equals(string.Empty) ?? false;
         }
     }
 }
