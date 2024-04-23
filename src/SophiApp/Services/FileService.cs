@@ -16,7 +16,7 @@ public class FileService : IFileService
     /// <typeparam name="T"><inheritdoc/></typeparam>
     /// <param name="folderPath"><inheritdoc/></param>
     /// <param name="fileName"><inheritdoc/></param>
-    public T? Read<T>(string folderPath, string fileName)
+    public T? ReadFromJson<T>(string folderPath, string fileName)
     {
         var path = Path.Combine(folderPath, fileName);
         if (File.Exists(path))
@@ -35,7 +35,7 @@ public class FileService : IFileService
     /// <param name="folderPath"><inheritdoc/></param>
     /// <param name="fileName"><inheritdoc/></param>
     /// <param name="content"><inheritdoc/></param>
-    public void Save<T>(string folderPath, string fileName, T content)
+    public void SaveToJson<T>(string folderPath, string fileName, T content)
     {
         if (!Directory.Exists(folderPath))
         {
@@ -43,19 +43,19 @@ public class FileService : IFileService
         }
 
         var fileContent = JsonConvert.SerializeObject(content, Formatting.Indented);
-        File.WriteAllText(Path.Combine(folderPath, fileName), fileContent, Encoding.UTF8);
+        File.WriteAllText(Path.Combine(folderPath, fileName), fileContent, Encoding.Default);
     }
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
-    /// <param name="folderPath"><inheritdoc/></param>
-    /// <param name="fileName"><inheritdoc/></param>
-    public void Delete(string folderPath, string fileName)
+    public void Save(string file, string content)
     {
-        if (fileName != null && File.Exists(Path.Combine(folderPath, fileName)))
+        var foldersPath = Path.GetDirectoryName(file) ?? throw new ArgumentNullException(paramName: nameof(file), message: "The file path cannot be empty");
+
+        if (!Directory.Exists(foldersPath))
         {
-            File.Delete(Path.Combine(folderPath, fileName));
+            Directory.CreateDirectory(foldersPath);
         }
+
+        File.WriteAllText(file, content, Encoding.Default);
     }
 }

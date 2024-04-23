@@ -110,5 +110,27 @@ namespace SophiApp.Services
 
             return managementObject?.GetPropertyValue("AntispywareEnabled") as bool? ?? throw new InvalidOperationException($"Failed to obtain \"AntispywareEnabled\" value from WMI class \"MSFT_MpComputerStatus\" in the {nameof(IInstrumentationService)}");
         }
+
+        /// <inheritdoc/>
+        public bool? GetCpuVirtualizationIsEnabled()
+        {
+            using var managementObject = new ManagementObjectSearcher("Select * from CIM_Processor")
+                .Get()
+                .Cast<ManagementObject>()
+                .FirstOrDefault();
+
+            return managementObject?.GetPropertyValue("VirtualizationFirmwareEnabled") as bool?;
+        }
+
+        /// <inheritdoc/>
+        public bool? GetHypervisorIsEnabled()
+        {
+            using var managementObject = new ManagementObjectSearcher("Select * from CIM_ComputerSystem")
+                .Get()
+                .Cast<ManagementObject>()
+                .FirstOrDefault();
+
+            return managementObject?.GetPropertyValue("HypervisorPresent") as bool?;
+        }
     }
 }

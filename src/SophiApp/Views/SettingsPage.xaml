@@ -94,7 +94,7 @@
                                    VerticalAlignment="Bottom"
                                    HorizontalAlignment="Left">
                 <controls:ContentBlock.Content>
-                    <Button x:Uid="Button_Apply" Background="{StaticResource WindowAccentHight}"/>
+                    <Button x:Uid="Button_Apply"/>
                 </controls:ContentBlock.Content>
             </controls:ContentBlock>
 

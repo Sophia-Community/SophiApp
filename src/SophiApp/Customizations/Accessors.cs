@@ -273,9 +273,9 @@ else
     $false
 }";
             var cmdProcessAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
-            var auditPolicyIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
+            var cmdPolicyAuditIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
             var cmdProcessAuditIsEnabled = Registry.LocalMachine.OpenSubKey(cmdProcessAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
-            return auditPolicyIsEnabled && cmdProcessAuditIsEnabled.Equals(1);
+            return cmdPolicyAuditIsEnabled && cmdProcessAuditIsEnabled.Equals(1);
         }
 
         /// <summary>
@@ -283,8 +283,8 @@ else
         /// </summary>
         public static bool EventViewerCustomView()
         {
-            var cmdProcessAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
-            var cmdProcessXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
+            var processAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var processXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
             var auditPolicyScript = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 $Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
 if ($Enabled -eq 'Success and Failure')
@@ -296,10 +296,10 @@ else
     $false
 }";
 
-            var cmdAuditPolicyIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
-            var cmdProcessAuditIsEnabled = Registry.LocalMachine.OpenSubKey(cmdProcessAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
-            var cmdAuditXmlIsEnabled = XmlService.TryLoad(cmdProcessXmlPath)?.SelectSingleNode("//Select[@Path=\"Security\"]")?.InnerText ?? string.Empty;
-            return cmdAuditPolicyIsEnabled && cmdProcessAuditIsEnabled.Equals(1) && cmdAuditXmlIsEnabled.Equals("*[System[(EventID=4688)]]");
+            var auditPolicyIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
+            var processAuditIsEnabled = Registry.LocalMachine.OpenSubKey(processAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
+            var xmlAuditIsEnabled = XmlService.TryLoad(processXmlPath)?.SelectSingleNode("//Select[@Path=\"Security\"]")?.InnerText ?? string.Empty;
+            return auditPolicyIsEnabled && processAuditIsEnabled.Equals(1) && xmlAuditIsEnabled.Equals("*[System[(EventID=4688)]]");
         }
 
         /// <summary>
@@ -365,13 +365,19 @@ else
         /// </summary>
         public static bool WindowsSandbox()
         {
-            var windowsEdition = CommonDataService.OsProperties.Edition;
-
-            if (windowsEdition.Equals("Professional") || windowsEdition.Equals("Enterprise"))
+            if (CommonDataService.OsProperties.Edition.Equals("Professional") || CommonDataService.OsProperties.Edition.Equals("Enterprise"))
             {
-                var sandboxScript = @"Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process;Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online | Select-Object -ExpandProperty State";
-                var sandboxState = PowerShellService.Invoke(sandboxScript).FirstOrDefault() ?? string.Empty;
-                return !sandboxState.Equals("Disabled");
+                var virtualizationIsEnabled = InstrumentationService.GetCpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This cpu does not support virtualization");
+                var hypervIsEnabled = InstrumentationService.GetHypervisorIsEnabled() ?? throw new InvalidOperationException("This PC does not support Hyper-V virtualization");
+
+                if (virtualizationIsEnabled || hypervIsEnabled)
+                {
+                    var sandboxScript = @"Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force;Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online | Select-Object -ExpandProperty State";
+                    var sandboxState = PowerShellService.Invoke(sandboxScript).FirstOrDefault() ?? string.Empty;
+                    return !sandboxState.Equals("Disabled");
+                }
+
+                throw new InvalidOperationException("This PC does not support Windows Sandbox feature");
             }
 
             throw new InvalidOperationException("This edition of Windows is unsupported");

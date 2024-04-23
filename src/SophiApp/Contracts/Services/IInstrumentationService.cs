@@ -44,5 +44,15 @@ namespace SophiApp.Contracts.Services
         /// Get Microsoft Defender antispyware enabled property value.
         /// </summary>
         bool GetAntispywareEnabled();
+
+        /// <summary>
+        /// Get the processor virtualization state.
+        /// </summary>
+        bool? GetCpuVirtualizationIsEnabled();
+
+        /// <summary>
+        /// Get Windows Hyper-V is enabled state.
+        /// </summary>
+        bool? GetHypervisorIsEnabled();
     }
 }

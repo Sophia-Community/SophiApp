@@ -187,7 +187,7 @@ namespace SophiApp.Services
         {
             return Task.Run(() =>
             {
-                var taggedModels = models.Where(model => model.Tag == tag).ToList();
+                var taggedModels = models.Where(model => model.IsEnabled && model.Tag == tag).ToList();
 
                 foreach (var model in taggedModels)
                 {

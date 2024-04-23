@@ -575,4 +575,10 @@
   <data name="UIModel_WindowsScriptHost_Title" xml:space="preserve">
     <value>Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JScript scripts from running.</value>
   </data>
+  <data name="EventViewerCustomView_ProcessCreationXml_Description" xml:space="preserve">
+    <value>События создания нового процесса и аудит командной строки.</value>
+  </data>
+  <data name="EventViewerCustomView_ProcessCreationXml_Name" xml:space="preserve">
+    <value>Создание процесса</value>
+  </data>
 </root>
