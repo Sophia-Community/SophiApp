@@ -4,8 +4,10 @@
 
 namespace SophiApp.Contracts.Services;
 
+using Microsoft.UI.Xaml.Controls;
+
 /// <summary>
-/// A service for working with app page.
+/// A service for working with app <see cref="Page"/>.
 /// </summary>
 public interface IPageService
 {

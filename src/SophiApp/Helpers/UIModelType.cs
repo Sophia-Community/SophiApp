@@ -19,6 +19,7 @@ namespace SophiApp.Helpers
         ExpandingGroup,
         ExpandingRadioGroup,
         RadioGroup,
+        UwpApp,
     }
 
 #pragma warning restore SA1602 // An item within a C# enumeration is missing an Xml documentation header.

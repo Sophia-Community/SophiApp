@@ -25,6 +25,11 @@ public partial class ShellViewModel : ObservableRecipient
     private readonly IRequirementsService requirementsService;
     private readonly ICommonDataService commonDataService;
     private readonly IModelService modelService;
+    private readonly IProcessService processService;
+    private readonly IAppxPackagesService packagesService;
+
+    private List<UIModel> uwpAllUsersModels = new ();
+    private List<UIModel> uwpCurrentUserModels = new ();
 
     [ObservableProperty]
     private ObservableCollection<UIModel> applicableModels = new ();
@@ -53,6 +58,12 @@ public partial class ShellViewModel : ObservableRecipient
     [ObservableProperty]
     private int progressBarValue = 0;
 
+    [ObservableProperty]
+    private bool uwpForAllUsersState = true;
+
+    [ObservableProperty]
+    private ObservableCollection<UIModel> uwpAppsModels = new ();
+
     private CancellationTokenSource? cancellationTokenSource;
 
     /// <summary>
@@ -65,6 +76,8 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="startupViewModel">Implements the <see cref="StartupViewModel"/> class.</param>
     /// <param name="requirementsFailureViewModel">Implements the <see cref="RequirementsFailureViewModel"/> class.</param>
     /// <param name="modelService">A service for working with UI models using MVVM pattern.</param>
+    /// <param name="processService">A service for working with Windows process API.</param>
+    /// <param name="packagesService">A service for working with appx packages API.</param>
     public ShellViewModel(
         INavigationService navigationService,
         INavigationViewService navigationViewService,
@@ -72,43 +85,59 @@ public partial class ShellViewModel : ObservableRecipient
         IRequirementsService requirementsService,
         StartupViewModel startupViewModel,
         RequirementsFailureViewModel requirementsFailureViewModel,
-        IModelService modelService)
+        IModelService modelService,
+        IProcessService processService,
+        IAppxPackagesService packagesService)
     {
-        NavigationService = navigationService;
-        this.commonDataService = commonDataService;
         this.requirementsService = requirementsService;
-        NavigationViewService = navigationViewService;
-        NavigationService.Navigated += OnNavigated;
-        delimiter = this.commonDataService.GetDelimiter();
-        startupModel = startupViewModel;
-        failureViewModel = requirementsFailureViewModel;
+        this.processService = processService;
+        this.packagesService = packagesService ?? throw new ArgumentNullException(nameof(packagesService));
         this.modelService = modelService;
+        this.commonDataService = commonDataService;
+        startupModel = startupViewModel;
+        NavigationViewService = navigationViewService;
+        NavigationService = navigationService;
+        NavigationService.Navigated += OnNavigated;
+        failureViewModel = requirementsFailureViewModel;
+        delimiter = this.commonDataService.GetDelimiter();
 
-        ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
         ApplicableModelsApply_Command = new AsyncRelayCommand(ApplicableModelsApplyAsync);
         ApplicableModelsCancel_Command = new RelayCommand(ApplicableModelsCancel);
+        ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
+        UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
+        UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
     }
 
     /// <summary>
-    /// Gets <see cref="IAsyncRelayCommand"/> to click an "Cancel" button in the "Apply Customizations" panel.
+    /// Gets <see cref="IAsyncRelayCommand"/> to click an "Cancel" button in the Apply Customizations Panel.
     /// </summary>
     public IAsyncRelayCommand ApplicableModelsClear_Command { get; }
 
     /// <summary>
-    /// Gets <see cref="IAsyncRelayCommand"/> to click an "Apply" button in the "Apply Customizations" panel.
+    /// Gets <see cref="IAsyncRelayCommand"/> to click an "Apply" button in the Apply Customizations Panel.
     /// </summary>
     public IAsyncRelayCommand ApplicableModelsApply_Command { get; }
 
     /// <summary>
-    /// Gets <see cref="RelayCommand"/> to click an "Cancel" button in the "Setup Customizations" panel.
+    /// Gets <see cref="IRelayCommand"/> to click an "Cancel" button in the Setup Customizations Panel.
     /// </summary>
-    public RelayCommand ApplicableModelsCancel_Command { get; }
+    public IRelayCommand ApplicableModelsCancel_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to click an element in the interface.
     /// </summary>
     public IRelayCommand<UIModel> UIModelClicked_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to click an "For all users" checkbox in the UWP page.
+    /// </summary>
+    public IRelayCommand UwpForAllUsersClicked_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to click an <see cref="UIUwpAppModel"/> in the interface.
+    /// </summary>
+    public IRelayCommand<UIUwpAppModel> UIUwpAppModelClicked_Command { get; }
 
     /// <summary>
     /// Gets <see cref="INavigationService"/>.
@@ -121,16 +150,16 @@ public partial class ShellViewModel : ObservableRecipient
     public INavigationViewService NavigationViewService { get; }
 
     /// <summary>
-    /// Gets <see cref="UIModel"/> collection.
+    /// Gets <see cref="UIModel"/> collection from "UIMarkup.json" file.
     /// </summary>
-    public ConcurrentBag<UIModel> Models { get; private set; } = new ();
+    public ConcurrentBag<UIModel> JsonModels { get; private set; } = [];
 
     /// <summary>
     /// Executes the ViewModel logic of the MVVM pattern.
     /// </summary>
     public async Task ExecuteAsync()
     {
-        var numberOfRequirements = 15;
+        var numberOfRequirements = 16;
         await Task.Run(() =>
         {
             _ = Result.Try(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
@@ -224,9 +253,20 @@ public partial class ShellViewModel : ObservableRecipient
             }))
             .Tap(async () =>
             {
-                var models = modelService.BuildModels();
-                Models = new (models);
-                await modelService.GetStateAsync(Models);
+                var jsonModels = await modelService.BuildJsonModelsAsync();
+                JsonModels = new (jsonModels);
+                await modelService.GetStateAsync(JsonModels);
+            })
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
+                startupModel.StatusText = "OsRequirements_GeneratingUserInterface".GetLocalized();
+            }))
+            .Tap(async () =>
+            {
+                uwpAllUsersModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: true);
+                uwpCurrentUserModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: false);
+                UwpAppsModels = new (uwpAllUsersModels);
             })
             .Match(
                 onSuccess: () => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
@@ -262,6 +302,7 @@ public partial class ShellViewModel : ObservableRecipient
     private async Task ApplicableModelsClearAsync()
     {
         NavigationViewHitTestVisible = false;
+        App.Logger.LogApplicableModelsCanceled();
         ProgressBarValue = 0;
         SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
         SetUpCustomizationsPanelCancelButtonIsVisible = false;
@@ -293,8 +334,8 @@ public partial class ShellViewModel : ObservableRecipient
         App.Logger.LogApplicableModelsClear();
         EnvironmentHelper.RefreshUserDesktop();
         EnvironmentHelper.ForcedRefresh();
-        EnvironmentHelper.StopStartMenu();
-        EnvironmentHelper.StopExplorerProcess();
+        processService.KillAllProcesses("StartMenuExperienceHost");
+        processService.KillAllProcesses("explorer");
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
     }
@@ -316,5 +357,21 @@ public partial class ShellViewModel : ObservableRecipient
 
         ApplicableModels.Add(model);
         App.Logger.LogApplicableModelAdded(model.Name);
+    }
+
+    private void UwpForAllUsersClicked()
+    {
+        NavigationViewHitTestVisible = false;
+        App.Logger.LogUwpForAllUsersState(UwpForAllUsersState);
+        UwpForAllUsersState = !UwpForAllUsersState;
+        UwpAppsModels = new ObservableCollection<UIModel>(UwpForAllUsersState ? uwpAllUsersModels : uwpCurrentUserModels);
+        NavigationViewHitTestVisible = true;
+    }
+
+    private void UIUwpAppModelClicked(UIUwpAppModel model)
+    {
+        model.ForAllUsers = UwpForAllUsersState;
+        model.Mutator = (packageFullName, removeForAll) => packagesService.RemovePackage(packageName: model.Title, forAllUsers: model.ForAllUsers);
+        UIModelClicked(model);
     }
 }

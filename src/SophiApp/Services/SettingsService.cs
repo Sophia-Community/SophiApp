@@ -12,8 +12,8 @@ using Windows.Storage;
 public class SettingsService : ISettingsService
 {
     private readonly IFileService fileService;
-    private readonly string optionsFolder = AppContext.BaseDirectory;
-    private readonly string optionsFile = "Settings.json";
+    private readonly string settingsFolder = AppContext.BaseDirectory;
+    private readonly string settingsFile = "Settings.json";
     private IDictionary<string, object>? settings;
     private bool isInitialized;
 
@@ -60,7 +60,7 @@ public class SettingsService : ISettingsService
         {
             await InitializeAsync();
             settings![key] = await JsonExtensions.StringifyAsync(value!);
-            await Task.Run(() => fileService.Save(optionsFolder, optionsFile, settings));
+            await Task.Run(() => fileService.SaveToJson(settingsFolder, settingsFile, settings));
         }
     }
 
@@ -69,7 +69,7 @@ public class SettingsService : ISettingsService
         if (!isInitialized)
         {
             settings = await Task.Run(() => fileService
-            .Read<IDictionary<string, object>>(optionsFolder, optionsFile)) ?? new Dictionary<string, object>();
+            .ReadFromJson<IDictionary<string, object>>(settingsFolder, settingsFile)) ?? new Dictionary<string, object>();
             isInitialized = true;
         }
     }

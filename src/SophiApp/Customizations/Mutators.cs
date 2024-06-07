@@ -21,9 +21,11 @@ namespace SophiApp.Customizations
     public static class Mutators
     {
         private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
+        private static readonly IFileService FileService = App.GetService<IFileService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly IOsService OsService = App.GetService<IOsService>();
+        private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
 
         /// <summary>
         /// Sets DiagTrack service state.
@@ -73,7 +75,7 @@ namespace SophiApp.Customizations
             Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack")
                 .SetValue("ShowedToastAtLevel", 3, RegistryValueKind.DWord);
             Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\DataCollection", true)
-                ?.DeleteValue("AllowTelemetry", true);
+                ?.DeleteValue("AllowTelemetry", false);
         }
 
         /// <summary>
@@ -86,10 +88,12 @@ namespace SophiApp.Customizations
             var reportingTask = TaskService.Instance.GetTask("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting");
             var reportingService = new ServiceController("WerSvc");
 
+            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Windows Error Reporting", true)?.DeleteValue("Disabled", false);
+
             if (isEnabled)
             {
                 reportingTask.Enabled = true;
-                Registry.CurrentUser.OpenSubKey(reportingRegistryPath, true)?.DeleteValue("Disabled", true);
+                Registry.CurrentUser.OpenSubKey(reportingRegistryPath, true)?.DeleteValue("Disabled", false);
                 OsService.SetServiceStartMode(reportingService, ServiceStartMode.Manual);
                 reportingService.TryStart();
                 return;
@@ -112,6 +116,8 @@ namespace SophiApp.Customizations
         public static void FeedbackFrequency(int state)
         {
             var siufRulesPath = "Software\\Microsoft\\Siuf\\Rules";
+
+            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\DataCollection", true)?.DeleteValue("DoNotShowFeedbackNotifications", false);
 
             if (state.Equals(2))
             {
@@ -165,9 +171,11 @@ namespace SophiApp.Customizations
             var userArsoPath = $"Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\UserARSO\\{sid}";
             var optOut = "OptOut";
 
+            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", true)?.DeleteValue("DisableAutomaticRestartSignOn", false);
+
             if (isEnabled)
             {
-                Registry.LocalMachine.OpenSubKey(userArsoPath, true)?.DeleteValue(optOut, true);
+                Registry.LocalMachine.OpenSubKey(userArsoPath, true)?.DeleteValue(optOut, false);
                 return;
             }
 
@@ -185,7 +193,7 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(userProfilePath, true)?.DeleteValue(httpOptOut, true);
+                Registry.CurrentUser.OpenSubKey(userProfilePath, true)?.DeleteValue(httpOptOut, false);
                 return;
             }
 
@@ -198,6 +206,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Advertising ID state.</param>
         public static void AdvertisingID(bool isEnabled)
         {
+            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\AdvertisingInfo", true)
+                ?.DeleteValue("DisabledByGroupPolicy", false);
+
             Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo")
                 .SetValue("Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
@@ -218,6 +229,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Windows tips state.</param>
         public static void WindowsTips(bool isEnabled)
         {
+            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\CloudContent", true)
+                ?.DeleteValue("DisableSoftLanding", false);
+
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
                 ?.SetValue("SubscribedContent-338389Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
@@ -239,6 +253,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Suggested apps state.</param>
         public static void AppsSilentInstalling(bool isEnabled)
         {
+            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\CloudContent", true)
+                ?.DeleteValue("DisableWindowsConsumerFeatures", false);
+
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
                 ?.SetValue("SilentInstalledAppsEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
@@ -259,6 +276,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Tailored experiences state.</param>
         public static void TailoredExperiences(bool isEnabled)
         {
+            Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\CloudContent", true)
+                ?.DeleteValue("DisableTailoredExperiencesWithDiagnosticData", false);
+
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Privacy", true)
                 ?.SetValue("TailoredExperiencesWithDiagnosticDataEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
@@ -274,11 +294,264 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(explorerPath, true)?.DeleteValue(disableSuggestions, true);
+                Registry.CurrentUser.OpenSubKey(explorerPath, true)?.DeleteValue(disableSuggestions, false);
                 return;
             }
 
             Registry.CurrentUser.OpenOrCreateSubKey(explorerPath).SetValue(disableSuggestions, 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Sets Start menu recommendations state.
+        /// </summary>
+        /// <param name="isEnabled">Start menu recommendations state.</param>
+        public static void StartRecommendationsTips(bool isEnabled)
+        {
+            var irisPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var startIris = "Start_IrisRecommendations";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(irisPath, true)?.DeleteValue(irisPath, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenSubKey(irisPath, true)?.SetValue(startIris, 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Sets Start Menu notifications state.
+        /// </summary>
+        /// <param name="isEnabled">Start Menu notifications state.</param>
+        public static void StartAccountNotifications(bool isEnabled)
+        {
+            var notificationsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var startNotifications = "Start_AccountNotifications";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(notificationsPath, true)?.DeleteValue(startNotifications, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenSubKey(notificationsPath, true)?.SetValue(startNotifications, 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Sets Windows network protection state.
+        /// </summary>
+        /// <param name="isEnabled">Network protection state.</param>
+        public static void NetworkProtection(bool isEnabled)
+        {
+            var protectionScript = $"Set-MpPreference -EnableNetworkProtection {(isEnabled ? "Enabled" : "Disabled")}";
+            _ = PowerShellService.Invoke(protectionScript);
+        }
+
+        /// <summary>
+        /// Sets Windows PUApps detection state.
+        /// </summary>
+        /// <param name="isEnabled">PUApps detection state.</param>
+        public static void PUAppsDetection(bool isEnabled)
+        {
+            var detectionScript = $"Set-MpPreference -PUAProtection {(isEnabled ? "Enabled" : "Disabled")}";
+            _ = PowerShellService.Invoke(detectionScript);
+        }
+
+        /// <summary>
+        /// Sets Microsoft Defender sandbox state.
+        /// </summary>
+        /// <param name="isEnabled">Microsoft Defender sandbox state.</param>
+        public static void DefenderSandbox(bool isEnabled)
+        {
+            var sandboxScript = $"setx /M MP_FORCE_USE_SANDBOX {(isEnabled ? "1" : "0")}";
+            _ = PowerShellService.Invoke(sandboxScript);
+        }
+
+        /// <summary>
+        /// Sets Windows command line process audit state.
+        /// </summary>
+        /// <param name="isEnabled">Command line process audit state.</param>
+        public static void CommandLineProcessAudit(bool isEnabled)
+        {
+            var processAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var auditValueName = "ProcessCreationIncludeCmdLine_Enabled";
+
+            if (isEnabled)
+            {
+                _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
+                Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.SetValue(auditValueName, 1, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.DeleteValue(auditValueName, false);
+        }
+
+        /// <summary>
+        /// Sets Windows Event Viewer custom view state.
+        /// </summary>
+        /// <param name="isEnabled">Event Viewer custom view state.</param>
+        public static void EventViewerCustomView(bool isEnabled)
+        {
+            var auditValueName = "ProcessCreationIncludeCmdLine_Enabled";
+            var processXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
+            var processAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var processCreationXml = @$"<ViewerConfig>
+  <QueryConfig>
+    <QueryParams>
+      <UserQuery />
+    </QueryParams>
+    <QueryNode>
+      <Name>{"EventViewerCustomView_ProcessCreationXml_Name".GetLocalized()}</Name>
+      <Description>{"EventViewerCustomView_ProcessCreationXml_Description".GetLocalized()}</Description>
+      <QueryList>
+        <Query Id=""0"" Path=""Security"">
+          <Select Path=""Security"">*[System[(EventID=4688)]]</Select>
+        </Query>
+      </QueryList>
+    </QueryNode>
+  </QueryConfig>
+</ViewerConfig>";
+
+            if (isEnabled)
+            {
+                _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
+                Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.SetValue(auditValueName, 1, RegistryValueKind.DWord);
+                FileService.Save(file: processXmlPath, content: processCreationXml, encoding: Encoding.UTF8);
+                return;
+            }
+
+            File.Delete(processXmlPath);
+        }
+
+        /// <summary>
+        /// Sets Windows PowerShell modules logging state.
+        /// </summary>
+        /// <param name="isEnabled">PowerShell modules logging state.</param>
+        public static void PowerShellModulesLogging(bool isEnabled)
+        {
+            var moduleLoggingPath = "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging";
+            var moduleNamesPath = $"{moduleLoggingPath}\\ModuleNames";
+            var moduleLoggingValueName = "EnableModuleLogging";
+
+            if (isEnabled)
+            {
+                Registry.LocalMachine.OpenOrCreateSubKey(moduleNamesPath).SetValue("*", "*");
+                Registry.LocalMachine.OpenSubKey(moduleLoggingPath, true)?.SetValue(moduleLoggingValueName, 1, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.LocalMachine.OpenSubKey(moduleLoggingPath, true)?.DeleteValue(moduleLoggingValueName, false);
+            Registry.LocalMachine.OpenSubKey(moduleNamesPath, true)?.DeleteValue("*", false);
+        }
+
+        /// <summary>
+        /// Sets Windows PowerShell scripts logging state.
+        /// </summary>
+        /// <param name="isEnabled">PowerShell scripts logging state.</param>
+        public static void PowerShellScriptsLogging(bool isEnabled)
+        {
+            var scriptLoggingPath = "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging";
+            var scriptLoggingValueName = "EnableScriptBlockLogging";
+
+            if (isEnabled)
+            {
+                Registry.LocalMachine.OpenOrCreateSubKey(scriptLoggingPath).SetValue(scriptLoggingValueName, 1, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.LocalMachine.OpenSubKey(scriptLoggingPath, true)?.DeleteValue(scriptLoggingValueName);
+        }
+
+        /// <summary>
+        /// Sets Windows SmartScreen state.
+        /// </summary>
+        /// <param name="isEnabled">Windows SmartScreen state.</param>
+        public static void AppsSmartScreen(bool isEnabled)
+        {
+            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)
+                ?.SetValue("SmartScreenEnabled", $"{(isEnabled ? "Warn" : "Off")}", RegistryValueKind.String);
+        }
+
+        /// <summary>
+        /// Sets Windows save zone state.
+        /// </summary>
+        /// <param name="isEnabled">Windows save zone state.</param>
+        public static void SaveZoneInformation(bool isEnabled)
+        {
+            var safeZonePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments";
+            var safeZoneValueName = "SaveZoneInformation";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(safeZonePath, true)?.DeleteValue(safeZoneValueName, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey(safeZonePath).SetValue(safeZoneValueName, 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Sets Windows script host state.
+        /// </summary>
+        /// <param name="isEnabled">Windows script host state.</param>
+        public static void WindowsScriptHost(bool isEnabled)
+        {
+            var scriptHostPath = "Software\\Microsoft\\Windows Script Host\\Settings";
+            var scriptHostValueName = "Enabled";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(scriptHostPath, true)?.DeleteValue(scriptHostValueName, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey(scriptHostPath).SetValue(scriptHostValueName, 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Sets Windows Sandbox state.
+        /// </summary>
+        /// <param name="isEnabled">Windows Sandbox state.</param>
+        public static void WindowsSandbox(bool isEnabled)
+        {
+            var enableSandboxScript = "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart";
+            var disableSandboxScript = "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart";
+            _ = PowerShellService.Invoke($"{(isEnabled ? enableSandboxScript : disableSandboxScript)}");
+        }
+
+        /// <summary>
+        /// Sets Local Security Authority state.
+        /// </summary>
+        /// <param name="isEnabled">ocal Security Authority state.</param>
+        public static void LocalSecurityAuthority(bool isEnabled)
+        {
+            static void WriteLSARegistryValues()
+            {
+                var lsaPath = "System\\CurrentControlSet\\Control\\Lsa";
+                Registry.LocalMachine.OpenSubKey(lsaPath, true)?.SetValue("RunAsPPL", 2, RegistryValueKind.DWord);
+                Registry.LocalMachine.OpenSubKey(lsaPath, true)?.SetValue("RunAsPPLBoot", 2, RegistryValueKind.DWord);
+            }
+
+            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? false;
+            var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? false;
+
+            if (isEnabled)
+            {
+                if (virtualizationIsEnabled)
+                {
+                    WriteLSARegistryValues();
+                }
+                else if (hypervisorPresent)
+                {
+                    WriteLSARegistryValues();
+                }
+
+                return;
+            }
+
+            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPL", false);
+            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPLBoot", false);
+            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System", true)?.DeleteValue("RunAsPPL", false);
         }
 
         /// <summary>
@@ -597,25 +870,6 @@ namespace SophiApp.Customizations
             {
                 throw new InvalidOperationException("Failed to write data to \"Microsoft.WindowsTerminal\" configuration file", ex);
             }
-        }
-
-        /// <summary>
-        /// Sets Windows 10 context menu style state.
-        /// </summary>
-        /// <param name="isEnabled">Windows 10 context menu style state.</param>
-        public static void Windows10ContextMenu(bool isEnabled)
-        {
-            var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}";
-            var contextMenuValue = "InprocServer32";
-
-            if (isEnabled)
-            {
-                var contextPathValue = $"{contextMenuPath}\\{contextMenuValue}";
-                Registry.CurrentUser.OpenOrCreateSubKey(contextPathValue).SetValue(string.Empty, string.Empty, RegistryValueKind.String);
-                return;
-            }
-
-            Registry.CurrentUser.DeleteSubKeyTree(contextMenuPath, false);
         }
     }
 }

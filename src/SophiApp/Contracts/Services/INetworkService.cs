@@ -5,7 +5,7 @@
 namespace SophiApp.Contracts.Services
 {
     /// <summary>
-    /// A networking service.
+    /// A service for working with networks API.
     /// </summary>
     public interface INetworkService
     {

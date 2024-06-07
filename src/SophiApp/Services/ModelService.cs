@@ -10,7 +10,6 @@ namespace SophiApp.Services
     using System.Diagnostics;
     using System.Reflection;
     using System.Text;
-    using CSharpFunctionalExtensions;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
@@ -23,33 +22,78 @@ namespace SophiApp.Services
     {
         private readonly ICommonDataService commonDataService;
         private readonly ResourceMap resourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
+        private readonly IAppxPackagesService appxPackagesService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelService"/> class.
         /// </summary>
-        /// <param name="commonDataService">A service for transferring common app data between layers of abstractions.</param>
-        public ModelService(ICommonDataService commonDataService) => this.commonDataService = commonDataService;
+        /// <param name="appxPackagesService">A service for working with appx packages API.</param>
+        /// <param name="commonDataService">A service for transferring app data between layers of DI.</param>
+        public ModelService(IAppxPackagesService appxPackagesService, ICommonDataService commonDataService)
+        {
+            this.appxPackagesService = appxPackagesService;
+            this.commonDataService = commonDataService;
+        }
 
         /// <inheritdoc/>
-        public List<UIModel> BuildModels()
+        public async Task<List<UIModel>> BuildJsonModelsAsync()
         {
-            App.Logger.LogStartModelsBuild();
-            var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
-            var models = JsonExtensions.ToObject<IEnumerable<UIModelDto>>(json)
-                .Where(dto => commonDataService.IsWindows11 ? dto.Windows11Support : dto.Windows10Support)
-                .Select(dto =>
-                {
-                    return dto.Type switch
+            return await Task.Run(() =>
+            {
+                App.Logger.LogStartModelsBuild();
+                var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
+                var models = JsonExtensions.ToObject<IEnumerable<UIModelDto>>(json)
+                    .Where(dto => commonDataService.IsWindows11 ? dto.Windows11Support : dto.Windows10Support)
+                    .Select(dto =>
                     {
-                        UIModelType.CheckBox => BuildCheckBoxModel(dto),
-                        UIModelType.ExpandingRadioGroup => BuildExpandingRadioGroupModel(dto),
-                        _ => throw new TypeAccessException($"An invalid type is specified: {dto.Type}"),
-                    };
-                })
-                .OrderByDescending(model => model.ViewId)
-                .ToList();
-            App.Logger.LogAllModelsBuilt(models.Count);
-            return models;
+                        return dto.Type switch
+                        {
+                            UIModelType.CheckBox => BuildCheckBoxModel(dto),
+                            UIModelType.ExpandingRadioGroup => BuildExpandingRadioGroupModel(dto),
+                            _ => throw new TypeAccessException($"An invalid type is specified: {dto.Type}"),
+                        };
+                    })
+                    .OrderByDescending(model => model.ViewId)
+                    .ToList();
+                App.Logger.LogAllModelsBuilt(models.Count);
+                return models;
+            });
+        }
+
+        /// <inheritdoc/>
+        public async Task<List<UIModel>> BuildUwpAppModelsAsync(bool forAllUsers)
+        {
+            return await Task.Run(() =>
+            {
+                var models = new List<UIModel>();
+                var appWhiteList = new List<string>()
+            {
+                "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore",
+                "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension",
+                "Microsoft.HEVCVideoExtension", "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "windows.immersivecontrolpanel",
+            };
+
+                var startViewId = 5000;
+                var packages = appxPackagesService.GetPackages(forAllUsers);
+
+                for (int i = 0; i < packages.Count; i++)
+                {
+                    try
+                    {
+                        if (!appWhiteList.Contains(packages[i].Id.Name) && File.Exists(packages[i].Logo.LocalPath) && packages[i].DisplayName != string.Empty)
+                        {
+                            var dto = new UIModelDto(Name: packages[i].DisplayName, Type: UIModelType.UwpApp, Tag: UICategoryTag.UWP, ViewId: startViewId + i, Windows10Support: true, Windows11Support: true, NumberOfItems: 0);
+                            models.Add(new UIUwpAppModel(dto, packages[i].Id.Name, packages[i].Logo));
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Do nothing.
+                    }
+                }
+
+                return models;
+            });
         }
 
         /// <inheritdoc/>
@@ -61,7 +105,6 @@ namespace SophiApp.Services
                 GetStateByTag(models, UICategoryTag.Privacy),
                 GetStateByTag(models, UICategoryTag.Personalization),
                 GetStateByTag(models, UICategoryTag.System),
-                GetStateByTag(models, UICategoryTag.UWP),
                 GetStateByTag(models, UICategoryTag.TaskScheduler),
                 GetStateByTag(models, UICategoryTag.Security),
                 GetStateByTag(models, UICategoryTag.ContextMenu));
@@ -172,22 +215,22 @@ namespace SophiApp.Services
         private Task GetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null)
         {
             return Task.Run(() => models.Where(model => model.Tag == tag)
-            .ToList()
-            .ForEach(model =>
-            {
-                var timer = Stopwatch.StartNew();
-                model.GetState();
-                timer.Stop();
-                App.Logger.LogModelGetState(model.Name, timer);
-                getStateCallback?.Invoke();
-            }));
+                .ToList()
+                .ForEach(model =>
+                {
+                    var timer = Stopwatch.StartNew();
+                    model.GetState();
+                    timer.Stop();
+                    App.Logger.LogModelGetState(model.Name, timer);
+                    getStateCallback?.Invoke();
+                }));
         }
 
         private Task SetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null, CancellationToken? token = null)
         {
             return Task.Run(() =>
             {
-                var taggedModels = models.Where(model => model.Tag == tag).ToList();
+                var taggedModels = models.Where(model => model.IsEnabled && model.Tag == tag).ToList();
 
                 foreach (var model in taggedModels)
                 {

@@ -147,11 +147,9 @@ namespace SophiApp.Contracts.Services
             where T : struct;
 
         /// <summary>
-        /// Write the completion of one model refresh state in the log.
+        /// Write information about the canceling of a applicable models collection in the log.
         /// </summary>
-        /// <param name="name">The model name.</param>
-        /// <param name="timer">Get model state spent time.</param>
-        void LogModelRefreshState(string name, Stopwatch timer);
+        void LogApplicableModelsCanceled();
 
         /// <summary>
         /// Write information about the deletion of all models in the applied collection in the log.
@@ -169,6 +167,12 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="name">Added model name.</param>
         void LogApplicableModelAdded(string name);
+
+        /// <summary>
+        /// Write information about state a "For all users" checkbox in the UWP page.
+        /// </summary>
+        /// <param name="state">A "For all users" checkbox state.</param>
+        void LogUwpForAllUsersState(bool state);
 
         /// <summary>
         /// Write <see cref="RequirementsFailure"/> reason in the <see cref="IRequirementsService"/> in the log.
@@ -253,12 +257,6 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="service">Microsoft Defender service name.</param>
         void LogMsDefenderServiceNotFound(string service);
-
-        /// <summary>
-        /// Handles an exception when accessing to Microsoft Defender service API in the <see cref="IRequirementsService"/>.
-        /// </summary>
-        /// <param name="exception">Represents errors that occur during app executing.</param>
-        void LogMsDefenderServicesException(Exception exception);
 
         /// <summary>
         /// Handles an exception when accessing to get UI model state.

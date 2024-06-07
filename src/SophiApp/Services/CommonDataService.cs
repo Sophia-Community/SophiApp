@@ -145,13 +145,6 @@ namespace SophiApp.Services
         public static InputCursor UrlCursor
         {
             get => urlCursor;
-            private set
-            {
-                if (urlCursor != value)
-                {
-                    urlCursor = value;
-                }
-            }
         }
 
         /// <inheritdoc/>
