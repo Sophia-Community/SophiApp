@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -357,25 +357,25 @@
     <value>The PC is waiting to be restarted.</value>
   </data>
   <data name="OsRequirements_GetMsDefenderFilesExist" xml:space="preserve">
-    <value>Detect Microsoft Defender components exists</value>
+    <value>Detecting Microsoft Defender components exists</value>
   </data>
   <data name="OsRequirements_GetPendingRebootState" xml:space="preserve">
-    <value>Detect a pending reboot</value>
+    <value>Detecting a pending reboot</value>
   </data>
   <data name="OsRequirements_UpdateDetection" xml:space="preserve">
-    <value>Detect a SophiApp is latest one</value>
+    <value>Detecting a SophiApp is latest one</value>
   </data>
   <data name="OsRequirementsFailure_MsDefenderIsBroken" xml:space="preserve">
     <value>Microsoft Defender broken or removed from the OS.</value>
   </data>
   <data name="OsRequirements_GetMsDefenderServicesState" xml:space="preserve">
-    <value>Detect Microsoft Defender services state</value>
+    <value>Detecting Microsoft Defender services state</value>
   </data>
   <data name="OsRequirements_GetMsDefenderState" xml:space="preserve">
-    <value>Detect Microsoft Defender state</value>
+    <value>Detecting Microsoft Defender state</value>
   </data>
   <data name="OsRequirements_ReadWindowsSettings" xml:space="preserve">
-    <value>Read Windows settings</value>
+    <value>Reading Windows settings</value>
   </data>
   <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
     <value>The telemetry service</value>
