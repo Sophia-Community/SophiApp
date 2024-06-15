@@ -4,6 +4,9 @@
 
 	.EXAMPLE
 	iwr app.sophia.team -useb | iex
+
+	.NOTES
+	Current user
 #>
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -29,12 +32,12 @@ else
 }
 
 $Parameters = @{
-	Uri              = "https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/sophiapp_versions.json"
-	UseBasicParsing  = $true
+	Uri             = "https://api.github.com/repos/Sophia-Community/SophiApp/releases/latest"
+	UseBasicParsing = $true
 }
-$LatestRelease = (Invoke-RestMethod @Parameters).SophiApp_release
+$LatestRelease = (Invoke-RestMethod @Parameters).assets.browser_download_url
 $Parameters = @{
-	Uri             = "https://github.com/Sophia-Community/SophiApp/releases/download/$LatestRelease/SophiApp.zip"
+	Uri             = $LatestRelease
 	OutFile         = "$DownloadsFolder\SophiApp.zip"
 	UseBasicParsing = $true
 	Verbose         = $true
@@ -52,28 +55,35 @@ Remove-Item -Path "$DownloadsFolder\SophiApp.zip" -Force
 Start-Sleep -Second 1
 Invoke-Item -Path "$DownloadsFolder\SophiApp"
 
-$SetForegroundWindow = @{
-	Namespace = "WinAPI"
-	Name      = "ForegroundWindow"
-	Language  = "CSharp"
-	MemberDefinition = @"
+# https://github.com/PowerShell/PowerShell/issues/21070
+$CompilerParameters = [System.CodeDom.Compiler.CompilerParameters]::new("System.dll")
+$CompilerParameters.TempFiles = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
+$CompilerParameters.GenerateInMemory = $true
+$Signature = @{
+	Namespace          = "WinAPI"
+	Name               = "ForegroundWindow"
+	Language           = "CSharp"
+	CompilerParameters = $CompilerParameters
+	MemberDefinition   = @"
 [DllImport("user32.dll")]
 public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 [DllImport("user32.dll")]
 [return: MarshalAs(UnmanagedType.Bool)]
 public static extern bool SetForegroundWindow(IntPtr hWnd);
 "@
+	}
+
+# PowerShell 7 has CompilerOptions argument instead of CompilerParameters as PowerShell 5 has
+# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type#-compileroptions
+if ($Host.Version.Major -eq 7)
+{
+	$Signature.Remove("CompilerParameters")
+	$Signature.Add("CompilerOptions", $CompilerParameters)
 }
+
 if (-not ("WinAPI.ForegroundWindow" -as [type]))
 {
-	try
-	{
-		Add-Type @SetForegroundWindow
-	}
-	catch [System.ComponentModel.Win32Exception]
-	{
-		Write-Warning -Message "PowerShell 5.1 does not compile code if the username contains non-Latin characters (including emoji) and is written in lowercase. Ignore this error message. Open background folder manually."
-	}
+	Add-Type @Signature
 }
 
 Start-Sleep -Seconds 1
