@@ -527,9 +527,6 @@
   <data name="UIModel_AppsSmartScreen_Title" xml:space="preserve">
     <value>Check apps and files within Microsoft Defender SmartScreen</value>
   </data>
-  <data name="UIModel_CommandLineProcessAudit_Description" xml:space="preserve">
-    <value>Enable logging of each app execution, who the app ran as and the process that started this process (event 4688). You can correlate this event to other events by Process ID to determine what the program did while it ran and when it exited (event 4689). It will be possible to read the command line arguments for any successfully created process (event 4688).</value>
-  </data>
   <data name="UIModel_DefenderSandbox_Description" xml:space="preserve">
     <value>Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm. The sandbox for Microsoft Defender is enabled by default in Windows 11.</value>
   </data>
@@ -587,9 +584,6 @@
   <data name="OsRequirements_Malware_AtlasOS" xml:space="preserve">
     <value>Atlas OS</value>
   </data>
-  <data name="UIModel_CommandLineProcessAudit_Title" xml:space="preserve">
-    <value>Enable events auditing generated when a process is created or starts</value>
-  </data>
   <data name="UIModel_DefenderSandbox_Title" xml:space="preserve">
     <value>Enable sandboxing for Microsoft Defender</value>
   </data>
@@ -614,6 +608,7 @@
   <data name="UIModel_WindowsScriptHost_Title" xml:space="preserve">
     <value>Enable Windows Script Host</value>
   </data>
+<<<<<<< Updated upstream
   <data name="OsRequirements_Malware_WinClean" xml:space="preserve">
     <value>WinClean</value>
   </data>
@@ -660,3 +655,6 @@
     <value>Создание процесса</value>
   </data>
 </root>
+=======
+</root>
+>>>>>>> Stashed changes

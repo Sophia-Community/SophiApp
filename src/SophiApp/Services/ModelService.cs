@@ -66,21 +66,26 @@ namespace SophiApp.Services
             return await Task.Run(() =>
             {
                 var models = new List<UIModel>();
-                var appWhiteList = new List<string>()
+                var startViewId = 5000;
+                var packages = appxPackagesService.GetPackages(forAllUsers);
+                var excludedAppx = new List<string>()
             {
                 "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore",
                 "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension",
                 "Microsoft.HEVCVideoExtension", "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "windows.immersivecontrolpanel",
+                "AdvancedMicroDevicesInc-2.AMDRadeonSoftware", "AppUp.IntelGraphicsControlPanel", "AppUp.IntelGraphicsExperience", "Microsoft.ApplicationCompatibilityEnhancements",
+                "Microsoft.AVCEncoderVideoExtension", "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "MicrosoftWindows.CrossDevice",
+                "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview",
+                "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux", "Microsoft.HEVCVideoExtension",
+                "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "Microsoft.MPEG2VideoExtension", "Microsoft.VP9VideoExtensions",
+                "Microsoft.WebpImageExtension", "Microsoft.PowerShell", "NVIDIACorp.NVIDIAControlPanel", "RealtekSemiconductorCorp.RealtekAudioControl",
             };
-
-                var startViewId = 5000;
-                var packages = appxPackagesService.GetPackages(forAllUsers);
 
                 for (int i = 0; i < packages.Count; i++)
                 {
                     try
                     {
-                        if (!appWhiteList.Contains(packages[i].Id.Name) && File.Exists(packages[i].Logo.LocalPath) && packages[i].DisplayName != string.Empty)
+                        if (!excludedAppx.Contains(packages[i].Id.Name) && File.Exists(packages[i].Logo.LocalPath) && packages[i].DisplayName != string.Empty)
                         {
                             var dto = new UIModelDto(Name: packages[i].DisplayName, Type: UIModelType.UwpApp, Tag: UICategoryTag.UWP, ViewId: startViewId + i, Windows10Support: true, Windows11Support: true, NumberOfItems: 0);
                             models.Add(new UIUwpAppModel(dto, packages[i].Id.Name, packages[i].Logo));

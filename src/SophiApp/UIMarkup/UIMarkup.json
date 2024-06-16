@@ -162,7 +162,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "CommandLineProcessAudit",
+    "Name": "EventViewerCustomView",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 603,
@@ -170,7 +170,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "EventViewerCustomView",
+    "Name": "PowerShellModulesLogging",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 604,
@@ -178,7 +178,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "PowerShellModulesLogging",
+    "Name": "PowerShellScriptsLogging",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 605,
@@ -186,7 +186,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "PowerShellScriptsLogging",
+    "Name": "AppsSmartScreen",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 606,
@@ -194,7 +194,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "AppsSmartScreen",
+    "Name": "SaveZoneInformation",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 607,
@@ -202,7 +202,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "SaveZoneInformation",
+    "Name": "WindowsScriptHost",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 608,
@@ -210,7 +210,7 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "WindowsScriptHost",
+    "Name": "WindowsSandbox",
     "Type": "CheckBox",
     "Tag": "Security",
     "ViewId": 609,
@@ -218,18 +218,10 @@
     "Windows11Support": "True"
   },
   {
-    "Name": "WindowsSandbox",
-    "Type": "CheckBox",
-    "Tag": "Security",
-    "ViewId": 610,
-    "Windows10Support": "True",
-    "Windows11Support": "True"
-  },
-  {
     "Name": "LocalSecurityAuthority",
     "Type": "CheckBox",
     "Tag": "Security",
-    "ViewId": 611,
+    "ViewId": 610,
     "Windows10Support": "False",
     "Windows11Support": "True"
   },

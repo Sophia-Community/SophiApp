@@ -368,25 +368,6 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Sets Windows command line process audit state.
-        /// </summary>
-        /// <param name="isEnabled">Command line process audit state.</param>
-        public static void CommandLineProcessAudit(bool isEnabled)
-        {
-            var processAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
-            var auditValueName = "ProcessCreationIncludeCmdLine_Enabled";
-
-            if (isEnabled)
-            {
-                _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
-                Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.SetValue(auditValueName, 1, RegistryValueKind.DWord);
-                return;
-            }
-
-            Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.DeleteValue(auditValueName, false);
-        }
-
-        /// <summary>
         /// Sets Windows Event Viewer custom view state.
         /// </summary>
         /// <param name="isEnabled">Event Viewer custom view state.</param>
@@ -416,10 +397,11 @@ namespace SophiApp.Customizations
             {
                 _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
                 Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.SetValue(auditValueName, 1, RegistryValueKind.DWord);
-                FileService.Save(file: processXmlPath, content: processCreationXml, encoding: Encoding.UTF8);
+                FileService.Save(file: processXmlPath, content: processCreationXml);
                 return;
             }
 
+            Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.DeleteValue(auditValueName, false);
             File.Delete(processXmlPath);
         }
 
@@ -814,6 +796,8 @@ namespace SophiApp.Customizations
         {
             var storeContextPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
             var storeContextValue = "NoUseStoreOpenWith";
+
+            Registry.LocalMachine.OpenSubKey("Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("NoUseStoreOpenWith", false);
 
             if (isEnabled)
             {

@@ -260,27 +260,6 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows command line process audit state.
-        /// </summary>
-        public static bool CommandLineProcessAudit()
-        {
-            var auditPolicyScript = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
-$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
-if ($Enabled -eq 'Success and Failure')
-{
-    $true
-}
-else
-{
-    $false
-}";
-            var cmdProcessAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
-            var cmdPolicyAuditIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
-            var cmdProcessAuditIsEnabled = Registry.LocalMachine.OpenSubKey(cmdProcessAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
-            return cmdPolicyAuditIsEnabled && cmdProcessAuditIsEnabled.Equals(1);
-        }
-
-        /// <summary>
         /// Gets Windows event viewer custom view state.
         /// </summary>
         public static bool EventViewerCustomView()
