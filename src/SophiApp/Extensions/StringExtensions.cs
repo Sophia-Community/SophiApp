@@ -37,5 +37,18 @@ namespace SophiApp.Extensions
                 // Do nothing.
             }
         }
+
+        /// <summary>
+        /// Performs the specified function on each element of the strings array.
+        /// </summary>
+        /// <param name="strings">The strings array.</param>
+        /// <param name="function">Encapsulates a method that has no parameters and returns a string.</param>
+        public static IEnumerable<string> ForEach(this string[] strings, Func<string, string> function)
+        {
+            foreach (string s in strings)
+            {
+                yield return function(s);
+            }
+        }
     }
 }

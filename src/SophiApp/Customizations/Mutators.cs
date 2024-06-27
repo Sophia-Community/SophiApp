@@ -85,10 +85,12 @@ namespace SophiApp.Customizations
         public static void ErrorReporting(bool isEnabled)
         {
             var reportingRegistryPath = "Software\\Microsoft\\Windows\\Windows Error Reporting";
+            var reportingPoliciesPath = "Software\\Policies\\Microsoft\\Windows\\Windows Error Reporting";
             var reportingTask = TaskService.Instance.GetTask("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting");
             var reportingService = new ServiceController("WerSvc");
 
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Windows Error Reporting", true)?.DeleteValue("Disabled", false);
+            Registry.LocalMachine.OpenSubKey(reportingPoliciesPath, true)?.DeleteValue("Disabled", false);
+            Registry.CurrentUser.OpenSubKey(reportingPoliciesPath, true)?.DeleteValue("Disabled", false);
 
             if (isEnabled)
             {
@@ -797,7 +799,7 @@ namespace SophiApp.Customizations
             var storeContextPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
             var storeContextValue = "NoUseStoreOpenWith";
 
-            Registry.LocalMachine.OpenSubKey("Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("NoUseStoreOpenWith", false);
+            Registry.CurrentUser.OpenSubKey(storeContextPath, true)?.DeleteValue(storeContextValue, false);
 
             if (isEnabled)
             {

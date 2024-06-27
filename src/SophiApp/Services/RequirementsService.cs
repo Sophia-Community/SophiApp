@@ -128,13 +128,8 @@ namespace SophiApp.Services
                     }
                 },
                 { "OsRequirements_Malware_GhostToolbox", () => File.Exists($"{system32Folder}\\migwiz\\dlmanifests\\run.ghost.cmd") },
-                {
-                    "OsRequirements_Malware_Optimizer", () =>
-                    {
-                        var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                        return downloadFolder is not null && Directory.Exists($"{downloadFolder}\\OptimizerDownloads");
-                    }
-                },
+                { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
+                { "OsRequirements_Malware_Winpilot", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("Winpilot") ?? false },
                 { "OsRequirements_Malware_Win10Tweaker", () => Registry.CurrentUser.OpenSubKey("Software\\Win 10 Tweaker") is not null },
                 { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
                 { "OsRequirements_Malware_BoosterX", () => File.Exists($"{programFiles}\\GameModeX\\GameModeX.exe") },
@@ -236,7 +231,7 @@ namespace SophiApp.Services
             {
                 try
                 {
-                    using var client = new HttpClient();
+                    using var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(5) };
                     var json = client.GetFromJsonAsync<AppVersionWrapper>(commonDataService.AppVersionUrl).Result;
                     var version = json?.SophiApp_release ?? new Version(0, 0, 0);
                     App.Logger.LogAppUpdate(version);

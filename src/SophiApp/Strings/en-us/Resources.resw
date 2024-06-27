@@ -258,7 +258,7 @@
     <value>Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.</value>
   </data>
   <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
-    <value>Whats New In Windows function description here.</value>
+    <value>Windows may display a "Let's finish setting up your device" prompt occasionally that displays additional services that user may set up.</value>
   </data>
   <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
     <value>Windows may open a pop-up window to show you what's new about the operating system.</value>
@@ -411,10 +411,10 @@
     <value>Tailored experiences</value>
   </data>
   <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
-    <value>Whats New In Windows function title here</value>
+    <value>Ways to get the most out of Windows and finish setting up this device</value>
   </data>
   <data name="UIModel_WindowsTips_Title" xml:space="preserve">
-    <value>Get tip and suggestions when using Windows</value>
+    <value>Get tips and suggestions when using Windows</value>
   </data>
   <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
     <value>Show the Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
@@ -607,5 +607,8 @@
   </data>
   <data name="UIModel_WindowsScriptHost_Title" xml:space="preserve">
     <value>Enable Windows Script Host</value>
+  </data>
+  <data name="OsRequirements_Malware_Winpilot" xml:space="preserve">
+    <value>Winpilot</value>
   </data>
 </root>
