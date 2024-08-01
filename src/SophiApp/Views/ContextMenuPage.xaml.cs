@@ -25,12 +25,12 @@ public sealed partial class ContextMenuPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = ViewModel.Models.FilterByTag(UICategoryTag.ContextMenu);
+        Models = ViewModel.JsonModels.FilterByTag(UICategoryTag.ContextMenu);
         modelMaxViewId = Models.Max(m => m.ViewId);
     }
 
     /// <summary>
-    /// Gets view model for privacy page.
+    /// Gets view model for context menu page.
     /// </summary>
     public ShellViewModel ViewModel { get; }
 

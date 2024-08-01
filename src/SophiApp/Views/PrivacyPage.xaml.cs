@@ -25,7 +25,7 @@ public sealed partial class PrivacyPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = ViewModel.Models.FilterByTag(UICategoryTag.Privacy);
+        Models = ViewModel.JsonModels.FilterByTag(UICategoryTag.Privacy);
         modelMaxViewId = Models.Max(m => m.ViewId);
     }
 

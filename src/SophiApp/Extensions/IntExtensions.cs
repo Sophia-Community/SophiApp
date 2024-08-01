@@ -16,7 +16,7 @@ namespace SophiApp.Extensions
         /// <param name="steps">Steps to increase.</param>
         public static int Increase(this int value, int steps)
         {
-            return (100 / steps) + value;
+            return steps == 1 ? 100 : (100 / steps) + value;
         }
     }
 }

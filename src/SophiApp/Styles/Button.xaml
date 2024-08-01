@@ -9,7 +9,5 @@
         <Setter Property="CornerRadius" Value="3"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
     </Style>
-
 </ResourceDictionary>

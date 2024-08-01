@@ -28,18 +28,23 @@
   <ItemGroup>
     <None Remove="Assets\AppLogo.svg" />
     <None Remove="Assets\Discord.svg" />
+    <None Remove="Assets\Folder.svg" />
     <None Remove="Assets\GitHub.svg" />
     <None Remove="Assets\Info.svg" />
     <None Remove="Assets\Telegram.svg" />
+    <None Remove="Assets\Windows.svg" />
+    <None Remove="ControlTemplates\ExpandingCheckBox.xaml" />
     <None Remove="ControlTemplates\ExpandingRadioGroup.xaml" />
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
     <None Remove="ControlTemplates\TeamMateLink.xaml" />
     <None Remove="ControlTemplates\TextCheckBox.xaml" />
+    <None Remove="ControlTemplates\UwpAppCheckBox.xaml" />
     <None Remove="stylecop.json" />
     <None Remove="Styles\Border.xaml" />
     <None Remove="Styles\Button.xaml" />
     <None Remove="Styles\CheckBox.xaml" />
     <None Remove="Styles\Expander.xaml" />
+    <None Remove="Styles\Image.xaml" />
     <None Remove="Styles\ScrollView.xaml" />
     <None Remove="Styles\Themes.xaml" />
     <None Remove="ControlTemplates\ContentBlock.xaml" />
@@ -72,19 +77,19 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Primitives" Version="7.1.2" />
-    <PackageReference Include="CSharpFunctionalExtensions" Version="2.41.0" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="2.42.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.2" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.2" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.2" />
-    <PackageReference Include="Microsoft.PowerShell.ConsoleHost" Version="7.4.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240404000" />
-    <PackageReference Include="Microsoft.WSMan.Management" Version="7.4.2" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.4" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.4" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.4" />
+    <PackageReference Include="Microsoft.PowerShell.ConsoleHost" Version="7.4.4" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
+    <PackageReference Include="Microsoft.WSMan.Management" Version="7.4.4" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Serilog" Version="3.1.1" />
-    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.23.2.88755">
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.30.0.95878">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -92,9 +97,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
-    <PackageReference Include="System.Management.Automation" Version="7.4.2" />
-    <PackageReference Include="TaskScheduler" Version="2.10.1" />
+    <PackageReference Include="System.Management.Automation" Version="7.4.4" />
+    <PackageReference Include="TaskScheduler" Version="2.11.0" />
     <PackageReference Include="WinUIEx" Version="2.3.4" />
   </ItemGroup>
 
@@ -107,6 +113,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Assets\Folder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Windows.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\AppLogo.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -162,6 +174,15 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Styles\Image.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ControlTemplates\ExpandingCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ControlTemplates\UwpAppCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Styles\Expander.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

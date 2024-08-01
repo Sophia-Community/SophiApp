@@ -6,10 +6,7 @@
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
-        <Setter Property="LineStackingStrategy" Value="MaxHeight" />
-        <Setter Property="TextLineBounds" Value="Full" />
     </Style>
 
     <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
@@ -59,7 +56,7 @@
         <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0, 20, 0, 20" />
+        <Setter Property="Margin" Value="30, 20, 30, 20" />
     </Style>
     <Style x:Key="UIControlTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
@@ -85,6 +82,11 @@
     <Style x:Key="SetUpCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
         <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="TaskSchedulerTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />

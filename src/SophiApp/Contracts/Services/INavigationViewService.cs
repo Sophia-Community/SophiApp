@@ -6,7 +6,7 @@ namespace SophiApp.Contracts.Services;
 using Microsoft.UI.Xaml.Controls;
 
 /// <summary>
-/// A View navigation service.
+/// A service for working with app <see cref="Views"/> navigation.
 /// </summary>
 public interface INavigationViewService
 {
@@ -29,7 +29,7 @@ public interface INavigationViewService
     /// <summary>
     /// Initializes <see cref="INavigationService"/> data.
     /// </summary>
-    /// <param name="navigationView"></param>
+    /// <param name="navigationView">Represents a container that enables navigation of app content.</param>
     void Initialize(NavigationView navigationView);
 
     /// <summary>

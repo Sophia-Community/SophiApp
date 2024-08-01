@@ -41,6 +41,20 @@ namespace SophiApp.Services
             CloseServiceHandle(scManagerHandle);
         }
 
+        /// <inheritdoc/>
+        public bool IsServiceExist(string service)
+        {
+            try
+            {
+                using var serviceController = new ServiceController(service);
+                return serviceController.ServiceName.Equals(service);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         [DllImport("advapi32.dll", EntryPoint = "CloseServiceHandle")]
         private static extern int CloseServiceHandle(IntPtr hSCObject);
 

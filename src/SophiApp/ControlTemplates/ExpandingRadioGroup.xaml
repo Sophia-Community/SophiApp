@@ -49,7 +49,7 @@
                                Style="{StaticResource UIControlTitleTextStyle}"/>
                     <TextBlock Text="{Binding Description}"
                                Style="{StaticResource UIControlDescriptionTextStyle}"
-                               Foreground="{ThemeResource UIControlDescriptionBackground}"/>
+                               Foreground="{ThemeResource UIControlDescriptionForeground}"/>
                 </StackPanel>
             </Expander.Header>
             <Expander.Content>

@@ -21,6 +21,8 @@ namespace SophiApp.Services
         private readonly IInstrumentationService instrumentationService;
         private readonly IAppxPackagesService appxPackagesService;
         private readonly IAppNotificationService appNotificationService;
+        private readonly IOsService osService;
+        private readonly IProcessService processService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequirementsService"/> class.
@@ -29,16 +31,22 @@ namespace SophiApp.Services
         /// <param name="instrumentationService">A service for working with WMI.</param>
         /// <param name="appxPackagesService">A service for working with appx packages.</param>
         /// <param name="appNotificationService">A service for working with notifications.</param>
+        /// <param name="osService">A service for working with Windows services API.</param>
+        /// <param name="processService">A service for working with Windows process API.</param>
         public RequirementsService(
             ICommonDataService commonDataService,
             IInstrumentationService instrumentationService,
             IAppxPackagesService appxPackagesService,
-            IAppNotificationService appNotificationService)
+            IAppNotificationService appNotificationService,
+            IOsService osService,
+            IProcessService processService)
         {
             this.commonDataService = commonDataService;
             this.instrumentationService = instrumentationService;
             this.appxPackagesService = appxPackagesService;
             this.appNotificationService = appNotificationService;
+            this.osService = osService;
+            this.processService = processService;
         }
 
         /// <inheritdoc/>
@@ -54,7 +62,7 @@ namespace SophiApp.Services
             try
             {
                 var wmiService = new ServiceController("Winmgmt");
-                using var verifyRepository = "winmgmt /verifyrepository".InvokeAsCmd();
+                using var verifyRepository = processService.WaitForExit(name: "cmd.exe", arguments: "/c winmgmt /verifyrepository");
                 var serviceIsRun = wmiService.Status == ServiceControllerStatus.Running;
                 var repoIsConsistent = verifyRepository.ExitCode.Equals(0);
                 var osPropertiesIsCorrect = commonDataService.OsProperties.BuildNumber != -1;
@@ -120,13 +128,8 @@ namespace SophiApp.Services
                     }
                 },
                 { "OsRequirements_Malware_GhostToolbox", () => File.Exists($"{system32Folder}\\migwiz\\dlmanifests\\run.ghost.cmd") },
-                {
-                    "OsRequirements_Malware_Optimizer", () =>
-                    {
-                        var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                        return downloadFolder is not null && Directory.Exists($"{downloadFolder}\\OptimizerDownloads");
-                    }
-                },
+                { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
+                { "OsRequirements_Malware_Winpilot", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("Winpilot") ?? false },
                 { "OsRequirements_Malware_Win10Tweaker", () => Registry.CurrentUser.OpenSubKey("Software\\Win 10 Tweaker") is not null },
                 { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
                 { "OsRequirements_Malware_BoosterX", () => File.Exists($"{programFiles}\\GameModeX\\GameModeX.exe") },
@@ -148,29 +151,23 @@ namespace SophiApp.Services
                 },
                 { "OsRequirements_Malware_WinCry", () => File.Exists($"{systemRoot}\\TempCleaner.exe") },
                 {
-#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
                     "OsRequirements_Malware_FlibustierWindowsImage", () =>
                     {
                         var values = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\.NETFramework\\Performance")?.GetValueNames() ?? [];
                         return Array.Exists(values, key => key.Contains("flibustier"));
                     }
-#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
                 },
+                { "OsRequirements_Malware_Hone", () => File.Exists($"{localAppData}\\Programs\\Hone\\Hone.exe") },
+                { "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log") },
                 {
-                    "OsRequirements_Malware_Hone", () => File.Exists($"{localAppData}\\Programs\\Hone\\Hone.exe")
-                },
-                {
-                    "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log")
-                },
-                {
-#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
                     "OsRequirements_Malware_AutoSettingsPS", () =>
                     {
                         var exclusions = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows Defender\\Exclusions\\Paths")?.GetValueNames() ?? [];
                         return Array.Exists(exclusions!, key => key.Contains("AutoSettingsPS"));
                     }
-#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
                 },
+                { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
+                { "OsRequirements_Malware_AtlasOS", () => Directory.Exists($"{systemRoot}\\AtlasModules") },
             };
 
             return malwares.Any(malware =>
@@ -234,7 +231,7 @@ namespace SophiApp.Services
             {
                 try
                 {
-                    using var client = new HttpClient();
+                    using var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(5) };
                     var json = client.GetFromJsonAsync<AppVersionWrapper>(commonDataService.AppVersionUrl).Result;
                     var version = json?.SophiApp_release ?? new Version(0, 0, 0);
                     App.Logger.LogAppUpdate(version);
@@ -295,7 +292,7 @@ namespace SophiApp.Services
 
             return services.TrueForAll(serviceName =>
             {
-                if (serviceName.ServiceExist())
+                if (osService.IsServiceExist(serviceName))
                 {
                     return true;
                 }

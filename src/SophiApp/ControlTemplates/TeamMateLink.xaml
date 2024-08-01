@@ -39,16 +39,23 @@
             <StackPanel.RenderTransform>
                 <TranslateTransform x:Name="TranslateTransform" Y="0" />
             </StackPanel.RenderTransform>
-            <TextBlock Style="{StaticResource TeamMateLinkNickNameStyle}"
-                   Text="{x:Bind NickName, Mode=OneWay}"
-                   PointerEntered="TextBlock_PointerEntered"
-                   PointerExited="TextBlock_PointerExited">
+            <TextBlock x:Name="TeamMateHyperLink"
+                       Style="{StaticResource TeamMateLinkNickNameStyle}"
+                       Text="{x:Bind NickName, Mode=OneWay}"
+                       PointerEntered="TextBlock_PointerEntered"
+                       PointerExited="TextBlock_PointerExited">
                 <interactivity:Interaction.Behaviors>
                     <interactions:EventTriggerBehavior EventName="PointerPressed">
                         <media:ControlStoryboardAction Storyboard="{StaticResource TransformStoryboard}"
                                                        ControlStoryboardOption="Play"/>
                         <interactions:InvokeCommandAction Command="{x:Bind Command, Mode=OneWay}"
                                                           CommandParameter="{x:Bind CommandParameter, Mode=OneWay}"/>
+                    </interactions:EventTriggerBehavior>
+                    <interactions:EventTriggerBehavior EventName="PointerEntered">
+                        <interactions:ChangePropertyAction TargetObject="{Binding ElementName=TeamMateHyperLink}" PropertyName="TextDecorations" Value="Underline"/>
+                    </interactions:EventTriggerBehavior>
+                    <interactions:EventTriggerBehavior EventName="PointerExited">
+                        <interactions:ChangePropertyAction TargetObject="{Binding ElementName=TeamMateHyperLink}" PropertyName="TextDecorations" Value="None"/>
                     </interactions:EventTriggerBehavior>
                 </interactivity:Interaction.Behaviors>
             </TextBlock>

@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using NetFwTypeLib;
 
     /// <summary>
-    /// A service for working with firewall rules.
+    /// A service for working with Windows firewall API.
     /// </summary>
     public interface IFirewallService
     {

@@ -252,6 +252,9 @@
                         <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.SetUpCustomizationsPanelCancelButtonIsVisible, Mode=OneWay}" ComparisonCondition="Equal" Value="True">
                             <interaction:ChangePropertyAction PropertyName="Visibility" Value="Visible" TargetObject="{Binding ElementName=Button_Cancel}"/>
                         </interaction:DataTriggerBehavior>
+                        <!--<interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.ProgressBarValue, Mode=OneWay}" ComparisonCondition="Equal" Value="0">
+                            <interaction:ChangePropertyAction
+                        </interaction:DataTriggerBehavior>-->
                     </i:Interaction.Behaviors>
                 </Grid>
             </Grid>

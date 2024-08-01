@@ -145,13 +145,6 @@ namespace SophiApp.Services
         public static InputCursor UrlCursor
         {
             get => urlCursor;
-            private set
-            {
-                if (urlCursor != value)
-                {
-                    urlCursor = value;
-                }
-            }
         }
 
         /// <inheritdoc/>
@@ -189,6 +182,9 @@ namespace SophiApp.Services
 
         /// <inheritdoc/>
         public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
+
+        /// <inheritdoc/>
+        public string GetName() => assembly.Name!;
 
         /// <inheritdoc/>
         public string GetVersionName() => "Community α";

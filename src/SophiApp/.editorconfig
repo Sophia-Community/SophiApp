@@ -216,6 +216,10 @@ dotnet_diagnostic.CS8602.severity = error
 dotnet_diagnostic.SA1311.severity = error
 dotnet_diagnostic.S2178.severity = warning
 
+# MVVMTK0034: Direct field reference to [ObservableProperty] backing field
+dotnet_diagnostic.MVVMTK0034.severity = error
+dotnet_diagnostic.SA1010.severity = silent
+
 [*.vb]
 #### Naming Styles ####
 

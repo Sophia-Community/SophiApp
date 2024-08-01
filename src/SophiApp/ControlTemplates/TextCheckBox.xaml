@@ -40,7 +40,7 @@
                 <TextBlock Grid.Column="0"
                            Text="{Binding Description}"
                            Style="{StaticResource UIControlDescriptionTextStyle}"
-                           Foreground="{ThemeResource UIControlDescriptionBackground}"
+                           Foreground="{ThemeResource UIControlDescriptionForeground}"
                            Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}"/>
             </StackPanel>
             <CheckBox Grid.Column="1"

@@ -39,7 +39,6 @@ public partial class App : Application
                 _ = services.AddSingleton<IInitializeService, InitializeService>();
                 _ = services.AddSingleton<IModelService, ModelService>();
                 _ = services.AddSingleton<INavigationService, NavigationService>();
-                _ = services.AddSingleton<IOsService, OsService>();
                 _ = services.AddSingleton<IPageService, PageService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
                 _ = services.AddSingleton<IThemesService, ThemesService>();
@@ -47,9 +46,15 @@ public partial class App : Application
                 _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<INetworkService, NetworkService>();
+                _ = services.AddTransient<IOsService, OsService>();
+                _ = services.AddTransient<IPowerShellService, PowerShellService>();
+                _ = services.AddTransient<IProcessService, ProcessService>();
+                _ = services.AddTransient<IRegistryService, RegistryService>();
                 _ = services.AddTransient<IRequirementsService, RequirementsService>();
+                _ = services.AddTransient<IScheduledTaskService, ScheduledTaskService>();
                 _ = services.AddTransient<IUpdateService, UpdateService>();
                 _ = services.AddTransient<IUriService, UriService>();
+                _ = services.AddTransient<IXmlService, XmlService>();
 
                 // ViewModels
                 _ = services.AddScoped<RequirementsFailureViewModel>();
@@ -136,14 +141,11 @@ public partial class App : Application
         }
     }
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
-    /// <param name="args"><inheritdoc/></param>
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        GetService<IAppNotificationService>().RegisterAsSender();
+        GetService<IAppNotificationService>().RegisterAsToastSender("SophiApp");
         await GetService<IInitializeService>().InitializeAsync(args);
         await GetService<ShellViewModel>().ExecuteAsync();
     }

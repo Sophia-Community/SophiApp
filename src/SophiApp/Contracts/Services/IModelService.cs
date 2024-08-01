@@ -15,10 +15,16 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Using the file "UIMarkup.json" creates a collection of <see cref="UIModel"/> types.
         /// </summary>
-        List<UIModel> BuildModels();
+        Task<List<UIModel>> BuildJsonModelsAsync();
 
         /// <summary>
-        /// Using multiple threads to get the models state.
+        /// Using the <see cref="IAppxPackagesService"/> creates a UWP <see cref="UIModel"/> collection.
+        /// </summary>
+        /// <param name="forAllUsers">Get collection of UWP <see cref="UIModel"/> for all users, otherwise only for the current user.</param>
+        Task<List<UIModel>> BuildUwpAppModelsAsync(bool forAllUsers);
+
+        /// <summary>
+        /// Using multiple threads to get the <see cref="UIModel"/> state.
         /// </summary>
         /// <param name="models"><see cref="UIModel"/> collection.</param>
         Task GetStateAsync(ConcurrentBag<UIModel> models);

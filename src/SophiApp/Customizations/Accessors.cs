@@ -19,8 +19,13 @@ namespace SophiApp.Customizations
     public static class Accessors
     {
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
+        private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
+        private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
+        private static readonly IProcessService ProcessService = App.GetService<IProcessService>();
+        private static readonly IScheduledTaskService ScheduledTaskService = App.GetService<IScheduledTaskService>();
+        private static readonly IXmlService XmlService = App.GetService<IXmlService>();
 
         /// <summary>
         /// Gets DiagTrack service state.
@@ -54,7 +59,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ErrorReporting()
         {
-            var reportingTask = TaskService.Instance.GetTask("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a scheduled task");
+            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a scheduled task");
             var werDisabledValue = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\Windows Error Reporting")?.GetValue("Disabled") as int? ?? -1;
             var werService = new ServiceController("WerSvc");
             return !(reportingTask.State == TaskState.Disabled && werDisabledValue.Equals(1) && werService.StartType == ServiceStartMode.Disabled);
@@ -76,19 +81,19 @@ namespace SophiApp.Customizations
         {
             var telemetryTasks = new List<Task?>()
             {
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\MareBackup"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\StartupAppTask"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Autochk\\Proxy"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Maps\\MapsToastTask"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Maps\\MapsUpdateTask"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Shell\\FamilySafetyMonitor"),
-                TaskService.Instance.GetTask("\\Microsoft\\Windows\\Shell\\FamilySafetyRefreshTask"),
-                TaskService.Instance.GetTask("\\Microsoft\\XblGameSave\\XblGameSaveTask"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\MareBackup"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\StartupAppTask"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Autochk\\Proxy"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Maps\\MapsToastTask"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Maps\\MapsUpdateTask"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Shell\\FamilySafetyMonitor"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Shell\\FamilySafetyRefreshTask"),
+                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\XblGameSave\\XblGameSaveTask"),
             };
 
             return telemetryTasks.TrueForAll(task => task is null)
@@ -191,6 +196,252 @@ namespace SophiApp.Customizations
         {
             var searchBoxIsDisabled = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
             return !searchBoxIsDisabled.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Start menu recommendations state.
+        /// </summary>
+        public static bool StartRecommendationsTips()
+        {
+            var irisPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var irisRecommendations = Registry.CurrentUser.OpenSubKey(irisPath)?.GetValue("Start_IrisRecommendations") as int? ?? -1;
+            return !irisRecommendations.Equals(0);
+        }
+
+        /// <summary>
+        /// Gets Start Menu notifications state.
+        /// </summary>
+        public static bool StartAccountNotifications()
+        {
+            var notificationsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var accountNotifications = Registry.CurrentUser.OpenSubKey(notificationsPath)?.GetValue("Start_AccountNotifications") as int? ?? -1;
+            return !accountNotifications.Equals(0);
+        }
+
+        /// <summary>
+        /// Get scheduled task "Windows Cleanup" state.
+        /// </summary>
+        public static bool CleanupTask()
+        {
+            var cleanupTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\Windows Cleanup");
+
+            if (cleanupTask is not null && cleanupTask.Definition.Principal.UserId != Environment.UserName)
+            {
+                throw new InvalidOperationException($"The \"Windows Cleanup\" scheduled task was already created as {cleanupTask.Definition.Principal.UserId}");
+            }
+
+            return cleanupTask is not null && cleanupTask.State != TaskState.Disabled && cleanupTask.State != TaskState.Unknown;
+        }
+
+        /// <summary>
+        /// Get scheduled task "SoftwareDistribution" state.
+        /// </summary>
+        public static bool SoftwareDistributionTask()
+        {
+            var distributionTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\SoftwareDistribution");
+
+            if (distributionTask is not null && distributionTask.Definition.Principal.UserId != Environment.UserName)
+            {
+                throw new InvalidOperationException($"The \"SoftwareDistribution\" scheduled task was already created as {distributionTask.Definition.Principal.UserId}");
+            }
+
+            return distributionTask is not null && distributionTask.State != TaskState.Disabled && distributionTask.State != TaskState.Unknown;
+        }
+
+        /// <summary>
+        /// Get scheduled task "Temp" state.
+        /// </summary>
+        public static bool TempTask()
+        {
+            var tempTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\Temp");
+
+            if (tempTask is not null && tempTask.Definition.Principal.UserId != Environment.UserName)
+            {
+                throw new InvalidOperationException($"The \"Temp\" scheduled task was already created as {tempTask.Definition.Principal.UserId}");
+            }
+
+            return tempTask is not null && tempTask.State != TaskState.Disabled && tempTask.State != TaskState.Unknown;
+        }
+
+        /// <summary>
+        /// Gets Windows network protection state.
+        /// </summary>
+        public static bool NetworkProtection()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                var networkProtectionPath = "Software\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection";
+                var networkProtection = Registry.LocalMachine.OpenSubKey(networkProtectionPath)?.GetValue("EnableNetworkProtection") as int? ?? -1;
+                return networkProtection.Equals(1);
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Windows PUApps detection state.
+        /// </summary>
+        public static bool PUAppsDetection()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                var puaProtection = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows Defender")?.GetValue("PUAProtection") as int? ?? -1;
+                return puaProtection.Equals(1);
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Microsoft Defender sandbox state.
+        /// </summary>
+        public static bool DefenderSandbox()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                return ProcessService.ProcessExist("MsMpEngCP");
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Windows event viewer custom view state.
+        /// </summary>
+        public static bool EventViewerCustomView()
+        {
+            var processAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var processXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
+            var auditPolicyScript = @"$OutputEncoding = [System.Console]::OutputEncoding = [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+$Enabled = auditpol /get /Subcategory:'{0CCE922B-69AE-11D9-BED3-505054503030}' /r | ConvertFrom-Csv | Select-Object -ExpandProperty 'Inclusion Setting'
+if ($Enabled -eq 'Success and Failure')
+{
+    $true
+}
+else
+{
+    $false
+}";
+
+            var auditPolicyIsEnabled = PowerShellService.Invoke<bool>(auditPolicyScript);
+            var processAuditIsEnabled = Registry.LocalMachine.OpenSubKey(processAuditPath)?.GetValue("ProcessCreationIncludeCmdLine_Enabled") as int? ?? -1;
+            var xmlAuditIsEnabled = XmlService.TryLoad(processXmlPath)?.SelectSingleNode("//Select[@Path=\"Security\"]")?.InnerText ?? string.Empty;
+            return auditPolicyIsEnabled && processAuditIsEnabled.Equals(1) && xmlAuditIsEnabled.Equals("*[System[(EventID=4688)]]");
+        }
+
+        /// <summary>
+        /// Gets Windows PowerShell modules logging state.
+        /// </summary>
+        public static bool PowerShellModulesLogging()
+        {
+            var moduleLoggingPath = "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging";
+            var moduleNamePath = $"{moduleLoggingPath}\\ModuleNames";
+
+            var moduleLoggingIsEnabled = Registry.LocalMachine.OpenSubKey(moduleLoggingPath)?.GetValue("EnableModuleLogging") as int? ?? -1;
+            var moduleNamesIsAny = Registry.LocalMachine.OpenSubKey(moduleNamePath)?.GetValue("*") as string ?? string.Empty;
+            return moduleLoggingIsEnabled.Equals(1) && moduleNamesIsAny.Equals("*");
+        }
+
+        /// <summary>
+        /// Gets Windows PowerShell scripts logging state.
+        /// </summary>
+        public static bool PowerShellScriptsLogging()
+        {
+            var scriptLoggingPath = "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging";
+            var scriptLogging = Registry.LocalMachine.OpenSubKey(scriptLoggingPath)?.GetValue("EnableScriptBlockLogging") as int? ?? -1;
+            return scriptLogging.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Windows SmartScreen state.
+        /// </summary>
+        public static bool AppsSmartScreen()
+        {
+            if (InstrumentationService.GetAntispywareEnabled())
+            {
+                var smartScreenPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+                var smartScreenIsEnabled = Registry.LocalMachine.OpenSubKey(smartScreenPath)?.GetValue("SmartScreenEnabled") as string ?? string.Empty;
+                return !smartScreenIsEnabled.Equals("Off");
+            }
+
+            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+        }
+
+        /// <summary>
+        /// Gets Windows save zone state.
+        /// </summary>
+        public static bool SaveZoneInformation()
+        {
+            var saveZonePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments";
+            var saveZoneInformation = Registry.CurrentUser.OpenSubKey(saveZonePath)?.GetValue("SaveZoneInformation") as int? ?? -1;
+            return saveZoneInformation.Equals(1);
+        }
+
+        /// <summary>
+        /// Gets Windows script host state.
+        /// </summary>
+        public static bool WindowsScriptHost()
+        {
+            var blockingTasks = new[] { "SoftwareDistribution", "Temp", "Windows Cleanup", "Windows Cleanup Notification" };
+            var blockingTasksExist = ScheduledTaskService.FindTaskOrDefault(blockingTasks).Any(task => task?.State == TaskState.Ready);
+            var scriptHostPath = "Software\\Microsoft\\Windows Script Host\\Settings";
+            var scriptHostIsEnabled = Registry.CurrentUser.OpenSubKey(scriptHostPath)?.GetValue("Enabled") as int? ?? -1;
+            return blockingTasksExist ? throw new InvalidOperationException("One of the blocking tasks is in \"Ready\" state.") : !scriptHostIsEnabled.Equals(0);
+        }
+
+        /// <summary>
+        /// Gets Windows Sandbox state.
+        /// </summary>
+        public static bool WindowsSandbox()
+        {
+            bool WindowsSandboxIsEnabled()
+            {
+                var sandboxScript = "Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online";
+                var sandboxState = PowerShellService.Invoke(sandboxScript).FirstOrDefault();
+                return !sandboxState?.Properties["State"]?.Value.Equals("Disabled") ?? throw new InvalidOperationException("Windows Sandbox state undefined");
+            }
+
+            if (CommonDataService.OsProperties.Edition.Equals("Professional") || CommonDataService.OsProperties.Edition.Equals("Enterprise"))
+            {
+                var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This cpu does not support virtualization");
+                var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable Virtualization in UEFI");
+
+                if (virtualizationIsEnabled)
+                {
+                    return WindowsSandboxIsEnabled();
+                }
+                else if (hypervisorPresent)
+                {
+                    return WindowsSandboxIsEnabled();
+                }
+
+                throw new InvalidOperationException("This PC does not support Windows Sandbox feature");
+            }
+
+            throw new InvalidOperationException("Unsupported Windows edition");
+        }
+
+        /// <summary>
+        /// Gets Local Security Authority state.
+        /// </summary>
+        public static bool LocalSecurityAuthority()
+        {
+            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This cpu does not support virtualization");
+            var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable Virtualization in UEFI");
+            var runAsPPL = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPL") ?? -1;
+            var runAsPPLBoot = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPLBoot") ?? -1;
+            var runAsPPLPolicy = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System")?.GetValue("RunAsPPL") ?? -1;
+
+            if (virtualizationIsEnabled)
+            {
+                return (runAsPPL.Equals(2) && runAsPPLBoot.Equals(2)) || runAsPPLPolicy.Equals(2);
+            }
+            else if (hypervisorPresent)
+            {
+                return (runAsPPL.Equals(2) && runAsPPLBoot.Equals(2)) || runAsPPLPolicy.Equals(2);
+            }
+
+            throw new InvalidOperationException("This PC does not support Local Security Authority feature");
         }
 
         /// <summary>
@@ -428,16 +679,6 @@ namespace SophiApp.Customizations
             }
 
             throw new InvalidOperationException($"Appx package \"{terminalAppx}\" not found in current user environment");
-        }
-
-        /// <summary>
-        /// Get Windows 10 context menu style state.
-        /// </summary>
-        public static bool Windows10ContextMenu()
-        {
-            var contextMenuPath = "Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32";
-            var contextMenuValue = Registry.CurrentUser.OpenSubKey(contextMenuPath)?.GetValue(string.Empty) as string;
-            return contextMenuValue?.Equals(string.Empty) ?? false;
         }
     }
 }

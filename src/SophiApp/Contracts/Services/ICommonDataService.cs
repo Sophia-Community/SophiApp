@@ -54,7 +54,7 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Gets app version.
         /// </summary>
-        public Version AppVersion { get; }
+        Version AppVersion { get; }
 
         /// <summary>
         /// Gets app name and version.
@@ -65,6 +65,11 @@ namespace SophiApp.Contracts.Services
         /// Gets the code name of the application build.
         /// </summary>
         string GetBuildName();
+
+        /// <summary>
+        /// Gets app name.
+        /// </summary>
+        string GetName();
 
         /// <summary>
         /// Gets the name of the program version: Community or Pro.

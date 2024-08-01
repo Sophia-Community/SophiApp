@@ -120,13 +120,13 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogAllModelsBuilt(int count)
         {
-            Log.Information("Service {Service} built models: {Count}", nameof(IModelService), count);
+            Log.Information("Service {Service} built model(s): {Count}", nameof(IModelService), count);
         }
 
         /// <inheritdoc/>
         public void LogStartModelsGetState()
         {
-            Log.Warning("Service {Service} has started get models state", nameof(IModelService));
+            Log.Warning("Service {Service} has started get model(s) state", nameof(IModelService));
         }
 
         /// <inheritdoc/>
@@ -173,9 +173,9 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogModelRefreshState(string name, Stopwatch timer)
+        public void LogApplicableModelsCanceled()
         {
-            Log.Warning("Model {Name} took time to refresh state: {TimeSpent}", name, timer.Elapsed);
+            Log.Warning("The \"Cancel\" button on the Apply Customizations Panel is clicked");
         }
 
         /// <inheritdoc/>
@@ -194,6 +194,12 @@ namespace SophiApp.Services
         public void LogApplicableModelAdded(string name)
         {
             Log.Information("Model {Name} has been added to applicable models collection", name);
+        }
+
+        /// <inheritdoc/>
+        public void LogUwpForAllUsersState(bool state)
+        {
+            Log.Information("The \"For all users\" checkbox state has been changed to: {State}", state);
         }
 
         /// <inheritdoc/>
@@ -278,12 +284,6 @@ namespace SophiApp.Services
         public void LogMsDefenderServiceNotFound(string service)
         {
             Log.Error("Microsoft Defender service: {Service} not found", service);
-        }
-
-        /// <inheritdoc/>
-        public void LogMsDefenderServicesException(Exception exception)
-        {
-            Log.Error(exception, "Failed to obtain Microsoft Defender service requirements in the {Service}", nameof(IRequirementsService));
         }
 
         /// <inheritdoc/>

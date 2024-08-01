@@ -3,7 +3,12 @@
 // </copyright>
 
 namespace SophiApp.Views;
+
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using SophiApp.Extensions;
+using SophiApp.Helpers;
+using SophiApp.Models;
 using SophiApp.ViewModels;
 
 /// <summary>
@@ -11,20 +16,37 @@ using SophiApp.ViewModels;
 /// </summary>
 public sealed partial class TaskSchedulerPage : Page
 {
+    private readonly int modelMaxViewId;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskSchedulerPage"/> class.
     /// </summary>
     public TaskSchedulerPage()
     {
-        ViewModel = App.GetService<TaskSchedulerViewModel>();
         InitializeComponent();
+        ViewModel = App.GetService<ShellViewModel>();
+        Models = ViewModel.JsonModels.FilterByTag(UICategoryTag.TaskScheduler);
+        modelMaxViewId = Models.Max(m => m.ViewId);
     }
 
     /// <summary>
-    /// Gets <see cref="TaskSchedulerViewModel"/>.
+    /// Gets view model for privacy page.
     /// </summary>
-    public TaskSchedulerViewModel ViewModel
+    public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets <see cref="UIModel"/> collection.
+    /// </summary>
+    public List<UIModel> Models { get; }
+
+    /// <summary>
+    /// Correct the vertical offset so that the last <see cref="FrameworkElement"/> in the sequence fits on the UI.
+    /// </summary>
+    public void CorrectScrollViewPosition()
     {
-        get;
+        if (ViewModel.ApplicableModels[0].ViewId == modelMaxViewId)
+        {
+            this.FindName<ScrollView>("TaskSchedulerScrollView")?.VerticalOffsetCorrection();
+        }
     }
 }

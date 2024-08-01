@@ -5,14 +5,25 @@
 namespace SophiApp.Contracts.Services;
 
 /// <summary>
-/// A service for working with toast notifications.
+/// A service for working with toast notifications API.
 /// </summary>
 public interface IAppNotificationService
 {
     /// <summary>
-    /// Register the <see cref="IAppNotificationService"/> as a toast notifications sender.
+    /// Getting Windows Action Center and Windows Script Host status and enabling notifications.
     /// </summary>
-    void RegisterAsSender();
+    void EnableToastNotification();
+
+    /// <summary>
+    /// Register the app by <paramref name="name"/> as a toast sender.
+    /// </summary>
+    /// <param name="name">Name of the app to be registered.</param>
+    void RegisterAsToastSender(string name);
+
+    /// <summary>
+    /// Register Windows cleanup protocol to run via toast notification.
+    /// </summary>
+    void RegisterCleanupProtocol();
 
     /// <summary>
     /// Show the toast notification.
