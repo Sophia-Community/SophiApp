@@ -77,7 +77,7 @@ namespace SophiApp.Services
                 "AdvancedMicroDevicesInc-2.AMDRadeonSoftware", "AppUp.IntelGraphicsControlPanel", "AppUp.IntelGraphicsExperience", "Microsoft.ApplicationCompatibilityEnhancements",
                 "Microsoft.AVCEncoderVideoExtension", "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "MicrosoftWindows.CrossDevice",
                 "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview",
-                "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux", "Microsoft.HEVCVideoExtension",
+                "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux", "Microsoft.HEVCVideoExtensions",
                 "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "Microsoft.MPEG2VideoExtension", "Microsoft.VP9VideoExtensions",
                 "Microsoft.WebpImageExtension", "Microsoft.PowerShell", "NVIDIACorp.NVIDIAControlPanel", "RealtekSemiconductorCorp.RealtekAudioControl",
             };
