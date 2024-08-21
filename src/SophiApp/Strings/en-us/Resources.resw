@@ -329,23 +329,41 @@
   <data name="OsRequirements_Malware_DefenderSwitch" xml:space="preserve">
     <value>Defender Switch</value>
   </data>
-  <data name="OsRequirements_Malware_ModernTweaker" xml:space="preserve">
-    <value>Modern Tweaker</value>
-  </data>
   <data name="OsRequirements_Malware_RevisionTool" xml:space="preserve">
     <value>Revision Tool</value>
-  </data>
-  <data name="OsRequirements_Malware_WinCry" xml:space="preserve">
-    <value>WinCry</value>
   </data>
   <data name="OsRequirements_Malware_WinterOsTweaker" xml:space="preserve">
     <value>WinterOS Tweaker</value>
   </data>
-  <data name="OsRequirements_GetFeatureExperiencePackState" xml:space="preserve">
-    <value>Check whether Windows Feature Experience Pack was removed by harmful tweakers</value>
+  <data name="OsRequirements_Malware_WinCry" xml:space="preserve">
+    <value>WinCry</value>
+  </data>
+  <data name="OsRequirements_Malware_Hone" xml:space="preserve">
+    <value>Hone</value>
+  </data>
+  <data name="OsRequirements_Malware_WinUtil" xml:space="preserve">
+    <value>Winutil</value>
+  </data>
+  <data name="OsRequirements_Malware_WinClean" xml:space="preserve">
+    <value>WinClean</value>
+  </data>
+  <data name="OsRequirements_Malware_AtlasOS" xml:space="preserve">
+    <value>Atlas OS</value>
+  </data>
+  <data name="OsRequirements_Malware_AutoSettingsPS" xml:space="preserve">
+    <value>AutoSettingsPS</value>
   </data>
   <data name="OsRequirements_Malware_FlibustierWindowsImage" xml:space="preserve">
     <value>Flblauncher</value>
+  </data>
+  <data name="OsRequirements_Malware_Winpilot" xml:space="preserve">
+    <value>Winpilot</value>
+  </data>
+  <data name="OsRequirements_Malware_ModernTweaker" xml:space="preserve">
+    <value>Modern Tweaker</value>
+  </data>
+  <data name="OsRequirements_GetFeatureExperiencePackState" xml:space="preserve">
+    <value>Check whether Windows Feature Experience Pack was removed by harmful tweakers</value>
   </data>
   <data name="OsRequirementsFailure_FeatureExperiencePackRemoved" xml:space="preserve">
     <value>Windows Feature Experience Pack broken or removed from the OS.</value>
@@ -420,7 +438,7 @@
     <value>Show the Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
   </data>
   <data name="OsRequirementsFailure_MsDefender_Windefend_NotFound" xml:space="preserve">
-    <value>Служба антивирусной программы Microsoft Defender is not found on you PC.</value>
+    <value>Microsoft Defender was not found on you PC.</value>
   </data>
   <data name="OsRequirementsFailure_MsDefender_Wscsvc_NotFound" xml:space="preserve">
     <value>Служба Центр обеспечения безопасности is not found on you PC.</value>
@@ -433,12 +451,6 @@
   </data>
   <data name="Panel_SetupCustomizations_Applying" xml:space="preserve">
     <value>Applying customization(s)</value>
-  </data>
-  <data name="OsRequirements_Malware_Hone" xml:space="preserve">
-    <value>Hone</value>
-  </data>
-  <data name="OsRequirements_Malware_WinUtil" xml:space="preserve">
-    <value>Winutil</value>
   </data>
   <data name="OsRequirementsFailure_EventLogStopped" xml:space="preserve">
     <value>The Event Viewer broken or removed from Windows.</value>
@@ -457,9 +469,6 @@
   </data>
   <data name="OsRequirements_GetSecuritySettingsPageState" xml:space="preserve">
     <value>Get Windows Security Settings page state</value>
-  </data>
-  <data name="OsRequirements_Malware_AutoSettingsPS" xml:space="preserve">
-    <value>AutoSettingsPS</value>
   </data>
   <data name="UIModel_BitmapImageNewContext_Title" xml:space="preserve">
     <value>Show "Bitmap image" item in the "New" context menu</value>
@@ -521,9 +530,6 @@
   <data name="UIModel_UseStoreOpenWith_Title" xml:space="preserve">
     <value>Show "Look for an app in the Microsoft Store" items in the "Open with" dialog</value>
   </data>
-  <data name="OsRequirements_Malware_WinClean" xml:space="preserve">
-    <value>WinClean</value>
-  </data>
   <data name="UIModel_AppsSmartScreen_Title" xml:space="preserve">
     <value>Check apps and files within Microsoft Defender SmartScreen</value>
   </data>
@@ -555,19 +561,19 @@
     <value>Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JScript scripts from running.</value>
   </data>
   <data name="EventViewerCustomView_ProcessCreationXml_Description" xml:space="preserve">
-    <value>События создания нового процесса и аудит командной строки.</value>
+    <value>Process creation and command-line auditing events.</value>
   </data>
   <data name="EventViewerCustomView_ProcessCreationXml_Name" xml:space="preserve">
-    <value>Создание процесса</value>
+    <value>Process Creation</value>
   </data>
   <data name="UwpPage_ForAllUsers.Text" xml:space="preserve">
     <value>For all users</value>
   </data>
   <data name="UwpPage_UwpAppsNotFound.Text" xml:space="preserve">
-    <value>Нет данных для отображения, или удалены необходимые пакеты</value>
+    <value>No data to display, or necessary packages were removed</value>
   </data>
-  <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
-    <value>Generating the user interface</value>
+  <data name="OsRequirements_tingUserInterface" xml:space="preserve">
+    <value>Generating the UI</value>
   </data>
   <data name="UIModel_LocalSecurityAuthority_Description" xml:space="preserve">
     <value>Protection for the LSA is provided to prevent reading memory and code injection by nonprotected processes. This feature provides added security for the credentials that LSA stores and manages.</value>
@@ -580,9 +586,6 @@
   </data>
   <data name="UIModel_StartRecommendationsTips_Title" xml:space="preserve">
     <value>Show recommendations for tips, shortcuts, new apps, and more in the Start menu</value>
-  </data>
-  <data name="OsRequirements_Malware_AtlasOS" xml:space="preserve">
-    <value>Atlas OS</value>
   </data>
   <data name="UIModel_DefenderSandbox_Title" xml:space="preserve">
     <value>Enable sandboxing for Microsoft Defender</value>
@@ -607,9 +610,6 @@
   </data>
   <data name="UIModel_WindowsScriptHost_Title" xml:space="preserve">
     <value>Enable Windows Script Host</value>
-  </data>
-  <data name="OsRequirements_Malware_Winpilot" xml:space="preserve">
-    <value>Winpilot</value>
   </data>
   <data name="UIModel_CleanupTask_Description" xml:space="preserve">
     <value>Create "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks to clean up unused files and Windows updates in the Task Scheduler in the Sophia folder. A native notification prompting you to run the task will pop up before the cleanup begins. The task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
