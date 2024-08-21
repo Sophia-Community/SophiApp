@@ -31,40 +31,6 @@ $Process.Start() | Out-Null
 
 Start-Sleep -Seconds 3
 
-[int]$SourceMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
-
-while ($true)
-{
-	[int]$CurrentMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
-	if ($SourceMainWindowHandle -ne $CurrentMainWindowHandle)
-	{
-		$CompilerParameters = [System.CodeDom.Compiler.CompilerParameters]::new(""""""System.dll"""""")
-		$CompilerParameters.TempFiles = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
-		$CompilerParameters.GenerateInMemory = $true
-		$Signature = @{
-Namespace          = """"""WinAPI""""""
-Name               = """"""Win32ShowWindowAsync""""""
-Language           = """"""CSharp""""""
-CompilerParameters = $CompilerParameters
-MemberDefinition   = @""""""
-[DllImport(""""""user32.dll"""""")]
-public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-""""""@
-		}
-
-		if (-not (""""""WinAPI.Win32ShowWindowAsync"""""" -as [type]))
-		{
-            Add-Type @Signature
-		}
-		$MainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
-		[WinAPI.Win32ShowWindowAsync]::ShowWindowAsync($MainWindowHandle, 2)
-
-		break
-	}
-
-	Start-Sleep -Milliseconds 5
-}
-
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
 $ProcessInfo.FileName = """"""$env:SystemRoot\System32\Dism.exe""""""
 $ProcessInfo.Arguments = """"""/Online /English /Cleanup-Image /StartComponentCleanup /NoRestart""""""
