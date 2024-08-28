@@ -40,18 +40,25 @@ public partial class SettingsViewModel : ObservableRecipient
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
     /// </summary>
-    /// <param name="themeSelectorService"><see cref="IThemesService"/>.</param>
-    /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
-    /// <param name="uriService"><see cref="IUriService"/>.</param>
-    public SettingsViewModel(IThemesService themeSelectorService, ICommonDataService commonDataService, IUriService uriService)
+    /// <param name="themeSelectorService">A service for working with app themes.</param>
+    /// <param name="commonDataService">A service for transferring app data between layers of DI.</param>
+    /// <param name="uriService">A service for working with URI.</param>
+    /// <param name="shellViewModel">Implements the <see cref="ShellViewModel"/> class.</param>
+    public SettingsViewModel(IThemesService themeSelectorService, ICommonDataService commonDataService, IUriService uriService, ShellViewModel shellViewModel)
     {
-        this.themeSelectorService = themeSelectorService;
-        delimiter = commonDataService.GetDelimiter();
-        version = commonDataService.GetFullName();
         build = commonDataService.GetBuildName();
-        selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
+        delimiter = commonDataService.GetDelimiter();
+        FontOptions = shellViewModel.FontOptions;
         OpenLinkCommand = new AsyncRelayCommand<string>(url => uriService.OpenUrlAsync(url!));
+        selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
+        this.themeSelectorService = themeSelectorService;
+        version = commonDataService.GetFullName();
     }
+
+    /// <summary>
+    /// Gets or saves the app font sizes to a setting file.
+    /// </summary>
+    public FontOptions FontOptions { get; }
 
     /// <summary>
     /// Gets or sets app selected theme.

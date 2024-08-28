@@ -41,8 +41,7 @@ $Process = New-Object -TypeName System.Diagnostics.Process
 $Process.StartInfo = $ProcessInfo
 $Process.Start() | Out-Null";
 
-        private readonly string cleanupNotificationTaskAction = @"
-# https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string cleanupNotificationTaskAction = @"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
 # Get Focus Assist status
@@ -135,17 +134,17 @@ while ([WinAPI.Focus]::GetFocusAssistState() -ne ""OFF"")
 <toast duration=""Long"">
 	<visual>
 		<binding template=""ToastGeneric"">
-<text>$Localization.CleanupTaskNotificationTitle</text>
-<group>
-	<subgroup>
-		<text hint-style=""body"" hint-wrap=""true"">$Localization.CleanupTaskNotificationEvent</text>
-	</subgroup>
-</group>
+			<text>#TaskScheduler_WindowsCleanupToast_Title#</text>
+			<group>
+				<subgroup>
+					<text hint-style=""body"" hint-wrap=""true"">#TaskScheduler_WindowsCleanupToast_Description#</text>
+				</subgroup>
+			</group>
 		</binding>
 	</visual>
 	<audio src=""ms-winsoundevent:notification.default"" />
 	<actions>
-		<action content=""$([WinAPI.GetStrings]::GetString(12850))"" arguments=""WindowsCleanup:"" activationType=""protocol""/>
+		<action content=""#TaskScheduler_WindowsCleanupToast_Run#"" arguments=""WindowsCleanup:"" activationType=""protocol""/>
 		<action content="""" arguments=""dismiss"" activationType=""system""/>
 	</actions>
 </toast>
@@ -156,11 +155,11 @@ $ToastXml.LoadXml($ToastTemplate.OuterXml)
 
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)"
-            .Replace("$Localization.CleanupTaskNotificationTitle", "TaskScheduler_WindowsCleanupToast_Title".GetLocalized())
-            .Replace("$Localization.CleanupTaskNotificationEvent", "TaskScheduler_WindowsCleanupToast_Description".GetLocalized());
+            .Replace("#TaskScheduler_WindowsCleanupToast_Title#", "TaskScheduler_WindowsCleanupToast_Title".GetLocalized())
+            .Replace("#TaskScheduler_WindowsCleanupToast_Description#", "TaskScheduler_WindowsCleanupToast_Description".GetLocalized())
+            .Replace("#TaskScheduler_WindowsCleanupToast_Run#", "TaskScheduler_WindowsCleanupToast_Run".GetLocalized());
 
-        private readonly string cleanupNotificationToastAction = @"
-' https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string cleanupNotificationToastAction = @"' https://github.com/farag2/Sophia-Script-for-Windows
 ' https://t.me/sophia_chat
 
 CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -NoProfile -NoLogo -WindowStyle Hidden -File %SystemRoot%\System32\Tasks\Sophia\Windows_Cleanup_Notification.ps1"", 0";

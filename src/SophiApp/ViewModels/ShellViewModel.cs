@@ -28,11 +28,11 @@ public partial class ShellViewModel : ObservableRecipient
     private readonly IProcessService processService;
     private readonly IAppxPackagesService packagesService;
 
-    private List<UIModel> uwpAllUsersModels = new ();
-    private List<UIModel> uwpCurrentUserModels = new ();
+    private List<UIModel> uwpAllUsersModels = [];
+    private List<UIModel> uwpCurrentUserModels = [];
 
     [ObservableProperty]
-    private ObservableCollection<UIModel> applicableModels = new ();
+    private ObservableCollection<UIModel> applicableModels = [];
 
     [ObservableProperty]
     private string delimiter;
@@ -144,6 +144,11 @@ public partial class ShellViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to click an "For all users" checkbox in the UWP page.
     /// </summary>
     public IRelayCommand UwpForAllUsersClicked_Command { get; }
+
+    /// <summary>
+    /// Gets or sets and saves the app font sizes to a setting file.
+    /// </summary>
+    public FontOptions FontOptions { get; set; } = new ();
 
     /// <summary>
     /// Gets <see cref="INavigationService"/>.
@@ -274,6 +279,7 @@ public partial class ShellViewModel : ObservableRecipient
                 uwpCurrentUserModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: false);
                 UwpAppsModels = new (uwpAllUsersModels);
             })
+            .Tap(async () => await FontOptions.InitializeAsync())
             .Match(
                 onSuccess: () => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
                 {

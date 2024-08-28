@@ -48,9 +48,9 @@ public class AppNotificationService : IAppNotificationService
     /// <inheritdoc/>
     public void RegisterCleanupProtocol()
     {
-        var commandPath = "WindowsCleanup\\shell\\open\\command";
-        var commandValue = "powershell.exe -Command \"& {Start-ScheduledTask -TaskPath ''\\Sophia\\'' -TaskName ''Windows Cleanup''}\"' -Force";
-        Registry.ClassesRoot.OpenOrCreateSubKey(commandPath).SetValue(string.Empty, commandValue, RegistryValueKind.String);
+        var cleanupCommandPath = "WindowsCleanup\\shell\\open\\command";
+        var cleanupCommand = "@=\"powershell.exe -Command \\\"& {Start-ScheduledTask -TaskPath '\\\\Sophia\\\\' -TaskName 'Windows Cleanup'}\\\"\"";
+        Registry.ClassesRoot.OpenOrCreateSubKey(cleanupCommandPath).SetValue(string.Empty, cleanupCommand, RegistryValueKind.String);
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue(string.Empty, "URL:WindowsCleanup", RegistryValueKind.String);
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue("URL Protocol", string.Empty, RegistryValueKind.String);
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue("EditFlags", 2162688, RegistryValueKind.DWord);

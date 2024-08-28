@@ -60,7 +60,7 @@ public class SettingsService : ISettingsService
         {
             await InitializeAsync();
             settings![key] = await JsonExtensions.StringifyAsync(value!);
-            await Task.Run(() => fileService.SaveToJson(settingsFolder, settingsFile, settings));
+            fileService.SaveToJson(settingsFolder, settingsFile, settings);
         }
     }
 

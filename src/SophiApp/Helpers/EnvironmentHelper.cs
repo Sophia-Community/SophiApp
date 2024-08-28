@@ -4,9 +4,7 @@
 
 namespace SophiApp.Helpers
 {
-    using System.Diagnostics;
     using System.Runtime.InteropServices;
-    using SophiApp.Extensions;
 
     /// <summary>
     /// A class for working with environment variables.
@@ -19,9 +17,9 @@ namespace SophiApp.Helpers
         private const string TRAYSETTINGS = "TraySettings";
 
         // Virtual key ID of the F5 in File Explorer
-        private static readonly IntPtr HWnd = new IntPtr(65535);
-        private static readonly IntPtr HWNDBROADCAST = new IntPtr(0xffff);
-        private static readonly UIntPtr UIntPtr = new UIntPtr(41504);
+        private static readonly IntPtr HWnd = new (65535);
+        private static readonly IntPtr HWNDBROADCAST = new (0xffff);
+        private static readonly UIntPtr UIntPtr = new (41504);
 
         /// <summary>
         /// Simulate pressing F5 to refresh the desktop.

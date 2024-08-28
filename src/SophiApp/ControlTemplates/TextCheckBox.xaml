@@ -34,14 +34,18 @@
                         Margin="17, 10, 10, 10"
                         VerticalAlignment="Center">
                 <TextBlock Grid.Column="0"
-                           Text="{Binding Title}"
                            Style="{StaticResource UIControlTitleTextStyle}"
-                           Margin="0, 10, 0, 10"/>
+                           Margin="0, 10, 0, 10">
+                    <Run Text="{Binding Title}"
+                         FontSize="{Binding TitleSize,ElementName=TextCheckBoxControl}"/>
+                </TextBlock>
                 <TextBlock Grid.Column="0"
-                           Text="{Binding Description}"
                            Style="{StaticResource UIControlDescriptionTextStyle}"
                            Foreground="{ThemeResource UIControlDescriptionForeground}"
-                           Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}"/>
+                           Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}">
+                    <Run Text="{Binding Description}"
+                         FontSize="{Binding DescriptionSize, ElementName=TextCheckBoxControl}"/>
+                </TextBlock>
             </StackPanel>
             <CheckBox Grid.Column="1"
                       Style="{StaticResource UIControlCheckBoxStyle}"

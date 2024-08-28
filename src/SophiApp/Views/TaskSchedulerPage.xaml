@@ -14,20 +14,30 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <DataTemplate x:Key="TextCheckBoxTemplate">
+            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
+                           TitleSize="{Binding ElementName=PageTaskScheduler, Path=ViewModel.FontOptions.TitleTextSize}"
+                           DescriptionSize="{Binding ElementName=PageTaskScheduler, Path=ViewModel.FontOptions.DescriptionTextSize}"
+                           Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
+        </DataTemplate>
         <DataTemplate x:Key="ExpandingCheckBoxTemplate">
             <controls:ExpandingCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
                                         Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                   Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
     </Page.Resources>
 
     <ScrollView x:Name="TaskSchedulerScrollView">
         <StackPanel>
             <Grid x:Name="ItemsContainerGrid" IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-                <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Uid="TaskSchedulerPage_AboutTasks"
+                           Style="{StaticResource TaskSchedulerDescriptionTextStyle}"
+                           Grid.Row="0"/>
+                <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
+                               Grid.Row="1">
                     <ItemsRepeater.Layout>
                         <StackLayout Spacing="10"/>
                     </ItemsRepeater.Layout>

@@ -144,7 +144,7 @@ namespace SophiApp.Contracts.Services
         /// <param name="name">The model name.</param>
         /// <param name="state">The model state.</param>
         void LogModelState<T>(string name, T state)
-            where T : struct;
+             where T : struct;
 
         /// <summary>
         /// Write information about the canceling of a applicable models collection in the log.
@@ -173,6 +173,18 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="state">A "For all users" checkbox state.</param>
         void LogUwpForAllUsersState(bool state);
+
+        /// <summary>
+        /// Write information about the resizing of UI elements description text.
+        /// </summary>
+        /// <param name="size">A description text size.</param>
+        void LogDescriptionTextSizeChanged(int size);
+
+        /// <summary>
+        /// Write information about the resizing of UI elements title text.
+        /// </summary>
+        /// <param name="size">A title text size.</param>
+        void LogTitleTextSizeChanged(int size);
 
         /// <summary>
         /// Write <see cref="RequirementsFailure"/> reason in the <see cref="IRequirementsService"/> in the log.

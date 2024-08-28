@@ -8,9 +8,7 @@ namespace SophiApp.Helpers
     using Microsoft.UI.Xaml.Controls;
     using SophiApp.Models;
 
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     public class UIDataTemplateSelector : DataTemplateSelector
     {
 #pragma warning disable CS8618 // Non-nullable property must contain a non-null value when exiting constructor.

@@ -50,8 +50,16 @@
                 <ScrollView>
                     <Grid x:Name="UwpItemsContainerGrid"
                           Height="Auto"
-                          MaxHeight="385">
+                          MaxHeight="420">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Uid="UwpPage_AboutAppIcon"
+                                   Grid.Row="0"
+                                   Style="{StaticResource UwpPageDescriptionTextStyle}"/>
                         <ItemsView ItemsSource="{x:Bind ViewModel.UwpAppsModels, Mode=OneWay}"
+                                   Grid.Row="1"
                                    HorizontalAlignment="Left"
                                    SelectionMode="None">
                             <ItemsView.ItemTemplate>

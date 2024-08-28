@@ -16,6 +16,8 @@
     <Page.Resources>
         <DataTemplate x:Key="TextCheckBoxTemplate">
             <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
+                                   TitleSize="{Binding ElementName=PageSecurity, Path=ViewModel.FontOptions.TitleTextSize}"
+                                   DescriptionSize="{Binding ElementName=PageSecurity, Path=ViewModel.FontOptions.DescriptionTextSize}"
                                    Command="{Binding ElementName=PageSecurity, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
     </Page.Resources>

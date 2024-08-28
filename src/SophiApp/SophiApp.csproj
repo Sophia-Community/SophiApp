@@ -74,22 +74,22 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Primitives" Version="7.1.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.0.240109" />
+    <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.0.240109" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.0.240109" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.42.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.4" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.4" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.4" />
-    <PackageReference Include="Microsoft.PowerShell.ConsoleHost" Version="7.4.4" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
-    <PackageReference Include="Microsoft.WSMan.Management" Version="7.4.4" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.5" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.5" />
+    <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.5" />
+    <PackageReference Include="Microsoft.PowerShell.ConsoleHost" Version="7.4.5" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240802000" />
+    <PackageReference Include="Microsoft.WSMan.Management" Version="7.4.5" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.30.0.95878">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.32.0.97167">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -99,7 +99,7 @@
     </PackageReference>
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
-    <PackageReference Include="System.Management.Automation" Version="7.4.4" />
+    <PackageReference Include="System.Management.Automation" Version="7.4.5" />
     <PackageReference Include="TaskScheduler" Version="2.11.0" />
     <PackageReference Include="WinUIEx" Version="2.3.4" />
   </ItemGroup>

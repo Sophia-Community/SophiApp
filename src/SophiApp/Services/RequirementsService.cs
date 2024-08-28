@@ -128,10 +128,7 @@ namespace SophiApp.Services
                     }
                 },
                 { "OsRequirements_Malware_GhostToolbox", () => File.Exists($"{system32Folder}\\migwiz\\dlmanifests\\run.ghost.cmd") },
-                { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
-                { "OsRequirements_Malware_Winpilot", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("Winpilot") ?? false },
                 { "OsRequirements_Malware_Win10Tweaker", () => Registry.CurrentUser.OpenSubKey("Software\\Win 10 Tweaker") is not null },
-                { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
                 { "OsRequirements_Malware_BoosterX", () => File.Exists($"{programFiles}\\GameModeX\\GameModeX.exe") },
                 { "OsRequirements_Malware_DefenderControl", () => Directory.Exists($"{appData}\\Defender Control") },
                 { "OsRequirements_Malware_DefenderSwitch", () => Directory.Exists($"{programData}\\DSW") },
@@ -150,6 +147,13 @@ namespace SophiApp.Services
                     }
                 },
                 { "OsRequirements_Malware_WinCry", () => File.Exists($"{systemRoot}\\TempCleaner.exe") },
+                { "OsRequirements_Malware_Hone", () => File.Exists($"{localAppData}\\Programs\\Hone\\Hone.exe") },
+                { "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log") },
+                { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
+                { "OsRequirements_Malware_AtlasOS", () => Directory.Exists($"{systemRoot}\\AtlasModules") },
+                { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
+                { "OsRequirements_Malware_Winpilot", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("Winpilot") ?? false },
+                { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
                 {
                     "OsRequirements_Malware_FlibustierWindowsImage", () =>
                     {
@@ -157,8 +161,6 @@ namespace SophiApp.Services
                         return Array.Exists(values, key => key.Contains("flibustier"));
                     }
                 },
-                { "OsRequirements_Malware_Hone", () => File.Exists($"{localAppData}\\Programs\\Hone\\Hone.exe") },
-                { "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log") },
                 {
                     "OsRequirements_Malware_AutoSettingsPS", () =>
                     {
@@ -166,8 +168,6 @@ namespace SophiApp.Services
                         return Array.Exists(exclusions!, key => key.Contains("AutoSettingsPS"));
                     }
                 },
-                { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
-                { "OsRequirements_Malware_AtlasOS", () => Directory.Exists($"{systemRoot}\\AtlasModules") },
             };
 
             return malwares.Any(malware =>

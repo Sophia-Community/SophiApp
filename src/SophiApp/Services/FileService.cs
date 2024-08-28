@@ -3,6 +3,8 @@
 // </copyright>
 
 namespace SophiApp.Services;
+
+using System.Runtime.CompilerServices;
 using System.Text;
 using Newtonsoft.Json;
 using SophiApp.Contracts.Services;
@@ -35,6 +37,7 @@ public class FileService : IFileService
     /// <param name="folderPath"><inheritdoc/></param>
     /// <param name="fileName"><inheritdoc/></param>
     /// <param name="content"><inheritdoc/></param>
+    [MethodImpl(MethodImplOptions.Synchronized)]
     public void SaveToJson<T>(string folderPath, string fileName, T content)
     {
         if (!Directory.Exists(folderPath))

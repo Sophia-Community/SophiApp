@@ -6,10 +6,12 @@
       xmlns:controls="using:SophiApp.ControlTemplates"
       xmlns:service="using:SophiApp.Services"
       mc:Ignorable="d">
+
     <StackPanel>
         <controls:MadeForWindows Margin="2, 0, 0, 0"/>
         <Grid Width="836" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -145,6 +147,25 @@
                                                NickName="{x:Bind service:CommonDataService.AppTesterName}"
                                                Command="{x:Bind ViewModel.OpenLinkCommand}"
                                                CommandParameter="{x:Bind service:CommonDataService.AppTesterUrl}"/>
+                    </StackPanel>
+                </controls:ContentBlock.Content>
+            </controls:ContentBlock>
+
+            <controls:ContentBlock x:Uid="SettingsPage_FontOptions"
+                                   Grid.Row="2">
+                <controls:ContentBlock.Content>
+                    <StackPanel>
+                        <Slider x:Uid="SettingsPage_TitleFontSize"
+                                Minimum="{x:Bind ViewModel.FontOptions.TitleTextMinSize, Mode=OneWay}"
+                                Maximum="{x:Bind ViewModel.FontOptions.TitleTextMaxSize, Mode=OneWay}"
+                                Value="{x:Bind ViewModel.FontOptions.TitleTextSize, Mode=TwoWay}"
+                                StepFrequency="2"/>
+
+                        <Slider x:Uid="SettingsPage_DescriptionFontSize"
+                                Minimum="{x:Bind ViewModel.FontOptions.DescriptionTextMinSize, Mode=OneWay}"
+                                Maximum="{x:Bind ViewModel.FontOptions.DescriptionTextMaxSize, Mode=OneWay}"
+                                Value="{x:Bind ViewModel.FontOptions.DescriptionTextSize, Mode=TwoWay}"
+                                StepFrequency="2"/>
                     </StackPanel>
                 </controls:ContentBlock.Content>
             </controls:ContentBlock>

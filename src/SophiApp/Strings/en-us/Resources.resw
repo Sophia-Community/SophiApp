@@ -644,4 +644,25 @@
   <data name="TaskScheduler_WindowsCleanupToast_Title" xml:space="preserve">
     <value>Windows clean up</value>
   </data>
+  <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
+    <value>Generating the UI</value>
+  </data>
+  <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
+    <value>A description of how getting UWP app icons from others is implemented and how SophiApp differs from them</value>
+  </data>
+  <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
+    <value>A description of how getting UWP app icons from others is implemented and how SophiApp differs from them</value>
+  </data>
+  <data name="SettingsPage_FontOptions.Title" xml:space="preserve">
+    <value>UI font sizes</value>
+  </data>
+  <data name="SettingsPage_TitleFontSize.Header" xml:space="preserve">
+    <value>UI elements header size</value>
+  </data>
+  <data name="SettingsPage_DescriptionFontSize.Header" xml:space="preserve">
+    <value>UI elements description size</value>
+  </data>
 </root>

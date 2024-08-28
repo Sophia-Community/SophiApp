@@ -16,6 +16,8 @@
     <Page.Resources>
         <DataTemplate x:Key="TextCheckBoxTemplate">
             <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
+                                   TitleSize="{Binding ElementName=PagePrivacy, Path=ViewModel.FontOptions.TitleTextSize}"
+                                   DescriptionSize="{Binding ElementName=PagePrivacy, Path=ViewModel.FontOptions.DescriptionTextSize}"
                                    Command="{Binding ElementName=PagePrivacy, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
         <DataTemplate x:Key="ExpandingRadioGroupTemplate">

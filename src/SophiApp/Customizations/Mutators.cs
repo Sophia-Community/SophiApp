@@ -421,9 +421,10 @@ namespace SophiApp.Customizations
         public static void EventViewerCustomView(bool isEnabled)
         {
             var auditValueName = "ProcessCreationIncludeCmdLine_Enabled";
-            var processXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
-            var processAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
-            var processCreationXml = @$"<ViewerConfig>
+            var viewerXmlPath = $"{Environment.GetEnvironmentVariable("ALLUSERSPROFILE")}\\Microsoft\\Event Viewer\\Views\\ProcessCreation.xml";
+            var viewerAuditPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit";
+            var viewerGuid = "{0CCE922B-69AE-11D9-BED3-505054503030}";
+            var viewerXml = @$"<ViewerConfig>
   <QueryConfig>
     <QueryParams>
       <UserQuery />
@@ -442,14 +443,19 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
-                Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.SetValue(auditValueName, 1, RegistryValueKind.DWord);
-                FileService.Save(file: processXmlPath, content: processCreationXml);
+                _ = PowerShellService.Invoke($"auditpol /set /subcategory:\"{viewerGuid}\" /success:enable /failure:enable");
+                Registry.LocalMachine.OpenSubKey(viewerAuditPath, true)?.SetValue(auditValueName, 1, RegistryValueKind.DWord);
+                FileService.Save(file: viewerXmlPath, content: viewerXml);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey(processAuditPath, true)?.DeleteValue(auditValueName, false);
-            File.Delete(processXmlPath);
+            if (!CommonDataService.IsWindows11)
+            {
+                _ = PowerShellService.Invoke($"auditpol / set / subcategory:\"{viewerGuid}\" / success:disable / failure:disable");
+            }
+
+            Registry.LocalMachine.OpenSubKey(viewerAuditPath, true)?.DeleteValue(auditValueName, false);
+            File.Delete(viewerXmlPath);
         }
 
         /// <summary>
