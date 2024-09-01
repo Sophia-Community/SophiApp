@@ -107,7 +107,7 @@ public static FocusAssistState GetFocusAssistState()
 
 		if (success)
 		{
-return (FocusAssistState)pBuffer;
+			return (FocusAssistState)pBuffer;
 		}
 	}
 	catch {}
