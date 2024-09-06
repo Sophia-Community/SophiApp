@@ -1,4 +1,4 @@
-﻿// <copyright file="CommonDataService.cs" company="Team Sophia">
+// <copyright file="CommonDataService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -98,7 +98,7 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets app UI developer url.
         /// </summary>
-        public const string AnimationDeveloperUrl = "https://linktr.ee/crowmax";
+        public const string AnimationDeveloperUrl = "https://www.linkedin.com/in/tmcrowmax";
 
         /// <summary>
         /// Gets app tester url.
