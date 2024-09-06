@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -651,10 +651,10 @@
     <value>Run</value>
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
-    <value>A description of how getting UWP app icons from others is implemented and how SophiApp differs from them</value>
+    <value>The tasks below are sufficient to keep your Windows clean. There is no need for constantly cleaning any other folders as advised on the Internet.</value>
   </data>
   <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
-    <value>A description of how getting UWP app icons from others is implemented and how SophiApp differs from them</value>
+    <value>UWP apps list is being rendered in real-time with their native logos taken from Windows, that means that apps list is not pre-prepared like in all other similar apps.</value>
   </data>
   <data name="SettingsPage_FontOptions.Title" xml:space="preserve">
     <value>UI font sizes</value>
