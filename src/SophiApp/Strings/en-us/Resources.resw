@@ -651,10 +651,10 @@
     <value>Run</value>
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
-    <value>The tasks below are sufficient to keep your Windows clean. There is no need for constantly cleaning any other folders as advised on the Internet.</value>
+    <value>The tasks below are sufficient enough to keep your Windows OS clean. There is no need for constantly clean any other folders as advised from the Internet.</value>
   </data>
   <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
-    <value>UWP apps list is being rendered in real-time with their native logos taken from Windows, that means that apps list is not pre-prepared like in all other similar apps.</value>
+    <value>UWP apps list is being rendered in real-time with their native logos taken from Windows, that means that "the" UWP apps list is not pre-prepared like in all other similar apps.</value>
   </data>
   <data name="SettingsPage_FontOptions.Title" xml:space="preserve">
     <value>UI font sizes</value>
