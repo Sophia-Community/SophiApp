@@ -29,10 +29,12 @@
                VerticalAlignment="Center"
                HorizontalAlignment="Left"
                Margin="60, 0, 0, 0"
-               Height="37"
-               Width="37"/>
-        <TextBlock Text="{Binding Name}"
-                   Style="{StaticResource UIControlTitleTextStyle}"
-                   Margin="110, 0, 10, 0"/>
+               Height="40"
+               Width="40"/>
+        <TextBlock Style="{StaticResource UIControlTitleTextStyle}"
+                   Margin="110, 0, 10, 0">
+            <Run Text="{Binding Name}"
+                 FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=UwpAppCheckBoxControl}"/>
+        </TextBlock>
     </Grid>
 </UserControl>

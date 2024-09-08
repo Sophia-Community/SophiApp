@@ -26,15 +26,19 @@
                         <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="UwpAppsNotFoundTextBlock"
-                               x:Uid="UwpPage_UwpAppsNotFound"
                                Grid.Column="0"
                                Style="{StaticResource UIControlTitleTextStyle}"
-                               Margin="17, 0, 0, 0"/>
+                               Margin="17, 0, 0, 0">
+                        <Run x:Uid="UwpPage_UwpAppsNotFound"
+                             FontSize="{Binding Path=ViewModel.FontOptions.TitleTextSize, ElementName=PageUwp}"/>
+                    </TextBlock>
                     <TextBlock x:Name="ForAllUsersTextBlock"
-                               x:Uid="UwpPage_ForAllUsers"
                                Grid.Column="0"
                                Style="{StaticResource UIControlTitleTextStyle}"
-                               Margin="17, 0, 0, 0"/>
+                               Margin="17, 0, 0, 0">
+                        <Run x:Uid="UwpPage_ForAllUsers"
+                             FontSize="{Binding Path=ViewModel.FontOptions.TitleTextSize, ElementName=PageUwp}"/>
+                    </TextBlock>
                     <CheckBox x:Name="ForAllUsersCheckBox"
                               Grid.Column="1"
                               Style="{StaticResource UIControlCheckBoxStyle}"
@@ -48,16 +52,16 @@
                     Background="{ThemeResource UIControlBackground}"
                     Style="{StaticResource UIControlBorderStyle}">
                 <ScrollView>
-                    <Grid x:Name="UwpItemsContainerGrid"
-                          Height="Auto"
-                          MaxHeight="420">
+                    <Grid x:Name="UwpItemsContainerGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock x:Uid="UwpPage_AboutAppIcon"
-                                   Grid.Row="0"
-                                   Style="{StaticResource UwpPageDescriptionTextStyle}"/>
+                        <TextBlock Grid.Row="0"
+                                   Style="{StaticResource UwpPageDescriptionTextStyle}">
+                            <Run x:Uid="UwpPage_AboutAppIcon"
+                                 FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageUwp}"/>
+                        </TextBlock>
                         <ItemsView ItemsSource="{x:Bind ViewModel.UwpAppsModels, Mode=OneWay}"
                                    Grid.Row="1"
                                    HorizontalAlignment="Left"
@@ -73,7 +77,7 @@
                             <ItemsView.Layout>
                                 <UniformGridLayout x:Name="UwpItemsContainerLayoutGrid"
                                                    ItemsStretch="Fill"
-                                                   MinRowSpacing="5"
+                                                   MinRowSpacing="10"
                                                    MinColumnSpacing="10"
                                                    MaximumRowsOrColumns="2"/>
                             </ItemsView.Layout>

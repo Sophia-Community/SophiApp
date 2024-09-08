@@ -64,6 +64,7 @@ public partial class App : Application
                 _ = services.AddTransient<PersonalizationViewModel>();
                 _ = services.AddTransient<PrivacyViewModel>();
                 _ = services.AddTransient<ProVersionViewModel>();
+                _ = services.AddTransient<SearchViewModel>();
                 _ = services.AddTransient<SecurityViewModel>();
                 _ = services.AddTransient<SettingsViewModel>();
                 _ = services.AddTransient<SystemViewModel>();
@@ -76,6 +77,7 @@ public partial class App : Application
                 _ = services.AddTransient<PrivacyPage>();
                 _ = services.AddTransient<ProVersionPage>();
                 _ = services.AddTransient<RequirementsFailurePage>();
+                _ = services.AddTransient<SearchPage>();
                 _ = services.AddTransient<SecurityPage>();
                 _ = services.AddTransient<SettingsPage>();
                 _ = services.AddTransient<ShellPage>();

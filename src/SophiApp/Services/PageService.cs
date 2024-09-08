@@ -19,17 +19,18 @@ public class PageService : IPageService
     /// </summary>
     public PageService()
     {
-        Configure<StartupViewModel, StartupPage>();
-        Configure<PrivacyViewModel, PrivacyPage>();
-        Configure<PersonalizationViewModel, PersonalizationPage>();
-        Configure<SystemViewModel, SystemPage>();
-        Configure<UwpViewModel, UwpPage>();
-        Configure<TaskSchedulerViewModel, TaskSchedulerPage>();
-        Configure<SecurityViewModel, SecurityPage>();
         Configure<ContextMenuViewModel, ContextMenuPage>();
+        Configure<PersonalizationViewModel, PersonalizationPage>();
+        Configure<PrivacyViewModel, PrivacyPage>();
         Configure<ProVersionViewModel, ProVersionPage>();
-        Configure<SettingsViewModel, SettingsPage>();
         Configure<RequirementsFailureViewModel, RequirementsFailurePage>();
+        Configure<SearchViewModel, SearchPage>();
+        Configure<SecurityViewModel, SecurityPage>();
+        Configure<SettingsViewModel, SettingsPage>();
+        Configure<StartupViewModel, StartupPage>();
+        Configure<SystemViewModel, SystemPage>();
+        Configure<TaskSchedulerViewModel, TaskSchedulerPage>();
+        Configure<UwpViewModel, UwpPage>();
     }
 
     /// <inheritdoc/>

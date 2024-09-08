@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="SophiApp.ControlTemplates.ExpandingRadioGroup"
+    x:Name="ExpandingRadioGroupControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SophiApp.ControlTemplates"
@@ -26,12 +27,14 @@
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Style="{StaticResource UIControlTitleTextStyle}"
-                           Text="{Binding Title}"/>
+                           Style="{StaticResource UIControlTitleTextStyle}">
+                    <Run Text="{Binding Title}"
+                         FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=ExpandingRadioGroupControl}"/>
+                </TextBlock>
                 <RadioButton Grid.Column="1"
                              VerticalAlignment="Center"
                              GroupName="{Binding GroupName}"
-                             IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                             IsChecked="{Binding IsChecked, Mode=OneWay}"
                              Command="{Binding ViewModel.UIModelClicked_Command}"
                              CommandParameter="{Binding ParentModel}"
                              IsHitTestVisible="{Binding IsChecked, Converter={StaticResource BoolToInverseConverter}}"/>
@@ -45,11 +48,15 @@
                   Background="{ThemeResource UIControlBackground}">
             <Expander.Header>
                 <StackPanel>
-                    <TextBlock Text="{Binding Title}"
-                               Style="{StaticResource UIControlTitleTextStyle}"/>
-                    <TextBlock Text="{Binding Description}"
-                               Style="{StaticResource UIControlDescriptionTextStyle}"
-                               Foreground="{ThemeResource UIControlDescriptionForeground}"/>
+                    <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
+                        <Run Text="{Binding Title}"
+                             FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=ExpandingRadioGroupControl}"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource UIControlDescriptionTextStyle}"
+                               Foreground="{ThemeResource UIControlDescriptionForeground}">
+                        <Run Text="{Binding Description}"
+                             FontSize="{Binding Path=FontOptions.DescriptionTextSize, ElementName=ExpandingRadioGroupControl}"/>
+                    </TextBlock>
                 </StackPanel>
             </Expander.Header>
             <Expander.Content>

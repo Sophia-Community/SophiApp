@@ -49,7 +49,7 @@ public class AppNotificationService : IAppNotificationService
     public void RegisterCleanupProtocol()
     {
         var cleanupCommandPath = "WindowsCleanup\\shell\\open\\command";
-        var cleanupCommand = "@=\"powershell.exe -Command \\\"& {Start-ScheduledTask -TaskPath '\\\\Sophia\\\\' -TaskName 'Windows Cleanup'}\\\"\"";
+        var cleanupCommand = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath '\Sophia\' -TaskName 'Windows Cleanup'}""";
         Registry.ClassesRoot.OpenOrCreateSubKey(cleanupCommandPath).SetValue(string.Empty, cleanupCommand, RegistryValueKind.String);
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue(string.Empty, "URL:WindowsCleanup", RegistryValueKind.String);
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue("URL Protocol", string.Empty, RegistryValueKind.String);

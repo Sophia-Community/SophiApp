@@ -90,6 +90,12 @@ namespace SophiApp.Models
         public abstract void SetState();
 
         /// <summary>
+        /// Returns a value indicating whether a specified text occurs within this model.
+        /// </summary>
+        /// <param name="text">The text to seek.</param>
+        public virtual bool ContainsText(string text) => Title.Contains(text, StringComparison.CurrentCultureIgnoreCase);
+
+        /// <summary>
         /// <see cref="PropertyChanged"/> event handler.
         /// </summary>
         /// <param name="name">Property name.</param>

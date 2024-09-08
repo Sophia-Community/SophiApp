@@ -850,7 +850,7 @@ namespace SophiApp.Customizations
             var storeContextPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
             var storeContextValue = "NoUseStoreOpenWith";
 
-            Registry.CurrentUser.OpenSubKey(storeContextPath, true)?.DeleteValue(storeContextValue, false);
+            Registry.LocalMachine.OpenSubKey(storeContextPath, true)?.DeleteValue(storeContextValue, false);
 
             if (isEnabled)
             {

@@ -94,7 +94,7 @@ dotnet_diagnostic.SA1600.severity = warning
 dotnet_diagnostic.IDE0027.severity = error
 
 # CA1822: Mark members as static
-dotnet_diagnostic.CA1822.severity = suggestion
+dotnet_diagnostic.CA1822.severity = silent
 
 # IDE0051: Remove unused private members
 dotnet_diagnostic.IDE0051.severity = suggestion
@@ -219,6 +219,7 @@ dotnet_diagnostic.S2178.severity = warning
 # MVVMTK0034: Direct field reference to [ObservableProperty] backing field
 dotnet_diagnostic.MVVMTK0034.severity = error
 dotnet_diagnostic.SA1010.severity = silent
+dotnet_diagnostic.S2325.severity = suggestion
 
 [*.vb]
 #### Naming Styles ####

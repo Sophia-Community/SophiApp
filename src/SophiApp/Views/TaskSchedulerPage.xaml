@@ -16,9 +16,7 @@
     <Page.Resources>
         <DataTemplate x:Key="TextCheckBoxTemplate">
             <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                           TitleSize="{Binding ElementName=PageTaskScheduler, Path=ViewModel.FontOptions.TitleTextSize}"
-                           DescriptionSize="{Binding ElementName=PageTaskScheduler, Path=ViewModel.FontOptions.DescriptionTextSize}"
-                           Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
+                                   Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
         <DataTemplate x:Key="ExpandingCheckBoxTemplate">
             <controls:ExpandingCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
@@ -33,9 +31,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Uid="TaskSchedulerPage_AboutTasks"
-                           Style="{StaticResource TaskSchedulerDescriptionTextStyle}"
-                           Grid.Row="0"/>
+                <TextBlock Style="{StaticResource TaskSchedulerDescriptionTextStyle}"
+                           Grid.Row="0">
+                    <Run x:Uid="TaskSchedulerPage_AboutTasks"
+                         FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageTaskScheduler}"/>
+                </TextBlock>
                 <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
                                Grid.Row="1">
                     <ItemsRepeater.Layout>

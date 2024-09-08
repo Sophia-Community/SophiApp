@@ -25,12 +25,12 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets a minimum font size for UI elements description.
         /// </summary>
-        public int DescriptionTextMinSize { get; } = 12;
+        public int DescriptionTextMinSize { get; } = 14;
 
         /// <summary>
         /// Gets a maximum font size for UI elements description.
         /// </summary>
-        public int DescriptionTextMaxSize { get; } = 22;
+        public int DescriptionTextMaxSize { get; } = 24;
 
         /// <summary>
         /// Gets or sets the font size for UI elements description.
@@ -53,7 +53,7 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets a minimum font size for UI elements title.
         /// </summary>
-        public int TitleTextMinSize { get; } = 14;
+        public int TitleTextMinSize { get; } = 16;
 
         /// <summary>
         /// Gets a maximum font size for UI elements header.

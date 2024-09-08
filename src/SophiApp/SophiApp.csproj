@@ -51,6 +51,7 @@
     <None Remove="ControlTemplates\MadeForWindows.xaml" />
     <None Remove="Styles\ToggleButton.xaml" />
     <None Remove="Views\RequirementsFailurePage.xaml" />
+    <None Remove="Views\SearchPage.xaml" />
     <None Remove="Views\StartupPage.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +175,9 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\SearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Styles\Image.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

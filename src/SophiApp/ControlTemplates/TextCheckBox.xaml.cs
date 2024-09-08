@@ -7,6 +7,8 @@ namespace SophiApp.ControlTemplates
     using CommunityToolkit.Mvvm.Input;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
+    using SophiApp.Helpers;
+    using SophiApp.ViewModels;
 
     /// <summary>
     /// Implements the logic and appearance of the <see cref="TextCheckBox"/> element.
@@ -14,22 +16,10 @@ namespace SophiApp.ControlTemplates
     public sealed partial class TextCheckBox : UserControl
     {
         /// <summary>
-        /// <see cref="DescriptionSize"/>.
-        /// </summary>
-        public static readonly DependencyProperty DescriptionSizeProperty =
-            DependencyProperty.Register("DescriptionSize", typeof(int), typeof(TextCheckBox), new PropertyMetadata(default));
-
-        /// <summary>
         /// <see cref="Command"/>.
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(IRelayCommand), typeof(TextCheckBox), new PropertyMetadata(default));
-
-        /// <summary>
-        /// <see cref="TitleSize"/>.
-        /// </summary>
-        public static readonly DependencyProperty TitleSizeProperty =
-            DependencyProperty.Register("TitleSize", typeof(int), typeof(TextCheckBox), new PropertyMetadata(default));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TextCheckBox"/> class.
@@ -37,16 +27,13 @@ namespace SophiApp.ControlTemplates
         public TextCheckBox()
         {
             this.InitializeComponent();
+            FontOptions = App.GetService<ShellViewModel>().FontOptions;
         }
 
         /// <summary>
-        /// Gets or sets <see cref="TextCheckBox"/> description size.
+        /// Gets the app font sizes.
         /// </summary>
-        public int DescriptionSize
-        {
-            get => (int)GetValue(DescriptionSizeProperty);
-            set => SetValue(DescriptionSizeProperty, value);
-        }
+        public FontOptions FontOptions { get; }
 
         /// <summary>
         /// Gets or sets <see cref="TextCheckBox"/> command.
@@ -55,15 +42,6 @@ namespace SophiApp.ControlTemplates
         {
             get => (IRelayCommand)GetValue(CommandProperty);
             set => SetValue(CommandProperty, value);
-        }
-
-        /// <summary>
-        /// Gets or sets <see cref="TextCheckBox"/> title size.
-        /// </summary>
-        public int TitleSize
-        {
-            get => (int)GetValue(TitleSizeProperty);
-            set => SetValue(TitleSizeProperty, value);
         }
     }
 }

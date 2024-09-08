@@ -6,6 +6,7 @@ namespace SophiApp.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CSharpFunctionalExtensions;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
@@ -36,6 +37,9 @@ public partial class ShellViewModel : ObservableRecipient
 
     [ObservableProperty]
     private string delimiter;
+
+    [ObservableProperty]
+    private ObservableCollection<UIModel> foundModels = [];
 
     [ObservableProperty]
     private bool isBackEnabled;
@@ -105,6 +109,7 @@ public partial class ShellViewModel : ObservableRecipient
         ApplicableModelsCancel_Command = new RelayCommand(ApplicableModelsCancel);
         ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
         OpenTaskScheduler_Command = new AsyncRelayCommand(OpenTaskSchedulerAsync);
+        SearchBoxQuerySubmitted_Command = new AsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs>(args => SearchBoxQuerySubmittedAsync(args!));
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
         UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
@@ -124,6 +129,11 @@ public partial class ShellViewModel : ObservableRecipient
     /// Gets <see cref="IAsyncRelayCommand"/> to click an "Cancel" button in the Apply Customizations Panel.
     /// </summary>
     public IAsyncRelayCommand ApplicableModelsClear_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IAsyncRelayCommand"/> to click "Search" in AutoSuggestBox.
+    /// </summary>
+    public IAsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs> SearchBoxQuerySubmitted_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IAsyncRelayCommand"/> to click an "Open" button in the Task Scheduler page.
@@ -356,6 +366,18 @@ public partial class ShellViewModel : ObservableRecipient
         App.Logger.LogApplicableModelsClear();
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
+    }
+
+    private async Task SearchBoxQuerySubmittedAsync(AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+        if (!string.IsNullOrWhiteSpace(args.QueryText))
+        {
+            NavigationViewHitTestVisible = false;
+            App.Logger.LogStartTextSearch(args.QueryText);
+            FoundModels = new (await modelService.GetModelsContainsAsync(JsonModels, args.QueryText));
+            _ = NavigationService.NavigateTo(pageKey: typeof(SearchViewModel).FullName!);
+            NavigationViewHitTestVisible = true;
+        }
     }
 
     private async Task OpenTaskSchedulerAsync()

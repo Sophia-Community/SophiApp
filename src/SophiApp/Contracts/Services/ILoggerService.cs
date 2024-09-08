@@ -187,6 +187,19 @@ namespace SophiApp.Contracts.Services
         void LogTitleTextSizeChanged(int size);
 
         /// <summary>
+        /// Write information about text search in UI elements title or description.
+        /// </summary>
+        /// /// <param name="text">A searched text.</param>
+        void LogStartTextSearch(string text);
+
+        /// <summary>
+        /// Write the time spent searching for text in models.
+        /// </summary>
+        /// <param name="timer">Time spent on search.</param>
+        /// <param name="count">Number of found models.</param>
+        void LogStopTextSearch(Stopwatch timer, int count);
+
+        /// <summary>
         /// Write <see cref="RequirementsFailure"/> reason in the <see cref="IRequirementsService"/> in the log.
         /// </summary>
         /// <param name="failure">A failure reason.</param>

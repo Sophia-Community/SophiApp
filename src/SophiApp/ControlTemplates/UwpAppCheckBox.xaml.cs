@@ -7,7 +7,9 @@ namespace SophiApp.ControlTemplates
     using CommunityToolkit.Mvvm.Input;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
+    using SophiApp.Helpers;
     using SophiApp.Models;
+    using SophiApp.ViewModels;
 
     /// <summary>
     /// Implements the logic and appearance of the <see cref="UwpAppCheckBox"/> element.
@@ -32,7 +34,13 @@ namespace SophiApp.ControlTemplates
         public UwpAppCheckBox()
         {
             this.InitializeComponent();
+            FontOptions = App.GetService<ShellViewModel>().FontOptions;
         }
+
+        /// <summary>
+        /// Gets the app font sizes.
+        /// </summary>
+        public FontOptions FontOptions { get; }
 
         /// <summary>
         /// Gets or sets <see cref="UwpAppCheckBox"/> command.

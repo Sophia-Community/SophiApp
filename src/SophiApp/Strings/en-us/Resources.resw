@@ -665,4 +665,20 @@
   <data name="SettingsPage_DescriptionFontSize.Header" xml:space="preserve">
     <value>UI elements description size</value>
   </data>
+<<<<<<< Updated upstream
 </root>
+=======
+  <data name="OsRequirements_Malware_GearupBooster" xml:space="preserve">
+    <value>GearUP Booster</value>
+  </data>
+  <data name="OsRequirements_Malware_xd-AntiSpy" xml:space="preserve">
+    <value>xd-AntiSpy</value>
+  </data>
+  <data name="Shell_AutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Shell_Search.Content" xml:space="preserve">
+    <value>Search</value>
+  </data>
+</root>
+>>>>>>> Stashed changes

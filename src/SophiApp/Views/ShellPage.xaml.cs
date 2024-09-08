@@ -24,8 +24,8 @@ public sealed partial class ShellPage : Page
     /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
     public ShellPage(ShellViewModel viewModel, ICommonDataService commonDataService)
     {
-        ViewModel = viewModel;
         InitializeComponent();
+        ViewModel = viewModel;
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationViewService.Initialize(NavigationViewControl);
         App.MainWindow.ExtendsContentIntoTitleBar = true;

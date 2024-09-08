@@ -24,6 +24,13 @@ namespace SophiApp.Contracts.Services
         Task<List<UIModel>> BuildUwpAppModelsAsync(bool forAllUsers);
 
         /// <summary>
+        /// Returns models in which contain the specified text.
+        /// </summary>
+        /// <param name="models">A collection of <see cref="UIModel"/> to search.</param>
+        /// <param name="text">The text to seek.</param>
+        Task<List<UIModel>> GetModelsContainsAsync(ConcurrentBag<UIModel> models, string text);
+
+        /// <summary>
         /// Using multiple threads to get the <see cref="UIModel"/> state.
         /// </summary>
         /// <param name="models"><see cref="UIModel"/> collection.</param>

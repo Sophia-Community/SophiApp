@@ -151,16 +151,7 @@ namespace SophiApp.Services
                 { "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log") },
                 { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
                 { "OsRequirements_Malware_AtlasOS", () => Directory.Exists($"{systemRoot}\\AtlasModules") },
-                { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
-                { "OsRequirements_Malware_Winpilot", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("Winpilot") ?? false },
-                { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
-                {
-                    "OsRequirements_Malware_FlibustierWindowsImage", () =>
-                    {
-                        var values = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\.NETFramework\\Performance")?.GetValueNames() ?? [];
-                        return Array.Exists(values, key => key.Contains("flibustier"));
-                    }
-                },
+                { "OsRequirements_Malware_GearupBooster", () => Directory.Exists($"{programFilesX86}\\GearUPBooster") },
                 {
                     "OsRequirements_Malware_AutoSettingsPS", () =>
                     {
@@ -168,6 +159,17 @@ namespace SophiApp.Services
                         return Array.Exists(exclusions!, key => key.Contains("AutoSettingsPS"));
                     }
                 },
+                {
+                    "OsRequirements_Malware_FlibustierWindowsImage", () =>
+                    {
+                        var values = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\.NETFramework\\Performance")?.GetValueNames() ?? [];
+                        return Array.Exists(values, key => key.Contains("flibustier"));
+                    }
+                },
+                { "OsRequirements_Malware_Winpilot", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("Winpilot") ?? false },
+                { "OsRequirements_Malware_xd-AntiSpy", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("xd-AntiSpy") ?? false },
+                { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
+                { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
             };
 
             return malwares.Any(malware =>

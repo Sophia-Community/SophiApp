@@ -39,9 +39,7 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets or sets <see cref="UIExpandingRadioGroupModel"/> child items.
         /// </summary>
-#pragma warning disable SA1010 // Opening square brackets should be spaced correctly
         public List<UIRadioGroupItemModel> Items { get; set; } = [];
-#pragma warning restore SA1010 // Opening square brackets should be spaced correctly
 
         /// <inheritdoc/>
         public override void GetState()
@@ -74,5 +72,9 @@ namespace SophiApp.Models
                 App.Logger.LogModelSetStateException(ex, Name, checkedItem.Id);
             }
         }
+
+        /// <inheritdoc/>
+        public override bool ContainsText(string text)
+            => base.ContainsText(text) || Description.Contains(text, StringComparison.CurrentCultureIgnoreCase) || Items.Exists(i => i.Title.Contains(text, StringComparison.CurrentCultureIgnoreCase));
     }
 }

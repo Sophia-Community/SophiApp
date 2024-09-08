@@ -13,7 +13,7 @@ namespace SophiApp.ControlTemplates
     /// </summary>
     public sealed partial class ExpandingCheckBox : UserControl
     {
-        // TODO: Is deprecated, del it?
+        // TODO: ExpandingCheckBox not used, del it?
 
         /// <summary>
         /// <see cref="Command"/>.

@@ -11,7 +11,7 @@ namespace SophiApp.Models
         private readonly Action<bool> mutator;
         private bool isChecked;
 
-        // TODO: Is deprecated, del it?
+        // TODO: Its deprecated, del it?
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UIExpandingCheckBoxModel"/> class.
@@ -82,5 +82,8 @@ namespace SophiApp.Models
                 App.Logger.LogModelSetStateException(ex, Name, IsChecked);
             }
         }
+
+        /// <inheritdoc/>
+        public override bool ContainsText(string text) => base.ContainsText(text) || Description.Contains(text, StringComparison.CurrentCultureIgnoreCase);
     }
 }

@@ -103,17 +103,34 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public async Task<List<UIModel>> GetModelsContainsAsync(ConcurrentBag<UIModel> models, string text)
+        {
+            var timer = Stopwatch.StartNew();
+            var foundModels = await Task.WhenAll(
+                ContainsTextByTagAsync(models, text, UICategoryTag.Privacy),
+                ContainsTextByTagAsync(models, text, UICategoryTag.Personalization),
+                ContainsTextByTagAsync(models, text, UICategoryTag.System),
+                ContainsTextByTagAsync(models, text, UICategoryTag.TaskScheduler),
+                ContainsTextByTagAsync(models, text, UICategoryTag.Security),
+                ContainsTextByTagAsync(models, text, UICategoryTag.ContextMenu));
+            timer.Stop();
+            var result = foundModels.SelectMany(model => model).ToList();
+            App.Logger.LogStopTextSearch(timer, result.Count);
+            return result;
+        }
+
+        /// <inheritdoc/>
         public async Task GetStateAsync(ConcurrentBag<UIModel> models)
         {
             App.Logger.LogStartModelsGetState();
             var timer = Stopwatch.StartNew();
             await Task.WhenAll(
-                GetStateByTag(models, UICategoryTag.Privacy),
-                GetStateByTag(models, UICategoryTag.Personalization),
-                GetStateByTag(models, UICategoryTag.System),
-                GetStateByTag(models, UICategoryTag.TaskScheduler),
-                GetStateByTag(models, UICategoryTag.Security),
-                GetStateByTag(models, UICategoryTag.ContextMenu));
+                GetStateByTagAsync(models, UICategoryTag.Privacy),
+                GetStateByTagAsync(models, UICategoryTag.Personalization),
+                GetStateByTagAsync(models, UICategoryTag.System),
+                GetStateByTagAsync(models, UICategoryTag.TaskScheduler),
+                GetStateByTagAsync(models, UICategoryTag.Security),
+                GetStateByTagAsync(models, UICategoryTag.ContextMenu));
             timer.Stop();
             App.Logger.LogAllModelsGetState(timer, models.Count);
         }
@@ -125,13 +142,13 @@ namespace SophiApp.Services
             App.Logger.LogStartModelsGetState();
             var timer = Stopwatch.StartNew();
             await Task.WhenAll(
-                GetStateByTag(models, UICategoryTag.Privacy, getStateCallback),
-                GetStateByTag(models, UICategoryTag.Personalization, getStateCallback),
-                GetStateByTag(models, UICategoryTag.System, getStateCallback),
-                GetStateByTag(models, UICategoryTag.UWP, getStateCallback),
-                GetStateByTag(models, UICategoryTag.TaskScheduler, getStateCallback),
-                GetStateByTag(models, UICategoryTag.Security, getStateCallback),
-                GetStateByTag(models, UICategoryTag.ContextMenu, getStateCallback));
+                GetStateByTagAsync(models, UICategoryTag.Privacy, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.Personalization, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.System, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.UWP, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.TaskScheduler, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.Security, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.ContextMenu, getStateCallback));
             timer.Stop();
             App.Logger.LogAllModelsGetState(timer, models.Count);
         }
@@ -143,13 +160,13 @@ namespace SophiApp.Services
             App.Logger.LogStartApplicableModelsSetState();
             var timer = Stopwatch.StartNew();
             await Task.WhenAll(
-                SetStateByTag(models, UICategoryTag.Privacy, setStateCallback, token),
-                SetStateByTag(models, UICategoryTag.Personalization, setStateCallback, token),
-                SetStateByTag(models, UICategoryTag.System, setStateCallback, token),
-                SetStateByTag(models, UICategoryTag.UWP, setStateCallback, token),
-                SetStateByTag(models, UICategoryTag.TaskScheduler, setStateCallback, token),
-                SetStateByTag(models, UICategoryTag.Security, setStateCallback, token),
-                SetStateByTag(models, UICategoryTag.ContextMenu, setStateCallback, token));
+                SetStateByTagAsync(models, UICategoryTag.Privacy, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.Personalization, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.System, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.UWP, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.TaskScheduler, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.Security, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.ContextMenu, setStateCallback, token));
             timer.Stop();
 
             if (!token.IsCancellationRequested)
@@ -236,7 +253,10 @@ namespace SophiApp.Services
             return (Action<T>)Delegate.CreateDelegate(typeof(Action<T>), method!);
         }
 
-        private Task GetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null)
+        private async Task<IEnumerable<UIModel>> ContainsTextByTagAsync(ConcurrentBag<UIModel> models, string text, UICategoryTag tag)
+            => await Task.Run(() => models.Where(model => model.Tag == tag && model.ContainsText(text)));
+
+        private Task GetStateByTagAsync(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null)
         {
             return Task.Run(() => models.Where(model => model.Tag == tag)
                 .ToList()
@@ -250,7 +270,7 @@ namespace SophiApp.Services
                 }));
         }
 
-        private Task SetStateByTag(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null, CancellationToken? token = null)
+        private Task SetStateByTagAsync(ConcurrentBag<UIModel> models, UICategoryTag tag, Action? getStateCallback = null, CancellationToken? token = null)
         {
             return Task.Run(() =>
             {

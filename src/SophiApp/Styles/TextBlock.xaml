@@ -79,6 +79,7 @@
         <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style x:Key="SetUpCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
@@ -98,7 +99,7 @@
     <Style x:Key="TaskSchedulerDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Margin" Value="0, 20, 20, 20"/>
+        <Setter Property="Margin" Value="0, 20, 20, 30"/>
     </Style>
 
     <Style x:Key="UwpPageDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">

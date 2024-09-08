@@ -73,5 +73,8 @@ namespace SophiApp.Models
                 App.Logger.LogModelSetStateException(ex, Name, IsChecked);
             }
         }
+
+        /// <inheritdoc/>
+        public override bool ContainsText(string text) => base.ContainsText(text) || Description.Contains(text, StringComparison.CurrentCultureIgnoreCase);
     }
 }

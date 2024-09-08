@@ -12,6 +12,7 @@ namespace SophiApp.Services
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
+    using static System.Net.Mime.MediaTypeNames;
 
     /// <inheritdoc/>
     public class LoggerService : ILoggerService
@@ -141,6 +142,12 @@ namespace SophiApp.Services
 
         /// <inheritdoc/>
         public void LogTitleTextSizeChanged(int size) => Log.Information("The text size of UI element headers set to: {Size}", size);
+
+        /// <inheritdoc/>
+        public void LogStartTextSearch(string text) => Log.Information("User ran a search on the text: {Text}", text);
+
+        /// <inheritdoc/>
+        public void LogStopTextSearch(Stopwatch timer, int count) => Log.Information("The search took seconds: {Seconds} and return models: {Count}", timer.Elapsed.TotalSeconds, count);
 
         /// <inheritdoc/>
         public void LogNavigateToRequirementsFailure(RequirementsFailure failure) => Log.Information("Failure to meet {Service} requirements due to: {Name}", nameof(IRequirementsService), failure);
