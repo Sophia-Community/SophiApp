@@ -651,10 +651,10 @@
     <value>Run</value>
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
-    <value>The tasks below are sufficient enough to keep your Windows OS clean. There is no need for constantly clean any other folders as advised from the Internet.</value>
+    <value>The scheduled tasks options below are sufficient enough to keep your Windows OS clean. There is no need to constantly clean more system folders as advised from the Internet.</value>
   </data>
   <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
-    <value>UWP apps list is being rendered in real-time with their native logos taken from Windows, that means that "the" UWP apps list is not pre-prepared like in all other similar apps.</value>
+    <value>UWP apps list is rendered in real-time with their native icon logos taken from Windows. That means that the UWP apps list is not pre-prepared like in other similar apps.</value>
   </data>
   <data name="SettingsPage_FontOptions.Title" xml:space="preserve">
     <value>UI font sizes</value>
@@ -665,9 +665,6 @@
   <data name="SettingsPage_DescriptionFontSize.Header" xml:space="preserve">
     <value>UI elements description size</value>
   </data>
-<<<<<<< Updated upstream
-</root>
-=======
   <data name="OsRequirements_Malware_GearupBooster" xml:space="preserve">
     <value>GearUP Booster</value>
   </data>
@@ -681,4 +678,3 @@
     <value>Search</value>
   </data>
 </root>
->>>>>>> Stashed changes
