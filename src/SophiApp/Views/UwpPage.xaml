@@ -58,7 +58,8 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0"
-                                   Style="{StaticResource UwpPageDescriptionTextStyle}">
+                                   Style="{StaticResource UwpPageDescriptionTextStyle}"
+                                   Foreground="{ThemeResource WindowAccent}">
                             <Run x:Uid="UwpPage_AboutAppIcon"
                                  FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageUwp}"/>
                         </TextBlock>

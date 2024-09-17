@@ -24,9 +24,20 @@ namespace SophiApp.Services
             using var volumeCaches = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches");
             new List<string>()
             {
-                "Delivery Optimization Files", "BranchCache", "Device Driver Packages", "Language Pack",
-                "Previous Installations", "Setup Log Files", "System error memory dump files", "System error minidump files",
-                "Temporary Setup Files", "Update Cleanup", "Windows Defender", "Windows ESD installation files",
+                "BranchCache",
+                "Delivery Optimization Files",
+                "Device Driver Packages",
+                "Language Pack",
+                "Previous Installations",
+                "Setup Log Files",
+                "System error memory dump files",
+                "System error minidump files",
+                "Temporary Files",
+                "Temporary Setup Files",
+                "Update Cleanup",
+                "Upgrade Discarded Files",
+                "Windows Defender",
+                "Windows ESD installation files",
                 "Windows Upgrade Log Files",
             }
             .ForEach(subKey => volumeCaches?.OpenOrCreateSubKey(subKey).SetValue("StateFlags1337", 2, RegistryValueKind.DWord));

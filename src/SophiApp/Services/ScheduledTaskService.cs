@@ -16,12 +16,19 @@ namespace SophiApp.Services
     {
         private readonly TaskService taskScheduler;
         private readonly ICommonDataService commonDataService;
-        private readonly string systemFolder = Environment.GetFolderPath(Environment.SpecialFolder.System);
+        private readonly FileInfo cleanupPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1"));
+        private readonly FileInfo cleanupVbsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.vbs"));
+        private readonly FileInfo notificationPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1"));
+        private readonly FileInfo notificationVbsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.vbs"));
 
-        private readonly string cleanupTaskAction = @"-WindowStyle Hidden -Command Get-Process -Name cleanmgr, Dism, DismHost | Stop-Process -Force
+        private readonly string cleanupPsAction = @"# https://github.com/farag2/Sophia-Script-for-Windows
+# https://t.me/sophia_chat
+
+Get-Process -Name cleanmgr, Dism, DismHost | Stop-Process -Force
+
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
-$ProcessInfo.FileName = """"""$env:SystemRoot\System32\cleanmgr.exe""""""
-$ProcessInfo.Arguments = """"""/sagerun:1337""""""
+$ProcessInfo.FileName = ""$env:SystemRoot\System32\cleanmgr.exe""
+$ProcessInfo.Arguments = ""/sagerun:1337""
 $ProcessInfo.UseShellExecute = $true
 $ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized
 
@@ -31,43 +38,9 @@ $Process.Start() | Out-Null
 
 Start-Sleep -Seconds 3
 
-[int]$SourceMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
-
-while ($true)
-{
-	[int]$CurrentMainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
-	if ($SourceMainWindowHandle -ne $CurrentMainWindowHandle)
-	{
-		$CompilerParameters = [System.CodeDom.Compiler.CompilerParameters]::new(""""""System.dll"""""")
-		$CompilerParameters.TempFiles = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
-		$CompilerParameters.GenerateInMemory = $true
-		$Signature = @{
-Namespace          = """"""WinAPI""""""
-Name               = """"""Win32ShowWindowAsync""""""
-Language           = """"""CSharp""""""
-CompilerParameters = $CompilerParameters
-MemberDefinition   = @""""""
-[DllImport(""""""user32.dll"""""")]
-public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-""""""@
-		}
-
-		if (-not (""""""WinAPI.Win32ShowWindowAsync"""""" -as [type]))
-		{
-            Add-Type @Signature
-		}
-		$MainWindowHandle = (Get-Process -Name cleanmgr | Where-Object -FilterScript {$_.PriorityClass -eq """"""BelowNormal""""""}).MainWindowHandle
-		[WinAPI.Win32ShowWindowAsync]::ShowWindowAsync($MainWindowHandle, 2)
-
-		break
-	}
-
-	Start-Sleep -Milliseconds 5
-}
-
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
-$ProcessInfo.FileName = """"""$env:SystemRoot\System32\Dism.exe""""""
-$ProcessInfo.Arguments = """"""/Online /English /Cleanup-Image /StartComponentCleanup /NoRestart""""""
+$ProcessInfo.FileName = ""$env:SystemRoot\System32\Dism.exe""
+$ProcessInfo.Arguments = ""/Online /English /Cleanup-Image /StartComponentCleanup /NoRestart""
 $ProcessInfo.UseShellExecute = $true
 $ProcessInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Minimized
 
@@ -75,14 +48,19 @@ $Process = New-Object -TypeName System.Diagnostics.Process
 $Process.StartInfo = $ProcessInfo
 $Process.Start() | Out-Null";
 
-        private readonly string cleanupNotificationTaskAction = @"# https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string cleanupVbsAction = @"' https://github.com/farag2/Sophia-Script-for-Windows
+' https://t.me/sophia_chat
+
+CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -NoProfile -NoLogo -WindowStyle Hidden -File %SystemRoot%\System32\Tasks\Sophia\Windows_Cleanup.ps1"", 0";
+
+        private readonly string notificationPsAction = @"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
 # Get Focus Assist status
 # https://github.com/DCourtel/Windows_10_Focus_Assist/blob/master/FocusAssistLibrary/FocusAssistLib.cs
 # https://redplait.blogspot.com/2018/07/wnf-ids-from-perfntcdll-adk-version.html
 
-$CompilerParameters = [System.CodeDom.Compiler.CompilerParameters]::new(""""""System.dll"""""")
+$CompilerParameters = [System.CodeDom.Compiler.CompilerParameters]::new(""System.dll"")
 $CompilerParameters.TempFiles = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
 $CompilerParameters.GenerateInMemory = $true
 $Signature = @{
@@ -189,11 +167,11 @@ $ToastXml.LoadXml($ToastTemplate.OuterXml)
 
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)"
-            .Replace("#TaskScheduler_WindowsCleanupToast_Title#", "TaskScheduler_WindowsCleanupToast_Title".GetLocalized())
-            .Replace("#TaskScheduler_WindowsCleanupToast_Description#", "TaskScheduler_WindowsCleanupToast_Description".GetLocalized())
-            .Replace("#TaskScheduler_WindowsCleanupToast_Run#", "TaskScheduler_WindowsCleanupToast_Run".GetLocalized());
+    .Replace("#TaskScheduler_WindowsCleanupToast_Title#", "TaskScheduler_WindowsCleanupToast_Title".GetLocalized())
+    .Replace("#TaskScheduler_WindowsCleanupToast_Description#", "TaskScheduler_WindowsCleanupToast_Description".GetLocalized())
+    .Replace("#TaskScheduler_WindowsCleanupToast_Run#", "TaskScheduler_WindowsCleanupToast_Run".GetLocalized());
 
-        private readonly string cleanupNotificationToastAction = @"' https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string notificationVbsAction = @"' https://github.com/farag2/Sophia-Script-for-Windows
 ' https://t.me/sophia_chat
 
 CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -NoProfile -NoLogo -WindowStyle Hidden -File %SystemRoot%\System32\Tasks\Sophia\Windows_Cleanup_Notification.ps1"", 0";
@@ -224,57 +202,79 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
         }
 
         /// <inheritdoc/>
-        public void RegisterWindowsCleanupTask()
+        public void RegisterCleanupTask()
         {
-            _ = RegisterTask(name: "Sophia\\Windows Cleanup", description: "TaskScheduler_WindowsCleanup_Description".GetLocalized(), action: "powershell.exe", arguments: cleanupTaskAction, username: Environment.UserName, runLevel: TaskRunLevel.Highest);
+            cleanupPsFile.Directory?.Create();
+            cleanupVbsFile.Directory?.Create();
+            File.WriteAllText(cleanupPsFile.FullName, cleanupPsAction, Encoding.UTF8);
+            File.WriteAllText(cleanupVbsFile.FullName, cleanupVbsAction, Encoding.Default);
+
+            _ = RegisterTask(
+                name: "Sophia\\Windows Cleanup",
+                description: "TaskScheduler_WindowsCleanup_Description".GetLocalized(),
+                action: "wscript.exe",
+                arguments: cleanupVbsFile.FullName,
+                username: Environment.UserName,
+                runLevel: TaskRunLevel.Highest);
         }
 
         /// <inheritdoc/>
-        public void RegisterWindowsCleanupNotificationTask()
+        public void UnregisterCleanupTask()
         {
-            var notificationTaskFile = Path.Combine(systemFolder, "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1");
-            var notificationToastFile = Path.Combine(systemFolder, "Tasks\\Sophia\\Windows_Cleanup_Notification.vbs");
-            File.WriteAllText(notificationTaskFile, cleanupNotificationTaskAction, Encoding.UTF8);
-            File.WriteAllText(notificationToastFile, cleanupNotificationToastAction, Encoding.Default);
-            _ = RegisterTask(name: "Sophia\\Windows Cleanup Notification", description: "TaskScheduler_WindowsCleanupNotification_Description".GetLocalized(), action: "wscript.exe", arguments: notificationToastFile, username: Environment.UserName, runLevel: TaskRunLevel.Highest, trigger: new DailyTrigger(daysInterval: 30) { StartBoundary = DateTime.Today.AddHours(21) });
+            cleanupPsFile.Delete();
+            cleanupVbsFile.Delete();
+            notificationPsFile.Delete();
+            notificationVbsFile.Delete();
+            UnregisterTasks(["Sophia\\Windows Cleanup", "Sophia\\Windows Cleanup Notification"]);
         }
 
         /// <inheritdoc/>
-        public void DeleteTaskFolders(string[] taskFolders)
+        public void RegisterCleanupNotificationTask()
         {
-            Array.ForEach(taskFolders, folder =>
+            File.WriteAllText(notificationPsFile.FullName, notificationPsAction, Encoding.UTF8);
+            File.WriteAllText(notificationVbsFile.FullName, notificationVbsAction, Encoding.Default);
+
+            _ = RegisterTask(
+                name: "Sophia\\Windows Cleanup Notification",
+                description: "TaskScheduler_WindowsCleanupNotification_Description".GetLocalized(),
+                action: "wscript.exe",
+                arguments: notificationVbsFile.FullName,
+                username: Environment.UserName,
+                runLevel: TaskRunLevel.Highest,
+                trigger: new DailyTrigger(daysInterval: 30) { StartBoundary = DateTime.Today.AddHours(21) });
+        }
+
+        /// <inheritdoc/>
+        public void DeleteTaskFolders(string[] folders)
+        {
+            Array.ForEach(folders, folder =>
             {
                 var taskFolder = taskScheduler.GetFolder(folder);
 
                 if (taskFolder?.AllTasks.Any() ?? false)
                 {
-                    foreach (var task in taskFolder.AllTasks)
+                    foreach (var task in taskFolder!.AllTasks)
                     {
                         taskFolder.DeleteTask(task.Name, false);
                     }
                 }
 
-                if (taskFolder is not null)
-                {
-                    taskScheduler.RootFolder.DeleteFolder(folder, false);
-                }
+                taskScheduler.RootFolder.DeleteFolder(folder, false);
             });
         }
 
         /// <inheritdoc/>
-        public void RemoveExtensionsFilesFromTaskFolder(string taskFolder)
+        public void TryRemoveFolder(string name)
         {
-            var files = Directory.EnumerateFiles(Path.Combine(systemFolder, $"Tasks\\{taskFolder}"));
-
-            foreach (var file in files.Where(f => !string.IsNullOrEmpty(Path.GetExtension(f))))
+            if (!taskScheduler.GetFolder(name)?.AllTasks.Any() ?? false)
             {
-                File.Delete(file);
+                taskScheduler.RootFolder.DeleteFolder(name, false);
             }
         }
 
         private Task RegisterTask(string name, string description, string action, string arguments, string username, TaskRunLevel runLevel, Trigger? trigger = null)
         {
-            var task = TaskService.Instance.NewTask();
+            var task = taskScheduler.NewTask();
 
             if (trigger is not null)
             {
@@ -288,7 +288,12 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
             task.Settings.StartWhenAvailable = true;
             task.RegistrationInfo.Author = commonDataService.GetName();
             task.RegistrationInfo.Description = description;
-            return TaskService.Instance.RootFolder.RegisterTaskDefinition(name, task);
+            return taskScheduler.RootFolder.RegisterTaskDefinition(name, task);
+        }
+
+        private void UnregisterTasks(string[] taskPaths)
+        {
+            Array.ForEach(taskPaths, task => taskScheduler.RootFolder.DeleteTask(task, false));
         }
     }
 }

@@ -26,7 +26,8 @@
 
     <ScrollView x:Name="SearchScrollView">
         <Grid x:Name="ItemsContainerGrid" IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-            <ItemsRepeater ItemsSource="{x:Bind ViewModel.FoundModels, Mode=OneWay}">
+            <ItemsRepeater x:Name="SearchItemsRepeater"
+                           ItemsSource="{x:Bind ViewModel.FoundModels, Mode=OneWay}">
                 <ItemsRepeater.Layout>
                     <StackLayout Spacing="10"/>
                 </ItemsRepeater.Layout>
@@ -35,8 +36,25 @@
                                                     ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
                 </ItemsRepeater.ItemTemplate>
             </ItemsRepeater>
+            <StackPanel x:Name="NothingFoundPanel"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
+                    <Run x:Uid="SearchPage_NothingFound"
+                         FontSize="{x:Bind ViewModel.FontOptions.TitleTextSize, Mode=OneWay}"/>
+                </TextBlock>
+            </StackPanel>
         </Grid>
         <i:Interaction.Behaviors>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundPanel}" PropertyName="Visibility" Value="Visible"/>
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Collapsed"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="GreaterThan" Value="0">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundPanel}" PropertyName="Visibility" Value="Collapsed"/>
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.ApplicableModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="1">
                 <interaction:CallMethodAction TargetObject="{Binding ElementName=PageSearch}" MethodName="CorrectScrollViewPosition"/>
             </interaction:DataTriggerBehavior>

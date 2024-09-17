@@ -348,22 +348,23 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Task state.</param>
         public static void CleanupTask(bool isEnabled)
         {
-            AppNotificationService.EnableToastNotification();
-            ScheduledTaskService.DeleteTaskFolders(["SophiApp", "Sophia Script"]);
+            ScheduledTaskService.DeleteTaskFolders(["Sophia Script", "SophiApp"]);
             RegistryService.RemoveVolumeCachesStateFlags();
-            RegistryService.SetVolumeCachesStateFlags();
-            AppNotificationService.RegisterAsToastSender("Sophia");
-            AppNotificationService.RegisterCleanupProtocol();
 
             if (isEnabled)
             {
-                ScheduledTaskService.RegisterWindowsCleanupTask();
-                ScheduledTaskService.RegisterWindowsCleanupNotificationTask();
+                AppNotificationService.EnableToastNotification();
+                RegistryService.SetVolumeCachesStateFlags();
+                AppNotificationService.RegisterAsToastSender("Sophia");
+                AppNotificationService.RegisterCleanupProtocol();
+                ScheduledTaskService.RegisterCleanupTask();
+                ScheduledTaskService.RegisterCleanupNotificationTask();
                 return;
             }
 
-            ScheduledTaskService.RemoveExtensionsFilesFromTaskFolder("Sophia");
-            ScheduledTaskService.DeleteTaskFolders(["Sophia"]);
+            ScheduledTaskService.UnregisterCleanupTask();
+            ScheduledTaskService.TryRemoveFolder("Sophia");
+            AppNotificationService.UnregisterCleanupProtocol();
         }
 
         /// <summary>
@@ -572,11 +573,7 @@ namespace SophiApp.Customizations
 
             if (isEnabled)
             {
-                if (virtualizationIsEnabled)
-                {
-                    WriteLSARegistryValues();
-                }
-                else if (hypervisorPresent)
+                if (virtualizationIsEnabled || hypervisorPresent)
                 {
                     WriteLSARegistryValues();
                 }

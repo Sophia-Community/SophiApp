@@ -30,4 +30,9 @@ public interface IAppNotificationService
     /// </summary>
     /// <param name="payload">Toast payload.</param>
     void Show(string payload);
+
+    /// <summary>
+    /// Unregister Windows cleanup protocol to run via toast notification.
+    /// </summary>
+    void UnregisterCleanupProtocol();
 }

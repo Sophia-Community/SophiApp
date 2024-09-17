@@ -14,8 +14,8 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Deletes tasks and folder in the Task Scheduler.
         /// </summary>
-        /// <param name="taskFolders">Names of folders to delete.</param>
-        void DeleteTaskFolders(string[] taskFolders);
+        /// <param name="folders">Names of folders to delete.</param>
+        void DeleteTaskFolders(string[] folders);
 
         /// <summary>
         /// Get task or null by specified names.
@@ -31,19 +31,24 @@ namespace SophiApp.Contracts.Services
         Task GetTaskOrDefault(string taskPath);
 
         /// <summary>
-        /// Registers the "Windows Cleanup" in the Task Scheduler.
+        /// Registers the "Windows Cleanup" task in the Scheduler.
         /// </summary>
-        void RegisterWindowsCleanupTask();
+        void RegisterCleanupTask();
+
+        /// <summary>
+        /// Unregisters the "Windows Cleanup" task in the Scheduler and remove task files.
+        /// </summary>
+        void UnregisterCleanupTask();
 
         /// <summary>
         /// Registers the "Windows Cleanup Notification" in the Task Scheduler.
         /// </summary>
-        void RegisterWindowsCleanupNotificationTask();
+        void RegisterCleanupNotificationTask();
 
         /// <summary>
-        /// Remove files with extensions from the "System32\Tasks" folder.
+        /// Deletes a folder if there are no tasks in it.
         /// </summary>
-        /// <param name="taskFolder">Names of folders to remove files.</param>
-        void RemoveExtensionsFilesFromTaskFolder(string taskFolder);
+        /// <param name="name">Name of the folder to delete.</param>
+        void TryRemoveFolder(string name);
     }
 }

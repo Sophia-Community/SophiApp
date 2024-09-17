@@ -2,7 +2,7 @@
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
-namespace SophiApp.Notifications;
+namespace SophiApp.Services;
 
 using Microsoft.Win32;
 using SophiApp.Contracts.Services;
@@ -16,15 +16,12 @@ public class AppNotificationService : IAppNotificationService
     /// <inheritdoc/>
     public void EnableToastNotification()
     {
-        var explorerPoliciesPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
-        var scriptHostPath = "Software\\Microsoft\\Windows Script Host\\Settings";
-
-        Registry.CurrentUser.OpenSubKey(explorerPoliciesPath, true)?.DeleteValue("DisableNotificationCenter", false);
-        Registry.LocalMachine.OpenSubKey(explorerPoliciesPath, true)?.DeleteValue("DisableNotificationCenter", false);
-
-        Registry.CurrentUser.OpenSubKey(scriptHostPath, true)?.DeleteValue("Enabled", false);
-        Registry.LocalMachine.OpenSubKey(scriptHostPath, true)?.DeleteValue("Enabled", false);
-
+        var explorerPolicy = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+        var scriptHostSettings = "Software\\Microsoft\\Windows Script Host\\Settings";
+        Registry.CurrentUser.DeleteSubKey(explorerPolicy, false);
+        Registry.LocalMachine.OpenSubKey(explorerPolicy, true)?.DeleteValue("DisableNotificationCenter", false);
+        Registry.CurrentUser.DeleteSubKey(scriptHostSettings, false);
+        Registry.LocalMachine.OpenSubKey(scriptHostSettings, true)?.DeleteValue("Enabled", false);
         Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications", true)?.DeleteValue("ToastEnabled", false);
     }
 
@@ -64,5 +61,11 @@ public class AppNotificationService : IAppNotificationService
         var toast = new ToastNotification(xml);
         ToastNotificationManager.CreateToastNotifier("SophiApp")
             .Show(toast);
+    }
+
+    /// <inheritdoc/>
+    public void UnregisterCleanupProtocol()
+    {
+        Registry.ClassesRoot.DeleteSubKeyTree("WindowsCleanup", false);
     }
 }

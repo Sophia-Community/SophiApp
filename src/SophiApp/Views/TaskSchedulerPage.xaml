@@ -32,6 +32,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Style="{StaticResource TaskSchedulerDescriptionTextStyle}"
+                           Foreground="{ThemeResource WindowAccent}"
                            Grid.Row="0">
                     <Run x:Uid="TaskSchedulerPage_AboutTasks"
                          FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageTaskScheduler}"/>

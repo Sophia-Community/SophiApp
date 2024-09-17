@@ -79,7 +79,6 @@
         <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style x:Key="SetUpCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
