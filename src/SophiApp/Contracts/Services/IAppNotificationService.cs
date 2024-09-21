@@ -23,7 +23,7 @@ public interface IAppNotificationService
     /// <summary>
     /// Register Windows cleanup protocol to run via toast notification.
     /// </summary>
-    void RegisterCleanupProtocol();
+    void RegisterCleanupProtocolAsToastSender();
 
     /// <summary>
     /// Show the toast notification.

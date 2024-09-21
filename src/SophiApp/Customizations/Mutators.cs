@@ -356,14 +356,15 @@ namespace SophiApp.Customizations
                 AppNotificationService.EnableToastNotification();
                 RegistryService.SetVolumeCachesStateFlags();
                 AppNotificationService.RegisterAsToastSender("Sophia");
-                AppNotificationService.RegisterCleanupProtocol();
+                AppNotificationService.RegisterCleanupProtocolAsToastSender();
                 ScheduledTaskService.RegisterCleanupTask();
                 ScheduledTaskService.RegisterCleanupNotificationTask();
                 return;
             }
 
             ScheduledTaskService.UnregisterCleanupTask();
-            ScheduledTaskService.TryRemoveFolder("Sophia");
+            ScheduledTaskService.UnregisterCleanupNotificationTask();
+            ScheduledTaskService.TryDeleteTaskFolder("Sophia");
             AppNotificationService.UnregisterCleanupProtocol();
         }
 
@@ -373,7 +374,17 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Task state.</param>
         public static void SoftwareDistributionTask(bool isEnabled)
         {
-            AppNotificationService.EnableToastNotification();
+            ScheduledTaskService.DeleteTaskFolders(["Sophia Script", "SophiApp"]);
+
+            if (isEnabled)
+            {
+                AppNotificationService.EnableToastNotification();
+                AppNotificationService.RegisterAsToastSender("Sophia");
+                ScheduledTaskService.RegisterSoftwareDistributionTask();
+            }
+
+            ScheduledTaskService.UnregisterSoftwareDistributionTask();
+            ScheduledTaskService.TryDeleteTaskFolder("Sophia");
         }
 
         /// <summary>

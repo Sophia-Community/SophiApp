@@ -680,4 +680,7 @@
   <data name="SearchPage_NothingFound.Text" xml:space="preserve">
     <value>Nothing found on your request</value>
   </data>
+  <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
+    <value>Software distribution task description here.</value>
+  </data>
 </root>

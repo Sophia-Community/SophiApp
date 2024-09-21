@@ -18,10 +18,12 @@ public class AppNotificationService : IAppNotificationService
     {
         var explorerPolicy = "Software\\Policies\\Microsoft\\Windows\\Explorer";
         var scriptHostSettings = "Software\\Microsoft\\Windows Script Host\\Settings";
-        Registry.CurrentUser.DeleteSubKey(explorerPolicy, false);
-        Registry.LocalMachine.OpenSubKey(explorerPolicy, true)?.DeleteValue("DisableNotificationCenter", false);
-        Registry.CurrentUser.DeleteSubKey(scriptHostSettings, false);
-        Registry.LocalMachine.OpenSubKey(scriptHostSettings, true)?.DeleteValue("Enabled", false);
+        var notificationCenterValue = "DisableNotificationCenter";
+        var scriptHostEnableValue = "Enabled";
+        Registry.CurrentUser.OpenSubKey(explorerPolicy, true)?.DeleteValue(notificationCenterValue, false);
+        Registry.LocalMachine.OpenSubKey(explorerPolicy, true)?.DeleteValue(notificationCenterValue, false);
+        Registry.CurrentUser.OpenSubKey(scriptHostSettings, true)?.DeleteValue(scriptHostEnableValue, false);
+        Registry.LocalMachine.OpenSubKey(scriptHostSettings, true)?.DeleteValue(scriptHostEnableValue, false);
         Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications", true)?.DeleteValue("ToastEnabled", false);
     }
 
@@ -34,7 +36,7 @@ public class AppNotificationService : IAppNotificationService
             var actionCenterSetting = $"Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings\\{name}";
             Registry.CurrentUser.OpenOrCreateSubKey(actionCenterSetting).SetValue("ShowInActionCenter", 1, RegistryValueKind.DWord);
             Registry.ClassesRoot.OpenOrCreateSubKey(appId).SetValue("DisplayName", name, RegistryValueKind.String);
-            Registry.ClassesRoot.OpenSubKey(appId, true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
+            Registry.ClassesRoot.OpenSubKey(appId, true)?.SetValue("ShowInSettings", 1, RegistryValueKind.DWord);
         }
         catch (Exception ex)
         {
@@ -43,7 +45,7 @@ public class AppNotificationService : IAppNotificationService
     }
 
     /// <inheritdoc/>
-    public void RegisterCleanupProtocol()
+    public void RegisterCleanupProtocolAsToastSender()
     {
         var cleanupCommandPath = "WindowsCleanup\\shell\\open\\command";
         var cleanupCommand = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath '\Sophia\' -TaskName 'Windows Cleanup'}""";
