@@ -683,4 +683,13 @@
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
     <value>Software distribution task description here.</value>
   </data>
+  <data name="TaskScheduler_SoftwareDistributionToast_Title" xml:space="preserve">
+    <value>Software distribution task toast title here</value>
+  </data>
+  <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
+    <value>Temp task toast title here</value>
+  </data>
+  <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
+    <value>Temp task description here</value>
+  </data>
 </root>

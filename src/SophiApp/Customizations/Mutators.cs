@@ -393,7 +393,17 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Task state.</param>
         public static void TempTask(bool isEnabled)
         {
-            AppNotificationService.EnableToastNotification();
+            ScheduledTaskService.DeleteTaskFolders(["Sophia Script", "SophiApp"]);
+
+            if (isEnabled)
+            {
+                AppNotificationService.EnableToastNotification();
+                AppNotificationService.RegisterAsToastSender("Sophia");
+                ScheduledTaskService.RegisterTempTask();
+            }
+
+            ScheduledTaskService.UnregisterTempTask();
+            ScheduledTaskService.TryDeleteTaskFolder("Sophia");
         }
 
         /// <summary>

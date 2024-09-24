@@ -36,7 +36,7 @@ public class AppNotificationService : IAppNotificationService
             var actionCenterSetting = $"Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings\\{name}";
             Registry.CurrentUser.OpenOrCreateSubKey(actionCenterSetting).SetValue("ShowInActionCenter", 1, RegistryValueKind.DWord);
             Registry.ClassesRoot.OpenOrCreateSubKey(appId).SetValue("DisplayName", name, RegistryValueKind.String);
-            Registry.ClassesRoot.OpenSubKey(appId, true)?.SetValue("ShowInSettings", 1, RegistryValueKind.DWord);
+            Registry.ClassesRoot.OpenSubKey(appId, true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
         }
         catch (Exception ex)
         {

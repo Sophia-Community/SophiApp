@@ -61,6 +61,16 @@ namespace SophiApp.Contracts.Services
         void UnregisterSoftwareDistributionTask();
 
         /// <summary>
+        /// Registers the "Temp" task in the Task Scheduler.
+        /// </summary>
+        void RegisterTempTask();
+
+        /// <summary>
+        /// Unregisters the "Temp" task in the Task Scheduler.
+        /// </summary>
+        void UnregisterTempTask();
+
+        /// <summary>
         /// Deletes a folder if there are no tasks in it.
         /// </summary>
         /// <param name="name">Name of the folder to delete.</param>
