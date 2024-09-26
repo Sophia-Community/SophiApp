@@ -681,15 +681,15 @@
     <value>Nothing found on your request</value>
   </data>
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
-    <value>Software distribution task description here.</value>
+    <value>The %SystemRoot%\SoftwareDistribution\Download folder cleanup.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistributionToast_Title" xml:space="preserve">
-    <value>Software distribution task toast title here</value>
+    <value>Windows update cache successfully deleted.</value>
   </data>
   <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
-    <value>Temp task toast title here</value>
+    <value>Temporary files folder successfully cleaned up.</value>
   </data>
   <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
-    <value>Temp task description here</value>
+    <value>The %TEMP% folder cleanup.</value>
   </data>
 </root>

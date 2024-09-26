@@ -381,6 +381,7 @@ namespace SophiApp.Customizations
                 AppNotificationService.EnableToastNotification();
                 AppNotificationService.RegisterAsToastSender("Sophia");
                 ScheduledTaskService.RegisterSoftwareDistributionTask();
+                return;
             }
 
             ScheduledTaskService.UnregisterSoftwareDistributionTask();
@@ -400,6 +401,7 @@ namespace SophiApp.Customizations
                 AppNotificationService.EnableToastNotification();
                 AppNotificationService.RegisterAsToastSender("Sophia");
                 ScheduledTaskService.RegisterTempTask();
+                return;
             }
 
             ScheduledTaskService.UnregisterTempTask();
