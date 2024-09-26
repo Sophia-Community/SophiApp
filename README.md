@@ -67,7 +67,7 @@
 
 ***
 
-<a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/master/img/SSdownloadbutton.svg" width=220px height=55px></a>
+<a href="https://github.com/Sophia-Community/SophiApp/releases/latest"><img src="https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-winappsdk/img/get-it-on-github.svg" width="50%" height="50%"></a>
 
 ***
 
