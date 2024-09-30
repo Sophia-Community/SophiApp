@@ -253,7 +253,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool TempTask()
         {
-            var tempTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\Temp");
+            var tempTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\TempTask");
 
             if (tempTask is not null && tempTask.Definition.Principal.UserId != Environment.UserName)
             {
