@@ -1,4 +1,4 @@
-﻿// <copyright file="ModelService.cs" company="Team Sophia">
+// <copyright file="ModelService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -71,15 +71,15 @@ namespace SophiApp.Services
                 var packages = appxPackagesService.GetPackages(forAllUsers);
                 var excludedAppx = new List<string>()
             {
-                "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore",
-                "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension",
-                "Microsoft.HEVCVideoExtension", "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "windows.immersivecontrolpanel",
-                "AdvancedMicroDevicesInc-2.AMDRadeonSoftware", "AppUp.IntelGraphicsControlPanel", "AppUp.IntelGraphicsExperience", "Microsoft.ApplicationCompatibilityEnhancements",
-                "Microsoft.AVCEncoderVideoExtension", "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "MicrosoftWindows.CrossDevice",
-                "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview",
-                "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux", "Microsoft.HEVCVideoExtensions",
-                "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "Microsoft.MPEG2VideoExtension", "Microsoft.VP9VideoExtensions",
-                "Microsoft.WebpImageExtension", "Microsoft.PowerShell", "NVIDIACorp.NVIDIAControlPanel", "RealtekSemiconductorCorp.RealtekAudioControl",
+                "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal",
+                "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "Microsoft.HEVCVideoExtension",
+                "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "windows.immersivecontrolpanel", "AdvancedMicroDevicesInc-2.AMDRadeonSoftware",
+                "AppUp.IntelGraphicsControlPanel", "ELANMicroelectronicsCorpo.ELANTouchpadforThinkpad", "ELANMicroelectronicsCorpo.ELANTrackPointforThinkpa",
+                "AppUp.IntelGraphicsExperience", "Microsoft.ApplicationCompatibilityEnhancements", "Microsoft.AVCEncoderVideoExtension", "Microsoft.DesktopAppInstaller",
+                "Microsoft.StorePurchaseApp", "MicrosoftWindows.CrossDevice", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal",
+                "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux",
+                "Microsoft.HEVCVideoExtensions", "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "Microsoft.MPEG2VideoExtension", "Microsoft.VP9VideoExtensions",
+                "Microsoft.WebpImageExtension", "Microsoft.PowerShell", "NVIDIACorp.NVIDIAControlPanel", "RealtekSemiconductorCorp.RealtekAudioControl", "SynapticsIncorporated.SynapticsUtilities"
             };
 
                 for (int i = 0; i < packages.Count; i++)
