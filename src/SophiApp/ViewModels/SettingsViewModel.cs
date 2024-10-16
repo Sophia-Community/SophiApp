@@ -28,6 +28,9 @@ public partial class SettingsViewModel : ObservableRecipient
     private string delimiter;
 
     [ObservableProperty]
+    private bool navigationViewHitTestVisible;
+
+    [ObservableProperty]
     private ObservableCollection<ElementThemeWrapper> themes = new ()
     {
         new (ElementTheme.Default, "Settings_Themes_Default"), new (ElementTheme.Dark, "Settings_Themes_Dark"), new (ElementTheme.Light, "Settings_Themes_Light"),
@@ -49,6 +52,7 @@ public partial class SettingsViewModel : ObservableRecipient
         build = commonDataService.GetBuildName();
         delimiter = commonDataService.GetDelimiter();
         FontOptions = shellViewModel.FontOptions;
+        NavigationViewHitTestVisible = shellViewModel.NavigationViewHitTestVisible;
         OpenLinkCommand = new AsyncRelayCommand<string>(url => uriService.OpenUrlAsync(url!));
         selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themeSelectorService.Theme));
         this.themeSelectorService = themeSelectorService;

@@ -343,6 +343,54 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Set HEVC state.
+        /// </summary>
+        /// <param name="isEnabled">HEVC state.</param>
+        public static void HEVC(bool isEnabled)
+        {
+        }
+
+        /// <summary>
+        /// Set Cortana auto start state.
+        /// </summary>
+        /// <param name="isEnabled">Cortana auto start state.</param>
+        public static void CortanaAutostart(bool isEnabled)
+        {
+        }
+
+        /// <summary>
+        /// Set Teams auto start state.
+        /// </summary>
+        /// <param name="isEnabled">Teams auto start state.</param>
+        public static void TeamsAutostart(bool isEnabled)
+        {
+        }
+
+        /// <summary>
+        /// Set Xbox game bar state.
+        /// </summary>
+        /// <param name="isEnabled">Xbox game bar state.</param>
+        public static void XboxGameBar(bool isEnabled)
+        {
+        }
+
+        /// <summary>
+        /// Set Xbox game tips state.
+        /// </summary>
+        /// <param name="isEnabled">Xbox game tips state.</param>
+        public static void XboxGameTips(bool isEnabled)
+        {
+        }
+
+        /// <summary>
+        /// Set GPU scheduling state.
+        /// </summary>
+        /// <param name="isEnabled">GPU scheduling state.</param>
+        public static void GPUScheduling(bool isEnabled)
+        {
+        }
+
+        /// <summary>
         /// Set "Windows Cleanup" scheduled task state.
         /// </summary>
         /// <param name="isEnabled">Task state.</param>

@@ -596,7 +596,7 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
             task.Principal.RunLevel = runLevel;
             task.Settings.Compatibility = TaskCompatibility.V2_2;
             task.Settings.StartWhenAvailable = true;
-            task.RegistrationInfo.Author = commonDataService.GetName();
+            task.RegistrationInfo.Author = "Team Sophia";
             task.RegistrationInfo.Description = description;
             return taskScheduler.RootFolder.RegisterTaskDefinition(name, task);
         }

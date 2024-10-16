@@ -4,9 +4,7 @@
 
 namespace SophiApp.Views
 {
-    using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
-    using SophiApp.Extensions;
     using SophiApp.ViewModels;
 
     /// <summary>
@@ -19,7 +17,7 @@ namespace SophiApp.Views
         /// </summary>
         public SearchPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             ViewModel = App.GetService<ShellViewModel>();
         }
 
@@ -27,18 +25,5 @@ namespace SophiApp.Views
         /// Gets view model for search page.
         /// </summary>
         public ShellViewModel ViewModel { get; }
-
-        /// <summary>
-        /// Correct the vertical offset so that the last <see cref="FrameworkElement"/> in the sequence fits on the UI.
-        /// </summary>
-        public void CorrectScrollViewPosition()
-        {
-            var modelMaxViewId = ViewModel.FoundModels.Max(model => model.ViewId);
-
-            if (ViewModel.ApplicableModels[0].ViewId == modelMaxViewId)
-            {
-                this.FindName<ScrollView>("SearchScrollView")?.VerticalOffsetCorrection();
-            }
-        }
     }
 }

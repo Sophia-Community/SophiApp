@@ -184,9 +184,6 @@ namespace SophiApp.Services
         public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
 
         /// <inheritdoc/>
-        public string GetName() => assembly.Name!;
-
-        /// <inheritdoc/>
         public string GetVersionName() => "Community α";
     }
 }

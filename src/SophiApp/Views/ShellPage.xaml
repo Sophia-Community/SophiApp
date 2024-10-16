@@ -56,10 +56,9 @@
                         PaneDisplayMode="Left"
                         OpenPaneLength="280"
                         DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-                        Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
                         IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Uid="Shell_Privacy" 
+                <NavigationViewItem x:Uid="Shell_Privacy"
                                     helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.PrivacyViewModel">
                     <NavigationViewItem.Icon>
                         <PathIcon Foreground="{ThemeResource WindowAccent}"
@@ -80,7 +79,7 @@
                                   Data="M1.13.03A1.443 1.443 0 0 0 .032 1.15c-.044.232-.044 9.652 0 9.884.106.561.56 1.015 1.12 1.121.105.02.963.032 2.245.032 1.962 0 2.074.003 2.058.055l-.31.93-.291.875-.841.015c-.727.014-.855.024-.943.071a.528.528 0 0 0-.227.398c0 .155.11.335.25.406C3.216 15 3.268 15 8 15s4.784 0 4.906-.063c.14-.07.25-.25.25-.406 0-.14-.11-.334-.227-.398-.088-.047-.216-.057-.943-.07l-.84-.016-.292-.876-.31-.93c-.016-.051.096-.054 2.058-.054 1.282 0 2.14-.012 2.244-.032a1.423 1.423 0 0 0 1.121-1.121c.044-.232.044-9.652 0-9.884a1.423 1.423 0 0 0-1.12-1.121C14.636-.011 1.331-.01 1.128.03Zm13.682.968a.43.43 0 0 1 .187.186c.062.122.063.176.063 4.157v4.033h-1.906v-.752c0-.69-.006-.76-.063-.874-.105-.205-.233-.25-.718-.25h-.408l-.077-.175a1.148 1.148 0 0 1-.078-.212c0-.02.12-.155.268-.3.147-.147.288-.304.312-.35a.527.527 0 0 0 .012-.39c-.043-.114-1.416-1.494-1.548-1.557a.504.504 0 0 0-.413-.003 2.72 2.72 0 0 0-.349.313c-.146.147-.28.268-.3.268a1.11 1.11 0 0 1-.212-.078l-.176-.078v-.408c0-.484-.045-.613-.25-.717-.115-.06-.182-.063-1.156-.063s-1.04.003-1.157.063c-.204.104-.25.233-.25.717v.408l-.175.078a1.143 1.143 0 0 1-.211.078c-.02 0-.155-.12-.301-.268a2.718 2.718 0 0 0-.35-.313.504.504 0 0 0-.412.003c-.132.063-1.505 1.443-1.548 1.557a.527.527 0 0 0 .012.39c.024.046.165.203.312.35.147.145.268.28.268.3 0 .02-.035.115-.078.212l-.077.175h-.408c-.485 0-.613.045-.718.25-.058.113-.063.183-.063.874v.752H.938V5.34c0-3.98.001-4.035.063-4.157a.454.454 0 0 1 .18-.185c.115-.06.208-.062 6.812-.063 6.65-.001 6.697 0 6.82.062Zm-2.403.908c-.71.14-1.22.87-1.103 1.578.127.767.845 1.3 1.586 1.177.767-.127 1.299-.846 1.176-1.588a1.407 1.407 0 0 0-1.659-1.167Zm.497.967c.14.07.25.25.25.406a.499.499 0 0 1-.47.469.496.496 0 0 1-.405-.25.434.434 0 0 1 0-.439c.115-.226.388-.307.625-.186ZM8.47 5.015c0 .518.063.625.449.752.14.045.397.152.572.235.464.222.525.21.9-.162l.252-.248.335.337.335.336-.237.234c-.242.237-.325.37-.325.516 0 .044.068.224.152.4.083.174.19.432.236.572.126.385.233.45.751.45h.33v.937h-1.895v-.43c0-.45-.021-.57-.16-.914A2.417 2.417 0 0 0 8.89 6.743c-.303-.128-.507-.166-.891-.166-.203 0-.434.019-.531.043a2.42 2.42 0 0 0-1.634 1.41c-.14.344-.16.464-.161.914v.43H3.782v-.938h.329c.518 0 .625-.064.752-.449a5.83 5.83 0 0 1 .235-.573c.084-.175.152-.355.152-.4 0-.145-.083-.278-.324-.515l-.238-.234.335-.336.336-.337.25.248c.376.373.437.384.9.162a5.96 5.96 0 0 1 .573-.236c.386-.126.45-.233.45-.751v-.33h.937v.33ZM8.253 7.53c.75.143 1.258.876 1.124 1.623l-.04.22H6.663l-.04-.22c-.17-.954.683-1.802 1.631-1.623Zm6.809 3.064c0 .348-.063.497-.25.592-.122.063-.17.063-6.812.063s-6.69 0-6.812-.063c-.187-.095-.25-.244-.25-.592v-.282h14.124v.282Zm-5.229 2.484.31.93c.016.051-.1.054-2.14.054-1.188 0-2.159-.003-2.159-.008 0-.009.583-1.76.608-1.828.012-.031.34-.038 1.552-.032l1.537.009.292.875Z"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_UWP"
+                <NavigationViewItem x:Uid="Shell_UWP_Gaming"
                                     helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.UwpViewModel">
                     <NavigationViewItem.Icon>
                         <PathIcon Foreground="{ThemeResource WindowAccent}"
@@ -130,24 +129,6 @@
                                     Visibility="Collapsed">
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-            <NavigationView.HeaderTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Text="{Binding}" Style="{ThemeResource TitleTextBlockStyle}"/>
-                    </Grid>
-                </DataTemplate>
-            </NavigationView.HeaderTemplate>
-            <i:Interaction.Behaviors>
-                <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
-                    <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding}" Style="{ThemeResource TitleTextBlockStyle}" />
-                            </Grid>
-                        </DataTemplate>
-                    </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                </behaviors:NavigationViewHeaderBehavior>
-            </i:Interaction.Behaviors>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>

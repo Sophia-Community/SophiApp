@@ -16,15 +16,12 @@ public sealed partial class ProVersionPage : Page
     /// </summary>
     public ProVersionPage()
     {
-        ViewModel = App.GetService<ProVersionViewModel>();
         InitializeComponent();
+        ViewModel = App.GetService<ShellViewModel>();
     }
 
     /// <summary>
-    /// Gets <see cref="ProVersionViewModel"/>.
+    /// Gets view model for pro version page.
     /// </summary>
-    public ProVersionViewModel ViewModel
-    {
-        get;
-    }
+    public ShellViewModel ViewModel { get; }
 }

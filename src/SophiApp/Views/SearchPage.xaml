@@ -27,7 +27,8 @@
     <ScrollView x:Name="SearchScrollView">
         <Grid x:Name="ItemsContainerGrid" IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
             <ItemsRepeater x:Name="SearchItemsRepeater"
-                           ItemsSource="{x:Bind ViewModel.FoundModels, Mode=OneWay}">
+                           ItemsSource="{x:Bind ViewModel.FoundModels, Mode=OneWay}"
+                           Margin="{StaticResource PageBottomMargin}">
                 <ItemsRepeater.Layout>
                     <StackLayout Spacing="10"/>
                 </ItemsRepeater.Layout>
@@ -54,9 +55,6 @@
             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="GreaterThan" Value="0">
                 <interaction:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundPanel}" PropertyName="Visibility" Value="Collapsed"/>
                 <interaction:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Visible"/>
-            </interaction:DataTriggerBehavior>
-            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.ApplicableModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="1">
-                <interaction:CallMethodAction TargetObject="{Binding ElementName=PageSearch}" MethodName="CorrectScrollViewPosition"/>
             </interaction:DataTriggerBehavior>
         </i:Interaction.Behaviors>
     </ScrollView>

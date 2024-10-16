@@ -21,20 +21,21 @@
     </Page.Resources>
 
     <ScrollView x:Name="SecurityScrollView">
-        <Grid x:Name="ItemsContainerGrid" IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-            <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}">
-                <ItemsRepeater.Layout>
-                    <StackLayout Spacing="10"/>
-                </ItemsRepeater.Layout>
-                <ItemsRepeater.ItemTemplate>
-                    <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
-                </ItemsRepeater.ItemTemplate>
-            </ItemsRepeater>
-        </Grid>
-        <i:Interaction.Behaviors>
-            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.ApplicableModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="1">
-                <interaction:CallMethodAction TargetObject="{Binding ElementName=PageSecurity}" MethodName="CorrectScrollViewPosition"/>
-            </interaction:DataTriggerBehavior>
-        </i:Interaction.Behaviors>
+        <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Uid="Page_Security" Style="{StaticResource PageTitleTextStyle}"/>
+            </StackPanel>
+            <Grid x:Name="ItemsContainerGrid">
+                <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
+                   Margin="{StaticResource PageBottomMargin}">
+                    <ItemsRepeater.Layout>
+                        <StackLayout Spacing="10"/>
+                    </ItemsRepeater.Layout>
+                    <ItemsRepeater.ItemTemplate>
+                        <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+            </Grid>
+        </StackPanel>
     </ScrollView>
 </Page>

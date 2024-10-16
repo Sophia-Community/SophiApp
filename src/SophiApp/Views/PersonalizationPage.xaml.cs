@@ -4,7 +4,9 @@
 
 namespace SophiApp.Views;
 using Microsoft.UI.Xaml.Controls;
-
+using SophiApp.Extensions;
+using SophiApp.Helpers;
+using SophiApp.Models;
 using SophiApp.ViewModels;
 
 /// <summary>
@@ -17,15 +19,18 @@ public sealed partial class PersonalizationPage : Page
     /// </summary>
     public PersonalizationPage()
     {
-        ViewModel = App.GetService<PersonalizationViewModel>();
         InitializeComponent();
+        ViewModel = App.GetService<ShellViewModel>();
+        Models = ViewModel.JsonModels.FilterByTag(UICategoryTag.Personalization);
     }
 
     /// <summary>
-    /// Gets <see cref="PersonalizationViewModel"/>.
+    /// Gets view model for personalization page.
     /// </summary>
-    public PersonalizationViewModel ViewModel
-    {
-        get;
-    }
+    public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets <see cref="UIModel"/> collection.
+    /// </summary>
+    public List<UIModel> Models { get; }
 }

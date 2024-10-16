@@ -219,6 +219,113 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Gets HEVC state.
+        /// </summary>
+        public static bool HEVC()
+        {
+            var video = "Microsoft.HEVCVideoExtension";
+            var photos = "Microsoft.Windows.Photos";
+            var appxVideoIsExist = AppxPackagesService.PackageExist(video);
+            var appxPhotosIsExist = AppxPackagesService.PackageExist(photos);
+
+            if (appxVideoIsExist && appxPhotosIsExist)
+            {
+                return true;
+            }
+            else if (!appxPhotosIsExist)
+            {
+                throw new InvalidOperationException($"Necessary appx package are not installed \"{photos}\"");
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets Cortana auto start state.
+        /// </summary>
+        public static bool CortanaAutostart()
+        {
+            var appxCortanaIsExist = AppxPackagesService.PackageExist("Microsoft.549981C3F5F10");
+
+            if (appxCortanaIsExist)
+            {
+                var pathCortana = "Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\Microsoft.549981C3F5F10_8wekyb3d8bbwe\\CortanaStartupId";
+                var stateCortana = Registry.ClassesRoot.OpenSubKey(pathCortana)?.GetValue("State") as int? ?? -1;
+                return stateCortana != 1;
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed \"Cortana\"");
+        }
+
+        /// <summary>
+        /// Gets Teams auto start state.
+        /// </summary>
+        public static bool TeamsAutostart()
+        {
+            var appxTeamsIsExist = AppxPackagesService.PackageExist("MSTeams");
+
+            if (appxTeamsIsExist)
+            {
+                var pathTeams = "Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\MicrosoftTeams_8wekyb3d8bbwe\\TeamsStartupTask";
+                var stateTeams = Registry.CurrentUser.OpenSubKey(pathTeams)?.GetValue("State") as int? ?? -1;
+                return stateTeams != 1;
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed \"Microsoft Teams\"");
+        }
+
+        /// <summary>
+        /// Gets Xbox game bar state.
+        /// </summary>
+        public static bool XboxGameBar()
+        {
+            var appCaptureIsEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR")?.GetValue("AppCaptureEnabled") as int? ?? -1;
+            var dvrIsEnabled = Registry.CurrentUser.OpenSubKey("System\\GameConfigStore")?.GetValue("GameDVR_Enabled") as int? ?? -1;
+            return appCaptureIsEnabled != 0 && dvrIsEnabled != 0;
+        }
+
+        /// <summary>
+        /// Gets Xbox game tips state.
+        /// </summary>
+        public static bool XboxGameTips()
+        {
+            var appGaming = "Microsoft.GamingApp";
+            var appxGamingIsExist = AppxPackagesService.PackageExist("Microsoft.GamingApp");
+
+            if (appxGamingIsExist)
+            {
+                var startupPanelIsEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar")?.GetValue("ShowStartupPanel") as int? ?? -1;
+                return startupPanelIsEnabled == 1;
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed \"{appGaming}\"");
+        }
+
+        /// <summary>
+        /// Gets GPU scheduling state.
+        /// </summary>
+        public static bool GPUScheduling()
+        {
+            const int WDDMMinimalVersion = 2700;
+            var featureUsagePath = "System\\CurrentControlSet\\Control\\GraphicsDrivers\\FeatureSetUsage";
+            var isExternalDACType = InstrumentationService.IsExternalDACType();
+            var isVirtualMachine = InstrumentationService.IsVirtualMachine();
+            var wddmVersion = Registry.LocalMachine.OpenSubKey(featureUsagePath)?.GetValue("WddmVersion_Min") as int? ?? -1;
+
+            if (isExternalDACType && !isVirtualMachine && wddmVersion >= WDDMMinimalVersion)
+            {
+                var graphicsDriversPath = "System\\CurrentControlSet\\Control\\GraphicsDrivers";
+                var hwSchMode = Registry.LocalMachine.OpenSubKey(graphicsDriversPath)?.GetValue("HwSchMode") as int? ?? -1;
+                return hwSchMode == 2;
+            }
+
+            var conditions = $"DAC type is external: {isExternalDACType}, is virtual machine: {isVirtualMachine}, WDDM Version (minimal {WDDMMinimalVersion}): {wddmVersion}";
+            throw new InvalidOperationException($"One of more mandatory conditions are not met, {conditions}");
+        }
+
+        /// <summary>
         /// Get scheduled task "Windows Cleanup" state.
         /// </summary>
         public static bool CleanupTask()
@@ -504,7 +611,7 @@ else
                 return userClipchamp is null && machineClipchamp is null;
             }
 
-            throw new InvalidOperationException($"Appx package \"{clipChampAppx}\" not found in current user environment");
+            throw new InvalidOperationException($"Necessary appx package are not installed \"{clipChampAppx}\"");
         }
 
         /// <summary>
@@ -512,9 +619,9 @@ else
         /// </summary>
         public static bool EditWithPaint3DContext()
         {
-            var paintAppx = "Microsoft.MSPaint";
+            var appxPaint = "Microsoft.MSPaint";
 
-            if (AppxPackagesService.PackageExist(paintAppx))
+            if (AppxPackagesService.PackageExist(appxPaint))
             {
                 var accessValues = new List<object?>()
                 {
@@ -531,7 +638,7 @@ else
                 return !accessValues.TrueForAll(value => value is not null);
             }
 
-            throw new InvalidOperationException($"Appx package \"{paintAppx}\" not found in current user environment");
+            throw new InvalidOperationException($"Necessary appx package are not installed \"{appxPaint}\"");
         }
 
         /// <summary>
@@ -630,9 +737,9 @@ else
         /// </summary>
         public static bool OpenWindowsTerminalContext()
         {
-            var terminalAppx = "Microsoft.WindowsTerminal";
+            var appxTerminal = "Microsoft.WindowsTerminal";
 
-            if (AppxPackagesService.PackageExist(terminalAppx))
+            if (AppxPackagesService.PackageExist(appxTerminal))
             {
                 var extensionsBlockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
                 var terminalContextGuid = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
@@ -642,7 +749,7 @@ else
                 return userBlockedGuid is null && machineBlockedGuid is null;
             }
 
-            throw new InvalidOperationException($"Appx package \"{terminalAppx}\" not found in current user environment");
+            throw new InvalidOperationException($"Necessary appx package are not installed \"{appxTerminal}\"");
         }
 
         /// <summary>
@@ -650,9 +757,9 @@ else
         /// </summary>
         public static bool OpenWindowsTerminalAdminContext()
         {
-            var terminalAppx = "Microsoft.WindowsTerminal";
+            var appxTerminal = "Microsoft.WindowsTerminal";
 
-            if (AppxPackagesService.PackageExist(terminalAppx))
+            if (AppxPackagesService.PackageExist(appxTerminal))
             {
                 var extensionsBlockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
                 var adminContextGuid = "{9F156763-7844-4DC4-B2B1-901F640F5155}";
@@ -671,14 +778,14 @@ else
                     }
                     catch (ArgumentException)
                     {
-                        throw new InvalidOperationException($"The configuration file of appx package \"{terminalAppx}\" is not valid");
+                        throw new InvalidOperationException($"The configuration file of appx package \"{appxTerminal}\" is not valid");
                     }
                 }
 
                 return true;
             }
 
-            throw new InvalidOperationException($"Appx package \"{terminalAppx}\" not found in current user environment");
+            throw new InvalidOperationException($"Necessary appx package are not installed \"{appxTerminal}\"");
         }
     }
 }

@@ -15,6 +15,9 @@
     <ScrollView>
         <StackPanel Margin="{StaticResource UIControlsPageRightMargin}"
                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Uid="Page_UWP" Style="{StaticResource PageTitleTextStyle}"/>
+            </StackPanel>
             <Border x:Name="UwpTitleBorder"
                     BorderBrush="{ThemeResource UIControlBorderBackground}"
                     Background="{ThemeResource UIControlBackground}"
@@ -47,6 +50,7 @@
                 </Grid>
             </Border>
             <Border x:Name="UwpItemsBorder"
+                    Margin="0, 0, 0, 12"
                     BorderThickness="1, 0, 1, 1"
                     BorderBrush="{ThemeResource UIControlBorderBackground}"
                     Background="{ThemeResource UIControlBackground}"
@@ -86,6 +90,32 @@
                     </Grid>
                 </ScrollView>
             </Border>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Uid="Page_UWP_Gaming" Style="{StaticResource PageTitleTextStyle}"/>
+            </StackPanel>
+            <ItemsRepeater ItemsSource="{Binding ElementName=PageUwp, Path=GamingModels}"
+                           Margin="{StaticResource PageBottomMargin}">
+                <ItemsRepeater.Resources>
+                    <SolidColorBrush x:Key="ItemContainerPointerOverBackground" Color="Transparent" />
+                </ItemsRepeater.Resources>
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout x:Name="GamingsItemsContainerLayoutGrid"
+                                       ItemsStretch="Fill"
+                                       MinItemHeight="100"
+                                       MinItemWidth="270"
+                                       MinRowSpacing="10"
+                                       MinColumnSpacing="10"
+                                       MaximumRowsOrColumns="2"/>
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <ItemContainer>
+                            <controls:SquareCheckBox Command="{Binding ElementName=PageUwp, Path=ViewModel.UIModelClicked_Command}"/>
+                        </ItemContainer>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+
+            </ItemsRepeater>
         </StackPanel>
         <interactivity:Interaction.Behaviors>
             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.UwpAppsModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">
@@ -102,9 +132,11 @@
             </interaction:DataTriggerBehavior>
             <interaction:DataTriggerBehavior Binding="{Binding ElementName=PageUwp, Path=CurrentWidth}" ComparisonCondition="LessThanOrEqual" Value="1100">
                 <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UwpItemsContainerLayoutGrid}" PropertyName="MaximumRowsOrColumns" Value="2"/>
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=GamingsItemsContainerLayoutGrid}" PropertyName="MaximumRowsOrColumns" Value="2"/>
             </interaction:DataTriggerBehavior>
             <interaction:DataTriggerBehavior Binding="{Binding ElementName=PageUwp, Path=CurrentWidth}" ComparisonCondition="GreaterThan" Value="1100">
                 <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UwpItemsContainerLayoutGrid}" PropertyName="MaximumRowsOrColumns" Value="3"/>
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=GamingsItemsContainerLayoutGrid}" PropertyName="MaximumRowsOrColumns" Value="3"/>
             </interaction:DataTriggerBehavior>
         </interactivity:Interaction.Behaviors>
     </ScrollView>

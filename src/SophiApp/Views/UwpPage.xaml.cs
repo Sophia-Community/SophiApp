@@ -5,6 +5,9 @@
 namespace SophiApp.Views;
 
 using Microsoft.UI.Xaml.Controls;
+using SophiApp.Extensions;
+using SophiApp.Helpers;
+using SophiApp.Models;
 using SophiApp.ViewModels;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -23,6 +26,7 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
+        GamingModels = ViewModel.JsonModels.FilterByTag(UICategoryTag.Gaming);
     }
 
     /// <summary>
@@ -47,6 +51,11 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
             OnPropertyChanged(nameof(CurrentWidth));
         }
     }
+
+    /// <summary>
+    /// Gets a gaming <see cref="UIModel"/> collection.
+    /// </summary>
+    public List<UIModel> GamingModels { get; }
 
     private void PageUwp_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
     {

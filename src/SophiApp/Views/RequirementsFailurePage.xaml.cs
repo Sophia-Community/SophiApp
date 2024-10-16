@@ -17,16 +17,13 @@ namespace SophiApp.Views
         /// </summary>
         public RequirementsFailurePage()
         {
-            ViewModel = App.GetService<RequirementsFailureViewModel>();
             InitializeComponent();
+            ViewModel = App.GetService<RequirementsFailureViewModel>();
         }
 
         /// <summary>
-        /// Gets <see cref="RequirementsFailureViewModel"/>.
+        /// Gets view model for requirements failure page.
         /// </summary>
-        public RequirementsFailureViewModel ViewModel
-        {
-            get;
-        }
+        public RequirementsFailureViewModel ViewModel { get; }
     }
 }

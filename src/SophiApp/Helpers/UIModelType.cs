@@ -20,6 +20,7 @@ namespace SophiApp.Helpers
         ExpandingGroup,
         ExpandingRadioGroup,
         RadioGroup,
+        SquareCheckBox,
         UwpApp,
     }
 

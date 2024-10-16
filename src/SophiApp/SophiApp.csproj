@@ -36,6 +36,7 @@
     <None Remove="ControlTemplates\ExpandingCheckBox.xaml" />
     <None Remove="ControlTemplates\ExpandingRadioGroup.xaml" />
     <None Remove="ControlTemplates\IconHyperlink.xaml" />
+    <None Remove="ControlTemplates\SquareCheckBox.xaml" />
     <None Remove="ControlTemplates\TeamMateLink.xaml" />
     <None Remove="ControlTemplates\TextCheckBox.xaml" />
     <None Remove="ControlTemplates\UwpAppCheckBox.xaml" />
@@ -175,6 +176,9 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="ControlTemplates\SquareCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,10 +265,10 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 </Project>

@@ -51,6 +51,7 @@ namespace SophiApp.Services
                             UIModelType.CheckBox => BuildCheckBoxModel(dto),
                             UIModelType.ExpandingRadioGroup => BuildExpandingRadioGroupModel(dto),
                             UIModelType.ExpandingCheckBox => BuildExpandingCheckBox(dto),
+                            UIModelType.SquareCheckBox => BuildSquareCheckBox(dto),
                             _ => throw new TypeAccessException($"An invalid type is specified: {dto.Type}"),
                         };
                     })
@@ -71,15 +72,15 @@ namespace SophiApp.Services
                 var packages = appxPackagesService.GetPackages(forAllUsers);
                 var excludedAppx = new List<string>()
             {
-                "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore",
-                "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension",
-                "Microsoft.HEVCVideoExtension", "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "windows.immersivecontrolpanel",
-                "AdvancedMicroDevicesInc-2.AMDRadeonSoftware", "AppUp.IntelGraphicsControlPanel", "AppUp.IntelGraphicsExperience", "Microsoft.ApplicationCompatibilityEnhancements",
-                "Microsoft.AVCEncoderVideoExtension", "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "MicrosoftWindows.CrossDevice",
-                "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal", "Microsoft.WindowsTerminalPreview",
-                "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux", "Microsoft.HEVCVideoExtensions",
-                "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "Microsoft.MPEG2VideoExtension", "Microsoft.VP9VideoExtensions",
-                "Microsoft.WebpImageExtension", "Microsoft.PowerShell", "NVIDIACorp.NVIDIAControlPanel", "RealtekSemiconductorCorp.RealtekAudioControl",
+                "Microsoft.DesktopAppInstaller", "Microsoft.StorePurchaseApp", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal",
+                "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "Microsoft.HEVCVideoExtension",
+                "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "windows.immersivecontrolpanel", "AdvancedMicroDevicesInc-2.AMDRadeonSoftware",
+                "AppUp.IntelGraphicsControlPanel", "ELANMicroelectronicsCorpo.ELANTouchpadforThinkpad", "ELANMicroelectronicsCorpo.ELANTrackPointforThinkpa",
+                "AppUp.IntelGraphicsExperience", "Microsoft.ApplicationCompatibilityEnhancements", "Microsoft.AVCEncoderVideoExtension", "Microsoft.DesktopAppInstaller",
+                "Microsoft.StorePurchaseApp", "MicrosoftWindows.CrossDevice", "Microsoft.WindowsNotepad", "Microsoft.WindowsStore", "Microsoft.WindowsTerminal",
+                "Microsoft.WindowsTerminalPreview", "Microsoft.WebMediaExtensions", "Microsoft.AV1VideoExtension", "MicrosoftCorporationII.WindowsSubsystemForLinux",
+                "Microsoft.HEVCVideoExtensions", "Microsoft.RawImageExtension", "Microsoft.HEIFImageExtension", "Microsoft.MPEG2VideoExtension", "Microsoft.VP9VideoExtensions",
+                "Microsoft.WebpImageExtension", "Microsoft.PowerShell", "NVIDIACorp.NVIDIAControlPanel", "RealtekSemiconductorCorp.RealtekAudioControl", "SynapticsIncorporated.SynapticsUtilities",
             };
 
                 for (int i = 0; i < packages.Count; i++)
@@ -128,6 +129,7 @@ namespace SophiApp.Services
                 GetStateByTagAsync(models, UICategoryTag.Privacy),
                 GetStateByTagAsync(models, UICategoryTag.Personalization),
                 GetStateByTagAsync(models, UICategoryTag.System),
+                GetStateByTagAsync(models, UICategoryTag.Gaming),
                 GetStateByTagAsync(models, UICategoryTag.TaskScheduler),
                 GetStateByTagAsync(models, UICategoryTag.Security),
                 GetStateByTagAsync(models, UICategoryTag.ContextMenu));
@@ -145,8 +147,9 @@ namespace SophiApp.Services
                 GetStateByTagAsync(models, UICategoryTag.Privacy, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.Personalization, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.System, getStateCallback),
-                GetStateByTagAsync(models, UICategoryTag.UWP, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.Gaming, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.TaskScheduler, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.UWP, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.Security, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.ContextMenu, getStateCallback));
             timer.Stop();
@@ -210,6 +213,14 @@ namespace SophiApp.Services
             var accessor = GetAccessor<bool>(dto.Name);
             var mutator = GetMutator<bool>(dto.Name);
             return new UIExpandingCheckBoxModel(dto, title, description, imageSource, accessor, mutator);
+        }
+
+        private UIModel BuildSquareCheckBox(UIModelDto dto)
+        {
+            var title = GetTitle(dto.Name);
+            var accessor = GetAccessor<bool>(dto.Name);
+            var mutator = GetMutator<bool>(dto.Name);
+            return new UISquareCheckBoxModel(dto, title, accessor, mutator);
         }
 
         private string GetTitle(string name, int? id = null)

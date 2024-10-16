@@ -14,6 +14,16 @@ namespace SophiApp.Contracts.Services
     public interface IInstrumentationService
     {
         /// <summary>
+        /// Indicates that the DAC used in the video adapter is external type.
+        /// </summary>
+        bool IsExternalDACType();
+
+        /// <summary>
+        /// Defines the use of the virtual machine.
+        /// </summary>
+        bool IsVirtualMachine();
+
+        /// <summary>
         /// Get the properties of the Win32_OperatingSystem class.
         /// </summary>
         OsProperties GetOsPropertiesOrDefault();

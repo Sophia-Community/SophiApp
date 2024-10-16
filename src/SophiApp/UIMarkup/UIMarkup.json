@@ -138,6 +138,54 @@
     "Windows11Support": "True"
   },
   {
+    "Name": "HEVC",
+    "Type": "SquareCheckBox",
+    "Tag": "Gaming",
+    "ViewId": 400,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "CortanaAutostart",
+    "Type": "SquareCheckBox",
+    "Tag": "Gaming",
+    "ViewId": 401,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "TeamsAutostart",
+    "Type": "SquareCheckBox",
+    "Tag": "Gaming",
+    "ViewId": 402,
+    "Windows10Support": "False",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "XboxGameBar",
+    "Type": "SquareCheckBox",
+    "Tag": "Gaming",
+    "ViewId": 403,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "XboxGameTips",
+    "Type": "SquareCheckBox",
+    "Tag": "Gaming",
+    "ViewId": 404,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "GPUScheduling",
+    "Type": "SquareCheckBox",
+    "Tag": "Gaming",
+    "ViewId": 405,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
     "Name": "CleanupTask",
     "Type": "CheckBox",
     "Tag": "TaskScheduler",

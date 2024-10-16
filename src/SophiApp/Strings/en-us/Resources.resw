@@ -126,8 +126,8 @@
   <data name="Shell_System.Content" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="Shell_UWP.Content" xml:space="preserve">
-    <value>UWP</value>
+  <data name="Shell_UWP_Gaming.Content" xml:space="preserve">
+    <value>UWP | Gaming</value>
   </data>
   <data name="Shell_TaskScheduler.Content" xml:space="preserve">
     <value>Task Scheduler</value>
@@ -691,5 +691,53 @@
   </data>
   <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
     <value>The %TEMP% folder cleanup.</value>
+  </data>
+  <data name="UIModel_CortanaAutostart_Title" xml:space="preserve">
+    <value>Cortana autostart title here</value>
+  </data>
+  <data name="UIModel_GPUScheduling_Title" xml:space="preserve">
+    <value>GPU scheduling title here</value>
+  </data>
+  <data name="UIModel_HEVC_Title" xml:space="preserve">
+    <value>HEVC title here</value>
+  </data>
+  <data name="UIModel_TeamsAutostart_Title" xml:space="preserve">
+    <value>Teams autostart title here</value>
+  </data>
+  <data name="UIModel_XboxGameBar_Title" xml:space="preserve">
+    <value>Xbox game bar title here</value>
+  </data>
+  <data name="UIModel_XboxGameTips_Title" xml:space="preserve">
+    <value>Xbox game tips title here</value>
+  </data>
+  <data name="Page_ContextMenu.Text" xml:space="preserve">
+    <value>Context Menu</value>
+  </data>
+  <data name="Page_Personalization.Text" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
+  <data name="Page_Privacy.Text" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Page_ProVersion.Text" xml:space="preserve">
+    <value>Pro Version</value>
+  </data>
+  <data name="Page_Security.Text" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="Page_Settings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Page_System.Text" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Page_TaskScheduler.Text" xml:space="preserve">
+    <value>Task Scheduler</value>
+  </data>
+  <data name="Page_UWP.Text" xml:space="preserve">
+    <value>UWP</value>
+  </data>
+  <data name="Page_UWP_Gaming.Text" xml:space="preserve">
+    <value>Gaming</value>
   </data>
 </root>

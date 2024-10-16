@@ -4,6 +4,9 @@
 
 namespace SophiApp.Views;
 using Microsoft.UI.Xaml.Controls;
+using SophiApp.Extensions;
+using SophiApp.Helpers;
+using SophiApp.Models;
 using SophiApp.ViewModels;
 
 /// <summary>
@@ -16,15 +19,18 @@ public sealed partial class SystemPage : Page
     /// </summary>
     public SystemPage()
     {
-        ViewModel = App.GetService<SystemViewModel>();
         InitializeComponent();
+        ViewModel = App.GetService<ShellViewModel>();
+        Models = ViewModel.JsonModels.FilterByTag(UICategoryTag.System);
     }
 
     /// <summary>
-    /// Gets <see cref="SystemViewModel"/>.
+    /// Gets view model for system page.
     /// </summary>
-    public SystemViewModel ViewModel
-    {
-        get;
-    }
+    public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets <see cref="UIModel"/> collection.
+    /// </summary>
+    public List<UIModel> Models { get; }
 }

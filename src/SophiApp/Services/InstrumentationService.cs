@@ -132,5 +132,30 @@ namespace SophiApp.Services
 
             return managementObject?.GetPropertyValue("HypervisorPresent") as bool?;
         }
+
+        /// <inheritdoc/>
+        public bool IsExternalDACType()
+        {
+            using var managementObject = new ManagementObjectSearcher("Select * from CIM_VideoController")
+                .Get()
+                .Cast<ManagementObject>()
+                .FirstOrDefault();
+
+            var dacType = managementObject?.GetPropertyValue("AdapterDACType") as string ?? string.Empty;
+            return !(string.IsNullOrEmpty(dacType) && dacType.Equals("Internal", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        /// <inheritdoc/>
+        public bool IsVirtualMachine()
+        {
+            var vmTokens = new[] { "Virtual", "VMware" };
+            using var managementObject = new ManagementObjectSearcher("Select * from CIM_ComputerSystem")
+                .Get()
+                .Cast<ManagementObject>()
+                .FirstOrDefault();
+
+            var model = managementObject?.GetPropertyValue("Model") as string ?? string.Empty;
+            return Array.Exists(vmTokens, token => model.Contains(token, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }
