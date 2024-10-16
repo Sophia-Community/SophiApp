@@ -1,4 +1,4 @@
-﻿// <copyright file="ModelService.cs" company="Team Sophia">
+// <copyright file="ModelService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
