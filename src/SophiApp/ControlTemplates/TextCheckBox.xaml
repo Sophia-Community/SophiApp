@@ -13,6 +13,9 @@
     mc:Ignorable="d"
     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}">
     <interactivity:Interaction.Behaviors>
+        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="True">
+            <interaction:ChangePropertyAction PropertyName="Opacity" Value="1.0"/>
+        </interaction:DataTriggerBehavior>
         <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
             <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
         </interaction:DataTriggerBehavior>

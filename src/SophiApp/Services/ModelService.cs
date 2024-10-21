@@ -111,6 +111,8 @@ namespace SophiApp.Services
                 ContainsTextByTagAsync(models, text, UICategoryTag.Privacy),
                 ContainsTextByTagAsync(models, text, UICategoryTag.Personalization),
                 ContainsTextByTagAsync(models, text, UICategoryTag.System),
+                ContainsTextByTagAsync(models, text, UICategoryTag.UWP),
+                ContainsTextByTagAsync(models, text, UICategoryTag.Gaming),
                 ContainsTextByTagAsync(models, text, UICategoryTag.TaskScheduler),
                 ContainsTextByTagAsync(models, text, UICategoryTag.Security),
                 ContainsTextByTagAsync(models, text, UICategoryTag.ContextMenu));

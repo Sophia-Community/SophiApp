@@ -139,31 +139,31 @@
   },
   {
     "Name": "HEVC",
-    "Type": "SquareCheckBox",
-    "Tag": "Gaming",
+    "Type": "CheckBox",
+    "Tag": "UWP",
     "ViewId": 400,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
   {
     "Name": "CortanaAutostart",
-    "Type": "SquareCheckBox",
-    "Tag": "Gaming",
+    "Type": "CheckBox",
+    "Tag": "UWP",
     "ViewId": 401,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
   {
     "Name": "TeamsAutostart",
-    "Type": "SquareCheckBox",
-    "Tag": "Gaming",
+    "Type": "CheckBox",
+    "Tag": "UWP",
     "ViewId": 402,
     "Windows10Support": "False",
     "Windows11Support": "True"
   },
   {
     "Name": "XboxGameBar",
-    "Type": "SquareCheckBox",
+    "Type": "CheckBox",
     "Tag": "Gaming",
     "ViewId": 403,
     "Windows10Support": "True",
@@ -171,7 +171,7 @@
   },
   {
     "Name": "XboxGameTips",
-    "Type": "SquareCheckBox",
+    "Type": "CheckBox",
     "Tag": "Gaming",
     "ViewId": 404,
     "Windows10Support": "True",
@@ -179,7 +179,7 @@
   },
   {
     "Name": "GPUScheduling",
-    "Type": "SquareCheckBox",
+    "Type": "CheckBox",
     "Tag": "Gaming",
     "ViewId": 405,
     "Windows10Support": "True",

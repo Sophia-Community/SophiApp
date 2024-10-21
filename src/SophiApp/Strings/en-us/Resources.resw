@@ -693,22 +693,22 @@
     <value>The %TEMP% folder cleanup.</value>
   </data>
   <data name="UIModel_CortanaAutostart_Title" xml:space="preserve">
-    <value>Cortana autostart title here</value>
+    <value>Autostart Cortana</value>
   </data>
   <data name="UIModel_GPUScheduling_Title" xml:space="preserve">
-    <value>GPU scheduling title here</value>
+    <value>Hardware-accelerated GPU scheduling</value>
   </data>
   <data name="UIModel_HEVC_Title" xml:space="preserve">
-    <value>HEVC title here</value>
+    <value>HEVC Video codec (H.265)</value>
   </data>
   <data name="UIModel_TeamsAutostart_Title" xml:space="preserve">
-    <value>Teams autostart title here</value>
+    <value>Auto-start Microsoft Teams</value>
   </data>
   <data name="UIModel_XboxGameBar_Title" xml:space="preserve">
-    <value>Xbox game bar title here</value>
+    <value>Xbox Game Bar</value>
   </data>
   <data name="UIModel_XboxGameTips_Title" xml:space="preserve">
-    <value>Xbox game tips title here</value>
+    <value>Xbox Game Bar tips</value>
   </data>
   <data name="Page_ContextMenu.Text" xml:space="preserve">
     <value>Context Menu</value>
@@ -739,5 +739,14 @@
   </data>
   <data name="Page_UWP_Gaming.Text" xml:space="preserve">
     <value>Gaming</value>
+  </data>
+  <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
+    <value>Reduce latency and improve performance. You'll need to restart your PC to have your changes take effect. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) take over the same work and runs it in batches to render the frames. This allows your GPU to reduce the load on your CPU and improve latency, potentially making your PC run better. However, don’t expect GPU hardware scheduling to have a significant impact on your computer performance.</value>
+  </data>
+  <data name="UIModel_HEVC_Description" xml:space="preserve">
+    <value>This codec allows you to open images and videos in .heif and .hevc formats, respectively.</value>
+  </data>
+  <data name="UIModel_XboxGameBar_Description" xml:space="preserve">
+    <value>To prevent popping up the "You'll need a new app to open this ms-gamingoverlay" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.</value>
   </data>
 </root>

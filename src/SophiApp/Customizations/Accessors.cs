@@ -283,7 +283,13 @@ namespace SophiApp.Customizations
         {
             var appCaptureIsEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR")?.GetValue("AppCaptureEnabled") as int? ?? -1;
             var dvrIsEnabled = Registry.CurrentUser.OpenSubKey("System\\GameConfigStore")?.GetValue("GameDVR_Enabled") as int? ?? -1;
-            return appCaptureIsEnabled != 0 && dvrIsEnabled != 0;
+
+            if (appCaptureIsEnabled == 0 && dvrIsEnabled == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
