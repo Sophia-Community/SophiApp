@@ -97,6 +97,10 @@
 
 ***
 
+## Usage
+
+Until a new `SophiApp 2.0` will be released, please use the latest version of [Sophia Script for Windows](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest) as `SophiApp 1.0.97` contains too many bugs, unstable and doesn't support the current Windows 10/11 builds.
+
 ## SophiApp 2.0
 
 `SophiApp 2.0 | Daria` is in active development (no ETA, Q4 2024). You may follow the development commits [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). Read [more](https://t.me/SophiaNews/2566).
