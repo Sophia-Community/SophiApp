@@ -31,5 +31,11 @@ namespace SophiApp.Contracts.Services
         /// <param name="packageName">The appx package identity name.</param>
         /// <param name="forAllUsers">Remove a package for all users or current user only.</param>
         void RemovePackage(string packageName, bool forAllUsers);
+
+        /// <summary>
+        /// Installs the appx application using the file.
+        /// </summary>
+        /// <param name="appxPath">Path to the appx installation file.</param>
+        Task InstallFromFileAsync(string appxPath);
     }
 }

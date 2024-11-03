@@ -236,12 +236,6 @@ namespace SophiApp.Contracts.Services
         void LogUnhandledException(Exception exception);
 
         /// <summary>
-        /// Handles an exception when accessing to Internet check in the <see cref="INetworkService"/>.
-        /// </summary>
-        /// <param name="exception">Represents errors that occur during app executing.</param>
-        void LogIsOnlineException(Exception exception);
-
-        /// <summary>
         /// Handles an exception when accessing to register as sender API in the <see cref="IAppNotificationService"/>.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>

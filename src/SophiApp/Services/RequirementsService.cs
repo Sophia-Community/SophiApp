@@ -147,11 +147,10 @@ namespace SophiApp.Services
                     }
                 },
                 { "OsRequirements_Malware_WinCry", () => File.Exists($"{systemRoot}\\TempCleaner.exe") },
-                { "OsRequirements_Malware_Hone", () => File.Exists($"{localAppData}\\Programs\\Hone\\Hone.exe") },
                 { "OsRequirements_Malware_WinUtil", () => File.Exists($"{temp}\\Winutil.log") },
                 { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
                 { "OsRequirements_Malware_AtlasOS", () => Directory.Exists($"{systemRoot}\\AtlasModules") },
-                { "OsRequirements_Malware_GearupBooster", () => Directory.Exists($"{programFilesX86}\\GearUPBooster") },
+                { "OsRequirements_Malware_KirbyOS", () => Directory.Exists($"{programData}\\KirbyOS") },
                 {
                     "OsRequirements_Malware_AutoSettingsPS", () =>
                     {
@@ -229,25 +228,22 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public Result AppUpdateDetection()
         {
-            if (commonDataService.IsOnline)
+            try
             {
-                try
-                {
-                    using var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(5) };
-                    var json = client.GetFromJsonAsync<AppVersionWrapper>(commonDataService.AppVersionUrl).Result;
-                    var version = json?.SophiApp_release ?? new Version(0, 0, 0);
-                    App.Logger.LogAppUpdate(version);
+                using var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(5) };
+                var json = client.GetFromJsonAsync<AppVersionWrapper>(commonDataService.AppVersionUrl).Result;
+                var version = json?.SophiApp_release ?? new Version(0, 0, 0);
+                App.Logger.LogAppUpdate(version);
 
-                    if (version > commonDataService.AppVersion)
-                    {
-                        var payload = string.Format("AppUpdateNotification".GetLocalized(), version.ToString(3), commonDataService.AppReleaseUrl);
-                        appNotificationService.Show(payload);
-                    }
-                }
-                catch (Exception ex)
+                if (version > commonDataService.AppVersion)
                 {
-                    App.Logger.LogAppUpdateException(ex);
+                    var payload = string.Format("AppUpdateNotification".GetLocalized(), version.ToString(3), commonDataService.AppReleaseUrl);
+                    appNotificationService.Show(payload);
                 }
+            }
+            catch (Exception ex)
+            {
+                App.Logger.LogAppUpdateException(ex);
             }
 
             return Result.Success();

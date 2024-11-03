@@ -268,7 +268,7 @@ namespace SophiApp.Customizations
 
             if (appxTeamsIsExist)
             {
-                var pathTeams = "Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\MicrosoftTeams_8wekyb3d8bbwe\\TeamsStartupTask";
+                var pathTeams = "Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\MSTeams_8wekyb3d8bbwe\\TeamsTfwStartupTask";
                 var stateTeams = Registry.CurrentUser.OpenSubKey(pathTeams)?.GetValue("State") as int? ?? -1;
                 return stateTeams != 1;
             }
@@ -618,6 +618,25 @@ else
             }
 
             throw new InvalidOperationException($"Necessary appx package are not installed \"{clipChampAppx}\"");
+        }
+
+        /// <summary>
+        /// Get "Edit With Photos" item in the media files context menu state.
+        /// </summary>
+        public static bool EditWithPhotosContext()
+        {
+            var photosAppx = "EditWithPhotosContext";
+            var clipChampPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var clipChampGuid = "{8AB635F8-9A67-4698-AB99-784AD929F3B4}";
+
+            if (AppxPackagesService.PackageExist(photosAppx))
+            {
+                var userPhotosContext = Registry.CurrentUser.OpenSubKey(clipChampPath)?.GetValue(clipChampGuid);
+                var machinePhotosContext = Registry.LocalMachine.OpenSubKey(clipChampPath)?.GetValue(clipChampGuid);
+                return userPhotosContext is null && machinePhotosContext is null;
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed \"{photosAppx}\"");
         }
 
         /// <summary>

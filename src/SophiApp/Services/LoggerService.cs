@@ -168,9 +168,6 @@ namespace SophiApp.Services
         public void LogUnhandledException(Exception exception) => Log.Fatal(exception, "AN UNHANDLED EXCEPTION OCCURED");
 
         /// <inheritdoc/>
-        public void LogIsOnlineException(Exception exception) => Log.Error(exception, "Failed internet access check in the {Service}", nameof(INetworkService));
-
-        /// <inheritdoc/>
         public void LogRegisterNotificationSenderException(Exception exception) => Log.Error(exception, "Failed to obtain register as sender API in the {Service}", nameof(IAppNotificationService));
 
         /// <inheritdoc/>

@@ -70,5 +70,11 @@ namespace SophiApp.Services
             var currentUserScript = $"Get-AppxPackage -Name *{packageName}* -PackageTypeFilter Bundle | Remove-AppxPackage";
             _ = powerShellService.Invoke(forAllUsers ? allUsersScript : currentUserScript);
         }
+
+        /// <inheritdoc/>
+        public async Task InstallFromFileAsync(string appxPath)
+        {
+            await packageManager.AddPackageAsync(new Uri(appxPath), null, DeploymentOptions.None);
+        }
     }
 }

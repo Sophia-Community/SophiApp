@@ -131,6 +131,7 @@ namespace SophiApp.Services
                 GetStateByTagAsync(models, UICategoryTag.Privacy),
                 GetStateByTagAsync(models, UICategoryTag.Personalization),
                 GetStateByTagAsync(models, UICategoryTag.System),
+                GetStateByTagAsync(models, UICategoryTag.UWP),
                 GetStateByTagAsync(models, UICategoryTag.Gaming),
                 GetStateByTagAsync(models, UICategoryTag.TaskScheduler),
                 GetStateByTagAsync(models, UICategoryTag.Security),

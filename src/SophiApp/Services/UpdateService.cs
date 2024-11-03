@@ -11,27 +11,28 @@ namespace SophiApp.Services
     public class UpdateService : IUpdateService
     {
         private readonly IInstrumentationService instrumentationService;
-        private readonly ICommonDataService commonDataService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateService"/> class.
         /// </summary>
         /// <param name="instrumentationService">Service for working with WMI.</param>
-        /// <param name="commonDataService">A service for transferring common app data between layers of abstractions.</param>
-        public UpdateService(IInstrumentationService instrumentationService, ICommonDataService commonDataService)
+        public UpdateService(IInstrumentationService instrumentationService)
         {
             this.instrumentationService = instrumentationService;
-            this.commonDataService = commonDataService;
         }
 
         /// <inheritdoc/>
         public void RunOsUpdate()
         {
-            if (commonDataService.IsOnline)
+            try
             {
                 GetUpdatesForOtherMsProducts();
                 GetUpdatesForUwpApps();
                 GetOsUpdates();
+            }
+            catch (Exception ex)
+            {
+                App.Logger.LogOsUpdateException(ex);
             }
         }
 
@@ -49,26 +50,19 @@ namespace SophiApp.Services
 
         private void GetOsUpdates()
         {
-            try
-            {
-                _ = Process.Start(
+            _ = Process.Start(
                     new ProcessStartInfo()
                     {
                         FileName = "UsoClient.exe",
                         Arguments = "StartInteractiveScan",
                     });
 
-                _ = Process.Start(
-                    new ProcessStartInfo()
-                    {
-                        FileName = "explorer.exe",
-                        Arguments = "ms-settings:windowsupdate",
-                    });
-            }
-            catch (Exception ex)
-            {
-                App.Logger.LogOsUpdateException(ex);
-            }
+            _ = Process.Start(
+                new ProcessStartInfo()
+                {
+                    FileName = "explorer.exe",
+                    Arguments = "ms-settings:windowsupdate",
+                });
         }
     }
 }

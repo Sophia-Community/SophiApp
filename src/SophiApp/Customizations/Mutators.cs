@@ -2,18 +2,19 @@
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
+#pragma warning disable IDE0001 // Simplify name
 namespace SophiApp.Customizations
 {
     using System;
-    using System.Collections.Generic;
-    using System.ServiceProcess;
     using System.Text;
-    using Microsoft.Win32;
-    using Microsoft.Win32.TaskScheduler;
+    using System.ServiceProcess;
+    using System.Collections.Generic;
+    using SophiApp.Extensions;
+    using SophiApp.Contracts.Services;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using SophiApp.Contracts.Services;
-    using SophiApp.Extensions;
+    using Microsoft.Win32;
+    using Microsoft.Win32.TaskScheduler;
 
     /// <summary>
     /// Set the os settings.
@@ -21,9 +22,11 @@ namespace SophiApp.Customizations
     public static class Mutators
     {
         private static readonly IAppNotificationService AppNotificationService = App.GetService<IAppNotificationService>();
+        private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
         private static readonly IFileService FileService = App.GetService<IFileService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
+        private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly IOsService OsService = App.GetService<IOsService>();
         private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
@@ -348,6 +351,17 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">HEVC state.</param>
         public static void HEVC(bool isEnabled)
         {
+            if (isEnabled)
+            {
+                var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string ?? Environment.GetEnvironmentVariable("TEMP");
+                var appxFile = $"{downloadFolder}\\Microsoft.HEVCVideoExtension_8wekyb3d8bbwe.appx";
+                HttpService.DownloadHEVCAppxAsync(appxFile).Wait();
+                AppxPackagesService.InstallFromFileAsync(appxFile).Wait();
+                File.Delete(appxFile);
+                return;
+            }
+
+            AppxPackagesService.RemovePackage(packageName: "Microsoft.HEVCVideoExtension", forAllUsers: false);
         }
 
         /// <summary>
@@ -765,6 +779,24 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Set "Edit With Photos" item in the media files context menu state.
+        /// </summary>
+        /// <param name="isEnabled">"Edit With Photos" item state.</param>
+        public static void EditWithPhotosContext(bool isEnabled)
+        {
+            var clipChampPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var clipChampGuid = "{BFE0E2A4-C70C-4AD7-AC3D-10D1ECEBB5B4}";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(clipChampPath, true)?.DeleteValue(clipChampPath, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey(clipChampPath).SetValue(clipChampGuid, string.Empty, RegistryValueKind.String);
+        }
+
+        /// <summary>
         /// Set "Edit with Paint 3D" item in the media files context menu state.
         /// </summary>
         /// <param name="isEnabled">"Edit with Paint 3D" item state.</param>
@@ -978,3 +1010,4 @@ namespace SophiApp.Customizations
         }
     }
 }
+#pragma warning restore IDE0001 // Simplify name

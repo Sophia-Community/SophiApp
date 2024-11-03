@@ -115,12 +115,10 @@ namespace SophiApp.Services
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonDataService"/> class.
         /// </summary>
-        /// <param name="networkService">A service for networking.</param>
         /// <param name="instrumentationService">Service for working with WMI.</param>
-        public CommonDataService(INetworkService networkService, IInstrumentationService instrumentationService)
+        public CommonDataService(IInstrumentationService instrumentationService)
         {
             osProperties = instrumentationService.GetOsPropertiesOrDefault();
-            IsOnline = networkService.IsOnline();
             App.Logger.LogAppProperties(version: assembly.Version!, directory: AppContext.BaseDirectory);
         }
 
@@ -146,9 +144,6 @@ namespace SophiApp.Services
         {
             get => urlCursor;
         }
-
-        /// <inheritdoc/>
-        public bool IsOnline { get; init; }
 
         /// <inheritdoc/>
         public bool IsWindows11 { get => osProperties?.Caption.Contains("11") ?? false; }

@@ -338,9 +338,6 @@
   <data name="OsRequirements_Malware_WinCry" xml:space="preserve">
     <value>WinCry</value>
   </data>
-  <data name="OsRequirements_Malware_Hone" xml:space="preserve">
-    <value>Hone</value>
-  </data>
   <data name="OsRequirements_Malware_WinUtil" xml:space="preserve">
     <value>Winutil</value>
   </data>
@@ -665,8 +662,8 @@
   <data name="SettingsPage_DescriptionFontSize.Header" xml:space="preserve">
     <value>UI elements description size</value>
   </data>
-  <data name="OsRequirements_Malware_GearupBooster" xml:space="preserve">
-    <value>GearUP Booster</value>
+  <data name="OsRequirements_Malware_KirbyOS" xml:space="preserve">
+    <value>KirbyOS</value>
   </data>
   <data name="OsRequirements_Malware_xd-AntiSpy" xml:space="preserve">
     <value>xd-AntiSpy</value>
@@ -748,5 +745,8 @@
   </data>
   <data name="UIModel_XboxGameBar_Description" xml:space="preserve">
     <value>To prevent popping up the "You'll need a new app to open this ms-gamingoverlay" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.</value>
+  </data>
+  <data name="UIModel_EditWithPhotosContext_Title" xml:space="preserve">
+    <value>Edit with photos context title here</value>
   </data>
 </root>

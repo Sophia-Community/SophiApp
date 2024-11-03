@@ -22,11 +22,6 @@ namespace SophiApp.Contracts.Services
         string AppReleaseUrl { get; }
 
         /// <summary>
-        /// Gets a value indicating whether Internet access is available.
-        /// </summary>
-        bool IsOnline { get; }
-
-        /// <summary>
         /// Gets a value indicating whether the OS is Windows 11.
         /// </summary>
         bool IsWindows11 { get; }
