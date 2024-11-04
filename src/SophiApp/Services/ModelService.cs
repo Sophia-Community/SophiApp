@@ -150,9 +150,9 @@ namespace SophiApp.Services
                 GetStateByTagAsync(models, UICategoryTag.Privacy, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.Personalization, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.System, getStateCallback),
+                GetStateByTagAsync(models, UICategoryTag.UWP, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.Gaming, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.TaskScheduler, getStateCallback),
-                GetStateByTagAsync(models, UICategoryTag.UWP, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.Security, getStateCallback),
                 GetStateByTagAsync(models, UICategoryTag.ContextMenu, getStateCallback));
             timer.Stop();
@@ -170,6 +170,7 @@ namespace SophiApp.Services
                 SetStateByTagAsync(models, UICategoryTag.Personalization, setStateCallback, token),
                 SetStateByTagAsync(models, UICategoryTag.System, setStateCallback, token),
                 SetStateByTagAsync(models, UICategoryTag.UWP, setStateCallback, token),
+                SetStateByTagAsync(models, UICategoryTag.Gaming, setStateCallback, token),
                 SetStateByTagAsync(models, UICategoryTag.TaskScheduler, setStateCallback, token),
                 SetStateByTagAsync(models, UICategoryTag.Security, setStateCallback, token),
                 SetStateByTagAsync(models, UICategoryTag.ContextMenu, setStateCallback, token));

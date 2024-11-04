@@ -13,7 +13,7 @@ namespace SophiApp.ControlTemplates
     /// </summary>
     public sealed partial class ExpandingCheckBox : UserControl
     {
-        // TODO: ExpandingCheckBox not used, del it?
+        // TODO: ExpandingCheckBox is unused!
 
         /// <summary>
         /// <see cref="Command"/>.

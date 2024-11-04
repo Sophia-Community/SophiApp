@@ -11,12 +11,13 @@
     xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
     xmlns:converters="using:SophiApp.Converters"
     mc:Ignorable="d"
-    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}">
+    IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+    IsEnabledChanged="TextCheckBoxControl_IsEnabledChanged">
     <interactivity:Interaction.Behaviors>
-        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="True">
+        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" ComparisonCondition="Equal" Value="True">
             <interaction:ChangePropertyAction PropertyName="Opacity" Value="1.0"/>
         </interaction:DataTriggerBehavior>
-        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
+        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" ComparisonCondition="Equal" Value="False">
             <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
         </interaction:DataTriggerBehavior>
     </interactivity:Interaction.Behaviors>
@@ -36,13 +37,15 @@
             <StackPanel Grid.Column="0"
                         Margin="17, 10, 10, 10"
                         VerticalAlignment="Center">
-                <TextBlock Grid.Column="0"
+                <TextBlock x:Name="TitleTextBlock"
+                           Grid.Column="0"
                            Style="{StaticResource UIControlTitleTextStyle}"
                            Margin="0, 10, 0, 10">
                     <Run Text="{Binding Title}"
                          FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=TextCheckBoxControl}"/>
                 </TextBlock>
-                <TextBlock Grid.Column="0"
+                <TextBlock x:Name="DescriptionTextBlock"
+                           Grid.Column="0"
                            Style="{StaticResource UIControlDescriptionTextStyle}"
                            Foreground="{ThemeResource UIControlDescriptionForeground}"
                            Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}">

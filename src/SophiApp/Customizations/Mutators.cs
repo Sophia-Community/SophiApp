@@ -370,6 +370,8 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Cortana auto start state.</param>
         public static void CortanaAutostart(bool isEnabled)
         {
+            var startupIdPath = "Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\Microsoft.549981C3F5F10_8wekyb3d8bbwe\\CortanaStartupId";
+            Registry.ClassesRoot.OpenSubKey(startupIdPath, true)?.SetValue("State", isEnabled ? 2 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -378,6 +380,8 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Teams auto start state.</param>
         public static void TeamsAutostart(bool isEnabled)
         {
+            var startupTaskPath = "Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\MSTeams_8wekyb3d8bbwe\\TeamsTfwStartupTask";
+            Registry.CurrentUser.OpenSubKey(startupTaskPath, true)?.SetValue("State", isEnabled ? 2 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -386,6 +390,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Xbox game bar state.</param>
         public static void XboxGameBar(bool isEnabled)
         {
+            var barValue = isEnabled ? 1 : 0;
+            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", true)?.SetValue("AppCaptureEnabled", barValue, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenSubKey("System\\GameConfigStore", true)?.SetValue("GameDVR_Enabled", barValue, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -394,6 +401,8 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Xbox game tips state.</param>
         public static void XboxGameTips(bool isEnabled)
         {
+            var barValue = isEnabled ? 1 : 0;
+            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar", true)?.SetValue("ShowStartupPanel", barValue, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -402,6 +411,8 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">GPU scheduling state.</param>
         public static void GPUScheduling(bool isEnabled)
         {
+            var hwSchValue = isEnabled ? 2 : 1;
+            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers")?.SetValue("HwSchMode", hwSchValue, RegistryValueKind.DWord);
         }
 
         /// <summary>

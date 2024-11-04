@@ -63,10 +63,12 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     /// </summary>
     public List<UIModel> UWPModels { get; }
 
+#pragma warning disable IDE0060 // Remove unused parameter
     private void PageUwp_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
     {
         CurrentWidth = ActualWidth;
     }
+#pragma warning restore IDE0060 // Remove unused parameter
 
     private void OnPropertyChanged([CallerMemberName] string? name = null)
     {

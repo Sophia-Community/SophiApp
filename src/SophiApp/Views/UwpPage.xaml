@@ -15,8 +15,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox 
-                                   Command="{Binding ElementName=PageUwp, Path=ViewModel.UIModelClicked_Command}"/>
+            <controls:TextCheckBox Command="{Binding ElementName=PageUwp, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
     </Page.Resources>
 
@@ -76,26 +75,25 @@
                                 <Run x:Uid="UwpPage_AboutAppIcon"
                                      FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageUwp}"/>
                             </TextBlock>
-                            <ItemsView ItemsSource="{x:Bind ViewModel.UwpAppsModels, Mode=OneWay}"
+                            <ItemsRepeater ItemsSource="{x:Bind ViewModel.UwpAppsModels, Mode=OneWay}"
                                        Grid.Row="1"
-                                       HorizontalAlignment="Left"
-                                       SelectionMode="None">
-                                <ItemsView.ItemTemplate>
+                                       HorizontalAlignment="Left">
+                                <ItemsRepeater.ItemTemplate>
                                     <DataTemplate>
                                         <ItemContainer>
                                             <controls:UwpAppCheckBox Command="{Binding ElementName=PageUwp, Path=ViewModel.UIUwpAppModelClicked_Command}"
                                                                      CommandParameter="{Binding}"/>
                                         </ItemContainer>
                                     </DataTemplate>
-                                </ItemsView.ItemTemplate>
-                                <ItemsView.Layout>
+                                </ItemsRepeater.ItemTemplate>
+                                <ItemsRepeater.Layout>
                                     <UniformGridLayout x:Name="UwpItemsContainerLayoutGrid"
                                                        ItemsStretch="Fill"
                                                        MinRowSpacing="10"
                                                        MinColumnSpacing="10"
                                                        MaximumRowsOrColumns="2"/>
-                                </ItemsView.Layout>
-                            </ItemsView>
+                                </ItemsRepeater.Layout>
+                            </ItemsRepeater>
                         </Grid>
                     </ScrollView>
                 </StackPanel>

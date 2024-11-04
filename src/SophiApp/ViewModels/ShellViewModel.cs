@@ -45,7 +45,7 @@ public partial class ShellViewModel : ObservableRecipient
     private bool isBackEnabled;
 
     [ObservableProperty]
-    private object? selected;
+    private object? selectedNavigationViewItem;
 
     [ObservableProperty]
     private bool navigationViewHitTestVisible = false;
@@ -317,7 +317,7 @@ public partial class ShellViewModel : ObservableRecipient
         var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
         if (selectedItem != null)
         {
-            Selected = selectedItem;
+            SelectedNavigationViewItem = selectedItem;
         }
     }
 

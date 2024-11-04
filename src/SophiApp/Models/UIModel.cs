@@ -75,7 +75,7 @@ namespace SophiApp.Models
             protected set
             {
                 isEnabled = value;
-                OnPropertyChanged(nameof(IsEnabled));
+                OnPropertyChanged();
             }
         }
 
