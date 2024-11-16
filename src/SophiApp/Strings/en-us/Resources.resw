@@ -218,53 +218,11 @@
   <data name="SettingsPage_Links.Title" xml:space="preserve">
     <value>Links</value>
   </data>
-  <data name="UIModel_DiagnosticDataLevel_Title_1" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="UIModel_DiagnosticDataLevel_Title_2" xml:space="preserve">
-    <value>Minimal</value>
-  </data>
-  <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
-    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected.</value>
-  </data>
-  <data name="UIModel_DiagTrackService_Description" xml:space="preserve">
-    <value>Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub.</value>
-  </data>
   <data name="SettingsPage_AppTester.WorkedOn" xml:space="preserve">
     <value>Tester</value>
   </data>
-  <data name="UIModel_ErrorReporting_Description" xml:space="preserve">
-    <value>The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.</value>
-  </data>
-  <data name="UIModel_AppsSilentInstalling_Description" xml:space="preserve">
-    <value>Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.</value>
-  </data>
-  <data name="UIModel_FeedbackFrequency_Title_1" xml:space="preserve">
-    <value>Automatically</value>
-  </data>
-  <data name="UIModel_FeedbackFrequency_Title_2" xml:space="preserve">
-    <value>Never</value>
-  </data>
-  <data name="UIModel_FeedbackFrequency_Title" xml:space="preserve">
-    <value>Feedback frequency</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Title" xml:space="preserve">
-    <value>Diagnostic Tracking Tasks</value>
-  </data>
-  <data name="UIModel_SigninInfo_Description" xml:space="preserve">
-    <value>Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
-  </data>
-  <data name="UIModel_TailoredExperiences_Description" xml:space="preserve">
-    <value>Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.</value>
-  </data>
-  <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
-    <value>Windows may display a "Let's finish setting up your device" prompt occasionally that displays additional services that user may set up.</value>
-  </data>
   <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
     <value>Windows may open a pop-up window to show you what's new about the operating system.</value>
-  </data>
-  <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
-    <value>Disable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, StartupAppTask, ProgramDataUpdater, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask, FamilySafetyMonitor, FamilySafetyRefreshTask, XblGameSaveTask.</value>
   </data>
   <data name="OsRequirements_GetWmiState" xml:space="preserve">
     <value>Detecting WMI state</value>
@@ -363,10 +321,10 @@
     <value>Check whether Windows Feature Experience Pack was removed by harmful tweakers</value>
   </data>
   <data name="OsRequirementsFailure_FeatureExperiencePackRemoved" xml:space="preserve">
-    <value>Windows Feature Experience Pack broken or removed from the OS.</value>
+    <value>Windows Feature Experience Pack broken or removed from Windows.</value>
   </data>
   <data name="OsRequirementsFailure_MsDefenderFilesMissing" xml:space="preserve">
-    <value>File "{0}" broken or removed from the OS.</value>
+    <value>File "{0}" broken or removed from Windows.</value>
   </data>
   <data name="OsRequirementsFailure_RebootRequired" xml:space="preserve">
     <value>The PC is waiting to be restarted.</value>
@@ -381,7 +339,7 @@
     <value>Detecting if currennt SophiApp build is the latest one</value>
   </data>
   <data name="OsRequirementsFailure_MsDefenderIsBroken" xml:space="preserve">
-    <value>Microsoft Defender broken or removed from the OS.</value>
+    <value>Microsoft Defender broken or removed from Windows.</value>
   </data>
   <data name="OsRequirements_GetMsDefenderServicesState" xml:space="preserve">
     <value>Detecting Microsoft Defender services state</value>
@@ -393,46 +351,142 @@
     <value>Reading Windows settings</value>
   </data>
   <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
-    <value>The telemetry service</value>
+    <value>Enable the telemetry service</value>
   </data>
-  <data name="UIModel_AdvertisingID_Title" xml:space="preserve">
-    <value>Let apps show me personalized ads by using my advertising ID</value>
-  </data>
-  <data name="UIModel_AppsSilentInstalling_Title" xml:space="preserve">
-    <value>Turn on automatic installing suggested apps</value>
-  </data>
-  <data name="UIModel_BingSearch_Title" xml:space="preserve">
-    <value>Enable Bing search in the Start Menu</value>
+  <data name="UIModel_DiagTrackService_Description" xml:space="preserve">
+    <value>Configure the Connected User Experiences and Telemetry (DiagTrack) service, and connection for the Unified Telemetry Client Outbound Traffic. Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title" xml:space="preserve">
-    <value>The OS level of diagnostic data gathering</value>
+    <value>Configure Windows level of diagnostic data gathering</value>
+  </data>
+  <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
+    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected.</value>
+  </data>
+  <data name="UIModel_DiagnosticDataLevel_Title_1" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="UIModel_DiagnosticDataLevel_Title_2" xml:space="preserve">
+    <value>Minimal</value>
   </data>
   <data name="UIModel_ErrorReporting_Title" xml:space="preserve">
-    <value>The Windows Error Reporting</value>
+    <value>Configure Windows Error Reporting</value>
+  </data>
+  <data name="UIModel_ErrorReporting_Description" xml:space="preserve">
+    <value>The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.</value>
+  </data>
+  <data name="UIModel_FeedbackFrequency_Title" xml:space="preserve">
+    <value>Configure feedback frequency</value>
+  </data>
+  <data name="UIModel_FeedbackFrequency_Title_1" xml:space="preserve">
+    <value>Automatically</value>
+  </data>
+  <data name="UIModel_FeedbackFrequency_Title_2" xml:space="preserve">
+    <value>Never</value>
   </data>
   <data name="UIModel_FeedbackFrequency_Description" xml:space="preserve">
     <value>Choose how often Windows asks for your feedback.</value>
   </data>
-  <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
-    <value>Let websites show me locally relevant content by accessing language my list</value>
+  <data name="UIModel_ScheduledTasks_Title" xml:space="preserve">
+    <value>Enable diagnostic tracking tasks</value>
   </data>
-  <data name="UIModel_SettingsSuggestedContent_Title" xml:space="preserve">
-    <value>Show me suggested content in the Settings app</value>
+  <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
+    <value>Enable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, StartupAppTask, ProgramDataUpdater, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask, FamilySafetyMonitor, FamilySafetyRefreshTask, XblGameSaveTask.</value>
   </data>
   <data name="UIModel_SigninInfo_Title" xml:space="preserve">
     <value>Use sign-in info to automatically finish setting up device after an update</value>
   </data>
-  <data name="UIModel_TailoredExperiences_Title" xml:space="preserve">
-    <value>Tailored experiences</value>
+  <data name="UIModel_SigninInfo_Description" xml:space="preserve">
+    <value>Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
   </data>
-  <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
-    <value>Ways to get the most out of Windows and finish setting up this device</value>
+  <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
+    <value>Let websites show me locally relevant content by accessing language my list</value>
+  </data>
+  <data name="UIModel_AdvertisingID_Title" xml:space="preserve">
+    <value>Let apps show me personalized ads by using my advertising ID</value>
+  </data>
+  <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
+    <value>Show Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
   </data>
   <data name="UIModel_WindowsTips_Title" xml:space="preserve">
     <value>Get tips and suggestions when using Windows</value>
   </data>
-  <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
-    <value>Show the Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
+  <data name="UIModel_SettingsSuggestedContent_Title" xml:space="preserve">
+    <value>Show suggested content in the Settings app</value>
+  </data>
+  <data name="UIModel_AppsSilentInstalling_Title" xml:space="preserve">
+    <value>Enable automatic installing suggested apps</value>
+  </data>
+  <data name="UIModel_AppsSilentInstalling_Description" xml:space="preserve">
+    <value>Windows may silently download and install some suggested apps from the Microsoft Store without any user confirmation.</value>
+  </data>
+  <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
+    <value>Show ways to get the most out of Windows and finish setting up this device</value>
+  </data>
+  <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
+    <value>Windows may display a "Let's finish setting up your device" prompt occasionally that displays additional services that user may set up.</value>
+  </data>
+  <data name="UIModel_TailoredExperiences_Title" xml:space="preserve">
+    <value>Enable tailored experiences</value>
+  </data>
+  <data name="UIModel_TailoredExperiences_Description" xml:space="preserve">
+    <value>Let Microsoft offer you tailored expereinces based on the diagnostic data setting you have chosen.</value>
+  </data>
+  <data name="UIModel_BingSearch_Title" xml:space="preserve">
+    <value>Enable Bing search in the Start Menu</value>
+  </data>
+  <data name="UIModel_StartRecommendationsTips_Title" xml:space="preserve">
+    <value>Show recommendations for tips, shortcuts, new apps, and more in the Start menu</value>
+  </data>
+  <data name="UIModel_StartAccountNotifications_Title" xml:space="preserve">
+    <value>Show Microsoft account-related notifications on Start Menu in the Start menu</value>
+  </data>
+  <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
+    <value>Choose UWP app to uninstall. UWP apps list is rendered in real-time with their native icon logos taken from Windows. That means that the UWP apps list is not pre-prepared like in other similar apps.</value>
+  </data>
+  <data name="UIModel_HEVC_Title" xml:space="preserve">
+    <value>Install HEVC Video codec (H.265)</value>
+  </data>
+  <data name="UIModel_HEVC_Description" xml:space="preserve">
+    <value>HEVC Video codec will downloaded for an official Microsoft server. This codec allows you to open images and videos in .heif and .hevc formats, respectively.</value>
+  </data>
+  <data name="UIModel_TeamsAutostart_Title" xml:space="preserve">
+    <value>Enable Auto-start Microsoft Teams</value>
+  </data>
+  <data name="UIModel_XboxGameBar_Title" xml:space="preserve">
+    <value>Enable Xbox Game Bar</value>
+  </data>
+  <data name="UIModel_XboxGameBar_Description" xml:space="preserve">
+    <value>To prevent popping up the "You'll need a new app to open this ms-gamingoverlay" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.</value>
+  </data>
+  <data name="UIModel_XboxGameTips_Title" xml:space="preserve">
+    <value>Xbox Game Bar tips</value>
+  </data>
+  <data name="UIModel_GPUScheduling_Title" xml:space="preserve">
+    <value>Enable Hardware-accelerated GPU scheduling</value>
+  </data>
+  <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
+    <value>Reduce latency and improve performance. You'll need to restart your PC to have your changes take effect. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) take over the same work and runs it in batches to render the frames. This allows your GPU to reduce the load on your CPU and improve latency, potentially making your PC run better. However, don’t expect GPU hardware scheduling to have a significant impact on your computer performance.</value>
+  </data>
+  <data name="UIModel_CleanupTask_Title" xml:space="preserve">
+    <value>Create Windows Cleanup scheduled task</value>
+  </data>
+  <data name="UIModel_CleanupTask_Description" xml:space="preserve">
+    <value>This function creates "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks in the Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before the cleanup begins. The task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+  </data>
+  <data name="UIModel_SoftwareDistributionTask_Title" xml:space="preserve">
+    <value>Create SoftwareDistribution scheduled task</value>
+  </data>
+  <data name="UIModel_SoftwareDistributionTask_Description" xml:space="preserve">
+    <value>This function creates "SoftwareDistribution" task in the Task Scheduler to clean up "%SystemRoot%\SoftwareDistribution\Download" folder where the installation files for all Windows updates are downloaded. The task will wait until the Windows Update service has finished running. The task runs every 90 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+  </data>
+  <data name="UIModel_TempTask_Title" xml:space="preserve">
+    <value>Create Temp scheduled task</value>
+  </data>
+  <data name="UIModel_TempTask_Description" xml:space="preserve">
+    <value>This function creates "Temp" task in the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. The task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+  </data>
+  <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
+    <value>Open Task Scheduler</value>
   </data>
   <data name="OsRequirementsFailure_MsDefender_Windefend_NotFound" xml:space="preserve">
     <value>Microsoft Defender was not found on you PC.</value>
@@ -469,9 +523,6 @@
   </data>
   <data name="UIModel_BitmapImageNewContext_Title" xml:space="preserve">
     <value>Show "Bitmap image" item in the "New" context menu</value>
-  </data>
-  <data name="UIModel_CABInstallContext_Description" xml:space="preserve">
-    <value>This context menu item, using DISM, allows to simplify the installation of .cab updates with a single click in its context menu. If you have the .cab file extension type associated to open with a third party app (7-Zip, WinRAR, etc...) by default, the "Install" context menu item will not show until you restore the default association for the .cab file type.</value>
   </data>
   <data name="UIModel_CABInstallContext_Title" xml:space="preserve">
     <value>Show "Install" item in the Cabinet archives (.cab) context menu</value>
@@ -563,9 +614,6 @@
   <data name="EventViewerCustomView_ProcessCreationXml_Name" xml:space="preserve">
     <value>Process Creation</value>
   </data>
-  <data name="UwpPage_ForAllUsers.Text" xml:space="preserve">
-    <value>For all users</value>
-  </data>
   <data name="UwpPage_UwpAppsNotFound.Text" xml:space="preserve">
     <value>No data to display, or necessary packages were removed</value>
   </data>
@@ -577,12 +625,6 @@
   </data>
   <data name="UIModel_LocalSecurityAuthority_Title" xml:space="preserve">
     <value>Enable protection for the Local Security Authority (LSA) process without UEFI lock to prevent code injection</value>
-  </data>
-  <data name="UIModel_StartAccountNotifications_Title" xml:space="preserve">
-    <value>Show Microsoft account-related notifications on Start Menu in the Start menu</value>
-  </data>
-  <data name="UIModel_StartRecommendationsTips_Title" xml:space="preserve">
-    <value>Show recommendations for tips, shortcuts, new apps, and more in the Start menu</value>
   </data>
   <data name="UIModel_DefenderSandbox_Title" xml:space="preserve">
     <value>Enable sandboxing for Microsoft Defender</value>
@@ -608,27 +650,6 @@
   <data name="UIModel_WindowsScriptHost_Title" xml:space="preserve">
     <value>Enable Windows Script Host</value>
   </data>
-  <data name="UIModel_CleanupTask_Description" xml:space="preserve">
-    <value>Create "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks to clean up unused files and Windows updates in the Task Scheduler in the Sophia folder. A native notification prompting you to run the task will pop up before the cleanup begins. The task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
-  </data>
-  <data name="UIModel_CleanupTask_Title" xml:space="preserve">
-    <value>Windows Cleanup</value>
-  </data>
-  <data name="UIModel_SoftwareDistributionTask_Description" xml:space="preserve">
-    <value>Create a "SoftwareDistribution" task to clean up "%SystemRoot%\SoftwareDistribution\Download" folder where the installation files for all Windows updates are downloaded, in the Sophia folder in the  Task Scheduler. The task will wait until the Windows Update service has finished running. The task runs every 90 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
-  </data>
-  <data name="UIModel_SoftwareDistributionTask_Title" xml:space="preserve">
-    <value>Clean up Windows Updates download folder</value>
-  </data>
-  <data name="UIModel_TempTask_Description" xml:space="preserve">
-    <value>Create a "Temp" task in the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. The task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
-  </data>
-  <data name="UIModel_TempTask_Title" xml:space="preserve">
-    <value>Clean up the temporary folder</value>
-  </data>
-  <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
-    <value>Open Task Scheduler</value>
-  </data>
   <data name="TaskScheduler_WindowsCleanup_Description" xml:space="preserve">
     <value>Cleaning up Windows unused files and updates using built-in Disk cleanup app.</value>
   </data>
@@ -649,9 +670,6 @@
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
     <value>The scheduled tasks options below are sufficient enough to keep your Windows OS clean. There is no need to constantly clean more system folders as advised from the Internet.</value>
-  </data>
-  <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
-    <value>UWP apps list is rendered in real-time with their native icon logos taken from Windows. That means that the UWP apps list is not pre-prepared like in other similar apps.</value>
   </data>
   <data name="SettingsPage_FontOptions.Title" xml:space="preserve">
     <value>UI font sizes</value>
@@ -692,21 +710,6 @@
   <data name="UIModel_CortanaAutostart_Title" xml:space="preserve">
     <value>Autostart Cortana</value>
   </data>
-  <data name="UIModel_GPUScheduling_Title" xml:space="preserve">
-    <value>Hardware-accelerated GPU scheduling</value>
-  </data>
-  <data name="UIModel_HEVC_Title" xml:space="preserve">
-    <value>HEVC Video codec (H.265)</value>
-  </data>
-  <data name="UIModel_TeamsAutostart_Title" xml:space="preserve">
-    <value>Auto-start Microsoft Teams</value>
-  </data>
-  <data name="UIModel_XboxGameBar_Title" xml:space="preserve">
-    <value>Xbox Game Bar</value>
-  </data>
-  <data name="UIModel_XboxGameTips_Title" xml:space="preserve">
-    <value>Xbox Game Bar tips</value>
-  </data>
   <data name="Page_ContextMenu.Text" xml:space="preserve">
     <value>Context Menu</value>
   </data>
@@ -737,16 +740,7 @@
   <data name="Page_UWP_Gaming.Text" xml:space="preserve">
     <value>Gaming</value>
   </data>
-  <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
-    <value>Reduce latency and improve performance. You'll need to restart your PC to have your changes take effect. With the Hardware-Accelerated GPU Scheduling feature, the GPU's scheduling processor and memory (VRAM) take over the same work and runs it in batches to render the frames. This allows your GPU to reduce the load on your CPU and improve latency, potentially making your PC run better. However, don’t expect GPU hardware scheduling to have a significant impact on your computer performance.</value>
-  </data>
-  <data name="UIModel_HEVC_Description" xml:space="preserve">
-    <value>This codec allows you to open images and videos in .heif and .hevc formats, respectively.</value>
-  </data>
-  <data name="UIModel_XboxGameBar_Description" xml:space="preserve">
-    <value>To prevent popping up the "You'll need a new app to open this ms-gamingoverlay" warning, you need to disable the Xbox Game Bar app, even if you uninstalled it before.</value>
-  </data>
   <data name="UIModel_EditWithPhotosContext_Title" xml:space="preserve">
-    <value>Edit with photos context title here</value>
+    <value>Show "Edit with Photos" item in the media files context menu</value>
   </data>
 </root>
