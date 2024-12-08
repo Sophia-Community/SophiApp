@@ -4,6 +4,8 @@
 
 namespace SophiApp.ControlTemplates
 {
+    using CommunityToolkit.Mvvm.Input;
+    using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
     using SophiApp.Helpers;
     using SophiApp.ViewModels;
@@ -13,7 +15,11 @@ namespace SophiApp.ControlTemplates
     /// </summary>
     public sealed partial class ExpandingRadioGroup : UserControl
     {
-        // TODO: Check DataTemplate binding in WinUI new release: https://github.com/microsoft/microsoft-ui-xaml/issues/560
+        /// <summary>
+        /// <see cref="Command"/>.
+        /// </summary>
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(IRelayCommand), typeof(ExpandingRadioGroup), new PropertyMetadata(default));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpandingRadioGroup"/> class.
@@ -28,5 +34,14 @@ namespace SophiApp.ControlTemplates
         /// Gets the app font sizes.
         /// </summary>
         public FontOptions FontOptions { get; }
+
+        /// <summary>
+        /// Gets or sets <see cref="ExpandingRadioGroup"/> command.
+        /// </summary>
+        public IRelayCommand Command
+        {
+            get => (IRelayCommand)GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
     }
 }

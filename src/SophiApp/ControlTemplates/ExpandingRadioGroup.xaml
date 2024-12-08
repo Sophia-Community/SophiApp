@@ -19,7 +19,6 @@
     </interactivity:Interaction.Behaviors>
 
     <UserControl.Resources>
-        <converters:BoolToInverse x:Key="BoolToInverseConverter"/>
         <DataTemplate x:Key="ExpanderItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -27,17 +26,17 @@
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Style="{StaticResource UIControlTitleTextStyle}">
+                           Style="{StaticResource UIControlTitleTextStyle}"
+                           Margin="0, 5, 10, 7">
                     <Run Text="{Binding Title}"
                          FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=ExpandingRadioGroupControl}"/>
                 </TextBlock>
                 <RadioButton Grid.Column="1"
                              VerticalAlignment="Center"
                              GroupName="{Binding GroupName}"
-                             IsChecked="{Binding IsChecked, Mode=OneWay}"
-                             Command="{Binding ViewModel.UIModelClicked_Command}"
-                             CommandParameter="{Binding ParentModel}"
-                             IsHitTestVisible="{Binding IsChecked, Converter={StaticResource BoolToInverseConverter}}"/>
+                             IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                             Command="{Binding Path=Command, ElementName=ExpandingRadioGroupControl}"
+                             CommandParameter="{Binding}"/>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>

@@ -14,7 +14,6 @@ namespace SophiApp.Services
     using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
-    using SophiApp.ViewModels;
     using Windows.ApplicationModel.Resources.Core;
 
     /// <inheritdoc/>
@@ -197,16 +196,17 @@ namespace SophiApp.Services
             var description = GetDescription(dto.Name);
             var accessor = GetAccessor<int>(dto.Name);
             var mutator = GetMutator<int>(dto.Name);
-            var shellViewModel = App.GetService<ShellViewModel>();
-            var model = new UIExpandingRadioGroupModel(dto, title, description, accessor, mutator);
-            model.Items = Enumerable.Range(1, dto.NumberOfItems)
+            var groupModel = new UIExpandingRadioGroupModel(dto, title, description, accessor, mutator);
+
+            groupModel.Items = Enumerable.Range(1, dto.NumberOfItems)
                 .Select(id =>
                 {
                     var itemTitle = GetTitle(dto.Name, id);
-                    return new UIRadioGroupItemModel(itemTitle, dto.Name, id, shellViewModel, model);
+                    return new UIRadioGroupItemModel(itemTitle, dto.Name, id, groupModel.ViewId);
                 })
                 .ToList();
-            return model;
+
+            return groupModel;
         }
 
         private UIModel BuildExpandingCheckBox(UIModelDto dto)

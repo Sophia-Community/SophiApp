@@ -5,19 +5,19 @@
 #pragma warning disable IDE0001 // Simplify name
 namespace SophiApp.Customizations
 {
-    using System;
-    using System.Text;
-    using System.ServiceProcess;
-    using System.Collections.Generic;
-    using SophiApp.Extensions;
-    using SophiApp.Contracts.Services;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using Microsoft.Win32;
     using Microsoft.Win32.TaskScheduler;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
+    using System;
+    using System.Collections.Generic;
+    using System.ServiceProcess;
+    using System.Text;
 
     /// <summary>
-    /// Set the os settings.
+    /// Set the OS settings.
     /// </summary>
     public static class Mutators
     {
@@ -343,6 +343,411 @@ namespace SophiApp.Customizations
             }
 
             Registry.CurrentUser.OpenSubKey(notificationsPath, true)?.SetValue(startNotifications, 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set the "This PC" icon on Desktop state.
+        /// </summary>
+        /// <param name="isEnabled">"This PC" icon state.</param>
+        public static void ThisPC(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set item check boxes state.
+        /// </summary>
+        /// <param name="isEnabled">Item check boxes state.</param>
+        public static void CheckBoxes(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set hidden files, folders, and drives state.
+        /// </summary>
+        /// <param name="isEnabled">Hidden items state.</param>
+        public static void HiddenItems(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set file name extensions visibility state.
+        /// </summary>
+        /// <param name="isEnabled">File extensions visibility state.</param>
+        public static void FileExtensions(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set folder merge conflicts state.
+        /// </summary>
+        /// <param name="isEnabled">Folder merge conflicts state.</param>
+        public static void MergeConflicts(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set how to open File Explorer.
+        /// </summary>
+        /// <param name="state">File Explorer open state.</param>
+        public static void OpenFileExplorerTo(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set File Explorer ribbon state.
+        /// </summary>
+        /// <param name="state">File Explorer ribbon state.</param>
+        public static void FileExplorerRibbon(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set File Explorer compact mode state.
+        /// </summary>
+        /// <param name="isEnabled">File Explorer compact mode state.</param>
+        public static void FileExplorerCompactMode(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set File Explorer provider notification visibility state.
+        /// </summary>
+        /// <param name="isEnabled">File Explorer provider notification visibility state.</param>
+        public static void OneDriveFileExplorerAd(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set snap a window state.
+        /// </summary>
+        /// <param name="isEnabled">Snap Assist state.</param>
+        public static void SnapAssist(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set file transfer dialog box mode.
+        /// </summary>
+        /// <param name="state">File transfer dialog box state.</param>
+        public static void FileTransferDialog(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set recycle bin confirmation dialog state.
+        /// </summary>
+        /// <param name="isEnabled">Recycle bin dialog state.</param>
+        public static void RecycleBinDeleteConfirmation(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set recently used Quick access files state.
+        /// </summary>
+        /// <param name="isEnabled">Quick access files state.</param>
+        public static void QuickAccessRecentFiles(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set frequently used Quick access folders state.
+        /// </summary>
+        /// <param name="isEnabled">Quick access folders state.</param>
+        public static void QuickAccessFrequentFolders(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set taskbar alignment state.
+        /// </summary>
+        /// <param name="state">Taskbar alignment state.</param>
+        public static void TaskbarAlignment(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set taskbar widgets icon state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar widgets icon state.</param>
+        public static void TaskbarWidgets(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Search on the taskbar state.
+        /// </summary>
+        /// <param name="state">Taskbar search state.</param>
+        public static void TaskbarSearchWindows10(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Search on the taskbar state.
+        /// </summary>
+        /// <param name="state">Taskbar search state.</param>
+        public static void TaskbarSearchWindows11(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set search highlights state.
+        /// </summary>
+        /// <param name="isEnabled">Search highlights state.</param>
+        public static void SearchHighlights(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Cortana button taskbar state.
+        /// </summary>
+        /// <param name="isEnabled">Cortana button state.</param>
+        public static void CortanaButton(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set taskbar task view button state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar task view button state.</param>
+        public static void TaskViewButton(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set News and Interests state.
+        /// </summary>
+        /// <param name="isEnabled">News and Interests state.</param>
+        public static void NewsInterests(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set taskbar people icon state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar people icon state.</param>
+        public static void PeopleTaskbar(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Meet Now icon state.
+        /// </summary>
+        /// <param name="isEnabled">Meet Now icon state.</param>
+        public static void MeetNow(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Windows Ink Workspace button state.
+        /// </summary>
+        /// <param name="isEnabled">Windows Ink Workspace button state.</param>
+        public static void WindowsInkWorkspace(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set notification area icons state.
+        /// </summary>
+        /// <param name="isEnabled">Notification area icons state.</param>
+        public static void NotificationAreaIcons(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set seconds on the taskbar clock state.
+        /// </summary>
+        /// <param name="isEnabled">Seconds on the taskbar clock state.</param>
+        public static void SecondsInSystemClock(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set taskbar combine state.
+        /// </summary>
+        /// <param name="state">Taskbar combine state.</param>
+        public static void TaskbarCombine(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set end task in taskbar by click state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar end task state.</param>
+        public static void TaskbarEndTask(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Control Panel icons view state.
+        /// </summary>
+        /// <param name="state">Control Panel icons view state.</param>
+        public static void ControlPanelView(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Windows color mode state.
+        /// </summary>
+        /// <param name="state">Windows color mode state.</param>
+        public static void WindowsColorMode(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set apps color mode state.
+        /// </summary>
+        /// <param name="state">Apps color mode state.</param>
+        public static void AppColorMode(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set "New App Installed" indicator state.
+        /// </summary>
+        /// <param name="isEnabled">New App Installed" indicator state.</param>
+        public static void NewAppInstalledNotification(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set first sign-in animation state.
+        /// </summary>
+        /// <param name="isEnabled">First sign-in animation state.</param>
+        public static void FirstLogonAnimation(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set JPEG wallpapers quality state.
+        /// </summary>
+        /// <param name="state">JPEG wallpapers quality state.</param>
+        public static void JPEGWallpapersQuality(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set "- Shortcut" suffix state.
+        /// </summary>
+        /// <param name="isEnabled">"- Shortcut" suffix state.</param>
+        public static void ShortcutsSuffix(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Print screen button state.
+        /// </summary>
+        /// <param name="isEnabled">Print screen button state.</param>
+        public static void PrtScnSnippingTool(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set input method for app window state.
+        /// </summary>
+        /// <param name="isEnabled">Input method for app window state.</param>
+        public static void AppsLanguageSwitch(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Aero Shake state.
+        /// </summary>
+        /// <param name="isEnabled">Aero Shake state.</param>
+        public static void AeroShaking(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set "Windows 11 Cursors Concept v2" cursors from Jepri Creations state.
+        /// </summary>
+        /// <param name="isEnabled">"Windows 11 Cursors Concept v2" cursors state.</param>
+        public static void Cursors(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set files and folders grouping state.
+        /// </summary>
+        /// <param name="state">Files and folders grouping state.</param>
+        public static void FolderGroupBy(int state)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set navigation pane expand state.
+        /// </summary>
+        /// <param name="isEnabled">Navigation pane expand state.</param>
+        public static void NavigationPaneExpand(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Start menu recently added apps state.
+        /// </summary>
+        /// <param name="isEnabled">Start menu recently added apps state.</param>
+        public static void RecentlyAddedApps(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Start menu app suggestions state.
+        /// </summary>
+        /// <param name="isEnabled">Start menu app suggestions state.</param>
+        public static void AppSuggestions(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set Start menu layout state.
+        /// </summary>
+        /// <param name="state">Start menu layout state.</param>
+        public static void StartLayout(int state)
+        {
+            // Method intentionally left empty.
         }
 
         /// <summary>

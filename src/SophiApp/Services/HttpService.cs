@@ -20,6 +20,7 @@ namespace SophiApp.Services
 
 #pragma warning disable S1075 // URIs should not be hardcoded
 #pragma warning disable S6608 // Prefer indexing instead of "Enumerable" methods on types implementing "IList"
+
         /// <inheritdoc/>
         public async Task DownloadHEVCAppxAsync(string fileName)
         {

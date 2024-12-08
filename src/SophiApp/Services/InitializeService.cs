@@ -40,8 +40,7 @@ public class InitializeService : IInitializeService
 
     private void InitializeMainWindow()
     {
-        var title = $"{commonDataService?.GetFullName()} {commonDataService?.GetDelimiter()} {commonDataService?.GetVersionName()}" ?? "AppDisplayName".GetLocalized();
-        App.MainWindow.Title = title;
+        App.MainWindow.Title = commonDataService.GetFullName();
 
         if (App.MainWindow.Content == null)
         {

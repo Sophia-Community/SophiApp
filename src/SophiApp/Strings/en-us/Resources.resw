@@ -117,29 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Shell_Privacy.Content" xml:space="preserve">
+  <data name="NavigationItem_Privacy.Text" xml:space="preserve">
     <value>Privacy</value>
   </data>
-  <data name="Shell_Personalization.Content" xml:space="preserve">
+  <data name="NavigationItem_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
   </data>
-  <data name="Shell_System.Content" xml:space="preserve">
+  <data name="NavigationItem_System.Text" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="Shell_UWP_Gaming.Content" xml:space="preserve">
+  <data name="NavigationItem_UWP_Gaming.Text" xml:space="preserve">
     <value>UWP | Gaming</value>
   </data>
-  <data name="Shell_TaskScheduler.Content" xml:space="preserve">
+  <data name="NavigationItem_TaskScheduler.Text" xml:space="preserve">
     <value>Task Scheduler</value>
   </data>
-  <data name="Shell_Security.Content" xml:space="preserve">
+  <data name="NavigationItem_Security.Text" xml:space="preserve">
     <value>Security</value>
   </data>
-  <data name="Shell_ContextMenu.Content" xml:space="preserve">
+  <data name="NavigationItem_ContextMenu.Text" xml:space="preserve">
     <value>Context Menu</value>
   </data>
-  <data name="Shell_ProVersion.Content" xml:space="preserve">
-    <value>Pro Version</value>
+  <data name="NavigationItem_ProVersion.Text" xml:space="preserve">
+    <value>PRO version</value>
   </data>
   <data name="AppUpdateNotification" xml:space="preserve">
     <value>&lt;toast duration="Long" scenario="reminder"&gt;
@@ -161,14 +161,14 @@
 &lt;/actions&gt;
 &lt;/toast&gt;</value>
   </data>
-  <data name="Shell_Settings.Content" xml:space="preserve">
+  <data name="NavigationItem_Settings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>SophiApp Community</value>
+    <value>SophiApp</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>SophiApp Community</value>
+    <value>SophiApp</value>
   </data>
   <data name="Control_ForWindows.Text" xml:space="preserve">
     <value>for Windows®</value>
@@ -686,10 +686,7 @@
   <data name="OsRequirements_Malware_xd-AntiSpy" xml:space="preserve">
     <value>xd-AntiSpy</value>
   </data>
-  <data name="Shell_AutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="Shell_Search.Content" xml:space="preserve">
+  <data name="AutoSuggestBox.PlaceholderText" xml:space="preserve">
     <value>Search</value>
   </data>
   <data name="SearchPage_NothingFound.Text" xml:space="preserve">
@@ -720,7 +717,7 @@
     <value>Privacy</value>
   </data>
   <data name="Page_ProVersion.Text" xml:space="preserve">
-    <value>Pro Version</value>
+    <value>About PRO version</value>
   </data>
   <data name="Page_Security.Text" xml:space="preserve">
     <value>Security</value>
@@ -742,5 +739,272 @@
   </data>
   <data name="UIModel_EditWithPhotosContext_Title" xml:space="preserve">
     <value>Show "Edit with Photos" item in the media files context menu</value>
+  </data>
+  <data name="UwpPage_ForAllUsers.Text" xml:space="preserve">
+    <value>Show packages for all users</value>
+  </data>
+  <data name="Page_Search.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="UIModel_AeroShaking_Title" xml:space="preserve">
+    <value>Title bar windows shake</value>
+  </data>
+  <data name="UIModel_AppColorMode_Title" xml:space="preserve">
+    <value>Default app color mode</value>
+  </data>
+  <data name="UIModel_AppColorMode_Title_1" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="UIModel_AppColorMode_Title_2" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="UIModel_AppsLanguageSwitch_Title" xml:space="preserve">
+    <value>Let me use a different input method for each app window</value>
+  </data>
+  <data name="UIModel_AppSuggestions_Title" xml:space="preserve">
+    <value>Show app suggestions in Start menu</value>
+  </data>
+  <data name="UIModel_CheckBoxes_Title" xml:space="preserve">
+    <value>Use check boxes to select items in File Explorer</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title" xml:space="preserve">
+    <value>Control Panel View</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title_1" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title_2" xml:space="preserve">
+    <value>Large icons</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title_3" xml:space="preserve">
+    <value>Small icons</value>
+  </data>
+  <data name="UIModel_CortanaButton_Title" xml:space="preserve">
+    <value>Show Cortana button on the taskbar</value>
+  </data>
+  <data name="UIModel_Cursors_Title" xml:space="preserve">
+    <value>Install Windows 11 cursors from Jepri Creations</value>
+  </data>
+  <data name="UIModel_FileExplorerCompactMode_Title" xml:space="preserve">
+    <value>Use compact mode in File Explorer</value>
+  </data>
+  <data name="UIModel_FileExplorerRibbon_Title" xml:space="preserve">
+    <value>Start File Explorer with the Ribbon always maximized</value>
+  </data>
+  <data name="UIModel_FileExplorerRibbon_Title_1" xml:space="preserve">
+    <value>Expanded</value>
+  </data>
+  <data name="UIModel_FileExplorerRibbon_Title_2" xml:space="preserve">
+    <value>Minimized</value>
+  </data>
+  <data name="UIModel_FileExtensions_Title" xml:space="preserve">
+    <value>Show file name extensions</value>
+  </data>
+  <data name="UIModel_FileTransferDialog_Title" xml:space="preserve">
+    <value>Show more details in file transfer dialog</value>
+  </data>
+  <data name="UIModel_FileTransferDialog_Title_1" xml:space="preserve">
+    <value>Detailed</value>
+  </data>
+  <data name="UIModel_FileTransferDialog_Title_2" xml:space="preserve">
+    <value>Compact</value>
+  </data>
+  <data name="UIModel_FirstLogonAnimation_Title" xml:space="preserve">
+    <value>Enable first sign-in animation</value>
+  </data>
+  <data name="UIModel_FolderGroupBy_Title" xml:space="preserve">
+    <value>Group files and folder by date modified in the Downloads folder</value>
+  </data>
+  <data name="UIModel_FolderGroupBy_Title_1" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="UIModel_FolderGroupBy_Title_2" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="UIModel_HiddenItems_Title" xml:space="preserve">
+    <value>Show hidden files, folders, or drives</value>
+  </data>
+  <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
+    <value>Enable desktop wallpaper JPEG quality reduction</value>
+  </data>
+  <data name="UIModel_JPEGWallpapersQuality_Title_1" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="UIModel_JPEGWallpapersQuality_Title_2" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="UIModel_MeetNow_Title" xml:space="preserve">
+    <value>Show the Meet Now icon in the notification area</value>
+  </data>
+  <data name="UIModel_MergeConflicts_Title" xml:space="preserve">
+    <value>Show folder merge conflicts</value>
+  </data>
+  <data name="UIModel_NavigationPaneExpand_Title" xml:space="preserve">
+    <value>Automatically expand to current folder in the navigation pane of File Explorer</value>
+  </data>
+  <data name="UIModel_NewAppInstalledNotification_Title" xml:space="preserve">
+    <value>Show "New App Installed" notification</value>
+  </data>
+  <data name="UIModel_NewsInterests_Title" xml:space="preserve">
+    <value>Show news and interests on the taskbar</value>
+  </data>
+  <data name="UIModel_NotificationAreaIcons_Title" xml:space="preserve">
+    <value>Always show all icons in the notification area</value>
+  </data>
+  <data name="UIModel_OneDriveFileExplorerAd_Title" xml:space="preserve">
+    <value>Show sync provider notifications within File Explorer</value>
+  </data>
+  <data name="UIModel_OpenFileExplorerTo_Title" xml:space="preserve">
+    <value>Open File Explorer to:</value>
+  </data>
+  <data name="UIModel_OpenFileExplorerTo_Title_1" xml:space="preserve">
+    <value>This PC</value>
+  </data>
+  <data name="UIModel_OpenFileExplorerTo_Title_2" xml:space="preserve">
+    <value>Quick access</value>
+  </data>
+  <data name="UIModel_PeopleTaskbar_Title" xml:space="preserve">
+    <value>Show People on the taskbar</value>
+  </data>
+  <data name="UIModel_PrtScnSnippingTool_Title" xml:space="preserve">
+    <value>Use the PrtScn button to open screen snipping</value>
+  </data>
+  <data name="UIModel_QuickAccessFrequentFolders_Title" xml:space="preserve">
+    <value>Show frequently used folders in Quick access</value>
+  </data>
+  <data name="UIModel_QuickAccessRecentFiles_Title" xml:space="preserve">
+    <value>Show recently used files in Quick access</value>
+  </data>
+  <data name="UIModel_RecentlyAddedApps_Title" xml:space="preserve">
+    <value>Show recently added apps in Start menu</value>
+  </data>
+  <data name="UIModel_RecycleBinDeleteConfirmation_Title" xml:space="preserve">
+    <value>Display recycle bin delete confirmation dialog</value>
+  </data>
+  <data name="UIModel_SearchHighlights_Title" xml:space="preserve">
+    <value>Show widgets icon on the taskbar</value>
+  </data>
+  <data name="UIModel_SecondsInSystemClock_Title" xml:space="preserve">
+    <value>Show seconds on the taskbar clock</value>
+  </data>
+  <data name="UIModel_ShortcutsSuffix_Title" xml:space="preserve">
+    <value>Add the "- Shortcut" suffix to filenames of new shortcuts you create</value>
+  </data>
+  <data name="UIModel_SnapAssist_Title" xml:space="preserve">
+    <value>When I snap a window, show what I can snap next to it</value>
+  </data>
+  <data name="UIModel_StartLayout_Title" xml:space="preserve">
+    <value>Start layout</value>
+  </data>
+  <data name="UIModel_StartLayout_Title_1" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="UIModel_StartLayout_Title_2" xml:space="preserve">
+    <value>More pins</value>
+  </data>
+  <data name="UIModel_StartLayout_Title_3" xml:space="preserve">
+    <value>More recommendations</value>
+  </data>
+  <data name="UIModel_TaskbarAlignment_Title" xml:space="preserve">
+    <value>Set the taskbar alignment</value>
+  </data>
+  <data name="UIModel_TaskbarAlignment_Title_1" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="UIModel_TaskbarAlignment_Title_2" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="UIModel_TaskbarCombine_Title" xml:space="preserve">
+    <value>Combine taskbar buttons and hide labels</value>
+  </data>
+  <data name="UIModel_TaskbarCombine_Title_1" xml:space="preserve">
+    <value>Always</value>
+  </data>
+  <data name="UIModel_TaskbarCombine_Title_2" xml:space="preserve">
+    <value>When taskbar is full</value>
+  </data>
+  <data name="UIModel_TaskbarCombine_Title_3" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="UIModel_TaskbarEndTask_Title" xml:space="preserve">
+    <value>Enable end task in taskbar by right click</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows11_Title" xml:space="preserve">
+    <value>Show search button on the taskbar</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows11_Title_1" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows11_Title_2" xml:space="preserve">
+    <value>Search icon only</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows11_Title_3" xml:space="preserve">
+    <value>Search icon and label</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows11_Title_4" xml:space="preserve">
+    <value>Search box</value>
+  </data>
+  <data name="UIModel_TaskbarWidgets_Title" xml:space="preserve">
+    <value>Show widgets icon on the taskbar</value>
+  </data>
+  <data name="UIModel_TaskViewButton_Title" xml:space="preserve">
+    <value>Show Task view button on the taskbar</value>
+  </data>
+  <data name="UIModel_ThisPC_Title" xml:space="preserve">
+    <value>Show "This PC" icon on Desktop</value>
+  </data>
+  <data name="UIModel_WindowsColorMode_Title" xml:space="preserve">
+    <value>Default Windows color mode</value>
+  </data>
+  <data name="UIModel_WindowsColorMode_Title_1" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="UIModel_WindowsColorMode_Title_2" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="UIModel_WindowsInkWorkspace_Title" xml:space="preserve">
+    <value>Show Windows Ink Workspace button on the taskbar</value>
+  </data>
+  <data name="UIModel_AeroShaking_Description" xml:space="preserve">
+    <value>When I grab a windows's title bar and shake it, minimize all other windows</value>
+  </data>
+  <data name="UIModel_Cursors_Description" xml:space="preserve">
+    <value>Install "Windows 11 Cursors Concept v2" cursors from Jepri Creations on-the-fly.</value>
+  </data>
+  <data name="UIModel_FirstLogonAnimation_Description" xml:space="preserve">
+    <value>In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the first sign-in animation that features several messages to configure the account environment.</value>
+  </data>
+  <data name="UIModel_JPEGWallpapersQuality_Description" xml:space="preserve">
+    <value>When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85%. A PNG image as your desktop background wallpaper or slideshow is not affected.</value>
+  </data>
+  <data name="UIModel_NewsInterests_Description" xml:space="preserve">
+    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+  </data>
+  <data name="UIModel_OneDriveFileExplorerAd_Description" xml:space="preserve">
+    <value>They are designed to help you by providing quick, easy information about things you can do or new features you can try to have a better experience with Windows.</value>
+  </data>
+  <data name="UIModel_SearchHighlights_Description" xml:space="preserve">
+    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows11_Description" xml:space="preserve">
+    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+  </data>
+  <data name="UIModel_TaskbarWidgets_Description" xml:space="preserve">
+    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows10_Description" xml:space="preserve">
+    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows10_Title" xml:space="preserve">
+    <value>Show search button on the taskbar</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows10_Title_1" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows10_Title_2" xml:space="preserve">
+    <value>Search icon only</value>
+  </data>
+  <data name="UIModel_TaskbarSearchWindows10_Title_3" xml:space="preserve">
+    <value>Search box</value>
   </data>
 </root>

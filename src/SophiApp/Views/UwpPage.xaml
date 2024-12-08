@@ -91,7 +91,7 @@
                                                        ItemsStretch="Fill"
                                                        MinRowSpacing="10"
                                                        MinColumnSpacing="10"
-                                                       MaximumRowsOrColumns="2"/>
+                                                       MaximumRowsOrColumns="3"/>
                                 </ItemsRepeater.Layout>
                             </ItemsRepeater>
                         </Grid>
