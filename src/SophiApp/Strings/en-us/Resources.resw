@@ -969,7 +969,7 @@
     <value>When I grab a windows's title bar and shake it, minimize all other windows</value>
   </data>
   <data name="UIModel_Cursors_Description" xml:space="preserve">
-    <value>Install "Windows 11 Cursors Concept v2" cursors from Jepri Creations on-the-fly.</value>
+    <value>Cursor will be installed on-the-fly, meaning without File Explorer restart. The Internet connection needed.</value>
   </data>
   <data name="UIModel_FirstLogonAnimation_Description" xml:space="preserve">
     <value>In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the first sign-in animation that features several messages to configure the account environment.</value>
