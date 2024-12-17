@@ -537,7 +537,7 @@
     <value>Show "Edit With Clipchamp" item in the media files context menu</value>
   </data>
   <data name="UIModel_EditWithPaint3DContext_Description" xml:space="preserve">
-    <value>Remove "Edit with Paint 3D" item from the context menu of media files for the following extensions: .bmp, .gif, .jpe, .jpeg, .jpg, .png, .tif, .tiff</value>
+    <value>Show "Edit with Paint 3D" item from the context menu of media files for the following extensions: .bmp, .gif, .jpe, .jpeg, .jpg, .png, .tif, .tiff</value>
   </data>
   <data name="UIModel_EditWithPaint3DContext_Title" xml:space="preserve">
     <value>Show "Edit with Paint 3D" item in the media files context menu</value>
@@ -603,7 +603,7 @@
     <value>The Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If the Attachment Manager identifies an attachment that might be unsafe, the Attachment Manager prevents (blocks) you from opening the file, or it warns you before you open the file. The metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock".</value>
   </data>
   <data name="UIModel_WindowsSandbox_Description" xml:space="preserve">
-    <value>Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Doesn't work in Home Edition.</value>
+    <value>Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary. When it's closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application. Applicable only to Professional, Enterprise and Education editions.</value>
   </data>
   <data name="UIModel_WindowsScriptHost_Description" xml:space="preserve">
     <value>Disabling this feature blocks the execution of .js and .vbs scripts, preventing malicious JScript scripts from running.</value>
@@ -1006,5 +1006,11 @@
   </data>
   <data name="UIModel_TaskbarSearchWindows10_Title_3" xml:space="preserve">
     <value>Search box</value>
+  </data>
+  <data name="UIModel_HideRecommendedSection_Title" xml:space="preserve">
+    <value>Show Recommended section in Start Menu</value>
+  </data>
+  <data name="UIModel_HideRecommendedSection_Description" xml:space="preserve">
+    <value>Recommended section in Start Menu can be disabled only in Enterprise and Education editions, but not in IoT Enterprise.</value>
   </data>
 </root>
