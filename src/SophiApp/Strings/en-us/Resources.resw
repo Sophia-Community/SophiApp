@@ -1013,4 +1013,7 @@
   <data name="UIModel_HideRecommendedSection_Description" xml:space="preserve">
     <value>Recommended section in Start Menu can be disabled only in Enterprise and Education editions, but not in IoT Enterprise.</value>
   </data>
+  <data name="UIModel_ImagesEditContext_Title" xml:space="preserve">
+    <value>Show the "Edit" item in the images context menu</value>
+  </data>
 </root>
