@@ -138,6 +138,379 @@
     "Windows11Support": "True"
   },
   {
+    "Name": "ThisPC",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 200,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "CheckBoxes",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 201,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "HiddenItems",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 202,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "FileExtensions",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 203,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "MergeConflicts",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 204,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "OpenFileExplorerTo",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 205,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "FileExplorerRibbon",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 206,
+    "Windows10Support": "True",
+    "Windows11Support": "False",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "FileExplorerCompactMode",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 207,
+    "Windows10Support": "False",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "OneDriveFileExplorerAd",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 208,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "SnapAssist",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 209,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "FileTransferDialog",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 210,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "RecycleBinDeleteConfirmation",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 211,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "QuickAccessRecentFiles",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 212,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "QuickAccessFrequentFolders",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 213,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "TaskbarAlignment",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 214,
+    "Windows10Support": "False",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "TaskbarWidgets",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 215,
+    "Windows10Support": "False",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "TaskbarSearchWindows10",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 216,
+    "Windows10Support": "True",
+    "Windows11Support": "False",
+    "NumberOfItems": 3
+  },
+  {
+    "Name": "TaskbarSearchWindows11",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 217,
+    "Windows10Support": "False",
+    "Windows11Support": "True",
+    "NumberOfItems": 4
+  },
+  {
+    "Name": "SearchHighlights",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 218,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "CortanaButton",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 219,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "TaskViewButton",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 220,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "NewsInterests",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 221,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "PeopleTaskbar",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 222,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "MeetNow",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 223,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "WindowsInkWorkspace",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 224,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "NotificationAreaIcons",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 225,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "SecondsInSystemClock",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 226,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "TaskbarCombine",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 227,
+    "Windows10Support": "False",
+    "Windows11Support": "True",
+    "NumberOfItems": 3
+  },
+  {
+    "Name": "TaskbarEndTask",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 228,
+    "Windows10Support": "False",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "ControlPanelView",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 229,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 3
+  },
+  {
+    "Name": "WindowsColorMode",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 230,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "AppColorMode",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 231,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "NewAppInstalledNotification",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 232,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "FirstLogonAnimation",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 233,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "JPEGWallpapersQuality",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 234,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "ShortcutsSuffix",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 235,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "PrtScnSnippingTool",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 236,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "AppsLanguageSwitch",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 237,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "AeroShaking",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 238,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "Cursors",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 239,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "FolderGroupBy",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 240,
+    "Windows10Support": "True",
+    "Windows11Support": "True",
+    "NumberOfItems": 2
+  },
+  {
+    "Name": "NavigationPaneExpand",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 241,
+    "Windows10Support": "True",
+    "Windows11Support": "True"
+  },
+  {
+    "Name": "RecentlyAddedApps",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 242,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "AppSuggestions",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 243,
+    "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "StartLayout",
+    "Type": "ExpandingRadioGroup",
+    "Tag": "Personalization",
+    "ViewId": 244,
+    "Windows10Support": "False",
+    "Windows11Support": "True",
+    "NumberOfItems": 3
+  },
+  {
     "Name": "HEVC",
     "Type": "CheckBox",
     "Tag": "UWP",

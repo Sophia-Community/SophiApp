@@ -9,6 +9,12 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
+    <Style x:Key="NavigationItemTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
+        <Setter Property="Margin" Value="15, 0, 5, 2"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+    </Style>
+
     <Style x:Key="PageTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="{StaticResource ExtraLargeFontSize}" />

@@ -32,7 +32,6 @@ public sealed partial class ShellPage : Page
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
         AppTitleName.Text = commonDataService.GetFullName();
-        AppTitleVersion.Text = commonDataService.GetVersionName();
     }
 
     /// <summary>
@@ -75,8 +74,6 @@ public sealed partial class ShellPage : Page
     {
         var resource = args.WindowActivationState == WindowActivationState.Deactivated ? "WindowCaptionForegroundDisabled" : "WindowCaptionForeground";
         AppTitleName.Foreground = (SolidColorBrush)App.Current.Resources[resource];
-        AppTitleSplitter.Foreground = (SolidColorBrush)App.Current.Resources[resource];
-        AppTitleVersion.Foreground = (SolidColorBrush)App.Current.Resources[resource];
         App.AppTitlebar = AppTitleName;
     }
 

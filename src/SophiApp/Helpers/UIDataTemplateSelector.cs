@@ -11,27 +11,25 @@ namespace SophiApp.Helpers
     /// <inheritdoc/>
     public class UIDataTemplateSelector : DataTemplateSelector
     {
-#pragma warning disable CS8618 // Non-nullable property must contain a non-null value when exiting constructor.
-
         /// <summary>
         /// Gets or sets <see cref="TextCheckBox"/> template.
         /// </summary>
-        public DataTemplate TextCheckBox { get; set; }
+        public DataTemplate TextCheckBox { get; set; } = new ();
 
         /// <summary>
         /// Gets or sets <see cref="ExpandingRadioGroup"/> template.
         /// </summary>
-        public DataTemplate ExpandingRadioGroup { get; set; }
+        public DataTemplate ExpandingRadioGroup { get; set; } = new ();
 
         /// <summary>
         /// Gets or sets <see cref="ExpandingCheckBoxGroup"/> template.
         /// </summary>
-        public DataTemplate ExpandingCheckBoxGroup { get; set; }
+        public DataTemplate ExpandingCheckBoxGroup { get; set; } = new ();
 
         /// <summary>
         /// Gets or sets <see cref="ExpandingCheckBox"/> template.
         /// </summary>
-        public DataTemplate ExpandingCheckBox { get; set; }
+        public DataTemplate ExpandingCheckBox { get; set; } = new (); // TODO: Its unused?
 
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item)
@@ -45,6 +43,5 @@ namespace SophiApp.Helpers
                 _ => throw new TypeAccessException($"Attempt to access method '{nameof(SelectTemplateCore)}' to type '{itemType}' failed")
             };
         }
-#pragma warning restore CS8618 // Non-nullable property must contain a non-null value when exiting constructor.
     }
 }

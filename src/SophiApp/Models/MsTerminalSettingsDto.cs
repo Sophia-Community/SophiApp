@@ -6,24 +6,28 @@ namespace SophiApp.Models
 {
     using Newtonsoft.Json;
 
-#pragma warning disable SA1402 // File may only contain a single type
-#pragma warning disable CS1591 // There is no XML comment for an open visible type or member
-#pragma warning disable SA1600 // Elements should be documented
+    #pragma warning disable SA1402 // File may only contain a single type
 
     /// <summary>
     /// Data transfer object for Windows Terminal settings.
     /// </summary>
     public class MsTerminalSettingsDto
     {
+        /// <summary>
+        /// Gets or sets profile settings.
+        /// </summary>
         [JsonProperty("profiles")]
         public Profiles? Profiles { get; set; }
     }
 
     /// <summary>
-    /// Gets or set profile settings value.
+    /// Data transfer object for Windows Terminal profile settings.
     /// </summary>
     public class Profiles
     {
+        /// <summary>
+        /// Gets or sets profile defaults.
+        /// </summary>
         [JsonProperty("defaults")]
         public Defaults? Defaults { get; set; }
     }
@@ -33,12 +37,12 @@ namespace SophiApp.Models
     /// </summary>
     public class Defaults
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether elevate setting.
+        /// </summary>
         [JsonProperty("elevate")]
         public bool Elevate { get; set; }
     }
 
-#pragma warning restore SA1402 // File may only contain a single type
-#pragma warning restore CS1591 // There is no XML comment for an open visible type or member
-#pragma warning restore SA1600 // Elements should be documented
-
+    #pragma warning restore SA1402 // File may only contain a single type
 }

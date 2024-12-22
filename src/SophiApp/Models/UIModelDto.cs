@@ -6,7 +6,7 @@ namespace SophiApp.Models
 {
     using SophiApp.Helpers;
 
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
+    #pragma warning disable SA1313 // Parameter names should begin with lower-case letter
 
     /// <summary>
     /// Data transfer object for <see cref="UIModel"/>.
@@ -20,5 +20,6 @@ namespace SophiApp.Models
         bool Windows11Support,
         int NumberOfItems);
 
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
+    #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
+
 }

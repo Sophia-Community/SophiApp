@@ -21,15 +21,13 @@ namespace SophiApp.Models
         /// <param name="title">A model title.</param>
         /// <param name="groupName">A model group name.</param>
         /// <param name="id">A model id.</param>
-        /// <param name="viewModel">A <see cref="ShellViewModel"/>.</param>
-        /// <param name="parentModel">A parent <see cref="UIExpandingRadioGroupModel"/> model.</param>
-        public UIRadioGroupItemModel(string title, string groupName, int id, ShellViewModel viewModel, UIExpandingRadioGroupModel parentModel)
+        /// <param name="parentId">A parent <see cref="UIExpandingRadioGroupModel"/> model id.</param>
+        public UIRadioGroupItemModel(string title, string groupName, int id, int parentId)
         {
             Title = title;
             GroupName = groupName;
             Id = id;
-            ViewModel = viewModel;
-            ParentModel = parentModel;
+            ParentId = parentId;
         }
 
         /// <summary>
@@ -53,14 +51,9 @@ namespace SophiApp.Models
         public int Id { get; init; }
 
         /// <summary>
-        /// Gets <see cref="ShellViewModel"/> to access its methods.
+        /// Gets parent <see cref="UIExpandingRadioGroupModel"/> model id.
         /// </summary>
-        public ShellViewModel ViewModel { get; init; }
-
-        /// <summary>
-        /// Gets parent <see cref="UIExpandingRadioGroupModel"/> model.
-        /// </summary>
-        public UIExpandingRadioGroupModel ParentModel { get; init; }
+        public int ParentId { get; init; }
 
         /// <summary>
         /// Gets or sets a value indicating whether model is checked.

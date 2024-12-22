@@ -27,7 +27,7 @@
             </StackPanel>
             <Grid x:Name="ItemsContainerGrid">
                 <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
-                   Margin="{StaticResource PageBottomMargin}">
+                               Margin="{StaticResource PageBottomMargin}">
                     <ItemsRepeater.Layout>
                         <StackLayout Spacing="10"/>
                     </ItemsRepeater.Layout>

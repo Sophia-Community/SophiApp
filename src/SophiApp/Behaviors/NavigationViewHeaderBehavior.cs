@@ -55,20 +55,19 @@ public class NavigationViewHeaderBehavior : Behavior<NavigationView>
     /// </summary>
     protected override void OnAttached()
     {
-        base.OnAttached();
+        #pragma warning disable S2696 // Instance members should not write to "static" fields
 
+        base.OnAttached();
         var navigationService = App.GetService<INavigationService>();
         navigationService.Navigated += OnNavigated;
-
-#pragma warning disable S2696 // Instance members should not write to "static" fields
         current = this;
-#pragma warning restore S2696 // Instance members should not write to "static" fields
+
+        #pragma warning restore S2696 // Instance members should not write to "static" fields
     }
 
     protected override void OnDetaching()
     {
         base.OnDetaching();
-
         var navigationService = App.GetService<INavigationService>();
         navigationService.Navigated -= OnNavigated;
     }

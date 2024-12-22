@@ -73,7 +73,7 @@ namespace SophiApp.Services
         /// </summary>
         public const string AppTesterName = "Yevhenii \"lowlif3\" Zabronskyi";
 
-#pragma warning disable S1075 // URIs should not be hardcoded
+        #pragma warning disable S1075 // URIs should not be hardcoded
 
         /// <summary>
         /// Gets app project manager url.
@@ -105,7 +105,7 @@ namespace SophiApp.Services
         /// </summary>
         public const string AppTesterUrl = "https://github.com/lowl1f3";
 
-#pragma warning restore S1075 // URIs should not be hardcoded
+        #pragma warning restore S1075 // URIs should not be hardcoded
 
         private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
         private static InputCursor urlCursor = InputSystemCursor.Create(InputSystemCursorShape.Hand);
@@ -177,8 +177,5 @@ namespace SophiApp.Services
 
         /// <inheritdoc/>
         public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
-
-        /// <inheritdoc/>
-        public string GetVersionName() => "Community α";
     }
 }

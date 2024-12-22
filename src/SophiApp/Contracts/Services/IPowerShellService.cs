@@ -12,6 +12,11 @@ namespace SophiApp.Contracts.Services
     public interface IPowerShellService
     {
         /// <summary>
+        /// Delete saved locations for file types.
+        /// </summary>
+        void ClearCommonDialogViews();
+
+        /// <summary>
         /// Execute the script using version 5.1 of PowerShell.
         /// </summary>
         /// <typeparam name="T">Return object type.</typeparam>
@@ -24,5 +29,11 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="script">Script to execute.</param>
         List<PSObject> Invoke(string script);
+
+        /// <summary>
+        /// Execute the command bypassing the UCPD driver.
+        /// </summary>
+        /// <param name="command">The command to be execute, must begin with "-Command".</param>
+        void InvokeCommandBypassUCPD(string command);
     }
 }

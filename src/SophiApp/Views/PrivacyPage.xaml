@@ -19,7 +19,8 @@
                                    Command="{Binding ElementName=PagePrivacy, Path=ViewModel.UIModelClicked_Command}"/>
         </DataTemplate>
         <DataTemplate x:Key="ExpandingRadioGroupTemplate">
-            <controls:ExpandingRadioGroup Margin="{StaticResource UIControlsPageRightMargin}"/>
+            <controls:ExpandingRadioGroup Margin="{StaticResource UIControlsPageRightMargin}"
+                                          Command="{Binding ElementName=PagePrivacy, Path=ViewModel.ExpandingRadioButtonClicked_Command}"/>
         </DataTemplate>
     </Page.Resources>
 

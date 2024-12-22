@@ -52,7 +52,7 @@ dotnet_diagnostic.SA1200.severity = error
 csharp_using_directive_placement = inside_namespace
 
 # SA1208: System using directives should be placed before other using directives
-dotnet_diagnostic.SA1208.severity = error
+dotnet_diagnostic.SA1208.severity = none
 
 # SA1000: Keywords should be spaced correctly
 dotnet_diagnostic.SA1000.severity = error

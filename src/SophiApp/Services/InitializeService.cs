@@ -6,7 +6,6 @@ namespace SophiApp.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Contracts.Services;
-using SophiApp.Extensions;
 using SophiApp.Views;
 
 /// <inheritdoc/>
@@ -40,8 +39,7 @@ public class InitializeService : IInitializeService
 
     private void InitializeMainWindow()
     {
-        var title = $"{commonDataService?.GetFullName()} {commonDataService?.GetDelimiter()} {commonDataService?.GetVersionName()}" ?? "AppDisplayName".GetLocalized();
-        App.MainWindow.Title = title;
+        App.MainWindow.Title = commonDataService.GetFullName();
 
         if (App.MainWindow.Content == null)
         {

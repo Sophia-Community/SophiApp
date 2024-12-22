@@ -18,8 +18,8 @@ namespace SophiApp.Services
         \k<q>
 [^>]* >");
 
-#pragma warning disable S1075 // URIs should not be hardcoded
-#pragma warning disable S6608 // Prefer indexing instead of "Enumerable" methods on types implementing "IList"
+        #pragma warning disable S1075 // URIs should not be hardcoded
+
         /// <inheritdoc/>
         public async Task DownloadHEVCAppxAsync(string fileName)
         {
@@ -38,6 +38,5 @@ namespace SophiApp.Services
             await stream.CopyToAsync(file);
         }
     }
-#pragma warning restore S1075 // URIs should not be hardcoded
-#pragma warning restore S6608 // Prefer indexing instead of "Enumerable" methods on types implementing "IList"
+        #pragma warning restore S1075 // URIs should not be hardcoded
 }

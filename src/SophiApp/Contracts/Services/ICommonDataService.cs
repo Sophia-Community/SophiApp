@@ -62,11 +62,6 @@ namespace SophiApp.Contracts.Services
         string GetBuildName();
 
         /// <summary>
-        /// Gets the name of the program version: Community or Pro.
-        /// </summary>
-        string GetVersionName();
-
-        /// <summary>
         /// Gets app name and version delimiter.
         /// </summary>
         string GetDelimiter();

@@ -37,18 +37,28 @@ namespace SophiApp.Models
         public string Description { get; init; }
 
         /// <summary>
+        /// Gets value returned by the <see cref="accessor"/>.
+        /// </summary>
+        public int AccessorId { get; private set; }
+
+        /// <summary>
         /// Gets or sets <see cref="UIExpandingRadioGroupModel"/> child items.
         /// </summary>
         public List<UIRadioGroupItemModel> Items { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets selected item id.
+        /// </summary>
+        public int SelectedId { get; set; }
 
         /// <inheritdoc/>
         public override void GetState()
         {
             try
             {
-                var selectedId = accessor.Invoke();
-                App.Logger.LogModelState(Name, selectedId);
-                _ = Items.First(item => item.Id == selectedId).IsChecked = true;
+                AccessorId = SelectedId = accessor.Invoke();
+                App.Logger.LogModelState(Name, AccessorId);
+                _ = Items.First(item => item.Id == AccessorId).IsChecked = true;
             }
             catch (Exception ex)
             {
@@ -60,16 +70,14 @@ namespace SophiApp.Models
         /// <inheritdoc/>
         public override void SetState()
         {
-            var checkedItem = Items.First(item => item.IsChecked);
-
             try
             {
-                mutator.Invoke(checkedItem.Id);
+                mutator.Invoke(SelectedId);
             }
             catch (Exception ex)
             {
                 IsEnabled = false;
-                App.Logger.LogModelSetStateException(ex, Name, checkedItem.Id);
+                App.Logger.LogModelSetStateException(ex, Name, SelectedId);
             }
         }
 

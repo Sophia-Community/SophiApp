@@ -43,6 +43,7 @@ public partial class App : Application
                 _ = services.AddSingleton<IThemesService, ThemesService>();
                 _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
                 _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
+                _ = services.AddTransient<IGroupPolicyService, GroupPolicyService>();
                 _ = services.AddTransient<IHttpService, HttpService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
                 _ = services.AddTransient<IOsService, OsService>();

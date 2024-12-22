@@ -163,10 +163,29 @@ namespace SophiApp.Contracts.Services
         void LogApplicableModelRemoved(string name);
 
         /// <summary>
+        /// Write information about changes model parameters from the applied collection in the log.
+        /// </summary>
+        /// <typeparam name="T">A parameters type.</typeparam>
+        /// <param name="name">Changed model name.</param>
+        /// <param name="previous">Previous parameter value.</param>
+        /// <param name="current">Current parameter value.</param>
+        void LogApplicableModelChanged<T>(string name, T previous, T current)
+            where T : struct;
+
+        /// <summary>
         /// Write information about adding a model to the applied collection in the log.
         /// </summary>
         /// <param name="name">Added model name.</param>
         void LogApplicableModelAdded(string name);
+
+        /// <summary>
+        /// Write information about adding a model with parameter to the applied collection in the log.
+        /// </summary>
+        /// <typeparam name="T">A <paramref name="parameter"/> type.</typeparam>
+        /// <param name="name">Added model name.</param>
+        /// <param name="parameter">Parameter used by the model.</param>
+        void LogApplicableModelAdded<T>(string name, T parameter)
+            where T : struct;
 
         /// <summary>
         /// Write information about state a "For all users" checkbox in the UWP page.

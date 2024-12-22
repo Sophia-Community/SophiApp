@@ -25,25 +25,31 @@
     </Page.Resources>
 
     <ScrollView x:Name="SearchScrollView">
-        <Grid x:Name="ItemsContainerGrid" IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-            <ItemsRepeater x:Name="SearchItemsRepeater"
-                           ItemsSource="{x:Bind ViewModel.FoundModels, Mode=OneWay}"
-                           Margin="{StaticResource PageBottomMargin}">
-                <ItemsRepeater.Layout>
-                    <StackLayout Spacing="10"/>
-                </ItemsRepeater.Layout>
-                <ItemsRepeater.ItemTemplate>
-                    <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
-                                                    ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
-                </ItemsRepeater.ItemTemplate>
-            </ItemsRepeater>
+        <Grid IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Uid="Page_Search" Style="{StaticResource PageTitleTextStyle}"/>
+                </StackPanel>
+                <Grid x:Name="ItemsContainerGrid">
+                    <ItemsRepeater x:Name="SearchItemsRepeater"
+                                   ItemsSource="{x:Bind ViewModel.FoundModels, Mode=OneWay}"
+                                   Margin="{StaticResource PageBottomMargin}">
+                        <ItemsRepeater.Layout>
+                            <StackLayout Spacing="10"/>
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
+                                                            ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </Grid>
+            </StackPanel>
             <StackPanel x:Name="NothingFoundPanel"
                         Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
-                    <Run x:Uid="SearchPage_NothingFound"
-                         FontSize="{x:Bind ViewModel.FontOptions.TitleTextSize, Mode=OneWay}"/>
+                    <Run x:Uid="SearchPage_NothingFound" FontSize="{x:Bind ViewModel.FontOptions.TitleTextSize, Mode=OneWay}"/>
                 </TextBlock>
             </StackPanel>
         </Grid>

@@ -2,22 +2,21 @@
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
-#pragma warning disable IDE0001 // Simplify name
 namespace SophiApp.Customizations
 {
-    using System;
-    using System.Text;
-    using System.ServiceProcess;
-    using System.Collections.Generic;
-    using SophiApp.Extensions;
-    using SophiApp.Contracts.Services;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using Microsoft.Win32;
     using Microsoft.Win32.TaskScheduler;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
+    using System;
+    using System.Collections.Generic;
+    using System.ServiceProcess;
+    using System.Text;
 
     /// <summary>
-    /// Set the os settings.
+    /// Set the OS settings.
     /// </summary>
     public static class Mutators
     {
@@ -26,6 +25,7 @@ namespace SophiApp.Customizations
         private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
         private static readonly IFileService FileService = App.GetService<IFileService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
+        private static readonly IGroupPolicyService GroupPolicyService = App.GetService<IGroupPolicyService>();
         private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly IOsService OsService = App.GetService<IOsService>();
@@ -91,12 +91,9 @@ namespace SophiApp.Customizations
         public static void ErrorReporting(bool isEnabled)
         {
             var reportingRegistryPath = "Software\\Microsoft\\Windows\\Windows Error Reporting";
-            var reportingPoliciesPath = "Software\\Policies\\Microsoft\\Windows\\Windows Error Reporting";
             var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting");
             var reportingService = new ServiceController("WerSvc");
-
-            Registry.LocalMachine.OpenSubKey(reportingPoliciesPath, true)?.DeleteValue("Disabled", false);
-            Registry.CurrentUser.OpenSubKey(reportingPoliciesPath, true)?.DeleteValue("Disabled", false);
+            GroupPolicyService.ClearErrorReportingCache();
 
             if (isEnabled)
             {
@@ -123,18 +120,16 @@ namespace SophiApp.Customizations
         /// <param name="state">Feedback frequency state.</param>
         public static void FeedbackFrequency(int state)
         {
-            var siufRulesPath = "Software\\Microsoft\\Siuf\\Rules";
-
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\DataCollection", true)?.DeleteValue("DoNotShowFeedbackNotifications", false);
+            var rulesPath = "Software\\Microsoft\\Siuf\\Rules";
+            GroupPolicyService.ClearFeedbackFrequencyCache();
 
             if (state.Equals(2))
             {
-                Registry.CurrentUser.OpenOrCreateSubKey(siufRulesPath)
-                    .SetValue("NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
+                Registry.CurrentUser.OpenOrCreateSubKey(rulesPath).SetValue("NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.CurrentUser.DeleteSubKey(siufRulesPath, false);
+            Registry.CurrentUser.DeleteSubKey(rulesPath, false);
         }
 
         /// <summary>
@@ -178,8 +173,7 @@ namespace SophiApp.Customizations
             var sid = InstrumentationService.GetUserSid(Environment.UserName);
             var userArsoPath = $"Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\UserARSO\\{sid}";
             var optOut = "OptOut";
-
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", true)?.DeleteValue("DisableAutomaticRestartSignOn", false);
+            GroupPolicyService.ClearSigninInfoCache();
 
             if (isEnabled)
             {
@@ -214,11 +208,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Advertising ID state.</param>
         public static void AdvertisingID(bool isEnabled)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\AdvertisingInfo", true)
-                ?.DeleteValue("DisabledByGroupPolicy", false);
-
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo")
-                .SetValue("Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            var infoPath = "Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo";
+            GroupPolicyService.ClearAdvertisingIdCache();
+            Registry.CurrentUser.OpenOrCreateSubKey(infoPath).SetValue("Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -237,11 +229,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Windows tips state.</param>
         public static void WindowsTips(bool isEnabled)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\CloudContent", true)
-                ?.DeleteValue("DisableSoftLanding", false);
-
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
-                ?.SetValue("SubscribedContent-338389Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager";
+            GroupPolicyService.ClearWindowsTipsCache();
+            Registry.CurrentUser.OpenSubKey(contentPath, true)?.SetValue("SubscribedContent-338389Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -261,11 +251,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Suggested apps state.</param>
         public static void AppsSilentInstalling(bool isEnabled)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\CloudContent", true)
-                ?.DeleteValue("DisableWindowsConsumerFeatures", false);
-
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
-                ?.SetValue("SilentInstalledAppsEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            GroupPolicyService.ClearAppsInstallingCache();
+            var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager";
+            Registry.CurrentUser.OpenSubKey(contentPath, true)?.SetValue("SilentInstalledAppsEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -274,8 +262,8 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Whats New state.</param>
         public static void WhatsNewInWindows(bool isEnabled)
         {
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement")
-                .SetValue("ScoobeSystemSettingEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            var profilePath = "Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement";
+            Registry.CurrentUser.OpenOrCreateSubKey(profilePath).SetValue("ScoobeSystemSettingEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -284,11 +272,9 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Tailored experiences state.</param>
         public static void TailoredExperiences(bool isEnabled)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\CloudContent", true)
-                ?.DeleteValue("DisableTailoredExperiencesWithDiagnosticData", false);
-
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Privacy", true)
-                ?.SetValue("TailoredExperiencesWithDiagnosticDataEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            var privacyPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Privacy";
+            GroupPolicyService.ClearTailoredExperiencesCache();
+            Registry.CurrentUser.OpenSubKey(privacyPath, true)?.SetValue("TailoredExperiencesWithDiagnosticDataEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -343,6 +329,589 @@ namespace SophiApp.Customizations
             }
 
             Registry.CurrentUser.OpenSubKey(notificationsPath, true)?.SetValue(startNotifications, 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set the "This PC" icon on Desktop state.
+        /// </summary>
+        /// <param name="isEnabled">"This PC" icon state.</param>
+        public static void ThisPC(bool isEnabled)
+        {
+            var pcPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel";
+            var pcGuid = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenOrCreateSubKey(pcPath).SetValue(pcGuid, 0, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.CurrentUser.OpenSubKey(pcPath, true)?.DeleteValue(pcGuid, false);
+        }
+
+        /// <summary>
+        /// Set item check boxes state.
+        /// </summary>
+        /// <param name="isEnabled">Item check boxes state.</param>
+        public static void CheckBoxes(bool isEnabled)
+        {
+            var boxesPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(boxesPath, true)?.SetValue("AutoCheckSelect", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set hidden files, folders, and drives state.
+        /// </summary>
+        /// <param name="isEnabled">Hidden items state.</param>
+        public static void HiddenItems(bool isEnabled)
+        {
+            var itemsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(itemsPath, true)?.SetValue("Hidden", isEnabled ? 1 : 2, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set file name extensions visibility state.
+        /// </summary>
+        /// <param name="isEnabled">File extensions visibility state.</param>
+        public static void FileExtensions(bool isEnabled)
+        {
+            var extensionsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(extensionsPath, true)?.SetValue("HideFileExt", isEnabled ? 0 : 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set folder merge conflicts state.
+        /// </summary>
+        /// <param name="isEnabled">Folder merge conflicts state.</param>
+        public static void MergeConflicts(bool isEnabled)
+        {
+            var mergePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(mergePath, true)?.SetValue("HideMergeConflicts", isEnabled ? 0 : 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set how to open File Explorer.
+        /// </summary>
+        /// <param name="state">File Explorer open state.</param>
+        public static void OpenFileExplorerTo(int state)
+        {
+            var filePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(filePath, true)?.SetValue("LaunchTo", state, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set File Explorer ribbon state.
+        /// </summary>
+        /// <param name="state">File Explorer ribbon state.</param>
+        public static void FileExplorerRibbon(int state)
+        {
+            GroupPolicyService.ClearFileExplorerRibbonCache();
+            var ribbonPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Ribbon";
+            Registry.CurrentUser.OpenOrCreateSubKey(ribbonPath).SetValue("MinimizedStateTabletModeOff", state - 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set File Explorer compact mode state.
+        /// </summary>
+        /// <param name="isEnabled">File Explorer compact mode state.</param>
+        public static void FileExplorerCompactMode(bool isEnabled)
+        {
+            var compactPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(compactPath, true)?.SetValue("UseCompactMode", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set File Explorer provider notification visibility state.
+        /// </summary>
+        /// <param name="isEnabled">File Explorer provider notification visibility state.</param>
+        public static void OneDriveFileExplorerAd(bool isEnabled)
+        {
+            var drivePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(drivePath, true)?.SetValue("ShowSyncProviderNotifications", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set snap a window state.
+        /// </summary>
+        /// <param name="isEnabled">Snap Assist state.</param>
+        public static void SnapAssist(bool isEnabled)
+        {
+            var desktopPath = "Control Panel\\Desktop";
+            var snapPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(desktopPath, true)?.SetValue("WindowArrangementActive", 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenSubKey(snapPath, true)?.SetValue("SnapAssist", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set file transfer dialog box mode.
+        /// </summary>
+        /// <param name="state">File transfer dialog box state.</param>
+        public static void FileTransferDialog(int state)
+        {
+            var statusPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager";
+            Registry.CurrentUser.OpenOrCreateSubKey(statusPath).SetValue("EnthusiastMode", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set recycle bin confirmation dialog state.
+        /// </summary>
+        /// <param name="isEnabled">Recycle bin dialog state.</param>
+        public static void RecycleBinDeleteConfirmation(bool isEnabled)
+        {
+            GroupPolicyService.ClearRecycleBinDeleteConfirmationCache();
+            var shellPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var shellState = "ShellState";
+            var shellValue = Registry.CurrentUser.OpenSubKey(shellPath)?.GetValue(shellState) as byte[] ?? new byte[5];
+            shellValue[4] = isEnabled ? (byte)51 : (byte)55;
+            Registry.CurrentUser.OpenSubKey(shellPath, true)?.SetValue(shellState, shellValue, RegistryValueKind.Binary);
+        }
+
+        /// <summary>
+        /// Set recently used Quick access files state.
+        /// </summary>
+        /// <param name="isEnabled">Quick access files state.</param>
+        public static void QuickAccessRecentFiles(bool isEnabled)
+        {
+            GroupPolicyService.ClearQuickAccessRecentFilesCache();
+            var recentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            Registry.CurrentUser.OpenSubKey(recentPath, true)?.SetValue("ShowRecent", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set frequently used Quick access folders state.
+        /// </summary>
+        /// <param name="isEnabled">Quick access folders state.</param>
+        public static void QuickAccessFrequentFolders(bool isEnabled)
+        {
+            var frequentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            Registry.CurrentUser.OpenSubKey(frequentPath, true)?.SetValue("ShowFrequent", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set taskbar alignment state.
+        /// </summary>
+        /// <param name="state">Taskbar alignment state.</param>
+        public static void TaskbarAlignment(int state)
+        {
+            var alignmentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(alignmentPath, true)?.SetValue("TaskbarAl", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set taskbar widgets icon state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar widgets icon state.</param>
+        public static void TaskbarWidgets(bool isEnabled)
+        {
+            GroupPolicyService.ClearTaskbarWidgetsCache();
+            var advancedPath = "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var command = $"-Command \"& {{New-ItemProperty -Path {advancedPath} -Name TaskbarDa -PropertyType DWord -Value {(isEnabled ? 1 : 0)} -Force}}\"";
+            PowerShellService.InvokeCommandBypassUCPD(command);
+        }
+
+        /// <summary>
+        /// Set Search on the taskbar state.
+        /// </summary>
+        /// <param name="state">Taskbar search state.</param>
+        public static void TaskbarSearchWindows10(int state)
+        {
+            GroupPolicyService.ClearTaskbarSearchCache();
+            var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+            Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue("SearchboxTaskbarMode", state - 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set Search on the taskbar state.
+        /// </summary>
+        /// <param name="state">Taskbar search state.</param>
+        public static void TaskbarSearchWindows11(int state)
+        {
+            GroupPolicyService.ClearTaskbarSearchCache();
+            var searchMode = "SearchboxTaskbarMode";
+            var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+
+            if (state.Equals(3))
+            {
+                Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue(searchMode, 3, RegistryValueKind.DWord);
+                return;
+            }
+
+            if (state.Equals(4))
+            {
+                Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue(searchMode, 2, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue(searchMode, state - 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set search highlights state.
+        /// </summary>
+        /// <param name="isEnabled">Search highlights state.</param>
+        public static void SearchHighlights(bool isEnabled)
+        {
+            GroupPolicyService.ClearSearchHighlightsCache();
+            var feedsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds\\DSB";
+            var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
+            Registry.CurrentUser.OpenSubKey(feedsPath, true)?.SetValue("ShowDynamicContent", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue("IsDynamicSearchBoxEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set Cortana button taskbar state.
+        /// </summary>
+        /// <param name="isEnabled">Cortana button state.</param>
+        public static void CortanaButton(bool isEnabled)
+        {
+            GroupPolicyService.ClearCortanaButtonCache();
+            var advancedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(advancedPath, true)?.SetValue("ShowCortanaButton", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set taskbar task view button state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar task view button state.</param>
+        public static void TaskViewButton(bool isEnabled)
+        {
+            var advancedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(advancedPath, true)?.SetValue("ShowTaskViewButton", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set News and Interests state.
+        /// </summary>
+        /// <param name="isEnabled">News and Interests state.</param>
+        public static void NewsInterests(bool isEnabled)
+        {
+            GroupPolicyService.ClearNewsInterestsCache();
+            var hashData = OsService.GetNewsInterestsHashData(isEnabled);
+            var feedsCommand = $"-Command \"& {{New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds -Name ShellFeedsTaskbarViewMode -PropertyType DWord -Value {(isEnabled ? 0 : 2)} -Force}}\"";
+            var enFeedsCommand = $"-Command \"& {{New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds -Name EnShellFeedsTaskbarViewMode -PropertyType DWord -Value {hashData} -Force}}\"";
+            PowerShellService.InvokeCommandBypassUCPD(feedsCommand);
+            PowerShellService.InvokeCommandBypassUCPD(enFeedsCommand);
+        }
+
+        /// <summary>
+        /// Set taskbar people icon state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar people icon state.</param>
+        public static void PeopleTaskbar(bool isEnabled)
+        {
+            GroupPolicyService.ClearPeopleTaskbarCache();
+            var peoplePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People";
+            Registry.CurrentUser.OpenOrCreateSubKey(peoplePath)?.SetValue("PeopleBand", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set Meet Now icon state.
+        /// </summary>
+        /// <param name="isEnabled">Meet Now icon state.</param>
+        public static void MeetNow(bool isEnabled)
+        {
+            GroupPolicyService.ClearMeetNowCache();
+            var stuckValue = "Settings";
+            var stuckPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StuckRects3";
+            var settings = Registry.CurrentUser.OpenSubKey(stuckPath)?.GetValue(stuckValue) as byte[] ?? new byte[10];
+            settings[9] = isEnabled ? (byte)0 : (byte)128;
+            Registry.CurrentUser.OpenSubKey(stuckPath, true)?.SetValue(stuckValue, settings, RegistryValueKind.Binary);
+        }
+
+        /// <summary>
+        /// Set Windows Ink Workspace button state.
+        /// </summary>
+        /// <param name="isEnabled">Windows Ink Workspace button state.</param>
+        public static void WindowsInkWorkspace(bool isEnabled)
+        {
+            GroupPolicyService.ClearWindowsInkWorkspaceCache();
+            var workspacePath = "Software\\Microsoft\\Windows\\CurrentVersion\\PenWorkspace";
+            Registry.CurrentUser.OpenSubKey(workspacePath, true)?.SetValue("PenWorkspaceButtonDesiredVisibility", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set notification area icons state.
+        /// </summary>
+        /// <param name="isEnabled">Notification area icons state.</param>
+        public static void NotificationAreaIcons(bool isEnabled)
+        {
+            GroupPolicyService.ClearNotificationAreaIconsCache();
+            var trayPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            Registry.CurrentUser.OpenSubKey(trayPath, true)?.SetValue("EnableAutoTray", isEnabled ? 0 : 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set seconds on the taskbar clock state.
+        /// </summary>
+        /// <param name="isEnabled">Seconds on the taskbar clock state.</param>
+        public static void SecondsInSystemClock(bool isEnabled)
+        {
+            var clockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(clockPath, true)?.SetValue("ShowSecondsInSystemClock", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set taskbar combine state.
+        /// </summary>
+        /// <param name="state">Taskbar combine state.</param>
+        public static void TaskbarCombine(int state)
+        {
+            GroupPolicyService.ClearTaskbarCombineCache();
+            var taskbarPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(taskbarPath, true)?.SetValue("TaskbarGlomLevel", state - 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set end task in taskbar by click state.
+        /// </summary>
+        /// <param name="isEnabled">Taskbar end task state.</param>
+        public static void TaskbarEndTask(bool isEnabled)
+        {
+            var taskbarPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings";
+            var taskbarSettings = "TaskbarEndTask";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenOrCreateSubKey(taskbarPath).SetValue(taskbarSettings, 1, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.CurrentUser.OpenSubKey(taskbarPath, true)?.DeleteValue(taskbarSettings, false);
+        }
+
+        /// <summary>
+        /// Set Control Panel icons view state.
+        /// </summary>
+        /// <param name="state">Control Panel icons view state.</param>
+        public static void ControlPanelView(int state)
+        {
+            GroupPolicyService.ClearControlPanelViewCache();
+            var panelPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel";
+            var iconView = "AllItemsIconView";
+            var startupPage = "StartupPage";
+
+            switch (state)
+            {
+                case 1:
+                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(iconView, 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 0, RegistryValueKind.DWord);
+                    break;
+                case 2:
+                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(iconView, 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
+                    break;
+                default:
+                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(iconView, 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Set Windows color mode state.
+        /// </summary>
+        /// <param name="state">Windows color mode state.</param>
+        public static void WindowsColorMode(int state)
+        {
+            var personalizePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+            Registry.CurrentUser.OpenSubKey(personalizePath, true)?.SetValue("SystemUsesLightTheme", state - 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set apps color mode state.
+        /// </summary>
+        /// <param name="state">Apps color mode state.</param>
+        public static void AppColorMode(int state)
+        {
+            var personalizePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+            Registry.CurrentUser.OpenSubKey(personalizePath, true)?.SetValue("AppsUseLightTheme", state - 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set "New App Installed" indicator state.
+        /// </summary>
+        /// <param name="isEnabled">New App Installed" indicator state.</param>
+        public static void NewAppInstalledNotification(bool isEnabled)
+        {
+            var alertPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var appAlert = "NoNewAppAlert";
+
+            if (isEnabled)
+            {
+                Registry.LocalMachine.OpenSubKey(alertPath, true)?.DeleteValue(appAlert, false);
+                return;
+            }
+
+            Registry.LocalMachine.OpenOrCreateSubKey(alertPath).SetValue(appAlert, 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set first sign-in animation state.
+        /// </summary>
+        /// <param name="isEnabled">First sign-in animation state.</param>
+        public static void FirstLogonAnimation(bool isEnabled)
+        {
+            GroupPolicyService.ClearFirstLogonAnimationCache();
+            var logonPath = "Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon";
+            Registry.LocalMachine.OpenSubKey(logonPath, true)?.SetValue("EnableFirstLogonAnimation", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set JPEG wallpapers quality state.
+        /// </summary>
+        /// <param name="state">JPEG wallpapers quality state.</param>
+        public static void JPEGWallpapersQuality(int state)
+        {
+            var desktopPath = "Control Panel\\Desktop";
+            var jpegQuality = "JPEGImportQuality";
+
+            if (state.Equals(1))
+            {
+                Registry.CurrentUser.OpenSubKey(desktopPath, true)?.SetValue(jpegQuality, 100, RegistryValueKind.DWord);
+                return;
+            }
+
+            Registry.CurrentUser.OpenSubKey(desktopPath, true)?.DeleteValue(jpegQuality, false);
+        }
+
+        /// <summary>
+        /// Set "- Shortcut" suffix state.
+        /// </summary>
+        /// <param name="isEnabled">"- Shortcut" suffix state.</param>
+        public static void ShortcutsSuffix(bool isEnabled)
+        {
+            var linkPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var templatesPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates";
+            var shortcutTemplate = "ShortcutNameTemplate";
+            Registry.CurrentUser.OpenSubKey(linkPath, true)?.DeleteValue("link", false);
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(templatesPath, true)?.DeleteValue(shortcutTemplate, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey(templatesPath)?.SetValue(shortcutTemplate, "%s.lnk", RegistryValueKind.String);
+        }
+
+        /// <summary>
+        /// Set Print screen button state.
+        /// </summary>
+        /// <param name="isEnabled">Print screen button state.</param>
+        public static void PrtScnSnippingTool(bool isEnabled)
+        {
+            var keyboardPath = "Control Panel\\Keyboard";
+            Registry.CurrentUser.OpenSubKey(keyboardPath, true)?.SetValue("PrintScreenKeyForSnippingEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set input method for app window state.
+        /// </summary>
+        /// <param name="isEnabled">Input method for app window state.</param>
+        public static void AppsLanguageSwitch(bool isEnabled)
+        {
+            var command = isEnabled ? "Set-WinLanguageBarOption -UseLegacySwitchMode" : "Set-WinLanguageBarOption";
+            _ = PowerShellService.Invoke(command);
+        }
+
+        /// <summary>
+        /// Set Aero Shake state.
+        /// </summary>
+        /// <param name="isEnabled">Aero Shake state.</param>
+        public static void AeroShaking(bool isEnabled)
+        {
+            GroupPolicyService.ClearAeroShakingCache();
+            var shakingPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(shakingPath, true)?.SetValue("DisallowShaking", isEnabled ? 0 : 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set "Windows 11 Cursors Concept v2" cursors from Jepri Creations state.
+        /// </summary>
+        /// <param name="isEnabled">"Windows 11 Cursors Concept v2" cursors state.</param>
+        public static void Cursors(bool isEnabled)
+        {
+            // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Set files and folders grouping state.
+        /// </summary>
+        /// <param name="state">Files and folders grouping state.</param>
+        public static void FolderGroupBy(int state)
+        {
+            #pragma warning disable SA1003 // Symbols should be spaced correctly
+
+            var folderPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FolderTypes\\{885a186e-a440-4ada-812b-db871b942259}";
+            var groupPath = $"{folderPath}\\TopViews\\{00000000-0000-0000-0000-000000000000}";
+
+            if (state.Equals(1))
+            {
+                PowerShellService.ClearCommonDialogViews();
+                using var groupKey = Registry.CurrentUser.OpenOrCreateSubKey(groupPath);
+                groupKey.SetValue("ColumnList", "System.Null", RegistryValueKind.String);
+                groupKey.SetValue("GroupBy", "System.Null", RegistryValueKind.String);
+                groupKey.SetValue("LogicalViewMode", 1, RegistryValueKind.DWord);
+                groupKey.SetValue("Name", "NoName", RegistryValueKind.String);
+                groupKey.SetValue("Order", 0, RegistryValueKind.DWord);
+                groupKey.SetValue("PrimaryProperty", "System.ItemNameDisplay", RegistryValueKind.String);
+                groupKey.SetValue("SortByList", "prop:System.ItemNameDisplay", RegistryValueKind.String);
+                return;
+            }
+
+            Registry.CurrentUser.DeleteSubKeyTree(folderPath, false);
+
+            #pragma warning restore SA1003 // Symbols should be spaced correctly
+        }
+
+        /// <summary>
+        /// Set navigation pane expand state.
+        /// </summary>
+        /// <param name="isEnabled">Navigation pane expand state.</param>
+        public static void NavigationPaneExpand(bool isEnabled)
+        {
+            var panePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(panePath, true)?.SetValue("NavPaneExpandToCurrentFolder", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set Start menu recently added apps state.
+        /// </summary>
+        /// <param name="isEnabled">Start menu recently added apps state.</param>
+        public static void RecentlyAddedApps(bool isEnabled)
+        {
+            GroupPolicyService.ClearRecentlyAddedAppsCache();
+            var appsPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var appsValue = "HideRecentlyAddedApps";
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(appsPath, true)?.DeleteValue(appsValue, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey(appsPath).SetValue(appsValue, 1, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set Start menu app suggestions state.
+        /// </summary>
+        /// <param name="isEnabled">Start menu app suggestions state.</param>
+        public static void AppSuggestions(bool isEnabled)
+        {
+            GroupPolicyService.ClearAppSuggestionsCache();
+            var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager";
+            Registry.CurrentUser.OpenSubKey(contentPath, true)?.SetValue("SubscribedContent-338388Enabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set Start menu layout state.
+        /// </summary>
+        /// <param name="state">Start menu layout state.</param>
+        public static void StartLayout(int state)
+        {
+            var layoutPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(layoutPath, true)?.SetValue("Start_Layout", state - 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -610,6 +1179,7 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Windows save zone state.</param>
         public static void SaveZoneInformation(bool isEnabled)
         {
+            GroupPolicyService.ClearSaveZoneInformationCache();
             var safeZonePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments";
             var safeZoneValueName = "SaveZoneInformation";
 
@@ -1021,4 +1591,3 @@ namespace SophiApp.Customizations
         }
     }
 }
-#pragma warning restore IDE0001 // Simplify name
