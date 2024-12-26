@@ -237,7 +237,7 @@ scoop install sophiapp
   * <https://raw.githubusercontent.com>
   * <https://github.com>
   * <https://download.visualstudio.microsoft.com>
-  * <https://builds.dotnet.microsoft.com.blob.core.windows.net>
+  * <https://builds.dotnet.microsoft.com>
   * <https://www.google.com>
   * <https://g.live.com>
   * <https://oneclient.sfx.ms>

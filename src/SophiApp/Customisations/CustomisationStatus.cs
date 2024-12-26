@@ -455,7 +455,7 @@ namespace SophiApp.Customisations
         {
             if (HttpHelper.IsOnline)
             {
-                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://builds.dotnet.microsoft.com.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://builds.dotnet.microsoft.com/dotnet/release-metadata/6.0/releases.json");
                 return DotNetHelper.IsInstalled(cloudNetVersion.LatestRelease, DotNetRid.Win_x86)
                         ? throw new DotNetInstalledException(cloudNetVersion.LatestRelease)
                         : false;
@@ -472,7 +472,7 @@ namespace SophiApp.Customisations
         {
             if (HttpHelper.IsOnline)
             {
-                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://builds.dotnet.microsoft.com.blob.core.windows.net/dotnet/release-metadata/6.0/releases.json");
+                var cloudNetVersion = WebHelper.GetJsonResponse<MsNetDto>(@"https://builds.dotnet.microsoft.com/dotnet/release-metadata/6.0/releases.json");
                 return DotNetHelper.IsInstalled(cloudNetVersion.LatestRelease, DotNetRid.Win_x64)
                         ? throw new DotNetInstalledException(cloudNetVersion.LatestRelease)
                         : false;
