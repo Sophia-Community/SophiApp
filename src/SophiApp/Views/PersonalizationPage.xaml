@@ -4,8 +4,23 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:SophiApp.Helpers"
+    xmlns:viewmodels="using:SophiApp.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:PersonalizationViewModel}"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="TextCheckBoxTemplate">
+            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
+                                   Command="{Binding ElementName=PagePersonalization, Path=ViewModel.UIModelClicked_Command}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ExpandingRadioGroupTemplate">
+            <controls:ExpandingRadioGroup Margin="{StaticResource UIControlsPageRightMargin}"
+                                          Command="{Binding ElementName=PagePersonalization, Path=ViewModel.ExpandingRadioButtonClicked_Command}"/>
+        </DataTemplate>
+    </Page.Resources>
 
     <ScrollView>
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
@@ -18,6 +33,10 @@
                     <ItemsRepeater.Layout>
                         <StackLayout Spacing="10"/>
                     </ItemsRepeater.Layout>
+                    <ItemsRepeater.ItemTemplate>
+                        <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
+                                                        ExpandingRadioGroup="{StaticResource ExpandingRadioGroupTemplate}"/>
+                    </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>
             </Grid>
         </StackPanel>

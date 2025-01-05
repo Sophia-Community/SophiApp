@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A service for transferring app data between layers of DI.
+    /// A service for transferring app data between DI layers.
     /// </summary>
     public interface ICommonDataService
     {
@@ -60,11 +60,6 @@ namespace SophiApp.Contracts.Services
         /// Gets the code name of the application build.
         /// </summary>
         string GetBuildName();
-
-        /// <summary>
-        /// Gets the name of the program version: Community or Pro.
-        /// </summary>
-        string GetVersionName();
 
         /// <summary>
         /// Gets app name and version delimiter.

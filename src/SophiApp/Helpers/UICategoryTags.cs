@@ -4,8 +4,6 @@
 
 namespace SophiApp.Helpers
 {
-#pragma warning disable CS1591 // There is no XML comment for an open visible type or member.
-
     /// <summary>
     /// UI category tags.
     /// </summary>
@@ -20,6 +18,4 @@ namespace SophiApp.Helpers
         TaskScheduler,
         UWP,
     }
-
-#pragma warning restore CS1591 // There is no XML comment for an open visible type or member.
 }

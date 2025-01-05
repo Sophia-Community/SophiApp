@@ -9,6 +9,7 @@ using CSharpFunctionalExtensions;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
+using SophiApp.ControlTemplates;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.Models;
@@ -108,6 +109,7 @@ public partial class ShellViewModel : ObservableRecipient
         ApplicableModelsApply_Command = new AsyncRelayCommand(ApplicableModelsApplyAsync);
         ApplicableModelsCancel_Command = new RelayCommand(ApplicableModelsCancel);
         ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
+        ExpandingRadioButtonClicked_Command = new RelayCommand<UIRadioGroupItemModel>(ExpandingRadioButtonClicked);
         OpenTaskScheduler_Command = new AsyncRelayCommand(OpenTaskSchedulerAsync);
         SearchBoxQuerySubmitted_Command = new AsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs>(args => SearchBoxQuerySubmittedAsync(args!));
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
@@ -129,6 +131,11 @@ public partial class ShellViewModel : ObservableRecipient
     /// Gets <see cref="IAsyncRelayCommand"/> to click an "Cancel" button in the Apply Customizations Panel.
     /// </summary>
     public IAsyncRelayCommand ApplicableModelsClear_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to click a RadioButton in <see cref="ExpandingRadioGroup"/>.
+    /// </summary>
+    public IRelayCommand<UIRadioGroupItemModel> ExpandingRadioButtonClicked_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IAsyncRelayCommand"/> to click "Search" in AutoSuggestBox.
@@ -270,6 +277,11 @@ public partial class ShellViewModel : ObservableRecipient
             .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
                 startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
+            }))
+            .Bind(requirementsService.GetMsDefenderPreferenceException)
+            .Tap(() => App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                startupModel.ProgressBarValue = startupModel.ProgressBarValue.Increase(numberOfRequirements);
                 startupModel.StatusText = "OsRequirements_ReadWindowsSettings".GetLocalized();
             }))
             .Tap(async () =>
@@ -304,6 +316,30 @@ public partial class ShellViewModel : ObservableRecipient
                     App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(typeof(RequirementsFailureViewModel).FullName!));
                 });
         });
+    }
+
+    private void ExpandingRadioButtonClicked(UIRadioGroupItemModel? item)
+    {
+        var groupModel = (UIExpandingRadioGroupModel)JsonModels.First(model => model.ViewId == item!.ParentId);
+
+        if (ApplicableModels.Contains(groupModel) && groupModel.AccessorId == item!.Id)
+        {
+            groupModel.SelectedId = item.Id;
+            ApplicableModels.Remove(groupModel);
+            App.Logger.LogApplicableModelRemoved(groupModel.Name);
+            return;
+        }
+
+        if (ApplicableModels.Contains(groupModel) && groupModel.SelectedId != item!.Id)
+        {
+            App.Logger.LogApplicableModelChanged(groupModel.Name, groupModel.SelectedId, item.Id);
+            groupModel.SelectedId = item!.Id;
+            return;
+        }
+
+        groupModel.SelectedId = item!.Id;
+        ApplicableModels.Add(groupModel);
+        App.Logger.LogApplicableModelAdded(groupModel.Name, item.Id);
     }
 
     /// <summary>

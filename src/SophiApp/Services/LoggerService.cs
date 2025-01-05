@@ -12,7 +12,6 @@ namespace SophiApp.Services
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
-    using static System.Net.Mime.MediaTypeNames;
 
     /// <inheritdoc/>
     public class LoggerService : ILoggerService
@@ -123,16 +122,30 @@ namespace SophiApp.Services
                where T : struct => Log.Information("Model {Name} state: {State}", name, state);
 
         /// <inheritdoc/>
-        public void LogApplicableModelsCanceled() => Log.Warning("The \"Cancel\" button on the Apply Customizations Panel is clicked");
+        public void LogApplicableModelsCanceled() => Log.Warning("The applying of customizations has been canceled");
 
         /// <inheritdoc/>
         public void LogApplicableModelsClear() => Log.Warning("Applicable models collection has been cleaned up");
+
+        /// <inheritdoc/>
+        public void LogApplicableModelChanged<T>(string name, T previous, T current)
+            where T : struct
+        {
+            Log.Information("The value of the model {Name} parameter has been changed from {Previous} to {Current} in applicable models collection", name, previous, current);
+        }
 
         /// <inheritdoc/>
         public void LogApplicableModelRemoved(string name) => Log.Information("Model {Name} has been removed from applicable models collection", name);
 
         /// <inheritdoc/>
         public void LogApplicableModelAdded(string name) => Log.Information("Model {Name} has been added to applicable models collection", name);
+
+        /// <inheritdoc/>
+        public void LogApplicableModelAdded<T>(string name, T parameter)
+            where T : struct
+        {
+            Log.Information("Model {Name} with parameter: {Parameter} has been added to applicable models collection", name, parameter);
+        }
 
         /// <inheritdoc/>
         public void LogUwpForAllUsersState(bool state) => Log.Information("The \"For all users\" checkbox state has been changed to: {State}", state);
@@ -144,10 +157,10 @@ namespace SophiApp.Services
         public void LogTitleTextSizeChanged(int size) => Log.Information("The text size of UI element headers set to: {Size}", size);
 
         /// <inheritdoc/>
-        public void LogStartTextSearch(string text) => Log.Information("User ran a search on the text: {Text}", text);
+        public void LogStartTextSearch(string text) => Log.Information("A search for the text: {Text} has been launched", text);
 
         /// <inheritdoc/>
-        public void LogStopTextSearch(Stopwatch timer, int count) => Log.Information("The search took seconds: {Seconds} and return models: {Count}", timer.Elapsed.TotalSeconds, count);
+        public void LogStopTextSearch(Stopwatch timer, int count) => Log.Information("The text search took seconds: {Seconds} and return models: {Count}", timer.Elapsed.TotalSeconds, count);
 
         /// <inheritdoc/>
         public void LogNavigateToRequirementsFailure(RequirementsFailure failure) => Log.Information("Failure to meet {Service} requirements due to: {Name}", nameof(IRequirementsService), failure);

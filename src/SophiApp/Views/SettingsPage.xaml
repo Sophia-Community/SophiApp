@@ -100,7 +100,8 @@
                                    VerticalAlignment="Bottom"
                                    HorizontalAlignment="Left">
                 <controls:ContentBlock.Content>
-                    <Button x:Uid="Button_Apply"/>
+                    <Button x:Uid="Button_Apply"
+                            Style="{StaticResource AccentButtonStyle}"/>
                 </controls:ContentBlock.Content>
             </controls:ContentBlock>
 

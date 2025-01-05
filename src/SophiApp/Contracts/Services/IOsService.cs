@@ -12,6 +12,12 @@ namespace SophiApp.Contracts.Services
     public interface IOsService
     {
         /// <summary>
+        /// Get the hash for the change of state "News and Interests" widget on the taskbar.
+        /// </summary>
+        /// <param name="enable">Enable or disable widget.</param>
+        uint GetNewsInterestsHashData(bool enable);
+
+        /// <summary>
         /// Sets the startup mode of the Windows service.
         /// </summary>
         /// <param name="service">Represents a Windows service and allows you to connect to a running or stopped.</param>

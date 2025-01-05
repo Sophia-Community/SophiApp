@@ -43,12 +43,5 @@ namespace SophiApp.ControlTemplates
             get => (IRelayCommand)GetValue(CommandProperty);
             set => SetValue(CommandProperty, value);
         }
-
-        private void TextCheckBoxControl_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            var opacity = (bool)e.NewValue ? 1.0 : 0.6;
-            ((TextBlock)FindName("TitleTextBlock")).Opacity = opacity;
-            ((TextBlock)FindName("DescriptionTextBlock")).Opacity = opacity;
-        }
     }
 }

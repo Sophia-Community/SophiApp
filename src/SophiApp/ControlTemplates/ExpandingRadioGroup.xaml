@@ -19,7 +19,7 @@
     </interactivity:Interaction.Behaviors>
 
     <UserControl.Resources>
-        <converters:BoolToInverse x:Key="BoolToInverseConverter"/>
+        <converters:StringToVisibility x:Key="StringToVisibilityConverter"/>
         <DataTemplate x:Key="ExpanderItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -27,17 +27,26 @@
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Style="{StaticResource UIControlTitleTextStyle}">
+                           Style="{StaticResource UIControlTitleTextStyle}"
+                           Margin="0, 5, 10, 7">
                     <Run Text="{Binding Title}"
                          FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=ExpandingRadioGroupControl}"/>
                 </TextBlock>
                 <RadioButton Grid.Column="1"
                              VerticalAlignment="Center"
                              GroupName="{Binding GroupName}"
-                             IsChecked="{Binding IsChecked, Mode=OneWay}"
-                             Command="{Binding ViewModel.UIModelClicked_Command}"
-                             CommandParameter="{Binding ParentModel}"
-                             IsHitTestVisible="{Binding IsChecked, Converter={StaticResource BoolToInverseConverter}}"/>
+                             IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                             Command="{Binding Path=Command, ElementName=ExpandingRadioGroupControl}"
+                             CommandParameter="{Binding}">
+                    <interactivity:Interaction.Behaviors>
+                        <interaction:DataTriggerBehavior Binding="{Binding IsChecked}" ComparisonCondition="Equal" Value="False">
+                            <interaction:ChangePropertyAction PropertyName="IsHitTestVisible" Value="True"/>
+                        </interaction:DataTriggerBehavior>
+                        <interaction:DataTriggerBehavior Binding="{Binding IsChecked}" ComparisonCondition="Equal" Value="True">
+                            <interaction:ChangePropertyAction PropertyName="IsHitTestVisible" Value="False"/>
+                        </interaction:DataTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </RadioButton>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
@@ -48,12 +57,15 @@
                   Background="{ThemeResource UIControlBackground}">
             <Expander.Header>
                 <StackPanel>
-                    <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
+                    <TextBlock x:Name="TitleTextBlock"
+                               Style="{StaticResource UIControlTitleTextStyle}">
                         <Run Text="{Binding Title}"
                              FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=ExpandingRadioGroupControl}"/>
                     </TextBlock>
-                    <TextBlock Style="{StaticResource UIControlDescriptionTextStyle}"
-                               Foreground="{ThemeResource UIControlDescriptionForeground}">
+                    <TextBlock x:Name="DescriptionTextBlock"
+                               Style="{StaticResource UIControlDescriptionTextStyle}"
+                               Foreground="{ThemeResource UIControlDescriptionForeground}"
+                               Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}">
                         <Run Text="{Binding Description}"
                              FontSize="{Binding Path=FontOptions.DescriptionTextSize, ElementName=ExpandingRadioGroupControl}"/>
                     </TextBlock>
@@ -63,6 +75,11 @@
                 <ItemsRepeater ItemsSource="{Binding Items}"
                                ItemTemplate="{StaticResource ExpanderItemTemplate}"/>
             </Expander.Content>
+            <interactivity:Interaction.Behaviors>
+                <interaction:DataTriggerBehavior Binding="{Binding Visibility, ElementName=DescriptionTextBlock}" ComparisonCondition="Equal" Value="Collapsed">
+                    <interaction:ChangePropertyAction TargetObject="{Binding ElementName=TitleTextBlock}" PropertyName="Margin" Value="0, 20, 10, 20"/>
+                </interaction:DataTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
         </Expander>
     </Border>
 </UserControl>

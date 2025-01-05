@@ -4,12 +4,9 @@
 
 namespace SophiApp.Services
 {
-    using System.Diagnostics;
-    using System.Management.Automation.Runspaces;
-    using System.Xml.Linq;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
-    using WinUIEx;
+    using System.Diagnostics;
 
     /// <inheritdoc/>
     public class ProcessService : IProcessService

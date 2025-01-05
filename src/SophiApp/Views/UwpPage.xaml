@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:SophiApp.ControlTemplates"
-    xmlns:converters="using:SophiApp.Converters"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
     xmlns:helpers="using:SophiApp.Helpers"
@@ -91,7 +90,7 @@
                                                        ItemsStretch="Fill"
                                                        MinRowSpacing="10"
                                                        MinColumnSpacing="10"
-                                                       MaximumRowsOrColumns="2"/>
+                                                       MaximumRowsOrColumns="3"/>
                                 </ItemsRepeater.Layout>
                             </ItemsRepeater>
                         </Grid>

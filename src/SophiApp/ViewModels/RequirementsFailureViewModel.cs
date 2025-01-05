@@ -18,7 +18,10 @@ namespace SophiApp.ViewModels
         private readonly ICommonDataService commonDataService;
 
         [ObservableProperty]
-        private string statusText = string.Empty;
+        private string titleText = string.Empty;
+
+        [ObservableProperty]
+        private string descriptionText = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequirementsFailureViewModel"/> class.
@@ -37,15 +40,12 @@ namespace SophiApp.ViewModels
         /// <param name="reason">Reason for failure requirements.</param>
         public void PrepareForNavigation(RequirementsFailure reason)
         {
-            StatusText = LocalizeFailureReason(reason);
-
-            if (IsNeedUpdate(reason))
-            {
-                updateService.RunOsUpdate();
-            }
+            TitleText = LocalizeTitleText(reason);
+            DescriptionText = LocalizeDescriptionText(reason);
+            RunUpdateNecessary(reason);
         }
 
-        private string LocalizeFailureReason(RequirementsFailure reason)
+        private string LocalizeTitleText(RequirementsFailure reason)
         {
             return reason switch
             {
@@ -66,21 +66,35 @@ namespace SophiApp.ViewModels
                 RequirementsFailure.SecuritySettingsPageHidden => "OsRequirementsFailure_SecuritySettingsPageHidden".GetLocalized(),
                 RequirementsFailure.MsDefenderServiceNotFound => commonDataService.MsDefenderServiceStopped.GetLocalized(),
                 RequirementsFailure.MsDefenderIsBroken => "OsRequirementsFailure_MsDefenderIsBroken".GetLocalized(),
+                RequirementsFailure.MsDefenderPreferenceException => "OsRequirementsFailure_MsDefenderIsBroken".GetLocalized(),
                 _ => throw new ArgumentOutOfRangeException(paramName: nameof(reason), message: $"Value: {reason} is not found in {typeof(RequirementsFailure).FullName} enumeration.")
             };
         }
 
-        private bool IsNeedUpdate(RequirementsFailure reason)
+        private string LocalizeDescriptionText(RequirementsFailure reason)
+        {
+            switch (reason)
+            {
+                case RequirementsFailure.MalwareDetected:
+                    return "OsRequirementsFailure_ReinstallWindows".GetLocalized();
+
+                default:
+                    return string.Empty;
+            }
+        }
+
+        private void RunUpdateNecessary(RequirementsFailure reason)
         {
             switch (reason)
             {
                 case RequirementsFailure.Win11BuildLess22631:
                 case RequirementsFailure.Win11UbrLess2283:
                 case RequirementsFailure.Win10UnsupportedBuild:
-                    return true;
+                    updateService.RunOsUpdate();
+                    break;
 
                 default:
-                    return false;
+                    break;
             }
         }
     }

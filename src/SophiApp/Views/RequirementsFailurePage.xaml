@@ -20,9 +20,14 @@
                Width="373"
                Height="103"/>
 
-        <TextBlock Grid.Row="1"
-                   Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
-                   Style="{StaticResource RequirementsFailurePageTextStyle}"
-                   Foreground="{ThemeResource WindowForeground}"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="{x:Bind ViewModel.TitleText, Mode=OneWay}"
+                       Style="{StaticResource RequirementsFailurePageTextStyle}"
+                       Foreground="{ThemeResource WindowForeground}"/>
+
+            <TextBlock Text="{x:Bind ViewModel.DescriptionText, Mode=OneWay}"
+                       Style="{StaticResource RequirementsFailurePageTextStyle}"
+                       Foreground="{ThemeResource WindowForeground}"/>
+        </StackPanel>
     </Grid>
 </Page>

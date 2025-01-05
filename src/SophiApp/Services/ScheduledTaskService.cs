@@ -15,7 +15,6 @@ namespace SophiApp.Services
     public class ScheduledTaskService : IScheduledTaskService
     {
         private readonly TaskService taskScheduler;
-        private readonly ICommonDataService commonDataService;
         private readonly FileInfo cleanupPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1"));
         private readonly FileInfo cleanupVbsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.vbs"));
         private readonly FileInfo notificationPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1"));
@@ -431,11 +430,9 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
         /// <summary>
         /// Initializes a new instance of the <see cref="ScheduledTaskService"/> class.
         /// </summary>
-        /// <param name="commonDataService">A service for transferring app data between layers of DI.</param>
-        public ScheduledTaskService(ICommonDataService commonDataService)
+        public ScheduledTaskService()
         {
             taskScheduler = TaskService.Instance;
-            this.commonDataService = commonDataService;
         }
 
         /// <inheritdoc/>
@@ -463,7 +460,7 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
 
             _ = RegisterTask(
                 name: "Sophia\\Windows Cleanup",
-                description: "TaskScheduler_WindowsCleanup_Description".GetLocalized(),
+                description: string.Format("TaskScheduler_WindowsCleanup_Description".GetLocalized(), Environment.UserName),
                 action: "wscript.exe",
                 arguments: cleanupVbsFile.FullName,
                 username: Environment.UserName,
@@ -486,7 +483,7 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
 
             _ = RegisterTask(
                 name: "Sophia\\Windows Cleanup Notification",
-                description: "TaskScheduler_WindowsCleanupNotification_Description".GetLocalized(),
+                description: string.Format("TaskScheduler_WindowsCleanupNotification_Description".GetLocalized(), Environment.UserName),
                 action: "wscript.exe",
                 arguments: notificationVbsFile.FullName,
                 username: Environment.UserName,
@@ -512,7 +509,7 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
 
             _ = RegisterTask(
                 name: "Sophia\\SoftwareDistribution",
-                description: "TaskScheduler_SoftwareDistribution_Description".GetLocalized(),
+                description: string.Format("TaskScheduler_SoftwareDistribution_Description".GetLocalized(), Environment.UserName),
                 action: "wscript.exe",
                 arguments: softwareDistributionVbsFile.FullName,
                 username: Environment.UserName,
@@ -538,7 +535,7 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
 
             _ = RegisterTask(
                 name: "Sophia\\TempTask",
-                description: "TaskScheduler_TempTask_Description".GetLocalized(),
+                description: string.Format("TaskScheduler_TempTask_Description".GetLocalized(), Environment.UserName),
                 action: "wscript.exe",
                 arguments: tempVbsFile.FullName,
                 username: Environment.UserName,

@@ -17,35 +17,43 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class RequirementsService : IRequirementsService
     {
-        private readonly ICommonDataService commonDataService;
-        private readonly IInstrumentationService instrumentationService;
-        private readonly IAppxPackagesService appxPackagesService;
         private readonly IAppNotificationService appNotificationService;
+        private readonly IAppxPackagesService appxPackagesService;
+        private readonly ICommonDataService commonDataService;
+        private readonly IDiskService diskService;
+        private readonly IInstrumentationService instrumentationService;
         private readonly IOsService osService;
+        private readonly IPowerShellService powerShellService;
         private readonly IProcessService processService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequirementsService"/> class.
         /// </summary>
-        /// <param name="commonDataService">A service for working with common app data.</param>
-        /// <param name="instrumentationService">A service for working with WMI.</param>
-        /// <param name="appxPackagesService">A service for working with appx packages.</param>
-        /// <param name="appNotificationService">A service for working with notifications.</param>
+        /// <param name="appNotificationService">A service for working with toast notifications API.</param>
+        /// <param name="appxPackagesService">A service for working with appx packages API.</param>
+        /// <param name="commonDataService">A service for transferring app data between DI layers.</param>
+        /// <param name="diskService">A service for working with disk API.</param>
+        /// <param name="instrumentationService">A service for working with WMI API.</param>
         /// <param name="osService">A service for working with Windows services API.</param>
+        /// /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
         /// <param name="processService">A service for working with Windows process API.</param>
         public RequirementsService(
-            ICommonDataService commonDataService,
-            IInstrumentationService instrumentationService,
-            IAppxPackagesService appxPackagesService,
             IAppNotificationService appNotificationService,
+            IAppxPackagesService appxPackagesService,
+            ICommonDataService commonDataService,
+            IDiskService diskService,
+            IInstrumentationService instrumentationService,
             IOsService osService,
+            IPowerShellService powerShellService,
             IProcessService processService)
         {
-            this.commonDataService = commonDataService;
-            this.instrumentationService = instrumentationService;
-            this.appxPackagesService = appxPackagesService;
             this.appNotificationService = appNotificationService;
+            this.appxPackagesService = appxPackagesService;
+            this.commonDataService = commonDataService;
+            this.diskService = diskService;
+            this.instrumentationService = instrumentationService;
             this.osService = osService;
+            this.powerShellService = powerShellService;
             this.processService = processService;
         }
 
@@ -102,7 +110,6 @@ namespace SophiApp.Services
         public Result MalwareDetection()
         {
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var programData = Environment.ExpandEnvironmentVariables("%ProgramData%");
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             var programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
@@ -169,11 +176,15 @@ namespace SophiApp.Services
                 { "OsRequirements_Malware_xd-AntiSpy", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("xd-AntiSpy") ?? false },
                 { "OsRequirements_Malware_ModernTweaker", () => Registry.ClassesRoot.OpenSubKey("CLSID\\{645FF040-5081-101B-9F08-00AA002F954E}\\shell\\Modern Cleaner") is not null },
                 { "OsRequirements_Malware_Optimizer", () => Registry.CurrentUser.OpenSubKey("Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache")?.ValueExist("optimizer") ?? false },
+                { "OsRequirements_Malware_PCNP", () => Registry.CurrentUser.OpenSubKey("Software\\PCNP") is not null },
+                { "OsRequirements_Malware_Tron", () => Directory.Exists($"{systemDrive}\\logs\\tron") },
+                { "OsRequirements_Malware_ChlorideOS", () => diskService.GetVolumeLabels().Any(label => label.Equals("ChlorideOS")) },
+                { "OsRequirements_Malware_KernelOS", () => instrumentationService.GetPowerPlanNames().Any(name => name.Contains("KernelOS")) },
             };
 
             return malwares.Any(malware =>
             {
-                if (malware.Value.Invoke())
+                if (malware.Value())
                 {
                     commonDataService.DetectedMalware = malware.Key.GetLocalized();
                     App.Logger.LogMalwareDetected(commonDataService.DetectedMalware);
@@ -222,7 +233,7 @@ namespace SophiApp.Services
                 () => Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate\\Auto Update\\RebootRequired") is not null,
             };
 
-            return rebootParameters.Exists(p => p.Invoke()) ? Result.Failure(nameof(RequirementsFailure.RebootRequired)) : Result.Success();
+            return rebootParameters.Exists(parameter => parameter()) ? Result.Failure(nameof(RequirementsFailure.RebootRequired)) : Result.Success();
         }
 
         /// <inheritdoc/>
@@ -299,6 +310,12 @@ namespace SophiApp.Services
                 commonDataService.MsDefenderServiceStopped = $"OsRequirementsFailure_MsDefender_{serviceName}_NotFound";
                 return false;
             }) ? Result.Success() : Result.Failure(nameof(RequirementsFailure.MsDefenderServiceNotFound));
+        }
+
+        /// <inheritdoc/>
+        public Result GetMsDefenderPreferenceException()
+        {
+            return powerShellService.GetMsDefenderPreferenceException() ? Result.Failure(nameof(RequirementsFailure.MsDefenderPreferenceException)) : Result.Success();
         }
 
         /// <inheritdoc/>

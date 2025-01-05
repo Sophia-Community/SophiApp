@@ -7,7 +7,7 @@ namespace SophiApp.Helpers
     using System.Management;
     using Microsoft.Win32;
 
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
+    #pragma warning disable SA1313 // Parameter names should begin with lower-case letter
 
     /// <summary>
     /// Encapsulates OS properties.
@@ -47,6 +47,6 @@ namespace SophiApp.Helpers
         }
     }
 
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
+    #pragma warning restore SA1313 // Parameter names should begin with lower-case letter
 
 }

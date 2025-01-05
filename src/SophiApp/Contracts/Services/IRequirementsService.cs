@@ -77,6 +77,11 @@ namespace SophiApp.Contracts.Services
         Result GetMsDefenderServicesState();
 
         /// <summary>
+        /// Detect execution of "Get-MpPreference" cmdlet passes without exception.
+        /// </summary>
+        Result GetMsDefenderPreferenceException();
+
+        /// <summary>
         /// Get a Microsoft Defender state.
         /// </summary>
         Result GetMsDefenderState();

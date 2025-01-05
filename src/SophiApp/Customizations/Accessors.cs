@@ -4,17 +4,17 @@
 
 namespace SophiApp.Customizations
 {
-    using System.ServiceProcess;
-    using System.Text;
     using Microsoft.Win32;
     using Microsoft.Win32.TaskScheduler;
     using NetFwTypeLib;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Models;
+    using System.ServiceProcess;
+    using System.Text;
 
     /// <summary>
-    /// Gets the os settings.
+    /// Get the OS settings.
     /// </summary>
     public static class Accessors
     {
@@ -28,7 +28,7 @@ namespace SophiApp.Customizations
         private static readonly IXmlService XmlService = App.GetService<IXmlService>();
 
         /// <summary>
-        /// Gets DiagTrack service state.
+        /// Get DiagTrack service state.
         /// </summary>
         public static bool DiagTrackService()
         {
@@ -44,7 +44,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows feature "Diagnostic data level" state.
+        /// Get Windows feature "Diagnostic data level" state.
         /// </summary>
         public static int DiagnosticDataLevel()
         {
@@ -55,7 +55,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows feature "Error reporting" state.
+        /// Get Windows feature "Error reporting" state.
         /// </summary>
         public static bool ErrorReporting()
         {
@@ -66,7 +66,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows feature "Feedback frequency" state.
+        /// Get Windows feature "Feedback frequency" state.
         /// </summary>
         public static int FeedbackFrequency()
         {
@@ -75,7 +75,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets telemetry scheduled tasks state.
+        /// Get telemetry scheduled tasks state.
         /// </summary>
         public static bool ScheduledTasks()
         {
@@ -102,7 +102,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows feature "Sign-in info" state.
+        /// Get Windows feature "Sign-in info" state.
         /// </summary>
         public static bool SigninInfo()
         {
@@ -112,7 +112,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets language list access state.
+        /// Get language list access state.
         /// </summary>
         public static bool LanguageListAccess()
         {
@@ -121,7 +121,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets the permission for apps to use advertising ID state.
+        /// Get the permission for apps to use advertising ID state.
         /// </summary>
         public static bool AdvertisingID()
         {
@@ -130,7 +130,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets the Windows welcome experiences state.
+        /// Get the Windows welcome experiences state.
         /// </summary>
         public static bool WindowsWelcomeExperience()
         {
@@ -139,7 +139,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows tips state.
+        /// Get Windows tips state.
         /// </summary>
         public static bool WindowsTips()
         {
@@ -148,7 +148,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets the suggested content in the Settings app state.
+        /// Get the suggested content in the Settings app state.
         /// </summary>
         public static bool SettingsSuggestedContent()
         {
@@ -163,7 +163,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets the automatic installing suggested apps state.
+        /// Get the automatic installing suggested apps state.
         /// </summary>
         public static bool AppsSilentInstalling()
         {
@@ -172,7 +172,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets the Windows feature "Whats New" state.
+        /// Get the Windows feature "Whats New" state.
         /// </summary>
         public static bool WhatsNewInWindows()
         {
@@ -181,7 +181,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows feature "Tailored experiences" state.
+        /// Get Windows feature "Tailored experiences" state.
         /// </summary>
         public static bool TailoredExperiences()
         {
@@ -190,7 +190,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows feature "Bing search" state.
+        /// Get Windows feature "Bing search" state.
         /// </summary>
         public static bool BingSearch()
         {
@@ -199,7 +199,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Start menu recommendations state.
+        /// Get Start menu recommendations state.
         /// </summary>
         public static bool StartRecommendationsTips()
         {
@@ -209,13 +209,541 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Start Menu notifications state.
+        /// Get Start Menu notifications state.
         /// </summary>
         public static bool StartAccountNotifications()
         {
             var notificationsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
             var accountNotifications = Registry.CurrentUser.OpenSubKey(notificationsPath)?.GetValue("Start_AccountNotifications") as int? ?? -1;
             return !accountNotifications.Equals(0);
+        }
+
+        /// <summary>
+        /// Get the "This PC" icon on Desktop state.
+        /// </summary>
+        public static bool ThisPC()
+        {
+            var panelGuid = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
+            var panelPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel";
+            var panelValue = Registry.CurrentUser.OpenSubKey(panelPath)?.GetValue(panelGuid) as int? ?? -1;
+            return panelValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get item check boxes state.
+        /// </summary>
+        public static bool CheckBoxes()
+        {
+            var checkPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var checkValue = Registry.CurrentUser.OpenSubKey(checkPath)?.GetValue("AutoCheckSelect") as int? ?? -1;
+            return checkValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get hidden files, folders, and drives state.
+        /// </summary>
+        public static bool HiddenItems()
+        {
+            var itemsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var itemsValue = Registry.CurrentUser.OpenSubKey(itemsPath)?.GetValue("Hidden") as int? ?? -1;
+            return itemsValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get file name extensions visibility state.
+        /// </summary>
+        public static bool FileExtensions()
+        {
+            var extensionsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var extensionsValue = Registry.CurrentUser.OpenSubKey(extensionsPath)?.GetValue("HideFileExt") as int? ?? -1;
+            return extensionsValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get folder merge conflicts state.
+        /// </summary>
+        public static bool MergeConflicts()
+        {
+            var mergePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var mergeValue = Registry.CurrentUser.OpenSubKey(mergePath)?.GetValue("HideMergeConflicts") as int? ?? -1;
+            return mergeValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get how to open File Explorer.
+        /// </summary>
+        public static int OpenFileExplorerTo()
+        {
+            var filePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var fileValue = Registry.CurrentUser.OpenSubKey(filePath)?.GetValue("LaunchTo") as int? ?? -1;
+            return fileValue.Equals(1) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get File Explorer ribbon state.
+        /// </summary>
+        public static int FileExplorerRibbon()
+        {
+            var ribbonPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Ribbon";
+            var ribbonValue = Registry.CurrentUser.OpenSubKey(ribbonPath)?.GetValue("MinimizedStateTabletModeOff") as int? ?? -1;
+            return ribbonValue.Equals(0) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get File Explorer compact mode state.
+        /// </summary>
+        public static bool FileExplorerCompactMode()
+        {
+            var compactModePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var compactModeValue = Registry.CurrentUser.OpenSubKey(compactModePath)?.GetValue("UseCompactMode") as int? ?? -1;
+            return !compactModeValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get File Explorer provider notification visibility state.
+        /// </summary>
+        public static bool OneDriveFileExplorerAd()
+        {
+            var notificationsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var notificationsValue = Registry.CurrentUser.OpenSubKey(notificationsPath)?.GetValue("ShowSyncProviderNotifications") as int? ?? -1;
+            return !notificationsValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get snap a window state.
+        /// </summary>
+        public static bool SnapAssist()
+        {
+            var snapPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var snapValue = Registry.CurrentUser.OpenSubKey(snapPath)?.GetValue("SnapAssist") as int? ?? -1;
+            return !snapValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get file transfer dialog box mode.
+        /// </summary>
+        public static int FileTransferDialog()
+        {
+            var modePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager";
+            var modeValue = Registry.CurrentUser.OpenSubKey(modePath)?.GetValue("EnthusiastMode") as int? ?? -1;
+            return modeValue.Equals(1) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get recycle bin confirmation dialog state.
+        /// </summary>
+        public static bool RecycleBinDeleteConfirmation()
+        {
+            var shellPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var shellValue = Registry.CurrentUser.OpenSubKey(shellPath)?.GetValue("ShellState") as byte[] ?? new byte[5];
+            return shellValue[4].Equals(51);
+        }
+
+        /// <summary>
+        /// Get recently used Quick access files state.
+        /// </summary>
+        public static bool QuickAccessRecentFiles()
+        {
+            var recentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var recentValue = Registry.CurrentUser.OpenSubKey(recentPath)?.GetValue("ShowRecent") as int? ?? -1;
+            return !recentValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get frequently used Quick access folders state.
+        /// </summary>
+        public static bool QuickAccessFrequentFolders()
+        {
+            var frequentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var frequentValue = Registry.CurrentUser.OpenSubKey(frequentPath)?.GetValue("ShowFrequent") as int? ?? -1;
+            return !frequentValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get taskbar alignment state.
+        /// </summary>
+        public static int TaskbarAlignment()
+        {
+            var taskbarPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var taskbarValue = Registry.CurrentUser.OpenSubKey(taskbarPath)?.GetValue("TaskbarAl") as int? ?? -1;
+            return taskbarValue.Equals(1) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get taskbar widgets icon state.
+        /// </summary>
+        public static bool TaskbarWidgets()
+        {
+            var appxWebExperience = "MicrosoftWindows.Client.WebExperience";
+
+            if (AppxPackagesService.PackageExist(appxWebExperience))
+            {
+                var taskbarPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+                var taskbarValue = Registry.CurrentUser.OpenSubKey(taskbarPath)?.GetValue("TaskbarDa") as int? ?? -1;
+                return !taskbarValue.Equals(0);
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxWebExperience}\"");
+        }
+
+        /// <summary>
+        /// Get Search on the taskbar state.
+        /// </summary>
+        public static int TaskbarSearchWindows10()
+        {
+            var smallIconsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var searchModePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+            var smallIconsValue = Registry.CurrentUser.OpenSubKey(smallIconsPath)?.GetValue("TaskbarSmallIcons") as int? ?? -1;
+            var searchModeValue = Registry.CurrentUser.OpenSubKey(searchModePath)?.GetValue("SearchboxTaskbarMode") as int? ?? -1;
+
+            if (smallIconsValue.Equals(1))
+            {
+                throw new InvalidOperationException($"The small taskbar icons mode is enabled");
+            }
+
+            return searchModeValue + 1;
+        }
+
+        /// <summary>
+        /// Get Search on the taskbar state.
+        /// </summary>
+        public static int TaskbarSearchWindows11()
+        {
+            var smallIconsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var searchModePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+            var smallIconsValue = Registry.CurrentUser.OpenSubKey(smallIconsPath)?.GetValue("TaskbarSmallIcons") as int? ?? -1;
+            var searchModeValue = Registry.CurrentUser.OpenSubKey(searchModePath)?.GetValue("SearchboxTaskbarMode") as int? ?? -1;
+
+            if (smallIconsValue.Equals(1))
+            {
+                throw new InvalidOperationException($"The small taskbar icons mode is enabled");
+            }
+
+            return searchModeValue switch
+            {
+                0 => 1,
+                1 => 2,
+                2 => 4,
+                _ => 3,
+            };
+        }
+
+        /// <summary>
+        /// Get search highlights state.
+        /// </summary>
+        public static bool SearchHighlights()
+        {
+            if (CommonDataService.IsWindows11)
+            {
+                var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+                var suggestionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+                var searchEnabled = Registry.CurrentUser.OpenSubKey(searchPath)?.GetValue("BingSearchEnabled") as int? ?? -1;
+                var searchSuggestions = Registry.CurrentUser.OpenSubKey(suggestionPath)?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
+
+                if (searchEnabled.Equals(1) || searchSuggestions.Equals(1))
+                {
+                    throw new InvalidOperationException("The value of the “BingSearchEnabled” or “DisableSearchBoxSuggestions” parameters is 1");
+                }
+
+                var settingsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
+                var dynamicSearch = Registry.CurrentUser.OpenSubKey(settingsPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
+                return dynamicSearch.Equals(0);
+            }
+
+            var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds\\DSB";
+            var dynamicPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
+            var contentValue = Registry.CurrentUser.OpenSubKey(contentPath)?.GetValue("ShowDynamicContent") as int? ?? -1;
+            var dynamicValue = Registry.CurrentUser.OpenSubKey(dynamicPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
+            return !(contentValue.Equals(0) && dynamicValue.Equals(0));
+        }
+
+        /// <summary>
+        /// Get Cortana button taskbar state.
+        /// </summary>
+        public static bool CortanaButton()
+        {
+            var appxCortana = "Microsoft.549981C3F5F10";
+
+            if (AppxPackagesService.PackageExist(appxCortana))
+            {
+                var buttonPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+                var buttonValue = Registry.CurrentUser.OpenSubKey(buttonPath)?.GetValue("ShowCortanaButton") as int? ?? -1;
+                return !buttonValue.Equals(0);
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxCortana}\"");
+        }
+
+        /// <summary>
+        /// Get taskbar task view button state.
+        /// </summary>
+        public static bool TaskViewButton()
+        {
+            var buttonPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var buttonValue = Registry.CurrentUser.OpenSubKey(buttonPath)?.GetValue("ShowTaskViewButton") as int? ?? -1;
+            return !buttonValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get News and Interests state.
+        /// </summary>
+        public static bool NewsInterests()
+        {
+            var feedsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds";
+            var feedsValue = Registry.CurrentUser.OpenSubKey(feedsPath)?.GetValue("ShellFeedsTaskbarViewMode") as int? ?? -1;
+            return !feedsValue.Equals(2);
+        }
+
+        /// <summary>
+        /// Get taskbar people icon state.
+        /// </summary>
+        public static bool PeopleTaskbar()
+        {
+            var peoplePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People";
+            var peopleValue = Registry.CurrentUser.OpenSubKey(peoplePath)?.GetValue("PeopleBand") as int? ?? -1;
+            return !peopleValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get Meet Now icon state.
+        /// </summary>
+        public static bool MeetNow()
+        {
+            var meetPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StuckRects3";
+            var meetValue = Registry.CurrentUser.OpenSubKey(meetPath)?.GetValue("Settings") as byte[] ?? new byte[10];
+            return !meetValue[9].Equals(128);
+        }
+
+        /// <summary>
+        /// Get Windows Ink Workspace button state.
+        /// </summary>
+        public static bool WindowsInkWorkspace()
+        {
+            var workspacePath = "Software\\Microsoft\\Windows\\CurrentVersion\\PenWorkspace";
+            var workspaceValue = Registry.CurrentUser.OpenSubKey(workspacePath)?.GetValue("PenWorkspaceButtonDesiredVisibility") as int? ?? -1;
+            return !workspaceValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get notification area icons state.
+        /// </summary>
+        public static bool NotificationAreaIcons()
+        {
+            var trayPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+            var trayValue = Registry.CurrentUser.OpenSubKey(trayPath)?.GetValue("EnableAutoTray") as int? ?? -1;
+            return !trayValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get seconds on the taskbar clock state.
+        /// </summary>
+        public static bool SecondsInSystemClock()
+        {
+            var clockPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var clockValue = Registry.CurrentUser.OpenSubKey(clockPath)?.GetValue("ShowSecondsInSystemClock") as int? ?? -1;
+            return clockValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get taskbar combine state.
+        /// </summary>
+        public static int TaskbarCombine()
+        {
+            var levelPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var levelValue = Registry.CurrentUser.OpenSubKey(levelPath)?.GetValue("TaskbarGlomLevel") as int? ?? -1;
+            return levelValue + 1;
+        }
+
+        /// <summary>
+        /// Get end task in taskbar by click state.
+        /// </summary>
+        public static bool TaskbarEndTask()
+        {
+            var taskPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings";
+            var taskValue = Registry.CurrentUser.OpenSubKey(taskPath)?.GetValue("TaskbarEndTask") as int? ?? -1;
+            return taskValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get Control Panel icons view state.
+        /// </summary>
+        public static int ControlPanelView()
+        {
+            var panelPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel";
+            var viewValue = Registry.CurrentUser.OpenSubKey(panelPath)?.GetValue("AllItemsIconView") as int? ?? -1;
+            var pageValue = Registry.CurrentUser.OpenSubKey(panelPath)?.GetValue("StartupPage") as int? ?? -1;
+
+            if (viewValue.Equals(0) && pageValue.Equals(0))
+            {
+                return 1;
+            }
+
+            return viewValue.Equals(0) && pageValue.Equals(1) ? 2 : 3;
+        }
+
+        /// <summary>
+        /// Get Windows color mode state.
+        /// </summary>
+        public static int WindowsColorMode()
+        {
+            var themePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+            var themeValue = Registry.CurrentUser.OpenSubKey(themePath)?.GetValue("SystemUsesLightTheme") as int? ?? -1;
+            return themeValue.Equals(0) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get apps color mode state.
+        /// </summary>
+        public static int AppColorMode()
+        {
+            var themePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds";
+            var themeValue = Registry.CurrentUser.OpenSubKey(themePath)?.GetValue("AppsUseLightTheme") as int? ?? -1;
+            return themeValue.Equals(0) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get "New App Installed" indicator state.
+        /// </summary>
+        public static bool NewAppInstalledNotification()
+        {
+            var alertPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var alertValue = Registry.LocalMachine.OpenSubKey(alertPath)?.GetValue("NoNewAppAlert") as int? ?? -1;
+            return !alertValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get first sign-in animation state.
+        /// </summary>
+        public static bool FirstLogonAnimation()
+        {
+            var logonPath = "Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon";
+            var logonValue = Registry.LocalMachine.OpenSubKey(logonPath)?.GetValue("EnableFirstLogonAnimation") as int? ?? -1;
+            return !logonValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get JPEG wallpapers quality state.
+        /// </summary>
+        public static int JPEGWallpapersQuality()
+        {
+            var qualityPath = "Control Panel\\Desktop";
+            var qualityValue = Registry.CurrentUser.OpenSubKey(qualityPath)?.GetValue("JPEGImportQuality") as int? ?? -1;
+            return qualityValue.Equals(100) ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get "- Shortcut" suffix state.
+        /// </summary>
+        public static bool ShortcutsSuffix()
+        {
+            var shortcutsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates";
+            var shortcutsValue = Registry.CurrentUser.OpenSubKey(shortcutsPath)?.GetValue("ShortcutNameTemplate") as string ?? string.Empty;
+            return !shortcutsValue.Equals("%s.lnk");
+        }
+
+        /// <summary>
+        /// Get Print screen button state.
+        /// </summary>
+        public static bool PrtScnSnippingTool()
+        {
+            var snippingPath = "Control Panel\\Keyboard";
+            var snippingValue = Registry.CurrentUser.OpenSubKey(snippingPath)?.GetValue("PrintScreenKeyForSnippingEnabled") as int? ?? -1;
+            return snippingValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get input method for app window state.
+        /// </summary>
+        public static bool AppsLanguageSwitch()
+        {
+            return PowerShellService.Invoke<bool>("$((Get-WinLanguageBarOption).IsLegacySwitchingMode)");
+        }
+
+        /// <summary>
+        /// Get Aero Shake state.
+        /// </summary>
+        public static bool AeroShaking()
+        {
+            var shakingPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var shakingValue = Registry.CurrentUser.OpenSubKey(shakingPath)?.GetValue("DisallowShaking") as int? ?? -1;
+            return shakingValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get "Windows 11 Cursors Concept v2" cursors from Jepri Creations state.
+        /// </summary>
+        public static bool Cursors()
+        {
+            var cursorsPath = "Control Panel\\Cursors";
+            var cursorsValue = Registry.CurrentUser.OpenSubKey(cursorsPath)?.GetValue(string.Empty) as string ?? string.Empty;
+            return cursorsValue.Equals("W11 Cursors Dark Free v2.2 by Jepri Creations");
+        }
+
+        /// <summary>
+        /// Get files and folders grouping state.
+        /// </summary>
+        public static int FolderGroupBy()
+        {
+            var groupByPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FolderTypes\\{885a186e-a440-4ada-812b-db871b942259}\\TopViews\\{00000000-0000-0000-0000-000000000000}";
+            var groupByValue = Registry.CurrentUser.OpenSubKey(groupByPath)?.GetValue("GroupBy") as string ?? string.Empty;
+            return groupByValue.Equals("System.Null") ? 1 : 2;
+        }
+
+        /// <summary>
+        /// Get navigation pane expand state.
+        /// </summary>
+        public static bool NavigationPaneExpand()
+        {
+            var panePath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var paneValue = Registry.CurrentUser.OpenSubKey(panePath)?.GetValue("NavPaneExpandToCurrentFolder") as int? ?? -1;
+            return !paneValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get Start menu recently added apps state.
+        /// </summary>
+        public static bool RecentlyAddedApps()
+        {
+            var appsPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var appsValue = Registry.LocalMachine.OpenSubKey(appsPath)?.GetValue("HideRecentlyAddedApps") as int? ?? -1;
+            return !appsValue.Equals(1);
+        }
+
+        /// <summary>
+        /// Get Start menu app suggestions state.
+        /// </summary>
+        public static bool AppSuggestions()
+        {
+            var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager";
+            var contentValue = Registry.CurrentUser.OpenSubKey(contentPath)?.GetValue("SubscribedContent-338388Enabled") as int? ?? -1;
+            return !contentValue.Equals(0);
+        }
+
+        /// <summary>
+        /// Get Start menu layout state.
+        /// </summary>
+        public static int StartLayout()
+        {
+            var layoutPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            var layoutValue = Registry.CurrentUser.OpenSubKey(layoutPath)?.GetValue("Start_Layout") as int? ?? -1;
+            return layoutValue.Equals(-1) ? 1 : layoutValue + 1;
+        }
+
+        /// <summary>
+        /// Get recommended section state.
+        /// </summary>
+        public static bool HideRecommendedSection()
+        {
+            var os = CommonDataService.OsProperties;
+
+            if ((os.Edition.Equals("Enterprise") || os.Edition.Equals("Education")) && !os.Caption.Contains("Windows 11 IoT Enterprise"))
+            {
+                var sectionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+                var sectionValue = Registry.CurrentUser.OpenSubKey(sectionPath)?.GetValue("HideRecommendedSection") as int? ?? -1;
+                return !sectionValue.Equals(1);
+            }
+
+            throw new InvalidOperationException("Only \"Enterprise\" and \"Education\" edition are supported. Version \"Windows 11 IoT Enterprise\" is not supported");
         }
 
         /// <summary>
@@ -234,7 +762,7 @@ namespace SophiApp.Customizations
             }
             else if (!appxPhotosIsExist)
             {
-                throw new InvalidOperationException($"Necessary appx package are not installed \"{photos}\"");
+                throw new InvalidOperationException($"Necessary appx package are not installed: \"{photos}\"");
             }
             else
             {
@@ -256,24 +784,7 @@ namespace SophiApp.Customizations
                 return stateCortana != 1;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"Cortana\"");
-        }
-
-        /// <summary>
-        /// Gets Teams auto start state.
-        /// </summary>
-        public static bool TeamsAutostart()
-        {
-            var appxTeamsIsExist = AppxPackagesService.PackageExist("MSTeams");
-
-            if (appxTeamsIsExist)
-            {
-                var pathTeams = "Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\MSTeams_8wekyb3d8bbwe\\TeamsTfwStartupTask";
-                var stateTeams = Registry.CurrentUser.OpenSubKey(pathTeams)?.GetValue("State") as int? ?? -1;
-                return stateTeams != 1;
-            }
-
-            throw new InvalidOperationException($"Necessary appx package are not installed \"Microsoft Teams\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"Cortana\"");
         }
 
         /// <summary>
@@ -306,11 +817,11 @@ namespace SophiApp.Customizations
                 return startupPanelIsEnabled == 1;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"{appGaming}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appGaming}\"");
         }
 
         /// <summary>
-        /// Gets GPU scheduling state.
+        /// Get GPU scheduling state.
         /// </summary>
         public static bool GPUScheduling()
         {
@@ -377,7 +888,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows network protection state.
+        /// Get Windows network protection state.
         /// </summary>
         public static bool NetworkProtection()
         {
@@ -392,7 +903,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows PUApps detection state.
+        /// Get Windows PUApps detection state.
         /// </summary>
         public static bool PUAppsDetection()
         {
@@ -406,7 +917,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Microsoft Defender sandbox state.
+        /// Get Microsoft Defender sandbox state.
         /// </summary>
         public static bool DefenderSandbox()
         {
@@ -419,7 +930,7 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Windows event viewer custom view state.
+        /// Get Windows event viewer custom view state.
         /// </summary>
         public static bool EventViewerCustomView()
         {
@@ -443,7 +954,7 @@ else
         }
 
         /// <summary>
-        /// Gets Windows PowerShell modules logging state.
+        /// Get Windows PowerShell modules logging state.
         /// </summary>
         public static bool PowerShellModulesLogging()
         {
@@ -456,7 +967,7 @@ else
         }
 
         /// <summary>
-        /// Gets Windows PowerShell scripts logging state.
+        /// Get Windows PowerShell scripts logging state.
         /// </summary>
         public static bool PowerShellScriptsLogging()
         {
@@ -466,7 +977,7 @@ else
         }
 
         /// <summary>
-        /// Gets Windows SmartScreen state.
+        /// Get Windows SmartScreen state.
         /// </summary>
         public static bool AppsSmartScreen()
         {
@@ -481,7 +992,7 @@ else
         }
 
         /// <summary>
-        /// Gets Windows save zone state.
+        /// Get Windows save zone state.
         /// </summary>
         public static bool SaveZoneInformation()
         {
@@ -491,7 +1002,7 @@ else
         }
 
         /// <summary>
-        /// Gets Windows script host state.
+        /// Get Windows script host state.
         /// </summary>
         public static bool WindowsScriptHost()
         {
@@ -503,7 +1014,7 @@ else
         }
 
         /// <summary>
-        /// Gets Windows Sandbox state.
+        /// Get Windows Sandbox state.
         /// </summary>
         public static bool WindowsSandbox()
         {
@@ -535,7 +1046,7 @@ else
         }
 
         /// <summary>
-        /// Gets Local Security Authority state.
+        /// Get Local Security Authority state.
         /// </summary>
         public static bool LocalSecurityAuthority()
         {
@@ -617,7 +1128,7 @@ else
                 return userClipchamp is null && machineClipchamp is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"{clipChampAppx}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{clipChampAppx}\"");
         }
 
         /// <summary>
@@ -636,7 +1147,7 @@ else
                 return userPhotosContext is null && machinePhotosContext is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"{photosAppx}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{photosAppx}\"");
         }
 
         /// <summary>
@@ -663,7 +1174,7 @@ else
                 return !accessValues.TrueForAll(value => value is not null);
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"{appxPaint}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxPaint}\"");
         }
 
         /// <summary>
@@ -774,7 +1285,7 @@ else
                 return userBlockedGuid is null && machineBlockedGuid is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"{appxTerminal}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxTerminal}\"");
         }
 
         /// <summary>
@@ -810,7 +1321,24 @@ else
                 return true;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed \"{appxTerminal}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxTerminal}\"");
+        }
+
+        /// <summary>
+        /// Get images edit from context menu state.
+        /// </summary>
+        public static bool ImagesEditContext()
+        {
+            var paintPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\\mspaint.exe";
+
+            if (File.Exists(paintPath))
+            {
+                var accessPath = "SystemFileAssociations\\image\\shell\\edit";
+                var accessValue = Registry.ClassesRoot.OpenSubKey(accessPath)?.GetValue("ProgrammaticAccessOnly") as string;
+                return accessValue is null;
+            }
+
+            throw new InvalidOperationException($"File \"{paintPath}\" not exist");
         }
     }
 }

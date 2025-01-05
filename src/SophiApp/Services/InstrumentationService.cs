@@ -48,6 +48,16 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public List<string> GetPowerPlanNames()
+        {
+            return new ManagementObjectSearcher(scope: "root/CIMV2/power", queryString: "SELECT ElementName FROM Win32_PowerPlan")
+                .Get()
+                .Cast<ManagementObject>()
+                .Select(obj => obj.GetPropertyValue("ElementName") as string ?? string.Empty)
+                .ToList();
+        }
+
+        /// <inheritdoc/>
         public string GetProcessOwnerOrDefault(Process? process)
         {
             if (process is null)

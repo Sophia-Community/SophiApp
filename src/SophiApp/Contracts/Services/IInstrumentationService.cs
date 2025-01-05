@@ -45,6 +45,11 @@ namespace SophiApp.Contracts.Services
         List<ManagementObject> GetAntivirusProductsOrDefault();
 
         /// <summary>
+        /// Get power plan names.
+        /// </summary>
+        List<string> GetPowerPlanNames();
+
+        /// <summary>
         /// Get user account SID.
         /// </summary>
         /// <param name="name">A user name.</param>
