@@ -118,7 +118,7 @@ namespace SophiApp.Services
                 .Cast<ManagementObject>()
                 .FirstOrDefault();
 
-            return managementObject?.GetPropertyValue("AntispywareEnabled") as bool? ?? throw new InvalidOperationException($"Failed to obtain \"AntispywareEnabled\" value from WMI class \"MSFT_MpComputerStatus\" in the {nameof(IInstrumentationService)}");
+            return managementObject?.GetPropertyValue("AntispywareEnabled") as bool? ?? throw new InvalidOperationException($"Failed to obtain AntispywareEnabled value from WMI class MSFT_MpComputerStatus in the {nameof(IInstrumentationService)}");
         }
 
         /// <inheritdoc/>

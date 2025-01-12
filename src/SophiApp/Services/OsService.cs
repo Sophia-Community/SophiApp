@@ -40,7 +40,7 @@ namespace SophiApp.Services
 
             if (serviceHandle == IntPtr.Zero)
             {
-                throw new ExternalException($"Service {nameof(IOsService)} cannot open service: \"{service.ServiceName}\"");
+                throw new ExternalException($"Service {nameof(IOsService)} cannot open service: {service.ServiceName}");
             }
 
             var result = ChangeServiceConfig(serviceHandle, 0xFFFFFFFF, (uint)mode, 0xFFFFFFFF, null, null, IntPtr.Zero, null, null, null, null);
@@ -49,7 +49,7 @@ namespace SophiApp.Services
             {
                 int nError = Marshal.GetLastWin32Error();
                 var win32Exception = new Win32Exception(nError);
-                throw new ExternalException($"Service {nameof(IOsService)} could not change service \"{service.ServiceName}\" start type: {win32Exception.Message}");
+                throw new ExternalException($"Service {nameof(IOsService)} could not change service {service.ServiceName} start type: {win32Exception.Message}");
             }
 
             CloseServiceHandle(serviceHandle);

@@ -21,6 +21,7 @@ namespace SophiApp.Customizations
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
+        private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
         private static readonly IProcessService ProcessService = App.GetService<IProcessService>();
@@ -59,7 +60,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ErrorReporting()
         {
-            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a scheduled task");
+            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a QueueReporting scheduled task");
             var werDisabledValue = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\Windows Error Reporting")?.GetValue("Disabled") as int? ?? -1;
             var werService = new ServiceController("WerSvc");
             return !(reportingTask.State == TaskState.Disabled && werDisabledValue.Equals(1) && werService.StartType == ServiceStartMode.Disabled);
@@ -383,7 +384,7 @@ namespace SophiApp.Customizations
                 return !taskbarValue.Equals(0);
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxWebExperience}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxWebExperience}");
         }
 
         /// <summary>
@@ -442,7 +443,7 @@ namespace SophiApp.Customizations
 
                 if (searchEnabled.Equals(1) || searchSuggestions.Equals(1))
                 {
-                    throw new InvalidOperationException("The value of the “BingSearchEnabled” or “DisableSearchBoxSuggestions” parameters is 1");
+                    throw new InvalidOperationException("The value of the BingSearchEnabled or DisableSearchBoxSuggestions parameters is 1");
                 }
 
                 var settingsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
@@ -471,7 +472,7 @@ namespace SophiApp.Customizations
                 return !buttonValue.Equals(0);
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxCortana}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxCortana}");
         }
 
         /// <summary>
@@ -670,13 +671,24 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Get "Windows 11 Cursors Concept v2" cursors from Jepri Creations state.
+        /// Get "Windows 11 Cursors Concept" from Jepri Creations state.
         /// </summary>
-        public static bool Cursors()
+        public static int Cursors()
         {
-            var cursorsPath = "Control Panel\\Cursors";
-            var cursorsValue = Registry.CurrentUser.OpenSubKey(cursorsPath)?.GetValue(string.Empty) as string ?? string.Empty;
-            return cursorsValue.Equals("W11 Cursors Dark Free v2.2 by Jepri Creations");
+            HttpService.ThrowIfOffline("https://github.com");
+            var cursorsScheme = Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors")?.GetValue(string.Empty) as string ?? string.Empty;
+
+            if (cursorsScheme.Equals("W11 Cursor Dark Free by Jepri Creations"))
+            {
+                return 1;
+            }
+
+            if (cursorsScheme.Equals("W11 Cursor Light Free by Jepri Creations"))
+            {
+                return 2;
+            }
+
+            return 3;
         }
 
         /// <summary>
@@ -743,7 +755,7 @@ namespace SophiApp.Customizations
                 return !sectionValue.Equals(1);
             }
 
-            throw new InvalidOperationException("Only \"Enterprise\" and \"Education\" edition are supported. Version \"Windows 11 IoT Enterprise\" is not supported");
+            throw new InvalidOperationException("Only Enterprise and Education edition are supported. Version Windows 11 IoT Enterprise is not supported");
         }
 
         /// <summary>
@@ -762,7 +774,7 @@ namespace SophiApp.Customizations
             }
             else if (!appxPhotosIsExist)
             {
-                throw new InvalidOperationException($"Necessary appx package are not installed: \"{photos}\"");
+                throw new InvalidOperationException($"Necessary appx package are not installed: {photos}");
             }
             else
             {
@@ -784,7 +796,7 @@ namespace SophiApp.Customizations
                 return stateCortana != 1;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"Cortana\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: Cortana");
         }
 
         /// <summary>
@@ -817,7 +829,7 @@ namespace SophiApp.Customizations
                 return startupPanelIsEnabled == 1;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appGaming}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appGaming}");
         }
 
         /// <summary>
@@ -838,8 +850,8 @@ namespace SophiApp.Customizations
                 return hwSchMode == 2;
             }
 
-            var conditions = $"DAC type is external: {isExternalDACType}, is virtual machine: {isVirtualMachine}, WDDM Version (minimal {WDDMMinimalVersion}): {wddmVersion}";
-            throw new InvalidOperationException($"One of more mandatory conditions are not met, {conditions}");
+            var conditions = $"DAC type is external: {isExternalDACType}, is VM: {isVirtualMachine}, WDDM version (minimal {WDDMMinimalVersion}): {wddmVersion}";
+            throw new InvalidOperationException($"GPU scheduling mandatory conditions are not met, {conditions}");
         }
 
         /// <summary>
@@ -851,7 +863,7 @@ namespace SophiApp.Customizations
 
             if (cleanupTask is not null && cleanupTask.Definition.Principal.UserId != Environment.UserName)
             {
-                throw new InvalidOperationException($"The \"Windows Cleanup\" scheduled task was already created as {cleanupTask.Definition.Principal.UserId}");
+                throw new InvalidOperationException($"The Windows Cleanup scheduled task was already created as {cleanupTask.Definition.Principal.UserId}");
             }
 
             return cleanupTask is not null && cleanupTask.State != TaskState.Disabled && cleanupTask.State != TaskState.Unknown;
@@ -866,7 +878,7 @@ namespace SophiApp.Customizations
 
             if (distributionTask is not null && distributionTask.Definition.Principal.UserId != Environment.UserName)
             {
-                throw new InvalidOperationException($"The \"SoftwareDistribution\" scheduled task was already created as {distributionTask.Definition.Principal.UserId}");
+                throw new InvalidOperationException($"The SoftwareDistribution scheduled task was already created as {distributionTask.Definition.Principal.UserId}");
             }
 
             return distributionTask is not null && distributionTask.State != TaskState.Disabled && distributionTask.State != TaskState.Unknown;
@@ -881,7 +893,7 @@ namespace SophiApp.Customizations
 
             if (tempTask is not null && tempTask.Definition.Principal.UserId != Environment.UserName)
             {
-                throw new InvalidOperationException($"The \"Temp\" scheduled task was already created as {tempTask.Definition.Principal.UserId}");
+                throw new InvalidOperationException($"The Temp scheduled task was already created as {tempTask.Definition.Principal.UserId}");
             }
 
             return tempTask is not null && tempTask.State != TaskState.Disabled && tempTask.State != TaskState.Unknown;
@@ -1010,7 +1022,7 @@ else
             var blockingTasksExist = ScheduledTaskService.FindTaskOrDefault(blockingTasks).Any(task => task?.State == TaskState.Ready);
             var scriptHostPath = "Software\\Microsoft\\Windows Script Host\\Settings";
             var scriptHostIsEnabled = Registry.CurrentUser.OpenSubKey(scriptHostPath)?.GetValue("Enabled") as int? ?? -1;
-            return blockingTasksExist ? throw new InvalidOperationException("One of the blocking tasks is in \"Ready\" state.") : !scriptHostIsEnabled.Equals(0);
+            return blockingTasksExist ? throw new InvalidOperationException("One of the blocking tasks is in Ready state.") : !scriptHostIsEnabled.Equals(0);
         }
 
         /// <summary>
@@ -1027,8 +1039,8 @@ else
 
             if (CommonDataService.OsProperties.Edition.Equals("Professional") || CommonDataService.OsProperties.Edition.Equals("Enterprise"))
             {
-                var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This cpu does not support virtualization");
-                var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable Virtualization in UEFI");
+                var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
+                var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
 
                 if (virtualizationIsEnabled)
                 {
@@ -1050,8 +1062,8 @@ else
         /// </summary>
         public static bool LocalSecurityAuthority()
         {
-            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This cpu does not support virtualization");
-            var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable Virtualization in UEFI");
+            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
+            var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
             var runAsPPL = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPL") ?? -1;
             var runAsPPLBoot = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPLBoot") ?? -1;
             var runAsPPLPolicy = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System")?.GetValue("RunAsPPL") ?? -1;
@@ -1128,7 +1140,7 @@ else
                 return userClipchamp is null && machineClipchamp is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{clipChampAppx}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {clipChampAppx}");
         }
 
         /// <summary>
@@ -1147,7 +1159,7 @@ else
                 return userPhotosContext is null && machinePhotosContext is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{photosAppx}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {photosAppx}");
         }
 
         /// <summary>
@@ -1174,7 +1186,7 @@ else
                 return !accessValues.TrueForAll(value => value is not null);
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxPaint}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxPaint}");
         }
 
         /// <summary>
@@ -1222,7 +1234,7 @@ else
                 return !(bmpShellNew is null);
             }
 
-            throw new InvalidOperationException($"File \"{paintPath}\" not exist");
+            throw new InvalidOperationException($"File {paintPath} not exist");
         }
 
         /// <summary>
@@ -1238,7 +1250,7 @@ else
                 return !(rtfShellNew is null);
             }
 
-            throw new InvalidOperationException($"File \"{wordpadPath}\" not exist");
+            throw new InvalidOperationException($"File {wordpadPath} not exist");
         }
 
         /// <summary>
@@ -1285,7 +1297,7 @@ else
                 return userBlockedGuid is null && machineBlockedGuid is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxTerminal}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxTerminal}");
         }
 
         /// <summary>
@@ -1314,14 +1326,14 @@ else
                     }
                     catch (ArgumentException)
                     {
-                        throw new InvalidOperationException($"The configuration file of appx package \"{appxTerminal}\" is not valid");
+                        throw new InvalidOperationException($"The {appxTerminal} configuration file is not valid");
                     }
                 }
 
                 return true;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: \"{appxTerminal}\"");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxTerminal}");
         }
 
         /// <summary>
@@ -1338,7 +1350,7 @@ else
                 return accessValue is null;
             }
 
-            throw new InvalidOperationException($"File \"{paintPath}\" not exist");
+            throw new InvalidOperationException($"File {paintPath} not exist");
         }
     }
 }

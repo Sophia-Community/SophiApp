@@ -35,15 +35,5 @@ public sealed partial class MainWindow : WindowEx
     /// <param name="sender">Contains a set of common app user interface settings and operations.</param>
     /// <param name="args">Arguments passed to the method.</param>
     private void Settings_ColorValuesChanged(UISettings sender, object args)
-    {
-        dispatcherQueue.TryEnqueue(() =>
-        {
-            TitleBarHelper.ApplySystemThemeToCaptionButtons();
-        });
-    }
-
-    private void OnWindow_Closed(object sender, Microsoft.UI.Xaml.WindowEventArgs args)
-    {
-        App.Logger.CloseAndFlush();
-    }
+        => dispatcherQueue.TryEnqueue(() => TitleBarHelper.ApplySystemThemeToCaptionButtons());
 }

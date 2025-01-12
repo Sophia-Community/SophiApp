@@ -51,10 +51,10 @@
     </Style>
 
     <Style x:Key="StartupPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0, 20, 0, 20" />
+        <Setter Property="Margin" Value="5, 20, 5, 20" />
     </Style>
 
     <Style x:Key="SquareCheckBoxTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">

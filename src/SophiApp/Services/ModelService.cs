@@ -39,7 +39,6 @@ namespace SophiApp.Services
         {
             return await Task.Run(() =>
             {
-                App.Logger.LogStartModelsBuild();
                 var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
                 var models = JsonExtensions.ToObject<IEnumerable<UIModelDto>>(json)
                     .Where(dto => commonDataService.IsWindows11 ? dto.Windows11Support : dto.Windows10Support)

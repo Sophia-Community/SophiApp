@@ -73,8 +73,6 @@ namespace SophiApp.Services
         /// </summary>
         public const string AppTesterName = "Yevhenii \"lowlif3\" Zabronskyi";
 
-        #pragma warning disable S1075 // URIs should not be hardcoded
-
         /// <summary>
         /// Gets app project manager url.
         /// </summary>
@@ -104,8 +102,6 @@ namespace SophiApp.Services
         /// Gets app tester url.
         /// </summary>
         public const string AppTesterUrl = "https://github.com/lowl1f3";
-
-        #pragma warning restore S1075 // URIs should not be hardcoded
 
         private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
         private static InputCursor urlCursor = InputSystemCursor.Create(InputSystemCursorShape.Hand);

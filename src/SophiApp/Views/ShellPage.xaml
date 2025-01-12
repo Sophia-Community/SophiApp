@@ -119,7 +119,8 @@
                                    Style="{StaticResource NavigationItemTextStyle}"/>
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.ProVersionViewModel">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.ProVersionViewModel"
+                                    Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal">
                         <PathIcon Data="M14.984 2.046c.514.13.936.576 1.044 1.1.024.119.034 1.37.035 4.191v4.022l.469 1.276.468 1.277v.585c0 .672-.026.84-.18 1.142a1.426 1.426 0 0 1-.939.723c-.234.05-13.528.05-13.765 0a1.454 1.454 0 0 1-.963-.764c-.134-.271-.162-.488-.15-1.152l.01-.592.46-1.25.461-1.25v-4.02c0-2.82.01-4.07.035-4.188a1.454 1.454 0 0 1 1.084-1.11c.251-.054 11.717-.045 11.931.01Zm-11.863.979a.436.436 0 0 0-.186.19c-.062.125-.063.181-.063 3.935v3.809h12.253V7.15c0-3.752-.001-3.81-.063-3.934a.46.46 0 0 0-.18-.19c-.115-.062-.204-.063-5.877-.064-5.713-.002-5.761-.001-5.884.063Zm-.67 9.653a90.29 90.29 0 0 0-.29.8c-.012.032 1.37.04 6.837.04 5.468 0 6.85-.008 6.838-.04l-.29-.8-.276-.76H2.726l-.276.76Zm-.517 2.09c0 .356.063.508.25.605.122.064.17.065 6.817.065h6.693l.125-.072c.186-.107.243-.248.243-.599v-.289H1.934v.29Z"
                                   Foreground="{StaticResource WindowAccent}"

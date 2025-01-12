@@ -23,6 +23,7 @@ namespace SophiApp.Customizations
         private static readonly IAppNotificationService AppNotificationService = App.GetService<IAppNotificationService>();
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService CommonDataService = App.GetService<ICommonDataService>();
+        private static readonly ICursorsService CursorsService = App.GetService<ICursorsService>();
         private static readonly IFileService FileService = App.GetService<IFileService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IGroupPolicyService GroupPolicyService = App.GetService<IGroupPolicyService>();
@@ -826,12 +827,24 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Set "Windows 11 Cursors Concept v2" cursors from Jepri Creations state.
+        /// Set "Windows 11 Cursors Concept" from Jepri Creations state.
         /// </summary>
-        /// <param name="isEnabled">"Windows 11 Cursors Concept v2" cursors state.</param>
-        public static void Cursors(bool isEnabled)
+        /// <param name="state">Cursors state.</param>
+        public static void Cursors(int state)
         {
-            // Method intentionally left empty.
+            if (state.Equals(1))
+            {
+                CursorsService.SetJepriCreationsDarkCursors();
+                return;
+            }
+
+            if (state.Equals(2))
+            {
+                CursorsService.SetJepriCreationsLightCursors();
+                return;
+            }
+
+            CursorsService.SetDefaultCursors();
         }
 
         /// <summary>
@@ -1595,7 +1608,7 @@ namespace SophiApp.Customizations
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("Failed to write data to \"Microsoft.WindowsTerminal\" configuration file", ex);
+                throw new InvalidOperationException("Failed write data to configuration file", ex);
             }
         }
 

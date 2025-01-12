@@ -18,7 +18,15 @@ namespace SophiApp.Services
         \k<q>
 [^>]* >");
 
-        #pragma warning disable S1075 // URIs should not be hardcoded
+        /// <inheritdoc/>
+        public void DownloadFile(string url, string saveTo)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(saveTo) !);
+            using var client = new HttpClient();
+            using var urlStream = client.GetStreamAsync(url).Result;
+            using var fileStream = new FileStream(saveTo, FileMode.Create);
+            urlStream.CopyTo(fileStream);
+        }
 
         /// <inheritdoc/>
         public async Task DownloadHEVCAppxAsync(string fileName)
@@ -30,13 +38,27 @@ namespace SophiApp.Services
             using var client = new HttpClient();
             using var request = new HttpRequestMessage(HttpMethod.Post, "https://store.rg-adguard.net/api/GetFiles");
             request.Content = new FormUrlEncodedContent(content);
-            var response = await client.SendAsync(request);
+            using var response = await client.SendAsync(request);
             var result = await response.Content.ReadAsStringAsync();
             var appxLink = hrefPattern.Matches(result).Last().Value.Replace("<a href=\"", null).Replace("\" rel=\"noreferrer\">", null);
             using var stream = await client.GetStreamAsync(appxLink);
             using var file = File.Create(fileName);
             await stream.CopyToAsync(file);
         }
+
+        /// <inheritdoc/>
+        public void ThrowIfOffline(string url = "https://google.com")
+        {
+            try
+            {
+                using var client = new HttpClient();
+                using var request = new HttpRequestMessage(HttpMethod.Head, url);
+                using var response = client.Send(request);
+            }
+            catch (Exception)
+            {
+                throw new HttpRequestException($"Url {url} is unavailable");
+            }
+        }
     }
-        #pragma warning restore S1075 // URIs should not be hardcoded
 }

@@ -1028,4 +1028,13 @@
   <data name="UIModel_ImagesEditContext_Title" xml:space="preserve">
     <value>Images edit context title here</value>
   </data>
+  <data name="UIModel_Cursors_Title_1" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="UIModel_Cursors_Title_2" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="UIModel_Cursors_Title_3" xml:space="preserve">
+    <value>Default</value>
+  </data>
 </root>

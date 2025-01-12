@@ -462,11 +462,12 @@
   },
   {
     "Name": "Cursors",
-    "Type": "CheckBox",
+    "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
     "ViewId": 239,
     "Windows10Support": "True",
-    "Windows11Support": "True"
+    "Windows11Support": "True",
+    "NumberOfItems": 3
   },
   {
     "Name": "FolderGroupBy",

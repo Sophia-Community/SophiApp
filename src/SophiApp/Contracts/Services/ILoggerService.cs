@@ -16,11 +16,6 @@ namespace SophiApp.Contracts.Services
     public interface ILoggerService
     {
         /// <summary>
-        /// Resets logger to the default and disposes the original if possible.
-        /// </summary>
-        void CloseAndFlush();
-
-        /// <summary>
         /// Write <see cref="OsProperties"/> data in the log.
         /// </summary>
         /// <param name="properties">Encapsulates OS properties.</param>
@@ -32,12 +27,6 @@ namespace SophiApp.Contracts.Services
         /// <param name="version">App version.</param>
         /// <param name="directory">App work directory.</param>
         void LogAppProperties(Version version, string directory);
-
-        /// <summary>
-        /// Write result of Internet access check in the log.
-        /// </summary>
-        /// <param name="isOnline">Result of Internet access check.</param>
-        void LogIsOnline(bool isOnline);
 
         /// <summary>
         /// Write the page navigation in the log.
@@ -82,11 +71,6 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="version">Available app version.</param>
         void LogAppUpdate(Version version);
-
-        /// <summary>
-        /// Write the start of all models build in the log.
-        /// </summary>
-        void LogStartModelsBuild();
 
         /// <summary>
         /// Write number of models built in the log.
