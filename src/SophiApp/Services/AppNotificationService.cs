@@ -18,13 +18,16 @@ public class AppNotificationService : IAppNotificationService
     {
         var explorerPolicy = "Software\\Policies\\Microsoft\\Windows\\Explorer";
         var scriptHostSettings = "Software\\Microsoft\\Windows Script Host\\Settings";
+        var windowsPushNotifications = "Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications";
+        var policyPushNotifications = "Software\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications";
         var notificationCenterValue = "DisableNotificationCenter";
         var scriptHostEnableValue = "Enabled";
         Registry.CurrentUser.OpenSubKey(explorerPolicy, true)?.DeleteValue(notificationCenterValue, false);
         Registry.LocalMachine.OpenSubKey(explorerPolicy, true)?.DeleteValue(notificationCenterValue, false);
         Registry.CurrentUser.OpenSubKey(scriptHostSettings, true)?.DeleteValue(scriptHostEnableValue, false);
         Registry.LocalMachine.OpenSubKey(scriptHostSettings, true)?.DeleteValue(scriptHostEnableValue, false);
-        Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications", true)?.DeleteValue("ToastEnabled", false);
+        Registry.CurrentUser.OpenSubKey(windowsPushNotifications, true)?.DeleteValue("ToastEnabled", false);
+        Registry.CurrentUser.OpenSubKey(policyPushNotifications, true)?.DeleteValue("NoToastApplicationNotification ", false);
     }
 
     /// <inheritdoc/>

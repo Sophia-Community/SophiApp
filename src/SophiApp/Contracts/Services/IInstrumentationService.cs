@@ -63,11 +63,11 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Get the processor virtualization state.
         /// </summary>
-        bool? CpuVirtualizationIsEnabled();
+        bool? CpuVirtualizationFirmwareIsEnabled();
 
         /// <summary>
         /// Get Windows Hyper-V present state.
         /// </summary>
-        bool? HypervisorPresent();
+        bool? HypervisorIsPresent();
     }
 }

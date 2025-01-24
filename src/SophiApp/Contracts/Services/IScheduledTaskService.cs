@@ -28,7 +28,7 @@ namespace SophiApp.Contracts.Services
         /// Gets the task or null with the specified path.
         /// </summary>
         /// <param name="taskPath">The task path.</param>
-        Task GetTaskOrDefault(string taskPath);
+        Task? GetTaskOrDefault(string taskPath);
 
         /// <summary>
         /// Registers the "Windows Cleanup" task in the Task Scheduler.
@@ -44,6 +44,13 @@ namespace SophiApp.Contracts.Services
         /// Registers the "Windows Cleanup Notification" in the Task Scheduler.
         /// </summary>
         void RegisterCleanupNotificationTask();
+
+        /// <summary>
+        /// If task is not null set enabled or disabled state.
+        /// </summary>
+        /// <param name="task">The <see cref="Task"/> instance.</param>
+        /// <param name="enabled">A value that indicates the task state.</param>
+        void SetEnabled(Task? task, bool enabled);
 
         /// <summary>
         /// Unregisters the "Windows Cleanup Notification" task in the Task Scheduler and remove task files.

@@ -23,6 +23,7 @@ namespace SophiApp.Customizations
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
+        private static readonly IOsService OsService = App.GetService<IOsService>();
         private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
         private static readonly IProcessService ProcessService = App.GetService<IProcessService>();
         private static readonly IScheduledTaskService ScheduledTaskService = App.GetService<IScheduledTaskService>();
@@ -60,10 +61,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ErrorReporting()
         {
-            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a QueueReporting scheduled task");
-            var werDisabledValue = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\Windows Error Reporting")?.GetValue("Disabled") as int? ?? -1;
-            var werService = new ServiceController("WerSvc");
-            return !(reportingTask.State == TaskState.Disabled && werDisabledValue.Equals(1) && werService.StartType == ServiceStartMode.Disabled);
+            var queueTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException($"Failed to find a QueueReporting scheduled task");
+            var disabledValue = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\Windows Error Reporting")?.GetValue("Disabled") as int? ?? -1;
+            return !(queueTask.State == TaskState.Disabled && disabledValue.Equals(1) && new ServiceController("WerSvc").StartType == ServiceStartMode.Disabled);
         }
 
         /// <summary>
@@ -432,30 +432,33 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get search highlights state.
         /// </summary>
-        public static bool SearchHighlights()
+        public static bool SearchHighlightsWindows10()
         {
-            if (CommonDataService.IsWindows11)
-            {
-                var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
-                var suggestionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
-                var searchEnabled = Registry.CurrentUser.OpenSubKey(searchPath)?.GetValue("BingSearchEnabled") as int? ?? -1;
-                var searchSuggestions = Registry.CurrentUser.OpenSubKey(suggestionPath)?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
-
-                if (searchEnabled.Equals(1) || searchSuggestions.Equals(1))
-                {
-                    throw new InvalidOperationException("The value of the BingSearchEnabled or DisableSearchBoxSuggestions parameters is 1");
-                }
-
-                var settingsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
-                var dynamicSearch = Registry.CurrentUser.OpenSubKey(settingsPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
-                return dynamicSearch.Equals(0);
-            }
-
             var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds\\DSB";
             var dynamicPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
             var contentValue = Registry.CurrentUser.OpenSubKey(contentPath)?.GetValue("ShowDynamicContent") as int? ?? -1;
             var dynamicValue = Registry.CurrentUser.OpenSubKey(dynamicPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
             return !(contentValue.Equals(0) && dynamicValue.Equals(0));
+        }
+
+        /// <summary>
+        /// Get search highlights state.
+        /// </summary>
+        public static bool SearchHighlightsWindows11()
+        {
+            var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+            var suggestionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var searchEnabled = Registry.CurrentUser.OpenSubKey(searchPath)?.GetValue("BingSearchEnabled") as int? ?? -1;
+            var searchSuggestions = Registry.CurrentUser.OpenSubKey(suggestionPath)?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
+
+            if (searchEnabled.Equals(1) || searchSuggestions.Equals(1))
+            {
+                throw new InvalidOperationException("The value of the BingSearchEnabled or DisableSearchBoxSuggestions parameters is 1");
+            }
+
+            var settingsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
+            var dynamicSearch = Registry.CurrentUser.OpenSubKey(settingsPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
+            return dynamicSearch.Equals(0);
         }
 
         /// <summary>
@@ -787,9 +790,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool CortanaAutostart()
         {
-            var appxCortanaIsExist = AppxPackagesService.PackageExist("Microsoft.549981C3F5F10");
-
-            if (appxCortanaIsExist)
+            if (AppxPackagesService.PackageExist("Microsoft.549981C3F5F10"))
             {
                 var pathCortana = "Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\SystemAppData\\Microsoft.549981C3F5F10_8wekyb3d8bbwe\\CortanaStartupId";
                 var stateCortana = Registry.ClassesRoot.OpenSubKey(pathCortana)?.GetValue("State") as int? ?? -1;
@@ -821,9 +822,8 @@ namespace SophiApp.Customizations
         public static bool XboxGameTips()
         {
             var appGaming = "Microsoft.GamingApp";
-            var appxGamingIsExist = AppxPackagesService.PackageExist("Microsoft.GamingApp");
 
-            if (appxGamingIsExist)
+            if (AppxPackagesService.PackageExist(appGaming))
             {
                 var startupPanelIsEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar")?.GetValue("ShowStartupPanel") as int? ?? -1;
                 return startupPanelIsEnabled == 1;
@@ -850,8 +850,7 @@ namespace SophiApp.Customizations
                 return hwSchMode == 2;
             }
 
-            var conditions = $"DAC type is external: {isExternalDACType}, is VM: {isVirtualMachine}, WDDM version (minimal {WDDMMinimalVersion}): {wddmVersion}";
-            throw new InvalidOperationException($"GPU scheduling mandatory conditions are not met, {conditions}");
+            throw new InvalidOperationException($"DAC type is external: {isExternalDACType}, is VM: {isVirtualMachine}, WDDM version (minimal {WDDMMinimalVersion}): {wddmVersion}");
         }
 
         /// <summary>
@@ -859,6 +858,11 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool CleanupTask()
         {
+            if (CommonDataService.IsWindows11 && !OsService.VBSIsInstalled())
+            {
+                throw new InvalidOperationException("The VBSCRIPT component is not installed");
+            }
+
             var cleanupTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\Windows Cleanup");
 
             if (cleanupTask is not null && cleanupTask.Definition.Principal.UserId != Environment.UserName)
@@ -874,6 +878,11 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool SoftwareDistributionTask()
         {
+            if (CommonDataService.IsWindows11 && !OsService.VBSIsInstalled())
+            {
+                throw new InvalidOperationException("The VBSCRIPT component is not installed");
+            }
+
             var distributionTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\SoftwareDistribution");
 
             if (distributionTask is not null && distributionTask.Definition.Principal.UserId != Environment.UserName)
@@ -889,6 +898,11 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool TempTask()
         {
+            if (CommonDataService.IsWindows11 && !OsService.VBSIsInstalled())
+            {
+                throw new InvalidOperationException("The VBSCRIPT component is not installed");
+            }
+
             var tempTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\TempTask");
 
             if (tempTask is not null && tempTask.Definition.Principal.UserId != Environment.UserName)
@@ -1039,8 +1053,8 @@ else
 
             if (CommonDataService.OsProperties.Edition.Equals("Professional") || CommonDataService.OsProperties.Edition.Equals("Enterprise"))
             {
-                var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
-                var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
+                var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationFirmwareIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
+                var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
 
                 if (virtualizationIsEnabled)
                 {
@@ -1062,8 +1076,8 @@ else
         /// </summary>
         public static bool LocalSecurityAuthority()
         {
-            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
-            var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
+            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationFirmwareIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
+            var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
             var runAsPPL = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPL") ?? -1;
             var runAsPPLBoot = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPLBoot") ?? -1;
             var runAsPPLPolicy = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System")?.GetValue("RunAsPPL") ?? -1;

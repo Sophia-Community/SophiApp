@@ -116,6 +116,6 @@
     <Style x:Key="UwpPageDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Margin" Value="20, 20, 20, 20"/>
+        <Setter Property="Margin" Value="20"/>
     </Style>
 </ResourceDictionary>

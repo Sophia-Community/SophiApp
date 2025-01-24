@@ -65,6 +65,11 @@ namespace SophiApp.Contracts.Services
         void ClearHideRecommendedSectionCache();
 
         /// <summary>
+        /// Clear the local security authority group policy value cache to make changes visible in UI.
+        /// </summary>
+        void ClearLocalSecurityAuthorityCache();
+
+        /// <summary>
         /// Clear the meet now group policy value cache to make changes visible in UI.
         /// </summary>
         void ClearMeetNowCache();
@@ -108,6 +113,11 @@ namespace SophiApp.Contracts.Services
         /// Clear the taskbar search group policy value cache to make changes visible in UI.
         /// </summary>
         void ClearTaskbarSearchCache();
+
+        /// <summary>
+        /// Clear the task view button group policy value cache to make changes visible in UI.
+        /// </summary>
+        void ClearTaskViewButtonCache();
 
         /// <summary>
         /// Clear the taskbar widgets group policy value cache to make changes visible in UI.

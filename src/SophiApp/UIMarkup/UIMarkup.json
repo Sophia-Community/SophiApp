@@ -288,18 +288,26 @@
     "NumberOfItems": 4
   },
   {
-    "Name": "SearchHighlights",
+    "Name": "SearchHighlightsWindows10",
     "Type": "CheckBox",
     "Tag": "Personalization",
     "ViewId": 218,
     "Windows10Support": "True",
+    "Windows11Support": "False"
+  },
+  {
+    "Name": "SearchHighlightsWindows11",
+    "Type": "CheckBox",
+    "Tag": "Personalization",
+    "ViewId": 219,
+    "Windows10Support": "False",
     "Windows11Support": "True"
   },
   {
     "Name": "CortanaButton",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 219,
+    "ViewId": 220,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -307,7 +315,7 @@
     "Name": "TaskViewButton",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 220,
+    "ViewId": 221,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -315,7 +323,7 @@
     "Name": "NewsInterests",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 221,
+    "ViewId": 222,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -323,7 +331,7 @@
     "Name": "PeopleTaskbar",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 222,
+    "ViewId": 223,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -331,7 +339,7 @@
     "Name": "MeetNow",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 223,
+    "ViewId": 224,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -339,7 +347,7 @@
     "Name": "WindowsInkWorkspace",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 224,
+    "ViewId": 225,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -347,7 +355,7 @@
     "Name": "NotificationAreaIcons",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 225,
+    "ViewId": 226,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -355,7 +363,7 @@
     "Name": "SecondsInSystemClock",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 226,
+    "ViewId": 227,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -363,8 +371,8 @@
     "Name": "TaskbarCombine",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 227,
-    "Windows10Support": "False",
+    "ViewId": 228,
+    "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 3
   },
@@ -372,7 +380,7 @@
     "Name": "TaskbarEndTask",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 228,
+    "ViewId": 229,
     "Windows10Support": "False",
     "Windows11Support": "True"
   },
@@ -380,7 +388,7 @@
     "Name": "ControlPanelView",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 229,
+    "ViewId": 230,
     "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 3
@@ -389,7 +397,7 @@
     "Name": "WindowsColorMode",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 230,
+    "ViewId": 231,
     "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 2
@@ -398,7 +406,7 @@
     "Name": "AppColorMode",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 231,
+    "ViewId": 232,
     "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 2
@@ -407,7 +415,7 @@
     "Name": "NewAppInstalledNotification",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 232,
+    "ViewId": 233,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -415,7 +423,7 @@
     "Name": "FirstLogonAnimation",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 233,
+    "ViewId": 234,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -423,7 +431,7 @@
     "Name": "JPEGWallpapersQuality",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 234,
+    "ViewId": 235,
     "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 2
@@ -432,7 +440,7 @@
     "Name": "ShortcutsSuffix",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 235,
+    "ViewId": 236,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -440,7 +448,7 @@
     "Name": "PrtScnSnippingTool",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 236,
+    "ViewId": 237,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -448,7 +456,7 @@
     "Name": "AppsLanguageSwitch",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 237,
+    "ViewId": 238,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -456,7 +464,7 @@
     "Name": "AeroShaking",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 238,
+    "ViewId": 239,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -464,7 +472,7 @@
     "Name": "Cursors",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 239,
+    "ViewId": 240,
     "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 3
@@ -473,7 +481,7 @@
     "Name": "FolderGroupBy",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 240,
+    "ViewId": 241,
     "Windows10Support": "True",
     "Windows11Support": "True",
     "NumberOfItems": 2
@@ -482,7 +490,7 @@
     "Name": "NavigationPaneExpand",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 241,
+    "ViewId": 242,
     "Windows10Support": "True",
     "Windows11Support": "True"
   },
@@ -490,7 +498,7 @@
     "Name": "RecentlyAddedApps",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 242,
+    "ViewId": 243,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -498,7 +506,7 @@
     "Name": "AppSuggestions",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 243,
+    "ViewId": 244,
     "Windows10Support": "True",
     "Windows11Support": "False"
   },
@@ -506,7 +514,7 @@
     "Name": "StartLayout",
     "Type": "ExpandingRadioGroup",
     "Tag": "Personalization",
-    "ViewId": 244,
+    "ViewId": 245,
     "Windows10Support": "False",
     "Windows11Support": "True",
     "NumberOfItems": 3
@@ -515,7 +523,7 @@
     "Name": "HideRecommendedSection",
     "Type": "CheckBox",
     "Tag": "Personalization",
-    "ViewId": 245,
+    "ViewId": 246,
     "Windows10Support": "False",
     "Windows11Support": "True"
   },

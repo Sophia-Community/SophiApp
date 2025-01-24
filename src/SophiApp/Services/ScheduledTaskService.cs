@@ -445,10 +445,7 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
         }
 
         /// <inheritdoc/>
-        public Task GetTaskOrDefault(string taskPath)
-        {
-            return taskScheduler.GetTask(taskPath);
-        }
+        public Task? GetTaskOrDefault(string taskPath) => taskScheduler.GetTask(taskPath);
 
         /// <inheritdoc/>
         public void RegisterCleanupTask()
@@ -489,6 +486,15 @@ CreateObject(""Wscript.Shell"").Run ""powershell.exe -ExecutionPolicy Bypass -No
                 username: Environment.UserName,
                 runLevel: TaskRunLevel.Highest,
                 trigger: new DailyTrigger(daysInterval: 30) { StartBoundary = DateTime.Today.AddHours(21) });
+        }
+
+        /// <inheritdoc/>
+        public void SetEnabled(Task? task, bool enabled)
+        {
+            if (task is not null)
+            {
+                task.Enabled = enabled;
+            }
         }
 
         /// <inheritdoc/>

@@ -80,15 +80,22 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void ClearFirstLogonAnimationCache()
         {
-            var animationPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System";
-            Registry.LocalMachine.OpenSubKey(animationPath, true)?.DeleteSubKey("EnableFirstLogonAnimation", false);
+            var policyPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System";
+            Registry.LocalMachine.OpenSubKey(policyPath, true)?.DeleteSubKey("EnableFirstLogonAnimation", false);
         }
 
         /// <inheritdoc/>
         public void ClearHideRecommendedSectionCache()
         {
-            var section = "Software\\Policies\\Microsoft\\Windows\\Explorer";
-            Registry.LocalMachine.OpenSubKey(section, true)?.DeleteValue("HideRecommendedSection", false);
+            var sectionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            Registry.LocalMachine.OpenSubKey(sectionPath, true)?.DeleteValue("HideRecommendedSection", false);
+        }
+
+        /// <inheritdoc/>
+        public void ClearLocalSecurityAuthorityCache()
+        {
+            var systemPath = "SOFTWARE\\Policies\\Microsoft\\Windows\\System";
+            Registry.LocalMachine.OpenSubKey(systemPath, true)?.DeleteValue("RunAsPPL", false);
         }
 
         /// <inheritdoc/>
@@ -130,11 +137,11 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void ClearQuickAccessRecentFilesCache()
         {
-            var machinePoliciesPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
-            var userPoliciesPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer";
-            var historyValue = "NoRecentDocsHistory";
-            Registry.LocalMachine.OpenSubKey(machinePoliciesPath, true)?.DeleteValue(historyValue, false);
-            Registry.CurrentUser.OpenSubKey(userPoliciesPath, true)?.DeleteValue(historyValue, false);
+            var machinePolicy = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var userPolicy = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer";
+            var noRecent = "NoRecentDocsHistory";
+            Registry.LocalMachine.OpenSubKey(machinePolicy, true)?.DeleteValue(noRecent, false);
+            Registry.CurrentUser.OpenSubKey(userPolicy, true)?.DeleteValue(noRecent, false);
         }
 
         /// <inheritdoc/>
@@ -169,9 +176,18 @@ namespace SophiApp.Services
                 Registry.LocalMachine.OpenSubKey(disablePath, true)?.SetValue("value", 0, RegistryValueKind.DWord);
             }
 
-            var windowsPath = "Software\\Policies\\Microsoft\\Windows\\Windows Search";
-            Registry.LocalMachine.OpenSubKey(windowsPath, true)?.DeleteValue("DisableSearch", false);
-            Registry.LocalMachine.OpenSubKey(windowsPath, true)?.DeleteValue("SearchOnTaskbarMode", false);
+            var searchPath = "Software\\Policies\\Microsoft\\Windows\\Windows Search";
+            Registry.LocalMachine.OpenSubKey(searchPath, true)?.DeleteValue("DisableSearch", false);
+            Registry.LocalMachine.OpenSubKey(searchPath, true)?.DeleteValue("SearchOnTaskbarMode", false);
+        }
+
+        /// <inheritdoc/>
+        public void ClearTaskViewButtonCache()
+        {
+            var policiesPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var hideView = "HideTaskViewButton";
+            Registry.CurrentUser.OpenSubKey(policiesPath, true)?.DeleteValue(hideView, false);
+            Registry.LocalMachine.OpenSubKey(policiesPath, true)?.DeleteValue(hideView, false);
         }
 
         /// <inheritdoc/>
@@ -208,9 +224,9 @@ namespace SophiApp.Services
         public void ClearTaskbarCombineCache()
         {
             var taskbarPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer";
-            var taskGrouping = "NoTaskGrouping";
-            Registry.LocalMachine.OpenSubKey(taskbarPath, true)?.DeleteValue(taskGrouping, false);
-            Registry.CurrentUser.OpenSubKey(taskbarPath, true)?.DeleteValue(taskGrouping, false);
+            var noGrouping = "NoTaskGrouping";
+            Registry.LocalMachine.OpenSubKey(taskbarPath, true)?.DeleteValue(noGrouping, false);
+            Registry.CurrentUser.OpenSubKey(taskbarPath, true)?.DeleteValue(noGrouping, false);
         }
 
         /// <inheritdoc/>

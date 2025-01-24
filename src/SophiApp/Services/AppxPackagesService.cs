@@ -5,7 +5,6 @@
 namespace SophiApp.Services
 {
     using System.Collections.Generic;
-    using System.Management.Automation;
     using SophiApp.Contracts.Services;
     using Windows.ApplicationModel;
     using Windows.Management.Deployment;
@@ -43,10 +42,9 @@ namespace SophiApp.Services
         {
             var appxPackages = new List<Package>();
             var packages = new List<Package>();
-            var bundles = new List<PSObject>();
             var allUsersScript = "Get-AppxPackage -PackageTypeFilter Bundle -AllUsers | Select-Object -ExpandProperty Name";
             var currentUserScript = "Get-AppxPackage -PackageTypeFilter Bundle | Select-Object -ExpandProperty Name";
-            bundles = powerShellService.Invoke(forAllUsers ? allUsersScript : currentUserScript);
+            var bundles = powerShellService.Invoke(forAllUsers ? allUsersScript : currentUserScript);
             packages = [.. forAllUsers ? packageManager.FindPackages() : packageManager.FindPackagesForUser(string.Empty)];
 
             for (int i = 0; i < packages.Count; i++)

@@ -122,7 +122,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool? CpuVirtualizationIsEnabled()
+        public bool? CpuVirtualizationFirmwareIsEnabled()
         {
             using var managementObject = new ManagementObjectSearcher("Select * from CIM_Processor")
                 .Get()
@@ -133,7 +133,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool? HypervisorPresent()
+        public bool? HypervisorIsPresent()
         {
             using var managementObject = new ManagementObjectSearcher("Select * from CIM_ComputerSystem")
                 .Get()

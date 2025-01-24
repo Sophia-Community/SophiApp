@@ -70,6 +70,13 @@ namespace SophiApp.Services
             }
         }
 
+        /// <inheritdoc/>
+        public bool VBSIsInstalled()
+        {
+            var vbsPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\CapabilityIndex\\VBSCRIPT";
+            return Registry.LocalMachine.OpenSubKey(vbsPath) is not null;
+        }
+
         [DllImport("advapi32.dll", EntryPoint = "CloseServiceHandle")]
         private static extern int CloseServiceHandle(IntPtr hSCObject);
 

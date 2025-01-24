@@ -36,7 +36,6 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogOsProperties(OsProperties properties)
         {
-            // TODO: Log switch here
             Log.Information("Windows version: {Caption:l}", properties.Caption);
             Log.Information("Windows edition: {Edition:l}", properties.Edition);
             Log.Information("Windows build: {Build}.{Ubr}", properties.BuildNumber, properties.UpdateBuildRevision);
@@ -82,32 +81,32 @@ namespace SophiApp.Services
         public void LogAppUpdate(Version version) => Log.Information("App version available in the repository: {Version:l}", version);
 
         /// <inheritdoc/>
-        public void LogAllModelsBuilt(int count) => Log.Information("Service {Service:l} built models: {Count}", nameof(IModelService), count);
+        public void LogAllModelsBuilt(int count) => Log.Information("Service {Service:l} built {Count} UI models", nameof(IModelService), count);
 
         /// <inheritdoc/>
-        public void LogStartModelsGetState() => Log.Warning("Service {Service:l} has started get models state", nameof(IModelService));
+        public void LogStartModelsGetState() => Log.Warning("Service {Service:l} has started initialization of UI models", nameof(IModelService));
 
         /// <inheritdoc/>
-        public void LogStartApplicableModelsSetState() => Log.Warning("Service {Service:l} has started set models state in the applicable models collection", nameof(IModelService));
+        public void LogStartApplicableModelsSetState() => Log.Warning("Service {Service:l} has started set UI models state in the applicable models collection", nameof(IModelService));
 
         /// <inheritdoc/>
-        public void LogAllModelsGetState(Stopwatch timer, int count) => Log.Warning("Service {Service:l} took time to get {Count} models state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
+        public void LogAllModelsGetState(Stopwatch timer, int count) => Log.Warning("Service {Service:l} took time to get {Count} UI models state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
 
         /// <inheritdoc/>
-        public void LogAllModelsSetState(Stopwatch timer, int count) => Log.Warning("Service {Service:l} took time to set {Count} model(s) state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
+        public void LogAllModelsSetState(Stopwatch timer, int count) => Log.Warning("Service {Service:l} took time to set {Count} UI model(s) state: {TimeSpent}", nameof(IModelService), count, timer.Elapsed);
 
         /// <inheritdoc/>
-        public void LogAllModelsSetStateCanceled() => Log.Warning("Service {Service:l} has cancel set models state in the applicable models collection", nameof(IModelService));
+        public void LogAllModelsSetStateCanceled() => Log.Warning("Service {Service:l} has cancel set UI model(s) state in the applicable models collection", nameof(IModelService));
 
         /// <inheritdoc/>
-        public void LogModelGetState(string name, Stopwatch timer) => Log.Information("Model {Name:l} took time to get state: {TimeSpent}", name, timer.Elapsed);
+        public void LogModelGetState(string name, Stopwatch timer) => Log.Information("UI model {Name:l} took time to get state: {TimeSpent}", name, timer.Elapsed);
 
         /// <inheritdoc/>
-        public void LogModelSetState(string name, Stopwatch timer) => Log.Information("Model {Name:l} took time to set state: {TimeSpent}", name, timer.Elapsed);
+        public void LogModelSetState(string name, Stopwatch timer) => Log.Information("UI model {Name:l} took time to set state: {TimeSpent}", name, timer.Elapsed);
 
         /// <inheritdoc/>
         public void LogModelState<T>(string name, T state)
-               where T : struct => Log.Information("Model {Name:l} state: {State}", name, state);
+               where T : struct => Log.Information("UI model {Name:l} has state: {State}", name, state);
 
         /// <inheritdoc/>
         public void LogApplicableModelsCanceled() => Log.Warning("The applying of customizations has been canceled");
@@ -119,69 +118,69 @@ namespace SophiApp.Services
         public void LogApplicableModelChanged<T>(string name, T previous, T current)
             where T : struct
         {
-            Log.Information("The value of the model {Name:l} parameter has been changed from {Previous} to {Current} in applicable models collection", name, previous, current);
+            Log.Information("The value of the UI model {Name:l} parameter has been changed from {Previous} to {Current} in applicable models collection", name, previous, current);
         }
 
         /// <inheritdoc/>
-        public void LogApplicableModelRemoved(string name) => Log.Information("Model {Name:l} has been removed from applicable models collection", name);
+        public void LogApplicableModelRemoved(string name) => Log.Information("UI model {Name:l} has been removed from applicable models collection", name);
 
         /// <inheritdoc/>
-        public void LogApplicableModelAdded(string name) => Log.Information("Model {Name:l} has been added to applicable models collection", name);
+        public void LogApplicableModelAdded(string name) => Log.Information("UI model {Name:l} has been added to applicable models collection", name);
 
         /// <inheritdoc/>
         public void LogApplicableModelAdded<T>(string name, T parameter)
             where T : struct
         {
-            Log.Information("Model {Name:l} with parameter: {Parameter} has been added to applicable models collection", name, parameter);
+            Log.Information("UI model {Name:l} with parameter {Parameter} has been added to applicable models collection", name, parameter);
         }
 
         /// <inheritdoc/>
-        public void LogUwpForAllUsersState(bool state) => Log.Information("The UWP For All Users checkbox state has been changed to: {State}", state);
+        public void LogUwpForAllUsersState(bool state) => Log.Information("The UWP For All Users checkbox state has been changed to {State}", state);
 
         /// <inheritdoc/>
-        public void LogDescriptionTextSizeChanged(int size) => Log.Information("The text size of UI element descriptions set to: {Size}", size);
+        public void LogDescriptionTextSizeChanged(int size) => Log.Information("The text size of UI element descriptions set to {Size}", size);
 
         /// <inheritdoc/>
-        public void LogTitleTextSizeChanged(int size) => Log.Information("The text size of UI element headers set to: {Size}", size);
+        public void LogTitleTextSizeChanged(int size) => Log.Information("The text size of UI element headers set to {Size}", size);
 
         /// <inheritdoc/>
-        public void LogStartTextSearch(string text) => Log.Information("A search for the text: {Text} has been launched", text);
+        public void LogStartTextSearch(string text) => Log.Information("A search for the text {Text} has been launched", text);
 
         /// <inheritdoc/>
-        public void LogStopTextSearch(Stopwatch timer, int count) => Log.Information("The text search took seconds: {Seconds} and return models: {Count}", timer.Elapsed.TotalSeconds, count);
+        public void LogStopTextSearch(Stopwatch timer, int count) => Log.Information("The text search took seconds {Seconds} and return {Count} UI model(s)", timer.Elapsed.TotalSeconds, count);
 
         /// <inheritdoc/>
-        public void LogNavigateToRequirementsFailure(RequirementsFailure failure) => Log.Information("Failure to meet {Service:l} requirements due to: {Name:l}", nameof(IRequirementsService), failure);
+        public void LogNavigateToRequirementsFailure(RequirementsFailure failure) => Log.Information("Failure to meet {Service:l} requirements due to {Name:l}", nameof(IRequirementsService), failure);
 
         /// <inheritdoc/>
-        public void LogOsPropertiesException(Exception exception) => Log.Error(exception, "Failed to obtain the {Property:l} in the {Service:l}: {Message:l}", nameof(OsProperties), nameof(IInstrumentationService), exception.Message);
+        public void LogOsPropertiesException(Exception exception) => Log.Error(exception, "Failed to obtain the {Property:l} in the {Service:l}: {Message}", nameof(OsProperties), nameof(IInstrumentationService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogUwpAppsManagementException(Exception exception) => Log.Error(exception, "Failed to obtain UWP apps update API in the {Service:l}: {Message:l}", nameof(IInstrumentationService), exception.Message);
+        public void LogUwpAppsManagementException(Exception exception) => Log.Error(exception, "Failed to obtain UWP apps update API in the {Service:l}: {Message}", nameof(IInstrumentationService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogProcessOwnerException(Exception exception) => Log.Error(exception, "Failed to obtain process owner API in the {Service:l}: {Message:l}", nameof(IInstrumentationService), exception.Message);
+        public void LogProcessOwnerException(Exception exception) => Log.Error(exception, "Failed to obtain process owner API in the {Service:l}: {Message}", nameof(IInstrumentationService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogAntivirusProductsException(Exception exception) => Log.Error(exception, "Failed to obtain antivirus product API in the {Service:l}: {Message:l}", nameof(IInstrumentationService), exception.Message);
+        public void LogAntivirusProductsException(Exception exception) => Log.Error(exception, "Failed to obtain antivirus product API in the {Service:l}: {Message}", nameof(IInstrumentationService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogUnhandledException(Exception exception) => Log.Fatal(exception, "AN UNHANDLED EXCEPTION OCCURED: {Message:l}", exception.Message);
+        public void LogUnhandledException(Exception exception) => Log.Fatal(exception, "AN UNHANDLED EXCEPTION OCCURED: {Message}", exception.Message);
 
         /// <inheritdoc/>
-        public void LogRegisterNotificationSenderException(Exception exception) => Log.Error(exception, "Failed to obtain register as sender API in the {Service:l}: {Message:l}", nameof(IAppNotificationService), exception.Message);
+        public void LogRegisterNotificationSenderException(Exception exception) => Log.Error(exception, "Failed to obtain register as sender API in the {Service:l}: {Message}", nameof(IAppNotificationService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogOsUpdateException(Exception exception) => Log.Error(exception, "Failed to obtain os update API in the {Service:l}: {Message:l}", nameof(IUpdateService), exception.Message);
+        public void LogOsUpdateException(Exception exception) => Log.Error(exception, "Failed to obtain os update API in the {Service:l}: {Message}", nameof(IUpdateService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogWMIStateException(Exception exception) => Log.Error(exception, "Failed to obtain WMI state requirements in the {Service:l}: {Message:l}", nameof(IRequirementsService), exception.Message);
+        public void LogWMIStateException(Exception exception) => Log.Error(exception, "Failed to obtain WMI state requirements in the {Service:l}: {Message}", nameof(IRequirementsService), exception.Message);
 
         /// <inheritdoc/>
-        public void LogEventLogException(Exception exception) => Log.Error(exception, "The EventLog broken or removed: {Message:l}", exception.Message);
+        public void LogEventLogException(Exception exception) => Log.Error(exception, "The EventLog broken or removed: {Message}", exception.Message);
 
         /// <inheritdoc/>
-        public void LogAppUpdateException(Exception exception) => Log.Error(exception, "Failed to obtain app update requirements in the {Service:l}: {Message:l}", nameof(IRequirementsService), exception.Message);
+        public void LogAppUpdateException(Exception exception) => Log.Error(exception, "Failed to obtain app update requirements in the {Service:l}: {Message}", nameof(IRequirementsService), exception.Message);
 
         /// <inheritdoc/>
         public void LogMsDefenderFilesException(string file) => Log.Error("Microsoft Defender file missing: {File}", file);
@@ -190,10 +189,10 @@ namespace SophiApp.Services
         public void LogMsDefenderServiceNotFound(string service) => Log.Error("Microsoft Defender service: {Service:l} not found", service);
 
         /// <inheritdoc/>
-        public void LogModelGetStateException(string name, Exception exception) => Log.Error("An error occurred while get state in the model {Model:l}: {Message:l}", name, exception.Message);
+        public void LogModelGetStateException(string name, Exception exception) => Log.Error("An error occurred while get state in the UI model {Model:l}: {Message}", name, exception.Message);
 
         /// <inheritdoc/>
         public void LogModelSetStateException<T>(Exception exception, string name, T parameter)
-            where T : struct => Log.Error(exception, "An error occurred while set state in the model {Model:l} with parameter {Parameter}: {Message:l}", name, parameter, exception.Message);
+            where T : struct => Log.Error(exception, "An error occurred while set state in the UI model {Model:l} with parameter {Parameter:l}: {Message}", name, parameter, exception.Message);
     }
 }

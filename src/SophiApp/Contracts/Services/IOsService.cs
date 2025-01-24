@@ -7,7 +7,7 @@ namespace SophiApp.Contracts.Services
     using System.ServiceProcess;
 
     /// <summary>
-    /// A service for working with Windows services API.
+    /// A service for working with Windows API.
     /// </summary>
     public interface IOsService
     {
@@ -29,5 +29,10 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="service">Service name.</param>
         bool IsServiceExist(string service);
+
+        /// <summary>
+        /// Determines that the VBSCRIPT component is installed.
+        /// </summary>
+        bool VBSIsInstalled();
     }
 }

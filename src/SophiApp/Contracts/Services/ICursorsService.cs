@@ -10,6 +10,11 @@ namespace SophiApp.Contracts.Services
     public interface ICursorsService
     {
         /// <summary>
+        /// Reload cursors on-the-fly.
+        /// </summary>
+        void ReloadCursors();
+
+        /// <summary>
         /// Set "Windows 11 Cursors Concept v2 from Jepri Creations" dark scheme.
         /// </summary>
         void SetJepriCreationsDarkCursors();

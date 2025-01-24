@@ -37,6 +37,9 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void ReloadCursors() => _ = SystemParametersInfo(0x0057, 0, 0, 0);
+
+        /// <inheritdoc/>
         public void SetDefaultCursors()
         {
             var cursorsRegistryPath = "Control Panel\\Cursors";
@@ -59,16 +62,13 @@ namespace SophiApp.Services
             Registry.CurrentUser.OpenSubKey(cursorsRegistryPath, true)?.SetValue("SizeWE", "%SystemRoot%\\cursors\\aero_ew.cur", RegistryValueKind.ExpandString);
             Registry.CurrentUser.OpenSubKey(cursorsRegistryPath, true)?.SetValue("UpArrow", "%SystemRoot%\\cursors\\aero_up.cur", RegistryValueKind.ExpandString);
             Registry.CurrentUser.OpenSubKey(cursorsRegistryPath, true)?.SetValue("Wait", "%SystemRoot%\\cursors\\aero_up.cur", RegistryValueKind.ExpandString);
-            _ = SystemParametersInfo(0x0057, 0, 0, 0);
         }
 
         /// <inheritdoc/>
-        public void SetJepriCreationsDarkCursors()
-            => SetJepriCursors(jepriDarkUrl, jepriDarkCursorsFolder, "W11 Cursor Dark Free by Jepri Creations");
+        public void SetJepriCreationsDarkCursors() => SetJepriCursors(jepriDarkUrl, jepriDarkCursorsFolder, "W11 Cursor Dark Free by Jepri Creations");
 
         /// <inheritdoc/>
-        public void SetJepriCreationsLightCursors()
-            => SetJepriCursors(jepriLightUrl, jepriLightCursorsFolder, "W11 Cursor Light Free by Jepri Creations");
+        public void SetJepriCreationsLightCursors() => SetJepriCursors(jepriLightUrl, jepriLightCursorsFolder, "W11 Cursor Light Free by Jepri Creations");
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);

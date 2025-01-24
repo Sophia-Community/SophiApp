@@ -878,7 +878,7 @@
   <data name="UIModel_RecycleBinDeleteConfirmation_Title" xml:space="preserve">
     <value>Display recycle bin delete confirmation dialog</value>
   </data>
-  <data name="UIModel_SearchHighlights_Title" xml:space="preserve">
+  <data name="UIModel_SearchHighlightsWindows11_Title" xml:space="preserve">
     <value>Show widgets icon on the taskbar</value>
   </data>
   <data name="UIModel_SecondsInSystemClock_Title" xml:space="preserve">
@@ -980,7 +980,7 @@
   <data name="UIModel_OneDriveFileExplorerAd_Description" xml:space="preserve">
     <value>They are designed to help you by providing quick, easy information about things you can do or new features you can try to have a better experience with Windows.</value>
   </data>
-  <data name="UIModel_SearchHighlights_Description" xml:space="preserve">
+  <data name="UIModel_SearchHighlightsWindows11_Description" xml:space="preserve">
     <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
   </data>
   <data name="UIModel_TaskbarSearchWindows11_Description" xml:space="preserve">
@@ -1036,5 +1036,11 @@
   </data>
   <data name="UIModel_Cursors_Title_3" xml:space="preserve">
     <value>Default</value>
+  </data>
+  <data name="UIModel_SearchHighlightsWindows10_Description" xml:space="preserve">
+    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+  </data>
+  <data name="UIModel_SearchHighlightsWindows10_Title" xml:space="preserve">
+    <value>Show widgets icon on the taskbar</value>
   </data>
 </root>

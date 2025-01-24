@@ -91,28 +91,23 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Feature state.</param>
         public static void ErrorReporting(bool isEnabled)
         {
-            var reportingRegistryPath = "Software\\Microsoft\\Windows\\Windows Error Reporting";
-            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting");
-            var reportingService = new ServiceController("WerSvc");
+            var errorPath = "Software\\Microsoft\\Windows\\Windows Error Reporting";
+            var taskPath = "Microsoft\\Windows\\Windows Error Reporting\\QueueReporting";
+            var service = new ServiceController("WerSvc");
             GroupPolicyService.ClearErrorReportingCache();
+            ScheduledTaskService.SetEnabled(ScheduledTaskService.GetTaskOrDefault(taskPath), isEnabled);
 
             if (isEnabled)
             {
-                reportingTask.Enabled = true;
-                Registry.CurrentUser.OpenSubKey(reportingRegistryPath, true)?.DeleteValue("Disabled", false);
-                OsService.SetServiceStartMode(reportingService, ServiceStartMode.Manual);
-                reportingService.TryStart();
+                Registry.CurrentUser.OpenSubKey(errorPath, true)?.DeleteValue("Disabled", false);
+                OsService.SetServiceStartMode(service, ServiceStartMode.Manual);
+                service.TryStart();
                 return;
             }
 
-            if (!CommonDataService.OsProperties.Edition.Equals("Core"))
-            {
-                reportingTask.Enabled = false;
-                Registry.CurrentUser.OpenSubKey(reportingRegistryPath, true)?.SetValue("Disabled", 1, RegistryValueKind.DWord);
-            }
-
-            reportingService.TryStop();
-            OsService.SetServiceStartMode(reportingService, ServiceStartMode.Disabled);
+            Registry.CurrentUser.OpenSubKey(errorPath, true)?.SetValue("Disabled", 1, RegistryValueKind.DWord);
+            OsService.SetServiceStartMode(service, ServiceStartMode.Disabled);
+            service.TryStop();
         }
 
         /// <summary>
@@ -156,13 +151,7 @@ namespace SophiApp.Customizations
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\XblGameSave\\XblGameSaveTask"),
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\XblGameSave\\XblGameSaveTask1"),
              }
-            .ForEach(task =>
-             {
-                 if (task is not null)
-                 {
-                     task.Enabled = isEnabled;
-                 }
-             });
+            .ForEach(task => ScheduledTaskService.SetEnabled(task, isEnabled));
         }
 
         /// <summary>
@@ -528,35 +517,48 @@ namespace SophiApp.Customizations
         public static void TaskbarSearchWindows11(int state)
         {
             GroupPolicyService.ClearTaskbarSearchCache();
-            var searchMode = "SearchboxTaskbarMode";
             var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
-
-            if (state.Equals(3))
+            var searchMode = state switch
             {
-                Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue(searchMode, 3, RegistryValueKind.DWord);
-                return;
-            }
+                3 => 3,
+                4 => 2,
+                _ => state - 1,
+            };
 
-            if (state.Equals(4))
-            {
-                Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue(searchMode, 2, RegistryValueKind.DWord);
-                return;
-            }
-
-            Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue(searchMode, state - 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue("SearchboxTaskbarMode", searchMode, RegistryValueKind.DWord);
         }
 
         /// <summary>
         /// Set search highlights state.
         /// </summary>
         /// <param name="isEnabled">Search highlights state.</param>
-        public static void SearchHighlights(bool isEnabled)
+        public static void SearchHighlightsWindows10(bool isEnabled)
         {
             GroupPolicyService.ClearSearchHighlightsCache();
             var feedsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds\\DSB";
             var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
             Registry.CurrentUser.OpenSubKey(feedsPath, true)?.SetValue("ShowDynamicContent", isEnabled ? 1 : 0, RegistryValueKind.DWord);
             Registry.CurrentUser.OpenSubKey(searchPath, true)?.SetValue("IsDynamicSearchBoxEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set search highlights state.
+        /// </summary>
+        /// <param name="isEnabled">Search highlights state.</param>
+        public static void SearchHighlightsWindows11(bool isEnabled)
+        {
+            GroupPolicyService.ClearSearchHighlightsCache();
+            var settingsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
+
+            if (isEnabled)
+            {
+                var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Search";
+                var policiesPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+                Registry.CurrentUser.OpenSubKey(searchPath, true)?.DeleteValue("BingSearchEnabled", false);
+                Registry.CurrentUser.OpenSubKey(policiesPath, true)?.DeleteValue("DisableSearchBoxSuggestions", false);
+            }
+
+            Registry.CurrentUser.OpenSubKey(settingsPath, true)?.SetValue("IsDynamicSearchBoxEnabled", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -576,8 +578,13 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">Taskbar task view button state.</param>
         public static void TaskViewButton(bool isEnabled)
         {
-            var advancedPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
-            Registry.CurrentUser.OpenSubKey(advancedPath, true)?.SetValue("ShowTaskViewButton", isEnabled ? 1 : 0, RegistryValueKind.DWord);
+            if (CommonDataService.IsWindows11)
+            {
+                GroupPolicyService.ClearTaskViewButtonCache();
+            }
+
+            var taskPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(taskPath, true)?.SetValue("ShowTaskViewButton", isEnabled ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -589,9 +596,9 @@ namespace SophiApp.Customizations
             GroupPolicyService.ClearNewsInterestsCache();
             var hashData = OsService.GetNewsInterestsHashData(isEnabled);
             var feedsCommand = $"-Command \"& {{New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds -Name ShellFeedsTaskbarViewMode -PropertyType DWord -Value {(isEnabled ? 0 : 2)} -Force}}\"";
-            var enFeedsCommand = $"-Command \"& {{New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds -Name EnShellFeedsTaskbarViewMode -PropertyType DWord -Value {hashData} -Force}}\"";
+            var hashCommand = $"-Command \"& {{New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds -Name EnShellFeedsTaskbarViewMode -PropertyType DWord -Value {hashData} -Force}}\"";
             PowerShellService.InvokeCommandBypassUCPD(feedsCommand);
-            PowerShellService.InvokeCommandBypassUCPD(enFeedsCommand);
+            PowerShellService.InvokeCommandBypassUCPD(hashCommand);
         }
 
         /// <summary>
@@ -669,15 +676,15 @@ namespace SophiApp.Customizations
         public static void TaskbarEndTask(bool isEnabled)
         {
             var taskbarPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings";
-            var taskbarSettings = "TaskbarEndTask";
+            var taskbarTask = "TaskbarEndTask";
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenOrCreateSubKey(taskbarPath).SetValue(taskbarSettings, 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.OpenOrCreateSubKey(taskbarPath).SetValue(taskbarTask, 1, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey(taskbarPath, true)?.DeleteValue(taskbarSettings, false);
+            Registry.CurrentUser.OpenSubKey(taskbarPath, true)?.DeleteValue(taskbarTask, false);
         }
 
         /// <summary>
@@ -688,21 +695,21 @@ namespace SophiApp.Customizations
         {
             GroupPolicyService.ClearControlPanelViewCache();
             var panelPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel";
-            var iconView = "AllItemsIconView";
+            var allView = "AllItemsIconView";
             var startupPage = "StartupPage";
 
             switch (state)
             {
                 case 1:
-                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(iconView, 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(allView, 0, RegistryValueKind.DWord);
                     Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 0, RegistryValueKind.DWord);
                     break;
                 case 2:
-                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(iconView, 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(allView, 0, RegistryValueKind.DWord);
                     Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
                     break;
                 default:
-                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(iconView, 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(allView, 1, RegistryValueKind.DWord);
                     Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
                     break;
             }
@@ -822,8 +829,8 @@ namespace SophiApp.Customizations
         public static void AeroShaking(bool isEnabled)
         {
             GroupPolicyService.ClearAeroShakingCache();
-            var shakingPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
-            Registry.CurrentUser.OpenSubKey(shakingPath, true)?.SetValue("DisallowShaking", isEnabled ? 0 : 1, RegistryValueKind.DWord);
+            var explorerPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
+            Registry.CurrentUser.OpenSubKey(explorerPath, true)?.SetValue("DisallowShaking", isEnabled ? 0 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -832,19 +839,22 @@ namespace SophiApp.Customizations
         /// <param name="state">Cursors state.</param>
         public static void Cursors(int state)
         {
-            if (state.Equals(1))
+            switch (state)
             {
-                CursorsService.SetJepriCreationsDarkCursors();
-                return;
+                case 1:
+                    CursorsService.SetJepriCreationsDarkCursors();
+                    break;
+
+                case 2:
+                    CursorsService.SetJepriCreationsLightCursors();
+                    break;
+
+                default:
+                    CursorsService.SetDefaultCursors();
+                    break;
             }
 
-            if (state.Equals(2))
-            {
-                CursorsService.SetJepriCreationsLightCursors();
-                return;
-            }
-
-            CursorsService.SetDefaultCursors();
+            CursorsService.ReloadCursors();
         }
 
         /// <summary>
@@ -854,7 +864,6 @@ namespace SophiApp.Customizations
         public static void FolderGroupBy(int state)
         {
             #pragma warning disable SA1003 // Symbols should be spaced correctly
-
             var folderPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FolderTypes\\{885a186e-a440-4ada-812b-db871b942259}";
             var groupPath = $"{folderPath}\\TopViews\\{00000000-0000-0000-0000-000000000000}";
 
@@ -873,7 +882,6 @@ namespace SophiApp.Customizations
             }
 
             Registry.CurrentUser.DeleteSubKeyTree(folderPath, false);
-
             #pragma warning restore SA1003 // Symbols should be spaced correctly
         }
 
@@ -1249,29 +1257,20 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">ocal Security Authority state.</param>
         public static void LocalSecurityAuthority(bool isEnabled)
         {
-            static void WriteLSARegistryValues()
-            {
-                var lsaPath = "System\\CurrentControlSet\\Control\\Lsa";
-                Registry.LocalMachine.OpenSubKey(lsaPath, true)?.SetValue("RunAsPPL", 2, RegistryValueKind.DWord);
-                Registry.LocalMachine.OpenSubKey(lsaPath, true)?.SetValue("RunAsPPLBoot", 2, RegistryValueKind.DWord);
-            }
-
-            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationIsEnabled() ?? false;
-            var hypervisorPresent = InstrumentationService.HypervisorPresent() ?? false;
+            GroupPolicyService.ClearLocalSecurityAuthorityCache();
+            var lsaPath = "System\\CurrentControlSet\\Control\\Lsa";
+            var runAsPPL = "RunAsPPL";
+            var runAsPPLBoot = "RunAsPPLBoot";
 
             if (isEnabled)
             {
-                if (virtualizationIsEnabled || hypervisorPresent)
-                {
-                    WriteLSARegistryValues();
-                }
-
+                Registry.LocalMachine.OpenSubKey(lsaPath, true)?.SetValue(runAsPPL, 2, RegistryValueKind.DWord);
+                Registry.LocalMachine.OpenSubKey(lsaPath, true)?.SetValue(runAsPPLBoot, 2, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPL", false);
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPLBoot", false);
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System", true)?.DeleteValue("RunAsPPL", false);
+            Registry.LocalMachine.OpenSubKey(lsaPath, true)?.DeleteValue(runAsPPL, false);
+            Registry.LocalMachine.OpenSubKey(lsaPath, true)?.DeleteValue(runAsPPLBoot, false);
         }
 
         /// <summary>

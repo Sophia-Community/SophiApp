@@ -6,8 +6,14 @@ namespace SophiApp.Helpers;
 using System.Runtime.InteropServices;
 using System.Text;
 
-public class RuntimeHelper
+/// <summary>
+/// Implements the logic app runtime helper API.
+/// </summary>
+public static class RuntimeHelper
 {
+    /// <summary>
+    /// Gets a value indicating whether MSIX is used.
+    /// </summary>
     public static bool IsMSIX
     {
         get
