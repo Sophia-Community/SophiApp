@@ -702,15 +702,15 @@ namespace SophiApp.Customizations
             {
                 case 1:
                     Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(allView, 0, RegistryValueKind.DWord);
-                    Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenSubKey(panelPath, true)?.SetValue(startupPage, 0, RegistryValueKind.DWord);
                     break;
                 case 2:
                     Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(allView, 0, RegistryValueKind.DWord);
-                    Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenSubKey(panelPath, true)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
                     break;
                 default:
                     Registry.CurrentUser.OpenOrCreateSubKey(panelPath).SetValue(allView, 1, RegistryValueKind.DWord);
-                    Registry.CurrentUser.OpenSubKey(panelPath)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.OpenSubKey(panelPath, true)?.SetValue(startupPage, 1, RegistryValueKind.DWord);
                     break;
             }
         }

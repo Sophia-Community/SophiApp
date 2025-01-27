@@ -435,10 +435,10 @@ namespace SophiApp.Customizations
         public static bool SearchHighlightsWindows10()
         {
             var contentPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Feeds\\DSB";
-            var dynamicPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
-            var contentValue = Registry.CurrentUser.OpenSubKey(contentPath)?.GetValue("ShowDynamicContent") as int? ?? -1;
-            var dynamicValue = Registry.CurrentUser.OpenSubKey(dynamicPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
-            return !(contentValue.Equals(0) && dynamicValue.Equals(0));
+            var searchPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
+            var dynamicContent = Registry.CurrentUser.OpenSubKey(contentPath)?.GetValue("ShowDynamicContent") as int? ?? -1;
+            var dynamicSearch = Registry.CurrentUser.OpenSubKey(searchPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
+            return !(dynamicContent.Equals(0) && dynamicSearch.Equals(0));
         }
 
         /// <summary>
@@ -451,14 +451,14 @@ namespace SophiApp.Customizations
             var searchEnabled = Registry.CurrentUser.OpenSubKey(searchPath)?.GetValue("BingSearchEnabled") as int? ?? -1;
             var searchSuggestions = Registry.CurrentUser.OpenSubKey(suggestionPath)?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
 
-            if (searchEnabled.Equals(1) || searchSuggestions.Equals(1))
+            if (searchEnabled.Equals(1) && searchSuggestions.Equals(1))
             {
-                throw new InvalidOperationException("The value of the BingSearchEnabled or DisableSearchBoxSuggestions parameters is 1");
+                throw new InvalidOperationException("The value of the BingSearchEnabled and DisableSearchBoxSuggestions parameters is 1");
             }
 
             var settingsPath = "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings";
             var dynamicSearch = Registry.CurrentUser.OpenSubKey(settingsPath)?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
-            return dynamicSearch.Equals(0);
+            return !dynamicSearch.Equals(0);
         }
 
         /// <summary>
@@ -555,7 +555,7 @@ namespace SophiApp.Customizations
         {
             var levelPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
             var levelValue = Registry.CurrentUser.OpenSubKey(levelPath)?.GetValue("TaskbarGlomLevel") as int? ?? -1;
-            return levelValue + 1;
+            return levelValue.Equals(-1) ? 1 : levelValue + 1;
         }
 
         /// <summary>
