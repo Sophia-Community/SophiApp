@@ -18,7 +18,18 @@
         </interaction:DataTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <Grid Background="{Binding Background, ElementName=UwpAppCheckBoxControl}">
+    <UserControl.Resources>
+        <CommandBarFlyout x:Name="TextCommandsFlyout">
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton x:Uid="ContextMenu_CopyTitle"
+                              Icon="Copy"
+                              Click="TextCommandsFlyoutCopyTitle_Click"/>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
+    </UserControl.Resources>
+
+    <Grid Background="Transparent"
+          ContextRequested="UwpAppCheckBox_ContextRequested">
         <CheckBox Style="{StaticResource UIControlCheckBoxStyle}"
                   HorizontalAlignment="Left"
                   Margin="20, 0, 20, 0"
@@ -31,7 +42,8 @@
                Margin="60, 0, 0, 0"
                Height="40"
                Width="40"/>
-        <TextBlock Style="{StaticResource UIControlTitleTextStyle}"
+        <TextBlock x:Name="UwpNameTextBlock"
+                   Style="{StaticResource UIControlTitleTextStyle}"
                    Margin="110, 0, 10, 0">
             <Run Text="{Binding Name}"
                  FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=UwpAppCheckBoxControl}"/>

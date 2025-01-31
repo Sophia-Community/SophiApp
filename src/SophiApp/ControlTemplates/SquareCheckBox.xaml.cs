@@ -26,6 +26,7 @@ namespace SophiApp.ControlTemplates
         /// </summary>
         public SquareCheckBox()
         {
+            // TODO: Not used?
             this.InitializeComponent();
             FontOptions = App.GetService<ShellViewModel>().FontOptions;
         }

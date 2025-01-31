@@ -7,7 +7,7 @@ namespace SophiApp.Helpers
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// A class for working with environment variables.
+    /// Helper class for working with environment variables.
     /// </summary>
     public static class EnvironmentHelper
     {

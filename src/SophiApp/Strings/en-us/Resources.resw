@@ -1043,4 +1043,10 @@
   <data name="UIModel_SearchHighlightsWindows10_Title" xml:space="preserve">
     <value>Show widgets icon on the taskbar</value>
   </data>
+  <data name="ContextMenu_CopyDescription.Label" xml:space="preserve">
+    <value>Copy description</value>
+  </data>
+  <data name="ContextMenu_CopyTitle.Label" xml:space="preserve">
+    <value>Copy title</value>
+  </data>
 </root>

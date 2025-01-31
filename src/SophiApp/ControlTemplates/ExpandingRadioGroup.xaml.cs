@@ -43,5 +43,14 @@ namespace SophiApp.ControlTemplates
             get => (IRelayCommand)GetValue(CommandProperty);
             set => SetValue(CommandProperty, value);
         }
+
+        private void TextCommandsFlyoutCopyDescription_Click(object sender, RoutedEventArgs e)
+            => ContextMenuHelper.CopyTextToClipboard(DescriptionTextBlock.Text);
+
+        private void TextCommandsFlyoutCopyTitle_Click(object sender, RoutedEventArgs e)
+            => ContextMenuHelper.CopyTextToClipboard(TitleTextBlock.Text);
+
+        private void ExpandingRadioGroup_ContextRequested(UIElement sender, Microsoft.UI.Xaml.Input.ContextRequestedEventArgs args)
+            => ContextMenuHelper.ShowContextMenu(sender, TextCommandsFlyout, args);
     }
 }

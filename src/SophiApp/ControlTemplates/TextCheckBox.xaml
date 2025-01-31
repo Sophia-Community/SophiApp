@@ -20,17 +20,30 @@
 
     <UserControl.Resources>
         <converters:StringToVisibility x:Key="StringToVisibilityConverter"/>
+        <CommandBarFlyout x:Name="TextCommandsFlyout">
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton x:Uid="ContextMenu_CopyTitle"
+                              Icon="Copy"
+                              Click="TextCommandsFlyoutCopyTitle_Click"/>
+                <AppBarButton x:Name="CopyDescriptionButton"
+                              x:Uid="ContextMenu_CopyDescription"
+                              Icon="Copy"
+                              Click="TextCommandsFlyoutCopyDescription_Click"/>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
     </UserControl.Resources>
 
     <Border BorderBrush="{ThemeResource UIControlBorderBackground}"
             Background="{ThemeResource UIControlBackground}"
-            Style="{StaticResource UIControlBorderStyle}">
+            Style="{StaticResource UIControlBorderStyle}"
+            ContextRequested="TextCheckBox_ContextRequested">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="54"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0"
+            <StackPanel x:Name="TextPanel"
+                        Grid.Column="0"
                         Margin="17, 10, 10, 10"
                         VerticalAlignment="Center">
                 <TextBlock x:Name="TitleTextBlock"
@@ -55,5 +68,10 @@
                       Command="{Binding Command, ElementName=TextCheckBoxControl}"
                       CommandParameter="{Binding}"/>
         </Grid>
+        <interactivity:Interaction.Behaviors>
+            <interaction:DataTriggerBehavior Binding="{Binding Path=Visibility, ElementName=DescriptionTextBlock}" ComparisonCondition="Equal" Value="Collapsed">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=CopyDescriptionButton}" PropertyName="IsEnabled" Value="False"/>
+            </interaction:DataTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
     </Border>
 </UserControl>

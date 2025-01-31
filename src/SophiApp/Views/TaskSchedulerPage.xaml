@@ -6,23 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:helpers="using:SophiApp.Helpers"
     xmlns:vm="using:SophiApp.ViewModels"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:interaction="using:Microsoft.Xaml.Interactions.Core"
     d:DataContext="{d:DesignInstance Type=vm:TaskSchedulerViewModel}"
     mc:Ignorable="d">
-
-    <Page.Resources>
-        <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                   Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="ExpandingCheckBoxTemplate">
-            <controls:ExpandingCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                        Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
-        </DataTemplate>
-    </Page.Resources>
 
     <ScrollView x:Name="TaskSchedulerScrollView">
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
@@ -47,8 +35,10 @@
                         <StackLayout Spacing="10"/>
                     </ItemsRepeater.Layout>
                     <ItemsRepeater.ItemTemplate>
-                        <helpers:UIDataTemplateSelector ExpandingCheckBox="{StaticResource ExpandingCheckBoxTemplate}"
-                                                        TextCheckBox="{StaticResource TextCheckBoxTemplate}"/>
+                        <DataTemplate>
+                            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
+                                                   Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
+                        </DataTemplate>
                     </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>
             </Grid>

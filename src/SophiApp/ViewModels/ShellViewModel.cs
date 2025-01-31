@@ -67,7 +67,7 @@ public partial class ShellViewModel : ObservableRecipient
     private bool uwpForAllUsersState = true;
 
     [ObservableProperty]
-    private ObservableCollection<UIModel> uwpAppsModels = new ();
+    private ObservableCollection<UIModel> uwpAppsModels = [];
 
     private CancellationTokenSource? cancellationTokenSource;
 
