@@ -27,7 +27,7 @@ public class AppNotificationService : IAppNotificationService
         Registry.CurrentUser.OpenSubKey(scriptHostSettings, true)?.DeleteValue(scriptHostEnableValue, false);
         Registry.LocalMachine.OpenSubKey(scriptHostSettings, true)?.DeleteValue(scriptHostEnableValue, false);
         Registry.CurrentUser.OpenSubKey(windowsPushNotifications, true)?.DeleteValue("ToastEnabled", false);
-        Registry.CurrentUser.OpenSubKey(policyPushNotifications, true)?.DeleteValue("NoToastApplicationNotification ", false);
+        Registry.CurrentUser.OpenSubKey(policyPushNotifications, true)?.DeleteValue("NoToastApplicationNotification", false);
     }
 
     /// <inheritdoc/>
