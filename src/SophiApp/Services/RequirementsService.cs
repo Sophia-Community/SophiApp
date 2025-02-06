@@ -180,6 +180,7 @@ namespace SophiApp.Services
                 { "OsRequirements_Malware_Tron", () => Directory.Exists($"{systemDrive}\\logs\\tron") },
                 { "OsRequirements_Malware_ChlorideOS", () => diskService.GetVolumeLabels().Any(label => label.Equals("ChlorideOS")) },
                 { "OsRequirements_Malware_KernelOS", () => instrumentationService.GetPowerPlanNames().Any(name => name.Contains("KernelOS")) },
+                { "OsRequirements_Malware_WinUtil", () => instrumentationService.GetPowerPlanNames().Any(name => name.Contains("ChrisTitus")) }
             };
 
             return malwares.Any(malware =>

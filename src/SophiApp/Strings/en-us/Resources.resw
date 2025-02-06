@@ -614,9 +614,6 @@
   <data name="UwpPage_UwpAppsNotFound.Text" xml:space="preserve">
     <value>No data to display, or necessary packages were removed</value>
   </data>
-  <data name="OsRequirements_tingUserInterface" xml:space="preserve">
-    <value>Generating the UI</value>
-  </data>
   <data name="UIModel_LocalSecurityAuthority_Description" xml:space="preserve">
     <value>Protection for the LSA is provided to prevent reading memory and code injection by nonprotected processes. This feature provides added security for the credentials that LSA stores and manages.</value>
   </data>
@@ -660,7 +657,7 @@
     <value>Windows clean up</value>
   </data>
   <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
-    <value>Generating the UI</value>
+    <value>Generating UI</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
     <value>Run</value>
