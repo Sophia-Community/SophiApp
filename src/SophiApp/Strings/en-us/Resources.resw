@@ -1023,7 +1023,7 @@
     <value>Just in case, reinstall Windows.</value>
   </data>
   <data name="UIModel_ImagesEditContext_Title" xml:space="preserve">
-    <value>Images edit context title here</value>
+    <value>Show "Edit" item in the images context menu</value>
   </data>
   <data name="UIModel_Cursors_Title_1" xml:space="preserve">
     <value>Dark</value>
