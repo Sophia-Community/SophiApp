@@ -85,7 +85,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void ClearHideRecommendedSectionCache()
+        public void ClearStartRecommendedSectionCache()
         {
             var sectionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
             Registry.LocalMachine.OpenSubKey(sectionPath, true)?.DeleteValue("HideRecommendedSection", false);

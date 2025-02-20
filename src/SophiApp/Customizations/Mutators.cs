@@ -11,9 +11,15 @@ namespace SophiApp.Customizations
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.ServiceProcess;
     using System.Text;
+    using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
+    using System.Xml.Linq;
+    using CSharpFunctionalExtensions;
+    using static System.Net.Mime.MediaTypeNames;
+    using Windows.Foundation;
 
     /// <summary>
     /// Set the OS settings.
@@ -939,19 +945,25 @@ namespace SophiApp.Customizations
         /// Set recommended section state.
         /// </summary>
         /// <param name="isEnabled">Recommended section state.</param>
-        public static void HideRecommendedSection(bool isEnabled)
+        public static void StartRecommendedSection(bool isEnabled)
         {
-            GroupPolicyService.ClearHideRecommendedSectionCache();
-            var sectionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            GroupPolicyService.ClearStartRecommendedSectionCache();
+            var explorerPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
+            var educationPath = "Software\\Microsoft\\PolicyManager\\Current\\Device\\Education";
+            var startPath = "Software\\Microsoft\\PolicyManager\\Current\\Device\\Start";
             var sectionValue = "HideRecommendedSection";
+            var environmentValue = "IsEducationEnvironment";
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenOrCreateSubKey(sectionPath).SetValue(sectionValue, 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.OpenSubKey(explorerPath, true)?.DeleteValue(sectionValue, false);
+                Registry.LocalMachine.OpenSubKey(educationPath, true)?.DeleteValue(environmentValue, false);
+                Registry.LocalMachine.OpenSubKey(startPath, true)?.DeleteValue(sectionValue, false);
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey(sectionPath, true)?.DeleteValue(sectionValue, false);
+            Registry.CurrentUser.OpenOrCreateSubKey(explorerPath).SetValue(sectionValue, 1, RegistryValueKind.DWord);
+            Registry.LocalMachine.OpenOrCreateSubKey(educationPath).SetValue(environmentValue, 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1190,7 +1202,7 @@ namespace SophiApp.Customizations
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey(scriptLoggingPath, true)?.DeleteValue(scriptLoggingValueName);
+            Registry.LocalMachine.OpenSubKey(scriptLoggingPath, true)?.DeleteValue(scriptLoggingValueName, false);
         }
 
         /// <summary>
@@ -1386,16 +1398,38 @@ namespace SophiApp.Customizations
         /// <param name="isEnabled">"Edit With Photos" item state.</param>
         public static void EditWithPhotosContext(bool isEnabled)
         {
-            var clipChampPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
-            var clipChampGuid = "{BFE0E2A4-C70C-4AD7-AC3D-10D1ECEBB5B4}";
+            var photosPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var photosGuid = "{BFE0E2A4-C70C-4AD7-AC3D-10D1ECEBB5B4}";
+
+            Registry.LocalMachine.OpenSubKey(photosPath, true)?.DeleteValue(photosGuid, false);
 
             if (isEnabled)
             {
-                Registry.CurrentUser.OpenSubKey(clipChampPath, true)?.DeleteValue(clipChampPath, false);
+                Registry.CurrentUser.OpenSubKey(photosPath, true)?.DeleteValue(photosPath, false);
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey(clipChampPath).SetValue(clipChampGuid, string.Empty, RegistryValueKind.String);
+            Registry.CurrentUser.OpenOrCreateSubKey(photosPath).SetValue(photosGuid, string.Empty, RegistryValueKind.String);
+        }
+
+        /// <summary>
+        /// Set "Edit With Paint Context" item in the media files context menu state.
+        /// </summary>
+        /// <param name="isEnabled">"Edit With Paint Context" item state.</param>
+        public static void EditWithPaintContext(bool isEnabled)
+        {
+            var paintPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var paintGuid = "{2430F218-B743-4FD6-97BF-5C76541B4AE9}";
+
+            Registry.LocalMachine.OpenSubKey(paintPath, true)?.DeleteValue(paintGuid, false);
+
+            if (isEnabled)
+            {
+                Registry.CurrentUser.OpenSubKey(paintPath, true)?.DeleteValue(paintGuid, false);
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey(paintPath).SetValue(paintGuid, string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>

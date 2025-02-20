@@ -1001,10 +1001,10 @@
   <data name="UIModel_TaskbarSearchWindows10_Title_3" xml:space="preserve">
     <value>Search box</value>
   </data>
-  <data name="UIModel_HideRecommendedSection_Description" xml:space="preserve">
+  <data name="UIModel_StartRecommendedSection_Description" xml:space="preserve">
     <value>Recommended section in Start Menu can be disabled only in Enterprise and Education editions, but not in IoT Enterprise.</value>
   </data>
-  <data name="UIModel_HideRecommendedSection_Title" xml:space="preserve">
+  <data name="UIModel_StartRecommendedSection_Title" xml:space="preserve">
     <value>Show Recommended section in Start Menu</value>
   </data>
   <data name="OsRequirements_Malware_ChlorideOS" xml:space="preserve">
@@ -1045,5 +1045,11 @@
   </data>
   <data name="ContextMenu_CopyTitle.Label" xml:space="preserve">
     <value>Copy title</value>
+  </data>
+  <data name="UIModel_EditWithPaintContext_Description" xml:space="preserve">
+    <value>Edit with paint context description here</value>
+  </data>
+  <data name="UIModel_EditWithPaintContext_Title" xml:space="preserve">
+    <value>Edit with paint context titlt here</value>
   </data>
 </root>

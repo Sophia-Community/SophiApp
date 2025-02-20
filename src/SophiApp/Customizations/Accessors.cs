@@ -747,18 +747,18 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get recommended section state.
         /// </summary>
-        public static bool HideRecommendedSection()
+        public static bool StartRecommendedSection()
         {
             var os = CommonDataService.OsProperties;
 
-            if ((os.Edition.Equals("Enterprise") || os.Edition.Equals("Education")) && !os.Caption.Contains("Windows 11 IoT Enterprise"))
+            if (os.Edition.Contains("Home", StringComparison.InvariantCultureIgnoreCase) || os.Edition.Contains("Core", StringComparison.InvariantCultureIgnoreCase))
             {
-                var sectionPath = "Software\\Policies\\Microsoft\\Windows\\Explorer";
-                var sectionValue = Registry.CurrentUser.OpenSubKey(sectionPath)?.GetValue("HideRecommendedSection") as int? ?? -1;
-                return !sectionValue.Equals(1);
+                throw new InvalidOperationException("This version Windows is not supported");
             }
 
-            throw new InvalidOperationException("Only Enterprise and Education edition are supported. Version Windows 11 IoT Enterprise is not supported");
+            var sectionValue = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("HideRecommendedSection") as int? ?? -1;
+            var environmentValue = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\PolicyManager\\Current\\Device\\Education")?.GetValue("IsEducationEnvironment") as int? ?? -1;
+            return !sectionValue.Equals(1) && !environmentValue.Equals(1);
         }
 
         /// <summary>
@@ -1162,18 +1162,36 @@ else
         /// </summary>
         public static bool EditWithPhotosContext()
         {
-            var photosAppx = "EditWithPhotosContext";
-            var clipChampPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
-            var clipChampGuid = "{8AB635F8-9A67-4698-AB99-784AD929F3B4}";
+            var appxPhotos = "Microsoft.Windows.Photos";
+            var photosPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+            var photosGuid = "{8AB635F8-9A67-4698-AB99-784AD929F3B4}";
 
-            if (AppxPackagesService.PackageExist(photosAppx))
+            if (AppxPackagesService.PackageExist(appxPhotos))
             {
-                var userPhotosContext = Registry.CurrentUser.OpenSubKey(clipChampPath)?.GetValue(clipChampGuid);
-                var machinePhotosContext = Registry.LocalMachine.OpenSubKey(clipChampPath)?.GetValue(clipChampGuid);
+                var userPhotosContext = Registry.CurrentUser.OpenSubKey(photosPath)?.GetValue(photosGuid);
+                var machinePhotosContext = Registry.LocalMachine.OpenSubKey(photosPath)?.GetValue(photosGuid);
                 return userPhotosContext is null && machinePhotosContext is null;
             }
 
-            throw new InvalidOperationException($"Necessary appx package are not installed: {photosAppx}");
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxPhotos}");
+        }
+
+        /// <summary>
+        /// Get "Edit With Paint Context" item in the media files context menu state.
+        /// </summary>
+        public static bool EditWithPaintContext()
+        {
+            var appxPaint = "Microsoft.MSPaint";
+
+            if (AppxPackagesService.PackageExist(appxPaint))
+            {
+                var paintPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked";
+                var paintGuid = "{2430F218-B743-4FD6-97BF-5C76541B4AE9}";
+                var paintContext = Registry.CurrentUser.OpenSubKey(paintPath)?.GetValue(paintGuid);
+                return paintContext is null;
+            }
+
+            throw new InvalidOperationException($"Necessary appx package are not installed: {appxPaint}");
         }
 
         /// <summary>

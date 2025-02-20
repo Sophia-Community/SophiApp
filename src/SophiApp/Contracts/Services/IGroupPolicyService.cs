@@ -60,9 +60,9 @@ namespace SophiApp.Contracts.Services
         void ClearFirstLogonAnimationCache();
 
         /// <summary>
-        /// Clear the hide recommended section group policy value cache to make changes visible in UI.
+        /// Clear the recommended section group policy value cache to make changes visible in UI.
         /// </summary>
-        void ClearHideRecommendedSectionCache();
+        void ClearStartRecommendedSectionCache();
 
         /// <summary>
         /// Clear the local security authority group policy value cache to make changes visible in UI.
