@@ -535,7 +535,7 @@ namespace SophiApp.Customizations
         {
             var trayPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
             var trayValue = Registry.CurrentUser.OpenSubKey(trayPath)?.GetValue("EnableAutoTray") as int? ?? -1;
-            return !trayValue.Equals(0);
+            return trayValue.Equals(0);
         }
 
         /// <summary>

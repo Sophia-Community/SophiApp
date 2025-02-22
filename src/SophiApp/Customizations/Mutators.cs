@@ -11,15 +11,9 @@ namespace SophiApp.Customizations
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.ServiceProcess;
     using System.Text;
-    using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
-    using System.Xml.Linq;
-    using CSharpFunctionalExtensions;
-    using static System.Net.Mime.MediaTypeNames;
-    using Windows.Foundation;
 
     /// <summary>
     /// Set the OS settings.
@@ -871,11 +865,11 @@ namespace SophiApp.Customizations
         {
             #pragma warning disable SA1003 // Symbols should be spaced correctly
             var folderPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FolderTypes\\{885a186e-a440-4ada-812b-db871b942259}";
-            var groupPath = $"{folderPath}\\TopViews\\{00000000-0000-0000-0000-000000000000}";
 
             if (state.Equals(1))
             {
                 PowerShellService.ClearCommonDialogViews();
+                var groupPath = folderPath.Insert(folderPath.Length, "\\TopViews\\{00000000-0000-0000-0000-000000000000}");
                 using var groupKey = Registry.CurrentUser.OpenOrCreateSubKey(groupPath);
                 groupKey.SetValue("ColumnList", "System.Null", RegistryValueKind.String);
                 groupKey.SetValue("GroupBy", "System.Null", RegistryValueKind.String);
