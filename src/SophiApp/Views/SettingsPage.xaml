@@ -8,6 +8,12 @@
       xmlns:service="using:SophiApp.Services"
       mc:Ignorable="d">
 
+    <!--<Page.Resources>
+        <Style TargetType="Slider">
+            <Setter Property="" Value="{ThemeResource WindowAccent}"/>
+        </Style>
+    </Page.Resources>-->
+
     <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Uid="Page_Settings" Style="{StaticResource PageTitleTextStyle}"/>

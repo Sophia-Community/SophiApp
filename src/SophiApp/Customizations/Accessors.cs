@@ -741,7 +741,7 @@ namespace SophiApp.Customizations
         {
             var layoutPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced";
             var layoutValue = Registry.CurrentUser.OpenSubKey(layoutPath)?.GetValue("Start_Layout") as int? ?? -1;
-            return layoutValue.Equals(-1) ? 1 : layoutValue + 1;
+            return layoutValue + 1;
         }
 
         /// <summary>
