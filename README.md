@@ -101,7 +101,12 @@
 
 Until a new `SophiApp 2.0` will be released, please use the latest version of [Sophia Script for Windows](https://github.com/farag2/Sophia-Script-for-Windows/releases/latest) as `SophiApp 1.0.97` contains too many bugs, unstable and doesn't support the current Windows 10/11 builds.
 
-Current state of SophiApp 2.0 development: https://t.me/SophiaNews/3897
+## SophiApp 2.0
+
+> [!CAUTION]  
+> **Please avoid using Sophia 1.0.97**
+>
+> Sophia 1.0.97 is deprecated. Please avoid using it until `SophiApp 2.0 | Daria` will be release (2025 H2). Follow the development in a test branch [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). [Details](https://t.me/SophiaNews/3897).
 
 ## SophiApp 2.0
 
