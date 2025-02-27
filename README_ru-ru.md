@@ -101,7 +101,10 @@
 
 ## SophiApp 2.0
 
-`SophiApp 2.0 | Daria` находится в активной разработке (2 квартал 2024). Вы можете следить за разработкой в тестовой ветке [здесь](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). [Подробнее](https://t.me/SophiaNews/2566).
+> [!CAUTION]  
+> **Просим воздержаться от использования Sophia 1.0.97**
+>
+> Sophia 1.0.97 больше не поддерживается. Просим воздержаться от ее использования, пока не выйдет `SophiApp 2.0 | Daria` (2 квартал 2025). Вы можете следить за разработкой в тестовой ветке [здесь](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). [Подробнее](https://t.me/SophiaNews/3897).
 
 ## О SophiApp
 
