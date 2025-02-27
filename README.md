@@ -96,6 +96,11 @@
 
 ***
 
+> [!CAUTION]  
+> **Please avoid using Sophia 1.0.97**
+>
+> Sophia 1.0.97 is deprecated. Please avoid using it until `SophiApp 2.0 | Daria` will be release (2025 H2). Follow the development in a test branch [here](https://github.com/Sophia-Community/SophiApp/commits/dev-winappsdk). [Details](https://t.me/SophiaNews/3897).
+
 ## About SophiApp
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size30&pause=1000&width=435&lines=Made+with+%E2%9D%A4%EF%B8%8F+of+Windows%C2%AE)
