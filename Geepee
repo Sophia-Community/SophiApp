@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Editor App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f0f17;
+      color: #e0e0e0;
+      font-family: "Fira Code", monospace;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1a1a25;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #00d8ff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    #sidebar {
+      width: 250px;
+      background: #141421;
+      border-right: 1px solid #222;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    #editor {
+      flex: 1;
+      background: #0b0b13;
+      padding: 1rem;
+      font-size: 1rem;
+      outline: none;
+      border: none;
+      color: #fff;
+      white-space: pre;
+      overflow-y: auto;
+    }
+
+    #terminal {
+      background: #111;
+      color: #00ff9f;
+      height: 150px;
+      overflow-y: auto;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.7rem;
+      background: #00d8ff;
+      color: #0f0f17;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00b5d6;
+    }
+  </style>
+</head>
+<body>
+  <header>💻 Code Editor App</header>
+
+  <main>
+    <div id="sidebar">
+      <h3>Files</h3>
+      <ul>
+        <li>index.html</li>
+        <li>style.css</li>
+        <li>script.js</li>
+      </ul>
+      <button id="runBtn">Run Code</button>
+    </div>
+
+    <pre id="editor" contenteditable="true">
+&lt;h1&gt;Hello, world!&lt;/h1&gt;
+&lt;script&gt;
+  console.log("Code running!");
+&lt;/script&gt;
+    </pre>
+  </main>
+
+  <div id="terminal">
+    <strong>$ Terminal:</strong>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const runBtn = document.getElementById("runBtn");
+    const editor = document.getElementById("editor");
+    const output = document.getElementById("output");
+
+    runBtn.addEventListener("click", () => {
+      output.innerHTML = "";
+      try {
+        const iframe = document.createElement("iframe");
+        iframe.style.width = "100%";
+        iframe.style.height = "100px";
+        iframe.style.border = "none";
+        document.body.appendChild(iframe);
+        iframe.contentDocument.open();
+        iframe.contentDocument.write(editor.innerText);
+        iframe.contentDocument.close();
+        output.innerHTML += "<div>✅ Code executed successfully.</div>";
+      } catch (err) {
+        output.innerHTML += `<div style="color:red;">❌ Error: ${err.message}</div>`;
+      }
+    });
+  </script>
+</body>
+</html>
