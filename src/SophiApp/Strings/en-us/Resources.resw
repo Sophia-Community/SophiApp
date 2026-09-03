@@ -832,7 +832,7 @@
     <value>Create Windows Cleanup scheduled task</value>
   </data>
   <data name="UIModel_CleanupTask_Description" xml:space="preserve">
-    <value>This function creates "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks in the Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before cleanup begins. Task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks in Sophia folder of the Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before cleanup begins. Task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanup_Description" xml:space="preserve">
     <value>Cleaning up Windows unused files and updates using built-in Disk cleanup app. Scheduled task can be run only if user {0} logged into the system.</value>
@@ -850,7 +850,7 @@
     <value>Create SoftwareDistribution scheduled task</value>
   </data>
   <data name="UIModel_SoftwareDistributionTask_Description" xml:space="preserve">
-    <value>This function creates "SoftwareDistribution" task in the Task Scheduler to clean up %SystemRoot%\SoftwareDistribution\Download folder where Windows updates installation files are downloaded. Task will wait until Windows Update service has finished running. Task runs every 90 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates "SoftwareDistribution" task in Sophia folder of the Task Scheduler to clean up %SystemRoot%\SoftwareDistribution\Download folder where Windows updates installation files are downloaded. Task will wait until Windows Update service has finished running. Task runs every 90 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
     <value>%SystemRoot%\SoftwareDistribution\Download folder cleanup. Scheduled task can be run only if user {0} logged into the system.</value>
@@ -862,7 +862,7 @@
     <value>Create Temp scheduled task</value>
   </data>
   <data name="UIModel_TempTask_Description" xml:space="preserve">
-    <value>This function creates "Temp" task in the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. Task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates "Temp" task Sophia folder of in the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. Task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
     <value>Temporary files folder successfully cleaned up.</value>
@@ -1068,32 +1068,32 @@
   <data name="Panel_SetupCustomization_Applying" xml:space="preserve">
     <value>Applying customization</value>
   </data>
-  <data name="App_Discord.Text" xml:space="preserve">
-    <value>Discord.gg/sSryhaEv79</value>
-  </data>
   <data name="App_GitHub.Text" xml:space="preserve">
-    <value>GitHub.com/Sophia-Community/SophiApp</value>
+    <value>GitHub</value>
   </data>
   <data name="App_Telegram.Text" xml:space="preserve">
-    <value>T.me/sophia_chat</value>
+    <value>Telegram</value>
+  </data>
+  <data name="App_Discord.Text" xml:space="preserve">
+    <value>Discord</value>
   </data>
   <data name="AppTeam_AnimationDeveloper.Text" xml:space="preserve">
-    <value>Animation development: Maxim Nechiporenko</value>
+    <value>Animation: Maxim Nechiporenko</value>
   </data>
   <data name="AppTeam_Tester.Text" xml:space="preserve">
     <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
   </data>
   <data name="AppTeam_Developer.Text" xml:space="preserve">
-    <value>Application development: Dmitry "Inestic" Demin</value>
+    <value>CO &amp; Development: Dmitry "Inestic" Demin</value>
   </data>
   <data name="AppTeam_ProjectManager.Text" xml:space="preserve">
     <value>PO &amp; QA: Dmitry Nefedov</value>
   </data>
   <data name="AppTeam_UiDeveloper.Text" xml:space="preserve">
-    <value>UI development: Yaroslav Posmitiukh</value>
+    <value>UI: Yaroslav Posmitiukh</value>
   </data>
   <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
-    <value>UX development: Vladimir Nameless</value>
+    <value>UI/UX: Vladimir Nameless</value>
   </data>
   <data name="Page_ContextMenu_OpenLogFile.Label" xml:space="preserve">
     <value>Open log file</value>
@@ -1123,13 +1123,19 @@
     <value>Checking third-party host file entries...</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
-    <value>Third-party entries found in the file:</value>
+    <value>Third-party entries found in</value>
   </data>
-  <data name="Button_OpenHostFileFolder.Content" xml:space="preserve">
-    <value>Open host file folder</value>
+  <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
+    <value>%SystemRoot%\System32\drivers\etc\hosts.</value>
+  </data>
+  <data name="OsRequirements_HostsEntriesFound_3.Text" xml:space="preserve">
+    <value>They may block connection to resources used in SophiApp 2.</value>
   </data>
   <data name="Button_Continue.Content" xml:space="preserve">
     <value>Continue</value>
+  </data>
+  <data name="Button_OpenHostFileFolder.Content" xml:space="preserve">
+    <value>Open host file folder</value>
   </data>
   <data name="Button_OpenBitLockerSettings.Content" xml:space="preserve">
     <value>Open BitLocker settings</value>
@@ -1149,14 +1155,8 @@
   <data name="OsRequirements_NewAppVersionFound_1.Text" xml:space="preserve">
     <value>A new version is available: SophiApp</value>
   </data>
-  <data name="OsRequirements_HostsEntriesFound_3.Text" xml:space="preserve">
-    <value>They may block connection to resources used in the app.</value>
-  </data>
   <data name="OsRequirements_DoYouWantToContinue.Text" xml:space="preserve">
     <value>Do you want to continue?</value>
-  </data>
-  <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
-    <value>"%SystemRoot%\System32\drivers\etc\hosts".</value>
   </data>
   <data name="OsRequirements_UnsupportedArchitecture_2.Text" xml:space="preserve">
     <value>SophiApp supports the x64 architecture-based CPU only.</value>
@@ -1171,7 +1171,7 @@
     <value>SophiApp was run on behalf of:</value>
   </data>
   <data name="OsRequirements_LoggedInUserNotAdmin_3.Text" xml:space="preserve">
-    <value>Please log into account which has admin rights and run app again.</value>
+    <value>Please log into account which has admin rights and run SophiApp 2 again.</value>
   </data>
   <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
     <value>Reinstall Windows using only a genuine ISO image.</value>
