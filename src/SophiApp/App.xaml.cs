@@ -152,7 +152,7 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
-        GetService<IAppNotificationService>().RegisterAsToastSender("SophiApp");
+        GetService<IAppNotificationService>().RegisterAsToastSender();
         var initializeService = GetService<IInitializeService>();
         await initializeService.InitializeServicesDataAsync(args);
         await initializeService.InitializeMainWindowAsync();

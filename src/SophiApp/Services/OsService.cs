@@ -7,7 +7,6 @@ namespace SophiApp.Services
     using System.ComponentModel;
     using System.Runtime.InteropServices;
     using System.ServiceProcess;
-    using Microsoft.Win32;
     using SophiApp.Contracts.Services;
 
     /// <inheritdoc/>
@@ -62,13 +61,6 @@ namespace SophiApp.Services
             {
                 return false;
             }
-        }
-
-        /// <inheritdoc/>
-        public bool VBSInstalled()
-        {
-            var vbsPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\CapabilityIndex\\VBSCRIPT";
-            return Registry.LocalMachine.OpenSubKey(vbsPath) is not null;
         }
 
         /// <inheritdoc/>

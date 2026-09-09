@@ -31,11 +31,6 @@ namespace SophiApp.Contracts.Services
         bool Exist(string name);
 
         /// <summary>
-        /// Determines that VBSCRIPT component is installed.
-        /// </summary>
-        bool VBSInstalled();
-
-        /// <summary>
         /// Try set, without any exceptions, service startup mode.
         /// </summary>
         /// <param name="name">Service name.</param>

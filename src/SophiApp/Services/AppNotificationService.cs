@@ -40,17 +40,18 @@ public class AppNotificationService : IAppNotificationService
     }
 
     /// <inheritdoc/>
-    public void RegisterAsToastSender(string name)
+    public void RegisterAsToastSender()
     {
         try
         {
-            var appId = $"AppUserModelId\\{name}";
-            var actionCenterSetting = $"Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings\\{name}";
             // Determines whether the app can be seen in Settings where the user can turn notifications on or off
-            Registry.CurrentUser.OpenOrCreateSubKey(actionCenterSetting).SetValue("ShowInActionCenter", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings\\SophiApp").SetValue("ShowInActionCenter", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings\\Sophia").SetValue("ShowInActionCenter", 0, RegistryValueKind.DWord);
             // Register app
-            Registry.ClassesRoot.OpenOrCreateSubKey(appId).SetValue("DisplayName", name, RegistryValueKind.String);
-            Registry.ClassesRoot.OpenSubKey(appId, true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
+            Registry.ClassesRoot.OpenOrCreateSubKey("AppUserModelId\\SophiApp").SetValue("DisplayName", "SophiApp", RegistryValueKind.String);
+            Registry.ClassesRoot.OpenOrCreateSubKey("AppUserModelId\\Sophia").SetValue("DisplayName", "Sophia", RegistryValueKind.String);
+            Registry.ClassesRoot.OpenSubKey("AppUserModelId\\SophiApp", true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
+            Registry.ClassesRoot.OpenSubKey("AppUserModelId\\Sophia", true)?.SetValue("ShowInSettings", 0, RegistryValueKind.DWord);
         }
         catch (Exception ex)
         {
@@ -59,11 +60,10 @@ public class AppNotificationService : IAppNotificationService
     }
 
     /// <inheritdoc/>
-    public void RegisterCleanupProtocolAsToastSender()
+    public void RegisterWindowsCleanupAsToastSender()
     {
         // Start the "Windows Cleanup" task if the "Run" button clicked
-        var cleanupCommand = @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath '\Sophia\' -TaskName 'Windows Cleanup'}""";
-        Registry.ClassesRoot.OpenOrCreateSubKey("WindowsCleanup\\shell\\open\\command").SetValue(string.Empty, cleanupCommand, RegistryValueKind.String);
+        Registry.ClassesRoot.OpenOrCreateSubKey("WindowsCleanup\\shell\\open\\command").SetValue(string.Empty, @"powershell.exe -Command ""& {Start-ScheduledTask -TaskPath '\Sophia\' -TaskName 'Windows Cleanup'}""", RegistryValueKind.String);
         // Register the "WindowsCleanup" protocol to be able to run the scheduled task by clicking the "Run" button in a toast
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue(string.Empty, "URL:WindowsCleanup", RegistryValueKind.String);
         Registry.ClassesRoot.OpenSubKey("WindowsCleanup", true)?.SetValue("URL Protocol", string.Empty, RegistryValueKind.String);

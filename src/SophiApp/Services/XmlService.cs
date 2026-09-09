@@ -11,6 +11,9 @@ namespace SophiApp.Services
     public class XmlService : IXmlService
     {
         /// <inheritdoc/>
+        public XmlNode? GetScheduledTaskArguments(string path) => TryLoad(path)?.SelectSingleNode("//*[local-name()='Exec']/*[local-name()='Arguments']");
+
+        /// <inheritdoc/>
         public XmlDocument? TryLoad(string path)
         {
             if (File.Exists(path))

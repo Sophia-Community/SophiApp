@@ -1545,15 +1545,19 @@ namespace SophiApp.Customizations
         /// <param name="enable">Task state.</param>
         public static void CleanupTask(bool enable)
         {
-            ScheduledTaskService.DeleteTaskFolders(["Sophia Script", "SophiApp"]);
-            RegistryService.RemoveVolumeCachesStateFlags();
+            var cleanupTaskVbs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.vbs");
+            var notificationTaskVbs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.vbs");
+            cleanupTaskVbs.TryDelete();
+            notificationTaskVbs.TryDelete();
 
             if (enable)
             {
                 AppNotificationService.EnableToastNotification();
+                GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableNotificationCenter", LGPOScope.Computer, LGPOScope.User);
+                RegistryService.RemoveVolumeCachesStateFlags();
                 RegistryService.SetVolumeCachesStateFlags();
-                AppNotificationService.RegisterAsToastSender("SophiApp");
-                AppNotificationService.RegisterCleanupProtocolAsToastSender();
+                AppNotificationService.RegisterAsToastSender();
+                AppNotificationService.RegisterWindowsCleanupAsToastSender();
                 ScheduledTaskService.RegisterCleanupTask();
                 ScheduledTaskService.RegisterCleanupNotificationTask();
                 return;
@@ -1562,21 +1566,24 @@ namespace SophiApp.Customizations
             ScheduledTaskService.UnregisterCleanupTask();
             ScheduledTaskService.UnregisterCleanupNotificationTask();
             ScheduledTaskService.TryDeleteTaskFolder("Sophia");
+            RegistryService.RemoveVolumeCachesStateFlags();
             AppNotificationService.UnregisterCleanupProtocol();
         }
 
         /// <summary>
-        /// Set scheduled task "SoftwareDistribution" state.
+        /// Set "SoftwareDistribution" scheduled task state.
         /// </summary>
         /// <param name="enable">Task state.</param>
         public static void SoftwareDistributionTask(bool enable)
         {
-            ScheduledTaskService.DeleteTaskFolders(["Sophia Script", "SophiApp"]);
+            var distributionTaskVbs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.vbs");
+            distributionTaskVbs.TryDelete();
 
             if (enable)
             {
                 AppNotificationService.EnableToastNotification();
-                AppNotificationService.RegisterAsToastSender("SophiApp");
+                GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableNotificationCenter", LGPOScope.Computer, LGPOScope.User);
+                AppNotificationService.RegisterAsToastSender();
                 ScheduledTaskService.RegisterSoftwareDistributionTask();
                 return;
             }
@@ -1586,17 +1593,19 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Set scheduled task "Temp" state.
+        /// Set "Temp" scheduled task state.
         /// </summary>
         /// <param name="enable">Task state.</param>
         public static void TempTask(bool enable)
         {
-            ScheduledTaskService.DeleteTaskFolders(["Sophia Script", "SophiApp"]);
+            var tempTaskVbs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.vbs");
+            tempTaskVbs.TryDelete();
 
             if (enable)
             {
                 AppNotificationService.EnableToastNotification();
-                AppNotificationService.RegisterAsToastSender("SophiApp");
+                GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableNotificationCenter", LGPOScope.Computer, LGPOScope.User);
+                AppNotificationService.RegisterAsToastSender();
                 ScheduledTaskService.RegisterTempTask();
                 return;
             }

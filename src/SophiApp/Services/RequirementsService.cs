@@ -96,17 +96,11 @@ namespace SophiApp.Services
         private RequirementsResult GetAppNewVersion()
         {
             var latestVersion = dataService.LatestAppRelease?.SophiApp_release ?? new Version(0, 0, 0);
+            dataService.RequirementsResult_1 = latestVersion.ToString();
 
-            if (RunToDebug(nameof(GetAppNewVersion)))
-            {
-                dataService.RequirementsResult_1 = latestVersion.ToString();
-                return RequirementsResult.NewAppVersionFound;
-            }
-
-            if (latestVersion > dataService.AppVersion)
+            if (RunToDebug(nameof(GetAppNewVersion)) || latestVersion > dataService.AppVersion)
             {
                 App.Logger.LogAppNewVersionFound(latestVersion);
-                dataService.RequirementsResult_1 = latestVersion.ToString();
                 return RequirementsResult.NewAppVersionFound;
             }
 
@@ -119,22 +113,15 @@ namespace SophiApp.Services
             var appUserSessionId = Process.GetCurrentProcess().SessionId;
             var explorerUser = Array.Find(array: Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(appUserSessionId));
             var processOwner = instrumentationService.GetProcessOwnerName(explorerUser);
+            dataService.RequirementsResult_1 = processOwner;
+            dataService.RequirementsResult_2 = appUser;
 
             if (RunToDebug(nameof(GetAppRunFromLoggedUser)))
             {
-                dataService.RequirementsResult_1 = processOwner;
-                dataService.RequirementsResult_2 = appUser;
                 return RequirementsResult.LoggedInUserNotAdmin;
             }
 
-            if (processOwner.Equals(appUser))
-            {
-                return RequirementsResult.AllCorrect;
-            }
-
-            dataService.RequirementsResult_1 = processOwner;
-            dataService.RequirementsResult_2 = appUser;
-            return RequirementsResult.LoggedInUserNotAdmin;
+            return processOwner.Equals(appUser) ? RequirementsResult.AllCorrect : RequirementsResult.LoggedInUserNotAdmin;
         }
 
         private RequirementsResult GetHarmfulTweakers()
@@ -216,8 +203,8 @@ namespace SophiApp.Services
 
         private RequirementsResult GetUWPComponents()
         {
-            var clientCBSExist = packagesService.PackageExist("MicrosoftWindows.Client.CBS");
-            var windowsStoreExist = packagesService.PackageExist("Microsoft.WindowsStore");
+            var appxClientCbsExist = packagesService.PackageExist("MicrosoftWindows.Client.CBS");
+            var appxWindowsStoreExist = packagesService.PackageExist("Microsoft.WindowsStore");
 
             if (RunToDebug(nameof(GetUWPComponents)))
             {
@@ -227,7 +214,7 @@ namespace SophiApp.Services
 
             if (dataService.OsProperties.IsLTSC)
             {
-                if (clientCBSExist)
+                if (appxClientCbsExist)
                 {
                     return RequirementsResult.AllCorrect;
                 }
@@ -236,12 +223,12 @@ namespace SophiApp.Services
                 return RequirementsResult.UWPComponentsMissing;
             }
 
-            if (windowsStoreExist && clientCBSExist)
+            if (appxWindowsStoreExist && appxClientCbsExist)
             {
                 return RequirementsResult.AllCorrect;
             }
 
-            dataService.RequirementsResult_1 = string.Format("OsRequirements_UWPComponentsMissing".GetLocalized(), windowsStoreExist ? "MicrosoftWindows.Client.CBS" : "Microsoft.WindowsStore");
+            dataService.RequirementsResult_1 = string.Format("OsRequirements_UWPComponentsMissing".GetLocalized(), appxWindowsStoreExist ? "MicrosoftWindows.Client.CBS" : "Microsoft.WindowsStore");
             return RequirementsResult.UWPComponentsMissing;
         }
 
@@ -389,10 +376,11 @@ namespace SophiApp.Services
 
         private RequirementsResult GetWindowsVersion()
         {
+            dataService.RequirementsResult_1 = dataService.OsProperties.IsLTSC ? "OsRequirements_WrongWindowsVersion_LTSC".GetLocalized() : "OsRequirements_WrongWindowsVersion_1".GetLocalized();
+            dataService.RequirementsResult_2 = $"{dataService.OsProperties.Caption} {dataService.OsProperties.DisplayVersion}";
+
             if (RunToDebug(nameof(GetWindowsVersion)))
             {
-                dataService.RequirementsResult_1 = dataService.OsProperties.IsLTSC ? "OsRequirements_WrongWindowsVersion_LTSC".GetLocalized() : "OsRequirements_WrongWindowsVersion_1".GetLocalized();
-                dataService.RequirementsResult_2 = $"{dataService.OsProperties.Caption} {dataService.OsProperties.DisplayVersion}";
                 return RequirementsResult.WrongWindowsVersion;
             }
 
@@ -401,32 +389,31 @@ namespace SophiApp.Services
                 return RequirementsResult.AllCorrect;
             }
 
-            dataService.RequirementsResult_1 = dataService.OsProperties.IsLTSC ? "OsRequirements_WrongWindowsVersion_LTSC".GetLocalized() : "OsRequirements_WrongWindowsVersion_1".GetLocalized();
-            dataService.RequirementsResult_2 = $"{dataService.OsProperties.Caption} {dataService.OsProperties.DisplayVersion}";
             return RequirementsResult.WrongWindowsVersion;
         }
 
         private RequirementsResult GetWindowsBuild()
         {
+            dataService.RequirementsResult_1 = string.Format("OsRequirements_UpdateWindowsBuild_1".GetLocalized(), dataService.OsProperties.Build, dataService.SupportedUBR.Win11);
+            dataService.RequirementsResult_2 = string.Format("OsRequirements_UpdateWindowsBuild_2".GetLocalized(), dataService.OsProperties.DisplayVersion, dataService.OsProperties.Build, dataService.OsProperties.UBR);
+
             if (RunToDebug(nameof(GetWindowsBuild)))
             {
-                settingsService.SaveDebugRequirementActionAsync(string.Empty);
-                dataService.RequirementsResult_1 = string.Format("OsRequirements_UpdateWindowsBuild_1".GetLocalized(), dataService.OsProperties.Build, dataService.SupportedUBR.Win11);
-                dataService.RequirementsResult_2 = string.Format("OsRequirements_UpdateWindowsBuild_2".GetLocalized(), dataService.OsProperties.DisplayVersion, dataService.OsProperties.Build, dataService.OsProperties.UBR);
+                return RequirementsResult.UpdateWindowsBuild;
+            }
+
+            if (dataService.OsProperties.IsLTSC && dataService.OsProperties.Build != 26100)
+            {
                 return RequirementsResult.UpdateWindowsBuild;
             }
 
             if (dataService.OsProperties.Build < 26200)
             {
-                dataService.RequirementsResult_1 = string.Format("OsRequirements_UpdateWindowsBuild_1".GetLocalized(), dataService.OsProperties.Build, dataService.SupportedUBR.Win11);
-                dataService.RequirementsResult_2 = string.Format("OsRequirements_UpdateWindowsBuild_2".GetLocalized(), dataService.OsProperties.DisplayVersion, dataService.OsProperties.Build, dataService.OsProperties.UBR);
                 return RequirementsResult.UpdateWindowsBuild;
             }
 
-            if (dataService.OsProperties.Build == 26200 && dataService.OsProperties.UBR < dataService.SupportedUBR.Win11)
+            if (dataService.OsProperties.UBR < (dataService.OsProperties.IsLTSC ? dataService.SupportedUBR.Win11LTSC : dataService.SupportedUBR.Win11))
             {
-                dataService.RequirementsResult_1 = string.Format("OsRequirements_UpdateWindowsBuild_1".GetLocalized(), dataService.OsProperties.Build, dataService.SupportedUBR.Win11);
-                dataService.RequirementsResult_2 = string.Format("OsRequirements_UpdateWindowsBuild_2".GetLocalized(), dataService.OsProperties.DisplayVersion, dataService.OsProperties.Build, dataService.OsProperties.UBR);
                 return RequirementsResult.UpdateWindowsBuild;
             }
 

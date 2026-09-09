@@ -12,19 +12,6 @@ namespace SophiApp.Contracts.Services
     public interface IScheduledTaskService
     {
         /// <summary>
-        /// Deletes tasks and folder in the Task Scheduler.
-        /// </summary>
-        /// <param name="folders">Names of folders to delete.</param>
-        void DeleteTaskFolders(string[] folders);
-
-        /// <summary>
-        /// Get task or null by specified names.
-        /// </summary>
-        /// <param name="names">Task names to be searched.</param>
-        /// <param name="searchAllFolders">If set to true search all sub folders.</param>
-        IEnumerable<Task?> FindTaskOrDefault(string[] names, bool searchAllFolders = true);
-
-        /// <summary>
         /// Get task or null by specified names.
         /// </summary>
         /// <param name="name">Task name to be searched.</param>

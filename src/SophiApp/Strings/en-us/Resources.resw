@@ -232,7 +232,7 @@
     <value>Checking Microsoft Defender components status...</value>
   </data>
   <data name="OsRequirements_ReadWindowsSettings" xml:space="preserve">
-    <value>Reading Windows settings</value>
+    <value>Reading Windows settings...</value>
   </data>
   <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
     <value>Enable telemetry related service (DiagTrack)</value>
@@ -979,7 +979,7 @@
     <value>Checking UWP components status...</value>
   </data>
   <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
-    <value>Generating UI</value>
+    <value>Generating UI...</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
     <value>Run</value>
@@ -1102,7 +1102,7 @@
     <value>Open log folder</value>
   </data>
   <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
-    <value>Obtaining data from the Internet</value>
+    <value>Obtaining data from the Internet...</value>
   </data>
   <data name="OsRequirements_Malware_CrystalCry" xml:space="preserve">
     <value>CrystalCry</value>
@@ -1147,7 +1147,7 @@
     <value>No</value>
   </data>
   <data name="Button_OpenDefenderControlledFolderSettings.Content" xml:space="preserve">
-    <value>Open Controlled folder access settings</value>
+    <value>Open Controlled Folder access settings</value>
   </data>
   <data name="OsRequirements_UnsupportedArchitecture_1" xml:space="preserve">
     <value>You're using "{0}" based CPU architecture.</value>
@@ -1183,10 +1183,10 @@
     <value>An instability issue has been detected in the Microsoft Defender component.</value>
   </data>
   <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
-    <value>Checking Controlled folder access status...</value>
+    <value>Checking Controlled Folder access status...</value>
   </data>
   <data name="OsRequirements_DisableControlledFolderAccessPanel_1.Text" xml:space="preserve">
-    <value>You have Controlled folder access enabled.</value>
+    <value>You have Controlled Folder access enabled.</value>
   </data>
   <data name="OsRequirements_DisableControlledFolderAccessPanel_2.Text" xml:space="preserve">
     <value>Please disable it and run SophiApp again.</value>

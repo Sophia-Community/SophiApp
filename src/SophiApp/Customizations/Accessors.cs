@@ -27,7 +27,6 @@ namespace SophiApp.Customizations
         private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly IOneDriveService OneDriveService = App.GetService<IOneDriveService>();
-        private static readonly IOsService OsService = App.GetService<IOsService>();
         private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
         private static readonly IProcessService ProcessService = App.GetService<IProcessService>();
         private static readonly IScheduledTaskService ScheduledTaskService = App.GetService<IScheduledTaskService>();
@@ -1117,63 +1116,43 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Get scheduled task "Windows Cleanup" state.
+        /// Get Windows Cleanup scheduled task state.
         /// </summary>
         public static bool CleanupTask()
         {
-            if (!OsService.VBSInstalled())
-            {
-                throw new InvalidOperationException("VBSCRIPT component is not installed");
-            }
-
-            var cleanupTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\Windows Cleanup");
-
-            if (cleanupTask is not null && cleanupTask.Definition.Principal.UserId != Environment.UserName)
-            {
-                throw new InvalidOperationException($"The Windows Cleanup scheduled task was already created as {cleanupTask.Definition.Principal.UserId}");
-            }
-
-            return cleanupTask is not null && cleanupTask.State != TaskState.Disabled && cleanupTask.State != TaskState.Unknown;
+            var cleanupTaskExist = ScheduledTaskService.GetTaskOrDefault("Sophia\\Windows Cleanup") is not null;
+            var notificationTaskExist = ScheduledTaskService.GetTaskOrDefault("Sophia\\Windows Cleanup Notification") is not null;
+            var cleanupPsExist = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1"));
+            var notificationPsExist = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1"));
+            var cleanupXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows Cleanup"));
+            var notificationXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows Cleanup Notification"));
+            var cleanupArgumentsPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1")}";
+            var notificationTaskPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1")}";
+            return cleanupTaskExist && notificationTaskExist && cleanupPsExist && notificationPsExist && (cleanupXmlArguments?.InnerText.Equals(cleanupArgumentsPattern) ?? false) && (notificationXmlArguments?.InnerText?.Equals(notificationTaskPattern) ?? false);
         }
 
         /// <summary>
-        /// Get scheduled task "SoftwareDistribution" state.
+        /// Get SoftwareDistribution scheduled task state.
         /// </summary>
         public static bool SoftwareDistributionTask()
         {
-            if (!OsService.VBSInstalled())
-            {
-                throw new InvalidOperationException("VBSCRIPT component is not installed");
-            }
-
-            var distributionTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\SoftwareDistribution");
-
-            if (distributionTask is not null && distributionTask.Definition.Principal.UserId != Environment.UserName)
-            {
-                throw new InvalidOperationException($"The SoftwareDistribution scheduled task was already created as {distributionTask.Definition.Principal.UserId}");
-            }
-
-            return distributionTask is not null && distributionTask.State != TaskState.Disabled && distributionTask.State != TaskState.Unknown;
+            var distributionTaskExist = ScheduledTaskService.GetTaskOrDefault("Sophia\\SoftwareDistribution") is not null;
+            var distributionPsExist = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1"));
+            var distributionXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistribution"));
+            var distributionTaskPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1")}";
+            return distributionTaskExist && distributionPsExist && (distributionXmlArguments?.InnerText.Equals(distributionTaskPattern) ?? false);
         }
 
         /// <summary>
-        /// Get scheduled task "Temp" state.
+        /// Get "Temp" scheduled task state.
         /// </summary>
         public static bool TempTask()
         {
-            if (!OsService.VBSInstalled())
-            {
-                throw new InvalidOperationException("VBSCRIPT component is not installed");
-            }
-
-            var tempTask = ScheduledTaskService.GetTaskOrDefault("Sophia\\Temp");
-
-            if (tempTask is not null && tempTask.Definition.Principal.UserId != Environment.UserName)
-            {
-                throw new InvalidOperationException($"The Temp scheduled task was already created as {tempTask.Definition.Principal.UserId}");
-            }
-
-            return tempTask is not null && tempTask.State != TaskState.Disabled && tempTask.State != TaskState.Unknown;
+            var tempTaskExist = ScheduledTaskService.GetTaskOrDefault("Sophia\\Temp") is not null;
+            var tempPsExist = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1"));
+            var tempXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Temp"));
+            var tempTaskPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1")}";
+            return tempTaskExist && tempPsExist && (tempXmlArguments?.InnerText.Equals(tempTaskPattern) ?? false);
         }
 
         /// <summary>

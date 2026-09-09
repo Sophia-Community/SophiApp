@@ -15,15 +15,14 @@ public interface IAppNotificationService
     void EnableToastNotification();
 
     /// <summary>
-    /// Register the app by <paramref name="name"/> as a toast sender.
+    /// Register the SophiApp and Sophia Script for Windows as a toast sender.
     /// </summary>
-    /// <param name="name">Name of the app to be registered.</param>
-    void RegisterAsToastSender(string name);
+    void RegisterAsToastSender();
 
     /// <summary>
-    /// Register Windows cleanup protocol to run via toast notification.
+    /// Register the "WindowsCleanup" protocol to be able to run the scheduled task by clicking the "Run" button in a toast.
     /// </summary>
-    void RegisterCleanupProtocolAsToastSender();
+    void RegisterWindowsCleanupAsToastSender();
 
     /// <summary>
     /// Unregister Windows cleanup protocol to run via toast notification.

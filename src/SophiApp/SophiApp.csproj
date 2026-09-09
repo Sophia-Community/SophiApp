@@ -18,7 +18,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPublishable>True</IsPublishable>
-    <Version>2.901.0</Version>
+    <Version>2.909.0</Version>
     <UseWinUI>true</UseWinUI>
     <StartupObject>SophiApp.Program</StartupObject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
