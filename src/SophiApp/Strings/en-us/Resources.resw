@@ -244,7 +244,7 @@
     <value>Configure Windows level of diagnostic data gathering</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
-    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available on the system). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title_1" xml:space="preserve">
     <value>Default</value>
@@ -322,7 +322,7 @@
     <value>Enable Bing search in Start Menu</value>
   </data>
   <data name="UIModel_BingSearch_Description" xml:space="preserve">
-    <value>In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available on the system). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_ThisPC_Title" xml:space="preserve">
     <value>Show "This PC" icon on Desktop</value>
@@ -487,7 +487,7 @@
     <value>Default</value>
   </data>
   <data name="UIModel_JPEGWallpapersQuality_Description" xml:space="preserve">
-    <value>When you set a JPEG image as the desktop wallpaper or slideshow, the operating system reduces the quality of the original image to 85%. A PNG image as your desktop background wallpaper or slideshow is not affected.</value>
+    <value>When you set a JPEG image as the desktop wallpaper or slideshow, Windows reduces the quality of the original image to 85%. A PNG image as your desktop background wallpaper or slideshow is not affected.</value>
   </data>
   <data name="UIModel_ShortcutsSuffix_Title" xml:space="preserve">
     <value>Add the "- Shortcut" suffix to filenames of new shortcuts you create</value>
@@ -568,13 +568,13 @@
     <value>Enable Storage Sense</value>
   </data>
   <data name="UIModel_StorageSense_Description" xml:space="preserve">
-    <value>Automatically free up space and delete temporary files. Storage Sense runs when disk space is low. We clean enough space to help your system runs its best.</value>
+    <value>Automatically free up space and delete temporary files using a built-in Windows cleanup when disk space is low.</value>
   </data>
   <data name="UIModel_Hibernation_Title" xml:space="preserve">
     <value>Enable hibernation</value>
   </data>
   <data name="UIModel_Hibernation_Description" xml:space="preserve">
-    <value>Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to C:\hiberfil.sys file, and turns off your computer. By default, the size of hidden system protected file C:\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. Not recommended to turn off for laptops.</value>
+    <value>Hibernate is a power-saving state used primarily for laptops. Unlike sleep, hibernation puts your open documents and programs on the system drive to %SystemRoot%\hiberfil.sys file, and turns off your computer. By default, the size of hidden system protected file %SystemRoot%\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and hibernate will no longer show in the Power menu. Not recommended to turn off for laptops.</value>
   </data>
   <data name="UIModel_Win32LongPathsSupport_Title" xml:space="preserve">
     <value>Enable Windows long paths support</value>
@@ -793,13 +793,13 @@
     <value>Remove Windows AI</value>
   </data>
   <data name="UIModel_RemoveWindowsAI_Description" xml:space="preserve">
-    <value>Disable Windows AI functions. If your CPU has no a built-in NPU, it doesn't support any Windows AI functions. None of GPO policies will be applied except removing Recall function and Copilot application.</value>
+    <value>Disable Windows AI functions. If your PC does not have a built-in AI accelerator (NPU), there's no Windows AI related functions support. None of policies will be applied except removing Recall function and Copilot application.</value>
   </data>
   <data name="UIModel_RegistryBackup_Title" xml:space="preserve">
     <value>Enable automatic backup of the Windows registry</value>
   </data>
   <data name="UIModel_RegistryBackup_Description" xml:space="preserve">
-    <value>Starting from Windows 10 version 1803, Windows no longer automatically backs up the system registry to %SystemRoot%\System32\config\RegBack folder. Enabling registry backups may help you restore Windows in extreme cases.</value>
+    <value>Starting from Windows 10 version 1803, Windows no longer automatically backs up the Windows registry to %SystemRoot%\System32\config\RegBack folder. Enabling registry backups may help you restore Windows in extreme cases.</value>
   </data>
   <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
     <value>Choose UWP app to uninstall. UWP apps list is rendered in real-time with their native icon logos taken from Windows. That means that the UWP apps list is not pre-prepared like in other similar apps.</value>
@@ -835,10 +835,10 @@
     <value>This function creates "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks in Sophia folder of the Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before cleanup begins. Task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanup_Description" xml:space="preserve">
-    <value>Cleaning up Windows unused files and updates using built-in Disk cleanup app. Scheduled task can be run only if user {0} logged into the system.</value>
+    <value>Cleaning up Windows unused files and updates using built-in Disk cleanup app. Scheduled task can be run only if user "{0}" logged into the system.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupNotification_Description" xml:space="preserve">
-    <value>Pop-up notification reminder about cleaning up Windows unused files and updates. Scheduled task can be run only if user {0} logged into the system.</value>
+    <value>Pop-up notification reminder about cleaning up Windows unused files and updates. Scheduled task can be run only if user "{0}" logged into the system.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupToast_Description" xml:space="preserve">
     <value>Run task to clean up Windows unused files and updates?</value>
@@ -853,7 +853,7 @@
     <value>This function creates "SoftwareDistribution" task in Sophia folder of the Task Scheduler to clean up %SystemRoot%\SoftwareDistribution\Download folder where Windows updates installation files are downloaded. Task will wait until Windows Update service has finished running. Task runs every 90 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
-    <value>%SystemRoot%\SoftwareDistribution\Download folder cleanup. Scheduled task can be run only if user {0} logged into the system.</value>
+    <value>%SystemRoot%\SoftwareDistribution\Download folder cleanup. Scheduled task can be run only if user "{0}" logged into the system.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistributionToast_Title" xml:space="preserve">
     <value>Windows update cache successfully deleted.</value>
@@ -868,7 +868,7 @@
     <value>Temporary files folder successfully cleaned up.</value>
   </data>
   <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
-    <value>%TEMP% folder cleanup. Scheduled task can be run only if user {0} logged into the system.</value>
+    <value>%TEMP% folder cleanup. Scheduled task can be run only if user "{0}" logged into the system.</value>
   </data>
   <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
     <value>Open Task Scheduler</value>
@@ -907,7 +907,7 @@
     <value>Mark files that have been downloaded from the Internet as unsafe</value>
   </data>
   <data name="UIModel_SaveZoneInformation_Description" xml:space="preserve">
-    <value>Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If Attachment Manager identifies an attachment that might be unsafe, Attachment Manager prevents (blocks) you from opening file, or it warns you before you open file. Metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock". In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available on the system). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If Attachment Manager identifies an attachment that might be unsafe, Attachment Manager prevents (blocks) you from opening file, or it warns you before you open file. Metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock". In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_WindowsSandbox_Title" xml:space="preserve">
     <value>Enable Windows Sandbox</value>
@@ -955,7 +955,7 @@
     <value>Show "Look for an app in the Microsoft Store" items in the "Open with" dialog</value>
   </data>
   <data name="UIModel_UseStoreOpenWith_Description" xml:space="preserve">
-    <value>In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available on the system). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_OpenWindowsTerminalContext_Title" xml:space="preserve">
     <value>Show "Open in Windows Terminal" item in the folders context menu</value>
@@ -1102,7 +1102,7 @@
     <value>Open log folder</value>
   </data>
   <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
-    <value>Obtaining data from the Internet...</value>
+    <value>Getting data from the Internet...</value>
   </data>
   <data name="OsRequirements_Malware_CrystalCry" xml:space="preserve">
     <value>CrystalCry</value>

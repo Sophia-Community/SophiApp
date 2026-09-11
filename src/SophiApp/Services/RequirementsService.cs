@@ -57,7 +57,7 @@ namespace SophiApp.Services
             new (action: GetHarmfulTweakers, displayText: "OsRequirements_GetHarmfulTweaker".GetLocalized()),
             new (action: GetHostFileEntries, displayText: "OsRequirements_GetHostFileEntries".GetLocalized()),
             new (action: GetUWPComponents, displayText: "OsRequirements_GetUWPComponents".GetLocalized()),
-            new (action:GetDefenderComponents, displayText: "OsRequirements_GetDefenderComponents".GetLocalized()),
+            new (action: GetDefenderComponents, displayText: "OsRequirements_GetDefenderComponents".GetLocalized()),
             new (action: GetDefenderProperties, displayText: "OsRequirements_GetDefenderProperties".GetLocalized()),
             new (action: GetControlledFolderAccess, displayText: "OsRequirements_GetControlledFolderAccess".GetLocalized()),
             new (action: GetRebootPending, displayText: "OsRequirements_GetRebootPending".GetLocalized()),
