@@ -46,7 +46,7 @@ namespace SophiApp.Customizations
         public static void DiagTrackService(bool enable)
         {
             // Connected User Experiences and Telemetry
-            // Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub
+            // Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get XBOX achievements anymore and affects Feedback Hub
             var diagTrackService = new System.ServiceProcess.ServiceController("DiagTrack");
             var firewallRule = FirewallService.GetGroupRules("DiagTrack").First();
 
@@ -482,10 +482,10 @@ namespace SophiApp.Customizations
         /// <param name="enable">Quick access files state.</param>
         public static void QuickAccessRecentFiles(bool enable)
         {
-            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\Explorer", "NoRecentDocsHistory");
-            GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory");
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoRecentDocsHistory");
+            GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoRecentDocsHistory");
             // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
-            GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "NoRecentDocsHistory", LGPOScope.Computer, LGPOScope.User);
+            GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory", LGPOScope.Computer, LGPOScope.User);
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.SetValue("ShowRecent", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
@@ -559,6 +559,7 @@ namespace SophiApp.Customizations
             {
                 Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Search", true)?.DeleteValue("BingSearchEnabled", false);
                 Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("DisableSearchBoxSuggestions", false);
+                GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions");
             }
 
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings", true)
@@ -943,9 +944,9 @@ namespace SophiApp.Customizations
         /// <param name="enable">One Drive state.</param>
         public static void OneDrive(bool enable)
         {
-            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
             // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
-            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
 
             if (enable)
             {
@@ -1512,20 +1513,20 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Set Xbox game bar state.
+        /// Set XBOX game bar state.
         /// </summary>
-        /// <param name="enable">Xbox game bar state.</param>
-        public static void XboxGameBar(bool enable)
+        /// <param name="enable">XBOX game bar state.</param>
+        public static void XBOXGameBar(bool enable)
         {
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", true)?.SetValue("AppCaptureEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
             Registry.CurrentUser.OpenSubKey("System\\GameConfigStore", true)?.SetValue("GameDVR_Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
-        /// Set Xbox game tips state.
+        /// Set XBOX game tips state.
         /// </summary>
-        /// <param name="enable">Xbox game tips state.</param>
-        public static void XboxGameTips(bool enable)
+        /// <param name="enable">XBOX game tips state.</param>
+        public static void XBOXGameTips(bool enable)
         {
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar", true)?.SetValue("ShowStartupPanel", enable ? 1 : 0, RegistryValueKind.DWord);
         }

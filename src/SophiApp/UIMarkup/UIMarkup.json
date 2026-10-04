@@ -728,7 +728,7 @@
         "Windows11": "True"
     },
     {
-        "Name": "XboxGameBar",
+        "Name": "XBOXGameBar",
         "Type": "CheckBox",
         "Tag": "Gaming",
         "ViewId": 400,
@@ -736,7 +736,7 @@
         "Windows11": "True"
     },
     {
-        "Name": "XboxGameTips",
+        "Name": "XBOXGameTips",
         "Type": "CheckBox",
         "Tag": "Gaming",
         "ViewId": 401,

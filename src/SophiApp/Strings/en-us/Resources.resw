@@ -238,7 +238,7 @@
     <value>Enable telemetry related service (DiagTrack)</value>
   </data>
   <data name="UIModel_DiagTrackService_Description" xml:space="preserve">
-    <value>Configure "Connected User Experiences and Telemetry" (DiagTrack) service and connection for the Unified Telemetry Client Outbound Traffic. Disabling "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get Xbox achievements anymore and affects Feedback Hub.</value>
+    <value>Configure "Connected User Experiences and Telemetry" (DiagTrack) service and connection for the Unified Telemetry Client Outbound Traffic. Disabling "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get XBOX achievements anymore and affects Feedback Hub.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title" xml:space="preserve">
     <value>Configure Windows level of diagnostic data gathering</value>
@@ -810,14 +810,14 @@
   <data name="UwpPage_ForAllUsers.Text" xml:space="preserve">
     <value>Show packages for all users</value>
   </data>
-  <data name="UIModel_XboxGameBar_Title" xml:space="preserve">
-    <value>Enable Xbox Game Bar</value>
+  <data name="UIModel_XBOXGameBar_Title" xml:space="preserve">
+    <value>Enable XBOX Game Bar</value>
   </data>
-  <data name="UIModel_XboxGameBar_Description" xml:space="preserve">
-    <value>Disable Xbox Game Bar app (even if you uninstalled it before) to prevent a popup message "You'll need a new app to open this ms-gamingoverlay".</value>
+  <data name="UIModel_XBOXGameBar_Description" xml:space="preserve">
+    <value>Disable XBOX Game Bar app (even if you uninstalled it before) to prevent a popup message "You'll need a new app to open this ms-gamingoverlay".</value>
   </data>
-  <data name="UIModel_XboxGameTips_Title" xml:space="preserve">
-    <value>Xbox Game Bar tips</value>
+  <data name="UIModel_XBOXGameTips_Title" xml:space="preserve">
+    <value>XBOX Game Bar tips</value>
   </data>
   <data name="UIModel_GPUScheduling_Title" xml:space="preserve">
     <value>Enable Hardware-accelerated GPU scheduling</value>

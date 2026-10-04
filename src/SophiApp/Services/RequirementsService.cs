@@ -157,7 +157,7 @@ namespace SophiApp.Services
                 // https://github.com/es3n1n/defendnot
                 { "OsRequirements_Malware_Defendnot", () => Directory.Exists($"{system32}\\Tasks\\defendnot") },
                 // https://github.com/zoicware/RemoveWindowsAI
-                { "OsRequirements_Malware_RemoveWindowsAI", () => Directory.GetDirectories(path: $"{system32}\\CatRoot", searchPattern: "ZoicwareRemoveWindowsAI*", searchOption: SearchOption.AllDirectories).Length > 0 },
+                { "OsRequirements_Malware_RemoveWindowsAI", () => Registry.LocalMachine.OpenSubKey("SOFTWARE\\RemoveWindowsAI") is not null },
                 // https://forum.ru-board.com/topic.cgi?forum=62&topic=30617&start=1600#14
                 {
                     "OsRequirements_Malware_AutoSettingsPS", () =>

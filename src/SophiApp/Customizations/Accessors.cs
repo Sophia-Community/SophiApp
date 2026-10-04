@@ -1063,9 +1063,9 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Xbox game bar state.
+        /// Gets XBOX game bar state.
         /// </summary>
-        public static bool XboxGameBar()
+        public static bool XBOXGameBar()
         {
             var appCaptureIsEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR")
                 ?.GetValue("AppCaptureEnabled") as int? ?? -1;
@@ -1081,9 +1081,9 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Gets Xbox game tips state.
+        /// Gets XBOX game tips state.
         /// </summary>
-        public static bool XboxGameTips()
+        public static bool XBOXGameTips()
         {
             if (AppxPackagesService.PackageExist("Microsoft.GamingApp"))
             {

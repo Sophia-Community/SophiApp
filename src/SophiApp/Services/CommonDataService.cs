@@ -129,7 +129,7 @@ namespace SophiApp.Services
         {
             try
             {
-                LatestAppRelease = await httpService.GetFromJsonAsync<AppVersion>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/master/sophiapp_versions.json", 5);
+                LatestAppRelease = await httpService.GetFromJsonAsync<AppVersion>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-SophiApp2/SophiApp_Releases.json", 5);
             }
             catch
             {
