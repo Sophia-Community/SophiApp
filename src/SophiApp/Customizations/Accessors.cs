@@ -401,7 +401,7 @@ namespace SophiApp.Customizations
             var searchSuggestions = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
 
             // Checking whether "Ask Copilot" and "Find results in Web" were disabled. They also disable Search Highlights automatically
-            if (searchEnabled.Equals(1) || searchSuggestions.Equals(1))
+            if (searchEnabled.Equals(0) || searchSuggestions.Equals(1))
             {
                 throw new InvalidOperationException($"Search highlights already hidden.");
             }
@@ -701,7 +701,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool Hibernation()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Power")
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Power")
                 ?.GetValue("HibernateEnabled") as int? ?? -1;
             return isEnabled.Equals(1);
         }
@@ -711,7 +711,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool Win32LongPathsSupport()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\FileSystem")?.GetValue("LongPathsEnabled") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem")?.GetValue("LongPathsEnabled") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -720,7 +720,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool BSoDStopError()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\CrashControl")?.GetValue("DisplayParameters") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\CrashControl")?.GetValue("DisplayParameters") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -875,7 +875,7 @@ namespace SophiApp.Customizations
         public static bool CapsLock()
         {
             var scancodeMap = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 };
-            var isEnabled = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Keyboard Layout")?.GetValue("Scancode Map") as byte[] ?? [];
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout")?.GetValue("Scancode Map") as byte[] ?? [];
             return !isEnabled.SequenceEqual(scancodeMap);
         }
 
@@ -933,7 +933,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RegistryBackup()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager")
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager")
                 ?.GetValue("EnablePeriodicBackup") as int? ?? -1;
             return isEnabled.Equals(1);
         }
@@ -1103,12 +1103,12 @@ namespace SophiApp.Customizations
             // Determining whether PC has an external graphics card
             var isExternalDAC = InstrumentationService.DetectDACType();
             var isVM = InstrumentationService.DetectVM();
-            var wddmVersion = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\GraphicsDrivers\\FeatureSetUsage")?.GetValue("WddmVersion_Min") as int? ?? -1;
+            var wddmVersion = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers\\FeatureSetUsage")?.GetValue("WddmVersion_Min") as int? ?? -1;
 
             // Checking whether a WDDM verion is 2.7 or higher
             if (isExternalDAC && !isVM && wddmVersion >= WDDMMinimalVersion)
             {
-                var hwSchMode = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\GraphicsDrivers")?.GetValue("HwSchMode") as int? ?? -1;
+                var hwSchMode = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers")?.GetValue("HwSchMode") as int? ?? -1;
                 return hwSchMode == 2;
             }
 
@@ -1227,6 +1227,7 @@ else
             var moduleLoggingEnabled = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging")?.GetValue("EnableModuleLogging") as int? ?? -1;
             var powerShellAsterisk = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames")?.GetValue("*") as string ?? string.Empty;
             var scriptLoggingEnabled = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging")?.GetValue("EnableScriptBlockLogging") as int? ?? -1;
+
             return inclusionSettingEnabled && processCreationEnabled.Equals(1) && eventQueryCount.Equals(3) && moduleLoggingEnabled.Equals(1) && powerShellAsterisk.Equals("*") && scriptLoggingEnabled.Equals(1);
         }
 
@@ -1297,8 +1298,8 @@ else
         {
             var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationFirmwareIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
             var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
-            var runAsPPL = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPL") ?? -1;
-            var runAsPPLBoot = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPLBoot") ?? -1;
+            var runAsPPL = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPL") ?? -1;
+            var runAsPPLBoot = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPLBoot") ?? -1;
             var runAsPPLPolicy = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System")?.GetValue("RunAsPPL") ?? -1;
 
             if (virtualizationIsEnabled)

@@ -407,7 +407,7 @@ namespace SophiApp.Services
                 return RequirementsResult.UpdateWindowsBuild;
             }
 
-            if (dataService.OsProperties.Build < 26200)
+            if (dataService.OsProperties.Build < 26300)
             {
                 return RequirementsResult.UpdateWindowsBuild;
             }

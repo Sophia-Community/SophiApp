@@ -238,13 +238,13 @@
     <value>Enable telemetry related service (DiagTrack)</value>
   </data>
   <data name="UIModel_DiagTrackService_Description" xml:space="preserve">
-    <value>Configure "Connected User Experiences and Telemetry" (DiagTrack) service and connection for the Unified Telemetry Client Outbound Traffic. Disabling "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get XBOX achievements anymore and affects Feedback Hub.</value>
+    <value>Configure "Connected User Experiences and Telemetry" (DiagTrack) service and connection for the Unified Telemetry Client Outbound Traffic. Disabling "Connected User Experiences and Telemetry" service (DiagTrack) may prevent you from getting XBOX achievements and affects Feedback Hub.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title" xml:space="preserve">
     <value>Configure Windows level of diagnostic data gathering</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
-    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title_1" xml:space="preserve">
     <value>Default</value>
@@ -274,22 +274,22 @@
     <value>Enable diagnostic tracking tasks</value>
   </data>
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
-    <value>Enable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, StartupAppTask, ProgramDataUpdater, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask, FamilySafetyMonitor, FamilySafetyRefreshTask, XblGameSaveTask.</value>
+    <value>Enable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, StartupAppTask, ProgramDataUpdater, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask, FamilySafetyMonitor, FamilySafetyRefreshTask, XblGameSaveTask.</value>
   </data>
   <data name="UIModel_SigninInfo_Title" xml:space="preserve">
     <value>Use sign-in info to automatically finish setting up device after an update</value>
   </data>
   <data name="UIModel_SigninInfo_Description" xml:space="preserve">
-    <value>Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing update, which means you might not be able to use your PC until update is finished. Windows helps prevents this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
+    <value>Some updates require you to restart your PC and afterwards sign in to Windows in order to finish installing update, which means you might not be able to use your PC until update is finished. Windows helps prevent this by allowing Windows to use your sign in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
   </data>
   <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
-    <value>Let websites show me locally relevant content by accessing language my list</value>
+    <value>Let websites show me locally relevant content by accessing my language list</value>
   </data>
   <data name="UIModel_AdvertisingID_Title" xml:space="preserve">
     <value>Let apps show me personalized ads by using my advertising ID</value>
   </data>
   <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
-    <value>Show Windows welcome experiences after updates and occasionally when signed in to show what's new suggested</value>
+    <value>Show Windows welcome experiences after updates and occasionally when signed in to highlight what's new and suggested</value>
   </data>
   <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
     <value>Windows may open a pop-up window to show you what's new about the operating system.</value>
@@ -316,13 +316,13 @@
     <value>Enable tailored experiences</value>
   </data>
   <data name="UIModel_TailoredExperiences_Description" xml:space="preserve">
-    <value>Let Microsoft offer you tailored expereinces based on diagnostic data setting you have chosen.</value>
+    <value>Let Microsoft offer you tailored experiences based on the diagnostic data setting you have chosen.</value>
   </data>
   <data name="UIModel_BingSearch_Title" xml:space="preserve">
     <value>Enable Bing search in Start Menu</value>
   </data>
   <data name="UIModel_BingSearch_Description" xml:space="preserve">
-    <value>In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>By default, when you use search in the Start menu, it also includes web results from Bing. In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_ThisPC_Title" xml:space="preserve">
     <value>Show "This PC" icon on Desktop</value>
@@ -391,7 +391,7 @@
     <value>Show widgets icon on the taskbar</value>
   </data>
   <data name="UIModel_TaskbarWidgets_Description" xml:space="preserve">
-    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+    <value>Changes will be made via Windows API without disabling the UCPD driver.</value>
   </data>
   <data name="UIModel_TaskbarSearch_Title" xml:space="preserve">
     <value>Search button on the taskbar</value>
@@ -409,13 +409,13 @@
     <value>Search box</value>
   </data>
   <data name="UIModel_TaskbarSearch_Description" xml:space="preserve">
-    <value>Changes will be made via Windows API without disabling an UCDP driver.</value>
+    <value>Changes will be made via Windows API without disabling the UCPD driver.</value>
   </data>
   <data name="UIModel_SearchHighlights_Title" xml:space="preserve">
     <value>Show search highlights</value>
   </data>
   <data name="UIModel_SearchHighlights_Description" xml:space="preserve">
-    <value>By default, when you use search, it also includes web results from Bing.</value>
+    <value>Search highlights show notable and interesting moments of the day, such as holidays and anniversaries, in the search box and on the search home page.</value>
   </data>
   <data name="UIModel_TaskViewButton_Title" xml:space="preserve">
     <value>Show Task view button on the taskbar</value>
@@ -427,7 +427,7 @@
     <value>Show time in Notification Center</value>
   </data>
   <data name="UIModel_TaskbarCombine_Title" xml:space="preserve">
-    <value>When the taskbar is full, combine taskbar buttons and hide labels</value>
+    <value>Combine taskbar buttons and hide labels</value>
   </data>
   <data name="UIModel_TaskbarCombine_Title_1" xml:space="preserve">
     <value>Always</value>
@@ -478,7 +478,7 @@
     <value>In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the first sign-in animation that features several messages to configure the account environment.</value>
   </data>
   <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
-    <value>Enable desktop wallpaper JPEG quality reduction</value>
+    <value>Desktop wallpaper JPEG quality</value>
   </data>
   <data name="UIModel_JPEGWallpapersQuality_Title_1" xml:space="preserve">
     <value>Max</value>
@@ -502,7 +502,7 @@
     <value>Title bar windows shake</value>
   </data>
   <data name="UIModel_AeroShaking_Description" xml:space="preserve">
-    <value>When I grab a windows's title bar and shake it, minimize all other windows</value>
+    <value>When I grab a window's title bar and shake it, minimize all other windows</value>
   </data>
   <data name="UIModel_Cursors_Title" xml:space="preserve">
     <value>Install Windows 11 cursors from Jepri Creations</value>
@@ -520,7 +520,7 @@
     <value>Install "Windows 11 Cursors Concept v2" cursors from Jepri Creations on-the-fly. Internet connection required. https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356</value>
   </data>
   <data name="UIModel_FolderGroupBy_Title" xml:space="preserve">
-    <value>Group files and folder by date modified in the Downloads folder</value>
+    <value>Group files and folders by date modified in the Downloads folder</value>
   </data>
   <data name="UIModel_FolderGroupBy_Title_1" xml:space="preserve">
     <value>None</value>
@@ -580,13 +580,13 @@
     <value>Enable Windows long paths support</value>
   </data>
   <data name="UIModel_Win32LongPathsSupport_Description" xml:space="preserve">
-    <value>By default, the maximum path length limit in Windows is 260 characters. Enabling Win32 long paths removes restrictions when attempting to create, save, copy, or move folders/files with paths exceeding the limit. You won't encounter with an error "Path too long".</value>
+    <value>By default, the maximum path length limit in Windows is 260 characters. Enabling Win32 long paths removes restrictions when attempting to create, save, copy, or move folders/files with paths exceeding the limit. You won't encounter the "Path too long" error.</value>
   </data>
   <data name="UIModel_BSoDStopError_Title" xml:space="preserve">
     <value>Display Stop error code when BSoD occurs</value>
   </data>
   <data name="UIModel_BSoDStopError_Description" xml:space="preserve">
-    <value>By default, Windows does not display a Stop error code when a BSoD occurs, which helps to identify the causes of a BSoD.</value>
+    <value>By default, Windows does not display a Stop error code when a BSoD occurs. Displaying the code helps to identify the cause of a BSoD.</value>
   </data>
   <data name="UIModel_AdminApprovalMode_Title" xml:space="preserve">
     <value>Configure UAC behavior</value>
@@ -616,7 +616,7 @@
     <value>Receive updates for other Microsoft products</value>
   </data>
   <data name="UIModel_UpdateMicrosoftProducts_Description" xml:space="preserve">
-    <value>Get other Microsoft products updates, like Microsoft 365 (ex-Office), and automatically download and install the latest drivers alongside with Windows Updates.</value>
+    <value>Get other Microsoft products updates, like Microsoft 365 (ex-Office), and automatically download and install the latest drivers alongside Windows Updates.</value>
   </data>
   <data name="UIModel_RestartNotification_Title" xml:space="preserve">
     <value>Notify me when a restart is required to finish updating</value>
@@ -631,7 +631,7 @@
     <value>Restart as soon as possible (even during active hours) to finish updating, and notify 15 minutes before restarting.</value>
   </data>
   <data name="UIModel_ActiveHours_Title" xml:space="preserve">
-    <value>Enable Active hours for Windows updating</value>
+    <value>Adjust active hours for Windows Update</value>
   </data>
   <data name="UIModel_ActiveHours_Title_1" xml:space="preserve">
     <value>Automatically</value>
@@ -658,13 +658,13 @@
     <value>Balanced</value>
   </data>
   <data name="UIModel_PowerPlan_Description" xml:space="preserve">
-    <value>"High performance" is not recommended to use on laptops. Also, enabling "High performance" power plan doesn't effect on your FPS. It only manages how your PC uses power.</value>
+    <value>"High performance" is not recommended to use on laptops. Also, enabling "High performance" power plan doesn't affect your FPS. It only manages how your PC uses power.</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Title" xml:space="preserve">
     <value>Keep network adapter awake</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Description" xml:space="preserve">
-    <value>Allow PC to turn off the network adapter to save power and prevent them from going to sleep. Only currently used network adapter will be configured, even if your motherboard has an additional Wi-Fi alongside with an Ethernet one.</value>
+    <value>Prevent PC from turning off the network adapter to save power, so it doesn't go to sleep. Only the currently used network adapter will be configured, even if your motherboard has an additional Wi-Fi adapter alongside an Ethernet one.</value>
   </data>
   <data name="UIModel_InputMethod_Title" xml:space="preserve">
     <value>Set default input method</value>
@@ -676,7 +676,7 @@
     <value>Use language list</value>
   </data>
   <data name="UIModel_InputMethod_Description" xml:space="preserve">
-    <value>Your default keyboard layout is the one that’s automatically used at sign in screen.</value>
+    <value>Your default keyboard layout is the one that's automatically used at sign in screen.</value>
   </data>
   <data name="UIModel_WinPrtScrFolder_Title" xml:space="preserve">
     <value>Choose default screenshot folder when I press Win+PrtScn or Windows+Shift+S</value>
@@ -733,7 +733,7 @@
     <value>Enable thumbnail cache removal</value>
   </data>
   <data name="UIModel_ThumbnailCacheRemoval_Description" xml:space="preserve">
-    <value>Windows deletes automatically thumbnail cache after restart or shutdown, and File Explorer has to re-create thumbnails again. You can disable thumbnail cache preset to stop thumbnail cache from automatically being deleted managed by "SilentCleanup" scheduled task. Thumbnail cache is stored as .db files located in %LOCALAPPDATA%\Microsoft\Windows\Explorer folder.</value>
+    <value>Windows automatically deletes the thumbnail cache after a restart or shutdown via the "SilentCleanup" scheduled task, and File Explorer has to re-create thumbnails again. You can disable thumbnail cache removal to keep the cache from being deleted automatically. Thumbnail cache is stored as .db files in the %LOCALAPPDATA%\Microsoft\Windows\Explorer folder.</value>
   </data>
   <data name="UIModel_SaveRestartableApps_Title" xml:space="preserve">
     <value>Automatically save my restartable apps and restart them when I sign back in</value>
@@ -754,7 +754,7 @@
     <value>Network Discovery makes PC discoverable in the same network, and other devices can see your PC, and vice versa.</value>
   </data>
   <data name="UIModel_DefaultTerminalApp_Title" xml:space="preserve">
-    <value>Set Windows Terminal as default terminal app</value>
+    <value>Default terminal app</value>
   </data>
   <data name="UIModel_DefaultTerminalApp_Title_1" xml:space="preserve">
     <value>Windows Terminal</value>
@@ -787,13 +787,13 @@
     <value>Install latest .NET Desktop Runtime 9 x64</value>
   </data>
   <data name="UIModel_InstallDotNetRuntime_9_Description" xml:space="preserve">
-    <value>.NET is a successor to .NET Framework. You need to install .NET 9 if an app was developed within this framework, even if you already installed any other .NET versions. NET 9 is a rapid branch version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
+    <value>.NET is a successor to .NET Framework. You need to install .NET 9 if an app was developed within this framework, even if you already installed any other .NET versions. .NET 9 is an STS (standard-term support) version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
   </data>
   <data name="UIModel_RemoveWindowsAI_Title" xml:space="preserve">
     <value>Remove Windows AI</value>
   </data>
   <data name="UIModel_RemoveWindowsAI_Description" xml:space="preserve">
-    <value>Disable Windows AI functions. If your PC does not have a built-in AI accelerator (NPU), there's no Windows AI related functions support. None of policies will be applied except removing Recall function and Copilot application.</value>
+    <value>Disable Windows AI functions. If your PC does not have a built-in AI accelerator (NPU), Windows AI features aren't supported, and no policies will be applied except removing the Recall feature and the Copilot app.</value>
   </data>
   <data name="UIModel_RegistryBackup_Title" xml:space="preserve">
     <value>Enable automatic backup of the Windows registry</value>
@@ -823,7 +823,7 @@
     <value>Enable Hardware-accelerated GPU scheduling</value>
   </data>
   <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
-    <value>Reduce latency and improve performance. You'll need to restart your PC to have your changes take effect. With Hardware-Accelerated GPU Scheduling feature, GPU's scheduling processor and memory (VRAM) take over the same work and runs it in batches to render the frames. This allows your GPU to reduce load on your CPU and improve latency, potentially making your PC run better. However, don’t expect GPU hardware scheduling to have a significant impact on your computer performance.</value>
+    <value>Reduce latency and improve performance. You'll need to restart your PC to have your changes take effect. With Hardware-Accelerated GPU Scheduling feature, GPU's scheduling processor and memory (VRAM) take over the same work and run it in batches to render the frames. This allows your GPU to reduce load on your CPU and improve latency, potentially making your PC run better. However, don't expect GPU hardware scheduling to have a significant impact on your computer performance.</value>
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
     <value>The scheduled tasks options below are sufficient enough to keep your Windows clean. There is no need to constantly clean more system folders as advised from the Internet.</value>
@@ -862,7 +862,7 @@
     <value>Create Temp scheduled task</value>
   </data>
   <data name="UIModel_TempTask_Description" xml:space="preserve">
-    <value>This function creates "Temp" task Sophia folder of in the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. Task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates the "Temp" task in the Sophia folder of the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. Task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
     <value>Temporary files folder successfully cleaned up.</value>
@@ -907,7 +907,7 @@
     <value>Mark files that have been downloaded from the Internet as unsafe</value>
   </data>
   <data name="UIModel_SaveZoneInformation_Description" xml:space="preserve">
-    <value>Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If Attachment Manager identifies an attachment that might be unsafe, Attachment Manager prevents (blocks) you from opening file, or it warns you before you open file. Metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock". In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If Attachment Manager identifies an attachment that might be unsafe, Attachment Manager prevents (blocks) you from opening file, or it warns you before you open file. Metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock". In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_WindowsSandbox_Title" xml:space="preserve">
     <value>Enable Windows Sandbox</value>
@@ -931,13 +931,13 @@
     <value>Show "Install" item in the Cabinet archives (.cab) context menu</value>
   </data>
   <data name="UIModel_EditWithClipchampContext_Title" xml:space="preserve">
-    <value>Show "Edit With Clipchamp" item in the media files context menu</value>
+    <value>Show "Edit with Clipchamp" item in the media files context menu</value>
   </data>
   <data name="UIModel_EditWithPhotosContext_Title" xml:space="preserve">
     <value>Show "Edit with Photos" item in the media files context menu</value>
   </data>
   <data name="UIModel_EditWithPaintContext_Title" xml:space="preserve">
-    <value>Show the "Edit with Paint" item in the media files context menu</value>
+    <value>Show "Edit with Paint" item in the media files context menu</value>
   </data>
   <data name="UIModel_PrintCMDContext_Title" xml:space="preserve">
     <value>Show "Print" item in the .bat and .cmd files context menu</value>
@@ -955,7 +955,7 @@
     <value>Show "Look for an app in the Microsoft Store" items in the "Open with" dialog</value>
   </data>
   <data name="UIModel_UseStoreOpenWith_Description" xml:space="preserve">
-    <value>In addition to creating a policy in the Windows registry, SophiApp 2.0 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>When you open a file with an unknown extension, Windows offers to look for an app in the Microsoft Store. In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_OpenWindowsTerminalContext_Title" xml:space="preserve">
     <value>Show "Open in Windows Terminal" item in the folders context menu</value>
@@ -1063,7 +1063,7 @@
     <value>Defendnot</value>
   </data>
   <data name="AppFatalError_2.Text" xml:space="preserve">
-    <value>Perhaps the root cause of the exception is due to a usage a Defender tampering utility like "Defender Killer".</value>
+    <value>Perhaps the root cause of the exception is due to the use of a Defender tampering utility like "Defender Killer".</value>
   </data>
   <data name="Panel_SetupCustomization_Applying" xml:space="preserve">
     <value>Applying customization</value>
@@ -1111,7 +1111,7 @@
     <value>RemoveWindowsAI</value>
   </data>
   <data name="UIModel_InstallDotNetRuntime_10_Description" xml:space="preserve">
-    <value>.NET is a successor to .NET Framework. You need to install .NET 10 if an app was developed within this framework, even if you already installed any other .NET versions. NET 10 is a rapid branch version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
+    <value>.NET is a successor to .NET Framework. You need to install .NET 10 if an app was developed within this framework, even if you already installed any other .NET versions. .NET 10 is an LTS (long-term support) version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
   </data>
   <data name="UIModel_InstallDotNetRuntime_10_Title" xml:space="preserve">
     <value>Install latest .NET Desktop Runtime 10 x64</value>
@@ -1198,7 +1198,7 @@
     <value>Checking BitLocker system drive encryption status...</value>
   </data>
   <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_1.Text" xml:space="preserve">
-    <value>C drive is encrypted, although BitLocker is turned off.</value>
+    <value>System drive is encrypted, although BitLocker is turned off.</value>
   </data>
   <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_2.Text" xml:space="preserve">
     <value>Do you want to decrypt your drive?</value>
@@ -1213,7 +1213,7 @@
     <value>Your device has not yet received the updated "Windows UEFI CA 2023" certificates.</value>
   </data>
   <data name="OsRequirements_UpdateUEFICertificates_3.Text" xml:space="preserve">
-    <value>Do you want to install "Microsoft Windows UEFI CA 2023" certificates manually?</value>
+    <value>Do you want to install "Windows UEFI CA 2023" certificates manually?</value>
   </data>
   <data name="Button_UpdateUEFICertificates.Content" xml:space="preserve">
     <value>Open manual</value>

@@ -35,7 +35,7 @@ namespace SophiApp.Helpers
         public static void ForcedRefresh()
         {
             SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
-            SendMessageTimeout(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, null, SMTOABORTIFHUNG, 100, IntPtr.Zero);
+            SendMessageTimeout(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, "Environment", SMTOABORTIFHUNG, 100, IntPtr.Zero);
             SendNotifyMessage(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, TRAYSETTINGS);
         }
 

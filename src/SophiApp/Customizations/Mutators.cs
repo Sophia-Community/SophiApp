@@ -205,7 +205,7 @@ namespace SophiApp.Customizations
                 return;
             }
 
-            Registry.LocalMachine.OpenOrCreateSubKey(arsoPath).SetValue("OptOut", 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.OpenOrCreateSubKey(arsoPath).SetValue("OptOut", 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1008,9 +1008,18 @@ namespace SophiApp.Customizations
         /// <param name="enable">Long path limit state.</param>
         public static void Win32LongPathsSupport(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\FileSystem", true)?.SetValue("LongPathsEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
-            GroupPolicyService.SetRegistryValue(Registry.LocalMachine, "System\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
-            GroupPolicyService.ClearPolicyCache(scope: LGPOScope.Computer, path: "System\\CurrentControlSet\\Control\\FileSystem", name: "LongPathsEnabled", type: "DWORD", value: enable ? "1" : "0");
+            if (enable)
+            {
+                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem", true)?.SetValue("LongPathsEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
+                // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+                GroupPolicyService.ClearPolicyCache(scope: LGPOScope.Computer, path: "SYSTEM\\CurrentControlSet\\Control\\FileSystem", name: "LongPathsEnabled", type: "DWORD", value: "1");
+
+                return;
+            }
+
+            Registry.CurrentUser.OpenOrCreateSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem").SetValue("LongPathsEnabled", 0, RegistryValueKind.DWord);
+            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SYSTEM\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled");
         }
 
         /// <summary>
@@ -1019,7 +1028,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">BSOD error state.</param>
         public static void BSoDStopError(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\CrashControl", true)?.SetValue("DisplayParameters", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\CrashControl", true)?.SetValue("DisplayParameters", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1254,11 +1263,11 @@ namespace SophiApp.Customizations
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Keyboard Layout", true)?.DeleteValue("Scancode Map", false);
+                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout", true)?.DeleteValue("Scancode Map", false);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Keyboard Layout", true)
+            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout", true)
             ?.SetValue("Scancode Map", new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 }, RegistryValueKind.Binary);
         }
 
@@ -1331,12 +1340,12 @@ namespace SophiApp.Customizations
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", true)
+                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", true)
                     ?.SetValue("EnablePeriodicBackup", 1, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", true)
+            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", true)
                 ?.DeleteValue("EnablePeriodicBackup", false);
         }
 
@@ -1686,6 +1695,8 @@ namespace SophiApp.Customizations
                 return;
             }
 
+            // Disable events auditing generated when a process is created (starts)
+            _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:disable /failure:disable");
             // Remove the "Process Creation" custom view in the Event Viewer
             Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", true)?.DeleteValue("ProcessCreationIncludeCmdLine_Enabled", false);
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", "ProcessCreationIncludeCmdLine_Enabled");
@@ -1755,13 +1766,13 @@ namespace SophiApp.Customizations
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.SetValue("RunAsPPL", 2, RegistryValueKind.DWord);
-                Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.SetValue("RunAsPPLBoot", 2, RegistryValueKind.DWord);
+                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.SetValue("RunAsPPL", 2, RegistryValueKind.DWord);
+                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.SetValue("RunAsPPLBoot", 2, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPL", false);
-            Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPLBoot", false);
+            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPL", false);
+            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPLBoot", false);
         }
 
         /// <summary>

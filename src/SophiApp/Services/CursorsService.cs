@@ -52,7 +52,7 @@ namespace SophiApp.Services
             Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNWSE", "%SystemRoot%\\cursors\\aero_nwse.cur", RegistryValueKind.ExpandString);
             Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeWE", "%SystemRoot%\\cursors\\aero_ew.cur", RegistryValueKind.ExpandString);
             Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("UpArrow", "%SystemRoot%\\cursors\\aero_up.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Wait", "%SystemRoot%\\cursors\\aero_busy.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Wait", "%SystemRoot%\\cursors\\aero_busy.ani", RegistryValueKind.ExpandString);
         }
 
         /// <inheritdoc/>
@@ -115,7 +115,7 @@ namespace SophiApp.Services
             File.Delete(Path.Combine(extractPath, "Install.inf"));
         }
 
-        [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
-        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);
+        [DllImport("user32.dll", EntryPoint = "SystemParametersInfo", SetLastError = true)]
+        public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);
     }
 }
