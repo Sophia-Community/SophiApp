@@ -729,7 +729,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int AdminApprovalMode()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\Policies\\System")?.GetValue("ConsentPromptBehaviorAdmin") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System")?.GetValue("ConsentPromptBehaviorAdmin") as int? ?? -1;
             return isEnabled.Equals(0) ? 2 : 1;
         }
 
@@ -761,7 +761,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RestartNotification()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("RestartNotificationsAllowed2") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("RestartNotificationsAllowed2") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -770,7 +770,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RestartDeviceAfterUpdate()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsExpedited") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsExpedited") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -779,7 +779,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int ActiveHours()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("SmartActiveHoursState") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("SmartActiveHoursState") as int? ?? -1;
             return isEnabled.Equals(0) ? 2 : 1;
         }
 
@@ -788,7 +788,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool WindowsLatestUpdate()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsContinuousInnovationOptedIn") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsContinuousInnovationOptedIn") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -832,7 +832,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int RecommendedTroubleshooting()
         {
-            var userPreference = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsMitigation")?.GetValue("UserPreference") as int? ?? -1;
+            var userPreference = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsMitigation")?.GetValue("UserPreference") as int? ?? -1;
             return userPreference.Equals(3) ? 1 : 2;
         }
 
@@ -841,7 +841,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ReservedStorage()
         {
-            using var reserveKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\ReserveManager");
+            using var reserveKey = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ReserveManager");
             var miscPolicy = reserveKey?.GetValue("MiscPolicyInfo") as int? ?? -1;
             var passedPolicy = reserveKey?.GetValue("PassedPolicy") as int? ?? -1;
             var shippedReserves = reserveKey?.GetValue("ShippedWithReserves") as int? ?? -1;
@@ -899,8 +899,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ThumbnailCacheRemoval()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
-            var isEnabledWow = Registry.LocalMachine.OpenSubKey("SYSTEM\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
+            var isEnabledWow = Registry.LocalMachine.OpenSubKey("Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
             return !(isEnabled.Equals(0) && isEnabledWow.Equals(0));
         }
 
@@ -1055,7 +1055,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RemoveWindowsAI()
         {
-            var recall = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\Recall")?.GetValue("Selection") as int? ?? -1;
+            var recall = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\Recall")?.GetValue("Selection") as int? ?? -1;
             return !recall.Equals(0) && AppxPackagesService.PackageExist("Microsoft.Copilot");
         }
 
