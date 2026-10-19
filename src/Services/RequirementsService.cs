@@ -71,7 +71,8 @@ namespace SophiApp.Services
 
         private RequirementsResult GetExternalServicesData()
         {
-            Task.Run(async () => await dataService.GetExternalServicesDataAsync()).Wait();
+            Task.Run(async () => await dataService.GetExternalServicesDataAsync())
+                .Wait();
             return RequirementsResult.AllCorrect;
         }
 
@@ -370,7 +371,7 @@ namespace SophiApp.Services
             }
 
             var secureBootSupported = powerShellService.Invoke<bool>("try{Confirm-SecureBootUEFI -ErrorAction Stop}catch{$false}");
-            var certificatesExpired = powerShellService.Invoke<bool>("[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI -Name db).Bytes) -notmatch \"Windows UEFI CA 2023\"");
+            var certificatesExpired = powerShellService.Invoke<bool>("try{[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI -Name db).Bytes) -match \"Windows UEFI CA 2023\"}catch{$false}");
             return secureBootSupported && certificatesExpired ? RequirementsResult.UpdateUEFICertificates : RequirementsResult.AllCorrect;
         }
 

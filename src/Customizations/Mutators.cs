@@ -122,6 +122,7 @@ namespace SophiApp.Customizations
                 ScheduledTaskService.SetState(task: reportingTask, enabled: true);
                 OsService.SetStartMode(werService, ServiceStartMode.Manual);
                 werService.TryStart();
+                _ = PowerShellService.Invoke("Enable-WindowsErrorReporting");
                 return;
             }
 
@@ -129,6 +130,7 @@ namespace SophiApp.Customizations
             ScheduledTaskService.SetState(task: reportingTask, enabled: false);
             werService.TryStop();
             OsService.SetStartMode(werService, ServiceStartMode.Disabled);
+            _ = PowerShellService.Invoke("Disable-WindowsErrorReporting");
         }
 
         /// <summary>
@@ -482,8 +484,8 @@ namespace SophiApp.Customizations
         /// <param name="enable">Quick access files state.</param>
         public static void QuickAccessRecentFiles(bool enable)
         {
-            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoRecentDocsHistory");
-            GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoRecentDocsHistory");
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory");
+            GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory");
             // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory", LGPOScope.Computer, LGPOScope.User);
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.SetValue("ShowRecent", enable ? 1 : 0, RegistryValueKind.DWord);
@@ -1010,14 +1012,14 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem", true)?.SetValue("LongPathsEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
+                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem", true)?.SetValue("LongPathsEnabled", 1, RegistryValueKind.DWord);
                 // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
                 GroupPolicyService.ClearPolicyCache(scope: LGPOScope.Computer, path: "SYSTEM\\CurrentControlSet\\Control\\FileSystem", name: "LongPathsEnabled", type: "DWORD", value: "1");
 
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem").SetValue("LongPathsEnabled", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.OpenOrCreateSubKey("System\\CurrentControlSet\\Control\\FileSystem").SetValue("LongPathsEnabled", 0, RegistryValueKind.DWord);
             // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SYSTEM\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled");
         }
@@ -1153,10 +1155,7 @@ namespace SophiApp.Customizations
         /// Set network adapters power state.
         /// </summary>
         /// <param name="enable">Network adapters power state.</param>
-        public static void NetworkAdaptersSavePower(bool enable)
-        {
-            PowerShellService.SetTurnOffDeviceNetworkAdapterState(enable);
-        }
+        public static void NetworkAdaptersSavePower(bool enable) => PowerShellService.SetTurnOffDeviceNetworkAdapterState(enable);
 
         /// <summary>
         /// Set input method state.
@@ -1506,10 +1505,11 @@ namespace SophiApp.Customizations
         /// <param name="enable">Windows AI state.</param>
         public static void RemoveWindowsAI(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("SOFTWARE\\Policies\\Microsoft\\Windows", true)?.DeleteSubKeyTree("WindowsAI", false);
-            Registry.LocalMachine.OpenSubKey("SOFTWARE\\Policies\\Microsoft\\Windows", true)?.DeleteSubKeyTree("WindowsCopilot", false);
-            Registry.CurrentUser.OpenSubKey("SOFTWARE\\Policies\\Microsoft\\Windows", true)?.DeleteSubKeyTree("WindowsAI", false);
-            Registry.CurrentUser.OpenSubKey("SOFTWARE\\Policies\\Microsoft\\Windows", true)?.DeleteSubKeyTree("WindowsCopilot", false);
+            GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\WindowsAI", "DisableAIDataAnalysis", Registry.LocalMachine, Registry.CurrentUser);
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsAI", "AllowRecallEnablement");
+            GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\WindowsCopilot", "TurnOffWindowsCopilot", Registry.LocalMachine, Registry.CurrentUser);
+            GroupPolicyService.SetRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\PolicyManager\\default\\WindowsAI\\DisableAIDataAnalysis", "value", 0, RegistryValueKind.DWord);
+            GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\WindowsStore", "RemoveWindowsStore", Registry.LocalMachine, Registry.CurrentUser);
 
             if (enable)
             {
@@ -1748,11 +1748,7 @@ namespace SophiApp.Customizations
         /// </summary>
         /// <param name="enable">Windows Sandbox state.</param>
         public static void WindowsSandbox(bool enable)
-        {
-            var enableCommand = "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart";
-            var disableCommand = "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart";
-            _ = PowerShellService.Invoke($"{(enable ? enableCommand : disableCommand)}");
-        }
+            => PowerShellService.Invoke($"{(enable ? "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart" : "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart")}");
 
         /// <summary>
         /// Set Local Security Authority state.
@@ -1760,7 +1756,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">ocal Security Authority state.</param>
         public static void LocalSecurityAuthority(bool enable)
         {
-            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Policies\\Microsoft\\Windows\\System", "RunAsPPL");
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\System", "RunAsPPL");
             // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\System", "RunAsPPL");
 
@@ -1809,66 +1805,6 @@ namespace SophiApp.Customizations
             }
 
             Registry.ClassesRoot.DeleteSubKeyTree("CABFolder\\Shell\\runas", false);
-        }
-
-        /// <summary>
-        /// Set "Edit With Clipchamp" item in the media files context menu state.
-        /// </summary>
-        /// <param name="enable">"Edit With Clipchamp" item state.</param>
-        public static void EditWithClipchampContext(bool enable)
-        {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", true)
-                ?.DeleteValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}", false);
-
-            if (enable)
-            {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", true)
-                    ?.DeleteValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}", false);
-                return;
-            }
-
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")
-                .SetValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}", string.Empty, RegistryValueKind.String);
-        }
-
-        /// <summary>
-        /// Set "Edit With Photos" item in the media files context menu state.
-        /// </summary>
-        /// <param name="enable">"Edit With Photos" item state.</param>
-        public static void EditWithPhotosContext(bool enable)
-        {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", true)
-                ?.DeleteValue("{BFE0E2A4-C70C-4AD7-AC3D-10D1ECEBB5B4}", false);
-
-            if (enable)
-            {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", true)
-                    ?.DeleteValue("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", false);
-                return;
-            }
-
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")
-                .SetValue("{BFE0E2A4-C70C-4AD7-AC3D-10D1ECEBB5B4}", string.Empty, RegistryValueKind.String);
-        }
-
-        /// <summary>
-        /// Set "Edit With Paint Context" item in the media files context menu state.
-        /// </summary>
-        /// <param name="enable">"Edit With Paint Context" item state.</param>
-        public static void EditWithPaintContext(bool enable)
-        {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", true)
-                ?.DeleteValue("{2430F218-B743-4FD6-97BF-5C76541B4AE9}", false);
-
-            if (enable)
-            {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", true)
-                    ?.DeleteValue("{2430F218-B743-4FD6-97BF-5C76541B4AE9}", false);
-                return;
-            }
-
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")
-                .SetValue("{2430F218-B743-4FD6-97BF-5C76541B4AE9}", string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>

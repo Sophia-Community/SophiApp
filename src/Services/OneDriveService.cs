@@ -83,9 +83,10 @@ namespace SophiApp.Services
             var uninstallFolder = uninstallString[..uninstallString.LastIndexOf('\\')];
             var uninstallFile = uninstallString[.. (uninstallString.IndexOf(".exe") + 4)];
             var uninstallArgs = uninstallString.Substring(uninstallString.IndexOf("/"));
+            var userDataFolder = GetUserDataFolderOrDefault();
             // PowerShell is used to avoid going through all the files and folders, of which there may be many, to filter user and system files.
-            var userFilesCount = powerShellService.Invoke<int>("(Get-ChildItem -Path $env:OneDrive -ErrorAction Ignore | Measure-Object).Count");
-            processService.KillProcessByName(timeout: 1000, "OneDrive", "OneDriveSetup", "FileCoAuth");
+            var userFilesCount = Path.Exists(userDataFolder) ? powerShellService.Invoke<int>($"(Get-ChildItem -Path {userDataFolder} -ErrorAction Ignore | Measure-Object).Count") : 0;
+            processService.KillProcessByName(3000, "OneDrive", "OneDriveSetup", "FileCoAuth");
             _ = processService.WaitForExit(uninstallFile, uninstallArgs);
 
             if (userFilesCount.Equals(0))
@@ -94,11 +95,10 @@ namespace SophiApp.Services
                 // See https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
                 _ = powerShellService.Invoke("Remove-Item -Path $env:OneDrive -Recurse -Force -ErrorAction Ignore");
                 processService.SetAutoRestartShell(allow: false);
-                processService.KillProcessByName("explorer");
+                processService.KillProcessByName(3000, "explorer", "UserOOBEBroker");
                 Thread.Sleep(3000);
-                processService.SetAutoRestartShell(allow: true);
-                processService.KillProcessByName("UserOOBEBroker");
                 UnregisterFileSyncShell(uninstallFolder);
+                processService.SetAutoRestartShell(allow: true);
 
                 // Uses PowerShell to avoid the "Access Denied" error, not to go through all the files and folders, of which there may be many, to set the Normal attribute.
                 // See https://stackoverflow.com/questions/1701457/directory-delete-doesnt-work-access-denied-error-but-under-windows-explorer-it
@@ -112,7 +112,6 @@ namespace SophiApp.Services
             }
             else
             {
-                var userDataFolder = GetUserDataFolderOrDefault();
                 App.Logger.LogOneDriveUserFilesExist(userDataFolder, userFilesCount);
                 processService.StartProcessByName("explorer.exe", userDataFolder);
             }
@@ -170,7 +169,7 @@ namespace SophiApp.Services
         {
             var regSvr = $"{GetFolderPath(SpecialFolder.System)}\\regsvr32.exe";
             Directory.GetFileSystemEntries(path: setupFolder, searchPattern: "FileSyncShell64.dll", SearchOption.AllDirectories)
-                .ForEach(dll => processService.WaitForExit(name: regSvr, arguments: $"/u /s {dll}"));
+                .ForEach(dll => processService.WaitForExit(name: regSvr, arguments: $"/u /s \"{dll}\""));
         }
     }
 }

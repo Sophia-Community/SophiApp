@@ -859,34 +859,10 @@
         "Windows11": "True"
     },
     {
-        "Name": "EditWithClipchampContext",
-        "Type": "CheckBox",
-        "Tag": "ContextMenu",
-        "ViewId": 702,
-        "Windows11LTSC": "False",
-        "Windows11": "True"
-    },
-    {
-        "Name": "EditWithPhotosContext",
-        "Type": "CheckBox",
-        "Tag": "ContextMenu",
-        "ViewId": 703,
-        "Windows11LTSC": "False",
-        "Windows11": "True"
-    },
-    {
-        "Name": "EditWithPaintContext",
-        "Type": "CheckBox",
-        "Tag": "ContextMenu",
-        "ViewId": 704,
-        "Windows11LTSC": "False",
-        "Windows11": "True"
-    },
-    {
         "Name": "PrintCMDContext",
         "Type": "CheckBox",
         "Tag": "ContextMenu",
-        "ViewId": 705,
+        "ViewId": 702,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
@@ -894,7 +870,7 @@
         "Name": "CompressedFolderNewContext",
         "Type": "CheckBox",
         "Tag": "ContextMenu",
-        "ViewId": 706,
+        "ViewId": 703,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
@@ -902,7 +878,7 @@
         "Name": "MultipleInvokeContext",
         "Type": "CheckBox",
         "Tag": "ContextMenu",
-        "ViewId": 707,
+        "ViewId": 704,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
@@ -910,7 +886,7 @@
         "Name": "UseStoreOpenWith",
         "Type": "CheckBox",
         "Tag": "ContextMenu",
-        "ViewId": 708,
+        "ViewId": 705,
         "Windows11LTSC": "False",
         "Windows11": "True"
     },
@@ -918,7 +894,7 @@
         "Name": "OpenWindowsTerminalAdminContext",
         "Type": "CheckBox",
         "Tag": "ContextMenu",
-        "ViewId": 709,
+        "ViewId": 706,
         "Windows11LTSC": "False",
         "Windows11": "True"
     }

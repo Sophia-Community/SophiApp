@@ -1,0 +1,278 @@
+<Page
+    x:Class="SophiApp.Views.RequirementsFailurePage"
+    x:Name="PageRequirementsFailure"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SophiApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:SophiApp.Converters"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interaction="using:Microsoft.Xaml.Interactivity"
+    xmlns:helpers="using:SophiApp.Helpers"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:EnumToBool x:Key="EnumToBoolConverter"/>
+        <CommandBarFlyout x:Name="RequirementsFailurePageCommandsFlyout">
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton x:Uid="Page_ContextMenu_OpenLogFile"
+                              Icon="OpenFile"
+                              Click="ContextMenuOpenLogFile_Clicked"/>
+                <AppBarButton x:Uid="Page_ContextMenu_OpenLogFolder"
+                              Icon="Folder"
+                              Click="ContextMenuOpenLogFolder_Clicked"/>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
+        <Style x:Key="RequirementsResultPanelStyle" TargetType="StackPanel">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid VerticalAlignment="Center"
+          HorizontalAlignment="Center"
+          ContextRequested="RequirementsFailurePage_ContextRequested">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Image Source="/Assets/AppLogoBig.svg"
+                   Width="373"
+                   Height="103"/>
+            <Grid>
+                <StackPanel x:Name="UnsupportedArchitecturePanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Text="{x:Bind RequirementsResult_1}"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_UnsupportedArchitecture_2"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="NewAppVersionFoundPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
+                        <Run x:Uid="OsRequirements_NewAppVersionFound_1"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                        <Run Text="{x:Bind RequirementsResult_1}"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                    </TextBlock>
+                    <TextBlock x:Uid="OsRequirements_NewAppVersionFound_2"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <Button x:Uid="Button_Update"
+                            Style="{StaticResource AccentButtonStyle}"
+                            Command="{x:Bind ViewModel.AppUpdate_Command, Mode=OneWay}"
+                            Margin="0, 10, 0, 0"/>
+                </StackPanel>
+                <StackPanel x:Name="LoggedInUserNotAdminPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
+                        <Run x:Uid="OsRequirements_LoggedInUserNotAdmin_1"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                        <Run Text="{x:Bind RequirementsResult_1}"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
+                        <Run x:Uid="OsRequirements_LoggedInUserNotAdmin_2"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                        <Run Text="{x:Bind RequirementsResult_2}"
+                             Foreground="{ThemeResource WindowAccent}"/>
+                    </TextBlock>
+                    <TextBlock x:Uid="OsRequirements_LoggedInUserNotAdmin_3"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="HarmfulTweakerFoundPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
+                        <Run x:Uid="OsRequirements_HarmfulTweakerFound"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                        <Run Text="{x:Bind RequirementsResult_1}"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                    </TextBlock>
+                    <TextBlock x:Uid="OsRequirements_ReinstallWindows"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="HostsEntriesFoundPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
+                        <Run x:Uid="OsRequirements_HostsEntriesFound_1"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                        <Run x:Uid="OsRequirements_HostsEntriesFound_2"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                    </TextBlock>
+                    <TextBlock x:Uid="OsRequirements_HostsEntriesFound_3"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_DoYouWantToContinue"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0, 10, 0, 0">
+                        <Button x:Uid="Button_Continue"
+                                Style="{ThemeResource AccentButtonStyle}"
+                                Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_OpenHostFileFolder"
+                                Style="{ThemeResource BaseButton}"
+                                Command="{x:Bind ViewModel.OpenHostsFolder_Command, Mode=OneWay}"
+                                Margin="20, 0, 0, 0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="UWPComponentsMissingPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Text="{x:Bind RequirementsResult_1}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_ReinstallWindows"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="DefenderComponentsMissingPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Text="{x:Bind RequirementsResult_1}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_ReinstallWindows"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="WindowsComponentStabilityDisruptedPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock x:Uid="OsRequirements_WindowsComponentStabilityDisrupted"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_ReinstallWindows"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="DisableControlledFolderAccessPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock x:Uid="OsRequirements_DisableControlledFolderAccessPanel_1"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_DisableControlledFolderAccessPanel_2"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <Button x:Uid="Button_OpenDefenderControlledFolderSettings"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Margin="0, 10, 0, 0"
+                            Command="{x:Bind ViewModel.OpenDefenderControlledFolder_Command, Mode=OneWay}"/>
+                </StackPanel>
+                <StackPanel x:Name="RebootPendingPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock x:Uid="OsRequirements_RebootPending"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+                <StackPanel x:Name="SystemDriveEncryptedBitLockerDisabledPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock x:Uid="OsRequirements_SystemDriveEncryptedBitLockerDisabled_1"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_SystemDriveEncryptedBitLockerDisabled_2"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0, 10, 0, 0">
+                        <Button x:Uid="Button_Continue"
+                                Style="{ThemeResource AccentButtonStyle}"
+                                Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_OpenBitLockerSettings"
+                                Style="{ThemeResource BaseButton}"
+                                Margin="20, 0, 0, 0"
+                                Command="{x:Bind ViewModel.OpenBitLockerSettings_Command, Mode=OneWay}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="UpdateUEFICertificatesPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock x:Uid="OsRequirements_UpdateUEFICertificates_1"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_UpdateUEFICertificates_2"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_UpdateUEFICertificates_3"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <Button x:Uid="Button_UpdateUEFICertificates"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Margin="0, 10, 0, 0"
+                            Command="{x:Bind ViewModel.UpdateUEFICertificates_Command, Mode=OneWay}"/>
+                </StackPanel>
+                <StackPanel x:Name="WrongWindowsVersionPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Text="{x:Bind RequirementsResult_1}"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
+                        <Run x:Uid="OsRequirements_WrongWindowsVersion_2"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                        <Run Text="{x:Bind RequirementsResult_2}"
+                             Foreground="{ThemeResource WindowAccent}"/>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel x:Name="UpdateWindowsBuildPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Text="{x:Bind RequirementsResult_1}"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock Text="{x:Bind RequirementsResult_2}"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                    <TextBlock x:Uid="OsRequirements_RunWinUpdate"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"
+                               Foreground="{ThemeResource WindowForeground}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <interactivity:Interaction.Behaviors>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UnsupportedArchitecture}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UnsupportedArchitecturePanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=NewAppVersionFound}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=NewAppVersionFoundPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=LoggedInUserNotAdmin}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=LoggedInUserNotAdminPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=HarmfulTweakerFound}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=HarmfulTweakerFoundPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=HostsEntriesFound}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=HostsEntriesFoundPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UWPComponentsMissing}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UWPComponentsMissingPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=DefenderComponentsMissing}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=DefenderComponentsMissingPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=WindowsComponentStabilityDisrupted}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=WindowsComponentStabilityDisruptedPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=DisableControlledFolderAccess}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=DisableControlledFolderAccessPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=RebootPending}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=RebootPendingPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SystemDriveEncryptedBitLockerDisabled}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=SystemDriveEncryptedBitLockerDisabledPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UpdateUEFICertificates}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UpdateUEFICertificatesPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=WrongWindowsVersion}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=WrongWindowsVersionPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UpdateWindowsBuild}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UpdateWindowsBuildPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
+    </Grid>
+</Page>

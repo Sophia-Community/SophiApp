@@ -729,7 +729,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int AdminApprovalMode()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System")?.GetValue("ConsentPromptBehaviorAdmin") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\Policies\\System")?.GetValue("ConsentPromptBehaviorAdmin") as int? ?? -1;
             return isEnabled.Equals(0) ? 2 : 1;
         }
 
@@ -754,17 +754,14 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get update Microsoft products state.
         /// </summary>
-        public static bool UpdateMicrosoftProducts()
-        {
-            return UpdateService.HasMicrosoftProductsUpdate();
-        }
+        public static bool UpdateMicrosoftProducts() => UpdateService.HasMicrosoftProductsUpdate();
 
         /// <summary>
         /// Get restart notification state.
         /// </summary>
         public static bool RestartNotification()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("RestartNotificationsAllowed2") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("RestartNotificationsAllowed2") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -773,7 +770,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RestartDeviceAfterUpdate()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsExpedited") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsExpedited") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -782,7 +779,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int ActiveHours()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("SmartActiveHoursState") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("SmartActiveHoursState") as int? ?? -1;
             return isEnabled.Equals(0) ? 2 : 1;
         }
 
@@ -791,7 +788,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool WindowsLatestUpdate()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsContinuousInnovationOptedIn") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("IsContinuousInnovationOptedIn") as int? ?? -1;
             return isEnabled.Equals(1);
         }
 
@@ -835,7 +832,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int RecommendedTroubleshooting()
         {
-            var userPreference = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsMitigation")?.GetValue("UserPreference") as int? ?? -1;
+            var userPreference = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\WindowsMitigation")?.GetValue("UserPreference") as int? ?? -1;
             return userPreference.Equals(3) ? 1 : 2;
         }
 
@@ -844,7 +841,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ReservedStorage()
         {
-            using var reserveKey = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ReserveManager");
+            using var reserveKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\ReserveManager");
             var miscPolicy = reserveKey?.GetValue("MiscPolicyInfo") as int? ?? -1;
             var passedPolicy = reserveKey?.GetValue("PassedPolicy") as int? ?? -1;
             var shippedReserves = reserveKey?.GetValue("ShippedWithReserves") as int? ?? -1;
@@ -902,8 +899,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ThumbnailCacheRemoval()
         {
-            var isEnabled = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
-            var isEnabledWow = Registry.LocalMachine.OpenSubKey("Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
+            var isEnabled = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
+            var isEnabledWow = Registry.LocalMachine.OpenSubKey("SYSTEM\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache")?.GetValue("Autorun") as int? ?? -1;
             return !(isEnabled.Equals(0) && isEnabledWow.Equals(0));
         }
 
@@ -1058,7 +1055,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RemoveWindowsAI()
         {
-            var recall = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\Recall")?.GetValue("Selection") as int? ?? -1;
+            var recall = Registry.LocalMachine.OpenSubKey("SYSTEM\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\Recall")?.GetValue("Selection") as int? ?? -1;
             return !recall.Equals(0) && AppxPackagesService.PackageExist("Microsoft.Copilot");
         }
 
@@ -1227,7 +1224,6 @@ else
             var moduleLoggingEnabled = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging")?.GetValue("EnableModuleLogging") as int? ?? -1;
             var powerShellAsterisk = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames")?.GetValue("*") as string ?? string.Empty;
             var scriptLoggingEnabled = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging")?.GetValue("EnableScriptBlockLogging") as int? ?? -1;
-
             return inclusionSettingEnabled && processCreationEnabled.Equals(1) && eventQueryCount.Equals(3) && moduleLoggingEnabled.Equals(1) && powerShellAsterisk.Equals("*") && scriptLoggingEnabled.Equals(1);
         }
 
@@ -1339,50 +1335,6 @@ else
             }
 
             throw new InvalidOperationException("A third-party archiver is set as the default archiver");
-        }
-
-        /// <summary>
-        /// Get "Edit With Clipchamp" item in the media files context menu state.
-        /// </summary>
-        public static bool EditWithClipchampContext()
-        {
-            if (AppxPackagesService.PackageExist("Clipchamp.Clipchamp"))
-            {
-                var userClipchamp = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}");
-                var machineClipchamp = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}");
-                return userClipchamp is null && machineClipchamp is null;
-            }
-
-            throw new InvalidOperationException("AppX package Clipchamp.Clipchamp is not installed");
-        }
-
-        /// <summary>
-        /// Get "Edit With Photos" item in the media files context menu state.
-        /// </summary>
-        public static bool EditWithPhotosContext()
-        {
-            if (AppxPackagesService.PackageExist("Microsoft.Windows.Photos"))
-            {
-                var userPhotosContext = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}");
-                var machinePhotosContext = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{8AB635F8-9A67-4698-AB99-784AD929F3B4}");
-                return userPhotosContext is null && machinePhotosContext is null;
-            }
-
-            throw new InvalidOperationException("AppX package Microsoft.Windows.Photos is not installed");
-        }
-
-        /// <summary>
-        /// Get "Edit With Paint Context" item in the media files context menu state.
-        /// </summary>
-        public static bool EditWithPaintContext()
-        {
-            if (AppxPackagesService.PackageExist("Microsoft.Paint"))
-            {
-                var paintContext = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{2430F218-B743-4FD6-97BF-5C76541B4AE9}");
-                return paintContext is null;
-            }
-
-            throw new InvalidOperationException("AppX package Microsoft.Paint is not installed");
         }
 
         /// <summary>

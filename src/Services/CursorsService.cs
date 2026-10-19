@@ -116,6 +116,6 @@ namespace SophiApp.Services
         }
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo", SetLastError = true)]
-        public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);
+        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, uint pvParam, uint fWinIni);
     }
 }

@@ -62,42 +62,33 @@
                     </ItemsRepeater>
                 </Grid>
             </StackPanel>
-            <Border x:Name="NothingFoundBorder"
-                    BorderBrush="{ThemeResource UIControlBorderBackground}"
-                    Background="{ThemeResource UIControlBackground}"
-                    Style="{StaticResource UIControlBorderStyle}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Margin="10, 0, 10, 0">
-                        <Image Source="/Assets/AppLogo.svg"
-                               Width="52"
-                               Height="52"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1"
-                                Margin="0, 20, 20, 20">
-                        <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
-                            <Run x:Uid="SearchPage_NothingFound"
-                                 Foreground="{ThemeResource WindowForeground}"/>
-                        </TextBlock>
-                    </StackPanel>
-                </Grid>
-            </Border>
+            <Grid x:Name="NothingFoundGrid"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0"
+                       Source="/Assets/AppLogoBig.svg"
+                       Width="373"
+                       Height="103"/>
+                <StackPanel Grid.Row="1"
+                            HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
+                        <Run x:Uid="SearchPage_NothingFound"
+                             Foreground="{ThemeResource WindowForeground}"/>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
         </Grid>
         <i:Interaction.Behaviors>
             <i:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">
-                <i:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundBorder}" PropertyName="Visibility" Value="Visible"/>
+                <i:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundGrid}" PropertyName="Visibility" Value="Visible"/>
                 <i:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Collapsed"/>
             </i:DataTriggerBehavior>
             <i:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="GreaterThan" Value="0">
-                <i:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundBorder}" PropertyName="Visibility" Value="Collapsed"/>
+                <i:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundGrid}" PropertyName="Visibility" Value="Collapsed"/>
                 <i:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Visible"/>
             </i:DataTriggerBehavior>
         </i:Interaction.Behaviors>
