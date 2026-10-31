@@ -68,21 +68,6 @@ private static extern uint NtQueryWnfStateData(
 	ref uint BufferSize
 );
 
-[StructLayout(LayoutKind.Sequential)]
-public struct WNF_STATE_NAME
-{
-	[MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-	public uint[] Data;
-
-	public WNF_STATE_NAME(uint Data1, uint Data2) : this()
-	{
-		uint[] newData = new uint[2];
-		newData[0] = Data1;
-		newData[1] = Data2;
-		Data = newData;
-	}
-}
-
 // WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
 public static int GetState()
 {
@@ -162,21 +147,6 @@ private static extern uint NtQueryWnfStateData(
 	ref uint BufferSize
 );
 
-[StructLayout(LayoutKind.Sequential)]
-public struct WNF_STATE_NAME
-{
-	[MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-	public uint[] Data;
-
-	public WNF_STATE_NAME(uint Data1, uint Data2) : this()
-	{
-		uint[] newData = new uint[2];
-		newData[0] = Data1;
-		newData[1] = Data2;
-		Data = newData;
-	}
-}
-
 // WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
 public static int GetState()
 {
@@ -251,21 +221,6 @@ private static extern uint NtQueryWnfStateData(
 	ref uint BufferSize
 );
 
-[StructLayout(LayoutKind.Sequential)]
-public struct WNF_STATE_NAME
-{
-	[MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-	public uint[] Data;
-
-	public WNF_STATE_NAME(uint Data1, uint Data2) : this()
-	{
-		uint[] newData = new uint[2];
-		newData[0] = Data1;
-		newData[1] = Data2;
-		Data = newData;
-	}
-}
-
 // WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
 public static int GetState()
 {
@@ -307,7 +262,7 @@ $Paths = @(
 	""$env:LOCALAPPDATA\CrashDumps""
 )
 
-if ((Get-ChildItem -Path $env:SystemDrive\Recovery -Force | Where-Object -FilterScript {$_.Name -eq ""ReAgentOld.xml""}).FullName)
+if (Test-Path -Path ""$env:SystemDrive\Recovery\ReAgentOld.xml"")
 {
 	$Paths += ""$env:SystemDrive\Recovery""
 }

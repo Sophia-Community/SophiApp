@@ -23,11 +23,60 @@ namespace SophiApp.Services
             this.processService = processService;
         }
 
-        /// <inheritdoc/>
         public void ClearCommonDialogViews()
         {
-            var command = "Get-ChildItem -Path \"HKCU:\\Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\Shell\\Bags\\*\\Shell\" -Recurse | Where-Object -FilterScript {$_.PSChildName -eq \"{885A186E-A440-4ADA-812B-DB871B942259}\"} | Remove-Item -Force";
-            _ = Invoke(command);
+            const string bagsPath = @"Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags";
+            // Saved view settings of the common Open/Save dialogs
+            const string viewKeyName = "{885A186E-A440-4ADA-812B-DB871B942259}";
+
+            using (var bags = Registry.CurrentUser.OpenSubKey(bagsPath))
+            {
+                if (bags == null)
+                {
+                    return;
+                }
+
+                // Bags\*\Shell
+                foreach (var bag in bags.GetSubKeyNames())
+                {
+                    using (var shell = Registry.CurrentUser.OpenSubKey($@"{bagsPath}\{bag}\Shell", writable: true))
+                    {
+                        if (shell != null)
+                        {
+                            DeleteSubKeysByName(shell, viewKeyName);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Recursively deletes all subkeys with the given name (case-insensitive, as -eq in PowerShell)
+        private static void DeleteSubKeysByName(RegistryKey parent, string name)
+        {
+            foreach (var subKeyName in parent.GetSubKeyNames())
+            {
+                try
+                {
+                    if (string.Equals(subKeyName, name, StringComparison.OrdinalIgnoreCase))
+                    {
+                        // The whole tree is deleted, so there is no need to go inside
+                        parent.DeleteSubKeyTree(subKeyName, throwOnMissingSubKey: false);
+                        continue;
+                    }
+
+                    using (var subKey = parent.OpenSubKey(subKeyName, writable: true))
+                    {
+                        if (subKey != null)
+                        {
+                            DeleteSubKeysByName(subKey, name);
+                        }
+                    }
+                }
+                catch (Exception ex) when (ex is UnauthorizedAccessException || ex is System.Security.SecurityException || ex is IOException)
+                {
+                    // As in PowerShell without -ErrorAction Stop: skip the key and continue
+                }
+            }
         }
 
         /// <inheritdoc/>

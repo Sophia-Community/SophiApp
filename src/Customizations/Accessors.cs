@@ -367,7 +367,7 @@ namespace SophiApp.Customizations
                 return !taskbarValue.Equals(0);
             }
 
-            throw new InvalidOperationException("AppX package MicrosoftWindows.Client.WebExperience is not installed");
+            throw new InvalidOperationException("MicrosoftWindows.Client.WebExperience package is not installed");
         }
 
         /// <summary>
@@ -987,7 +987,7 @@ namespace SophiApp.Customizations
                 throw new InvalidOperationException($"Unsupported Windows Terminal version: {appxPackage.Id.Version.Major}.{appxPackage.Id.Version.Minor} required version {requiredVersion.Major}.{requiredVersion.Minor} or above");
             }
 
-            throw new InvalidOperationException("AppX package Windows Terminal is not installed");
+            throw new InvalidOperationException("Windows Terminal is not installed");
         }
 
         /// <summary>
@@ -1082,13 +1082,13 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool XBOXGameTips()
         {
-            if (AppxPackagesService.PackageExist("Microsoft.GamingApp"))
+            if (AppxPackagesService.PackageExist("Microsoft.XboxGamingOverlay"))
             {
                 var startupPanelIsEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar")?.GetValue("ShowStartupPanel") as int? ?? -1;
                 return startupPanelIsEnabled == 1;
             }
 
-            throw new InvalidOperationException("AppX package Microsoft.GamingApp is not installed");
+            throw new InvalidOperationException("XBOX Game Bar package is not installed");
         }
 
         /// <summary>
@@ -1408,7 +1408,7 @@ else
                 return true;
             }
 
-            throw new InvalidOperationException($"AppX package {appxTerminal} is not installed");
+            throw new InvalidOperationException($"{appxTerminal} package is not installed");
         }
     }
 }
