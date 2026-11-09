@@ -4,6 +4,9 @@
 
 namespace SophiApp.Models
 {
+    using SophiApp.Extensions;
+    using SophiApp.Helpers;
+
     /// <inheritdoc/>
     public class UICheckBoxModel : UIModel
     {
@@ -25,12 +28,24 @@ namespace SophiApp.Models
             this.accessor = accessor;
             this.mutator = mutator;
             Description = description;
+            ExceptionText = string.Empty;
+            ExceptionTextIsVisible = false;
         }
 
         /// <summary>
         /// Gets model description.
         /// </summary>
         public string Description { get; init; }
+
+        /// <summary>
+        /// Gets a exception localized text.
+        /// </summary>
+        public string ExceptionText { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether <see cref="ExceptionText"/> not empty and can be visible.
+        /// </summary>
+        public bool ExceptionTextIsVisible { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether model checked state.
@@ -52,6 +67,13 @@ namespace SophiApp.Models
             try
             {
                 IsChecked = accessor.Invoke();
+            }
+            catch (CustomizationException ex)
+            {
+                ExceptionText = ex.ResourceKey.GetLocalized();
+                ExceptionTextIsVisible = true;
+                IsEnabled = false;
+                App.Logger.LogModelGetStateException(Name, ex);
             }
             catch (Exception ex)
             {

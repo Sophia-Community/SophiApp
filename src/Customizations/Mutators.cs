@@ -1155,7 +1155,7 @@ namespace SophiApp.Customizations
         /// Set network adapters power state.
         /// </summary>
         /// <param name="enable">Network adapters power state.</param>
-        public static void NetworkAdaptersSavePower(bool enable) => PowerShellService.SetTurnOffDeviceNetworkAdapterState(enable);
+        public static void NetworkAdaptersSavePower(bool enable) => PowerShellService.SetNetworkAdapterTurnOffDevice(enable);
 
         /// <summary>
         /// Set input method state.
@@ -1540,7 +1540,6 @@ namespace SophiApp.Customizations
             // We need to turn XBOX Game Bar first
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", true)?.SetValue("AppCaptureEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
             Registry.CurrentUser.OpenSubKey("System\\GameConfigStore", true)?.SetValue("GameDVR_Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
-
             Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar", true)?.SetValue("ShowStartupPanel", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 

@@ -86,15 +86,9 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public string GetProcessorCaption()
-        {
-            using var managementObject = new ManagementObjectSearcher("Select * from CIM_Processor")
-                .Get()
-                .Cast<ManagementObject>()
-                .First();
-
-            return (managementObject.GetPropertyValue("Caption") as string) !;
-        }
+        public IEnumerable<ManagementObject> GetCimInstance(string nameSpace, string className) => new ManagementObjectSearcher(scope: nameSpace, queryString: $"SELECT * FROM {className}")
+            .Get()
+            .Cast<ManagementObject>();
 
         /// <inheritdoc/>
         public string GetUserSid(string name)
@@ -119,7 +113,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool? CpuVirtualizationFirmwareIsEnabled()
+        public bool? CPUVirtualizationIsEnabled()
         {
             using var managementObject = new ManagementObjectSearcher("Select * from CIM_Processor")
                 .Get()
@@ -183,16 +177,6 @@ namespace SophiApp.Services
             using var managementObject = new ManagementObjectSearcher(queryString: "SELECT ProcessId FROM Win32_Process WHERE Name = 'mmc.exe' AND CommandLine LIKE '%eventvwr.msc%'").Get();
             var processesId = managementObject.Cast<ManagementBaseObject>().Select(m => Convert.ToInt32(m.GetPropertyValue("ProcessId"))).ToList();
             return processesId.Count > 0 ? processesId : null;
-        }
-
-        /// <inheritdoc/>
-        public bool WindowsAIPresent()
-        {
-            var managementObject = new ManagementObjectSearcher("Select ClassGuid, PNPClass from Win32_PnPEntity")
-                .Get()
-                .Cast<ManagementObject>()
-                .FirstOrDefault(e => e.GetPropertyValue("ClassGuid") is not null && e.GetPropertyValue("PNPClass").Equals("ComputeAccelerator"));
-            return managementObject is not null;
         }
 
         [DllImport("Winbrand.dll", CharSet = CharSet.Unicode)]

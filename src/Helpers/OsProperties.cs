@@ -18,9 +18,9 @@ namespace SophiApp.Helpers
         public OsProperties()
         {
             Caption = "N/A";
-            Build = -1;
+            MajorBuild = -1;
             DisplayVersion = "N/A";
-            UBR = -1;
+            MinorBuild = -1;
             Edition = "N/A";
             ComputerName = "N/A";
         }
@@ -33,9 +33,9 @@ namespace SophiApp.Helpers
         public OsProperties(PropertyDataCollection properties, string caption)
         {
             Caption = caption ?? "N/A";
-            Build = int.Parse((string?)properties["BuildNumber"]?.Value ?? "-1");
+            MajorBuild = int.Parse((string?)properties["BuildNumber"]?.Value ?? "-1");
             DisplayVersion = (string?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("DisplayVersion") ?? "N/A";
-            UBR = (int?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("UBR") ?? -1;
+            MinorBuild = (int?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("UBR") ?? -1;
             Edition = (string?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("EditionID") ?? "N/A";
             ComputerName = (string?)properties["CSName"]?.Value ?? "N/A";
         }
@@ -46,9 +46,9 @@ namespace SophiApp.Helpers
         public string Caption { get; init; }
 
         /// <summary>
-        /// Gets OS build version.
+        /// Gets OS major build version.
         /// </summary>
-        public int Build { get; init; }
+        public int MajorBuild { get; init; }
 
         /// <summary>
         /// Gets OS display version e.g. 25H2.
@@ -56,9 +56,9 @@ namespace SophiApp.Helpers
         public string DisplayVersion { get; init; }
 
         /// <summary>
-        /// Gets OS update build revision version.
+        /// Gets OS minor build (Update Build Revision) version.
         /// </summary>
-        public int UBR { get; init; }
+        public int MinorBuild { get; init; }
 
         /// <summary>
         /// Gets OS edition.

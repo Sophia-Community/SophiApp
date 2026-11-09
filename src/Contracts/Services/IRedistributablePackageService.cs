@@ -19,6 +19,6 @@ namespace SophiApp.Contracts.Services
         /// Get package offline installer version or default.
         /// </summary>
         /// <param name="name">Package installer file name.</param>
-        Version GetInstalledPackageVersionOrDefault(string name);
+        Version GetVersionOrDefault(string name);
     }
 }

@@ -211,13 +211,13 @@
                                Foreground="{ThemeResource ApplyCustomizationsPanelForeground}"
                                Margin="46, 0, 10, 0"/>
                     <Button x:Uid="Button_Cancel"
-                            Style="{StaticResource BaseButton}"
+                            Style="{ThemeResource BaseButtonStyle}"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Margin="0, 0, 160, 0"
                             Command="{x:Bind ViewModel.ApplicableModelsClear_Command, Mode=OneWay}"/>
                     <Button x:Uid="Button_Apply"
-                            Style="{StaticResource AccentButtonStyle}"
+                            Style="{ThemeResource AccentButtonStyle}"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Margin="0, 0, 26, 0"

@@ -78,7 +78,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool TryStart(string name)
+        public void TryStart(string name)
         {
             try
             {
@@ -88,12 +88,10 @@ namespace SophiApp.Services
                 {
                     service.Start();
                 }
-
-                return true;
             }
             catch
             {
-                return false;
+                // Do nothing.
             }
         }
 

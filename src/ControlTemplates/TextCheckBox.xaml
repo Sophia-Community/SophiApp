@@ -8,15 +8,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:interaction="using:Microsoft.Xaml.Interactivity"
     xmlns:converters="using:SophiApp.Converters"
     mc:Ignorable="d"
     IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}">
-    <interactivity:Interaction.Behaviors>
-        <interaction:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
-            <interaction:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
-        </interaction:DataTriggerBehavior>
-    </interactivity:Interaction.Behaviors>
 
     <UserControl.Resources>
         <converters:StringToVisibility x:Key="StringToVisibilityConverter"/>
@@ -71,23 +65,42 @@
                 <TextBlock x:Name="TitleTextBlock"
                            Foreground="{ThemeResource WindowForeground}"
                            Style="{StaticResource UIControlTitleTextStyle}"
-                           Margin="0, 10, 0, 10">
-                    <Run Text="{Binding Title}"
-                         FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=TextCheckBoxControl}"/>
+                           Margin="0, 10, 0, 10"
+                           Text="{Binding Title}"
+                           FontSize="{Binding Path=FontOptions.TitleTextSize, ElementName=TextCheckBoxControl}">
                 </TextBlock>
                 <TextBlock x:Name="DescriptionTextBlock"
                            Style="{StaticResource UIControlDescriptionTextStyle}"
                            Foreground="{ThemeResource UIControlDescriptionForeground}"
-                           Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}">
-                    <Run Text="{Binding Description}"
-                         FontSize="{Binding Path=FontOptions.DescriptionTextSize, ElementName=TextCheckBoxControl}"/>
+                           Visibility="{Binding Description, Converter={StaticResource StringToVisibilityConverter}}"
+                           Text="{Binding Description}"
+                           FontSize="{Binding Path=FontOptions.DescriptionTextSize, ElementName=TextCheckBoxControl}">
                 </TextBlock>
+                <Border x:Name="ExceptionTextBorder"
+                        Style="{StaticResource ExceptionDescriptionBorderStyle}"
+                        Width="{Binding ElementName=ExceptionDescriptionTextBlock, Path=Width}">
+                    <TextBlock x:Name="ExceptionTextBlock"
+                               Style="{StaticResource ExceptionDescriptionTextStyle}"
+                               Text="{Binding ExceptionText}"/>
+                </Border>
             </StackPanel>
-            <CheckBox Grid.Column="1"
+            <CheckBox x:Name="ActionCheckBox"
+                      Grid.Column="1"
                       Style="{StaticResource UIControlCheckBoxStyle}"
                       IsChecked="{Binding IsChecked, Mode=TwoWay}"
                       Command="{Binding Command, ElementName=TextCheckBoxControl}"
-                      CommandParameter="{Binding}"/>
+                      CommandParameter="{Binding}">
+            </CheckBox>
         </Grid>
+        <interactivity:Interaction.Behaviors>
+            <interactivity:DataTriggerBehavior Binding="{Binding IsEnabled}" ComparisonCondition="Equal" Value="False">
+                <interactivity:ChangePropertyAction TargetObject="{Binding ElementName=TitleTextBlock}" PropertyName="Opacity" Value="0.6"/>
+                <interactivity:ChangePropertyAction TargetObject="{Binding ElementName=DescriptionTextBlock}" PropertyName="Opacity" Value="0.6"/>
+                <interactivity:ChangePropertyAction TargetObject="{Binding ElementName=ActionCheckBox}" PropertyName="Visibility" Value="Collapsed"/>
+            </interactivity:DataTriggerBehavior>
+            <interactivity:DataTriggerBehavior Binding="{Binding ExceptionTextIsVisible}" ComparisonCondition="Equal" Value="True">
+                <interactivity:ChangePropertyAction TargetObject="{Binding ElementName=ExceptionTextBorder}" PropertyName="Visibility" Value="Visible"/>
+            </interactivity:DataTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
     </Border>
 </UserControl>

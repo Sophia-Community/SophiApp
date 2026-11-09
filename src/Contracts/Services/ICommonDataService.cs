@@ -22,9 +22,9 @@ namespace SophiApp.Contracts.Services
         Version AppVersion { get; }
 
         /// <summary>
-        /// Gets a value indicating whether Microsoft Defender enabled state.
+        /// Gets a value indicating whether Microsoft Defender is default AV.
         /// </summary>
-        bool DefenderEnabled { get; }
+        bool DefenderIsDefaultAV { get; }
 
         /// <summary>
         /// Gets app latest release from GitHub repository.
@@ -62,9 +62,9 @@ namespace SophiApp.Contracts.Services
         string RequirementsResult_2 { get; set; }
 
         /// <summary>
-        /// Gets app supported OS builds version.
+        /// Gets supported OS version.
         /// </summary>
-        SupportedUBR SupportedUBR { get; }
+        SupportedOs SupportedOs { get; }
 
         /// <summary>
         /// Initialize <see cref="ICommonDataService"/> data.

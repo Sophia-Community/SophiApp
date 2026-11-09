@@ -46,6 +46,7 @@
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Style="{StaticResource UIControlLogPageTextStyle}"
+                                       Foreground="{ThemeResource WindowAccent}"
                                        Margin="5, 0, 5, 2">
                                 <Run Text="{Binding}"
                                      FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageLog}"/>

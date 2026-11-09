@@ -231,8 +231,8 @@ namespace SophiApp.Services
 
         private UIModel BuildCheckBoxModel(UIModelDto dto)
         {
-            var title = GetTitle(dto.Name);
-            var description = GetDescription(dto.Name);
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
             var accessor = GetAccessor<bool>(dto.Name);
             var mutator = GetMutator<bool>(dto.Name);
             return new UICheckBoxModel(dto, title, description, accessor, mutator);
@@ -240,8 +240,8 @@ namespace SophiApp.Services
 
         private UIModel BuildIconCheckBoxModel(UIModelDto dto)
         {
-            var title = GetTitle(dto.Name);
-            var description = GetDescription(dto.Name);
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
             var accessor = GetAccessor<bool>(dto.Name);
             var mutator = GetMutator<bool>(dto.Name);
             return new UIIconCheckBoxModel(dto, title, description, accessor, mutator);
@@ -249,10 +249,10 @@ namespace SophiApp.Services
 
         private UIModel BuildRadioButtonsGroup2(UIModelDto dto)
         {
-            var title = GetTitle(dto.Name);
-            var description = GetDescription(dto.Name);
-            var title_1 = GetTitle(dto.Name, 1);
-            var title_2 = GetTitle(dto.Name, 2);
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var title_1 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_1");
+            var title_2 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_2");
             var accessor = GetAccessor<int>(dto.Name);
             var mutator = GetMutator<int>(dto.Name);
             return new UIRadioButtonsGroup2Model(dto, title, description, title_1, title_2, accessor, mutator);
@@ -260,11 +260,11 @@ namespace SophiApp.Services
 
         private UIModel BuildRadioButtonsGroup3(UIModelDto dto)
         {
-            var title = GetTitle(dto.Name);
-            var description = GetDescription(dto.Name);
-            var title_1 = GetTitle(dto.Name, 1);
-            var title_2 = GetTitle(dto.Name, 2);
-            var title_3 = GetTitle(dto.Name, 3);
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var title_1 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_1");
+            var title_2 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_2");
+            var title_3 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_3");
             var accessor = GetAccessor<int>(dto.Name);
             var mutator = GetMutator<int>(dto.Name);
             return new UIRadioButtonsGroup3Model(dto, title, description, title_1, title_2, title_3, accessor, mutator);
@@ -272,26 +272,20 @@ namespace SophiApp.Services
 
         private UIModel BuildRadioButtonsGroup4(UIModelDto dto)
         {
-            var title = GetTitle(dto.Name);
-            var description = GetDescription(dto.Name);
-            var title_1 = GetTitle(dto.Name, 1);
-            var title_2 = GetTitle(dto.Name, 2);
-            var title_3 = GetTitle(dto.Name, 3);
-            var title_4 = GetTitle(dto.Name, 4);
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var title_1 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_1");
+            var title_2 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_2");
+            var title_3 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_3");
+            var title_4 = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_4");
             var accessor = GetAccessor<int>(dto.Name);
             var mutator = GetMutator<int>(dto.Name);
             return new UIRadioButtonsGroup4Model(dto, title, description, title_1, title_2, title_3, title_4, accessor, mutator);
         }
 
-        private string GetTitle(string name, int? id = null)
+        private string GetResourceValueOrDefault(string pattern)
         {
-            var title = id is null ? $"UIModel_{name}_Title" : $"UIModel_{name}_Title_{id}";
-            return resourceMap.GetValue(title).ValueAsString;
-        }
-
-        private string GetDescription(string name)
-        {
-            if (resourceMap.TryGetValue($"UIModel_{name}_Description", out var value))
+            if (resourceMap.TryGetValue(pattern, out var value))
             {
                 return value.Resolve().ValueAsString;
             }

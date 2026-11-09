@@ -128,6 +128,13 @@ namespace SophiApp.Contracts.Services
              where T : struct;
 
         /// <summary>
+        /// Write the model state changed to the log.
+        /// </summary>
+        /// <param name="name">The model name.</param>
+        /// <param name="state">The model state.</param>
+        void LogModelState(string name, bool? state);
+
+        /// <summary>
         /// Write information about the canceling of a applicable models collection in the log.
         /// </summary>
         void LogApplicableModelsCanceled();
@@ -166,13 +173,6 @@ namespace SophiApp.Contracts.Services
         /// <param name="parameter">Parameter used by the model.</param>
         void LogApplicableModelAdded<T>(string name, T parameter)
             where T : struct;
-
-        /// <summary>
-        /// Write Microsoft Defender services state in the log.
-        /// </summary>
-        /// <param name="name">Microsoft Defender services name.</param>
-        /// <param name="isExist">Microsoft Defender services state.</param>
-        void LogDefenderServiceExist(string name, bool isExist);
 
         /// <summary>
         /// Write information about state a "For all users" checkbox in the UWP page.
@@ -272,7 +272,7 @@ namespace SophiApp.Contracts.Services
         /// Handles occur exception of the Get-MpPreference cmdlet execution.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>
-        void LogDefenderControlledFolderException(Exception exception);
+        void LogControlledFolderException(Exception exception);
 
         /// <summary>
         /// Handles an exception when accessing to get UI model state.

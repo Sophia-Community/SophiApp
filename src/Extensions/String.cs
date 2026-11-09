@@ -30,7 +30,10 @@ namespace SophiApp.Extensions
         {
             try
             {
-                File.Delete(filePath);
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
             }
             catch (Exception)
             {

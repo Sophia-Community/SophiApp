@@ -50,7 +50,7 @@ namespace SophiApp.Services
 
             Log.Information("Windows version: {Caption:l}", properties.Caption);
             Log.Information("Windows edition: {Edition:l}", properties.Edition);
-            Log.Information("Windows build: {Build}.{Ubr}", properties.Build, properties.UBR);
+            Log.Information("Windows build: {Build}.{Ubr}", properties.MajorBuild, properties.MinorBuild);
             Log.Information("Computer name: {ComputerName:l}", properties.ComputerName);
             Log.Information("User name: {UserName:l}", Environment.UserName);
             Log.Information("User culture: {Culture:l}", CultureInfo.CurrentCulture.EnglishName);
@@ -60,7 +60,7 @@ namespace SophiApp.Services
 
             shellViewModel.LoggedActions =
             [
-                $"Windows version: {properties.Caption}", $"Windows edition: {properties.Edition}", $"Windows build: {properties.Build}.{properties.UBR}",
+                $"Windows version: {properties.Caption}", $"Windows edition: {properties.Edition}", $"Windows build: {properties.MajorBuild}.{properties.MinorBuild}",
                 $"Computer name: {properties.ComputerName}", $"User name: {Environment.UserName}", $"User culture: {CultureInfo.CurrentCulture.EnglishName}",
                 $"User region: {RegionInfo.CurrentRegion.EnglishName}", $"User date and time: {dateTime}", $"User time zone: {TimeZoneInfo.Local.DisplayName}",
             ];
@@ -181,6 +181,13 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogModelState(string name, bool? state)
+        {
+            Log.Information("{Name:l} has state: {State}", name, state);
+            shellViewModel.LoggedActions.Add($"{name} has state: {state}");
+        }
+
+        /// <inheritdoc/>
         public void LogApplicableModelsCanceled()
         {
             Log.Information("The applying of customizations has been canceled by user");
@@ -222,13 +229,6 @@ namespace SophiApp.Services
         {
             Log.Information("{Name:l} with parameter {Parameter} has been added to applicable customization collection", name, parameter);
             shellViewModel.LoggedActions.Add($"{name} with parameter {parameter} has been added to applicable customization collection");
-        }
-
-        /// <inheritdoc/>
-        public void LogDefenderServiceExist(string name, bool isExist)
-        {
-            Log.Information("Microsoft Defender services {Name:l} is exist: {State:l}", name, isExist);
-            shellViewModel.LoggedActions.Add($"Microsoft Defender services {name} is exist: {isExist}");
         }
 
         /// <inheritdoc/>
@@ -333,7 +333,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void LogDefenderControlledFolderException(Exception exception)
+        public void LogControlledFolderException(Exception exception)
         {
             Log.Error("[WRN] Failed to obtain Microsoft Defender EnableControlledFolderAccess value in the {Service:l}: {Message}", nameof(IRequirementsService), exception.Message);
             shellViewModel.LoggedActions.Add($"[WRN] Failed to obtain Microsoft Defender EnableControlledFolderAccess value in the {nameof(IRequirementsService)}: {exception.Message}");

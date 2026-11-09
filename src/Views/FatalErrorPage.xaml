@@ -52,10 +52,8 @@
                     <StackPanel Grid.Column="1"
                                 Margin="0, 20, 20, 20">
                         <TextBlock Style="{StaticResource RequirementsFailurePageTextStyle}">
-                            <Run x:Uid="AppFatalError_1"
-                                 Foreground="{ThemeResource WindowAccent}"/>
-                            <Run x:Uid="AppFatalError_2"
-                                 Foreground="{ThemeResource WindowForeground}"/>
+                            <Run x:Uid="AppFatalError_1"/>
+                            <Run x:Uid="AppFatalError_2"/>
                         </TextBlock>
                     </StackPanel>
                 </Grid>

@@ -22,7 +22,7 @@ namespace SophiApp.Customizations
     {
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService DataService = App.GetService<ICommonDataService>();
-        private static readonly IRedistributablePackageService RedistributablePackageService = App.GetService<IRedistributablePackageService>();
+        private static readonly IRedistributablePackageService PackageService = App.GetService<IRedistributablePackageService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
@@ -65,7 +65,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool ErrorReporting()
         {
-            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new InvalidOperationException("Failed to find a QueueReporting scheduled task");
+            var reportingTask = ScheduledTaskService.GetTaskOrDefault("Microsoft\\Windows\\Windows Error Reporting\\QueueReporting") ?? throw new CustomizationException(exceptionMessage: "Failed to find a QueueReporting scheduled task", resourceKey: "UIModel_Exception_ErrorReporting");
             using var werService = new System.ServiceProcess.ServiceController("WerSvc");
             return !(reportingTask.State == TaskState.Disabled && werService.StartType == ServiceStartMode.Disabled);
         }
@@ -100,7 +100,7 @@ namespace SophiApp.Customizations
             };
 
             return telemetryTasks.TrueForAll(task => task is null)
-                ? throw new InvalidOperationException("No scheduled telemetry tasks were found")
+                ? throw new CustomizationException(exceptionMessage: "No scheduled telemetry tasks were found", resourceKey: "UIModel_Exception_ScheduledTasks")
                 : telemetryTasks.Exists(task => task?.State == TaskState.Ready);
         }
 
@@ -209,7 +209,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var startIrisRecommendations = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced")?.GetValue("Start_IrisRecommendations") as int? ?? -1;
@@ -223,7 +223,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var startAccountNotifications = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced")?.GetValue("Start_AccountNotifications") as int? ?? -1;
@@ -367,7 +367,7 @@ namespace SophiApp.Customizations
                 return !taskbarValue.Equals(0);
             }
 
-            throw new InvalidOperationException("MicrosoftWindows.Client.WebExperience package is not installed");
+            throw new CustomizationException(exceptionMessage: "MicrosoftWindows.Client.WebExperience package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
         }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace SophiApp.Customizations
 
             if (smallIconsValue.Equals(1))
             {
-                throw new InvalidOperationException("Small taskbar icons mode is enabled");
+                throw new CustomizationException(exceptionMessage: "Small taskbar icons mode is enabled", resourceKey: "UIModel_Exception_TaskbarSearch");
             }
 
             return searchModeValue switch
@@ -400,10 +400,10 @@ namespace SophiApp.Customizations
             var searchEnabled = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Search")?.GetValue("BingSearchEnabled") as int? ?? -1;
             var searchSuggestions = Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer")?.GetValue("DisableSearchBoxSuggestions") as int? ?? -1;
 
-            // Checking whether "Ask Copilot" and "Find results in Web" were disabled. They also disable Search Highlights automatically
+            // Checking whether "Ask Copilot" and "Find results in Web" were disabled. They also disable Search Highlights automatically.
             if (searchEnabled.Equals(0) || searchSuggestions.Equals(1))
             {
-                throw new InvalidOperationException($"Search highlights already hidden.");
+                throw new CustomizationException(exceptionMessage: "Search highlights already hidden", resourceKey: "UIModel_Exception_SearchHighlights");
             }
 
             var dynamicSearch = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings")?.GetValue("IsDynamicSearchBoxEnabled") as int? ?? -1;
@@ -579,7 +579,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var showRecentList = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start")?.GetValue("ShowRecentList") as int? ?? -1;
@@ -593,7 +593,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var appsView = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start")?.GetValue("AllAppsViewMode") as int? ?? 0;
@@ -607,7 +607,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var usedStartApps = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start")?.GetValue("ShowFrequentList") as int? ?? -1;
@@ -621,7 +621,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             // Default — 0
@@ -638,7 +638,7 @@ namespace SophiApp.Customizations
         {
             if (ProcessService.Exist("Start11Srv", "StartAllBackCfg", "StartMenu"))
             {
-                throw new InvalidOperationException("A third-party Start Menu is installed");
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var startRecommended = new List<int>()
@@ -663,13 +663,13 @@ namespace SophiApp.Customizations
                 {
                     if (OneDriveService.UserIsLogged())
                     {
-                        throw new InvalidOperationException("Please log out from OneDrive account before uninstalling the application");
+                        throw new CustomizationException(exceptionMessage: "Log out from OneDrive account before uninstalling the application", resourceKey: "UIModel_Exception_OneDrive_LogOut");
                     }
 
                     return true;
                 }
 
-                throw new InvalidOperationException("A user data folder does not exist");
+                throw new CustomizationException(exceptionMessage: "A user data folder does not exist", resourceKey: "UIModel_Exception_OneDrive_FolderNotExist");
             }
             else
             {
@@ -681,7 +681,7 @@ namespace SophiApp.Customizations
                     return false;
                 }
 
-                throw new InvalidOperationException("OneDriveSetup.exe was not found and there is no Internet access to download OneDrive installer");
+                throw new CustomizationException(exceptionMessage: "OneDriveSetup.exe was not found and there is no Internet access to download OneDrive installer", resourceKey: "UIModel_Exception_OneDrive_InstallerNotFound");
             }
         }
 
@@ -797,8 +797,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool NetworkAdaptersSavePower()
         {
-            return PowerShellService.TurnOffDeviceNetworkAdapterExist()
-                ?? throw new InvalidOperationException("There is no network adapter which has an AllowComputerToTurnOffDevice property");
+            return PowerShellService.GetNetworkAdapterTurnOffDevice()
+                ?? throw new CustomizationException(exceptionMessage: "There is no network adapter which has an AllowComputerToTurnOffDevice property", resourceKey: "UIModel_Exception_NetworkAdaptersSavePower");
         }
 
         /// <summary>
@@ -817,7 +817,7 @@ namespace SophiApp.Customizations
         {
             if (OneDriveService.UserIsLogged())
             {
-                throw new InvalidOperationException("Please log out from OneDrive account");
+                throw new InvalidOperationException("Log out from OneDrive account");
             }
 
             var prtScrPath = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")
@@ -1005,9 +1005,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool InstallDotNetRuntime_8()
         {
-            var latestVersion = DataService.LatestReleaseNET8?.Version ?? throw new InvalidOperationException("Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/8.0/releases.json is not available");
-            var installedVersion = RedistributablePackageService.GetInstalledPackageVersionOrDefault($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
-            return latestVersion > installedVersion ? false : throw new InvalidOperationException("Latest .NET version is installed");
+            var latestVersion = DataService.LatestReleaseNET8?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/8.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
+            var installedVersion = PackageService.GetVersionOrDefault($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
+            return latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest .NET version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
         }
 
         /// <summary>
@@ -1015,9 +1015,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool InstallDotNetRuntime_9()
         {
-            var latestVersion = DataService.LatestReleaseNET9?.Version ?? throw new InvalidOperationException("Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/9.0/releases.json is not available");
-            var installedVersion = RedistributablePackageService.GetInstalledPackageVersionOrDefault($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
-            return latestVersion > installedVersion ? false : throw new InvalidOperationException("Latest .NET version is installed");
+            var latestVersion = DataService.LatestReleaseNET9?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/9.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
+            var installedVersion = PackageService.GetVersionOrDefault($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
+            return latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest .NET version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
         }
 
         /// <summary>
@@ -1025,9 +1025,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool InstallDotNetRuntime_10()
         {
-            var latestVersion = DataService.LatestReleaseNET10?.Version ?? throw new InvalidOperationException("Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json is not available");
-            var installedVersion = RedistributablePackageService.GetInstalledPackageVersionOrDefault($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
-            return latestVersion > installedVersion ? false : throw new InvalidOperationException("Latest .NET version is installed");
+            var latestVersion = DataService.LatestReleaseNET10?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
+            var installedVersion = PackageService.GetVersionOrDefault($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
+            return latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest .NET version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
         }
 
         /// <summary>
@@ -1035,9 +1035,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool InstallVisualC_x86()
         {
-            var latestVersion = DataService.LatestReleaseVC?.Version ?? throw new InvalidOperationException("Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available");
-            var installedVersion = RedistributablePackageService.GetInstalledPackageVersionOrDefault("VC_redist.x86.exe");
-            return latestVersion > installedVersion ? false : throw new InvalidOperationException("Latest Visual C++ x86 version is installed");
+            var latestVersion = DataService.LatestReleaseVC?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
+            var installedVersion = PackageService.GetVersionOrDefault("VC_redist.x86.exe");
+            return latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest Visual C++ x86 version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
         }
 
         /// <summary>
@@ -1045,9 +1045,9 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool InstallVisualC_x64()
         {
-            var latestVersion = DataService.LatestReleaseVC?.Version ?? throw new InvalidOperationException("Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available");
-            var installedVersion = RedistributablePackageService.GetInstalledPackageVersionOrDefault("VC_redist.x64.exe");
-            return latestVersion > installedVersion ? false : throw new InvalidOperationException("Latest Visual C++ x64 version is installed");
+            var latestVersion = DataService.LatestReleaseVC?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
+            var installedVersion = PackageService.GetVersionOrDefault("VC_redist.x64.exe");
+            return latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest Visual C++ x64 version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
         }
 
         /// <summary>
@@ -1088,7 +1088,7 @@ namespace SophiApp.Customizations
                 return startupPanelIsEnabled == 1;
             }
 
-            throw new InvalidOperationException("XBOX Game Bar package is not installed");
+            throw new CustomizationException(exceptionMessage: "XBOX Game Bar package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
         }
 
         /// <summary>
@@ -1109,7 +1109,7 @@ namespace SophiApp.Customizations
                 return hwSchMode == 2;
             }
 
-            throw new InvalidOperationException($"DAC type is external: {isExternalDAC}. PC is a VM: {isVM}. WDDM version (minimal {WDDMMinimalVersion}): {wddmVersion}");
+            throw new CustomizationException(exceptionMessage: $"DAC type is external: {isExternalDAC}. PC is a VM: {isVM}. WDDM version (minimal {WDDMMinimalVersion}): {wddmVersion}", resourceKey: "UIModel_Exception_GPUScheduling");
         }
 
         /// <summary>
@@ -1157,16 +1157,16 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool NetworkProtection()
         {
-            var defenderEnabled = DataService.DefenderEnabled;
+            var defenderIsDefaultAV = DataService.DefenderIsDefaultAV;
             var antiSpywareEnabled = InstrumentationService.GetAntiSpywareEnabled();
 
-            if (defenderEnabled && antiSpywareEnabled)
+            if (defenderIsDefaultAV && antiSpywareEnabled)
             {
                 var networkProtection = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection")?.GetValue("EnableNetworkProtection") as int? ?? -1;
                 return networkProtection.Equals(1);
             }
 
-            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+            throw new CustomizationException(exceptionMessage: "Microsoft Defender antispyware protection is disabled", resourceKey: "UIModel_Exception_AntispywareProtectionDisabled");
         }
 
         /// <summary>
@@ -1174,7 +1174,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool PUAppsDetection()
         {
-            var defenderEnabled = DataService.DefenderEnabled;
+            var defenderEnabled = DataService.DefenderIsDefaultAV;
             var antiSpywareEnabled = InstrumentationService.GetAntiSpywareEnabled();
 
             if (defenderEnabled && antiSpywareEnabled)
@@ -1183,7 +1183,7 @@ namespace SophiApp.Customizations
                 return puaProtection.Equals(1);
             }
 
-            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+            throw new CustomizationException(exceptionMessage: "Microsoft Defender antispyware protection is disabled", resourceKey: "UIModel_Exception_AntispywareProtectionDisabled");
         }
 
         /// <summary>
@@ -1191,7 +1191,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool DefenderSandbox()
         {
-            var defenderEnabled = DataService.DefenderEnabled;
+            var defenderEnabled = DataService.DefenderIsDefaultAV;
             var antiSpywareEnabled = InstrumentationService.GetAntiSpywareEnabled();
 
             if (defenderEnabled && antiSpywareEnabled)
@@ -1199,7 +1199,7 @@ namespace SophiApp.Customizations
                 return ProcessService.Exist("MsMpEngCP");
             }
 
-            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+            throw new CustomizationException(exceptionMessage: "Microsoft Defender antispyware protection is disabled", resourceKey: "UIModel_Exception_AntispywareProtectionDisabled");
         }
 
         /// <summary>
@@ -1232,7 +1232,7 @@ else
         /// </summary>
         public static bool AppsSmartScreen()
         {
-            var defenderEnabled = DataService.DefenderEnabled;
+            var defenderEnabled = DataService.DefenderIsDefaultAV;
             var antiSpywareEnabled = InstrumentationService.GetAntiSpywareEnabled();
 
             if (defenderEnabled && antiSpywareEnabled)
@@ -1241,7 +1241,7 @@ else
                 return !smartScreenIsEnabled.Equals("Off");
             }
 
-            throw new InvalidOperationException("Microsoft Defender antispyware protection is disabled");
+            throw new CustomizationException(exceptionMessage: "Microsoft Defender antispyware protection is disabled", resourceKey: "UIModel_Exception_AntispywareProtectionDisabled");
         }
 
         /// <summary>
@@ -1261,16 +1261,15 @@ else
             bool GetSandboxEnabled()
             {
                 // Checking whether x86 virtualization is enabled in the firmware
-                var sandboxScript = "Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online";
-                var sandboxState = PowerShellService.Invoke(sandboxScript).FirstOrDefault();
-                return !sandboxState?.Properties["State"]?.Value.Equals("Disabled") ?? throw new InvalidOperationException("Windows Sandbox state undefined");
+                var sandboxState = PowerShellService.Invoke("Get-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online").FirstOrDefault();
+                return !sandboxState?.Properties["State"]?.Value.Equals("Disabled") ?? throw new CustomizationException(exceptionMessage: "Windows Sandbox state undefined", resourceKey: "UIModel_Exception_WindowsSandbox_UndefinedState");
             }
 
             if (DataService.OsProperties.Edition.Equals("Professional") || DataService.OsProperties.Edition.Equals("Enterprise"))
             {
                 // Determining whether Hyper-V is enabled
-                var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationFirmwareIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
-                var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
+                var virtualizationIsEnabled = InstrumentationService.CPUVirtualizationIsEnabled() ?? throw new CustomizationException(exceptionMessage: "This CPU does not support virtualization", resourceKey: "UIModel_Exception_VirtualizationNotSupported");
+                var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new CustomizationException(exceptionMessage: "Enable virtualization in UEFI", resourceKey: "UIModel_Exception_VirtualizationDisabled");
 
                 if (virtualizationIsEnabled)
                 {
@@ -1281,10 +1280,10 @@ else
                     return GetSandboxEnabled();
                 }
 
-                throw new InvalidOperationException("This PC does not support Windows Sandbox feature");
+                throw new CustomizationException(exceptionMessage: "This PC does not support Windows Sandbox feature", resourceKey: "UIModel_Exception_UnsupportedFeature");
             }
 
-            throw new InvalidOperationException("Unsupported Windows edition");
+            throw new CustomizationException(exceptionMessage: "Unsupported Windows edition", resourceKey: "UIModel_Exception_WindowsSandbox_UnsupportedEdition");
         }
 
         /// <summary>
@@ -1292,8 +1291,8 @@ else
         /// </summary>
         public static bool LocalSecurityAuthority()
         {
-            var virtualizationIsEnabled = InstrumentationService.CpuVirtualizationFirmwareIsEnabled() ?? throw new InvalidOperationException("This CPU does not support virtualization");
-            var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new InvalidOperationException("Enable virtualization in UEFI");
+            var virtualizationIsEnabled = InstrumentationService.CPUVirtualizationIsEnabled() ?? throw new CustomizationException(exceptionMessage: "This CPU does not support virtualization", resourceKey: "UIModel_Exception_VirtualizationNotSupported");
+            var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new CustomizationException(exceptionMessage: "Enable virtualization in UEFI", resourceKey: "UIModel_Exception_VirtualizationDisabled");
             var runAsPPL = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPL") ?? -1;
             var runAsPPLBoot = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa")?.GetValue("RunAsPPLBoot") ?? -1;
             var runAsPPLPolicy = Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\System")?.GetValue("RunAsPPL") ?? -1;
@@ -1307,7 +1306,7 @@ else
                 return (runAsPPL.Equals(2) && runAsPPLBoot.Equals(2)) || runAsPPLPolicy.Equals(2);
             }
 
-            throw new InvalidOperationException("This PC does not support Local Security Authority feature");
+            throw new CustomizationException(exceptionMessage: "This PC does not support Local Security Authority feature", resourceKey: "UIModel_Exception_UnsupportedFeature");
         }
 
         /// <summary>
@@ -1326,15 +1325,15 @@ else
         {
             var cabProgId = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.cab\\UserChoice")?.GetValue("ProgId") as string ?? string.Empty;
             var cabUserChoice = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.cab\\UserChoice")?.GetSubKeyNames() ?? [];
-            var explorerDefaultArchiver = cabProgId.Equals("CABFolder") || cabUserChoice.Length == 0;
+            var cabArchiver = cabProgId.Equals("CABFolder") || cabUserChoice.Length == 0;
 
-            if (explorerDefaultArchiver)
+            if (cabArchiver)
             {
                 var muiVerb = Registry.ClassesRoot.OpenSubKey("CABFolder\\Shell\\runas")?.GetValue("MUIVerb") as string ?? string.Empty;
                 return muiVerb.Equals("@shell32.dll,-10210");
             }
 
-            throw new InvalidOperationException("A third-party archiver is set as the default archiver");
+            throw new CustomizationException(exceptionMessage: "A third-party archiver is set as the default archiver", resourceKey: "UIModel_Exception_CABInstallContext_DefaultArchiver");
         }
 
         /// <summary>
@@ -1383,9 +1382,7 @@ else
         /// </summary>
         public static bool OpenWindowsTerminalAdminContext()
         {
-            var appxTerminal = "Microsoft.WindowsTerminal";
-
-            if (AppxPackagesService.PackageExist(appxTerminal))
+            if (AppxPackagesService.PackageExist("Microsoft.WindowsTerminal"))
             {
                 var userBlockedGuid = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{9F156763-7844-4DC4-B2B1-901F640F5155}");
                 var machineBlockedGuid = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked")?.GetValue("{9F156763-7844-4DC4-B2B1-901F640F5155}");
@@ -1401,14 +1398,14 @@ else
                     }
                     catch (ArgumentException)
                     {
-                        throw new InvalidOperationException($"{appxTerminal} configuration file is not valid");
+                        throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal configuration file is not valid", resourceKey: "UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid");
                     }
                 }
 
                 return true;
             }
 
-            throw new InvalidOperationException($"{appxTerminal} package is not installed");
+            throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
         }
     }
 }

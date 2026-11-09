@@ -6,7 +6,9 @@ namespace SophiApp.Services
 {
     using Microsoft.Win32;
     using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
+    using RegistryKey = Microsoft.Win32.RegistryKey;
 
     /// <inheritdoc/>
     public class GroupPolicyService : IGroupPolicyService
@@ -26,13 +28,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void DeleteLGPOConfig()
-        {
-            if (File.Exists(lgpoSettings))
-            {
-                File.Delete(lgpoSettings);
-            }
-        }
+        public void DeleteLGPOConfig() => lgpoSettings.TryDelete();
 
         /// <inheritdoc/>
         public void DeleteRegistryValue(RegistryKey registryKey, string subKey, string value)

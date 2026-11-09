@@ -10,9 +10,8 @@ namespace SophiApp.Helpers
     public enum RequirementsResult
     {
         AllCorrect,
-        UnsupportedArchitecture,
         NewAppVersionFound,
-        LoggedInUserNotAdmin,
+        LoggedUserNotAdmin,
         HarmfulTweakerFound,
         HostsEntriesFound,
         UWPComponentsMissing,

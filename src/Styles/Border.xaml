@@ -7,4 +7,11 @@
         <Setter Property="CornerRadius" Value="4"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
+
+    <Style TargetType="Border" x:Key="ExceptionDescriptionBorderStyle">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="BorderBrush" Value="{ThemeResource WindowAccent}"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
+    </Style>
 </ResourceDictionary>

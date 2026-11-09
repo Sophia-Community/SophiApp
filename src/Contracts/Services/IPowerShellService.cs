@@ -17,9 +17,9 @@ namespace SophiApp.Contracts.Services
         void ClearCommonDialogViews();
 
         /// <summary>
-        /// Checks if there are any connected network adapters with the managed property "AllowComputerToTurnOffDevice".
+        /// Get any connected network adapters with the managed property "AllowComputerToTurnOffDevice" if exist.
         /// </summary>
-        bool? TurnOffDeviceNetworkAdapterExist();
+        bool? GetNetworkAdapterTurnOffDevice();
 
         /// <summary>
         /// Return <paramref name="script"/> execute result or default.
@@ -53,6 +53,6 @@ namespace SophiApp.Contracts.Services
         /// Set network adapters managed property "AllowComputerToTurnOffDevice" state.
         /// </summary>
         /// <param name="enable">Network adapters "AllowComputerToTurnOffDevice" property state.</param>
-        void SetTurnOffDeviceNetworkAdapterState(bool enable);
+        void SetNetworkAdapterTurnOffDevice(bool enable);
     }
 }

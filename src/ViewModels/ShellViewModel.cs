@@ -530,7 +530,7 @@ public partial class ShellViewModel : ObservableRecipient
             if (osService.Exist("SysMain") && osService.GetStatus("SysMain") == ServiceControllerStatus.Stopped)
             {
                 osService.TrySetStartMode("SysMain", ServiceStartMode.Automatic);
-                _ = osService.TryStart("SysMain");
+                osService.TryStart("SysMain");
             }
 
             instrumentationService.SetPageFileAutoSize();

@@ -75,10 +75,9 @@
                        Height="103"/>
                 <StackPanel Grid.Row="1"
                             HorizontalAlignment="Center">
-                    <TextBlock Style="{StaticResource UIControlTitleTextStyle}">
-                        <Run x:Uid="SearchPage_NothingFound"
-                             Foreground="{ThemeResource WindowForeground}"/>
-                    </TextBlock>
+                    <TextBlock x:Uid="SearchPage_NothingFound"
+                               Style="{StaticResource UIControlTitleTextStyle}"
+                               Foreground="{ThemeResource WindowAccent}"/>
                 </StackPanel>
             </Grid>
         </Grid>

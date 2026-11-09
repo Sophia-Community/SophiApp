@@ -17,7 +17,7 @@ namespace SophiApp.Services
             => Directory.GetFileSystemEntries(Path.GetTempPath(), logPattern, SearchOption.TopDirectoryOnly).ForEach(File.Delete);
 
         /// <inheritdoc/>
-        public Version GetInstalledPackageVersionOrDefault(string name)
+        public Version GetVersionOrDefault(string name)
         {
             // Checking whether VC_redist builds installed
             var packageCache = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Package Cache");

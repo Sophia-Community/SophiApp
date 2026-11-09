@@ -30,7 +30,7 @@ namespace SophiApp.Services
             this.instrumentationService = instrumentationService;
             this.httpService = httpService;
             OsProperties = new ();
-            SupportedUBR = new ();
+            SupportedOs = new ();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace SophiApp.Services
         public OsProperties OsProperties { get; private set; }
 
         /// <inheritdoc/>
-        public bool DefenderEnabled { get; private set; } = false;
+        public bool DefenderIsDefaultAV { get; private set; } = false;
 
         /// <inheritdoc/>
         public Version AppVersion => assembly.Version!;
@@ -84,7 +84,7 @@ namespace SophiApp.Services
         public string RequirementsResult_2 { get; set; } = string.Empty;
 
         /// <inheritdoc/>
-        public SupportedUBR SupportedUBR { get; private set; }
+        public SupportedOs SupportedOs { get; private set; }
 
         /// <inheritdoc/>
         public async Task InitializeAsync()
@@ -119,9 +119,9 @@ namespace SophiApp.Services
                 .Equals("{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}"))
                 ?.GetPropertyValue("productState");
                 var defenderState = productState is null ? "00" : string.Format("0x{0:x}", productState).Substring(3, 2);
-                var defenderIsDefault = !(defenderState.Equals("00") || defenderState.Equals("01"));
-                App.Logger.LogDefenderIsDefault(defenderIsDefault);
-                DefenderEnabled = defenderIsDefault;
+                var defenderIsDefaultAV = !(defenderState.Equals("00") || defenderState.Equals("01"));
+                App.Logger.LogDefenderIsDefault(defenderIsDefaultAV);
+                DefenderIsDefaultAV = defenderIsDefaultAV;
             });
         }
 
@@ -189,7 +189,7 @@ namespace SophiApp.Services
         {
             try
             {
-                SupportedUBR = await httpService.GetFromJsonAsync<SupportedUBR>("https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/refs/heads/main/supported_windows_builds.json", 5);
+                SupportedOs = await httpService.GetFromJsonAsync<SupportedOs>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-SophiApp2/Windows_Builds.json", 5);
             }
             catch
             {

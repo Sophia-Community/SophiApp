@@ -19,7 +19,6 @@ namespace SophiApp.Services
         private readonly IAppxPackagesService packagesService;
         private readonly ICommonDataService dataService;
         private readonly IInstrumentationService instrumentationService;
-        private readonly IOsService osService;
         private readonly IPowerShellService powerShellService;
         private readonly ISettingsService settingsService;
         private string actionToDebug = string.Empty;
@@ -29,21 +28,18 @@ namespace SophiApp.Services
         /// </summary>
         /// <param name="dataService">A service for transferring app data between DI layers.</param>
         /// <param name="instrumentationService">A service for working with WMI API.</param>
-        /// <param name="osService">A service for working with Windows services API.</param>
         /// <param name="packagesService">A service for working with appx packages API.</param>
         /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
         /// <param name="settingsService">A service for working with app settings.</param>
         public RequirementsService(
             ICommonDataService dataService,
             IInstrumentationService instrumentationService,
-            IOsService osService,
             IAppxPackagesService packagesService,
             IPowerShellService powerShellService,
             ISettingsService settingsService)
         {
             this.dataService = dataService;
             this.instrumentationService = instrumentationService;
-            this.osService = osService;
             this.packagesService = packagesService;
             this.powerShellService = powerShellService;
             this.settingsService = settingsService;
@@ -51,14 +47,13 @@ namespace SophiApp.Services
 
         /// <inheritdoc/>
         public List<RequirementAction> GetActions() => [new (action: GetExternalServicesData, displayText: "OsRequirements_GetExternalServicesData".GetLocalized()),
-            new (action: GetSupportedArchitecture, displayText: "OsRequirements_GetSupportedArchitecture".GetLocalized()),
-            new (action: GetAppNewVersion, displayText: "OsRequirements_GetAppNewVersion".GetLocalized()),
-            new (action: GetAppRunFromLoggedUser, displayText: "OsRequirements_GetAppRunFromLoggedUser".GetLocalized()),
+            new (action: GetWindowsComponentStability, displayText: "OsRequirements_GetWindowsComponentStability".GetLocalized()),
+            new (action: GetAppRelease, displayText: "OsRequirements_GetAppNewVersion".GetLocalized()),
+            new (action: RunFromLoggedUser, displayText: "OsRequirements_RunFromLoggedUser".GetLocalized()),
             new (action: GetHarmfulTweakers, displayText: "OsRequirements_GetHarmfulTweaker".GetLocalized()),
             new (action: GetHostFileEntries, displayText: "OsRequirements_GetHostFileEntries".GetLocalized()),
             new (action: GetUWPComponents, displayText: "OsRequirements_GetUWPComponents".GetLocalized()),
             new (action: GetDefenderComponents, displayText: "OsRequirements_GetDefenderComponents".GetLocalized()),
-            new (action: GetDefenderProperties, displayText: "OsRequirements_GetDefenderProperties".GetLocalized()),
             new (action: GetControlledFolderAccess, displayText: "OsRequirements_GetControlledFolderAccess".GetLocalized()),
             new (action: GetRebootPending, displayText: "OsRequirements_GetRebootPending".GetLocalized()),
             new (action: GetSystemDriveEncryptedBitLocker, displayText: "OsRequirements_GetSystemDriveEncryptedBitLocker".GetLocalized()),
@@ -76,69 +71,71 @@ namespace SophiApp.Services
             return RequirementsResult.AllCorrect;
         }
 
-        private RequirementsResult GetSupportedArchitecture()
+        private RequirementsResult GetWindowsComponentStability()
         {
-            var caption = instrumentationService.GetProcessorCaption();
-            dataService.RequirementsResult_1 = string.Format("OsRequirements_UnsupportedArchitecture_1".GetLocalized(), caption);
-
-            if (RunToDebug(nameof(GetSupportedArchitecture)))
+            if (RunToDebug(nameof(GetWindowsComponentStability)))
             {
-                return RequirementsResult.UnsupportedArchitecture;
+                return RequirementsResult.WindowsComponentStabilityDisrupted;
             }
 
-            if (caption.Contains("AMD64") || caption.Contains("Intel64"))
+            try
             {
+                _ = instrumentationService.GetCimInstance(nameSpace: "root/CIMV2", className: "CIM_OperatingSystem");
+                _ = instrumentationService.GetCimInstance(nameSpace: "root/CIMV2", className: "Win32_Volume");
+                _ = instrumentationService.GetCimInstance(nameSpace: "root/CIMV2", className: "Win32_ShadowStorage");
+                _ = instrumentationService.GetCimInstance(nameSpace: "root/StandardCimv2", className: "MSFT_NetAdapter");
+                _ = instrumentationService.GetCimInstance(nameSpace: "root/CIMV2/mdm/dmmap", className: "MDM_EnterpriseModernAppManagement_AppManagement01");
                 return RequirementsResult.AllCorrect;
             }
-
-            return RequirementsResult.UnsupportedArchitecture;
+            catch
+            {
+                return RequirementsResult.WindowsComponentStabilityDisrupted;
+            }
         }
 
-        private RequirementsResult GetAppNewVersion()
+        private RequirementsResult GetAppRelease()
         {
-            var latestVersion = dataService.LatestAppRelease?.SophiApp_release ?? new Version(0, 0, 0);
-            dataService.RequirementsResult_1 = latestVersion.ToString();
+            var actualVersion = dataService.LatestAppRelease?.SophiApp_release ?? new Version(0, 0, 0);
+            dataService.RequirementsResult_1 = string.Format("OsRequirements_NewAppVersionFound_1".GetLocalized(), actualVersion);
 
-            if (RunToDebug(nameof(GetAppNewVersion)) || latestVersion > dataService.AppVersion)
+            if (RunToDebug(nameof(GetAppRelease)) || actualVersion > dataService.AppVersion)
             {
-                App.Logger.LogAppNewVersionFound(latestVersion);
+                App.Logger.LogAppNewVersionFound(actualVersion);
                 return RequirementsResult.NewAppVersionFound;
             }
 
             return RequirementsResult.AllCorrect;
         }
 
-        private RequirementsResult GetAppRunFromLoggedUser()
+        private RequirementsResult RunFromLoggedUser()
         {
             var appUser = WindowsIdentity.GetCurrent().Name.Split('\\')[1];
             var appUserSessionId = Process.GetCurrentProcess().SessionId;
             var explorerUser = Array.Find(array: Process.GetProcesses(), match: p => p.ProcessName.Equals("explorer") && p.SessionId.Equals(appUserSessionId));
             var processOwner = instrumentationService.GetProcessOwnerName(explorerUser);
-            dataService.RequirementsResult_1 = processOwner;
-            dataService.RequirementsResult_2 = appUser;
+            dataService.RequirementsResult_1 = string.Format("OsRequirements_LoggedUserNotAdmin_1".GetLocalized(), processOwner);
+            dataService.RequirementsResult_2 = string.Format("OsRequirements_LoggedUserNotAdmin_2".GetLocalized(), appUser);
 
-            if (RunToDebug(nameof(GetAppRunFromLoggedUser)))
+            if (RunToDebug(nameof(RunFromLoggedUser)))
             {
-                return RequirementsResult.LoggedInUserNotAdmin;
+                return RequirementsResult.LoggedUserNotAdmin;
             }
 
-            return processOwner.Equals(appUser) ? RequirementsResult.AllCorrect : RequirementsResult.LoggedInUserNotAdmin;
+            return processOwner.Equals(appUser) ? RequirementsResult.AllCorrect : RequirementsResult.LoggedUserNotAdmin;
         }
 
         private RequirementsResult GetHarmfulTweakers()
         {
             if (RunToDebug(nameof(GetHarmfulTweakers)))
             {
-                dataService.RequirementsResult_1 = "OsRequirements_Malware_Win10Tweaker".GetLocalized();
+                dataService.RequirementsResult_1 = string.Format("OsRequirements_HarmfulTweakerFound".GetLocalized(), "OsRequirements_Malware_Win10Tweaker".GetLocalized());
                 return RequirementsResult.HarmfulTweakerFound;
             }
 
-            var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            var system32 = Environment.GetFolderPath(Environment.SpecialFolder.System);
             var malwares = new Dictionary<string, Func<bool>>()
             {
                 // https://www.youtube.com/GHOSTSPECTRE
-                { "OsRequirements_Malware_GhostToolbox", () => File.Exists($"{system32}\\migwiz\\dlmanifests\\run.ghost.cmd") },
+                { "OsRequirements_Malware_GhostToolbox", () => File.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\\migwiz\\dlmanifests\\run.ghost.cmd") },
                 // https://win10tweaker.ru
                 { "OsRequirements_Malware_Win10Tweaker", () => Registry.CurrentUser.OpenSubKey("Software\\Win 10 Tweaker") is not null },
                 // https://revi.cc
@@ -146,24 +143,24 @@ namespace SophiApp.Services
                 // https://github.com/Atlas-OS/Atlas
                 { "OsRequirements_Malware_AtlasOS", () => Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "AtlasModules")) },
                 // https://boosterx.ru
-                { "OsRequirements_Malware_BoosterX", () => File.Exists($"{programFiles}\\GameModeX\\GameModeX.exe") },
+                { "OsRequirements_Malware_BoosterX", () => File.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\GameModeX\\GameModeX.exe") },
                 // https://www.youtube.com/watch?v=5NBqbUUB1Pk
-                { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{programFiles}\\WinClean Plus Apps") },
+                { "OsRequirements_Malware_WinClean", () => Directory.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\WinClean Plus Apps") },
                 // https://pc-np.com
                 { "OsRequirements_Malware_PCNP", () => Registry.CurrentUser.OpenSubKey("Software\\PCNP") is not null },
                 // https://www.reddit.com/r/TronScript
                 { "OsRequirements_Malware_Tron", () => Directory.Exists(Path.Combine(Environment.ExpandEnvironmentVariables("%SystemDrive%"), "\\logs\\tron")) },
                 // https://crystalcry.ru
-                { "OsRequirements_Malware_CrystalCry", () => Registry.LocalMachine.OpenSubKey("Software\\CrystalCry") is not null },
+                { "OsRequirements_Malware_CrystalCry", () => Registry.LocalMachine.OpenSubKey("SOFTWARE\\CrystalCry") is not null },
                 // https://github.com/es3n1n/defendnot
-                { "OsRequirements_Malware_Defendnot", () => Directory.Exists($"{system32}\\Tasks\\defendnot") },
+                { "OsRequirements_Malware_Defendnot", () => Directory.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.System)}\\Tasks\\defendnot") },
                 // https://github.com/zoicware/RemoveWindowsAI
                 { "OsRequirements_Malware_RemoveWindowsAI", () => Registry.LocalMachine.OpenSubKey("SOFTWARE\\RemoveWindowsAI") is not null },
                 // https://forum.ru-board.com/topic.cgi?forum=62&topic=30617&start=1600#14
                 {
                     "OsRequirements_Malware_AutoSettingsPS", () =>
                     {
-                        var exclusions = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Microsoft Defender\\Exclusions\\Paths")?.GetValueNames() ?? [];
+                        var exclusions = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Microsoft Defender\\Exclusions\\Paths")?.GetValueNames() ?? [];
                         return Array.Exists(exclusions, key => key.Contains("AutoSettingsPS"));
                     }
                 },
@@ -181,7 +178,7 @@ namespace SophiApp.Services
                 if (m.Value())
                 {
                     var detectedMalware = m.Key.GetLocalized();
-                    dataService.RequirementsResult_1 = detectedMalware;
+                    dataService.RequirementsResult_1 = string.Format("OsRequirements_HarmfulTweakerFound".GetLocalized(), detectedMalware);
                     App.Logger.LogMalwareDetected(detectedMalware);
                     return true;
                 }
@@ -197,15 +194,14 @@ namespace SophiApp.Services
                 return RequirementsResult.HostsEntriesFound;
             }
 
-            var hostFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers\\etc\\hosts");
-            var hostFileEntries = File.ReadAllLines(hostFilePath);
+            var hostFileEntries = File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers\\etc\\hosts"));
             return hostFileEntries.Any(e => !(string.IsNullOrEmpty(e) || e.StartsWith('#'))) ? RequirementsResult.HostsEntriesFound : RequirementsResult.AllCorrect;
         }
 
         private RequirementsResult GetUWPComponents()
         {
-            var appxClientCbsExist = packagesService.PackageExist("MicrosoftWindows.Client.CBS");
-            var appxWindowsStoreExist = packagesService.PackageExist("Microsoft.WindowsStore");
+            var clientCBSExist = packagesService.PackageExist("MicrosoftWindows.Client.CBS");
+            var windowsStoreExist = packagesService.PackageExist("Microsoft.WindowsStore");
 
             if (RunToDebug(nameof(GetUWPComponents)))
             {
@@ -215,7 +211,7 @@ namespace SophiApp.Services
 
             if (dataService.OsProperties.IsLTSC)
             {
-                if (appxClientCbsExist)
+                if (clientCBSExist)
                 {
                     return RequirementsResult.AllCorrect;
                 }
@@ -224,12 +220,12 @@ namespace SophiApp.Services
                 return RequirementsResult.UWPComponentsMissing;
             }
 
-            if (appxWindowsStoreExist && appxClientCbsExist)
+            if (windowsStoreExist && clientCBSExist)
             {
                 return RequirementsResult.AllCorrect;
             }
 
-            dataService.RequirementsResult_1 = string.Format("OsRequirements_UWPComponentsMissing".GetLocalized(), appxWindowsStoreExist ? "MicrosoftWindows.Client.CBS" : "Microsoft.WindowsStore");
+            dataService.RequirementsResult_1 = string.Format("OsRequirements_UWPComponentsMissing".GetLocalized(), windowsStoreExist ? "MicrosoftWindows.Client.CBS" : "Microsoft.WindowsStore");
             return RequirementsResult.UWPComponentsMissing;
         }
 
@@ -241,76 +237,23 @@ namespace SophiApp.Services
                 return RequirementsResult.DefenderComponentsMissing;
             }
 
-            var systemFolder = Environment.GetFolderPath(Environment.SpecialFolder.System);
-            var files = new List<string>()
+            var components = new List<string>()
             {
-                Path.Combine(systemFolder, "smartscreen.exe"),
-                Path.Combine(systemFolder, "SecurityHealthSystray.exe"),
-                Path.Combine(systemFolder, "CompatTelRunner.exe"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "smartscreen.exe"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "SecurityHealthSystray.exe"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "CompatTelRunner.exe"),
             };
-            return files.TrueForAll(f =>
+            return components.TrueForAll(component =>
             {
-                if (File.Exists(f))
+                if (File.Exists(component))
                 {
                     return true;
                 }
 
-                App.Logger.LogDefenderFileMissing(f);
-                dataService.RequirementsResult_1 = string.Format("OsRequirements_DefenderComponentsMissing".GetLocalized(), f);
+                App.Logger.LogDefenderFileMissing(component);
+                dataService.RequirementsResult_1 = string.Format("OsRequirements_DefenderComponentsMissing".GetLocalized(), component);
                 return false;
             }) ? RequirementsResult.AllCorrect : RequirementsResult.DefenderComponentsMissing;
-        }
-
-        private RequirementsResult GetDefenderProperties()
-        {
-            if (RunToDebug(nameof(GetDefenderProperties)))
-            {
-                return RequirementsResult.WindowsComponentStabilityDisrupted;
-            }
-
-            var properties = new List<Func<bool>>
-            {
-                GetDefenderServices, TryStartSecurityHealthService, GetMSFTMpComputerStatus, GetAntiVirusProduct, GetMpPreference,
-            };
-
-            return properties.TrueForAll(p => p()) ? RequirementsResult.AllCorrect : RequirementsResult.WindowsComponentStabilityDisrupted;
-        }
-
-        private bool GetDefenderServices()
-        {
-            var services = new List<string>() { "Windefend", "SecurityHealthService", "wscsvc", "wdFilter" };
-            return services.TrueForAll(s =>
-            {
-                var isExist = osService.Exist(s);
-                App.Logger.LogDefenderServiceExist(s, isExist);
-                return isExist;
-            });
-        }
-
-        private bool TryStartSecurityHealthService() => osService.TryStart("SecurityHealthService");
-
-        private bool GetMSFTMpComputerStatus()
-        {
-            try
-            {
-                return instrumentationService.GetAntiSpywareEnabled();
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private bool GetAntiVirusProduct()
-        {
-            var properties = instrumentationService.GetAntivirusProducts();
-            return properties.Count > 0;
-        }
-
-        private bool GetMpPreference()
-        {
-            var preference = powerShellService.Invoke("Get-MpPreference");
-            return preference.Count > 0;
         }
 
         private RequirementsResult GetControlledFolderAccess()
@@ -328,7 +271,7 @@ namespace SophiApp.Services
             }
             catch (Exception e)
             {
-                App.Logger.LogDefenderControlledFolderException(e);
+                App.Logger.LogControlledFolderException(e);
                 return RequirementsResult.DisableControlledFolderAccess;
             }
         }
@@ -349,7 +292,7 @@ namespace SophiApp.Services
                 Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate\\Auto Update\\RebootRequired"),
             };
 
-            return parameters.Exists(k => k is not null) ? RequirementsResult.RebootPending : RequirementsResult.AllCorrect;
+            return parameters.Exists(key => key is not null) ? RequirementsResult.RebootPending : RequirementsResult.AllCorrect;
         }
 
         private RequirementsResult GetSystemDriveEncryptedBitLocker()
@@ -359,8 +302,8 @@ namespace SophiApp.Services
                 return RequirementsResult.SystemDriveEncryptedBitLockerDisabled;
             }
 
-            var protectionState = powerShellService.Invoke("Get-BitLockerVolume -MountPoint $env:SystemDrive | Where-Object -FilterScript {($_.ProtectionStatus -eq \"Off\") -and ($_.VolumeStatus -eq \"FullyEncrypted\")}");
-            return protectionState.Count == 0 ? RequirementsResult.AllCorrect : RequirementsResult.SystemDriveEncryptedBitLockerDisabled;
+            var protectionStatus = powerShellService.Invoke("Get-BitLockerVolume -MountPoint $env:SystemDrive | Where-Object -FilterScript {($_.ProtectionStatus -eq \"Off\") -and ($_.VolumeStatus -eq \"FullyEncrypted\")}");
+            return protectionStatus.Count == 0 ? RequirementsResult.AllCorrect : RequirementsResult.SystemDriveEncryptedBitLockerDisabled;
         }
 
         private RequirementsResult GetUEFICertificates()
@@ -370,50 +313,45 @@ namespace SophiApp.Services
                 return RequirementsResult.UpdateUEFICertificates;
             }
 
-            var secureBootSupported = powerShellService.Invoke<bool>("try{Confirm-SecureBootUEFI -ErrorAction Stop}catch{$false}");
-            var certificatesExpired = powerShellService.Invoke<bool>("try{[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI -Name db).Bytes) -match \"Windows UEFI CA 2023\"}catch{$false}");
-            return secureBootSupported && certificatesExpired ? RequirementsResult.UpdateUEFICertificates : RequirementsResult.AllCorrect;
+            var secureBootEnabled = powerShellService.Invoke<bool>("try{Confirm-SecureBootUEFI -ErrorAction Stop}catch{$false}");
+            var ca2023Exist = powerShellService.Invoke<bool>("try{[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI -Name db -ErrorAction Stop).Bytes) -match \"Windows UEFI CA 2023\"}catch{$false}");
+            return secureBootEnabled && ca2023Exist ? RequirementsResult.AllCorrect : RequirementsResult.UpdateUEFICertificates;
         }
 
         private RequirementsResult GetWindowsVersion()
         {
             dataService.RequirementsResult_1 = dataService.OsProperties.IsLTSC ? "OsRequirements_WrongWindowsVersion_LTSC".GetLocalized() : "OsRequirements_WrongWindowsVersion_1".GetLocalized();
-            dataService.RequirementsResult_2 = $"{dataService.OsProperties.Caption} {dataService.OsProperties.DisplayVersion}";
+            dataService.RequirementsResult_2 = string.Format("OsRequirements_WrongWindowsVersion_2".GetLocalized(), dataService.OsProperties.Caption, dataService.OsProperties.DisplayVersion);
 
             if (RunToDebug(nameof(GetWindowsVersion)))
             {
                 return RequirementsResult.WrongWindowsVersion;
             }
 
-            if (dataService.OsProperties.Caption.Contains("Windows 11"))
-            {
-                return RequirementsResult.AllCorrect;
-            }
-
-            return RequirementsResult.WrongWindowsVersion;
+            return dataService.OsProperties.Caption.Contains("Windows 11") ? RequirementsResult.AllCorrect : RequirementsResult.WrongWindowsVersion;
         }
 
         private RequirementsResult GetWindowsBuild()
         {
-            dataService.RequirementsResult_1 = string.Format("OsRequirements_UpdateWindowsBuild_1".GetLocalized(), dataService.OsProperties.Build, dataService.SupportedUBR.Win11);
-            dataService.RequirementsResult_2 = string.Format("OsRequirements_UpdateWindowsBuild_2".GetLocalized(), dataService.OsProperties.DisplayVersion, dataService.OsProperties.Build, dataService.OsProperties.UBR);
+            dataService.RequirementsResult_1 = string.Format("OsRequirements_UpdateWindowsBuild_1".GetLocalized(), dataService.SupportedOs.MajorBuild, dataService.SupportedOs.MinorBuild);
+            dataService.RequirementsResult_2 = string.Format("OsRequirements_UpdateWindowsBuild_2".GetLocalized(), dataService.OsProperties.DisplayVersion, dataService.OsProperties.MajorBuild, dataService.OsProperties.MinorBuild);
 
             if (RunToDebug(nameof(GetWindowsBuild)))
             {
                 return RequirementsResult.UpdateWindowsBuild;
             }
 
-            if (dataService.OsProperties.IsLTSC && dataService.OsProperties.Build != 26100)
+            if (dataService.OsProperties.IsLTSC && dataService.OsProperties.MajorBuild < dataService.SupportedOs.LTSC_MajorBuild)
             {
                 return RequirementsResult.UpdateWindowsBuild;
             }
 
-            if (dataService.OsProperties.Build < 26300)
+            if (dataService.OsProperties.MajorBuild < dataService.SupportedOs.MajorBuild)
             {
                 return RequirementsResult.UpdateWindowsBuild;
             }
 
-            if (dataService.OsProperties.UBR < (dataService.OsProperties.IsLTSC ? dataService.SupportedUBR.Win11LTSC : dataService.SupportedUBR.Win11))
+            if (dataService.OsProperties.MinorBuild < dataService.SupportedOs.MinorBuild)
             {
                 return RequirementsResult.UpdateWindowsBuild;
             }

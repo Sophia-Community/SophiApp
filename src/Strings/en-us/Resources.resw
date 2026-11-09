@@ -180,20 +180,17 @@
   <data name="SettingsPage_Links.Title" xml:space="preserve">
     <value>Links</value>
   </data>
-  <data name="OsRequirements_GetSupportedArchitecture" xml:space="preserve">
-    <value>Checking CPU architecture...</value>
+  <data name="OsRequirements_LoggedUserNotAdmin_1" xml:space="preserve">
+    <value>The logged-in user doesn't have admin rights: {0}</value>
   </data>
-  <data name="OsRequirements_LoggedInUserNotAdmin_1.Text" xml:space="preserve">
-    <value>The logged-in user doesn't have admin rights:</value>
-  </data>
-  <data name="OsRequirements_GetAppRunFromLoggedUser" xml:space="preserve">
+  <data name="OsRequirements_RunFromLoggedUser" xml:space="preserve">
     <value>Checking current user's rights...</value>
   </data>
   <data name="OsRequirements_GetHarmfulTweaker" xml:space="preserve">
     <value>Checking for harmful tweakers...</value>
   </data>
-  <data name="OsRequirements_HarmfulTweakerFound.Text" xml:space="preserve">
-    <value>Windows stability may have been compromised by using:</value>
+  <data name="OsRequirements_HarmfulTweakerFound" xml:space="preserve">
+    <value>Windows stability may have been compromised by using: {0}</value>
   </data>
   <data name="OsRequirements_Malware_GhostToolbox" xml:space="preserve">
     <value>Ghost Toolbox</value>
@@ -997,7 +994,7 @@
     <value>Search</value>
   </data>
   <data name="SearchPage_NothingFound.Text" xml:space="preserve">
-    <value>Nothing found on your request</value>
+    <value>Nothing found on your request.</value>
   </data>
   <data name="Page_ContextMenu.Text" xml:space="preserve">
     <value>Context Menu</value>
@@ -1084,7 +1081,7 @@
     <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
   </data>
   <data name="AppTeam_Developer.Text" xml:space="preserve">
-    <value>CO &amp; Development: Dmitry "Inestic" Demin</value>
+    <value>CO &amp; Development: Dmitry Demin</value>
   </data>
   <data name="AppTeam_ProjectManager.Text" xml:space="preserve">
     <value>PO &amp; QA: Dmitry Nefedov</value>
@@ -1123,12 +1120,9 @@
     <value>Checking third-party host file entries...</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
-    <value>Third-party entries found in</value>
+    <value>Third-party entries found in %SystemRoot%\System32\drivers\etc\hosts.</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
-    <value>%SystemRoot%\System32\drivers\etc\hosts.</value>
-  </data>
-  <data name="OsRequirements_HostsEntriesFound_3.Text" xml:space="preserve">
     <value>They may block connection to resources used in SophiApp 2.</value>
   </data>
   <data name="Button_Continue.Content" xml:space="preserve">
@@ -1146,20 +1140,11 @@
   <data name="Button_No.Content" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="Button_OpenDefenderControlledFolderSettings.Content" xml:space="preserve">
-    <value>Open Controlled Folder access settings</value>
-  </data>
-  <data name="OsRequirements_UnsupportedArchitecture_1" xml:space="preserve">
-    <value>You're using "{0}" based CPU architecture.</value>
-  </data>
-  <data name="OsRequirements_NewAppVersionFound_1.Text" xml:space="preserve">
-    <value>A new version is available: SophiApp</value>
+  <data name="Button_OpenControlledFolderSettings.Content" xml:space="preserve">
+    <value>Open Controlled Folder settings</value>
   </data>
   <data name="OsRequirements_DoYouWantToContinue.Text" xml:space="preserve">
     <value>Do you want to continue?</value>
-  </data>
-  <data name="OsRequirements_UnsupportedArchitecture_2.Text" xml:space="preserve">
-    <value>SophiApp supports the x64 architecture-based CPU only.</value>
   </data>
   <data name="OsRequirements_NewAppVersionFound_2.Text" xml:space="preserve">
     <value>Please update.</value>
@@ -1167,11 +1152,11 @@
   <data name="Button_Update.Content" xml:space="preserve">
     <value>Update</value>
   </data>
-  <data name="OsRequirements_LoggedInUserNotAdmin_2.Text" xml:space="preserve">
-    <value>SophiApp was run on behalf of:</value>
+  <data name="OsRequirements_LoggedUserNotAdmin_2" xml:space="preserve">
+    <value>SophiApp was run on behalf of: {0}</value>
   </data>
-  <data name="OsRequirements_LoggedInUserNotAdmin_3.Text" xml:space="preserve">
-    <value>Please log into account which has admin rights and run SophiApp 2 again.</value>
+  <data name="OsRequirements_LoggedUserNotAdmin_3.Text" xml:space="preserve">
+    <value>Please log into account which has admin rights and run SophiApp again.</value>
   </data>
   <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
     <value>Reinstall Windows using only a genuine ISO image.</value>
@@ -1180,7 +1165,7 @@
     <value>Checking Microsoft Defender properties...</value>
   </data>
   <data name="OsRequirements_WindowsComponentStabilityDisrupted.Text" xml:space="preserve">
-    <value>An instability issue has been detected in the Microsoft Defender component.</value>
+    <value>An instability issue has been detected in the Windows component.</value>
   </data>
   <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
     <value>Checking Controlled Folder access status...</value>
@@ -1224,8 +1209,8 @@
   <data name="OsRequirements_WrongWindowsVersion_1" xml:space="preserve">
     <value>SophiApp 2 supports Windows 11 25H2 and higher.</value>
   </data>
-  <data name="OsRequirements_WrongWindowsVersion_2.Text" xml:space="preserve">
-    <value>You're using:</value>
+  <data name="OsRequirements_WrongWindowsVersion_2" xml:space="preserve">
+    <value>You're using: {0} {1}.</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_LTSC" xml:space="preserve">
     <value>SophiApp 2 supports Windows 11 Enterprise LTSC 2024.</value>
@@ -1253,5 +1238,74 @@
   </data>
   <data name="UIModel_StartAppsView_Title_3" xml:space="preserve">
     <value>List</value>
+  </data>
+  <data name="OsRequirements_GetWindowsComponentStability" xml:space="preserve">
+    <value>Checking Windows component stability...</value>
+  </data>
+  <data name="OsRequirements_NewAppVersionFound_1" xml:space="preserve">
+    <value>A new version is available: SophiApp {0}</value>
+  </data>
+  <data name="UIModel_Exception_ErrorReporting" xml:space="preserve">
+    <value>Task not found</value>
+  </data>
+  <data name="UIModel_Exception_SearchHighlights" xml:space="preserve">
+    <value>Search highlights already hidden</value>
+  </data>
+  <data name="UIModel_Exception_InternetConnectionRequired" xml:space="preserve">
+    <value>Internet connection required</value>
+  </data>
+  <data name="UIModel_Exception_LatestVersionInstalled" xml:space="preserve">
+    <value>Latest version installed</value>
+  </data>
+  <data name="UIModel_Exception_ScheduledTasks" xml:space="preserve">
+    <value>Telemetry tasks not found</value>
+  </data>
+  <data name="UIModel_Exception_StartMenuInstalled" xml:space="preserve">
+    <value>Third-party Start Menu installed</value>
+  </data>
+  <data name="UIModel_Exception_PackageNotInstalled" xml:space="preserve">
+    <value>Package not installed</value>
+  </data>
+  <data name="UIModel_Exception_TaskbarSearch" xml:space="preserve">
+    <value>Small icons mode enabled</value>
+  </data>
+  <data name="UIModel_Exception_OneDrive_LogOut" xml:space="preserve">
+    <value>Log out from OneDrive account</value>
+  </data>
+  <data name="UIModel_Exception_OneDrive_FolderNotExist" xml:space="preserve">
+    <value>User data folder not exist</value>
+  </data>
+  <data name="UIModel_Exception_OneDrive_InstallerNotFound" xml:space="preserve">
+    <value>OneDriveSetup.exe not found</value>
+  </data>
+  <data name="UIModel_Exception_NetworkAdaptersSavePower" xml:space="preserve">
+    <value>Unsupported network adapter</value>
+  </data>
+  <data name="UIModel_Exception_GPUScheduling" xml:space="preserve">
+    <value>Unsupported GPU</value>
+  </data>
+  <data name="UIModel_Exception_AntispywareProtectionDisabled" xml:space="preserve">
+    <value>Antispyware protection disabled</value>
+  </data>
+  <data name="UIModel_Exception_WindowsSandbox_UndefinedState" xml:space="preserve">
+    <value>Undefined Sandbox state</value>
+  </data>
+  <data name="UIModel_Exception_VirtualizationNotSupported" xml:space="preserve">
+    <value>Virtualization not supported</value>
+  </data>
+  <data name="UIModel_Exception_VirtualizationDisabled" xml:space="preserve">
+    <value>Virtualization disabled in UEFI</value>
+  </data>
+  <data name="UIModel_Exception_UnsupportedFeature" xml:space="preserve">
+    <value>Unsupported feature</value>
+  </data>
+  <data name="UIModel_Exception_WindowsSandbox_UnsupportedEdition" xml:space="preserve">
+    <value>Unsupported Windows edition</value>
+  </data>
+  <data name="UIModel_Exception_CABInstallContext_DefaultArchiver" xml:space="preserve">
+    <value>Third-party archiver set as default</value>
+  </data>
+  <data name="UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid" xml:space="preserve">
+    <value>Configuration file not valid</value>
   </data>
 </root>

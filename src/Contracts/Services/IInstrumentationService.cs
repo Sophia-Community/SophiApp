@@ -4,9 +4,9 @@
 
 namespace SophiApp.Contracts.Services
 {
+    using SophiApp.Helpers;
     using System.Diagnostics;
     using System.Management;
-    using SophiApp.Helpers;
 
     /// <summary>
     /// A service for working with WMI API.
@@ -45,9 +45,11 @@ namespace SophiApp.Contracts.Services
         List<ManagementObject> GetAntivirusProducts();
 
         /// <summary>
-        /// Get processor caption from the CIM_Processor class.
+        /// Gets the WMI/CIM class instances.
         /// </summary>
-        string GetProcessorCaption();
+        /// <param name="nameSpace">The target CIM namespace.</param>
+        /// <param name="className">The name of the WMI/CIM class to query.</param>
+        IEnumerable<ManagementObject> GetCimInstance(string nameSpace, string className);
 
         /// <summary>
         /// Get data from the PowerPlan class.
@@ -66,9 +68,9 @@ namespace SophiApp.Contracts.Services
         bool GetAntiSpywareEnabled();
 
         /// <summary>
-        /// Get the processor virtualization state.
+        /// Get CPU virtualization state.
         /// </summary>
-        bool? CpuVirtualizationFirmwareIsEnabled();
+        bool? CPUVirtualizationIsEnabled();
 
         /// <summary>
         /// Get Windows Hyper-V present state.
@@ -79,10 +81,5 @@ namespace SophiApp.Contracts.Services
         /// Set automatically manage paging file size for all drives.
         /// </summary>
         void SetPageFileAutoSize();
-
-        /// <summary>
-        /// Get Windows AI present state.
-        /// </summary>
-        bool WindowsAIPresent();
     }
 }

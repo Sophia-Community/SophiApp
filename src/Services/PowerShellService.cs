@@ -4,6 +4,7 @@
 
 namespace SophiApp.Services
 {
+    using Microsoft.Win32;
     using SophiApp.Contracts.Services;
     using System;
     using System.Management.Automation;
@@ -80,7 +81,7 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool? TurnOffDeviceNetworkAdapterExist()
+        public bool? GetNetworkAdapterTurnOffDevice()
         {
             // Checking whether there's an adapter that has AllowComputerToTurnOffDevice property to manage
             // We need also check for adapter status per some laptops have many equal adapters records in adapters list
@@ -126,7 +127,7 @@ $AllowTurnOffDevice";
         }
 
         /// <inheritdoc/>
-        public void SetTurnOffDeviceNetworkAdapterState(bool enable)
+        public void SetNetworkAdapterTurnOffDevice(bool enable)
         {
             var allowTurnOff = enable ? "Enabled" : "Disabled";
             var command = $@"# Checking whether there's an adapter that has AllowComputerToTurnOffDevice property to manage
