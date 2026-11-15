@@ -14,6 +14,7 @@
     <Thickness x:Key="NavigationViewHeaderMargin">32,22,0,0</Thickness>
     <Thickness x:Key="NavigationViewPageContentMargin">32,10,32,10</Thickness>
     <Thickness x:Key="PageBottomMargin">0, 0, 0, 10</Thickness>
+    <Thickness x:Key="SettingsListMargin">0, 0, 26, 10</Thickness>
     <Thickness x:Key="SmallLeftMargin">12,0,0,0</Thickness>
     <Thickness x:Key="SmallLeftRightMargin">12,0,12,0</Thickness>
     <Thickness x:Key="SmallRightMargin">0,0,12,0</Thickness>

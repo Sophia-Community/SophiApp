@@ -32,9 +32,10 @@
             <Image Source="/Assets/AppLogoBig.svg"
                    Width="373"
                    Height="103"/>
-            <Border BorderBrush="{ThemeResource UIControlBorderBackground}"
-                    Background="{ThemeResource UIControlBackground}"
-                    Style="{StaticResource UIControlBorderStyle}"
+            <Border BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+ Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+ BorderThickness="1"
+ CornerRadius="{ThemeResource ControlCornerRadius}"
                     Margin="0, 20, 0, 20">
                 <Grid>
                     <Grid.ColumnDefinitions>

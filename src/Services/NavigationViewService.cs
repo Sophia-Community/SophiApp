@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Services;
+
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Contracts.Services;

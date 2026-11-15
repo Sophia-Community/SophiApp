@@ -11,11 +11,34 @@ namespace SophiApp.Helpers
     /// </summary>
     public enum UIModelType
     {
+        /// <summary>
+        /// A setting that is turned on or off.
+        /// </summary>
         CheckBox,
+
+        /// <summary>
+        /// A setting that is turned on or off and has an icon.
+        /// </summary>
         IconCheckBox,
+
+        /// <summary>
+        /// A choice of two options.
+        /// </summary>
         RadioButtonsGroup2,
+
+        /// <summary>
+        /// A choice of three options.
+        /// </summary>
         RadioButtonsGroup3,
+
+        /// <summary>
+        /// A choice of four options.
+        /// </summary>
         RadioButtonsGroup4,
+
+        /// <summary>
+        /// A UWP app that can be uninstalled.
+        /// </summary>
         UwpApp,
     }
 }

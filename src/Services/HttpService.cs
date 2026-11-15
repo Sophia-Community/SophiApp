@@ -6,6 +6,7 @@ namespace SophiApp.Services
 {
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
+    using SophiApp.Helpers;
     using System.Diagnostics;
     using System.Xml;
 
@@ -15,7 +16,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void DownloadFile(string url, string saveTo)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(saveTo) !);
+            Directory.CreateDirectory(Path.GetDirectoryName(saveTo)!);
             using var client = new HttpClient();
             using var urlStream = client.GetStreamAsync(url).Result;
             using var fileStream = new FileStream(saveTo, FileMode.Create);
@@ -57,7 +58,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void OpenUrl(string url)
         {
-            Process.Start("explorer.exe", url);
+            ExplorerHelper.Open(url);
             App.Logger.LogOpenedUrl(url);
         }
 

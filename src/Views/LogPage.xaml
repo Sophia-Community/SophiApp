@@ -36,17 +36,17 @@
         </Grid>
         <Border Grid.Row="1"
                 Margin="{StaticResource UIControlsPageRightMargin}"
-                BorderBrush="{ThemeResource UIControlBorderBackground}"
-                Background="{ThemeResource UIControlBackground}"
-                Style="{StaticResource UIControlBorderStyle}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{ThemeResource ControlCornerRadius}"
                 ContextRequested="LogListView_ContextRequested">
             <ScrollView>
                 <ItemsRepeater ItemsSource="{Binding Path=ViewModel.LoggedActions, ElementName=PageLog}"
                                VerticalCacheLength="{Binding Path=ViewModel.LoggedActions.Count, ElementName=PageLog}">
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Style="{StaticResource UIControlLogPageTextStyle}"
-                                       Foreground="{ThemeResource WindowAccent}"
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}"
                                        Margin="5, 0, 5, 2">
                                 <Run Text="{Binding}"
                                      FontSize="{Binding Path=ViewModel.FontOptions.DescriptionTextSize, ElementName=PageLog}"/>

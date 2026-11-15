@@ -24,7 +24,7 @@ namespace SophiApp.Services
         public LoggerService()
         {
             LogFolder = Path.Combine(EnvironmentHelper.AppFolder, "Log");
-            LogFile = Path.Combine(LogFolder, $"SophiApp-{Environment.MachineName.ToUpper()}.log");
+            LogFile = Path.Combine(LogFolder, $"SophiApp2-{Environment.MachineName.ToUpper()}.log");
             LogFile.TryDelete();
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
@@ -71,7 +71,7 @@ namespace SophiApp.Services
         {
             Log.Information("App version: {Version:l}", version);
             Log.Information("App directory: {Directory}", directory);
-            shellViewModel.LoggedActions.AddRange([$"App version: {version}", $"App directory: {directory}"]);
+            shellViewModel.LoggedActions.AddRange((string[])[$"App version: {version}", $"App directory: {directory}"]);
         }
 
         /// <inheritdoc/>
@@ -330,6 +330,13 @@ namespace SophiApp.Services
         {
             Log.Information("Microsoft Defender is default AV: {IsDefault}", isDefault);
             shellViewModel.LoggedActions.Add($"Microsoft Defender is default AV: {isDefault}");
+        }
+
+        /// <inheritdoc/>
+        public void LogPolicyUpdateException(Exception exception)
+        {
+            Log.Error("[WRN] Failed to write the policies to Registry.pol: {Message}", exception.Message);
+            shellViewModel.LoggedActions.Add($"[WRN] Failed to write the policies to Registry.pol: {exception.Message}");
         }
 
         /// <inheritdoc/>

@@ -56,7 +56,7 @@ namespace SophiApp.Helpers
         private static void RemoveStaleFolders()
         {
             // The app could crash or be updated, so its old files are still there
-            foreach (var folder in Directory.GetParent(ExtractFolder!) !.GetDirectories())
+            foreach (var folder in Directory.GetParent(ExtractFolder!)!.GetDirectories())
             {
                 if (folder.FullName.Equals(ExtractFolder, StringComparison.OrdinalIgnoreCase) || !HasUnpackedApp(folder))
                 {
@@ -79,7 +79,7 @@ namespace SophiApp.Helpers
             // The app cannot remove its own files while it is running, so a hidden command does it a few seconds later.
             // The files are kept if the app is running again by that time.
             // The parent folders are removed only if they are empty: ".net" is shared with other apps
-            var parent = Directory.GetParent(ExtractFolder!) !;
+            var parent = Directory.GetParent(ExtractFolder!)!;
             var arguments = $"/c ping -n 4 127.0.0.1 >nul & tasklist /fi \"imagename eq {ExeName}\" /nh | find /i \"{ExeName}\" >nul || rmdir /s /q \"{ExtractFolder}\" & rmdir \"{parent.FullName}\" 2>nul & rmdir \"{parent.Parent!.FullName}\" 2>nul";
 
             try

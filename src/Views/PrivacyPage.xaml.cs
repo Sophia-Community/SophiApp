@@ -23,7 +23,7 @@ public sealed partial class PrivacyPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new (ViewModel.JsonModels.FilterByTag(UICategoryTag.Privacy));
+        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Privacy));
     }
 
     /// <summary>

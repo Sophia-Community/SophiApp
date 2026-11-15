@@ -35,7 +35,6 @@ public partial class ShellViewModel : ObservableRecipient
     private const string UpdateUEFICertificatesUrl = "https://techcommunity.microsoft.com/blog/windows-itpro-blog/updating-microsoft-secure-boot-keys/4055324";
     private const string SigningUEFICertificatesUrl = "https://techcommunity.microsoft.com/blog/hardware-dev-center/signing-with-the-new-2023-microsoft-uefi-certificates-what-submitters-need-to-kn/4455787";
     private const string EnableSecureBootUrl = "https://support.microsoft.com/en-us/windows/security/devicesecurity/windows-11-and-secure-boot";
-    private readonly IAppNotificationService notificationService;
     private readonly IAppxPackagesService packagesService;
     private readonly IGroupPolicyService groupPolicyService;
     private readonly IInstrumentationService instrumentationService;
@@ -56,6 +55,12 @@ public partial class ShellViewModel : ObservableRecipient
 
     [ObservableProperty]
     private bool isBackEnabled;
+    [ObservableProperty]
+    private bool eventViewerButtonIsVisible = false;
+    [ObservableProperty]
+    private bool restartReminderIsVisible = false;
+    [ObservableProperty]
+    private bool taskSchedulerButtonIsVisible = false;
     [ObservableProperty]
     private bool setUpCustomizationsPanelIsVisible = false;
     [ObservableProperty]
@@ -84,7 +89,6 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="navigationService">Page navigation service.</param>
     /// <param name="navigationViewService">A service for navigating to View.</param>
     /// <param name="osService">A service for working with Windows services API.</param>
-    /// <param name="notificationService">A service for working with toast notifications API.</param>
     /// <param name="packagesService">A service for working with appx packages API.</param>
     /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
     /// <param name="processService">A service for working with Windows process API.</param>
@@ -94,7 +98,6 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="updateService">Determines whether the Windows Update API is used to obtain updates for other Microsoft products.</param>
     /// <param name="startupViewModel">Implements the <see cref="StartupViewModel"/> class.</param>
     public ShellViewModel(
-        IAppNotificationService notificationService,
         IAppxPackagesService packagesService,
         IGroupPolicyService groupPolicyService,
         IHttpService httpService,
@@ -114,7 +117,6 @@ public partial class ShellViewModel : ObservableRecipient
         this.groupPolicyService = groupPolicyService;
         this.instrumentationService = instrumentationService;
         this.modelService = modelService;
-        this.notificationService = notificationService;
         this.osService = osService;
         this.packagesService = packagesService;
         this.powerShellService = powerShellService;
@@ -144,13 +146,13 @@ public partial class ShellViewModel : ObservableRecipient
         OpenBitLockerSettings_Command = new RelayCommand(() => processService.StartProcessByName("control.exe", "/name Microsoft.BitLockerDriveEncryption"));
         OpenDefenderControlledFolder_Command = new RelayCommand(() => processService.StartProcessByName("explorer.exe", "windowsdefender://RansomwareProtection"));
         OpenHostsFolder_Command = new RelayCommand(() => processService.StartProcessByName("explorer.exe", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers\\etc")));
+        OpenEventViewer_Command = new AsyncRelayCommand(() => Task.Run(() => processService.StartProcessByName(name: "mmc.exe", arguments: "eventvwr.msc")));
         OpenTaskScheduler_Command = new AsyncRelayCommand(() => Task.Run(() => processService.StartProcessByName(name: "control.exe", arguments: "schedtasks")));
         OpenLatestAppRelease_Command = new RelayCommand(() => httpService.OpenUrl(AppLatestReleaseUrl));
         RadioButtonsGroup2Clicked_Command = new RelayCommand<UIRadioButtonsGroup2Model>(group => RadioButtonsGroup2Clicked(group!));
         RadioButtonsGroup3Clicked_Command = new RelayCommand<UIRadioButtonsGroup3Model>(group => RadioButtonsGroup3Clicked(group!));
         RadioButtonsGroup4Clicked_Command = new RelayCommand<UIRadioButtonsGroup4Model>(group => RadioButtonsGroup4Clicked(group!));
         SetLogPageVisibility_Command = new RelayCommand<bool>(SetLogPageVisibility);
-        SetShowFunctionsInfo_Command = new RelayCommand(() => DebugOptions.ShowFunctionsInfo = !DebugOptions.ShowFunctionsInfo);
         SearchBoxQuerySubmitted_Command = new AsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs>(args => SearchBoxQuerySubmittedAsync(args!));
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
@@ -254,22 +256,27 @@ public partial class ShellViewModel : ObservableRecipient
     public IAsyncRelayCommand OpenTaskScheduler_Command { get; private set; }
 
     /// <summary>
+    /// Gets <see cref="IAsyncRelayCommand"/> to open Event Viewer.
+    /// </summary>
+    public IAsyncRelayCommand OpenEventViewer_Command { get; private set; }
+
+    /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open latest app release URL.
     /// </summary>
     public IRelayCommand OpenLatestAppRelease_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to <see cref="RadioButtonsGroup2"/> clicked.
+    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroup2Model"/>.
     /// </summary>
     public IRelayCommand<UIRadioButtonsGroup2Model> RadioButtonsGroup2Clicked_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to <see cref="RadioButtonsGroup3"/> clicked.
+    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroup3Model"/>.
     /// </summary>
     public IRelayCommand<UIRadioButtonsGroup3Model> RadioButtonsGroup3Clicked_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to <see cref="RadioButtonsGroup4"/> clicked.
+    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroup4Model"/>.
     /// </summary>
     public IRelayCommand<UIRadioButtonsGroup4Model> RadioButtonsGroup4Clicked_Command { get; private set; }
 
@@ -277,11 +284,6 @@ public partial class ShellViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to click an "Show log page in navigation menu" CheckBox in Settings page.
     /// </summary>
     public IRelayCommand<bool> SetLogPageVisibility_Command { get; private set; }
-
-    /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to click an "Show functions name and ID" CheckBox in Settings page.
-    /// </summary>
-    public IRelayCommand SetShowFunctionsInfo_Command { get; private set; }
 
     /// <summary>
     /// Gets <see cref="IAsyncRelayCommand"/> to click "Search" in AutoSuggestBox.
@@ -314,26 +316,25 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand UwpForAllUsersClicked_Command { get; private set; }
 
     /// <summary>
-    /// Gets app debug mode options.
-    /// </summary>
-    public DebugOptions DebugOptions { get; } = new ();
-
-    /// <summary>
     /// Gets and saves the app font sizes to a setting file.
     /// </summary>
-    public FontOptions FontOptions { get; } = new ();
+    public FontOptions FontOptions { get; } = new();
 
     /// <summary>
     /// Gets the info badges counters state by <see cref="UICategoryTag"/>.
     /// </summary>
-    public InfoBadgeCounters InfoBadgeCounters { get; } = new ();
+    public InfoBadgeCounters InfoBadgeCounters { get; } = new();
 
     /// <summary>
     /// Gets or sets a value indicating whether log page visibility.
     /// </summary>
     public bool LogPageVisibility
     {
-        get => logPageVisibility;
+        get
+        {
+            return logPageVisibility;
+        }
+
         set
         {
             if (logPageVisibility != value)
@@ -400,12 +401,20 @@ public partial class ShellViewModel : ObservableRecipient
         SetUpCustomizationsPanelText = ApplicableModels.Count == 1 ? "Panel_SetupCustomization_Applying".GetLocalized() : "Panel_SetupCustomizations_Applying".GetLocalized();
         SetUpCustomizationsPanelIsVisible = true;
         App.Logger.LogStartApplicableModelsSetState();
+        StartMenuHelper.Reset();
+
+        // The buttons that open the consoles appear only after the tasks or the custom view were created
+        var tasksCreated = ApplicableModels.OfType<UIIconCheckBoxModel>().Any(model => model.IsChecked);
+        var eventViewCreated = ApplicableModels.OfType<UICheckBoxModel>().Any(model => model.IsChecked && model.Name == nameof(Customizations.Mutators.EventViewerCustomView));
         await modelService.SetModelsStateAsync(ApplicableModels);
         SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
         await modelService.GetModelsStateAsync(ApplicableModels);
         ApplicableModels.Clear();
         InfoBadgeCounters.ResetAll();
         App.Logger.LogApplicableModelsClear();
+
+        // Open consoles would show outdated data, and an open policy editor could overwrite the changes
+        await Task.Run(() => processService.CloseManagementConsoles("taskschd.msc", "eventvwr.msc", "gpedit.msc"));
         groupPolicyService.UpdatePolicy();
 
         // Save all opened folders in order to restore them after File Explorer restart
@@ -415,8 +424,10 @@ public partial class ShellViewModel : ObservableRecipient
         processService.KillProcessByName("StartMenuExperienceHost");
         processService.KillProcessByName("explorer");
         await ExplorerHelper.RestoreAsync(openedFolders);
-        notificationService.EnableToastNotification();
         SetUpCustomizationsPanelIsVisible = false;
+        RestartReminderIsVisible = true;
+        TaskSchedulerButtonIsVisible |= tasksCreated;
+        EventViewerButtonIsVisible |= eventViewCreated;
         NavigationViewHitTestVisible = true;
     }
 
@@ -456,7 +467,7 @@ public partial class ShellViewModel : ObservableRecipient
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startupModel.StatusText = "OsRequirements_GeneratingUserInterface".GetLocalized());
         uwpAllUsersModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: true);
         uwpCurrentUserModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: false);
-        UwpAppsModels = new (uwpAllUsersModels);
+        UwpAppsModels = new(uwpAllUsersModels);
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
         {
             NavigationViewHitTestVisible = true;
@@ -584,7 +595,7 @@ public partial class ShellViewModel : ObservableRecipient
                 App.Logger.LogRequirementsFailureResult(RequirementsResult);
                 _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(page: typeof(RequirementsFailureModel).FullName!, clearHistory: true, disablePageAnimation: true));
                 updateService.RunUpdateByReason(RequirementsResult);
-                taskContinueSource = new ();
+                taskContinueSource = new();
                 await taskContinueSource.Task;
             }
         }
@@ -633,7 +644,7 @@ public partial class ShellViewModel : ObservableRecipient
     private void UIUwpAppModelClicked(UIUwpAppModel model)
     {
         model.ForAllUsers = UwpForAllUsersState;
-        model.Mutator = (packageFullName, removeForAll) => packagesService.RemovePackage(packageId: model.Title, allUsers: model.ForAllUsers);
+        model.Mutator = (_, _) => packagesService.RemovePackages(model.PackageFullNames, model.ForAllUsers);
         UIModelClicked(model);
     }
 }

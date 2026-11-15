@@ -4,66 +4,66 @@
 
 namespace SophiApp.ControlTemplates
 {
-    using CommunityToolkit.Mvvm.Input;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Controls;
+    using Microsoft.UI.Xaml.Data;
     using SophiApp.Helpers;
     using SophiApp.Models;
     using SophiApp.ViewModels;
 
     /// <summary>
-    /// Implements the logic and appearance of the <see cref="UwpAppCheckBox"/> element.
+    /// A tile with the logo and the names of a UWP app and a check box.
     /// </summary>
     public sealed partial class UwpAppCheckBox : UserControl
     {
         /// <summary>
-        /// <see cref="Command"/>.
+        /// Identifies the <see cref="IsAppEnabled"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(IRelayCommand), typeof(UwpAppCheckBox), new PropertyMetadata(default));
-
-        /// <summary>
-        /// <see cref="CommandParameter"/>.
-        /// </summary>
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(UIUwpAppModel), typeof(UwpAppCheckBox), new PropertyMetadata(default));
+        public static readonly DependencyProperty IsAppEnabledProperty = DependencyProperty.Register(
+            nameof(IsAppEnabled),
+            typeof(bool),
+            typeof(UwpAppCheckBox),
+            new PropertyMetadata(true, (sender, args) => ((UwpAppCheckBox)sender).ShowAvailability((bool)args.NewValue)));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UwpAppCheckBox"/> class.
         /// </summary>
         public UwpAppCheckBox()
         {
-            this.InitializeComponent();
-            FontOptions = App.GetService<ShellViewModel>().FontOptions;
+            ViewModel = App.GetService<ShellViewModel>();
+            InitializeComponent();
+
+            // Follows the model: an uninstalled app becomes unavailable
+            SetBinding(IsAppEnabledProperty, new Binding { Path = new PropertyPath("IsEnabled") });
         }
 
         /// <summary>
-        /// Gets the app font sizes.
+        /// Gets the shell view model.
         /// </summary>
-        public FontOptions FontOptions { get; }
+        public ShellViewModel ViewModel { get; }
 
         /// <summary>
-        /// Gets or sets <see cref="UwpAppCheckBox"/> command.
+        /// Gets the text sizes chosen on the Settings page.
         /// </summary>
-        public IRelayCommand Command
+        public FontOptions FontOptions => ViewModel.FontOptions;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the app can still be chosen.
+        /// </summary>
+        public bool IsAppEnabled
         {
-            get => (IRelayCommand)GetValue(CommandProperty);
-            set => SetValue(CommandProperty, value);
+            get => (bool)GetValue(IsAppEnabledProperty);
+            set => SetValue(IsAppEnabledProperty, value);
         }
 
-        /// <summary>
-        /// Gets or sets <see cref="UwpAppCheckBox"/> command parameter.
-        /// </summary>
-        public UIUwpAppModel CommandParameter
+        private void ShowAvailability(bool isEnabled)
         {
-            get => (UIUwpAppModel)GetValue(CommandParameterProperty);
-            set => SetValue(CommandParameterProperty, value);
+            // The logo and the names are not controls, so they are dimmed by hand
+            AppLogo.Opacity = isEnabled ? 1 : 0.4;
+            AppNames.Opacity = isEnabled ? 1 : 0.4;
         }
 
-        private void UwpAppCheckBox_ContextRequested(UIElement sender, Microsoft.UI.Xaml.Input.ContextRequestedEventArgs args)
-            => ContextMenuHelper.ShowContextMenu(sender, TextCommandsFlyout, args);
-
-        private void TextCommandsFlyoutCopyTitle_Click(object sender, RoutedEventArgs e)
-            => ContextMenuHelper.CopyToClipboard(UwpNameTextBlock.Text);
+        private void CopyTitle_Click(object sender, RoutedEventArgs e)
+            => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Name);
     }
 }

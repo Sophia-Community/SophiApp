@@ -17,8 +17,9 @@
             <AnimatedVisuals:LottieLogoHelper/>
         </AnimatedVisualPlayer>
         <TextBlock Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
-                   Style="{StaticResource StartupPageTextStyle}"
-                   Foreground="{ThemeResource WindowAccent}"
+                   Style="{StaticResource BodyTextBlockStyle}"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"
                    Margin="10, -110, 10, 0"/>
     </StackPanel>
 </Page>

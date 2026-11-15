@@ -35,7 +35,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int DescriptionTextSize
         {
-            get => descriptionTextSize;
+            get
+            {
+                return descriptionTextSize;
+            }
+
             set
             {
                 if (descriptionTextSize != value)
@@ -63,7 +67,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int TitleTextSize
         {
-            get => titleTextSize;
+            get
+            {
+                return titleTextSize;
+            }
+
             set
             {
                 if (titleTextSize != value)

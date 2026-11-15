@@ -71,12 +71,12 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets the package installers from the "Package Cache" folder.
         /// </summary>
-        /// <param name="name">Package installer file name.</param>
+        /// <param name="name">Package installer file name. Can contain wildcards.</param>
         private static IEnumerable<string> GetInstallers(string name)
         {
             // Installers are kept in the first-level subfolders of "Package Cache"
             return Directory.Exists(PackageCache)
-                ? Directory.EnumerateDirectories(PackageCache).Select(folder => Path.Combine(folder, name)).Where(File.Exists)
+                ? Directory.EnumerateDirectories(PackageCache).SelectMany(folder => Directory.EnumerateFiles(folder, name))
                 : Enumerable.Empty<string>();
         }
     }

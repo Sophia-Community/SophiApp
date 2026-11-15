@@ -38,6 +38,11 @@ namespace SophiApp.Models
         public string Description { get; init; }
 
         /// <summary>
+        /// Gets a method that returns the title for the current state of the system. The title never changes if the method is not set.
+        /// </summary>
+        public Func<string>? TitleAccessor { get; init; }
+
+        /// <summary>
         /// Gets a exception localized text.
         /// </summary>
         public string ExceptionText { get; private set; }
@@ -52,7 +57,11 @@ namespace SophiApp.Models
         /// </summary>
         public bool IsChecked
         {
-            get => isChecked;
+            get
+            {
+                return isChecked;
+            }
+
             set
             {
                 isChecked = value;
@@ -66,12 +75,19 @@ namespace SophiApp.Models
         {
             try
             {
+                if (TitleAccessor is not null)
+                {
+                    Title = TitleAccessor.Invoke();
+                }
+
                 IsChecked = accessor.Invoke();
             }
             catch (CustomizationException ex)
             {
                 ExceptionText = ex.ResourceKey.GetLocalized();
                 ExceptionTextIsVisible = true;
+                OnPropertyChanged(nameof(ExceptionText));
+                OnPropertyChanged(nameof(ExceptionTextIsVisible));
                 IsEnabled = false;
                 App.Logger.LogModelGetStateException(Name, ex);
             }

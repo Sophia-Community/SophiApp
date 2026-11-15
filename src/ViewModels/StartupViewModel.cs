@@ -25,7 +25,11 @@ namespace SophiApp.ViewModels
         /// </summary>
         public string StatusText
         {
-            get => statusText!;
+            get
+            {
+                return statusText!;
+            }
+
             set
             {
                 if (value is not null && statusText != value)

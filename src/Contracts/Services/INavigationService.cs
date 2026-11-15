@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Contracts.Services;
+
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Helpers;

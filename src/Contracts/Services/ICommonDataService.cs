@@ -67,12 +67,22 @@ namespace SophiApp.Contracts.Services
         Task InitializeAsync();
 
         /// <summary>
-        /// Get external services data.
+        /// Start getting the data from the Internet and from Windows in the background.
         /// </summary>
-        Task GetExternalServicesDataAsync();
+        void BeginGetExternalServicesData();
 
         /// <summary>
-        /// Gets app name and version.
+        /// Wait until the latest app release is received.
+        /// </summary>
+        void WaitForAppRelease();
+
+        /// <summary>
+        /// Wait until all the data is received.
+        /// </summary>
+        void WaitForExternalServicesData();
+
+        /// <summary>
+        /// Gets the app name shown in the window title and on the Settings page.
         /// </summary>
         string GetFullName();
     }

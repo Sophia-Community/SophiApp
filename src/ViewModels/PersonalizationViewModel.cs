@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.ViewModels;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 /// <summary>

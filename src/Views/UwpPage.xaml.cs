@@ -27,7 +27,7 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        GamingModels = new (ViewModel.JsonModels.FilterByTag(UICategoryTag.Gaming));
+        GamingModels = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Gaming));
     }
 
     /// <summary>
@@ -45,7 +45,11 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     /// </summary>
     public double CurrentWidth
     {
-        get => currentWidth;
+        get
+        {
+            return currentWidth;
+        }
+
         private set
         {
             currentWidth = value;

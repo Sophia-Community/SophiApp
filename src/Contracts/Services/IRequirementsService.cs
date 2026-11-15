@@ -15,10 +15,5 @@ namespace SophiApp.Contracts.Services
         /// Gets <see cref="RequirementAction"/> collection.
         /// </summary>
         List<RequirementAction> GetActions();
-
-        /// <summary>
-        /// Initialize <see cref="IRequirementsService"/> data.
-        /// </summary>
-        void Initialize();
     }
 }

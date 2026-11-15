@@ -14,14 +14,14 @@ namespace SophiApp.Services
     public class GroupPolicyService : IGroupPolicyService
     {
         // The policies are shared by all instances of the service and are written to Registry.pol once, after all functions were applied
-        private static readonly object PoliciesLock = new ();
+        private static readonly Lock PoliciesLock = new();
         private static readonly bool GpeditExists = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "gpedit.msc"));
         private static readonly string MachinePolicyFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\Machine\\Registry.pol");
         private static readonly string UserPolicyFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\User\\Registry.pol");
         private static readonly string GptIniFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\gpt.ini");
 
         // A leftover of the previous versions of the app
-        private static readonly string LegacyLgpoSettings = Environment.ExpandEnvironmentVariables("%TEMP%\\LGPO.txt");
+        private static readonly string LegacyLgpoSettings = Path.Combine(Path.GetTempPath(), "LGPO.txt");
         private static Dictionary<LGPOScope, List<RegistryPolicy.Entry>>? policies;
 
         /// <inheritdoc/>
@@ -118,6 +118,11 @@ namespace SophiApp.Services
                     {
                         RegistryPolicy.UpdateGptIni(GptIniFile, machineChanged, userChanged);
                     }
+                }
+                catch (Exception ex)
+                {
+                    // The policies are still set in the registry. Only the policy editor will not show them
+                    App.Logger.LogPolicyUpdateException(ex);
                 }
                 finally
                 {

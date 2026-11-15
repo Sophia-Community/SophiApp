@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Helpers;
+
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -56,82 +57,40 @@ internal static class TitleBarHelper
     /// <param name="theme">Specifies app UI theme.</param>
     public static void UpdateTitleBar(ElementTheme theme)
     {
-        if (App.MainWindow.ExtendsContentIntoTitleBar)
+        if (!App.MainWindow.ExtendsContentIntoTitleBar)
         {
-            if (theme == ElementTheme.Default)
-            {
-                var uiSettings = new UISettings();
-                var background = uiSettings.GetColorValue(UIColorType.Background);
-                theme = background == Colors.White ? ElementTheme.Light : ElementTheme.Dark;
-            }
-
-            if (theme == ElementTheme.Default)
-            {
-                theme = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-            }
-
-            Application.Current.Resources["WindowCaptionForeground"] = theme switch
-            {
-                ElementTheme.Dark => new SolidColorBrush(Colors.White),
-                ElementTheme.Light => new SolidColorBrush(Colors.Black),
-                _ => new SolidColorBrush(Colors.Transparent)
-            };
-
-            Application.Current.Resources["WindowCaptionForegroundDisabled"] = theme switch
-            {
-                ElementTheme.Dark => new SolidColorBrush(Color.FromArgb(0x66, 0xFF, 0xFF, 0xFF)),
-                ElementTheme.Light => new SolidColorBrush(Color.FromArgb(0x66, 0x00, 0x00, 0x00)),
-                _ => new SolidColorBrush(Colors.Transparent)
-            };
-
-            Application.Current.Resources["WindowCaptionButtonBackgroundPointerOver"] = theme switch
-            {
-                ElementTheme.Dark => new SolidColorBrush(Color.FromArgb(0x33, 0xFF, 0xFF, 0xFF)),
-                ElementTheme.Light => new SolidColorBrush(Color.FromArgb(0x33, 0x00, 0x00, 0x00)),
-                _ => new SolidColorBrush(Colors.Transparent)
-            };
-
-            Application.Current.Resources["WindowCaptionButtonBackgroundPressed"] = theme switch
-            {
-                ElementTheme.Dark => new SolidColorBrush(Color.FromArgb(0x66, 0xFF, 0xFF, 0xFF)),
-                ElementTheme.Light => new SolidColorBrush(Color.FromArgb(0x66, 0x00, 0x00, 0x00)),
-                _ => new SolidColorBrush(Colors.Transparent)
-            };
-
-            Application.Current.Resources["WindowCaptionButtonStrokePointerOver"] = theme switch
-            {
-                ElementTheme.Dark => new SolidColorBrush(Colors.White),
-                ElementTheme.Light => new SolidColorBrush(Colors.Black),
-                _ => new SolidColorBrush(Colors.Transparent)
-            };
-
-            Application.Current.Resources["WindowCaptionButtonStrokePressed"] = theme switch
-            {
-                ElementTheme.Dark => new SolidColorBrush(Colors.White),
-                ElementTheme.Light => new SolidColorBrush(Colors.Black),
-                _ => new SolidColorBrush(Colors.Transparent)
-            };
-
-            Application.Current.Resources["WindowCaptionBackground"] = new SolidColorBrush(Colors.Transparent);
-            Application.Current.Resources["WindowCaptionBackgroundDisabled"] = new SolidColorBrush(Colors.Transparent);
-
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
-            if (hwnd == GetActiveWindow())
-            {
-                SendMessage(hwnd, WMACTIVATE, WAINACTIVE, IntPtr.Zero);
-                SendMessage(hwnd, WMACTIVATE, WAACTIVE, IntPtr.Zero);
-            }
-            else
-            {
-                SendMessage(hwnd, WMACTIVATE, WAACTIVE, IntPtr.Zero);
-                SendMessage(hwnd, WMACTIVATE, WAINACTIVE, IntPtr.Zero);
-            }
+            return;
         }
+
+        // "Follow Windows theme" is dark unless the system background is white
+        var isDark = theme == ElementTheme.Default
+            ? new UISettings().GetColorValue(UIColorType.Background) != Colors.White
+            : theme == ElementTheme.Dark;
+
+        // The caption is white on a dark window and black on a light one
+        var color = isDark ? Colors.White : Colors.Black;
+        var resources = Application.Current.Resources;
+        resources["WindowCaptionForeground"] = CreateBrush(color, 0xFF);
+        resources["WindowCaptionForegroundDisabled"] = CreateBrush(color, 0x66);
+        resources["WindowCaptionButtonBackgroundPointerOver"] = CreateBrush(color, 0x33);
+        resources["WindowCaptionButtonBackgroundPressed"] = CreateBrush(color, 0x66);
+        resources["WindowCaptionButtonStrokePointerOver"] = CreateBrush(color, 0xFF);
+        resources["WindowCaptionButtonStrokePressed"] = CreateBrush(color, 0xFF);
+        resources["WindowCaptionBackground"] = new SolidColorBrush(Colors.Transparent);
+        resources["WindowCaptionBackgroundDisabled"] = new SolidColorBrush(Colors.Transparent);
+
+        // The caption is redrawn when the window activation changes, so it is switched there and back
+        var hwnd = WindowNative.GetWindowHandle(App.MainWindow);
+        var isActive = hwnd == GetActiveWindow();
+        SendMessage(hwnd, WMACTIVATE, isActive ? WAINACTIVE : WAACTIVE, nint.Zero);
+        SendMessage(hwnd, WMACTIVATE, isActive ? WAACTIVE : WAINACTIVE, nint.Zero);
     }
 
+    private static SolidColorBrush CreateBrush(Color color, byte opacity) => new(Color.FromArgb(opacity, color.R, color.G, color.B));
+
     [DllImport("user32.dll")]
-    private static extern IntPtr GetActiveWindow();
+    private static extern nint GetActiveWindow();
 
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
+    private static extern nint SendMessage(nint hWnd, int msg, int wParam, nint lParam);
 }

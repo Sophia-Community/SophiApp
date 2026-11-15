@@ -24,9 +24,10 @@ namespace SophiApp.Contracts.Services
         bool DetectVM();
 
         /// <summary>
-        /// Get eventvwr.msc process ID.
+        /// Get IDs of the management console processes that have any of the snap-ins opened.
         /// </summary>
-        List<int>? GetEventViewerConsoleProcessId();
+        /// <param name="snapIns">Snap-in file names, e.g. gpedit.msc.</param>
+        List<int> GetManagementConsoleProcessIds(params string[] snapIns);
 
         /// <summary>
         /// Get the properties of the Win32_OperatingSystem class.

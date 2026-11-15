@@ -28,7 +28,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int ContextMenu
         {
-            get => contextMenu;
+            get
+            {
+                return contextMenu;
+            }
+
             private set
             {
                 contextMenu = value;
@@ -41,7 +45,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int Gaming
         {
-            get => gaming;
+            get
+            {
+                return gaming;
+            }
+
             private set
             {
                 gaming = value;
@@ -54,7 +62,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int Personalization
         {
-            get => personalization;
+            get
+            {
+                return personalization;
+            }
+
             private set
             {
                 personalization = value;
@@ -67,7 +79,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int Privacy
         {
-            get => privacy;
+            get
+            {
+                return privacy;
+            }
+
             private set
             {
                 privacy = value;
@@ -80,7 +96,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int Security
         {
-            get => security;
+            get
+            {
+                return security;
+            }
+
             private set
             {
                 security = value;
@@ -93,7 +113,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int System
         {
-            get => system;
+            get
+            {
+                return system;
+            }
+
             private set
             {
                 system = value;
@@ -106,7 +130,11 @@ namespace SophiApp.Helpers
         /// </summary>
         public int TaskScheduler
         {
-            get => taskScheduler;
+            get
+            {
+                return taskScheduler;
+            }
+
             private set
             {
                 taskScheduler = value;

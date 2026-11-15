@@ -15,6 +15,7 @@ namespace SophiApp.Models
     {
         private bool isEnabled = true;
         private bool isSelected = false;
+        private string title;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UIModel"/> class.
@@ -23,7 +24,7 @@ namespace SophiApp.Models
         /// <param name="title">Model title.</param>
         protected UIModel(UIModelDto dto, string title)
         {
-            Title = title;
+            this.title = title;
             Name = dto.Name;
             Type = dto.Type;
             Tag = dto.Tag;
@@ -68,16 +69,35 @@ namespace SophiApp.Models
         public bool Windows11 { get; private set; }
 
         /// <summary>
-        /// Gets model title.
+        /// Gets or sets model title.
         /// </summary>
-        public string Title { get; private set; }
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            protected set
+            {
+                if (title != value)
+                {
+                    title = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether model is enabled.
         /// </summary>
         public bool IsEnabled
         {
-            get => isEnabled;
+            get
+            {
+                return isEnabled;
+            }
+
             protected set
             {
                 isEnabled = value;
@@ -90,7 +110,11 @@ namespace SophiApp.Models
         /// </summary>
         public bool IsSelected
         {
-            get => isSelected;
+            get
+            {
+                return isSelected;
+            }
+
             set
             {
                 isSelected = value;

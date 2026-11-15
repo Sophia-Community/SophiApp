@@ -13,11 +13,57 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class ScheduledTaskService : IScheduledTaskService
     {
+        // Waits until Quiet Hours are over, so the notification of a task is not missed
+        private const string QuietHoursWait = @"# Get Quiet Hours status
+$CompilerParameters                  = [System.CodeDom.Compiler.CompilerParameters]::new(""System.dll"")
+$CompilerParameters.TempFiles        = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
+$CompilerParameters.GenerateInMemory = $true
+$Signature = @{
+	Namespace          = ""WinAPI""
+	Name               = ""QuietHours""
+	Language           = ""CSharp""
+	CompilerParameters = $CompilerParameters
+	MemberDefinition   = @""
+[DllImport(""ntdll.dll"")]
+private static extern uint NtQueryWnfStateData(
+	ref ulong StateName,
+	IntPtr TypeId,
+	IntPtr ExplicitScope,
+	out uint ChangeStamp,
+	out int Buffer,
+	ref uint BufferSize
+);
+
+// WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
+public static int GetState()
+{
+	ulong stateName = 0x0D83063EA3BF1C75;
+	uint size = sizeof(int);
+	uint stamp;
+	int state;
+	uint status = NtQueryWnfStateData(ref stateName, IntPtr.Zero, IntPtr.Zero, out stamp, out state, ref size);
+	return (status == 0) ? state : -1;
+}
+""@
+}
+
+if (-not (""WinAPI.QuietHours"" -as [type]))
+{
+	Add-Type @Signature
+}
+
+# Wait until it will be 0. -1 means the state cannot be received
+while ([WinAPI.QuietHours]::GetState() -gt 0)
+{
+	Start-Sleep -Seconds 600
+}
+";
+
         private readonly TaskService taskScheduler;
-        private readonly FileInfo cleanupPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1"));
-        private readonly FileInfo notificationPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1"));
-        private readonly FileInfo softwareDistributionPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1"));
-        private readonly FileInfo tempPsFile = new (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1"));
+        private readonly FileInfo cleanupPsFile = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1"));
+        private readonly FileInfo notificationPsFile = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1"));
+        private readonly FileInfo softwareDistributionPsFile = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1"));
+        private readonly FileInfo tempPsFile = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1"));
         private readonly string cleanupTaskPS = @"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
@@ -46,53 +92,10 @@ $Process = New-Object -TypeName System.Diagnostics.Process
 $Process.StartInfo = $ProcessInfo
 $Process.Start() | Out-Null";
 
-        private readonly string notificationTaskPS = @"# https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string notificationTaskPS = (@"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
-# Get Quiet Hours status
-$CompilerParameters                  = [System.CodeDom.Compiler.CompilerParameters]::new(""System.dll"")
-$CompilerParameters.TempFiles        = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
-$CompilerParameters.GenerateInMemory = $true
-$Signature = @{
-	Namespace          = ""WinAPI""
-	Name               = ""QuietHours""
-	Language           = ""CSharp""
-	CompilerParameters = $CompilerParameters
-	MemberDefinition   = @""
-[DllImport(""ntdll.dll"")]
-private static extern uint NtQueryWnfStateData(
-	ref ulong StateName,
-	IntPtr TypeId,
-	IntPtr ExplicitScope,
-	out uint ChangeStamp,
-	out int Buffer,
-	ref uint BufferSize
-);
-
-// WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
-public static int GetState()
-{
-	ulong stateName = 0x0D83063EA3BF1C75;
-	uint size = sizeof(int);
-	uint stamp;
-	int state;
-	uint status = NtQueryWnfStateData(ref stateName, IntPtr.Zero, IntPtr.Zero, out stamp, out state, ref size);
-	return (status == 0) ? state : -1;
-}
-""@
-}
-
-if (-not (""WinAPI.QuietHours"" -as [type]))
-{
-	Add-Type @Signature
-}
-
-# Wait until it will be 0. -1 means the state cannot be received
-while ([WinAPI.QuietHours]::GetState() -gt 0)
-{
-	Start-Sleep -Seconds 600
-}
-
+" + QuietHoursWait + @"
 [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
 [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] | Out-Null
 
@@ -120,58 +123,15 @@ $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)"
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)")
     .Replace("#TaskScheduler_WindowsCleanupToast_Title#", "TaskScheduler_WindowsCleanupToast_Title".GetLocalized())
     .Replace("#TaskScheduler_WindowsCleanupToast_Description#", "TaskScheduler_WindowsCleanupToast_Description".GetLocalized())
     .Replace("#TaskScheduler_WindowsCleanupToast_Run#", "TaskScheduler_WindowsCleanupToast_Run".GetLocalized());
 
-        private readonly string softwareDistributionTaskPS = @"# https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string softwareDistributionTaskPS = (@"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
-# Get Quiet Hours status
-$CompilerParameters                  = [System.CodeDom.Compiler.CompilerParameters]::new(""System.dll"")
-$CompilerParameters.TempFiles        = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
-$CompilerParameters.GenerateInMemory = $true
-$Signature = @{
-	Namespace          = ""WinAPI""
-	Name               = ""QuietHours""
-	Language           = ""CSharp""
-	CompilerParameters = $CompilerParameters
-	MemberDefinition   = @""
-[DllImport(""ntdll.dll"")]
-private static extern uint NtQueryWnfStateData(
-	ref ulong StateName,
-	IntPtr TypeId,
-	IntPtr ExplicitScope,
-	out uint ChangeStamp,
-	out int Buffer,
-	ref uint BufferSize
-);
-
-// WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
-public static int GetState()
-{
-	ulong stateName = 0x0D83063EA3BF1C75;
-	uint size = sizeof(int);
-	uint stamp;
-	int state;
-	uint status = NtQueryWnfStateData(ref stateName, IntPtr.Zero, IntPtr.Zero, out stamp, out state, ref size);
-	return (status == 0) ? state : -1;
-}
-""@
-}
-
-if (-not (""WinAPI.QuietHours"" -as [type]))
-{
-	Add-Type @Signature
-}
-
-# Wait until it will be 0. -1 means the state cannot be received
-while ([WinAPI.QuietHours]::GetState() -gt 0)
-{
-	Start-Sleep -Seconds 600
-}
-
+" + QuietHoursWait + @"
 # Wait until Windows Update service will stop
 (Get-Service -Name wuauserv).WaitForStatus(""Stopped"", ""01:00:00"")
 Get-ChildItem -Path $env:SystemRoot\SoftwareDistribution\Download -Recurse -Force | Remove-Item -Recurse -Force
@@ -196,56 +156,13 @@ $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)"
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)")
     .Replace("#TaskScheduler_SoftwareDistributionToast_Title#", "TaskScheduler_SoftwareDistributionToast_Title".GetLocalized());
 
-        private readonly string tempTaskPS = @"# https://github.com/farag2/Sophia-Script-for-Windows
+        private readonly string tempTaskPS = (@"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
-# Get Quiet Hours status
-$CompilerParameters                  = [System.CodeDom.Compiler.CompilerParameters]::new(""System.dll"")
-$CompilerParameters.TempFiles        = [System.CodeDom.Compiler.TempFileCollection]::new($env:TEMP, $false)
-$CompilerParameters.GenerateInMemory = $true
-$Signature = @{
-	Namespace          = ""WinAPI""
-	Name               = ""QuietHours""
-	Language           = ""CSharp""
-	CompilerParameters = $CompilerParameters
-	MemberDefinition   = @""
-[DllImport(""ntdll.dll"")]
-private static extern uint NtQueryWnfStateData(
-	ref ulong StateName,
-	IntPtr TypeId,
-	IntPtr ExplicitScope,
-	out uint ChangeStamp,
-	out int Buffer,
-	ref uint BufferSize
-);
-
-// WNF_SHEL_QUIETHOURS_ACTIVE_PROFILE_CHANGED
-public static int GetState()
-{
-	ulong stateName = 0x0D83063EA3BF1C75;
-	uint size = sizeof(int);
-	uint stamp;
-	int state;
-	uint status = NtQueryWnfStateData(ref stateName, IntPtr.Zero, IntPtr.Zero, out stamp, out state, ref size);
-	return (status == 0) ? state : -1;
-}
-""@
-}
-
-if (-not (""WinAPI.QuietHours"" -as [type]))
-{
-	Add-Type @Signature
-}
-
-# Wait until it will be 0. -1 means the state cannot be received
-while ([WinAPI.QuietHours]::GetState() -gt 0)
-{
-	Start-Sleep -Seconds 600
-}
-
+" + QuietHoursWait + @"
 # Run the task
 Get-ChildItem -Path $env:TEMP -Recurse -Force -ErrorAction Ignore | Where-Object -FilterScript {$_.CreationTime -lt (Get-Date).AddDays(-1)} | Remove-Item -Recurse -Force -ErrorAction Ignore
 
@@ -286,7 +203,7 @@ $ToastXml = [Windows.Data.Xml.Dom.XmlDocument]::New()
 $ToastXml.LoadXml($ToastTemplate.OuterXml)
 
 $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)"
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier(""Sophia"").Show($ToastMessage)")
     .Replace("#TaskScheduler_TempTaskToast_Title#", "TaskScheduler_TempTaskToast_Title".GetLocalized());
 
         /// <summary>

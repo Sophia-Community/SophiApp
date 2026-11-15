@@ -65,7 +65,6 @@ public partial class App : Application
                 _ = services.AddSingleton<ShellViewModel>();
                 _ = services.AddScoped<StartupViewModel>();
                 _ = services.AddTransient<ContextMenuViewModel>();
-                _ = services.AddTransient<DebugViewModel>();
                 _ = services.AddTransient<FatalErrorViewModel>();
                 _ = services.AddTransient<LogViewModel>();
                 _ = services.AddTransient<PersonalizationViewModel>();
@@ -81,7 +80,6 @@ public partial class App : Application
 
                 // Views
                 _ = services.AddTransient<ContextMenuPage>();
-                _ = services.AddTransient<DebugPage>();
                 _ = services.AddTransient<FatalErrorPage>();
                 _ = services.AddTransient<LogPage>();
                 _ = services.AddTransient<PersonalizationPage>();
@@ -129,7 +127,7 @@ public partial class App : Application
     public static T GetService<T>()
         where T : class
     {
-        if ((Current as App) !.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
             throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }

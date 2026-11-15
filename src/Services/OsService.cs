@@ -23,19 +23,19 @@ namespace SophiApp.Services
         public void SetStartMode(ServiceController service, ServiceStartMode mode)
         {
             var scManagerHandle = OpenSCManager(null, null, 0x000F003F);
-            if (scManagerHandle == IntPtr.Zero)
+            if (scManagerHandle == nint.Zero)
             {
                 throw new ExternalException($"Service {nameof(IOsService)} cannot open: Service Manager");
             }
 
             var serviceHandle = OpenService(scManagerHandle, service.ServiceName, 0x00000001 | 0x00000002);
 
-            if (serviceHandle == IntPtr.Zero)
+            if (serviceHandle == nint.Zero)
             {
                 throw new ExternalException($"Service {nameof(IOsService)} cannot open service: {service.ServiceName}");
             }
 
-            var result = ChangeServiceConfig(serviceHandle, 0xFFFFFFFF, (uint)mode, 0xFFFFFFFF, null, null, IntPtr.Zero, null, null, null, null);
+            var result = ChangeServiceConfig(serviceHandle, 0xFFFFFFFF, (uint)mode, 0xFFFFFFFF, null, null, nint.Zero, null, null, null, null);
 
             if (!result)
             {
@@ -96,16 +96,16 @@ namespace SophiApp.Services
         }
 
         [DllImport("advapi32.dll", EntryPoint = "CloseServiceHandle")]
-        private static extern int CloseServiceHandle(IntPtr hSCObject);
+        private static extern int CloseServiceHandle(nint hSCObject);
 
         [DllImport("advapi32.dll", EntryPoint = "OpenSCManagerW", ExactSpelling = true, CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern IntPtr OpenSCManager(string? machineName, string? databaseName, uint dwAccess);
+        private static extern nint OpenSCManager(string? machineName, string? databaseName, uint dwAccess);
 
         [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        private static extern IntPtr OpenService(IntPtr hSCManager, string lpServiceName, uint dwDesiredAccess);
+        private static extern nint OpenService(nint hSCManager, string lpServiceName, uint dwDesiredAccess);
 
         [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool ChangeServiceConfig(IntPtr hService, uint nServiceType, uint nStartType, uint nErrorControl, string? lpBinaryPathName, string? lpLoadOrderGroup, IntPtr lpdwTagId, [In] char[]? lpDependencies, string? lpServiceStartName, string? lpPassword, string? lpDisplayName);
+        private static extern bool ChangeServiceConfig(nint hService, uint nServiceType, uint nStartType, uint nErrorControl, string? lpBinaryPathName, string? lpLoadOrderGroup, nint lpdwTagId, [In] char[]? lpDependencies, string? lpServiceStartName, string? lpPassword, string? lpDisplayName);
 
         [DllImport("Shlwapi.dll", CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false)]
         private static extern int HashData(byte[] pbData, int cbData, byte[] piet, int outputLen);

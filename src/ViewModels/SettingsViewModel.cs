@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
-using Views;
+using SophiApp.Views;
 
 /// <summary>
 /// Implements the <see cref="SettingsViewModel"/> class.
@@ -28,7 +28,7 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty]
     private ObservableCollection<AppTheme> themes =
     [
-        new (ElementTheme.Default, "Settings_Themes_Default"), new (ElementTheme.Light, "Settings_Themes_Light"), new (ElementTheme.Dark, "Settings_Themes_Dark"),
+        new(ElementTheme.Default, "Settings_Themes_Default"), new(ElementTheme.Light, "Settings_Themes_Light"), new(ElementTheme.Dark, "Settings_Themes_Dark"),
     ];
 
     [ObservableProperty]
@@ -75,7 +75,11 @@ public partial class SettingsViewModel : ObservableRecipient
     /// </summary>
     public AppTheme SelectedTheme
     {
-        get => selectedTheme;
+        get
+        {
+            return selectedTheme;
+        }
+
         set
         {
             if (value != selectedTheme)

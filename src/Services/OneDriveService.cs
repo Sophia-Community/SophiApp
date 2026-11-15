@@ -180,7 +180,7 @@ namespace SophiApp.Services
 
                     if ("Microsoft OneDrive".Equals(appKey?.GetValue("DisplayName") as string, StringComparison.OrdinalIgnoreCase))
                     {
-                        return appKey!.GetValue("UninstallString") as string ?? string.Empty;
+                        return appKey.GetValue("UninstallString") as string ?? string.Empty;
                     }
                 }
             }
@@ -194,7 +194,7 @@ namespace SophiApp.Services
             var startMenu = GetFolderPath(SpecialFolder.StartMenu);
             var programData = GetFolderPath(SpecialFolder.CommonApplicationData);
             var programFiles = GetFolderPath(SpecialFolder.ProgramFiles);
-            var systemDrive = Path.GetPathRoot(SystemDirectory) !;
+            var systemDrive = Path.GetPathRoot(SystemDirectory)!;
 
             var deletedResources = new List<string>()
             {

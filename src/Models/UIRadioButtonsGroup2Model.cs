@@ -53,7 +53,11 @@ namespace SophiApp.Models
         /// </summary>
         public string SelectedId
         {
-            get => selectedId;
+            get
+            {
+                return selectedId;
+            }
+
             set
             {
                 if (selectedId != value)

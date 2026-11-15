@@ -18,8 +18,8 @@ namespace SophiApp.Services
         /// </summary>
         public FirewallService()
         {
-            var netCfg = Type.GetTypeFromProgID("HNetCfg.FwPolicy2") !;
-            firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(netCfg) !;
+            var netCfg = Type.GetTypeFromProgID("HNetCfg.FwPolicy2")!;
+            firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(netCfg)!;
         }
 
         /// <inheritdoc/>

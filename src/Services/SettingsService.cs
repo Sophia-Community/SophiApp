@@ -21,7 +21,6 @@ public class SettingsService : ISettingsService
     private const string AppWindowState = "AppWindowState";
     private const string AppWindowWidth = "AppWindowWidth";
     private const string LogPageVisibility = "ShowLogPage";
-    private const string DebugRequirementAction = "RequirementActionForDebug";
     private const string SettingsFile = "Settings.json";
     private const string TextDescriptionSize = "TextDescriptionSize";
     private const string TextTitleSize = "TextTitleSize";
@@ -67,9 +66,6 @@ public class SettingsService : ISettingsService
     public void Initialize() => settings = fileService.ReadFromJson<IDictionary<string, object>>(settingsFolder, SettingsFile) ?? new Dictionary<string, object>();
 
     /// <inheritdoc/>
-    public void DeleteDebugRequirementAction() => DeleteSetting(DebugRequirementAction);
-
-    /// <inheritdoc/>
     public async Task<PointInt32> ReadAppWindowPositionAsync()
     {
         var x = await ReadSettingAsync<int>(AppWindowPositionX);
@@ -96,9 +92,6 @@ public class SettingsService : ISettingsService
 
     /// <inheritdoc/>
     public async Task<bool> ReadLogPageVisibilityAsync() => await ReadSettingAsync<bool>(LogPageVisibility);
-
-    /// <inheritdoc/>
-    public string ReadDebugRequirementAction() => ReadSetting<string>(DebugRequirementAction) ?? string.Empty;
 
     /// <inheritdoc/>
     public async Task<int> ReadTextDescriptionSizeAsync()
@@ -138,9 +131,6 @@ public class SettingsService : ISettingsService
     public void SaveLogPageVisibility(bool isVisible) => Task.Run(async () => await SaveSettingAsync(LogPageVisibility, isVisible));
 
     /// <inheritdoc/>
-    public async Task SaveDebugRequirementActionAsync(string action) => await SaveSettingAsync(DebugRequirementAction, action);
-
-    /// <inheritdoc/>
     public async Task SaveTextDescriptionSizeAsync(int size) => await SaveSettingAsync(TextDescriptionSize, size);
 
     /// <inheritdoc/>
@@ -148,15 +138,6 @@ public class SettingsService : ISettingsService
 
     /// <inheritdoc/>
     public async Task SaveThemeAsync(ElementTheme theme) => await SaveSettingAsync(AppTheme, theme);
-
-    private void DeleteSetting(string name)
-    {
-        if (settings?.ContainsKey(name) ?? false)
-        {
-            settings.Remove(name);
-            fileService.SaveToJson(settingsFolder, SettingsFile, settings);
-        }
-    }
 
     private async Task<T?> ReadSettingAsync<T>(string key)
     {
@@ -172,26 +153,6 @@ public class SettingsService : ISettingsService
             if (settings != null && settings.TryGetValue(key, out var obj))
             {
                 return await Json.ToObjectAsync<T>((string)obj);
-            }
-        }
-
-        return default;
-    }
-
-    private T? ReadSetting<T>(string key)
-    {
-        if (RuntimeHelper.IsMSIX)
-        {
-            if (ApplicationData.Current.LocalSettings.Values.TryGetValue(key, out var obj))
-            {
-                return Json.ToObject<T>((string)obj);
-            }
-        }
-        else
-        {
-            if (settings != null && settings.TryGetValue(key, out var obj))
-            {
-                return Json.ToObject<T>((string)obj);
             }
         }
 

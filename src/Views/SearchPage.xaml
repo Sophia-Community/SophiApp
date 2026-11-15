@@ -6,37 +6,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SophiApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:SophiApp.ViewModels"
-    xmlns:helpers="using:SophiApp.Helpers"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     d:DataContext="{d:DesignInstance Type=vm:SearchViewModel}"
     mc:Ignorable="d">
-
-    <Page.Resources>
-        <DataTemplate x:Key="IconCheckBoxTemplate">
-            <controls:IconCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                   IconIndex="{Binding IconIndex}"
-                                   Command="{Binding ElementName=PageSearch, Path=ViewModel.UIModelClicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                   Command="{Binding ElementName=PageSearch, Path=ViewModel.UIModelClicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="RadioButtonsGroup2Template">
-            <controls:RadioButtonsGroup2 Margin="{StaticResource UIControlsPageRightMargin}"
-                                         Command="{Binding ElementName=PageSearch, Path=ViewModel.RadioButtonsGroup2Clicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="RadioButtonsGroup3Template">
-            <controls:RadioButtonsGroup3 Margin="{StaticResource UIControlsPageRightMargin}"
-                                         Command="{Binding ElementName=PageSearch, Path=ViewModel.RadioButtonsGroup3Clicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="RadioButtonsGroup4Template">
-            <controls:RadioButtonsGroup4 Margin="{StaticResource UIControlsPageRightMargin}"
-                                         Command="{Binding ElementName=PageSearch, Path=ViewModel.RadioButtonsGroup4Clicked_Command}"/>
-        </DataTemplate>
-    </Page.Resources>
 
     <ScrollView x:Name="SearchScrollView">
         <Grid IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
@@ -47,18 +21,12 @@
                 <Grid x:Name="ItemsContainerGrid">
                     <ItemsRepeater x:Name="SearchItemsRepeater"
                                    ItemsSource="{x:Bind FoundModels, Mode=OneWay}"
+                                   ItemTemplate="{StaticResource SettingTemplateSelector}"
                                    VerticalCacheLength="{x:Bind FoundModels.Count, Mode=OneWay}"
-                                   Margin="{StaticResource PageBottomMargin}">
+                                   Margin="{StaticResource SettingsListMargin}">
                         <ItemsRepeater.Layout>
-                            <StackLayout Spacing="10"/>
+                            <StackLayout Spacing="4"/>
                         </ItemsRepeater.Layout>
-                        <ItemsRepeater.ItemTemplate>
-                            <helpers:UIDataTemplateSelector IconCheckBox="{StaticResource IconCheckBoxTemplate}"
-                                                            TextCheckBox="{StaticResource TextCheckBoxTemplate}"
-                                                            RadioButtonsGroup2="{StaticResource RadioButtonsGroup2Template}"
-                                                            RadioButtonsGroup3="{StaticResource RadioButtonsGroup3Template}"
-                                                            RadioButtonsGroup4="{StaticResource RadioButtonsGroup4Template}"/>
-                        </ItemsRepeater.ItemTemplate>
                     </ItemsRepeater>
                 </Grid>
             </StackPanel>
@@ -76,8 +44,7 @@
                 <StackPanel Grid.Row="1"
                             HorizontalAlignment="Center">
                     <TextBlock x:Uid="SearchPage_NothingFound"
-                               Style="{StaticResource UIControlTitleTextStyle}"
-                               Foreground="{ThemeResource WindowAccent}"/>
+                               Style="{StaticResource BodyStrongTextBlockStyle}"/>
                 </StackPanel>
             </Grid>
         </Grid>

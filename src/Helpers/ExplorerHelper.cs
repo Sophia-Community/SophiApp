@@ -14,6 +14,15 @@ namespace SophiApp.Helpers
         private static readonly string ExplorerPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
 
         /// <summary>
+        /// Opens a folder, a link or a settings page with File Explorer, so the opened app is not run as administrator.
+        /// </summary>
+        /// <param name="target">Folder path, file path or URI.</param>
+        public static void Open(string target)
+        {
+            using var explorer = Process.Start(ExplorerPath, target);
+        }
+
+        /// <summary>
         /// Gets paths of the folders that are opened in File Explorer windows.
         /// </summary>
         public static List<string> GetOpenedFolders()
@@ -29,7 +38,7 @@ namespace SophiApp.Helpers
                     return folders;
                 }
 
-                dynamic shell = Activator.CreateInstance(shellType) !;
+                dynamic shell = Activator.CreateInstance(shellType)!;
 
                 foreach (var window in shell.Windows())
                 {
@@ -62,21 +71,41 @@ namespace SophiApp.Helpers
         /// <param name="openedFolders">Paths of the folders to open.</param>
         public static async Task RestoreAsync(IEnumerable<string> openedFolders)
         {
-            // Wait for File Explorer to be restarted by Windows
-            await Task.Delay(3000);
-
-            if (Process.GetProcessesByName("explorer").Length == 0)
+            // Wait for File Explorer to be restarted by Windows, 3 seconds at most
+            if (!await WaitForExplorerAsync())
             {
                 // Start File Explorer if it was not restarted automatically
                 using var explorer = Process.Start(ExplorerPath);
-                await Task.Delay(3000);
+                _ = await WaitForExplorerAsync();
             }
+
+            // Let the desktop and the taskbar appear before opening the folders
+            await Task.Delay(500);
 
             // Restoring closed folders
             foreach (var folder in openedFolders.Where(Directory.Exists))
             {
                 using var window = Process.Start(ExplorerPath, $"\"{folder}\"");
             }
+        }
+
+        private static async Task<bool> WaitForExplorerAsync()
+        {
+            var timer = Stopwatch.StartNew();
+
+            while (timer.Elapsed.TotalSeconds < 3)
+            {
+                await Task.Delay(250);
+                var explorers = Process.GetProcessesByName("explorer");
+                Array.ForEach(explorers, explorer => explorer.Dispose());
+
+                if (explorers.Length > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

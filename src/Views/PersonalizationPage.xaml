@@ -4,31 +4,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:helpers="using:SophiApp.Helpers"
     xmlns:viewmodels="using:SophiApp.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:PersonalizationViewModel}"
     mc:Ignorable="d">
-
-    <Page.Resources>
-        <DataTemplate x:Key="TextCheckBoxTemplate">
-            <controls:TextCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                   Command="{Binding ElementName=PagePersonalization, Path=ViewModel.UIModelClicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="RadioButtonsGroup2Template">
-            <controls:RadioButtonsGroup2 Margin="{StaticResource UIControlsPageRightMargin}"
-                                         Command="{Binding ElementName=PagePersonalization, Path=ViewModel.RadioButtonsGroup2Clicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="RadioButtonsGroup3Template">
-            <controls:RadioButtonsGroup3 Margin="{StaticResource UIControlsPageRightMargin}"
-                                         Command="{Binding ElementName=PagePersonalization, Path=ViewModel.RadioButtonsGroup3Clicked_Command}"/>
-        </DataTemplate>
-        <DataTemplate x:Key="RadioButtonsGroup4Template">
-            <controls:RadioButtonsGroup4 Margin="{StaticResource UIControlsPageRightMargin}"
-                                         Command="{Binding ElementName=PagePersonalization, Path=ViewModel.RadioButtonsGroup4Clicked_Command}"/>
-        </DataTemplate>
-    </Page.Resources>
 
     <ScrollView>
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
@@ -36,18 +15,13 @@
                 <TextBlock x:Uid="Page_Personalization" Style="{StaticResource PageTitleTextStyle}"/>
             </StackPanel>
             <Grid x:Name="ItemsContainerGrid"
-                  Margin="{StaticResource PageBottomMargin}">
+                  Margin="{StaticResource SettingsListMargin}">
                 <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
+                               ItemTemplate="{StaticResource SettingTemplateSelector}"
                                VerticalCacheLength="{x:Bind Models.Count, Mode=OneWay}">
                     <ItemsRepeater.Layout>
-                        <StackLayout Spacing="10"/>
+                        <StackLayout Spacing="4"/>
                     </ItemsRepeater.Layout>
-                    <ItemsRepeater.ItemTemplate>
-                        <helpers:UIDataTemplateSelector TextCheckBox="{StaticResource TextCheckBoxTemplate}"
-                                                        RadioButtonsGroup2="{StaticResource RadioButtonsGroup2Template}"
-                                                        RadioButtonsGroup3="{StaticResource RadioButtonsGroup3Template}"
-                                                        RadioButtonsGroup4="{StaticResource RadioButtonsGroup4Template}"/>
-                    </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>
             </Grid>
         </StackPanel>

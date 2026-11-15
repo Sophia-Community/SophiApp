@@ -27,7 +27,7 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Determines whether a package offline installer exists in the "Package Cache" folder.
         /// </summary>
-        /// <param name="name">Package installer file name.</param>
+        /// <param name="name">Package installer file name. Can contain wildcards.</param>
         bool IsInstalled(string name);
     }
 }

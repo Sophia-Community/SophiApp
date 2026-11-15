@@ -870,13 +870,7 @@ namespace SophiApp.Customizations
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMFUprogramsList", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoInstrumentation", LGPOScope.User, LGPOScope.Computer);
 
-            if (enable)
-            {
-                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList");
-                return;
-            }
-
-            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -919,7 +913,7 @@ namespace SophiApp.Customizations
                 // Show recently added apps in Start
                 Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowRecentList");
                 // Show most used Apps in Start
-                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList");
+                Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList", 1, RegistryValueKind.DWord);
                 // Show recommendations for tips, shortcuts, new apps, and more in Start
                 Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_IrisRecommendations");
                 // Show recommended files in Start, recent files in File Explorer, and items in jump lists
@@ -1364,7 +1358,7 @@ namespace SophiApp.Customizations
         {
             if (state.Equals(1))
             {
-                var appxPackage = AppxPackagesService.GetPackages().First(package => package.Id.Name.Equals("Microsoft.WindowsTerminal"));
+                var appxPackage = AppxPackagesService.GetPackageOrDefault("Microsoft.WindowsTerminal")!;
                 var appxPath = $"Software\\Classes\\PackagedCom\\Package\\{appxPackage.Id.FullName}\\Class";
 
                 using var packageClasses = Registry.LocalMachine.OpenSubKey(appxPath);
@@ -1477,7 +1471,7 @@ namespace SophiApp.Customizations
                 _ = PowerShellService.Invoke("Enable-WindowsOptionalFeature -Online -FeatureName Recall -All -NoRestart");
 
                 // Open the Copilot page in Microsoft Store
-                using var store = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-windows-store://pdp/?ProductId=9NHT9RB2F4HD") { UseShellExecute = true });
+                ExplorerHelper.Open("ms-windows-store://pdp/?ProductId=9NHT9RB2F4HD");
                 return;
             }
 
@@ -1626,7 +1620,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Event Viewer custom view state.</param>
         public static void EventViewerCustomView(bool enable)
         {
-            ProcessService.CloseEventViewerConsole();
+            ProcessService.CloseManagementConsoles("eventvwr.msc");
 
             if (enable)
             {
@@ -1814,7 +1808,8 @@ namespace SophiApp.Customizations
                 // Windows Terminal creates the configuration file on its first launch
                 if (!File.Exists(terminalSettings))
                 {
-                    using var terminal = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("wt.exe") { UseShellExecute = true });
+                    var terminalFolder = AppxPackagesService.GetPackageOrDefault("Microsoft.WindowsTerminal")!.InstalledLocation.Path;
+                    using var terminal = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(Path.Combine(terminalFolder, "wt.exe")) { UseShellExecute = true });
                     Thread.Sleep(2000);
                     ProcessService.KillProcessByName(3000, "WindowsTerminal");
                 }
@@ -1826,7 +1821,7 @@ namespace SophiApp.Customizations
                 {
                     var defaultsSetting = deserializeSettings!.SelectToken("profiles.defaults") as JObject;
                     defaultsSetting!.Add(new JProperty("elevate", string.Empty));
-                    elevateSetting = deserializeSettings!.SelectToken("profiles.defaults.elevate");
+                    elevateSetting = deserializeSettings.SelectToken("profiles.defaults.elevate");
                 }
 
                 if (enable)

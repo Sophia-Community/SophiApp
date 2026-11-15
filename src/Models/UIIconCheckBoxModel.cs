@@ -43,7 +43,11 @@ namespace SophiApp.Models
         /// </summary>
         public bool IsChecked
         {
-            get => isChecked;
+            get
+            {
+                return isChecked;
+            }
+
             set
             {
                 isChecked = value;

@@ -34,9 +34,6 @@ namespace SophiApp.Customizations
         private static readonly IScheduledTaskService ScheduledTaskService = App.GetService<IScheduledTaskService>();
         private static readonly IUpdateService UpdateService = App.GetService<IUpdateService>();
         private static readonly IXmlService XmlService = App.GetService<IXmlService>();
-        private static readonly object StartMenuCheckLock = new ();
-        private static DateTime startMenuCheckTime = DateTime.MinValue;
-        private static bool startMenuExists;
 
         /// <summary>
         /// Get DiagTrack service state.
@@ -225,7 +222,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool StartRecommendationsTips()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
@@ -239,7 +236,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool StartAccountNotifications()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
@@ -263,7 +260,7 @@ namespace SophiApp.Customizations
         public static bool CheckBoxes()
         {
             var checkValue = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "AutoCheckSelect") as int? ?? -1;
-            return checkValue.Equals(1);
+            return !checkValue.Equals(0);
         }
 
         /// <summary>
@@ -343,8 +340,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RecycleBinDeleteConfirmation()
         {
-            var shellValue = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "ShellState") as byte[] ?? new byte[5];
-            return (shellValue[4] & 0x04) == 0;
+            var shellValue = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "ShellState") as byte[];
+            return shellValue is { Length: > 4 } && (shellValue[4] & 0x04) == 0;
         }
 
         /// <summary>
@@ -415,8 +412,8 @@ namespace SophiApp.Customizations
             {
                 0 => 1,
                 1 => 2,
-                2 => 4,
-                _ => 3,
+                3 => 3,
+                _ => 4,
             };
         }
 
@@ -598,7 +595,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RecentlyAddedStartApps()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
@@ -612,7 +609,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int StartAppsView()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
@@ -626,13 +623,13 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool MostUsedStartApps()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
 
             var usedStartApps = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList") as int? ?? -1;
-            return !usedStartApps.Equals(0);
+            return usedStartApps.Equals(1);
         }
 
         /// <summary>
@@ -640,7 +637,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int StartLayout()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
@@ -657,7 +654,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool StartRecommendedSection()
         {
-            if (ThirdPartyStartMenuExists())
+            if (StartMenuHelper.ThirdPartyMenuExists())
             {
                 throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
             }
@@ -798,7 +795,7 @@ namespace SophiApp.Customizations
         public static int ActiveHours()
         {
             var isEnabled = Registry.LocalMachine.GetSubKeyValue("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "SmartActiveHoursState") as int? ?? -1;
-            return isEnabled.Equals(0) ? 2 : 1;
+            return isEnabled.Equals(1) ? 1 : 2;
         }
 
         /// <summary>
@@ -840,7 +837,7 @@ namespace SophiApp.Customizations
 
             var prtScrPath = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}") as string ?? string.Empty;
             var desktopPath = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", "Desktop") as string;
-            return prtScrPath.Equals(desktopPath) ? 1 : 2;
+            return prtScrPath.Equals(desktopPath, StringComparison.OrdinalIgnoreCase) ? 1 : 2;
         }
 
         /// <summary>
@@ -885,7 +882,9 @@ namespace SophiApp.Customizations
         public static bool NumLock()
         {
             var isEnabled = Registry.Users.GetSubKeyValue(".DEFAULT\\Control Panel\\Keyboard", "InitialKeyboardIndicators") as string ?? string.Empty;
-            return isEnabled.Equals("2147483650");
+
+            // Num Lock is on when the second bit is set: "2" means the same as "2147483650"
+            return uint.TryParse(isEnabled, out var indicators) && (indicators & 2) != 0;
         }
 
         /// <summary>
@@ -944,7 +943,7 @@ namespace SophiApp.Customizations
                 .Select(plan => (IsActive: (bool)plan.GetPropertyValue("IsActive"), InstanceID: (string)plan.GetPropertyValue("InstanceID")))
                 .First(plan => plan.IsActive);
 
-            return activePlan.InstanceID.Contains("{8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}") ? 1 : 2;
+            return activePlan.InstanceID.Contains("{8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}", StringComparison.OrdinalIgnoreCase) ? 1 : 2;
         }
 
         /// <summary>
@@ -970,8 +969,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static int DefaultTerminalApp()
         {
-            var appxPackage = AppxPackagesService.GetPackages()
-                .FirstOrDefault(package => package.Id.Name.Equals("Microsoft.WindowsTerminal"));
+            var appxPackage = AppxPackagesService.GetPackageOrDefault("Microsoft.WindowsTerminal");
 
             // The option is not available without Windows Terminal
             if (appxPackage is null)
@@ -1001,7 +999,7 @@ namespace SophiApp.Customizations
                 });
             var delegationConsole = Registry.CurrentUser.GetSubKeyValue(consolePath, "DelegationConsole") as string ?? string.Empty;
             var delegationTerminal = Registry.CurrentUser.GetSubKeyValue(consolePath, "DelegationTerminal") as string ?? string.Empty;
-            return delegationConsole.Equals(consoleId) && delegationTerminal.Equals(terminalId) ? 1 : 2;
+            return consoleId.Length > 0 && delegationConsole.Equals(consoleId, StringComparison.OrdinalIgnoreCase) && delegationTerminal.Equals(terminalId, StringComparison.OrdinalIgnoreCase) ? 1 : 2;
         }
 
         /// <summary>
@@ -1027,6 +1025,14 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Determines whether .NET 10 desktop runtime is installed and a newer build is available.
+        /// </summary>
+        public static bool InstallDotNetRuntime_10_UpdateAvailable()
+            => DataService.LatestReleaseNET10?.Version is string latestVersion
+                && PackageService.IsInstalled("windowsdesktop-runtime-10.*-win-x64.exe")
+                && !PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
+
+        /// <summary>
         /// Get .NET 11 desktop runtime install state.
         /// </summary>
         public static bool InstallDotNetRuntime_11()
@@ -1038,6 +1044,14 @@ namespace SophiApp.Customizations
                 ? throw new CustomizationException(exceptionMessage: "Latest .NET version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled")
                 : false;
         }
+
+        /// <summary>
+        /// Determines whether .NET 11 desktop runtime is installed and a newer build is available.
+        /// </summary>
+        public static bool InstallDotNetRuntime_11_UpdateAvailable()
+            => DataService.LatestReleaseNET11?.Version is string latestVersion
+                && PackageService.IsInstalled("windowsdesktop-runtime-11.*-win-x64.exe")
+                && !PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
 
         /// <summary>
         /// Get Microsoft Visual C++ x86 redistributable package version.
@@ -1052,6 +1066,12 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Determines whether Microsoft Visual C++ x86 redistributable package is installed and a newer build is available.
+        /// </summary>
+        public static bool InstallVisualC_x86_UpdateAvailable()
+            => PackageService.GetInstalledVersion("vc_redist.x86.exe") is Version installedVersion && DataService.LatestReleaseVC?.Version > installedVersion;
+
+        /// <summary>
         /// Get Microsoft Visual C++ x64 redistributable package version.
         /// </summary>
         public static bool InstallVisualC_x64()
@@ -1062,6 +1082,12 @@ namespace SophiApp.Customizations
             // Not installed, or a newer build is available
             return installedVersion is null || latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest Visual C++ x64 version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
         }
+
+        /// <summary>
+        /// Determines whether Microsoft Visual C++ x64 redistributable package is installed and a newer build is available.
+        /// </summary>
+        public static bool InstallVisualC_x64_UpdateAvailable()
+            => PackageService.GetInstalledVersion("vc_redist.x64.exe") is Version installedVersion && DataService.LatestReleaseVC?.Version > installedVersion;
 
         /// <summary>
         /// Get Windows AI state.
@@ -1097,7 +1123,7 @@ namespace SophiApp.Customizations
             if (AppxPackagesService.PackageExist("Microsoft.XboxGamingOverlay"))
             {
                 var startupPanelIsEnabled = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\GameBar", "ShowStartupPanel") as int? ?? -1;
-                return startupPanelIsEnabled == 1;
+                return startupPanelIsEnabled != 0;
             }
 
             throw new CustomizationException(exceptionMessage: "XBOX Game Bar package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
@@ -1154,7 +1180,9 @@ namespace SophiApp.Customizations
             var notificationXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows Cleanup Notification"));
             var cleanupArgumentsPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup.ps1")}";
             var notificationTaskPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Windows_Cleanup_Notification.ps1")}";
-            return cleanupTaskExist && notificationTaskExist && cleanupPsExist && notificationPsExist && (cleanupXmlArguments?.InnerText.Equals(cleanupArgumentsPattern) ?? false) && (notificationXmlArguments?.InnerText?.Equals(notificationTaskPattern) ?? false);
+
+            // Letter case is ignored: the same path can be written as "System32" or "system32"
+            return cleanupTaskExist && notificationTaskExist && cleanupPsExist && notificationPsExist && (cleanupXmlArguments?.InnerText.Equals(cleanupArgumentsPattern, StringComparison.OrdinalIgnoreCase) ?? false) && (notificationXmlArguments?.InnerText.Equals(notificationTaskPattern, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
         /// <summary>
@@ -1166,7 +1194,7 @@ namespace SophiApp.Customizations
             var distributionPsExist = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1"));
             var distributionXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistribution"));
             var distributionTaskPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1")}";
-            return distributionTaskExist && distributionPsExist && (distributionXmlArguments?.InnerText.Equals(distributionTaskPattern) ?? false);
+            return distributionTaskExist && distributionPsExist && (distributionXmlArguments?.InnerText.Equals(distributionTaskPattern, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
         /// <summary>
@@ -1178,7 +1206,7 @@ namespace SophiApp.Customizations
             var tempPsExist = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1"));
             var tempXmlArguments = XmlService.GetScheduledTaskArguments(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\Temp"));
             var tempTaskPattern = $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1")}";
-            return tempTaskExist && tempPsExist && (tempXmlArguments?.InnerText.Equals(tempTaskPattern) ?? false);
+            return tempTaskExist && tempPsExist && (tempXmlArguments?.InnerText.Equals(tempTaskPattern, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
         /// <summary>
@@ -1256,7 +1284,7 @@ namespace SophiApp.Customizations
             if (defenderEnabled)
             {
                 var smartScreenIsEnabled = Registry.LocalMachine.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "SmartScreenEnabled") as string ?? string.Empty;
-                return !smartScreenIsEnabled.Equals("Off");
+                return !smartScreenIsEnabled.Equals("Off", StringComparison.OrdinalIgnoreCase);
             }
 
             throw new CustomizationException(exceptionMessage: "Microsoft Defender is not the default antivirus", resourceKey: "UIModel_Exception_AntispywareProtectionDisabled");
@@ -1276,7 +1304,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool WindowsSandbox()
         {
-            bool GetSandboxEnabled()
+            static bool GetSandboxEnabled()
             {
                 // Checking whether x86 virtualization is enabled in the firmware
                 // The feature state is read from the registry: it is instant
@@ -1287,7 +1315,7 @@ namespace SophiApp.Customizations
                 return selection == 1;
             }
 
-            if (DataService.OsProperties.Edition.Contains("Professional") || DataService.OsProperties.Edition.Contains("Enterprise") || DataService.OsProperties.Edition.Contains("Education"))
+            if (DataService.OsProperties.Edition.Contains("Professional", StringComparison.OrdinalIgnoreCase) || DataService.OsProperties.Edition.Contains("Enterprise", StringComparison.OrdinalIgnoreCase) || DataService.OsProperties.Edition.Contains("Education", StringComparison.OrdinalIgnoreCase))
             {
                 // The checks below are required to enable the feature only, so it can always be disabled
                 if (GetSandboxEnabled())
@@ -1360,7 +1388,7 @@ namespace SophiApp.Customizations
         {
             var cabProgId = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.cab\\UserChoice", "ProgId") as string ?? string.Empty;
             using var cabUserChoice = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.cab\\UserChoice");
-            var cabArchiver = cabProgId.Equals("CABFolder") || cabUserChoice is null;
+            var cabArchiver = cabProgId.Equals("CABFolder", StringComparison.OrdinalIgnoreCase) || cabUserChoice is null;
 
             if (cabArchiver)
             {
@@ -1421,11 +1449,11 @@ namespace SophiApp.Customizations
 
         [System.Runtime.InteropServices.DllImport("advapi32.dll", SetLastError = true)]
         [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.U1)]
-        private static extern bool AuditQuerySystemPolicy(ref Guid subCategoryGuids, uint policyCount, out IntPtr auditPolicy);
+        private static extern bool AuditQuerySystemPolicy(ref Guid subCategoryGuids, uint policyCount, out nint auditPolicy);
 
         [System.Runtime.InteropServices.DllImport("advapi32.dll")]
         [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.U1)]
-        private static extern bool AuditFree(IntPtr buffer);
+        private static extern bool AuditFree(nint buffer);
 
         /// <summary>
         /// Determines whether success and failure auditing of the "Process Creation" subcategory is enabled.
@@ -1451,57 +1479,6 @@ namespace SophiApp.Customizations
             {
                 _ = AuditFree(auditPolicy);
             }
-        }
-
-        /// <summary>
-        /// Determines whether a third-party Start menu (Start11, StartAllBack, Open-Shell) is running.
-        /// </summary>
-        private static bool ThirdPartyStartMenuExists()
-        {
-            lock (StartMenuCheckLock)
-            {
-                // The result is kept for a few seconds: the check enumerates all modules of explorer.exe and several functions call it at once
-                if (DateTime.UtcNow - startMenuCheckTime > TimeSpan.FromSeconds(5))
-                {
-                    startMenuExists = DetectThirdPartyStartMenu();
-                    startMenuCheckTime = DateTime.UtcNow;
-                }
-
-                return startMenuExists;
-            }
-        }
-
-        /// <summary>
-        /// Looks for a running third-party Start menu.
-        /// </summary>
-        private static bool DetectThirdPartyStartMenu()
-        {
-            if (ProcessService.Exist("Start11Srv", "StartMenu"))
-            {
-                return true;
-            }
-
-            // StartAllBack has no process of its own: it is loaded into explorer.exe as a library
-            foreach (var explorer in System.Diagnostics.Process.GetProcessesByName("explorer"))
-            {
-                try
-                {
-                    if (explorer.Modules.Cast<System.Diagnostics.ProcessModule>().Any(module => module.ModuleName.StartsWith("StartAllBack", StringComparison.OrdinalIgnoreCase)))
-                    {
-                        return true;
-                    }
-                }
-                catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
-                {
-                    // The process has exited or its modules cannot be read
-                }
-                finally
-                {
-                    explorer.Dispose();
-                }
-            }
-
-            return false;
         }
     }
 }

@@ -12,7 +12,14 @@ namespace SophiApp.Helpers
     /// </summary>
     public enum JepriCursorsTheme
     {
+        /// <summary>
+        /// Light cursors.
+        /// </summary>
         Light,
+
+        /// <summary>
+        /// Dark cursors.
+        /// </summary>
         Dark,
     }
 }

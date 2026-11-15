@@ -16,13 +16,14 @@ namespace SophiApp.Helpers
         private const int WMSETTINGCHANGE = 0x1a;
         private const string TRAYSETTINGS = "TraySettings";
 
+        private static readonly nint HWnd = 65535;
+        private static readonly nint HWNDBROADCAST = 0xffff;
+
         // Virtual key ID of the F5 in File Explorer
-        private static readonly IntPtr HWnd = new (65535);
-        private static readonly IntPtr HWNDBROADCAST = new (0xffff);
-        private static readonly UIntPtr UIntPtr = new (41504);
+        private static readonly nuint RefreshKey = 41504;
 
         /// <summary>
-        /// Gets the folder of SophiApp.exe. The log and the settings are kept there.
+        /// Gets the folder of the app executable. The log and the settings are kept there.
         /// </summary>
         public static string AppFolder { get; } = Path.GetDirectoryName(Environment.ProcessPath) ?? AppContext.BaseDirectory;
 
@@ -31,7 +32,7 @@ namespace SophiApp.Helpers
         /// </summary>
         public static void RefreshUserDesktop()
         {
-            PostMessageW(HWnd, Msg, UIntPtr, IntPtr.Zero);
+            PostMessageW(HWnd, Msg, RefreshKey, nint.Zero);
         }
 
         /// <summary>
@@ -39,33 +40,33 @@ namespace SophiApp.Helpers
         /// </summary>
         public static void ForcedRefresh()
         {
-            SHChangeNotify(0x8000000, 0x1000, IntPtr.Zero, IntPtr.Zero);
-            SendMessageTimeout(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, "Environment", SMTOABORTIFHUNG, 100, IntPtr.Zero);
-            SendNotifyMessage(HWNDBROADCAST, WMSETTINGCHANGE, IntPtr.Zero, TRAYSETTINGS);
+            SHChangeNotify(0x8000000, 0x1000, nint.Zero, nint.Zero);
+            SendMessageTimeout(HWNDBROADCAST, WMSETTINGCHANGE, nint.Zero, "Environment", SMTOABORTIFHUNG, 100, nint.Zero);
+            SendNotifyMessage(HWNDBROADCAST, WMSETTINGCHANGE, nint.Zero, TRAYSETTINGS);
         }
 
         /// <summary>
         /// Simulate pressing F5 to refresh the desktop.
         /// </summary>
         [DllImport("user32.dll", SetLastError = true)]
-        private static extern int PostMessageW(IntPtr hWnd, uint msg, UIntPtr wParam, IntPtr lParam);
+        private static extern int PostMessageW(nint hWnd, uint msg, nuint wParam, nint lParam);
 
         /// <summary>
         /// Update desktop icons.
         /// </summary>
         [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern int SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
+        private static extern int SHChangeNotify(int eventId, int flags, nint item1, nint item2);
 
         /// <summary>
         /// Update environment variables.
         /// </summary>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern IntPtr SendMessageTimeout(IntPtr hWnd, int msg, IntPtr wParam, string? lParam, int fuFlags, int uTimeout, IntPtr lpdwResult);
+        private static extern nint SendMessageTimeout(nint hWnd, int msg, nint wParam, string? lParam, int fuFlags, int uTimeout, nint lpdwResult);
 
         /// <summary>
         /// Update taskbar.
         /// </summary>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        private static extern bool SendNotifyMessage(IntPtr hWnd, uint msg, IntPtr wParam, string lParam);
+        private static extern bool SendNotifyMessage(nint hWnd, uint msg, nint wParam, string lParam);
     }
 }

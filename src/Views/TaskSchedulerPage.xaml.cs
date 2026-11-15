@@ -27,7 +27,7 @@ public sealed partial class TaskSchedulerPage : Page, INotifyPropertyChanged
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new (ViewModel.JsonModels.FilterByTag(UICategoryTag.TaskScheduler));
+        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.TaskScheduler));
     }
 
     /// <summary>
@@ -45,7 +45,11 @@ public sealed partial class TaskSchedulerPage : Page, INotifyPropertyChanged
     /// </summary>
     public double CurrentWidth
     {
-        get => currentWidth;
+        get
+        {
+            return currentWidth;
+        }
+
         private set
         {
             currentWidth = value;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SophiApp.ControlTemplates"
+    xmlns:helpers="using:SophiApp.Helpers">
+
+    <!-- Picks the control for a setting: a card with a check box or an expander with options -->
+    <helpers:UIDataTemplateSelector x:Key="SettingTemplateSelector">
+        <helpers:UIDataTemplateSelector.CheckBoxTemplate>
+            <DataTemplate>
+                <controls:SettingCheckBox/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.CheckBoxTemplate>
+        <helpers:UIDataTemplateSelector.RadioButtonsTemplate>
+            <DataTemplate>
+                <controls:SettingRadioButtons/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.RadioButtonsTemplate>
+    </helpers:UIDataTemplateSelector>
+</ResourceDictionary>

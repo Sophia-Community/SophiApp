@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NavigationItem_Privacy.Text" xml:space="preserve">
+  <data name="NavigationItem_Privacy.Content" xml:space="preserve">
     <value>Privacy</value>
   </data>
-  <data name="NavigationItem_Personalization.Text" xml:space="preserve">
+  <data name="NavigationItem_Personalization.Content" xml:space="preserve">
     <value>Personalization</value>
   </data>
-  <data name="NavigationItem_System.Text" xml:space="preserve">
+  <data name="NavigationItem_System.Content" xml:space="preserve">
     <value>System</value>
   </data>
-  <data name="NavigationItem_UWP_Gaming.Text" xml:space="preserve">
+  <data name="NavigationItem_UWP_Gaming.Content" xml:space="preserve">
     <value>UWP | Gaming</value>
   </data>
-  <data name="NavigationItem_TaskScheduler.Text" xml:space="preserve">
+  <data name="NavigationItem_TaskScheduler.Content" xml:space="preserve">
     <value>Task Scheduler</value>
   </data>
-  <data name="NavigationItem_Security.Text" xml:space="preserve">
+  <data name="NavigationItem_Security.Content" xml:space="preserve">
     <value>Security</value>
   </data>
-  <data name="NavigationItem_ContextMenu.Text" xml:space="preserve">
+  <data name="NavigationItem_ContextMenu.Content" xml:space="preserve">
     <value>Context Menu</value>
   </data>
-  <data name="NavigationItem_ProVersion.Text" xml:space="preserve">
+  <data name="NavigationItem_ProVersion.Content" xml:space="preserve">
     <value>PRO version</value>
   </data>
-  <data name="NavigationItem_Settings.Text" xml:space="preserve">
+  <data name="NavigationItem_Settings.Content" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
@@ -156,10 +156,10 @@
   <data name="Control_MadeWith.Text" xml:space="preserve">
     <value>Made with</value>
   </data>
-  <data name="SettingsPage_SelectedTheme.Title" xml:space="preserve">
+  <data name="SettingsPage_SelectedTheme.Header" xml:space="preserve">
     <value>Theme</value>
   </data>
-  <data name="SettingsPage_AboutApp.Title" xml:space="preserve">
+  <data name="SettingsPage_AboutApp.Header" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="Settings_Themes_Dark" xml:space="preserve">
@@ -171,7 +171,7 @@
   <data name="Settings_Themes_Light" xml:space="preserve">
     <value>Light</value>
   </data>
-  <data name="SettingsPage_Team.Title" xml:space="preserve">
+  <data name="SettingsPage_Team.Header" xml:space="preserve">
     <value>Team Sophia</value>
   </data>
   <data name="Button_Apply.Content" xml:space="preserve">
@@ -798,13 +798,13 @@
   <data name="UIModel_RegistryBackup_Description" xml:space="preserve">
     <value>Starting from Windows 10 version 1803, Windows no longer automatically backs up the Windows registry to %SystemRoot%\System32\config\RegBack folder. Enabling registry backups may help you restore Windows in extreme cases.</value>
   </data>
-  <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
+  <data name="UwpPage_AboutAppIcon.Message" xml:space="preserve">
     <value>Choose UWP app to uninstall. UWP apps list is not pre-prepared and rendered in real-time with their native icon logos and localized names taken from Windows.</value>
   </data>
-  <data name="UwpPage_UwpAppsNotFound.Text" xml:space="preserve">
+  <data name="UwpPage_UwpAppsNotFound.Message" xml:space="preserve">
     <value>No UWP apps to uninstall.</value>
   </data>
-  <data name="UwpPage_ForAllUsers.Text" xml:space="preserve">
+  <data name="UwpPage_ForAllUsers.Header" xml:space="preserve">
     <value>Show packages for all users</value>
   </data>
   <data name="UIModel_XBOXGameBar_Title" xml:space="preserve">
@@ -822,7 +822,7 @@
   <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
     <value>Reduce latency and improve performance. You'll need to restart your PC to have your changes take effect. With Hardware-Accelerated GPU Scheduling feature, GPU's scheduling processor and memory (VRAM) take over the same work and run it in batches to render the frames. This allows your GPU to reduce load on your CPU and improve latency, potentially making your PC run better. However, don't expect GPU hardware scheduling to have a significant impact on your computer performance.</value>
   </data>
-  <data name="TaskSchedulerPage_AboutTasks.Text" xml:space="preserve">
+  <data name="TaskSchedulerPage_AboutTasks.Message" xml:space="preserve">
     <value>The scheduled tasks options below are sufficient enough to keep your Windows clean. There is no need to constantly clean more system folders as advised from the Internet.</value>
   </data>
   <data name="UIModel_CleanupTask_Title" xml:space="preserve">
@@ -866,6 +866,12 @@
   </data>
   <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
     <value>Cleaning up temporary folder "{1}" (%TEMP%). Scheduled task can be run only if user "{0}" is logged into the system.</value>
+  </data>
+  <data name="SecurityPage_OpenEventViewer.Content" xml:space="preserve">
+    <value>Open Event Viewer</value>
+  </data>
+  <data name="Panel_RestartReminder.Message" xml:space="preserve">
+    <value>Make sure to restart your PC.</value>
   </data>
   <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
     <value>Open Task Scheduler</value>
@@ -957,7 +963,7 @@
   <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
     <value>Run</value>
   </data>
-  <data name="SettingsPage_FontOptions.Title" xml:space="preserve">
+  <data name="SettingsPage_FontOptions.Header" xml:space="preserve">
     <value>UI font sizes</value>
   </data>
   <data name="SettingsPage_TitleFontSize.Header" xml:space="preserve">
@@ -1017,16 +1023,13 @@
   <data name="UIModel_ContextMenu_CopyTitle.Label" xml:space="preserve">
     <value>Copy title</value>
   </data>
-  <data name="NavigationItem_Log.Text" xml:space="preserve">
+  <data name="NavigationItem_Log.Content" xml:space="preserve">
     <value>Log</value>
   </data>
   <data name="Page_Log.Text" xml:space="preserve">
     <value>Log</value>
   </data>
-  <data name="SettingsPage_LogPage.Title" xml:space="preserve">
-    <value>Log page</value>
-  </data>
-  <data name="SettingsPage_ShowLogPage.Text" xml:space="preserve">
+  <data name="SettingsPage_ShowLogPage.Header" xml:space="preserve">
     <value>Show log page in navigation menu</value>
   </data>
   <data name="Page_ContextMenu_CopyAll.Label" xml:space="preserve">
@@ -1295,5 +1298,17 @@
   </data>
   <data name="UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid" xml:space="preserve">
     <value>JSON file "settings.json" is not valid.</value>
+  </data>
+  <data name="UIModel_InstallDotNetRuntime_10_Title_Update" xml:space="preserve">
+    <value>Update .NET Desktop Runtime 10 x64 to the latest version</value>
+  </data>
+  <data name="UIModel_InstallDotNetRuntime_11_Title_Update" xml:space="preserve">
+    <value>Update .NET Desktop Runtime 11 x64 to the latest version</value>
+  </data>
+  <data name="UIModel_InstallVisualC_x86_Title_Update" xml:space="preserve">
+    <value>Update Microsoft Visual C++ Redistributable Packages 2017–2026 x86 to the latest version</value>
+  </data>
+  <data name="UIModel_InstallVisualC_x64_Title_Update" xml:space="preserve">
+    <value>Update Microsoft Visual C++ Redistributable Packages 2017–2026 x64 to the latest version</value>
   </data>
 </root>

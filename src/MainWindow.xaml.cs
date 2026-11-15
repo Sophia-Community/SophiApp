@@ -40,7 +40,7 @@ public sealed partial class MainWindow : WindowEx
     }
 
     [DllImport("dwmapi")]
-    private static extern IntPtr DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+    private static extern nint DwmExtendFrameIntoClientArea(nint hWnd, ref MARGINS pMarInset);
 
     /// <summary>
     /// This handles updating the caption button colors correctly when windows system theme is changed while the app is open.

@@ -12,9 +12,10 @@ namespace SophiApp.Contracts.Services
     public interface IProcessService
     {
         /// <summary>
-        /// Close eventvwr.msc console if is running.
+        /// Close the management consoles that have any of the snap-ins opened.
         /// </summary>
-        void CloseEventViewerConsole();
+        /// <param name="snapIns">Snap-in file names, e.g. gpedit.msc.</param>
+        void CloseManagementConsoles(params string[] snapIns);
 
         /// <summary>
         /// Determines whether the specified process exists.

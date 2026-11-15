@@ -12,7 +12,7 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class PowerShellService : IPowerShellService
     {
-        private static readonly object SessionLock = new ();
+        private static readonly Lock SessionLock = new();
         private static PowerShellProcessInstance? sharedProcess;
         private static Runspace? sharedRunspace;
         private static bool processExitSubscribed;

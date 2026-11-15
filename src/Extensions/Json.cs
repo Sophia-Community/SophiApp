@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Extensions;
+
 using Newtonsoft.Json;
 
 /// <summary>
@@ -17,7 +18,7 @@ public static class Json
     /// <param name="value">The JSON to deserialize.</param>
     public static T ToObject<T>(string value)
     {
-        return JsonConvert.DeserializeObject<T>(value) !;
+        return JsonConvert.DeserializeObject<T>(value)!;
     }
 
     /// <summary>
@@ -29,7 +30,7 @@ public static class Json
     {
         return await Task.Run(() =>
         {
-            return JsonConvert.DeserializeObject<T>(value) !;
+            return JsonConvert.DeserializeObject<T>(value)!;
         });
     }
 

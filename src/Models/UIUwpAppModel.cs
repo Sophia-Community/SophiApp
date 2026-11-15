@@ -14,8 +14,8 @@ namespace SophiApp.Models
         /// </summary>
         /// <param name="dto">Dto for <see cref="UICheckBoxModel"/> initialization.</param>
         /// <param name="title">Model title.</param>
-        /// <param name="image">The path to model logo.</param>
-        public UIUwpAppModel(UIModelDto dto, string title, Uri image)
+        /// <param name="image">The path to model logo, if the app has one.</param>
+        public UIUwpAppModel(UIModelDto dto, string title, Uri? image)
             : base(dto, title)
         {
             Image = image;
@@ -24,7 +24,12 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets path to model logo.
         /// </summary>
-        public Uri Image { get; init; }
+        public Uri? Image { get; init; }
+
+        /// <summary>
+        /// Gets full names of the packages to remove.
+        /// </summary>
+        public IReadOnlyList<string> PackageFullNames { get; init; } = [];
 
         /// <summary>
         /// Gets or sets the method to be executed when the <see cref="UIUwpAppModel"/> set state.
@@ -41,7 +46,11 @@ namespace SophiApp.Models
         /// </summary>
         public bool IsChecked
         {
-            get => isChecked;
+            get
+            {
+                return isChecked;
+            }
+
             set
             {
                 isChecked = value;

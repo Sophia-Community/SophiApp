@@ -6,8 +6,10 @@ namespace SophiApp.Services
 {
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
+    using SophiApp.Helpers;
     using System.Diagnostics;
     using System.Globalization;
+    using System.Management;
     using System.Management.Automation;
     using System.Text;
     using System.Xml.Linq;
@@ -44,6 +46,12 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public bool? GetTurnOffDevice()
         {
+            // WMI answers ten times faster than the cmdlets, which have to load their module first
+            if (GetTurnOffDeviceFromWmi() is { } stateFromWmi)
+            {
+                return stateFromWmi;
+            }
+
             // Check whether adapters have AllowComputerToTurnOffDevice property to manage
             bool? allowTurnOff = null;
 
@@ -83,7 +91,7 @@ namespace SophiApp.Services
                 if (ssid is null)
                 {
                     // Network shell commands need location permission to access WLAN information
-                    using var settingsPage = Process.Start(new ProcessStartInfo("ms-settings:privacy-location") { UseShellExecute = true });
+                    ExplorerHelper.Open("ms-settings:privacy-location");
                     return;
                 }
 
@@ -102,45 +110,8 @@ namespace SophiApp.Services
                 _ = powerShellService.Invoke($"Get-NetAdapterPowerManagement -Name {ToArgument(adapterName)} | ForEach-Object -Process {{$_.AllowComputerToTurnOffDevice = '{state}'; $_ | Set-NetAdapterPowerManagement}}");
             }
 
-            // Adapters restart asynchronously, and they stay "Up" for a few seconds after Set-NetAdapterPowerManagement
-            // Wait until at least one adapter goes down, otherwise the check below would pass before the restart
-            // Some drivers don't restart the adapter at all, so wait 10 seconds at most
-            var timer = Stopwatch.StartNew();
-            int upAdapters;
-
-            do
-            {
-                Thread.Sleep(500);
-
-                // An adapter may disappear while its driver is reloading, so count only adapters that are up
-                upAdapters = CountUpAdapters(adapterNames);
-            }
-            while (upAdapters == adapterNames.Count && timer.Elapsed.TotalSeconds < 10);
-
-            // Wait until Internet access is restored, or until adapters are up if there was no Internet access before. 60 seconds at most
-            // Otherwise functions below will indicate that there is no Internet connection
-            timer.Restart();
-            var attempt = 0;
-
-            while (timer.Elapsed.TotalSeconds < 60)
-            {
-                var isReady = hadInternet ? HasInternetAccess() : CountUpAdapters(adapterNames) == adapterNames.Count;
-
-                if (isReady)
-                {
-                    break;
-                }
-
-                // If Wi-Fi network was used and Wi-Fi adapter is not connected yet, connect to it again
-                // Retry every 10 seconds in case the adapter was not ready
-                if (ssid is not null && attempt % 5 == 0 && CountUpAdapters(wiFiAdapters) == 0)
-                {
-                    _ = RunNetsh($"wlan connect name=\"{profileName}\" ssid=\"{ssid}\"");
-                }
-
-                Thread.Sleep(2000);
-                attempt++;
-            }
+            WaitForRestart(adapterNames);
+            WaitForConnection(adapterNames, wiFiAdapters, hadInternet, ssid, profileName);
         }
 
         /// <summary>
@@ -148,6 +119,47 @@ namespace SophiApp.Services
         /// </summary>
         /// <param name="adapterName">The adapter name.</param>
         private static string ToArgument(string adapterName) => $"'{WildcardPattern.Escape(adapterName).Replace("'", "''")}'";
+
+        /// <summary>
+        /// Reads the AllowComputerToTurnOffDevice state of the connected physical adapters from the WMI classes the cmdlets use.
+        /// </summary>
+        /// <returns>The state, or null if it cannot be read this way.</returns>
+        private static bool? GetTurnOffDeviceFromWmi()
+        {
+            try
+            {
+                bool? allowTurnOff = null;
+                using var adapters = new ManagementObjectSearcher("root/StandardCimv2", "SELECT Name, InterfaceOperationalStatus FROM MSFT_NetAdapter WHERE ConnectorPresent = TRUE AND Hidden = FALSE");
+
+                foreach (var adapter in adapters.Get().Cast<ManagementBaseObject>())
+                {
+                    if (Convert.ToUInt32(adapter["InterfaceOperationalStatus"] ?? 0u) != OperationalStatusUp || adapter["Name"] is not string name)
+                    {
+                        continue;
+                    }
+
+                    var adapterName = name.Replace("\\", "\\\\").Replace("'", "\\'");
+                    using var settings = new ManagementObjectSearcher("root/StandardCimv2", $"SELECT AllowComputerToTurnOffDevice FROM MSFT_NetAdapterPowerManagementSettingData WHERE Name = '{adapterName}'");
+
+                    foreach (var setting in settings.Get().Cast<ManagementBaseObject>())
+                    {
+                        var state = Convert.ToUInt32(setting["AllowComputerToTurnOffDevice"] ?? TurnOffDeviceUnsupported);
+
+                        if (state != TurnOffDeviceUnsupported)
+                        {
+                            allowTurnOff = state == TurnOffDeviceEnabled;
+                        }
+                    }
+                }
+
+                return allowTurnOff;
+            }
+            catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
+            {
+                // The cmdlets will be asked
+                return null;
+            }
+        }
 
         private static string? GetConnectedSsid()
         {
@@ -264,6 +276,60 @@ namespace SophiApp.Services
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Waits until at least one adapter goes down: adapters restart asynchronously and stay "Up" for a few seconds after their settings were changed.
+        /// </summary>
+        /// <param name="adapterNames">Names of the adapters whose settings were changed.</param>
+        private void WaitForRestart(List<string> adapterNames)
+        {
+            // Some drivers don't restart the adapter at all, so wait 10 seconds at most
+            var timer = Stopwatch.StartNew();
+            int upAdapters;
+
+            do
+            {
+                Thread.Sleep(500);
+
+                // An adapter may disappear while its driver is reloading, so count only adapters that are up
+                upAdapters = CountUpAdapters(adapterNames);
+            }
+            while (upAdapters == adapterNames.Count && timer.Elapsed.TotalSeconds < 10);
+        }
+
+        /// <summary>
+        /// Waits until Internet access is restored, or until adapters are up if there was no Internet access before. 60 seconds at most.
+        /// </summary>
+        /// <param name="adapterNames">Names of the adapters whose settings were changed.</param>
+        /// <param name="wiFiAdapters">Names of the Wi-Fi adapters among them.</param>
+        /// <param name="hadInternet">Whether PC had Internet access before the adapters restart.</param>
+        /// <param name="ssid">SSID of the Wi-Fi network that was used, if any.</param>
+        /// <param name="profileName">WLAN profile name of that network.</param>
+        private void WaitForConnection(List<string> adapterNames, List<string> wiFiAdapters, bool hadInternet, string? ssid, string? profileName)
+        {
+            var timer = Stopwatch.StartNew();
+            var attempt = 0;
+
+            while (timer.Elapsed.TotalSeconds < 60)
+            {
+                var isReady = hadInternet ? HasInternetAccess() : CountUpAdapters(adapterNames) == adapterNames.Count;
+
+                if (isReady)
+                {
+                    break;
+                }
+
+                // If Wi-Fi network was used and Wi-Fi adapter is not connected yet, connect to it again
+                // Retry every 10 seconds in case the adapter was not ready
+                if (ssid is not null && attempt % 5 == 0 && CountUpAdapters(wiFiAdapters) == 0)
+                {
+                    _ = RunNetsh($"wlan connect name=\"{profileName}\" ssid=\"{ssid}\"");
+                }
+
+                Thread.Sleep(2000);
+                attempt++;
             }
         }
     }

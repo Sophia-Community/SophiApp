@@ -14,11 +14,11 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class CommonDataService : ICommonDataService
     {
-        private static readonly InputCursor HandCursor = InputSystemCursor.Create(InputSystemCursorShape.Hand);
-        private static InputCursor userCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
         private readonly IHttpService httpService;
         private readonly IInstrumentationService instrumentationService;
+        private Task appReleaseTask = Task.CompletedTask;
+        private Task externalDataTask = Task.CompletedTask;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonDataService"/> class.
@@ -29,29 +29,9 @@ namespace SophiApp.Services
         {
             this.instrumentationService = instrumentationService;
             this.httpService = httpService;
-            OsProperties = new ();
-            SupportedOs = new ();
+            OsProperties = new();
+            SupportedOs = new();
         }
-
-        /// <summary>
-        /// Gets or sets app user cursor.
-        /// </summary>
-        public static InputCursor UserCursor
-        {
-            get => userCursor;
-            set
-            {
-                if (userCursor != value)
-                {
-                    userCursor = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets url hovering cursor.
-        /// </summary>
-        public static InputCursor UrlCursor => HandCursor;
 
         /// <inheritdoc/>
         public OsProperties OsProperties { get; private set; }
@@ -95,16 +75,26 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public async Task GetExternalServicesDataAsync() => await Task.WhenAll(
-            SetDefenderStateAsync(),
-            SetLatestAppReleaseAsync(),
-            SetNet10ReleaseAsync(),
-            SetNet11ReleaseAsync(),
-            SetVCReleaseAsync(),
-            SetSupportedBuildsAsync());
+        public void BeginGetExternalServicesData()
+        {
+            appReleaseTask = Task.Run(SetLatestAppReleaseAsync);
+            externalDataTask = Task.Run(() => Task.WhenAll(
+                appReleaseTask,
+                SetDefenderStateAsync(),
+                SetNet10ReleaseAsync(),
+                SetNet11ReleaseAsync(),
+                SetVCReleaseAsync(),
+                SetSupportedBuildsAsync()));
+        }
 
         /// <inheritdoc/>
-        public string GetFullName() => $"SophiApp for Windows {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
+        public void WaitForAppRelease() => appReleaseTask.Wait();
+
+        /// <inheritdoc/>
+        public void WaitForExternalServicesData() => externalDataTask.Wait();
+
+        /// <inheritdoc/>
+        public string GetFullName() => "SophiApp for Windows 2 (Preview)";
 
         private async Task SetDefenderStateAsync()
         {

@@ -11,7 +11,14 @@ namespace SophiApp.Helpers
     /// </summary>
     public enum LGPOScope
     {
+        /// <summary>
+        /// Policies of the computer.
+        /// </summary>
         Computer,
+
+        /// <summary>
+        /// Policies of the current user.
+        /// </summary>
         User,
     }
 }

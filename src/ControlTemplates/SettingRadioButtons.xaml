@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.SettingRadioButtons"
+    x:Name="SettingRadioButtonsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ChangeStates">
+                <VisualState x:Name="Changed">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding IsSelected}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChangedOutline.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ContextFlyout>
+            <CommandBarFlyout>
+                <CommandBarFlyout.SecondaryCommands>
+                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
+                                  Icon="Copy"
+                                  Click="CopyTitle_Click"/>
+                    <AppBarButton x:Name="CopyDescriptionButton"
+                                  x:Uid="UIModel_ContextMenu_CopyDescription"
+                                  Icon="Copy"
+                                  Click="CopyDescription_Click"/>
+                </CommandBarFlyout.SecondaryCommands>
+            </CommandBarFlyout>
+        </Grid.ContextFlyout>
+        <toolkit:SettingsExpander x:Name="OptionsExpander"
+                                  IsExpanded="True"
+                                  IsEnabled="{Binding IsEnabled}">
+            <toolkit:SettingsExpander.Header>
+                <TextBlock Text="{Binding Title}"
+                           TextWrapping="Wrap"
+                           FontSize="{x:Bind FontOptions.TitleTextSize, Mode=OneWay}"/>
+            </toolkit:SettingsExpander.Header>
+            <toolkit:SettingsExpander.Description>
+                <TextBlock x:Name="DescriptionText"
+                           Text="{Binding Description}"
+                           TextWrapping="Wrap"
+                           FontSize="{x:Bind FontOptions.DescriptionTextSize, Mode=OneWay}"/>
+            </toolkit:SettingsExpander.Description>
+            <!-- The options are not put into Items: those are created only when they are scrolled into view, and the page jumps -->
+            <toolkit:SettingsExpander.ItemsHeader>
+                <StackPanel x:Name="Options"
+                            Padding="58, 8, 44, 8"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="0, 1, 0, 0"/>
+            </toolkit:SettingsExpander.ItemsHeader>
+        </toolkit:SettingsExpander>
+        <!-- Marks a setting that is going to be changed -->
+        <Border x:Name="ChangedOutline"
+                BorderThickness="1"
+                BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                CornerRadius="{ThemeResource ControlCornerRadius}"
+                IsHitTestVisible="False"
+                Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

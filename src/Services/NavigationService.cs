@@ -29,7 +29,9 @@ public class NavigationService : INavigationService
         this.pageService = pageService;
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Occurs when the frame has navigated to a page.
+    /// </summary>
     public event NavigatedEventHandler? Navigated;
 
     /// <inheritdoc/>

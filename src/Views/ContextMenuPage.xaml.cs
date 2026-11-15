@@ -23,7 +23,7 @@ public sealed partial class ContextMenuPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new (ViewModel.JsonModels.FilterByTag(UICategoryTag.ContextMenu));
+        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.ContextMenu));
     }
 
     /// <summary>

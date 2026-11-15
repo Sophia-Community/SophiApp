@@ -24,14 +24,21 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void CloseEventViewerConsole()
+        public void CloseManagementConsoles(params string[] snapIns)
         {
-            instrumentationService.GetEventViewerConsoleProcessId()?.ForEach(id =>
+            foreach (var id in instrumentationService.GetManagementConsoleProcessIds(snapIns))
             {
-                var process = Process.GetProcessById(id);
-                process.Kill();
-                process.WaitForExit();
-            });
+                try
+                {
+                    using var console = Process.GetProcessById(id);
+                    console.Kill();
+                    console.WaitForExit(3000);
+                }
+                catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException || ex is System.ComponentModel.Win32Exception)
+                {
+                    // The console has already been closed
+                }
+            }
         }
 
         /// <inheritdoc/>

@@ -73,19 +73,14 @@ namespace SophiApp.Services
             _ = Process.Start(
                     new ProcessStartInfo()
                     {
-                        FileName = "UsoClient.exe",
+                        FileName = Path.Combine(Environment.SystemDirectory, "UsoClient.exe"),
                         Arguments = "StartInteractiveScan",
                     });
 
             if (openSettings)
             {
                 // Open the "Windows Update" page
-                _ = Process.Start(
-                    new ProcessStartInfo()
-                    {
-                        FileName = "explorer.exe",
-                        Arguments = "ms-settings:windowsupdate",
-                    });
+                ExplorerHelper.Open("ms-settings:windowsupdate");
             }
         }
     }

@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Views;
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -54,7 +55,11 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
     /// </summary>
     public double CurrentWidth
     {
-        get => currentWidth;
+        get
+        {
+            return currentWidth;
+        }
+
         private set
         {
             currentWidth = value;

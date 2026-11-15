@@ -4,6 +4,7 @@
 
 namespace SophiApp.Contracts.Services
 {
+    using SophiApp.Helpers;
     using Windows.ApplicationModel;
 
     /// <summary>
@@ -19,10 +20,16 @@ namespace SophiApp.Contracts.Services
         bool PackageExist(string packageId, bool allUsers = false);
 
         /// <summary>
-        /// Retrieves information about a appx packages.
+        /// Gets the UWP apps that can be uninstalled, sorted by their localized names.
         /// </summary>
         /// <param name="allUsers">Search in installed packages for all users or only for the current user.</param>
-        List<Package> GetPackages(bool allUsers = false);
+        List<UwpPackage> GetRemovablePackages(bool allUsers);
+
+        /// <summary>
+        /// Get the package of the current user by its name.
+        /// </summary>
+        /// <param name="packageId">Package name, e.g. Microsoft.WindowsTerminal.</param>
+        Package? GetPackageOrDefault(string packageId);
 
         /// <summary>
         /// Removes appx package.
@@ -30,5 +37,12 @@ namespace SophiApp.Contracts.Services
         /// <param name="packageId">The appx package identity name.</param>
         /// <param name="allUsers">Remove a package for all users or current user only.</param>
         void RemovePackage(string packageId, bool allUsers = false);
+
+        /// <summary>
+        /// Removes appx packages by their full names.
+        /// </summary>
+        /// <param name="packageFullNames">Full names of the packages.</param>
+        /// <param name="allUsers">Remove the packages for all users or current user only.</param>
+        void RemovePackages(IEnumerable<string> packageFullNames, bool allUsers);
     }
 }

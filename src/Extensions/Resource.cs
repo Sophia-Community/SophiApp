@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Extensions;
+
 using Microsoft.Windows.ApplicationModel.Resources;
 
 /// <summary>
@@ -10,7 +11,7 @@ using Microsoft.Windows.ApplicationModel.Resources;
 /// </summary>
 public static class Resource
 {
-    private static readonly ResourceLoader ResourceLoader = new ();
+    private static readonly ResourceLoader ResourceLoader = new();
 
     /// <summary>
     /// Gets a localized string.

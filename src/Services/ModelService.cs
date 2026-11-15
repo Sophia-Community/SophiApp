@@ -63,107 +63,13 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public async Task<List<UIModel>> BuildUwpAppModelsAsync(bool forAllUsers)
         {
-            return await Task.Run(() =>
-            {
-                var models = new List<UIModel>();
-                var viewId = 400;
-                var packages = packagesService.GetPackages(forAllUsers);
-                var excludedAppx = new List<string>()
-            {
-                // Dolby Access
-                "DolbyLaboratories.DolbyAccess",
-                "DolbyLaboratories.DolbyDigitalPlusDecoderOEM",
-
-                // AMD Radeon Software
-                "AdvancedMicroDevicesInc-2.AMDRadeonSoftware",
-
-                // Intel Graphics Control Center
-                "AppUp.IntelGraphicsControlPanel",
-                "AppUp.IntelGraphicsExperience",
-
-                // ELAN Touchpad
-                "ELANMicroelectronicsCorpo.ELANTouchpadforThinkpad",
-                "ELANMicroelectronicsCorpo.ELANTrackPointforThinkpa",
-
-                // Microsoft Application Compatibility Enhancements
-                "Microsoft.ApplicationCompatibilityEnhancements",
-
-                // AVC Encoder Video Extension
-                "Microsoft.AVCEncoderVideoExtension",
-
-                // Microsoft Desktop App Installer
-                "Microsoft.DesktopAppInstaller",
-
-                // Store Experience Host
-                "Microsoft.StorePurchaseApp",
-
-                // Cross Device Experience Host
-                "MicrosoftWindows.CrossDevice",
-
-                // Notepad
-                "Microsoft.WindowsNotepad",
-
-                // Microsoft Store
-                "Microsoft.WindowsStore",
-
-                // Windows Terminal
-                "Microsoft.WindowsTerminal",
-                "Microsoft.WindowsTerminalPreview",
-
-                // Web Media Extensions
-                "Microsoft.WebMediaExtensions",
-
-                // AV1 Video Extension
-                "Microsoft.AV1VideoExtension",
-
-                // Windows Subsystem for Linux
-                "MicrosoftCorporationII.WindowsSubsystemForLinux",
-
-                // HEVC Video Extensions from Device Manufacturer
-                "Microsoft.HEVCVideoExtension",
-                "Microsoft.HEVCVideoExtensions",
-
-                // Raw Image Extension
-                "Microsoft.RawImageExtension",
-
-                // HEIF Image Extensions
-                "Microsoft.HEIFImageExtension",
-
-                // MPEG-2 Video Extension
-                "Microsoft.MPEG2VideoExtension",
-
-                // VP9 Video Extensions
-                "Microsoft.VP9VideoExtensions",
-
-                // Webp Image Extensions
-                "Microsoft.WebpImageExtension",
-
-                // PowerShell
-                "Microsoft.PowerShell",
-
-                // NVIDIA Control Panel
-                "NVIDIACorp.NVIDIAControlPanel",
-
-                // Realtek Audio Console
-                "RealtekSemiconductorCorp.RealtekAudioControl",
-
-                // Synaptics
-                "SynapticsIncorporated.SynapticsControlPanel",
-                "SynapticsIncorporated.241916F58D6E7",
-                "ELANMicroelectronicsCorpo.ELANTrackPointforThinkpa",
-                "ELANMicroelectronicsCorpo.TrackPoint",
-            };
-                for (int i = 0; i < packages.Count; i++)
+            return await Task.Run(() => packagesService.GetRemovablePackages(forAllUsers)
+                .Select((package, index) =>
                 {
-                    if (!excludedAppx.Contains(packages[i].Id.Name) && File.Exists(packages[i].Logo.LocalPath) && packages[i].DisplayName != string.Empty)
-                    {
-                        var dto = new UIModelDto(name: packages[i].DisplayName, type: UIModelType.UwpApp, tag: UICategoryTag.UWP, viewId: viewId + i, windows11LTSC: true, windows11: true);
-                        models.Add(new UIUwpAppModel(dto, packages[i].Id.Name, packages[i].Logo));
-                    }
-                }
-
-                return models;
-            });
+                    var dto = new UIModelDto(name: package.DisplayName, type: UIModelType.UwpApp, tag: UICategoryTag.UWP, viewId: 400 + index, windows11LTSC: true, windows11: true);
+                    return (UIModel)new UIUwpAppModel(dto, package.Name, package.Logo) { PackageFullNames = package.FullNames };
+                })
+                .ToList());
         }
 
         /// <inheritdoc/>
@@ -222,7 +128,7 @@ namespace SophiApp.Services
         public async Task<ObservableCollection<UIModel>> GetModelsContainsTextAsync(ObservableCollection<UIModel> models, string text)
         {
             var timer = Stopwatch.StartNew();
-            var found = await Task.Run(() => models.Where(model => model.IsEnabled && model.ContainsText(text)));
+            var found = await Task.Run(() => models.Where(model => model.ContainsText(text)));
             var foundModels = new ObservableCollection<UIModel>(found);
             timer.Stop();
             App.Logger.LogStopTextSearch(text, timer, foundModels.Count);
@@ -235,7 +141,7 @@ namespace SophiApp.Services
             var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
             var accessor = GetAccessor<bool>(dto.Name);
             var mutator = GetMutator<bool>(dto.Name);
-            return new UICheckBoxModel(dto, title, description, accessor, mutator);
+            return new UICheckBoxModel(dto, title, description, accessor, mutator) { TitleAccessor = GetTitleAccessor(dto.Name, title) };
         }
 
         private UIModel BuildIconCheckBoxModel(UIModelDto dto)
@@ -288,15 +194,31 @@ namespace SophiApp.Services
         private Func<T> GetAccessor<T>(string name)
             where T : struct
         {
-            var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true) !;
+            var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!;
             var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
             return (Func<T>)Delegate.CreateDelegate(typeof(Func<T>), method!);
+        }
+
+        private Func<string>? GetTitleAccessor(string name, string title)
+        {
+            // A package that can be updated has a second title and a method that tells whether an update is available
+            var updateTitle = GetResourceValueOrDefault($"UIModel_{name}_Title_Update");
+            var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!;
+            var method = type.GetMethod($"{name}_UpdateAvailable", BindingFlags.Static | BindingFlags.Public);
+
+            if (string.IsNullOrEmpty(updateTitle) || method is null)
+            {
+                return null;
+            }
+
+            var updateAvailable = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), method);
+            return () => updateAvailable.Invoke() ? updateTitle : title;
         }
 
         private Action<T> GetMutator<T>(string name)
             where T : struct
         {
-            var type = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true) !;
+            var type = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true)!;
             var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
             return (Action<T>)Delegate.CreateDelegate(typeof(Action<T>), method!);
         }

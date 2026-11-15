@@ -37,7 +37,7 @@ namespace SophiApp.Helpers
         /// Opens the specified <paramref name="path"/> with Windows Explorer.
         /// </summary>
         /// <param name="path">Path to open in Windows Explorer.</param>
-        public static void OpenInExplorer(string path) => Process.Start("explorer", path);
+        public static void OpenInExplorer(string path) => ExplorerHelper.Open(path);
 
         /// <summary>
         /// Shows the flyout placed in relation to the specified element using the specified options.

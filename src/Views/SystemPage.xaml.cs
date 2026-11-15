@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Views;
+
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
@@ -22,7 +23,7 @@ public sealed partial class SystemPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new (ViewModel.JsonModels.FilterByTag(UICategoryTag.System));
+        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.System));
     }
 
     /// <summary>

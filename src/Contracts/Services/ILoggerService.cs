@@ -269,6 +269,12 @@ namespace SophiApp.Contracts.Services
         void LogDefenderIsDefault(bool isDefault);
 
         /// <summary>
+        /// Handles occur exception of writing the Registry.pol files.
+        /// </summary>
+        /// <param name="exception">Represents errors that occur during app executing.</param>
+        void LogPolicyUpdateException(Exception exception);
+
+        /// <summary>
         /// Handles occur exception of the Windows component check.
         /// </summary>
         /// <param name="component">The component that was being checked.</param>

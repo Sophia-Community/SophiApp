@@ -39,9 +39,12 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public List<ManagementObject> GetPowerPlans()
         {
-            return [.. new ManagementObjectSearcher(scope: "root/CIMV2/power", queryString: "SELECT * FROM Win32_PowerPlan")
-                .Get()
-                .Cast<ManagementObject>()];
+            return
+            [
+                .. new ManagementObjectSearcher(scope: "root/CIMV2/power", queryString: "SELECT * FROM Win32_PowerPlan")
+                    .Get()
+                    .Cast<ManagementObject>(),
+            ];
         }
 
         /// <inheritdoc/>
@@ -74,9 +77,12 @@ namespace SophiApp.Services
         {
             try
             {
-                return [.. new ManagementObjectSearcher(scope: "root\\SecurityCenter2", queryString: "SELECT * FROM AntiVirusProduct")
-                    .Get()
-                    .Cast<ManagementObject>()];
+                return
+                [
+                    .. new ManagementObjectSearcher(scope: "root\\SecurityCenter2", queryString: "SELECT * FROM AntiVirusProduct")
+                        .Get()
+                        .Cast<ManagementObject>(),
+                ];
             }
             catch (Exception ex)
             {
@@ -159,11 +165,22 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public List<int>? GetEventViewerConsoleProcessId()
+        public List<int> GetManagementConsoleProcessIds(params string[] snapIns)
         {
-            using var managementObject = new ManagementObjectSearcher(queryString: "SELECT ProcessId FROM Win32_Process WHERE Name = 'mmc.exe' AND CommandLine LIKE '%eventvwr.msc%'").Get();
-            var processesId = managementObject.Cast<ManagementBaseObject>().Select(m => Convert.ToInt32(m.GetPropertyValue("ProcessId"))).ToList();
-            return processesId.Count > 0 ? processesId : null;
+            // The command line of a process is available via WMI only, and the query is slow: skip it if no console is running
+            var consoleProcesses = Process.GetProcessesByName("mmc");
+            Array.ForEach(consoleProcesses, process => process.Dispose());
+
+            if (consoleProcesses.Length == 0)
+            {
+                return [];
+            }
+
+            using var consoles = new ManagementObjectSearcher(queryString: "SELECT ProcessId, CommandLine FROM Win32_Process WHERE Name = 'mmc.exe'").Get();
+            return consoles.Cast<ManagementBaseObject>()
+                .Where(console => console.GetPropertyValue("CommandLine") is string commandLine && Array.Exists(snapIns, snapIn => commandLine.Contains(snapIn, StringComparison.OrdinalIgnoreCase)))
+                .Select(console => Convert.ToInt32(console.GetPropertyValue("ProcessId")))
+                .ToList();
         }
 
         [DllImport("kernel32.dll")]

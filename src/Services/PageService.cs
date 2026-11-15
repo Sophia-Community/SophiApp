@@ -21,7 +21,6 @@ public class PageService : IPageService
     public PageService()
     {
         Configure<ContextMenuViewModel, ContextMenuPage>();
-        Configure<DebugViewModel, DebugPage>();
         Configure<FatalErrorViewModel, FatalErrorPage>();
         Configure<LogViewModel, LogPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
@@ -52,19 +51,19 @@ public class PageService : IPageService
         return pageType;
     }
 
-    private void Configure<VM, V>()
-        where VM : ObservableObject
-        where V : Page
+    private void Configure<TViewModel, TView>()
+        where TViewModel : ObservableObject
+        where TView : Page
     {
         lock (pages)
         {
-            var key = typeof(VM).FullName!;
+            var key = typeof(TViewModel).FullName!;
             if (pages.ContainsKey(key))
             {
                 throw new ArgumentException($"The key {key} is already configured in PageService");
             }
 
-            var type = typeof(V);
+            var type = typeof(TView);
             if (pages.ContainsValue(type))
             {
                 throw new ArgumentException($"This type is already configured with key {pages.First(p => p.Value == type).Key}");

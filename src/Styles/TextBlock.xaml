@@ -2,110 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="BasedTextBlockStyle" TargetType="TextBlock">
-        <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextWrapping" Value="WrapWholeWords" />
-    </Style>
-
-    <Style x:Key="NavigationItemTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="Margin" Value="15, 0, 5, 2"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="Foreground" Value="{ThemeResource WindowAccent}"/>
-    </Style>
-
-    <Style x:Key="PageTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="{StaticResource ExtraLargeFontSize}" />
-        <Setter Property="FontWeight" Value="SemiBold" />
+    <Style x:Key="PageTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
         <Setter Property="Margin" Value="0, 0, 0, 12"/>
     </Style>
 
-    <Style x:Key="NormalTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}"/>
-
-    <Style x:Key="MediumTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
-    </Style>
-
-    <Style x:Key="ContentBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Margin" Value="0, 10, 0, 16" />
-    </Style>
-
-    <Style x:Key="IconHyperlinkTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="8, 2, 5, 0" />
-    </Style>
-
-    <Style x:Key="StartupPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="TextAlignment" Value="Center" />
-    </Style>
-
-    <Style x:Key="IconContentBlockTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextAlignment" Value="Left" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="Foreground" Value="{ThemeResource WindowAccent}"/>
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+    <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style x:Key="UIControlTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="TextAlignment" Value="Left" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0, 10, 0, 10" />
-    </Style>
-
-    <Style x:Key="UIControlDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
-        <Setter Property="TextAlignment" Value="Left" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0, 0, 0, 15" />
-    </Style>
-
-    <Style x:Key="UIControlLogPageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="IsTextSelectionEnabled" Value="False"/>
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextAlignment" Value="Left" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-
-    <Style x:Key="ApplyCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="TextAlignment" Value="Left" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style x:Key="SetUpCustomizationsTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
-        <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="TextAlignment" Value="Left" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style x:Key="ExceptionDescriptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasedTextBlockStyle}">
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Margin" Value="6, 3, 6, 3"/>
-        <Setter Property="Foreground" Value="{ThemeResource WindowAccent}"/>
     </Style>
 </ResourceDictionary>

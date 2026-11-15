@@ -18,32 +18,25 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Uid="Page_TaskScheduler" Style="{StaticResource PageTitleTextStyle}"/>
             </StackPanel>
-            <controls:IconContentBlock Margin="0, 0, 26, 10">
-                <controls:IconContentBlock.Content>
-                    <TextBlock x:Uid="TaskSchedulerPage_AboutTasks"
-                               Style="{StaticResource IconContentBlockTextStyle}"
-                               Foreground="{ThemeResource WindowAccent}"
-                               FontSize="{x:Bind ViewModel.FontOptions.DescriptionTextSize, Mode=OneWay}"/>
-                </controls:IconContentBlock.Content>
-            </controls:IconContentBlock>
+            <InfoBar x:Uid="TaskSchedulerPage_AboutTasks"
+                     IsOpen="True"
+                     IsClosable="False"
+                     Severity="Informational"
+                     Margin="0, 0, 26, 10"/>
             <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
+                           ItemTemplate="{StaticResource SettingTemplateSelector}"
+                           Margin="{StaticResource UIControlsPageRightMargin}"
                            VerticalCacheLength="{x:Bind Models.Count, Mode=OneWay}"
                            Grid.Row="1">
                     <ItemsRepeater.Layout>
-                        <StackLayout Spacing="10"/>
+                        <StackLayout Spacing="4"/>
                     </ItemsRepeater.Layout>
-                    <ItemsRepeater.ItemTemplate>
-                        <DataTemplate>
-                            <controls:IconCheckBox Margin="{StaticResource UIControlsPageRightMargin}"
-                                                   IconIndex="{Binding IconIndex}"
-                                                   Command="{Binding ElementName=PageTaskScheduler, Path=ViewModel.UIModelClicked_Command}"/>
-                        </DataTemplate>
-                    </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>
             <Button x:Uid="TaskSchedulerPage_OpenTaskScheduler"
                     Style="{StaticResource AccentButtonStyle}"
                     Margin="0, 20 , 0, 20"
                     HorizontalAlignment="Center"
+                    Visibility="{x:Bind ViewModel.TaskSchedulerButtonIsVisible, Mode=OneWay}"
                     Command="{x:Bind ViewModel.OpenTaskScheduler_Command, Mode=OneWay}"/>
         </StackPanel>
     </ScrollView>

@@ -23,7 +23,7 @@ public sealed partial class SecurityPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new (ViewModel.JsonModels.FilterByTag(UICategoryTag.Security));
+        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Security));
     }
 
     /// <summary>

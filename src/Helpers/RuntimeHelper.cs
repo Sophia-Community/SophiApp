@@ -3,6 +3,7 @@
 // </copyright>
 
 namespace SophiApp.Helpers;
+
 using System.Runtime.InteropServices;
 using System.Text;
 
