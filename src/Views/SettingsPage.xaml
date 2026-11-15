@@ -110,7 +110,7 @@
                                            Margin="0, 0, 10, 10">
                         <controls:ContentBlock.Content>
                             <StackPanel>
-                                <controls:IconHyperlink x:Uid="AppTeam_ProjectManager"
+                                <controls:IconHyperlink x:Uid="AppTeam_ProjectLead"
                                                         Height="22"
                                                         Margin="0, 0, 0, 5"
                                                         ImageSource="/Assets/GitHub.svg"

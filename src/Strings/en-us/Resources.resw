@@ -241,7 +241,7 @@
     <value>Configure Windows level of diagnostic data gathering</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
-    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>As a part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. In addition to creating a policy in the Windows registry, SophiApp for Windows also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title_1" xml:space="preserve">
     <value>Default</value>
@@ -319,7 +319,7 @@
     <value>Enable Bing search in Start Menu</value>
   </data>
   <data name="UIModel_BingSearch_Description" xml:space="preserve">
-    <value>By default, when you use search in the Start menu, it also includes web results from Bing. In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>By default, when you use search in the Start menu, it also includes web results from Bing. In addition to creating a policy in the Windows registry, SophiApp for Windows also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_ThisPC_Title" xml:space="preserve">
     <value>Show "This PC" icon on Desktop</value>
@@ -904,7 +904,7 @@
     <value>Mark files that have been downloaded from the Internet as unsafe</value>
   </data>
   <data name="UIModel_SaveZoneInformation_Description" xml:space="preserve">
-    <value>Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If Attachment Manager identifies an attachment that might be unsafe, Attachment Manager prevents (blocks) you from opening file, or it warns you before you open file. Metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock". In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>Attachment Manager is included in Windows to protect from unsafe files downloaded from the Internet. If Attachment Manager identifies an attachment that might be unsafe, Attachment Manager prevents (blocks) you from opening file, or it warns you before you open file. Metadata is saved as an Alternate Data Stream (ADS). If you wish to unblock a downloaded file manually, you can do so by right-clicking it, selecting Properties and clicking on "Unblock". In addition to creating a policy in the Windows registry, SophiApp for Windows also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_WindowsSandbox_Title" xml:space="preserve">
     <value>Enable Windows Sandbox</value>
@@ -952,7 +952,7 @@
     <value>Show "Look for an app in the Microsoft Store" items in the "Open with" dialog</value>
   </data>
   <data name="UIModel_UseStoreOpenWith_Description" xml:space="preserve">
-    <value>When you open a file with an unknown extension, Windows offers to look for an app in the Microsoft Store. In addition to creating a policy in the Windows registry, SophiApp 2 also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
+    <value>When you open a file with an unknown extension, Windows offers to look for an app in the Microsoft Store. In addition to creating a policy in the Windows registry, SophiApp for Windows also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
   </data>
   <data name="UIModel_OpenWindowsTerminalContext_Title" xml:space="preserve">
     <value>Show "Open in Windows Terminal" item in the folders context menu</value>
@@ -1075,22 +1075,22 @@
     <value>Discord</value>
   </data>
   <data name="AppTeam_AnimationDeveloper.Text" xml:space="preserve">
-    <value>Animation: Maxim Nechiporenko</value>
+    <value>Motion Design: Maxim Nechiporenko</value>
   </data>
   <data name="AppTeam_Tester.Text" xml:space="preserve">
     <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
   </data>
   <data name="AppTeam_Developer.Text" xml:space="preserve">
-    <value>CO &amp; Development: Dmitry Demin</value>
+    <value>Lead Developer: Dmitry "Inestic" Demin</value>
   </data>
-  <data name="AppTeam_ProjectManager.Text" xml:space="preserve">
-    <value>PO &amp; QA: Dmitry Nefedov</value>
+  <data name="AppTeam_ProjectLead.Text" xml:space="preserve">
+    <value>Project Lead &amp; QA: Dmitry Nefedov</value>
   </data>
   <data name="AppTeam_UiDeveloper.Text" xml:space="preserve">
-    <value>UI: Yaroslav Posmitiukh</value>
+    <value>UI Design: Yaroslav Posmitiukh</value>
   </data>
   <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
-    <value>UI/UX: Vladimir Nameless</value>
+    <value>UI/UX Design: Vladimir Nameless</value>
   </data>
   <data name="Page_ContextMenu_OpenLogFile.Label" xml:space="preserve">
     <value>Open log file</value>
@@ -1123,7 +1123,9 @@
     <value>Third-party entries found in %SystemRoot%\System32\drivers\etc\hosts.</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
-    <value>They may block connection to resources used in SophiApp 2.</value>
+    <value>They may block connection to resources used in SophiApp for Windows.</value>
+    <value>%SystemRoot%\System32\drivers\etc\hosts.</value>
+  </data>
   </data>
   <data name="Button_Continue.Content" xml:space="preserve">
     <value>Continue</value>
@@ -1156,7 +1158,7 @@
     <value>SophiApp was run on behalf of: {0}</value>
   </data>
   <data name="OsRequirements_LoggedUserNotAdmin_3.Text" xml:space="preserve">
-    <value>Please log into account which has admin rights and run SophiApp again.</value>
+    <value>Please log into account which has admin rights and run SophiApp for Windows again.</value>
   </data>
   <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
     <value>Reinstall Windows using only a genuine ISO image.</value>
@@ -1207,13 +1209,13 @@
     <value>Checking Windows version...</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_1" xml:space="preserve">
-    <value>SophiApp 2 supports Windows 11 25H2 and higher.</value>
+    <value>SophiApp for Windows supports Windows 11 26H2 and higher.</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_2" xml:space="preserve">
     <value>You're using: {0} {1}.</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_LTSC" xml:space="preserve">
-    <value>SophiApp 2 supports Windows 11 Enterprise LTSC 2024.</value>
+    <value>SophiApp for Windows supports Windows 11 Enterprise LTSC 2024.</value>
   </data>
   <data name="OsRequirements_GetWindowsBuild" xml:space="preserve">
     <value>Checking Windows build...</value>
@@ -1222,7 +1224,7 @@
     <value>You're using Windows 11 {0} {1}.{2}.</value>
   </data>
   <data name="OsRequirements_UpdateWindowsBuild_1" xml:space="preserve">
-    <value>SophiApp supports Windows 11 25H2 {0}.{1} build and higher.</value>
+    <value>SophiApp supports Windows 11 26H2 {0}.{1} build and higher.</value>
   </data>
   <data name="AppFatalError_1.Text" xml:space="preserve">
     <value>Fatal error:</value>

@@ -51,7 +51,7 @@ namespace SophiApp.Helpers
         public int MajorBuild { get; init; }
 
         /// <summary>
-        /// Gets OS display version e.g. 25H2.
+        /// Gets OS display version e.g. 26H2.
         /// </summary>
         public string DisplayVersion { get; init; }
 

@@ -239,8 +239,8 @@ if (-not (""WinAPI.QuietHours"" -as [type]))
 	Add-Type @Signature
 }
 
-# Wait until it will be 0
-while ([WinAPI.QuietHours]::GetState() -ne 0)
+# Wait until it will be 0. -1 means the state cannot be received
+while ([WinAPI.QuietHours]::GetState() -gt 0)
 {
 	Start-Sleep -Seconds 600
 }
@@ -258,14 +258,9 @@ $Paths = @(
 	""$env:SystemDrive\ESD"",
 	""$env:SystemDrive\Intel"",
 	""$env:SystemDrive\PerfLogs"",
-	""$env:SystemRoot\ServiceProfiles\NetworkService\AppData\Local\Temp"",
+	""$env:SystemRoot\ServiceProfiles\NetworkService\AppData\Local\Temp\*"",
 	""$env:LOCALAPPDATA\CrashDumps""
 )
-
-if (Test-Path -Path ""$env:SystemDrive\Recovery\ReAgentOld.xml"")
-{
-	$Paths += ""$env:SystemDrive\Recovery""
-}
 Remove-Item -Path $Paths -Recurse -Force
 
 # C:\WINDOWS\System32\config\systemprofile\AppData\Local with garbage tw-*.tmp files
