@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
 using SophiApp.Contracts.Services;
+using SophiApp.Helpers;
 using SophiApp.Services;
 using SophiApp.ViewModels;
 using SophiApp.Views;
@@ -49,6 +50,7 @@ public partial class App : Application
                 _ = services.AddTransient<IGroupPolicyService, GroupPolicyService>();
                 _ = services.AddTransient<IHttpService, HttpService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
+                _ = services.AddTransient<INetworkAdapterService, NetworkAdapterService>();
                 _ = services.AddTransient<IOneDriveService, OneDriveService>();
                 _ = services.AddTransient<IOsService, OsService>();
                 _ = services.AddTransient<IPowerShellService, PowerShellService>();
@@ -145,7 +147,11 @@ public partial class App : Application
         if (!keyInstance.IsCurrent)
         {
             Current.Exit();
+            return;
         }
+
+        // Only the main copy of the app cleans up after itself
+        SelfExtractHelper.RemoveOnExit();
     }
 
     /// <inheritdoc/>

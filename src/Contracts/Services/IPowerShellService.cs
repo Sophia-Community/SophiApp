@@ -12,47 +12,17 @@ namespace SophiApp.Contracts.Services
     public interface IPowerShellService
     {
         /// <summary>
-        /// Delete saved locations for file types.
-        /// </summary>
-        void ClearCommonDialogViews();
-
-        /// <summary>
-        /// Get any connected network adapters with the managed property "AllowComputerToTurnOffDevice" if exist.
-        /// </summary>
-        bool? GetNetworkAdapterTurnOffDevice();
-
-        /// <summary>
-        /// Return <paramref name="script"/> execute result or default.
-        /// </summary>
-        /// <typeparam name="T">Object type.</typeparam>
-        /// <param name="script">Script to execute.</param>
-        T? InvokeOrDefault<T>(string script)
-            where T : struct;
-
-        /// <summary>
-        /// Execute the script using version 5.1 of PowerShell.
-        /// </summary>
-        /// <typeparam name="T">Return object type.</typeparam>
-        /// <param name="script">Script to execute.</param>
-        T Invoke<T>(string script)
-            where T : struct;
-
-        /// <summary>
         /// Execute the script using version 5.1 of PowerShell.
         /// </summary>
         /// <param name="script">Script to execute.</param>
         List<PSObject> Invoke(string script);
 
         /// <summary>
-        /// Execute the command bypassing the UCPD driver.
+        /// Execute the script using version 5.1 of PowerShell and find out whether it was executed without errors.
         /// </summary>
-        /// <param name="command">The command to be execute, must begin with "-Command".</param>
-        void InvokeCommandBypassUCPD(string command);
-
-        /// <summary>
-        /// Set network adapters managed property "AllowComputerToTurnOffDevice" state.
-        /// </summary>
-        /// <param name="enable">Network adapters "AllowComputerToTurnOffDevice" property state.</param>
-        void SetNetworkAdapterTurnOffDevice(bool enable);
+        /// <param name="script">Script to execute.</param>
+        /// <param name="result">The objects that the script returned.</param>
+        /// <returns>False if the script wrote an error or was stopped by it.</returns>
+        bool TryInvoke(string script, out List<PSObject> result);
     }
 }

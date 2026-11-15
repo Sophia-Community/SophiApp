@@ -15,11 +15,6 @@ namespace SophiApp.Contracts.Services
         string GetSetupFileOrDefault();
 
         /// <summary>
-        /// Get OneDrive user data folder path.
-        /// </summary>
-        string GetUserDataFolderOrDefault();
-
-        /// <summary>
         /// Install OneDrive.
         /// </summary>
         void Install();

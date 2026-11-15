@@ -1,19 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
+    <TargetFramework>net11.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.26100.0</TargetPlatformMinVersion>
     <RootNamespace>SophiApp</RootNamespace>
+    <Product>SophiApp for Windows</Product>
+    <AssemblyTitle>SophiApp for Windows</AssemblyTitle>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x64</Platforms>
-    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-    <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     <ApplicationIcon>Assets\SophiApp.ico</ApplicationIcon>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -181,9 +186,6 @@
     <None Update="Assets\LinkedIn.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Binaries\LGPO.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Page Update="Views\RequirementsFailurePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,4 +286,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DebugType>full</DebugType>
   </PropertyGroup>
+
+  <!-- Publishing skips the compiled XAML files, and the app cannot start without them -->
+  <Target Name="PublishCompiledXaml" AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <CompiledXaml Include="$(OutDir)**\*.xbf" />
+      <ResolvedFileToPublish Include="@(CompiledXaml)" RelativePath="%(RecursiveDir)%(Filename)%(Extension)" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
 </Project>

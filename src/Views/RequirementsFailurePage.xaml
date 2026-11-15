@@ -45,7 +45,7 @@
             <Grid>
                 <StackPanel x:Name="WindowsComponentStabilityDisruptedPanel"
                             Style="{StaticResource RequirementsResultPanelStyle}">
-                    <TextBlock x:Uid="OsRequirements_WindowsComponentStabilityDisrupted"
+                    <TextBlock Text="{x:Bind RequirementsResult_1}"
                                Style="{StaticResource RequirementsFailurePageTextStyle}"/>
                     <TextBlock x:Uid="OsRequirements_ReinstallWindows"
                                Style="{StaticResource RequirementsFailurePageTextStyle}"/>
@@ -138,8 +138,12 @@
                     <StackPanel Orientation="Horizontal"
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center">
-                        <Button x:Uid="Button_Continue"
+                        <Button x:Uid="Button_Yes"
                                 Style="{ThemeResource AccentButtonStyle}"
+                                Command="{x:Bind ViewModel.DecryptSystemDrive_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_No"
+                                Style="{ThemeResource BaseButtonStyle}"
+                                Margin="20, 0, 0, 0"
                                 Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
                         <Button x:Uid="Button_OpenBitLockerSettings"
                                 Style="{ThemeResource BaseButtonStyle}"
@@ -166,6 +170,27 @@
                                 Margin="20, 0, 0, 0"
                                 Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
                     </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="EnableSecureBootPanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock x:Uid="OsRequirements_EnableSecureBoot"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0, 10, 0, 0"
+                                HorizontalAlignment="Center">
+                        <Button x:Uid="Button_EnableSecureBoot"
+                                Style="{ThemeResource AccentButtonStyle}"
+                                Command="{x:Bind ViewModel.EnableSecureBoot_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_Continue"
+                                Style="{ThemeResource BaseButtonStyle}"
+                                Margin="20, 0, 0, 0"
+                                Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="UnsupportedArchitecturePanel"
+                            Style="{StaticResource RequirementsResultPanelStyle}">
+                    <TextBlock Text="{x:Bind RequirementsResult_1}"
+                               Style="{StaticResource RequirementsFailurePageTextStyle}"/>
                 </StackPanel>
                 <StackPanel x:Name="WrongWindowsVersionPanel"
                             Style="{StaticResource RequirementsResultPanelStyle}">
@@ -218,6 +243,12 @@
             </interaction:DataTriggerBehavior>
             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UpdateUEFICertificates}" Value="True">
                 <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UpdateUEFICertificatesPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=EnableSecureBoot}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=EnableSecureBootPanel}" PropertyName="Visibility" Value="Visible"/>
+            </interaction:DataTriggerBehavior>
+            <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UnsupportedArchitecture}" Value="True">
+                <interaction:ChangePropertyAction TargetObject="{Binding ElementName=UnsupportedArchitecturePanel}" PropertyName="Visibility" Value="Visible"/>
             </interaction:DataTriggerBehavior>
             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.RequirementsResult, Mode=OneWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=WrongWindowsVersion}" Value="True">
                 <interaction:ChangePropertyAction TargetObject="{Binding ElementName=WrongWindowsVersionPanel}" PropertyName="Visibility" Value="Visible"/>

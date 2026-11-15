@@ -50,18 +50,6 @@ public class NavigationViewService : INavigationViewService
     }
 
     /// <summary>
-    /// Unregister menu item events.
-    /// </summary>
-    public void UnregisterEvents()
-    {
-        if (navigationView != null)
-        {
-            navigationView.BackRequested -= OnBackRequested;
-            navigationView.ItemInvoked -= OnItemInvoked;
-        }
-    }
-
-    /// <summary>
     /// Gets selected <see cref="NavigationViewItem"/> in <see cref="NavigationView"/>.
     /// </summary>
     /// <param name="pageType">Item page type.</param>

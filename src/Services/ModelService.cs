@@ -4,6 +4,7 @@
 
 namespace SophiApp.Services
 {
+    using Microsoft.Windows.ApplicationModel.Resources;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
@@ -15,13 +16,12 @@ namespace SophiApp.Services
     using System.Reflection;
     using System.Text;
     using System.Threading.Tasks;
-    using Windows.ApplicationModel.Resources.Core;
 
     /// <inheritdoc/>
     public class ModelService : IModelService
     {
         private readonly ICommonDataService dataService;
-        private readonly ResourceMap resourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
+        private readonly ResourceMap resourceMap = new ResourceManager().MainResourceMap.GetSubtree("Resources");
         private readonly IAppxPackagesService packagesService;
 
         /// <summary>
@@ -283,15 +283,7 @@ namespace SophiApp.Services
             return new UIRadioButtonsGroup4Model(dto, title, description, title_1, title_2, title_3, title_4, accessor, mutator);
         }
 
-        private string GetResourceValueOrDefault(string pattern)
-        {
-            if (resourceMap.TryGetValue(pattern, out var value))
-            {
-                return value.Resolve().ValueAsString;
-            }
-
-            return string.Empty;
-        }
+        private string GetResourceValueOrDefault(string pattern) => resourceMap.TryGetValue(pattern)?.ValueAsString ?? string.Empty;
 
         private Func<T> GetAccessor<T>(string name)
             where T : struct

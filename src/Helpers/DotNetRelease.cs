@@ -12,9 +12,9 @@ namespace SophiApp.Helpers
     public class DotNetRelease
     {
         /// <summary>
-        /// Gets or sets latest release version.
+        /// Gets or sets latest release version. It is a part of the installer file name and may have a suffix, e.g. "11.0.0-rc.2.25502.107".
         /// </summary>
         [JsonProperty("latest-release")]
-        public Version? Version { get; set; }
+        public string? Version { get; set; }
     }
 }

@@ -34,31 +34,31 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void SetDefaultCursors()
         {
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue(string.Empty, string.Empty, RegistryValueKind.String);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("AppStarting", "%SystemRoot%\\cursors\\aero_working.ani", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Arrow", "%SystemRoot%\\cursors\\aero_arrow.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Crosshair", string.Empty, RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Hand", "%SystemRoot%\\cursors\\aero_link.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Help", "%SystemRoot%\\cursors\\aero_helpsel.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("IBeam", string.Empty, RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("No", "%SystemRoot%\\cursors\\aero_unavail.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("NWPen", "%SystemRoot%\\cursors\\aero_pen.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Person", "%SystemRoot%\\cursors\\aero_person.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Pin", "%SystemRoot%\\cursors\\aero_pin.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Scheme Source", 2, RegistryValueKind.DWord);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeAll", "%SystemRoot%\\cursors\\aero_move.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNESW", "%SystemRoot%\\cursors\\aero_nesw.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNS", "%SystemRoot%\\cursors\\aero_ns.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNWSE", "%SystemRoot%\\cursors\\aero_nwse.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeWE", "%SystemRoot%\\cursors\\aero_ew.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("UpArrow", "%SystemRoot%\\cursors\\aero_up.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Wait", "%SystemRoot%\\cursors\\aero_busy.ani", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", string.Empty, string.Empty, RegistryValueKind.String);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "AppStarting", "%SystemRoot%\\cursors\\aero_working.ani", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Arrow", "%SystemRoot%\\cursors\\aero_arrow.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Crosshair", string.Empty, RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Hand", "%SystemRoot%\\cursors\\aero_link.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Help", "%SystemRoot%\\cursors\\aero_helpsel.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "IBeam", string.Empty, RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "No", "%SystemRoot%\\cursors\\aero_unavail.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "NWPen", "%SystemRoot%\\cursors\\aero_pen.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Person", "%SystemRoot%\\cursors\\aero_person.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Pin", "%SystemRoot%\\cursors\\aero_pin.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Scheme Source", 2, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeAll", "%SystemRoot%\\cursors\\aero_move.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeNESW", "%SystemRoot%\\cursors\\aero_nesw.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeNS", "%SystemRoot%\\cursors\\aero_ns.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeNWSE", "%SystemRoot%\\cursors\\aero_nwse.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeWE", "%SystemRoot%\\cursors\\aero_ew.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "UpArrow", "%SystemRoot%\\cursors\\aero_up.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Wait", "%SystemRoot%\\cursors\\aero_busy.ani", RegistryValueKind.ExpandString);
         }
 
         /// <inheritdoc/>
         public void SetJepriCreationsCursors(JepriCursorsTheme theme)
         {
-            var cursorsZip = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Cursors", "Windows11Cursors.zip");
+            var cursorsZip = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Cursors", "w11-cursor-concept-free.zip");
             var cursorsTheme = theme == JepriCursorsTheme.Light ? "W11 Cursor Light Free by Jepri Creations" : "W11 Cursor Dark Free by Jepri Creations";
             var extractPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), theme == JepriCursorsTheme.Light ? "Cursors\\W11 Cursor Light Free" : "Cursors\\W11 Cursor Dark Free");
             var extractArguments = $"-xvf \"{cursorsZip}\" -C \"{extractPath}\" --strip-components=1 {(theme == JepriCursorsTheme.Light ? "light" : "dark")}/";
@@ -69,25 +69,25 @@ namespace SophiApp.Services
             // Extract archive
             _ = processService.WaitForExit(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "tar.exe"), extractArguments);
 
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue(string.Empty, cursorsTheme, RegistryValueKind.String);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("AppStarting", $"{systemRootPath}\\appstarting.ani", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Arrow", $"{systemRootPath}\\arrow.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Crosshair", $"{systemRootPath}\\crosshair.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Hand", $"{systemRootPath}\\hand.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Help", $"{systemRootPath}\\help.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("IBeam", $"{systemRootPath}\\ibeam.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("No", $"{systemRootPath}\\no.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("NWPen", $"{systemRootPath}\\nwpen.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Person", $"{systemRootPath}\\person.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Pin", $"{systemRootPath}\\pin.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Scheme Source", 1, RegistryValueKind.DWord);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeAll", $"{systemRootPath}\\sizeall.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNESW", $"{systemRootPath}\\sizenesw.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNS", $"{systemRootPath}\\sizens.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeNWSE", $"{systemRootPath}\\sizenwse.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("SizeWE", $"{systemRootPath}\\sizewe.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("UpArrow", $"{systemRootPath}\\uparrow.cur", RegistryValueKind.ExpandString);
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors", true)?.SetValue("Wait", $"{systemRootPath}\\wait.ani", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", string.Empty, cursorsTheme, RegistryValueKind.String);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "AppStarting", $"{systemRootPath}\\appstarting.ani", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Arrow", $"{systemRootPath}\\arrow.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Crosshair", $"{systemRootPath}\\crosshair.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Hand", $"{systemRootPath}\\hand.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Help", $"{systemRootPath}\\help.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "IBeam", $"{systemRootPath}\\ibeam.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "No", $"{systemRootPath}\\no.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "NWPen", $"{systemRootPath}\\nwpen.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Person", $"{systemRootPath}\\person.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Pin", $"{systemRootPath}\\pin.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Scheme Source", 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeAll", $"{systemRootPath}\\sizeall.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeNESW", $"{systemRootPath}\\sizenesw.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeNS", $"{systemRootPath}\\sizens.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeNWSE", $"{systemRootPath}\\sizenwse.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "SizeWE", $"{systemRootPath}\\sizewe.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "UpArrow", $"{systemRootPath}\\uparrow.cur", RegistryValueKind.ExpandString);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", "Wait", $"{systemRootPath}\\wait.ani", RegistryValueKind.ExpandString);
 
             var cursorScheme = string.Join(',', new List<string>()
             {
@@ -96,7 +96,7 @@ namespace SophiApp.Services
                 $"{systemRootPath}\\appstarting.ani",
                 $"{systemRootPath}\\wait.ani",
                 $"{systemRootPath}\\crosshair.cur",
-                $"{systemRootPath}\\sizens.cur",
+                $"{systemRootPath}\\ibeam.cur",
                 $"{systemRootPath}\\nwpen.cur",
                 $"{systemRootPath}\\no.cur",
                 $"{systemRootPath}\\sizens.cur",
@@ -110,9 +110,9 @@ namespace SophiApp.Services
                 $"{systemRootPath}\\pin.cur",
             });
 
-            Registry.CurrentUser.OpenOrCreateSubKey(Path.Combine("Control Panel\\Cursors", "Schemes")).SetValue(cursorsTheme, cursorScheme, RegistryValueKind.String);
-            File.Delete(cursorsZip);
-            File.Delete(Path.Combine(extractPath, "Install.inf"));
+            Registry.CurrentUser.CreateKeyAndSetValue("Control Panel\\Cursors\\Schemes", cursorsTheme, cursorScheme, RegistryValueKind.String);
+            cursorsZip.TryDelete();
+            Path.Combine(extractPath, "Install.inf").TryDelete();
         }
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo", SetLastError = true)]

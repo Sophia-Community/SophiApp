@@ -66,13 +66,10 @@ namespace SophiApp.Services
         public AppVersion? LatestAppRelease { get; private set; }
 
         /// <inheritdoc/>
-        public DotNetRelease? LatestReleaseNET8 { get; private set; }
-
-        /// <inheritdoc/>
-        public DotNetRelease? LatestReleaseNET9 { get; private set; }
-
-        /// <inheritdoc/>
         public DotNetRelease? LatestReleaseNET10 { get; private set; }
+
+        /// <inheritdoc/>
+        public DotNetRelease? LatestReleaseNET11 { get; private set; }
 
         /// <inheritdoc/>
         public VCRelease? LatestReleaseVC { get; private set; }
@@ -93,7 +90,7 @@ namespace SophiApp.Services
             {
                 OsProperties = instrumentationService.GetOsProperties();
                 OsProperties.IsLTSC = OsProperties.Caption.Contains("LTSC");
-                App.Logger.LogAppProperties(version: assembly.Version!, directory: AppContext.BaseDirectory);
+                App.Logger.LogAppProperties(version: assembly.Version!, directory: EnvironmentHelper.AppFolder);
             });
         }
 
@@ -101,25 +98,41 @@ namespace SophiApp.Services
         public async Task GetExternalServicesDataAsync() => await Task.WhenAll(
             SetDefenderStateAsync(),
             SetLatestAppReleaseAsync(),
-            SetNet8ReleaseAsync(),
-            SetNet9ReleaseAsync(),
             SetNet10ReleaseAsync(),
+            SetNet11ReleaseAsync(),
             SetVCReleaseAsync(),
             SetSupportedBuildsAsync());
 
         /// <inheritdoc/>
-        public string GetFullName() => $"{assembly.Name} {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
+        public string GetFullName() => $"SophiApp for Windows {assembly.Version!.Major}.{assembly.Version.Minor}.{assembly.Version.Build}";
 
         private async Task SetDefenderStateAsync()
         {
             await Task.Run(() =>
             {
-                var productState = instrumentationService.GetAntivirusProducts()
-                .Find(product => product.GetPropertyValue("instanceGuid")
-                .Equals("{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}"))
-                ?.GetPropertyValue("productState");
-                var defenderState = productState is null ? "00" : string.Format("0x{0:x}", productState).Substring(3, 2);
-                var defenderIsDefaultAV = !(defenderState.Equals("00") || defenderState.Equals("01"));
+                var defenderIsDefaultAV = false;
+
+                try
+                {
+                    // AMRunningMode is "Normal" only if Microsoft Defender is the active antivirus
+                    // Otherwise it is "Passive Mode", "SxS Passive Mode" or "EDR Block Mode"
+                    var runningMode = instrumentationService.GetCimInstance(nameSpace: "root/Microsoft/Windows/Defender", className: "MSFT_MpComputerStatus")
+                        .FirstOrDefault()
+                        ?.GetPropertyValue("AMRunningMode") as string;
+
+                    // Checking whether there's a turned on third-party AV. {D68DDC3A-831F-4fae-9E44-DA132C1ACF46} is Microsoft Defender
+                    // Bits 12-15 of productState are WSC_SECURITY_PRODUCT_STATE: 0 is off, 1 is on, 2 is snoozed, 3 is expired
+                    var thirdPartyAV = instrumentationService.GetAntivirusProducts().Exists(product =>
+                        !"{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}".Equals(product.GetPropertyValue("instanceGuid") as string, StringComparison.OrdinalIgnoreCase)
+                        && (Convert.ToUInt32(product.GetPropertyValue("productState")) & 0xF000) == 0x1000);
+
+                    defenderIsDefaultAV = "Normal".Equals(runningMode, StringComparison.OrdinalIgnoreCase) && !thirdPartyAV;
+                }
+                catch (Exception)
+                {
+                    // Microsoft Defender WMI provider is not available
+                }
+
                 App.Logger.LogDefenderIsDefault(defenderIsDefaultAV);
                 DefenderIsDefaultAV = defenderIsDefaultAV;
             });
@@ -137,35 +150,23 @@ namespace SophiApp.Services
             }
         }
 
-        private async Task SetNet8ReleaseAsync()
-        {
-            try
-            {
-                LatestReleaseNET8 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/8.0/releases.json", 5);
-            }
-            catch
-            {
-                await Task.CompletedTask;
-            }
-        }
-
-        private async Task SetNet9ReleaseAsync()
-        {
-            try
-            {
-                LatestReleaseNET9 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/9.0/releases.json", 5);
-            }
-            catch
-            {
-                await Task.CompletedTask;
-            }
-        }
-
         private async Task SetNet10ReleaseAsync()
         {
             try
             {
                 LatestReleaseNET10 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json", 5);
+            }
+            catch
+            {
+                await Task.CompletedTask;
+            }
+        }
+
+        private async Task SetNet11ReleaseAsync()
+        {
+            try
+            {
+                LatestReleaseNET11 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/11.0/releases.json", 5);
             }
             catch
             {

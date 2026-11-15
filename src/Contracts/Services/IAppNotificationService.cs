@@ -10,7 +10,7 @@ namespace SophiApp.Contracts.Services;
 public interface IAppNotificationService
 {
     /// <summary>
-    /// Get Windows Action Center and Windows Script Host status and enabling notifications.
+    /// Enables Windows notifications and the Notification Center by removing the settings and policies that turn them off.
     /// </summary>
     void EnableToastNotification();
 

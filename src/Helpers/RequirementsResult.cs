@@ -21,6 +21,8 @@ namespace SophiApp.Helpers
         RebootPending,
         SystemDriveEncryptedBitLockerDisabled,
         UpdateUEFICertificates,
+        EnableSecureBoot,
+        UnsupportedArchitecture,
         WrongWindowsVersion,
         UpdateWindowsBuild,
     }

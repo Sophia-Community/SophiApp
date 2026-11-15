@@ -33,11 +33,6 @@ public interface INavigationViewService
     void Initialize(NavigationView navigationView);
 
     /// <summary>
-    /// Unregister menu item events.
-    /// </summary>
-    void UnregisterEvents();
-
-    /// <summary>
     /// Get selected menu item.
     /// </summary>
     /// <param name="pageType">Page type.</param>

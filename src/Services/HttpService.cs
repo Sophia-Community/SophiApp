@@ -31,7 +31,11 @@ namespace SophiApp.Services
             var result = response.Content.ReadAsStringAsync().Result;
             var xml = new XmlDocument();
             xml.LoadXml(result);
-            var url = xml?.DocumentElement?.SelectSingleNode("update/amd64binary")?.Attributes?.GetNamedItem("url")?.InnerText ?? string.Empty;
+
+            // The feed has several installer links: take the second one, or the only one
+            var binaries = xml.DocumentElement?.SelectNodes("update/amd64binary");
+            var binary = binaries?.Count > 1 ? binaries[1] : binaries?[0];
+            var url = binary?.Attributes?.GetNamedItem("url")?.InnerText ?? string.Empty;
             using var urlStream = client.GetStreamAsync(url).Result;
             using var fileStream = new FileStream(saveTo, FileMode.Create);
             urlStream.CopyTo(fileStream);

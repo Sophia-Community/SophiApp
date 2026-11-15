@@ -34,9 +34,11 @@ namespace SophiApp.Helpers
         {
             Caption = caption ?? "N/A";
             MajorBuild = int.Parse((string?)properties["BuildNumber"]?.Value ?? "-1");
-            DisplayVersion = (string?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("DisplayVersion") ?? "N/A";
-            MinorBuild = (int?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("UBR") ?? -1;
-            Edition = (string?)RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion")?.GetValue("EditionID") ?? "N/A";
+            using var localMachine = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            using var currentVersion = localMachine.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion");
+            DisplayVersion = (string?)currentVersion?.GetValue("DisplayVersion") ?? "N/A";
+            MinorBuild = (int?)currentVersion?.GetValue("UBR") ?? -1;
+            Edition = (string?)currentVersion?.GetValue("EditionID") ?? "N/A";
             ComputerName = (string?)properties["CSName"]?.Value ?? "N/A";
         }
 

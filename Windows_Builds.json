@@ -2,5 +2,6 @@
 	"Windows_11_URL": "https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information",
 	"Windows_11_Minor": "9974",
 	"Windows_11_Major": "26300",
-	"Windows_11_LTSC_Major": "26100"
+	"Windows_11_LTSC_Major": "26100",
+	"Windows_11_LTSC_Minor": "9974"
 }

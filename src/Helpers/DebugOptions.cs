@@ -12,27 +12,10 @@ namespace SophiApp.Helpers
     /// </summary>
     public class DebugOptions : INotifyPropertyChanged
     {
-        private bool deleteLGPOFile = true;
         private bool showFunctionsInfo = false;
 
         /// <inheritdoc/>
         public event PropertyChangedEventHandler? PropertyChanged;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether file LGPO.txt be removed.
-        /// </summary>
-        public bool DeleteLGPOFile
-        {
-            get => deleteLGPOFile;
-            set
-            {
-                if (deleteLGPOFile != value)
-                {
-                    deleteLGPOFile = value;
-                    OnPropertyChanged(nameof(DeleteLGPOFile));
-                }
-            }
-        }
 
         /// <summary>
         /// Gets or sets a value indicating whether functions detailed info.

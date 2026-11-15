@@ -1,16 +1,16 @@
 name: Feature Request ⭐
-description: An idea to make SophiApp better
+description: An idea to make SophiApp for Windows better
 labels: enhancement
 body:
   - type: textarea
     attributes:
       label: Your Idea
-      description: If you have an idea to improve SophiApp, describe it clearly.
+      description: If you have an idea to improve SophiApp for Windows, describe it clearly.
   - type: input
     id: sophiapp-version
     attributes:
-      label: SophiApp Version
-      description: Which version of SophiApp are you using? The version number can be found in the Settings
+      label: SophiApp for Windows Version
+      description: Which version of SophiApp for Windows are you using? The version number can be found in the Settings
       placeholder: e.g. 1.0.0.45
   - type: input
     attributes:

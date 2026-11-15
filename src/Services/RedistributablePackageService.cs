@@ -4,6 +4,7 @@
 
 namespace SophiApp.Services
 {
+    using Microsoft.Win32;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using System;
@@ -12,24 +13,71 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class RedistributablePackageService : IRedistributablePackageService
     {
-        /// <inheritdoc/>
-        public void DeleteInstallerLogs(string logPattern)
-            => Directory.GetFileSystemEntries(Path.GetTempPath(), logPattern, SearchOption.TopDirectoryOnly).ForEach(File.Delete);
+        private static readonly string PackageCache = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Package Cache");
+        private readonly IHttpService httpService;
+        private readonly IProcessService processService;
 
-        /// <inheritdoc/>
-        public Version GetVersionOrDefault(string name)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RedistributablePackageService"/> class.
+        /// </summary>
+        /// <param name="httpService">A service for working with HTTP API.</param>
+        /// <param name="processService">A service for working with Windows process API.</param>
+        public RedistributablePackageService(IHttpService httpService, IProcessService processService)
         {
-            // Checking whether VC_redist builds installed
-            var packageCache = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Package Cache");
+            this.httpService = httpService;
+            this.processService = processService;
+        }
 
-            if (Directory.Exists(packageCache))
+        /// <inheritdoc/>
+        public Version? GetInstalledVersion(string name)
+        {
+            // Choose the highest version if user has more than one package installed. Null if there is no installer
+            return GetInstallers(name)
+                .Select(installer => Version.TryParse(FileVersionInfo.GetVersionInfo(installer).FileVersion, out var version) ? version : null)
+                .Max();
+        }
+
+        /// <inheritdoc/>
+        public void Install(string downloadUrl, string installerName, string logPattern)
+        {
+            var downloadFolder = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", "{374DE290-123F-4565-9164-39C4925E467B}") as string;
+            var offlineInstaller = Path.Combine(downloadFolder!, installerName);
+
+            try
             {
-                // Choose the first item if user has more than one package installed
-                var installer = Directory.GetFileSystemEntries(packageCache, name, SearchOption.AllDirectories).FirstOrDefault();
-                return installer is null ? new Version("0.0.0") : Version.Parse(FileVersionInfo.GetVersionInfo(installer).FileVersion!);
+                httpService.DownloadFile(downloadUrl, offlineInstaller);
+                using var installer = processService.WaitForExit(offlineInstaller, "/install /passive /norestart");
             }
+            finally
+            {
+                // The installer and its logs are removed even if the download or the installation failed
+                offlineInstaller.TryDelete();
+                DeleteInstallerLogs(logPattern);
+            }
+        }
 
-            return new Version("0.0.0");
+        /// <inheritdoc/>
+        public bool IsInstalled(string name) => GetInstallers(name).Any();
+
+        private static void DeleteInstallerLogs(string logPattern)
+        {
+            // A log that cannot be deleted is skipped
+            foreach (var log in Directory.EnumerateFiles(Path.GetTempPath(), logPattern, SearchOption.TopDirectoryOnly))
+            {
+                log.TryDelete();
+            }
+        }
+
+        /// <summary>
+        /// Gets the package installers from the "Package Cache" folder.
+        /// </summary>
+        /// <param name="name">Package installer file name.</param>
+        private static IEnumerable<string> GetInstallers(string name)
+        {
+            // Installers are kept in the first-level subfolders of "Package Cache"
+            return Directory.Exists(PackageCache)
+                ? Directory.EnumerateDirectories(PackageCache).Select(folder => Path.Combine(folder, name)).Where(File.Exists)
+                : Enumerable.Empty<string>();
         }
     }
 }

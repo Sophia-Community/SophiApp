@@ -23,16 +23,10 @@ namespace SophiApp.ViewModels
         public DebugViewModel(ISettingsService settingsService, ShellViewModel shellViewModel, IRequirementsService requirementsService)
         {
             DebugOptions = shellViewModel.DebugOptions;
-            DeleteLGPOFileCommand = shellViewModel.DeleteLGPOFile_Command;
             RequirementActions = requirementsService.GetActions();
             SaveDebugRequirementActionCommand = new AsyncRelayCommand<string>(s => settingsService.SaveDebugRequirementActionAsync(s!));
             SetShowFunctionsInfoCommand = shellViewModel.SetShowFunctionsInfo_Command;
         }
-
-        /// <summary>
-        /// Gets <see cref="IRelayCommand"/> to click an "Delete LGPO.txt file" CheckBox in Settings page.
-        /// </summary>
-        public IRelayCommand DeleteLGPOFileCommand { get; }
 
         /// <summary>
         /// Gets app debug mode options.

@@ -23,7 +23,7 @@ namespace SophiApp.Services
         /// </summary>
         public LoggerService()
         {
-            LogFolder = Path.Combine(AppContext.BaseDirectory, "Log");
+            LogFolder = Path.Combine(EnvironmentHelper.AppFolder, "Log");
             LogFile = Path.Combine(LogFolder, $"SophiApp-{Environment.MachineName.ToUpper()}.log");
             LogFile.TryDelete();
             Log.Logger = new LoggerConfiguration()
@@ -330,6 +330,13 @@ namespace SophiApp.Services
         {
             Log.Information("Microsoft Defender is default AV: {IsDefault}", isDefault);
             shellViewModel.LoggedActions.Add($"Microsoft Defender is default AV: {isDefault}");
+        }
+
+        /// <inheritdoc/>
+        public void LogComponentStabilityException(string component, Exception exception)
+        {
+            Log.Error("[WRN] Windows component check failed on {Component}: {Message}", component, exception.Message);
+            shellViewModel.LoggedActions.Add($"[WRN] Windows component check failed on {component}: {exception.Message}");
         }
 
         /// <inheritdoc/>

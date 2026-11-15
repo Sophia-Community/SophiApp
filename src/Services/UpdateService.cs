@@ -6,6 +6,7 @@ namespace SophiApp.Services
 {
     using Microsoft.Win32;
     using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
     using System.Diagnostics;
 
@@ -15,7 +16,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public bool HasMicrosoftProductsUpdate()
         {
-            var allowUpdate = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings")?.GetValue("AllowMUUpdateService") as int? ?? -1;
+            var allowUpdate = Registry.LocalMachine.GetSubKeyValue("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "AllowMUUpdateService") as int? ?? -1;
             return allowUpdate.Equals(1);
         }
 
@@ -24,9 +25,15 @@ namespace SophiApp.Services
         {
             switch (reason)
             {
+                case RequirementsResult.WrongWindowsVersion:
+                    RunMicrosoftProductsUpdate();
+                    RunOsUpdates(openSettings: false);
+                    break;
+
                 case RequirementsResult.UpdateWindowsBuild:
                     RunMicrosoftProductsUpdate();
-                    RunOsUpdates();
+                    RunUwpAppsUpdates();
+                    RunOsUpdates(openSettings: true);
                     break;
 
                 default:
@@ -36,14 +43,33 @@ namespace SophiApp.Services
 
         /// <inheritdoc/>
         public void RunMicrosoftProductsUpdate()
-            => Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", true)?.SetValue("AllowMUUpdateService", 1, RegistryValueKind.DWord);
+            => Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "AllowMUUpdateService", 1, RegistryValueKind.DWord);
 
         /// <inheritdoc/>
         public void StopMicrosoftProductsUpdate()
-            => Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", true)?.DeleteValue("AllowMUUpdateService", false);
+            => Registry.LocalMachine.DeleteSubKeyValue("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "AllowMUUpdateService");
 
-        private void RunOsUpdates()
+        private static void RunUwpAppsUpdates()
         {
+            try
+            {
+                // Check for UWP apps updates
+                using var searcher = new System.Management.ManagementObjectSearcher("root/CIMV2/mdm/dmmap", "SELECT * FROM MDM_EnterpriseModernAppManagement_AppManagement01");
+
+                foreach (var appManagement in searcher.Get().Cast<System.Management.ManagementObject>())
+                {
+                    _ = appManagement.InvokeMethod("UpdateScanMethod", null);
+                }
+            }
+            catch (Exception)
+            {
+                // The class is not available, e.g. on Windows 11 LTSC 2024
+            }
+        }
+
+        private static void RunOsUpdates(bool openSettings)
+        {
+            // Check for updates
             _ = Process.Start(
                     new ProcessStartInfo()
                     {
@@ -51,12 +77,16 @@ namespace SophiApp.Services
                         Arguments = "StartInteractiveScan",
                     });
 
-            _ = Process.Start(
-                new ProcessStartInfo()
-                {
-                    FileName = "explorer.exe",
-                    Arguments = "ms-settings:windowsupdate",
-                });
+            if (openSettings)
+            {
+                // Open the "Windows Update" page
+                _ = Process.Start(
+                    new ProcessStartInfo()
+                    {
+                        FileName = "explorer.exe",
+                        Arguments = "ms-settings:windowsupdate",
+                    });
+            }
         }
     }
 }

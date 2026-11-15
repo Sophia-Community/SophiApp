@@ -27,7 +27,7 @@ public class SettingsService : ISettingsService
     private const string TextTitleSize = "TextTitleSize";
 
     private readonly IFileService fileService;
-    private readonly string settingsFolder = AppContext.BaseDirectory;
+    private readonly string settingsFolder = EnvironmentHelper.AppFolder;
     private IDictionary<string, object>? settings;
 
     /// <summary>

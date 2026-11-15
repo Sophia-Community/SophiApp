@@ -63,11 +63,6 @@ namespace SophiApp.Contracts.Services
         string GetUserSid(string name);
 
         /// <summary>
-        /// Get Microsoft Defender antispyware enabled property value.
-        /// </summary>
-        bool GetAntiSpywareEnabled();
-
-        /// <summary>
         /// Get CPU virtualization state.
         /// </summary>
         bool? CPUVirtualizationIsEnabled();

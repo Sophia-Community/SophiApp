@@ -93,34 +93,23 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public string GetUserSid(string name)
         {
-            using var managementObject = new ManagementObjectSearcher("Select * from Win32_UserAccount")
-                .Get()
-                .Cast<ManagementObject>()
-                .FirstOrDefault(o => o.GetPropertyValue("Name") as string == name);
-
-            return managementObject?.GetPropertyValue("Sid") as string ?? throw new InvalidOperationException($"Failed to obtain user SID API in the {nameof(IInstrumentationService)}");
-        }
-
-        /// <inheritdoc/>
-        public bool GetAntiSpywareEnabled()
-        {
-            using var managementObject = new ManagementObjectSearcher(scope: "root/Microsoft/Windows/Defender", queryString: $"Select * from MSFT_MpComputerStatus")
-                .Get()
-                .Cast<ManagementObject>()
-                .FirstOrDefault();
-
-            return managementObject?.GetPropertyValue("AntispywareEnabled") as bool? ?? throw new InvalidOperationException($"Failed to obtain AntiSpywareEnabled value from WMI class MSFT_MpComputerStatus in the {nameof(IInstrumentationService)}");
+            try
+            {
+                // The system translates the account name to SID itself. Enumerating all accounts via WMI is slow on domain-joined PCs
+                return new System.Security.Principal.NTAccount(name).Translate(typeof(System.Security.Principal.SecurityIdentifier)).Value;
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to obtain user SID API in the {nameof(IInstrumentationService)}", ex);
+            }
         }
 
         /// <inheritdoc/>
         public bool? CPUVirtualizationIsEnabled()
         {
-            using var managementObject = new ManagementObjectSearcher("Select * from CIM_Processor")
-                .Get()
-                .Cast<ManagementObject>()
-                .FirstOrDefault();
-
-            return managementObject?.GetPropertyValue("VirtualizationFirmwareEnabled") as bool?;
+            // The same flag that the VirtualizationFirmwareEnabled property of CIM_Processor shows, but without a WMI query, which takes about a second
+            const uint VirtualizationFirmwareEnabled = 21;
+            return IsProcessorFeaturePresent(VirtualizationFirmwareEnabled);
         }
 
         /// <inheritdoc/>
@@ -148,13 +137,11 @@ namespace SophiApp.Services
         public bool DetectDACType()
         {
             // Determining whether PC has an external graphics card
-            using var managementObject = new ManagementObjectSearcher("Select * from CIM_VideoController")
+            return new ManagementObjectSearcher("Select * from CIM_VideoController")
                 .Get()
                 .Cast<ManagementObject>()
-                .FirstOrDefault();
-
-            var dacType = managementObject?.GetPropertyValue("AdapterDACType") as string ?? string.Empty;
-            return !(string.IsNullOrEmpty(dacType) && dacType.Equals("Internal", StringComparison.InvariantCultureIgnoreCase));
+                .Select(controller => controller.GetPropertyValue("AdapterDACType") as string)
+                .Any(dacType => !string.IsNullOrEmpty(dacType) && !dacType.Equals("Internal", StringComparison.InvariantCultureIgnoreCase));
         }
 
         /// <inheritdoc/>
@@ -178,6 +165,10 @@ namespace SophiApp.Services
             var processesId = managementObject.Cast<ManagementBaseObject>().Select(m => Convert.ToInt32(m.GetPropertyValue("ProcessId"))).ToList();
             return processesId.Count > 0 ? processesId : null;
         }
+
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool IsProcessorFeaturePresent(uint processorFeature);
 
         [DllImport("Winbrand.dll", CharSet = CharSet.Unicode)]
         private static extern string BrandingFormatString(string sFormat);

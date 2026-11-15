@@ -32,19 +32,14 @@ namespace SophiApp.Contracts.Services
         AppVersion? LatestAppRelease { get; }
 
         /// <summary>
-        /// Gets .NET 8 latest release.
-        /// </summary>
-        DotNetRelease? LatestReleaseNET8 { get; }
-
-        /// <summary>
-        /// Gets .NET 9 latest release.
-        /// </summary>
-        DotNetRelease? LatestReleaseNET9 { get; }
-
-        /// <summary>
         /// Gets .NET 10 latest release.
         /// </summary>
         DotNetRelease? LatestReleaseNET10 { get; }
+
+        /// <summary>
+        /// Gets .NET 11 latest release.
+        /// </summary>
+        DotNetRelease? LatestReleaseNET11 { get; }
 
         /// <summary>
         /// Gets Visual C++ latest release.

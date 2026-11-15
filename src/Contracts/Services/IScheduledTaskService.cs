@@ -63,6 +63,11 @@ namespace SophiApp.Contracts.Services
         void UnregisterOneDriveTasks();
 
         /// <summary>
+        /// Enables and starts OneDrive update tasks in the Task Scheduler.
+        /// </summary>
+        void StartOneDriveUpdateTasks();
+
+        /// <summary>
         /// Registers the "Software Distribution" task in the Task Scheduler.
         /// </summary>
         void RegisterSoftwareDistributionTask();

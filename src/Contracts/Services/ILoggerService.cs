@@ -269,6 +269,13 @@ namespace SophiApp.Contracts.Services
         void LogDefenderIsDefault(bool isDefault);
 
         /// <summary>
+        /// Handles occur exception of the Windows component check.
+        /// </summary>
+        /// <param name="component">The component that was being checked.</param>
+        /// <param name="exception">Represents errors that occur during app executing.</param>
+        void LogComponentStabilityException(string component, Exception exception);
+
+        /// <summary>
         /// Handles occur exception of the Get-MpPreference cmdlet execution.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>

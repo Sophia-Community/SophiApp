@@ -77,8 +77,7 @@
                            FontSize="{Binding Path=FontOptions.DescriptionTextSize, ElementName=TextCheckBoxControl}">
                 </TextBlock>
                 <Border x:Name="ExceptionTextBorder"
-                        Style="{StaticResource ExceptionDescriptionBorderStyle}"
-                        Width="{Binding ElementName=ExceptionDescriptionTextBlock, Path=Width}">
+                        Style="{StaticResource ExceptionDescriptionBorderStyle}">
                     <TextBlock x:Name="ExceptionTextBlock"
                                Style="{StaticResource ExceptionDescriptionTextStyle}"
                                Text="{Binding ExceptionText}"/>

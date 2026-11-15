@@ -13,7 +13,7 @@ namespace SophiApp.Contracts.Services
     public interface IGroupPolicyService
     {
         /// <summary>
-        /// Delete "%TEMP\LGPO.txt" config file if exist.
+        /// Forget the policy changes that were not written yet, and delete the "%TEMP%\LGPO.txt" file left by the previous versions of the app.
         /// </summary>
         void DeleteLGPOConfig();
 
@@ -54,7 +54,7 @@ namespace SophiApp.Contracts.Services
             where T : struct;
 
         /// <summary>
-        /// Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database.
+        /// Set the policy value, or remove the policy if the type and the value are not specified. The changes are written to the Registry.pol file by <see cref="UpdatePolicy"/>.
         /// </summary>
         /// <param name="scope">Policy scope.</param>
         /// <param name="path">Policy path.</param>
@@ -64,7 +64,7 @@ namespace SophiApp.Contracts.Services
         void ClearPolicyCache(LGPOScope scope, string path, string name, string type = "", string value = "");
 
         /// <summary>
-        /// Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database.
+        /// Remove the policy in the specified scopes. The changes are written to the Registry.pol files by <see cref="UpdatePolicy"/>.
         /// </summary>
         /// <param name="path">Policy path.</param>
         /// <param name="name">Policy value name.</param>
@@ -72,9 +72,8 @@ namespace SophiApp.Contracts.Services
         void ClearPolicyCache(string path, string name, params LGPOScope[] scopes);
 
         /// <summary>
-        /// Update group policy cache using by LGPO.txt file.
+        /// Write the changed policies to "%SystemRoot%\System32\GroupPolicy\Machine\Registry.pol" and "%SystemRoot%\System32\GroupPolicy\User\Registry.pol" files.
         /// </summary>
-        /// <param name="deleteConfig">Delete LGPO.txt file after update.</param>
-        void UpdatePolicy(bool deleteConfig = true);
+        void UpdatePolicy();
     }
 }

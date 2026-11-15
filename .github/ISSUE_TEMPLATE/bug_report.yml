@@ -1,4 +1,4 @@
-name: SophiApp 🐛
+name: SophiApp for Windows 🐛
 description: Report errors or unexpected behavior 🤔
 labels: bug
 body:
@@ -57,18 +57,18 @@ body:
   - type: input
     id: sophiapp-version
     attributes:
-      label: SophiApp version
-      description: Which version of SophiApp are you using?
+      label: SophiApp for Windows version
+      description: Which version of SophiApp for Windows are you using?
       placeholder: e.g. 1.0.0.45
     validations:
       required: true
   - type: dropdown
     attributes:
-      label: SophiApp release type
+      label: SophiApp for Windows release type
       description: You can find this information in Settings
       options:
-        - SophiApp
-        - SophiApp Beta
+        - SophiApp for Windows
+        - SophiApp for Windows Beta
     validations:
       required: true
   - type: textarea
@@ -84,7 +84,7 @@ body:
   - type: markdown
     attributes:
       value: >
-        If SophiApp crashes at the startup, please run this PowerShell code as `admin` [(how-to)](https://allthings.how/how-to-open-windows-powershell-as-an-admin-on-windows-11/) to find out what caused the program to crash, and attach the table, too.
+        If SophiApp for Windows crashes at the startup, please run this PowerShell code as `admin` [(how-to)](https://allthings.how/how-to-open-windows-powershell-as-an-admin-on-windows-11/) to find out what caused the program to crash, and attach the table, too.
 
         ```powershell
 

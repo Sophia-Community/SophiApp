@@ -22,6 +22,11 @@ namespace SophiApp.Helpers
         private static readonly UIntPtr UIntPtr = new (41504);
 
         /// <summary>
+        /// Gets the folder of SophiApp.exe. The log and the settings are kept there.
+        /// </summary>
+        public static string AppFolder { get; } = Path.GetDirectoryName(Environment.ProcessPath) ?? AppContext.BaseDirectory;
+
+        /// <summary>
         /// Simulate pressing F5 to refresh the desktop.
         /// </summary>
         public static void RefreshUserDesktop()

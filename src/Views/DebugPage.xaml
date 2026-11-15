@@ -41,21 +41,6 @@
                                                VerticalAlignment="Center"
                                                Margin="0, 0, 5, 1"/>
                                 </Grid>
-                                <Grid Grid.Row="1"
-                                      Margin="0, 0, 15, 5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <CheckBox Grid.Column="0"
-                                              VerticalAlignment="Center"
-                                              IsChecked="{x:Bind ViewModel.DebugOptions.DeleteLGPOFile, Mode=OneWay}"
-                                              Command="{x:Bind ViewModel.DeleteLGPOFileCommand, Mode=OneWay}"/>
-                                    <TextBlock Text="Delete LGPO.txt file"
-                                               Grid.Column="1"
-                                               VerticalAlignment="Center"
-                                               Margin="0, 0, 5, 1"/>
-                                </Grid>
                             </Grid>
                         </controls:ContentBlock.Content>
                     </controls:ContentBlock>

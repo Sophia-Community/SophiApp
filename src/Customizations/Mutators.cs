@@ -29,8 +29,8 @@ namespace SophiApp.Customizations
         private static readonly IFileService FileService = App.GetService<IFileService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
         private static readonly IGroupPolicyService GroupPolicyService = App.GetService<IGroupPolicyService>();
-        private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
+        private static readonly INetworkAdapterService NetworkAdapterService = App.GetService<INetworkAdapterService>();
         private static readonly IOneDriveService OneDriveService = App.GetService<IOneDriveService>();
         private static readonly IOsService OsService = App.GetService<IOsService>();
         private static readonly IPowerShellService PowerShellService = App.GetService<IPowerShellService>();
@@ -47,8 +47,9 @@ namespace SophiApp.Customizations
         {
             // Connected User Experiences and Telemetry
             // Disabling the "Connected User Experiences and Telemetry" service (DiagTrack) can cause you not being able to get XBOX achievements anymore and affects Feedback Hub
-            var diagTrackService = new System.ServiceProcess.ServiceController("DiagTrack");
-            var firewallRule = FirewallService.GetGroupRules("DiagTrack").First();
+            using var diagTrackService = new System.ServiceProcess.ServiceController("DiagTrack");
+            // The firewall rules may be missing
+            var firewallRules = FirewallService.GetGroupRules("DiagTrack").ToList();
 
             if (enable)
             {
@@ -56,8 +57,11 @@ namespace SophiApp.Customizations
                 diagTrackService.TryStart();
 
                 // Allow connection for the Unified Telemetry Client Outbound Traffic
-                firewallRule.Enabled = true;
-                firewallRule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+                firewallRules.ForEach(rule =>
+                {
+                    rule.Enabled = true;
+                    rule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+                });
                 return;
             }
 
@@ -65,8 +69,11 @@ namespace SophiApp.Customizations
             OsService.SetStartMode(diagTrackService, ServiceStartMode.Disabled);
 
             // Block connection for the Unified Telemetry Client Outbound Traffic
-            firewallRule.Enabled = true;
-            firewallRule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
+            firewallRules.ForEach(rule =>
+            {
+                rule.Enabled = true;
+                rule.Action = NetFwTypeLib.NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
+            });
         }
 
         /// <summary>
@@ -84,23 +91,23 @@ namespace SophiApp.Customizations
                 if (DataService.OsProperties.Edition.Contains("Enterprise") || DataService.OsProperties.Edition.Contains("Education"))
                 {
                     // 0 — Diagnostic data off
-                    Registry.LocalMachine.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection").SetValue("AllowTelemetry", 0, RegistryValueKind.DWord);
+                    Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "AllowTelemetry", 0, RegistryValueKind.DWord);
                 }
                 else
                 {
                     // 1 — Send required diagnostic data
-                    Registry.LocalMachine.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection").SetValue("AllowTelemetry", 1, RegistryValueKind.DWord);
+                    Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "AllowTelemetry", 1, RegistryValueKind.DWord);
                 }
 
-                Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", true)?.SetValue("MaxTelemetryAllowed", 1, RegistryValueKind.DWord);
-                Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack").SetValue("ShowedToastAtLevel", 1, RegistryValueKind.DWord);
+                Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "MaxTelemetryAllowed", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack", "ShowedToastAtLevel", 1, RegistryValueKind.DWord);
                 return;
             }
 
             // 3 — Send optional diagnostic data
-            Registry.LocalMachine.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection").SetValue("MaxTelemetryAllowed", 3, RegistryValueKind.DWord);
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack").SetValue("ShowedToastAtLevel", 3, RegistryValueKind.DWord);
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", true)?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord);
+            Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "MaxTelemetryAllowed", 3, RegistryValueKind.DWord);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack", "ShowedToastAtLevel", 3, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "AllowTelemetry", 3, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -140,17 +147,17 @@ namespace SophiApp.Customizations
         public static void FeedbackFrequency(int state)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\DataCollection", "DoNotShowFeedbackNotifications");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\DataCollection", "DoNotShowFeedbackNotifications");
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Siuf\\Rules", true)?.DeleteValue("PeriodInNanoSeconds", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Siuf\\Rules", "PeriodInNanoSeconds");
 
             if (state.Equals(2))
             {
-                Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Siuf\\Rules").SetValue("NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Siuf\\Rules", "NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Siuf\\Rules", true)?.DeleteValue("NumberOfSIUFInPeriod", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Siuf\\Rules", "NumberOfSIUFInPeriod");
         }
 
         /// <summary>
@@ -167,13 +174,11 @@ namespace SophiApp.Customizations
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"),
                 // Collects program telemetry information if opted-in to the Microsoft Customer Experience Improvement Program
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser Exp"),
-                // Updates compatibility database
+                // Scans startup entries and raises notification to the user if there are too many startup entries
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\StartupAppTask"),
                 // This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program
-                ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater"),
-                // If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Autochk\\Proxy"),
-                // The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft
+                // If the user has consented to participate in the Windows Customer Experience Improvement Program, this job collects and sends usage data to Microsoft
                 ScheduledTaskService.GetTaskOrDefault("\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator"),
                 // The USB CEIP (Customer Experience Improvement Program) task collects Universal Serial Bus related statistics and information about your machine and sends it to the Windows Device Connectivity engineering group at Microsoft
                 // The information received is used to help improve the reliability, stability, and overall functionality of USB in Windows
@@ -203,11 +208,11 @@ namespace SophiApp.Customizations
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey(arsoPath, true)?.DeleteValue("OptOut", false);
+                Registry.LocalMachine.DeleteSubKeyValue(arsoPath, "OptOut");
                 return;
             }
 
-            Registry.LocalMachine.OpenOrCreateSubKey(arsoPath).SetValue("OptOut", 1, RegistryValueKind.DWord);
+            Registry.LocalMachine.CreateKeyAndSetValue(arsoPath, "OptOut", 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -218,11 +223,11 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Control Panel\\International\\User Profile", true)?.DeleteValue("HttpAcceptLanguageOptOut", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Control Panel\\International\\User Profile", "HttpAcceptLanguageOptOut");
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Control Panel\\International\\User Profile", true)?.SetValue("HttpAcceptLanguageOptOut", 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\International\\User Profile", "HttpAcceptLanguageOptOut", 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -232,9 +237,9 @@ namespace SophiApp.Customizations
         public static void AdvertisingID(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\AdvertisingInfo", "DisabledByGroupPolicy");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
-            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\DataCollection", "DisabledByGroupPolicy");
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo").SetValue("Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\AdvertisingInfo", "DisabledByGroupPolicy");
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo", "Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -243,8 +248,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Windows welcome experiences state.</param>
         public static void WindowsWelcomeExperience(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
-                ?.SetValue("SubscribedContent-310093enable", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "SubscribedContent-310093Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -254,10 +258,9 @@ namespace SophiApp.Customizations
         public static void WindowsTips(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\CloudContent", "DisableSoftLanding");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\CloudContent", "DisableSoftLanding");
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
-                ?.SetValue("SubscribedContent-338389enable", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "SubscribedContent-338389Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -266,9 +269,8 @@ namespace SophiApp.Customizations
         /// <param name="enable">Suggested content state.</param>
         public static void SettingsSuggestedContent(bool enable)
         {
-            new List<string> { "SubscribedContent-353694Enable", "SubscribedContent-353696Enable", "SubscribedContent-338393Enable" }
-            .ForEach(content => Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
-                ?.SetValue(content, enable ? 1 : 0, RegistryValueKind.DWord));
+            new List<string> { "SubscribedContent-338393Enabled", "SubscribedContent-353694Enabled", "SubscribedContent-353696Enabled" }
+            .ForEach(content => Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", content, enable ? 1 : 0, RegistryValueKind.DWord));
         }
 
         /// <summary>
@@ -278,10 +280,9 @@ namespace SophiApp.Customizations
         public static void AppsSilentInstalling(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\CloudContent", "DisableWindowsConsumerFeatures");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\CloudContent", "DisableWindowsConsumerFeatures");
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", true)
-                ?.SetValue("SilentInstalledAppsenable", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "SilentInstalledAppsEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -290,8 +291,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Whats New state.</param>
         public static void WhatsNewInWindows(bool enable)
         {
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement")
-                .SetValue("ScoobeSystemSettingEnable", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement", "ScoobeSystemSettingEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -301,10 +301,9 @@ namespace SophiApp.Customizations
         public static void TailoredExperiences(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Policies\\Microsoft\\Windows\\CloudContent", "DisableTailoredExperiencesWithDiagnosticData");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Policies\\Microsoft\\Windows\\CloudContent", "DisableTailoredExperiencesWithDiagnosticData");
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Privacy", true)
-                ?.SetValue("TailoredExperiencesWithDiagnosticDataEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Privacy", "TailoredExperiencesWithDiagnosticDataEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -315,13 +314,15 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("DisableSearchBoxSuggestions", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions");
+                // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+                GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions");
 
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer").SetValue("DisableSearchBoxSuggestions", 1, RegistryValueKind.DWord);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions", 1, RegistryValueKind.DWord);
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(scope: LGPOScope.User, path: "Software\\Policies\\Microsoft\\Windows\\Explorer", name: "DisableSearchBoxSuggestions", type: "DWORD", value: "1");
         }
 
@@ -333,11 +334,11 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.DeleteValue("Start_IrisRecommendations", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_IrisRecommendations");
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("Start_IrisRecommendations", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_IrisRecommendations", 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -348,11 +349,11 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.DeleteValue("Start_AccountNotifications", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_AccountNotifications");
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("Start_AccountNotifications", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_AccountNotifications", 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -363,14 +364,12 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel")
-                    .SetValue("{20D04FE0-3AEA-1069-A2D8-08002B30309D}", 0, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel", "{20D04FE0-3AEA-1069-A2D8-08002B30309D}", 0, RegistryValueKind.DWord);
 
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel", true)
-                ?.DeleteValue("{20D04FE0-3AEA-1069-A2D8-08002B30309D}", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\HideDesktopIcons\\NewStartPanel", "{20D04FE0-3AEA-1069-A2D8-08002B30309D}");
         }
 
         /// <summary>
@@ -379,8 +378,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Item check boxes state.</param>
         public static void CheckBoxes(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("AutoCheckSelect", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "AutoCheckSelect", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -389,8 +387,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Hidden items state.</param>
         public static void HiddenItems(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("Hidden", enable ? 1 : 2, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Hidden", enable ? 1 : 2, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -399,8 +396,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">File extensions visibility state.</param>
         public static void FileExtensions(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("HideFileExt", enable ? 0 : 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "HideFileExt", enable ? 0 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -409,8 +405,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Folder merge conflicts state.</param>
         public static void MergeConflicts(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("HideMergeConflicts", enable ? 0 : 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "HideMergeConflicts", enable ? 0 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -419,8 +414,7 @@ namespace SophiApp.Customizations
         /// <param name="state">File Explorer open state.</param>
         public static void OpenFileExplorerTo(int state)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("LaunchTo", state, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "LaunchTo", state, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -429,7 +423,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">File Explorer compact mode state.</param>
         public static void FileExplorerCompactMode(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("UseCompactMode", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "UseCompactMode", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -438,8 +432,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">File Explorer provider notification visibility state.</param>
         public static void OneDriveFileExplorerAd(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("ShowSyncProviderNotifications", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "ShowSyncProviderNotifications", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -449,8 +442,8 @@ namespace SophiApp.Customizations
         public static void SnapAssist(bool enable)
         {
             // Property type is string
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop", true)?.SetValue("WindowArrangementActive", "1", RegistryValueKind.String);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("SnapAssist", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Desktop", "WindowArrangementActive", "1", RegistryValueKind.String);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "SnapAssist", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -459,8 +452,7 @@ namespace SophiApp.Customizations
         /// <param name="state">File transfer dialog box state.</param>
         public static void FileTransferDialog(int state)
         {
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager")
-                .SetValue("EnthusiastMode", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager", "EnthusiastMode", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -470,12 +462,17 @@ namespace SophiApp.Customizations
         public static void RecycleBinDeleteConfirmation(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "ConfirmFileDelete", Registry.LocalMachine, Registry.CurrentUser);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "ConfirmFileDelete", LGPOScope.Computer, LGPOScope.User);
 
-            var confirmation = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer")?.GetValue("ShellState") as byte[] ?? new byte[5];
-            confirmation[4] = enable ? (byte)51 : (byte)55;
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.SetValue("ShellState", confirmation, RegistryValueKind.Binary);
+            using var explorerKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true);
+
+            if (explorerKey?.GetValue("ShellState") is byte[] shellState && shellState.Length > 4)
+            {
+                // The 0x04 bit of the fifth byte turns the delete confirmation dialog off
+                shellState[4] = enable ? (byte)(shellState[4] & ~0x04) : (byte)(shellState[4] | 0x04);
+                explorerKey.SetValue("ShellState", shellState, RegistryValueKind.Binary);
+            }
         }
 
         /// <summary>
@@ -486,9 +483,9 @@ namespace SophiApp.Customizations
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory");
             GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory", LGPOScope.Computer, LGPOScope.User);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.SetValue("ShowRecent", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "ShowRecent", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -497,7 +494,28 @@ namespace SophiApp.Customizations
         /// <param name="enable">Quick access folders state.</param>
         public static void QuickAccessFrequentFolders(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.SetValue("ShowFrequent", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "ShowFrequent", enable ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        /// <summary>
+        /// Set taskbar position.
+        /// </summary>
+        /// <param name="state">Taskbar position: bottom, top, left or right.</param>
+        public static void TaskbarPosition(int state)
+        {
+            // Remove all policies in order to make changes visible in UI
+            GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableTaskbarPosition", Registry.CurrentUser, Registry.LocalMachine);
+            GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableTaskbarPosition", LGPOScope.User, LGPOScope.Computer);
+
+            var location = state switch
+            {
+                2 => 1,
+                3 => 0,
+                4 => 2,
+                _ => 3,
+            };
+
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "TaskbarLocation", location, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -506,8 +524,7 @@ namespace SophiApp.Customizations
         /// <param name="state">Taskbar alignment state.</param>
         public static void TaskbarAlignment(int state)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("TaskbarAl", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "TaskbarAl", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -518,12 +535,11 @@ namespace SophiApp.Customizations
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\PolicyManager\\default\\NewsAndInterests\\AllowNewsAndInterests", "value");
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Dsh", "AllowNewsAndInterests");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Dsh", "AllowNewsAndInterests");
-            // We cannot set a value to TaskbarDa, having called any of APIs, except of copying powershell.exe (or any other tricks) with a different name,
+            // We cannot set a value to TaskbarDa via any API, except by copying reg.exe under a different name,
             // due to a UCPD driver tracks all executables to block the access to the registry
-            var command = $"-Command \"& {{New-ItemProperty -Path HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced -Name TaskbarDa -PropertyType DWord -Value {(enable ? 1 : 0)} -Force}}\"";
-            PowerShellService.InvokeCommandBypassUCPD(command);
+            RegistryService.SetRegistryValueBypassUCPD("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "TaskbarDa", enable ? 1 : 0);
         }
 
         /// <summary>
@@ -534,7 +550,7 @@ namespace SophiApp.Customizations
         {
             GroupPolicyService.SetRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\PolicyManager\\default\\Search\\DisableSearch", "value", 0, RegistryValueKind.DWord);
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\Windows Search", "DisableSearch", "SearchOnTaskbarMode");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\Windows Search", "DisableSearch", "SearchOnTaskbarMode");
 
             var searchMode = state switch
@@ -544,7 +560,7 @@ namespace SophiApp.Customizations
                 _ => state - 1,
             };
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Search", true)?.SetValue("SearchboxTaskbarMode", searchMode, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Search", "SearchboxTaskbarMode", searchMode, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -554,18 +570,28 @@ namespace SophiApp.Customizations
         public static void SearchHighlights(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\Windows Search", "EnableDynamicContentInWSB");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\Windows Search", "EnableDynamicContentInWSB");
 
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Search", true)?.DeleteValue("BingSearchEnabled", false);
-                Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("DisableSearchBoxSuggestions", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Search", "BingSearchEnabled");
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions");
                 GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions");
             }
+            else
+            {
+                var bingSearchEnabled = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Search", "BingSearchEnabled") as int? ?? -1;
+                var searchSuggestionsDisabled = Registry.CurrentUser.GetSubKeyValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableSearchBoxSuggestions") as int? ?? -1;
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings", true)
-                ?.SetValue("IsDynamicSearchBoxEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
+                // Search highlights are already hidden if Bing search is disabled
+                if (bingSearchEnabled.Equals(0) || searchSuggestionsDisabled.Equals(1))
+                {
+                    return;
+                }
+            }
+
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings", "IsDynamicSearchBoxEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -576,18 +602,7 @@ namespace SophiApp.Customizations
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideTaskViewButton", Registry.CurrentUser, Registry.LocalMachine);
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideTaskViewButton", LGPOScope.User, LGPOScope.Computer);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("ShowTaskViewButton", enable ? 1 : 0, RegistryValueKind.DWord);
-        }
-
-        /// <summary>
-        /// Set taskbar people icon state.
-        /// </summary>
-        /// <param name="enable">Taskbar people icon state.</param>
-        public static void PeopleTaskbar(bool enable)
-        {
-            GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "HidePeopleBar", Registry.CurrentUser, Registry.LocalMachine);
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People")
-                ?.SetValue("PeopleBand", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "ShowTaskViewButton", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -596,8 +611,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Seconds on the taskbar clock state.</param>
         public static void SecondsInSystemClock(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("ShowSecondsInSystemClock", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "ShowSecondsInSystemClock", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -608,8 +622,7 @@ namespace SophiApp.Customizations
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoTaskGrouping", Registry.LocalMachine, Registry.CurrentUser);
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoTaskGrouping", LGPOScope.Computer, LGPOScope.User);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("TaskbarGlomLevel", state - 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "TaskbarGlomLevel", state - 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -620,14 +633,12 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings")
-                    .SetValue("TaskbarEndTask", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings", "TaskbarEndTask", 1, RegistryValueKind.DWord);
 
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings", true)
-                ?.DeleteValue("TaskbarEndTask", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings", "TaskbarEndTask");
         }
 
         /// <summary>
@@ -637,30 +648,24 @@ namespace SophiApp.Customizations
         public static void ControlPanelView(int state)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "ForceClassicControlPanel");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "ForceClassicControlPanel");
 
             switch (state)
             {
                 case 1:
-                    Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel")
-                        .SetValue("AllItemsIconView", 0, RegistryValueKind.DWord);
-                    Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", true)
-                        ?.SetValue("StartupPage", 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", "AllItemsIconView", 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", "StartupPage", 0, RegistryValueKind.DWord);
 
                     break;
                 case 2:
-                    Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel")
-                        .SetValue("AllItemsIconView", 0, RegistryValueKind.DWord);
-                    Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", true)
-                        ?.SetValue("StartupPage", 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", "AllItemsIconView", 0, RegistryValueKind.DWord);
+                    Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", "StartupPage", 1, RegistryValueKind.DWord);
 
                     break;
                 default:
-                    Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel")
-                        .SetValue("AllItemsIconView", 1, RegistryValueKind.DWord);
-                    Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", true)
-                        ?.SetValue("StartupPage", 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", "AllItemsIconView", 1, RegistryValueKind.DWord);
+                    Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ControlPanel", "StartupPage", 1, RegistryValueKind.DWord);
 
                     break;
             }
@@ -672,8 +677,7 @@ namespace SophiApp.Customizations
         /// <param name="state">Windows color mode state.</param>
         public static void WindowsColorMode(int state)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true)
-                ?.SetValue("SystemUsesLightTheme", state - 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "SystemUsesLightTheme", state - 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -682,8 +686,7 @@ namespace SophiApp.Customizations
         /// <param name="state">Apps color mode state.</param>
         public static void AppColorMode(int state)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", true)
-                ?.SetValue("AppsUseLightTheme", state - 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", state - 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -693,10 +696,9 @@ namespace SophiApp.Customizations
         public static void FirstLogonAnimation(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "EnableFirstLogonAnimation");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "EnableFirstLogonAnimation");
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", true)
-                ?.SetValue("EnableFirstLogonAnimation", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "EnableFirstLogonAnimation", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -707,14 +709,12 @@ namespace SophiApp.Customizations
         {
             if (state.Equals(1))
             {
-                Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop", true)
-                    ?.SetValue("JPEGImportQuality", 100, RegistryValueKind.DWord);
+                Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Desktop", "JPEGImportQuality", 100, RegistryValueKind.DWord);
 
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop", true)
-                ?.DeleteValue("JPEGImportQuality", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Control Panel\\Desktop", "JPEGImportQuality");
         }
 
         /// <summary>
@@ -723,17 +723,16 @@ namespace SophiApp.Customizations
         /// <param name="enable">"- Shortcut" suffix state.</param>
         public static void ShortcutsSuffix(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.DeleteValue("link", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "link");
 
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates", true)?.DeleteValue("ShortcutNameTemplate", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates", "ShortcutNameTemplate");
 
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates")
-                ?.SetValue("ShortcutNameTemplate", "%s.lnk", RegistryValueKind.String);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates", "ShortcutNameTemplate", "%s.lnk", RegistryValueKind.String);
         }
 
         /// <summary>
@@ -742,7 +741,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Print screen button state.</param>
         public static void PrtScnSnippingTool(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Keyboard", true)?.SetValue("PrintScreenKeyForSnippingEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Keyboard", "PrintScreenKeyForSnippingEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -761,10 +760,9 @@ namespace SophiApp.Customizations
         public static void AeroShaking(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "NoWindowMinimizingShortcuts", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "NoWindowMinimizingShortcuts", LGPOScope.User, LGPOScope.Computer);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("DisallowShaking", enable ? 0 : 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "DisallowShaking", enable ? 0 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -801,19 +799,19 @@ namespace SophiApp.Customizations
             if (state.Equals(1))
             {
                 // Clear any Common Dialog views
-                PowerShellService.ClearCommonDialogViews();
+                RegistryService.ClearCommonDialogViews();
                 // https://learn.microsoft.com/en-us/windows/win32/properties/props-system-null
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("ColumnList", "System.Null", RegistryValueKind.String);
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("GroupBy", "System.Null", RegistryValueKind.String);
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("LogicalViewMode", 1, RegistryValueKind.DWord);
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("Name", "NoName", RegistryValueKind.String);
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("Order", 0, RegistryValueKind.DWord);
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("PrimaryProperty", "System.ItemNameDisplay", RegistryValueKind.String);
-                Registry.CurrentUser.OpenOrCreateSubKey(folderPath).SetValue("SortByList", "prop:System.ItemNameDisplay", RegistryValueKind.String);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "ColumnList", "System.Null", RegistryValueKind.String);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "GroupBy", "System.Null", RegistryValueKind.String);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "LogicalViewMode", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "Name", "NoName", RegistryValueKind.String);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "Order", 0, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "PrimaryProperty", "System.ItemNameDisplay", RegistryValueKind.String);
+                Registry.CurrentUser.CreateKeyAndSetValue(folderPath, "SortByList", "prop:System.ItemNameDisplay", RegistryValueKind.String);
                 return;
             }
 
-            Registry.CurrentUser.DeleteSubKeyTree(folderPath, false);
+            Registry.CurrentUser.DeleteSubKeyTree("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FolderTypes\\{885a186e-a440-4ada-812b-db871b942259}", false);
         }
 
         /// <summary>
@@ -822,8 +820,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Navigation pane expand state.</param>
         public static void NavigationPaneExpand(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("NavPaneExpandToCurrentFolder", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "NavPaneExpandToCurrentFolder", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -834,16 +831,16 @@ namespace SophiApp.Customizations
         {
             // Remove all policies in order to make changes visible in UI
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideRecentlyAddedApps", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideRecentlyAddedApps", LGPOScope.User, LGPOScope.Computer);
 
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.DeleteValue("ShowRecentList", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowRecentList");
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.SetValue("ShowRecentList", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowRecentList", 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -855,7 +852,7 @@ namespace SophiApp.Customizations
             // Remove all policies in order to make changes visible in UI
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideCategoryView", Registry.CurrentUser, Registry.LocalMachine);
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideCategoryView", LGPOScope.User, LGPOScope.Computer);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.SetValue("AllAppsViewMode", state - 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "AllAppsViewMode", state - 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -865,21 +862,21 @@ namespace SophiApp.Customizations
         public static void MostUsedStartApps(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "ShowOrHideMostUsedApps", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "ShowOrHideMostUsedApps", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMFUprogramsList", Registry.CurrentUser, Registry.LocalMachine);
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoInstrumentation", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMFUprogramsList", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoInstrumentation", LGPOScope.User, LGPOScope.Computer);
 
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.DeleteValue("ShowFrequentList", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList");
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.SetValue("ShowFrequentList", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList", 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -888,7 +885,7 @@ namespace SophiApp.Customizations
         /// <param name="state">Start menu layout state.</param>
         public static void StartLayout(int state)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("Start_Layout", state - 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_Layout", state - 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -898,56 +895,56 @@ namespace SophiApp.Customizations
         public static void StartRecommendedSection(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideRecommendedSection", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideRecommendedSection", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\PolicyManager\\current\\device\\Education", "IsEducationEnvironment");
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\PolicyManager\\current\\device\\Start", "HideRecommendedSection");
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRecentDocsHistory", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideRecentlyAddedApps", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "HideRecentlyAddedApps", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "ShowOrHideMostUsedApps", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "ShowOrHideMostUsedApps", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMFUprogramsList", Registry.CurrentUser, Registry.LocalMachine);
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoInstrumentation", Registry.CurrentUser, Registry.LocalMachine);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMFUprogramsList", LGPOScope.User, LGPOScope.Computer);
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoInstrumentation", LGPOScope.User, LGPOScope.Computer);
 
             if (enable)
             {
                 // Show recently added apps in Start
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.DeleteValue("ShowRecentList", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowRecentList");
                 // Show most used Apps in Start
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.DeleteValue("ShowFrequentList", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList");
                 // Show recommendations for tips, shortcuts, new apps, and more in Start
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.DeleteValue("Start_IrisRecommendations", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_IrisRecommendations");
                 // Show recommended files in Start, recent files in File Explorer, and items in jump lists
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.DeleteValue("Start_TrackDocs", false);
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_TrackDocs");
                 return;
             }
 
             // Hide recently added apps in Start
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.SetValue("ShowRecentList", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowRecentList", 0, RegistryValueKind.DWord);
             // Hide most used Apps in Start
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Start", true)?.SetValue("ShowFrequentList", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Start", "ShowFrequentList", 0, RegistryValueKind.DWord);
             // Hide recommendations for tips, shortcuts, new apps, and more in Start
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("Start_IrisRecommendations", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_IrisRecommendations", 0, RegistryValueKind.DWord);
             // Hide recommended files in Start, recent files in File Explorer, and items in jump lists
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)?.SetValue("Start_TrackDocs", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Start_TrackDocs", 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
-        /// Set One Drive state.
+        /// Set OneDrive state.
         /// </summary>
-        /// <param name="enable">One Drive state.</param>
+        /// <param name="enable">OneDrive state.</param>
         public static void OneDrive(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
 
             if (enable)
@@ -966,32 +963,26 @@ namespace SophiApp.Customizations
         public static void StorageSense(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\StorageSense", "AllowStorageSenseGlobal");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\StorageSense", "AllowStorageSenseGlobal");
 
             if (enable)
             {
                 // Turn on Storage Sense
-                Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy")
-                    .SetValue("01", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "01", 1, RegistryValueKind.DWord);
                 // Turn on automatic cleaning up temporary system and app files
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", true)
-                    ?.SetValue("04", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "04", 1, RegistryValueKind.DWord);
                 // Run Storage Sense every month
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", true)
-                    ?.SetValue("2048", 30, RegistryValueKind.DWord);
+                Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "2048", 30, RegistryValueKind.DWord);
                 return;
             }
 
             // Turn off Storage Sense
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy")
-                .SetValue("01", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "01", 0, RegistryValueKind.DWord);
             // Turn off automatic cleaning up temporary system and app files
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", true)
-                ?.SetValue("04", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "04", 0, RegistryValueKind.DWord);
             // Run Storage Sense during low free disk space
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", true)
-                ?.SetValue("2048", 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "2048", 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1012,15 +1003,15 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\FileSystem", true)?.SetValue("LongPathsEnabled", 1, RegistryValueKind.DWord);
-                // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+                Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled", 1, RegistryValueKind.DWord);
+                // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
                 GroupPolicyService.ClearPolicyCache(scope: LGPOScope.Computer, path: "SYSTEM\\CurrentControlSet\\Control\\FileSystem", name: "LongPathsEnabled", type: "DWORD", value: "1");
 
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("System\\CurrentControlSet\\Control\\FileSystem").SetValue("LongPathsEnabled", 0, RegistryValueKind.DWord);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled", 0, RegistryValueKind.DWord);
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SYSTEM\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled");
         }
 
@@ -1030,7 +1021,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">BSOD error state.</param>
         public static void BSoDStopError(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\CrashControl", true)?.SetValue("DisplayParameters", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\CrashControl", "DisplayParameters", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1059,10 +1050,9 @@ namespace SophiApp.Customizations
         public static void DeliveryOptimization(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\DeliveryOptimization", "DODownloadMode");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\DeliveryOptimization", "DODownloadMode");
-            Registry.Users.OpenSubKey("S-1-5-20\\Software\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Settings", true)
-                ?.SetValue("DownloadMode", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.Users.SetValueIfKeyExists("S-1-5-20\\Software\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Settings", "DownloadMode", enable ? 1 : 0, RegistryValueKind.DWord);
 
             if (!enable)
             {
@@ -1076,7 +1066,9 @@ namespace SophiApp.Customizations
         /// <param name="enable">Default printer manage state.</param>
         public static void WindowsManageDefaultPrinter(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows", true)?.SetValue("LegacyDefaultPrinterMode", enable ? 0 : 1, RegistryValueKind.DWord);
+            // Remove all policies in order to make changes visible in UI
+            GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows", "LegacyDefaultPrinterMode");
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows", "LegacyDefaultPrinterMode", enable ? 0 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1086,7 +1078,7 @@ namespace SophiApp.Customizations
         public static void UpdateMicrosoftProducts(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "AllowMUUpdateService");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "AllowMUUpdateService");
 
             if (enable)
@@ -1105,10 +1097,9 @@ namespace SophiApp.Customizations
         public static void RestartNotification(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "SetAutoRestartNotificationDisable");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "SetAutoRestartNotificationDisable");
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", true)
-                ?.SetValue("RestartNotificationsAllowed2", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "RestartNotificationsAllowed2", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1118,10 +1109,9 @@ namespace SophiApp.Customizations
         public static void RestartDeviceAfterUpdate(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "ActiveHoursStart", "ActiveHoursEnd", "SetActiveHours");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "ActiveHoursStart", "ActiveHoursEnd", "SetActiveHours");
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", true)
-                ?.SetValue("IsExpedited", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "IsExpedited", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1131,12 +1121,12 @@ namespace SophiApp.Customizations
         public static void ActiveHours(int state)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "NoAutoRebootWithLoggedOnUsers", "AlwaysAutoRebootAtScheduledTime");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "NoAutoRebootWithLoggedOnUsers", "AlwaysAutoRebootAtScheduledTime");
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "ActiveHoursStart", "ActiveHoursEnd", "SetActiveHours");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "ActiveHoursStart", "ActiveHoursEnd", "SetActiveHours");
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", true)?.SetValue("SmartActiveHoursState", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "SmartActiveHoursState", state.Equals(1) ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1146,16 +1136,31 @@ namespace SophiApp.Customizations
         public static void WindowsLatestUpdate(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "AllowOptionalContent", "SetAllowOptionalContent");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\WindowsUpdate", "AllowOptionalContent", "SetAllowOptionalContent");
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", true)?.SetValue("IsContinuousInnovationOptedIn", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\WindowsUpdate\\UX\\Settings", "IsContinuousInnovationOptedIn", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
         /// Set network adapters power state.
         /// </summary>
         /// <param name="enable">Network adapters power state.</param>
-        public static void NetworkAdaptersSavePower(bool enable) => PowerShellService.SetNetworkAdapterTurnOffDevice(enable);
+        public static void NetworkAdaptersSavePower(bool enable)
+        {
+            // Turn on desktop apps access to location: "netsh wlan" requires location permission to get the connected Wi-Fi network SSID
+            Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location", "Value", "Allow", RegistryValueKind.String);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location", "Value", "Allow", RegistryValueKind.String);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location\\NonPackaged", "Value", "Allow", RegistryValueKind.String);
+
+            // Remove all policies in order to make changes visible in UI
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\LocationAndSensors", "DisableLocation");
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\AppPrivacy", "LetAppsAccessLocation");
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\LocationAndSensors", "DisableLocation");
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\AppPrivacy", "LetAppsAccessLocation");
+
+            NetworkAdapterService.SetTurnOffDevice(enable);
+        }
 
         /// <summary>
         /// Set input method state.
@@ -1169,7 +1174,7 @@ namespace SophiApp.Customizations
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Control Panel\\International\\User Profile", true)?.DeleteValue("InputMethodOverride", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Control Panel\\International\\User Profile", "InputMethodOverride");
         }
 
         /// <summary>
@@ -1180,15 +1185,13 @@ namespace SophiApp.Customizations
         {
             if (state.Equals(1))
             {
-                var desktopPath = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("Desktop") as string;
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", true)
-                    ?.SetValue("{B7BEDE81-DF94-4682-A7D8-57A52620B86F}", desktopPath!, RegistryValueKind.ExpandString);
+                var desktopPath = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", "Desktop") as string;
+                Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}", desktopPath!, RegistryValueKind.ExpandString);
 
                 return;
             }
 
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", true)
-                ?.DeleteValue("{B7BEDE81-DF94-4682-A7D8-57A52620B86F}", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", "{B7BEDE81-DF94-4682-A7D8-57A52620B86F}");
         }
 
         /// <summary>
@@ -1199,8 +1202,10 @@ namespace SophiApp.Customizations
         {
             // Remove all policies in order to make changes visible in UI
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\DataCollection", "AllowTelemetry");
-            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "MaxTelemetryAllowed");
-            GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack", "ShowedToastAtLevel");
+            // Recommended troubleshooting requires sending optional diagnostic data
+            Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "MaxTelemetryAllowed", 3, RegistryValueKind.DWord);
+            Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection", "AllowTelemetry", 3, RegistryValueKind.DWord);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack", "ShowedToastAtLevel", 3, RegistryValueKind.DWord);
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\DataCollection", "AllowTelemetry");
 
             // Turn on Windows Error Reporting
@@ -1213,8 +1218,9 @@ namespace SophiApp.Customizations
             using var werService = new System.ServiceProcess.ServiceController("WerSvc");
             OsService.SetStartMode(werService, ServiceStartMode.Manual);
             werService.TryStart();
+            _ = PowerShellService.Invoke("Enable-WindowsErrorReporting");
 
-            Registry.LocalMachine.OpenOrCreateSubKey("Software\\Microsoft\\WindowsMitigation").SetValue("UserPreference", state.Equals(1) ? 3 : 2, RegistryValueKind.DWord);
+            Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\WindowsMitigation", "UserPreference", state.Equals(1) ? 3 : 2, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1239,8 +1245,7 @@ namespace SophiApp.Customizations
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Classes\\Typelib\\{8cec5860-07a1-11d9-b15e-000d56bfe6ee}\\1.0\\0\\win64")
-                .SetValue(string.Empty, string.Empty, RegistryValueKind.String);
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Classes\\Typelib\\{8cec5860-07a1-11d9-b15e-000d56bfe6ee}\\1.0\\0\\win64", string.Empty, string.Empty, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -1249,7 +1254,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Num Lock state.</param>
         public static void NumLock(bool enable)
         {
-            Registry.Users.OpenSubKey(".DEFAULT\\Control Panel\\Keyboard", true)?.SetValue("InitialKeyboardIndicators", $"{(enable ? "2147483650" : "2147483648")}", RegistryValueKind.String);
+            Registry.Users.SetValueIfKeyExists(".DEFAULT\\Control Panel\\Keyboard", "InitialKeyboardIndicators", $"{(enable ? "2147483650" : "2147483648")}", RegistryValueKind.String);
         }
 
         /// <summary>
@@ -1258,16 +1263,15 @@ namespace SophiApp.Customizations
         /// <param name="enable">Caps Lock state.</param>
         public static void CapsLock(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Keyboard Layout", true)?.DeleteValue("Attributes", false);
+            Registry.CurrentUser.DeleteSubKeyValue("Keyboard Layout", "Attributes");
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout", true)?.DeleteValue("Scancode Map", false);
+                Registry.LocalMachine.DeleteSubKeyValue("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout", "Scancode Map");
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout", true)
-            ?.SetValue("Scancode Map", new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 }, RegistryValueKind.Binary);
+            Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout", "Scancode Map", new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0 }, RegistryValueKind.Binary);
         }
 
         /// <summary>
@@ -1276,7 +1280,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Sticky shift state.</param>
         public static void StickyShift(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Control Panel\\Accessibility\\StickyKeys", true)?.SetValue("Flags", $"{(enable ? "510" : "506")}", RegistryValueKind.String);
+            Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Accessibility\\StickyKeys", "Flags", $"{(enable ? "510" : "506")}", RegistryValueKind.String);
         }
 
         /// <summary>
@@ -1286,9 +1290,9 @@ namespace SophiApp.Customizations
         public static void Autoplay(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoDriveTypeAutoRun", Registry.LocalMachine, Registry.CurrentUser);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoDriveTypeAutoRun", LGPOScope.Computer, LGPOScope.User);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\AutoplayHandlers", true)?.SetValue("DisableAutoplay", enable ? 0 : 1, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\AutoplayHandlers", "DisableAutoplay", enable ? 0 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1297,10 +1301,8 @@ namespace SophiApp.Customizations
         /// <param name="enable">Thumbnail cache state.</param>
         public static void ThumbnailCacheRemoval(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache", true)
-                ?.SetValue("Autorun", enable ? 3 : 0, RegistryValueKind.DWord);
-            Registry.LocalMachine.OpenSubKey("Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache", true)
-                ?.SetValue("Autorun", enable ? 3 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache", "Autorun", enable ? 3 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\Thumbnail Cache", "Autorun", enable ? 3 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1309,8 +1311,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Restartable apps state.</param>
         public static void SaveRestartableApps(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", true)
-                ?.SetValue("RestartApps", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "RestartApps", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1320,7 +1321,7 @@ namespace SophiApp.Customizations
         public static void PowerPlan(int state)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Power\\PowerSettings", "ActivePowerScheme");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Power\\PowerSettings", "ActivePowerScheme");
 
             var arguments = $"/SETACTIVE {(state.Equals(1) ? "SCHEME_MIN" : "SCHEME_BALANCED")}";
@@ -1334,18 +1335,16 @@ namespace SophiApp.Customizations
         /// <param name="enable">Registry backup state.</param>
         public static void RegistryBackup(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\Maintenance", true)?.DeleteValue("MaintenanceDisabled", false);
+            Registry.LocalMachine.DeleteSubKeyValue("Software\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\Maintenance", "MaintenanceDisabled");
             ScheduledTaskService.SetState(ScheduledTaskService.FindTaskOrDefault("RegIdleBackup"), true);
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", true)
-                    ?.SetValue("EnablePeriodicBackup", 1, RegistryValueKind.DWord);
+                Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", "EnablePeriodicBackup", 1, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", true)
-                ?.DeleteValue("EnablePeriodicBackup", false);
+            Registry.LocalMachine.DeleteSubKeyValue("SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Configuration Manager", "EnablePeriodicBackup");
         }
 
         /// <summary>
@@ -1354,8 +1353,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Previous folders state.</param>
         public static void RestorePreviousFolders(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("PersistBrowsers", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "PersistBrowsers", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1369,17 +1367,18 @@ namespace SophiApp.Customizations
                 var appxPackage = AppxPackagesService.GetPackages().First(package => package.Id.Name.Equals("Microsoft.WindowsTerminal"));
                 var appxPath = $"Software\\Classes\\PackagedCom\\Package\\{appxPackage.Id.FullName}\\Class";
 
-                Registry.LocalMachine.OpenSubKey(appxPath)?.GetSubKeyNames()
+                using var packageClasses = Registry.LocalMachine.OpenSubKey(appxPath);
+                packageClasses?.GetSubKeyNames()
                     .ForEach(key =>
                     {
-                        switch (Registry.LocalMachine.OpenSubKey(Path.Combine(appxPath, key))?.GetValue("ServerId") ?? -1)
+                        switch (Registry.LocalMachine.GetSubKeyValue(Path.Combine(appxPath, key), "ServerId") ?? -1)
                         {
                             case 0:
-                                Registry.CurrentUser.OpenOrCreateSubKey("Console\\%%Startup").SetValue("DelegationConsole", key, RegistryValueKind.String);
+                                Registry.CurrentUser.CreateKeyAndSetValue("Console\\%%Startup", "DelegationConsole", key, RegistryValueKind.String);
 
                                 break;
                             case 1:
-                                Registry.CurrentUser.OpenOrCreateSubKey("Console\\%%Startup").SetValue("DelegationTerminal", key, RegistryValueKind.String);
+                                Registry.CurrentUser.CreateKeyAndSetValue("Console\\%%Startup", "DelegationTerminal", key, RegistryValueKind.String);
 
                                 break;
                             default:
@@ -1390,8 +1389,8 @@ namespace SophiApp.Customizations
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("Console\\%%Startup").SetValue("DelegationConsole", "{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}", RegistryValueKind.String);
-            Registry.CurrentUser.OpenSubKey("Console\\%%Startup", true)?.SetValue("DelegationTerminal", "{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}", RegistryValueKind.String);
+            Registry.CurrentUser.CreateKeyAndSetValue("Console\\%%Startup", "DelegationConsole", "{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}", RegistryValueKind.String);
+            Registry.CurrentUser.SetValueIfKeyExists("Console\\%%Startup", "DelegationTerminal", "{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}", RegistryValueKind.String);
         }
 
         /// <summary>
@@ -1400,49 +1399,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Clock state.</param>
         public static void ShowClockInNotificationCenter(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", true)
-                ?.SetValue("ShowClockInNotificationCenter", enable ? 1 : 0, RegistryValueKind.DWord);
-        }
-
-        /// <summary>
-        /// Download and install latest version .NET 8 desktop runtime from the Microsoft resources.
-        /// </summary>
-        /// <param name="enable">.NET Desktop install state.</param>
-        public static void InstallDotNetRuntime_8(bool enable)
-        {
-            if (enable)
-            {
-                var latestRelease = DataService.LatestReleaseNET8!;
-                var releaseVersion = $"windowsdesktop-runtime-{latestRelease.Version}-win-x64.exe";
-                var shellPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders";
-                var downloadFolder = Registry.CurrentUser.OpenSubKey(shellPath)?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                var offlineInstaller = Path.Combine(downloadFolder!, releaseVersion);
-                var downloadUrl = $"https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/{latestRelease.Version}/{releaseVersion}";
-                HttpService.DownloadFile(downloadUrl, offlineInstaller);
-                ProcessService.WaitForExit(offlineInstaller, "/install /passive /norestart");
-                File.Delete(offlineInstaller);
-                RedistributablePackageService.DeleteInstallerLogs("Microsoft_Windows_Desktop_Runtime*.log");
-            }
-        }
-
-        /// <summary>
-        /// Download and install latest version .NET 9 desktop runtime from the Microsoft resources.
-        /// </summary>
-        /// <param name="enable">.NET Desktop install state.</param>
-        public static void InstallDotNetRuntime_9(bool enable)
-        {
-            if (enable)
-            {
-                var latestRelease = DataService.LatestReleaseNET9!;
-                var releaseVersion = $"windowsdesktop-runtime-{latestRelease.Version}-win-x64.exe";
-                var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                var offlineInstaller = Path.Combine(downloadFolder!, releaseVersion);
-                var downloadUrl = $"https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/{latestRelease.Version}/{releaseVersion}";
-                HttpService.DownloadFile(downloadUrl, offlineInstaller);
-                ProcessService.WaitForExit(offlineInstaller, "/install /passive /norestart");
-                File.Delete(offlineInstaller);
-                RedistributablePackageService.DeleteInstallerLogs("Microsoft_Windows_Desktop_Runtime*.log");
-            }
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "ShowClockInNotificationCenter", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1453,15 +1410,23 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                var latestRelease = DataService.LatestReleaseNET10!;
-                var releaseVersion = $"windowsdesktop-runtime-{latestRelease.Version}-win-x64.exe";
-                var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                var offlineInstaller = Path.Combine(downloadFolder!, releaseVersion);
-                var downloadUrl = $"https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/{latestRelease.Version}/{releaseVersion}";
-                HttpService.DownloadFile(downloadUrl, offlineInstaller);
-                ProcessService.WaitForExit(offlineInstaller, "/install /passive /norestart");
-                File.Delete(offlineInstaller);
-                RedistributablePackageService.DeleteInstallerLogs("Microsoft_Windows_Desktop_Runtime*.log");
+                var latestVersion = DataService.LatestReleaseNET10!.Version;
+                var installerName = $"windowsdesktop-runtime-{latestVersion}-win-x64.exe";
+                RedistributablePackageService.Install($"https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/{latestVersion}/{installerName}", installerName, "Microsoft_Windows_Desktop_Runtime*.log");
+            }
+        }
+
+        /// <summary>
+        /// Download and install latest version .NET 11 desktop runtime from the Microsoft resources.
+        /// </summary>
+        /// <param name="enable">.NET Desktop install state.</param>
+        public static void InstallDotNetRuntime_11(bool enable)
+        {
+            if (enable)
+            {
+                var latestVersion = DataService.LatestReleaseNET11!.Version;
+                var installerName = $"windowsdesktop-runtime-{latestVersion}-win-x64.exe";
+                RedistributablePackageService.Install($"https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/{latestVersion}/{installerName}", installerName, "Microsoft_Windows_Desktop_Runtime*.log");
             }
         }
 
@@ -1473,12 +1438,7 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                var offlineInstaller = Path.Combine(downloadFolder!, "VC_redist.x86.exe");
-                HttpService.DownloadFile("https://aka.ms/vc14/vc_redist.x86.exe", offlineInstaller);
-                ProcessService.WaitForExit(offlineInstaller, "/install /passive /norestart");
-                File.Delete(offlineInstaller);
-                RedistributablePackageService.DeleteInstallerLogs("dd_vcredist_x86_*.log");
+                RedistributablePackageService.Install("https://aka.ms/vc14/vc_redist.x86.exe", "vc_redist.x86.exe", "dd_vcredist_*.log");
             }
         }
 
@@ -1490,12 +1450,7 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                var downloadFolder = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders")?.GetValue("{374DE290-123F-4565-9164-39C4925E467B}") as string;
-                var offlineInstaller = Path.Combine(downloadFolder!, "VC_redist.x64.exe");
-                HttpService.DownloadFile("https://aka.ms/vc14/vc_redist.x64.exe", offlineInstaller);
-                ProcessService.WaitForExit(offlineInstaller, "/install /passive /norestart");
-                File.Delete(offlineInstaller);
-                RedistributablePackageService.DeleteInstallerLogs("dd_vcredist_amd64_*.log");
+                RedistributablePackageService.Install("https://aka.ms/vc14/vc_redist.x64.exe", "vc_redist.x64.exe", "dd_vcredist_*.log");
             }
         }
 
@@ -1510,10 +1465,19 @@ namespace SophiApp.Customizations
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\Windows\\WindowsCopilot", "TurnOffWindowsCopilot", Registry.LocalMachine, Registry.CurrentUser);
             GroupPolicyService.SetRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\PolicyManager\\default\\WindowsAI\\DisableAIDataAnalysis", "value", 0, RegistryValueKind.DWord);
             GroupPolicyService.DeleteRegistryValue("Software\\Policies\\Microsoft\\WindowsStore", "RemoveWindowsStore", Registry.LocalMachine, Registry.CurrentUser);
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\WindowsAI", "DisableAIDataAnalysis", LGPOScope.Computer, LGPOScope.User);
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\WindowsAI", "AllowRecallEnablement");
+            GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\WindowsCopilot", "TurnOffWindowsCopilot", LGPOScope.Computer, LGPOScope.User);
+            GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\WindowsStore", "RemoveWindowsStore", LGPOScope.Computer, LGPOScope.User);
 
-            if (enable)
+            // The "enable" parameter means that Windows AI has to be removed
+            if (!enable)
             {
-                _ = PowerShellService.Invoke("Enable-WindowsOptionalFeature -Online -FeatureName Recall -All -NoRestart; Start-Process -FilePath 'ms-windows-store://pdp/?ProductId=9NHT9RB2F4HD'");
+                _ = PowerShellService.Invoke("Enable-WindowsOptionalFeature -Online -FeatureName Recall -All -NoRestart");
+
+                // Open the Copilot page in Microsoft Store
+                using var store = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-windows-store://pdp/?ProductId=9NHT9RB2F4HD") { UseShellExecute = true });
                 return;
             }
 
@@ -1527,8 +1491,8 @@ namespace SophiApp.Customizations
         /// <param name="enable">XBOX game bar state.</param>
         public static void XBOXGameBar(bool enable)
         {
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", true)?.SetValue("AppCaptureEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
-            Registry.CurrentUser.OpenSubKey("System\\GameConfigStore", true)?.SetValue("GameDVR_Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "AppCaptureEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
+            Registry.CurrentUser.SetValueIfKeyExists("System\\GameConfigStore", "GameDVR_Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1537,10 +1501,14 @@ namespace SophiApp.Customizations
         /// <param name="enable">XBOX game tips state.</param>
         public static void XBOXGameTips(bool enable)
         {
-            // We need to turn XBOX Game Bar first
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", true)?.SetValue("AppCaptureEnabled", enable ? 1 : 0, RegistryValueKind.DWord);
-            Registry.CurrentUser.OpenSubKey("System\\GameConfigStore", true)?.SetValue("GameDVR_Enabled", enable ? 1 : 0, RegistryValueKind.DWord);
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\GameBar", true)?.SetValue("ShowStartupPanel", enable ? 1 : 0, RegistryValueKind.DWord);
+            if (enable)
+            {
+                // We need to turn XBOX Game Bar on first
+                Registry.CurrentUser.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "AppCaptureEnabled", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.SetValueIfKeyExists("System\\GameConfigStore", "GameDVR_Enabled", 1, RegistryValueKind.DWord);
+            }
+
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\GameBar", "ShowStartupPanel", enable ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1549,7 +1517,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">GPU scheduling state.</param>
         public static void GPUScheduling(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers")?.SetValue("HwSchMode", enable ? 2 : 1, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers", "HwSchMode", enable ? 2 : 1, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -1566,7 +1534,6 @@ namespace SophiApp.Customizations
             if (enable)
             {
                 AppNotificationService.EnableToastNotification();
-                GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableNotificationCenter", LGPOScope.Computer, LGPOScope.User);
                 RegistryService.RemoveVolumeCachesStateFlags();
                 RegistryService.SetVolumeCachesStateFlags();
                 AppNotificationService.RegisterAsToastSender();
@@ -1595,7 +1562,6 @@ namespace SophiApp.Customizations
             if (enable)
             {
                 AppNotificationService.EnableToastNotification();
-                GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableNotificationCenter", LGPOScope.Computer, LGPOScope.User);
                 AppNotificationService.RegisterAsToastSender();
                 ScheduledTaskService.RegisterSoftwareDistributionTask();
                 return;
@@ -1617,7 +1583,6 @@ namespace SophiApp.Customizations
             if (enable)
             {
                 AppNotificationService.EnableToastNotification();
-                GroupPolicyService.ClearPolicyCache("Software\\Policies\\Microsoft\\Windows\\Explorer", "DisableNotificationCenter", LGPOScope.Computer, LGPOScope.User);
                 AppNotificationService.RegisterAsToastSender();
                 ScheduledTaskService.RegisterTempTask();
                 return;
@@ -1642,7 +1607,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">PUApps detection state.</param>
         public static void PUAppsDetection(bool enable)
         {
-            _ = PowerShellService.Invoke($"Set-MpPreference -PUAProtection {(enable ? "enable" : "Disabled")}");
+            _ = PowerShellService.Invoke($"Set-MpPreference -PUAProtection {(enable ? "Enabled" : "Disabled")}");
         }
 
         /// <summary>
@@ -1651,7 +1616,8 @@ namespace SophiApp.Customizations
         /// <param name="enable">Microsoft Defender sandbox state.</param>
         public static void DefenderSandbox(bool enable)
         {
-            _ = PowerShellService.Invoke($"setx /M MP_FORCE_USE_SANDBOX {(enable ? "1" : "0")}");
+            // The machine environment variable is set by .NET itself: starting PowerShell to run setx.exe is not needed
+            Environment.SetEnvironmentVariable("MP_FORCE_USE_SANDBOX", enable ? "1" : "0", EnvironmentVariableTarget.Machine);
         }
 
         /// <summary>
@@ -1665,17 +1631,17 @@ namespace SophiApp.Customizations
             if (enable)
             {
                 // Enable events auditing generated when a process is created (starts)
-                _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
+                _ = ProcessService.WaitForExit(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "auditpol.exe"), "/set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
                 // Include command line in process creation events
-                Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", true)?.SetValue("ProcessCreationIncludeCmdLine_Enabled", 1, RegistryValueKind.DWord);
+                Registry.LocalMachine.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", "ProcessCreationIncludeCmdLine_Enabled", 1, RegistryValueKind.DWord);
                 GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", "ProcessCreationIncludeCmdLine_Enabled", "DWORD", "1");
                 // Enable logging for all Windows PowerShell modules
-                Registry.LocalMachine.OpenOrCreateSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames").SetValue("*", "*", RegistryValueKind.String);
-                Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging", true)?.SetValue("EnableModuleLogging", 1, RegistryValueKind.DWord);
+                Registry.LocalMachine.CreateKeyAndSetValue("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames", "*", "*", RegistryValueKind.String);
+                Registry.LocalMachine.SetValueIfKeyExists("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging", "EnableModuleLogging", 1, RegistryValueKind.DWord);
                 GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames", "*", "SZ", "*");
                 GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging", "EnableModuleLogging", "DWORD", "1");
                 // Enable logging for all PowerShell scripts input to the Windows PowerShell event log
-                Registry.LocalMachine.OpenOrCreateSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging").SetValue("EnableScriptBlockLogging", 1, RegistryValueKind.DWord);
+                Registry.LocalMachine.CreateKeyAndSetValue("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging", "EnableScriptBlockLogging", 1, RegistryValueKind.DWord);
                 GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging", "EnableScriptBlockLogging", "DWORD", "1");
                 // Create custom "Process Creation" view in the Event Viewer
                 var eventsXml = $@"<ViewerConfig>
@@ -1699,18 +1665,20 @@ namespace SophiApp.Customizations
             }
 
             // Disable events auditing generated when a process is created (starts)
-            _ = PowerShellService.Invoke("auditpol /set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:disable /failure:disable");
-            // Remove the "Process Creation" custom view in the Event Viewer
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", true)?.DeleteValue("ProcessCreationIncludeCmdLine_Enabled", false);
+            _ = ProcessService.WaitForExit(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "auditpol.exe"), "/set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:disable /failure:disable");
+            // Do not include command line in process creation events
+            Registry.LocalMachine.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", "ProcessCreationIncludeCmdLine_Enabled");
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit", "ProcessCreationIncludeCmdLine_Enabled");
             // Disable logging for all Windows PowerShell modules
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging", true)?.DeleteValue("EnableModuleLogging", false);
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames", true)?.DeleteValue("*", false);
+            Registry.LocalMachine.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging", "EnableModuleLogging");
+            Registry.LocalMachine.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames", "*");
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging", "EnableModuleLogging");
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\ModuleNames", "*");
             // Disable logging for all PowerShell scripts input to the Windows PowerShell event log
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging", true)?.DeleteValue("EnableScriptBlockLogging", false);
+            Registry.LocalMachine.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging", "EnableScriptBlockLogging");
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging", "EnableScriptBlockLogging");
-            File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Microsoft\\Event Viewer\\Views\\ProcessCreation.xml"));
+            // Remove the "Process Creation" custom view in the Event Viewer
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Microsoft\\Event Viewer\\Views\\ProcessCreation.xml").TryDelete();
         }
 
         /// <summary>
@@ -1719,7 +1687,7 @@ namespace SophiApp.Customizations
         /// <param name="enable">Windows SmartScreen state.</param>
         public static void AppsSmartScreen(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.SetValue("SmartScreenEnabled", $"{(enable ? "Warn" : "Off")}", RegistryValueKind.String);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", "SmartScreenEnabled", $"{(enable ? "Warn" : "Off")}", RegistryValueKind.String);
         }
 
         /// <summary>
@@ -1729,21 +1697,21 @@ namespace SophiApp.Customizations
         public static void SaveZoneInformation(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation");
 
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", true)?.DeleteValue("SaveZoneInformation", false);
-                // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
-                GroupPolicyService.ClearPolicyCache(scope: LGPOScope.User, path: "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", name: "SaveZoneInformation", type: "DWORD", value: "1");
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation");
+                // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+                GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation");
 
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments").SetValue("SaveZoneInformation", 1, RegistryValueKind.DWord);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
-            GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation");
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation", 1, RegistryValueKind.DWord);
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments", "SaveZoneInformation", "DWORD", "1");
         }
 
         /// <summary>
@@ -1751,27 +1719,27 @@ namespace SophiApp.Customizations
         /// </summary>
         /// <param name="enable">Windows Sandbox state.</param>
         public static void WindowsSandbox(bool enable)
-            => PowerShellService.Invoke($"{(enable ? "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart" : "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart")}");
+            => PowerShellService.Invoke($"{(enable ? "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart" : "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart")}");
 
         /// <summary>
         /// Set Local Security Authority state.
         /// </summary>
-        /// <param name="enable">ocal Security Authority state.</param>
+        /// <param name="enable">Local Security Authority state.</param>
         public static void LocalSecurityAuthority(bool enable)
         {
             GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "Software\\Policies\\Microsoft\\Windows\\System", "RunAsPPL");
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\System", "RunAsPPL");
 
             if (enable)
             {
-                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.SetValue("RunAsPPL", 2, RegistryValueKind.DWord);
-                Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.SetValue("RunAsPPLBoot", 2, RegistryValueKind.DWord);
+                Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\Lsa", "RunAsPPL", 2, RegistryValueKind.DWord);
+                Registry.LocalMachine.SetValueIfKeyExists("SYSTEM\\CurrentControlSet\\Control\\Lsa", "RunAsPPLBoot", 2, RegistryValueKind.DWord);
                 return;
             }
 
-            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPL", false);
-            Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Lsa", true)?.DeleteValue("RunAsPPLBoot", false);
+            Registry.LocalMachine.DeleteSubKeyValue("SYSTEM\\CurrentControlSet\\Control\\Lsa", "RunAsPPL");
+            Registry.LocalMachine.DeleteSubKeyValue("SYSTEM\\CurrentControlSet\\Control\\Lsa", "RunAsPPLBoot");
         }
 
         /// <summary>
@@ -1782,9 +1750,9 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.ClassesRoot.OpenOrCreateSubKey("Msi.Package\\shell\\Extract\\Command").SetValue(string.Empty, "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"", RegistryValueKind.String);
-                Registry.ClassesRoot.OpenSubKey("Msi.Package\\shell\\Extract", true)?.SetValue("MUIVerb", "@shell32.dll,-37514", RegistryValueKind.String);
-                Registry.ClassesRoot.OpenSubKey("Msi.Package\\shell\\Extract", true)?.SetValue("Icon", "shell32.dll,-16817", RegistryValueKind.String);
+                Registry.ClassesRoot.CreateKeyAndSetValue("Msi.Package\\shell\\Extract\\Command", string.Empty, "msiexec.exe /a \"%1\" /qb TARGETDIR=\"%1 extracted\"", RegistryValueKind.String);
+                Registry.ClassesRoot.SetValueIfKeyExists("Msi.Package\\shell\\Extract", "MUIVerb", "@shell32.dll,-37514", RegistryValueKind.String);
+                Registry.ClassesRoot.SetValueIfKeyExists("Msi.Package\\shell\\Extract", "Icon", "%SystemRoot%\\System32\\shell32.dll,-16817", RegistryValueKind.String);
 
                 return;
             }
@@ -1800,66 +1768,13 @@ namespace SophiApp.Customizations
         {
             if (enable)
             {
-                Registry.ClassesRoot.OpenOrCreateSubKey("CABFolder\\Shell\\runas\\Command")
-                    .SetValue(string.Empty, "cmd /c DISM.exe /Online /Add-Package /PackagePath:\"%1\" /NoRestart & pause", RegistryValueKind.String);
-                Registry.ClassesRoot.OpenSubKey("CABFolder\\Shell\\runas", true)?.SetValue("MUIVerb", "@shell32.dll,-10210", RegistryValueKind.String);
-                Registry.ClassesRoot.OpenSubKey("CABFolder\\Shell\\runas", true)?.SetValue("HasLUAShield", string.Empty, RegistryValueKind.String);
+                Registry.ClassesRoot.CreateKeyAndSetValue("CABFolder\\Shell\\runas\\Command", string.Empty, "cmd /c DISM.exe /Online /Add-Package /PackagePath:\"%1\" /NoRestart & pause", RegistryValueKind.String);
+                Registry.ClassesRoot.SetValueIfKeyExists("CABFolder\\Shell\\runas", "MUIVerb", "@shell32.dll,-10210", RegistryValueKind.String);
+                Registry.ClassesRoot.SetValueIfKeyExists("CABFolder\\Shell\\runas", "HasLUAShield", string.Empty, RegistryValueKind.String);
                 return;
             }
 
             Registry.ClassesRoot.DeleteSubKeyTree("CABFolder\\Shell\\runas", false);
-        }
-
-        /// <summary>
-        /// Set "Print" item in the .bat and .cmd files context menu state.
-        /// </summary>
-        /// <param name="enable">"Print" item state.</param>
-        public static void PrintCMDContext(bool enable)
-        {
-            if (enable)
-            {
-                Registry.ClassesRoot.OpenSubKey("batfile\\shell\\print", true)?.DeleteValue("ProgrammaticAccessOnly", false);
-                Registry.ClassesRoot.OpenSubKey("cmdfile\\shell\\print", true)?.DeleteValue("ProgrammaticAccessOnly", false);
-                return;
-            }
-
-            Registry.ClassesRoot.OpenSubKey("batfile\\shell\\print", true)?.SetValue("ProgrammaticAccessOnly", string.Empty, RegistryValueKind.String);
-            Registry.ClassesRoot.OpenSubKey("cmdfile\\shell\\print", true)?.SetValue("ProgrammaticAccessOnly", string.Empty, RegistryValueKind.String);
-        }
-
-        /// <summary>
-        /// Set "Compressed (zipped) Folder" item in the "New" context menu state.
-        /// </summary>
-        /// <param name="enable">"Compressed (zipped) Folder" item state.</param>
-        public static void CompressedFolderNewContext(bool enable)
-        {
-            var zipContext = new byte[] { 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-            if (enable)
-            {
-                Registry.ClassesRoot.OpenOrCreateSubKey(".zip\\CompressedFolder\\ShellNew").SetValue("Data", zipContext, RegistryValueKind.Binary);
-                Registry.ClassesRoot.OpenSubKey(".zip\\CompressedFolder\\ShellNew", true)?.SetValue("ItemName", "@%SystemRoot%\\System32\\zipfldr.dll,-10194", RegistryValueKind.ExpandString);
-                return;
-            }
-
-            Registry.ClassesRoot.DeleteSubKeyTree(".zip\\CompressedFolder\\ShellNew", false);
-        }
-
-        /// <summary>
-        /// Set "Open", "Print", and "Edit" context menu items available when selecting more than 15 files state.
-        /// </summary>
-        /// <param name="enable">"Open", "Print", and "Edit" context menu items state.</param>
-        public static void MultipleInvokeContext(bool enable)
-        {
-            if (enable)
-            {
-                Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)
-                    ?.SetValue("MultipleInvokePromptMinimum", 300, RegistryValueKind.DWord);
-
-                return;
-            }
-
-            Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer", true)?.DeleteValue("MultipleInvokePromptMinimum", false);
         }
 
         /// <summary>
@@ -1868,19 +1783,21 @@ namespace SophiApp.Customizations
         /// <param name="enable">"Look for an app in the Microsoft Store" items state.</param>
         public static void UseStoreOpenWith(bool enable)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("NoUseStoreOpenWith", false);
+            // Remove all policies in order to make changes visible in UI
+            Registry.LocalMachine.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "NoUseStoreOpenWith");
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "Software\\Policies\\Microsoft\\Windows\\Explorer", "NoUseStoreOpenWith");
 
             if (enable)
             {
-                Registry.CurrentUser.OpenSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer", true)?.DeleteValue("NoUseStoreOpenWith", false);
-                // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+                Registry.CurrentUser.DeleteSubKeyValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "NoUseStoreOpenWith");
+                // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
                 GroupPolicyService.ClearPolicyCache(LGPOScope.User, "Software\\Policies\\Microsoft\\Windows\\Explorer", "NoUseStoreOpenWith");
 
                 return;
             }
 
-            Registry.CurrentUser.OpenOrCreateSubKey("Software\\Policies\\Microsoft\\Windows\\Explorer").SetValue("NoUseStoreOpenWith", 1, RegistryValueKind.DWord);
-            // Call LGPO.exe to make changes in "C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            Registry.CurrentUser.CreateKeyAndSetValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "NoUseStoreOpenWith", 1, RegistryValueKind.DWord);
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
             GroupPolicyService.ClearPolicyCache(scope: LGPOScope.User, path: "Software\\Policies\\Microsoft\\Windows\\Explorer", name: "NoUseStoreOpenWith", type: "DWORD", value: "1");
         }
 
@@ -1893,6 +1810,15 @@ namespace SophiApp.Customizations
             try
             {
                 var terminalSettings = $"{Environment.ExpandEnvironmentVariables("%LOCALAPPDATA%")}\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json";
+
+                // Windows Terminal creates the configuration file on its first launch
+                if (!File.Exists(terminalSettings))
+                {
+                    using var terminal = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("wt.exe") { UseShellExecute = true });
+                    Thread.Sleep(2000);
+                    ProcessService.KillProcessByName(3000, "WindowsTerminal");
+                }
+
                 var deserializeSettings = JsonConvert.DeserializeObject(File.ReadAllText(terminalSettings, Encoding.UTF8)) as JObject;
                 var elevateSetting = deserializeSettings?.SelectToken("profiles.defaults.elevate");
 
@@ -1901,6 +1827,13 @@ namespace SophiApp.Customizations
                     var defaultsSetting = deserializeSettings!.SelectToken("profiles.defaults") as JObject;
                     defaultsSetting!.Add(new JProperty("elevate", string.Empty));
                     elevateSetting = deserializeSettings!.SelectToken("profiles.defaults.elevate");
+                }
+
+                if (enable)
+                {
+                    // Unblock the Windows Terminal context menu shell extension
+                    Registry.CurrentUser.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", "{9F156763-7844-4DC4-B2B1-901F640F5155}");
+                    Registry.LocalMachine.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", "{9F156763-7844-4DC4-B2B1-901F640F5155}");
                 }
 
                 elevateSetting!.Replace(enable);

@@ -97,7 +97,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void SetAutoRestartShell(bool allow)
         {
-            Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", true)?.SetValue("AutoRestartShell", allow ? 1 : 0, RegistryValueKind.DWord);
+            Registry.LocalMachine.SetValueIfKeyExists("Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "AutoRestartShell", allow ? 1 : 0, RegistryValueKind.DWord);
         }
 
         /// <inheritdoc/>

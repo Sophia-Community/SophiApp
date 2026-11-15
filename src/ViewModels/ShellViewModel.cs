@@ -33,12 +33,15 @@ public partial class ShellViewModel : ObservableRecipient
     private const string AppUiDeveloperUrl = "https://www.linkedin.com/in/artenjoyers";
     private const string AppUxDeveloperUrl = "https://www.linkedin.com/in/vladimir-palii-132745a1";
     private const string UpdateUEFICertificatesUrl = "https://techcommunity.microsoft.com/blog/windows-itpro-blog/updating-microsoft-secure-boot-keys/4055324";
+    private const string SigningUEFICertificatesUrl = "https://techcommunity.microsoft.com/blog/hardware-dev-center/signing-with-the-new-2023-microsoft-uefi-certificates-what-submitters-need-to-kn/4455787";
+    private const string EnableSecureBootUrl = "https://support.microsoft.com/en-us/windows/security/devicesecurity/windows-11-and-secure-boot";
     private readonly IAppNotificationService notificationService;
     private readonly IAppxPackagesService packagesService;
     private readonly IGroupPolicyService groupPolicyService;
     private readonly IInstrumentationService instrumentationService;
     private readonly IModelService modelService;
     private readonly IOsService osService;
+    private readonly IPowerShellService powerShellService;
     private readonly IProcessService processService;
     private readonly IRegistryService registryService;
     private readonly IRequirementsService requirementsService;
@@ -83,6 +86,7 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="osService">A service for working with Windows services API.</param>
     /// <param name="notificationService">A service for working with toast notifications API.</param>
     /// <param name="packagesService">A service for working with appx packages API.</param>
+    /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
     /// <param name="processService">A service for working with Windows process API.</param>
     /// <param name="registryService">A service for working with Windows registry API.</param>
     /// <param name="requirementsService">Service for working with OS requirements.</param>
@@ -99,6 +103,7 @@ public partial class ShellViewModel : ObservableRecipient
         INavigationService navigationService,
         INavigationViewService navigationViewService,
         IOsService osService,
+        IPowerShellService powerShellService,
         IProcessService processService,
         IRegistryService registryService,
         IRequirementsService requirementsService,
@@ -112,6 +117,7 @@ public partial class ShellViewModel : ObservableRecipient
         this.notificationService = notificationService;
         this.osService = osService;
         this.packagesService = packagesService;
+        this.powerShellService = powerShellService;
         this.processService = processService;
         this.registryService = registryService;
         this.requirementsService = requirementsService;
@@ -125,7 +131,7 @@ public partial class ShellViewModel : ObservableRecipient
         ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
         AppUpdate_Command = new RelayCommand(() => httpService.OpenUrl(AppLatestReleaseUrl));
         ContinueRequirementActionsExecute_Command = new RelayCommand(ContinueRequirementActionsExecute);
-        DeleteLGPOFile_Command = new RelayCommand(() => DebugOptions.DeleteLGPOFile = !DebugOptions.DeleteLGPOFile);
+        DecryptSystemDrive_Command = new AsyncRelayCommand(DecryptSystemDriveAsync);
         OpenAppAnimationDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppAnimationDeveloperUrl));
         OpenAppDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppDeveloperUrl));
         OpenAppDiscordPage_Command = new RelayCommand(() => httpService.OpenUrl(AppDiscordUrl));
@@ -148,7 +154,12 @@ public partial class ShellViewModel : ObservableRecipient
         SearchBoxQuerySubmitted_Command = new AsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs>(args => SearchBoxQuerySubmittedAsync(args!));
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
-        UpdateUEFICertificates_Command = new RelayCommand(() => httpService.OpenUrl(UpdateUEFICertificatesUrl));
+        UpdateUEFICertificates_Command = new RelayCommand(() =>
+        {
+            httpService.OpenUrl(UpdateUEFICertificatesUrl);
+            httpService.OpenUrl(SigningUEFICertificatesUrl);
+        });
+        EnableSecureBoot_Command = new RelayCommand(() => httpService.OpenUrl(EnableSecureBootUrl));
         UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
     }
 
@@ -173,9 +184,9 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand ContinueRequirementActionsExecute_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to click an "Delete LGPO.txt file" CheckBox in Settings page.
+    /// Gets <see cref="IAsyncRelayCommand"/> to decrypt the system drive and continue execution of requirement actions.
     /// </summary>
-    public IRelayCommand DeleteLGPOFile_Command { get; private set; }
+    public IAsyncRelayCommand DecryptSystemDrive_Command { get; private set; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app animation developer contacts page.
@@ -293,6 +304,11 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand UpdateUEFICertificates_Command { get; private set; }
 
     /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to open enable Secure Boot manual url.
+    /// </summary>
+    public IRelayCommand EnableSecureBoot_Command { get; private set; }
+
+    /// <summary>
     /// Gets <see cref="IRelayCommand"/> to click an "For all users" checkbox in the UWP page.
     /// </summary>
     public IRelayCommand UwpForAllUsersClicked_Command { get; private set; }
@@ -390,11 +406,15 @@ public partial class ShellViewModel : ObservableRecipient
         ApplicableModels.Clear();
         InfoBadgeCounters.ResetAll();
         App.Logger.LogApplicableModelsClear();
-        groupPolicyService.UpdatePolicy(deleteConfig: DebugOptions.DeleteLGPOFile);
+        groupPolicyService.UpdatePolicy();
+
+        // Save all opened folders in order to restore them after File Explorer restart
+        var openedFolders = ExplorerHelper.GetOpenedFolders();
         EnvironmentHelper.RefreshUserDesktop();
         EnvironmentHelper.ForcedRefresh();
         processService.KillProcessByName("StartMenuExperienceHost");
         processService.KillProcessByName("explorer");
+        await ExplorerHelper.RestoreAsync(openedFolders);
         notificationService.EnableToastNotification();
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
@@ -412,6 +432,13 @@ public partial class ShellViewModel : ObservableRecipient
         App.Logger.LogApplicableModelsClear();
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
+    }
+
+    private async Task DecryptSystemDriveAsync()
+    {
+        // Start decrypting the system drive and continue. The decryption goes on in the background
+        await Task.Run(() => powerShellService.TryInvoke("Disable-BitLocker -MountPoint $env:SystemDrive", out _));
+        ContinueRequirementActionsExecute();
     }
 
     private void ContinueRequirementActionsExecute()
@@ -533,6 +560,8 @@ public partial class ShellViewModel : ObservableRecipient
                 osService.TryStart("SysMain");
             }
 
+            // Windows Security Service must be running
+            osService.TryStart("SecurityHealthService");
             instrumentationService.SetPageFileAutoSize();
             registryService.UseLatestCLR();
             groupPolicyService.DeleteLGPOConfig();

@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="using:SophiApp.Converters"
     xmlns:helpers="using:SophiApp.Helpers"
-    xmlns:behaviors="using:SophiApp.Behaviors"
     xmlns:sys="using:System"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:interaction="using:Microsoft.Xaml.Interactivity"

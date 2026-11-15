@@ -13,42 +13,40 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class GroupPolicyService : IGroupPolicyService
     {
-        private readonly IProcessService processService;
-        private readonly bool gpeditExists = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "gpedit.msc"));
-        private readonly string lgpoExe = Path.Combine(AppContext.BaseDirectory, "Binaries", "LGPO.exe");
-        private readonly string lgpoSettings = Environment.ExpandEnvironmentVariables("%TEMP%\\LGPO.txt");
+        // The policies are shared by all instances of the service and are written to Registry.pol once, after all functions were applied
+        private static readonly object PoliciesLock = new ();
+        private static readonly bool GpeditExists = File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "gpedit.msc"));
+        private static readonly string MachinePolicyFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\Machine\\Registry.pol");
+        private static readonly string UserPolicyFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\User\\Registry.pol");
+        private static readonly string GptIniFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\gpt.ini");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GroupPolicyService"/> class.
-        /// </summary>
-        /// <param name="processService">A service for working with Windows process./> API.</param>
-        public GroupPolicyService(IProcessService processService)
-        {
-            this.processService = processService;
-        }
+        // A leftover of the previous versions of the app
+        private static readonly string LegacyLgpoSettings = Environment.ExpandEnvironmentVariables("%TEMP%\\LGPO.txt");
+        private static Dictionary<LGPOScope, List<RegistryPolicy.Entry>>? policies;
 
         /// <inheritdoc/>
-        public void DeleteLGPOConfig() => lgpoSettings.TryDelete();
+        public void DeleteLGPOConfig()
+        {
+            // Forget the changes that were not written. The policies will be read from Registry.pol again
+            ResetPolicies();
+            LegacyLgpoSettings.TryDelete();
+        }
 
         /// <inheritdoc/>
         public void DeleteRegistryValue(RegistryKey registryKey, string subKey, string value)
         {
-            registryKey.OpenSubKey(subKey, true)?.DeleteValue(value, false);
-            registryKey.Dispose();
+            registryKey.DeleteSubKeyValue(subKey, value);
         }
 
         /// <inheritdoc/>
         public void DeleteRegistryValue(RegistryKey registryKey, string subKey, params string[] values)
         {
-            var regKey = registryKey.OpenSubKey(subKey, true);
+            using var regKey = registryKey.OpenSubKey(subKey, true);
 
             foreach (var value in values)
             {
                 regKey?.DeleteValue(value, false);
             }
-
-            regKey?.Dispose();
-            registryKey.Dispose();
         }
 
         /// <inheritdoc/>
@@ -56,8 +54,7 @@ namespace SophiApp.Services
         {
             foreach (var key in registryKeys)
             {
-                key.OpenSubKey(subKey, true)?.DeleteValue(value, false);
-                key.Dispose();
+                key.DeleteSubKeyValue(subKey, value);
             }
         }
 
@@ -65,50 +62,112 @@ namespace SophiApp.Services
         public void SetRegistryValue<T>(RegistryKey registryKey, string subKey, string name, T value, RegistryValueKind kind)
             where T : struct
         {
-            registryKey.OpenSubKey(subKey, true)?.SetValue(name, value, kind);
-            registryKey.Dispose();
+            registryKey.SetValueIfKeyExists(subKey, name, value, kind);
         }
 
         /// <inheritdoc/>
         public void ClearPolicyCache(LGPOScope scope, string path, string name, string type = "", string value = "")
         {
-            if (gpeditExists)
+            lock (PoliciesLock)
             {
-                var settingValues = string.IsNullOrWhiteSpace(type) && string.IsNullOrWhiteSpace(value)
-                    ? [scope.ToString(), path, name, "CLEAR", string.Empty]
-                    : new string[5] { scope.ToString(), path, name, $"{type}:{value}", string.Empty };
-                File.AppendAllLines(lgpoSettings, settingValues, System.Text.Encoding.UTF8);
+                if (!TryGetPolicies(scope, out var entries))
+                {
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(type) && string.IsNullOrWhiteSpace(value))
+                {
+                    // No type and value: remove the policy
+                    RegistryPolicy.Remove(entries, path, name);
+                    return;
+                }
+
+                // Otherwise set the policy value
+                RegistryPolicy.Set(entries, path, name, type, value);
             }
         }
 
         /// <inheritdoc/>
         public void ClearPolicyCache(string path, string name, params LGPOScope[] scopes)
         {
-            if (gpeditExists)
+            foreach (var scope in scopes)
             {
-                var scopeValues = new List<string>();
-
-                foreach (var scope in scopes)
-                {
-                    scopeValues.AddRange([scope.ToString(), path, name, "CLEAR", string.Empty]);
-                }
-
-                File.AppendAllLines(lgpoSettings, scopeValues, System.Text.Encoding.UTF8);
+                ClearPolicyCache(scope, path, name);
             }
         }
 
         /// <inheritdoc/>
-        public void UpdatePolicy(bool deleteConfig = true)
+        public void UpdatePolicy()
         {
-            if (File.Exists(lgpoSettings) && File.Exists(lgpoExe))
+            lock (PoliciesLock)
             {
-                _ = processService.WaitForExit(name: lgpoExe, arguments: $"/t {lgpoSettings}");
-
-                if (deleteConfig)
+                if (policies is null || policies.Count == 0)
                 {
-                    File.Delete(lgpoSettings);
+                    return;
+                }
+
+                try
+                {
+                    // Registry.pol is recreated from scratch, so it has the policies from the list only. If the list is empty, the file is removed
+                    // Write returns true if the file was changed
+                    var machineChanged = RegistryPolicy.Write(MachinePolicyFile, policies[LGPOScope.Computer]);
+                    var userChanged = RegistryPolicy.Write(UserPolicyFile, policies[LGPOScope.User]);
+
+                    // Windows applies the policies only if the gpt.ini version was increased
+                    if (machineChanged || userChanged)
+                    {
+                        RegistryPolicy.UpdateGptIni(GptIniFile, machineChanged, userChanged);
+                    }
+                }
+                finally
+                {
+                    // Policies will be read again if any function is applied after
+                    ResetPolicies();
                 }
             }
+        }
+
+        private static void ResetPolicies()
+        {
+            lock (PoliciesLock)
+            {
+                policies = null;
+            }
+        }
+
+        /// <summary>
+        /// Gets the policies of the scope. All current policies are read from Registry.pol files once.
+        /// </summary>
+        /// <param name="scope">Policies scope.</param>
+        /// <param name="entries">Policies of the scope.</param>
+        private static bool TryGetPolicies(LGPOScope scope, out List<RegistryPolicy.Entry> entries)
+        {
+            entries = [];
+
+            // Windows Home edition doesn't have the Local Group Policy Editor snap-in (gpedit.msc)
+            if (!GpeditExists)
+            {
+                return false;
+            }
+
+            if (policies is null)
+            {
+                try
+                {
+                    policies = new Dictionary<LGPOScope, List<RegistryPolicy.Entry>>
+                    {
+                        [LGPOScope.Computer] = RegistryPolicy.Read(MachinePolicyFile),
+                        [LGPOScope.User] = RegistryPolicy.Read(UserPolicyFile),
+                    };
+                }
+                catch (Exception)
+                {
+                    // Registry.pol cannot be read, so it is kept as is. An empty table means that there is nothing to change and to write back
+                    policies = [];
+                }
+            }
+
+            return policies.TryGetValue(scope, out entries!);
         }
     }
 }

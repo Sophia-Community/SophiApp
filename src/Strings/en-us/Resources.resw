@@ -145,10 +145,10 @@
     <value>Settings</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>SophiApp</value>
+    <value>SophiApp for Windows</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>SophiApp</value>
+    <value>SophiApp for Windows</value>
   </data>
   <data name="Control_ForWindows.Text" xml:space="preserve">
     <value>of Windows®</value>
@@ -177,11 +177,8 @@
   <data name="Button_Apply.Content" xml:space="preserve">
     <value>Apply</value>
   </data>
-  <data name="SettingsPage_Links.Title" xml:space="preserve">
-    <value>Links</value>
-  </data>
   <data name="OsRequirements_LoggedUserNotAdmin_1" xml:space="preserve">
-    <value>The logged-in user doesn't have admin rights: {0}</value>
+    <value>The logged-in user "{0}" doesn't have admin rights.</value>
   </data>
   <data name="OsRequirements_RunFromLoggedUser" xml:space="preserve">
     <value>Checking current user's rights...</value>
@@ -190,7 +187,7 @@
     <value>Checking for harmful tweakers...</value>
   </data>
   <data name="OsRequirements_HarmfulTweakerFound" xml:space="preserve">
-    <value>Windows stability may have been compromised by using: {0}</value>
+    <value>Windows stability may have been compromised by using {0}.</value>
   </data>
   <data name="OsRequirements_Malware_GhostToolbox" xml:space="preserve">
     <value>Ghost Toolbox</value>
@@ -223,7 +220,7 @@
     <value>Checking pending reboot status...</value>
   </data>
   <data name="OsRequirements_GetAppNewVersion" xml:space="preserve">
-    <value>Checking latest SophiApp version...</value>
+    <value>Checking latest SophiApp for Windows version...</value>
   </data>
   <data name="OsRequirements_GetDefenderComponents" xml:space="preserve">
     <value>Checking Microsoft Defender components status...</value>
@@ -271,7 +268,7 @@
     <value>Enable diagnostic tracking tasks</value>
   </data>
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
-    <value>Enable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, StartupAppTask, ProgramDataUpdater, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask, FamilySafetyMonitor, FamilySafetyRefreshTask, XblGameSaveTask.</value>
+    <value>Enable following telemetry related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, Microsoft Compatibility Appraiser Exp, StartupAppTask, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask.</value>
   </data>
   <data name="UIModel_SigninInfo_Title" xml:space="preserve">
     <value>Use sign-in info to automatically finish setting up device after an update</value>
@@ -374,6 +371,21 @@
   </data>
   <data name="UIModel_QuickAccessFrequentFolders_Title" xml:space="preserve">
     <value>Show frequently used folders in Quick access</value>
+  </data>
+  <data name="UIModel_TaskbarPosition_Title" xml:space="preserve">
+    <value>Set the taskbar position</value>
+  </data>
+  <data name="UIModel_TaskbarPosition_Title_1" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="UIModel_TaskbarPosition_Title_2" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="UIModel_TaskbarPosition_Title_3" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="UIModel_TaskbarPosition_Title_4" xml:space="preserve">
+    <value>Right</value>
   </data>
   <data name="UIModel_TaskbarAlignment_Title" xml:space="preserve">
     <value>Set the taskbar alignment</value>
@@ -658,10 +670,10 @@
     <value>"High performance" is not recommended to use on laptops. Also, enabling "High performance" power plan doesn't affect your FPS. It only manages how your PC uses power.</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Title" xml:space="preserve">
-    <value>Keep network adapter awake</value>
+    <value>Allow the computer to turn off the active network adapters to save power</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Description" xml:space="preserve">
-    <value>Prevent PC from turning off the network adapter to save power, so it doesn't go to sleep. Only the currently used network adapter will be configured, even if your motherboard has an additional Wi-Fi adapter alongside an Ethernet one.</value>
+    <value>Only the currently used network adapter will be configured, even if your motherboard has an additional Wi-Fi adapter alongside an Ethernet one. Not recommended to turn off for laptops.</value>
   </data>
   <data name="UIModel_InputMethod_Title" xml:space="preserve">
     <value>Set default input method</value>
@@ -712,7 +724,7 @@
     <value>Enable Num Lock at startup</value>
   </data>
   <data name="UIModel_CapsLock_Title" xml:space="preserve">
-    <value>Enable Caps Lock at startup</value>
+    <value>Enable Caps Lock key</value>
   </data>
   <data name="UIModel_StickyShift_Title" xml:space="preserve">
     <value>Enable Sticky Shift key</value>
@@ -744,12 +756,6 @@
   <data name="UIModel_RestorePreviousFolders_Description" xml:space="preserve">
     <value>Restore all the extra tabs which you previously had open in each File Explorer window.</value>
   </data>
-  <data name="UIModel_NetworkDiscovery_Title" xml:space="preserve">
-    <value>Enable network discovery and file sharing</value>
-  </data>
-  <data name="UIModel_NetworkDiscovery_Description" xml:space="preserve">
-    <value>Network Discovery makes PC discoverable in the same network, and other devices can see your PC, and vice versa.</value>
-  </data>
   <data name="UIModel_DefaultTerminalApp_Title" xml:space="preserve">
     <value>Default terminal app</value>
   </data>
@@ -774,17 +780,11 @@
   <data name="UIModel_InstallVisualC_x86_Description" xml:space="preserve">
     <value>Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
   </data>
-  <data name="UIModel_InstallDotNetRuntime_8_Title" xml:space="preserve">
-    <value>Install latest .NET Desktop Runtime 8 x64</value>
+  <data name="UIModel_InstallDotNetRuntime_11_Title" xml:space="preserve">
+    <value>Install latest .NET Desktop Runtime 11 x64</value>
   </data>
-  <data name="UIModel_InstallDotNetRuntime_8_Description" xml:space="preserve">
-    <value>.NET is a successor to .NET Framework. You need to install .NET 8 if an app was developed within this framework, even if you already installed any other .NET versions. .NET 8 is an LTS (long-term support) version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
-  </data>
-  <data name="UIModel_InstallDotNetRuntime_9_Title" xml:space="preserve">
-    <value>Install latest .NET Desktop Runtime 9 x64</value>
-  </data>
-  <data name="UIModel_InstallDotNetRuntime_9_Description" xml:space="preserve">
-    <value>.NET is a successor to .NET Framework. You need to install .NET 9 if an app was developed within this framework, even if you already installed any other .NET versions. .NET 9 is an STS (standard-term support) version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
+  <data name="UIModel_InstallDotNetRuntime_11_Description" xml:space="preserve">
+    <value>.NET is a successor to .NET Framework. You need to install .NET 11 if an app was developed within this framework, even if you already installed any other .NET versions. .NET 11 is an STS (standard-term support) version. Installer will be downloaded from the Microsoft resource (Internet connection required).</value>
   </data>
   <data name="UIModel_RemoveWindowsAI_Title" xml:space="preserve">
     <value>Remove Windows AI</value>
@@ -799,10 +799,10 @@
     <value>Starting from Windows 10 version 1803, Windows no longer automatically backs up the Windows registry to %SystemRoot%\System32\config\RegBack folder. Enabling registry backups may help you restore Windows in extreme cases.</value>
   </data>
   <data name="UwpPage_AboutAppIcon.Text" xml:space="preserve">
-    <value>Choose UWP app to uninstall. UWP apps list is rendered in real-time with their native icon logos taken from Windows. That means that the UWP apps list is not pre-prepared like in other similar apps.</value>
+    <value>Choose UWP app to uninstall. UWP apps list is not pre-prepared and rendered in real-time with their native icon logos and localized names taken from Windows.</value>
   </data>
   <data name="UwpPage_UwpAppsNotFound.Text" xml:space="preserve">
-    <value>No data to display, or necessary packages were removed!</value>
+    <value>No UWP apps to uninstall.</value>
   </data>
   <data name="UwpPage_ForAllUsers.Text" xml:space="preserve">
     <value>Show packages for all users</value>
@@ -829,28 +829,28 @@
     <value>Create Windows Cleanup scheduled task</value>
   </data>
   <data name="UIModel_CleanupTask_Description" xml:space="preserve">
-    <value>This function creates "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks in Sophia folder of the Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before cleanup begins. Task runs every 30 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates "Windows Cleanup" (main task) and "Windows Cleanup Notification" (task to generate a pop-up notification) tasks in Sophia folder of the Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before cleanup begins. Task runs every 30 days. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanup_Description" xml:space="preserve">
-    <value>Cleaning up Windows unused files and updates using built-in Disk cleanup app. Scheduled task can be run only if user "{0}" logged into the system.</value>
+    <value>Cleaning up Windows unused files and updates using built-in Disk Cleanup app. Scheduled task can be run only if user "{0}" is logged into the system.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupNotification_Description" xml:space="preserve">
-    <value>Pop-up notification reminder about cleaning up Windows unused files and updates. Scheduled task can be run only if user "{0}" logged into the system.</value>
+    <value>Pop-up notification reminder about cleaning up Windows unused files and updates. Scheduled task can be run only if user "{0}" is logged into the system.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupToast_Description" xml:space="preserve">
     <value>Run task to clean up Windows unused files and updates?</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupToast_Title" xml:space="preserve">
-    <value>Windows clean up</value>
+    <value>Windows cleanup</value>
   </data>
   <data name="UIModel_SoftwareDistributionTask_Title" xml:space="preserve">
     <value>Create SoftwareDistribution scheduled task</value>
   </data>
   <data name="UIModel_SoftwareDistributionTask_Description" xml:space="preserve">
-    <value>This function creates "SoftwareDistribution" task in Sophia folder of the Task Scheduler to clean up %SystemRoot%\SoftwareDistribution\Download folder where Windows updates installation files are downloaded. Task will wait until Windows Update service has finished running. Task runs every 90 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates "SoftwareDistribution" task in Sophia folder of the Task Scheduler to clean up %SystemRoot%\SoftwareDistribution\Download folder where Windows updates installation files are downloaded. Task will wait until Windows Update service has finished running. Task runs every 90 days. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
-    <value>%SystemRoot%\SoftwareDistribution\Download folder cleanup. Scheduled task can be run only if user "{0}" logged into the system.</value>
+    <value>Cleaning up Windows update cache folder "{1}". Scheduled task can be run only if user "{0}" is logged into the system.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistributionToast_Title" xml:space="preserve">
     <value>Windows update cache successfully deleted.</value>
@@ -859,13 +859,13 @@
     <value>Create Temp scheduled task</value>
   </data>
   <data name="UIModel_TempTask_Description" xml:space="preserve">
-    <value>This function creates the "Temp" task in the Sophia folder of the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. Task runs every 60 days. Windows Script Host must be enabled for the task to run. A native Windows notification will appear when complete.</value>
+    <value>This function creates the "Temp" task in the Sophia folder of the Task Scheduler to clean up %TEMP% folder. Only files older than one day will be deleted. Task runs every 60 days. A native Windows notification will appear when complete.</value>
   </data>
   <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
-    <value>Temporary files folder successfully cleaned up.</value>
+    <value>Temporary folder successfully cleaned up.</value>
   </data>
   <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
-    <value>%TEMP% folder cleanup. Scheduled task can be run only if user "{0}" logged into the system.</value>
+    <value>Cleaning up temporary folder "{1}" (%TEMP%). Scheduled task can be run only if user "{0}" is logged into the system.</value>
   </data>
   <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
     <value>Open Task Scheduler</value>
@@ -892,7 +892,7 @@
     <value>Enable logging of running processes, including their arguments, and PowerShell scripts, and create a custom "Process Creation" view in the Event Viewer.</value>
   </data>
   <data name="UIModel_EventViewerCustomView_QueryDescription" xml:space="preserve">
-    <value>Process creation and command-line auditing events.</value>
+    <value>Track launched processes and PowerShell activity</value>
   </data>
   <data name="UIModel_EventViewerCustomView_QueryName" xml:space="preserve">
     <value>Process Creation</value>
@@ -927,35 +927,11 @@
   <data name="UIModel_CABInstallContext_Title" xml:space="preserve">
     <value>Show "Install" item in the Cabinet archives (.cab) context menu</value>
   </data>
-  <data name="UIModel_EditWithClipchampContext_Title" xml:space="preserve">
-    <value>Show "Edit with Clipchamp" item in the media files context menu</value>
-  </data>
-  <data name="UIModel_EditWithPhotosContext_Title" xml:space="preserve">
-    <value>Show "Edit with Photos" item in the media files context menu</value>
-  </data>
-  <data name="UIModel_EditWithPaintContext_Title" xml:space="preserve">
-    <value>Show "Edit with Paint" item in the media files context menu</value>
-  </data>
-  <data name="UIModel_PrintCMDContext_Title" xml:space="preserve">
-    <value>Show "Print" item in the .bat and .cmd files context menu</value>
-  </data>
-  <data name="UIModel_CompressedFolderNewContext_Title" xml:space="preserve">
-    <value>Show "Compressed (zipped) Folder" item in the "New" context menu</value>
-  </data>
-  <data name="UIModel_MultipleInvokeContext_Title" xml:space="preserve">
-    <value>Make "Open", "Print", and "Edit" context menu items available when selecting more than 15 files</value>
-  </data>
-  <data name="UIModel_MultipleInvokeContext_Description" xml:space="preserve">
-    <value>By default, the "Open", "Print", "Edit" context menu items will not appear if selecting more than 15 items to avoid accidentally performing these actions on a large number of files.</value>
-  </data>
   <data name="UIModel_UseStoreOpenWith_Title" xml:space="preserve">
     <value>Show "Look for an app in the Microsoft Store" items in the "Open with" dialog</value>
   </data>
   <data name="UIModel_UseStoreOpenWith_Description" xml:space="preserve">
     <value>When you open a file with an unknown extension, Windows offers to look for an app in the Microsoft Store. In addition to creating a policy in the Windows registry, SophiApp for Windows also displays applied policy in the Local Group Policy Editor (if the gpedit.msc snap-in is available in Windows). This allows you to see which policies have been applied without having to search for keys in the Windows registry.</value>
-  </data>
-  <data name="UIModel_OpenWindowsTerminalContext_Title" xml:space="preserve">
-    <value>Show "Open in Windows Terminal" item in the folders context menu</value>
   </data>
   <data name="UIModel_OpenWindowsTerminalAdminContext_Title" xml:space="preserve">
     <value>Open Windows Terminal from context menu as administrator by default</value>
@@ -1117,21 +1093,19 @@
     <value>Run Windows Update and try again.</value>
   </data>
   <data name="OsRequirements_GetHostFileEntries" xml:space="preserve">
-    <value>Checking third-party host file entries...</value>
+    <value>Checking third-party hosts file entries...</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
-    <value>Third-party entries found in %SystemRoot%\System32\drivers\etc\hosts.</value>
+    <value>Third-party entries found in the %SystemRoot%\System32\drivers\etc\hosts file.</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
     <value>They may block connection to resources used in SophiApp for Windows.</value>
-    <value>%SystemRoot%\System32\drivers\etc\hosts.</value>
-  </data>
   </data>
   <data name="Button_Continue.Content" xml:space="preserve">
     <value>Continue</value>
   </data>
   <data name="Button_OpenHostFileFolder.Content" xml:space="preserve">
-    <value>Open host file folder</value>
+    <value>Open hosts file folder</value>
   </data>
   <data name="Button_OpenBitLockerSettings.Content" xml:space="preserve">
     <value>Open BitLocker settings</value>
@@ -1155,7 +1129,7 @@
     <value>Update</value>
   </data>
   <data name="OsRequirements_LoggedUserNotAdmin_2" xml:space="preserve">
-    <value>SophiApp was run on behalf of: {0}</value>
+    <value>SophiApp for Windows was run on behalf of "{0}".</value>
   </data>
   <data name="OsRequirements_LoggedUserNotAdmin_3.Text" xml:space="preserve">
     <value>Please log into account which has admin rights and run SophiApp for Windows again.</value>
@@ -1163,20 +1137,17 @@
   <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
     <value>Reinstall Windows using only a genuine ISO image.</value>
   </data>
-  <data name="OsRequirements_GetDefenderProperties" xml:space="preserve">
-    <value>Checking Microsoft Defender properties...</value>
-  </data>
-  <data name="OsRequirements_WindowsComponentStabilityDisrupted.Text" xml:space="preserve">
-    <value>An instability issue has been detected in the Windows component.</value>
+  <data name="OsRequirements_WindowsComponentStabilityDisrupted" xml:space="preserve">
+    <value>An instability issue has been detected in the "{0}" component.</value>
   </data>
   <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
     <value>Checking Controlled Folder access status...</value>
   </data>
   <data name="OsRequirements_DisableControlledFolderAccessPanel_1.Text" xml:space="preserve">
-    <value>You have Controlled Folder access enabled.</value>
+    <value>You have Controlled folder access enabled.</value>
   </data>
   <data name="OsRequirements_DisableControlledFolderAccessPanel_2.Text" xml:space="preserve">
-    <value>Please disable it and run SophiApp again.</value>
+    <value>Please disable it and run SophiApp for Windows again.</value>
   </data>
   <data name="OsRequirements_RebootPending.Text" xml:space="preserve">
     <value>Your PC is waiting to be restarted.</value>
@@ -1185,7 +1156,7 @@
     <value>Checking BitLocker system drive encryption status...</value>
   </data>
   <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_1.Text" xml:space="preserve">
-    <value>System drive is encrypted, although BitLocker is turned off.</value>
+    <value>The system drive is encrypted, although BitLocker is turned off.</value>
   </data>
   <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_2.Text" xml:space="preserve">
     <value>Do you want to decrypt your drive?</value>
@@ -1194,7 +1165,7 @@
     <value>Checking UEFI certificate expiration status...</value>
   </data>
   <data name="OsRequirements_UpdateUEFICertificates_1.Text" xml:space="preserve">
-    <value>The "Microsoft Windows Production PCA 2011" Secure Boot certificate expires in 2026.</value>
+    <value>The "Microsoft Windows Production PCA 2011" Secure Boot certificate expired in October 2026.</value>
   </data>
   <data name="OsRequirements_UpdateUEFICertificates_2.Text" xml:space="preserve">
     <value>Your device has not yet received the updated "Windows UEFI CA 2023" certificates.</value>
@@ -1205,6 +1176,18 @@
   <data name="Button_UpdateUEFICertificates.Content" xml:space="preserve">
     <value>Open manual</value>
   </data>
+  <data name="OsRequirements_EnableSecureBoot.Text" xml:space="preserve">
+    <value>Enable Secure Boot.</value>
+  </data>
+  <data name="Button_EnableSecureBoot.Content" xml:space="preserve">
+    <value>Open manual</value>
+  </data>
+  <data name="OsRequirements_GetCpuArchitecture" xml:space="preserve">
+    <value>Checking CPU architecture...</value>
+  </data>
+  <data name="OsRequirements_UnsupportedArchitecture_1" xml:space="preserve">
+    <value>You're using "{0}" based CPU architecture. SophiApp for Windows supports an x64 architecture-based CPU only.</value>
+  </data>
   <data name="OsRequirements_GetWindowsVersion" xml:space="preserve">
     <value>Checking Windows version...</value>
   </data>
@@ -1212,10 +1195,10 @@
     <value>SophiApp for Windows supports Windows 11 26H2 and higher.</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_2" xml:space="preserve">
-    <value>You're using: {0} {1}.</value>
+    <value>You're using {0} {1}.</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_LTSC" xml:space="preserve">
-    <value>SophiApp for Windows supports Windows 11 Enterprise LTSC 2024.</value>
+    <value>SophiApp for Windows supports only Windows 11 Enterprise LTSC 2024.</value>
   </data>
   <data name="OsRequirements_GetWindowsBuild" xml:space="preserve">
     <value>Checking Windows build...</value>
@@ -1223,8 +1206,11 @@
   <data name="OsRequirements_UpdateWindowsBuild_2" xml:space="preserve">
     <value>You're using Windows 11 {0} {1}.{2}.</value>
   </data>
+  <data name="OsRequirements_UpdateWindowsBuild_LTSC" xml:space="preserve">
+    <value>SophiApp for Windows supports Windows 11 Enterprise LTSC 2024 {0}.{1} build and higher.</value>
+  </data>
   <data name="OsRequirements_UpdateWindowsBuild_1" xml:space="preserve">
-    <value>SophiApp supports Windows 11 26H2 {0}.{1} build and higher.</value>
+    <value>SophiApp for Windows supports Windows 11 26H2 {0}.{1} build and higher.</value>
   </data>
   <data name="AppFatalError_1.Text" xml:space="preserve">
     <value>Fatal error:</value>
@@ -1245,49 +1231,49 @@
     <value>Checking Windows component stability...</value>
   </data>
   <data name="OsRequirements_NewAppVersionFound_1" xml:space="preserve">
-    <value>A new version is available: SophiApp {0}</value>
-  </data>
-  <data name="UIModel_Exception_ErrorReporting" xml:space="preserve">
-    <value>Task not found</value>
-  </data>
-  <data name="UIModel_Exception_SearchHighlights" xml:space="preserve">
-    <value>Search highlights already hidden</value>
+    <value>A new version is available: SophiApp for Windows {0}.</value>
   </data>
   <data name="UIModel_Exception_InternetConnectionRequired" xml:space="preserve">
-    <value>Internet connection required</value>
+    <value>Connection could not be established.</value>
   </data>
   <data name="UIModel_Exception_LatestVersionInstalled" xml:space="preserve">
-    <value>Latest version installed</value>
+    <value>The latest version is already installed.</value>
+  </data>
+  <data name="UIModel_Exception_DiagTrackServiceNotFound" xml:space="preserve">
+    <value>"DiagTrack" service was not found.</value>
+  </data>
+  <data name="UIModel_Exception_ErrorReportingServiceNotFound" xml:space="preserve">
+    <value>An instability issue has been detected in the "Windows Error Reporting Service" component. Reinstall Windows using only a genuine ISO image.</value>
   </data>
   <data name="UIModel_Exception_ScheduledTasks" xml:space="preserve">
-    <value>Telemetry tasks not found</value>
+    <value>No scheduled tasks found.</value>
   </data>
   <data name="UIModel_Exception_StartMenuInstalled" xml:space="preserve">
-    <value>Third-party Start Menu installed</value>
+    <value>A third-party Start Menu is installed.</value>
   </data>
   <data name="UIModel_Exception_PackageNotInstalled" xml:space="preserve">
-    <value>Package not installed</value>
-  </data>
-  <data name="UIModel_Exception_TaskbarSearch" xml:space="preserve">
-    <value>Small icons mode enabled</value>
+    <value>The app is not installed.</value>
   </data>
   <data name="UIModel_Exception_OneDrive_LogOut" xml:space="preserve">
-    <value>Log out from OneDrive account</value>
-  </data>
-  <data name="UIModel_Exception_OneDrive_FolderNotExist" xml:space="preserve">
-    <value>User data folder not exist</value>
+    <value>Before uninstalling OneDrive, sign out of your Microsoft account in OneDrive.</value>
   </data>
   <data name="UIModel_Exception_OneDrive_InstallerNotFound" xml:space="preserve">
     <value>OneDriveSetup.exe not found</value>
   </data>
   <data name="UIModel_Exception_NetworkAdaptersSavePower" xml:space="preserve">
-    <value>Unsupported network adapter</value>
+    <value>No network adapters found that support the "Allow the computer to turn off this device to save power" function.</value>
   </data>
-  <data name="UIModel_Exception_GPUScheduling" xml:space="preserve">
-    <value>Unsupported GPU</value>
+  <data name="UIModel_Exception_GPUScheduling_VirtualMachine" xml:space="preserve">
+    <value>Windows is running on a virtual machine.</value>
+  </data>
+  <data name="UIModel_Exception_GPUScheduling_DedicatedGPUNotFound" xml:space="preserve">
+    <value>No dedicated graphics card found.</value>
+  </data>
+  <data name="UIModel_Exception_GPUScheduling_WDDMVersion" xml:space="preserve">
+    <value>Supported WDDM version is 2.7 and higher.</value>
   </data>
   <data name="UIModel_Exception_AntispywareProtectionDisabled" xml:space="preserve">
-    <value>Antispyware protection disabled</value>
+    <value>A third-party antivirus is installed.</value>
   </data>
   <data name="UIModel_Exception_WindowsSandbox_UndefinedState" xml:space="preserve">
     <value>Undefined Sandbox state</value>
@@ -1296,18 +1282,18 @@
     <value>Virtualization not supported</value>
   </data>
   <data name="UIModel_Exception_VirtualizationDisabled" xml:space="preserve">
-    <value>Virtualization disabled in UEFI</value>
+    <value>Enable Virtualization in UEFI.</value>
   </data>
   <data name="UIModel_Exception_UnsupportedFeature" xml:space="preserve">
     <value>Unsupported feature</value>
   </data>
   <data name="UIModel_Exception_WindowsSandbox_UnsupportedEdition" xml:space="preserve">
-    <value>Unsupported Windows edition</value>
+    <value>Windows Home edition doesn't support this function.</value>
   </data>
   <data name="UIModel_Exception_CABInstallContext_DefaultArchiver" xml:space="preserve">
-    <value>Third-party archiver set as default</value>
+    <value>A third-party archiver is installed.</value>
   </data>
   <data name="UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid" xml:space="preserve">
-    <value>Configuration file not valid</value>
+    <value>JSON file "settings.json" is not valid.</value>
   </data>
 </root>

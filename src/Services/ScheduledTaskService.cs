@@ -21,7 +21,7 @@ namespace SophiApp.Services
         private readonly string cleanupTaskPS = @"# https://github.com/farag2/Sophia-Script-for-Windows
 # https://t.me/sophia_chat
 
-Get-Process -Name cleanmgr, Dism, DismHost | Stop-Process -Force
+Get-Process -Name cleanmgr, Dism, DismHost -ErrorAction Ignore | Stop-Process -Force
 
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
 $ProcessInfo.FileName = ""$env:SystemRoot\System32\cleanmgr.exe""
@@ -33,7 +33,8 @@ $Process = New-Object -TypeName System.Diagnostics.Process
 $Process.StartInfo = $ProcessInfo
 $Process.Start() | Out-Null
 
-Start-Sleep -Seconds 3
+# Wait until Disk Cleanup is closed: DISM works with the same component store
+$Process.WaitForExit()
 
 $ProcessInfo = New-Object -TypeName System.Diagnostics.ProcessStartInfo
 $ProcessInfo.FileName = ""$env:SystemRoot\System32\Dism.exe""
@@ -86,8 +87,8 @@ if (-not (""WinAPI.QuietHours"" -as [type]))
 	Add-Type @Signature
 }
 
-# Wait until it will be 0
-while ([WinAPI.QuietHours]::GetState() -ne 0)
+# Wait until it will be 0. -1 means the state cannot be received
+while ([WinAPI.QuietHours]::GetState() -gt 0)
 {
 	Start-Sleep -Seconds 600
 }
@@ -165,8 +166,8 @@ if (-not (""WinAPI.QuietHours"" -as [type]))
 	Add-Type @Signature
 }
 
-# Wait until it will be 0
-while ([WinAPI.QuietHours]::GetState() -ne 0)
+# Wait until it will be 0. -1 means the state cannot be received
+while ([WinAPI.QuietHours]::GetState() -gt 0)
 {
 	Start-Sleep -Seconds 600
 }
@@ -246,7 +247,7 @@ while ([WinAPI.QuietHours]::GetState() -gt 0)
 }
 
 # Run the task
-Get-ChildItem -Path $env:TEMP -Recurse -Force | Where-Object -FilterScript {$_.CreationTime -lt (Get-Date).AddDays(-1)} | Remove-Item -Recurse -Force
+Get-ChildItem -Path $env:TEMP -Recurse -Force -ErrorAction Ignore | Where-Object -FilterScript {$_.CreationTime -lt (Get-Date).AddDays(-1)} | Remove-Item -Recurse -Force -ErrorAction Ignore
 
 # Unnecessary folders to remove
 $Paths = @(
@@ -350,6 +351,24 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
         public void UnregisterOneDriveTasks() => taskScheduler.FindAllTasks(task => task.Name.Contains("OneDrive")).ToList().ForEach(task => UnregisterTask(task.Path));
 
         /// <inheritdoc/>
+        public void StartOneDriveUpdateTasks()
+        {
+            // OneDrive update tasks
+            foreach (var task in taskScheduler.FindAllTasks(task => task.Name.StartsWith("OneDrive", StringComparison.OrdinalIgnoreCase) && task.Name.Contains(" Update", StringComparison.OrdinalIgnoreCase)))
+            {
+                try
+                {
+                    task.Enabled = true;
+                    _ = task.Run();
+                }
+                catch (Exception)
+                {
+                    // The task cannot be started right now. It will be run by its trigger
+                }
+            }
+        }
+
+        /// <inheritdoc/>
         public void RegisterSoftwareDistributionTask()
         {
             softwareDistributionPsFile.Directory?.Create();
@@ -359,7 +378,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
             // We use conhost.exe with an undocumented "--headless" argument to suppress console appearing
             _ = RegisterTask(
                 name: "Sophia\\SoftwareDistribution",
-                description: string.Format("TaskScheduler_SoftwareDistribution_Description".GetLocalized(), Environment.UserName),
+                description: string.Format("TaskScheduler_SoftwareDistribution_Description".GetLocalized(), Environment.UserName, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "SoftwareDistribution\\Download")),
                 action: "conhost.exe",
                 arguments: $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\SoftwareDistributionTask.ps1")}",
                 runLevel: TaskRunLevel.Highest,
@@ -381,7 +400,7 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
 
             _ = RegisterTask(
                 name: "Sophia\\Temp",
-                description: string.Format("TaskScheduler_TempTask_Description".GetLocalized(), Environment.UserName),
+                description: string.Format("TaskScheduler_TempTask_Description".GetLocalized(), Environment.UserName, Path.GetFullPath(Path.GetTempPath()).TrimEnd('\\')),
                 action: "conhost.exe",
                 arguments: $"--headless powershell.exe -NoProfile -ExecutionPolicy Bypass -File {Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Tasks\\Sophia\\TempTask.ps1")}",
                 runLevel: TaskRunLevel.Highest,
@@ -436,13 +455,30 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
             }
 
             task.Actions.Add(action, arguments);
-            task.Principal.UserId = Environment.UserName;
+            // The full account name (with the computer name) and the interactive logon type
+            task.Principal.UserId = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            task.Principal.LogonType = TaskLogonType.InteractiveToken;
             task.Principal.RunLevel = runLevel;
             task.Settings.Compatibility = TaskCompatibility.V2_2;
             task.Settings.StartWhenAvailable = true;
             task.RegistrationInfo.Author = "Team Sophia";
             task.RegistrationInfo.Description = description;
-            return taskScheduler.RootFolder.RegisterTaskDefinition(name, task);
+            var registeredTask = taskScheduler.RootFolder.RegisterTaskDefinition(name, task);
+
+            // The tasks that have a schedule are started right after they were created
+            if (trigger is not null)
+            {
+                try
+                {
+                    _ = registeredTask.Run();
+                }
+                catch (Exception)
+                {
+                    // The task will be started by its trigger
+                }
+            }
+
+            return registeredTask;
         }
 
         private void UnregisterTask(string path) => taskScheduler.RootFolder.DeleteTask(path, false);

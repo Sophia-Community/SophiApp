@@ -16,9 +16,10 @@ namespace SophiApp.Helpers
         /// </summary>
         public SupportedOs()
         {
-            MajorBuild = 26200;
-            MinorBuild = 9168;
+            MajorBuild = 26300;
+            MinorBuild = 9974;
             LTSC_MajorBuild = 26100;
+            LTSC_MinorBuild = 9974;
         }
 
         /// <summary>
@@ -34,9 +35,15 @@ namespace SophiApp.Helpers
         public int MinorBuild { get; set; }
 
         /// <summary>
-        /// Gets or sets supporter Microsoft Windows 11 LTSC 2024 major build.
+        /// Gets or sets supported Microsoft Windows 11 LTSC 2024 major build.
         /// </summary>
         [JsonProperty("Windows_11_LTSC_Major")]
         public int LTSC_MajorBuild { get; set; }
+
+        /// <summary>
+        /// Gets or sets supported Microsoft Windows 11 LTSC 2024 minor build.
+        /// </summary>
+        [JsonProperty("Windows_11_LTSC_Minor")]
+        public int LTSC_MinorBuild { get; set; }
     }
 }
