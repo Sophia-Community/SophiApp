@@ -28,12 +28,6 @@ namespace SophiApp.Helpers
         }
 
         /// <summary>
-        /// Copy <paramref name="text"/> to clipboard.
-        /// </summary>
-        /// <param name="text">The text.</param>
-        public static void CopyToClipboard(List<string> text) => CopyToClipboard(string.Join("\r", text));
-
-        /// <summary>
         /// Opens the specified <paramref name="path"/> with Windows Explorer.
         /// </summary>
         /// <param name="path">Path to open in Windows Explorer.</param>

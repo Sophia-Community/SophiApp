@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
+using System.Text.Json;
 using Windows.Graphics;
 using Windows.Storage;
 
@@ -20,14 +21,11 @@ public class SettingsService : ISettingsService
     private const string AppWindowPositionY = "AppWindowPositionY";
     private const string AppWindowState = "AppWindowState";
     private const string AppWindowWidth = "AppWindowWidth";
-    private const string LogPageVisibility = "ShowLogPage";
     private const string SettingsFile = "Settings.json";
-    private const string TextDescriptionSize = "TextDescriptionSize";
-    private const string TextTitleSize = "TextTitleSize";
 
     private readonly IFileService fileService;
     private readonly string settingsFolder = EnvironmentHelper.AppFolder;
-    private IDictionary<string, object>? settings;
+    private IDictionary<string, string>? settings;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsService"/> class.
@@ -51,19 +49,18 @@ public class SettingsService : ISettingsService
     public double AppWindowMinWidth => 830;
 
     /// <inheritdoc/>
-    public int DescriptionTextMinSize => 14;
-
-    /// <inheritdoc/>
-    public int DescriptionTextMaxSize => 24;
-
-    /// <inheritdoc/>
-    public int TitleTextMinSize => 16;
-
-    /// <inheritdoc/>
-    public int TitleTextMaxSize => 26;
-
-    /// <inheritdoc/>
-    public void Initialize() => settings = fileService.ReadFromJson<IDictionary<string, object>>(settingsFolder, SettingsFile) ?? new Dictionary<string, object>();
+    public void Initialize()
+    {
+        try
+        {
+            settings = fileService.ReadFromJson<Dictionary<string, string>>(settingsFolder, SettingsFile) ?? [];
+        }
+        catch (JsonException)
+        {
+            // A damaged settings file is not a reason to fail: the app starts with the default settings
+            settings = new Dictionary<string, string>();
+        }
+    }
 
     /// <inheritdoc/>
     public async Task<PointInt32> ReadAppWindowPositionAsync()
@@ -91,23 +88,6 @@ public class SettingsService : ISettingsService
     }
 
     /// <inheritdoc/>
-    public async Task<bool> ReadLogPageVisibilityAsync() => await ReadSettingAsync<bool>(LogPageVisibility);
-
-    /// <inheritdoc/>
-    public async Task<int> ReadTextDescriptionSizeAsync()
-    {
-        var descriptionTextSize = await ReadSettingAsync<int>(TextDescriptionSize);
-        return descriptionTextSize > DescriptionTextMinSize && descriptionTextSize <= DescriptionTextMaxSize ? descriptionTextSize : DescriptionTextMinSize;
-    }
-
-    /// <inheritdoc/>
-    public async Task<int> ReadTextTitleSizeAsync()
-    {
-        var titleTextSize = await ReadSettingAsync<int>(TextTitleSize);
-        return titleTextSize > TitleTextMinSize && titleTextSize <= TitleTextMaxSize ? titleTextSize : TitleTextMinSize;
-    }
-
-    /// <inheritdoc/>
     public async Task<ElementTheme> ReadThemeAsync() => await ReadSettingAsync<ElementTheme>(AppTheme);
 
     /// <inheritdoc/>
@@ -128,15 +108,6 @@ public class SettingsService : ISettingsService
     public async Task SaveAppWindowStateAsync(WindowState state) => await SaveSettingAsync(AppWindowState, state);
 
     /// <inheritdoc/>
-    public void SaveLogPageVisibility(bool isVisible) => Task.Run(async () => await SaveSettingAsync(LogPageVisibility, isVisible));
-
-    /// <inheritdoc/>
-    public async Task SaveTextDescriptionSizeAsync(int size) => await SaveSettingAsync(TextDescriptionSize, size);
-
-    /// <inheritdoc/>
-    public async Task SaveTextTitleSizeAsync(int size) => await SaveSettingAsync(TextTitleSize, size);
-
-    /// <inheritdoc/>
     public async Task SaveThemeAsync(ElementTheme theme) => await SaveSettingAsync(AppTheme, theme);
 
     private async Task<T?> ReadSettingAsync<T>(string key)
@@ -150,9 +121,9 @@ public class SettingsService : ISettingsService
         }
         else
         {
-            if (settings != null && settings.TryGetValue(key, out var obj))
+            if (settings != null && settings.TryGetValue(key, out var value))
             {
-                return await Json.ToObjectAsync<T>((string)obj);
+                return await Json.ToObjectAsync<T>(value);
             }
         }
 

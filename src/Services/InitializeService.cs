@@ -46,11 +46,9 @@ public class InitializeService : IInitializeService
     public async Task InitializeServicesDataAsync(object args)
     {
         settingsService.Initialize();
-        await viewModel.FontOptions.InitializeAsync();
         await themesService.InitializeAsync();
         await themesService.SetRequestedThemeAsync();
         await dataService.InitializeAsync();
-        viewModel.LogPageVisibility = await settingsService.ReadLogPageVisibilityAsync();
     }
 
     /// <inheritdoc/>

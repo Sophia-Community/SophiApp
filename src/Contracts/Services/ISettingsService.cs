@@ -33,26 +33,6 @@ public interface ISettingsService
     double AppWindowMinWidth { get; }
 
     /// <summary>
-    /// Gets a minimum font size for UI elements description.
-    /// </summary>
-    int DescriptionTextMinSize { get; }
-
-    /// <summary>
-    /// Gets a maximum font size for UI elements description.
-    /// </summary>
-    int DescriptionTextMaxSize { get; }
-
-    /// <summary>
-    /// Gets a minimum font size for UI elements title.
-    /// </summary>
-    int TitleTextMinSize { get; }
-
-    /// <summary>
-    /// Gets a maximum font size for UI elements title.
-    /// </summary>
-    int TitleTextMaxSize { get; }
-
-    /// <summary>
     /// Initialize <see cref="ISettingsService"/> data.
     /// </summary>
     void Initialize();
@@ -78,21 +58,6 @@ public interface ISettingsService
     Task<double> ReadAppWindowWidthAsync();
 
     /// <summary>
-    /// Read navigation menu item log page visibility from a settings file.
-    /// </summary>
-    Task<bool> ReadLogPageVisibilityAsync();
-
-    /// <summary>
-    /// Read UI elements descriptions size from a settings file.
-    /// </summary>
-    Task<int> ReadTextDescriptionSizeAsync();
-
-    /// <summary>
-    /// Read UI elements title size from a settings file.
-    /// </summary>
-    Task<int> ReadTextTitleSizeAsync();
-
-    /// <summary>
     /// Reads app <see cref="ElementTheme"/> from a settings file.
     /// </summary>
     Task<ElementTheme> ReadThemeAsync();
@@ -115,24 +80,6 @@ public interface ISettingsService
     /// </summary>
     /// <param name="state">Specifies app window state.</param>
     Task SaveAppWindowStateAsync(WindowState state);
-
-    /// <summary>
-    /// Write navigation menu item log page visibility to a settings file.
-    /// </summary>
-    /// <param name="isVisible">Log page visibility.</param>
-    void SaveLogPageVisibility(bool isVisible);
-
-    /// <summary>
-    /// Write UI elements description size to a settings file.
-    /// </summary>
-    /// <param name="size">UI elements description size.</param>
-    Task SaveTextDescriptionSizeAsync(int size);
-
-    /// <summary>
-    /// Write UI elements title size to a settings file.
-    /// </summary>
-    /// <param name="size">UI elements title size.</param>
-    Task SaveTextTitleSizeAsync(int size);
 
     /// <summary>
     /// Write app <see cref="ElementTheme"/> to a settings file.

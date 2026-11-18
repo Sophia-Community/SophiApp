@@ -4,7 +4,7 @@
 
 namespace SophiApp.Helpers
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Data transfer object for supported OS builds.
@@ -25,25 +25,25 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets or sets supported Microsoft Windows 11 major build.
         /// </summary>
-        [JsonProperty("Windows_11_Major")]
+        [JsonPropertyName("Windows_11_Major")]
         public int MajorBuild { get; set; }
 
         /// <summary>
         /// Gets or sets supported Microsoft Windows 11 minor build.
         /// </summary>
-        [JsonProperty("Windows_11_Minor")]
+        [JsonPropertyName("Windows_11_Minor")]
         public int MinorBuild { get; set; }
 
         /// <summary>
         /// Gets or sets supported Microsoft Windows 11 LTSC 2024 major build.
         /// </summary>
-        [JsonProperty("Windows_11_LTSC_Major")]
+        [JsonPropertyName("Windows_11_LTSC_Major")]
         public int LTSC_MajorBuild { get; set; }
 
         /// <summary>
         /// Gets or sets supported Microsoft Windows 11 LTSC 2024 minor build.
         /// </summary>
-        [JsonProperty("Windows_11_LTSC_Minor")]
+        [JsonPropertyName("Windows_11_LTSC_Minor")]
         public int LTSC_MinorBuild { get; set; }
     }
 }

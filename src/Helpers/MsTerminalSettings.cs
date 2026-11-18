@@ -4,7 +4,7 @@
 
 namespace SophiApp.Helpers
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Data transfer object for Windows Terminal settings.
@@ -14,7 +14,7 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets or sets profile settings.
         /// </summary>
-        [JsonProperty("profiles")]
+        [JsonPropertyName("profiles")]
         public Profiles? Profiles { get; set; }
     }
 
@@ -28,7 +28,7 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets or sets profile defaults.
         /// </summary>
-        [JsonProperty("defaults")]
+        [JsonPropertyName("defaults")]
         public Defaults? Defaults { get; set; }
     }
 
@@ -40,7 +40,7 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets or sets a value indicating whether elevate setting.
         /// </summary>
-        [JsonProperty("elevate")]
+        [JsonPropertyName("elevate")]
         public bool Elevate { get; set; }
     }
 

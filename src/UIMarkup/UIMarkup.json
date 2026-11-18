@@ -457,8 +457,9 @@
     },
     {
         "Name": "OneDrive",
-        "Type": "CheckBox",
+        "Type": "InstallUninstall",
         "Tag": "System",
+        "IconIndex": 2,
         "ViewId": 300,
         "Windows11LTSC": "False",
         "Windows11": "True"
@@ -681,32 +682,36 @@
     },
     {
         "Name": "InstallDotNetRuntime_10",
-        "Type": "CheckBox",
+        "Type": "Install",
         "Tag": "System",
+        "IconIndex": 3,
         "ViewId": 328,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
     {
         "Name": "InstallDotNetRuntime_11",
-        "Type": "CheckBox",
+        "Type": "Install",
         "Tag": "System",
+        "IconIndex": 3,
         "ViewId": 329,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
     {
         "Name": "InstallVisualC_x86",
-        "Type": "CheckBox",
+        "Type": "Install",
         "Tag": "System",
+        "IconIndex": 4,
         "ViewId": 330,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
     {
         "Name": "InstallVisualC_x64",
-        "Type": "CheckBox",
+        "Type": "Install",
         "Tag": "System",
+        "IconIndex": 4,
         "ViewId": 331,
         "Windows11LTSC": "True",
         "Windows11": "True"

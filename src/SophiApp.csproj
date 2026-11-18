@@ -19,12 +19,17 @@
     <Nullable>enable</Nullable>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
+    <!-- The resource index gets a fixed name: by default it is named after the exe, and a renamed exe or a link with another name cannot find it -->
+    <ProjectPriFileName>resources.pri</ProjectPriFileName>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <ApplicationIcon>Assets\SophiApp.ico</ApplicationIcon>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPublishable>True</IsPublishable>
-    <Version>2.26.1106</Version>
+    <Version>2.0.0.0</Version>
+    <FileVersion>2.0.0.0</FileVersion>
+    <InformationalVersion>2.0.0.0</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <UseWinUI>true</UseWinUI>
     <StartupObject>SophiApp.Program</StartupObject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -40,9 +45,7 @@
     <None Remove="ControlTemplates\UwpAppCheckBox.xaml" />
     <None Remove="stylecop.json" />
     <None Remove="Styles\ScrollView.xaml" />
-    <None Remove="ControlTemplates\MadeForWindows.xaml" />
     <None Remove="Views\FatalErrorPage.xaml" />
-    <None Remove="Views\LogPage.xaml" />
     <None Remove="Views\RequirementsDetectHostFileEntriesPage.xaml" />
     <None Remove="Views\RequirementsFailurePage.xaml" />
     <None Remove="Views\SearchPage.xaml" />
@@ -68,17 +71,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Lottie" Version="8.1.240821" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.5" />
-    <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250513003" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.2.251219" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.251219" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.4.0" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.6.5" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.1" />
+    <PackageReference Include="Serilog" Version="4.4.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="10.36.0.15337">
       <PrivateAssets>all</PrivateAssets>
@@ -88,12 +88,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.5" />
-    <PackageReference Include="System.Management" Version="9.0.5" />
-    <PackageReference Include="System.Management.Automation" Version="7.4.6" />
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.5" />
-    <PackageReference Include="TaskScheduler" Version="2.12.1" />
-    <PackageReference Include="WinUIEx" Version="2.5.1" />
+    <PackageReference Include="System.Management" Version="11.0.0" />
+    <PackageReference Include="System.Management.Automation" Version="7.7.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="11.0.0" />
+    <PackageReference Include="TaskScheduler" Version="2.12.2" />
+    <PackageReference Include="WinUIEx" Version="2.9.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -115,6 +114,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Folder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\OneDrive.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\DotNet.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\VisualC.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\GitHub.svg">
@@ -175,9 +183,6 @@
     <Page Update="Views\FatalErrorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Views\LogPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Update="Views\SearchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,9 +213,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="UserControls\MadeForWindows.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">

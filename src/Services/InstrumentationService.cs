@@ -119,6 +119,15 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public bool HasAIAccelerator()
+        {
+            // The query is filtered by the device class, so it takes milliseconds
+            using var searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT ClassGuid FROM Win32_PnPEntity WHERE PNPClass = 'ComputeAccelerator'");
+            using var devices = searcher.Get();
+            return devices.Cast<ManagementObject>().Any(device => device["ClassGuid"] is not null);
+        }
+
+        /// <inheritdoc/>
         public bool? HypervisorIsPresent()
         {
             using var managementObject = new ManagementObjectSearcher("Select * from CIM_ComputerSystem")

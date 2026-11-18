@@ -45,13 +45,15 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void Install()
+        public void Install(bool allUsers)
         {
             var setupFile = GetSetupFileOrDefault();
+            var arguments = allUsers ? "/allusers" : string.Empty;
 
             if (!string.IsNullOrEmpty(setupFile))
             {
-                processService.WaitForExit(setupFile);
+                App.Status.SetStep("Panel_Step_Installing");
+                processService.WaitForAllExit(setupFile, arguments);
             }
             else
             {
@@ -60,7 +62,8 @@ namespace SophiApp.Services
                 var downloadFolder = Registry.CurrentUser.GetSubKeyValue(downloadPath, "{374DE290-123F-4565-9164-39C4925E467B}") as string ?? string.Empty;
                 var downloadFile = Path.Combine(downloadFolder, "OneDriveSetup.exe");
                 httpService.DownloadOneDrive(downloadFile);
-                processService.WaitForExit(downloadFile);
+                App.Status.SetStep("Panel_Step_Installing");
+                processService.WaitForAllExit(downloadFile, arguments);
                 Thread.Sleep(3000);
 
                 // The installer may still be running
@@ -94,6 +97,7 @@ namespace SophiApp.Services
             // The OneDrive folder is the parent of the version folder with OneDriveSetup.exe
             var oneDriveFolder = Path.GetDirectoryName(Path.GetDirectoryName(uninstallFile)) ?? string.Empty;
             var userDataFolder = GetUserDataFolderOrDefault();
+            App.Status.SetStep("Panel_Step_Uninstalling");
             processService.KillProcessByName(3000, "OneDrive", "OneDriveSetup", "FileCoAuth");
 
             using (processService.WaitForExit(uninstallFile, uninstallArgs))
@@ -110,6 +114,8 @@ namespace SophiApp.Services
             {
                 RemoveFolder(userDataFolder);
             }
+
+            App.Status.SetStep("Panel_Step_RestartingExplorer");
 
             try
             {
@@ -138,6 +144,7 @@ namespace SophiApp.Services
             Registry.CurrentUser.DeleteSubKeyValue("Environment", "OneDrive");
             Registry.CurrentUser.DeleteSubKeyValue("Environment", "OneDriveConsumer");
             scheduledTaskService.UnregisterOneDriveTasks();
+            App.Status.SetStep("Panel_Step_RemovingFiles");
             DeleteResources();
 
             if (userFilesCount > 0)

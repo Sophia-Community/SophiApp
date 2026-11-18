@@ -1,4 +1,4 @@
-// <copyright file="UwpAppCheckBox.xaml.cs" company="Team Sophia">
+﻿// <copyright file="UwpAppCheckBox.xaml.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -35,17 +35,17 @@ namespace SophiApp.ControlTemplates
 
             // Follows the model: an uninstalled app becomes unavailable
             SetBinding(IsAppEnabledProperty, new Binding { Path = new PropertyPath("IsEnabled") });
+
+            // While the app is busy the mouse is blocked by the page, and the keyboard is blocked here.
+            // The control is not disabled for that: a check box that was disabled and enabled again keeps a stale check mark
+            PreviewKeyDown += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
+            PreviewKeyUp += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
         }
 
         /// <summary>
         /// Gets the shell view model.
         /// </summary>
         public ShellViewModel ViewModel { get; }
-
-        /// <summary>
-        /// Gets the text sizes chosen on the Settings page.
-        /// </summary>
-        public FontOptions FontOptions => ViewModel.FontOptions;
 
         /// <summary>
         /// Gets or sets a value indicating whether the app can still be chosen.

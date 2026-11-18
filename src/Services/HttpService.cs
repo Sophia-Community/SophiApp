@@ -18,14 +18,13 @@ namespace SophiApp.Services
         {
             Directory.CreateDirectory(Path.GetDirectoryName(saveTo)!);
             using var client = new HttpClient();
-            using var urlStream = client.GetStreamAsync(url).Result;
-            using var fileStream = new FileStream(saveTo, FileMode.Create);
-            urlStream.CopyTo(fileStream);
+            Download(client, url, saveTo);
         }
 
         /// <inheritdoc/>
         public void DownloadOneDrive(string saveTo)
         {
+            App.Status.SetStep("Panel_Step_GettingDownloadLink");
             using var client = new HttpClient();
             using var request = new HttpRequestMessage(HttpMethod.Get, "https://g.live.com/1rewlive5skydrive/OneDriveProductionV2");
             using var response = client.SendAsync(request).Result;
@@ -37,9 +36,7 @@ namespace SophiApp.Services
             var binaries = xml.DocumentElement?.SelectNodes("update/amd64binary");
             var binary = binaries?.Count > 1 ? binaries[1] : binaries?[0];
             var url = binary?.Attributes?.GetNamedItem("url")?.InnerText ?? string.Empty;
-            using var urlStream = client.GetStreamAsync(url).Result;
-            using var fileStream = new FileStream(saveTo, FileMode.Create);
-            urlStream.CopyTo(fileStream);
+            Download(client, url, saveTo);
         }
 
         /// <inheritdoc/>
@@ -78,6 +75,35 @@ namespace SophiApp.Services
             {
                 App.Logger.LogUrlIsAvailable(url, false);
                 return false;
+            }
+        }
+
+        private static void Download(HttpClient client, string url, string saveTo)
+        {
+            App.Status.SetStep("Panel_Step_Downloading");
+            using var response = client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).Result;
+            _ = response.EnsureSuccessStatusCode();
+            var totalBytes = response.Content.Headers.ContentLength ?? 0;
+            using var urlStream = response.Content.ReadAsStream();
+            using var fileStream = new FileStream(saveTo, FileMode.Create);
+            var buffer = new byte[81920];
+            var downloadedBytes = 0L;
+            var shownPercent = 0;
+            int read;
+
+            while ((read = urlStream.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                fileStream.Write(buffer, 0, read);
+                downloadedBytes += read;
+
+                // The percent is shown in steps of five, and only if the server tells the file size
+                var percent = totalBytes > 0 ? (int)(downloadedBytes * 100 / totalBytes / 5 * 5) : 0;
+
+                if (percent > shownPercent)
+                {
+                    shownPercent = percent;
+                    App.Status.SetStep("Panel_Step_DownloadingPercent", percent);
+                }
             }
         }
     }

@@ -4,9 +4,12 @@
 
 namespace SophiApp.Helpers
 {
+    using System.Text.Json.Serialization;
+
     /// <summary>
     /// The UI category tags.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter<UICategoryTag>))]
     public enum UICategoryTag
     {
         /// <summary>

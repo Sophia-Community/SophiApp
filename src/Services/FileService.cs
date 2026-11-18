@@ -6,8 +6,8 @@ namespace SophiApp.Services;
 
 using System.Runtime.CompilerServices;
 using System.Text;
-using Newtonsoft.Json;
 using SophiApp.Contracts.Services;
+using SophiApp.Extensions;
 
 /// <inheritdoc/>
 public class FileService : IFileService
@@ -19,7 +19,7 @@ public class FileService : IFileService
         if (File.Exists(path))
         {
             var json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<T>(json);
+            return Json.ToObject<T>(json);
         }
 
         return default;
@@ -34,7 +34,7 @@ public class FileService : IFileService
             Directory.CreateDirectory(folderPath);
         }
 
-        var fileContent = JsonConvert.SerializeObject(content, Formatting.Indented);
+        var fileContent = Json.Stringify(content!);
         File.WriteAllText(Path.Combine(folderPath, fileName), fileContent, Encoding.Default);
     }
 

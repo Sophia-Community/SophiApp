@@ -68,6 +68,12 @@ public class NavigationViewService : INavigationViewService
 
     private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
     {
+        // Assistive tools can invoke an item while the menu is blocked, so it is checked here too
+        if (args.InvokedItemContainer is NavigationViewItem { IsHitTestVisible: false })
+        {
+            return;
+        }
+
         if (args.IsSettingsInvoked)
         {
             navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);

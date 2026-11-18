@@ -49,6 +49,8 @@ namespace SophiApp.Services
                         {
                             UIModelType.CheckBox => BuildCheckBoxModel(dto),
                             UIModelType.IconCheckBox => BuildIconCheckBoxModel(dto),
+                            UIModelType.Install => BuildInstallModel(dto, canUninstall: false),
+                            UIModelType.InstallUninstall => BuildInstallModel(dto, canUninstall: true),
                             UIModelType.RadioButtonsGroup2 => BuildRadioButtonsGroup2(dto),
                             UIModelType.RadioButtonsGroup3 => BuildRadioButtonsGroup3(dto),
                             UIModelType.RadioButtonsGroup4 => BuildRadioButtonsGroup4(dto),
@@ -113,8 +115,15 @@ namespace SophiApp.Services
         {
             await Task.Run(() =>
             {
+                var number = 0;
+
                 foreach (var model in models)
                 {
+                    // The user sees which setting is being applied and how many are left
+                    number++;
+                    App.Status.SetOperation(models.Count == 1
+                        ? string.Format("Panel_Status_ApplyingOne".GetLocalized(), model.Title)
+                        : string.Format("Panel_Status_Applying".GetLocalized(), number, models.Count, model.Title));
                     model.IsSelected = false;
                     var timer = Stopwatch.StartNew();
                     model.SetState();
@@ -141,7 +150,9 @@ namespace SophiApp.Services
             var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
             var accessor = GetAccessor<bool>(dto.Name);
             var mutator = GetMutator<bool>(dto.Name);
-            return new UICheckBoxModel(dto, title, description, accessor, mutator) { TitleAccessor = GetTitleAccessor(dto.Name, title) };
+
+            // A setting can have a method that returns a notice for the current state of the system
+            return new UICheckBoxModel(dto, title, description, accessor, mutator) { NoticeAccessor = GetNoticeAccessorOrDefault(dto.Name) };
         }
 
         private UIModel BuildIconCheckBoxModel(UIModelDto dto)
@@ -151,6 +162,18 @@ namespace SophiApp.Services
             var accessor = GetAccessor<bool>(dto.Name);
             var mutator = GetMutator<bool>(dto.Name);
             return new UIIconCheckBoxModel(dto, title, description, accessor, mutator);
+        }
+
+        private UIModel BuildInstallModel(UIModelDto dto, bool canUninstall)
+        {
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var accessor = GetAccessor<InstallState>(dto.Name);
+            var mutator = GetMutator<bool>(dto.Name);
+
+            // A package that can be installed for all users has a second method for that
+            var allUsersMutator = GetMutatorOrDefault<bool>($"{dto.Name}_AllUsers");
+            return new UIInstallModel(dto, title, description, accessor, mutator) { CanUninstall = canUninstall, AllUsersMutator = allUsersMutator };
         }
 
         private UIModel BuildRadioButtonsGroup2(UIModelDto dto)
@@ -199,20 +222,19 @@ namespace SophiApp.Services
             return (Func<T>)Delegate.CreateDelegate(typeof(Func<T>), method!);
         }
 
-        private Func<string>? GetTitleAccessor(string name, string title)
+        private Func<string?>? GetNoticeAccessorOrDefault(string name)
         {
-            // A package that can be updated has a second title and a method that tells whether an update is available
-            var updateTitle = GetResourceValueOrDefault($"UIModel_{name}_Title_Update");
             var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!;
-            var method = type.GetMethod($"{name}_UpdateAvailable", BindingFlags.Static | BindingFlags.Public);
+            var method = type.GetMethod($"{name}_Notice", BindingFlags.Static | BindingFlags.Public);
+            return method is null ? null : (Func<string?>)Delegate.CreateDelegate(typeof(Func<string?>), method);
+        }
 
-            if (string.IsNullOrEmpty(updateTitle) || method is null)
-            {
-                return null;
-            }
-
-            var updateAvailable = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), method);
-            return () => updateAvailable.Invoke() ? updateTitle : title;
+        private Action<T>? GetMutatorOrDefault<T>(string name)
+            where T : struct
+        {
+            var type = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true)!;
+            var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
+            return method is null ? null : (Action<T>)Delegate.CreateDelegate(typeof(Action<T>), method);
         }
 
         private Action<T> GetMutator<T>(string name)

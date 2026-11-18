@@ -21,10 +21,16 @@ namespace SophiApp.Helpers
         /// </summary>
         public DataTemplate RadioButtonsTemplate { get; set; } = new();
 
+        /// <summary>
+        /// Gets or sets the template for <see cref="UIInstallModel"/>.
+        /// </summary>
+        public DataTemplate InstallTemplate { get; set; } = new();
+
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item) => item switch
         {
             UICheckBoxModel or UIIconCheckBoxModel => CheckBoxTemplate,
+            UIInstallModel => InstallTemplate,
             UIRadioButtonsGroup2Model or UIRadioButtonsGroup3Model or UIRadioButtonsGroup4Model => RadioButtonsTemplate,
             _ => throw new TypeAccessException($"Attempt to access method '{nameof(SelectTemplateCore)}' to type '{item.GetType()}' failed"),
         };

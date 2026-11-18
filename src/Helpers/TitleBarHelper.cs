@@ -67,6 +67,9 @@ internal static class TitleBarHelper
             ? new UISettings().GetColorValue(UIColorType.Background) != Colors.White
             : theme == ElementTheme.Dark;
 
+        // The window background follows the same theme
+        (App.MainWindow.SystemBackdrop as TintedAcrylicBackdrop)?.SetTheme(isDark);
+
         // The caption is white on a dark window and black on a light one
         var color = isDark ? Colors.White : Colors.Black;
         var resources = Application.Current.Resources;

@@ -42,6 +42,7 @@ public partial class App : Application
                 _ = services.AddSingleton<IPageService, PageService>();
                 _ = services.AddSingleton<IRequirementsService, RequirementsService>();
                 _ = services.AddSingleton<ISettingsService, SettingsService>();
+                _ = services.AddSingleton<IStatusService, StatusService>();
                 _ = services.AddSingleton<IThemesService, ThemesService>();
                 _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
                 _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
@@ -66,7 +67,6 @@ public partial class App : Application
                 _ = services.AddScoped<StartupViewModel>();
                 _ = services.AddTransient<ContextMenuViewModel>();
                 _ = services.AddTransient<FatalErrorViewModel>();
-                _ = services.AddTransient<LogViewModel>();
                 _ = services.AddTransient<PersonalizationViewModel>();
                 _ = services.AddTransient<PrivacyViewModel>();
                 _ = services.AddTransient<ProVersionViewModel>();
@@ -81,7 +81,6 @@ public partial class App : Application
                 // Views
                 _ = services.AddTransient<ContextMenuPage>();
                 _ = services.AddTransient<FatalErrorPage>();
-                _ = services.AddTransient<LogPage>();
                 _ = services.AddTransient<PersonalizationPage>();
                 _ = services.AddTransient<PrivacyPage>();
                 _ = services.AddTransient<ProVersionPage>();
@@ -114,6 +113,11 @@ public partial class App : Application
     /// Gets <see cref="ILoggerService"/>.
     /// </summary>
     public static ILoggerService Logger { get; } = GetService<ILoggerService>();
+
+    /// <summary>
+    /// Gets <see cref="IStatusService"/>.
+    /// </summary>
+    public static IStatusService Status { get; } = GetService<IStatusService>();
 
     /// <summary>
     /// Gets <see cref="IHost"/>.

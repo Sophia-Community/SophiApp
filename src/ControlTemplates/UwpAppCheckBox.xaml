@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="SophiApp.ControlTemplates.UwpAppCheckBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -51,8 +51,7 @@
                     Grid.Column="1"
                     VerticalAlignment="Center">
             <TextBlock Text="{Binding Name}"
-                       TextTrimming="CharacterEllipsis"
-                       FontSize="{x:Bind FontOptions.TitleTextSize, Mode=OneWay}"/>
+                       TextTrimming="CharacterEllipsis"/>
             <TextBlock Text="{Binding Title}"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
@@ -60,6 +59,7 @@
                        TextTrimming="CharacterEllipsis"/>
         </StackPanel>
         <CheckBox Grid.Column="2"
+                  AutomationProperties.Name="{Binding Name}"
                   MinWidth="0"
                   VerticalAlignment="Center"
                   IsEnabled="{Binding IsEnabled}"

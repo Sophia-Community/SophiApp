@@ -4,6 +4,8 @@
 
 namespace SophiApp.Models
 {
+    using SophiApp.Helpers;
+
     /// <inheritdoc/>
     public class UIRadioButtonsGroup2Model : UIModel
     {
@@ -86,6 +88,13 @@ namespace SophiApp.Models
                 DefaultId = accessor.Invoke();
                 SelectedId = DefaultId.ToString();
                 App.Logger.LogModelState(Name, DefaultId);
+                ShowNotice(string.Empty);
+            }
+            catch (CustomizationException ex)
+            {
+                IsEnabled = false;
+                ShowBlockingReason(ex.GetText());
+                App.Logger.LogModelGetStateException(Name, ex);
             }
             catch (Exception ex)
             {
@@ -103,15 +112,22 @@ namespace SophiApp.Models
             {
                 mutator.Invoke(id);
             }
+            catch (CustomizationException ex)
+            {
+                // The setting stays available: the user can try again when the cause is gone
+                SetApplyFailure(ex.GetText());
+                App.Logger.LogModelSetStateException(ex, Name, id);
+            }
             catch (Exception ex)
             {
                 IsEnabled = false;
+                SetApplyFailure(ApplyFailedText);
                 App.Logger.LogModelSetStateException(ex, Name, id);
             }
         }
 
         /// <inheritdoc/>
         public override bool ContainsText(string text)
-            => base.ContainsText(text) || Description.Contains(text, StringComparison.CurrentCultureIgnoreCase);
+            => base.ContainsText(text) || FormattedText.ToPlainText(Description).Contains(text, StringComparison.CurrentCultureIgnoreCase);
     }
 }

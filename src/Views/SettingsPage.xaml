@@ -11,34 +11,13 @@
     <ScrollView>
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                     Margin="{StaticResource SettingsListMargin}"
-                    Spacing="4">
+                    Spacing="8">
             <TextBlock x:Uid="Page_Settings" Style="{StaticResource PageTitleTextStyle}"/>
-            <controls:MadeForWindows Margin="2, 0, 0, 10"/>
+            <controls:Slogan Margin="2, 0, 0, 10"/>
 
-            <toolkit:SettingsExpander x:Uid="SettingsPage_FontOptions"
-                                      IsExpanded="True">
-                <toolkit:SettingsExpander.HeaderIcon>
-                    <FontIcon Glyph="&#xE8E9;"/>
-                </toolkit:SettingsExpander.HeaderIcon>
-                <toolkit:SettingsExpander.Items>
-                    <toolkit:SettingsCard x:Uid="SettingsPage_TitleFontSize">
-                        <Slider Width="200"
-                                Minimum="{x:Bind ViewModel.FontOptions.TitleTextMinSize, Mode=OneWay}"
-                                Maximum="{x:Bind ViewModel.FontOptions.TitleTextMaxSize, Mode=OneWay}"
-                                Value="{x:Bind ViewModel.FontOptions.TitleTextSize, Mode=TwoWay}"
-                                StepFrequency="2"/>
-                    </toolkit:SettingsCard>
-                    <toolkit:SettingsCard x:Uid="SettingsPage_DescriptionFontSize">
-                        <Slider Width="200"
-                                Minimum="{x:Bind ViewModel.FontOptions.DescriptionTextMinSize, Mode=OneWay}"
-                                Maximum="{x:Bind ViewModel.FontOptions.DescriptionTextMaxSize, Mode=OneWay}"
-                                Value="{x:Bind ViewModel.FontOptions.DescriptionTextSize, Mode=TwoWay}"
-                                StepFrequency="2"/>
-                    </toolkit:SettingsCard>
-                </toolkit:SettingsExpander.Items>
-            </toolkit:SettingsExpander>
-
-            <toolkit:SettingsCard x:Uid="SettingsPage_SelectedTheme">
+            <toolkit:SettingsCard x:Uid="SettingsPage_SelectedTheme"
+                                  MinHeight="{StaticResource SettingsCardMinHeight}"
+                                  Padding="{StaticResource SettingsCardPadding}">
                 <toolkit:SettingsCard.HeaderIcon>
                     <FontIcon Glyph="&#xE790;"/>
                 </toolkit:SettingsCard.HeaderIcon>
@@ -48,18 +27,9 @@
                           DisplayMemberPath="Description"/>
             </toolkit:SettingsCard>
 
-            <toolkit:SettingsCard x:Uid="SettingsPage_ShowLogPage">
-                <toolkit:SettingsCard.HeaderIcon>
-                    <FontIcon Glyph="&#xE90F;"/>
-                </toolkit:SettingsCard.HeaderIcon>
-                <CheckBox x:Name="ShowLogPageCheckBox"
-                          MinWidth="0"
-                          IsChecked="{x:Bind ViewModel.LogPageVisibility, Mode=OneWay}"
-                          Command="{x:Bind ViewModel.LogPageVisibilityCommand, Mode=OneWay}"
-                          CommandParameter="{Binding Path=IsChecked, ElementName=ShowLogPageCheckBox}"/>
-            </toolkit:SettingsCard>
-
             <toolkit:SettingsExpander x:Uid="SettingsPage_AboutApp"
+                                      MinHeight="{StaticResource SettingsCardMinHeight}"
+                                      Loaded="SettingsExpander_Loaded"
                                       IsExpanded="True">
                 <toolkit:SettingsExpander.HeaderIcon>
                     <FontIcon Glyph="&#xE946;"/>
@@ -97,6 +67,8 @@
             </toolkit:SettingsExpander>
 
             <toolkit:SettingsExpander x:Uid="SettingsPage_Team"
+                                      MinHeight="{StaticResource SettingsCardMinHeight}"
+                                      Loaded="SettingsExpander_Loaded"
                                       IsExpanded="True">
                 <toolkit:SettingsExpander.HeaderIcon>
                     <FontIcon Glyph="&#xE716;"/>

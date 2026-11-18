@@ -181,24 +181,6 @@ namespace SophiApp.Contracts.Services
         void LogUwpForAllUsersState(bool state);
 
         /// <summary>
-        /// Write information about the resizing of UI elements description text.
-        /// </summary>
-        /// <param name="size">A description text size.</param>
-        void LogDescriptionTextSizeChanged(int size);
-
-        /// <summary>
-        /// Write <see cref="LogPage"/> visibility in the log.
-        /// </summary>
-        /// <param name="visible">Log page visibility state.</param>
-        void LogPageVisibility(bool visible);
-
-        /// <summary>
-        /// Write information about the resizing of UI elements title text.
-        /// </summary>
-        /// <param name="size">A title text size.</param>
-        void LogTitleTextSizeChanged(int size);
-
-        /// <summary>
         /// Write the time spent searching for text in models.
         /// </summary>
         /// <param name="text">A searched text.</param>
@@ -303,5 +285,18 @@ namespace SophiApp.Contracts.Services
         /// <param name="parameter">Model parameter.</param>
         void LogModelSetStateException<T>(Exception exception, string name, T parameter)
             where T : struct;
+
+        /// <summary>
+        /// Write the text shown under a setting: why it is unavailable, why it could not be applied, or a notice.
+        /// </summary>
+        /// <param name="name">Model name.</param>
+        /// <param name="text">The text as the user sees it.</param>
+        void LogModelNotice(string name, string text);
+
+        /// <summary>
+        /// Write a message shown to the user outside the settings: a status, a reminder, a startup check result.
+        /// </summary>
+        /// <param name="text">The text as the user sees it.</param>
+        void LogUserNotice(string text);
     }
 }

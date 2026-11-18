@@ -46,6 +46,7 @@ namespace SophiApp.Services
             try
             {
                 httpService.DownloadFile(downloadUrl, offlineInstaller);
+                App.Status.SetStep("Panel_Step_Installing");
                 using var installer = processService.WaitForExit(offlineInstaller, "/install /passive /norestart");
             }
             finally

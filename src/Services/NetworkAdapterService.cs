@@ -92,7 +92,7 @@ namespace SophiApp.Services
                 {
                     // Network shell commands need location permission to access WLAN information
                     ExplorerHelper.Open("ms-settings:privacy-location");
-                    return;
+                    throw new CustomizationException(exceptionMessage: "Location services are turned off, so the connected Wi-Fi network cannot be determined", resourceKey: "UIModel_Exception_LocationServicesDisabled");
                 }
 
                 // Get the WLAN profile name by SSID, since they may differ. If the profile was not found, SSID is used

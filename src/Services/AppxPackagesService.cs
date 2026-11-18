@@ -75,7 +75,7 @@ namespace SophiApp.Services
             "SynapticsIncorporated.241916F58D6E7",
             "ELANMicroelectronicsCorpo.TrackPoint",
             // XBOX Game UI
-            "Microsoft.XboxGameCallableUI",
+            "Microsoft.XBOXGameCallableUI",
         };
 
         // These apps have no bundle, so they are added to the list by name
@@ -88,7 +88,7 @@ namespace SophiApp.Services
             "MSTeams",
 
             // XBOX Game Bar
-            "Microsoft.XboxGamingOverlay",
+            "Microsoft.XBOXGamingOverlay",
         ];
 
         private readonly PackageManager packageManager = new();

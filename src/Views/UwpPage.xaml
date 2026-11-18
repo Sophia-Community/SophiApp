@@ -36,6 +36,8 @@
                              Severity="Informational"
                              Margin="0, 0, 0, 10"/>
                     <toolkit:SettingsCard x:Uid="UwpPage_ForAllUsers"
+                                          MinHeight="{StaticResource SettingsCardMinHeight}"
+                                          Padding="{StaticResource SettingsCardPadding}"
                                           Margin="0, 0, 0, 10">
                         <ToggleSwitch IsOn="{x:Bind ViewModel.UwpForAllUsersState, Mode=OneWay}">
                             <interaction:Interaction.Behaviors>
@@ -57,8 +59,8 @@
                         <ItemsRepeater.Layout>
                             <UniformGridLayout x:Name="UwpItemsContainerLayoutGrid"
                                                ItemsStretch="Fill"
-                                               MinRowSpacing="4"
-                                               MinColumnSpacing="4"
+                                               MinRowSpacing="8"
+                                               MinColumnSpacing="8"
                                                MaximumRowsOrColumns="5"
                                                MinItemHeight="68"
                                                MinItemWidth="300"/>
@@ -74,7 +76,7 @@
                            VerticalCacheLength="{Binding ElementName=PageUwp, Path=GamingModels.Count}"
                            Margin="{StaticResource PageBottomMargin}">
                 <ItemsRepeater.Layout>
-                    <StackLayout Spacing="4"/>
+                    <StackLayout Spacing="8"/>
                 </ItemsRepeater.Layout>
             </ItemsRepeater>
         </StackPanel>

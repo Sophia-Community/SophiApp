@@ -398,7 +398,7 @@ namespace SophiApp.Customizations
                 return !taskbarValue.Equals(0);
             }
 
-            throw new CustomizationException(exceptionMessage: "MicrosoftWindows.Client.WebExperience package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
+            throw new CustomizationException(exceptionMessage: "MicrosoftWindows.Client.WebExperience package is not installed", resourceKey: "UIModel_Exception_WidgetsNotInstalled");
         }
 
         /// <summary>
@@ -673,16 +673,16 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get One Drive state.
         /// </summary>
-        public static bool OneDrive()
+        public static InstallState OneDrive()
         {
             if (OneDriveService.IsInstalled())
             {
                 if (OneDriveService.UserIsLogged())
                 {
-                    throw new CustomizationException(exceptionMessage: "Log out from OneDrive account before uninstalling the application", resourceKey: "UIModel_Exception_OneDrive_LogOut");
+                    throw new CustomizationException(exceptionMessage: "Log out from OneDrive account before uninstalling the application", resourceKey: "UIModel_Exception_OneDrive_LogOut") { InstallState = InstallState.Installed };
                 }
 
-                return true;
+                return InstallState.Installed;
             }
             else
             {
@@ -691,10 +691,10 @@ namespace SophiApp.Customizations
 
                 if (!string.IsNullOrEmpty(setupFile) || HttpService.UrlIsAvailable("https://g.live.com/1rewlive5skydrive/OneDriveProductionV2"))
                 {
-                    return false;
+                    return InstallState.NotInstalled;
                 }
 
-                throw new CustomizationException(exceptionMessage: "OneDriveSetup.exe was not found and there is no Internet access to download OneDrive installer", resourceKey: "UIModel_Exception_OneDrive_InstallerNotFound");
+                throw new CustomizationException(exceptionMessage: "OneDriveSetup.exe was not found and there is no Internet access to download OneDrive installer", resourceKey: "UIModel_Exception_InternetConnectionRequired") { InstallState = InstallState.NotInstalled, Arguments = ["https://g.live.com/1rewlive5skydrive/OneDriveProductionV2"] };
             }
         }
 
@@ -974,7 +974,7 @@ namespace SophiApp.Customizations
             // The option is not available without Windows Terminal
             if (appxPackage is null)
             {
-                throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
+                throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled") { Arguments = ["Windows Terminal"] };
             }
 
             var appxPath = $"Software\\Classes\\PackagedCom\\Package\\{appxPackage.Id.FullName}\\Class";
@@ -1014,80 +1014,22 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get .NET 10 desktop runtime install state.
         /// </summary>
-        public static bool InstallDotNetRuntime_10()
-        {
-            var latestVersion = DataService.LatestReleaseNET10?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
-
-            // The latest version is installed if its installer is in the "Package Cache" folder
-            return PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe")
-                ? throw new CustomizationException(exceptionMessage: "Latest .NET version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled")
-                : false;
-        }
-
-        /// <summary>
-        /// Determines whether .NET 10 desktop runtime is installed and a newer build is available.
-        /// </summary>
-        public static bool InstallDotNetRuntime_10_UpdateAvailable()
-            => DataService.LatestReleaseNET10?.Version is string latestVersion
-                && PackageService.IsInstalled("windowsdesktop-runtime-10.*-win-x64.exe")
-                && !PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
+        public static InstallState InstallDotNetRuntime_10() => GetDotNetRuntimeState("10", DataService.LatestReleaseNET10?.Version);
 
         /// <summary>
         /// Get .NET 11 desktop runtime install state.
         /// </summary>
-        public static bool InstallDotNetRuntime_11()
-        {
-            var latestVersion = DataService.LatestReleaseNET11?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/11.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
-
-            // The latest version is installed if its installer is in the "Package Cache" folder
-            return PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe")
-                ? throw new CustomizationException(exceptionMessage: "Latest .NET version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled")
-                : false;
-        }
+        public static InstallState InstallDotNetRuntime_11() => GetDotNetRuntimeState("11", DataService.LatestReleaseNET11?.Version);
 
         /// <summary>
-        /// Determines whether .NET 11 desktop runtime is installed and a newer build is available.
+        /// Get Microsoft Visual C++ x86 redistributable package install state.
         /// </summary>
-        public static bool InstallDotNetRuntime_11_UpdateAvailable()
-            => DataService.LatestReleaseNET11?.Version is string latestVersion
-                && PackageService.IsInstalled("windowsdesktop-runtime-11.*-win-x64.exe")
-                && !PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe");
+        public static InstallState InstallVisualC_x86() => GetVisualCState("vc_redist.x86.exe");
 
         /// <summary>
-        /// Get Microsoft Visual C++ x86 redistributable package version.
+        /// Get Microsoft Visual C++ x64 redistributable package install state.
         /// </summary>
-        public static bool InstallVisualC_x86()
-        {
-            var latestVersion = DataService.LatestReleaseVC?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
-            var installedVersion = PackageService.GetInstalledVersion("vc_redist.x86.exe");
-
-            // Not installed, or a newer build is available
-            return installedVersion is null || latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest Visual C++ x86 version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
-        }
-
-        /// <summary>
-        /// Determines whether Microsoft Visual C++ x86 redistributable package is installed and a newer build is available.
-        /// </summary>
-        public static bool InstallVisualC_x86_UpdateAvailable()
-            => PackageService.GetInstalledVersion("vc_redist.x86.exe") is Version installedVersion && DataService.LatestReleaseVC?.Version > installedVersion;
-
-        /// <summary>
-        /// Get Microsoft Visual C++ x64 redistributable package version.
-        /// </summary>
-        public static bool InstallVisualC_x64()
-        {
-            var latestVersion = DataService.LatestReleaseVC?.Version ?? throw new CustomizationException(exceptionMessage: "Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired");
-            var installedVersion = PackageService.GetInstalledVersion("vc_redist.x64.exe");
-
-            // Not installed, or a newer build is available
-            return installedVersion is null || latestVersion > installedVersion ? false : throw new CustomizationException(exceptionMessage: "Latest Visual C++ x64 version is installed", resourceKey: "UIModel_Exception_LatestVersionInstalled");
-        }
-
-        /// <summary>
-        /// Determines whether Microsoft Visual C++ x64 redistributable package is installed and a newer build is available.
-        /// </summary>
-        public static bool InstallVisualC_x64_UpdateAvailable()
-            => PackageService.GetInstalledVersion("vc_redist.x64.exe") is Version installedVersion && DataService.LatestReleaseVC?.Version > installedVersion;
+        public static InstallState InstallVisualC_x64() => GetVisualCState("vc_redist.x64.exe");
 
         /// <summary>
         /// Get Windows AI state.
@@ -1098,6 +1040,11 @@ namespace SophiApp.Customizations
             // Windows AI is considered removed when Recall is not enabled and the Copilot app is not installed
             return !recall.Equals(1) && !AppxPackagesService.PackageExist("Microsoft.Copilot");
         }
+
+        /// <summary>
+        /// Gets a notice for the Windows AI setting: without an AI accelerator only Recall and the Copilot app are removed.
+        /// </summary>
+        public static string? RemoveWindowsAI_Notice() => InstrumentationService.HasAIAccelerator() ? null : "UIModel_Notice_NoAIAccelerator";
 
         /// <summary>
         /// Gets XBOX game bar state.
@@ -1120,13 +1067,13 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool XBOXGameTips()
         {
-            if (AppxPackagesService.PackageExist("Microsoft.XboxGamingOverlay"))
+            if (AppxPackagesService.PackageExist("Microsoft.XBOXGamingOverlay"))
             {
                 var startupPanelIsEnabled = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\GameBar", "ShowStartupPanel") as int? ?? -1;
                 return startupPanelIsEnabled != 0;
             }
 
-            throw new CustomizationException(exceptionMessage: "XBOX Game Bar package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
+            throw new CustomizationException(exceptionMessage: "XBOX Game Bar package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled") { Arguments = ["XBOX Game Bar"] };
         }
 
         /// <summary>
@@ -1164,7 +1111,9 @@ namespace SophiApp.Customizations
                 throw new CustomizationException(exceptionMessage: "No dedicated graphics card found", resourceKey: "UIModel_Exception_GPUScheduling_DedicatedGPUNotFound");
             }
 
-            throw new CustomizationException(exceptionMessage: $"Supported WDDM version is {WDDMMinimalVersion} and higher. Current WDDM version is {wddmVersion}", resourceKey: "UIModel_Exception_GPUScheduling_WDDMVersion");
+            // The version is kept in thousandths: 2700 is 2.7. The dot stays a dot in every locale
+            var currentVersion = (wddmVersion / 1000d).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
+            throw new CustomizationException(exceptionMessage: $"Supported WDDM version is {WDDMMinimalVersion} and higher. Current WDDM version is {wddmVersion}", resourceKey: "UIModel_Exception_GPUScheduling_WDDMVersion") { Arguments = [currentVersion] };
         }
 
         /// <summary>
@@ -1323,23 +1272,16 @@ namespace SophiApp.Customizations
                     return true;
                 }
 
-                // Determining whether Hyper-V is enabled
-                var virtualizationIsEnabled = InstrumentationService.CPUVirtualizationIsEnabled() ?? throw new CustomizationException(exceptionMessage: "This CPU does not support virtualization", resourceKey: "UIModel_Exception_VirtualizationNotSupported");
-                var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new CustomizationException(exceptionMessage: "Enable virtualization in UEFI", resourceKey: "UIModel_Exception_VirtualizationDisabled");
-
-                if (virtualizationIsEnabled)
+                // The feature needs virtualization: it is turned on in the firmware, or a hypervisor is already running
+                if (!VirtualizationIsAvailable())
                 {
-                    return false;
-                }
-                else if (hypervisorPresent)
-                {
-                    return false;
+                    throw new CustomizationException(exceptionMessage: "Enable virtualization in UEFI", resourceKey: "UIModel_Exception_VirtualizationDisabled");
                 }
 
-                throw new CustomizationException(exceptionMessage: "This PC does not support Windows Sandbox feature", resourceKey: "UIModel_Exception_UnsupportedFeature");
+                return false;
             }
 
-            throw new CustomizationException(exceptionMessage: "Unsupported Windows edition", resourceKey: "UIModel_Exception_WindowsSandbox_UnsupportedEdition");
+            throw new CustomizationException(exceptionMessage: "Unsupported Windows edition", resourceKey: "UIModel_Exception_WindowsSandbox_UnsupportedEdition") { Arguments = ["Windows Sandbox"] };
         }
 
         /// <summary>
@@ -1357,19 +1299,13 @@ namespace SophiApp.Customizations
                 return true;
             }
 
-            var virtualizationIsEnabled = InstrumentationService.CPUVirtualizationIsEnabled() ?? throw new CustomizationException(exceptionMessage: "This CPU does not support virtualization", resourceKey: "UIModel_Exception_VirtualizationNotSupported");
-            var hypervisorPresent = InstrumentationService.HypervisorIsPresent() ?? throw new CustomizationException(exceptionMessage: "Enable virtualization in UEFI", resourceKey: "UIModel_Exception_VirtualizationDisabled");
-
-            if (virtualizationIsEnabled)
+            // The feature needs virtualization: it is turned on in the firmware, or a hypervisor is already running
+            if (!VirtualizationIsAvailable())
             {
-                return false;
-            }
-            else if (hypervisorPresent)
-            {
-                return false;
+                throw new CustomizationException(exceptionMessage: "Enable virtualization in UEFI", resourceKey: "UIModel_Exception_VirtualizationDisabled");
             }
 
-            throw new CustomizationException(exceptionMessage: "This PC does not support Local Security Authority feature", resourceKey: "UIModel_Exception_UnsupportedFeature");
+            return false;
         }
 
         /// <summary>
@@ -1420,10 +1356,10 @@ namespace SophiApp.Customizations
 
                 if (userBlockedGuid is null && machineBlockedGuid is null)
                 {
+                    var terminalSettings = $@"{Environment.ExpandEnvironmentVariables("%LOCALAPPDATA%")}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
+
                     try
                     {
-                        var terminalSettings = $@"{Environment.ExpandEnvironmentVariables("%LOCALAPPDATA%")}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json";
-
                         // Windows Terminal creates the configuration file on its first launch. It will be created when the option is applied
                         if (!File.Exists(terminalSettings))
                         {
@@ -1434,9 +1370,9 @@ namespace SophiApp.Customizations
                         var jsonProfile = Json.ToObject<MsTerminalSettings>(jsonSettings);
                         return jsonProfile?.Profiles?.Defaults?.Elevate ?? false;
                     }
-                    catch (Exception ex) when (ex is ArgumentException or Newtonsoft.Json.JsonException or FileNotFoundException or DirectoryNotFoundException)
+                    catch (Exception ex) when (ex is ArgumentException or System.Text.Json.JsonException or FileNotFoundException or DirectoryNotFoundException)
                     {
-                        throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal configuration file is not valid", resourceKey: "UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid");
+                        throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal configuration file is not valid", resourceKey: "UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid") { Arguments = [terminalSettings] };
                     }
                 }
 
@@ -1444,7 +1380,7 @@ namespace SophiApp.Customizations
                 return false;
             }
 
-            throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled");
+            throw new CustomizationException(exceptionMessage: "Microsoft.WindowsTerminal package is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled") { Arguments = ["Windows Terminal"] };
         }
 
         [System.Runtime.InteropServices.DllImport("advapi32.dll", SetLastError = true)]
@@ -1464,6 +1400,9 @@ namespace SophiApp.Customizations
             const uint SuccessAndFailure = 0x3;
             var processCreation = new Guid("0CCE922B-69AE-11D9-BED3-505054503030");
 
+            // The audit policy can be read only with the security privilege, which is turned off even for an administrator
+            _ = PrivilegeHelper.TryEnable("SeSecurityPrivilege");
+
             if (!AuditQuerySystemPolicy(ref processCreation, 1, out var auditPolicy))
             {
                 return null;
@@ -1479,6 +1418,46 @@ namespace SophiApp.Customizations
             {
                 _ = AuditFree(auditPolicy);
             }
+        }
+
+        private static bool VirtualizationIsAvailable()
+            => (InstrumentationService.CPUVirtualizationIsEnabled() ?? false) || (InstrumentationService.HypervisorIsPresent() ?? false);
+
+        private static InstallState GetDotNetRuntimeState(string majorVersion, string? latestVersion)
+        {
+            // A runtime is installed if its installer is in the "Package Cache" folder
+            var installed = PackageService.IsInstalled($"windowsdesktop-runtime-{majorVersion}.*-win-x64.exe");
+
+            if (latestVersion is null)
+            {
+                // Without the list of releases a runtime cannot be installed or updated
+                return installed
+                    ? InstallState.Installed
+                    : throw new CustomizationException(exceptionMessage: $"Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/{majorVersion}.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired") { Arguments = [$"https://builds.dotnet.microsoft.com/dotnet/release-metadata/{majorVersion}.0/releases.json"] };
+            }
+
+            if (!installed)
+            {
+                return InstallState.NotInstalled;
+            }
+
+            return PackageService.IsInstalled($"windowsdesktop-runtime-{latestVersion}-win-x64.exe") ? InstallState.Installed : InstallState.UpdateAvailable;
+        }
+
+        private static InstallState GetVisualCState(string installerName)
+        {
+            var installedVersion = PackageService.GetInstalledVersion(installerName);
+            var latestVersion = DataService.LatestReleaseVC?.Version;
+
+            if (installedVersion is null)
+            {
+                // Without the latest release data the package cannot be installed
+                return latestVersion is null
+                    ? throw new CustomizationException(exceptionMessage: "Url https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired") { Arguments = ["https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json"] }
+                    : InstallState.NotInstalled;
+            }
+
+            return latestVersion > installedVersion ? InstallState.UpdateAvailable : InstallState.Installed;
         }
     }
 }

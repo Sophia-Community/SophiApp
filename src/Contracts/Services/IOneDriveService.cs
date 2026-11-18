@@ -17,7 +17,8 @@ namespace SophiApp.Contracts.Services
         /// <summary>
         /// Install OneDrive.
         /// </summary>
-        void Install();
+        /// <param name="allUsers">True to install OneDrive for all users of the computer.</param>
+        void Install(bool allUsers);
 
         /// <summary>
         /// Determines whether OneDrive is installed.

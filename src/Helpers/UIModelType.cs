@@ -5,10 +5,12 @@
 namespace SophiApp.Helpers
 {
     using SophiApp.Models;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// <see cref="UIModelDto"/> type.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter<UIModelType>))]
     public enum UIModelType
     {
         /// <summary>
@@ -35,6 +37,16 @@ namespace SophiApp.Helpers
         /// A choice of four options.
         /// </summary>
         RadioButtonsGroup4,
+
+        /// <summary>
+        /// A package that is installed or updated with a button.
+        /// </summary>
+        Install,
+
+        /// <summary>
+        /// A package that is installed, updated or uninstalled with buttons.
+        /// </summary>
+        InstallUninstall,
 
         /// <summary>
         /// A UWP app that can be uninstalled.

@@ -13,6 +13,7 @@ using SophiApp.ControlTemplates;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.Models;
+using SophiApp.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.ServiceProcess;
@@ -44,11 +45,11 @@ public partial class ShellViewModel : ObservableRecipient
     private readonly IProcessService processService;
     private readonly IRegistryService registryService;
     private readonly IRequirementsService requirementsService;
-    private readonly ISettingsService settingsService;
     private readonly IUpdateService updateService;
     private readonly StartupViewModel startupModel;
-    private bool logPageVisibility;
     private bool navigationViewHitTestVisible = false;
+    private bool searchPageIsOpen;
+    private int searchNumber;
     private List<UIModel> uwpAllUsersModels = [];
     private List<UIModel> uwpCurrentUserModels = [];
     private TaskCompletionSource<bool>? taskContinueSource;
@@ -60,13 +61,9 @@ public partial class ShellViewModel : ObservableRecipient
     [ObservableProperty]
     private bool restartReminderIsVisible = false;
     [ObservableProperty]
-    private bool taskSchedulerButtonIsVisible = false;
-    [ObservableProperty]
     private bool setUpCustomizationsPanelIsVisible = false;
     [ObservableProperty]
     private bool uwpForAllUsersState = true;
-    [ObservableProperty]
-    private List<string> loggedActions = [];
 
     [ObservableProperty]
     private object? selectedNavigationViewItem;
@@ -94,7 +91,6 @@ public partial class ShellViewModel : ObservableRecipient
     /// <param name="processService">A service for working with Windows process API.</param>
     /// <param name="registryService">A service for working with Windows registry API.</param>
     /// <param name="requirementsService">Service for working with OS requirements.</param>
-    /// <param name="settingsService">A service for working with app settings.</param>
     /// <param name="updateService">Determines whether the Windows Update API is used to obtain updates for other Microsoft products.</param>
     /// <param name="startupViewModel">Implements the <see cref="StartupViewModel"/> class.</param>
     public ShellViewModel(
@@ -110,7 +106,6 @@ public partial class ShellViewModel : ObservableRecipient
         IProcessService processService,
         IRegistryService registryService,
         IRequirementsService requirementsService,
-        ISettingsService settingsService,
         IUpdateService updateService,
         StartupViewModel startupViewModel)
     {
@@ -123,12 +118,14 @@ public partial class ShellViewModel : ObservableRecipient
         this.processService = processService;
         this.registryService = registryService;
         this.requirementsService = requirementsService;
-        this.settingsService = settingsService;
         this.updateService = updateService;
         startupModel = startupViewModel;
         NavigationViewService = navigationViewService;
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
+
+        // The status is reported from background threads
+        App.Status.Changed += text => App.MainWindow.DispatcherQueue.TryEnqueue(() => SetUpCustomizationsPanelText = text);
         ApplicableModelsApply_Command = new AsyncRelayCommand(ApplicableModelsApplyAsync);
         ApplicableModelsClear_Command = new AsyncRelayCommand(ApplicableModelsClearAsync);
         AppUpdate_Command = new RelayCommand(() => httpService.OpenUrl(AppLatestReleaseUrl));
@@ -152,8 +149,7 @@ public partial class ShellViewModel : ObservableRecipient
         RadioButtonsGroup2Clicked_Command = new RelayCommand<UIRadioButtonsGroup2Model>(group => RadioButtonsGroup2Clicked(group!));
         RadioButtonsGroup3Clicked_Command = new RelayCommand<UIRadioButtonsGroup3Model>(group => RadioButtonsGroup3Clicked(group!));
         RadioButtonsGroup4Clicked_Command = new RelayCommand<UIRadioButtonsGroup4Model>(group => RadioButtonsGroup4Clicked(group!));
-        SetLogPageVisibility_Command = new RelayCommand<bool>(SetLogPageVisibility);
-        SearchBoxQuerySubmitted_Command = new AsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs>(args => SearchBoxQuerySubmittedAsync(args!));
+        Search_Command = new AsyncRelayCommand<string>(text => SearchAsync(text ?? string.Empty), AsyncRelayCommandOptions.AllowConcurrentExecutions);
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
         UpdateUEFICertificates_Command = new RelayCommand(() =>
@@ -162,6 +158,8 @@ public partial class ShellViewModel : ObservableRecipient
             httpService.OpenUrl(SigningUEFICertificatesUrl);
         });
         EnableSecureBoot_Command = new RelayCommand(() => httpService.OpenUrl(EnableSecureBootUrl));
+        InstallModelInstall_Command = new AsyncRelayCommand<UIInstallModel>(model => InstallModelSetStateAsync(model!, install: true));
+        InstallModelUninstall_Command = new AsyncRelayCommand<UIInstallModel>(model => InstallModelSetStateAsync(model!, install: false));
         UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
     }
 
@@ -281,14 +279,19 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand<UIRadioButtonsGroup4Model> RadioButtonsGroup4Clicked_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to click an "Show log page in navigation menu" CheckBox in Settings page.
+    /// Gets <see cref="IAsyncRelayCommand"/> to show the settings that contain a text.
     /// </summary>
-    public IRelayCommand<bool> SetLogPageVisibility_Command { get; private set; }
+    public IAsyncRelayCommand<string> Search_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IAsyncRelayCommand"/> to click "Search" in AutoSuggestBox.
+    /// Gets <see cref="IAsyncRelayCommand"/> to install or update a package of <see cref="UIInstallModel"/>.
     /// </summary>
-    public IAsyncRelayCommand<AutoSuggestBoxQuerySubmittedEventArgs> SearchBoxQuerySubmitted_Command { get; private set; }
+    public IAsyncRelayCommand<UIInstallModel> InstallModelInstall_Command { get; private set; }
+
+    /// <summary>
+    /// Gets <see cref="IAsyncRelayCommand"/> to uninstall a package of <see cref="UIInstallModel"/>.
+    /// </summary>
+    public IAsyncRelayCommand<UIInstallModel> InstallModelUninstall_Command { get; private set; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to click an element in the interface.
@@ -316,36 +319,9 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand UwpForAllUsersClicked_Command { get; private set; }
 
     /// <summary>
-    /// Gets and saves the app font sizes to a setting file.
-    /// </summary>
-    public FontOptions FontOptions { get; } = new();
-
-    /// <summary>
     /// Gets the info badges counters state by <see cref="UICategoryTag"/>.
     /// </summary>
     public InfoBadgeCounters InfoBadgeCounters { get; } = new();
-
-    /// <summary>
-    /// Gets or sets a value indicating whether log page visibility.
-    /// </summary>
-    public bool LogPageVisibility
-    {
-        get
-        {
-            return logPageVisibility;
-        }
-
-        set
-        {
-            if (logPageVisibility != value)
-            {
-                logPageVisibility = value;
-                App.Logger.LogPageVisibility(value);
-                settingsService.SaveLogPageVisibility(value);
-                OnPropertyChanged(nameof(LogPageVisibility));
-            }
-        }
-    }
 
     /// <summary>
     /// Gets a value indicating whether NavigationView items hit test visible property.
@@ -374,7 +350,7 @@ public partial class ShellViewModel : ObservableRecipient
     /// <summary>
     /// Gets <see cref="UIModel"/> collection founded by AutoSuggestBox query.
     /// </summary>
-    public ObservableCollection<UIModel> FoundModels { get; private set; } = [];
+    public ObservableCollection<UIModel> FoundModels { get; } = [];
 
     /// <summary>
     /// Executes the ViewModel logic of the MVVM pattern.
@@ -395,29 +371,71 @@ public partial class ShellViewModel : ObservableRecipient
         _ = NavigationService.NavigateTo(typeof(FatalErrorViewModel).FullName!);
     }
 
+    // The log gets the same texts as the page of a failed startup check shows
+    private static void LogRequirementsFailureTexts(RequirementsResult result)
+    {
+        static string Text(string key) => $"{key}/Text".GetLocalized();
+        var data = App.GetService<ICommonDataService>();
+
+        string[] texts = result switch
+        {
+            RequirementsResult.WindowsComponentStabilityDisrupted or RequirementsResult.HarmfulTweakerFound or RequirementsResult.UWPComponentsMissing or RequirementsResult.DefenderComponentsMissing
+                => [data.RequirementsResult_1, Text("OsRequirements_ReinstallWindows")],
+            RequirementsResult.NewAppVersionFound => [data.RequirementsResult_1, Text("OsRequirements_NewAppVersionFound_2")],
+            RequirementsResult.LoggedUserNotAdmin => [data.RequirementsResult_1, data.RequirementsResult_2, Text("OsRequirements_LoggedUserNotAdmin_3")],
+            RequirementsResult.HostsEntriesFound => [Text("OsRequirements_HostsEntriesFound_1"), Text("OsRequirements_HostsEntriesFound_2"), Text("OsRequirements_DoYouWantToContinue")],
+            RequirementsResult.DisableControlledFolderAccess => [Text("OsRequirements_DisableControlledFolderAccessPanel_1"), Text("OsRequirements_DisableControlledFolderAccessPanel_2")],
+            RequirementsResult.RebootPending => [Text("OsRequirements_RebootPending")],
+            RequirementsResult.SystemDriveEncryptedBitLockerDisabled => [Text("OsRequirements_SystemDriveEncryptedBitLockerDisabled_1"), Text("OsRequirements_SystemDriveEncryptedBitLockerDisabled_2")],
+            RequirementsResult.UpdateUEFICertificates => [Text("OsRequirements_UpdateUEFICertificates_1"), Text("OsRequirements_UpdateUEFICertificates_2"), Text("OsRequirements_UpdateUEFICertificates_3")],
+            RequirementsResult.EnableSecureBoot => [Text("OsRequirements_EnableSecureBoot")],
+            RequirementsResult.UnsupportedArchitecture => [data.RequirementsResult_1],
+            RequirementsResult.WrongWindowsVersion => [data.RequirementsResult_1, data.RequirementsResult_2],
+            RequirementsResult.UpdateWindowsBuild => [data.RequirementsResult_1, data.RequirementsResult_2, Text("OsRequirements_RunWinUpdate")],
+            _ => [],
+        };
+
+        App.Logger.LogUserNotice(string.Join(" ", texts.Where(text => text.Length > 0)));
+    }
+
     private async Task ApplicableModelsApplyAsync()
     {
+        // Settings are already being applied or read
+        if (!NavigationViewHitTestVisible)
+        {
+            return;
+        }
+
         NavigationViewHitTestVisible = false;
-        SetUpCustomizationsPanelText = ApplicableModels.Count == 1 ? "Panel_SetupCustomization_Applying".GetLocalized() : "Panel_SetupCustomizations_Applying".GetLocalized();
+        SetUpCustomizationsPanelText = string.Empty;
         SetUpCustomizationsPanelIsVisible = true;
         App.Logger.LogStartApplicableModelsSetState();
         StartMenuHelper.Reset();
 
-        // The buttons that open the consoles appear only after the tasks or the custom view were created
-        var tasksCreated = ApplicableModels.OfType<UIIconCheckBoxModel>().Any(model => model.IsChecked);
+        // The button that opens Event Viewer appears only after the custom view was created
         var eventViewCreated = ApplicableModels.OfType<UICheckBoxModel>().Any(model => model.IsChecked && model.Name == nameof(Customizations.Mutators.EventViewerCustomView));
+        var appsUninstalled = ApplicableModels.OfType<UIUwpAppModel>().Any();
         await modelService.SetModelsStateAsync(ApplicableModels);
-        SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
+        App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
         await modelService.GetModelsStateAsync(ApplicableModels);
+
+        // The uninstalled apps disappear from the list
+        if (appsUninstalled)
+        {
+            await ReadUwpAppsAsync();
+        }
+
         ApplicableModels.Clear();
         InfoBadgeCounters.ResetAll();
         App.Logger.LogApplicableModelsClear();
 
         // Open consoles would show outdated data, and an open policy editor could overwrite the changes
+        App.Status.SetOperation("Panel_Status_UpdatingPolicies".GetLocalized());
         await Task.Run(() => processService.CloseManagementConsoles("taskschd.msc", "eventvwr.msc", "gpedit.msc"));
         groupPolicyService.UpdatePolicy();
 
         // Save all opened folders in order to restore them after File Explorer restart
+        App.Status.SetOperation("Panel_Status_RestartingExplorer".GetLocalized());
         var openedFolders = ExplorerHelper.GetOpenedFolders();
         EnvironmentHelper.RefreshUserDesktop();
         EnvironmentHelper.ForcedRefresh();
@@ -426,21 +444,58 @@ public partial class ShellViewModel : ObservableRecipient
         await ExplorerHelper.RestoreAsync(openedFolders);
         SetUpCustomizationsPanelIsVisible = false;
         RestartReminderIsVisible = true;
-        TaskSchedulerButtonIsVisible |= tasksCreated;
+        App.Logger.LogUserNotice("Panel_RestartReminder/Message".GetLocalized());
         EventViewerButtonIsVisible |= eventViewCreated;
         NavigationViewHitTestVisible = true;
     }
 
     private async Task ApplicableModelsClearAsync()
     {
+        // Settings are already being applied or read
+        if (!NavigationViewHitTestVisible)
+        {
+            return;
+        }
+
         NavigationViewHitTestVisible = false;
         App.Logger.LogApplicableModelsCanceled();
-        SetUpCustomizationsPanelText = "OsRequirements_ReadWindowsSettings".GetLocalized();
+        App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
         SetUpCustomizationsPanelIsVisible = true;
         await modelService.GetModelsStateAsync(ApplicableModels);
         ApplicableModels.Clear();
         InfoBadgeCounters.ResetAll();
         App.Logger.LogApplicableModelsClear();
+        SetUpCustomizationsPanelIsVisible = false;
+        NavigationViewHitTestVisible = true;
+    }
+
+    private async Task InstallModelSetStateAsync(UIInstallModel model, bool install)
+    {
+        // Settings are already being applied or read
+        if (!NavigationViewHitTestVisible)
+        {
+            return;
+        }
+
+        NavigationViewHitTestVisible = false;
+        var installText = model.State == InstallState.UpdateAvailable ? "Panel_Install_Updating" : "Panel_Install_Installing";
+        var panelText = install ? installText : "Panel_Install_Uninstalling";
+        App.Status.SetOperation(string.Format(panelText.GetLocalized(), model.Title));
+        SetUpCustomizationsPanelIsVisible = true;
+        model.InstallRequested = install;
+
+        // The package is changed right away, and then its state is read again to show the right buttons
+        await Task.Run(() =>
+        {
+            var timer = Stopwatch.StartNew();
+            model.SetState();
+            timer.Stop();
+            App.Logger.LogModelSetState(model.Name, timer);
+            App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
+            model.GetState();
+        });
+
+        groupPolicyService.UpdatePolicy();
         SetUpCustomizationsPanelIsVisible = false;
         NavigationViewHitTestVisible = true;
     }
@@ -465,9 +520,7 @@ public partial class ShellViewModel : ObservableRecipient
         JsonModels = await modelService.BuildJsonModelsAsync();
         await modelService.GetModelsState(JsonModels);
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startupModel.StatusText = "OsRequirements_GeneratingUserInterface".GetLocalized());
-        uwpAllUsersModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: true);
-        uwpCurrentUserModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: false);
-        UwpAppsModels = new(uwpAllUsersModels);
+        await ReadUwpAppsAsync();
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
         {
             NavigationViewHitTestVisible = true;
@@ -483,11 +536,21 @@ public partial class ShellViewModel : ObservableRecipient
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         IsBackEnabled = NavigationService.CanGoBack;
+        searchPageIsOpen = e.SourcePageType == typeof(SearchPage);
         var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
-        if (selectedItem != null)
+
+        // The search results belong to no category, so no menu item is highlighted there
+        if (selectedItem != null || searchPageIsOpen)
         {
             SelectedNavigationViewItem = selectedItem;
         }
+    }
+
+    private async Task ReadUwpAppsAsync()
+    {
+        uwpAllUsersModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: true);
+        uwpCurrentUserModels = await modelService.BuildUwpAppModelsAsync(forAllUsers: false);
+        UwpAppsModels = new(UwpForAllUsersState ? uwpAllUsersModels : uwpCurrentUserModels);
     }
 
     private void RadioButtonsGroup2Clicked(UIRadioButtonsGroup2Model group)
@@ -593,6 +656,7 @@ public partial class ShellViewModel : ObservableRecipient
             if (RequirementsResult != RequirementsResult.AllCorrect)
             {
                 App.Logger.LogRequirementsFailureResult(RequirementsResult);
+                LogRequirementsFailureTexts(RequirementsResult);
                 _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(page: typeof(RequirementsFailureModel).FullName!, clearHistory: true, disablePageAnimation: true));
                 updateService.RunUpdateByReason(RequirementsResult);
                 taskContinueSource = new();
@@ -601,16 +665,61 @@ public partial class ShellViewModel : ObservableRecipient
         }
     }
 
-    private void SetLogPageVisibility(bool visible) => LogPageVisibility = visible;
-
-    private async Task SearchBoxQuerySubmittedAsync(AutoSuggestBoxQuerySubmittedEventArgs args)
+    private async Task SearchAsync(string text)
     {
-        if (!string.IsNullOrWhiteSpace(args.QueryText))
+        if (!NavigationViewHitTestVisible)
         {
-            NavigationViewHitTestVisible = false;
-            FoundModels = await modelService.GetModelsContainsTextAsync(JsonModels, args.QueryText);
+            return;
+        }
+
+        var number = ++searchNumber;
+
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            // An empty query closes the results
+            if (searchPageIsOpen)
+            {
+                _ = NavigationService.GoBack();
+            }
+
+            return;
+        }
+
+        var found = await modelService.GetModelsContainsTextAsync(JsonModels, text);
+
+        // The text has been changed while the search was running
+        if (number != searchNumber)
+        {
+            return;
+        }
+
+        ShowFoundModels(found);
+
+        if (!searchPageIsOpen)
+        {
             _ = NavigationService.NavigateTo(page: typeof(SearchViewModel).FullName!, disablePageAnimation: true);
-            NavigationViewHitTestVisible = true;
+        }
+    }
+
+    // The list is changed in place, so the page redraws only the cards that appear or disappear while the text is typed
+    private void ShowFoundModels(IReadOnlyList<UIModel> found)
+    {
+        var wanted = found.ToHashSet();
+
+        for (var i = FoundModels.Count - 1; i >= 0; i--)
+        {
+            if (!wanted.Contains(FoundModels[i]))
+            {
+                FoundModels.RemoveAt(i);
+            }
+        }
+
+        for (var i = 0; i < found.Count; i++)
+        {
+            if (i >= FoundModels.Count || FoundModels[i] != found[i])
+            {
+                FoundModels.Insert(i, found[i]);
+            }
         }
     }
 

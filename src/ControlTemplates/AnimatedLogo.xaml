@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.AnimatedLogo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:AnimatedVisuals="using:AnimatedVisuals"
+    mc:Ignorable="d">
+
+    <!-- The animation has empty space around the logo, the negative margins cut it off -->
+    <Grid Width="600"
+          Height="190">
+        <AnimatedVisualPlayer x:Name="Player"
+                              AutoPlay="False"
+                              Width="600"
+                              Height="400"
+                              Margin="-40, -100, 0, -110"
+                              VerticalAlignment="Top">
+            <AnimatedVisuals:LottieLogoHelper/>
+        </AnimatedVisualPlayer>
+    </Grid>
+</UserControl>

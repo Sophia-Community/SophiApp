@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.SettingInstall"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:SophiApp.Converters"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:EnumToBool x:Key="EnumToBoolConverter"/>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <!-- The package state decides which status and which buttons are shown -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="InstallStates">
+                <VisualState x:Name="NotInstalled">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding State, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=NotInstalled}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NotInstalledStatus.Visibility" Value="Visible"/>
+                        <Setter Target="InstallButton.Visibility" Value="Visible"/>
+                        <Setter Target="AllUsersCheckBox.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Installed">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding State, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Installed}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="InstalledStatus.Visibility" Value="Visible"/>
+                        <Setter Target="UninstallButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="UpdateAvailable">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding State, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UpdateAvailable}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="UpdateAvailableStatus.Visibility" Value="Visible"/>
+                        <Setter Target="UpdateButton.Visibility" Value="Visible"/>
+                        <Setter Target="UninstallButton.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel.ContextFlyout>
+            <CommandBarFlyout>
+                <CommandBarFlyout.SecondaryCommands>
+                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
+                                  Icon="Copy"
+                                  Click="CopyTitle_Click"/>
+                    <AppBarButton x:Name="CopyDescriptionButton"
+                                  x:Uid="UIModel_ContextMenu_CopyDescription"
+                                  Icon="Copy"
+                                  Click="CopyDescription_Click"/>
+                </CommandBarFlyout.SecondaryCommands>
+            </CommandBarFlyout>
+        </StackPanel.ContextFlyout>
+        <toolkit:SettingsCard x:Name="Card"
+                              AutomationProperties.Name="{Binding Title}"
+                              MinHeight="{StaticResource SettingsCardMinHeight}"
+                              Padding="{StaticResource SettingsCardPadding}"
+                              IsEnabled="{Binding IsEnabled}">
+            <toolkit:SettingsCard.Header>
+                <TextBlock Text="{Binding Title}"
+                           TextWrapping="Wrap"/>
+            </toolkit:SettingsCard.Header>
+            <toolkit:SettingsCard.Description>
+                <TextBlock x:Name="DescriptionText"
+                           TextWrapping="Wrap"/>
+            </toolkit:SettingsCard.Description>
+            <StackPanel Orientation="Horizontal"
+                        Spacing="8">
+                <!-- Only some packages can be installed for all users, and the choice matters only before the installation -->
+                <Grid x:Name="AllUsersPanel">
+                    <CheckBox x:Name="AllUsersCheckBox"
+                              x:Uid="InstallCard_AllUsers"
+                              MinWidth="0"
+                              Margin="0, 0, 8, 0"
+                              IsChecked="{Binding AllUsers, Mode=TwoWay}"
+                              Visibility="Collapsed"/>
+                </Grid>
+                <TextBlock x:Name="NotInstalledStatus"
+                           x:Uid="InstallState_NotInstalled"
+                           Style="{StaticResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 4, 0"
+                           Visibility="Collapsed"/>
+                <!-- A package that is installed and up to date stands out -->
+                <StackPanel x:Name="InstalledStatus"
+                            Orientation="Horizontal"
+                            Spacing="6"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 4, 0"
+                            Visibility="Collapsed">
+                    <FontIcon Glyph="&#xE73E;"
+                              FontSize="14"
+                              Foreground="{ThemeResource SystemFillColorSuccessBrush}"/>
+                    <TextBlock x:Uid="InstallState_Installed"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               FontWeight="SemiBold"
+                               Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock x:Name="UpdateAvailableStatus"
+                           x:Uid="InstallState_UpdateAvailable"
+                           Style="{StaticResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                           VerticalAlignment="Center"
+                           Margin="0, 0, 4, 0"
+                           Visibility="Collapsed"/>
+                <Button x:Name="InstallButton"
+                        x:Uid="Button_Install"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Command="{x:Bind ViewModel.InstallModelInstall_Command}"
+                        CommandParameter="{Binding}"
+                        Visibility="Collapsed"/>
+                <Button x:Name="UpdateButton"
+                        x:Uid="Button_Update"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Command="{x:Bind ViewModel.InstallModelInstall_Command}"
+                        CommandParameter="{Binding}"
+                        Visibility="Collapsed"/>
+                <!-- Only some packages can be uninstalled -->
+                <Grid x:Name="UninstallPanel">
+                    <Button x:Name="UninstallButton"
+                            x:Uid="Button_Uninstall"
+                            Command="{x:Bind ViewModel.InstallModelUninstall_Command}"
+                            CommandParameter="{Binding}"
+                            Visibility="Collapsed"/>
+                </Grid>
+            </StackPanel>
+        </toolkit:SettingsCard>
+        <!-- The reason why the buttons are unavailable -->
+        <InfoBar Margin="0, 2, 0, 0"
+                 Severity="Warning"
+                 IsClosable="False"
+                 IsOpen="{Binding ExceptionTextIsVisible}"
+                 Message="{Binding ExceptionText}"/>
+    </StackPanel>
+</UserControl>

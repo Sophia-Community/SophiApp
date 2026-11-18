@@ -6,6 +6,7 @@ namespace SophiApp.ControlTemplates
 {
     using CommunityToolkit.WinUI.Controls;
     using Microsoft.UI.Xaml;
+    using Microsoft.UI.Xaml.Automation;
     using Microsoft.UI.Xaml.Controls;
     using Microsoft.UI.Xaml.Data;
     using SophiApp.Helpers;
@@ -34,20 +35,21 @@ namespace SophiApp.ControlTemplates
             ViewModel = App.GetService<ShellViewModel>();
             InitializeComponent();
             DataContextChanged += OnDataContextChanged;
+            OptionsExpander.Loaded += (_, _) => SettingsExpanderHelper.ApplyHeaderPadding(OptionsExpander);
 
             // Follows the model when its state is read again
             SetBinding(SelectedIdProperty, new Binding { Path = new PropertyPath("SelectedId") });
+
+            // While the app is busy the mouse is blocked by the page, and the keyboard is blocked here.
+            // The control is not disabled for that: a check box that was disabled and enabled again keeps a stale check mark
+            PreviewKeyDown += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
+            PreviewKeyUp += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
         }
 
         /// <summary>
         /// Gets the shell view model.
         /// </summary>
         public ShellViewModel ViewModel { get; }
-
-        /// <summary>
-        /// Gets the text sizes chosen on the Settings page.
-        /// </summary>
-        public FontOptions FontOptions => ViewModel.FontOptions;
 
         /// <summary>
         /// Gets or sets the number of the option selected in the model, starting from 1.
@@ -76,12 +78,15 @@ namespace SophiApp.ControlTemplates
 
         private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            var hasDescription = !string.IsNullOrEmpty(GetDescription(args.NewValue));
+            var description = GetDescription(args.NewValue);
+            var hasDescription = !string.IsNullOrEmpty(description);
 
             CopyDescriptionButton.Visibility = hasDescription ? Visibility.Visible : Visibility.Collapsed;
 
             if (hasDescription)
             {
+                // A description can have line breaks, emphasized words and links
+                FormattedTextBlock.SetText(DescriptionText, description);
                 OptionsExpander.Description = DescriptionText;
             }
             else
@@ -95,11 +100,22 @@ namespace SophiApp.ControlTemplates
 
             for (var i = 0; i < options.Length; i++)
             {
-                var text = new TextBlock { Text = options[i], TextWrapping = TextWrapping.Wrap };
-                text.SetBinding(TextBlock.FontSizeProperty, new Binding { Source = FontOptions, Path = new PropertyPath(nameof(FontOptions.TitleTextSize)) });
+                var text = new TextBlock { Text = options[i], TextWrapping = TextWrapping.Wrap, FlowDirection = FlowDirection.LeftToRight };
 
                 // The tag is the number of the option, starting from 1
-                var option = new RadioButton { Content = text, Tag = (i + 1).ToString() };
+                // A mirrored radio button has its circle on the right, the text itself is not mirrored
+                var option = new RadioButton
+                {
+                    Content = text,
+                    Tag = (i + 1).ToString(),
+                    FlowDirection = FlowDirection.RightToLeft,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                };
+
+                // A screen reader says the option and the setting it belongs to
+                AutomationProperties.SetName(option, options[i]);
+                AutomationProperties.SetHelpText(option, (args.NewValue as UIModel)?.Title ?? string.Empty);
                 option.Checked += Option_Checked;
                 Options.Children.Add(option);
             }
@@ -146,6 +162,6 @@ namespace SophiApp.ControlTemplates
             => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Title);
 
         private void CopyDescription_Click(object sender, RoutedEventArgs e)
-            => ContextMenuHelper.CopyToClipboard(GetDescription(DataContext));
+            => ContextMenuHelper.CopyToClipboard(FormattedText.ToPlainText(GetDescription(DataContext)));
     }
 }

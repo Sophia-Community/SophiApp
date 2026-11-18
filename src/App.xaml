@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="/Styles/ScrollView.xaml" />
                 <ResourceDictionary Source="/Styles/SettingTemplates.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="/Styles/Themes.xaml" />
                 <ResourceDictionary Source="/Styles/Thickness.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

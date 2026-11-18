@@ -69,5 +69,12 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="name">A application or document to start.</param>
         void WaitForExit(string name);
+
+        /// <summary>
+        /// Start a process with arguments and wait until all processes with its name exit.
+        /// </summary>
+        /// <param name="name">The process name.</param>
+        /// <param name="arguments">The command-line arguments of the process.</param>
+        void WaitForAllExit(string name, string arguments);
     }
 }

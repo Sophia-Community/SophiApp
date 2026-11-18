@@ -4,6 +4,7 @@
 
     <Style x:Key="PageTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
         <Setter Property="Margin" Value="0, 0, 0, 12"/>
+        <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}"/>
     </Style>
 
     <Style x:Key="RequirementsFailurePageTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">

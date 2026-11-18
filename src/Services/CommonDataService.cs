@@ -1,4 +1,4 @@
-// <copyright file="CommonDataService.cs" company="Team Sophia">
+﻿// <copyright file="CommonDataService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -94,7 +94,7 @@ namespace SophiApp.Services
         public void WaitForExternalServicesData() => externalDataTask.Wait();
 
         /// <inheritdoc/>
-        public string GetFullName() => "SophiApp for Windows 2 (Preview)";
+        public string GetFullName() => "SophiApp for Windows (Preview 1)";
 
         private async Task SetDefenderStateAsync()
         {

@@ -74,6 +74,11 @@ namespace SophiApp.Contracts.Services
         bool? HypervisorIsPresent();
 
         /// <summary>
+        /// Determines whether the PC has a built-in AI accelerator (NPU).
+        /// </summary>
+        bool HasAIAccelerator();
+
+        /// <summary>
         /// Set automatically manage paging file size for all drives.
         /// </summary>
         void SetPageFileAutoSize();

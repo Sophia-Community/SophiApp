@@ -5,8 +5,6 @@
 namespace SophiApp.Customizations
 {
     using Microsoft.Win32;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
@@ -14,6 +12,7 @@ namespace SophiApp.Customizations
     using System.Collections.Generic;
     using System.ServiceProcess;
     using System.Text;
+    using System.Text.Json.Nodes;
     using TaskScheduler = Microsoft.Win32.TaskScheduler;
 
     /// <summary>
@@ -774,11 +773,11 @@ namespace SophiApp.Customizations
             switch (state)
             {
                 case 1:
-                    CursorsService.SetJepriCreationsCursors(JepriCursorsTheme.Dark);
+                    SetJepriCreationsCursors(JepriCursorsTheme.Dark);
                     break;
 
                 case 2:
-                    CursorsService.SetJepriCreationsCursors(JepriCursorsTheme.Light);
+                    SetJepriCreationsCursors(JepriCursorsTheme.Light);
                     break;
 
                 default:
@@ -934,21 +933,14 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Set OneDrive state.
         /// </summary>
-        /// <param name="enable">OneDrive state.</param>
-        public static void OneDrive(bool enable)
-        {
-            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
-            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
-            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
+        /// <param name="enable">True to install, false to uninstall.</param>
+        public static void OneDrive(bool enable) => SetOneDrive(enable, allUsers: false);
 
-            if (enable)
-            {
-                OneDriveService.Install();
-                return;
-            }
-
-            OneDriveService.Uninstall();
-        }
+        /// <summary>
+        /// Set OneDrive state. OneDrive is installed for all users of the computer.
+        /// </summary>
+        /// <param name="enable">True to install, false to uninstall.</param>
+        public static void OneDrive_AllUsers(bool enable) => SetOneDrive(enable, allUsers: true);
 
         /// <summary>
         /// Set storage sense state.
@@ -1224,7 +1216,12 @@ namespace SophiApp.Customizations
         public static void ReservedStorage(bool enable)
         {
             var command = enable ? "Set-WindowsReservedStorageState -State Enabled" : "Set-WindowsReservedStorageState -State Disabled";
-            _ = PowerShellService.Invoke(command);
+
+            // Reserved storage cannot be turned off while Windows is using it, for example when an update is pending
+            if (!PowerShellService.TryInvoke(command, out _) && !enable)
+            {
+                throw new CustomizationException(exceptionMessage: "Reserved storage is in use", resourceKey: "UIModel_Exception_ReservedStorageInUse");
+            }
         }
 
         /// <summary>
@@ -1397,9 +1394,9 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Download and install latest version .NET 10 desktop runtime from the Microsoft resources.
+        /// Download and install the latest .NET 10 desktop runtime from the Microsoft resources.
         /// </summary>
-        /// <param name="enable">.NET Desktop install state.</param>
+        /// <param name="enable">True to install or update.</param>
         public static void InstallDotNetRuntime_10(bool enable)
         {
             if (enable)
@@ -1411,9 +1408,9 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Download and install latest version .NET 11 desktop runtime from the Microsoft resources.
+        /// Download and install the latest .NET 11 desktop runtime from the Microsoft resources.
         /// </summary>
-        /// <param name="enable">.NET Desktop install state.</param>
+        /// <param name="enable">True to install or update.</param>
         public static void InstallDotNetRuntime_11(bool enable)
         {
             if (enable)
@@ -1425,9 +1422,9 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Download and install latest version Visual C++ x86 from the Microsoft resources.
+        /// Download and install the latest Visual C++ x86 from the Microsoft resources.
         /// </summary>
-        /// <param name="enable">Visual C++ install state.</param>
+        /// <param name="enable">True to install or update.</param>
         public static void InstallVisualC_x86(bool enable)
         {
             if (enable)
@@ -1437,9 +1434,9 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
-        /// Download and install latest version Visual C++ x64 from the Microsoft resources.
+        /// Download and install the latest Visual C++ x64 from the Microsoft resources.
         /// </summary>
-        /// <param name="enable">Visual C++ install state.</param>
+        /// <param name="enable">True to install or update.</param>
         public static void InstallVisualC_x64(bool enable)
         {
             if (enable)
@@ -1468,6 +1465,7 @@ namespace SophiApp.Customizations
             // The "enable" parameter means that Windows AI has to be removed
             if (!enable)
             {
+                App.Status.SetStep("Panel_Step_WindowsFeature");
                 _ = PowerShellService.Invoke("Enable-WindowsOptionalFeature -Online -FeatureName Recall -All -NoRestart");
 
                 // Open the Copilot page in Microsoft Store
@@ -1475,6 +1473,7 @@ namespace SophiApp.Customizations
                 return;
             }
 
+            App.Status.SetStep("Panel_Step_WindowsFeature");
             _ = PowerShellService.Invoke("Disable-WindowsOptionalFeature -Online -FeatureName Recall -NoRestart");
             AppxPackagesService.RemovePackage("Microsoft.Copilot");
         }
@@ -1624,6 +1623,8 @@ namespace SophiApp.Customizations
 
             if (enable)
             {
+                // With the audit policy file of the Local Group Policy every policy refresh turns off all audit subcategories that are not listed there
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\Machine\\Microsoft\\Windows NT\\Audit\\audit.csv").TryDelete();
                 // Enable events auditing generated when a process is created (starts)
                 _ = ProcessService.WaitForExit(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "auditpol.exe"), "/set /subcategory:\"{0CCE922B-69AE-11D9-BED3-505054503030}\" /success:enable /failure:enable");
                 // Include command line in process creation events
@@ -1713,7 +1714,10 @@ namespace SophiApp.Customizations
         /// </summary>
         /// <param name="enable">Windows Sandbox state.</param>
         public static void WindowsSandbox(bool enable)
-            => PowerShellService.Invoke($"{(enable ? "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart" : "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart")}");
+        {
+            App.Status.SetStep("Panel_Step_WindowsFeature");
+            _ = PowerShellService.Invoke($"{(enable ? "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart" : "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart")}");
+        }
 
         /// <summary>
         /// Set Local Security Authority state.
@@ -1814,15 +1818,9 @@ namespace SophiApp.Customizations
                     ProcessService.KillProcessByName(3000, "WindowsTerminal");
                 }
 
-                var deserializeSettings = JsonConvert.DeserializeObject(File.ReadAllText(terminalSettings, Encoding.UTF8)) as JObject;
-                var elevateSetting = deserializeSettings?.SelectToken("profiles.defaults.elevate");
-
-                if (elevateSetting is null)
-                {
-                    var defaultsSetting = deserializeSettings!.SelectToken("profiles.defaults") as JObject;
-                    defaultsSetting!.Add(new JProperty("elevate", string.Empty));
-                    elevateSetting = deserializeSettings.SelectToken("profiles.defaults.elevate");
-                }
+                // Only one value is changed, the rest of the file is written back as it was read
+                var settings = Json.ToObject<JsonObject>(File.ReadAllText(terminalSettings, Encoding.UTF8));
+                var defaults = settings["profiles"]?["defaults"] as JsonObject ?? throw new InvalidOperationException("The default profile settings were not found in the terminal configuration file");
 
                 if (enable)
                 {
@@ -1831,13 +1829,43 @@ namespace SophiApp.Customizations
                     Registry.LocalMachine.DeleteSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Blocked", "{9F156763-7844-4DC4-B2B1-901F640F5155}");
                 }
 
-                elevateSetting!.Replace(enable);
-                File.WriteAllText(terminalSettings, deserializeSettings!.ToString(), Encoding.UTF8);
+                defaults["elevate"] = enable;
+                File.WriteAllText(terminalSettings, Json.Stringify(settings), Encoding.UTF8);
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed write data to terminal configuration file", ex);
             }
+        }
+
+        private static void SetJepriCreationsCursors(JepriCursorsTheme theme)
+        {
+            const string CursorsUrl = "https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/refs/heads/main/Cursors/w11-cursor-concept-free.zip";
+
+            try
+            {
+                CursorsService.SetJepriCreationsCursors(theme);
+            }
+            catch (Exception ex) when (ex is HttpRequestException || ex.InnerException is HttpRequestException || ex is TaskCanceledException || ex.InnerException is TaskCanceledException)
+            {
+                // The cursors are downloaded, so the setting cannot be applied without a connection
+                throw new CustomizationException(exceptionMessage: $"Url {CursorsUrl} is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired") { Arguments = [CursorsUrl] };
+            }
+        }
+
+        private static void SetOneDrive(bool enable, bool allUsers)
+        {
+            GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
+            // Make changes in"C:\Windows\System32\GroupPolicy\Machine\Registry.pol" or "C:\Windows\System32\GroupPolicy\User\Registry.pol" database
+            GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive", "DisableFileSyncNGSC");
+
+            if (enable)
+            {
+                OneDriveService.Install(allUsers);
+                return;
+            }
+
+            OneDriveService.Uninstall();
         }
     }
 }

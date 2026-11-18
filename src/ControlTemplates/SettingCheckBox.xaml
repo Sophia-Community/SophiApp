@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="SophiApp.ControlTemplates.SettingCheckBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -36,19 +36,22 @@
         </StackPanel.ContextFlyout>
         <Grid>
             <toolkit:SettingsCard x:Name="Card"
+                                  AutomationProperties.Name="{Binding Title}"
+                                  MinHeight="{StaticResource SettingsCardMinHeight}"
+                                  Padding="{StaticResource SettingsCardPadding}"
                                   IsEnabled="{Binding IsEnabled}">
                 <toolkit:SettingsCard.Header>
                     <TextBlock Text="{Binding Title}"
-                               TextWrapping="Wrap"
-                               FontSize="{x:Bind FontOptions.TitleTextSize, Mode=OneWay}"/>
+                               TextWrapping="Wrap"/>
                 </toolkit:SettingsCard.Header>
                 <toolkit:SettingsCard.Description>
                     <TextBlock x:Name="DescriptionText"
-                               Text="{Binding Description}"
-                               TextWrapping="Wrap"
-                               FontSize="{x:Bind FontOptions.DescriptionTextSize, Mode=OneWay}"/>
+                               TextWrapping="Wrap"/>
                 </toolkit:SettingsCard.Description>
-                <CheckBox MinWidth="0"
+                <!-- The check box has no caption of its own, so a screen reader gets the title of the setting -->
+                <CheckBox x:Name="StateCheckBox"
+                          AutomationProperties.Name="{Binding Title}"
+                          MinWidth="0"
                           IsChecked="{Binding IsChecked, Mode=TwoWay}"
                           Command="{x:Bind ViewModel.UIModelClicked_Command}"
                           CommandParameter="{Binding}"/>

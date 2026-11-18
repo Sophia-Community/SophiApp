@@ -4,6 +4,9 @@
 
 namespace SophiApp.Helpers
 {
+    using System.Globalization;
+    using SophiApp.Extensions;
+
     /// <summary>
     /// Represents errors that occur during <see cref="Customizations"/> execution.
     /// </summary>
@@ -24,5 +27,24 @@ namespace SophiApp.Helpers
         /// Gets localized string resource key.
         /// </summary>
         public string ResourceKey { get; }
+
+        /// <summary>
+        /// Gets the state of a package that cannot be installed or uninstalled right now. Null if the state is unknown.
+        /// </summary>
+        public InstallState? InstallState { get; init; }
+
+        /// <summary>
+        /// Gets the values for the placeholders of the localized text: an app name, a version, an address.
+        /// </summary>
+        public object[] Arguments { get; init; } = [];
+
+        /// <summary>
+        /// Gets the localized text to show to the user.
+        /// </summary>
+        public string GetText()
+        {
+            var text = ResourceKey.GetLocalized();
+            return Arguments.Length == 0 ? text : string.Format(CultureInfo.CurrentCulture, text, Arguments);
+        }
     }
 }

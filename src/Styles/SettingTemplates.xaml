@@ -5,8 +5,13 @@
     xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:helpers="using:SophiApp.Helpers">
 
-    <!-- Picks the control for a setting: a card with a check box or an expander with options -->
+    <!-- Picks the control for a setting: a card with a check box, a card with install buttons or an expander with options -->
     <helpers:UIDataTemplateSelector x:Key="SettingTemplateSelector">
+        <helpers:UIDataTemplateSelector.InstallTemplate>
+            <DataTemplate>
+                <controls:SettingInstall/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.InstallTemplate>
         <helpers:UIDataTemplateSelector.CheckBoxTemplate>
             <DataTemplate>
                 <controls:SettingCheckBox/>

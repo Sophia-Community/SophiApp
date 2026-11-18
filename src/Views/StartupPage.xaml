@@ -1,7 +1,7 @@
-<Page
+﻿<Page
     x:Name="PageStartup"
     x:Class="SophiApp.Views.StartupPage"
-    xmlns:AnimatedVisuals="using:AnimatedVisuals"
+    xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,17 +9,21 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interaction="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d">
-    <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-        <AnimatedVisualPlayer Width="600"
-                              Height="400"
-                              Margin="-40, -100, 0, 0">
-            <AnimatedVisuals:LottieLogoHelper/>
-        </AnimatedVisualPlayer>
-        <TextBlock Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
+    <Grid>
+        <!-- The logo keeps its place whatever is shown under it: the page is split into three parts, and the text takes the lower one -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <controls:AnimatedLogo Grid.Row="1"
+                               HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="2"
+                   Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
                    Style="{StaticResource BodyTextBlockStyle}"
                    HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
                    TextAlignment="Center"
-                   Margin="10, -110, 10, 0"/>
-    </StackPanel>
+                   Margin="10, 0, 10, 0"/>
+    </Grid>
 </Page>

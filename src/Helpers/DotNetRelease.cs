@@ -4,7 +4,7 @@
 
 namespace SophiApp.Helpers
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Data transfer object for .NET release settings.
@@ -14,7 +14,7 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets or sets latest release version. It is a part of the installer file name and may have a suffix, e.g. "11.0.0-rc.2.25502.107".
         /// </summary>
-        [JsonProperty("latest-release")]
+        [JsonPropertyName("latest-release")]
         public string? Version { get; set; }
     }
 }

@@ -4,6 +4,8 @@
 
 namespace SophiApp.Models
 {
+    using SophiApp.Helpers;
+
     /// <inheritdoc/>
     public class UIIconCheckBoxModel : UIModel
     {
@@ -62,6 +64,13 @@ namespace SophiApp.Models
             try
             {
                 IsChecked = accessor.Invoke();
+                ShowNotice(string.Empty);
+            }
+            catch (CustomizationException ex)
+            {
+                IsEnabled = false;
+                ShowBlockingReason(ex.GetText());
+                App.Logger.LogModelGetStateException(Name, ex);
             }
             catch (Exception ex)
             {
@@ -77,14 +86,21 @@ namespace SophiApp.Models
             {
                 mutator.Invoke(IsChecked);
             }
+            catch (CustomizationException ex)
+            {
+                // The setting stays available: the user can try again when the cause is gone
+                SetApplyFailure(ex.GetText());
+                App.Logger.LogModelSetStateException(ex, Name, IsChecked);
+            }
             catch (Exception ex)
             {
                 IsEnabled = false;
+                SetApplyFailure(ApplyFailedText);
                 App.Logger.LogModelSetStateException(ex, Name, IsChecked);
             }
         }
 
         /// <inheritdoc/>
-        public override bool ContainsText(string text) => base.ContainsText(text) || Description.Contains(text, StringComparison.CurrentCultureIgnoreCase);
+        public override bool ContainsText(string text) => base.ContainsText(text) || FormattedText.ToPlainText(Description).Contains(text, StringComparison.CurrentCultureIgnoreCase);
     }
 }

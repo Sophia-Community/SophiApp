@@ -84,7 +84,10 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void WaitForExit(string name)
+        public void WaitForExit(string name) => WaitForAllExit(name, string.Empty);
+
+        /// <inheritdoc/>
+        public void WaitForAllExit(string name, string arguments)
         {
             var process = new Process();
             process.StartInfo.UseShellExecute = false;
@@ -92,6 +95,7 @@ namespace SophiApp.Services
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
             process.StartInfo.FileName = name;
+            process.StartInfo.Arguments = arguments;
             _ = process.Start();
             var processName = Path.GetFileNameWithoutExtension(name);
 

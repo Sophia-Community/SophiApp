@@ -67,6 +67,7 @@ namespace SophiApp.Services
             httpService.DownloadFile("https://raw.githubusercontent.com/farag2/Sophia-Script-for-Windows/refs/heads/main/Cursors/w11-cursor-concept-free.zip", cursorsZip);
 
             // Extract archive
+            App.Status.SetStep("Panel_Step_Extracting");
             _ = processService.WaitForExit(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "tar.exe"), extractArguments);
 
             Registry.CurrentUser.SetValueIfKeyExists("Control Panel\\Cursors", string.Empty, cursorsTheme, RegistryValueKind.String);

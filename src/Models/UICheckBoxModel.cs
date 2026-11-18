@@ -28,8 +28,6 @@ namespace SophiApp.Models
             this.accessor = accessor;
             this.mutator = mutator;
             Description = description;
-            ExceptionText = string.Empty;
-            ExceptionTextIsVisible = false;
         }
 
         /// <summary>
@@ -38,19 +36,9 @@ namespace SophiApp.Models
         public string Description { get; init; }
 
         /// <summary>
-        /// Gets a method that returns the title for the current state of the system. The title never changes if the method is not set.
+        /// Gets a method that returns the resource key of a notice for the current state of the system, or null. The setting stays available.
         /// </summary>
-        public Func<string>? TitleAccessor { get; init; }
-
-        /// <summary>
-        /// Gets a exception localized text.
-        /// </summary>
-        public string ExceptionText { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether <see cref="ExceptionText"/> not empty and can be visible.
-        /// </summary>
-        public bool ExceptionTextIsVisible { get; private set; }
+        public Func<string?>? NoticeAccessor { get; init; }
 
         /// <summary>
         /// Gets or sets a value indicating whether model checked state.
@@ -75,19 +63,12 @@ namespace SophiApp.Models
         {
             try
             {
-                if (TitleAccessor is not null)
-                {
-                    Title = TitleAccessor.Invoke();
-                }
-
                 IsChecked = accessor.Invoke();
+                ShowNotice(NoticeAccessor?.Invoke()?.GetLocalized() ?? string.Empty);
             }
             catch (CustomizationException ex)
             {
-                ExceptionText = ex.ResourceKey.GetLocalized();
-                ExceptionTextIsVisible = true;
-                OnPropertyChanged(nameof(ExceptionText));
-                OnPropertyChanged(nameof(ExceptionTextIsVisible));
+                ShowBlockingReason(ex.GetText());
                 IsEnabled = false;
                 App.Logger.LogModelGetStateException(Name, ex);
             }
@@ -105,14 +86,21 @@ namespace SophiApp.Models
             {
                 mutator.Invoke(IsChecked);
             }
+            catch (CustomizationException ex)
+            {
+                // The setting stays available: the user can try again when the cause is gone
+                SetApplyFailure(ex.GetText());
+                App.Logger.LogModelSetStateException(ex, Name, IsChecked);
+            }
             catch (Exception ex)
             {
                 IsEnabled = false;
+                SetApplyFailure(ApplyFailedText);
                 App.Logger.LogModelSetStateException(ex, Name, IsChecked);
             }
         }
 
         /// <inheritdoc/>
-        public override bool ContainsText(string text) => base.ContainsText(text) || Description.Contains(text, StringComparison.CurrentCultureIgnoreCase);
+        public override bool ContainsText(string text) => base.ContainsText(text) || FormattedText.ToPlainText(Description).Contains(text, StringComparison.CurrentCultureIgnoreCase);
     }
 }

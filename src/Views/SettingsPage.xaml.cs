@@ -4,7 +4,10 @@
 
 namespace SophiApp.Views;
 
+using CommunityToolkit.WinUI.Controls;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using SophiApp.Helpers;
 using SophiApp.ViewModels;
 
 /// <summary>
@@ -25,4 +28,7 @@ public sealed partial class SettingsPage : Page
     /// Gets view model for settings page.
     /// </summary>
     public SettingsViewModel ViewModel { get; }
+
+    private void SettingsExpander_Loaded(object sender, RoutedEventArgs e)
+        => SettingsExpanderHelper.ApplyHeaderPadding((SettingsExpander)sender);
 }

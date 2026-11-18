@@ -50,15 +50,17 @@ namespace SophiApp.Services
             new(action: GetAppRelease, displayText: "OsRequirements_GetAppNewVersion".GetLocalized()),
             new(action: RunFromLoggedUser, displayText: "OsRequirements_RunFromLoggedUser".GetLocalized()),
             new(action: GetHarmfulTweakers, displayText: "OsRequirements_GetHarmfulTweaker".GetLocalized()),
-            new(action: GetHostFileEntries, displayText: "OsRequirements_GetHostFileEntries".GetLocalized()),
             new(action: GetUWPComponents, displayText: "OsRequirements_GetUWPComponents".GetLocalized()),
             new(action: GetDefenderComponents, displayText: "OsRequirements_GetDefenderComponents".GetLocalized()),
             new(action: GetControlledFolderAccess, displayText: "OsRequirements_GetControlledFolderAccess".GetLocalized()),
             new(action: GetRebootPending, displayText: "OsRequirements_GetRebootPending".GetLocalized()),
-            new(action: GetSystemDriveEncryptedBitLocker, displayText: "OsRequirements_GetSystemDriveEncryptedBitLocker".GetLocalized()),
-            new(action: GetUEFICertificates, displayText: "OsRequirements_GetUEFICertificates".GetLocalized()),
             new(action: GetWindowsVersion, displayText: "OsRequirements_GetWindowsVersion".GetLocalized()),
             new(action: GetWindowsBuild, displayText: "OsRequirements_GetWindowsBuild".GetLocalized()),
+
+            // The checks that ask the user whether to continue go last: by that moment everything else has already passed
+            new(action: GetHostFileEntries, displayText: "OsRequirements_GetHostFileEntries".GetLocalized()),
+            new(action: GetSystemDriveEncryptedBitLocker, displayText: "OsRequirements_GetSystemDriveEncryptedBitLocker".GetLocalized()),
+            new(action: GetUEFICertificates, displayText: "OsRequirements_GetUEFICertificates".GetLocalized()),
         ];
 
         private RequirementsResult GetExternalServicesData()

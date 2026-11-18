@@ -6,6 +6,7 @@ namespace SophiApp.Models
 {
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
 
     /// <summary>
@@ -16,6 +17,7 @@ namespace SophiApp.Models
         private bool isEnabled = true;
         private bool isSelected = false;
         private string title;
+        private string applyFailure = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UIModel"/> class.
@@ -123,6 +125,21 @@ namespace SophiApp.Models
         }
 
         /// <summary>
+        /// Gets the localized text shown under the setting: why it is unavailable, why it could not be applied, or a notice.
+        /// </summary>
+        public string ExceptionText { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Gets a value indicating whether <see cref="ExceptionText"/> is not empty and can be visible.
+        /// </summary>
+        public bool ExceptionTextIsVisible { get; private set; }
+
+        /// <summary>
+        /// Gets the text for a setting that could not be applied for an unknown reason.
+        /// </summary>
+        protected static string ApplyFailedText => "UIModel_Exception_ApplyFailed".GetLocalized();
+
+        /// <summary>
         /// Gets the model state.
         /// </summary>
         public abstract void GetState();
@@ -139,10 +156,51 @@ namespace SophiApp.Models
         public virtual bool ContainsText(string text) => Title.Contains(text, StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
+        /// Shows why the setting is unavailable.
+        /// </summary>
+        /// <param name="reason">A localized text.</param>
+        protected void ShowBlockingReason(string reason)
+        {
+            applyFailure = string.Empty;
+            SetExceptionText(reason);
+        }
+
+        /// <summary>
+        /// Shows a text under a setting whose state has just been read: the reason of a failed apply if there is one, a notice otherwise.
+        /// </summary>
+        /// <param name="notice">A localized notice, or an empty string.</param>
+        protected void ShowNotice(string notice)
+        {
+            var text = applyFailure.Length > 0 ? applyFailure : notice;
+            applyFailure = string.Empty;
+            SetExceptionText(text);
+        }
+
+        /// <summary>
+        /// Remembers why the setting could not be applied. The text is shown when the state is read again.
+        /// </summary>
+        /// <param name="reason">A localized text.</param>
+        protected void SetApplyFailure(string reason) => applyFailure = reason;
+
+        /// <summary>
         /// <see cref="PropertyChanged"/> event handler.
         /// </summary>
         /// <param name="name">Property name.</param>
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
             => App.MainWindow.DispatcherQueue.TryEnqueue(() => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)));
+
+        private void SetExceptionText(string text)
+        {
+            // The log gets the same text as the user sees under the setting
+            if (text.Length > 0 && text != ExceptionText)
+            {
+                App.Logger.LogModelNotice(Name, text);
+            }
+
+            ExceptionText = text;
+            ExceptionTextIsVisible = text.Length > 0;
+            OnPropertyChanged(nameof(ExceptionText));
+            OnPropertyChanged(nameof(ExceptionTextIsVisible));
+        }
     }
 }

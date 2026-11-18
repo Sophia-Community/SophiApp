@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="SophiApp.ControlTemplates.SettingRadioButtons"
     x:Name="SettingRadioButtonsControl"
@@ -10,6 +10,10 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ChangeStates">
                 <VisualState x:Name="Changed">
@@ -36,23 +40,22 @@
             </CommandBarFlyout>
         </Grid.ContextFlyout>
         <toolkit:SettingsExpander x:Name="OptionsExpander"
+                                  AutomationProperties.Name="{Binding Title}"
+                                  MinHeight="{StaticResource SettingsCardMinHeight}"
                                   IsExpanded="True"
                                   IsEnabled="{Binding IsEnabled}">
             <toolkit:SettingsExpander.Header>
                 <TextBlock Text="{Binding Title}"
-                           TextWrapping="Wrap"
-                           FontSize="{x:Bind FontOptions.TitleTextSize, Mode=OneWay}"/>
+                           TextWrapping="Wrap"/>
             </toolkit:SettingsExpander.Header>
             <toolkit:SettingsExpander.Description>
                 <TextBlock x:Name="DescriptionText"
-                           Text="{Binding Description}"
-                           TextWrapping="Wrap"
-                           FontSize="{x:Bind FontOptions.DescriptionTextSize, Mode=OneWay}"/>
+                           TextWrapping="Wrap"/>
             </toolkit:SettingsExpander.Description>
             <!-- The options are not put into Items: those are created only when they are scrolled into view, and the page jumps -->
             <toolkit:SettingsExpander.ItemsHeader>
                 <StackPanel x:Name="Options"
-                            Padding="58, 8, 44, 8"
+                            Padding="16, 8, 24, 8"
                             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                             BorderThickness="0, 1, 0, 0"/>
             </toolkit:SettingsExpander.ItemsHeader>
@@ -64,5 +67,12 @@
                 CornerRadius="{ThemeResource ControlCornerRadius}"
                 IsHitTestVisible="False"
                 Visibility="Collapsed"/>
+        <!-- The reason why the setting is unavailable or could not be applied -->
+        <InfoBar Grid.Row="1"
+                 Margin="0, 2, 0, 0"
+                 Severity="Warning"
+                 IsClosable="False"
+                 IsOpen="{Binding ExceptionTextIsVisible}"
+                 Message="{Binding ExceptionText}"/>
     </Grid>
 </UserControl>

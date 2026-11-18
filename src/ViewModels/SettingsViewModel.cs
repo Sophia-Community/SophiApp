@@ -10,7 +10,6 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
-using SophiApp.Views;
 
 /// <summary>
 /// Implements the <see cref="SettingsViewModel"/> class.
@@ -46,10 +45,7 @@ public partial class SettingsViewModel : ObservableRecipient
         ICommonDataService dataService,
         ShellViewModel shellViewModel)
     {
-        FontOptions = shellViewModel.FontOptions;
         NavigationViewHitTestVisible = shellViewModel.NavigationViewHitTestVisible;
-        LogPageVisibility = shellViewModel.LogPageVisibility;
-        LogPageVisibilityCommand = shellViewModel.SetLogPageVisibility_Command;
         OpenAppAnimationDeveloperPage_Command = shellViewModel.OpenAppAnimationDeveloperPage_Command;
         OpenAppDeveloperPage_Command = shellViewModel.OpenAppDeveloperPage_Command;
         OpenAppDiscordPage_Command = shellViewModel.OpenAppDiscordPage_Command;
@@ -64,11 +60,6 @@ public partial class SettingsViewModel : ObservableRecipient
         this.themesService = themesService;
         version = dataService.GetFullName();
     }
-
-    /// <summary>
-    /// Gets or saves the app font sizes to a setting file.
-    /// </summary>
-    public FontOptions FontOptions { get; }
 
     /// <summary>
     /// Gets or sets app selected theme.
@@ -89,11 +80,6 @@ public partial class SettingsViewModel : ObservableRecipient
             }
         }
     }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether <see cref="LogPage"/> is visible.
-    /// </summary>
-    public bool LogPageVisibility { get; set; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app animation developer contacts page.
@@ -144,9 +130,4 @@ public partial class SettingsViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to open latest app release URL.
     /// </summary>
     public IRelayCommand OpenLatestAppRelease_Command { get; }
-
-    /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to click an "Show log page in navigation menu" CheckBox in Settings page.
-    /// </summary>
-    public IRelayCommand<bool> LogPageVisibilityCommand { get; }
 }
