@@ -51,6 +51,8 @@ public partial class App : Application
                 _ = services.AddTransient<IGroupPolicyService, GroupPolicyService>();
                 _ = services.AddTransient<IHttpService, HttpService>();
                 _ = services.AddTransient<INavigationViewService, NavigationViewService>();
+                _ = services.AddTransient<IDnsService, DnsService>();
+                _ = services.AddTransient<IWslService, WslService>();
                 _ = services.AddTransient<INetworkAdapterService, NetworkAdapterService>();
                 _ = services.AddTransient<IOneDriveService, OneDriveService>();
                 _ = services.AddTransient<IOsService, OsService>();
@@ -75,6 +77,7 @@ public partial class App : Application
                 _ = services.AddTransient<SecurityViewModel>();
                 _ = services.AddTransient<SettingsViewModel>();
                 _ = services.AddTransient<SystemViewModel>();
+                _ = services.AddTransient<WslViewModel>();
                 _ = services.AddTransient<TaskSchedulerViewModel>();
                 _ = services.AddTransient<UwpViewModel>();
 
@@ -91,6 +94,7 @@ public partial class App : Application
                 _ = services.AddTransient<ShellPage>();
                 _ = services.AddTransient<StartupPage>();
                 _ = services.AddTransient<SystemPage>();
+                _ = services.AddTransient<WslPage>();
                 _ = services.AddTransient<TaskSchedulerPage>();
                 _ = services.AddTransient<UwpPage>();
             })

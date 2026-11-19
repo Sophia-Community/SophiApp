@@ -65,5 +65,9 @@ namespace SophiApp.ControlTemplates
 
         private void CopyTitle_Click(object sender, RoutedEventArgs e)
             => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Name);
+
+        // The name the package is uninstalled by, such as "Microsoft.Paint"
+        private void CopyPackageName_Click(object sender, RoutedEventArgs e)
+            => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Title);
     }
 }

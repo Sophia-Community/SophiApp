@@ -12,7 +12,6 @@
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                     Margin="{StaticResource SettingsListMargin}"
                     Spacing="8">
-            <TextBlock x:Uid="Page_Settings" Style="{StaticResource PageTitleTextStyle}"/>
             <controls:Slogan Margin="2, 0, 0, 10"/>
 
             <toolkit:SettingsCard x:Uid="SettingsPage_SelectedTheme"
@@ -24,7 +23,8 @@
                 <ComboBox MinWidth="200"
                           ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
                           SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
-                          DisplayMemberPath="Description"/>
+                          DisplayMemberPath="Description"
+                          DropDownOpened="ThemeSelector_DropDownOpened"/>
             </toolkit:SettingsCard>
 
             <toolkit:SettingsExpander x:Uid="SettingsPage_AboutApp"

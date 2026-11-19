@@ -50,6 +50,7 @@ namespace SophiApp.Helpers
                 Placement = FlyoutPlacementMode.BottomEdgeAlignedLeft,
                 ShowMode = FlyoutShowMode.Standard,
             };
+            PopupCursor.SetResetOnOpen(flyout, true);
             flyout.ShowAt((FrameworkElement)sender, options);
         }
     }

@@ -24,6 +24,9 @@ namespace SophiApp.Views
             ViewModel = App.GetService<ShellViewModel>();
             RequirementsResult_1 = dataService.RequirementsResult_1;
             RequirementsResult_2 = dataService.RequirementsResult_2;
+
+            // The text has a path marked up as code
+            FormattedTextBlock.SetText(HostsEntriesFoundText, HostsEntriesFoundText.Text);
         }
 
         /// <summary>

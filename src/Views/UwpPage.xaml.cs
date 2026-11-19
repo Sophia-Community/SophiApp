@@ -11,6 +11,7 @@ using SophiApp.Models;
 using SophiApp.ViewModels;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 /// <summary>
@@ -61,6 +62,10 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     /// Gets a gaming <see cref="UIModel"/> collection.
     /// </summary>
     public ObservableCollection<UIModel> GamingModels { get; }
+
+    private static string GetChosenAppsText(int count) => string.Format(CultureInfo.CurrentCulture, "UwpPage_ChosenApps".GetLocalized(), count);
+
+    private static bool HasChosenApps(int count) => count > 0;
 
     private void PageUwp_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e) => CurrentWidth = ActualWidth;
 

@@ -22,8 +22,10 @@ namespace SophiApp.Customizations
     {
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService DataService = App.GetService<ICommonDataService>();
+        private static readonly IDnsService DnsService = App.GetService<IDnsService>();
         private static readonly IRedistributablePackageService PackageService = App.GetService<IRedistributablePackageService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
+        private static readonly IGroupPolicyService GroupPolicyService = App.GetService<IGroupPolicyService>();
         private static readonly IHttpService HttpService = App.GetService<IHttpService>();
         private static readonly IInstrumentationService InstrumentationService = App.GetService<IInstrumentationService>();
         private static readonly INetworkAdapterService NetworkAdapterService = App.GetService<INetworkAdapterService>();
@@ -33,6 +35,25 @@ namespace SophiApp.Customizations
         private static readonly IProcessService ProcessService = App.GetService<IProcessService>();
         private static readonly IScheduledTaskService ScheduledTaskService = App.GetService<IScheduledTaskService>();
         private static readonly IUpdateService UpdateService = App.GetService<IUpdateService>();
+        private static readonly IWslService WslService = App.GetService<IWslService>();
+
+        // The logos of the families of Linux distributions in the Assets folder
+        private static readonly Dictionary<string, string> WslLogos = new(StringComparer.OrdinalIgnoreCase)
+        {
+            ["AlmaLinux"] = "WSL_AlmaLinux.svg",
+            ["archlinux"] = "WSL_archlinux.svg",
+            ["AzureLinux"] = "WSL_AzureLinux.svg",
+            ["Debian"] = "WSL_Debian.svg",
+            ["eLxr"] = "WSL_eLxr.svg",
+
+            ["Fedora"] = "WSL_Fedora.svg",
+            ["kali"] = "WSL_kali.svg",
+            ["openSUSE"] = "WSL_openSUSE.svg",
+            ["RLCPlus"] = "WSL_RLCPlus.svg",
+            ["SUSE"] = "WSL_SUSE.svg",
+            ["Ubuntu"] = "WSL_Ubuntu.svg",
+        };
+
         private static readonly IXmlService XmlService = App.GetService<IXmlService>();
 
         /// <summary>
@@ -605,6 +626,19 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Get the state of unpinning all Start tiles. It is an action: there is nothing to read, so it is never chosen by itself.
+        /// </summary>
+        public static bool UnpinAllStartTiles()
+        {
+            if (StartMenuHelper.ThirdPartyMenuExists())
+            {
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Get Start all apps view state.
         /// </summary>
         public static int StartAppsView()
@@ -947,6 +981,21 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Get whether desktop shortcut creation upon Microsoft Edge update is prevented.
+        /// </summary>
+        public static bool PreventEdgeShortcutCreation()
+        {
+            if (!InstalledPrograms.Exists(EdgeShortcutPolicy.StableProgram))
+            {
+                throw new CustomizationException(exceptionMessage: "Microsoft Edge is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled") { Arguments = [EdgeShortcutPolicy.StableProgram] };
+            }
+
+            // The stable channel is the one that is always installed. Windows creates the shortcut by default
+            var createShortcut = Registry.LocalMachine.GetSubKeyValue(EdgeShortcutPolicy.Key, EdgeShortcutPolicy.Channels[0].ValueName) as int? ?? 1;
+            return createShortcut == 0;
+        }
+
+        /// <summary>
         /// Get registry backup state.
         /// </summary>
         public static bool RegistryBackup()
@@ -1045,6 +1094,40 @@ namespace SophiApp.Customizations
         /// Gets a notice for the Windows AI setting: without an AI accelerator only Recall and the Copilot app are removed.
         /// </summary>
         public static string? RemoveWindowsAI_Notice() => InstrumentationService.HasAIAccelerator() ? null : "UIModel_Notice_NoAIAccelerator";
+
+        /// <summary>
+        /// Get the Linux distributions that can be installed with WSL. The installed ones are shown but cannot be chosen.
+        /// </summary>
+        public static IReadOnlyList<SettingChoice> InstallWSL()
+        {
+            var installed = WslService.GetInstalledDistributions();
+            var installedText = "UIModel_InstallWSL_Installed".GetLocalized();
+
+            return WslService.GetDistributions()
+                .Select(distribution =>
+                {
+                    var isInstalled = installed.Contains(distribution.Name, StringComparer.OrdinalIgnoreCase);
+                    var subtitle = isInstalled ? string.Format(installedText, distribution.Name) : distribution.Name;
+
+                    // A new family has no logo until its file is added to the Assets folder
+                    var icon = WslLogos.TryGetValue(distribution.Family, out var logo) ? new Uri($"ms-appx:///Assets/{logo}") : null;
+                    return new SettingChoice(distribution.Name, distribution.FriendlyName, subtitle, !isInstalled, icon);
+                })
+                .ToArray();
+        }
+
+        /// <summary>
+        /// Get the state of scanning the registry for policies. It is an action: there is nothing to read, so it is never chosen by itself.
+        /// </summary>
+        public static bool ScanRegistryPolicies()
+        {
+            if (!GroupPolicyService.EditorExists)
+            {
+                throw new CustomizationException(exceptionMessage: "The Local Group Policy Editor snap-in is not found", resourceKey: "UIModel_Exception_GpeditNotSupported");
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Gets XBOX game bar state.
@@ -1283,6 +1366,12 @@ namespace SophiApp.Customizations
 
             throw new CustomizationException(exceptionMessage: "Unsupported Windows edition", resourceKey: "UIModel_Exception_WindowsSandbox_UnsupportedEdition") { Arguments = ["Windows Sandbox"] };
         }
+
+        /// <summary>
+        /// Get the DNS-over-HTTPS provider the network adapter in use is set to.
+        /// </summary>
+        /// <returns>The number of the provider, starting from 1. 0 if none of the providers is used.</returns>
+        public static int DNSoverHTTPS() => DnsService.GetProvider();
 
         /// <summary>
         /// Get Local Security Authority state.

@@ -149,6 +149,8 @@ public partial class ShellViewModel : ObservableRecipient
         RadioButtonsGroup2Clicked_Command = new RelayCommand<UIRadioButtonsGroup2Model>(group => RadioButtonsGroup2Clicked(group!));
         RadioButtonsGroup3Clicked_Command = new RelayCommand<UIRadioButtonsGroup3Model>(group => RadioButtonsGroup3Clicked(group!));
         RadioButtonsGroup4Clicked_Command = new RelayCommand<UIRadioButtonsGroup4Model>(group => RadioButtonsGroup4Clicked(group!));
+        IconRadioButtonsClicked_Command = new RelayCommand<UIIconRadioButtonsModel>(group => IconRadioButtonsClicked(group!));
+        ChoiceClicked_Command = new RelayCommand<UIChoiceModel>(choice => ChoiceClicked(choice!));
         Search_Command = new AsyncRelayCommand<string>(text => SearchAsync(text ?? string.Empty), AsyncRelayCommandOptions.AllowConcurrentExecutions);
         UIModelClicked_Command = new RelayCommand<UIModel>(model => UIModelClicked(model!));
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
@@ -158,9 +160,10 @@ public partial class ShellViewModel : ObservableRecipient
             httpService.OpenUrl(SigningUEFICertificatesUrl);
         });
         EnableSecureBoot_Command = new RelayCommand(() => httpService.OpenUrl(EnableSecureBootUrl));
-        InstallModelInstall_Command = new AsyncRelayCommand<UIInstallModel>(model => InstallModelSetStateAsync(model!, install: true));
-        InstallModelUninstall_Command = new AsyncRelayCommand<UIInstallModel>(model => InstallModelSetStateAsync(model!, install: false));
+        InstallModelInstall_Command = new RelayCommand<UIInstallModel>(model => InstallModelClicked(model!, install: true));
+        InstallModelUninstall_Command = new RelayCommand<UIInstallModel>(model => InstallModelClicked(model!, install: false));
         UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
+        UwpAppsUninstall_Command = new AsyncRelayCommand(UwpAppsUninstallAsync);
     }
 
     /// <summary>
@@ -279,19 +282,29 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand<UIRadioButtonsGroup4Model> RadioButtonsGroup4Clicked_Command { get; private set; }
 
     /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIIconRadioButtonsModel"/> or to reset the choice.
+    /// </summary>
+    public IRelayCommand<UIIconRadioButtonsModel> IconRadioButtonsClicked_Command { get; private set; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to choose an item of <see cref="UIChoiceModel"/>.
+    /// </summary>
+    public IRelayCommand<UIChoiceModel> ChoiceClicked_Command { get; private set; }
+
+    /// <summary>
     /// Gets <see cref="IAsyncRelayCommand"/> to show the settings that contain a text.
     /// </summary>
     public IAsyncRelayCommand<string> Search_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IAsyncRelayCommand"/> to install or update a package of <see cref="UIInstallModel"/>.
+    /// Gets <see cref="IRelayCommand"/> to choose the installation or the update of a package of <see cref="UIInstallModel"/>.
     /// </summary>
-    public IAsyncRelayCommand<UIInstallModel> InstallModelInstall_Command { get; private set; }
+    public IRelayCommand<UIInstallModel> InstallModelInstall_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IAsyncRelayCommand"/> to uninstall a package of <see cref="UIInstallModel"/>.
+    /// Gets <see cref="IRelayCommand"/> to choose the uninstallation of a package of <see cref="UIInstallModel"/>.
     /// </summary>
-    public IAsyncRelayCommand<UIInstallModel> InstallModelUninstall_Command { get; private set; }
+    public IRelayCommand<UIInstallModel> InstallModelUninstall_Command { get; private set; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to click an element in the interface.
@@ -317,6 +330,11 @@ public partial class ShellViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to click an "For all users" checkbox in the UWP page.
     /// </summary>
     public IRelayCommand UwpForAllUsersClicked_Command { get; private set; }
+
+    /// <summary>
+    /// Gets <see cref="IAsyncRelayCommand"/> to uninstall the UWP apps chosen in the UWP page.
+    /// </summary>
+    public IAsyncRelayCommand UwpAppsUninstall_Command { get; private set; }
 
     /// <summary>
     /// Gets the info badges counters state by <see cref="UICategoryTag"/>.
@@ -353,6 +371,11 @@ public partial class ShellViewModel : ObservableRecipient
     public ObservableCollection<UIModel> FoundModels { get; } = [];
 
     /// <summary>
+    /// Gets the UWP apps chosen to be uninstalled. They are not applied with the settings: they are uninstalled right from their page.
+    /// </summary>
+    public ObservableCollection<UIUwpAppModel> UwpAppsToUninstall { get; } = [];
+
+    /// <summary>
     /// Executes the ViewModel logic of the MVVM pattern.
     /// </summary>
     public async Task ExecuteAsync()
@@ -374,7 +397,8 @@ public partial class ShellViewModel : ObservableRecipient
     // The log gets the same texts as the page of a failed startup check shows
     private static void LogRequirementsFailureTexts(RequirementsResult result)
     {
-        static string Text(string key) => $"{key}/Text".GetLocalized();
+        // The log gets the texts without the markup
+        static string Text(string key) => FormattedText.ToPlainText($"{key}/Text".GetLocalized());
         var data = App.GetService<ICommonDataService>();
 
         string[] texts = result switch
@@ -398,6 +422,12 @@ public partial class ShellViewModel : ObservableRecipient
         App.Logger.LogUserNotice(string.Join(" ", texts.Where(text => text.Length > 0)));
     }
 
+    private static async Task CloseSearchWindowAsync()
+    {
+        var closed = await ForegroundHelper.CloseSearchAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow));
+        App.Logger.LogSearchWindowWatch(closed, ForegroundHelper.LastWatch);
+    }
+
     private async Task ApplicableModelsApplyAsync()
     {
         // Settings are already being applied or read
@@ -414,17 +444,16 @@ public partial class ShellViewModel : ObservableRecipient
 
         // The button that opens Event Viewer appears only after the custom view was created
         var eventViewCreated = ApplicableModels.OfType<UICheckBoxModel>().Any(model => model.IsChecked && model.Name == nameof(Customizations.Mutators.EventViewerCustomView));
-        var appsUninstalled = ApplicableModels.OfType<UIUwpAppModel>().Any();
+
+        // The registry is scanned for policies last, after the other settings have written theirs
+        if (ApplicableModels.FirstOrDefault(model => model.Name == nameof(Customizations.Mutators.ScanRegistryPolicies)) is UIModel scan)
+        {
+            ApplicableModels.Move(ApplicableModels.IndexOf(scan), ApplicableModels.Count - 1);
+        }
+
         await modelService.SetModelsStateAsync(ApplicableModels);
         App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
         await modelService.GetModelsStateAsync(ApplicableModels);
-
-        // The uninstalled apps disappear from the list
-        if (appsUninstalled)
-        {
-            await ReadUwpAppsAsync();
-        }
-
         ApplicableModels.Clear();
         InfoBadgeCounters.ResetAll();
         App.Logger.LogApplicableModelsClear();
@@ -442,6 +471,9 @@ public partial class ShellViewModel : ObservableRecipient
         processService.KillProcessByName("StartMenuExperienceHost");
         processService.KillProcessByName("explorer");
         await ExplorerHelper.RestoreAsync(openedFolders);
+
+        // Windows Search is restarted too, a little later, so it is watched for after the settings are applied
+        _ = CloseSearchWindowAsync();
         SetUpCustomizationsPanelIsVisible = false;
         RestartReminderIsVisible = true;
         App.Logger.LogUserNotice("Panel_RestartReminder/Message".GetLocalized());
@@ -469,7 +501,8 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationViewHitTestVisible = true;
     }
 
-    private async Task InstallModelSetStateAsync(UIInstallModel model, bool install)
+    // A package is installed, updated or uninstalled together with the other chosen settings
+    private void InstallModelClicked(UIInstallModel model, bool install)
     {
         // Settings are already being applied or read
         if (!NavigationViewHitTestVisible)
@@ -477,27 +510,21 @@ public partial class ShellViewModel : ObservableRecipient
             return;
         }
 
-        NavigationViewHitTestVisible = false;
-        var installText = model.State == InstallState.UpdateAvailable ? "Panel_Install_Updating" : "Panel_Install_Installing";
-        var panelText = install ? installText : "Panel_Install_Uninstalling";
-        App.Status.SetOperation(string.Format(panelText.GetLocalized(), model.Title));
-        SetUpCustomizationsPanelIsVisible = true;
+        var isChosen = ApplicableModels.Contains(model);
+
+        // The same button pressed again takes the choice back
+        if (isChosen && model.InstallRequested == install)
+        {
+            UIModelClicked(model);
+            return;
+        }
+
         model.InstallRequested = install;
 
-        // The package is changed right away, and then its state is read again to show the right buttons
-        await Task.Run(() =>
+        if (!isChosen)
         {
-            var timer = Stopwatch.StartNew();
-            model.SetState();
-            timer.Stop();
-            App.Logger.LogModelSetState(model.Name, timer);
-            App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
-            model.GetState();
-        });
-
-        groupPolicyService.UpdatePolicy();
-        SetUpCustomizationsPanelIsVisible = false;
-        NavigationViewHitTestVisible = true;
+            UIModelClicked(model);
+        }
     }
 
     private async Task DecryptSystemDriveAsync()
@@ -510,7 +537,13 @@ public partial class ShellViewModel : ObservableRecipient
     private void ContinueRequirementActionsExecute()
     {
         Task.Delay(80).Wait();
-        taskContinueSource?.SetResult(true);
+
+        // The button pressed twice continues once
+        if (taskContinueSource?.TrySetResult(true) == false)
+        {
+            return;
+        }
+
         App.MainWindow.DispatcherQueue.TryEnqueue(() => NavigationService.NavigateTo(page: typeof(StartupViewModel).FullName!, clearHistory: true, disablePageAnimation: true));
     }
 
@@ -622,6 +655,71 @@ public partial class ShellViewModel : ObservableRecipient
         ApplicableModels.Add(group);
         InfoBadgeCounters.IncrementCategory(group.Tag);
         App.Logger.LogApplicableModelAdded(group.Name, selectedId);
+    }
+
+    private void IconRadioButtonsClicked(UIIconRadioButtonsModel group)
+    {
+        var selectedId = int.Parse(group.SelectedId);
+
+        // The reset is a choice too, even when no option is selected in Windows
+        var isChanged = group.IsChanged;
+        group.IsSelected = isChanged;
+
+        if (ApplicableModels.Contains(group))
+        {
+            if (isChanged)
+            {
+                App.Logger.LogApplicableModelChanged(group.Name, selectedId);
+            }
+            else
+            {
+                ApplicableModels.Remove(group);
+                InfoBadgeCounters.DecrementCategory(group.Tag);
+                App.Logger.LogApplicableModelRemoved(group.Name);
+            }
+
+            return;
+        }
+
+        if (!isChanged)
+        {
+            return;
+        }
+
+        ApplicableModels.Add(group);
+        InfoBadgeCounters.IncrementCategory(group.Tag);
+        App.Logger.LogApplicableModelAdded(group.Name, selectedId);
+    }
+
+    private void ChoiceClicked(UIChoiceModel choice)
+    {
+        var isChanged = choice.IsChanged;
+        choice.IsSelected = isChanged;
+
+        if (ApplicableModels.Contains(choice))
+        {
+            if (isChanged)
+            {
+                App.Logger.LogApplicableModelChanged(choice.Name, choice.SelectedId);
+            }
+            else
+            {
+                ApplicableModels.Remove(choice);
+                InfoBadgeCounters.DecrementCategory(choice.Tag);
+                App.Logger.LogApplicableModelRemoved(choice.Name);
+            }
+
+            return;
+        }
+
+        if (!isChanged)
+        {
+            return;
+        }
+
+        ApplicableModels.Add(choice);
+        InfoBadgeCounters.IncrementCategory(choice.Tag);
+        App.Logger.LogApplicableModelAdded(choice.Name, choice.SelectedId);
     }
 
     private async Task RunPostActionsAsync()
@@ -745,6 +843,16 @@ public partial class ShellViewModel : ObservableRecipient
     {
         NavigationViewHitTestVisible = false;
         App.Logger.LogUwpForAllUsersState(UwpForAllUsersState);
+
+        // The other list has other apps, so the choice made in this one is dropped
+        foreach (var app in UwpAppsToUninstall)
+        {
+            app.IsSelected = false;
+            app.IsChecked = false;
+        }
+
+        UwpAppsToUninstall.Clear();
+        InfoBadgeCounters.ResetUwp();
         UwpForAllUsersState = !UwpForAllUsersState;
         UwpAppsModels = new ObservableCollection<UIModel>(UwpForAllUsersState ? uwpAllUsersModels : uwpCurrentUserModels);
         NavigationViewHitTestVisible = true;
@@ -754,6 +862,58 @@ public partial class ShellViewModel : ObservableRecipient
     {
         model.ForAllUsers = UwpForAllUsersState;
         model.Mutator = (_, _) => packagesService.RemovePackages(model.PackageFullNames, model.ForAllUsers);
-        UIModelClicked(model);
+
+        // The apps have a queue of their own
+        var isChosen = UwpAppsToUninstall.Remove(model);
+        model.IsSelected = !isChosen;
+
+        if (isChosen)
+        {
+            InfoBadgeCounters.DecrementCategory(model.Tag);
+            return;
+        }
+
+        UwpAppsToUninstall.Add(model);
+
+        // The menu shows that there is something to uninstall
+        InfoBadgeCounters.IncrementCategory(model.Tag);
+    }
+
+    private async Task UwpAppsUninstallAsync()
+    {
+        // Settings are already being applied or read
+        if (!NavigationViewHitTestVisible || UwpAppsToUninstall.Count == 0)
+        {
+            return;
+        }
+
+        NavigationViewHitTestVisible = false;
+        SetUpCustomizationsPanelText = string.Empty;
+        SetUpCustomizationsPanelIsVisible = true;
+        var apps = UwpAppsToUninstall.ToList();
+
+        await Task.Run(() =>
+        {
+            for (var i = 0; i < apps.Count; i++)
+            {
+                // The user sees which app is being uninstalled and how many are left
+                App.Status.SetOperation(apps.Count == 1
+                    ? string.Format("Panel_Install_Uninstalling".GetLocalized(), apps[i].Title)
+                    : string.Format("Panel_Status_Uninstalling".GetLocalized(), i + 1, apps.Count, apps[i].Title));
+                apps[i].IsSelected = false;
+                var timer = Stopwatch.StartNew();
+                apps[i].SetState();
+                timer.Stop();
+                App.Logger.LogModelSetState(apps[i].Name, timer);
+            }
+        });
+
+        // The uninstalled apps disappear from the list
+        App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
+        UwpAppsToUninstall.Clear();
+        InfoBadgeCounters.ResetUwp();
+        await ReadUwpAppsAsync();
+        SetUpCustomizationsPanelIsVisible = false;
+        NavigationViewHitTestVisible = true;
     }
 }

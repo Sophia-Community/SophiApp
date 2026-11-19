@@ -54,6 +54,9 @@ namespace SophiApp.Services
                             UIModelType.RadioButtonsGroup2 => BuildRadioButtonsGroup2(dto),
                             UIModelType.RadioButtonsGroup3 => BuildRadioButtonsGroup3(dto),
                             UIModelType.RadioButtonsGroup4 => BuildRadioButtonsGroup4(dto),
+                            UIModelType.IconRadioButtons => BuildIconRadioButtons(dto),
+                            UIModelType.Action => BuildActionModel(dto),
+                            UIModelType.Choice => BuildChoiceModel(dto),
                             _ => throw new TypeAccessException($"An invalid type is specified: {dto.Type}"),
                         };
                     })
@@ -83,6 +86,7 @@ namespace SophiApp.Services
                 GetStateByTagAsync(models, UICategoryTag.Privacy),
                 GetStateByTagAsync(models, UICategoryTag.Personalization),
                 GetStateByTagAsync(models, UICategoryTag.System),
+                GetStateByTagAsync(models, UICategoryTag.WSL),
                 GetStateByTagAsync(models, UICategoryTag.UWP),
                 GetStateByTagAsync(models, UICategoryTag.Gaming),
                 GetStateByTagAsync(models, UICategoryTag.TaskScheduler),
@@ -121,9 +125,14 @@ namespace SophiApp.Services
                 {
                     // The user sees which setting is being applied and how many are left
                     number++;
+
+                    // A package says what is done to it: "Installing OneDrive"
+                    var package = model as UIInstallModel;
+                    var title = package?.ActionTitle ?? model.Title;
+                    var single = package is null ? string.Format("Panel_Status_ApplyingOne".GetLocalized(), title) : title;
                     App.Status.SetOperation(models.Count == 1
-                        ? string.Format("Panel_Status_ApplyingOne".GetLocalized(), model.Title)
-                        : string.Format("Panel_Status_Applying".GetLocalized(), number, models.Count, model.Title));
+                        ? single
+                        : string.Format("Panel_Status_Applying".GetLocalized(), number, models.Count, title));
                     model.IsSelected = false;
                     var timer = Stopwatch.StartNew();
                     model.SetState();
@@ -210,6 +219,45 @@ namespace SophiApp.Services
             var accessor = GetAccessor<int>(dto.Name);
             var mutator = GetMutator<int>(dto.Name);
             return new UIRadioButtonsGroup4Model(dto, title, description, title_1, title_2, title_3, title_4, accessor, mutator);
+        }
+
+        private UIModel BuildActionModel(UIModelDto dto)
+        {
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var buttonText = GetResourceValueOrDefault($"UIModel_{dto.Name}_Button");
+            var accessor = GetAccessor<bool>(dto.Name);
+            var mutator = GetMutator<bool>(dto.Name);
+            return new UIActionModel(dto, title, description, buttonText, accessor, mutator);
+        }
+
+        private UIModel BuildChoiceModel(UIModelDto dto)
+        {
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var noChoiceTitle = GetResourceValueOrDefault($"UIModel_{dto.Name}_NoChoice");
+            var accessorMethod = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!.GetMethod(dto.Name, BindingFlags.Static | BindingFlags.Public);
+            var mutatorMethod = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true)!.GetMethod(dto.Name, BindingFlags.Static | BindingFlags.Public);
+            var accessor = (Func<IReadOnlyList<SettingChoice>>)Delegate.CreateDelegate(typeof(Func<IReadOnlyList<SettingChoice>>), accessorMethod!);
+            var mutator = (Action<string>)Delegate.CreateDelegate(typeof(Action<string>), mutatorMethod!);
+            return new UIChoiceModel(dto, title, description, noChoiceTitle, accessor, mutator);
+        }
+
+        private UIModel BuildIconRadioButtons(UIModelDto dto)
+        {
+            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
+            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
+            var options = new List<string>();
+
+            // The options are numbered from 1, and there are as many of them as there are titles
+            while (GetResourceValueOrDefault($"UIModel_{dto.Name}_Title_{options.Count + 1}") is { Length: > 0 } option)
+            {
+                options.Add(option);
+            }
+
+            var accessor = GetAccessor<int>(dto.Name);
+            var mutator = GetMutator<int>(dto.Name);
+            return new UIIconRadioButtonsModel(dto, title, description, options, accessor, mutator);
         }
 
         private string GetResourceValueOrDefault(string pattern) => resourceMap.TryGetValue(pattern)?.ValueAsString ?? string.Empty;

@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:SophiApp.Helpers"
     mc:Ignorable="d">
 
     <!-- A settings card rearranges itself when it is narrow, and a tile of a fixed height has no room for that -->
@@ -28,11 +29,14 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid.ContextFlyout>
-            <CommandBarFlyout>
+            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
                 <CommandBarFlyout.SecondaryCommands>
                     <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
                                   Icon="Copy"
                                   Click="CopyTitle_Click"/>
+                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyPackageName"
+                                  Icon="Copy"
+                                  Click="CopyPackageName_Click"/>
                 </CommandBarFlyout.SecondaryCommands>
             </CommandBarFlyout>
         </Grid.ContextFlyout>
@@ -63,7 +67,7 @@
                   MinWidth="0"
                   VerticalAlignment="Center"
                   IsEnabled="{Binding IsEnabled}"
-                  IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                  helpers:CheckBoxHelper.IsChecked="{Binding IsChecked, Mode=TwoWay}"
                   Command="{x:Bind ViewModel.UIUwpAppModelClicked_Command}"
                   CommandParameter="{Binding}"/>
     </Grid>

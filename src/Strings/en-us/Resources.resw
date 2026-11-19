@@ -523,7 +523,7 @@
     <value>System</value>
   </data>
   <data name="UIModel_Cursors_Description" xml:space="preserve">
-    <value>Install the "Windows 11 Cursors Concept v2" cursors from Jepri Creations on the fly. An Internet connection is required. https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356</value>
+    <value>Install the "Windows 11 Cursors Concept v2" cursors from Jepri Creations on the fly. An Internet connection is required. [View the cursors on DeviantArt](https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356)</value>
   </data>
   <data name="UIModel_FolderGroupBy_Title" xml:space="preserve">
     <value>Group files and folders by date modified in the Downloads folder</value>
@@ -580,7 +580,7 @@
     <value>Enable hibernation</value>
   </data>
   <data name="UIModel_Hibernation_Description" xml:space="preserve">
-    <value>Hibernation is a power-saving state used primarily on laptops. Unlike sleep, hibernation saves your open documents and programs to the %SystemRoot%\hiberfil.sys file on the system drive and turns off your computer. By default, the size of the hidden protected system file %SystemRoot%\hiberfil.sys is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and Hibernate will no longer be shown in the Power menu. It is not recommended to turn hibernation off on laptops.</value>
+    <value>Hibernation is a power-saving state used primarily on laptops. Unlike sleep, hibernation saves your open documents and programs to the `%SystemRoot%\hiberfil.sys` file on the system drive and turns off your computer. By default, the size of the hidden protected system file `%SystemRoot%\hiberfil.sys` is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and Hibernate will no longer be shown in the Power menu. It is not recommended to turn hibernation off on laptops.</value>
   </data>
   <data name="UIModel_Win32LongPathsSupport_Title" xml:space="preserve">
     <value>Enable Windows long path support</value>
@@ -739,7 +739,7 @@
     <value>Enable thumbnail cache removal</value>
   </data>
   <data name="UIModel_ThumbnailCacheRemoval_Description" xml:space="preserve">
-    <value>Windows automatically deletes the thumbnail cache after a restart or shutdown via the "SilentCleanup" scheduled task, and File Explorer has to re-create thumbnails. You can disable thumbnail cache removal to keep the cache from being deleted automatically. The thumbnail cache is stored as .db files in the %LOCALAPPDATA%\Microsoft\Windows\Explorer folder.</value>
+    <value>Windows automatically deletes the thumbnail cache after a restart or shutdown via the "SilentCleanup" scheduled task, and File Explorer has to re-create thumbnails. You can disable thumbnail cache removal to keep the cache from being deleted automatically. The thumbnail cache is stored as .db files in the `%LOCALAPPDATA%\Microsoft\Windows\Explorer` folder.</value>
   </data>
   <data name="UIModel_SaveRestartableApps_Title" xml:space="preserve">
     <value>Automatically save my restartable apps and restart them when I sign back in</value>
@@ -793,7 +793,7 @@
     <value>Enable automatic backup of the Windows registry</value>
   </data>
   <data name="UIModel_RegistryBackup_Description" xml:space="preserve">
-    <value>Starting with Windows 10 version 1803, Windows no longer automatically backs up the Windows registry to the %SystemRoot%\System32\config\RegBack folder. Enabling registry backups may help you restore Windows in extreme cases.</value>
+    <value>Starting with Windows 10 version 1803, Windows no longer automatically backs up the Windows registry to the `%SystemRoot%\System32\config\RegBack` folder. Enabling registry backups may help you restore Windows in extreme cases.</value>
   </data>
   <data name="UwpPage_AboutAppIcon.Message" xml:space="preserve">
     <value>Choose the UWP apps to uninstall. The list is not prepared in advance: it is built in real time with the apps' native icons and localized names taken from Windows.</value>
@@ -808,7 +808,7 @@
     <value>Enable XBOX Game Bar</value>
   </data>
   <data name="UIModel_XBOXGameBar_Description" xml:space="preserve">
-    <value>Disable the XBOX Game Bar app (even if you uninstalled it before) to prevent the "You'll need a new app to open this ms-gamingoverlay" pop-up message.</value>
+    <value>Turn it off to prevent the "You'll need a new app to open this ms-gamingoverlay" pop-up message, even if you uninstalled the XBOX Game Bar app before.</value>
   </data>
   <data name="UIModel_XBOXGameTips_Title" xml:space="preserve">
     <value>Show XBOX Game Bar tips</value>
@@ -823,7 +823,7 @@
     <value>The scheduled tasks below are sufficient to keep Windows clean. There is no need to constantly clean other system folders, as is often advised on the Internet. The tasks respect the **Do not disturb** mode: their notifications won't pop up while you are playing a game, watching a video in full screen, or when the mode is turned on.</value>
   </data>
   <data name="Page_AboutPolicies.Message" xml:space="preserve">
-    <value>Compared to similar apps, SophiApp for Windows keeps the use of policies to a minimum. The settings that do create policies also show them in the Local Group Policy Editor snap-in (`gpedit.msc`), if it is available in your Windows edition, so you can see what has been applied without searching the registry.</value>
+    <value>SophiApp for Windows keeps the use of policies to a minimum. The settings that do create policies also show them in the Local Group Policy Editor snap-in (`gpedit.msc`), if it is available in your Windows edition.</value>
   </data>
   <data name="UIModel_CleanupTask_Title" xml:space="preserve">
     <value>Create Windows Cleanup scheduled task</value>
@@ -847,7 +847,7 @@
     <value>Create SoftwareDistribution scheduled task</value>
   </data>
   <data name="UIModel_SoftwareDistributionTask_Description" xml:space="preserve">
-    <value>This function creates the "SoftwareDistribution" task in the Sophia folder of Task Scheduler to clean up the %SystemRoot%\SoftwareDistribution\Download folder, where Windows update installation files are downloaded. The task will wait until the Windows Update service has finished running. The task runs every 90 days. A native Windows notification will appear when it completes.</value>
+    <value>This function creates the "SoftwareDistribution" task in the Sophia folder of Task Scheduler to clean up the `%SystemRoot%\SoftwareDistribution\Download` folder, where Windows update installation files are downloaded. The task will wait until the Windows Update service has finished running. The task runs every 90 days. A native Windows notification will appear when it completes.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
     <value>Cleaning up the Windows update cache folder "{1}". The scheduled task can run only if the user "{0}" is signed in.</value>
@@ -859,7 +859,7 @@
     <value>Create Temp scheduled task</value>
   </data>
   <data name="UIModel_TempTask_Description" xml:space="preserve">
-    <value>This function creates the "Temp" task in the Sophia folder of Task Scheduler to clean up the %TEMP% folder. Only files older than one day will be deleted. The task runs every 60 days. A native Windows notification will appear when it completes.</value>
+    <value>This function creates the "Temp" task in the Sophia folder of Task Scheduler to clean up the `%TEMP%` folder. Only files older than one day will be deleted. The task runs every 60 days. A native Windows notification will appear when it completes.</value>
   </data>
   <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
     <value>The temporary folder was successfully cleaned up.</value>
@@ -966,39 +966,6 @@
   <data name="SearchPage_NothingFound.Text" xml:space="preserve">
     <value>Nothing was found for your request.</value>
   </data>
-  <data name="Page_ContextMenu.Text" xml:space="preserve">
-    <value>Context Menu</value>
-  </data>
-  <data name="Page_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
-  </data>
-  <data name="Page_Privacy.Text" xml:space="preserve">
-    <value>Privacy</value>
-  </data>
-  <data name="Page_ProVersion.Text" xml:space="preserve">
-    <value>About PRO version</value>
-  </data>
-  <data name="Page_Security.Text" xml:space="preserve">
-    <value>Security</value>
-  </data>
-  <data name="Page_Settings.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="Page_System.Text" xml:space="preserve">
-    <value>System</value>
-  </data>
-  <data name="Page_TaskScheduler.Text" xml:space="preserve">
-    <value>Task Scheduler</value>
-  </data>
-  <data name="Page_UWP.Text" xml:space="preserve">
-    <value>UWP</value>
-  </data>
-  <data name="Page_UWP_Gaming.Text" xml:space="preserve">
-    <value>Gaming</value>
-  </data>
-  <data name="Page_Search.Text" xml:space="preserve">
-    <value>Search</value>
-  </data>
   <data name="OsRequirements_Malware_PCNP" xml:space="preserve">
     <value>PCNP</value>
   </data>
@@ -1072,7 +1039,7 @@
     <value>Checking the hosts file for third-party entries...</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
-    <value>Third-party entries found in the %SystemRoot%\System32\drivers\etc\hosts file.</value>
+    <value>Third-party entries found in the `%SystemRoot%\System32\drivers\etc\hosts` file.</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
     <value>They may block the connection to resources used by SophiApp for Windows.</value>
@@ -1346,5 +1313,89 @@
   </data>
   <data name="UIModel_Notice_NoAIAccelerator" xml:space="preserve">
     <value>Your PC does not have a built-in AI accelerator (NPU), so Windows AI-related functions are not supported. No policies will be applied except for removing the Recall feature and the Copilot app.</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Title" xml:space="preserve">
+    <value>Configure DNS using DNS-over-HTTPS</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Description" xml:space="preserve">
+    <value>DNS-over-HTTPS encrypts DNS queries, so others on the network cannot see which sites you open or replace the answers. The DNS servers of the selected provider are set for the network adapter currently in use. [Learn more about the DNS-over-HTTPS client in Windows](https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support)</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Title_1" xml:space="preserve">
+    <value>Cloudflare DNS</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Title_2" xml:space="preserve">
+    <value>Google Public DNS</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Title_3" xml:space="preserve">
+    <value>Quad9 DNS</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Title_4" xml:space="preserve">
+    <value>AdGuard DNS</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Title_5" xml:space="preserve">
+    <value>OpenDNS</value>
+  </data>
+  <data name="Button_ResetToDefault.Content" xml:space="preserve">
+    <value>Reset to default</value>
+  </data>
+  <data name="ComboBox_NoOption.PlaceholderText" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="UIModel_Exception_ActiveNetworkAdapterNotFound" xml:space="preserve">
+    <value>Couldn't determine the network adapter currently in use: no active network connection was found. Connect to a network.</value>
+  </data>
+  <data name="UIModel_Exception_DnsServerNotResponding" xml:space="preserve">
+    <value>The DNS-over-HTTPS server of "{0}" isn't responding. The default DNS servers were restored.</value>
+  </data>
+  <data name="UwpPage_ChosenApps" xml:space="preserve">
+    <value>Apps chosen to uninstall: {0}</value>
+  </data>
+  <data name="Panel_Status_Uninstalling" xml:space="preserve">
+    <value>Uninstalling {0} of {1}: {2}</value>
+  </data>
+  <data name="UIModel_UnpinAllStartTiles_Title" xml:space="preserve">
+    <value>Unpin all Start tiles</value>
+  </data>
+  <data name="UIModel_UnpinAllStartTiles_Description" xml:space="preserve">
+    <value>All shortcuts pinned to the Start menu are unpinned at once. It is done once and cannot be undone: the apps you need have to be pinned again by hand.</value>
+  </data>
+  <data name="UIModel_PreventEdgeShortcutCreation_Title" xml:space="preserve">
+    <value>Prevent desktop shortcut creation upon Microsoft Edge update</value>
+  </data>
+  <data name="UIModel_PreventEdgeShortcutCreation_Description" xml:space="preserve">
+    <value>Microsoft Edge puts its shortcut back on the desktop after some updates. The setting applies to every installed channel of Microsoft Edge: Stable, Beta, Dev and Canary.</value>
+  </data>
+  <data name="UIModel_UnpinAllStartTiles_Button" xml:space="preserve">
+    <value>Unpin</value>
+  </data>
+  <data name="UIModel_ScanRegistryPolicies_Title" xml:space="preserve">
+    <value>Display applied registry policies in the Local Group Policy Editor</value>
+  </data>
+  <data name="UIModel_ScanRegistryPolicies_Description" xml:space="preserve">
+    <value>Scan the Windows registry and display all applied policies, even those created manually, in the Local Group Policy Editor snap-in (`gpedit.msc`).</value>
+  </data>
+  <data name="UIModel_ScanRegistryPolicies_Button" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="UIModel_Exception_GpeditNotSupported" xml:space="preserve">
+    <value>Windows Home edition doesn't support the Local Group Policy Editor snap-in (gpedit.msc).</value>
+  </data>
+  <data name="NavigationItem_WSL.Content" xml:space="preserve">
+    <value>WSL</value>
+  </data>
+  <data name="UIModel_InstallWSL_Title" xml:space="preserve">
+    <value>Install Linux on Windows with WSL</value>
+  </data>
+  <data name="UIModel_InstallWSL_Description" xml:space="preserve">
+    <value>Enable Windows Subsystem for Linux (WSL), install the latest WSL Linux kernel version and the selected Linux distribution. The "Receive updates for other Microsoft products" setting will be enabled automatically to receive kernel updates. An Internet connection is required.</value>
+  </data>
+  <data name="UIModel_InstallWSL_NoChoice" xml:space="preserve">
+    <value>Choose distro</value>
+  </data>
+  <data name="UIModel_InstallWSL_Installed" xml:space="preserve">
+    <value>{0} (installed)</value>
+  </data>
+  <data name="UIModel_ContextMenu_CopyPackageName.Label" xml:space="preserve">
+    <value>Copy package name</value>
   </data>
 </root>

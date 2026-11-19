@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:SophiApp.Converters"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:helpers="using:SophiApp.Helpers"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -47,9 +48,19 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+            <VisualStateGroup x:Name="ChangeStates">
+                <VisualState x:Name="Changed">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding IsSelected}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChangedOutline.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel.ContextFlyout>
-            <CommandBarFlyout>
+            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
                 <CommandBarFlyout.SecondaryCommands>
                     <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
                                   Icon="Copy"
@@ -61,82 +72,87 @@
                 </CommandBarFlyout.SecondaryCommands>
             </CommandBarFlyout>
         </StackPanel.ContextFlyout>
-        <toolkit:SettingsCard x:Name="Card"
-                              AutomationProperties.Name="{Binding Title}"
-                              MinHeight="{StaticResource SettingsCardMinHeight}"
-                              Padding="{StaticResource SettingsCardPadding}"
-                              IsEnabled="{Binding IsEnabled}">
-            <toolkit:SettingsCard.Header>
-                <TextBlock Text="{Binding Title}"
-                           TextWrapping="Wrap"/>
-            </toolkit:SettingsCard.Header>
-            <toolkit:SettingsCard.Description>
-                <TextBlock x:Name="DescriptionText"
-                           TextWrapping="Wrap"/>
-            </toolkit:SettingsCard.Description>
-            <StackPanel Orientation="Horizontal"
-                        Spacing="8">
-                <!-- Only some packages can be installed for all users, and the choice matters only before the installation -->
-                <Grid x:Name="AllUsersPanel">
-                    <CheckBox x:Name="AllUsersCheckBox"
-                              x:Uid="InstallCard_AllUsers"
-                              MinWidth="0"
-                              Margin="0, 0, 8, 0"
-                              IsChecked="{Binding AllUsers, Mode=TwoWay}"
-                              Visibility="Collapsed"/>
-                </Grid>
-                <TextBlock x:Name="NotInstalledStatus"
-                           x:Uid="InstallState_NotInstalled"
-                           Style="{StaticResource CaptionTextBlockStyle}"
-                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                           VerticalAlignment="Center"
-                           Margin="0, 0, 4, 0"
-                           Visibility="Collapsed"/>
-                <!-- A package that is installed and up to date stands out -->
-                <StackPanel x:Name="InstalledStatus"
-                            Orientation="Horizontal"
-                            Spacing="6"
-                            VerticalAlignment="Center"
-                            Margin="0, 0, 4, 0"
-                            Visibility="Collapsed">
-                    <FontIcon Glyph="&#xE73E;"
-                              FontSize="14"
-                              Foreground="{ThemeResource SystemFillColorSuccessBrush}"/>
-                    <TextBlock x:Uid="InstallState_Installed"
+        <Grid>
+            <toolkit:SettingsCard x:Name="Card"
+                                  AutomationProperties.Name="{Binding Title}"
+                                  MinHeight="{StaticResource SettingsCardMinHeight}"
+                                  Padding="{StaticResource SettingsCardPadding}"
+                                  IsEnabled="{Binding IsEnabled}">
+                <toolkit:SettingsCard.Header>
+                    <TextBlock Text="{Binding Title}"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsCard.Header>
+                <toolkit:SettingsCard.Description>
+                    <TextBlock x:Name="DescriptionText"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsCard.Description>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8">
+                    <!-- Only some packages can be installed for all users, and the choice matters only before the installation -->
+                    <Grid x:Name="AllUsersPanel">
+                        <CheckBox x:Name="AllUsersCheckBox"
+                                  x:Uid="InstallCard_AllUsers"
+                                  MinWidth="0"
+                                  Margin="0, 0, 8, 0"
+                                  helpers:CheckBoxHelper.IsChecked="{Binding AllUsers, Mode=TwoWay}"
+                                  Visibility="Collapsed"/>
+                    </Grid>
+                    <TextBlock x:Name="NotInstalledStatus"
+                               x:Uid="InstallState_NotInstalled"
                                Style="{StaticResource CaptionTextBlockStyle}"
-                               FontWeight="SemiBold"
-                               Foreground="{ThemeResource SystemFillColorSuccessBrush}"
-                               VerticalAlignment="Center"/>
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 4, 0"
+                               Visibility="Collapsed"/>
+                    <!-- A package that is installed and up to date stands out -->
+                    <StackPanel x:Name="InstalledStatus"
+                                Orientation="Horizontal"
+                                Spacing="6"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 4, 0"
+                                Visibility="Collapsed">
+                        <FontIcon Glyph="&#xE73E;"
+                                  FontSize="14"
+                                  Foreground="{ThemeResource SystemFillColorSuccessBrush}"/>
+                        <TextBlock x:Uid="InstallState_Installed"
+                                   Style="{StaticResource CaptionTextBlockStyle}"
+                                   FontWeight="SemiBold"
+                                   Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock x:Name="UpdateAvailableStatus"
+                               x:Uid="InstallState_UpdateAvailable"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               VerticalAlignment="Center"
+                               Margin="0, 0, 4, 0"
+                               Visibility="Collapsed"/>
+                    <!-- A pressed button means the action is chosen: it is done when the chosen settings are applied -->
+                    <ToggleButton x:Name="InstallButton"
+                                  x:Uid="Button_Install"
+                                  Click="InstallButton_Click"
+                                  Visibility="Collapsed"/>
+                    <ToggleButton x:Name="UpdateButton"
+                                  x:Uid="Button_Update"
+                                  Click="InstallButton_Click"
+                                  Visibility="Collapsed"/>
+                    <!-- Only some packages can be uninstalled -->
+                    <Grid x:Name="UninstallPanel">
+                        <ToggleButton x:Name="UninstallButton"
+                                      x:Uid="Button_Uninstall"
+                                      Click="UninstallButton_Click"
+                                      Visibility="Collapsed"/>
+                    </Grid>
                 </StackPanel>
-                <TextBlock x:Name="UpdateAvailableStatus"
-                           x:Uid="InstallState_UpdateAvailable"
-                           Style="{StaticResource CaptionTextBlockStyle}"
-                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                           VerticalAlignment="Center"
-                           Margin="0, 0, 4, 0"
-                           Visibility="Collapsed"/>
-                <Button x:Name="InstallButton"
-                        x:Uid="Button_Install"
-                        Style="{StaticResource AccentButtonStyle}"
-                        Command="{x:Bind ViewModel.InstallModelInstall_Command}"
-                        CommandParameter="{Binding}"
-                        Visibility="Collapsed"/>
-                <Button x:Name="UpdateButton"
-                        x:Uid="Button_Update"
-                        Style="{StaticResource AccentButtonStyle}"
-                        Command="{x:Bind ViewModel.InstallModelInstall_Command}"
-                        CommandParameter="{Binding}"
-                        Visibility="Collapsed"/>
-                <!-- Only some packages can be uninstalled -->
-                <Grid x:Name="UninstallPanel">
-                    <Button x:Name="UninstallButton"
-                            x:Uid="Button_Uninstall"
-                            Command="{x:Bind ViewModel.InstallModelUninstall_Command}"
-                            CommandParameter="{Binding}"
-                            Visibility="Collapsed"/>
-                </Grid>
-            </StackPanel>
-        </toolkit:SettingsCard>
+            </toolkit:SettingsCard>
+            <!-- Marks a package that is going to be changed -->
+            <Border x:Name="ChangedOutline"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                    CornerRadius="{ThemeResource ControlCornerRadius}"
+                    IsHitTestVisible="False"
+                    Visibility="Collapsed"/>
+        </Grid>
         <!-- The reason why the buttons are unavailable -->
         <InfoBar Margin="0, 2, 0, 0"
                  Severity="Warning"

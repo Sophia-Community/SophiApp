@@ -19,6 +19,8 @@ namespace SophiApp.Helpers
         private int security = 0;
         private int system = 0;
         private int taskScheduler = 0;
+        private int uwp = 0;
+        private int wsl = 0;
 
         /// <inheritdoc/>
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -54,8 +56,33 @@ namespace SophiApp.Helpers
             {
                 gaming = value;
                 OnPropertyChanged(nameof(Gaming));
+                OnPropertyChanged(nameof(UwpAndGaming));
             }
         }
+
+        /// <summary>
+        /// Gets the counter of the UWP apps chosen to be uninstalled. They have a queue of their own,
+        /// so the counter is not reset when the chosen settings are applied or canceled.
+        /// </summary>
+        public int Uwp
+        {
+            get
+            {
+                return uwp;
+            }
+
+            private set
+            {
+                uwp = value;
+                OnPropertyChanged(nameof(Uwp));
+                OnPropertyChanged(nameof(UwpAndGaming));
+            }
+        }
+
+        /// <summary>
+        /// Gets the info badge counter of the menu item that has both the UWP apps and the gaming settings.
+        /// </summary>
+        public int UwpAndGaming => Uwp + Gaming;
 
         /// <summary>
         /// Gets personalization category info badge counter.
@@ -143,6 +170,23 @@ namespace SophiApp.Helpers
         }
 
         /// <summary>
+        /// Gets WSL category info badge counter.
+        /// </summary>
+        public int Wsl
+        {
+            get
+            {
+                return wsl;
+            }
+
+            private set
+            {
+                wsl = value;
+                OnPropertyChanged(nameof(Wsl));
+            }
+        }
+
+        /// <summary>
         /// Decrement the info badge counter using the <see cref="UICategoryTag"/>.
         /// </summary>
         /// <param name="tag">The UI category tag.</param>
@@ -154,8 +198,10 @@ namespace SophiApp.Helpers
                     ContextMenu--;
                     break;
                 case UICategoryTag.Gaming:
-                case UICategoryTag.UWP:
                     Gaming--;
+                    break;
+                case UICategoryTag.UWP:
+                    Uwp--;
                     break;
                 case UICategoryTag.Personalization:
                     Personalization--;
@@ -171,6 +217,9 @@ namespace SophiApp.Helpers
                     break;
                 case UICategoryTag.TaskScheduler:
                     TaskScheduler--;
+                    break;
+                case UICategoryTag.WSL:
+                    Wsl--;
                     break;
                 default:
                     break;
@@ -189,8 +238,10 @@ namespace SophiApp.Helpers
                     ContextMenu++;
                     break;
                 case UICategoryTag.Gaming:
-                case UICategoryTag.UWP:
                     Gaming++;
+                    break;
+                case UICategoryTag.UWP:
+                    Uwp++;
                     break;
                 case UICategoryTag.Personalization:
                     Personalization++;
@@ -207,13 +258,21 @@ namespace SophiApp.Helpers
                 case UICategoryTag.TaskScheduler:
                     TaskScheduler++;
                     break;
+                case UICategoryTag.WSL:
+                    Wsl++;
+                    break;
                 default:
                     break;
             }
         }
 
         /// <summary>
-        /// Reset all info badge counter values to 0.
+        /// Reset the counter of the UWP apps chosen to be uninstalled to 0.
+        /// </summary>
+        public void ResetUwp() => Uwp = 0;
+
+        /// <summary>
+        /// Reset the info badge counters of the settings to 0. The counter of the UWP apps is kept: the apps are not applied with the settings.
         /// </summary>
         public void ResetAll()
         {
@@ -224,6 +283,7 @@ namespace SophiApp.Helpers
             Security = 0;
             System = 0;
             TaskScheduler = 0;
+            Wsl = 0;
         }
 
         private void OnPropertyChanged([CallerMemberName] string? name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

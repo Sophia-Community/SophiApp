@@ -13,6 +13,11 @@ namespace SophiApp.Contracts.Services
     public interface IGroupPolicyService
     {
         /// <summary>
+        /// Gets a value indicating whether Windows has the Local Group Policy Editor snap-in (gpedit.msc). Windows Home edition does not.
+        /// </summary>
+        bool EditorExists { get; }
+
+        /// <summary>
         /// Forget the policy changes that were not written yet, and delete the "%TEMP%\LGPO.txt" file left by the previous versions of the app.
         /// </summary>
         void DeleteLGPOConfig();
@@ -70,6 +75,12 @@ namespace SophiApp.Contracts.Services
         /// <param name="name">Policy value name.</param>
         /// <param name="scopes">Policy scopes.</param>
         void ClearPolicyCache(string path, string name, params LGPOScope[] scopes);
+
+        /// <summary>
+        /// Find the registry values that belong to policies, even set by hand, and add them to the policies,
+        /// so the Local Group Policy Editor shows them. The changes are written to the Registry.pol files by <see cref="UpdatePolicy"/>.
+        /// </summary>
+        void AddRegistryPolicies();
 
         /// <summary>
         /// Write the changed policies to "%SystemRoot%\System32\GroupPolicy\Machine\Registry.pol" and "%SystemRoot%\System32\GroupPolicy\User\Registry.pol" files.

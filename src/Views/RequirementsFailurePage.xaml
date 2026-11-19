@@ -87,7 +87,8 @@
                 </StackPanel>
                 <StackPanel x:Name="HostsEntriesFoundPanel"
                             Style="{StaticResource RequirementsResultPanelStyle}">
-                    <TextBlock x:Uid="OsRequirements_HostsEntriesFound_1"
+                    <TextBlock x:Name="HostsEntriesFoundText"
+                               x:Uid="OsRequirements_HostsEntriesFound_1"
                                Style="{StaticResource RequirementsFailurePageTextStyle}"/>
                     <TextBlock x:Uid="OsRequirements_HostsEntriesFound_2"
                                Style="{StaticResource RequirementsFailurePageTextStyle}"/>

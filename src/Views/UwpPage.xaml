@@ -18,9 +18,6 @@
     <ScrollView>
         <StackPanel Margin="{StaticResource UIControlsPageRightMargin}"
                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Uid="Page_UWP" Style="{StaticResource PageTitleTextStyle}"/>
-            </StackPanel>
             <Grid x:Name="UwpAppsNotFoundGrid">
                 <InfoBar x:Uid="UwpPage_UwpAppsNotFound"
                          IsOpen="True"
@@ -35,18 +32,41 @@
                              IsClosable="False"
                              Severity="Informational"
                              Margin="0, 0, 0, 10"/>
-                    <toolkit:SettingsCard x:Uid="UwpPage_ForAllUsers"
-                                          MinHeight="{StaticResource SettingsCardMinHeight}"
-                                          Padding="{StaticResource SettingsCardPadding}"
-                                          Margin="0, 0, 0, 10">
-                        <ToggleSwitch IsOn="{x:Bind ViewModel.UwpForAllUsersState, Mode=OneWay}">
-                            <interaction:Interaction.Behaviors>
-                                <interaction:EventTriggerBehavior EventName="Toggled">
-                                    <interaction:InvokeCommandAction Command="{x:Bind ViewModel.UwpForAllUsersClicked_Command}"/>
-                                </interaction:EventTriggerBehavior>
-                            </interaction:Interaction.Behaviors>
-                        </ToggleSwitch>
-                    </toolkit:SettingsCard>
+                    <!-- The apps are uninstalled right from this page: they have a queue of their own, apart from the settings -->
+                    <Grid ColumnSpacing="8"
+                          Margin="0, 0, 0, 10">
+                        <Grid.Resources>
+                            <!-- Two cards stand in one row, so each is half as wide as usual. They keep the control on the header line until they are really narrow -->
+                            <x:Double x:Key="SettingsCardWrapThreshold">320</x:Double>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <toolkit:SettingsCard x:Uid="UwpPage_ForAllUsers"
+                                              Grid.Column="0"
+                                              VerticalAlignment="Stretch"
+                                              MinHeight="{StaticResource SettingsCardMinHeight}"
+                                              Padding="{StaticResource SettingsCardPadding}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.UwpForAllUsersState, Mode=OneWay}">
+                                <interaction:Interaction.Behaviors>
+                                    <interaction:EventTriggerBehavior EventName="Toggled">
+                                        <interaction:InvokeCommandAction Command="{x:Bind ViewModel.UwpForAllUsersClicked_Command}"/>
+                                    </interaction:EventTriggerBehavior>
+                                </interaction:Interaction.Behaviors>
+                            </ToggleSwitch>
+                        </toolkit:SettingsCard>
+                        <toolkit:SettingsCard Grid.Column="1"
+                                              VerticalAlignment="Stretch"
+                                              Header="{x:Bind views:UwpPage.GetChosenAppsText(ViewModel.UwpAppsToUninstall.Count), Mode=OneWay}"
+                                              MinHeight="{StaticResource SettingsCardMinHeight}"
+                                              Padding="{StaticResource SettingsCardPadding}">
+                            <Button x:Uid="Button_Uninstall"
+                                    Style="{StaticResource AccentButtonStyle}"
+                                    IsEnabled="{x:Bind views:UwpPage.HasChosenApps(ViewModel.UwpAppsToUninstall.Count), Mode=OneWay}"
+                                    Command="{x:Bind ViewModel.UwpAppsUninstall_Command}"/>
+                        </toolkit:SettingsCard>
+                    </Grid>
                     <ItemsRepeater ItemsSource="{x:Bind ViewModel.UwpAppsModels, Mode=OneWay}"
                                    VerticalCacheLength="{x:Bind ViewModel.UwpAppsModels.Count, Mode=OneWay}"
                                    HorizontalAlignment="Left"
@@ -68,9 +88,6 @@
                     </ItemsRepeater>
                 </StackPanel>
             </Grid>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Uid="Page_UWP_Gaming" Style="{StaticResource PageTitleTextStyle}"/>
-            </StackPanel>
             <ItemsRepeater ItemsSource="{Binding ElementName=PageUwp, Path=GamingModels}"
                            ItemTemplate="{StaticResource SettingTemplateSelector}"
                            VerticalCacheLength="{Binding ElementName=PageUwp, Path=GamingModels.Count}"

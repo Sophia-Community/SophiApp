@@ -160,6 +160,13 @@ namespace SophiApp.Contracts.Services
             where T : struct;
 
         /// <summary>
+        /// Write information about changes applicable model text parameter in the log.
+        /// </summary>
+        /// <param name="name">Model name.</param>
+        /// <param name="value">Parameter value.</param>
+        void LogApplicableModelChanged(string name, string value);
+
+        /// <summary>
         /// Write information about adding a model to the applied collection in the log.
         /// </summary>
         /// <param name="name">Added model name.</param>
@@ -173,6 +180,13 @@ namespace SophiApp.Contracts.Services
         /// <param name="parameter">Parameter used by the model.</param>
         void LogApplicableModelAdded<T>(string name, T parameter)
             where T : struct;
+
+        /// <summary>
+        /// Write information about adding a model with a text parameter to the applied collection in the log.
+        /// </summary>
+        /// <param name="name">Added model name.</param>
+        /// <param name="parameter">Parameter used by the model.</param>
+        void LogApplicableModelAdded(string name, string parameter);
 
         /// <summary>
         /// Write information about state a "For all users" checkbox in the UWP page.
@@ -257,6 +271,14 @@ namespace SophiApp.Contracts.Services
         void LogPolicyUpdateException(Exception exception);
 
         /// <summary>
+        /// Logs a registry value that belongs to a policy and is added to the policies.
+        /// </summary>
+        /// <param name="key">Registry key.</param>
+        /// <param name="name">Registry value name.</param>
+        /// <param name="value">Registry value.</param>
+        void LogRegistryPolicyFound(string key, string name, string value);
+
+        /// <summary>
         /// Handles occur exception of the Windows component check.
         /// </summary>
         /// <param name="component">The component that was being checked.</param>
@@ -287,6 +309,14 @@ namespace SophiApp.Contracts.Services
             where T : struct;
 
         /// <summary>
+        /// Handles an exception when accessing to set UI model state with a text parameter.
+        /// </summary>
+        /// <param name="exception">Represents errors that occur during app executing.</param>
+        /// <param name="name">Model name.</param>
+        /// <param name="parameter">Model parameter.</param>
+        void LogModelSetStateException(Exception exception, string name, string parameter);
+
+        /// <summary>
         /// Write the text shown under a setting: why it is unavailable, why it could not be applied, or a notice.
         /// </summary>
         /// <param name="name">Model name.</param>
@@ -298,5 +328,12 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="text">The text as the user sees it.</param>
         void LogUserNotice(string text);
+
+        /// <summary>
+        /// Write whether the window of Windows Search came up after File Explorer was restarted and had to be closed.
+        /// </summary>
+        /// <param name="closed">True if the search window was closed.</param>
+        /// <param name="seen">The foreground processes that were seen in turn.</param>
+        void LogSearchWindowWatch(bool closed, string seen);
     }
 }

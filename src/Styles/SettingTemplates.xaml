@@ -5,22 +5,27 @@
     xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:helpers="using:SophiApp.Helpers">
 
-    <!-- Picks the control for a setting: a card with a check box, a card with install buttons or an expander with options -->
+    <!-- Picks the control for a setting: a card with a check box, a card with install buttons or a card with a list of options -->
     <helpers:UIDataTemplateSelector x:Key="SettingTemplateSelector">
         <helpers:UIDataTemplateSelector.InstallTemplate>
             <DataTemplate>
                 <controls:SettingInstall/>
             </DataTemplate>
         </helpers:UIDataTemplateSelector.InstallTemplate>
+        <helpers:UIDataTemplateSelector.ActionTemplate>
+            <DataTemplate>
+                <controls:SettingAction/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.ActionTemplate>
         <helpers:UIDataTemplateSelector.CheckBoxTemplate>
             <DataTemplate>
                 <controls:SettingCheckBox/>
             </DataTemplate>
         </helpers:UIDataTemplateSelector.CheckBoxTemplate>
-        <helpers:UIDataTemplateSelector.RadioButtonsTemplate>
+        <helpers:UIDataTemplateSelector.ComboBoxTemplate>
             <DataTemplate>
-                <controls:SettingRadioButtons/>
+                <controls:SettingComboBox/>
             </DataTemplate>
-        </helpers:UIDataTemplateSelector.RadioButtonsTemplate>
+        </helpers:UIDataTemplateSelector.ComboBoxTemplate>
     </helpers:UIDataTemplateSelector>
 </ResourceDictionary>

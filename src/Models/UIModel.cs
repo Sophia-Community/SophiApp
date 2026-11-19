@@ -153,7 +153,9 @@ namespace SophiApp.Models
         /// Returns a value indicating whether a specified text occurs within this model.
         /// </summary>
         /// <param name="text">The text to seek.</param>
-        public virtual bool ContainsText(string text) => Title.Contains(text, StringComparison.CurrentCultureIgnoreCase);
+        public virtual bool ContainsText(string text)
+            => Title.Contains(text, StringComparison.CurrentCultureIgnoreCase)
+            || ExceptionText.Contains(text, StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Shows why the setting is unavailable.

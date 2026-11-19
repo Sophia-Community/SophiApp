@@ -4,6 +4,7 @@
 
 namespace SophiApp.Helpers;
 
+using System.Text;
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
@@ -15,6 +16,10 @@ using SophiApp.Contracts.Services;
 /// </summary>
 internal static class FormattedTextBlock
 {
+    // Invisible, forbids a line break where it stands
+    private const char WordJoiner = '⁠';
+    private const char NoBreakSpace = ' ';
+
     // Both fonts come with Windows, the second one is used if the first is removed
     private static readonly FontFamily CodeFont = new("Cascadia Mono, Consolas");
 
@@ -32,7 +37,7 @@ internal static class FormattedTextBlock
             block.Inlines.Add(part.Kind switch
             {
                 FormattedTextPartKind.Bold => new Run { Text = part.Text, FontWeight = FontWeights.SemiBold },
-                FormattedTextPartKind.Code => new Run { Text = part.Text, FontFamily = CodeFont },
+                FormattedTextPartKind.Code => new Run { Text = KeepOnOneLine(part.Text), FontFamily = CodeFont },
                 FormattedTextPartKind.Link => CreateLink(part),
                 FormattedTextPartKind.LineBreak => new LineBreak(),
                 _ => new Run { Text = part.Text },
@@ -40,10 +45,34 @@ internal static class FormattedTextBlock
         }
     }
 
+    /// <summary>
+    /// Makes a path, a command or a link stay on one line: a line can be broken after a space, a percent sign or a backslash,
+    /// and a path or a link cut in two is hard to read.
+    /// </summary>
+    private static string KeepOnOneLine(string text)
+    {
+        var result = new StringBuilder(text.Length * 2);
+
+        for (var i = 0; i < text.Length; i++)
+        {
+            var symbol = text[i] == ' ' ? NoBreakSpace : text[i];
+
+            // Letters and digits are not parted anyway, and a screen reader gets whole words
+            if (i > 0 && !(char.IsLetterOrDigit(text[i - 1]) && char.IsLetterOrDigit(text[i])))
+            {
+                result.Append(WordJoiner);
+            }
+
+            result.Append(symbol);
+        }
+
+        return result.ToString();
+    }
+
     private static Hyperlink CreateLink(FormattedTextPart part)
     {
         var link = new Hyperlink();
-        link.Inlines.Add(new Run { Text = part.Text });
+        link.Inlines.Add(new Run { Text = KeepOnOneLine(part.Text) });
 
         // The address is opened by the app itself: it runs elevated, and the browser must not
         link.Click += (_, _) => App.GetService<IHttpService>().OpenUrl(part.Url);

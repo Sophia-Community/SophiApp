@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:helpers="using:SophiApp.Helpers"
     mc:Ignorable="d">
 
     <StackPanel>
@@ -22,7 +23,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel.ContextFlyout>
-            <CommandBarFlyout>
+            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
                 <CommandBarFlyout.SecondaryCommands>
                     <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
                                   Icon="Copy"
@@ -52,7 +53,7 @@
                 <CheckBox x:Name="StateCheckBox"
                           AutomationProperties.Name="{Binding Title}"
                           MinWidth="0"
-                          IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                          helpers:CheckBoxHelper.IsChecked="{Binding IsChecked, Mode=TwoWay}"
                           Command="{x:Bind ViewModel.UIModelClicked_Command}"
                           CommandParameter="{Binding}"/>
             </toolkit:SettingsCard>

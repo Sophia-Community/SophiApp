@@ -39,6 +39,21 @@ namespace SophiApp.Helpers
         RadioButtonsGroup4,
 
         /// <summary>
+        /// An action without a state: it is chosen with a button and done when the chosen settings are applied.
+        /// </summary>
+        Action,
+
+        /// <summary>
+        /// A choice of one item from a list that is known only when the app runs.
+        /// </summary>
+        Choice,
+
+        /// <summary>
+        /// A choice of any number of options with icons, none of which can be selected.
+        /// </summary>
+        IconRadioButtons,
+
+        /// <summary>
         /// A package that is installed or updated with a button.
         /// </summary>
         Install,

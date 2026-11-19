@@ -408,42 +408,10 @@
         "Windows11": "True"
     },
     {
-        "Name": "StartAppsView",
-        "Type": "RadioButtonsGroup3",
+        "Name": "UnpinAllStartTiles",
+        "Type": "Action",
         "Tag": "Personalization",
         "ViewId": 236,
-        "Windows11LTSC": "False",
-        "Windows11": "True"
-    },
-    {
-        "Name": "MostUsedStartApps",
-        "Type": "CheckBox",
-        "Tag": "Personalization",
-        "ViewId": 237,
-        "Windows11LTSC": "True",
-        "Windows11": "True"
-    },
-    {
-        "Name": "StartRecommendedSection",
-        "Type": "CheckBox",
-        "Tag": "Personalization",
-        "ViewId": 238,
-        "Windows11LTSC": "True",
-        "Windows11": "True"
-    },
-    {
-        "Name": "StartRecommendationsTips",
-        "Type": "CheckBox",
-        "Tag": "Personalization",
-        "ViewId": 239,
-        "Windows11LTSC": "True",
-        "Windows11": "True"
-    },
-    {
-        "Name": "StartAccountNotifications",
-        "Type": "CheckBox",
-        "Tag": "Personalization",
-        "ViewId": 240,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
@@ -451,9 +419,49 @@
         "Name": "StartLayout",
         "Type": "RadioButtonsGroup3",
         "Tag": "Personalization",
-        "ViewId": 241,
+        "ViewId": 237,
         "Windows11LTSC": "True",
         "Windows11": "False"
+    },
+    {
+        "Name": "StartAppsView",
+        "Type": "RadioButtonsGroup3",
+        "Tag": "Personalization",
+        "ViewId": 238,
+        "Windows11LTSC": "False",
+        "Windows11": "True"
+    },
+    {
+        "Name": "MostUsedStartApps",
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 239,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "StartRecommendedSection",
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 240,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "StartRecommendationsTips",
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 241,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "StartAccountNotifications",
+        "Type": "CheckBox",
+        "Tag": "Personalization",
+        "ViewId": 242,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
     },
     {
         "Name": "OneDrive",
@@ -681,29 +689,11 @@
         "Windows11": "True"
     },
     {
-        "Name": "InstallDotNetRuntime_10",
-        "Type": "Install",
-        "Tag": "System",
-        "IconIndex": 3,
-        "ViewId": 328,
-        "Windows11LTSC": "True",
-        "Windows11": "True"
-    },
-    {
-        "Name": "InstallDotNetRuntime_11",
-        "Type": "Install",
-        "Tag": "System",
-        "IconIndex": 3,
-        "ViewId": 329,
-        "Windows11LTSC": "True",
-        "Windows11": "True"
-    },
-    {
         "Name": "InstallVisualC_x86",
         "Type": "Install",
         "Tag": "System",
         "IconIndex": 4,
-        "ViewId": 330,
+        "ViewId": 328,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
@@ -712,12 +702,30 @@
         "Type": "Install",
         "Tag": "System",
         "IconIndex": 4,
+        "ViewId": 329,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "InstallDotNetRuntime_10",
+        "Type": "Install",
+        "Tag": "System",
+        "IconIndex": 3,
+        "ViewId": 330,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "InstallDotNetRuntime_11",
+        "Type": "Install",
+        "Tag": "System",
+        "IconIndex": 3,
         "ViewId": 331,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },
     {
-        "Name": "RegistryBackup",
+        "Name": "PreventEdgeShortcutCreation",
         "Type": "CheckBox",
         "Tag": "System",
         "ViewId": 332,
@@ -725,11 +733,35 @@
         "Windows11": "True"
     },
     {
-        "Name": "RemoveWindowsAI",
+        "Name": "RegistryBackup",
         "Type": "CheckBox",
         "Tag": "System",
         "ViewId": 333,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "RemoveWindowsAI",
+        "Type": "CheckBox",
+        "Tag": "System",
+        "ViewId": 334,
         "Windows11LTSC": "False",
+        "Windows11": "True"
+    },
+    {
+        "Name": "ScanRegistryPolicies",
+        "Type": "Action",
+        "Tag": "System",
+        "ViewId": 335,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
+        "Name": "InstallWSL",
+        "Type": "Choice",
+        "Tag": "WSL",
+        "ViewId": 380,
+        "Windows11LTSC": "True",
         "Windows11": "True"
     },
     {
@@ -840,10 +872,18 @@
         "Windows11": "True"
     },
     {
+        "Name": "DNSoverHTTPS",
+        "Type": "IconRadioButtons",
+        "Tag": "Security",
+        "ViewId": 607,
+        "Windows11LTSC": "True",
+        "Windows11": "True"
+    },
+    {
         "Name": "LocalSecurityAuthority",
         "Type": "CheckBox",
         "Tag": "Security",
-        "ViewId": 607,
+        "ViewId": 608,
         "Windows11LTSC": "True",
         "Windows11": "True"
     },

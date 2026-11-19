@@ -179,6 +179,12 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogApplicableModelChanged(string name, string value)
+        {
+            Log.Information("The parameter value of customization {Name:l} has been changed to {Value} in applicable collection", name, value);
+        }
+
+        /// <inheritdoc/>
         public void LogApplicableModelRemoved(string name)
         {
             Log.Information("{Name:l} has been removed from applicable collection", name);
@@ -193,6 +199,12 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogApplicableModelAdded<T>(string name, T parameter)
             where T : struct
+        {
+            Log.Information("{Name:l} with parameter {Parameter} has been added to applicable customization collection", name, parameter);
+        }
+
+        /// <inheritdoc/>
+        public void LogApplicableModelAdded(string name, string parameter)
         {
             Log.Information("{Name:l} with parameter {Parameter} has been added to applicable customization collection", name, parameter);
         }
@@ -273,6 +285,12 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogRegistryPolicyFound(string key, string name, string value)
+        {
+            Log.Information("Registry policy found: {Key:l} | {Name:l} | {Value:l}", key, name, value);
+        }
+
+        /// <inheritdoc/>
         public void LogComponentStabilityException(string component, Exception exception)
         {
             Log.Error("[WRN] Windows component check failed on {Component}: {Message}", component, exception.Message);
@@ -298,6 +316,12 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogModelSetStateException(Exception exception, string name, string parameter)
+        {
+            Log.Error("[WRN] An error occurred while set state in {Model:l} with parameter {Parameter}: {Message}", name, parameter, exception.Message);
+        }
+
+        /// <inheritdoc/>
         public void LogModelNotice(string name, string text)
         {
             Log.Information("{Model:l} shows to the user: {Text}", name, text);
@@ -307,6 +331,12 @@ namespace SophiApp.Services
         public void LogUserNotice(string text)
         {
             Log.Information("Shown to the user: {Text}", text);
+        }
+
+        /// <inheritdoc/>
+        public void LogSearchWindowWatch(bool closed, string seen)
+        {
+            Log.Information("Windows Search window after File Explorer restart was closed: {Closed}. Foreground: {Seen}", closed, seen);
         }
     }
 }

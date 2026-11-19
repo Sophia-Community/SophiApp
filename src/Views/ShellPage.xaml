@@ -79,13 +79,25 @@
                         <FontIcon Glyph="&#xE770;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem x:Uid="NavigationItem_WSL"
+                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.WslViewModel"
+                                    IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
+                                    IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.Wsl, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.Wsl, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                    </NavigationViewItem.InfoBadge>
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE756;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_UWP_Gaming"
                                     helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.UwpViewModel"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.Gaming, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.Gaming, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.UwpAndGaming, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.UwpAndGaming, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE7FC;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>

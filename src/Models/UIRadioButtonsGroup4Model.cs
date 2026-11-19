@@ -144,6 +144,8 @@ namespace SophiApp.Models
 
         /// <inheritdoc/>
         public override bool ContainsText(string text)
-            => base.ContainsText(text) || FormattedText.ToPlainText(Description).Contains(text, StringComparison.CurrentCultureIgnoreCase);
+            => base.ContainsText(text)
+            || FormattedText.ToPlainText(Description).Contains(text, StringComparison.CurrentCultureIgnoreCase)
+            || new[] { Title_1, Title_2, Title_3, Title_4 }.Any(option => option.Contains(text, StringComparison.CurrentCultureIgnoreCase));
     }
 }

@@ -4,11 +4,12 @@
 
 namespace SophiApp.Models
 {
+    using System.Globalization;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A package that is installed or updated right away with a button. Some packages can be uninstalled too.
+    /// A package that is installed or updated when the chosen settings are applied. Some packages can be uninstalled too.
     /// </summary>
     public class UIInstallModel : UIModel
     {
@@ -16,6 +17,7 @@ namespace SophiApp.Models
         private readonly Func<InstallState> accessor;
         private readonly Action<bool> mutator;
         private InstallState state;
+        private bool installRequested;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UIInstallModel"/> class.
@@ -67,7 +69,32 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets or sets a value indicating whether <see cref="SetState"/> installs the package. It uninstalls the package otherwise.
         /// </summary>
-        public bool InstallRequested { get; set; }
+        public bool InstallRequested
+        {
+            get
+            {
+                return installRequested;
+            }
+
+            set
+            {
+                installRequested = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets what <see cref="SetState"/> is going to do, for the status line: "Installing OneDrive".
+        /// </summary>
+        public string ActionTitle
+        {
+            get
+            {
+                var installKey = State == InstallState.UpdateAvailable ? "Panel_Install_Updating" : "Panel_Install_Installing";
+                var key = InstallRequested ? installKey : "Panel_Install_Uninstalling";
+                return string.Format(CultureInfo.CurrentCulture, key.GetLocalized(), Title);
+            }
+        }
 
         /// <summary>
         /// Gets the package state.

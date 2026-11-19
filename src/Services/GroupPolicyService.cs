@@ -1,9 +1,10 @@
-﻿// <copyright file="GroupPolicyService.cs" company="Team Sophia">
+// <copyright file="GroupPolicyService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
 namespace SophiApp.Services
 {
+    using System.Globalization;
     using Microsoft.Win32;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
@@ -20,9 +21,46 @@ namespace SophiApp.Services
         private static readonly string UserPolicyFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\User\\Registry.pol");
         private static readonly string GptIniFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "GroupPolicy\\gpt.ini");
 
+        private static readonly string PolicyTemplatesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "PolicyDefinitions");
+
         // A leftover of the previous versions of the app
         private static readonly string LegacyLgpoSettings = Path.Combine(Path.GetTempPath(), "LGPO.txt");
+
+        // The policy roots, and an ordinary key that has a setting which is also set as a policy (long paths).
+        // Other ordinary settings from the templates exist by default, and they would turn into policies
+        private static readonly (RegistryKey Hive, LGPOScope Scope, string Path)[] PolicyRoots =
+        [
+            (Registry.LocalMachine, LGPOScope.Computer, "SOFTWARE\\Policies"),
+            (Registry.LocalMachine, LGPOScope.Computer, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies"),
+            (Registry.LocalMachine, LGPOScope.Computer, "SYSTEM\\CurrentControlSet\\Policies"),
+            (Registry.LocalMachine, LGPOScope.Computer, "SYSTEM\\CurrentControlSet\\Control\\FileSystem"),
+            (Registry.CurrentUser, LGPOScope.User, "Software\\Policies"),
+            (Registry.CurrentUser, LGPOScope.User, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies"),
+        ];
+
+        // The values written by Windows or apps, not by policies
+        private static readonly (LGPOScope Scope, string Path, string Name, string Value)[] NotPolicies =
+        [
+            // Windows default
+            (LGPOScope.User, "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoDriveTypeAutoRun", "145"),
+
+            // Windows default
+            (LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator", "UseGlobalDNS", "1"),
+
+            // Written by Windows during TPM provisioning
+            (LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\TPM", "OSManagedAuthLevel", "5"),
+
+            // Microsoft Edge "IE to Edge" browser helper object
+            (LGPOScope.Computer, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Ext\\CLSID", "{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}", "1"),
+
+            // LongPathsEnabled exists by default, and only the turned on policy is taken
+            (LGPOScope.Computer, "SYSTEM\\CurrentControlSet\\Control\\FileSystem", "LongPathsEnabled", "0"),
+        ];
+
         private static Dictionary<LGPOScope, List<RegistryPolicy.Entry>>? policies;
+
+        /// <inheritdoc/>
+        public bool EditorExists => GpeditExists;
 
         /// <inheritdoc/>
         public void DeleteLGPOConfig()
@@ -97,6 +135,22 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void AddRegistryPolicies()
+        {
+            if (!GpeditExists)
+            {
+                return;
+            }
+
+            var templates = AdmxPolicies.Read(PolicyTemplatesFolder);
+
+            foreach (var (hive, scope, path) in PolicyRoots)
+            {
+                AddKeyPolicies(hive, scope, path, templates);
+            }
+        }
+
+        /// <inheritdoc/>
         public void UpdatePolicy()
         {
             lock (PoliciesLock)
@@ -131,6 +185,15 @@ namespace SophiApp.Services
                 }
             }
         }
+
+        // Registry.pol has only these types
+        private static string? GetPolicyType(RegistryValueKind kind) => kind switch
+        {
+            RegistryValueKind.DWord => "DWORD",
+            RegistryValueKind.ExpandString => "EXSZ",
+            RegistryValueKind.String => "SZ",
+            _ => null,
+        };
 
         private static void ResetPolicies()
         {
@@ -173,6 +236,78 @@ namespace SophiApp.Services
             }
 
             return policies.TryGetValue(scope, out entries!);
+        }
+
+        /// <summary>
+        /// Adds the values of a registry key and of all its subkeys that belong to policies.
+        /// </summary>
+        private void AddKeyPolicies(RegistryKey hive, LGPOScope scope, string path, AdmxPolicies templates)
+        {
+            RegistryKey? key;
+
+            try
+            {
+                key = hive.OpenSubKey(path);
+            }
+            catch (Exception ex) when (ex is System.Security.SecurityException or UnauthorizedAccessException)
+            {
+                // A key that cannot be opened is skipped
+                return;
+            }
+
+            if (key is null)
+            {
+                return;
+            }
+
+            using (key)
+            {
+                if (templates.HasKey(scope, path))
+                {
+                    foreach (var name in key.GetValueNames())
+                    {
+                        AddValuePolicy(key, scope, path, name, templates);
+                    }
+                }
+
+                foreach (var subKey in key.GetSubKeyNames())
+                {
+                    AddKeyPolicies(hive, scope, $"{path}\\{subKey}", templates);
+                }
+            }
+        }
+
+        private void AddValuePolicy(RegistryKey key, LGPOScope scope, string path, string name, AdmxPolicies templates)
+        {
+            // The default value of a key has no name
+            if (name.Length == 0 || !templates.Contains(scope, path, name))
+            {
+                return;
+            }
+
+            // The value is read as is, without expanding the environment variables in it
+            var data = key.GetValue(name, null, RegistryValueOptions.DoNotExpandEnvironmentNames);
+
+            if (data is null || GetPolicyType(key.GetValueKind(name)) is not string type)
+            {
+                return;
+            }
+
+            // A DWORD higher than 0x7FFFFFFF is read as a negative number
+            var value = data is int number ? unchecked((uint)number).ToString(CultureInfo.InvariantCulture) : data.ToString() ?? string.Empty;
+
+            var isNotPolicy = NotPolicies.Any(item => item.Scope == scope
+                && item.Path.Equals(path, StringComparison.OrdinalIgnoreCase)
+                && item.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+                && item.Value.Equals(value, StringComparison.OrdinalIgnoreCase));
+
+            if (isNotPolicy)
+            {
+                return;
+            }
+
+            App.Logger.LogRegistryPolicyFound(key.Name, name, value);
+            ClearPolicyCache(scope, path, name, type, value);
         }
     }
 }

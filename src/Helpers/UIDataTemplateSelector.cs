@@ -17,21 +17,27 @@ namespace SophiApp.Helpers
         public DataTemplate CheckBoxTemplate { get; set; } = new();
 
         /// <summary>
-        /// Gets or sets the template for radio button groups of any size.
+        /// Gets or sets the template for the choices of one option out of any number.
         /// </summary>
-        public DataTemplate RadioButtonsTemplate { get; set; } = new();
+        public DataTemplate ComboBoxTemplate { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the template for <see cref="UIInstallModel"/>.
         /// </summary>
         public DataTemplate InstallTemplate { get; set; } = new();
 
+        /// <summary>
+        /// Gets or sets the template for <see cref="UIActionModel"/>.
+        /// </summary>
+        public DataTemplate ActionTemplate { get; set; } = new();
+
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item) => item switch
         {
             UICheckBoxModel or UIIconCheckBoxModel => CheckBoxTemplate,
+            UIActionModel => ActionTemplate,
             UIInstallModel => InstallTemplate,
-            UIRadioButtonsGroup2Model or UIRadioButtonsGroup3Model or UIRadioButtonsGroup4Model => RadioButtonsTemplate,
+            UIRadioButtonsGroup2Model or UIRadioButtonsGroup3Model or UIRadioButtonsGroup4Model or UIIconRadioButtonsModel or UIChoiceModel => ComboBoxTemplate,
             _ => throw new TypeAccessException($"Attempt to access method '{nameof(SelectTemplateCore)}' to type '{item.GetType()}' failed"),
         };
     }

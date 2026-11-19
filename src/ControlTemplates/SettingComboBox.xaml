@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.SettingComboBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:helpers="using:SophiApp.Helpers"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <!-- An option: an icon, if there is one, the title and a second line, if there is one -->
+        <DataTemplate x:Key="OptionTemplate"
+                      x:DataType="helpers:SettingOption">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="12">
+                <Image Source="{x:Bind Icon}"
+                       Width="{x:Bind IconWidth}"
+                       Height="26"
+                       Visibility="{x:Bind IconVisibility}"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="{x:Bind Title}"/>
+                    <TextBlock Text="{x:Bind Subtitle}"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               Opacity="0.7"
+                               Visibility="{x:Bind SubtitleVisibility}"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ChangeStates">
+                <VisualState x:Name="Changed">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding IsSelected}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChangedOutline.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel.ContextFlyout>
+            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
+                <CommandBarFlyout.SecondaryCommands>
+                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
+                                  Icon="Copy"
+                                  Click="CopyTitle_Click"/>
+                    <AppBarButton x:Name="CopyDescriptionButton"
+                                  x:Uid="UIModel_ContextMenu_CopyDescription"
+                                  Icon="Copy"
+                                  Click="CopyDescription_Click"/>
+                </CommandBarFlyout.SecondaryCommands>
+            </CommandBarFlyout>
+        </StackPanel.ContextFlyout>
+        <Grid>
+            <toolkit:SettingsCard x:Name="Card"
+                                  AutomationProperties.Name="{Binding Title}"
+                                  MinHeight="{StaticResource SettingsCardMinHeight}"
+                                  Padding="{StaticResource SettingsCardPadding}"
+                                  IsEnabled="{Binding IsEnabled}">
+                <toolkit:SettingsCard.Header>
+                    <TextBlock Text="{Binding Title}"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsCard.Header>
+                <toolkit:SettingsCard.Description>
+                    <TextBlock x:Name="DescriptionText"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsCard.Description>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8">
+                    <!-- Returns to the Windows default. A pressed button means the reset is chosen: it is done when the chosen settings are applied.
+                         Only a choice that has such a state shows the button -->
+                    <ToggleButton x:Name="ResetButton"
+                                  x:Uid="Button_ResetToDefault"
+                                  Click="ResetButton_Click"
+                                  Visibility="Collapsed"/>
+                    <!-- The lists have the same least width, so they stand in a column on a page -->
+                    <helpers:NoWheelComboBox x:Name="OptionsBox"
+                                             x:Uid="ComboBox_NoOption"
+                                             AutomationProperties.Name="{Binding Title}"
+                                             MinWidth="248"
+                                             SelectionChanged="OptionsBox_SelectionChanged"
+                                             DropDownOpened="OptionsBox_DropDownOpened"/>
+                </StackPanel>
+            </toolkit:SettingsCard>
+            <!-- Marks a setting that is going to be changed -->
+            <Border x:Name="ChangedOutline"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                    CornerRadius="{ThemeResource ControlCornerRadius}"
+                    IsHitTestVisible="False"
+                    Visibility="Collapsed"/>
+        </Grid>
+        <!-- The reason why the setting is unavailable or could not be applied -->
+        <InfoBar Margin="0, 2, 0, 0"
+                 Severity="Warning"
+                 IsClosable="False"
+                 IsOpen="{Binding ExceptionTextIsVisible}"
+                 Message="{Binding ExceptionText}"/>
+    </StackPanel>
+</UserControl>

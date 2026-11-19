@@ -1,0 +1,290 @@
+// <copyright file="SettingComboBox.xaml.cs" company="Team Sophia">
+// Copyright (c) Team Sophia. All rights reserved.
+// </copyright>
+
+namespace SophiApp.ControlTemplates
+{
+    using CommunityToolkit.WinUI.Controls;
+    using Microsoft.UI.Xaml;
+    using Microsoft.UI.Xaml.Automation;
+    using Microsoft.UI.Xaml.Controls;
+    using Microsoft.UI.Xaml.Data;
+    using Microsoft.UI.Xaml.Media.Imaging;
+    using SophiApp.Helpers;
+    using SophiApp.Models;
+    using SophiApp.ViewModels;
+
+    /// <summary>
+    /// A settings card with a drop-down list of options. Shows the choices of one option out of any number.
+    /// </summary>
+    public sealed partial class SettingComboBox : UserControl
+    {
+        /// <summary>
+        /// Identifies the <see cref="SelectedId"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty SelectedIdProperty = DependencyProperty.Register(
+            nameof(SelectedId),
+            typeof(string),
+            typeof(SettingComboBox),
+            new PropertyMetadata(string.Empty, (sender, _) => ((SettingComboBox)sender).SelectOption()));
+
+        /// <summary>
+        /// Identifies the <see cref="ResetRequested"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ResetRequestedProperty = DependencyProperty.Register(
+            nameof(ResetRequested),
+            typeof(bool),
+            typeof(SettingComboBox),
+            new PropertyMetadata(false, (sender, args) => ((SettingComboBox)sender).ResetButton.IsChecked = (bool)args.NewValue));
+
+        /// <summary>
+        /// Identifies the <see cref="Choices"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ChoicesProperty = DependencyProperty.Register(
+            nameof(Choices),
+            typeof(object),
+            typeof(SettingComboBox),
+            new PropertyMetadata(null, (sender, args) => ((SettingComboBox)sender).OnChoicesChanged(args.NewValue)));
+
+        // The room for an option icon: wide for the logos that are wordmarks, and a square of the same height for the logos that are signs,
+        // so they all look the same size. The icon is drawn larger than it is shown, so it stays sharp at any display scale
+        private const double OptionIconWidth = 44;
+        private const double OptionIconHeight = 26;
+        private const double OptionIconSharpness = 4;
+
+        // The id of the state in which no option is selected
+        private static readonly string NoOptionId = UIIconRadioButtonsModel.NoOptionId.ToString();
+
+        private readonly List<ComboBoxItem> items = [];
+
+        // The items the list is built from, if they are known only when the app runs
+        private object? shownChoices;
+
+        // True while the list only repeats the model
+        private bool isFollowingModel;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingComboBox"/> class.
+        /// </summary>
+        public SettingComboBox()
+        {
+            ViewModel = App.GetService<ShellViewModel>();
+            InitializeComponent();
+            DataContextChanged += OnDataContextChanged;
+
+            // Follows the model when its state is read again
+            SetBinding(SelectedIdProperty, new Binding { Path = new PropertyPath("SelectedId") });
+            SetBinding(ResetRequestedProperty, new Binding { Path = new PropertyPath("ResetRequested") });
+
+            // A list that is known only when the app runs can change when the state is read again
+            SetBinding(ChoicesProperty, new Binding { Path = new PropertyPath("Choices") });
+
+            // While the app is busy the mouse is blocked by the page, and the keyboard is blocked here
+            PreviewKeyDown += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
+            PreviewKeyUp += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
+        }
+
+        /// <summary>
+        /// Gets the shell view model.
+        /// </summary>
+        public ShellViewModel ViewModel { get; }
+
+        /// <summary>
+        /// Gets or sets the id of the option selected in the model: its number starting from 1, or the id of a list item.
+        /// </summary>
+        public string SelectedId
+        {
+            get => (string)GetValue(SelectedIdProperty);
+            set => SetValue(SelectedIdProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the reset to the Windows default is chosen in the model.
+        /// </summary>
+        public bool ResetRequested
+        {
+            get => (bool)GetValue(ResetRequestedProperty);
+            set => SetValue(ResetRequestedProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the items of a list that is known only when the app runs.
+        /// </summary>
+        public object? Choices
+        {
+            get => GetValue(ChoicesProperty);
+            set => SetValue(ChoicesProperty, value);
+        }
+
+        private static string GetDescription(object? model) => model switch
+        {
+            UIChoiceModel choice => choice.Description,
+            UIRadioButtonsGroup2Model group => group.Description,
+            UIRadioButtonsGroup3Model group => group.Description,
+            UIRadioButtonsGroup4Model group => group.Description,
+            UIIconRadioButtonsModel group => group.Description,
+            _ => string.Empty,
+        };
+
+        private static string[] GetOptionTitles(object? model) => model switch
+        {
+            UIRadioButtonsGroup2Model group => [group.Title_1, group.Title_2],
+            UIRadioButtonsGroup3Model group => [group.Title_1, group.Title_2, group.Title_3],
+            UIRadioButtonsGroup4Model group => [group.Title_1, group.Title_2, group.Title_3, group.Title_4],
+            UIIconRadioButtonsModel group => [.. group.Options],
+            _ => [],
+        };
+
+        private static SvgImageSource? GetOptionIcon(Uri? icon, double width) => icon is null
+            ? null
+            : new SvgImageSource(icon) { RasterizePixelWidth = width * OptionIconSharpness, RasterizePixelHeight = OptionIconHeight * OptionIconSharpness };
+
+        private static IEnumerable<SettingOption> GetOptions(object? model)
+        {
+            if (model is UIChoiceModel choice)
+            {
+                var hasIcons = choice.Choices.Any(item => item.Icon is not null);
+
+                // The item that stands for "nothing is chosen" is shown in the closed list, where an empty room would look like an indent
+                return choice.Choices.Select(item => new SettingOption(item.Id, item.Title, GetOptionIcon(item.Icon, OptionIconHeight))
+                {
+                    IconWidth = OptionIconHeight,
+                    Subtitle = item.Subtitle,
+                    IsEnabled = item.IsEnabled,
+                    KeepsIconRoom = hasIcons && item.Id != UIChoiceModel.NoChoiceId,
+                });
+            }
+
+            // The id is the number of the option, starting from 1
+            var iconGroup = model as UIIconRadioButtonsModel;
+            return GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1), OptionIconWidth)) { IconWidth = OptionIconWidth });
+        }
+
+        private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        {
+            var description = GetDescription(args.NewValue);
+            var hasDescription = !string.IsNullOrEmpty(description);
+
+            CopyDescriptionButton.Visibility = hasDescription ? Visibility.Visible : Visibility.Collapsed;
+
+            // A screen reader reads the description after the title of the setting
+            AutomationProperties.SetHelpText(OptionsBox, FormattedText.ToPlainText(description));
+
+            if (hasDescription)
+            {
+                // A description can have line breaks, emphasized words and links
+                FormattedTextBlock.SetText(DescriptionText, description);
+                Card.Description = DescriptionText;
+            }
+            else
+            {
+                // An empty description would leave a blank line in the card
+                Card.ClearValue(SettingsCard.DescriptionProperty);
+            }
+
+            ResetButton.Visibility = args.NewValue is UIIconRadioButtonsModel ? Visibility.Visible : Visibility.Collapsed;
+            ShowOptions();
+        }
+
+        private void OnChoicesChanged(object? choices)
+        {
+            // A setting that has just been shown already has its list built from these items
+            if (!ReferenceEquals(choices, shownChoices))
+            {
+                ShowOptions();
+            }
+        }
+
+        private void ShowOptions()
+        {
+            var template = (DataTemplate)Resources["OptionTemplate"];
+            shownChoices = (DataContext as UIChoiceModel)?.Choices;
+
+            isFollowingModel = true;
+            OptionsBox.Items.Clear();
+            items.Clear();
+
+            // The options are list items of their own, so one that cannot be chosen is shown disabled
+            foreach (var option in GetOptions(DataContext))
+            {
+                // The option is kept in the tag too: the closed list takes the content of the selected item for itself
+                var item = new ComboBoxItem { Content = option, ContentTemplate = template, IsEnabled = option.IsEnabled, Tag = option };
+                items.Add(item);
+                OptionsBox.Items.Add(item);
+            }
+
+            isFollowingModel = false;
+            SelectOption();
+
+            // The closed list can stay blank for an item that was selected while the list was being built,
+            // so the selection is set once more when the list is ready
+            _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, SelectOption);
+        }
+
+        private void SelectOption()
+        {
+            // No option with such an id leaves the list empty
+            isFollowingModel = true;
+            OptionsBox.SelectedItem = null;
+            OptionsBox.SelectedItem = items.Find(item => (item.Content as SettingOption ?? item.Tag as SettingOption)?.Id == SelectedId);
+            isFollowingModel = false;
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is UIIconRadioButtonsModel group)
+            {
+                // The button pressed again takes the reset back, and the option that is set in Windows is shown again
+                group.ResetRequested = !group.ResetRequested;
+                group.SelectedId = group.ResetRequested ? NoOptionId : group.DefaultId.ToString();
+                ViewModel.IconRadioButtonsClicked_Command.Execute(group);
+            }
+
+            // A toggle button switches by itself when it is pressed; what it shows comes from the choice only
+            ResetButton.IsChecked = (DataContext as UIIconRadioButtonsModel)?.ResetRequested ?? false;
+        }
+
+        private void OptionsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Nothing to do if the selection only repeats the model
+            if (isFollowingModel || (OptionsBox.SelectedItem as ComboBoxItem)?.Tag is not SettingOption option || option.Id == SelectedId)
+            {
+                return;
+            }
+
+            switch (DataContext)
+            {
+                case UIRadioButtonsGroup2Model group:
+                    group.SelectedId = option.Id;
+                    ViewModel.RadioButtonsGroup2Clicked_Command.Execute(group);
+                    break;
+                case UIRadioButtonsGroup3Model group:
+                    group.SelectedId = option.Id;
+                    ViewModel.RadioButtonsGroup3Clicked_Command.Execute(group);
+                    break;
+                case UIRadioButtonsGroup4Model group:
+                    group.SelectedId = option.Id;
+                    ViewModel.RadioButtonsGroup4Clicked_Command.Execute(group);
+                    break;
+                case UIChoiceModel choice:
+                    choice.SelectedId = option.Id;
+                    ViewModel.ChoiceClicked_Command.Execute(choice);
+                    break;
+                case UIIconRadioButtonsModel group:
+                    // An option replaces the reset
+                    group.ResetRequested = false;
+                    group.SelectedId = option.Id;
+                    ViewModel.IconRadioButtonsClicked_Command.Execute(group);
+                    break;
+            }
+        }
+
+        private void OptionsBox_DropDownOpened(object? sender, object e) => PopupCursor.Reset();
+
+        private void CopyTitle_Click(object sender, RoutedEventArgs e)
+            => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Title);
+
+        private void CopyDescription_Click(object sender, RoutedEventArgs e)
+            => ContextMenuHelper.CopyToClipboard(FormattedText.ToPlainText(GetDescription(DataContext)));
+    }
+}

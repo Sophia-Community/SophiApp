@@ -24,6 +24,7 @@ namespace SophiApp.Customizations
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService DataService = App.GetService<ICommonDataService>();
         private static readonly ICursorsService CursorsService = App.GetService<ICursorsService>();
+        private static readonly IDnsService DnsService = App.GetService<IDnsService>();
         private static readonly IRedistributablePackageService RedistributablePackageService = App.GetService<IRedistributablePackageService>();
         private static readonly IFileService FileService = App.GetService<IFileService>();
         private static readonly IFirewallService FirewallService = App.GetService<IFirewallService>();
@@ -37,6 +38,7 @@ namespace SophiApp.Customizations
         private static readonly IRegistryService RegistryService = App.GetService<IRegistryService>();
         private static readonly IScheduledTaskService ScheduledTaskService = App.GetService<IScheduledTaskService>();
         private static readonly IUpdateService UpdateService = App.GetService<IUpdateService>();
+        private static readonly IWslService WslService = App.GetService<IWslService>();
 
         /// <summary>
         /// Set DiagTrack service state.
@@ -843,6 +845,45 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Unpin all Start tiles.
+        /// </summary>
+        /// <param name="enable">True to unpin the tiles. It is an action, so false does nothing.</param>
+        public static void UnpinAllStartTiles(bool enable)
+        {
+            if (!enable)
+            {
+                return;
+            }
+
+            // Remove all policies in order to make changes visible in UI
+            GroupPolicyService.DeleteRegistryValue("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMorePrograms", Registry.CurrentUser, Registry.LocalMachine);
+            GroupPolicyService.ClearPolicyCache("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoStartMenuMorePrograms", LGPOScope.User, LGPOScope.Computer);
+
+            if (StartMenuHelper.ThirdPartyMenuExists())
+            {
+                throw new CustomizationException(exceptionMessage: "A third-party Start Menu is installed", resourceKey: "UIModel_Exception_StartMenuInstalled");
+            }
+
+            // https://learn.microsoft.com/en-us/windows/configuration/start/layout
+            var emptyLayout = Path.Combine(Path.GetTempPath(), "Nopins.json");
+            File.WriteAllText(emptyLayout, "{\"pinnedList\":[]}");
+
+            try
+            {
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "ConfigureStartPins", 1, RegistryValueKind.DWord);
+                Registry.CurrentUser.CreateKeyAndSetValue("Software\\Policies\\Microsoft\\Windows\\Explorer", "ConfigureStartPinsJSON", emptyLayout, RegistryValueKind.ExpandString);
+
+                // The Start menu needs a moment to read the empty layout. The policy is removed right after, so the user can pin again
+                Thread.Sleep(3000);
+            }
+            finally
+            {
+                GroupPolicyService.DeleteRegistryValue(Registry.CurrentUser, "Software\\Policies\\Microsoft\\Windows\\Explorer", "ConfigureStartPins", "ConfigureStartPinsJSON");
+                File.Delete(emptyLayout);
+            }
+        }
+
+        /// <summary>
         /// Set Start all apps view state.
         /// </summary>
         /// <param name="state">Apps view state.</param>
@@ -1321,6 +1362,46 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Set desktop shortcut creation upon Microsoft Edge update.
+        /// </summary>
+        /// <param name="enable">True to prevent the shortcut creation for every installed channel of Microsoft Edge.</param>
+        public static void PreventEdgeShortcutCreation(bool enable)
+        {
+            if (!InstalledPrograms.Exists(EdgeShortcutPolicy.StableProgram))
+            {
+                throw new CustomizationException(exceptionMessage: "Microsoft Edge is not installed", resourceKey: "UIModel_Exception_PackageNotInstalled") { Arguments = [EdgeShortcutPolicy.StableProgram] };
+            }
+
+            // msedgeupdate.admx is not a default ADMX template
+            var templateExists = EdgeShortcutPolicy.TemplateExists;
+
+            foreach (var (program, valueName) in EdgeShortcutPolicy.Channels)
+            {
+                if (!enable)
+                {
+                    Registry.LocalMachine.DeleteSubKeyValue(EdgeShortcutPolicy.Key, valueName);
+
+                    if (templateExists)
+                    {
+                        GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, EdgeShortcutPolicy.Key, valueName);
+                    }
+
+                    continue;
+                }
+
+                if (InstalledPrograms.Exists(program))
+                {
+                    Registry.LocalMachine.CreateKeyAndSetValue(EdgeShortcutPolicy.Key, valueName, 0, RegistryValueKind.DWord);
+
+                    if (templateExists)
+                    {
+                        GroupPolicyService.ClearPolicyCache(scope: LGPOScope.Computer, path: EdgeShortcutPolicy.Key, name: valueName, type: "DWORD", value: "0");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Set registry backup state.
         /// </summary>
         /// <param name="enable">Registry backup state.</param>
@@ -1476,6 +1557,38 @@ namespace SophiApp.Customizations
             App.Status.SetStep("Panel_Step_WindowsFeature");
             _ = PowerShellService.Invoke("Disable-WindowsOptionalFeature -Online -FeatureName Recall -NoRestart");
             AppxPackagesService.RemovePackage("Microsoft.Copilot");
+        }
+
+        /// <summary>
+        /// Install Windows Subsystem for Linux (WSL) and a Linux distribution.
+        /// </summary>
+        /// <param name="distribution">The name of the distribution. An empty name does nothing.</param>
+        public static void InstallWSL(string distribution)
+        {
+            if (string.IsNullOrEmpty(distribution))
+            {
+                return;
+            }
+
+            WslService.Install(distribution);
+
+            // Receive updates for other Microsoft products: the Linux kernel is updated this way
+            UpdateService.RunMicrosoftProductsUpdate();
+
+            // Check for updates
+            _ = ProcessService.StartProcessByName(Path.Combine(Environment.SystemDirectory, "UsoClient.exe"), "StartInteractiveScan");
+        }
+
+        /// <summary>
+        /// Scan the registry and show all policies, even set by hand, in the Local Group Policy Editor.
+        /// </summary>
+        /// <param name="enable">True to scan. It is an action, so false does nothing.</param>
+        public static void ScanRegistryPolicies(bool enable)
+        {
+            if (enable)
+            {
+                GroupPolicyService.AddRegistryPolicies();
+            }
         }
 
         /// <summary>
@@ -1717,6 +1830,22 @@ namespace SophiApp.Customizations
         {
             App.Status.SetStep("Panel_Step_WindowsFeature");
             _ = PowerShellService.Invoke($"{(enable ? "Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart" : "Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart")}");
+        }
+
+        /// <summary>
+        /// Set the DNS-over-HTTPS provider.
+        /// </summary>
+        /// <param name="state">The number of the provider, starting from 1. 0 sets the default DNS servers of the network.</param>
+        public static void DNSoverHTTPS(int state)
+        {
+            // Remove all policies in order to make changes visible in UI
+            foreach (var policy in new[] { "DoHPolicy", "DohPolicySetting", "DotPolicySetting" })
+            {
+                GroupPolicyService.DeleteRegistryValue(Registry.LocalMachine, "SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient", policy);
+                GroupPolicyService.ClearPolicyCache(LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient", policy);
+            }
+
+            DnsService.SetProvider(state);
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace SophiApp.ControlTemplates
     using Microsoft.UI.Xaml.Controls;
 
     /// <summary>
-    /// The animated app logo shown while the app starts and when it cannot continue.
+    /// The animated app logo shown while the app starts, when it cannot continue and when the search finds nothing.
     /// </summary>
     public sealed partial class AnimatedLogo : UserControl
     {

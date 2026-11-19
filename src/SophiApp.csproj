@@ -125,6 +125,13 @@
     <Content Update="Assets\VisualC.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\DNSoverHTTPS_*.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\WSL_*.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+
     <Content Update="Assets\GitHub.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

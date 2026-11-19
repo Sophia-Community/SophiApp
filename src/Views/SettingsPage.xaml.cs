@@ -29,6 +29,9 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public SettingsViewModel ViewModel { get; }
 
+    // The list opens under the mouse as a separate window, like a menu
+    private void ThemeSelector_DropDownOpened(object? sender, object e) => PopupCursor.Reset();
+
     private void SettingsExpander_Loaded(object sender, RoutedEventArgs e)
         => SettingsExpanderHelper.ApplyHeaderPadding((SettingsExpander)sender);
 }
