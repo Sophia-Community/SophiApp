@@ -1,4 +1,4 @@
-﻿// <copyright file="IGroupPolicyService.cs" company="Team Sophia">
+// <copyright file="IGroupPolicyService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -75,6 +75,14 @@ namespace SophiApp.Contracts.Services
         /// <param name="name">Policy value name.</param>
         /// <param name="scopes">Policy scopes.</param>
         void ClearPolicyCache(string path, string name, params LGPOScope[] scopes);
+
+        /// <summary>
+        /// Remove several policy values of one key. The changes are written to the Registry.pol file by <see cref="UpdatePolicy"/>.
+        /// </summary>
+        /// <param name="scope">Policy scope.</param>
+        /// <param name="path">Policy path.</param>
+        /// <param name="names">Policy value names.</param>
+        void RemovePolicies(LGPOScope scope, string path, params string[] names);
 
         /// <summary>
         /// Find the registry values that belong to policies, even set by hand, and add them to the policies,

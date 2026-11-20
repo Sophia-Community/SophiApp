@@ -71,9 +71,10 @@ namespace SophiApp.Services
                 using var service = new ServiceController(name);
                 SetStartMode(service, mode);
             }
-            catch
+            catch (Exception ex)
             {
-                // Do nothing.
+                // The service is missing or cannot be changed: the app goes on
+                App.Logger.LogSkippedException($"Setting the {mode} start mode of the {name} service", ex);
             }
         }
 
@@ -89,9 +90,10 @@ namespace SophiApp.Services
                     service.Start();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Do nothing.
+                // The service is missing or cannot be started: the app goes on
+                App.Logger.LogSkippedException($"Starting the {name} service", ex);
             }
         }
 

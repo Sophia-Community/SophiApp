@@ -145,6 +145,7 @@ namespace SophiApp.Services
             catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is NetworkInformationException)
             {
                 // The adapters cannot be read: it is the same for the user as no connection
+                App.Logger.LogSkippedException("Reading the network adapters", ex);
             }
 
             return adapters.Count > 0

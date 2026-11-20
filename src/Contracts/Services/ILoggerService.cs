@@ -335,5 +335,12 @@ namespace SophiApp.Contracts.Services
         /// <param name="closed">True if the search window was closed.</param>
         /// <param name="seen">The foreground processes that were seen in turn.</param>
         void LogSearchWindowWatch(bool closed, string seen);
+
+        /// <summary>
+        /// Write an error that the app got over: the action failed, and the app went on without it.
+        /// </summary>
+        /// <param name="action">What the app was doing.</param>
+        /// <param name="exception">Represents errors that occur during app executing.</param>
+        void LogSkippedException(string action, Exception exception);
     }
 }

@@ -157,6 +157,7 @@ namespace SophiApp.Services
             catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
             {
                 // The cmdlets will be asked
+                App.Logger.LogSkippedException("Reading the power management of the network adapters from WMI", ex);
                 return null;
             }
         }
@@ -189,9 +190,10 @@ namespace SophiApp.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // WLAN profiles cannot be read
+                App.Logger.LogSkippedException("Reading the WLAN profiles", ex);
             }
 
             return null;

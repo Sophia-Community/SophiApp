@@ -28,9 +28,10 @@ namespace SophiApp.Services
                 result = Invoke(script, out var hadErrors);
                 return !hadErrors;
             }
-            catch (RuntimeException)
+            catch (RuntimeException ex)
             {
                 // Some errors stop the script and come as an exception, the others are only written to the error stream
+                App.Logger.LogSkippedException($"The cmdlet \"{script}\"", ex);
                 result = [];
                 return false;
             }

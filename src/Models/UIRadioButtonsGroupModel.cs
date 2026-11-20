@@ -1,4 +1,4 @@
-﻿// <copyright file="UIRadioButtonsGroup2Model.cs" company="Team Sophia">
+﻿// <copyright file="UIRadioButtonsGroupModel.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -6,36 +6,29 @@ namespace SophiApp.Models
 {
     using SophiApp.Helpers;
 
-    /// <inheritdoc/>
-    public class UIRadioButtonsGroup2Model : UIModel
+    /// <summary>
+    /// A choice of one option out of several. One of the options is always selected.
+    /// </summary>
+    public class UIRadioButtonsGroupModel : UIModel
     {
         private readonly Func<int> accessor;
         private readonly Action<int> mutator;
         private string selectedId = string.Empty;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UIRadioButtonsGroup2Model"/> class.
+        /// Initializes a new instance of the <see cref="UIRadioButtonsGroupModel"/> class.
         /// </summary>
         /// <param name="dto">Data transfer object for <see cref="UIModel"/>.</param>
         /// <param name="title">Model title.</param>
         /// <param name="description">Model description.</param>
-        /// <param name="title_1">First radio button title.</param>
-        /// <param name="title_2">Second radio button title.</param>
-        /// <param name="accessor">Method that sets the model state.</param>
+        /// <param name="options">Titles of the options.</param>
+        /// <param name="accessor">Method that returns the number of the selected option, starting from 1.</param>
         /// <param name="mutator">Method that changes Windows settings.</param>
-        public UIRadioButtonsGroup2Model(
-            UIModelDto dto,
-            string title,
-            string description,
-            string title_1,
-            string title_2,
-            Func<int> accessor,
-            Action<int> mutator)
+        public UIRadioButtonsGroupModel(UIModelDto dto, string title, string description, IReadOnlyList<string> options, Func<int> accessor, Action<int> mutator)
             : base(dto, title)
         {
             Description = description;
-            Title_1 = title_1;
-            Title_2 = title_2;
+            Options = options;
             this.accessor = accessor;
             this.mutator = mutator;
         }
@@ -43,7 +36,12 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets model description.
         /// </summary>
-        public string Description { get; init; }
+        public string Description { get; }
+
+        /// <summary>
+        /// Gets titles of the options.
+        /// </summary>
+        public IReadOnlyList<string> Options { get; }
 
         /// <summary>
         /// Gets <see cref="accessor"/> returned value.
@@ -69,16 +67,6 @@ namespace SophiApp.Models
                 }
             }
         }
-
-        /// <summary>
-        /// Gets first radio button title.
-        /// </summary>
-        public string Title_1 { get; init; }
-
-        /// <summary>
-        /// Gets second radio button title.
-        /// </summary>
-        public string Title_2 { get; init; }
 
         /// <inheritdoc/>
         public override void GetState()
@@ -130,6 +118,6 @@ namespace SophiApp.Models
         public override bool ContainsText(string text)
             => base.ContainsText(text)
             || FormattedText.ToPlainText(Description).Contains(text, StringComparison.CurrentCultureIgnoreCase)
-            || new[] { Title_1, Title_2 }.Any(option => option.Contains(text, StringComparison.CurrentCultureIgnoreCase));
+            || Options.Any(option => option.Contains(text, StringComparison.CurrentCultureIgnoreCase));
     }
 }

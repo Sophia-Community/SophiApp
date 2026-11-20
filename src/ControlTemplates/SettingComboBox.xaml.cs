@@ -10,6 +10,8 @@ namespace SophiApp.ControlTemplates
     using Microsoft.UI.Xaml.Controls;
     using Microsoft.UI.Xaml.Data;
     using Microsoft.UI.Xaml.Media.Imaging;
+    using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
     using SophiApp.ViewModels;
@@ -119,18 +121,14 @@ namespace SophiApp.ControlTemplates
         private static string GetDescription(object? model) => model switch
         {
             UIChoiceModel choice => choice.Description,
-            UIRadioButtonsGroup2Model group => group.Description,
-            UIRadioButtonsGroup3Model group => group.Description,
-            UIRadioButtonsGroup4Model group => group.Description,
+            UIRadioButtonsGroupModel group => group.Description,
             UIIconRadioButtonsModel group => group.Description,
             _ => string.Empty,
         };
 
         private static string[] GetOptionTitles(object? model) => model switch
         {
-            UIRadioButtonsGroup2Model group => [group.Title_1, group.Title_2],
-            UIRadioButtonsGroup3Model group => [group.Title_1, group.Title_2, group.Title_3],
-            UIRadioButtonsGroup4Model group => [group.Title_1, group.Title_2, group.Title_3, group.Title_4],
+            UIRadioButtonsGroupModel group => [.. group.Options],
             UIIconRadioButtonsModel group => [.. group.Options],
             _ => [],
         };
@@ -157,7 +155,14 @@ namespace SophiApp.ControlTemplates
 
             // The id is the number of the option, starting from 1
             var iconGroup = model as UIIconRadioButtonsModel;
-            return GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1), OptionIconWidth)) { IconWidth = OptionIconWidth });
+            var linkHint = "SettingOption_OpenWebPage".GetLocalized();
+
+            return GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1), OptionIconWidth))
+            {
+                IconWidth = OptionIconWidth,
+                Link = iconGroup?.Links.ElementAtOrDefault(index) ?? string.Empty,
+                LinkHint = linkHint,
+            });
         }
 
         private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
@@ -180,6 +185,15 @@ namespace SophiApp.ControlTemplates
             {
                 // An empty description would leave a blank line in the card
                 Card.ClearValue(SettingsCard.DescriptionProperty);
+            }
+
+            if (args.NewValue is UIChoiceModel choice)
+            {
+                Card.HeaderIcon = SettingIcon.Create(choice.IconIndex);
+            }
+            else
+            {
+                Card.ClearValue(SettingsCard.HeaderIconProperty);
             }
 
             ResetButton.Visibility = args.NewValue is UIIconRadioButtonsModel ? Visibility.Visible : Visibility.Collapsed;
@@ -208,7 +222,8 @@ namespace SophiApp.ControlTemplates
             foreach (var option in GetOptions(DataContext))
             {
                 // The option is kept in the tag too: the closed list takes the content of the selected item for itself
-                var item = new ComboBoxItem { Content = option, ContentTemplate = template, IsEnabled = option.IsEnabled, Tag = option };
+                // The content takes the whole width of the item, so what stands at its right edge is in one column
+                var item = new ComboBoxItem { Content = option, ContentTemplate = template, IsEnabled = option.IsEnabled, Tag = option, HorizontalContentAlignment = HorizontalAlignment.Stretch };
                 items.Add(item);
                 OptionsBox.Items.Add(item);
             }
@@ -254,17 +269,9 @@ namespace SophiApp.ControlTemplates
 
             switch (DataContext)
             {
-                case UIRadioButtonsGroup2Model group:
+                case UIRadioButtonsGroupModel group:
                     group.SelectedId = option.Id;
-                    ViewModel.RadioButtonsGroup2Clicked_Command.Execute(group);
-                    break;
-                case UIRadioButtonsGroup3Model group:
-                    group.SelectedId = option.Id;
-                    ViewModel.RadioButtonsGroup3Clicked_Command.Execute(group);
-                    break;
-                case UIRadioButtonsGroup4Model group:
-                    group.SelectedId = option.Id;
-                    ViewModel.RadioButtonsGroup4Clicked_Command.Execute(group);
+                    ViewModel.RadioButtonsGroupClicked_Command.Execute(group);
                     break;
                 case UIChoiceModel choice:
                     choice.SelectedId = option.Id;
@@ -280,6 +287,16 @@ namespace SophiApp.ControlTemplates
         }
 
         private void OptionsBox_DropDownOpened(object? sender, object e) => PopupCursor.Reset();
+
+        private void OptionLink_Click(object sender, RoutedEventArgs e)
+        {
+            // The address is opened by the app itself: it runs elevated, and the browser must not
+            if ((sender as FrameworkElement)?.Tag is string { Length: > 0 } link)
+            {
+                OptionsBox.IsDropDownOpen = false;
+                App.GetService<IHttpService>().OpenUrl(link);
+            }
+        }
 
         private void CopyTitle_Click(object sender, RoutedEventArgs e)
             => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Title);

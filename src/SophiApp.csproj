@@ -128,6 +128,9 @@
     <Content Update="Assets\DNSoverHTTPS_*.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\WSL.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\WSL_*.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

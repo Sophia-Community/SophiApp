@@ -37,9 +37,9 @@ namespace SophiApp.Services
 
             try
             {
-                info = httpService.GetFromJsonAsync<JsonObject>(DistributionsUrl, TimeoutSeconds).GetAwaiter().GetResult();
+                info = httpService.GetFromJson<JsonObject>(DistributionsUrl, TimeoutSeconds);
             }
-            catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException or JsonException)
+            catch (Exception ex) when (ex is HttpRequestException or OperationCanceledException or IOException or JsonException)
             {
                 throw new CustomizationException(exceptionMessage: $"Url {DistributionsUrl} is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired") { Arguments = [DistributionsUrl] };
             }

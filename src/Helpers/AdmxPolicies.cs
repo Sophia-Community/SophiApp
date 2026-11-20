@@ -43,6 +43,7 @@ namespace SophiApp.Helpers
                 catch (Exception ex) when (ex is XmlException or IOException or UnauthorizedAccessException)
                 {
                     // A template that cannot be read describes nothing
+                    App.Logger.LogSkippedException($"Reading the policy template {file}", ex);
                 }
             }
 

@@ -57,9 +57,10 @@ namespace SophiApp.Helpers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Opened folders cannot be received. File Explorer will be restarted without restoring them
+                App.Logger.LogSkippedException("Getting the opened File Explorer folders", ex);
             }
 
             return folders;

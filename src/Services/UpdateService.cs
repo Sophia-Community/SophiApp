@@ -61,9 +61,10 @@ namespace SophiApp.Services
                     _ = appManagement.InvokeMethod("UpdateScanMethod", null);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // The class is not available, e.g. on Windows 11 LTSC 2024
+                App.Logger.LogSkippedException("Checking for UWP apps updates", ex);
             }
         }
 

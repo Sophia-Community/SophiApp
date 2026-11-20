@@ -278,9 +278,10 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
                     task.Enabled = true;
                     _ = task.Run();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // The task cannot be started right now. It will be run by its trigger
+                    App.Logger.LogSkippedException($"Starting the {task.Name} task", ex);
                 }
             }
         }
@@ -347,9 +348,10 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
             {
                 task?.Stop();
             }
-            catch
+            catch (Exception ex)
             {
-                // Do nothing.
+                // The task is not running or cannot be stopped: the app goes on
+                App.Logger.LogSkippedException("Stopping a scheduled task", ex);
             }
         }
 
@@ -389,9 +391,10 @@ $ToastMessage = [Windows.UI.Notifications.ToastNotification]::New($ToastXML)
                 {
                     _ = registeredTask.Run();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // The task will be started by its trigger
+                    App.Logger.LogSkippedException($"Starting the {name} task", ex);
                 }
             }
 

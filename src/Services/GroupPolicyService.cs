@@ -135,6 +135,15 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void RemovePolicies(LGPOScope scope, string path, params string[] names)
+        {
+            foreach (var name in names)
+            {
+                ClearPolicyCache(scope, path, name);
+            }
+        }
+
+        /// <inheritdoc/>
         public void AddRegistryPolicies()
         {
             if (!GpeditExists)
@@ -228,9 +237,10 @@ namespace SophiApp.Services
                         [LGPOScope.User] = RegistryPolicy.Read(UserPolicyFile),
                     };
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Registry.pol cannot be read, so it is kept as is. An empty table means that there is nothing to change and to write back
+                    App.Logger.LogSkippedException("Reading the Registry.pol files", ex);
                     policies = [];
                 }
             }
@@ -252,6 +262,7 @@ namespace SophiApp.Services
             catch (Exception ex) when (ex is System.Security.SecurityException or UnauthorizedAccessException)
             {
                 // A key that cannot be opened is skipped
+                App.Logger.LogSkippedException($"Opening the registry key {hive.Name}\\{path}", ex);
                 return;
             }
 

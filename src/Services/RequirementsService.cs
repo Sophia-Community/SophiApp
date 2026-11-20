@@ -360,9 +360,10 @@ namespace SophiApp.Services
                     return Convert.ToUInt32(protectionStatus) == 0 && Convert.ToUInt32(conversionStatus) == 1;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // The WMI class is not available: ask the cmdlet
+                App.Logger.LogSkippedException("Reading the BitLocker state of the system drive from WMI", ex);
             }
 
             // If the cmdlet fails, there are no volumes to check

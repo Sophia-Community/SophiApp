@@ -67,6 +67,7 @@ namespace SophiApp.Helpers
             catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
             {
                 // The process has exited or its modules cannot be read
+                App.Logger.LogSkippedException("Reading the modules of File Explorer", ex);
                 return false;
             }
         }

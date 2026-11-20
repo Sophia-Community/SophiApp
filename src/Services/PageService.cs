@@ -33,7 +33,6 @@ public class PageService : IPageService
         Configure<SystemViewModel, SystemPage>();
         Configure<TaskSchedulerViewModel, TaskSchedulerPage>();
         Configure<UwpViewModel, UwpPage>();
-        Configure<WslViewModel, WslPage>();
     }
 
     /// <inheritdoc/>

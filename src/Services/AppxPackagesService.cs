@@ -170,9 +170,10 @@ namespace SophiApp.Services
             {
                 return package.DisplayName ?? string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // The name of a damaged package cannot be read
+                App.Logger.LogSkippedException("Reading the name of a UWP package", ex);
                 return string.Empty;
             }
         }
@@ -183,9 +184,10 @@ namespace SophiApp.Services
             {
                 return File.Exists(package.Logo.LocalPath) ? package.Logo : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // The logo of a damaged package cannot be read
+                App.Logger.LogSkippedException("Reading the logo of a UWP package", ex);
                 return null;
             }
         }

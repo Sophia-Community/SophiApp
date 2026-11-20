@@ -20,7 +20,6 @@ namespace SophiApp.Helpers
         private int system = 0;
         private int taskScheduler = 0;
         private int uwp = 0;
-        private int wsl = 0;
 
         /// <inheritdoc/>
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -170,23 +169,6 @@ namespace SophiApp.Helpers
         }
 
         /// <summary>
-        /// Gets WSL category info badge counter.
-        /// </summary>
-        public int Wsl
-        {
-            get
-            {
-                return wsl;
-            }
-
-            private set
-            {
-                wsl = value;
-                OnPropertyChanged(nameof(Wsl));
-            }
-        }
-
-        /// <summary>
         /// Decrement the info badge counter using the <see cref="UICategoryTag"/>.
         /// </summary>
         /// <param name="tag">The UI category tag.</param>
@@ -217,9 +199,6 @@ namespace SophiApp.Helpers
                     break;
                 case UICategoryTag.TaskScheduler:
                     TaskScheduler--;
-                    break;
-                case UICategoryTag.WSL:
-                    Wsl--;
                     break;
                 default:
                     break;
@@ -258,9 +237,6 @@ namespace SophiApp.Helpers
                 case UICategoryTag.TaskScheduler:
                     TaskScheduler++;
                     break;
-                case UICategoryTag.WSL:
-                    Wsl++;
-                    break;
                 default:
                     break;
             }
@@ -283,7 +259,6 @@ namespace SophiApp.Helpers
             Security = 0;
             System = 0;
             TaskScheduler = 0;
-            Wsl = 0;
         }
 
         private void OnPropertyChanged([CallerMemberName] string? name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

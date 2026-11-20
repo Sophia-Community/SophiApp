@@ -29,13 +29,15 @@ namespace SophiApp.Models
         /// <param name="title">Model title.</param>
         /// <param name="description">Model description.</param>
         /// <param name="options">Titles of the options.</param>
+        /// <param name="links">Addresses of the web pages about the options. An option without a page has an empty address.</param>
         /// <param name="accessor">Method that returns the number of the selected option, starting from 1, or 0.</param>
         /// <param name="mutator">Method that changes Windows settings.</param>
-        public UIIconRadioButtonsModel(UIModelDto dto, string title, string description, IReadOnlyList<string> options, Func<int> accessor, Action<int> mutator)
+        public UIIconRadioButtonsModel(UIModelDto dto, string title, string description, IReadOnlyList<string> options, IReadOnlyList<string> links, Func<int> accessor, Action<int> mutator)
             : base(dto, title)
         {
             Description = description;
             Options = options;
+            Links = links;
             this.accessor = accessor;
             this.mutator = mutator;
         }
@@ -49,6 +51,11 @@ namespace SophiApp.Models
         /// Gets titles of the options.
         /// </summary>
         public IReadOnlyList<string> Options { get; }
+
+        /// <summary>
+        /// Gets addresses of the web pages about the options, in the order of the options.
+        /// </summary>
+        public IReadOnlyList<string> Links { get; }
 
         /// <summary>
         /// Gets <see cref="accessor"/> returned value.

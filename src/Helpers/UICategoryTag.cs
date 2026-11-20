@@ -51,10 +51,5 @@ namespace SophiApp.Helpers
         /// UWP apps.
         /// </summary>
         UWP,
-
-        /// <summary>
-        /// Windows Subsystem for Linux.
-        /// </summary>
-        WSL,
     }
 }

@@ -13,7 +13,7 @@ namespace SophiApp.Helpers
     internal static class SettingIcon
     {
         // The position in the list is the icon index
-        private static readonly string[] Files = ["Windows11.svg", "Folder.svg", "OneDrive.svg", "DotNet.svg", "VisualC.svg"];
+        private static readonly string[] Files = ["Windows11.svg", "Folder.svg", "OneDrive.svg", "DotNet.svg", "VisualC.svg", "WSL.svg"];
 
         /// <summary>
         /// Creates an icon. An unknown index gives the folder icon.

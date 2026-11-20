@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using SophiApp.Contracts.Services;
+using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.ViewModels;
 using System.ComponentModel;
@@ -29,6 +30,10 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
 
     // The search box is as wide as the menu without its margins
     private const double SearchBoxMargins = 15;
+
+    // The fill of the selected menu item in the light theme when only the icons are left
+    private static readonly Windows.UI.Color LightIconsOnlyFill = Windows.UI.Color.FromArgb(0x80, 0x8A, 0xC5, 0xFC);
+    private static readonly Dictionary<GradientStop, Windows.UI.Color> BandColors = [];
 
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer searchTimer;
     private double currentWidth = default;
@@ -50,6 +55,12 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
         AppTitleName.Text = commonDataService.GetFullName();
+
+        // Windows 11 LTSC 2024 has no UWP apps to uninstall, so the category has the gaming settings only
+        if (commonDataService.OsProperties.IsLTSC)
+        {
+            UwpGamingItem.Content = "NavigationItem_Gaming".GetLocalized();
+        }
 
         // The search starts when typing pauses, not on every key
         searchTimer = DispatcherQueue.CreateTimer();
@@ -133,6 +144,36 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
         return null;
     }
 
+    // In the light theme the selected menu item is a band that fades along the item. When only the icons are left,
+    // the band is squeezed into a small square and looks like a spot, so the item gets an even fill there
+    private static void SetSelectedItemFill(bool iconsOnly)
+    {
+        string[] keys = ["NavigationViewItemBackgroundSelected", "NavigationViewItemBackgroundSelectedPointerOver", "NavigationViewItemBackgroundSelectedPressed"];
+
+        foreach (var dictionary in Application.Current.Resources.MergedDictionaries)
+        {
+            if (!dictionary.ThemeDictionaries.TryGetValue("Light", out var themeResources) || themeResources is not ResourceDictionary resources)
+            {
+                continue;
+            }
+
+            foreach (var key in keys)
+            {
+                if (!resources.TryGetValue(key, out var resource) || resource is not LinearGradientBrush band)
+                {
+                    continue;
+                }
+
+                foreach (var stop in band.GradientStops)
+                {
+                    // The colors of the band are remembered when they are replaced for the first time
+                    _ = BandColors.TryAdd(stop, stop.Color);
+                    stop.Color = iconsOnly ? LightIconsOnlyFill : BandColors[stop];
+                }
+            }
+        }
+    }
+
     private void PageShell_SizeChanged(object sender, SizeChangedEventArgs e) => CurrentWidth = ActualWidth;
 
     private void OnPropertyChanged([CallerMemberName] string? name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -141,6 +182,7 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
         FitPaneToMenuItems();
+        SetSelectedItemFill(iconsOnly: NavigationViewControl.DisplayMode != NavigationViewDisplayMode.Expanded);
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
     }
@@ -220,6 +262,8 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
 
     private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
+        SetSelectedItemFill(iconsOnly: sender.DisplayMode != NavigationViewDisplayMode.Expanded);
+
         AppTitleBar.Margin = new Thickness()
         {
             Left = sender.CompactPaneLength * (sender.DisplayMode == NavigationViewDisplayMode.Minimal ? 2 : 1),

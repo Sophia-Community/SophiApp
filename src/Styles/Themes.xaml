@@ -32,9 +32,25 @@
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelected" Color="#4B4B4B"/>
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPointerOver" Color="#4B4B4B"/>
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="#4B4B4B"/>
-            <SolidColorBrush x:Key="NavigationViewItemBackgroundSelected" Color="#B3FFFFFF"/>
-            <SolidColorBrush x:Key="NavigationViewItemBackgroundSelectedPointerOver" Color="#B3FFFFFF"/>
-            <SolidColorBrush x:Key="NavigationViewItemBackgroundSelectedPressed" Color="#B3FFFFFF"/>
+            <!-- The selected item: a light blue band that fades to white at both ends -->
+            <LinearGradientBrush x:Key="NavigationViewItemBackgroundSelected" StartPoint="0, 0.5" EndPoint="1, 0.5">
+                <GradientStop Offset="0" Color="#FFFFFF"/>
+                <GradientStop Offset="0.47" Color="#8AC5FC"/>
+                <GradientStop Offset="0.65" Color="#70C7FF"/>
+                <GradientStop Offset="1" Color="#FFFFFF"/>
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="NavigationViewItemBackgroundSelectedPointerOver" StartPoint="0, 0.5" EndPoint="1, 0.5">
+                <GradientStop Offset="0" Color="#FFFFFF"/>
+                <GradientStop Offset="0.47" Color="#8AC5FC"/>
+                <GradientStop Offset="0.65" Color="#70C7FF"/>
+                <GradientStop Offset="1" Color="#FFFFFF"/>
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="NavigationViewItemBackgroundSelectedPressed" StartPoint="0, 0.5" EndPoint="1, 0.5">
+                <GradientStop Offset="0" Color="#FFFFFF"/>
+                <GradientStop Offset="0.47" Color="#8AC5FC"/>
+                <GradientStop Offset="0.65" Color="#70C7FF"/>
+                <GradientStop Offset="1" Color="#FFFFFF"/>
+            </LinearGradientBrush>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <!-- The page is denser than the menu, which lies on the acrylic of the window -->
@@ -53,6 +69,17 @@
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelected" Color="#F5F5F5"/>
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPointerOver" Color="#F5F5F5"/>
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="#F5F5F5"/>
+
+            <!-- The selected item: an even light fill, like the cards. A black band looked gloomy -->
+            <SolidColorBrush x:Key="NavigationViewItemBackgroundSelected" Color="#1AFFFFFF"/>
+            <SolidColorBrush x:Key="NavigationViewItemBackgroundSelectedPointerOver" Color="#1AFFFFFF"/>
+            <SolidColorBrush x:Key="NavigationViewItemBackgroundSelectedPressed" Color="#1AFFFFFF"/>
+
+            <!-- Cards: lighter than the page. In the light theme the standard card already has the color of the mockup -->
+            <SolidColorBrush x:Key="SettingsCardBackground" Color="#1AFFFFFF"/>
+            <SolidColorBrush x:Key="SettingsCardBorderBrush" Color="#1AFFFFFF"/>
+            <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="#1AFFFFFF"/>
+            <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="#1AFFFFFF"/>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

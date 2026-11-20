@@ -338,5 +338,11 @@ namespace SophiApp.Services
         {
             Log.Information("Windows Search window after File Explorer restart was closed: {Closed}. Foreground: {Seen}", closed, seen);
         }
+
+        /// <inheritdoc/>
+        public void LogSkippedException(string action, Exception exception)
+        {
+            Log.Error("[WRN] {Action:l} failed: {Type:l}: {Message}", action, exception.GetType().Name, exception.Message);
+        }
     }
 }

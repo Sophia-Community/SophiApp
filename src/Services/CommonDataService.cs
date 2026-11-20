@@ -118,9 +118,10 @@ namespace SophiApp.Services
 
                     defenderIsDefaultAV = "Normal".Equals(runningMode, StringComparison.OrdinalIgnoreCase) && !thirdPartyAV;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Microsoft Defender WMI provider is not available
+                    App.Logger.LogSkippedException("Reading the Microsoft Defender state", ex);
                 }
 
                 App.Logger.LogDefenderIsDefault(defenderIsDefaultAV);
@@ -134,9 +135,10 @@ namespace SophiApp.Services
             {
                 LatestAppRelease = await httpService.GetFromJsonAsync<AppVersion>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-SophiApp2/SophiApp_Releases.json", 5);
             }
-            catch
+            catch (Exception ex)
             {
-                await Task.CompletedTask;
+                // No connection: the app goes on without this data
+                App.Logger.LogSkippedException("Getting the latest app release", ex);
             }
         }
 
@@ -146,9 +148,9 @@ namespace SophiApp.Services
             {
                 LatestReleaseNET10 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json", 5);
             }
-            catch
+            catch (Exception ex)
             {
-                await Task.CompletedTask;
+                App.Logger.LogSkippedException("Getting the latest .NET 10 release", ex);
             }
         }
 
@@ -158,9 +160,9 @@ namespace SophiApp.Services
             {
                 LatestReleaseNET11 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/11.0/releases.json", 5);
             }
-            catch
+            catch (Exception ex)
             {
-                await Task.CompletedTask;
+                App.Logger.LogSkippedException("Getting the latest .NET 11 release", ex);
             }
         }
 
@@ -170,9 +172,9 @@ namespace SophiApp.Services
             {
                 LatestReleaseVC = await httpService.GetFromJsonAsync<VCRelease>("https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json", 5);
             }
-            catch
+            catch (Exception ex)
             {
-                await Task.CompletedTask;
+                App.Logger.LogSkippedException("Getting the latest Visual C++ Redistributable release", ex);
             }
         }
 
@@ -182,9 +184,10 @@ namespace SophiApp.Services
             {
                 SupportedOs = await httpService.GetFromJsonAsync<SupportedOs>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-SophiApp2/Windows_Builds.json", 5);
             }
-            catch
+            catch (Exception ex)
             {
-                await Task.CompletedTask;
+                // The builds known to the app are used
+                App.Logger.LogSkippedException("Getting the supported Windows builds", ex);
             }
         }
     }

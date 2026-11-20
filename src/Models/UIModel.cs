@@ -14,6 +14,16 @@ namespace SophiApp.Models
     /// </summary>
     public abstract class UIModel : INotifyPropertyChanged
     {
+        // Other names some functions are known by. They are found by the search too
+        private static readonly Dictionary<string, string> OtherNames = new()
+        {
+            ["Cursors"] = "InstallCursors",
+            ["InstallVisualC_x86"] = "InstallVCRedist",
+            ["InstallVisualC_x64"] = "InstallVCRedist",
+            ["InstallDotNetRuntime_10"] = "InstallDotNetRuntimes",
+            ["InstallDotNetRuntime_11"] = "InstallDotNetRuntimes",
+        };
+
         private bool isEnabled = true;
         private bool isSelected = false;
         private string title;
@@ -155,7 +165,8 @@ namespace SophiApp.Models
         /// <param name="text">The text to seek.</param>
         public virtual bool ContainsText(string text)
             => Title.Contains(text, StringComparison.CurrentCultureIgnoreCase)
-            || ExceptionText.Contains(text, StringComparison.CurrentCultureIgnoreCase);
+            || ExceptionText.Contains(text, StringComparison.CurrentCultureIgnoreCase)
+            || NameContains(text);
 
         /// <summary>
         /// Shows why the setting is unavailable.
@@ -190,6 +201,20 @@ namespace SophiApp.Models
         /// <param name="name">Property name.</param>
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
             => App.MainWindow.DispatcherQueue.TryEnqueue(() => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)));
+
+        // The name of the function is compared without hyphens and underscores, so "Install-WSL" finds "InstallWSL"
+        private bool NameContains(string text)
+        {
+            var wanted = text.Replace("-", string.Empty).Replace("_", string.Empty).Trim();
+
+            if (wanted.Length == 0)
+            {
+                return false;
+            }
+
+            return Name.Replace("_", string.Empty).Contains(wanted, StringComparison.OrdinalIgnoreCase)
+                || (OtherNames.TryGetValue(Name, out var otherName) && otherName.Contains(wanted, StringComparison.OrdinalIgnoreCase));
+        }
 
         private void SetExceptionText(string text)
         {

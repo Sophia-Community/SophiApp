@@ -36,6 +36,7 @@ namespace SophiApp.Models
             : base(dto, title)
         {
             Description = description;
+            IconIndex = dto.IconIndex;
             noChoice = new SettingChoice(NoChoiceId, noChoiceTitle, string.Empty, true);
             choices = new[] { noChoice };
             this.accessor = accessor;
@@ -46,6 +47,11 @@ namespace SophiApp.Models
         /// Gets model description.
         /// </summary>
         public string Description { get; }
+
+        /// <summary>
+        /// Gets the index of the card icon.
+        /// </summary>
+        public int IconIndex { get; }
 
         /// <summary>
         /// Gets the items to choose from. The first one stands for "nothing is chosen".

@@ -8,6 +8,17 @@
       xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
       mc:Ignorable="d">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Dark">
+                    <!-- The header of an expanded card is a toggle button: it gets the color of the other cards -->
+                    <SolidColorBrush x:Key="ToggleButtonBackground" Color="#1AFFFFFF"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <ScrollView>
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                     Margin="{StaticResource SettingsListMargin}"

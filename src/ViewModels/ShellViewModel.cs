@@ -146,9 +146,7 @@ public partial class ShellViewModel : ObservableRecipient
         OpenEventViewer_Command = new AsyncRelayCommand(() => Task.Run(() => processService.StartProcessByName(name: "mmc.exe", arguments: "eventvwr.msc")));
         OpenTaskScheduler_Command = new AsyncRelayCommand(() => Task.Run(() => processService.StartProcessByName(name: "control.exe", arguments: "schedtasks")));
         OpenLatestAppRelease_Command = new RelayCommand(() => httpService.OpenUrl(AppLatestReleaseUrl));
-        RadioButtonsGroup2Clicked_Command = new RelayCommand<UIRadioButtonsGroup2Model>(group => RadioButtonsGroup2Clicked(group!));
-        RadioButtonsGroup3Clicked_Command = new RelayCommand<UIRadioButtonsGroup3Model>(group => RadioButtonsGroup3Clicked(group!));
-        RadioButtonsGroup4Clicked_Command = new RelayCommand<UIRadioButtonsGroup4Model>(group => RadioButtonsGroup4Clicked(group!));
+        RadioButtonsGroupClicked_Command = new RelayCommand<UIRadioButtonsGroupModel>(group => RadioButtonsGroupClicked(group!));
         IconRadioButtonsClicked_Command = new RelayCommand<UIIconRadioButtonsModel>(group => IconRadioButtonsClicked(group!));
         ChoiceClicked_Command = new RelayCommand<UIChoiceModel>(choice => ChoiceClicked(choice!));
         Search_Command = new AsyncRelayCommand<string>(text => SearchAsync(text ?? string.Empty), AsyncRelayCommandOptions.AllowConcurrentExecutions);
@@ -267,19 +265,9 @@ public partial class ShellViewModel : ObservableRecipient
     public IRelayCommand OpenLatestAppRelease_Command { get; private set; }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroup2Model"/>.
+    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroupModel"/>.
     /// </summary>
-    public IRelayCommand<UIRadioButtonsGroup2Model> RadioButtonsGroup2Clicked_Command { get; private set; }
-
-    /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroup3Model"/>.
-    /// </summary>
-    public IRelayCommand<UIRadioButtonsGroup3Model> RadioButtonsGroup3Clicked_Command { get; private set; }
-
-    /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIRadioButtonsGroup4Model"/>.
-    /// </summary>
-    public IRelayCommand<UIRadioButtonsGroup4Model> RadioButtonsGroup4Clicked_Command { get; private set; }
+    public IRelayCommand<UIRadioButtonsGroupModel> RadioButtonsGroupClicked_Command { get; private set; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to choose an option of <see cref="UIIconRadioButtonsModel"/> or to reset the choice.
@@ -536,8 +524,6 @@ public partial class ShellViewModel : ObservableRecipient
 
     private void ContinueRequirementActionsExecute()
     {
-        Task.Delay(80).Wait();
-
         // The button pressed twice continues once
         if (taskContinueSource?.TrySetResult(true) == false)
         {
@@ -586,52 +572,7 @@ public partial class ShellViewModel : ObservableRecipient
         UwpAppsModels = new(UwpForAllUsersState ? uwpAllUsersModels : uwpCurrentUserModels);
     }
 
-    private void RadioButtonsGroup2Clicked(UIRadioButtonsGroup2Model group)
-    {
-        var selectedId = int.Parse(group.SelectedId);
-        var groupExist = ApplicableModels.Contains(group) && group.DefaultId == selectedId;
-        group.IsSelected = !groupExist;
-
-        if (groupExist)
-        {
-            ApplicableModels.Remove(group);
-            InfoBadgeCounters.DecrementCategory(group.Tag);
-            App.Logger.LogApplicableModelRemoved(group.Name);
-            return;
-        }
-
-        ApplicableModels.Add(group);
-        InfoBadgeCounters.IncrementCategory(group.Tag);
-        App.Logger.LogApplicableModelAdded(group.Name, selectedId);
-    }
-
-    private void RadioButtonsGroup3Clicked(UIRadioButtonsGroup3Model group)
-    {
-        var selectedId = int.Parse(group.SelectedId);
-        group.IsSelected = group.DefaultId != selectedId;
-
-        if (ApplicableModels.Contains(group))
-        {
-            if (group.DefaultId == selectedId)
-            {
-                ApplicableModels.Remove(group);
-                InfoBadgeCounters.DecrementCategory(group.Tag);
-                App.Logger.LogApplicableModelRemoved(group.Name);
-                return;
-            }
-            else
-            {
-                App.Logger.LogApplicableModelChanged(group.Name, selectedId);
-                return;
-            }
-        }
-
-        ApplicableModels.Add(group);
-        InfoBadgeCounters.IncrementCategory(group.Tag);
-        App.Logger.LogApplicableModelAdded(group.Name, selectedId);
-    }
-
-    private void RadioButtonsGroup4Clicked(UIRadioButtonsGroup4Model group)
+    private void RadioButtonsGroupClicked(UIRadioButtonsGroupModel group)
     {
         var selectedId = int.Parse(group.SelectedId);
         group.IsSelected = group.DefaultId != selectedId;
@@ -747,7 +688,9 @@ public partial class ShellViewModel : ObservableRecipient
             _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startupModel.StatusText = action.DisplayText!);
             await Task.Delay(100);
             var timer = Stopwatch.StartNew();
-            RequirementsResult = action.Execute();
+
+            // A check can wait for the network or for Windows, so it runs away from the window thread
+            RequirementsResult = await Task.Run(action.Execute);
             timer.Stop();
             App.Logger.LogRequirementsActionExecute(action.Execute.Method.Name, timer);
 

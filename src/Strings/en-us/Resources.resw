@@ -129,6 +129,9 @@
   <data name="NavigationItem_UWP_Gaming.Content" xml:space="preserve">
     <value>UWP | Gaming</value>
   </data>
+  <data name="NavigationItem_Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
   <data name="NavigationItem_TaskScheduler.Content" xml:space="preserve">
     <value>Task Scheduler</value>
   </data>
@@ -235,16 +238,16 @@
     <value>Configure the level of diagnostic data collected by Windows</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Description" xml:space="preserve">
-    <value>As part of using Windows, your device sends Microsoft a limited set of data that is necessary to keep your device and operating system secure, up to date, and working as expected. With the minimal level the Windows Insider Program is unavailable: it requires optional diagnostic data.</value>
+    <value>Required diagnostic data is the minimum that Windows needs to stay secure, up to date, and working as expected. Optional diagnostic data adds details about how you use apps and features. With required data only, the Windows Insider Program is unavailable. On the Enterprise and Education editions, diagnostic data is turned off instead.</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title_1" xml:space="preserve">
-    <value>Default</value>
+    <value>Optional diagnostic data</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title_2" xml:space="preserve">
-    <value>Minimal</value>
+    <value>Required diagnostic data only</value>
   </data>
   <data name="UIModel_ErrorReporting_Title" xml:space="preserve">
-    <value>Configure Windows Error Reporting</value>
+    <value>Enable Windows Error Reporting</value>
   </data>
   <data name="UIModel_ErrorReporting_Description" xml:space="preserve">
     <value>The error reporting feature enables users to notify Microsoft of application faults, kernel faults, unresponsive applications, and other application-specific problems. Microsoft can use the error reporting feature to provide customers with troubleshooting information, solutions, or updates for their specific problems.</value>
@@ -271,7 +274,7 @@
     <value>Use sign-in info to automatically finish setting up device after an update</value>
   </data>
   <data name="UIModel_SigninInfo_Description" xml:space="preserve">
-    <value>Some updates require you to restart your PC and then sign in to Windows to finish installing the update, which means you might not be able to use your PC until the update is finished. Windows helps prevent this by using your sign-in info to create a special token. This token is used to automatically sign in after a restart, finish setting up your PC, and then lock your PC to keep your account and personal info safe.</value>
+    <value>Some updates require a restart and a sign-in to finish installing. With this setting, Windows uses your sign-in info to sign in automatically after the restart, finish setting up your PC, and lock it again.</value>
   </data>
   <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
     <value>Let websites show me locally relevant content by accessing my language list</value>
@@ -322,13 +325,16 @@
     <value>Use check boxes to select items in File Explorer</value>
   </data>
   <data name="UIModel_HiddenItems_Title" xml:space="preserve">
-    <value>Show hidden files, folders, or drives</value>
+    <value>Show hidden files, folders, and drives</value>
   </data>
   <data name="UIModel_FileExtensions_Title" xml:space="preserve">
     <value>Show file name extensions</value>
   </data>
   <data name="UIModel_MergeConflicts_Title" xml:space="preserve">
     <value>Show folder merge conflicts</value>
+  </data>
+  <data name="UIModel_MergeConflicts_Description" xml:space="preserve">
+    <value>When you copy or move a folder to a place that already has a folder with the same name, File Explorer asks whether to merge them.</value>
   </data>
   <data name="UIModel_OpenFileExplorerTo_Title" xml:space="preserve">
     <value>Open File Explorer to</value>
@@ -337,7 +343,7 @@
     <value>This PC</value>
   </data>
   <data name="UIModel_OpenFileExplorerTo_Title_2" xml:space="preserve">
-    <value>Quick access</value>
+    <value>Home</value>
   </data>
   <data name="UIModel_FileExplorerCompactMode_Title" xml:space="preserve">
     <value>Use compact mode in File Explorer</value>
@@ -346,7 +352,7 @@
     <value>Show sync provider notifications within File Explorer</value>
   </data>
   <data name="UIModel_OneDriveFileExplorerAd_Description" xml:space="preserve">
-    <value>These notifications are designed to help you by providing quick, easy information about things you can do or new features you can try to have a better experience with Windows.</value>
+    <value>File Explorer can show notifications of the sync provider at the top of the window, for example ads of OneDrive and Microsoft 365.</value>
   </data>
   <data name="UIModel_SnapAssist_Title" xml:space="preserve">
     <value>When I snap a window, show what I can snap next to it</value>
@@ -364,7 +370,7 @@
     <value>Display the Recycle Bin delete confirmation dialog</value>
   </data>
   <data name="UIModel_QuickAccessRecentFiles_Title" xml:space="preserve">
-    <value>Show recently used files in Quick access</value>
+    <value>Show recently used files in File Explorer Home</value>
   </data>
   <data name="UIModel_QuickAccessFrequentFolders_Title" xml:space="preserve">
     <value>Show frequently used folders in Quick access</value>
@@ -481,7 +487,7 @@
     <value>Enable first sign-in animation</value>
   </data>
   <data name="UIModel_FirstLogonAnimation_Description" xml:space="preserve">
-    <value>In Windows, after completing the setup on a new installation, upgrading, or when signing in to a new account, displays the first sign-in animation that features several messages to configure the account environment.</value>
+    <value>After a clean installation, an upgrade, or the first sign-in to a new account, Windows shows the first sign-in animation: several messages on the screen while the account is being prepared.</value>
   </data>
   <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
     <value>Desktop wallpaper JPEG quality</value>
@@ -523,16 +529,16 @@
     <value>System</value>
   </data>
   <data name="UIModel_Cursors_Description" xml:space="preserve">
-    <value>Install the "Windows 11 Cursors Concept v2" cursors from Jepri Creations on the fly. An Internet connection is required. [View the cursors on DeviantArt](https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356)</value>
+    <value>Download and install the "Windows 11 Cursors Concept v2" cursors from Jepri Creations. An Internet connection is required. [View the cursors on DeviantArt](https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356)</value>
   </data>
   <data name="UIModel_FolderGroupBy_Title" xml:space="preserve">
-    <value>Group files and folders by date modified in the Downloads folder</value>
+    <value>Group files and folders in the Downloads folder</value>
   </data>
   <data name="UIModel_FolderGroupBy_Title_1" xml:space="preserve">
-    <value>None</value>
+    <value>Do not group</value>
   </data>
   <data name="UIModel_FolderGroupBy_Title_2" xml:space="preserve">
-    <value>Default</value>
+    <value>By date modified</value>
   </data>
   <data name="UIModel_NavigationPaneExpand_Title" xml:space="preserve">
     <value>Automatically expand to current folder in the navigation pane of File Explorer</value>
@@ -544,13 +550,13 @@
     <value>Show most used apps on Start</value>
   </data>
   <data name="UIModel_StartRecommendedSection_Title" xml:space="preserve">
-    <value>Show Recommended section on Start</value>
+    <value>Show the Recommended section on Start</value>
   </data>
   <data name="UIModel_StartRecommendationsTips_Title" xml:space="preserve">
-    <value>Show recommendations for tips, shortcuts, new apps, and more in Start</value>
+    <value>Show recommendations for tips, shortcuts, new apps, and more on Start</value>
   </data>
   <data name="UIModel_StartAccountNotifications_Title" xml:space="preserve">
-    <value>Show Microsoft account-related notifications in Start</value>
+    <value>Show Microsoft account-related notifications on Start</value>
   </data>
   <data name="UIModel_StartLayout_Title" xml:space="preserve">
     <value>Start layout</value>
@@ -580,19 +586,19 @@
     <value>Enable hibernation</value>
   </data>
   <data name="UIModel_Hibernation_Description" xml:space="preserve">
-    <value>Hibernation is a power-saving state used primarily on laptops. Unlike sleep, hibernation saves your open documents and programs to the `%SystemRoot%\hiberfil.sys` file on the system drive and turns off your computer. By default, the size of the hidden protected system file `%SystemRoot%\hiberfil.sys` is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and Hibernate will no longer be shown in the Power menu. It is not recommended to turn hibernation off on laptops.</value>
+    <value>Hibernation is a power-saving state used primarily on laptops. Unlike sleep, hibernation saves your open documents and programs to the `%SystemDrive%\hiberfil.sys` file on the system drive and turns off your computer. By default, the size of the hidden protected system file `%SystemDrive%\hiberfil.sys` is 40% of the total amount of RAM installed. Disabling hibernation will also disable fast startup, and Hibernate will no longer be shown in the Power menu. It is not recommended to turn hibernation off on laptops.</value>
   </data>
   <data name="UIModel_Win32LongPathsSupport_Title" xml:space="preserve">
     <value>Enable Windows long path support</value>
   </data>
   <data name="UIModel_Win32LongPathsSupport_Description" xml:space="preserve">
-    <value>By default, the maximum path length limit in Windows is 260 characters. Enabling Win32 long paths removes restrictions when attempting to create, save, copy, or move folders/files with paths exceeding the limit. You won't encounter the "Path too long" error.</value>
+    <value>By default, a path in Windows is limited to 260 characters. With long path support, programs that are built for it can create and open files with longer paths. Programs that do not support long paths still have the limit.</value>
   </data>
   <data name="UIModel_BSoDStopError_Title" xml:space="preserve">
-    <value>Display the Stop error code when a BSoD occurs</value>
+    <value>Display the Stop error parameters when a BSoD occurs</value>
   </data>
   <data name="UIModel_BSoDStopError_Description" xml:space="preserve">
-    <value>By default, Windows does not display a Stop error code when a BSoD occurs. Displaying the code helps to identify the cause of a BSoD.</value>
+    <value>By default, Windows shows only the name of the Stop error when a BSoD occurs. With this setting, the blue screen also shows the parameters of the error, which help to identify the cause of a BSoD.</value>
   </data>
   <data name="UIModel_AdminApprovalMode_Title" xml:space="preserve">
     <value>Configure UAC behavior</value>
@@ -604,13 +610,13 @@
     <value>Never notify</value>
   </data>
   <data name="UIModel_AdminApprovalMode_Description" xml:space="preserve">
-    <value>When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run.</value>
+    <value>When User Account Control (UAC) is enabled, Windows prompts for consent or prompts for credentials of a valid local administrator account before starting a program or task that requires a full administrator access token. This prompt ensures that no malicious software can be silently installed or run. With "Never notify", apps can make changes to your computer without asking you, so this protection is turned off. Not recommended.</value>
   </data>
   <data name="UIModel_DeliveryOptimization_Title" xml:space="preserve">
     <value>Enable Windows Update Delivery Optimization</value>
   </data>
   <data name="UIModel_DeliveryOptimization_Description" xml:space="preserve">
-    <value>Windows Update Delivery Optimization works by letting you get Windows updates and Microsoft Store apps from other PCs on your local network or PCs on the Internet that downloaded the same files. Delivery Optimization also sends updates and apps from your PC to other PCs on your local network or PCs on the Internet, based on your settings. Sharing this data between PCs helps reduce the Internet bandwidth that's needed to keep more than one device up to date or can make downloads more successful if you have a limited or unreliable Internet connection.</value>
+    <value>Delivery Optimization lets your PC get Windows updates and Microsoft Store apps from other PCs on your local network or on the Internet that have already downloaded them, and send them to other PCs in the same way. It reduces the Internet traffic when several devices are updated and makes downloads more reliable on a slow connection.</value>
   </data>
   <data name="UIModel_WindowsManageDefaultPrinter_Title" xml:space="preserve">
     <value>Let Windows manage my default printer</value>
@@ -622,7 +628,7 @@
     <value>Receive updates for other Microsoft products</value>
   </data>
   <data name="UIModel_UpdateMicrosoftProducts_Description" xml:space="preserve">
-    <value>Get updates for other Microsoft products, such as Microsoft 365 (formerly Office), and automatically download and install the latest drivers along with Windows updates.</value>
+    <value>Get updates for other Microsoft products, such as Microsoft 365 (formerly Office), together with Windows updates.</value>
   </data>
   <data name="UIModel_RestartNotification_Title" xml:space="preserve">
     <value>Notify me when a restart is required to finish updating</value>
@@ -673,16 +679,16 @@
     <value>Only the currently used network adapter will be configured, even if your motherboard has an additional Wi-Fi adapter alongside an Ethernet one. **The network adapter will be restarted, so the connection will be lost for a few seconds.** It is not recommended to turn this off on laptops.</value>
   </data>
   <data name="UIModel_InputMethod_Title" xml:space="preserve">
-    <value>Set the default input method</value>
+    <value>Choose the default input method (keyboard layout)</value>
   </data>
   <data name="UIModel_InputMethod_Title_1" xml:space="preserve">
-    <value>English</value>
+    <value>English (United States)</value>
   </data>
   <data name="UIModel_InputMethod_Title_2" xml:space="preserve">
     <value>Use language list</value>
   </data>
   <data name="UIModel_InputMethod_Description" xml:space="preserve">
-    <value>Your default keyboard layout is the one that's automatically used on the sign-in screen.</value>
+    <value>By default, Windows starts with the first input method of your language list. Choose English to start with the English (United States) keyboard layout instead, whatever language is first in the list.</value>
   </data>
   <data name="UIModel_WinPrtScrFolder_Title" xml:space="preserve">
     <value>Choose the default folder for screenshots taken with Win+PrtScn or Win+Shift+S</value>
@@ -703,7 +709,7 @@
     <value>Ask me before running troubleshooters</value>
   </data>
   <data name="UIModel_RecommendedTroubleshooting_Description" xml:space="preserve">
-    <value>Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix?</value>
+    <value>Microsoft can recommend and run troubleshooters to fix issues. How much do you want Microsoft to help when there are issues on your device that troubleshooters might be able to fix? For this feature to work, the diagnostic data level will be set to "Optional diagnostic data", and Windows Error Reporting will be turned on.</value>
   </data>
   <data name="UIModel_ReservedStorage_Title" xml:space="preserve">
     <value>Enable Reserved Storage</value>
@@ -723,8 +729,11 @@
   <data name="UIModel_CapsLock_Title" xml:space="preserve">
     <value>Enable Caps Lock key</value>
   </data>
+  <data name="UIModel_CapsLock_Description" xml:space="preserve">
+    <value>A restart is required.</value>
+  </data>
   <data name="UIModel_StickyShift_Title" xml:space="preserve">
-    <value>Enable Sticky Shift key</value>
+    <value>Press the Shift key 5 times to turn on Sticky keys</value>
   </data>
   <data name="UIModel_StickyShift_Description" xml:space="preserve">
     <value>Pressing the Shift key 5 times in a row brings up a pop-up that may interrupt your work.</value>
@@ -733,7 +742,7 @@
     <value>Use AutoPlay for all media and devices</value>
   </data>
   <data name="UIModel_Autoplay_Description" xml:space="preserve">
-    <value>When you insert a removable device such as a USB flash drive or a memory card into your PC, you'll often see an annoying "AutoPlay" pop-up.</value>
+    <value>When you insert a removable device such as a USB flash drive or a memory card into your PC, Windows shows the "AutoPlay" pop-up.</value>
   </data>
   <data name="UIModel_ThumbnailCacheRemoval_Title" xml:space="preserve">
     <value>Enable thumbnail cache removal</value>
@@ -784,10 +793,10 @@
     <value>.NET is the successor to .NET Framework. You need to install .NET 11 if an app was built for this version, even if other .NET versions are already installed. .NET 11 is an STS (Standard Term Support) release. The installer will be downloaded from the Microsoft server (an Internet connection is required).</value>
   </data>
   <data name="UIModel_RemoveWindowsAI_Title" xml:space="preserve">
-    <value>Remove Windows AI</value>
+    <value>Remove Microsoft Copilot and Recall</value>
   </data>
   <data name="UIModel_RemoveWindowsAI_Description" xml:space="preserve">
-    <value>Disable Windows AI functions.</value>
+    <value>Uninstall the Microsoft Copilot app and turn off the Recall component of Windows. If you clear the check box, Recall is turned on again and the Microsoft Copilot page is opened in Microsoft Store.</value>
   </data>
   <data name="UIModel_RegistryBackup_Title" xml:space="preserve">
     <value>Enable automatic backup of the Windows registry</value>
@@ -817,7 +826,7 @@
     <value>Enable hardware-accelerated GPU scheduling</value>
   </data>
   <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
-    <value>Reduce latency and improve performance. You'll need to restart your PC for the changes to take effect. With the hardware-accelerated GPU scheduling feature, the GPU's scheduling processor and memory (VRAM) take over that work and run it in batches to render frames. This allows the GPU to reduce the load on the CPU and improve latency, potentially making your PC run better. However, don't expect hardware-accelerated GPU scheduling to have a significant impact on your computer's performance.</value>
+    <value>With hardware-accelerated GPU scheduling, the graphics card manages its own video memory and the order of the work it gets, which takes some load off the CPU and may reduce latency. Do not expect a significant impact on performance. It works only with a dedicated GPU and WDDM version 2.7 or higher. A restart is required.</value>
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Message" xml:space="preserve">
     <value>The scheduled tasks below are sufficient to keep Windows clean. There is no need to constantly clean other system folders, as is often advised on the Internet. The tasks respect the **Do not disturb** mode: their notifications won't pop up while you are playing a game, watching a video in full screen, or when the mode is turned on.</value>
@@ -829,7 +838,7 @@
     <value>Create Windows Cleanup scheduled task</value>
   </data>
   <data name="UIModel_CleanupTask_Description" xml:space="preserve">
-    <value>This function creates the "Windows Cleanup" (main task) and "Windows Cleanup Notification" (a task that shows a pop-up notification) tasks in the Sophia folder of Task Scheduler to clean up unused files and Windows updates. A native notification prompting you to run the task will pop up before the cleanup begins. The task runs every 30 days. A native Windows notification will appear when it completes.</value>
+    <value>Create the "Windows Cleanup" task and the "Windows Cleanup Notification" task, which shows a pop-up notification, in the Sophia folder of Task Scheduler to clean up unused files and Windows updates. Every 30 days a native notification prompts you to run the cleanup, and another one appears when it completes.</value>
   </data>
   <data name="TaskScheduler_WindowsCleanup_Description" xml:space="preserve">
     <value>Cleaning up unused Windows files and updates using the built-in Disk Cleanup app. The scheduled task can run only if the user "{0}" is signed in.</value>
@@ -847,7 +856,7 @@
     <value>Create SoftwareDistribution scheduled task</value>
   </data>
   <data name="UIModel_SoftwareDistributionTask_Description" xml:space="preserve">
-    <value>This function creates the "SoftwareDistribution" task in the Sophia folder of Task Scheduler to clean up the `%SystemRoot%\SoftwareDistribution\Download` folder, where Windows update installation files are downloaded. The task will wait until the Windows Update service has finished running. The task runs every 90 days. A native Windows notification will appear when it completes.</value>
+    <value>Create the "SoftwareDistribution" task in the Sophia folder of Task Scheduler to clean up the `%SystemRoot%\SoftwareDistribution\Download` folder, where Windows update installation files are downloaded. The task waits until the Windows Update service has finished running. It runs every 90 days and shows a native Windows notification when it completes.</value>
   </data>
   <data name="TaskScheduler_SoftwareDistribution_Description" xml:space="preserve">
     <value>Cleaning up the Windows update cache folder "{1}". The scheduled task can run only if the user "{0}" is signed in.</value>
@@ -859,7 +868,7 @@
     <value>Create Temp scheduled task</value>
   </data>
   <data name="UIModel_TempTask_Description" xml:space="preserve">
-    <value>This function creates the "Temp" task in the Sophia folder of Task Scheduler to clean up the `%TEMP%` folder. Only files older than one day will be deleted. The task runs every 60 days. A native Windows notification will appear when it completes.</value>
+    <value>Create the "Temp" task in the Sophia folder of Task Scheduler to clean up the `%TEMP%` folder. Only files older than one day are deleted. The task runs every 60 days and shows a native Windows notification when it completes.</value>
   </data>
   <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
     <value>The temporary folder was successfully cleaned up.</value>
@@ -885,11 +894,14 @@
   <data name="UIModel_PUAppsDetection_Title" xml:space="preserve">
     <value>Enable detection of potentially unwanted applications and block them with Microsoft Defender</value>
   </data>
+  <data name="UIModel_PUAppsDetection_Description" xml:space="preserve">
+    <value>Potentially unwanted applications are not malware, but they can show unexpected ads, install other software, or slow your PC down.</value>
+  </data>
   <data name="UIModel_DefenderSandbox_Title" xml:space="preserve">
     <value>Enable sandboxing for Microsoft Defender</value>
   </data>
   <data name="UIModel_DefenderSandbox_Description" xml:space="preserve">
-    <value>Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm. The sandbox for Microsoft Defender is enabled by default in Windows 11.</value>
+    <value>Running Microsoft Defender in a sandbox ensures that in the unlikely event of a compromise, malicious actions are limited to the isolated environment, protecting the rest of the system from harm. A restart is required.</value>
   </data>
   <data name="UIModel_EventViewerCustomView_Title" xml:space="preserve">
     <value>Create the "Process Creation" custom view in Event Viewer</value>
@@ -916,22 +928,25 @@
     <value>Enable Windows Sandbox</value>
   </data>
   <data name="UIModel_WindowsSandbox_Description" xml:space="preserve">
-    <value>Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary: when it's closed, all software, files, and state are deleted. You get a brand-new instance of the sandbox every time you open the application. Available only in the Pro, Enterprise, and Education editions.</value>
+    <value>Windows Sandbox provides a lightweight desktop environment to safely run applications in isolation. Software installed inside the Windows Sandbox environment remains sandboxed and runs separately from the host machine. A sandbox is temporary: when it's closed, all software, files, and state are deleted. You get a brand-new instance of the sandbox every time you open the application. Available only in the Pro, Enterprise, and Education editions. Virtualization must be turned on in the UEFI settings. A restart is required.</value>
   </data>
   <data name="UIModel_LocalSecurityAuthority_Title" xml:space="preserve">
     <value>Enable protection for the Local Security Authority (LSA) process without UEFI lock to prevent code injection</value>
   </data>
   <data name="UIModel_LocalSecurityAuthority_Description" xml:space="preserve">
-    <value>Protection for the Local Security Authority (LSA) prevents non-protected processes from reading its memory and injecting code. This feature provides added security for the credentials that LSA stores and manages.</value>
+    <value>Protection for the Local Security Authority (LSA) prevents non-protected processes from reading its memory and injecting code. This feature provides added security for the credentials that LSA stores and manages. A restart is required.</value>
   </data>
   <data name="UIModel_MSIExtractContext_Title" xml:space="preserve">
-    <value>Show "Extract all" item in the Windows Installer (.msi) context menu</value>
+    <value>Show the "Extract all" item in the Windows Installer (.msi) context menu</value>
   </data>
   <data name="UIModel_MSIExtractContext_Description" xml:space="preserve">
     <value>The "Extract all" context menu item extracts all contents of the .msi file into the "Extracted" folder next to the file.</value>
   </data>
   <data name="UIModel_CABInstallContext_Title" xml:space="preserve">
-    <value>Show "Install" item in the Cabinet archives (.cab) context menu</value>
+    <value>Show the "Install" item in the Cabinet (.cab) file context menu</value>
+  </data>
+  <data name="UIModel_CABInstallContext_Description" xml:space="preserve">
+    <value>The "Install" item installs the update package from the .cab file with DISM.</value>
   </data>
   <data name="UIModel_UseStoreOpenWith_Title" xml:space="preserve">
     <value>Show the "Look for an app in the Microsoft Store" item in the "Open with" dialog</value>
@@ -1159,7 +1174,7 @@
     <value>Fatal error:</value>
   </data>
   <data name="UIModel_StartAppsView_Title" xml:space="preserve">
-    <value>Set the "All apps" view in Start</value>
+    <value>Set the "All apps" view on Start</value>
   </data>
   <data name="UIModel_StartAppsView_Title_1" xml:space="preserve">
     <value>Category</value>
@@ -1335,6 +1350,24 @@
   <data name="UIModel_DNSoverHTTPS_Title_5" xml:space="preserve">
     <value>OpenDNS</value>
   </data>
+  <data name="UIModel_DNSoverHTTPS_Link_1" xml:space="preserve">
+    <value>https://developers.cloudflare.com/1.1.1.1/setup/windows/</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Link_2" xml:space="preserve">
+    <value>https://developers.google.com/speed/public-dns/docs/using</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Link_3" xml:space="preserve">
+    <value>https://quad9.net/service/service-addresses-and-features/</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Link_4" xml:space="preserve">
+    <value>https://adguard-dns.io/public-dns.html</value>
+  </data>
+  <data name="UIModel_DNSoverHTTPS_Link_5" xml:space="preserve">
+    <value>https://www.cisco.com/c/en/us/support/docs/security/umbrella/224705-configure-dns-over-https-doh-with.html</value>
+  </data>
+  <data name="SettingOption_OpenWebPage" xml:space="preserve">
+    <value>Open the web page</value>
+  </data>
   <data name="Button_ResetToDefault.Content" xml:space="preserve">
     <value>Reset to default</value>
   </data>
@@ -1354,7 +1387,7 @@
     <value>Uninstalling {0} of {1}: {2}</value>
   </data>
   <data name="UIModel_UnpinAllStartTiles_Title" xml:space="preserve">
-    <value>Unpin all Start tiles</value>
+    <value>Unpin all apps from Start</value>
   </data>
   <data name="UIModel_UnpinAllStartTiles_Description" xml:space="preserve">
     <value>All shortcuts pinned to the Start menu are unpinned at once. It is done once and cannot be undone: the apps you need have to be pinned again by hand.</value>
@@ -1379,9 +1412,6 @@
   </data>
   <data name="UIModel_Exception_GpeditNotSupported" xml:space="preserve">
     <value>Windows Home edition doesn't support the Local Group Policy Editor snap-in (gpedit.msc).</value>
-  </data>
-  <data name="NavigationItem_WSL.Content" xml:space="preserve">
-    <value>WSL</value>
   </data>
   <data name="UIModel_InstallWSL_Title" xml:space="preserve">
     <value>Install Linux on Windows with WSL</value>

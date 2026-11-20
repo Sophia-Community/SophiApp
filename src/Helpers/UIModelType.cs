@@ -24,19 +24,9 @@ namespace SophiApp.Helpers
         IconCheckBox,
 
         /// <summary>
-        /// A choice of two options.
+        /// A choice of one option out of several. The options are as many as there are titles for them.
         /// </summary>
-        RadioButtonsGroup2,
-
-        /// <summary>
-        /// A choice of three options.
-        /// </summary>
-        RadioButtonsGroup3,
-
-        /// <summary>
-        /// A choice of four options.
-        /// </summary>
-        RadioButtonsGroup4,
+        RadioButtonsGroup,
 
         /// <summary>
         /// An action without a state: it is chosen with a button and done when the chosen settings are applied.

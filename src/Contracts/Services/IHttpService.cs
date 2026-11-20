@@ -23,10 +23,19 @@ namespace SophiApp.Contracts.Services
         void DownloadOneDrive(string saveTo);
 
         /// <summary>
+        /// Sends a GET request to the specified url and returns deserialize value. The calling thread waits for the answer.
+        /// </summary>
+        /// <param name="url">A string that represents the request url.</param>
+        /// <param name="timeout">Request timeout in seconds.</param>
+        /// <typeparam name="T">Type of return value.</typeparam>
+        T GetFromJson<T>(string url, double timeout)
+            where T : class;
+
+        /// <summary>
         /// Sends a GET request to the specified url and returns deserialize value.
         /// </summary>
         /// <param name="url">A string that represents the request url.</param>
-        /// <param name="timeout"><see cref="HttpClient"/> timeout in seconds.</param>
+        /// <param name="timeout">Request timeout in seconds.</param>
         /// <typeparam name="T">Type of return value.</typeparam>
         Task<T> GetFromJsonAsync<T>(string url, double timeout)
             where T : class;

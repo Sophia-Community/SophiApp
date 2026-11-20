@@ -4,7 +4,9 @@
 
 namespace SophiApp.Views;
 
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.Models;
@@ -29,6 +31,9 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
         GamingModels = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Gaming));
+
+        // Windows 11 LTSC 2024 has no UWP apps to uninstall
+        UwpAppsPanel.Visibility = App.GetService<ICommonDataService>().OsProperties.IsLTSC ? Visibility.Collapsed : Visibility.Visible;
     }
 
     /// <summary>
@@ -67,7 +72,7 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
 
     private static bool HasChosenApps(int count) => count > 0;
 
-    private void PageUwp_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e) => CurrentWidth = ActualWidth;
+    private void PageUwp_SizeChanged(object sender, SizeChangedEventArgs e) => CurrentWidth = ActualWidth;
 
     private void OnPropertyChanged([CallerMemberName] string? name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }

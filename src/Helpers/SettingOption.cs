@@ -67,6 +67,21 @@ namespace SophiApp.Helpers
         public Visibility IconVisibility => Icon is null && !KeepsIconRoom ? Visibility.Collapsed : Visibility.Visible;
 
         /// <summary>
+        /// Gets the address of a web page about the option, if it has one.
+        /// </summary>
+        public string Link { get; init; } = string.Empty;
+
+        /// <summary>
+        /// Gets the hint of the button that opens the web page.
+        /// </summary>
+        public string LinkHint { get; init; } = string.Empty;
+
+        /// <summary>
+        /// Gets a value indicating whether the option has a web page to open.
+        /// </summary>
+        public Visibility LinkVisibility => Link.Length == 0 ? Visibility.Collapsed : Visibility.Visible;
+
+        /// <summary>
         /// Gets a value indicating whether the option has a second line to show.
         /// </summary>
         public Visibility SubtitleVisibility => Subtitle.Length == 0 ? Visibility.Collapsed : Visibility.Visible;

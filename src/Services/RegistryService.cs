@@ -48,6 +48,7 @@ namespace SophiApp.Services
                 catch (Exception ex) when (ex is UnauthorizedAccessException || ex is System.Security.SecurityException || ex is IOException)
                 {
                     // The key cannot be opened or deleted: skip it and continue
+                    App.Logger.LogSkippedException($"Deleting the saved view in the bag {bag}", ex);
                 }
             }
         }

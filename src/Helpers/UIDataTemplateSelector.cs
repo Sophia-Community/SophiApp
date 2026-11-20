@@ -37,7 +37,7 @@ namespace SophiApp.Helpers
             UICheckBoxModel or UIIconCheckBoxModel => CheckBoxTemplate,
             UIActionModel => ActionTemplate,
             UIInstallModel => InstallTemplate,
-            UIRadioButtonsGroup2Model or UIRadioButtonsGroup3Model or UIRadioButtonsGroup4Model or UIIconRadioButtonsModel or UIChoiceModel => ComboBoxTemplate,
+            UIRadioButtonsGroupModel or UIIconRadioButtonsModel or UIChoiceModel => ComboBoxTemplate,
             _ => throw new TypeAccessException($"Attempt to access method '{nameof(SelectTemplateCore)}' to type '{item.GetType()}' failed"),
         };
     }

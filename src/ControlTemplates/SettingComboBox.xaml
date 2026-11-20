@@ -10,23 +10,44 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <!-- An option: an icon, if there is one, the title and a second line, if there is one -->
+        <!-- An option: an icon, if there is one, the title, a second line, if there is one, and a link to a web page, if there is one -->
         <DataTemplate x:Key="OptionTemplate"
                       x:DataType="helpers:SettingOption">
-            <StackPanel Orientation="Horizontal"
-                        Spacing="12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
                 <Image Source="{x:Bind Icon}"
                        Width="{x:Bind IconWidth}"
                        Height="26"
+                       Margin="0, 0, 12, 0"
                        Visibility="{x:Bind IconVisibility}"/>
-                <StackPanel VerticalAlignment="Center">
+                <StackPanel Grid.Column="1"
+                            VerticalAlignment="Center">
                     <TextBlock Text="{x:Bind Title}"/>
                     <TextBlock Text="{x:Bind Subtitle}"
                                Style="{StaticResource CaptionTextBlockStyle}"
                                Opacity="0.7"
                                Visibility="{x:Bind SubtitleVisibility}"/>
                 </StackPanel>
-            </StackPanel>
+                <!-- The arrow opens the web page about the option. The arrows stand in a column at the right edge of the list.
+                     It is not a tab stop, so the list is walked with the keyboard as usual -->
+                <HyperlinkButton Grid.Column="2"
+                                 Tag="{x:Bind Link}"
+                                 ToolTipService.ToolTip="{x:Bind LinkHint}"
+                                 AutomationProperties.Name="{x:Bind LinkHint}"
+                                 Visibility="{x:Bind LinkVisibility}"
+                                 Padding="4"
+                                 Margin="8, 0, -4, 0"
+                                 VerticalAlignment="Center"
+                                 IsTabStop="False"
+                                 Click="OptionLink_Click">
+                    <FontIcon Glyph="&#xE8A7;"
+                              FontSize="14"/>
+                </HyperlinkButton>
+            </Grid>
         </DataTemplate>
     </UserControl.Resources>
 
@@ -83,6 +104,7 @@
                                              x:Uid="ComboBox_NoOption"
                                              AutomationProperties.Name="{Binding Title}"
                                              MinWidth="248"
+                                             HorizontalContentAlignment="Stretch"
                                              SelectionChanged="OptionsBox_SelectionChanged"
                                              DropDownOpened="OptionsBox_DropDownOpened"/>
                 </StackPanel>

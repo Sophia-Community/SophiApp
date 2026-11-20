@@ -55,9 +55,10 @@ public class SettingsService : ISettingsService
         {
             settings = fileService.ReadFromJson<Dictionary<string, string>>(settingsFolder, SettingsFile) ?? [];
         }
-        catch (JsonException)
+        catch (JsonException ex)
         {
             // A damaged settings file is not a reason to fail: the app starts with the default settings
+            App.Logger.LogSkippedException("Reading the settings file", ex);
             settings = new Dictionary<string, string>();
         }
     }

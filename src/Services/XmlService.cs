@@ -25,8 +25,10 @@ namespace SophiApp.Services
                     document.Load(path);
                     return document;
                 }
-                catch
+                catch (Exception ex)
                 {
+                    // A damaged file is the same as no file
+                    App.Logger.LogSkippedException($"Reading the XML file {path}", ex);
                     return null;
                 }
             }
